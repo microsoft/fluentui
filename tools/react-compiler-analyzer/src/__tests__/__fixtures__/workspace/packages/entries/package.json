@@ -1,0 +1,9 @@
+{
+  "name": "@ws/entries",
+  "type": "module",
+  "source": "./src/index.ts",
+  "module": "./esm/index.js",
+  "main": "./main/index.js",
+  "declaration": "./index.d.ts",
+  "invalid": { "import": "./src/index.ts" }
+}

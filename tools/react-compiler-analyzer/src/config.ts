@@ -1,9 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, isAbsolute, join, resolve } from 'node:path';
+import { join, resolve } from 'node:path';
 
 import Ajv, { type ErrorObject } from 'ajv';
 
-import { compilePathAliases, findDeadAliases } from './module-resolver';
 import type { RcaConfig, RiskConfig } from './types';
 import { CliError } from './commands/shared';
 
@@ -35,6 +34,19 @@ export function readRcaConfigFile(resolvedPath: string): RcaConfig {
 
 /** Validate an in-memory config against the same schema used at runtime. */
 export function validateRcaConfig(config: unknown, source: string): RcaConfig {
+  if (typeof config === 'object' && config !== null) {
+    if ('parserPlugins' in config) {
+      throw new CliError(
+        `invalid RCA config ${source}: parserPlugins was removed. Oxc selects native TypeScript/JSX grammar by file extension; remove parserPlugins. Babel-only proposals and Flow are unsupported.`,
+      );
+    }
+    const risks = (config as RcaConfig).analyze?.risks;
+    if (typeof risks === 'object' && risks !== null && 'pathAliases' in risks) {
+      throw new CliError(
+        `invalid RCA config ${source}: analyze.risks.pathAliases was removed. Move aliases to the importing project's tsconfig paths or package.json exports/imports; Oxc discovers them per file.`,
+      );
+    }
+  }
   const valid = validateConfig(config);
 
   if (!valid) {
@@ -85,28 +97,12 @@ function normalizeRiskConfig(riskConfig: RiskConfig | undefined, configPath: str
     return undefined;
   }
 
-  let normalized = riskConfig;
-  if (riskConfig.pathAliases) {
-    const { baseUrl } = riskConfig.pathAliases;
-    const absoluteBaseUrl = isAbsolute(baseUrl) ? baseUrl : resolve(dirname(configPath), baseUrl);
-    if (!existsSync(absoluteBaseUrl)) {
-      throw new CliError(
-        `RCA config '${configPath}' has analyze.risks.pathAliases.baseUrl '${baseUrl}' which resolves to ` +
-          `'${absoluteBaseUrl}', but that directory does not exist.`,
-      );
-    }
-    normalized = {
-      ...riskConfig,
-      pathAliases: { ...riskConfig.pathAliases, baseUrl: absoluteBaseUrl },
-    };
-  }
-
-  warnOnNoOpRiskConfig(normalized, configPath);
-  return normalized;
+  warnOnNoOpRiskConfig(riskConfig, configPath);
+  return riskConfig;
 }
 
 function warnOnNoOpRiskConfig(config: RiskConfig, configPath: string): void {
-  if (!config.resolveWrappers) {
+  if (config.resolveWrappers !== true) {
     return;
   }
 
@@ -119,25 +115,6 @@ function warnOnNoOpRiskConfig(config: RiskConfig, configPath: string): void {
     console.warn(
       `Warning: RCA config '${configPath}' sets analyze.risks.resolveWrappers but enables no leaf rule ` +
         '(detectGetStateReads / storeAccessorPattern / selectorHookProperties), so wrapper resolution will not run.',
-    );
-  }
-  if (!config.pathAliases) {
-    console.warn(
-      `Warning: RCA config '${configPath}' sets analyze.risks.resolveWrappers without pathAliases - wrappers ` +
-        'imported through workspace aliases will not resolve. Relative imports still work.',
-    );
-    return;
-  }
-
-  const dead = findDeadAliases(compilePathAliases(config.pathAliases.paths, config.pathAliases.baseUrl));
-  if (dead.length > 0) {
-    console.warn(
-      `Warning: RCA config '${configPath}' has ${dead.length} pathAlias(es) whose target directories do not exist, ` +
-        `so they can never resolve: ${dead
-          .map(
-            alias => `${alias.prefix}${alias.wildcard ? `*${alias.suffix ?? ''}` : ''} -> ${alias.targets.join(', ')}`,
-          )
-          .join('; ')}`,
     );
   }
 }

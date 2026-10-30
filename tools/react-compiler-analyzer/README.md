@@ -12,8 +12,10 @@ still do what you intended.
 
 This is a command-line tool, not a React runtime dependency. There is no public JavaScript API.
 Compiler acceptance is not a guarantee of runtime safety or a prediction of performance gains.
-Outcomes come from Babel's React Compiler plugin, not the native Rust/OXC/SWC compiler. Parsing
-the same syntax does not establish equal eligibility, bailouts, emitted caches, or runtime exports.
+Outcomes come from the exact-pinned Oxc React Compiler port, not from Babel, SWC, or your
+application's native compiler integration. Parsing the same syntax does not establish equal
+eligibility, bailouts, emitted caches, runtime exports, performance, or runtime safety. Babel and
+native SWC are retained only as test oracles for the bounded integration harness.
 
 ## Quick start
 
@@ -44,7 +46,7 @@ Neither scan command modifies source unless you explicitly pass `analyze --annot
 ## Reference and guides
 
 - [Commands](#commands): every command and command-specific option.
-- [Shared options](#shared-options): paths, compilation modes, exclusions, parser settings, and formats.
+- [Shared options](#shared-options): paths, compilation modes, exclusions, syntax support, and formats.
 - [Configuration](#configuration): stable defaults and optional risk rules.
 - [JSON output](#--format-json): machine-readable fields and schemas.
 - [Upgrading](#upgrading): compatibility notes and migration instructions.
@@ -96,7 +98,6 @@ or `--yes --force` in a non-interactive environment.
   "mode": "infer",
   "concurrency": 10,
   "exclude": ["**/__tests__/**", "**/*.test.*"],
-  "parserPlugins": ["decorators-legacy"],
   "analyze": {
     "quote": "single",
     "risks": {
@@ -110,30 +111,58 @@ or `--yes --force` in a non-interactive environment.
 
 The shipped `rca.config.schema.json` provides editor validation and is also used for runtime
 validation. Unknown keys, invalid nested values, and malformed `storeAccessorPattern` regexes
-fail at config load before scanning. Explicit CLI options override
-config values. JSON uses camelCase (`strictPaths`, `parserPlugins`), while CLI flags retain
-kebab-case (`--strict-paths`, `--parser-plugin`).
+fail at config load before scanning. Explicit CLI options override config values. Removed Babel-only
+settings such as `parserPlugins` and `analyze.risks.pathAliases` are rejected with migration guidance;
+they are not silently ignored.
 
 Scan paths remain required positional arguments. Source-writing operations are intentionally not
 persistent configuration: use `--annotate` and `--fix` explicitly on each run.
 
-| Config key                             | Type       | Default or meaning                                                                 |
-| -------------------------------------- | ---------- | ---------------------------------------------------------------------------------- |
-| `$schema`                              | `string`   | Optional schema reference for editors.                                             |
-| `mode`                                 | `string`   | `infer`; also accepts `annotation`, `all`.                                         |
-| `format`                               | `string`   | `cli`; also accepts `md`, `html`, `json`.                                          |
-| `verbose`                              | `boolean`  | `false`.                                                                           |
-| `concurrency`                          | `integer`  | `10`; minimum 1.                                                                   |
-| `exclude`                              | `string[]` | Replaces the default directory-scan exclusions.                                    |
-| `strictPaths`                          | `boolean`  | `false`.                                                                           |
-| `parserPlugins`                        | `string[]` | `[]`; extra Babel parser plugins.                                                  |
-| `analyze.quote`                        | `string`   | `single`; also accepts `double`.                                                   |
-| `analyze.risks.detectGetStateReads`    | `boolean`  | `false`; detect imperative `.getState()` snapshots.                                |
-| `analyze.risks.storeAccessorPattern`   | `string`   | Unset; regex matching non-hook store-accessor names.                               |
-| `analyze.risks.selectorHookProperties` | `string[]` | `[]`; property names identifying hidden selector hooks.                            |
-| `analyze.risks.resolveWrappers`        | `boolean`  | `false`; follow first-party wrapper calls and re-exports.                          |
-| `analyze.risks.pathAliases.baseUrl`    | `string`   | Required with `pathAliases`; relative to the config file.                          |
-| `analyze.risks.pathAliases.paths`      | `object`   | Required with `baseUrl`; alias patterns map to nonempty arrays of target patterns. |
+| Config key                                        | Type       | Default or meaning                                                                     |
+| ------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------- |
+| `$schema`                                         | `string`   | Optional schema reference for editors.                                                 |
+| `mode`                                            | `string`   | `infer`; also accepts `annotation`, `all`.                                             |
+| `format`                                          | `string`   | `cli`; also accepts `md`, `html`, `json`.                                              |
+| `verbose`                                         | `boolean`  | `false`.                                                                               |
+| `concurrency`                                     | `integer`  | `10`; minimum 1.                                                                       |
+| `exclude`                                         | `string[]` | Replaces the default directory-scan exclusions.                                        |
+| `strictPaths`                                     | `boolean`  | `false`.                                                                               |
+| `analyze.quote`                                   | `string`   | `single`; also accepts `double`.                                                       |
+| `analyze.risks.detectGetStateReads`               | `boolean`  | `false`; detect imperative `.getState()` snapshots.                                    |
+| `analyze.risks.storeAccessorPattern`              | `string`   | Unset; regex matching non-hook store-accessor names.                                   |
+| `analyze.risks.selectorHookProperties`            | `string[]` | `[]`; property names identifying hidden selector hooks.                                |
+| `analyze.risks.resolveWrappers`                   | `boolean`  | `true` when any leaf risk rule is enabled; `false` opts out.                           |
+| `analyze.risks.resolver.additionalConditionNames` | `string[]` | Extra package `exports` conditions; defaults remain ESM (`import`, `node`, `default`). |
+| `analyze.risks.resolver.mainFields`               | `string[]` | Ordered replacement for the default `module`, `main` entry fields.                     |
+
+Wrapper resolution runs only while risk analysis has at least one leaf rule configured. It follows
+first-party `.ts`, `.tsx`, `.mts`, `.js`, and `.mjs` targets resolved from each importing file's
+tsconfig or package metadata. It does not follow `node_modules`, CommonJS implementations, type
+declarations, or redirect unbuilt `dist` paths to source. Unresolved first-party imports are reported;
+they are not proof that no additional risk exists.
+
+The resolver uses normal ESM conditions (`import`, `node`, `default`) by default. To opt into a
+package's source export condition, configure it explicitly; `additionalConditionNames` activates a
+condition but does not reorder the package's `exports` keys:
+
+```jsonc
+{
+  "analyze": {
+    "risks": {
+      "detectGetStateReads": true,
+      "resolver": {
+        "additionalConditionNames": ["source"],
+        "mainFields": ["source", "module", "main"]
+      }
+    }
+  }
+}
+```
+
+`mainFields` is an ordered replacement for the default `["module", "main"]` and applies only when
+package `exports`/`imports` do not select a target. Opting into `source` can inspect a different
+implementation from the consumer's build; verbose resolver diagnostics identify the active policy
+and resolved file. It is not build-output parity or a `dist`-to-source redirect.
 
 ### Optional agent integration
 
@@ -198,10 +227,10 @@ even if no directive status could be derived. `--fix` does not modify these file
 
 #### Options and fixes
 
-| Flag                     | Type      | Default | Description                                                                                       |
-| ------------------------ | --------- | ------- | ------------------------------------------------------------------------------------------------- |
-| `--fix`                  | `boolean` | `false` | Remove redundant opt-outs, justify active opt-outs, and resolve conflicts.                        |
-| `--revalidate-justified` | `boolean` | `false` | Recheck both kinds of justified function directive against Babel; never fix justified directives. |
+| Flag                     | Type      | Default | Description                                                                                     |
+| ------------------------ | --------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `--fix`                  | `boolean` | `false` | Remove redundant opt-outs, justify active opt-outs, and resolve conflicts.                      |
+| `--revalidate-justified` | `boolean` | `false` | Recheck both kinds of justified function directive against Oxc; never fix justified directives. |
 
 All shared options apply. `--fix` removes redundant `'use no memo'` directives, adds
 `// justified: <reason>` to active ones, and resolves conflicts by keeping `'use memo'`.
@@ -211,7 +240,7 @@ fail. JSON output describes the post-fix statuses and failures.
 By default, directives with a `// justified:` comment are skipped. Use `--revalidate-justified`
 to recheck both directive kinds in the selected compiler mode. Redundant, broken, or conflicting
 results fail lint, but justified directives and their comments remain untouched even with `--fix`.
-File-level directives remain preserved. Results describe Babel acceptance, not runtime safety or
+File-level directives remain preserved. Results describe Oxc acceptance, not runtime safety or
 removability in another build. See [directive probing](docs/how-it-works.md#directive-probing)
 for implementation details.
 
@@ -245,7 +274,8 @@ react-compiler-analyzer analyze <paths..> [options]
 
 Reports accepted, skipped, and errored functions. Accepted functions are separated by positive,
 zero, or unavailable reported memo-slot statistics. Actual emitted caching is unverified:
-normal analysis uses `noEmit: true`. Acceptance alone is not an optimization signal.
+analysis inspects Oxc's in-memory client transform and never writes transformed source files.
+Acceptance alone is not an optimization signal.
 The default report shows package and aggregate summaries; `--verbose` adds per-function results,
 candidate review details, risk findings, parse failures, and full code-framed diagnostics.
 
@@ -301,27 +331,27 @@ that match your application under `analyze.risks`.
 | `nonreactive-store-read` | Imperative `.getState()` snapshots or configured non-hook accessor reads.    | `high` for `.getState()`, `medium` for configured accessors. |
 | `hidden-selector-hook`   | Hidden hooks behind configured property chains, such as `store.use.field()`. | `high`.                                                      |
 
-Optional chaining is supported. `resolveWrappers` follows first-party helpers and re-exports;
-`pathAliases` supplies config-relative aliases. Resolution is syntactic and stops at package
-boundaries and dynamic/inferred dispatch. Inspect stderr resolution diagnostics rather than
-assuming no findings means every import was resolved.
+Optional chaining is supported. Wrapper resolution is enabled by default when a leaf risk rule is
+configured; set `resolveWrappers: false` to limit detection to the scanned source. The Oxc resolver
+uses the nearest tsconfig for each importer, follows first-party ESM package exports, and stops at
+third-party packages, CommonJS, declarations, and dynamic/inferred dispatch. Inspect resolver
+diagnostics rather than assuming no findings means every import was resolved.
 
 Reports distinguish compiled risks, risks suppressed by `'use no memo'`, and risks in functions not
 compiled. See [runtime-risk detection](docs/runtime-risks.md) for examples and limitations.
 
 ## Shared options
 
-| Argument / Flag   | Type       | Default | Description                                                                                                                        |
-| ----------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `<paths..>`       | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
-| `--mode`          | `string`   | `infer` | Compilation strategy: `infer`, `annotation`, or `all`.                                                                             |
-| `--format`        | `string`   | `"cli"` | Output format: `cli`, `md`, `html`, or `json` (machine-readable)                                                                   |
-| `--verbose`       | `boolean`  | `false` | Print detailed compiler events and full code-framed diagnostics                                                                    |
-| `--concurrency`   | `number`   | `10`    | Max parallel file processing                                                                                                       |
-| `--exclude`       | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
-| `--strict-paths`  | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
-| `--parser-plugin` | `string[]` | `[]`    | Extra Babel parser plugins, e.g. `decorators-legacy`. Match your build's parser config — see **Not Analyzed**                      |
-| `--config`        | `string`   | —       | Use this RCA config instead of an optional `./rca.config.json`                                                                     |
+| Argument / Flag  | Type       | Default | Description                                                                                                                        |
+| ---------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `<paths..>`      | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
+| `--mode`         | `string`   | `infer` | Compilation strategy: `infer`, `annotation`, or `all`.                                                                             |
+| `--format`       | `string`   | `"cli"` | Output format: `cli`, `md`, `html`, or `json` (machine-readable)                                                                   |
+| `--verbose`      | `boolean`  | `false` | Print detailed compiler events and full code-framed diagnostics                                                                    |
+| `--concurrency`  | `number`   | `10`    | Max parallel file processing                                                                                                       |
+| `--exclude`      | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
+| `--strict-paths` | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
+| `--config`       | `string`   | —       | Use this RCA config instead of an optional `./rca.config.json`                                                                     |
 
 _(1)_ Default excludes: `**/node_modules/**`, `**/*.d.ts`, `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`, `**/*.e2e.*`, `**/e2e/**`
 
@@ -329,24 +359,20 @@ _(1)_ Default excludes: `**/node_modules/**`, `**/*.d.ts`, `**/__tests__/**`, `*
 can precede the command. Table defaults are built-in values; config values override them, and
 explicit CLI options take precedence over the config.
 
-### Parser settings
+### Syntax support
 
 JSX is enabled by default only for `.tsx`. The analyzer also accepts `.ts` angle-bracket
-assertions and TypeScript auto-accessors. Parsing a file does not guarantee React Compiler
-acceptance. See [how it works](docs/how-it-works.md#processing-pipeline) for pipeline details.
+assertions and TypeScript auto-accessors; decorators, import attributes, and explicit resource
+management use Oxc's native parser support. Parsing a file does not guarantee React Compiler
+acceptance. Flow and unsupported stage-0/1/2 proposal syntax cannot be enabled with parser plugins;
+such inputs are reported as unparseable.
 
-Decorators require explicit configuration. If your build's loader enables extra syntax,
-pass the matching parser plugins:
+The Babel-only `--parser-plugin` flag and `parserPlugins` config key have been removed. Passing
+either produces an actionable migration error. There is no parser-plugin setting to mirror in
+RCA; the accepted grammar is determined by Oxc and the source extension.
 
-```bash
-react-compiler-analyzer analyze ./src --parser-plugin decorators-legacy
-```
-
-Unknown names are rejected. Babel ignores unrecognized parser plugins silently, so a typo would
-otherwise produce a run that looks successful and analyzed nothing extra.
-
-Verbose human reports identify the resolved Babel and Babel React Compiler versions once.
-Compiler identity is not added to JSON output.
+Verbose human reports identify the Oxc React Compiler port and parser versions. JSON records the
+same exact versions and compiler settings in `profile`.
 
 ### Missing paths
 
@@ -400,22 +426,23 @@ scraping text. When a report is produced, **stdout carries only the document** �
 per-file diagnostics are redirected to stderr — so it pipes straight into a parser. A parse error
 is still represented in the document but exits 1; a fatal compiler/transform error emits no JSON:
 
-Schema v3 (introduced in `0.0.4`) replaces `summary.memoCacheEmitted` with `reportedMemoCachePositive`,
-`reportedMemoCacheZero`, and `reportedMemoCacheUnavailable`. These partition accepted functions
-by reported memo slots, not emitted code. Positive counters do not prove that a risky operation
-was cached; zero counters do not invalidate a preventive bailout.
-JSON consumers upgrading from `0.0.3` must follow the [migration guide](MIGRATION.md#003-to-004).
+Schema v4 replaces the Babel profile with the exact Oxc compiler-port and parser versions and
+explicit transform settings. The three `reportedMemoCache*` counters partition accepted functions
+by reconstructed `memoSlots`, not consumer-build output. Positive counts do not prove a risky
+operation was cached; zero counts do not invalidate a preventive bailout. JSON consumers upgrading
+from `0.0.3` must follow the [migration guide](MIGRATION.md#003-to-010).
 
-Both commands record `profile` (resolved Babel/compiler versions, mode, extra parser plugins,
-`noEmit`, panic threshold, and inherited target/suppression defaults) and
-`emittedCaching: "unverified"`. Suppression-related rejection is identified by
+Both commands record `profile` (Oxc backend/version, parser version, mode, JSX/output mode,
+source-map setting, diagnostics, target, suppression policy, synthetic gating descriptor, and
+`noEmit: false`) and `emittedCaching: "unverified"`. The transform runs in memory: `noEmit: false`
+describes the backend operation, not a source write or proof of consumer-build caches. Suppression-related rejection is identified by
 `functions[].rejectionKind: "suppression-related"`, with retained diagnostics and risk findings.
 Another compiler/profile may optimize these functions; RCA does not automatically annotate them.
 
 | Collection               | Fields and meaning                                                                                                                                                                                                                                               |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `functions[]`            | `file`, `package` (string or `null`), `line`, `column`, `function`, `status` (`compiled`, `skipped`, `error`), and `compilerEvent`. Optional `reason`, `errorLine`, and `errorColumn` identify the terminal diagnostic separately from the function declaration. |
-| `functions[].memoStats`  | Optional `memoSlots`, `memoBlocks`, `memoValues`, `prunedMemoBlocks`, and `prunedMemoValues` counters; an unreported counter is `null`, not `0`.                                                                                                                 |
+| `functions[].memoStats`  | Optional `memoSlots` reconstructed from the gated transform; unavailable statistics remain unavailable rather than being guessed.                                                                                                                                |
 | `functions[].manualMemo` | Optional `useMemo`, `useCallback`, and `reactMemo` counts, plus `reactMemoHasComparator` boolean.                                                                                                                                                                |
 | `findings[]`             | `file`, `package`, `line`, `column`, `function`, `ruleId`, `severity`, `symbol`, `message`, and `compiled`. Optional `suppressed: true` marks an opted-out function, not proof that its guard is load-bearing.                                                   |
 | `unparseable[]`          | `file` and `error` for each file the parser rejected.                                                                                                                                                                                                            |
@@ -442,20 +469,27 @@ react-compiler-analyzer analyze ./src --format json \
 
 ```jsonc
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "tool": "react-compiler-analyzer",
   "command": "analyze",
   "mode": "infer",
   "profile": {
-    "backend": "babel",
-    "babelVersion": "<resolved Babel version>",
-    "compilerVersion": "<resolved compiler version>",
+    "backend": "oxc",
+    "compilerVersion": "0.156.0",
+    "parserVersion": "0.156.0",
     "mode": "infer",
-    "parserPlugins": [],
-    "noEmit": true,
+    "jsx": "preserve",
+    "outputMode": "client",
+    "sourcemap": true,
+    "noEmit": false,
     "panicThreshold": "none",
-    "target": "compiler-default",
-    "suppressionRules": "compiler-default"
+    "reportDiagnostics": true,
+    "target": "19",
+    "suppressionRules": "compiler-default",
+    "gating": {
+      "source": "__rca_gate__",
+      "importSpecifierName": "__rcaGate"
+    }
   },
   "emittedCaching": "unverified",
   "summary": {
@@ -483,11 +517,7 @@ react-compiler-analyzer analyze ./src --format json \
       "status": "compiled",
       "compilerEvent": "CompileSuccess",
       "memoStats": {
-        "memoSlots": 2,
-        "memoBlocks": null,
-        "memoValues": 1,
-        "prunedMemoBlocks": null,
-        "prunedMemoValues": null
+        "memoSlots": 2
       }
     }
   ],
@@ -512,15 +542,29 @@ react-compiler-analyzer analyze ./src --format json \
 - Findings use `compiled` to distinguish risks on compiler-accepted functions from latent risks on
   failed/skipped functions. `suppressed: true` marks risks in functions with `'use no memo'`; the key is
   omitted for other findings.
-- Memo counters preserve compiler absence as `null`; a reported zero remains `0`.
+- `memoStats.memoSlots` is reconstructed from Oxc's in-memory gated transform. The profile's
+  `noEmit: false` describes that transform output; RCA does not write transformed source files.
+  `emittedCaching: "unverified"` remains explicit because synthetic analysis output is not evidence
+  about a consumer build or cache ownership for a particular operation.
+- Oxc exposes no equivalent for Babel's memo-block/value/pruned-work counters; schema v4 removes
+  those counters rather than filling them with guesses. Acceptance and `memoSlots` remain separate
+  observations; zero or unavailable slots do not disqualify preventive opt-outs.
+- `profile.compilerVersion` identifies the exact `oxc-transform-react` port package, not an
+  independently verified upstream React Compiler version. The profile records the parser, mode,
+  target, output mode, source-map setting, diagnostics, suppression policy, and synthetic gate.
+- Oxc `Warning` and `Advice` diagnostics are visible on stderr and in human reports but do not alone
+  reject a function or fail lint. Acceptance requires a uniquely mapped synthetic gate; fatal,
+  unknown-severity, unmappable, or inconsistent error-plus-success evidence fails closed.
 - `unparseable` lists files the parser rejected outright. They contribute nothing to the other
   counts, so a shrinking `functions` total is never silently caused by a parse failure; a nonempty
-  array also sets exit code 1.
+  array also sets exit code 1. Unsupported grammar is reported rather than extended with Babel
+  parser plugins.
 - Paths are workspace-relative and POSIX-separated.
 - Output is deterministically ordered, so equivalent runs produce byte-identical documents.
 - `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array,
   `summary.unparseableFiles`, and an `unparseable` array) and keeps its usual exit code.
-  `lint --format json --fix` reports the post-fix directive statuses and failures.
+  `lint --format json --fix` reports the post-fix directive statuses and failures. Both commands
+  use the same Oxc profile; schema v3 Babel profiles and removed counters are not valid v4 documents.
 - Full code-framed compiler diagnostics remain available in human reports with `--verbose`; JSON
   stays compact and includes terminal reason/location plus diagnostic reasons and categories.
 - `--annotate` still writes directives to disk under `--format json` when processing completes
@@ -580,8 +624,9 @@ compiler probes and rendering internals, see [how it works](docs/how-it-works.md
 
 ## Known upstream issues
 
-Defects found during rollout that live in the React Compiler toolchain rather than in this analyzer.
-Each write-up carries a minimal reproduction and the exact versions it was verified against.
+Historical defects found during rollout that live in the React Compiler toolchain rather than in
+this analyzer. Each write-up carries a minimal reproduction and the exact versions it was verified
+against; neither establishes that the Oxc port or a consumer build behaves the same way.
 
 | Issue                                                                                                                                                                                                                | Affects                             | Write-up                                                                                                         |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -592,7 +637,7 @@ Each write-up carries a minimal reproduction and the exact versions it was verif
 
 - [Documentation contents](docs/README.md).
 - [Migration workflow](docs/migration-workflow.md): assess candidates, choose annotations, and review opt-outs.
-- [Runtime-risk detection](docs/runtime-risks.md): configure patterns, wrappers, and aliases.
+- [Runtime-risk detection](docs/runtime-risks.md): configure patterns, wrappers, and resolver conditions.
 - [How it works](docs/how-it-works.md): compiler probes, canonical outcomes, memo counters, and report interpretation.
 - [Version migration guide](MIGRATION.md): release-specific changes and upgrade instructions.
 
@@ -616,7 +661,29 @@ yarn nx run react-compiler-analyzer:test-integration
 yarn nx run react-compiler-analyzer:type-check
 ```
 
-The integration target builds the CLI, checks compiler behavior using workspace Babel/SWC
-dependencies, and validates the packaged command's JSON and dry-run behavior. Tests live in
-`tests/integration/`. Review changed evidence before updating compiler baselines; these checks
-do not replace application behavior tests.
+The integration target builds the CLI, preserves bounded Babel and native-SWC observations, adds
+direct Oxc emitted-output observations separately from analyzer acceptance telemetry, and validates
+the packaged command's JSON and dry-run behavior. Babel and SWC are test-only oracles; the CLI
+runtime must not load either. Review Oxc deltas before adding its baselines; these checks do not
+replace application behavior tests.
+
+Compare whole-command behavior against a pre-migration binary:
+
+```bash
+yarn nx run react-compiler-analyzer:benchmark --baseline=/absolute/pre-migration/bin/react-compiler-analyzer.js --runs=3 --output=/absolute/results
+```
+
+The benchmark freezes a SHA manifest of the v9 production corpus and exercises analyze with risks
+off/on, lint, actual `--fix` on disposable full-input copies, and justified revalidation. Artifacts
+record timings, RSS, transform counts, and row differences. Measurements are workload-specific,
+not runtime-safety or performance guarantees.
+
+Verify an already-created, clean production-only tarball installation:
+
+```bash
+yarn nx run react-compiler-analyzer:verify-installed --package-root=/absolute/clean/node_modules/@fluentui/react-compiler-analyzer
+```
+
+Unlike the in-repository load guard, this checks the installed package's dependency isolation:
+Babel core/types/compiler and SWC must not resolve. It also checks native loaders, analyze/lint
+schema-v4 JSON, fixes, dry-run behavior, and help output.

@@ -1,18 +1,17 @@
 import { readFile } from 'node:fs/promises';
 
-import { transformAsync } from '@babel/core';
-import type { PluginItem } from '@babel/core';
-
-import { createBabelOptions } from './babel-options';
+import { compileOxc } from './oxc-backend';
+import { parseSource } from './ast/parse';
+import { ScopeResolver } from './ast/scope';
 import { forEachConcurrently } from './concurrency';
 import { compareText } from './ordering';
-import { manualMemoPlugin } from './manual-memo-plugin';
-import type { ExistingDirectives, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
-import { riskPlugin } from './risk-plugin';
-import type { RiskPluginOptions } from './risk-plugin';
+import { analyzeManualMemo } from './manual-memo-plugin';
+import type { ExistingDirectives, ManualMemoEntry } from './manual-memo-plugin';
+import { analyzeRisks } from './risk-plugin';
 import { createCallGraphAnalyzer, type CallGraphAnalyzer } from './call-graph';
-import { createModuleResolver, compilePathAliases, createResolverStats } from './module-resolver';
-import { sourceFunctionPlugin, SourceFunctionIndex } from './source-functions';
+import { createModuleResolver, createResolverStats } from './module-resolver';
+import { buildLeafConfig, hasAnyLeafRule } from './risk-patterns';
+import { populateSourceFunctions, SourceFunctionIndex } from './source-functions';
 import { fingerprintText } from './stable-json';
 import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
 
@@ -26,10 +25,6 @@ export interface CompilerEvent {
   detail?: unknown;
   data?: string;
   memoSlots?: number;
-  memoBlocks?: number;
-  memoValues?: number;
-  prunedMemoBlocks?: number;
-  prunedMemoValues?: number;
 }
 
 interface CompilerDetailLike {
@@ -43,6 +38,7 @@ interface CompilerDetailLike {
   primaryLocation?: () => { start?: { line?: number; column?: number } } | null;
   /** Renders a full, code-framed compiler message. Present on CompilerErrorDetail / CompilerDiagnostic. */
   printErrorMessage?: (source: string, options: { eslint: boolean }) => string;
+  codeframe?: string | null;
 }
 
 export function extractDetailCategory(detail: unknown): string | undefined {
@@ -127,6 +123,9 @@ export function extractDetailReason(detail: unknown): string {
 export function extractFullDiagnostic(detail: unknown, source: string): string {
   if (detail !== null && typeof detail === 'object') {
     const compilerDetail = detail as CompilerDetailLike;
+    if (typeof compilerDetail.codeframe === 'string') {
+      return compilerDetail.codeframe;
+    }
     if (typeof compilerDetail.printErrorMessage === 'function') {
       try {
         const printed = compilerDetail.printErrorMessage(source, { eslint: false });
@@ -191,13 +190,6 @@ export function resolveSkipReason(event: CompilerEvent, source: string): string 
 
 export interface CompileOptions {
   compilationMode?: CompilationMode;
-  plugins?: PluginItem[];
-  /**
-   * Extra Babel *parser* plugins, e.g. `['decorators-legacy']`. Needed when the consuming build
-   * parses with a wider grammar than `typescript` + `jsx`; without a match, files the build
-   * compiles are reported as unparseable and silently leave the analyzed scope.
-   */
-  parserPlugins?: string[];
 }
 
 export interface CompileResult {
@@ -206,7 +198,7 @@ export interface CompileResult {
 }
 
 /**
- * Run the React Compiler (via babel transform) on source code and collect events.
+ * Run the Oxc React Compiler on source code and collect canonical events.
  * Returns compiler events for each function in the source.
  */
 export async function compileSource(
@@ -214,36 +206,17 @@ export async function compileSource(
   filePath: string,
   options: CompileOptions = {},
 ): Promise<CompileResult> {
-  const events: CompilerEvent[] = [];
-  const logger = {
-    logEvent: (_filename: string | null, event: CompilerEvent) => {
-      events.push(event);
-    },
-  };
-
-  const extraPlugins = options.plugins ?? [];
-  const compilerPluginConfig: [string, Record<string, unknown>] = [
-    require.resolve('babel-plugin-react-compiler'),
-    {
-      noEmit: true,
-      panicThreshold: 'none',
-      ...(options.compilationMode ? { compilationMode: options.compilationMode } : {}),
-      logger,
-    },
-  ];
-
   try {
-    await transformAsync(source, {
-      ...createBabelOptions(filePath, options.parserPlugins),
-      ast: false,
-      code: false,
-      plugins: [...extraPlugins, compilerPluginConfig],
-    });
+    const sourceFunctions = new SourceFunctionIndex(source, { filePath, packageName: null }, process.cwd());
+    // The source inventory is populated by the same parser as file compilation.
+    populateSourceFunctions(source, filePath, sourceFunctions);
+    return await compileOxc(source, filePath, options.compilationMode ?? 'infer', sourceFunctions);
   } catch (err) {
-    return { events, error: err as Error };
+    if (!(err instanceof Error)) {
+      throw err;
+    }
+    return { events: [], error: err };
   }
-
-  return { events };
 }
 
 // ── Unified file compilation ──
@@ -269,12 +242,11 @@ export interface FileCompilationResult {
    * same way an in-file one does.
    */
   fnKeyAliases: Map<string, string>;
-  parserPlugins: string[];
   verboseLogs: string[];
 }
 
 /**
- * Read and compile a single file with the React Compiler + manualMemoPlugin.
+ * Read and compile a single file with the React Compiler and source metadata producers.
  * Returns all metadata needed for both coverage and directive analysis.
  */
 export async function compileFile(
@@ -283,7 +255,6 @@ export async function compileFile(
   verbose: boolean,
   riskConfig: RiskConfig = {},
   callGraph?: CallGraphAnalyzer,
-  parserPlugins: string[] = [],
   workspaceRoot = process.cwd(),
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
@@ -295,24 +266,28 @@ export async function compileFile(
   const fnKeyAliases = new Map<string, string>();
   const existingDirectives = new Map<string, ExistingDirectives>();
 
-  const { events, error } = await compileSource(source, entry.filePath, {
-    compilationMode,
-    parserPlugins,
-    plugins: [
-      [sourceFunctionPlugin, { index: sourceFunctions }],
-      [
-        manualMemoPlugin,
-        {
-          sourceFunctions,
-          results: manualMemo,
-          bodyInsertionLines,
-          existingDirectives,
-          keyAliases: fnKeyAliases,
-        } as ManualMemoPluginOptions,
-      ],
-      [riskPlugin, { ...riskConfig, sourceFunctions, results: risks, keyAliases: fnKeyAliases } as RiskPluginOptions],
-    ],
-  });
+  let compilation: CompileResult;
+  try {
+    const parsed = parseSource(source, entry.filePath);
+    const scopes = new ScopeResolver(parsed.program);
+    sourceFunctions.addProgram(parsed, scopes);
+    analyzeManualMemo(parsed, {
+      sourceFunctions,
+      scopes,
+      results: manualMemo,
+      bodyInsertionLines,
+      existingDirectives,
+      keyAliases: fnKeyAliases,
+    });
+    analyzeRisks(parsed, { ...riskConfig, scopes, sourceFunctions, results: risks });
+    compilation = await compileOxc(source, entry.filePath, compilationMode, sourceFunctions);
+  } catch (error) {
+    if (!(error instanceof Error)) {
+      throw error;
+    }
+    compilation = { events: [], error };
+  }
+  const { events, error } = compilation;
 
   // Cross-file wrapper analysis (opt-in): attach indirect risks reached through first-party
   // wrapper calls. Synchronous and memoized across files via the shared analyzer.
@@ -376,7 +351,6 @@ export async function compileFile(
     existingDirectives,
     risks,
     fnKeyAliases,
-    parserPlugins,
     verboseLogs,
   };
 }
@@ -400,7 +374,7 @@ export async function compileFilesStreaming(
 ): Promise<void> {
   // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
   // across files. Only built when wrapper resolution is opted into.
-  const callGraph = buildCallGraph(options.riskConfig, options.parserPlugins);
+  const callGraph = buildCallGraph(options.riskConfig);
   const verboseLogs = new Map<string, string[]>();
 
   await forEachConcurrently(
@@ -412,7 +386,6 @@ export async function compileFilesStreaming(
         options.verbose,
         options.riskConfig,
         callGraph,
-        options.parserPlugins,
         options.workspaceRoot,
       );
       if (options.verbose) {
@@ -446,14 +419,11 @@ export async function compileFiles(files: FileEntry[], options: CompileFilesOpti
 }
 
 /** Construct the cross-file analyzer when `resolveWrappers` is enabled; otherwise `undefined`. */
-function buildCallGraph(riskConfig?: RiskConfig, parserPlugins?: string[]): CallGraphAnalyzer | undefined {
-  if (!riskConfig?.resolveWrappers) {
+function buildCallGraph(riskConfig?: RiskConfig): CallGraphAnalyzer | undefined {
+  if (!riskConfig || riskConfig.resolveWrappers === false || !hasAnyLeafRule(buildLeafConfig(riskConfig))) {
     return undefined;
   }
-  const aliases = riskConfig.pathAliases
-    ? compilePathAliases(riskConfig.pathAliases.paths, riskConfig.pathAliases.baseUrl)
-    : [];
   const stats = createResolverStats();
-  const resolver = createModuleResolver({ aliases, stats });
-  return createCallGraphAnalyzer(resolver, riskConfig, stats, parserPlugins);
+  const resolver = createModuleResolver({ ...riskConfig.resolver, stats });
+  return createCallGraphAnalyzer(resolver, riskConfig, stats);
 }

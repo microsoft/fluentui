@@ -37,11 +37,6 @@
       "type": "boolean",
       "description": "Fail instead of warning when a scan path does not exist."
     },
-    "parserPlugins": {
-      "type": "array",
-      "items": { "type": "string", "minLength": 1 },
-      "description": "Additional Babel parser plugins used to match the build grammar."
-    },
     "analyze": {
       "type": "object",
       "additionalProperties": false,
@@ -74,27 +69,26 @@
             },
             "resolveWrappers": {
               "type": "boolean",
-              "description": "Follow first-party wrapper calls and re-export barrels to risky leaves."
+              "default": true,
+              "description": "Follow first-party wrapper calls and re-export barrels to risky leaves. Applies only when a leaf rule is configured."
             },
-            "pathAliases": {
+            "resolver": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["baseUrl", "paths"],
-              "description": "TypeScript-style aliases used while resolving first-party wrappers.",
+              "description": "Opt-in package conditions and ordered entry fields; tsconfig aliases are discovered per importing file.",
               "properties": {
-                "baseUrl": {
-                  "type": "string",
-                  "minLength": 1,
-                  "description": "Directory against which path alias targets are resolved."
+                "additionalConditionNames": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": { "type": "string", "minLength": 1, "pattern": "\\S" },
+                  "description": "Conditions added to import/node/default. Package export key order still determines matching precedence."
                 },
-                "paths": {
-                  "type": "object",
-                  "description": "Map of alias patterns to target patterns.",
-                  "additionalProperties": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": { "type": "string", "minLength": 1 }
-                  }
+                "mainFields": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": { "type": "string", "minLength": 1, "pattern": "\\S" },
+                  "description": "Ordered replacement for module/main. Exports/imports restrictions take precedence."
                 }
               }
             }

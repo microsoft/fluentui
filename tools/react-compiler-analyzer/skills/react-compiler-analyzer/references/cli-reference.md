@@ -48,13 +48,16 @@ react-compiler-analyzer analyze <paths...> --format cli --verbose
 
 Important JSON fields:
 
-`0.0.4` emits schema v3. For scripts written against `0.0.3`, update validators and replace
-the removed `summary.memoCacheEmitted` with `summary.reportedMemoCachePositive`.
+The Oxc-backed release emits schema v4. For scripts written against the Babel-backed v0.0.3
+contract, update strict validators to the shipped schemas; v3 documents are not valid v4 input.
 
 - `summary.compiled`: functions accepted by the compiler.
 - `summary.reportedMemoCachePositive`, `reportedMemoCacheZero`, `reportedMemoCacheUnavailable`:
-  accepted functions partitioned by reported slots, not emitted-code evidence (schema v3).
-- `profile`: compiler versions and settings used for this report.
+  accepted functions partitioned by reconstructed Oxc `memoSlots`, not consumer emitted-code
+  evidence (schema v4).
+- `profile`: exact Oxc compiler-port/parser versions and settings, including source maps and the
+  synthetic gate used for source-function attribution. `compilerVersion` identifies the
+  `oxc-transform-react` package, not an independently verified upstream compiler version.
 - `emittedCaching: "unverified"`: normal analysis does not inspect emitted code.
 - `functions[].status`: canonical compiler outcome.
 - `functions[].memoStats.memoSlots`: positive or zero reported slots; absent/null means unavailable.

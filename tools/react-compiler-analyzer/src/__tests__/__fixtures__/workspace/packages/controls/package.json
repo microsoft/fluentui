@@ -1,0 +1,26 @@
+{
+  "name": "@ws/controls",
+  "type": "module",
+  "source": "./src/typography.ts",
+  "exports": {
+    "./typography": {
+      "source": "./src/typography.ts",
+      "types": "./lib/typography.d.ts",
+      "default": "./lib/typography.js"
+    },
+    "./search-box": {
+      "source": "./src/search-box.ts",
+      "types": "./lib/search-box.d.ts",
+      "default": "./lib/search-box.js"
+    },
+    "./teaching-popover": {
+      "default": "./lib/teaching-popover.js",
+      "source": "./src/teaching-popover.ts"
+    },
+    "./declaration": "./lib/typography.d.ts",
+    "./declaration-mts": "./lib/typography.d.mts",
+    "./declaration-cts": "./lib/typography.d.cts",
+    "./node": { "node": "./lib/typography.js", "default": "./src/typography.ts" },
+    "./import": { "require": "./src/typography.ts", "import": "./lib/typography.js" }
+  }
+}

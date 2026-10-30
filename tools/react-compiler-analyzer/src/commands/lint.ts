@@ -28,11 +28,18 @@ async function analyzeDirectiveFiles(
       verbose,
       compilationMode: argv.mode,
       workspaceRoot: process.cwd(),
-      parserPlugins: argv['parser-plugin'],
     },
     async compiled => {
       if (compiled.error) {
         unparseable.push({ file: compiled.filePath, error: compiled.error.message });
+        return;
+      }
+      const pipelineErrors = compiled.events.filter(event => event.kind === 'PipelineError');
+      if (pipelineErrors.length > 0) {
+        unparseable.push({
+          file: compiled.filePath,
+          error: pipelineErrors.map(event => `PipelineError: ${event.data || 'compiler pipeline failed'}`).join('; '),
+        });
         return;
       }
       const { unattributedErrors } = normalizeCompilerEvents(
@@ -51,7 +58,7 @@ async function analyzeDirectiveFiles(
         });
         return;
       }
-      const options = { parserPlugins: argv['parser-plugin'], revalidateJustified: argv['revalidate-justified'] };
+      const options = { revalidateJustified: argv['revalidate-justified'] };
       results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode, options));
       results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, options)));
       if (argv['revalidate-justified']) {
@@ -98,7 +105,6 @@ export async function runLint(argv: LintArgv): Promise<number> {
         writeDocument(
           toLintDocument(validation.results, {
             mode: argv.mode,
-            parserPlugins: argv['parser-plugin'],
             workspaceRoot,
             unparseable: validation.unparseable,
           }),
@@ -153,7 +159,7 @@ export function createLintCommand(config: RcaConfig): CommandModule<{}, LintArgv
         .option('revalidate-justified', {
           type: 'boolean',
           default: false,
-          describe: 'Revalidate justified directives against Babel without modifying them, even with --fix',
+          describe: 'Revalidate justified directives against Oxc without modifying them, even with --fix',
         })
         .option('fix', {
           type: 'boolean' as const,

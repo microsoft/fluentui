@@ -3,46 +3,131 @@
 Use this guide when upgrading between package versions. Entries are ordered by target version,
 newest first; dates within an entry identify changes made during its development, not release dates.
 
-## 0.0.3 to 0.0.4
+## 0.0.3 to 0.1.0
 
 | Upgrade            | Release date | Guide updated |
 | ------------------ | ------------ | ------------- |
-| `0.0.3` to `0.0.4` | Unreleased   | 2026-10-26    |
+| `0.0.3` to `0.1.0` | Unreleased   | 2026-10-30    |
 
-`0.0.4` changes the JSON output contract from schema version 2 to 3. **This is a breaking
-change for JSON consumers**, despite the package's patch-version increment. CLI flags,
-configuration, annotation eligibility, directive statuses, and exit-code rules are unchanged.
-Justified directives remain protected from `--fix`.
+`0.1.0` replaces the production Babel backend with the exact-pinned Oxc React Compiler port and
+changes JSON output from schema v2/v3 to strict schema v4. This is a breaking compiler and JSON
+contract migration, released as a minor version. Babel and native SWC remain test-only comparison
+oracles; the published CLI does not load either.
 
-### Required changes for JSON consumers
+### Required changes for JSON consumers and configuration
 
-1. Accept `schemaVersion: 3` and update strict validators to the shipped
+1. Accept `schemaVersion: 4` and update strict validators to the shipped
    [analyze schema](rca.analyze.schema.json) and [lint schema](rca.lint.schema.json).
-   Register the analyze schema when validating lint; it supplies shared definitions.
-2. Replace `summary.memoCacheEmitted` with `summary.reportedMemoCachePositive` when counting
-   accepted functions with positive reported memo slots. The new `reportedMemoCacheZero` and
-   `reportedMemoCacheUnavailable` counters complete the partition. These are analysis statistics,
-   **not proof of emitted caching** or of a particular operation being cached.
-3. Allow the new `profile` and `emittedCaching` envelope fields, optional function diagnostics
-   and suppression classification, annotation `targets`, and revalidation `evidence`.
-   Refer to the schemas for their complete shapes.
+   Register the analyze schema when validating lint because it supplies shared definitions.
+   Strict validators must reject v3 profiles and removed counters rather than relabeling them.
+2. Replace `memoStats.memoBlocks`, `memoValues`, `prunedMemoBlocks`, and `prunedMemoValues` with
+   the retained `memoSlots` observation. The `summary.reportedMemoCachePositive`,
+   `reportedMemoCacheZero`, and `reportedMemoCacheUnavailable` counters still partition accepted
+   functions. The slot count is reconstructed from Oxc's gated in-memory output; none of these
+   fields proves that a consumer build emitted a cache or cached a particular operation.
+3. Update consumers for the truthful `profile` (`backend: "oxc"`, exact compiler-port and parser
+   versions, mode and transform options), synthetic gating descriptor, `emittedCaching:
+"unverified"`, optional diagnostics/suppression classification, annotation `targets`, and
+   justified-lint `evidence`. See the schemas for the complete structures.
+4. Remove `parserPlugins` / `--parser-plugin` and `analyze.risks.pathAliases`. Old config keys and
+   flags are rejected with migration guidance. The Oxc parser uses native syntax support; Flow and
+   unsupported proposal syntax cannot be enabled through plugins.
+5. Wrapper resolution now uses the nearest tsconfig for each importer and package metadata.
+   `resolveWrappers` defaults on only while a leaf risk rule is configured; set it to `false` to
+   disable cross-file traversal. Defaults activate ESM `import`, `node`, and `default` conditions.
+   `resolver.additionalConditionNames` opts into conditions such as `source`; this does not reorder
+   package export keys. `resolver.mainFields` is an explicit ordered replacement for `["module",
+"main"]`, and does not bypass package export restrictions.
 
-If you only use the CLI interactively, no command changes are required. Human report labels
-and generated bailout justifications now distinguish reported statistics from preventive
-recommendations; update any scripts that scrape those labels.
+If you only use the CLI interactively, re-run reports and review compiler-dependent status changes.
+The profile's `noEmit: false` describes the in-memory transform used for analysis, not a source
+write. Synthetic gate output does not establish consumer-build output, runtime safety, or
+performance gains.
 
-### New review information
+### Measured compiler differences that cannot be ported
 
-- Suppression-related compiler rejections retain risk findings and can be enumerated using
-  `functions[].rejectionKind`. They remain excluded from automatic annotation.
-- Annotation previews and writes include target rationale. Zero reported slots do not
-  disqualify a preventive bailout.
-- Justified revalidation reports before/after acceptance and statistics under the recorded
-  profile. No observed effect does not establish universal redundancy; emitted optimization
-  remains unmeasured.
+The exploratory comparison covered 3,554 TypeScript/TSX files using Babel core `7.28.5` plus
+`babel-plugin-react-compiler@1.0.0` versus `oxc-transform-react@0.156.0`. It was a bounded probe,
+not a completed whole-tool parity run or a guarantee about another consumer build. The live
+integration harness separately records the exact merged-baseline Babel version, Oxc/parser
+versions, native binding target, source hash, transform options, diagnostics, output inspection,
+and runtime checks for each fixture.
 
-Existing removal behavior for unjustified guards is unchanged. Review guard changes against
-your build and run application behavior tests before accepting them.
+| Observation                 | Measured difference                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accepted/rejected functions | About 3,463 files had matching statuses and messages. Oxc compiled 8 files where Babel bailed on unsupported HIR cases; Oxc rejected one file (`DirSwitch.tsx`) that Babel accepted due to exhaustive manual-memo dependency validation.                                                                                                                                                                                                                       |
+| Diagnostics                 | About 77 files retained the same outcome with different diagnostic wording; 5 had a different number of errors. Oxc labels use UTF-8 byte offsets and have different descriptions/code frames.                                                                                                                                                                                                                                                                 |
+| Reported memo statistics    | Oxc has no equivalent for Babel's `memoBlocks`, `memoValues`, `prunedMemoBlocks`, or `prunedMemoValues`. Schema v4 removes them. Oxc `memoSlots` are reconstructed from generated `_c(N)` calls.                                                                                                                                                                                                                                                               |
+| Success and skip telemetry  | Oxc has no compiler logger. Accepted functions are reconstructed from the synthetic gate; candidate opt-outs require a supplemental probe. Ambiguous source mappings are backend failures, not guessed attribution.                                                                                                                                                                                                                                            |
+| Grammar                     | Decorators, auto-accessors, import attributes, explicit resource management, TypeScript namespaces/enums, and `.ts` angle assertions are natively parsed. Flow and unsupported stage-0/2 proposals are not configurable and become unparseable.                                                                                                                                                                                                                |
+| Outlined closure runtime    | In the bounded arrow-function fixture, Babel 7.29.7, native SWC 1.15.47, and Oxc 0.156.0 each emitted output that raised `ReferenceError: factory is not defined` in the stubbed runtime. The function-declaration control did not throw. Babel/Oxc reported analyzer success; SWC has no acceptance telemetry. This is a fixture-level observation, not a runtime-safety guarantee. See [the reproduction](docs/upstream-react-compiler-outlined-closure.md). |
+| Lint and edits              | Directive statuses, justified-probe outcomes, CI exits, and proposed source edits are compiler-dependent. Oxc differences must be reviewed against the live lint fixtures; aggregate acceptance results are not a lint-parity measurement.                                                                                                                                                                                                                     |
+
+The frozen directive fixture run (Babel core `7.29.7` with compiler `1.0.0` versus Oxc
+`0.156.0`) records these reviewed status changes in
+`src/__tests__/__fixtures__/lint-baseline/reviewed-oxc-deltas.json`:
+
+- In `infer`, `annotation`, and `all` modes, a module-level `'use no memo'` causes an explicit
+  function-level `'use memo'` (`FileOptIn`) to move from active under Babel to broken under Oxc.
+  The opt-in remains unchanged, so lint exits nonzero, including with `--fix`.
+- In `all` mode, the same module guard makes the ordinary function-level `FileOptOut` move from
+  active under Babel to redundant under Oxc. Fixing removes only that function directive and
+  preserves the module guard.
+- In `all` mode, a justified `Protected` opt-out moves from active under Babel to redundant under
+  Oxc because revalidation preserves the module guard. It remains report-only: `--fix` preserves
+  the directive and its exact justification.
+- In `all` mode, the native TypeScript angle assertion in `native.ts` moves from redundant under
+  Babel (BuildHIR rejection) to active under Oxc. `--fix` adds justification to the ordinary
+  opt-out instead of removing it; revalidation remains report-only after the fix.
+- The fixture's `lint --fix` cases now exit 1 when the still-broken `FileOptIn` remains. The Babel
+  baseline exited 0 after its fix pass without that remaining Oxc failure.
+
+Warning and Advice diagnostics are visible on stderr and in human reports but do not alone reject
+functions or fail lint. Acceptance still requires independently verified gate attribution. Fatal,
+unknown-severity, unmappable, or inconsistent error-plus-success evidence fails closed.
+
+Suppression-related rejections retain diagnostics and risk findings but stay ineligible for
+automatic annotation. Annotation `targets` retain rationale, reported-slot state, emitted-caching
+uncertainty, and risk rules. Zero or unavailable slots do not disqualify preventive opt-outs.
+Justified revalidation reports before/after outcomes and slot statistics; `emittedOptimization:
+"not-measured"` is not evidence that a guard is universally redundant.
+
+Do not blanket-refresh Babel or SWC baselines to match Oxc. Existing Babel/SWC observations remain
+frozen; Oxc output is recorded separately and each changed outcome, cache layout, export, diagnostic,
+or runtime result needs an explicit explanation. Review all source edits against the consumer build,
+then run application behavior tests.
+
+### Whole-command benchmark and attribution audit
+
+The final audit used 3,216 frozen v9 production files, three runs per workload, and concurrency 1.
+The corpus manifest SHA-256 was
+`f6e2c03a712333b79521c17d41bd0eb367088e4f0600e4fb89688bb5b7b7739d`.
+
+| Workload                      | Babel median (ms) | Oxc median (ms) | Babel/Oxc ratio |
+| ----------------------------- | ----------------- | --------------- | --------------- |
+| Analyze, risks off            | 16,093            | 10,474          | 1.54×           |
+| Analyze, risks on             | 32,600            | 11,361          | 2.87×           |
+| Lint                          | 2,961             | 1,437           | 2.06×           |
+| Lint `--fix`, isolated copies | 3,159             | 2,164           | 1.46×           |
+| Justified revalidation        | 3,391             | 2,048           | 1.66×           |
+
+Median peak RSS showed a native memory tradeoff: plain analyze increased from 467,184 to
+673,712 KiB (+44%), analyze with risks from 931,088 to 1,028,144 KiB (+10%), while lint decreased
+from 243,504 to 173,872 KiB (-29%). These shared-host timings describe this workload, not promised
+speedups, memory bounds, or runtime safety.
+
+Compiled functions increased from 797 to 803 (six newly accepted). Thirty-six former Babel errors
+became native Advice/Warning-only diagnostics; each diagnostic label was matched to its exact
+original function. Fifteen `memoSlots` observations changed. The audit found no unexplained
+attribution or candidate losses.
+
+All 26 production lint directives retained their statuses, IDs, and exit behavior. Both backends
+made the same single source edit on isolated full-input copies. This production-corpus result
+does not supersede the four synthetic-fixture native deltas documented above.
+
+The reusable [benchmark target](README.md#local-development) records timings, memory, transform
+counts, and row differences. Its `--audit-only` option rechecks an existing report using the
+recorded manifest and native diagnostics without repeating the timed workloads.
 
 ## 0.0.2 to 0.0.3
 

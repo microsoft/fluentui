@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/microsoft/fluentui/master/tools/react-compiler-analyzer/rca.analyze.schema.json",
   "title": "React Compiler Analyzer analyze output",
-  "description": "SchemaVersion 3 analysis evidence emitted by analyze --format json. Statistics are not emitted-code evidence.",
+  "description": "SchemaVersion 4 Oxc analysis evidence emitted by analyze --format json. In-memory synthetic output statistics are not consumer emitted-code evidence.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -19,7 +19,7 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": 3
+      "const": 4
     },
     "tool": {
       "const": "react-compiler-analyzer"
@@ -63,25 +63,51 @@
       "additionalProperties": false,
       "required": [
         "backend",
-        "babelVersion",
         "compilerVersion",
+        "parserVersion",
         "mode",
-        "parserPlugins",
+        "jsx",
+        "outputMode",
+        "sourcemap",
         "noEmit",
         "panicThreshold",
+        "reportDiagnostics",
         "target",
-        "suppressionRules"
+        "suppressionRules",
+        "gating"
       ],
       "properties": {
-        "backend": { "const": "babel" },
-        "babelVersion": { "type": "string", "minLength": 1 },
-        "compilerVersion": { "type": "string", "minLength": 1 },
+        "backend": { "const": "oxc" },
+        "compilerVersion": {
+          "type": "string",
+          "minLength": 1,
+          "description": "oxc-transform-react port package version, not an independently measured upstream React Compiler version."
+        },
+        "parserVersion": { "type": "string", "minLength": 1 },
         "mode": { "enum": ["infer", "annotation", "all"] },
-        "parserPlugins": { "type": "array", "items": { "type": "string" } },
-        "noEmit": { "const": true },
+        "jsx": { "const": "preserve" },
+        "outputMode": { "const": "client" },
+        "sourcemap": {
+          "const": true,
+          "description": "Generated/source provenance maps are used in memory for verified function attribution."
+        },
+        "noEmit": {
+          "const": false,
+          "description": "Synthetic gated output exists only in memory. Analysis never writes transformed source."
+        },
         "panicThreshold": { "const": "none" },
-        "target": { "const": "compiler-default" },
-        "suppressionRules": { "const": "compiler-default" }
+        "reportDiagnostics": { "const": true },
+        "target": { "const": "19" },
+        "suppressionRules": { "const": "compiler-default" },
+        "gating": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "importSpecifierName"],
+          "properties": {
+            "source": { "const": "__rca_gate__" },
+            "importSpecifierName": { "const": "__rcaGate" }
+          }
+        }
       }
     },
     "nonNegativeInteger": {
@@ -146,25 +172,9 @@
     "memoStats": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["memoSlots", "memoBlocks", "memoValues", "prunedMemoBlocks", "prunedMemoValues"],
+      "required": ["memoSlots"],
       "properties": {
         "memoSlots": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "memoBlocks": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "memoValues": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "prunedMemoBlocks": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "prunedMemoValues": {
           "type": ["integer", "null"],
           "minimum": 0
         }

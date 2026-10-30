@@ -1,7 +1,7 @@
 import { mkdtempSync, readFileSync, cpSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
-import { parseSync } from '@babel/core';
+import { testRoot as tmpdir } from './helpers/test-root';
+import { parseSync } from 'oxc-parser';
 
 import { compileFile } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
@@ -471,13 +471,7 @@ describe("applyAnnotations — 'all-safe' mode", () => {
         functionsBailedOut: 1,
       });
       const modified = readFileSync(filePath, 'utf-8');
-      expect(() =>
-        parseSync(modified, {
-          babelrc: false,
-          configFile: false,
-          parserOpts: { plugins: ['typescript', 'jsx'] },
-        }),
-      ).not.toThrow();
+      expect(parseSync(filePath, modified, { showSemanticErrors: true }).errors).toEqual([]);
       expect(modified).toContain('return <div>{store.getState().value}</div>; }');
 
       const recompiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false);
@@ -517,14 +511,7 @@ describe("applyAnnotations — 'all-safe' mode", () => {
         expect(comment).toContain('foo');
         expect(comment).toContain('bar');
         expect(comment).not.toMatch(/[\r\u2028\u2029]/);
-        expect(() =>
-          parseSync(modified, {
-            babelrc: false,
-            configFile: false,
-            sourceType: 'module',
-            parserOpts: { plugins: ['typescript', 'jsx'] },
-          }),
-        ).not.toThrow();
+        expect(parseSync(filePath, modified, { showSemanticErrors: true }).errors).toEqual([]);
       }
     },
   );

@@ -161,4 +161,38 @@ export const fixtures: Fixture[] = [
     ),
     gated,
   })),
+  fixture(
+    'outlined-closure',
+    `import { useState } from 'react';
+    declare function canUseDOM(): boolean;
+    const cache = new Map<unknown, unknown>();
+    export function createLazy(factory: () => Promise<unknown>) {
+      const Cached = () => {
+        const [resolved] = useState(() => (canUseDOM() ? cache.get(factory) : undefined));
+        return resolved ? <div /> : null;
+      };
+      Cached.import = factory;
+      return Cached;
+    }`,
+    'valid',
+    'absent',
+    'createLazy',
+  ),
+  fixture(
+    'outlined-closure-declaration-control',
+    `import { useState } from 'react';
+    declare function canUseDOM(): boolean;
+    const cache = new Map<unknown, unknown>();
+    export function createLazy(factory: () => Promise<unknown>) {
+      function Cached() {
+        const [resolved] = useState(() => (canUseDOM() ? cache.get(factory) : undefined));
+        return resolved ? <div /> : null;
+      }
+      Cached.import = factory;
+      return Cached;
+    }`,
+    'valid',
+    'absent',
+    'createLazy',
+  ),
 ];

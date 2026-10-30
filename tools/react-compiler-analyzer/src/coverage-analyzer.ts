@@ -7,7 +7,7 @@ import {
 import type { FunctionAnalysis } from './types';
 
 export function isParseError(error: Error): boolean {
-  return 'code' in error && error.code === 'BABEL_PARSE_ERROR';
+  return 'code' in error && error.code === 'RCA_PARSE_ERROR';
 }
 
 export function deriveCompilerAnalysis(

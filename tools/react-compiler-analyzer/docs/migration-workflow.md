@@ -22,8 +22,9 @@ Review errors, parse failures, and manual memo candidates separately. A compiler
 with `useMemo`, `useCallback`, or `React.memo` is an inventory item, not a recommendation to remove
 those APIs. A custom `React.memo` comparator needs its own behavior review.
 
-If your build enables extra Babel syntax, pass matching `--parser-plugin` options before comparing
-coverage. Otherwise you may be measuring a smaller scope than your build processes.
+RCA uses Oxc's native grammar selected by file extension; Babel parser plugins are not configurable.
+Flow or unsupported proposal syntax is reported as unparseable rather than silently omitted. Compare
+the analyzed file set with your build when it accepts syntax outside Oxc's supported grammar.
 
 ## Adopt annotation mode gradually
 
@@ -79,7 +80,9 @@ react-compiler-analyzer analyze ./src --format json \
 
 A finding's location is the risk location, not necessarily the directive location. Audit by
 containing function or file rather than subtracting directive and finding line numbers.
-With `resolveWrappers: true`, this also covers risks reached through first-party helpers.
+When a leaf risk rule is enabled, wrapper resolution is on by default and this also covers risks
+reached through first-party helpers. Set `resolveWrappers: false` to opt out. Inspect resolver
+diagnostics for unresolved first-party imports before treating an empty report as complete.
 
 Use the same risk config that motivated the original opt-outs. A narrower config will find fewer
 risks. Files with no findings still need review because these checks are not exhaustive. `lint`
@@ -99,7 +102,7 @@ To revisit historical justification comments, run:
 react-compiler-analyzer lint ./src --mode annotation --revalidate-justified
 ```
 
-Both memo directive kinds are probed individually against Babel in the selected mode. Justified
+Both memo directive kinds are probed individually against Oxc in the selected mode. Justified
 directives remain untouched even with `--fix`; redundant, broken, or conflicting findings fail
 lint for manual review. This does not prove a guard is removable in a native or different consumer
 build, or validate its rationale. File-level directives remain preserved.
@@ -129,5 +132,10 @@ react-compiler-analyzer analyze ./src --mode infer --annotate all-safe --dry-run
 Review `--fix` diffs rather than applying them blindly. A justified directive is deliberately
 retained, and parse/compiler failures cannot be repaired by directive edits. After migration,
 continue to run your application's tests and measure behavior and performance.
+
+The Oxc port can accept or reject different functions from Babel and can produce different emitted
+cache layouts. The comparison harness records those differences separately; it is not a compiler
+parity guarantee. Treat changed lint statuses and source edits as review signals, and validate any
+guard change against the compiler and application build that will ship.
 
 When upgrading the analyzer itself, consult the [version migration guide](../MIGRATION.md).

@@ -3,7 +3,7 @@ import yargs from 'yargs';
 import { createAnalyzeCommand } from './commands/analyze';
 import { createInitCommand } from './commands/init';
 import { createLintCommand } from './commands/lint';
-import { CliError } from './commands/shared';
+import { CliError, rejectRemovedParserOptions } from './commands/shared';
 import { loadRcaConfig } from './config';
 
 const configOption = {
@@ -20,6 +20,7 @@ export interface BootstrapArgs {
 
 /** Parse command-independent arguments before configured command builders are created. */
 export function parseBootstrapArgs(args: string[]): BootstrapArgs {
+  rejectRemovedParserOptions(args);
   const parser = yargs(args)
     .exitProcess(false)
     .help(false)

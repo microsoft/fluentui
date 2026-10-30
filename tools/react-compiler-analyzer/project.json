@@ -5,6 +5,23 @@
   "projectType": "library",
   "tags": ["platform:node", "tools"],
   "targets": {
+    "verify-installed": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node tests/verify-installed.mjs"
+      }
+    },
+    "benchmark": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node tests/benchmark.mjs"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{projectRoot}/dist"],

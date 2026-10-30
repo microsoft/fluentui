@@ -40,7 +40,6 @@ export interface SharedArgv {
   mode: CompilationMode;
   format: OutputFormat;
   'strict-paths': boolean;
-  'parser-plugin': string[];
 }
 
 export const DEFAULT_EXCLUDE = [
@@ -56,6 +55,19 @@ export const DEFAULT_EXCLUDE = [
   '**/*.e2e.*',
   '**/e2e/**',
 ];
+
+export function rejectRemovedParserOptions(args: string[]): void {
+  for (const arg of args) {
+    if (arg === '--') {
+      break;
+    }
+    if (/^--(?:parser-plugin|parser-plugins|parserPlugin|parserPlugins)(?:=|$)/.test(arg)) {
+      throw new CliError(
+        '--parser-plugin was removed. Oxc selects native TypeScript/JSX grammar by file extension; remove parser overrides. Babel-only proposals and Flow are unsupported.',
+      );
+    }
+  }
+}
 
 /**
  * Add shared CLI options common to all subcommands.
@@ -101,13 +113,6 @@ export function sharedOptions<T>(yarg: Argv<T>, config: RcaConfig = {}) {
       type: 'boolean' as const,
       describe: 'Fail instead of warning when a given path does not exist',
       default: config.strictPaths ?? false,
-    })
-    .option('parser-plugin', {
-      type: 'string' as const,
-      array: true as const,
-      describe:
-        "Extra Babel parser plugins, e.g. --parser-plugin decorators-legacy. Match your build's parser config, otherwise files it compiles are reported as unparseable.",
-      default: config.parserPlugins ?? ([] as string[]),
     });
 }
 
@@ -163,56 +168,6 @@ export function validatePaths(rawPaths: string[], options: { strict?: boolean } 
 export function validateConcurrency(concurrency: number): void {
   if (!Number.isInteger(concurrency) || concurrency < 1) {
     throw new CliError('--concurrency must be a positive integer');
-  }
-}
-
-/**
- * Babel parser plugin names accepted by `--parser-plugin`.
- *
- * Babel silently ignores unrecognized plugin names, so a typo would produce a run that looks
- * successful and analyzed nothing extra. This list exists purely to turn that into an error;
- * add to it if Babel gains a plugin you need.
- */
-const KNOWN_PARSER_PLUGINS = new Set([
-  'asyncDoExpressions',
-  'decimal',
-  'decorators',
-  'decorators-legacy',
-  'decoratorAutoAccessors',
-  'deferredImportEvaluation',
-  'destructuringPrivate',
-  'doExpressions',
-  'explicitResourceManagement',
-  'exportDefaultFrom',
-  'flow',
-  'flowComments',
-  'functionBind',
-  'functionSent',
-  'importAssertions',
-  'importAttributes',
-  'importReflection',
-  'jsx',
-  'moduleBlocks',
-  'moduleStringNames',
-  'optionalChainingAssign',
-  'partialApplication',
-  'pipelineOperator',
-  'placeholders',
-  'recordAndTuple',
-  'sourcePhaseImports',
-  'throwExpressions',
-  'typescript',
-  'v8intrinsic',
-]);
-
-export function validateParserPlugins(plugins: string[] = []): void {
-  const unknown = plugins.filter(p => !KNOWN_PARSER_PLUGINS.has(p));
-  if (unknown.length > 0) {
-    throw new CliError(
-      `unknown --parser-plugin value(s): ${unknown.join(', ')}. ` +
-        `Babel ignores unrecognized plugin names silently, so this would have analyzed nothing extra. ` +
-        `Known plugins: ${[...KNOWN_PARSER_PLUGINS].sort().join(', ')}`,
-    );
   }
 }
 
@@ -367,20 +322,15 @@ export interface ReportSpec {
 export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<number> {
   const resolvedPaths = validatePaths(argv.paths, { strict: argv['strict-paths'] }).sort(compareText);
   validateConcurrency(argv.concurrency);
-  validateParserPlugins(argv['parser-plugin']);
 
   return withReportOutput(
     argv.format,
     spec.title,
     async f => {
       if (argv.format !== 'json') {
-        const profile = createAnalysisProfile(argv.mode, argv['parser-plugin']);
+        const profile = createAnalysisProfile(argv.mode);
         f.line(
-          `Backend: Babel ${profile.babelVersion}; React Compiler ${profile.compilerVersion}; mode=${
-            profile.mode
-          }; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=${
-            profile.parserPlugins.join(', ') || '(none extra)'
-          }.`,
+          `Backend: Oxc ${profile.compilerVersion}; parser ${profile.parserVersion}; mode=${profile.mode}; jsx=preserve; outputMode=client; noEmit=false (in-memory only); panicThreshold=none; target=19; suppression rules=compiler-default; synthetic gating=${profile.gating.source}/${profile.gating.importSpecifierName}.`,
         );
         f.line(
           'Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.',
