@@ -98,11 +98,17 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
   const yearRows = getCalendarPickerRows(yearCells, calendarYearColumns);
   const range = { fromYear, toYear };
   const rangeLabel = `${formatYear(fromYear)} - ${formatYear(toYear)}`;
-  const [gridSlot, getCell] = useCalendarPickerGrid(
+  const [gridSlot, getCell, tabStop, activeCellIndex] = useCalendarPickerGrid(
     grid,
     rangeLabel,
     index => !isYearDisabled(fromYear + index),
     (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
+    {
+      columns: calendarYearColumns,
+      allFocusable,
+      defaultTabStop: focusYear >= fromYear && focusYear <= toYear ? focusYear - fromYear : undefined,
+      resetKey: `${fromYear}:${calendarYearColumns}`,
+    },
   );
   const getYearCellProps: CalendarYearState['getYearCellProps'] = year => {
     const cellProps = getCalendarPickerCellProps(
@@ -110,7 +116,8 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
       year.isDisabled,
       year.isSelected,
       year.isCurrent,
-      year.isNavigated,
+      year.year - fromYear === tabStop,
+      year.year - fromYear === activeCellIndex,
     );
     const overrides = props.getCellProps?.(year);
     return {
@@ -119,7 +126,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
     };
   };
   const getYearRowProps: CalendarYearState['getYearRowProps'] = row => ({
-    root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
+    root: mergeProps({ role: 'row' }, props.getRowProps?.(row).root),
   });
 
   const prevDisabled = minYear !== undefined && fromYear <= minYear;

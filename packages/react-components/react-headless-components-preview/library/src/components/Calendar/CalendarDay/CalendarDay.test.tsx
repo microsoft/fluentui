@@ -356,9 +356,9 @@ describe('CalendarDay', () => {
   it('marks the navigated day as the initial entry point', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('table')).toHaveAttribute('focusgroup', 'grid rowflow');
-    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 18, 2020');
-    expect(container.querySelector('td[focusgroupstart]')).toHaveAttribute('tabindex', '0');
+    expect(container.querySelector('table')).not.toHaveAttribute('focusgroup');
+    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 18, 2020');
+    expect(container.querySelector('td[tabindex="0"]')).toHaveAttribute('tabindex', '0');
     expect(container.querySelector('table[aria-activedescendant]')).toBeNull();
   });
 
@@ -409,7 +409,7 @@ describe('CalendarDay', () => {
     expect(nextMonthRef.current).toBe(getByTitle('Next month October'));
   });
 
-  it('updates the focusgroup start without stealing focus when the navigated date changes', () => {
+  it('updates the roving tab stop without stealing focus when the navigated date changes', () => {
     const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
     const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
     act(() => remembered.focus());
@@ -417,9 +417,9 @@ describe('CalendarDay', () => {
     rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
 
     expect(remembered).toHaveFocus();
-    expect(container.querySelectorAll('td[focusgroupstart]')).toHaveLength(1);
-    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 20, 2020');
-    expect(remembered).toHaveAttribute('tabindex', '0');
+    expect(container.querySelectorAll('td[tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 20, 2020');
+    expect(remembered).toHaveAttribute('tabindex', '-1');
   });
 
   it('renders its rows without motion wrappers', () => {
@@ -539,6 +539,33 @@ describe('CalendarDay', () => {
       expect(onNavigate).not.toHaveBeenCalled();
     });
 
+    it.each([
+      ['ArrowDown', 'September 19, 2020', [new Date(2020, 8, 26), new Date(2020, 9, 3)], new Date(2020, 9, 10)],
+      ['ArrowUp', 'September 12, 2020', [new Date(2020, 8, 5)], new Date(2020, 7, 29)],
+    ] as const)(
+      'keeps the weekday when %s passes restricted days in the column',
+      (key, label, restrictedDates, expected) => {
+        const { getByRole, onNavigate } = renderDay({ restrictedDates: [...restrictedDates] });
+        const cell = getByRole('button', { name: label }).closest<HTMLElement>('[role="gridcell"]')!;
+        act(() => cell.focus());
+        expect(fireEvent.keyDown(cell, { key })).toBe(false);
+        expect(onNavigate).toHaveBeenCalledTimes(1);
+        expect(onNavigate.mock.calls[0][1].date).toEqual(expected);
+      },
+    );
+
+    it('does not move vertically past a minimum date', () => {
+      const { getByRole, onNavigate } = renderDay({
+        minDate: new Date(2020, 8, 1),
+        restrictedDates: [new Date(2020, 8, 5)],
+      });
+      const cell = getByRole('button', { name: 'September 12, 2020' }).closest<HTMLElement>('[role="gridcell"]')!;
+      act(() => cell.focus());
+      expect(fireEvent.keyDown(cell, { key: 'ArrowUp' })).toBe(false);
+      expect(cell).toHaveFocus();
+      expect(onNavigate).not.toHaveBeenCalled();
+    });
+
     it('keeps a restricted navigated date enrolled in an allFocusable single-week grid', () => {
       const { getByRole, onSelect, onNavigate } = renderDay({
         allFocusable: true,
@@ -629,8 +656,7 @@ describe('CalendarDay', () => {
     });
   });
 
-  // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
-  describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
+  describe('keyboard navigation', () => {
     it('provides a single Tab entry point', () => {
       const { getByRole, cells } = renderDay();
       const grid = getByRole('grid');

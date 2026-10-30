@@ -33,8 +33,10 @@ export const onCalendarEnterKeyDown =
   <E extends HTMLElement>(callback: (event: React.KeyboardEvent<E>) => void) =>
   (event: React.KeyboardEvent<E>): void => {
     if (event.key === Enter) {
-      event.preventDefault();
       callback(event);
+      if (!event.isDefaultPrevented()) {
+        event.preventDefault();
+      }
     }
   };
 

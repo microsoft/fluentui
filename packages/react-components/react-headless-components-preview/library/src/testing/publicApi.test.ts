@@ -26,6 +26,7 @@ const ADDITIONAL_EXPORTS: Record<string, string[]> = {
   'avatar-group': ['partitionAvatarGroupItems'],
   calendar: ['calendarFormatters', 'createCalendarDateTimeFormatter'],
   combobox: ['useComboboxFilter'],
+  'date-picker': ['defaultFormatDate', 'defaultParseDate'],
   field: ['useFieldControlProps'],
   link: ['linkContextDefaultValue'],
   overflow: [
