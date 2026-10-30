@@ -5,11 +5,19 @@
 | Type              | Tool                         | Command                                         | Purpose                          |
 | ----------------- | ---------------------------- | ----------------------------------------------- | -------------------------------- |
 | Unit              | Jest + React Testing Library | `yarn nx run <project>:test`                    | Component behavior, hooks, utils |
-| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)       |
+| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot capture               |
 | E2E               | Cypress                      | `yarn nx run react-components:e2e`              | Integration flows                |
 | SSR               | Custom                       | `yarn nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety     |
 | Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
+
+## Capturing v9 Visual Regression Screenshots Locally
+
+With Playwright's Chromium installed, run `yarn nx run vr-tests-react-components:test-vr` to build the VR Storybook and capture screenshots in
+`apps/vr-tests-react-components/dist/screenshots`. The VR Storybook prefers experimental CSS Module style hooks
+where available, falls back to Griffel hooks otherwise, and uses headless Fluent icons.
+
+This target captures screenshots only; a successful run does not assert visual parity against a baseline.
 
 ## Writing Unit Tests
 
