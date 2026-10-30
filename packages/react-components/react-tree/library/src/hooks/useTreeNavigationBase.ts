@@ -71,7 +71,8 @@ function isFocusableDOM(element: HTMLElement): boolean {
       current.getAttribute('aria-hidden') === 'true' ||
       getComputedStyle(current)?.display === 'none' ||
       // The content of a closed details element is not rendered, except for its first summary
-      (current.tagName === 'DETAILS' &&
+      (child &&
+        current.tagName === 'DETAILS' &&
         !current.hasAttribute('open') &&
         child !== current.querySelector(':scope > summary'))
     ) {
