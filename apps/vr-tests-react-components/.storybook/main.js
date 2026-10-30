@@ -1,13 +1,19 @@
 // @ts-check
 
 const path = require('path');
-
-const { registerTsPaths, registerRules, rules, loadWorkspaceAddon } = require('@fluentui/scripts-storybook');
+const { getIconStoryPatterns, isolateIconBuildCache } = require('./icon-sizing');
+const {
+  configureReactIcons,
+  registerTsPaths,
+  registerRules,
+  rules,
+  loadWorkspaceAddon,
+} = require('@fluentui/scripts-storybook');
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 
-module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
+module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath })],
-  stories: ['../src/**/*.stories.tsx'],
+  stories: getIconStoryPatterns(),
   core: {
     disableTelemetry: true,
   },
@@ -26,6 +32,9 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
   webpackFinal(config) {
     registerTsPaths({ config, configFile: tsConfigPath });
     registerRules({ config, rules: [rules.swcRule, rules.griffelRule] });
+    configureReactIcons({ config });
+
+    isolateIconBuildCache(config);
 
     return config;
   },

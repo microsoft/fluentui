@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Input } from '@fluentui/react-input';
-import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
+import { SearchRegular, DismissRegular, CalendarColor } from '@fluentui/react-icons';
 import { FluentProvider } from '@fluentui/react-provider';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL } from '../../utilities';
@@ -41,6 +41,8 @@ export const ContentAfter = () => (
 ContentAfter.storyName = 'contentAfter';
 
 export const ContentAfterRTL = getStoryVariant(ContentAfter, RTL);
+
+export const MixedIconRenderers = () => <Input contentBefore={<CalendarColor />} contentAfter={<SearchRegular />} />;
 
 export const WithAppearanceOverride = () => (
   <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
