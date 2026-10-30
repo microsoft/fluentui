@@ -59,13 +59,13 @@ export const OverflowMenu: React.FC<{
   const displayLabel = title === '' ? `+${menuList.length} items` : `+${menuList.length} ${title}`;
 
   return (
-    <Menu>
+    <Menu checkedValues={{ legends: checkedLegends }}>
       <MenuTrigger disableButtonEnhancement>
         <MenuButton ref={ref}>{displayLabel}</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList aria-label="Legends" checkedValues={{ legends: checkedLegends }}>
+        <MenuList aria-label="Legends">
           {menuList}
         </MenuList>
       </MenuPopover>
