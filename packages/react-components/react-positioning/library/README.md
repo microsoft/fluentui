@@ -98,8 +98,12 @@ yarn nx run react-positioning:benchmark
 
 The bundle gate runs the repository's monosize/webpack measurement for the existing
 `bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`, and rejects an actual
-minified output larger than **15,000 bytes**. This is an absolute, uncompressed limit; gzip
+minified output larger than **12,000 bytes**. This is an absolute, uncompressed limit; gzip
 is reported separately. Gate tests cover the inclusive limit and invalid or stale measurements.
+
+The package is compiled to ES2019, so the engine avoids optional chaining and nullish coalescing
+in hot paths (they are lowered to verbose helpers), prefers expression-bodied helpers, and keeps
+DOM traversal in one place (`src/engine/platform.ts`) that the scroll-parent listing reuses.
 
 The raster target extracts the unchanged lower-PR source from
 `788e3b739fe79246a2f8850d1c575cf4018fd744` into a temporary directory, then runs the same
@@ -116,18 +120,25 @@ browser and compares against the unchanged Floating UI implementation from upstr
 It mounts only one engine at a time, warms up both engines, randomizes workload order, and randomizes
 which engine runs first in every pair, including initialization. The inactive engine is unmounted
 and its listeners are disposed before timing, so global events cannot contaminate the other
-engine's samples. It records paired initialization, imperative, window-scroll, and window-resize
-completion times. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
+engine's samples. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
 autosizing. It measures completion through the actual `usePositioning` end-event path; setup is
 excluded from update timings, while initialization intentionally includes mount-to-all-positioned.
-Older reports from the simultaneous-engine harness are not valid evidence for comparative ratios;
-use reports with `metadata.activeEngineCount: 1`.
 
-The target reports per-workload median, p95, p10/p90, coefficient of variation, and paired
-replacement/oracle ratios. It enforces complete, finite, nonzero samples but intentionally has no
-machine-dependent performance pass/fail threshold. Run it on the same host/browser for meaningful
-comparisons; investigate workload-specific p95 or ratio regressions rather than relying only on
-an aggregate median. Set `POSITIONING_BENCH_SEED` to reproduce or vary the randomized order. The
-full samples and browser/machine metadata are written to
-`dist/positioning-perf/benchmark.json`; compare runs only with their recorded host and browser
-metadata in view.
+Every workload runs in two layouts:
+
+- `flat`: targets are fixed children of the body, the cheapest case for ancestor traversal.
+- `nested`: targets are 12 levels deep inside a scroll container and surfaces are portaled to the
+  end of the document, the common application shape. It exercises clipping, containing-block and
+  scroll-parent traversal, and its `scroll` workload dispatches element scroll events that reach
+  the managers through their scroll-parent listeners rather than the window listener.
+
+Each layout records paired initialization, imperative, scroll, and window-resize completion
+times. The script reports per-workload median, p95, p10/p90 and coefficient of variation for both
+engines, and the paired replacement/oracle ratios as a geometric mean with a seeded bootstrap 95%
+confidence interval (an interval entirely below 1 means the replacement is faster on that host).
+It enforces complete, finite, nonzero samples but intentionally has no machine-dependent
+performance pass/fail threshold. Run it on the same host/browser for meaningful comparisons.
+Set `POSITIONING_BENCH_SEED` to reproduce or vary the randomized order. The full samples,
+statistics and browser/machine metadata (including whether the engine had uncommitted changes)
+are written to `dist/positioning-perf/benchmark.json`, and a Markdown table for pull request
+descriptions to `dist/positioning-perf/summary.md`.

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { flushSync } from 'react-dom';
+import { createPortal, flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import type { PositioningImperativeRef, PositioningOptions } from './types';
 import { usePositioning as useReplacement } from './usePositioning';
@@ -8,22 +8,30 @@ import { usePositioning as useOracle } from '@positioning-oracle/usePositioning'
 
 const engines = ['oracle', 'replacement'] as const;
 type Engine = (typeof engines)[number];
+/**
+ * `flat`: targets are fixed children of the body, the cheapest DOM for ancestor walks.
+ * `nested`: targets sit 12 levels deep inside a scroll container, with the surfaces rendered at the end of the body
+ * like portals. This is the common application shape and exercises clipping, containing-block and scroll-parent
+ * traversal.
+ */
+const layouts = ['flat', 'nested'] as const;
+type Layout = (typeof layouts)[number];
 type Operation = 'imperative' | 'scroll' | 'resize';
-type Workload = 'initialize-24' | Operation;
+const operations: Operation[] = ['imperative', 'scroll', 'resize'];
+type Workload = `${Layout}/${'initialize-24' | Operation}`;
 
 const instanceCount = 24;
+const nestingDepth = 12;
 const warmupRounds = 5;
 const measuredRounds = 24;
-const initializationWarmups = 2;
-const measuredInitializations = 8;
+const initializationWarmups = 3;
+// Mounting dominates initialization and is bimodal on some hosts, so it needs more samples than updates
+const measuredInitializations = 16;
 const boundary = { x: 20, y: 20, width: 1240, height: 760 };
 
 type Sample = {
-  engine: Engine;
-  workload: Workload;
   round: number;
   startedAt: number;
-  expected: number;
   completedIds: Set<number>;
   latencies: number[];
   resolve: (result: SampleResult) => void;
@@ -31,10 +39,7 @@ type Sample = {
 type SampleResult = { round: number; batchMs: number; instanceMs: number[] };
 
 class PositioningBenchmarkTracker {
-  public results: Record<Engine, Record<Workload, SampleResult[]>> = {
-    oracle: { 'initialize-24': [], imperative: [], scroll: [], resize: [] },
-    replacement: { 'initialize-24': [], imperative: [], scroll: [], resize: [] },
-  };
+  public results: Record<Engine, Partial<Record<Workload, SampleResult[]>>> = { oracle: {}, replacement: {} };
   private active = new Map<Engine, Sample>();
   private browserWindow: Window | null = null;
 
@@ -42,36 +47,30 @@ class PositioningBenchmarkTracker {
     this.browserWindow = browserWindow;
   }
 
-  public now(): number {
+  public get window(): Window {
     if (!this.browserWindow) {
       throw new Error('Browser window not available');
     }
-    return this.browserWindow.performance.now();
+    return this.browserWindow;
   }
 
-  public get document(): Document {
-    if (!this.browserWindow) {
-      throw new Error('Browser window not available');
-    }
-    return this.browserWindow.document;
+  public now(): number {
+    return this.window.performance.now();
   }
 
   public begin(engine: Engine, workload: Workload, round: number, retain = true): Promise<SampleResult> {
     const startedAt = this.now();
     return new Promise((resolve, reject) => {
-      const timeout = this.browserWindow!.setTimeout(() => reject(new Error(`${engine} ${workload} timed out`)), 10000);
+      const timeout = this.window.setTimeout(() => reject(new Error(`${engine} ${workload} timed out`)), 10000);
       this.active.set(engine, {
-        engine,
-        workload,
         round,
         startedAt,
-        expected: instanceCount,
         completedIds: new Set(),
         latencies: [],
         resolve: result => {
-          this.browserWindow!.clearTimeout(timeout);
+          this.window.clearTimeout(timeout);
           if (retain) {
-            this.results[engine][workload].push(result);
+            (this.results[engine][workload] ??= []).push(result);
           }
           resolve(result);
         },
@@ -79,20 +78,10 @@ class PositioningBenchmarkTracker {
     });
   }
 
-  public dispatch(operation: 'scroll' | 'resize'): void {
-    if (!this.browserWindow) {
-      throw new Error('Browser window not available');
-    }
-    this.browserWindow.dispatchEvent(new Event(operation));
-  }
-
   public settleFrame(): Promise<void> {
-    if (!this.browserWindow) {
-      throw new Error('Browser window not available');
-    }
     return new Promise(resolve => {
-      this.browserWindow!.requestAnimationFrame(() => {
-        this.browserWindow!.requestAnimationFrame(() => resolve());
+      this.window.requestAnimationFrame(() => {
+        this.window.requestAnimationFrame(() => resolve());
       });
     });
   }
@@ -104,14 +93,9 @@ class PositioningBenchmarkTracker {
     }
     sample.completedIds.add(index);
     sample.latencies.push(this.now() - sample.startedAt);
-    if (sample.completedIds.size === sample.expected) {
+    if (sample.completedIds.size === instanceCount) {
       this.active.delete(engine);
-      const completedAt = this.now();
-      sample.resolve({
-        round: sample.round,
-        batchMs: completedAt - sample.startedAt,
-        instanceMs: sample.latencies,
-      });
+      sample.resolve({ round: sample.round, batchMs: this.now() - sample.startedAt, instanceMs: sample.latencies });
     }
   }
 }
@@ -142,13 +126,26 @@ function targetPosition(index: number, round: number) {
 /* eslint-disable @typescript-eslint/naming-convention */
 type PositionedItemProps = {
   engine: Engine;
+  layout: Layout;
   index: number;
   generation: number;
   tracker: PositioningBenchmarkTracker;
   refs: React.RefObject<Array<PositioningImperativeRef | null> | null>;
+  portal: HTMLElement;
 };
 
-function PositionedItem({ engine, index, generation, tracker, refs }: PositionedItemProps) {
+/** Wraps the children in `depth` unstyled blocks, the outermost being the scroll container that moves */
+function Nesting({ depth, children }: { depth: number; children: React.ReactNode }): React.ReactElement {
+  return depth ? (
+    <div style={{ paddingTop: 2 }}>
+      <Nesting depth={depth - 1}>{children}</Nesting>
+    </div>
+  ) : (
+    <>{children}</>
+  );
+}
+
+function PositionedItem({ engine, layout, index, generation, tracker, refs, portal }: PositionedItemProps) {
   const usePositioning = engine === 'oracle' ? useOracle : useReplacement;
   const setPositioningRef = React.useCallback(
     (value: PositioningImperativeRef | null) => {
@@ -164,27 +161,35 @@ function PositionedItem({ engine, index, generation, tracker, refs }: Positioned
   const position = targetPosition(index, generation);
   const hasArrow = index % 5 === 2 || index % 5 === 4;
   const size = index % 5 === 3 ? { width: 280, height: 180 } : { width: 120, height: 72 };
-  return (
-    <React.Fragment key={`${engine}-${index}-${generation}`}>
+  const anchor = `${engine}-${index}`;
+  const surface = (
+    <div ref={containerRef} data-bench-floating={anchor} style={{ width: size.width, height: size.height }}>
+      {hasArrow && <span ref={arrowRef} style={{ position: 'absolute', width: 8, height: 8 }} />}
+    </div>
+  );
+
+  return layout === 'flat' ? (
+    <>
       <button
         ref={targetRef}
-        data-bench-target={`${engine}-${index}`}
-        style={{
-          position: 'fixed',
-          left: position.left,
-          top: position.top,
-          width: 64,
-          height: 32,
-        }}
+        data-bench-anchor={anchor}
+        style={{ position: 'fixed', ...position, width: 64, height: 32 }}
       />
+      {surface}
+    </>
+  ) : (
+    <>
       <div
-        ref={containerRef}
-        data-bench-floating={`${engine}-${index}`}
-        style={{ width: size.width, height: size.height }}
+        data-bench-anchor={anchor}
+        style={{ position: 'fixed', ...position, width: 96, height: 72, overflow: 'auto', scrollbarWidth: 'none' }}
       >
-        {hasArrow && <span ref={arrowRef} style={{ position: 'absolute', width: 8, height: 8 }} />}
+        <Nesting depth={nestingDepth}>
+          <button ref={targetRef} style={{ width: 64, height: 32 }} />
+          <div style={{ height: 120 }} />
+        </Nesting>
       </div>
-    </React.Fragment>
+      {createPortal(surface, portal)}
+    </>
   );
 }
 
@@ -195,41 +200,30 @@ function BenchmarkHarness({
 }: {
   tracker: PositioningBenchmarkTracker;
   refs: Record<Engine, React.RefObject<Array<PositioningImperativeRef | null> | null>>;
-  controls: { show: (engine: Engine | null, generation: number) => void };
+  controls: { show: (active: { engine: Engine; layout: Layout; generation: number } | null) => void };
 }) {
-  const [active, setActive] = React.useState<{ engine: Engine; generation: number } | null>(null);
-  controls.show = (engine, generation) => flushSync(() => setActive(engine ? { engine, generation } : null));
+  const [active, setActive] = React.useState<{ engine: Engine; layout: Layout; generation: number } | null>(null);
+  const [portal, setPortal] = React.useState<HTMLElement | null>(null);
+  controls.show = next => flushSync(() => setActive(next));
   return (
     <div data-benchmark-root>
       {active &&
+        portal &&
         Array.from({ length: instanceCount }, (_, index) => (
           <PositionedItem
-            key={`${active.engine}-${index}-${active.generation}`}
+            key={`${active.engine}-${active.layout}-${index}-${active.generation}`}
             engine={active.engine}
+            layout={active.layout}
             index={index}
             generation={active.generation}
             tracker={tracker}
             refs={refs[active.engine]}
+            portal={portal}
           />
         ))}
+      <div data-bench-portal ref={setPortal} />
     </div>
   );
-}
-
-function summarize(values: number[]) {
-  const sorted = [...values].sort((a, b) => a - b);
-  const percentile = (fraction: number) => sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * fraction) - 1)];
-  const median = percentile(0.5);
-  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
-  const variance = values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length;
-  return {
-    count: values.length,
-    medianMs: median,
-    p95Ms: percentile(0.95),
-    p10Ms: percentile(0.1),
-    p90Ms: percentile(0.9),
-    coefficientOfVariation: mean ? Math.sqrt(variance) / mean : 0,
-  };
 }
 
 function randomGenerator(seed: number) {
@@ -240,7 +234,7 @@ function randomGenerator(seed: number) {
   };
 }
 
-function shuffle<T>(values: T[], random: () => number): T[] {
+function shuffle<T>(values: readonly T[], random: () => number): T[] {
   const result = [...values];
   for (let index = result.length - 1; index > 0; index--) {
     const other = Math.floor(random() * (index + 1));
@@ -253,7 +247,7 @@ function shuffle<T>(values: T[], random: () => number): T[] {
 
 describe('usePositioning end-to-end performance benchmark', () => {
   it('compares the immutable Floating UI oracle and replacement in randomized paired browser workloads', function () {
-    this.timeout(180000);
+    this.timeout(360000);
     cy.viewport(1280, 800);
     const tracker = new PositioningBenchmarkTracker();
     const refs = {
@@ -262,9 +256,10 @@ describe('usePositioning end-to-end performance benchmark', () => {
     };
     refs.oracle.current = [];
     refs.replacement.current = [];
-    const random = randomGenerator(Number(Cypress.env('positioningBenchSeed')) || 36870);
+    const seed = Number(Cypress.env('positioningBenchSeed')) || 36870;
+    const random = randomGenerator(seed);
     const controls = {
-      show: (_engine: Engine | null, _generation: number) => {
+      show: (_active: { engine: Engine; layout: Layout; generation: number } | null) => {
         throw new Error('Benchmark harness is not mounted');
       },
     };
@@ -273,102 +268,89 @@ describe('usePositioning end-to-end performance benchmark', () => {
       tracker.setWindow(browserWindow);
     });
     mount(<BenchmarkHarness tracker={tracker} refs={refs} controls={controls} />);
-    cy.get('[data-benchmark-root]').should('exist');
-    cy.then({ timeout: 180000 }, async () => {
-      const initialize = async (engine: Engine, round: number, retain: boolean) => {
-        controls.show(null, round);
+    cy.get('[data-bench-portal]').should('exist');
+    cy.then({ timeout: 360000 }, async () => {
+      const doc = tracker.window.document;
+      const initialize = async (engine: Engine, layout: Layout, round: number, retain: boolean) => {
+        controls.show(null);
         await tracker.settleFrame();
-        const wait = tracker.begin(engine, 'initialize-24', round, retain);
-        controls.show(engine, round);
+        const wait = tracker.begin(engine, `${layout}/initialize-24`, round, retain);
+        controls.show({ engine, layout, generation: round });
         await wait;
-        expect(tracker.document.querySelectorAll('[data-bench-floating]')).to.have.length(instanceCount);
+        expect(doc.querySelectorAll('[data-bench-floating]')).to.have.length(instanceCount);
         const other = engine === 'oracle' ? 'replacement' : 'oracle';
-        expect(tracker.document.querySelectorAll(`[data-bench-target^="${other}-"]`)).to.have.length(0);
+        expect(doc.querySelectorAll(`[data-bench-anchor^="${other}-"]`)).to.have.length(0);
         await tracker.settleFrame();
       };
-      for (let round = 0; round < initializationWarmups + measuredInitializations; round++) {
-        for (const engine of shuffle([...engines], random)) {
-          await initialize(engine, round, round >= initializationWarmups);
-        }
-      }
 
-      const runOperation = async (operation: Operation, round: number, retain: boolean) => {
-        for (const engine of shuffle([...engines], random)) {
-          await initialize(engine, round, false);
-          for (let index = 0; index < instanceCount; index++) {
-            const target = tracker.document.querySelector<HTMLElement>(`[data-bench-target="${engine}-${index}"]`);
+      const runOperation = async (layout: Layout, operation: Operation, round: number, retain: boolean) => {
+        for (const engine of shuffle(engines, random)) {
+          await initialize(engine, layout, round, false);
+          const anchors = Array.from({ length: instanceCount }, (_, index) => {
+            const anchor = doc.querySelector<HTMLElement>(`[data-bench-anchor="${engine}-${index}"]`)!;
             const point = targetPosition(index, round + 1);
-            target!.style.left = `${point.left}px`;
-            target!.style.top = `${point.top}px`;
-          }
-          const wait = tracker.begin(engine, operation, round, retain);
+            anchor.style.left = `${point.left}px`;
+            anchor.style.top = `${point.top}px`;
+            return anchor;
+          });
+          const wait = tracker.begin(engine, `${layout}/${operation}`, round, retain);
           if (operation === 'imperative') {
             refs[engine].current!.forEach(ref => ref?.updatePosition());
+          } else if (operation === 'scroll' && layout === 'nested') {
+            // Element scrolling reaches the managers through their scroll-parent listeners
+            anchors.forEach(anchor => anchor.dispatchEvent(new Event('scroll')));
           } else {
-            tracker.dispatch(operation);
+            tracker.window.dispatchEvent(new Event(operation));
           }
           await wait;
           await tracker.settleFrame();
         }
       };
 
-      const operations: Operation[] = ['imperative', 'scroll', 'resize'];
-      for (let round = 0; round < warmupRounds; round++) {
-        for (const operation of shuffle(operations, random)) {
-          await runOperation(operation, round, false);
+      for (let round = 0; round < initializationWarmups + measuredInitializations; round++) {
+        for (const layout of shuffle(layouts, random)) {
+          for (const engine of shuffle(engines, random)) {
+            await initialize(engine, layout, round, round >= initializationWarmups);
+          }
         }
       }
-      for (let round = 0; round < measuredRounds; round++) {
-        for (const operation of shuffle(operations, random)) {
-          await runOperation(operation, round + warmupRounds, true);
+      for (let round = 0; round < warmupRounds + measuredRounds; round++) {
+        for (const [layout, operation] of shuffle(
+          layouts.flatMap(name => operations.map(operationName => [name, operationName] as const)),
+          random,
+        )) {
+          await runOperation(layout, operation, round, round >= warmupRounds);
         }
       }
 
-      controls.show(null, 0);
+      controls.show(null);
+      const browserWindow = tracker.window;
       benchmarkReport = {
-        seed: Number(Cypress.env('positioningBenchSeed')) || 36870,
+        seed,
         generatedAt: new Date().toISOString(),
         metadata: {
           activeEngineCount: 1,
-          userAgent: tracker.document.defaultView!.navigator.userAgent,
-          hardwareConcurrency: tracker.document.defaultView!.navigator.hardwareConcurrency,
-          devicePixelRatio: tracker.document.defaultView!.devicePixelRatio,
-          viewport: {
-            width: tracker.document.defaultView!.innerWidth,
-            height: tracker.document.defaultView!.innerHeight,
-          },
+          instanceCount,
+          nestingDepth,
+          userAgent: browserWindow.navigator.userAgent,
+          hardwareConcurrency: browserWindow.navigator.hardwareConcurrency,
+          devicePixelRatio: browserWindow.devicePixelRatio,
+          viewport: { width: browserWindow.innerWidth, height: browserWindow.innerHeight },
         },
         baseline: String(Cypress.env('positioningBenchBaseline')),
+        // Raw paired samples, statistics are computed by scripts/positioning-benchmark.mjs
         workloads: Object.fromEntries(
-          (['initialize-24', ...operations] as Workload[]).map(workload => {
-            const oracle = tracker.results.oracle[workload];
-            const replacement = tracker.results.replacement[workload];
-            if (oracle.length !== replacement.length || !oracle.length) {
-              throw new Error(`${workload}: paired samples are missing or mismatched`);
-            }
-            const oracleBatch = oracle.map(sample => sample.batchMs);
-            const replacementBatch = replacement.map(sample => sample.batchMs);
-            const pairedRatios = replacementBatch.map((value, index) => value / oracleBatch[index]);
-            return [
-              workload,
-              {
-                oracle: {
-                  batch: summarize(oracleBatch),
-                  perInstance: summarize(oracle.flatMap(sample => sample.instanceMs)),
-                },
-                replacement: {
-                  batch: summarize(replacementBatch),
-                  perInstance: summarize(replacement.flatMap(sample => sample.instanceMs)),
-                },
-                pairedReplacementOverOracle: summarize(pairedRatios),
-                samples: {
-                  oracle,
-                  replacement,
-                  replacementOverOracle: pairedRatios,
-                },
-              },
-            ];
-          }),
+          layouts.flatMap(layout =>
+            (['initialize-24', ...operations] as const).map(name => {
+              const workload: Workload = `${layout}/${name}`;
+              const oracle = tracker.results.oracle[workload] ?? [];
+              const replacement = tracker.results.replacement[workload] ?? [];
+              if (oracle.length !== replacement.length || !oracle.length) {
+                throw new Error(`${workload}: paired samples are missing or mismatched`);
+              }
+              return [workload, { samples: { oracle, replacement } }];
+            }),
+          ),
         ),
       };
       return benchmarkReport;

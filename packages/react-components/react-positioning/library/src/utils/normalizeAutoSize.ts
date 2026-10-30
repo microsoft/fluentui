@@ -15,21 +15,8 @@ export const normalizeAutoSize = (autoSize?: PositioningOptions['autoSize']): No
     : false;
 };
 
-export function getAutoSizeDimensions(autoSize?: PositioningOptions['autoSize']): ('width' | 'height')[] {
-  switch (autoSize) {
-    case 'always':
-    case true:
-      return ['width', 'height'];
-
-    case 'width-always':
-    case 'width':
-      return ['width'];
-
-    case 'height-always':
-    case 'height':
-      return ['height'];
-
-    default:
-      return [];
-  }
-}
+export const getAutoSizeDimensions = (autoSize?: PositioningOptions['autoSize']): ('width' | 'height')[] => {
+  // 'width-always' and 'height-always' are obsolete aliases of 'width' and 'height'
+  const dimension = /^(width|height)(-always)?$/.exec(String(autoSize));
+  return autoSize === true || autoSize === 'always' ? ['width', 'height'] : dimension ? [dimension[1] as 'width'] : [];
+};

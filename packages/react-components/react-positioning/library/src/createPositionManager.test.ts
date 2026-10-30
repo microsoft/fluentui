@@ -32,10 +32,7 @@ function createTestElements() {
   return { container, target };
 }
 
-const mockMiddlewareData = {
-  intersectionObserver: { intersecting: false },
-  hide: { escaped: false, referenceHidden: false },
-};
+const mockVisibility = { intersecting: false, escaped: false, referenceHidden: false };
 
 describe('createPositionManager', () => {
   beforeEach(() => {
@@ -65,8 +62,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement,
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -80,7 +76,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement,
-      disableUpdateOnResize: true,
+      positioningOptions: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -100,8 +96,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -115,7 +110,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'top',
-      disableUpdateOnResize: true,
+      positioningOptions: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -134,11 +129,9 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
+      ...mockVisibility,
+      escaped: true,
+      referenceHidden: true,
     });
 
     const { container, target } = createTestElements();
@@ -164,7 +157,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      positioningOptions: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -178,11 +171,9 @@ describe('createPositionManager', () => {
       x: 0,
       y: 0,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
+      ...mockVisibility,
+      escaped: true,
+      referenceHidden: true,
     });
 
     const { container, target } = createTestElements();
@@ -196,7 +187,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      positioningOptions: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -229,7 +220,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      positioningOptions: { disableUpdateOnResize: true },
     });
 
     // Let debounce microtask fire so computePosition is called
@@ -243,8 +234,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     // Allow the .then() to run

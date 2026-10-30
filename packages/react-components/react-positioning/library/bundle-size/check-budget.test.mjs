@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { checkBudget } from './check-budget.mjs';
+import { BUDGET, checkBudget } from './check-budget.mjs';
 
 const entry = bytes => ({
   name: 'usePositioning',
@@ -10,8 +10,9 @@ const entry = bytes => ({
 });
 
 test('uses an inclusive absolute minified-byte limit, not gzip or a relative threshold', () => {
-  assert.equal(checkBudget([entry(15000)], 15000), 15000);
-  assert.throws(() => checkBudget([entry(15001)], 15001), /exceeds/);
+  assert.equal(BUDGET, 12000);
+  assert.equal(checkBudget([entry(BUDGET)], BUDGET), BUDGET);
+  assert.throws(() => checkBudget([entry(BUDGET + 1)], BUDGET + 1), /exceeds/);
 });
 
 test('rejects absent, duplicate, mislabelled, stale and empty measurements', () => {

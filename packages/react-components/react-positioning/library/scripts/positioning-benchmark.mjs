@@ -18,17 +18,17 @@ await mkdir(path.dirname(output), { recursive: true });
 await rm(output, { force: true });
 const oracleSource = await mkdtemp(path.join(project, 'src/positioning-oracle-'));
 
+const layouts = ['flat', 'nested'];
+const workloadCounts = { 'initialize-24': 16, imperative: 24, scroll: 24, resize: 24 };
+const workloadNames = layouts.flatMap(layout => Object.keys(workloadCounts).map(name => `${layout}/${name}`));
+
 function assertSamples(report) {
   assert.equal(report.baseline, baseline, 'The comparison must use the pinned Floating UI implementation');
   assert.equal(report.metadata.activeEngineCount, 1, 'Only one engine may be mounted during a sample');
-  for (const [name, expectedCount] of [
-    ['initialize-24', 8],
-    ['imperative', 24],
-    ['scroll', 24],
-    ['resize', 24],
-  ]) {
+  assert.deepEqual(Object.keys(report.workloads).sort(), [...workloadNames].sort(), 'Unexpected benchmark workloads');
+  for (const name of workloadNames) {
     const workload = report.workloads[name];
-    assert(workload, `${name}: benchmark results are missing`);
+    const expectedCount = workloadCounts[name.split('/')[1]];
     for (const engine of ['oracle', 'replacement']) {
       const samples = workload.samples[engine];
       assert.equal(samples.length, expectedCount, `${name}/${engine}: expected every measured sample`);
@@ -47,12 +47,92 @@ function assertSamples(report) {
       workload.samples.replacement.map(sample => sample.round),
       `${name}: mismatched paired rounds`,
     );
-    assert.equal(workload.samples.replacementOverOracle.length, expectedCount, `${name}: paired ratios missing`);
+  }
+}
+
+function summarize(values) {
+  const sorted = [...values].sort((a, b) => a - b);
+  const percentile = fraction => sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * fraction) - 1)];
+  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  const variance = values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length;
+  return {
+    count: values.length,
+    medianMs: percentile(0.5),
+    p95Ms: percentile(0.95),
+    p10Ms: percentile(0.1),
+    p90Ms: percentile(0.9),
+    coefficientOfVariation: mean ? Math.sqrt(variance) / mean : 0,
+  };
+}
+
+const geometricMean = values => Math.exp(values.reduce((sum, value) => sum + Math.log(value), 0) / values.length);
+
+/**
+ * Paired replacement/oracle ratios: the geometric mean is the typical relative cost, the seeded percentile
+ * bootstrap gives its 95% confidence interval. An interval entirely below 1 means the replacement is faster.
+ */
+function summarizeRatios(ratios) {
+  let state = seed;
+  const random = () => {
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+  const resamples = Array.from({ length: 2000 }, () =>
+    geometricMean(ratios.map(() => ratios[Math.floor(random() * ratios.length)])),
+  ).sort((a, b) => a - b);
+  return {
+    ...summarize(ratios),
+    geometricMean: geometricMean(ratios),
+    ci95: [resamples[Math.floor(resamples.length * 0.025)], resamples[Math.ceil(resamples.length * 0.975) - 1]],
+  };
+}
+
+function analyze(report) {
+  for (const [name, workload] of Object.entries(report.workloads)) {
+    const { oracle, replacement } = workload.samples;
+    const ratios = replacement.map((sample, index) => sample.batchMs / oracle[index].batchMs);
+    Object.assign(workload, {
+      oracle: {
+        batch: summarize(oracle.map(s => s.batchMs)),
+        perInstance: summarize(oracle.flatMap(s => s.instanceMs)),
+      },
+      replacement: {
+        batch: summarize(replacement.map(s => s.batchMs)),
+        perInstance: summarize(replacement.flatMap(s => s.instanceMs)),
+      },
+      pairedReplacementOverOracle: summarizeRatios(ratios),
+    });
+    workload.samples.replacementOverOracle = ratios;
     assert(
-      workload.samples.replacementOverOracle.every(value => Number.isFinite(value) && value > 0),
+      ratios.every(value => Number.isFinite(value) && value > 0),
       `${name}: invalid paired ratios`,
     );
   }
+}
+
+function markdownSummary(report) {
+  const ms = value => value.toFixed(2);
+  const rows = Object.entries(report.workloads).map(([name, { oracle, replacement, pairedReplacementOverOracle }]) => {
+    const { geometricMean: ratio, ci95 } = pairedReplacementOverOracle;
+    return (
+      `| ${name} | ${ms(oracle.batch.medianMs)} / ${ms(oracle.batch.p95Ms)} | ` +
+      `${ms(replacement.batch.medianMs)} / ${ms(replacement.batch.p95Ms)} | ` +
+      `${ratio.toFixed(3)}× (${ci95[0].toFixed(3)}–${ci95[1].toFixed(3)}) |`
+    );
+  });
+  const { runner, metadata } = report;
+  return [
+    '| Workload (24 instances) | Floating UI median / p95 (ms) | Replacement median / p95 (ms) | Paired ratio, geomean (95% CI) |',
+    '| --- | ---: | ---: | ---: |',
+    ...rows,
+    '',
+    `${runner.cpu} (${runner.logicalCpuCount} threads), ${runner.platform}, ${
+      metadata.userAgent.match(/Electron\/[\d.]+/)?.[0]
+    } ` +
+      `(${metadata.userAgent.match(/Chrome\/[\d.]+/)?.[0]}), seed ${report.seed}, ` +
+      `engine ${runner.engineHead.slice(0, 10)}${runner.engineDirty ? ' (uncommitted changes)' : ''}, ` +
+      `oracle ${report.baseline.slice(0, 10)}.`,
+  ].join('\n');
 }
 
 try {
@@ -89,32 +169,27 @@ try {
     node: process.version,
     cypress: cypress.version,
     engineHead: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+    // Uncommitted engine changes are measured too, so flag them instead of attributing the run to HEAD
+    engineDirty: !!execFileSync('git', ['status', '--porcelain', '--untracked-files=no', '--', sourcePath], {
+      cwd: root,
+      encoding: 'utf8',
+    }).trim(),
     seed,
     warmupRounds: 5,
     measuredRounds: 24,
-    initializationWarmups: 2,
-    measuredInitializations: 8,
+    initializationWarmups: 3,
+    measuredInitializations: 16,
     concurrentInstancesPerEngine: 24,
     activeEngineCount: 1,
     timing: 'Browser performance.now(); batch completion requires all 24 positioning-end callbacks',
   };
-  await writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
 
-  console.log(
-    '\nWorkload         | Oracle median/p95 | Replacement median/p95 | Median paired ratio | P95 paired ratio | CV oracle/replacement',
-  );
-  for (const [name, workload] of Object.entries(report.workloads)) {
-    const { oracle, replacement, pairedReplacementOverOracle: ratio } = workload;
-    console.log(
-      `${name.padEnd(16)} | ${`${oracle.batch.medianMs.toFixed(3)}/${oracle.batch.p95Ms.toFixed(3)} ms`.padEnd(
-        18,
-      )} | ` +
-        `${`${replacement.batch.medianMs.toFixed(3)}/${replacement.batch.p95Ms.toFixed(3)} ms`.padEnd(22)} | ` +
-        `${`${ratio.medianMs.toFixed(3)}x`.padEnd(19)} | ${`${ratio.p95Ms.toFixed(3)}x`.padEnd(16)} | ` +
-        `${oracle.batch.coefficientOfVariation.toFixed(2)}/${replacement.batch.coefficientOfVariation.toFixed(2)}`,
-    );
-  }
-  console.log(`\nFull samples and browser/machine metadata: ${path.relative(root, output)}`);
+  analyze(report);
+  await writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
+  const summary = markdownSummary(report);
+  await writeFile(path.join(path.dirname(output), 'summary.md'), `${summary}\n`);
+  console.log(`\n${summary}`);
+  console.log(`\nFull samples, statistics and browser/machine metadata: ${path.relative(root, output)}`);
 } finally {
   await rm(oracleSource, { recursive: true, force: true });
   delete process.env.FLUENT_POSITIONING_ORACLE_SOURCE;

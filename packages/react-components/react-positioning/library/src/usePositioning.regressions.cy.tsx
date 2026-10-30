@@ -22,15 +22,13 @@ async function expectParity(target: TargetElement, floating: HTMLElement) {
     strategy: 'fixed',
     positioningOptions: { pinned: true },
   });
-  if (!actual.middlewareData.hide || !expected.middlewareData.hide) {
+  if (!expected.middlewareData.hide) {
     throw new Error('Both engines must report visibility');
   }
   expect(actual.x, 'x').to.equal(expected.x);
   expect(actual.y, 'y').to.equal(expected.y);
-  expect(actual.middlewareData.hide.referenceHidden, 'reference visibility').to.equal(
-    expected.middlewareData.hide.referenceHidden,
-  );
-  expect(actual.middlewareData.hide.escaped, 'surface visibility').to.equal(expected.middlewareData.hide.escaped);
+  expect(actual.referenceHidden, 'reference visibility').to.equal(expected.middlewareData.hide.referenceHidden);
+  expect(actual.escaped, 'surface visibility').to.equal(expected.middlewareData.hide.escaped);
 }
 
 describe('positioning engine browser regressions', () => {
@@ -106,7 +104,7 @@ describe('positioning engine browser regressions', () => {
         strategy: 'fixed',
         positioningOptions: { pinned: true },
       });
-      expect(result.middlewareData.hide?.referenceHidden).to.equal(true);
+      expect(result.referenceHidden).to.equal(true);
     });
   });
 
@@ -130,7 +128,7 @@ describe('positioning engine browser regressions', () => {
           strategy: 'fixed',
           positioningOptions: { pinned: true },
         });
-        expect(result.middlewareData.hide?.referenceHidden).to.equal(true);
+        expect(result.referenceHidden).to.equal(true);
       });
     });
   }
@@ -153,7 +151,7 @@ describe('positioning engine browser regressions', () => {
             strategy: 'fixed',
             positioningOptions: { pinned: true },
           });
-          expect(result.middlewareData.hide?.referenceHidden).to.equal(false);
+          expect(result.referenceHidden).to.equal(false);
         } finally {
           target.remove();
         }
@@ -318,7 +316,7 @@ describe('positioning engine browser regressions', () => {
         strategy: 'fixed',
         positioningOptions: { pinned: true },
       });
-      expect(result.middlewareData.hide?.referenceHidden, 'reference outside parent clipping host').to.equal(true);
+      expect(result.referenceHidden, 'reference outside parent clipping host').to.equal(true);
     });
   });
 

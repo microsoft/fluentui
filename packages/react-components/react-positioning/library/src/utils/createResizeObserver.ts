@@ -1,7 +1,7 @@
-export function createResizeObserver(
+export const createResizeObserver = (
   targetWindow: Window & typeof globalThis,
   callback: ResizeObserverCallback,
-): ResizeObserver {
+): ResizeObserver => {
   // https://github.com/jsdom/jsdom/issues/3368
   // Add the polyfill here so it is not needed for all unit tests that leverage positioning
   if (process.env.NODE_ENV === 'test') {
@@ -19,4 +19,4 @@ export function createResizeObserver(
   }
 
   return new targetWindow.ResizeObserver(callback);
-}
+};

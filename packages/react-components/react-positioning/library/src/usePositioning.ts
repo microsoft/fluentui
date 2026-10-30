@@ -1,6 +1,6 @@
 'use client';
 
-import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { POSITIONING_END_EVENT } from './constants';
@@ -21,10 +21,13 @@ import { useCallbackRef, hasAutofocusFilter } from './utils';
  */
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
   const managerRef = React.useRef<PositionManager | null>(null);
-  const targetRef = React.useRef<TargetElement | null>(null);
-  const overrideTargetRef = React.useRef<TargetElement | null>(null);
-  const containerRef = React.useRef<HTMLElement | null>(null);
-  const arrowRef = React.useRef<HTMLElement | null>(null);
+  // The latest elements, an imperatively set target overrides the target ref
+  const elementsRef = React.useRef<
+    Partial<Record<'target' | 'override', TargetElement | null>> & {
+      container?: HTMLElement | null;
+      arrow?: HTMLElement | null;
+    }
+  >({});
 
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
@@ -34,38 +37,43 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
     managerRef.current = null;
 
-    const target = overrideTargetRef.current || targetRef.current;
+    const { override, target, container, arrow = null } = elementsRef.current;
+    const positioningTarget = override || target;
 
-    if (enabled && canUseDOM() && target && containerRef.current) {
+    // Elements only exist in the DOM, so this also guards server rendering
+    if (enabled && positioningTarget && container) {
       managerRef.current = createPositionManager({
-        container: containerRef.current,
-        target,
-        arrow: arrowRef.current,
-        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
+        container,
+        target: positioningTarget,
+        arrow,
+        ...resolvePositioningOptions(container, arrow),
       });
     }
   }, [enabled, resolvePositioningOptions]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
-    overrideTargetRef.current = target;
+    elementsRef.current.override = target;
     updatePositionManager();
   });
 
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
-      updatePosition: () => managerRef.current?.updatePosition(),
-      setTarget: (target: TargetElement | null) => {
-        if (options.target && process.env.NODE_ENV !== 'production') {
-          const err = new Error();
-          // eslint-disable-next-line no-console
-          console.warn('Imperative setTarget should not be used at the same time as target option');
-          // eslint-disable-next-line no-console
-          console.warn(err.stack);
-        }
+      updatePosition: () => managerRef.current && managerRef.current.updatePosition(),
+      setTarget:
+        process.env.NODE_ENV === 'production'
+          ? setOverrideTarget
+          : (target: TargetElement | null) => {
+              if (options.target) {
+                const err = new Error();
+                // eslint-disable-next-line no-console
+                console.warn('Imperative setTarget should not be used at the same time as target option');
+                // eslint-disable-next-line no-console
+                console.warn(err.stack);
+              }
 
-        setOverrideTarget(target);
-      },
+              setOverrideTarget(target);
+            },
     }),
     [options.target, setOverrideTarget],
   );
@@ -82,8 +90,8 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     // This checked should run only in development mode
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
-      if (containerRef.current) {
-        const contentNode = containerRef.current;
+      if (elementsRef.current.container) {
+        const contentNode = elementsRef.current.container;
         const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
           acceptNode: hasAutofocusFilter,
         });
@@ -119,31 +127,28 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }, []);
   }
 
-  const setTarget = useCallbackRef<TargetElement>(null, target => {
-    if (targetRef.current !== target) {
-      targetRef.current = target;
-      updatePositionManager();
-    }
+  // Callback refs only fire when their value changes
+  const targetRef = useCallbackRef<TargetElement>(null, target => {
+    elementsRef.current.target = target;
+    updatePositionManager();
   });
 
-  const onPositioningEnd = useEventCallback((e: OnPositioningEndEvent) => options.onPositioningEnd?.(e));
-  const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
-    if (containerRef.current !== container) {
-      // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
-      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
-      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
-      containerRef.current = container;
-      updatePositionManager();
-    }
+  const onPositioningEnd = useEventCallback(
+    (e: OnPositioningEndEvent) => options.onPositioningEnd && options.onPositioningEnd(e),
+  );
+  const containerRef = useCallbackRef<HTMLElement>(null, (container, previousContainer) => {
+    // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
+    previousContainer?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+    container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+    elementsRef.current.container = container;
+    updatePositionManager();
   });
 
-  const setArrow = useCallbackRef<HTMLElement | null>(null, arrow => {
-    if (arrowRef.current !== arrow) {
-      arrowRef.current = arrow;
-      updatePositionManager();
-    }
+  const arrowRef = useCallbackRef<HTMLElement>(null, arrow => {
+    elementsRef.current.arrow = arrow;
+    updatePositionManager();
   });
 
   // Let users use callback refs so they feel like 'normal' DOM refs
-  return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
+  return { targetRef, containerRef, arrowRef };
 }

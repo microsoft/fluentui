@@ -1,16 +1,17 @@
-import type { Placement } from '@floating-ui/dom';
+import type { Placement, Side } from '@floating-ui/dom';
 import type { Alignment, Position } from '../types';
-import { parseFloatingUIPlacement } from './parseFloatingUIPlacement';
+
+const POSITIONS: Record<Side, Position> = { top: 'above', bottom: 'below', left: 'before', right: 'after' };
 
 /**
  * Maps Floating UI placement to positioning values
  * @see positioningHelper.test.ts for expected placement values
  */
 export const fromFloatingUIPlacement = (placement: Placement): { position: Position; alignment?: Alignment } => {
-  const { side, alignment: floatingUIAlignment } = parseFloatingUIPlacement(placement);
-  const block = side === 'top' || side === 'bottom';
-  const position = block ? (side === 'top' ? 'above' : 'below') : side === 'left' ? 'before' : 'after';
-  const alignment =
-    floatingUIAlignment && (block ? floatingUIAlignment : floatingUIAlignment === 'start' ? 'top' : 'bottom');
-  return { position, alignment };
+  const [side, alignment] = placement.split('-') as [Side, 'start' | 'end' | undefined];
+  return {
+    position: POSITIONS[side],
+    alignment:
+      alignment && (side === 'top' || side === 'bottom' ? alignment : alignment === 'start' ? 'top' : 'bottom'),
+  };
 };
