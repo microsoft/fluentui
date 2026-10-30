@@ -62,17 +62,23 @@ function isFocusableDOM(element: HTMLElement): boolean {
     return false;
   }
 
+  let child: HTMLElement | null = null;
   let current: HTMLElement | null = element;
   while (current) {
     if (
       current.hidden ||
       current.hasAttribute('inert') ||
       current.getAttribute('aria-hidden') === 'true' ||
-      getComputedStyle(current)?.display === 'none'
+      getComputedStyle(current)?.display === 'none' ||
+      // The content of a closed details element is not rendered, except for its first summary
+      (current.tagName === 'DETAILS' &&
+        !current.hasAttribute('open') &&
+        child !== current.querySelector(':scope > summary'))
     ) {
       return false;
     }
 
+    child = current;
     current = current.parentElement;
   }
 

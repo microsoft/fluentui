@@ -313,6 +313,37 @@ describe('useTreeBase_unstable', () => {
       expect(document.activeElement).toBe(screen.getByTestId('editor'));
     });
 
+    it('skips the content of a closed details action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <details>
+                      <summary tabIndex={-1}>More</summary>
+                      <button>Hidden</button>
+                    </details>
+                    <button>Edit</button>
+                  </>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Edit' }));
+    });
+
     it('moves focus into the summary of a details action in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">
