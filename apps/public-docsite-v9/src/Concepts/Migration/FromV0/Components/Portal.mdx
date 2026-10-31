@@ -1,0 +1,514 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Portal Migration" />
+
+# Portal Migration
+
+## Overview
+
+V0 `Portal` is a deprecated, stateful DOM-relocation primitive, not a `Popup` or `Dialog`. V9 `Portal`, imported from `@fluentui/react-components` or `@fluentui/react-portal`, **only accepts `children` and `mountNode`**. It does not create a styled/semantic surface, clone a trigger, manage open state, dismiss content, or trap/restore focus.
+
+Choose the destination according to what the content does:
+
+- **Preserve a low-level portal:** use v9 `Portal` with application-owned state, trigger composition, lifetime observation, dismissal, and focus policy. The primary example below takes this route.
+- **Build a dialog or anchored overlay:** prefer v9 `Dialog` or `Popover`, respectively. Their managed behavior is useful, but is not a behavior-equivalent rename; see [Managed overlay alternatives](#managed-overlay-alternatives).
+- **Render v9 controls inside a still-legacy portal:** keep the legacy portal owner and add `PortalCompatProvider` from `@fluentui/react-portal-compat`. This is a coexistence bridge, not the replacement `Portal`; see [PortalCompatProvider coexistence](#portalcompatprovider-coexistence).
+
+The examples describe `@fluentui/react-northstar@0.71.4`, React/ReactDOM 18.3.1, `@fluentui/react-components@9.74.9`, and `@fluentui/react-portal-compat@9.2.48`. Relevant released leaves are Portal 9.8.16, Dialog 9.18.5, Popover 9.14.9, and react-tabster 9.26.18.
+
+### Before: v0
+
+This controlled example has two tabbable panel controls: the native input and close button. Opening focuses the input; an inside close restores the opening trigger. Outside clicks are allowed and close the panel without stealing focus back from **Outside settings**. Escape does not dismiss it.
+
+```tsx
+import * as React from 'react';
+import { Portal, Provider, teamsTheme } from '@fluentui/react-northstar';
+
+export default function PortalScenario() {
+  const [open, setOpen] = React.useState(false);
+  const [mounts, setMounts] = React.useState(0);
+  const [unmounts, setUnmounts] = React.useState(0);
+  const [triggerCallbacks, setTriggerCallbacks] = React.useState(0);
+  const [originalClicks, setOriginalClicks] = React.useState(0);
+  const [outsideClicks, setOutsideClicks] = React.useState(0);
+
+  return (
+    <Provider theme={teamsTheme}>
+      <section data-testid="portal-scenario">
+        <Portal
+          open={open}
+          trapFocus
+          trigger={
+            <button type="button" data-testid="portal-trigger" onClick={() => setOriginalClicks(count => count + 1)}>
+              Open settings
+            </button>
+          }
+          onTriggerClick={() => {
+            setTriggerCallbacks(count => count + 1);
+            setOpen(isOpen => !isOpen);
+          }}
+          onOutsideClick={() => {
+            setOutsideClicks(count => count + 1);
+            setOpen(false);
+          }}
+          onMount={() => setMounts(count => count + 1)}
+          onUnmount={() => setUnmounts(count => count + 1)}
+        >
+          <section aria-label="Settings panel" data-testid="settings-panel">
+            <h2>Settings panel</h2>
+            <label htmlFor="settings-display-name">Display name</label>
+            <input id="settings-display-name" defaultValue="Ada" />
+            <button type="button" onClick={() => setOpen(false)}>
+              Close settings
+            </button>
+          </section>
+        </Portal>
+        <button type="button" data-testid="portal-outside">
+          Outside settings
+        </button>
+        <output data-testid="portal-status">State: {open ? 'open' : 'closed'}</output>
+        <output data-testid="portal-lifecycle">
+          Mounts: {mounts}; unmounts: {unmounts}
+        </output>
+        <output data-testid="portal-callbacks">
+          Trigger callbacks: {triggerCallbacks}; original clicks: {originalClicks}; outside clicks: {outsideClicks}
+        </output>
+      </section>
+    </Provider>
+  );
+}
+```
+
+### After: pure v9, preserving this two-control example
+
+The application root must supply `FluentProvider` with a v9 theme, for example `webLightTheme` (both exported by `@fluentui/react-components`). Place it **above** this component, not only around its portaled children. The documentation preview already supplies that root provider, so this example does not add another one.
+
+This is deliberately a **single-panel composition for this example**, not a reusable focus-trap implementation. It uses public focus finders to discover the initial control and Tab boundaries rather than hardcoding an input/button pair. It preserves the source's names, markers, callback order/counters, input lifetime, document-click dismissal, and actual DOM relocation. The mount-node class keeps the old flow layout instead of adopting v9's automatic absolute stacking layout.
+
+```tsx
+import * as React from 'react';
+import {
+  isHTMLElement,
+  makeStyles,
+  Portal,
+  useFocusFinders,
+  useIsomorphicLayoutEffect,
+  useUncontrolledFocus,
+} from '@fluentui/react-components';
+import { elementContains } from '@fluentui/react-portal';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { tokens } from '@fluentui/react-theme';
+
+const useStyles = makeStyles({
+  flowMount: {
+    position: 'static',
+    zIndex: 'auto',
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+});
+
+function clickIsWithin(element: HTMLElement | null, event: MouseEvent): boolean {
+  return (
+    element !== null &&
+    event
+      .composedPath()
+      .some(target => target === element || (isHTMLElement(target) && elementContains(element, target)))
+  );
+}
+
+type SettingsPanelProps = {
+  triggerRef: React.RefObject<HTMLButtonElement>;
+  onClose: () => void;
+  onOutsideClick: (event: MouseEvent) => void;
+  onMount: () => void;
+  onUnmount: () => void;
+};
+
+function SettingsPanel({ triggerRef, onClose, onOutsideClick, onMount, onUnmount }: SettingsPanelProps) {
+  const { targetDocument } = useFluent_unstable();
+  const { findFirstFocusable, findLastFocusable } = useFocusFinders();
+  const uncontrolledFocus = useUncontrolledFocus();
+  const panelRef = React.useRef<HTMLElement>(null);
+  const [lifecycle] = React.useState(() => ({ onMount, onUnmount }));
+
+  useIsomorphicLayoutEffect(() => {
+    lifecycle.onMount();
+    return () => lifecycle.onUnmount();
+  }, [lifecycle]);
+
+  useIsomorphicLayoutEffect(() => {
+    const targetWindow = targetDocument?.defaultView;
+    if (!targetDocument || !targetWindow) {
+      return;
+    }
+    const panel = panelRef.current;
+    const body = targetDocument.body;
+    if (!panel || !body || panel.ownerDocument !== targetDocument || !body.contains(panel)) {
+      throw new Error('Settings panel must mount inside the FluentProvider target document body.');
+    }
+
+    let returnTarget = isHTMLElement(targetDocument.activeElement) ? targetDocument.activeElement : triggerRef.current;
+    const firstFocusFrame = targetWindow.requestAnimationFrame(() => {
+      if (panel.isConnected) {
+        const first = findFirstFocusable(panel);
+        if (!first) {
+          throw new Error('Settings panel must contain a focusable control when opened.');
+        }
+        first.focus();
+      }
+    });
+
+    // The legacy boolean trap hides other body children, but does not make them inert.
+    const hiddenSiblings: { element: Element; previous: string | null }[] = [];
+    for (const element of Array.from(body.children)) {
+      if (
+        !element.contains(panel) &&
+        !element.hasAttribute('aria-live') &&
+        element.getAttribute('aria-hidden') !== 'true'
+      ) {
+        hiddenSiblings.push({ element, previous: element.getAttribute('aria-hidden') });
+        element.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    const clearOutsideReturnTarget = (event: MouseEvent) => {
+      if (!clickIsWithin(panel, event) && !clickIsWithin(returnTarget, event)) {
+        returnTarget = null;
+      }
+    };
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (!clickIsWithin(panel, event) && !clickIsWithin(triggerRef.current, event)) {
+        onOutsideClick(event);
+      }
+    };
+
+    targetWindow.addEventListener('click', clearOutsideReturnTarget, true);
+    targetDocument.addEventListener('click', handleDocumentClick);
+    return () => {
+      targetWindow.cancelAnimationFrame(firstFocusFrame);
+      targetWindow.removeEventListener('click', clearOutsideReturnTarget, true);
+      targetDocument.removeEventListener('click', handleDocumentClick);
+      for (const { element, previous } of hiddenSiblings) {
+        if (previous === null) {
+          element.removeAttribute('aria-hidden');
+        } else {
+          element.setAttribute('aria-hidden', previous);
+        }
+      }
+
+      const focused = targetDocument.activeElement;
+      if (returnTarget?.isConnected && (panel.contains(focused) || focused === body)) {
+        const target = returnTarget;
+        targetWindow.requestAnimationFrame(() => {
+          if (target.isConnected) {
+            target.focus();
+          }
+        });
+      }
+    };
+  }, [findFirstFocusable, onOutsideClick, targetDocument, triggerRef]);
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLElement> = event => {
+    event.stopPropagation();
+    if (event.key !== 'Tab') {
+      return;
+    }
+    const first = findFirstFocusable(event.currentTarget);
+    const last = findLastFocusable(event.currentTarget);
+    if (!first || !last) {
+      throw new Error('Settings panel must have focusable Tab boundaries while open.');
+    }
+    if (event.shiftKey && event.target === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && event.target === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  return (
+    <section
+      {...uncontrolledFocus}
+      ref={panelRef}
+      aria-label="Settings panel"
+      data-testid="settings-panel"
+      onKeyDown={handleKeyDown}
+    >
+      <h2>Settings panel</h2>
+      <label htmlFor="settings-display-name">Display name</label>
+      <input id="settings-display-name" defaultValue="Ada" />
+      <button type="button" onClick={onClose}>
+        Close settings
+      </button>
+    </section>
+  );
+}
+
+export default function PortalScenario() {
+  const classes = useStyles();
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const [mounts, setMounts] = React.useState(0);
+  const [unmounts, setUnmounts] = React.useState(0);
+  const [triggerCallbacks, setTriggerCallbacks] = React.useState(0);
+  const [originalClicks, setOriginalClicks] = React.useState(0);
+  const [outsideClicks, setOutsideClicks] = React.useState(0);
+
+  const handleMount = React.useCallback(() => setMounts(count => count + 1), []);
+  const handleUnmount = React.useCallback(() => setUnmounts(count => count + 1), []);
+  const handleOutsideClick = React.useCallback((_event: MouseEvent) => {
+    setOutsideClicks(count => count + 1);
+    setOpen(false);
+  }, []);
+
+  const onTriggerClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    setTriggerCallbacks(count => count + 1);
+    setOpen(isOpen => !isOpen);
+  };
+  const originalOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    setOriginalClicks(count => count + 1);
+  };
+
+  return (
+    <section data-testid="portal-scenario">
+      {open && (
+        <Portal mountNode={{ className: classes.flowMount }}>
+          <SettingsPanel
+            triggerRef={triggerRef}
+            onClose={() => setOpen(false)}
+            onOutsideClick={handleOutsideClick}
+            onMount={handleMount}
+            onUnmount={handleUnmount}
+          />
+        </Portal>
+      )}
+      <button
+        ref={triggerRef}
+        type="button"
+        data-testid="portal-trigger"
+        onClick={event => {
+          onTriggerClick(event);
+          originalOnClick(event);
+        }}
+      >
+        Open settings
+      </button>
+      <button type="button" data-testid="portal-outside">
+        Outside settings
+      </button>
+      <output data-testid="portal-status">State: {open ? 'open' : 'closed'}</output>
+      <output data-testid="portal-lifecycle">
+        Mounts: {mounts}; unmounts: {unmounts}
+      </output>
+      <output data-testid="portal-callbacks">
+        Trigger callbacks: {triggerCallbacks}; original clicks: {originalClicks}; outside clicks: {outsideClicks}
+      </output>
+    </section>
+  );
+}
+```
+
+The native `type="button"` trigger remains in the original tree. Its composed handler calls the former `onTriggerClick` logic **before** the original trigger handler, just as v0 does. In the controlled source, Portal's subsequent internal toggle cannot change `open`; the consumer callback is responsible for the update.
+
+The panel is a real portal subtree: conditional mounting creates/removes it, and its own layout-effect lifetime updates the counters. Closing discards the uncontrolled input, so reopening restores **Ada**. Moving the input into permanently mounted parent state, using `display: none`, or counting `open` transitions instead would change the example.
+
+---
+
+## How to migrate props
+
+Defaults here refer to the released v0 implementation, not similarly named `Popup`/`Dialog` props.
+
+| V0 Portal prop                     | Released behavior/default                                                                                                                                             | V9 migration                                                                                                                                                                                                                             |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`                         | Preferred when v0 considers children present.                                                                                                                         | Use raw `Portal` children or the chosen managed **surface's** children. Preserve names, native attributes, and mount lifetime.                                                                                                           |
+| `content`                          | Used when children are absent; no default content.                                                                                                                    | Render it as JSX children. V9 has no `content` shorthand prop. Preserve precedence if the source supplies both.                                                                                                                          |
+| `open`                             | A defined value is controlled; otherwise initial open is `false`.                                                                                                     | Own the state and conditionally mount raw `Portal`, or pass controlled `open` to `Dialog`/`Popover`. Raw `Portal` has no `open` prop.                                                                                                    |
+| `defaultOpen`                      | Initial uncontrolled value only; omitted falls back to `false`.                                                                                                       | Initialize application state once for raw `Portal`, or use managed `defaultOpen`. Do not treat it as a reactive `open` value.                                                                                                            |
+| `trigger`                          | Optional in-place element, cloned by v0.                                                                                                                              | Render a separate native/control trigger for raw `Portal`, or put the control inside `DialogTrigger`/`PopoverTrigger`. Preserve its original handlers, refs, and native behavior.                                                        |
+| `triggerRef`                       | Receives the actual trigger DOM element; omitted by default.                                                                                                          | Put the ref on that same control. Use `useMergedRefs` from `@fluentui/react-components` when composing an existing control ref with the application's trigger ref. Neither raw `Portal` nor the bridge is the trigger element.           |
+| `triggerAccessibility`             | Defaults to `{}`; its attributes and key handlers are spread onto the cloned trigger after the generated click handler.                                               | Decompose the object onto the actual trigger. Account for overrides and managed-trigger enhancements rather than blindly copying the object.                                                                                             |
+| `triggerAccessibility.attributes`  | Consumer-supplied attributes; no default dialog semantics.                                                                                                            | Preserve the concrete accessible name, role, `aria-*` relationships, and any expanded state on the trigger itself.                                                                                                                       |
+| `triggerAccessibility.keyHandlers` | Consumer-supplied keyboard handlers.                                                                                                                                  | Compose the actual trigger keyboard handlers, preserving their ordering/overrides. They are not evidence of an automatic Portal Escape handler.                                                                                          |
+| `onTriggerClick`                   | Receives the click event only; runs before the original trigger's `onClick`, followed by an attempted internal toggle.                                                | Compose both handlers explicitly for raw `Portal`. Adapt carefully around managed triggers; there is no raw Portal callback or legacy `{ open }` data object.                                                                            |
+| `onOutsideClick`                   | While open, document `click` outside content and trigger calls the callback with the event, then attempts to close. No callback is required for uncontrolled closing. | Own document-click/containment handling for raw `Portal`. For a managed overlay, distinguish actual outside clicks from Escape, focus, scroll, backdrop, or close-button requests; do not count every close request as an outside click. |
+| `onMount`                          | Receives **one Portal props object**, at actual portal mounting.                                                                                                      | Observe the mounted content, not a requested state change. The example's application callback only increments a counter; a reusable adapter needing the old payload must capture and supply the source props explicitly.                 |
+| `onUnmount`                        | Receives **one captured Portal props object**, at cleanup, including removal of the owner.                                                                            | Observe actual subtree cleanup. Do not synthesize a latest `open: false` payload or invoke both an open-state cleanup and a content cleanup for the same lifetime.                                                                       |
+| `trapFocus`                        | Omitted/`false`: off. `true`: legacy FocusTrapZone defaults. An object supplies its options.                                                                          | Raw `Portal` has no focus API. Own the required policy, or deliberately adopt `Dialog` modal behavior / `Popover`'s boolean `trapFocus`. Neither accepts the legacy options object as an alias.                                          |
+
+V0's children-presence test includes numeric `0` and nonempty arrays. `null`, `undefined`, `false`, an empty string/array, and `NaN` fall back to `content`; a nonempty array is considered present even when its entries render nothing. Simple `children || content` would lose the `0` case.
+
+`onOutsideClick` is declared with a React mouse-event type in v0, but the released document listener actually supplies a native `MouseEvent`. New document listeners should be typed accordingly. V0 does not test `preventDefault()` to veto its internal trigger toggle or outside close; do not assume managed-overlay cancellation has the same contract.
+
+### Controlled and uncontrolled state
+
+For a raw composition, the consumer owns the displayed boolean. In an uncontrolled adapter, initialize local state once, for example with `React.useState(defaultOpen ?? false)`, and update it on trigger/outside actions. If the adapter also supports controlled state, a **defined** `open` is authoritative, including `false`; callbacks request consumer changes and must not silently replace that value with internal state. Avoid switching between controlled and uncontrolled modes.
+
+For managed overlays, choose controlled `open` with `onOpenChange`, **or** uncontrolled `defaultOpen`. In a controlled callback, update from `data.open`, not from `!open`: not every request is a toggle.
+
+### `trapFocus` object options
+
+These belong to v0's **FocusTrapZone**, not to a Portal styling root. The actual boolean-trap defaults are `as: 'div'`, `isClickableOutsideFocusTrap: true`, and `forceFocusInsideTrapOnOutsideFocus: false`. The older type comment claiming the last default is `true` does not match this release.
+
+| V0 nested option                                        | Migration responsibility                                                                                                                             |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `as`, `className`                                       | Apply the intended element/class to the corresponding application-owned trap/surface wrapper, not to raw Portal as root props.                       |
+| `disabled`                                              | Disable the focus policy, not the control or open state. Evaluate an intentionally nontrapping managed mode separately.                              |
+| `elementToFocusOnDismiss`                               | Preserve the explicit return-focus element/ref and its lifetime; automatic managed-trigger restoration is not an arbitrary-element alias.            |
+| `ariaLabelledBy`                                        | Use `aria-labelledby` on the corresponding semantic wrapper, retaining the referenced ID.                                                            |
+| `isClickableOutsideFocusTrap`                           | Preserve whether outside interaction is allowed. Its actual default is `true`; a modal backdrop/inert policy can change this.                        |
+| `focusTriggerOnOutsideClick`                            | Keep a separate outside-click restoration policy. When absent, the boolean trap clears its remembered return target on an outside click.             |
+| `ignoreExternalFocusing`                                | Preserve the explicit opt-out from return-focus restoration. There is no raw Portal equivalent.                                                      |
+| `forceFocusInsideTrapOnOutsideFocus`                    | Own the focus-containment policy. The released default is `false`; outside focus alone neither dismisses the portal nor forces refocusing inside.    |
+| `forceFocusInsideTrapOnComponentUpdate`                 | Review refocusing after content updates separately from initial autofocus.                                                                           |
+| `firstFocusableSelector`                                | Preserve the initial-focus target selected by the string/function, using an appropriate ref or focus search.                                         |
+| `disableFirstFocus`                                     | Preserve the initial-autofocus opt-out. `Popover.unstable_disableAutoFocus` addresses that one behavior, not the other legacy options.               |
+| `focusPreviouslyFocusedInnerElement`                    | Own the remembered inner-focus policy; no direct raw/managed prop maps this option.                                                                  |
+| `preventScrollOnRestoreFocus`                           | Use the intended `preventScroll` focus option when restoring focus; do not infer the scroll policy from a managed default.                           |
+| `innerRef`                                              | Forward a ref to the actual trap/surface wrapper, distinct from the trigger and mount container.                                                     |
+| Inherited HTML attributes/events, including `onKeyDown` | Move them to the wrapper and compose handlers. An explicit source Escape action must be retained; the default legacy handler only stops propagation. |
+
+### Removed or newly selected APIs
+
+- `as`, `className`, `styles`, `variables`, `design`, `accessibility`, and root `role`/`aria-*` are **not supported low-level Portal root APIs**. There is no Portal root element to style/name. Keep these concerns on the trigger or actual content. The bridge also has no root/style/ARIA API.
+- `Portal.create` has no v9 static shorthand equivalent; write explicit JSX.
+- V0's internal `PortalInner.mountNode` was not a public package-root Portal API, and `Portal` did not forward a `mountNode` to it. Do not invent an old `Portal.mountNode` mapping.
+- V9's new `mountNode` accepts an `HTMLElement`, `null`, or `{ element?, className? }`. `null` uses the automatic fallback; it does **not** close the portal. A `className` without an explicit element customizes the automatically created node, as in the example.
+- An explicit `element` is used as-is: it bypasses the automatic node's theme-class, direction, and focus-visible setup. Arrange those scopes deliberately, keep the element alive while mounted, and remove application-owned containers when their lifetimes end. Do not assume that putting a v9 control in any arbitrary external element supplies its theme.
+
+## Behavior, focus, and cleanup
+
+The source's boolean trap combines several distinct policies:
+
+1. Initially focus a focusable child and wrap Tab/Shift+Tab within the trap.
+2. Stop keyboard-event propagation, but **do not dismiss on Escape**.
+3. Allow outside clicks. Do not force focus back inside merely because another element receives focus.
+4. Remember the element focused when opening. On cleanup, restore it only when focus is still inside the trap or has fallen to the body; an outside click normally clears the remembered target. An inside close therefore returns to **Open settings**, while clicking **Outside settings** leaves that outside control focused.
+5. Hide unrelated direct body children from the accessibility tree while active, excluding pre-hidden children and direct `aria-live` regions. Hiding is not `inert`, pointer blocking, a backdrop, or scroll locking.
+
+The primary composition implements those policies for the supplied controls. `useFocusFinders` discovers the first control for autofocus and the first/last controls on each Tab. Its `useUncontrolledFocus` attribute lets the application own keyboard handling in that area; that hook itself does not trap, autofocus, dismiss, or restore focus. The labeled `section` remains **Settings panel**, not a new `dialog`/`aria-modal` surface, and **Display name** remains a real labeled input.
+
+Do not assume `useModalAttributes` or `useRestoreFocusSource`/`useRestoreFocusTarget` reproduce this legacy policy. In the audited release, `useModalAttributes()` sets up Restorer source/target attributes even without a trap. `useModalAttributes({ trapFocus: true, legacyTrapFocus: true })` additionally requests a modalizer with `isOthersAccessible: false` and `isTrapped: true`. Its supported options are `trapFocus`, `legacyTrapFocus`, `alwaysFocusable`, and `id`: there is no outside-focus-policy or restoration-veto option. The public restore-focus hooks are loss-driven source/target markers, not universal outside-click restoration guarantees. They do not encode the source Portal's separate trigger/outside-click callbacks or clear its remembered target according to that outside-click policy.
+
+**Scope limits:** first/last discovery does not turn this boundary handler into a general dynamic focus trap. Review focusable-versus-tabbable controls, radio groups, a widget's custom tab order, removing the focused control, nested traps/managed overlays, and Shadow DOM separately. The one-panel body-sibling hiding is not a stacked-modal manager. Such products need a reviewed, reusable focus/overlay policy or a deliberately selected managed overlay. The click helper uses the event path and virtual-aware `elementContains`; it preserves this case, but is not a complete port of v0's coordinate fallback for removed click targets, Shadow DOM, or cross-document overlays.
+
+Keep document listeners, initial-focus scheduling, accessibility changes, and restoration tied to the actual content lifetime. The example removes listeners, cancels pending initial focus, and restores prior `aria-hidden` values on cleanup. Its intentionally scheduled return focus checks that the target still exists. It does not subscribe to `focusin` to close or refocus the panel.
+
+Keep callbacks/effect dependencies stable: the example memoizes the outside and lifecycle callbacks, and captures the lifecycle pair once per actual mounted subtree. Incrementing a parent counter must not tear down/recreate the focus effect or count another mount. Missing browser documents are guarded; unexpected mounted-DOM/document mismatches or missing focusable controls throw explicit invariant errors rather than silently dropping focus behavior.
+
+V0 `PortalInner` captures its mount-cycle props/handlers in a layout effect. Its unmount payload need not be the latest `open: false` props. Managed overlay motion may keep a closing surface mounted until exit finishes, so `onOpenChange` is not a substitute for either lifecycle callback. Development Strict Mode may replay effects; do not suppress replay by pretending lifecycle callbacks are one-time state transitions.
+
+### Documents and SSR
+
+Use `useFluent_unstable` from `@fluentui/react-shared-contexts` (also exported as `useFluent` by the suite) to obtain `targetDocument`, then its `defaultView` for focus scheduling or window listeners. Guard missing documents/windows and own effects with `useIsomorphicLayoutEffect` or appropriate effects. Do not reach for global `document`, `window`, or `navigator` inside the component.
+
+The default v9 mount node is appended under the provider's portal-mount context, or `targetDocument.body`. It is actual DOM relocation, not an inline rendering trick. For an iframe/alternate document, configure the root `FluentProvider` with that document and keep content, listeners, return targets, styles, and the mount node in the same document. The primary sample assumes the default body mount in one browser document.
+
+SSR does not provide an interactive portal mount or focus target. Wait for a client document before expecting portaled DOM, lifecycle counts tied to that DOM, or focus work; guard application-created containers and avoid browser-only work during render.
+
+## Styling and positioning
+
+Neither version's Portal is the styled content surface. Migrate Fela `styles`/`variables`/`design` on the **actual trigger/content components** to token-backed Griffel classes; see [Migrate custom style overrides](?path=/docs/concepts-migration-from-v0-custom-style-overrides--docs). When composing classes, keep the consumer's `className` last in `mergeClasses`.
+
+The released automatic v9 mount node carries theme/portal classes, `dir`, a `data-portal-node` marker, and focus-visible handling. Despite the declaration's “without any styling” wording, its implementation creates an **absolute stacking context at the top of the target**, with a high stacking order. That is why the primary example explicitly chooses a static-flow mount-node class rather than silently overlaying the page. An explicit custom element does not get that automatic setup.
+
+The sample keeps browser-native buttons/input and uses v9 semantic tokens for the relocated content's base theme/typography. These are not promises of pixel-identical Teams v0 colors, fonts, scrollbar rules, or global resets. Validate inherited typography, forced-colors focus indicators, direction, and the actual portal layout in the application's theme. The primitive supplies no content padding, backdrop, centered dialog layout, or anchored positioning.
+
+Low-level v0 Portal has **no `position` or `positioning` prop**. Only when intentionally choosing an anchored `Popover` should you also consult [Migrate positioning](?path=/docs/concepts-migration-from-v0-positioning--docs). For custom naming, key actions, and focus behavior on real elements, see [Migrate custom accessibility](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs).
+
+## Managed overlay alternatives
+
+For new product overlay behavior, prefer a managed component instead of growing the fixed example into an overlay library:
+
+| Destination | Composition and important differences                                                                                                                                                                                                                                                                                                                                                                           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Dialog`    | Compose `DialogTrigger` followed by `DialogSurface` (or just a surface for an externally opened dialog). It starts closed, defaults to `modalType="modal"` and `unmountOnClose={true}`, focuses/traps/restores focus, supplies dialog semantics and a backdrop, manages body scrolling, and requests Escape/backdrop closing. `modalType="non-modal"` is a different policy, not an exact legacy-trap alias.    |
+| `Popover`   | Compose `PopoverTrigger` and `PopoverSurface`. It starts closed, defaults to `trapFocus={false}` and `inline={false}`, positions the surface against its trigger, and autofocuses unless `unstable_disableAutoFocus` is set. Its trigger/surface handle Escape. In this release, `trapFocus` also enables dismissal on a genuine inside-to-outside focus transition, which the source boolean trap does not do. |
+
+Both controlled forms use `(event, data)` in `onOpenChange` and require consumer updates from `data.open`. **Dialog** data includes `open` and `type` (`'triggerClick'`, `'backdropClick'`, or `'escapeKeyDown'`); these are requests, not the legacy lifecycle callbacks, and a close trigger also reports `'triggerClick'`. **Popover** change data contains `open` only: there is **no public `data.type`/reason field**. Do not invent one or use an internal focus-dismissal opt-out prop as a supported migration API.
+
+If the original must not close on Escape, or must keep outside focus without dismissal, a default managed overlay changes that contract. Explicitly design and test any request filtering and handler/ref composition; do not pass the legacy props to the managed root and assume parity. Likewise, document new dialog roles, modal accessibility, backdrop blocking, positioning, scroll locking, and motion as intentional product changes rather than hiding them behind the Portal rename.
+
+## PortalCompatProvider coexistence
+
+`PortalCompatProvider` is imported from **`@fluentui/react-portal-compat`**. Its only public prop is `children`. It is not a portal creator, a v0 Portal subcomponent, a focus-trap substitute, or a renamed v9 `Portal`.
+
+Use it when v9 controls live in a portal still owned by a supported v0/v8 component:
+
+1. Supply a themed v9 `FluentProvider`.
+2. Place `PortalCompatProvider` **inside that provider and above the legacy portal owner in the React tree**. Putting it only inside an already-created portal's children is too late for that owner's registration.
+3. Retain the legacy `Provider`/theme context for still-legacy components. Align its `target`/direction with the v9 provider when using another document.
+4. Keep one physical `@fluentui/react-portal-compat-context` module instance shared by the bridge and legacy portal package, plus one compatible React/ReactDOM runtime. Matching version ranges alone do not prove that the bundler deduplicated their React contexts.
+
+### Complete mixed-provider example
+
+This is a separate incremental-migration example, **not** the pure-v9 replacement above. It retains v0 open/dismissal/trapping ownership while a v9 button is rendered in the legacy portal.
+
+```tsx
+import * as React from 'react';
+import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { PortalCompatProvider } from '@fluentui/react-portal-compat';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { Portal as LegacyPortal, Provider as LegacyProvider, teamsTheme } from '@fluentui/react-northstar';
+
+function LegacySettings() {
+  const { targetDocument, dir } = useFluent_unstable();
+  const [open, setOpen] = React.useState(false);
+  const [saved, setSaved] = React.useState(false);
+
+  return (
+    <LegacyProvider theme={teamsTheme} target={targetDocument} rtl={dir === 'rtl'}>
+      <LegacyPortal
+        open={open}
+        trapFocus
+        trigger={<button type="button">Open mixed settings</button>}
+        onTriggerClick={() => setOpen(isOpen => !isOpen)}
+        onOutsideClick={() => setOpen(false)}
+      >
+        <section aria-label="Mixed settings panel">
+          <h2>Mixed settings panel</h2>
+          <p>The portal is still owned by v0; this button uses the v9 theme.</p>
+          <Button
+            appearance="primary"
+            onClick={() => {
+              setSaved(true);
+              setOpen(false);
+            }}
+          >
+            Save settings
+          </Button>
+        </section>
+      </LegacyPortal>
+      <output>{saved ? 'Settings saved' : 'Settings not saved'}</output>
+    </LegacyProvider>
+  );
+}
+
+export default function MixedPortalExample() {
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <PortalCompatProvider>
+        <LegacySettings />
+      </PortalCompatProvider>
+    </FluentProvider>
+  );
+}
+```
+
+The released v0 `PortalInner` already registers its portal box through `usePortalCompat` and unregisters on cleanup. The bridge copies the enclosing v9 **CSS-variable/theme-holder classes** to registered legacy nodes and installs focus-visible handling using each node's `ownerDocument.defaultView`. Registration cleanup removes those copied classes and disposes the focus-visible listeners/marker state. A node without an owner window cannot receive that polyfill. Without an enclosing `FluentProvider`, there is no provider theme class to copy, and the bridge warns in development.
+
+It does not copy arbitrary provider/root classes, provide a universal typography/reset layer, supply legacy theming, add overlay semantics, or change autofocus, trapping, restoration, dismissal, or layout. Focus-visible handling marks keyboard-visible focus; it is not focus management. The bridge does not retrofit unregistered third-party portal implementations or reconcile different documents/themes automatically.
+
+If v9 tokens or keyboard focus indicators are missing, first check provider ordering, theme scope, legacy registration, the owning document, and context identity. The approved mixed-runtime baseline has one compat-context 9.0.17 instance across v0/the bridge and one React 18.3.1 instance; other applications must verify their own bundle. No third-party module patches or global CSS-variable hacks are needed for the supported arrangement.
+
+## Released-source references
+
+- [V0 Portal public behavior and callbacks](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Portal/Portal.tsx) and [actual FocusTrapZone defaults/cleanup](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx).
+- [Released v9 Portal API](https://unpkg.com/@fluentui/react-portal@9.8.16/dist/index.d.ts) and [automatic mount-node styling](https://unpkg.com/@fluentui/react-portal@9.8.16/lib/components/Portal/usePortalMountNodeStyles.styles.raw.js).
+- [Released PortalCompatProvider implementation](https://unpkg.com/@fluentui/react-portal-compat@9.2.48/lib/PortalCompatProvider.js) and [package placement guidance](https://unpkg.com/@fluentui/react-portal-compat@9.2.48/README.md).
+
+The Portal/Dialog/Tabster leaf releases above come from commit `a51547435d0a5c4a0fb15c2996c3d3efea5b49dd`; the suite, Popover, and compat package use `191b8365a26c4ad5366ff7155da4a7914fb55150`. Use the released artifacts when auditing these behaviors rather than assuming one checkout commit represents every leaf.
