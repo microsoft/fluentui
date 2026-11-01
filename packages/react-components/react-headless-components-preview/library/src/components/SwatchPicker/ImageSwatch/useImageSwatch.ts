@@ -8,12 +8,17 @@ import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
 export const useImageSwatch = (props: ImageSwatchProps, ref: React.Ref<HTMLButtonElement>): ImageSwatchState => {
   const state: ImageSwatchState = useImageSwatchBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.focusgroupstart = toDataAttributeValue(state.selected);
-  // eslint-disable-next-line react-hooks/immutability
-  state.root['data-selected'] = toDataAttributeValue(state.selected);
-  // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = toDataAttributeValue(props.disabled);
-
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      focusgroupstart: toDataAttributeValue(state.selected),
+      'data-selected': toDataAttributeValue(state.selected),
+      'data-disabled': toDataAttributeValue(props.disabled),
+      style: {
+        backgroundImage: `url("${props.src.replace(/["\\\n\r\f]/g, char => `\\${char.charCodeAt(0).toString(16)} `)}")`,
+        ...props.style,
+      },
+    },
+  };
 };

@@ -37,6 +37,7 @@ export const usePersona = (props: PersonaProps, ref: React.Ref<HTMLDivElement>):
   };
 
   state.root['data-text-position'] = state.textPosition;
+  state.root['data-text-lines'] = state.numTextLines;
 
   return state;
 };

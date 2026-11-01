@@ -11,5 +11,6 @@ export type BadgeState = BadgeBaseState & {
      * Data attribute reflecting the icon position when an icon slot is present. Value is 'before' or 'after'.
      */
     'data-icon-position'?: 'before' | 'after';
+    'data-icon-only'?: string;
   };
 };

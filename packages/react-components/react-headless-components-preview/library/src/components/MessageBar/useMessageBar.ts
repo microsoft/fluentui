@@ -2,6 +2,7 @@
 
 import type * as React from 'react';
 import { useMessageBarBase_unstable, useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
+import { slot } from '@fluentui/react-utilities';
 
 import type { MessageBarProps, MessageBarState, MessageBarContextValues } from './MessageBar.types';
 import { toDataAttributeValue } from '../../utils';
@@ -18,7 +19,14 @@ export const useMessageBar = (props: MessageBarProps, ref: React.Ref<HTMLDivElem
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = toDataAttributeValue(state.intent);
 
-  return state;
+  return {
+    ...state,
+    icon: slot.optional(props.icon, {
+      renderByDefault: true,
+      defaultProps: { 'aria-hidden': true },
+      elementType: 'div',
+    }),
+  };
 };
 
 /**

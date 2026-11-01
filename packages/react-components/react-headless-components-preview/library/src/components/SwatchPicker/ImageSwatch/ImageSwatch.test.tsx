@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../../testing/isConformant';
 import { ImageSwatch } from './ImageSwatch';
 import { SwatchPicker } from '../SwatchPicker';
+import { useImageSwatch } from './useImageSwatch';
 
 describe('ImageSwatch', () => {
   isConformant({
@@ -22,6 +24,22 @@ describe('ImageSwatch', () => {
     });
 
     expect(getByRole('radio')).toHaveAttribute('data-selected');
+  });
+
+  it('quotes URLs containing parentheses and spaces', () => {
+    const { result } = renderHook(() => useImageSwatch({ src: 'image (1).png', value: 'image' }, null));
+    expect(result.current.root.style?.backgroundImage).toBe('url("image (1).png")');
+  });
+
+  it('escapes quotes, backslashes, and CSS line terminators in URLs', () => {
+    const { result } = renderHook(() => useImageSwatch({ src: 'image"\\\n\r\f.png', value: 'image' }, null));
+    expect(result.current.root.style?.backgroundImage).toBe('url("image\\22 \\5c \\a \\d \\c .png")');
+  });
+
+  it('preserves an explicit background image override and defaults to a non-submit button', () => {
+    const { getByRole } = render(<ImageSwatch src="image.png" value="image" style={{ backgroundImage: 'none' }} />);
+    expect(getByRole('radio')).toHaveAttribute('type', 'button');
+    expect(getByRole('radio').style.backgroundImage).toBe('none');
   });
 
   it('emits the disabled state attribute only while disabled', () => {

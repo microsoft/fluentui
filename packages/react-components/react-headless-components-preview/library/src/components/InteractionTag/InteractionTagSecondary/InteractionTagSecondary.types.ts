@@ -16,5 +16,6 @@ export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {
      * Data attribute set when the interaction tag is selected.
      */
     'data-selected'?: string;
+    'data-interaction-tag-secondary'?: string;
   };
 };

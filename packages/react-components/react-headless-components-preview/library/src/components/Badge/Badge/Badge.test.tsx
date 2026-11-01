@@ -28,4 +28,15 @@ describe('Badge', () => {
 
     expect(root).not.toHaveAttribute('data-icon-position');
   });
+
+  it('emits icon-only only when the icon slot has no accompanying content', () => {
+    const { container, rerender } = render(<Badge icon="Icon" />);
+    expect(container.firstElementChild).toHaveAttribute('data-icon-only');
+    rerender(<Badge icon="Icon">Text</Badge>);
+    expect(container.firstElementChild).not.toHaveAttribute('data-icon-only');
+    rerender(<Badge icon="Icon">{0}</Badge>);
+    expect(container.firstElementChild).not.toHaveAttribute('data-icon-only');
+    rerender(<Badge />);
+    expect(container.firstElementChild).not.toHaveAttribute('data-icon-only');
+  });
 });

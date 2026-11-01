@@ -73,6 +73,7 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
   Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
+    triggerButton: { 'data-open'?: string };
     layout: AvatarGroupProps['layout'];
 
     /**

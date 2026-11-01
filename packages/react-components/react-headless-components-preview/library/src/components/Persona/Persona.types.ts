@@ -22,5 +22,6 @@ export type PersonaState = ComponentState<PersonaSlots> &
   Pick<PersonaBaseState, 'textPosition' | 'numTextLines'> & {
     root: {
       'data-text-position'?: PersonaBaseState['textPosition'];
+      'data-text-lines'?: number;
     };
   };

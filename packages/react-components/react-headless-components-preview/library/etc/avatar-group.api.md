@@ -8,8 +8,8 @@ import type { AvatarGroupBaseState } from '@fluentui/react-avatar';
 import { AvatarGroupContextValue } from '@fluentui/react-avatar';
 import { AvatarGroupContextValues } from '@fluentui/react-avatar';
 import type { AvatarGroupItemBaseProps } from '@fluentui/react-avatar';
+import type { AvatarGroupItemBaseState } from '@fluentui/react-avatar';
 import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
-import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
 import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
 import { AvatarGroupProvider } from '@fluentui/react-avatar';
@@ -49,7 +49,12 @@ export type AvatarGroupItemProps = Omit<AvatarGroupItemBaseProps, 'color' | 'idF
 
 export { AvatarGroupItemSlots }
 
-export { AvatarGroupItemState }
+// @public (undocumented)
+export type AvatarGroupItemState = AvatarGroupItemBaseState & {
+    root: {
+        'data-overflow-item'?: string;
+    };
+};
 
 // @public
 export const AvatarGroupPopover: {
@@ -78,6 +83,9 @@ export type AvatarGroupPopoverSlots = {
 // @public
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
+    triggerButton: {
+        'data-open'?: string;
+    };
     layout: AvatarGroupProps_2['layout'];
     popover: AvatarGroupPopoverPopoverProps;
 };

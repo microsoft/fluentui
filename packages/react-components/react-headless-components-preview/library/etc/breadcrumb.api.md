@@ -42,6 +42,7 @@ export { BreadcrumbButtonSlots }
 export type BreadcrumbButtonState = BreadcrumbButtonBaseState & {
     root: {
         'data-current'?: string;
+        'data-disabled'?: string;
     };
 };
 
