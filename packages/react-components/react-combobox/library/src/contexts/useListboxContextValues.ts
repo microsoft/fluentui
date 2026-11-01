@@ -19,12 +19,14 @@ export function useListboxContextValues(state: ListboxState): ListboxContextValu
 
   // get register/unregister functions from parent combobox context
   const parentRegisterOption = useListboxContext_unstable(ctx => ctx.registerOption);
+  const disabled = useListboxContext_unstable(ctx => ctx.disabled);
   const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
   const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
 
   const registerOptionValue = hasListboxContext ? parentRegisterOption : registerOption;
 
   const listbox = {
+    disabled,
     activeOption: undefined,
     focusVisible: false,
     getOptionById,
