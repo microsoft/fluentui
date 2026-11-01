@@ -1,9 +1,8 @@
 'use client';
 
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
+import type { TreeBaseProps, TreeBaseState, TreeCheckedChangeData } from '../components/Tree/Tree.types';
 import * as React from 'react';
-import { Collapse } from '@fluentui/react-motion-components-preview';
 import type { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
@@ -18,12 +17,12 @@ import { ImmutableMap } from '../utils/ImmutableMap';
  * @param ref - reference to root HTMLElement of tree
  */
 export function useRootTree(
-  props: TreeProps,
+  props: TreeBaseProps,
   ref: React.Ref<HTMLElement>,
-): Omit<TreeState & TreeContextValue, 'treeType'> {
+): Omit<TreeBaseState & Omit<TreeContextValue, 'appearance' | 'size'>, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
-  const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
+  const { selectionMode = 'none' } = props;
 
   const openItems = React.useMemo(() => ImmutableSet.from(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
@@ -81,14 +80,11 @@ export function useRootTree(
   return {
     components: {
       root: 'div',
-      collapseMotion: Collapse,
     },
     contextType: 'root',
     selectionMode,
     navigationMode: props.navigationMode ?? 'tree',
     open: true,
-    appearance,
-    size,
     level: 1,
     openItems,
     checkedItems,
@@ -108,11 +104,10 @@ export function useRootTree(
       }),
       { elementType: 'div' },
     ),
-    collapseMotion: undefined,
   };
 }
 
-function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria-labelledby'>) {
+function warnIfNoProperPropsRootTree(props: Pick<TreeBaseProps, 'aria-label' | 'aria-labelledby'>) {
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console

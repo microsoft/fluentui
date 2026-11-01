@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
@@ -6,6 +7,7 @@ import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { SelectionMode } from '@fluentui/react-utilities';
 import { Tree } from '../Tree/Tree';
 import { TreeItem } from '../TreeItem/TreeItem';
+import { TreeItemLayout } from './TreeItemLayout';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useTreeItemLayout_unstable } from './useTreeItemLayout';
 import type { TreeItemLayoutProps } from './TreeItemLayout.types';
@@ -60,6 +62,23 @@ describe('useTreeItemLayout_unstable', () => {
     expect(React.isValidElement(result.current.expandIcon?.children)).toBe(true);
     expect((result.current.expandIcon?.children as React.ReactElement).type).toBe(TreeItemChevron);
     expect(result.current.expandIcon?.['aria-hidden']).toBe(true);
+  });
+
+  it('provides the default chevron to render-function expand-icon slots', () => {
+    const renderExpandIcon = jest.fn((Component: React.ElementType, slotProps: React.HTMLAttributes<HTMLElement>) => (
+      <Component {...slotProps} />
+    ));
+
+    render(
+      <Tree aria-label="Tree">
+        <TreeItem itemType="branch" value="item">
+          <TreeItemLayout expandIcon={{ children: renderExpandIcon }}>Item</TreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+
+    expect(renderExpandIcon).toHaveBeenCalled();
+    expect(renderExpandIcon.mock.calls[0][1].children).toEqual(expect.objectContaining({ type: TreeItemChevron }));
   });
 
   it('does not render an expand icon for a leaf', () => {
