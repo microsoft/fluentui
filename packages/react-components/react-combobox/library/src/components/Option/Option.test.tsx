@@ -5,7 +5,7 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
-import { optionClassNames } from './useOptionStyles.styles';
+import { optionClassNames } from './Option.constants';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 

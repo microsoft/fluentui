@@ -199,7 +199,7 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
 const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
-// @public (undocumented)
+// @public
 export const optionClassNames: SlotClassNames<OptionSlots>;
 
 // @public

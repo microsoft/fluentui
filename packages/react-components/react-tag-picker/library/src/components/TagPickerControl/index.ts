@@ -9,9 +9,9 @@ export type {
 } from './TagPickerControl.types';
 export { renderTagPickerControl_unstable } from './renderTagPickerControl';
 export { useTagPickerControl_unstable, useTagPickerControlBase_unstable } from './useTagPickerControl';
+export { tagPickerControlAsideWidthToken } from './TagPickerControl.constants';
 export {
   iconSizes,
-  tagPickerControlAsideWidthToken,
   tagPickerControlClassNames,
   useTagPickerControlStyles_unstable,
 } from './useTagPickerControlStyles.styles';

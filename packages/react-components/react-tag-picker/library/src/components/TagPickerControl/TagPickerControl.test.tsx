@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagPickerControl } from './TagPickerControl';
-import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
+import { tagPickerControlAsideWidthToken } from './TagPickerControl.constants';
 
 /**
  * Collects animation frames instead of running them and makes ResizeObserver report a size as soon as an element is
