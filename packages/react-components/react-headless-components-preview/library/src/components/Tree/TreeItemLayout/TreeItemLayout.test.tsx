@@ -23,7 +23,7 @@ const renderInTree = (
     </Tree>,
   );
 
-const TreeItemWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+const TreeItemWrapper = ({ children }: { children?: React.ReactNode }) => (
   <Tree aria-label="Tree">
     <TreeItem itemType="leaf">{children}</TreeItem>
   </Tree>

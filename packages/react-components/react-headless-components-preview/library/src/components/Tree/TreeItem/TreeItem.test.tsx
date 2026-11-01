@@ -5,9 +5,7 @@ import { Tree } from '../Tree';
 import { TreeItem } from './TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
 
-const TreeWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-  <Tree aria-label="Tree">{children}</Tree>
-);
+const TreeWrapper = ({ children }: { children?: React.ReactNode }) => <Tree aria-label="Tree">{children}</Tree>;
 
 describe('TreeItem', () => {
   isConformant({
