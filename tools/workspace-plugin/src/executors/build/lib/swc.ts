@@ -47,19 +47,19 @@ export async function compileSwc(
       continue;
     }
 
+    const jsFileName = fileName.replace(tsFileExtensionRegex, '.js');
+    const compiledFilePath = join(absoluteOutputPath, jsFileName);
+
     const result = await transformFile(srcFilePath, {
       module: { type: module, resolveFully: Boolean(swcConfig.jsc?.baseUrl) },
-      // srcFilePath is absolute path so outputPath needs to be as well in order to properly emit relative path within .map (eg: `"sources":["../src/utils/createDarkTheme.ts"]`)
-      outputPath: join(normalizedOptions.absoluteProjectRoot, outputPath),
+      // SWC resolves source-map sources relative to the emitted file, not the output directory.
+      outputPath: compiledFilePath,
     });
 
     // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
     const resultCode = result.code
       .replace('/** @jsxRuntime automatic */', '')
       .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
-
-    const jsFileName = fileName.replace(tsFileExtensionRegex, '.js');
-    const compiledFilePath = join(absoluteOutputPath, jsFileName);
 
     // Create directory folder for new compiled file(s) to live in.
     await mkdir(dirname(compiledFilePath), { recursive: true });

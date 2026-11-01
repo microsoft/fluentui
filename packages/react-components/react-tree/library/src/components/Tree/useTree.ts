@@ -29,10 +29,8 @@ import { ImmutableMap } from '../../utils/ImmutableMap';
  */
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
   const { appearance = 'subtle', size = 'medium', collapseMotion, ...baseProps } = props;
-  const { findFirstFocusable } = useFocusFinders();
-
   // Tabster aware focus management, superseding the plain DOM one used by the base hook.
-  const state = useTreeInternal(baseProps, ref, { findFirstFocusable, useFocusedElementChange });
+  const state = useTreeInternal(baseProps, ref, useTabsterNavigationOptions);
 
   if (state.contextType === 'subtree') {
     return {
@@ -69,34 +67,44 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
  * @param ref - reference to root HTMLElement of Tree
  */
 export const useTreeBase_unstable = (props: TreeBaseProps, ref: React.Ref<HTMLElement>): TreeBaseState => {
-  return useTreeInternal(props, ref, {
-    findFirstFocusable: findFirstFocusableDOM,
-    useFocusedElementChange: useDOMFocusedElementChange,
-  });
+  return useTreeInternal(props, ref, useDOMNavigationOptions);
+};
+
+const domNavigationOptions: TreeNavigationOptions = {
+  findFirstFocusable: findFirstFocusableDOM,
+  useFocusedElementChange: useDOMFocusedElementChange,
+};
+
+const useDOMNavigationOptions = (): TreeNavigationOptions => domNavigationOptions;
+
+const useTabsterNavigationOptions = (): TreeNavigationOptions => {
+  const { findFirstFocusable } = useFocusFinders();
+  return { findFirstFocusable, useFocusedElementChange };
 };
 
 function useTreeInternal(
   props: TreeBaseProps,
   ref: React.Ref<HTMLElement>,
-  navigationOptions: TreeNavigationOptions,
+  // Only the root tree drives navigation, so subtrees never pay for the focus management runtime.
+  useNavigationOptions: () => TreeNavigationOptions,
 ): TreeBaseState {
   const isRoot = React.useContext(SubtreeContext) === undefined;
   // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return isRoot ? useNestedRootTree(props, ref, navigationOptions) : useNestedSubtree(props, ref);
+  return isRoot ? useNestedRootTree(props, ref, useNavigationOptions) : useNestedSubtree(props, ref);
 }
 
 function useNestedRootTree(
   props: TreeBaseProps,
   ref: React.Ref<HTMLElement>,
-  navigationOptions: TreeNavigationOptions,
+  useNavigationOptions: () => TreeNavigationOptions,
 ): TreeBaseState {
   'use no memo'; // justified: compiler would optimize useNestedRootTree — manual opt-out to preserve runtime behavior
 
   const [openItems, setOpenItems] = useControllableOpenItems(props);
   const checkedItems = useNestedCheckedItems(props);
-  const navigation = useTreeNavigationBase(props.navigationMode, navigationOptions);
+  const navigation = useTreeNavigationBase(props.navigationMode, useNavigationOptions());
 
   return Object.assign(
     useRootTree(

@@ -7,9 +7,8 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { Calendar } from './Calendar';
 import { calendarClassNames } from './useCalendarStyles.styles';
 import { calendarDayClassNames } from '../CalendarDay/useCalendarDayStyles.styles';
-import { calendarMonthClassNames } from '../CalendarMonth/useCalendarMonthStyles.styles';
-import { calendarMonthGridCellClassNames } from '../CalendarMonthGridCell/useCalendarMonthGridCellStyles.styles';
-import { calendarYearGridCellClassNames } from '../CalendarYearGridCell/useCalendarYearGridCellStyles.styles';
+import { calendarMonthClassNames, calendarMonthGridClassNames } from '../CalendarMonth/useCalendarMonthStyles.styles';
+import { calendarYearGridClassNames } from '../CalendarYear/useCalendarYearStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { CalendarProps } from './Calendar.types';
 
@@ -128,22 +127,21 @@ describe('Calendar', () => {
   });
 
   describe('day grid keyboard navigation', () => {
-    it('keeps enclosing day-label callbacks when a nested Calendar handles an arrow', () => {
+    it('keeps enclosing custom content callbacks when a nested Calendar handles an arrow', () => {
       const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
       mountFluent(
         <Calendar
           today={today}
           defaultValue={today}
           dayPicker={{
-            getDayCellProps: date =>
-              date.getTime() === today.getTime()
-                ? {
-                    dayLabel: {
-                      onKeyDown: onOuterKeyDown,
-                      children: <Calendar today={today} defaultValue={today} />,
-                    },
-                  }
-                : {},
+            renderDay: (dayCell, defaultContent) =>
+              dayCell.originalDate?.getTime() === today.getTime() ? (
+                <span onKeyDown={onOuterKeyDown}>
+                  <Calendar today={today} defaultValue={today} />
+                </span>
+              ) : (
+                defaultContent
+              ),
           }}
         />,
       );
@@ -151,65 +149,14 @@ describe('Calendar', () => {
       cy.get(day('September 18, 2020'))
         .find('[role="grid"] button[aria-label="September 18, 2020"]')
         .last()
+        .closest('td')
         .focus()
         .realPress('ArrowRight');
       cy.get('@onOuterKeyDown').should('have.been.calledOnce');
     });
 
-    it('does not forward cell-targeted arrows to the child button', () => {
-      const cancel = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
-      mountFluent(
-        <Calendar
-          today={today}
-          defaultValue={today}
-          dayPicker={{ getDayCellProps: () => ({ button: { onKeyDownCapture: cancel, onKeyDown: cancel } }) }}
-        />,
-      );
-      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
-      cy.get(day('September 19, 2020')).should('be.focused');
-      cy.wrap(cancel).should('not.have.been.called');
-    });
-
     (['capture', 'bubble'] as const).forEach(phase => {
-      it(`honors dayLabel ${phase} cancellation and preserves consumer bubbling`, () => {
-        const capture = cy.stub().callsFake((event: React.KeyboardEvent) => {
-          if (phase === 'capture') {
-            event.preventDefault();
-          }
-        });
-        const bubble = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
-        mountFluent(
-          <Calendar
-            today={today}
-            defaultValue={today}
-            dayPicker={{
-              getDayCellProps: () => ({
-                dayLabel: { tabIndex: 0, title: 'Focusable day', onKeyDownCapture: capture, onKeyDown: bubble },
-              }),
-            }}
-          />,
-        );
-        cy.get(day('September 18, 2020')).find('[title="Focusable day"]').focus().realPress('ArrowRight');
-        cy.get(day('September 18, 2020')).find('[title="Focusable day"]').should('be.focused');
-        cy.wrap(capture).should('have.been.calledOnce');
-        cy.wrap(bubble).should('have.been.calledOnce');
-      });
-    });
-
-    it('preserves day movement when the cell consumer only stops propagation', () => {
-      mountFluent(
-        <Calendar
-          today={today}
-          defaultValue={today}
-          dayPicker={{ getDayCellProps: () => ({ onKeyDown: event => event.stopPropagation() }) }}
-        />,
-      );
-      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
-      cy.get(day('September 19, 2020')).should('be.focused');
-    });
-
-    (['capture', 'bubble'] as const).forEach(phase => {
-      it(`honors custom dayLabel child ${phase} cancellation before navigation`, () => {
+      it(`honors custom day content ${phase} cancellation before navigation`, () => {
         const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => {
           if (phase === 'capture') {
             event.preventDefault();
@@ -225,20 +172,11 @@ describe('Calendar', () => {
             today={today}
             defaultValue={today}
             dayPicker={{
-              getDayCellProps: () => ({
-                dayLabel: {
-                  children: (
-                    <span
-                      tabIndex={0}
-                      title="Custom day content"
-                      onKeyDownCapture={onKeyDownCapture}
-                      onKeyDown={onKeyDown}
-                    >
-                      18
-                    </span>
-                  ),
-                },
-              }),
+              renderDay: () => (
+                <span tabIndex={0} title="Custom day content" onKeyDownCapture={onKeyDownCapture} onKeyDown={onKeyDown}>
+                  18
+                </span>
+              ),
             }}
           />,
         );
@@ -247,6 +185,18 @@ describe('Calendar', () => {
         cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
         cy.wrap(onKeyDown).should('have.been.calledOnce');
       });
+    });
+
+    it('lets a cell handler cancel day movement', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{ getDayCellProps: () => ({ onKeyDown: event => event.preventDefault() }) }}
+        />,
+      );
+      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('September 18, 2020')).should('be.focused');
     });
 
     it('pages from the arrow-focused day rather than the original anchor', () => {
@@ -632,11 +582,11 @@ describe('Calendar', () => {
     it('keeps the month highlight on the navigated month', () => {
       mountFluent(<Calendar today={today} value={today} highlightSelectedMonth />);
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}[data-selected]`).should('have.text', 'Sep');
+      cy.get(`.${calendarMonthGridClassNames.cell}[data-selected]`).should('have.text', 'Sep');
 
       cy.get(nextMonth).click();
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}[data-selected]`).should('have.text', 'Oct');
+      cy.get(`.${calendarMonthGridClassNames.cell}[data-selected]`).should('have.text', 'Oct');
     });
 
     it('opens the year picker on the navigated year', () => {
@@ -646,13 +596,13 @@ describe('Calendar', () => {
       cy.get(nextMonth).click();
       cy.get(`.${calendarMonthClassNames.heading}`).should('have.text', '2021').click();
 
-      cy.get(`.${calendarYearGridCellClassNames.root}[data-selected]`).should('have.text', '2021');
+      cy.get(`.${calendarYearGridClassNames.cell}[data-selected]`).should('have.text', '2021');
     });
 
     it('navigates the day grid when a month is picked', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}`).contains('Dec').click();
+      cy.get(`.${calendarMonthGridClassNames.cell}`).contains('Dec').click();
 
       cy.get(heading).should('have.text', 'December 2020');
       cy.focused().find('button').should('have.attr', 'aria-label', 'December 18, 2020');
@@ -762,7 +712,7 @@ describe('Calendar', () => {
           <button type="button">Outside action</button>
         </>,
       );
-      cy.get(`.${calendarMonthGridCellClassNames.root}`).contains('Sep').focus();
+      cy.get(`.${calendarMonthGridClassNames.cell}`).contains('Sep').focus();
       cy.contains('button', 'Outside action').focus();
       cy.viewport(360, 800);
       cy.get(`.${calendarMonthClassNames.root}`).should('not.exist');

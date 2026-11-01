@@ -17,14 +17,13 @@ export const CalendarCustomCells = (): JSXElement => {
     <div className={styles.root}>
       <Calendar
         dayPicker={{
-          getDayCellProps: date =>
-            date.getDate() === 15
-              ? {
-                  ref: appointmentRef,
-                  title: 'Monthly appointment',
-                  dayLabel: { className: styles.appointment },
-                }
-              : {},
+          getDayCellProps: date => (date.getDate() === 15 ? { ref: appointmentRef, title: 'Monthly appointment' } : {}),
+          renderDay: (day, defaultContent) =>
+            day.originalDate?.getDate() === 15 ? (
+              <span className={styles.appointment}>{defaultContent}</span>
+            ) : (
+              defaultContent
+            ),
         }}
         monthPicker={{
           yearPicker: {
@@ -43,8 +42,9 @@ CalendarCustomCells.parameters = {
   docs: {
     description: {
       story:
-        'getDayCellProps customizes each visible day, including refs and child slots, without replacing the grid. ' +
-        'CalendarYear.renderYear customizes year content. Cell click and keyboard handlers run first; preventDefault cancels the built-in action.',
+        'getDayCellProps customizes each visible day cell, including its ref, and renderDay customizes the content of its button, ' +
+        'without replacing the grid. CalendarYear.renderYear customizes year content. ' +
+        'Cell click and keyboard handlers run first; preventDefault cancels the built-in action.',
     },
   },
 };

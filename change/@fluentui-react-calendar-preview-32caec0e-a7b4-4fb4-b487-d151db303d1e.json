@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Align Calendar sizing, popup focus, and keyboard selection behavior.",
-  "packageName": "@fluentui/react-calendar-preview",
-  "email": "dmytrokirpa@microsoft.com"
-}

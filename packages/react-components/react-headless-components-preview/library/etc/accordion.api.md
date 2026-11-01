@@ -5,11 +5,15 @@
 ```ts
 
 import type { AccordionBaseState } from '@fluentui/react-accordion';
+import { AccordionContextValue } from '@fluentui/react-accordion';
 import { AccordionContextValues } from '@fluentui/react-accordion';
 import type { AccordionHeaderBaseState } from '@fluentui/react-accordion';
+import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
 import { AccordionHeaderBaseProps as AccordionHeaderProps } from '@fluentui/react-accordion';
 import { AccordionHeaderSlots } from '@fluentui/react-accordion';
+import { AccordionItemContextValue } from '@fluentui/react-accordion';
+import { AccordionItemContextValues } from '@fluentui/react-accordion';
 import { AccordionItemProps } from '@fluentui/react-accordion';
 import { AccordionItemSlots } from '@fluentui/react-accordion';
 import type { AccordionItemState as AccordionItemState_2 } from '@fluentui/react-accordion';
@@ -25,15 +29,23 @@ import { renderAccordion_unstable as renderAccordion } from '@fluentui/react-acc
 import { renderAccordionHeader_unstable as renderAccordionHeader } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable as renderAccordionItem } from '@fluentui/react-accordion';
 import { useAccordionContext_unstable as useAccordionContext } from '@fluentui/react-accordion';
+import { useAccordionHeaderContext_unstable as useAccordionHeaderContext } from '@fluentui/react-accordion';
+import { useAccordionItemContext_unstable as useAccordionItemContext } from '@fluentui/react-accordion';
 import { useAccordionItemContextValues_unstable as useAccordionItemContextValues } from '@fluentui/react-accordion';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
+export { AccordionContextValue }
+
 export { AccordionContextValues }
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+export { AccordionHeaderContextValue }
+
+export { AccordionHeaderContextValues }
 
 export { AccordionHeaderProps }
 
@@ -50,6 +62,10 @@ export type AccordionHeaderState = AccordionHeaderBaseState & {
 
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
+
+export { AccordionItemContextValue }
+
+export { AccordionItemContextValues }
 
 export { AccordionItemProps }
 
@@ -109,11 +125,15 @@ export const useAccordionContextValues: (state: AccordionState) => AccordionCont
 // @public
 export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
+export { useAccordionHeaderContext }
+
 // @public
 export const useAccordionHeaderContextValues: (state: AccordionHeaderState) => AccordionHeaderContextValues;
 
 // @public
 export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
+
+export { useAccordionItemContext }
 
 export { useAccordionItemContextValues }
 

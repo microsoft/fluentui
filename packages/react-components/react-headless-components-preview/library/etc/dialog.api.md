@@ -198,6 +198,9 @@ export const renderDialogSurface: (state: DialogSurfaceState) => JSXElement | nu
 export const renderDialogTitle: (state: DialogTitleState) => JSXElement;
 
 // @public
+export const renderDialogTrigger: (state: DialogTriggerState) => JSXElement | null;
+
+// @public
 export const useDialog: (props: DialogProps) => DialogState;
 
 // @public

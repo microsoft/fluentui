@@ -9,7 +9,7 @@ import type { TreeProps } from './Tree.types';
 const getItem = (text: string) => screen.getByText(text).closest<HTMLElement>('[role="treeitem"]')!;
 
 const NestedTree = React.forwardRef<HTMLDivElement, Partial<TreeProps>>((props, ref) => (
-  <Tree aria-label="Files" {...props}>
+  <Tree ref={ref} aria-label="Files" {...props}>
     <TreeItem itemType="branch" value="docs">
       <TreeItemLayout>Docs</TreeItemLayout>
       <Tree>

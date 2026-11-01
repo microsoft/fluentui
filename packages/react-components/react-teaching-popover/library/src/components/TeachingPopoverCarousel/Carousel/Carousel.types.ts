@@ -17,8 +17,9 @@ export type CarouselItem = {
 
 export type UseCarouselOptions = {
   /**
-   * Localizes the string used to announce carousel page changes to screen reader users
-   * Defaults to: undefined
+   * Localizes the string used to announce carousel page changes to screen reader users.
+   * Runs after the destination page renders. When omitted, page changes are not announced.
+   * Return an empty string to suppress an announcement.
    */
   announcement?: (newValue: string) => string;
 

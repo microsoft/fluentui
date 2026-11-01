@@ -88,6 +88,6 @@ extends:
               - script: |
                   yarn beachball publish -b origin/$(Build.SourceBranchName) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
                 displayName: Publish changes and bump versions
-                condition: not(${{ parameters.dryRun }})
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   BEACHBALL_NPM_TOKEN: $(npmToken)

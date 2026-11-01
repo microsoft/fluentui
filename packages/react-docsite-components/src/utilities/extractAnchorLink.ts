@@ -1,3 +1,5 @@
+import { normalizeEncodedAnchorLink } from './normalizeEncodedAnchorLink';
+
 /**
  * Given a URL containing a route path (first hash) and possibly an anchor (second hash),
  * returns only the anchor part, if it exists. (Does not include the query string, if any.)
@@ -14,7 +16,7 @@ export function extractAnchorLink(url: string): string {
   // http://whatever#/components/checkbox
   // #Overview
   // http://whatever#Overview
-  const split = url.split('#');
+  const split = normalizeEncodedAnchorLink(url).split('#');
   if (split.length === 3) {
     // Also remove the query if present
     // (technically the query can't be after the hash, but this is likely with hash routing)

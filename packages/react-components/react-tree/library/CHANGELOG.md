@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-tree
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.16.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.16.10)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.16.9..@fluentui/react-tree_v9.16.10)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.16.9)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.16.8..@fluentui/react-tree_v9.16.9)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-avatar to v9.11.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-checkbox to v9.6.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.21 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-radio to v9.6.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.16.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.16.8)
 

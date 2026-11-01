@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { TreeItemProps } from './TreeItem.types';
 import { useTreeItem, useTreeItemContextValues } from './useTreeItem';
 import { renderTreeItem } from './renderTreeItem';
+import { composeComponent } from '../../../utils/composeComponent';
 
 /**
  * Represents a single `treeitem` within a `Tree`.
@@ -12,11 +12,9 @@ import { renderTreeItem } from './renderTreeItem';
  * Must be rendered inside a `Tree`. A `branch` item renders its subtree as a nested `Tree`, and its
  * content is usually rendered with a `TreeItemLayout`.
  */
-export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
-  const state = useTreeItem(props, ref);
-  const contextValues = useTreeItemContextValues(state);
-
-  return renderTreeItem(state, contextValues);
-});
-
-TreeItem.displayName = 'TreeItem';
+export const TreeItem: ForwardRefComponent<TreeItemProps> = /*#__PURE__*/ composeComponent(
+  'TreeItem',
+  useTreeItem,
+  useTreeItemContextValues,
+  renderTreeItem,
+);

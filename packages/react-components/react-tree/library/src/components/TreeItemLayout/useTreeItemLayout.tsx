@@ -28,6 +28,7 @@ import { Radio } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { registerTreeItemActions } from '../../utils/queryTreeItemActions';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -43,17 +44,22 @@ export const useTreeItemLayout_unstable = (
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
   const { selector: selectorProp, ...baseProps } = props;
-  const state = useTreeItemLayoutBase_unstable(
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const { targetDocument } = useFluent();
+  const state = useTreeItemLayoutBase(
     // The base hook only needs to know whether the consumer provided or disabled the selector,
     // the Fluent selector itself is resolved below.
     { ...baseProps, selector: selectorProp === undefined || selectorProp === null ? selectorProp : {} },
     ref,
+    targetDocument,
+    isNavigatingWithKeyboard,
   );
 
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
 
   // Link the selector to the main content unless the consumer provided an accessible name
   const selectorShorthand = isResolvedShorthand(selectorProp) ? selectorProp : undefined;
@@ -73,8 +79,25 @@ export const useTreeItemLayout_unstable = (
     } as CheckboxProps | RadioProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
+  // Checkbox and Radio slot props omit `ref` from their type, but consumers can still provide it.
+  const selectorConsumerRef = selector && (selector as typeof selector & { ref?: React.Ref<HTMLInputElement> }).ref;
+  const selectorRef = useMergedRefs(selectorConsumerRef, selectionRef);
+  const selectorWithRef = selector && { ...selector, ref: selectorRef };
 
   const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
+  const expandIcon = state.expandIcon
+    ? slot.optional(props.expandIcon, {
+        renderByDefault: true,
+        defaultProps: {
+          'aria-hidden': true,
+          children: <TreeItemChevron />,
+          ref: expandIconRef,
+        },
+        elementType: 'div',
+      })
+    : undefined;
+  const expandIconRefWithConsumer = useMergedRefs(expandIcon?.ref, expandIconRef);
+  const expandIconWithRef = expandIcon && { ...expandIcon, ref: expandIconRefWithConsumer };
 
   return {
     ...state,
@@ -87,8 +110,8 @@ export const useTreeItemLayout_unstable = (
     buttonContextValue: { size: 'small' },
     // Consumer props keep winning over the navigation attributes, matching the base slot ordering.
     actions: state.actions && { ...arrowNavigationProps, ...state.actions },
-    expandIcon: state.expandIcon && { children: <TreeItemChevron />, ...state.expandIcon },
-    selector,
+    expandIcon: expandIconWithRef,
+    selector: selectorWithRef,
   };
 };
 
@@ -107,6 +130,18 @@ export const useTreeItemLayoutBase_unstable = (
   props: TreeItemLayoutBaseProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutBaseState => {
+  const { targetDocument } = useFluent();
+  const isNavigatingWithKeyboard = useDOMKeyboardNavigation(targetDocument, Boolean(props.actions));
+
+  return useTreeItemLayoutBase(props, ref, targetDocument, isNavigatingWithKeyboard);
+};
+
+function useTreeItemLayoutBase(
+  props: TreeItemLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+  targetDocument: Document | undefined,
+  isNavigatingWithKeyboard: () => boolean,
+): TreeItemLayoutBaseState {
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
@@ -148,21 +183,27 @@ export const useTreeItemLayoutBase_unstable = (
     if (selectorInputRef.current) {
       selectorInputRef.current.indeterminate = checked === 'mixed';
     }
-  }, [checked]);
+  });
 
-  const selector = slot.optional(props.selector, {
+  const selectorSlot = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
     defaultProps: {
       type: selectionMode === 'multiselect' ? 'checkbox' : 'radio',
       checked: checked === true,
       tabIndex: -1,
-      ref: useMergedRefs(selectionRef, selectorInputRef),
       'aria-labelledby': selectorAriaLabelledBy,
       // Changes bubble up to the tree item, which owns the selection state.
       onChange: noop,
     },
     elementType: 'input',
   });
+  const selectorRef = useMergedRefs(selectorSlot?.ref, selectionRef, selectorInputRef);
+  // Clicking a native checkbox clears `indeterminate`, which no commit restores if the change is rejected
+  const handleSelectorChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    selectorSlot?.onChange?.(event);
+    event.currentTarget.indeterminate = checked === 'mixed';
+  });
+  const selector = selectorSlot && { ...selectorSlot, ref: selectorRef, onChange: handleSelectorChange };
   const mainSlot = slot.always(main, {
     defaultProps: { id: selector ? mainContentId : undefined },
     elementType: 'div',
@@ -195,8 +236,7 @@ export const useTreeItemLayoutBase_unstable = (
     [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
-  const { targetDocument } = useFluent();
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const hasActions = Boolean(props.actions);
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
@@ -244,15 +284,15 @@ export const useTreeItemLayoutBase_unstable = (
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
-  const expandIconRefs = useMergedRefs(expandIconRef);
-  const expandIcon = slot.optional(props.expandIcon, {
+  const expandIconSlot = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
       'aria-hidden': true,
-      ref: expandIconRefs,
     },
     elementType: 'div',
   });
+  const expandIconRefs = useMergedRefs(expandIconSlot?.ref, expandIconRef);
+  const expandIcon = expandIconSlot && { ...expandIconSlot, ref: expandIconRefs };
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -266,19 +306,23 @@ export const useTreeItemLayoutBase_unstable = (
     setIsActionsVisible(isRelatedTargetFromActions);
   });
 
-  const actionsRefs = useMergedRefs(actionsRef, actionsRefInternal);
-  const actions = isActionsVisible
+  const actionsSlot = isActionsVisible
     ? slot.optional(props.actions, {
         defaultProps: {
           role: 'toolbar',
-          ref: actionsRefs,
           onBlur: handleActionsBlur,
         },
         elementType: 'div',
       })
     : undefined;
-
-  const hasActions = Boolean(props.actions);
+  // The internal refs are merged after slot resolution, so that a consumer provided ref does not override them
+  const actionsRefs = useMergedRefs(actionsSlot?.ref, actionsRef, actionsRefInternal, registerTreeItemActions);
+  const actions = actionsSlot && { ...actionsSlot, ref: actionsRefs };
+  if (actions) {
+    // .visible .onVisibilityChange are consumed above and should not be propagated to the DOM
+    delete actions.visible;
+    delete actions.onVisibilityChange;
+  }
 
   React.useEffect(() => {
     if (treeItemRef.current && hasActions) {
@@ -334,7 +378,72 @@ export const useTreeItemLayoutBase_unstable = (
     expandIcon,
     selector,
   };
+}
+
+type DOMKeyboardNavigationTracker = {
+  isNavigatingWithKeyboard: boolean;
+  subscribers: number;
+  dispose: () => void;
 };
+
+/**
+ * Keyboard modality trackers shared by every base layout of a document, so that the number of
+ * document listeners does not grow with the number of mounted tree items.
+ */
+const domKeyboardNavigationTrackers = new WeakMap<Document, DOMKeyboardNavigationTracker>();
+
+// Only pointer activation switches the modality, so that hovering does not discard keyboard focus
+const DOM_POINTER_EVENTS = ['pointerdown', 'mousedown', 'touchstart'] as const;
+
+function subscribeToDOMKeyboardNavigation(targetDocument: Document): DOMKeyboardNavigationTracker {
+  let tracker = domKeyboardNavigationTrackers.get(targetDocument);
+  if (!tracker) {
+    const onKeyDown = () => {
+      state.isNavigatingWithKeyboard = true;
+    };
+    const onPointerInteraction = () => {
+      state.isNavigatingWithKeyboard = false;
+    };
+    const state: DOMKeyboardNavigationTracker = {
+      isNavigatingWithKeyboard: false,
+      subscribers: 0,
+      dispose: () => {
+        targetDocument.removeEventListener('keydown', onKeyDown, true);
+        DOM_POINTER_EVENTS.forEach(type => targetDocument.removeEventListener(type, onPointerInteraction, true));
+        domKeyboardNavigationTrackers.delete(targetDocument);
+      },
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    DOM_POINTER_EVENTS.forEach(type => targetDocument.addEventListener(type, onPointerInteraction, true));
+    domKeyboardNavigationTrackers.set(targetDocument, state);
+    tracker = state;
+  }
+  tracker.subscribers++;
+  return tracker;
+}
+
+function useDOMKeyboardNavigation(targetDocument: Document | undefined, enabled: boolean): () => boolean {
+  const trackerRef = React.useRef<DOMKeyboardNavigationTracker | null>(null);
+
+  React.useEffect(() => {
+    if (!targetDocument || !enabled) {
+      return;
+    }
+
+    const tracker = subscribeToDOMKeyboardNavigation(targetDocument);
+    trackerRef.current = tracker;
+
+    return () => {
+      trackerRef.current = null;
+      if (--tracker.subscribers === 0) {
+        tracker.dispose();
+      }
+    };
+  }, [targetDocument, enabled]);
+
+  return React.useCallback(() => trackerRef.current?.isNavigatingWithKeyboard ?? false, []);
+}
 
 function noop() {
   /* noop */

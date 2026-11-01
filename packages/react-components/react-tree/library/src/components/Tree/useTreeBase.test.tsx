@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeBase_unstable } from './useTree';
 import { useTreeContextValues_unstable } from './useTreeContextValues';
@@ -139,11 +140,88 @@ describe('useTreeBase_unstable', () => {
       expect(getItem('item 1').tabIndex).toBe(-1);
     });
 
+    it('keeps the roving tab index in sync with focus moved before the tree subscribes to focus changes', () => {
+      const FocusOnMount = () => {
+        const itemRef = React.useRef<HTMLDivElement>(null);
+        useIsomorphicLayoutEffect(() => {
+          itemRef.current?.focus();
+        }, []);
+        return (
+          <BaseTree aria-label="Tree">
+            <TreeItem itemType="leaf" value="1">
+              <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf" value="2" ref={itemRef}>
+              <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+            </TreeItem>
+          </BaseTree>
+        );
+      };
+      render(<FocusOnMount />);
+
+      expect(document.activeElement).toBe(getItem('item 2'));
+      expect(getItem('item 2').tabIndex).toBe(0);
+      expect(getItem('item 1').tabIndex).toBe(-1);
+    });
+
+    it('keeps the roving tab index in sync with focus inside a shadow root', () => {
+      const host = document.createElement('div');
+      document.body.appendChild(host);
+      const container = document.createElement('div');
+      host.attachShadow({ mode: 'open' }).appendChild(container);
+      const { unmount } = render(
+        <BaseTree aria-label="Tree">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2">
+            <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+        { container },
+      );
+      const [item1, item2] = Array.from(container.querySelectorAll<HTMLElement>('[role="treeitem"]'));
+
+      item2.focus();
+
+      expect(item2.tabIndex).toBe(0);
+      expect(item1.tabIndex).toBe(-1);
+
+      unmount();
+      host.remove();
+    });
+
     it('moves focus into the actions and back in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">
           <TreeItem itemType="leaf" value="1">
-            <BaseTreeItemLayout actions={{ visible: true, children: <button>Edit</button> }}>item 1</BaseTreeItemLayout>
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <input type="hidden" />
+                    <button hidden>Hidden</button>
+                    <div aria-hidden="true">
+                      <button>Aria hidden</button>
+                    </div>
+                    {/* React 17 and 18 do not forward `inert`, so it is set through a ref */}
+                    <div ref={element => element?.setAttribute('inert', '')}>
+                      <button>Inert</button>
+                    </div>
+                    <div style={{ visibility: 'hidden' }}>
+                      <button>Visibility hidden</button>
+                    </div>
+                    <button disabled tabIndex={0}>
+                      Disabled
+                    </button>
+                    <button>Edit</button>
+                  </>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
           </TreeItem>
         </BaseTree>,
       );
@@ -155,6 +233,195 @@ describe('useTreeBase_unstable', () => {
 
       fireEvent.keyDown(screen.getByRole('button', { name: 'Edit' }), { key: 'ArrowLeft' });
       expect(document.activeElement).toBe(item);
+    });
+
+    it('moves focus into an action that overrides a hidden ancestor visibility in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <div style={{ visibility: 'hidden' }}>
+                    <button>Hidden</button>
+                    <button style={{ visibility: 'visible' }}>Edit</button>
+                  </div>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByText('Edit'));
+    });
+
+    it('keeps the roving tab index in sync when a consumer stops focus propagation', () => {
+      render(
+        <BaseTree aria-label="Tree">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2" onFocus={event => event.stopPropagation()}>
+            <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      getItem('item 2').focus();
+
+      expect(getItem('item 2').tabIndex).toBe(0);
+      expect(getItem('item 1').tabIndex).toBe(-1);
+    });
+
+    it('finds actions whose role is overridden, and ignores toolbars outside the actions', () => {
+      const actionsRef = React.createRef<HTMLDivElement>();
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{ role: 'group', ref: actionsRef, visible: true, children: <button>Edit</button> }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2">
+            <BaseTreeItemLayout main={{ role: 'toolbar' }}>
+              <button>Main</button>
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Edit' }));
+      expect(actionsRef.current?.getAttribute('role')).toBe('group');
+
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Edit' }), { key: 'ArrowLeft' });
+      expect(document.activeElement).toBe(item);
+
+      const mainItem = getItem('Main');
+      mainItem.focus();
+      fireEvent.keyDown(mainItem, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(mainItem);
+    });
+
+    it('moves focus into a contenteditable action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: <div contentEditable={true} data-testid="editor" />,
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByTestId('editor'));
+    });
+
+    it('skips the content of a closed details action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <details>
+                      <summary tabIndex={-1}>More</summary>
+                      <button>Hidden</button>
+                    </details>
+                    <button>Edit</button>
+                  </>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Edit' }));
+    });
+
+    it('moves focus into a focusable closed details action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <details tabIndex={0} data-testid="details">
+                    <summary tabIndex={-1}>More</summary>
+                  </details>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByTestId('details'));
+    });
+
+    it('moves focus into the summary of a details action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <details>
+                    <summary>Options</summary>
+                    <summary>Not a summary</summary>
+                  </details>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByText('Options'));
     });
   });
 });

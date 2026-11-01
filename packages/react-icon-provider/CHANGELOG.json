@@ -2,6 +2,20 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "1.4.9",
+      "tag": "@fluentui/react-icon-provider_v1.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icon-provider",
+            "comment": "Bump @fluentui/style-utilities to v8.15.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:32 GMT",
       "version": "1.4.8",
       "tag": "@fluentui/react-icon-provider_v1.4.8",

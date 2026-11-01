@@ -38,10 +38,23 @@ export const useDOMFocusedElementChange: UseFocusedElementChange = callback => {
       return;
     }
     const listener = (event: FocusEvent) => {
-      callbackRef.current(isHTMLElement(event.target) ? event.target : undefined);
+      // The target is retargeted to the shadow host when focus moves within a shadow root
+      const target = event.composedPath()[0] ?? event.target;
+      callbackRef.current(isHTMLElement(target) ? target : undefined);
     };
-    targetDocument.addEventListener('focusin', listener);
-    return () => targetDocument.removeEventListener('focusin', listener);
+    // Capture phase, so that consumers stopping the propagation of focus events do not desync the roving tab index
+    targetDocument.addEventListener('focusin', listener, true);
+
+    // Focus may have moved before the listener was attached, e.g. from a parent layout effect
+    let activeElement = targetDocument.activeElement;
+    while (activeElement?.shadowRoot?.activeElement) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
+    if (isHTMLElement(activeElement)) {
+      callbackRef.current(activeElement);
+    }
+
+    return () => targetDocument.removeEventListener('focusin', listener, true);
   }, [targetDocument]);
 };
 

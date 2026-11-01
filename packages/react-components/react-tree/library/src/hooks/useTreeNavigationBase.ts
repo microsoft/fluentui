@@ -9,13 +9,13 @@ import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useRovingTabIndexBase } from './useRovingTabIndexBase';
 import type { UseFocusedElementChange } from './useRovingTabIndexBase';
-import { treeItemLayoutClassNames } from '../components/TreeItemLayout/useTreeItemLayoutStyles.styles';
+import { queryTreeItemActions } from '../utils/queryTreeItemActions';
 
 /**
  * Plain DOM approximation of Tabster's focus finders, used when no focus management runtime is provided.
  */
 const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), details > summary:first-of-type, [tabindex]:not([tabindex="-1"]), [contenteditable]:not([contenteditable="false"])';
 
 /**
  * @internal
@@ -37,7 +37,54 @@ export type TreeNavigationOptions = {
  * @internal
  */
 export const findFirstFocusableDOM: TreeNavigationOptions['findFirstFocusable'] = container =>
-  container.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
+  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).find(isFocusableDOM) ?? null;
+
+function isFocusableDOM(element: HTMLElement): boolean {
+  const contentEditable = element.getAttribute('contenteditable')?.toLowerCase();
+  const isEditable =
+    element.isContentEditable ||
+    contentEditable === 'true' ||
+    contentEditable === 'plaintext-only' ||
+    contentEditable === '';
+  if (
+    element.matches(':disabled') ||
+    (element.hasAttribute('tabindex') && element.tabIndex < 0) ||
+    (element.tabIndex < 0 && !isEditable)
+  ) {
+    return false;
+  }
+
+  const getComputedStyle = (target: HTMLElement) => target.ownerDocument.defaultView?.getComputedStyle(target);
+
+  // `visibility` is inherited and can be overridden by a descendant, so only the candidate's own computed value matters
+  const visibility = getComputedStyle(element)?.visibility;
+  if (visibility === 'hidden' || visibility === 'collapse') {
+    return false;
+  }
+
+  let child: HTMLElement | null = null;
+  let current: HTMLElement | null = element;
+  while (current) {
+    if (
+      current.hidden ||
+      current.hasAttribute('inert') ||
+      current.getAttribute('aria-hidden') === 'true' ||
+      getComputedStyle(current)?.display === 'none' ||
+      // The content of a closed details element is not rendered, except for its first summary
+      (child &&
+        current.tagName === 'DETAILS' &&
+        !current.hasAttribute('open') &&
+        child !== current.querySelector(':scope > summary'))
+    ) {
+      return false;
+    }
+
+    child = current;
+    current = current.parentElement;
+  }
+
+  return true;
+}
 
 /***
  * Hook used to manage navigation in the tree, with the focus management provided by the caller.
@@ -83,7 +130,7 @@ export function useTreeNavigationBase(
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
-        const actions = queryActions(data.target);
+        const actions = queryTreeItemActions(data.target);
         if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
           return data.target;
         }
@@ -92,7 +139,7 @@ export function useTreeNavigationBase(
       }
       case treeDataTypes.ArrowRight:
         if (navigationMode === 'treegrid') {
-          const actions = queryActions(data.target);
+          const actions = queryTreeItemActions(data.target);
           if (actions) {
             findFirstFocusable(actions)?.focus();
           }
@@ -136,12 +183,3 @@ function lastChildRecursive(walker: HTMLElementWalker) {
   }
   return lastElement;
 }
-
-/**
- * Finds the actions of a tree item. The styled layout is matched by its static class names, while
- * an unstyled layout is matched by the `toolbar` role its actions slot always renders with.
- */
-const queryActions = (target: HTMLElement) =>
-  target.querySelector<HTMLElement>(
-    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
-  ) ?? target.querySelector<HTMLElement>(':scope > * > [role="toolbar"]');

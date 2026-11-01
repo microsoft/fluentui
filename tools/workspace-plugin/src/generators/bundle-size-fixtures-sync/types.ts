@@ -7,7 +7,7 @@
  */
 export type BundleSizeFixturesConfig = Record<string, BundleSizeFixture>;
 
-export type BundleSizeFixture = EntryPointsFixture | BaseHooksFixture;
+export type BundleSizeFixture = EntryPointsFixture | EntryPointFixture | BaseHooksFixture;
 
 interface FixtureBase {
   /**
@@ -26,6 +26,13 @@ interface FixtureBase {
  */
 export interface EntryPointsFixture extends FixtureBase {
   kind: 'entryPoints';
+}
+
+/** Imports every runtime value from one public non-root export subpath of the project itself. */
+export interface EntryPointFixture extends FixtureBase {
+  kind: 'entryPoint';
+  /** Exact canonical export-map key, for example `./tag-picker` or `./unstable/calendar`. */
+  entryPoint: string;
 }
 
 /**

@@ -7,9 +7,11 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { SubtreeContextValue } from '@fluentui/react-tree';
 import type { TreeBaseState } from '@fluentui/react-tree';
 import { TreeCheckedChangeData } from '@fluentui/react-tree';
 import { TreeCheckedChangeEvent } from '@fluentui/react-tree';
+import { TreeContextValue } from '@fluentui/react-tree';
 import { TreeContextValues } from '@fluentui/react-tree';
 import { TreeItemContextValues } from '@fluentui/react-tree';
 import { TreeItemLayoutActionSlotProps } from '@fluentui/react-tree';
@@ -46,12 +48,16 @@ export const renderTreeItem: (state: TreeItemState, contextValues: TreeItemConte
 // @public
 export const renderTreeItemLayout: (state: TreeItemLayoutState) => JSXElement;
 
+export { SubtreeContextValue }
+
 // @public
 export const Tree: ForwardRefComponent<TreeProps>;
 
 export { TreeCheckedChangeData }
 
 export { TreeCheckedChangeEvent }
+
+export { TreeContextValue }
 
 export { TreeContextValues }
 

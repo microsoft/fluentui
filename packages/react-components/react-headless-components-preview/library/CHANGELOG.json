@@ -2,6 +2,101 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Tue, 20 Oct 2026 09:13:13 GMT",
+      "version": "0.3.2",
+      "tag": "@fluentui/react-headless-components-preview_v0.3.2",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "fa25510cdda7158f3fdb72720f9cbb2ea3569091",
+            "comment": "test: fix react integration tests"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "13aa67efb57d2e7a9842f72cc43f0288625c205e",
+            "comment": "Declare generated bundle-size fixtures in Nx project metadata."
+          }
+        ],
+        "patch": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6e78d9958f41e1598dedb7cd3dadc0284262e294",
+            "comment": "feat: expose CompoundButton icon position as a data attribute when an icon is present"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "c706d32fd29b133f1c64a6bc5e92e7db7307bb67",
+            "comment": "feat: expose useTabListContext from the tab-list entry point"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "7aafb6abf3daada3d284c91cba68b0b51e87029c",
+            "comment": "fix: export DropdownSlots from the dropdown entry point"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "d254a2d24fc517f448495b9310c54605e3f70760",
+            "comment": "fix: Defer dialog and overlay drawer unmounting until consumer exit animations finish."
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1dd5f153e93df90645c504c43ff35ef33235912c",
+            "comment": "fix: restore focus when headless popovers close"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6e52576d457f0ca13225ea2712e0db7bd1c27e28",
+            "comment": "feat: expose data-readonly on the SpinButton root"
+          },
+          {
+            "author": "noreply@anthropic.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "45634d79d2e9c55986c61f83d12b0eb9bafcdceb",
+            "comment": "perf: build components with a shared composeComponent helper"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "5737bd74e230e733ce2a4048aaf0c59baad6102d",
+            "comment": "fix: focus enters SwatchPicker on the selected swatch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9a3ba2066d273a030b34e1e5e511b8c82be7b95f",
+            "comment": "feat: add List and ListItem components"
+          },
+          {
+            "author": "noreply@anthropic.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f02cfa8f8d73ca5652ef2465ce22bf3d06b9dedc",
+            "comment": "refactor: move wrapper logic (data attributes, ref and state casts) of RatingItem, ToastTitle and NavDrawer into their hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "42b30d8d0fa98f47ee39ca4736634c068631714c",
+            "comment": "fix: make the Combobox expandIcon accessible and operable with canceled-pointer recovery, single-notification toggles, visibility and blur handling, and manual-popover support"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2026 09:53:10 GMT",
       "version": "0.3.1",
       "tag": "@fluentui/react-headless-components-preview_v0.3.1",

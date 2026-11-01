@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-<!-- This log was last generated on Thu, 24 Sep 2026 09:53:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 20 Oct 2026 09:13:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.2)
+
+Tue, 20 Oct 2026 09:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.3.1..@fluentui/react-headless-components-preview_v0.3.2)
+
+### Patches
+
+- feat: expose CompoundButton icon position as a data attribute when an icon is present ([PR #36860](https://github.com/microsoft/fluentui/pull/36860) by 198982749+Copilot@users.noreply.github.com)
+- feat: expose useTabListContext from the tab-list entry point ([PR #36906](https://github.com/microsoft/fluentui/pull/36906) by 198982749+Copilot@users.noreply.github.com)
+- fix: export DropdownSlots from the dropdown entry point ([PR #36855](https://github.com/microsoft/fluentui/pull/36855) by dmytrokirpa@microsoft.com)
+- fix: Defer dialog and overlay drawer unmounting until consumer exit animations finish. ([PR #36842](https://github.com/microsoft/fluentui/pull/36842) by dmytrokirpa@microsoft.com)
+- fix: restore focus when headless popovers close ([PR #36843](https://github.com/microsoft/fluentui/pull/36843) by paulmardling@microsoft.com)
+- feat: expose data-readonly on the SpinButton root ([PR #36863](https://github.com/microsoft/fluentui/pull/36863) by vgenaev@gmail.com)
+- perf: build components with a shared composeComponent helper ([PR #36905](https://github.com/microsoft/fluentui/pull/36905) by noreply@anthropic.com)
+- fix: focus enters SwatchPicker on the selected swatch ([PR #36821](https://github.com/microsoft/fluentui/pull/36821) by vgenaev@gmail.com)
+- feat: add List and ListItem components ([PR #36591](https://github.com/microsoft/fluentui/pull/36591) by dmytrokirpa@microsoft.com)
+- refactor: move wrapper logic (data attributes, ref and state casts) of RatingItem, ToastTitle and NavDrawer into their hooks ([PR #36907](https://github.com/microsoft/fluentui/pull/36907) by noreply@anthropic.com)
+- fix: make the Combobox expandIcon accessible and operable with canceled-pointer recovery, single-notification toggles, visibility and blur handling, and manual-popover support ([PR #36574](https://github.com/microsoft/fluentui/pull/36574) by dmytrokirpa@microsoft.com)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.1)
 

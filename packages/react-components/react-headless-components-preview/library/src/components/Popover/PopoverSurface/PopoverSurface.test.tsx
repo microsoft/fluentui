@@ -33,7 +33,7 @@ describe('PopoverSurface', () => {
 
   it('renders a dialog when focus trapping is enabled', () => {
     const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -61,7 +61,7 @@ describe('PopoverSurface', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 
     render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -71,7 +71,7 @@ describe('PopoverSurface', () => {
 
     expect(consoleWarn).toHaveBeenCalledWith(
       '@fluentui/react-headless-components-preview [PopoverSurface]: ' +
-        '`as="div"` is incompatible with `Popover trapFocus`. ' +
+        '`as="div"` is incompatible with `Popover inertTrapFocus`. ' +
         'Use the default `dialog` element when focus trapping is enabled.',
     );
 
@@ -82,7 +82,7 @@ describe('PopoverSurface', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 
     render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>

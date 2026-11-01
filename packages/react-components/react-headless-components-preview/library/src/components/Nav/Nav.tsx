@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Nav: ForwardRefComponent<NavProps> = /*#__PURE__*/ composeComponent(
   'Nav',
   useNav,
-  renderNav,
   useNavContextValues,
+  renderNav,
 );
