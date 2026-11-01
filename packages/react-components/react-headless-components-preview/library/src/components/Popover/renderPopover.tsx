@@ -11,6 +11,6 @@ export const renderPopover = (
 ): React.ReactElement => (
   <PopoverProvider value={contextValues.popover}>
     {state.popoverTrigger}
-    {state.open ? state.popoverSurface : null}
+    {state.shouldRenderSurface ? state.popoverSurface : null}
   </PopoverProvider>
 );

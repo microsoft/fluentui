@@ -57,7 +57,7 @@ describe('TreeItemLayout', () => {
   });
 
   it('forwards ref, className and style to the root element', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLDivElement>();
     renderInTree(
       <TreeItemLayout ref={ref} className="custom" style={{ marginBlockStart: '4px' }}>
         Item

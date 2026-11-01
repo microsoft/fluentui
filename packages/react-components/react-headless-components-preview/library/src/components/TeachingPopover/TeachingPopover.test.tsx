@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { createPortal } from 'react-dom';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopover } from './TeachingPopover';
@@ -161,5 +162,117 @@ describe('TeachingPopover', () => {
 
     expect(getByText('Surface')).toBeInTheDocument();
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+  });
+
+  describe('close focus restoration', () => {
+    const Example = ({
+      open,
+      withTrigger = true,
+      autoFocus = true,
+      disabledInside = false,
+    }: {
+      open: boolean;
+      withTrigger?: boolean;
+      autoFocus?: boolean;
+      disabledInside?: boolean;
+    }) => {
+      const surface = (
+        <TeachingPopoverSurface as="div">
+          <button autoFocus={autoFocus} disabled={disabledInside}>
+            Inside
+          </button>
+        </TeachingPopoverSurface>
+      );
+      return (
+        <>
+          <button>Outside</button>
+          <TeachingPopover open={open}>
+            {withTrigger
+              ? [
+                  <TeachingPopoverTrigger key="trigger">
+                    <button>Trigger</button>
+                  </TeachingPopoverTrigger>,
+                  React.cloneElement(surface, { key: 'surface' }),
+                ]
+              : surface}
+          </TeachingPopover>
+        </>
+      );
+    };
+
+    it('restores focus owned by an initially open surface', async () => {
+      const { getByText, rerender } = render(<Example open />);
+      expect(getByText('Inside')).toHaveFocus();
+      rerender(<Example open={false} />);
+      await waitFor(() => expect(getByText('Trigger')).toHaveFocus());
+    });
+
+    it('does not steal focus when initially closed', () => {
+      const { getByText } = render(<Example open={false} />);
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
+    it('does not restore focus that never belonged to the surface', () => {
+      const { getByText, rerender } = render(<Example open autoFocus={false} disabledInside />);
+      expect(getByText('Inside')).not.toHaveFocus();
+      rerender(<Example open={false} autoFocus={false} disabledInside />);
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
+    it('tracks surface focus even when its focus event stops bubbling', async () => {
+      const { getByText, rerender } = render(<Example open autoFocus={false} />);
+      getByText('Outside').focus();
+      getByText('Inside').addEventListener('focusin', event => event.stopPropagation());
+      getByText('Inside').focus();
+      rerender(<Example open={false} autoFocus={false} />);
+      await waitFor(() => expect(getByText('Trigger')).toHaveFocus());
+    });
+
+    it('preserves outside focus even when the surface focus event stops bubbling', async () => {
+      const { getByText, queryByText, rerender } = render(<Example open />);
+      getByText('Inside').addEventListener('focusin', event => event.stopPropagation());
+      getByText('Outside').focus();
+      getByText('Inside').focus();
+      getByText('Outside').focus();
+      const surface = getByText('Inside').parentElement!;
+      const hidePopover = surface.hidePopover;
+      // Preserve explicit outside focus after the polyfill restores its saved target.
+      Object.defineProperty(surface, 'hidePopover', {
+        configurable: true,
+        value: () => {
+          hidePopover.call(surface);
+          getByText('Outside').focus();
+        },
+      });
+      try {
+        rerender(<Example open={false} />);
+        expect(getByText('Outside')).toHaveFocus();
+        await waitFor(() => expect(queryByText('Inside')).not.toBeInTheDocument());
+        expect(getByText('Outside')).toHaveFocus();
+      } finally {
+        Reflect.deleteProperty(surface, 'hidePopover');
+      }
+    });
+
+    it('supports closing without a trigger', () => {
+      const { getByText, rerender } = render(<Example open withTrigger={false} />);
+      expect(getByText('Inside')).toHaveFocus();
+      rerender(<Example open={false} withTrigger={false} />);
+      expect(getByText('Outside')).not.toHaveFocus();
+    });
+
+    (['open', 'closed'] as const).forEach(mode => {
+      it(`restores focus owned by an initially open surface in a ${mode} shadow root`, async () => {
+        const { container } = render(<div />);
+        const host = container.firstElementChild!;
+        const shadowRoot = host.attachShadow({ mode });
+        const { rerender } = render(createPortal(<Example open />, shadowRoot));
+
+        expect(shadowRoot.activeElement).toHaveTextContent('Inside');
+        expect(host.ownerDocument.activeElement).toBe(host);
+        rerender(createPortal(<Example open={false} />, shadowRoot));
+        await waitFor(() => expect(shadowRoot.activeElement).toHaveTextContent('Trigger'));
+      });
+    });
   });
 });

@@ -10,6 +10,23 @@ import type { CalendarMonthHandle } from '../CalendarMonth/CalendarMonth.types';
 expect.extend(toHaveNoViolations);
 
 describe('Calendar', () => {
+  it.each(['Enter', ' '])('notifies day selection before preventing native %s activation', key => {
+    const onSelectDate = jest.fn(event => expect(event.defaultPrevented).toBe(false));
+    const { getByRole } = render(<Calendar today={new Date(2030, 0, 15)} onSelectDate={onSelectDate} />);
+    const cell = getByRole('button', { name: 'January 16, 2030' }).closest('td')!;
+    expect(fireEvent.keyDown(cell, { key })).toBe(false);
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+  });
+
+  it('notifies month-only selection before preventing native Enter activation', () => {
+    const onSelectDate = jest.fn(event => expect(event.defaultPrevented).toBe(false));
+    const { getByRole } = render(
+      <Calendar today={new Date(2030, 0, 15)} dayPicker={null} onSelectDate={onSelectDate} />,
+    );
+    expect(fireEvent.keyDown(getByRole('gridcell', { name: 'February' }), { key: 'Enter' })).toBe(false);
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+  });
+
   isConformant({
     Component: Calendar,
     displayName: 'Calendar',

@@ -225,6 +225,17 @@ describe('CalendarDay', () => {
     expect(document.activeElement).toBe(navigatedCell);
   });
 
+  it('forwards native focus options to the navigated day', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const { container } = render(<CalendarDay {...defaultProps} ref={ref} />);
+    const cell = container.querySelector('button[aria-label="September 18, 2020"]')!.closest('td')!;
+    const focus = jest.spyOn(cell, 'focus');
+    ref.current!.focus({ preventScroll: true });
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(document.activeElement).toBe(cell);
+    focus.mockRestore();
+  });
+
   it('preserves selection and focus with customized day content, props, and refs', () => {
     const ref = React.createRef<CalendarDayHandle>();
     const cellRef = React.createRef<HTMLTableCellElement>();

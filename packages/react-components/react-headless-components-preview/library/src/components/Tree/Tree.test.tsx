@@ -8,7 +8,7 @@ import type { TreeProps } from './Tree.types';
 
 const getItem = (text: string) => screen.getByText(text).closest<HTMLElement>('[role="treeitem"]')!;
 
-const NestedTree = (props: Partial<TreeProps>) => (
+const NestedTree = React.forwardRef<HTMLDivElement, Partial<TreeProps>>((props, ref) => (
   <Tree aria-label="Files" {...props}>
     <TreeItem itemType="branch" value="docs">
       <TreeItemLayout>Docs</TreeItemLayout>
@@ -25,7 +25,7 @@ const NestedTree = (props: Partial<TreeProps>) => (
       <TreeItemLayout>package.json</TreeItemLayout>
     </TreeItem>
   </Tree>
-);
+));
 
 /**
  * Checked items are controlled only, this harness keeps them in sync with `onCheckedChange`.
@@ -66,7 +66,7 @@ describe('Tree', () => {
   });
 
   it('forwards ref, className and style to the root element', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLDivElement>();
 
     render(<NestedTree ref={ref} className="custom" style={{ marginBlockStart: '4px' }} />);
 

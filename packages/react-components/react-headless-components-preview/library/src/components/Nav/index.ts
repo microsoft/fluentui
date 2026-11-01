@@ -6,6 +6,7 @@ export { useNav } from './useNav';
 export type { NavContextValue, NavContextValues, NavItemRegisterData, RegisterNavItemEventHandler } from './navContext';
 export { NavProvider, useNavContext } from './navContext';
 export { useNavContextValues } from './useNavContextValues';
+export type { NavContextValuesState } from './useNavContextValues';
 
 export type { NavCategoryContextValue, NavCategoryContextValues } from './navCategoryContext';
 export { NavCategoryProvider, useNavCategoryContext } from './navCategoryContext';

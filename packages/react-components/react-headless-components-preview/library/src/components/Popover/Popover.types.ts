@@ -113,6 +113,8 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    /** Determines whether the surface is present in the DOM. */
+    shouldRenderSurface: boolean;
   };
 
 /**

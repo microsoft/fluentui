@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "refactor: move wrapper logic (data attributes, ref and state casts) of RatingItem, ToastTitle and NavDrawer into their hooks",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "noreply@anthropic.com"
+}

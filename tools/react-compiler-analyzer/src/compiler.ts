@@ -1,0 +1,467 @@
+import { extname } from 'node:path';
+import { readFile } from 'node:fs/promises';
+
+import { transformAsync } from '@babel/core';
+import type { PluginItem, TransformOptions } from '@babel/core';
+
+import { forEachConcurrently } from './concurrency';
+import { compareText } from './ordering';
+import { manualMemoPlugin } from './manual-memo-plugin';
+import type { ExistingDirectives, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
+import { riskPlugin } from './risk-plugin';
+import type { RiskPluginOptions } from './risk-plugin';
+import { createCallGraphAnalyzer, type CallGraphAnalyzer } from './call-graph';
+import { createModuleResolver, compilePathAliases, createResolverStats } from './module-resolver';
+import { sourceFunctionPlugin, SourceFunctionIndex } from './source-functions';
+import { fingerprintText } from './stable-json';
+import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
+
+export interface CompilerEvent {
+  kind: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError' | string;
+  fnLoc: { start: { line: number; column: number }; end: { line: number; column: number } } | null;
+  fnName?: string | null;
+  reason?: string;
+  /** Source location of the trigger (e.g. the opt-out directive for `CompileSkip`). */
+  loc?: { start: { line: number; column: number }; end?: { line: number; column: number } } | null;
+  detail?: unknown;
+  data?: string;
+  memoSlots?: number;
+  memoBlocks?: number;
+  memoValues?: number;
+  prunedMemoBlocks?: number;
+  prunedMemoValues?: number;
+}
+
+interface CompilerDetailLike {
+  reason?: string;
+  description?: string;
+  loc?: {
+    start?: { line?: number; column?: number };
+  };
+  /** Returns the primary source location. Present on CompilerErrorDetail / CompilerDiagnostic. */
+  primaryLocation?: () => { start?: { line?: number; column?: number } } | null;
+  /** Renders a full, code-framed compiler message. Present on CompilerErrorDetail / CompilerDiagnostic. */
+  printErrorMessage?: (source: string, options: { eslint: boolean }) => string;
+}
+
+/**
+ * Resolve a `{ line, column }` from a compiler detail. Prefers the `.loc` property,
+ * falling back to `primaryLocation()` (which is where `CompilerDiagnostic` exposes it).
+ * Returns `null` when no usable location is available.
+ */
+function getDetailLocation(detail: CompilerDetailLike): { line: number; column: number } | null {
+  let start = detail.loc?.start;
+  if ((!start || typeof start.line !== 'number') && typeof detail.primaryLocation === 'function') {
+    try {
+      start = detail.primaryLocation()?.start;
+    } catch {
+      start = undefined;
+    }
+  }
+  if (start && typeof start.line === 'number') {
+    return { line: start.line, column: typeof start.column === 'number' ? start.column : 0 };
+  }
+  return null;
+}
+
+/**
+ * Extract a concise, single-line reason string from a CompileError detail object.
+ * The `detail` can be a CompilerErrorDetail or CompilerDiagnostic from the
+ * React Compiler — both carry a `.reason`, optional `.description`, and a location.
+ * Returns a `reason [description] (line:col)` summary suitable for a table cell.
+ * Falls back to `String(detail)`.
+ *
+ * For the full code-framed diagnostic, use {@link extractFullDiagnostic}.
+ */
+export function extractDetailReason(detail: unknown): string {
+  if (detail === null || detail === undefined) {
+    return '';
+  }
+  // CompilerErrorDetail / CompilerDiagnostic expose .reason + .description
+  if (typeof detail === 'object') {
+    const compilerDetail = detail as CompilerDetailLike;
+    const parts: string[] = [];
+
+    if (typeof compilerDetail.reason === 'string') {
+      parts.push(compilerDetail.reason);
+    }
+    // Wrap the description in brackets so it stays visually distinct from the reason
+    // instead of running the two sentences together (e.g. `reason [description]`).
+    if (typeof compilerDetail.description === 'string' && compilerDetail.description.length > 0) {
+      parts.push(`[${compilerDetail.description}]`);
+    }
+    // Append line/column info when available
+    const loc = getDetailLocation(compilerDetail);
+    if (loc) {
+      parts.push(`(${loc.line}:${loc.column})`);
+    }
+    if (parts.length > 0) {
+      return parts.join(' ');
+    }
+  }
+  return String(detail);
+}
+
+/**
+ * Render the React Compiler's full, code-framed diagnostic for a CompileError detail.
+ * Uses the detail's `.printErrorMessage(source, opts)` to produce the rich, multi-line
+ * message (with a code frame pointing at the offending lines). Returns `''` when the
+ * detail can't be printed.
+ */
+export function extractFullDiagnostic(detail: unknown, source: string): string {
+  if (detail !== null && typeof detail === 'object') {
+    const compilerDetail = detail as CompilerDetailLike;
+    if (typeof compilerDetail.printErrorMessage === 'function') {
+      try {
+        const printed = compilerDetail.printErrorMessage(source, { eslint: false });
+        if (typeof printed === 'string' && printed.trim().length > 0) {
+          return printed;
+        }
+      } catch {
+        // Fall through: caller keeps the concise reason only.
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Extract the source location (`line:column`) of a CompileError detail — the precise
+ * spot inside the function where this specific error occurred. Returns `null` when the
+ * detail carries no usable location, which is what distinguishes one error from another
+ * when a single function produces several.
+ */
+export function extractDetailLoc(detail: unknown): { line: number; column: number } | null {
+  if (detail !== null && typeof detail === 'object') {
+    return getDetailLocation(detail as CompilerDetailLike);
+  }
+  return null;
+}
+
+/**
+ * Read the directive string literal at a source location (e.g. `use no memo`).
+ * Returns the inner text of the first quoted segment on the directive's line, or `null`.
+ */
+function readDirectiveText(source: string, loc: CompilerEvent['loc']): string | null {
+  if (!loc?.start?.line) {
+    return null;
+  }
+  const line = source.split('\n')[loc.start.line - 1];
+  if (!line) {
+    return null;
+  }
+  const match = line.match(/['"]([^'"]*)['"]/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Resolve a `CompileSkip` event's reason string.
+ *
+ * `babel-plugin-react-compiler@1.x` builds the skip message by interpolating the
+ * opt-out directive's AST node directly, producing `Skipped due to '[object Object]'
+ * directive.`. When that mangled form is detected, recover the real directive text
+ * from the event's source location.
+ */
+export function resolveSkipReason(event: CompilerEvent, source: string): string {
+  const reason = event.reason ?? 'compiler skipped this function';
+  if (!reason.includes('[object Object]')) {
+    return reason;
+  }
+  const directive = readDirectiveText(source, event.loc);
+  return directive ? reason.replace('[object Object]', directive) : reason;
+}
+
+// ── Shared compiler invocation ──
+
+export interface CompileOptions {
+  compilationMode?: CompilationMode;
+  plugins?: PluginItem[];
+  /**
+   * Extra Babel *parser* plugins, e.g. `['decorators-legacy']`. Needed when the consuming build
+   * parses with a wider grammar than `typescript` + `jsx`; without a match, files the build
+   * compiles are reported as unparseable and silently leave the analyzed scope.
+   */
+  parserPlugins?: string[];
+}
+
+export interface CompileResult {
+  events: CompilerEvent[];
+  error?: Error;
+}
+
+/**
+ * Run the React Compiler (via babel transform) on source code and collect events.
+ * Returns compiler events for each function in the source.
+ */
+export async function compileSource(
+  source: string,
+  filePath: string,
+  options: CompileOptions = {},
+): Promise<CompileResult> {
+  const events: CompilerEvent[] = [];
+  const logger = {
+    logEvent: (_filename: string | null, event: CompilerEvent) => {
+      events.push(event);
+    },
+  };
+
+  const ext = extname(filePath);
+
+  const extraPlugins = options.plugins ?? [];
+  const compilerPluginConfig: [string, Record<string, unknown>] = [
+    require.resolve('babel-plugin-react-compiler'),
+    {
+      noEmit: true,
+      panicThreshold: 'none',
+      ...(options.compilationMode ? { compilationMode: options.compilationMode } : {}),
+      logger,
+    },
+  ];
+
+  try {
+    await transformAsync(source, {
+      filename: filePath,
+      ast: false,
+      code: false,
+      babelrc: false,
+      configFile: false,
+      ...(options.parserPlugins?.length
+        ? {
+            parserOpts: {
+              plugins: [...options.parserPlugins] as NonNullable<
+                NonNullable<TransformOptions['parserOpts']>['plugins']
+              >,
+            },
+          }
+        : {}),
+      presets: [
+        [
+          require.resolve('@babel/preset-typescript'),
+          {
+            // Must track the extension: enabling JSX for `.ts` makes the parser read an
+            // angle-bracket type assertion (`<Foo>bar`) as an unterminated JSX element.
+            isTSX: ext === '.tsx',
+            allExtensions: true,
+          },
+        ],
+      ],
+      plugins: [...extraPlugins, compilerPluginConfig],
+    });
+  } catch (err) {
+    return { events, error: err as Error };
+  }
+
+  return { events };
+}
+
+// ── Unified file compilation ──
+
+export interface FileCompilationResult {
+  filePath: string;
+  packageName: string | null;
+  packageRoot: string | null;
+  source: string;
+  sourceHash: string;
+  sourceFunctions: SourceFunctionIndex;
+  events: CompilerEvent[];
+  error?: Error;
+  manualMemo: Map<string, ManualMemoEntry>;
+  bodyInsertionLines: Map<string, number>;
+  /** Memo directives already present on each function, keyed by `line:column`. */
+  existingDirectives: Map<string, ExistingDirectives>;
+  /** Runtime-risk findings keyed by `line:column` of the enclosing function start. */
+  risks: Map<string, RiskFinding[]>;
+  /**
+   * Maps a function's body-start key to its declaration key, for every function in the file.
+   * Populated independently of any risk producer, so an indirectly-reached finding resolves the
+   * same way an in-file one does.
+   */
+  fnKeyAliases: Map<string, string>;
+  parserPlugins: string[];
+  verboseLogs: string[];
+}
+
+/**
+ * Read and compile a single file with the React Compiler + manualMemoPlugin.
+ * Returns all metadata needed for both coverage and directive analysis.
+ */
+export async function compileFile(
+  entry: FileEntry,
+  compilationMode: CompilationMode,
+  verbose: boolean,
+  riskConfig: RiskConfig = {},
+  callGraph?: CallGraphAnalyzer,
+  parserPlugins: string[] = [],
+  workspaceRoot = process.cwd(),
+): Promise<FileCompilationResult> {
+  const source = await readFile(entry.filePath, 'utf-8');
+  const sourceHash = fingerprintText(source);
+  const sourceFunctions = new SourceFunctionIndex(source, entry, workspaceRoot);
+  const manualMemo = new Map<string, ManualMemoEntry>();
+  const bodyInsertionLines = new Map<string, number>();
+  const risks = new Map<string, RiskFinding[]>();
+  const fnKeyAliases = new Map<string, string>();
+  const existingDirectives = new Map<string, ExistingDirectives>();
+
+  const { events, error } = await compileSource(source, entry.filePath, {
+    compilationMode,
+    parserPlugins,
+    plugins: [
+      [sourceFunctionPlugin, { index: sourceFunctions }],
+      [
+        manualMemoPlugin,
+        {
+          sourceFunctions,
+          results: manualMemo,
+          bodyInsertionLines,
+          existingDirectives,
+          keyAliases: fnKeyAliases,
+        } as ManualMemoPluginOptions,
+      ],
+      [riskPlugin, { ...riskConfig, sourceFunctions, results: risks, keyAliases: fnKeyAliases } as RiskPluginOptions],
+    ],
+  });
+
+  // Cross-file wrapper analysis (opt-in): attach indirect risks reached through first-party
+  // wrapper calls. Synchronous and memoized across files via the shared analyzer.
+  if (callGraph?.enabled) {
+    for (const finding of callGraph.analyzeFile(entry.filePath)) {
+      const { leaf, chain } = finding.risk;
+      const via = chain.join(' → ');
+      const sourceFunction = sourceFunctions.resolveStart(
+        finding.declarationStart.line,
+        finding.declarationStart.column,
+      );
+      if (!sourceFunction) {
+        continue;
+      }
+      const list = risks.get(sourceFunction.id) ?? [];
+      const risk: RiskFinding = {
+        ruleId: leaf.ruleId,
+        severity: leaf.severity,
+        line: finding.line,
+        column: finding.column,
+        symbol: leaf.symbol,
+        message: `reached via \`${via}\`: ${leaf.message}`,
+      };
+      if (
+        !list.some(
+          current =>
+            current.ruleId === risk.ruleId &&
+            current.line === risk.line &&
+            current.column === risk.column &&
+            current.symbol === risk.symbol &&
+            current.message === risk.message,
+        )
+      ) {
+        list.push(risk);
+      }
+      risks.set(sourceFunction.id, list);
+      sourceFunctions.recordFinding(sourceFunction.id, risk);
+    }
+  }
+
+  const verboseLogs =
+    verbose && !error
+      ? events.map(ev => {
+          const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
+          const name = ev.fnName ?? '';
+          return `  [${ev.kind}] ${entry.filePath} fn@${loc} ${name}`;
+        })
+      : [];
+
+  return {
+    filePath: entry.filePath,
+    packageName: entry.packageName,
+    packageRoot: entry.packageRoot ?? null,
+    source,
+    sourceHash,
+    sourceFunctions,
+    events,
+    error,
+    manualMemo,
+    bodyInsertionLines,
+    existingDirectives,
+    risks,
+    fnKeyAliases,
+    parserPlugins,
+    verboseLogs,
+  };
+}
+
+/**
+ * Compile multiple files with concurrency-limited parallelism.
+ */
+/**
+ * Compile every file with concurrency-limited parallelism, handing each result to `onResult`
+ * as soon as it is ready.
+ *
+ * Streaming rather than collecting is what keeps a whole-repo scan viable: a
+ * {@link FileCompilationResult} holds the file's entire source text plus its event and risk maps,
+ * so retaining one per file costs gigabytes at tens of thousands of files. Deriving the compact
+ * analysis inside `onResult` lets each result be collected immediately after use.
+ */
+export async function compileFilesStreaming(
+  files: FileEntry[],
+  options: CompileFilesOptions,
+  onResult: (result: FileCompilationResult) => void | Promise<void>,
+): Promise<void> {
+  // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
+  // across files. Only built when wrapper resolution is opted into.
+  const callGraph = buildCallGraph(options.riskConfig, options.parserPlugins);
+  const verboseLogs = new Map<string, string[]>();
+
+  await forEachConcurrently(
+    files,
+    async entry => {
+      const result = await compileFile(
+        entry,
+        options.compilationMode,
+        options.verbose,
+        options.riskConfig,
+        callGraph,
+        options.parserPlugins,
+        options.workspaceRoot,
+      );
+      if (options.verbose) {
+        verboseLogs.set(result.filePath, [`Analyzing: ${result.filePath}`, ...result.verboseLogs]);
+      }
+      await onResult(result);
+    },
+    { concurrency: options.concurrency, verbose: options.verbose },
+  );
+
+  for (const [, logs] of [...verboseLogs.entries()].sort(([a], [b]) => compareText(a, b))) {
+    for (const log of logs) {
+      console.log(log);
+    }
+  }
+  options.onResolverStats?.(callGraph?.stats);
+}
+
+/**
+ * Collect every compilation result into an array.
+ *
+ * Prefer {@link compileFilesStreaming} for real scans — this retains every file's source text
+ * and is only appropriate for small, bounded inputs.
+ */
+export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
+  const results: FileCompilationResult[] = [];
+  await compileFilesStreaming(files, options, result => {
+    results.push(result);
+  });
+  return results;
+}
+
+/** Construct the cross-file analyzer when `resolveWrappers` is enabled; otherwise `undefined`. */
+function buildCallGraph(riskConfig?: RiskConfig, parserPlugins?: string[]): CallGraphAnalyzer | undefined {
+  if (!riskConfig?.resolveWrappers) {
+    return undefined;
+  }
+  const aliases = riskConfig.pathAliases
+    ? compilePathAliases(riskConfig.pathAliases.paths, riskConfig.pathAliases.baseUrl)
+    : [];
+  const stats = createResolverStats();
+  const resolver = createModuleResolver({ aliases, stats });
+  return createCallGraphAnalyzer(resolver, riskConfig, stats, parserPlugins);
+}

@@ -7,6 +7,7 @@ export type {
   OnNavItemSelectData,
   NavContextValue,
   NavContextValues,
+  NavContextValuesState,
   NavItemRegisterData,
   RegisterNavItemEventHandler,
 } from './components/Nav/index';

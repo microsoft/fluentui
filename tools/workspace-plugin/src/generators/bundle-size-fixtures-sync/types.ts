@@ -18,8 +18,11 @@ interface FixtureBase {
 }
 
 /**
- * Namespace imports every non-root export subpath of the project itself, so a subpath missing from
- * the export map fails `verify-bundle-isolation` rather than going unnoticed.
+ * Imports every value export of every non-root export subpath of the project itself, so a subpath
+ * missing from the export map fails `verify-bundle-isolation` rather than going unnoticed.
+ *
+ * Named rather than namespace imports keep the measured size representative: a namespace import
+ * keeps every export name as a string property in the minified output, which no consumer ships.
  */
 export interface EntryPointsFixture extends FixtureBase {
   kind: 'entryPoints';

@@ -75,6 +75,7 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & 
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    shouldRenderSurface: boolean;
 };
 
 // @public

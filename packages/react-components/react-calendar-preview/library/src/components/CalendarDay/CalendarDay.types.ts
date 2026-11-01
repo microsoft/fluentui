@@ -22,7 +22,7 @@ export type CalendarDayHandle = {
   /**
    * Moves focus to the day the grid is currently navigated to.
    */
-  focus(): void;
+  focus(options?: FocusOptions): void;
 };
 
 /**

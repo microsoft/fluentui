@@ -49,6 +49,7 @@ import { useImageBase_unstable } from '@fluentui/react-image';
 import { useInputBase_unstable } from '@fluentui/react-input';
 import { useLabelBase_unstable } from '@fluentui/react-label';
 import { useLinkBase_unstable } from '@fluentui/react-link';
+import { useListBase_unstable, useListItemBase_unstable } from '@fluentui/react-list';
 import {
   useMenuBase_unstable,
   useMenuItemBase_unstable,
@@ -166,6 +167,8 @@ console.log(
   useInputBase_unstable,
   useLabelBase_unstable,
   useLinkBase_unstable,
+  useListBase_unstable,
+  useListItemBase_unstable,
   useMenuBase_unstable,
   useMenuItemBase_unstable,
   useMenuItemCheckboxBase_unstable,

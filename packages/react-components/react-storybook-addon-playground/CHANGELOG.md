@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-storybook-addon-playground
 
-<!-- This log was last generated on Thu, 08 Oct 2026 05:35:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 16 Oct 2026 14:21:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-playground_v0.1.1)
+
+Fri, 16 Oct 2026 14:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-playground_v0.1.0..@fluentui/react-storybook-addon-playground_v0.1.1)
+
+### Patches
+
+- Improve Storybook Docs actions and Playground declaration resolution, including workspace/PnP packages, export precedence, active conditions and adjacent versioned declarations. Validate build-scoped manifests and JavaScript responses, authorize script fetches through allowedScriptFiles, and support opt-in ordered CSS/font inlining while preserving the opaque sandbox and native Storybook loading. ([PR #36879](https://github.com/microsoft/fluentui/pull/36879) by dmytrokirpa@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-playground_v0.1.0)
 
