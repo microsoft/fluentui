@@ -108,22 +108,15 @@ async function renderEntryPoint(
   const selected = entryPoints.find(entry => entry.key === entryPoint);
   if (!selected) {
     throw error(
-      `No declared public entry point matches. Valid non-root keys: ${
-        entryPoints
-          .filter(entry => entry.key !== '.')
-          .map(entry => entry.key)
-          .join(', ') || '(none)'
-      }.`,
+      `No declared public entry point matches. Valid non-root keys: ${entryPoints
+        .filter(entry => entry.key !== '.')
+        .map(entry => entry.key)
+        .join(', ') || '(none)'}.`,
     );
   }
 
   const packageJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
-  const { namedImport, sourceFile, unresolved } = collectEntryPointImport(
-    tree,
-    projectConfig,
-    packageJson.name,
-    selected,
-  );
+  const { namedImport, sourceFile, unresolved } = collectEntryPointImport(tree, projectConfig, packageJson.name, selected);
   if (!sourceFile) {
     throw error(`Cannot read the source for "${projectConfig.root}/src/${selected.outputPath}" (.ts or .tsx).`);
   }

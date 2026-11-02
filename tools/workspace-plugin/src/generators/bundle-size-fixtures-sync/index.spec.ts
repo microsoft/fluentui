@@ -277,7 +277,7 @@ describe('bundle-size-fixtures-sync generator', () => {
       await generator(tree);
 
       const fixture = project.readFixture('Calendar.fixture.js')!;
-      expect(fixture).toContain('import {\n  Calendar,\n  default as Calendar_default,\n  useCalendar,\n}');
+      expect(fixture).toContain("import {\n  Calendar,\n  default as Calendar_default,\n  useCalendar,\n}");
       expect(fixture).toContain('console.log(Calendar, Calendar_default, useCalendar)');
       expect(fixture).not.toContain('CalendarProps');
       expect(fixture).not.toContain('UnexportedDefault');
