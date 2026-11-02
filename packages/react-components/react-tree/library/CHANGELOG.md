@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.17.0)
+
+Mon, 02 Nov 2026 13:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.16.10..@fluentui/react-tree_v9.17.0)
+
+### Minor changes
+
+- feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks ([PR #36932](https://github.com/microsoft/fluentui/pull/36932) by dmytrokirpa@microsoft.com)
 
 ## [9.16.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.16.10)
 
