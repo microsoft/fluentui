@@ -11,13 +11,13 @@ const NO_EVENTS: string[] = [];
 
 /**
  * Returns focus when a top-layer element closes, where the browser doesn't: `manual` and `hint` popovers, light
- * dismiss, and a `<dialog>` shown as a popover. Spread the result into `useLayerOpenState` or
- * `useDialogLayerOpenState`, which call it before the show and around the hide.
+ * dismiss, and a `<dialog>` shown as a popover. `useDialogLayerOpenState` passes the returned callbacks to the
+ * open-state hook, which calls them before the show and around the hide.
  */
 export const useLayerFocusReturn = (
   ref: React.RefObject<HTMLElement | null>,
-  options: UseLayerFocusReturnOptions = {},
-): Required<LayerLifecycleCallbacks> => {
+  options: UseLayerFocusReturnOptions,
+): LayerLifecycleCallbacks => {
   const { target, when = 'inside' } = options;
   const previouslyFocused = React.useRef<HTMLElement | null>(null);
   const focusWasInside = React.useRef<boolean | null>(null);
@@ -58,7 +58,7 @@ export const useLayerFocusReturn = (
   });
 
   useElementListeners(ref, handleFocusOut, element =>
-    isDialogElement(element) && !element.hasAttribute('popover') ? FOCUSOUT : NO_EVENTS,
+    when && isDialogElement(element) && !element.hasAttribute('popover') ? FOCUSOUT : NO_EVENTS,
   );
 
   return { onBeforeShow, onBeforeHide, onHide };

@@ -25,7 +25,7 @@ type LayerProps = {
 
 const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose, children }: LayerProps) => {
   const ref = React.useRef<HTMLDivElement & HTMLDialogElement>(null);
-  const { popover } = useDialogLayerOpenState(ref, {
+  useDialogLayerOpenState(ref, {
     open,
     mode,
     onOpenChange: (nextOpen, { type }) => (nextOpen ? onOpen?.() : onClose?.(type)),
@@ -39,7 +39,7 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
     <Element
       id={id}
       ref={ref}
-      popover={popover}
+      popover={mode === 'modal' ? undefined : mode}
       role={role}
       aria-label={role ? 'Layer' : undefined}
       data-open={open ? '' : undefined}
@@ -258,7 +258,7 @@ describe('useDialogLayerOpenState', () => {
       const [mode, setMode] = React.useState<'auto' | 'modal'>('auto');
       const [open, setOpen] = React.useState(true);
       const ref = React.useRef<HTMLDialogElement>(null);
-      const { popover } = useDialogLayerOpenState(ref, {
+      useDialogLayerOpenState(ref, {
         open,
         mode,
         onOpenChange: (_, { type }) => onClose(type),
@@ -268,7 +268,7 @@ describe('useDialogLayerOpenState', () => {
           <button id="reopen" onClick={() => setOpen(true)}>
             Reopen
           </button>
-          <dialog id="layer" ref={ref} popover={popover}>
+          <dialog id="layer" ref={ref} popover={mode === 'modal' ? undefined : mode}>
             <button id="modal" onClick={() => setMode('modal')}>
               Modal
             </button>

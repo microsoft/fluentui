@@ -34,47 +34,53 @@ export type PopoverMode = Exclude<TopLayerMode, 'modal'>;
 
 export type UseLayerOpenStateOptions<Mode extends TopLayerMode = PopoverMode> = {
   /**
-   * Controlled open state. `undefined` keeps the state inside the hook.
+   * Whether the element is open. The component owns this state.
    */
-  open?: boolean;
+  open: boolean;
   /**
-   * Initial open state when uncontrolled.
-   * @default false
-   */
-  defaultOpen?: boolean;
-  /**
-   * How the element enters the top layer. `modal` needs `useDialogLayerOpenState` and a `<dialog>` element.
+   * How the element enters the top layer. `modal` needs `useDialogLayerOpenState` and a `<dialog>` element. The
+   * element's `popover` attribute must match: the mode, or none for `modal`.
    */
   mode: Mode;
   /**
-   * Called when the browser opens or closes the element; never for changes made through `open` or `setOpen`. A browser
-   * close is final: the element stays hidden even if `open` stays true. A browser open that leaves `open` false is
-   * hidden again.
+   * Called when the browser opens or closes the element; never for changes made through `open`. A browser close is
+   * final: the element stays hidden even if `open` stays true. A browser open that leaves `open` false is hidden again.
    */
   onOpenChange?: (open: boolean, data: TopLayerOpenChangeData) => void;
-  /**
-   * Called before the hook shows the element: once per open, and again when a new element replaces the shown one.
-   */
-  onBeforeShow?: (element: HTMLElement) => void;
   /**
    * Called after the element is shown: once per open, and again when a new element replaces the shown one.
    */
   onShow?: (element: HTMLElement) => void;
+};
+
+export type UseDialogLayerOpenStateOptions = UseLayerOpenStateOptions<TopLayerMode> & {
   /**
-   * Called once per close as it starts, before the element leaves the top layer: before the hook hides it, or on the
-   * browser's `beforetoggle` or `cancel`. Not called when the browser closes a dialog without either.
+   * Returns focus on close where the browser doesn't: `manual` and `hint` popovers, light dismiss, and a `<dialog>`
+   * shown as a popover. Off when omitted.
    */
-  onBeforeHide?: (element: HTMLElement) => void;
-  /**
-   * Called once per close, after the element has left the top layer, whether React or the browser closed it.
-   */
-  onHide?: (element: HTMLElement) => void;
+  returnFocus?: UseLayerFocusReturnOptions;
 };
 
 /**
- * Lifecycle callbacks for `useLayerOpenState`; spread them into its options.
+ * Called by the open-state hook around a show and a hide, each exactly once. Internal: `useDialogLayerOpenState` passes
+ * the ones from `useLayerFocusReturn`.
  */
-export type LayerLifecycleCallbacks = Pick<UseLayerOpenStateOptions, 'onBeforeShow' | 'onBeforeHide' | 'onHide'>;
+export type LayerLifecycleCallbacks = {
+  /**
+   * Before the hook shows the element: once per open, and again when a new element replaces the shown one. For a
+   * browser open, on its `beforetoggle`, before `[autofocus]` takes focus.
+   */
+  onBeforeShow: (element: HTMLElement) => void;
+  /**
+   * Once per close as it starts, before the element leaves the top layer: before the hook hides it, or on the browser's
+   * `beforetoggle` or `cancel`. Not called when the browser closes a dialog without either.
+   */
+  onBeforeHide: (element: HTMLElement) => void;
+  /**
+   * Once per close, after the element has left the top layer, whether React or the browser closed it.
+   */
+  onHide: (element: HTMLElement) => void;
+};
 
 export type UseLayerFocusReturnOptions = {
   /**
@@ -89,18 +95,6 @@ export type UseLayerFocusReturnOptions = {
    * @default 'inside'
    */
   when?: 'inside' | 'always' | false;
-};
-
-export type UseLayerOpenStateReturn = {
-  open: boolean;
-  /**
-   * Sets the open state. Not reported through `onOpenChange`.
-   */
-  setOpen: (open: boolean) => void;
-  /**
-   * Value for the element's `popover` attribute: the mode, or `undefined` for `modal`.
-   */
-  popover: PopoverMode | undefined;
 };
 
 /**

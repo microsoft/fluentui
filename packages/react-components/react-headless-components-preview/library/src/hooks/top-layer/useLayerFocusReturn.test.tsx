@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
-import { useLayerFocusReturn } from './useLayerFocusReturn';
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
 import type { TopLayerMode, UseLayerFocusReturnOptions } from './types';
 
@@ -14,21 +13,25 @@ type ExampleProps = UseLayerFocusReturnOptions & {
 const Example = ({ open, mode = 'manual', withTarget, when, onOpenChange }: ExampleProps) => {
   const ref = React.useRef<HTMLDialogElement>(null);
   const targetRef = React.useRef<HTMLButtonElement>(null);
-  const focusReturn = useLayerFocusReturn(ref, { target: withTarget ? targetRef : undefined, when });
-  const { popover } = useDialogLayerOpenState(ref, { open, mode, onOpenChange, ...focusReturn });
+  useDialogLayerOpenState(ref, {
+    open,
+    mode,
+    onOpenChange,
+    returnFocus: { target: withTarget ? targetRef : undefined, when },
+  });
   return (
     <>
       <button>Trigger</button>
       <button ref={targetRef}>Target</button>
       <input aria-label="Elsewhere" />
-      <dialog ref={ref} popover={popover} data-testid="layer">
+      <dialog ref={ref} popover={mode === 'modal' ? undefined : mode} data-testid="layer">
         <button>Inside</button>
       </dialog>
     </>
   );
 };
 
-describe('useLayerFocusReturn', () => {
+describe('useDialogLayerOpenState returnFocus', () => {
   it('returns focus to the element focused before opening when focus was inside', () => {
     const { getByText, rerender } = render(<Example open={false} />);
     getByText('Trigger').focus();
@@ -71,6 +74,29 @@ describe('useLayerFocusReturn', () => {
     rerender(<Example open={false} when="always" />);
 
     expect(getByText('Trigger')).toHaveFocus();
+  });
+
+  it('never moves focus without returnFocus', () => {
+    const NoReturn = ({ open }: { open: boolean }) => {
+      const ref = React.useRef<HTMLDivElement>(null);
+      useDialogLayerOpenState(ref, { open, mode: 'manual' });
+      return (
+        <>
+          <button>Trigger</button>
+          <div ref={ref} popover="manual">
+            <button>Inside</button>
+          </div>
+        </>
+      );
+    };
+    const { getByText, rerender } = render(<NoReturn open={false} />);
+    getByText('Trigger').focus();
+    rerender(<NoReturn open />);
+    getByText('Inside').focus();
+
+    rerender(<NoReturn open={false} />);
+
+    expect(getByText('Trigger')).not.toHaveFocus();
   });
 
   it('never moves focus with when: false', () => {

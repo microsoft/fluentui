@@ -1,13 +1,11 @@
 export { useLayerOpenState } from './useLayerOpenState';
 export { useDialogLayerOpenState } from './useDialogLayerOpenState';
-export { useLayerFocusReturn } from './useLayerFocusReturn';
 export type {
   PopoverMode,
   TopLayerMode,
   TopLayerOpenChangeData,
   TopLayerOpenChangeType,
   UseLayerOpenStateOptions,
-  UseLayerOpenStateReturn,
+  UseDialogLayerOpenStateOptions,
   UseLayerFocusReturnOptions,
-  LayerLifecycleCallbacks,
 } from './types';

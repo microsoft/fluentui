@@ -1,20 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import {
-  useControllableState,
-  useEventCallback,
-  useForceUpdate,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { useEventCallback, useForceUpdate, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isInTopLayer, isPopoverOpen, log } from './utils';
 import type {
   DialogAdapter,
+  LayerLifecycleCallbacks,
   ToggleEvent,
   TopLayerMode,
   TopLayerOpenChangeData,
   UseLayerOpenStateOptions,
-  UseLayerOpenStateReturn,
 } from './types';
 import { useElementListeners } from './useElementListeners';
 
@@ -50,27 +45,19 @@ const showPopover = (element: HTMLElement): boolean => {
  * and reports opens and closes the browser makes.
  * For `mode="modal"`, use `useDialogLayerOpenState`.
  */
-export const useLayerOpenState = (
-  ref: React.RefObject<HTMLElement | null>,
-  options: UseLayerOpenStateOptions,
-): UseLayerOpenStateReturn => useLayerOpenStateWith(ref, options);
+export const useLayerOpenState = (ref: React.RefObject<HTMLElement | null>, options: UseLayerOpenStateOptions): void =>
+  useLayerOpenStateWith(ref, options);
 
 /**
- * The shared implementation. Only `useDialogLayerOpenState` passes `dialog`.
+ * The shared implementation. Only `useDialogLayerOpenState` passes `dialog` and `lifecycle`.
  */
 export const useLayerOpenStateWith = (
   ref: React.RefObject<HTMLElement | null>,
   options: UseLayerOpenStateOptions<TopLayerMode>,
   dialog?: DialogAdapter,
-): UseLayerOpenStateReturn => {
-  const { mode } = options;
-  const popover = mode === 'modal' ? undefined : mode;
-
-  const [open, setOpen] = useControllableState({
-    state: options.open,
-    defaultState: options.defaultOpen,
-    initialState: false,
-  });
+  lifecycle?: LayerLifecycleCallbacks,
+): void => {
+  const { open, mode } = options;
 
   const [syncToken, resync] = React.useReducer((count: number) => count + 1, 0);
   const scheduleDevCloseCheck = useForceUpdate();
@@ -83,25 +70,20 @@ export const useLayerOpenStateWith = (
   const warnedNativeOpen = React.useRef(false);
   const devCloseCheckPending = React.useRef(false);
   // Where the element is between show and hide, so each hide callback runs once per close.
-  const lifecycle = React.useRef<'hidden' | 'shown' | 'hiding'>('hidden');
+  const phase = React.useRef<'hidden' | 'shown' | 'hiding'>('hidden');
 
   const notifyBeforeHide = (element: HTMLElement) => {
-    if (lifecycle.current === 'shown') {
-      lifecycle.current = 'hiding';
-      options.onBeforeHide?.(element);
+    if (phase.current === 'shown') {
+      phase.current = 'hiding';
+      lifecycle?.onBeforeHide(element);
     }
   };
 
   const notifyHide = (element: HTMLElement) => {
-    if (lifecycle.current !== 'hidden') {
-      lifecycle.current = 'hidden';
-      options.onHide?.(element);
+    if (phase.current !== 'hidden') {
+      phase.current = 'hidden';
+      lifecycle?.onHide(element);
     }
-  };
-
-  const reportOpenChange = (nextOpen: boolean, data: TopLayerOpenChangeData) => {
-    setOpen(nextOpen);
-    options.onOpenChange?.(nextOpen, data);
   };
 
   const reportNativeClose = (data: TopLayerOpenChangeData) => {
@@ -109,7 +91,7 @@ export const useLayerOpenStateWith = (
       return;
     }
 
-    reportOpenChange(false, data);
+    options.onOpenChange?.(false, data);
 
     if (process.env.NODE_ENV !== 'production') {
       devCloseCheckPending.current = true;
@@ -126,7 +108,7 @@ export const useLayerOpenStateWith = (
       // A browser open: call `onBeforeShow` now, before `[autofocus]` takes focus, not once React accepts the open.
       if (!openRef.current && nativeShowElement.current !== element) {
         nativeShowElement.current = element;
-        options.onBeforeShow?.(element);
+        lifecycle?.onBeforeShow(element);
       }
     }
   };
@@ -143,8 +125,8 @@ export const useLayerOpenStateWith = (
         return;
       }
 
-      if (options.onOpenChange || options.open === undefined) {
-        reportOpenChange(true, { type: 'native-open', event });
+      if (options.onOpenChange) {
+        options.onOpenChange(true, { type: 'native-open', event });
       } else if (process.env.NODE_ENV !== 'production' && !warnedNativeOpen.current) {
         warnedNativeOpen.current = true;
         log(
@@ -250,14 +232,14 @@ export const useLayerOpenStateWith = (
     }
 
     if (fresh && nativeShowElement.current !== element) {
-      options.onBeforeShow?.(element);
+      lifecycle?.onBeforeShow(element);
     }
     nativeShowElement.current = null;
 
     const shown = dialog?.show(element, mode) ?? showPopover(element);
 
     if (isInTopLayer(element)) {
-      lifecycle.current = 'shown';
+      phase.current = 'shown';
     }
 
     if (fresh && (shown || isInTopLayer(element))) {
@@ -265,6 +247,4 @@ export const useLayerOpenStateWith = (
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, open, mode, syncToken]);
-
-  return { open, setOpen, popover };
 };

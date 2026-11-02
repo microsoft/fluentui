@@ -1,36 +1,32 @@
 import * as React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
-import { useLayerOpenState } from './useLayerOpenState';
+import { useLayerOpenState, useLayerOpenStateWith } from './useLayerOpenState';
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
 import { isPopoverOpen } from './utils';
-import type { TopLayerMode, TopLayerOpenChangeData, UseLayerOpenStateOptions } from './types';
+import type {
+  LayerLifecycleCallbacks,
+  PopoverMode,
+  TopLayerMode,
+  TopLayerOpenChangeData,
+  UseLayerOpenStateOptions,
+} from './types';
 
-type LayerProps<Mode extends TopLayerMode> = Partial<UseLayerOpenStateOptions<Mode>> & {
-  onRender?: (open: boolean) => void;
-};
+type LayerProps<Mode extends TopLayerMode> = Omit<UseLayerOpenStateOptions<Mode>, 'mode'> & { mode?: Mode };
 
-const Layer = ({ mode = 'auto', onRender, ...options }: LayerProps<'auto' | 'hint' | 'manual'>) => {
+const Layer = ({
+  mode = 'auto',
+  lifecycle,
+  ...options
+}: LayerProps<PopoverMode> & { lifecycle?: LayerLifecycleCallbacks }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { open, setOpen, popover } = useLayerOpenState(ref, { mode, ...options });
-  onRender?.(open);
-  return (
-    <>
-      <button onClick={() => setOpen(!open)}>Toggle</button>
-      <div ref={ref} popover={popover} data-testid="layer" />
-    </>
-  );
+  useLayerOpenStateWith(ref, { mode, ...options }, undefined, lifecycle);
+  return <div ref={ref} popover={mode} data-testid="layer" />;
 };
 
-const DialogLayer = ({ mode = 'modal', onRender, ...options }: LayerProps<TopLayerMode>) => {
+const DialogLayer = ({ mode = 'modal', ...options }: LayerProps<TopLayerMode>) => {
   const ref = React.useRef<HTMLDialogElement>(null);
-  const { open, setOpen, popover } = useDialogLayerOpenState(ref, { mode, ...options });
-  onRender?.(open);
-  return (
-    <>
-      <button onClick={() => setOpen(!open)}>Toggle</button>
-      <dialog ref={ref} popover={popover} data-testid="layer" />
-    </>
-  );
+  useDialogLayerOpenState(ref, { mode, ...options });
+  return <dialog ref={ref} popover={mode === 'modal' ? undefined : mode} data-testid="layer" />;
 };
 
 describe('useLayerOpenState and useDialogLayerOpenState', () => {
@@ -42,30 +38,22 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
     expect(isPopoverOpen(getByTestId('layer'))).toBe(false);
   });
 
-  it('keeps uncontrolled state, starting from defaultOpen', () => {
-    const { getByTestId, getByText } = render(<Layer defaultOpen />);
-    expect(isPopoverOpen(getByTestId('layer'))).toBe(true);
-
-    act(() => getByText('Toggle').click());
-    expect(isPopoverOpen(getByTestId('layer'))).toBe(false);
-  });
-
   it('opens a <dialog> modally for mode="modal"', () => {
     const { getByTestId } = render(<DialogLayer open />);
     expect((getByTestId('layer') as HTMLDialogElement).open).toBe(true);
   });
 
-  it('reports a light dismiss, and uncontrolled state follows it', async () => {
+  it('reports a light dismiss', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation();
     const onOpenChange = jest.fn();
-    const onRender = jest.fn();
-    const { getByTestId } = render(<Layer defaultOpen onOpenChange={onOpenChange} onRender={onRender} />);
+    const { getByTestId } = render(<Layer open onOpenChange={onOpenChange} />);
 
     act(() => getByTestId('layer').hidePopover());
 
     await waitFor(() =>
       expect(onOpenChange).toHaveBeenCalledWith(false, expect.objectContaining({ type: 'light-dismiss' })),
     );
-    expect(onRender).toHaveBeenLastCalledWith(false);
+    warn.mockRestore();
   });
 
   it('does not report changes made through open', () => {
@@ -145,18 +133,18 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
 
   it('calls the lifecycle callbacks in order, once per open and close', async () => {
     const calls: string[] = [];
-    const callbacks = {
+    const onShow = () => calls.push('show');
+    const lifecycle: LayerLifecycleCallbacks = {
       onBeforeShow: () => calls.push('beforeShow'),
-      onShow: () => calls.push('show'),
       onBeforeHide: () => calls.push('beforeHide'),
       onHide: () => calls.push('hide'),
     };
-    const { getByTestId, rerender } = render(<Layer open {...callbacks} />);
-    rerender(<Layer open={false} {...callbacks} />);
+    const { getByTestId, rerender } = render(<Layer open onShow={onShow} lifecycle={lifecycle} />);
+    rerender(<Layer open={false} onShow={onShow} lifecycle={lifecycle} />);
     expect(calls).toEqual(['beforeShow', 'show', 'beforeHide', 'hide']);
 
     calls.length = 0;
-    rerender(<Layer open {...callbacks} onOpenChange={() => undefined} />);
+    rerender(<Layer open onShow={onShow} lifecycle={lifecycle} onOpenChange={() => undefined} />);
     act(() => getByTestId('layer').hidePopover());
     await waitFor(() => expect(calls).toEqual(['beforeShow', 'show', 'beforeHide', 'hide']));
   });
@@ -197,14 +185,14 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
         onClose || onOpen
           ? (nextOpen: boolean, data: TopLayerOpenChangeData) => (nextOpen ? onOpen?.(data.event) : onClose?.(data))
           : undefined;
-      const { popover } = useDialogLayerOpenState(ref, { open, mode, onOpenChange, onShow });
+      useDialogLayerOpenState(ref, { open, mode, onOpenChange, onShow });
       if (!open && unmountOnClose !== false) {
         return null;
       }
 
       const Element = mode === 'modal' ? 'dialog' : 'div';
       return (
-        <Element ref={ref} popover={popover} data-testid="layer">
+        <Element ref={ref} popover={mode === 'modal' ? undefined : mode} data-testid="layer">
           {children}
         </Element>
       );
@@ -378,8 +366,8 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
       const onShow = jest.fn();
       const Example = ({ version }: { version: number }) => {
         const ref = React.useRef<HTMLDivElement>(null);
-        const { popover } = useLayerOpenState(ref, { open: true, mode: 'manual', onShow });
-        return <div key={version} ref={ref} popover={popover} data-testid="layer" />;
+        useLayerOpenState(ref, { open: true, mode: 'manual', onShow });
+        return <div key={version} ref={ref} popover="manual" data-testid="layer" />;
       };
       const { getByTestId, rerender } = render(<Example version={1} />);
       rerender(<Example version={2} />);
@@ -393,8 +381,8 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
       const onShow = jest.fn();
       const Example = ({ ready }: { ready: boolean }) => {
         const ref = React.useRef<HTMLDivElement>(null);
-        const { popover } = useLayerOpenState(ref, { open: true, mode: 'manual', onShow });
-        return ready ? <div ref={ref} popover={popover} data-testid="layer" /> : null;
+        useLayerOpenState(ref, { open: true, mode: 'manual', onShow });
+        return ready ? <div ref={ref} popover="manual" data-testid="layer" /> : null;
       };
       const { getByTestId, rerender } = render(<Example ready={false} />);
       rerender(<Example ready />);
