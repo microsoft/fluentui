@@ -54,7 +54,7 @@ The component owns `open`; the hooks only show and hide the element to match it 
 
 ### Why two open-state hooks
 
-`mode` is a runtime value, so a bundler can't drop the dialog code from a hook that checks it. The dialog code (`showModal()`, the `cancel` and `close` handling) lives in `dialogAdapter.ts`, and focus return in `useLayerFocusReturn.ts`; only `useDialogLayerOpenState` imports them. Components that never open as a dialog (Tooltip, Menu, Toaster, Listbox) use `useLayerOpenState` and don't bundle either; Popover (`trapFocus`) and Dialog use `useDialogLayerOpenState`, and they are also the only components that return focus.
+`mode` is a runtime value, so a bundler can't drop the dialog code from a hook that checks it. The dialog code (`showModal()`, the `cancel` and `close` handling) lives in `dialogAdapter.ts`, and focus return in `useLayerFocusReturn.ts`; only `useDialogLayerOpenState` imports them. Components that never open as a dialog (Tooltip, Menu, Toaster, Listbox) use `useLayerOpenState` and don't bundle either; Popover (`inertTrapFocus`) and Dialog use `useDialogLayerOpenState`, and they are also the only components that return focus.
 
 The split costs a second hook name and the internal `DialogAdapter` seam. In return, an app that uses only Tooltip, Menu, Combobox, Dropdown or Toaster ships about 580 B gzip less (1109 B against 1686 B). An app that also uses Popover or Dialog ships both, once.
 
@@ -164,7 +164,7 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 - **Exit styles.** Keep the element displayed and in the top layer while it animates out: `transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes. Target the exit with `:not([data-open])`, and handle `prefers-reduced-motion` in CSS.
 - **Inert while exiting.** While exit animations run, the element gets `inert` and `aria-hidden="true"`. When the exit ends, both go back to the values they had before, unless React changed them meanwhile (e.g. `aria-hidden={!open}` on a reopen).
 - **`popover` attribute changed while open** (e.g. Popover `mode`). The browser hides the element; it is shown again with the new value, and no close is reported.
-- **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `trapFocus`). To `modal`: the popover is hidden and the element is shown again as a modal. From `modal`: it stays modal until it closes, with a dev warning, and opens in the new mode next time. No close is reported either way.
+- **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `inertTrapFocus`). To `modal`: the popover is hidden and the element is shown again as a modal. From `modal`: it stays modal until it closes, with a dev warning, and opens in the new mode next time. No close is reported either way.
 - **Element replaced or mounted late.** A new element (changed `key`, or rendered after `open` became true) is shown, with `onShow` as on any other open. An exiting element that is replaced or removed finishes its exit.
 - **Element rendered only while open.** Listeners attach when it appears.
 - **Listeners.** Element listeners only, added once per element and event set. Closed layers that stay mounted (Tooltip, Menu) add no document listeners; `useLayerEscape` with `listen: 'document'` adds one only while open.
@@ -224,7 +224,7 @@ Focus on open and Tab order are the browser's:
 
 Each component composes the hooks it needs. This is the state after #37019; #36910 moves the components onto the open-state and focus-return hooks, #37018 adds `useLayerPresence` and `useLayerEscape`, and #37019 adds Popover `mode`.
 
-- **Popover / TeachingPopover / InfoLabel.** `useDialogLayerOpenState` with `mode: trapFocus ? 'modal' : mode` and `returnFocus: { target: triggerRef }`, and `useLayerPresence`. `useLayerEscape` closes a `manual` surface on Escape. `PopoverTrigger` keeps its own Escape handler for focus on the trigger.
+- **Popover / TeachingPopover / InfoLabel.** `useDialogLayerOpenState` with `mode: inertTrapFocus ? 'modal' : mode` and `returnFocus: { target: triggerRef }`, and `useLayerPresence`. `useLayerEscape` closes a `manual` surface on Escape. `PopoverTrigger` keeps its own Escape handler for focus on the trigger.
 - **Dialog / Drawer.** `useDialogLayerOpenState` with `'modal'`, or `'manual'` when non-modal, and `useLayerPresence`. Browser opens and closes are reported as `surfaceToggle`. `useLayerEscape` with `when: 'always'` reports every Escape as `escapeKeyDown`, skipping Escape from a layer nested inside. As on master, `DialogSurface` blocks the browser closing a modal on Escape so `onOpenChange` can veto, and locks scroll. `returnFocus: { when: 'always' }` returns focus to the element focused before a non-modal dialog opened; a modal dialog's `close()` returns it natively.
 - **Tooltip.** `useLayerOpenState` with `mode: 'hint'`, `useLayerPresence`, and `useLayerEscape` with `listen: 'document'`, which closes it on Escape where `hint` falls back to `manual`. Stays mounted so `aria-labelledby` / `aria-describedby` resolve.
 - **Menu.** `useLayerOpenState` with `mode: 'auto'`. Stays mounted; `onShow` re-applies `focusgroup` and focuses the first enabled item. `useMenu` returns focus. Browser closes are reported as `clickOutside`.
