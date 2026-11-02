@@ -20,24 +20,29 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
-          node-version: 20.x
+          node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
-      - run: yarn nx run scripts-executors:test -t 'smoke test'
+      - run: yarn nx run scripts-executors:test --testNamePattern='smoke test'
 
-      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
+      - run: yarn nx run workspace-plugin:test --testNamePattern='prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 
       # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
       - run: yarn nx run react-jsx-runtime:build
+
+      # Generators create/remove packages and modify the lockfile, so immutable installs must be disabled
+      - name: Check nx workspace generators
+        shell: bash
+        run: echo "YARN_ENABLE_IMMUTABLE_INSTALLS=false" >> "$GITHUB_ENV"
 
       - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive

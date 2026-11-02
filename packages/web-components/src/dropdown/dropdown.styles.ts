@@ -4,7 +4,7 @@ import {
   typographyBody2Styles,
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
-import { flipBlockState, openState, placeholderShownState } from '../styles/states/index.js';
+import { nativeDisabledState, openState, placeholderShownState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -25,6 +25,8 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
@@ -51,36 +53,45 @@ import { display } from '../utils/display.js';
 /**
  * Styles for the {@link (Dropdown:class)} component.
  *
+ * NOTE: The `--_initial-display` CSS variable and the `initial-display`
+ * attribute are used to show the server defined display text in SSR context,
+ * before the custom element is defined and upgraded.
+ *
  * @public
  */
 export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    anchor-name: --dropdown-trigger;
+    --_indicator-size: 20px;
+    --_placeholder-color: ${colorNeutralForeground4};
+    --_initial-display: attr(initial-display raw-string, attr(placeholder raw-string, none));
+
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     cursor: pointer;
   }
 
   :host(${placeholderShownState}) {
-    color: ${colorNeutralForeground4};
+    color: var(--_placeholder-color);
   }
 
   .control {
     appearance: none;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: none;
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: inset 0 0 0 ${strokeWidthThin} var(--control-border-color);
     box-sizing: border-box;
     color: inherit;
     column-gap: ${spacingHorizontalXXS};
-    display: inline-flex;
+    display: inline-grid;
+    grid-template-columns: 1fr var(--_indicator-size);
     justify-content: space-between;
     min-width: 160px;
     overflow: hidden;
     padding: ${spacingVerticalSNudge} ${spacingHorizontalMNudge};
+    white-space: normal;
     position: relative;
     text-align: start;
     width: 100%;
@@ -100,9 +111,28 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
+  /* webkit, firefox */
+  :host(:not(:has([slot='control']))) slot[name='control']::before {
+    content: var(--_initial-display);
+  }
+  /* chromium */
+  @scope {
+    :scope:not(:has([slot='control'])) slot[name='control']::before {
+      content: var(--_initial-display);
+    }
+  }
+
+  :host(:is(:not([value]), [value=''])) slot[name='control']::before {
+    color: var(--_placeholder-color);
+  }
+
   ::slotted(:is(input, button)) {
     all: unset;
-    flex: 1 1 auto;
+  }
+
+  slot[name='control']::before,
+  ::slotted(:is(input, button)) {
+    grid-area: 1 / 1;
   }
 
   ::slotted(button) {
@@ -111,6 +141,12 @@ export const styles = css`
 
   ::slotted(input) {
     cursor: text;
+    min-width: 0;
+    width: 100%;
+  }
+
+  ::slotted(input)::placeholder {
+    color: var(--_placeholder-color);
   }
 
   :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
@@ -120,16 +156,17 @@ export const styles = css`
     aspect-ratio: 1;
     color: ${colorNeutralForeground3};
     display: inline-flex;
+    grid-area: 1 / 2;
     justify-content: center;
-    width: 20px;
+    width: var(--_indicator-size);
   }
 
   :host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-    width: 16px;
+    --_indicator-size: 16px;
   }
 
   :host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-    width: 24px;
+    --_indicator-size: 24px;
   }
 
   .control::after,
@@ -149,6 +186,17 @@ export const styles = css`
     height: ${strokeWidthThick};
     scale: 0 1;
     transition: scale ${durationUltraFast} ${curveDecelerateMid};
+  }
+
+  /**
+  * focus-ring style uses lingering :focus-within selector due to platform limitations
+  * TODO: Convert selector to \`:host(:has(:focus-visible)) .control\` when browser support increases
+  * ISSUE: https://issues.chromium.org/issues/40062355
+  */
+  :host(:where(:focus-within)) .control {
+    border-radius: ${borderRadiusMedium};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus1};
+    outline: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
   :host(:where(${openState}, :focus-within)) .control::after {
@@ -203,23 +251,24 @@ export const styles = css`
     --control-border-color: ${colorTransparentStroke};
   }
 
-  :host(:disabled),
-  :host(:disabled) ::slotted(:where(button, input)) {
+  :host(${nativeDisabledState}),
+  :host(${nativeDisabledState}) ::slotted(:where(button, input)) {
     cursor: not-allowed;
   }
 
-  :host(:disabled) .control::before,
-  :host(:disabled) .control::after {
+  :host(${nativeDisabledState}) .control::before,
+  :host(${nativeDisabledState}) .control::after {
     content: none;
   }
 
-  :host(:disabled) .control:is(*, :active, :hover),
-  :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  :host(${nativeDisabledState}) .control:is(*, :active, :hover),
+  :host(${nativeDisabledState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     --control-border-color: ${colorNeutralStrokeDisabled};
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};
   }
 
+  ::slotted(:not([slot]):not([popover])),
   ::slotted([popover]:not(:popover-open)) {
     display: none;
   }
@@ -236,6 +285,15 @@ export const styles = css`
 
     :host([size='large']) {
       --margin-offset: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
+    }
+  }
+
+  @media (forced-colors: active) {
+    :host(${nativeDisabledState}) .control {
+      border-color: GrayText;
+    }
+    :host(${nativeDisabledState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+      color: GrayText;
     }
   }
 `;

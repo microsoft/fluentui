@@ -1,5 +1,7 @@
-import { PlotlySchema } from './PlotlySchema';
+import type { PlotlySchema } from './PlotlySchema';
 import { isArrayOrTypedArray } from './PlotlySchemaConverter';
+
+const MAX_SHAPE_RANK = 3;
 
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
@@ -77,26 +79,30 @@ function decodeBase64(value: string, dtype: string): any {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function decodeBdataInDict(d: any): void {
-  for (const [key, value] of Object.entries(d)) {
-    if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
-      decodeBdataInDict(value); // Recursively process nested objects
-    } else if (key === 'bdata' && typeof value === 'string' && isBase64(value)) {
-      const dtype = d.dtype || 'utf-8'; // Get dtype or default to 'utf-8'
-      d[key] = decodeBase64(value, dtype); // Decode the base64-encoded value
-    } else if (Array.isArray(value)) {
-      for (let i = 0; i < value.length; i++) {
-        if (typeof value[i] === 'object' && value[i] !== null) {
-          decodeBdataInDict(value[i]); // Recursively process objects in arrays
-        }
-      }
+function validateShape(dataLength: number, shape: number[]): void {
+  if (shape.length === 0 || shape.length > MAX_SHAPE_RANK) {
+    throw new Error(`Invalid typed-array shape: rank must be between 1 and ${MAX_SHAPE_RANK}`);
+  }
+
+  let elementCount = 1;
+
+  for (const dimension of shape) {
+    if (!Number.isSafeInteger(dimension) || dimension < 0) {
+      throw new Error('Invalid typed-array shape: dimensions must be non-negative safe integers');
     }
+    if (dimension !== 0 && elementCount > Number.MAX_SAFE_INTEGER / dimension) {
+      throw new Error('Invalid typed-array shape: element count exceeds the maximum safe integer');
+    }
+
+    elementCount *= dimension;
+  }
+
+  if (elementCount !== dataLength) {
+    throw new Error('Invalid typed-array shape: dimensions do not match decoded element count');
   }
 }
 
-// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
-export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+function reshapeValidatedArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
   if (shape.length === 1) {
     return data;
   }
@@ -113,67 +119,79 @@ export function reshapeArray(data: number[], shape: number[]): number[] | number
   const step = data.length / dim;
   const result: number[][][] = [];
   for (let i = 0; i < dim; i++) {
-    result.push(reshapeArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
+    result.push(reshapeValidatedArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
   }
   return result;
 }
 
-// Function to process a PlotlySchema object
-export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
-  // Create a deep copy of the original data
-  const originalData = JSON.parse(JSON.stringify(plotlySchema.data));
+// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
+export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+  validateShape(data.length, shape);
+  if (data.length === 0) {
+    return [];
+  }
+  return reshapeValidatedArray(data, shape);
+}
 
-  // Decode base64-encoded 'bdata' in the JSON data
-  decodeBdataInDict(plotlySchema.data);
-
-  // Check if the data has changed
-  if (JSON.stringify(plotlySchema.data) !== JSON.stringify(originalData)) {
-    // Overwrite the 'y', 'x', or 'z' value with the decoded 'bdata'
-    for (const item of plotlySchema.data || []) {
-      ['y', 'x', 'z', 'r', 'theta', 'values'].forEach(key => {
-        if (
-          item[key as keyof typeof item] &&
-          typeof item[key as keyof typeof item] === 'object' &&
-          'bdata' in (item[key as keyof typeof item] as Record<string, number[]>)
-        ) {
-          const bdata = (item[key as keyof typeof item] as { bdata: number[] }).bdata;
-          let shape = (item[key as keyof typeof item] as { shape?: string | number[] }).shape;
-          // convert to an array if shape is a string
-          if (typeof shape === 'string') {
-            let parsedShape: number[] | undefined = undefined;
-            try {
-              // Try to parse as JSON array
-              parsedShape = JSON.parse(shape);
-              if (!isArrayOrTypedArray(parsedShape)) {
-                parsedShape = undefined;
-              }
-            } catch (error) {
-              // If JSON.parse fails, try to parse as comma-separated numbers
-              const parts = shape.split(',').map(s => Number(s.trim()));
-              if (parts.every(n => !isNaN(n))) {
-                parsedShape = parts;
-              } else {
-                shape = undefined; // If parsing fails, set shape to undefined
-              }
-            }
-            shape = parsedShape;
-          }
-          // If shape exists, decode bdata into that shape
-          if (shape !== undefined && isArrayOrTypedArray(shape)) {
-            (item[key as keyof typeof item] as number[] | number[][] | number[][][]) = reshapeArray(
-              bdata,
-              shape as number[],
-            );
-          } else {
-            (item[key as keyof typeof item] as number[]) = bdata as number[];
-          }
-        }
-      });
-    }
-
-    return plotlySchema; // Return the decoded data
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function decodeBdataInDict(node: any): any {
+  // Primitive → return as-is
+  if (node === null || typeof node !== 'object') {
+    return node;
   }
 
-  plotlySchema.data = originalData; // Restore the original data if no changes were made
-  return plotlySchema; // Return the original data if no changes were made
+  // Array → map recursively
+  if (Array.isArray(node)) {
+    return node.map(item => decodeBdataInDict(item));
+  }
+
+  // Object that directly contains bdata
+  if ('bdata' in node && typeof node.bdata === 'string' && isBase64(node.bdata)) {
+    const dtype = node.dtype || 'utf-8'; // Get dtype or default to 'utf-8'
+    const decodedBdata = decodeBase64(node.bdata, dtype); // Decode the base64-encoded value
+    let shape = node.shape;
+
+    // Parse shape if it is a string
+    if (typeof shape === 'string') {
+      let parsedShape: number[] | undefined;
+
+      try {
+        // Try to parse as JSON array
+        parsedShape = JSON.parse(shape);
+        if (!isArrayOrTypedArray(parsedShape)) {
+          parsedShape = undefined;
+        }
+      } catch {
+        // If JSON.parse fails, try to parse as comma-separated numbers
+        const parts = shape.split(',').map(s => Number(s.trim()));
+        if (parts.every(n => !isNaN(n))) {
+          parsedShape = parts;
+        }
+      }
+      shape = parsedShape;
+    }
+
+    // If shape exists, reshape the decoded bdata
+    if (shape && isArrayOrTypedArray(shape)) {
+      return reshapeArray(decodedBdata, Array.from(shape as ArrayLike<number>));
+    }
+
+    return decodedBdata;
+  }
+
+  // Otherwise recursively decode nested keys
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const out: any = {};
+  for (const key of Object.keys(node)) {
+    out[key] = decodeBdataInDict(node[key]);
+  }
+
+  return out;
+}
+
+// Function to process a PlotlySchema object
+export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
+  // Decode base64-encoded 'bdata' in the JSON data
+  plotlySchema.data = decodeBdataInDict(plotlySchema.data);
+  return plotlySchema;
 }

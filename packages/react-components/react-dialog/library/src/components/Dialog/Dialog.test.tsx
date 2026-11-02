@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Dialog } from './Dialog';
-import { DialogProps } from './Dialog.types';
+import type { DialogProps } from './Dialog.types';
 import { isConformant } from '../../testing/isConformant';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { DialogSurface, DialogSurfaceProps } from '../../DialogSurface';
+import type { DialogSurfaceProps } from '../../DialogSurface';
+import { DialogSurface } from '../../DialogSurface';
 
 describe('Dialog', () => {
   isConformant<DialogProps>({

@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { CardPreviewSlots, CardPreviewBaseState } from './CardPreview.types';
 
 /**
  * Render the final JSX of CardPreview.
  */
-export const renderCardPreview_unstable = (state: CardPreviewState) => {
+export const renderCardPreview_unstable = (state: CardPreviewBaseState): JSXElement => {
   assertSlots<CardPreviewSlots>(state);
 
   return (

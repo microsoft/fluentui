@@ -1,4 +1,4 @@
-import { GanttChartStyles, GanttChartProps } from '../../index';
+import type { GanttChartStyles, GanttChartProps } from '../../index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
@@ -19,6 +19,9 @@ export const ganttClassNames: SlotClassNames<GanttChartStyles> = {
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 /**

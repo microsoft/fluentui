@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 
-export const Block = () => (
+export const Block = (): JSXElement => (
   <>
     <Image block src="https://fabricweb.azureedge.net/fabric-website/placeholders/900x50.png" alt="Image placeholder" />
     <Image

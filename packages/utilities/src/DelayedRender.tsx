@@ -31,8 +31,13 @@ export interface IDelayedRenderState {
  * requires a single child component; don't pass in many components. Wrap multiple components in a DIV
  * if necessary.
  *
- * @public
+ * Utility component for delaying the render of a child component after a given delay. This component
+ * requires a single child component; don't pass in many components. Wrap multiple components in a DIV
+ * if necessary.
+ *
  * {@docCategory DelayedRender}
+ *
+ * @public
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
   public static defaultProps = {

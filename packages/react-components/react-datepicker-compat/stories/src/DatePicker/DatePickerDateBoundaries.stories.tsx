@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { addMonths, addYears } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
@@ -17,7 +18,7 @@ const onFormatDate = (date?: Date): string => {
   return !date ? '' : `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
-export const DateBoundaries = () => {
+export const DateBoundaries = (): JSXElement => {
   const styles = useStyles();
 
   return (

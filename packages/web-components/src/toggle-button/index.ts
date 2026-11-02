@@ -4,3 +4,4 @@ export { ToggleButtonAppearance, ToggleButtonShape, ToggleButtonSize } from './t
 export type { ToggleButtonOptions } from './toggle-button.options.js';
 export { styles as ToggleButtonStyles } from './toggle-button.styles.js';
 export { template as ToggleButtonTemplate } from './toggle-button.template.js';
+export { tagName as ToggleButtonTagName } from './toggle-button.options.js';

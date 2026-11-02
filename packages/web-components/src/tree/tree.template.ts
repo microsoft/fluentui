@@ -1,20 +1,14 @@
-import { children, elements, html } from '@microsoft/fast-element';
-import { isTreeItem } from '../tree-item/tree-item.options.js';
+import { html, ref } from '@microsoft/fast-element';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
   <template
-    tabindex="0"
+    focusgroup="menu inline block nowrap nomemory"
     @click="${(x, c) => x.clickHandler(c.event)}"
-    @focusin="${(x, c) => x.focusHandler(c.event as FocusEvent)}"
-    @focusout="${(x, c) => x.blurHandler(c.event as FocusEvent)}"
     @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     @change="${(x, c) => x.changeHandler(c.event)}"
-    ${children({
-      property: 'childTreeItems',
-      filter: node => isTreeItem(node),
-    })}
+    @toggle="${x => x.itemToggleHandler()}"
   >
-    <slot></slot>
+    <slot ${ref('defaultSlot')} @slotchange="${x => x.handleDefaultSlotChange()}"></slot>
   </template>
 `;

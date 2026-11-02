@@ -16,6 +16,8 @@ import type {
   IShimmeredDetailsListStyles,
 } from './ShimmeredDetailsList.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
 
 const SHIMMER_INITIAL_ITEMS = 10;
@@ -32,8 +34,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
     this._shimmerItems = props.shimmerLines ? new Array(props.shimmerLines) : new Array(SHIMMER_INITIAL_ITEMS);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       detailsListStyles,
       enableShimmer,
@@ -92,8 +93,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
     // 1px to take into account the border-bottom of DetailsRow.
     const gapHeight: number = compact ? compactRowHeight : rowHeight + 1;
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const shimmerElementsRow: JSX.Element[] = [];
+    const shimmerElementsRow: JSXElement[] = [];
 
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
 

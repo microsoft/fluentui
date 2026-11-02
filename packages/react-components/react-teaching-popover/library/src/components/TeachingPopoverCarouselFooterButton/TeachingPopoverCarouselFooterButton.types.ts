@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '@fluentui/react-popover';
-import { ButtonProps, ButtonState } from '@fluentui/react-button';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { PopoverContextValue } from '@fluentui/react-popover';
+import type { ButtonProps, ButtonState } from '@fluentui/react-button';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 
 export type TeachingPopoverCarouselFooterButtonSlots = {
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
@@ -33,3 +33,13 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState &
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
   };
+
+export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarouselFooterButtonProps;
+
+/**
+ * Base state intentionally does not extend ButtonState — `useButton_unstable` is
+ * only invoked from the styled hook, which derives the right `appearance` from
+ * the popover context before calling it.
+ */
+export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
+  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;

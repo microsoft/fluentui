@@ -1,6 +1,7 @@
 import { CarouselNav, CarouselNavImageButton, CarouselNavButton } from '@fluentui/react-components';
 import { Field, makeStyles, Switch, tokens } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 const useClasses = makeStyles({
@@ -43,7 +44,7 @@ const useClasses = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const classes = useClasses();
   const [useImageButtons, setUseImageButtons] = React.useState(false);
 

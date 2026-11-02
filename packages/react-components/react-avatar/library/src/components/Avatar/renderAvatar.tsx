@@ -2,10 +2,12 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-export const renderAvatar_unstable = (state: AvatarState) => {
-  assertSlots<AvatarSlots>(state);
+import type { AvatarBaseSlots, AvatarBaseState } from './Avatar.types';
+
+export const renderAvatar_unstable = (state: AvatarBaseState): JSXElement => {
+  assertSlots<AvatarBaseSlots>(state);
 
   return (
     <state.root>

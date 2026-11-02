@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox } from '@fluentui/react-components';
 
-export const GroupedVerticalBarDefault = () => {
+export const GroupedVerticalBarDefault = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
@@ -234,7 +235,8 @@ export const GroupedVerticalBarDefault = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -244,7 +246,8 @@ export const GroupedVerticalBarDefault = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={{ marginTop: '10px' }}>

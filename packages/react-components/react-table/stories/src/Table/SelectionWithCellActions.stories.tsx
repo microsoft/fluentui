@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -15,7 +15,6 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   Button,
   TableBody,
@@ -27,7 +26,6 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   createTableColumn,
   TableCellActions,
@@ -117,7 +115,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SelectionWithCellActions = () => {
+export const SelectionWithCellActions = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

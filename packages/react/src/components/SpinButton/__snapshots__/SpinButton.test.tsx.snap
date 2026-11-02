@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SpinButton snapshots renders correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -16,7 +16,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -27,7 +27,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
         }
   >
     <label
-      className=
+      class=
           ms-Label
           {
             -moz-osx-font-smoothing: grayscale;
@@ -52,14 +52,14 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input0"
+      for="input0"
       id="Label1"
     >
       label
     </label>
   </div>
   <div
-    className=
+    class=
 
         {
           border-color: #605e5c;
@@ -90,15 +90,15 @@ exports[`SpinButton snapshots renders correctly 1`] = `
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
-    data-ktp-target={true}
+    data-ktp-target="true"
   >
     <input
-      aria-disabled={false}
+      aria-disabled="false"
       aria-labelledby="Label1"
-      aria-valuemax={100}
-      aria-valuemin={0}
-      autoComplete="off"
-      className=
+      aria-valuemax="100"
+      aria-valuemin="0"
+      autocomplete="off"
+      class=
           ms-spinButton-input
           {
             background-color: #ffffff;
@@ -137,22 +137,15 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
-      data-ktp-execute-target={true}
-      data-lpignore={true}
-      disabled={false}
+      data-ktp-execute-target="true"
+      data-lpignore="true"
       id="input0"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      onInput={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
       role="spinbutton"
       type="text"
       value="0"
     />
     <span
-      className=
+      class=
 
           {
             cursor: default;
@@ -161,7 +154,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           }
     >
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-UpButton
@@ -258,19 +251,12 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
+        data-is-focusable="false"
+        tabindex="-1"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -282,8 +268,8 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -310,18 +296,14 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>
         </span>
       </button>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-DownButton
@@ -418,19 +400,12 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
+        data-is-focusable="false"
+        tabindex="-1"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -442,8 +417,8 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -470,11 +445,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-3\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-3\\";"
           >
             
           </i>
@@ -487,7 +458,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
 
 exports[`SpinButton snapshots renders correctly with user-provided values 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -501,7 +472,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -512,7 +483,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
         }
   >
     <label
-      className=
+      class=
           ms-Label
           {
             -moz-osx-font-smoothing: grayscale;
@@ -537,14 +508,14 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input0"
+      for="input0"
       id="Label1"
     >
       label
     </label>
   </div>
   <div
-    className=
+    class=
 
         {
           border-color: #605e5c;
@@ -575,17 +546,17 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
-    data-ktp-target={true}
+    data-ktp-target="true"
     data-test="test"
   >
     <input
-      aria-disabled={false}
+      aria-disabled="false"
       aria-labelledby="Label1"
-      aria-valuemax={100}
-      aria-valuemin={0}
+      aria-valuemax="100"
+      aria-valuemin="0"
       aria-valuetext="0 pt"
-      autoComplete="off"
-      className=
+      autocomplete="off"
+      class=
           ms-spinButton-input
           {
             background-color: #ffffff;
@@ -624,22 +595,15 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             border-color: Highlight;
             color: HighlightText;
           }
-      data-ktp-execute-target={true}
-      data-lpignore={true}
-      disabled={false}
+      data-ktp-execute-target="true"
+      data-lpignore="true"
       id="input0"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      onInput={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
       role="spinbutton"
       type="text"
       value="0"
     />
     <span
-      className=
+      class=
 
           {
             cursor: default;
@@ -648,7 +612,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           }
     >
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-UpButton
@@ -745,19 +709,12 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
+        data-is-focusable="false"
+        tabindex="-1"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -769,8 +726,8 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -797,18 +754,14 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>
         </span>
       </button>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-DownButton
@@ -905,19 +858,12 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
+        data-is-focusable="false"
+        tabindex="-1"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -929,8 +875,8 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -957,11 +903,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-3\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-3\\";"
           >
             
           </i>

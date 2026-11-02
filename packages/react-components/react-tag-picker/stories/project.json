@@ -5,12 +5,5 @@
   "sourceRoot": "packages/react-components/react-tag-picker/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
   "implicitDependencies": [],
-  "targets": {
-    "test-ssr": {
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/**\""
-      }
-    }
-  }
+  "targets": {}
 }

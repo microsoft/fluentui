@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { NavCategoryItemState, NavCategoryItemSlots, NavCategoryItemContextValues } from './NavCategoryItem.types';
 import { NavCategoryItemProvider } from '../NavCategoryItemContext';
 
@@ -29,7 +30,7 @@ const getExpandIcon = (state: NavCategoryItemState) => {
 export const renderNavCategoryItem_unstable = (
   state: NavCategoryItemState,
   contextValues: NavCategoryItemContextValues,
-) => {
+): JSXElement => {
   assertSlots<NavCategoryItemSlots>(state);
 
   return (

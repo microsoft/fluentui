@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tag } from './Tag';
 import { isConformant } from '../../testing/isConformant';
-import { TagProps } from './Tag.types';
+import type { TagProps } from './Tag.types';
 import { render } from '@testing-library/react';
 
 const requiredProps: TagProps = {

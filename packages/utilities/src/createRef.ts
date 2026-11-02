@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-export type IRefObject<T> = React.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export type IRefObject<T> = React.MutableRefObject<T | null> | RefObject<T | null> | ((ref: T | null) => void);
 
 export type RefObject<T> = {
   (component: T | null): void;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IErrorBoundaryProps {
   children: React.ReactNode;
@@ -94,7 +95,7 @@ function fileSaver(url: string) {
 }
 
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
-  private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
+  private _declarativeChartRef: React.RefObject<IDeclarativeChart | null>;
   private _lastKnownValidLegends: string[] | undefined;
 
   constructor(props: DeclarativeChartProps) {
@@ -118,7 +119,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     });
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createDeclarativeChart()}</div>;
   }
 
@@ -149,7 +150,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     return schema ? schema.schema : null;
   }
 
-  private _createDeclarativeChart(): JSX.Element {
+  private _createDeclarativeChart(): JSXElement {
     const uniqueKey = `${this.state.selectedChoice}_${this.state.fluentDataVizColorPalette}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
     const { data, layout } = currentPlotlySchema;

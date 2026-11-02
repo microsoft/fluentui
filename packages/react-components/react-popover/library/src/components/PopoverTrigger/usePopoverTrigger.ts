@@ -1,7 +1,10 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  getReactElementRef,
   mergeCallbacks,
   useMergedRefs,
   useEventCallback,
@@ -73,7 +76,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
-    ref: useMergedRefs(triggerRef, child?.ref),
+    ref: useMergedRefs(triggerRef, getReactElementRef(child)),
   } as const;
 
   const triggerChildProps = {

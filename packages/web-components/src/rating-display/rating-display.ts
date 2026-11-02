@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseRatingDisplay } from './rating-display.base.js';
-import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
+import type { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * A Rating Display Custom HTML Element.
@@ -42,22 +42,4 @@ export class RatingDisplay extends BaseRatingDisplay {
    */
   @attr({ mode: 'boolean' })
   public compact: boolean = false;
-
-  /**
-   * Overrides the selected value and returns 1 if compact is true.
-   *
-   * @override
-   */
-  protected override getSelectedValue(): number {
-    return Math.round((this.compact ? 1 : this.value ?? 0) * 2) / 2;
-  }
-
-  /**
-   * Overrides the maximum icons and returns a max of 1 if compact is true.
-   *
-   * @override
-   */
-  protected override getMaxIcons(): number {
-    return (this.compact ? 1 : this.max ?? 5) * 2;
-  }
 }

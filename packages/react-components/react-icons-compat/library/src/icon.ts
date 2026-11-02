@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { GlobalSettings } from './GlobalSettings';
 import type { JSXElement } from '@fluentui/react-utilities';
 

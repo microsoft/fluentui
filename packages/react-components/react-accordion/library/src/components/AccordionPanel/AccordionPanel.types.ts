@@ -1,12 +1,15 @@
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AccordionPanelSlots = {
   root: NonNullable<Slot<'div'>>;
-  collapseMotion?: Slot<PresenceMotionSlotProps>;
+  collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
 
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
+
+export type AccordionPanelBaseProps = ComponentProps<Omit<AccordionPanelSlots, 'collapseMotion'>>;
 
 export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
   /**
@@ -14,3 +17,6 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
    */
   open: boolean;
 };
+
+export type AccordionPanelBaseState = ComponentState<Omit<AccordionPanelSlots, 'collapseMotion'>> &
+  Pick<AccordionPanelState, 'open'>;

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TableCellActionsSlots, TableCellActionsState } from './TableCellActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -29,9 +31,8 @@ const useStyles = makeStyles({
  * Apply styling to the TableCellActions slots based on the state
  */
 export const useTableCellActionsStyles_unstable = (state: TableCellActionsState): TableCellActionsState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableCellActionsClassNames.root,
     styles.root,

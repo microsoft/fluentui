@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
-import { MenuGrid, MenuGridRow } from '@fluentui/react-menu-grid-preview';
+import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -9,15 +11,17 @@ const Submenu = () => {
     <Menu positioning={{ autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
         <Button
+          appearance="transparent"
+          size="small"
+          icon={<MoreHorizontalRegular />}
+          aria-label="More actions"
           onKeyDown={event => {
             if (event.key === 'ArrowDown') {
               // Prevent arrow down from opening the menu to enable navigation in grid instead
               event.preventDefault();
             }
           }}
-        >
-          More actions
-        </Button>
+        />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -31,7 +35,11 @@ const Submenu = () => {
   );
 };
 
-export const WithSubmenu = () => {
+export const WithSubmenu = (): JSXElement => {
+  const showAlert = (name: string) => {
+    alert(`Item ${name} activated`);
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -39,10 +47,10 @@ export const WithSubmenu = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
-            <MenuGridRow key={index} secondActionCell={<Submenu />} aria-label={name}>
+          {items.map(name => (
+            <MenuGridItem key={name} firstSubAction={<Submenu />} onClick={() => showAlert(name)} aria-label={name}>
               {name}
-            </MenuGridRow>
+            </MenuGridItem>
           ))}
         </MenuGrid>
       </MenuPopover>
@@ -54,7 +62,7 @@ WithSubmenu.parameters = {
   docs: {
     description: {
       story: [
-        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", provided via `secondActionCell` or `thirdActionCell`.',
+        'If you need to provide a submenu for a `MenuGridItem`, use a menu button, e.g. "More actions", provided via `firstSubAction` or `secondSubAction` slots.',
       ].join('\n'),
     },
   },

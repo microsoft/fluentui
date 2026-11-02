@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { FunnelChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const FunnelChartBasic = () => {
+export const FunnelChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(500);
   const [hideLegend, setHideLegend] = React.useState<boolean>(false);
@@ -32,8 +33,8 @@ export const FunnelChartBasic = () => {
   const basicData = [
     { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
     { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-    { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-    { stage: 'Customers', value: 250, color: getColorFromToken(DataVizPalette.color10) },
+    { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color10) },
+    { stage: 'Customers', value: 250, color: getColorFromToken(DataVizPalette.color3) },
   ];
 
   const rootStyle = {
@@ -52,7 +53,8 @@ export const FunnelChartBasic = () => {
         max={1000}
         id="changeWidth_Basic"
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor="changeHeight_Basic">Change Height:</label>
       <input
@@ -62,7 +64,8 @@ export const FunnelChartBasic = () => {
         max={1000}
         id="changeHeight_Basic"
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <Switch label="Hide Legend" checked={hideLegend} onChange={_onToggleHideLegend} />
       <Switch label="Multiple Legend Selection" checked={legendMultiSelect} onChange={_onToggleLegendMultiSelect} />

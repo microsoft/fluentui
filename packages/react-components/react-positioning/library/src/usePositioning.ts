@@ -1,9 +1,12 @@
+'use client';
+
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
 import type {
+  OnPositioningEndEvent,
   PositioningOptions,
   PositioningProps,
   PositionManager,
@@ -17,8 +20,6 @@ import { useCallbackRef, hasAutofocusFilter } from './utils';
  * @internal
  */
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
-  'use no memo';
-
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -125,11 +126,12 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
   });
 
-  const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
+  const onPositioningEnd = useEventCallback((e: OnPositioningEndEvent) => options.onPositioningEnd?.(e));
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
-      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd);
-      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd);
+      // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
+      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
       containerRef.current = container;
       updatePositionManager();
     }

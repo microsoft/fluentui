@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -96,13 +98,12 @@ const useStyles = makeStyles({
  * Apply styling to the TableHeaderCell slots based on the state
  */
 export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): TableHeaderCellState => {
-  'use no memo';
-
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableHeaderCellClassNames.root,
     styles.root,
@@ -111,6 +112,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,
@@ -120,6 +122,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   );
 
   if (state.sortIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.sortIcon.className = mergeClasses(
       tableHeaderCellClassNames.sortIcon,
       styles.sortIcon,
@@ -128,6 +131,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   }
 
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
   }
 

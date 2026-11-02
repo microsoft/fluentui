@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
@@ -297,13 +300,12 @@ const useIconStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
-  'use no memo';
-
   const rootClassName = useRootClassName();
   const rootStyles = useRootStyles();
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     badgeClassNames.root,
     rootClassName,
@@ -321,7 +323,8 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const iconStyles = useIconStyles();
   if (state.icon) {
     let iconPositionClass;
-    if (state.root.children) {
+    // Handle the edge case where children is 0 (a falsy value that should still render text and have margin)
+    if (React.Children.toArray(state.root.children).length > 0) {
       if (state.size === 'extra-large') {
         iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextXL : iconStyles.beforeTextXL;
       } else {
@@ -329,6 +332,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
       }
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       badgeClassNames.icon,
       iconRootClassName,

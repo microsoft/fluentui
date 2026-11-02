@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, NavItemValue, OnNavItemSelectData } from '@fluentui/react-components';
 import {
   AppItem,
   Hamburger,
@@ -9,11 +10,9 @@ import {
   NavDrawerBody,
   NavDrawerHeader,
   NavItem,
-  NavItemValue,
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  OnNavItemSelectData,
 } from '@fluentui/react-components';
 import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
@@ -130,7 +129,7 @@ const getRandomPage = (): SelectedPage => {
   }
 };
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const styles = useStyles();
 
   const multipleLabelId = useId('multiple-label');

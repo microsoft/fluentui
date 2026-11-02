@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { MessageBarContextValue } from '../../contexts/messageBarContext';
 
 export type MessageBarSlots = {
@@ -48,5 +48,11 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> &
 export type MessageBarState = ComponentState<MessageBarSlots> &
   Required<Pick<MessageBarProps, 'layout' | 'intent' | 'shape'>> &
   Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
+    /**
+     * @deprecated Code is unused, replaced by motion components
+     */
     transitionClassName: string;
   };
+
+export type MessageBarBaseProps = DistributiveOmit<MessageBarProps, 'shape'>;
+export type MessageBarBaseState = DistributiveOmit<MessageBarState, 'shape'>;

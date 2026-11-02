@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState } from '../styles/states/index.js';
+import { checkedState, nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -26,7 +26,6 @@ import {
   spacingHorizontalXXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 
 export const styles = css`
@@ -58,7 +57,7 @@ export const styles = css`
   :host(:active) {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host(:disabled),
+  :host(${nativeDisabledState}),
   :host([readonly]) {
     border: 1px solid ${colorNeutralStrokeDisabled};
     background-color: none;
@@ -76,7 +75,7 @@ export const styles = css`
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
-  :host(${checkedState}:disabled) {
+  :host(${checkedState}${nativeDisabledState}) {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -106,11 +105,11 @@ export const styles = css`
   :host(:active) .checked-indicator {
     background-color: ${colorNeutralForeground3Pressed};
   }
-  :host(:disabled) .checked-indicator,
+  :host(${nativeDisabledState}) .checked-indicator,
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  :host(${checkedState}:disabled) .checked-indicator {
+  :host(${checkedState}${nativeDisabledState}) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
 
@@ -121,10 +120,11 @@ export const styles = css`
   :host(:not([slot='input']):focus-visible) {
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    outline-offset: 1px;
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       border-color: InactiveBorder;
     }
@@ -137,16 +137,16 @@ export const styles = css`
     .checked-indicator,
     :host(:hover) .checked-indicator,
     :host(:active) .checked-indicator {
-      background-color: ActiveCaption;
+      background-color: CanvasText;
     }
     :host(${checkedState}) .checked-indicator,
     :host(${checkedState}:hover) .checked-indicator,
     :host(${checkedState}:active) .checked-indicator {
-      background-color: ButtonFace;
+      background-color: HighlightText;
     }
-    :host(:disabled) .checked-indicator,
-    :host(${checkedState}:disabled) .checked-indicator {
+    :host(${nativeDisabledState}) .checked-indicator,
+    :host(${checkedState}${nativeDisabledState}) .checked-indicator {
       background-color: GrayText;
     }
-  `),
-);
+  }
+`;

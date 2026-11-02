@@ -13,6 +13,7 @@ import bestPracticesMd from './TagPickerBestPractices.md';
 import a11yMd from './TagPickerA11y.md';
 
 export { Default } from './TagPickerDefault.stories';
+export { DialogWithTagPicker } from './TagPickerDialogRepositioning.stories';
 export { Button } from './TagPickerButton.stories';
 export { Filtering } from './TagPickerFiltering.stories';
 export { Size } from './TagPickerSize.stories';

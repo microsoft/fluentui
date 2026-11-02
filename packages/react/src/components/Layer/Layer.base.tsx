@@ -26,7 +26,7 @@ import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types'
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement>) => {
+const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement | null>) => {
   if (providerRef?.current) {
     return providerRef.current.classList.contains(IsFocusVisibleClassName);
   }
@@ -51,7 +51,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
-    const layerRef = React.useRef<HTMLDivElement>();
+    const layerRef = React.useRef<HTMLDivElement>(undefined);
     const fabricElementRef = React.useRef<HTMLDivElement>(null);
     const focusContext = React.useContext(FocusRectsContext);
 

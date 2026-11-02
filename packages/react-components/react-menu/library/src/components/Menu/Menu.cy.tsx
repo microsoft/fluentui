@@ -1,4 +1,4 @@
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { makeStyles } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import {

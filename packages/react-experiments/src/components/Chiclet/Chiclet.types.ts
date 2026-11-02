@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import type { IStyle, ITheme } from '../../Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IChiclet {}
 
@@ -39,8 +40,8 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Description to render for the component in place of the url.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  description?: React.ReactElement<JSX.Element>;
+
+  description?: React.ReactElement<JSXElement>;
 
   /**
    * Preview to render for the component.
@@ -70,8 +71,8 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Footer to render for the component.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  footer?: React.ReactElement<JSX.Element>;
+
+  footer?: React.ReactElement<JSXElement>;
 
   /**
    * Theme for the component.

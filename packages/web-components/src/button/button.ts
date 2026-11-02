@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { StartEnd } from '../patterns/index.js';
+import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { BaseButton } from './button.base.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';

@@ -1,11 +1,16 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import type { AtomMotion } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
+import type { BaseAtomParams } from '../types';
 
-interface SlideAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
-  fromX?: string;
-  fromY?: string;
+interface SlideAtomParams extends BaseAtomParams {
+  /** X translate for the out state (exited). Defaults to '0px'. */
+  outX?: string;
+  /** Y translate for the out state (exited). Defaults to '0px'. */
+  outY?: string;
+  /** X translate for the in state (entered). Defaults to '0px'. */
+  inX?: string;
+  /** Y translate for the in state (entered). Defaults to '0px'. */
+  inY?: string;
 }
 
 /**
@@ -13,18 +18,24 @@ interface SlideAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param fromX - The starting X translate value with units (e.g., '0px', '100%'). Defaults to '0px'.
- * @param fromY - The starting Y translate value with units (e.g., '-20px', '100%'). Defaults to '0px'.
+ * @param outX - X translate for the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
+ * @param outY - Y translate for the out state (exited) with units (e.g., '50px', '100%'). Defaults to '0px'.
+ * @param inX - X translate for the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
+ * @param inY - Y translate for the in state (entered) with units (e.g., '5px', '10%'). Defaults to '0px'.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with translate keyframes and the supplied duration and easing.
  */
 export const slideAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
-  fromX = '0px',
-  fromY = '20px',
+  delay = 0,
+  outX = '0px',
+  outY = '0px',
+  inX = '0px',
+  inY = '0px',
 }: SlideAtomParams): AtomMotion => {
-  const keyframes = [{ translate: `${fromX} ${fromY}` }, { translate: '0px 0px' }];
+  const keyframes = [{ translate: `${outX} ${outY}` }, { translate: `${inX} ${inY}` }];
   if (direction === 'exit') {
     keyframes.reverse();
   }
@@ -32,5 +43,6 @@ export const slideAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

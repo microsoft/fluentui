@@ -2,6 +2,7 @@ import * as React from 'react';
 import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
 import { IOverflowSetItemProps, OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet';
 import { CommandBarButton, DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import type { JSXElement } from '@fluentui/utilities';
 
 const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { marginBottom: 28 } };
 const commandBarButtonStyles: Partial<IButtonStyles> = { root: { padding: '10px' } };
@@ -89,13 +90,13 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(initialItems);
   const [overflowItems, setOverflowItems] = React.useState<typeof initialItems>(initialOverflowItems);
 
-  const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => (
+  const onRenderItem = (item: IOverflowSetItemProps): JSXElement => (
     <CommandBarButton role="menuitem" {...item} styles={commandBarButtonStyles} menuProps={item.subMenuProps}>
       {item.name}
     </CommandBarButton>
   );
 
-  const onRenderOverflowButton = (newOverflowItems: any[]): JSX.Element => {
+  const onRenderOverflowButton = (newOverflowItems: any[]): JSXElement => {
     return (
       <CommandBarButton
         menuIconProps={{ iconName: 'More' }}

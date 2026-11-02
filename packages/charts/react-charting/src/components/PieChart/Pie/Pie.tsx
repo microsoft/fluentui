@@ -6,6 +6,7 @@ import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { getColorFromToken, getNextColor } from '../../../utilities/colors';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
@@ -21,8 +22,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     super(props);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public arcGenerator = (d: IArcData, i: number): JSX.Element => {
+  public arcGenerator = (d: IArcData, i: number): JSXElement => {
     return (
       <LabeledArc
         culture={this.props.culture}
@@ -36,8 +36,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
     const { pie, data, width, height, chartTitle, theme } = this.props;
 

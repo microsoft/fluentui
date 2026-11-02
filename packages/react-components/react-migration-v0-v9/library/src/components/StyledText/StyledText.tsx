@@ -1,8 +1,11 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+'use client';
+
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeClasses, Slot, ComponentProps, slot } from '@fluentui/react-components';
+import type { Slot, ComponentProps } from '@fluentui/react-components';
+import { getIntrinsicElementProps, mergeClasses, slot } from '@fluentui/react-components';
 import { useSizeStyles, useStyles, useWeightStyles } from './StyledText.styles';
 
 export type StyledTextSlots = {

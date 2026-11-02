@@ -132,6 +132,8 @@ export interface IChartDataPoint {
 
   /**
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
+   *
+   * @remarks This value is rendered into generated CSS. Validate it before assigning untrusted input to it.
    */
   color?: string;
 
@@ -222,6 +224,12 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -267,6 +275,11 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -340,6 +353,11 @@ export interface IBaseDataPoint {
    * text labels of marker points
    */
   text?: string;
+
+  /**
+   * Per-point marker color (overrides series color when present)
+   */
+  markerColor?: string;
 }
 
 /**
@@ -592,6 +610,7 @@ interface ISLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
@@ -658,6 +677,12 @@ export interface IVSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -734,7 +759,7 @@ export interface IGVBarChartSeriesPoint {
   /**
    * Color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
@@ -768,6 +793,11 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * Whether to use the secondary y scale or not
@@ -1069,3 +1099,297 @@ export interface IGanttChartDataPoint {
  * {@docCategory CartesianChart}
  */
 export type AxisScaleType = 'default' | 'log';
+
+/**
+ * Configuration options for an axis.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisProps = {
+  /**
+   * Defines the step between tick marks on the axis.
+   * Works in combination with `tick0`.
+   * Must be a positive number.
+   *
+   * - **Log scale**:
+   *   - Ticks are placed at `10^(n * tickStep)` where `n` is the tick index.
+   *     - Example: `tickStep = 2` → ticks at 1, 100, 10,000...
+   *     - Example: `tickStep = log10(5)` → ticks at 1, 5, 25, 125...
+   *   - Special format `"L<f>"`: Creates ticks that are linearly spaced in value (not position).
+   *     - Example: `tick0 = 0.1`, `tickStep = "L0.5"` → ticks at 0.1, 0.6, 1.1, 1.6...
+   *
+   * - **Date axis**:
+   *   - Must be in milliseconds.
+   *     - Example: one day = `tickStep = 86400000`.
+   *   - Special format `"M<n>"`: Places ticks every `n` months.
+   *     - Example: `tick0 = "2000-01-15"`, `tickStep = "M3"` → ticks on the 15th every third month.
+   *     - Example: `tickStep = "M48"` → ticks every 4 years.
+   */
+  tickStep?: number | string;
+
+  /**
+   * Sets the reference value for axis ticks.
+   * Works in combination with `tickStep`.
+   *
+   * - **Log scale**:
+   *   - `tick0` must be given as the logarithm of the reference tick.
+   *     - Example: to align ticks with 100, use `tick0 = 2`.
+   *   - Exception: when `tickStep` uses `"L<f>"`, you can specify the raw value directly.
+   */
+  tick0?: number | Date;
+
+  /**
+   * Sets the text displayed at each tick position specified by `tickValues`. Used with `tickValues`.
+   */
+  tickText?: string[];
+};
+
+/**
+ * Represents a single data point in a series.
+ */
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+  /**
+   * X-axis value of the data point.
+   */
+  x: X;
+
+  /**
+   * Y-axis value of the data point.
+   */
+  y: Y;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the x-axis value.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the y-axis value.
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Base interface for a series.
+ */
+export interface IDataSeries {
+  /**
+   * Name of the series to be displayed in the legend.
+   */
+  legend: string;
+
+  /**
+   * Shape used in the legend (e.g., circle, square).
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * Color of the series.
+   */
+  color?: string;
+
+  /**
+   * Opacity of the series.
+   */
+  opacity?: number;
+
+  /**
+   * Gradient fill for the series (start and end colors).
+   */
+  gradient?: [string, string];
+
+  /**
+   * Whether this series should be plotted against a secondary Y-axis.
+   */
+  useSecondaryYScale?: boolean;
+
+  /**
+   * Callback invoked when the legend item is clicked.
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+}
+
+/**
+ * Represents a bar series.
+ */
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+  /**
+   * Type discriminator: always 'bar' for this series.
+   */
+  type: 'bar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IDataPointV2<X, Y>[];
+
+  /**
+   * Optional group identifier for the series.
+   */
+  key?: string;
+}
+
+/**
+ * Represents a line series.
+ */
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+  /**
+   * Type discriminator: always 'line' for this series.
+   */
+  type: 'line';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IDataPointV2<X, Y>[];
+
+  /**
+   * Optional gaps to render in the line.
+   */
+  gaps?: ILineChartGap[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * If true, hides dots for inactive (unfocused/unhovered) data points.
+   */
+  hideInactiveDots?: boolean;
+
+  /**
+   * Callback invoked when the line itself is clicked.
+   */
+  onLineClick?: () => void;
+}
+
+/**
+ * Represents a single data point in a polar series.
+ */
+export interface IPolarDataPoint {
+  /**
+   * Radial value of the data point.
+   */
+  r: string | number | Date;
+
+  /**
+   * Angular value of the data point, specified as a category or in degrees.
+   */
+  theta: string | number;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the radial axis value.
+   */
+  radialAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the angular axis value.
+   */
+  angularAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Represents a scatterpolar series.
+ */
+export interface IScatterPolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'scatterpolar' for this series.
+   */
+  type: 'scatterpolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+}
+
+/**
+ * Represents a linepolar series.
+ */
+export interface ILinePolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'linepolar' for this series.
+   */
+  type: 'linepolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
+}
+
+/**
+ * Represents a areapolar series.
+ */
+export interface IAreaPolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'areapolar' for this series.
+   */
+  type: 'areapolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
+}

@@ -16,6 +16,8 @@ import {
 import { SelectionMode } from './interfaces';
 import type { ISelection, IObjectWithKey } from './interfaces';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 // Selection definitions:
 //
 // Anchor index: the point from which a range selection starts.
@@ -212,8 +214,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { isModal } = this.state;
 
     return (

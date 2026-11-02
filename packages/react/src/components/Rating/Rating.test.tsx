@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import { Rating } from './Rating';
 import { KeyCodes } from '../../Utilities';
@@ -11,15 +10,13 @@ describe('Rating', () => {
   const noOp = () => undefined;
 
   it('renders correctly', () => {
-    const component = renderer.create(<Rating />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Rating />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with half star', () => {
-    const component = renderer.create(<Rating defaultRating={2.5} componentRef={ref} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Rating defaultRating={2.5} componentRef={ref} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

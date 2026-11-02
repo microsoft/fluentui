@@ -4,19 +4,25 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { Checkbox } from '@fluentui/react-checkbox';
+import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const calculateListItemRoleForListRole: (listRole: string) => string;
+
+// @public
+export const calculateListRole: (navigationMode: ListNavigationMode | undefined, selectable: boolean) => "grid" | "listbox" | "list";
 
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
@@ -25,7 +31,41 @@ export const List: ForwardRefComponent<ListProps>;
 export const listClassNames: SlotClassNames<ListSlots>;
 
 // @public (undocumented)
+export const ListContextProvider: React_2.Provider<ListContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListContextValue | undefined>>;
+
+// @public (undocumented)
+export type ListContextValue = {
+    selection?: ListSelectionState;
+    validateListItem: (listItemElement: HTMLElement) => void;
+};
+
+// @public (undocumented)
+export type ListContextValues = {
+    listContext: ListContextValue;
+    synchronousContext: ListSynchronousContextValue;
+};
+
+// @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
+
+// @public (undocumented)
+export type ListItemActionEventData = EventData<'ListItemAction', CustomEvent<{
+    originalEvent: React_2.MouseEvent | React_2.KeyboardEvent;
+}>> & {
+    value: ListItemValue;
+};
+
+// @public
+export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> & Pick<ListItemProps, 'value' | 'onAction' | 'disabledSelection'>;
+
+// @public
+export type ListItemBaseSlots = {
+    root: NonNullable<Slot<'li', 'div'>>;
+    checkmark?: Slot<'input'>;
+};
+
+// @public
+export type ListItemBaseState = ComponentState<ListItemBaseSlots> & Pick<ListItemState, 'selectable' | 'navigable' | 'disabled'>;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
@@ -47,7 +87,14 @@ export type ListItemSlots = {
 export type ListItemState = ComponentState<ListItemSlots> & {
     selectable: boolean;
     navigable: boolean;
+    disabled?: boolean;
 };
+
+// @public (undocumented)
+export type ListItemValue = string | number;
+
+// @public (undocumented)
+export type ListNavigationMode = 'items' | 'composite';
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
@@ -59,6 +106,18 @@ export type ListProps = ComponentProps<ListSlots> & {
 };
 
 // @public (undocumented)
+export type ListSelectionState = {
+    isSelected: (item: string | number) => boolean;
+    toggleItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    deselectItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    selectItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    clearSelection: (e: React_2.SyntheticEvent) => void;
+    toggleAllItems: (e: React_2.SyntheticEvent, itemIds: string[] | number[]) => void;
+    setSelectedItems: React_2.Dispatch<React_2.SetStateAction<Iterable<SelectionItemId>>>;
+    selectedItems: SelectionItemId[];
+};
+
+// @public (undocumented)
 export type ListSlots = {
     root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
 };
@@ -66,23 +125,66 @@ export type ListSlots = {
 // @public
 export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
 
-// @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+// @public (undocumented)
+export type ListSynchronousContextValue = {
+    navigationMode: ListNavigationMode | undefined;
+    listItemRole: string;
+};
+
+// @public (undocumented)
+export type OnListSelectionChangeData = EventData<'change', React_2.SyntheticEvent> & {
+    selectedItems: SelectionItemId[];
+};
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
+
+// @public
+export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
 // @public
+export const useListBase_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
+
+// @public (undocumented)
+export const useListContext_unstable: <T>(selector: ContextSelector<ListContextValue, T>) => T;
+
+// @public (undocumented)
+export function useListContextValues_unstable(state: ListState): ListContextValues;
+
+// @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
+
+// @public
+export const useListItemBase_unstable: (props: ListItemBaseProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemBaseState;
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
+
+// @public
+export const validateGridCellsArePresent: (listRole: string, listItemEl: HTMLElement) => void;
+
+// @public
+export const validateListItemElement: (listItemEl: HTMLElement, { listRenderedAs, listRole, hasSelection, hasFocusableChildren }: ValidateListItemElementOptions) => void;
+
+// @public (undocumented)
+export type ValidateListItemElementOptions = {
+    listRenderedAs: string;
+    listRole: string;
+    hasSelection: boolean;
+    hasFocusableChildren: boolean;
+};
+
+// @public
+export function validateProperElementTypes(listRenderedAs?: string, listItemRenderedAs?: string): void;
+
+// @public
+export const validateProperRolesAreUsed: (role: string, listItemRole: string, hasSelection: boolean, hasFocusableChildren: boolean) => void;
 
 // (No @packageDocumentation comment for this package)
 

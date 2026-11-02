@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 1`] = `
 <div>
@@ -609,6 +609,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"
@@ -622,7 +623,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -636,7 +639,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1181,6 +1184,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_1"
@@ -1194,7 +1198,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1208,7 +1214,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;

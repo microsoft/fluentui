@@ -1,3 +1,5 @@
+'use client';
+
 import { isHTMLElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -9,7 +11,10 @@ const noop = () => undefined;
 /**
  * @internal
  */
-export function useToasterFocusManagement_unstable(pauseAllToasts: () => void, playAllToasts: () => void) {
+export function useToasterFocusManagement_unstable(
+  pauseAllToasts: () => void,
+  playAllToasts: () => void,
+): (el: HTMLDivElement) => void {
   const { targetDocument } = useFluent();
   const cleanupListenersRef = React.useRef<() => void>(noop);
 

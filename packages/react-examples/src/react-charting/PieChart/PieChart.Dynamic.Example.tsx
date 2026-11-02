@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDataPoint, PieChart, IPieChartProps, DataVizPalette } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Stack, StackItem } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IDataPoint[];
@@ -52,7 +53,7 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
     this._changeColors = this._changeColors.bind(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>

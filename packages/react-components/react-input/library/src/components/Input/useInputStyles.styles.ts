@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -327,8 +329,6 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles_unstable = (state: InputState): InputState => {
-  'use no memo';
-
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';
@@ -338,6 +338,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const inputStyles = useInputElementStyles();
   const contentStyles = useContentStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     inputClassNames.root,
     useRootClassName(),
@@ -354,6 +355,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
@@ -366,6 +368,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
 
   const contentClasses = [useContentClassName(), disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentBefore.className = mergeClasses(
       inputClassNames.contentBefore,
       ...contentClasses,
@@ -373,6 +376,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     );
   }
   if (state.contentAfter) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentAfter.className = mergeClasses(
       inputClassNames.contentAfter,
       ...contentClasses,

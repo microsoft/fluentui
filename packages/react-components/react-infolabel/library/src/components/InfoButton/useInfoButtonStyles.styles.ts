@@ -1,3 +1,5 @@
+'use client';
+
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -106,13 +108,12 @@ const usePopoverSurfaceStyles = makeStyles({
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
-  'use no memo';
-
   const { size } = state;
   const { open } = state.popover;
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
     popoverSurfaceStyles.base,
@@ -120,6 +121,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
     state.info.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,

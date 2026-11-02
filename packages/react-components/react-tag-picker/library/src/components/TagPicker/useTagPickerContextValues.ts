@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { TagPickerContextValues, TagPickerState } from './TagPicker.types';
+import type { TagPickerContextValues, TagPickerState } from './TagPicker.types';
 
 export function useTagPickerContextValues(state: TagPickerState): TagPickerContextValues {
   const {

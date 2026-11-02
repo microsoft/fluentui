@@ -1,4 +1,8 @@
-export function createSafeZoneAreaStateStore() {
+export function createSafeZoneAreaStateStore(): {
+  isActive: () => boolean;
+  toggleActive: (newIsActive: boolean) => void;
+  subscribe: (listener: (value: boolean) => void) => () => void;
+} {
   let isActive = false;
   const listeners: ((value: boolean) => void)[] = [];
 

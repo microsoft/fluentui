@@ -1,15 +1,36 @@
+import { execSync } from 'child_process';
+
+import headlessConfig from './release-headless.config';
 import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
 import webComponentsConfig from './release-web-components.config';
 import { config as sharedConfig } from './shared.config';
 
+jest.mock('child_process', () => ({
+  ...jest.requireActual<typeof import('child_process')>('child_process'),
+  execSync: jest.fn(),
+}));
+
 describe(`beachball configs`, () => {
-  const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
+  const execSyncMock = jest.mocked(execSync);
+  const precommit = sharedConfig.hooks.precommit;
+
+  if (!precommit) {
+    throw new Error('Expected the shared Beachball config to define a precommit hook');
+  }
+
+  beforeEach(() => {
+    execSyncMock.mockReset();
+    execSyncMock.mockReturnValue(Buffer.from(''));
+  });
 
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
+      access: 'public',
+      branch: 'origin/master',
       changehint: "Run 'yarn change' to generate a change file",
+      commit: false,
       disallowedChangeTypes: ['major'],
       generateChangelog: true,
       hooks: {
@@ -20,12 +41,18 @@ describe(`beachball configs`, () => {
         '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
+        '**/eslint.config.*',
+        '**/rit.config.js',
         '**/__fixtures__/**',
         '**/__mocks__/**',
+        '**/README.md',
         '**/docs/**',
+        '**/documentation/**',
         '**/stories/**',
         '**/.storybook/**',
         '**/bundle-size/**',
+        '**/monosize.config.mjs',
+        '**/bundle-isolation.config.json',
         '**/common/isConformant.ts',
         '**/src/testing/**',
         '**/src/e2e/**',
@@ -34,7 +61,7 @@ describe(`beachball configs`, () => {
         '**/SPEC*.md',
         '**/tests/**',
       ],
-      scope: ['!packages/fluentui/*'],
+      registry: 'https://registry.npmjs.org',
       tag: 'latest',
       changelog: {
         customRenderers: {
@@ -45,10 +72,33 @@ describe(`beachball configs`, () => {
     });
   });
 
+  it(`should normalize package dependencies and update the lockfile before committing`, () => {
+    precommit(process.cwd());
+
+    expect(execSyncMock.mock.calls).toEqual([
+      ['yarn nx g @fluentui/workspace-plugin:dependency-mismatch'],
+      ['yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies'],
+      ['yarn install --mode=update-lockfile'],
+    ]);
+  });
+
+  it(`should log precommit finalization failures`, () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+    const error = new Error('dependency normalization failed');
+    execSyncMock.mockImplementationOnce(() => {
+      throw error;
+    });
+
+    expect(() => precommit(process.cwd())).not.toThrow();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(error);
+    expect(execSyncMock).toHaveBeenCalledTimes(1);
+
+    consoleErrorSpy.mockRestore();
+  });
+
   it(`should generate v8 release config`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
         'packages/azure-themes',
         'packages/cra-template',
         'packages/date-time-utilities',
@@ -80,44 +130,49 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/perf-test-react-components',
-        'apps/vr-tests-react-components',
-      ]),
-    );
-
-    expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
-
-    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackagesFromReleaseProcess.includes(scope));
-
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
       {
         changelogPath: 'packages/react-components/react-components',
-        masterPackageName: '@fluentui/react-components',
-        include: includeScopes,
+        mainPackageName: '@fluentui/react-components',
+        include: vNextConfig.scope,
       },
     ]);
+
+    // Ensure that vNext config does not include "tools" packages
+    expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
+
+    // Ensure that vNext config does not include "react-headless" packages
+    expect(vNextConfig.scope.some(scope => headlessConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
     expect(webComponentsConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/vr-tests-web-components',
-        'packages/web-components',
-      ]),
+      expect.arrayContaining(['apps/vr-tests-web-components', 'packages/web-components']),
     );
 
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
   });
 
+  it(`should generate react-headless release config`, () => {
+    expect(headlessConfig.scope).toEqual(
+      expect.arrayContaining(['packages/react-components/react-headless-components-preview/library']),
+    );
+
+    // Ensure only headless packages are included, not broader vNext or tools packages
+    const nonHeadlessScopes = [
+      'packages/react-components/react-components',
+      'packages/react-components/react-button',
+      'packages/react',
+    ];
+    expect(headlessConfig.scope.some(scope => nonHeadlessScopes.includes(scope))).toBe(false);
+
+    expect(headlessConfig.changelog).toEqual(sharedConfig.changelog);
+  });
+
   it(`should generate tools release config`, () => {
     expect(toolsConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
         'packages/react-components/babel-preset-storybook-full-source',
         'packages/react-components/eslint-plugin-react-components',
         'packages/react-components/react-conformance-griffel',

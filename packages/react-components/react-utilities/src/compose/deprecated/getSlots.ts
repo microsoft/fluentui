@@ -90,18 +90,19 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
         state.components[slotName]
   ) as React.ElementType<R[K]>;
 
+  const asserted = slot as React.ElementType<R[K]>;
+
   if (renderFunction || typeof children === 'function') {
     const render = (renderFunction || children) as SlotRenderFunction<R[K]>;
     return [
       React.Fragment as React.ElementType<R[K]>,
       {
-        children: render(slot, rest as Omit<R[K], 'as'>),
+        children: render(asserted, rest as Omit<R[K], 'as'>),
       } as unknown as R[K],
     ];
   }
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotProps = (shouldOmitAsProp ? omit(props, ['as']) : (props as UnknownSlotProps)) as R[K];
-  return [slot, slotProps];
+  return [asserted, slotProps];
 }

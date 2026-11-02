@@ -5,9 +5,10 @@ import { getIcon } from '../../Styling';
 import type { IFontIconProps } from './Icon.types';
 import type { IIconRecord, IIconSubsetRecord } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IIconContent {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children?: string | JSX.Element;
+  children?: string | JSXElement;
   iconClassName?: string;
   fontFamily?: string;
   mergeImageProps?: boolean;
@@ -94,4 +95,4 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
  */
 export const getFontIcon = memoizeFunction((iconName: string, className?: string, ariaLabel?: string) => {
   return FontIcon({ iconName, className, 'aria-label': ariaLabel });
-});
+}) as (iconName: string, className?: string, ariaLabel?: string) => React.ReactNode;

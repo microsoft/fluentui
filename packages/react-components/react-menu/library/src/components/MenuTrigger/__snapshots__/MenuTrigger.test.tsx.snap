@@ -1,16 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuTrigger renders a default state 1`] = `
 <button
   aria-haspopup="menu"
   id="id"
-  onClick={[Function]}
-  onContextMenu={[Function]}
-  onKeyDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseMove={[Function]}
-  onMouseOver={[Function]}
 >
   Menu trigger
 </button>

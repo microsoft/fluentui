@@ -1,12 +1,14 @@
+'use client';
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { pie as d3Pie } from 'd3-shape';
-import { PieProps } from './index';
+import type { PieProps } from './index';
 import { Arc } from '../Arc/index';
-import { ChartDataPoint } from '../index';
+import type { ChartDataPoint } from '../index';
 import { usePieStyles } from './usePieStyles.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
@@ -26,16 +28,25 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     const classes = usePieStyles(props);
     const pieForFocusRing = d3Pie()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       .value((d: any) => d.data)
       .padAngle(0);
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
-      props.onFocusCallback!(data, id, e);
+    function _focusCallback(
+      data: ChartDataPoint,
+      id: string,
+      e: React.FocusEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.onFocusCallback!(data, id, e, targetElement);
     }
 
-    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
-      props.hoverOnCallback!(data, e);
+    function _hoverCallback(
+      data: ChartDataPoint,
+      e: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.hoverOnCallback!(data, e, targetElement);
     }
 
     function _computeTotalValue() {
@@ -46,14 +57,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       return totalValue;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(
-      d: any,
-      i: number,
-      focusData: any,
-      href?: string,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement {
+    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSXElement {
       const color = d && d.data && d.data.color;
       return (
         <Arc
@@ -81,19 +85,23 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     const { data } = props;
-    const focusData = pieForFocusRing(data.map(d => d.data!));
+
+    // Filter out data points with value 0 to avoid gaps in the donut chart
+    const filteredData = data.filter((d: ChartDataPoint) => d.data !== 0);
+
+    const focusData = pieForFocusRing(filteredData.map(d => d.data!));
 
     const piechart = d3Pie<ChartDataPoint>()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       .value((d: any) => d.data)
-      .padAngle(0.02)(data);
+      .padAngle(0.02)(filteredData);
     const translate = `translate(${props.width / 2}, ${props.height / 2})`;
 
     _totalValue = _computeTotalValue();
 
     return (
-      <g transform={translate}>
+      <g transform={translate} role="listbox" aria-label={`Donut chart with ${piechart.length} slices`}>
         {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>

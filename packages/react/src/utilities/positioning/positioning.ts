@@ -834,7 +834,7 @@ function _getMaxHeightFromTargetRectangle(
   gapSpace: number,
   bounds: Rectangle,
   coverTarget?: boolean,
-) {
+): number {
   let maxHeight = 0;
   const directionalHint = DirectionalDictionary[targetEdge];
 

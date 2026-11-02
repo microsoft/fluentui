@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useProgressBar_unstable } from './useProgressBar';
 import { renderProgressBar_unstable } from './renderProgressBar';

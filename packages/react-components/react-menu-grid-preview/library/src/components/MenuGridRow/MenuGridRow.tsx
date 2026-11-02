@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGridRow_unstable } from './useMenuGridRow';
 import { renderMenuGridRow_unstable } from './renderMenuGridRow';
@@ -19,4 +21,4 @@ export const MenuGridRow: ForwardRefComponent<MenuGridRowProps> = React.forwardR
   return renderMenuGridRow_unstable(state);
 });
 
-MenuGridRow.displayName = 'MenuGroup';
+MenuGridRow.displayName = 'MenuGridRow';

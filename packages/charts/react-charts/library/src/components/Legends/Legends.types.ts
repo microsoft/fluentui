@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { CustomPoints, Points } from '../../utilities/utilities';
+import type * as React from 'react';
+import type { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
- * @public
  * Legends styles
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface LegendsStyles {
   /**
@@ -59,9 +60,10 @@ export interface LegendsStyles {
 }
 
 /**
- * @public
  * ILegend interface
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface Legend {
   /**
@@ -121,9 +123,10 @@ export interface Legend {
 }
 
 /**
- * @public
  * Legend style properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface LegendStyleProps {
   className?: string;
@@ -136,9 +139,10 @@ export interface LegendStyleProps {
 }
 
 /**
- * @public
  * Legend properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface LegendsProps {
   /**
@@ -251,15 +255,16 @@ export interface LegendsProps {
   /**
    * Callback to access the public methods and properties of the component.
    */
-  legendRef?: React.RefObject<LegendContainer>;
+  legendRef?: React.Ref<LegendContainer>;
 }
 
 /**
- * @public
  * The shape for the legend
  * default: show the rect legend
  * triangle: show the triangle legend
  * {@docCategory Legends}
+ *
+ * @public
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
 
@@ -271,7 +276,7 @@ export interface LegendContainer {
     svgWidth: number,
     isRTL?: boolean,
   ) => {
-    node: SVGGElement | null;
+    node: SVGSVGElement | null;
     width: number;
     height: number;
   };

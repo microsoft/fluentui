@@ -1,17 +1,8 @@
 import * as React from 'react';
-import { DeclarativeChart, IDeclarativeChart, Schema } from '@fluentui/react-charts';
-import {
-  Dropdown,
-  Field,
-  Input,
-  InputOnChangeData,
-  Option,
-  OptionOnSelectData,
-  SelectionEvents,
-  Spinner,
-  Switch,
-  useFluent,
-} from '@fluentui/react-components';
+import type { JSXElement, InputOnChangeData, OptionOnSelectData, SelectionEvents } from '@fluentui/react-components';
+import type { IDeclarativeChart, Schema } from '@fluentui/react-charts';
+import { DeclarativeChart } from '@fluentui/react-charts';
+import { Button, Dropdown, Field, Input, Option, Spinner, Switch, useFluent } from '@fluentui/react-components';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -56,6 +47,9 @@ const DEFAULT_OPTIONS = [
   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
   { key: 'chart_table', text: 'Chart Table' },
+  { key: 'scatterchart', text: 'Scatter Chart' },
+  { key: 'ganttchart', text: 'Gantt Chart' },
+  { key: 'funnelchart', text: 'Funnel Chart' },
 ];
 
 const DEFAULT_COLOR_OPTIONS = [
@@ -131,27 +125,34 @@ const DEFAULT_SCHEMAS = [
       '{"data":[{"cells":{"align":"left","fill":{"color":"white"},"font":{"size":11},"height":28,"values":[["ID-001","ID-002","ID-003","ID-004","ID-005","ID-006","ID-007","ID-008","ID-009","ID-010","ID-011","ID-012","ID-013","ID-014","ID-015","ID-016","ID-017","ID-018","ID-019","ID-020","ID-021","ID-022","ID-023","ID-024","ID-025","ID-026","ID-027","ID-028","ID-029","ID-030","ID-031","ID-032","ID-033","ID-034","ID-035","ID-036","ID-037","ID-038","ID-039","ID-040","ID-041","ID-042","ID-043","ID-044","ID-045","ID-046","ID-047","ID-048","ID-049","ID-050"],["Jun 22, 2023","Feb 17, 2023","Apr 28, 2023","Jul 12, 2023","Nov 20, 2023","Sep 09, 2023","Jul 15, 2023","Dec 26, 2023","Jan 10, 2023","Jul 31, 2023","Oct 05, 2023","Aug 31, 2023","Oct 20, 2023","Mar 29, 2023","Mar 12, 2023","Mar 30, 2023","Nov 11, 2023","Jul 13, 2023","Feb 09, 2023","Mar 29, 2023","Jun 24, 2023","Mar 30, 2023","Dec 04, 2023","Jun 15, 2023","Jan 26, 2023","Nov 30, 2023","Mar 14, 2023","Sep 23, 2023","Apr 26, 2023","Sep 01, 2023","Jul 17, 2023","Dec 02, 2023","Dec 05, 2023","Apr 10, 2023","Jun 27, 2023","Sep 01, 2023","Oct 13, 2023","May 28, 2023","May 28, 2023","Oct 16, 2023","Sep 23, 2023","Jul 05, 2023","May 08, 2023","Feb 02, 2023","Feb 01, 2023","Jul 22, 2023","Sep 02, 2023","Jun 01, 2023","Jun 13, 2023","Jul 03, 2023"],["$18,662.01","$15,408.73","$22,965.64","$15,986.99","$18,892.86","$25,459.56","$46,103.94","$27,998.00","$34,522.54","$46,093.94","$13,971.21","$48,792.36","$36,125.60","$16,836.38","$24,326.09","$40,027.45","$34,313.23","$23,001.89","$11,537.02","$35,370.96","$48,357.97","$36,111.61","$35,402.35","$49,811.98","$33,274.01","$26,574.74","$28,987.90","$34,940.40","$23,520.30","$36,990.09","$22,688.07","$41,133.82","$47,982.84","$36,501.07","$10,542.87","$34,913.84","$36,946.39","$48,877.80","$45,127.74","$30,384.98","$12,228.59","$28,046.37","$10,799.51","$27,668.44","$49,183.47","$24,377.78","$29,235.74","$37,546.45","$45,219.04","$46,729.42"],[132,480,277,198,259,100,461,320,91,108,243,86,316,136,93,410,61,308,357,130,82,232,178,344,325,224,92,421,234,494,127,336,330,175,308,53,144,276,413,319,418,346,378,69,145,378,460,298,230,373],["37.6°C","12.4°C","32.3°C","25.0°C","4.9°C","30.7°C","9.8°C","34.1°C","19.1°C","34.1°C","24.6°C","26.3°C","15.1°C","37.8°C","22.2°C","11.2°C","20.3°C","-9.0°C","5.1°C","23.0°C","4.5°C","20.9°C","11.4°C","-3.2°C","4.9°C","18.5°C","19.5°C","18.7°C","22.7°C","22.6°C","11.6°C","34.8°C","8.4°C","11.8°C","34.6°C","30.3°C","25.2°C","-5.0°C","36.0°C","25.7°C","39.9°C","-2.5°C","33.4°C","-1.9°C","20.8°C","-3.8°C","32.4°C","30.4°C","18.5°C","10.4°C"],["B","B","B","C","C","C","A","B","C","B","B","B","B","A","C","C","A","B","B","A","A","A","C","B","C","B","C","A","C","A","B","B","B","A","A","A","A","A","A","B","A","C","C","B","B","B","C","B","B","A"]]},"header":{"align":"left","fill":{"color":"lightblue"},"font":{"color":"black","size":12},"values":["ID","Date","Revenue","Units Sold","Temperature (°C)","Category"]},"type":"table"}],"layout":{"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"sequentialminus":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"title":{"text":"📊 Plotly Table with Currency, Date, Numbers, and Temperature"},"height":600,"width":750}}',
     ),
   },
+  {
+    key: 'scatterchart',
+    schema: JSON.parse(
+      '{"visualizer":"plotly","data":[{"line":{"color":"rgba(255, 153, 51, 1.0)","width":"1.3"},"mode":"markers","name":"Trace 0","type":"scatter","x":["2015-01-01","2015-01-02","2015-01-03","2015-01-04","2015-01-05"],"y":[0.5353935439391206,-0.3510205670171982,-1.3420793330744663,-1.683479706754631,-2.0207368899942826],"marker":{"size":[10,20,15,25,30]}},{"line":{"color":"rgba(55, 128, 191, 1.0)","width":"1.3"},"mode":"markers","name":"Trace 1","type":"scatter","x":["2015-01-01","2015-01-02","2015-01-03","2015-01-04","2015-01-05"],"y":[-2.58404773330316,-1.9162964761259451,-1.8899798841571565,-1.098466181069551,-1.2161136413159992],"marker":{"size":[15,10,20,25,30]}},{"line":{"color":"rgba(50, 171, 96, 1.0)","width":"1.3"},"mode":"markers","name":"Trace 2","type":"scatter","x":["2015-01-01","2015-01-02","2015-01-03","2015-01-04","2015-01-05"],"y":[0.4661114764240781,1.0610769506804194,1.0620659379275244,-0.5603096501263787,-0.22966983294858567],"marker":{"size":[20,15,25,10,30]}}],"layout":{"legend":{"font":{"color":"#4D5663"},"bgcolor":"#F5F6F9"},"xaxis1":{"title":"","tickfont":{"color":"#4D5663"},"gridcolor":"#E1E5ED","titlefont":{"color":"#4D5663"},"zerolinecolor":"#E1E5ED"},"yaxis1":{"title":"Price","tickfont":{"color":"#4D5663"},"zeroline":false,"gridcolor":"#E1E5ED","titlefont":{"color":"#4D5663"},"tickprefix":"$","zerolinecolor":"#E1E5ED"},"plot_bgcolor":"#F5F6F9","paper_bgcolor":"#F5F6F9"},"frames":[],"selectedLegends":["Trace 0","Trace 1"]}',
+    ),
+  },
+  {
+    key: 'ganttchart',
+    schema: JSON.parse(
+      '{"data":[{"base":["2017-01-01T00:00:00.000000000","2017-01-17T00:00:00.000000000","2017-01-14T00:00:00.000000000"],"hovertemplate":"Resource=Complete<br>Start=%{base}<br>Finish=%{x}<br>Task=%{y}<extra></extra>","legendgroup":"Complete","marker":{"color":"rgb(0, 255, 100)","pattern":{"shape":""}},"name":"Complete","orientation":"h","showlegend":true,"textposition":"auto","x":[2764800000,2678400000,5097600000],"xaxis":"x","y":["Job-1","Job-2","Job-4"],"yaxis":"y","type":"bar"},{"base":["2017-02-15T00:00:00.000000000"],"hovertemplate":"Resource=Incomplete<br>Start=%{base}<br>Finish=%{x}<br>Task=%{y}<extra></extra>","legendgroup":"Incomplete","marker":{"color":"rgb(255, 230, 41)","pattern":{"shape":""}},"name":"Incomplete","orientation":"h","showlegend":true,"textposition":"auto","x":[2419200000],"xaxis":"x","y":["Job-1"],"yaxis":"y","type":"bar"},{"base":["2017-01-17T00:00:00.000000000","2017-03-10T00:00:00.000000000","2017-04-01T00:00:00.000000000","2017-05-18T00:00:00.000000000"],"hovertemplate":"Resource=Not Started<br>Start=%{base}<br>Finish=%{x}<br>Task=%{y}<extra></extra>","legendgroup":"Not Started","marker":{"color":"rgb(220, 0, 0)","pattern":{"shape":""}},"name":"Not Started","orientation":"h","showlegend":true,"textposition":"auto","x":[2678400000,864000000,1641600000,2678400000],"xaxis":"x","y":["Job-2","Job-3","Job-3","Job-3"],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"sequentialminus":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0,1],"type":"date"},"yaxis":{"anchor":"x","domain":[0,1],"title":{"text":"Task"},"autorange":"reversed"},"legend":{"title":{"text":"Resource"},"tracegroupgap":0},"margin":{"t":60},"barmode":"overlay"}}',
+    ),
+  },
+  {
+    key: 'funnelchart',
+    schema: JSON.parse(
+      '{"data":[{"hovertemplate":"Campaign=A<br>Users=%{x}<br>Stage=%{y}<extra></extra>","legendgroup":"A","marker":{"color":"#636efa"},"name":"A","orientation":"v","showlegend":true,"x":{"dtype":"i2","bdata":"6ANYAiwB"},"xaxis":"x","y":["Visit","Sign-Up","Purchase"],"yaxis":"y","type":"funnel"},{"hovertemplate":"Campaign=B<br>Users=%{x}<br>Stage=%{y}<extra></extra>","legendgroup":"B","marker":{"color":"#EF553B"},"name":"B","orientation":"v","showlegend":true,"x":{"dtype":"i2","bdata":"IAOQAcgA"},"xaxis":"x","y":["Visit","Sign-Up","Purchase"],"yaxis":"y","type":"funnel"}],"layout":{"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"sequentialminus":[[0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0,1],"title":{"text":"Users"}},"yaxis":{"anchor":"x","domain":[0,1],"title":{"text":"Stage"}},"legend":{"title":{"text":"Campaign"},"tracegroupgap":0},"margin":{"t":60}}}',
+    ),
+  },
 ];
 
 const dropdownStyles = { width: 200 };
 const inputStyles = { maxWidth: 300 };
 
-const cachedFetch = (url: string) => {
-  const cachedData = localStorage.getItem(url);
-  if (cachedData) {
-    return Promise.resolve(JSON.parse(cachedData));
-  }
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem(url, JSON.stringify(data));
-      return data;
-    });
-};
+type LoadingState = 'initial' | 'loading' | 'partially_loaded' | 'loaded';
 
-export const DeclarativeChartBasicExample = () => {
+export const DeclarativeChartBasicExample = (): JSXElement => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
-  const lastKnownValidLegends = React.useRef<string[]>();
+  const lastKnownValidLegends = React.useRef<string[] | undefined>(undefined);
   const { targetDocument: doc } = useFluent();
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const loadedSchemas = React.useRef<{ key: string; schema: any }[]>([]);
@@ -163,7 +164,7 @@ export const DeclarativeChartBasicExample = () => {
   const [fluentDataVizColorPalette, setFluentDataVizColorPalette] =
     React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
-  const [isLoading, setLoading] = React.useState(false);
+  const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
 
   React.useEffect(() => {
     doc?.addEventListener('contextmenu', e => {
@@ -171,28 +172,33 @@ export const DeclarativeChartBasicExample = () => {
     });
   }, [doc]);
 
-  React.useEffect(() => {
-    const loadSchemas = async () => {
-      setLoading(true);
-      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-      const _schemas: { key: string; schema: any }[] = [];
-      for (let i = 1; i <= 80; i++) {
-        try {
-          const filename = `data_${('00' + i).slice(-3)}`;
-          const schema = await cachedFetch(
-            `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/apps/plotly_examples/src/data/${filename}.json`,
-          );
-          _schemas.push({ key: filename, schema });
-        } catch (error) {
-          // Nothing to do here
-        }
-      }
-      loadedSchemas.current = _schemas;
-      setLoading(false);
-    };
-
-    loadSchemas();
+  const loadSchemas = React.useCallback(async (startLoadingState: LoadingState = 'loading') => {
+    setLoadingState(startLoadingState);
+    let disableLoadMore = false;
+    const offset = loadedSchemas.current.length;
+    const promises = Array.from({ length: 100 }, (_, index) => {
+      const id = offset + index + 1;
+      const filename = `data_${id < 100 ? ('00' + id).slice(-3) : id}`;
+      return fetch(
+        `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/apps/plotly_examples/src/data/${filename}.json`,
+      )
+        .then(response => {
+          if (response.status === 404) {
+            disableLoadMore = true;
+            return null;
+          }
+          return response.json();
+        })
+        .then(schema => ({ key: filename, schema }))
+        .catch(() => ({ key: filename, schema: {} }));
+    });
+    loadedSchemas.current.push(...(await Promise.all(promises)).filter(item => item.schema !== null));
+    setLoadingState(disableLoadMore ? 'loaded' : 'partially_loaded');
   }, []);
+
+  React.useEffect(() => {
+    loadSchemas('initial');
+  }, [loadSchemas]);
 
   const getSchemaByKey = React.useCallback(
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -203,24 +209,47 @@ export const DeclarativeChartBasicExample = () => {
     [showMore],
   );
 
+  const applySelection = React.useCallback(
+    (option: { key: string; text: string } | undefined) => {
+      if (!option) {
+        return;
+      }
+      setSelectedOptions([option.key]);
+      setDropdownValue(option.text);
+      const schema = getSchemaByKey(option.key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+    },
+    [getSchemaByKey],
+  );
+
   React.useEffect(() => {
-    if (showMore && (isLoading || loadedSchemas.current.length === 0)) {
+    if (!showMore) {
+      setOptions(DEFAULT_OPTIONS);
+      applySelection(DEFAULT_OPTIONS[0]);
+      return;
+    }
+    // showMore === true
+    if (loadingState === 'initial' || loadedSchemas.current.length === 0) {
       setOptions([]);
       setSelectedOptions([]);
       setDropdownValue('');
       setSelectedLegends('');
-    } else {
-      const _options = showMore
-        ? loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }))
-        : DEFAULT_OPTIONS;
-      setOptions(_options);
-      setSelectedOptions([_options[0].key]);
-      setDropdownValue(_options[0].text);
-      const selectedPlotlySchema = getSchemaByKey(_options[0].key);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      return;
     }
-  }, [showMore, isLoading, getSchemaByKey]);
+    const _options = loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }));
+    if (loadingState.includes('loaded')) {
+      setOptions(_options);
+    }
+    setSelectedOptions(prevSelectedOptions => {
+      if (prevSelectedOptions[0]?.includes('data_')) {
+        return prevSelectedOptions;
+      }
+      setDropdownValue(_options[0].text);
+      const schema = getSchemaByKey(_options[0].key);
+      setSelectedLegends(schema.selectedLegends ? JSON.stringify(schema.selectedLegends) : '');
+      return [_options[0].key];
+    });
+  }, [showMore, loadingState, applySelection, getSchemaByKey]);
 
   const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowMore(ev.currentTarget.checked);
@@ -228,13 +257,9 @@ export const DeclarativeChartBasicExample = () => {
 
   const onOptionSelect = React.useCallback(
     (ev: SelectionEvents, data: OptionOnSelectData) => {
-      setSelectedOptions(data.selectedOptions);
-      setDropdownValue(data.optionText ?? '');
-      const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
-      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+      applySelection({ key: data.selectedOptions[0], text: data.optionText ?? '' });
     },
-    [getSchemaByKey],
+    [applySelection],
   );
 
   const onSelectedLegendsChange = React.useCallback(
@@ -271,7 +296,7 @@ export const DeclarativeChartBasicExample = () => {
 
   const renderDeclarativeChart = React.useCallback(() => {
     if (showMore) {
-      if (isLoading) {
+      if (loadingState === 'initial') {
         return <Spinner label="Loading..." />;
       } else if (loadedSchemas.current.length === 0) {
         return <div>More examples could not be loaded.</div>;
@@ -303,7 +328,7 @@ export const DeclarativeChartBasicExample = () => {
     );
   }, [
     showMore,
-    isLoading,
+    loadingState,
     selectedOptions,
     selectedLegends,
     getSchemaByKey,
@@ -314,7 +339,7 @@ export const DeclarativeChartBasicExample = () => {
   return (
     <div>
       <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'end' }}>
         <Field label="Select a schema">
           <Dropdown
             value={dropdownValue}
@@ -329,6 +354,17 @@ export const DeclarativeChartBasicExample = () => {
             ))}
           </Dropdown>
         </Field>
+        {showMore && (
+          <div>
+            <Button
+              icon={loadingState.includes('loaded') ? undefined : <Spinner size="tiny" />}
+              onClick={() => loadSchemas()}
+              disabledFocusable={loadingState !== 'partially_loaded'}
+            >
+              {loadingState.includes('loaded') ? 'Load more' : 'Loading'}
+            </Button>
+          </div>
+        )}
         <Field label="Select a color palette">
           <Dropdown
             value={fluentDataVizColorPalette}

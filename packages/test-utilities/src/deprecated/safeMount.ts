@@ -5,6 +5,7 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { createTestContainer } from '../createTestContainer';
+import { assertReactVersion } from './assertReactVersion';
 
 /**
  * Calls `mount` from enzyme, calls the callback, and unmounts. This prevents mounted components
@@ -25,6 +26,7 @@ export function safeMount<
   callback?: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void,
   attach?: boolean,
 ): void {
+  assertReactVersion(18);
   const testContainer = attach ? createTestContainer() : undefined;
   const wrapper = mount<TComponent, TProps, TState>(content, {
     ...(testContainer && { attachTo: testContainer }),

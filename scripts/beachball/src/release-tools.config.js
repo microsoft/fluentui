@@ -6,11 +6,11 @@ const { getConfig } = require('./utils');
 const { scope } = getConfig({ version: 'tools' });
 
 /**
- * @type {typeof sharedConfig}
+ * @type {import('./shared.config').ScopedConfig}
  */
 const config = {
   ...sharedConfig,
-  scope: [...sharedConfig.scope, ...scope],
+  scope,
 };
 
 module.exports = config;

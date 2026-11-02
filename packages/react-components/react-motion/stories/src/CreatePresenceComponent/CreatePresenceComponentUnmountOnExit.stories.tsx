@@ -10,6 +10,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentUnmountOnExit.stories.md';
 
@@ -72,7 +73,7 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentUnmountOnExit = () => {
+export const CreatePresenceComponentUnmountOnExit = (): JSXElement => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>(null);
 

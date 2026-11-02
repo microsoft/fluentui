@@ -1,4 +1,4 @@
-import { TableHeaderProps, TableHeaderSlots, TableHeaderState } from '../TableHeader/TableHeader.types';
+import type { TableHeaderProps, TableHeaderSlots, TableHeaderState } from '../TableHeader/TableHeader.types';
 
 export type DataGridHeaderSlots = TableHeaderSlots;
 

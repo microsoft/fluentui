@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DataGridHeaderCell renders a default state 1`] = `
 <div>
@@ -9,7 +9,6 @@ exports[`DataGridHeaderCell renders a default state 1`] = `
   >
     <div
       class="fui-DataGridHeaderCell__button fui-TableHeaderCell__button"
-      role="presentation"
     >
       Default DataGridHeaderCell
     </div>

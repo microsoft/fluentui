@@ -1,3 +1,5 @@
+'use client';
+
 import { useAnimationFrame, useEventCallback, useMergedRefs, useTimeout } from '@fluentui/react-utilities';
 import type { JSXElement, RefObjectFunction } from '@fluentui/react-utilities';
 import * as React from 'react';
@@ -63,6 +65,7 @@ export function useSafeZoneArea({
 
   const mouseCoordinatesRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const containerListenerRef = React.useMemo(() => {
     if (disabled) {
       return () => {
@@ -87,6 +90,7 @@ export function useSafeZoneArea({
     };
   }, [clearSafeZoneCloseTimeout, disabled, stateStore]);
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const targetListenerRef = React.useMemo(() => {
     if (disabled) {
       return () => {

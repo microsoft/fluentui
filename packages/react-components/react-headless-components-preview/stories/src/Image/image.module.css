@@ -1,0 +1,42 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.image {
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.fitContainer {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.fitFill {
+  height: 100%;
+  width: 100%;
+}
+
+.fitCenter {
+  object-fit: none;
+  object-position: center;
+}
+
+.fitContain {
+  object-fit: contain;
+  object-position: center;
+}
+
+.fitCover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.fitNone {
+  object-fit: none;
+  object-position: left top;
+}

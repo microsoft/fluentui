@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   ChartProps,
   LineChartPoints,
   Margins,
@@ -8,7 +7,7 @@ import {
   RefArrayData,
   CustomizedCalloutData,
 } from '../../types/index';
-import {
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,
@@ -38,6 +37,11 @@ export interface ScatterChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+
+  /**
    * Callback for getting callout description message
    */
   getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
@@ -52,7 +56,12 @@ export interface ScatterChartProps extends CartesianChartProps {
  * Scatter Chart styles
  * {@docCategory ScatterChart}
  */
-export interface ScatterChartStyles extends CartesianChartStyles {}
+export interface ScatterChartStyles extends CartesianChartStyles {
+  /**
+   * Style for the marker label
+   */
+  markerLabel?: string;
+}
 
 /**
  * Scatter Chart style properties

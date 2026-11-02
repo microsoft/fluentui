@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselViewportSlots, CarouselViewportState } from './CarouselViewport.types';
@@ -20,9 +22,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselViewport slots based on the state
  */
 export const useCarouselViewportStyles_unstable = (state: CarouselViewportState): CarouselViewportState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselViewportClassNames.root, styles.root, state.root.className);
 
   return state;

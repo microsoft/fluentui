@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 
 import { Slider } from './Slider';
@@ -8,13 +7,10 @@ import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes } from '../../Utilities';
 import type { ISlider } from './Slider.types';
 
-/* eslint-disable @typescript-eslint/no-deprecated */
-
 describe('Slider', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<Slider label="I am a slider" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Slider label="I am a slider" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can slide to default min/max and execute onChange', () => {

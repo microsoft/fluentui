@@ -16,14 +16,13 @@ To use a component, add a `FluentProvider` with a theme close to the root of you
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
 import { FluentProvider, teamsLightTheme, Button } from '@fluentui/react-components';
 
-ReactDOM.render(
+ReactDOMClient.createRoot(document.getElementById('root')).render(
   <FluentProvider theme={teamsLightTheme}>
     <Button appearance="primary">I am a button.</Button>
   </FluentProvider>,
-  document.getElementById('root'),
 );
 ```
 

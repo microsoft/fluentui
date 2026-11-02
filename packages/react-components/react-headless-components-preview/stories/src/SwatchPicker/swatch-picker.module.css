@@ -1,0 +1,154 @@
+.story {
+  display: block;
+  padding: var(--space-6);
+  color: var(--text);
+  background: var(--bg);
+}
+
+.demo {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.picker {
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(6, var(--space-8));
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.gridRow {
+  display: grid;
+  grid-template-columns: repeat(3, var(--space-8));
+  gap: var(--space-2);
+}
+
+.emptyPicker {
+  display: grid;
+  grid-template-columns: repeat(8, var(--space-8));
+  gap: var(--space-2);
+}
+
+.swatch {
+  width: var(--space-8);
+  height: var(--space-8);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--fui-SwatchPicker--color);
+}
+
+.emptySwatch {
+  width: var(--space-8);
+  height: var(--space-8);
+  padding: 0;
+  border: var(--stroke-thin) dashed var(--border-stronger);
+  border-radius: var(--radius-sm);
+  background: transparent;
+}
+
+.imageDemo {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.imagePicker {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.imageSwatch {
+  width: calc(var(--space-16) + var(--space-10) - var(--space-1));
+  height: calc(var(--space-16) + var(--space-10) - var(--space-1));
+  padding: 0;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-sm);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.imagePreview {
+  display: block;
+  width: 100%;
+  max-width: calc(var(--space-16) * 10);
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.colorInput {
+  width: var(--space-10);
+  height: var(--space-10);
+  padding: var(--space-1);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
+.button {
+  min-height: var(--space-10);
+  padding-inline: var(--space-4);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background: var(--bg-elev);
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.swatch[aria-checked='true'],
+.swatch[aria-selected='true'],
+.imageSwatch[aria-checked='true'],
+.imageSwatch[aria-selected='true'] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 var(--stroke-thick) var(--text);
+}
+
+.swatch:focus-visible,
+.imageSwatch:focus-visible,
+.button:focus-visible,
+.colorInput:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent-strong);
+  outline-offset: var(--space-1);
+}
+
+@media (forced-colors: active) {
+  .swatch[aria-checked='true'],
+  .swatch[aria-selected='true'],
+  .imageSwatch[aria-checked='true'],
+  .imageSwatch[aria-selected='true'] {
+    border-color: Highlight;
+    box-shadow: inset 0 0 var(--stroke-thick) Highlight;
+  }
+}
+
+.selectedColor {
+  width: calc(var(--space-16) + var(--space-8) + var(--space-1));
+  height: calc(var(--space-16) + var(--space-8) + var(--space-1));
+  border: var(--stroke-thin) solid var(--border);
+}
+
+@media (forced-colors: active) {
+  .selectedColor {
+    forced-color-adjust: none;
+  }
+}

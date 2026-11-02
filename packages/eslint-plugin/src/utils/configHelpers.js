@@ -12,7 +12,6 @@ const { readProjectConfiguration } = require('@nx/devkit');
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 // FIXME: this is not ok (to depend on nx packages within this plugin - redo)
@@ -34,8 +33,10 @@ const testFiles = [
   '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
+  '**/testing/**',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
   './e2e/**',
+  '**/e2e/**',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];

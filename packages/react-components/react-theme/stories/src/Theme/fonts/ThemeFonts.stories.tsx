@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, teamsLightTheme } from '@fluentui/react-components';
 import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '@fluentui/react-components';
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const FontFamily = () => {
+export const FontFamily = (): JSXElement => {
   const styles = useStyles();
 
   const fontFamilies = Object.keys(theme).filter(tokenName =>
@@ -36,7 +37,7 @@ export const FontFamily = () => {
   );
 };
 
-export const FontSize = () => {
+export const FontSize = (): JSXElement => {
   const styles = useStyles();
 
   const fontSizes = Object.keys(theme).filter(tokenName =>
@@ -45,19 +46,17 @@ export const FontSize = () => {
 
   return (
     <div className={styles.propGrid}>
-      {fontSizes.map(fontSize => (
-        <>
-          <div key={fontSize}>{fontSize}</div>
-          <div key={`${fontSize}-value`} style={{ fontSize: theme[fontSize], lineHeight: theme[fontSize] }}>
-            {fontSize}
-          </div>
-        </>
-      ))}
+      {fontSizes.map(fontSize => [
+        <div key={fontSize}>{fontSize}</div>,
+        <div key={`${fontSize}-value`} style={{ fontSize: theme[fontSize], lineHeight: theme[fontSize] }}>
+          {fontSize}
+        </div>,
+      ])}
     </div>
   );
 };
 
-export const LineHeight = () => {
+export const LineHeight = (): JSXElement => {
   const styles = useStyles();
 
   const lineHeightKeys = Object.keys(theme).filter(tokenName =>
@@ -76,7 +75,7 @@ export const LineHeight = () => {
   );
 };
 
-export const FontWeight = () => {
+export const FontWeight = (): JSXElement => {
   const styles = useStyles();
 
   const fontWeights = Object.keys(theme).filter(tokenName =>

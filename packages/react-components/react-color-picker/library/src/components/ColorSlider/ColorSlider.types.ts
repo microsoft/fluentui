@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import type { HsvColor } from '../../types/color';
 import type { ColorPickerProps } from '../ColorPicker/ColorPicker.types';
@@ -52,8 +52,12 @@ export type ColorSliderProps = Omit<
     defaultColor?: HsvColor;
   };
 
+export type ColorSliderBaseProps = Omit<ColorSliderProps, 'shape'>;
+
 /**
  * State used in rendering ColorSlider
  */
 export type ColorSliderState = ComponentState<ColorSliderSlots> &
   Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
+
+export type ColorSliderBaseState = Omit<ColorSliderState, 'shape'>;

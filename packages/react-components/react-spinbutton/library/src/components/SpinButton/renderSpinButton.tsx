@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { SpinButtonState, SpinButtonSlots } from './SpinButton.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { SpinButtonBaseState, SpinButtonSlots } from './SpinButton.types';
 
 /**
  * Render the final JSX of SpinButton
  */
-export const renderSpinButton_unstable = (state: SpinButtonState) => {
+export const renderSpinButton_unstable = (state: SpinButtonBaseState): JSXElement => {
   assertSlots<SpinButtonSlots>(state);
 
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition, TableColumnId } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -11,7 +11,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   TableBody,
   TableCell,
@@ -20,8 +19,6 @@ import {
   TableHeader,
   TableHeaderCell,
   useTableFeatures,
-  TableColumnDefinition,
-  TableColumnId,
   useTableSort,
   TableCellLayout,
   createTableColumn,
@@ -120,7 +117,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SortControlled = () => {
+export const SortControlled = (): JSXElement => {
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
     sortColumn: TableColumnId | undefined;

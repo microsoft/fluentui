@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogAlert.md';
 
-export const Alert = () => {
+export const Alert = (): JSXElement => {
   return (
     <Dialog modalType="alert">
       <DialogTrigger disableButtonEnhancement>
@@ -21,8 +22,8 @@ export const Alert = () => {
         <DialogBody>
           <DialogTitle>Alert dialog title</DialogTitle>
           <DialogContent>
-            This dialog cannot be dismissed by clicking on the backdrop nor by pressing Escape. Close button should be
-            pressed to dismiss this Alert
+            This dialog cannot be dismissed by clicking on the backdrop. Close button should be pressed to dismiss this
+            Alert, or `Escape` keydown.
           </DialogContent>
           <DialogActions>
             <Button appearance="primary">Do Something</Button>

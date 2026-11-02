@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
-import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
+import type { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
 import { useResponsiveChildStyles } from './useResponsiveChildStyles.styles';
 import { mergeClasses } from '@griffel/react';
 
@@ -10,11 +12,12 @@ import { mergeClasses } from '@griffel/react';
  */
 export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize']>();
+  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize'] | undefined>(undefined);
   const childClasses = useResponsiveChildStyles();
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
+  // eslint-disable-next-line react-hooks/refs
   onResizeRef.current = props.onResize;
 
   React.useEffect(() => {
@@ -27,6 +30,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       // rAF is an alternative to the throttle function. For more info, see:
       // https://css-tricks.com/debouncing-throttling-explained-examples/#aa-requestanimationframe-raf
       animationFrameId = _window?.requestAnimationFrame(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSize(prevSize => {
           const roundedWidth = Math.floor(containerWidth);
           const roundedHeight = Math.floor(containerHeight);

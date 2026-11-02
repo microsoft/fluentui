@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import {
   Menu,
@@ -15,15 +15,14 @@ import {
   MenuItemCheckbox,
 } from '@fluentui/react-menu';
 import { EditFilled, EditRegular, bundleIcon } from '@fluentui/react-icons';
-import { getStoryVariant, RTL, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Menu Multiline items',
-
-  decorators: [
-    story =>
-      withStoryWrightSteps({ story, steps: new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end() }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);

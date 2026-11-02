@@ -59,7 +59,7 @@ const overflowButtonProps: IButtonProps = {
 };
 
 /** Command bar which renders the Share button with a coachmark */
-// eslint-disable-next-line @fluentui/max-len
+
 const IndividualCommandBarButtonAsExample: React.FunctionComponent<
   IIndividualCommandBarButtonAsExampleProps
 > = props => {
@@ -91,7 +91,13 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<
     ];
   }, [onDismissCoachmark, isCoachmarkVisible]);
 
-  return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
+  return (
+    <CommandBar
+      overflowButtonProps={overflowButtonProps}
+      items={items}
+      ariaLabel="CommandBar example with individually customized buttons"
+    />
+  );
 };
 
 export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent = () => {

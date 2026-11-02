@@ -1,12 +1,11 @@
-import {
-  SLOT_ELEMENT_TYPE_SYMBOL,
-  SLOT_RENDER_FUNCTION_SYMBOL,
-  type SlotComponentType,
-  type SlotRenderFunction,
-  type JSXIntrinsicElementKeys,
-} from '@fluentui/react-utilities';
-
 import * as React from 'react';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
+import type {
+  JSXElement,
+  JSXIntrinsicElementKeys,
+  SlotComponentType,
+  SlotRenderFunction,
+} from '@fluentui/react-utilities';
 
 import type { PresenceComponentProps } from '../factories/createPresenceComponent';
 import type { MotionParam } from '../types';
@@ -22,20 +21,21 @@ type PresenceMotionSlotRenderProps = Pick<
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<
   PresenceComponentProps,
   'imperativeRef' | 'onMotionFinish' | 'onMotionStart'
-> & {
-  // FIXME: 'as' property is required by design on the slot AP but it does not support components, only intrinsic
-  //        elements motion slots do not support intrinsic elements, only custom components.
-  /**
-   * @deprecated Do not use. Presence Motion Slots do not support intrinsic elements.
-   *
-   * If you want to override the animation, use the children render function instead.
-   */
-  as?: JSXIntrinsicElementKeys;
+> &
+  Partial<MotionParams> & {
+    // FIXME: 'as' property is required by design on the slot AP but it does not support components, only intrinsic
+    //        elements motion slots do not support intrinsic elements, only custom components.
+    /**
+     * @deprecated Do not use. Presence Motion Slots do not support intrinsic elements.
+     *
+     * If you want to override the animation, use the children render function instead.
+     */
+    as?: JSXIntrinsicElementKeys;
 
-  // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
-  //       possible value for children
-  children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }>;
-};
+    // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
+    //       possible value for children
+    children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }>;
+  };
 
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotionSlotProps<MotionParams> | null | undefined,
@@ -57,9 +57,10 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     // Heads up!
     // Render function is used there to avoid rendering a motion component and handle unmounting logic
     const isUnmounted = !options.defaultProps.visible && options.defaultProps.unmountOnExit;
-    const renderFn: SlotRenderFunction<
-      PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }
-    > = (_, props) => (isUnmounted ? null : <>{props.children}</>);
+    const renderFn: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }> = (
+      _,
+      props,
+    ) => (isUnmounted ? null : <>{props.children}</>);
 
     /**
      * Casting is required here as SlotComponentType is a function, not an object.

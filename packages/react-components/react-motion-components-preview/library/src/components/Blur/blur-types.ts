@@ -1,8 +1,10 @@
-import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
+import type { BasePresenceParams, AnimateOpacity } from '../../types';
 
-export type BlurParams = PresenceDuration &
-  PresenceEasing &
+export type BlurParams = BasePresenceParams &
   AnimateOpacity & {
-    /** The radius of pixels to blend into the blur. A length string, defaulting to '20px'. */
-    fromRadius?: string;
+    /** Blur radius for the out state (exited). Defaults to '10px'. */
+    outRadius?: string;
+
+    /** Blur radius for the in state (entered). Defaults to '0px'. */
+    inRadius?: string;
   };

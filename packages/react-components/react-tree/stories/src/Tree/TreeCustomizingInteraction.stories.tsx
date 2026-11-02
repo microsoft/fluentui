@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  Tree,
-  TreeItem,
-  TreeItemLayout,
-  TreeItemValue,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-components';
+import type { JSXElement, TreeItemValue, TreeOpenChangeData, TreeOpenChangeEvent } from '@fluentui/react-components';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
-export const CustomizingInteraction = () => {
+export const CustomizingInteraction = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.type === 'Click' || data.type === 'Enter') {

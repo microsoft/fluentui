@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
@@ -15,10 +17,9 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
-  'use no memo';
-
+export const useMenuDividerStyles_unstable = (state: MenuDividerState): MenuDividerState => {
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuDividerClassNames.root, styles.root, state.root.className);
 
   return state;

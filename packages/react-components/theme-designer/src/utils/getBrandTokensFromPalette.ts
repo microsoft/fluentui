@@ -1,5 +1,6 @@
-import { BrandVariants } from '@fluentui/react-theme';
-import { Palette, hexColorsFromPalette, hex_to_LCH } from '../colors';
+import type { BrandVariants } from '@fluentui/react-theme';
+import type { Palette } from '../colors';
+import { hexColorsFromPalette, hex_to_LCH } from '../colors';
 
 type Options = {
   darkCp?: number;
@@ -22,7 +23,7 @@ type Options = {
 
  * The function returns a set of brand tokens.
  */
-export function getBrandTokensFromPalette(keyColor: string, options: Options = {}) {
+export function getBrandTokensFromPalette(keyColor: string, options: Options = {}): BrandVariants {
   const { darkCp = 2 / 3, lightCp = 1 / 3, hueTorsion = 0 } = options;
   const brandPalette: Palette = {
     keyColor: hex_to_LCH(keyColor),

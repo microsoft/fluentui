@@ -1,4 +1,5 @@
-import { DateRangeType, DayOfWeek } from '../constants';
+import type { DayOfWeek } from '../constants';
+import { DateRangeType } from '../constants';
 import { isContiguous } from './isContiguous';
 /**
  * Return corrected date range type, given `dateRangeType` and list of working days.

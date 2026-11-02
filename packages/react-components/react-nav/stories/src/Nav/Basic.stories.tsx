@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AppItem,
   Hamburger,
@@ -13,7 +14,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-components';
-import { DrawerProps } from '@fluentui/react-drawer';
+import type { DrawerProps } from '@fluentui/react-drawer';
 import {
   Label,
   Radio,
@@ -97,7 +98,7 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const Basic = () => {
+export const Basic = (): JSXElement => {
   const styles = useStyles();
 
   const typeLableId = useId('type-label');
@@ -154,10 +155,10 @@ export const Basic = () => {
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href={linkDestination} value="7">
-                Openings
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
               </NavSubItem>
               <NavSubItem href={linkDestination} value="8">
-                Submissions
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>

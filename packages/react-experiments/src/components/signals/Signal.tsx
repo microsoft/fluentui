@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from '@fluentui/react/lib/Utilities';
 import * as SignalStyles from './Signal.scss';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ISignalProps extends React.HTMLAttributes<HTMLSpanElement> {
   ariaLabel?: string;
@@ -8,8 +9,7 @@ export interface ISignalProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export type Signal = React.FunctionComponent<ISignalProps>;
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const Signal: Signal = (props: ISignalProps): JSX.Element => {
+export const Signal: Signal = (props: ISignalProps): JSXElement => {
   const { ariaLabel, className, children, ...spanProps } = props;
 
   return (

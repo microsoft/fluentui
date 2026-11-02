@@ -143,7 +143,7 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('renders yAxisTickFormat correctly', async () => {
-    const { container } = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -165,9 +165,11 @@ describe('GroupedVerticalBarChart - basic props', () => {
   });
 
   it('Should mount callout when hideTooltip false', async () => {
-    const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const { container } = render(
+      <GroupedVerticalBarChart data={chartPoints} hideTooltip={false} calloutProps={{ doNotLayer: true }} />,
+    );
     // Simulate mouseover to trigger callout
-    const rect = container.querySelector('rect');
+    const rect = container.querySelector('rect[role="img"]');
     if (rect) {
       act(() => {
         rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
@@ -199,7 +201,7 @@ describe('GroupedVerticalBarChart - basic props', () => {
       />,
     );
     // Simulate mouseover to trigger callout
-    const rect = container.querySelector('rect');
+    const rect = container.querySelector('rect[role="img"]');
     if (rect) {
       act(() => {
         rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
@@ -214,7 +216,7 @@ describe('GroupedVerticalBarChart - basic props', () => {
   it('Should not render onRenderCalloutPerDataPoint', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
     // Simulate mouseover to trigger callout
-    const rect = container.querySelector('rect');
+    const rect = container.querySelector('rect[role="img"]');
     if (rect) {
       act(() => {
         rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
@@ -267,7 +269,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 
   it('Should render callout correctly on mouseover', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
-    const rect = container.querySelector('rect');
+    const rect = container.querySelector('rect[role="img"]');
     if (rect) {
       act(() => {
         rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
@@ -281,7 +283,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
-    const rects = container.querySelectorAll('rect');
+    const rects = container.querySelectorAll('rect[role="img"]');
     if (rects.length > 3) {
       act(() => {
         rects[2].dispatchEvent(new MouseEvent('mousemove', { bubbles: true }));
@@ -309,7 +311,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
         }
       />,
     );
-    const rect = container.querySelector('rect');
+    const rect = container.querySelector('rect[role="img"]');
     if (rect) {
       act(() => {
         rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));

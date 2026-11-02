@@ -1,9 +1,10 @@
-/* eslint-disable */
+'use client';
 
 import * as React from 'react';
 
 type CustomStyleHook = (state: unknown) => void;
 
+/* eslint-disable @typescript-eslint/naming-convention */
 // The list of hooks is built from the exports from react-components/src/index
 export type CustomStyleHooksContextValue = Partial<{
   useAccordionHeaderStyles_unstable: CustomStyleHook;
@@ -65,6 +66,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerInlineStyles_unstable: CustomStyleHook;
   /** @deprecated Use useOverlayDrawerStyles_unstable instead. */
   useDrawerOverlayStyles_unstable: CustomStyleHook;
+  useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
   useDropdownStyles_unstable: CustomStyleHook;
   useEmptySwatchStyles_unstable: CustomStyleHook;
@@ -206,12 +208,14 @@ export type CustomStyleHooksContextValue = Partial<{
   useVirtualizerScrollViewStyles_unstable: CustomStyleHook;
   useVirtualizerStyles_unstable: CustomStyleHook;
 }>;
+/* eslint-enable */
 
 /**
  * @internal
  */
 export const CustomStyleHooksContext = React.createContext<CustomStyleHooksContextValue | undefined>(undefined);
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
 /**

@@ -33,12 +33,21 @@ export interface BuildExecutorSchema {
   /**
    * Generate rolluped 'd.ts' bundle including 'api.md' that provides project public API
    */
-  generateApi?: boolean;
+  generateApi?: boolean | { exportSubpaths?: boolean | { apiReport?: boolean } };
   /**
    * Enable Griffel raw styles output.
    * This will generate additional files with '.styles.raw.js' extension that contain Griffel raw styles
    */
   enableGriffelRawStyles?: boolean;
+  /**
+   * Enable babel-plugin-react-compiler processing.
+   * When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.
+   */
+  reactCompiler?: boolean;
+  /**
+   * TEMPORARY/INTERNAL: opts this build into ESM-first postprocessing (.cjs extension rewrite + .d.cts types) ahead of the package's own package.json declaring "type": "module". Exists so the infra can be exercised on a package before it actually flips to ESM. Will be removed once the real migration lands and every opted-in package sets "type": "module" itself.
+   */
+  __esmFirst?: boolean;
   /**
    * List of static assets.
    */

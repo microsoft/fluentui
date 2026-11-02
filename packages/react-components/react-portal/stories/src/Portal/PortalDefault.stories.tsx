@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ToggleButton, makeStyles, tokens, Portal, typographyStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const [mountNode, setMountNode] = React.useState<HTMLElement | null>(null);

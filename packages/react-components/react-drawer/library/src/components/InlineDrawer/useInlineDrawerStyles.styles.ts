@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -31,6 +33,20 @@ const useDrawerRootStyles = makeStyles({
     width: '100%',
     height: `var(${drawerCSSVars.drawerSizeVar})`,
   },
+
+  /* Animation exit states */
+  animationExitStart: {
+    width: '0',
+    border: 'none',
+  },
+  animationExitEnd: {
+    width: '0',
+    border: 'none',
+  },
+  animationExitBottom: {
+    height: '0',
+    border: 'none',
+  },
 });
 
 function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
@@ -53,22 +69,38 @@ function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<type
   }
 }
 
+function getAnimationExitClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
+  switch (state.position) {
+    case 'start':
+      return classNames.animationExitStart;
+
+    case 'end':
+      return classNames.animationExitEnd;
+
+    case 'bottom':
+      return classNames.animationExitBottom;
+
+    default:
+      return undefined;
+  }
+}
+
 /**
  * Apply styling to the InlineDrawer slots based on the state
  */
 export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
-  'use no memo';
-
   const resetStyles = useDrawerResetStyles();
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
+    state.animationDirection === 'exit' && getAnimationExitClass(state, rootStyles),
     state.root.className,
   );
 

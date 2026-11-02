@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`migrate-converged-pkg generator jest config updates should setup new local jest config which extends from root  1`] = `
 "const { createV8Config: createConfig } = require('@fluentui/scripts/jest');

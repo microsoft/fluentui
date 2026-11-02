@@ -5,6 +5,6 @@ import type { Point } from './types';
  *
  * @internal
  */
-export function pointsToSvgPath(points: Point[]) {
+export function pointsToSvgPath(points: Point[]): string {
   return `M ${points} z`;
 }

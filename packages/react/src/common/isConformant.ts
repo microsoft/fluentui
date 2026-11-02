@@ -3,7 +3,7 @@ import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
-) {
+): void {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     disabledTests: [
       'kebab-aria-attributes',

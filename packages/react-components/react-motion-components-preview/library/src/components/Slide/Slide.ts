@@ -1,48 +1,55 @@
-import {
-  motionTokens,
-  createPresenceComponent,
-  PresenceMotionFn,
-  createPresenceComponentVariant,
-} from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
-import { SlideParams } from './slide-types';
+import type { SlideParams } from './slide-types';
 
 /**
  * Define a presence motion for slide in/out
  *
  * @param duration - Time (ms) for the enter transition (slide-in). Defaults to the `durationNormal` value (200 ms).
  * @param easing - Easing curve for the enter transition (slide-in). Defaults to the `curveDecelerateMid` value.
+ * @param delay - Time (ms) to delay the enter transition. Defaults to 0.
  * @param exitDuration - Time (ms) for the exit transition (slide-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (slide-out). Defaults to the `curveAccelerateMid` value.
- * @param fromX - The X translate value with units to animate from. Defaults to `'0px'`.
- * @param fromY - The Y translate value with units to animate from. Defaults to `'20px'`.
+ * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
+ * @param outX - X translate for the out state (exited). Defaults to `'0px'`.
+ * @param outY - Y translate for the out state (exited). Defaults to `'0px'`.
+ * @param inX - X translate for the in state (entered). Defaults to `'0px'`.
+ * @param inY - Y translate for the in state (entered). Defaults to `'0px'`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveDecelerateMid,
+  delay = 0,
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMid,
-  fromX = '0px',
-  fromY = '20px',
+  exitDelay = delay,
+  outX = '0px',
+  outY = '0px',
+  inX = '0px',
+  inY = '0px',
   animateOpacity = true,
 }: SlideParams) => {
-  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, fromX, fromY })];
+  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, delay, outX, outY, inX, inY })];
   const exitAtoms = [
     slideAtom({
       direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
-      fromX,
-      fromY,
+      delay: exitDelay,
+      outX,
+      outY,
+      inX,
+      inY,
     }),
   ];
 
   // Only add fade atoms if animateOpacity is true.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {

@@ -15,11 +15,16 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
-      "cache": true
+      "inputs": ["production", "^production", "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json"],
+      "cache": true,
+      "syncGenerators": [
+        "@fluentui/workspace-plugin:export-maps-sync",
+        "@fluentui/workspace-plugin:bundle-size-fixtures-sync"
+      ]
     },
     "build-storybook": {
       "dependsOn": [],
+      "outputs": ["{projectRoot}/dist/storybook"],
       "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "cache": true
     },
@@ -59,21 +64,22 @@
       "cache": true
     },
     "e2e": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "scripts-cypress"
+        }
+      ],
       "cache": true,
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
+      "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ],
+      "inputs": ["default", "{workspaceRoot/eslint.config.js}"],
       "options": {
-        "command": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint src"
+        "command": "eslint src"
       }
     },
     "format": {
@@ -95,7 +101,11 @@
     },
     "verify-packaging": {
       "dependsOn": ["build"],
+      "inputs": ["production"],
       "cache": true
+    },
+    "test-rit--*--prepare": {
+      "dependsOn": ["^build"]
     },
     "@nx/jest:jest": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
@@ -109,6 +119,11 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/js:swc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -119,15 +134,25 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s"
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/bundle-size/**"
     ]
   },
   "release": {
     "projectsRelationship": "independent"
   },
+  "sync": {
+    "globalGenerators": [
+      "@fluentui/workspace-plugin:export-maps-sync",
+      "@fluentui/workspace-plugin:bundle-size-fixtures-sync"
+    ]
+  },
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "master",
+  "tui": {
+    "enabled": false
+  },
   "plugins": [
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
@@ -136,17 +161,54 @@
           "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
         },
         "verifyPackaging": {
-          "include": ["react-text", "react-components"]
+          "include": [
+            "react-components",
+            "react-headless-components-preview",
+            "react-utilities",
+            "react-button",
+            "react-charts"
+          ]
+        },
+        "reactIntegrationTesting": {
+          "targetName": "test-rit",
+          "reactVersions": ["17", "18"],
+          "exclude": [
+            "react-theme-sass",
+            "babel-preset-global-context",
+            "eslint-plugin-react-components",
+            "react-migration-v0-v9",
+            "react-migration-v0-v9-stories",
+            "public-docsite-v9-headless"
+          ]
         }
       },
       "include": [
+        "apps/public-docsite-v9-headless/**",
+        "apps/rit-tests-v9/*",
+        "apps/rit-tests-v8/*",
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
-        "packages/charts/react-charts/**/*"
+        "packages/charts/react-charts/**/*",
+        "packages/foundation-legacy/**",
+        "packages/jest-serializer-merge-styles/**",
+        "packages/react/**",
+        "packages/react-cards/**",
+        "packages/react-hooks/**",
+        "packages/react-focus/**",
+        "packages/react-examples/**",
+        "packages/react-experiments/**",
+        "packages/react-window-provider/**",
+        "packages/react-icon-provider/**",
+        "packages/charts/react-charting/**",
+        "packages/utilities/**",
+        "packages/react-icons-mdl2/**",
+        "packages/react-monaco-editor/**",
+        "packages/react-docsite-components/**",
+        "packages/react-file-type-icons/**"
       ]
     }
   ],

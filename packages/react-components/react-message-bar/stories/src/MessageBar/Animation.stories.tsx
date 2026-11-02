@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, MessageBarGroupProps, MessageBarIntent } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -6,8 +7,6 @@ import {
   MessageBarTitle,
   MessageBarBody,
   MessageBarGroup,
-  MessageBarGroupProps,
-  MessageBarIntent,
   Button,
   Link,
   makeStyles,
@@ -51,7 +50,7 @@ interface ExampleMessage {
   id: number;
 }
 
-export const Animation = () => {
+export const Animation = (): JSXElement => {
   const styles = useStyles();
   const counterRef = React.useRef(0);
 

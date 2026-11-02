@@ -1,5 +1,6 @@
 import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentTokensUsage.stories.md';
 
@@ -51,7 +52,7 @@ const BackgroundChange = createMotionComponent({
   },
 });
 
-export const CreateMotionComponentTokensUsage = () => {
+export const CreateMotionComponentTokensUsage = (): JSXElement => {
   const classes = useClasses();
 
   return (

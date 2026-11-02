@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { TestImages } from '@fluentui/example-data';
 import { ImageFit } from '../../Image';
@@ -7,7 +7,7 @@ import { DocumentCardImage } from './DocumentCardImage';
 
 describe('DocumentCard', () => {
   it('renders DocumentCardImage correctly without an image provided', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DocumentCardImage
         height={150}
         iconProps={{
@@ -16,12 +16,11 @@ describe('DocumentCard', () => {
         }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DocumentCardImage correctly with an invalid image', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DocumentCardImage
         height={150}
         imageSrc={'someinvalidurl'}
@@ -31,12 +30,11 @@ describe('DocumentCard', () => {
         }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DocumentCardImage correctly with a valid image', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DocumentCardImage
         height={100}
         imageFit={ImageFit.cover}
@@ -44,13 +42,11 @@ describe('DocumentCard', () => {
         imageSrc={TestImages.documentPreviewTwo}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DocumentCardImage correctly without an image or icon', () => {
-    const component = renderer.create(<DocumentCardImage height={100} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DocumentCardImage height={100} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

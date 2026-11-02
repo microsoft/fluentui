@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -12,7 +13,7 @@ import {
 } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
-import { StoryWrightDecorator, TestWrapperDecoratorFullWidth } from '../../utilities';
+import { TestWrapperDecoratorFullWidth } from '../../utilities';
 import { previewProps } from './utilts';
 
 const previewPropsCompact: IDocumentCardPreviewProps = {
@@ -69,10 +70,10 @@ const docActivity = (
 export default {
   title: 'DocumentCard',
 
-  decorators: [
-    TestWrapperDecoratorFullWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecoratorFullWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const CompactWithPreviewList = () => (

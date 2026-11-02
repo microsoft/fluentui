@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { MenuList } from './MenuList';
-import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { isConformant } from '../../testing/isConformant';
@@ -25,10 +24,8 @@ describe('MenuList', () => {
    * Note: see more visual regression tests for MenuList in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const component = renderer.create(<MenuList>Default MenuList</MenuList>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<MenuList>Default MenuList</MenuList>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('set hasMenuListContext to true', () => {

@@ -4,11 +4,13 @@ import { useConst, usePrevious } from '@fluentui/react-hooks';
 import type { IKeytipProps } from '../../Keytip';
 import type { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const registerPersistedKeytips = (
   keytipsToRegister: IKeytipProps[],
   keytipManager: KeytipManager,
   registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
-) => {
+): void => {
   for (const keytip of keytipsToRegister) {
     const uniqueID = keytipManager.register(keytip, true);
     // Update map
@@ -19,7 +21,7 @@ const registerPersistedKeytips = (
 const unregisterPersistedKeytips = (
   keytipManager: KeytipManager,
   registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
-) => {
+): void => {
   for (const uniqueID of Object.keys(registeredPersistedKeytips)) {
     keytipManager.unregister(registeredPersistedKeytips[uniqueID], uniqueID, true);
     delete registeredPersistedKeytips[uniqueID];
@@ -30,7 +32,7 @@ const useKeytipRegistrations = (
   registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
   keytipsToRegister: IKeytipProps[],
   keytipManager: KeytipManager,
-) => {
+): void => {
   const prevPersistedKeytips = usePrevious(registeredPersistedKeytips);
 
   // Update
@@ -55,7 +57,7 @@ const useKeytipRegistrations = (
   }, []);
 };
 
-export const OverflowButton = (props: IOverflowSetProps) => {
+export const OverflowButton = (props: IOverflowSetProps): JSXElement => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, overflowItems, keytipSequences, itemSubMenuProvider, onRenderOverflowButton } = props;
 

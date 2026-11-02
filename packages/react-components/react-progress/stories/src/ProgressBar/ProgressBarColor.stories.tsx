@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, ProgressBar, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Color = () => {
+export const Color = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.container}>

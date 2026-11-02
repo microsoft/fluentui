@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 export default {
   title: 'Components/ColorPicker',
@@ -33,7 +34,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
     showPreview: true,
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
     return (
       <div className={classNames.wrapper}>

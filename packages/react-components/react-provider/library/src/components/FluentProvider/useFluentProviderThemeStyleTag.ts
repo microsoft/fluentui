@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -48,12 +50,10 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (
   options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
-) => {
-  'use no memo';
-
+): { styleTagId: string; rule: string } => {
   const { targetDocument, theme, rendererAttributes } = options;
 
-  const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
+  const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
 
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;
@@ -61,7 +61,7 @@ export const useFluentProviderThemeStyleTag = (
   const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // eslint-disable-next-line react-hooks/rules-of-hooks, react-hooks/void-use-memo
     React.useMemo(() => {
       // Heads up!
       // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,

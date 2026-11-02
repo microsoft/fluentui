@@ -24,7 +24,7 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked,
+      checked,
     };
   });
   let result: IOverflowData = {

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,10 +23,9 @@ const useStyles = makeResetStyles({
 export const useDrawerHeaderNavigationStyles_unstable = (
   state: DrawerHeaderNavigationState,
 ): DrawerHeaderNavigationState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(drawerHeaderNavigationClassNames.root, styles, state.root.className);
 
   return state;

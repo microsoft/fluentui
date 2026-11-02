@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, makeStyles, mergeClasses, Portal, tokens, toMountNodeProps } from '@fluentui/react-components';
 import type { PortalProps } from '@fluentui/react-components';
@@ -36,7 +37,7 @@ const CustomMessage: React.FC<{ children: React.ReactNode } & Pick<PortalProps, 
   );
 };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
 
   return (

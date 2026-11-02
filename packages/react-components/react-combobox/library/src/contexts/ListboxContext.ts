@@ -1,7 +1,10 @@
-import * as React from 'react';
-import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
-import { ListboxState } from '../components/Listbox/Listbox.types';
+'use client';
+
+import type * as React from 'react';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
+import type { ListboxState } from '../components/Listbox/Listbox.types';
 
 /**
  * Context shared with all Listbox Options
@@ -52,7 +55,7 @@ const listboxContextDefaultValue = {
 
 export const ListboxContext = createContext<ListboxContextValue | undefined>(undefined);
 
-export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>) =>
+export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>): T =>
   useContextSelector(ListboxContext, (ctx = listboxContextDefaultValue) => selector(ctx));
 
 export const ListboxProvider = ListboxContext.Provider;

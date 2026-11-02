@@ -5,7 +5,8 @@
 }
 
 #storybook-docs .docblock-code-toggle,
-.docs-story .with-code-sandbox-button {
+.docs-story .with-code-sandbox-button,
+.docs-story .with-open-in-new-tab-button {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   min-width: 91px;
@@ -22,8 +23,9 @@
   border-radius: 5px 5px 0px 0px !important;
 }
 
-.docs-story .with-code-sandbox-button {
-  margin-right: 32px;
+.docs-story .with-code-sandbox-button,
+.docs-story .with-open-in-new-tab-button {
+  margin-right: 22px;
 }
 
 /* Reduce font size of CodeSandbox and Show Code button when zoomed or small window width*/
@@ -31,17 +33,20 @@
 
 @media screen and (max-width: 380px) {
   #storybook-docs .docblock-code-toggle,
-  .docs-story .with-code-sandbox-button {
+  .docs-story .with-code-sandbox-button,
+  .docs-story .with-open-in-new-tab-button {
     font-size: 10px !important;
   }
 }
 
 /* Make storybook codesandbox export button match Figma design */
-.docs-story .with-code-sandbox-button {
+.docs-story .with-code-sandbox-button,
+.docs-story .with-open-in-new-tab-button {
   right: 105px !important;
 }
 
-.docs-story .with-code-sandbox-button:focus {
+.docs-story .with-code-sandbox-button:focus,
+.docs-story .with-open-in-new-tab-button:focus {
   outline: none;
   box-shadow: #1ea7fd 0 -3px 0 0 inset;
 }

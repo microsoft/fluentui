@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SearchBox renders SearchBox correctly 1`] = `
 <div
-  className=
+  class=
       ms-SearchBox
       {
         -moz-osx-font-smoothing: grayscale;
@@ -42,11 +42,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
-  onFocusCapture={[Function]}
 >
   <div
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         ms-SearchBox-iconContainer
         {
           color: #0078d4;
@@ -60,11 +59,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           transition: width 0.167s;
           width: 32px;
         }
-    onClick={[Function]}
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-SearchBox-icon
           {
             -moz-osx-font-smoothing: grayscale;
@@ -84,7 +82,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     </i>
   </div>
   <input
-    className=
+    class=
         ms-SearchBox-field
         {
           background-color: transparent;
@@ -125,10 +123,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           display: none;
         }
     id="SearchBox0"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
     role="searchbox"
     value=""
   />
@@ -137,7 +131,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
 
 exports[`SearchBox renders SearchBox without animation correctly 1`] = `
 <div
-  className=
+  class=
       ms-SearchBox
       {
         -moz-osx-font-smoothing: grayscale;
@@ -177,11 +171,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
       &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
-  onFocusCapture={[Function]}
 >
   <div
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         ms-SearchBox-iconContainer
         {
           color: #0078d4;
@@ -194,11 +187,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           text-align: center;
           width: 32px;
         }
-    onClick={[Function]}
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-SearchBox-icon
           {
             -moz-osx-font-smoothing: grayscale;
@@ -217,7 +209,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     </i>
   </div>
   <input
-    className=
+    class=
         ms-SearchBox-field
         {
           background-color: transparent;
@@ -258,10 +250,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           display: none;
         }
     id="SearchBox0"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
     role="searchbox"
     value=""
   />

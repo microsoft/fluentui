@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
   Drawer,
-  DrawerProps,
   Button,
   makeStyles,
   tokens,
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const Responsive = () => {
+export const Responsive = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(true);

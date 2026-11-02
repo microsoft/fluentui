@@ -36,6 +36,8 @@ import type { IGroupHeaderProps } from './GroupHeader';
 import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IGroupedListV2State {
   selectionMode?: IGroupedListV2Props['selectionMode'];
   compact?: IGroupedListV2Props['compact'];
@@ -223,18 +225,15 @@ const getKey: IListProps['getKey'] = (item, _index) => {
   return null;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const renderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
+const renderGroupHeader = (props: IGroupHeaderProps): JSXElement => {
   return <GroupHeader {...props} />;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const renderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
+const renderGroupShowAll = (props: IGroupShowAllProps): JSXElement => {
   return <GroupShowAll {...props} />;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const renderGroupFooter = (props: IGroupFooterProps): JSX.Element | null => {
+const renderGroupFooter = (props: IGroupFooterProps): JSXElement | null => {
   if (props.group && props.footerText) {
     return <GroupFooter {...props} />;
   }
@@ -280,7 +279,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     compact,
   });
 
-  const events = React.useRef<EventGroup>();
+  const events = React.useRef<EventGroup>(undefined);
   const flatList = React.useRef<IGroupedItem[]>([]);
   const isSomeGroupExpanded = React.useRef<boolean>(computeIsSomeGroupExpanded(groups));
   const listRef = React.useRef<List>(null);
@@ -529,8 +528,8 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 interface IGroupItemProps<T> {
   props: T;
   render: IRenderFunction<T>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  defaultRender: (props?: T) => JSX.Element | null;
+
+  defaultRender: (props?: T) => JSXElement | null;
   item: any;
   selection?: ISelection;
   eventGroup?: EventGroup;
@@ -543,7 +542,7 @@ const GroupItem = <T,>({
   selection,
   eventGroup,
   props,
-}: React.PropsWithChildren<IGroupItemProps<T>>): React.ReactElement | null => {
+}: React.PropsWithChildren<IGroupItemProps<T>>): React.ReactElement<any> | null => {
   const group = item.group;
 
   const isSelected = useIsGroupSelected(group.startIndex, group.count, selection, eventGroup);
@@ -607,12 +606,11 @@ export class GroupedListV2Wrapper
     return this._groupedList.current?.getStartItemIndexInView() || 0;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <GroupedListV2FC {...this.props} {...this.state} groupedListRef={this._groupedList} />;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdate();
   }

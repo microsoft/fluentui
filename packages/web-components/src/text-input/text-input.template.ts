@@ -1,7 +1,5 @@
-import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { html, ref, slotted } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import { whitespaceFilter } from '../utils/index.js';
+import { type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { TextInput } from './text-input.js';
 import type { TextInputOptions } from './text-input.options.js';
 
@@ -12,18 +10,9 @@ import type { TextInputOptions } from './text-input.options.js';
  */
 export function textInputTemplate<T extends TextInput>(options: TextInputOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      @beforeinput="${(x, c) => x.beforeinputHandler(c.event as InputEvent)}"
-      @focusin="${(x, c) => x.focusinHandler(c.event as FocusEvent)}"
-      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
-    >
+    <template @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}">
       <label part="label" for="control" class="label" ${ref('controlLabel')}>
-        <slot
-          ${slotted({
-            property: 'defaultSlottedNodes',
-            filter: whitespaceFilter,
-          })}
-        ></slot>
+        <slot ${slotted('defaultSlottedNodes')}></slot>
       </label>
       <div class="root" part="root">
         ${startSlotTemplate(options)}
@@ -33,7 +22,6 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
           id="control"
           @change="${(x, c) => x.changeHandler(c.event as InputEvent)}"
           @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
-          ?autofocus="${x => x.autofocus}"
           autocomplete="${x => x.autocomplete}"
           ?disabled="${x => x.disabled}"
           list="${x => x.list}"
@@ -48,7 +36,7 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
           size="${x => x.size}"
           spellcheck="${x => x.spellcheck}"
           type="${x => x.type}"
-          value="${x => x.initialValue}"
+          value="${x => x.value}"
           ${ref('control')}
         />
         ${endSlotTemplate(options)}

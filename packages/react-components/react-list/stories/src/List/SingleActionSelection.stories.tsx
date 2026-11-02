@@ -2,6 +2,7 @@ import { Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -23,7 +24,7 @@ const items: Item[] = [
     'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
 }));
 
-export const SingleActionSelection = () => {
+export const SingleActionSelection = (): JSXElement => {
   const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
   return (

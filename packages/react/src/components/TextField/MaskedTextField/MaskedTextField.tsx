@@ -33,7 +33,7 @@ const COMPONENT_NAME = 'MaskedTextField';
 const useComponentRef = (
   componentRef: IRefObject<IMaskedTextField> | undefined,
   internalState: IMaskedTextFieldInternalState,
-  textField: React.RefObject<IMaskedTextField>,
+  textField: React.RefObject<IMaskedTextField | null>,
 ) => {
   React.useImperativeHandle(
     componentRef,

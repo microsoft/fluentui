@@ -1,6 +1,8 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
-import { ToolbarButtonState } from './ToolbarButton.types';
+import type { ToolbarButtonState } from './ToolbarButton.types';
 
 const useBaseStyles = makeStyles({
   vertical: {
@@ -15,14 +17,14 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarButton slots based on the state
  */
-export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState) => {
-  'use no memo';
-
+export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void => {
   const buttonStyles = useBaseStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(state.vertical && buttonStyles.vertical, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(state.vertical && buttonStyles.verticalIcon, state.icon.className);
   }
 

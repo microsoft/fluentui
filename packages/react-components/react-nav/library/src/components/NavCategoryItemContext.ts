@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { NavItemValue } from './NavContext.types';
+import type { NavItemValue } from './NavContext.types';
 
 // This context is analogous to AccordionHeaderContext
 
@@ -18,5 +20,5 @@ const NavCategoryItemContextDefaultValues = {
 
 export const { Provider: NavCategoryItemProvider } = NavCategoryItemContext;
 
-export const useNavCategoryItemContext_unstable = () =>
+export const useNavCategoryItemContext_unstable = (): NavCategoryItemContextValue =>
   React.useContext(NavCategoryItemContext) ?? NavCategoryItemContextDefaultValues;

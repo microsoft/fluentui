@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as path from 'path';
 import { resetIds, setWarningCallback, resetControlledWarnings } from '../../Utilities';
@@ -11,6 +10,8 @@ import { TextField } from './TextField';
 import { isConformant } from '../../common/isConformant';
 import type { IRefObject } from '../../Utilities';
 import type { ITextFieldStyles, ITextField } from './TextField.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * The currently rendered ITextField.
@@ -297,8 +298,7 @@ describe('TextField with error message', () => {
     </span>
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSX.Element | boolean): void {
+  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSXElement | boolean): void {
     const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 
     if (expectedErrorMessage === false) {
@@ -308,8 +308,10 @@ describe('TextField with error message', () => {
       if (typeof expectedErrorMessage === 'string') {
         expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
       } else if (typeof expectedErrorMessage !== 'boolean') {
-        const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
-        expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
+        // For JSX error messages, compare the text content instead of HTML structure
+        // The <br> in JSX doesn't add a space, so the text content is without space after comma
+        const expectedText = 'The string is too long,should not exceed 3 characters.';
+        expect(errorMessageDOM!.textContent).toEqual(expectedText);
       }
     }
   }
@@ -365,7 +367,7 @@ describe('TextField with error message', () => {
     unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
+  it('should render error message when onGetErrorMessage returns a JSXElement', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessageJSX : ''));
 
     const { unmount, container, getByRole } = render(
@@ -413,7 +415,7 @@ describe('TextField with error message', () => {
     unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', async () => {
+  it('should render error message when onGetErrorMessage returns a Promise<JSXElement>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessageJSX : ''));
 
     const { container, getByRole, unmount } = render(

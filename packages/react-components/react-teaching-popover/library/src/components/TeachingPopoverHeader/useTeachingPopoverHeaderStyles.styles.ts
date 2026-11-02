@@ -1,3 +1,5 @@
+'use client';
+
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -72,12 +74,13 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHeaderState) => {
-  'use no memo';
-
+export const useTeachingPopoverHeaderStyles_unstable = (
+  state: TeachingPopoverHeaderState,
+): TeachingPopoverHeaderState => {
   const styles = useStyles();
   const { appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverHeaderClassNames.root,
     styles.root,
@@ -86,6 +89,7 @@ export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHe
   );
 
   if (state.dismissButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissButton.className = mergeClasses(
       teachingPopoverHeaderClassNames.dismissButton,
       styles.dismissButton,
@@ -95,6 +99,7 @@ export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHe
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       teachingPopoverHeaderClassNames.icon,
       styles.icon,

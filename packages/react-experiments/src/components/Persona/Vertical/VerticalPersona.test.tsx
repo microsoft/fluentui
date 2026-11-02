@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import * as TextHelpers from '../../../utilities/textHelpers';
 import { VerticalPersona } from './VerticalPersona';
 import type { IVerticalPersonaComponent } from './VerticalPersona.types';
@@ -26,38 +26,32 @@ describe('VerticalPersona', () => {
   });
 
   it('renders correctly with only a text', () => {
-    const tree = renderer
-      .create(<VerticalPersona vertical text="James Bond" styles={testVerticalPersonaStyles} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalPersona vertical text="James Bond" styles={testVerticalPersonaStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with a text and secondary text', () => {
-    const tree = renderer
-      .create(
-        <VerticalPersona
-          vertical
-          text="James Bond"
-          secondaryText="Super secret agent"
-          styles={testVerticalPersonaStyles}
-        />,
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <VerticalPersona
+        vertical
+        text="James Bond"
+        secondaryText="Super secret agent"
+        styles={testVerticalPersonaStyles}
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders the coin with the passed coinProps', () => {
-    const tree = renderer
-      .create(
-        <VerticalPersona
-          vertical
-          text="James Bond"
-          secondaryText="Super secret agent"
-          styles={testVerticalPersonaStyles}
-          coin={{ initials: 'MI6', coinColor: 'red' }}
-        />,
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <VerticalPersona
+        vertical
+        text="James Bond"
+        secondaryText="Super secret agent"
+        styles={testVerticalPersonaStyles}
+        coin={{ initials: 'MI6', coinColor: 'red' }}
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

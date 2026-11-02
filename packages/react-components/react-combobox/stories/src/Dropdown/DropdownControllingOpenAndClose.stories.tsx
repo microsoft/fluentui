@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
 import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ControllingOpenAndClose = () => {
+export const ControllingOpenAndClose = (): JSXElement => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);

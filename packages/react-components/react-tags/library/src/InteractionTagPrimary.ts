@@ -1,4 +1,6 @@
 export type {
+  InteractionTagPrimaryBaseProps,
+  InteractionTagPrimaryBaseState,
   InteractionTagPrimaryContextValues,
   InteractionTagPrimaryProps,
   InteractionTagPrimarySlots,
@@ -9,5 +11,6 @@ export {
   interactionTagPrimaryClassNames,
   renderInteractionTagPrimary_unstable,
   useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimaryBase_unstable,
   useInteractionTagPrimary_unstable,
 } from './components/InteractionTagPrimary/index';

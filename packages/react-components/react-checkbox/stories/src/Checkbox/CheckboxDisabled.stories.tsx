@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react-components';
 
-export const Disabled = () => (
+export const Disabled = (): JSXElement => (
   <>
     <Checkbox disabled label="Disabled" />
     <Checkbox disabled label="Disabled checked" checked />

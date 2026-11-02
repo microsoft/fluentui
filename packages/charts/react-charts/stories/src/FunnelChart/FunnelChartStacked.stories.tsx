@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { FunnelChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const FunnelChartStacked = () => {
+export const FunnelChartStacked = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(500);
   const [hideLegend, setHideLegend] = React.useState<boolean>(false);
@@ -35,8 +36,8 @@ export const FunnelChartStacked = () => {
       subValues: [
         { category: 'A', value: 100, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 80, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 50, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 30, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 50, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 30, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
     {
@@ -44,8 +45,8 @@ export const FunnelChartStacked = () => {
       subValues: [
         { category: 'A', value: 60, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 40, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 20, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 10, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 20, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 10, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
     {
@@ -53,8 +54,8 @@ export const FunnelChartStacked = () => {
       subValues: [
         { category: 'A', value: 30, color: getColorFromToken(DataVizPalette.color5) },
         { category: 'B', value: 20, color: getColorFromToken(DataVizPalette.color6) },
-        { category: 'C', value: 10, color: getColorFromToken(DataVizPalette.color14) },
-        { category: 'D', value: 5, color: getColorFromToken(DataVizPalette.color2) },
+        { category: 'C', value: 10, color: getColorFromToken(DataVizPalette.color10) },
+        { category: 'D', value: 5, color: getColorFromToken(DataVizPalette.color3) },
       ],
     },
   ];
@@ -75,7 +76,8 @@ export const FunnelChartStacked = () => {
         max={1000}
         id="changeWidth_Basic"
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor="changeHeight_Basic">Change Height:</label>
       <input
@@ -85,7 +87,8 @@ export const FunnelChartStacked = () => {
         max={1000}
         id="changeHeight_Basic"
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
 
       <Switch label="Hide Legend" checked={hideLegend} onChange={_onToggleHideLegend} />

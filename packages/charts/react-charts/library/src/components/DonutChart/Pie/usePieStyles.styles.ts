@@ -1,4 +1,6 @@
-import { PieProps, PieStyles } from './Pie.types';
+'use client';
+
+import type { PieProps, PieStyles } from './Pie.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 import { makeStyles, mergeClasses } from '@griffel/react';

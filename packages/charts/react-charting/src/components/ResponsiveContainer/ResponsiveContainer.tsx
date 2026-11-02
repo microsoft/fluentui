@@ -8,7 +8,7 @@ import { IResponsiveChildProps, IResponsiveContainerProps } from './ResponsiveCo
  */
 export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const onResizeRef = React.useRef<IResponsiveContainerProps['onResize']>();
+  const onResizeRef = React.useRef<IResponsiveContainerProps['onResize'] | undefined>(undefined);
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, OverflowItemProps } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -11,7 +12,6 @@ import {
   tokens,
   Overflow,
   OverflowItem,
-  OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Wrapped = () => {
+export const Wrapped = (): JSXElement => {
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
   const styles = useStyles();
 

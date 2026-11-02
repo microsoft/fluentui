@@ -1,5 +1,5 @@
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   ChartProps,
   RefArrayData,
   Basestate,
@@ -8,7 +8,7 @@ import {
   CustomizedCalloutData,
   Margins,
 } from '../../types/index';
-import {
+import type {
   CartesianChartStyles,
   CartesianChartStyleProps,
   CartesianChartProps,

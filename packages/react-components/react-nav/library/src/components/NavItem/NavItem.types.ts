@@ -1,5 +1,5 @@
-import { NavItemValue } from '../NavContext.types';
-import { NavDensity } from '../Nav/Nav.types';
+import type { NavItemValue } from '../NavContext.types';
+import type { NavDensity } from '../Nav/Nav.types';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -29,6 +29,8 @@ export type NavItemProps = ComponentProps<NavItemSlots> & {
   value: NavItemValue;
 };
 
+export type NavItemBaseProps = NavItemProps;
+
 /**
  * State used in rendering NavItem
  */
@@ -46,3 +48,5 @@ export type NavItemState = ComponentState<NavItemSlots> &
      */
     density: NavDensity;
   };
+
+export type NavItemBaseState = Omit<NavItemState, 'density'>;

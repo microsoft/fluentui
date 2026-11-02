@@ -4,7 +4,7 @@ import type { PresenceGroupChildMapping } from './types';
 /**
  * Given `children`, return an object mapping key to child.
  */
-export function getChildMapping(children: React.ReactNode | undefined) {
+export function getChildMapping(children: React.ReactNode | undefined): PresenceGroupChildMapping {
   const childMapping: PresenceGroupChildMapping = {};
 
   if (children) {

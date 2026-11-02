@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  Tree,
-  TreeItemValue,
-  TreeItem,
-  TreeItemLayout,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-components';
+import type { JSXElement, TreeItemValue, TreeOpenChangeData, TreeOpenChangeEvent } from '@fluentui/react-components';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
-export const OpenItemsControlled = () => {
+export const OpenItemsControlled = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(data.openItems);

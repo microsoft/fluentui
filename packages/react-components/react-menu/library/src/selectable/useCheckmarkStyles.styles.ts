@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuItemSelectableState } from './types';
 import type { MenuItemState } from '../components/MenuItem/MenuItem.types';
@@ -20,11 +22,12 @@ const useStyles = makeStyles({
  *
  * @param state - should contain a `checkmark` slot
  */
-export const useCheckmarkStyles_unstable = (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => {
-  'use no memo';
-
+export const useCheckmarkStyles_unstable = (
+  state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>,
+): void => {
   const styles = useStyles();
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(
       styles.root,
       state.checked && styles.rootChecked,

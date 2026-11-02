@@ -12,6 +12,8 @@ import { clamp } from '../../../utilities/color/clamp';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/consts';
 import type { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
 export interface IColorSliderState {
@@ -58,7 +60,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   public componentDidUpdate(prevProps: Readonly<IColorSliderProps>, prevState: Readonly<IColorSliderState>): void {
     // if props changed (as opposed to a state update), set the value
     // TODO: switch to strict controlled pattern instead
-    if (prevProps !== this.props && this.props.value !== undefined) {
+    if (prevProps.value !== this.props.value && this.props.value !== undefined) {
       this.setState({ currentValue: this.props.value });
     }
   }
@@ -71,7 +73,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._root.current) {
       this._root.current.removeEventListener('touchstart', this._onTouchStart);
       this._root.current.removeEventListener('touchmove', this._onTouchMove);
@@ -79,8 +81,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._disposeListeners();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const type = this._type;
     const maxValue = this._maxValue;
     const {

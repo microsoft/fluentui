@@ -1,7 +1,9 @@
 import { attr } from '@microsoft/fast-element';
-import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options';
-import { TreeItem } from '../tree-item/tree-item';
-import { BaseTree } from './tree.base';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { TreeItem } from '../tree-item/tree-item.js';
+import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
+import { BaseTree } from './tree.base.js';
 
 /**
  * The Fluent Tree Element. Implements {@link @microsoft/fast-foundation#BaseTree}.
@@ -12,25 +14,35 @@ import { BaseTree } from './tree.base';
 export class Tree extends BaseTree {
   /**
    * The size of the tree item element
-   * @public
+   * The size of the tree item element
+   *
    * HTML Attribute: size
+   *
+   * @public
    */
   @attr
   public size: TreeItemSize = TreeItemSize.small;
-  private sizeChanged() {
+  protected sizeChanged() {
     this.updateSizeAndAppearance();
   }
 
   /**
    * The appearance variants of the tree item element
-   * @public
+   * The appearance variants of the tree item element
+   *
    * HTML Attribute: appearance
+   *
+   * @public
    */
   @attr
   public appearance: TreeItemAppearance = TreeItemAppearance.subtle;
-  private appearanceChanged() {
+  protected appearanceChanged() {
     this.updateSizeAndAppearance();
   }
+
+  private fg?: FocusGroup;
+
+  private fgItems?: ArrayItemCollection<TreeItem>;
 
   /**
    * child tree items supered change event
@@ -38,7 +50,29 @@ export class Tree extends BaseTree {
    */
   public childTreeItemsChanged() {
     super.childTreeItemsChanged();
+
     this.updateSizeAndAppearance();
+
+    this.fgItems ??= new ArrayItemCollection<TreeItem>(
+      () => this.descendantTreeItems.filter(i => !i.isHidden) as TreeItem[],
+      () => (this.currentSelected as TreeItem | null) ?? null,
+    );
+    if (!this.fg) {
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'menu',
+          axis: undefined,
+          memory: false,
+        },
+      });
+    } else {
+      this.fg.update();
+    }
+  }
+
+  disconnectedCallback() {
+    this.fg?.disconnect();
+    super.disconnectedCallback();
   }
 
   /**
@@ -54,5 +88,10 @@ export class Tree extends BaseTree {
       (item as TreeItem).size = this.size;
       (item as TreeItem).appearance = this.appearance;
     });
+  }
+
+  /** @internal */
+  public itemToggleHandler() {
+    this.fg?.update();
   }
 }

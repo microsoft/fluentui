@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 
-export const Fit = () => (
+export const Fit = (): JSXElement => (
   <>
     <h1>None</h1>
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>

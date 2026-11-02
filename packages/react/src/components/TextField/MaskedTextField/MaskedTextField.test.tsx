@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { resetIds } from '@fluentui/utilities';
 import { MaskedTextField } from './MaskedTextField';
-import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../../common/isConformant';
 
 export function createMockClipboardData(opts?: Partial<DataTransfer>): DataTransfer {
@@ -18,10 +17,8 @@ describe('MaskedTextField', () => {
   });
 
   it('renders correctly', () => {
-    safeCreate(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />, component => {
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const { container } = render(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

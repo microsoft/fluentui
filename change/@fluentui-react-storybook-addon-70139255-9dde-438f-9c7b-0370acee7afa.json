@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve dissapearing Slot Info message on consecutive page re-renders",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

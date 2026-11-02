@@ -1,9 +1,10 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { BaseTreeItem } from './tree-item.base.js';
+import { tagName } from './tree-item.options.js';
 
 test.describe('Tree Item', () => {
   test.use({
-    tagName: 'fluent-tree-item',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -15,9 +16,9 @@ test.describe('Tree Item', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-tree-item');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -34,11 +35,11 @@ test.describe('Tree Item', () => {
     const { element } = fastPage;
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tree-item>Nested Item A</fluent-tree-item>
+        <${tagName}>Nested Item A</${tagName}>
       `,
     });
 
-    const nestedItem = element.nth(0).locator('fluent-tree-item');
+    const nestedItem = element.nth(0).locator(tagName);
     await expect(nestedItem).toHaveCount(1);
     await expect(nestedItem).toHaveText('Nested Item A');
   });
@@ -58,13 +59,13 @@ test.describe('Tree Item', () => {
     await fastPage.setTemplate({
       innerHTML: /* html */ `
         Item 1
-        <fluent-tree-item>Nested Item A</fluent-tree-item>
+        <${tagName}>Nested Item A</${tagName}>
       `,
     });
 
     await expect(element.nth(0)).not.toHaveAttribute('expanded');
 
-    const nestedItems = element.locator('fluent-tree-item');
+    const nestedItems = element.locator(tagName);
     await expect(nestedItems).toBeHidden();
 
     await element.nth(0).evaluate((node: BaseTreeItem) => {
@@ -97,13 +98,13 @@ test.describe('Tree Item', () => {
     await fastPage.setTemplate({
       innerHTML: /* html */ `
         Item 1
-        <fluent-tree-item>
+        <${tagName}>
           Nested Item A
-          <fluent-tree-item>
+          <${tagName}>
             Nested Item B
-            <fluent-tree-item selected>Nested Item C</fluent-tree-item>
-          </fluent-tree-item>
-        </fluent-tree-item>
+            <${tagName} selected>Nested Item C</${tagName}>
+          </${tagName}>
+        </${tagName}>
       `,
     });
     const selectedItems = element.locator('[selected]');
@@ -118,16 +119,16 @@ test.describe('Tree Item', () => {
       attributes: { expanded: true },
       innerHTML: /* html */ `
         Item 1
-        <fluent-tree-item>
+        <${tagName}>
           Nested Item A
-          <fluent-tree-item>
+          <${tagName}>
             Nested Item B
-            <fluent-tree-item>Nested Item C</fluent-tree-item>
-          </fluent-tree-item>
-        </fluent-tree-item>
+            <${tagName}>Nested Item C</${tagName}>
+          </${tagName}>
+        </${tagName}>
       `,
     });
-    const nestedItem = element.nth(0).locator('fluent-tree-item').nth(0);
+    const nestedItem = element.nth(0).locator(tagName).nth(0);
     await expect(element.nth(0)).toHaveAttribute('expanded');
     await expect(nestedItem).toBeVisible();
   });

@@ -1,20 +1,22 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as OptionTagName } from '../option/option.options.js';
 import type { Listbox } from './listbox.js';
+import { tagName } from './listbox.options.js';
 
 test.describe('Listbox', () => {
   test.use({
-    tagName: 'fluent-listbox',
+    tagName,
     innerHTML: /* html */ `
-      <fluent-option value="apple">Apple</fluent-option>
-      <fluent-option value="banana">Banana</fluent-option>
-      <fluent-option value="orange">Orange</fluent-option>
-      <fluent-option value="mango">Mango</fluent-option>
-      <fluent-option value="kiwi">Kiwi</fluent-option>
-      <fluent-option value="cherry">Cherry</fluent-option>
-      <fluent-option value="grapefruit">Grapefruit</fluent-option>
-      <fluent-option value="papaya">Papaya</fluent-option>
+      <${OptionTagName} value="apple">Apple</${OptionTagName}>
+      <${OptionTagName} value="banana">Banana</${OptionTagName}>
+      <${OptionTagName} value="orange">Orange</${OptionTagName}>
+      <${OptionTagName} value="mango">Mango</${OptionTagName}>
+      <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+      <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+      <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+      <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
     `,
-    waitFor: ['fluent-option'],
+    waitFor: [OptionTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -26,9 +28,9 @@ test.describe('Listbox', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-listbox');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -75,7 +77,7 @@ test.describe('Listbox', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const options = element.locator('fluent-option');
+    const options = element.locator(OptionTagName);
 
     await fastPage.setTemplate();
 
@@ -98,7 +100,7 @@ test.describe('Listbox', () => {
 
   test('should set the `ariaPosInSet` and `ariaSetSize` properties on the options', async ({ fastPage }) => {
     const { element } = fastPage;
-    const options = element.locator('fluent-option');
+    const options = element.locator(OptionTagName);
 
     await fastPage.setTemplate();
 
@@ -113,8 +115,8 @@ test.describe('Listbox', () => {
     }
 
     await test.step('should update the `ariaPosInSet` and `ariaSetSize` properties when the options change', async () => {
-      await element.evaluate((node: Listbox) => {
-        const newOption = document.createElement('fluent-option');
+      await element.evaluate((node: Listbox, OptionTagName) => {
+        const newOption = document.createElement(OptionTagName);
         newOption.textContent = 'New Option';
         node.appendChild(newOption);
 
@@ -122,7 +124,7 @@ test.describe('Listbox', () => {
         for (let i = node.children.length; i >= 0; i--) {
           node.appendChild(node.children[(Math.random() * i) | 0]);
         }
-      });
+      }, OptionTagName);
 
       const newOptionsCount = await options.count();
 

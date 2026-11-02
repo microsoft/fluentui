@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, MessageBarIntent } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -6,7 +7,6 @@ import {
   MessageBarTitle,
   MessageBarBody,
   MessageBarGroup,
-  MessageBarIntent,
   Button,
   Link,
   makeStyles,
@@ -39,7 +39,7 @@ interface ExampleMessage {
   id: number;
 }
 
-export const Dismiss = () => {
+export const Dismiss = (): JSXElement => {
   const styles = useStyles();
 
   const counterRef = React.useRef(0);

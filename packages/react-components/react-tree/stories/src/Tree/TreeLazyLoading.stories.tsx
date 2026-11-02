@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
+import type {
+  JSXElement,
   TreeItemValue,
-  Spinner,
-  makeStyles,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
 } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, Spinner, makeStyles } from '@fluentui/react-components';
 import { useQuery } from './utils/useQuery';
 import { mockFetch } from './utils/mockFetch';
 
@@ -35,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const LazyLoading = () => {
+export const LazyLoading = (): JSXElement => {
   const [ariaMessage, setAriaMessage] = React.useState('');
   const styles = useStyles();
   return (

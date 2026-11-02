@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { InteractionTagState } from '../components/InteractionTag/index';
 import type { TagDismissHandler, TagSelectHandler } from '../utils/types';
@@ -32,5 +34,5 @@ export type InteractionTagContextValue<Value = string> = Required<
 
 export const InteractionTagContextProvider = InteractionTagContext.Provider;
 
-export const useInteractionTagContext_unstable = () =>
+export const useInteractionTagContext_unstable = (): InteractionTagContextValue =>
   React.useContext(InteractionTagContext) ?? interactionTagContextDefaultValue;

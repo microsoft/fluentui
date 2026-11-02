@@ -1,4 +1,7 @@
-import { Types, getMover, MoverDirections } from 'tabster';
+'use client';
+
+import type { Types } from 'tabster';
+import { getMover, MoverDirections } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 

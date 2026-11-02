@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { SlideSnappy } from '@fluentui/react-motion-components-preview';
 
 import description from './SlideSnappy.stories.md';
@@ -8,11 +9,16 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: tokens.spacingVerticalXL,
+    maxHeight: '300px',
+    overflow: 'hidden',
+  },
+  cardHeaderText: {
+    margin: 0,
   },
   controls: {
     display: 'flex',
@@ -22,7 +28,7 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
@@ -37,7 +43,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Snappy = () => {
+export const Snappy = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
@@ -49,10 +55,17 @@ export const Snappy = () => {
         </Field>
       </div>
 
-      <SlideSnappy visible={visible}>
-        <div className={classes.card}>
+      <SlideSnappy visible={visible} outY="20px">
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </SlideSnappy>
     </div>
   );

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 import {
   Toolbar,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
 
-export const WithPopover = (props: Partial<ToolbarProps>) => {
+export const WithPopover = (props: Partial<ToolbarProps>): JSXElement => {
   const [open, setOpen] = React.useState<'first' | 'second' | 'third' | 'fourth' | undefined>();
 
   return (

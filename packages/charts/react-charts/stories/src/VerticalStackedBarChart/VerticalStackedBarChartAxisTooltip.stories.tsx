@@ -1,25 +1,16 @@
 import * as React from 'react';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
+import type {
+  JSXElement,
   CheckboxOnChangeData,
   CheckboxProps,
-  Input,
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
 
-export const VerticalStackedBarAxisTooltip = () => {
+export const VerticalStackedBarAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps['checked']>(true);
   const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
@@ -109,14 +100,32 @@ export const VerticalStackedBarAxisTooltip = () => {
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
-          <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
+          <input
+            type="range"
+            value={width}
+            min={200}
+            max={1000}
+            onChange={_onWidthChange}
+            id="input-width"
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          />
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
           </label>
-          <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
+          <input
+            type="range"
+            value={height}
+            min={200}
+            max={1000}
+            id="input-height"
+            onChange={_onHeightChange}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
+          />
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -163,6 +172,8 @@ export const VerticalStackedBarAxisTooltip = () => {
             step={0.01}
             onChange={_onInnerPaddingChange}
             disabled={!xAxisInnerPaddingEnabled}
+            aria-label="Change X Axis Inner Padding"
+            aria-valuetext={`current value ${xAxisInnerPadding}', Minimum 0 and Maximum 1`}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
         </div>
@@ -181,6 +192,8 @@ export const VerticalStackedBarAxisTooltip = () => {
             step={0.01}
             onChange={_onOuterPaddingChange}
             disabled={!xAxisOuterPaddingEnabled}
+            aria-label="Change X Axis Outer Padding"
+            aria-valuetext={`current value ${xAxisOuterPadding}', Minimum 0 and Maximum 1`}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
         </div>

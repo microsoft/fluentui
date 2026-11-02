@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mergeStyles, Toggle } from '@fluentui/react';
 import { IDisplayToggle } from './DisplayToggle.types';
 
-export const DisplayToggle = (props: IDisplayToggle) => {
+export const DisplayToggle = (props: IDisplayToggle): React.ReactElement => {
   const { children, className, as: RootType = 'div', offClass = 'off', onClass = 'on', onText, offText, label } = props;
   const [toggleState, setToggleState] = React.useState(false);
   const rootClass = mergeStyles(

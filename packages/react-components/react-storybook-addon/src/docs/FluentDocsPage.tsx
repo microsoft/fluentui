@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -9,22 +9,24 @@ import {
   Primary,
   Stories,
   type DocsContextProps,
-} from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
+} from '@storybook/addon-docs/blocks';
+import type { PreparedStory, Renderer, SBEnumType } from 'storybook/internal/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
 import { Text } from '@fluentui/react-text';
 import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-import { DIR_ID, THEME_ID } from '../constants';
-import { themes } from '../theme';
+import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
+import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -162,51 +164,73 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
   const argAsProp = hasArgAsProp ? (story.argTypes.as.type as SBEnumType).value : null;
   let hasArgAsSlot = false;
 
+  type ArgTypes = Record<
+    string,
+    {
+      table?: { type: { summary?: string } };
+      type: { name?: string };
+    }
+  >;
+
   type InternalComponentApi = {
     __docgenInfo: {
-      props?: Record<string, { type: { name: string } }>;
+      props?: ArgTypes;
     };
-    [k: string]: unknown;
   };
 
-  const transformPropsWithSlotShorthand = (props: Record<string, { type: { name: string } }>) => {
-    Object.entries(props).forEach(([key, argType]) => {
-      const value: string = argType?.type?.name;
+  const transformArgTypeNameWithSlotShorthand = (typeName: string) => {
+    const match = typeName.match(slotRegex);
 
-      // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
-      if (value.includes('Slot')) {
-        hasArgAsSlot = true;
-        return;
+    if (match) {
+      hasArgAsSlot = true;
+      return `Slot<\"${match[1]}\">`;
+    }
+
+    if (typeName.includes('WithSlotShorthandValue')) {
+      hasArgAsSlot = true;
+      return `Slot`;
+    }
+
+    return typeName;
+  };
+
+  /**
+   * Transform the arg types with slot shorthand (mutates the arg types object reference)
+   * This is necessary to ensure that the arg types are correctly displayed in the docs page
+   */
+  const transformArgTypesWithSlotShorthand = (argTypes: ArgTypes) => {
+    Object.values(argTypes).forEach(argType => {
+      // Transform the type summary if it exists
+      if (argType?.table?.type?.summary) {
+        argType.table.type.summary = transformArgTypeNameWithSlotShorthand(argType.table.type.summary);
       }
-      // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
-      if (value.includes('WithSlotShorthandValue')) {
-        hasArgAsSlot = true;
-        const match = value.match(slotRegex);
-        if (match) {
-          props[key].type.name = `Slot<\"${match[1]}\">`;
-        } else {
-          props[key].type.name = `Slot`;
-        }
+      // Transform the type name if it exists
+      if (argType?.type?.name) {
+        argType.type.name = transformArgTypeNameWithSlotShorthand(argType.type.name);
       }
     });
   };
 
-  const transformComponent = (component: InternalComponentApi) => {
+  const transformComponentDocGenProps = (component: InternalComponentApi) => {
     const docGenProps = component?.__docgenInfo?.props;
     if (docGenProps) {
-      transformPropsWithSlotShorthand(docGenProps);
+      transformArgTypesWithSlotShorthand(docGenProps);
     }
   };
 
-  const component = story.component as InternalComponentApi;
-  const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
+  const component = story.moduleExport;
 
   if (options.slotsApi) {
-    transformComponent(component);
-    if (subcomponents) {
-      Object.values(subcomponents).forEach(subcomponent => {
-        transformComponent(subcomponent);
-      });
+    // Transform the arg types with slot shorthand (mutates the arg types object reference)
+    transformArgTypesWithSlotShorthand(story.argTypes as ArgTypes);
+
+    // Transform the component doc gen props with slot shorthand (mutates the component doc gen props object reference)
+    transformComponentDocGenProps(component);
+
+    // Transform the subcomponents doc gen props with slot shorthand
+    // (mutates the subcomponents doc gen props object reference)
+    if (story.subcomponents) {
+      Object.values(story.subcomponents).forEach(transformComponentDocGenProps);
     }
   }
 
@@ -224,7 +248,6 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
-
 const RenderArgsTable = ({
   story,
   hideArgsTable,
@@ -245,6 +268,7 @@ const RenderArgsTable = ({
   return hideArgsTable ? null : (
     <>
       <div className={styles.additionalInfoWrapper}>
+        <ArgTypes of={component} />
         {hasArgAsProp && (
           <AdditionalApiDocs>
             <p>
@@ -272,7 +296,7 @@ const RenderArgsTable = ({
                 approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
                 primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
                 component structures, similar to slots in other frameworks.{' '}
-                <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                <Link href="./?path=/docs/concepts-developer-customizing-components-with-slots--docs">
                   Customizing components with slots{' '}
                 </Link>
               </span>
@@ -280,7 +304,6 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
     </>
   );
 };
@@ -304,7 +327,37 @@ const RenderPrimaryStory = ({
   );
 };
 
-export const FluentDocsPage = () => {
+const RenderStories = (_props: { stories: PrimaryStory[]; skipPrimaryStory?: boolean }) => (
+  <Stories includePrimary={false} />
+);
+
+export type FluentDocsPageProps = {
+  /**
+   * Render the primary-story section (divider + h3 anchor heading + canvas).
+   * Defaults to the addon's built-in `RenderPrimaryStory`. Pass a custom
+   * component to swap the canvas/source rendering (e.g. wrap in `<Anchor>`,
+   * use a custom source panel) while keeping the rest of the docs page chrome.
+   */
+  renderPrimaryStory?: typeof RenderPrimaryStory;
+  /**
+   * Render the props table. Defaults to the addon's built-in `RenderArgsTable`,
+   * which runs `withSlotEnhancer` and adds the slot/native-props info cards.
+   */
+  renderArgsTable?: typeof RenderArgsTable;
+  /**
+   * Render the secondary-stories section. Defaults to Storybook's `<Stories />`
+   * block. When overridden, the page passes the non-primary stories so the
+   * consumer can iterate (e.g. to add per-story anchors and a custom source
+   * panel). The default ignores `stories` and lets `<Stories />` self-iterate.
+   */
+  renderStories?: typeof RenderStories;
+};
+
+export const FluentDocsPage = ({
+  renderPrimaryStory = RenderPrimaryStory,
+  renderArgsTable = RenderArgsTable,
+  renderStories = RenderStories,
+}: FluentDocsPageProps = {}): JSXElement => {
   const context = React.useContext(DocsContext);
 
   // Get the fluent docs page configuration from context
@@ -318,6 +371,8 @@ export const FluentDocsPage = () => {
   assertStoryMetaValues(primaryStory);
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const themes: Theme[] =
+    primaryStoryContext.parameters?.fluentThemes ?? primaryStoryContext.globals?.[THEMES] ?? defaultThemes;
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
@@ -333,9 +388,9 @@ export const FluentDocsPage = () => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
-        <Stories />
+        {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
+        {renderArgsTable({ story: primaryStory, hideArgsTable })}
+        {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
   }
@@ -345,6 +400,7 @@ export const FluentDocsPage = () => {
     tableOfContents: showTableOfContents,
     dirSwitcher: showDirSwitcher,
     themePicker: showThemePicker,
+    copyAsMarkdown: showCopyAsMarkdown,
     argTable,
   } = docsPageConfig;
 
@@ -365,10 +421,11 @@ export const FluentDocsPage = () => {
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {(showThemePicker || showDirSwitcher) && (
+          {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
-              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
+              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} themes={themes} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
+              {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>
           )}
           <Subtitle />
@@ -376,14 +433,14 @@ export const FluentDocsPage = () => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable
-            story={primaryStory}
-            hideArgsTable={hideArgsTable}
-            showSlotsApi={argTable.slotsApi}
-            showNativePropsApi={argTable.nativePropsApi}
-          />
-          <Stories />
+          {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
+          {renderArgsTable({
+            story: primaryStory,
+            hideArgsTable,
+            showSlotsApi: argTable.slotsApi,
+            showNativePropsApi: argTable.nativePropsApi,
+          })}
+          {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
         {showTableOfContents && (
           <div className={styles.toc}>

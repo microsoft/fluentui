@@ -1,0 +1,7 @@
+{
+  "name": "verify-bundle-isolation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/verify-bundle-isolation/src",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"]
+}

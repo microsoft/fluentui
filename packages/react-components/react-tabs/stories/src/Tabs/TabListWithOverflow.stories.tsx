@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, MenuItemProps } from '@fluentui/react-components';
 import {
   makeStyles,
   mergeClasses,
@@ -6,7 +7,6 @@ import {
   Button,
   Menu,
   MenuItem,
-  MenuItemProps,
   MenuList,
   MenuPopover,
   MenuTrigger,
@@ -287,7 +287,7 @@ const useStyles = makeStyles({
     minHeight: '600px', //lets the page remain at a minimum height when vertical tabs are resized
   },
 });
-export const WithOverflow = () => {
+export const WithOverflow = (): JSXElement => {
   const styles = useStyles();
 
   return (

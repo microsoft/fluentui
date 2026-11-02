@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderToggleButton_unstable } from './renderToggleButton';
 import { useToggleButton_unstable } from './useToggleButton';

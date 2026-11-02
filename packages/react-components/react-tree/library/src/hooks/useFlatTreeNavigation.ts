@@ -1,19 +1,25 @@
+'use client';
+
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeNavigationData_unstable } from '../Tree';
+import type { TreeNavigationData_unstable } from '../Tree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
-import { TreeItemValue } from '../TreeItem';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { TreeItemValue } from '../TreeItem';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
-import { TreeNavigationMode } from '../components/Tree/Tree.types';
+import type { TreeNavigationMode } from '../components/Tree/Tree.types';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { treeItemLayoutClassNames } from '../TreeItemLayout';
+import { queryTreeItemActions } from '../utils/queryTreeItemActions';
 
-export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
-  'use no memo';
+export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
+  navigate: (data: TreeNavigationData_unstable) => void;
+  rootRef: React.RefCallback<HTMLElement>;
+  forceUpdateRovingTabIndex: () => void;
+} {
+  'use no memo'; // justified: compiler would optimize useFlatTreeNavigation — manual opt-out to preserve runtime behavior
 
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
   const { rove, forceUpdate: forceUpdateRovingTabIndex, initialize: initializeRovingTabIndex } = useRovingTabIndex();
@@ -39,7 +45,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
-        const actions = queryActions(data.target);
+        const actions = queryTreeItemActions(data.target);
         if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
           return data.target;
         }
@@ -59,7 +65,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
       }
       case treeDataTypes.ArrowRight: {
         if (navigationMode === 'treegrid') {
-          const actions = queryActions(data.target);
+          const actions = queryTreeItemActions(data.target);
           if (actions) {
             findFirstFocusable(actions)?.focus();
           }
@@ -104,7 +110,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
   });
   return {
     navigate,
-    rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback),
+    rootRef: useMergedRefs<HTMLElement>(walkerRootRef, rootRefCallback),
     forceUpdateRovingTabIndex,
   } as const;
 }
@@ -129,8 +135,3 @@ function parentElement(parentValue: TreeItemValue | undefined, treeWalker: HTMLE
   }
   return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${parentValue}"]`);
 }
-
-const queryActions = (target: HTMLElement) =>
-  target.querySelector<HTMLElement>(
-    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
-  );

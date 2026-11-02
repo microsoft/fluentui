@@ -4,24 +4,22 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { ButtonProps } from '@fluentui/react-components';
-import { ComponentProps } from '@fluentui/react-components';
+import type { ButtonProps } from '@fluentui/react-components';
+import type { ComponentProps } from '@fluentui/react-components';
 import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
-import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
-import { SelectionHookParams } from '@fluentui/react-utilities';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
-import { Slot } from '@fluentui/react-components';
-import { Slot as Slot_2 } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-components';
+import type { Slot as Slot_2 } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -105,8 +103,8 @@ export const flexClassName = "fui-Flex";
 
 // @public (undocumented)
 export const flexItem: {
-    align: (value: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch') => GriffelStyle;
-    size: (value: 'half' | 'quarter' | 'small' | 'medium' | 'large') => GriffelStyle;
+    align: (value: "auto" | "start" | "end" | "center" | "baseline" | "stretch") => GriffelStyle;
+    size: (value: "half" | "quarter" | "small" | "medium" | "large") => GriffelStyle;
     grow: (flexGrow: boolean | number) => GriffelStyle | undefined;
     shrink: (flexShrink: boolean | number) => GriffelStyle | undefined;
     pushRow: () => GriffelStyle;
@@ -115,18 +113,16 @@ export const flexItem: {
 
 // @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
-    errorMessage?: WithContent | undefined;
-    required?: boolean | undefined;
-    control?: ({
+    errorMessage?: WithContent;
+    required?: boolean;
+    control?: ObjectShorthandValue<{
         content?: React_2.ReactNode;
-    } & ObjectOf<any> & {
-        children?: unknown;
-    } & {
-        error?: "true" | "false" | undefined;
-    }) | undefined;
-    label?: WithContent | undefined;
+    }> & {
+        error?: "true" | "false";
+    };
+    label?: WithContent;
 } & {
-    children?: React_2.ReactNode;
+    children?: React_2.ReactNode | undefined;
 } & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public (undocumented)
@@ -158,9 +154,7 @@ export const input: {
 // @public (undocumented)
 export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
     as?: "div" | undefined;
-} & Omit<Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-}, "children"> & {
+} & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> & {
     children?: any;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
@@ -236,10 +230,10 @@ export const Primitive: PrimitiveComponent;
 export const primitiveClassName = "fui-Primitive";
 
 // @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
+export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 
 // @public (undocumented)
 export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
@@ -283,7 +277,7 @@ export type StyledTextSlots = {
 };
 
 // @public (undocumented)
-export const useFlexStyles: () => Record<"flex" | "fill" | "inline" | "column" | "wrap" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
+export const useFlexStyles: () => Record<"fill" | "flex" | "inline" | "column" | "wrap" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;

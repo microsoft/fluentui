@@ -1,13 +1,16 @@
-export type { TabProps, TabSlots, TabState, TabValue } from './Tab';
+export type { TabProps, TabSlots, TabState, TabValue, TabBaseProps, TabBaseState } from './Tab';
 export {
   renderTab_unstable,
   Tab,
   tabClassNames,
+  tabReservedSpaceClassNames,
+  useTabAnimatedIndicatorStyles_unstable,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
   useTabIndicatorStyles_unstable,
   useTabStyles_unstable,
   useTab_unstable,
+  useTabBase_unstable,
 } from './Tab';
 export type {
   TabRegisterData,
@@ -20,6 +23,8 @@ export type {
   TabListProps,
   TabListSlots,
   TabListState,
+  TabListBaseProps,
+  TabListBaseState,
 } from './TabList';
 export {
   renderTabList_unstable,
@@ -30,4 +35,6 @@ export {
   useTabListContextValues_unstable,
   useTabListStyles_unstable,
   useTabList_unstable,
+  useTabListA11yBehavior_unstable,
+  useTabListBase_unstable,
 } from './TabList';

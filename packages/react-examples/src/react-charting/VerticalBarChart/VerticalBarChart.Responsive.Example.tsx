@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   VerticalBarChart,
   IVerticalBarChartDataPoint,
@@ -82,7 +83,7 @@ const points: IVerticalBarChartDataPoint[] = [
 const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
 
 export class VerticalBarChartResponsiveExample extends React.Component {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ResponsiveContainer>
         <VerticalBarChart data={points} lineLegendText={'Line'} lineLegendColor={'brown'} lineOptions={lineOptions} />

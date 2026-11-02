@@ -1,6 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import type { StartEndOptions } from '../patterns/index.js';
-import { StartEnd } from '../patterns/index.js';
+import { StartEnd, type StartEndOptions } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { BaseAnchor } from './anchor-button.base.js';
@@ -9,8 +8,6 @@ import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './a
 /**
  * Anchor configuration options
  *
- * @tag fluent-anchor-button
- *
  * @public
  */
 export type AnchorOptions = StartEndOptions<AnchorButton>;
@@ -18,6 +15,8 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
 /**
  * An Anchor Custom HTML Element.
  * Based on BaseAnchor and includes style and layout specific attributes
+ *
+ * @tag fluent-anchor-button
  *
  * @public
  */

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Rating, RatingProps } from '@fluentui/react-components';
+import type { JSXElement, RatingProps } from '@fluentui/react-components';
+import { Rating } from '@fluentui/react-components';
 
-export const Default = (props: Partial<RatingProps>) => {
+export const Default = (props: Partial<RatingProps>): JSXElement => {
   return <Rating {...props} />;
 };

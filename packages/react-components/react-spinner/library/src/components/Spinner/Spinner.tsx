@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSpinner_unstable } from './useSpinner';
 import { renderSpinner_unstable } from './renderSpinner';

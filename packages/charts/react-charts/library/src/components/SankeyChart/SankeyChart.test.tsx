@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FluentProvider } from '@fluentui/react-provider';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { SankeyChart } from './SankeyChart';
-import { ChartProps } from './index';
+import { groupNodesByColumn, SankeyChart } from './SankeyChart';
+import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
+import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -137,6 +137,19 @@ describe('Sankey bar chart rendering', () => {
   );
 });
 
+describe('SankeyChart - prototype pollution hardening', () => {
+  it('groups a node with a __proto__ column without using Object.prototype', () => {
+    const node = { nodeId: 0, name: 'malicious', layer: '__proto__' };
+    const graph = { nodes: [node], links: [] } as unknown as Parameters<typeof groupNodesByColumn>[0];
+
+    const nodesByColumn = groupNodesByColumn(graph);
+
+    expect(Object.prototype.hasOwnProperty.call(nodesByColumn, '__proto__')).toBe(true);
+    expect(nodesByColumn['__proto__' as unknown as number]).toEqual([node]);
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, '0')).toBe(false);
+  });
+});
+
 describe('Sankey chart - Theme', () => {
   beforeEach(sharedBeforeEach);
 
@@ -171,12 +184,16 @@ describe('Sankey chart - Subcomponent Node', () => {
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
-      const pathsAfterMouseOver = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      // Assert
-      expect(pathsAfterMouseOver).toBeDefined();
-      expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
-      expect(nodes[0].getAttribute('fill')).toEqual('#757575');
-      expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      await waitFor(() => {
+        const pathsAfterMouseOver = screen.getAllByText(
+          (content, element) => element!.tagName.toLowerCase() === 'path',
+        );
+        // Assert
+        expect(pathsAfterMouseOver).toBeDefined();
+        expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+        expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+        expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      });
     },
   );
 });
@@ -213,7 +230,7 @@ describe('Sankey chart - Mouse events', () => {
     },
   );
 
-  testWithoutWait(
+  testWithWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
@@ -221,9 +238,13 @@ describe('Sankey chart - Mouse events', () => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const prevFill = nodes[1].getAttribute('fill');
       fireEvent.mouseOver(nodes[0]);
-      expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      });
       fireEvent.mouseOut(nodes[0]);
-      expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      });
     },
   );
 });
@@ -450,7 +471,7 @@ describe('SankeyChart - mouse events', () => {
   }
   beforeEach(sharedBeforeEach);
   it('Should render correctly on node mouseover', () => {
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     const rects = wrapper.container.querySelectorAll('rect');
     fireEvent.mouseOver(rects[1]);
     expect(wrapper).toMatchSnapshot();
@@ -472,7 +493,7 @@ describe('SankeyChart - mouse events', () => {
 
   it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -504,7 +525,7 @@ describe('SankeyChart - mouse events', () => {
 
   it.skip('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -594,5 +615,70 @@ describe('SankeyChart - Min Height of Node Test', () => {
     const component = render(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
     // ASSERT
     expect(component).toMatchSnapshot();
+  });
+});
+
+describe('SankeyChart - node ID prototype pollution hardening', () => {
+  const magicKeys = ['__proto__', 'constructor', 'prototype'];
+  const pollutionKey = 'sankeyPrototypePollutionTarget';
+
+  beforeEach(sharedBeforeEach);
+
+  afterEach(() => {
+    delete (Object.prototype as Record<string, unknown>)[pollutionKey];
+    delete (Object as unknown as Record<string, unknown>)[pollutionKey];
+  });
+
+  it.each(magicKeys)('renders safely when the source node ID is "%s"', sourceId => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: sourceId, name: 'Source' },
+          { nodeId: pollutionKey, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    expect(() => render(<SankeyChart data={maliciousData} width={820} height={412} />)).not.toThrow();
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, pollutionKey)).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(Object, pollutionKey)).toBe(false);
+  });
+
+  it.each(magicKeys)('renders safely when the target node ID is "%s"', targetId => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: 'source', name: 'Source' },
+          { nodeId: targetId, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    expect(() => render(<SankeyChart data={maliciousData} width={820} height={412} />)).not.toThrow();
+  });
+
+  it('does not pollute Object.prototype during server rendering', () => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: '__proto__', name: 'Source' },
+          { nodeId: pollutionKey, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    try {
+      renderToStaticMarkup(<SankeyChart data={maliciousData} width={820} height={412} />);
+    } catch {
+      // SankeyChart currently accesses browser-only APIs after processing link values.
+    }
+
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, pollutionKey)).toBe(false);
   });
 });

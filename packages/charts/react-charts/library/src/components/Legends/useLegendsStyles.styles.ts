@@ -1,6 +1,8 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { LegendsProps, LegendsStyles } from './Legends.types';
+import type { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/index';
 
@@ -42,7 +44,6 @@ const useStyles = makeStyles({
     whiteSpace: 'nowrap',
     width: '100%',
     alignItems: 'center',
-    ...shorthands.margin('-8px 0 0 -8px'),
   },
   legend: {
     // setting display to flex does not work
@@ -50,7 +51,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'left',
     cursor: 'pointer',
-    ...shorthands.border('none'),
+    border: 'none',
     padding: `${LEGEND_PADDING}px`,
     textTransform: 'capitalize',
     // The default min-width is 64px. Setting it to 0 allows the legend container in responsive
@@ -59,6 +60,10 @@ const useStyles = makeStyles({
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
+      '&:focus-visible': {
+        outline: `${tokens.strokeWidthThick} solid canvasText`,
+        outlineOffset: `calc(${tokens.strokeWidthThick} * -1)`,
+      },
     },
     '&:hover': {
       [HighContrastSelector]: {
@@ -83,9 +88,9 @@ const useStyles = makeStyles({
   triangle: {
     width: '0',
     height: '0',
-    ...shorthands.borderLeft('6px solid transparent'),
-    ...shorthands.borderRight('6px solid transparent'),
-    ...shorthands.borderTop('10.4px solid'),
+    borderLeft: '6px solid transparent',
+    borderRight: '6px solid transparent',
+    borderTop: '10.4px solid',
     marginRight: tokens.spacingHorizontalS,
   },
   // TO DO Add props when these styles are used in the component
@@ -99,7 +104,7 @@ const useStyles = makeStyles({
     width: '12px',
     height: '12px',
     marginRight: tokens.spacingHorizontalS,
-    ...shorthands.border('1px solid'),
+    border: '1px solid',
   },
   resizableArea: {
     position: 'relative',
@@ -110,9 +115,9 @@ const useStyles = makeStyles({
     minWidth: '200px',
     maxWidth: '800px',
     '::after': {
-      ...shorthands.padding('1px 4px 1px'),
-      ...shorthands.borderTop('-2px'),
-      ...shorthands.borderLeft('-2px'),
+      padding: '1px 4px 1px',
+      borderTop: '-2px',
+      borderLeft: '-2px',
     },
   },
   legendContainer: {

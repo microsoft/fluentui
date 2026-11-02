@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: tokens.spacingVerticalXL,
+    maxHeight: '300px',
+    overflow: 'hidden',
   },
   controls: {
     display: 'flex',
@@ -20,10 +23,13 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
 });
 
@@ -35,7 +41,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
@@ -47,10 +53,17 @@ export const Default = () => {
         </Field>
       </div>
 
-      <Slide visible={visible}>
-        <div className={classes.card}>
+      <Slide visible={visible} outY="20px">
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </Slide>
     </div>
   );

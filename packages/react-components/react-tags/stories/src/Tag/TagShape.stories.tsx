@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tag, Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -16,7 +17,7 @@ const useContainerStyles = makeStyles({
   },
 });
 
-export const Shape = () => {
+export const Shape = (): JSXElement => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.outerWrapper}>

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { GanttChartDataPoint } from '@fluentui/react-charts';
+import { DataVizPalette, GanttChart } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
 const data: GanttChartDataPoint[] = [
@@ -35,7 +37,7 @@ const data: GanttChartDataPoint[] = [
   },
 ];
 
-export const GanttChartBasic = () => {
+export const GanttChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);
   const [enableGradient, setEnableGradient] = React.useState(false);
@@ -74,7 +76,8 @@ export const GanttChartBasic = () => {
             max={1000}
             id="width-slider"
             onChange={e => setWidth(parseInt(e.target.value, 10))}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -87,7 +90,8 @@ export const GanttChartBasic = () => {
             max={1000}
             id="height-slider"
             onChange={e => setHeight(parseInt(e.target.value, 10))}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>

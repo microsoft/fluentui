@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { NavCategoryContextValues, NavCategoryProvider } from '../NavCategoryContext';
+import type { NavCategoryContextValues } from '../NavCategoryContext';
+import { NavCategoryProvider } from '../NavCategoryContext';
 
 import type { NavCategoryState } from './NavCategory.types';
 

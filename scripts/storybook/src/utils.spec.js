@@ -74,6 +74,8 @@ describe(`utils`, () => {
       const presetTemplate =
         options.presetContent ??
         stripIndents`
+          const preset = require('./lib-commonjs/preset/preset');
+
           function config(entry = []) {
             return [...entry, require.resolve('./lib/preset/preview')];
           }
@@ -82,7 +84,7 @@ describe(`utils`, () => {
             return [...entry, require.resolve('./lib/preset/manager')];
           }
 
-          module.exports = { managerEntries, config };
+          module.exports = { managerEntries, config, ...preset };
       `;
 
       fs.writeFileSync(paths.preset, presetTemplate, 'utf-8');
@@ -146,6 +148,8 @@ describe(`utils`, () => {
         return config;
         }
 
+        const preset = require('../src/preset/preset');
+
         function config(entry = []) {
         return [...entry, require.resolve('../src/preset/preview.ts')];
         }
@@ -154,7 +158,7 @@ describe(`utils`, () => {
         return [...entry, require.resolve('../src/preset/manager.ts')];
         }
 
-        module.exports = { managerWebpack, managerEntries, config };"
+        module.exports = { managerWebpack, managerEntries, config, ...preset };"
       `);
     });
 
@@ -227,7 +231,7 @@ describe(`utils`, () => {
 
       const expected = [
         expect.stringContaining('../../packages/react-'),
-        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.mdx)'),
       ];
 
       expect(actual).toEqual(expect.arrayContaining(expected));
@@ -235,7 +239,7 @@ describe(`utils`, () => {
       const first = actual[0];
       expect(first.startsWith('../../packages/react-')).toBeTruthy();
 
-      expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
+      expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.mdx)')).toBeTruthy();
     });
 
     it(`should generate storybook stories string array of glob based on package.json#dependencies field without packages specified within 'excludeStoriesInsertionFromPackages'`, () => {
@@ -258,18 +262,16 @@ describe(`utils`, () => {
 
       const expected = [
         expect.stringContaining('../../packages/react-'),
-        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.mdx)'),
       ];
 
       expect(actual).toEqual(expect.arrayContaining(expected));
 
       // package without any stories
-      expect(actual).toContain(
-        '../../packages/react-components/keyboard-keys/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
-      );
+      expect(actual).toContain('../../packages/react-components/keyboard-keys/src/**/@(index.stories.@(ts|tsx)|*.mdx)');
       // package with stories ( `*-stories` project adjacent project )
       expect(actual).toContain(
-        '../../packages/react-components/react-theme/stories/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+        '../../packages/react-components/react-theme/stories/src/**/@(index.stories.@(ts|tsx)|*.mdx)',
       );
     });
   });

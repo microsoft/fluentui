@@ -1,4 +1,4 @@
-import { isDateArray, isMonthArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import { isDateArray, isMonthArray, isNumberArray, sanitizeJson, isInvalidValue } from '@fluentui/chart-utilities';
 
 import {
   correctYearMonth,
@@ -7,15 +7,19 @@ import {
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToScatterChartProps,
+  transformPlotlyJsonToAreaChartProps,
+  transformPlotlyJsonToLineChartProps,
+  transformPlotlyJsonToAnnotationChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
-  isInvalidValue,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
+  resolveXAxisPoint,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
+import type { PlotlySchema } from '@fluentui/chart-utilities';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
@@ -142,19 +146,19 @@ describe('isMonthArray', () => {
 
 describe('correctYearMonth', () => {
   test('Should return dates array when input array contains months data', () => {
-    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
+    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2025', '11 01, 2025', '1 01, 2026']);
   });
 
   test('Should return error when input array contains invalid months', () => {
-    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2026', '11 01, 2026', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
-    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
+    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2026', 'February 01, 2026']);
   });
 
   test('Should return dates array when input array contains months data in MM format', () => {
-    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
+    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2026', 'Feb 01, 2026']);
   });
 
   test('Should return dates array when input array is empty', () => {
@@ -164,28 +168,47 @@ describe('correctYearMonth', () => {
 
 describe('getColor', () => {
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, true)).toBe('#637cef');
+    expect(getColor('test', { current: colorMap }, 'plotly', true)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, false)).toBe('#637cef');
+    expect(getColor('test', { current: colorMap }, 'plotly', false)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title is empty', () => {
-    expect(getColor('', { current: colorMap }, false)).toBe('#f7630c');
+    expect(getColor('', { current: colorMap }, 'plotly', false)).toBe('#f7630c');
   });
 });
 
 describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_donut_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
+
+  test.each(['__proto__', 'constructor', 'prototype'])(
+    'transformPlotlyJsonToDonutProps - handles a "%s" label without polluting Object.prototype',
+    label => {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'pie', labels: [label], values: [7], hole: 0.5 }],
+        layout: { width: 440, height: 220 },
+      };
+
+      const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+      expect(result.data?.chartData).toEqual([expect.objectContaining({ legend: label, data: 7 })]);
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
+    },
+  );
 
   test('transformPlotlyJsonToDonutProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -193,20 +216,40 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToDonutProps - Should return pie chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
     expect(
-      transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true, true),
+      transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true, true),
     ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToVSBCProps - handles a "__proto__" x-axis value', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'bar', name: 'Series 1', x: ['__proto__'], y: [7] }],
+      layout: { width: 440, height: 220 },
+    };
+
+    const result = transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true, true);
+
+    expect(result.data).toEqual([
+      expect.objectContaining({
+        xAxisPoint: '__proto__',
+        chartData: [expect.objectContaining({ legend: 'Series 1', data: 7 })],
+      }),
+    ]);
   });
 
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -214,74 +257,190 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGVBCProps - Should return GVBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_groupedverticalbarchart_test.json');
-    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
+      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'some')"));
     }
   });
 
   test('transformPlotlyJsonToVBCProps - Should return VBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalbar_histogram_test.json');
-    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToVBCProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
-  test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
+  test('transformPlotlyJsonToLineChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToLineChartProps - maps layout annotations to chart annotations', () => {
+    const plotlySchema = require('./tests/schema/fluent_line_annotations_test.json');
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(4);
+
+    const [primary, relative, pixel, domain] = result.annotations!;
+
+    expect(primary).toBeDefined();
+    expect(primary?.id).toBe('annotation-0-peak-value');
+    expect(primary?.coordinates).toEqual({
+      type: 'data',
+      x: new Date('2024-01-02T00:00:00.000Z'),
+      y: 20,
+    });
+    expect(primary?.layout).toEqual({
+      align: 'start',
+      verticalAlign: 'bottom',
+      offsetX: -30,
+      offsetY: -25,
+      maxWidth: 180,
+      clipToBounds: true,
+    });
+    expect(primary?.style).toEqual({
+      textColor: '#ff0000',
+      backgroundColor: '#ffffff',
+      borderColor: '#ff0000',
+      borderWidth: 1,
+      padding: '8px',
+      opacity: 0.9,
+      fontSize: '14px',
+    });
+    expect(primary?.connector).toEqual({
+      strokeColor: '#ff0000',
+      strokeWidth: 2,
+      dashArray: '5, 5',
+      endPadding: 6,
+      arrow: 'end',
+    });
+
+    expect(relative).toBeDefined();
+    expect(relative?.coordinates).toEqual({
+      type: 'relative',
+      x: 0.5,
+      y: 0.9,
+    });
+    expect(relative?.style).toEqual({
+      backgroundColor: '#333333',
+      textColor: '#ffffff',
+      fontSize: '12px',
+    });
+    expect(relative?.layout).toBeUndefined();
+    expect(relative?.connector).toBeUndefined();
+
+    expect(pixel).toBeDefined();
+    expect(pixel?.coordinates).toEqual({
+      type: 'pixel',
+      x: 40,
+      y: 40,
+    });
+    expect(pixel?.layout).toEqual({
+      offsetX: 15,
+      offsetY: 12,
+    });
+    expect(pixel?.style).toEqual({
+      textColor: '#111111',
+    });
+    expect(pixel?.connector).toEqual({
+      strokeColor: '#0078d4',
+      strokeWidth: 1.5,
+      dashArray: '1, 5',
+      startPadding: 4,
+      arrow: 'start',
+    });
+
+    expect(domain).toBeDefined();
+    expect(domain?.coordinates).toEqual({
+      type: 'mixed',
+      xCoordinateType: 'relative',
+      yCoordinateType: 'data',
+      x: 0.25,
+      y: 18,
+    });
+    expect(domain?.style).toEqual({
+      textColor: '#222222',
+      fontSize: '12px',
+    });
+    expect(domain?.layout).toBeUndefined();
+    expect(domain?.connector).toBeUndefined();
+  });
+
+  test('transformPlotlyJsonToLineChartProps - does not return annotations for multi plot', () => {
+    const plotlySchema = require('./tests/schema/fluent_line_annotations_test.json');
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, true, { current: new Map() }, 'default', true);
+
+    expect(result.annotations).toBeUndefined();
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToAreaChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToScatterChartProps - Should return scatter chart props', () => {
+    const plotlySchema = require('./tests/schema/fluent_scatter_test.json');
+    expect(
+      transformPlotlyJsonToScatterChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     expect(
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should return heatmap chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_heatmap_test.json');
-    expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToHeatmapProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToHeatmapProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -289,13 +448,17 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToSankeyProps - Should return sankey chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
-    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToSankeyProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToSankeyProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToSankeyProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -303,16 +466,565 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGaugeProps - Should return gauge chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
-    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToGaugeProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGaugeProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToGaugeProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
+  });
+});
+
+describe('transformPlotlyJsonToAnnotationChartProps', () => {
+  const mockColorMap = { current: new Map<string, string>() };
+
+  beforeEach(() => {
+    mockColorMap.current.clear();
+  });
+
+  describe('Basic Transformation', () => {
+    test('transforms minimal Plotly schema to AnnotationOnlyChartProps', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result).toBeDefined();
+      expect(result.annotations).toEqual([]);
+      expect(result.chartTitle).toBeUndefined();
+    });
+
+    test('extracts chart title from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          title: 'Test Chart Title',
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.chartTitle).toBe('Test Chart Title');
+    });
+
+    test('extracts chart title from layout.title.text', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          title: {
+            text: 'Nested Title',
+          },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.chartTitle).toBe('Nested Title');
+    });
+
+    test('extracts description from layout.meta', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          meta: {
+            description: 'This is a test description',
+          },
+        } as unknown as PlotlySchema['layout'],
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.description).toBe('This is a test description');
+    });
+  });
+
+  describe('Annotation Mapping', () => {
+    test('preserves textangle as rotation on annotation style', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          annotations: [
+            {
+              text: 'Rotated label',
+              x: 0.5,
+              y: 0.5,
+              xref: 'x',
+              yref: 'y',
+              textangle: 45,
+              showarrow: false,
+            },
+          ],
+          xaxis: { range: [0, 1] },
+          yaxis: { range: [0, 1] },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].style?.rotation).toBe(45);
+    });
+
+    test('does not coerce date-like category strings when xaxis.type is category', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          xaxis: { type: 'category' },
+          yaxis: { type: 'linear' },
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('does not infer date from date-like strings when axis type is omitted', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              xref: 'x',
+              yref: 'y',
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+
+    test('treats annotations without explicit xref/yref as axis-bound data annotations', () => {
+      const input: PlotlySchema = {
+        data: [
+          {
+            type: 'bar',
+            x: ['Jan 2024', 'Feb 2024'],
+            y: [114.4, 124.2],
+          },
+        ],
+        layout: {
+          annotations: [
+            {
+              text: 'Target Met',
+              x: 'Jan 2024',
+              y: 114.4,
+              showarrow: false,
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].coordinates).toEqual({
+        type: 'data',
+        x: 'Jan 2024',
+        y: 114.4,
+      });
+    });
+  });
+
+  describe('Dimension Extraction', () => {
+    test('extracts width from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          width: 800,
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.width).toBe(800);
+    });
+
+    test('extracts height from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          height: 600,
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.height).toBe(600);
+    });
+
+    test('returns undefined for non-numeric dimensions', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          width: 'auto' as unknown as number,
+          height: '100%' as unknown as number,
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.width).toBeUndefined();
+      expect(result.height).toBeUndefined();
+    });
+  });
+
+  describe('Color Extraction', () => {
+    test('extracts paper_bgcolor from layout', () => {
+      const layout = {} as NonNullable<PlotlySchema['layout']>;
+      layout.paper_bgcolor = '#f0f0f0';
+
+      const input: PlotlySchema = {
+        data: [],
+        layout,
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.paperBackgroundColor).toBe('#f0f0f0');
+    });
+
+    test('extracts plot_bgcolor from layout', () => {
+      const layout = {} as NonNullable<PlotlySchema['layout']>;
+      layout.plot_bgcolor = 'rgba(255, 255, 255, 0.5)';
+
+      const input: PlotlySchema = {
+        data: [],
+        layout,
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.plotBackgroundColor).toBe('rgba(255, 255, 255, 0.5)');
+    });
+
+    test('returns undefined for non-string color values', () => {
+      const layout = {} as NonNullable<PlotlySchema['layout']>;
+      layout.paper_bgcolor = 123 as unknown as string;
+      layout.plot_bgcolor = null as unknown as string;
+
+      const input: PlotlySchema = {
+        data: [],
+        layout,
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.paperBackgroundColor).toBeUndefined();
+      expect(result.plotBackgroundColor).toBeUndefined();
+    });
+  });
+
+  describe('Font Extraction', () => {
+    test('extracts font color from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          font: {
+            color: '#333333',
+          },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.fontColor).toBe('#333333');
+    });
+
+    test('extracts font family from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          font: {
+            family: 'Arial, sans-serif',
+          },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.fontFamily).toBe('Arial, sans-serif');
+    });
+
+    test('handles missing font properties', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          font: {},
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.fontColor).toBeUndefined();
+      expect(result.fontFamily).toBeUndefined();
+    });
+
+    test('handles missing font object', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.fontColor).toBeUndefined();
+      expect(result.fontFamily).toBeUndefined();
+    });
+  });
+
+  describe('Margin Extraction', () => {
+    test('extracts margin from layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          margin: {
+            t: 10,
+            r: 20,
+            b: 30,
+            l: 40,
+          },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.margin).toEqual({
+        t: 10,
+        r: 20,
+        b: 30,
+        l: 40,
+      });
+    });
+
+    test('handles partial margin values', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          margin: {
+            t: 15,
+            l: 25,
+          },
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.margin).toEqual({
+        t: 15,
+        l: 25,
+      });
+    });
+
+    test('handles missing margin', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.margin).toBeUndefined();
+    });
+  });
+
+  describe('Complete Transformation', () => {
+    test('transforms complete Plotly schema with all properties', () => {
+      const layout = {
+        title: 'Complete Test Chart',
+        width: 1000,
+        height: 800,
+        font: {
+          color: '#000000',
+          family: 'Segoe UI, sans-serif',
+        },
+        margin: {
+          t: 50,
+          r: 50,
+          b: 50,
+          l: 50,
+        },
+        meta: {
+          description: 'A complete test chart',
+        },
+      } as NonNullable<PlotlySchema['layout']>;
+
+      layout.paper_bgcolor = '#ffffff';
+      layout.plot_bgcolor = '#f5f5f5';
+
+      const input: PlotlySchema = {
+        data: [],
+        layout,
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result).toEqual({
+        annotations: [],
+        chartTitle: 'Complete Test Chart',
+        description: 'A complete test chart',
+        width: 1000,
+        height: 800,
+        paperBackgroundColor: '#ffffff',
+        plotBackgroundColor: '#f5f5f5',
+        fontColor: '#000000',
+        fontFamily: 'Segoe UI, sans-serif',
+        margin: {
+          t: 50,
+          r: 50,
+          b: 50,
+          l: 50,
+        },
+      });
+    });
+  });
+
+  describe('Multi-plot Handling', () => {
+    test('returns empty annotations array when isMultiPlot is true', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          annotations: [
+            {
+              text: 'Should be ignored',
+              x: 0.5,
+              y: 0.5,
+              xref: 'paper',
+              yref: 'paper',
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, true, mockColorMap, 'default');
+
+      expect(result.annotations).toEqual([]);
+    });
+
+    test('processes annotations when isMultiPlot is false', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          annotations: [
+            {
+              text: 'Test Annotation',
+              x: 0.5,
+              y: 0.5,
+              xref: 'paper',
+              yref: 'paper',
+            },
+          ],
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.annotations.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Edge Cases', () => {
+    test('handles empty layout', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result).toBeDefined();
+      expect(result.annotations).toEqual([]);
+    });
+
+    test('handles undefined layout properties', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          title: undefined,
+          width: undefined,
+          height: undefined,
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result.chartTitle).toBeUndefined();
+      expect(result.width).toBeUndefined();
+      expect(result.height).toBeUndefined();
+    });
+
+    test('handles null data array', () => {
+      const input: PlotlySchema = {
+        data: null as unknown as PlotlySchema['data'],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+      expect(result).toBeDefined();
+    });
+
+    test('ignores unused colorMap and colorwayType parameters', () => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          title: 'Test',
+        },
+      };
+
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default', true);
+
+      expect(result.chartTitle).toBe('Test');
+    });
   });
 });
 
@@ -511,5 +1223,38 @@ describe('getValidXYRanges', () => {
   it('handles x or y missing', () => {
     expect(getValidXYRanges({ x: [1, 2, 3] })).toEqual([]);
     expect(getValidXYRanges({ y: [1, 2, 3] })).toEqual([]);
+  });
+});
+
+describe('resolveXAxisPoint', () => {
+  it('should return the input as a string if isXYearCategory is true', () => {
+    const result = resolveXAxisPoint(2023, true, false, false, false);
+    expect(result).toStrictEqual('2023');
+  });
+
+  it('should return a Date object if isXString and isXDate are true', () => {
+    const result = resolveXAxisPoint('2023-01-01', false, true, true, false);
+    expect(result).toBeInstanceOf(Date);
+    expect(result).toStrictEqual(new Date('2023-01-01'));
+  });
+
+  it('should return a number if isXString and isXNumber are true', () => {
+    const result = resolveXAxisPoint('123.45', false, true, false, true);
+    expect(result).toStrictEqual(123.45);
+  });
+
+  it('should return the input as-is if isXString is true but neither isXDate nor isXNumber are true', () => {
+    const result = resolveXAxisPoint('test', false, true, false, false);
+    expect(result).toStrictEqual('test');
+  });
+
+  it('should return the input as-is if none of the conditions are met', () => {
+    const result = resolveXAxisPoint(42, false, false, false, false);
+    expect(result).toStrictEqual(42);
+  });
+  it('should return empty string for null, empty string and 0', () => {
+    expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
   });
 });

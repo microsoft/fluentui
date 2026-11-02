@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use custom RefAttributes instead of React.RefAttributes",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

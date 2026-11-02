@@ -3,6 +3,7 @@ import {
   CarouselSlider,
   Field,
   Image,
+  Input,
   makeStyles,
   Switch,
   tokens,
@@ -10,8 +11,6 @@ import {
 } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
-  CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -19,6 +18,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement, CarouselAnnouncerFunction, CarouselAutoplayButtonProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {
@@ -84,7 +84,7 @@ const useClasses = makeStyles({
   },
   field: {
     flex: 1,
-    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
+    gridTemplateColumns: 'minmax(140px, max-content) 1fr',
   },
   dropdown: {
     maxWidth: 'max-content',
@@ -128,10 +128,11 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Autoplay = () => {
+export const Autoplay = (): JSXElement => {
   const classes = useClasses();
   const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
   const [autoplayButton, setAutoplayButton] = React.useState(true);
+  const [autoplayInterval, setAutoplayInterval] = React.useState(4000);
 
   const autoplayProps: CarouselAutoplayButtonProps | undefined = autoplayButton
     ? {
@@ -153,9 +154,29 @@ export const Autoplay = () => {
         <Field label="Autoplay Enabled" orientation="horizontal" className={classes.field}>
           <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
         </Field>
+
+        <Field
+          label="Autoplay Interval (ms)"
+          orientation="horizontal"
+          className={classes.field}
+          hint={`Delay between slides: ${autoplayInterval}ms`}
+        >
+          <Input
+            type="number"
+            value={autoplayInterval.toString()}
+            onChange={(e, data) => {
+              const value = parseInt(data.value, 10);
+              if (!isNaN(value) && value >= 1000) {
+                setAutoplayInterval(value);
+              }
+            }}
+            min="1000"
+            step="1000"
+          />
+        </Field>
       </div>
       <div className={classes.card}>
-        <Carousel groupSize={1} circular announcement={getAnnouncement}>
+        <Carousel groupSize={1} circular announcement={getAnnouncement} autoplayInterval={autoplayInterval}>
           <CarouselViewport>
             <CarouselSlider>
               {IMAGES.map((imageSrc, index) => (
@@ -183,7 +204,7 @@ Autoplay.parameters = {
   docs: {
     description: {
       story:
-        'The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended ariaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it.',
+        'The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended ariaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it. The `autoplayInterval` prop controls the delay between slide transitions in milliseconds (defaults to 4000ms).',
     },
   },
 };

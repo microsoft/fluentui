@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type {
   TeachingPopoverCarouselFooterSlots,
@@ -30,12 +32,13 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverCarouselFooterStyles_unstable = (state: TeachingPopoverCarouselFooterState) => {
-  'use no memo';
-
+export const useTeachingPopoverCarouselFooterStyles_unstable = (
+  state: TeachingPopoverCarouselFooterState,
+): TeachingPopoverCarouselFooterState => {
   const styles = useStyles();
   const { layout } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverCarouselFooterClassNames.root,
     styles.root,
@@ -44,9 +47,11 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (state: TeachingP
   );
 
   if (state.previous) {
+    // eslint-disable-next-line react-hooks/immutability
     state.previous.className = mergeClasses(teachingPopoverCarouselFooterClassNames.previous, state.previous.className);
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.next.className = mergeClasses(teachingPopoverCarouselFooterClassNames.next, state.next.className);
 
   return state;

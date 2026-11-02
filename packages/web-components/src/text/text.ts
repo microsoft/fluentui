@@ -6,6 +6,8 @@ import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
  *
  * @tag fluent-text
  *
+ * @slot - The default slot for the text content of the component. Can be any valid HTML element, but is typically a semantic element such as a heading or paragraph.
+ *
  * @public
  */
 export class Text extends FASTElement {

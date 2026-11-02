@@ -1,0 +1,143 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: flex;
+}
+
+:host {
+  align-items: center;
+  background: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground2);
+  cursor: pointer;
+  font: var(--fontWeightRegular) var(--fontSizeBase300) / var(--lineHeightBase300) var(--fontFamilyBase);
+  gap: 4px;
+  min-block-size: 32px;
+  overflow: visible;
+  padding-inline: 10px;
+}
+
+@supports (grid-template-columns: subgrid) {
+  :host {
+    display: grid;
+    gap: 0;
+    grid-template-columns: subgrid;
+    padding-inline: unset;
+  }
+}
+
+:host(:hover) {
+  background: var(--colorNeutralBackground1Hover);
+  color: var(--colorNeutralForeground2Hover);
+}
+
+:host(:active) {
+  background-color: var(--colorNeutralBackground1Selected);
+  color: var(--colorNeutralForeground2Pressed);
+}
+
+:host(:active) ::slotted([slot='start']) {
+  color: var(--colorCompoundBrandForeground1Pressed);
+}
+
+:host(:state(disabled)) {
+  background-color: var(--colorNeutralBackgroundDisabled);
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+:host(:state(disabled)) ::slotted([slot='start']),
+:host(:state(disabled)) ::slotted([slot='end']) {
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+:host(:focus-visible) {
+  border-radius: var(--borderRadiusMedium);
+  outline: 2px solid var(--colorStrokeFocus2);
+}
+
+:host(:not(:state(checked))) .indicator,
+:host(:not(:state(checked))) ::slotted([slot='indicator']),
+:host(:not(:state(submenu))) .submenu-glyph,
+:host(:not(:state(submenu))) ::slotted([slot='submenu-glyph']) {
+  display: none;
+}
+
+::slotted([slot='end']) {
+  color: var(--colorNeutralForeground3);
+  font: var(--fontWeightRegular) var(--fontSizeBase200) / var(--lineHeightBase200) var(--fontFamilyBase);
+  white-space: nowrap;
+}
+
+.indicator,
+::slotted([slot='indicator']) {
+  grid-column: 2 / span 1;
+  width: 20px;
+}
+
+::slotted([slot='start']) {
+  display: inline-flex;
+  grid-column: 3 / span 1;
+}
+
+.content {
+  flex-grow: 1;
+  grid-column: 4 / span 1;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+
+::slotted([slot='end']) {
+  grid-column: 5 / span 1;
+  justify-self: end;
+}
+
+.submenu-glyph,
+::slotted([slot='submenu-glyph']) {
+  grid-column: 6 / span 1;
+  justify-self: end;
+}
+
+@layer popover {
+  :host {
+    anchor-name: --menu-trigger;
+    position: relative;
+  }
+
+  @position-try --inline-inside {
+    inset-inline-start: unset;
+    inset-inline-end: anchor(inside);
+  }
+
+  ::slotted([popover]) {
+    margin: 0;
+    max-block-size: var(--menu-max-height, auto);
+    position: fixed;
+    position-anchor: --menu-trigger;
+    inset: unset;
+    inset-block-start: anchor(inside);
+    inset-inline-start: anchor(outside);
+    position-try-fallbacks: --inline-inside, flip-block, flip-block --inline-inside;
+    z-index: 1;
+  }
+
+  ::slotted([popover]:not(:popover-open)) {
+    display: none;
+  }
+
+  /* Fallback for no anchor-positioning */
+  @supports not (anchor-name: --menu-trigger) {
+    ::slotted([popover]) {
+      align-self: start;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  :host(:state(disabled)),
+  :host(:state(disabled)) ::slotted([slot='start']),
+  :host(:state(disabled)) ::slotted([slot='end']) {
+    color: GrayText;
+  }
+}

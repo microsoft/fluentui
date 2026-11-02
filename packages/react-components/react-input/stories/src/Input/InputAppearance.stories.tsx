@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, mergeClasses, tokens, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const idPrefix = 'input-appearance-story';
   const inputIds = {
     default: useId(idPrefix),

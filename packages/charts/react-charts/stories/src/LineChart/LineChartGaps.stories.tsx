@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { LineChartProps, LineChart, ChartProps, CustomizedCalloutData, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { LineChartProps, ChartProps, CustomizedCalloutData } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 
-export const LineChartGaps = (props: LineChartProps) => {
+export const LineChartGaps = (props: LineChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(400);
 
@@ -231,7 +233,8 @@ export const LineChartGaps = (props: LineChartProps) => {
           max={1500}
           id="changeWidth_Gaps"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 500 and Maximum 1500`}
         />
         <label htmlFor="ChangeHeight_Gaps">Change Height:</label>
         <input
@@ -241,7 +244,8 @@ export const LineChartGaps = (props: LineChartProps) => {
           max={1000}
           id="changeHeight_Gaps"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>

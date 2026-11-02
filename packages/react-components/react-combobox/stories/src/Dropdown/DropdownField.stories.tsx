@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithField = (props: Partial<DropdownProps>) => {
+export const WithField = (props: Partial<DropdownProps>): JSXElement => {
   const styles = useStyles();
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
   return (

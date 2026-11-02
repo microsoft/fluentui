@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { Calendar, compareDatePart, DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';
@@ -42,8 +44,6 @@ function useFocusLogic() {
 }
 
 function usePopupVisibility(props: DatePickerProps) {
-  'use no memo';
-
   const [open, setOpen] = useControllableState({
     initialState: false,
     defaultState: props.defaultOpen,
@@ -81,6 +81,7 @@ function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFormattedDate(value && formatDate ? formatDate(value) : '');
   }, [formatDate, value]);
 
@@ -103,8 +104,6 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param ref - reference to root Input slot
  */
 export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
-  'use no memo';
-
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -141,7 +140,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const initialPickerDate = React.useMemo(() => initialPickerDateProp ?? new Date(), [initialPickerDateProp]);
 
-  const calendar = React.useRef<ICalendar>(null);
+  const calendar = React.useRef<ICalendar | null>(null);
   const [focus, rootRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
     formatDate,
@@ -291,9 +290,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           break;
 
         case Escape:
-          ev.stopPropagation();
-          ev.preventDefault();
           if (open) {
+            ev.stopPropagation();
+            ev.preventDefault();
             calendarDismissed();
           }
           break;
@@ -321,6 +320,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       if (!preventFocusOpeningPicker.current) {
         showDatePickerPopup();
       }
+      // eslint-disable-next-line react-hooks/immutability
       preventFocusOpeningPicker.current = false;
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
@@ -346,6 +346,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   ]);
 
   const onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    ev.preventDefault();
     ev.stopPropagation();
     if (!open && !props.disabled) {
       showDatePickerPopup();
@@ -453,6 +454,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar.current.focus();
     }
   }, [disableAutoFocus, open, props.disabled]);
+  // eslint-disable-next-line react-hooks/refs
   const calendarShorthand = slot.always(props.calendar, {
     defaultProps: {
       allFocusable,

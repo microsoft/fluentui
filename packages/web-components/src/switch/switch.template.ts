@@ -1,5 +1,5 @@
 import { type ElementViewTemplate, html } from '@microsoft/fast-element';
-import { staticallyCompose } from '../utils/index.js';
+import { staticallyCompose } from '../utils/template-helpers.js';
 import type { Switch, SwitchOptions } from './switch.js';
 
 export function switchTemplate<T extends Switch>(options: SwitchOptions = {}): ElementViewTemplate<T> {

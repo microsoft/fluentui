@@ -28,7 +28,7 @@ describe('useMenuContextValues_unstable', () => {
         "persistOnItemClick": false,
         "safeZone": null,
         "setOpen": [Function],
-        "triggerId": "menur0",
+        "triggerId": "menu_r_0_",
         "triggerRef": [Function],
       }
     `);

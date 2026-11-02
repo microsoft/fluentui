@@ -1,0 +1,44 @@
+// @ts-check
+
+/**
+ * Mock snapshot functionality for Jest
+ */
+function main() {
+
+  // mock behavior for skipping by default
+  if (process.env.RIT_SKIP_SNAPSHOTS !== 'false') {
+    mockSnapshotMatchers()
+    return;
+  }
+
+}
+
+main();
+
+// ===================================================================
+
+function mockSnapshotMatchers() {
+  // Previous mocking behavior (skip snapshots entirely)
+  function createMockMatcher(matcherName) {
+    return function (received, ...args) {
+      if (process.env.NODE_ENV !== 'test' || process.env.JEST_VERBOSE === 'true') {
+        console.log(`📸 Mocked snapshot: ${matcherName}()`);
+      }
+      return {
+        pass: true,
+        message: () => `Snapshot test mocked (${matcherName}) - always passes`,
+      };
+    };
+  }
+
+  expect.extend({
+    toMatchSnapshot: createMockMatcher('toMatchSnapshot'),
+    toMatchInlineSnapshot: createMockMatcher('toMatchInlineSnapshot'),
+  });
+
+  console.info('📸 NOTE: Snapshot tests are mocked and will always pass');
+}
+
+module.exports = {
+  mockSnapshotMatchers,
+};

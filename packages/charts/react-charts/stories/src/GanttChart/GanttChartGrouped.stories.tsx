@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
-import { Switch, makeStyles, shorthands } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import type { GanttChartDataPoint } from '@fluentui/react-charts';
+import { DataVizPalette, GanttChart } from '@fluentui/react-charts';
+import { Switch, makeStyles } from '@fluentui/react-components';
 
 const data: GanttChartDataPoint[] = [
   {
@@ -87,7 +89,7 @@ const data: GanttChartDataPoint[] = [
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('16px'),
+    padding: '16px',
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
@@ -110,7 +112,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const GanttChartGrouped = () => {
+export const GanttChartGrouped = (): JSXElement => {
   const styles = useStyles();
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);
@@ -130,7 +132,8 @@ export const GanttChartGrouped = () => {
             max={1000}
             id="width-slider"
             onChange={e => setWidth(parseInt(e.target.value, 10))}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -143,7 +146,8 @@ export const GanttChartGrouped = () => {
             max={1000}
             id="height-slider"
             onChange={e => setHeight(parseInt(e.target.value, 10))}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>

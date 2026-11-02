@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +10,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   DataGridBody,
   DataGridRow,
@@ -18,13 +18,16 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableCellLayout,
-  TableColumnDefinition,
   createTableColumn,
+} from '@fluentui/react-components';
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
   TableRowId,
   DataGridProps,
 } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
@@ -152,7 +155,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const MultipleSelectControlled = () => {
+export const MultipleSelectControlled = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<TableRowId>([1]));
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);

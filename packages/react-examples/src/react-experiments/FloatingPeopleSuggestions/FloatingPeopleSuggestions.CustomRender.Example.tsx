@@ -53,6 +53,7 @@ const _suggestions = [
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
 import { getGlobalClassNames, getTheme, IStyle } from '@fluentui/style-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ISuggestionItemExampleStylesProps {}
 interface ISuggestionItemExampleStyles {
@@ -100,7 +101,7 @@ const getStyles = (props: ISuggestionItemExampleStylesProps): ISuggestionItemExa
   };
 };
 
-export const FloatingPeopleSuggestionsCustomRenderExample = (): JSX.Element => {
+export const FloatingPeopleSuggestionsCustomRenderExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
@@ -134,7 +135,7 @@ export const FloatingPeopleSuggestionsCustomRenderExample = (): JSX.Element => {
   };
 
   const renderSuggestionItem = React.useCallback(
-    (suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
+    (suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSXElement => {
       const getClassNames = classNamesFunction<ISuggestionItemExampleStylesProps, ISuggestionItemExampleStyles>();
       const classNames = getClassNames(getStyles);
       return (

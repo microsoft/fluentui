@@ -1,6 +1,8 @@
+'use client';
+
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';

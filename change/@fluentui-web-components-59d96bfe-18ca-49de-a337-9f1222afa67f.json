@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(web-components): fix broken tooltip positioning API",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com"
+}

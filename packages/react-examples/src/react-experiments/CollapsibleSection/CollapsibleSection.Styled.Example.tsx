@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Customizer as DeprecatedCustomizer } from '@fluentui/react/lib/Utilities';
 import { ITheme, createTheme, DefaultPalette } from '@fluentui/react/lib/Styling';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   CollapsibleSection,
   CollapsibleSectionStateless,
@@ -70,7 +71,7 @@ const csPropTheme: ITheme = createTheme({
 });
 
 export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <p>

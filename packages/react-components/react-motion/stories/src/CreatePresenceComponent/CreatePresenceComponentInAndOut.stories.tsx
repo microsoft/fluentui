@@ -1,5 +1,6 @@
 import { createPresenceComponent, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentInAndOut.stories.md';
 
@@ -57,7 +58,7 @@ const MyFade = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentInAndOut = () => {
+export const CreatePresenceComponentInAndOut = (): JSXElement => {
   const classes = useClasses();
 
   return (

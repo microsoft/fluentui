@@ -1,10 +1,13 @@
+'use client';
+
 import * as React from 'react';
 
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import type { PresenceGroupChildContextValue } from '../contexts/PresenceGroupChildContext';
 
 type PresenceGroupItemProviderProps = Omit<PresenceGroupChildContextValue, 'onExit'> & {
-  children: React.ReactElement;
+  children: JSXElement;
   childKey: string;
   // That's an internal callback, so we don't need to enforce the type here
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
@@ -12,10 +15,10 @@ type PresenceGroupItemProviderProps = Omit<PresenceGroupChildContextValue, 'onEx
 };
 
 /**
- * @internal
- *
  * Provides context for a single child of a `PresenceGroup`. Exists only to make a stable context value for a child.
  * Not intended for direct use.
+ *
+ * @internal
  */
 export const PresenceGroupItemProvider: React.FC<PresenceGroupItemProviderProps> = props => {
   const { appear, childKey, onExit, visible, unmountOnExit } = props;

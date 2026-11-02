@@ -29,8 +29,6 @@ function getTargetElement(
     : (result.container.firstElementChild as HTMLElement);
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export const defaultTests: DefaultTestObject = {
   /** Component file exports a valid React element type  */
   'exports-component': (testInfo: IsConformantOptions) => {
@@ -496,6 +494,7 @@ export const defaultTests: DefaultTestObject = {
           try {
             validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
           } catch (err: OptOutStrictCatchTypes) {
+            // eslint-disable-next-line no-console
             console.log('err', err);
 
             return { ...errors, [propName]: err };

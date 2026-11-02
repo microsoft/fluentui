@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
@@ -70,7 +70,7 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
   );
 };
 
-export const Size = () => (
+export const Size = (): JSXElement => (
   <>
     <div>
       <h4>Extra Large</h4>

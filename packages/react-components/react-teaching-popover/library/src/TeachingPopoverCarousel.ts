@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverCarouselBaseProps,
+  TeachingPopoverCarouselBaseState,
   TeachingPopoverCarouselContextValues,
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,
@@ -11,4 +13,5 @@ export {
   useTeachingPopoverCarouselContextValues_unstable,
   useTeachingPopoverCarouselStyles_unstable,
   useTeachingPopoverCarousel_unstable,
+  useTeachingPopoverCarouselBase_unstable,
 } from './components/TeachingPopoverCarousel/index';

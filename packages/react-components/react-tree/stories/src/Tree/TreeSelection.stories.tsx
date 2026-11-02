@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
-  HeadlessFlatTreeItemProps,
-  useHeadlessFlatTree_unstable,
-} from '@fluentui/react-components';
+import type { JSXElement, HeadlessFlatTreeItemProps } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
 
 const SELECTION_MODE = 'multiselect'; // change to "single" for single selection
 
@@ -24,7 +19,7 @@ const items: CustomItem[] = [
   { value: '3', content: 'Level 1, item 3' },
 ];
 
-export const Selection = () => {
+export const Selection = (): JSXElement => {
   const flatTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1', '2', '2-1', '2-2'],
     defaultCheckedItems: ['1-2'],

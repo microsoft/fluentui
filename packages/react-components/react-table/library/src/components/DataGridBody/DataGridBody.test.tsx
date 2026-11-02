@@ -2,12 +2,12 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DataGridBody } from './DataGridBody';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridBodyProps } from './DataGridBody.types';
+import type { DataGridBodyProps } from './DataGridBody.types';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { TableContextProvider } from '../../contexts/tableContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
 import { useTableRowIdContext } from '../../contexts/rowIdContext';
-import { TableFeaturesState, TableRowData } from '../../hooks/types';
+import type { TableFeaturesState, TableRowData } from '../../hooks/types';
 
 describe('DataGridBody', () => {
   isConformant<DataGridBodyProps>({

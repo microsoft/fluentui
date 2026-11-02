@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input } from '@fluentui/react-components';
 
-export const Required = () => (
+export const Required = (): JSXElement => (
   <Field label="Required field" required>
     <Input />
   </Field>

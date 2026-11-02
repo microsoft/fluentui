@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -8,7 +10,7 @@ import {
   playToast as playToastVanilla,
   pauseToast as pauseToastVanilla,
 } from './vanilla';
-import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
+import type { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
 const noop = () => undefined;
 
@@ -16,7 +18,14 @@ const noop = () => undefined;
  * @param toasterId - If an id is provided all imperative methods control that specific toaster
  * @returns Imperative methods to control toasts
  */
-export function useToastController(toasterId?: ToasterId) {
+export function useToastController(toasterId?: ToasterId): {
+  dispatchToast: (content: React.ReactNode, options?: DispatchToastOptions) => void;
+  dismissToast: (toastId: ToastId) => void;
+  dismissAllToasts: () => void;
+  updateToast: (options: UpdateToastOptions) => void;
+  pauseToast: (toastId: ToastId) => void;
+  playToast: (toastId: ToastId) => void;
+} {
   const { targetDocument } = useFluent();
 
   return React.useMemo(() => {

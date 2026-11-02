@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -17,12 +18,12 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-  PresenceBadgeStatus,
   Avatar,
   Button,
   useArrowNavigationGroup,
   useFocusableGroup,
 } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 
 const items = [
   {
@@ -71,7 +72,7 @@ const columns = [
   { columnKey: 'actions', label: 'Actions' },
 ];
 
-export const FocusableElementsInCells = () => {
+export const FocusableElementsInCells = (): JSXElement => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 

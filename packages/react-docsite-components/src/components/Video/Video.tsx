@@ -8,7 +8,7 @@ export interface IVideoState {
 }
 
 export class Video extends React.Component<IVideoProps, IVideoState> {
-  private videoRef: React.RefObject<HTMLVideoElement>;
+  private videoRef: React.RefObject<HTMLVideoElement | null>;
 
   public constructor(props: IVideoProps) {
     super(props);
@@ -41,7 +41,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
     }
   };
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { source } = this.props;
 
     return (

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -34,9 +36,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNav slots based on the state
  */
 export const useCarouselNavStyles_unstable = (state: CarouselNavState): CarouselNavState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselNavClassNames.root, styles.root, state.root.className);
 
   return state;

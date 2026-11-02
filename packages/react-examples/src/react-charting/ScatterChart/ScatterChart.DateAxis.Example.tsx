@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IChartProps, IScatterChartProps, ScatterChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IScatterChartDateState {
   width: number;
@@ -41,7 +42,7 @@ export class ScatterChartDateExample extends React.Component<{}, IScatterChartDa
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._dateExample()}</div>;
   }
 
@@ -62,7 +63,7 @@ export class ScatterChartDateExample extends React.Component<{}, IScatterChartDa
     this.setState({ useUTC: checked });
   };
 
-  private _dateExample(): JSX.Element {
+  private _dateExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Website Traffic and Sales Performance',
       scatterChartData: [

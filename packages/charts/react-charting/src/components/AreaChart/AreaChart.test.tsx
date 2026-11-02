@@ -99,7 +99,7 @@ describe('AreaChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    const { container } = render(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<AreaChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(container).toMatchSnapshot();
   });
 

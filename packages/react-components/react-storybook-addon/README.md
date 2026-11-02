@@ -38,6 +38,15 @@ export const ThemePicker: React.FC<{ context: FluentStoryContext }> = ({ context
 };
 ```
 
+### Shared Storybook Preview Styles
+
+The package ships a `styles.css` file with shared Storybook preview styles (docs layout, table formatting, theme-aware backgrounds, etc.). Import it once in your Storybook `preview.js`/`preview.ts`:
+
+```js
+// .storybook/preview.js
+import '@fluentui/react-storybook-addon/styles.css';
+```
+
 ### Augmented Docs Blocks
 
 This presets uses [custom docs container and page](https://storybook.js.org/docs/7/writing-docs/autodocs#customize-the-docs-container) for unified FluentUI experience including:

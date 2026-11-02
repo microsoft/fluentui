@@ -1,0 +1,28 @@
+export {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  renderInteractionTag,
+  renderInteractionTagPrimary,
+  renderInteractionTagSecondary,
+  useInteractionTag,
+  useInteractionTagContext,
+  useInteractionTagContextValues,
+  useInteractionTagPrimary,
+  useInteractionTagPrimaryContextValues,
+  useInteractionTagSecondary,
+} from './components/InteractionTag';
+export type {
+  InteractionTagSlots,
+  InteractionTagProps,
+  InteractionTagState,
+  InteractionTagContextValue,
+  InteractionTagContextValues,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimaryState,
+  InteractionTagPrimaryContextValues,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryProps,
+  InteractionTagSecondaryState,
+} from './components/InteractionTag';

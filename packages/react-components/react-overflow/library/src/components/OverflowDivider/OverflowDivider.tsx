@@ -1,7 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 import { useOverflowDivider } from '../../useOverflowDivider';
-import { OverflowDividerProps } from './OverflowDivider.types';
+import type { OverflowDividerProps } from './OverflowDivider.types';
 
 /**
  * Attaches overflow item behavior to its child registered with the OverflowContext.

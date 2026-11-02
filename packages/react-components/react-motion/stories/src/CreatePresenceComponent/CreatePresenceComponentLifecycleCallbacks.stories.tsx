@@ -12,6 +12,7 @@ import {
   useId,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentLifecycleCallbacks.stories.md';
 
@@ -98,7 +99,7 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentLifecycleCallbacks = () => {
+export const CreatePresenceComponentLifecycleCallbacks = (): JSXElement => {
   const classes = useClasses();
   const logLabelId = useId();
 

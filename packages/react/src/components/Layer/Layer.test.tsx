@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
-import { safeCreate } from '@fluentui/test-utilities';
 import { render, act } from '@testing-library/react';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
@@ -85,11 +84,11 @@ describe('Layer', () => {
 
     ReactDOM.createPortal = jest.fn(element => element);
 
-    safeCreate(<Layer>Content</Layer>, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
+    const { container, unmount } = render(<Layer>Content</Layer>);
+    expect(container.firstChild).toMatchSnapshot();
+
+    unmount();
+    ReactDOM.createPortal = createPortal;
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {
@@ -232,10 +231,9 @@ describe('Layer', () => {
 
     ReactDOM.createPortal = jest.fn(element => element);
 
-    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
-      expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
-      ReactDOM.createPortal = createPortal;
-    });
+    render(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>);
+    expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+    ReactDOM.createPortal = createPortal;
   });
 
   it('DOM is ready when onLayerDidMount raised', () => {
@@ -246,17 +244,15 @@ describe('Layer', () => {
 
     ReactDOM.createPortal = jest.fn(element => element);
 
-    safeCreate(
+    const { getByRole } = render(
       <div>
         <Layer onLayerDidMount={onLayerDidMountSpy}>
           <button>Content</button>
         </Layer>
       </div>,
-      component => {
-        expect(component.root.findByType('button')).toBeDefined();
-        ReactDOM.createPortal = createPortal;
-      },
     );
+    expect(getByRole('button')).toBeInTheDocument();
+    ReactDOM.createPortal = createPortal;
   });
 
   it('does not raise onLayerDidMount when unmounted', () => {
@@ -267,9 +263,8 @@ describe('Layer', () => {
 
     ReactDOM.createPortal = jest.fn(element => element);
 
-    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
-      ReactDOM.createPortal = createPortal;
-    });
+    render(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>);
+    ReactDOM.createPortal = createPortal;
 
     // The 1 time is for when it was mounted
     expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);

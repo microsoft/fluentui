@@ -1,8 +1,134 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 06 Aug 2025 07:21:20 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [1.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.41)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.40..@fluentui/chart-utilities_v1.1.41)
+
+### Patches
+
+- fix(chart-utilities): prevent unbounded allocation from Plotly shapes ([PR #36853](https://github.com/microsoft/fluentui/pull/36853) by v-baambati@microsoft.com)
+
+## [1.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.40)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.39..@fluentui/chart-utilities_v1.1.40)
+
+### Patches
+
+- Add nested `module` condition under `node` so node-targeted bundlers (SSR) resolve ESM and tree-shake; bare Node and `require` consumers keep resolving CommonJS unchanged ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [1.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.39)
+
+Tue, 26 May 2026 12:04:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.38..@fluentui/chart-utilities_v1.1.39)
+
+### Patches
+
+- refactor: centralize isSafeUrl and reuse across chart and utility consumers ([PR #36206](https://github.com/microsoft/fluentui/pull/36206) by dmytrokirpa@microsoft.com)
+
+## [1.1.38](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.38)
+
+Wed, 10 Dec 2025 06:27:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.37..@fluentui/chart-utilities_v1.1.38)
+
+### Patches
+
+- fix: resolve minor gantt chart bugs ([PR #35543](https://github.com/microsoft/fluentui/pull/35543) by kumarkshitij@microsoft.com)
+
+## [1.1.37](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.37)
+
+Wed, 26 Nov 2025 09:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.36..@fluentui/chart-utilities_v1.1.37)
+
+### Patches
+
+- fix: decode and replace all bdata values in plotly json ([PR #35495](https://github.com/microsoft/fluentui/pull/35495) by kumarkshitij@microsoft.com)
+
+## [1.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.36)
+
+Tue, 11 Nov 2025 10:09:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.35..@fluentui/chart-utilities_v1.1.36)
+
+### Patches
+
+- feat(chart-utilities): Adding annotation only chart ([PR #35390](https://github.com/microsoft/fluentui/pull/35390) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.35)
+
+Thu, 23 Oct 2025 10:23:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.34..@fluentui/chart-utilities_v1.1.35)
+
+### Patches
+
+- feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+
+## [1.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.34)
+
+Thu, 16 Oct 2025 07:21:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.33..@fluentui/chart-utilities_v1.1.34)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
+
+## [1.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.33)
+
+Fri, 10 Oct 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.32..@fluentui/chart-utilities_v1.1.33)
+
+### Patches
+
+- fix: use fallback for scatter trace when axis type is category ([PR #35281](https://github.com/microsoft/fluentui/pull/35281) by kumarkshitij@microsoft.com)
+
+## [1.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.32)
+
+Mon, 06 Oct 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.31..@fluentui/chart-utilities_v1.1.32)
+
+### Patches
+
+- support reference line in line, VBC and scatter chart ([PR #35227](https://github.com/microsoft/fluentui/pull/35227) by anushgupta@microsoft.com)
+
+## [1.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.31)
+
+Mon, 15 Sep 2025 07:20:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.30..@fluentui/chart-utilities_v1.1.31)
+
+### Patches
+
+- feat: add support for lines in GVBC ([PR #35135](https://github.com/microsoft/fluentui/pull/35135) by kumarkshitij@microsoft.com)
+
+## [1.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.30)
+
+Thu, 11 Sep 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.29..@fluentui/chart-utilities_v1.1.30)
+
+### Patches
+
+- fix chart table bugs in v9 ([PR #35171](https://github.com/microsoft/fluentui/pull/35171) by anushgupta@microsoft.com)
+
+## [1.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.29)
+
+Wed, 10 Sep 2025 07:19:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.28..@fluentui/chart-utilities_v1.1.29)
+
+### Patches
+
+- fix(react-charting): Log empty x and y arrays for bar chart ([PR #35166](https://github.com/microsoft/fluentui/pull/35166) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.28)
+
+Fri, 15 Aug 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.27..@fluentui/chart-utilities_v1.1.28)
+
+### Patches
+
+- feat(chart-utilities): Support string y-axis for Scatter chart ([PR #35006](https://github.com/microsoft/fluentui/pull/35006) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.27)
 

@@ -1,23 +1,9 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
-  useHeadlessFlatTree_unstable,
-  HeadlessFlatTreeItemProps,
-  FlatTreeItemProps,
-} from '@fluentui/react-components';
+import type { JSXElement, HeadlessFlatTreeItemProps, FlatTreeItemProps } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
 
-import {
-  DndContext,
-  KeyboardSensor,
-  PointerSensor,
-  UniqueIdentifier,
-  closestCenter,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import type { DragEndEvent } from '@dnd-kit/core';
+import { DndContext, KeyboardSensor, PointerSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
+import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -57,7 +43,7 @@ const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
   );
 };
 
-export const DragAndDrop = () => {
+export const DragAndDrop = (): JSXElement => {
   const [items, setItems] = React.useState(flatTreeItems);
   const virtualTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1'],

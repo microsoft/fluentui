@@ -1,5 +1,5 @@
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 
 /**

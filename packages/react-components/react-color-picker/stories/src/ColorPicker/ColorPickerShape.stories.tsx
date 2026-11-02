@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import { makeStyles, ColorPicker, ColorSlider, AlphaSlider, ColorArea } from '@fluentui/react-components';
 import type { ColorPickerProps } from '@fluentui/react-components';
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.91, a: 1 };
 
-export const ColorPickerShape = () => {
+export const ColorPickerShape = (): JSXElement => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) =>

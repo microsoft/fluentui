@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDemoDescription from './BlurDemo.stories.md';
@@ -74,7 +75,7 @@ const images = [
   },
 ];
 
-export const LayeredBlurDemo = () => {
+export const LayeredBlurDemo = (): JSXElement => {
   const classes = useClasses();
 
   // Image Gallery Demo
@@ -102,12 +103,12 @@ export const LayeredBlurDemo = () => {
           {images.map((image, index) => (
             <div key={image.id} className={classes.imageCard} onClick={() => toggleImage(index)}>
               {/* Background with blur effect - starts blurred, becomes clear when revealed */}
-              <Blur visible={revealedImages[index]} fromRadius="5px" animateOpacity={false}>
+              <Blur visible={revealedImages[index]} outRadius="5px" animateOpacity={false}>
                 <div className={classes.imageBackground} style={{ backgroundImage: image.gradient }} />
               </Blur>
 
               {/* "Click to reveal" button - starts clear, blurs/fades out when clicked */}
-              <Blur visible={!revealedImages[index]} fromRadius="10px" animateOpacity={true}>
+              <Blur visible={!revealedImages[index]} outRadius="10px" animateOpacity={true}>
                 <div className={classes.overlay}>
                   <div className={classes.overlayButton}>Click to reveal</div>
                 </div>

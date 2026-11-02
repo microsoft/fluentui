@@ -12,12 +12,17 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
 /**
  * NOTE: this is necessary because react-button (v9) uses v0 a11y-testing package which uses react 17 and RTL v12
  */
-const testingLibraryPaths = {
-  '^@testing-library/(.*)$': [path.join(__dirname, 'node_modules/@testing-library/$1')],
+const reactDepsPaths = {
+  '^@testing-library/(react|dom)$': [path.join(__dirname, 'node_modules/@testing-library/$1')],
+  // without this React 17 will be used instead of React 18
+  '^@testing-library/react-hooks$': path.join(__dirname, 'node_modules/@testing-library/react'),
   '^react-is$': path.join(__dirname, 'node_modules/react-is'),
   '^react$': path.join(__dirname, 'node_modules/react'),
+  '^react/jsx-runtime$': path.join(__dirname, 'node_modules/react/jsx-runtime'),
   '^react-dom$': path.join(__dirname, 'node_modules/react-dom'),
-  '^react-dom/(.*)$': path.join(__dirname, 'node_modules/react-dom/$1'),
+  // explicitly needed as R17 doesn't have this API and if not declared explicitly our integration jest config wouldn't be able to override this
+  '^react-dom/client$': path.join(__dirname, 'node_modules/react-dom/client'),
+  '^react-dom/(server|test-utils)$': path.join(__dirname, 'node_modules/react-dom/$1'),
   '^react-test-renderer$': path.join(__dirname, 'node_modules/react-test-renderer'),
 };
 
@@ -32,7 +37,7 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   testEnvironment: 'jsdom',
-  moduleNameMapper: { ...tsPathAliases, ...testingLibraryPaths },
+  moduleNameMapper: { ...tsPathAliases, ...reactDepsPaths },
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],

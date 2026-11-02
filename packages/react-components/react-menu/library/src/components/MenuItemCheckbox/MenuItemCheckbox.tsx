@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuItemCheckbox_unstable } from './useMenuItemCheckbox';
 import { renderMenuItemCheckbox_unstable } from './renderMenuItemCheckbox';

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ContextMenuItemChildren when a checkmark icon renders the component with the checkmark 1`] = `
 <div

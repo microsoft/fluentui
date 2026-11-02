@@ -4,6 +4,8 @@ import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '../Icon/Icon';
 import type { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
 export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwardRef<HTMLDivElement, ICheckboxProps>(
@@ -64,8 +66,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     );
 
     const defaultLabelRenderer = React.useCallback(
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      (checkboxProps?: ICheckboxProps): JSX.Element | null => {
+      (checkboxProps?: ICheckboxProps): JSXElement | null => {
         if (!checkboxProps) {
           return null;
         }
@@ -156,7 +157,7 @@ function useComponentRef(
   isChecked: boolean | undefined,
   isIndeterminate: boolean | undefined,
   setIndeterminate: (indeterminate: boolean) => void,
-  checkBoxRef: React.RefObject<HTMLInputElement>,
+  checkBoxRef: React.RefObject<HTMLInputElement | null>,
 ) {
   React.useImperativeHandle(
     props.componentRef,

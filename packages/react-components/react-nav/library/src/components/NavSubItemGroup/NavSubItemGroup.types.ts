@@ -1,6 +1,6 @@
-import { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavDensity } from '../Nav/Nav.types';
+import type { NavDensity } from '../Nav/Nav.types';
 
 /**
  * Context value for NavSubItemGroup
@@ -29,10 +29,14 @@ export type NavSubItemGroupSlots = {
   collapseMotion?: Slot<PresenceMotionSlotProps<NavSubItemGroupCollapseMotionParams>>;
 };
 
+export type NavSubItemGroupBaseSlots = Omit<NavSubItemGroupSlots, 'collapseMotion'>;
+
 /**
  * NavSubItemGroup Props
  */
 export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
+
+export type NavSubItemGroupBaseProps = ComponentProps<NavSubItemGroupBaseSlots>;
 
 /**
  * State used in rendering NavSubItemGroup
@@ -43,3 +47,5 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
    */
   open: boolean;
 };
+
+export type NavSubItemGroupBaseState = ComponentState<NavSubItemGroupBaseSlots> & Pick<NavSubItemGroupState, 'open'>;

@@ -1,20 +1,22 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type {
+  JSXElement,
+  TableColumnDefinition,
+  TableColumnSizingOptions,
+  PresenceBadgeStatus,
+} from '@fluentui/react-components';
 import {
   Table,
   TableBody,
   TableCell,
   TableCellLayout,
-  TableColumnDefinition,
-  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableFeatures,
-  PresenceBadgeStatus,
   Avatar,
   Input,
   useId,
@@ -119,7 +121,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableColumnsUncontrolled = () => {
+export const ResizableColumnsUncontrolled = (): JSXElement => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {

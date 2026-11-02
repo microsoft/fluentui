@@ -1,8 +1,10 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { MEDIA_QUERY_SHORT_SCREEN } from '../../contexts';
+import { DIALOG_MEDIA_QUERY_SHORT_SCREEN } from '../../contexts';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
@@ -23,7 +25,7 @@ const useStyles = makeResetStyles({
   gridColumnStart: 1,
   gridColumnEnd: 4,
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     overflowY: 'unset',
   },
 });
@@ -32,9 +34,8 @@ const useStyles = makeResetStyles({
  * Apply styling to the DialogContent slots based on the state
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dialogContentClassNames.root, styles, state.root.className);
   return state;
 };

@@ -1,26 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
-import { MenuGridRowSlots, MenuGridRowState } from './MenuGridRow.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { MenuGridRowSlots, MenuGridRowState } from './MenuGridRow.types';
 
 /**
- * Redefine the render function to add slots. Reuse the menugroup structure but add
- * slots to children.
+ * Function that renders the final JSX of the component
  */
-export const renderMenuGridRow_unstable = (state: MenuGridRowState) => {
+export const renderMenuGridRow_unstable = (state: MenuGridRowState): JSXElement => {
   assertSlots<MenuGridRowSlots>(state);
 
-  return (
-    <state.root>
-      {state.iconCell && <state.iconCell />}
-      {state.contentCell && (
-        <state.contentCell>
-          {state.contentCell.children}
-          {state.subText && <state.subText />}
-        </state.contentCell>
-      )}
-      {state.secondActionCell && <state.secondActionCell />}
-      {state.thirdActionCell && <state.thirdActionCell />}
-    </state.root>
-  );
+  return <state.root />;
 };

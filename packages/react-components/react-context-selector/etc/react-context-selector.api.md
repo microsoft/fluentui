@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 
 // @internal (undocumented)
 export type Context<Value> = React_2.Context<Value> & {
@@ -17,24 +17,18 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 
 // @internal (undocumented)
 export type ContextValue<Value> = {
-    listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
-    value: React_2.MutableRefObject<Value>;
-    version: React_2.MutableRefObject<ContextVersion>;
+    listeners: ((payload: Value) => void)[];
+    value: {
+        current: Value;
+    };
+    isDefault?: boolean;
 };
-
-// @internal (undocumented)
-export type ContextValues<Value> = ContextValue<Value> & {
-    listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
-};
-
-// @internal (undocumented)
-export type ContextVersion = number;
 
 // @internal (undocumented)
 export const createContext: <Value>(defaultValue: Value) => Context<Value>;
 
 // @internal
-export const useContextSelector: <Value, SelectedValue>(context: Context<Value>, selector: ContextSelector<Value, SelectedValue>) => SelectedValue;
+export const useContextSelector: <Value, SelectedValue>(context: Context<Value>, selectorFn: ContextSelector<Value, SelectedValue>) => SelectedValue;
 
 // @internal
 export function useHasParentContext<Value>(context: Context<Value>): boolean;

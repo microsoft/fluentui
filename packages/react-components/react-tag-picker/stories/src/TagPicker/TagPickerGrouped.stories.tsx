@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
   TagPickerOptionGroup,
@@ -14,7 +14,7 @@ import { Tag, Avatar, Field } from '@fluentui/react-components';
 const managers = ['John Doe', 'Jane Doe', 'Max Mustermann', 'Erika Mustermann'];
 const devs = ['Pierre Dupont', 'Amelie Dupont', 'Mario Rossi', 'Maria Rossi'];
 
-export const Grouped = () => {
+export const Grouped = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     if (data.value === 'no-options') {

@@ -36,6 +36,8 @@ import { getDocumentEx } from '../../utilities/dom';
 import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 import type { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const legacyStyles: any = stylesImport;
 
 const EXTENDED_LOAD_TIME = 3000;
@@ -53,8 +55,8 @@ export interface IBasePickerState<T> {
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  errorMessage?: string | JSX.Element;
+
+  errorMessage?: string | JSXElement;
 }
 
 /**
@@ -131,7 +133,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   private _overrideScrollDismiss = false;
   private _overrideScrollDimissTimeout: number;
 
-  public static getDerivedStateFromProps(newProps: IBasePickerProps<any>) {
+  public static getDerivedStateFromProps(newProps: IBasePickerProps<any>): IBasePickerState<any> | null {
     if (newProps.selectedItems) {
       return { items: newProps.selectedItems };
     }
@@ -180,7 +182,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     this._onResolveSuggestionsDebounced = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>) {
+  public componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void {
     if (this.state.items && this.state.items !== oldState.items) {
       const currentSelectedIndex = this.selection.getSelectedIndices()[0];
       this.selection.setItems(this.state.items);
@@ -218,13 +220,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     this._async.dispose();
   }
 
-  public focus() {
+  public focus(): void {
     if (this.input.current) {
       this.input.current.focus();
     }
   }
 
-  public focusInput() {
+  public focusInput(): void {
     if (this.input.current) {
       this.input.current.focus();
     }
@@ -262,7 +264,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     this.setState({ suggestionsVisible: false });
   };
 
-  public completeSuggestion(forceComplete?: boolean) {
+  public completeSuggestion(forceComplete?: boolean): void {
     if (this.suggestionStore.hasSelectedSuggestion() && this.input.current) {
       this.completeSelection(this.suggestionStore.currentSuggestion!.item);
     } else if (forceComplete) {
@@ -281,8 +283,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
@@ -401,8 +402,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected renderLabel(
     inputId: string,
     styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element | null {
+  ): JSXElement | null {
     const { label, disabled, required } = this.props;
     if (!label) {
       return null;
@@ -414,8 +414,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderError(className?: string): JSX.Element | null {
+  protected renderError(className?: string): JSXElement | null {
     const { errorMessage = this.state.errorMessage } = this.props;
     if (!errorMessage) {
       return null;
@@ -429,8 +428,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
   protected renderSuggestions(
     styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element | null {
+  ): JSXElement | null {
     const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
@@ -470,11 +468,10 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     ) : null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderItems(): JSX.Element[] {
+  protected renderItems(): JSXElement[] {
     const { disabled, removeButtonAriaLabel, removeButtonIconProps } = this.props;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
+
+    const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSXElement;
 
     const { items, selectedIndices } = this.state;
     return items.map((item: any, index: number) =>
@@ -492,7 +489,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   }
 
-  protected resetFocus(index?: number) {
+  protected resetFocus(index?: number): void {
     const { items } = this.state;
 
     if (items.length) {
@@ -513,7 +510,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  protected onSuggestionSelect() {
+  protected onSuggestionSelect(): void {
     if (this.suggestionStore.currentSuggestion) {
       const currentValue: string = this.input.current ? this.input.current.value : '';
       const itemValue: string = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, currentValue);
@@ -521,13 +518,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  protected onSelectionChange() {
+  protected onSelectionChange(): void {
     this.setState({
       selectedIndices: this.selection.getSelectedIndices(),
     });
   }
 
-  protected updateSuggestions(suggestions: any[]) {
+  protected updateSuggestions(suggestions: any[]): void {
     const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
     this.suggestionStore.updateSuggestions(suggestions, 0, maxSuggestionsCount);
     this.forceUpdate();
@@ -537,7 +534,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
    * Only to be called when there is nothing in the input. Checks to see if the consumer has
    * provided a function to resolve suggestions
    */
-  protected onEmptyInputFocus() {
+  protected onEmptyInputFocus(): void {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
       : // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -557,11 +554,11 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  protected updateValue(updatedValue: string) {
+  protected updateValue(updatedValue: string): void {
     this._onResolveSuggestionsDebounced(updatedValue);
   }
 
-  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void {
     // Check to see if the returned value is an array, if it is then just pass it into the next function .
     // If the returned value is not an array then check to see if it's a promise or PromiseLike.
     // If it is then resolve it asynchronously.
@@ -597,7 +594,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  protected resolveNewValue(updatedValue: string, suggestions: T[]) {
+  protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
     this.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
@@ -617,7 +614,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   }
 
-  protected onChange(items?: T[]) {
+  protected onChange(items?: T[]): void {
     if (this.props.onChange) {
       (this.props.onChange as any)(items);
     }
@@ -712,7 +709,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   };
 
-  protected onFocus = () => {
+  protected onFocus = (): void => {
     if (!this.state.isFocused) {
       this.setState({ isFocused: true });
     }
@@ -885,7 +882,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   };
 
-  protected completeSelection = (item: T) => {
+  protected completeSelection = (item: T): void => {
     this.addItem(item);
     this.updateValue('');
     if (this.input.current) {
@@ -948,7 +945,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
     if (
       (this.state.items.length && !this.input.current) ||
       (this.input.current && !this.input.current.isValueSelected && this.input.current.cursorLocation === 0)
@@ -983,7 +980,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     return false;
   };
 
-  protected getActiveDescendant() {
+  protected getActiveDescendant(): string | undefined {
     if (this.state.suggestionsLoading) {
       return undefined;
     }
@@ -1011,8 +1008,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   /** @deprecated use renderCustomAlert instead */
   protected getSuggestionsAlert(
     suggestionAlertClassName: string = legacyStyles.screenReaderOnly,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element | undefined {
+  ): JSXElement | undefined {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
@@ -1027,8 +1023,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly): JSX.Element {
+  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly): JSXElement {
     const { suggestionRemovedText = 'removed {0}' } = this.props;
     let removedItemText = '';
 
@@ -1086,8 +1081,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private async _getErrorMessage(items: T[]): Promise<string | JSX.Element | undefined> {
+  private async _getErrorMessage(items: T[]): Promise<string | JSXElement | undefined> {
     if (this.props.errorMessage) {
       return this.props.errorMessage;
     }
@@ -1095,13 +1089,10 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       try {
         const errorMessage = this.props.onGetErrorMessage(items);
         if (errorMessage) {
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
-            return await (errorMessage as PromiseLike<string | JSX.Element>);
+          if ((errorMessage as PromiseLike<string | JSXElement>).then) {
+            return await (errorMessage as PromiseLike<string | JSXElement>);
           } else {
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
-            return errorMessage as string | JSX.Element;
+            return errorMessage as string | JSXElement;
           }
         } else {
           return undefined;
@@ -1113,8 +1104,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   private _updateErrorMessage(items: T[]): void {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let newErrorMessage: string | JSX.Element | undefined;
+    let newErrorMessage: string | JSXElement | undefined;
     this._getErrorMessage(items)
       .then(errorMessage => {
         newErrorMessage = errorMessage;
@@ -1220,8 +1210,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 }
 
 export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
@@ -1312,7 +1301,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
     );
   }
 
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
     // override the existing backspace method to not do anything because the list items appear below.
   }
 }

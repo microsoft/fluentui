@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
+import { VerticalBarChart } from '@fluentui/react-charts';
+import { Checkbox } from '@fluentui/react-components';
 
-export const VerticalBarCustomAccessibility = () => {
+export const VerticalBarCustomAccessibility = (): JSXElement => {
   const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(true);
 

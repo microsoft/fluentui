@@ -1,4 +1,4 @@
-import { RestrictedDatesOptions } from './dateGrid.types';
+import type { RestrictedDatesOptions } from './dateGrid.types';
 import { compareDatePart } from '../dateMath/dateMath';
 
 /**

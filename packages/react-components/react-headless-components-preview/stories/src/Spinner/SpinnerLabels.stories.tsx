@@ -1,0 +1,26 @@
+import * as React from 'react';
+import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
+import { SpinnerIosRegular } from '@fluentui/react-icons';
+
+import styles from './spinner.module.css';
+export const Labels = (): React.ReactNode => (
+  <div className={styles.demoCol}>
+    <Spinner
+      className={styles.spinner}
+      label="Loading…"
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+    <Spinner
+      className={styles.column}
+      label="Saving changes"
+      labelPosition="below"
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+  </div>
+);

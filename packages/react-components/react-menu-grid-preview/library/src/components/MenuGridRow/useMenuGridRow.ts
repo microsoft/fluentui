@@ -1,47 +1,72 @@
+'use client';
+
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { Enter, Space } from '@fluentui/keyboard-keys';
+import {
+  useMergedRefs,
+  useEventCallback,
+  mergeCallbacks,
+  getIntrinsicElementProps,
+  slot,
+} from '@fluentui/react-utilities';
 
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
-import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
-import { MenuGridCell } from './../MenuGridCell/MenuGridCell';
+import type { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
+import { useValidateNesting } from '../../utils/useValidateNesting';
+import { useCharacterSearch } from './useCharacterSearch';
 
 /**
  * Given user props, returns state and render function for a MenuGridRow.
  */
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
-  // const {
-  // content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
-  // ...rest
-  // } = props;
+  const validateNestingRef = useValidateNesting('MenuGridRow');
+  const innerRef = React.useRef<HTMLDivElement>(null);
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
-  return {
+  const { characterSearchOnKeyDown, characterSearchRef } = useCharacterSearch();
+
+  const onKeyDownToClick = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (
+      !event.isDefaultPrevented() &&
+      (event.key === Enter || event.key === Space) &&
+      event.target === event.currentTarget
+    ) {
+      event.currentTarget.click();
+    }
+  });
+
+  const onKeyDown = useEventCallback(
+    mergeCallbacks(props.onKeyDown, mergeCallbacks(onKeyDownToClick, characterSearchOnKeyDown)),
+  );
+
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    let element = event.target as HTMLElement | null;
+    while (element && element !== event.currentTarget) {
+      if (element.tabIndex >= 0) {
+        return;
+      }
+      element = element.parentElement;
+    }
+    props.onClick?.(event);
+  });
+
+  const state: MenuGridRowState = {
     components: {
       root: 'div',
-      iconCell: MenuGridCell,
-      contentCell: MenuGridCell,
-      subText: 'span',
-      secondActionCell: MenuGridCell,
-      thirdActionCell: MenuGridCell,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, validateNestingRef, innerRef, characterSearchRef),
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,
         ...props,
+        onKeyDown,
+        onClick,
       }),
       { elementType: 'div' },
     ),
-    iconCell: slot.optional(props.iconCell, { elementType: MenuGridCell }),
-    contentCell: slot.optional(props.contentCell, {
-      renderByDefault: !!props.children,
-      defaultProps: { children: props.children },
-      elementType: MenuGridCell,
-    }),
-    subText: slot.optional(props.subText, { elementType: 'span' }),
-    secondActionCell: slot.optional(props.secondActionCell, { elementType: MenuGridCell }),
-    thirdActionCell: slot.optional(props.thirdActionCell, { elementType: MenuGridCell }),
   };
+
+  return state;
 }

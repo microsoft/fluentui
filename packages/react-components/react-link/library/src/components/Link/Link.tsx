@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useLink_unstable } from './useLink';
 import { useLinkStyles_unstable } from './useLinkStyles.styles';

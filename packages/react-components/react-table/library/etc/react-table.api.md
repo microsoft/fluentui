@@ -4,9 +4,7 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
@@ -20,12 +18,11 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
-import { ReactNode } from 'react';
-import { SelectionHookParams } from '@fluentui/react-utilities';
-import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
@@ -36,8 +33,8 @@ export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
-    renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: (data?: unknown) => ReactNode;
+    renderCell: (item: TItem) => React_2.ReactNode;
+    renderHeaderCell: (data?: unknown) => React_2.ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -124,7 +121,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'> & Pick<DataGridCellProps, 'focusMode'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -210,52 +207,52 @@ export type DataGridState = TableState & {
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSXElement;
 
 // @public
-export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
+export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSXElement;
 
 // @public
-export const renderDataGridCell_unstable: (state: DataGridCellState) => JSX.Element;
+export const renderDataGridCell_unstable: (state: DataGridCellState) => JSXElement;
 
 // @public
-export const renderDataGridHeader_unstable: (state: DataGridHeaderState) => JSX.Element;
+export const renderDataGridHeader_unstable: (state: DataGridHeaderState) => JSXElement;
 
 // @public
-export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellState) => JSX.Element;
+export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellState) => JSXElement;
 
 // @public
-export const renderDataGridRow_unstable: (state: DataGridRowState) => JSX.Element;
+export const renderDataGridRow_unstable: (state: DataGridRowState) => JSXElement;
 
 // @public
-export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState) => JSX.Element;
+export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState) => JSXElement;
 
 // @public
-export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSX.Element;
+export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSXElement;
 
 // @public
-export const renderTableBody_unstable: (state: TableBodyState) => JSX.Element;
+export const renderTableBody_unstable: (state: TableBodyState) => JSXElement;
 
 // @public
-export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
+export const renderTableCell_unstable: (state: TableCellState) => JSXElement;
 
 // @public
-export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
+export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSXElement;
 
 // @public
-export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSX.Element;
+export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSXElement;
 
 // @public
-export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
+export const renderTableHeader_unstable: (state: TableHeaderState) => JSXElement;
 
 // @public
-export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
+export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSXElement;
 
 // @public
-export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSX.Element;
+export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSXElement;
 
 // @public
-export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
+export const renderTableRow_unstable: (state: TableRowState) => JSXElement;
 
 // @public
-export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSX.Element;
+export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSXElement;
 
 // @public (undocumented)
 export type RowRenderFunction<TItem = unknown> = (row: TableRowData<TItem>, ...rest: unknown[]) => React_2.ReactNode;

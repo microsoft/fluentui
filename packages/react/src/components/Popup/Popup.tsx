@@ -13,7 +13,7 @@ import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
 import type { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 
-function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined | null>) {
   const async = useAsync();
   const [needsVerticalScrollBarState, setNeedsVerticalScrollBar] = React.useState(false);
   React.useEffect(() => {
@@ -66,9 +66,9 @@ function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   }
 }
 
-function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined | null>) {
   const { onRestoreFocus = defaultFocusRestorer } = props;
-  const originalFocusedElement = React.useRef<HTMLElement>();
+  const originalFocusedElement = React.useRef<HTMLElement>(undefined);
   const containsFocus = React.useRef(false);
 
   React.useEffect(() => {
@@ -122,7 +122,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined | null>) {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shouldHideSiblings = String(props['aria-modal']).toLowerCase() === 'true' && props.enableAriaHiddenSiblings;
 
@@ -146,7 +146,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
       propsWithoutDefaults,
     );
 
-    const root = React.useRef<HTMLDivElement>();
+    const root = React.useRef<HTMLDivElement>(undefined);
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
     useHideSiblingNodes(props, root);

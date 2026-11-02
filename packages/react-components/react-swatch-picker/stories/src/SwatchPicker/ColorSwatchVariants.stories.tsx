@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { HeartFilled } from '@fluentui/react-icons';
 import { makeStyles, ColorSwatch } from '@fluentui/react-components';
 
@@ -14,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ColorSwatchVariants = () => {
+export const ColorSwatchVariants = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.example}>

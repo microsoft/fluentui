@@ -1,45 +1,49 @@
-import {
-  motionTokens,
-  createPresenceComponent,
-  PresenceMotionFn,
-  createPresenceComponentVariant,
-} from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { scaleAtom } from '../../atoms/scale-atom';
-import { ScaleParams } from './scale-types';
+import type { ScaleParams } from './scale-types';
 
 /**
  * Define a presence motion for scale in/out
  *
  * @param duration - Time (ms) for the enter transition (scale-in). Defaults to the `durationGentle` value (250 ms).
  * @param easing - Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMax` value.
+ * @param delay - Time (ms) to delay the enter transition. Defaults to 0.
  * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
  * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
- * @param fromScale - The scale value to animate from. Defaults to `0.9`.
+ * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
+ * @param outScale - Scale for the out state (exited). Defaults to `0.9`.
+ * @param inScale - Scale for the in state (entered). Defaults to `1`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   duration = motionTokens.durationGentle,
   easing = motionTokens.curveDecelerateMax,
+  delay = 0,
   exitDuration = motionTokens.durationNormal,
   exitEasing = motionTokens.curveAccelerateMax,
-  fromScale = 0.9,
+  exitDelay = delay,
+  outScale = 0.9,
+  inScale = 1,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, fromScale: fromScale })];
+  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, delay, outScale, inScale })];
   const exitAtoms = [
     scaleAtom({
       direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
-      fromScale,
+      delay: exitDelay,
+      outScale,
+      inScale,
     }),
   ];
 
   // Only add fade atoms if animateOpacity is true.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {

@@ -1,11 +1,11 @@
 import * as React from 'react';
+import type { JSXElement, ButtonProps } from '@fluentui/react-components';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbButton,
   BreadcrumbDivider,
   partitionBreadcrumbItems,
-  ButtonProps,
   makeStyles,
   tokens,
   Button,
@@ -240,9 +240,11 @@ const BreadcrumbOverflowExample = () => {
       maxDisplayedItems: 5,
     });
 
+  const hasHiddenItems = overflowItems && overflowItems.length > 0;
+
   return (
     <div className={styles.example}>
-      <Overflow>
+      <Overflow hasHiddenItems={hasHiddenItems}>
         <Breadcrumb>
           {startDisplayedItems.map((item: Item) => renderBreadcrumbItem(item, false))}
           <OverflowMenu
@@ -262,6 +264,6 @@ const BreadcrumbOverflowExample = () => {
   );
 };
 
-export const BreadcrumbWithOverflow = () => {
+export const BreadcrumbWithOverflow = (): JSXElement => {
   return <BreadcrumbOverflowExample />;
 };

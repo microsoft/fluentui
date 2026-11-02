@@ -15,20 +15,21 @@ describe('ColorArea', () => {
       <div>
         <div
           class="fui-ColorArea"
-          style="--fui-AreaX--progress: 100%; --fui-AreaY--progress: 50%; --fui-Area__thumb--color: rgb(128, 0, 76); --fui-Area--main-color: hsl(324, 100%, 50%);"
+          style="--fui-AreaX--progress: 100%; --fui-AreaY--progress: 50%; --fui-Area__thumb--color: hsla(324, 100%, 25%, 1); --fui-Area--main-color: hsl(324, 100%, 50%);"
         >
           <div
             class="fui-ColorArea__thumb"
           >
             <input
               class="fui-ColorArea__inputX"
-              id="sliderX-re"
+              id="sliderX-_r_e_"
               type="range"
               value="100"
             />
             <input
+              aria-orientation="vertical"
               class="fui-ColorArea__inputY"
-              id="sliderY-rf"
+              id="sliderY-_r_f_"
               tabindex="-1"
               type="range"
               value="50"

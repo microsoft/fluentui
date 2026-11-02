@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { CommandBar } from '@fluentui/react/lib/CommandBar';
@@ -11,7 +12,8 @@ import { mergeStyles } from '@fluentui/react';
 import { Persona, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { Slider } from '@fluentui/react/lib/Slider';
-import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
+import type { IStackTokens } from '@fluentui/react/lib/Stack';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { Toggle } from '@fluentui/react/lib/Toggle';
@@ -180,7 +182,7 @@ export class ThemePreviewV8 extends React.Component<ISamplesProps, ISamplesState
     };
     this._onToggleChange = this._onToggleChange.bind(this);
   }
-  public render() {
+  public render(): JSXElement {
     return (
       <div style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor }}>
         <div className={layoutStyles.root}>
@@ -289,7 +291,7 @@ export class ThemePreviewV8 extends React.Component<ISamplesProps, ISamplesState
     );
   }
 
-  private _onToggleChange() {
+  private _onToggleChange(): void {
     this.setState({
       learnMoreLinkDisabled: !this.state.learnMoreLinkDisabled,
       selectOneDropdownDisabled: !this.state.selectOneDropdownDisabled,

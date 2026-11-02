@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
@@ -37,15 +39,16 @@ const useInfoButtonStyles = makeStyles({
  * Apply styling to the InfoLabel slots based on the state
  */
 export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
-  'use no memo';
-
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
 
   const labelStyles = useLabelStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.label.className = mergeClasses(infoLabelClassNames.label, labelStyles.base, state.label.className);
 
   const infoButtonStyles = useInfoButtonStyles();
   if (state.infoButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.infoButton.className = mergeClasses(
       infoLabelClassNames.infoButton,
       infoButtonStyles.base,

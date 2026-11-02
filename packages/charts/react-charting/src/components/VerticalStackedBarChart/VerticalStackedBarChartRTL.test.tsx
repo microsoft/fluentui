@@ -413,7 +413,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends[0]);
+      fireEvent.mouseOver(legends[3]);
       // Assert
       expect(line[8].getAttribute('opacity')).toEqual('1');
       expect(bars[0]).toHaveStyle('opacity: 0.1');
@@ -436,7 +436,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      fireEvent.mouseOver(legends![1]);
+      fireEvent.mouseOver(legends![0]);
 
       // Assert
       expect(line[8].getAttribute('opacity')).toEqual('0.1');
@@ -705,8 +705,9 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
       expect(bars).toHaveLength(8);
       fireEvent.mouseOver(bars[0]);
       // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(3);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Janu...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(3);
+      expect(tickLabels[0].textContent).toEqual('Janu...');
     },
   );
 

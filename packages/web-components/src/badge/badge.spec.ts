@@ -1,9 +1,9 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize, tagName } from './badge.options.js';
 
 test.describe('Badge', () => {
   test.use({
-    tagName: 'fluent-badge',
+    tagName,
     innerHTML: 'Badge',
   });
 
@@ -16,15 +16,17 @@ test.describe('Badge', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-badge');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should set default attribute values', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveAttribute('appearance', 'filled');
 
@@ -35,59 +37,51 @@ test.describe('Badge', () => {
     await expect(element).toHaveJSProperty('color', 'brand');
   });
 
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const appearance of Object.values(BadgeAppearance)) {
+    test(`should set the \`appearance\` property to \`${appearance}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const appearance of Object.values(BadgeAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+      await fastPage.setTemplate({ attributes: { appearance } });
 
-        await expect(element).toHaveJSProperty('appearance', appearance);
+      await expect(element).toHaveJSProperty('appearance', appearance);
 
-        await expect(element).toHaveAttribute('appearance', appearance);
-      });
-    }
-  });
+      await expect(element).toHaveAttribute('appearance', appearance);
+    });
+  }
 
-  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const color of Object.values(BadgeColor)) {
+    test(`should set the \`color\` property to \`${color}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const color of Object.values(BadgeColor)) {
-      await test.step(`should set the \`color\` property to \`${color}\``, async () => {
-        await fastPage.setTemplate({ attributes: { color } });
+      await fastPage.setTemplate({ attributes: { color } });
 
-        await expect(element).toHaveAttribute('color', color);
+      await expect(element).toHaveAttribute('color', color);
 
-        await expect(element).toHaveJSProperty('color', color);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('color', color);
+    });
+  }
 
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const size of Object.values(BadgeSize)) {
+    test(`should set the \`size\` property to \`${size}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const size of Object.values(BadgeSize)) {
-      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
+      await fastPage.setTemplate({ attributes: { size } });
 
-        await expect(element).toHaveAttribute('size', size);
+      await expect(element).toHaveAttribute('size', size);
 
-        await expect(element).toHaveJSProperty('size', size);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('size', size);
+    });
+  }
 
-  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  for (const shape of Object.values(BadgeShape)) {
+    test(`should set the \`shape\` property to \`${shape}\``, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    for (const shape of Object.values(BadgeShape)) {
-      await test.step(`should set the \`shape\` property to \`${shape}\``, async () => {
-        await fastPage.setTemplate({ attributes: { shape } });
+      await fastPage.setTemplate({ attributes: { shape } });
 
-        await expect(element).toHaveAttribute('shape', shape);
+      await expect(element).toHaveAttribute('shape', shape);
 
-        await expect(element).toHaveJSProperty('shape', shape);
-      });
-    }
-  });
+      await expect(element).toHaveJSProperty('shape', shape);
+    });
+  }
 });

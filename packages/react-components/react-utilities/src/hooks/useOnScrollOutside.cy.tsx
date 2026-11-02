@@ -1,4 +1,4 @@
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import * as React from 'react';
 
 import { useOnScrollOutside } from './useOnScrollOutside';

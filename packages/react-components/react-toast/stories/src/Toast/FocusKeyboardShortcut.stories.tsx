@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Link,
@@ -12,7 +13,7 @@ import {
   ToastTrigger,
 } from '@fluentui/react-components';
 
-export const FocusKeyboardShortcut = () => {
+export const FocusKeyboardShortcut = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>

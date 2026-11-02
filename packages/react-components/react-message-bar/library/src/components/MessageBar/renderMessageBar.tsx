@@ -2,13 +2,17 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { MessageBarState, MessageBarSlots, MessageBarContextValues } from './MessageBar.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { MessageBarBaseState, MessageBarSlots, MessageBarContextValues } from './MessageBar.types';
 import { MessageBarContextProvider } from '../../contexts/messageBarContext';
 
 /**
  * Render the final JSX of MessageBar
  */
-export const renderMessageBar_unstable = (state: MessageBarState, contexts: MessageBarContextValues) => {
+export const renderMessageBar_unstable = (
+  state: MessageBarBaseState,
+  contexts: MessageBarContextValues,
+): JSXElement => {
   assertSlots<MessageBarSlots>(state);
 
   return (

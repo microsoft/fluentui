@@ -4,7 +4,7 @@ import type {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import type { IRenderFunction } from '@fluentui/utilities';
+import type { IRenderFunction, JSXElement } from '@fluentui/utilities';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
@@ -13,8 +13,8 @@ export interface IFloatingSuggestionsListProps<T> {
   className?: string;
   suggestionsItemClassName?: string;
   suggestionsHeaderText?: string;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderItem?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
+
+  onRenderItem?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSXElement;
   onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   onRenderNoResultFound?: IRenderFunction<void>;
@@ -24,10 +24,10 @@ export interface IFloatingSuggestionsListProps<T> {
   ariaLabel?: string;
   removeItemAriaLabel?: string;
   id?: string | number;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSX.Element;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
+
+  onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSXElement;
+
+  onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSXElement;
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;
   pickerWidth?: string;

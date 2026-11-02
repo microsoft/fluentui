@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charts';
 import * as d3 from 'd3-format';
 
-export const AreaChartAllNegative = () => {
+export const AreaChartAllNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
 
@@ -177,7 +178,8 @@ export const AreaChartAllNegative = () => {
           max={1000}
           id="changeWidth_Multiple"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthslider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Multiple">Change Height:</label>
         <input
@@ -187,7 +189,8 @@ export const AreaChartAllNegative = () => {
           max={1000}
           id="changeHeight_Multiple"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>

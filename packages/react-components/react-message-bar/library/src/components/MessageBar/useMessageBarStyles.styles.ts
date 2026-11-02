@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -99,8 +101,6 @@ const useRootIntentStyles = makeStyles({
  * Apply styling to the MessageBar slots based on the state
  */
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
   const iconIntentStyles = useIconIntentStyles();
@@ -108,17 +108,18 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   const reflowSpacerStyles = useReflowSpacerBaseStyles();
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     messageBarClassNames.root,
     rootBaseStyles,
     state.layout === 'multiline' && styles.rootMultiline,
     state.shape === 'square' && styles.square,
     rootIntentStyles[state.intent],
-    state.transitionClassName,
     state.root.className,
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       messageBarClassNames.icon,
       iconBaseStyles,
@@ -128,6 +129,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   }
 
   if (state.bottomReflowSpacer) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bottomReflowSpacer.className = mergeClasses(messageBarClassNames.bottomReflowSpacer, reflowSpacerStyles);
   }
 

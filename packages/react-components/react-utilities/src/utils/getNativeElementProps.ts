@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import {
   labelProperties,
   audioProperties,
@@ -69,7 +69,10 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
   props: {},
   excludedPropNames?: string[],
 ): TAttributes {
-  const allowedPropNames = (tagName && nativeElementMap[tagName]) || htmlElementProperties;
+  const allowedPropNames =
+    tagName && Object.prototype.hasOwnProperty.call(nativeElementMap, tagName)
+      ? nativeElementMap[tagName]
+      : htmlElementProperties;
   allowedPropNames.as = 1;
 
   return getNativeProps(props, allowedPropNames, excludedPropNames);
@@ -99,7 +102,13 @@ export const getPartitionedNativeProps = <
 
   /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[];
-}) => {
+}): {
+  root: {
+    style: React.CSSProperties | undefined;
+    className: string | undefined;
+  };
+  primary: Omit<Props, ExcludedPropKeys>;
+} => {
   return {
     root: { style: props.style, className: props.className },
     // eslint-disable-next-line @typescript-eslint/no-deprecated

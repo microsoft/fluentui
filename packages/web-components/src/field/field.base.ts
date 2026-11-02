@@ -1,5 +1,5 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import { toggleState } from '../utils/element-internals.js';
 import { type SlottableInput, ValidationFlags } from './field.options.js';
 
@@ -9,6 +9,26 @@ import { type SlottableInput, ValidationFlags } from './field.options.js';
  * @public
  */
 export class BaseField extends FASTElement {
+  /**
+   * The mutation observer for the slotted input.
+   *
+   * @internal
+   */
+  private _slottedInputObserver?: MutationObserver;
+
+  /**
+   * Gets the mutation observer for the slotted input, creating it if it doesn't exist.
+   *
+   * @internal
+   */
+  protected get slottedInputObserver(): MutationObserver {
+    this._slottedInputObserver ??= new MutationObserver(() => {
+      this.setStates();
+    });
+
+    return this._slottedInputObserver;
+  }
+
   /**
    * The slotted label elements.
    *
@@ -67,9 +87,10 @@ export class BaseField extends FASTElement {
    * @internal
    */
   public slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined) {
-    if (next?.length) {
-      this.input = next?.[0] as SlottableInput;
-      this.setStates();
+    const filtered = next?.filter(node => node.nodeType === Node.ELEMENT_NODE) ?? [];
+
+    if (filtered?.length) {
+      this.input = filtered?.[0] as SlottableInput;
     }
   }
 
@@ -98,6 +119,11 @@ export class BaseField extends FASTElement {
     if (next) {
       this.setStates();
       this.setLabelProperties();
+      this.slottedInputObserver.observe(next, {
+        attributes: true,
+        attributeFilter: ['disabled', 'required', 'readonly'],
+        subtree: true,
+      });
     }
   }
 
@@ -139,6 +165,7 @@ export class BaseField extends FASTElement {
   }
 
   disconnectedCallback(): void {
+    this.slottedInputObserver.disconnect();
     this.removeEventListener('invalid', this.invalidHandler, { capture: true });
     super.disconnectedCallback();
   }
@@ -187,19 +214,47 @@ export class BaseField extends FASTElement {
    *
    * @internal
    */
-  private setLabelProperties() {
-    if (this.$fastController.isConnected) {
-      this.input.id = this.input.id || uniqueId('input');
+  private async setLabelProperties() {
+    const input = await this.getLabelableInput();
 
-      this.labelSlot?.forEach(label => {
-        if (label instanceof HTMLLabelElement) {
-          label.htmlFor = label.htmlFor || this.input.id;
-          label.id = label.id || `${this.input.id}--label`;
-          label.setAttribute('aria-hidden', 'true');
-          this.input.setAttribute('aria-labelledby', label.id);
-        }
-      });
+    if (!input) {
+      return;
     }
+
+    input.id ||= uniqueId('input');
+
+    this.labelSlot?.forEach(label => {
+      if (label instanceof HTMLLabelElement) {
+        label.htmlFor ||= input.id;
+        label.id ||= `${input.id}--label`;
+        input.setAttribute('aria-labelledby', label.id);
+      }
+    });
+  }
+
+  private getLabelableInput(): Promise<HTMLElement | null> {
+    return new Promise(resolve => {
+      if (!this.input) {
+        return resolve(null);
+      }
+
+      if (this.input.constructor.elementIdentity !== 'dropdown') {
+        return resolve(this.input);
+      }
+
+      if (this.input.control) {
+        return resolve(this.input.control);
+      }
+
+      new MutationObserver((_, observer) => {
+        if (this.input.control) {
+          resolve(this.input.control);
+          observer.disconnect();
+        }
+      }).observe(this.input, {
+        childList: true,
+      });
+    });
   }
 
   /**
@@ -217,7 +272,7 @@ export class BaseField extends FASTElement {
   }
 
   public setValidationStates() {
-    if (!this.input.validity) {
+    if (!this.input?.validity) {
       return;
     }
 

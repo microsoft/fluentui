@@ -3,6 +3,8 @@ import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
 import { WindowContext } from '../../WindowProvider';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * @deprecated Decorator usage is deprecated. Either call `getResponsiveMode` manually, or
  * use the `useResponsiveMode` hook within a function component.
@@ -100,8 +102,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._events.dispose();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    public render(): JSX.Element | null {
+    public render(): JSXElement | null {
       const { responsiveMode } = this.state;
 
       return responsiveMode === ResponsiveMode.unknown ? null : (

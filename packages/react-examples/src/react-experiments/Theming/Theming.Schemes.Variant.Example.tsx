@@ -23,6 +23,7 @@ import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@fluentui/s
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
+import type { JSXElement } from '@fluentui/utilities';
 
 // Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
 // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -64,7 +65,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
     topToggle: false,
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     return <Customizer settings={{ theme: schemeThemeVariants }}>{this._renderSchemedComponents()}</Customizer>;
   }
@@ -72,7 +73,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
   /**
    * Render various components only using scheme names (no Customizers.)
    */
-  private _renderSchemedComponents(): JSX.Element {
+  private _renderSchemedComponents(): JSXElement {
     const bodyScheme = this.state.bodyToggle ? 'soft' : 'neutral';
     const sideScheme = this.state.sideToggle ? 'neutral' : 'strong';
     const topScheme = this.state.topToggle ? 'strong' : 'soft';
@@ -229,7 +230,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
     hideDialog: true,
   };
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <br />

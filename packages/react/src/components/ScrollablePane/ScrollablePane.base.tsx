@@ -20,6 +20,8 @@ import type {
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IScrollablePaneState {
   stickyTopHeight: number;
   stickyBottomHeight: number;
@@ -78,7 +80,7 @@ export class ScrollablePaneBase
     return this._contentContainer.current;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const win = getWindowEx(this.context);
     const { initialScrollPosition } = this.props;
     this._async = new Async(this);
@@ -149,7 +151,7 @@ export class ScrollablePaneBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.dispose();
     this._async.dispose();
 
@@ -171,7 +173,7 @@ export class ScrollablePaneBase
     );
   }
 
-  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
+  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void {
     const initialScrollPosition = this.props.initialScrollPosition;
     if (
       this.contentContainer &&
@@ -192,8 +194,7 @@ export class ScrollablePaneBase
     this._async.setTimeout(this._onWindowResize, 0);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles, onScroll } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
@@ -257,7 +258,7 @@ export class ScrollablePaneBase
     }
   }
 
-  public forceLayoutUpdate() {
+  public forceLayoutUpdate(): void {
     this._onWindowResize();
   }
 

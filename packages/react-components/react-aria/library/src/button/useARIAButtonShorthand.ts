@@ -1,3 +1,5 @@
+'use client';
+
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from './useARIAButtonProps';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';

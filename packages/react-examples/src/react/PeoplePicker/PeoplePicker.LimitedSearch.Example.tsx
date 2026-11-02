@@ -4,6 +4,7 @@ import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { CompactPeoplePicker, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { assign } from '@fluentui/react/lib/Utilities';
 import { people, mru } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   mostRecentlyUsedHeaderText: 'Suggested Contacts',
@@ -171,6 +172,6 @@ function getTextFromItem(persona: IPersonaProps): string {
   return persona.text as string;
 }
 
-function renderFooterText(): JSX.Element {
+function renderFooterText(): JSXElement {
   return <div>No additional results</div>;
 }

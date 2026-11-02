@@ -5,7 +5,7 @@ export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
 export { BreadcrumbWithTooltip } from './BreadcrumbWithTooltip.stories';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 const metadata = {
   title: 'Components/Breadcrumb',

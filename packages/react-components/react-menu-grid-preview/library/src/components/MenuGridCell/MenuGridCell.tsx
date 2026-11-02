@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGridCell_unstable } from './useMenuGridCell';
 import { renderMenuGridCell_unstable } from './renderMenuGridCell';
@@ -19,4 +21,4 @@ export const MenuGridCell: ForwardRefComponent<MenuGridCellProps> = React.forwar
   return renderMenuGridCell_unstable(state);
 });
 
-MenuGridCell.displayName = 'MenuGroup';
+MenuGridCell.displayName = 'MenuGridCell';

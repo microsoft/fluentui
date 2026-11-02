@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselState,
   TeachingPopoverCarouselSlots,
@@ -15,7 +16,7 @@ import { CarouselProvider } from './Carousel/CarouselContext';
 export const renderTeachingPopoverCarousel_unstable = (
   state: TeachingPopoverCarouselState,
   contextValues: TeachingPopoverCarouselContextValues,
-) => {
+): JSXElement => {
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
   return (

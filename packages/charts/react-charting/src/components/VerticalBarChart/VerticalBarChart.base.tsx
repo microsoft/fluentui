@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
-import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
@@ -38,7 +37,6 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -61,7 +59,8 @@ import {
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -104,21 +103,20 @@ export class VerticalBarChartBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _bars: JSX.Element[];
+
+  private _bars: JSXElement[];
   private _xAxisLabels: string[];
   private _yMax: number;
   private _yMin: number;
   private _isHavingLine: boolean;
-  private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _domainMargin: number;
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -141,7 +139,6 @@ export class VerticalBarChartBase
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
-    this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
@@ -157,8 +154,7 @@ export class VerticalBarChartBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this._adjustProps();
     this._xAxisLabels = this._getOrderedXAxisLabels();
     this._yMax = Math.max(
@@ -169,8 +165,8 @@ export class VerticalBarChartBase
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+
+    const legendBars: JSXElement = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -269,7 +265,12 @@ export class VerticalBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -281,7 +282,6 @@ export class VerticalBarChartBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -319,8 +319,8 @@ export class VerticalBarChartBase
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const line: JSX.Element[] = [];
+
+    const line: JSXElement[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -405,7 +405,9 @@ export class VerticalBarChartBase
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(lineLegendText!)}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             onFocus={this._lineFocus.bind(this, item.point, circleRef)}
             onBlur={this._handleChartMouseLeave}
           />
@@ -474,11 +476,10 @@ export class VerticalBarChartBase
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSX.Element => {
+  private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSXElement => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
+
+    const content: JSXElement[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
         <ChartHoverCard
           key={index}
@@ -492,8 +493,8 @@ export class VerticalBarChartBase
     });
     return <>{content}</>;
   };
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSX.Element => {
+
+  private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSXElement => {
     const { useSingleColor = false } = this.props;
     return (
       <>
@@ -508,8 +509,7 @@ export class VerticalBarChartBase
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderCallout = (props?: IVerticalBarChartDataPoint): JSX.Element | null => {
+  private _renderCallout = (props?: IVerticalBarChartDataPoint): JSXElement | null => {
     return props
       ? this._isHavingLine
         ? this._renderContentForBothLineAndBars(props)
@@ -780,8 +780,8 @@ export class VerticalBarChartBase
         : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+
+  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -863,36 +863,14 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -978,38 +956,14 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-        showTooltip: this.props.showXAxisLablesTooltip,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -1091,31 +1045,10 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
@@ -1137,12 +1070,11 @@ export class VerticalBarChartBase
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSXElement => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
@@ -1268,7 +1200,14 @@ export class VerticalBarChartBase
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
+  private _renderBarLabel(
+    xPoint: number,
+    yPoint: number,
+    barValue: number,
+    legend: string,
+    isNegativeBar: boolean,
+    customBarLabel?: string,
+  ) {
     if (
       this.props.hideLabels ||
       this._barWidth < 16 ||
@@ -1276,6 +1215,14 @@ export class VerticalBarChartBase
     ) {
       return null;
     }
+
+    // Use custom barLabel if provided, otherwise use the formatted barValue
+    const displayLabel =
+      customBarLabel !== undefined
+        ? customBarLabel
+        : typeof this.props.yAxisTickFormat === 'function'
+        ? this.props.yAxisTickFormat(barValue)
+        : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1285,9 +1232,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {typeof this.props.yAxisTickFormat === 'function'
-          ? this.props.yAxisTickFormat(barValue)
-          : formatScientificLimitWidth(barValue)}
+        {displayLabel}
       </text>
     );
   }
@@ -1295,7 +1240,7 @@ export class VerticalBarChartBase
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
-    const mapX: Record<string, number | string | Date> = {};
+    const mapX: Record<string, number | string | Date> = Object.create(null);
     this.props.data?.forEach(point => {
       if (point.x instanceof Date) {
         mapX[point.x.getTime()] = point.x;
@@ -1404,7 +1349,7 @@ export class VerticalBarChartBase
   };
 
   private _mapCategoryToValues = () => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this._points.forEach(point => {
       const xValue = point.x as string;
       if (!categoryToValues[xValue]) {

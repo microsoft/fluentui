@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch, tokens, makeStyles } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Checkbox, Switch, tokens, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
@@ -15,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const VerticalStackedBarDefault = () => {
+export const VerticalStackedBarDefault = (): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState(650);
   const [height, setHeight] = React.useState(350);
@@ -287,7 +282,8 @@ export const VerticalStackedBarDefault = () => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -297,7 +293,8 @@ export const VerticalStackedBarDefault = () => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
         <input
@@ -307,7 +304,8 @@ export const VerticalStackedBarDefault = () => {
           max={10}
           id="changeBarGapMax_Basic"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
       </div>
       <div style={{ marginTop: '10px' }}>

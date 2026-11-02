@@ -44,6 +44,7 @@ export {
   IdPrefixProvider,
   resetIdsForTests,
   useAnimationFrame,
+  useApplyScrollbarWidth,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -63,9 +64,11 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
+  getPercentInRange,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
+  getReactElementRef,
   getRTLSafeKey,
   mergeCallbacks,
   isHTMLElement,

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Vertical Bar chart with data 1`] = `
 <div>
@@ -26,6 +26,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -39,12 +40,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -53,7 +56,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -272,6 +275,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -782,6 +791,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -795,12 +805,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -809,7 +821,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1028,6 +1040,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -1538,6 +1556,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -1551,12 +1570,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1565,7 +1586,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1784,6 +1805,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -2294,6 +2321,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -2307,12 +2335,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2321,7 +2351,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2540,6 +2570,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -3050,6 +3086,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -3063,12 +3100,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -3077,7 +3116,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3296,6 +3335,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -4443,6 +4488,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -4456,12 +4502,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -4470,7 +4518,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4524,6 +4572,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               }
           id="yAxisGElementchart_3"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -5012,6 +5066,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -5025,12 +5080,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -5039,7 +5096,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5093,6 +5150,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               }
           id="yAxisGElementchart_3"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -7794,6 +7857,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
       id="chart_6"
@@ -7807,12 +7871,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone15"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+          aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -7821,7 +7887,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -8040,6 +8106,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"

@@ -1,0 +1,227 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FitDifferences } from './FitDifferences';
+
+<Meta title="Concepts/Migration/from v8/Components/Image Migration" />
+
+# Image Migration
+
+## Overview
+
+**v8 -> v9**
+
+- **Removed v8 behaviors**: `shouldFadeIn`, `shouldStartVisible`, and `onLoadingStateChange` are not in v9.
+  - Use native `<img>` events (`onLoad`, `onError`) and your own styling.
+- **Different markup**: image in v9 is not wrapped into a `<div>` with predefined styles, instead it renders plain `<img>` element with
+  styles applied directly to it based on props.
+- **Fit API renamed & simplified**: `imageFit` → `fit` (`'none' | 'center' | 'contain' | 'cover'`) and maps directly to CSS `object-fit`/`object-position`.
+  The v8 hybrid values `centerCover` and `centerContain` need additional
+  composition when their conditional no-upscale behavior matters.
+
+## Markup
+
+v9 renders plain `<img>` element without any wrapper, which may affect your current layouts that previously used v8 `Image` component.
+
+## Fit differences
+
+In v9, `fit` is the analogue of v8's `imageFit`, with a difference,
+that [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) is used for all fit variants:
+
+- `fit="contain"` → `object-fit: contain; object-position: center;`
+- `fit="cover"` → `object-fit: cover; object-position: center;`
+- `fit="center"` → `object-fit: none; object-position: center;`
+- `fit="none"` → `object-fit: none; object-position: left top;`
+
+V8 `centerContain` and `centerCover` are not direct aliases for `contain` and
+`cover`. Both can leave a naturally small image unscaled and centered:
+
+- `centerCover` behaves like `center` when either natural dimension is smaller
+  than the frame; only when both natural dimensions are larger does it scale
+  down like `cover`.
+- `centerContain` behaves like `center` when both natural dimensions are
+  smaller than the frame; when either dimension is larger it scales down like
+  `contain`.
+
+If preserving this no-upscale behavior matters, use `onLoad` to compare
+`naturalWidth`/`naturalHeight` with the rendered frame, then choose `fit="center"`
+or `fit="cover"`/`fit="contain"` from those conditions. Mapping
+`centerCover` directly to `fit="cover"` incorrectly upscales small images.
+
+### Notes on `none` and `center`
+
+`fit="none"` and `fit="center"` are **not** exact drop-in replacements for v8's `imageFit="none"` and `imageFit="center"`.
+
+- v8 achieved centering via a **wrapper** (`position: relative`) and an **absolutely positioned** image with `transform: translate(...)`.
+- v9 relies entirely on `object-fit`/`object-position` on the `<img>`.
+
+because of this:
+
+- When using imageFit="none" or fit="center", the image might not fill the container.
+- Applying shape="circular" or a border-radius may not produce a perfect circle unless the image fills the box.
+  Unless:
+  - The image fills the box (e.g., `fit="cover"`)
+  - The container handles clipping (`border-radius` + `overflow: hidden`).
+
+<FitDifferences />
+
+## Replacing removed features
+
+### shouldFadeIn
+
+For v9, this feature is no longer supported. The alternative is to apply the animation through `makeStyles` and using the global event `onLoad`.
+Below is an example of a migration:
+
+```jsx
+import { useState } from 'react';
+import { Image, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  notLoaded: {
+    opacity: 0,
+  },
+  fadeIn400: {
+    animationName: {
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+    },
+    animationIterationCount: '1',
+    animationDuration: '0.367s',
+  },
+});
+
+const Component = () => {
+  const [isLoaded, setLoaded] = useState(false);
+  const imageRef = React.useRef < HTMLImageElement > null;
+  const styles = useStyles();
+
+  React.useEffect(() => {
+    if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, []);
+
+  return (
+    <Image
+      ref={imageRef}
+      src="https://via.placeholder.com/300x300"
+      alt="Example image"
+      onLoad={() => setLoaded(true)}
+      className={isLoaded ? styles.fadeIn400 : styles.notLoaded}
+    />
+  );
+};
+```
+
+Apply the animation class only after `onLoad` changes the state. Applying it
+while the image is still loading starts the animation on mount and can finish
+before any pixels are available. Also check the image element's `complete` and
+`naturalWidth` values after mount so cached, data-URL, or hydrated images do not
+remain hidden if loading completed before the React handler was attached.
+Reset the app-owned load state when `src` changes if the source is dynamic.
+
+### shouldStartVisible
+
+For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad` and `onError` to achieve the same behavior.
+Below is an example showcasing this:
+
+```jsx
+import { useState } from 'react';
+import { Image, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  hidden: {
+    display: 'none',
+  },
+});
+
+const Component = () => {
+  const [isVisible, setVisible] = useState(true);
+  const styles = useStyles();
+
+  return (
+    <Image
+      src="https://via.placeholder.com/300x300"
+      alt="Example image"
+      onLoad={() => setVisible(true)}
+      onError={() => setVisible(false)}
+      className={!isVisible ? styles.hidden : undefined}
+    />
+  );
+};
+```
+
+Do not use the native `hidden` attribute for this replacement. The v9 Image
+base class sets `display`, which can override the browser's default
+`[hidden] { display: none }` rule. Use a class that explicitly sets
+`display: none`, or conditionally render the image when retry behavior is not
+required.
+
+### styles
+
+For v9, this feature is no longer supported. The alternative is to apply styles through `makeStyles`. Below is an example of a migration:
+
+#### v8 implementation
+
+```jsx
+import { Image } from '@fluentui/react';
+
+const Component = () => {
+  return (
+    <Image
+      src="example.jpg"
+      styles={props => ({
+        root: { border: '1px solid ' + props.theme.palette.neutralSecondary },
+      })}
+    />
+  );
+};
+```
+
+#### v9 implementation
+
+```jsx
+import { Image, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  bordered: {
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+  },
+});
+
+const Component = () => {
+  const styles = useStyles();
+
+  return <Image src="example.jpg" className={styles.bordered} />;
+};
+```
+
+## Prop Mapping
+
+The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes.
+
+| v8                     | v9                                                                         |
+| ---------------------- | -------------------------------------------------------------------------- |
+| `height`               | `height`                                                                   |
+| `width`                | `width`                                                                    |
+| `className`            | `className`                                                                |
+| `coverStyle`           | `fit="cover"`                                                              |
+| `imageFit`             | `fit`; compose `centerCover`/`centerContain` to preserve no-upscale rules  |
+| `maximizeFrame`        | `block`, for width only; preserve height/frame sizing separately           |
+| `styles`               | `className`                                                                |
+| `loading`              | `loading`                                                                  |
+| `onLoadingStateChange` | Not supported -> use onLoad and onError events                             |
+| `shouldFadeIn`         | Not supported -> implement animation via makeStyles and className + onLoad |
+| `shouldStartVisible`   | Not supported -> use onLoad and onError events                             |
+| `theme`                | Use `FluentProvider` to customize the theme                                |
+
+In v9, the boolean props from [IImageStyleProps](https://developer.microsoft.com/en-us/fluentui#/controls/web/image#IImageStyleProps)
+— such as `isCenter`, `isCenterCover`, `isCenterContain`, `isContain`, `isLandscape`, `isNone`, `isError`, `isLoaded`, and `isNotImageFit` — are no longer supported.
+Use the className prop for custom styling and the fit prop to control image fitting instead.
+
+`block` sets the v9 image width to `100%`; it does not maximize height and can
+override an explicit `width`. Do not combine it with a fixed-width frame when
+the v8 image was intended to remain square or circular. Preserve that frame
+with explicit width and height (or a clipping wrapper) and omit `block`.

@@ -14,11 +14,14 @@ import {
   getNextGradient,
   areArraysEqual,
   MIN_DONUT_RADIUS,
+  ChartTitle,
+  CHART_TITLE_PADDING,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -53,7 +56,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -101,9 +104,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   public componentDidMount(): void {
     if (this._rootElem) {
+      const titleHeight = this._getTitleHeight();
       this.setState({
         _width: this._rootElem.offsetWidth,
-        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT - titleHeight,
       });
     }
   }
@@ -116,8 +120,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
 
@@ -127,12 +130,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       className: this.props.className!,
     });
 
-    const legendBars = this._createLegends(points);
+    const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
+    const titleHeight = this._getTitleHeight();
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
+    const chartData = this._elevateToMinimums(points);
     const valueInsideDonut =
       this.props.innerRadius! > MIN_DONUT_RADIUS
         ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!)
@@ -140,7 +144,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+        ref={(rootElem: HTMLElement | null) => {
+          this._rootElem = rootElem;
+        }}
         onMouseLeave={this._handleChartMouseLeave}
       >
         {this.props.xAxisAnnotation && (
@@ -163,30 +169,42 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             aria-label={data?.chartTitle}
             ref={(node: SVGElement | null) => this._setViewBox(node)}
             width={this.state._width}
-            height={this.state._height}
+            height={this.state._height!}
           >
-            <Pie
-              width={this.state._width!}
-              height={this.state._height!}
-              outerRadius={outerRadius}
-              innerRadius={this.props.innerRadius!}
-              data={chartData!}
-              enableGradient={this.props.enableGradient}
-              roundCorners={this.props.roundCorners}
-              onFocusCallback={this._focusCallback}
-              hoverOnCallback={this._hoverCallback}
-              hoverLeaveCallback={this._hoverLeave}
-              uniqText={this._uniqText}
-              onBlurCallback={this._onBlur}
-              activeArc={this._getHighlightedLegend()}
-              focusedArcId={this.state.focusedArcId || ''}
-              href={this.props.href!}
-              calloutId={this._calloutId}
-              valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-              theme={this.props.theme!}
-              showLabelsInPercent={this.props.showLabelsInPercent}
-              hideLabels={this.props.hideLabels}
-            />
+            {!hideLegend && data?.chartTitle && (
+              <ChartTitle
+                title={data.chartTitle}
+                x={this.state._width! / 2}
+                maxWidth={this.state._width! - 20}
+                className={this._classNames.chartTitle}
+                titleStyles={this.props.titleStyles}
+                tooltipClassName={this._classNames.svgTooltip}
+              />
+            )}
+            <g transform={`translate(0, ${titleHeight})`}>
+              <Pie
+                width={this.state._width!}
+                height={this.state._height!}
+                outerRadius={outerRadius}
+                innerRadius={this.props.innerRadius!}
+                data={chartData!}
+                enableGradient={this.props.enableGradient}
+                roundCorners={this.props.roundCorners}
+                onFocusCallback={this._focusCallback}
+                hoverOnCallback={this._hoverCallback}
+                hoverLeaveCallback={this._hoverLeave}
+                uniqText={this._uniqText}
+                onBlurCallback={this._onBlur}
+                activeArc={this._getHighlightedLegend()}
+                focusedArcId={this.state.focusedArcId || ''}
+                href={this.props.href!}
+                calloutId={this._calloutId}
+                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+                theme={this.props.theme!}
+                showLabelsInPercent={this.props.showLabelsInPercent}
+                hideLabels={this.props.hideLabels}
+              />
+            </g>
           </svg>
         </FocusZone>
         <Callout
@@ -198,7 +216,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           hidden={!(!this.props.hideTooltip && this.state.showHover)}
           id={this._calloutId}
           onDismiss={this._closeCallout}
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           preventDismissOnLostFocus={true}
           /** Keep the callout updated with details of focused/hovered arc */
           shouldUpdateWhenHidden={true}
@@ -216,7 +233,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             />
           )}
         </Callout>
-        {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
+        {!hideLegend && (
+          <div className={this._classNames.legendContainer} style={{ marginTop: titleHeight }}>
+            {legendBars}
+          </div>
+        )}
       </div>
     ) : (
       <div
@@ -233,7 +254,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _closeCallout = () => {
@@ -241,6 +267,17 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: false,
     });
   };
+
+  private _getTitleHeight(): number {
+    const { data } = this.props;
+    return data?.chartTitle
+      ? Math.max(
+          (typeof this.props.titleStyles?.titleFont?.size === 'number' ? this.props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 0;
+  }
 
   private _elevateToMinimums(data: IChartDataPoint[]) {
     let sumOfData = 0;
@@ -278,8 +315,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+  private _createLegends(chartData: IChartDataPoint[]): JSXElement {
+    if (this.props.order === 'sorted') {
+      chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
+        return b.data! - a.data!;
+      });
+    }
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
         ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]

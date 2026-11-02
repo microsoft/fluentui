@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -16,7 +17,7 @@ import {
   IFloatingSuggestionItem,
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 
-export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element => {
+export const SelectedPeopleListWithEditInContextMenuExample = (): JSXElement => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
   const [editingIndex, setEditingIndex] = React.useState(-1);
 
@@ -28,7 +29,7 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
     const suggestionList = suggestions.map(item => {
-      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     return suggestionList;
   };

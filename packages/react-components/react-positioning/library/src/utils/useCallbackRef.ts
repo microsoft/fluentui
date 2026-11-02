@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
@@ -22,6 +24,7 @@ export function useCallbackRef<T>(
   initialValue: T | null,
   callback: (newValue: T | null, lastValue: T | null) => void,
   skipInitialResolve?: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): React.MutableRefObject<T | null> {
   const isFirst = React.useRef(true);
   const [ref] = React.useState(() => ({

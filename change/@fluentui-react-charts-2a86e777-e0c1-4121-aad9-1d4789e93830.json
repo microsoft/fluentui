@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update validation to tolerate invalid traces",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

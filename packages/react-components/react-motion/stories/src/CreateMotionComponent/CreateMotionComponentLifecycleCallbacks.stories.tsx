@@ -13,6 +13,7 @@ import {
 } from '@fluentui/react-components';
 import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentLifecycleCallbacks.stories.md';
 
@@ -93,7 +94,7 @@ const FadeEnter = createMotionComponent({
   duration: motionTokens.durationSlow,
 });
 
-export const CreateMotionComponentLifecycleCallbacks = () => {
+export const CreateMotionComponentLifecycleCallbacks = (): JSXElement => {
   const classes = useClasses();
   const logLabelId = useId();
 

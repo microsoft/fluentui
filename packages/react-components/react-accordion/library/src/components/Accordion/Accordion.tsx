@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderAccordion_unstable } from './renderAccordion';
 import { useAccordion_unstable } from './useAccordion';

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -93,11 +95,10 @@ const useSplitNaveItemStyles = makeStyles({
  * Apply styling to the SplitNavItem slots based on the state
  */
 export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitNavItemState => {
-  'use no memo';
-
   const splitNavItemStyles = useSplitNaveItemStyles();
   const sharedRootClassNames = useRootDefaultClassName();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     splitNavItemClassNames.root,
     sharedRootClassNames,
@@ -106,6 +107,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   );
 
   if (state.navItem) {
+    // eslint-disable-next-line react-hooks/immutability
     state.navItem.className = mergeClasses(
       splitNavItemClassNames.navItem,
       splitNavItemStyles.baseNavItem,
@@ -114,6 +116,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   }
 
   if (state.actionButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.actionButton.className = mergeClasses(
       splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
@@ -124,6 +127,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   }
 
   if (state.toggleButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.toggleButton.className = mergeClasses(
       splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
@@ -134,6 +138,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   }
 
   if (state.menuButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.menuButton.className = mergeClasses(
       splitNavItemClassNames.menuButton,
       splitNavItemStyles.baseSecondary,

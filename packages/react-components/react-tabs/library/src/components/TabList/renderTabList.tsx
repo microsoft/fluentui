@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
-import type { TabListState, TabListSlots, TabListContextValues } from './TabList.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { TabListBaseState, TabListSlots, TabListContextValues } from './TabList.types';
 import { TabListProvider } from './TabListContext';
 
 /**
  * Render the final JSX of TabList
  */
-export const renderTabList_unstable = (state: TabListState, contextValues: TabListContextValues) => {
+export const renderTabList_unstable = (state: TabListBaseState, contextValues: TabListContextValues): JSXElement => {
   assertSlots<TabListSlots>(state);
 
   return (

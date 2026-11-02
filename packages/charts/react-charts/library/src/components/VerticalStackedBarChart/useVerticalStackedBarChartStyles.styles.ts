@@ -1,7 +1,10 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { VerticalStackedBarChartProps, VerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+'use client';
+
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { VerticalStackedBarChartProps, VerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBarChartStyles> = {
   opacityChangeOnHover: 'fui-vsbc__opacityChangeOnHover',
@@ -19,29 +22,17 @@ export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBa
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({
   opacityChangeOnHover: {
     cursor: 'default',
   },
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    fill: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-  },
-  barLabel: {
-    ...typographyStyles.caption1Strong,
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
+  barLabel: getBarLabelStyle() as GriffelStyle,
 });
 
 export const useVerticalStackedBarChartStyles = (

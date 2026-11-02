@@ -17,11 +17,15 @@ export async function addResolutionPathsForProjectPackages(testProjectDir: strin
   const packageJson = isTemplateJson ? json.package : json;
 
   packageJson.resolutions = packageJson.resolutions || {};
-  Object.keys(packedPackages).forEach(packageName => {
-    packageJson.resolutions[`**/${packageName}`] = `file:${packedPackages[packageName]}`;
-  });
+  Object.assign(packageJson.resolutions, createPackageResolutions(packedPackages));
 
   fs.writeJSONSync(jsonPath, json, { spaces: 2 });
+}
+
+export function createPackageResolutions(packages: PackedPackages): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(packages).map(([packageName, packagePath]) => [packageName, `file:${packagePath}`]),
+  );
 }
 
 export async function packProjectPackages(logger: Function, project: string): Promise<PackedPackages> {
@@ -45,7 +49,7 @@ export async function packProjectPackages(logger: Function, project: string): Pr
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
 
-  await shEcho('npx npm-which npm', tmpDirectory);
+  await shEcho('which npm', tmpDirectory);
   await shEcho('npm --version', tmpDirectory);
 
   await Promise.all(

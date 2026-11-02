@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Tree,
   TreeItem,
@@ -7,7 +8,7 @@ import {
   useSubtreeContext_unstable,
 } from '@fluentui/react-components';
 
-export const InlineStylingTreeItemLevel = () => {
+export const InlineStylingTreeItemLevel = (): JSXElement => {
   const { level } = useSubtreeContext_unstable();
   return level === 0 ? (
     <Tree aria-label="Inline Styling Tree Item Level">
@@ -27,7 +28,7 @@ InlineStylingTreeItemLevel.parameters = {
   docs: {
     description: {
       story: `
-The tree component supports nested styling up to 10 levels, limited by performance considerations. For more than 10 levels of nesting, use dynamic styling instead. Below is an example of how to apply custom inline styles to create dynamic tree item levels, overriding the default static styles.
+The tree component generates static styles for the first 10 nesting levels (for performance reasons) and automatically falls back to an inline CSS variable for deeper levels, so arbitrarily deep trees indent correctly out of the box. Below is an example of how to apply custom inline styles to create dynamic tree item levels, overriding the default static styles.
       `,
     },
   },

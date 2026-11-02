@@ -1,6 +1,7 @@
-/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { Legends, Legend, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { Legend } from '@fluentui/react-charts';
+import { Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
 
 const legends: Legend[] = [
@@ -23,7 +24,7 @@ const legends: Legend[] = [
     shape: 'triangle',
   },
 ];
-export const LegendsControlled = () => {
+export const LegendsControlled = (): JSXElement => {
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
 
   const onChange = (keys: string[]) => {
@@ -56,13 +57,7 @@ export const LegendsControlled = () => {
         <Button onClick={handleSelectAll}>Select all</Button>
       </div>
       <div style={{ marginBottom: 10 }}>
-        <Legends
-          legends={legends}
-          canSelectMultipleLegends
-          selectedLegends={selectedLegends}
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={onChange}
-        />
+        <Legends legends={legends} canSelectMultipleLegends selectedLegends={selectedLegends} onChange={onChange} />
       </div>
       Selected legends: {selectedLegends.join(', ')}
     </div>

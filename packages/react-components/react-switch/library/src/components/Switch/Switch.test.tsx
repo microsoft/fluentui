@@ -140,6 +140,33 @@ describe('Switch', () => {
       expect(checked.checked).toBe(true);
     });
 
+    it('does not trigger a change in the checked state if it is disabledFocusable', () => {
+      const { getAllByRole } = render(
+        <>
+          <Switch defaultChecked={false} disabledFocusable />
+          <Switch defaultChecked={true} disabledFocusable />
+        </>,
+      );
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
+
+      expect(unchecked.checked).toBe(false);
+      userEvent.click(unchecked);
+      expect(unchecked.checked).toBe(false);
+
+      expect(checked.checked).toBe(true);
+      userEvent.click(checked);
+      expect(checked.checked).toBe(true);
+    });
+
+    it('can be focused when disabledFocusable has been passed', () => {
+      const { getByRole } = render(<Switch disabledFocusable />);
+      const input = getByRole('switch');
+
+      expect(document.activeElement).not.toEqual(input);
+      userEvent.tab();
+      expect(document.activeElement).toEqual(input);
+    });
+
     it('calls onChange with the correct value', () => {
       const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
       const { getByRole } = render(<Switch onChange={onChange} />);

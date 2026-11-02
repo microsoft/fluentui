@@ -54,6 +54,7 @@ describe('useAriaLiveAnnouncer', () => {
       const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
 
       result.current.announce('message loaded');
+      jest.advanceTimersByTime(0);
       expect(innerNode?.innerText).toBe('message loaded' + ANNOUNCE_SUFFIX);
     });
 
@@ -105,6 +106,19 @@ describe('useAriaLiveAnnouncer', () => {
       );
     });
 
+    it('should handle batched messages in the same tick, and announce only the last', () => {
+      const appendChild = jest.spyOn(liveRegionNode!, 'appendChild');
+      const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
+
+      result.current.announce('message loaded', { batchId: 'test' });
+      result.current.announce('message reloaded', { batchId: 'test' });
+      result.current.announce('message revolutions', { batchId: 'test' });
+      jest.advanceTimersByTime(100);
+
+      expect(appendChild).toHaveBeenCalledTimes(1);
+      expect(innerNode?.innerText).toBe('message revolutions' + ANNOUNCE_SUFFIX);
+    });
+
     it('should announce batched and unbatched messages', () => {
       const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
 
@@ -123,6 +137,7 @@ describe('useAriaLiveAnnouncer', () => {
       const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
 
       result.current.announce('message resurrections');
+      jest.advanceTimersByTime(0);
       expect(innerNode?.innerText).toBe('message resurrections' + ANNOUNCE_SUFFIX);
 
       jest.advanceTimersByTime(ANNOUNCE_TIMEOUT);

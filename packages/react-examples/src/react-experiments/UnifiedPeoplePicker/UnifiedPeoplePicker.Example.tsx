@@ -11,6 +11,7 @@ import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/Select
 import { IInputProps } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
 import { SelectedPersona, ISelectedItemProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
+import type { JSXElement } from '@fluentui/utilities';
 
 const _suggestions = [
   {
@@ -71,14 +72,14 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-export const UnifiedPeoplePickerExample = (): JSX.Element => {
+export const UnifiedPeoplePickerExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
 
-  const ref = React.useRef<any>();
+  const ref = React.useRef<any>(undefined);
 
   const suggestionProps = useConst(() => {
     return {
@@ -235,7 +236,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
-      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     // We want to show top 5 results
     setPeopleSuggestions(suggestionList.splice(0, 5));

@@ -1,4 +1,4 @@
-export const scrollIntoView = (target: HTMLElement | null | undefined) => {
+export const scrollIntoView = (target: HTMLElement | null | undefined): void => {
   if (!target) {
     return;
   }

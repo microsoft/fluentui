@@ -7,6 +7,7 @@ import type { ProgressBarShape, ProgressBarThickness } from './progress-bar.opti
  * Based on BaseProgressBar and includes style and layout specific attributes
  *
  * @tag fluent-progress-bar
+ * @csspart indicator - The internal progress indicator element.
  *
  * @public
  */
@@ -14,16 +15,22 @@ export class ProgressBar extends BaseProgressBar {
   /**
    * The thickness of the progress bar
    *
-   * @public
+   * The thickness of the progress bar
+   *
    * HTML Attribute: `thickness`
+   *
+   * @public
    */
   @attr
   public thickness?: ProgressBarThickness;
 
   /**
    * The shape of the progress bar
-   * @public
+   * The shape of the progress bar
+   *
    * HTML Attribute: `shape`
+   *
+   * @public
    */
   @attr
   public shape?: ProgressBarShape;

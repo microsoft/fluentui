@@ -3,5 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": ["^build"]
+    }
+  },
   "tags": ["web-components"]
 }

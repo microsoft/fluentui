@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Skeleton, SkeletonItem, makeStyles, tokens } from '@fluentui/react-components';
 import type { SkeletonProps } from '@fluentui/react-components';
 
@@ -24,28 +25,28 @@ const useStyles = makeStyles({
   },
 });
 
-export const Row = (props: Partial<SkeletonProps>) => {
+export const Row = (props: Partial<SkeletonProps>): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
-      <Skeleton {...props} aria-label="Loading Content">
+      <Skeleton {...props} size={20} aria-label="Loading Content">
         <div className={styles.firstRow}>
           <SkeletonItem shape="circle" size={24} />
-          <SkeletonItem shape="rectangle" size={16} />
+          <SkeletonItem shape="rectangle" />
         </div>
         <div className={styles.secondThirdRow}>
           <SkeletonItem shape="circle" size={24} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
+          <SkeletonItem />
+          <SkeletonItem />
+          <SkeletonItem />
+          <SkeletonItem />
         </div>
         <div className={styles.secondThirdRow}>
           <SkeletonItem shape="square" size={24} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
-          <SkeletonItem size={16} />
+          <SkeletonItem />
+          <SkeletonItem />
+          <SkeletonItem />
+          <SkeletonItem />
         </div>
       </Skeleton>
     </div>

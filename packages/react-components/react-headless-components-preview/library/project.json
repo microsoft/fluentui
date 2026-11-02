@@ -1,0 +1,42 @@
+{
+  "name": "react-headless-components-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-headless-components-preview/library/src",
+  "tags": ["vNext", "platform:web", "react-headless"],
+  "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/*.ts"]
+    },
+    "bundleSizeFixtures": {
+      "AllComponents.fixture.js": {
+        "kind": "entryPoints",
+        "name": "react-headless-components-preview: entire library"
+      },
+      "Calendar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./calendar",
+        "name": "react-headless-components-preview: Calendar"
+      },
+      "TagPicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tag-picker",
+        "name": "@fluentui/react-headless-components-preview/tag-picker"
+      },
+      "TeachingPopover.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./teaching-popover",
+        "name": "@fluentui/react-headless-components-preview/teaching-popover"
+      }
+    }
+  },
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
+}

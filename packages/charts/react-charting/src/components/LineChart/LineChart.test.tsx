@@ -94,7 +94,7 @@ describe.skip('LineChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    const { container } = render(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<LineChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     await waitFor(() => expect(container).toBeInTheDocument());
     expect(container).toMatchSnapshot();
   });
@@ -107,6 +107,33 @@ describe.skip('LineChart snapShot testing', () => {
     expect(container).toMatchSnapshot();
     points[0].color = lineColor;
   });
+});
+
+describe('LineChart - prototype pollution hardening', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it.each(['__proto__', 'constructor', 'prototype'])(
+    'renders without polluting Object.prototype when a legend is "%s"',
+    legend => {
+      const data = {
+        chartTitle: 'LineChart',
+        lineChartData: [
+          {
+            legend,
+            data: [
+              { x: 1, y: 3 },
+              { x: 2, y: 4 },
+            ],
+            color: 'red',
+          },
+        ] as ILineChartPoints[],
+      };
+
+      expect(() => render(<LineChart data={data} />)).not.toThrow();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'push')).toBe(false);
+    },
+  );
 });
 
 describe('LineChart - basic props', () => {

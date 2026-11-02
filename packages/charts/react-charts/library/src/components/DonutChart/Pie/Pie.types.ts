@@ -1,4 +1,4 @@
-import { ChartDataPoint } from '../index';
+import type { ChartDataPoint } from '../index';
 
 export interface PieProps {
   /**
@@ -52,7 +52,7 @@ export interface PieProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * string for callout id

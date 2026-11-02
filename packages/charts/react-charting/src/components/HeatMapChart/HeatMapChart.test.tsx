@@ -142,7 +142,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('HeatMapChart
     const { container } = render(
       <HeatMapChart
         data={HeatMapDateStringData}
-        yAxisTickFormat={'/%d'}
+        yAxisTickFormat={'.1f'}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,

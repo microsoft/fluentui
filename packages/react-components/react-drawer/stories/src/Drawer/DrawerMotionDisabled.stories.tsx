@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
   Drawer,
-  DrawerProps,
   Button,
   Label,
   Radio,
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const MotionDisabled = () => {
+export const MotionDisabled = (): JSXElement => {
   const styles = useStyles();
   const labelId = useId('type-label');
 

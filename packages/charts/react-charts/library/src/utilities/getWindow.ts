@@ -1,3 +1,5 @@
+'use client';
+
 import { canUseDOM } from '@fluentui/react-utilities';
 
 let _window: Window | undefined = undefined;
@@ -6,7 +8,6 @@ let _window: Window | undefined = undefined;
 // hits a memory leak, whereas aliasing it and calling "typeof _window" does not.
 // Caching the window value at the file scope lets us minimize the impact.
 try {
-  // eslint-disable-next-line no-restricted-globals
   _window = window;
 } catch (e) {
   /* no-op */

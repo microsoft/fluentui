@@ -90,7 +90,63 @@ const griffelRule = {
   ],
 };
 
+/**
+ * @type {import("webpack").RuleSetRule}
+ */
+const swcRule = {
+  test: /\.(ts|tsx)$/,
+  exclude: ['/node_modules/'],
+  use: [
+    {
+      loader: 'swc-loader',
+      options: {
+        jsc: {
+          target: 'es2019',
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: true,
+            dynamicImport: true,
+          },
+          transform: {
+            decoratorMetadata: true,
+            legacyDecorator: true,
+          },
+          keepClassNames: true,
+          externalHelpers: true,
+          loose: true,
+          minify: {
+            mangle: false,
+          },
+        },
+      },
+    },
+  ],
+};
+
+/**
+ * React Compiler webpack rules. Must run before SWC (enforce: 'pre') because the compiler needs JSX syntax intact.
+ * Opt-in only — gate usage behind `process.env.REACT_COMPILER`.
+ *
+ * @type {import("webpack").RuleSetRule[]}
+ */
+const reactCompilerRule = [
+  {
+    test: /\.(ts|tsx)$/,
+    include: [/packages\/react-components\//],
+    exclude: [/node_modules/],
+    enforce: 'pre',
+    use: [
+      {
+        loader: require('react-compiler-webpack').reactCompilerLoader,
+      },
+    ],
+  },
+];
+
 exports.tsRule = tsRule;
 exports.scssRule = scssRule;
 exports.cssRule = cssRule;
 exports.griffelRule = griffelRule;
+exports.swcRule = swcRule;
+exports.reactCompilerRule = reactCompilerRule;

@@ -1,14 +1,19 @@
+'use client';
+
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
+import type { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, Legends, LegendContainer } from '../Legends/index';
-import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
-import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
-import { GanttChartProps } from './GanttChart.types';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { Margins, GanttChartDataPoint } from '../../types/DataPoint';
+import type { ModifiedCartesianChartProps } from '../CommonComponents/index';
+import { CartesianChart } from '../CommonComponents/index';
+import type { GanttChartProps } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ChartPopoverProps, ImageExportOptions, Chart } from '../../index';
+import type { ChartPopoverProps } from '../../index';
+import type { IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
   YAxisType,
@@ -17,7 +22,6 @@ import {
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
-  IDomainNRange,
   createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
   MIN_DOMAIN_MARGIN,
@@ -26,10 +30,9 @@ import {
   getColorFromToken,
   getScalePadding,
   getDateFormatLevel,
-  useRtl,
 } from '../../utilities/index';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -57,9 +60,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const [calloutDataPoint, setCalloutDataPoint] = React.useState<GanttChartDataPoint>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-    const cartesianChartRef = React.useRef<Chart>(null);
-    const _legendsRef = React.useRef<LegendContainer>(null);
-    const _isRTL = useRtl();
+    const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
 
     React.useEffect(() => {
       if (!areArraysEqual(_prevProps.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
@@ -67,17 +68,6 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       }
       _prevProps.current = props;
     }, [props]);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
 
     const _points = React.useMemo(() => {
       _legendMap.current = {};
@@ -145,7 +135,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     }, [useUTC, _points, _xAxisType]);
 
     const _mapYValueToXValues = React.useCallback(() => {
-      const yValueToXValues: Record<string, number[]> = {};
+      const yValueToXValues: Record<string, number[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToXValues[point.y]) {
           yValueToXValues[point.y] = [];
@@ -180,7 +170,6 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
         xAxisType: XAxisTypes,
         barWidth: number,
         tickValues: Date[] | number[] | undefined,
-        shiftX: number,
       ): IDomainNRange => {
         const xValues: (Date | number)[] = [];
         points.forEach(point => {
@@ -193,8 +182,8 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
         return {
           dStartValue: isRTL ? xMax : xMin,
           dEndValue: isRTL ? xMin : xMax,
-          rStartValue: margins.left! + (isRTL ? 0 : shiftX),
-          rEndValue: containerWidth - margins.right! - (isRTL ? shiftX : 0),
+          rStartValue: margins.left!,
+          rEndValue: containerWidth - margins.right!,
         };
       },
       [],
@@ -361,7 +350,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const _getOrderedDataPoints = React.useCallback(() => {
       const result: GanttChartDataPoint[] = [];
 
-      const yValueToPoints: Record<string, GanttChartDataPoint[]> = {};
+      const yValueToPoints: Record<string, GanttChartDataPoint[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToPoints[point.y]) {
           yValueToPoints[point.y] = [];
@@ -425,7 +414,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               key={index}
               x={Math.min(rectStartX, rectEndX)}
               y={rectY}
-              width={Math.abs(rectEndX - rectStartX)}
+              width={Math.max(Math.abs(rectEndX - rectStartX), 2)}
               height={_barHeight.current}
               rx={props.roundCorners ? 3 : 0}
               fill={props.enableGradient ? `url(#${getGradientId(point.legend)})` : point.color}
@@ -436,13 +425,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               onFocus={(event: React.FocusEvent<SVGElement>) => _onBarFocus(point, event)}
               onBlur={_onBarLeave}
               tabIndex={shouldHighlight ? 0 : -1}
-              role="img"
+              role="option"
               aria-label={_getAriaLabel(point)}
             />
           );
         });
         return (
-          <g>
+          <g role="listbox" aria-label={`${points.length} ${points.length === 1 ? 'bar' : 'bars'}`}>
             {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
             {bars}
           </g>
@@ -616,6 +605,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           getmargins={_getMargins}
           getYDomainMargins={_getYDomainMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          onChartBlur={_handleChartMouseLeave}
           useUTC={useUTC}
           children={_createBars}
         />

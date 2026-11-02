@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { InteractionTag } from '../InteractionTag/InteractionTag';
 import { InteractionTagPrimary } from '../InteractionTagPrimary/InteractionTagPrimary';
 import { InteractionTagSecondary } from '../InteractionTagSecondary/InteractionTagSecondary';
 import { TagGroup } from './TagGroup';
-import { TagGroupProps } from './TagGroup.types';
+import type { TagGroupProps } from './TagGroup.types';
 import { Tag } from '../Tag/Tag';
 import type { JSXElement } from '@fluentui/react-utilities';
 

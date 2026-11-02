@@ -1,3 +1,5 @@
+'use client';
+
 import type { FieldContextValue, FieldControlProps } from '../Field';
 import { useFieldContext_unstable } from './FieldContext';
 
@@ -25,6 +27,10 @@ export type FieldControlPropsOptions = {
    * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
    *
    * This should be used with controls that have a custom size prop that matches the Field's size prop.
+   *
+   * NOTE: the size is set on the props *returned* by this hook, so the control must read `size` from the returned
+   * props. It has no effect if `size` is read from the original props (for example destructured by a wrapper hook
+   * before calling this one) - in that case read the size from `useFieldContext_unstable()` directly instead.
    */
   supportsSize?: boolean;
 };
@@ -57,9 +63,10 @@ export function useFieldControlProps_unstable<Props extends FieldControlProps>(
 }
 
 /**
- * @internal
  * Implementation of useFieldControlProps_unstable.
  * Split out so it can be used directly in renderField_unstable.
+ *
+ * @internal
  */
 export function getFieldControlProps<Props extends FieldControlProps>(
   context: FieldContextValue | undefined,

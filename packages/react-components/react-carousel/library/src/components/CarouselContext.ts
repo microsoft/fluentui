@@ -1,8 +1,12 @@
-import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+'use client';
+
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
   activeIndex: 0,
+  appearance: 'flat',
   selectPageByElement: () => {
     return 0;
   },

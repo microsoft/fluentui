@@ -3,7 +3,7 @@ const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import('./types').HTMLElementConstructorName} HTMLElementConstructorName
+ * @import { HTMLElementConstructorName } from './types';
  */
 
 module.exports = createRule({
@@ -14,7 +14,8 @@ module.exports = createRule({
       description: 'Ban usage of instanceof HTMLElement comparison',
     },
     messages: {
-      invalidBinaryExpression: 'instanceof {{right}} should be avoided, use isHTMLElement instead.',
+      invalidBinaryExpression:
+        'instanceof {{right}} should be avoided. Use isHTMLElement() from @fluentui/react-utilities instead for SSR safety. See docs/workflows/testing.md',
     },
     fixable: 'code',
     schema: [],

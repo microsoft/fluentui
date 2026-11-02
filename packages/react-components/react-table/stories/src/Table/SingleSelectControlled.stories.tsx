@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition, TableRowId } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -11,7 +11,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   TableBody,
   TableCell,
@@ -21,8 +20,6 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   useTableFeatures,
-  TableColumnDefinition,
-  TableRowId,
   useTableSelection,
   TableCellLayout,
   createTableColumn,
@@ -109,7 +106,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SingleSelectControlled = () => {
+export const SingleSelectControlled = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(() => new Set<TableRowId>([1]));
   const {
     getRows,

@@ -1,9 +1,12 @@
+'use client';
+
 import type { TreeItemPersonaLayoutSlots, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
@@ -37,7 +40,7 @@ const useRootBaseStyles = makeResetStyles({
   ':hover': {
     color: tokens.colorNeutralForeground2Hover,
     backgroundColor: tokens.colorSubtleBackgroundHover,
-    // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
+    // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
       color: tokens.colorNeutralForeground3Hover,
     },
@@ -53,6 +56,33 @@ const useRootStyles = makeStyles({
   },
   branch: {
     paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+  },
+  // Size variations
+  medium: {
+    ...typographyStyles.body1,
+  },
+  small: {
+    minHeight: '24px',
+    ...typographyStyles.caption1,
+  },
+  // Appearance variations
+  subtle: {},
+  'subtle-alpha': {
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+    },
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
   },
 });
 
@@ -130,8 +160,6 @@ const useExpandIconBaseStyles = makeResetStyles({
 export const useTreeItemPersonaLayoutStyles_unstable = (
   state: TreeItemPersonaLayoutState,
 ): TreeItemPersonaLayoutState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const rootStyles = useRootStyles();
   const mediaBaseStyles = useMediaBaseStyles();
@@ -142,18 +170,25 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const mainBaseStyles = useMainBaseStyles();
   const mainStyles = useMainStyles();
 
+  const size = useTreeContext_unstable(ctx => ctx.size);
+  const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeItemPersonaLayoutClassNames.root,
     rootBaseStyles,
     rootStyles[itemType],
+    rootStyles[appearance],
+    rootStyles[size],
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, state.media.className);
 
   if (state.main) {
+    // eslint-disable-next-line react-hooks/immutability
     state.main.className = mergeClasses(
       treeItemPersonaLayoutClassNames.main,
       mainBaseStyles,
@@ -162,6 +197,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.description) {
+    // eslint-disable-next-line react-hooks/immutability
     state.description.className = mergeClasses(
       treeItemPersonaLayoutClassNames.description,
       descriptionBaseStyles,
@@ -169,6 +205,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.actions) {
+    // eslint-disable-next-line react-hooks/immutability
     state.actions.className = mergeClasses(
       treeItemPersonaLayoutClassNames.actions,
       actionsBaseStyles,
@@ -176,9 +213,11 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     );
   }
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(treeItemPersonaLayoutClassNames.aside, asideBaseStyles, state.aside.className);
   }
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconBaseStyles,
@@ -187,6 +226,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   }
 
   if (state.selector) {
+    // eslint-disable-next-line react-hooks/immutability
     state.selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, state.selector.className);
   }
 

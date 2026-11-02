@@ -1,13 +1,10 @@
 import * as React from 'react';
-import {
-  HorizontalBarChartWithAxis,
-  HorizontalBarChartWithAxisDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import { Field, Radio, RadioGroup, RadioGroupOnChangeData, Switch } from '@fluentui/react-components';
+import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { HorizontalBarChartWithAxis, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Field, Radio, RadioGroup, Switch } from '@fluentui/react-components';
 
-export const HorizontalBarWithAxisNegative = () => {
+export const HorizontalBarWithAxisNegative = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);

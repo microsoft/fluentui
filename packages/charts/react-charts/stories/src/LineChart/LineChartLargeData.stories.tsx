@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { LineChartProps, LineChart, ChartProps, LineChartDataPoint, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { LineChartProps, ChartProps, LineChartDataPoint } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
-export const LineChartLargeData = (props: LineChartProps) => {
+export const LineChartLargeData = (props: LineChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -98,7 +100,8 @@ export const LineChartLargeData = (props: LineChartProps) => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -108,7 +111,8 @@ export const LineChartLargeData = (props: LineChartProps) => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <Switch
           label={

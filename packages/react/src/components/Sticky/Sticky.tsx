@@ -9,6 +9,8 @@ import { getScrollUtils } from './util/scroll';
 import type { ScrollUtils } from './util/scroll';
 import { isLessThanInRange } from './util/comparison';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
@@ -153,8 +155,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;
 
@@ -365,6 +366,9 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
   }
 }
 
-function _isOffsetHeightDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+function _isOffsetHeightDifferent(
+  a: React.RefObject<HTMLElement | null>,
+  b: React.RefObject<HTMLDivElement | null>,
+): boolean {
   return (a && b && a.current && b.current && a.current.offsetHeight !== b.current.offsetHeight) as boolean;
 }

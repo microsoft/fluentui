@@ -11,19 +11,31 @@
         {
           "projects": [
             "react-aria",
-            "react-provider",
             "react-button",
-            "react-menu",
             "react-label",
+            "react-link",
+            "react-menu",
+            "react-provider",
+            "react-shared-contexts",
+            "react-spinner",
             "react-switch",
             "react-text",
-            "react-link",
-            "react-utilities",
-            "react-theme"
+            "react-theme",
+            "react-toast",
+            "react-utilities"
           ],
           "target": "build"
         }
-      ]
+      ],
+      "options": {
+        "assets": [
+          {
+            "input": "{projectRoot}/src",
+            "output": "dist",
+            "glob": "styles.css"
+          }
+        ]
+      }
     }
   }
 }

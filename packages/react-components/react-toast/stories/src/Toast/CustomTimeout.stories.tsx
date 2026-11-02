@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -12,7 +13,7 @@ import {
   ToastTrigger,
 } from '@fluentui/react-components';
 
-export const CustomTimeout = () => {
+export const CustomTimeout = (): JSXElement => {
   const [timeout, setDismissTimeout] = React.useState(1000);
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);

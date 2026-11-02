@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ToastBodySlots, ToastBodyState } from './ToastBody.types';
@@ -13,7 +15,7 @@ const useRootBaseClassName = makeResetStyles({
   gridColumnEnd: 3,
   paddingTop: '6px',
   fontSize: tokens.fontSizeBase300,
-  lineHeight: tokens.fontSizeBase300,
+  lineHeight: tokens.lineHeightBase300,
   fontWeight: tokens.fontWeightRegular,
   color: tokens.colorNeutralForeground1,
   wordBreak: 'break-word',
@@ -42,11 +44,10 @@ const useInvertedStyles = makeStyles({
  * Apply styling to the ToastBody slots based on the state
  */
 export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodyState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const subtitleBaseClassName = useSubtitleBaseClassName();
   const invertedStyles = useInvertedStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toastBodyClassNames.root,
     rootBaseClassName,
@@ -55,6 +56,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
   );
 
   if (state.subtitle) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subtitle.className = mergeClasses(
       toastBodyClassNames.subtitle,
       subtitleBaseClassName,

@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import { Segment } from './Segment';
 
 // TODO[Jest] Investigate this. Possible out of memory. Job didn't finish the work in the pipeline
-// eslint-disable-next-line
+
 xdescribe('Segment', () => {
   isConformant({
     Component: Segment,

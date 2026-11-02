@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { MessageBarActions } from './MessageBarActions';
-import { MessageBarActionsProps } from './MessageBarActions.types';
+import type { MessageBarActionsProps } from './MessageBarActions.types';
 
 describe('MessageBarActions', () => {
   isConformant<MessageBarActionsProps>({

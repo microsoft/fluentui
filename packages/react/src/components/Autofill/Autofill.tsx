@@ -11,6 +11,8 @@ import {
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IAutofillState {
   inputValue: string;
   isComposing: boolean;
@@ -99,7 +101,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null) {
+  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -151,8 +153,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     this._async.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     const style = { ...this.props.style, fontFamily: 'inherit' };
     return (
@@ -177,11 +178,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     );
   }
 
-  public focus() {
+  public focus(): void {
     this._inputElement.current && this._inputElement.current.focus();
   }
 
-  public clear() {
+  public clear(): void {
     this._autoFillEnabled = true;
     this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);

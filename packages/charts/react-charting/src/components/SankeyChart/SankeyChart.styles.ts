@@ -1,6 +1,7 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { getTooltipStyle } from '../../utilities/index';
+import { getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/Common.styles';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor, enableReflow } = props;
@@ -61,5 +62,7 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     chart: {
       display: 'block',
     },
+    svgTooltip: getSvgTooltipStyle(theme),
+    chartTitle: getChartTitleStyle(theme),
   };
 };

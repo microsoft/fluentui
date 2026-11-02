@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import type { AccordionItemContextValues, AccordionItemState } from './AccordionItem.types';
-import { AccordionItemContextValue } from '../../contexts/accordionItem';
+import type { AccordionItemContextValue } from '../../contexts/accordionItem';
 
 export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues {
   // eslint-disable-next-line @typescript-eslint/no-deprecated

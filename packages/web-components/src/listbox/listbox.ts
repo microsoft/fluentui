@@ -1,8 +1,9 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { uniqueId } from '../utils/unique-id.js';
 
 /**
@@ -12,7 +13,6 @@ import { uniqueId } from '../utils/unique-id.js';
  * @tag fluent-listbox
  *
  * @slot - The default slot for the options.
- * @emits connected - Dispatched when the element is connected to the DOM.
  *
  * @remarks
  * The listbox component represents a list of options that can be selected.
@@ -22,15 +22,22 @@ import { uniqueId } from '../utils/unique-id.js';
  */
 export class Listbox extends FASTElement {
   /**
-   * Sets the listbox ID to a unique value if one is not provided.
+   * A reference to the default slot element.
    *
-   * @override
-   * @public
-   * @remarks
-   * HTML Attribute: `id`
+   * @internal
    */
-  @attr({ attribute: 'id', mode: 'fromView' })
-  public override id: string = uniqueId('listbox-');
+  @observable
+  public defaultSlot!: HTMLSlotElement;
+
+  /**
+   * Calls the `slotchangeHandler` when the `defaultSlot` element is assigned
+   * via the `ref` directive in the template.
+   *
+   * @internal
+   */
+  protected defaultSlotChanged() {
+    this.slotchangeHandler();
+  }
 
   /**
    * Indicates whether the listbox allows multiple selection.
@@ -127,7 +134,11 @@ export class Listbox extends FASTElement {
    * @internal
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.options?.filter(x => !x.disabled) ?? [];
+    return (
+      this.options?.filter(x => !x.disabled) ??
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled) ??
+      []
+    );
   }
 
   /**
@@ -168,7 +179,16 @@ export class Listbox extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.$emit('connected');
+    // The listbox needs to have an id for the dropdown to reference via
+    // `aria-controls`. If an id is not present on connection, a unique one is
+    // generated and assigned to the element.
+    waitForConnectedDescendants(
+      this,
+      () => {
+        this.id = this.id || uniqueId('listbox-');
+      },
+      { shallow: true },
+    );
   }
 
   /**
@@ -212,5 +232,24 @@ export class Listbox extends FASTElement {
     }
 
     this.selectedIndex = selectedIndex;
+  }
+
+  /**
+   * Handles the `slotchange` event for the default slot.
+   * Sets the `options` property to the list of slotted options.
+   *
+   * @param e - The slotchange event
+   * @public
+   */
+  public slotchangeHandler(e?: Event): void {
+    waitForConnectedDescendants(this, () => {
+      if (this.defaultSlot) {
+        const options = this.defaultSlot
+          .assignedElements()
+          .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
+
+        this.options = options;
+      }
+    });
   }
 }

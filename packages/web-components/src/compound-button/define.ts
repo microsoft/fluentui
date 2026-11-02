@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './compound-button.definition.js';
+import { CompoundButton } from './compound-button.js';
 
-definition.define(FluentDesignSystem.registry);
+CompoundButton.define(definition);

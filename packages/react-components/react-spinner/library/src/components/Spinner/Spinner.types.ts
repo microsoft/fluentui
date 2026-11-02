@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { Label } from '@fluentui/react-label';
 
 export type SpinnerSlots = {
   /**
@@ -54,6 +54,11 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
 };
 
 /**
+ * Spinner base props, excluding design-related props like appearance and size.
+ */
+export type SpinnerBaseProps = Omit<SpinnerProps, 'appearance' | 'size'>;
+
+/**
  * State used in rendering Spinner
  */
 export type SpinnerState = ComponentState<SpinnerSlots> &
@@ -63,3 +68,8 @@ export type SpinnerState = ComponentState<SpinnerSlots> &
      */
     shouldRenderSpinner: boolean;
   };
+
+/**
+ * Spinner base state, excluding design-related state like appearance and size.
+ */
+export type SpinnerBaseState = Omit<SpinnerState, 'appearance' | 'size'>;

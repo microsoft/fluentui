@@ -94,7 +94,7 @@ export function getDateEndAnchor(dateAnchor: Date, startHour: number, endHour: n
  * const end = new Date(2023, 0, 1, 11, 0);   // Jan 1, 2023 11:00:00 AM
  * getTimesBetween(start, end, 15);      // Returns array with Dates [10:00, 10:15, 10:30, 10:45]
  */
-export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, increment: number) {
+export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, increment: number): Date[] {
   if (increment <= 0) {
     // eslint-disable-next-line no-console
     console.error('Increment value should be a positive number.');

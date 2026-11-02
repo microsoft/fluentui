@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -105,12 +107,11 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
-  'use no memo';
-
   const rootClassName = useRootClassName();
   const iconClassName = useIconClassName();
   const styles = useStyles();
   const isBusy = getIsBusy(state.status);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     presenceBadgeClassNames.root,
     rootClassName,
@@ -134,6 +135,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(presenceBadgeClassNames.icon, iconClassName, state.icon.className);
   }
 

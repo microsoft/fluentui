@@ -2,6 +2,7 @@ import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps, DataVizPalette } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IAreaChartBasicState {
   width: number;
@@ -17,7 +18,7 @@ export class AreaChartMultipleNegativeExample extends React.Component<{}, IAreaC
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
@@ -28,7 +29,7 @@ export class AreaChartMultipleNegativeExample extends React.Component<{}, IAreaC
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const chart1Points = [
       {
         x: 20,

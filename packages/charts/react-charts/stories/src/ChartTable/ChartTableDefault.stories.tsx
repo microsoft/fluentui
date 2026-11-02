@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartTable } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ChartTableBasic = () => {
+export const ChartTableBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(200);
   const [showStyledCells, setShowStyledCells] = React.useState<boolean>(false);
@@ -185,7 +186,8 @@ export const ChartTableBasic = () => {
             max={1200}
             id="changeWidth_ChartTable"
             onChange={_onWidthChange}
-            aria-valuetext={`ChangeWidthSlider${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 300 and Maximum 1200`}
           />
           <span>{width}px</span>
         </div>
@@ -198,7 +200,8 @@ export const ChartTableBasic = () => {
             max={800}
             id="changeHeight_ChartTable"
             onChange={_onHeightChange}
-            aria-valuetext={`ChangeHeightSlider${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 800`}
           />
           <span>{height}px</span>
         </div>

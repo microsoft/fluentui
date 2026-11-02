@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { IAppLink, IAppLinkGroup, IAppProps, IAppDefinition, App as AppBase } from '../index';
 import { Router, Route } from './router/index';
 import { Fabric, initializeIcons, mergeStyles } from '@fluentui/react';
@@ -16,8 +16,9 @@ mergeStyles({
   },
 });
 
-export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
+export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent): void {
   let rootElement: HTMLElement | null;
+  let root: ReactDOMClient.Root | null = null;
 
   function _scrollAnchorLink(): void {
     jumpToAnchor();
@@ -26,20 +27,21 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
   function _onLoad(): void {
     rootElement = rootElement || document.getElementById('content');
 
-    ReactDOM.render(
+    root = ReactDOMClient.createRoot(rootElement!);
+
+    root.render(
       <Fabric>
         {/* eslint-disable-next-line react/jsx-no-bind */}
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
-      rootElement,
     );
   }
 
-  function _getRoutes(): JSX.Element[] {
+  function _getRoutes(): React.ReactElement[] {
     const routes = appDefinition.testPages.map((page: IAppLink) => (
       <Route key={page.key} path={page.url} component={page.component} />
     ));
-    const appRoutes: JSX.Element[] = [];
+    const appRoutes: React.ReactElement[] = [];
 
     appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
       appRoutes.push(..._getRoutesFromLinks(group.links));
@@ -62,8 +64,8 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     return routes;
   }
 
-  function _getRoutesFromLinks(links: IAppLink[]): JSX.Element[] {
-    const routes: JSX.Element[] = [];
+  function _getRoutesFromLinks(links: IAppLink[]): React.ReactElement[] {
+    const routes: React.ReactElement[] = [];
     for (const link of links) {
       if (link.component || link.getComponent) {
         routes.push(
@@ -78,8 +80,9 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
   }
 
   function _onUnload(): void {
-    if (rootElement) {
-      ReactDOM.unmountComponentAtNode(rootElement);
+    if (root) {
+      root.unmount();
+      root = null;
     }
   }
 

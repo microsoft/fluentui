@@ -14,7 +14,7 @@ export function validateHookValueNotChanged<TValues extends NonNullable<any>[]>(
   testDescription: string,
   useHook: () => TValues,
   useHookAgain?: () => TValues,
-) {
+): void {
   it(testDescription || 'returns the same value(s) each time', () => {
     let latestValues: TValues | undefined;
     let callCount = 0;

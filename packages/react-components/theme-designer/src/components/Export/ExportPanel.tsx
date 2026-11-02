@@ -1,23 +1,22 @@
 import * as React from 'react';
 import dedent from 'dedent';
 import { makeStyles } from '@griffel/react';
+import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';
 import {
   Body1,
   Button,
   createLightTheme,
   createDarkTheme,
   FluentProvider,
-  SelectTabData,
-  SelectTabEvent,
   Tab,
   TabList,
-  TabValue,
   Text,
   Textarea,
   tokens,
   webLightTheme,
 } from '@fluentui/react-components';
 import { DismissSquare24Regular } from '@fluentui/react-icons';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
@@ -48,7 +47,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ExportPanel = () => {
+export const ExportPanel = (): JSXElement => {
   const {
     dispatch,
     state: { showExportPanel, themeName, brand, lightThemeOverrides, darkThemeOverrides },

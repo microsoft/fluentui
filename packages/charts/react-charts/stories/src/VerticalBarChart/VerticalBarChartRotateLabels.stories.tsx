@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
+import { VerticalBarChart } from '@fluentui/react-charts';
 
-export const VerticalBarRotateLabels = () => {
+export const VerticalBarRotateLabels = (): JSXElement => {
   const points: VerticalBarChartDataPoint[] = [
     {
       x: 'This is a medium long label. ',

@@ -1,4 +1,10 @@
-export type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './components/CardHeader/index';
+export type {
+  CardHeaderProps,
+  CardHeaderSlots,
+  CardHeaderState,
+  CardHeaderBaseProps,
+  CardHeaderBaseState,
+} from './components/CardHeader/index';
 export {
   CardHeader,
   cardHeaderCSSVars,
@@ -6,4 +12,5 @@ export {
   renderCardHeader_unstable,
   useCardHeaderStyles_unstable,
   useCardHeader_unstable,
+  useCardHeaderBase_unstable,
 } from './components/CardHeader/index';

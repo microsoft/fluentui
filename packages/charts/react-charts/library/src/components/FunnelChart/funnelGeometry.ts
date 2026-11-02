@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { FunnelChartDataPoint } from './FunnelChart.types';
+import type * as React from 'react';
+import type { FunnelChartDataPoint } from './FunnelChart.types';
 
 export interface FunnelSegmentGeometry {
   pathD: string;
@@ -305,7 +305,16 @@ export function getSegmentTextProps({
   onMouseOver: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
   onMouseMove: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
   onMouseOut: (() => void) | undefined;
-}) {
+}): {
+  show: boolean;
+  x: number;
+  y: number;
+  value: number;
+  culture: string | undefined;
+  onMouseOver: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
+  onMouseMove: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
+  onMouseOut: (() => void) | undefined;
+} {
   return {
     show: availableWidth > minTextWidth && availableWidth > 0,
     x: textX,

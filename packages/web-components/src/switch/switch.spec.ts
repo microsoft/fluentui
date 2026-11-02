@@ -1,8 +1,9 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Switch } from './switch.js';
+import { tagName } from './switch.options.js';
 
 test.describe('Switch', () => {
-  test.use({ tagName: 'fluent-switch' });
+  test.use({ tagName: tagName });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -13,9 +14,9 @@ test.describe('Switch', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-switch');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -23,11 +24,15 @@ test.describe('Switch', () => {
   test('should have a role of `switch`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'switch');
   });
 
   test('should set the `ariaChecked` property to `false` when `checked` is not defined', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).not.toHaveAttribute('checked');
 
@@ -51,6 +56,8 @@ test.describe('Switch', () => {
   test('should NOT set a default `aria-required` value when `required` is not defined', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).not.toHaveAttribute('required');
 
     await expect(element).not.toHaveAttribute('aria-required');
@@ -58,6 +65,8 @@ test.describe('Switch', () => {
 
   test('should be focusable by default', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.focus();
 
@@ -77,6 +86,8 @@ test.describe('Switch', () => {
   test('should initialize to the initial value if no `value` property is set', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('value', 'on');
   });
 
@@ -93,6 +104,8 @@ test.describe('Switch', () => {
 
     const expectedValue = 'foobar';
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: Switch, expectedValue) => {
       node.setAttribute('value', expectedValue);
     }, expectedValue);
@@ -101,17 +114,20 @@ test.describe('Switch', () => {
   });
 
   test('should initialize to the provided `value` property when set pre-connection', async ({ fastPage, page }) => {
-    await fastPage.setTemplate('');
-
     const expectedValue = 'foobar';
 
-    const value = await page.evaluate(expectedValue => {
-      const node = document.createElement('fluent-switch') as Switch;
+    await fastPage.setTemplate('');
 
-      node.value = expectedValue;
+    const value = await page.evaluate(
+      ([expectedValue, tagName]) => {
+        const node = document.createElement(tagName) as Switch;
 
-      return node.value;
-    }, expectedValue);
+        node.value = expectedValue;
+
+        return node.value;
+      },
+      [expectedValue, tagName],
+    );
 
     expect(value).toBe(expectedValue);
   });
@@ -121,7 +137,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch required></fluent-switch>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -133,7 +149,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch required></fluent-switch>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -150,7 +166,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch></fluent-switch>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -175,7 +191,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch></fluent-switch>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -203,7 +219,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch required></fluent-switch>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -233,7 +249,7 @@ test.describe('Switch', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch name="switch" value="foo"></fluent-switch>
+        <${tagName} name="switch" value="foo"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -246,15 +262,15 @@ test.describe('Switch', () => {
   });
 
   test('should submit the values of multiple switches when checked', async ({ fastPage, page }) => {
-    const switches = page.locator('fluent-switch');
+    const switches = page.locator(tagName);
     const element1 = switches.nth(0);
     const element2 = switches.nth(1);
     const submitButton = page.locator('button');
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-switch name="switch" value="foo"></fluent-switch>
-        <fluent-switch name="switch" value="bar"></fluent-switch>
+        <${tagName} name="switch" value="foo"></${tagName}>
+        <${tagName} name="switch" value="bar"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);

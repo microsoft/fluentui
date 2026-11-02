@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Tab, TabList } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Vertical = () => {
+export const Vertical = (): JSXElement => {
   const styles = useStyles();
 
   return (

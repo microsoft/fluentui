@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(switch): keep the indicator visible in forced-colors mode",
+  "packageName": "@fluentui/web-components",
+  "email": "jiayin.3zh@gmail.com",
+  "dependentChangeType": "patch"
+}

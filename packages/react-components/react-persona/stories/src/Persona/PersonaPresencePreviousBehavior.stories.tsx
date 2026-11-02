@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Persona,
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const PresencePreviousBehavior = () => {
+export const PresencePreviousBehavior = (): JSXElement => {
   const styles = useStyles();
   const AwayFilledIcon = presenceAvailableRegular.small;
   const OfflineRegularIcon = presenceOfflineRegular.small;

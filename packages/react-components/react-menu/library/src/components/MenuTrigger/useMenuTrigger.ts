@@ -1,3 +1,5 @@
+'use client';
+
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -5,6 +7,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  getReactElementRef,
   isHTMLElement,
   mergeCallbacks,
   useEventCallback,
@@ -12,8 +15,9 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import type { MenuTriggerBaseProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useIsSubmenu, useOnMenuSafeZoneTimeout } from '../../utils';
 
 function noop() {
@@ -22,15 +26,47 @@ function noop() {
 
 /**
  * Create the state required to render MenuTrigger.
- * Clones the only child component and adds necessary event handling behaviours to open a popup menu
+ * Clones the only child component and adds necessary event handling behaviours to open a popup menu.
+ *
+ * Composes with `useMenuTriggerBase_unstable` and supplies Tabster's `findFirstFocusable`
+ * as the `focusFirst` callback so that submenu-trigger keyboard navigation honours
+ * Tabster movers, focus traps, and other Tabster-managed state.
  *
  * @param props - props from this instance of MenuTrigger
  */
 export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
-  const { children, disableButtonEnhancement = false } = props;
+  const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  const focusFirst = React.useCallback(() => {
+    const firstFocusable = findFirstFocusable(menuPopoverRef.current);
+    firstFocusable?.focus();
+  }, [findFirstFocusable, menuPopoverRef]);
+
+  return useMenuTriggerBase_unstable({ ...props, focusFirst });
+};
+
+/**
+ * Options accepted by `useMenuTriggerBase_unstable`.
+ */
+
+/**
+ * Base hook for MenuTrigger component, produces state required to render the component.
+ *
+ * Headless: this hook does not import from `@fluentui/react-tabster` and does not
+ * perform any focus discovery on its own. The submenu-already-open arrow-key path
+ * delegates to the optional `options.focusFirst` callback, which lets consumers wire
+ * up whichever focus-finding strategy fits their environment (Tabster, a native DOM
+ * query, a virtual focus manager, etc.). When `focusFirst` is not provided that path
+ * becomes a no-op.
+ *
+ * @public
+ */
+export const useMenuTriggerBase_unstable = (props: MenuTriggerBaseProps): MenuTriggerState => {
+  const { children, disableButtonEnhancement = false, focusFirst } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
-  const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
   const triggerId = useMenuContext_unstable(context => context.triggerId);
@@ -38,12 +74,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
 
   const isSubmenu = useIsSubmenu();
-
-  const { findFirstFocusable } = useFocusFinders();
-  const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(menuPopoverRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, menuPopoverRef]);
+  const shouldOpenOnArrowRight = useMenuListContext_unstable(ctx => ctx.shouldOpenOnArrowRight ?? true);
 
   const openedWithKeyboardRef = React.useRef(false);
   const openedViaSafeZoneRef = React.useRef(false);
@@ -95,7 +126,10 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
     const key = event.key;
 
-    if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
+    if (
+      !openOnContext &&
+      ((isSubmenu && shouldOpenOnArrowRight && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))
+    ) {
       setOpen(event, { open: true, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
@@ -104,8 +138,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
 
     // if menu is already open, can't rely on effects to focus
-    if (open && key === OpenArrowKey && isSubmenu) {
-      focusFirst();
+    if (open && key === OpenArrowKey && isSubmenu && shouldOpenOnArrowRight) {
+      focusFirst?.();
     }
   };
 
@@ -149,11 +183,13 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const contextMenuProps = {
     id: triggerId,
     ...child?.props,
-    ref: useMergedRefs(triggerRef, child?.ref, safeZoneHandlerRef),
+    ref: useMergedRefs(triggerRef, getReactElementRef(child), safeZoneHandlerRef),
     onMouseEnter: useEventCallback(child?.props.onMouseEnter ?? noop),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    // eslint-disable-next-line react-hooks/refs
     onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
+    // eslint-disable-next-line react-hooks/refs
     onMouseOver: useEventCallback(mergeCallbacks(child?.props.onMouseOver, onMouseOver)),
   };
 
@@ -161,7 +197,9 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     'aria-haspopup': 'menu',
     'aria-expanded': !open && !isSubmenu ? undefined : open,
     ...contextMenuProps,
+    // eslint-disable-next-line react-hooks/refs
     onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    // eslint-disable-next-line react-hooks/refs
     onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
   } as const;
 

@@ -1,0 +1,136 @@
+/* Tooltip content bubble — inverse surface (dark on light, light on dark) */
+.content {
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+  border: none;
+  max-width: 240px;
+}
+
+/*
+  Arrow-enabled content: keep overflow visible so the rotated square
+  isn't clipped, and replace box-shadow with a drop-shadow filter so
+  the shadow wraps the arrow too.
+*/
+.contentWithArrow {
+  overflow: visible;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.22));
+}
+
+.contentWithArrow [data-arrow] {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--bg-elev);
+  transform: rotate(45deg);
+}
+
+/* Main-axis placement — push arrow to the outer edge */
+.contentWithArrow[data-placement^='above'] [data-arrow] {
+  bottom: -4px;
+}
+
+.contentWithArrow[data-placement^='below'] [data-arrow] {
+  top: -4px;
+}
+
+.contentWithArrow[data-placement^='before'] [data-arrow] {
+  right: -4px;
+}
+
+.contentWithArrow[data-placement^='after'] [data-arrow] {
+  left: -4px;
+}
+
+/* Cross-axis centering for cardinal placements */
+.contentWithArrow[data-placement='above'] [data-arrow],
+.contentWithArrow[data-placement='below'] [data-arrow] {
+  inset-inline: 0;
+  margin-inline: auto;
+}
+
+.contentWithArrow[data-placement='before'] [data-arrow],
+.contentWithArrow[data-placement='after'] [data-arrow] {
+  inset-block: 0;
+  margin-block: auto;
+}
+
+/* Start/end-aligned placements — offset from the near edge */
+.contentWithArrow[data-placement$='-start'] [data-arrow] {
+  inset-inline-start: var(--arrow-padding, 8px);
+}
+
+.contentWithArrow[data-placement$='-end'] [data-arrow] {
+  inset-inline-end: var(--arrow-padding, 8px);
+}
+
+/* Trigger button — primary filled style */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.trigger:hover {
+  background: var(--accent-strong);
+}
+
+.trigger:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.triggerOutline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.triggerOutline:hover {
+  background: var(--surface-muted);
+  border-color: var(--text);
+}
+
+/* Icon-only trigger — square, fixed size */
+.triggerIcon {
+  width: 32px;
+  padding: 0;
+}
+
+/* Layout helpers */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}

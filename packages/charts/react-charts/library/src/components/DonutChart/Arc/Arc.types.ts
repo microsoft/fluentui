@@ -1,4 +1,4 @@
-import { ChartDataPoint } from '../index';
+import type { ChartDataPoint } from '../index';
 export interface ArcProps {
   /**
    * Data to render in the Arc.
@@ -68,7 +68,7 @@ export interface ArcProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * internal prop for href

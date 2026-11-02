@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   OverlayDrawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  DrawerProps,
   Button,
   Label,
   RadioGroup,
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
 type DrawerSizeStory = Required<DrawerProps>['size'];
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
   const labelId = useId('size-label');
 

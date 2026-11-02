@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles } from '@fluentui/react-components';
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Clearable = () => {
+export const Clearable = (): JSXElement => {
   const styles = useStyles();
 
   return (

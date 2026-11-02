@@ -1,14 +1,18 @@
+'use client';
+
 import * as React from 'react';
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useOverflowContext } from './overflowContext';
 import { useOverflowCount } from './useOverflowCount';
 
-export function useOverflowMenu<TElement extends HTMLElement>(id?: string) {
+export function useOverflowMenu<TElement extends HTMLElement>(
+  id?: string,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+): { ref: React.MutableRefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
   const elementId = useId('overflow-menu', id);
   const overflowCount = useOverflowCount();
-  const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);
-  const updateOverflow = useOverflowContext(v => v.updateOverflow);
-  const ref = React.useRef<TElement>(null);
+  const { registerOverflowMenu } = useOverflowContext();
+  const ref = React.useRef<TElement | null>(null);
   const isOverflowing = overflowCount > 0;
 
   useIsomorphicLayoutEffect(() => {
@@ -16,12 +20,6 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string) {
       return registerOverflowMenu(ref.current);
     }
   }, [registerOverflowMenu, isOverflowing, elementId]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (isOverflowing) {
-      updateOverflow();
-    }
-  }, [isOverflowing, updateOverflow, ref]);
 
   return { ref, overflowCount, isOverflowing };
 }

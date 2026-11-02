@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTableCellLayout_unstable } from './useTableCellLayout';
 import { renderTableCellLayout_unstable } from './renderTableCellLayout';

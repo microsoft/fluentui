@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 07:21:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.6.11)
+
+Thu, 16 Oct 2025 07:21:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.6.10..@fluentui/date-time-utilities_v8.6.11)
+
+### Patches
+
+- style: resolve explicit-return tyle lint errors ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
 
 ## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.6.10)
 

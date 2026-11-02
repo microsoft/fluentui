@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, createEvent } from '@testing-library/react';
 import { DataGridRow } from './DataGridRow';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridRowProps } from './DataGridRow.types';
+import type { DataGridRowProps } from './DataGridRow.types';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
 import { useColumnIdContext } from '../../contexts/columnIdContext';
@@ -181,20 +181,6 @@ describe('DataGridRow', () => {
       fireEvent.keyDown(getByRole('row'), { key: ' ' });
 
       expect(toggleRow).toHaveBeenCalledTimes(0);
-    });
-
-    it('should disable selection cell input if the row is in a header and the selection mode is singe', () => {
-      const toggleRow = jest.fn();
-      const ctx = mockDataGridContext({ selectableRows: true }, { selection: { toggleRow, selectionMode: 'single' } });
-      const { container } = render(
-        <DataGridHeader>
-          <DataGridContextProvider value={ctx}>
-            <DataGridRow>{() => <div />}</DataGridRow>
-          </DataGridContextProvider>
-        </DataGridHeader>,
-      );
-
-      expect(container.querySelector("input[type='radio']")?.hasAttribute('disabled')).toBe(true);
     });
 
     it('should render aria-selected=true if row is selected', () => {

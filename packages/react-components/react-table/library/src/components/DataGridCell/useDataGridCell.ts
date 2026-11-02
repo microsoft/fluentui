@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import type { DataGridCellProps, DataGridCellState } from './DataGridCell.types';
 import { useTableCell_unstable } from '../TableCell/useTableCell';

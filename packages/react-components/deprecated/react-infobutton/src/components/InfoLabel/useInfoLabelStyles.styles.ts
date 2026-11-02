@@ -1,0 +1,68 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
+
+'use client';
+
+import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
+
+/**
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
+ */
+export const infoLabelClassNames: SlotClassNames<InfoLabelSlots> = {
+  root: 'fui-InfoLabel',
+  label: 'fui-InfoLabel__label',
+  infoButton: 'fui-InfoLabel__infoButton',
+};
+
+const useLabelStyles = makeStyles({
+  base: {
+    verticalAlign: 'top',
+    cursor: 'inherit',
+    color: 'inherit',
+  },
+});
+
+const useInfoButtonStyles = makeStyles({
+  base: {
+    verticalAlign: 'top',
+
+    // Negative margin to align with the text
+    marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
+    marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
+  },
+
+  large: {
+    // Negative margin to align with the text
+    marginTop: '-1px',
+    marginBottom: '-1px',
+  },
+});
+
+/**
+ * Apply styling to the InfoLabel slots based on the state
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
+ */
+export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
+  state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
+
+  const labelStyles = useLabelStyles();
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
+  state.label.className = mergeClasses(infoLabelClassNames.label, labelStyles.base, state.label.className);
+
+  const infoButtonStyles = useInfoButtonStyles();
+  if (state.infoButton) {
+    // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
+    state.infoButton.className = mergeClasses(
+      infoLabelClassNames.infoButton,
+      infoButtonStyles.base,
+      state.size === 'large' && infoButtonStyles.large,
+      state.infoButton.className,
+    );
+  }
+
+  return state;
+};

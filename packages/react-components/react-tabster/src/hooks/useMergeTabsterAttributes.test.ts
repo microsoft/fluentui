@@ -39,4 +39,58 @@ describe('useMergedTabsterAttributes', () => {
     );
     expect(result.current).toEqual({ 'data-tabster': '{"a":"1","b":"2","c":"3"}' });
   });
+
+  describe('dynamic attributes at runtime', () => {
+    it('should recompute when an attribute value changes', () => {
+      const { result, rerender } = renderHook(
+        ({ value }: { value: string }) => useMergedTabsterAttributes_unstable({ 'data-tabster': value }),
+        { initialProps: { value: '{"a":"1"}' } },
+      );
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"1"}' });
+
+      rerender({ value: '{"a":"2"}' });
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"2"}' });
+    });
+
+    it('should recompute when the number of attributes grows', () => {
+      const { result, rerender } = renderHook(
+        ({ attrs }: { attrs: Array<{ 'data-tabster': string } | null> }) =>
+          useMergedTabsterAttributes_unstable(...attrs),
+        { initialProps: { attrs: [{ 'data-tabster': '{"a":"1"}' }] as Array<{ 'data-tabster': string } | null> } },
+      );
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"1"}' });
+
+      rerender({ attrs: [{ 'data-tabster': '{"a":"1"}' }, { 'data-tabster': '{"b":"2"}' }] });
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"1","b":"2"}' });
+    });
+
+    it('should recompute when the number of attributes shrinks', () => {
+      const { result, rerender } = renderHook(
+        ({ attrs }: { attrs: Array<{ 'data-tabster': string } | null> }) =>
+          useMergedTabsterAttributes_unstable(...attrs),
+        {
+          initialProps: {
+            attrs: [{ 'data-tabster': '{"a":"1"}' }, { 'data-tabster': '{"b":"2"}' }] as Array<{
+              'data-tabster': string;
+            } | null>,
+          },
+        },
+      );
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"1","b":"2"}' });
+
+      rerender({ attrs: [{ 'data-tabster': '{"a":"1"}' }, null] });
+      expect(result.current).toEqual({ 'data-tabster': '{"a":"1"}' });
+    });
+
+    it('should return a stable reference when attributes do not change', () => {
+      const { result, rerender } = renderHook(
+        ({ value }: { value: string }) => useMergedTabsterAttributes_unstable({ 'data-tabster': value }),
+        { initialProps: { value: '{"a":"1"}' } },
+      );
+      const first = result.current;
+
+      rerender({ value: '{"a":"1"}' });
+      expect(result.current).toBe(first);
+    });
+  });
 });

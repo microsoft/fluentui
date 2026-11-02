@@ -1,7 +1,7 @@
 import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { PositionManager, TargetElement } from './types';
+import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
 import { POSITIONING_END_EVENT } from './constants';
@@ -42,6 +42,12 @@ interface PositionManagerOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
+}
+
+function isLayoutViewportUnavailable(container: HTMLElement): boolean {
+  const { clientWidth, clientHeight } = container.ownerDocument.documentElement;
+
+  return clientWidth === 0 && clientHeight === 0;
 }
 
 /**
@@ -124,10 +130,17 @@ export function createPositionManager(options: PositionManagerOptions): Position
           return;
         }
 
-        writeArrowUpdates({ arrow, middlewareData });
+        const positioningMiddlewareData = isLayoutViewportUnavailable(container)
+          ? {
+              ...middlewareData,
+              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
+            }
+          : middlewareData;
+
+        writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
         writeContainerUpdates({
           container,
-          middlewareData,
+          middlewareData: positioningMiddlewareData,
           placement: computedPlacement,
           coordinates: { x, y },
           lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
@@ -135,7 +148,18 @@ export function createPositionManager(options: PositionManagerOptions): Position
           useTransform,
         });
 
-        container.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
+        container.dispatchEvent(
+          new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+            detail: {
+              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
+              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
+              // types into the public API surface.
+              placement: computedPlacement satisfies PositioningPlacement,
+              escaped: positioningMiddlewareData.hide?.escaped ?? false,
+              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+            },
+          }),
+        );
       })
       .catch(err => {
         // https://github.com/floating-ui/floating-ui/issues/1845

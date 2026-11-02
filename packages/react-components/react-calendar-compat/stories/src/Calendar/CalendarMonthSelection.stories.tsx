@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar, DateRangeType, DayOfWeek, addDays, getDateRangeArray } from '@fluentui/react-calendar-compat';
 import { Button, makeStyles } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
 const dateRangeType = DateRangeType.Month;
 const firstDayOfWeek = DayOfWeek.Sunday;
 
-export const CalendarMonthSelection = () => {
+export const CalendarMonthSelection = (): JSXElement => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();

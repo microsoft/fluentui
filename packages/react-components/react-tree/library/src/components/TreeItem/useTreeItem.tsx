@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
@@ -32,8 +34,6 @@ import { treeClassNames } from '../../Tree';
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
-  'use no memo';
-
   const treeType = useTreeContext_unstable(ctx => ctx.treeType);
   if (treeType === 'flat') {
     warnIfNoProperPropsFlatTreeItem(props);

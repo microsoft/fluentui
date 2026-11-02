@@ -1,5 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
+  Card,
+  CardHeader,
   createPresenceComponentVariant,
   Field,
   makeStyles,
@@ -8,6 +11,7 @@ import {
   motionTokens,
   Slider,
   Switch,
+  Text,
   tokens,
 } from '@fluentui/react-components';
 
@@ -18,11 +22,16 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: tokens.spacingVerticalXL,
+    maxHeight: '300px',
+    overflow: 'hidden',
+  },
+  cardHeaderText: {
+    margin: 0,
   },
   controls: {
     display: 'flex',
@@ -32,7 +41,7 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
@@ -66,7 +75,7 @@ const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
   easing: curveOvershootFirmOut,
   exitEasing: curveOvershootFirmInOut,
-  fromScale: 0.5,
+  outScale: 0.5,
 });
 
 const LoremIpsum = () => (
@@ -77,7 +86,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Customization = () => {
+export const Customization = (): JSXElement => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>(null);
 
@@ -142,9 +151,16 @@ export const Customization = () => {
         visible={visible}
         unmountOnExit={unmountOnExit}
       >
-        <div className={classes.card}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </CustomScaleVariant>
     </div>
   );

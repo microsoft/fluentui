@@ -1,8 +1,9 @@
-import { type DocsContextProps } from '@storybook/addon-docs';
+import { type DocsContextProps } from '@storybook/addon-docs/blocks';
 
 import { type FluentParameters } from '../hooks';
 
 const docsDefaults = {
+  copyAsMarkdown: true,
   tableOfContents: true,
   dirSwitcher: true,
   themePicker: true,
@@ -41,7 +42,16 @@ export function isDocsEnabled(context: DocsContextProps): boolean {
 /**
  * Gets the docs page configuration from context
  */
-export function getDocsPageConfig(context: DocsContextProps) {
+export function getDocsPageConfig(context: DocsContextProps): {
+  tableOfContents: boolean;
+  dirSwitcher: boolean;
+  themePicker: boolean;
+  copyAsMarkdown: boolean;
+  argTable: {
+    slotsApi: boolean;
+    nativePropsApi: boolean;
+  };
+} | null {
   const docsConfig = getDocsParametersConfig(context);
 
   // If docs is true, return default config (all enabled)
@@ -52,6 +62,7 @@ export function getDocsPageConfig(context: DocsContextProps) {
   // If docs is an object, extract the configuration directly
   if (typeof docsConfig === 'object' && docsConfig !== null) {
     return {
+      copyAsMarkdown: docsConfig.copyAsMarkdown !== false,
       tableOfContents: docsConfig.tableOfContents !== false,
       dirSwitcher: docsConfig.dirSwitcher !== false,
       themePicker: docsConfig.themePicker !== false,

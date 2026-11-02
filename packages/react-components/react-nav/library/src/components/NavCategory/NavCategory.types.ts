@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { NavItemValue } from '../NavContext.types';
-import { NavCategoryContextValue } from '../NavCategoryContext';
+import type * as React from 'react';
+import type { NavItemValue } from '../NavContext.types';
+import type { NavCategoryContextValue } from '../NavCategoryContext';
 
 /**
  * NavCategory Props

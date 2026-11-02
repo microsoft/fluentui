@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';
 import type { Checkbox } from './checkbox.js';
@@ -34,3 +35,10 @@ export const CheckboxSize = {
 
 /** @public */
 export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
+
+/**
+ * The tag name for the checkbox element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-checkbox` as const;

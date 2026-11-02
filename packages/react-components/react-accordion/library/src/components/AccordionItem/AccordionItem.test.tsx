@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
+
 import { AccordionItem } from './AccordionItem';
-import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../testing/isConformant';
 
 describe('AccordionItem', () => {
@@ -15,9 +16,7 @@ describe('AccordionItem', () => {
    * Note: see more visual regression tests for AccordionItem in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const component = renderer.create(<AccordionItem value={0}>Default AccordionItem</AccordionItem>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<AccordionItem value={0}>Default AccordionItem</AccordionItem>);
+    expect(container).toMatchSnapshot();
   });
 });

@@ -73,4 +73,16 @@ describe('keyframes', () => {
 
     expect(_stylesheet.getRules()).toEqual('@keyframes css-0{from{opacity:0;}to{opacity:1;}}');
   });
+
+  it('escapes values that would terminate the style element', () => {
+    keyframes({
+      from: { background: 'red;}</style><script>alert(1)</script>' },
+      to: { opacity: 1 },
+    });
+
+    const rules = _stylesheet.getRules(true);
+
+    expect(rules).not.toContain('</style');
+    expect(rules).not.toContain('<script');
+  });
 });

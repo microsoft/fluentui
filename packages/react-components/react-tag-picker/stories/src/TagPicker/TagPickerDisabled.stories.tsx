@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
@@ -21,7 +21,7 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Disabled = () => {
+export const Disabled = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(options.slice(0, 4));
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     if (data.value === 'no-options') {

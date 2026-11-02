@@ -1,11 +1,23 @@
 import type { MiddlewareState } from '@floating-ui/dom';
-import type { PositioningOptions } from '../types';
+import type { PositioningOptions, Position, Alignment } from '../types';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './listScrollParents';
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
 
 export const devtoolsCallback =
-  (options: Pick<PositioningOptions, 'flipBoundary' | 'overflowBoundary'>) => (middlewareState: MiddlewareState) => {
+  (options: Pick<PositioningOptions, 'flipBoundary' | 'overflowBoundary'>) =>
+  (
+    middlewareState: MiddlewareState,
+  ): {
+    type: 'FluentUIMiddleware';
+    middlewareState: MiddlewareState;
+    options: Pick<PositioningOptions, 'flipBoundary' | 'overflowBoundary'>;
+    initialPlacement: { position: Position; alignment?: Alignment };
+    placement: { position: Position; alignment?: Alignment };
+    flipBoundaries: HTMLElement[];
+    overflowBoundaries: HTMLElement[];
+    scrollParents: HTMLElement[];
+  } => {
     const {
       elements: { floating, reference },
     } = middlewareState;

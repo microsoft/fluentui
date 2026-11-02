@@ -1,14 +1,13 @@
 import * as React from 'react';
+import type { JSXElement, Theme, MenuCheckedValueChangeData } from '@fluentui/react-components';
 import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
   webLightTheme,
   webDarkTheme,
-  Theme,
   Input,
   makeStyles,
-  MenuCheckedValueChangeData,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
@@ -37,7 +36,7 @@ const tokens: Array<keyof Theme> = (Object.keys(theme.webLight) as Array<keyof T
   tokenName => tokenName.match(/^color(?!Palette).*/) || tokenName.startsWith(`colorPalette`),
 );
 
-export const Colors = () => {
+export const Colors = (): JSXElement => {
   const [tokensSearchResult, setTokensSearchResult] = React.useState<Array<keyof Theme> | undefined>(tokens);
 
   // Text typed in the input bar

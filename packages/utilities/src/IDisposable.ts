@@ -1,8 +1,11 @@
 /**
  * Disposable interface.
  *
- * @public
+ * Disposable interface.
+ *
  * {@docCategory IDisposable}
+ *
+ * @public
  */
 export interface IDisposable {
   dispose: () => void;

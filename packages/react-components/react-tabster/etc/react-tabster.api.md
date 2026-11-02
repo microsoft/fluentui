@@ -13,7 +13,7 @@ import { GroupperMoveFocusEvent } from 'tabster';
 import { GroupperMoveFocusEventName } from 'tabster';
 import { KEYBORG_FOCUSIN } from 'keyborg';
 import { KeyborgFocusInEvent } from 'keyborg';
-import { makeResetStyles } from '@griffel/react';
+import type { makeResetStyles } from '@griffel/react';
 import { MoverKeys } from 'tabster';
 import { MoverMemorizedElementEvent } from 'tabster';
 import { MoverMemorizedElementEventName } from 'tabster';
@@ -1473,27 +1473,31 @@ export function useFocusedElementChange(callback: Types.SubscribableCallback<HTM
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
-    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findAllFocusable: (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
+    findLastFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement | null, options?: {
+        container?: HTMLElement;
+    }) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement | null, options?: {
+        container?: HTMLElement;
+    }) => HTMLElement | null | undefined;
 };
 
 // @public (undocumented)
 export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
 
 // @public (undocumented)
-export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement | null>;
 
 // @public
-export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
+export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement | null>;
 
 // @public
 export function useIsNavigatingWithKeyboard(): () => boolean;
 
 // @public
-export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E>;
+export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E | null>;
 
 // @internal
 export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]) => Types.TabsterDOMAttribute;

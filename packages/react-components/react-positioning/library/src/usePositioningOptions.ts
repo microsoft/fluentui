@@ -1,6 +1,8 @@
+'use client';
+
 import { devtools } from '@floating-ui/devtools';
 import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware } from '@floating-ui/dom';
+import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
@@ -20,10 +22,10 @@ import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
 /**
- * @internal
- *
  * This is redundant and exists only to manage React dependencies properly & avoid leaking individual options to the
  * scope of `usePositioningOptions`.
+ *
+ * @internal
  */
 function usePositioningConfigFn(
   configFn: PositioningConfigurationFn,
@@ -103,7 +105,16 @@ function usePositioningConfigFn(
 /**
  * @internal
  */
-export function usePositioningOptions(options: PositioningOptions) {
+export function usePositioningOptions(options: PositioningOptions): (
+  container: HTMLElement,
+  arrow: HTMLElement | null,
+) => {
+  placement: Placement | undefined;
+  middleware: Middleware[];
+  strategy: Strategy;
+  disableUpdateOnResize?: boolean;
+  useTransform?: boolean;
+} {
   const { dir, targetDocument } = useFluent();
   const isRtl = dir === 'rtl';
 

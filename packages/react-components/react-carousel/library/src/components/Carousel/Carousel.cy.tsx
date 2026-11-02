@@ -1,6 +1,6 @@
 import 'cypress-real-events';
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import type { CarouselProps } from './Carousel.types';
@@ -11,7 +11,7 @@ import { CarouselSlider } from '../CarouselSlider/CarouselSlider';
 import { CarouselViewport } from '../CarouselViewport/CarouselViewport';
 import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
-import { CarouselIndexChangeData } from '../CarouselContext.types';
+import type { CarouselIndexChangeData } from '../CarouselContext.types';
 import type { EventHandler, JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {

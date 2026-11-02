@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Badge } from '@fluentui/react-components';
 import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
-export const Icon = () => {
+export const Icon = (): JSXElement => {
   return <Badge size="medium" icon={<PasteIcon />} />;
 };
 

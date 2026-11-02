@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Legend, Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { Legend } from '@fluentui/react-charts';
+import { Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
-export const LegendsStyled = () => {
+export const LegendsStyled = (): JSXElement => {
   const legends: Legend[] = [
     {
       title: 'Legend 1',

@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "target": "ES2019",
     "pretty": true,
@@ -7,8 +7,7 @@
     "allowJs": true,
     "checkJs": true,
     "sourceMap": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true
+    "noUnusedLocals": true
   },
   "include": [],
   "files": [],

@@ -1,8 +1,81 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 30 Jul 2025 13:10:57 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.4)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.3..@fluentui/react-shared-contexts_v9.26.4)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+
+## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.3)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.2..@fluentui/react-shared-contexts_v9.26.3)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.2)
+
+Wed, 25 Feb 2026 13:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.1..@fluentui/react-shared-contexts_v9.26.2)
+
+### Patches
+
+- fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+
+## [9.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.1)
+
+Thu, 22 Jan 2026 17:06:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.0..@fluentui/react-shared-contexts_v9.26.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.0)
+
+Tue, 11 Nov 2025 19:18:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.2..@fluentui/react-shared-contexts_v9.26.0)
+
+### Minor changes
+
+- feat: add brand appearance variant for background context ([PR #35403](https://github.com/microsoft/fluentui/pull/35403) by vgenaev@gmail.com)
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.2)
+
+Thu, 02 Oct 2025 15:12:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.1..@fluentui/react-shared-contexts_v9.25.2)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.1)
+
+Mon, 08 Sep 2025 12:50:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.0..@fluentui/react-shared-contexts_v9.25.1)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.0)
+
+Thu, 21 Aug 2025 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.1..@fluentui/react-shared-contexts_v9.25.0)
+
+### Minor changes
+
+- feat: Add DrawerSurfaceStyle custom style hook ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by mifraser@microsoft.com)
 
 ## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.1)
 

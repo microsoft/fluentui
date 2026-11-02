@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 import type { ImageProps } from '@fluentui/react-components';
-import type { ArgTypes, Parameters } from '@storybook/react';
+import type { ArgTypes, Parameters } from '@storybook/react-webpack5';
 
-export const Default = (props: ImageProps) => {
+export const Default = (props: ImageProps): JSXElement => {
   return (
     <Image
       {...props}

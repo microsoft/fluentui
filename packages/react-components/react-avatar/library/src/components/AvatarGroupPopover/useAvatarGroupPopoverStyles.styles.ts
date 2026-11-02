@@ -1,3 +1,5 @@
+'use client';
+
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -116,8 +118,6 @@ const useTriggerButtonStyles = makeStyles({
  * Apply styling to the AvatarGroupPopover slots based on the state
  */
 export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverState): AvatarGroupPopoverState => {
-  'use no memo';
-
   const { indicator, size, layout, popoverOpen } = state;
   const sizeStyles = useSizeStyles();
   const triggerButtonStyles = useTriggerButtonStyles();
@@ -169,6 +169,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
     }
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.triggerButton.className = mergeClasses(
     avatarGroupPopoverClassNames.triggerButton,
     groupChildClassName,
@@ -182,12 +183,14 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
     state.triggerButton.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.content.className = mergeClasses(
     avatarGroupPopoverClassNames.content,
     contentStyles.base,
     state.content.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.popoverSurface.className = mergeClasses(
     avatarGroupPopoverClassNames.popoverSurface,
     popoverSurfaceStyles.base,

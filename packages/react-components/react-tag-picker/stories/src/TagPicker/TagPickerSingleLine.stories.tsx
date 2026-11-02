@@ -1,18 +1,16 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps, TagPickerInputProps, TagProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
   makeStyles,
   tagPickerGroupClassNames,
   useOverflowCount,
-  TagPickerInputProps,
   useTagPickerContext_unstable,
-  TagProps,
   Tag,
   Avatar,
   Overflow,
@@ -103,7 +101,7 @@ const CustomTagPickerInput = React.forwardRef<HTMLInputElement, CustomTagPickerI
   },
 );
 
-export const SingleLine = () => {
+export const SingleLine = (): JSXElement => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);

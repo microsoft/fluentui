@@ -2,6 +2,8 @@ export type {
   AvatarGroupItemProps,
   AvatarGroupItemSlots,
   AvatarGroupItemState,
+  AvatarGroupItemBaseProps,
+  AvatarGroupItemBaseState,
 } from './components/AvatarGroupItem/index';
 export {
   AvatarGroupItem,
@@ -10,4 +12,5 @@ export {
   useAvatarGroupItemStyles_unstable,
   useAvatarGroupItem_unstable,
   useGroupChildClassName,
+  useAvatarGroupItemBase_unstable,
 } from './components/AvatarGroupItem/index';

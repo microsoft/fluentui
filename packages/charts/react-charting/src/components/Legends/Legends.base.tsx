@@ -18,6 +18,7 @@ import {
 } from './Legends.types';
 import { Shape } from './shape';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -98,8 +99,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -108,7 +108,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -123,7 +128,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     );
   }
 
-  public toSVG = (svgWidth: number, isRTL: boolean = false) => {
+  public toSVG = (
+    svgWidth: number,
+    isRTL: boolean = false,
+  ): {
+    node: SVGSVGElement | null;
+    width: number;
+    height: number;
+  } => {
     return cloneLegendsToSVG(
       this.props.legends,
       svgWidth,
@@ -167,8 +179,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     return result;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
+  private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSXElement => {
     const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
     const rootStyles = {
       root: {
@@ -256,11 +267,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     legend.action?.();
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
+  private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSXElement => {
     const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const overflowHoverCardLegends: JSX.Element[] = [];
+
+    const overflowHoverCardLegends: JSXElement[] = [];
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -336,7 +346,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
         <div role="option">
           <div
             className={classNames.overflowIndicationTextStyle}
-            ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+            ref={(rootElem: HTMLDivElement) => {
+              this._hoverCardRef = rootElem;
+            }}
             {...(allowFocusOnLegends && {
               role: 'button',
               'aria-expanded': this.state.isHoverCardVisible,
@@ -422,7 +434,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={allowFocusOnLegends}
-        /* eslint-enable react/jsx-no-bind */
       >
         {shape}
         <div className={classNames.text}>{legend.title}</div>

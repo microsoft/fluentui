@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, OverflowItemProps } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -12,7 +13,6 @@ import {
   mergeClasses,
   Overflow,
   OverflowItem,
-  OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const OverflowByPriority = () => {
+export const OverflowByPriority = (): JSXElement => {
   const styles = useStyles();
 
   const priorities = [2, 3, 6, 1, 4, 5, 0, 7];

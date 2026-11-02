@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './progress-bar.definition.js';
+import { ProgressBar } from './progress-bar.js';
 
-definition.define(FluentDesignSystem.registry);
+ProgressBar.define(definition);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverHeader } from './TeachingPopoverHeader';
-import { TeachingPopoverHeaderProps } from './TeachingPopoverHeader.types';
+import type { TeachingPopoverHeaderProps } from './TeachingPopoverHeader.types';
 
 describe('TeachingPopoverHeader', () => {
   isConformant<TeachingPopoverHeaderProps>({

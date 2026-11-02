@@ -1,5 +1,5 @@
-import { HeadlessFlatTreeItemProps } from '../FlatTree';
-import { TreeItemProps, TreeItemValue } from '../TreeItem';
+import type { HeadlessFlatTreeItemProps } from '../FlatTree';
+import type { TreeItemProps, TreeItemValue } from '../TreeItem';
 
 export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
   value: TreeItemValue;

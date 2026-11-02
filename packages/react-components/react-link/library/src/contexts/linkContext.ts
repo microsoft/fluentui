@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 export type LinkContextValue = {
@@ -11,4 +13,4 @@ export const linkContextDefaultValue: LinkContextValue = {
 };
 
 export const LinkContextProvider = LinkContext.Provider;
-export const useLinkContext = () => React.useContext(LinkContext) ?? linkContextDefaultValue;
+export const useLinkContext = (): LinkContextValue => React.useContext(LinkContext) ?? linkContextDefaultValue;

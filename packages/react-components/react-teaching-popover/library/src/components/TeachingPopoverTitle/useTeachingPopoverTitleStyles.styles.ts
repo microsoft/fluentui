@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverTitleSlots, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -50,12 +52,11 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTitleState) => {
-  'use no memo';
-
+export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTitleState): TeachingPopoverTitleState => {
   const styles = useStyles();
   const { appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverTitleClassNames.root,
     styles.root,
@@ -64,6 +65,7 @@ export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTit
   );
 
   if (state.dismissButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissButton.className = mergeClasses(
       teachingPopoverTitleClassNames.dismissButton,
       styles.dismissButton,

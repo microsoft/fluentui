@@ -10,16 +10,15 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.type === 'modal' ? 'dialog' : x.role)}"
-      aria-modal="${x => (x.type === 'modal' ? 'true' : void 0)}"
-      aria-describedby="${x => x.ariaDescribedby}"
-      aria-labelledby="${x => x.ariaLabelledby}"
-      aria-label="${x => x.ariaLabel}"
+      aria-describedby="${x => x.dialogDescribedby}"
+      aria-labelledby="${x => x.dialogLabelledby}"
+      aria-label="${x => x.dialogLabel}"
+      aria-modal="${x => x.dialogModal}"
+      role="${x => x.dialogRole}"
       size="${x => x.size}"
       position="${x => x.position}"
-      type="${x => x.type}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @cancel="${(x, c) => x.hide()}"
+      @cancel="${x => x.cancelHandler()}"
       ${ref('dialog')}
     >
       <slot></slot>

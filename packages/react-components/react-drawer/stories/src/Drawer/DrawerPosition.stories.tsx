@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
   OverlayDrawer,
-  DrawerProps,
   Button,
   makeStyles,
   tokens,
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const Position = () => {
+export const Position = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);

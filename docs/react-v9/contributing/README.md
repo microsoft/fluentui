@@ -33,6 +33,7 @@ This directory contains documentation on best practices and guidelines for contr
 
 ## Process & Release
 
+- [Releases](../releases.md) - How to releases work
 - [Release Cycle](./release-cycle.md) - Understanding the release process for v9 packages.
 - [RFC Process](./rfc-process.md) - Process for proposing new features or significant changes.
 - [Contributor License Agreement](./cla.md) - Information about the Contributor License Agreement (CLA).

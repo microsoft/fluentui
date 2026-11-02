@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Composing = () => {
+export const Composing = (): JSXElement => {
   const styles = useStyles();
 
   return <span className={styles.text}>Custom text using only tokens</span>;

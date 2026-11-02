@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  VerticalBarChart,
-  VerticalBarChartDataPoint,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { useId, tokens, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -14,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const VerticalBarSecondaryYAxis = () => {
+export const VerticalBarSecondaryYAxis = (): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
@@ -118,7 +114,8 @@ export const VerticalBarSecondaryYAxis = () => {
         max={1000}
         onChange={_onWidthChange}
         id={_widthSliderId}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor={_heightSliderId}>Change Height:</label>
       <input
@@ -128,7 +125,8 @@ export const VerticalBarSecondaryYAxis = () => {
         max={1000}
         id={_heightSliderId}
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <div style={rootStyle}>
         <VerticalBarChart

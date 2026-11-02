@@ -3,6 +3,10 @@ import path from 'path';
 import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts-tasks';
 import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
 
+function getDeployDirectoryName(packageName: string) {
+  return packageName.replace(/^@[^/]+\//, '');
+}
+
 task('clean', cleanTask());
 
 const gitRoot = findGitRoot();
@@ -29,6 +33,7 @@ const dependencies = [
   '@fluentui/public-docsite-v9',
   '@fluentui/perf-test-react-components',
   '@fluentui/theme-designer',
+  '@fluentui/public-docsite-v9-headless',
   // web-components
   '@fluentui/web-components',
   // charting
@@ -45,7 +50,10 @@ repoDeps.forEach(dep => {
 
   if (fs.existsSync(packageDist)) {
     instructions.push(
-      ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', path.basename(dep.packagePath))),
+      ...copyInstructions.copyFilesInDirectory(
+        packageDist,
+        path.join('dist', getDeployDirectoryName(dep.packageJson.name)),
+      ),
     );
     deployedPackages.add(dep.packageJson.name);
   }
@@ -56,15 +64,22 @@ repoDeps.forEach(dep => {
  */
 task('generate:js', () => {
   const jsContent = fs.readFileSync(path.join(__dirname, './pr-deploy-site.js'), 'utf-8');
+  const placeholder = '/* __PACKAGES_LIST_PLACEHOLDER__ */';
 
-  if (!jsContent.includes('var packages;')) {
-    console.error('pr-deploy-site.js must contain a line "var packages;" to replace with the actual packages');
+  if (!jsContent.includes(placeholder)) {
+    console.error(`pr-deploy-site.js must contain the placeholder "${placeholder}"`);
     process.exit(1);
   }
 
   fs.writeFileSync(
     path.join('dist', 'pr-deploy-site.js'),
-    jsContent.replace('var packages;', `var packages = ${JSON.stringify([...deployedPackages])};`),
+    jsContent.replace(
+      placeholder,
+      JSON.stringify([...deployedPackages], null, 2)
+        // remove the surrounding array brackets
+        .slice(1, -1)
+        .trim(),
+    ),
   );
 });
 

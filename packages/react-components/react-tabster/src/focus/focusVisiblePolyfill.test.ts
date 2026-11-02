@@ -1,4 +1,5 @@
-import { createKeyborg, disposeKeyborg, Keyborg } from 'keyborg';
+import type { Keyborg } from 'keyborg';
+import { createKeyborg, disposeKeyborg } from 'keyborg';
 import { FOCUS_VISIBLE_ATTR } from './constants';
 import { applyFocusVisiblePolyfill } from './focusVisiblePolyfill';
 import { fireEvent } from '@testing-library/dom';

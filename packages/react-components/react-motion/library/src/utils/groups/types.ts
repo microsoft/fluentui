@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 export type PresenceGroupChild = {
-  element: React.ReactElement;
+  element: JSXElement;
 
   appear: boolean;
   visible: boolean;

@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import {
   useContentStyles,
@@ -18,8 +20,6 @@ export const navItemClassNames: SlotClassNames<NavItemSlots> = {
  * Apply styling to the NavItem slots based on the state
  */
 export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => {
-  'use no memo';
-
   const rootDefaultClassName = useRootDefaultClassName();
   const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();
@@ -28,6 +28,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
 
   const { selected, density } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navItemClassNames.root,
     rootDefaultClassName,
@@ -38,6 +39,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       navItemClassNames.icon,
       iconStyles.base,

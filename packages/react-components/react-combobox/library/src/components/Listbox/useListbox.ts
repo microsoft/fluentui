@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   getIntrinsicElementProps,
@@ -7,8 +9,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
+import type { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import {
-  ActiveDescendantChangeEvent,
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
@@ -17,9 +19,9 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
-import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
+import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -38,8 +40,6 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  'use no memo';
-
   const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
 
@@ -48,7 +48,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     activeParentRef,
     controller,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
-    matchOption: el => el.classList.contains(optionClassNames.root),
+    matchOption: isComboboxOptionElement,
   });
 
   const hasListboxContext = useHasParentContext(ListboxContext);
@@ -61,6 +61,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     ? contextGetOptionsMatchingValue
     : optionCollection.getOptionsMatchingValue;
 
+  // eslint-disable-next-line react-hooks/immutability
   const listenerRef = React.useMemo(() => {
     let element: HTMLDivElement | null = null;
 
@@ -76,6 +77,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         return;
       }
 
+      // eslint-disable-next-line react-hooks/immutability
       element = el;
       element.addEventListener('activedescendantchange', listener);
     };

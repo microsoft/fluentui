@@ -1,9 +1,11 @@
+'use client';
+
 import * as React from 'react';
 
 /**
  * @internal
  */
-export type BackgroundAppearanceContextValue = 'inverted' | undefined;
+export type BackgroundAppearanceContextValue = 'inverted' | 'brand' | undefined;
 
 /**
  * @internal

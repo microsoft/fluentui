@@ -15,7 +15,7 @@ export interface IDiagnostic {
   messageText: string | { messageText: string; code: number };
 }
 
-export function _getErrorMessages(errors: IDiagnostic[], text: string) {
+export function _getErrorMessages(errors: IDiagnostic[], text: string): string[] {
   const lineStarts = _getLineStarts(text);
   return errors.map(error => {
     if (error.messageText && typeof error.messageText === 'object') {

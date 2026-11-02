@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -92,7 +91,7 @@ describe('GanttChart rendering and behavior tests', () => {
 
   it('should render callout correctly when a bar is hovered', async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
-    await act(() => {
+    await act(async () => {
       fireEvent.mouseOver(container.querySelector('rect')!);
     });
     expect(container).toMatchSnapshot();
@@ -102,7 +101,7 @@ describe('GanttChart rendering and behavior tests', () => {
     const { container } = render(
       <GanttChart data={ganttData} hideTooltip={true} calloutProps={{ doNotLayer: true }} />,
     );
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(container.querySelector('rect')!);
     });
     expect(container.querySelector('.ms-Callout')).toBeNull();
@@ -137,7 +136,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     render(<GanttChart data={ganttDataWithLongY} showYAxisLablesTooltip={true} />);
     expect(screen.queryByText('Site Preparation')).toBeNull();
 
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(screen.getByText('Site...'));
     });
     expect(screen.queryByText('Site Preparation')).not.toBeNull();
@@ -146,12 +145,12 @@ describe('GanttChart interaction and accessibility tests', () => {
   it(`should display callout on bar hover and hide it on mouse leave from the chart`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
     const bar = container.querySelector('rect')!;
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(bar);
     });
     expect(container.querySelector('.ms-Callout')).not.toBeNull();
 
-    await act(() => {
+    act(() => {
       fireEvent.mouseLeave(container.querySelector('[class^="root"]')!);
     });
     expect(container.querySelector('.ms-Callout')).toBeNull();
@@ -160,7 +159,7 @@ describe('GanttChart interaction and accessibility tests', () => {
   it('should display callout when a bar is focused', async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
     const bar = container.querySelector('rect')!;
-    await act(() => {
+    act(() => {
       fireEvent.focus(bar);
     });
     expect(container.querySelector('.ms-Callout')).not.toBeNull();
@@ -169,7 +168,7 @@ describe('GanttChart interaction and accessibility tests', () => {
   it(`should highlight corresponding bars on legend hover and remove highlight on legend mouse out`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
     const legendButton = screen.getByText('Not Started');
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(legendButton);
     });
     const bars = container.querySelectorAll('rect');
@@ -177,7 +176,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     expect(bars[3]).toHaveAttribute('opacity', '1');
     expect(bars[0]).toHaveAttribute('opacity', '0.1');
 
-    await act(() => {
+    act(() => {
       fireEvent.mouseOut(legendButton);
     });
     expect(bars[3]).toHaveAttribute('opacity', '1');
@@ -187,7 +186,7 @@ describe('GanttChart interaction and accessibility tests', () => {
   it(`should toggle highlight on corresponding bars when legend is clicked`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
     const legendButton = screen.getByText('Incomplete');
-    await act(() => {
+    act(() => {
       fireEvent.click(legendButton);
     });
     const bars = container.querySelectorAll('rect');
@@ -195,7 +194,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     expect(bars[1]).toHaveAttribute('opacity', '1');
     expect(bars[0]).toHaveAttribute('opacity', '0.1');
 
-    await act(() => {
+    act(() => {
       fireEvent.click(legendButton);
     });
     expect(bars[1]).toHaveAttribute('opacity', '1');
@@ -204,18 +203,18 @@ describe('GanttChart interaction and accessibility tests', () => {
 
   it(`should display callouts only for highlighted bars`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
-    await act(() => {
+    act(() => {
       fireEvent.click(screen.getByText('Complete'));
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
 
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(bars[1]);
     });
     expect(container.querySelector('.ms-Callout')).toBeNull();
 
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(bars[0]);
     });
     expect(container.querySelector('.ms-Callout')).not.toBeNull();
@@ -225,10 +224,10 @@ describe('GanttChart interaction and accessibility tests', () => {
     const { container } = render(
       <GanttChart data={ganttDataWithNumericY} legendProps={{ canSelectMultipleLegends: true }} />,
     );
-    await act(() => {
+    act(() => {
       fireEvent.click(screen.getByText('Finance'));
     });
-    await act(() => {
+    act(() => {
       fireEvent.click(screen.getByText('Operations'));
     });
     const bars = container.querySelectorAll('rect');
@@ -248,7 +247,7 @@ describe('GanttChart interaction and accessibility tests', () => {
         calloutProps={{ doNotLayer: true }}
       />,
     );
-    await act(() => {
+    act(() => {
       fireEvent.mouseOver(container.querySelector('rect')!);
     });
     expect(container).toMatchSnapshot();

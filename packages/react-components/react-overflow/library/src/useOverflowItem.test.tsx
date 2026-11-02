@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useOverflowItem } from './useOverflowItem';
-import { OverflowContext, OverflowContextValue } from './overflowContext';
+import type { OverflowContextValue } from './overflowContext';
+import { OverflowContext } from './overflowContext';
 import { renderHook } from '@testing-library/react-hooks';
 
 const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>
@@ -20,6 +21,7 @@ describe('useOverflowItem', () => {
     renderHook(
       () => {
         const ref = useOverflowItem('test', 0, '0');
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {
@@ -36,6 +38,7 @@ describe('useOverflowItem', () => {
           "element": <div />,
           "groupId": "0",
           "id": "test",
+          "pinned": undefined,
           "priority": 0,
         },
       ]
@@ -49,6 +52,7 @@ describe('useOverflowItem', () => {
     const { unmount } = renderHook(
       () => {
         const ref = useOverflowItem('test', 0, '0');
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {

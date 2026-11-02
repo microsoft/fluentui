@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 import { CursorClickRegular, CursorClickFilled } from '@fluentui/react-icons';
 
@@ -45,7 +46,7 @@ const AnnotationPopover = (names: string[], value?: number) => {
   );
 };
 
-export const HorizontalBarStackedAnnotatedInlineLegend = () => {
+export const HorizontalBarStackedAnnotatedInlineLegend = (): JSXElement => {
   const annotationMeta: string[][][] = [
     [['Person 1', 'Person 2']],
     [

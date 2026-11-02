@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   IChartProps,
   ResponsiveContainer,
@@ -94,7 +95,7 @@ const data: IChartProps = {
 };
 
 export class SankeyChartResponsiveExample extends React.Component {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ResponsiveContainer>
         <SankeyChart data={data} enableReflow={false} />

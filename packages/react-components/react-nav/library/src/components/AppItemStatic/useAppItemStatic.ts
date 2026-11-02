@@ -1,6 +1,13 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { AppItemStaticProps, AppItemStaticState } from './AppItemStatic.types';
+import type {
+  AppItemStaticBaseProps,
+  AppItemStaticBaseState,
+  AppItemStaticProps,
+  AppItemStaticState,
+} from './AppItemStatic.types';
 import { useNavContext_unstable } from '../NavContext';
 
 /**
@@ -16,9 +23,21 @@ export const useAppItemStatic_unstable = (
   props: AppItemStaticProps,
   ref: React.Ref<HTMLDivElement>,
 ): AppItemStaticState => {
+  const { density = 'medium' } = useNavContext_unstable();
+  const state = useAppItemStaticBase_unstable(props, ref);
+
+  return {
+    ...state,
+    density,
+  };
+};
+
+export const useAppItemStaticBase_unstable = (
+  props: AppItemStaticBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): AppItemStaticBaseState => {
   const { icon } = props;
 
-  const { density = 'medium' } = useNavContext_unstable();
   return {
     components: {
       root: 'div',
@@ -34,6 +53,5 @@ export const useAppItemStatic_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    density,
   };
 };

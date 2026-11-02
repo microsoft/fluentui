@@ -4,3 +4,4 @@ export type { SwitchOptions } from './switch.js';
 export { SwitchLabelPosition } from './switch.options.js';
 export { styles as SwitchStyles } from './switch.styles.js';
 export { template as SwitchTemplate } from './switch.template.js';
+export { tagName as SwitchTagName } from './switch.options.js';

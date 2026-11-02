@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useInput_unstable } from './useInput';
 import { renderInput_unstable } from './renderInput';

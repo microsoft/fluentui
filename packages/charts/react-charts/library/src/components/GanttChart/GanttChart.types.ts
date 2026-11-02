@@ -1,5 +1,10 @@
-import { RenderFunction } from '../../utilities/index';
-import { CartesianChartProps, CartesianChartStyleProps, CartesianChartStyles, GanttChartDataPoint } from '../../index';
+import type { RenderFunction } from '../../utilities/index';
+import type {
+  CartesianChartProps,
+  CartesianChartStyleProps,
+  CartesianChartStyles,
+  GanttChartDataPoint,
+} from '../../index';
 
 /**
  * Gantt Chart properties
@@ -38,19 +43,6 @@ export interface GanttChartProps extends CartesianChartProps {
    * @default 1/2
    */
   yAxisPadding?: number;
-
-  /**
-   * If true, truncates y-axis tick labels longer than `noOfCharsToTruncate` with ellipses
-   * and displays them in a tooltip on hover.
-   * @default false
-   */
-  showYAxisLablesTooltip?: boolean;
-
-  /**
-   * If true, renders full y-axis tick labels without truncation.
-   * @default false
-   */
-  showYAxisLables?: boolean;
 
   /**
    * If true, enables gradient fills for the bars.

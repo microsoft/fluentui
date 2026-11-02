@@ -9,12 +9,12 @@ import { createListItems, createGroups, IExampleItem } from '@fluentui/example-d
 const toggleStyles: Partial<IToggleStyles> = { root: { marginBottom: '20px' } };
 const groupCount = 3;
 const groupDepth = 3;
-const items = createListItems(Math.pow(groupCount, groupDepth + 1));
+const items = createListItems(groupCount ** (groupDepth + 1));
 const columns = Object.keys(items[0])
   .slice(0, 3)
   .map(
     (key: string): IColumn => ({
-      key: key,
+      key,
       name: key,
       fieldName: key,
       minWidth: 300,

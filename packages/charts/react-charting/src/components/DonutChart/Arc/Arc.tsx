@@ -6,6 +6,8 @@ import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth } from '../../../utilities/index';
+import { isSafeUrl } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -30,8 +32,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id =
@@ -118,7 +119,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   };
 
   private _redirectToUrl(href: string | undefined): void {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   }
 
   private _getAriaLabel = (): string => {

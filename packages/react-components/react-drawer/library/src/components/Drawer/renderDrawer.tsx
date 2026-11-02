@@ -2,14 +2,16 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import { DrawerContextValue, DrawerProvider } from '../../contexts/drawerContext';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { DrawerContextValue } from '../../contexts/drawerContext';
+import { DrawerProvider } from '../../contexts/drawerContext';
 
 import type { DrawerState, DrawerSlots } from './Drawer.types';
 
 /**
  * Render the final JSX of Drawer
  */
-export const renderDrawer_unstable = (state: DrawerState, contextValue: DrawerContextValue) => {
+export const renderDrawer_unstable = (state: DrawerState, contextValue: DrawerContextValue): JSXElement => {
   assertSlots<DrawerSlots>(state);
 
   return (

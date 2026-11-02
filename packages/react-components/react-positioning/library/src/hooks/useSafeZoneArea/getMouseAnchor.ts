@@ -5,7 +5,7 @@ const OFFSET_DISTANCE = 20;
 /**
  * Measures the distance between two points in a 2D space.
  */
-export function measureDistance(a: Point, b: Point) {
+export function measureDistance(a: Point, b: Point): number {
   return Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2);
 }
 

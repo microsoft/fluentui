@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { TableResizeHandle } from '../TableResizeHandle';
-import {
+import type {
   ColumnWidthState,
   EnableKeyboardModeOnChangeCallback,
   TableColumnId,
@@ -25,11 +27,9 @@ export const defaultColumnSizingState: TableColumnSizingState = {
 };
 
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
-  'use no memo';
-
   // False positive, these plugin hooks are intended to be run on every render
 
-  return (tableState: TableFeaturesState<TItem>) =>
+  return (tableState: TableFeaturesState<TItem>): TableFeaturesState<TItem> =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useTableColumnSizingState(tableState, { autoFitColumns: true, ...params });
 }

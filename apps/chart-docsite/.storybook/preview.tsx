@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 
 import * as rootPreview from '../../../.storybook/preview';
 
@@ -18,5 +18,7 @@ const preview: Preview & { parameters: import('@fluentui/react-storybook-addon')
     reactStorybookAddon: { docs: true },
   },
 };
+
+export const tags = ['autodocs'];
 
 export default preview;
