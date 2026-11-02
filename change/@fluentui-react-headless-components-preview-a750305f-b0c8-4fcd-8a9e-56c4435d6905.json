@@ -1,7 +1,7 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: add headless Tree, TreeItem and TreeItemLayout",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "minor"
+  "dependentChangeType": "patch"
 }

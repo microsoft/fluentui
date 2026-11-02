@@ -13,8 +13,9 @@ export type {
   TreeSelectionValue,
   TreeSlots,
   TreeState,
+  SubtreeContextValue,
+  TreeContextValue,
 } from './components/Tree';
-export type { SubtreeContextValue, TreeContextValue } from '@fluentui/react-tree';
 
 export { TreeItem, renderTreeItem, useTreeItem, useTreeItemContext, useTreeItemContextValues } from './components/Tree';
 export type {

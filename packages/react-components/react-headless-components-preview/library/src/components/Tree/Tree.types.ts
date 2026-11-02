@@ -13,6 +13,8 @@ export type {
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   TreeSelectionValue,
+  SubtreeContextValue,
+  TreeContextValue,
 } from '@fluentui/react-tree';
 
 export type TreeState = TreeBaseState & {

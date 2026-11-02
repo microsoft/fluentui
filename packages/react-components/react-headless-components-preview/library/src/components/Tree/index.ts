@@ -15,6 +15,8 @@ export type {
   TreeSelectionValue,
   TreeSlots,
   TreeState,
+  SubtreeContextValue,
+  TreeContextValue,
 } from './Tree.types';
 
 export { TreeItem, renderTreeItem, useTreeItem, useTreeItemContext, useTreeItemContextValues } from './TreeItem';
