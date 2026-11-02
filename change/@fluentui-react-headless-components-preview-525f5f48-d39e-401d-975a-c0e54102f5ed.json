@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: annotate Radio, RatingItem, Skeleton and SkeletonItem with explicit component types; drop React.FC annotations from Dialog, DialogTrigger, PopoverTrigger, Menu and MenuTrigger",
+  "comment": "fix: annotate composed components explicitly with ForwardRefComponent and ComponentWithoutRef; components without a ref now declare a JSXElement | null return type",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

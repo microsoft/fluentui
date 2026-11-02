@@ -4,6 +4,8 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useDialogTrigger } from './useDialogTrigger';
 import { renderDialogTrigger } from './renderDialogTrigger';
 import { composeComponentWithoutRef } from '../../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../../utils/composeComponent';
+import type { DialogTriggerProps } from './DialogTrigger.types';
 
 /**
  * `DialogTrigger` clones its single child element and attaches click handling
@@ -12,7 +14,7 @@ import { composeComponentWithoutRef } from '../../../utils/composeComponent';
  * When placed outside `DialogSurface`, it defaults to `action="open"`.
  * When placed inside `DialogSurface`, it defaults to `action="close"`.
  */
-export const DialogTrigger = /*#__PURE__*/ composeComponentWithoutRef(
+export const DialogTrigger: ComponentWithoutRef<DialogTriggerProps> = /*#__PURE__*/ composeComponentWithoutRef(
   'DialogTrigger',
   useDialogTrigger,
   renderDialogTrigger,

@@ -4,7 +4,7 @@
 
 ```ts
 
-import type * as React_2 from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { RefAttributes } from '@fluentui/react-utilities';
 import { renderSkeleton_unstable as renderSkeleton } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable as renderSkeletonItem } from '@fluentui/react-skeleton';
@@ -25,14 +25,14 @@ export { renderSkeleton }
 export { renderSkeletonItem }
 
 // @public
-export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonProps & RefAttributes<HTMLDivElement>>;
+export const Skeleton: ForwardRefComponent<SkeletonProps & RefAttributes<HTMLDivElement>>;
 
 export { SkeletonContextValue }
 
 export { SkeletonContextValues }
 
 // @public
-export const SkeletonItem: React_2.ForwardRefExoticComponent<SkeletonItemProps & RefAttributes<HTMLDivElement>>;
+export const SkeletonItem: ForwardRefComponent<SkeletonItemProps & RefAttributes<HTMLDivElement>>;
 
 export { SkeletonItemProps }
 

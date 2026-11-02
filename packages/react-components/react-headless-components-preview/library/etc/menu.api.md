@@ -6,7 +6,7 @@
 
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuBaseProps } from '@fluentui/react-menu';
 import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuContextValues } from '@fluentui/react-menu';
@@ -74,10 +74,7 @@ import { useMenuListContext_unstable as useMenuListContext } from '@fluentui/rea
 import { useMenuListContextValues_unstable as useMenuListContextValues } from '@fluentui/react-menu';
 
 // @public
-export const Menu: {
-    (props: MenuProps): JSXElement;
-    displayName: string;
-};
+export const Menu: ComponentWithoutRef<MenuProps>;
 
 export { MenuContextValue }
 
@@ -230,10 +227,7 @@ export { MenuSplitGroupState }
 export { MenuState }
 
 // @public
-export const MenuTrigger: {
-    (props: MenuTriggerProps): JSXElement;
-    displayName: string;
-};
+export const MenuTrigger: ComponentWithoutRef<MenuTriggerProps>;
 
 export { MenuTriggerChildProps }
 

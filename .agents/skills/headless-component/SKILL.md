@@ -183,15 +183,16 @@ Tabster, positioning, portals, native popovers, or nested trigger composition.
 - For components with no meaningful DOM ref (roots that only provide context,
   triggers that clone their child), use `composeComponentWithoutRef` from the
   same module. Do not invent a fake ref and do not annotate the export as
-  `React.FC`; let it keep the helper's return type.
+  `React.FC`; annotate it with `ComponentWithoutRef<Props>` from the same module.
 - Keep the component thin: state hook, optional context-values hook, renderer.
 - Pass the `displayName` as the first argument of `composeComponent`; it is set on
   every exported React component, in production as well.
 - Add concise JSDoc describing purpose and any required accessibility contract.
 - Do not import icons or add default icons in base hooks or headless renderers.
-- Annotate the export with `ForwardRefComponent<Props>` so the public type does
-  not depend on inference, and keep the `/*#__PURE__*/` annotation so the call
-  is tree-shakeable. Keep the arguments positional: an options object repeats
+- Annotate the export with `ForwardRefComponent<Props>` (or
+  `ComponentWithoutRef<Props>`) so the public type does not depend on
+  inference, and keep the `/*#__PURE__*/` annotation so the call is
+  tree-shakeable. Keep the arguments positional: an options object repeats
   its property names in every component and minifiers do not mangle them.
 
 ```tsx
@@ -217,11 +218,10 @@ renderer always comes last:
 Components without a ref use the same argument order:
 
 ```tsx
-export const ComponentNameTrigger = /*#__PURE__*/ composeComponentWithoutRef(
-  'ComponentNameTrigger',
-  useComponentNameTrigger,
-  renderComponentNameTrigger,
-);
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
+
+export const ComponentNameTrigger: ComponentWithoutRef<ComponentNameTriggerProps> =
+  /*#__PURE__*/ composeComponentWithoutRef('ComponentNameTrigger', useComponentNameTrigger, renderComponentNameTrigger);
 ```
 
 The optional context-values hook is resolved once when the component is composed,

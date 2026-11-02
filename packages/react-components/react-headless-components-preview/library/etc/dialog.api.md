@@ -8,13 +8,13 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const Dialog: React_2.NamedExoticComponent<DialogProps>;
+export const Dialog: React_2.MemoExoticComponent<ComponentWithoutRef<DialogProps>>;
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
@@ -164,10 +164,7 @@ export type DialogTitleSlots = {
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
-export const DialogTrigger: {
-    (props: DialogTriggerProps): JSXElement | null;
-    displayName: string;
-};
+export const DialogTrigger: ComponentWithoutRef<DialogTriggerProps>;
 
 // @public (undocumented)
 export type DialogTriggerAction = 'open' | 'close';
