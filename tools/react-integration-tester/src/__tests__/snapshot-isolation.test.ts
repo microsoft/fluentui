@@ -1,5 +1,5 @@
 import { TempFs } from './fixtures/temp-fs';
-import { join, relative, resolve } from 'node:path';
+import { join, relative, resolve, sep } from 'node:path';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { spawn, spawnSync } from 'node:child_process';
 import * as ejs from 'ejs';
@@ -50,11 +50,13 @@ function scaffoldProject(workspaceRoot: string, projectRoot: string, react: numb
   const projectPath = join(reactRoot, `proj-react-${react}-ci`);
   mkdirSync(projectPath, { recursive: true });
 
+  // forward slashes keep Windows paths valid inside the generated JS string literals
+  const toPosixRelative = (from: string, to: string) => relative(from, to).split(sep).join('/');
   const tmpl = {
     react,
-    relativePathToProjectRoot: relative(projectPath, projectRoot),
-    relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
-    usedNodeModulesDirRelative: relative(projectPath, reactRoot),
+    relativePathToProjectRoot: toPosixRelative(projectPath, projectRoot),
+    relativePathToWorkspaceRoot: toPosixRelative(projectPath, workspaceRoot),
+    usedNodeModulesDirRelative: toPosixRelative(projectPath, reactRoot),
     jest: { pathToProjectConfig: 'jest.config.js' },
   };
   renderTemplate('jest.config.js', tmpl, join(projectPath, 'jest.config.js'));
@@ -71,7 +73,8 @@ function runJest(projectPath: string) {
       [jestBin, '--config', join(projectPath, 'jest.config.js'), '--passWithNoTests', '-u', '--no-cache', '-w', '2'],
       {
         cwd: projectPath,
-        env: { ...process.env, NODE_PATH: repoNodeModules, FORCE_COLOR: '0' },
+        // pin default (mocked) mode so an inherited RIT_SKIP_SNAPSHOTS=false can't disable isolation
+        env: { ...process.env, NODE_PATH: repoNodeModules, FORCE_COLOR: '0', RIT_SKIP_SNAPSHOTS: 'true' },
       },
     );
     let output = '';
