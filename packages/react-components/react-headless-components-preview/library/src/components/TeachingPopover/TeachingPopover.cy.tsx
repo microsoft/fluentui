@@ -19,7 +19,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => mountBase(element);
 
 const triggerSelector = '[aria-expanded]';
-const surfaceSelector = '[role="group"]';
+const surfaceSelector = '[role="dialog"]';
 
 describe('TeachingPopover', () => {
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
