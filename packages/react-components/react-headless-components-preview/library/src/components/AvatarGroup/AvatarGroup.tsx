@@ -14,6 +14,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = /*#__PURE__*/ composeComponent(
   'AvatarGroup',
   useAvatarGroup,
-  renderAvatarGroup,
   useAvatarGroupContextValues,
+  renderAvatarGroup,
 );

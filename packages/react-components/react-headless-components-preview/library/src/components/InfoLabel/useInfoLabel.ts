@@ -1,7 +1,5 @@
-'use client';
-
-import * as React from 'react';
-import { useId, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import { useId, slot } from '@fluentui/react-utilities';
 
 import { Label } from '../Label';
 import { InfoButton } from './InfoButton/InfoButton';
@@ -27,7 +25,6 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     ...labelProps
   } = props;
   const baseId = useId('infolabel-');
-  const [open, setOpen] = React.useState(false);
 
   const root = slot.always(rootShorthand, {
     defaultProps: {
@@ -59,12 +56,6 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     elementType: 'div',
   });
 
-  infoButtonPopover.onOpenChange = useEventCallback(
-    mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
-      setOpen(data.open);
-    }),
-  );
-
   if (infoButton) {
     const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup
     infoButtonPopover.id ??= infoPopupId;
@@ -77,10 +68,6 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
-
-    if (open) {
-      root['aria-owns'] ??= infoButtonPopover.id;
-    }
   }
 
   return {

@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { renderToastFooter_unstable as renderToastFooter } from '@fluentui/react-toast';
 import type { Slot } from '@fluentui/react-utilities';
@@ -22,6 +22,7 @@ import type { ToastContainerContextValue } from '@fluentui/react-toast';
 import type { ToastData } from '@fluentui/react-toast';
 import { ToasterId } from '@fluentui/react-toast';
 import type { ToasterProps as ToasterProps_2 } from '@fluentui/react-toast';
+import { ToasterSlots } from '@fluentui/react-toast';
 import type { ToasterState as ToasterState_2 } from '@fluentui/react-toast';
 import { ToastFooterProps } from '@fluentui/react-toast';
 import { ToastFooterSlots } from '@fluentui/react-toast';
@@ -81,6 +82,11 @@ export const ToastContainer: ForwardRefComponent<ToastContainerProps>;
 export { ToastContainerContextValue }
 
 // @public (undocumented)
+export type ToastContainerContextValues = {
+    toast: ToastContainerContextValue;
+};
+
+// @public (undocumented)
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> & ToastData & {
     visible: boolean;
     tryRestoreFocus: () => void;
@@ -108,6 +114,8 @@ export { ToasterId }
 
 // @public
 export type ToasterProps = Omit<ToasterProps_2, 'mountNode' | 'inline'>;
+
+export { ToasterSlots }
 
 // @public
 export type ToasterState = Omit<ToasterState_2, 'mountNode' | 'inline'>;

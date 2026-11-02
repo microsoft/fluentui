@@ -11,7 +11,7 @@ import { composeComponent } from '../../../utils/composeComponent';
  *
  * Renders the popover content area as a native `<dialog>` by default. Consumers
  * can render a `<div>` for non-modal surfaces with `as="div"`. A `<dialog>` is
- * required when the parent `Popover` has `trapFocus` enabled.
+ * required when the parent `Popover` has `inertTrapFocus` enabled.
  */
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = /*#__PURE__*/ composeComponent(
   'PopoverSurface',

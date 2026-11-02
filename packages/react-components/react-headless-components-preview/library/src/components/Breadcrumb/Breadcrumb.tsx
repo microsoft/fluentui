@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = /*#__PURE__*/ composeComponent(
   'Breadcrumb',
   useBreadcrumb,
-  renderBreadcrumb,
   useBreadcrumbContextValues,
+  renderBreadcrumb,
 );
