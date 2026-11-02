@@ -94,11 +94,15 @@ function legacyRuleIn(root: Document | ShadowRoot): boolean {
  * so it runs on every React version the package supports (`react-dom/client` only exists from React 18).
  * `beforeRender` runs once, after the frame document exists and before `children` mount.
  */
-const FramePortal: React.FC<{
+const FramePortal = ({
+  hidden,
+  beforeRender,
+  children,
+}: {
   hidden: boolean;
   beforeRender: (frame: HTMLIFrameElement) => void;
   children: (frameDocument: Document) => React.ReactNode;
-}> = ({ hidden, beforeRender, children }) => {
+}) => {
   const [frameDocument, setFrameDocument] = React.useState<Document | null>(null);
   const prepared = React.useRef(false);
   const frameRef = React.useCallback(

@@ -43,7 +43,7 @@ function simulateLegacyEngine(win: Window) {
  * `mount` root, so it runs on every React version the package supports (`react-dom/client` only exists from React 18).
  * The legacy engine is simulated once, before the Sliders mount.
  */
-const ShadowSliders: React.FC = () => {
+const ShadowSliders = () => {
   const [shadowRoot, setShadowRoot] = React.useState<ShadowRoot | null>(null);
   const hostRef = React.useCallback((host: HTMLDivElement | null) => {
     if (host && !host.shadowRoot) {
