@@ -684,4 +684,33 @@ test.describe('Button', () => {
 
     await expect(wasInvalid).resolves.toBeTruthy();
   });
+
+  test('should be enabled/disabled by the associated fieldset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const fieldset = page.locator('fieldset');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fieldset>
+          <${tagName}></${tagName}>
+        </fieldset>
+      </form>
+    `);
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = true));
+
+    expect(await element.evaluate((node: HTMLElement & { disabled?: boolean }) => Boolean(node.disabled))).toBe(false);
+    await expect(element).not.toHaveAttribute('disabled');
+    await expect(element).not.toHaveAttribute('tabindex');
+    await element.focus();
+    await expect(element).not.toBeFocused();
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = false));
+
+    expect(await element.evaluate((node: HTMLElement & { disabled?: boolean }) => Boolean(node.disabled))).toBe(false);
+    await expect(element).not.toHaveAttribute('disabled');
+    await expect(element).toHaveAttribute('tabindex', '0');
+    await element.focus();
+    await expect(element).toBeFocused();
+  });
 });
