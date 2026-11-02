@@ -198,11 +198,116 @@ test.describe('Anchor Button', () => {
     await expect(element).toHaveAttribute('data-click-count', '1');
   });
 
-  test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or `Meta` on Mac', async ({
+  test('should emit a single click event and navigate when clicked programmatically', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    await element.evaluate(anchorButton => {
+      let clickCount = 0;
+      anchorButton.addEventListener('click', () => {
+        clickCount += 1;
+        anchorButton.setAttribute('data-click-count', String(clickCount));
+      });
+      anchorButton.setAttribute('data-click-count', '0');
+    });
+
+    await element.evaluate((node: HTMLElement) => node.click());
+
+    await expect(element).toHaveAttribute('data-click-count', '1');
+
+    expect(page.url()).toMatch('#foo');
+  });
+
+  test('should expose the internal anchor to pointer interaction so the browser can surface the link target', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    const anchor = element.locator('a');
+
+    await expect(anchor).toHaveJSProperty('inert', false);
+    await expect(anchor).toHaveAttribute('aria-hidden', 'true');
+    await expect(anchor).toHaveAttribute('tabindex', '-1');
+
+    const isHitTarget = await element.evaluate(node => {
+      const { x, y, width, height } = node.getBoundingClientRect();
+      return node.ownerDocument.elementFromPoint(x + width / 2, y + height / 2) === node.querySelector('a');
+    });
+
+    expect(isHitTarget).toBe(true);
+  });
+
+  test('should expose a single link to assistive technology', async ({ browserName, fastPage, page }) => {
+    // Playwright's role engine does not read `ElementInternals` roles, so query the browser's accessibility tree.
+    test.skip(browserName !== 'chromium', 'Reads the accessibility tree via the Chrome DevTools Protocol.');
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    const client = await page.context().newCDPSession(page);
+    const { nodes } = await client.send('Accessibility.getFullAXTree');
+
+    expect(nodes.filter(node => !node.ignored && node.role?.value === 'link')).toHaveLength(1);
+  });
+
+  test('should keep focus on the host element when clicked', async ({ browserName, fastPage }) => {
+    test.skip(browserName === 'webkit', 'WebKit does not move focus on click.');
+
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    await element.click();
+
+    await expect(element).toBeFocused();
+    await expect(element.locator('a')).not.toBeFocused();
+  });
+
+  test('should open the provided url in a new page on middle click', async ({
+    browserName,
     context,
     fastPage,
     page,
   }) => {
+    test.skip(
+      browserName !== 'chromium',
+      'Playwright does not reliably open new pages on middle click outside Chromium.',
+    );
+
+    const { element } = fastPage;
+
+    const expectedUrl = '#foo';
+
+    await fastPage.setTemplate({ attributes: { href: expectedUrl } });
+
+    const newPagePromise = context.waitForEvent('page');
+
+    await element.click({ button: 'middle' });
+
+    const newPage = await newPagePromise;
+
+    await expect(newPage).toHaveURL(new RegExp(`${expectedUrl}$`));
+
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(context.pages()).toHaveLength(2);
+
+    await newPage.close();
+  });
+
+  test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or `Meta` on Mac', async ({
+    browserName,
+    context,
+    fastPage,
+    page,
+  }) => {
+    test.skip(
+      browserName === 'firefox',
+      'Playwright Firefox does not reliably open new pages from native modified clicks.',
+    );
+
     const { element } = fastPage;
 
     const expectedUrl = '#foo';
@@ -215,9 +320,11 @@ test.describe('Anchor Button', () => {
 
     const newPage = await newPagePromise;
 
+    await expect(newPage).toHaveURL(new RegExp(`${expectedUrl}$`));
+
     expect(page.url()).not.toMatch(expectedUrl);
 
-    expect(newPage.url()).toMatch(expectedUrl);
+    expect(context.pages()).toHaveLength(2);
 
     await newPage.close();
   });
