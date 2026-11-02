@@ -33,8 +33,8 @@ export const useTreeItemLayout = (props: TreeItemLayoutProps, ref: React.Ref<HTM
   }
 
   if (state.actions) {
-    // Arrow keys move between the actions, wrapping around unless the tree is a treegrid,
-    // where ArrowLeft on the first action moves focus back to the tree item.
+    // Arrow keys move between the actions, wrapping around unless the tree is a treegrid, where ArrowLeft
+    // moves focus back to the tree item from the last action it reaches: the first one, or the last one in RTL.
     // eslint-disable-next-line react-hooks/immutability
     state.actions.focusgroup = `toolbar inline${navigationMode === 'tree' ? ' wrap' : ''}`;
   }

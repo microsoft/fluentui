@@ -297,6 +297,40 @@ describe('Tree', () => {
       );
       jest.useRealTimers();
     });
+    it('returns focus from the actions to the tree item inside a shadow root in treegrid mode', () => {
+      jest.useFakeTimers();
+      const host = document.createElement('div');
+      document.body.appendChild(host);
+      const container = document.createElement('div');
+      const shadowRoot = host.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(container);
+      const { unmount } = render(
+        <Tree aria-label="Files" navigationMode="treegrid" defaultOpenItems={['docs']}>
+          <TreeItem itemType="branch" value="docs">
+            <TreeItemLayout>Docs</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf" value="readme">
+                <TreeItemLayout actions={{ visible: true, children: <button>Rename</button> }}>README</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>,
+        { container },
+      );
+      const item = container.querySelector<HTMLElement>('[data-fui-tree-item-value="readme"]')!;
+      const action = container.querySelector('button')!;
+
+      action.focus();
+      fireEvent.keyDown(action, { key: 'ArrowLeft' });
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+
+      expect(shadowRoot.activeElement).toBe(item);
+      unmount();
+      host.remove();
+      jest.useRealTimers();
+    });
   });
 
   describe('selection', () => {

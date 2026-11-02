@@ -54,20 +54,29 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
       return;
     }
     const target = event.currentTarget;
-    const { activeElement } = target.ownerDocument;
+    // The document or the shadow root containing the tree, whose active element is the focused action
+    const root = (event.target as Node).getRootNode() as Document | ShadowRoot;
+    const { activeElement } = root;
     // The focusgroup moves focus as the default action of the event, after it is dispatched
     setActionsNavigationTimeout(() => {
-      if (target.ownerDocument.activeElement === activeElement && actions.contains(activeElement)) {
-        requestTreeResponse({
-          requestType: 'navigate',
-          event,
-          value: state.value,
-          itemType: state.itemType,
-          parentValue,
-          type: ArrowLeft,
-          target,
-        });
+      if (root.activeElement !== activeElement || !actions.contains(activeElement)) {
+        return;
       }
+      if (root !== target.ownerDocument) {
+        // Tree navigation only sees the shadow host as the active element of the document,
+        // so focus is returned to the tree item directly.
+        target.focus();
+        return;
+      }
+      requestTreeResponse({
+        requestType: 'navigate',
+        event,
+        value: state.value,
+        itemType: state.itemType,
+        parentValue,
+        type: ArrowLeft,
+        target,
+      });
     }, 0);
   });
 
