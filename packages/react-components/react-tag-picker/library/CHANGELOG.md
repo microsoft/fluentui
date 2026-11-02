@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-tag-picker
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.7)
+
+Mon, 02 Nov 2026 13:22:59 GMT
+
+### Patches
+
+- fix: keep the measured aside width instead of cancelling its update after mount ([PR #36986](https://github.com/microsoft/fluentui/pull/36986) by dmytrokirpa@microsoft.com)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.6)
 

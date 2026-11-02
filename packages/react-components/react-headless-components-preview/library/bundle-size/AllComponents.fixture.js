@@ -673,6 +673,22 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 import { Tooltip, renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
+} from '@fluentui/react-headless-components-preview/tree';
 import { toDataAttributeValue } from '@fluentui/react-headless-components-preview/utils';
 
 console.log(
@@ -1298,6 +1314,20 @@ console.log(
   Tooltip,
   renderTooltip,
   useTooltip,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
   toDataAttributeValue,
 );
 
