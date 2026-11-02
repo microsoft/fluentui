@@ -201,6 +201,11 @@
     outline-offset: calc(-1 * var(--stroke-thick));
   }
 
+  .action:focus-visible,
+  .button:focus-visible {
+    outline: var(--stroke-thick) solid Highlight;
+  }
+
   .item[data-checked=''] > .layout,
   .item[aria-selected='true'] > .layout {
     outline: var(--stroke-thin) solid Highlight;

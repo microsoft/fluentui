@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { Tree } from './Tree';
 import { TreeItem } from './TreeItem/TreeItem';
@@ -244,9 +245,51 @@ describe('Tree', () => {
       fireEvent.keyDown(screen.getByRole('button', { name: 'Rename' }), { key: 'ArrowLeft' });
       expect(getItem('README')).toHaveFocus();
     });
+
+    it('keeps ArrowLeft within the actions unless it is pressed on the first action in treegrid mode', () => {
+      const onKeyDown = jest.fn();
+      render(
+        <Tree aria-label="Files" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="readme" onKeyDown={onKeyDown}>
+            <TreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <button>Rename</button>
+                    <button>Delete</button>
+                  </>
+                ),
+              }}
+            >
+              README
+            </TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+
+      screen.getByRole('button', { name: 'Delete' }).focus();
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Delete' }), { key: 'ArrowLeft' });
+      expect(screen.getByRole('button', { name: 'Delete' })).toHaveFocus();
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+      screen.getByRole('button', { name: 'Rename' }).focus();
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Rename' }), { key: 'ArrowLeft' });
+      expect(getItem('README')).toHaveFocus();
+    });
   });
 
   describe('selection', () => {
+    it('returns focus to the tree item when its selector is clicked, so that navigation continues', () => {
+      render(<SelectableTree selectionMode="multiselect" />);
+
+      userEvent.click(screen.getByRole('checkbox', { name: 'LICENSE' }));
+      expect(getItem('LICENSE')).toHaveFocus();
+
+      fireEvent.keyDown(getItem('LICENSE'), { key: 'ArrowDown' });
+      expect(getItem('package.json')).toHaveFocus();
+    });
+
     it('checks and unchecks items in multiselect mode', () => {
       const onCheckedChange = jest.fn();
       render(<SelectableTree selectionMode="multiselect" onCheckedChange={onCheckedChange} />);
