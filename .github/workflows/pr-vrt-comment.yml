@@ -39,7 +39,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if visual regression should be run (affected projects)
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         id: should_run_vrt
         with:
           script: |
@@ -67,7 +67,7 @@ jobs:
 
       - name: Run VR Approval CLI
         if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           # this is explicity needed as github token is not available in CLI context
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
