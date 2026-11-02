@@ -1,8 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
+import { isFocusVisible, useEventCallback, useKeyboardModality, useMergedRefs } from '@fluentui/react-utilities';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
@@ -29,7 +28,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   options: ActiveDescendantOptions,
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
-  const focusVisibleRef = React.useRef(false);
   const shouldShowFocusVisibleAttrRef = React.useRef(true);
   const activeIdRef = React.useRef<string | null>(null);
   const lastActiveIdRef = React.useRef<string | null>(null);
@@ -49,21 +47,26 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
   }, []);
 
-  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
-    focusVisibleRef.current = isNavigatingWithKeyboard;
-
+  const getKeyboardModality = useKeyboardModality(isKeyboard => {
     // eslint-disable-next-line react-hooks/immutability, react-hooks/preserve-manual-memoization
     const active = getActiveDescendant();
     if (!active) {
       return;
     }
 
-    if (isNavigatingWithKeyboard && shouldShowFocusVisibleAttrRef.current) {
+    if (isKeyboard && shouldShowFocusVisibleAttrRef.current) {
       active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
     } else {
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
   });
+
+  // DOM focus stays on the active parent, so the active descendant can't rely on native `:focus-visible`.
+  // When no interaction was tracked yet (e.g. a keydown mounted the component), fall back to the active parent.
+  const isNavigatingWithKeyboard = React.useCallback(() => {
+    const activeParent = activeParentRef.current;
+    return getKeyboardModality() ?? (activeParent ? isFocusVisible(activeParent) ?? false : false);
+  }, [getKeyboardModality]);
 
   const matchOption = useEventCallback(matchOptionUnstable);
   const listboxRef = React.useRef<TListboxElement>(null);
@@ -83,13 +86,13 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         return;
       }
 
-      if (shouldShow && focusVisibleRef.current) {
+      if (shouldShow && isNavigatingWithKeyboard()) {
         active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       } else {
         active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
       }
     },
-    [getActiveDescendant],
+    [getActiveDescendant, isNavigatingWithKeyboard],
   );
 
   const blurActiveDescendant = React.useCallback(() => {
@@ -117,14 +120,14 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
-      if (focusVisibleRef.current && shouldShowFocusVisibleAttrRef.current) {
+      if (shouldShowFocusVisibleAttrRef.current && isNavigatingWithKeyboard()) {
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
 
       const event = createActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
       nextActive.dispatchEvent(event);
     },
-    [blurActiveDescendant, setAttribute],
+    [blurActiveDescendant, isNavigatingWithKeyboard, setAttribute],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(

@@ -15,9 +15,11 @@
     "@fluentui/keyboard-keys": "^9.0.9",
     "@fluentui/react-jsx-runtime": "^9.4.7",
     "@fluentui/react-shared-contexts": "^9.26.4",
-    "@fluentui/react-tabster": "^9.26.19",
     "@fluentui/react-utilities": "^9.27.0",
     "@swc/helpers": "^0.5.1"
+  },
+  "devDependencies": {
+    "@fluentui/react-tabster": "^9.26.19"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

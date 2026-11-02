@@ -40,6 +40,7 @@ export {
   trProperties,
   videoProperties,
 } from './properties';
+export { isFocusVisible } from './isFocusVisible';
 export { isHTMLElement } from './isHTMLElement';
 export { isInteractiveHTMLElement } from './isInteractiveHTMLElement';
 export type { PriorityQueue, PriorityQueueCompareFn } from './priorityQueue';

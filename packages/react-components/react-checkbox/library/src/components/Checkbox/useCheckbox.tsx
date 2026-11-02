@@ -36,6 +36,11 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
 
   const state = useCheckboxBase_unstable(checkboxProps, ref);
 
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLSpanElement>());
+
   // Override indicator children with size+shape-appropriate icon
   const mixed = state.checked === 'mixed';
   let checkmarkIcon;
@@ -74,7 +79,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
 
 /**
  * Base hook for Checkbox component, which manages state related to checked state, ARIA attributes,
- * focus management, and slot structure without design props.
+ * and slot structure without design props or focus management.
  *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
@@ -116,10 +121,7 @@ export const useCheckboxBase_unstable = (
       label: 'label',
     },
     root: slot.always(props.root, {
-      defaultProps: {
-        ref: useFocusWithin<HTMLSpanElement>(),
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
       elementType: 'span',
     }),
     input: slot.always(props.input, {

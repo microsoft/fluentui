@@ -131,6 +131,9 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
+// @internal
+export function isFocusVisible(element: Element): boolean | undefined;
+
 // @public
 export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
     constructorName?: ConstructorName;
@@ -387,6 +390,9 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
+
+// @internal
+export function useKeyboardModality(onChange?: (isKeyboard: boolean) => void): () => boolean | undefined;
 
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
