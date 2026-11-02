@@ -9,7 +9,7 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import { useDialogLayerOpenState, useLayerFocusReturn } from '../../hooks/top-layer';
+import { useDialogLayerOpenState } from '../../hooks/top-layer';
 import { isInTopLayer } from '../../hooks/top-layer/utils';
 import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
@@ -83,14 +83,12 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     props.onOpenChange?.(event, { event, type: event.type, open: shouldOpen });
   });
 
-  // Back to the trigger when focus was inside as the surface started closing.
-  const focusReturn = useLayerFocusReturn(contentRef, { target: triggerRef });
-
   useDialogLayerOpenState(contentRef, {
     open,
     mode: inertTrapFocus ? 'modal' : 'auto',
     onOpenChange: (nextOpen, { event }) => onNativeOpenChange(event, nextOpen),
-    ...focusReturn,
+    // Back to the trigger when focus was inside as the surface started closing.
+    returnFocus: { target: triggerRef },
   });
 
   // The surface stays mounted until it has left the top layer.

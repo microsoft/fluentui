@@ -12,7 +12,7 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { useDialogLayerOpenState, useLayerFocusReturn } from '../../../hooks/top-layer';
+import { useDialogLayerOpenState } from '../../../hooks/top-layer';
 import { waitForAnimations } from '../../../hooks/top-layer/utils';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
@@ -32,15 +32,13 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
   const isNonModal = modalType === 'non-modal';
 
-  // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
-  const focusReturn = useLayerFocusReturn(dialogRef, { when: isNonModal ? 'always' : false });
-
   // A browser open or close (`popovertarget`, `commandfor`, `<form method="dialog">`) is reported as `surfaceToggle`.
   useDialogLayerOpenState(dialogRef, {
     open,
     mode: isNonModal ? 'manual' : 'modal',
     onOpenChange: (nextOpen, { event }) => requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event }),
-    ...focusReturn,
+    // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
+    returnFocus: { when: isNonModal ? 'always' : false },
   });
 
   // Keep the element connected for native close and consumer-defined exit animations.
