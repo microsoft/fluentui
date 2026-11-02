@@ -31,7 +31,7 @@ jobs:
       # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#45}
       # - see @{link file://./pr-vrt.yml#56}
 
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: vrscreenshot
           path: ./screenshots
@@ -57,7 +57,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
         with:
           name: pr-number
