@@ -290,6 +290,19 @@ describe('Tree', () => {
       expect(getItem('package.json')).toHaveFocus();
     });
 
+    it('keeps focus where the consumer moved it when the selector click is prevented', () => {
+      render(
+        <Tree aria-label="Files" selectionMode="multiselect">
+          <TreeItem itemType="leaf" value="license">
+            <TreeItemLayout selector={{ onClick: event => event.preventDefault() }}>LICENSE</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+
+      userEvent.click(screen.getByRole('checkbox', { name: 'LICENSE' }));
+      expect(screen.getByRole('checkbox', { name: 'LICENSE' })).toHaveFocus();
+    });
+
     it('checks and unchecks items in multiselect mode', () => {
       const onCheckedChange = jest.fn();
       render(<SelectableTree selectionMode="multiselect" onCheckedChange={onCheckedChange} />);

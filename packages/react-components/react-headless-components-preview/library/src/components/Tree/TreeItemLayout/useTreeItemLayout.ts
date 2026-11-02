@@ -20,9 +20,11 @@ export const useTreeItemLayout = (props: TreeItemLayoutProps, ref: React.Ref<HTM
   const treeItemRef = useTreeItemContext_unstable(ctx => ctx.treeItemRef);
 
   // Clicking the selector focuses the native input, which does not handle tree navigation,
-  // so focus is moved back to the tree item.
-  const focusTreeItem = useEventCallback(() => {
-    treeItemRef?.current?.focus();
+  // so focus is moved back to the tree item unless the consumer prevented the click.
+  const focusTreeItem = useEventCallback((event: React.MouseEvent<HTMLInputElement>) => {
+    if (!event.defaultPrevented) {
+      treeItemRef?.current?.focus();
+    }
   });
 
   if (state.selector) {

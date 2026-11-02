@@ -57,4 +57,32 @@ describe('Tree', () => {
     cy.contains('button', 'Rename').should('be.focused').realPress('ArrowLeft');
     cy.contains('[role="treeitem"]', 'README').should('be.focused');
   });
+  it('moves between the actions with ArrowLeft and leaves them from the last action in rtl treegrid mode', () => {
+    mount(
+      <div dir="rtl">
+        <Tree aria-label="Files" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="readme">
+            <TreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <button>Rename</button>
+                    <button>Delete</button>
+                  </>
+                ),
+              }}
+            >
+              README
+            </TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </div>,
+    );
+
+    cy.contains('[role="treeitem"]', 'README').focus().realPress('ArrowRight');
+    cy.contains('button', 'Rename').should('be.focused').realPress('ArrowLeft');
+    cy.contains('button', 'Delete').should('be.focused').realPress('ArrowLeft');
+    cy.contains('[role="treeitem"]', 'README').should('be.focused');
+  });
 });
