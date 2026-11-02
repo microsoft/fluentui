@@ -71,7 +71,7 @@
     "@fluentui/react-toast": "^9.8.5",
     "@fluentui/react-toolbar": "^9.8.7",
     "@fluentui/react-tooltip": "^9.10.8",
-    "@fluentui/react-tree": "^9.16.10",
+    "@fluentui/react-tree": "^9.17.0",
     "@fluentui/react-utilities": "^9.27.0",
     "@swc/helpers": "^0.5.1"
   },
