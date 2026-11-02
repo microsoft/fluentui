@@ -59,7 +59,10 @@ export const useAccordionBase_unstable = <Value = AccordionItemValue>(
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
-    defaultState: defaultOpenItems && (() => initializeUncontrolledOpenItems({ defaultOpenItems, multiple })),
+    defaultState:
+      defaultOpenItems !== undefined
+        ? () => initializeUncontrolledOpenItems({ defaultOpenItems, multiple })
+        : undefined,
     initialState: [],
   });
 
