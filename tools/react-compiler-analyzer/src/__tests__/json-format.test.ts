@@ -102,7 +102,7 @@ export function Risky({ label }: { label: string }) {
       expect(doc.summary).toMatchObject({
         functions: 1,
         compiled: 1,
-        memoCacheEmitted: 1,
+        reportedMemoCachePositive: 1,
         errors: 0,
         unparseableFiles: 0,
       });
@@ -160,7 +160,7 @@ export function Risky({ label }: { label: string }) {
       );
 
       expect(code).toBe(0);
-      expect(doc.schemaVersion).toBe(2);
+      expect(doc.schemaVersion).toBe(3);
       expect(doc.tool).toBe('react-compiler-analyzer');
       expect(doc.command).toBe('analyze');
       expect(doc.mode).toBe('infer');
@@ -503,7 +503,7 @@ describe('serializers', () => {
     expect(allFindings(doc)).toHaveLength(0);
   });
 
-  it('summarizes compiler-accepted functions that emit memo caches', () => {
+  it('summarizes accepted functions with positive reported memo statistics', () => {
     const doc = toAnalysisDocument(
       [
         {
@@ -533,7 +533,7 @@ describe('serializers', () => {
     );
 
     expect(doc.summary.compiled).toBe(3);
-    expect(doc.summary.memoCacheEmitted).toBe(1);
+    expect(doc.summary.reportedMemoCachePositive).toBe(1);
   });
 
   it.each(['/ws/src/Broken.tsx', 'C:\\repo\\src\\Broken.tsx'])('removes the known diagnostic filename: %s', file => {

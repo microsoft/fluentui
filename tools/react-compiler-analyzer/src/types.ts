@@ -55,6 +55,7 @@ export interface DirectiveAnalysis {
   directiveType: DirectiveType;
   justified?: true;
   revalidated?: true;
+  evidence?: RevalidationEvidence;
 }
 
 export interface FixResult {
@@ -65,6 +66,33 @@ export interface FixResult {
 
 export type CompilationMode = 'infer' | 'annotation' | 'all';
 export type FunctionStatus = 'compiled' | 'skipped' | 'error';
+
+export interface AnalysisProfile {
+  backend: 'babel';
+  babelVersion: string;
+  compilerVersion: string;
+  mode: CompilationMode;
+  parserPlugins: string[];
+  noEmit: true;
+  panicThreshold: 'none';
+  target: 'compiler-default';
+  suppressionRules: 'compiler-default';
+}
+
+export type ReportedMemoCache = 'positive' | 'zero' | 'unavailable';
+
+export interface CompilerEvidence {
+  outcome: FunctionStatus | 'unavailable';
+  memoStats: NullableMemoStats | null;
+}
+
+export interface RevalidationEvidence {
+  before: CompilerEvidence;
+  after: CompilerEvidence;
+  acceptanceEffect: 'changed' | 'unchanged' | 'unavailable';
+  statisticsEffect: 'changed' | 'unchanged' | 'unavailable';
+  emittedOptimization: 'not-measured';
+}
 
 export interface NullableMemoStats {
   memoSlots: number | null;
@@ -124,6 +152,7 @@ export interface CompilerOccurrence {
   reason?: string;
   fullReason?: string;
   memoStats?: NullableMemoStats;
+  category?: string;
 }
 
 export interface CompilerDiagnostic {
@@ -131,6 +160,7 @@ export interface CompilerDiagnostic {
   span: SourceSpan | null;
   reason: string;
   fullReason?: string;
+  category?: string;
 }
 
 /**
@@ -159,6 +189,7 @@ export interface FunctionAnalysis {
   sourceHash?: string;
   existingDirectives?: { useMemo: boolean; useNoMemo: boolean };
   risks?: RiskFinding[];
+  rejectionKind?: 'suppression-related';
 }
 
 export type AnnotateMode = 'manual-memo' | 'all' | 'all-safe' | 'bailout-only';
@@ -173,7 +204,16 @@ export interface AnnotateCounts {
 export interface AnnotateResult extends AnnotateCounts {
   dryRun?: true;
   planned?: AnnotateCounts;
-  targets?: { filePath: string; line: number; functionName: string | null; directive: string }[];
+  targets?: {
+    filePath: string;
+    line: number;
+    functionName: string | null;
+    directive: string;
+    rationale: 'preventive-risk-opt-out' | 'compiler-accepted-opt-in';
+    reportedMemoCache: ReportedMemoCache;
+    emittedCaching: 'unverified';
+    riskRules: RiskRuleId[];
+  }[];
 }
 
 export interface CompileFilesOptions {
@@ -252,10 +292,12 @@ export interface MigrationCandidate {
 }
 
 interface DocumentEnvelope {
-  schemaVersion: 2;
+  schemaVersion: 3;
   tool: 'react-compiler-analyzer';
   command: 'analyze' | 'lint';
   mode: CompilationMode;
+  profile: AnalysisProfile;
+  emittedCaching: 'unverified';
 }
 
 export interface JsonFunction {
@@ -271,6 +313,8 @@ export interface JsonFunction {
   errorColumn?: number;
   memoStats?: NullableMemoStats | null;
   manualMemo?: Pick<ManualMemoization, 'useMemo' | 'useCallback' | 'reactMemo' | 'reactMemoHasComparator'>;
+  rejectionKind?: FunctionAnalysis['rejectionKind'];
+  diagnostics?: { kind: CompilerDiagnostic['kind']; reason: string; category?: string }[];
 }
 
 export interface JsonFinding {
@@ -288,12 +332,16 @@ export interface JsonFinding {
 }
 
 export interface AnalysisDocument extends DocumentEnvelope {
-  schemaVersion: 2;
+  schemaVersion: 3;
   command: 'analyze';
   summary: {
     functions: number;
     compiled: number;
-    memoCacheEmitted: number;
+    reportedMemoCachePositive: number;
+    reportedMemoCacheZero: number;
+    reportedMemoCacheUnavailable: number;
+    suppressionRejected: number;
+    suppressionRejectedWithRisks: number;
     skipped: number;
     errors: number;
     findings: number;
@@ -304,7 +352,10 @@ export interface AnalysisDocument extends DocumentEnvelope {
   functions: JsonFunction[];
   findings: JsonFinding[];
   unparseable: { file: string; error: string }[];
-  annotate?: Omit<AnnotateResult, 'targets'> & { mode: AnnotateMode };
+  annotate?: Omit<AnnotateResult, 'targets'> & {
+    mode: AnnotateMode;
+    targets?: (Omit<NonNullable<AnnotateResult['targets']>[number], 'filePath'> & { file: string })[];
+  };
 }
 
 export interface JsonDirective {
@@ -319,10 +370,11 @@ export interface JsonDirective {
   reason?: string;
   justified?: true;
   revalidated?: true;
+  evidence?: RevalidationEvidence;
 }
 
 export interface LintDocument extends DocumentEnvelope {
-  schemaVersion: 2;
+  schemaVersion: 3;
   command: 'lint';
   summary: {
     directives: number;

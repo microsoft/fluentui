@@ -16,6 +16,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const MenuGroup: ForwardRefComponent<MenuGroupProps> = /*#__PURE__*/ composeComponent(
   'MenuGroup',
   useMenuGroup,
-  renderMenuGroup,
   useMenuGroupContextValues,
+  renderMenuGroup,
 );

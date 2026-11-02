@@ -16,14 +16,18 @@ and outside-month emphasis are consumer styling decisions.
 
 ### Keyboard navigation
 
-The day table declares `focusgroup="grid rowflow"`; the month and year pickers declare
-`focusgroup="grid manual"` with `focusgrouprow` on each row and `focusgroupstart` on the initial
-eligible cell. In-grid arrow navigation is delegated to focusgroup; Calendar does not install a
-custom roving-focus or arrow-key fallback. This requires a runtime with focusgroup V2 grid support.
-The currently released polyfill does not provide that support yet, and the corresponding browser
-keyboard tests remain pending the compatible release. Weekday and week-number headers are not
-navigation targets. Unavailable cells are skipped unless `allFocusable` is set; they cannot be
-selected in either mode.
+Each grid has a single roving tab stop: only one cell has `tabindex="0"`, and the last focused cell
+keeps it until the grid shows a different date or layout. Calendar implements arrow navigation itself,
+so it works in every browser without `focusgroup` support or a polyfill.
+
+- **Day grid:** Arrow Left/Right move to the previous/next day and continue into the adjacent week.
+  Arrow Up/Down move to the same weekday in the previous/next week. Home/End move to the first/last
+  available day of the week. Reaching an available day of an adjacent month loads that month.
+- **Month and year grids:** Arrow Left/Right stay within the row, Arrow Up/Down keep the column, and
+  Home/End move to the first/last available cell of the grid.
+
+Unavailable cells are skipped unless `allFocusable` is set; they cannot be selected in either mode.
+Weekday and week-number headers are not navigation targets. Modified arrows are left to the page.
 If no visible day is eligible, imperative day-picker focus falls back to the next available
 month-navigation control, preferring Next month.
 
@@ -56,7 +60,7 @@ initial uncontrolled value. Calendar preserves focus when a layout change hides 
 without reclaiming focus that has already moved outside the calendar.
 
 The month and year pickers each default to four columns. Set `calendarMonthColumns` and
-`calendarYearColumns` independently to `3` or `4`; row grouping and focusgroup navigation use
+`calendarYearColumns` independently to `3` or `4`; row grouping and arrow navigation use
 the same configuration. Both grids always contain twelve cells.
 
 ```tsx

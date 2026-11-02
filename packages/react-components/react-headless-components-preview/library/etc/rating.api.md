@@ -20,9 +20,12 @@ import { RefAttributes } from '@fluentui/react-utilities';
 import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
 import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
 import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
+import { useRatingItemContextValue_unstable as useRatingItemContextValue } from '@fluentui/react-rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
+
+export { RatingContextValues }
 
 // @public
 export const RatingItem: ForwardRefExoticComponent<Omit<Partial<RatingItemSlots>, "root"> & Omit<{
@@ -32,6 +35,9 @@ children?: any;
 }, "ref"> & {
 value?: number;
 } & RefAttributes<HTMLSpanElement>>;
+
+// @public
+export type RatingItemContextValue = ReturnType<typeof useRatingItemContextValue>;
 
 export { RatingItemProps }
 
@@ -61,6 +67,8 @@ export const useRatingContextValues: (state: RatingState) => RatingContextValues
 
 // @public
 export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
+
+export { useRatingItemContextValue }
 
 // (No @packageDocumentation comment for this package)
 
