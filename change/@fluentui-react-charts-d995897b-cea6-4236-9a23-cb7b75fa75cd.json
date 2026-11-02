@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add configurable focus restoration after data updates for line, vertical bar, gauge, and declarative charts while preserving custom callout state.",
+  "comment": "Add configurable focus restoration after data updates for line, vertical bar, gauge, and declarative charts.",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

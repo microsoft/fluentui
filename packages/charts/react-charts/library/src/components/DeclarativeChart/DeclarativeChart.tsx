@@ -407,19 +407,28 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegends = [];
   }
 
-  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
-  const [previousChartSchema, setPreviousChartSchema] = React.useState(props.chartSchema);
-  if (previousChartSchema !== props.chartSchema) {
-    // Reconcile before children commit so fresh data never arrives with the previous schema's selection.
-    setPreviousChartSchema(props.chartSchema);
-    setActiveLegends(selectedLegends);
-  }
+  const [legendState, setLegendState] = React.useState<{ chartSchema: Schema; activeLegends: string[] }>({
+    chartSchema: props.chartSchema,
+    activeLegends: selectedLegends,
+  });
+  // Use incoming selection until the effect synchronizes local legend state.
+  const activeLegends = legendState.chartSchema === props.chartSchema ? legendState.activeLegends : selectedLegends;
+
   const onActiveLegendsChange = (keys: string[]) => {
-    setActiveLegends(keys);
+    setLegendState({ chartSchema: props.chartSchema, activeLegends: keys });
     if (props.onSchemaChange) {
       props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
     }
   };
+
+  React.useEffect(() => {
+    const { selectedLegends: nextSelectedLegends } = sanitizeJson(props.chartSchema).plotlySchema;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLegendState({
+      chartSchema: props.chartSchema,
+      activeLegends: isArrayOrTypedArray(nextSelectedLegends) ? nextSelectedLegends : [],
+    });
+  }, [props.chartSchema]);
 
   const multiSelectLegendProps = {
     canSelectMultipleLegends: true,

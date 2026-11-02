@@ -418,20 +418,25 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     const chartRef = React.useRef<Chart>(null);
     const { onSubplotFocus, getSubplotFocusRestorePolicy } = useCompositeChartFocusRestore(props.focusRestorePolicy);
 
-    const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
-    const [previousSelectedLegends, setPreviousSelectedLegends] = React.useState(props.chartSchema.selectedLegends);
-    if (previousSelectedLegends !== props.chartSchema.selectedLegends) {
-      // Reconcile before children commit so fresh data never arrives with the previous schema's selection.
-      setPreviousSelectedLegends(props.chartSchema.selectedLegends);
-      setActiveLegends(selectedLegends);
-    }
+    const [legendState, setLegendState] = React.useState<{ selectedLegends?: string[]; activeLegends: string[] }>({
+      selectedLegends: props.chartSchema.selectedLegends,
+      activeLegends: selectedLegends,
+    });
+    // Use incoming selection until the effect synchronizes local legend state.
+    const activeLegends =
+      legendState.selectedLegends === props.chartSchema.selectedLegends ? legendState.activeLegends : selectedLegends;
 
     const onActiveLegendsChange = (keys: string[]) => {
-      setActiveLegends(keys);
+      setLegendState({ selectedLegends: props.chartSchema.selectedLegends, activeLegends: keys });
       if (props.onSchemaChange) {
         props.onSchemaChange({ vegaLiteSpec, selectedLegends: keys });
       }
     };
+
+    React.useEffect(() => {
+      const nextSelectedLegends = props.chartSchema.selectedLegends;
+      setLegendState({ selectedLegends: nextSelectedLegends, activeLegends: nextSelectedLegends ?? [] });
+    }, [props.chartSchema.selectedLegends]);
 
     const multiSelectLegendProps = {
       canSelectMultipleLegends: true,
