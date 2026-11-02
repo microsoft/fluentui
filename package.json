@@ -375,7 +375,7 @@
     "d3-format": "3.1.0",
     "d3-scale/d3-time-format": "3.0.0",
     "esbuild": "0.25.0",
-    "handlebars": "^4.7.9",
+    "handlebars": "^4.7.10",
     "just-scripts-utils/tar": "^7.5.8",
     "micromatch": "4.0.8",
     "micromatch/braces": "^3.0.3",
