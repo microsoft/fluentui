@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.6.16",
+      "tag": "@fluentui/merge-styles_v8.6.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "8bc156e925bd289f9776e9e74d1d40ba5de8f4c7",
+            "comment": "fix(merge-styles): contain serialized CSS output for server rendering."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:33 GMT",
       "version": "8.6.15",
       "tag": "@fluentui/merge-styles_v8.6.15",

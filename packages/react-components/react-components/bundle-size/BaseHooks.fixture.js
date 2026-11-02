@@ -126,6 +126,7 @@ import {
   useToolbarToggleButtonBase_unstable,
 } from '@fluentui/react-toolbar';
 import { useTooltipBase_unstable } from '@fluentui/react-tooltip';
+import { useTreeBase_unstable, useTreeItemLayoutBase_unstable } from '@fluentui/react-tree';
 
 console.log(
   useAccordionBase_unstable,
@@ -233,6 +234,8 @@ console.log(
   useToolbarRadioButtonBase_unstable,
   useToolbarToggleButtonBase_unstable,
   useTooltipBase_unstable,
+  useTreeBase_unstable,
+  useTreeItemLayoutBase_unstable,
 );
 
 export default {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.11.3)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.11.2..@fluentui/react-button_v9.11.3)
+
+### Patches
+
+- fix: preserve selected toggle button icon contrast in forced-colors mode, including toolbar radio and toggle buttons ([PR #36935](https://github.com/microsoft/fluentui/pull/36935) by paulmardling@microsoft.com)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.11.2)
 

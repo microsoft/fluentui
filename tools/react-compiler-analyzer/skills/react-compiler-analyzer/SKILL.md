@@ -1,6 +1,6 @@
 ---
 name: react-compiler-analyzer
-description: Configure and run @fluentui/react-compiler-analyzer, interpret compiler acceptance and memo-cache results, assess manual memo migration candidates, and maintain use memo directives. Use when enabling React Compiler, auditing compiler coverage or runtime risks, or working with rca.config.json.
+description: Configure and run @fluentui/react-compiler-analyzer, interpret compiler acceptance and reported memo statistics, assess manual memo migration candidates, and maintain use memo directives. Use when enabling React Compiler, auditing compiler coverage or runtime risks, reviewing suppression-related rejection, or working with rca.config.json.
 ---
 
 # React Compiler Analyzer
@@ -33,8 +33,9 @@ package version.
 2. Run `analyze` with an explicit `--format json` for machine-readable results.
 3. Use the JSON summary and function records to distinguish:
    - compiler acceptance;
-   - accepted functions with an emitted memo cache;
-   - accepted functions without an emitted memo cache;
+   - accepted functions with positive, zero, or unavailable reported memo statistics;
+   - actual emitted caching, which normal analysis does not verify;
+   - suppression-related rejection and any risks retained on those functions;
    - manual memo migration candidates.
 4. Use human `--format cli --verbose` output only when detailed diagnostics or candidate evidence
    is needed.
@@ -46,6 +47,10 @@ package version.
 - Never use `analyze --annotate` or `lint --fix` unless the user explicitly requests source
   changes.
 - Never interpret compiler acceptance or memo-slot counts as a performance-value ranking.
+- Never infer actual emitted caches or caching of a particular risky operation from analysis-only
+  counters. Zero slots do not disqualify preventive bailouts; positive slots do not prove unsafe caching.
+- Treat redundancy as profile-specific. Justified guards remain protected with `--fix`;
+  un-justified cleanup retains its existing behavior and needs consumer-build review.
 - Do not enable `all` compilation mode. Use `infer` by default. If source directives are already
   present and the user has not chosen a mode, ask before selecting `infer` or `annotation` and show
   any explicit build-mode evidence in the question.

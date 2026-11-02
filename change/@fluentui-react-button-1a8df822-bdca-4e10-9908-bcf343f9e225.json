@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: preserve selected toggle button icon contrast in forced-colors mode, including toolbar radio and toggle buttons",
-  "packageName": "@fluentui/react-button",
-  "email": "paulmardling@microsoft.com"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-slider
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.6.8)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.6.7..@fluentui/react-slider_v9.6.8)
+
+### Patches
+
+- fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
 
 ## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.6.7)
 

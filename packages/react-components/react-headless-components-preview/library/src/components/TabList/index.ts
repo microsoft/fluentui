@@ -6,4 +6,10 @@ export { renderTabList } from './renderTabList';
 export { useTabList } from './useTabList';
 export { useTabListContext } from './useTabListContext';
 export { useTabListContextValues } from './useTabListContextValues';
-export type { TabListSlots, TabListProps, TabListState } from './TabList.types';
+export type {
+  TabListSlots,
+  TabListProps,
+  TabListState,
+  TabListContextValue,
+  TabListContextValues,
+} from './TabList.types';

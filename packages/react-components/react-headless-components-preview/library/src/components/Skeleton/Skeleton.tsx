@@ -10,6 +10,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Skeleton = /*#__PURE__*/ composeComponent(
   'Skeleton',
   useSkeleton,
-  renderSkeleton,
   useSkeletonContextValues,
+  renderSkeleton,
 );

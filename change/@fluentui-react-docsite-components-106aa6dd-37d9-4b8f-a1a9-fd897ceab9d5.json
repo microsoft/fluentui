@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix documentation hash routes and section navigation for encoded anchor separators.",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "mgodbolt@microsoft.com"
-}

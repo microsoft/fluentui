@@ -565,6 +565,8 @@ import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
+import { MenuBaseProps } from '@fluentui/react-menu';
+import { MenuBaseState } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { menuButtonClassNames } from '@fluentui/react-button';
 import { MenuButtonProps } from '@fluentui/react-button';
@@ -605,6 +607,8 @@ import { MenuItemLinkSlots } from '@fluentui/react-menu';
 import { MenuItemLinkState } from '@fluentui/react-menu';
 import { MenuItemProps } from '@fluentui/react-menu';
 import { MenuItemRadio } from '@fluentui/react-menu';
+import { MenuItemRadioBaseProps } from '@fluentui/react-menu';
+import { MenuItemRadioBaseState } from '@fluentui/react-menu';
 import { menuItemRadioClassNames } from '@fluentui/react-menu';
 import { MenuItemRadioProps } from '@fluentui/react-menu';
 import { MenuItemRadioState } from '@fluentui/react-menu';
@@ -640,6 +644,7 @@ import { MenuSplitGroupSlots } from '@fluentui/react-menu';
 import { MenuSplitGroupState } from '@fluentui/react-menu';
 import { MenuState } from '@fluentui/react-menu';
 import { MenuTrigger } from '@fluentui/react-menu';
+import { MenuTriggerBaseProps } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
@@ -1744,6 +1749,7 @@ import { useListItem_unstable } from '@fluentui/react-list';
 import { useListItemStyles_unstable } from '@fluentui/react-list';
 import { useListStyles_unstable } from '@fluentui/react-list';
 import { useMenu_unstable } from '@fluentui/react-menu';
+import { useMenuBase_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
 import { useMenuContext_unstable } from '@fluentui/react-menu';
@@ -1757,24 +1763,32 @@ import { useMenuGroupHeader_unstable } from '@fluentui/react-menu';
 import { useMenuGroupHeaderStyles_unstable } from '@fluentui/react-menu';
 import { useMenuGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItem_unstable } from '@fluentui/react-menu';
+import { useMenuItemBase_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { useMenuItemCheckboxBase_unstable } from '@fluentui/react-menu';
 import { useMenuItemCheckboxStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemLink_unstable } from '@fluentui/react-menu';
+import { useMenuItemLinkBase_unstable } from '@fluentui/react-menu';
 import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { useMenuItemRadioBase_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchBase_unstable } from '@fluentui/react-menu';
 import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
+import { useMenuListBase_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
 import { useMenuListStyles_unstable } from '@fluentui/react-menu';
 import { useMenuPopover_unstable } from '@fluentui/react-menu';
+import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
 import { useMenuPopoverStyles_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
+import { useMenuTriggerBase_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
@@ -3154,6 +3168,10 @@ export { makeStyles }
 
 export { Menu }
 
+export { MenuBaseProps }
+
+export { MenuBaseState }
+
 export { MenuButton }
 
 export { menuButtonClassNames }
@@ -3234,6 +3252,10 @@ export { MenuItemProps }
 
 export { MenuItemRadio }
 
+export { MenuItemRadioBaseProps }
+
+export { MenuItemRadioBaseState }
+
 export { menuItemRadioClassNames }
 
 export { MenuItemRadioProps }
@@ -3303,6 +3325,8 @@ export { MenuSplitGroupState }
 export { MenuState }
 
 export { MenuTrigger }
+
+export { MenuTriggerBaseProps }
 
 export { MenuTriggerChildProps }
 
@@ -5512,6 +5536,8 @@ export { useListStyles_unstable }
 
 export { useMenu_unstable }
 
+export { useMenuBase_unstable }
+
 export { useMenuButton_unstable }
 
 export { useMenuButtonStyles_unstable }
@@ -5538,15 +5564,23 @@ export { useMenuGroupStyles_unstable }
 
 export { useMenuItem_unstable }
 
+export { useMenuItemBase_unstable }
+
 export { useMenuItemCheckbox_unstable }
+
+export { useMenuItemCheckboxBase_unstable }
 
 export { useMenuItemCheckboxStyles_unstable }
 
 export { useMenuItemLink_unstable }
 
+export { useMenuItemLinkBase_unstable }
+
 export { useMenuItemLinkStyles_unstable }
 
 export { useMenuItemRadio_unstable }
+
+export { useMenuItemRadioBase_unstable }
 
 export { useMenuItemRadioStyles_unstable }
 
@@ -5554,9 +5588,13 @@ export { useMenuItemStyles_unstable }
 
 export { useMenuItemSwitch_unstable }
 
+export { useMenuItemSwitchBase_unstable }
+
 export { useMenuItemSwitchStyles_unstable }
 
 export { useMenuList_unstable }
+
+export { useMenuListBase_unstable }
 
 export { useMenuListContext_unstable }
 
@@ -5566,6 +5604,8 @@ export { useMenuListStyles_unstable }
 
 export { useMenuPopover_unstable }
 
+export { useMenuPopoverBase_unstable }
+
 export { useMenuPopoverStyles_unstable }
 
 export { useMenuSplitGroup_unstable }
@@ -5573,6 +5613,8 @@ export { useMenuSplitGroup_unstable }
 export { useMenuSplitGroupStyles_unstable }
 
 export { useMenuTrigger_unstable }
+
+export { useMenuTriggerBase_unstable }
 
 export { useMenuTriggerContext_unstable }
 

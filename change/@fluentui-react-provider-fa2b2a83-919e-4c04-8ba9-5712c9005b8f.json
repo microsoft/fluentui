@@ -1,6 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: pass large subprocess scripts through stdin to avoid Linux E2BIG",
-  "packageName": "@fluentui/react-provider",
-  "email": "dmytrokirpa@microsoft.com"
-}

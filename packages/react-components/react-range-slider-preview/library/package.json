@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-range-slider-preview",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Fluent UI React RangeSlider component",
   "type": "module",
   "main": "lib-commonjs/index.cjs",

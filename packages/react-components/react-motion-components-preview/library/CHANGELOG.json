@@ -2,6 +2,20 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "0.15.10",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "0.15.9",
       "comments": {
