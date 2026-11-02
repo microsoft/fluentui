@@ -105,7 +105,10 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
 };
 
 // @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+export const PopoverTrigger: {
+    (props: PopoverTriggerProps): JSXElement | null;
+    displayName: string;
+};
 
 // @public
 export type PopoverTriggerProps = Omit<TriggerProps<PopoverTriggerChildProps>, 'children'> & {

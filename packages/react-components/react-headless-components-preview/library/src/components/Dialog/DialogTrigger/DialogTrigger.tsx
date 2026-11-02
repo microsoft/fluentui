@@ -1,10 +1,8 @@
 'use client';
 
-import type * as React from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useDialogTrigger } from './useDialogTrigger';
 import { renderDialogTrigger } from './renderDialogTrigger';
-import type { DialogTriggerProps } from './DialogTrigger.types';
 import { composeComponentWithoutRef } from '../../../utils/composeComponent';
 
 /**
@@ -14,7 +12,7 @@ import { composeComponentWithoutRef } from '../../../utils/composeComponent';
  * When placed outside `DialogSurface`, it defaults to `action="open"`.
  * When placed inside `DialogSurface`, it defaults to `action="close"`.
  */
-export const DialogTrigger: React.FC<DialogTriggerProps> = /*#__PURE__*/ composeComponentWithoutRef(
+export const DialogTrigger = /*#__PURE__*/ composeComponentWithoutRef(
   'DialogTrigger',
   useDialogTrigger,
   renderDialogTrigger,

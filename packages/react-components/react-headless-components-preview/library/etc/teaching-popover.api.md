@@ -297,7 +297,10 @@ export { TeachingPopoverTitleSlots }
 export { TeachingPopoverTitleState }
 
 // @public
-export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
+export const TeachingPopoverTrigger: {
+    (props: TeachingPopoverTriggerProps): JSXElement | null;
+    displayName: string;
+};
 
 // @public
 export type TeachingPopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType> = PopoverTriggerChildProps<Type, HeadlessPopoverTriggerChildExtras>;

@@ -15,7 +15,7 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
  * This component uses the native HTML `<dialog>` element (via `DialogSurface`) for
  * built-in focus trapping, backdrop, and accessibility semantics.
  */
-export const Dialog: React.FC<DialogProps> = /*#__PURE__*/ React.memo(
+export const Dialog: React.NamedExoticComponent<DialogProps> = /*#__PURE__*/ React.memo(
   /*#__PURE__*/ composeComponentWithoutRef('Dialog', useDialog, useDialogContextValues, renderDialog),
 );
 

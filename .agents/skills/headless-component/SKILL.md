@@ -180,9 +180,10 @@ Tabster, positioning, portals, native popovers, or nested trigger composition.
 - Use `ForwardRefComponent<Props>` for ref-capable primitives, built with the
   shared `composeComponent` helper (`src/utils/composeComponent.ts`) rather than
   a hand-written `React.forwardRef`. Never use `React.FC`.
-- For provider-only components with no meaningful DOM ref, use a normally typed
-  function returning `JSXElement`; do not invent a fake ref and do not use
-  `React.FC`.
+- For components with no meaningful DOM ref (roots that only provide context,
+  triggers that clone their child), use `composeComponentWithoutRef` from the
+  same module. Do not invent a fake ref and do not annotate the export as
+  `React.FC`; let it keep the helper's return type.
 - Keep the component thin: state hook, optional context-values hook, renderer.
 - Pass the `displayName` as the first argument of `composeComponent`; it is set on
   every exported React component, in production as well.
@@ -206,8 +207,22 @@ export const ComponentName: ForwardRefComponent<ComponentNameProps> = /*#__PURE_
 );
 ```
 
-For compound roots, pass the context-values hook as the fourth argument:
-`composeComponent('ComponentName', useComponentName, renderComponentName, useComponentNameContextValues)`.
+The import path is relative to the component folder, so a nested part such as
+`components/Badge/PresenceBadge/` imports `'../../../utils/composeComponent'`.
+
+For compound roots, pass the context-values hook as the third argument; the
+renderer always comes last:
+`composeComponent('ComponentName', useComponentName, useComponentNameContextValues, renderComponentName)`.
+
+Components without a ref use the same argument order:
+
+```tsx
+export const ComponentNameTrigger = /*#__PURE__*/ composeComponentWithoutRef(
+  'ComponentNameTrigger',
+  useComponentNameTrigger,
+  renderComponentNameTrigger,
+);
+```
 
 The optional context-values hook is resolved once when the component is composed,
 never while rendering.
