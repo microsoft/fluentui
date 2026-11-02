@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Prevent selecting a Dropdown option after the Dropdown becomes disabled.",
+  "packageName": "@fluentui/react",
+  "email": "42275242+Xapollon430@users.noreply.github.com"
+}
