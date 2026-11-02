@@ -58,7 +58,14 @@ migrations were no-ops for this workspace: release tags and executor cache setti
 current; flat ESLint configuration and snapshot headers were already migrated; removed ESLint rules,
 pnpm outputs and obsolete Jest options were absent. The ts-jest solution-setup migration does not
 apply to this workspace's non-solution TypeScript configuration. The TypeScript 5.8 update is required
-for generator compatibility; no AI migration prompts or optional Jest, SWC, or formatter upgrades were applied.
+for generator compatibility; no optional Jest, SWC, or formatter upgrades were applied.
+
+After the initial non-agentic upgrade, Nx's agentic handoff flow was run separately with Copilot
+processing the official flat-config, ban-types, and ts-jest verification prompts. Flat-config
+verification passed lint across all 258 lint-enabled projects without changing rules; ban-types
+was absent and the ts-jest solution-setup migration was inapplicable. The helpers made no source
+changes. Their final affected validation selected no projects against the supplemental run's
+starting commit, so it adds no build or unit-test coverage for the original upgrade.
 
 ## PR Checklist
 
