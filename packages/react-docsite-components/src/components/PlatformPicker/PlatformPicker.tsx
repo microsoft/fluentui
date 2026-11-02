@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, FocusZone, FontWeights, HighContrastSelector } from '@fluentui/react';
+import { css, FocusZone, FontWeights, getTheme, HighContrastSelector } from '@fluentui/react';
 import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { INavPage } from '../Nav/index';
 import { IPlatformPickerProps, IPlatform } from './PlatformPicker.types';
@@ -71,6 +71,10 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
     },
     flexContainer: {
       flexDirection: 'row-reverse',
+      columnGap: getTheme().spacing.s1,
+    },
+    icon: {
+      flexShrink: 0,
     },
     label: {
       textAlign: 'left',

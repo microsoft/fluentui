@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "test(react-positioning): pin portable browser geometry and lifecycle contracts with exact engine output",
+  "packageName": "@fluentui/react-positioning",
+  "email": "dmytrokirpa@microsoft.com"
+}

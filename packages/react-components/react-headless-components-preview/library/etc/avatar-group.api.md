@@ -19,7 +19,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
@@ -58,7 +58,7 @@ export const AvatarGroupPopover: {
 };
 
 // @public
-export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'trapFocus'>;
+export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'inertTrapFocus'>;
 
 // @public
 export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & {

@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useCalendarDay_unstable } from './useCalendarDay';
-import { useCalendarDayContextValues_unstable } from './useCalendarDayContextValues';
 import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
 import { renderCalendarDay_unstable } from './renderCalendarDay';
 import type { CalendarDayHandle, CalendarDayProps } from './CalendarDay.types';
@@ -14,11 +13,10 @@ import type { CalendarDayHandle, CalendarDayProps } from './CalendarDay.types';
  */
 export const CalendarDay = React.forwardRef<CalendarDayHandle, CalendarDayProps>((props, ref) => {
   const state = useCalendarDay_unstable(props, ref);
-  const contextValues = useCalendarDayContextValues_unstable(state);
 
   useCalendarDayStyles_unstable(state);
 
-  return renderCalendarDay_unstable(state, contextValues);
+  return renderCalendarDay_unstable(state);
 });
 
 CalendarDay.displayName = 'CalendarDay';

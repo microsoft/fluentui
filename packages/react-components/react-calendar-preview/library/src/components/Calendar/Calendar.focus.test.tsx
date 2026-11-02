@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flushSync } from 'react-dom';
 import { act, fireEvent, render } from '@testing-library/react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -7,10 +8,8 @@ import { useCalendarBase_unstable } from './useCalendar';
 import { useCalendarContextValues_unstable } from './useCalendarContextValues';
 import { renderCalendar_unstable } from './renderCalendar';
 import { useCalendarDay_unstable } from '../CalendarDay/useCalendarDay';
-import { useCalendarDayContextValues_unstable } from '../CalendarDay/useCalendarDayContextValues';
 import { renderCalendarDay_unstable } from '../CalendarDay/renderCalendarDay';
 import { useCalendarMonth_unstable } from '../CalendarMonth/useCalendarMonth';
-import { useCalendarMonthContextValues_unstable } from '../CalendarMonth/useCalendarMonthContextValues';
 import { renderCalendarMonth_unstable } from '../CalendarMonth/renderCalendarMonth';
 import type { CalendarProps } from './Calendar.types';
 import type { CalendarDay } from '../CalendarDay/CalendarDay';
@@ -20,13 +19,13 @@ import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/C
 
 const ClasslessCalendarDay: typeof CalendarDay = React.forwardRef<CalendarDayHandle, CalendarDayProps>((props, ref) => {
   const state = useCalendarDay_unstable(props, ref);
-  return renderCalendarDay_unstable(state, useCalendarDayContextValues_unstable(state));
+  return renderCalendarDay_unstable(state);
 });
 
 const ClasslessCalendarMonth: typeof CalendarMonth = React.forwardRef<CalendarMonthHandle, CalendarMonthProps>(
   (props, ref) => {
     const state = useCalendarMonth_unstable(props, ref);
-    return renderCalendarMonth_unstable(state, useCalendarMonthContextValues_unstable(state));
+    return renderCalendarMonth_unstable(state);
   },
 );
 
@@ -108,6 +107,29 @@ describe.each([
   afterEach(() => {
     act(() => jest.runOnlyPendingTimers());
     jest.useRealTimers();
+  });
+
+  it('focuses the new day after a synchronous controlled month selection', () => {
+    const ControlledCalendar = () => {
+      const [displayedDate, setDisplayedDate] = React.useState(today);
+      return (
+        <Component
+          defaultValue={today}
+          today={today}
+          layout="sideBySide"
+          displayedDate={displayedDate}
+          onDisplayedDateChange={(_, data) => flushSync(() => setDisplayedDate(data.displayedDate))}
+        />
+      );
+    };
+    const { getByRole } = render(<ControlledCalendar />);
+    const december = getByRole('gridcell', { name: 'December' });
+    act(() => december.focus());
+
+    fireEvent.click(december);
+    act(() => jest.advanceTimersToNextFrame());
+
+    expect(getByRole('button', { name: 'December 18, 2020' }).closest('td')).toHaveFocus();
   });
 
   it('reserves behavioral picker markers while preserving consumer classes', () => {

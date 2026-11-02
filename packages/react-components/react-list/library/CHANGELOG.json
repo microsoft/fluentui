@@ -2,6 +2,20 @@
   "name": "@fluentui/react-list",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.7.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Oct 2026 16:49:00 GMT",
       "version": "9.7.0",
       "tag": "@fluentui/react-list_v9.7.0",

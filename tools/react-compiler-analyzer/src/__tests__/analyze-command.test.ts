@@ -11,7 +11,7 @@ import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput } from './helpers/output';
+import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -445,7 +445,7 @@ describe('multi-path analyze', () => {
     expect(html).not.toContain('id="pkg-beta--manual-memo-migration-candidates"');
     expect(html).not.toContain('<details class="fold');
     expect(html).not.toContain('Candidate Legend');
-    expect(html).not.toContain('Compiler accepted (memo cache emitted)</span>');
+    expect(html).not.toContain('Compiler accepted (positive reported memo slots)</span>');
     expect(html.match(/<table>/g)).toHaveLength(3);
   });
 
@@ -636,7 +636,7 @@ describe('analyze command — scan log wrapping', () => {
     // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
     const wrapper = captured
       .slice(openIdx, closeIdx + 1)
-      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .map(line => normalizeCompilerVersions(line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>')))
       .join('\n');
 
     expect(wrapper).toMatchInlineSnapshot(`
@@ -689,6 +689,9 @@ describe('analyze command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Analysis ━━
 
+      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
+
       📋 Scan & compile log
       ─────────────────────
 
@@ -707,16 +710,16 @@ describe('analyze command — scan log wrapping', () => {
       wrap-test-pkg
       ─────────────
 
-      Status                                     Count  Percentage
-      ─────────────────────────────────────────  ─────  ────────────────
-      Compiler accepted (memo cache emitted)     1      100.0%
-      Compiler accepted (no memo cache emitted)  0      0.0%
-      Manual Memo Migration Candidates           0      0.0% of accepted
-      Skipped                                    0      0.0%
-      Errors                                     0      0.0%
-      Total                                      1
+      Status                                            Count  Percentage
+      ────────────────────────────────────────────────  ─────  ────────────────
+      Compiler accepted (positive reported memo slots)  1      100.0%
+      Compiler accepted (zero reported memo slots)      0      0.0%
+      Manual Memo Migration Candidates                  0      0.0% of accepted
+      Skipped                                           0      0.0%
+      Errors                                            0      0.0%
+      Total                                             1
 
-      ▸ Compiler accepted (memo cache emitted) (1)
+      ▸ Compiler accepted (positive reported memo slots) (1)
 
       Location     Function  Memo Slots  Memo Blocks  Memo Values
       ───────────  ────────  ──────────  ───────────  ───────────
@@ -727,8 +730,8 @@ describe('analyze command — scan log wrapping', () => {
 
       - Total functions analyzed: 1
       - Compiler accepted: 1 (100.0%)
-        - Memo cache emitted: 1 (100.0% of total)
-        - No memo cache emitted: 0 (0.0% of total)
+        - Positive reported memo slots: 1 (100.0% of total)
+        - Zero reported memo slots: 0 (0.0% of total)
       - Skipped (opted out or not a component/hook): 0 (0.0%)
       - Errors (compiler bailout): 0 (0.0%)
       - Manual memo migration candidates: 0
@@ -738,12 +741,12 @@ describe('analyze command — scan log wrapping', () => {
       ▸ Legend
 
       Term         Meaning
-      ───────────  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-      Memo Slots   Number of retained runtime cache slots reported by the compiler. Zero means the function was accepted without emitting a memo cache.
-      Memo Blocks  Number of retained code blocks (JSX elements, conditional branches, etc.) wrapped with cache checks.
-      Memo Values  Number of retained values (variables, expressions, hook results) cached between renders.
+      ───────────  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      Memo Slots   Cache slots reported during analysis. Zero means zero reported slots, not verified absence of emitted caches.
+      Memo Blocks  Memo blocks reported during analysis; emitted code is not inspected.
+      Memo Values  Memo values reported during analysis; this does not identify which risky operation was cached.
 
-        Memo counters describe emitted compiler output; they do not rank expected performance benefit.
+        Memo counters are analysis-only statistics. Actual emitted caching is unverified; they do not rank expected performance benefit.
 
 
         Tip: Run lint <path> for directive health checks."

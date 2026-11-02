@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Dropdown: ForwardRefComponent<DropdownProps> = /*#__PURE__*/ composeComponent(
   'Dropdown',
   useDropdown,
-  renderDropdown,
   useDropdownContextValues,
+  renderDropdown,
 );

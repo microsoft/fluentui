@@ -18,6 +18,9 @@ type SourceAction =
  */
 export async function applyFixes(results: DirectiveAnalysis[]): Promise<FixResult> {
   const actionable = results.filter(r => {
+    if (r.justified) {
+      return false;
+    }
     if (r.status === 'redundant' && r.directiveType === 'use-no-memo') {
       return true;
     }

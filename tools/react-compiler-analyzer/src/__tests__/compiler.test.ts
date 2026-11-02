@@ -12,6 +12,49 @@ import {
 
 describe('compileSource — TypeScript parsing per extension', () => {
   it.each([
+    ['mutable namespace', 'namespace Values { export let value = 1; }', 'Values.value'],
+    ['import equals require', 'import value = require("./value");', 'value'],
+    ['import equals alias', 'namespace Values { export const value = 1; } import value = Values.value;', 'value'],
+    ['parameter property', 'class Value { constructor(public value: number) {} }', 'new Value(n)'],
+    ['enum', 'enum Values { One = 1 }', 'Values.One'],
+    ['const enum', 'const enum Values { One = 1 }', 'Values.One'],
+    ['auto-accessor', 'class Value { accessor value = 1; }', 'new Value()'],
+    ['ambient declarations', 'declare function read(): number; class Value { declare value: number; }', 'read()'],
+    ['satisfies', 'const value = { value: 1 } satisfies { value: number };', 'value'],
+    [
+      'instantiation expression',
+      'declare function identity<T>(value: T): T; const value = identity<number>;',
+      'value(n)',
+    ],
+  ])('analyzes a real hook alongside %s without lowering', async (_name, declaration, expression) => {
+    const source = `import { useState } from 'react';
+${declaration}
+export function useValue() {
+  const [n] = useState(0);
+  return { value: ${expression}, n };
+}`;
+    const result = await compileSource(source, '/virtual/value.ts', { compilationMode: 'infer' });
+    expect(result.error).toBeUndefined();
+    expect(result.events).toContainEqual(expect.objectContaining({ kind: 'CompileSuccess', fnName: 'useValue' }));
+  });
+
+  it('analyzes an overloaded hook exported with a TypeScript export assignment', async () => {
+    const source = `import { useState } from 'react';
+function useValue(initial: number): { value: number };
+function useValue(): { value: number };
+function useValue(initial = 0) {
+  const [value] = useState(initial);
+  return { value };
+}
+export = useValue;`;
+    const result = await compileSource(source, '/virtual/value.ts', { compilationMode: 'infer' });
+    expect(result.error).toBeUndefined();
+    expect(result.events.filter(event => event.kind === 'CompileSuccess')).toEqual([
+      expect.objectContaining({ fnName: 'useValue' }),
+    ]);
+  });
+
+  it.each([
     ['label.tsx', 'Label'],
     ['useLabel.ts', 'useLabel'],
   ])('compiles %s alongside a declared class field', async (fileName, functionName) => {

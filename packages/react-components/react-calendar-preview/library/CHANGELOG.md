@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-calendar-preview
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-preview_v0.2.0)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-preview_v0.1.0..@fluentui/react-calendar-preview_v0.2.0)
+
+### Minor changes
+
+- feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components; preserve button currentTarget for picker selection events and support selection from SVG and descendant-focusgroup cell content; clear range hover and pressed state when leaving editable day content; preserve cancelled-click focus, a single eligible tab stop through hidden-panel updates and reveal while excluding individually hidden dates, restricted-date focus with allFocusable, focus after synchronous controlled navigation, and explicitly empty navigation-button content ([PR #36948](https://github.com/microsoft/fluentui/pull/36948) by dmytrokirpa@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-preview_v0.1.0)
 

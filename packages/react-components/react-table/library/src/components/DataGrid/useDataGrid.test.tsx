@@ -1,7 +1,7 @@
 // `state.components` is deprecated but is still part of the state contract that styled hooks and renderers rely on.
 /* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import { renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useDataGrid_unstable } from './useDataGrid';
 import type { DataGridProps } from './DataGrid.types';
 import { createTableColumn } from '../../hooks';

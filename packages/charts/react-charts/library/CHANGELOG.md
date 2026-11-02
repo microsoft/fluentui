@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charts
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.29)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.28..@fluentui/react-charts_v9.3.29)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.3.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.28)
 
