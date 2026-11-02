@@ -150,7 +150,7 @@ The role on the surface depends on `inertTrapFocus`:
 
 ### Focus management
 
-The surface's show/hide come from the shared top-layer hooks (`useDialogLayerOpenState`, `useLayerFocusReturn`); there is no React-side focus trap or focus finder.
+The surface's show/hide come from the shared top-layer hooks (`useDialogLayerOpenState` with `returnFocus`); there is no React-side focus trap or focus finder.
 
 - **`inertTrapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
 - **`inertTrapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. Because the trap comes from inertness, not from intercepting Tab, Tab from the last focusable element may move focus to the browser UI (address bar, toolbar) before wrapping back into the surface.
