@@ -23,6 +23,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Toolbar: ['focusgroup'],
   TabList: ['focusgroup'],
   SwatchPicker: ['focusgroup'],
+  Tree: ['focusgroup'],
   List: ['focusgroup'],
 };
 
