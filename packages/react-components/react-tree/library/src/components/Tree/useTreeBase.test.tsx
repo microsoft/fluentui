@@ -235,47 +235,6 @@ describe('useTreeBase_unstable', () => {
       expect(document.activeElement).toBe(item);
     });
 
-    it.each([
-      ['ltr', 'Delete', 'Rename'],
-      ['rtl', 'Rename', 'Delete'],
-    ] as const)(
-      'leaves focus to the focus group until ArrowLeft reaches the last action in %s treegrid mode',
-      (direction, innerAction, boundaryAction) => {
-        render(
-          <BaseTree aria-label="Tree" navigationMode="treegrid">
-            <TreeItem itemType="leaf" value="1">
-              <BaseTreeItemLayout
-                actions={{
-                  visible: true,
-                  style: { direction },
-                  children: (
-                    <>
-                      <button hidden>Hidden</button>
-                      {/* Focus groups give a negative tab index to the actions that are not the tab stop */}
-                      <button tabIndex={-1}>Rename</button>
-                      <button>Delete</button>
-                    </>
-                  ),
-                }}
-              >
-                item 1
-              </BaseTreeItemLayout>
-            </TreeItem>
-          </BaseTree>,
-        );
-
-        const inner = screen.getByRole('button', { name: innerAction });
-        inner.focus();
-        fireEvent.keyDown(inner, { key: 'ArrowLeft' });
-        expect(document.activeElement).toBe(inner);
-
-        const boundary = screen.getByRole('button', { name: boundaryAction });
-        boundary.focus();
-        fireEvent.keyDown(boundary, { key: 'ArrowLeft' });
-        expect(document.activeElement).toBe(getItem('item 1'));
-      },
-    );
-
     it('moves focus into an action that overrides a hidden ancestor visibility in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">

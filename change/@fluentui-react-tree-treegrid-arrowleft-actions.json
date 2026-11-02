@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: in treegrid mode, ArrowLeft leaves the actions only from the last action it reaches, respecting the reading direction",
-  "packageName": "@fluentui/react-tree",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

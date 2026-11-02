@@ -37,27 +37,9 @@ export type TreeNavigationOptions = {
  * @internal
  */
 export const findFirstFocusableDOM: TreeNavigationOptions['findFirstFocusable'] = container =>
-  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).find(element => isFocusableDOM(element)) ??
-  null;
+  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).find(isFocusableDOM) ?? null;
 
-/**
- * Returns whether the active element is within the actions, but not within the action that ArrowLeft cannot move
- * past. The actions are a focus group, where ArrowLeft moves towards the start of the reading direction.
- */
-function hasActionTowardsArrowLeft(actions: HTMLElement, activeElement: Element | null): boolean {
-  // Focus groups give a negative tab index to the actions that are not the current tab stop
-  const focusableActions = Array.from(actions.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(action =>
-    isFocusableDOM(action, { allowNegativeTabIndex: true }),
-  );
-  const index = focusableActions.findIndex(action => action.contains(activeElement));
-  if (index === -1) {
-    return false;
-  }
-  const isRTL = actions.ownerDocument.defaultView?.getComputedStyle(actions).direction === 'rtl';
-  return isRTL ? index < focusableActions.length - 1 : index > 0;
-}
-
-function isFocusableDOM(element: HTMLElement, { allowNegativeTabIndex = false } = {}): boolean {
+function isFocusableDOM(element: HTMLElement): boolean {
   const contentEditable = element.getAttribute('contenteditable')?.toLowerCase();
   const isEditable =
     element.isContentEditable ||
@@ -66,8 +48,8 @@ function isFocusableDOM(element: HTMLElement, { allowNegativeTabIndex = false } 
     contentEditable === '';
   if (
     element.matches(':disabled') ||
-    (!allowNegativeTabIndex && element.hasAttribute('tabindex') && element.tabIndex < 0) ||
-    (element.tabIndex < 0 && !element.hasAttribute('tabindex') && !isEditable)
+    (element.hasAttribute('tabindex') && element.tabIndex < 0) ||
+    (element.tabIndex < 0 && !isEditable)
   ) {
     return false;
   }
@@ -149,10 +131,8 @@ export function useTreeNavigationBase(
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
         const actions = queryTreeItemActions(data.target);
-        const activeElement = data.target.ownerDocument.activeElement;
-        if (navigationMode === 'treegrid' && actions?.contains(activeElement)) {
-          // Focus leaves the actions from the last action ArrowLeft reaches, before that the focus group moves it
-          return hasActionTowardsArrowLeft(actions, activeElement) ? null : data.target;
+        if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
+          return data.target;
         }
         walkerRef.current.currentElement = data.target;
         return walkerRef.current.parentElement();

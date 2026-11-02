@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { Tree } from './Tree';
@@ -230,6 +230,7 @@ describe('Tree', () => {
     });
 
     it('moves focus into the actions and back in treegrid mode', () => {
+      jest.useFakeTimers();
       render(
         <Tree aria-label="Files" navigationMode="treegrid">
           <TreeItem itemType="leaf" value="readme">
@@ -243,13 +244,19 @@ describe('Tree', () => {
       expect(screen.getByRole('button', { name: 'Rename' })).toHaveFocus();
 
       fireEvent.keyDown(screen.getByRole('button', { name: 'Rename' }), { key: 'ArrowLeft' });
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       expect(getItem('README')).toHaveFocus();
+      jest.useRealTimers();
     });
 
-    it('keeps ArrowLeft within the actions unless it is pressed on the first action in treegrid mode', () => {
+    it('leaves ArrowLeft to the actions focusgroup and returns to the tree item only when it does not move focus', () => {
+      jest.useFakeTimers();
       const onKeyDown = jest.fn();
+      const onNavigation = jest.fn();
       render(
-        <Tree aria-label="Files" navigationMode="treegrid">
+        <Tree aria-label="Files" navigationMode="treegrid" onNavigation={onNavigation}>
           <TreeItem itemType="leaf" value="readme" onKeyDown={onKeyDown}>
             <TreeItemLayout
               actions={{
@@ -268,14 +275,27 @@ describe('Tree', () => {
         </Tree>,
       );
 
+      // jsdom has no focusgroup, so its default action of moving focus to the preceding action is emulated
       screen.getByRole('button', { name: 'Delete' }).focus();
       fireEvent.keyDown(screen.getByRole('button', { name: 'Delete' }), { key: 'ArrowLeft' });
-      expect(screen.getByRole('button', { name: 'Delete' })).toHaveFocus();
-      expect(onKeyDown).toHaveBeenCalledTimes(1);
-
       screen.getByRole('button', { name: 'Rename' }).focus();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+      expect(screen.getByRole('button', { name: 'Rename' })).toHaveFocus();
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+      expect(onNavigation).not.toHaveBeenCalled();
+
       fireEvent.keyDown(screen.getByRole('button', { name: 'Rename' }), { key: 'ArrowLeft' });
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       expect(getItem('README')).toHaveFocus();
+      expect(onNavigation).toHaveBeenCalledWith(
+        expect.any(Object),
+        expect.objectContaining({ type: 'ArrowLeft', value: 'readme' }),
+      );
+      jest.useRealTimers();
     });
   });
 

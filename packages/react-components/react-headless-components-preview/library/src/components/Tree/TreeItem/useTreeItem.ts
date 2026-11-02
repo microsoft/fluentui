@@ -1,7 +1,14 @@
 'use client';
 
 import type * as React from 'react';
-import { useTreeItem_unstable, useTreeItemContextValues_unstable } from '@fluentui/react-tree';
+import { ArrowLeft } from '@fluentui/keyboard-keys';
+import {
+  useTreeContext_unstable,
+  useTreeItem_unstable,
+  useTreeItemContext_unstable,
+  useTreeItemContextValues_unstable,
+} from '@fluentui/react-tree';
+import { useEventCallback, useTimeout } from '@fluentui/react-utilities';
 
 import type { TreeItemContextValues, TreeItemProps, TreeItemState } from './TreeItem.types';
 import { toDataAttributeValue } from '../../../utils';
@@ -12,6 +19,10 @@ import { toDataAttributeValue } from '../../../utils';
  */
 export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
   const state: TreeItemState = useTreeItem_unstable(props, ref);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
+  const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
+  const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
+  const [setActionsNavigationTimeout] = useTimeout();
 
   // Set data attributes for the item type, open and checked states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
@@ -20,6 +31,45 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
   state.root['data-open'] = toDataAttributeValue(state.itemType === 'branch' && state.open);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = toDataAttributeValue(state.checked);
+
+  // In a treegrid, ArrowLeft on an action first lets the actions focusgroup move focus to the preceding action,
+  // in the reading direction. Focus only returns to the tree item when the focusgroup did not move it.
+  const { onKeyDown: handleTreeItemKeyDown } = state.root;
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    const { actionsRef } = state;
+    const actions = actionsRef && 'current' in actionsRef ? actionsRef.current : null;
+    if (
+      navigationMode !== 'treegrid' ||
+      event.key !== ArrowLeft ||
+      event.altKey ||
+      !actions?.contains(event.target as Node)
+    ) {
+      handleTreeItemKeyDown?.(event);
+      return;
+    }
+
+    props.onKeyDown?.(event);
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    const target = event.currentTarget;
+    const { activeElement } = target.ownerDocument;
+    // The focusgroup moves focus as the default action of the event, after it is dispatched
+    setActionsNavigationTimeout(() => {
+      if (target.ownerDocument.activeElement === activeElement && actions.contains(activeElement)) {
+        requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value: state.value,
+          itemType: state.itemType,
+          parentValue,
+          type: ArrowLeft,
+          target,
+        });
+      }
+    }, 0);
+  });
 
   return state;
 };
