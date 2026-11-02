@@ -127,6 +127,9 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * Focus policy for data/color content changes. Defaults to 'preserve', which leaves
    * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
    * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   * An open callout uses the current source point and rendered bar or line marker for its data
+   * and position. Under 'preserve', a custom callout input retains focus and component state
+   * while data and colors update, provided its component type and key remain stable.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 

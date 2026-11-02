@@ -100,6 +100,10 @@ export interface LineChartProps extends CartesianChartProps {
    * Focus policy for data/color content changes. Defaults to 'preserve', which leaves
    * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
    * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   * An open callout uses its selected source coordinates and the current data and rendered marker
+   * (or path highlight) for its payload and position, even without a new focus event.
+   * Under 'preserve', an input inside a custom callout keeps its focus and component state
+   * while the callout updates; the callout is not remounted to refresh its content.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 

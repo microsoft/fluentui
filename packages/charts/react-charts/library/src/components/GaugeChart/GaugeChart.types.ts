@@ -240,6 +240,9 @@ export interface GaugeChartProps {
    * Focus policy for segment/color/value content changes. Defaults to 'preserve', which leaves
    * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
    * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   * An open callout resolves its selected segment position against the current segments and
+   * rendered arc. Under 'preserve', custom callout inputs retain focus and component state
+   * while the selected legend, values, colors, and anchor update, with stable content types/keys.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 

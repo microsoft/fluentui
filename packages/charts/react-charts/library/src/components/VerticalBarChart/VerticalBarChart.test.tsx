@@ -1392,11 +1392,193 @@ describe('VerticalBarChart - retained focus callout freshness', () => {
     const { container, rerender, getByTestId } = render(scene(10));
     const bar = container.querySelector<SVGRectElement>('rect[role="option"]')!;
     act(() => bar.focus());
+    const onFocus = jest.fn();
+    bar.addEventListener('focus', onFocus);
     expect(getByTestId('fresh-bar-callout')).toHaveTextContent('"y":10');
 
     rerender(scene(15));
 
     expect(container.ownerDocument.activeElement).toBe(bar);
     expect(getByTestId('fresh-bar-callout')).toHaveTextContent('"y":15');
+    expect(onFocus).not.toHaveBeenCalled();
+  });
+});
+
+describe('VerticalBarChart - current callout observation', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  const setup = (policy: VerticalBarChartProps['focusRestorePolicy'] = 'preserve') => {
+    let mounts = 0;
+    const Content = ({ point }: { point?: VerticalBarChartDataPoint }) => {
+      const [note, setNote] = React.useState('');
+      React.useEffect(() => {
+        mounts++;
+      }, []);
+      return (
+        <>
+          <input aria-label="Bar note" value={note} onChange={event => setNote(event.target.value)} />
+          <pre data-testid="bar-observation">{JSON.stringify(point)}</pre>
+        </>
+      );
+    };
+    const renderContent = (point?: VerticalBarChartDataPoint) => <Content point={point} />;
+    const scene = (revision: number, replace = false, overrides: Partial<VerticalBarChartProps> = {}) => (
+      <FluentProvider>
+        <button data-testid="outside">Outside</button>
+        <VerticalBarChart
+          width={600}
+          height={400}
+          yMinValue={0}
+          yMaxValue={100}
+          xMinValue={0}
+          xMaxValue={10}
+          focusRestorePolicy={policy}
+          focusOnReset={{ barIndex: 1 }}
+          data={[
+            { x: 1, y: 10, legend: 'First', color: 'red' },
+            { x: replace ? 4 : 2, y: 20 + revision, legend: 'Second', color: revision ? 'purple' : 'blue' },
+          ]}
+          onRenderCalloutPerDataPoint={renderContent}
+          {...overrides}
+        />
+      </FluentProvider>
+    );
+    const result = render(scene(0));
+    const target = () => result.container.querySelectorAll<SVGRectElement>('rect[role="option"]')[1];
+    return { ...result, scene, target, mounts: () => mounts };
+  };
+
+  it.each((['preserve', 'none'] as const).flatMap(policy => [false, true].map(replace => ({ policy, replace }))))(
+    'refreshes data and anchor while retaining custom input state (replacement: $replace, policy: $policy)',
+    async ({ replace, policy }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(policy);
+      const oldTarget = target();
+      act(() => oldTarget.focus());
+      const input = getByRole('textbox', { name: 'Bar note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep bar note' } });
+      const positionReads: Element[] = [];
+      const getRect = Element.prototype.getBoundingClientRect;
+      const spy = jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(function (this: Element) {
+        if (this.tagName === 'rect' && this.getAttribute('role') === 'option') {
+          positionReads.push(this);
+        }
+        return getRect.call(this);
+      });
+
+      try {
+        rerender(scene(10, replace));
+
+        expect(oldTarget.isConnected).toBe(!replace);
+        await waitFor(() => expect(positionReads[positionReads.length - 1]).toBe(target()));
+        expect(JSON.parse(getByTestId('bar-observation').textContent!)).toMatchObject({
+          legend: 'Second',
+          y: 30,
+          color: 'purple',
+        });
+        expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+        expect(container.ownerDocument.activeElement).toBe(input);
+        expect(input).toHaveValue('Keep bar note');
+        expect(mounts()).toBe(1);
+      } finally {
+        spy.mockRestore();
+      }
+    },
+  );
+
+  it('uses updated data for an explicit reset from outside the chart', () => {
+    const { container, rerender, scene, target, getByTestId } = setup('reset');
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(10, true));
+
+    expect(container.ownerDocument.activeElement).toBe(target());
+    expect(JSON.parse(getByTestId('bar-observation').textContent!)).toMatchObject({ y: 30, color: 'purple' });
+  });
+
+  it('does not reopen a dismissed callout on a data update', () => {
+    const { container, rerender, scene, target, queryByTestId } = setup();
+    act(() => target().focus());
+    fireEvent.mouseLeave(container.querySelector('svg')!);
+
+    rerender(scene(10));
+
+    expect(queryByTestId('bar-observation')).toBeNull();
+  });
+
+  it.each(['removed', 'filtered', 'zero', 'invalid'] as const)(
+    'closes the callout when the selected bar is %s',
+    change => {
+      const { rerender, scene, target, getByRole, queryByTestId } = setup();
+      act(() => target().focus());
+      act(() => getByRole('textbox', { name: 'Bar note' }).focus());
+
+      rerender(
+        scene(10, false, {
+          ...(change === 'removed' ? { data: [{ x: 1, y: 10, legend: 'First', color: 'red' }] } : {}),
+          ...(change === 'filtered' ? { legendProps: { selectedLegends: ['First'] } } : {}),
+          ...(change === 'zero' || change === 'invalid'
+            ? {
+                data: [
+                  { x: 1, y: 10, legend: 'First', color: 'red' },
+                  { x: 2, y: change === 'zero' ? 0 : Number.NaN, legend: 'Second', color: 'purple' },
+                ],
+              }
+            : {}),
+        }),
+      );
+
+      expect(queryByTestId('bar-observation')).toBeNull();
+    },
+  );
+
+  it('refreshes a line callout with an earlier source point that has no line data', () => {
+    const { container, rerender, scene, getByRole, getByTestId, mounts } = setup();
+    const config = (value: number): Partial<VerticalBarChartProps> => ({
+      lineLegendText: 'Trend',
+      legendProps: { selectedLegends: ['Trend'] },
+      data: [
+        { x: 1, y: 10, legend: 'First', color: 'red' },
+        { x: value === 70 ? 4 : 2, y: 20, legend: 'Second', color: 'blue', lineData: { y: value } },
+      ],
+    });
+    rerender(scene(0, false, config(30)));
+    const circle = container.querySelector<SVGCircleElement>('circle[tabindex="0"]')!;
+    act(() => circle.focus());
+    const input = getByRole('textbox', { name: 'Bar note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep line note' } });
+    const before = circle.getAttribute('cy');
+
+    rerender(scene(10, false, config(70)));
+
+    expect(JSON.parse(getByTestId('bar-observation').textContent!)).toMatchObject({
+      legend: 'Second',
+      lineData: { y: 70 },
+    });
+    expect(circle.getAttribute('cy')).not.toBe(before);
+    expect(circle).toHaveAttribute('r', '8');
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep line note');
+    expect(mounts()).toBe(1);
+  });
+
+  it('refreshes the current color scale without another focus event', () => {
+    const scene = (color: string) => (
+      <VerticalBarChart data={[{ x: 1, y: 20, legend: 'First' }]} useSingleColor colors={[color]} />
+    );
+    const { container, rerender } = render(scene('red'));
+    const bar = container.querySelector<SVGRectElement>('rect[role="option"]')!;
+    act(() => bar.focus());
+
+    rerender(scene('blue'));
+
+    expect(container.ownerDocument.activeElement).toBe(bar);
+    expect(bar).toHaveAttribute('fill', 'blue');
+    expect(container.querySelector('.fui-PopoverSurface [style*="border-inline-start"]')).toHaveProperty(
+      'style.borderInlineStart',
+      '4px solid blue',
+    );
   });
 });

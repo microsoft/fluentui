@@ -5,7 +5,7 @@ import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../
 import type { RenderFunction } from '../../utilities/index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import type { ExtendedSegment } from './GaugeChart';
-import type { GaugeChartCalloutData } from './GaugeChart.types';
+import type { GaugeChartCalloutData, GaugeChartProps } from './GaugeChart.types';
 import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
 expect.extend(toHaveNoViolations);
 
@@ -1096,5 +1096,117 @@ describe('GaugeChart - retained focus callout freshness', () => {
     expect(container.ownerDocument.activeElement).toBe(segment);
     expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('blue');
     expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('25');
+  });
+});
+
+describe('GaugeChart - current callout selection', () => {
+  afterEach(() => jest.restoreAllMocks());
+
+  const setup = (focusInput = true) => {
+    let mounts = 0;
+    const Content = ({ data }: { data?: GaugeChartCalloutData }) => {
+      const [note, setNote] = React.useState('');
+      React.useEffect(() => {
+        mounts++;
+      }, []);
+      return (
+        <>
+          <input aria-label="Gauge note" value={note} onChange={event => setNote(event.target.value)} />
+          <pre data-testid="gauge-observation">{JSON.stringify(data)}</pre>
+        </>
+      );
+    };
+    const renderContent = (data?: GaugeChartCalloutData) => <Content data={data} />;
+    const scene = (updated: boolean, rtl = false, overrides: Partial<GaugeChartProps> = {}) => (
+      <FluentProvider dir={rtl ? 'rtl' : 'ltr'}>
+        <button data-testid="outside">Outside</button>
+        <GaugeChart
+          width={600}
+          height={300}
+          chartValue={updated ? 70 : 30}
+          variant="multiple-segments"
+          segments={[
+            { size: updated ? 60 : 40, color: 'red', legend: 'First' },
+            { size: updated ? 40 : 60, color: updated ? 'purple' : 'blue', legend: updated ? 'Updated' : 'Second' },
+          ]}
+          onRenderCallout={renderContent}
+          {...overrides}
+        />
+      </FluentProvider>
+    );
+    const result = render(scene(false));
+    const target = (rtl = false) => result.container.querySelector<SVGPathElement>(`path[id$="-arc-${rtl ? 0 : 1}"]`)!;
+    act(() => target().focus());
+    const input = result.getByRole('textbox', { name: 'Gauge note' });
+    if (focusInput) {
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep gauge note' } });
+    }
+    expect(input).toBeInTheDocument();
+    return { ...result, scene, target, input, mounts: () => mounts };
+  };
+
+  it('refreshes the selected legend and data without replacing or focusing the custom input', () => {
+    const { container, rerender, scene, input, getByTestId, getByRole, mounts } = setup();
+
+    rerender(scene(true));
+
+    expect(JSON.parse(getByTestId('gauge-observation').textContent!)).toMatchObject({
+      legend: 'Updated',
+      chartValue: 70,
+      segments: [
+        { legend: 'First', size: 60 },
+        { legend: 'Updated', color: 'purple', size: 40 },
+      ],
+    });
+    expect(getByRole('textbox', { name: 'Gauge note' })).toBe(input);
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep gauge note');
+    expect(mounts()).toBe(1);
+  });
+
+  it('resolves the current source segment anchor when RTL reassigns rendered paths', async () => {
+    const { container, rerender, scene, target, input, mounts } = setup();
+    const oldTarget = target();
+    const positionReads: Element[] = [];
+    const getRect = Element.prototype.getBoundingClientRect;
+    jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(function (this: Element) {
+      if (this.id.includes('-arc-')) {
+        positionReads.push(this);
+      }
+      return getRect.call(this);
+    });
+
+    rerender(scene(true, true));
+
+    expect(target(true)).not.toBe(oldTarget);
+    await waitFor(() => expect(positionReads[positionReads.length - 1]).toBe(target(true)));
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep gauge note');
+    expect(mounts()).toBe(1);
+  });
+
+  it('preserves the source segment focus when RTL reassigns surviving SVG nodes', () => {
+    const { container, rerender, scene, target } = setup(false);
+    const oldTarget = target();
+
+    rerender(scene(true, true));
+
+    expect(oldTarget.isConnected).toBe(true);
+    expect(target(true)).not.toBe(oldTarget);
+    expect(container.ownerDocument.activeElement).toBe(target(true));
+  });
+
+  it.each(['removed', 'filtered'] as const)('closes the callout when its selected segment is %s', change => {
+    const { rerender, scene, queryByTestId } = setup();
+
+    rerender(
+      scene(true, false, {
+        ...(change === 'removed' ? { segments: [{ size: 100, color: 'red', legend: 'First' }] } : {}),
+        ...(change === 'filtered' ? { legendProps: { selectedLegends: ['First'] } } : {}),
+      }),
+    );
+
+    expect(queryByTestId('gauge-observation')).toBeNull();
   });
 });

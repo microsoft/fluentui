@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import type { LineChartPoints, LineChartProps } from './index';
+import type { CustomizedCalloutData } from '../../types/index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
 import {
@@ -28,6 +29,7 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
+
   window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
     bottom: 44,
     height: 50,
@@ -1560,4 +1562,192 @@ describe('LineChart - source coordinates after legend filtering', () => {
     expect(marker).not.toBeNull();
     expect(container.ownerDocument.activeElement).toBe(marker);
   });
+});
+
+describe('LineChart - current callout observation', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const modes = ['points', 'path', 'optimized'] as const;
+  type Mode = (typeof modes)[number] | 'markers';
+  const createData = (revision: number, mode: Mode): LineChartProps['data'] => ({
+    lineChartData: ['First', 'Second'].map((legend, index) => ({
+      legend,
+      color: revision ? 'purple' : index ? 'blue' : 'red',
+      data: [
+        { x: 1 + revision, y: 10 + revision },
+        { x: 2 + revision, y: 20 + revision },
+      ],
+      lineOptions:
+        mode === 'path' || mode === 'markers'
+          ? { curve: 'linear', mode: mode === 'markers' ? 'markers' : 'lines' }
+          : undefined,
+    })),
+  });
+  const setup = (mode: Mode, policy: LineChartProps['focusRestorePolicy'] = 'preserve', perStack = false) => {
+    let mounts = 0;
+    const Content = ({ data }: { data?: CustomizedCalloutData }) => {
+      const [note, setNote] = React.useState('');
+      React.useEffect(() => {
+        mounts++;
+      }, []);
+      return (
+        <>
+          <input aria-label="Observation note" value={note} onChange={event => setNote(event.target.value)} />
+          <pre data-testid="observation">{JSON.stringify(data)}</pre>
+        </>
+      );
+    };
+    const renderContent = (data?: CustomizedCalloutData) => <Content data={data} />;
+    const scene = (revision: number, nextMode = mode, overrides: Partial<LineChartProps> = {}) => (
+      <>
+        <button data-testid="outside">Outside</button>
+        <LineChart
+          data={createData(revision, nextMode)}
+          width={600}
+          height={400}
+          xMinValue={0}
+          xMaxValue={10}
+          yMinValue={0}
+          yMaxValue={100}
+          optimizeLargeData={nextMode === 'optimized'}
+          focusRestorePolicy={policy}
+          focusOnReset={{ lineIndex: 1, pointIndex: 0 }}
+          isCalloutForStack={perStack}
+          onRenderCalloutPerStack={perStack ? renderContent : undefined}
+          onRenderCalloutPerDataPoint={perStack ? undefined : renderContent}
+          {...overrides}
+        />
+      </>
+    );
+    const result = render(scene(0));
+    const target = (nextMode = mode) =>
+      result.container.querySelector<SVGElement>(
+        nextMode === 'points' || nextMode === 'markers'
+          ? '[role="option"][aria-label*=". Second,"]'
+          : 'g[role="listbox"][aria-label^="Second"] path[id^="lineID"][tabindex="0"]',
+      )!;
+    return { ...result, scene, target, mounts: () => mounts };
+  };
+
+  it.each(modes)('refreshes data and color without another focus event on a retained %s target', mode => {
+    const { container, rerender, scene, target, getByTestId } = setup(mode);
+    const element = target();
+    act(() => element.focus());
+    const onFocus = jest.fn();
+    element.addEventListener('focus', onFocus);
+
+    rerender(scene(2));
+
+    expect(target()).toBe(element);
+    expect(container.ownerDocument.activeElement).toBe(element);
+    expect(onFocus).not.toHaveBeenCalled();
+    expect(getByTestId('observation')).toHaveTextContent('"legend":"Second"');
+    expect(getByTestId('observation')).toHaveTextContent('"y":12');
+    expect(getByTestId('observation')).toHaveTextContent('purple');
+  });
+
+  it.each(modes)('uses current data when an external reset focuses a %s target', mode => {
+    const { container, rerender, scene, target, getByTestId } = setup(mode, 'reset');
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(2));
+
+    expect(container.ownerDocument.activeElement).toBe(target());
+    expect(getByTestId('observation')).toHaveTextContent('"legend":"Second"');
+    expect(getByTestId('observation')).toHaveTextContent('"y":12');
+    expect(getByTestId('observation')).toHaveTextContent('purple');
+  });
+
+  it.each(modes.flatMap(mode => [false, true].map(perStack => ({ mode, perStack }))))(
+    'retains input state and refreshes the anchor after replacing $mode targets (stack: $perStack)',
+    async ({ mode, perStack }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode, 'preserve', perStack);
+      const oldTarget = target();
+      act(() => oldTarget.focus());
+      const input = getByRole('textbox', { name: 'Observation note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep this note' } });
+
+      const positionReads: Element[] = [];
+      const getRect = window.Element.prototype.getBoundingClientRect;
+      window.Element.prototype.getBoundingClientRect = jest.fn(function (this: Element) {
+        if (this.getAttribute('aria-label')?.includes('. Second,')) {
+          positionReads.push(this);
+        }
+        return getRect.call(this);
+      });
+      rerender(scene(2, 'markers'));
+
+      const replacement = target('markers');
+      expect(oldTarget.isConnected).toBe(false);
+      await waitFor(() => expect(positionReads[positionReads.length - 1]).toBe(replacement));
+      expect(getByRole('textbox', { name: 'Observation note' })).toBe(input);
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(input).toHaveValue('Keep this note');
+      expect(getByTestId('observation')).toHaveTextContent('"legend":"Second"');
+      expect(getByTestId('observation')).toHaveTextContent('"y":12');
+      expect(getByTestId('observation')).toHaveTextContent('purple');
+      expect(mounts()).toBe(1);
+    },
+  );
+
+  it.each(modes)('refreshes a %s anchor while focus stays inside its callout', mode => {
+    const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode);
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Observation note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep this note' } });
+    const anchor =
+      mode === 'points'
+        ? target()
+        : container.querySelector<SVGCircleElement>('circle[id^="staticHighlightCircle"][id$="_1"]')!;
+    const positionBefore = anchor.getAttribute(mode === 'points' ? 'd' : 'cx');
+
+    rerender(scene(2));
+
+    expect(anchor.getAttribute(mode === 'points' ? 'd' : 'cx')).not.toBe(positionBefore);
+    expect(getByRole('textbox', { name: 'Observation note' })).toBe(input);
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep this note');
+    expect(getByTestId('observation')).toHaveTextContent('"y":12');
+    expect(mounts()).toBe(1);
+  });
+
+  it('keeps source identity for a hovered point whose coordinates overlap another series', () => {
+    const { target, getByTestId } = setup('points');
+
+    fireEvent.mouseOver(target());
+
+    const payload = JSON.parse(getByTestId('observation').textContent!);
+    expect(payload.values).toHaveLength(1);
+    expect(payload.values[0]).toMatchObject({ legend: 'Second', y: 10, color: 'blue' });
+  });
+
+  it.each(modes.flatMap(mode => ['removed', 'hidden', 'invalid', 'filtered'].map(change => ({ mode, change }))))(
+    'closes an open $mode callout when its selected source becomes $change',
+    ({ mode, change }) => {
+      const { rerender, scene, target, getByRole, queryByTestId } = setup(mode);
+      act(() => target().focus());
+      act(() => getByRole('textbox', { name: 'Observation note' }).focus());
+      const data = createData(2, mode);
+      if (change === 'removed') {
+        data.lineChartData = data.lineChartData!.slice(0, 1);
+      } else if (change === 'hidden') {
+        data.lineChartData![1].data[0].hideCallout = true;
+      } else if (change === 'invalid') {
+        data.lineChartData![1].data[0].y = Number.NaN;
+      }
+
+      rerender(
+        scene(2, mode, {
+          data,
+          legendProps:
+            change === 'filtered' ? { canSelectMultipleLegends: true, selectedLegends: ['First'] } : undefined,
+        }),
+      );
+
+      expect(queryByTestId('observation')).toBeNull();
+    },
+  );
 });

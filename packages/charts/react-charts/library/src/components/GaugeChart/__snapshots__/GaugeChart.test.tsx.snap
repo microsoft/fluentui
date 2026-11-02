@@ -933,104 +933,106 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="callout_r_10_"
-    >
+    <div>
       <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+        class="fui-cart__calloutContainer"
+        id="callout_r_10_"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class="fui-PopoverSurface"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+          role="group"
+          style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class="fui-gc__calloutContentRoot"
           >
             <div
-              class="fui-gc__calloutContentX"
-              data-is-focusable="false"
-              role="text"
+              class="fui-gc__calloutDateTimeContainer"
             >
-              Current value is 30%
+              <div
+                class="fui-gc__calloutContentX"
+                data-is-focusable="false"
+                role="text"
+              >
+                Current value is 30%
+              </div>
             </div>
-          </div>
-          <div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="0_0% - 33%"
-                  style="border-inline-start: 4px solid #107c10;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Low Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      0% - 33%
+            <div>
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="0_0% - 33%"
+                    style="border-inline-start: 4px solid #107c10;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Low Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        0% - 33%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="1_33% - 67%"
-                  style="border-inline-start: 4px solid #f7630c;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Medium Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      33% - 67%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="1_33% - 67%"
+                    style="border-inline-start: 4px solid #f7630c;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Medium Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        33% - 67%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="2_67% - 100%"
-                  style="border-inline-start: 4px solid #c50f1f;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      High Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      67% - 100%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="2_67% - 100%"
+                    style="border-inline-start: 4px solid #c50f1f;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        High Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        67% - 100%
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1664,104 +1666,106 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="callout_r_16_"
-    >
+    <div>
       <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+        class="fui-cart__calloutContainer"
+        id="callout_r_16_"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class="fui-PopoverSurface"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+          role="group"
+          style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class="fui-gc__calloutContentRoot"
           >
             <div
-              class="fui-gc__calloutContentX"
-              data-is-focusable="false"
-              role="text"
+              class="fui-gc__calloutDateTimeContainer"
             >
-              Current value is 30%
+              <div
+                class="fui-gc__calloutContentX"
+                data-is-focusable="false"
+                role="text"
+              >
+                Current value is 30%
+              </div>
             </div>
-          </div>
-          <div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="0_0% - 33%"
-                  style="border-inline-start: 4px solid #107c10;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Low Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      0% - 33%
+            <div>
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="0_0% - 33%"
+                    style="border-inline-start: 4px solid #107c10;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Low Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        0% - 33%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="1_33% - 67%"
-                  style="border-inline-start: 4px solid #f7630c;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Medium Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      33% - 67%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="1_33% - 67%"
+                    style="border-inline-start: 4px solid #f7630c;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Medium Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        33% - 67%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="2_67% - 100%"
-                  style="border-inline-start: 4px solid #c50f1f;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      High Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      67% - 100%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="2_67% - 100%"
+                    style="border-inline-start: 4px solid #c50f1f;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        High Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        67% - 100%
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1979,104 +1983,106 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="callout_r_m_"
-    >
+    <div>
       <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+        class="fui-cart__calloutContainer"
+        id="callout_r_m_"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class="fui-PopoverSurface"
+          data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+          role="group"
+          style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class="fui-gc__calloutContentRoot"
           >
             <div
-              class="fui-gc__calloutContentX"
-              data-is-focusable="false"
-              role="text"
+              class="fui-gc__calloutDateTimeContainer"
             >
-              Current value is 30%
+              <div
+                class="fui-gc__calloutContentX"
+                data-is-focusable="false"
+                role="text"
+              >
+                Current value is 30%
+              </div>
             </div>
-          </div>
-          <div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="0_0% - 33%"
-                  style="border-inline-start: 4px solid #107c10;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Low Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      0% - 33%
+            <div>
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="0_0% - 33%"
+                    style="border-inline-start: 4px solid #107c10;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Low Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        0% - 33%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="1_33% - 67%"
-                  style="border-inline-start: 4px solid #f7630c;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      Medium Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      33% - 67%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="1_33% - 67%"
+                    style="border-inline-start: 4px solid #f7630c;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        Medium Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        33% - 67%
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              data-is-focusable="false"
-              role="text"
-            >
-              <div>
-                <div
-                  class="fui-gc__calloutBlockContainer"
-                  id="2_67% - 100%"
-                  style="border-inline-start: 4px solid #c50f1f;"
-                >
-                  <div>
-                    <div
-                      class="fui-gc__calloutlegendText"
-                    >
-                       
-                      High Risk
-                    </div>
-                    <div
-                      class="fui-gc__calloutContentY"
-                    >
-                      67% - 100%
+              <div
+                data-is-focusable="false"
+                role="text"
+              >
+                <div>
+                  <div
+                    class="fui-gc__calloutBlockContainer"
+                    id="2_67% - 100%"
+                    style="border-inline-start: 4px solid #c50f1f;"
+                  >
+                    <div>
+                      <div
+                        class="fui-gc__calloutlegendText"
+                      >
+                         
+                        High Risk
+                      </div>
+                      <div
+                        class="fui-gc__calloutContentY"
+                      >
+                        67% - 100%
+                      </div>
                     </div>
                   </div>
                 </div>
