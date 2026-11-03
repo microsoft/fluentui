@@ -1,0 +1,115 @@
+/* Example frame */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+.example {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-top-width: 3px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+
+.example[data-variant='good'] {
+  border-top-color: var(--success);
+}
+
+.example[data-variant='bad'] {
+  border-top-color: var(--danger);
+}
+
+.caption {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.badge {
+  font-weight: 600;
+}
+
+.example[data-variant='good'] .badge {
+  color: var(--success);
+}
+
+.example[data-variant='bad'] .badge {
+  color: var(--danger);
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+}
+
+/* Shared demo button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Focus indicator: bad, the ring is removed */
+.noRing:focus,
+.noRing:focus-visible {
+  outline: none;
+}
+
+/* Focus indicator: good, outline that survives forced colors */
+.ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Disabled states */
+.disabledNativeOnly:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.disabledBoth[data-disabled],
+.disabledBoth[data-disabled-focusable] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.disabledBoth:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Toggle state: bad, styled from a class the consumer toggles */
+.toggle.pressed {
+  background: var(--accent-strong);
+}
+
+/* Toggle state: good, styled from the attribute the component sets */
+.toggle {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.toggle[data-checked] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
