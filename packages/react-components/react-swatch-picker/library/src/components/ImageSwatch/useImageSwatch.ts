@@ -9,7 +9,6 @@ import type {
   ImageSwatchState,
 } from './ImageSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
-import { toCSSUrl } from '../../utils/toCSSUrl';
 
 /**
  * Create the base state required to render unstyled ImageSwatch.
@@ -58,7 +57,7 @@ export const useImageSwatchBase_unstable = (
         type: 'button',
         ...rest,
         style: {
-          backgroundImage: src === undefined ? undefined : toCSSUrl(src),
+          backgroundImage: `url(${src})`,
           ...style,
         },
       }),

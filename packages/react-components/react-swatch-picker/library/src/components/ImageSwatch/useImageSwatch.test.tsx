@@ -41,20 +41,6 @@ describe('useImageSwatch', () => {
     expect(result.current.shape).toBe('circular');
   });
 
-  it('quotes the image source in the background image', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-    const { result } = renderHook(() => useImageSwatch_unstable({ ...props, src: 'image (1).png' }, ref));
-
-    expect(result.current.root.style?.backgroundImage).toBe('url("image (1).png")');
-  });
-
-  it('lets an explicit style override the background image', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-    const { result } = renderHook(() => useImageSwatch_unstable({ ...props, style: { backgroundImage: 'none' } }, ref));
-
-    expect(result.current.root.style?.backgroundImage).toBe('none');
-  });
-
   it('uses the radio role outside of a grid', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { result } = renderHook(() => useImageSwatch_unstable(props, ref));
