@@ -15,12 +15,12 @@ const useStyles = makeStyles({
     paddingBlock: tokens.spacingVerticalMNudge,
   },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: '#949494',
     padding: tokens.spacingVerticalXXL,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: '#8E8E8E',
     padding: tokens.spacingVerticalXXL,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
     borderRadius: tokens.borderRadiusMedium,
@@ -50,11 +50,11 @@ export const Appearance = (): JSXElement => {
       </div>
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
         <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance (on Background 3)</Label>
-        <Input appearance="filled-lighter" id={inputIds.filledLighter} />
+        <Input appearance="filled-lighter" id={inputIds.filledLighter} placeholder="Accessible Placeholder" />
       </div>
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={inputIds.filledDarker}>Filled darker appearance (on Background 1)</Label>
-        <Input appearance="filled-darker" id={inputIds.filledDarker} />
+        <Input appearance="filled-darker" id={inputIds.filledDarker} placeholder="Accessible Placeholder" />
       </div>
     </div>
   );
