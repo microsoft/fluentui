@@ -100,6 +100,30 @@ describe('native surface lifecycle', () => {
   });
 });
 
+describe('React-driven close', () => {
+  it('runs the surface onClose before unmounting a modal surface', () => {
+    const onClose = cy.stub().as('onClose');
+    const Example = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <Popover open={open} inertTrapFocus onOpenChange={(_, data) => setOpen(data.open)}>
+          <PopoverSurface onClose={onClose} data-testid="surface">
+            <button data-testid="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=close]').realClick();
+    cy.get('[data-testid=surface]').should('not.exist');
+    cy.get('@onClose').should('have.been.calledOnce');
+  });
+});
+
 describe('nested shadow focus restoration', () => {
   const NestedControl = ({ onClose }: { onClose: () => void }) => {
     const [root, setRoot] = React.useState<ShadowRoot | null>(null);
@@ -979,7 +1003,7 @@ describe('inertTrapFocus changes while open', () => {
       return (
         <Popover open inertTrapFocus={inertTrapFocus}>
           <PopoverTrigger disableButtonEnhancement>
-            <button>Trigger</button>
+            <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
           <PopoverSurface aria-label="Surface" data-testid="surface">
             <button data-testid="switch" onClick={() => setInertTrapFocus(value => !value)}>
@@ -995,7 +1019,11 @@ describe('inertTrapFocus changes while open', () => {
     cy.get('[data-testid=switch]').realClick();
     cy.get('[data-testid=surface]').should('match', ':modal');
     cy.get('[data-testid=switch]').should('be.focused').realClick();
-    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=surface]')
+      .should('match', ':modal')
+      .and('have.attr', 'role', 'dialog')
+      .and('not.have.attr', 'popover');
+    cy.get('[data-testid=trigger]').should('have.attr', 'aria-haspopup', 'dialog');
     cy.get('[data-testid=switch]').should('be.focused');
   });
 });
