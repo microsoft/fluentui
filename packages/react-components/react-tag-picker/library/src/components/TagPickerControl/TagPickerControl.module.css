@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     border-radius: var(--borderRadiusMedium);
     padding-inline-end: calc(var(--spacingHorizontalM) + var(--fui-TagPickerControl-aside-width, 0px));

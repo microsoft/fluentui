@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     padding-inline-start: calc(
       var(--spacingHorizontalXXXL) + var(--spacingHorizontalMNudge) + var(--spacingHorizontalXS)

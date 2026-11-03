@@ -56,7 +56,7 @@ the existing `use<Component>Styles.styles.ts`. Keep the original module's export
 names so the resolver can substitute the entire module. For a differently named
 helper, retain the stem: `usePortalMountNodeStyles.styles.css.ts`.
 
-Wrap rules in `@layer fluentui`. Reference the theme's CSS custom properties,
+Wrap rules in `@layer fluent`. Reference the theme's CSS custom properties,
 for example `var(--colorNeutralForeground1)` and `var(--spacingHorizontalM)`.
 Do not hardcode colors, spacing, or typography. Derive missing dimensions from
 existing tokens only when the calculation preserves the original metrics.
@@ -107,7 +107,7 @@ assignment. Avoid unnecessary casts: the shared `*.module.css` declaration in
 Put combinations in CSS instead:
 
 ```css
-@layer fluentui {
+@layer fluent {
   .disabled:where(.outline, .subtle, .transparent) {
     &,
     &:hover,
@@ -134,7 +134,7 @@ palette and the ring, rather than separate `colorClassMap` and
 `ringColorClassMap` objects:
 
 ```css
-@layer fluentui {
+@layer fluent {
   :where(.dark-red) > .iconInitials {
     color: var(--colorPaletteDarkRedForeground2);
     background-color: var(--colorPaletteDarkRedBackground2);
@@ -196,7 +196,7 @@ change specificity. CSS class-list order does not determine the cascade.
   public icon classes, not locally scoped copies.
 - Keep the stylesheet layered. Use headless/CSS-styled icons and import their
   defaults into the same layer:
-  `@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);`.
+  `@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);`.
   Unlayered icon visibility rules otherwise beat layered component rules.
 - Respect the repository's client-boundary and immutability lint rules. A pure
   style function may not need `'use client'`; a hook composing another hook

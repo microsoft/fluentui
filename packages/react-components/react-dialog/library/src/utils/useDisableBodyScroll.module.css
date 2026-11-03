@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .htmlNoScroll {
     overflow-y: hidden;
     overflow-y: clip;

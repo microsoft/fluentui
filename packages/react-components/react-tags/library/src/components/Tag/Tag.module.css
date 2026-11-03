@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root:where(.rounded) {
     font-family: inherit;
     padding: 0px;

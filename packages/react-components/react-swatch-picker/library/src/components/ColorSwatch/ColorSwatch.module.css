@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     display: inline-flex;
     flex-shrink: 0;

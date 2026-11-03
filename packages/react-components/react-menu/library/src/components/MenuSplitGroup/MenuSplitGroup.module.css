@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     &[data-multiline] {
       & > :global(.fui-MenuItem):nth-of-type(2) {

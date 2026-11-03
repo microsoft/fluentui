@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .rail {
     border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
     background-image: linear-gradient(

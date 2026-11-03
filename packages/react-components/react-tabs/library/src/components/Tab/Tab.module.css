@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   /* ---- Root: grid wrapper that holds content + pseudo-element indicators ---- */
   .root {
     align-items: center;

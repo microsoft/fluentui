@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     background-color: var(--colorNeutralBackground1);
     box-sizing: border-box;

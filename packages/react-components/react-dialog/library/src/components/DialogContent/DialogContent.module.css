@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     padding: var(--strokeWidthThick);
     margin: calc(var(--strokeWidthThick) * -1);

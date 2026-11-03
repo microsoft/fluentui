@@ -205,8 +205,8 @@ async function snapshot(page, id) {
         fs
           .readFileSync(file, 'utf8')
           .replace(
-            "@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);",
-            '@layer fluentui {' +
+            "@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);",
+            '@layer fluent {' +
               fs.readFileSync(require.resolve('@fluentui/react-icons/headless/styles.css'), 'utf8') +
               '}',
           ),

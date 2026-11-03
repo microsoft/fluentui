@@ -1,6 +1,6 @@
-@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);
 
-@layer fluentui {
+@layer fluent {
   .root {
     align-items: center;
     box-sizing: border-box;

@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     grid-column: 2 / 3;
     padding-top: var(--spacingVerticalSNudge);

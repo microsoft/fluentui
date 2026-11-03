@@ -12,4 +12,4 @@ Configure your CSS Modules loader to expose named class exports.
 
 The alternative preserves theme classes, caller classes, body typography, and LTR/RTL text
 alignment. Theme variable generation, nested providers, and portal style propagation are unchanged.
-The stylesheet is shipped in both `lib` and `lib-commonjs` and uses `@layer fluentui`.
+The stylesheet is shipped in both `lib` and `lib-commonjs` and uses `@layer fluent`.

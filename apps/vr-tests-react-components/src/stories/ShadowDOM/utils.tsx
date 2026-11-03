@@ -24,7 +24,7 @@ const ShadowRootProvider: React.FC<{
     const updateStyles = () => {
       styleElement.textContent = Array.from(targetDocument.head.querySelectorAll('style'))
         .map(style => style.textContent ?? '')
-        .filter(css => css.includes('@layer fluentui'))
+        .filter(css => css.includes('@layer fluent'))
         .join('\n');
     };
     updateStyles();

@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     margin: calc(var(--spacingVerticalS) * -1) calc(var(--spacingHorizontalL) * -1);
   }

@@ -103,7 +103,7 @@ CSS Modules and native CSS nesting support, or an equivalent bundler transform.
 Use headless/CSS-styled icons with their defaults in the same layer:
 
 ```css
-@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);
 ```
 
 The Nx build copies every `*.module.css` file next to its hook in both `lib` and

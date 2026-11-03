@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     padding: var(--spacingHorizontalNone) var(--spacingVerticalNone);
     display: flex;

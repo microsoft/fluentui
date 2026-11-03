@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .base100 {
     font-size: var(--fontSizeBase100);
     line-height: var(--lineHeightBase100);

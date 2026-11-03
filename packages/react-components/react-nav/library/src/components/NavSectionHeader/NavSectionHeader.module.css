@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     margin-inline-start: var(--spacingHorizontalMNudge);
     margin-block: var(--spacingVerticalS);

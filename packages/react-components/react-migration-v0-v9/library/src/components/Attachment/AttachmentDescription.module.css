@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     display: block;
     font-size: var(--fontSizeBase200);

@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root {
     background-color: var(--colorTransparentBackground);
     color: var(--colorNeutralForeground1);

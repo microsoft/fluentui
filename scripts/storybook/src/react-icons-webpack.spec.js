@@ -1,9 +1,18 @@
 jest.mock('@fluentui/react-icons-font-subsetting-webpack-plugin', () => ({ default: jest.fn() }));
 
+const { readFileSync } = require('node:fs');
+
 const { configureReactIcons } = require('./index');
 
 describe('Storybook React icon configuration', () => {
   const originalVariant = process.env.FLUENTUI_ICON_VARIANT;
+
+  it.each(['./react-icons-headless.css', './react-icons-headless-fonts.css'])(
+    'imports %s into the component cascade layer',
+    stylesheet => {
+      expect(readFileSync(require.resolve(stylesheet), 'utf8')).toMatch(/\blayer\(fluent\);/);
+    },
+  );
 
   afterEach(() => {
     if (originalVariant === undefined) {

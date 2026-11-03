@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   /* ---- Root base (20px medium, circular, caption1Strong) ---- */
   .root {
     display: inline-flex;

@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .switchIndicator {
     border-radius: var(--borderRadiusCircular);
     border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);

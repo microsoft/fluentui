@@ -1,5 +1,5 @@
 /* Hue stops and HSV black/white endpoints describe the color space, not a theme palette. */
-@layer fluentui {
+@layer fluent {
   .root {
     position: relative;
     display: inline-grid;

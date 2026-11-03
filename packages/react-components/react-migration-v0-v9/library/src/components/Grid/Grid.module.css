@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .grid {
     display: grid;
     justify-content: space-evenly;

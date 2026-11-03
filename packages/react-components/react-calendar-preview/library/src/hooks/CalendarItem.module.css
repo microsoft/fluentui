@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .buttonRow {
     column-gap: var(--spacingHorizontalM);
     display: flex;

@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .checked {
     background-color: var(--colorNeutralBackground1Selected);
     border-color: var(--colorNeutralStroke1);

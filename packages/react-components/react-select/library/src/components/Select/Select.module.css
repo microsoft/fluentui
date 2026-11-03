@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   .root::after {
     background-image: linear-gradient(
       0deg,

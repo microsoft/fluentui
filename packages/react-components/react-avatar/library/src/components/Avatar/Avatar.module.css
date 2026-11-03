@@ -1,4 +1,4 @@
-@layer fluentui {
+@layer fluent {
   /* ---- Root base (32px default, circular) ---- */
   .root {
     display: inline-block;
