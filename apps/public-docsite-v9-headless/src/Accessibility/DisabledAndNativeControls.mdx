@@ -53,10 +53,10 @@ Checkbox, Switch, RadioGroup and Slider render a real `<input>`. It gives you th
   inset: 0;
   opacity: 0;
 }
-.input:checked + .indicator {
+.input:checked ~ .indicator {
   background: var(--accent);
 }
-.input:focus-visible + .indicator {
+.input:focus-visible ~ .indicator {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
@@ -65,4 +65,4 @@ Checkbox, Switch, RadioGroup and Slider render a real `<input>`. It gives you th
 - Keep the input in the DOM, covering the indicator with `opacity: 0`, so it still receives clicks and touches.
 - Don't use `display: none` or `visibility: hidden`. Both remove the input from the accessibility tree and the tab order.
 - Don't replace it with a `div`. You would have to rebuild the role, state, keyboard handling and form behavior by hand.
-- The input has focus, so draw the focus ring on the indicator with `:focus-visible + .indicator`.
+- The input has focus, so draw the focus ring on the indicator with `:focus-visible ~ .indicator`. Use the general sibling combinator `~`, not `+`: with `labelPosition="before"` the label renders between the input and the indicator.

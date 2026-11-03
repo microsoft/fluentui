@@ -30,7 +30,7 @@ The styled Fluent components render overlays into a portal at the end of `<body>
 | Hiding the rest of the page (modal) | Browser makes everything outside the `<dialog>` inert                                                                                                             | `aria-hidden` on everything else                  |
 | Tab in a modal                      | Cycles through the dialog, then out to the browser UI                                                                                                             | Wraps inside the dialog (unless `inertTrapFocus`) |
 | Outside click                       | Native light dismiss for `popover="auto"`; backdrop click for modal dialogs                                                                                       | JavaScript click-outside handlers                 |
-| Focus on open, non-modal            | Only an element with `autofocus` gets focus                                                                                                                       | First focusable element                           |
+| Focus on open, non-modal            | `<dialog>` surfaces: the `autofocus` element, else the first focusable element. Other elements: only an element with `autofocus`                                  | First focusable element                           |
 | Focus on open, modal                | Browser's `showModal()` rules                                                                                                                                     | First focusable element                           |
 | Focus restore                       | Browser (modal) or the component (non-modal, popovers, menus)                                                                                                     | JavaScript focus restore                          |
 | Backdrop                            | `::backdrop` pseudo-element                                                                                                                                       | `backdrop` slot (a `div`)                         |
@@ -43,7 +43,12 @@ The styled Fluent components render overlays into a portal at the end of `<body>
 
 The top layer changes what users see, not the accessibility tree or the Tab order. Headless overlays render right after their trigger, so screen readers read the overlay where it belongs, and Tab from a non-modal popover continues to the element after the trigger. The styled components portal to the end of `<body>`, which puts overlays last in reading order.
 
-Anything that hides the trigger's container also hides the overlay. An ancestor with `display: none`, `inert`, `aria-hidden` or `content-visibility: hidden`, or one that unmounts, takes the open overlay with it. Don't put triggers inside regions you hide while the overlay is open.
+Because the overlay lives inside the trigger's container, changes to that container reach the overlay too, but not all in the same way:
+
+- Unmounting the container, or hiding it with `display: none` or `content-visibility: hidden`, removes the overlay along with it.
+- `inert` and `aria-hidden` on the container don't hide anything visually. A non-modal overlay stays on screen but becomes unreachable for keyboard and assistive technology users. Don't count on them to deactivate an open modal dialog either.
+
+Close overlays through their open state before you hide or disable the region that contains their trigger.
 
 ### Modal dialogs make the page inert
 
@@ -64,7 +69,8 @@ Headless components don't wrap Tab inside the dialog. If your product needs wrap
 ### Focus on open
 
 - **Modal dialogs** follow the browser's `showModal()` rules: an element with `autofocus` inside the dialog, otherwise the first focusable element. Put `autoFocus` on the element users should start on, for example the safe action in a destructive confirmation.
-- **Non-modal dialogs and popovers** don't move focus unless an element inside has `autofocus`. Focus stays on the trigger, and users Tab into the surface. If the content needs immediate attention, add `autoFocus` to an element in it or use `inertTrapFocus`.
+- **Non-modal dialogs and popovers** render a `<dialog>` by default, so the browser's dialog focusing steps apply here too: an element with `autofocus`, otherwise the first focusable element. You don't need `inertTrapFocus` to move focus into the surface.
+- **Popover surfaces rendered as another element**, such as `PopoverSurface as="div"`, don't move focus unless an element inside has `autofocus`. Focus stays on the trigger and users Tab into the surface.
 - **Menus** focus their first enabled item when they open.
 - **Listboxes** keep focus on the combobox input or button; options are announced through `aria-activedescendant`.
 
