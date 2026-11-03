@@ -15,12 +15,12 @@ const useStyles = makeStyles({
     paddingBlock: tokens.spacingVerticalMNudge,
   },
   filledLighter: {
-    backgroundColor: '#949494',
+    backgroundColor: tokens.colorNeutralBackground3,
     padding: tokens.spacingVerticalXXL,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
   },
   filledDarker: {
-    backgroundColor: '#8E8E8E',
+    backgroundColor: tokens.colorNeutralBackground1,
     padding: tokens.spacingVerticalXXL,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
     borderRadius: tokens.borderRadiusMedium,
