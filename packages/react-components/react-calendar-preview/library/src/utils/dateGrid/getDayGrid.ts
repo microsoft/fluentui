@@ -1,4 +1,12 @@
-import { areDatesEqual, createDate, getDateRange, getStartDateOfWeek, isDateInRange } from '../dateMath';
+import {
+  addDays,
+  areDatesEqual,
+  compareDatePart,
+  createDate,
+  getDateRange,
+  getStartDateOfWeek,
+  isDateInRange,
+} from '../dateMath';
 import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from '../constants';
 import type { DayOfWeek } from '../constants';
 import type { Day, DayGridOptions } from './dateGrid.types';
@@ -31,7 +39,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     weeksToShow !== undefined &&
     (!Number.isFinite(weeksToShow) || !Number.isInteger(weeksToShow) || weeksToShow <= 0)
   ) {
-    throw new RangeError('weeksToShow must be a positive finite integer.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'weeksToShow must be a positive finite integer.' : '');
   }
 
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
@@ -42,7 +50,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   const navigatedDate = options.navigatedDate ? options.navigatedDate : todaysDate;
 
   if (!Number.isFinite(navigatedDate.getTime())) {
-    throw new RangeError('navigatedDate must be valid.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'navigatedDate must be valid.' : '');
   }
 
   let date;
@@ -55,6 +63,10 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   const weeks: Day[][] = [];
 
   date = getStartDateOfWeek(date, firstDayOfWeek);
+
+  if (weeksToShow === 5 && compareDatePart(navigatedDate, addDays(date, weeksToShow * DAYS_IN_WEEK)) >= 0) {
+    date = addDays(date, DAYS_IN_WEEK);
+  }
 
   // add the transition week as last week of previous range
   date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
@@ -94,7 +106,9 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
       const { year: civilYear, month: civilMonth, day: civilDay } = civilDate;
       if (!Number.isFinite(civilYear) || !Number.isFinite(civilMonth) || !Number.isFinite(civilDay)) {
-        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
+        throw new RangeError(
+          process.env.NODE_ENV !== 'production' ? 'Cannot generate a grid containing an out-of-range date.' : '',
+        );
       }
       const originalDate = createDate(civilYear, civilMonth, civilDay);
       const isPlaceholder =
@@ -102,7 +116,9 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         originalDate.getMonth() !== civilMonth ||
         originalDate.getDate() !== civilDay;
       if (!isPlaceholder && !Number.isFinite(originalDate.getTime())) {
-        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
+        throw new RangeError(
+          process.env.NODE_ENV !== 'production' ? 'Cannot generate a grid containing an out-of-range date.' : '',
+        );
       }
       const dayInfo: Day = {
         key: `${civilYear}-${civilMonth}-${civilDay}`,

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { isConformant } from '../../../testing/isConformant';
 import { AlphaSlider } from './AlphaSlider';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 describe('AlphaSlider', () => {
   isConformant({
@@ -44,5 +46,20 @@ describe('AlphaSlider', () => {
         color: { h: 20, s: 0.4, v: 0.8, a: 0.8 },
       }),
     );
+  });
+
+  it('inherits RTL transparency direction, uncontrolled alpha and orientation from the base', () => {
+    const onChange = jest.fn();
+    render(
+      <FluentProvider dir="rtl" theme={webLightTheme}>
+        <AlphaSlider defaultColor={{ h: 240, s: 0.4, v: 0.8, a: 0.6 }} transparency onChange={onChange} />
+      </FluentProvider>,
+    );
+    const input = screen.getByRole('slider');
+    expect(input).toHaveAttribute('aria-orientation', 'horizontal');
+    expect(input.parentElement!.style.getPropertyValue('--fui-AlphaSlider--direction')).toBe('90deg');
+    fireEvent.change(input, { target: { value: '25' } });
+    expect(input).toHaveValue('25');
+    expect(onChange.mock.lastCall[1].color).toEqual({ h: 240, s: 0.4, v: 0.8, a: 0.75 });
   });
 });

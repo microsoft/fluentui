@@ -1,0 +1,195 @@
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-inline-size: calc(var(--space-16) * 6);
+  padding: var(--space-6);
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+
+.label {
+  font-weight: var(--font-weight-semibold);
+}
+
+.hint,
+.status {
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------------------- field */
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  inline-size: 100%;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.field:hover {
+  border-color: var(--border-strong);
+}
+
+.field:has(:focus-visible) {
+  box-shadow: 0 0 0 var(--stroke-thick) var(--bg-elev), 0 0 0 var(--stroke-thicker) var(--accent);
+}
+
+.field[data-invalid] {
+  border-color: var(--danger);
+}
+
+.field[data-disabled] {
+  background: var(--surface-muted);
+  color: var(--text-faint);
+}
+
+.trigger,
+.input {
+  flex: 1;
+  min-inline-size: 0;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+.field[data-placeholder] .displayValue,
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  min-inline-size: var(--space-6);
+  min-block-size: var(--space-6);
+  color: var(--text-muted);
+  font-size: var(--space-5);
+}
+
+.field:not([data-disabled]) .icon:hover {
+  color: var(--text);
+}
+
+.field[data-editable] .icon {
+  margin-inline-end: var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.field[data-disabled] .icon {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.errorMessage:not(:empty) {
+  color: var(--danger);
+}
+
+/* --------------------------------------------------------------- popover */
+
+/* Popover API surfaces render in the top layer; the positioning hook places them below the field. */
+.surface {
+  margin: 0;
+  padding: var(--space-4);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: var(--shadow-3);
+  max-block-size: calc(100dvh - var(--space-8));
+  overflow-y: auto;
+  font-family: var(--font-sans);
+}
+
+.surface:focus {
+  outline: none;
+}
+
+.surface:popover-open {
+  animation: surface-enter var(--duration-fast) var(--ease-standard);
+}
+
+/* Panels sit side by side, and stack with the day calendar first when space is limited. */
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-4);
+}
+
+.divider {
+  inline-size: var(--stroke-thin);
+  background: var(--border);
+}
+
+.calendar > .todayButton {
+  flex-basis: 100%;
+}
+
+@media (max-width: 640px) {
+  .calendar {
+    flex-direction: column;
+  }
+
+  .divider {
+    inline-size: auto;
+    block-size: var(--stroke-thin);
+  }
+}
+
+@keyframes surface-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field {
+    transition: none;
+  }
+
+  .surface:popover-open {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .surface {
+    border-color: ButtonText;
+  }
+
+  .divider {
+    background: CanvasText;
+  }
+
+  .field:has(:focus-visible) {
+    outline: var(--stroke-thick) solid CanvasText;
+  }
+
+  .field[data-disabled] .icon {
+    color: GrayText;
+  }
+}

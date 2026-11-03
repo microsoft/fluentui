@@ -21,6 +21,8 @@ export type {
   SwatchPickerSlots,
   SwatchPickerProps,
   SwatchPickerState,
+  SwatchPickerContextValue,
+  SwatchPickerContextValues,
   ColorSwatchSlots,
   ColorSwatchProps,
   ColorSwatchState,

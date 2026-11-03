@@ -1,3 +1,4 @@
+const { configureReactIcons } = require('./react-icons-webpack');
 const rules = require('./rules');
 const {
   getPackageStoriesGlob,
@@ -9,6 +10,7 @@ const {
 } = require('./utils');
 
 module.exports = {
+  configureReactIcons,
   getPackageStoriesGlob,
   loadWorkspaceAddon,
   registerRules,

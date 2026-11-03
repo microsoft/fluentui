@@ -10,12 +10,12 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable as renderTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
@@ -67,7 +67,7 @@ import { useTeachingPopoverTitleBase_unstable as useTeachingPopoverTitle } from 
 export type NavButtonRenderFunction = TeachingPopoverCarouselNavState['renderNavButton'];
 
 // @public
-export const renderTeachingPopover: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => React_2.ReactElement;
+export const renderTeachingPopover: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => JSXElement;
 
 export { renderTeachingPopoverBody }
 
@@ -213,6 +213,11 @@ export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterPro
 
 export { TeachingPopoverFooterProps }
 
+// @public (undocumented)
+export type TeachingPopoverFooterSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
 export { TeachingPopoverFooterState }
 
 // @public (undocumented)
@@ -236,11 +241,11 @@ export type TeachingPopoverProps = {
     positioning?: PositioningShorthand;
     withArrow?: boolean;
     id?: string;
-    trapFocus?: boolean;
+    inertTrapFocus?: boolean;
 };
 
 // @public
-export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'inertTrapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
@@ -258,6 +263,7 @@ export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    shouldRenderSurface: boolean;
 };
 
 // @public

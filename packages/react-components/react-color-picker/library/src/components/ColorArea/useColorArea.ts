@@ -190,6 +190,7 @@ export const useColorAreaBase_unstable = (
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
+        'aria-orientation': 'vertical',
         tabIndex: activeAxis && activeAxis === 'y' ? 0 : -1,
       },
       elementType: 'input',

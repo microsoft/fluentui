@@ -1,0 +1,50 @@
+{
+  "name": "@fluentui/react-compiler-analyzer",
+  "entries": [
+    {
+      "date": "Thu, 22 Oct 2026 15:40:41 GMT",
+      "version": "0.0.3",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "20ea3d5db8fd922cf3f616271aaecdf9ec2cd72c",
+            "comment": "Support syntax-only TypeScript analysis, protected directive revalidation, and annotation previews."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Oct 2026 13:39:53 GMT",
+      "version": "0.0.2",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "ccec524b9cc2b3af6c3bfb761d326d82d16ba344",
+            "comment": "fix: handle TypeScript declare class fields without aborting analysis"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Oct 2026 14:21:29 GMT",
+      "version": "0.0.1",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "7203ccd54f9e695feefb37c3672e680b448fc366",
+            "comment": "Prepare the first 0.0.1 release of React Compiler Analyzer: analyze and lint workflows, guided initialization with an optional repository Agent Skill, schema-validated shared configuration, opt-in runtime-risk detection, first-party wrapper and wildcard path-alias resolution, directive fixes and risk-aware annotations, and CLI/Markdown/HTML reports with foldable HTML navigation. Harden parse, configuration, and compiler failure handling, including unattributed lint diagnostics; keep generated bailout comments on one line without swallowing compact function bodies; preserve file-level opt-outs and directives whose probes fail; resolve default exports, imported exports, and lexical call bindings; recognize all JavaScript line endings and actual directive comments; exclude dependencies and declarations by default; validate integer concurrency; escape Markdown table cells and normalize JSON diagnostic paths; require Node.js ^22.14.0 or ^24.0.0; emit canonical JSON v2 results; and detect nested memo/forwardRef migration candidates while preserving custom comparators. Include a human-facing CLI reference, packaged technical guides, and versioned migration notes from experimental builds."
+          }
+        ]
+      }
+    }
+  ]
+}

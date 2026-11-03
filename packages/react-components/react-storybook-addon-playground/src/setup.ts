@@ -25,7 +25,18 @@ export interface PlaygroundSetupMetadata {
 
 export interface PlaygroundRuntimeManifest {
   scripts: string[];
+  /**
+   * Emitted runtime JavaScript files authorized for shell fetches on behalf of the opaque-origin preview, including
+   * lazy chunks. Unlike the ordered startup `scripts`, this is an allowlist. Older manifests omit it and load natively.
+   */
+  allowedScriptFiles?: string[];
   styles: string[];
+  /**
+   * Build-owned stylesheets with emitted font/image URLs inlined as data URLs. The preview's data-href attributes also
+   * satisfy Webpack's lazy CSS loader without making authenticated requests from the opaque iframe. All styles and
+   * embedded assets transfer up front; lazy styles can affect the cascade before their modules are imported.
+   */
+  inlineStyles?: Array<{ href: string; cssText: string }>;
   /** Declarations that are always loaded (React and the `typings` addon option). */
   typings: string;
   /**

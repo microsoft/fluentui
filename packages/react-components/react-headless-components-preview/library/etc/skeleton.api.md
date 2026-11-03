@@ -4,9 +4,11 @@
 
 ```ts
 
-import * as React_2 from 'react';
+import { ForwardRefExoticComponent } from 'react';
+import { RefAttributes } from '@fluentui/react-utilities';
 import { renderSkeleton_unstable as renderSkeleton } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable as renderSkeletonItem } from '@fluentui/react-skeleton';
+import { SkeletonContextValue } from '@fluentui/react-skeleton';
 import { SkeletonContextValues } from '@fluentui/react-skeleton';
 import { SkeletonItemBaseProps as SkeletonItemProps } from '@fluentui/react-skeleton';
 import { SkeletonItemSlots } from '@fluentui/react-skeleton';
@@ -15,6 +17,7 @@ import { SkeletonBaseProps as SkeletonProps } from '@fluentui/react-skeleton';
 import { SkeletonSlots } from '@fluentui/react-skeleton';
 import { SkeletonBaseState as SkeletonState } from '@fluentui/react-skeleton';
 import { useSkeletonBase_unstable as useSkeleton } from '@fluentui/react-skeleton';
+import { useSkeletonContext } from '@fluentui/react-skeleton';
 import { useSkeletonItemBase_unstable as useSkeletonItem } from '@fluentui/react-skeleton';
 
 export { renderSkeleton }
@@ -22,10 +25,14 @@ export { renderSkeleton }
 export { renderSkeletonItem }
 
 // @public
-export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonProps & React_2.RefAttributes<HTMLDivElement>>;
+export const Skeleton: ForwardRefExoticComponent<SkeletonProps & RefAttributes<HTMLDivElement>>;
+
+export { SkeletonContextValue }
+
+export { SkeletonContextValues }
 
 // @public
-export const SkeletonItem: React_2.ForwardRefExoticComponent<SkeletonItemProps & React_2.RefAttributes<HTMLDivElement>>;
+export const SkeletonItem: ForwardRefExoticComponent<SkeletonItemProps & RefAttributes<HTMLDivElement>>;
 
 export { SkeletonItemProps }
 
@@ -40,6 +47,8 @@ export { SkeletonSlots }
 export { SkeletonState }
 
 export { useSkeleton }
+
+export { useSkeletonContext }
 
 // @public
 export const useSkeletonContextValues: (state: SkeletonState) => SkeletonContextValues;

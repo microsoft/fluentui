@@ -12,17 +12,25 @@ import {
   DefaultPalette,
   IButtonStyles,
   IconButton,
+  getRTL,
 } from '@fluentui/react';
-import { isPageActive, hasActiveChild, INavPage, INavProps } from '@fluentui/react-docsite-components/lib/index2';
+import type { INavPage, INavProps } from '@fluentui/react-docsite-components/lib/index2';
+import { isPageActive, hasActiveChild } from '@fluentui/react-docsite-components/lib/utilities/activePage';
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Nav.module.scss';
 
 type NavSortState = 'alphabetized' | 'categories';
 
+export interface IDocsiteNavProps extends INavProps {
+  isSmallScreen?: boolean;
+  navigationLabel?: string;
+}
+
 interface INavState {
   /** Search query as typed by the user. May contain special characters (don't use as a regex). */
   searchQuery: string;
   sortState: NavSortState;
+  collapsedCategories: Map<INavPage, boolean>;
 }
 
 const searchBoxStyles: ISearchBoxStyles = {
@@ -44,15 +52,16 @@ const menuIconProps: IIconProps = { iconName: '' };
 
 const sortStateKey = 'navSortState';
 
-export class Nav extends React.Component<INavProps, INavState> {
+export class Nav extends React.Component<IDocsiteNavProps, INavState> {
   private _menuProps: IContextualMenuProps;
 
-  public constructor(props: INavProps) {
+  public constructor(props: IDocsiteNavProps) {
     super(props);
 
     this.state = {
       searchQuery: '',
       sortState: (getItem(sortStateKey) as NavSortState | undefined) || 'categories',
+      collapsedCategories: new Map(),
     };
 
     this._menuProps = {
@@ -73,29 +82,31 @@ export class Nav extends React.Component<INavProps, INavState> {
     };
   }
 
-  public componentDidUpdate(prevProps: INavProps) {
+  public componentDidUpdate(prevProps: IDocsiteNavProps) {
     if (prevProps.pages !== this.props.pages) {
       this.setState({ searchQuery: '' });
     }
   }
 
   public render(): React.ReactElement | null {
-    const { pages, searchablePageTitle } = this.props;
+    const { pages, searchablePageTitle, isSmallScreen, navigationLabel } = this.props;
     const { sortState } = this.state;
     if (!pages) {
       return null;
     }
 
+    const links = (
+      <nav className={styles.nav} aria-label={navigationLabel || searchablePageTitle || 'Pages'}>
+        {sortState === 'alphabetized' && searchablePageTitle
+          ? this._renderSortedLinks(pages)
+          : this._renderLinkList(pages, false)}
+      </nav>
+    );
+
     return (
       <div className={styles.navWrapper}>
         {searchablePageTitle && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
-        <FocusZone>
-          <nav className={styles.nav} role="navigation">
-            {sortState === 'alphabetized' && searchablePageTitle
-              ? this._renderSortedLinks(pages)
-              : this._renderLinkList(pages, false)}
-          </nav>
-        </FocusZone>
+        {isSmallScreen ? <div>{links}</div> : <FocusZone>{links}</FocusZone>}
       </div>
     );
   }
@@ -189,11 +200,42 @@ export class Nav extends React.Component<INavProps, INavState> {
       const key = `${page.title}-${sectionIndex}`;
       return (
         <li key={key} className={css(styles.section, hasActiveChild(page) && styles.hasActiveChild)}>
-          <CollapsibleSection defaultCollapsed={!hasActiveChild(page)} title={page.title}>
+          <CollapsibleSection
+            collapsed={this._isCategoryCollapsed(page)}
+            title={{
+              text: page.title,
+              onClick: ev => {
+                this._setCategoryCollapsed(page, !this._isCategoryCollapsed(page));
+                ev.preventDefault();
+                ev.stopPropagation();
+              },
+              onKeyDown: ev => this._onCategoryKeyDown(page, ev),
+            }}
+          >
             {this._renderLinkList(page.pages, false)}
           </CollapsibleSection>
         </li>
       );
+    }
+  };
+
+  private _isCategoryCollapsed = (page: INavPage): boolean =>
+    this.state.collapsedCategories.get(page) ?? !hasActiveChild(page);
+
+  private _setCategoryCollapsed = (page: INavPage, collapsed: boolean): void => {
+    this.setState(state => ({
+      collapsedCategories: new Map(state.collapsedCategories).set(page, collapsed),
+    }));
+  };
+
+  private _onCategoryKeyDown = (page: INavPage, ev: React.KeyboardEvent<Element>): void => {
+    const collapseKey = getRTL() ? 'ArrowRight' : 'ArrowLeft';
+    const expandKey = getRTL() ? 'ArrowLeft' : 'ArrowRight';
+    const collapsed = this._isCategoryCollapsed(page);
+    if ((ev.key === collapseKey && !collapsed) || (ev.key === expandKey && collapsed)) {
+      this._setCategoryCollapsed(page, !collapsed);
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   };
 

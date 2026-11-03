@@ -327,14 +327,21 @@ describe('verify-peer-dependencies generator', () => {
   });
 
   describe('--verbose', () => {
+    let originalVerboseLogging: string | undefined;
+
     // nx strips `--verbose` from the generator schema but sets NX_VERBOSE_LOGGING, which is what
     // logger.verbose is gated on
     beforeEach(() => {
+      originalVerboseLogging = process.env.NX_VERBOSE_LOGGING;
       process.env.NX_VERBOSE_LOGGING = 'true';
     });
 
     afterEach(() => {
-      delete process.env.NX_VERBOSE_LOGGING;
+      if (originalVerboseLogging === undefined) {
+        delete process.env.NX_VERBOSE_LOGGING;
+      } else {
+        process.env.NX_VERBOSE_LOGGING = originalVerboseLogging;
+      }
     });
 
     it('should report what was verified and what was skipped', async () => {
@@ -345,7 +352,7 @@ describe('verify-peer-dependencies generator', () => {
       });
       setupPackage(tree, 'private-app', { private: true, dependencies: { '@proj/react-portal': '*' } });
 
-      const log = jest.spyOn(console, 'log').mockImplementation(() => undefined);
+      const log = jest.mocked(console.warn);
 
       await expect(generator(tree)).resolves.toBeUndefined();
 
@@ -369,7 +376,7 @@ describe('verify-peer-dependencies generator', () => {
       delete process.env.NX_VERBOSE_LOGGING;
       setupPackage(tree, 'react-portal', { peerDependencies: { react: '>=16.14.0 <20.0.0' } });
 
-      const log = jest.spyOn(console, 'log').mockImplementation(() => undefined);
+      const log = jest.mocked(console.warn);
 
       await generator(tree);
 

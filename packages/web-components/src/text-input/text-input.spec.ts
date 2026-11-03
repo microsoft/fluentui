@@ -357,7 +357,10 @@ test.describe('TextInput', () => {
         }),
     );
 
-    await element.evaluate((node: TextInput) => node.control.dispatchEvent(new Event('change')));
+    await element.evaluate((node: TextInput) => {
+      node.control.value = 'hello';
+      node.control.dispatchEvent(new Event('change'));
+    });
 
     await expect(wasChanged).resolves.toBe(true);
   });
@@ -700,6 +703,257 @@ test.describe('TextInput', () => {
     await control.press('Enter');
 
     expect(page.url()).toMatch(/foo/);
+  });
+
+  test.describe('Enter key and `change` event ordering', () => {
+    const template = /* html */ `
+      <form>
+        <${tagName} name="testinput"></${tagName}>
+        <button id="submit" type="button">submit</button>
+      </form>
+    `;
+
+    test('should fire `change` before `submit` when Enter is pressed after typing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      const changed = element.evaluate(
+        n => new Promise<number>(resolve => n.addEventListener('change', e => resolve(e.timeStamp))),
+      );
+      const submitted = form.evaluate(
+        n =>
+          new Promise<number>(resolve =>
+            n.addEventListener('submit', e => {
+              e.preventDefault();
+              resolve(e.timeStamp);
+            }),
+          ),
+      );
+
+      await control.focus();
+      await page.keyboard.type('hello');
+      await page.keyboard.press('Enter');
+
+      const [changedAt, submittedAt] = await Promise.all([changed, submitted]);
+
+      // WebKit timestamps have coarse precision, so both events can share a value.
+      expect(changedAt).toBeLessThanOrEqual(submittedAt);
+    });
+
+    test('should NOT fire `change` when Enter is pressed without editing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      await element.evaluate(node => node.addEventListener('change', () => (node.dataset.changed = 'true')));
+      await form.evaluate(node =>
+        node.addEventListener('submit', e => {
+          e.preventDefault();
+          node.dataset.submitted = 'true';
+        }),
+      );
+
+      await control.focus();
+      await page.keyboard.press('Enter');
+
+      // Handlers run synchronously during the key press, so `submit` proves `change` had its chance.
+      await expect(form).toHaveAttribute('data-submitted', 'true');
+      await expect(element).not.toHaveAttribute('data-changed');
+    });
+
+    test('should NOT fire focus events or a duplicate `change` when Enter is pressed after typing', async ({
+      fastPage,
+    }) => {
+      const { element, page } = fastPage;
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      await element.evaluate(node => {
+        node.dataset.changes = '0';
+        node.dataset.focusEvents = '0';
+        node.addEventListener('change', () => (node.dataset.changes = String(Number(node.dataset.changes) + 1)));
+        ['focusin', 'focusout'].forEach(type =>
+          node.addEventListener(type, () => (node.dataset.focusEvents = String(Number(node.dataset.focusEvents) + 1))),
+        );
+      });
+
+      await page.locator('form').evaluate(node => node.addEventListener('submit', e => e.preventDefault()));
+
+      await control.focus();
+      await page.keyboard.type('hello');
+
+      // Focus events from the initial `focus()` are not part of the assertion.
+      await element.evaluate(node => (node.dataset.focusEvents = '0'));
+      await page.keyboard.press('Enter');
+
+      await expect(element).toHaveAttribute('data-changes', '1');
+      await expect(element).toHaveAttribute('data-focus-events', '0');
+
+      // The browser's own `change` on blur must not be re-emitted.
+      await page.locator('#submit').focus();
+
+      await expect(element).toHaveAttribute('data-changes', '1');
+    });
+
+    test('should fire `change` again on blur when edited after Enter', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      await element.evaluate(node => {
+        node.dataset.changes = '0';
+        node.addEventListener('change', () => (node.dataset.changes = String(Number(node.dataset.changes) + 1)));
+      });
+
+      await page.locator('form').evaluate(node => node.addEventListener('submit', e => e.preventDefault()));
+
+      await control.focus();
+      await page.keyboard.type('hello');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('!');
+      await page.locator('#submit').focus();
+
+      await expect(element).toHaveAttribute('data-changes', '2');
+    });
+
+    test('should keep focus on the control after Enter', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      const submitted = form.evaluate(
+        node =>
+          new Promise<boolean>(resolve => {
+            node.addEventListener('submit', e => {
+              e.preventDefault();
+              resolve(true);
+            });
+          }),
+      );
+
+      await control.focus();
+      await page.keyboard.type('hello');
+      await page.keyboard.press('Enter');
+
+      await expect(submitted).resolves.toBe(true);
+      await expect(control).toBeFocused();
+    });
+
+    test('should NOT take focus back when a submit handler moves focus elsewhere', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+      const submit = page.locator('#submit');
+
+      await fastPage.setTemplate(template);
+
+      const submitted = form.evaluate(
+        node =>
+          new Promise<boolean>(resolve => {
+            node.addEventListener('submit', e => {
+              e.preventDefault();
+              (document.getElementById('submit') as HTMLButtonElement).focus();
+              resolve(true);
+            });
+          }),
+      );
+
+      await control.focus();
+      await page.keyboard.type('hello');
+      await page.keyboard.press('Enter');
+
+      await expect(submitted).resolves.toBe(true);
+      await expect(submit).toBeFocused();
+    });
+
+    test('should NOT submit or move focus to the control when Enter is pressed on slotted content', async ({
+      fastPage,
+    }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const slotted = page.locator('#slotted');
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <${tagName} name="testinput">
+            <button slot="start" id="slotted" type="button">x</button>
+          </${tagName}>
+        </form>
+      `);
+
+      await form.evaluate(node =>
+        node.addEventListener('submit', e => {
+          e.preventDefault();
+          node.dataset.submitted = 'true';
+        }),
+      );
+
+      await slotted.focus();
+      await page.keyboard.press('Enter');
+
+      await expect(form).not.toHaveAttribute('data-submitted');
+      await expect(slotted).toBeFocused();
+      await expect(element.locator('input')).not.toBeFocused();
+    });
+
+    test('should NOT submit or fire `change` when Enter is pressed during IME composition', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(template);
+
+      await form.evaluate(node =>
+        node.addEventListener('submit', e => {
+          e.preventDefault();
+          node.dataset.submitted = 'true';
+        }),
+      );
+
+      await control.focus();
+      await control.evaluate(node => {
+        node.dispatchEvent(
+          new KeyboardEvent('keydown', { key: 'Enter', isComposing: true, bubbles: true, composed: true }),
+        );
+      });
+
+      await expect(form).not.toHaveAttribute('data-submitted');
+      await expect(control).toBeFocused();
+    });
+
+    test('should NOT submit and should stay focused when `required` and empty', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const form = page.locator('form');
+      const control = element.locator('input');
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <${tagName} name="testinput" required></${tagName}>
+        </form>
+      `);
+
+      await form.evaluate(node =>
+        node.addEventListener('submit', e => {
+          e.preventDefault();
+          node.dataset.submitted = 'true';
+        }),
+      );
+
+      await control.focus();
+      await page.keyboard.press('Enter');
+
+      await expect(form).not.toHaveAttribute('data-submitted');
+      await expect(control).toBeFocused();
+    });
   });
 
   test('should only submit form once when Enter is pressed', async ({ fastPage }) => {
