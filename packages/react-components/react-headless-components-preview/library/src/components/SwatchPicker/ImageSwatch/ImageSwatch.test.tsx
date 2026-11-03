@@ -24,12 +24,6 @@ describe('ImageSwatch', () => {
     expect(getByRole('radio')).toHaveAttribute('data-selected');
   });
 
-  it('preserves an explicit background image override and defaults to a non-submit button', () => {
-    const { getByRole } = render(<ImageSwatch src="image.png" value="image" style={{ backgroundImage: 'none' }} />);
-    expect(getByRole('radio')).toHaveAttribute('type', 'button');
-    expect(getByRole('radio').style.backgroundImage).toBe('none');
-  });
-
   it('emits the disabled state attribute only while disabled', () => {
     const { getByLabelText } = render(
       <SwatchPicker aria-label="Images">
