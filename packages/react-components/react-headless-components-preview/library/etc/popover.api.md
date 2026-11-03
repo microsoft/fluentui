@@ -11,11 +11,11 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverTriggerChildProps as PopoverTriggerChildProps_2 } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
@@ -119,7 +119,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => React_2.ReactElement;
+export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { readFileSync } from 'node:fs';
+import * as ts from 'typescript';
 import { render, type RenderOptions } from '@testing-library/react';
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
@@ -45,6 +47,32 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
     ],
     disableTypeTests: true,
     extraTests: {
+      'component-uses-compose-helper': ({ componentPath, displayName }: IsConformantOptions<TProps>) => {
+        it('uses a compose helper (component-uses-compose-helper)', () => {
+          const sourceFile = ts.createSourceFile(
+            componentPath,
+            readFileSync(componentPath, 'utf8'),
+            ts.ScriptTarget.Latest,
+            true,
+            ts.ScriptKind.TSX,
+          );
+          const declaration = sourceFile.statements
+            .filter(ts.isVariableStatement)
+            .flatMap(statement => [...statement.declarationList.declarations])
+            .find(candidate => candidate.name.getText(sourceFile) === displayName);
+          const initializer = declaration?.initializer;
+          const call = initializer && ts.isCallExpression(initializer) ? initializer : undefined;
+          const composedCall =
+            call?.expression.getText(sourceFile) === 'React.memo' &&
+            call.arguments[0] &&
+            ts.isCallExpression(call.arguments[0])
+              ? call.arguments[0]
+              : call;
+          const helper = composedCall?.expression.getText(sourceFile);
+
+          expect(helper).toMatch(/^composeComponent(?:WithoutRef)?$/);
+        });
+      },
       'component-has-no-axe-violations': ({ Component, requiredProps, renderOptions }: IsConformantOptions<TProps>) => {
         it('has no axe violations (component-has-no-axe-violations)', async () => {
           const { baseElement } = render(

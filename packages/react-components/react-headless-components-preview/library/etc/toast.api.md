@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { renderToastFooter_unstable as renderToastFooter } from '@fluentui/react-toast';
 import type { Slot } from '@fluentui/react-utilities';

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.17.0",
+      "tag": "@fluentui/react-tree_v9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a22af26f14588c5af093871bbf6150641250610e",
+            "comment": "feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.16.10",
       "tag": "@fluentui/react-tree_v9.16.10",

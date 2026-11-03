@@ -266,8 +266,8 @@ describe('multi-path coverage reporting', () => {
 
       | Status | Count | Percentage |
       |--------|-------|------------|
-      | Compiler accepted (memo cache emitted) | 1 | 100.0% |
-      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Compiler accepted (positive reported memo slots) | 1 | 100.0% |
+      | Compiler accepted (zero reported memo slots) | 0 | 0.0% |
       | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
@@ -278,8 +278,8 @@ describe('multi-path coverage reporting', () => {
 
       | Status | Count | Percentage |
       |--------|-------|------------|
-      | Compiler accepted (memo cache emitted) | 1 | 100.0% |
-      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Compiler accepted (positive reported memo slots) | 1 | 100.0% |
+      | Compiler accepted (zero reported memo slots) | 0 | 0.0% |
       | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
@@ -309,12 +309,12 @@ describe('multi-path coverage reporting', () => {
     printCoverageReport(results, '/workspace', true);
 
     const output = logOutput.join('\n');
-    expect(output).toContain('### Compiler accepted (memo cache emitted) (1)');
-    expect(output).toContain('### Compiler accepted (no memo cache emitted) (1)');
-    expect(output).toContain('### Compiler accepted (memo cache not reported) (1)');
-    expect(output).toContain('| Compiler accepted (memo cache emitted) | 1 | 33.3% |');
-    expect(output).toContain('| Compiler accepted (no memo cache emitted) | 1 | 33.3% |');
-    expect(output).toContain('| Compiler accepted (memo cache not reported) | 1 | 33.3% |');
+    expect(output).toContain('### Compiler accepted (positive reported memo slots) (1)');
+    expect(output).toContain('### Compiler accepted (zero reported memo slots) (1)');
+    expect(output).toContain('### Compiler accepted (memo statistics unavailable) (1)');
+    expect(output).toContain('| Compiler accepted (positive reported memo slots) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (zero reported memo slots) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (memo statistics unavailable) | 1 | 33.3% |');
     expect(output).toContain('| Manual Memo Migration Candidates | 0 | 0.0% of accepted |');
     expect(output).toContain('| src/Component.tsx:5 | Cached | 2 | 1 | 1 |');
     expect(output).toContain('| src/Component.tsx:10 | Pruned | 0 | 0 | 0 |');
@@ -337,10 +337,10 @@ describe('multi-path coverage reporting', () => {
 
     const html = output.join('\n');
     expect(html).toContain(
-      '<details class="fold" id="test-pkg--compiler-accepted-no-memo-cache-emitted" data-title="Compiler accepted (no memo cache emitted)"',
+      '<details class="fold" id="test-pkg--compiler-accepted-zero-reported-memo-slots" data-title="Compiler accepted (zero reported memo slots)"',
     );
     expect(html).not.toContain(
-      '<details class="fold status-success" id="test-pkg--compiler-accepted-no-memo-cache-emitted"',
+      '<details class="fold status-success" id="test-pkg--compiler-accepted-zero-reported-memo-slots"',
     );
   });
 
@@ -369,8 +369,8 @@ describe('multi-path coverage reporting', () => {
 
       | Status | Count | Percentage |
       |--------|-------|------------|
-      | Compiler accepted (memo cache emitted) | 2 | 66.7% |
-      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Compiler accepted (positive reported memo slots) | 2 | 66.7% |
+      | Compiler accepted (zero reported memo slots) | 0 | 0.0% |
       | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
       | Skipped | 0 | 0.0% |
       | Errors | 1 | 33.3% |
@@ -399,9 +399,9 @@ describe('multi-path coverage reporting', () => {
     printCoverageSummary(results, false);
 
     const output = logOutput.join('\n');
-    expect(output).toContain('| Compiler accepted (memo cache emitted) | 1 | 33.3% |');
-    expect(output).toContain('| Compiler accepted (no memo cache emitted) | 1 | 33.3% |');
-    expect(output).toContain('| Compiler accepted (memo cache not reported) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (positive reported memo slots) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (zero reported memo slots) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (memo statistics unavailable) | 1 | 33.3% |');
     expect(output).not.toContain('will be memoized');
   });
 
@@ -709,7 +709,9 @@ describe('printRuntimeRisks', () => {
     );
     const output = logOutput.join('\n');
     expect(output).toContain('Risky but Not Compiled');
-    expect(output).toContain('not hazardous yet');
+    expect(output).toContain('another compiler/profile may optimize them');
+    expect(output).toContain('application safety are unverified');
+    expect(output).not.toContain('not hazardous yet');
     expect(output).not.toContain('Compiled but Risky');
   });
 
