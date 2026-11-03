@@ -1,5 +1,5 @@
 {
-  "type": "patch",
-  "comment": "fix: correct headless behavior, state selectors, and icon accessibility; rename Field selector to data-validation-state.",
+  "type": "minor",
+  "comment": "fix!: correct headless behavior, state selectors, and icon accessibility; rename Field selector to data-validation-state.",
   "packageName": "@fluentui/react-headless-components-preview"
 }
