@@ -82,9 +82,3 @@ The polyfill differs from a native implementation in these cases:
 - **Visibility changes.** The polyfill observes added and removed items and attribute changes, but not visibility. An item hidden with CSS can still take part in navigation. Unmount hidden items, or give them `focusgroup="none"` while hidden.
 - **`tabindex` is managed.** The polyfill rewrites `tabindex` on items. Don't set it yourself on items inside a group.
 - **`reading-flow`** CSS is not supported.
-
-## Testing
-
-- Load the polyfill wherever you test keyboard behavior: the app, Storybook, and browser tests.
-- Tab into each group once, arrow through it, Tab out, and Shift+Tab back. Check which item gets focus on re-entry.
-- Test arrow-key behavior in a real browser (Cypress, Playwright); jsdom doesn't implement focus movement.

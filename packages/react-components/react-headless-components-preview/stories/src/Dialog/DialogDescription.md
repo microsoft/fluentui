@@ -10,4 +10,4 @@ Keep the surface rendered in React during exit. Use `unmountOnClose={false}` to 
 
 ### Accessibility
 
-Modal and alert dialogs open with `showModal()`. The page behind is inert, so focus never reaches it, and Tab order inside the surface is the browser's. In Chrome and Edge, Tab from the last focusable element moves to the browser UI (address bar, tabs), and the next Tab comes back to the first element; Shift+Tab works the same way in reverse. This is native `<dialog>` behavior, not a focus leak: it keeps the browser UI reachable, so the modal is not a keyboard trap. Headless components don't wrap Tab; add wrapping in your own component if your product needs it. See [Tab in modal overlays](?path=/docs/overview-accessibility-overlays--docs#tab-in-modal-overlays).
+Modal and alert dialogs open as a native `<dialog>` with `showModal()`, so the page behind is inert and Tab order inside the surface is the browser's. Non-modal dialogs open with `showPopover()` and leave the page interactive. See [Tab in modal overlays](?path=/docs/overview-accessibility-overlays--docs#tab-in-modal-overlays) for how Tab and focus behave inside a modal surface.

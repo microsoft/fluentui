@@ -35,23 +35,6 @@ Components reuse the base hooks of `@fluentui/react-components`, so the rendered
 - **Zoom and reflow.** Layouts must work at 400% zoom and 320 CSS px width without horizontal scrolling.
 - **Labels and page structure.** Accessible names, landmarks, headings and announcements belong to your application.
 
-## ARIA patterns
-
-| Component                     | APG pattern                                                                                                              | Rendered semantics                                                                                                                             |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Button, ToggleButton          | [Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/)                                                               | `<button>`; `aria-pressed` on toggles                                                                                                          |
-| Checkbox, Switch, RadioGroup  | [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/), [Radio](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) | Native `<input>`; Switch adds `role="switch"`; `role="radiogroup"` on the group                                                                |
-| Accordion                     | [Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)                                                         | Header `<button>` with `aria-expanded`                                                                                                         |
-| Dialog, Drawer                | [Dialog (modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)                                                 | Native `<dialog>`, labelled by `DialogTitle`                                                                                                   |
-| Menu                          | [Menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/)                                                     | `role="menu"`, `role="menuitem"` / `menuitemcheckbox` / `menuitemradio`                                                                        |
-| TabList                       | [Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)                                                                   | `role="tablist"`, `role="tab"`, `aria-selected`                                                                                                |
-| Tooltip                       | [Tooltip](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)                                                             | `role="tooltip"`, referenced by the trigger's label or description                                                                             |
-| Combobox, Dropdown, TagPicker | [Combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)                                                           | `role="combobox"`, `role="listbox"`, `role="option"`, `aria-activedescendant`; with `multiselect`, `role="menu"` and `role="menuitemcheckbox"` |
-| Toolbar                       | [Toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/)                                                             | `role="toolbar"`, arrow-key navigation through `focusgroup`                                                                                    |
-| Slider                        | [Slider](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)                                                               | Native `<input type="range">`                                                                                                                  |
-
-Each component page lists its own roles, keyboard map and state attributes.
-
 ## Keyboard
 
 | Key           | Action                                                                    |
@@ -61,15 +44,6 @@ Each component page lists its own roles, keyboard map and state attributes.
 | Arrow keys    | Move inside radio groups, tab lists, menus, toolbars, listboxes, sliders. |
 | Home / End    | Jump to the first or last item, where the pattern defines it.             |
 | Escape        | Close the topmost open overlay and return focus to its trigger.           |
-
-## Testing
-
-- **Keyboard only.** Unplug the mouse. Every action must be reachable and every focused element visible.
-- **Screen readers.** NVDA or JAWS with Chrome or Edge on Windows, VoiceOver with Safari on macOS and iOS, TalkBack with Chrome on Android.
-- **Automated checks.** [axe-core](https://github.com/dequelabs/axe-core) (or the Storybook a11y addon) catches missing names, invalid ARIA and contrast failures. It cannot judge focus order or announcements.
-- **Forced colors.** Chrome DevTools → Rendering → Emulate CSS media feature `forced-colors: active`.
-- **Zoom.** 200% and 400% browser zoom, and a 320 px wide viewport.
-- **Reduced motion.** Turn on reduced motion in the OS, or emulate `prefers-reduced-motion: reduce`.
 
 ## Resources
 
