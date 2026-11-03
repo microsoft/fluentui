@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-icons-compat): suppress missing icon warning for custom image URLs and deduplicate warnings per icon name",
+  "packageName": "@fluentui/react-icons-compat",
+  "email": "enter.k.giridharan@gmail.com"
+}
+
