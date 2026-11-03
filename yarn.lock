@@ -4018,7 +4018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.75.0, @fluentui/react-components@workspace:packages/react-components/react-components":
+"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.75.1, @fluentui/react-components@workspace:packages/react-components/react-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
@@ -4070,7 +4070,7 @@ __metadata:
     "@fluentui/react-table": "npm:^9.19.23"
     "@fluentui/react-tabs": "npm:^9.12.6"
     "@fluentui/react-tabster": "npm:^9.26.19"
-    "@fluentui/react-tag-picker": "npm:^9.10.6"
+    "@fluentui/react-tag-picker": "npm:^9.10.7"
     "@fluentui/react-tags": "npm:^9.9.8"
     "@fluentui/react-teaching-popover": "npm:^9.7.9"
     "@fluentui/react-text": "npm:^9.6.21"
@@ -4079,7 +4079,7 @@ __metadata:
     "@fluentui/react-toast": "npm:^9.8.5"
     "@fluentui/react-toolbar": "npm:^9.8.7"
     "@fluentui/react-tooltip": "npm:^9.10.8"
-    "@fluentui/react-tree": "npm:^9.16.10"
+    "@fluentui/react-tree": "npm:^9.17.0"
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@fluentui/react-virtualizer": "npm:9.0.0-alpha.116"
     "@griffel/react": "npm:^1.5.32"
@@ -4517,13 +4517,14 @@ __metadata:
     "@fluentui/react-switch": "npm:^9.7.7"
     "@fluentui/react-tabs": "npm:^9.12.6"
     "@fluentui/react-tabster": "npm:^9.26.19"
-    "@fluentui/react-tag-picker": "npm:^9.10.6"
+    "@fluentui/react-tag-picker": "npm:^9.10.7"
     "@fluentui/react-tags": "npm:^9.9.8"
     "@fluentui/react-teaching-popover": "npm:^9.7.9"
     "@fluentui/react-textarea": "npm:^9.7.8"
     "@fluentui/react-toast": "npm:^9.8.5"
     "@fluentui/react-toolbar": "npm:^9.8.7"
     "@fluentui/react-tooltip": "npm:^9.10.8"
+    "@fluentui/react-tree": "npm:^9.17.0"
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@fluentui/scripts-cypress": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
@@ -4992,7 +4993,7 @@ __metadata:
   resolution: "@fluentui/react-migration-v0-v9@workspace:packages/react-components/react-migration-v0-v9/library"
   dependencies:
     "@fluentui/react-aria": "npm:^9.17.16"
-    "@fluentui/react-components": "npm:^9.75.0"
+    "@fluentui/react-components": "npm:^9.75.1"
     "@fluentui/react-context-selector": "npm:^9.2.21"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.7"
@@ -5025,7 +5026,7 @@ __metadata:
     "@ctrl/tinycolor": "npm:^3.3.4"
     "@fluentui/fluent2-theme": "npm:^8.107.157"
     "@fluentui/react": "npm:^8.125.10"
-    "@fluentui/react-components": "npm:^9.75.0"
+    "@fluentui/react-components": "npm:^9.75.1"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@griffel/react": "npm:^1.5.32"
@@ -5325,7 +5326,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.19"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@fluentui/react-components": ^9.75.0
+    "@fluentui/react-components": ^9.75.1
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
   peerDependenciesMeta:
@@ -5735,7 +5736,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
   dependencies:
-    "@fluentui/react-components": "npm:^9.75.0"
+    "@fluentui/react-components": "npm:^9.75.1"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-utilities": "npm:^9.27.0"
@@ -5936,7 +5937,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tag-picker@npm:*, @fluentui/react-tag-picker@npm:^9.10.6, @fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library":
+"@fluentui/react-tag-picker@npm:*, @fluentui/react-tag-picker@npm:^9.10.7, @fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library"
   dependencies:
@@ -6253,7 +6254,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tree@npm:*, @fluentui/react-tree@npm:^9.16.10, @fluentui/react-tree@workspace:packages/react-components/react-tree/library":
+"@fluentui/react-tree@npm:*, @fluentui/react-tree@npm:^9.17.0, @fluentui/react-tree@workspace:packages/react-components/react-tree/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tree@workspace:packages/react-components/react-tree/library"
   dependencies:
@@ -6707,7 +6708,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/theme-designer@workspace:packages/react-components/theme-designer"
   dependencies:
-    "@fluentui/react-components": "npm:^9.75.0"
+    "@fluentui/react-components": "npm:^9.75.1"
     "@fluentui/react-context-selector": "npm:^9.2.21"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.4.0"
