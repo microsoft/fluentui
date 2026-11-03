@@ -18,7 +18,7 @@ const storyTemplate = html<StoryArgs<FluentAnchorButton>>`
     appearance="${story => story.appearance}"
     shape="${story => story.shape}"
     size="${story => story.size}"
-    ?icon-only="${story => story.iconOnly}"
+    ?icon-only="${story => story['icon-only']}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
     ${story => story.endSlottedContent?.()}
