@@ -15,6 +15,9 @@ import {
   isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { curveLinear, curveStep } from 'd3-shape';
+import type { PlotlySchema } from '@fluentui/chart-utilities';
+import { transformPlotlyJsonToLineChartProps } from '../DeclarativeChart/PlotlySchemaAdapter';
 const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
@@ -1635,6 +1638,89 @@ describe('LineChart - current callout observation', () => {
       )!;
     return { ...result, scene, target, mounts: () => mounts };
   };
+
+  const withCurve = (curve: NonNullable<LineChartPoints['lineOptions']>['curve']) => {
+    const data = createData(0, 'path');
+    data.lineChartData!.forEach(line => {
+      line.lineOptions = { curve, mode: 'lines' };
+    });
+    return data;
+  };
+
+  it.each(['preserve', 'reset', 'none'] as const)(
+    'handles a focused custom-curve path becoming point markers (policy: %s)',
+    policy => {
+      const { container, rerender, scene, target } = setup('path', policy, false, {
+        data: withCurve(curveStep),
+        focusOnReset: { lineIndex: 0, pointIndex: 1 },
+      });
+      const path = target();
+      act(() => path.focus());
+      expect(container.ownerDocument.activeElement).toBe(path);
+
+      rerender(scene(0, 'path', { data: withCurve(undefined) }));
+
+      expect(path.isConnected).toBe(false);
+      expect(target('points')).not.toBeNull();
+      const expected =
+        policy === 'none'
+          ? container.ownerDocument.body
+          : policy === 'reset'
+          ? container.querySelectorAll('[role="option"][aria-label*=". First,"]')[1]
+          : target('points');
+      expect(container.ownerDocument.activeElement).toBe(expected);
+    },
+  );
+
+  it.each(['replacement', 'removal'] as const)('recognizes custom-curve %s as content for explicit reset', change => {
+    const { container, rerender, scene, target, getByTestId } = setup('path', 'reset', false, {
+      data: withCurve(curveLinear),
+    });
+    act(() => target().focus());
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(0, 'path', { data: withCurve(change === 'replacement' ? curveStep : undefined) }));
+
+    expect(container.ownerDocument.activeElement).toBe(target(change === 'replacement' ? 'path' : 'points'));
+  });
+
+  it.each([
+    { previous: 0.1, current: 1.2, reset: true },
+    { previous: 0.1, current: 0.1, reset: false },
+    { previous: undefined, current: 1, reset: false },
+  ])(
+    'handles adapter spline smoothing $previous -> $current without spurious resets',
+    ({ previous, current, reset }) => {
+      const colorMap = { current: new Map<string, string>() };
+      const transform = (smoothing?: number) => {
+        const schema: PlotlySchema = {
+          data: ['First', 'Second'].map(name => ({
+            type: 'scatter',
+            mode: 'lines',
+            name,
+            x: [1, 2, 3],
+            y: [10, 40, 20],
+            line: { shape: 'spline', smoothing },
+          })),
+          layout: {},
+        };
+        return transformPlotlyJsonToLineChartProps(schema, false, colorMap, 'default', true).data;
+      };
+      const { container, rerender, scene, target, getByTestId } = setup('path', 'reset', false, {
+        data: transform(previous),
+      });
+      act(() => target().focus());
+      const outside = getByTestId('outside');
+      act(() => outside.focus());
+      const onFocus = jest.fn();
+      target().addEventListener('focus', onFocus);
+
+      rerender(scene(0, 'path', { data: transform(current) }));
+
+      expect(container.ownerDocument.activeElement).toBe(reset ? target() : outside);
+      expect(onFocus).toHaveBeenCalledTimes(reset ? 1 : 0);
+    },
+  );
 
   it.each(modes)('refreshes data and color without another focus event on a retained %s target', mode => {
     const { container, rerender, scene, target, getByTestId } = setup(mode);

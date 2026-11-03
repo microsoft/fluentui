@@ -754,6 +754,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
 
+  function _getBarHeight(y: number, yBarScale: (value: number) => number): number {
+    return yBarScale(y) - yBarScale(_yMax < 0 ? _yMax : 0);
+  }
+
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
@@ -762,7 +766,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
 
-      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      let barHeight: number = _getBarHeight(point.y, yBarScale);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
@@ -823,7 +827,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
-      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      let barHeight: number = _getBarHeight(point.y, yBarScale);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
@@ -892,7 +896,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
-      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      let barHeight: number = _getBarHeight(point.y, yBarScale);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
@@ -1290,8 +1294,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         currentCalloutY,
       ) &&
       isPlottable(xScale(selectedCalloutPoint.x), yScale(anchorY)) &&
-      (!isLineAnchor || anchorY !== 0) &&
-      currentCalloutY !== 0 &&
+      (isLineAnchor ? anchorY !== 0 && currentCalloutY !== 0 : _getBarHeight(selectedCalloutPoint.y, yScale) !== 0) &&
       (_noLegendHighlighted() || _legendHighlighted(currentCalloutLegend))
         ? selectedCalloutPoint
         : undefined;

@@ -1,8 +1,13 @@
 import type * as React from 'react';
+import { getCardinalCurveTension } from '../../utilities/curveFactory';
 
 export function areChartDataEqual(previous: unknown, current: unknown): boolean {
   if (Object.is(previous, current)) {
     return true;
+  }
+  if (typeof previous === 'function' && typeof current === 'function') {
+    const previousTension = getCardinalCurveTension(previous);
+    return previousTension !== undefined && Object.is(previousTension, getCardinalCurveTension(current));
   }
   if (previous instanceof Date && current instanceof Date) {
     return previous.getTime() === current.getTime();
@@ -29,8 +34,9 @@ export function areChartDataEqual(previous: unknown, current: unknown): boolean 
     const previousValue = previousRecord[key];
     const currentValue = currentRecord[key];
     return !(
-      (typeof previousValue === 'function' && (typeof currentValue === 'function' || currentValue === undefined)) ||
-      (typeof currentValue === 'function' && previousValue === undefined)
+      /^on[A-Z]/.test(key) &&
+      (typeof previousValue === 'function' || previousValue === undefined) &&
+      (typeof currentValue === 'function' || currentValue === undefined)
     );
   };
   const keys = Object.keys(previousRecord).filter(isDataKey);

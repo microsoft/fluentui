@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { areChartDataEqual, isChartElementTabbable } from './ChartFocusUtils';
+import { curveLinear, curveStep } from 'd3-shape';
 
 describe('areChartDataEqual', () => {
   it('compares nested chart values and colors by content', () => {
@@ -47,6 +48,18 @@ describe('areChartDataEqual', () => {
     expect(areChartDataEqual({ onClick: callback }, {})).toBe(true);
     expect(areChartDataEqual({ onClick: callback }, { onClick: 'changed' })).toBe(false);
     expect(areChartDataEqual({ onClick: 'changed' }, { onClick: callback })).toBe(false);
+    expect(areChartDataEqual({}, { onClick: undefined })).toBe(true);
+  });
+
+  it('retains rendering-function identity, additions and removals', () => {
+    const data = (curve?: typeof curveLinear) => ({ lineOptions: { curve } });
+    expect(areChartDataEqual(data(curveLinear), data(curveLinear))).toBe(true);
+    expect(areChartDataEqual(data(curveLinear), data(curveStep))).toBe(false);
+    expect(areChartDataEqual(data(curveLinear), data())).toBe(false);
+    expect(areChartDataEqual(data(), data(curveLinear))).toBe(false);
+    expect(areChartDataEqual({ lineOptions: {} }, data(curveLinear))).toBe(false);
+    expect(areChartDataEqual(data(curveLinear), { lineOptions: {} })).toBe(false);
+    expect(areChartDataEqual({ render: curveLinear }, { render: curveStep })).toBe(false);
   });
 
   it('still detects nested value changes when callbacks change', () => {

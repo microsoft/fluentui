@@ -1555,6 +1555,65 @@ describe('VerticalBarChart - current callout observation', () => {
     expect(mounts()).toBe(2);
   });
 
+  it.each(
+    (['number', 'string', 'date'] as const).flatMap(axis =>
+      (['preserve', 'none'] as const).flatMap(policy => [-10, -30].map(value => ({ axis, policy, value }))),
+    ),
+  )(
+    'uses rendered height at a negative baseline (axis: $axis, policy: $policy, value: $value)',
+    ({ axis, policy, value }) => {
+      const config = (y: number): Partial<VerticalBarChartProps> => ({
+        yMinValue: -50,
+        yMaxValue: -10,
+        xMinValue: undefined,
+        xMaxValue: undefined,
+        roundedTicks: false,
+        data: [-40, y].map((pointY, index) => ({
+          x:
+            axis === 'date'
+              ? new Date(Date.UTC(2026, 0, index + 1))
+              : axis === 'string'
+              ? ['A', 'B'][index]
+              : index + 1,
+          y: pointY,
+          legend: index ? 'Second' : 'First',
+          color: index ? 'blue' : 'red',
+        })),
+      });
+      const { container, rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup(
+        policy,
+        config(-20),
+      );
+      const bar = target();
+      act(() => bar.focus());
+      const input = getByRole('textbox', { name: 'Bar note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep negative-bar note' } });
+
+      rerender(scene(0, false, config(value)));
+
+      if (value === -10) {
+        expect(bar.isConnected).toBe(false);
+        expect(queryByTestId('bar-observation')).toBeNull();
+        expect(input.isConnected).toBe(false);
+        const outside = getByTestId('outside');
+        act(() => outside.focus());
+
+        rerender(scene(0, false, config(-20)));
+
+        expect(queryByTestId('bar-observation')).toBeNull();
+        expect(container.ownerDocument.activeElement).toBe(outside);
+      } else {
+        expect(bar.isConnected).toBe(true);
+        expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+        expect(container.ownerDocument.activeElement).toBe(input);
+        expect(input).toHaveValue('Keep negative-bar note');
+        expect(getByTestId('bar-observation')).toHaveTextContent('"y":-30');
+      }
+      expect(mounts()).toBe(1);
+    },
+  );
+
   it('allows an explicit reset to reopen a retired bar callout', () => {
     const { rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup('reset');
     act(() => target().focus());
