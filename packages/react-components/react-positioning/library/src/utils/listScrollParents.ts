@@ -1,30 +1,15 @@
-import { getScrollParent } from './getScrollParent';
+import { findAncestor } from '../engine/platform';
 
-export function listScrollParents(node: HTMLElement): HTMLElement[] {
+/** Lists the scroll parents of the node, the closest first, up to and including the body of its document */
+export const listScrollParents = (node: HTMLElement): HTMLElement[] => {
+  const body = node.ownerDocument.body;
   const scrollParents: HTMLElement[] = [];
 
-  let cur: HTMLElement | null = node;
-  while (cur) {
-    const scrollParent = getScrollParent(cur);
-
-    if (node.ownerDocument.body === scrollParent) {
-      scrollParents.push(scrollParent);
-      break;
+  findAncestor(node, (parent, { overflow, overflowX, overflowY }) => {
+    if (parent !== body && /auto|scroll|overlay/.test(overflow + overflowY + overflowX)) {
+      scrollParents.push(parent as HTMLElement);
     }
+  });
 
-    if (scrollParent.nodeName === 'BODY' && scrollParent !== node.ownerDocument.body) {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.error(
-          '@fluentui/react-positioning: You are comparing two different documents! This is an unexpected error, please report this as a bug to the Fluent UI team ',
-        );
-      }
-      break;
-    }
-
-    scrollParents.push(scrollParent);
-    cur = scrollParent;
-  }
-
-  return scrollParents;
-}
+  return [...scrollParents, body];
+};

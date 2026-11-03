@@ -12,6 +12,4 @@ export { useCallbackRef } from './useCallbackRef';
 export { debounce } from './debounce';
 export { toggleScrollListener } from './toggleScrollListener';
 export { hasAutofocusFilter } from './hasAutoFocusFilter';
-export { writeArrowUpdates } from './writeArrowUpdates';
-export { writeContainerUpdates } from './writeContainerupdates';
 export { normalizeAutoSize } from './normalizeAutoSize';
