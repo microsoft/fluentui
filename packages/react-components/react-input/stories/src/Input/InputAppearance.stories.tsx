@@ -6,25 +6,27 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '400px',
+    // maxWidth: '400px',
   },
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
+    // marginTop: tokens.spacingVerticalMNudge,
+    marginInline: `calc(-1* ${tokens.spacingHorizontalXXL})`,
+    paddingInline: tokens.spacingHorizontalXXL,
+    paddingBlock: tokens.spacingHorizontalXXL,
   },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground3,
+    // '> label': {
+    //   color: tokens.colorNeutralForegroundInverted2,
+    // },
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground1,
+    // '> label': {
+    //   color: tokens.colorNeutralForegroundInverted2,
+    // },
   },
 });
 
