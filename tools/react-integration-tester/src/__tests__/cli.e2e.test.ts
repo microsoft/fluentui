@@ -282,6 +282,9 @@ describe('rit CLI e2e', () => {
         setupFilesAfterEnv: [
           join(__dirname, './jest.mock-snapshots.js'),
         ],
+        // Origin \`rootDir\` is shared by concurrent runs for every React version, so keep run artifacts scaffold-local
+        coverageDirectory: join(__dirname, 'coverage'),
+        ...getSnapshotIsolationConfig(),
       }
 
       const repoProjectConfig = createOriginProjectConfig(baseConfig, workspacePreset);
@@ -290,6 +293,24 @@ describe('rit CLI e2e', () => {
       module.exports = config;
 
       // helpers
+
+      /**
+       * While snapshots are mocked (default), keep Jest away from origin \`__snapshots__\` so \`-u\` never deletes them:
+       * - \`snapshotResolver\` stops per-test-file obsolete snapshot removal
+       * - ignoring \`.snap\` modules stops the global obsolete snapshot file cleanup
+       *
+       * @returns {import('@jest/types').Config.InitialOptions}
+       */
+      function getSnapshotIsolationConfig() {
+        if (process.env.RIT_SKIP_SNAPSHOTS === 'false') {
+          return {};
+        }
+
+        return {
+          snapshotResolver: join(__dirname, './jest.snapshot-resolver.js'),
+          modulePathIgnorePatterns: ['\\\\\\\\.snap$'],
+        };
+      }
 
       /**
        * @param {Record<string,any>} obj1

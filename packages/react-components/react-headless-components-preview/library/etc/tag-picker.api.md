@@ -68,10 +68,7 @@ export { renderTagPickerOption }
 export { renderTagPickerOptionGroup }
 
 // @public
-export const TagPicker: {
-    (props: TagPickerProps): JSXElement;
-    displayName: string;
-};
+export const TagPicker: ComponentWithoutRef<TagPickerProps>;
 
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;

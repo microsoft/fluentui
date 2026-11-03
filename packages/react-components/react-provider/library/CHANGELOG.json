@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "9.22.23",
+      "tag": "@fluentui/react-provider_v9.22.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dcc1820bbb25612f65b5938c7831a0b7f830d411",
+            "comment": "fix: escape theme style delimiters instead of omitting valid nested theme values"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.22.22",
       "comments": {

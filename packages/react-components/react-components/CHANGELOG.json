@@ -2,6 +2,66 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.75.1",
+      "tag": "@fluentui/react-components_v9.75.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a65a06652e8c5af3400b6818be896c647dbb446e",
+            "comment": "test(react-positioning): pin portable browser geometry and lifecycle contracts with exact engine output"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "df06e284f1da766da7c120b8ceb727b9c64488d1",
+            "comment": "fix: keep the measured aside width instead of cancelling its update after mount"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a22af26f14588c5af093871bbf6150641250610e",
+            "comment": "feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "9.75.0",
+      "tag": "@fluentui/react-components_v9.75.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7b9ad65802f010e7d928f21afaac803afef02e71",
+            "comment": "feat(react-components): export existing Menu base hooks and composition types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "744cfdae7f460f164bfa3aa0295ef0d826102af5",
+            "comment": "fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dcc1820bbb25612f65b5938c7831a0b7f830d411",
+            "comment": "fix: escape theme style delimiters instead of omitting valid nested theme values"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.74.11",
       "tag": "@fluentui/react-components_v9.74.11",

@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-menu
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.25.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.8)
+
+Tue, 27 Oct 2026 16:42:57 GMT
+
+### Patches
+
+- fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode ([PR #36974](https://github.com/microsoft/fluentui/pull/36974) by vgenaev@gmail.com)
 
 ## [9.25.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.7)
 

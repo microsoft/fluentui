@@ -13,6 +13,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const MenuList: ForwardRefComponent<MenuListProps> = /*#__PURE__*/ composeComponent(
   'MenuList',
   useMenuList,
-  renderMenuList,
   useMenuListContextValues,
+  renderMenuList,
 );

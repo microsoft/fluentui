@@ -55,8 +55,9 @@ export type CalendarDaySlots = {
   closeButton?: Slot<'button'>;
 
   /**
-   * The `<table role="grid">` holding the days of the navigated month. Focusgroup provides in-grid
-   * arrow navigation; Calendar owns selection, range hover and navigation beyond visible dates.
+   * The `<table role="grid">` holding the days of the navigated month, with a single roving tab stop. Arrows, Home
+   * and End move focus between available days; Calendar owns selection, range hover and navigation beyond visible
+   * dates.
    */
   grid: NonNullable<Slot<'table'>>;
 
@@ -186,7 +187,7 @@ export type CalendarDayCellProps = {
   /**
    * Overrides for the `<td role="gridcell">`. Its children remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'td'>, 'children'> & { focusgroupstart?: string };
+  root?: Omit<React.ComponentProps<'td'>, 'children'>;
   /**
    * Overrides for the day button. Set `children` to replace both the label and marker.
    */
@@ -206,7 +207,7 @@ export type CalendarDayRowProps = {
   /**
    * Overrides for the `<tr>`. Its cells remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'tr'>, 'children'> & { focusgrouprow?: string };
+  root?: Omit<React.ComponentProps<'tr'>, 'children'>;
   /**
    * Overrides for the week-number `<th>`, or the header row's spacer.
    * Applied only when the corresponding element is rendered.

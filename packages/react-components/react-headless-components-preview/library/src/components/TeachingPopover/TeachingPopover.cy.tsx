@@ -218,10 +218,10 @@ describe('TeachingPopover', () => {
 
   describe('initially open controlled tour', () => {
     const Example = ({
-      trapFocus = false,
+      inertTrapFocus = false,
       redirectFocus = false,
     }: {
-      trapFocus?: boolean;
+      inertTrapFocus?: boolean;
       redirectFocus?: boolean;
     }) => {
       const [open, setOpen] = React.useState(true);
@@ -233,7 +233,7 @@ describe('TeachingPopover', () => {
           <button ref={outsideRef}>Outside</button>
           <TeachingPopover
             open={open}
-            trapFocus={trapFocus}
+            inertTrapFocus={inertTrapFocus}
             onOpenChange={(_, data) => {
               setOpen(data.open);
               if (data.open) {
@@ -277,7 +277,7 @@ describe('TeachingPopover', () => {
       );
     };
 
-    const ShadowRootExample = ({ trapFocus = false, redirectFocus = false }) => {
+    const ShadowRootExample = ({ inertTrapFocus = false, redirectFocus = false }) => {
       const hostRef = React.useRef<HTMLDivElement>(null);
       const [shadowRoot, setShadowRoot] = React.useState<ShadowRoot | null>(null);
 
@@ -289,14 +289,15 @@ describe('TeachingPopover', () => {
       return (
         <>
           <div ref={hostRef} data-testid="shadow-host" />
-          {shadowRoot && createPortal(<Example trapFocus={trapFocus} redirectFocus={redirectFocus} />, shadowRoot)}
+          {shadowRoot &&
+            createPortal(<Example inertTrapFocus={inertTrapFocus} redirectFocus={redirectFocus} />, shadowRoot)}
         </>
       );
     };
 
-    ([false, true] as const).forEach(trapFocus => {
-      describe(trapFocus ? 'modal' : 'non-modal', () => {
-        beforeEach(() => mount(<Example trapFocus={trapFocus} />));
+    ([false, true] as const).forEach(inertTrapFocus => {
+      describe(inertTrapFocus ? 'modal' : 'non-modal', () => {
+        beforeEach(() => mount(<Example inertTrapFocus={inertTrapFocus} />));
 
         it('restores trigger focus after Got it closes the tour and resets its value', () => {
           cy.contains('button', 'Tour help').should('have.focus');
@@ -327,9 +328,9 @@ describe('TeachingPopover', () => {
       cy.contains('button', 'Outside').should('have.focus');
     });
 
-    ([false, true] as const).forEach(trapFocus => {
-      describe(`shadow root ${trapFocus ? 'modal' : 'non-modal'}`, () => {
-        beforeEach(() => mount(<ShadowRootExample trapFocus={trapFocus} />));
+    ([false, true] as const).forEach(inertTrapFocus => {
+      describe(`shadow root ${inertTrapFocus ? 'modal' : 'non-modal'}`, () => {
+        beforeEach(() => mount(<ShadowRootExample inertTrapFocus={inertTrapFocus} />));
 
         it('restores trigger focus after Got it closes the tour', () => {
           cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Tour help').should('have.focus');

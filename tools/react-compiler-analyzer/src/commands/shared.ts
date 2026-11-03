@@ -2,7 +2,7 @@ import { existsSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
-import { version as babelVersion } from '@babel/core';
+import { createAnalysisProfile } from '../analysis-profile';
 
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import { dedupeFileEntries, findPackageName } from '../discovery';
@@ -360,44 +360,6 @@ export interface ReportSpec {
   run: (ctx: { f: Formatter; files: FileEntry[]; endScanLog: () => void }) => Promise<number>;
 }
 
-function reactCompilerVersion(): string {
-  let compilerPackage: unknown;
-  try {
-    compilerPackage = require('babel-plugin-react-compiler/package.json');
-  } catch (error) {
-    if (
-      !(error instanceof SyntaxError) &&
-      !(
-        error instanceof Error &&
-        'code' in error &&
-        (error.code === 'MODULE_NOT_FOUND' ||
-          error.code === 'ERR_PACKAGE_PATH_NOT_EXPORTED' ||
-          error.code === 'ERR_INVALID_PACKAGE_CONFIG' ||
-          error.code === 'ENOENT' ||
-          error.code === 'ENOTDIR' ||
-          error.code === 'EISDIR' ||
-          error.code === 'EACCES' ||
-          error.code === 'EPERM')
-      )
-    ) {
-      throw error;
-    }
-    console.warn(`Warning: cannot read Babel React Compiler version metadata: ${error.message}`);
-    return 'unavailable';
-  }
-  if (
-    typeof compilerPackage !== 'object' ||
-    compilerPackage === null ||
-    !('version' in compilerPackage) ||
-    typeof compilerPackage.version !== 'string' ||
-    compilerPackage.version.length === 0
-  ) {
-    console.warn('Warning: Babel React Compiler version metadata has no valid version.');
-    return 'unavailable';
-  }
-  return compilerPackage.version;
-}
-
 /**
  * Shared shell for `lint` and `analyze`: validates input, opens the scan log, discovers and
  * dedupes files across every path, then hands off to the command body. Returns the exit code.
@@ -411,13 +373,21 @@ export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<num
     argv.format,
     spec.title,
     async f => {
-      openScanLog(f, 'Scan & compile log');
-      if (argv.verbose && argv.format !== 'json') {
+      if (argv.format !== 'json') {
+        const profile = createAnalysisProfile(argv.mode, argv['parser-plugin']);
         f.line(
-          `Backend: Babel ${babelVersion}; React Compiler ${reactCompilerVersion()}; syntax-only TypeScript parsing (not native compiler parity).`,
+          `Backend: Babel ${profile.babelVersion}; React Compiler ${profile.compilerVersion}; mode=${
+            profile.mode
+          }; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=${
+            profile.parserPlugins.join(', ') || '(none extra)'
+          }.`,
+        );
+        f.line(
+          'Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.',
         );
         f.blank();
       }
+      openScanLog(f, 'Scan & compile log');
 
       const collected: FileEntry[] = [];
       for (const resolvedPath of resolvedPaths) {

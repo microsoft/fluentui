@@ -1,6 +1,11 @@
+import type { Slot } from '@fluentui/react-utilities';
 import type { ToolbarRadioGroupState as ToolbarRadioGroupBaseState } from '@fluentui/react-toolbar';
 
 export type { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+
+export type ToolbarRadioGroupSlots = {
+  root: Slot<'div'>;
+};
 
 export type ToolbarRadioGroupState = ToolbarRadioGroupBaseState & {
   /**

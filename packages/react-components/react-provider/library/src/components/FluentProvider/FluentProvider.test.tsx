@@ -69,6 +69,23 @@ describe('FluentProvider', () => {
     expect(container.querySelector('style')).toBeNull();
   });
 
+  it('does not override inherited tokens with undefined values in nested providers', () => {
+    const { getByText } = render(
+      <FluentProvider theme={{ colorBrandBackground: 'red', colorNeutralBackground1: 'blue' }}>
+        <FluentProvider theme={{ colorBrandBackground: undefined, colorNeutralBackground1: 'green' }}>
+          Nested
+        </FluentProvider>
+      </FluentProvider>,
+    );
+    const styleTagId = Array.from(getByText('Nested').classList).find(className => document.getElementById(className));
+    const styleTag = document.getElementById(styleTagId!) as HTMLStyleElement;
+    const rule = styleTag.sheet!.cssRules[0] as CSSStyleRule;
+
+    expect(rule.cssText).not.toContain('undefined');
+    expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('');
+    expect(rule.style.getPropertyValue('--colorNeutralBackground1')).toBe('green');
+  });
+
   describe('applies "dir" attribute', () => {
     it('ltr', () => {
       const { getByText } = render(<FluentProvider dir="ltr">Test</FluentProvider>);

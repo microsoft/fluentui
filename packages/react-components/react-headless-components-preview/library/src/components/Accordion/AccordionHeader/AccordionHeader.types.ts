@@ -3,6 +3,7 @@ import type { AccordionHeaderBaseState } from '@fluentui/react-accordion';
 export type {
   AccordionHeaderSlots,
   AccordionHeaderBaseProps as AccordionHeaderProps,
+  AccordionHeaderContextValue,
   AccordionHeaderContextValues,
 } from '@fluentui/react-accordion';
 

@@ -2,6 +2,20 @@
   "name": "@fluentui/react-menu-grid-preview",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "0.5.10",
+      "tag": "@fluentui/react-menu-grid-preview_v0.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu-grid-preview",
+            "comment": "Bump @fluentui/react-menu to v9.25.8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "0.5.9",
       "comments": {

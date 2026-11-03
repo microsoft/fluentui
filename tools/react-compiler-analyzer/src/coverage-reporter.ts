@@ -38,6 +38,7 @@ export function printCoverageReport(
     f.line('No functions analyzed by the compiler.');
     return;
   }
+  printSuppressionRejections(f, results, workspaceRoot);
 
   if (verbose && candidates.length > 0) {
     f.blank();
@@ -70,17 +71,17 @@ export function printCoverageReport(
 
       const acceptedSections: Array<{ title: string; results: FunctionAnalysis[]; status?: StatusKind }> = [
         {
-          title: 'Compiler accepted (memo cache emitted)',
-          results: accepted.filter(result => memoCacheOutcome(result) === 'emitted'),
+          title: 'Compiler accepted (positive reported memo slots)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'positive'),
           status: 'success',
         },
         {
-          title: 'Compiler accepted (no memo cache emitted)',
-          results: accepted.filter(result => memoCacheOutcome(result) === 'not-emitted'),
+          title: 'Compiler accepted (zero reported memo slots)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'zero'),
         },
         {
-          title: 'Compiler accepted (memo cache not reported)',
-          results: accepted.filter(result => memoCacheOutcome(result) === 'unknown'),
+          title: 'Compiler accepted (memo statistics unavailable)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'unavailable'),
           status: 'warning',
         },
       ];
@@ -139,20 +140,28 @@ export function printCoverageReport(
 
 function printPackageSummaryTable(f: Formatter, results: FunctionAnalysis[], migrationCandidateCount: number): void {
   const accepted = results.filter(r => r.status === 'compiled');
-  const memoCacheEmitted = accepted.filter(r => memoCacheOutcome(r) === 'emitted').length;
-  const noMemoCacheEmitted = accepted.filter(r => memoCacheOutcome(r) === 'not-emitted').length;
-  const memoCacheUnknown = accepted.filter(r => memoCacheOutcome(r) === 'unknown').length;
+  const reportedMemoCachePositive = accepted.filter(r => memoCacheOutcome(r) === 'positive').length;
+  const reportedMemoCacheZero = accepted.filter(r => memoCacheOutcome(r) === 'zero').length;
+  const reportedMemoCacheUnavailable = accepted.filter(r => memoCacheOutcome(r) === 'unavailable').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
   // The compiler emits one event per error, so a function can appear in several error
   // rows. Count distinct functions so the totals reflect functions, not error occurrences.
   const errored = countErroredFunctions(results);
   const total = accepted.length + skipped + errored;
   const rows: Cell[][] = [
-    ['Compiler accepted (memo cache emitted)', memoCacheEmitted, pct(memoCacheEmitted, total)],
-    ['Compiler accepted (no memo cache emitted)', noMemoCacheEmitted, pct(noMemoCacheEmitted, total)],
+    [
+      'Compiler accepted (positive reported memo slots)',
+      reportedMemoCachePositive,
+      pct(reportedMemoCachePositive, total),
+    ],
+    ['Compiler accepted (zero reported memo slots)', reportedMemoCacheZero, pct(reportedMemoCacheZero, total)],
   ];
-  if (memoCacheUnknown > 0) {
-    rows.push(['Compiler accepted (memo cache not reported)', memoCacheUnknown, pct(memoCacheUnknown, total)]);
+  if (reportedMemoCacheUnavailable > 0) {
+    rows.push([
+      'Compiler accepted (memo statistics unavailable)',
+      reportedMemoCacheUnavailable,
+      pct(reportedMemoCacheUnavailable, total),
+    ]);
   }
   rows.push([
     'Manual Memo Migration Candidates',
@@ -268,9 +277,9 @@ export function printCoverageSummary(
 ): void {
   const acceptedResults = results.filter(r => r.status === 'compiled');
   const accepted = acceptedResults.length;
-  const memoCacheEmitted = acceptedResults.filter(r => memoCacheOutcome(r) === 'emitted').length;
-  const noMemoCacheEmitted = acceptedResults.filter(r => memoCacheOutcome(r) === 'not-emitted').length;
-  const memoCacheUnknown = acceptedResults.filter(r => memoCacheOutcome(r) === 'unknown').length;
+  const reportedMemoCachePositive = acceptedResults.filter(r => memoCacheOutcome(r) === 'positive').length;
+  const reportedMemoCacheZero = acceptedResults.filter(r => memoCacheOutcome(r) === 'zero').length;
+  const reportedMemoCacheUnavailable = acceptedResults.filter(r => memoCacheOutcome(r) === 'unavailable').length;
   const migrationCandidates = acceptedResults.filter(r => r.manualMemo && !r.existingDirectives?.useNoMemo).length;
   const skipped = results.filter(r => r.status === 'skipped').length;
   // The compiler emits one event per error, so a function can appear in several error
@@ -282,11 +291,19 @@ export function printCoverageSummary(
   f.blank();
   if (!verbose) {
     const rows: Cell[][] = [
-      ['Compiler accepted (memo cache emitted)', memoCacheEmitted, pct(memoCacheEmitted, total)],
-      ['Compiler accepted (no memo cache emitted)', noMemoCacheEmitted, pct(noMemoCacheEmitted, total)],
+      [
+        'Compiler accepted (positive reported memo slots)',
+        reportedMemoCachePositive,
+        pct(reportedMemoCachePositive, total),
+      ],
+      ['Compiler accepted (zero reported memo slots)', reportedMemoCacheZero, pct(reportedMemoCacheZero, total)],
     ];
-    if (memoCacheUnknown > 0) {
-      rows.push(['Compiler accepted (memo cache not reported)', memoCacheUnknown, pct(memoCacheUnknown, total)]);
+    if (reportedMemoCacheUnavailable > 0) {
+      rows.push([
+        'Compiler accepted (memo statistics unavailable)',
+        reportedMemoCacheUnavailable,
+        pct(reportedMemoCacheUnavailable, total),
+      ]);
     }
     rows.push(
       [
@@ -308,10 +325,20 @@ export function printCoverageSummary(
 
   f.line(`- **Total functions analyzed:** ${total}`);
   f.line(`- **Compiler accepted:** ${accepted} (${pct(accepted, total)})`);
-  f.line(`  - Memo cache emitted: ${memoCacheEmitted} (${pct(memoCacheEmitted, total)} of total)`);
-  f.line(`  - No memo cache emitted: ${noMemoCacheEmitted} (${pct(noMemoCacheEmitted, total)} of total)`);
-  if (memoCacheUnknown > 0) {
-    f.line(`  - Memo cache not reported: ${memoCacheUnknown} (${pct(memoCacheUnknown, total)} of total)`);
+  f.line(
+    `  - Positive reported memo slots: ${reportedMemoCachePositive} (${pct(
+      reportedMemoCachePositive,
+      total,
+    )} of total)`,
+  );
+  f.line(`  - Zero reported memo slots: ${reportedMemoCacheZero} (${pct(reportedMemoCacheZero, total)} of total)`);
+  if (reportedMemoCacheUnavailable > 0) {
+    f.line(
+      `  - Memo statistics unavailable: ${reportedMemoCacheUnavailable} (${pct(
+        reportedMemoCacheUnavailable,
+        total,
+      )} of total)`,
+    );
   }
   f.line(`- **Skipped** (opted out or not a component/hook): ${skipped} (${pct(skipped, total)})`);
   f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
@@ -324,7 +351,7 @@ export function printCoverageSummary(
   const riskyFunctions = acceptedResults.filter(r => r.risks && r.risks.length > 0).length;
   if (riskyFunctions > 0) {
     f.line(
-      `> ⚠️ **${riskyFunctions}** compiler-accepted function(s) contain runtime-risk patterns that are unsafe if memoized ` +
+      `> ⚠️ **${riskyFunctions}** compiler-accepted function(s) contain configured risk patterns; consider preventive opt-outs, not proof of unsafe caching ` +
         '(see **Compiled but Risky**).',
     );
     f.blank();
@@ -351,17 +378,19 @@ export function printCoverageSummary(
     [
       [
         '**Memo Slots**',
-        'Number of retained runtime cache slots reported by the compiler. Zero means the function was accepted without emitting a memo cache.',
+        'Cache slots reported during analysis. Zero means zero reported slots, not verified absence of emitted caches.',
       ],
+      ['**Memo Blocks**', 'Memo blocks reported during analysis; emitted code is not inspected.'],
       [
-        '**Memo Blocks**',
-        'Number of retained code blocks (JSX elements, conditional branches, etc.) wrapped with cache checks.',
+        '**Memo Values**',
+        'Memo values reported during analysis; this does not identify which risky operation was cached.',
       ],
-      ['**Memo Values**', 'Number of retained values (variables, expressions, hook results) cached between renders.'],
     ],
   );
   f.blank();
-  f.line('> Memo counters describe emitted compiler output; they do not rank expected performance benefit.');
+  f.line(
+    '> Memo counters are analysis-only statistics. Actual emitted caching is unverified; they do not rank expected performance benefit.',
+  );
   f.blank();
 }
 
@@ -486,7 +515,7 @@ export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], wo
   f.foldableSection({ title: 'Not Analyzed', status: 'warning', count: files.length }, () => {
     f.line(
       'These files could not be parsed, so they contributed **no functions** to the counts above. ' +
-        'The React Compiler cannot process them in a real build either.',
+        'This is a limitation of the analyzed Babel parsing profile, not proof that another build cannot process them.',
     );
     f.blank();
 
@@ -504,20 +533,7 @@ export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], wo
 /** Order risk findings high → medium so the most dangerous appear first. */
 const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
 
-/**
- * Print a "Compiled but Risky" section — functions the compiler accepts (`CompileSuccess`)
- * that contain a non-reactive store-snapshot read (`store.getState()` / `getXStore().field`).
- * The compiler memoizes such reads behind a compute-once cache slot, so they run on the first
- * render and never again — freezing the value across store transitions, a bug the
- * `CompileSuccess` verdict cannot reveal.
- *
- * Unlike compiler errors, these functions will be silently memoized — so they are the
- * highest-value rows in the report for anyone enabling the compiler ring-by-ring.
- *
- * Risky functions that did *not* compile are reported in companion sections, split by why they are
- * dormant: a `'use no memo'` opt-out that is actively holding the risk back, versus a compile
- * failure. The two demand opposite actions, so they must not be conflated.
- */
+/** Report risks independently of acceptance and unverified emitted optimization. */
 export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
   const withRisks = results.filter(r => r.risks && r.risks.length > 0);
   const risky = withRisks.filter(r => r.status === 'compiled');
@@ -529,9 +545,9 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
     printRiskTable(f, risky, workspaceRoot, {
       title: 'Compiled but Risky',
       intro:
-        'These functions **compile successfully** but contain patterns that break at runtime ' +
-        'once memoized — the compiler cannot detect them. Review each before opting into the ' +
-        "compiler, or add a justified `'use no memo'` opt-out.",
+        'These functions **compile successfully** and contain configured risk patterns. ' +
+        'This is not proof that a risky operation was cached. Review each, or add a justified ' +
+        "'use no memo' as a preventive opt-out, including when reported memo slots are zero.",
       subject: 'compiled function(s)',
     });
   }
@@ -541,9 +557,8 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
       title: "Suppressed by 'use no memo'",
       intro:
         "These functions carry a `'use no memo'` opt-out **and** still contain a runtime-risk " +
-        'pattern, so the directive is load-bearing: removing it makes the finding live. They are ' +
-        'listed separately because an unnecessary opt-out and a working one otherwise look ' +
-        'identical — both simply produce no live finding.',
+        'pattern. The guard may be preventive; its presence alone does not prove load-bearing ' +
+        'optimization behavior. Review against the applicable build before changing it.',
       subject: 'opted-out function(s)',
     });
   }
@@ -552,9 +567,9 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
     printRiskTable(f, pending, workspaceRoot, {
       title: 'Risky but Not Compiled',
       intro:
-        'These functions contain the same runtime-risk patterns but are **not memoized today** ' +
-        '(the compiler errored or skipped them), so they are not hazardous yet. They become ' +
-        'live the moment the compile error is fixed.',
+        'These functions contain configured risk patterns but Babel errored or skipped them. ' +
+        'The findings remain relevant: another compiler/profile may optimize them. ' +
+        'Actual emitted caching and application safety are unverified.',
       subject: 'non-compiled function(s)',
     });
   }
@@ -587,6 +602,8 @@ function printRiskTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot
           fn,
           risk.severity,
           risk.ruleId,
+          r.status,
+          r.status === 'compiled' ? memoCacheOutcome(r) : 'unavailable',
           // Risk messages are short, single-line strings we author ourselves — show them
           // in full rather than truncating like unbounded compiler diagnostics.
           risk.message,
@@ -594,11 +611,41 @@ function printRiskTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot
       }
     }
 
-    f.table(['Location', 'Function', 'Severity', 'Rule', 'Reason'], rows);
+    f.table(['Location', 'Function', 'Severity', 'Rule', 'Compiler outcome', 'Reported memo cache', 'Reason'], rows);
     f.blank();
     f.line(`> **${totalFindings}** runtime-risk finding(s) across **${entries.length}** ${copy.subject}.`);
     f.blank();
   });
+}
+
+function printSuppressionRejections(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
+  const rejected = results.filter(result => result.rejectionKind === 'suppression-related');
+  if (rejected.length === 0) {
+    return;
+  }
+  f.foldableSection(
+    { title: 'Suppression-related compiler rejection', status: 'warning', count: rejected.length },
+    () => {
+      f.line(
+        `${rejected.length} of ${results.length} analyzed functions rejected with suppression evidence; ${
+          rejected.filter(result => result.risks?.length).length
+        } also have detected risks.`,
+      );
+      f.line(
+        'Another compiler/profile may optimize these functions. Findings remain visible; RCA does not automatically annotate rejected functions. Actual emitted caching is unverified.',
+      );
+      f.table(
+        ['Location', 'Function', 'Risk findings', 'Compiler reason'],
+        rejected.map(result => [
+          `${toWorkspacePath(workspaceRoot, result.filePath)}:${result.line}`,
+          result.functionName ?? '(anonymous)',
+          (result.risks ?? []).map(risk => `${risk.ruleId}: ${risk.message}`).join('; ') || 'none',
+          result.reason ?? '',
+        ]),
+      );
+      f.blank();
+    },
+  );
 }
 
 function pct(count: number, total: number): string {
