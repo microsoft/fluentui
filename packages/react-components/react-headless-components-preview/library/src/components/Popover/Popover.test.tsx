@@ -330,7 +330,7 @@ describe('Popover', () => {
     const onRender = jest.fn();
     const MeasuredPopover = () => {
       const state = usePopover({ children: <div /> });
-      // Count commits: `useLayerPresence` adjusts state during render, which re-runs the body but doesn't commit twice.
+      // Count commits: `setSurfaceShown` during render re-runs the body but doesn't commit twice.
       React.useEffect(() => {
         onRender();
       });

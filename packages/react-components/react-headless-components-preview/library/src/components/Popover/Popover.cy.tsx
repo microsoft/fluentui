@@ -973,7 +973,7 @@ describe('positioning observer', () => {
 });
 
 describe('inertTrapFocus changes while open', () => {
-  it('switches to modal while open and stays modal until the next open, keeping focus inside', () => {
+  it('switches from showPopover() to showModal() (page inert) while open and stays modal until the next open, keeping focus on the switch', () => {
     const Example = () => {
       const [inertTrapFocus, setInertTrapFocus] = React.useState(false);
       return (
