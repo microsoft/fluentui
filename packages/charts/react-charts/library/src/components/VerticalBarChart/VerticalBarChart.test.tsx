@@ -1408,7 +1408,10 @@ describe('VerticalBarChart - current callout observation', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  const setup = (policy: VerticalBarChartProps['focusRestorePolicy'] = 'preserve') => {
+  const setup = (
+    policy: VerticalBarChartProps['focusRestorePolicy'] = 'preserve',
+    initialProps: Partial<VerticalBarChartProps> = {},
+  ) => {
     let mounts = 0;
     const Content = ({ point }: { point?: VerticalBarChartDataPoint }) => {
       const [note, setNote] = React.useState('');
@@ -1440,6 +1443,7 @@ describe('VerticalBarChart - current callout observation', () => {
             { x: replace ? 4 : 2, y: 20 + revision, legend: 'Second', color: revision ? 'purple' : 'blue' },
           ]}
           onRenderCalloutPerDataPoint={renderContent}
+          {...initialProps}
           {...overrides}
         />
       </FluentProvider>
@@ -1580,5 +1584,120 @@ describe('VerticalBarChart - current callout observation', () => {
       'style.borderInlineStart',
       '4px solid blue',
     );
+  });
+
+  const axes = ['x', 'primaryY', 'secondaryY'] as const;
+  const overlayConfig = (
+    axis: (typeof axes)[number],
+    value: number,
+    logarithmic = true,
+    lineSelected = true,
+  ): Partial<VerticalBarChartProps> => ({
+    xMinValue: axis === 'x' && logarithmic ? 1 : 0,
+    xMaxValue: 100,
+    yMinValue: axis === 'primaryY' && logarithmic ? 1 : 0,
+    xScaleType: axis === 'x' && logarithmic ? 'log' : 'default',
+    yScaleType: axis === 'primaryY' && logarithmic ? 'log' : 'default',
+    secondaryYScaleType: axis === 'secondaryY' && logarithmic ? 'log' : 'default',
+    secondaryYScaleOptions: axis === 'secondaryY' ? { yMinValue: logarithmic ? 1 : 0, yMaxValue: 100 } : undefined,
+    lineLegendText: 'Trend',
+    legendProps: lineSelected ? { selectedLegends: ['Trend'] } : undefined,
+    data: [10, 20, 100].map((y, index) => ({
+      x: axis === 'x' && index === 1 ? value : index + 1,
+      y: 20 + index,
+      legend: 'Bars',
+      lineData: {
+        y: axis !== 'x' && index === 1 ? value : y,
+        useSecondaryYScale: axis === 'secondaryY',
+      },
+    })),
+  });
+
+  it.each(axes.flatMap(axis => [0, -1].flatMap(value => [false, true].map(hover => ({ axis, value, hover })))))(
+    'closes an overlay callout when $axis becomes $value on a log scale (hover: $hover)',
+    ({ axis, value, hover }) => {
+      const { container, rerender, scene, getByRole, queryByTestId, target } = setup(
+        'preserve',
+        overlayConfig(axis, axis === 'x' ? 2 : 20, true, !hover),
+      );
+      const circle = container.querySelectorAll<SVGCircleElement>('circle[id^="_VBC_point"]')[1];
+      if (hover) {
+        act(() => target().focus());
+        expect(circle).toHaveAttribute('visibility', 'visibility');
+        fireEvent.mouseOver(circle);
+      } else {
+        act(() => circle.focus());
+        expect(container.ownerDocument.activeElement).toBe(circle);
+      }
+      const input = getByRole('textbox', { name: 'Bar note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep overlay note' } });
+      const detachedReads: Element[] = [];
+      const getRect = Element.prototype.getBoundingClientRect;
+      const spy = jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(function (this: Element) {
+        if (this === circle && !this.isConnected) {
+          detachedReads.push(this);
+        }
+        return getRect.call(this);
+      });
+
+      try {
+        rerender(scene(0, false, overlayConfig(axis, value, true, !hover)));
+
+        expect(queryByTestId('bar-observation')).toBeNull();
+        expect(circle.isConnected).toBe(false);
+        expect(input.isConnected).toBe(false);
+        expect(detachedReads).toEqual([]);
+      } finally {
+        spy.mockRestore();
+      }
+    },
+  );
+
+  it.each(axes)('preserves a valid positive log-scale %s overlay and its custom input', axis => {
+    const { container, rerender, scene, getByRole, getByTestId, mounts } = setup(
+      'preserve',
+      overlayConfig(axis, axis === 'x' ? 2 : 20),
+    );
+    const circle = container.querySelectorAll<SVGCircleElement>('circle[id^="_VBC_point"]')[1];
+    act(() => circle.focus());
+    const input = getByRole('textbox', { name: 'Bar note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep overlay note' } });
+
+    rerender(scene(0, false, overlayConfig(axis, 40)));
+
+    expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep overlay note');
+    expect(mounts()).toBe(1);
+    const payload = JSON.parse(getByTestId('bar-observation').textContent!);
+    expect(axis === 'x' ? payload.x : payload.lineData.y).toBe(40);
+  });
+
+  it('uses the bars own rendering scales rather than the overlay logarithmic scale', () => {
+    const config = (value: number): Partial<VerticalBarChartProps> => ({
+      yScaleType: 'log',
+      yMinValue: 1,
+      data: [
+        { x: 1, y: 10, legend: 'First' },
+        { x: 2, y: value, legend: 'Second' },
+        { x: 3, y: 100, legend: 'Third' },
+      ],
+    });
+    const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup('preserve', config(20));
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Bar note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep bar note' } });
+
+    rerender(scene(0, false, config(-10)));
+
+    expect(target().isConnected).toBe(true);
+    expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep bar note');
+    expect(JSON.parse(getByTestId('bar-observation').textContent!)).toMatchObject({ y: -10 });
+    expect(mounts()).toBe(1);
   });
 });

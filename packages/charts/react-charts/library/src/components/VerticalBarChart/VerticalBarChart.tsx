@@ -23,6 +23,7 @@ import type {
 import { CartesianChart, Legends, ChartPopover } from '../../index';
 import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
 import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -85,6 +86,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let margins: Margins;
   const _useRtl: boolean = useRtl();
   let _bars: JSXElement[];
+  let _barScales: ReturnType<typeof _getScales>;
   let _xAxisLabels: string[];
   let _yMax: number;
   let _yMin: number;
@@ -227,8 +229,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
     const colorScale = _createColors();
     const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const lineData: Array<any> = [];
+    type LinePoint = {
+      x: VerticalBarChartDataPoint['x'];
+      y: number;
+      useSecondaryYScale: boolean;
+      point: VerticalBarChartDataPoint;
+      index: number;
+    };
+    const lineData: LinePoint[] = [];
     const line: JSXElement[] = [];
     data &&
       data.forEach((item: VerticalBarChartDataPoint, index: number) => {
@@ -242,11 +250,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           });
         }
       });
-    const linePath = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (isStringAxis ? xScale(d.x) + 0.5 * xScale.bandwidth() : xScale(d.x)))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScalePrimary(d.y)));
+    const projectX = (point: LinePoint): number =>
+      isStringAxis ? xScale(point.x) + 0.5 * xScale.bandwidth() : xScale(point.x);
+    const projectY = (point: LinePoint): number =>
+      point.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(point.y) : yScalePrimary(point.y);
+    const linePath = d3Line<LinePoint>()
+      .x(projectX)
+      .y(projectY)
+      .defined(point => isPlottable(projectX(point), projectY(point)));
     const shouldHighlight = _legendHighlighted(lineLegendText!) || _noLegendHighlighted() ? true : false;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
@@ -279,55 +290,49 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       />,
     );
 
-    const dots: React.ReactNode[] = lineData.map(
-      (
-        item: {
-          x: number | string;
-          y: number;
-          useSecondaryYScale: boolean;
-          point: VerticalBarChartDataPoint;
-          index: number;
-        },
-        index: number,
-      ) => {
-        // Create an object to store line point ref so that the object can be passed by reference to the focus handler
-        const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        return (
-          <circle
-            key={index}
-            id={`${_vbcPointId}-${index}`}
-            cx={isStringAxis ? xScale(item.x) + 0.5 * xScale.bandwidth() : xScale(item.x)}
-            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScalePrimary(item.y)}
-            onMouseOver={event =>
-              _legendHighlighted(lineLegendText!)
-                ? _lineHover(item.point, event)
-                : _onBarHover(item.point, colorScale(item.y), event)
+    const dots: React.ReactNode[] = lineData.map((item, index) => {
+      const x = projectX(item);
+      const y = projectY(item);
+      if (!isPlottable(x, y)) {
+        return null;
+      }
+      // Create an object to store line point ref so that the object can be passed by reference to the focus handler
+      const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+      return (
+        <circle
+          key={item.index}
+          id={`${_vbcPointId}-${index}`}
+          cx={x}
+          cy={y}
+          onMouseOver={event =>
+            _legendHighlighted(lineLegendText!)
+              ? _lineHover(item.point, event)
+              : _onBarHover(item.point, colorScale(item.y), event)
+          }
+          onMouseOut={_onBarLeave}
+          r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
+          stroke={lineLegendColor}
+          fill={tokens.colorNeutralBackground1}
+          strokeWidth={3}
+          visibility={_getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
+          onClick={item.point.lineData?.onClick}
+          // When no legend is highlighted: Line points are automatically displayed along with the bars
+          // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+          // and avoid conveying duplicate info, make these line points non-focusable.
+          data-is-focusable={_legendHighlighted(lineLegendText!)}
+          ref={e => {
+            circleRef.refElement = e;
+            if (e) {
+              linePointRefs.current.set(item.index, e);
+            } else {
+              linePointRefs.current.delete(item.index);
             }
-            onMouseOut={_onBarLeave}
-            r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
-            stroke={lineLegendColor}
-            fill={tokens.colorNeutralBackground1}
-            strokeWidth={3}
-            visibility={_getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
-            onClick={item.point.lineData?.onClick}
-            // When no legend is highlighted: Line points are automatically displayed along with the bars
-            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
-            // and avoid conveying duplicate info, make these line points non-focusable.
-            data-is-focusable={_legendHighlighted(lineLegendText!)}
-            ref={e => {
-              circleRef.refElement = e;
-              if (e) {
-                linePointRefs.current.set(item.index, e);
-              } else {
-                linePointRefs.current.delete(item.index);
-              }
-            }}
-            onFocus={event => _lineFocus(event, item.point, circleRef)}
-            tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
-          />
-        );
-      },
-    );
+          }}
+          onFocus={event => _lineFocus(event, item.point, circleRef)}
+          tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
+        />
+      );
+    });
 
     return (
       <>
@@ -727,7 +732,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         .paddingOuter(_xAxisOuterPadding);
     }
 
-    return { xBarScale, yBarScale };
+    _barScales = { xBarScale, yBarScale };
+    return _barScales;
   }
 
   const classes = useVerticalBarChartStyles(props);
@@ -1258,82 +1264,104 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const currentCalloutLegend =
     calloutTarget?.kind === 'line' ? props.lineLegendText ?? '' : selectedCalloutPoint?.legend;
   const currentCalloutY = calloutTarget?.kind === 'line' ? selectedCalloutPoint?.lineData?.y : selectedCalloutPoint?.y;
-  const currentCalloutPoint =
-    selectedCalloutPoint &&
-    isPlottable(
-      selectedCalloutPoint.x instanceof Date ? selectedCalloutPoint.x.getTime() : selectedCalloutPoint.x,
-      currentCalloutY,
-    ) &&
-    currentCalloutY !== 0 &&
-    (_noLegendHighlighted() || _legendHighlighted(currentCalloutLegend))
-      ? selectedCalloutPoint
+  let currentCalloutPoint: VerticalBarChartDataPoint | undefined;
+  const calloutProps: ChartPopoverProps = {};
+
+  function _getCalloutProps(scales: ChildProps) {
+    const isLineAnchor = calloutTarget?.kind === 'line' || refSelected?.tagName === 'circle';
+    const xScale = isLineAnchor ? scales.xScale! : _barScales.xBarScale;
+    const yScale = isLineAnchor
+      ? selectedCalloutPoint?.lineData?.useSecondaryYScale && scales.yScaleSecondary
+        ? scales.yScaleSecondary
+        : scales.yScalePrimary!
+      : _barScales.yBarScale;
+    const anchorY = isLineAnchor ? selectedCalloutPoint?.lineData?.y : currentCalloutY;
+    currentCalloutPoint =
+      selectedCalloutPoint &&
+      isPlottable(
+        selectedCalloutPoint.x instanceof Date ? selectedCalloutPoint.x.getTime() : selectedCalloutPoint.x,
+        currentCalloutY,
+      ) &&
+      isPlottable(xScale(selectedCalloutPoint.x), yScale(anchorY)) &&
+      (!isLineAnchor || anchorY !== 0) &&
+      currentCalloutY !== 0 &&
+      (_noLegendHighlighted() || _legendHighlighted(currentCalloutLegend))
+        ? selectedCalloutPoint
+        : undefined;
+    const currentCalloutContent = currentCalloutPoint
+      ? _getCalloutContentForLineAndBar(currentCalloutPoint, currentCalloutPoint)
       : undefined;
-  const currentCalloutContent = currentCalloutPoint
-    ? _getCalloutContentForLineAndBar(currentCalloutPoint, currentCalloutPoint)
-    : undefined;
-  const currentPointProps = calloutTarget ? currentCalloutPoint : dataPointCalloutProps;
-  const customizedCallout = _getCustomizedCallout(currentPointProps);
-  const currentYCalloutValue =
-    calloutTarget?.kind === 'line'
-      ? currentCalloutPoint?.lineData?.yAxisCalloutData
-      : calloutTarget?.isFocus
-      ? currentCalloutPoint?.yAxisCalloutData
-      : undefined;
-  const calloutProps = {
-    ...(_isHavingLine && {
-      YValueHover: calloutTarget ? currentCalloutContent?.YValueHover : hoveredYValues,
-      hoverXValue: calloutTarget ? currentCalloutContent?.hoverXValue : hoverXValue,
-    }),
-    color: calloutTarget
-      ? calloutTarget.kind === 'line'
-        ? props.lineLegendColor ?? tokens.colorPaletteYellowBackground1
-        : currentCalloutPoint?.color && !props.useSingleColor
-        ? currentCalloutPoint.color
-        : currentCalloutPoint
-        ? _createColors()(props.useSingleColor ? 1 : currentCalloutPoint.y)
-        : undefined
-      : color,
-    legend: calloutTarget ? currentCalloutLegend : calloutLegend,
-    XValue: calloutTarget
-      ? currentCalloutPoint?.xAxisCalloutData ??
-        (currentCalloutPoint?.x instanceof Date
-          ? currentCalloutPoint.x.toLocaleDateString()
-          : currentCalloutPoint?.x.toString())
-      : xCalloutValue,
-    YValue: calloutTarget ? currentYCalloutValue || currentCalloutY : yCalloutValue ? yCalloutValue : dataForHoverCard,
-    ...props.calloutProps,
-    ...getAccessibleDataObject(
-      calloutTarget ? currentCalloutPoint?.callOutAccessibilityData : callOutAccessibilityData,
-    ),
-    clickPosition,
-    isPopoverOpen: isPopoverOpen && (!calloutTarget || !!currentCalloutPoint),
-    positioning:
-      refSelected && calloutTarget
-        ? {
-            target: {
-              getBoundingClientRect: () => {
-                const marker =
-                  refSelected.tagName === 'circle'
-                    ? linePointRefs.current.get(calloutTarget.barIndex)
-                    : focusBarRefs.current.get(calloutTarget.barIndex);
-                const rect = (marker ?? refSelected).getBoundingClientRect();
-                const x = rect.left + rect.width * (calloutTarget.position?.x ?? 0.5);
-                const y = rect.top + rect.height * (calloutTarget.position?.y ?? 0.5);
-                return { x, y, top: y, left: x, right: x, bottom: y, width: 0, height: 0 };
+    const currentPointProps = calloutTarget ? currentCalloutPoint : dataPointCalloutProps;
+    const customizedCallout = _getCustomizedCallout(currentPointProps);
+    const currentYCalloutValue =
+      calloutTarget?.kind === 'line'
+        ? currentCalloutPoint?.lineData?.yAxisCalloutData
+        : calloutTarget?.isFocus
+        ? currentCalloutPoint?.yAxisCalloutData
+        : undefined;
+    return {
+      ...(_isHavingLine && {
+        YValueHover: calloutTarget ? currentCalloutContent?.YValueHover : hoveredYValues,
+        hoverXValue: calloutTarget ? currentCalloutContent?.hoverXValue : hoverXValue,
+      }),
+      color: calloutTarget
+        ? calloutTarget.kind === 'line'
+          ? props.lineLegendColor ?? tokens.colorPaletteYellowBackground1
+          : currentCalloutPoint?.color && !props.useSingleColor
+          ? currentCalloutPoint.color
+          : currentCalloutPoint
+          ? _createColors()(props.useSingleColor ? 1 : currentCalloutPoint.y)
+          : undefined
+        : color,
+      legend: calloutTarget ? currentCalloutLegend : calloutLegend,
+      XValue: calloutTarget
+        ? currentCalloutPoint?.xAxisCalloutData ??
+          (currentCalloutPoint?.x instanceof Date
+            ? currentCalloutPoint.x.toLocaleDateString()
+            : currentCalloutPoint?.x.toString())
+        : xCalloutValue,
+      YValue: calloutTarget
+        ? currentYCalloutValue || currentCalloutY
+        : yCalloutValue
+        ? yCalloutValue
+        : dataForHoverCard,
+      ...props.calloutProps,
+      ...getAccessibleDataObject(
+        calloutTarget ? currentCalloutPoint?.callOutAccessibilityData : callOutAccessibilityData,
+      ),
+      clickPosition,
+      isPopoverOpen: isPopoverOpen && (!calloutTarget || !!currentCalloutPoint),
+      positioning:
+        refSelected && calloutTarget
+          ? {
+              target: {
+                getBoundingClientRect: () => {
+                  const marker =
+                    refSelected.tagName === 'circle'
+                      ? linePointRefs.current.get(calloutTarget.barIndex)
+                      : focusBarRefs.current.get(calloutTarget.barIndex);
+                  if (!marker?.isConnected) {
+                    throw new Error('VerticalBarChart callout requires a current rendered target.');
+                  }
+                  const rect = marker.getBoundingClientRect();
+                  const x = rect.left + rect.width * (calloutTarget.position?.x ?? 0.5);
+                  const y = rect.top + rect.height * (calloutTarget.position?.y ?? 0.5);
+                  return { x, y, top: y, left: x, right: x, bottom: y, width: 0, height: 0 };
+                },
               },
-            },
-          }
-        : undefined,
-    isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
-    culture: props.culture,
-    isCartesian: true,
-    customCallout: {
-      customizedCallout: customizedCallout ?? undefined,
-      customCalloutProps: props.calloutPropsPerDataPoint
-        ? props.calloutPropsPerDataPoint(currentPointProps!)
-        : undefined,
-    },
-  };
+            }
+          : undefined,
+      isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
+      culture: props.culture,
+      isCartesian: true,
+      customCallout: {
+        customizedCallout: customizedCallout ?? undefined,
+        customCalloutProps: props.calloutPropsPerDataPoint
+          ? props.calloutPropsPerDataPoint(currentPointProps!)
+          : undefined,
+      },
+    };
+  }
 
   const tickParams = {
     tickValues: props.tickValues,
@@ -1373,6 +1401,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       /* eslint-disable react/jsx-no-bind */
 
       children={(props: ChildProps) => {
+        Object.assign(calloutProps, _getCalloutProps(props));
         return (
           <>
             <g role="listbox" aria-label={_getBarsGroupLabel()}>

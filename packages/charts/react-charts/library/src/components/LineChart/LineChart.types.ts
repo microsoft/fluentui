@@ -102,6 +102,8 @@ export interface LineChartProps extends CartesianChartProps {
    * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
    * An open callout uses its selected source coordinates and the current data and rendered marker
    * (or path highlight) for its payload and position, even without a new focus event.
+   * Points invalid on their effective X/Y scales close the callout, including nonpositive
+   * values on logarithmic axes; valid zero values on linear axes remain available.
    * Under 'preserve', an input inside a custom callout keeps its focus and component state
    * while the callout updates; the callout is not remounted to refresh its content.
    */

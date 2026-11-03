@@ -130,6 +130,8 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * An open callout uses the current source point and rendered bar or line marker for its data
    * and position. Under 'preserve', a custom callout input retains focus and component state
    * while data and colors update, provided its component type and key remain stable.
+   * Availability follows the selected bar's rendering scales or the line overlay's effective
+   * primary/secondary scales. A point without a valid current representation closes its callout.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 

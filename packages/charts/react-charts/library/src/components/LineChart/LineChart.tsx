@@ -30,6 +30,7 @@ import type {
 import { CartesianChart } from '../../index';
 import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
 import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -439,6 +440,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       _xAxisScale = xScale;
       _yScalePrimary = yScalePrimary;
       _yScaleSecondary = yScaleSecondary;
+      // Reconcile against this render's scales before creating its markers and callout.
+      Object.assign(calloutProps, _getCalloutProps());
       _renderedColorFillBars = props.colorFillBars ? _createColorFillBars(containerHeight) : [];
       lines = _createLines(xElement!, containerHeight!);
     }
@@ -877,7 +880,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               tabIndex={isLegendSelected ? 0 : undefined}
               stroke={lineColor}
-              visibility={'hidden'}
+              visibility={selectedPoint ? 'visible' : 'hidden'}
               onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
               onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
               onMouseOut={_handleMouseOut}
@@ -2028,41 +2031,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
     calloutPointsRef.current = calloutData(points);
 
-    const calloutSeries = calloutTarget && _points[calloutTarget.lineIndex];
-    const selectedCalloutPoint = calloutTarget && calloutSeries?.data[calloutTarget.pointIndex];
-    const calloutPoint =
-      calloutSeries &&
-      selectedCalloutPoint &&
-      points.includes(calloutSeries) &&
-      (_legendHighlighted(calloutSeries.legend) || _noLegendHighlighted() || isSelectedLegend) &&
-      !selectedCalloutPoint.hideCallout &&
-      isPlottable(
-        selectedCalloutPoint.x instanceof Date ? selectedCalloutPoint.x.getTime() : selectedCalloutPoint.x,
-        selectedCalloutPoint.y,
-      )
-        ? selectedCalloutPoint
-        : undefined;
-    const currentStackProps = calloutTarget
-      ? calloutPoint
-        ? (findCalloutPoints(calloutPointsRef.current, calloutPoint.x) as CustomizedCalloutData | undefined)
-        : undefined
-      : stackCalloutProps;
-    const currentPointProps =
-      calloutTarget && props.isCalloutForStack === false && calloutSeries && calloutPoint
-        ? (findCalloutPoints(calloutData([{ ...calloutSeries, data: [calloutPoint] }]), calloutPoint.x) as
-            | CustomizedCalloutData
-            | undefined)
-        : calloutTarget
-        ? currentStackProps
-        : dataPointCalloutProps;
-    const currentHoverX = calloutTarget
-      ? calloutPoint?.xAxisCalloutData ??
-        (calloutPoint?.x instanceof Date
-          ? formatDateToLocaleString(calloutPoint.x, props.culture, props.useUTC as boolean)
-          : calloutPoint?.x ?? '')
-      : hoverXValue;
-    const customizedCallout = _getCustomizedCallout(currentStackProps, currentPointProps);
-
     let legendBars = null;
     // reduce computation cost by only creating legendBars
     // if when hideLegend is false.
@@ -2070,47 +2038,89 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     if (!props.hideLegend) {
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
-    const calloutProps = {
-      YValueHover: calloutTarget ? currentStackProps?.values : yValueHover,
-      hoverXValue: currentHoverX,
-      YValue: calloutTarget ? calloutPoint?.y : YValue,
-      legend: calloutTarget ? calloutSeries?.legend : legendVal,
-      color: calloutTarget ? calloutSeries?.color : lineColor,
-      XValue: currentHoverX! as string,
-      descriptionMessage:
-        props.getCalloutDescriptionMessage && currentStackProps
-          ? props.getCalloutDescriptionMessage(currentStackProps)
-          : undefined,
-      tabIndex: 0,
-      xAxisCalloutAccessibilityData,
-      ...props.calloutProps,
-      isPopoverOpen: isPopoverOpen && (!calloutTarget || !!currentStackProps),
-      clickPosition,
-      positioning: {
-        target: refSelected
-          ? {
-              getBoundingClientRect: () => {
-                const marker =
-                  calloutTarget &&
-                  (focusPointRefs.current.get(`${calloutTarget.lineIndex}-${calloutTarget.pointIndex}`) ??
-                    chartElement?.querySelector<SVGCircleElement>(
-                      `[id="${_staticHighlightCircle}_${calloutTarget.lineIndex}"]`,
-                    ));
-                return (marker ?? refSelected).getBoundingClientRect();
-              },
-            }
-          : null,
-      },
-      isCalloutForStack: props.isCalloutForStack,
-      culture: props.culture,
-      isCartesian: true,
-      customCallout: {
-        customizedCallout: customizedCallout ?? undefined,
-        customCalloutProps: props.calloutPropsPerDataPoint
-          ? props.calloutPropsPerDataPoint(currentPointProps!)
-          : undefined,
-      },
-    };
+
+    const calloutSeries = calloutTarget && _points[calloutTarget.lineIndex];
+    const selectedCalloutPoint = calloutTarget && calloutSeries?.data[calloutTarget.pointIndex];
+    let calloutPoint: typeof selectedCalloutPoint;
+    const calloutProps: ChartPopoverProps = {};
+
+    function _getCalloutProps() {
+      const calloutYScale = calloutSeries?.useSecondaryYScale && _yScaleSecondary ? _yScaleSecondary : _yScalePrimary;
+      calloutPoint =
+        calloutSeries &&
+        selectedCalloutPoint &&
+        points.includes(calloutSeries) &&
+        (_legendHighlighted(calloutSeries.legend) || _noLegendHighlighted() || isSelectedLegend) &&
+        !selectedCalloutPoint.hideCallout &&
+        isPlottable(_xAxisScale(selectedCalloutPoint.x), calloutYScale(selectedCalloutPoint.y))
+          ? selectedCalloutPoint
+          : undefined;
+      const currentStackProps = calloutTarget
+        ? calloutPoint
+          ? (findCalloutPoints(calloutPointsRef.current, calloutPoint.x) as CustomizedCalloutData | undefined)
+          : undefined
+        : stackCalloutProps;
+      const currentPointProps =
+        calloutTarget && props.isCalloutForStack === false && calloutSeries && calloutPoint
+          ? (findCalloutPoints(calloutData([{ ...calloutSeries, data: [calloutPoint] }]), calloutPoint.x) as
+              | CustomizedCalloutData
+              | undefined)
+          : calloutTarget
+          ? currentStackProps
+          : dataPointCalloutProps;
+      const currentHoverX = calloutTarget
+        ? calloutPoint?.xAxisCalloutData ??
+          (calloutPoint?.x instanceof Date
+            ? formatDateToLocaleString(calloutPoint.x, props.culture, props.useUTC as boolean)
+            : calloutPoint?.x ?? '')
+        : hoverXValue;
+      const customizedCallout = _getCustomizedCallout(currentStackProps, currentPointProps);
+
+      return {
+        YValueHover: calloutTarget ? currentStackProps?.values : yValueHover,
+        hoverXValue: currentHoverX,
+        YValue: calloutTarget ? calloutPoint?.y : YValue,
+        legend: calloutTarget ? calloutSeries?.legend : legendVal,
+        color: calloutTarget ? calloutSeries?.color : lineColor,
+        XValue: currentHoverX! as string,
+        descriptionMessage:
+          props.getCalloutDescriptionMessage && currentStackProps
+            ? props.getCalloutDescriptionMessage(currentStackProps)
+            : undefined,
+        tabIndex: 0,
+        xAxisCalloutAccessibilityData,
+        ...props.calloutProps,
+        isPopoverOpen: isPopoverOpen && (!calloutTarget || !!currentStackProps),
+        clickPosition,
+        positioning: {
+          target: refSelected
+            ? {
+                getBoundingClientRect: () => {
+                  const marker = calloutTarget
+                    ? focusPointRefs.current.get(`${calloutTarget.lineIndex}-${calloutTarget.pointIndex}`) ??
+                      chartElement?.querySelector<SVGCircleElement>(
+                        `[id="${_staticHighlightCircle}_${calloutTarget.lineIndex}"]`,
+                      )
+                    : refSelected;
+                  if (!marker?.isConnected) {
+                    throw new Error('LineChart callout requires a current rendered target.');
+                  }
+                  return marker.getBoundingClientRect();
+                },
+              }
+            : null,
+        },
+        isCalloutForStack: props.isCalloutForStack,
+        culture: props.culture,
+        isCartesian: true,
+        customCallout: {
+          customizedCallout: customizedCallout ?? undefined,
+          customCalloutProps: props.calloutPropsPerDataPoint
+            ? props.calloutPropsPerDataPoint(currentPointProps!)
+            : undefined,
+        },
+      };
+    }
     const tickParams = {
       tickValues,
       tickFormat,
@@ -2160,6 +2170,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   stroke={'#323130'}
                   id={_verticalLine}
                   visibility={'hidden'}
+                  style={calloutTarget && !calloutPoint ? { visibility: 'hidden' } : undefined}
                   transform={isPopoverOpen && calloutPoint ? `translate(${calloutX}, ${calloutY})` : undefined}
                   strokeDasharray={'5,5'}
                 />

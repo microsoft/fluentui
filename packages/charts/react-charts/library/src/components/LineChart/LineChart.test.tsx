@@ -1584,7 +1584,12 @@ describe('LineChart - current callout observation', () => {
           : undefined,
     })),
   });
-  const setup = (mode: Mode, policy: LineChartProps['focusRestorePolicy'] = 'preserve', perStack = false) => {
+  const setup = (
+    mode: Mode,
+    policy: LineChartProps['focusRestorePolicy'] = 'preserve',
+    perStack = false,
+    initialProps: Partial<LineChartProps> = {},
+  ) => {
     let mounts = 0;
     const Content = ({ data }: { data?: CustomizedCalloutData }) => {
       const [note, setNote] = React.useState('');
@@ -1616,6 +1621,7 @@ describe('LineChart - current callout observation', () => {
           isCalloutForStack={perStack}
           onRenderCalloutPerStack={perStack ? renderContent : undefined}
           onRenderCalloutPerDataPoint={perStack ? undefined : renderContent}
+          {...initialProps}
           {...overrides}
         />
       </>
@@ -1722,6 +1728,90 @@ describe('LineChart - current callout observation', () => {
     const payload = JSON.parse(getByTestId('observation').textContent!);
     expect(payload.values).toHaveLength(1);
     expect(payload.values[0]).toMatchObject({ legend: 'Second', y: 10, color: 'blue' });
+  });
+
+  const scaleCases = ['x', 'primaryY', 'secondaryY'] as const;
+  const scaledData = (mode: Mode, axis: (typeof scaleCases)[number], value = 10) => {
+    const data = createData(0, mode);
+    const series = data.lineChartData![1];
+    series.useSecondaryYScale = axis === 'secondaryY';
+    series.data.push({ x: 3, y: 100 });
+    series.data[0] = axis === 'x' ? { x: value, y: 10 } : { x: 1, y: value };
+    return data;
+  };
+  const scaleProps = (axis: (typeof scaleCases)[number], logarithmic = true): Partial<LineChartProps> => ({
+    xMinValue: axis === 'x' && logarithmic ? 1 : 0,
+    xMaxValue: 100,
+    yMinValue: axis === 'primaryY' && logarithmic ? 1 : 0,
+    xScaleType: axis === 'x' && logarithmic ? 'log' : 'default',
+    yScaleType: axis === 'primaryY' && logarithmic ? 'log' : 'default',
+    secondaryYScaleType: axis === 'secondaryY' && logarithmic ? 'log' : 'default',
+    secondaryYScaleOptions: axis === 'secondaryY' ? { yMinValue: logarithmic ? 1 : 0, yMaxValue: 100 } : undefined,
+  });
+
+  it.each(modes.flatMap(mode => scaleCases.flatMap(axis => [0, -1].map(value => ({ mode, axis, value })))))(
+    'closes a $mode callout when $axis becomes $value on a positive log scale',
+    ({ mode, axis, value }) => {
+      const { container, rerender, scene, target, getByRole, queryByTestId } = setup(mode, 'preserve', false, {
+        ...scaleProps(axis),
+        data: scaledData(mode, axis),
+      });
+      const oldTarget = target();
+      act(() => oldTarget.focus());
+      const input = getByRole('textbox', { name: 'Observation note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep this note' } });
+      expect(container.ownerDocument.activeElement).toBe(input);
+      const detachedReads: Element[] = [];
+      const getRect = window.Element.prototype.getBoundingClientRect;
+      window.Element.prototype.getBoundingClientRect = jest.fn(function (this: Element) {
+        if (this === oldTarget && !this.isConnected) {
+          detachedReads.push(this);
+        }
+        return getRect.call(this);
+      });
+
+      rerender(scene(0, mode, { data: scaledData(mode, axis, value) }));
+
+      if (mode === 'points') {
+        expect(oldTarget.isConnected).toBe(false);
+      } else {
+        expect(container.querySelector('circle[id^="staticHighlightCircle"][id$="_1"]')).toHaveAttribute(
+          'visibility',
+          'hidden',
+        );
+      }
+      expect(queryByTestId('observation')).toBeNull();
+      expect(input.isConnected).toBe(false);
+      expect(detachedReads).toEqual([]);
+    },
+  );
+
+  it.each(
+    modes.flatMap(mode =>
+      scaleCases.flatMap(axis =>
+        [false, true].map(logarithmic => ({ mode, axis, logarithmic, value: logarithmic ? 40 : 0 })),
+      ),
+    ),
+  )('retains a $mode input for valid $axis value $value (log: $logarithmic)', ({ mode, axis, logarithmic, value }) => {
+    const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode, 'preserve', false, {
+      ...scaleProps(axis, logarithmic),
+      data: scaledData(mode, axis),
+    });
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Observation note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep this note' } });
+
+    rerender(scene(0, mode, { data: scaledData(mode, axis, value) }));
+
+    expect(getByRole('textbox', { name: 'Observation note' })).toBe(input);
+    expect(container.ownerDocument.activeElement).toBe(input);
+    expect(input).toHaveValue('Keep this note');
+    const payload = JSON.parse(getByTestId('observation').textContent!);
+    expect(payload.values).toHaveLength(1);
+    expect(axis === 'x' ? payload.x : payload.values[0].y).toBe(value);
+    expect(mounts()).toBe(1);
   });
 
   it.each(modes.flatMap(mode => ['removed', 'hidden', 'invalid', 'filtered'].map(change => ({ mode, change }))))(
