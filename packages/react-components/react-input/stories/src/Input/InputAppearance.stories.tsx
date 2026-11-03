@@ -6,27 +6,24 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    // maxWidth: '400px',
+    maxWidth: '400px',
+    gap: tokens.spacingVerticalMNudge,
   },
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
-    // marginTop: tokens.spacingVerticalMNudge,
-    marginInline: `calc(-1* ${tokens.spacingHorizontalXXL})`,
-    paddingInline: tokens.spacingHorizontalXXL,
-    paddingBlock: tokens.spacingHorizontalXXL,
+    paddingBlock: tokens.spacingVerticalMNudge,
   },
   filledLighter: {
     backgroundColor: tokens.colorNeutralBackground3,
-    // '> label': {
-    //   color: tokens.colorNeutralForegroundInverted2,
-    // },
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
   },
   filledDarker: {
     backgroundColor: tokens.colorNeutralBackground1,
-    // '> label': {
-    //   color: tokens.colorNeutralForegroundInverted2,
-    // },
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
   },
 });
 
@@ -52,11 +49,11 @@ export const Appearance = (): JSXElement => {
         <Input appearance="underline" id={inputIds.underline} />
       </div>
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance</Label>
+        <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance (on Background 3)</Label>
         <Input appearance="filled-lighter" id={inputIds.filledLighter} />
       </div>
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={inputIds.filledDarker}>Filled darker appearance</Label>
+        <Label htmlFor={inputIds.filledDarker}>Filled darker appearance (on Background 1)</Label>
         <Input appearance="filled-darker" id={inputIds.filledDarker} />
       </div>
     </div>
