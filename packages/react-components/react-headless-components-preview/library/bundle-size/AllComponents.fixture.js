@@ -154,6 +154,13 @@ import {
   useCompoundButton,
 } from '@fluentui/react-headless-components-preview/compound-button';
 import {
+  DatePicker,
+  defaultFormatDate,
+  defaultParseDate,
+  renderDatePicker,
+  useDatePicker,
+} from '@fluentui/react-headless-components-preview/date-picker';
+import {
   Dialog,
   DialogActions,
   DialogBody,
@@ -666,6 +673,22 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 import { Tooltip, renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
+} from '@fluentui/react-headless-components-preview/tree';
 import { toDataAttributeValue } from '@fluentui/react-headless-components-preview/utils';
 
 console.log(
@@ -802,6 +825,11 @@ console.log(
   CompoundButton,
   renderCompoundButton,
   useCompoundButton,
+  DatePicker,
+  defaultFormatDate,
+  defaultParseDate,
+  renderDatePicker,
+  useDatePicker,
   Dialog,
   DialogActions,
   DialogBody,
@@ -1286,6 +1314,20 @@ console.log(
   Tooltip,
   renderTooltip,
   useTooltip,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
   toDataAttributeValue,
 );
 
