@@ -1120,12 +1120,14 @@ and a screen reader reach the previous button **before** the page count rather t
 
 #### 57. Fluent icons are the styled contract — a bring-your-own `<svg>` is not restyled
 
-Where Griffel shapes a slot's glyph with an `& svg` selector, windmod selects `[data-fui-icon]` — the
-attribute every `@fluentui/react-icons` icon stamps (SVG icons an empty value, font icons `"font"`). For
-any Fluent icon, bundled or not, the two are identical; a font icon additionally picks up the slot's glyph
-sizing that an svg-type selector never reached. The divergence is an arbitrary `<svg>` a consumer passes
-into an icon slot (an `Input` `contentBefore`, an `Option` `checkIcon`, …): Griffel would restyle it,
-windmod leaves it alone. Stamp `data-fui-icon` on it to opt in.
+Windmod shapes a slot's direct-child Fluent glyph through `[data-fui-icon]`. Every
+`@fluentui/react-icons` SVG carries this attribute with an empty value, and every font glyph carries
+`data-fui-icon="font"`. Griffel's icon slot rules can also target a consumer's arbitrary `<svg>`,
+such as an `Input` adornment or an `Option` check icon. In Windmod, stamp `data-fui-icon` on that
+SVG to opt into the slot's glyph styles.
+
+PresenceBadge sets a direct-child font glyph's size to match the badge in the tiny, large and
+extra-large variants. This takes precedence over the glyph's own inline font size.
 
 ### The base sheet and the type ramp
 

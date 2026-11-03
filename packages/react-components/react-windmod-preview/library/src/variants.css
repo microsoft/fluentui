@@ -65,6 +65,7 @@
  * express: an anchor class whose glyphs sit deeper than one level (InteractionTagPrimary anchors
  * on root appearance classes while the glyphs live inside the tag icon slot). */
 @custom-variant icon (& > :where([data-fui-icon]));
+@custom-variant icon-font (& > :where([data-fui-icon='font']));
 @custom-variant icon-filled (& > :where([class~='fui-Icon-filled']));
 @custom-variant icon-regular (& > :where([class~='fui-Icon-regular']));
 @custom-variant variant-filled (&:where([class~='fui-Icon-filled']));

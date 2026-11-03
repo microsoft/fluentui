@@ -67,18 +67,29 @@
   .icon {
     @apply -m-1 flex;
 
-    /* Every other size renders its own correctly-sized glyph asset (presenceGlyph picks it per
-       size); only these two reuse a neighbouring asset and need the CSS to resize it — matching
-       Griffel's own forced overrides on the same two reused sizes. */
+    /* The tiny and extra-large badges reuse a neighbouring glyph asset. Font glyphs carry
+       their asset size inline, so override it for the three sizes with an explicit icon size. */
     @variant group-size-tiny/fui-presence-badge {
       @variant icon {
         @apply size-6;
+      }
+      @variant icon-font {
+        @apply text-[length:--spacing(6)]!;
+      }
+    }
+
+    @variant group-size-large/fui-presence-badge {
+      @variant icon-font {
+        @apply text-icon-20!;
       }
     }
 
     @variant group-size-extra-large/fui-presence-badge {
       @variant icon {
         @apply size-28;
+      }
+      @variant icon-font {
+        @apply text-icon-28!;
       }
     }
   }

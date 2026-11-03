@@ -69,6 +69,11 @@
 
     @variant forced-colors {
       @apply stroke-[CanvasText] text-[Canvas];
+
+      @variant icon-font {
+        /* Match the SVG outline independently of the theme's border width. */
+        -webkit-text-stroke: 1px CanvasText;
+      }
     }
   }
 

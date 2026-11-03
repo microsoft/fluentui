@@ -192,6 +192,7 @@ PresenceBadge   status-available|away|blocked|busy|do-not-disturb|offline|out-of
                 out-of-office
 Card            appearance-filled-alternative        (outline, subtle shared with Button)
 icons           icon                                 — any direct-child Fluent glyph ([data-fui-icon], SVG or font)
+                icon-font                            — a direct-child Fluent font glyph ([data-fui-icon='font'])
 bundleIcon      icon-filled  icon-regular         — the glyph swap, direct-child form
                 variant-filled  variant-regular      — glyph-self form for deeper-nested glyphs
 ColorSlider     channel-saturation  channel-value    (hue is the resting look, no entry)
