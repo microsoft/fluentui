@@ -1,5 +1,5 @@
 {
   "type": "patch",
-  "comment": "Fix headless swatch URLs, SpinButton input focus and semantics, TeachingPopover dialog and dismissal behavior, resolved state selectors, and decorative icon accessibility; standardize Field on data-validation-state.",
+  "comment": "fix: correct headless behavior, state selectors, and icon accessibility; rename Field selector to data-validation-state.",
   "packageName": "@fluentui/react-headless-components-preview"
 }
