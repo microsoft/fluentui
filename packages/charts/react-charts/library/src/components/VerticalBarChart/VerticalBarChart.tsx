@@ -133,6 +133,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   );
 
   React.useEffect(() => {
+    // CartesianChart supplies current scale-based availability before effects run.
+    if (isPopoverOpen && calloutTarget && !calloutProps.isPopoverOpen) {
+      _handleChartMouseLeave();
+    }
+  });
+
+  React.useEffect(() => {
     if (
       !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
       !areArraysEqual(selectedLegends, props.legendProps?.selectedLegends || [])

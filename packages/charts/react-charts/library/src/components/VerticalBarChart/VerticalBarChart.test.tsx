@@ -1511,31 +1511,66 @@ describe('VerticalBarChart - current callout observation', () => {
     expect(queryByTestId('bar-observation')).toBeNull();
   });
 
-  it.each(['removed', 'filtered', 'zero', 'invalid'] as const)(
-    'closes the callout when the selected bar is %s',
-    change => {
-      const { rerender, scene, target, getByRole, queryByTestId } = setup();
-      act(() => target().focus());
-      act(() => getByRole('textbox', { name: 'Bar note' }).focus());
+  const passivePolicies = ['preserve', 'none'] as const;
+  it.each(
+    (['removed', 'filtered', 'zero', 'invalid'] as const).flatMap(change =>
+      passivePolicies.map(policy => ({ change, policy })),
+    ),
+  )('retires the callout when the selected bar is $change (policy: $policy)', ({ change, policy }) => {
+    const { container, rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup(policy);
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Bar note' });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Keep bar note' } });
 
-      rerender(
-        scene(10, false, {
-          ...(change === 'removed' ? { data: [{ x: 1, y: 10, legend: 'First', color: 'red' }] } : {}),
-          ...(change === 'filtered' ? { legendProps: { selectedLegends: ['First'] } } : {}),
-          ...(change === 'zero' || change === 'invalid'
-            ? {
-                data: [
-                  { x: 1, y: 10, legend: 'First', color: 'red' },
-                  { x: 2, y: change === 'zero' ? 0 : Number.NaN, legend: 'Second', color: 'purple' },
-                ],
-              }
-            : {}),
-        }),
-      );
+    rerender(
+      scene(10, false, {
+        ...(change === 'removed' ? { data: [{ x: 1, y: 10, legend: 'First', color: 'red' }] } : {}),
+        ...(change === 'filtered' ? { legendProps: { selectedLegends: ['First'] } } : {}),
+        ...(change === 'zero' || change === 'invalid'
+          ? {
+              data: [
+                { x: 1, y: 10, legend: 'First', color: 'red' },
+                { x: 2, y: change === 'zero' ? 0 : Number.NaN, legend: 'Second', color: 'purple' },
+              ],
+            }
+          : {}),
+      }),
+    );
 
-      expect(queryByTestId('bar-observation')).toBeNull();
-    },
-  );
+    expect(queryByTestId('bar-observation')).toBeNull();
+    expect(input.isConnected).toBe(false);
+    const outside = getByTestId('outside');
+    act(() => outside.focus());
+
+    rerender(scene(20));
+
+    expect(queryByTestId('bar-observation')).toBeNull();
+    expect(container.ownerDocument.activeElement).toBe(outside);
+    expect(mounts()).toBe(1);
+
+    act(() => target().focus());
+
+    expect(getByRole('textbox', { name: 'Bar note' })).toHaveValue('');
+    expect(mounts()).toBe(2);
+  });
+
+  it('allows an explicit reset to reopen a retired bar callout', () => {
+    const { rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup('reset');
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Bar note' });
+    act(() => input.focus());
+
+    rerender(scene(10, false, { data: [{ x: 1, y: 10, legend: 'First', color: 'red' }] }));
+    expect(queryByTestId('bar-observation')).toBeNull();
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(20));
+
+    expect(getByTestId('bar-observation')).toHaveTextContent('"y":40');
+    expect(getByRole('textbox', { name: 'Bar note' })).not.toBe(input);
+    expect(mounts()).toBe(2);
+  });
 
   it('refreshes a line callout with an earlier source point that has no line data', () => {
     const { container, rerender, scene, getByRole, getByTestId, mounts } = setup();
@@ -1613,11 +1648,17 @@ describe('VerticalBarChart - current callout observation', () => {
     })),
   });
 
-  it.each(axes.flatMap(axis => [0, -1].flatMap(value => [false, true].map(hover => ({ axis, value, hover })))))(
-    'closes an overlay callout when $axis becomes $value on a log scale (hover: $hover)',
-    ({ axis, value, hover }) => {
-      const { container, rerender, scene, getByRole, queryByTestId, target } = setup(
-        'preserve',
+  it.each(
+    axes.flatMap(axis =>
+      [0, -1].flatMap(value =>
+        [false, true].flatMap(hover => passivePolicies.map(policy => ({ axis, value, hover, policy }))),
+      ),
+    ),
+  )(
+    'retires an overlay callout when $axis becomes $value on a log scale (hover: $hover, policy: $policy)',
+    ({ axis, value, hover, policy }) => {
+      const { container, rerender, scene, getByRole, getByTestId, queryByTestId, target, mounts } = setup(
+        policy,
         overlayConfig(axis, axis === 'x' ? 2 : 20, true, !hover),
       );
       const circle = container.querySelectorAll<SVGCircleElement>('circle[id^="_VBC_point"]')[1];
@@ -1647,6 +1688,15 @@ describe('VerticalBarChart - current callout observation', () => {
         expect(queryByTestId('bar-observation')).toBeNull();
         expect(circle.isConnected).toBe(false);
         expect(input.isConnected).toBe(false);
+        expect(detachedReads).toEqual([]);
+
+        const outside = getByTestId('outside');
+        act(() => outside.focus());
+        rerender(scene(0, false, overlayConfig(axis, axis === 'x' ? 2 : 20, true, !hover)));
+
+        expect(queryByTestId('bar-observation')).toBeNull();
+        expect(container.ownerDocument.activeElement).toBe(outside);
+        expect(mounts()).toBe(1);
         expect(detachedReads).toEqual([]);
       } finally {
         spy.mockRestore();

@@ -1749,13 +1749,25 @@ describe('LineChart - current callout observation', () => {
     secondaryYScaleOptions: axis === 'secondaryY' ? { yMinValue: logarithmic ? 1 : 0, yMaxValue: 100 } : undefined,
   });
 
-  it.each(modes.flatMap(mode => scaleCases.flatMap(axis => [0, -1].map(value => ({ mode, axis, value })))))(
-    'closes a $mode callout when $axis becomes $value on a positive log scale',
-    ({ mode, axis, value }) => {
-      const { container, rerender, scene, target, getByRole, queryByTestId } = setup(mode, 'preserve', false, {
-        ...scaleProps(axis),
-        data: scaledData(mode, axis),
-      });
+  const passivePolicies = ['preserve', 'none'] as const;
+  it.each(
+    modes.flatMap(mode =>
+      scaleCases.flatMap(axis =>
+        [0, -1].flatMap(value => passivePolicies.map(policy => ({ mode, axis, value, policy }))),
+      ),
+    ),
+  )(
+    'retires a $mode callout when $axis becomes $value on a positive log scale (policy: $policy)',
+    ({ mode, axis, value, policy }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup(
+        mode,
+        policy,
+        false,
+        {
+          ...scaleProps(axis),
+          data: scaledData(mode, axis),
+        },
+      );
       const oldTarget = target();
       act(() => oldTarget.focus());
       const input = getByRole('textbox', { name: 'Observation note' });
@@ -1783,6 +1795,15 @@ describe('LineChart - current callout observation', () => {
       }
       expect(queryByTestId('observation')).toBeNull();
       expect(input.isConnected).toBe(false);
+      expect(detachedReads).toEqual([]);
+
+      const outside = getByTestId('outside');
+      act(() => outside.focus());
+      rerender(scene(0, mode, { data: scaledData(mode, axis) }));
+
+      expect(queryByTestId('observation')).toBeNull();
+      expect(container.ownerDocument.activeElement).toBe(outside);
+      expect(mounts()).toBe(1);
       expect(detachedReads).toEqual([]);
     },
   );
@@ -1814,12 +1835,20 @@ describe('LineChart - current callout observation', () => {
     expect(mounts()).toBe(1);
   });
 
-  it.each(modes.flatMap(mode => ['removed', 'hidden', 'invalid', 'filtered'].map(change => ({ mode, change }))))(
-    'closes an open $mode callout when its selected source becomes $change',
-    ({ mode, change }) => {
-      const { rerender, scene, target, getByRole, queryByTestId } = setup(mode);
+  it.each(
+    modes.flatMap(mode =>
+      ['removed', 'hidden', 'invalid', 'filtered'].flatMap(change =>
+        passivePolicies.map(policy => ({ mode, change, policy })),
+      ),
+    ),
+  )(
+    'retires an open $mode callout when its selected source becomes $change (policy: $policy)',
+    ({ mode, change, policy }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup(mode, policy);
       act(() => target().focus());
-      act(() => getByRole('textbox', { name: 'Observation note' }).focus());
+      const input = getByRole('textbox', { name: 'Observation note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep this note' } });
       const data = createData(2, mode);
       if (change === 'removed') {
         data.lineChartData = data.lineChartData!.slice(0, 1);
@@ -1838,6 +1867,53 @@ describe('LineChart - current callout observation', () => {
       );
 
       expect(queryByTestId('observation')).toBeNull();
+      expect(input.isConnected).toBe(false);
+      const outside = getByTestId('outside');
+      act(() => outside.focus());
+
+      rerender(scene(4));
+
+      expect(queryByTestId('observation')).toBeNull();
+      expect(container.ownerDocument.activeElement).toBe(outside);
+      expect(mounts()).toBe(1);
+
+      act(() => target().focus());
+
+      expect(getByRole('textbox', { name: 'Observation note' })).toHaveValue('');
+      expect(mounts()).toBe(2);
     },
   );
+
+  it.each(modes)('allows an explicit reset to reopen a retired %s callout', mode => {
+    const { rerender, scene, target, getByRole, getByTestId, queryByTestId, mounts } = setup(mode, 'reset');
+    act(() => target().focus());
+    const input = getByRole('textbox', { name: 'Observation note' });
+    act(() => input.focus());
+    const data = createData(2, mode);
+    data.lineChartData![1].data[0].y = Number.NaN;
+
+    rerender(scene(2, mode, { data }));
+    expect(queryByTestId('observation')).toBeNull();
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(4));
+
+    expect(getByTestId('observation')).toHaveTextContent('"y":14');
+    expect(getByRole('textbox', { name: 'Observation note' })).not.toBe(input);
+    expect(mounts()).toBe(2);
+  });
+
+  it.each(modes)('retains a reset to a different valid target while retiring an unavailable %s callout', mode => {
+    const { rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode, 'reset');
+    act(() => target().focus());
+    act(() => getByRole('textbox', { name: 'Observation note' }).focus());
+    const data = createData(2, mode);
+    data.lineChartData![1].data[0].y = Number.NaN;
+
+    rerender(scene(2, mode, { data, focusOnReset: { lineIndex: 0, pointIndex: 0 } }));
+
+    expect(getByTestId('observation')).toHaveTextContent('"legend":"First"');
+    expect(getByTestId('observation')).toHaveTextContent('"y":12');
+    expect(mounts()).toBe(2);
+  });
 });

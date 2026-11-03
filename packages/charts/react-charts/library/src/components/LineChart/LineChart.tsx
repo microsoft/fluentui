@@ -229,6 +229,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     });
 
     React.useEffect(() => {
+      // CartesianChart supplies current scale-based availability before effects run.
+      if (isPopoverOpen && calloutTarget && !calloutProps.isPopoverOpen) {
+        _dismissCallout();
+      }
+    });
+
+    React.useEffect(() => {
       if (!areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends)) {
         setSelectedLegendPoints(_injectIndexPropertyInLineChartData(props.data.lineChartData, true));
         setIsSelectedLegend((props.legendProps?.selectedLegends?.length ?? 0) > 0);
@@ -1644,6 +1651,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         setNearestCircleToHighlight(pointToHighlight);
         setCalloutTarget({ lineIndex: linenumber, pointIndex, kind: 'path' });
         setRefSelected(targetElement);
+        setPopoverOpen(true);
         updatePosition(rect.x, rect.y);
         setStackCalloutProps(found!);
         setYValueHover(found.values);

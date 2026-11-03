@@ -1102,7 +1102,7 @@ describe('GaugeChart - retained focus callout freshness', () => {
 describe('GaugeChart - current callout selection', () => {
   afterEach(() => jest.restoreAllMocks());
 
-  const setup = (focusInput = true) => {
+  const setup = (focusInput = true, policy: GaugeChartProps['focusRestorePolicy'] = 'preserve') => {
     let mounts = 0;
     const Content = ({ data }: { data?: GaugeChartCalloutData }) => {
       const [note, setNote] = React.useState('');
@@ -1125,6 +1125,8 @@ describe('GaugeChart - current callout selection', () => {
           height={300}
           chartValue={updated ? 70 : 30}
           variant="multiple-segments"
+          focusRestorePolicy={policy}
+          focusOnReset={{ segmentIndex: 1 }}
           segments={[
             { size: updated ? 60 : 40, color: 'red', legend: 'First' },
             { size: updated ? 40 : 60, color: updated ? 'purple' : 'blue', legend: updated ? 'Updated' : 'Second' },
@@ -1197,16 +1199,59 @@ describe('GaugeChart - current callout selection', () => {
     expect(container.ownerDocument.activeElement).toBe(target(true));
   });
 
-  it.each(['removed', 'filtered'] as const)('closes the callout when its selected segment is %s', change => {
-    const { rerender, scene, queryByTestId } = setup();
+  it.each(
+    (['removed', 'filtered', 'zero'] as const).flatMap(change =>
+      (['preserve', 'none'] as const).map(policy => ({ change, policy })),
+    ),
+  )('retires the callout when its selected segment is $change (policy: $policy)', ({ change, policy }) => {
+    const { container, rerender, scene, target, input, getByRole, getByTestId, queryByTestId, mounts } = setup(
+      true,
+      policy,
+    );
 
     rerender(
       scene(true, false, {
         ...(change === 'removed' ? { segments: [{ size: 100, color: 'red', legend: 'First' }] } : {}),
         ...(change === 'filtered' ? { legendProps: { selectedLegends: ['First'] } } : {}),
+        ...(change === 'zero'
+          ? {
+              segments: [
+                { size: 100, color: 'red', legend: 'First' },
+                { size: 0, color: 'blue', legend: 'Second' },
+              ],
+            }
+          : {}),
       }),
     );
 
     expect(queryByTestId('gauge-observation')).toBeNull();
+    expect(input.isConnected).toBe(false);
+    const outside = getByTestId('outside');
+    act(() => outside.focus());
+
+    rerender(scene(false));
+
+    expect(queryByTestId('gauge-observation')).toBeNull();
+    expect(container.ownerDocument.activeElement).toBe(outside);
+    expect(mounts()).toBe(1);
+
+    act(() => target().focus());
+
+    expect(getByRole('textbox', { name: 'Gauge note' })).toHaveValue('');
+    expect(mounts()).toBe(2);
+  });
+
+  it('allows an explicit reset to reopen a retired gauge callout', () => {
+    const { rerender, scene, input, getByRole, getByTestId, queryByTestId, mounts } = setup(true, 'reset');
+
+    rerender(scene(true, false, { segments: [{ size: 100, color: 'red', legend: 'First' }] }));
+    expect(queryByTestId('gauge-observation')).toBeNull();
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene(false));
+
+    expect(getByTestId('gauge-observation')).toHaveTextContent('"legend":"Second"');
+    expect(getByRole('textbox', { name: 'Gauge note' })).not.toBe(input);
+    expect(mounts()).toBe(2);
   });
 });

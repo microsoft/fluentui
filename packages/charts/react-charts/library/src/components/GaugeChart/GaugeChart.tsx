@@ -198,6 +198,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     let _calloutAnchor: string = '';
 
     React.useEffect(() => {
+      if (isPopoverOpen && calloutTarget && !currentCalloutAvailable) {
+        _handleCalloutDismiss();
+      }
+    });
+
+    React.useEffect(() => {
       if (_rootElem.current) {
         setWidth(_rootElem.current.clientWidth);
         setHeight(_rootElem.current.clientHeight);
