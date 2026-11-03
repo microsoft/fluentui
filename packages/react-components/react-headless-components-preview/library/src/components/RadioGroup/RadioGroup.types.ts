@@ -8,6 +8,9 @@ export type {
 
 export type RadioGroupState = RadioGroupBaseState & {
   root: {
+    /**
+     * Data attribute set when the radio group is disabled.
+     */
     'data-disabled'?: string;
   };
 };

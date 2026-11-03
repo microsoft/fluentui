@@ -21,7 +21,13 @@ export type PersonaProps = ComponentProps<PersonaSlots> & Pick<PersonaBaseProps,
 export type PersonaState = ComponentState<PersonaSlots> &
   Pick<PersonaBaseState, 'textPosition' | 'numTextLines'> & {
     root: {
+      /**
+       * Data attribute reflecting the text position relative to the avatar: 'after', 'before', or 'below'.
+       */
       'data-text-position'?: PersonaBaseState['textPosition'];
+      /**
+       * Data attribute reflecting the number of rendered text lines.
+       */
       'data-text-lines'?: number;
     };
   };

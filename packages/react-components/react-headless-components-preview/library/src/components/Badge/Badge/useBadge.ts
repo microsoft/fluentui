@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useBadgeBase_unstable } from '@fluentui/react-badge';
 
 import type { BadgeProps, BadgeState } from './Badge.types';
@@ -17,9 +17,7 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLDivElement>): Bad
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-position'] = state.icon ? state.iconPosition : undefined;
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-only'] = toDataAttributeValue(
-    !!state.icon && React.Children.toArray(state.root.children).every(child => child === ''),
-  );
+  state.root['data-icon-only'] = toDataAttributeValue(!!state.icon && (state.root.children ?? '') === '');
 
   return state;
 };

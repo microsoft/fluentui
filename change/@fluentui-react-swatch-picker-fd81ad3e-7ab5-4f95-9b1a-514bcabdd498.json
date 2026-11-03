@@ -1,0 +1,5 @@
+{
+  "type": "patch",
+  "comment": "fix: quote and escape ImageSwatch background image URLs",
+  "packageName": "@fluentui/react-swatch-picker"
+}

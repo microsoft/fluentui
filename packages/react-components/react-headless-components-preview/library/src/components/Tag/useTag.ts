@@ -2,7 +2,6 @@
 
 import type * as React from 'react';
 import { useTagBase_unstable } from '@fluentui/react-tags';
-import { slot } from '@fluentui/react-utilities';
 
 import type { TagProps, TagState } from './Tag.types';
 import { toDataAttributeValue } from '../../utils';
@@ -18,14 +17,11 @@ export const useTag = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLBut
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   state.root['data-dismissible'] = toDataAttributeValue(state.dismissible);
   state.root['data-selected'] = toDataAttributeValue(state.selected);
+
+  if (state.dismissIcon) {
+    state.dismissIcon['aria-hidden'] ??= true;
+  }
   /* eslint-enable react-hooks/immutability */
 
-  return {
-    ...state,
-    dismissIcon: slot.optional(props.dismissIcon, {
-      renderByDefault: state.dismissible,
-      defaultProps: { 'aria-hidden': true },
-      elementType: 'span',
-    }),
-  };
+  return state;
 };

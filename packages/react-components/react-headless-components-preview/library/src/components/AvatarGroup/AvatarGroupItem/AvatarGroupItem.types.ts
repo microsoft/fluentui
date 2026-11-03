@@ -3,7 +3,12 @@ import type { AvatarGroupItemBaseProps, AvatarGroupItemBaseState } from '@fluent
 export type { AvatarGroupItemSlots } from '@fluentui/react-avatar';
 
 export type AvatarGroupItemState = AvatarGroupItemBaseState & {
-  root: { 'data-overflow-item'?: string };
+  root: {
+    /**
+     * Data attribute set when the item is rendered inside the AvatarGroupPopover overflow list.
+     */
+    'data-overflow-item'?: string;
+  };
 };
 
 /**

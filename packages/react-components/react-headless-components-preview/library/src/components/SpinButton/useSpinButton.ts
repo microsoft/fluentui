@@ -32,21 +32,13 @@ export const useSpinButton = (props: SpinButtonProps, ref: React.Ref<HTMLInputEl
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-invalid'] = toDataAttributeValue(state.input['aria-invalid']);
 
-  return {
-    ...state,
-    input: {
-      ...state.input,
-      ref: mergedInputRef,
-      inputMode: state.input.inputMode ?? 'decimal',
-      'aria-readonly': state.input['aria-readonly'] ?? state.input.readOnly,
-    },
-    incrementButton: {
-      ...state.incrementButton,
-      onMouseDown: mergeCallbacks(focusInput, state.incrementButton.onMouseDown),
-    },
-    decrementButton: {
-      ...state.decrementButton,
-      onMouseDown: mergeCallbacks(focusInput, state.decrementButton.onMouseDown),
-    },
-  };
+  /* eslint-disable react-hooks/immutability -- intentional: keep the input focused and expose its resolved semantics */
+  state.input.ref = mergedInputRef;
+  state.input.inputMode ??= 'decimal';
+  state.input['aria-readonly'] ??= state.input.readOnly;
+  state.incrementButton.onMouseDown = mergeCallbacks(focusInput, state.incrementButton.onMouseDown);
+  state.decrementButton.onMouseDown = mergeCallbacks(focusInput, state.decrementButton.onMouseDown);
+  /* eslint-enable react-hooks/immutability */
+
+  return state;
 };

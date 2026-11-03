@@ -11,6 +11,9 @@ export type InputState = InputBaseState & {
      * Data attribute set when the input is disabled.
      */
     'data-disabled'?: string;
+    /**
+     * Data attribute set when the input is read-only.
+     */
     'data-readonly'?: string;
 
     /**

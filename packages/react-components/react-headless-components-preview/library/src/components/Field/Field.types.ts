@@ -12,6 +12,9 @@ export type {
  */
 export type FieldState = FieldBaseState & {
   root: {
+    /**
+     * Data attribute reflecting the resolved validation state: 'error', 'warning', 'success', or 'none'.
+     */
     'data-validation-state'?: FieldBaseState['validationState'];
   };
 };

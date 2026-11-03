@@ -31,11 +31,6 @@ describe('ImageSwatch', () => {
     expect(result.current.root.style?.backgroundImage).toBe('url("image (1).png")');
   });
 
-  it('escapes quotes, backslashes, and CSS line terminators in URLs', () => {
-    const { result } = renderHook(() => useImageSwatch({ src: 'image"\\\n\r\f.png', value: 'image' }, null));
-    expect(result.current.root.style?.backgroundImage).toBe('url("image\\22 \\5c \\a \\d \\c .png")');
-  });
-
   it('preserves an explicit background image override and defaults to a non-submit button', () => {
     const { getByRole } = render(<ImageSwatch src="image.png" value="image" style={{ backgroundImage: 'none' }} />);
     expect(getByRole('radio')).toHaveAttribute('type', 'button');

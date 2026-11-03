@@ -2,7 +2,6 @@
 
 import type * as React from 'react';
 import { useFieldBase_unstable } from '@fluentui/react-field';
-import { slot } from '@fluentui/react-utilities';
 
 import type { FieldProps, FieldState } from './Field.types';
 
@@ -11,16 +10,14 @@ import type { FieldProps, FieldState } from './Field.types';
  * The returned state can be modified with hooks before being passed to `renderField`.
  */
 export const useField = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const state = useFieldBase_unstable(props, ref);
-  return {
-    ...state,
-    root: {
-      ...state.root,
-      'data-validation-state': state.validationState,
-    },
-    validationMessageIcon: slot.optional(props.validationMessageIcon, {
-      defaultProps: { 'aria-hidden': true },
-      elementType: 'span',
-    }),
-  };
+  const state: FieldState = useFieldBase_unstable(props, ref);
+
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-validation-state'] = state.validationState;
+
+  if (state.validationMessageIcon) {
+    state.validationMessageIcon['aria-hidden'] ??= true;
+  }
+
+  return state;
 };
