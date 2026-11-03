@@ -1,14 +1,25 @@
 'use client';
 
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { isInTopLayer, isPopoverOpen, waitForAnimations } from './utils';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { isDialogElement, isInTopLayer, isPopoverOpen, waitForAnimations } from './utils';
+import { useElementListeners } from './useElementListeners';
 import { setInert } from './setInert';
 import type { UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
 
 type Exit = { element: HTMLElement | null; cancel: () => void };
 
 const NO_EXIT: Exit = { element: null, cancel: () => undefined };
+
+const CLOSE_EVENTS = ['close', 'toggle'];
+const getCloseEvents = () => CLOSE_EVENTS;
+
+// A modal `<dialog>` fires `toggle` before `close` where dialogs fire `toggle`, so wait for `close`.
+const getCloseEvent = (element: HTMLElement) => (isDialogElement(element) && element.open ? 'close' : 'toggle');
+
+// `close`, or a `toggle` to closed: a queued `toggle` from the opening can still arrive after a close.
+const isCloseEvent = (event: Event, element: HTMLElement) =>
+  event.target === element && !isInTopLayer(element) && (event as Event & { newState?: string }).newState !== 'open';
 
 // Runs before all layout effects. React 17 has no insertion effects; there the layout effect order applies.
 const useBeforeLayoutEffect = React.useInsertionEffect ?? useIsomorphicLayoutEffect;
@@ -34,6 +45,31 @@ export const useLayerPresence = (
 
   const openRef = React.useRef(false);
   const exit = React.useRef<Exit>(NO_EXIT);
+  // The event that ends the element's current opening, until it fires: `close()` and `hidePopover()` queue it.
+  const pendingCloseEvent = React.useRef<{ element: HTMLElement; type: string } | null>(null);
+
+  // The browser closed it: its close event has fired, so a React close after it has nothing to wait for. Capture runs
+  // before the open-state hook reports the close, since the re-render can run between an event's listeners.
+  const onCloseEvent = useEventCallback((event: Event) => {
+    const element = event.currentTarget as HTMLElement;
+    if (isCloseEvent(event, element) && pendingCloseEvent.current?.element === element) {
+      pendingCloseEvent.current = null;
+    }
+  });
+  useElementListeners(ref, onCloseEvent, getCloseEvents, true);
+
+  // After the open-state hook has shown the element, wherever it is declared.
+  useIsomorphicLayoutEffect(() => {
+    if (!open) {
+      return;
+    }
+    queueMicrotask(() => {
+      const element = ref.current;
+      if (openRef.current && element && isInTopLayer(element)) {
+        pendingCloseEvent.current = { element, type: getCloseEvent(element) };
+      }
+    });
+  });
 
   const endExit = (element: HTMLElement) => {
     exit.current.cancel();
@@ -117,15 +153,18 @@ export const useLayerPresence = (
       if (done) {
         return;
       }
-      if (!isInTopLayer(element)) {
+      const pending = pendingCloseEvent.current?.element === element ? pendingCloseEvent.current : null;
+      pendingCloseEvent.current = null;
+      if (!isInTopLayer(element) && !pending) {
         waitForExitAnimations();
         return;
       }
 
+      // Still closing, or closed with its event queued: stay mounted for it, so the element's own handlers still run.
       element.addEventListener(
-        isPopoverOpen(element) ? 'toggle' : 'close',
+        pending?.type ?? (isPopoverOpen(element) ? 'toggle' : 'close'),
         event => {
-          if (event.target === element && !isInTopLayer(element)) {
+          if (isCloseEvent(event, element)) {
             controller.abort();
             waitForExitAnimations();
           }

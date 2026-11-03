@@ -53,6 +53,22 @@ describe.each([
     await waitFor(() => expect(queryByTestId('layer')).toBeNull());
   });
 
+  it('stays mounted until the queued close event fires, so its own handlers still run', async () => {
+    const { getByTestId, queryByTestId, rerender } = render(<Layer open />);
+    const layer = getByTestId('layer');
+    await act(() => Promise.resolve());
+    let connectedOnClose: boolean | undefined;
+    layer.addEventListener('toggle', event => {
+      if ((event as Event & { newState?: string }).newState === 'closed') {
+        connectedOnClose = layer.isConnected;
+      }
+    });
+
+    rerender(<Layer open={false} />);
+    await waitFor(() => expect(queryByTestId('layer')).toBeNull());
+    expect(connectedOnClose).toBe(true);
+  });
+
   it('keeps the element mounted with unmountOnClose: false', async () => {
     const { getByTestId, rerender } = render(<Layer open unmountOnClose={false} />);
     const layer = getByTestId('layer');
