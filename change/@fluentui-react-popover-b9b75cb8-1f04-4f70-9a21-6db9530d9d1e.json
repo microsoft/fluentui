@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: dismiss trapFocus Popover on programmatic focus-out when the popover was opened via mouse (seed focus guard from the active element on listener registration)",
+  "packageName": "@fluentui/react-popover",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "patch"
+}

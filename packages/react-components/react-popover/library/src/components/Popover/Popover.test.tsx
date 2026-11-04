@@ -79,6 +79,52 @@ describe('Popover', () => {
       document.body.removeChild(popoverContent);
     });
 
+    it('should close on programmatic focus-out when focus entered before the listener registered', () => {
+      // Mirrors a mouse-driven open: the popover focuses its content synchronously during commit,
+      // before the focusin listener registers, so no inside `focusin` is ever observed. The guard
+      // must still seed itself from the currently focused element so a later focus-out dismisses it.
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      const insideInput = document.createElement('input');
+      popoverContent.appendChild(insideInput);
+      document.body.appendChild(outsideButton);
+      document.body.appendChild(popoverContent);
+
+      const { result, rerender } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: false } },
+      );
+
+      // Content is mounted and focus lands inside while the popover is still closed - i.e. before
+      // the focusin listener is attached.
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+        insideInput.focus();
+      });
+
+      // Opening registers the listener, which seeds its guard from the already-inside focus.
+      act(() => {
+        rerender({ open: true });
+      });
+
+      // Programmatic focus-out must dismiss the popover even though no inside `focusin` was seen.
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), { open: false });
+
+      document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
     it('should not close when focus moves outside but was never inside the popover', () => {
       // Focus stays on an external element the whole time and is programmatically re-focused.
       // Since focus never entered the popover, this outside -> outside change must not dismiss it.
