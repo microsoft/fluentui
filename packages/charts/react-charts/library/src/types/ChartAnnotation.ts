@@ -1,5 +1,27 @@
 import type * as React from 'react';
 
+/**
+ * Numeric keyed-y coordinates supported by the shared LineChart scene.
+ * {@docCategory ChartData}
+ */
+export type LineChartKeyedAnnotationCoordinate =
+  | {
+      type: 'data';
+      x: number | string | Date;
+      y: number;
+      yScaleKey: string;
+      yAxis?: 'primary' | 'secondary';
+    }
+  | {
+      type: 'mixed';
+      xCoordinateType: 'data' | 'relative' | 'pixel';
+      yCoordinateType: 'data';
+      x: number | string | Date;
+      y: number;
+      yScaleKey: string;
+      yAxis?: 'primary' | 'secondary';
+    };
+
 export type ChartAnnotationCoordinate =
   | {
       /** Cartesian data coordinates mapped through the chart scales */
@@ -10,6 +32,8 @@ export type ChartAnnotationCoordinate =
       y: number | string | Date;
       /** Use the secondary y scale when available */
       yAxis?: 'primary' | 'secondary';
+      /** Keyed numeric coordinates use the keyed coordinate variant. */
+      yScaleKey?: never;
     }
   | {
       /** Normalised coordinates within the plot area (0-1) */
@@ -36,7 +60,10 @@ export type ChartAnnotationCoordinate =
       y: number | string | Date;
       /** Use the secondary y scale when the Y coordinate maps to data */
       yAxis?: 'primary' | 'secondary';
-    };
+      /** Keyed numeric coordinates use the keyed coordinate variant. */
+      yScaleKey?: never;
+    }
+  | LineChartKeyedAnnotationCoordinate;
 
 export type ChartAnnotationHorizontalAlign = 'start' | 'center' | 'end';
 export type ChartAnnotationVerticalAlign = 'top' | 'middle' | 'bottom';
@@ -113,9 +140,22 @@ export interface ChartAnnotationAccessibilityProps {
   role?: string;
 }
 
+/**
+ * Action on a native annotation, initially supported by opted-in LineChart.
+ * {@docCategory ChartData}
+ */
+export interface ChartAnnotationActionOptions {
+  /** Nonempty localized accessible name for the native annotation button. */
+  label: string;
+  /** Called once for native pointer or keyboard activation, never during rendering. */
+  onInvoke: (source: 'pointer' | 'keyboard') => void;
+}
+
 export interface ChartAnnotation {
   /** Optional id for React reconciliation */
   id?: string;
+  /** Optional native action, initially supported by opted-in LineChart. */
+  action?: ChartAnnotationActionOptions;
   /** Primary textual content */
   text: string;
   /** Coordinates describing where the annotation should be anchored */

@@ -2,6 +2,7 @@ import type { SVGProps } from 'react';
 import type { LegendShape } from '../components/Legends/Legends.types';
 import type { CurveFactory } from 'd3-shape';
 import type { SankeyLink, SankeyNode } from 'd3-sankey';
+import type { LineChartBaselineFillOptions } from '../components/LineChart/LineChartScene.types';
 
 export interface Basestate {
   _width?: number;
@@ -406,6 +407,13 @@ export interface LineChartGap {
  */
 export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
+   * Whether to connect declared gaps. False cuts original edges before interpolation;
+   * omission retains the existing gap behavior.
+   * @default undefined
+   */
+  connectGaps?: boolean;
+
+  /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
    * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
@@ -475,6 +483,12 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
  * {@docCategory ChartData}
  */
 export interface LineChartPoints {
+  /**
+   * Options for closing each contiguous series run to a numeric baseline.
+   * Omission leaves the series without a baseline fill.
+   */
+  baselineFill?: LineChartBaselineFillOptions;
+
   /**
    * Legend text for the datapoint in the chart
    */

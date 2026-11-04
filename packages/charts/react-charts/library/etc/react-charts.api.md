@@ -316,6 +316,7 @@ export interface Chart {
 // @public (undocumented)
 export interface ChartAnnotation {
     accessibility?: ChartAnnotationAccessibilityProps;
+    action?: ChartAnnotationActionOptions;
     connector?: ChartAnnotationConnectorProps;
     coordinates: ChartAnnotationCoordinate;
     data?: Record<string, unknown>;
@@ -330,6 +331,12 @@ export interface ChartAnnotationAccessibilityProps {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     role?: string;
+}
+
+// @public
+export interface ChartAnnotationActionOptions {
+    label: string;
+    onInvoke: (source: 'pointer' | 'keyboard') => void;
 }
 
 // @public (undocumented)
@@ -347,14 +354,18 @@ export interface ChartAnnotationConnectorProps {
 
 // @public (undocumented)
 export interface ChartAnnotationContext {
+    readonly frameId?: number;
     isRtl?: boolean;
+    readonly layoutEpoch?: number;
     plotRect: AnnotationPlotRect;
+    readonly projectY?: (scaleKey: string, value: number) => number | undefined;
     svgRect: {
         width: number;
         height: number;
     };
     xScale?: (value: any) => number;
     yScalePrimary?: (value: any) => number;
+    readonly yScales?: readonly LineChartResolvedYScale[];
     yScaleSecondary?: (value: any) => number;
 }
 
@@ -364,6 +375,7 @@ export type ChartAnnotationCoordinate = {
     x: number | string | Date;
     y: number | string | Date;
     yAxis?: 'primary' | 'secondary';
+    yScaleKey?: never;
 } | {
     type: 'relative';
     x: number;
@@ -379,7 +391,8 @@ export type ChartAnnotationCoordinate = {
     x: number | string | Date;
     y: number | string | Date;
     yAxis?: 'primary' | 'secondary';
-};
+    yScaleKey?: never;
+} | LineChartKeyedAnnotationCoordinate;
 
 // @public (undocumented)
 export type ChartAnnotationHorizontalAlign = 'start' | 'center' | 'end';
@@ -389,13 +402,18 @@ export const ChartAnnotationLayer: React_2.FC<ChartAnnotationLayerProps>;
 
 // @public (undocumented)
 export interface ChartAnnotationLayerProps {
+    annotationLayout?: LineChartAnnotationLayoutOptions;
     // (undocumented)
     annotations?: ChartAnnotation[];
+    chartRef?: React_2.RefObject<SVGSVGElement | null>;
     // (undocumented)
     className?: string;
     // (undocumented)
     context: ChartAnnotationContext;
     hideDefaultStyles?: boolean;
+    onRenderAnnotationConnector?: RenderFunction<LineChartAnnotationRenderProps>;
+    onRenderAnnotationContent?: RenderFunction<LineChartAnnotationRenderProps>;
+    plot?: LineChartPlotContext;
 }
 
 // @public (undocumented)
@@ -602,6 +620,9 @@ export type ConnectorRenderData = {
     markerSize: number;
     markerStrokeWidth: number;
 };
+
+// @public
+export function createLineChartAnnotationIntervalModel(intervals: readonly LineChartAnnotationInterval[], options: LineChartAnnotationIntervalOptions): LineChartAnnotationIntervalModel;
 
 // @public
 export interface CustomizedCalloutData {
@@ -1350,6 +1371,172 @@ export interface LegendStyleProps {
 // @public
 export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
+// @public
+export interface LineChartAnchor {
+    // (undocumented)
+    readonly client: LineChartPosition;
+    // (undocumented)
+    readonly svg: LineChartPosition;
+}
+
+// @public
+export interface LineChartAnnotationInterval {
+    // (undocumented)
+    readonly end: number | Date;
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly start: number | Date;
+}
+
+// @public
+export interface LineChartAnnotationIntervalLayout {
+    // (undocumented)
+    readonly groups: readonly LineChartResolvedAnnotationIntervalGroup[];
+    // (undocumented)
+    readonly regions: readonly LineChartResolvedAnnotationIntervalRegion[];
+}
+
+// @public
+export interface LineChartAnnotationIntervalModel {
+    getActiveKeys(x: number | Date): readonly string[];
+    getLayout(plot: LineChartPlotContext, pointWidth: number): LineChartAnnotationIntervalLayout;
+}
+
+// @public
+export interface LineChartAnnotationIntervalOptions {
+    // (undocumented)
+    readonly bounds: 'closed' | 'half-open';
+}
+
+// @public
+export interface LineChartAnnotationLayoutOptions {
+    collision?: 'allow' | 'hide' | 'shift';
+    getPriority?: (annotation: Readonly<ChartAnnotation>, index: number) => number;
+    maxShift?: number;
+    spacing?: number;
+}
+
+// @public
+export interface LineChartAnnotationRenderProps {
+    // (undocumented)
+    readonly anchor: LineChartPosition;
+    // (undocumented)
+    readonly annotation: Readonly<ChartAnnotation>;
+    // (undocumented)
+    readonly annotationIndex: number;
+    // (undocumented)
+    readonly connectorEnd: LineChartPosition;
+    // (undocumented)
+    readonly connectorStart: LineChartPosition;
+    // (undocumented)
+    readonly labelRect: LineChartRect;
+    // (undocumented)
+    readonly plot: LineChartPlotContext;
+}
+
+// @public
+export interface LineChartAxisDecorationProps {
+    // (undocumented)
+    readonly axis: LineChartResolvedAxis;
+    // (undocumented)
+    readonly plot: LineChartPlotContext;
+}
+
+// @public
+export interface LineChartAxisPresentationProps {
+    // (undocumented)
+    labelsVisible?: boolean;
+    // (undocumented)
+    tickLabelStyle?: React_2.CSSProperties;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    titleStyle?: React_2.CSSProperties;
+}
+
+// @public
+export interface LineChartAxisStrokeProps {
+    // (undocumented)
+    dashArray?: string;
+    // (undocumented)
+    opacity?: number;
+    // (undocumented)
+    strokeColor?: string;
+    // (undocumented)
+    strokeWidth?: number;
+    // (undocumented)
+    visible?: boolean;
+}
+
+// @public
+export interface LineChartBaselineFillOptions {
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    gradient?: {
+        direction: 'vertical' | 'horizontal';
+        stops: LineChartGradientStop[];
+    };
+    // (undocumented)
+    opacity?: number;
+    // (undocumented)
+    value: number;
+}
+
+// @public
+export interface LineChartClipPadding {
+    // (undocumented)
+    bottom?: number;
+    // (undocumented)
+    left?: number;
+    // (undocumented)
+    right?: number;
+    // (undocumented)
+    top?: number;
+}
+
+// @public
+export interface LineChartCurveHit {
+    // (undocumented)
+    readonly distance: number;
+    // (undocumented)
+    readonly pointKey?: string;
+    // (undocumented)
+    readonly position: LineChartPosition;
+    // (undocumented)
+    readonly segmentKey?: string;
+    // (undocumented)
+    readonly seriesKey: string;
+    // (undocumented)
+    readonly withinRadius: boolean;
+}
+
+// @public
+export type LineChartCurvePiece = Readonly<{
+    kind: 'line';
+    start: LineChartPosition;
+    end: LineChartPosition;
+}> | Readonly<{
+    kind: 'cubic';
+    start: LineChartPosition;
+    control1: LineChartPosition;
+    control2: LineChartPosition;
+    end: LineChartPosition;
+}>;
+
+// @public
+export type LineChartCurveRepresentation = Readonly<{
+    status: 'supported';
+    xDirection: 'increasing' | 'decreasing' | 'constant';
+    pieces: readonly LineChartCurvePiece[];
+}> | Readonly<{
+    status: 'unsupported';
+    xDirection: 'unsupported';
+    reason: 'non-monotone-x';
+    pieces: readonly LineChartCurvePiece[];
+}>;
+
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
     markerColor?: string;
@@ -1358,14 +1545,94 @@ export interface LineChartDataPoint extends BaseDataPoint {
     y: number;
 }
 
+// @public
+export type LineChartFillGeometry = Readonly<{
+    status: 'ready';
+    runs: readonly LineChartResolvedFillRun[];
+}> | Readonly<{
+    status: 'empty';
+    reason: 'no-observations' | 'zero-width';
+}>;
+
 // @public (undocumented)
 export interface LineChartGap {
     endIndex: number;
     startIndex: number;
 }
 
+// @public
+export interface LineChartGradientStop {
+    // (undocumented)
+    color: string;
+    // (undocumented)
+    offset: number;
+    // (undocumented)
+    opacity?: number;
+}
+
+// @public
+export interface LineChartInsets {
+    // (undocumented)
+    end?: number;
+    // (undocumented)
+    start?: number;
+}
+
+// @public
+export interface LineChartInteractionChange {
+    // (undocumented)
+    readonly frameId: number;
+    // (undocumented)
+    readonly geometryVersion: number;
+    // (undocumented)
+    readonly inspection: LineChartResolvedInspection;
+    // (undocumented)
+    readonly layoutEpoch: number;
+    // (undocumented)
+    readonly reason: 'pointer' | 'focus' | 'leave' | 'blur' | 'escape' | 'data-change' | 'layout' | 'focus-reconcile';
+    // (undocumented)
+    readonly state: LineChartInteractionState;
+}
+
+// @public
+export interface LineChartInteractionOptions {
+    hitRadius?: number;
+    mode?: 'nearest-x' | 'nearest-series';
+    showDefaultGuide?: boolean;
+    showDefaultHighlight?: boolean;
+    xValues?: LineChartXValue[];
+}
+
+// @public
+export interface LineChartInteractionState {
+    // (undocumented)
+    readonly activePoint?: LineChartPointReference;
+    // (undocumented)
+    readonly activeX?: LineChartXValue;
+    // (undocumented)
+    readonly emphasizedSeriesKeys?: readonly string[];
+}
+
+// @public
+export type LineChartKeyedAnnotationCoordinate = {
+    type: 'data';
+    x: number | string | Date;
+    y: number;
+    yScaleKey: string;
+    yAxis?: 'primary' | 'secondary';
+} | {
+    type: 'mixed';
+    xCoordinateType: 'data' | 'relative' | 'pixel';
+    yCoordinateType: 'data';
+    x: number | string | Date;
+    y: number;
+    yScaleKey: string;
+    yAxis?: 'primary' | 'secondary';
+};
+
 // @public (undocumented)
 export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
+    connectGaps?: boolean;
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
@@ -1376,8 +1643,118 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
     strokeWidth?: number | string;
 }
 
+// @public
+export interface LineChartMarkerProps {
+    // (undocumented)
+    readonly active: boolean;
+    // (undocumented)
+    readonly focused: boolean;
+    // (undocumented)
+    readonly plot: LineChartPlotContext;
+    // (undocumented)
+    readonly point: LineChartResolvedPoint;
+    // (undocumented)
+    readonly series: LineChartResolvedSeries;
+}
+
+// @public
+export interface LineChartMotionOptions {
+    enter: LineChartTimingOptions;
+    exit: LineChartTimingOptions;
+    reducedMotion?: boolean;
+    stages?: Partial<Record<'grid' | 'axes' | 'marks' | 'labels', number>>;
+    staggerMs?: number;
+    update: LineChartTimingOptions;
+}
+
+// @public
+export interface LineChartNumericAxisOptions {
+    axis?: false | LineChartAxisPresentationProps;
+    domain?: [number, number];
+    grid?: LineChartAxisStrokeProps;
+    includeZero?: boolean;
+    inset?: LineChartInsets;
+    line?: LineChartAxisStrokeProps;
+    nice?: boolean;
+    tickCount?: number;
+    tickFormat?: (value: number, index: number) => string;
+    tickPolicy?: 'legacy' | 'continuous' | 'integer';
+    tickValues?: number[];
+}
+
+// @public
+export type LineChartPhase = 'enter' | 'present' | 'update' | 'exit';
+
+// @public
+export interface LineChartPlotContext {
+    // (undocumented)
+    readonly axes: readonly LineChartResolvedAxis[];
+    // (undocumented)
+    readonly frameId: number;
+    // (undocumented)
+    readonly frameTimeMs: number;
+    // (undocumented)
+    readonly geometryVersion: number;
+    // (undocumented)
+    readonly inspection: LineChartResolvedInspection;
+    // (undocumented)
+    readonly interaction: LineChartInteractionState;
+    // (undocumented)
+    readonly isRtl: boolean;
+    // (undocumented)
+    readonly layoutEpoch: number;
+    // (undocumented)
+    readonly markerClipPathId: string;
+    // (undocumented)
+    readonly markerClipRect: LineChartRect;
+    // (undocumented)
+    readonly plotClipPathId: string;
+    // (undocumented)
+    readonly plotRect: LineChartRect;
+    // (undocumented)
+    projectX(value: LineChartXValue): number | undefined;
+    // (undocumented)
+    projectY(scaleKey: LineChartScaleKey, value: number): number | undefined;
+    // (undocumented)
+    readonly reducedMotion: boolean;
+    // (undocumented)
+    readonly series: readonly LineChartResolvedSeries[];
+    // (undocumented)
+    readonly svgRect: LineChartRect;
+    // (undocumented)
+    readonly xAxisLabelRows: readonly LineChartResolvedXAxisLabelRow[];
+    // (undocumented)
+    readonly xScale: LineChartResolvedXScale;
+    // (undocumented)
+    readonly yScales: readonly LineChartResolvedYScale[];
+}
+
+// @public
+export interface LineChartPlotLayers {
+    // (undocumented)
+    readonly aboveSeries?: JSXElement | null;
+    // (undocumented)
+    readonly belowGrid?: JSXElement | null;
+    // (undocumented)
+    readonly belowSeries?: JSXElement | null;
+    // (undocumented)
+    readonly defs?: JSXElement | null;
+}
+
+// @public
+export type LineChartPointData = LineChartPoints['data'][number];
+
+// @public
+export interface LineChartPointReference {
+    // (undocumented)
+    readonly pointKey: string;
+    // (undocumented)
+    readonly seriesKey: string;
+}
+
 // @public (undocumented)
 export interface LineChartPoints {
+    baselineFill?: LineChartBaselineFillOptions;
     color?: string;
     data: LineChartDataPoint[] | ScatterChartDataPoint[];
     gaps?: LineChartGap[];
@@ -1392,21 +1769,291 @@ export interface LineChartPoints {
 }
 
 // @public
+export interface LineChartPosition {
+    // (undocumented)
+    readonly x: number;
+    // (undocumented)
+    readonly y: number;
+}
+
+// @public
 export interface LineChartProps extends CartesianChartProps {
     allowMultipleShapesForPoints?: boolean;
+    annotationLayout?: LineChartAnnotationLayoutOptions;
     // (undocumented)
     colorFillBars?: ColorFillBarsProps[];
     culture?: string;
     data: ChartProps;
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: EventsAnnotationProps;
+    getAnnotations?: (plot: LineChartPlotContext) => readonly ChartAnnotation[];
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
+    getPointKey?: (point: LineChartPointData, series: LineChartPoints, index: number) => string;
+    getSeriesKey?: (series: LineChartPoints, index: number) => string;
+    getSeriesYScaleKey?: (series: LineChartPoints, index: number) => LineChartScaleKey;
+    interactionOptions?: LineChartInteractionOptions;
+    interactionState?: LineChartInteractionState;
     isCalloutForStack?: boolean;
+    markerClipPadding?: number | LineChartClipPadding;
+    motion?: LineChartMotionOptions;
+    onInteractionChange?: (change: LineChartInteractionChange) => void;
+    onRenderAnnotationConnector?: RenderFunction<LineChartAnnotationRenderProps>;
+    onRenderAnnotationContent?: RenderFunction<LineChartAnnotationRenderProps>;
+    onRenderAxisDecoration?: (props: LineChartAxisDecorationProps) => JSXElement | null;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
     onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+    onRenderMarker?: RenderFunction<LineChartMarkerProps>;
+    onRenderPlotLayers?: (context: LineChartPlotContext) => LineChartPlotLayers;
+    onRenderSeries?: RenderFunction<LineChartSeriesProps>;
     // (undocumented)
     optimizeLargeData?: boolean;
+    secondaryYScaleOptions?: NonNullable<CartesianChartProps['secondaryYScaleOptions']> & LineChartNumericAxisOptions;
     styles?: LineChartStyles;
+    xAxis?: NonNullable<CartesianChartProps['xAxis']> & LineChartXAxisOptions;
+    xAxisLabelRows?: LineChartXAxisLabelRow[];
+    yAxis?: NonNullable<CartesianChartProps['yAxis']> & LineChartNumericAxisOptions;
+    yScales?: LineChartYScaleOptions[];
+}
+
+// @public
+export interface LineChartRect extends LineChartPosition {
+    // (undocumented)
+    readonly height: number;
+    // (undocumented)
+    readonly width: number;
+}
+
+// @public
+export interface LineChartResolvedAnnotationIntervalGroup {
+    // (undocumented)
+    readonly intervalKeys: readonly string[];
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly rect: LineChartRect;
+}
+
+// @public
+export interface LineChartResolvedAnnotationIntervalRegion {
+    // (undocumented)
+    readonly intervalKeys: readonly string[];
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly rect: LineChartRect;
+}
+
+// @public
+export interface LineChartResolvedAxis {
+    // (undocumented)
+    readonly orientation: 'x' | 'y';
+    // (undocumented)
+    readonly rect: LineChartRect;
+    // (undocumented)
+    readonly scaleKey: LineChartScaleKey;
+    // (undocumented)
+    readonly side: 'bottom' | 'left' | 'right';
+    // (undocumented)
+    readonly ticks: readonly LineChartResolvedTick[];
+}
+
+// @public
+export interface LineChartResolvedBaselineFill {
+    // (undocumented)
+    readonly baselinePosition: number;
+    // (undocumented)
+    readonly baselineValue: number;
+    // (undocumented)
+    readonly color: string;
+    // (undocumented)
+    readonly geometry: LineChartFillGeometry;
+    // (undocumented)
+    readonly gradientId?: string;
+    // (undocumented)
+    readonly opacity: number;
+}
+
+// @public
+export interface LineChartResolvedFillRun {
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly path: string;
+    // (undocumented)
+    readonly screenXBounds: readonly [number, number];
+    // (undocumented)
+    readonly sourceSegmentKeys: readonly string[];
+}
+
+// @public
+export interface LineChartResolvedInspection {
+    // (undocumented)
+    readonly anchor?: LineChartAnchor;
+    // (undocumented)
+    readonly clientPointer?: LineChartPosition;
+    // (undocumented)
+    readonly focusedPoint?: LineChartPointReference;
+    // (undocumented)
+    readonly hit?: LineChartCurveHit;
+    // (undocumented)
+    readonly pointer?: LineChartPosition;
+}
+
+// @public
+export interface LineChartResolvedPoint {
+    // (undocumented)
+    readonly data: Readonly<LineChartPointData>;
+    // (undocumented)
+    readonly dataIndex: number;
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly position: LineChartPosition;
+}
+
+// @public
+export interface LineChartResolvedSegment {
+    // (undocumented)
+    readonly curve: LineChartCurveRepresentation;
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly path: string;
+    // (undocumented)
+    readonly pointKeys: readonly string[];
+    // (undocumented)
+    readonly screenXBounds: readonly [number, number];
+}
+
+// @public
+export interface LineChartResolvedSeries {
+    // (undocumented)
+    readonly baselineFill?: LineChartResolvedBaselineFill;
+    // (undocumented)
+    readonly capturedLayoutEpoch: number;
+    // (undocumented)
+    readonly data: Readonly<LineChartPoints>;
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly path: string;
+    // (undocumented)
+    readonly phase: LineChartPhase;
+    // (undocumented)
+    readonly points: readonly LineChartResolvedPoint[];
+    // (undocumented)
+    readonly revealMaskId?: string;
+    // (undocumented)
+    readonly scaleKey: LineChartScaleKey;
+    // (undocumented)
+    readonly segments: readonly LineChartResolvedSegment[];
+    // (undocumented)
+    readonly stroke: LineChartResolvedStroke;
+    // (undocumented)
+    readonly transition: LineChartResolvedTransition;
+}
+
+// @public
+export interface LineChartResolvedStroke {
+    // (undocumented)
+    readonly borderColor?: string;
+    // (undocumented)
+    readonly borderWidth?: LineChartLineOptions['lineBorderWidth'];
+    // (undocumented)
+    readonly color: string;
+    // (undocumented)
+    readonly dashArray?: LineChartLineOptions['strokeDasharray'];
+    // (undocumented)
+    readonly dashOffset?: LineChartLineOptions['strokeDashoffset'];
+    // (undocumented)
+    readonly lineCap: NonNullable<React_2.SVGProps<SVGPathElement>['strokeLinecap']>;
+    // (undocumented)
+    readonly lineJoin: NonNullable<React_2.SVGProps<SVGPathElement>['strokeLinejoin']>;
+    // (undocumented)
+    readonly opacity: number;
+    // (undocumented)
+    readonly width: NonNullable<LineChartLineOptions['strokeWidth']>;
+}
+
+// @public
+export interface LineChartResolvedTick {
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly label: string;
+    // (undocumented)
+    readonly labelVisible: boolean;
+    // (undocumented)
+    readonly position: number;
+    // (undocumented)
+    readonly value: LineChartXValue;
+}
+
+// @public
+export interface LineChartResolvedTransition {
+    // (undocumented)
+    readonly durationMs: number;
+    // (undocumented)
+    readonly entranceEndMs: number;
+    // (undocumented)
+    readonly exitDelayMs: number;
+    // (undocumented)
+    readonly progress: number;
+    // (undocumented)
+    readonly revealProgress: number;
+    // (undocumented)
+    readonly startMs: number;
+}
+
+// @public
+export interface LineChartResolvedXAxisLabelRow {
+    // (undocumented)
+    readonly key: string;
+    // (undocumented)
+    readonly layout: 'reserved' | 'measured';
+    // (undocumented)
+    readonly measuredHeight: number;
+    // (undocumented)
+    readonly rect: LineChartRect;
+}
+
+// @public
+export type LineChartResolvedXScale = Readonly<{
+    kind: 'number';
+    scaleType: 'linear' | 'log';
+    domain: readonly [number, number];
+    range: readonly [number, number];
+}> | Readonly<{
+    kind: 'date';
+    domain: readonly [Date, Date];
+    range: readonly [number, number];
+}> | Readonly<{
+    kind: 'category';
+    domain: readonly string[];
+    range: readonly [number, number];
+}>;
+
+// @public
+export interface LineChartResolvedYScale {
+    // (undocumented)
+    readonly domain: readonly [number, number];
+    // (undocumented)
+    readonly key: LineChartScaleKey;
+    // (undocumented)
+    readonly range: readonly [number, number];
+    // (undocumented)
+    readonly scaleType: 'linear' | 'log';
+}
+
+// @public
+export type LineChartScaleKey = string;
+
+// @public
+export interface LineChartSeriesProps {
+    // (undocumented)
+    readonly plot: LineChartPlotContext;
+    // (undocumented)
+    readonly series: LineChartResolvedSeries;
 }
 
 // @public
@@ -1417,6 +2064,65 @@ export interface LineChartStyleProps extends CartesianChartStyleProps {
 export interface LineChartStyles extends CartesianChartStyles {
     lineBorder?: string;
     markerLabel?: string;
+}
+
+// @public
+export interface LineChartTimingOptions {
+    durationMs: number;
+    easing: string;
+}
+
+// @public
+export type LineChartXAxisLabelRow = {
+    key: string;
+    layout: 'reserved';
+    height: number;
+    gap?: number;
+    onRender: (props: LineChartXAxisLabelRowProps) => JSXElement | null;
+} | {
+    key: string;
+    layout: 'measured';
+    minHeight?: number;
+    maxHeight?: number;
+    gap?: number;
+    onRender: (props: LineChartXAxisLabelRowProps) => JSXElement | null;
+};
+
+// @public
+export interface LineChartXAxisLabelRowProps {
+    // (undocumented)
+    readonly pass: 'measure' | 'paint';
+    // (undocumented)
+    readonly plot: LineChartPlotContext;
+    // (undocumented)
+    readonly row: LineChartResolvedXAxisLabelRow;
+    // (undocumented)
+    readonly ticks: readonly LineChartResolvedTick[];
+}
+
+// @public
+export interface LineChartXAxisOptions {
+    axis?: false | LineChartAxisPresentationProps;
+    domain?: [number, number] | [Date, Date];
+    grid?: LineChartAxisStrokeProps;
+    inset?: LineChartInsets;
+    line?: LineChartAxisStrokeProps;
+    nice?: boolean;
+}
+
+// @public
+export type LineChartXValue = LineChartPoints['data'][number]['x'];
+
+// @public
+export interface LineChartYScaleOptions extends LineChartNumericAxisOptions {
+    axis?: false | (LineChartAxisPresentationProps & {
+        side?: 'left' | 'right';
+    });
+    key: LineChartScaleKey;
+    scaleType?: 'linear' | 'log';
+    tick0?: number;
+    tickStep?: AxisProps['tickStep'];
+    tickText?: AxisProps['tickText'];
 }
 
 // @public (undocumented)

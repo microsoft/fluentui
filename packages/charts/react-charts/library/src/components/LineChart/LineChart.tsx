@@ -3,6 +3,9 @@
 import * as React from 'react';
 import type { LineChartProps } from './LineChart.types';
 import { useLineChartStyles } from './useLineChartStyles.styles';
+import { LineChartScene } from './LineChartScene';
+import { isLineChartSceneEnabled } from './lineChartSceneEnabled';
+import { getLineChartMarkerPath } from './lineChartMarker';
 import type { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
@@ -72,70 +75,6 @@ const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
 
-/**
- *
- * @param x units from origin
- * @param y units from origin
- * @param w is the legnth of the each side of a shape
- * @param index index to get the shape path
- */
-const _getPointPath = (x: number, y: number, w: number, index: number): string => {
-  const allPointPaths = [
-    // circle path
-    `M${x - w / 2} ${y}
-     A${w / 2} ${w / 2} 0 1 0 ${x + w / 2} ${y}
-     M${x - w / 2} ${y}
-     A ${w / 2} ${w / 2} 0 1 1 ${x + w / 2} ${y}
-     `,
-    //square
-    `M${x - w / 2} ${y - w / 2}
-     L${x + w / 2} ${y - w / 2}
-     L${x + w / 2} ${y + w / 2}
-     L${x - w / 2} ${y + w / 2}
-     Z`,
-    //triangle
-    `M${x - w / 2} ${y - 0.2886 * w}
-     H ${x + w / 2}
-     L${x} ${y + 0.5774 * w} Z`,
-    //diamond
-    `M${x} ${y - w / 2}
-     L${x + w / 2} ${y}
-     L${x} ${y + w / 2}
-     L${x - w / 2} ${y}
-     Z`,
-    //pyramid
-    `M${x} ${y - 0.5774 * w}
-     L${x + w / 2} ${y + 0.2886 * w}
-     L${x - w / 2} ${y + 0.2886 * w} Z`,
-    //hexagon
-    `M${x - 0.5 * w} ${y - 0.866 * w}
-     L${x + 0.5 * w} ${y - 0.866 * w}
-     L${x + w} ${y}
-     L${x + 0.5 * w} ${y + 0.866 * w}
-     L${x - 0.5 * w} ${y + 0.866 * w}
-     L${x - w} ${y}
-     Z`,
-    //pentagon
-    `M${x} ${y - 0.851 * w}
-     L${x + 0.6884 * w} ${y - 0.2633 * w}
-     L${x + 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.6884 * w} ${y - 0.2633 * w}
-     Z`,
-    //octagon
-    `M${x - 0.5001 * w} ${y - 1.207 * w}
-     L${x + 0.5001 * w} ${y - 1.207 * w}
-     L${x + 1.207 * w} ${y - 0.5001 * w}
-     L${x + 1.207 * w} ${y + 0.5001 * w}
-     L${x + 0.5001 * w} ${y + 1.207 * w}
-     L${x - 0.5001 * w} ${y + 1.207 * w}
-     L${x - 1.207 * w} ${y + 0.5001 * w}
-     L${x - 1.207 * w} ${y - 0.5001 * w}
-     Z`,
-  ];
-  return allPointPaths[index];
-};
-
 type LineChartDataWithIndex = LineChartPoints & { index: number };
 
 // Create a LineChart variant which uses these default styles and this styled subcomponent.
@@ -143,7 +82,7 @@ type LineChartDataWithIndex = LineChartPoints & { index: number };
  * Linechart component
  * {@docCategory LineChart}
  */
-export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
+const LegacyLineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
   ({ isCalloutForStack = true, ...restProps }, forwardedRef) => {
     const props = { isCalloutForStack, ...restProps };
     let _hasMarkersMode: boolean = false;
@@ -183,7 +122,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [yValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
-    const [selectedLegend, setSelectedLegend] = React.useState<string>('');
+    const [selectedLegendState, setSelectedLegend] = React.useState<string>('');
+    const selectedLegend = props.legendProps?.selectedLegend ?? selectedLegendState;
     const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>(
       _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
     );
@@ -202,7 +142,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [lineColor, setLineColor] = React.useState<string>('');
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
 
-    const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
+    const pointsRef = React.useRef<LineChartDataWithIndex[]>([]);
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
@@ -210,11 +150,20 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
        */
 
-      if (_points !== _injectIndexPropertyInLineChartData(props.data.lineChartData) || props.data !== _points) {
-        pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
-        calloutPointsRef.current = calloutData(pointsRef.current);
-      }
-    }, [props.height, props.width, props.data]);
+      pointsRef.current = props.legendProps?.canSelectMultipleLegends
+        ? _getCurrentSelectedLinePoints()
+        : _injectIndexPropertyInLineChartData(props.data.lineChartData);
+      calloutPointsRef.current = calloutData(pointsRef.current);
+    }, [
+      props.height,
+      props.width,
+      props.data,
+      props.legendProps?.canSelectMultipleLegends,
+      props.legendProps?.selectedLegends,
+      props.legendProps?.selectedLegend,
+      isSelectedLegend,
+      selectedLegendPoints,
+    ]);
 
     function _getDomainNRangeValues(
       points: LineChartPoints[],
@@ -258,7 +207,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _injectIndexPropertyInLineChartData(
       lineChartData?: LineChartPoints[],
       isFilterSelectedLegends: boolean = false,
-    ): LineChartDataWithIndex[] | [] {
+    ): LineChartDataWithIndex[] {
       const { allowMultipleShapesForPoints = false } = props;
       // Apply filter only if isPropChange is true
       const filteredData = isFilterSelectedLegends
@@ -493,7 +442,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       const widthRatio = pointTypes[index].widthRatio;
       w = widthRatio > 1 ? w / widthRatio : w;
 
-      return _getPointPath(xPos, yPos, w, index);
+      return getLineChartMarkerPath(xPos, yPos, w, index);
     }
     function _getPointFill(lineColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
       const { allowMultipleShapesForPoints = false } = props;
@@ -520,13 +469,24 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
     }
 
+    function _getCurrentSelectedLinePoints(): LineChartDataWithIndex[] {
+      const current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
+      const controlled =
+        props.legendProps?.selectedLegends ??
+        (props.legendProps?.canSelectMultipleLegends && props.legendProps.selectedLegend !== undefined
+          ? props.legendProps.selectedLegend
+            ? [props.legendProps.selectedLegend]
+            : []
+          : undefined);
+      const titles =
+        controlled ??
+        (isSelectedLegend ? selectedLegendPoints.map((series: LineChartDataWithIndex) => series.legend) : []);
+      return titles.length ? current.filter(series => titles.includes(series.legend)) : current;
+    }
+
     function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
       const lines: JSXElement[] = [];
-      if (isSelectedLegend) {
-        _points = selectedLegendPoints;
-      } else {
-        _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
-      }
+      _points = _getCurrentSelectedLinePoints();
       const maxMarkerSize = d3Max(_points, (point: LineChartPoints) => {
         return d3Max(point.data, (item: LineChartDataPoint) => {
           return item.markerSize as number;
@@ -667,7 +627,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         }
 
         let gapIndex = 0;
-        const gaps = _points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
+        const gaps = _points[i].gaps ? [..._points[i].gaps!].sort((a, b) => a.startIndex - b.startIndex) : [];
         const lineCurve = _points[i].lineOptions?.curve;
 
         // Use path rendering technique for larger datasets to optimize performance.
@@ -1865,7 +1825,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     _isXAxisDateType = getXAxisType(_points);
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
-      points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
+      points = _getCurrentSelectedLinePoints();
       calloutPointsRef.current = calloutData(points);
     }
 
@@ -1974,5 +1934,15 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   },
+);
+LegacyLineChart.displayName = 'LineChartLegacy';
+
+/**
+ * Line chart with additive, explicitly enabled current-frame extension capabilities.
+ * {@docCategory LineChart}
+ */
+export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
+  (props, ref) =>
+    isLineChartSceneEnabled(props) ? <LineChartScene {...props} ref={ref} /> : <LegacyLineChart {...props} ref={ref} />,
 );
 LineChart.displayName = 'LineChart';
