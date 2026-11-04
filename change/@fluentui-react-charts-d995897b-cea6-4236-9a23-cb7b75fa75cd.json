@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add configurable chart focus restoration and refresh line, vertical bar, and gauge callouts after data updates.",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"

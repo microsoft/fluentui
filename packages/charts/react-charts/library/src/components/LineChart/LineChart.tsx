@@ -192,11 +192,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [yValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
-    const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<LineChartDataWithIndex[]>(
+    const [storedSelectedLegendPoints, setSelectedLegendPoints] = React.useState<LineChartDataWithIndex[]>(
       _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
     );
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
-    const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(
+    const [storedIsSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(
       (props.legendProps?.selectedLegends?.length ?? 0) > 0,
     );
     const [activePoint, setActivePoint] = React.useState<string>('');
@@ -216,6 +216,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
     const previousFocusDataRef = React.useRef(props.data);
     const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
+    const selectionChanged = !areArraysEqual(
+      previousFocusSelectedLegendsRef.current,
+      props.legendProps?.selectedLegends,
+    );
+    const selectedLegendPoints = selectionChanged
+      ? _injectIndexPropertyInLineChartData(props.data.lineChartData, true)
+      : storedSelectedLegendPoints;
+    const isSelectedLegend = selectionChanged
+      ? (props.legendProps?.selectedLegends?.length ?? 0) > 0
+      : storedIsSelectedLegend;
     const lastFocusedPointRef = React.useRef<{ lineIndex: number; pointIndex: number } | undefined>(undefined);
     const focusPointRefs = React.useRef<Map<string, SVGElement>>(new Map());
     const focusLineRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
@@ -243,16 +253,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }, [props.legendProps?.selectedLegends]);
 
     React.useEffect(() => {
-      if (
-        !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
-        !areArraysEqual(
-          selectedLegendPoints.map(line => line.legend),
-          _injectIndexPropertyInLineChartData(props.data.lineChartData, true).map(line => line.legend),
-        )
-      ) {
-        // Keep the data reset pending until controlled selection is reflected in the DOM.
-        return;
-      }
       previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
       const dataChanged = !areChartDataEqual(previousFocusDataRef.current, props.data);
       if (
@@ -292,6 +292,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         focusLineRefs.current.get(focusTarget.lineIndex);
       if (isChartElementTabbable(element)) {
         lastFocusedPointRef.current = focusTarget;
+        if (
+          props.focusRestorePolicy === 'reset' &&
+          element === focusLineRefs.current.get(focusTarget.lineIndex) &&
+          element === element.ownerDocument.activeElement
+        ) {
+          setCalloutTarget({ ...focusTarget, kind: 'path' });
+          setNearestCircleToHighlight(point);
+          setActivePoint('');
+          setPopoverOpen(true);
+        }
         element.focus();
       }
     }, [

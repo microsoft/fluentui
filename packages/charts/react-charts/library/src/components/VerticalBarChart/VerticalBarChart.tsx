@@ -118,8 +118,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [calloutTarget, setCalloutTarget] = React.useState<VerticalBarCalloutTarget>();
   const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const [storedSelectedLegends, setSelectedLegends] = React.useState<string[]>(
+    props.legendProps?.selectedLegends || [],
+  );
   const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
+  const selectedLegends =
+    prevPropsRef.current &&
+    !areArraysEqual(prevPropsRef.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)
+      ? props.legendProps?.selectedLegends || []
+      : storedSelectedLegends;
   const previousFocusDataRef = React.useRef(props.data);
   const previousFocusColorsRef = React.useRef(props.colors);
   const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
@@ -140,13 +147,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   });
 
   React.useEffect(() => {
-    if (
-      !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
-      !areArraysEqual(selectedLegends, props.legendProps?.selectedLegends || [])
-    ) {
-      // Keep the data reset pending until the controlled selection is reflected in the DOM.
-      return;
-    }
     previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
     const chartChanged =
       !areChartDataEqual(previousFocusDataRef.current, props.data) ||
@@ -442,7 +442,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           isPopoverOpen={isPopoverOpen}
           legend={_props.legend!}
           YValue={_props.yAxisCalloutData || _props.y}
-          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
+          color={_getBarColor(_props)}
           isCalloutForStack={false}
         />
       </>
@@ -491,6 +491,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return colorScale;
   }
 
+  function _getBarColor(point: VerticalBarChartDataPoint, colorScale = _createColors()): string {
+    return point.color && (_xAxisType === XAxisTypes.StringAxis || !props.useSingleColor)
+      ? point.color
+      : colorScale(point.y);
+  }
+
   function _refCallback(element: SVGRectElement, legendTitle: string): void {
     _refArray.push({ index: legendTitle, refElement: element });
   }
@@ -503,7 +509,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     hoverXValue: string | number | undefined;
   } {
     const YValueHover: YValueHover[] = [];
-    const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     const selectedPoint = sourcePoint
       ? [sourcePoint]
@@ -529,11 +534,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       YValueHover.push({
         legend: selectedPoint[0].legend,
         y: selectedPoint[0].y,
-        color: !useSingleColor
-          ? selectedPoint[0].color
-            ? selectedPoint[0].color
-            : _createColors()(selectedPoint[0].y)
-          : _createColors()(1),
+        color: _getBarColor(selectedPoint[0]),
         data: selectedPoint[0].yAxisCalloutData,
         yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
       });
@@ -759,7 +760,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
-    const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
@@ -809,7 +809,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               _onBarFocus(event, point, index, colorScale(point.y));
             }}
             onBlur={_onBarLeave}
-            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            fill={_getBarColor(point, colorScale)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
@@ -877,7 +877,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               lastFocusedBarIndexRef.current = index;
               _onBarFocus(event, point, index, colorScale(point.y));
             }}
-            fill={point.color ? point.color : colorScale(point.y)}
+            fill={_getBarColor(point, colorScale)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
@@ -890,7 +890,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
-    const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
@@ -940,7 +939,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               _onBarFocus(event, point, index, colorScale(point.y));
             }}
             onBlur={_onBarLeave}
-            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            fill={_getBarColor(point, colorScale)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
@@ -1317,10 +1316,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       color: calloutTarget
         ? calloutTarget.kind === 'line'
           ? props.lineLegendColor ?? tokens.colorPaletteYellowBackground1
-          : currentCalloutPoint?.color && !props.useSingleColor
-          ? currentCalloutPoint.color
           : currentCalloutPoint
-          ? _createColors()(props.useSingleColor ? 1 : currentCalloutPoint.y)
+          ? _getBarColor(currentCalloutPoint)
           : undefined
         : color,
       legend: calloutTarget ? currentCalloutLegend : calloutLegend,

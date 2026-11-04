@@ -1647,6 +1647,62 @@ describe('LineChart - current callout observation', () => {
     return data;
   };
 
+  it.each((['path', 'optimized'] as const).flatMap(mode => [false, true].map(focusInput => ({ mode, focusInput }))))(
+    'reconciles a reset to another point on the same $mode path (input focus: $focusInput)',
+    ({ mode, focusInput }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode, 'reset');
+      const path = target();
+      act(() => path.focus());
+      const input = getByRole('textbox', { name: 'Observation note' });
+      fireEvent.change(input, { target: { value: 'Keep path note' } });
+      if (focusInput) {
+        act(() => input.focus());
+      }
+      const onFocus = jest.fn();
+      path.addEventListener('focus', onFocus);
+      const highlight = container.querySelector('circle[id^="staticHighlightCircle"][id$="_1"]')!;
+      const previousX = highlight.getAttribute('cx');
+      const data = createData(0, mode);
+      data.lineChartData![1].color = 'purple';
+
+      rerender(scene(0, mode, { data, focusOnReset: { lineIndex: 1, pointIndex: 1 } }));
+
+      expect(target()).toBe(path);
+      expect(container.ownerDocument.activeElement).toBe(path);
+      expect(onFocus).toHaveBeenCalledTimes(focusInput ? 1 : 0);
+      const payload = JSON.parse(getByTestId('observation').textContent!);
+      expect(payload).toMatchObject({ x: 2, values: [{ legend: 'Second', y: 20, color: 'purple' }] });
+      expect(highlight.getAttribute('cx')).not.toBe(previousX);
+      expect(getByRole('textbox', { name: 'Observation note' })).toBe(input);
+      expect(input).toHaveValue('Keep path note');
+      expect(mounts()).toBe(1);
+    },
+  );
+
+  it.each(modes.flatMap(mode => (['preserve', 'none'] as const).map(policy => ({ mode, policy }))))(
+    'preserves a custom input through a controlled legend rename ($mode, $policy)',
+    ({ mode, policy }) => {
+      const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(mode, policy, false, {
+        legendProps: { canSelectMultipleLegends: true, selectedLegends: ['Second'] },
+      });
+      act(() => target().focus());
+      const input = getByRole('textbox', { name: 'Observation note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep renamed-line note' } });
+      const data = createData(2, mode);
+      data.lineChartData![1].legend = 'Updated';
+
+      rerender(scene(2, mode, { data, legendProps: { canSelectMultipleLegends: true, selectedLegends: ['Updated'] } }));
+
+      expect(getByRole('textbox', { name: 'Observation note' })).toBe(input);
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(input).toHaveValue('Keep renamed-line note');
+      expect(getByTestId('observation')).toHaveTextContent('"legend":"Updated"');
+      expect(getByTestId('observation')).toHaveTextContent('"y":12');
+      expect(mounts()).toBe(1);
+    },
+  );
+
   it.each(['preserve', 'reset', 'none'] as const)(
     'handles a focused custom-curve path becoming point markers (policy: %s)',
     policy => {

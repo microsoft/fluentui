@@ -1148,6 +1148,78 @@ describe('GaugeChart - current callout selection', () => {
     return { ...result, scene, target, input, mounts: () => mounts };
   };
 
+  it('synchronizes a reset when RTL assigns its destination to the already-active node', () => {
+    const { container, rerender, scene, target, input, getByRole, getByTestId, mounts } = setup(false, 'reset');
+    const active = target();
+    fireEvent.change(input, { target: { value: 'Keep reset-gauge note' } });
+    const onFocus = jest.fn();
+    active.addEventListener('focus', onFocus);
+
+    rerender(scene(true, true, { focusOnReset: { segmentIndex: 0 } }));
+
+    expect(container.ownerDocument.activeElement).toBe(active);
+    expect(onFocus).not.toHaveBeenCalled();
+    expect(JSON.parse(getByTestId('gauge-observation').textContent!)).toMatchObject({ legend: 'First' });
+    expect(Number(active.getAttribute('stroke-width'))).toBeGreaterThan(0);
+    expect(target(true)).toHaveAttribute('stroke-width', '0');
+    expect(getByRole('textbox', { name: 'Gauge note' })).toBe(input);
+    expect(input).toHaveValue('Keep reset-gauge note');
+
+    rerender(scene(false, true, { focusRestorePolicy: 'preserve' }));
+
+    expect(container.ownerDocument.activeElement).toBe(active);
+    expect(getByTestId('gauge-observation')).toHaveTextContent('"legend":"First"');
+    expect(onFocus).not.toHaveBeenCalled();
+    expect(mounts()).toBe(1);
+  });
+
+  it.each(['zero', 'negative', 'removed', 'filtered'] as const)(
+    'skips an unavailable gauge reset destination (%s)',
+    change => {
+      const { container, rerender, scene, target, getByTestId, queryByTestId } = setup(false, 'reset');
+      const onFocus = jest.fn();
+      target().addEventListener('focus', onFocus);
+      const outside = getByTestId('outside');
+      act(() => outside.focus());
+
+      rerender(
+        scene(true, false, {
+          segments:
+            change === 'removed'
+              ? [{ size: 100, color: 'red', legend: 'First' }]
+              : [
+                  { size: 100, color: 'red', legend: 'First' },
+                  { size: change === 'negative' ? -10 : change === 'zero' ? 0 : 40, color: 'blue', legend: 'Second' },
+                ],
+          legendProps: change === 'filtered' ? { selectedLegends: ['First'] } : undefined,
+        }),
+      );
+
+      expect(container.ownerDocument.activeElement).toBe(outside);
+      expect(onFocus).not.toHaveBeenCalled();
+      expect(queryByTestId('gauge-observation')).toBeNull();
+      if (change === 'zero' || change === 'negative') {
+        expect(target()).not.toHaveAttribute('tabindex');
+      }
+    },
+  );
+
+  it.each(['preserve', 'none'] as const)(
+    'preserves a custom input through a controlled gauge legend rename (%s)',
+    policy => {
+      const { container, rerender, scene, input, getByRole, getByTestId, mounts } = setup(true, policy);
+      rerender(scene(false, false, { legendProps: { selectedLegends: ['Second'] } }));
+
+      rerender(scene(true, false, { legendProps: { selectedLegends: ['Updated'] } }));
+
+      expect(getByRole('textbox', { name: 'Gauge note' })).toBe(input);
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(input).toHaveValue('Keep gauge note');
+      expect(getByTestId('gauge-observation')).toHaveTextContent('"legend":"Updated"');
+      expect(mounts()).toBe(1);
+    },
+  );
+
   it('refreshes the selected legend and data without replacing or focusing the custom input', () => {
     const { container, rerender, scene, input, getByTestId, getByRole, mounts } = setup();
 

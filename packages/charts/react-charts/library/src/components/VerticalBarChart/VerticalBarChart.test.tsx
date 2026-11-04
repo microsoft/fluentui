@@ -1491,6 +1491,62 @@ describe('VerticalBarChart - current callout observation', () => {
     },
   );
 
+  it.each(['preserve', 'none'] as const)(
+    'preserves a custom input through a controlled bar legend rename (%s)',
+    policy => {
+      const { container, rerender, scene, target, getByRole, getByTestId, mounts } = setup(policy, {
+        legendProps: { selectedLegends: ['Second'] },
+      });
+      act(() => target().focus());
+      const input = getByRole('textbox', { name: 'Bar note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep renamed-bar note' } });
+
+      rerender(
+        scene(10, false, {
+          data: [
+            { x: 1, y: 10, legend: 'First', color: 'red' },
+            { x: 2, y: 30, legend: 'Updated', color: 'purple' },
+          ],
+          legendProps: { selectedLegends: ['Updated'] },
+        }),
+      );
+
+      expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(input).toHaveValue('Keep renamed-bar note');
+      expect(getByTestId('bar-observation')).toHaveTextContent('"legend":"Updated"');
+      expect(mounts()).toBe(1);
+    },
+  );
+
+  it.each(['preserve', 'none'] as const)(
+    'preserves a custom input through a controlled overlay legend rename (%s)',
+    policy => {
+      const config = (updated: boolean): Partial<VerticalBarChartProps> => ({
+        lineLegendText: updated ? 'Updated trend' : 'Trend',
+        legendProps: { selectedLegends: [updated ? 'Updated trend' : 'Trend'] },
+        data: [
+          { x: 1, y: 10, legend: 'First' },
+          { x: 2, y: 20, legend: 'Second', lineData: { y: updated ? 70 : 30 } },
+        ],
+      });
+      const { container, rerender, scene, getByRole, getByTestId, mounts } = setup(policy, config(false));
+      act(() => container.querySelector<SVGCircleElement>('circle[tabindex="0"]')!.focus());
+      const input = getByRole('textbox', { name: 'Bar note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep renamed-overlay note' } });
+
+      rerender(scene(10, false, config(true)));
+
+      expect(getByRole('textbox', { name: 'Bar note' })).toBe(input);
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(input).toHaveValue('Keep renamed-overlay note');
+      expect(getByTestId('bar-observation')).toHaveTextContent('"y":70');
+      expect(mounts()).toBe(1);
+    },
+  );
+
   it('uses updated data for an explicit reset from outside the chart', () => {
     const { container, rerender, scene, target, getByTestId } = setup('reset');
     act(() => getByTestId('outside').focus());
@@ -1678,6 +1734,40 @@ describe('VerticalBarChart - current callout observation', () => {
       'style.borderInlineStart',
       '4px solid blue',
     );
+  });
+
+  it.each(
+    (['number', 'string', 'date'] as const).flatMap(axis =>
+      [false, true].map(useSingleColor => ({ axis, useSingleColor })),
+    ),
+  )('matches callout and rendered bar colors ($axis, single color: $useSingleColor)', ({ axis, useSingleColor }) => {
+    const config: Partial<VerticalBarChartProps> = {
+      data: [0, 1].map(index => ({
+        x: axis === 'date' ? new Date(Date.UTC(2026, 0, index + 1)) : axis === 'string' ? ['A', 'B'][index] : index + 1,
+        y: 10 + index * 10,
+        legend: index ? 'Second' : 'First',
+        color: 'red',
+      })),
+      useSingleColor,
+      colors: ['blue'],
+      xMinValue: undefined,
+      xMaxValue: undefined,
+      onRenderCalloutPerDataPoint: undefined,
+    };
+    const { container, rerender, scene, target } = setup('preserve', config);
+    const bar = target();
+    act(() => bar.focus());
+    const indicator = () => container.querySelector<HTMLElement>('.fui-PopoverSurface [style*="border-inline-start"]')!;
+    const expected = axis !== 'string' && useSingleColor ? 'blue' : 'red';
+    expect(bar).toHaveAttribute('fill', expected);
+    expect(indicator().style.borderInlineStart).toBe(`4px solid ${expected}`);
+
+    rerender(scene(0, false, { colors: ['green'] }));
+
+    const updated = axis !== 'string' && useSingleColor ? 'green' : 'red';
+    expect(bar).toHaveAttribute('fill', updated);
+    expect(indicator().style.borderInlineStart).toBe(`4px solid ${updated}`);
+    expect(container.ownerDocument.activeElement).toBe(bar);
   });
 
   const axes = ['x', 'primaryY', 'secondaryY'] as const;
