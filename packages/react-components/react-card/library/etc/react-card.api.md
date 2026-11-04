@@ -27,20 +27,20 @@ export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size
 export const cardClassNames: SlotClassNames<CardSlots>;
 
 // @public
-export interface CardContextValue {
-    // (undocumented)
+export type CardContextValue = {
     selectableA11yProps: {
         referenceId?: string;
         setReferenceId: (referenceId: string) => void;
         referenceLabel?: string;
         setReferenceLabel: (referenceLabel: string) => void;
     };
-}
+} & Required<Pick<CardProps, 'orientation' | 'size'>>;
 
 // @public
 export const cardCSSVars: {
     cardSizeVar: string;
     cardBorderRadiusVar: string;
+    cardChildMarginVar: string;
 };
 
 // @public
@@ -115,7 +115,9 @@ export type CardPreviewBaseState = CardPreviewState;
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
-export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
+export type CardPreviewProps = ComponentProps<CardPreviewSlots> & {
+    layout?: 'full' | 'contained';
+};
 
 // @public
 export type CardPreviewSlots = {
@@ -124,7 +126,7 @@ export type CardPreviewSlots = {
 };
 
 // @public
-export type CardPreviewState = ComponentState<CardPreviewSlots>;
+export type CardPreviewState = ComponentState<CardPreviewSlots> & Required<Pick<CardPreviewProps, 'layout'> & Pick<CardContextValue, 'orientation' | 'size'>>;
 
 // @public
 export type CardProps = ComponentProps<CardSlots> & {
