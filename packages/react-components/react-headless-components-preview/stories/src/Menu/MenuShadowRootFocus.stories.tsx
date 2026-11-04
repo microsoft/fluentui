@@ -3,16 +3,17 @@ import { createPortal } from 'react-dom';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-headless-components-preview/menu';
 
 export const ShadowRootFocus = (): React.ReactNode => {
-  const [root, setRoot] = React.useState<ShadowRoot | null>(null);
+  const [mountNode, setMountNode] = React.useState<Element | null>(null);
   const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
     if (host) {
-      setRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
+      const root = host.shadowRoot ?? host.attachShadow({ mode: 'open' });
+      setMountNode(root.firstElementChild ?? root.appendChild(host.ownerDocument.createElement('div')));
     }
   }, []);
 
   return (
     <div ref={attachRoot}>
-      {root &&
+      {mountNode &&
         createPortal(
           <>
             <Menu>
@@ -37,7 +38,7 @@ export const ShadowRootFocus = (): React.ReactNode => {
             </Menu>
             <button>Outside menu</button>
           </>,
-          root,
+          mountNode,
         )}
     </div>
   );
