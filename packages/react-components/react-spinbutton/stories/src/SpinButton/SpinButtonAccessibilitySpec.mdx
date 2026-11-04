@@ -103,6 +103,14 @@ How this is read also depends on the screen reader used but a screen reader shou
 
 ### Styling
 
+`outline` and `underline` are the preferred appearances. A contrasting boundary is required when no other visual cue identifies an empty spin button. Any boundary needed to identify the control must have at least 3:1 contrast against its surroundings ([WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries)).
+
+Visible placeholder or value text can identify the control without a contrasting boundary. Both need at least 4.5:1 contrast against the input background ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)), but readability alone does not ensure that users recognize the editable control. A numeric default value does not cover the empty state: use the native `placeholder` prop to provide identifying text when the value is cleared.
+
+Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`. These surface-token choices are Fluent design guidance, not WCAG requirements.
+
+Keep a persistent visible label and a sufficiently contrasting focus indicator. A placeholder is not a replacement for a label or for instructions that must remain visible after typing.
+
 ### Advanced usage
 
 Placeholder: Cover potential use cases not included in our storybook examples here (or even included storybook examples, if they're complex require a notable amout of work or nuanced understanding from authors)

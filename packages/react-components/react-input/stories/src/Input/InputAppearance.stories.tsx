@@ -14,16 +14,16 @@ const useStyles = makeStyles({
     gridRowGap: tokens.spacingVerticalXXS,
     paddingBlock: tokens.spacingVerticalMNudge,
   },
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    padding: tokens.spacingVerticalXXL,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackground1,
+  filledFields: {
     padding: tokens.spacingVerticalXXL,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
     borderRadius: tokens.borderRadiusMedium,
+  },
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 
@@ -48,11 +48,11 @@ export const Appearance = (): JSXElement => {
         <Label htmlFor={inputIds.underline}>Underline appearance</Label>
         <Input appearance="underline" id={inputIds.underline} />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledLighter)}>
         <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance (on Background 3)</Label>
         <Input appearance="filled-lighter" id={inputIds.filledLighter} placeholder="Accessible Placeholder" />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledDarker)}>
         <Label htmlFor={inputIds.filledDarker}>Filled darker appearance (on Background 1)</Label>
         <Input appearance="filled-darker" id={inputIds.filledDarker} placeholder="Accessible Placeholder" />
       </div>

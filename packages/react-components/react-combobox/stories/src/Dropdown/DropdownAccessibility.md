@@ -7,10 +7,15 @@
 - **Use multi-select Dropdown when you have 10+ options, otherwise use a Checkbox group.** For simple multiselect use cases with less than 10 options, consider using a group of `Checkbox` components.
 - **Set `inlinePopup={true}` when possible for better VoiceOver support.** The `inlinePopup` prop will cause the listbox popup to be rendered immediately after the button in the DOM. Safari does not support `aria-owns`, so this enables iOS VoiceOver swipe navigation between the button and options.
 - **Review [known accessiblity issues](./?path=/docs/concepts-developer-accessibility-components-dropdown--docs).**
+- **Prefer outline or underline appearances.** A boundary needed to identify an empty control must contrast at least **3:1** against the adjacent background.
+- **Use the recommended surface for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`. These surface-token choices are Fluent guidance, not WCAG requirements.
+- **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 
 ### Don't
 
 - **Don't nest interactive controls in Dropdown slots or children.** The `Dropdown`'s `button` slot and children of `<Option>` components will not expose nested interactive elements to screen reader users, and additional non-`Option` children in the `listbox` slot will not be keyboard accessible.
-- **Don’t place the Dropdown button on a surface which doesn’t have a sufficient contrast.** The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements. When using underline or outline styles, ensure the color of bottom border stroke has a sufficient contrast of greater than 3 to 1 against the immediate surrounding color.
+- **Don't leave a filled Dropdown without an identifying visual cue.** Without another cue, provide a descriptive placeholder or displayed value that identifies the selectable control. Normal-size placeholder and value text must contrast at least **4.5:1** against the control's own fill; a placeholder never replaces a visible label.
+
+The contrast thresholds come from [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries) and [WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
 
 Read the [Dropdown accessibility spec](./?path=/docs/concepts-developer-accessibility-components-dropdown--docs) for more detailed information, as well as full descriptions of semantics and keyboard behavior.

@@ -6,16 +6,24 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: tokens.spacingVerticalMNudge,
+    maxWidth: '400px',
+    gap: tokens.spacingVerticalMNudge,
   },
-  inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalXXS,
+    paddingBlock: tokens.spacingVerticalMNudge,
   },
-  invertedLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
+  filledFields: {
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
   },
-  fieldWrapper: {
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 
@@ -24,23 +32,23 @@ export const Appearance = (): JSXElement => {
 
   return (
     <div className={styles.base}>
-      <div className={styles.fieldWrapper}>
-        <Field label="Textarea with Outline appearance">
-          <Textarea appearance="outline" placeholder="type here..." resize="both" />
-        </Field>
-      </div>
+      <Field className={styles.field} label="Outline appearance (default)">
+        <Textarea appearance="outline" placeholder="type here..." resize="both" />
+      </Field>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
-        <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.invertedLabel }}>
-          <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
-        </Field>
-      </div>
+      <Field
+        className={mergeClasses(styles.field, styles.filledFields, styles.filledDarker)}
+        label="Filled darker appearance (on Background 1)"
+      >
+        <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
+      </Field>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
-        <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.invertedLabel }}>
-          <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
-        </Field>
-      </div>
+      <Field
+        className={mergeClasses(styles.field, styles.filledFields, styles.filledLighter)}
+        label="Filled lighter appearance (on Background 3)"
+      >
+        <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
+      </Field>
     </div>
   );
 };
@@ -49,10 +57,12 @@ Appearance.parameters = {
   docs: {
     description: {
       story:
-        `Textarea can have different appearances.\n` +
-        `The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with
-      filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate
-      surrounding color to pass accessibility requirement.`,
+        'Textarea can have different appearances.\n' +
+        'Fluent design guidance places `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on ' +
+        '`colorNeutralBackground1`; these surface choices are not WCAG requirements. ' +
+        'Placeholder and value text need at least 4.5:1 contrast against the textarea background. ' +
+        'Visible text can identify a control without a contrasting boundary, but readability alone does not ensure identification. ' +
+        'When no other cue identifies an empty control, provide a boundary with at least 3:1 contrast against its surroundings.',
     },
   },
 };
