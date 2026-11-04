@@ -216,9 +216,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    */
 
   function _createBars(data: ChartProps): JSXElement[] {
-    const noOfBars =
-      data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
-      1;
+    // Gaps are only drawn between segments rendered as bars. Zero-value segments and the
+    // absolute-scale placeholder (rendered as a label instead) don't need one.
+    const rendersAsBar = (point: ChartDataPoint): boolean =>
+      (point.horizontalBarChartdata!.x || 0) > 0 &&
+      !(point.placeHolder && props.variant === HorizontalBarChartVariant.AbsoluteScale);
+    const noOfBars = data.chartData!.filter(rendersAsBar).length || 1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
     const defaultColors: string[] = [
       tokens.colorPaletteBlueForeground2,
@@ -236,6 +239,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     );
     let prevPosition = 0;
     let value = 0;
+    let renderedBarsBefore = 0;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: ChartDataPoint, index: number) => {
@@ -259,7 +263,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
      * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
      * since that's only space available to the bars
      */
-    const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: ChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultColors[Math.floor(Math.random() * 4 + 1)];
@@ -276,6 +280,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         value = value / scalingRatio;
       }
       startingPoint.push(prevPosition);
+      const barSpacing = barSpacingInPercent * renderedBarsBefore;
+      if (rendersAsBar(point)) {
+        renderedBarsBefore++;
+      }
 
       const xValue = point.horizontalBarChartdata!.x;
       const isLegendSelected: boolean = _legendHighlighted(point.legend) || _noLegendHighlighted();
@@ -306,11 +314,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       return (
         <rect
           key={index}
-          x={`${
-            _isRTL
-              ? 100 - startingPoint[index] - value - index * barSpacingInPercent
-              : startingPoint[index] + index * barSpacingInPercent
-          }%`}
+          x={`${_isRTL ? 100 - startingPoint[index] - value - barSpacing : startingPoint[index] + barSpacing}%`}
           y={0}
           width={value + '%'}
           height={_barHeight}

@@ -327,9 +327,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    */
 
   private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSXElement[] {
-    const noOfBars =
-      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
-      1;
+    const placeholderIndex = 1;
+    // Gaps are only drawn between segments rendered as bars. Zero-value segments and the
+    // absolute-scale placeholder (rendered as a label instead) don't need one.
+    const rendersAsBar = (point: IChartDataPoint, index: number): boolean =>
+      (point.horizontalBarChartdata!.x || 0) > 0 &&
+      !(index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale);
+    const noOfBars = data.chartData!.filter(rendersAsBar).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
@@ -341,6 +345,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
     let prevPosition = 0;
     let value = 0;
+    let renderedBarsBefore = 0;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -364,7 +369,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
      * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
      * since that's only space available to the bars
      */
-    const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       let startColor: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -388,9 +393,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         value = value / scalingRatio;
       }
       startingPoint.push(prevPosition);
+      const barSpacing = this.state.barSpacingInPercent * renderedBarsBefore;
+      if (rendersAsBar(point, index)) {
+        renderedBarsBefore++;
+      }
 
       const xValue = point.horizontalBarChartdata!.x;
-      const placeholderIndex = 1;
 
       // Render bar label instead of placeholder bar for absolute-scale variant
       if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale) {
@@ -429,11 +437,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           )}
           <rect
             key={index}
-            x={`${
-              this._isRTL
-                ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
-                : startingPoint[index] + index * this.state.barSpacingInPercent
-            }%`}
+            x={`${this._isRTL ? 100 - startingPoint[index] - value - barSpacing : startingPoint[index] + barSpacing}%`}
             y={0}
             rx={this.props.roundCorners ? 3 : 0}
             data-is-focusable={point.legend !== '' ? true : false}
