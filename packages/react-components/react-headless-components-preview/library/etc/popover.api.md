@@ -44,9 +44,6 @@ export type PopoverContextValues = {
 };
 
 // @public
-export type PopoverMode = 'auto' | 'manual' | 'hint';
-
-// @public
 export type PopoverProps = {
     children: [JSXElement, JSXElement] | JSXElement;
     open?: boolean;
@@ -59,7 +56,7 @@ export type PopoverProps = {
     withArrow?: boolean;
     id?: string;
     inertTrapFocus?: boolean;
-    mode?: PopoverMode;
+    mode?: 'auto' | 'manual' | 'hint';
 };
 
 // @public
