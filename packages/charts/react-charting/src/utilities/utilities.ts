@@ -71,6 +71,7 @@ import {
 import {
   AxisProps,
   AxisScaleType,
+  IChartDataPoint,
   IGanttChartDataPoint,
   IScatterChartDataPoint,
   IScatterChartPoints,
@@ -1862,6 +1863,13 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): vo
 export function formatScientificLimitWidth(value: number): string {
   return yAxisTickFormatterInternal(value, true);
 }
+
+/**
+ * Whether a stacked bar segment is drawn with a visible width. Any non-zero value is drawn,
+ * because negative and very small values are clamped to a minimum width, so such segments
+ * need spacing like every other segment.
+ */
+export const isStackedBarSegmentRendered = (point: IChartDataPoint): boolean => (point.data || 0) !== 0;
 
 const DEFAULT_BAR_WIDTH = 16;
 const MIN_BAR_WIDTH = 1;

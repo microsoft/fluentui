@@ -422,10 +422,12 @@ describe('Stacked Bar Chart - axe-core', () => {
 
 describe('Stacked bar chart - spacing between bars', () => {
   const MARGIN_WIDTH_IN_PX = 3;
-  const pointsWithZeros = (values: number[]): IChartProps => ({
-    chartTitle,
-    chartData: values.map((value, index) => ({ legend: `point${index}`, data: value, color: DefaultPalette.blue })),
-  });
+  const pointsFromValues = (values: number[]): IChartDataPoint[] =>
+    values.map((value, index) => ({ legend: `point${index}`, data: value, color: DefaultPalette.blue }));
+  const getVisibleBars = (container: HTMLElement) =>
+    Array.from(container.querySelectorAll<SVGRectElement>('rect[id^="_SBC_bar"]'))
+      .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
+      .filter(bar => bar.width > 0);
 
   beforeEach(sharedBeforeEach);
   afterEach(() => {
@@ -435,28 +437,37 @@ describe('Stacked bar chart - spacing between bars', () => {
 
   describe.each([false, true])('isRTL: %s', isRTL => {
     test.each([
-      [300, [50, 50]],
-      [300, [40, 0, 60]],
-      [600, [0, 25, 0, 0, 75]],
-      [1200, [10, 20, 0, 30, 0, 40, 0]],
-    ])('svg width %ipx, data %j: equal gaps and bars fill the track', (svgWidth, values) => {
+      [300, pointsFromValues([50, 50])],
+      [300, pointsFromValues([40, 0, 60])],
+      [600, pointsFromValues([0, 25, 0, 0, 75])],
+      [1200, pointsFromValues([10, 20, 0, 30, 0, 40, 0])],
+      [300, pointsFromValues([0, 100, 0])],
+      [300, pointsFromValues([40, 0, -10, 60])],
+      [300, points],
+    ])('svg width %ipx, data %#: equal gaps and bars fill the track', (svgWidth, chartData) => {
       setRTL(isRTL);
       jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: svgWidth } as DOMRect);
 
-      const { container } = render(<StackedBarChart data={pointsWithZeros(values)} />);
+      const { container } = render(<StackedBarChart data={{ chartTitle, chartData }} />);
 
-      const bars = Array.from(container.querySelectorAll<SVGRectElement>('rect[id^="_SBC_bar"]'))
-        .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
-        .filter(bar => bar.width > 0)
-        .sort((a, b) => a.x - b.x);
+      const bars = getVisibleBars(container).sort((a, b) => a.x - b.x);
       const expectedGap = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
 
-      expect(bars).toHaveLength(values.filter(value => value > 0).length);
+      expect(bars).toHaveLength(chartData.filter(point => point.data !== 0).length);
       expect(bars[0].x).toBeCloseTo(0);
       expect(bars[bars.length - 1].x + bars[bars.length - 1].width).toBeCloseTo(100);
       for (let i = 1; i < bars.length; i++) {
         expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(expectedGap);
       }
+    });
+
+    test('all-zero data draws no segments', () => {
+      setRTL(isRTL);
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+      const { container } = render(<StackedBarChart data={{ chartTitle, chartData: pointsFromValues([0, 0]) }} />);
+
+      expect(getVisibleBars(container)).toHaveLength(0);
     });
   });
 });

@@ -19,6 +19,7 @@ import {
   formatScientificLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
+  isStackedBarSegmentRendered,
 } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import type { JSXElement } from '@fluentui/utilities';
@@ -193,9 +194,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     href?: string,
     barNo?: number,
   ): JSXElement {
-    const noOfBars =
-      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
-      1;
+    const noOfBars = data.chartData?.filter(isStackedBarSegmentRendered).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -250,7 +249,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
     let prevPosition = 0;
     let value = 0;
-    // Gaps are only drawn between rendered (non-zero) bars, matching `noOfBars` above.
+    // Gaps are only drawn between rendered bars, matching `noOfBars` above.
     let renderedBarsBefore = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -278,7 +277,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       }
 
       startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
-      if (pointData > 0) {
+      if (isStackedBarSegmentRendered(point)) {
         renderedBarsBefore++;
       }
 
