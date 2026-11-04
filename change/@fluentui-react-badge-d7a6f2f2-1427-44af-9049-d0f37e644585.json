@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules styles for the Badge component, preserving RTL icon spacing and out-of-office presence colors",
   "packageName": "@fluentui/react-badge",
   "email": "dmytrokirpa@microsoft.com"

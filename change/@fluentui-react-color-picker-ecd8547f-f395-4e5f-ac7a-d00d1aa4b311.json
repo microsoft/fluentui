@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for color-picker",
   "packageName": "@fluentui/react-color-picker",
   "email": "dmytrokirpa@microsoft.com",

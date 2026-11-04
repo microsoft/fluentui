@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for react-progress",
   "packageName": "@fluentui/react-progress",
   "email": "dmytrokirpa@microsoft.com",

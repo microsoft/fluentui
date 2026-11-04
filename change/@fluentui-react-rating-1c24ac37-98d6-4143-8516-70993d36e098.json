@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for rating",
   "packageName": "@fluentui/react-rating",
   "email": "dmytrokirpa@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules styles for the TabList component, preserving reserved text sizing and RTL vertical indicators",
   "packageName": "@fluentui/react-tabs",
   "email": "dmytrokirpa@microsoft.com"

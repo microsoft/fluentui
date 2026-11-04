@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add CSS Modules alternative for MenuGrid",
   "packageName": "@fluentui/react-menu-grid-preview",
   "email": "dmytrokirpa@microsoft.com"

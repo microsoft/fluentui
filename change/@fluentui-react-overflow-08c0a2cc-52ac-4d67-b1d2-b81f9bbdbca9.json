@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add CSS Modules styling alternative for Overflow",
   "packageName": "@fluentui/react-overflow",
   "email": "dmytrokirpa@microsoft.com"

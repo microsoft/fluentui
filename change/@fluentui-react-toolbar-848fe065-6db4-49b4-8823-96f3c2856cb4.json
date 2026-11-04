@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for toolbar components",
   "packageName": "@fluentui/react-toolbar",
   "email": "dmytrokirpa@microsoft.com"

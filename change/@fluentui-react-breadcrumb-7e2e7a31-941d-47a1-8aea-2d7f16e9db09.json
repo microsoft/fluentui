@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for breadcrumb, preserving icon sizing when composing Button styles",
   "packageName": "@fluentui/react-breadcrumb",
   "email": "dmytrokirpa@microsoft.com",

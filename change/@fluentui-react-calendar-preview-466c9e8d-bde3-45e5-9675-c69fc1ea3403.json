@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for calendar-preview",
   "packageName": "@fluentui/react-calendar-preview",
   "email": "dmytrokirpa@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for react-slider",
   "packageName": "@fluentui/react-slider",
   "email": "dmytrokirpa@microsoft.com",

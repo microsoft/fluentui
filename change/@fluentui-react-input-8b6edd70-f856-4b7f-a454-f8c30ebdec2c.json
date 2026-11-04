@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for input components",
   "packageName": "@fluentui/react-input",
   "email": "dmytrokirpa@microsoft.com",

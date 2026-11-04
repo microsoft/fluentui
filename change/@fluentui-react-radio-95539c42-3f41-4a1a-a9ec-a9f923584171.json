@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for react-radio",
   "packageName": "@fluentui/react-radio",
   "email": "dmytrokirpa@microsoft.com",

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "chore: package Portal CSS Modules assets and declare clsx dependency",
   "packageName": "@fluentui/react-portal",
   "email": "dmytrokirpa@microsoft.com"

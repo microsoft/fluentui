@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for divider components",
   "packageName": "@fluentui/react-divider",
   "email": "dmytrokirpa@microsoft.com",

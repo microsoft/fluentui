@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for react-switch",
   "packageName": "@fluentui/react-switch",
   "email": "dmytrokirpa@microsoft.com",

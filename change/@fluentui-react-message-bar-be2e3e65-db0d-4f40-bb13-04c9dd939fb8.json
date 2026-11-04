@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add CSS Modules alternative for MessageBarBody",
   "packageName": "@fluentui/react-message-bar",
   "email": "dmytrokirpa@microsoft.com"

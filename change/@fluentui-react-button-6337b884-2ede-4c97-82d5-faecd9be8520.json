@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules styles for the button component family, preserving SplitButton's joined border with custom style hooks",
   "packageName": "@fluentui/react-button",
   "email": "dmytrokirpa@microsoft.com"

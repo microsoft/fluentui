@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for table components",
   "packageName": "@fluentui/react-table",
   "email": "dmytrokirpa@microsoft.com"

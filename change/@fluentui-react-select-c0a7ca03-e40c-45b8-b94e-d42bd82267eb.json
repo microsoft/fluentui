@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for react-select",
   "packageName": "@fluentui/react-select",
   "email": "dmytrokirpa@microsoft.com",

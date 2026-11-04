@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Add opt-in layered CSS Modules alternatives for Toast, Toaster, AriaLive, and Timer style hooks",
   "packageName": "@fluentui/react-toast",
   "email": "dmytrokirpa@microsoft.com"

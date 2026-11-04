@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for tree components",
   "packageName": "@fluentui/react-tree",
   "email": "dmytrokirpa@microsoft.com"

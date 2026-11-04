@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add CSS Modules style alternatives for TeachingPopover and document cross-package resolver composition",
   "packageName": "@fluentui/react-teaching-popover",
   "email": "dmytrokirpa@microsoft.com"

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add opt-in CSS Modules style alternatives for accordion components",
   "packageName": "@fluentui/react-accordion",
   "email": "dmytrokirpa@microsoft.com",
