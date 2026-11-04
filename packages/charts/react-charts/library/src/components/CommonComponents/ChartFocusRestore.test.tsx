@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import type { FocusRestorePolicy } from '../../types/index';
 import { LineChart, VerticalBarChart, GaugeChart, DeclarativeChart, VegaDeclarativeChart } from '../../index';
 import { useChartFocusRestore } from './useChartFocusRestore';
@@ -20,8 +20,8 @@ const charts: {
   {
     name: 'line',
     supportsResetTarget: true,
-    selector: '[id^="circle"][tabindex="0"]',
-    renderChart: (value, color, policy, configureResetTarget) => (
+    selector: '[id^="circle"][tabindex="0"][aria-label*=". First,"]',
+    renderChart: (value, color, policy, configureResetTarget, selectedLegends) => (
       <LineChart
         data={{
           lineChartData: [
@@ -33,10 +33,19 @@ const charts: {
                 { x: 2, y: 20 },
               ],
             },
+            {
+              legend: 'Second',
+              color,
+              data: [
+                { x: 1, y: value },
+                { x: 2, y: 20 },
+              ],
+            },
           ],
         }}
         focusRestorePolicy={policy}
         focusOnReset={configureResetTarget ? { lineIndex: 0, pointIndex: 0 } : undefined}
+        legendProps={{ canSelectMultipleLegends: true, selectedLegends }}
       />
     ),
   },
@@ -44,7 +53,7 @@ const charts: {
     name: 'vertical bar',
     supportsResetTarget: true,
     selector: 'rect[role="option"]',
-    renderChart: (value, color, policy, configureResetTarget) => (
+    renderChart: (value, color, policy, configureResetTarget, selectedLegends) => (
       <VerticalBarChart
         data={[
           { x: 1, y: value, legend: 'First' },
@@ -53,6 +62,7 @@ const charts: {
         colors={[color]}
         focusRestorePolicy={policy}
         focusOnReset={configureResetTarget ? { barIndex: 0 } : undefined}
+        legendProps={{ selectedLegends }}
       />
     ),
   },
@@ -60,7 +70,7 @@ const charts: {
     name: 'gauge',
     supportsResetTarget: true,
     selector: 'path[role="option"]',
-    renderChart: (value, color, policy, configureResetTarget) => (
+    renderChart: (value, color, policy, configureResetTarget, selectedLegends) => (
       <GaugeChart
         segments={[
           { size: 50, legend: 'First', color },
@@ -69,6 +79,7 @@ const charts: {
         chartValue={value}
         focusRestorePolicy={policy}
         focusOnReset={configureResetTarget ? { segmentIndex: 0 } : undefined}
+        legendProps={{ selectedLegends }}
       />
     ),
   },
@@ -295,7 +306,7 @@ describe.each(charts)('$name focus policy', ({ selector, renderChart, hasLegend 
     });
   }
 
-  if (!supportsResetTarget && hasLegend) {
+  if (hasLegend) {
     const selectionCases = [
       { initial: ['First'], next: ['Second'], shouldRestore: false },
       { initial: ['Second'], next: ['First'], shouldRestore: true },
@@ -304,7 +315,7 @@ describe.each(charts)('$name focus policy', ({ selector, renderChart, hasLegend 
     ].flatMap(selection => [false, true].map(together => ({ ...selection, together })));
 
     it.each(selectionCases)(
-      'uses incoming schema selection $initial -> $next (combined update: $together)',
+      'uses incoming selection $initial -> $next (combined update: $together)',
       ({ initial, next, shouldRestore, together }) => {
         const focusEvents: Element[] = [];
         const renderScene = (value: number, selectedLegends?: string[]) => (
@@ -339,6 +350,30 @@ describe.each(charts)('$name focus policy', ({ selector, renderChart, hasLegend 
         expect(focusEvents).toHaveLength(shouldRestore ? 1 : 0);
       },
     );
+  }
+
+  if (supportsResetTarget && hasLegend) {
+    it('retains a local legend click when equivalent controlled selection is supplied again', () => {
+      const renderScene = (value: number, selectedLegends?: string[]) => (
+        <>
+          <button data-testid="outside">Outside</button>
+          {renderChart(value, 'red', 'reset', undefined, selectedLegends)}
+        </>
+      );
+      const { container, rerender, getByTestId, getByRole } = render(renderScene(10));
+      const first = container.querySelector<SVGElement>(selector)!;
+      act(() => first.focus());
+      act(() => getByTestId('outside').focus());
+
+      rerender(renderScene(10, ['Second']));
+      fireEvent.click(getByRole('option', { name: 'First' }));
+      rerender(renderScene(15, ['Second']));
+
+      const restored = container.querySelector<SVGElement>(selector);
+      expect(restored).not.toBeNull();
+      expect(restored).toHaveAttribute('tabindex', '0');
+      expect(container.ownerDocument.activeElement).toBe(restored);
+    });
   }
 });
 

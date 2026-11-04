@@ -159,9 +159,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);
     const [height, setHeight] = React.useState<number>(70 + _getMargins().top + _getMargins().bottom + _legendsHeight);
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
-    const [storedSelectedLegends, setSelectedLegends] = React.useState<string[]>(
-      props.legendProps?.selectedLegends || [],
-    );
+    const [legendSelection, setLegendSelection] = React.useState({
+      controlledSelectedLegends: props.legendProps?.selectedLegends,
+      selectedLegends: props.legendProps?.selectedLegends || [],
+    });
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [calloutLegend, setCalloutLegend] = React.useState('');
@@ -169,15 +170,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [calloutTarget, setCalloutTarget] = React.useState<GaugeCalloutTarget>();
     const calloutRef = React.useRef<HTMLDivElement>(null);
     const chartValueRef = React.useRef<SVGGElement>(null);
-    const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
-    const selectedLegends =
-      prevPropsRef.current &&
-      !areArraysEqual(prevPropsRef.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)
-        ? props.legendProps?.selectedLegends || []
-        : storedSelectedLegends;
+    const selectionChanged = !areArraysEqual(
+      legendSelection.controlledSelectedLegends,
+      props.legendProps?.selectedLegends,
+    );
+    const selectedLegends = selectionChanged
+      ? props.legendProps?.selectedLegends || []
+      : legendSelection.selectedLegends;
     const previousFocusSegmentsRef = React.useRef(props.segments);
     const previousFocusChartValueRef = React.useRef(props.chartValue);
-    const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
     const lastFocusedGaugeElementRef = React.useRef<GaugeFocusTarget | undefined>(undefined);
     const lastFocusedGaugeNodeRef = React.useRef<SVGElement | null>(null);
     const focusSegmentRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
@@ -218,17 +219,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }, []);
 
     React.useEffect(() => {
-      if (prevPropsRef.current) {
-        const prevProps = prevPropsRef.current;
-        if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-          setSelectedLegends(props.legendProps?.selectedLegends || []);
-        }
+      if (selectionChanged) {
+        setLegendSelection({
+          controlledSelectedLegends: props.legendProps?.selectedLegends,
+          selectedLegends: props.legendProps?.selectedLegends || [],
+        });
       }
-      prevPropsRef.current = props;
-    }, [props]);
+    }, [props.legendProps?.selectedLegends, selectionChanged]);
 
     React.useEffect(() => {
-      previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
       const chartChanged =
         !areChartDataEqual(previousFocusSegmentsRef.current, props.segments) ||
         previousFocusChartValueRef.current !== props.chartValue;
@@ -431,11 +430,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       event: React.MouseEvent<HTMLButtonElement>,
       currentLegend?: Legend,
     ): void {
-      if (props.legendProps?.canSelectMultipleLegends) {
-        setSelectedLegends(selectedLegends);
-      } else {
-        setSelectedLegends(selectedLegends.slice(-1));
-      }
+      setLegendSelection(selection => ({
+        ...selection,
+        selectedLegends: props.legendProps?.canSelectMultipleLegends ? selectedLegends : selectedLegends.slice(-1),
+      }));
       if (props.legendProps?.onChange) {
         props.legendProps.onChange(selectedLegends, event, currentLegend);
       }

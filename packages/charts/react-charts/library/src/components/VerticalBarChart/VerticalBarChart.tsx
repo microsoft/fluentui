@@ -118,18 +118,18 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [calloutTarget, setCalloutTarget] = React.useState<VerticalBarCalloutTarget>();
   const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
-  const [storedSelectedLegends, setSelectedLegends] = React.useState<string[]>(
-    props.legendProps?.selectedLegends || [],
-  );
+  const [legendSelection, setLegendSelection] = React.useState({
+    controlledSelectedLegends: props.legendProps?.selectedLegends,
+    selectedLegends: props.legendProps?.selectedLegends || [],
+  });
   const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
-  const selectedLegends =
-    prevPropsRef.current &&
-    !areArraysEqual(prevPropsRef.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)
-      ? props.legendProps?.selectedLegends || []
-      : storedSelectedLegends;
+  const selectionChanged = !areArraysEqual(
+    legendSelection.controlledSelectedLegends,
+    props.legendProps?.selectedLegends,
+  );
+  const selectedLegends = selectionChanged ? props.legendProps?.selectedLegends || [] : legendSelection.selectedLegends;
   const previousFocusDataRef = React.useRef(props.data);
   const previousFocusColorsRef = React.useRef(props.colors);
-  const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
   const lastFocusedBarIndexRef = React.useRef<number | undefined>(undefined);
   const focusBarRefs = React.useRef<Map<number, SVGRectElement>>(new Map());
   const linePointRefs = React.useRef<Map<number, SVGCircleElement>>(new Map());
@@ -147,7 +147,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   });
 
   React.useEffect(() => {
-    previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
     const chartChanged =
       !areChartDataEqual(previousFocusDataRef.current, props.data) ||
       !areChartDataEqual(previousFocusColorsRef.current, props.colors);
@@ -182,17 +181,20 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   ]);
 
   React.useEffect(() => {
+    if (selectionChanged) {
+      setLegendSelection({
+        controlledSelectedLegends: props.legendProps?.selectedLegends,
+        selectedLegends: props.legendProps?.selectedLegends || [],
+      });
+    }
     if (prevPropsRef.current) {
       const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
       if (prevProps.height !== props.height || prevProps.width !== props.width) {
         _adjustProps();
       }
     }
     prevPropsRef.current = props;
-  }, [props, prevPropsRef, _adjustProps]);
+  }, [props, prevPropsRef, _adjustProps, selectionChanged]);
 
   function _getDomainNRangeValues(
     points: DataPoint[],
@@ -1026,11 +1028,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: Legend,
   ): void {
-    if (props.legendProps?.canSelectMultipleLegends) {
-      setSelectedLegends(legendsSelected);
-    } else {
-      setSelectedLegends(legendsSelected.slice(-1));
-    }
+    setLegendSelection(selection => ({
+      ...selection,
+      selectedLegends: props.legendProps?.canSelectMultipleLegends ? legendsSelected : legendsSelected.slice(-1),
+    }));
 
     if (props.legendProps?.onChange) {
       props.legendProps.onChange(legendsSelected, event, currentLegend);

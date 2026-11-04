@@ -192,13 +192,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [yValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
-    const [storedSelectedLegendPoints, setSelectedLegendPoints] = React.useState<LineChartDataWithIndex[]>(
-      _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
-    );
+    const [legendSelection, setLegendSelection] = React.useState({
+      controlledSelectedLegends: props.legendProps?.selectedLegends,
+      selectedLegendPoints: _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
+      isSelectedLegend: (props.legendProps?.selectedLegends?.length ?? 0) > 0,
+    });
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
-    const [storedIsSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(
-      (props.legendProps?.selectedLegends?.length ?? 0) > 0,
-    );
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<
       LineChartPoints['data'][number] | null
@@ -217,17 +216,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
     const previousFocusDataRef = React.useRef(props.data);
-    const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
     const selectionChanged = !areArraysEqual(
-      previousFocusSelectedLegendsRef.current,
+      legendSelection.controlledSelectedLegends,
       props.legendProps?.selectedLegends,
     );
     const selectedLegendPoints = selectionChanged
       ? _injectIndexPropertyInLineChartData(props.data.lineChartData, true)
-      : storedSelectedLegendPoints;
+      : legendSelection.selectedLegendPoints;
     const isSelectedLegend = selectionChanged
       ? (props.legendProps?.selectedLegends?.length ?? 0) > 0
-      : storedIsSelectedLegend;
+      : legendSelection.isSelectedLegend;
     const lastFocusedPointRef = React.useRef<{ lineIndex: number; pointIndex: number } | undefined>(undefined);
     const focusPointRefs = React.useRef<Map<string, SVGElement>>(new Map());
     const focusLineRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
@@ -248,14 +246,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     });
 
     React.useEffect(() => {
-      if (!areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends)) {
-        setSelectedLegendPoints(_injectIndexPropertyInLineChartData(props.data.lineChartData, true));
-        setIsSelectedLegend((props.legendProps?.selectedLegends?.length ?? 0) > 0);
+      if (selectionChanged) {
+        setLegendSelection({
+          controlledSelectedLegends: props.legendProps?.selectedLegends,
+          selectedLegendPoints: _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
+          isSelectedLegend: (props.legendProps?.selectedLegends?.length ?? 0) > 0,
+        });
       }
-    }, [props.legendProps?.selectedLegends]);
+    }, [props.legendProps?.selectedLegends, selectionChanged]);
 
     React.useEffect(() => {
-      previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
       const dataChanged = !areChartDataEqual(previousFocusDataRef.current, props.data);
       if (
         dataChanged &&
@@ -476,9 +476,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
 
     function _onHoverCardHide() {
-      setSelectedLegendPoints([]);
+      setLegendSelection(selection => ({ ...selection, selectedLegendPoints: [], isSelectedLegend: false }));
       setSelectedColorBarLegend([]);
-      setIsSelectedLegend(false);
     }
 
     function _handleLegendClick(
@@ -1935,8 +1934,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         _clearMultipleLegendSelections();
       } else {
         // Otherwise, set state when one or more legends are selected, including color fill bar legends
-        setSelectedLegendPoints(selectedLines);
-        setIsSelectedLegend(true);
+        setLegendSelection(selection => ({
+          ...selection,
+          selectedLegendPoints: selectedLines,
+          isSelectedLegend: true,
+        }));
       }
 
       const selectedLegendTitlesToPass = selectedLines.map((line: LineChartDataWithIndex) => line.legend);
@@ -1977,7 +1979,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       } else {
         // set state when one or more legends are selected, including line legends
         setSelectedColorBarLegend(selectedColorFillBars);
-        setIsSelectedLegend(true);
+        setLegendSelection(selection => ({ ...selection, isSelectedLegend: true }));
       }
 
       const selectedLegendTitlesToPass = selectedColorFillBars.map(
@@ -1988,8 +1990,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _clearMultipleLegendSelections() {
       setSelectedColorBarLegend([]);
-      setSelectedLegendPoints([]);
-      setIsSelectedLegend(false);
+      setLegendSelection(selection => ({ ...selection, selectedLegendPoints: [], isSelectedLegend: false }));
     }
 
     /**
