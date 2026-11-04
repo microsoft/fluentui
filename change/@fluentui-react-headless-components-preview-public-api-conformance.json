@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export missing context hooks, context value types, slot types and renderDialogTrigger; add public API conformance tests",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

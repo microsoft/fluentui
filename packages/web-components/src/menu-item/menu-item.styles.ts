@@ -19,6 +19,7 @@ import {
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
+  spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 
@@ -80,11 +81,25 @@ export const styles = css`
     outline: 2px solid ${colorStrokeFocus2};
   }
 
-  :host(:not(${checkedState})) .indicator,
-  :host(:not(${checkedState})) ::slotted([slot='indicator']),
+  :host(:not([role='menuitemcheckbox']):not([role='menuitemradio'])) .indicator,
+  :host(:not([role='menuitemcheckbox']):not([role='menuitemradio'])) ::slotted([slot='indicator']),
   :host(:not(${submenuState})) .submenu-glyph,
   :host(:not(${submenuState})) ::slotted([slot='submenu-glyph']) {
     display: none;
+  }
+
+  :host(:not(${checkedState})) .indicator,
+  :host(:not(${checkedState})) ::slotted([slot='indicator']) {
+    visibility: hidden;
+  }
+
+  .indicator,
+  ::slotted([slot='indicator']),
+  ::slotted([slot='start']),
+  ::slotted([slot='end']),
+  .submenu-glyph,
+  ::slotted([slot='submenu-glyph']) {
+    margin-inline: ${spacingHorizontalXXS};
   }
 
   ::slotted([slot='end']) {
