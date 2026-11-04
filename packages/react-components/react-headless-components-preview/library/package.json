@@ -635,6 +635,16 @@
         "default": "./lib-commonjs/textarea.cjs"
       }
     },
+    "./time-picker": {
+      "import": {
+        "types": "./dist/time-picker.d.ts",
+        "default": "./lib/time-picker.js"
+      },
+      "require": {
+        "types": "./dist/time-picker.d.cts",
+        "default": "./lib-commonjs/time-picker.cjs"
+      }
+    },
     "./toast": {
       "import": {
         "types": "./dist/toast.d.ts",
