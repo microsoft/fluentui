@@ -50,9 +50,8 @@ describe('react-library generator', () => {
     const stories = readProjectConfiguration(tree, 'react-one-preview-stories');
 
     // library
-    expect(tree.children(library.root)).toMatchInlineSnapshot(`
+    expect([...tree.children(library.root)].sort()).toMatchInlineSnapshot(`
       Array [
-        "project.json",
         ".babelrc.json",
         ".swcrc",
         "LICENSE",
@@ -63,6 +62,7 @@ describe('react-library generator', () => {
         "etc",
         "jest.config.cjs",
         "package.json",
+        "project.json",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -70,9 +70,12 @@ describe('react-library generator', () => {
       ]
     `);
     expect(tree.children(joinPathFragments(library.root, 'docs'))).toEqual(['Spec.md']);
-    expect(tree.children(joinPathFragments(library.root, 'src'))).toEqual(['index.ts', 'testing']);
+    expect([...tree.children(joinPathFragments(library.root, 'src'))].sort()).toEqual(['index.ts', 'testing']);
     expect(tree.exists(joinPathFragments(library.root, 'src', 'testing', 'isConformant.ts'))).toEqual(true);
-    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.cjs']);
+    expect([...tree.children(joinPathFragments(library.root, 'config'))].sort()).toEqual([
+      'api-extractor.json',
+      'tests.cjs',
+    ]);
     expect(tree.children(joinPathFragments(library.root, 'etc'))).toEqual(['react-one-preview.api.md']);
 
     expect(library).toMatchInlineSnapshot(`
@@ -168,16 +171,16 @@ describe('react-library generator', () => {
 
     // stories
 
-    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
+    expect([...tree.children(stories.root)].sort()).toMatchInlineSnapshot(`
       Array [
-        "src",
         ".storybook",
         "README.md",
         "eslint.config.js",
-        "tsconfig.json",
-        "tsconfig.lib.json",
         "package.json",
         "project.json",
+        "src",
+        "tsconfig.json",
+        "tsconfig.lib.json",
       ]
     `);
 
@@ -257,9 +260,8 @@ describe('react-library generator', () => {
 
     // library
 
-    expect(tree.children(library.root)).toMatchInlineSnapshot(`
+    expect([...tree.children(library.root)].sort()).toMatchInlineSnapshot(`
       Array [
-        "project.json",
         ".babelrc.json",
         ".swcrc",
         "LICENSE",
@@ -270,6 +272,7 @@ describe('react-library generator', () => {
         "etc",
         "jest.config.cjs",
         "package.json",
+        "project.json",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -286,16 +289,16 @@ describe('react-library generator', () => {
 
     // stories
 
-    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
+    expect([...tree.children(stories.root)].sort()).toMatchInlineSnapshot(`
       Array [
-        "src",
         ".storybook",
         "README.md",
         "eslint.config.js",
-        "tsconfig.json",
-        "tsconfig.lib.json",
         "package.json",
         "project.json",
+        "src",
+        "tsconfig.json",
+        "tsconfig.lib.json",
       ]
     `);
 
