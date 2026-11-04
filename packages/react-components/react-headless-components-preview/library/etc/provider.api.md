@@ -7,17 +7,14 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentProviderProps } from '@fluentui/react-provider';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { FluentProviderContextValues as ProviderContextValues } from '@fluentui/react-provider';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
 // @public
-export const Provider: {
-    (props: ProviderProps): JSXElement;
-    displayName: string;
-};
+export const Provider: ComponentWithoutRef<ProviderProps>;
 
 export { ProviderContextValues }
 

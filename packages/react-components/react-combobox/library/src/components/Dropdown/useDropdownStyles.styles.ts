@@ -215,9 +215,8 @@ const useIconStyles = makeStyles({
     gridColumnStart: 'icon',
     gridColumnEnd: 'end',
 
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
+    // Block display avoids inline baseline space for both icon renderers.
+    '& svg, & .fui-Icon-font': {
       display: 'block',
     },
   },

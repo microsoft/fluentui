@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: emit data-disabled state attribute on ImageSwatch",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
