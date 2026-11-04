@@ -52,7 +52,7 @@ describe('PolarChart custom JSX callout hooks', () => {
   });
 
   it.each(['hover', 'focus'])('falls back to native content when the hook returns undefined on %s', event => {
-    const renderDefault = jest.fn().mockReturnValue(undefined);
+    const renderDefault = jest.fn(() => undefined);
     const { container } = render(<PolarChart {...props} onRenderCalloutPerDataPoint={renderDefault} />);
     const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
     show(container.querySelector('circle[role="img"]')!);

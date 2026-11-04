@@ -220,6 +220,9 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
         const unitSpec = mark.spec ?? spec;
         const markDefinition = typeof unitSpec.mark === 'object' ? unitSpec.mark : undefined;
         const tooltip = buildVegaTooltip(unitSpec, mark.row, { mode: semanticMode });
+        // An empty projected name is intentional: never restore tooltip-excluded geometry fields.
+        const projectedLabel = mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row);
+        const ariaLabel = projectedLabel ?? (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel);
         return (
           <path
             id={`${id}-mark-${mark.key}`}
@@ -231,11 +234,7 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
             fill={colorFor(mark.legend, unitSpec)}
             opacity={isSelected ? markDefinition?.opacity ?? 1 : 0.25}
             role="img"
-            aria-label={
-              (mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row)) ||
-              (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel) ||
-              'Data point'
-            }
+            aria-label={ariaLabel || 'Data point'}
             tabIndex={0}
             aria-describedby={showTooltip && active.item === mark ? `${id}-tooltip` : undefined}
             onFocus={event => interaction.focus(event, mark)}

@@ -117,6 +117,17 @@ function hasCenterStack(spec: VegaLiteSpec): boolean {
   return spec.encoding?.x?.stack === 'center' || spec.encoding?.y?.stack === 'center';
 }
 
+/** Geometry palettes assign colors by category; they do not interpolate continuous field values. */
+export function hasVegaContinuousFieldColor(color: VegaLiteEncoding['color']): boolean {
+  const scaleType = color?.scale?.type;
+  return (
+    !!color?.field &&
+    (color.type === 'quantitative' ||
+      color.type === 'temporal' ||
+      (!!scaleType && !['ordinal', 'band', 'point'].includes(scaleType)))
+  );
+}
+
 function supportedCenterStack(spec: VegaLiteSpec): boolean {
   const encoding = spec.encoding as Encoding | undefined;
   if (!encoding || markDefinition(spec).type !== 'bar') {
@@ -154,6 +165,9 @@ function supportedUnit(spec: VegaLiteSpec, allowOrdinaryBar = false): boolean {
   const encoding = spec.encoding as Encoding | undefined;
   const mark = markDefinition(spec);
   const type = mark.type;
+  if (hasVegaContinuousFieldColor(encoding?.color)) {
+    return false;
+  }
   if (hasCenterStack(spec) && !supportedCenterStack(spec)) {
     return false;
   }
@@ -221,9 +235,8 @@ export function canRenderVegaRangedSpec(spec: VegaLiteSpec): boolean {
     units.some(unit => {
       const encoding = unit.encoding as Encoding;
       return (
-        (!hasCenterStack(unit) &&
-          [encoding.x, encoding.y].some(channel => channel?.stack !== undefined && channel.stack !== null)) ||
-        (encoding.color?.field && encoding.color.type && !['nominal', 'ordinal'].includes(encoding.color.type))
+        !hasCenterStack(unit) &&
+        [encoding.x, encoding.y].some(channel => channel?.stack !== undefined && channel.stack !== null)
       );
     })
   ) {

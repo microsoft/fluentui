@@ -714,7 +714,7 @@ describe('HeatMapChart custom JSX callout hooks', () => {
   });
 
   it.each(['hover', 'focus'])('falls back to the native callout on undefined on %s', event => {
-    const renderDefault = jest.fn().mockReturnValue(undefined);
+    const renderDefault = jest.fn(() => undefined);
     const { container } = render(<HeatMapChart {...props} onRenderCalloutPerDataPoint={renderDefault} />);
     const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
     show(container.querySelector('g[role="option"]')!);

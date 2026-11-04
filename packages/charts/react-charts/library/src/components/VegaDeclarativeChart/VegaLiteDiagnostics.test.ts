@@ -27,6 +27,133 @@ const raw = (value: unknown): VegaLiteSpec => value as VegaLiteSpec;
 const paths = (diagnostics: VegaLiteDiagnostic[], code: string): string[] =>
   diagnostics.filter(item => item.code === code).map(item => item.path);
 
+describe('continuous field color geometry capability', () => {
+  const continuousColors = [
+    { field: 'color', type: 'quantitative', scale: { domain: [0, 100], range: ['#000', '#fff'] } },
+    { field: 'when', type: 'temporal' },
+    ...['nominal', 'ordinal', undefined].flatMap(type =>
+      ['linear', 'log', 'pow', 'sqrt', 'symlog', 'time', 'utc'].map(scaleType => ({
+        field: 'color',
+        type,
+        scale: { type: scaleType },
+      })),
+    ),
+  ];
+  const ranged = (color: unknown, mark = 'rect') =>
+    unit({
+      mark,
+      data: { values: [{ x: 1, y: 2, color: 50, when: '2026-01-01' }] },
+      encoding: { ...xy, x2: { datum: 0 }, color },
+    });
+
+  it.each(continuousColors)('rejects continuous field color %j in single units and flat layers', color => {
+    for (const mark of ['rect', 'tick', 'bar']) {
+      const spec = ranged(color, mark);
+      const { mark: layerMark, ...base } = spec;
+      const layered = raw({ ...base, layer: [{ mark: layerMark }, { mark: layerMark }] });
+      expect(canRenderVegaRangedSpec(spec)).toBe(false);
+      expect(canRenderVegaRangedSpec(layered)).toBe(false);
+      for (const view of [spec, layered]) {
+        expect(getVegaRangedGeometry(view, 100, 100).marks).toEqual([]);
+        for (const mode of ['legacy', 'strict'] as const) {
+          const diagnostics = validateVegaLiteSpec(view, { mode }).filter(item => item.code === 'unsupported-color');
+          expect(diagnostics).toEqual([
+            expect.objectContaining({
+              path: '$.encoding.color',
+              severity: mode === 'strict' ? 'error' : 'warning',
+              message: expect.stringMatching(/continuous field color.*not implemented/i),
+              remedy: expect.stringMatching(/categorical|static/i),
+            }),
+          ]);
+        }
+      }
+    }
+  });
+
+  it.each([false, true])('reports authored and inherited layer colors through composition: %s', composed => {
+    const color = continuousColors[0];
+    const spec = ranged(color);
+    const { mark, ...base } = spec;
+    const inherited = raw({ ...base, layer: [{ mark }, { mark }] });
+    const authored = raw({
+      ...base,
+      encoding: xy,
+      layer: [{ mark, encoding: { x2: { datum: 0 }, color } }, { mark: 'tick' }],
+    });
+    // A continuous color on an ordinary sibling also invalidates the ranged overlay's common palette.
+    const sibling = raw({
+      ...base,
+      encoding: xy,
+      layer: [{ mark: 'tick' }, { mark: 'bar', encoding: { color, y: { ...xy.y, stack: null } } }],
+    });
+    for (const [view, suffix] of [
+      [inherited, '.encoding.color'],
+      [authored, '.layer[0].encoding.color'],
+      [sibling, '.layer[1].encoding.color'],
+    ] as const) {
+      for (const mode of ['legacy', 'strict'] as const) {
+        const diagnostics = validateVegaLiteSpec(composed ? { hconcat: [view] } : view, { mode });
+        expect(diagnostics.filter(item => item.code === 'unsupported-color')).toEqual([
+          expect.objectContaining({
+            path: `${composed ? '$.hconcat[0]' : '$'}${suffix}`,
+            severity: mode === 'strict' ? 'error' : 'warning',
+          }),
+        ]);
+      }
+    }
+  });
+
+  it.each([
+    { field: 'color', type: 'nominal' },
+    { field: 'color', type: 'ordinal' },
+    { field: 'color' },
+    { field: 'color', type: 'nominal', scale: { type: 'ordinal', domain: [0, 100], range: ['#000', '#fff'] } },
+    { value: '#000' },
+  ])('retains categorical fields and static colors: %j', color => {
+    const spec = ranged(color);
+    const { mark, ...base } = spec;
+    const layered = raw({ ...base, layer: [{ mark }, { mark }] });
+    for (const view of [spec, layered]) {
+      expect(canRenderVegaRangedSpec(view)).toBe(true);
+      expect(validateVegaLiteSpec(view, { mode: 'strict' })).toEqual([]);
+    }
+  });
+
+  it.each(['bar', 'area'])('keeps centered %s color admission and diagnostics consistent', mark => {
+    for (const color of [continuousColors[0], continuousColors[1], continuousColors[2]]) {
+      const spec = unit({
+        mark,
+        encoding: {
+          x: { field: 'x', type: mark === 'bar' ? 'nominal' : 'quantitative' },
+          y: { ...xy.y, stack: 'center' },
+          color,
+        },
+      });
+      expect(canRenderVegaRangedSpec(spec)).toBe(false);
+      expect(canRenderVegaCenteredAreaSpec(spec)).toBe(false);
+      expect(validateVegaLiteSpec(spec, { mode: 'strict' })).toContainEqual(
+        expect.objectContaining({ code: 'unsupported-color', path: '$.encoding.color', severity: 'error' }),
+      );
+    }
+  });
+
+  it('does not reject continuous color on native heatmaps, including composition and layers', () => {
+    const spec = unit({
+      mark: 'rect',
+      encoding: {
+        x: { field: 'x', type: 'nominal' },
+        y: { field: 'y', type: 'nominal' },
+        color: continuousColors[0],
+      },
+    });
+    const { mark, ...base } = spec;
+    for (const view of [spec, raw({ hconcat: [spec] }), raw({ ...base, layer: [{ mark }] })]) {
+      expect(canRenderVegaRangedSpec(view)).toBe(false);
+      expect(validateVegaLiteSpec(view, { mode: 'strict' })).toEqual([]);
+    }
+  });
+});
+
 describe.each(['legacy', 'strict'] as const)('canonical-resource-budget diagnostics in %s mode', mode => {
   const capture = (run: () => unknown): Error => {
     try {

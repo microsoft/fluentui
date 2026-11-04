@@ -1,6 +1,7 @@
-import type { VegaLiteData, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
+import type { VegaLiteColorEncoding, VegaLiteData, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
 import { getVegaRenderRoute } from './VegaLiteRenderRoute';
 import type { VegaRenderRoute } from './VegaLiteRenderRoute';
+import { hasVegaContinuousFieldColor } from './VegaLiteRangedGeometry';
 import { vegaSemanticMarkChannels } from './VegaLiteCapabilities';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import { SemanticError } from './VegaLiteSemanticError';
@@ -52,6 +53,7 @@ type Scope = {
   repeats: Set<string>;
   inLayer: boolean;
   rangedLayer: boolean;
+  rangedLayerIntent: boolean;
   centeredAreaLayer: boolean;
   geometryLayer: boolean;
 };
@@ -194,6 +196,20 @@ const childPath = (path: string, key: string): string =>
     : /^(0|[1-9]\d*)$/.test(key)
     ? `${path}[${key}]`
     : `${path}[${JSON.stringify(key)}]`;
+
+// Intent survives failed capability checks, so diagnostics explain the unsupported authored color
+// rather than only the native fallback's missing endpoint/stack semantics.
+const rangedUnitIntent = (mark: unknown, encoding: Dictionary): boolean => {
+  const type = typeof mark === 'string' ? mark : own(mark, 'type');
+  return (
+    rangedTypes.has(type as string) &&
+    ['x', 'y'].some(channel => has(encoding, channel)) &&
+    (['x', 'y'].some(channel => own(own(encoding, channel), 'stack') === 'center') ||
+      type === 'tick' ||
+      (type === 'bar' && has(mark, 'cornerRadiusEnd')) ||
+      ['x2', 'y2', 'xOffset', 'yOffset'].some(channel => has(encoding, channel)))
+  );
+};
 
 /**
  * Pure, bounded preflight of the supported Fluent Vega-Lite subset. No expression evaluation, resource
@@ -1709,6 +1725,19 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
             'Use quantitative, temporal, nominal or ordinal.',
           );
         }
+        if (
+          channel === 'color' &&
+          (((ranged || scope.rangedLayerIntent) && rangedTypes.has(mark)) ||
+            (mark === 'area' && ['x', 'y'].some(axis => own(own(value, axis), 'stack') === 'center'))) &&
+          hasVegaContinuousFieldColor(definition as VegaLiteColorEncoding)
+        ) {
+          report(
+            'unsupported-color',
+            definitionPath,
+            'Continuous field color is not implemented by ranged or centered geometry; legacy mode uses an approximate native fallback.',
+            'Use categorical nominal/ordinal field colors or a static color, or use a full Vega-Lite renderer for continuous color.',
+          );
+        }
         if (has(definition, 'datum') && positions.has(channel)) {
           const datum = own(definition, 'datum');
           const temporal = type === 'temporal';
@@ -1999,6 +2028,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       repeats: new Set(parent.repeats),
       inLayer: parent.inLayer,
       rangedLayer: parent.rangedLayer,
+      rangedLayerIntent: parent.rangedLayerIntent,
       centeredAreaLayer: parent.centeredAreaLayer,
       geometryLayer: parent.geometryLayer,
     };
@@ -2229,12 +2259,18 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
         invalid('invalid-composition', `${path}.${composition}`, 'Composition requires a nonempty view array.');
       } else {
         const rangedLayer = composition === 'layer' && !parent.inLayer && structuralRoute === 'ranged';
+        const rangedLayerIntent =
+          composition === 'layer' &&
+          children.some(child =>
+            rangedUnitIntent(own(child, 'mark'), { ...scope.encoding, ...record(own(child, 'encoding')) }),
+          );
         const centeredAreaLayer = composition === 'layer' && !parent.inLayer && route === 'centered-area';
         children.forEach((child, index) =>
           visit(child, `${path}.${composition}[${index}]`, {
             ...scope,
             inLayer: parent.inLayer || composition === 'layer',
             rangedLayer,
+            rangedLayerIntent,
             centeredAreaLayer,
             geometryLayer: composition === 'layer' && !parent.inLayer && route !== 'native',
           }),
@@ -2286,13 +2322,8 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       // ticks and rounded bars. Keep scale checking separate: an unsupported nonlinear scale must
       // still be diagnosed as ranged intent rather than accidentally accepted by native y-log fallback.
       const ranged =
-        rangedTypes.has(markName) &&
-        ['x', 'y'].some(channel => has(scope.encoding, channel)) &&
-        (parent.rangedLayer ||
-          centerIntent ||
-          markName === 'tick' ||
-          (markName === 'bar' && has(definition, 'cornerRadiusEnd')) ||
-          ['x2', 'y2', 'xOffset', 'yOffset'].some(channel => has(scope.encoding, channel)));
+        rangedUnitIntent(definition, scope.encoding) ||
+        (parent.rangedLayer && rangedTypes.has(markName) && ['x', 'y'].some(channel => has(scope.encoding, channel)));
       // Ranged intent alone is not proof of rendering. Flat layers use their parent's predicate,
       // including ordinary bars admitted only as siblings of supported ranged units.
       const geometry = parent.inLayer ? parent.geometryLayer : route !== 'native';
@@ -2451,6 +2482,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     repeats: new Set(),
     inLayer: false,
     rangedLayer: false,
+    rangedLayerIntent: false,
     centeredAreaLayer: false,
     geometryLayer: false,
   });

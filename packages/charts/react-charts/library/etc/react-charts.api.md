@@ -1023,8 +1023,8 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
-    onRenderCalloutPerDataPoint?: RenderFunction<GVBarChartSeriesPoint>;
-    onRenderCalloutPerStack?: RenderFunction<GroupedVerticalBarChartData>;
+    onRenderCalloutPerDataPoint?: (props?: GVBarChartSeriesPoint, defaultRender?: (props?: GVBarChartSeriesPoint) => JSXElement | null) => JSXElement | null | undefined;
+    onRenderCalloutPerStack?: (props?: GroupedVerticalBarChartData, defaultRender?: (props?: GroupedVerticalBarChartData) => JSXElement | null) => JSXElement | null | undefined;
     roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
@@ -1105,7 +1105,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
     culture?: string;
     data: HeatMapChartData[];
     domainValuesForColorScale: number[];
-    onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint>;
+    onRenderCalloutPerDataPoint?: (props?: HeatMapChartDataPoint, defaultRender?: (props?: HeatMapChartDataPoint) => JSXElement | null) => JSXElement | null | undefined;
     rangeValuesForColorScale: string[];
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;
@@ -1561,7 +1561,7 @@ export interface PolarChartProps {
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
     margins?: Margins;
-    onRenderCalloutPerDataPoint?: RenderFunction<PolarDataPoint>;
+    onRenderCalloutPerDataPoint?: (props?: PolarDataPoint, defaultRender?: (props?: PolarDataPoint) => JSXElement | null) => JSXElement | null | undefined;
     radialAxis?: PolarAxisProps;
     shape?: 'circle' | 'polygon';
     styles?: PolarChartStyles;

@@ -95,7 +95,7 @@ describe('spec-dependent render routing', () => {
       {
         ...integrationLineSpec,
         mark: 'rect',
-        encoding: { ...integrationLineSpec.encoding, color: { field: 'y', type: 'quantitative' }, x2: { field: 'y' } },
+        encoding: { ...integrationLineSpec.encoding, color: { field: 'series', type: 'nominal' }, x2: { field: 'y' } },
       },
       'heatmap',
       'ranged',

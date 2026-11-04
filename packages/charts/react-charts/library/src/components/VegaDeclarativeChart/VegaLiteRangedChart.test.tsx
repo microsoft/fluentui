@@ -786,14 +786,45 @@ describe('native SVG integration', () => {
       const marks = container.querySelectorAll<SVGPathElement>('[data-ranged-mark]');
       expect(marks).toHaveLength(2);
       marks.forEach(mark => {
-        expect(mark.getAttribute('aria-label')).toContain('task:');
-        const name = mark.getAttribute('aria-label')!;
-        expect(within(container).getByRole('img', { name })).toBe(mark);
+        expect(mark).toHaveAttribute('aria-label', 'Data point');
+        expect(within(container).getAllByRole('img', { name: 'Data point' })).toContain(mark);
         fireEvent.focus(mark);
-        expect(within(container).getByRole('img', { name })).toBe(mark);
+        expect(within(container).getAllByRole('img', { name: 'Data point' })).toContain(mark);
+        expect(screen.queryByRole('tooltip')).toBeNull();
       });
     },
   );
+
+  it('does not replace an explicitly empty accessible projection with excluded geometry fields', () => {
+    const excluded = { tooltip: false };
+    const spec: VegaLiteSpec = {
+      ...groupedOffsetSpec,
+      encoding: {
+        x: { ...groupedOffsetSpec.encoding!.x, ...excluded },
+        xOffset: { ...groupedOffsetSpec.encoding!.xOffset, ...excluded },
+        y: { ...groupedOffsetSpec.encoding!.y, ...excluded },
+        color: { ...groupedOffsetSpec.encoding!.color, ...excluded },
+      },
+    };
+    expect(buildVegaTooltip(spec, spec.data!.values![0]).ariaLabel).toBe('');
+    const { container } = render(
+      <VegaLiteRangedChart
+        spec={spec}
+        getAriaLabel={row => buildVegaTooltip(spec, row).ariaLabel}
+        renderTooltip={row => renderVegaTooltip(spec, row)}
+      />,
+    );
+    const marks = container.querySelectorAll('[data-ranged-mark]');
+    expect(marks).toHaveLength(4);
+    marks.forEach(mark => {
+      expect(mark).toHaveAttribute('aria-label', 'Data point');
+      expect(mark.getAttribute('aria-label')).not.toMatch(/category|slot|amount|red|blue/);
+      fireEvent.focus(mark);
+      fireEvent.mouseEnter(mark);
+      expect(screen.queryByRole('tooltip')).toBeNull();
+      expect(mark).not.toHaveAttribute('aria-describedby');
+    });
+  });
 
   it('provides accessible range names and server-safe rendering', () => {
     const html = renderToString(<VegaLiteRangedChart spec={rectangleRangeSpec} />);

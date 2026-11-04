@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   AreaPolarSeries,
   AxisCategoryOrder,
@@ -11,7 +12,6 @@ import type {
   ScatterPolarSeries,
 } from '../../types/DataPoint';
 import type { LegendsProps } from '../Legends/Legends.types';
-import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Configuration options for a polar axis.
@@ -102,7 +102,10 @@ export interface PolarChartProps {
    * Returning null hides the callout; undefined uses the native default content.
    * No defaultRender function is supplied.
    */
-  onRenderCalloutPerDataPoint?: RenderFunction<PolarDataPoint>;
+  onRenderCalloutPerDataPoint?: (
+    props?: PolarDataPoint,
+    defaultRender?: (props?: PolarDataPoint) => JSXElement | null,
+  ) => JSXElement | null | undefined;
 
   /*
    * Properties for customizing the legend.

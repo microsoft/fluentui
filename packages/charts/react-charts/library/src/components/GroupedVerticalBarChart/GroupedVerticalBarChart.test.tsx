@@ -850,7 +850,7 @@ describe('GroupedVerticalBarChart custom JSX callout hooks', () => {
   ] as const)(
     'falls back to native content when the selected hook returns undefined (stack=%s, %s)',
     (stack, event) => {
-      const renderDefault = jest.fn().mockReturnValue(undefined);
+      const renderDefault = jest.fn(() => undefined);
       const { container } = render(
         <GroupedVerticalBarChart
           data={chartPoints}

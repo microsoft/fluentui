@@ -4,7 +4,8 @@ import type { VegaLiteSpec, VegaLiteSemanticMode } from './VegaLiteTypes';
 import type { VegaViewNode } from './VegaLiteViewTree';
 import { getVegaViewSourceSpec } from './VegaLiteViewTree';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
-import { getVegaColorFromMap } from './VegaLiteColorAdapter';
+import { getVegaColor, getVegaColorFromMap } from './VegaLiteColorAdapter';
+import { getVegaRenderRoute } from './VegaLiteRenderRoute';
 
 function sourceContextAtPath(spec: VegaLiteSpec, path: string): VegaLiteSpec {
   let current = spec;
@@ -146,12 +147,20 @@ export function planVegaDeclarativeChartViews(
     const units = viewUnits(restored);
     const legends: VegaLegendItems = [];
     if (composed) {
+      const geometry = getVegaRenderRoute(restored, sourceSpec, mode) !== 'native';
       units.forEach(unit => {
         const color = unit.encoding?.color;
-        if (!color?.field || color.legend === null || color.legend?.disable) {
+        if (
+          !color?.field ||
+          color.legend === null ||
+          color.legend?.disable ||
+          color.type === 'quantitative' ||
+          color.type === 'temporal'
+        ) {
+          // Continuous scales must not be presented as a union of categorical swatches.
           return;
         }
-        const domain = color.type === 'quantitative' || color.type === 'temporal' ? undefined : color.scale?.domain;
+        const domain = color.scale?.domain;
         const names = Array.from(
           new Set(
             (domain ?? unit.data?.values?.map(row => readVegaField(row, color.field!)) ?? [])
@@ -159,16 +168,24 @@ export function planVegaDeclarativeChartViews(
               .map(String),
           ),
         );
-        names.forEach(title => {
+        names.forEach((title, index) => {
           legends.push({
             title,
-            color: getVegaColorFromMap(
-              title,
-              colorMap,
-              color.scale?.scheme,
-              color.scale?.range as string[] | undefined,
-              dark,
-            ),
+            // Geometry renderers index the domain (including absent categories), not the native cache.
+            color: geometry
+              ? getVegaColor(
+                  color.scale?.reverse ? names.length - 1 - index : index,
+                  color.scale?.scheme,
+                  color.scale?.range as string[] | undefined,
+                  dark,
+                )
+              : getVegaColorFromMap(
+                  title,
+                  colorMap,
+                  color.scale?.scheme,
+                  color.scale?.range as string[] | undefined,
+                  dark,
+                ),
           });
         });
       });

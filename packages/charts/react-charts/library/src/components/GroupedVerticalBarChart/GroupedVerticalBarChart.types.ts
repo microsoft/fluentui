@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   CartesianChartProps,
   CartesianChartStyleProps,
@@ -7,7 +8,6 @@ import type {
   BarSeries,
   LineSeries,
 } from '../../index';
-import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Vertical Bar Chart properties
@@ -66,7 +66,10 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * Returning null hides the callout; undefined uses the native default content.
    * No defaultRender function is supplied.
    */
-  onRenderCalloutPerDataPoint?: RenderFunction<GVBarChartSeriesPoint>;
+  onRenderCalloutPerDataPoint?: (
+    props?: GVBarChartSeriesPoint,
+    defaultRender?: (props?: GVBarChartSeriesPoint) => JSXElement | null,
+  ) => JSXElement | null | undefined;
 
   /**
    * Renders custom JSX for the active group when `isCalloutForStack` is true.
@@ -74,7 +77,10 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * Returning null hides the callout; undefined uses the native default content.
    * No defaultRender function is supplied.
    */
-  onRenderCalloutPerStack?: RenderFunction<GroupedVerticalBarChartData>;
+  onRenderCalloutPerStack?: (
+    props?: GroupedVerticalBarChartData,
+    defaultRender?: (props?: GroupedVerticalBarChartData) => JSXElement | null,
+  ) => JSXElement | null | undefined;
 
   /**
    * Prop to hide the bar labels
