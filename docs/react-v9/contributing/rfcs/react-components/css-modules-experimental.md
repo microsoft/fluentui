@@ -96,25 +96,25 @@ Consumer requirements:
 
 - a CSS Modules loader and native CSS nesting (or a transform for it);
 - CSS side effects kept (packages declare `"sideEffects": ["**/*.css"]`);
-- headless/CSS-styled icons imported into the same layer: `@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);`
-- in Shadow DOM, the static styles installed inside each shadow root (CSS Modules don't cross shadow boundaries).
+- headless/CSS-styled icons in the same `fluent` layer. For now that means `@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);`. We plan to ship the headless icon styles already layered, so this step goes away.
 
-Opting in doesn't remove all runtime style insertion. FluentProvider still inserts theme CSS variables at runtime, components without a CSS alternative fall back to Griffel, and some CSS Modules loaders inject styles at runtime too. Apps that restrict runtime style insertion (for example with a strict CSP) still need to extract CSS to static files and allow, or extract, the styles that are still generated at runtime.
+Like Griffel, which needs a renderer per shadow root, Shadow DOM apps have to install the static styles inside each shadow root.
 
-### Build and tooling
+Opting in doesn't remove all runtime style insertion. FluentProvider still inserts theme CSS variables at runtime, components without a CSS alternative fall back to Griffel, and some CSS Modules loaders inject styles at runtime too. Apps that restrict runtime style insertion (for example with a strict CSP) still need to extract CSS to static files and allow, or extract, the styles that are still generated at runtime. As a follow-up we should also offer the theme as a static CSS variables file, as headless/modern does, so apps can skip runtime theme insertion entirely.
 
-- The Nx build executor copies `**/*.css` into `lib` and `lib-commonjs` for vNext packages that declare CSS side effects.
-- Export maps keep explicit `./*.css` entries.
-- Storybook and VR tests resolve the CSS hooks first, so the same stories exercise both implementations.
-- `scripts/check-v9-css-modules.js` compares computed styles between a Griffel build and a CSS Modules build (RTL, badges, typography, icons, shadow roots, overlapping hover/focus/active states, reduced motion).
-- The `griffel-to-css-modules` agent skill describes how to port a component and how to keep the CSS version in sync when the Griffel styles change.
-- Monosize support for CSS assets is ready but turned off until rollout.
+### Tooling
+
+The build ships the `.module.css` files in `lib` and `lib-commonjs`, and Storybook and VR tests can run either implementation from the same stories. To keep the two in sync we need:
+
+- an Nx sync generator that detects Griffel style changes and flags (or updates) the matching CSS Module;
+- automated parity checks that compare the Griffel and CSS Modules builds in a real browser.
 
 ### Shipping as experimental
 
 - Released as `minor` changes (a new opt-in feature) in the existing packages. No new package, no change to default behavior.
-- Documented as **experimental**: class names inside `.module.css`, the layer name, and the file layout may change without a major version bump. Only the opt-in mechanism and the existing hook exports count as contract.
-- Griffel remains the default and the reference implementation. Both are maintained in parallel, with Griffel diffs ported to CSS via the skill above.
+- Documented as **experimental**, and the CSS Modules style hooks are marked `@experimental` in their TSDoc. Class names inside `.module.css` and the file layout may change without a major version bump. Only the opt-in mechanism and the existing hook exports count as contract.
+- Griffel remains the default and the reference implementation. Both are maintained in parallel, and Griffel changes are carried over to CSS with the sync tooling above.
+- During the pilot, unit, VR, and parity tests for the CSS Modules build run in a separate CI job, so the main pipeline doesn't slow down.
 
 ### Ecosystem rollout
 
@@ -136,13 +136,15 @@ Opting in doesn't remove all runtime style insertion. FluentProvider still inser
 - No migration cost and no risk for current consumers; it's opt-in per app with automatic fallback.
 - Lets us validate the option with real partner apps before we commit to anything.
 
-**Cons**
+**Cons for consumers**
+
+- Opting in depends on the bundler (`extensionAlias` or an equivalent); some toolchains will need extra setup.
+- Overrides that depend on Griffel internals may need changes after opting in. We don't have a concrete breaking case yet, so the pilots should confirm whether this matters in practice.
+
+**Cost for the Fluent team**
 
 - Two style implementations to maintain until we decide. Every Griffel change has to be ported.
-- Parity checks are browser-based and opt-in; JSDOM tests only cover the state-to-class mapping. Drift is possible until parity becomes a CI gate.
-- Opting in depends on the bundler (`extensionAlias` or an equivalent); some toolchains will need extra setup.
-- Custom styles written with Griffel that depend on `mergeClasses` ordering against component atomic classes may behave differently with layered CSS.
-- Shadow DOM consumers have to install styles manually.
+- Drift between the two is possible until the sync generator and parity checks run in CI.
 
 ## Discarded Solutions
 
@@ -152,7 +154,8 @@ Opting in doesn't remove all runtime style insertion. FluentProvider still inser
 
 ## Open Issues
 
-- Final layer name (`fluent`) and whether to expose an ordered layer stack (for example `fluent.base`, `fluent.overrides`).
+- The layer name is `fluent`. Still open: whether to expose an ordered layer stack (for example `fluent.base`, `fluent.overrides`).
 - Turning on Monosize CSS asset reporting, and which CI parity gate to require before promotion.
+- Shipping the theme as a static CSS variables file, and the headless icon styles already in the `fluent` layer.
 - Consumer guidance for bundlers without `extensionAlias` (Vite/Rollup/esbuild plugins).
 - Pilot owners, timelines, and success thresholds for each partner.
