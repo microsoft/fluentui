@@ -200,7 +200,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       (props.legendProps?.selectedLegends?.length ?? 0) > 0,
     );
     const [activePoint, setActivePoint] = React.useState<string>('');
-    const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<LineChartDataPoint | null>(null);
+    const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<
+      LineChartPoints['data'][number] | null
+    >(null);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
