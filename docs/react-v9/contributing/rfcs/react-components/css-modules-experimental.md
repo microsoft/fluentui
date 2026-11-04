@@ -13,24 +13,29 @@ Reference implementation: [microsoft/fluentui#37044](https://github.com/microsof
 
 ## Summary
 
-Ship static, layered CSS Modules as an **opt-in, experimental** alternative to the Griffel style hooks of v9 components. Each component gets a `<Component>.module.css` and a `use<Component>Styles.styles.css.ts` hook next to the existing `use<Component>Styles.styles.ts`. Default imports, public APIs, and runtime behavior stay the same. Consumers opt in with bundler resolution only.
+Add layered CSS Modules as an **opt-in, experimental** styling option for v9 components, alongside Griffel. The goal is to support partners whose apps are already built on native CSS or CSS Modules and who want the same approach all the way down, including the design system layer.
 
-After it ships, we want to roll it out with a few Fluent ecosystem partners (FluentAI, SCC, others) to check visual parity, bundle size, and runtime performance in real apps. Those results decide whether CSS Modules becomes a supported styling option.
+Griffel stays the default and the recommended option. This proposal doesn't replace it. It gives teams with a different styling stack a supported way to use Fluent.
+
+Each component gets a `<Component>.module.css` and a `use<Component>Styles.styles.css.ts` hook next to the existing `use<Component>Styles.styles.ts`. Default imports, public APIs, and runtime behavior stay the same. Consumers opt in with bundler resolution only.
+
+After it ships, we want to roll it out with Fluent ecosystem partners that already work this way (FluentAI, SCC, others), check that it fits their setup, and use their feedback to decide whether it becomes a supported option.
 
 ## Background
 
-v9 components style themselves at runtime with Griffel (`makeStyles`/`makeResetStyles`). Griffel supports AOT/CSS extraction, but each consuming app has to set up the extraction toolchain, and the runtime and `mergeClasses` stay in the bundle.
+v9 components are styled with Griffel (`makeStyles`/`makeResetStyles`), and that works well for most consumers.
 
-Partners have asked for:
+Some partners in the Fluent ecosystem have standardized on native CSS or CSS Modules for their own code. For them, Fluent is the one part of the app that uses a different styling model. That means:
 
-- static CSS that works with any standard CSS pipeline, with no Griffel-specific build plugin;
-- less runtime style work and a smaller JS bundle;
-- predictable overrides through the cascade (`@layer`) rather than atomic-class merge order;
-- compatibility with strict CSP and with environments that avoid runtime style injection.
+- two styling systems in one app, each with its own authoring rules, tooling, and debugging workflow;
+- customizing Fluent components in a different way than the rest of the product (Griffel overrides and `mergeClasses` instead of plain CSS and the cascade);
+- extra build configuration just for the design system layer.
+
+These partners have asked for a way to use Fluent components that matches the stack they already use.
 
 ## Problem statement
 
-Today v9 offers only one way to style components: Griffel. Apps that cannot or do not want to run Griffel's runtime or build tooling have no supported path. We want to know whether static CSS can match Griffel output closely enough to be a real option, and we can only answer that by testing it in production apps.
+Today v9 offers one styling option: Griffel. Partners who are already all-in on native CSS or CSS Modules have no supported way to keep that model consistent through the design system layer. We want to give them that option without changing anything for existing Griffel consumers, and learn from real partner apps whether it meets their needs.
 
 ## Detailed Design or Proposal
 
@@ -112,22 +117,22 @@ Consumer requirements:
 ### Ecosystem rollout
 
 1. **Ship** the reference PR behind the opt-in. Publish a short consumer guide (bundler config, icons, Shadow DOM).
-2. **Pilot** with 2–3 partners (FluentAI and SCC first, then others who volunteer). Each pilot turns on the alias in a staging or flighted build.
-3. **Measure** per pilot, against the same app on Griffel:
-   - visual parity (VR diffs, reported regressions);
-   - JS and CSS bundle size;
-   - runtime metrics (first render, style recalculation, interaction latency);
-   - how hard it was to integrate, and override patterns that broke.
-4. **Decide** with the data: promote to a supported option (with a stability contract and CI parity gates), keep iterating, or stop. Stopping means deleting the alternative files; consumers just remove the alias.
+2. **Pilot** with partners that already use native CSS or CSS Modules (FluentAI and SCC first, then others who volunteer). Each pilot turns on the alias in a staging or flighted build.
+3. **Gather feedback** per pilot:
+   - how well it fits their existing CSS setup and customization patterns;
+   - visual parity with the Griffel version (VR diffs, reported regressions);
+   - integration effort and any gaps in coverage;
+   - bundle size and runtime numbers, as supporting data.
+4. **Decide** with that feedback: promote to a supported option (with a stability contract and CI parity gates), keep iterating, or stop. Stopping means deleting the alternative files; consumers just remove the alias.
 
 ### Pros and Cons
 
 **Pros**
 
+- Partners on native CSS or CSS Modules can use one styling model across their whole app, including Fluent.
+- They customize Fluent components with plain CSS and the cascade (`@layer`), the same way they style everything else.
 - No migration cost and no risk for current consumers; it's opt-in per app with automatic fallback.
-- Static CSS works with any standard toolchain and with strict CSP.
-- `@layer` gives predictable, low-specificity overrides.
-- Lets us measure real benefits in real apps before we commit to anything.
+- Lets us validate the option with real partner apps before we commit to anything.
 
 **Cons**
 
@@ -139,9 +144,9 @@ Consumer requirements:
 
 ## Discarded Solutions
 
-- **Replace Griffel in place.** Too risky without production parity data, and it would break consumers who rely on Griffel overrides.
+- **Replace Griffel in place.** Not the goal. Griffel works well for most consumers, and many rely on Griffel overrides. This proposal adds an option and doesn't remove one.
 - **Separate `-css` packages.** Duplicates the package graph and the release overhead, and consumers would have to rewrite imports.
-- **Only promote Griffel AOT/CSS extraction.** Still needs Griffel tooling and runtime in every app, and doesn't give layered, human-readable CSS.
+- **Point partners to Griffel AOT/CSS extraction.** It produces static CSS, but partners still author and override Fluent styles through Griffel, so their app still has two styling models.
 
 ## Open Issues
 
