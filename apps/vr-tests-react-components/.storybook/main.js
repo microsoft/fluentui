@@ -1,19 +1,19 @@
 // @ts-check
 
 const path = require('path');
-
+const { getIconStoryPatterns, isolateIconBuildCache } = require('./icon-sizing');
 const {
+  configureReactIcons,
   registerTsPaths,
   registerRules,
   rules,
   loadWorkspaceAddon,
-  configureReactIcons,
 } = require('@fluentui/scripts-storybook');
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 
-module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
+module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath })],
-  stories: ['../src/**/*.stories.tsx'],
+  stories: getIconStoryPatterns(),
   core: {
     disableTelemetry: true,
   },
@@ -41,6 +41,8 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
       ...config.resolve.extensionAlias,
       '.styles.js': ['.styles.css.js', '.styles.js'],
     };
+
+    isolateIconBuildCache(config);
 
     return config;
   },

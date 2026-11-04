@@ -36,6 +36,20 @@ Combobox checks also exercise overlapping hover, focus, and active states with n
 comparing border colors and focus-indicator transitions after 250ms and 1000ms without disabling animations.
 Both builds use the same local avatar image in place of the external image CDN for deterministic, offline checks.
 
+## V9 Icon Regression Coverage
+
+The v9 VRT project shares SVG/font icon examples between StoryWright screenshot
+capture and Playwright browser assertions:
+
+```bash
+yarn nx run vr-tests-react-components:test-vr
+yarn nx run vr-tests-react-components:e2e
+```
+
+See the [project README](../../apps/vr-tests-react-components/README.md) for build
+modes and coverage, and the [Storybook tooling README](../../scripts/storybook/README.md#configurereacticons)
+for shared icon configuration.
+
 ## Writing Unit Tests
 
 Tests live adjacent to the component they test:

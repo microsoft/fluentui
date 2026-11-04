@@ -39,7 +39,7 @@ describe('Storybook React icon configuration', () => {
     ]);
   });
 
-  it('configures font assets, subsetting, and entry styles when font mode is selected', async () => {
+  it('emits fonts under static/media without relative workspace path segments', async () => {
     process.env.FLUENTUI_ICON_VARIANT = 'fonts';
     const config = configureReactIcons({ config: { entry: './preview.js' } });
 
@@ -47,6 +47,7 @@ describe('Storybook React icon configuration', () => {
       expect.arrayContaining([
         expect.objectContaining({
           type: 'asset',
+          generator: { filename: 'static/media/[name].[contenthash][ext]' },
         }),
         expect.objectContaining({
           use: [

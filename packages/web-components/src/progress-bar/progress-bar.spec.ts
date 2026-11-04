@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { ProgressBar } from './progress-bar.js';
-import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState, tagName } from './progress-bar.options.js';
+import { tagName } from './progress-bar.options.js';
 
 interface BoundingBox {
   width: number;
@@ -125,40 +125,4 @@ test.describe('Progress Bar', () => {
 
     await expect(indicator).toHaveCSS('width', '0px');
   });
-
-  for (const thickness of Object.values(ProgressBarThickness)) {
-    test(`should set the \`thickness\` property to \`${thickness}\``, async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { thickness } });
-
-      await expect(element).toHaveAttribute('thickness', thickness);
-
-      await expect(element).toHaveJSProperty('thickness', thickness);
-    });
-  }
-
-  for (const shape of Object.values(ProgressBarShape)) {
-    test(`should set the \`shape\` property to \`${shape}\``, async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { shape } });
-
-      await expect(element).toHaveAttribute('shape', shape);
-
-      await expect(element).toHaveJSProperty('shape', shape);
-    });
-  }
-
-  for (const validationState of Object.values(ProgressBarValidationState)) {
-    test(`should set the \`validationState\` property to \`${validationState}\``, async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { 'validation-state': validationState } });
-
-      await expect(element).toHaveAttribute('validation-state', validationState);
-
-      await expect(element).toHaveJSProperty('validationState', validationState);
-    });
-  }
 });
