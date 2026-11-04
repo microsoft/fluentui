@@ -2895,6 +2895,123 @@ Object {
 }
 `;
 
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with annotations 1`] = `
+Object {
+  "annotations": Array [
+    Object {
+      "connector": Object {
+        "arrow": "end",
+        "strokeColor": "#107c10",
+        "strokeWidth": 2,
+      },
+      "coordinates": Object {
+        "type": "data",
+        "x": 200,
+        "y": "Product D",
+      },
+      "id": "annotation-0-top-seller",
+      "layout": Object {
+        "clipToBounds": true,
+        "offsetX": 40,
+      },
+      "style": Object {
+        "backgroundColor": "#dff6dd",
+        "borderColor": "#107c10",
+        "fontSize": "12px",
+        "textColor": "#107c10",
+      },
+      "text": "Top Seller",
+    },
+    Object {
+      "coordinates": Object {
+        "type": "relative",
+        "x": 0.95,
+        "y": 0.050000000000000044,
+      },
+      "id": "annotation-1-growth-target",
+      "style": Object {
+        "backgroundColor": "#fff4ce",
+        "borderColor": "#ffc83d",
+        "fontSize": "10px",
+        "textColor": "#8a6d00",
+      },
+      "text": "Growth Target",
+    },
+    Object {
+      "connector": Object {
+        "arrow": "end",
+        "strokeColor": "#d13438",
+      },
+      "coordinates": Object {
+        "type": "data",
+        "x": 120,
+        "y": "Product A",
+      },
+      "id": "annotation-2-needs-improvement",
+      "layout": Object {
+        "clipToBounds": true,
+        "offsetX": -50,
+      },
+      "style": Object {
+        "backgroundColor": "#fde7e9",
+        "borderColor": "#d13438",
+        "fontSize": "11px",
+        "textColor": "#d13438",
+      },
+      "text": "Needs Improvement",
+    },
+  ],
+  "barHeight": 50.98039215686275,
+  "chartTitle": "Sales by Product with Annotations",
+  "data": Array [
+    Object {
+      "color": "#0078d4ff",
+      "legend": "",
+      "x": 120,
+      "y": "Product A",
+    },
+    Object {
+      "color": "#00bcf2ff",
+      "legend": "",
+      "x": 150,
+      "y": "Product B",
+    },
+    Object {
+      "color": "#00b294ff",
+      "legend": "",
+      "x": 180,
+      "y": "Product C",
+    },
+    Object {
+      "color": "#ffc83dff",
+      "legend": "",
+      "x": 200,
+      "y": "Product D",
+    },
+  ],
+  "height": 400,
+  "hideLegend": true,
+  "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
+  "roundCorners": true,
+  "roundedTicks": true,
+  "secondaryYAxistitle": "",
+  "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
+  "width": 700,
+  "xAxisAnnotation": "Sales by Product with Annotations",
+  "xAxisCategoryOrder": "data",
+  "xAxisTitle": "Sales ($K)",
+  "yAxisCategoryOrder": Array [
+    "Product A",
+    "Product B",
+    "Product C",
+    "Product D",
+  ],
+  "yAxisTitle": "Product",
+}
+`;
+
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props 1`] = `
 Object {
   "barHeight": 12.662117371807371,
