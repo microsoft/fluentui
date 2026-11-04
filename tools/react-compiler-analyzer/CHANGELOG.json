@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compiler-analyzer",
   "entries": [
     {
+      "date": "Tue, 03 Nov 2026 12:25:56 GMT",
+      "version": "0.0.4",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "c39a8db4a79429e73b9859cb194df452bdeba259",
+            "comment": "fix: clarify compiler evidence and preventive annotation rationale, identify suppression-related rejection, and report profile-specific revalidation. JSON consumers must migrate to schema v3: reported-statistics counters replace memoCacheEmitted."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 15:40:41 GMT",
       "version": "0.0.3",
       "tag": "@fluentui/react-compiler-analyzer_v0.0.3",

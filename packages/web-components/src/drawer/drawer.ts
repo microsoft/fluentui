@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable, Updates, volatile } from '@microsoft/fast-element';
-import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
+import { type DrawerPosition, type DrawerSize, DrawerType } from './drawer.options.js';
 
 /**
  * A Drawer component that allows content to be displayed in a side panel. It can be rendered as modal or non-modal.
@@ -9,10 +9,11 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @extends FASTElement
  *
  * @attr type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr position - Sets the position of the drawer (start/end).
- * @attr size - Sets the size of the drawer (small/medium/large).
  * @attr ariaDescribedby - The ID of the element that describes the drawer.
  * @attr ariaLabelledby - The ID of the element that labels the drawer.
+ *
+ * @presentational {DrawerPosition} [position=start] - Sets the position of the drawer (start/end).
+ * @presentational {DrawerSize} [size=medium] - Sets the size of the drawer (small/medium/large/full).
  *
  * @csspart dialog - The dialog element of the drawer.
  * @cssprop --drawer-width - Sets the width of the drawer to a custom value (e.g., 300px).
@@ -57,25 +58,8 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**
-   * Sets the position of the drawer (start/end).
-   *
-   * @public
-   * @defaultValue start
-   */
-  @attr
-  public position: DrawerPosition = DrawerPosition.start;
-
   @observable
   public role!: string | null;
-
-  /**
-   * @public
-   * @defaultValue medium
-   * Sets the size of the drawer (small/medium/large).
-   */
-  @attr({ attribute: 'size' })
-  public size: DrawerSize = DrawerSize.medium;
 
   /**
    * The dialog element.
