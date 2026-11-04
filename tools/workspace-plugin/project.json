@@ -8,6 +8,13 @@
   "targets": {
     "test": {
       "executor": "nx:run-commands",
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/jest.config.ts",
+        "{workspaceRoot}/project.json"
+      ],
       "outputs": ["{projectRoot}/coverage"],
       "options": {
         "cwd": "{projectRoot}",

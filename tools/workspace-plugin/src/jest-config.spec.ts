@@ -1,4 +1,8 @@
+import { readJsonFile } from '@nx/devkit';
+import type { ProjectConfiguration } from '@nx/devkit';
 import { getJestProjectsAsync } from '@nx/jest';
+import { join } from 'node:path';
+import { SourceTextModule } from 'node:vm';
 import createJestConfig from '../../../jest.config';
 
 jest.mock('@nx/jest', () => ({
@@ -6,6 +10,34 @@ jest.mock('@nx/jest', () => ({
 }));
 
 describe('root Jest configuration', () => {
+  it('runs with VM modules enabled for Nx formatter imports', () => {
+    expect(typeof SourceTextModule).toBe('function');
+  });
+
+  it('provides a root test entry point with VM modules enabled', () => {
+    const workspaceProject = readJsonFile<ProjectConfiguration>(join(__dirname, '../../../project.json'));
+    expect(workspaceProject.targets?.['test-workspace']).toEqual({
+      executor: 'nx:run-commands',
+      cache: false,
+      options: {
+        command: 'node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config=./jest.config.ts',
+      },
+    });
+  });
+
+  it('includes the root configuration files in the workspace-plugin test inputs', () => {
+    const pluginProject = readJsonFile<ProjectConfiguration>(join(__dirname, '../project.json'));
+    expect(pluginProject.targets?.test.inputs).toEqual(
+      expect.arrayContaining([
+        'default',
+        '^production',
+        '{workspaceRoot}/jest.preset.js',
+        '{workspaceRoot}/jest.config.ts',
+        '{workspaceRoot}/project.json',
+      ]),
+    );
+  });
+
   it('includes workspace-plugin alongside automatically discovered projects', async () => {
     jest.mocked(getJestProjectsAsync).mockResolvedValue(['<rootDir>/another-project/jest.config.ts']);
 
