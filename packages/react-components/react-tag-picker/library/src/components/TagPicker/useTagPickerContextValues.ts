@@ -27,7 +27,9 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     popoverId,
     disabled,
     noPopover,
+    selectionMode = 'multiselect',
   } = state;
+  const multiselect = selectionMode === 'multiselect';
   return {
     activeDescendant: React.useMemo(
       () => ({ controller: state.activeDescendantController }),
@@ -40,6 +42,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       getOptionsMatchingValue,
       selectedOptions,
       selectOption,
+      multiselect,
       focusVisible: false,
       setActiveOption: noop,
     },
@@ -63,6 +66,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       popoverId,
       disabled,
       noPopover,
+      selectionMode,
     },
   };
 }

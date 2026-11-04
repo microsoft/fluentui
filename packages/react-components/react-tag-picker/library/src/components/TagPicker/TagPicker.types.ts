@@ -15,6 +15,9 @@ export type TagPickerSlots = {};
 
 export type TagPickerSize = 'medium' | 'large' | 'extra-large';
 
+/** Controls whether TagPicker replaces or accumulates selected options. */
+export type TagPickerSelectionMode = 'single' | 'multiselect';
+
 /**
  * Event data for the `onOptionSelect` event.
  *
@@ -46,6 +49,13 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
     | 'disableAutoFocus'
   > &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    /**
+     * Controls whether selecting an option replaces the current selection or adds to it.
+     *
+     * @default 'multiselect'
+     */
+    selectionMode?: TagPickerSelectionMode;
+
     /**
      * By default, when a single children is provided, the TagPicker will assume that the children
      * is a popover. By setting this prop to true, the children will be treated as a trigger instead.
@@ -106,6 +116,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     trigger: React.ReactNode;
     popover?: React.ReactNode;
     inline: boolean;
+    selectionMode?: TagPickerSelectionMode;
   };
 
 export type TagPickerContextValues = {

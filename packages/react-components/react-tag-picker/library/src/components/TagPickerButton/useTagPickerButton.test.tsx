@@ -22,6 +22,7 @@ const baseContext: TagPickerContextValue = {
   value: undefined,
   popoverId: 'button-popover-id',
   size: 'medium',
+  selectionMode: 'multiselect',
   appearance: 'outline',
   disabled: false,
 };

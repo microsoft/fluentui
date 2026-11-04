@@ -78,6 +78,101 @@ describe('Dropdown - tab navigation', () => {
     );
   };
 
+  (['Tab', ['Shift', 'Tab'] as ['Shift', 'Tab']] as const).forEach(keypress => {
+    it(`selects the active option on ${keypress.toString()} when between focusable elements`, () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TabsterRoot>
+          <button id="before">Before</button>
+          <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+          <button id="after">After</button>
+        </TabsterRoot>,
+      );
+
+      cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+      cy.get('#dropdown').realPress(keypress);
+
+      cy.get('@onOptionSelect').should('have.been.calledOnce');
+      cy.get('#dropdown').should('contain.text', 'Cat').and('have.attr', 'aria-expanded', 'false');
+      cy.focused().should('have.id', keypress === 'Tab' ? 'after' : 'before');
+    });
+  });
+
+  it('selects the active option once when tabbing from the end of a Tabster root', () => {
+    const onOptionSelect = cy.stub().as('onOptionSelect');
+
+    mount(
+      <>
+        <TabsterRoot>
+          <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+        </TabsterRoot>
+        <button id="after">After</button>
+      </>,
+    );
+
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+    cy.get('#dropdown').realPress('Tab');
+
+    cy.get('@onOptionSelect').should('have.been.calledOnce');
+    cy.get('#dropdown').should('contain.text', 'Cat').and('have.attr', 'aria-expanded', 'false');
+    cy.focused().should('have.id', 'after');
+  });
+
+  it('prevents the Tabster movefocus event when onOptionSelect calls preventDefault', () => {
+    const onOptionSelect = cy
+      .stub()
+      .callsFake((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault())
+      .as('onOptionSelect');
+
+    mount(
+      <TabsterRoot>
+        <button id="before">Before</button>
+        <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+        <button id="after">After</button>
+      </TabsterRoot>,
+    );
+
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+    cy.get('#dropdown').realPress('Tab');
+
+    cy.get('@onOptionSelect').should('have.been.calledOnce');
+    cy.focused().should('have.id', 'dropdown');
+  });
+
+  it('does not select the active option when focus is moved with a pointer', () => {
+    const onOptionSelect = cy.stub().as('onOptionSelect');
+
+    mount(
+      <TabsterRoot>
+        <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+        <button id="after">After</button>
+      </TabsterRoot>,
+    );
+
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+    cy.get('#after').realClick();
+
+    cy.get('@onOptionSelect').should('not.have.been.called');
+    cy.get('#dropdown').should('contain.text', 'Select an animal').and('have.attr', 'aria-expanded', 'false');
+  });
+
+  it('does not select the active option on Tab in multiselect mode', () => {
+    const onOptionSelect = cy.stub().as('onOptionSelect');
+
+    mount(
+      <TabsterRoot>
+        <DropdownComponent id="dropdown" multiselect onOptionSelect={onOptionSelect} />
+        <button id="after">After</button>
+      </TabsterRoot>,
+    );
+
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant').realPress('Tab');
+
+    cy.get('@onOptionSelect').should('not.have.been.called');
+    cy.focused().should('have.id', 'after');
+  });
+
   it('can tab between multiple dropdowns', () => {
     mount(
       <TabsterRoot>
