@@ -70,6 +70,24 @@ describe('VerticalBarChart snapShot testing', () => {
     expect(result!.container.firstChild).toMatchSnapshot();
   });
 
+  it('supports correctly spelled x-axis label props', () => {
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(
+        <VerticalBarChart data={chartPointsVBC} showXAxisLabelsTooltip={true} wrapXAxisLabels={true} />,
+      );
+    });
+    expect(result!.container.firstChild).not.toBeNull();
+  });
+
+  it('supports correctly spelled x-axis label rotation prop', () => {
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} rotateXAxisLabels={true} />);
+    });
+    expect(result!.container.firstChild).not.toBeNull();
+  });
+
   it('renders yAxisTickFormat correctly', () => {
     let result: ReturnType<typeof render> | undefined;
     act(() => {
