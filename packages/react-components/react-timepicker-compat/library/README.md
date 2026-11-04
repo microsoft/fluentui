@@ -27,7 +27,7 @@ The alternative keeps calling the public `useComboboxStyles_unstable` hook from
 `@fluentui/react-combobox`; replace that package's style modules and public
 re-exports as well. Base imports precede the local stylesheet so TimePicker's
 listbox height cap wins the equal-specificity Combobox rule, including when
-portaled. Process CSS Modules and retain assets in the `fluentui` layer.
+portaled. Process CSS Modules and retain assets in the `fluent` layer.
 Without the base replacement this remains a hybrid with Griffel, not a
 Griffel-free composition or a guarantee of mixed-mode styling parity.
 

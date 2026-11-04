@@ -8,7 +8,7 @@ FluentProvider includes a layered CSS Modules style hook alongside its default G
 To opt in consistently with other components, prioritize `.css.ts` for extensionless
 TypeScript source imports and alias explicit `.styles.js` imports to
 `['.styles.css.js', '.styles.js']` in your bundler. The original Griffel hook remains the fallback.
-Configure your CSS Modules loader to expose named class exports.
+Configure your CSS Modules loader to provide a default export with the class-name map (for example, webpack `css-loader` with `namedExport: false`); the hooks use `import styles from './FluentProvider.module.css'`.
 
 The alternative preserves theme classes, caller classes, body typography, and LTR/RTL text
 alignment. Theme variable generation, nested providers, and portal style propagation are unchanged.

@@ -74,5 +74,5 @@ If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guida
 Tab animated indicators have layered CSS Modules alternatives beside their Griffel style hooks.
 Resolve the relevant `.styles.js` imports to `.styles.css.js` (and source `.styles`
 imports to `.styles.css.ts`) only in an explicitly opted-in bundler configuration.
-Keep CSS assets and process the headless icon stylesheet in the `fluentui` layer.
+Keep CSS assets and process the headless icon stylesheet in the `fluent` layer.
 The default component imports and Griffel implementations are unchanged.

@@ -38,7 +38,7 @@ Opt-in resolver swaps must cover those base packages, including public re-export
 as well as TeachingPopover, for both source `.styles` and built
 `.styles.js` → `.styles.css.js` imports. Base modules are imported before derived
 stylesheets. CSS Modules must be processed and CSS assets retained in the
-`fluentui` layer. Swapping only TeachingPopover intentionally leaves Griffel base
+`fluent` layer. Swapping only TeachingPopover intentionally leaves Griffel base
 hooks in the graph; unlayered Griffel rules can override layered CSS, so that
 hybrid is not guaranteed to match the fully selected CSS implementation.
 

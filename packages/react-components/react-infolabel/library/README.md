@@ -23,4 +23,4 @@ Composed components require their own style alternatives; this does not remove
 all reachable Griffel dependencies. Browser, forced-colors, RTL, and visual-regression
 parity must be validated before switching defaults.
 
-Select the `Label` and `InfoButton` alternatives together with `InfoLabel`. `InfoButton` styles its portaled info surface independently, but the composed `Popover` still needs its own alternative. Use headless icons with their CSS defaults in the `fluentui` layer.
+Select the `Label` and `InfoButton` alternatives together with `InfoLabel`. `InfoButton` styles its portaled info surface independently, but the composed `Popover` still needs its own alternative. Use headless icons with their CSS defaults in the `fluent` layer.

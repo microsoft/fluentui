@@ -7,7 +7,7 @@ These are not production-ready components and **should never be used in product*
 ## Opt-in CSS Modules styles
 
 The style hooks have sibling `.styles.css.ts` alternatives and CSS assets in the
-`fluentui` layer. Griffel remains the default. Opt-in bundler selection must
+`fluent` layer. Griffel remains the default. Opt-in bundler selection must
 replace both `.styles` source imports and `.styles.js` published imports, including
 the shared nav style module and composed Button/Divider/Drawer hooks. Shared package-local
 hooks explicitly compose their CSS alternatives. Use the CSS/headless icon entry
