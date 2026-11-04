@@ -713,4 +713,42 @@ test.describe('Button', () => {
     await element.focus();
     await expect(element).toBeFocused();
   });
+
+  test('should not submit the form when clicked inside a disabled fieldset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+    const fieldset = page.locator('fieldset');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fieldset>
+          <${tagName} type="submit"></${tagName}>
+        </fieldset>
+      </form>
+    `);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      (node as HTMLFormElement & { submitCount: number }).submitCount = 0;
+      node.addEventListener('submit', (e: Event) => {
+        e.preventDefault();
+        (node as HTMLFormElement & { submitCount: number }).submitCount++;
+      });
+    });
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = true));
+
+    await element.evaluate((node: HTMLElement) => {
+      node.dispatchEvent(new MouseEvent('click'));
+    });
+
+    expect(await form.evaluate((node: HTMLFormElement & { submitCount?: number }) => node.submitCount ?? 0)).toBe(0);
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = false));
+
+    await element.evaluate((node: HTMLElement) => {
+      node.dispatchEvent(new MouseEvent('click'));
+    });
+
+    expect(await form.evaluate((node: HTMLFormElement & { submitCount?: number }) => node.submitCount ?? 0)).toBe(1);
+  });
 });
