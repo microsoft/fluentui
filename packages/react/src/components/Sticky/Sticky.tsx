@@ -239,6 +239,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       //   in the container, to get a horizontal scrollbar & be able to view the complete content of sticky component.
       if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
         height = this.nonStickyContent.offsetHeight;
+        const firstElementChild = this.nonStickyContent.firstElementChild;
         // What value should be substituted for placeholder width?
         // Assumptions:
         //    1. Content inside <Sticky> should always be wrapped in a single div.
@@ -247,10 +248,17 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
         //    3. scrollWidth of a parent is greater than or equal to max of scrollWidths of its children, and same holds
         //       for children.
         // placeholder width should be computed in the best possible way to prevent overscroll/underscroll.
-        width =
-          this.nonStickyContent.firstElementChild.scrollWidth +
-          ((this.nonStickyContent.firstElementChild as HTMLElement).offsetWidth -
-            this.nonStickyContent.firstElementChild.clientWidth);
+        if (firstElementChild.scrollWidth <= firstElementChild.clientWidth) {
+          // The content does not overflow horizontally. scrollWidth, offsetWidth and clientWidth are all rounded to
+          // integers while the true layout width may be fractional (e.g. under browser zoom), so the rounded sum in
+          // the else-branch can be up to 1px wider or narrower than the content really is, which toggles a phantom
+          // horizontal scrollbar in ScrollablePane. Use the exact fractional border-box width instead.
+          width = firstElementChild.getBoundingClientRect().width;
+        } else {
+          width =
+            firstElementChild.scrollWidth +
+            ((firstElementChild as HTMLElement).offsetWidth - firstElementChild.clientWidth);
+        }
       }
       return {
         height,
