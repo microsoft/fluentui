@@ -99,6 +99,8 @@ Consumer requirements:
 - headless/CSS-styled icons imported into the same layer: `@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);`
 - in Shadow DOM, the static styles installed inside each shadow root (CSS Modules don't cross shadow boundaries).
 
+Opting in doesn't remove all runtime style insertion. FluentProvider still inserts theme CSS variables at runtime, components without a CSS alternative fall back to Griffel, and some CSS Modules loaders inject styles at runtime too. Apps that restrict runtime style insertion (for example with a strict CSP) still need to extract CSS to static files and allow, or extract, the styles that are still generated at runtime.
+
 ### Build and tooling
 
 - The Nx build executor copies `**/*.css` into `lib` and `lib-commonjs` for vNext packages that declare CSS side effects.
@@ -110,7 +112,7 @@ Consumer requirements:
 
 ### Shipping as experimental
 
-- Released as `patch` changes in the existing packages. No new package, no new public API, no change to default behavior.
+- Released as `minor` changes (a new opt-in feature) in the existing packages. No new package, no change to default behavior.
 - Documented as **experimental**: class names inside `.module.css`, the layer name, and the file layout may change without a major version bump. Only the opt-in mechanism and the existing hook exports count as contract.
 - Griffel remains the default and the reference implementation. Both are maintained in parallel, with Griffel diffs ported to CSS via the skill above.
 
