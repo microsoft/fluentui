@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Move shared tokens to non-styles file.",
+  "packageName": "@fluentui/react-nav",
+  "email": "owcampbe@microsoft.com",
+  "dependentChangeType": "patch"
+}
