@@ -4,6 +4,4 @@
 
 **No tabster / no Portal**: the headless package does not pull in `@fluentui/react-tabster` for arrow-key trapping or `@fluentui/react-portal` for top-layer rendering. If you need arrow-key navigation, layer it on top of the exposed `setFocusByFirstCharacter`. If you need a portal-style mount node for legacy reasons, the consumer can always wrap `MenuPopover` in their own portal.
 
-**Focus after closing**: when focus remains inside a closing menu, Headless returns it to that menu's trigger, including in open and closed shadow roots. Closing a submenu returns to its parent item. If the application moves focus elsewhere before closing, that focus is preserved.
-
-To reproduce the shadow-root case locally, run `yarn nx run react-headless-components-preview-stories:storybook` and open **Components / Menu / ShadowRootFocus** in the standalone Canvas view (story ID: `components-menu--shadow-root-focus`). Tab into the preview and onto **Open shadow-root menu**, press Enter, then Escape. The menu closes and focus returns to that button. Reopen the menu and click **More actions**, then press Escape; only the submenu closes and focus returns to **More actions**. The example is intentionally unstyled and does not add a focus-restoration handler or an arrow-navigation polyfill.
+**Focus after closing**: menus return focus to their trigger unless focus was deliberately moved elsewhere. This also applies within shadow roots.
