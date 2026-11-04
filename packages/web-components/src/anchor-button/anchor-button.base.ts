@@ -208,7 +208,7 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   private handleNavigation(newTab: boolean): void {
-    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
+    newTab ? window.open(this.href, '_blank', 'noopener,noreferrer') : this.internalProxyAnchor.click();
   }
 
   /**
