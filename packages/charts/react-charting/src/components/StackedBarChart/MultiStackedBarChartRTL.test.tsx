@@ -8,7 +8,7 @@ import {
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { MultiStackedBarChart } from './MultiStackedBarChart';
-import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
+import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps, MultiStackedBarChartVariant } from './index';
 import { DefaultPalette, ThemeProvider, resetIds, setRTL } from '@fluentui/react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -451,5 +451,26 @@ describe('Multi Stacked bar chart - spacing between bars', () => {
         expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(expectedGap);
       }
     });
+
+    test.each([[[40, 60]], [[40, 0, 60, 0]]])(
+      'absolute-scale total label sits at the outer edge of the bars, data %j',
+      values => {
+        setRTL(isRTL);
+        jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+        const { container } = render(
+          <MultiStackedBarChart data={pointsWithZeros(values)} variant={MultiStackedBarChartVariant.AbsoluteScale} />,
+        );
+
+        const bars = Array.from(container.querySelectorAll<SVGRectElement>('rect'))
+          .filter(rect => /^_MSBC_rect_\d+-/.test(rect.id))
+          .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
+          .filter(bar => bar.width > 0);
+        const labelX = parseFloat(container.querySelector('text[aria-label^="Total"]')!.getAttribute('x')!);
+        const outerEdge = isRTL ? Math.min(...bars.map(bar => bar.x)) : Math.max(...bars.map(bar => bar.x + bar.width));
+
+        expect(labelX).toBeCloseTo(outerEdge);
+      },
+    );
   });
 });

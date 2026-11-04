@@ -353,9 +353,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <text
             key="text"
             x={`${
-              this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
-                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
+              this._isRTL ? 100 - prevPosition - value - totalMarginPercent : prevPosition + value + totalMarginPercent
             }%`}
             textAnchor={'start'}
             y={barHeight / 2}
