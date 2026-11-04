@@ -3,6 +3,7 @@ import type { VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteRe
 import { timeParse, utcParse } from 'd3-time-format';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import { VEGA_MAX_DATA_ROWS, VEGA_MAX_DATA_WORK, VEGA_MAX_TEXT_LENGTH } from './VegaLiteBudgets';
+import { SemanticError } from './VegaLiteSemanticError';
 
 export type { VegaDataResolver, VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteResourceLoader.types';
 
@@ -16,20 +17,20 @@ function budget(options: VegaDataParseOptions = {}): Budget {
     remaining: options.maxWork ?? VEGA_MAX_DATA_WORK,
   };
   if (Object.values(limits).some(value => !Number.isSafeInteger(value) || value < 0)) {
-    throw new Error('Invalid Vega resource budget limit');
+    throw new SemanticError('Invalid Vega resource budget limit', 'INVALID', { preserveMessage: true });
   }
   return limits;
 }
 
 function spend(limits: Budget, work: number): void {
   if (!Number.isSafeInteger(work) || work < 0 || (limits.remaining -= work) < 0) {
-    throw new Error('Vega resource work limit exceeded');
+    throw new SemanticError('Vega resource work limit exceeded', 'WORKBUDGET', { preserveMessage: true });
   }
 }
 
 function rowLimit(length: number, limits: Budget): void {
   if (length > limits.maxRows) {
-    throw new Error('Vega resource row limit exceeded');
+    throw new SemanticError('Vega resource row limit exceeded', 'WORKBUDGET', { preserveMessage: true });
   }
 }
 
@@ -47,11 +48,11 @@ function set(value: RecordValue, key: string, item: unknown): void {
 function clone<T>(value: T, limits: Budget, ancestors = new Set<object>(), depth = 0): T {
   spend(limits, 1);
   if (depth > 128) {
-    throw new Error('Vega resource depth exceeds 128');
+    throw new SemanticError('Vega resource depth exceeds 128', 'WORKBUDGET', { preserveMessage: true });
   }
   if (typeof value === 'string') {
     if (value.length > limits.maxTextLength) {
-      throw new Error('Vega resource text limit exceeded');
+      throw new SemanticError('Vega resource text limit exceeded', 'WORKBUDGET', { preserveMessage: true });
     }
     spend(limits, value.length);
   }
@@ -338,7 +339,7 @@ function parseResource(
   let values = payload;
   if (typeof values === 'string') {
     if (values.length > limits.maxTextLength) {
-      throw new Error('Vega resource text limit exceeded');
+      throw new SemanticError('Vega resource text limit exceeded', 'WORKBUDGET', { preserveMessage: true });
     }
     spend(limits, values.length);
     values =

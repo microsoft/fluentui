@@ -1,10 +1,12 @@
 import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import type { VegaLiteDiagnostic } from './VegaLiteDiagnostics';
-import type { VegaLiteSpec } from './VegaLiteTypes';
+import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import { applyVegaTransforms, prepareVegaLiteSpec } from './VegaLiteDataTransforms';
 import { canRenderVegaRangedSpec, getVegaRangedGeometry } from './VegaLiteRangedGeometry';
 import { buildVegaTooltip } from './VegaLiteTooltip';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
+import * as resourceLoader from './VegaLiteResourceLoader';
+import { SemanticError } from './VegaLiteSemanticError';
 import { buildVegaViewTree } from './VegaLiteViewTree';
 import { canRenderVegaCenteredAreaSpec, getVegaCenteredAreaGeometry } from './VegaLiteCenteredArea';
 import {
@@ -24,6 +26,112 @@ const unit = (properties: Record<string, unknown> = {}): VegaLiteSpec =>
 const raw = (value: unknown): VegaLiteSpec => value as VegaLiteSpec;
 const paths = (diagnostics: VegaLiteDiagnostic[], code: string): string[] =>
   diagnostics.filter(item => item.code === code).map(item => item.path);
+
+describe.each(['legacy', 'strict'] as const)('canonical-resource-budget diagnostics in %s mode', mode => {
+  const capture = (run: () => unknown): Error => {
+    try {
+      run();
+    } catch (error) {
+      if (error instanceof Error) {
+        return error;
+      }
+      throw error;
+    }
+    throw new Error('Expected a real loader failure');
+  };
+  const diagnose = (failure: unknown): VegaLiteDiagnostic[] => {
+    const parser = jest.spyOn(resourceLoader, 'parseVegaDataValues').mockImplementation(() => {
+      throw failure;
+    });
+    try {
+      const diagnostics = validateVegaLiteSpec(unit({ data: { values: '[]' } }), { mode });
+      expect(parser).toHaveBeenCalledTimes(1);
+      return diagnostics;
+    } finally {
+      parser.mockRestore();
+    }
+  };
+
+  it.each(['row', 'text', 'work', 'depth'] as const)(
+    'classifies a real %s exhaustion by identity and code after its name and message become stop',
+    kind => {
+      const failure = capture(() => {
+        if (kind === 'row') {
+          return parseVegaDataValues({ values: [{}, {}] }, { maxRows: 1 });
+        }
+        if (kind === 'text') {
+          return parseVegaDataValues({ values: '[]' } as unknown as VegaLiteData, { maxTextLength: 1 });
+        }
+        if (kind === 'work') {
+          return parseVegaDataValues({ values: [] }, { maxWork: 0 });
+        }
+        let row: Record<string, unknown> = {};
+        for (let depth = 0; depth < 128; depth++) {
+          row = { nested: row };
+        }
+        return parseVegaDataValues({ values: [row] });
+      });
+      failure.name = 'stop';
+      failure.message = 'stop';
+      expect(diagnose(failure)).toEqual([
+        expect.objectContaining({
+          code: 'work-limit',
+          path: '$.data.values',
+          severity: 'error',
+          message: 'Data parsing exceeds the bounded inspection budget.',
+        }),
+      ]);
+      expect(failure).toBeInstanceOf(SemanticError);
+      expect(failure).toMatchObject({ code: 'WORKBUDGET', name: 'stop', message: 'stop' });
+    },
+  );
+
+  it.each([new Error('work limit exceeded'), { code: 'WORKBUDGET' }])(
+    'does not promote untyped text or a forged code to a budget diagnostic: %j',
+    failure => {
+      expect(diagnose(failure)).toEqual([
+        expect.objectContaining({
+          code: 'invalid-data',
+          path: '$.data.values',
+          severity: 'error',
+          message: 'Inline/named data cannot be parsed with this format.',
+        }),
+      ]);
+    },
+  );
+
+  it.each([NaN, -1, 'wrong-type'])('treats a real invalid budget configuration %s as invalid data', value => {
+    const failure = capture(() => parseVegaDataValues({ values: [] }, { maxWork: value as number }));
+    expect(diagnose(failure)).toEqual([
+      expect.objectContaining({ code: 'invalid-data', path: '$.data.values', severity: 'error' }),
+    ]);
+    expect(failure).toBeInstanceOf(SemanticError);
+    expect(failure).toMatchObject({ code: 'INVALID', message: 'Invalid Vega resource budget limit' });
+  });
+});
+
+describe('canonical-resource-budget parse boundary', () => {
+  it('rejects actual 100001 JSON-text rows in the parser, not the snapshot, in both modes', () => {
+    const values = `[${'{},'.repeat(100000)}{}]`;
+    const parser = jest.spyOn(resourceLoader, 'parseVegaDataValues');
+    try {
+      for (const mode of ['legacy', 'strict'] as const) {
+        expect(validateVegaLiteSpec(unit({ data: { values } }), { mode })).toEqual([
+          expect.objectContaining({ code: 'work-limit', path: '$.data.values', severity: 'error' }),
+        ]);
+        expect(parser).toHaveBeenCalledTimes(1);
+        expect(parser.mock.results[0]).toEqual({ type: 'throw', value: expect.any(SemanticError) });
+        expect(parser.mock.results[0].value).toMatchObject({
+          code: 'WORKBUDGET',
+          message: 'Vega resource row limit exceeded',
+        });
+        parser.mockClear();
+      }
+    } finally {
+      parser.mockRestore();
+    }
+  });
+});
 
 describe('separate bounded grammar and row-data inspection', () => {
   it.each(['legacy', 'strict'] as const)('accepts actual 100000 four-field rows with explicit parses in %s', mode => {

@@ -1,5 +1,8 @@
 import { aggregateVegaValues, applyVegaTransforms, prepareVegaLiteSpec, readVegaField } from './VegaLiteDataTransforms';
 import type { VegaLiteSpec } from './VegaLiteTypes';
+import { densityVegaRows, loessVegaRows } from './VegaLiteStatistics';
+import type { VegaStatisticsContext } from './VegaLiteStatistics';
+import { SemanticError } from './VegaLiteSemanticError';
 
 const strict = { mode: 'strict' as const };
 const transform = (rows: Record<string, unknown>[], spec: Record<string, unknown>) =>
@@ -439,6 +442,57 @@ describe('faithful Vega Gaussian KDE', () => {
 });
 
 describe('statistical safety and scalar validity', () => {
+  const statisticsContext = (spend = jest.fn()): VegaStatisticsContext => ({
+    readField: readVegaField,
+    groups: rows => [{ rows, keys: [] }],
+    groupRow: () => ({}),
+    spend,
+  });
+
+  it.each(['steps', 'minsteps', 'maxsteps'])('types the density %s limit at its producer', key => {
+    const ctx = statisticsContext();
+    expect(() => densityVegaRows([], { density: 'v', [key]: 10001 }, ctx)).toThrow(SemanticError);
+    expect(() => densityVegaRows([], { density: 'v', [key]: 10001 }, ctx)).toThrow(
+      expect.objectContaining({ code: 'WORKBUDGET', message: 'Vega semantics: density steps work limit exceeded' }),
+    );
+    expect(ctx.spend).not.toHaveBeenCalled();
+    expect(densityVegaRows([], { density: 'v', [key]: 10000 }, ctx)).toEqual([]);
+  });
+
+  it.each([
+    ['loess', 1],
+    ['loess', 2],
+    ['density', 1],
+    ['density', 2],
+    ['density', 3],
+  ] as const)('preserves canonical errors from %s spend phase %s independent of wording', (kind, phase) => {
+    const failure = new SemanticError('work limit exceeded', 'WORKBUDGET');
+    failure.message = 'stop';
+    const spend = jest.fn(() => {
+      if (spend.mock.calls.length === phase) {
+        throw failure;
+      }
+    });
+    const ctx = statisticsContext(spend);
+    const rows = [
+      { x: 0, y: 1 },
+      { x: 1, y: 3 },
+    ];
+    let caught: unknown;
+    try {
+      if (kind === 'loess') {
+        loessVegaRows(rows, { loess: 'y', on: 'x' }, ctx);
+      } else {
+        densityVegaRows(rows, { density: 'y', steps: 2 }, ctx);
+      }
+    } catch (error) {
+      caught = error;
+    }
+    expect(caught).toBe(failure);
+    expect(caught).toMatchObject({ code: 'WORKBUDGET', message: 'stop' });
+    expect(spend).toHaveBeenCalledTimes(phase);
+  });
+
   it.each(['strict', 'legacy'] as const)('never swallows LOESS/KDE work-budget limits in %s mode', mode => {
     const options = { mode };
     const runs = [

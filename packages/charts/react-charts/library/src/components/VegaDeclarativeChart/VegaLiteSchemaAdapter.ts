@@ -62,6 +62,8 @@ import { readVegaField, readVegaOwnData as ownValue } from './VegaLiteField';
 import type { VegaSemanticOptions, VegaDataRow } from './VegaLiteData.types';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
+import { classifyPreparedVegaChart, nativeTooltipBinding } from './VegaLiteCapabilities';
+import type { VegaNativeChartKind } from './VegaLiteCapabilities';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.
@@ -86,7 +88,7 @@ const DEFAULT_CHART_HEIGHT = 350;
 const DEFAULT_MAX_BAR_WIDTH = 50;
 const DEFAULT_TRUNCATE_CHARS = 20;
 
-type AdapterKind = ChartTypeResult['type'];
+type AdapterKind = VegaNativeChartKind;
 const preparedSpecs = new WeakSet<object>();
 const tooltipSpecs = new WeakMap<object, VegaLiteSpec>();
 const aggregateFields = new WeakMap<object, Set<string>>();
@@ -450,40 +452,54 @@ function attachSemanticTooltips<T extends object>(
   };
   const records = (value: unknown): VegaDataRow[] => (Array.isArray(value) ? value.filter(isRecord) : []);
   const chart = props.data;
-  if (kind === 'line' || kind === 'area' || kind === 'scatter') {
-    const series = records(ownValue(chart, kind === 'scatter' ? 'scatterChartData' : 'lineChartData'));
-    series.forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, group.legend)));
-  } else if (kind === 'stacked-bar') {
-    records(chart).forEach(stack => {
-      records(stack.chartData).forEach(point => bind(point, stack.xAxisPoint, point.data, point.legend));
-      records(stack.lineData).forEach(point => bind(point, stack.xAxisPoint, point.y, point.legend));
-      stack.stackCallOutAccessibilityData = {
-        ariaLabel: records(stack.chartData)
-          .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
-          .filter(Boolean)
-          .join('; '),
-      };
-    });
-  } else if (kind === 'grouped-bar') {
-    records(chart).forEach(group => {
-      records(group.series).forEach(point => bind(point, group.name, point.data, point.legend));
-      group.stackCallOutAccessibilityData = {
-        ariaLabel: records(group.series)
-          .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
-          .filter(Boolean)
-          .join('; '),
-      };
-    });
-  } else if (kind === 'heatmap') {
-    records(chart).forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, undefined)));
-  } else if (kind === 'polar') {
-    records(chart).forEach(group =>
-      records(group.data).forEach(point => bind(point, point.theta, point.r, group.legend)),
-    );
-  } else if (kind === 'donut') {
-    records(ownValue(chart, 'chartData')).forEach(point => bind(point, undefined, point.data, point.legend));
-  } else {
-    records(chart).forEach(point => bind(point, point.x, point.y, point.legend));
+  const tooltipBinding = nativeTooltipBinding[kind];
+  switch (tooltipBinding.strategy) {
+    case 'xy-series': {
+      const series = records(ownValue(chart, tooltipBinding.series));
+      series.forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, group.legend)));
+      break;
+    }
+    case 'stacked':
+      records(chart).forEach(stack => {
+        records(stack.chartData).forEach(point => bind(point, stack.xAxisPoint, point.data, point.legend));
+        records(stack.lineData).forEach(point => bind(point, stack.xAxisPoint, point.y, point.legend));
+        stack.stackCallOutAccessibilityData = {
+          ariaLabel: records(stack.chartData)
+            .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
+            .filter(Boolean)
+            .join('; '),
+        };
+      });
+      break;
+    case 'grouped':
+      records(chart).forEach(group => {
+        records(group.series).forEach(point => bind(point, group.name, point.data, point.legend));
+        group.stackCallOutAccessibilityData = {
+          ariaLabel: records(group.series)
+            .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
+            .filter(Boolean)
+            .join('; '),
+        };
+      });
+      break;
+    case 'heatmap':
+      records(chart).forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, undefined)));
+      break;
+    case 'polar':
+      records(chart).forEach(group =>
+        records(group.data).forEach(point => bind(point, point.theta, point.r, group.legend)),
+      );
+      break;
+    case 'donut':
+      records(ownValue(chart, 'chartData')).forEach(point => bind(point, undefined, point.data, point.legend));
+      break;
+    case 'points':
+      records(chart).forEach(point => bind(point, point.x, point.y, point.legend));
+      break;
+    default: {
+      const unhandled: never = tooltipBinding;
+      throw new Error(`VegaLiteSchemaAdapter: Unsupported tooltip binding '${unhandled}'`);
+    }
   }
   // Null custom content otherwise falls back to the native unfiltered callout.
   if (bindings.length > 0 && !hasTooltipContent) {
@@ -549,12 +565,16 @@ function attachSemanticTooltips<T extends object>(
         );
   };
   props.onRenderCalloutPerDataPoint = content;
-  if (kind === 'scatter') {
+  if (tooltipBinding.strategy === 'xy-series' && tooltipBinding.series === 'scatterChartData') {
     // The legacy Scatter hooks contain all values at x (and deduplicate equal
     // coordinates). The dedicated hook retains the actual source point identity.
     props.onRenderCalloutPerPoint = content;
   }
-  if (kind === 'line' || kind === 'area' || kind === 'scatter' || kind === 'stacked-bar' || kind === 'grouped-bar') {
+  if (
+    tooltipBinding.strategy === 'xy-series' ||
+    tooltipBinding.strategy === 'stacked' ||
+    tooltipBinding.strategy === 'grouped'
+  ) {
     props.onRenderCalloutPerStack = content;
   }
 }
@@ -1970,18 +1990,7 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
 }
 
 export type ChartTypeResult = {
-  type:
-    | 'line'
-    | 'bar'
-    | 'stacked-bar'
-    | 'grouped-bar'
-    | 'horizontal-bar'
-    | 'area'
-    | 'scatter'
-    | 'donut'
-    | 'heatmap'
-    | 'histogram'
-    | 'polar';
+  type: VegaNativeChartKind;
   mark: string;
 };
 
@@ -1992,106 +2001,7 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
   spec = prepareAdapterSpec(spec);
   // Auto-correct encoding types based on actual data BEFORE chart type detection
   autoCorrectEncodingTypes(spec);
-
-  // Handle layered specs - check if it's a bar+line combo for stacked bar with lines
-  if (spec.layer && spec.layer.length > 1) {
-    const marks = spec.layer.map((layer: VegaLiteUnitSpec) => getMarkType(layer.mark));
-    const hasBar = marks.includes('bar');
-    const hasLine = marks.includes('line') || marks.includes('point');
-
-    // Bar + line combo should use stacked bar chart (which supports line overlays)
-    if (hasBar && hasLine) {
-      const barLayer = spec.layer.find((layer: VegaLiteUnitSpec) => getMarkType(layer.mark) === 'bar');
-
-      if (barLayer?.encoding?.color?.field) {
-        return { type: 'stacked-bar', mark: 'bar' };
-      }
-      return { type: 'stacked-bar', mark: 'bar' };
-    }
-  }
-
-  // Handle layered specs - use first layer's mark for other cases
-  const mark = spec.layer ? spec.layer[0]?.mark : spec.mark;
-  const markType = getMarkType(mark);
-
-  const encoding = spec.layer ? spec.layer[0]?.encoding : spec.encoding;
-  const hasColorEncoding = !!encoding?.color?.field;
-
-  // Polar charts with arc marks: theta AND radius encodings
-  if (markType === 'arc' && encoding?.theta && encoding?.radius) {
-    return { type: 'polar', mark: markType };
-  }
-
-  // Arc marks for pie/donut charts (theta only, no radius)
-  if (markType === 'arc' && encoding?.theta) {
-    return { type: 'donut', mark: markType };
-  }
-
-  // Polar charts: non-arc marks with theta and radius encodings
-  if (encoding?.theta && encoding?.radius) {
-    return { type: 'polar', mark: markType! };
-  }
-
-  // Rect marks for heatmaps (quantitative or nominal color)
-  if (markType === 'rect' && encoding?.x?.field && encoding?.y?.field && encoding?.color?.field) {
-    return { type: 'heatmap', mark: markType };
-  }
-
-  // Bar charts
-  if (markType === 'bar') {
-    const bin = ownValue(encoding?.x, 'bin');
-    // 'binned' declares existing interval endpoints; it must never trigger rebinning.
-    if (bin === true || isRecord(bin)) {
-      return { type: 'histogram', mark: markType };
-    }
-
-    const isXNominal = encoding?.x?.type === 'nominal' || encoding?.x?.type === 'ordinal';
-    const isYNominal = encoding?.y?.type === 'nominal' || encoding?.y?.type === 'ordinal';
-
-    if (isYNominal && !isXNominal) {
-      return { type: 'horizontal-bar', mark: markType };
-    }
-
-    if (hasColorEncoding) {
-      const hasXOffset = !!encoding?.xOffset;
-      if (hasXOffset) {
-        return { type: 'grouped-bar', mark: markType };
-      }
-      return { type: 'stacked-bar', mark: markType };
-    }
-
-    const xField = encoding?.x?.field;
-    const dataValues = spec.data?.values;
-    if (xField && Array.isArray(dataValues) && dataValues.length > 0) {
-      const xValues = dataValues.map((row: Record<string, unknown>) => row[xField]);
-      const uniqueXValues = new Set(xValues);
-      if (uniqueXValues.size < xValues.length) {
-        return { type: 'stacked-bar', mark: markType };
-      }
-    }
-
-    return { type: 'bar', mark: markType };
-  }
-
-  if (markType === 'area') {
-    return { type: 'area', mark: markType };
-  }
-
-  if (markType === 'point' || markType === 'circle' || markType === 'square' || markType === 'tick') {
-    return { type: 'scatter', mark: markType };
-  }
-
-  // Trail marks rendered as line charts (size encoding as markerSize)
-  if (markType === 'trail') {
-    return { type: 'line', mark: 'line' };
-  }
-
-  // Error bar/band marks rendered as line charts
-  if (markType === 'errorbar' || markType === 'errorband') {
-    return { type: 'line', mark: 'line' };
-  }
-
-  return { type: 'line', mark: markType || 'line' };
+  return classifyPreparedVegaChart(spec);
 }
 
 function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): LineChartProps {

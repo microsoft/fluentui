@@ -6,18 +6,8 @@ import { getIntrinsicElementProps, useId } from '@fluentui/react-utilities';
 import { scaleLinear, scalePoint, scaleTime, scaleUtc } from 'd3-scale';
 import { format } from 'd3-format';
 import { timeFormat, utcFormat } from 'd3-time-format';
-import {
-  area,
-  curveLinear,
-  curveStep,
-  curveStepBefore,
-  curveStepAfter,
-  curveBasis,
-  curveCardinal,
-  curveMonotoneX,
-  curveNatural,
-} from 'd3-shape';
-import type { VegaLitePositionEncoding, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
+import { area } from 'd3-shape';
+import type { VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
 import { readVegaField } from './VegaLiteField';
 import { getVegaCenterStack } from './VegaLiteStackGeometry';
 import { getVegaColor } from './VegaLiteColorAdapter';
@@ -27,13 +17,19 @@ import { useVegaLiteCenteredAreaStyles } from './useVegaLiteCenteredAreaStyles.s
 import { getVegaLiteChartTitle, vegaLiteChartPresentation } from './VegaLiteChartPresentation';
 import { VegaLiteChartShell } from './VegaLiteChartShell';
 import { useVegaLiteChartInteraction } from './useVegaLiteChartInteraction';
+import {
+  canRenderVegaCenteredAreaSpec,
+  vegaCenteredAreaCurves as curves,
+  getVegaCenteredAreaMark as mark,
+  getVegaCenteredAreaOrder as orderFields,
+  getVegaCenteredAreaUnits as unitsFor,
+} from './VegaLiteCenteredAreaCapabilities';
+import type { VegaCenteredAreaPosition as Position } from './VegaLiteCenteredAreaCapabilities';
+
+export { canRenderVegaCenteredAreaSpec } from './VegaLiteCenteredAreaCapabilities';
 
 export type VegaCenteredAreaRow = Record<string, unknown>;
 type Scalar = string | number | boolean;
-type Position = VegaLitePositionEncoding & {
-  impute?: null;
-  scale?: VegaLitePositionEncoding['scale'] & { clamp?: boolean };
-};
 export type VegaCenteredAreaPoint = {
   key: string;
   /** Source tuples are never changed; an imputed vertex has no source row and is not interactive. */
@@ -64,16 +60,6 @@ export type VegaCenteredAreaGeometry = {
   warnings: string[];
 };
 
-const curves = {
-  linear: curveLinear,
-  step: curveStep,
-  'step-before': curveStepBefore,
-  'step-after': curveStepAfter,
-  basis: curveBasis,
-  cardinal: curveCardinal,
-  monotone: curveMonotoneX,
-  natural: curveNatural,
-};
 const scalar = (value: unknown): Scalar | undefined => {
   if (value instanceof Date) {
     const timestamp = Date.prototype.getTime.call(value);
@@ -95,138 +81,6 @@ const numeric = (value: unknown, temporal = false): number => {
   }
   return temporal ? new Date(value).getTime() : Number(value);
 };
-type AreaMark = Partial<Exclude<NonNullable<VegaLiteSpec['mark']>, string>>;
-const mark = (spec: VegaLiteSpec): AreaMark => (typeof spec.mark === 'object' ? spec.mark : { type: spec.mark });
-const composition = (spec: VegaLiteSpec) =>
-  !!(spec.concat || spec.hconcat || spec.vconcat || spec.facet || spec.repeat || spec.spec);
-const orderFields = (spec: VegaLiteSpec) => {
-  const order = spec.encoding?.order;
-  return order ? (Array.isArray(order) ? order : [order]) : [];
-};
-const unitsFor = (spec: VegaLiteSpec): VegaLiteSpec[] =>
-  spec.layer?.map(layer => ({
-    ...layer,
-    data: layer.data ?? spec.data,
-    encoding: { ...spec.encoding, ...layer.encoding },
-    config: { ...spec.config, ...(layer as VegaLiteSpec).config },
-  })) ?? [spec];
-
-function supportedUnit(spec: VegaLiteSpec): boolean {
-  const encoding = spec.encoding;
-  const x = encoding?.x;
-  const y = encoding?.y as Position | undefined;
-  const color = encoding?.color;
-  const definition = mark(spec);
-  if (
-    composition(spec) ||
-    spec.layer ||
-    definition.type !== 'area' ||
-    definition.orient === 'horizontal' ||
-    !x?.field ||
-    !y?.field ||
-    y.type !== 'quantitative' ||
-    y.stack !== 'center' ||
-    !['quantitative', 'temporal', 'ordinal'].includes(x.type ?? '') ||
-    x.stack ||
-    x.bin ||
-    y.bin ||
-    x.scale === null ||
-    y.scale === null ||
-    (y.scale?.type && y.scale.type !== 'linear') ||
-    (y.impute !== undefined && y.impute !== null) ||
-    (definition.interpolate && !(definition.interpolate in curves))
-  ) {
-    return false;
-  }
-  if (
-    x.scale?.type &&
-    !(x.type === 'quantitative'
-      ? x.scale.type === 'linear'
-      : x.type === 'temporal'
-      ? ['time', 'utc'].includes(x.scale.type)
-      : ['point', 'ordinal'].includes(x.scale.type))
-  ) {
-    return false;
-  }
-  if (x.sort && typeof x.sort === 'object' && !Array.isArray(x.sort)) {
-    return false;
-  }
-  if (
-    color &&
-    (color.condition ||
-      (color.field && color.type !== 'nominal') ||
-      (!color.field && typeof color.value !== 'string') ||
-      color.scale === null ||
-      (color.scale?.type && color.scale.type !== 'ordinal'))
-  ) {
-    return false;
-  }
-  const channels = new Set(['x', 'y', 'color', 'order', 'tooltip']);
-  if (
-    Object.keys(encoding!).some(channel => !channels.has(channel) && readVegaField(encoding, channel) !== undefined)
-  ) {
-    return false;
-  }
-  return orderFields(spec).every(
-    item =>
-      typeof item.field === 'string' &&
-      (item.sort === undefined || item.sort === 'ascending' || item.sort === 'descending'),
-  );
-}
-
-/** Only prepared scalar vertical center areas and flat compatible all-center-area layers are claimed. */
-export function canRenderVegaCenteredAreaSpec(spec: VegaLiteSpec): boolean {
-  if (!spec.layer) {
-    return supportedUnit(spec);
-  }
-  if (
-    !spec.layer.length ||
-    composition(spec) ||
-    ['x', 'y', 'color'].some(channel => readVegaField(spec.resolve?.scale, channel) === 'independent') ||
-    ['x', 'y'].some(channel => readVegaField(spec.resolve?.axis, channel) === 'independent') ||
-    spec.resolve?.legend?.color === 'independent'
-  ) {
-    return false;
-  }
-  const units = unitsFor(spec);
-  if (!units.every(supportedUnit)) {
-    return false;
-  }
-  return (['x', 'y', 'color'] as const).every(channel => {
-    const definitions = units.map(unit => unit.encoding?.[channel]);
-    const first = definitions.find(Boolean);
-    if (!first) {
-      return true;
-    }
-    const signature = (definition: NonNullable<typeof first>) =>
-      JSON.stringify({
-        type: definition.type,
-        scaleType:
-          definition.scale?.type ??
-          (channel === 'color'
-            ? 'ordinal'
-            : definition.type === 'temporal'
-            ? 'time'
-            : definition.type === 'ordinal'
-            ? 'point'
-            : 'linear'),
-        reverse: definition.scale?.reverse ?? false,
-        zero: definition.scale?.zero ?? definition.type === 'quantitative',
-        clamp: (definition as Position).scale?.clamp ?? false,
-        range: definition.scale?.range,
-        scheme: definition.scale?.scheme,
-        sort: channel === 'x' ? (definition as Position).sort : undefined,
-      });
-    const domains = definitions.flatMap(definition => (definition?.scale?.domain ? [definition.scale.domain] : []));
-    return (
-      definitions.every(definition =>
-        definition ? signature(definition) === signature(first) : channel === 'color',
-      ) &&
-      (channel === 'color' || domains.every(domain => JSON.stringify(domain) === JSON.stringify(domains[0])))
-    );
-  });
-}
-
 type Vertex = {
   category: Scalar;
   series: Scalar;

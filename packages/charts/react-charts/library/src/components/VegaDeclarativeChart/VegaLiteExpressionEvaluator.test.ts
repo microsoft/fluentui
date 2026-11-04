@@ -1,6 +1,58 @@
 import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
+import { SemanticError } from './VegaLiteSemanticError';
 
 describe('VegaLiteExpressionEvaluator', () => {
+  describe('typed work budgets', () => {
+    it.each([
+      ['source length', ' '.repeat(10001)],
+      ['token count', '!'.repeat(9999) + '1'],
+      ['parentheses', '('.repeat(101) + '1' + ')'.repeat(101)],
+      ['unary operators', '!'.repeat(101) + '1'],
+      ['built-in calls', 'abs('.repeat(101) + '1' + ')'.repeat(101)],
+      ['bracket expressions', 'datum['.repeat(101) + '1' + ']'.repeat(101)],
+      ['ternaries', 'true?1:'.repeat(101) + '1'],
+    ])('rejects excessive %s before reading datum accessors', (_name, expression) => {
+      const getter = jest.fn(() => 1);
+      const datum = Object.defineProperty({}, 'value', { get: getter });
+      expect(() => safeEvaluateExpression(expression, datum)).toThrow(expect.objectContaining({ code: 'WORKBUDGET' }));
+      expect(() => safeEvaluateExpression(expression, datum)).toThrow(SemanticError);
+      expect(getter).not.toHaveBeenCalled();
+    });
+
+    it('accepts bounded source length and parser depth', () => {
+      expect(safeEvaluateExpression('1' + ' '.repeat(9999), {})).toBe(1);
+      expect(safeEvaluateExpression('('.repeat(100) + '1' + ')'.repeat(100), {})).toBe(1);
+      expect(safeEvaluateExpression('!'.repeat(100) + 'true', {})).toBe(true);
+    });
+
+    it('types array work exhaustion without changing its existing message or invoking getters', () => {
+      const getter = jest.fn(() => 1);
+      const value = new Array(100001);
+      Object.defineProperty(value, '0', { get: getter });
+      expect(() => safeEvaluateExpression('toString(datum.value)', { value })).toThrow(
+        expect.objectContaining({
+          code: 'WORKBUDGET',
+          message: 'Safe expression evaluator: array conversion work limit exceeded',
+        }),
+      );
+      expect(() => safeEvaluateExpression('toString(datum.value)', { value })).toThrow(SemanticError);
+      expect(getter).not.toHaveBeenCalled();
+    });
+
+    it('types cumulative array work and nested array depth exhaustion', () => {
+      const shared = new Array(50000);
+      let nested: unknown[] = [];
+      for (let i = 0; i < 102; i++) {
+        nested = [nested];
+      }
+      for (const value of [[shared, shared], nested]) {
+        expect(() => safeEvaluateExpression('toNumber(datum.value)', { value })).toThrow(
+          expect.objectContaining({ code: 'WORKBUDGET' }),
+        );
+      }
+    });
+  });
+
   // -------------------------------------------------------------------
   // Safe expressions that SHOULD work
   // -------------------------------------------------------------------

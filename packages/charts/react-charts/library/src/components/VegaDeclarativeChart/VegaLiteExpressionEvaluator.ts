@@ -20,6 +20,11 @@
  */
 
 import { getVegaOwnDataDescriptor } from './VegaLiteField';
+import { SemanticError } from './VegaLiteSemanticError';
+
+const MAX_EXPRESSION_LENGTH = 10000;
+const MAX_EXPRESSION_TOKENS = 10000;
+const MAX_EXPRESSION_DEPTH = 100;
 
 // ---------------------------------------------------------------------------
 // Token types
@@ -57,7 +62,9 @@ function safeToString(value: unknown): string {
       }
       const length = ownDataValue(input, 'length') as number;
       if (depth > 100 || (work += length) > 100000) {
-        throw new Error('Safe expression evaluator: array conversion work limit exceeded');
+        throw new SemanticError('Safe expression evaluator: array conversion work limit exceeded', 'WORKBUDGET', {
+          preserveMessage: true,
+        });
       }
       active.add(input);
       const items: string[] = [];
@@ -280,6 +287,11 @@ function tokenize(expr: string): Token[] {
     throw new Error(`Safe expression evaluator: unexpected character '${ch}' at position ${i}`);
   }
 
+  if (tokens.length >= MAX_EXPRESSION_TOKENS) {
+    throw new SemanticError('Safe expression evaluator: token work limit exceeded', 'WORKBUDGET', {
+      preserveMessage: true,
+    });
+  }
   tokens.push({ type: 'eof', value: null, start: i });
   return tokens;
 }
@@ -304,6 +316,8 @@ class ExpressionParser {
   private tokens: Token[];
   private pos: number;
   private context: Record<string, unknown>;
+  // The top-level expression is not nested; only recursive expressions and unary operators consume depth.
+  private depth = -1;
 
   constructor(tokens: Token[], context: Record<string, unknown>) {
     this.tokens = tokens;
@@ -342,7 +356,20 @@ class ExpressionParser {
   }
 
   private _parseExpression(): unknown {
-    return this._parseTernary();
+    this._enterDepth();
+    try {
+      return this._parseTernary();
+    } finally {
+      this.depth--;
+    }
+  }
+
+  private _enterDepth(): void {
+    if (++this.depth > MAX_EXPRESSION_DEPTH) {
+      throw new SemanticError('Safe expression evaluator: parser depth limit exceeded', 'WORKBUDGET', {
+        preserveMessage: true,
+      });
+    }
   }
 
   private _parseTernary(): unknown {
@@ -476,19 +503,18 @@ class ExpressionParser {
   }
 
   private _parseUnary(): unknown {
-    if (this._peek().type === '!') {
-      this._advance();
-      return !this._parseUnary();
+    const type = this._peek().type;
+    if (type !== '!' && type !== '-' && type !== '+') {
+      return this._parsePostfix();
     }
-    if (this._peek().type === '-') {
-      this._advance();
-      return -(safeOperand(this._parseUnary()) as number);
+    this._advance();
+    this._enterDepth();
+    try {
+      const value = this._parseUnary();
+      return type === '!' ? !value : type === '-' ? -(safeOperand(value) as number) : +(safeOperand(value) as number);
+    } finally {
+      this.depth--;
     }
-    if (this._peek().type === '+') {
-      this._advance();
-      return +(safeOperand(this._parseUnary()) as number);
-    }
-    return this._parsePostfix();
   }
 
   private _parsePostfix(): unknown {
@@ -595,6 +621,11 @@ class ExpressionParser {
  * @throws Error if the expression contains disallowed constructs
  */
 export function safeEvaluateExpression(expr: string, datum: Record<string, unknown>): unknown {
+  if (expr.length > MAX_EXPRESSION_LENGTH) {
+    throw new SemanticError('Safe expression evaluator: expression work limit exceeded', 'WORKBUDGET', {
+      preserveMessage: true,
+    });
+  }
   const tokens = tokenize(expr);
   const parser = new ExpressionParser(tokens, { datum });
   return parser.parse();

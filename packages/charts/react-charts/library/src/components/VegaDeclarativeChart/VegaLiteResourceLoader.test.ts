@@ -1,12 +1,138 @@
 import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import { parseVegaDataValues, resolveVegaLiteResources } from './VegaLiteResourceLoader';
-import type { VegaDataResolver } from './VegaLiteResourceLoader';
+import type { VegaDataParseOptions, VegaDataResolver } from './VegaLiteResourceLoader';
+import { SemanticError } from './VegaLiteSemanticError';
 import { timeParse, utcParse } from 'd3-time-format';
 
 const origin = 'https://charts.example';
 function options(resolveData: VegaDataResolver, signal = new AbortController().signal) {
   return { resolveData, signal, allowedOrigins: [origin], baseUrl: `${origin}/app/` };
 }
+
+describe('canonical-resource-budget loader failures', () => {
+  const nestedRow = (): Record<string, unknown> => {
+    let row: Record<string, unknown> = {};
+    for (let depth = 0; depth < 128; depth++) {
+      row = { nested: row };
+    }
+    return row;
+  };
+  const capture = (run: () => unknown): unknown => {
+    try {
+      run();
+    } catch (error) {
+      return error;
+    }
+    throw new Error('Expected a resource failure');
+  };
+  const expectFailure = (error: unknown, code: 'WORKBUDGET' | 'INVALID', message: string): void => {
+    expect(error).toBeInstanceOf(Error);
+    expect(error).toBeInstanceOf(SemanticError);
+    expect(error).toMatchObject({ code, message });
+    if (error instanceof Error) {
+      error.name = 'stop';
+      error.message = 'stop';
+    }
+    expect(error).toBeInstanceOf(Error);
+    expect(error).toBeInstanceOf(SemanticError);
+    expect(error).toMatchObject({ code, name: 'stop', message: 'stop' });
+  };
+  const cases: Array<{
+    label: string;
+    data: () => VegaLiteData;
+    limits?: VegaDataParseOptions;
+    message: string;
+  }> = [
+    {
+      label: 'record rows',
+      data: () => ({ values: [{ n: 1 }, { n: 2 }] }),
+      limits: { maxRows: 1 },
+      message: 'Vega resource row limit exceeded',
+    },
+    {
+      label: 'delimited rows',
+      data: () => ({ values: 'n\n1\n2\n', format: { type: 'csv' } } as unknown as VegaLiteData),
+      limits: { maxRows: 1 },
+      message: 'Vega resource row limit exceeded',
+    },
+    {
+      label: 'resource text',
+      data: () => ({ values: JSON.stringify([{ text: 'x'.repeat(17) }]) } as unknown as VegaLiteData),
+      limits: { maxTextLength: 16 },
+      message: 'Vega resource text limit exceeded',
+    },
+    {
+      label: 'cloned text',
+      data: () => ({ values: [{ text: 'x'.repeat(17) }] }),
+      limits: { maxTextLength: 16 },
+      message: 'Vega resource text limit exceeded',
+    },
+    {
+      label: 'text parsing work',
+      data: () => ({ values: JSON.stringify([{ text: 'x'.repeat(101) }]) } as unknown as VegaLiteData),
+      limits: { maxWork: 100 },
+      message: 'Vega resource work limit exceeded',
+    },
+    {
+      label: 'cloning work',
+      data: () => ({ values: [{ text: 'x'.repeat(101) }] }),
+      limits: { maxWork: 100 },
+      message: 'Vega resource work limit exceeded',
+    },
+    {
+      label: 'default depth',
+      data: () => ({ values: [nestedRow()] }),
+      message: 'Vega resource depth exceeds 128',
+    },
+    {
+      label: 'default rows',
+      data: () => ({ values: new Array(100001) }),
+      message: 'Vega resource row limit exceeded',
+    },
+  ];
+
+  it.each(cases)('preserves the exact $label exhaustion message and canonical code in pure parsing', test => {
+    const error = capture(() => parseVegaDataValues(test.data(), test.limits));
+    expectFailure(error, 'WORKBUDGET', test.message);
+  });
+
+  it.each(cases)('preserves the exact $label exhaustion message and canonical code in host resources', async test => {
+    const data = test.data();
+    const host = jest.fn(async () => data.values);
+    const error = await resolveVegaLiteResources(
+      { data: { url: 'a.json', ...(data.format ? { format: data.format } : {}) } },
+      { ...options(host), ...test.limits },
+    ).catch(failure => failure);
+    expect(host).toHaveBeenCalledTimes(1);
+    expectFailure(error, 'WORKBUDGET', test.message);
+  });
+
+  it('uses the same canonical failure when the initial spec clone exceeds the default row limit', async () => {
+    const host = jest.fn(async () => []);
+    const error = await resolveVegaLiteResources({ data: { values: new Array(100001) } }, options(host)).catch(
+      failure => failure,
+    );
+    expectFailure(error, 'WORKBUDGET', 'Vega resource row limit exceeded');
+    expect(host).not.toHaveBeenCalled();
+  });
+
+  describe.each(['maxRows', 'maxTextLength', 'maxWork'] as const)('invalid %s configuration', key => {
+    it.each([NaN, -1, 'wrong-type'])('is INVALID, not exhaustion, for %s in either loader entry point', async value => {
+      const limits = { [key]: value } as VegaDataParseOptions;
+      expectFailure(
+        capture(() => parseVegaDataValues({ values: [] }, limits)),
+        'INVALID',
+        'Invalid Vega resource budget limit',
+      );
+      const host = jest.fn(async () => []);
+      const error = await resolveVegaLiteResources({ data: { url: 'a.json' } }, { ...options(host), ...limits }).catch(
+        failure => failure,
+      );
+      expectFailure(error, 'INVALID', 'Invalid Vega resource budget limit');
+      expect(host).not.toHaveBeenCalled();
+    });
+  });
+});
 
 describe('parseVegaDataValues', () => {
   it('accepts a valid 2+ MB JSON string under the default independent text and work limits', () => {

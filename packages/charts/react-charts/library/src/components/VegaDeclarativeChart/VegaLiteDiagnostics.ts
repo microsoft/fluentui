@@ -1,7 +1,9 @@
 import type { VegaLiteData, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
-import { canRenderVegaRangedSpec } from './VegaLiteRangedGeometry';
-import { canRenderVegaCenteredAreaSpec } from './VegaLiteCenteredArea';
+import { getVegaRenderRoute } from './VegaLiteRenderRoute';
+import type { VegaRenderRoute } from './VegaLiteRenderRoute';
+import { vegaSemanticMarkChannels } from './VegaLiteCapabilities';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
+import { SemanticError } from './VegaLiteSemanticError';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import { VEGA_MAX_DATA_ROWS, VEGA_MAX_DATA_WORK, VEGA_MAX_SPECIFICATION_WORK } from './VegaLiteBudgets';
 import { format as numberFormat } from 'd3-format';
@@ -51,6 +53,7 @@ type Scope = {
   inLayer: boolean;
   rangedLayer: boolean;
   centeredAreaLayer: boolean;
+  geometryLayer: boolean;
 };
 
 // Capability declarations describe the semantic pipeline plus renderer, NOT the entire Vega-Lite schema.
@@ -97,19 +100,6 @@ const compositions = ['layer', 'hconcat', 'vconcat', 'concat', 'facet', 'repeat'
 const rangedTypes = new Set(['bar', 'rect', 'tick']);
 const rangedScales = new Set(['linear', 'band', 'ordinal', 'time', 'utc']);
 const tooltipConfigMarks = ['mark', 'line', 'point', 'circle', 'square', 'bar', 'area', 'rect', 'arc', 'tick'];
-const nativeChannels: Record<string, readonly string[]> = {
-  line: ['x', 'y', 'color', 'size', 'tooltip'],
-  point: ['x', 'y', 'color', 'size', 'tooltip'],
-  circle: ['x', 'y', 'color', 'size', 'tooltip'],
-  square: ['x', 'y', 'color', 'size', 'tooltip'],
-  bar: ['x', 'y', 'color', 'tooltip'],
-  area: ['x', 'y', 'color', 'tooltip'],
-  rect: ['x', 'y', 'color', 'tooltip'],
-  rule: ['x', 'y'],
-  text: ['x', 'y', 'text'],
-  arc: ['theta', 'radius', 'color', 'tooltip'],
-  tick: ['x', 'y', 'x2', 'y2', 'xOffset', 'yOffset', 'color', 'tooltip'],
-};
 const channelProperties: Record<string, readonly string[]> = {
   position: [
     'field',
@@ -979,7 +969,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           parsedSources.set(value, rows);
         }
       } catch (error) {
-        const limit = error instanceof Error && /limit|budget/i.test(error.message);
+        const limit = error instanceof SemanticError && error.code === 'WORKBUDGET';
         invalid(
           limit ? 'work-limit' : 'invalid-data',
           has(value, 'values') ? `${path}.values` : `${path}.format`,
@@ -1656,7 +1646,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           ? centerBar || centeredArea || nativeStack
           : ranged
           ? ['x', 'y', 'x2', 'y2', 'xOffset', 'yOffset', 'color', 'tooltip'].includes(channel)
-          : list(own(nativeChannels, mark)).includes(channel) ||
+          : list(own(vegaSemanticMarkChannels, mark)).includes(channel) ||
             (['line', 'area', 'point'].includes(mark) &&
               has(value, 'theta') &&
               has(value, 'radius') &&
@@ -1914,19 +1904,17 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     });
   };
 
-  const supportsRanged = (view: Dictionary, inheritedEncoding: Dictionary): boolean => {
+  const renderRoute = (
+    view: Dictionary,
+    inheritedEncoding: Dictionary,
+    mode: VegaLiteSemanticMode = strict ? 'strict' : 'legacy',
+  ): VegaRenderRoute => {
     try {
-      return canRenderVegaRangedSpec({ ...view, encoding: inheritedEncoding } as unknown as VegaLiteSpec);
+      const safeSpec = { ...view, encoding: inheritedEncoding } as unknown as VegaLiteSpec;
+      return getVegaRenderRoute(safeSpec, safeSpec, mode);
     } catch {
-      return false;
+      return 'native';
     } // Malformed declarations are diagnosed separately; never consult original objects.
-  };
-  const supportsCenteredArea = (view: Dictionary, inheritedEncoding: Dictionary): boolean => {
-    try {
-      return canRenderVegaCenteredAreaSpec({ ...view, encoding: inheritedEncoding } as unknown as VegaLiteSpec);
-    } catch {
-      return false;
-    } // The renderer predicate sees only the descriptor-safe snapshot.
   };
   type SharedField = { family: string; scale: string; path: string };
   const exposed = new WeakMap<Dictionary, Partial<Record<string, SharedField[]>>>();
@@ -2012,6 +2000,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       inLayer: parent.inLayer,
       rangedLayer: parent.rangedLayer,
       centeredAreaLayer: parent.centeredAreaLayer,
+      geometryLayer: parent.geometryLayer,
     };
     Object.keys(localEncoding).forEach(channel => {
       scope.encodingPaths.set(channel, childPath(`${path}.encoding`, channel));
@@ -2105,6 +2094,11 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       invalid('invalid-spec', path, 'A view needs a mark or a supported composition.');
     }
     const composition = declared[0];
+    const route = renderRoute(view, scope.encoding);
+    // Structural admission still permits legacy grouped channels. It must not grant geometry-only
+    // features (such as axis suppression) to the native compatibility renderer.
+    const structuralRoute =
+      !strict && route === 'native' && composition === 'layer' ? renderRoute(view, scope.encoding, 'strict') : route;
     if (parent.inLayer && composition && composition !== 'layer') {
       report(
         'unsupported-combination',
@@ -2147,7 +2141,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
                 own(settings, channel) === 'shared' &&
                 composition === 'layer' &&
                 ((kind === 'axis' && ['x', 'y'].includes(channel)) || (kind === 'legend' && channel === 'color')) &&
-                (supportsRanged(view, scope.encoding) || supportsCenteredArea(view, scope.encoding))
+                structuralRoute !== 'native'
               )
             ) {
               unsupported(
@@ -2234,15 +2228,15 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       if (!Array.isArray(children) || !children.length) {
         invalid('invalid-composition', `${path}.${composition}`, 'Composition requires a nonempty view array.');
       } else {
-        const rangedLayer = composition === 'layer' && !parent.inLayer && supportsRanged(view, scope.encoding);
-        const centeredAreaLayer =
-          composition === 'layer' && !parent.inLayer && supportsCenteredArea(view, scope.encoding);
+        const rangedLayer = composition === 'layer' && !parent.inLayer && structuralRoute === 'ranged';
+        const centeredAreaLayer = composition === 'layer' && !parent.inLayer && route === 'centered-area';
         children.forEach((child, index) =>
           visit(child, `${path}.${composition}[${index}]`, {
             ...scope,
             inLayer: parent.inLayer || composition === 'layer',
             rangedLayer,
             centeredAreaLayer,
+            geometryLayer: composition === 'layer' && !parent.inLayer && route !== 'native',
           }),
         );
       }
@@ -2271,7 +2265,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       const definition = own(view, 'mark');
       const mark = typeof definition === 'string' ? definition : own(definition, 'type');
       const target = typeof definition === 'string' ? `${path}.mark` : `${path}.mark.type`;
-      if (typeof mark !== 'string' || !has(nativeChannels, mark)) {
+      if (typeof mark !== 'string' || !has(vegaSemanticMarkChannels, mark)) {
         report(
           'unsupported-mark',
           target,
@@ -2282,14 +2276,11 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       const markName = typeof mark === 'string' ? mark : '';
       const centerIntent = ['x', 'y'].some(channel => own(own(scope.encoding, channel), 'stack') === 'center');
       const centerBar =
-        centerIntent &&
-        markName === 'bar' &&
-        supportsRanged(view, scope.encoding) &&
-        (!parent.inLayer || parent.rangedLayer);
+        centerIntent && markName === 'bar' && route === 'ranged' && (!parent.inLayer || parent.rangedLayer);
       const centeredArea =
         centerIntent &&
         markName === 'area' &&
-        supportsCenteredArea(view, scope.encoding) &&
+        route === 'centered-area' &&
         (!parent.inLayer || parent.centeredAreaLayer);
       // Mirror canRenderVegaRangedSpec's structural routing on the safe snapshot, including plain
       // ticks and rounded bars. Keep scale checking separate: an unsupported nonlinear scale must
@@ -2304,9 +2295,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           ['x2', 'y2', 'xOffset', 'yOffset'].some(channel => has(scope.encoding, channel)));
       // Ranged intent alone is not proof of rendering. Flat layers use their parent's predicate,
       // including ordinary bars admitted only as siblings of supported ranged units.
-      const geometry = parent.inLayer
-        ? parent.rangedLayer || parent.centeredAreaLayer
-        : supportsRanged(view, scope.encoding) || centeredArea;
+      const geometry = parent.inLayer ? parent.geometryLayer : route !== 'native';
       const polar = has(scope.encoding, 'theta') && has(scope.encoding, 'radius');
       const cartesian = ['line', 'point', 'circle', 'square', 'bar', 'area'].includes(markName);
       const heatmap = ['x', 'y', 'color'].every(
@@ -2463,6 +2452,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     inLayer: false,
     rangedLayer: false,
     centeredAreaLayer: false,
+    geometryLayer: false,
   });
   return diagnostics;
 }

@@ -1,7 +1,7 @@
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import { aggregateVegaStatistic, densityVegaRows, loessVegaRows } from './VegaLiteStatistics';
-import { SemanticError, toSemanticError, withLegacyVegaBudgetErrors } from './VegaLiteSemanticError';
+import { SemanticError, toSemanticError } from './VegaLiteSemanticError';
 import { extent as dataExtent } from 'd3-array';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
@@ -378,7 +378,7 @@ function expression(expr: string, row: VegaDataRow, options?: VegaSemanticOption
     }
   }
   // Null-prototype expression objects cannot invoke user-supplied coercion hooks.
-  return withLegacyVegaBudgetErrors(() => safeEvaluateExpression(expr, clone(row, true, options)));
+  return safeEvaluateExpression(expr, clone(row, true, options));
 }
 
 /** The safe expression subset plus field/logical predicates. Selection predicates are unsupported. */
@@ -1667,11 +1667,10 @@ export function applyVegaTransforms(
           groupRow: (group: Group, groupby: string[]) => groupRow(group, groupby, options),
           spend: (amount: number) => spend(options, amount),
         };
-        rows = withLegacyVegaBudgetErrors(() =>
+        rows =
           own(transform, 'loess') !== undefined
             ? loessVegaRows(rows, transform, statisticsContext)
-            : densityVegaRows(rows, transform, statisticsContext),
-        );
+            : densityVegaRows(rows, transform, statisticsContext);
       } else {
         throw new SemanticError(`unsupported transform ${Object.keys(transform).join(', ')}`, 'UNSUPPORTED');
       }

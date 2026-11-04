@@ -1,6 +1,7 @@
 import { deviation, median, quantileSorted } from 'd3-array';
 import type { VegaDataRow } from './VegaLiteData.types';
 import { readVegaOwnData as own } from './VegaLiteField';
+import { SemanticError } from './VegaLiteSemanticError';
 
 type Point = [number, number];
 type Group = { rows: VegaDataRow[]; keys: unknown[] };
@@ -291,7 +292,7 @@ function stepsParameter(transform: VegaDataRow, key: string, fallback: number): 
     return invalid(`density ${key}`);
   }
   if (value > 10000) {
-    throw new Error('Vega semantics: density steps work limit exceeded');
+    throw new SemanticError('density steps work limit exceeded', 'WORKBUDGET');
   }
   return value;
 }
