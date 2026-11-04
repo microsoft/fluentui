@@ -22,13 +22,13 @@ Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces 
 
 **The cost of the v9 engine.** `usePositioning` from `react-positioning` always includes every middleware (offset, flip, shift, maxSize, coverTarget, matchTargetSize, arrow, hide, intersecting). Measured with the package's monosize fixture (`yarn nx run react-positioning:bundle-size`, production webpack, React external):
 
-| What                                                                                                        | Minified | Gzip    |
-| ----------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| `usePositioning` (Fluent manager + all middlewares + `@floating-ui/dom`)                                    | 29.2 kB  | 10.3 kB |
-| of which `@floating-ui/dom` (includes `@floating-ui/core`)                                                  | 21.0 kB  | 8.2 kB  |
-| remainder: Fluent wrappers, `createPositionManager`, options resolution                                     | ~8 kB    | ~2 kB   |
-| `floatingUIPositioningEngine` from [#36800](https://github.com/microsoft/fluentui/pull/36800)               | 27.2 kB  | 9.8 kB  |
-| `usePositioning` with the standalone engine from [#36951](https://github.com/microsoft/fluentui/pull/36951) | 11.9 kB  | 5.4 kB  |
+| What                                                                                                               | Minified | Gzip    |
+| ------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
+| `usePositioning` (Fluent manager + all middlewares + `@floating-ui/dom`)                                           | 29.2 kB  | 10.3 kB |
+| of which `@floating-ui/dom` (includes `@floating-ui/core`)                                                         | 21.0 kB  | 8.2 kB  |
+| remainder: Fluent wrappers, `createPositionManager`, options resolution                                            | ~8 kB    | ~2 kB   |
+| Floating UI engine behind `/positioning-floating-ui` in [#36800](https://github.com/microsoft/fluentui/pull/36800) | 27.2 kB  | 9.8 kB  |
+| `usePositioning` with the standalone engine from [#36951](https://github.com/microsoft/fluentui/pull/36951)        | 11.9 kB  | 5.4 kB  |
 
 `@floating-ui/devtools` is compiled out of production. Each option below lists its own cost.
 
@@ -46,36 +46,45 @@ The library needs one rule for which code runs when, that can be documented and 
 
 Each option lists the changes it needs in `react-positioning` as well as in headless.
 
-### Option A: Explicit engine ([#36800](https://github.com/microsoft/fluentui/pull/36800))
+### Option A: Opt-in provider ([#36800](https://github.com/microsoft/fluentui/pull/36800), closed)
 
 ```tsx
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
-<Popover positioning={{ position: 'below', autoSize: true, engine: floatingUIPositioningEngine }} />;
-
-<PositioningEngineProvider value={floatingUIPositioningEngine}>
+// CSS where it is enough, Floating UI where it is not
+<PositioningProvider mode="fallback">
   <App />
-</PositioningEngineProvider>;
+</PositioningProvider>;
+
+// Floating UI for every surface below
+<PositioningProvider mode="floating-ui">
+  <App />
+</PositioningProvider>;
+
+// back to CSS only for a subtree
+<PositioningProvider mode="css">
+  <Section />
+</PositioningProvider>;
 ```
 
-CSS is the default. When an engine is passed, per surface or through the provider, it owns positioning entirely. Engine-only options without an engine are ignored with a dev warning.
+Without a provider, surfaces use CSS only, and options CSS cannot express are ignored with a dev warning that points to `PositioningProvider`. `fallback` mode makes the same per-surface decision as C: CSS when the browser supports `position-area` and the options are CSS-eligible, Floating UI otherwise. `floating-ui` mode uses Floating UI for every surface below it, and the nearest provider wins. Consumers pick a mode, not an engine; the engine stays internal.
 
-**Cost:** 0 kB by default; 27.2 kB / 9.8 kB gzip where the consumer imports the engine. The engine would shrink on top of #36951 (see C), not measured yet.
+**Cost:** 0 kB without the provider. Apps that import `/positioning-floating-ui` pay for the Floating UI engine, 27.2 kB / 9.8 kB gzip; `verify-bundle-isolation` keeps the other headless entries free of it. The engine would shrink on top of #36951 (see C), not measured yet.
 
 Pros
 
-- The engine ships only where the consumer imports it, in the consumer's own chunks.
-- The engine path positions synchronously in a layout effect, so there is no unpositioned frame.
-- Which path runs is visible in props, so it can be tested and documented.
-- Full parity with `react-positioning` when an engine is set. `PositioningEngine` is an interface, so other engines are possible.
+- The engine ships only in apps that import the provider entry.
+- With `mode="fallback"` at the app root, CSS still positions every surface it can; only surfaces that need Floating UI switch.
+- The mode is visible in the tree, and a nested provider scopes it to a subtree, down to a single surface.
+- The engine is internal, so it can be replaced (for example by #36951) without a breaking change.
+- `mode="floating-ui"` gives exact v9 behaviour, or a workaround for a native anchoring issue.
 
 Cons
 
-- Consumers must learn which options and browsers need an engine and wire it themselves.
-- A browser without anchor support and no engine is unpositioned, with no warning.
-- The safe choice, a provider at the app root, silently opts every surface out of native positioning. In an app built by many teams, the other teams get no signal.
-- `engine`, `PositioningEngine` and the provider become public API, so retiring them once the platform catches up is a breaking change.
-- Migrating from v9 means adding an engine wherever the product relies on engine-only options, virtual targets or older browsers.
+- Without a provider, older browsers render surfaces unpositioned and engine-only options only produce a dev warning. Consumers must know to add the provider.
+- `PositioningProvider`, its modes and the `/positioning-floating-ui` entry become public API. Retiring them once the platform catches up is a breaking change, or they stay as no-ops.
+- In `fallback` mode the two paths follow different rules, as in C.
+- Migrating from v9 means adding a provider wherever the product relies on engine-only options, virtual targets or older browsers.
 
 ### Option B: Automatic fallback, lazy-loaded ([#36124](https://github.com/microsoft/fluentui/pull/36124)) — discarded
 
@@ -152,36 +161,21 @@ Cons
 
 Explored in the first iteration of [#36841](https://github.com/microsoft/fluentui/pull/36841) and dropped in favour of C. Headless ran its own JavaScript fallback that recomputed what the browser would do with CSS (`position-area` grid, first-fit `position-try-fallbacks`, margin offsets, containing blocks, RTL), plus internal plugins for `autoSize`, boundaries, the arrow and the hidden state. It cost about 10 kB minified (esbuild proxy) and matched the browser in over 99.5 % of 11,500 random cases. It was a third positioning implementation that had to track browser changes, and its placement drift against v9 was never measured. C gets the same coverage from v9's engine, with identical v9 placement, and with #36951 at a comparable size.
 
-## Platform gaps
-
-Part of this work is to push the remaining needs into CSS, so the JavaScript path is needed less over time.
-
-| Option                                                        | Platform status                                                                                                                                                                                          |
-| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `autoSize`                                                    | Likely possible with Level 1: with `position-area`, `max-block-size` / `max-inline-size` can be capped to the chosen area. Not yet verified against `react-positioning`.                                 |
-| Shifting into view (`shiftToCoverTarget`, default shift)      | Partial in Level 1: default alignment keeps the box within its original containing block. No equivalent of `shiftToCoverTarget`.                                                                         |
-| `overflowBoundary`, `flipBoundary`, `overflowBoundaryPadding` | No proposal. Fallbacks are tested against the containing block; a custom boundary or padding cannot be named.                                                                                            |
-| Virtual targets                                               | No proposal. An anchor must be an element with `anchor-name`; coordinates such as the pointer position cannot be anchors.                                                                                |
-| Arrow placement, styling by applied fallback                  | [Level 2](https://drafts.csswg.org/css-anchor-position-2/) anchored container queries (`container-type: anchored`, `@container anchored(fallback: …)`) style by the applied fallback. No `arrowPadding`. |
-| `onPositioningEnd`, function-form `offset`                    | Script hooks; outside the scope of CSS.                                                                                                                                                                  |
-
-Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anchors, the two gaps with no spec work and the main reasons consumers need an engine.
-
 ## Comparison
 
 Where a cell depends on the engine, it reads "on #36951 / on today's Floating UI engine".
 
-| Criterion                      | A: Explicit engine                   | C: Auto fallback to `react-positioning`     | D: Extend CSS       |
-| ------------------------------ | ------------------------------------ | ------------------------------------------- | ------------------- |
-| Headless `usePositioning` cost | CSS only; engine 27.2 kB if imported | 18.7 kB / 35.9 kB, always                   | CSS only            |
-| Browser without anchor support | Consumer adds engine                 | Handled                                     | Polyfill            |
-| Which path runs is visible     | Yes                                  | No                                          | Yes                 |
-| New public API                 | `engine`, provider                   | `arrowRef`, `enabled`, full props           | None                |
-| Parity with v9                 | Full with engine                     | CSS path partial; JavaScript path identical | Partial             |
-| Engines on a page with v9      | One                                  | One                                         | One (plus polyfill) |
-| Maintenance                    | Two paths                            | Two paths                                   | Growing CSS layer   |
-| Consumer effort                | Opt in where needed                  | None                                        | Load polyfill       |
-| Can change without breaking    | No                                   | Yes                                         | Yes                 |
+| Criterion                      | A: Opt-in provider                       | C: Auto fallback to `react-positioning`     | D: Extend CSS       |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------- | ------------------- |
+| Headless `usePositioning` cost | CSS only; 27.2 kB with the provider      | 18.7 kB / 35.9 kB, always                   | CSS only            |
+| Browser without anchor support | Handled with a `fallback` provider       | Handled                                     | Polyfill            |
+| Which path runs is visible     | Mode is visible; path per surface is not | No                                          | Yes                 |
+| New public API                 | `PositioningProvider`, modes, entry      | `arrowRef`, `enabled`, full props           | None                |
+| Parity with v9                 | Full with the provider                   | CSS path partial; JavaScript path identical | Partial             |
+| Engines on a page with v9      | One                                      | One                                         | One (plus polyfill) |
+| Maintenance                    | Two paths                                | Two paths                                   | Growing CSS layer   |
+| Consumer effort                | Add a provider                           | None                                        | Load polyfill       |
+| Can change without breaking    | Engine yes; provider no                  | Yes                                         | Yes                 |
 
 ## Proposal
 
