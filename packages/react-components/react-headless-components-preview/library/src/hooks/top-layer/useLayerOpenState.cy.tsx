@@ -140,7 +140,7 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     cy.get('#reason').should('have.text', 'escape');
   });
 
-  it('keeps the element mounted and inert until the exit animation finishes', () => {
+  it('keeps the element mounted until the exit animation finishes', () => {
     mount(
       <>
         <style>{exitStyles}</style>
@@ -150,19 +150,15 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
 
     cy.get('#open').realClick();
     cy.get('#inside').realClick();
-    cy.get('#layer').should(([layer]) => {
-      expect(layer).not.to.have.attr('data-open');
-      expect(layer).to.have.attr('inert');
-      expect(layer).to.have.attr('aria-hidden', 'true');
-    });
+    cy.get('#layer').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
     cy.get<HTMLElement>('#layer').then(([layer]) => {
       layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
     });
     cy.get('#layer').should('not.exist');
   });
 
-  it('clears inert and aria-hidden once the exit ends when the element stays mounted', () => {
-    const StaysMounted = () => {
+  it('focuses into an element a native invoker reopens during its exit, and keeps it mounted', () => {
+    const Reopen = () => {
       const [open, setOpen] = React.useState(true);
       return (
         <>
@@ -170,19 +166,31 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
           <button id="close" onClick={() => setOpen(false)}>
             Close
           </button>
-          <Layer id="layer" mode="manual" open={open} unmountOnClose={false} />
+          <button id="invoker" popoverTarget="layer">
+            Toggle
+          </button>
+          <output id="state">{open ? 'open' : 'closed'}</output>
+          <Layer id="layer" mode="manual" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
+            {/* React's autoFocus doesn't render the attribute the popover focusing steps read. */}
+            <button id="autofocus" ref={button => button?.setAttribute('autofocus', '')}>
+              Autofocus
+            </button>
+          </Layer>
         </>
       );
     };
-    mount(<StaysMounted />);
+    mount(<Reopen />);
 
     cy.get('#close').realClick();
-    cy.get('#layer').should('have.attr', 'inert');
+    cy.get('#layer').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
+    cy.get('#invoker').realClick();
+    cy.get('#state').should('have.text', 'open');
+    cy.get('#layer').should('match', ':popover-open').and('have.attr', 'data-open');
+    cy.focused().should('have.id', 'autofocus');
     cy.get<HTMLElement>('#layer').then(([layer]) => {
       layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
     });
-    cy.get('#layer').should('not.have.attr', 'inert');
-    cy.get('#layer').should('not.have.attr', 'aria-hidden');
+    cy.get('#layer').should('match', ':popover-open');
   });
 
   it('keeps a nested auto layer from closing its parent', () => {
@@ -280,15 +288,14 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     mount(<Invoker />);
 
     cy.get('#invoker').realClick();
-    cy.get('#layer').should('match', ':popover-open').and('not.have.attr', 'inert');
+    cy.get('#layer').should('match', ':popover-open');
     cy.get('#state').should('have.text', 'open');
     cy.get('#invoker').realClick();
     cy.get('#layer').should('not.match', ':popover-open');
     cy.get('#state').should('have.text', 'closed');
 
-    // Reopen after the element went inert on exit.
     cy.get('#invoker').realClick();
-    cy.get('#layer').should('match', ':popover-open').and('not.have.attr', 'inert');
+    cy.get('#layer').should('match', ':popover-open');
     cy.get('#state').should('have.text', 'open');
   });
 

@@ -207,4 +207,26 @@ describe('Tooltip', () => {
 
     expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
   });
+
+  it.each([
+    ['hint', 'supported'],
+    ['manual', 'unsupported'],
+  ])('takes Escape before an enclosing layer when popover reads back as %s (hint %s)', popover => {
+    const onVisibleChange = jest.fn();
+    const onOuterKeyDown = jest.fn();
+    render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Tooltip content="Description tooltip" relationship="description" visible onVisibleChange={onVisibleChange}>
+          <button>Trigger</button>
+        </Tooltip>
+      </div>,
+    );
+    Object.defineProperty(screen.getByRole('tooltip'), 'popover', { value: popover });
+
+    const notCancelled = fireEvent.keyDown(screen.getByRole('button'), { key: 'Escape' });
+
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
+    expect(notCancelled).toBe(false);
+    expect(onOuterKeyDown).not.toHaveBeenCalled();
+  });
 });

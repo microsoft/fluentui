@@ -58,14 +58,15 @@ const isLayerElement = (node: EventTarget): boolean => !!(node as Element).match
 
 /**
  * Whether the Escape `event` is for `layer`: not when it comes from a popover or dialog nested inside it, including one
- * inside a shadow root. Content portaled out of `layer` still counts. Call it while the event is dispatched.
+ * inside a shadow root. Content portaled out of `layer`, to the page or into a layer that encloses it, still counts.
+ * Call it while the event is dispatched.
  */
 export const isEscapeForLayer = (layer: Element, event: Event): boolean => {
   const path = event.composedPath();
-  const targetLayer = path.length
-    ? path.find(isLayerElement)
-    : (event.target as Element | null)?.closest?.('[popover], dialog');
-  return !targetLayer || targetLayer === layer;
+  const targetLayer = (
+    path.length ? path.find(isLayerElement) : (event.target as Element | null)?.closest?.('[popover], dialog')
+  ) as Element | undefined;
+  return !targetLayer || targetLayer === layer || targetLayer.contains(layer);
 };
 
 /**

@@ -2,9 +2,8 @@
 
 import * as React from 'react';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { isDialogElement, isInTopLayer, isPopoverOpen, waitForAnimations } from './utils';
+import { isDialogElement, isInTopLayer, waitForAnimations } from './utils';
 import { useElementListeners } from './useElementListeners';
-import { setInert } from './setInert';
 import type { UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
 
 type Exit = { element: HTMLElement | null; cancel: () => void };
@@ -21,13 +20,10 @@ const getCloseEvent = (element: HTMLElement) => (isDialogElement(element) && ele
 const isCloseEvent = (event: Event, element: HTMLElement) =>
   event.target === element && !isInTopLayer(element) && (event as Event & { newState?: string }).newState !== 'open';
 
-// Runs before all layout effects. React 17 has no insertion effects; there the layout effect order applies.
-const useBeforeLayoutEffect = React.useInsertionEffect ?? useIsomorphicLayoutEffect;
-
 /**
- * Whether to render an element. Keeps a closing element mounted and inert until it has left the top layer and its exit
- * animations end. Doesn't depend on `useLayerOpenState` running first: it measures animations after the commit, once
- * the element has been hidden.
+ * Whether to render an element. Keeps a closing element mounted until its close event has fired and its exit animations
+ * end. Doesn't depend on `useLayerOpenState` running first: it measures animations after the commit, once the element
+ * has been hidden.
  */
 export const useLayerPresence = (
   ref: React.RefObject<HTMLElement | null>,
@@ -71,26 +67,17 @@ export const useLayerPresence = (
     });
   });
 
-  const endExit = (element: HTMLElement) => {
+  const endExit = () => {
     exit.current.cancel();
     exit.current = NO_EXIT;
-    setInert(element, false);
     setExitPending(false);
   };
-
-  // A reopen during the exit: clear `inert` before the open-state hook shows the element, wherever it is declared, so
-  // focus can move into it.
-  useBeforeLayoutEffect(() => {
-    if (open && exit.current.element) {
-      setInert(exit.current.element, false);
-    }
-  }, [open]);
 
   // An exiting element that was replaced or removed won't finish its exit.
   useIsomorphicLayoutEffect(() => {
     const { element } = exit.current;
     if (element && element !== ref.current) {
-      endExit(element);
+      endExit();
     }
   });
 
@@ -108,7 +95,7 @@ export const useLayerPresence = (
 
     if (open) {
       if (exit.current.element) {
-        endExit(exit.current.element);
+        endExit();
       }
       return;
     }
@@ -128,15 +115,12 @@ export const useLayerPresence = (
     const finish = () => {
       if (!done) {
         done = true;
-        endExit(element);
+        endExit();
       }
     };
 
     const waitForExitAnimations = () => {
       cancelAnimations = waitForAnimations(element, finish);
-      if (!done) {
-        setInert(element, true);
-      }
     };
 
     exit.current.cancel();
@@ -155,14 +139,15 @@ export const useLayerPresence = (
       }
       const pending = pendingCloseEvent.current?.element === element ? pendingCloseEvent.current : null;
       pendingCloseEvent.current = null;
-      if (!isInTopLayer(element) && !pending) {
+      if (!pending) {
         waitForExitAnimations();
         return;
       }
 
-      // Still closing, or closed with its event queued: stay mounted for it, so the element's own handlers still run.
+      // `close()` and `hidePopover()` queue the close event: stay mounted for it, so the element's own `onClose` /
+      // `onToggle` handlers still run.
       element.addEventListener(
-        pending?.type ?? (isPopoverOpen(element) ? 'toggle' : 'close'),
+        pending.type,
         event => {
           if (isCloseEvent(event, element)) {
             controller.abort();

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { fireEvent, render } from '@testing-library/react';
+import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import { useLayerEscape } from './useLayerEscape';
 import type { UseLayerEscapeOptions } from './types';
 
@@ -144,6 +145,70 @@ describe('useLayerEscape', () => {
     );
     fireEvent.keyDown(getAllByText('Outside')[0], { key: 'Escape' });
     expect(onFirst).toHaveBeenCalledTimes(1);
+  });
+
+  it("tracks the newest layer with listen: 'document' per document", () => {
+    const iframe = document.createElement('iframe');
+    document.body.append(iframe);
+    const frameDocument = iframe.contentDocument!;
+    const onMain = jest.fn();
+    const onFrame = jest.fn();
+    const FrameLayer = () => {
+      const ref = React.useRef<HTMLDivElement>(null);
+      // The popover polyfill isn't loaded in the frame.
+      useLayerEscape(ref, { open: true, onEscape: onFrame, listen: 'document', when: 'always' });
+      return createPortal(<div ref={ref} popover="manual" />, frameDocument.body);
+    };
+    const { getByText, unmount } = render(
+      <>
+        <Example onEscape={onMain} listen="document" />
+        <Provider value={{ dir: 'ltr', targetDocument: frameDocument }}>
+          <FrameLayer />
+        </Provider>
+      </>,
+    );
+
+    fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+    expect(onMain).toHaveBeenCalledTimes(1);
+    expect(onFrame).not.toHaveBeenCalled();
+
+    fireEvent.keyDown(frameDocument.body, { key: 'Escape' });
+    expect(onFrame).toHaveBeenCalledTimes(1);
+
+    unmount();
+    iframe.remove();
+  });
+
+  it('handles Escape from content an inner layer portals into its enclosing layer', () => {
+    const onInner = jest.fn();
+    const onOuter = jest.fn();
+    const Nested = () => {
+      const outerRef = React.useRef<HTMLDivElement>(null);
+      const innerRef = React.useRef<HTMLDivElement>(null);
+      const [outer, setOuter] = React.useState<HTMLDivElement | null>(null);
+      const { onKeyDown: onOuterKeyDown } = useLayerEscape(outerRef, { open: true, onEscape: onOuter });
+      const { onKeyDown: onInnerKeyDown } = useLayerEscape(innerRef, { open: true, onEscape: onInner });
+      return (
+        <div
+          ref={element => {
+            outerRef.current = element;
+            setOuter(element);
+          }}
+          popover="manual"
+          onKeyDown={onOuterKeyDown}
+        >
+          <div ref={innerRef} popover="manual" onKeyDown={onInnerKeyDown}>
+            {outer && createPortal(<input aria-label="Portaled into outer" />, outer)}
+          </div>
+        </div>
+      );
+    };
+    const { getByLabelText } = render(<Nested />);
+
+    fireEvent.keyDown(getByLabelText('Portaled into outer'), { key: 'Escape' });
+
+    expect(onInner).toHaveBeenCalledTimes(1);
+    expect(onOuter).not.toHaveBeenCalled();
   });
 
   it("handles Escape for an element that mounts after open with listen: 'document'", () => {

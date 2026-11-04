@@ -13,10 +13,19 @@ const needsEscapeHandling = (element: HTMLElement): boolean =>
   (element as HTMLElement & { popover?: string | null }).popover === 'manual';
 
 /**
- * Open layers with `listen: 'document'`, oldest first. Only the newest handles Escape, as the browser closes the topmost
- * layer first.
+ * Open layers with `listen: 'document'` per document, oldest first. Only the newest in a document handles Escape, as the
+ * browser closes the topmost layer first.
  */
-const documentLayers: object[] = [];
+const documentLayers = new WeakMap<Document, object[]>();
+
+const getDocumentLayers = (targetDocument: Document): object[] => {
+  let layers = documentLayers.get(targetDocument);
+  if (!layers) {
+    layers = [];
+    documentLayers.set(targetDocument, layers);
+  }
+  return layers;
+};
 
 /**
  * Closes a top-layer element on Escape where the browser doesn't, or reports every Escape with `when: 'always'`.
@@ -42,14 +51,16 @@ export const useLayerEscape = (
     if (listen !== 'layer' || !isEscapeToHandle(event, element) || !isEscapeForLayer(element!, event.nativeEvent)) {
       return;
     }
-    // Reported first: a consumer can veto by preventing the event.
+    // Reported before it's prevented, so a veto inside `onEscape` (Dialog's `onOpenChange` calling `preventDefault()`)
+    // can still be told apart.
     onEscape(event);
     event.preventDefault();
     event.stopPropagation();
   });
 
   const onDocumentKeyDown = useEventCallback((event: KeyboardEvent) => {
-    const isNewest = documentLayers[documentLayers.length - 1] === documentLayerRef.current;
+    const layers = targetDocument ? getDocumentLayers(targetDocument) : [];
+    const isNewest = layers[layers.length - 1] === documentLayerRef.current;
     if (!isNewest || !isEscapeToHandle(event, ref.current)) {
       return;
     }
@@ -64,10 +75,11 @@ export const useLayerEscape = (
       return;
     }
     const layer = documentLayerRef.current;
-    documentLayers.push(layer);
+    const layers = getDocumentLayers(targetDocument);
+    layers.push(layer);
     targetDocument.addEventListener('keydown', onDocumentKeyDown, { capture: true });
     return () => {
-      documentLayers.splice(documentLayers.indexOf(layer), 1);
+      layers.splice(layers.indexOf(layer), 1);
       targetDocument.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
     };
   }, [open, listen, onDocumentKeyDown, targetDocument]);

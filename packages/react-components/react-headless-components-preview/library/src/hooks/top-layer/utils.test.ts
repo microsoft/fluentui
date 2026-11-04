@@ -42,6 +42,14 @@ describe('isEscapeForLayer', () => {
     expect(isEscapeFrom(get('layer'), get('portaled'))).toBe(true);
   });
 
+  it('is true for Escape from content portaled into a layer that encloses it', () => {
+    const get = setup();
+    const portaled = document.createElement('button');
+    get('layer').append(portaled);
+
+    expect(isEscapeFrom(get('nested'), portaled)).toBe(true);
+  });
+
   it('is false for Escape from a popover nested inside a shadow root in the layer', () => {
     const get = setup();
     const host = document.createElement('span');

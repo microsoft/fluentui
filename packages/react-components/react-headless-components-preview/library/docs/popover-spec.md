@@ -256,7 +256,7 @@ This implementation defers opening until `pointerup`, which avoids opening durin
 | Hover-leave (`openOnHover`)             | React-side: `setOpen(false)` after `mouseLeaveDelay` ms with the pointer outside both trigger and surface. The surface is hidden, then unmounted after its exit animations. |
 | Programmatic                            | Consumer sets `open={false}`. The surface is hidden with `hidePopover()` / `close()`, then unmounted after its exit animations.                                             |
 
-While the surface exits it loses `data-open` and is `inert` and `aria-hidden`. Exit styles must keep it displayed and in the top layer (`transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes).
+While the surface exits it loses `data-open`. Exit styles must keep it displayed and in the top layer (`transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes), and can add `pointer-events: none` so the fading surface ignores clicks.
 
 `usePopover` attaches a `toggle` listener on the surface (re-attached every time the surface mounts) that mirrors browser-driven dismissal:
 

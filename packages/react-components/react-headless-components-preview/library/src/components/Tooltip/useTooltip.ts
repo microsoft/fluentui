@@ -106,10 +106,12 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     },
   });
 
-  // Escape never reaches the content, which doesn't take focus. Only needed where `hint` falls back to `manual`.
+  // Escape never reaches the content, which doesn't take focus. Caught on the document before an enclosing layer's own
+  // handler (a DialogSurface takes every Escape), so only the tooltip closes, with or without `hint` support.
   useLayerEscape(contentRef, {
     open: visible,
     listen: 'document',
+    when: 'always',
     onEscape: () => setVisible(undefined, { visible: false }),
   });
 
