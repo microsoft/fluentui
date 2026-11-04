@@ -3121,7 +3121,7 @@ __metadata:
     turndown-plugin-gfm: "npm:1.0.2"
     typescript: "npm:5.7.3"
     typescript-eslint: "npm:8.46.2"
-    vite: "npm:6.4.4"
+    vite: "npm:6.4.5"
     web-features: "npm:3.30.0"
     webpack: "npm:5.108.4"
     webpack-bundle-analyzer: "npm:4.10.1"
@@ -32746,9 +32746,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:6.4.4":
-  version: 6.4.4
-  resolution: "vite@npm:6.4.4"
+"vite@npm:6.4.5":
+  version: 6.4.5
+  resolution: "vite@npm:6.4.5"
   dependencies:
     esbuild: "npm:^0.25.0"
     fdir: "npm:^6.4.4"
@@ -32797,7 +32797,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/47cdacbf7b370c7962326238bd0d206c9d56d72e1e7b14f9fb0edca369d3dfa8d0fd7f16eb3c0d448959eb7c6969ff33a126039be06f216b232c47e63c49ba9b
+  checksum: 10c0/e9bb246caa72197d2cac0ad05cf2c7c2f71d0affa45ce981e555176b26028db5769b98fc919ca7ff368499ae95c534710e56c4e4adfd8d57ea4b41c396ccd7b0
   languageName: node
   linkType: hard
 
