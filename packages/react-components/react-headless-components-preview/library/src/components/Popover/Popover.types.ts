@@ -112,13 +112,8 @@ export type PopoverProps = {
    * Ignored when `inertTrapFocus` is true.
    * @default 'auto'
    */
-  mode?: PopoverMode;
+  mode?: 'auto' | 'manual' | 'hint';
 };
-
-/**
- * How a non-modal Popover surface is dismissed.
- */
-export type PopoverMode = 'auto' | 'manual' | 'hint';
 
 /**
  * Popover State

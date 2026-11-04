@@ -239,7 +239,7 @@ export type TeachingPopoverProps = {
     withArrow?: boolean;
     id?: string;
     inertTrapFocus?: boolean;
-    mode?: PopoverMode;
+    mode?: 'auto' | 'manual' | 'hint';
 };
 
 // @public
