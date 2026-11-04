@@ -71,6 +71,31 @@ function analysisByFunction(result: FileCompilationResult): Map<string, Function
   return new Map(normalized.analyses.map(analysis => [analysis.sourceFunctionId!, analysis]));
 }
 
+function firstPassFailure(
+  result: FileCompilationResult,
+): { event: DirectiveAnalysis['compilerEvent']; message: string } | null {
+  const errorCode =
+    result.error && 'code' in result.error && typeof result.error.code === 'string' ? result.error.code : undefined;
+  if (result.error) {
+    return {
+      event: errorCode === 'RCA_PARSE_ERROR' ? 'none' : 'PipelineError',
+      message: result.error.message,
+    };
+  }
+  const normalized = normalizeCompilerEvents(result.events, result.source, result.sourceFunctions);
+  if (normalized.unattributedErrors.length > 0) {
+    return {
+      event: 'PipelineError',
+      message: normalized.unattributedErrors.map(item => item.reason).join('; '),
+    };
+  }
+  const pipeline = result.events.find(item => item.kind === 'PipelineError');
+  if (pipeline) {
+    return { event: 'PipelineError', message: pipeline.data ?? 'compiler pipeline failed' };
+  }
+  return null;
+}
+
 /** Derive one status for every real `'use memo'` directive from canonical terminal outcomes. */
 export function deriveMemoDirectiveStatuses(
   result: FileCompilationResult,
@@ -83,6 +108,7 @@ export function deriveMemoDirectiveStatuses(
   }
   const conflicts = conflictIds(directives, options.revalidateJustified);
   const analyses = result.error ? new Map<string, FunctionAnalysis>() : analysisByFunction(result);
+  const failure = firstPassFailure(result);
   const output: DirectiveAnalysis[] = [];
 
   for (const directive of directives) {
@@ -105,6 +131,16 @@ export function deriveMemoDirectiveStatuses(
           status: 'conflicting',
           compilerEvent: 'none',
           reason: "conflicting directives: both 'use no memo' and 'use memo' on same function",
+        }),
+      );
+      continue;
+    }
+    if (failure) {
+      output.push(
+        toDirectiveAnalysis(result, directive, {
+          status: 'broken',
+          compilerEvent: failure.event,
+          reason: `compiler evidence incomplete: ${failure.message}`,
         }),
       );
       continue;
@@ -194,20 +230,15 @@ export async function analyzeNoMemoDirectives(
     return preserved;
   }
 
-  const firstPass = normalizeCompilerEvents(result.events, result.source, result.sourceFunctions);
-  const firstPassFailure =
-    result.error?.message ||
-    firstPass.unattributedErrors.map(item => item.reason).join('; ') ||
-    result.events.find(item => item.kind === 'PipelineError')?.data ||
-    (result.events.some(item => item.kind === 'PipelineError') ? 'compiler pipeline failed' : undefined);
-  if (firstPassFailure) {
+  const failure = firstPassFailure(result);
+  if (failure) {
     return [
       ...preserved,
       ...directives.map(directive =>
         toDirectiveAnalysis(result, directive, {
           status: 'broken',
-          compilerEvent: 'PipelineError',
-          reason: `original analysis unavailable: ${firstPassFailure}`,
+          compilerEvent: failure.event,
+          reason: `original analysis unavailable: ${failure.message}`,
         }),
       ),
     ];
@@ -228,12 +259,13 @@ export async function analyzeNoMemoDirectives(
 
   if (error) {
     const fullTrace = error.stack ?? error.message;
+    const errorCode = 'code' in error && typeof error.code === 'string' ? error.code : undefined;
     return [
       ...preserved,
       ...directives.map(directive =>
         toDirectiveAnalysis(result, directive, {
           status: 'broken',
-          compilerEvent: 'none',
+          compilerEvent: errorCode === 'RCA_PARSE_ERROR' ? 'none' : 'PipelineError',
           reason: `opt-out probe failed:\n${fullTrace}`,
         }),
       ),

@@ -34,6 +34,34 @@ describe('call-graph wrapper analysis', () => {
     return join(root, 'component.tsx');
   }
 
+  it('keeps an invalid imported implementation a per-file resolution failure, not an input parse failure', async () => {
+    const filePath = modules({
+      'reader.ts': 'export function readValue( {',
+      'component.tsx':
+        "import { readValue } from './reader'; export function Widget() { return <div>{readValue()}</div>; }",
+      'healthy.tsx': 'export function Healthy() { return <div />; }',
+    });
+    const config = { detectGetStateReads: true };
+    const callGraph = analyzer(config);
+    const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false, config, callGraph);
+    expect(compiled.error).toMatchObject({
+      code: 'RCA_RESOLUTION_ERROR',
+      cause: expect.objectContaining({ code: 'RCA_PARSE_ERROR' }),
+    });
+    expect(compiled.sourceFunctions.values()).toHaveLength(1);
+    const healthy = await compileFile(
+      { filePath: join(filePath, '../healthy.tsx'), packageName: 'test-pkg' },
+      'infer',
+      false,
+      config,
+      callGraph,
+    );
+    expect(healthy.error).toBeUndefined();
+    expect(deriveCoverage(healthy)).toContainEqual(
+      expect.objectContaining({ functionName: 'Healthy', status: 'compiled' }),
+    );
+  });
+
   it('follows a wrapper in a module with a mutable TypeScript namespace', () => {
     const filePath = modules({
       'reader.ts': `namespace Values { export let value = 1; }

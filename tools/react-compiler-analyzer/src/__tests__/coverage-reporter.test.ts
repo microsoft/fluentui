@@ -541,9 +541,9 @@ describe('printCoverageReport — error grouping', () => {
     expect(output).toContain('#### src/useThing.ts:10 — useThing (2 errors)');
     expect(output.match(/— useThing/g)).toHaveLength(1);
     // Each error gets its own Line cell so the rows are distinguishable.
-    expect(output).toContain('| Line | Compiler Event | Reason |');
-    expect(output).toContain('| 12:4 | CompileError | first problem |');
-    expect(output).toContain('| 18:2 | CompileError | second problem |');
+    expect(output).toContain('| Line | Compiler Event | Count | Reason |');
+    expect(output).toContain('| 12:4 | CompileError | 1 | first problem |');
+    expect(output).toContain('| 18:2 | CompileError | 1 | second problem |');
   });
 
   it('inlines full code-framed diagnostics under the error group with --verbose', () => {

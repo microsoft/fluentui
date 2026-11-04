@@ -48,13 +48,14 @@ react-compiler-analyzer analyze <paths...> --format cli --verbose
 
 Important JSON fields:
 
-The Oxc-backed release emits schema v4. For scripts written against the Babel-backed v0.0.3
-contract, update strict validators to the shipped schemas; v3 documents are not valid v4 input.
+The Oxc-backed release emits schema v5. Update strict validators to the shipped schemas;
+v3/v4 documents are not valid v5 input. A nonzero scan may still produce valid partial JSON.
+Read completeness and file diagnostics before drawing coverage conclusions.
 
 - `summary.compiled`: functions accepted by the compiler.
 - `summary.reportedMemoCachePositive`, `reportedMemoCacheZero`, `reportedMemoCacheUnavailable`:
   accepted functions partitioned by reconstructed Oxc `memoSlots`, not consumer emitted-code
-  evidence (schema v4).
+  evidence (schema v5).
 - `profile`: exact Oxc compiler-port/parser versions and settings, including source maps and the
   synthetic gate used for source-function attribution. `compilerVersion` identifies the
   `oxc-transform-react` package, not an independently verified upstream compiler version.
@@ -66,6 +67,9 @@ contract, update strict validators to the shipped schemas; v3 documents are not 
   Another compiler/profile may optimize it; do not automatically annotate rejected functions.
 - `functions[].manualMemo`: evidence for manual `useMemo`, `useCallback`, or `React.memo`.
 - `findings[]`: configured runtime-risk findings.
+- `fileDiagnostics[]`: failures without invented function ownership, separate from genuine
+  input-parse failures. Preserve repeated suppression diagnostics rather than deduplicating
+  indistinguishable rejections.
 
 A Manual Memo Migration Candidate is a compiled function with `manualMemo` evidence and no
 `'use no memo'` bailout. It is a migration-review signal, not a performance guarantee.
@@ -78,6 +82,8 @@ react-compiler-analyzer lint <paths...> --format json
 
 Use lint as a CI health gate for `'use memo'` and `'use no memo'`. A nonzero exit reports redundant,
 broken, or conflicting directives according to the configured compiler mode.
+It also fails on incomplete file analysis; retained directive inventory is not evidence that a
+guard can be removed. Failed or unattributable probes never justify automatic removal.
 Use `--revalidate-justified` to compare acceptance and reported statistics for justified directives.
 JSON `evidence` records before/after observations, not emitted optimization. A redundant result
 applies only to the analyzed profile. Justified guards stay protected even with `--fix`;
@@ -89,10 +95,16 @@ Only run these after explicit user approval:
 
 ```bash
 react-compiler-analyzer analyze <paths...> --annotate manual-memo
+react-compiler-analyzer analyze <paths...> --protect-suppressions
 react-compiler-analyzer lint <paths...> --fix
 ```
 
 After any mutation, review the diff and rerun the matching command without mutation flags.
 Use `--annotate <mode> --dry-run` to preview edits and their rationale without writing source.
+Use `--protect-suppressions --dry-run` to preview conservative whole-module `"use no memo"`
+guards for valid compiler-relevant React ESLint suppressions. Do not combine protection with
+annotation. The original suppression remains, module opt-ins conflict, and existing guards stay
+intact through lint. Oxc may still emit unowned suppression errors after protection; this common
+opt-out is not proof of compiler-output or runtime parity.
 Preventive opt-outs remain eligible with zero or unavailable statistics. Run application
 behavior tests before accepting guard changes.

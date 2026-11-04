@@ -217,6 +217,31 @@ that the risky operation was cached, and zero counters do not invalidate prevent
 Suppression-related compiler rejection is reported separately with retained findings: another
 compiler/profile may optimize those functions. They are not automatically annotated.
 
+### Protect React ESLint suppressions explicitly
+
+An ESLint suppression is not a portable React Compiler opt-out. In the pinned integration
+fixtures, native SWC can emit memo caches despite a React Hooks ESLint disable that makes Oxc
+reject compilation. To opt an entire eligible module out across the tested backends:
+
+```bash
+react-compiler-analyzer analyze ./src --protect-suppressions --dry-run
+react-compiler-analyzer analyze ./src --protect-suppressions
+```
+
+This explicit operation adds a justified module `"use no memo"` guard for a valid
+compiler-relevant suppression. A line-scoped suppression can therefore opt out other functions
+in the same module. It preserves the suppression; it does not repair the suppressed violation.
+Malformed or unrelated directives are not eligibility evidence, and a conflicting module
+`"use memo"` is reported rather than silently replaced. Existing module guards remain unchanged,
+including during lint fixing and justified-directive revalidation.
+
+Oxc can still emit repeated file-header suppression errors after the guard is present. Neither
+the number of errors nor function-level opt-outs proves which function each error belongs to.
+Those diagnostics remain file-level and make the report incomplete. A protected file is not
+therefore a successfully attributed file. Tests verify absence of emitted cache allocations for
+the bounded Babel/Oxc/native-SWC fixtures in all supported modes; this establishes a common
+opt-out, not general compiler-output, runtime-safety, or performance parity.
+
 ## Limits
 
 - Package implementations under `node_modules` are not followed; type declarations do not expose their runtime bodies.

@@ -287,12 +287,25 @@ export async function compileFile(
     }
     compilation = { events: [], error };
   }
-  const { events, error } = compilation;
+  const { events } = compilation;
+  let { error } = compilation;
 
   // Cross-file wrapper analysis (opt-in): attach indirect risks reached through first-party
   // wrapper calls. Synchronous and memoized across files via the shared analyzer.
-  if (callGraph?.enabled) {
-    for (const finding of callGraph.analyzeFile(entry.filePath)) {
+  if (callGraph?.enabled && !error) {
+    let findings: ReturnType<CallGraphAnalyzer['analyzeFile']> = [];
+    try {
+      findings = callGraph.analyzeFile(entry.filePath);
+    } catch (cause) {
+      if (!(cause instanceof Error)) {
+        throw cause;
+      }
+      error = Object.assign(new Error(`Wrapper analysis failed: ${cause.message}`), {
+        cause,
+        code: 'RCA_RESOLUTION_ERROR',
+      });
+    }
+    for (const finding of findings) {
       const { leaf, chain } = finding.risk;
       const via = chain.join(' → ');
       const sourceFunction = sourceFunctions.resolveStart(
@@ -380,14 +393,41 @@ export async function compileFilesStreaming(
   await forEachConcurrently(
     files,
     async entry => {
-      const result = await compileFile(
-        entry,
-        options.compilationMode,
-        options.verbose,
-        options.riskConfig,
-        callGraph,
-        options.workspaceRoot,
-      );
+      let result: FileCompilationResult;
+      try {
+        result = await compileFile(
+          entry,
+          options.compilationMode,
+          options.verbose,
+          options.riskConfig,
+          callGraph,
+          options.workspaceRoot,
+        );
+      } catch (cause) {
+        if (!(cause instanceof Error)) {
+          throw cause;
+        }
+        const source = '';
+        result = {
+          filePath: entry.filePath,
+          packageName: entry.packageName,
+          packageRoot: entry.packageRoot ?? null,
+          source,
+          sourceHash: fingerprintText(source),
+          sourceFunctions: new SourceFunctionIndex(source, entry, options.workspaceRoot ?? process.cwd()),
+          events: [],
+          error: Object.assign(new Error(`Unable to read input file: ${cause.message}`), {
+            cause,
+            code: 'RCA_INPUT_READ_ERROR',
+          }),
+          manualMemo: new Map<string, ManualMemoEntry>(),
+          bodyInsertionLines: new Map(),
+          existingDirectives: new Map(),
+          risks: new Map(),
+          fnKeyAliases: new Map(),
+          verboseLogs: [],
+        };
+      }
       if (options.verbose) {
         verboseLogs.set(result.filePath, [`Analyzing: ${result.filePath}`, ...result.verboseLogs]);
       }

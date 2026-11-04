@@ -10,13 +10,14 @@ export function isParseError(error: Error): boolean {
   return 'code' in error && error.code === 'RCA_PARSE_ERROR';
 }
 
+export function errorCode(error: Error | undefined): string | undefined {
+  return error && 'code' in error && typeof error.code === 'string' ? error.code : undefined;
+}
+
 export function deriveCompilerAnalysis(
   result: FileCompilationResult,
   options: NormalizeCompilerEventsOptions = {},
 ): NormalizedCompilerEvents {
-  if (result.error) {
-    return { analyses: [], unattributedErrors: [] };
-  }
   return normalizeCompilerEvents(result.events, result.source, result.sourceFunctions, {
     sourceHash: result.sourceHash,
     ...options,
@@ -27,7 +28,10 @@ export function deriveCompilerAnalysis(
  * Reduce every compiler occurrence to one canonical source-function analysis.
  */
 export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[] {
-  if (result.error && !isParseError(result.error)) {
+  if (result.error && isParseError(result.error)) {
+    return [];
+  }
+  if (result.error) {
     throw new Error(`Compiler failed for ${result.filePath}: ${result.error.message}`);
   }
   const normalized = deriveCompilerAnalysis(result);

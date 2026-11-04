@@ -40,8 +40,9 @@ For directive lint, select the mode your build actually uses:
 npx react-compiler-analyzer lint ./src --mode annotation
 ```
 
-Neither scan command modifies source unless you explicitly pass `analyze --annotate` or
-`lint --fix`. Review the diff and run your application's tests after either operation.
+Neither scan command modifies source unless you explicitly pass `analyze --annotate`,
+`analyze --protect-suppressions`, or `lint --fix`. Review the diff and run your application's tests
+after a source-writing operation.
 
 ## Reference and guides
 
@@ -116,7 +117,7 @@ settings such as `parserPlugins` and `analyze.risks.pathAliases` are rejected wi
 they are not silently ignored.
 
 Scan paths remain required positional arguments. Source-writing operations are intentionally not
-persistent configuration: use `--annotate` and `--fix` explicitly on each run.
+persistent configuration: use `--annotate`, `--protect-suppressions`, and `--fix` explicitly on each run.
 
 | Config key                                        | Type       | Default or meaning                                                                     |
 | ------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------- |
@@ -222,8 +223,9 @@ Scans one or more files or directories for both `'use no memo'` and `'use memo'`
 | `conflicting` | Both `'use no memo'` and `'use memo'` on same function     | **1**     |
 | `skipped`     | Has a justification comment, or is a file-level opt-out    | 0         |
 
-Files that cannot be parsed or compiled are reported separately and fail the lint gate,
-even if no directive status could be derived. `--fix` does not modify these files.
+Files that cannot be fully analyzed fail the lint gate. Genuine input parse failures are separate
+from compiler, generated-output, attribution, and resolution failures. Directive inventory is
+retained for incomplete files without permitting fixes or claiming redundancy.
 
 #### Options and fixes
 
@@ -279,20 +281,36 @@ Acceptance alone is not an optimization signal.
 The default report shows package and aggregate summaries; `--verbose` adds per-function results,
 candidate review details, risk findings, parse failures, and full code-framed diagnostics.
 
-Completed scans exit 0 even with attributed per-function compiler errors or advisory risks. Parse
-failures produce a report but exit 1. Unattributed compiler errors and non-parse transform errors
-abort with code 1 before a JSON document or annotation writes are produced.
+Completed scans exit 0 even with attributed per-function compiler errors or advisory risks.
+Input parse failures, unattributed errors, and backend/resolution failures produce a partial report
+and exit 1. Other verified results remain available; unknown attribution is not compiled or
+zero-slot evidence.
 
-| Flag         | Type      | Default  | Description                                                                      |
-| ------------ | --------- | -------- | -------------------------------------------------------------------------------- |
-| `--annotate` | `string`  | Not set  | Write directives using a mode below.                                             |
-| `--quote`    | `string`  | `single` | Quote style for written directives: `single` or `double`.                        |
-| `--dry-run`  | `boolean` | `false`  | Preview `--annotate` insertions without modifying source; requires `--annotate`. |
+| Flag                     | Type      | Default  | Description                                                                          |
+| ------------------------ | --------- | -------- | ------------------------------------------------------------------------------------ |
+| `--annotate`             | `string`  | Not set  | Write directives using a mode below.                                                 |
+| `--quote`                | `string`  | `single` | Quote style for written directives: `single` or `double`.                            |
+| `--protect-suppressions` | `boolean` | `false`  | Add justified module opt-outs for valid compiler-relevant React ESLint suppressions. |
+| `--dry-run`              | `boolean` | `false`  | Preview `--annotate` or `--protect-suppressions` without modifying source.           |
 
 All shared options apply.
 
 Use `analyze --annotate <mode> --dry-run` to list proposed insertion targets and counts without
 modifying source. Ordinary `analyze` is already read-only. Dry-run is not a persistent config setting.
+
+`--protect-suppressions` is separate from annotation and cannot be combined with `--annotate`.
+Preview first:
+
+```bash
+react-compiler-analyzer analyze ./src --protect-suppressions --dry-run
+react-compiler-analyzer analyze ./src --protect-suppressions
+```
+
+Any valid compiler-relevant suppression, including a one-line disable, can opt the entire file out.
+Existing guards and suppressions remain intact; conflicting module opt-ins are reported rather than
+replaced. This is a conservative common opt-out across the tested backends, not general compiler
+or runtime parity. Oxc may still emit unowned suppression diagnostics after protection, so the
+report can remain incomplete/nonzero. See [suppression protection](docs/runtime-risks.md#protect-react-eslint-suppressions-explicitly).
 
 | Annotation mode | Writes `'use memo'` on                                                      | Writes `'use no memo'` on                 |
 | --------------- | --------------------------------------------------------------------------- | ----------------------------------------- |
@@ -424,13 +442,28 @@ react-compiler-analyzer analyze ./library/src --format html > coverage-report.ht
 Emits a versioned document so results can be diffed, tracked, or fed to a dashboard without
 scraping text. When a report is produced, **stdout carries only the document** — the scan log and
 per-file diagnostics are redirected to stderr — so it pipes straight into a parser. A parse error
-is still represented in the document but exits 1; a fatal compiler/transform error emits no JSON:
+is still represented in the document but exits 1. Backend failures and unresolved attribution also
+retain valid partial JSON and exit 1; invalid command/config input can still fail before scanning.
 
-Schema v4 replaces the Babel profile with the exact Oxc compiler-port and parser versions and
+Schema v5 replaces the Babel profile with the exact Oxc compiler-port and parser versions and
 explicit transform settings. The three `reportedMemoCache*` counters partition accepted functions
 by reconstructed `memoSlots`, not consumer-build output. Positive counts do not prove a risky
 operation was cached; zero counts do not invalidate a preventive bailout. JSON consumers upgrading
 from `0.0.3` must follow the [migration guide](MIGRATION.md#003-to-010).
+
+Both commands include `completeness: "complete" | "incomplete"`,
+`coverage: { discoveredFiles, processedFiles, failedFiles, incompleteFiles }`, and
+`fileDiagnostics`. Completeness describes analysis/attribution, not native-build proof. A file
+diagnostic records `file`, `package`, `stage` (`input`, `compiler`, `backend`, `probe`), `category`,
+`severity`, `attribution` (`file`, `function`, `unresolved`), `count`, and `message`, with optional
+`line`, `column`, and `code`. Repeated unowned suppression errors remain visible; they are not
+assigned to the closest function. Only genuine input-parse failures populate `unparseable`.
+`summary.fileDiagnostics` counts rows; each row's `count` preserves repeated occurrences.
+`failedFiles` counts files without usable function/directive evidence; `incompleteFiles` counts
+files retaining some evidence alongside diagnostics. `processedFiles` counts the remaining clean
+files; the three counters partition `discoveredFiles`. Both failure categories make the scan
+incomplete. Lint coverage counts directive-bearing files eligible for lint, not every source file
+enumerated while finding directives.
 
 Both commands record `profile` (Oxc backend/version, parser version, mode, JSX/output mode,
 source-map setting, diagnostics, target, suppression policy, synthetic gating descriptor, and
@@ -446,7 +479,9 @@ Another compiler/profile may optimize these functions; RCA does not automaticall
 | `functions[].manualMemo` | Optional `useMemo`, `useCallback`, and `reactMemo` counts, plus `reactMemoHasComparator` boolean.                                                                                                                                                                |
 | `findings[]`             | `file`, `package`, `line`, `column`, `function`, `ruleId`, `severity`, `symbol`, `message`, and `compiled`. Optional `suppressed: true` marks an opted-out function, not proof that its guard is load-bearing.                                                   |
 | `unparseable[]`          | `file` and `error` for each file the parser rejected.                                                                                                                                                                                                            |
+| `fileDiagnostics[]`      | File-level failures and unresolved attribution, separate from ordinary verified function outcomes.                                                                                                                                                               |
 | `annotate`               | Present after annotation: `mode`, `filesModified`, `functionsAnnotated`, and `functionsBailedOut`.                                                                                                                                                               |
+| `suppressionProtection`  | Explicit protection result: `filesModified`, `filesPlanned`, `results`, and `dryRun: true` for preview.                                                                                                                                                          |
 
 With `--annotate <mode> --dry-run`, actual annotation counters remain
 zero. The `annotate` object additionally contains `dryRun: true` and `planned`, whose
@@ -456,11 +491,12 @@ JSON contain `annotate.targets`: relative file, line, function name, directive, 
 (`preventive-risk-opt-out` or `compiler-accepted-opt-in`), `reportedMemoCache`,
 `emittedCaching: "unverified"`, and configured `riskRules`. Preview and write use the same planner.
 
-The envelope is `schemaVersion`, `tool`, `command`, `mode`, `profile`, `emittedCaching`, `summary`, `functions`, `findings`,
-`unparseable`, and optional `annotate`. Summary counters are `functions`, `compiled`,
+The envelope is `schemaVersion`, `tool`, `command`, `mode`, `profile`, `emittedCaching`,
+`completeness`, `coverage`, `fileDiagnostics`, `summary`, `functions`, `findings`,
+`unparseable`, and optional `annotate` or `suppressionProtection`. Summary counters are `functions`, `compiled`,
 `reportedMemoCachePositive`, `reportedMemoCacheZero`, `reportedMemoCacheUnavailable`,
 `suppressionRejected`, `suppressionRejectedWithRisks`, `skipped`, `errors`, `findings`, `findingsOnCompiled`, `findingsSuppressed`,
-and `unparseableFiles`; `findingsOnCompiled` excludes suppressed findings.
+`fileDiagnostics`, and `unparseableFiles`; `findingsOnCompiled` excludes suppressed findings.
 
 ```bash
 react-compiler-analyzer analyze ./src --format json \
@@ -469,7 +505,7 @@ react-compiler-analyzer analyze ./src --format json \
 
 ```jsonc
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "tool": "react-compiler-analyzer",
   "command": "analyze",
   "mode": "infer",
@@ -492,6 +528,14 @@ react-compiler-analyzer analyze ./src --format json \
     }
   },
   "emittedCaching": "unverified",
+  "completeness": "complete",
+  "coverage": {
+    "discoveredFiles": 1,
+    "processedFiles": 1,
+    "failedFiles": 0,
+    "incompleteFiles": 0
+  },
+  "fileDiagnostics": [],
   "summary": {
     "functions": 1,
     "compiled": 1,
@@ -505,7 +549,8 @@ react-compiler-analyzer analyze ./src --format json \
     "findings": 1,
     "findingsOnCompiled": 1,
     "findingsSuppressed": 0,
-    "unparseableFiles": 0
+    "unparseableFiles": 0,
+    "fileDiagnostics": 0
   },
   "functions": [
     {
@@ -541,7 +586,8 @@ react-compiler-analyzer analyze ./src --format json \
 
 - Findings use `compiled` to distinguish risks on compiler-accepted functions from latent risks on
   failed/skipped functions. `suppressed: true` marks risks in functions with `'use no memo'`; the key is
-  omitted for other findings.
+  omitted for other findings. In an incomplete report, `compiled: false` means acceptance was not
+  verified; it does not by itself prove a definitive rejection.
 - `memoStats.memoSlots` is reconstructed from Oxc's in-memory gated transform. The profile's
   `noEmit: false` describes that transform output; RCA does not write transformed source files.
   `emittedCaching: "unverified"` remains explicit because synthetic analysis output is not evidence
@@ -554,9 +600,10 @@ react-compiler-analyzer analyze ./src --format json \
   target, output mode, source-map setting, diagnostics, suppression policy, and synthetic gate.
 - Oxc `Warning` and `Advice` diagnostics are visible on stderr and in human reports but do not alone
   reject a function or fail lint. Acceptance requires a uniquely mapped synthetic gate; fatal,
-  unknown-severity, unmappable, or inconsistent error-plus-success evidence fails closed.
-- `unparseable` lists files the parser rejected outright. They contribute nothing to the other
-  counts, so a shrinking `functions` total is never silently caused by a parse failure; a nonempty
+  unknown-severity, unmappable, or inconsistent error-plus-success evidence fails closed with
+  explicit file diagnostics and an incomplete report.
+- `unparseable` lists files the input parser rejected outright. They contribute no function or
+  finding rows, but remain accounted for in coverage and file diagnostics; a nonempty
   array also sets exit code 1. Unsupported grammar is reported rather than extended with Babel
   parser plugins.
 - Paths are workspace-relative and POSIX-separated.
@@ -564,25 +611,30 @@ react-compiler-analyzer analyze ./src --format json \
 - `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array,
   `summary.unparseableFiles`, and an `unparseable` array) and keeps its usual exit code.
   `lint --format json --fix` reports the post-fix directive statuses and failures. Both commands
-  use the same Oxc profile; schema v3 Babel profiles and removed counters are not valid v4 documents.
+  use the same Oxc profile; v3/v4 profiles and removed counters are not valid v5 documents.
 - Full code-framed compiler diagnostics remain available in human reports with `--verbose`; JSON
   stays compact and includes terminal reason/location plus diagnostic reasons and categories.
-- `--annotate` still writes directives to disk under `--format json` when processing completes
-  without a fatal compiler/transform error; the outcome is reported in an `annotate` key
+- `--annotate` still writes directives to eligible clean files under `--format json`; files with
+  incomplete evidence are never annotated, even if other files remain eligible. The outcome is reported in an `annotate` key
   (`{ mode, filesModified, functionsAnnotated, functionsBailedOut, targets }`).
 - [`rca.analyze.schema.json`](rca.analyze.schema.json) validates the compact `analyze` document.
 
 For `lint`, the envelope is `schemaVersion`, `tool`, `command: "lint"`, `mode`, `profile`, `emittedCaching`, `summary`,
-`directives`, and `unparseable`. Each directive row has `file`, `package` (possibly `null`), `line`,
+`completeness`, `coverage`, `fileDiagnostics`, `directives`, and `unparseable`. Each directive row has `file`, `package` (possibly `null`), `line`,
 `column`, `directive` (`use-memo` or `use-no-memo`), `status`, `compilerEvent`, `function`, and
 optional `reason`. Summary counters are `directives`, `active`, `redundant`, `broken`,
-`conflicting`, `skipped`, and `unparseableFiles`. Unparseable entries contain `file` and `error`.
+`conflicting`, `skipped`, `fileDiagnostics`, and `unparseableFiles`. Unparseable entries contain `file` and `error`.
 Explicitly revalidated justified directives additionally include `justified: true` and
 `revalidated: true`, plus `evidence` with before/after outcomes and statistics, acceptance/statistics
 effects, and `emittedOptimization: "not-measured"`. No observed effect is profile-specific,
 not universal redundancy or a refutation of preventive justification. Justified directives
 remain protected with `--fix`; un-justified removal policy and exit codes are unchanged.
 The shipped [`rca.lint.schema.json`](rca.lint.schema.json) references shared analyze definitions.
+
+Protection results use `status: "written" | "would-write" | "skipped" | "conflict"` with a
+`reason`, suppression evidence, and optional source preview. Suppression evidence records rule
+lists, relevant rules, scope, comment span, and justification text; it does not invent a function
+owner for a compiler rejection.
 
 To enumerate suppression exceptions:
 
@@ -597,11 +649,11 @@ compiler probes and rendering internals, see [how it works](docs/how-it-works.md
 
 ## Exit codes
 
-| Command   | Code 0                                                                                                     | Code 1                                                                                      |
-| --------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `init`    | Successful initialization.                                                                                 | Invalid input, non-interactive use without `--yes`, or an operation failure.                |
-| `lint`    | No failing directives or file failures remain.                                                             | Redundant, broken, or conflicting directives; parse/compiler failures; invalid input.       |
-| `analyze` | Completed scan without parse failures; attributed function errors and advisory risks may still be present. | Parse failures, unattributed compiler errors, non-parse transform errors, or invalid input. |
+| Command   | Code 0                                                                             | Code 1                                                                                            |
+| --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `init`    | Successful initialization.                                                         | Invalid input, non-interactive use without `--yes`, or an operation failure.                      |
+| `lint`    | No failing directives or file failures remain.                                     | Redundant, broken, or conflicting directives; parse/compiler failures; invalid input.             |
+| `analyze` | Complete scan; attributed function errors and advisory risks may still be present. | Incomplete input/attribution/backend/resolution analysis, protection conflicts, or invalid input. |
 
 ## Nx integration
 
@@ -686,4 +738,4 @@ yarn nx run react-compiler-analyzer:verify-installed --package-root=/absolute/cl
 
 Unlike the in-repository load guard, this checks the installed package's dependency isolation:
 Babel core/types/compiler and SWC must not resolve. It also checks native loaders, analyze/lint
-schema-v4 JSON, fixes, dry-run behavior, and help output.
+schema-v5 JSON, fixes, dry-run behavior, and help output.

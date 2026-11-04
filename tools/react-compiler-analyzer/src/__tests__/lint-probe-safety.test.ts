@@ -119,9 +119,18 @@ describe('lint fails closed on incomplete compiler evidence', () => {
     });
     const { code, doc } = await captureJson<LintDocument>(() => runLint(argv()));
     expect(code).toBe(1);
-    expect(doc.directives).toEqual([]);
-    expect(doc.unparseable).toEqual([
-      expect.objectContaining({ error: expect.stringContaining('first pass pipeline failed') }),
+    expect(doc.directives).toEqual([
+      expect.objectContaining({ directive: 'use-memo', status: 'conflicting' }),
+      expect.objectContaining({ directive: 'use-no-memo', status: 'conflicting' }),
+    ]);
+    expect(doc.unparseable).toEqual([]);
+    expect(doc.fileDiagnostics).toEqual([
+      expect.objectContaining({
+        stage: 'backend',
+        category: 'pipeline',
+        attribution: 'function',
+        message: 'first pass pipeline failed',
+      }),
     ]);
     expect(compiler.compileSource).not.toHaveBeenCalled();
     expect(readFileSync(filePath, 'utf8')).toBe(source);

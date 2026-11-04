@@ -154,7 +154,7 @@ describe('frozen pre-port lint baseline', () => {
         format: 'json' as const,
       };
       const first = await captureJson<LintDocument>(() => runLint(argv));
-      expect(first.doc.schemaVersion).toBe(4);
+      expect(first.doc.schemaVersion).toBe(5);
       // The reviewed module opt-in divergence is a remaining broken directive in every case.
       expect(first.code).toBe(1);
       expect(first.doc.unparseable).toEqual(expected.document.unparseable);

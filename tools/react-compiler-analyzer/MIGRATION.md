@@ -7,19 +7,22 @@ newest first; dates within an entry identify changes made during its development
 
 | Upgrade            | Release date | Guide updated |
 | ------------------ | ------------ | ------------- |
-| `0.0.3` to `0.1.0` | Unreleased   | 2026-10-30    |
+| `0.0.3` to `0.1.0` | Unreleased   | 2026-11-04    |
 
 `0.1.0` replaces the production Babel backend with the exact-pinned Oxc React Compiler port and
-changes JSON output from schema v2/v3 to strict schema v4. This is a breaking compiler and JSON
+changes JSON output from schema v2/v3/v4 to strict schema v5. This is a breaking compiler and JSON
 contract migration, released as a minor version. Babel and native SWC remain test-only comparison
 oracles; the published CLI does not load either.
 
 ### Required changes for JSON consumers and configuration
 
-1. Accept `schemaVersion: 4` and update strict validators to the shipped
+1. Accept `schemaVersion: 5` and update strict validators to the shipped
    [analyze schema](rca.analyze.schema.json) and [lint schema](rca.lint.schema.json).
    Register the analyze schema when validating lint because it supplies shared definitions.
-   Strict validators must reject v3 profiles and removed counters rather than relabeling them.
+   Strict validators must reject v3/v4 profiles and removed counters rather than relabeling them.
+   Incomplete scans now retain valid JSON and verified results alongside file-level diagnostics,
+   instead of aborting the report. Treat unresolved attribution as unknown, not accepted or
+   zero-slot; do not infer ownership of repeated file-header diagnostics from opt-outs.
 2. Replace `memoStats.memoBlocks`, `memoValues`, `prunedMemoBlocks`, and `prunedMemoValues` with
    the retained `memoSlots` observation. The `summary.reportedMemoCachePositive`,
    `reportedMemoCacheZero`, and `reportedMemoCacheUnavailable` counters still partition accepted
@@ -38,6 +41,19 @@ oracles; the published CLI does not load either.
    `resolver.additionalConditionNames` opts into conditions such as `source`; this does not reorder
    package export keys. `resolver.mainFields` is an explicit ordered replacement for `["module",
 "main"]`, and does not bypass package export restrictions.
+6. Generated output is reparsed using the original dialect. `RCA_OUTPUT_PARSE_ERROR` and
+   resolution failures are backend/file diagnostics, not input-unparseable counts. Incomplete lint
+   retains directive inventory and never removes guards using failed or unattributable probes.
+7. `analyze --protect-suppressions` explicitly adds justified whole-module opt-outs for valid
+   compiler-relevant React ESLint suppressions. Preview with `--dry-run`; it cannot be combined
+   with `--annotate`. Existing module guards remain unchanged during protection and lint.
+   The operation preserves the suppression and may disable other functions too. It verifies a
+   common opt-out in bounded compiler fixtures, not general emitted-code or runtime parity.
+
+The migration also avoids the pinned parser Visitor's global callback registry, which retained
+per-file callbacks and their ASTs/scopes. Traversal now uses public child keys with local callback
+lifetimes. This fixes demonstrated JavaScript retention without raising the Node heap limit or
+claiming a native compiler leak. See [local profiling](docs/how-it-works.md#memory-ownership-and-local-profiling).
 
 If you only use the CLI interactively, re-run reports and review compiler-dependent status changes.
 The profile's `noEmit: false` describes the in-memory transform used for analysis, not a source
@@ -91,6 +107,19 @@ automatic annotation. Annotation `targets` retain rationale, reported-slot state
 uncertainty, and risk rules. Zero or unavailable slots do not disqualify preventive opt-outs.
 Justified revalidation reports before/after outcomes and slot statistics; `emittedOptimization:
 "not-measured"` is not evidence that a guard is universally redundant.
+
+The suppression-protection integration fixtures also compare emitted output from Babel `7.29.7`
+with compiler `1.0.0`, Oxc `0.156.0`, and native SWC across `infer`, `annotation`, and `all`:
+
+- The tested React Hooks ESLint disable prevents emitted caches under Babel and Oxc, while native
+  SWC can still emit them. An ESLint suppression alone is not a portable build opt-out.
+- An explicit module `"use no memo"` prevents emitted caches in all three backends, including
+  functions with `"use memo"`. This is the bounded basis for `--protect-suppressions`, not a claim
+  of general compiler or runtime parity.
+- Oxc can still report identical file-header errors after that guard is added. Unlike Babel's
+  function-associated logger events, these Oxc diagnostics do not establish function ownership.
+  Schema v5 preserves them as file diagnostics with incomplete coverage and a nonzero exit.
+  A guard changes emitted-cache behavior; it does not repair attribution or remove suppressions.
 
 Do not blanket-refresh Babel or SWC baselines to match Oxc. Existing Babel/SWC observations remain
 frozen; Oxc output is recorded separately and each changed outcome, cache layout, export, diagnostic,

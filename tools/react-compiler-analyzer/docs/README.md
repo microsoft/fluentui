@@ -8,7 +8,7 @@ reference. These guides explain how to interpret results and make migration deci
 | [Migration workflow](migration-workflow.md) | Planning gradual adoption, annotating candidates, or reviewing existing opt-outs.        |
 | [Runtime-risk detection](runtime-risks.md)  | Configuring store patterns, ESM wrapper resolution, and investigating missing findings.  |
 | [How it works](how-it-works.md)             | Understanding Oxc probes, mapped acceptance, memo-slot evidence, and report limitations. |
-| [Version migration](../MIGRATION.md)        | Upgrading to the Oxc-backed release and schema v4.                                       |
+| [Version migration](../MIGRATION.md)        | Upgrading to the Oxc-backed release and schema v5 partial-report contract.               |
 
 ## Known upstream issues
 

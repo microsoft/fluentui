@@ -157,14 +157,16 @@ export function Example({ value }: { value: string }) {
     expect(readFileSync(filePath, 'utf-8')).not.toContain('unsafe to memoize');
   });
 
-  it('partitions accepted statistics and records the actual analysis profile in strict v4 JSON', async () => {
+  it('partitions accepted statistics and records the actual analysis profile in strict v5 JSON', async () => {
     const [base] = deriveCoverage(await compile('export function Example() { return <div />; }'));
     const results = [0, 3, null].map(memoSlots => ({ ...base, memoStats: stats(memoSlots) }));
     expect(results.map(memoCacheOutcome)).toEqual(['zero', 'positive', 'unavailable']);
     const doc = toAnalysisDocument(results, { mode: 'all', workspaceRoot: root });
     expect(doc).toMatchObject({
-      schemaVersion: 4,
+      schemaVersion: 5,
       emittedCaching: 'unverified',
+      completeness: 'complete',
+      coverage: { discoveredFiles: 1, processedFiles: 1, failedFiles: 0, incompleteFiles: 0 },
       profile: {
         backend: 'oxc',
         mode: 'all',
@@ -187,7 +189,33 @@ export function Example({ value }: { value: string }) {
     const validate = new Ajv({ allErrors: true }).compile(schema);
     expect(validate(doc)).toBe(true);
     expect(validate({ ...doc, emittedCaching: 'emitted' })).toBe(false);
-    expect(validate({ ...doc, schemaVersion: 3 })).toBe(false);
+    expect(validate({ ...doc, schemaVersion: 4 })).toBe(false);
+    expect(validate({ ...doc, completeness: 'complete', unexpected: true })).toBe(false);
+    expect(
+      validate({
+        ...doc,
+        fileDiagnostics: [
+          {
+            file: 'Example.tsx',
+            package: null,
+            stage: 'compiler',
+            category: 'suppression',
+            severity: 'error',
+            attribution: 'unresolved',
+            count: 2,
+            message: 'Repeated compiler suppression diagnostic',
+          },
+        ],
+        completeness: 'incomplete',
+        coverage: { discoveredFiles: 1, processedFiles: 0, failedFiles: 0, incompleteFiles: 1 },
+      }),
+    ).toBe(true);
+    expect(
+      validate({
+        ...doc,
+        fileDiagnostics: [{ file: 'Example.tsx', status: 'invalid' }],
+      }),
+    ).toBe(false);
     expect(validate({ ...doc, profile: { ...doc.profile, backend: 'babel', babelVersion: '7.28.5' } })).toBe(false);
     for (const removed of ['memoBlocks', 'memoValues', 'prunedMemoBlocks', 'prunedMemoValues']) {
       expect(
@@ -205,6 +233,12 @@ export function Example({ value }: { value: string }) {
     const lintSchema = JSON.parse(readFileSync(join(__dirname, '../../rca.lint.schema.json'), 'utf-8'));
     const validate = new Ajv({ allErrors: true }).addSchema(analyzeSchema).compile(lintSchema);
     expect(validate(doc)).toBe(true);
+    expect(doc).toMatchObject({
+      schemaVersion: 5,
+      completeness: 'complete',
+      coverage: { discoveredFiles: 1, processedFiles: 1, failedFiles: 0, incompleteFiles: 0 },
+      fileDiagnostics: [],
+    });
     expect(doc.directives[0].evidence).toMatchObject({
       before: { outcome: 'skipped' },
       after: { outcome: 'compiled' },
@@ -213,7 +247,7 @@ export function Example({ value }: { value: string }) {
     });
     expect(readFileSync(filePath, 'utf-8')).toBe(source);
     expect(validate({ ...doc, emittedCaching: 'verified' })).toBe(false);
-    expect(validate({ ...doc, schemaVersion: 3 })).toBe(false);
+    expect(validate({ ...doc, schemaVersion: 4 })).toBe(false);
     for (const removed of ['memoBlocks', 'memoValues', 'prunedMemoBlocks', 'prunedMemoValues']) {
       const evidence = doc.directives[0].evidence!;
       expect(

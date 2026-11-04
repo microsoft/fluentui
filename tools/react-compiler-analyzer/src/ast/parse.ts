@@ -26,7 +26,7 @@ export class SourceParseError extends Error {
   }
 }
 
-function languageForFile(filePath: string): NonNullable<ParserOptions['lang']> {
+export function languageForFile(filePath: string): NonNullable<ParserOptions['lang']> {
   const lower = filePath.toLowerCase();
   if (lower.endsWith('.d.ts') || lower.endsWith('.d.mts') || lower.endsWith('.d.cts')) {
     return 'dts';

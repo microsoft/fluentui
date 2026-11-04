@@ -34,9 +34,14 @@ Oxc's native parser support. Flow and unsupported proposal syntax cannot be adde
 parser plugins; those files are reported as unparseable. Parsing a file does not establish React
 Compiler acceptance.
 
+Generated output is reparsed in the original file's TypeScript/TSX dialect, including parameter
+decorators. An output-reparse failure is a backend failure (`RCA_OUTPUT_PARSE_ERROR`), not evidence
+that the original input is unparseable (`RCA_PARSE_ERROR`). Cross-file resolution failures are
+likewise reported separately from input parse errors.
+
 Oxc outcomes are specific to this experimental compiler port and need not match Babel, SWC, or a
 consumer build. The bounded measured divergences and syntax gaps are documented in the
-[migration guide](../MIGRATION.md#compiler-differences-that-cannot-be-ported). Human reports
+[migration guide](../MIGRATION.md#measured-compiler-differences-that-cannot-be-ported). Human reports
 identify compiler and parser versions; JSON records the full backend profile. Neither includes Git
 provenance.
 Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
@@ -59,9 +64,11 @@ Events are reduced in their original order:
 - Consecutive duplicate events do not create duplicate rows.
 
 Function declaration locations remain distinct from optional diagnostic locations. Unattributed
-compiler errors and non-parse transform errors are fatal rather than being silently dropped from
-coverage. Parse failures are listed as `unparseable`, count toward failure, and contribute no
-functions to the normal totals.
+compiler errors and non-parse transform errors are retained as file diagnostics rather than
+silently dropped from coverage. They make the report explicitly incomplete and the command exits
+nonzero, but valid results from other files remain available in schema-valid JSON. Repeated
+unowned header diagnostics remain repeated; nearby declarations and opt-out probes do not prove
+ownership. Parse failures alone are listed as `unparseable`.
 
 ## Directive probing
 
@@ -84,8 +91,8 @@ conflicting revalidated directives fail lint even alongside `--fix`.
 Revalidation can add one whole-file compilation per justified function directive, performed
 sequentially within that file. This is additional work beyond the initial pass and ordinary opt-out probes, so files
 with many justified directives can take longer. File-level and conflicting directives are not probed.
-If the initial pass has unattributed compiler errors, lint reports the file as not analyzed before
-evaluating either ordinary or justified directives. New unattributed errors in a probe remain failed
+If the initial pass has unattributed compiler errors, lint retains directive inventory without
+claiming redundancy or permitting fixes. New unattributed errors in a probe remain failed
 revalidation evidence rather than being ignored.
 
 Coverage analysis uses the selected discovery mode. Directive health uses the mode assumed for the
@@ -95,6 +102,11 @@ opt-out in an annotation-mode build.
 Fixing and annotating are separate operations. `lint --fix` edits directive health issues;
 `analyze --annotate` writes opt-ins or risk-driven opt-outs for accepted functions. Both operate on
 explicit requests rather than persistent configuration.
+
+`analyze --protect-suppressions` is a separate explicit module opt-out operation with its own
+dry-run plan and source-hash preflights. It cannot be combined with `--annotate`. See
+[suppression protection](runtime-risks.md#protect-react-eslint-suppressions-explicitly) for its
+conservative scope and cross-backend limitations.
 
 `analyze --annotate <mode> --dry-run` builds and validates the same edit plan but never invokes
 the writer. It lists proposed targets in human output. JSON keeps actual write counters at zero
@@ -118,6 +130,52 @@ conditions such as `source` are opt-in and do not reorder the keys in a package'
 applies when package exports do not select a target. A source condition or custom field may resolve
 to a different implementation from the consumer build; verbose resolver output records both policy
 and resolved file. Unresolved first-party imports are reported because they leave risk scope unknown.
+
+## Memory ownership and local profiling
+
+AST traversal uses Oxc's public `visitorKeys`, with callback state local to each walk. The pinned
+parser's `Visitor` constructor retains callbacks in a module-global visitor cache, which can retain
+source ASTs, scopes, and generated-source-map closures after a file finishes. The analyzer avoids
+that registry instead of patching dependencies or changing compiler versions. A child-process GC
+regression checks that discarded per-file callbacks do not retain their captured payloads.
+This is a JavaScript callback-lifetime defect, not evidence of a Rust/native compiler leak.
+
+On a frozen private consumer corpus of 13,609 files across 181 roots, the original bundle
+exhausted the default V8 heap on Node 22.23.4 after 8,830 transforms, with sampled peaks of
+4.21 GB JS heap and 4.86 GB RSS and no JSON report. Three repaired whole-scope runs, with
+the same risk rules, wrapper resolution, source export condition, and concurrency 1, completed
+in 113-166 seconds. Their sampled peaks were 1.13-1.21 GB JS heap, 2.7-2.9 MB external memory,
+and 1.48-1.63 GB RSS (decimal units). All three produced identical function, finding, and
+file-diagnostic fingerprints: 4,248 accepted functions and 1,328 findings.
+
+These reports remain explicitly incomplete and exit nonzero: five files have unowned
+suppression diagnostics, with 13,604 cleanly processed files and zero input-parse failures.
+That is a reporting limitation, not resource exhaustion or silently skipped coverage.
+Source hashes were unchanged. Timings vary on the shared host; an OOM baseline has no
+completion time, so these measurements do not establish a completion-time speedup.
+
+For private whole-scope measurements, build first and run the noncached Nx `profile` target:
+
+```bash
+yarn nx run react-compiler-analyzer:build
+yarn nx run react-compiler-analyzer:profile \
+  --request=/absolute/path/request.json --output=/absolute/path/local-evidence \
+  --node=/absolute/path/supported/node --timeout-seconds=600
+```
+
+The local request is `{ "cwd": "/absolute/consumer", "roots": ["/absolute/consumer/src"],
+"command": "analyze", "config": { "analyze": { "risks": { "detectGetStateReads": true } } } }`.
+Use `"command": "lint", "args": ["--revalidate-justified"]` for the justified directive lane;
+optional `args: ["--verbose"]` measures verbose reporting. The harness forces concurrency 1,
+clears inherited `NODE_OPTIONS`, and permits no
+source-edit arguments. It records source content hashes before and after the run, exact config,
+JSON/stderr, sampled JS heap, external/array-buffer memory, RSS, heap limit, parse/transform counts,
+and bounded termination status. A valid partial report's nonzero exit is distinct from a timeout,
+signal, or missing JSON. Peaks are sampled rather than exact process high-water marks.
+
+Add `--heap-profile` only for local allocation attribution. Sampling changes runtime overhead;
+do not compare its elapsed time with an unprofiled run. Source manifests, paths, heap profiles,
+and consumer reports can contain private information and must stay outside the repository.
 
 ## Memo-cache statistics
 

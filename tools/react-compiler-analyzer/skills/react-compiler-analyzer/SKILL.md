@@ -31,6 +31,7 @@ package version.
    stored in `rca.config.json`.
 2. Run `analyze` with an explicit `--format json` for machine-readable results.
 3. Use the JSON summary and function records to distinguish:
+   - complete versus partial analysis, retaining file diagnostics on nonzero exits;
    - compiler acceptance;
    - accepted functions with positive, zero, or unavailable Oxc `memoSlots` statistics;
    - actual emitted caching, which normal analysis does not verify;
@@ -43,8 +44,12 @@ package version.
 
 ## Safety rules
 
-- Never use `analyze --annotate` or `lint --fix` unless the user explicitly requests source
+- Never use `analyze --annotate`, `analyze --protect-suppressions`, or `lint --fix` unless the user explicitly requests source
   changes.
+- Never infer function ownership from repeated header diagnostics or opt-out probes. Incomplete
+  attribution is not compiled/zero-slot evidence; preserve existing guards.
+- Suppression protection adds a conservative whole-module opt-out, not a suppression repair or
+  general compiler/runtime parity guarantee. Preview with `--protect-suppressions --dry-run`.
 - Never interpret compiler acceptance or memo-slot counts as a performance-value ranking.
 - Never infer actual emitted caches or caching of a particular risky operation from analysis-only
   counters. Zero slots do not disqualify preventive bailouts; positive slots do not prove unsafe caching.

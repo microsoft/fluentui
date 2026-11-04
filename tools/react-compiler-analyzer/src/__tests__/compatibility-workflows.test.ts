@@ -298,7 +298,7 @@ export function useValue(initial = 0) {
     expect(readFileSync(filePath, 'utf-8')).toBe(original);
   });
 
-  it('rejects first-pass unattributed errors before probing either directive kind', async () => {
+  it('retains directive rows and reports first-pass unattributed errors without probing', async () => {
     writeFileSync(
       filePath,
       source("'use no memo'; // justified: retain") + "\nfunction Plain() { 'use memo'; return { value: 1 }; }",
@@ -313,10 +313,23 @@ export function useValue(initial = 0) {
       runLint({ ...argv(), fix: true, 'revalidate-justified': true }),
     );
     expect(code).toBe(1);
-    expect(document.directives).toEqual([]);
-    expect(document.unparseable).toEqual([
-      expect.objectContaining({ error: expect.stringContaining('existing module diagnostic') }),
+    expect(document.directives).toHaveLength(2);
+    expect(document.directives).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ directive: 'use-memo', status: 'broken' }),
+        expect.objectContaining({ directive: 'use-no-memo', justified: true, status: 'broken' }),
+      ]),
+    );
+    expect(document.unparseable).toEqual([]);
+    expect(document.fileDiagnostics).toEqual([
+      expect.objectContaining({
+        stage: 'backend',
+        category: 'pipeline',
+        attribution: 'unresolved',
+        message: 'existing module diagnostic',
+      }),
     ]);
+    expect(document.completeness).toBe('incomplete');
     expect(compiler.compileSource).not.toHaveBeenCalled();
   });
 
@@ -408,13 +421,16 @@ export function useValue(initial = 0) {
     writeFileSync(filePath, source());
     jest.doMock('oxc-transform-react/package.json', () => ({}));
     jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    jest.spyOn(console, 'log').mockImplementation(() => undefined);
+    const lines: string[] = [];
+    jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
     const firstPass = await compiled();
     firstPass.error = new Error('actual compiler failure');
     jest.spyOn(compiler, 'compileFilesStreaming').mockImplementationOnce(async (_files, _options, onResult) => {
       await onResult(firstPass);
     });
-    await expect(runAnalyze({ ...argv(), format: 'cli', verbose: true })).rejects.toThrow('actual compiler failure');
+    expect(await runAnalyze({ ...argv(), format: 'cli', verbose: true })).toBe(1);
+    expect(lines.join('\n')).toContain('File diagnostics (incomplete analysis)');
+    expect(lines.join('\n')).toContain('actual compiler failure');
   });
 
   it('includes resolved compiler metadata in verbose JSON without contaminating stdout', async () => {

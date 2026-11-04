@@ -10,9 +10,9 @@ import { createLintCommand, runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
-import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+import type { CompilationMode, DirectiveAnalysis, FileEntry, LintDocument } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
+import { captureJson, normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -144,8 +144,8 @@ export function MyComponent({ label }: { label: string }) {
       expect(results).toEqual([
         expect.objectContaining({ status: 'broken', reason: expect.stringContaining('injected probe failure') }),
       ]);
-      expect(
-        await runLint({
+      const { code, doc } = await captureJson<LintDocument>(() =>
+        runLint({
           paths: [componentFile],
           verbose: false,
           concurrency: 1,
@@ -154,7 +154,15 @@ export function MyComponent({ label }: { label: string }) {
           mode: 'infer',
           format: 'json',
         } as never),
-      ).toBe(1);
+      );
+      expect(code).toBe(1);
+      expect(doc.directives).toEqual([
+        expect.objectContaining({ file: expect.stringContaining('FailedProbe.tsx'), status: 'broken' }),
+      ]);
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({ stage: 'probe', category: 'probe', attribution: 'unresolved' }),
+      ]);
+      expect(doc.completeness).toBe('incomplete');
       expect(readFileSync(componentFile, 'utf-8')).toBe(source);
       expect(probe).toHaveBeenCalled();
     } finally {
@@ -629,11 +637,18 @@ export function Ok({ label }: { label: string }) {
     try {
       expect(await runLint(baseArgv({ format: 'json', fix }) as never)).toBe(1);
       const document = JSON.parse(output.join(''));
-      expect(document.directives).toEqual([]);
-      expect(document.summary.unparseableFiles).toBe(1);
-      expect(document.unparseable).toEqual([
-        { file: expect.stringContaining('PipelineFailure.tsx'), error: 'PipelineError: pipeline crashed' },
+      expect(document.directives).toEqual([expect.objectContaining({ directive: 'use-memo', status: 'broken' })]);
+      expect(document.summary.unparseableFiles).toBe(0);
+      expect(document.unparseable).toEqual([]);
+      expect(document.fileDiagnostics).toEqual([
+        expect.objectContaining({
+          stage: 'backend',
+          category: 'pipeline',
+          attribution: 'unresolved',
+          message: 'pipeline crashed',
+        }),
       ]);
+      expect(document.completeness).toBe('incomplete');
       expect(readFileSync(filePath, 'utf-8')).toBe(source);
     } finally {
       write.mockRestore();
@@ -658,8 +673,8 @@ export function Ok({ label }: { label: string }) {
 
     try {
       expect(await runLint(baseArgv() as never)).toBe(1);
-      expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
-      expect(output.join('\n')).toContain('PipelineError: pipeline crashed');
+      expect(output.join('\n')).toContain('File diagnostics (incomplete analysis)');
+      expect(output.join('\n')).toContain('pipeline crashed');
       expect(output.join('\n')).toContain('PipelineFailure.tsx');
     } finally {
       stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
@@ -724,7 +739,7 @@ export function useUncompilable() {
     };
 
     await expect(runLint(baseArgv() as never)).resolves.toBe(1);
-    expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
+    expect(output.join('\n')).toContain('File diagnostics (incomplete analysis)');
     expect(output.join('\n')).toContain('Unparseable.tsx');
   });
 });

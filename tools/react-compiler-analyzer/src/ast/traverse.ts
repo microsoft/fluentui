@@ -1,5 +1,5 @@
-import { Visitor, visitorKeys } from 'oxc-parser';
-import type { Node, Program, VisitorObject } from 'oxc-parser';
+import { visitorKeys } from 'oxc-parser';
+import type { Node, Program } from 'oxc-parser';
 
 export interface AstVisitor {
   enter?(node: Node, parent: Node | null): void;
@@ -40,13 +40,25 @@ function isNode(value: unknown): value is Node {
 }
 
 export function walkAst(program: Program, visitor: AstVisitor, parents = new AstParents(program)): AstParents {
-  const oxcVisitor: Record<string, (node: Node) => void> = {};
-  for (const type of Object.keys(visitorKeys)) {
-    oxcVisitor[type] = node => visitor.enter?.(node, parents.get(node));
-    if (visitor.exit) {
-      oxcVisitor[`${type}:exit`] = node => visitor.exit?.(node, parents.get(node));
+  // The pinned Oxc Visitor retains per-instance callbacks in a module-global object cache.
+  // Walk its public child keys directly so callbacks and their source ASTs die with this call.
+  const visit = (node: Node): void => {
+    const parent = parents.get(node);
+    visitor.enter?.(node, parent);
+    for (const key of visitorKeys[node.type] ?? []) {
+      const value: unknown = Reflect.get(node, key);
+      if (Array.isArray(value)) {
+        for (const child of value) {
+          if (isNode(child)) {
+            visit(child);
+          }
+        }
+      } else if (isNode(value)) {
+        visit(value);
+      }
     }
-  }
-  new Visitor(oxcVisitor as VisitorObject).visit(program);
+    visitor.exit?.(node, parent);
+  };
+  visit(program);
   return parents;
 }

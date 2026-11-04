@@ -43,6 +43,19 @@ describe('normalizeCompilerEvents', () => {
     expect(result.analyses[0].status).toBe('error');
   });
 
+  it('preserves repeated compiler diagnostic multiplicity without duplicating function rows', async () => {
+    const { fnLoc, normalize } = await setup();
+    const result = normalize([
+      { kind: 'CompileError', fnLoc, detail: { category: 'Suppression', reason: 'suppressed' } },
+      { kind: 'CompileError', fnLoc, detail: { category: 'Suppression', reason: 'suppressed' } },
+    ]);
+
+    expect(result.analyses).toHaveLength(1);
+    expect(result.analyses[0].diagnostics).toEqual([
+      expect.objectContaining({ category: 'Suppression', reason: 'suppressed', count: 2 }),
+    ]);
+  });
+
   it('retains full diagnostics when requested', async () => {
     const { fnLoc, normalize } = await setup();
     const result = normalize([
@@ -146,14 +159,21 @@ describe('normalizeCompilerEvents', () => {
     ]);
     expect(result.analyses).toHaveLength(1);
     expect(result.analyses[0].status).toBe('compiled');
-    expect(result.unattributedErrors).toEqual([{ kind: 'PipelineError', span: null, reason: 'file failure' }]);
+    expect(result.unattributedErrors).toEqual([
+      { kind: 'PipelineError', span: null, reason: 'file failure', count: 1 },
+    ]);
   });
 
   it('retains unattributed compile errors without miscounting functions', async () => {
     const { normalize } = await setup();
-    const result = normalize([{ kind: 'CompileError', fnLoc: null, detail: { reason: 'compiler failure' } }]);
+    const result = normalize([
+      { kind: 'CompileError', fnLoc: null, detail: { reason: 'compiler failure' } },
+      { kind: 'CompileError', fnLoc: null, detail: { reason: 'compiler failure' } },
+    ]);
     expect(result.analyses).toHaveLength(0);
-    expect(result.unattributedErrors).toEqual([{ kind: 'CompileError', span: null, reason: 'compiler failure' }]);
+    expect(result.unattributedErrors).toEqual([
+      { kind: 'CompileError', span: null, reason: 'compiler failure', count: 2 },
+    ]);
   });
 
   it('treats a file with no terminal events as empty rather than failed', async () => {

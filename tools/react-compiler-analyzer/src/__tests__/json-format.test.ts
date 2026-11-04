@@ -159,7 +159,7 @@ export function Risky({ label }: { label: string }) {
       );
 
       expect(code).toBe(0);
-      expect(doc.schemaVersion).toBe(4);
+      expect(doc.schemaVersion).toBe(5);
       expect(doc.tool).toBe('react-compiler-analyzer');
       expect(doc.command).toBe('analyze');
       expect(doc.mode).toBe('infer');

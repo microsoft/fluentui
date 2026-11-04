@@ -161,6 +161,53 @@ export interface CompilerDiagnostic {
   reason: string;
   fullReason?: string;
   category?: string;
+  count: number;
+}
+
+export type FileDiagnosticStage = 'input' | 'compiler' | 'backend' | 'probe';
+export type FileDiagnosticAttribution = 'file' | 'function' | 'unresolved';
+
+export interface FileDiagnostic {
+  file: string;
+  package: string | null;
+  stage: FileDiagnosticStage;
+  category: string;
+  severity: 'error' | 'warning';
+  attribution: FileDiagnosticAttribution;
+  line?: number;
+  column?: number;
+  count: number;
+  message: string;
+  code?: string;
+}
+
+export interface CoverageAccounting {
+  discoveredFiles: number;
+  processedFiles: number;
+  failedFiles: number;
+  incompleteFiles: number;
+}
+
+export interface ReportedSuppressionDirective {
+  kind: string;
+  rules: string[] | null;
+  relevantRules: string[];
+  reason: string | null;
+  commentSpan: SourceSpan;
+  scopes: { ruleId: string; span: SourceSpan }[];
+}
+
+export interface SuppressionProtectionReport {
+  dryRun?: true;
+  filesModified: number;
+  filesPlanned: number;
+  results: {
+    file: string;
+    status: 'written' | 'would-write' | 'skipped' | 'conflict';
+    reason: string;
+    suppressions: ReportedSuppressionDirective[];
+    preview?: string;
+  }[];
 }
 
 /**
@@ -290,12 +337,15 @@ export interface MigrationCandidate {
 }
 
 interface DocumentEnvelope {
-  schemaVersion: 4;
+  schemaVersion: 5;
   tool: 'react-compiler-analyzer';
   command: 'analyze' | 'lint';
   mode: CompilationMode;
   profile: AnalysisProfile;
   emittedCaching: 'unverified';
+  completeness: 'complete' | 'incomplete';
+  coverage: CoverageAccounting;
+  fileDiagnostics: FileDiagnostic[];
 }
 
 export interface JsonFunction {
@@ -312,7 +362,7 @@ export interface JsonFunction {
   memoStats?: NullableMemoStats | null;
   manualMemo?: Pick<ManualMemoization, 'useMemo' | 'useCallback' | 'reactMemo' | 'reactMemoHasComparator'>;
   rejectionKind?: FunctionAnalysis['rejectionKind'];
-  diagnostics?: { kind: CompilerDiagnostic['kind']; reason: string; category?: string }[];
+  diagnostics?: { kind: CompilerDiagnostic['kind']; reason: string; category?: string; count: number }[];
 }
 
 export interface JsonFinding {
@@ -330,7 +380,7 @@ export interface JsonFinding {
 }
 
 export interface AnalysisDocument extends DocumentEnvelope {
-  schemaVersion: 4;
+  schemaVersion: 5;
   command: 'analyze';
   summary: {
     functions: number;
@@ -345,11 +395,13 @@ export interface AnalysisDocument extends DocumentEnvelope {
     findings: number;
     findingsOnCompiled: number;
     findingsSuppressed: number;
+    fileDiagnostics: number;
     unparseableFiles: number;
   };
   functions: JsonFunction[];
   findings: JsonFinding[];
   unparseable: { file: string; error: string }[];
+  suppressionProtection?: SuppressionProtectionReport;
   annotate?: Omit<AnnotateResult, 'targets'> & {
     mode: AnnotateMode;
     targets?: (Omit<NonNullable<AnnotateResult['targets']>[number], 'filePath'> & { file: string })[];
@@ -372,7 +424,7 @@ export interface JsonDirective {
 }
 
 export interface LintDocument extends DocumentEnvelope {
-  schemaVersion: 4;
+  schemaVersion: 5;
   command: 'lint';
   summary: {
     directives: number;
@@ -381,6 +433,7 @@ export interface LintDocument extends DocumentEnvelope {
     broken: number;
     conflicting: number;
     skipped: number;
+    fileDiagnostics: number;
     unparseableFiles: number;
   };
   directives: JsonDirective[];

@@ -1,8 +1,10 @@
 import { decodedMappings, TraceMap } from '@jridgewell/trace-mapping';
-import { parseSync, Visitor, type ConditionalExpression, type Node, type Program } from 'oxc-parser';
+import { parseSync, type Node, type Program } from 'oxc-parser';
 import { transform, transformSync, type OxcError, type TransformResult } from 'oxc-transform-react';
 
 import { ScopeResolver } from './ast/scope';
+import { languageForFile } from './ast/parse';
+import { walkAst } from './ast/traverse';
 import type { CompilerEvent, CompileResult } from './compiler';
 import { populateSourceFunctions, SourceFunctionIndex } from './source-functions';
 import type { CompilationMode, SourceFunction } from './types';
@@ -28,7 +30,7 @@ export const RcaArrow = ({ value }: { value: number }) => <div>{value}</div>;`;
   if (!result.fatal && result.errors.length === 0 && result.map) {
     const index = new SourceFunctionIndex(source, { filePath: filename, packageName: null }, process.cwd());
     populateSourceFunctions(source, filename, index);
-    const events = mappedSuccesses(result, source, index);
+    const events = mappedSuccesses(result, source, index, filename);
     valid =
       events.length === 2 &&
       events.some(event => event.fnName === 'RcaCanary' && event.memoSlots === 0) &&
@@ -81,10 +83,14 @@ function position(source: string, offset: number): { line: number; column: numbe
 }
 
 export function parseCompilerSource(filename: string, source: string): Program {
-  const parsed = parseSync(filename, source, { showSemanticErrors: true });
+  const parsed = parseSync(filename, source, {
+    lang: languageForFile(filename),
+    sourceType: 'unambiguous',
+    showSemanticErrors: true,
+  });
   if (parsed.errors.length) {
     throw Object.assign(new SyntaxError(parsed.errors.map(error => error.codeframe ?? error.message).join('\n')), {
-      code: 'RCA_PARSE_ERROR',
+      code: 'RCA_OUTPUT_PARSE_ERROR',
     });
   }
   return parsed.program;
@@ -109,7 +115,12 @@ function owningFunction(functions: SourceFunction[], offsets: number[]): SourceF
     )[0];
 }
 
-function mappedSuccesses(output: TransformResult, source: string, index: SourceFunctionIndex): CompilerEvent[] {
+function mappedSuccesses(
+  output: TransformResult,
+  source: string,
+  index: SourceFunctionIndex,
+  filename: string,
+): CompilerEvent[] {
   if (!output.map) {
     throw new Error('Oxc did not return the source map required for compiler attribution');
   }
@@ -120,7 +131,7 @@ function mappedSuccesses(output: TransformResult, source: string, index: SourceF
   ) {
     throw new Error('Oxc source map does not identify the original source input');
   }
-  const program = parseCompilerSource('compiled.jsx', output.code);
+  const program = parseCompilerSource(filename, output.code);
   const scopes = new ScopeResolver(program);
   const functions = index.values();
   const generatedStarts = lineStarts(output.code);
@@ -138,10 +149,13 @@ function mappedSuccesses(output: TransformResult, source: string, index: SourceF
   });
   const events: CompilerEvent[] = [];
   const attributed = new Set<string>();
-  new Visitor({
-    // eslint-disable-next-line @typescript-eslint/naming-convention -- Oxc visitor keys are AST node kinds.
-    ConditionalExpression: (node: ConditionalExpression) => {
-      if (node.test.type !== 'CallExpression' || node.test.callee.type !== 'Identifier') {
+  walkAst(program, {
+    enter: node => {
+      if (
+        node.type !== 'ConditionalExpression' ||
+        node.test.type !== 'CallExpression' ||
+        node.test.callee.type !== 'Identifier'
+      ) {
         return;
       }
       const gateImport = scopes.bindingOf(node.test.callee)?.importBinding;
@@ -214,7 +228,7 @@ function mappedSuccesses(output: TransformResult, source: string, index: SourceF
       inspect(compiled);
       events.push({ kind: 'CompileSuccess', fnLoc: functionLocation(fn), fnName: fn.name, memoSlots: slots });
     },
-  }).visit(program);
+  });
   return events;
 }
 
@@ -242,7 +256,12 @@ function diagnosticEvent(
   if (!fn && offset !== undefined && error.message === 'React rule suppression prevents optimization') {
     const end = utf8OffsetToUtf16(source, label.end);
     const next = candidates.find(candidate => candidate.declarationSpan.start.offset >= end);
-    if (next && /^\s*$/.test(source.slice(end, next.declarationSpan.start.offset))) {
+    const comment = source.slice(offset, end);
+    if (
+      next &&
+      /\beslint-disable-next-line\b/.test(comment) &&
+      /^\s*$/.test(source.slice(end, next.declarationSpan.start.offset))
+    ) {
       fn = next;
     }
   }
@@ -298,7 +317,7 @@ export async function compileOxc(
         `Oxc compiler failed: ${output.errors.map(error => error.codeframe ?? error.message).join('\n')}`,
       );
     }
-    const events = mappedSuccesses(output, source, index);
+    const events = mappedSuccesses(output, source, index, filename);
     for (const error of output.errors) {
       if (error.severity === 'Warning' || error.severity === 'Advice') {
         console.warn(`${filename}: Oxc ${error.severity}: ${error.codeframe ?? error.message}`);

@@ -54,6 +54,13 @@ export function Guarded({ initial }: { initial: number }) {
 }
 `,
     ],
+    [
+      'Suppressed.tsx',
+      `// eslint-disable-next-line react-hooks/exhaustive-deps -- preserve the reviewed exception
+export function Suppressed() { return <output />; }
+`,
+    ],
+    ['Broken.tsx', 'export function Broken( { return <div />;\n'],
     ['rca.config.json', '{}\n'],
   ]);
   try {
@@ -67,6 +74,42 @@ export function Guarded({ initial }: { initial: number }) {
     assert.equal(analyze.summary.reportedMemoCacheZero, 0);
     assert.equal(analyze.summary.reportedMemoCacheUnavailable, 0);
     assert.equal(analyze.functions[0].compilerEvent, 'CompileSuccess');
+
+    const partialResult = runCli(
+      root,
+      [
+        'analyze',
+        join(directory, 'Positive.tsx'),
+        join(directory, 'Broken.tsx'),
+        '--format',
+        'json',
+        '--config',
+        join(directory, 'rca.config.json'),
+      ],
+      directory,
+    );
+    assert.ifError(partialResult.error);
+    assert.equal(partialResult.status, 1, 'a file parse failure remains a nonzero result');
+    const partial = JSON.parse(partialResult.stdout);
+    assert.equal(validateAnalyze(partial), true, JSON.stringify(validateAnalyze.errors, null, 2));
+    assert.equal(partial.completeness, 'incomplete');
+    assert.deepEqual(partial.coverage, {
+      discoveredFiles: 2,
+      processedFiles: 1,
+      failedFiles: 1,
+      incompleteFiles: 0,
+    });
+    assert.equal(partial.functions.length, 1, 'the verified row survives a neighboring input failure');
+    assert.equal(partial.functions[0].function, 'Example');
+
+    const protection = invoke(
+      ['analyze', join(directory, 'Suppressed.tsx'), '--protect-suppressions', '--dry-run'],
+      validateAnalyze,
+    );
+    assert.equal(protection.suppressionProtection.dryRun, true);
+    assert.equal(protection.suppressionProtection.filesPlanned, 1);
+    assert.equal(protection.suppressionProtection.results[0].status, 'would-write');
+    assert.match(protection.suppressionProtection.results[0].reason, /cross-backend-suppression-protection/);
 
     const preview = invoke(
       ['analyze', join(directory, 'Positive.tsx'), '--annotate', 'all', '--dry-run'],
@@ -97,15 +140,15 @@ export function Guarded({ initial }: { initial: number }) {
     assert.equal(lint.directives[0].revalidated, true);
     assert.equal(lint.directives[0].evidence.emittedOptimization, 'not-measured');
 
-    assert.equal(validateAnalyze({ ...analyze, schemaVersion: 3 }), false, 'v4 schema rejects v3 documents');
-    assert.equal(validateLint({ ...lint, schemaVersion: 3 }), false, 'v4 lint schema rejects v3 documents');
+    assert.equal(validateAnalyze({ ...analyze, schemaVersion: 4 }), false, 'v5 schema rejects v4 documents');
+    assert.equal(validateLint({ ...lint, schemaVersion: 4 }), false, 'v5 lint schema rejects v4 documents');
     assert.equal(
       validateAnalyze({
         ...analyze,
         functions: [{ ...analyze.functions[0], memoStats: { memoSlots: 2, memoBlocks: null } }],
       }),
       false,
-      'v4 schema rejects removed Babel-only counters',
+      'v5 schema rejects removed Babel-only counters',
     );
 
     checkInit(root, directory, validateConfig);
@@ -113,7 +156,7 @@ export function Guarded({ initial }: { initial: number }) {
     checkWorkspaceResolution(root, validateAnalyze);
 
     console.log(
-      'CLI integration passed: strict schema-v4 analyze/lint JSON, Oxc profile, init, lint fixes, workspace resolution, no Babel/SWC loads.',
+      'CLI integration passed: strict schema-v5 analyze/lint JSON, Oxc profile, init, lint fixes, workspace resolution, no Babel/SWC loads.',
     );
   } finally {
     rmSync(directory, { recursive: true, force: true });
@@ -142,7 +185,7 @@ export function Guarded({ initial }: { initial: number }) {
     assert.equal(result.stdout.trimStart()[0], '{', 'stdout must contain only one JSON document');
     const document = JSON.parse(result.stdout);
     assert.equal(validate(document), true, JSON.stringify(validate.errors, null, 2));
-    assert.equal(document.schemaVersion, 4);
+    assert.equal(document.schemaVersion, 5);
     assert.equal(document.emittedCaching, 'unverified');
     assert.equal(document.profile.backend, 'oxc');
     assert.equal(document.profile.mode, 'infer');
@@ -186,7 +229,7 @@ function invokeJson(root, args, cwd, configPath, validate) {
   assert.equal(result.stdout.trimStart()[0], '{', 'stdout must contain only one JSON document');
   const document = JSON.parse(result.stdout);
   assert.equal(validate(document), true, JSON.stringify(validate.errors, null, 2));
-  assert.equal(document.schemaVersion, 4);
+  assert.equal(document.schemaVersion, 5);
   assert.equal(document.profile.backend, 'oxc');
   return document;
 }

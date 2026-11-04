@@ -105,10 +105,57 @@ export function Example(props) {
     );
   });
 
-  it('classifies invalid syntax explicitly', () => {
+  it('classifies generated syntax failures separately from input failures', () => {
     expect(() => parseCompilerSource('example.ts', 'const = ;')).toThrow(
-      expect.objectContaining({ code: 'RCA_PARSE_ERROR' }),
+      expect.objectContaining({ code: 'RCA_OUTPUT_PARSE_ERROR' }),
     );
+  });
+
+  it.each(['ts', 'tsx', 'mts', 'cts'])(
+    'preserves parameter decorators in generated %s without inventing candidates',
+    async extension => {
+      const result = await compileSource(
+        `declare function inject(token: string): ParameterDecorator;
+export class Service {
+  constructor(@inject("request") private readonly request: unknown) {}
+}`,
+        `service.${extension}`,
+      );
+      expect(result.error).toBeUndefined();
+      expect(result.events).toEqual([]);
+    },
+  );
+
+  it('attributes a mixed decorated class and component to the original source', async () => {
+    const result = await compileSource(
+      `declare function inject(token: string): ParameterDecorator;
+export class Service {
+  constructor(@inject("request") private readonly request: unknown) {}
+}
+export function Example({ value }: { value: string }) { return <div>{value}</div>; }`,
+      'example.tsx',
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.events).toEqual([
+      expect.objectContaining({
+        kind: 'CompileSuccess',
+        fnName: 'Example',
+        fnLoc: expect.objectContaining({ start: expect.objectContaining({ line: 5, column: 7 }) }),
+      }),
+    ]);
+  });
+
+  it('keeps repeated file-header suppressions unowned instead of assigning by order', async () => {
+    const result = await compileSource(
+      `/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+export function One({ value }) { useEffect(() => console.log(value), []); return null; }
+export function Two({ value }) { "use no memo"; return <div>{value}</div>; }`,
+      'example.tsx',
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.events).toHaveLength(2);
+    expect(result.events.every(event => event.kind === 'CompileError' && event.fnLoc === null)).toBe(true);
   });
 });
 
