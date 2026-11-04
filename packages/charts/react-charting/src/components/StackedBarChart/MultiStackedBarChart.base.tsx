@@ -19,7 +19,7 @@ import {
   formatScientificLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
-  isStackedBarSegmentRendered,
+  hasNonZeroData,
 } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import type { JSXElement } from '@fluentui/utilities';
@@ -194,7 +194,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     href?: string,
     barNo?: number,
   ): JSXElement {
-    const noOfBars = data.chartData?.filter(isStackedBarSegmentRendered).length || 1;
+    const noOfBars = data.chartData?.filter(hasNonZeroData).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -277,7 +277,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       }
 
       startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
-      if (isStackedBarSegmentRendered(point)) {
+      if (hasNonZeroData(point)) {
         renderedBarsBefore++;
       }
 

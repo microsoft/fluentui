@@ -1865,11 +1865,9 @@ export function formatScientificLimitWidth(value: number): string {
 }
 
 /**
- * Whether a stacked bar segment is drawn with a visible width. Any non-zero value is drawn,
- * because negative and very small values are clamped to a minimum width, so such segments
- * need spacing like every other segment.
+ * Whether the data point has a non-zero value. Missing data counts as zero.
  */
-export const isStackedBarSegmentRendered = (point: IChartDataPoint): boolean => (point.data || 0) !== 0;
+export const hasNonZeroData = (point: IChartDataPoint): boolean => (point.data || 0) !== 0;
 
 const DEFAULT_BAR_WIDTH = 16;
 const MIN_BAR_WIDTH = 1;

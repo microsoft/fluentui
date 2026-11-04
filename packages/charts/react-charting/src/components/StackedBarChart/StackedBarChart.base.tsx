@@ -6,12 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import {
-  ChartHoverCard,
-  getAccessibleDataObject,
-  getNextGradient,
-  isStackedBarSegmentRendered,
-} from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject, getNextGradient, hasNonZeroData } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { formatToLocaleString, isSafeUrl } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
@@ -239,7 +234,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
   ): [JSXElement[], JSXElement] {
-    const noOfBars = data.chartData?.filter(isStackedBarSegmentRendered).length || 1;
+    const noOfBars = data.chartData?.filter(hasNonZeroData).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
 
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -330,7 +325,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
 
       startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
-      if (isStackedBarSegmentRendered(point)) {
+      if (hasNonZeroData(point)) {
         renderedBarsBefore++;
       }
       const styles = this.props.styles;
