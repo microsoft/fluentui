@@ -22,12 +22,14 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     mode = 'auto',
   } = props;
 
-  if (process.env.NODE_ENV !== 'production' && inertTrapFocus && mode !== 'auto') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `@fluentui/react-headless-components-preview [Popover]: \`mode="${mode}"\` is ignored when \`inertTrapFocus\` is true.`,
-    );
-  }
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && inertTrapFocus && mode !== 'auto') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `@fluentui/react-headless-components-preview [Popover]: \`mode="${mode}"\` is ignored when \`inertTrapFocus\` is true.`,
+      );
+    }
+  }, [inertTrapFocus, mode]);
 
   const [open, setOpenState] = useControllableState({
     state: props.open,
