@@ -3,6 +3,8 @@
 import { usePopover, usePopoverContextValues } from './usePopover';
 import { renderPopover } from './renderPopover';
 import { composeComponentWithoutRef } from '../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
+import type { PopoverProps } from './Popover.types';
 
 /**
  * Headless Popover component.
@@ -13,7 +15,7 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
  * controlled `open` prop) flow through React; close paths defer to the
  * browser, with `toggle` events mirrored back into state.
  */
-export const Popover = /*#__PURE__*/ composeComponentWithoutRef(
+export const Popover: ComponentWithoutRef<PopoverProps> = /*#__PURE__*/ composeComponentWithoutRef(
   'Popover',
   usePopover,
   usePopoverContextValues,
