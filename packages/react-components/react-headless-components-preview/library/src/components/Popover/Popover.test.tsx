@@ -583,18 +583,21 @@ describe('Popover', () => {
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
   });
 
-  it('ignores mode and warns when inertTrapFocus is true', () => {
+  it('ignores mode and warns once when inertTrapFocus is true', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
-    const { getByRole } = render(
-      <Popover defaultOpen inertTrapFocus mode="manual">
+    const Example = ({ withArrow }: { withArrow?: boolean }) => (
+      <Popover defaultOpen inertTrapFocus mode="manual" withArrow={withArrow}>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
         <PopoverSurface aria-label="Surface">Surface</PopoverSurface>
-      </Popover>,
+      </Popover>
     );
+    const { getByRole, rerender } = render(<Example />);
+    rerender(<Example withArrow />);
 
     expect(getByRole('dialog', { hidden: true })).not.toHaveAttribute('popover');
+    expect(consoleWarn).toHaveBeenCalledTimes(1);
     expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('is ignored when `inertTrapFocus` is true'));
     consoleWarn.mockRestore();
   });
