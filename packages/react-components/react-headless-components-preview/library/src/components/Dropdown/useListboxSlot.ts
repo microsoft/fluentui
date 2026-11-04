@@ -101,7 +101,7 @@ export function useListboxSlot(
     listboxSlot.onClick = onClick;
   }
 
-  // Focus stays on the trigger (`aria-activedescendant`). The render function unmounts the listbox after it closes.
+  // Focus stays on the trigger (`aria-activedescendant`).
   useLayerOpenState(popoverRef, {
     open,
     mode: 'auto',

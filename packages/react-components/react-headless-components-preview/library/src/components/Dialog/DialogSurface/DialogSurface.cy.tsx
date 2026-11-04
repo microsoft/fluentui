@@ -9,7 +9,6 @@ import { Drawer } from '../../Drawer';
 import { NavDrawer } from '../../Nav/NavDrawer';
 import { Provider } from '../../Provider';
 import { Tooltip } from '../../Tooltip';
-import { supportsPopoverHint } from '../../../testing/supportsPopoverHint';
 
 const surfaceSelector = '#animated-surface';
 const exitDuration = `calc(${webLightTheme.durationUltraSlow} * 20)`;
@@ -348,9 +347,6 @@ describe('DialogSurface exit animations', () => {
 });
 
 describe('DialogSurface Escape', () => {
-  // Without `popover="hint"` the Tooltip is `manual` and the browser doesn't close it on Escape.
-  const itWithHint = supportsPopoverHint(document) ? it : it.skip;
-
   const ControlledDialog = ({
     modalType,
     children,
@@ -366,7 +362,7 @@ describe('DialogSurface Escape', () => {
   };
 
   (['non-modal', 'modal'] as const).forEach(modalType => {
-    itWithHint(`closes only a Tooltip open inside a ${modalType} surface`, () => {
+    it(`closes only a Tooltip open inside a ${modalType} surface`, () => {
       mountBase(
         <ControlledDialog modalType={modalType}>
           <button data-testid="before">Before</button>

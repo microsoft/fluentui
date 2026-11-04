@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isDialogElement, isInTopLayer, waitForAnimations } from './utils';
 import { useElementListeners } from './useElementListeners';
-import type { UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
+import type { ToggleEvent, UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
 
 type Exit = { element: HTMLElement | null; cancel: () => void };
 
@@ -13,17 +13,16 @@ const NO_EXIT: Exit = { element: null, cancel: () => undefined };
 const CLOSE_EVENTS = ['close', 'toggle'];
 const getCloseEvents = () => CLOSE_EVENTS;
 
-// A modal `<dialog>` fires `toggle` before `close` where dialogs fire `toggle`, so wait for `close`.
+// An open `<dialog>` can fire `toggle` before `close`: wait for `close`.
 const getCloseEvent = (element: HTMLElement) => (isDialogElement(element) && element.open ? 'close' : 'toggle');
 
-// `close`, or a `toggle` to closed: a queued `toggle` from the opening can still arrive after a close.
+// A queued `toggle` from the opening can still arrive after a close.
 const isCloseEvent = (event: Event, element: HTMLElement) =>
-  event.target === element && !isInTopLayer(element) && (event as Event & { newState?: string }).newState !== 'open';
+  event.target === element && !isInTopLayer(element) && (event as ToggleEvent).newState !== 'open';
 
 /**
  * Whether to render an element. Keeps a closing element mounted until its close event has fired and its exit animations
- * end. Doesn't depend on `useLayerOpenState` running first: it measures animations after the commit, once the element
- * has been hidden.
+ * end. Order-independent with `useLayerOpenState`.
  */
 export const useLayerPresence = (
   ref: React.RefObject<HTMLElement | null>,
@@ -36,27 +35,34 @@ export const useLayerPresence = (
   const [exitPending, setExitPending] = React.useState(false);
   if (prevOpen !== open) {
     setPrevOpen(open);
-    setExitPending(!open);
+    setExitPending(!open && unmountOnClose);
   }
 
   const openRef = React.useRef(false);
   const exit = React.useRef<Exit>(NO_EXIT);
-  // The event that ends the element's current opening, until it fires: `close()` and `hidePopover()` queue it.
+  // The event that ends the current opening: `close()` and `hidePopover()` queue it.
   const pendingCloseEvent = React.useRef<{ element: HTMLElement; type: string } | null>(null);
 
-  // The browser closed it: its close event has fired, so a React close after it has nothing to wait for. Capture runs
-  // before the open-state hook reports the close, since the re-render can run between an event's listeners.
-  const onCloseEvent = useEventCallback((event: Event) => {
+  // Capture: runs before the open-state hook's listener re-renders.
+  const onLayerEvent = useEventCallback((event: Event) => {
     const element = event.currentTarget as HTMLElement;
-    if (isCloseEvent(event, element) && pendingCloseEvent.current?.element === element) {
+    const pending = pendingCloseEvent.current;
+    if (pending?.element !== element || event.target !== element) {
+      return;
+    }
+    if (isCloseEvent(event, element)) {
+      // The browser closed it: nothing left to wait for.
       pendingCloseEvent.current = null;
+    } else if (isInTopLayer(element)) {
+      // Shown again, e.g. as a modal.
+      pending.type = getCloseEvent(element);
     }
   });
-  useElementListeners(ref, onCloseEvent, getCloseEvents, true);
+  useElementListeners(ref, onLayerEvent, getCloseEvents, true);
 
   // After the open-state hook has shown the element, wherever it is declared.
   useIsomorphicLayoutEffect(() => {
-    if (!open) {
+    if (!open || !unmountOnClose || pendingCloseEvent.current?.element === ref.current) {
       return;
     }
     queueMicrotask(() => {
@@ -100,7 +106,7 @@ export const useLayerPresence = (
       return;
     }
 
-    if (!wasOpen) {
+    if (!wasOpen || !unmountOnClose) {
       return;
     }
 
@@ -110,54 +116,42 @@ export const useLayerPresence = (
     }
 
     const controller = new AbortController();
-    let cancelAnimations = () => undefined as void;
-    let done = false;
-    const finish = () => {
-      if (!done) {
-        done = true;
-        endExit();
-      }
-    };
-
-    const waitForExitAnimations = () => {
-      cancelAnimations = waitForAnimations(element, finish);
-    };
-
-    exit.current.cancel();
+    let cancelAnimations: () => void = () => undefined;
     exit.current = {
       element,
       cancel: () => {
-        done = true;
         controller.abort();
         cancelAnimations();
       },
     };
+    const waitForExit = () => {
+      cancelAnimations = waitForAnimations(element, endExit);
+    };
 
     queueMicrotask(() => {
-      if (done) {
+      if (controller.signal.aborted) {
         return;
       }
       const pending = pendingCloseEvent.current?.element === element ? pendingCloseEvent.current : null;
       pendingCloseEvent.current = null;
       if (!pending) {
-        waitForExitAnimations();
+        waitForExit();
         return;
       }
 
-      // `close()` and `hidePopover()` queue the close event: stay mounted for it, so the element's own `onClose` /
-      // `onToggle` handlers still run.
+      // Stay mounted for the queued close event, so the element's own `onClose` / `onToggle` run.
       element.addEventListener(
         pending.type,
         event => {
           if (isCloseEvent(event, element)) {
             controller.abort();
-            waitForExitAnimations();
+            waitForExit();
           }
         },
         { signal: controller.signal },
       );
     });
-  }, [ref, open]);
+  }, [ref, open, unmountOnClose]);
 
   return { shouldRender: open || exitPending || !unmountOnClose };
 };

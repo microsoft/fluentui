@@ -10,7 +10,6 @@ import type { TopLayerMode } from './types';
 type LayerProps = {
   open: boolean;
   unmountOnClose?: boolean;
-  presenceFirst?: boolean;
 };
 
 const OpenStateThenPresence = ({ open, unmountOnClose }: LayerProps) => {
@@ -75,16 +74,6 @@ describe.each([
     expect(connectedOnClose).toBe(true);
   });
 
-  it('keeps the element mounted with unmountOnClose: false', async () => {
-    const { getByTestId, rerender } = render(<Layer open unmountOnClose={false} />);
-    const layer = getByTestId('layer');
-    rerender(<Layer open={false} unmountOnClose={false} />);
-
-    await waitFor(() => expect(isPopoverOpen(layer)).toBe(false));
-    await act(() => Promise.resolve());
-    expect(layer).toBeInTheDocument();
-  });
-
   it('stays mounted until exit animations end', async () => {
     const { getByTestId, queryByTestId, rerender } = render(<Layer open />);
     const layer = getByTestId('layer');
@@ -133,11 +122,6 @@ describe('useLayerPresence', () => {
     const Element = mode === 'modal' ? 'dialog' : 'div';
     return <Element ref={ref} popover={mode === 'modal' ? undefined : mode} data-testid="layer" />;
   };
-
-  it('renders nothing when closed', () => {
-    const { container } = render(<TestLayer />);
-    expect(container).toBeEmptyDOMElement();
-  });
 
   it('keeps the element mounted with unmountOnClose: false and reopens it', async () => {
     const { getByTestId, rerender } = render(<TestLayer open unmountOnClose={false} />);

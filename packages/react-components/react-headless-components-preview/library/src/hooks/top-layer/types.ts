@@ -112,7 +112,6 @@ export type UseLayerEscapeOptions = {
    * - `layer`: merge the returned `onKeyDown` into the element. Escape from a popover or dialog nested inside it is
    *   left alone; content portaled out of it still counts;
    * - `document`: a capture listener on the document while open, for layers that never hold focus, like a tooltip.
-   *   It closes the layer before any other one, as Escape closes the topmost layer.
    * @default 'layer'
    */
   listen?: 'layer' | 'document';

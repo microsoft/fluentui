@@ -62,10 +62,7 @@ const isLayerElement = (node: EventTarget): boolean => !!(node as Element).match
  * Call it while the event is dispatched.
  */
 export const isEscapeForLayer = (layer: Element, event: Event): boolean => {
-  const path = event.composedPath();
-  const targetLayer = (
-    path.length ? path.find(isLayerElement) : (event.target as Element | null)?.closest?.('[popover], dialog')
-  ) as Element | undefined;
+  const targetLayer = event.composedPath().find(isLayerElement) as Element | undefined;
   return !targetLayer || targetLayer === layer || targetLayer.contains(layer);
 };
 

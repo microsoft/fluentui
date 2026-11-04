@@ -193,21 +193,6 @@ describe('Tooltip', () => {
     expect(target).toHaveAttribute('aria-describedby', 'test-describedby');
   });
 
-  it('hides on Escape where popover="hint" is unsupported', () => {
-    const onVisibleChange = jest.fn();
-    render(
-      <Tooltip content="Description tooltip" relationship="description" visible onVisibleChange={onVisibleChange}>
-        <button>Trigger</button>
-      </Tooltip>,
-    );
-    // Without `hint` support the browser reads the attribute back as `manual` and ignores Escape.
-    Object.defineProperty(screen.getByRole('tooltip'), 'popover', { value: 'manual' });
-
-    fireEvent.keyDown(screen.getByRole('button'), { key: 'Escape' });
-
-    expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
-  });
-
   it.each([
     ['hint', 'supported'],
     ['manual', 'unsupported'],

@@ -1,6 +1,7 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
+import { Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isEscapeForLayer } from './utils';
@@ -12,13 +13,12 @@ import type { UseLayerEscapeOptions } from './types';
 const needsEscapeHandling = (element: HTMLElement): boolean =>
   (element as HTMLElement & { popover?: string | null }).popover === 'manual';
 
-/**
- * Open layers with `listen: 'document'` per document, oldest first. Only the newest in a document handles Escape, as the
- * browser closes the topmost layer first.
- */
-const documentLayers = new WeakMap<Document, object[]>();
+type DocumentKeyDown = (event: KeyboardEvent) => void;
 
-const getDocumentLayers = (targetDocument: Document): object[] => {
+// Open `listen: 'document'` layers per document, oldest first; only the newest handles Escape.
+const documentLayers = new WeakMap<Document, DocumentKeyDown[]>();
+
+const getDocumentLayers = (targetDocument: Document): DocumentKeyDown[] => {
   let layers = documentLayers.get(targetDocument);
   if (!layers) {
     layers = [];
@@ -37,49 +37,46 @@ export const useLayerEscape = (
 ): { onKeyDown: (event: React.KeyboardEvent) => void } => {
   const { open, onEscape, when = 'manual', listen = 'layer' } = options;
   const { targetDocument } = useFluent();
-  const documentLayerRef = React.useRef<object>({});
 
-  const isEscapeToHandle = (event: KeyboardEvent | React.KeyboardEvent, element: HTMLElement | null) =>
-    event.key === 'Escape' &&
-    !event.defaultPrevented &&
-    open &&
-    !!element &&
-    (when === 'always' || needsEscapeHandling(element));
-
-  const onKeyDown = useEventCallback((event: React.KeyboardEvent) => {
+  const handleEscape = (event: KeyboardEvent | React.KeyboardEvent, isForLayer: (element: HTMLElement) => boolean) => {
     const element = ref.current;
-    if (listen !== 'layer' || !isEscapeToHandle(event, element) || !isEscapeForLayer(element!, event.nativeEvent)) {
+    if (
+      event.key !== Escape ||
+      event.defaultPrevented ||
+      !open ||
+      !element ||
+      (when !== 'always' && !needsEscapeHandling(element)) ||
+      !isForLayer(element)
+    ) {
       return;
     }
-    // Reported before it's prevented, so a veto inside `onEscape` (Dialog's `onOpenChange` calling `preventDefault()`)
-    // can still be told apart.
+    // Before `preventDefault()`, so `onEscape` can detect a veto.
     onEscape(event);
     event.preventDefault();
     event.stopPropagation();
+  };
+
+  const onKeyDown = useEventCallback((event: React.KeyboardEvent) => {
+    if (listen === 'layer') {
+      handleEscape(event, element => isEscapeForLayer(element, event.nativeEvent));
+    }
   });
 
   const onDocumentKeyDown = useEventCallback((event: KeyboardEvent) => {
-    const layers = targetDocument ? getDocumentLayers(targetDocument) : [];
-    const isNewest = layers[layers.length - 1] === documentLayerRef.current;
-    if (!isNewest || !isEscapeToHandle(event, ref.current)) {
-      return;
-    }
-    onEscape(event);
-    event.preventDefault();
-    event.stopPropagation();
+    const layers = getDocumentLayers(event.currentTarget as Document);
+    handleEscape(event, () => layers[layers.length - 1] === onDocumentKeyDown);
   });
 
-  // Doesn't need the element yet, so an element that mounts after `open` turned true is covered.
+  // Independent of the element, so one mounted after opening is covered.
   useIsomorphicLayoutEffect(() => {
     if (!open || listen !== 'document' || !targetDocument) {
       return;
     }
-    const layer = documentLayerRef.current;
     const layers = getDocumentLayers(targetDocument);
-    layers.push(layer);
+    layers.push(onDocumentKeyDown);
     targetDocument.addEventListener('keydown', onDocumentKeyDown, { capture: true });
     return () => {
-      layers.splice(layers.indexOf(layer), 1);
+      layers.splice(layers.indexOf(onDocumentKeyDown), 1);
       targetDocument.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
     };
   }, [open, listen, onDocumentKeyDown, targetDocument]);

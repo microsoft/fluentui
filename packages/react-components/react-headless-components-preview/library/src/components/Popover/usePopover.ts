@@ -6,7 +6,7 @@ import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import { useDialogLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
-// A browser close reports its `toggle` or `cancel` event through `setOpen` too.
+// Browser closes pass their native event.
 type OpenChangeEvent = OpenPopoverEvents | Event | React.SyntheticEvent;
 
 /**
@@ -83,7 +83,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   }
   const modal = inertTrapFocus || modalWhileOpen;
 
-  // The surface stays mounted until the browser closes it and exit animations end.
   const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
 
   useDialogLayerOpenState(contentRef, {

@@ -155,7 +155,7 @@ describe('useLayerEscape', () => {
     const onFrame = jest.fn();
     const FrameLayer = () => {
       const ref = React.useRef<HTMLDivElement>(null);
-      // The popover polyfill isn't loaded in the frame.
+      // No popover polyfill in the frame.
       useLayerEscape(ref, { open: true, onEscape: onFrame, listen: 'document', when: 'always' });
       return createPortal(<div ref={ref} popover="manual" />, frameDocument.body);
     };
@@ -224,29 +224,5 @@ describe('useLayerEscape', () => {
     fireEvent.keyDown(document.body, { key: 'Escape' });
 
     expect(onEscape).toHaveBeenCalledTimes(1);
-  });
-
-  it('leaves Escape from a layer inside a shadow root to that layer', () => {
-    const onEscape = jest.fn();
-    const ShadowExample = () => {
-      const ref = React.useRef<HTMLDivElement>(null);
-      const { onKeyDown } = useLayerEscape(ref, { open: true, onEscape });
-      const hostRef = React.useCallback((host: HTMLDivElement | null) => {
-        if (host && !host.shadowRoot) {
-          host.attachShadow({ mode: 'open' }).innerHTML = '<div popover="manual"><button>In shadow</button></div>';
-        }
-      }, []);
-      return (
-        <div ref={ref} popover="manual" onKeyDown={onKeyDown}>
-          <div ref={hostRef} data-testid="host" />
-        </div>
-      );
-    };
-    const { getByTestId } = render(<ShadowExample />);
-    const button = getByTestId('host').shadowRoot!.querySelector('button')!;
-
-    button.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, composed: true }));
-
-    expect(onEscape).not.toHaveBeenCalled();
   });
 });

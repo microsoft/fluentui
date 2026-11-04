@@ -17,8 +17,7 @@ import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.typ
 
 /**
  * Create the state required to render DialogSurface.
- * Show/hide and exit come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for
- * non-modal.
+ * Show/hide, exit and Escape come from the top-layer hooks.
  *
  * @param props - props from this instance of DialogSurface
  * @param ref - reference to root HTMLDialogElement of DialogSurface
@@ -62,7 +61,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     return () => unlockDocumentScroll(targetDocument);
   }, [open, modalType, targetDocument]);
 
-  // Every Escape is reported, so `onOpenChange` can veto it. Stopped, so parent dialogs stay open.
+  // Report every Escape so `onOpenChange` can veto it.
   const { onKeyDown: onEscapeKeyDown } = useLayerEscape(dialogRef, {
     open,
     when: 'always',

@@ -90,12 +90,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  // Mounted until the exit animations end.
-  const { shouldRender } = useLayerPresence(contentRef, { open: visible });
+  // Rendered while hidden, so `aria-labelledby` / `aria-describedby` resolve.
+  const alwaysRendered =
+    relationship === 'description' || (relationship === 'label' && typeof state.content.children !== 'string');
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible, unmountOnClose: !alwaysRendered });
   state.shouldRenderTooltip = shouldRender;
 
-  // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
-  // never closes an open `auto` popover.
+  // Without `hint` support it acts as `manual`, so it never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
     open: visible,
     mode: 'hint',
@@ -106,8 +107,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     },
   });
 
-  // Escape never reaches the content, which doesn't take focus. Caught on the document before an enclosing layer's own
-  // handler (a DialogSurface takes every Escape), so only the tooltip closes, with or without `hint` support.
+  // The content never takes focus: listen on the document, ahead of an enclosing DialogSurface.
   useLayerEscape(contentRef, {
     open: visible,
     listen: 'document',
@@ -222,15 +222,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       triggerAriaProps['aria-label'] = state.content.children;
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-      // eslint-disable-next-line react-hooks/immutability
-      state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     triggerAriaProps['aria-describedby'] = state.content.id;
-    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = true;
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
