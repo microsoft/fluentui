@@ -4,17 +4,17 @@
 const { join, sep } = require('node:path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 
-const workspacePreset = require(<%- JSON.stringify(`${relativePathToWorkspaceRoot}/jest.preset`) %>);
-const baseConfig = require(<%- JSON.stringify(`${relativePathToProjectRoot}/${jest.pathToProjectConfig}`) %>);
+const workspacePreset = require('<%= relativePathToWorkspaceRoot %>/jest.preset');
+const baseConfig = require('<%= relativePathToProjectRoot %>/<%= jest.pathToProjectConfig %>');
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
-const usedNodeModulesPath = join(__dirname, <%- JSON.stringify(usedNodeModulesDirRelative) %>, 'node_modules');
+const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
 const ritConfig = {
-  rootDir: <%- JSON.stringify(relativePathToProjectRoot) %>,
+  rootDir: '<%= relativePathToProjectRoot %>',
   preset: null,
   moduleNameMapper: {
     '^react$': join(usedNodeModulesPath, './react'),
@@ -95,7 +95,7 @@ function merge(obj1, obj2) {
 
 function getTsPathAliases(){
   // Compute absolute workspace root from this config file location
-  const workspaceRoot = join(__dirname, <%- JSON.stringify(relativePathToWorkspaceRoot) %>);
+  const workspaceRoot = join(__dirname, '<%= relativePathToWorkspaceRoot %>');
   const tsConfigBase = require(join(workspaceRoot, 'tsconfig.base.json'));
 
   // Ensure prefix ends with a path separator so mapped paths concatenate correctly

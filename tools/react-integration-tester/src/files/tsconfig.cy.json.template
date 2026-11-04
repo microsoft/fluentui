@@ -1,3 +1,6 @@
 {
-  "include": <%- JSON.stringify([`${relativePathToProjectRoot}/**/*.cy.ts`, `${relativePathToProjectRoot}/**/*.cy.tsx`]) %>
+  "include": [
+    "<%= relativePathToProjectRoot %>/**/*.cy.ts",
+    "<%= relativePathToProjectRoot %>/**/*.cy.tsx"
+  ]
 }

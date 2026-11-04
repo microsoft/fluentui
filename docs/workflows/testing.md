@@ -47,19 +47,15 @@ before running:
 
 ```bash
 yarn nx run workspace-plugin:test --skipNxCache --output-style=static --runInBand --ci
-yarn nx run react-integration-tester:test --skipNxCache --output-style=static --runInBand --ci
 yarn nx run scripts-monorepo:test --skipNxCache --output-style=static --runInBand --ci
 ```
 
-Use `path.win32` and `path.posix` fixtures for path parsing and JSON serialization
-coverage on every host. Generated JavaScript/TypeScript configs also need executable
-renderer tests: serialize complete string literals and verify their loaded runtime
-paths, rather than normalizing invalid generated source. Filesystem teardown tests
-must also run natively: leave a temporary working directory before deleting it,
-restore the Nx workspace root even
-if deletion fails, and keep cleanup errors visible. Compare unordered file inventories
-using sorted copies and filesystem paths using native path operations; do not normalize
-package export keys, which use POSIX separators.
+Use `path.win32` and `path.posix` fixtures for path parsing coverage on every host.
+Filesystem teardown tests must also run natively: leave a temporary working directory
+before deleting it, restore the Nx workspace root even if deletion fails, and keep
+cleanup errors visible. Compare unordered file inventories using sorted copies and
+filesystem paths using native path operations; do not normalize package export keys,
+which use POSIX separators.
 
 The `check-tooling` workflow runs selected tooling smoke tests on Windows and Linux.
 Its forced snapshot/API update settings are not strict regression validation, and
