@@ -65,9 +65,9 @@ Appearance.parameters = {
     description: {
       story:
         'An input can have different appearances.\n' +
-        `The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
-      filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
-      surrounding color to pass accessibility requirements.`,
+        'The colors adjacent to the input should have a sufficient contrast. ' +
+        'For `filled-lighter` and `filled-darker` inputs without another identifying visual cue, ' +
+        'provide a descriptive placeholder with at least 4.5:1 contrast against the input background.',
     },
   },
 };
