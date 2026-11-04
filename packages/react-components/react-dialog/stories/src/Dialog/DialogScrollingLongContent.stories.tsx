@@ -20,7 +20,7 @@ export const ScrollingLongContent = (): JSXElement => {
       <DialogSurface>
         <DialogBody>
           <DialogTitle>Dialog title</DialogTitle>
-          <DialogContent>
+          <DialogContent tabIndex={0}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Nisl pretium fusce id velit ut tortor. Leo vel fringilla est ullamcorper. Eget est
@@ -142,7 +142,7 @@ ScrollingLongContent.parameters = {
   docs: {
     description: {
       story:
-        'By default `DialogContent` should grow until it fits viewport size, overflowed content will be scrollable',
+        'By default `DialogContent` should grow until it fits viewport size, overflowed content will be scrollable. When the content has no focusable elements, set `tabIndex={0}` on `DialogContent` to enable keyboard scrolling.',
     },
   },
 };
