@@ -4,7 +4,7 @@
 
 ## Local machine setup
 
-> **Prerequisit:**
+> **Prerequisite:**
 >
 > you have the `origin` and `upstream` remotes configured per the [setup instructions](https://github.com/microsoft/fluentui/wiki/Setup#setting-the-upstream-remote
 

@@ -51,7 +51,7 @@ Nested focusable items should also be able to use list/grid focus behaviors.
 
 ### Restoring lost focus
 
-Often clicking on a widget (e.g button) can toggle an option and cause it to disappear. Without any intervention the focus will be lost and applied directly to the document body, which is undesireable for screen reader users.
+Often clicking on a widget (e.g button) can toggle an option and cause it to disappear. Without any intervention the focus will be lost and applied directly to the document body, which is undesirable for screen reader users.
 
 We should provide customers the ability to easily detect or avoid these situations by restoring focus to meaningful default elements.
 
@@ -95,7 +95,7 @@ Internally, `Tabster` leverages the [TreeWalker API](https://developer.mozilla.o
 `Tabster` has 2 levels of API:
 
 - Declarative with `data-tabster` DOM attribute
-- Functional that can accept DOM elemenets or functions
+- Functional that can accept DOM elements or functions
 
 Nesting focusables is a problem that `Tabster` explicitly tries to solve. It does this by bringing focus management to a lower level than the rendering framework, trying to accomplish this consistently without worrying about rendering cycles.
 
@@ -125,7 +125,7 @@ The bundle size of each of the different modules of the library are listed in th
 `Tabster's` Core API provides the following functionalities:
 
 - Groupper - handling groups of focusable elements.
-- Mover - hanling moving between (groups of) focusable elements.
+- Mover - handling moving between (groups of) focusable elements.
 - Focusable - utilities to find and verify focusable elements.
 - Focused element state - observes the currently focused element.
 - Keyboard navigation state - observes if the user is navigating with keyboard.
@@ -255,7 +255,7 @@ Below, we present a comparison between the functionality available in `FocusZone
 ##### IFocusZoneProps
 
 - `defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement)`
-  - _Description:_ Optionally defines the initial tabbable element inside the `FocusZone`. If a string is passed then it is treated as a selector for identifying the inital tabbable element. If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
+  - _Description:_ Optionally defines the initial tabbable element inside the `FocusZone`. If a string is passed then it is treated as a selector for identifying the initial tabbable element. If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
   - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `@fluentui/react-tabster`. If not, we should skip this prop and regard it as "not needed". Anyways, it is too early right now to make a call on it and the actual API would probably have to look very different to what it looks like in `FocusZone` today.
 - `shouldResetActiveElementWhenTabFromZone?: boolean`
   - _Description:_ If true and the `Tab` key is not handled by `FocusZone`, resets current active element to null value. For example, when roving index is not desirable and focus should always reset to the default tabbable element.
@@ -275,6 +275,6 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `shouldRaiseClicks?: boolean`
   - _Description:_ Determines whether the `FocusZone` will walk up the DOM trying to invoke click callbacks on focusable elements on Enter and Space keydowns to ensure accessibility for tags that do not guarantee this behavior.
 - `shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean`
-  - _Description:_ A callback method to determine if the input element should lose focus on arrow keys. Receives the input element which is to lose focus as a paramenter and returns true if the input element should lose focus and false otherwise.
+  - _Description:_ A callback method to determine if the input element should lose focus on arrow keys. Receives the input element which is to lose focus as a parameter and returns true if the input element should lose focus and false otherwise.
 - `stopFocusPropagation?: boolean`
   - _Description:_ Whether the `FocusZone` should allow focus events to propagate past the `FocusZone`.

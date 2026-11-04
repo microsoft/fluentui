@@ -30,7 +30,7 @@ This RFC will tackle "Stop using TS path aliases on CI" problem, aka _make type-
 <!--
 Why are we making this change? What problem are we solving? What do we expect to gain from this?
 
-This section is important as the motivation or problem statement is indepenent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
+This section is important as the motivation or problem statement is independent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
 
 In the end, please make sure to present a neutral Problem statement, rather than one that motivates a particular solution
 -->
@@ -87,7 +87,7 @@ We need to be able to use `type-check` task for all packages
 
 > 💡 `type-check` task uses path aliases mapped to `.d.ts` generated definitions instead of project source files.
 
-<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
+<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the intended audience to understand. -->
 
 There are multiple options how to achieve this.
 

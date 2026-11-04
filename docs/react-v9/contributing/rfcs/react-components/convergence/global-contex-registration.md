@@ -10,7 +10,7 @@ This RFC proposes that all Fluent UI contexts be registered in the global scope 
 ## Problem statement
 
 Many of our partners have complex dependency trees. The complexity in dependency management means that duplicate
-packages can exist in `node_modules` folders. Although duplicate depedencies should generally be avoided, this still
+packages can exist in `node_modules` folders. Although duplicate dependencies should generally be avoided, this still
 happens quite often due to these factors:
 
 - Propagating dependency bumps downstream can be slow
