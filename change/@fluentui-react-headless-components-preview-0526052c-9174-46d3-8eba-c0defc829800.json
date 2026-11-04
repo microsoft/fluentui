@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add Popover mode (auto, manual, hint)",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",

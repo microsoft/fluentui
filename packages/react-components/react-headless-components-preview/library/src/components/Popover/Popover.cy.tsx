@@ -8,7 +8,6 @@ import type { PopoverProps } from './Popover.types';
 import { Tooltip } from '../Tooltip';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
-import { supportsPopoverHint } from '../../testing/supportsPopoverHint';
 
 const mount = (element: JSXElement) => {
   mountBase(element);
@@ -952,10 +951,7 @@ describe('mode', () => {
     });
   });
 
-  // Without `popover="hint"` the Tooltip is `manual` and the browser doesn't close it on Escape.
-  const itWithHint = supportsPopoverHint(document) ? it : it.skip;
-
-  itWithHint('closes only a Tooltip open inside a manual surface on Escape', () => {
+  it('closes only a Tooltip open inside a manual surface on Escape', () => {
     mount(
       <Popover defaultOpen mode="manual">
         <PopoverTrigger disableButtonEnhancement>
