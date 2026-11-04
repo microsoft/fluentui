@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import type { RatingItemState } from './RatingItem.types';
 import { ratingItemClassNames, useRatingItemStyles_unstable } from './useRatingItemStyles.styles.css';
 
@@ -41,6 +43,22 @@ const createState = () =>
   } as RatingItemState);
 
 describe('useRatingItemStyles_unstable (CSS Modules)', () => {
+  it('prevents both font icon implementations from shrinking in a half-filled indicator', () => {
+    const css = readFileSync(join(__dirname, 'RatingItem.module.css'), 'utf8');
+    const rule = css.slice(css.indexOf(':where(.halfIcon) > .selectedIcon')).split('}')[0];
+
+    expect(rule).toContain("& > :is(:global(.fui-Icon-font), [data-fui-icon='font'])");
+    expect(rule).toContain('flex: 0 0 auto;');
+  });
+  it('preserves the fixed font outline stroke in forced colors', () => {
+    const css = readFileSync(join(__dirname, 'RatingItem.module.css'), 'utf8');
+    const rule = css.slice(css.indexOf(':where(.filled) > .unselectedIcon')).split('}')[0];
+
+    expect(rule).toContain('@media (forced-colors: active)');
+    expect(rule).toContain("& > :is(:global(.fui-Icon-font), [data-fui-icon='font'])");
+    expect(rule).toContain('-webkit-text-stroke-color: CanvasText;');
+    expect(rule).toContain('-webkit-text-stroke-width: 1px;');
+  });
   it('preserves state identity, stable slot names and caller classes last', () => {
     const state = createState();
     expect(useRatingItemStyles_unstable(state)).toBe(state);

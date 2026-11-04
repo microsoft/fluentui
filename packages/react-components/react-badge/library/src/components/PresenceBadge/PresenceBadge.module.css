@@ -72,6 +72,10 @@
     height: 6px !important;
   }
 
+  .tiny :is(:global(.fui-Icon-font), [data-fui-icon='font']) {
+    font-size: 6px !important;
+  }
+
   .large {
     aspect-ratio: 1;
     width: 20px;
@@ -82,6 +86,10 @@
     height: 20px !important;
   }
 
+  .large :is(:global(.fui-Icon-font), [data-fui-icon='font']) {
+    font-size: 20px !important;
+  }
+
   .extraLarge {
     aspect-ratio: 1;
     width: 28px;
@@ -90,5 +98,9 @@
   .extraLarge svg {
     width: 28px !important;
     height: 28px !important;
+  }
+
+  .extraLarge :is(:global(.fui-Icon-font), [data-fui-icon='font']) {
+    font-size: 28px !important;
   }
 }

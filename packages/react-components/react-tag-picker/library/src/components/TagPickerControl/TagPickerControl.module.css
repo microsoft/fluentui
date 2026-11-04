@@ -138,7 +138,8 @@
     align-self: flex-start;
     font-size: var(--fontSizeBase500);
   }
-  .icon svg {
+  .icon svg,
+  .icon :global(.fui-Icon-font) {
     display: block;
   }
   :where(.medium) > .aside > .icon {

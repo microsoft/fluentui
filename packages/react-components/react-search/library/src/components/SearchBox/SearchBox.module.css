@@ -48,7 +48,8 @@
     display: flex;
     cursor: pointer;
 
-    > svg {
+    > svg,
+    > :global(.fui-Icon-font) {
       font-size: var(--fontSizeBase500);
     }
   }
@@ -57,11 +58,13 @@
     color: var(--colorNeutralForegroundDisabled);
   }
 
-  .dismiss.small > svg {
+  .dismiss.small > svg,
+  .dismiss.small > :global(.fui-Icon-font) {
     font-size: var(--fontSizeBase400);
   }
 
-  .dismiss.large > svg {
+  .dismiss.large > svg,
+  .dismiss.large > :global(.fui-Icon-font) {
     font-size: var(--fontSizeBase600);
   }
 

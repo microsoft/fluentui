@@ -188,7 +188,8 @@
     grid-column-start: icon;
     grid-column-end: end;
   }
-  .icon svg {
+  .icon svg,
+  .icon :global(.fui-Icon-font) {
     display: block;
   }
   :where(.small) > .button > .icon,

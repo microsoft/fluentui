@@ -181,7 +181,8 @@
     font-size: var(--fontSizeBase500);
     position: relative;
   }
-  .icon svg {
+  .icon svg,
+  .icon :global(.fui-Icon-font) {
     display: block;
   }
   .icon::after {

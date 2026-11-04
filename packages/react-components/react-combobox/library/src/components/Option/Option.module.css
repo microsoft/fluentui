@@ -54,7 +54,8 @@
     margin-inline-end: var(--spacingHorizontalXXS);
     visibility: hidden;
   }
-  .checkIcon svg {
+  .checkIcon svg,
+  .checkIcon :global(.fui-Icon-font) {
     display: block;
   }
   :where(.selected) > .checkIcon {

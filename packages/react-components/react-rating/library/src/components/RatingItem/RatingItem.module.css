@@ -86,7 +86,8 @@
   }
   :where(.halfIcon) > .selectedIcon {
     inset-inline-end: 50%;
-    & > svg {
+    & > svg,
+    & > :is(:global(.fui-Icon-font), [data-fui-icon='font']) {
       flex: 0 0 auto;
     }
   }
@@ -106,6 +107,11 @@
     @media (forced-colors: active) {
       color: Canvas;
       stroke: CanvasText;
+      & > :is(:global(.fui-Icon-font), [data-fui-icon='font']) {
+        -webkit-text-stroke-color: CanvasText;
+        /* Match SVG's default stroke width independently of theme border tokens. */
+        -webkit-text-stroke-width: 1px;
+      }
     }
   }
   :where(.filled.brand) > .unselectedIcon {
