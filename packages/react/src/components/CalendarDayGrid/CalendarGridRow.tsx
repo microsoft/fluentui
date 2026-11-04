@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { format } from '@fluentui/utilities';
-import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities';
+import { getWeekNumber } from '@fluentui/date-time-utilities';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
 import type { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import type { IProcessedStyleSet } from '@fluentui/style-utilities';
@@ -33,27 +33,28 @@ export const CalendarGridRow: React.FunctionComponent<ICalendarGridRowProps> = p
   const {
     classNames,
     week,
-    weeks,
     weekIndex,
     rowClassName,
     ariaRole,
     showWeekNumbers,
     firstDayOfWeek,
     firstWeekOfYear,
-    navigatedDate,
     strings,
   } = props;
-  const weekNumbers = showWeekNumbers
-    ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
+  // Derive the week number from the row's own days instead of the navigated month, so that
+  // collapsed views rendering a single week (e.g. WeeklyDayPicker) show the visible week's number.
+  const weekNumber = showWeekNumbers
+    ? getWeekNumber(week[week.length - 1].originalDate, firstDayOfWeek, firstWeekOfYear)
     : null;
 
-  const titleString = weekNumbers
-    ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-    : '';
+  const titleString =
+    weekNumber !== null
+      ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumber)
+      : '';
 
   return (
     <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
-      {showWeekNumbers && weekNumbers && (
+      {showWeekNumbers && weekNumber !== null && (
         <th
           className={classNames.weekNumberCell}
           key={weekIndex}
@@ -61,7 +62,7 @@ export const CalendarGridRow: React.FunctionComponent<ICalendarGridRowProps> = p
           aria-label={titleString}
           scope="row"
         >
-          <span>{weekNumbers[weekIndex]}</span>
+          <span>{weekNumber}</span>
         </th>
       )}
       {week.map((day: IDayInfo, dayIndex: number) => (
