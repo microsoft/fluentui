@@ -1,0 +1,78 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "heatmap",
+      "x": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "y": ["Morning", "Afternoon", "Evening"],
+      "z": [
+        [10, 20, 30, 40, 50],
+        [15, 25, 35, 45, 55],
+        [20, 30, 40, 50, 60]
+      ],
+      "colorscale": [
+        [0.0, "rgb(158,1,66)"],
+        [0.5, "rgb(255,255,191)"],
+        [1.0, "rgb(94,79,162)"]
+      ]
+    }
+  ],
+  "layout": {
+    "title": "Weekly Activity Heatmap with Annotations",
+    "width": 600,
+    "height": 400,
+    "annotations": [
+      {
+        "name": "peak",
+        "text": "Peak Activity",
+        "xref": "x",
+        "yref": "y",
+        "x": "Fri",
+        "y": "Evening",
+        "showarrow": true,
+        "arrowcolor": "#ff0000",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": -40,
+        "ay": -30,
+        "bgcolor": "#ffffff",
+        "bordercolor": "#ff0000",
+        "borderwidth": 1,
+        "borderpad": 4,
+        "font": {
+          "color": "#ff0000",
+          "size": 12
+        }
+      },
+      {
+        "text": "Low Activity Zone",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.1,
+        "y": 0.9,
+        "showarrow": false,
+        "bgcolor": "#333333",
+        "font": {
+          "color": "#ffffff",
+          "size": 10
+        }
+      },
+      {
+        "text": "Mid-week Note",
+        "xref": "x",
+        "yref": "y",
+        "x": "Wed",
+        "y": "Afternoon",
+        "showarrow": true,
+        "arrowhead": 2,
+        "arrowcolor": "#0078d4",
+        "ax": 30,
+        "ay": -20,
+        "font": {
+          "color": "#0078d4",
+          "size": 11
+        }
+      }
+    ]
+  }
+}
