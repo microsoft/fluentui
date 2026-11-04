@@ -250,6 +250,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
     let prevPosition = 0;
     let value = 0;
+    // Gaps are only drawn between rendered (non-zero) bars, matching `noOfBars` above.
+    let renderedBarsBefore = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       let startColor: string = point.color
@@ -275,7 +277,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         value = value / scalingRatio;
       }
 
-      startingPoint.push(prevPosition);
+      startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
+      if (pointData > 0) {
+        renderedBarsBefore++;
+      }
 
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
@@ -319,11 +324,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <rect
             key={index}
             id={`${this._barId}-${barNo}-${index}`}
-            x={`${
-              this._isRTL
-                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
-                : startingPoint[index] + this.state.barSpacingInPercent * index
-            }%`}
+            x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
             height={barHeight}

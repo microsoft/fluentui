@@ -249,6 +249,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     );
     let prevPosition = 0;
     let value = 0;
+    // Gaps are only drawn between rendered (non-zero) bars, matching `noOfBars` above.
+    let renderedBarsBefore = 0;
 
     let sumOfPercent = 0;
 
@@ -324,7 +326,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         value = value / scalingRatio;
       }
 
-      startingPoint.push(prevPosition);
+      startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
+      if (pointData > 0) {
+        renderedBarsBefore++;
+      }
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : startColor;
@@ -365,11 +370,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <rect
             key={index}
             id={getId('_SBC_bar')}
-            x={`${
-              this._isRTL
-                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
-                : startingPoint[index] + this.state.barSpacingInPercent * index
-            }%`}
+            x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
             height={barHeight}

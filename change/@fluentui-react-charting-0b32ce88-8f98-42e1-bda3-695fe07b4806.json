@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: keep consistent spacing between StackedBarChart and MultiStackedBarChart segments when data points are zero",
+  "packageName": "@fluentui/react-charting",
+  "email": "wuyuqi827@gmail.com"
+}

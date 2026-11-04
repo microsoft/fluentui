@@ -9,7 +9,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { MultiStackedBarChart } from './MultiStackedBarChart';
 import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
-import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider, resetIds, setRTL } from '@fluentui/react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { MultiStackedBarChartBase } from './MultiStackedBarChart.base';
@@ -407,5 +407,49 @@ describe('Multi Stacked Bar Chart - axe-core', () => {
       axeResults = await axe(container);
     });
     expect(axeResults).toHaveNoViolations();
+  });
+});
+
+describe('Multi Stacked bar chart - spacing between bars', () => {
+  const MARGIN_WIDTH_IN_PX = 3;
+  const pointsWithZeros = (values: number[]): IChartProps[] => [
+    {
+      chartTitle: 'Monitored',
+      chartData: values.map((value, index) => ({ legend: `point${index}`, data: value, color: DefaultPalette.blue })),
+    },
+  ];
+
+  beforeEach(sharedBeforeEach);
+  afterEach(() => {
+    setRTL(false);
+    jest.restoreAllMocks();
+  });
+
+  describe.each([false, true])('isRTL: %s', isRTL => {
+    test.each([
+      [300, [50, 50]],
+      [300, [40, 0, 60]],
+      [600, [0, 25, 0, 0, 75]],
+      [1200, [10, 20, 0, 30, 0, 40, 0]],
+    ])('svg width %ipx, data %j: equal gaps and bars fill the track', (svgWidth, values) => {
+      setRTL(isRTL);
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: svgWidth } as DOMRect);
+
+      const { container } = render(<MultiStackedBarChart data={pointsWithZeros(values)} />);
+
+      const bars = Array.from(container.querySelectorAll<SVGRectElement>('rect'))
+        .filter(rect => /^_MSBC_rect_\d+-/.test(rect.id))
+        .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
+        .filter(bar => bar.width > 0)
+        .sort((a, b) => a.x - b.x);
+      const expectedGap = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+
+      expect(bars).toHaveLength(values.filter(value => value > 0).length);
+      expect(bars[0].x).toBeCloseTo(0);
+      expect(bars[bars.length - 1].x + bars[bars.length - 1].width).toBeCloseTo(100);
+      for (let i = 1; i < bars.length; i++) {
+        expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(expectedGap);
+      }
+    });
   });
 });
