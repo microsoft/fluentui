@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Reduce repeated subtree maintenance on the initial portal mount while preserving connection ordering",
+  "packageName": "@fluentui/react-portal",
+  "email": "andreivieru@microsoft.com_msteamsmdb"
+}
