@@ -71,6 +71,7 @@ import {
 import {
   AxisProps,
   AxisScaleType,
+  IChartDataPoint,
   IGanttChartDataPoint,
   IScatterChartDataPoint,
   IScatterChartPoints,
@@ -1862,6 +1863,11 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): vo
 export function formatScientificLimitWidth(value: number): string {
   return yAxisTickFormatterInternal(value, true);
 }
+
+/**
+ * Whether the data point has a non-zero value. Missing data counts as zero.
+ */
+export const hasNonZeroData = (point: IChartDataPoint): boolean => (point.data || 0) !== 0;
 
 const DEFAULT_BAR_WIDTH = 16;
 const MIN_BAR_WIDTH = 1;
