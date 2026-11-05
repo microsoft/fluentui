@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderTeachingPopoverSurface } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 import { isConformant } from '../../testing/isConformant';
+import { classOccurrences } from '../../testing/classOccurrences';
 import { TeachingPopover } from '../TeachingPopover/TeachingPopover';
 import type { TeachingPopoverProps } from '../TeachingPopover/TeachingPopover.types';
 import { TeachingPopoverTrigger } from '../TeachingPopoverTrigger/TeachingPopoverTrigger';
@@ -20,6 +22,7 @@ jest.mock('@fluentui/react-headless-components-preview/teaching-popover', () => 
 
   return {
     ...actual,
+    renderTeachingPopoverSurface: jest.fn(actual.renderTeachingPopoverSurface),
     useTeachingPopoverSurface: (...args: Parameters<typeof actual.useTeachingPopoverSurface>) =>
       deepFreezeState(actual.useTeachingPopoverSurface(...args)),
   };
@@ -78,12 +81,14 @@ describe('TeachingPopoverSurface', () => {
   });
 
   it('carries its own l2 class BESIDE the composed Popover root class', () => {
-    // generateTestIdent drops the component token, so both modules' `.root` stringify alike:
-    // the only jest-visible signature of the l2 class is that the name appears TWICE.
+    // Both module roots stringify alike in Jest. Inspect before the polyfill's classList mutation deduplicates them.
     const { surface } = renderSurface();
+    const renderSpy = renderTeachingPopoverSurface as unknown as jest.Mock;
+    const state = renderSpy.mock.calls.at(-1)![0];
 
     expect(styles.root).toBe(popoverStyles.root);
-    expect(classCount(surface, styles.root)).toBe(2);
+    expect(classOccurrences(state.root.className, styles.root)).toBe(2);
+    expect(surface).toHaveClass(styles.root);
   });
 
   it('composes the Popover styles hook, so size still selects a padding class', () => {

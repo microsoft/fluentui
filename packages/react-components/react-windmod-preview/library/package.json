@@ -40,6 +40,9 @@
     "clsx": "^2.1.1",
     "use-sync-external-store": "^1.2.0"
   },
+  "devDependencies": {
+    "@oddbird/popover-polyfill": "^0.6.1"
+  },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
     "@types/react-dom": ">=16.9.0 <20.0.0",

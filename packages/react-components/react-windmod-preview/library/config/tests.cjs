@@ -1,6 +1,7 @@
 /** Jest test setup file. */
 
 require('@testing-library/jest-dom');
+require('@oddbird/popover-polyfill');
 
 // jsdom implements neither ResizeObserver nor the native <dialog> methods, and the headless
 // components this package decorates call both unguarded. Same shims, same reasons, as the headless

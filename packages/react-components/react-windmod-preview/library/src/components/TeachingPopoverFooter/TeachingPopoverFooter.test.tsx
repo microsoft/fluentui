@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../testing/isConformant';
@@ -169,7 +169,7 @@ describe('TeachingPopoverFooter', () => {
 
     await userEvent.click(secondary);
 
-    expect(container.querySelector('[data-popover-surface]')).toBeNull();
+    await waitFor(() => expect(container.querySelector('[data-popover-surface]')).toBeNull());
   });
 
   it('leaves the primary alone when a secondary exists', async () => {
@@ -186,7 +186,7 @@ describe('TeachingPopoverFooter', () => {
 
     await userEvent.click(buttons[0]);
 
-    expect(container.querySelector('[data-popover-surface]')).toBeNull();
+    await waitFor(() => expect(container.querySelector('[data-popover-surface]')).toBeNull());
   });
 
   it('keeps a consumer onClick beside the auto-close handler', async () => {
@@ -196,7 +196,7 @@ describe('TeachingPopoverFooter', () => {
     await userEvent.click(secondary);
 
     expect(onClick).toHaveBeenCalledTimes(1);
-    expect(container.querySelector('[data-popover-surface]')).toBeNull();
+    await waitFor(() => expect(container.querySelector('[data-popover-surface]')).toBeNull());
   });
 
   it('lets consumer children win over the slots', () => {

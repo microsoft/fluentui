@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../testing/isConformant';
@@ -98,7 +98,7 @@ describe('TeachingPopoverTitle', () => {
 
     await userEvent.click(dismiss);
 
-    expect(container.querySelector('[data-popover-surface]')).toBeNull();
+    await waitFor(() => expect(container.querySelector('[data-popover-surface]')).toBeNull());
   });
 
   it('keeps a consumer className exactly once', () => {

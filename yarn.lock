@@ -6390,6 +6390,7 @@ __metadata:
     "@fluentui/react-shared-contexts": "npm:^9.26.3"
     "@fluentui/react-tailwind-theme-preview": "npm:^0.1.0"
     "@fluentui/react-utilities": "npm:^9.26.6"
+    "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
     use-sync-external-store: "npm:^1.2.0"
