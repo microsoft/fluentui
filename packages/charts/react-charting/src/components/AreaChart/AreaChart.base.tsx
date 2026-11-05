@@ -253,8 +253,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           children={(props: IChildProps) => {
             this._xAxisRectScale = props.xScale;
             const ticks = this._xAxisRectScale.ticks();
-            const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
-            const rectHeight = props.containerHeight! - this.margins.top!;
+            const width1 = Math.max(0, this._xAxisRectScale(ticks[ticks.length - 1]));
+            const rectHeight = Math.max(0, props.containerHeight! - this.margins.top!);
             return (
               <>
                 <g>
