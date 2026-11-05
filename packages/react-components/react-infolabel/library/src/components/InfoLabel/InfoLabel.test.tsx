@@ -25,6 +25,16 @@ describe('InfoLabel', () => {
     expect(result.getByRole('button')).toBeTruthy();
   });
 
+  it.each([0, '0'])('renders and opens zero info content %p', info => {
+    const result = render(<InfoLabel info={info}>Test label</InfoLabel>);
+
+    fireEvent.click(result.getByRole('button'));
+
+    const note = result.baseElement.querySelector('[role="note"]');
+    expect(note).not.toBeNull();
+    expect(note!.textContent).toBe('0');
+  });
+
   it("renders an InfoButton when the infoButton's info slot is set", () => {
     const result = render(<InfoLabel infoButton={{ info: 'Test' }}>Test label</InfoLabel>);
     expect(result.getByRole('button')).toBeTruthy();
