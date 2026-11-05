@@ -12,6 +12,10 @@ type CollectTypingsResult = {
   sources: string[];
   missing: string[];
 };
+type PackageResolver = (
+  request: string,
+  fromDirectory: string,
+) => Promise<{ path: string; conditionNames: readonly string[] } | false | null>;
 type HtmlAssetsData = {
   assets: {
     js: string[];
@@ -31,6 +35,7 @@ export type HtmlWebpackPluginConstructor = {
 
 export const ENTRY_NAME = 'playground-runtime';
 export const REGISTER_CALLBACK = '__FLUENTUI_PLAYGROUND_REGISTER_V1__';
+export const SCRIPT_LOADER_CALLBACK = '__FLUENTUI_PLAYGROUND_LOAD_SCRIPT_V1__';
 /** Global replaced at build time with the modules playground code can import, see `withOpenInPlaygroundButton`. */
 export const ALLOWED_MODULES_DEFINE = '__FLUENTUI_PLAYGROUND_ALLOWED_MODULES__';
 export const BUILT_IN_MODULES = ['react', 'react/jsx-runtime', 'react-dom', 'react-dom/client'];
@@ -47,7 +52,10 @@ const { collectTypings, getMonacoTypeScriptVersion: readMonacoTypeScriptVersion 
       packageRoot: string;
       entries: string[];
       typescriptVersion: string;
-    }): CollectTypingsResult;
+      moduleRequests?: Record<string, string>;
+      typingsRoots?: Record<string, string>;
+      resolvePackage?: PackageResolver;
+    }): Promise<CollectTypingsResult>;
     getMonacoTypeScriptVersion(): string;
   };
 
@@ -55,7 +63,10 @@ const { collectTypings, getMonacoTypeScriptVersion: readMonacoTypeScriptVersion 
  * Storybook preset hook: emits a separate Webpack entry for the playground runtime (configured modules + setup),
  * collects Monaco typings for those modules, and writes `playground/runtime/manifest.json`.
  */
-export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOptions): WebpackFinalConfig {
+export function webpackFinal(
+  config: WebpackFinalConfig,
+  options: Pick<WebpackFinalOptions, 'configDir' | 'configType' | 'presetsList'> & Partial<PresetConfig>,
+): WebpackFinalConfig {
   const addonOptions = getAddonOptions(options);
   const runtimeEntry = writeRuntimeEntry(
     addonOptions,
@@ -77,8 +88,14 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
 
   config.plugins = config.plugins ?? [];
   config.plugins.push(new ExcludeRuntimeEntryFromHtmlPlugin());
+  config.plugins.push(new PlaygroundScriptLoadingPlugin());
   config.plugins.push(
-    new PlaygroundRuntimeManifestPlugin(addonOptions, () => collectConfiguredTypings(addonOptions, options)),
+    new PlaygroundRuntimeManifestPlugin(addonOptions, compiler =>
+      collectConfiguredTypings(addonOptions, options, getMonacoTypeScriptVersion(), {
+        fromDirectory: path.dirname(runtimeEntry),
+        resolvePackage: createWebpackPackageResolver(compiler),
+      }),
+    ),
   );
   config.plugins.push(new AllowedModulesDefinePlugin(getAllowedModules(addonOptions)));
 
@@ -108,6 +125,41 @@ class AllowedModulesDefinePlugin {
     new compiler.webpack.DefinePlugin({ [ALLOWED_MODULES_DEFINE]: JSON.stringify(this._allowedModules) }).apply(
       compiler,
     );
+  }
+}
+
+/**
+ * Shared Webpack runtime chunks keep their native loader outside the Playground. Inside its sandbox, local scripts
+ * are fetched by the shell and executed without making opaque-origin HTTP requests.
+ */
+class PlaygroundScriptLoadingPlugin {
+  public apply(compiler: import('webpack').Compiler): void {
+    const pluginName = 'PlaygroundScriptLoadingPlugin';
+    const { RuntimeGlobals } = compiler.webpack;
+    const callback = `globalThis[${JSON.stringify(SCRIPT_LOADER_CALLBACK)}]`;
+
+    compiler.hooks.thisCompilation.tap(pluginName, compilation => {
+      compilation.hooks.runtimeModule.tap(pluginName, runtimeModule => {
+        if (runtimeModule.name === 'load script') {
+          const generate = runtimeModule.generate.bind(runtimeModule);
+          runtimeModule.generate = () => `${generate()}
+var playgroundNativeLoadScript = ${RuntimeGlobals.loadScript};
+${RuntimeGlobals.loadScript} = function(url, done, key, chunkId, fetchPriority) {
+  var playgroundLoadScript = ${callback};
+  if (playgroundLoadScript && playgroundLoadScript(url, done)) return;
+  return playgroundNativeLoadScript(url, done, key, chunkId, fetchPriority);
+};`;
+        } else if (runtimeModule.name === 'publicPath' && compilation.outputOptions.publicPath === 'auto') {
+          const generate = runtimeModule.generate.bind(runtimeModule);
+          runtimeModule.generate = () => `
+if (${callback} && ${callback}.publicPath) {
+  ${RuntimeGlobals.publicPath} = ${callback}.publicPath;
+} else {
+  ${generate()}
+}`;
+        }
+      });
+    });
   }
 }
 
@@ -195,7 +247,14 @@ export function getAddonOptions(
   options: Pick<WebpackFinalOptions, 'presetsList'> & Partial<PresetConfig>,
 ): PresetConfig {
   if (options.modules && typeof options.modules === 'object') {
-    return { ...defaultOptions, modules: options.modules, setup: options.setup, typings: options.typings };
+    return {
+      ...defaultOptions,
+      modules: options.modules,
+      setup: options.setup,
+      typings: options.typings,
+      typingsRoots: options.typingsRoots,
+      inlineStyles: options.inlineStyles,
+    };
   }
 
   const presetRegistration = options.presetsList?.find(preset => isPlaygroundAddonFile(preset.name));
@@ -338,24 +397,86 @@ export type ConfiguredTypings = {
   missing: string[];
 };
 
-export function collectConfiguredTypings(
+/**
+ * Uses the compiler's final resolvers, including aliases, resolve.modules and resolver plugins.
+ * The declaration resolver also handles packages that expose types but have no JavaScript entry.
+ */
+export function createWebpackPackageResolver(compiler: import('webpack').Compiler): PackageResolver {
+  const runtimeResolver = compiler.resolverFactory.get('normal', { dependencyType: 'esm' });
+  const declarationResolver = compiler.resolverFactory.get('normal', {
+    dependencyType: 'esm',
+    conditionNames: ['types', '...'],
+    mainFields: ['types', 'typings', '...'],
+    extensions: ['.d.ts', '.d.mts', '.d.cts'],
+  });
+  const cache = new Map<string, ReturnType<PackageResolver>>();
+  const resolve = (resolver: typeof runtimeResolver, request: string, fromDirectory: string) =>
+    new Promise<Awaited<ReturnType<PackageResolver>>>((fulfill, reject) => {
+      resolver.resolve({}, fromDirectory, request, {}, (error, resolved, result) => {
+        if (error) {
+          // Type-only export maps intentionally have no matching runtime export.
+          if (
+            error.message.startsWith("Can't resolve ") ||
+            /^".+" is not exported under the conditions? /.test(error.message) ||
+            /^Package path .+ is not exported from package /.test(error.message)
+          ) {
+            fulfill(null);
+          } else {
+            reject(error);
+          }
+        } else if (resolved === false) {
+          fulfill(false);
+        } else {
+          const resolvedPath = result?.path ?? resolved;
+          fulfill(
+            typeof resolvedPath === 'string'
+              ? { path: resolvedPath, conditionNames: Array.from(resolver.options.conditionNames) }
+              : null,
+          );
+        }
+      });
+    });
+
+  return (request, fromDirectory) => {
+    const key = `${fromDirectory}\0${request}`;
+    let result = cache.get(key);
+    if (!result) {
+      result = resolve(runtimeResolver, request, fromDirectory).then(resolved =>
+        resolved === null ? resolve(declarationResolver, request, fromDirectory) : resolved,
+      );
+      cache.set(key, result);
+    }
+    return result;
+  };
+}
+
+export async function collectConfiguredTypings(
   options: PresetConfig,
   storybookOptions: Pick<WebpackFinalOptions, 'configDir'>,
   typescriptVersion = getMonacoTypeScriptVersion(),
-): ConfiguredTypings {
-  const packageRoot = storybookOptions.configDir ?? process.cwd();
-  const base = collectTypings({
-    packageRoot,
-    entries: [...BUILT_IN_MODULES, ...(options.typings ?? [])],
+  resolution?: { fromDirectory: string; resolvePackage: PackageResolver },
+): Promise<ConfiguredTypings> {
+  const configDir = storybookOptions.configDir ?? process.cwd();
+  const collectionOptions = {
+    packageRoot: resolution?.fromDirectory ?? configDir,
     typescriptVersion,
+    moduleRequests: getModuleRequests(options.modules),
+    typingsRoots: Object.fromEntries(
+      Object.entries(options.typingsRoots ?? []).map(([name, root]) => [name, path.resolve(configDir, root)]),
+    ),
+    resolvePackage: resolution?.resolvePackage,
+  };
+  const base = await collectTypings({
+    ...collectionOptions,
+    entries: [...BUILT_IN_MODULES, ...(options.typings ?? [])],
   });
   const sources = new Set(base.sources);
   const missing = new Set(base.missing);
   const collected: Record<string, Record<string, string>> = {};
   const usage = new Map<string, number>();
 
-  for (const [publicName, request] of Object.entries(getModuleRequests(options.modules))) {
-    const result = collectTypings({ packageRoot, entries: [request], typescriptVersion });
+  for (const publicName of Object.keys(getModuleRequests(options.modules))) {
+    const result = await collectTypings({ ...collectionOptions, entries: [publicName] });
     const files: Record<string, string> = {};
     result.sources.forEach(source => sources.add(source));
     result.missing.forEach(value => missing.add(value));
@@ -364,16 +485,6 @@ export function collectConfiguredTypings(
         files[filePath] = content;
         usage.set(filePath, (usage.get(filePath) ?? 0) + 1);
       }
-    }
-
-    if (publicName !== request) {
-      files[`file:///node_modules/${publicName}/index.d.ts`] = `export * from ${JSON.stringify(
-        request,
-      )};\nexport { default } from ${JSON.stringify(request)};`;
-      files[`file:///node_modules/${publicName}/package.json`] = JSON.stringify({
-        name: publicName,
-        types: './index.d.ts',
-      });
     }
 
     collected[publicName] = files;
@@ -427,7 +538,9 @@ export class PlaygroundRuntimeManifestPlugin {
 
   public constructor(
     private readonly options: PresetConfig,
-    private readonly _collectTypings: () => ConfiguredTypings,
+    private readonly _collectTypings: (
+      compiler: import('webpack').Compiler,
+    ) => ConfiguredTypings | Promise<ConfiguredTypings>,
   ) {}
 
   public apply(compiler: import('webpack').Compiler): void {
@@ -435,27 +548,27 @@ export class PlaygroundRuntimeManifestPlugin {
     const { Compilation, sources } = compiler.webpack;
 
     compiler.hooks.thisCompilation.tap(pluginName, compilation => {
-      const changedFiles = [compiler.modifiedFiles, compiler.removedFiles];
-      if (!this._typings || changedFiles.some(files => files && hasAny(files, this._typingsSources))) {
-        this._typings = this._collectTypings();
-        this._typingsSources = new Set(this._typings.sources);
-      }
-      const typings = this._typings;
-      typings.sources.forEach(source => compilation.fileDependencies.add(source));
-
-      compilation.hooks.processAssets.tap(
+      compilation.hooks.processAssets.tapPromise(
         {
           name: pluginName,
           stage: Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE,
         },
-        () => {
+        async () => {
+          const changedFiles = [compiler.modifiedFiles, compiler.removedFiles];
+          if (!this._typings || changedFiles.some(files => files && hasAny(files, this._typingsSources))) {
+            this._typings = await this._collectTypings(compiler);
+            this._typingsSources = new Set(this._typings.sources);
+          }
+          const typings = this._typings;
+          typings.sources.forEach(source => compilation.fileDependencies.add(source));
           if (typings.missing.length > 0) {
             // Missing declarations only limit editor IntelliSense; the runtime works without them.
             compilation.warnings.push(
               new Error(
                 `Playground typings could not resolve: ${typings.missing
                   .map(value => JSON.stringify(value))
-                  .join(', ')}. Install their declarations for full editor IntelliSense.`,
+                  .join(', ')}. Install their declarations or configure the addon's typingsRoots option ` +
+                  'for full editor IntelliSense.',
               ),
             );
           }
@@ -468,7 +581,22 @@ export class PlaygroundRuntimeManifestPlugin {
 
           const files = entrypoint.getFiles();
           const scripts = files.filter(file => /\.m?js($|\?)/.test(file) && !file.includes('.hot-update.'));
-          const styles = files.filter(file => /\.css($|\?)/.test(file) && !file.includes('.hot-update.'));
+          const referencedFiles = Array.from(
+            new Set([
+              ...files,
+              ...Array.from(entrypoint.getEntrypointChunk().getAllReferencedChunks()).flatMap(chunk =>
+                Array.from(chunk.files),
+              ),
+            ]),
+          ).filter(file => !file.includes('.hot-update.'));
+          const allowedScriptFiles = referencedFiles.filter(file => /\.m?js($|\?)/.test(file)).sort();
+          const inlineStyles = this.options.inlineStyles
+            ? (await import('./inlineStyles')).inlineRuntimeStyles(
+                compilation,
+                referencedFiles.filter(file => /\.css$/.test(file)),
+              )
+            : undefined;
+          const styles = inlineStyles ? [] : files.filter(file => /\.css($|\?)/.test(file));
           const emitTypings = (declarations: Record<string, string>) => {
             const json = JSON.stringify(declarations);
             const hash = crypto.createHash('sha256').update(json).digest('hex').slice(0, 12);
@@ -493,7 +621,9 @@ export class PlaygroundRuntimeManifestPlugin {
             .update(
               JSON.stringify({
                 scripts,
+                allowedScriptFiles,
                 styles,
+                inlineStyles,
                 modules: getModuleRequests(this.options.modules),
                 typingsFile,
                 moduleTypings,
@@ -508,7 +638,9 @@ export class PlaygroundRuntimeManifestPlugin {
               JSON.stringify(
                 {
                   scripts,
+                  allowedScriptFiles,
                   styles,
+                  inlineStyles,
                   typings: typingsFile,
                   moduleTypings,
                   allowedModules: getAllowedModules(this.options),

@@ -14,6 +14,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Menu: ['popover', 'anchor-positioning', 'focusgroup'],
   Dropdown: ['popover', 'anchor-positioning'],
   Combobox: ['popover', 'anchor-positioning'],
+  DatePicker: ['popover', 'anchor-positioning'],
   TagPicker: ['popover', 'anchor-positioning', 'focusgroup'],
   Dialog: ['dialog', 'popover'],
   Drawer: ['dialog', 'popover'],
@@ -22,6 +23,8 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Toolbar: ['focusgroup'],
   TabList: ['focusgroup'],
   SwatchPicker: ['focusgroup'],
+  Tree: ['focusgroup'],
+  List: ['focusgroup'],
 };
 
 const BROWSER_SUPPORT_DOCS_PATH = '?path=/docs/overview-browser-support--docs';

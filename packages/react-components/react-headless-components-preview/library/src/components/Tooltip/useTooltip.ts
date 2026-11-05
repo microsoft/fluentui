@@ -221,7 +221,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
-  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
+  // eslint-disable-next-line react-hooks/immutability
   state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
   const child = getTriggerChild(children);
@@ -274,7 +274,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
     // eslint-disable-next-line react-hooks/refs
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
-    // eslint-disable-next-line react-hooks/refs
     onPointerUp: useEventCallback(mergeCallbacks(child?.props?.onPointerUp, onPointerUpTrigger)),
   });
 

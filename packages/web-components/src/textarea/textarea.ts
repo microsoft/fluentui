@@ -1,11 +1,13 @@
 import { attr, Observable } from '@microsoft/fast-element';
 import { BaseTextArea } from './textarea.base.js';
-import { TextAreaAppearance, TextAreaSize } from './textarea.options.js';
+import type { TextAreaAppearance, TextAreaSize } from './textarea.options.js';
 
 /**
  * The Fluent TextArea Element.
  *
  * @tag fluent-text-area
+ * @presentational {TextAreaAppearance} [appearance=outline] - Indicates the visual appearance of the element.
+ * @presentational {boolean} block - Indicates whether the textarea should be a block-level element.
  *
  */
 export class TextArea extends BaseTextArea {
@@ -13,29 +15,13 @@ export class TextArea extends BaseTextArea {
     super.labelSlottedNodesChanged();
 
     this.labelSlottedNodes.forEach(node => {
-      node.size = this.size;
+      if (this.size) {
+        node.setAttribute('size', this.size);
+      } else {
+        node.removeAttribute('size');
+      }
     });
   }
-
-  /**
-   * Indicates the visual appearance of the element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr({ mode: 'fromView' })
-  public appearance: TextAreaAppearance = TextAreaAppearance.outline;
-
-  /**
-   * Indicates whether the textarea should be a block-level element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `block`
-   */
-  @attr({ mode: 'boolean' })
-  public block: boolean = false;
 
   /**
    * Sets the size of the control.
@@ -54,7 +40,11 @@ export class TextArea extends BaseTextArea {
     switch (propertyName) {
       case 'size':
         this.labelSlottedNodes.forEach(node => {
-          node.size = this.size;
+          if (this.size) {
+            node.setAttribute('size', this.size);
+          } else {
+            node.removeAttribute('size');
+          }
         });
         break;
     }

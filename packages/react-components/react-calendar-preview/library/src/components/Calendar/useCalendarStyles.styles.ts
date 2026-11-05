@@ -2,6 +2,7 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { calendarGridWidth, calendarGridWidthWithWeekNumbers } from '../../utils/calendarDimensions';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarSlots, CalendarState } from './Calendar.types';
 
@@ -21,7 +22,8 @@ export const calendarClassNames: SlotClassNames<CalendarSlots> = {
 const useRootStyles = makeStyles({
   base: {
     display: 'flex',
-    width: 'fit-content',
+    // The divider belongs inside the picker footprint, not in addition to it.
+    width: `calc(${calendarGridWidth} + 2 * ${tokens.spacingHorizontalM})`,
   },
   normalize: {
     boxShadow: 'none',
@@ -31,6 +33,15 @@ const useRootStyles = makeStyles({
   },
   monthPickerNotVisible: {
     flexDirection: 'column',
+  },
+  dayAndMonthPickersVisible: {
+    width: `calc(2 * ${calendarGridWidth} + 4 * ${tokens.spacingHorizontalM})`,
+  },
+  dayPickerWithWeekNumbers: {
+    width: `calc(${calendarGridWidthWithWeekNumbers} + 2 * ${tokens.spacingHorizontalM})`,
+  },
+  dayAndMonthPickersWithWeekNumbers: {
+    width: `calc(${calendarGridWidthWithWeekNumbers} + ${calendarGridWidth} + 4 * ${tokens.spacingHorizontalM})`,
   },
 });
 
@@ -59,12 +70,14 @@ const useGoTodayButtonStyles = makeStyles({
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
+    // Preserve compat's 30px action and 3px top gap using the surrounding spacing/stroke tokens.
+    height: `calc(${tokens.spacingVerticalXXXL} - 2 * ${tokens.strokeWidthThin})`,
     minWidth: 'auto',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: `calc(${tokens.spacingVerticalXXXL} - 2 * ${tokens.strokeWidthThin})`,
     marginInlineEnd: tokens.spacingHorizontalL,
-    marginBlockStart: tokens.spacingVerticalXXS,
+    marginBlockStart: `calc(${tokens.spacingVerticalXXS} + ${tokens.strokeWidthThin})`,
     overflow: 'visible',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalXS}`,
+    padding: `0 ${tokens.spacingHorizontalXS}`,
     '&:hover': {
       backgroundColor: tokens.colorTransparentBackground,
       color: tokens.colorBrandForeground1,
@@ -107,7 +120,7 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
   const goTodayButtonStyles = useGoTodayButtonStyles();
   const liveRegionStyles = useLiveRegionStyles();
 
-  const { isMonthPickerVisible } = state;
+  const { isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = state;
 
   /* eslint-disable react-hooks/immutability */
   state.root.className = mergeClasses(
@@ -115,6 +128,9 @@ export const useCalendarStyles_unstable = (state: CalendarState): CalendarState 
     rootStyles.base,
     rootStyles.normalize,
     !isMonthPickerVisible && rootStyles.monthPickerNotVisible,
+    isDayPickerVisible && isMonthPickerVisible && rootStyles.dayAndMonthPickersVisible,
+    isDayPickerVisible && showWeekNumbers && rootStyles.dayPickerWithWeekNumbers,
+    isDayPickerVisible && isMonthPickerVisible && showWeekNumbers && rootStyles.dayAndMonthPickersWithWeekNumbers,
     state.root.className,
   );
 

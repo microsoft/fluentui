@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
-  isHTMLElement,
   slot,
   useAnimationFrame,
   useControllableState,
@@ -22,11 +21,10 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { getCalendarNavigationDate } from '../../utils/calendarKeyboard';
+import { getCalendarNavigationDate, isCalendarKeyboardEditable } from '../../utils/calendarKeyboard';
 import type { DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
-  CalendarDayDismissData,
   CalendarDayNavigateData,
   CalendarDaySelectData,
 } from '../CalendarDay/CalendarDay.types';
@@ -315,34 +313,18 @@ export const useCalendarBase_unstable = (
     focusOnUpdate.current = true;
   };
 
-  const onNavigateDayDate = useEventCallback(
-    (ev: React.SyntheticEvent | Event, data: CalendarDayNavigateData): void => {
-      const { date, focusOnNavigatedDay } = data;
-      navigate(date, ev);
-      if (focusOnNavigatedDay) {
+  const onNavigateDate = useEventCallback(
+    (ev: React.SyntheticEvent | Event, data: CalendarDayNavigateData | CalendarMonthNavigateData): void => {
+      if (data.focusOnNavigatedDay) {
         focusOnNextUpdate();
       }
-    },
-  );
-
-  const onNavigateMonthDate = useEventCallback(
-    (ev: React.SyntheticEvent | Event, data: CalendarMonthNavigateData): void => {
-      const { date, focusOnNavigatedDay } = data;
-      if (focusOnNavigatedDay) {
-        focusOnNextUpdate();
-      }
-
-      navigate(date, ev);
+      navigate(data.date, ev);
     },
   );
 
   const onHeaderSelect = useEventCallback((ev: React.SyntheticEvent | Event, _data): void => {
     toggleDayMonthPickerVisibility(ev);
     focusOnNextUpdate();
-  });
-
-  const onDayDismiss = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarDayDismissData): void => {
-    onDismiss?.(ev, data);
   });
 
   const onGotoToday = useEventCallback((ev: React.SyntheticEvent): void => {
@@ -375,10 +357,7 @@ export const useCalendarBase_unstable = (
 
       case PageUp:
       case PageDown: {
-        if (
-          isHTMLElement(ev.target) &&
-          ev.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')
-        ) {
+        if (isCalendarKeyboardEditable(ev.target)) {
           break;
         }
         const date = getCalendarNavigationDate(ev.nativeEvent) ?? navigatedDate;
@@ -398,14 +377,10 @@ export const useCalendarBase_unstable = (
     isFocusWithin.current = true;
     props.onFocusCapture?.(ev);
 
-    const target = ev.target;
-    if (target.closest('.fui-CalendarDay')) {
-      focusedPicker.current = 'day';
-    } else if (target.closest('.fui-CalendarMonth')) {
-      focusedPicker.current = 'month';
-    } else {
-      focusedPicker.current = undefined;
-    }
+    const picker = ev.target.closest('[data-fui-calendar-picker]');
+    const pickerType =
+      picker && ev.currentTarget.contains(picker) ? picker.getAttribute('data-fui-calendar-picker') : undefined;
+    focusedPicker.current = pickerType === 'day' || pickerType === 'month' ? pickerType : undefined;
   });
 
   const onRootBlurCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
@@ -435,9 +410,9 @@ export const useCalendarBase_unstable = (
         })}, ${selectedDateString}, ${todayDateString}`,
       },
       navigatedDate,
-      onDismiss: onDismiss ? onDayDismiss : undefined,
+      onDismiss,
       onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-      onNavigateDate: onNavigateDayDate,
+      onNavigateDate,
     },
     elementType: 'div',
   });
@@ -518,8 +493,8 @@ export const useCalendarBase_unstable = (
         onClick: onGotoToday,
         onKeyDown: (ev: React.KeyboardEvent<HTMLButtonElement>) => {
           if (ev.key === Enter) {
-            ev.preventDefault();
             onGotoToday(ev);
+            ev.preventDefault();
           }
         },
         type: 'button',
@@ -534,7 +509,7 @@ export const useCalendarBase_unstable = (
         selectedDate: isMonthOnly ? selectedDate : navigatedDate,
         onSelectDate: isMonthOnly ? onDateSelected : undefined,
         onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-        onNavigateDate: onNavigateMonthDate,
+        onNavigateDate,
       },
       elementType: 'div',
     }),

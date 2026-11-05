@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-<!-- This log was last generated on Thu, 24 Sep 2026 09:53:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 02 Nov 2026 18:20:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.4.0)
+
+Mon, 02 Nov 2026 18:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.3.2..@fluentui/react-headless-components-preview_v0.4.0)
+
+### Minor changes
+
+- feat: add headless DatePicker; Calendar grids use a roving tab stop with built-in arrow, Home and End navigation instead of focusgroup, expose aria-current on current month/year cells, and preserve focus when bounds clamp across years ([PR #36988](https://github.com/microsoft/fluentui/pull/36988) by dmytrokirpa@microsoft.com)
+- BREAKING CHANGE: rename Popover `trapFocus` to `inertTrapFocus` ([PR #37024](https://github.com/microsoft/fluentui/pull/37024) by vgenaev@gmail.com)
+- feat: export missing context hooks, context value types, slot types and renderDialogTrigger; add public API conformance tests ([PR #37026](https://github.com/microsoft/fluentui/pull/37026) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: align headless component composition with overloaded helpers and avoid forwarding unused refs ([PR #37043](https://github.com/microsoft/fluentui/pull/37043) by dmytrokirpa@microsoft.com)
+- fix: align Popover focus handling with inertTrapFocus ([PR #37030](https://github.com/microsoft/fluentui/pull/37030) by paulmardling@microsoft.com)
+- fix: emit data-disabled state attribute on ImageSwatch ([PR #36979](https://github.com/microsoft/fluentui/pull/36979) by vgenaev@gmail.com)
+- feat: add headless Tree, TreeItem and TreeItemLayout ([PR #36936](https://github.com/microsoft/fluentui/pull/36936) by dmytrokirpa@microsoft.com)
+- feat: add headless Calendar ([PR #36752](https://github.com/microsoft/fluentui/pull/36752) by dmytrokirpa@microsoft.com)
+- feat: add RangeSlider ([PR #36894](https://github.com/microsoft/fluentui/pull/36894) by vgenaev@gmail.com)
+- fix: correct Popover trigger popup semantics, expose InfoLabel help as a note without generated ownership, and avoid forwarding conflicting defaultOpen and open props ([PR #36953](https://github.com/microsoft/fluentui/pull/36953) by paulmardling@microsoft.com)
+- fix: add aria-controls to PopoverTrigger and name the Default story surface ([PR #36975](https://github.com/microsoft/fluentui/pull/36975) by vgenaev@gmail.com)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.2)
+
+Tue, 20 Oct 2026 09:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.3.1..@fluentui/react-headless-components-preview_v0.3.2)
+
+### Patches
+
+- feat: expose CompoundButton icon position as a data attribute when an icon is present ([PR #36860](https://github.com/microsoft/fluentui/pull/36860) by 198982749+Copilot@users.noreply.github.com)
+- feat: expose useTabListContext from the tab-list entry point ([PR #36906](https://github.com/microsoft/fluentui/pull/36906) by 198982749+Copilot@users.noreply.github.com)
+- fix: export DropdownSlots from the dropdown entry point ([PR #36855](https://github.com/microsoft/fluentui/pull/36855) by dmytrokirpa@microsoft.com)
+- fix: Defer dialog and overlay drawer unmounting until consumer exit animations finish. ([PR #36842](https://github.com/microsoft/fluentui/pull/36842) by dmytrokirpa@microsoft.com)
+- fix: restore focus when headless popovers close ([PR #36843](https://github.com/microsoft/fluentui/pull/36843) by paulmardling@microsoft.com)
+- feat: expose data-readonly on the SpinButton root ([PR #36863](https://github.com/microsoft/fluentui/pull/36863) by vgenaev@gmail.com)
+- perf: build components with a shared composeComponent helper ([PR #36905](https://github.com/microsoft/fluentui/pull/36905) by noreply@anthropic.com)
+- fix: focus enters SwatchPicker on the selected swatch ([PR #36821](https://github.com/microsoft/fluentui/pull/36821) by vgenaev@gmail.com)
+- feat: add List and ListItem components ([PR #36591](https://github.com/microsoft/fluentui/pull/36591) by dmytrokirpa@microsoft.com)
+- refactor: move wrapper logic (data attributes, ref and state casts) of RatingItem, ToastTitle and NavDrawer into their hooks ([PR #36907](https://github.com/microsoft/fluentui/pull/36907) by noreply@anthropic.com)
+- fix: make the Combobox expandIcon accessible and operable with canceled-pointer recovery, single-notification toggles, visibility and blur handling, and manual-popover support ([PR #36574](https://github.com/microsoft/fluentui/pull/36574) by dmytrokirpa@microsoft.com)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.1)
 

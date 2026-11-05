@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Playground Fixture';
+  src: url('~monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.ttf') format('truetype');
+}
+
+.playground-private-eager {
+  font-family: 'Playground Fixture';
+  outline-color: var(--colorBrandStroke1);
+  outline-style: solid;
+  outline-width: var(--strokeWidthThick);
+}

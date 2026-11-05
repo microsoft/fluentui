@@ -101,6 +101,7 @@
     },
     "verify-packaging": {
       "dependsOn": ["build"],
+      "inputs": ["production"],
       "cache": true
     },
     "test-rit--*--prepare": {
@@ -160,7 +161,13 @@
           "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
         },
         "verifyPackaging": {
-          "include": ["react-text", "react-components"]
+          "include": [
+            "react-components",
+            "react-headless-components-preview",
+            "react-utilities",
+            "react-button",
+            "react-charts"
+          ]
         },
         "reactIntegrationTesting": {
           "targetName": "test-rit",

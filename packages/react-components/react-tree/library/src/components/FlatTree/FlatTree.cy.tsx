@@ -2,8 +2,13 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import type { JSXElement } from '@fluentui/react-utilities';
-import type { TreeItemValue, FlatTreeProps, HeadlessFlatTreeOptions } from '@fluentui/react-tree';
+import type { ForwardRefComponent, JSXElement } from '@fluentui/react-utilities';
+import type {
+  TreeItemValue,
+  FlatTreeProps,
+  HeadlessFlatTreeOptions,
+  TreeItemLayoutBaseProps,
+} from '@fluentui/react-tree';
 import {
   Tree,
   TreeItem,
@@ -13,6 +18,8 @@ import {
   useHeadlessFlatTree_unstable,
   FlatTree,
   FlatTreeItem,
+  useTreeItemLayoutBase_unstable,
+  renderTreeItemLayout_unstable,
 } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
 import { Avatar } from '@fluentui/react-avatar';
@@ -70,6 +77,11 @@ const TreeTest: React.FC<FlatTreeProps & HeadlessFlatTreeOptions> = props => {
   );
 };
 TreeTest.displayName = 'FlatTree';
+
+const BaseTreeItemLayout: ForwardRefComponent<TreeItemLayoutBaseProps> = React.forwardRef((props, ref) => {
+  const state = useTreeItemLayoutBase_unstable(props, ref);
+  return renderTreeItemLayout_unstable(state);
+});
 
 describe('FlatTree', () => {
   it('should have all but first level items hidden', () => {
@@ -220,6 +232,20 @@ describe('FlatTree', () => {
                   <TreeItemLayout>level 2, item 1</TreeItemLayout>
                 </TreeItem>
               </Tree>
+            </TreeItem>
+          </TreeTest>,
+        );
+        cy.get('[data-testid="item1"]').focus().realPress('{rightarrow}');
+        cy.get('#action').should('be.focused').realPress('{leftarrow}');
+        cy.get('[data-testid="item1"]').should('be.focused');
+      });
+      it('should focus on actions/treeitem of a base layout when pressing right/left arrow', () => {
+        mount(
+          <TreeTest navigationMode="treegrid" id="tree" aria-label="Tree">
+            <TreeItem itemType="leaf" value="item1" data-testid="item1">
+              <BaseTreeItemLayout actions={{ visible: true, children: <button id="action">action</button> }}>
+                level 1, item 1
+              </BaseTreeItemLayout>
             </TreeItem>
           </TreeTest>,
         );

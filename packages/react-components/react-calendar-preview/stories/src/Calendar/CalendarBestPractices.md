@@ -4,7 +4,7 @@
 
 - Use `layout="auto"` for responsive day/month views. Use `monthPicker={null}` for day-only mode or `dayPicker={null}` for month-only selection.
 - Prefer the composed Calendar for normal date selection. Independent pickers require a `CalendarProvider` with shared selection and configuration.
-- Preserve the built-in grid roles and keyboard navigation when customizing cells. Use `dayPicker.getDayCellProps` and `monthPicker.yearPicker.renderYear` instead of replacing the grid.
+- Preserve the built-in grid roles and keyboard navigation when customizing cells. Use `dayPicker.getDayCellProps`, `dayPicker.renderDay` and `monthPicker.yearPicker.renderYear` instead of replacing the grid.
 
 ### State and focus
 

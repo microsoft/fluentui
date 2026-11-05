@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: improve phone number initials handling",
-  "packageName": "@fluentui/react-avatar",
-  "email": "paulmardling@microsoft.com"
-}

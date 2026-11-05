@@ -16,6 +16,8 @@ import { uniqueId } from '../utils/unique-id.js';
  * @csspart content - The wrapper for the option content.
  * @csspart description - The wrapper for the option description.
  *
+ * @presentational {boolean} active - Indicates that the option is active.
+ *
  * @remarks
  * To support single and multiple selection modes with the {@link (BaseDropdown:class)} element, the Option element
  * itself handles form association and value submission, rather than its parent Dropdown element. In this way, the
@@ -27,25 +29,6 @@ import { uniqueId } from '../utils/unique-id.js';
  * @public
  */
 export class DropdownOption extends FASTElement implements Start {
-  /**
-   * Indicates that the option is active.
-   *
-   * @public
-   */
-  @observable
-  public active: boolean = false;
-
-  /**
-   * Changes the active state of the option when the active property changes.
-   *
-   * @param prev - the previous active state
-   * @param next - the current active state
-   * @internal
-   */
-  protected activeChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'active', next);
-  }
-
   /**
    * The current selected state of the option.
    *

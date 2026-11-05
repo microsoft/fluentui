@@ -7,13 +7,17 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { Calendar } from './Calendar';
 import { calendarClassNames } from './useCalendarStyles.styles';
 import { calendarDayClassNames } from '../CalendarDay/useCalendarDayStyles.styles';
-import { calendarMonthClassNames } from '../CalendarMonth/useCalendarMonthStyles.styles';
-import { calendarMonthGridCellClassNames } from '../CalendarMonthGridCell/useCalendarMonthGridCellStyles.styles';
-import { calendarYearGridCellClassNames } from '../CalendarYearGridCell/useCalendarYearGridCellStyles.styles';
+import { calendarMonthClassNames, calendarMonthGridClassNames } from '../CalendarMonth/useCalendarMonthStyles.styles';
+import { calendarYearGridClassNames } from '../CalendarYear/useCalendarYearStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { CalendarProps } from './Calendar.types';
 
-const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+const mountFluent = (element: JSXElement, dir: 'ltr' | 'rtl' = 'ltr') => {
+  mount(
+    <FluentProvider theme={webLightTheme} dir={dir}>
+      {element}
+    </FluentProvider>,
+  );
 };
 
 /**
@@ -32,7 +36,169 @@ const nextMonth = `.${calendarDayClassNames.nextMonthButton}`;
 const goToToday = `.${calendarClassNames.goToTodayButton}`;
 
 describe('Calendar', () => {
+  describe('layout geometry', () => {
+    const layouts: { name: string; props: CalendarProps; width: number; monthOnly?: boolean }[] = [
+      { name: 'side by side', props: { layout: 'sideBySide' }, width: 440 },
+      { name: 'side by side with week numbers', props: { layout: 'sideBySide', showWeekNumbers: true }, width: 470 },
+      { name: 'day only', props: { monthPicker: null }, width: 220 },
+      { name: 'day only with week numbers', props: { monthPicker: null, showWeekNumbers: true }, width: 250 },
+      { name: 'overlay', props: { layout: 'overlay' }, width: 220 },
+      { name: 'month only', props: { dayPicker: null, showWeekNumbers: true }, width: 220, monthOnly: true },
+    ];
+
+    for (const dir of ['ltr', 'rtl'] as const) {
+      for (const sixWeeks of [false, true]) {
+        for (const { name, props, width, monthOnly } of layouts) {
+          it(`preserves ${name} dimensions with ${sixWeeks ? 'six' : 'five'} weeks in ${dir}`, () => {
+            const date = sixWeeks ? new Date(2020, 7, 18) : today;
+            const dayHeight = sixWeeks ? 248 : 220;
+            const sideBySide = props.layout === 'sideBySide';
+            const height = monthOnly ? 241 : sideBySide ? Math.max(dayHeight, 241) : dayHeight + 33;
+            mountFluent(<Calendar today={date} defaultValue={date} {...props} />, dir);
+
+            cy.get(`.${calendarClassNames.root}`).should(elements => {
+              const root = elements[0];
+              const bounds = root.getBoundingClientRect();
+              expect(bounds.width).to.equal(width);
+              expect(bounds.height).to.equal(height);
+              const action = root.querySelector<HTMLButtonElement>(goToToday)!;
+              const actionBounds = action.getBoundingClientRect();
+              const actionStyles = getComputedStyle(action);
+              expect(actionBounds.height).to.equal(30);
+              expect(actionStyles.marginTop).to.equal('3px');
+              expect(actionStyles.lineHeight).to.equal('30px');
+
+              if (sideBySide) {
+                const dayPicker = root.querySelector<HTMLElement>(`.${calendarDayClassNames.root}`)!;
+                const monthPicker = root.querySelector<HTMLElement>(`.${calendarMonthClassNames.root}`)!;
+                const dayBounds = dayPicker.getBoundingClientRect();
+                const monthBounds = monthPicker.getBoundingClientRect();
+                expect(dayBounds.width).to.equal(props.showWeekNumbers ? 250 : 220);
+                expect(monthBounds.width).to.equal(220);
+                expect(
+                  dir === 'ltr' ? monthBounds.left - dayBounds.right : dayBounds.left - monthBounds.right,
+                ).to.equal(1);
+              }
+            });
+          });
+        }
+      }
+    }
+
+    it('does not reserve action space when the action is hidden', () => {
+      mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" goToTodayButton={null} />);
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(440);
+        expect(bounds.height).to.equal(220);
+      });
+      cy.get(goToToday).should('not.exist');
+    });
+
+    it('retains the single-picker footprint when overlay navigation switches views', () => {
+      mountFluent(<Calendar today={today} defaultValue={today} layout="overlay" />);
+      cy.get(heading).click();
+      cy.get(`.${calendarMonthClassNames.root}`).should('be.visible');
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(220);
+        expect(bounds.height).to.equal(241);
+      });
+      cy.get(`.${calendarMonthClassNames.heading}`).click();
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(220);
+        expect(bounds.height).to.equal(241);
+      });
+    });
+
+    it('preserves consumer root and action sizing overrides', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          style={{ width: 500 }}
+          goToTodayButton={{ style: { height: 40, lineHeight: '40px', marginTop: 0 } }}
+        />,
+      );
+      cy.get(`.${calendarClassNames.root}`).should('have.css', 'width', '500px');
+      cy.get(goToToday).should('have.css', 'height', '40px').and('have.css', 'margin-top', '0px');
+    });
+  });
+
   describe('day grid keyboard navigation', () => {
+    it('keeps enclosing custom content callbacks when a nested Calendar handles an arrow', () => {
+      const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{
+            renderDay: (dayCell, defaultContent) =>
+              dayCell.originalDate?.getTime() === today.getTime() ? (
+                <span onKeyDown={onOuterKeyDown}>
+                  <Calendar today={today} defaultValue={today} />
+                </span>
+              ) : (
+                defaultContent
+              ),
+          }}
+        />,
+      );
+
+      cy.get(day('September 18, 2020'))
+        .find('[role="grid"] button[aria-label="September 18, 2020"]')
+        .last()
+        .closest('td')
+        .focus()
+        .realPress('ArrowRight');
+      cy.get('@onOuterKeyDown').should('have.been.calledOnce');
+    });
+
+    (['capture', 'bubble'] as const).forEach(phase => {
+      it(`honors custom day content ${phase} cancellation before navigation`, () => {
+        const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => {
+          if (phase === 'capture') {
+            event.preventDefault();
+          }
+        });
+        const onKeyDown = cy.stub().callsFake((event: React.KeyboardEvent) => {
+          if (phase === 'bubble') {
+            event.preventDefault();
+          }
+        });
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            dayPicker={{
+              renderDay: () => (
+                <span tabIndex={0} title="Custom day content" onKeyDownCapture={onKeyDownCapture} onKeyDown={onKeyDown}>
+                  18
+                </span>
+              ),
+            }}
+          />,
+        );
+        cy.get(day('September 18, 2020')).find('[title="Custom day content"]').focus().realPress('ArrowRight');
+        cy.get(day('September 18, 2020')).find('[title="Custom day content"]').should('be.focused');
+        cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+        cy.wrap(onKeyDown).should('have.been.calledOnce');
+      });
+    });
+
+    it('lets a cell handler cancel day movement', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{ getDayCellProps: () => ({ onKeyDown: event => event.preventDefault() }) }}
+        />,
+      );
+      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('September 18, 2020')).should('be.focused');
+    });
+
     it('pages from the arrow-focused day rather than the original anchor', () => {
       const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
       mountFluent(<Calendar today={today} defaultValue={today} onDisplayedDateChange={onDisplayedDateChange} />);
@@ -243,14 +409,184 @@ describe('Calendar', () => {
   });
 
   describe('month and year pickers', () => {
+    (['month', 'year'] as const).forEach(picker => {
+      const cells = '[data-fui-calendar-picker="month"] button[role="gridcell"]';
+      const openYearPicker = () => {
+        if (picker === 'year') {
+          cy.get(`.${calendarMonthClassNames.heading}`).click();
+        }
+      };
+
+      it(`skips hidden ${picker} cells and still focuses tabIndex=-1 candidates`, () => {
+        mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" />);
+        openYearPicker();
+
+        cy.get(cells).eq(1).invoke('prop', 'hidden', true).should('not.be.visible');
+        cy.get(cells).eq(2).invoke('attr', 'tabindex', '-1');
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(2).should('be.focused');
+      });
+
+      it(`moves the ${picker} grid exactly once per arrow without wrapping rows or columns`, () => {
+        const onSelectDate = cy.stub().as('onSelectDate');
+        const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            layout="sideBySide"
+            onSelectDate={onSelectDate}
+            onDisplayedDateChange={onDisplayedDateChange}
+          />,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(1).should('be.focused').realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused').realPress('ArrowLeft');
+        cy.get(cells).eq(4).should('be.focused').realPress('ArrowUp');
+        cy.get(cells).eq(0).should('be.focused').realPress('ArrowLeft');
+        cy.get(cells).eq(0).should('be.focused');
+
+        cy.get(cells).eq(3).focus().realPress('ArrowRight');
+        cy.get(cells).eq(3).should('be.focused');
+        cy.get(cells).eq(8).focus().realPress('ArrowDown');
+        cy.get(cells).eq(8).should('be.focused');
+        cy.get('@onSelectDate').should('not.have.been.called');
+        cy.get('@onDisplayedDateChange').should('not.have.been.called');
+      });
+
+      it(`preserves RTL arrow navigation in the ${picker} grid`, () => {
+        mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" />, 'rtl');
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowLeft');
+        cy.get(cells).eq(1).should('be.focused').realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused').realPress('ArrowRight');
+        cy.get(cells).eq(4).should('be.focused');
+      });
+
+      it(`preserves Tabster's single Tab stop for the ${picker} grid`, () => {
+        mountFluent(
+          <>
+            <Calendar today={today} defaultValue={today} layout="sideBySide" goToTodayButton={null} />
+            <button type="button">After Calendar</button>
+          </>,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(1).should('be.focused').realPress('Tab');
+        cy.contains('button', 'After Calendar').should('be.focused');
+      });
+
+      it(`honors consumer capture cancellation in the ${picker} grid`, () => {
+        const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            layout="sideBySide"
+            monthPicker={
+              picker === 'month' ? { grid: { onKeyDownCapture } } : { yearPicker: { grid: { onKeyDownCapture } } }
+            }
+          />,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(5).focus().realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused');
+        cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+      });
+
+      [false, true].forEach(allFocusable => {
+        it(`respects unavailable ${picker} cells with allFocusable=${allFocusable}`, () => {
+          const onSelectDate = cy.stub().as('onSelectDate');
+          mountFluent(
+            <Calendar
+              today={today}
+              defaultValue={today}
+              layout="sideBySide"
+              allFocusable={allFocusable}
+              minDate={picker === 'month' ? new Date(2020, 1, 1) : new Date(2021, 0, 1)}
+              monthPicker={{ yearPicker: { navigatedYear: 2020 } }}
+              onSelectDate={onSelectDate}
+            />,
+          );
+          openYearPicker();
+
+          cy.get(cells).eq(1).focus().realPress('ArrowLeft');
+          cy.get(cells)
+            .eq(allFocusable ? 0 : 1)
+            .should('be.focused');
+          if (allFocusable) {
+            cy.get(cells).eq(0).should('be.enabled').and('have.attr', 'aria-disabled', 'true').realPress('Enter');
+            cy.get('@onSelectDate').should('not.have.been.called');
+          }
+        });
+      });
+
+      if (picker === 'year') {
+        (['none', 'capture', 'bubble'] as const).forEach(phase => {
+          it(
+            phase === 'none'
+              ? 'navigates after custom year content keydown'
+              : `honors custom year content ${phase} cancellation`,
+            () => {
+              const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => {
+                if (phase === 'capture') {
+                  event.preventDefault();
+                }
+              });
+              const onKeyDown = cy.stub().callsFake((event: React.KeyboardEvent) => {
+                if (phase === 'bubble') {
+                  event.preventDefault();
+                }
+              });
+              mountFluent(
+                <Calendar
+                  today={today}
+                  defaultValue={today}
+                  layout="sideBySide"
+                  monthPicker={{
+                    yearPicker: {
+                      renderYear: year => (
+                        <span
+                          tabIndex={0}
+                          title={`custom-year-${year}`}
+                          onKeyDownCapture={onKeyDownCapture}
+                          onKeyDown={onKeyDown}
+                        >
+                          {year}
+                        </span>
+                      ),
+                    },
+                  }}
+                />,
+              );
+              openYearPicker();
+              cy.get('[title="custom-year-2020"]').focus().realPress('ArrowRight');
+              if (phase === 'none') {
+                cy.get('[title="custom-year-2021"]').closest('[role="gridcell"]').should('be.focused');
+              } else {
+                cy.get('[title="custom-year-2020"]').should('be.focused');
+              }
+              cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+              cy.wrap(onKeyDown).should('have.been.calledOnce');
+            },
+          );
+        });
+      }
+    });
+
     it('keeps the month highlight on the navigated month', () => {
       mountFluent(<Calendar today={today} value={today} highlightSelectedMonth />);
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}[data-selected]`).should('have.text', 'Sep');
+      cy.get(`.${calendarMonthGridClassNames.cell}[data-selected]`).should('have.text', 'Sep');
 
       cy.get(nextMonth).click();
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}[data-selected]`).should('have.text', 'Oct');
+      cy.get(`.${calendarMonthGridClassNames.cell}[data-selected]`).should('have.text', 'Oct');
     });
 
     it('opens the year picker on the navigated year', () => {
@@ -260,13 +596,13 @@ describe('Calendar', () => {
       cy.get(nextMonth).click();
       cy.get(`.${calendarMonthClassNames.heading}`).should('have.text', '2021').click();
 
-      cy.get(`.${calendarYearGridCellClassNames.root}[data-selected]`).should('have.text', '2021');
+      cy.get(`.${calendarYearGridClassNames.cell}[data-selected]`).should('have.text', '2021');
     });
 
     it('navigates the day grid when a month is picked', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
-      cy.get(`.${calendarMonthGridCellClassNames.root}`).contains('Dec').click();
+      cy.get(`.${calendarMonthGridClassNames.cell}`).contains('Dec').click();
 
       cy.get(heading).should('have.text', 'December 2020');
       cy.focused().find('button').should('have.attr', 'aria-label', 'December 18, 2020');
@@ -376,7 +712,7 @@ describe('Calendar', () => {
           <button type="button">Outside action</button>
         </>,
       );
-      cy.get(`.${calendarMonthGridCellClassNames.root}`).contains('Sep').focus();
+      cy.get(`.${calendarMonthGridClassNames.cell}`).contains('Sep').focus();
       cy.contains('button', 'Outside action').focus();
       cy.viewport(360, 800);
       cy.get(`.${calendarMonthClassNames.root}`).should('not.exist');

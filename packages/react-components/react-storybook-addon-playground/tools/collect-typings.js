@@ -7,6 +7,9 @@ const semver = require('semver');
 /**
  * @typedef {{ kind: 'module' | 'path' | 'types', value: string }} Specifier
  * @typedef {{ files: Record<string, string>, sources: string[], missing: string[] }} CollectResult
+ * @typedef {{ dir: string, name: string, packageJson: Record<string, any> }} PackageInfo
+ * @typedef {{ path: string, conditionNames: readonly string[] } | false | null} ModuleResolution
+ * @typedef {(request: string, fromDir: string) => Promise<ModuleResolution>} PackageResolver
  */
 
 const VIRTUAL_ROOT = 'file:///node_modules';
@@ -162,16 +165,17 @@ function getTypesPackageName(name) {
  * Picks a types path from a package.json `exports` entry (string, conditions, or fallback list).
  *
  * @param {unknown} entry
+ * @param {ReadonlySet<string>} [conditionNames]
  * @returns {string | null}
  */
-function getTypesFromExportEntry(entry) {
+function getTypesFromExportEntry(entry, conditionNames) {
   if (typeof entry === 'string') {
     return entry;
   }
 
   if (Array.isArray(entry)) {
     for (const candidate of entry) {
-      const resolved = getTypesFromExportEntry(candidate);
+      const resolved = getTypesFromExportEntry(candidate, conditionNames);
       if (resolved) {
         return resolved;
       }
@@ -184,8 +188,11 @@ function getTypesFromExportEntry(entry) {
   }
 
   const conditions = /** @type {Record<string, unknown>} */ (entry);
-  for (const condition of ['types', 'import', 'require', 'default']) {
-    const resolved = getTypesFromExportEntry(conditions[condition]);
+  const keys = conditionNames
+    ? Object.keys(conditions).filter(key => key === 'types' || key === 'default' || conditionNames.has(key))
+    : ['types', 'import', 'require', 'default'];
+  for (const condition of keys) {
+    const resolved = getTypesFromExportEntry(conditions[condition], conditionNames);
     if (resolved) {
       return resolved;
     }
@@ -232,10 +239,9 @@ function resolveTypesFile(packageDir, typesPath) {
   }
 
   const withoutExt = typesPath.replace(/\.(d\.)?[cm]?[jt]sx?$/, '');
-  const declarationExt = typesPath.endsWith('.mjs') ? '.d.mts' : typesPath.endsWith('.cjs') ? '.d.cts' : '.d.ts';
 
   return (
-    existingFile(path.join(packageDir, `${withoutExt}${declarationExt}`)) ||
+    existingFile(path.join(packageDir, getDeclarationPath(typesPath))) ||
     existingFile(path.join(packageDir, `${withoutExt}.d.ts`)) ||
     existingFile(path.join(packageDir, `${withoutExt}.d.cts`)) ||
     existingFile(path.join(packageDir, `${withoutExt}.d.mts`)) ||
@@ -281,6 +287,15 @@ function applyTypesVersions(packageJson, relativePath, typescriptVersion) {
   return relativePath;
 }
 
+/** @param {string} filePath */
+function getDeclarationPath(filePath) {
+  if (/\.d\.[cm]?ts$/.test(filePath)) {
+    return filePath;
+  }
+  const extension = filePath.endsWith('.mjs') ? '.d.mts' : filePath.endsWith('.cjs') ? '.d.cts' : '.d.ts';
+  return `${filePath.replace(/\.(d\.)?[cm]?[jt]sx?$/, '')}${extension}`;
+}
+
 /**
  * @param {string} filePath
  * @returns {string | null}
@@ -302,15 +317,175 @@ function readJson(filePath) {
 }
 
 /**
+ * Finds the named package owning a resolved entry, including aliases into built output with a nested package.json.
+ *
+ * @param {string} entryPath
+ * @param {Set<string>} sources
+ * @returns {string | null}
+ */
+function findResolvedPackageDir(entryPath, sources) {
+  for (let dir = path.dirname(entryPath); ; dir = path.dirname(dir)) {
+    const metadataPath = path.join(dir, 'package.json');
+    if (existingFile(metadataPath)) {
+      sources.add(fs.realpathSync(metadataPath));
+      if (typeof readJson(metadataPath).name === 'string') {
+        return fs.realpathSync(dir);
+      }
+    }
+    if (path.dirname(dir) === dir) {
+      return null;
+    }
+  }
+}
+
+/**
+ * Prefers the requested export when it matches the runtime target, then reverse-matches remapped aliases.
+ *
+ * @param {PackageInfo} pkg
+ * @param {string} entryPath
+ * @param {string} requestedSubpath
+ * @param {readonly string[]} conditionNames
+ * @returns {{ subpath: string, typesPath: string | null, runtimePath?: string } | null}
+ */
+function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
+  const realEntryPath = existingFile(entryPath) ? fs.realpathSync(entryPath) : path.resolve(entryPath);
+  const relativePath = path.relative(pkg.dir, realEntryPath).split(path.sep).join('/');
+  const activeConditions = new Set(conditionNames);
+  /**
+   * @param {unknown} entry
+   * @param {string} [requestedCapture]
+   * @returns {{ typesPath: string | null, capture?: string } | null | undefined}
+   */
+  const matchExport = (entry, requestedCapture) => {
+    if (entry === null) {
+      return null;
+    }
+    if (typeof entry === 'string') {
+      if (/\.d\.[cm]?ts$/.test(entry)) {
+        return null;
+      }
+      const target = path.posix.normalize(entry.replace(/^\.\//, ''));
+      if (requestedCapture !== undefined) {
+        return target.replaceAll('*', requestedCapture) === relativePath
+          ? { typesPath: null, capture: requestedCapture }
+          : null;
+      }
+      const star = target.indexOf('*');
+      if (star === -1) {
+        return target === relativePath ? { typesPath: null } : null;
+      }
+      const prefix = target.slice(0, star);
+      const suffix = target.slice(star + 1);
+      return relativePath.startsWith(prefix) && relativePath.endsWith(suffix)
+        ? { typesPath: null, capture: relativePath.slice(prefix.length, relativePath.length - suffix.length) }
+        : null;
+    }
+    if (Array.isArray(entry)) {
+      for (const candidate of entry) {
+        const match = matchExport(candidate, requestedCapture);
+        if (match) {
+          return match;
+        }
+      }
+      return null;
+    }
+    if (entry && typeof entry === 'object') {
+      const conditions = /** @type {Record<string, unknown>} */ (entry);
+      for (const [key, value] of Object.entries(conditions)) {
+        if (key === 'types' || key.startsWith('types@') || (key !== 'default' && !activeConditions.has(key))) {
+          continue;
+        }
+        const match = matchExport(value, requestedCapture);
+        // Only a nested object with no enabled condition can fall through to the next condition.
+        if (match === undefined) {
+          continue;
+        }
+        if (!match) {
+          return null;
+        }
+        const typesPath = match.typesPath ?? getTypesFromExportEntry(conditions.types, activeConditions);
+        return {
+          ...match,
+          typesPath: typesPath && match.capture !== undefined ? typesPath.replaceAll('*', match.capture) : typesPath,
+        };
+      }
+    }
+    return undefined;
+  };
+  const exportsField = pkg.packageJson.exports;
+  if (exportsField && typeof exportsField === 'object' && !Array.isArray(exportsField)) {
+    const entries = Object.entries(exportsField).filter(([key]) => key.startsWith('.'));
+    const requestedKey = requestedSubpath ? `./${requestedSubpath}` : '.';
+    const requestedEntry =
+      entries.find(([key]) => key === requestedKey) ??
+      entries
+        .filter(([key]) => {
+          const star = key.indexOf('*');
+          return (
+            star !== -1 &&
+            star === key.lastIndexOf('*') &&
+            requestedKey.length >= key.length &&
+            requestedKey.startsWith(key.slice(0, star)) &&
+            requestedKey.endsWith(key.slice(star + 1))
+          );
+        })
+        .sort(([left], [right]) => right.indexOf('*') - left.indexOf('*') || right.length - left.length)[0];
+    if (requestedEntry) {
+      const [key, entry] = requestedEntry;
+      const star = key.indexOf('*');
+      const capture = star === -1 ? undefined : requestedKey.slice(star, requestedKey.length - key.length + star + 1);
+      const match = matchExport(entry, capture);
+      if (match) {
+        return { subpath: requestedSubpath, typesPath: match.typesPath, runtimePath: relativePath };
+      }
+    }
+    /** @type {{ subpath: string, typesPath: string | null, runtimePath?: string } | null} */
+    let firstMatch = null;
+    for (const [key, entry] of entries) {
+      const match = matchExport(entry);
+      if (match) {
+        const resolved = {
+          subpath: key === '.' ? '' : key.slice(2).replaceAll('*', match.capture ?? ''),
+          typesPath: match.typesPath,
+          runtimePath: relativePath,
+        };
+        if (resolved.subpath === requestedSubpath) {
+          return resolved;
+        }
+        firstMatch ??= resolved;
+      }
+    }
+    if (firstMatch) {
+      return firstMatch;
+    }
+  }
+  const rootExport = matchExport(exportsField);
+  if (rootExport) {
+    return { subpath: '', typesPath: rootExport.typesPath, runtimePath: relativePath };
+  }
+  if ([pkg.packageJson.module, pkg.packageJson.main, pkg.packageJson.browser].some(entry => matchExport(entry))) {
+    return { subpath: '', typesPath: null };
+  }
+  return null;
+}
+
+/**
  * Collects the transitive closure of type declaration files needed to type-check code importing `entries`.
  *
- * Every file gets a virtual path `file:///node_modules/<package>/<relative path>` so that TypeScript's node module
- * resolution works when the files are registered as Monaco extra libs.
+ * Package declarations keep their paths under `file:///node_modules/<package>/`. Separate virtual entries and
+ * package metadata route Monaco's node module resolution to the selected public exports without changing those files.
  *
- * @param {{ packageRoot: string, entries: string[], typescriptVersion: string }} options
- * @returns {CollectResult}
+ * @param {{
+ *   packageRoot: string,
+ *   entries: string[],
+ *   typescriptVersion: string,
+ *   moduleRequests?: Record<string, string>,
+ *   typingsRoots?: Record<string, string>,
+ *   resolvePackage?: PackageResolver
+ * }} options
+ * @returns {Promise<CollectResult>}
  */
-function collectTypings(options) {
+async function collectTypings(options) {
   const { entries, typescriptVersion } = options;
   const packageRoot = path.resolve(options.packageRoot);
 
@@ -320,7 +495,7 @@ function collectTypings(options) {
   const sources = new Set();
   /** @type {Set<string>} */
   const missing = new Set();
-  /** @type {Map<string, { dir: string, name: string, packageJson: Record<string, any> } | null>} */
+  /** @type {Map<string, (PackageInfo & { subpath: string, entryFile: string | null }) | null>} */
   const packages = new Map();
 
   /**
@@ -346,37 +521,97 @@ function collectTypings(options) {
    * Resolves the package providing types for `name` (and `subpath`): the package itself when it ships types for the
    * root or the requested subpath, `@types/*` otherwise.
    *
-   * @param {string} name
+   * @param {string} specifier
    * @param {string} fromDir
-   * @param {string} [subpath]
    */
-  function getPackage(name, fromDir, subpath = '') {
-    const cacheKey = `${name}\0${subpath}`;
+  async function getPackage(specifier, fromDir) {
+    const { name, subpath } = parseSpecifier(specifier);
+    const request = options.moduleRequests?.[specifier] ?? specifier;
+    const requestSpecifier = PACKAGE_SPECIFIER_REGEX.test(request) ? parseSpecifier(request) : null;
+    const requestSubpath = requestSpecifier?.subpath ?? subpath;
+    const cacheKey = `${specifier}\0${fromDir}`;
     const cached = packages.get(cacheKey);
     if (cached !== undefined) {
       return cached;
     }
 
-    /** @param {string} dir */
-    const load = dir => {
-      const packageJson = readJson(path.join(dir, 'package.json'));
-      return { dir, name: packageJson.name, packageJson };
+    /**
+     * @param {string} dir
+     * @param {string} [fallbackName]
+     */
+    const load = (dir, fallbackName = name) => {
+      const realDir = fs.realpathSync(dir);
+      const packageJson = readJson(path.join(realDir, 'package.json'));
+      return {
+        dir: realDir,
+        name: typeof packageJson.name === 'string' ? packageJson.name : fallbackName,
+        packageJson,
+      };
     };
 
-    const ownDir = findPackageDir(name, fromDir);
+    const explicitRoot = options.typingsRoots?.[specifier] ?? options.typingsRoots?.[name];
+    if (explicitRoot && !existingFile(path.join(explicitRoot, 'package.json'))) {
+      throw new Error(
+        `Playground typingsRoots[${JSON.stringify(specifier)}] must contain a package.json: ${explicitRoot}`,
+      );
+    }
+    const resolution = !explicitRoot && options.resolvePackage ? await options.resolvePackage(request, fromDir) : null;
+    if (resolution === false) {
+      packages.set(cacheKey, null);
+      return null;
+    }
+    const ownDir =
+      explicitRoot ||
+      (resolution
+        ? findResolvedPackageDir(resolution.path, sources)
+        : requestSpecifier && findPackageDir(requestSpecifier.name, fromDir));
     const own = ownDir ? load(ownDir) : null;
+    const resolvedExport =
+      own && resolution ? getRuntimeExport(own, resolution.path, requestSubpath, resolution.conditionNames) : null;
+    const ownSubpath = resolvedExport?.subpath ?? requestSubpath;
+    /** @type {string | null} */
+    let ownEntry = null;
+    if (own) {
+      if (resolution && /\.d\.[cm]?ts$/.test(resolution.path)) {
+        const realEntryPath = existingFile(resolution.path) ? fs.realpathSync(resolution.path) : resolution.path;
+        ownEntry = resolveVersionedTypesFile(own, path.relative(own.dir, realEntryPath));
+      } else if (resolvedExport?.typesPath) {
+        ownEntry = resolveVersionedTypesFile(own, resolvedExport.typesPath);
+      } else if (resolvedExport?.runtimePath) {
+        ownEntry =
+          resolveVersionedTypesFile(own, getDeclarationPath(resolvedExport.runtimePath)) ||
+          resolveVersionedTypesFile(own, resolvedExport.runtimePath) ||
+          resolveEntryFile(own, ownSubpath);
+      } else if (resolvedExport || explicitRoot || !resolution) {
+        ownEntry = resolveEntryFile(own, ownSubpath);
+      } else {
+        ownEntry =
+          resolveTypesFile(path.dirname(resolution.path), path.basename(resolution.path)) ||
+          resolveEntryFile(own, ownSubpath);
+      }
+    }
     const hasOwnTypes =
       own &&
-      (own.packageJson.types ||
-        own.packageJson.typings ||
-        existingFile(path.join(own.dir, 'index.d.ts')) ||
-        resolveEntryFile(own, '') ||
-        (subpath && resolveEntryFile(own, subpath)));
+      (own.packageJson.types || own.packageJson.typings || existingFile(path.join(own.dir, 'index.d.ts')) || ownEntry);
 
-    let result = hasOwnTypes ? own : null;
+    let result = hasOwnTypes && own ? { ...own, subpath: ownSubpath, entryFile: ownEntry || null } : null;
     if (!result && !name.startsWith('@types/')) {
-      const typesDir = findPackageDir(getTypesPackageName(name), fromDir);
-      result = typesDir ? load(typesDir) : null;
+      const typesName = getTypesPackageName(own?.name ?? requestSpecifier?.name ?? name);
+      const typesResolution = options.resolvePackage ? await options.resolvePackage(typesName, fromDir) : null;
+      const typesDir =
+        typesResolution === false
+          ? null
+          : typesResolution
+          ? findResolvedPackageDir(typesResolution.path, sources)
+          : findPackageDir(typesName, own?.dir ?? fromDir);
+      if (typesDir) {
+        const typesPackage = load(typesDir, typesName);
+        result = {
+          ...typesPackage,
+          subpath: ownSubpath,
+          entryFile: resolveEntryFile(typesPackage, ownSubpath),
+        };
+      }
     }
 
     packages.set(cacheKey, result);
@@ -466,58 +701,74 @@ function collectTypings(options) {
   }
 
   /**
-   * Monaco's TypeScript uses classic node resolution (`pkg/button` -> `pkg/button.d.ts`).
-   * When types actually live at an `exports` path like `dist/button.d.ts`, add a shim at the classic location.
+   * @param {string} importPath
+   * @param {string} content
+   */
+  function createDeclarationReexport(importPath, content) {
+    const ts = getTypeScript();
+    const isModule = ts
+      ? ts.isExternalModule(ts.createSourceFile(importPath, content, ts.ScriptTarget.Latest, false))
+      : /\b(?:export|import)\s/.test(content.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, ''));
+    if (!isModule) {
+      return `/// <reference path=${JSON.stringify(importPath)} />\n`;
+    }
+    const target = JSON.stringify(importPath.replace(/\.d\.([cm]?)ts$/, (_, kind) => (kind ? `.${kind}js` : '')));
+    // `export *` never re-exports a default export, forward it explicitly.
+    switch (getDefaultExportKind(content)) {
+      case 'equals':
+        return `import entry = require(${target});\nexport = entry;\n`;
+      case 'default':
+        return `export * from ${target};\nexport { default } from ${target};\n`;
+      default:
+        return `export * from ${target};\n`;
+    }
+  }
+
+  /**
+   * Routes public imports through separate virtual entries, without overwriting physical declarations.
+   * Metadata is identical for every subpath so separately loaded module typings can share it safely.
    *
-   * @param {{ dir: string, name: string }} pkg
-   * @param {string} subpath
+   * @param {string} specifier
+   * @param {PackageInfo} pkg
    * @param {string} entryFile
    */
-  function addSubpathShim(pkg, subpath, entryFile) {
-    const relativeEntry = path.relative(pkg.dir, entryFile).split(path.sep).join('/');
-    const shimRelativePath = subpath ? `${subpath}.d.ts` : 'index.d.ts';
-    if (relativeEntry === shimRelativePath || relativeEntry === `${subpath}/index.d.ts`) {
-      return;
+  function addImportAlias(specifier, pkg, entryFile) {
+    const { name, subpath } = parseSpecifier(specifier);
+    const entryRoot = `/playground-typings/${name}`;
+    const aliasPath = `${entryRoot}/${subpath ? `subpaths/${subpath}` : 'root'}.d.ts`;
+    const targetPath = toVirtualPath(pkg, entryFile).replace(/^file:\/\//, '');
+    let importPath = path.posix.relative(path.posix.dirname(aliasPath), targetPath);
+    if (!importPath.startsWith('.')) {
+      importPath = `./${importPath}`;
     }
+    files[`file://${aliasPath}`] = createDeclarationReexport(importPath, files[toVirtualPath(pkg, entryFile)]);
 
-    const virtualPath = `${VIRTUAL_ROOT}/${pkg.name}/${shimRelativePath}`;
-    if (files[virtualPath]) {
-      return;
-    }
-
-    const importPath = relativeEntry.replace(/\.d\.[cm]?ts$/, '');
-    const fromDir = path.posix.dirname(shimRelativePath);
-    let relImport = path.posix.relative(fromDir, importPath);
-    if (!relImport.startsWith('.')) {
-      relImport = `./${relImport}`;
-    }
-
-    const target = JSON.stringify(relImport);
-    // `export *` never re-exports a default export, forward it explicitly.
-    switch (getDefaultExportKind(files[toVirtualPath(pkg, entryFile)] ?? fs.readFileSync(entryFile, 'utf8'))) {
-      case 'equals':
-        files[virtualPath] = `import entry = require(${target});\nexport = entry;\n`;
-        break;
-      case 'default':
-        files[virtualPath] = `export * from ${target};\nexport { default } from ${target};\n`;
-        break;
-      default:
-        files[virtualPath] = `export * from ${target};\n`;
-    }
+    const relativeRoot = path.posix.relative(`/node_modules/${name}`, entryRoot);
+    const types = `${relativeRoot}/root.d.ts`;
+    files[`${VIRTUAL_ROOT}/${name}/package.json`] = JSON.stringify({
+      name,
+      types,
+      typesVersions: {
+        '*': {
+          [types]: [types],
+          '*': [`${relativeRoot}/subpaths/*`],
+        },
+      },
+    });
   }
 
   /**
    * @param {string} specifier
    * @param {string} fromDir
    */
-  function addModule(specifier, fromDir) {
+  async function addModule(specifier, fromDir) {
     if (!PACKAGE_SPECIFIER_REGEX.test(specifier)) {
       // regex false positive (e.g. `from '…'` inside a doc comment)
       return;
     }
 
     const { name, subpath } = parseSpecifier(specifier);
-    const pkg = getPackage(name, fromDir, subpath);
+    const pkg = await getPackage(specifier, fromDir);
     if (!pkg) {
       missing.add(specifier);
       return;
@@ -525,11 +776,16 @@ function collectTypings(options) {
 
     addPackageJson(pkg, path.join(pkg.dir, 'package.json'));
 
-    const entryFile = resolveEntryFile(pkg, subpath);
+    const { entryFile } = pkg;
     if (entryFile) {
-      addFile(pkg, entryFile);
-      if (subpath || (!pkg.packageJson.types && !pkg.packageJson.typings)) {
-        addSubpathShim(pkg, subpath, entryFile);
+      await addFile(pkg, entryFile);
+      addImportAlias(`${pkg.name}${pkg.subpath ? `/${pkg.subpath}` : ''}`, pkg, entryFile);
+      if (
+        (name !== pkg.name && getTypesPackageName(name) !== pkg.name) ||
+        subpath !== pkg.subpath ||
+        (name === pkg.name && entryFile !== resolveEntryFile(pkg, subpath))
+      ) {
+        addImportAlias(specifier, pkg, entryFile);
       }
     } else {
       missing.add(specifier);
@@ -540,7 +796,7 @@ function collectTypings(options) {
    * @param {{ dir: string, name: string, packageJson: Record<string, any> }} pkg
    * @param {string} realFile
    */
-  function addFile(pkg, realFile) {
+  async function addFile(pkg, realFile) {
     const virtualPath = toVirtualPath(pkg, realFile);
     if (files[virtualPath] !== undefined) {
       return;
@@ -553,21 +809,23 @@ function collectTypings(options) {
     const dir = path.dirname(realFile);
     for (const specifier of getSpecifiers(content)) {
       if (specifier.kind === 'types') {
-        addModule(specifier.value, dir);
+        await addModule(specifier.value, dir);
       } else if (specifier.kind === 'path' || specifier.value.startsWith('.')) {
         const target = resolveTypesFile(dir, specifier.value);
 
         if (target) {
-          addFile(pkg, target);
+          await addFile(pkg, target);
         }
         // unresolved relative specifiers are almost always regex false positives inside doc comments
       } else {
-        addModule(specifier.value, dir);
+        await addModule(specifier.value, dir);
       }
     }
   }
 
-  entries.forEach(entry => addModule(entry, packageRoot));
+  for (const entry of entries) {
+    await addModule(entry, packageRoot);
+  }
 
   return { files, sources: Array.from(sources), missing: Array.from(missing) };
 }
