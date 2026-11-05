@@ -109,6 +109,33 @@ describe.skip('LineChart snapShot testing', () => {
   });
 });
 
+describe('LineChart - prototype pollution hardening', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it.each(['__proto__', 'constructor', 'prototype'])(
+    'renders without polluting Object.prototype when a legend is "%s"',
+    legend => {
+      const data = {
+        chartTitle: 'LineChart',
+        lineChartData: [
+          {
+            legend,
+            data: [
+              { x: 1, y: 3 },
+              { x: 2, y: 4 },
+            ],
+            color: 'red',
+          },
+        ] as ILineChartPoints[],
+      };
+
+      expect(() => render(<LineChart data={data} />)).not.toThrow();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'push')).toBe(false);
+    },
+  );
+});
+
 describe('LineChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

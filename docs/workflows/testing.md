@@ -11,6 +11,20 @@
 | Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
 
+## V9 Icon Regression Coverage
+
+The v9 VRT project shares SVG/font icon examples between StoryWright screenshot
+capture and Playwright browser assertions:
+
+```bash
+yarn nx run vr-tests-react-components:test-vr
+yarn nx run vr-tests-react-components:e2e
+```
+
+See the [project README](../../apps/vr-tests-react-components/README.md) for build
+modes and coverage, and the [Storybook tooling README](../../scripts/storybook/README.md#configurereacticons)
+for shared icon configuration.
+
 ## Writing Unit Tests
 
 Tests live adjacent to the component they test:
@@ -40,6 +54,10 @@ yarn nx run <project>:test -u
 ```
 
 Review the snapshot diff to verify the change is correct before committing.
+
+### Motion Preferences in Browser Tests
+
+When asserting animation lifecycles, explicitly emulate `prefers-reduced-motion: no-preference` rather than relying on the runner's operating-system setting. Emulate `reduce` for reduced-motion cases and clear media emulation in `afterEach` so settings do not leak between tests.
 
 ## Conformance Tests
 

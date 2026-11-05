@@ -1,17 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
+import {
+  useControllableState,
+  useEventCallback,
+  useId,
+  useIsomorphicLayoutEffect,
+  useTimeout,
+} from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
-
-const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
-  !!el && typeof (el as HTMLDialogElement).showModal === 'function';
+import { useDialogLayerOpenState } from '../../hooks/top-layer';
+import { isDialogElement, isInTopLayer, isModal } from '../../hooks/top-layer/utils';
+import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
 /**
  * Returns the state for a Popover component.
@@ -22,7 +22,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnContext = false,
     mouseLeaveDelay = 500,
     withArrow = false,
-    trapFocus = false,
+    inertTrapFocus = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -78,61 +78,81 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEvent;
-    const nextOpen = toggle.newState === 'open';
+  // The native event that ends the current opening, until it fires: `close()` and `hidePopover()` queue it.
+  const pendingCloseEvent = React.useRef<{ element: HTMLElement; type: 'close' | 'toggle' } | null>(null);
 
-    if (nextOpen === open) {
-      return;
+  const onNativeOpenChange = useEventCallback((event: Event | React.SyntheticEvent, shouldOpen: boolean) => {
+    if (!shouldOpen) {
+      // The browser closed it, so its close event has already fired.
+      pendingCloseEvent.current = null;
     }
-
-    setOpenState(nextOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
+    setOpenState(shouldOpen);
+    props.onOpenChange?.(event, { event, type: event.type, open: shouldOpen });
   });
 
-  const onSurfaceClose = useEventCallback((event: Event) => {
-    setOpenState(false);
-    props.onOpenChange?.(event, { event, type: event.type, open: false });
+  // Turning `inertTrapFocus` off while open applies on the next open, so the surface keeps its modal semantics until then.
+  const [modalWhileOpen, setModalWhileOpen] = React.useState(open && inertTrapFocus);
+  if (open && inertTrapFocus && !modalWhileOpen) {
+    setModalWhileOpen(true);
+  } else if (!open && modalWhileOpen) {
+    setModalWhileOpen(false);
+  }
+  const modal = inertTrapFocus || modalWhileOpen;
+
+  useDialogLayerOpenState(contentRef, {
+    open,
+    mode: modal ? 'modal' : 'auto',
+    onOpenChange: (nextOpen, { event }) => onNativeOpenChange(event, nextOpen),
+    // Back to the trigger when focus was inside as the surface started closing.
+    returnFocus: { target: triggerRef },
   });
 
-  React.useEffect(() => {
+  // The surface stays mounted until it has left the top layer.
+  const [surfaceShown, setSurfaceShown] = React.useState(open);
+  if (open && !surfaceShown) {
+    setSurfaceShown(true);
+  }
+  const shouldRenderSurface = open || surfaceShown;
+  const openRef = React.useRef(open);
+
+  useIsomorphicLayoutEffect(() => {
+    openRef.current = open;
     const surface = contentRef.current;
-
     if (!surface) {
       return;
     }
-
-    if (!open) {
-      if (isDialogElement(surface) && surface.open) {
-        surface.close();
-      }
+    if (open) {
+      pendingCloseEvent.current = isInTopLayer(surface)
+        ? { element: surface, type: isDialogElement(surface) && surface.open && isModal(surface) ? 'close' : 'toggle' }
+        : null;
+      return;
+    }
+    if (!surfaceShown || isInTopLayer(surface)) {
       return;
     }
 
-    if (trapFocus) {
-      if (!isDialogElement(surface)) {
-        return;
+    const unmount = () => {
+      if (!openRef.current) {
+        setSurfaceShown(false);
       }
-
-      if (!surface.open) {
-        surface.showModal();
-      }
-
-      surface.addEventListener('close', onSurfaceClose);
-      return () => surface.removeEventListener('close', onSurfaceClose);
-    }
-
-    if (typeof surface.showPopover !== 'function') {
+    };
+    const type = pendingCloseEvent.current?.element === surface ? pendingCloseEvent.current.type : null;
+    // Never shown, replaced, or the browser closed it: nothing left to wait for.
+    if (!type) {
+      queueMicrotask(unmount);
       return;
     }
-
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
-    surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
+    // Stay mounted for the queued event, so the surface's own `onClose` / `onToggle` still run.
+    const onClose = (event: Event) => {
+      // A queued `toggle` from the opening can still arrive after the close.
+      if (event.target === surface && (event as Event & { newState?: string }).newState !== 'open') {
+        pendingCloseEvent.current = null;
+        unmount();
+      }
+    };
+    surface.addEventListener(type, onClose);
+    return () => surface.removeEventListener(type, onClose);
+  });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -170,16 +190,18 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    // The effective value: stays true while a modal opening lasts.
+    inertTrapFocus: modal,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
     positioning,
     surfaceId,
+    shouldRenderSurface,
   };
 };
 
-export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+export const usePopoverContextValues = (state: PopoverState): PopoverContextValues => {
   const {
     open,
     setOpen,
@@ -190,7 +212,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    inertTrapFocus,
     positioning,
     surfaceId,
   } = state;
@@ -206,7 +228,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnHover,
       openOnContext,
       withArrow,
-      trapFocus,
+      inertTrapFocus,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

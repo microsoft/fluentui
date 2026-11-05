@@ -4,11 +4,14 @@
 
 ```ts
 
+import { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { DropdownBaseHookProps } from '@fluentui/react-combobox';
 import type { DropdownBaseHookState } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { ListboxContextValue } from '@fluentui/react-combobox';
 import { ListboxContextValues } from '@fluentui/react-combobox';
 import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
@@ -25,15 +28,23 @@ import type * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
 import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
+import { useActiveDescendantContext } from '@fluentui/react-aria';
+import { useListboxContext_unstable as useListboxContext } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
+
+export { ActiveDescendantContextValue }
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
+
+export { DropdownContextValues }
 
 // @public (undocumented)
 export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
     positioning?: PositioningShorthand;
 };
+
+export { DropdownSlots }
 
 // @public (undocumented)
 export type DropdownState = DropdownBaseHookState & {
@@ -48,6 +59,8 @@ export type DropdownState = DropdownBaseHookState & {
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
+
+export { ListboxContextValue }
 
 export { ListboxContextValues }
 
@@ -92,6 +105,8 @@ export { renderOption }
 
 export { renderOptionGroup }
 
+export { useActiveDescendantContext }
+
 // @public
 export const useDropdown: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
 
@@ -100,6 +115,8 @@ export const useDropdownContextValues: (state: DropdownState) => DropdownContext
 
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
+
+export { useListboxContext }
 
 export { useListboxContextValues }
 

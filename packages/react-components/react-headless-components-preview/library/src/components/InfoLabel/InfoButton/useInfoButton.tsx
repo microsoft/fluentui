@@ -9,6 +9,7 @@ import {
   useMergedRefs,
   elementContains,
   useEventCallback,
+  useId,
 } from '@fluentui/react-utilities';
 
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
@@ -26,11 +27,19 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   const { popover, info, ...rest } = props;
 
   const rootRef = useMergedRefs(ref);
+  const buttonId = useId('info-button-', rest.id);
+  const popoverSlot = slot.always(popover, {
+    defaultProps: {
+      positioning: 'above-start',
+      withArrow: true,
+    },
+    elementType: Popover as React.ComponentType<Partial<Omit<PopoverProps, 'openOnHover'>>>,
+  });
 
   const state: InfoButtonState = {
     components: {
       root: 'button',
-      popover: Popover as React.FC<Partial<PopoverProps>>,
+      popover: Popover as React.ComponentType<Partial<PopoverProps>>,
       info: PopoverSurface,
     },
 
@@ -44,21 +53,23 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
       }),
       { elementType: 'button' },
     ),
-    popover: slot.always(popover, {
-      defaultProps: {
-        positioning: 'above-start',
-        withArrow: true,
-      },
-      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
-    }),
+    popover: popoverSlot,
     info: slot.always(info, {
       defaultProps: {
-        role: 'note',
+        as: popoverSlot.inertTrapFocus ? 'dialog' : 'div',
+        role: popoverSlot.inertTrapFocus ? 'dialog' : 'note',
         tabIndex: -1,
       },
       elementType: PopoverSurface,
     }),
   };
+
+  if (state.popover.inertTrapFocus) {
+    state.root.id ??= buttonId;
+    if (state.info['aria-label'] === undefined && state.info['aria-labelledby'] === undefined) {
+      state.info['aria-labelledby'] = state.root.id;
+    }
+  }
 
   const [popoverOpen, setPopoverOpen] = useControllableState({
     state: state.popover.open,
@@ -67,6 +78,8 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   });
 
   state.popover.open = popoverOpen;
+  // InfoButton consumes defaultOpen; the nested Popover receives only the resolved open state.
+  state.popover.defaultOpen = undefined;
   state.root['data-open'] = toDataAttributeValue(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
 
@@ -83,7 +96,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   }, [popoverOpen, infoRef]);
 
   // Hide the popover when focus moves out of the button and popover
-  const onBlurButtonOrInfo = (e: React.FocusEvent) => {
+  const onBlurButtonOrInfo: React.FocusEventHandler<HTMLElement> = e => {
     const nextFocused = e.relatedTarget;
 
     if (!nextFocused || (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused))) {
@@ -93,7 +106,8 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
 
   // eslint-disable-next-line react-hooks/refs
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  const onInfoBlurCapture = state.info.onBlurCapture as React.FocusEventHandler<HTMLElement> | undefined;
   // eslint-disable-next-line react-hooks/refs
-  state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
+  state.info.onBlurCapture = useEventCallback(mergeCallbacks(onInfoBlurCapture, onBlurButtonOrInfo));
   return state;
 };

@@ -139,6 +139,26 @@ describe('Scatter chart rendering', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+
+  testWithoutWait(
+    'Should render when a legend is "__proto__"',
+    ScatterChart,
+    {
+      data: {
+        chartTitle: 'Prototype pollution regression',
+        scatterChartData: [
+          {
+            legend: '__proto__',
+            data: [{ x: 'Category', y: 10, markerSize: 5 }],
+            color: '#0078d4',
+          },
+        ],
+      },
+    },
+    () => {
+      expect(screen.getByText('__proto__')).toBeInTheDocument();
+    },
+  );
 });
 
 describe('ScatterChart- Subcomponent Legends', () => {

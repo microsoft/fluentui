@@ -5,14 +5,21 @@
 ```ts
 
 import type { ButtonBaseState } from '@fluentui/react-button';
+import { ButtonContextProvider } from '@fluentui/react-button';
+import { ButtonContextValue } from '@fluentui/react-button';
 import { ButtonBaseProps as ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderButton_unstable as renderButton } from '@fluentui/react-button';
+import { useButtonContext } from '@fluentui/react-button';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
+
+export { ButtonContextProvider }
+
+export { ButtonContextValue }
 
 export { ButtonProps }
 
@@ -32,6 +39,8 @@ export { renderButton }
 
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
+
+export { useButtonContext }
 
 // (No @packageDocumentation comment for this package)
 

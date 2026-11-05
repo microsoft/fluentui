@@ -2,6 +2,20 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Thu, 08 Oct 2026 05:35:58 GMT",
+      "version": "9.0.0-beta.96",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2026 14:23:07 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.96",
       "version": "9.0.0-beta.96",

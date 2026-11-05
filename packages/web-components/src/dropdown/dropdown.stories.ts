@@ -528,6 +528,51 @@ export const InsideDialogWithScrollingContent: Story = {
   args: { ...Default.args },
 };
 
+export const Tooltip: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-dropdown id="dropdown-tooltip-target" placeholder="Select a fruit"> </fluent-dropdown>
+    <fluent-tooltip anchor="dropdown-tooltip-target" positioning="below-start">
+      Tooltip anchored to the dropdown
+    </fluent-tooltip>
+  `),
+  decorators: [
+    Story => {
+      const story = Story() as DocumentFragment;
+      const dropdown = story.querySelector<FluentDropdown>('fluent-dropdown');
+      const tooltip = story.querySelector('fluent-tooltip');
+
+      // Append the listbox only after the sibling tooltip connects, matching the order in the original report.
+      const appendListboxWhenTooltipConnects = () => {
+        if (!dropdown || !tooltip) {
+          return;
+        }
+
+        if (!tooltip.isConnected) {
+          requestAnimationFrame(appendListboxWhenTooltipConnects);
+          return;
+        }
+
+        const listbox = dropdown.ownerDocument.createElement('fluent-listbox');
+        [
+          { value: 'apple', text: 'Apple' },
+          { value: 'banana', text: 'Banana' },
+          { value: 'orange', text: 'Orange' },
+        ].forEach(({ value, text }) => {
+          const option = dropdown.ownerDocument.createElement('fluent-option');
+          option.setAttribute('value', value);
+          option.textContent = text;
+          listbox.append(option);
+        });
+        dropdown.append(listbox);
+      };
+
+      requestAnimationFrame(appendListboxWhenTooltipConnects);
+
+      return story;
+    },
+  ],
+};
+
 export const InsideNonModalDialog: Story = {
   render: renderComponent(html<StoryArgs<FluentDropdown>>`
     <div style="min-block-size: 20rem;">

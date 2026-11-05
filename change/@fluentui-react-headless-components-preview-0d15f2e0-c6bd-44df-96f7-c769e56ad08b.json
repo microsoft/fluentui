@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use the valid nomemory focusgroup token for TabList",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

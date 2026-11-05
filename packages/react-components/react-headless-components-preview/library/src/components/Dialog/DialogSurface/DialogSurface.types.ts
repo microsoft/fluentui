@@ -38,10 +38,9 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
   /**
    * Whether the `<dialog>` element should be present in the DOM this render.
    *
-   * Equals `open || !unmountOnClose`, except when `open` flips from true to false with
-   * `unmountOnClose: true` — then it stays true for one extra render so the layout
-   * effect can call `dialog.close()` on the still-connected element, which lets the
-   * browser run its native close-the-dialog focus restoration.
+   * Stays true during native close and any running, finite exit animations on the
+   * surface or its pseudo-elements. Native close restores focus immediately;
+   * consumer CSS controls whether the surface remains visible during its exit.
    */
   shouldRender: boolean;
 };

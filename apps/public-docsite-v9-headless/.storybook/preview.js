@@ -10,8 +10,17 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Overview',
-        ['Introduction', 'Getting Started', 'Accessibility', 'Browser support', 'Polyfills & fallbacks'],
+        [
+          'Introduction',
+          'Getting Started',
+          'Architecture',
+          'Accessibility',
+          ['Overview', 'Keyboard navigation', 'Overlays', 'Focus indicator', 'Disabled & native controls'],
+          'Browser support',
+          'Polyfills & fallbacks',
+        ],
         'Guides',
+        ['Styling state'],
         'Components',
         'Concepts',
       ],

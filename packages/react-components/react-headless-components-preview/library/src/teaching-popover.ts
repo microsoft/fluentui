@@ -65,6 +65,7 @@ export type {
   TeachingPopoverTitleSlots,
   TeachingPopoverTitleState,
   TeachingPopoverFooterProps,
+  TeachingPopoverFooterSlots,
   TeachingPopoverFooterState,
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,

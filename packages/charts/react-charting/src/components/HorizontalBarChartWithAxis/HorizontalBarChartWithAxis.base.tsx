@@ -757,7 +757,7 @@ export class HorizontalBarChartWithAxisBase
   }
 
   private _getUniqueYValues() {
-    const mapY: Record<string, number | string> = {};
+    const mapY: Record<string, number | string> = Object.create(null);
     this.props.data?.forEach((point: IHorizontalBarChartWithAxisDataPoint) => {
       mapY[point.y] = point.y;
     });
@@ -997,7 +997,7 @@ export class HorizontalBarChartWithAxisBase
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSXElement => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
 
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
       let color: string = useSingleColor
@@ -1121,7 +1121,7 @@ export class HorizontalBarChartWithAxisBase
   };
 
   private _mapCategoryToValues = () => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this._points.forEach(point => {
       if (!categoryToValues[point.y]) {
         categoryToValues[point.y] = [];

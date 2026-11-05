@@ -17,6 +17,7 @@
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
       "@fluentui/chart-utilities": ["packages/charts/chart-utilities/src/index.ts"],
+      "@fluentui/cli": ["tools/cli/src/index.ts"],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
@@ -46,6 +47,10 @@
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-calendar-preview": ["packages/react-components/react-calendar-preview/library/src/index.ts"],
+      "@fluentui/react-calendar-preview-stories": [
+        "packages/react-components/react-calendar-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
@@ -67,6 +72,10 @@
       "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/library/src/index.ts"],
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
+      ],
+      "@fluentui/react-datepicker-preview": ["packages/react-components/react-datepicker-preview/library/src/index.ts"],
+      "@fluentui/react-datepicker-preview-stories": [
+        "packages/react-components/react-datepicker-preview/stories/src/index.ts"
       ],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/library/src/index.ts"],
       "@fluentui/react-dialog-stories": ["packages/react-components/react-dialog/stories/src/index.ts"],
@@ -147,6 +156,12 @@
       "@fluentui/react-provider-stories": ["packages/react-components/react-provider/stories/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/library/src/index.ts"],
       "@fluentui/react-radio-stories": ["packages/react-components/react-radio/stories/src/index.ts"],
+      "@fluentui/react-range-slider-preview": [
+        "packages/react-components/react-range-slider-preview/library/src/index.ts"
+      ],
+      "@fluentui/react-range-slider-preview-stories": [
+        "packages/react-components/react-range-slider-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-rating": ["packages/react-components/react-rating/library/src/index.ts"],
       "@fluentui/react-rating-stories": ["packages/react-components/react-rating/stories/src/index.ts"],
       "@fluentui/react-search": ["packages/react-components/react-search/library/src/index.ts"],
@@ -168,6 +183,9 @@
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
+      ],
+      "@fluentui/react-storybook-addon-playground": [
+        "packages/react-components/react-storybook-addon-playground/src/index.ts"
       ],
       "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/library/src/index.ts"],
       "@fluentui/react-swatch-picker-stories": ["packages/react-components/react-swatch-picker/stories/src/index.ts"],
@@ -196,6 +214,10 @@
       "@fluentui/react-timepicker-compat": ["packages/react-components/react-timepicker-compat/library/src/index.ts"],
       "@fluentui/react-timepicker-compat-stories": [
         "packages/react-components/react-timepicker-compat/stories/src/index.ts"
+      ],
+      "@fluentui/react-timepicker-preview": ["packages/react-components/react-timepicker-preview/library/src/index.ts"],
+      "@fluentui/react-timepicker-preview-stories": [
+        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
       ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/library/src/index.ts"],
       "@fluentui/react-toast-stories": ["packages/react-components/react-toast/stories/src/index.ts"],

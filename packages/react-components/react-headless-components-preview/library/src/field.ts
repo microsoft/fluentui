@@ -6,4 +6,10 @@ export {
   useFieldContext,
   useFieldControlProps,
 } from './components/Field/index';
-export type { FieldSlots, FieldProps, FieldState } from './components/Field/index';
+export type {
+  FieldSlots,
+  FieldProps,
+  FieldState,
+  FieldContextValue,
+  FieldContextValues,
+} from './components/Field/index';

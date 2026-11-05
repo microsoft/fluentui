@@ -61,7 +61,7 @@ export const CommandBarLazyExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <CommandBar items={items} />
+      <CommandBar items={items} ariaLabel="CommandBar example with a lazy-loaded menu" />
     </div>
   );
 };

@@ -212,6 +212,16 @@ describe('createNumericXAxis', () => {
     utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.HorizontalBarChartWithAxis);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
+
+  it('should format value-axis ticks with a function tickFormat (e.g. a literal %)', () => {
+    const xAxisParams = createXAxisParams();
+    const result = utils.createNumericXAxis(
+      xAxisParams,
+      { tickFormat: (value: number | Date) => `${value as number}%` },
+      utils.ChartTypes.HorizontalBarChartWithAxis,
+    );
+    expect(result.tickLabels.every((label: string) => label.endsWith('%'))).toBe(true);
+  });
 });
 
 conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXAxis', () => {
@@ -273,6 +283,14 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
       tickFormat: '%a, %d %b %Y',
     });
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
+  });
+
+  it('should format date-axis ticks with a function tickFormat', () => {
+    const xAxisParams = createXAxisParams({ domainNRangeValues });
+    const result = utils.createDateXAxis(xAxisParams, {
+      tickFormat: (value: number | Date) => `Y${(value as Date).getFullYear()}`,
+    });
+    expect(result.tickLabels.every((label: string) => label.startsWith('Y'))).toBe(true);
   });
 });
 

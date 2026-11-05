@@ -2,6 +2,35 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Thu, 08 Oct 2026 05:35:58 GMT",
+      "version": "0.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "218952a7cd53e8e8128c2933ea092533dad514b6",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Sep 2026 15:07:56 GMT",
+      "version": "0.3.1",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: narrow eslint and typescript peer ranges to what @typescript-eslint/utils supports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2026 14:23:08 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.3.0",
       "version": "0.3.0",

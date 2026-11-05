@@ -19,7 +19,7 @@ It is intended for teams building custom design systems that significantly diver
 
 - Design props (`appearance`, `size`, `shape`, etc.)
 - Style logic (Griffel, design tokens)
-- Motion logic (animations, transitions)
+- Motion styles (animations, transitions). Surface lifecycles may wait for consumer-defined exit motion before unmounting.
 - Default slot implementations (icons, components)
 
 > **Important:** Base hooks provide ARIA attributes and semantic structure, but not visual accessibility (e.g., focus indicators, sufficient contrast). Consumers are responsible for implementing these in their custom styles.

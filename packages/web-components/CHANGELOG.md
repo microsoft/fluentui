@@ -1,8 +1,41 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Fri, 21 Aug 2026 04:08:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 04 Nov 2026 17:13:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.0)
+
+Wed, 04 Nov 2026 17:13:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.3..@fluentui/web-components_v3.2.0)
+
+### Minor changes
+
+- feat: removes imperative property assignment for attributes which are presentational only ([PR #36808](https://github.com/microsoft/fluentui/pull/36808) by 13071055+chrisdholt@users.noreply.github.com)
+
+### Patches
+
+- feat: use server-provided initial-display attribute value as the initial display value in SSR context and stabilize control layout ([PR #36851](https://github.com/microsoft/fluentui/pull/36851) by machi@microsoft.com)
+- fix: improve phone number initials handling ([PR #36711](https://github.com/microsoft/fluentui/pull/36711) by paulmardling@microsoft.com)
+- Add Node.js 26 to supported engines ([PR #37072](https://github.com/microsoft/fluentui/pull/37072) by 7559015+janechu@users.noreply.github.com)
+- fix(web-components): fix broken tooltip positioning API ([PR #36810](https://github.com/microsoft/fluentui/pull/36810) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: make sure change event fires before submit event during implicit form submission ([PR #36881](https://github.com/microsoft/fluentui/pull/36881) by machi@microsoft.com)
+- fix: keep dropdown anchor stable for tooltips ([PR #36810](https://github.com/microsoft/fluentui/pull/36810) by 13071055+chrisdholt@users.noreply.github.com)
+- fix(switch): keep the indicator visible in forced-colors mode ([PR #36742](https://github.com/microsoft/fluentui/pull/36742) by jiayin.3zh@gmail.com)
+- fix: connect dropdown labels to the inserted combobox control ([PR #36826](https://github.com/microsoft/fluentui/pull/36826) by machi@microsoft.com)
+- fix: height for empty vertical divider ([PR #36981](https://github.com/microsoft/fluentui/pull/36981) by machi@microsoft.com)
+- fix: MenuList icon columns in Firefox ([PR #36893](https://github.com/microsoft/fluentui/pull/36893) by lhi25wy@163.com)
+
+## [3.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.3)
+
+Tue, 22 Sep 2026 11:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.1.2..@fluentui/web-components_v3.1.3)
+
+### Patches
+
+- fix: correct submenu sizing in WebKit ([PR #36603](https://github.com/microsoft/fluentui/pull/36603) by machi@microsoft.com)
+- fix: focus menu items immediately after connecting a menu list ([PR #36678](https://github.com/microsoft/fluentui/pull/36678) by machi@microsoft.com)
+- fix: show TextArea scrollbar for overflowing content ([PR #36621](https://github.com/microsoft/fluentui/pull/36621) by 198982749+Copilot@users.noreply.github.com)
 
 ## [3.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.1.2)
 

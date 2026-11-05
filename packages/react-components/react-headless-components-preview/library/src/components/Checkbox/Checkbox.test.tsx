@@ -8,6 +8,7 @@ describe('Checkbox', () => {
     Component: Checkbox,
     displayName: 'Checkbox',
     primarySlot: 'input',
+    requiredProps: { label: 'Checkbox' },
   });
 
   it('renders a default state', () => {

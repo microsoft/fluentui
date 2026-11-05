@@ -2218,7 +2218,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: aqua; font-size: var(--fontSizeHero700);"
+                style="color: aqua; font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
               >
                 40%
               </div>
@@ -3414,7 +3414,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: aqua; font-size: var(--fontSizeHero700);"
+                style="color: aqua; font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
               >
                 40%
               </div>

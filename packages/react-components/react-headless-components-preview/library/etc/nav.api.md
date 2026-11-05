@@ -102,7 +102,8 @@ export type NavCategoryItemSlots = {
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
     selected: boolean;
     root: {
-        'data-open'?: string;
+        'data-disabled'?: string;
+        'data-expanded'?: string;
         'data-selected'?: string;
     };
 };
@@ -116,6 +117,9 @@ export { NavCategoryState }
 export { NavContextValue }
 
 export { NavContextValues }
+
+// @public
+export type NavContextValuesState = Pick<NavState, 'selectedValue' | 'selectedCategoryValue' | 'onRegister' | 'onUnregister' | 'onSelect' | 'getRegisteredNavItems' | 'onRequestNavCategoryItemToggle' | 'openCategories' | 'multiple' | 'onNavItemSelect'>;
 
 // @public
 export const NavDivider: ForwardRefComponent<NavDividerProps>;
@@ -175,8 +179,17 @@ export type NavDrawerHeaderState = DrawerHeaderState & {
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
 
+// @public (undocumented)
+export type NavDrawerSlots = {
+    root: Slot<typeof Drawer>;
+};
+
 // @public
-export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'>;
+export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'> & {
+    root: {
+        'data-type'?: 'inline' | 'overlay';
+    };
+};
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
@@ -190,6 +203,7 @@ export { NavItemSlots }
 // @public (undocumented)
 export type NavItemState = NavItemBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-selected'?: string;
     };
 };
@@ -244,6 +258,7 @@ export { NavSubItemSlots }
 // @public (undocumented)
 export type NavSubItemState = NavSubItemBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-selected'?: string;
     };
 };
@@ -303,13 +318,13 @@ export function useNavCategoryItemContextValues(state: NavCategoryItemState): Na
 export { useNavContext }
 
 // @public (undocumented)
-export function useNavContextValues(state: NavState): NavContextValues;
+export function useNavContextValues(state: NavContextValuesState): NavContextValues;
 
 // @public
 export const useNavDivider: (props: NavDividerProps, ref: React_2.Ref<HTMLDivElement>) => NavDividerState;
 
 // @public
-export const useNavDrawer: (props: NavDrawerProps, ref: React_2.Ref<HTMLElement>) => NavDrawerState;
+export const useNavDrawer: (props: NavDrawerProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => NavDrawerState;
 
 // @public
 export const useNavDrawerBody: (props: NavDrawerBodyProps, ref: React_2.Ref<HTMLElement>) => NavDrawerBodyState;

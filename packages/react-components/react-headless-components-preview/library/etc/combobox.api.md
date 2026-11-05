@@ -4,12 +4,14 @@
 
 ```ts
 
+import { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { BaseComboboxProps } from '@fluentui/react-combobox';
 import type { BaseComboboxState } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { ListboxContextValue } from '@fluentui/react-combobox';
 import { ListboxContextValues } from '@fluentui/react-combobox';
 import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
@@ -22,14 +24,20 @@ import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
 import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
+import { useActiveDescendantContext } from '@fluentui/react-aria';
+import { useListboxContext_unstable as useListboxContext } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
+
+export { ActiveDescendantContextValue }
 
 // @public (undocumented)
 export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+export { ComboboxContextValues }
 
 // @public (undocumented)
 export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
@@ -51,6 +59,8 @@ export type ComboboxState = BaseComboboxState & {
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
+
+export { ListboxContextValue }
 
 export { ListboxContextValues }
 
@@ -95,6 +105,8 @@ export { renderOption }
 
 export { renderOptionGroup }
 
+export { useActiveDescendantContext }
+
 // @public (undocumented)
 export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
@@ -104,8 +116,19 @@ export const useComboboxContextValues: (state: ComboboxState) => ComboboxContext
 // @public
 export function useComboboxFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseComboboxFilterConfig): JSXElement[];
 
+// @public (undocumented)
+export type UseComboboxFilterConfig = {
+    query: string;
+    options: string[];
+    filter?: (option: string, index: number) => boolean;
+    noOptionsElement: JSXElement;
+    renderOption: (option: string) => JSXElement;
+};
+
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
+
+export { useListboxContext }
 
 export { useListboxContextValues }
 

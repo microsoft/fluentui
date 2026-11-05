@@ -50,9 +50,6 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 //
 // @public
 export class AccordionItem extends BaseAccordionItem {
-    block: boolean;
-    markerPosition?: AccordionItemMarkerPosition;
-    size?: AccordionItemSize;
 }
 
 // @internal
@@ -115,14 +112,6 @@ export const AccordionTemplate: ElementViewTemplate<Accordion>;
 //
 // @public
 export class AnchorButton extends BaseAnchor {
-    appearance?: AnchorButtonAppearance | undefined;
-    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
-    iconOnly: boolean;
-    iconOnlyChanged(prev: boolean, next: boolean): void;
-    shape?: AnchorButtonShape | undefined;
-    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
-    size?: AnchorButtonSize;
-    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -179,8 +168,6 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends BaseAvatar {
-    active?: AvatarActive | undefined;
-    appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
@@ -194,7 +181,6 @@ export class Avatar extends BaseAvatar {
     generateInitials(): string | void;
     // @internal
     handleChange(source: any, propertyName: string): void;
-    shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
 
@@ -354,10 +340,6 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 //
 // @public
 export class Badge extends FASTElement {
-    appearance: BadgeAppearance;
-    color: BadgeColor;
-    shape?: BadgeShape;
-    size?: BadgeSize;
 }
 
 // @internal
@@ -635,6 +617,8 @@ export class BaseDropdown extends FASTElement {
     disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
+    static readonly elementIdentity = "dropdown";
+    // @internal
     elementInternals: ElementInternals;
     get enabledOptions(): DropdownOption[];
     // @internal
@@ -694,7 +678,6 @@ export class BaseDropdown extends FASTElement {
     get validity(): ValidityState;
     get value(): string | null;
     set value(next: string | null);
-    valueAttribute: string;
     get willValidate(): boolean;
 }
 
@@ -780,8 +763,6 @@ export class BaseProgressBar extends FASTElement {
     protected minChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
     protected setIndicatorWidth(): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
@@ -952,7 +933,6 @@ export class BaseTextArea extends FASTElement {
     protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
     // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
@@ -986,9 +966,6 @@ export class BaseTextArea extends FASTElement {
     required: boolean;
     // (undocumented)
     protected requiredChanged(): void;
-    resize: TextAreaResize;
-    // (undocumented)
-    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
     // @internal
     rootEl: HTMLDivElement;
     select(): void;
@@ -1142,10 +1119,6 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 //
 // @public
 export class Button extends BaseButton {
-    appearance?: ButtonAppearance;
-    iconOnly: boolean;
-    shape?: ButtonShape;
-    size?: ButtonSize;
 }
 
 // @internal (undocumented)
@@ -1224,8 +1197,6 @@ export class Checkbox extends BaseCheckbox {
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
-    shape?: CheckboxShape;
-    size?: CheckboxSize;
     toggleChecked(force?: boolean): void;
 }
 
@@ -2583,12 +2554,6 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 
 // @public
 export class Divider extends BaseDivider {
-    // (undocumented)
-    alignContent?: DividerAlignContent;
-    // (undocumented)
-    appearance?: DividerAppearance;
-    // (undocumented)
-    inset?: boolean;
 }
 
 // @public
@@ -2663,12 +2628,9 @@ export class Drawer extends FASTElement {
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
-    position: DrawerPosition;
     // (undocumented)
     role: string | null;
     show(): void;
-    // (undocumented)
-    size: DrawerSize;
     type: DrawerType;
 }
 
@@ -2740,16 +2702,14 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
-    appearance: DropdownAppearance;
-    size?: DropdownSize;
 }
 
 // @public
 export const DropdownAppearance: {
-    filledDarker: string;
-    filledLighter: string;
-    outline: string;
-    transparent: string;
+    readonly filledDarker: "filled-darker";
+    readonly filledLighter: "filled-lighter";
+    readonly outline: "outline";
+    readonly transparent: "transparent";
 };
 
 // @public (undocumented)
@@ -2769,9 +2729,6 @@ export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
 // @public
 export class DropdownOption extends FASTElement implements Start {
     constructor();
-    active: boolean;
-    // @internal
-    protected activeChanged(prev: boolean, next: boolean): void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -2900,7 +2857,6 @@ export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = a
 
 // @public
 export class Field extends BaseField {
-    labelPosition: FieldLabelPosition;
 }
 
 // @public
@@ -2987,11 +2943,6 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
 class Image_2 extends FASTElement {
-    block?: boolean;
-    bordered?: boolean;
-    fit?: ImageFit;
-    shadow?: boolean;
-    shape?: ImageShape;
 }
 export { Image_2 as Image }
 
@@ -3047,10 +2998,7 @@ export function isTreeItem(element?: Node | null, tagName?: string): element is 
 
 // @public
 export class Label extends FASTElement {
-    disabled: boolean;
     required: boolean;
-    size?: LabelSize;
-    weight?: LabelWeight;
 }
 
 // @public
@@ -3119,8 +3067,6 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
 export class Link extends BaseAnchor {
-    appearance?: LinkAppearance | undefined;
-    inline: boolean;
 }
 
 // @public
@@ -3235,7 +3181,6 @@ export class Menu extends FASTElement {
     slottedTriggers: HTMLElement[];
     // @internal
     slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
-    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     // @internal
@@ -3396,9 +3341,6 @@ export class MessageBar extends FASTElement {
     dismissMessageBar: () => void;
     // @internal
     elementInternals: ElementInternals;
-    intent?: MessageBarIntent;
-    layout?: MessageBarLayout;
-    shape?: MessageBarShape;
 }
 
 // @public
@@ -3458,8 +3400,6 @@ export type Orientation = (typeof Orientation)[keyof typeof Orientation];
 
 // @public
 export class ProgressBar extends BaseProgressBar {
-    shape?: ProgressBarShape;
-    thickness?: ProgressBarThickness;
 }
 
 // @public
@@ -3563,9 +3503,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
 export class RatingDisplay extends BaseRatingDisplay {
-    color?: RatingDisplayColor;
-    compact: boolean;
-    size?: RatingDisplaySize;
 }
 
 // @public
@@ -3702,7 +3639,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    size?: SliderSize;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3798,6 +3734,10 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     readOnly: boolean;
     checked?: boolean;
     value?: string;
+    control?: HTMLButtonElement | HTMLInputElement;
+    constructor: {
+        elementIdentity?: string;
+    };
 };
 
 // @public
@@ -3868,8 +3808,6 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
 export class Spinner extends BaseSpinner {
-    appearance?: SpinnerAppearance;
-    size?: SpinnerSize;
 }
 
 // @public
@@ -4007,10 +3945,8 @@ export const TabDefinition: PartialFASTElementDefinition;
 
 // @public
 export class Tablist extends BaseTablist {
-    appearance?: TablistAppearance;
     // (undocumented)
     disconnectedCallback(): void;
-    size?: TablistSize;
     // (undocumented)
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
@@ -4067,18 +4003,8 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 
 // @public
 class Text_2 extends FASTElement {
-    align?: TextAlign;
-    block: boolean;
     // @internal
     elementInternals: ElementInternals;
-    font?: TextFont;
-    italic: boolean;
-    nowrap: boolean;
-    size?: TextSize;
-    strikethrough: boolean;
-    truncate: boolean;
-    underline: boolean;
-    weight?: TextWeight;
 }
 export { Text_2 as Text }
 
@@ -4097,8 +4023,6 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 //
 // @public
 export class TextArea extends BaseTextArea {
-    appearance: TextAreaAppearance;
-    block: boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
@@ -4191,8 +4115,6 @@ export type TextFont = ValuesOf<typeof TextFont>;
 //
 // @public
 export class TextInput extends BaseTextInput {
-    appearance?: TextInputAppearance;
-    controlSize?: TextInputControlSize;
 }
 
 // @internal (undocumented)
@@ -4376,18 +4298,18 @@ export const TooltipDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TooltipPositioningOption: {
-    readonly 'above-start': "block-start span-inline-end";
-    readonly above: "block-start";
-    readonly 'above-end': "block-start span-inline-start";
-    readonly 'below-start': "block-end span-inline-end";
-    readonly below: "block-end";
-    readonly 'below-end': "block-end span-inline-start";
-    readonly 'before-top': "inline-start span-block-end";
-    readonly before: "inline-start";
-    readonly 'before-bottom': "inline-start span-block-start";
-    readonly 'after-top': "inline-end span-block-end";
-    readonly after: "inline-end";
-    readonly 'after-bottom': "inline-end span-block-start";
+    readonly 'above-start': "above-start";
+    readonly above: "above";
+    readonly 'above-end': "above-end";
+    readonly 'below-start': "below-start";
+    readonly below: "below";
+    readonly 'below-end': "below-end";
+    readonly 'before-top': "before-top";
+    readonly before: "before";
+    readonly 'before-bottom': "before-bottom";
+    readonly 'after-top': "after-top";
+    readonly after: "after";
+    readonly 'after-bottom': "after-bottom";
 };
 
 // @public
@@ -4613,7 +4535,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/esm/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/esm/accordion-item/accordion-item.d.ts:10:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

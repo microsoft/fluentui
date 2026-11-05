@@ -2,6 +2,118 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 04 Nov 2026 17:13:29 GMT",
+      "version": "3.2.0",
+      "tag": "@fluentui/web-components_v3.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bd78a49ca4666c01318924563e01f966b77068e9",
+            "comment": "feat: use server-provided initial-display attribute value as the initial display value in SSR context and stabilize control layout"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e90732dd3b1e04d65172773a750d5b77423a650",
+            "comment": "fix: improve phone number initials handling"
+          },
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b4c44a453ca3ebe628f859791f8d498593103d25",
+            "comment": "Add Node.js 26 to supported engines"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6fdc7bd4480f4aec09e6ee10db49d8c5b20a22ee",
+            "comment": "fix(web-components): fix broken tooltip positioning API"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "93e324f72f0e187ff6a7e5f70ebf929d9b2212a2",
+            "comment": "fix: make sure change event fires before submit event during implicit form submission"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6fdc7bd4480f4aec09e6ee10db49d8c5b20a22ee",
+            "comment": "fix: keep dropdown anchor stable for tooltips"
+          },
+          {
+            "author": "jiayin.3zh@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "45af037915bae19733ffb8cb2123d8e6e216e881",
+            "comment": "fix(switch): keep the indicator visible in forced-colors mode"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8abb0781d7d8bdb5e7bccaad16a6e4ba7efaf1aa",
+            "comment": "fix: connect dropdown labels to the inserted combobox control"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ea1a99bf2bc5e2359192ae463c5fdf5d1923f57b",
+            "comment": "fix: height for empty vertical divider"
+          },
+          {
+            "author": "lhi25wy@163.com",
+            "package": "@fluentui/web-components",
+            "commit": "6711a1e0c81864cf6b9ac6577d90e1303eab40c4",
+            "comment": "fix: MenuList icon columns in Firefox"
+          }
+        ],
+        "minor": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "d27c0432d6b3e23bc542b492f37de22bcc75f7b8",
+            "comment": "feat: removes imperative property assignment for attributes which are presentational only"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:47 GMT",
+      "version": "3.1.3",
+      "tag": "@fluentui/web-components_v3.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "adc2cc48e7fe7e93e62a4ade13039a0ee056d9ac",
+            "comment": "fix: correct submenu sizing in WebKit"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eebb4337934edf01b1e4b0fda31a50786fa040da",
+            "comment": "fix: focus menu items immediately after connecting a menu list"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "3ea795c7f1eeb7e2ebe45e62e41ef246b342d691",
+            "comment": "fix: show TextArea scrollbar for overflowing content"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2026 04:08:41 GMT",
       "version": "3.1.2",
       "tag": "@fluentui/web-components_v3.1.2",

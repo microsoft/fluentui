@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 29 Oct 2026 01:04:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.125.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.10)
+
+Thu, 29 Oct 2026 01:04:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.125.9..@fluentui/react_v8.125.10)
+
+### Patches
+
+- fix: Support plain right Alt keytip activation and isolate activation behavior behind its opt-in prop. ([PR #36886](https://github.com/microsoft/fluentui/pull/36886) by undefined)
+
+## [8.125.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.9)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.125.8..@fluentui/react_v8.125.9)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.5.76 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/merge-styles to v8.6.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-focus to v8.10.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-hooks to v8.10.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/style-utilities to v8.15.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.125.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.8)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.125.7..@fluentui/react_v8.125.8)
+
+### Patches
+
+- fix: warn in development when DocumentCard onClickHref is given a script URL ([PR #36578](https://github.com/microsoft/fluentui/pull/36578) by martinhochel@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.5.75 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/merge-styles to v8.6.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-focus to v8.10.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-hooks to v8.10.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/style-utilities to v8.15.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [8.125.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.7)
 

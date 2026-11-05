@@ -9,7 +9,11 @@ export const useImageSwatch = (props: ImageSwatchProps, ref: React.Ref<HTMLButto
   const state: ImageSwatchState = useImageSwatchBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
+  state.root.focusgroupstart = toDataAttributeValue(state.selected);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = toDataAttributeValue(state.selected);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-disabled'] = toDataAttributeValue(props.disabled);
 
   return state;
 };

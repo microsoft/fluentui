@@ -1,4 +1,5 @@
 export { clamp } from './clamp';
+export { getPercentInRange } from './getPercentInRange';
 export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,

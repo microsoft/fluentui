@@ -6,16 +6,21 @@
 }
 
 :host {
+  --_indicator-size: 20px;
+  --_placeholder-color: var(--colorNeutralForeground4);
+  --_initial-display: attr(initial-display raw-string, attr(placeholder raw-string, none));
+
   box-sizing: border-box;
   color: var(--colorNeutralForeground1);
   cursor: pointer;
 }
 
 :host(:state(placeholder-shown)) {
-  color: var(--colorNeutralForeground4);
+  color: var(--_placeholder-color);
 }
 
 .control {
+  --control-border-color: var(--colorNeutralStroke1);
   appearance: none;
   background-color: var(--colorNeutralBackground1);
   border-radius: var(--borderRadiusMedium);
@@ -24,7 +29,8 @@
   box-sizing: border-box;
   color: inherit;
   column-gap: var(--spacingHorizontalXXS);
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-columns: 1fr var(--_indicator-size);
   justify-content: space-between;
   min-width: 160px;
   overflow: hidden;
@@ -61,9 +67,28 @@
   font-weight: var(--fontWeightRegular);
 }
 
+/* webkit, firefox */
+:host(:not(:has([slot='control']))) slot[name='control']::before {
+  content: var(--_initial-display);
+}
+/* chromium */
+@scope {
+  :scope:not(:has([slot='control'])) slot[name='control']::before {
+    content: var(--_initial-display);
+  }
+}
+
+:host(:is(:not([value]), [value=''])) slot[name='control']::before {
+  color: var(--_placeholder-color);
+}
+
 ::slotted(:is(input, button)) {
   all: unset;
-  flex: 1 1 auto;
+}
+
+slot[name='control']::before,
+::slotted(:is(input, button)) {
+  grid-area: 1 / 1;
 }
 
 ::slotted(button) {
@@ -72,6 +97,12 @@
 
 ::slotted(input) {
   cursor: text;
+  min-width: 0;
+  width: 100%;
+}
+
+::slotted(input)::placeholder {
+  color: var(--_placeholder-color);
 }
 
 :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
@@ -81,16 +112,17 @@
   aspect-ratio: 1;
   color: var(--colorNeutralForeground3);
   display: inline-flex;
+  grid-area: 1 / 2;
   justify-content: center;
-  width: 20px;
+  width: var(--_indicator-size);
 }
 
 :host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-  width: 16px;
+  --_indicator-size: 16px;
 }
 
 :host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-  width: 24px;
+  --_indicator-size: 24px;
 }
 
 .control::after,
@@ -102,6 +134,7 @@
 }
 
 .control::before {
+  background-color: var(--colorNeutralStrokeAccessible);
   height: var(--strokeWidthThin);
 }
 
@@ -129,42 +162,42 @@
   transition-timing-function: var(--curveAccelerateMid);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control::before {
-  background-color: var(--colorNeutralStrokeAccessible);
-}
-
 :host([appearance='transparent']) .control {
   --control-border-color: var(--colorTransparentStrokeInteractive);
   background-color: var(--colorTransparentBackground);
   border-radius: var(--borderRadiusNone);
 }
 
-:host([appearance='outline']) .control {
-  --control-border-color: var(--colorNeutralStroke1);
-}
-
-:host([appearance='outline']) .control:hover {
+.control:hover {
   --control-border-color: var(--colorNeutralStroke1Hover);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:hover::before {
+.control:hover::before {
   background-color: var(--colorNeutralStrokeAccessibleHover);
 }
 
-:host([appearance='outline']) .control:hover::after {
+.control:hover::after {
   background-color: var(--colorCompoundBrandBackgroundHover);
 }
 
-:host([appearance='outline']) .control:active {
+.control:active {
   --control-border-color: var(--colorNeutralStroke1Pressed);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::before {
+.control:active::before {
   background-color: var(--colorNeutralStrokeAccessiblePressed);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::after {
+.control:active::after {
   background-color: var(--colorCompoundBrandBackgroundPressed);
+}
+
+:host([appearance='transparent']) .control:is(:hover, :active) {
+  --control-border-color: var(--colorTransparentStrokeInteractive);
+}
+
+:host([appearance='transparent']) .control:hover::after {
+  background-color: var(--colorCompoundBrandStroke);
 }
 
 :host([appearance='filled-darker']) .control {
@@ -173,6 +206,18 @@
 
 :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control {
   --control-border-color: var(--colorTransparentStroke);
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active) {
+  --control-border-color: var(--colorTransparentStroke);
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control::before {
+  background-color: initial;
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active)::after {
+  background-color: var(--colorCompoundBrandStroke);
 }
 
 :host(:is([disabled], :disabled)),

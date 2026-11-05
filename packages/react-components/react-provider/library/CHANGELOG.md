@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-provider
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.22.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.23)
+
+Tue, 27 Oct 2026 16:42:57 GMT
+
+### Patches
+
+- fix: escape theme style delimiters instead of omitting valid nested theme values ([PR #36985](https://github.com/microsoft/fluentui/pull/36985) by vgenaev@gmail.com)
+
+## [9.22.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.22)
+
+Mon, 19 Oct 2026 16:49:00 GMT
+
+### Patches
+
+- fix: block unsafe theme token syntax without a value-format allowlist ([PR #36830](https://github.com/microsoft/fluentui/pull/36830) by paliprandi@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.22.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.21)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.22.20..@fluentui/react-provider_v9.22.21)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.22.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.20)
 

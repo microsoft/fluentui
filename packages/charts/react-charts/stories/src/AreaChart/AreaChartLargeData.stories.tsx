@@ -2,6 +2,31 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charts';
 
+type IChartPoint = {
+  x: number;
+  y: number;
+};
+
+const createLargeDataSet = (count: number, phaseOffset: number, amplitude: number, baseline: number): IChartPoint[] => {
+  const points: IChartPoint[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const trend = i * 0.015;
+    const wave1 = Math.sin((i + phaseOffset) * 0.08) * amplitude;
+    const wave2 = Math.cos((i + phaseOffset) * 0.03) * (amplitude * 0.35);
+    const y = Math.max(0, Math.round(baseline + trend + wave1 + wave2));
+
+    points.push({
+      x: i,
+      y,
+    });
+  }
+
+  return points;
+};
+
+const DATA_POINT_COUNT = 5000;
+
 export const AreaChartLargeData = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
@@ -13,134 +38,9 @@ export const AreaChartLargeData = (): JSXElement => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const chart1Points = [
-    {
-      x: 20,
-      y: 9,
-    },
-    {
-      x: 25,
-      y: 14,
-    },
-    {
-      x: 30,
-      y: 14,
-    },
-    {
-      x: 35,
-      y: 23,
-    },
-    {
-      x: 40,
-      y: 20,
-    },
-    {
-      x: 45,
-      y: 31,
-    },
-    {
-      x: 50,
-      y: 29,
-    },
-    {
-      x: 55,
-      y: 27,
-    },
-    {
-      x: 60,
-      y: 37,
-    },
-    {
-      x: 65,
-      y: 51,
-    },
-  ];
-
-  const chart2Points = [
-    {
-      x: 20,
-      y: 21,
-    },
-    {
-      x: 25,
-      y: 25,
-    },
-    {
-      x: 30,
-      y: 10,
-    },
-    {
-      x: 35,
-      y: 10,
-    },
-    {
-      x: 40,
-      y: 14,
-    },
-    {
-      x: 45,
-      y: 18,
-    },
-    {
-      x: 50,
-      y: 9,
-    },
-    {
-      x: 55,
-      y: 23,
-    },
-    {
-      x: 60,
-      y: 7,
-    },
-    {
-      x: 65,
-      y: 55,
-    },
-  ];
-
-  const chart3Points = [
-    {
-      x: 20,
-      y: 30,
-    },
-    {
-      x: 25,
-      y: 35,
-    },
-    {
-      x: 30,
-      y: 33,
-    },
-    {
-      x: 35,
-      y: 40,
-    },
-    {
-      x: 40,
-      y: 10,
-    },
-    {
-      x: 45,
-      y: 40,
-    },
-    {
-      x: 50,
-      y: 34,
-    },
-    {
-      x: 55,
-      y: 40,
-    },
-    {
-      x: 60,
-      y: 60,
-    },
-    {
-      x: 65,
-      y: 40,
-    },
-  ];
+  const chart1Points = React.useMemo(() => createLargeDataSet(DATA_POINT_COUNT, 0, 26, 60), []);
+  const chart2Points = React.useMemo(() => createLargeDataSet(DATA_POINT_COUNT, 17, 22, 48), []);
+  const chart3Points = React.useMemo(() => createLargeDataSet(DATA_POINT_COUNT, 41, 30, 56), []);
 
   const chartPoints = [
     {
@@ -161,7 +61,7 @@ export const AreaChartLargeData = (): JSXElement => {
   ];
 
   const chartData = {
-    chartTitle: 'Area chart large data example',
+    chartTitle: `Area chart large data example (${DATA_POINT_COUNT} points per series)`,
     lineChartData: chartPoints,
   };
   const rootStyle = { width: `${width}px`, height: `${height}px` };
@@ -178,7 +78,7 @@ export const AreaChartLargeData = (): JSXElement => {
           id="changeWidth_Large"
           onChange={_onWidthChange}
           aria-label="Change Width"
-          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          aria-valuetext={`current value ${width}, Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Large">Change Height:</label>
         <input
@@ -189,7 +89,7 @@ export const AreaChartLargeData = (): JSXElement => {
           id="changeHeight_Large"
           onChange={_onHeightChange}
           aria-label="Change Height"
-          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
+          aria-valuetext={`current value ${height}, Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>
@@ -209,6 +109,9 @@ export const AreaChartLargeData = (): JSXElement => {
 };
 AreaChartLargeData.parameters = {
   docs: {
-    description: {},
+    description: {
+      story:
+        'This story demonstrates an AreaChart with a large dataset, allowing dynamic resizing of the chart container.',
+    },
   },
 };

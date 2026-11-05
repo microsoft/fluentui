@@ -17,5 +17,6 @@ export const BrandColors = {
   danger: '#c50f1f',
 };
 Default.parameters = {};
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\n// Genuine story \u2014 should get a sliced fullSource.\nexport const Default = () => <Button>Default</Button>;\n';

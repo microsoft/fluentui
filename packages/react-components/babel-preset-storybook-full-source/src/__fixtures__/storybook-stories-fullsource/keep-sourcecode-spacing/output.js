@@ -34,5 +34,6 @@ export const ButtonAppearance = () =>
     ),
   );
 ButtonAppearance.parameters = {};
+ButtonAppearance.parameters.fullSourceIsRunnable = true;
 ButtonAppearance.parameters.fullSource =
   'import * as React from "react";\n\nexport const ButtonAppearance = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n';

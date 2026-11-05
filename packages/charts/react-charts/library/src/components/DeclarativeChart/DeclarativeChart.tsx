@@ -472,7 +472,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  const groupedTraces: Record<string, number[]> = {};
+  const groupedTraces: Record<string, number[]> = Object.create(null);
   let nonCartesianTraceCount = 0;
 
   // For annotation-only charts, create a single group entry
