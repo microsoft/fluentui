@@ -23,6 +23,8 @@ yarn nx run fluentui-repo:test-workspace -- --selectProjects=workspace-plugin --
 
 Omit `--selectProjects` to run all projects discovered by the root Jest configuration.
 For project-scoped testing, continue using `yarn nx run <project>:test`.
+The shared preset resolves workspace aliases from the repository root, independently
+of the working directory or the selected project's Jest `rootDir`.
 
 ## V9 Icon Regression Coverage
 
