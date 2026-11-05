@@ -3,6 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 
 import { Combobox, Option, OptionGroup } from '.';
 import type { ComboboxProps } from '.';
+import { finishListboxExit, listboxExitStyles } from '../../testing/listboxExit';
 
 // ---- Selectors ----
 // The Combobox `id` prop maps to the trigger <input> element.
@@ -185,6 +186,45 @@ describe('Combobox', () => {
       cy.get(trigger).realClick();
       cy.get(listbox).should('exist');
       cy.get('body').realClick({ position: 'bottomRight' });
+      cy.get(listbox).should('not.exist');
+    });
+  });
+
+  describe('exit animation', () => {
+    const Animated = (props: Partial<ComboboxProps>) => (
+      <>
+        <style>{listboxExitStyles}</style>
+        <BasicCombobox {...props} />
+      </>
+    );
+
+    it('keeps the listbox mounted until its exit ends after an option click', () => {
+      mount(<Animated />);
+      cy.get(trigger).realClick();
+      cy.contains(option, 'Cat').realClick();
+      cy.get(trigger).should('have.value', 'Cat');
+      finishListboxExit(listbox);
+      cy.get(listbox).should('not.exist');
+    });
+
+    it('reopens the listbox during its exit and keeps it mounted', () => {
+      mount(<Animated />);
+      cy.get(trigger).realClick();
+      cy.realPress('Escape');
+      cy.get(listbox).should('not.match', ':popover-open');
+      cy.get(trigger).realClick();
+      cy.get(listbox).should('match', ':popover-open');
+      cy.get<HTMLElement>(listbox).then(([element]) => {
+        element.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+      });
+      cy.get(listbox).should('match', ':popover-open');
+    });
+
+    it('keeps the listbox mounted until its exit ends after an input blur', () => {
+      mount(<Animated defaultOpen expandIcon={null} />);
+      cy.get(listbox).should('match', ':popover-open');
+      cy.get(trigger).focus().blur();
+      finishListboxExit(listbox);
       cy.get(listbox).should('not.exist');
     });
   });

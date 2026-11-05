@@ -3,6 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 
 import { Dropdown, Option, OptionGroup } from '.';
 import type { DropdownProps } from '.';
+import { finishListboxExit, listboxExitStyles } from '../../testing/listboxExit';
 
 // ---- Selectors ----
 // The Dropdown `id` prop maps to the trigger <button> element.
@@ -67,6 +68,37 @@ describe('Dropdown', () => {
       cy.get(listbox).should('exist');
       cy.get('body').realClick({ position: 'bottomRight' });
       cy.get(listbox).should('not.exist');
+    });
+  });
+
+  describe('exit animation', () => {
+    const Animated = (props: Partial<DropdownProps>) => (
+      <>
+        <style>{listboxExitStyles}</style>
+        <BasicDropdown {...props} />
+      </>
+    );
+
+    it('keeps the listbox mounted until its exit ends after an option click', () => {
+      mount(<Animated />);
+      cy.get(trigger).realClick();
+      cy.contains(option, 'Cat').realClick();
+      cy.get(trigger).should('contain.text', 'Cat');
+      finishListboxExit(listbox);
+      cy.get(listbox).should('not.exist');
+    });
+
+    it('reopens the listbox during its exit and keeps it mounted', () => {
+      mount(<Animated />);
+      cy.get(trigger).realClick();
+      cy.realPress('Escape');
+      cy.get(listbox).should('not.match', ':popover-open');
+      cy.get(trigger).realClick();
+      cy.get(listbox).should('match', ':popover-open');
+      cy.get<HTMLElement>(listbox).then(([element]) => {
+        element.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+      });
+      cy.get(listbox).should('match', ':popover-open');
     });
   });
 

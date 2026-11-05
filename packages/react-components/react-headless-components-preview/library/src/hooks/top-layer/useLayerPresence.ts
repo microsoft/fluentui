@@ -115,41 +115,56 @@ export const useLayerPresence = (
       return;
     }
 
-    const controller = new AbortController();
-    let cancelAnimations: () => void = () => undefined;
+    let cancelWait: () => void = () => undefined;
+    let cancelled = false;
     exit.current = {
       element,
       cancel: () => {
-        controller.abort();
-        cancelAnimations();
+        cancelled = true;
+        cancelWait();
       },
     };
+
+    const waitForClose = (type: string) => {
+      const onClose = (event: Event) => {
+        if (isCloseEvent(event, element)) {
+          element.removeEventListener(type, onClose);
+          waitForExit();
+        }
+      };
+      element.addEventListener(type, onClose);
+      cancelWait = () => element.removeEventListener(type, onClose);
+    };
+
     const waitForExit = () => {
-      cancelAnimations = waitForAnimations(element, endExit);
+      let done = false;
+      const cancelAnimations = waitForAnimations(element, () => {
+        done = true;
+        // Reopened by the browser before React knows (a native invoker, `showPopover()`), which can also cancel the
+        // exit animations: stay mounted until it closes again or `open` turns true.
+        if (isInTopLayer(element)) {
+          waitForClose(getCloseEvent(element));
+        } else {
+          endExit();
+        }
+      });
+      if (!done) {
+        cancelWait = cancelAnimations;
+      }
     };
 
     queueMicrotask(() => {
-      if (controller.signal.aborted) {
+      if (cancelled) {
         return;
       }
       const pending = pendingCloseEvent.current?.element === element ? pendingCloseEvent.current : null;
       pendingCloseEvent.current = null;
-      if (!pending) {
-        waitForExit();
-        return;
-      }
-
       // Stay mounted for the queued close event, so the element's own `onClose` / `onToggle` run.
-      element.addEventListener(
-        pending.type,
-        event => {
-          if (isCloseEvent(event, element)) {
-            controller.abort();
-            waitForExit();
-          }
-        },
-        { signal: controller.signal },
-      );
+      if (pending) {
+        waitForClose(pending.type);
+      } else {
+        waitForExit();
+      }
     });
   }, [ref, open, unmountOnClose]);
 

@@ -83,7 +83,7 @@ useLayerPresence(elementRef: React.RefObject<HTMLElement | null>, options: UseLa
 | -------------- | --------- | --------------------------------------------------------- |
 | `shouldRender` | `boolean` | Whether to render the element. Stays true while it exits. |
 
-It works whether it is declared before or after the open-state hook. It measures exit animations in a microtask after the commit, once the element has been hidden.
+It works whether it is declared before or after the open-state hook. It measures exit animations in a microtask after the commit, once the element has been hidden. If the browser shows the element again before `open` turns true (a native invoker, `showPopover()`), it stays mounted until it closes again, even when the reopen cancels the exit animation.
 
 ### Example
 

@@ -3,7 +3,7 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
 import { useLayerPresence } from './useLayerPresence';
-import type { TopLayerMode, TopLayerOpenChangeType } from './types';
+import type { ToggleEvent, TopLayerMode, TopLayerOpenChangeType } from './types';
 import { Provider } from '../../components/Provider';
 
 const mount = (element: React.ReactElement) => mountBase(<Provider>{element}</Provider>);
@@ -22,6 +22,20 @@ const exitStyles = `
     transition: overlay 10s allow-discrete;
   }
   #layer:not([data-open]) {
+    animation: layerExit 10s linear;
+  }
+`;
+
+// The exit runs while the element is out of the top layer, so the browser reopening it cancels the animation.
+const popoverOpenExitStyles = `
+  @keyframes layerExit {
+    from { display: block; opacity: 1; }
+    to { display: none; opacity: 0; }
+  }
+  #layer {
+    transition: overlay 10s allow-discrete;
+  }
+  #layer:not(:popover-open) {
     animation: layerExit 10s linear;
   }
 `;
@@ -191,6 +205,48 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
       layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
     });
     cy.get('#layer').should('match', ':popover-open');
+  });
+
+  it('keeps an element mounted when a browser reopen cancels its exit animation', () => {
+    const Reopen = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <>
+          <style>{popoverOpenExitStyles}</style>
+          <button id="close" onClick={() => setOpen(false)}>
+            Close
+          </button>
+          <output id="state">{open ? 'open' : 'closed'}</output>
+          {/* Syncs the browser open late, so the exit outlives the cancelled animation. */}
+          <Layer id="layer" mode="manual" open={open} onOpen={() => setTimeout(() => setOpen(true), 200)} />
+        </>
+      );
+    };
+    mount(<Reopen />);
+
+    cy.get<HTMLElement>('#layer').then(([layer]) => {
+      layer.addEventListener('toggle', event => {
+        if ((event as ToggleEvent).newState === 'closed') {
+          layer.dataset.closed = '';
+        }
+      });
+    });
+    cy.get('#close').realClick();
+    // Past the close event, so the exit waits only on the animations.
+    cy.get<HTMLElement>('#layer')
+      .should(([layer]) => {
+        expect(layer.dataset.closed).to.equal('');
+        expect(layer.getAnimations()).not.to.be.empty;
+      })
+      .then(([layer]) => {
+        layer.showPopover();
+        // Restyle before the queued `toggle` reaches React: the exit animation is cancelled.
+        layer.getAnimations();
+        cy.get('#state').should('have.text', 'open');
+        cy.get('#layer')
+          .should('match', ':popover-open')
+          .and(([current]) => expect(current).to.equal(layer));
+      });
   });
 
   it('keeps a nested auto layer from closing its parent', () => {
