@@ -117,6 +117,13 @@ describe('usePortalMountNode', () => {
       expect(mountNode.parentElement).toBe(document.body);
       expect(additions).toHaveLength(2);
       expect(additions.some(record => Array.from(record.addedNodes).includes(content))).toBe(false);
+      const transientComments = records.flatMap(record =>
+        Array.from(record.addedNodes).filter(node => node.nodeType === Node.COMMENT_NODE),
+      );
+      transientComments.forEach(comment => {
+        expect(comment.isConnected).toBe(false);
+        expect(records.some(record => Array.from(record.removedNodes).includes(comment))).toBe(true);
+      });
     } finally {
       observer.disconnect();
       view.unmount();

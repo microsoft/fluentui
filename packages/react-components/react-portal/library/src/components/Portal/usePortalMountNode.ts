@@ -83,6 +83,7 @@ const useLegacyElementFactory: UseElementFactory = options => {
 
 const initializeElementFactory = () => {
   let currentElement: HTMLDivElement | undefined = undefined;
+  let mountAnchor: Comment | undefined = undefined;
   let hasMounted = false;
 
   function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
@@ -92,9 +93,12 @@ const initializeElementFactory = () => {
 
     if (forceCreation) {
       currentElement = targetRoot.ownerDocument.createElement('div');
-      // Preserve eager recreation after the first commit, including StrictMode effect replays.
       if (hasMounted) {
         targetRoot.appendChild(currentElement);
+      } else {
+        // Nested portals commit child-first, so reserve the original mount order.
+        mountAnchor = targetRoot.ownerDocument.createComment('');
+        targetRoot.appendChild(mountAnchor);
       }
     }
 
@@ -102,10 +106,14 @@ const initializeElementFactory = () => {
   }
 
   function mount(targetRoot: HTMLElement | ShadowRoot) {
-    const element = get(targetRoot, true);
-    if (element && !hasMounted) {
+    if (!currentElement) {
       hasMounted = true;
-      targetRoot.appendChild(element);
+      get(targetRoot, true);
+    } else if (!hasMounted) {
+      hasMounted = true;
+      const anchor = mountAnchor;
+      mountAnchor = undefined;
+      anchor?.parentNode?.replaceChild(currentElement, anchor);
     }
   }
 
@@ -116,6 +124,8 @@ const initializeElementFactory = () => {
   }
 
   function dispose() {
+    mountAnchor?.remove();
+    mountAnchor = undefined;
     if (currentElement) {
       currentElement.remove();
       currentElement = undefined;
