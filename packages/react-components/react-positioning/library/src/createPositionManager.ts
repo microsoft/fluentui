@@ -91,6 +91,9 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
+  // Identifies the latest position computation that started. A computation that started earlier can resolve later,
+  // so only the latest one may write the position.
+  let latestComputation = 0;
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
@@ -122,11 +125,13 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     Object.assign(container.style, { position: strategy });
+    latestComputation += 1;
+    const computation = latestComputation;
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        // Promise can still resolve after destruction
+        // Promise can still resolve after destruction or after a newer computation started
         // early return to avoid applying outdated position
-        if (isDestroyed) {
+        if (isDestroyed || computation !== latestComputation) {
           return;
         }
 
