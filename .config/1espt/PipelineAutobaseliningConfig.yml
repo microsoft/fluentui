@@ -16,9 +16,9 @@ pipelines:
           lastModifiedDate: 2025-05-06
       binary:
         binskim:
-          lastModifiedDate: 2026-11-04
+          lastModifiedDate: 2026-11-05
         spotbugs:
-          lastModifiedDate: 2026-11-04
+          lastModifiedDate: 2026-11-05
   176:
     retail:
       source:
