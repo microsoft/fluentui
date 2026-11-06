@@ -63,6 +63,8 @@ There are only two exceptions to this rule:
 
 The `placeholder` prop is **not** a substitute for a label. Placeholder text disappears as soon as the user starts typing, while WCAG requires a persistent visual label to be present. Placeholder also fails contrast requirements in some themes by design.
 
+For `filled-darker` and `filled-lighter` inputs without another identifying visual cue, provide a descriptive placeholder with at least 4.5:1 contrast against the input background ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)). [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries) permits controls without contrasting boundaries when visible content sufficiently identifies them.
+
 Because the `placeholder` is not persistent, it also should never be used for user instructions such as "Type / for more suggestions", unless those instructions are easily accessible elsewhere.
 
 #### Field integration
@@ -133,11 +135,11 @@ Both `error` and `warning` validation states give the `validationMessage` a `rol
 
 #### Color contrast and appearance variants
 
-All inputs must have some part of their boundary meet 3:1 contrast against the background behind the input. The placeholder or value text are not sufficient to meet this requirement. Each appearance variant meets this contrast requirement in a different way:
+Each appearance variant meets contrast requirements in a different way:
 
 - `outline` (default) — the bottom border specifically uses `colorNeutralStrokeAccessible`, which is darker than the surrounding border tokens to meet the indicator-contrast requirement.
 - `underline` — only the bottom border is visible at rest, and meets 3:1 contrast against the background.
-- `filled-darker` and `filled-lighter` — these must be placed on a surface that provides at least 3:1 contrast against the input's background color, so the boundary of the input is still discernible.
+- `filled-darker` and `filled-lighter` — without another identifying visual cue, provide a descriptive placeholder with at least 4.5:1 contrast against the input background, as described above.
 - `filled-darker-shadow` and `filled-lighter-shadow` — **deprecated**. Do not use in new code; they emit a console error in development.
 
 The bottom focus border (`::after`) uses `colorCompoundBrandStroke`, which is the brand color and is guaranteed to meet 3:1 against all supported page surfaces in the included themes.

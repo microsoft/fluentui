@@ -58,6 +58,8 @@ There is one exception worth calling out for `Textarea` specifically: in chat ap
 
 The `placeholder` prop is **not** a substitute for a label. Placeholder text disappears as soon as the user starts typing, while WCAG requires a persistent visual label to be present. Placeholder also fails contrast requirements in some themes by design.
 
+For filled appearances that rely on text to identify the control, provide a descriptive placeholder while empty and value text when populated. Both need at least 4.5:1 contrast against the textarea background; see the color contrast guidance below.
+
 Because the `placeholder` is not persistent, it also should never be used for user instructions such as "Press Enter to add a new line" or "Type @ to mention someone" unless those instructions are easily accessible elsewhere — for example, in a hint slot provided by `Field`.
 
 #### Field integration
@@ -114,15 +116,17 @@ Instead, use the [`useTypingAnnounce`](https://storybooks.fluentui.dev/react/?pa
 
 #### Color contrast and appearance variants
 
-All textareas must have some part of their boundary meet 3:1 contrast against the background behind the textarea. The placeholder or value text are not sufficient to meet this requirement. Each appearance variant meets this contrast requirement in a different way:
+A contrasting boundary is required when no other visual cue identifies an empty textarea. Any boundary needed to identify the control must have at least 3:1 contrast against its surroundings ([WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries)).
+
+Visible placeholder or value text can identify the control without a contrasting boundary. Both need at least 4.5:1 contrast against the textarea background ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)), but readability alone does not ensure that users recognize the editable control.
 
 - `outline` (default) — the bottom border specifically uses `colorNeutralStrokeAccessible`, which is darker than the surrounding border tokens to meet the indicator-contrast requirement.
-- `filled-darker` and `filled-lighter` — these must be placed on a surface that provides at least 3:1 contrast against the textarea's background color, so the boundary of the textarea is still discernible.
+- `filled-lighter` and `filled-darker` — Fluent design guidance places these on `colorNeutralBackground3` and `colorNeutralBackground1`, respectively. These surface choices are not WCAG requirements. If text is the identifying cue, keep a descriptive placeholder when empty and value text when populated.
 - `filled-darker-shadow` and `filled-lighter-shadow` — **deprecated**. Do not use in new code; they emit a console error in development.
 
 `Textarea` does not include an `underline` appearance like `Input` does, because the additional visual weight of an underline-only boundary is less useful at the larger sizes of a multi-line field.
 
-The bottom focus border (`::after`) uses `colorCompoundBrandStroke`, which is the brand color and is guaranteed to meet 3:1 against all supported page surfaces in the included themes.
+The bottom focus border (`::after`) uses `colorCompoundBrandStroke`. Preserve a visible focus indicator with at least 3:1 contrast against adjacent colors when customizing the theme or surrounding surface.
 
 ### Placing Textarea within an arrow-navigation region like Toolbar or Menu
 

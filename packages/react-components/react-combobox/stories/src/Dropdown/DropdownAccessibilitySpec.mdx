@@ -123,10 +123,13 @@ However, if the `<Option>` contains JSX, this will not work correctly. If that i
 
 #### Color contrast and appearance variants
 
-The `filled-lighter`, `filled-darker`, and `underline` all have contrast requirements for their background color:
+`outline` and `underline` are the preferred appearances. A boundary needed to identify an empty control must contrast at least **3:1** against the adjacent background; see [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries).
 
-- `filled-lighter` and `filled-darker` variants must both be placed over background colors dark enough to meet 3:1 contrast against the `Dropdown` button's background color.
-- `underline` must be placed over a light enough background for the placeholder and value text to meet 4.5:1 contrast against the page background.
+For filled appearances, Fluent recommends `colorNeutralBackground3` surroundings for `filled-lighter` and `colorNeutralBackground1` for `filled-darker`. These surface-token choices are Fluent design guidance, not WCAG requirements; there is no blanket requirement for a filled control's background to contrast 3:1 with its surroundings.
+
+Without another identifying visual cue, a filled Dropdown needs a descriptive placeholder when empty or a displayed value when populated. Normal-size placeholder and value text must contrast at least **4.5:1** against the control's own fill; see [WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). The text must actually identify a selectable control, rather than being decorative or ambiguous.
+
+For `underline`, ensure normal-size placeholder and value text contrast at least **4.5:1** against the page background visible through the control. Keep a persistent visible label and a sufficiently contrasting focus indicator for all appearances; a placeholder is not a replacement for a label.
 
 ## Semantics
 
