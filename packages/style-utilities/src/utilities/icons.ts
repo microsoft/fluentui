@@ -93,6 +93,37 @@ if (stylesheet && stylesheet.onReset) {
 const normalizeIconName = (name: string): string => name.toLowerCase();
 
 /**
+ * Returns true if the given (already-normalized) icon name looks like an image URL or path
+ * rather than a font-icon glyph name. Such values are silently ignored so that callers who
+ * pass a URL string as an icon source do not receive a spurious console warning.
+ */
+function _isImageSource(name: string): boolean {
+  return (
+    name.startsWith('http://') ||
+    name.startsWith('https://') ||
+    name.startsWith('//') ||
+    name.startsWith('data:') ||
+    name.startsWith('/')
+  );
+}
+
+/**
+ * Set of icon names (already normalized to lower-case) for which a "not registered" warning
+ * has already been emitted during this session. Prevents the same warning from being logged on
+ * every render when a component calls `getIcon` repeatedly with an unregistered name.
+ */
+const _warnedMissingIcons = new Set<string>();
+
+/**
+ * Resets the set of already-warned missing icon names.
+ * Intended for use in tests; do not call this in production code.
+ * @internal
+ */
+export function resetMissingIconWarnings(): void {
+  _warnedMissingIcons.clear();
+}
+
+/**
  * Registers a given subset of icons.
  *
  * @param iconSubset - the icon subset definition.
@@ -201,9 +232,14 @@ export function getIcon(name?: string): IIconRecord | undefined {
     } else {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(
-          `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,
-        );
+        // Silently skip names that look like image URLs or paths — these are not font-icon
+        // glyph names and should not produce a "not registered" warning (see #37032).
+        if (!_isImageSource(name) && !_warnedMissingIcons.has(name)) {
+          _warnedMissingIcons.add(name);
+          warn(
+            `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,
+          );
+        }
       }
     }
   }
