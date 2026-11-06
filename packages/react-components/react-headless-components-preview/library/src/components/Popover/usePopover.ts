@@ -19,7 +19,17 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     mouseLeaveDelay = 500,
     withArrow = false,
     inertTrapFocus = false,
+    mode = 'auto',
   } = props;
+
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && inertTrapFocus && mode !== 'auto') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `@fluentui/react-headless-components-preview [Popover]: \`mode="${mode}"\` is ignored when \`inertTrapFocus\` is true.`,
+      );
+    }
+  }, [inertTrapFocus, mode]);
 
   const [open, setOpenState] = useControllableState({
     state: props.open,
@@ -87,7 +97,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   useDialogLayerOpenState(contentRef, {
     open,
-    mode: modal ? 'modal' : 'auto',
+    mode: modal ? 'modal' : mode,
     onOpenChange: (nextOpen, { event }) => setOpen(event, nextOpen),
     // Back to the trigger when focus was inside as the surface started closing.
     returnFocus: { target: triggerRef },
@@ -131,6 +141,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     withArrow,
     // The effective value: stays true while a modal opening lasts.
     inertTrapFocus: modal,
+    mode,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
@@ -152,6 +163,7 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
     openOnContext,
     withArrow,
     inertTrapFocus,
+    mode,
     positioning,
     surfaceId,
   } = state;
@@ -168,6 +180,7 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
       openOnContext,
       withArrow,
       inertTrapFocus,
+      mode,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
