@@ -30,7 +30,14 @@ import type {
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import {
+  areChartDataEqual,
+  getChartEventTarget,
+  isChartElementTabbable,
+  isFocusLeavingChart,
+} from '../CommonComponents/ChartFocusUtils';
 import { useImageExport } from '../../utilities/hooks';
+import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -125,6 +132,8 @@ export const getGaugeChartSegmentLabel = (
 interface YValue extends Omit<YValueHover, 'y'> {
   y?: string | number;
 }
+type GaugeFocusTarget = { segmentIndex: number } | { target: 'needle' };
+type GaugeCalloutTarget = GaugeFocusTarget | { target: 'chartValue' };
 export type { ExtendedSegment } from './GaugeChart.types';
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
@@ -150,13 +159,39 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);
     const [height, setHeight] = React.useState<number>(70 + _getMargins().top + _getMargins().bottom + _legendsHeight);
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
-    const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+    const [legendSelection, setLegendSelection] = React.useState({
+      controlledSelectedLegends: props.legendProps?.selectedLegends,
+      selectedLegends: props.legendProps?.selectedLegends || [],
+    });
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [calloutLegend, setCalloutLegend] = React.useState('');
-    const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
-    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
-    const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
+    const [refSelected, setRefSelected] = React.useState<Element | null>(null);
+    const [calloutTarget, setCalloutTarget] = React.useState<GaugeCalloutTarget>();
+    const calloutRef = React.useRef<HTMLDivElement>(null);
+    const chartValueRef = React.useRef<SVGGElement>(null);
+    const selectionChanged = !areArraysEqual(
+      legendSelection.controlledSelectedLegends,
+      props.legendProps?.selectedLegends,
+    );
+    const selectedLegends = selectionChanged
+      ? props.legendProps?.selectedLegends || []
+      : legendSelection.selectedLegends;
+    const previousFocusSegmentsRef = React.useRef(props.segments);
+    const previousFocusChartValueRef = React.useRef(props.chartValue);
+    const lastFocusedGaugeElementRef = React.useRef<GaugeFocusTarget | undefined>(undefined);
+    const lastFocusedGaugeNodeRef = React.useRef<SVGElement | null>(null);
+    const focusSegmentRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
+    const focusNeedleRef = React.useRef<SVGPathElement | null>(null);
+    const shouldRestoreFocus = useChartFocusRestore(element => {
+      const target = lastFocusedGaugeElementRef.current;
+      return (
+        !!target &&
+        (element === lastFocusedGaugeNodeRef.current ||
+          element ===
+            ('segmentIndex' in target ? focusSegmentRefs.current.get(target.segmentIndex) : focusNeedleRef.current))
+      );
+    });
     const _width = props.width || width;
     const _height = props.height || height;
     const _outerRadius: number = Math.min(
@@ -171,6 +206,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     let _calloutAnchor: string = '';
 
     React.useEffect(() => {
+      if (isPopoverOpen && calloutTarget && !currentCalloutAvailable) {
+        _handleCalloutDismiss();
+      }
+    });
+
+    React.useEffect(() => {
       if (_rootElem.current) {
         setWidth(_rootElem.current.clientWidth);
         setHeight(_rootElem.current.clientHeight);
@@ -178,14 +219,57 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }, []);
 
     React.useEffect(() => {
-      if (prevPropsRef.current) {
-        const prevProps = prevPropsRef.current;
-        if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-          setSelectedLegends(props.legendProps?.selectedLegends || []);
-        }
+      if (selectionChanged) {
+        setLegendSelection({
+          controlledSelectedLegends: props.legendProps?.selectedLegends,
+          selectedLegends: props.legendProps?.selectedLegends || [],
+        });
       }
-      prevPropsRef.current = props;
-    }, [props]);
+    }, [props.legendProps?.selectedLegends, selectionChanged]);
+
+    React.useEffect(() => {
+      const chartChanged =
+        !areChartDataEqual(previousFocusSegmentsRef.current, props.segments) ||
+        previousFocusChartValueRef.current !== props.chartValue;
+      previousFocusSegmentsRef.current = props.segments;
+      previousFocusChartValueRef.current = props.chartValue;
+      const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
+
+      if (!chartChanged || !restoreFocus) {
+        return;
+      }
+
+      const focusTarget =
+        props.focusRestorePolicy === 'reset'
+          ? props.focusOnReset ?? lastFocusedGaugeElementRef.current
+          : lastFocusedGaugeElementRef.current;
+      if (!focusTarget) {
+        return;
+      }
+
+      const segment = 'segmentIndex' in focusTarget ? _segments[focusTarget.segmentIndex] : undefined;
+      if ('segmentIndex' in focusTarget && !_isSegmentAvailable(segment)) {
+        return;
+      }
+      const element =
+        'segmentIndex' in focusTarget ? focusSegmentRefs.current.get(focusTarget.segmentIndex) : focusNeedleRef.current;
+      if (isChartElementTabbable(element)) {
+        lastFocusedGaugeElementRef.current = focusTarget;
+        lastFocusedGaugeNodeRef.current = element;
+        if (props.focusRestorePolicy === 'reset' && element === element.ownerDocument.activeElement) {
+          _showCalloutForElement(element, segment?.legend ?? 'Needle', true, focusTarget);
+        }
+        element.focus();
+      }
+    }, [
+      props.chartValue,
+      props.focusOnReset,
+      props.focusRestorePolicy,
+      props.segments,
+      props.legendProps?.selectedLegends,
+      selectedLegends,
+      shouldRestoreFocus,
+    ]);
 
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
@@ -287,14 +371,17 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             A ${halfStrokeWidth + 3},${halfStrokeWidth + 3},0,0,0,0,${-halfStrokeWidth - 3}
           `}
             id={needleId}
+            ref={focusNeedleRef}
             strokeWidth={strokeWidth}
             className={classes.needle}
             transform={`translate(${-_innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
             data-is-focusable={true}
-            onFocus={e => _handleFocus(e, 'Needle', needleId)}
-            onBlur={_handleBlur}
-            onMouseEnter={e => _handleMouseOver(e, 'Needle', needleId)}
-            onMouseMove={e => _handleMouseOver(e, 'Needle', needleId)}
+            onFocus={e => {
+              lastFocusedGaugeElementRef.current = { target: 'needle' };
+              _handleFocus(e, 'Needle');
+            }}
+            onMouseEnter={e => _handleMouseOver(e, 'Needle', { target: 'needle' })}
+            onMouseMove={e => _handleMouseOver(e, 'Needle', { target: 'needle' })}
             role="img"
             aria-label={
               'Current value: ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)
@@ -343,11 +430,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       event: React.MouseEvent<HTMLButtonElement>,
       currentLegend?: Legend,
     ): void {
-      if (props.legendProps?.canSelectMultipleLegends) {
-        setSelectedLegends(selectedLegends);
-      } else {
-        setSelectedLegends(selectedLegends.slice(-1));
-      }
+      setLegendSelection(selection => ({
+        ...selection,
+        selectedLegends: props.legendProps?.canSelectMultipleLegends ? selectedLegends : selectedLegends.slice(-1),
+      }));
       if (props.legendProps?.onChange) {
         props.legendProps.onChange(selectedLegends, event, currentLegend);
       }
@@ -374,17 +460,30 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
     }
 
+    function _isSegmentAvailable(segment: ExtendedSegment | undefined) {
+      return !!segment && segment.size > 0 && (_noLegendHighlighted() || _legendHighlighted(segment.legend));
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string, elementId?: string) {
-      _showCallout(focusEvent, focusedElement, true, elementId);
+    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) {
+      lastFocusedGaugeNodeRef.current = getChartEventTarget(focusEvent);
+      _showCallout(focusEvent, focusedElement, true, lastFocusedGaugeElementRef.current);
     }
 
-    function _handleBlur() {
-      _hideCallout(true);
+    function _handleChartBlur(event: React.FocusEvent<HTMLDivElement>) {
+      const focusInCallout = calloutRef.current?.contains(event.relatedTarget);
+      const focusLeavesCallout = calloutRef.current?.contains(event.target) && !focusInCallout;
+      if ((isFocusLeavingChart(event) || focusLeavesCallout) && !focusInCallout) {
+        _hideCallout(true);
+      }
     }
 
-    function _handleMouseOver(mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string, elementId?: string) {
-      _showCallout(mouseEvent, hoveredElement, false, elementId);
+    function _handleMouseOver(
+      mouseEvent: React.MouseEvent<SVGElement>,
+      hoveredElement: string,
+      target: GaugeCalloutTarget,
+    ) {
+      _showCallout(mouseEvent, hoveredElement, false, target);
     }
 
     function _handleMouseOut() {
@@ -399,32 +498,27 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       event: React.MouseEvent<SVGElement, MouseEvent> | React.FocusEvent<SVGElement, Element>,
       legend: string,
       isFocusEvent: boolean,
-      elementId?: string,
+      target?: GaugeCalloutTarget,
     ) {
-      if (_calloutAnchor === legend) {
+      _showCalloutForElement(getChartEventTarget(event), legend, isFocusEvent, target);
+    }
+
+    function _showCalloutForElement(
+      targetElement: SVGElement,
+      legend: string,
+      isFocusEvent: boolean,
+      target?: GaugeCalloutTarget,
+    ) {
+      if (!isFocusEvent && _calloutAnchor === legend) {
         return;
       }
-      const targetElement = elementId
-        ? document.getElementById(elementId)
-        : (event.currentTarget as unknown as HTMLElement);
       _calloutAnchor = legend;
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const hoverYValues: YValue[] = _segments
-        .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
-        .map(segment => {
-          const yValue: YValue = {
-            legend: segment.legend,
-            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
-            color: segment.color,
-          };
-          return yValue;
-        });
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
       setRefSelected(targetElement);
+      setCalloutTarget(target);
       setCalloutLegend(legend);
-      setHoverYValues(hoverYValues);
       if (isFocusEvent) {
         setFocusedElement(legend);
       }
@@ -434,7 +528,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       _calloutAnchor = '';
       setPopoverOpen(false);
       setCalloutLegend('');
-      setHoverYValues([]);
+      setCalloutTarget(undefined);
       if (isBlurEvent) {
         setFocusedElement('');
       }
@@ -611,15 +705,36 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${_segments.length} segments. `;
     }
     const { arcs } = _processProps();
+    const selectedSegment =
+      calloutTarget && 'segmentIndex' in calloutTarget ? _segments[calloutTarget.segmentIndex] : undefined;
+    const currentCalloutLegend = calloutTarget
+      ? 'segmentIndex' in calloutTarget
+        ? selectedSegment?.legend
+        : calloutTarget.target === 'needle'
+        ? 'Needle'
+        : 'Chart value'
+      : calloutLegend;
+    const currentCalloutAvailable =
+      !calloutTarget || !('segmentIndex' in calloutTarget) || _isSegmentAvailable(selectedSegment);
+    const hoverYValues: YValue[] = isPopoverOpen
+      ? _segments
+          .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
+          .map(segment => ({
+            legend: segment.legend,
+            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
+            color: segment.color,
+          }))
+      : [];
     const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return (
       <div
         className={classes.root}
+        onBlur={_handleChartBlur}
         ref={el => {
           _rootElem.current = el;
         }}
       >
-        <div className={classes.chartWrapper} {...arrowAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes} onBlur={_handleChartBlur}>
           <svg
             className={classes.chart}
             width={_width}
@@ -672,7 +787,21 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       <path
                         d={arc.d}
                         id={arcId}
-                        strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
+                        ref={element => {
+                          if (element) {
+                            focusSegmentRefs.current.set(arc.segmentIndex, element);
+                          } else {
+                            focusSegmentRefs.current.delete(arc.segmentIndex);
+                          }
+                        }}
+                        strokeWidth={
+                          focusedElement &&
+                          lastFocusedGaugeElementRef.current &&
+                          'segmentIndex' in lastFocusedGaugeElementRef.current &&
+                          lastFocusedGaugeElementRef.current.segmentIndex === arc.segmentIndex
+                            ? ARC_PADDING
+                            : 0
+                        }
                         className={classes.segment}
                         fill={segment.color}
                         opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
@@ -691,12 +820,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                           'option',
                           true,
                         )}
-                        onFocus={e => _handleFocus(e, segment.legend, arcId)}
-                        onBlur={_handleBlur}
-                        onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
+                        onFocus={e => {
+                          lastFocusedGaugeElementRef.current = { segmentIndex: arc.segmentIndex };
+                          _handleFocus(e, segment.legend);
+                        }}
+                        onMouseEnter={e => _handleMouseOver(e, segment.legend, { segmentIndex: arc.segmentIndex })}
                         onMouseLeave={e => _handleCalloutDismiss()}
-                        onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
-                        tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
+                        onMouseMove={e => _handleMouseOver(e, segment.legend, { segmentIndex: arc.segmentIndex })}
+                        tabIndex={_isSegmentAvailable(segment) ? 0 : undefined}
                       />
                     </React.Fragment>
                   );
@@ -704,8 +835,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               </g>
               {_renderNeedle()}
               <g
-                onMouseEnter={e => _handleMouseOver(e, 'Chart value')}
-                onMouseMove={e => _handleMouseOver(e, 'Chart value')}
+                ref={chartValueRef}
+                onMouseEnter={e => _handleMouseOver(e, 'Chart value', { target: 'chartValue' })}
+                onMouseMove={e => _handleMouseOver(e, 'Chart value', { target: 'chartValue' })}
               >
                 <SVGTooltipText
                   content={getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)}
@@ -739,39 +871,54 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           </svg>
         </div>
         {_renderLegends()}
-        {!props.hideTooltip && isPopoverOpen && (
-          <ChartPopover
-            {...props.calloutProps}
-            positioning={{
-              target: refSelected,
-            }}
-            isPopoverOpen={isPopoverOpen}
-            customCallout={{
-              customizedCallout:
-                (() => {
-                  const calloutData: GaugeChartCalloutData = {
-                    legend: calloutLegend,
-                    chartTitle: props.chartTitle,
-                    chartValue: props.chartValue,
-                    minValue: _minValue,
-                    maxValue: _maxValue,
-                    chartValueLabel: getChartValueLabel(
-                      props.chartValue,
-                      _minValue,
-                      _maxValue,
-                      props.chartValueFormat,
-                      true,
-                    ),
-                    segments: _segments.slice(0, props.segments.length).map(segment => ({ ...segment })),
-                    segmentValues: hoverYValues,
-                  };
+        {!props.hideTooltip && isPopoverOpen && currentCalloutAvailable && (
+          <div ref={calloutRef}>
+            <ChartPopover
+              {...props.calloutProps}
+              positioning={{
+                target:
+                  calloutTarget && refSelected
+                    ? {
+                        getBoundingClientRect: () => {
+                          const marker =
+                            'segmentIndex' in calloutTarget
+                              ? focusSegmentRefs.current.get(calloutTarget.segmentIndex)
+                              : calloutTarget.target === 'needle'
+                              ? focusNeedleRef.current
+                              : chartValueRef.current;
+                          return (marker ?? refSelected).getBoundingClientRect();
+                        },
+                      }
+                    : refSelected,
+              }}
+              isPopoverOpen={isPopoverOpen}
+              customCallout={{
+                customizedCallout:
+                  (() => {
+                    const calloutData: GaugeChartCalloutData = {
+                      legend: currentCalloutLegend ?? '',
+                      chartTitle: props.chartTitle,
+                      chartValue: props.chartValue,
+                      minValue: _minValue,
+                      maxValue: _maxValue,
+                      chartValueLabel: getChartValueLabel(
+                        props.chartValue,
+                        _minValue,
+                        _maxValue,
+                        props.chartValueFormat,
+                        true,
+                      ),
+                      segments: _segments.slice(0, props.segments.length).map(segment => ({ ...segment })),
+                      segmentValues: hoverYValues,
+                    };
 
-                  return props.onRenderCallout
-                    ? props.onRenderCallout(calloutData, _renderCallout)
-                    : _renderCallout(calloutData);
-                })() ?? undefined,
-            }}
-          />
+                    return props.onRenderCallout
+                      ? props.onRenderCallout(calloutData, _renderCallout)
+                      : _renderCallout(calloutData);
+                  })() ?? undefined,
+              }}
+            />
+          </div>
         )}
       </div>
     );

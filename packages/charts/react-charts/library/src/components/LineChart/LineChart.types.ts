@@ -6,6 +6,7 @@ import type {
   Basestate,
   RefArrayData,
   CustomizedCalloutData,
+  FocusRestorePolicy,
 } from '../../types/index';
 import type { EventAnnotation } from '../../types/EventAnnotation';
 import type {
@@ -38,12 +39,12 @@ export interface LineChartProps extends CartesianChartProps {
   eventAnnotationProps?: EventsAnnotationProps;
 
   /**
-   * Define a custom callout renderer for a data point
+   * Define a custom callout renderer for a data point.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
-   * Define a custom callout renderer for a stack; default is to render per data point
+   * Define a custom callout renderer for a stack; default is to render per data point.
    */
   onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
 
@@ -94,6 +95,35 @@ export interface LineChartProps extends CartesianChartProps {
    * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
+
+  /**
+   * Focus policy for data/color content changes. Defaults to 'preserve', which leaves
+   * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
+   * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   * An open callout uses its selected source coordinates and the current data and rendered marker
+   * (or path highlight) for its payload and position, even without a new focus event.
+   * Points invalid on their effective X/Y scales close the callout, including nonpositive
+   * values on logarithmic axes; valid zero values on linear axes remain available.
+   * Under 'preserve', an input inside a custom callout keeps its focus and component state
+   * while the callout updates; the callout is not remounted to refresh its content.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
+  /**
+   * Point to focus on a data/color content change when focusRestorePolicy is 'reset'.
+   * When omitted, resets use the previously focused point. 'preserve' always retains that point.
+   * Indices are zero-based positions in the current data.lineChartData and its series' data array,
+   * before legend filtering. Reordering data changes which series or point occupies a position.
+   * Callback-only changes do not restore focus.
+   * Missing, unplottable, and non-tabbable targets are skipped, leaving focus unchanged.
+   * Simultaneous data and controlled legend updates use the updated legend selection.
+   * Optimized mounting defers the reset until the chart's scales and elements are ready.
+   * For path-rendered lines without markers, focus moves to the line containing this point.
+   */
+  focusOnReset?: {
+    lineIndex: number;
+    pointIndex: number;
+  };
 }
 
 /**

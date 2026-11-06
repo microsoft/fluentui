@@ -20,6 +20,9 @@ import {
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
+import { line as d3Line } from 'd3-shape';
+import { areChartDataEqual } from '../CommonComponents/ChartFocusUtils';
+import { getCurveFactory } from '../../utilities/utilities';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
@@ -292,6 +295,44 @@ describe('transform Plotly Json To chart Props', () => {
     expect(
       transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test.each([
+    { previous: 0.1, current: 1.2, equal: false },
+    { previous: 0.1, current: 0.1, equal: true },
+    { previous: undefined, current: 1, equal: true },
+  ])('retains spline rendering semantics for smoothing $previous -> $current', ({ previous, current, equal }) => {
+    const transform = (smoothing?: number) => {
+      const schema: PlotlySchema = {
+        data: [
+          {
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Spline',
+            x: [1, 2, 3],
+            y: [10, 40, 20],
+            line: { shape: 'spline', smoothing },
+          },
+        ],
+        layout: {},
+      };
+      return transformPlotlyJsonToLineChartProps(schema, false, { current: new Map<string, string>() }, 'default', true)
+        .data;
+    };
+    const previousData = transform(previous);
+    const currentData = transform(current);
+    const previousCurve = previousData.lineChartData![0].lineOptions?.curve;
+    const currentCurve = currentData.lineChartData![0].lineOptions?.curve;
+    const path = (curve: typeof previousCurve) =>
+      d3Line<[number, number]>().curve(getCurveFactory(curve))([
+        [1, 10],
+        [2, 40],
+        [3, 20],
+      ]);
+
+    expect(previousCurve).not.toBe(currentCurve);
+    expect(path(previousCurve) === path(currentCurve)).toBe(equal);
+    expect(areChartDataEqual(previousData, currentData)).toBe(equal);
   });
 
   test('transformPlotlyJsonToLineChartProps - maps layout annotations to chart annotations', () => {
