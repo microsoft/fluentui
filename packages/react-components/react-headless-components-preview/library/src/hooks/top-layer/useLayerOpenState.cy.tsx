@@ -2,7 +2,8 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
-import type { TopLayerMode, TopLayerOpenChangeType } from './types';
+import { useLayerPresence } from './useLayerPresence';
+import type { ToggleEvent, TopLayerMode, TopLayerOpenChangeType } from './types';
 import { Provider } from '../../components/Provider';
 
 const mount = (element: React.ReactElement) => mountBase(<Provider>{element}</Provider>);
@@ -11,6 +12,33 @@ const mount = (element: React.ReactElement) => mountBase(<Provider>{element}</Pr
 // 118), so both close.
 const chromiumVersion = Number(/Chrome\/(\d+)/.exec(navigator.userAgent)?.[1] ?? Infinity);
 const itWithNestedEscape = chromiumVersion >= 120 ? it : it.skip;
+
+const exitStyles = `
+  @keyframes layerExit {
+    from { display: block; opacity: 1; }
+    to { display: none; opacity: 0; }
+  }
+  #layer {
+    transition: overlay 10s allow-discrete;
+  }
+  #layer:not([data-open]) {
+    animation: layerExit 10s linear;
+  }
+`;
+
+// The exit runs while the element is out of the top layer, so the browser reopening it cancels the animation.
+const popoverOpenExitStyles = `
+  @keyframes layerExit {
+    from { display: block; opacity: 1; }
+    to { display: none; opacity: 0; }
+  }
+  #layer {
+    transition: overlay 10s allow-discrete;
+  }
+  #layer:not(:popover-open) {
+    animation: layerExit 10s linear;
+  }
+`;
 
 type LayerProps = {
   id: string;
@@ -30,7 +58,9 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
     mode,
     onOpenChange: (nextOpen, { type }) => (nextOpen ? onOpen?.() : onClose?.(type)),
   });
-  if (!open && unmountOnClose !== false) {
+  const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
+
+  if (!shouldRender) {
     return null;
   }
 
@@ -80,7 +110,7 @@ const Example = ({ mode, role, children }: Pick<LayerProps, 'mode' | 'role' | 'c
   );
 };
 
-describe('useDialogLayerOpenState', () => {
+describe('useDialogLayerOpenState and useLayerPresence', () => {
   it('promotes the element into the top layer and reports light dismiss', () => {
     mount(<Example mode="auto" />);
 
@@ -122,6 +152,101 @@ describe('useDialogLayerOpenState', () => {
     cy.realPress('Escape');
     cy.get('#layer').should('not.exist');
     cy.get('#reason').should('have.text', 'escape');
+  });
+
+  it('keeps the element mounted until the exit animation finishes', () => {
+    mount(
+      <>
+        <style>{exitStyles}</style>
+        <Example mode="manual" />
+      </>,
+    );
+
+    cy.get('#open').realClick();
+    cy.get('#inside').realClick();
+    cy.get('#layer').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
+    cy.get<HTMLElement>('#layer').then(([layer]) => {
+      layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+    });
+    cy.get('#layer').should('not.exist');
+  });
+
+  it('focuses into an element a native invoker reopens during its exit, and keeps it mounted', () => {
+    const Reopen = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <>
+          <style>{exitStyles}</style>
+          <button id="close" onClick={() => setOpen(false)}>
+            Close
+          </button>
+          <button id="invoker" popoverTarget="layer">
+            Toggle
+          </button>
+          <output id="state">{open ? 'open' : 'closed'}</output>
+          <Layer id="layer" mode="manual" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
+            {/* React's autoFocus doesn't render the attribute the popover focusing steps read. */}
+            <button id="autofocus" ref={button => button?.setAttribute('autofocus', '')}>
+              Autofocus
+            </button>
+          </Layer>
+        </>
+      );
+    };
+    mount(<Reopen />);
+
+    cy.get('#close').realClick();
+    cy.get('#layer').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
+    cy.get('#invoker').realClick();
+    cy.get('#state').should('have.text', 'open');
+    cy.get('#layer').should('match', ':popover-open').and('have.attr', 'data-open');
+    cy.focused().should('have.id', 'autofocus');
+    cy.get<HTMLElement>('#layer').then(([layer]) => {
+      layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+    });
+    cy.get('#layer').should('match', ':popover-open');
+  });
+
+  it('keeps an element mounted when a browser reopen cancels its exit animation', () => {
+    const Reopen = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <>
+          <style>{popoverOpenExitStyles}</style>
+          <button id="close" onClick={() => setOpen(false)}>
+            Close
+          </button>
+          <output id="state">{open ? 'open' : 'closed'}</output>
+          {/* Syncs the browser open late, so the exit outlives the cancelled animation. */}
+          <Layer id="layer" mode="manual" open={open} onOpen={() => setTimeout(() => setOpen(true), 200)} />
+        </>
+      );
+    };
+    mount(<Reopen />);
+
+    cy.get<HTMLElement>('#layer').then(([layer]) => {
+      layer.addEventListener('toggle', event => {
+        if ((event as ToggleEvent).newState === 'closed') {
+          layer.dataset.closed = '';
+        }
+      });
+    });
+    cy.get('#close').realClick();
+    // Past the close event, so the exit waits only on the animations.
+    cy.get<HTMLElement>('#layer')
+      .should(([layer]) => {
+        expect(layer.dataset.closed).to.equal('');
+        expect(layer.getAnimations()).not.to.be.empty;
+      })
+      .then(([layer]) => {
+        layer.showPopover();
+        // Restyle before the queued `toggle` reaches React: the exit animation is cancelled.
+        layer.getAnimations();
+        cy.get('#state').should('have.text', 'open');
+        cy.get('#layer')
+          .should('match', ':popover-open')
+          .and(([current]) => expect(current).to.equal(layer));
+      });
   });
 
   it('keeps a nested auto layer from closing its parent', () => {

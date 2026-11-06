@@ -15,7 +15,7 @@ Each hook does one job, and a component composes only the ones it needs:
 | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `useLayerOpenState`       | Open state, kept in sync with the browser through the Popover API. Reports opens and closes the browser makes. |
 | `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` for a `<dialog>`, and returns focus on close.            |
-| `useLayerPresence`        | Whether to render the element, keeping it mounted and inert while it animates out.                             |
+| `useLayerPresence`        | Whether to render the element, keeping it mounted while it animates out.                                       |
 | `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
 `useLayerPresence` and `useLayerEscape` land in #37018, together with their first consumers. This spec describes the whole stack.
@@ -83,7 +83,7 @@ useLayerPresence(elementRef: React.RefObject<HTMLElement | null>, options: UseLa
 | -------------- | --------- | --------------------------------------------------------- |
 | `shouldRender` | `boolean` | Whether to render the element. Stays true while it exits. |
 
-It works whether it is declared before or after the open-state hook. It measures exit animations in a microtask after the commit, once the element has been hidden. On a reopen during the exit it clears `inert` in an insertion effect, before any layout effect shows the element, so focus can move into it. React 17 has no insertion effects; there, declare it before the open-state hook, as the components do.
+It works whether it is declared before or after the open-state hook. It measures exit animations in a microtask after the commit, once the element has been hidden. If the browser shows the element again before `open` turns true (a native invoker, `showPopover()`), it stays mounted until it closes again, even when the reopen cancels the exit animation.
 
 ### Example
 
@@ -160,9 +160,8 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 
 ## Lifecycle
 
-- **Exit.** A closing element stays mounted until it has left the top layer (waiting for `toggle` or `close` if it is still shown) and finite animations on the element and its pseudo-elements (`::backdrop`, `::before`, `::after`) end; animations on descendants are not awaited. The animation check (`waitForAnimations`) is master's `DialogSurface` exit check from #36842, moved into a util; it is not new behaviour. An element that never opened unmounts right away. Opening adds a render only when enter animations run.
-- **Exit styles.** Keep the element displayed and in the top layer while it animates out: `transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes. Target the exit with `:not([data-open])`, and handle `prefers-reduced-motion` in CSS.
-- **Inert while exiting.** While exit animations run, the element gets `inert` and `aria-hidden="true"`. When the exit ends, both go back to the values they had before, unless React changed them meanwhile (e.g. `aria-hidden={!open}` on a reopen).
+- **Exit.** A closing element stays mounted until its close event has fired and finite animations on the element and its pseudo-elements (`::backdrop`, `::before`, `::after`) end; animations on descendants are not awaited. `close()` and `hidePopover()` queue `close` / `toggle`, so the element's own `onClose` / `onToggle` handlers still run after a React close; a modal waits for `close`, which comes after `toggle` where dialogs fire both. The animation check (`waitForAnimations`) is master's `DialogSurface` exit check from #36842, moved into a util; it is not new behaviour. An element that never opened unmounts right away. Opening adds a render only when enter animations run.
+- **Exit styles.** Keep the element displayed and in the top layer while it animates out: `transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes. Target the exit with `:not([data-open])`, add `pointer-events: none` there so the fading element ignores clicks, and handle `prefers-reduced-motion` in CSS.
 - **`popover` attribute changed while open** (e.g. Popover `mode`). The browser hides the element; it is shown again with the new value, and no close is reported.
 - **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `inertTrapFocus`). To `modal`: the popover is hidden and the element is shown again as a modal. From `modal`: it stays modal until it closes, with a dev warning, and opens in the new mode next time. No close is reported either way.
 - **Element replaced or mounted late.** A new element (changed `key`, or rendered after `open` became true) is shown, with `onShow` as on any other open. An exiting element that is replaced or removed finishes its exit.
@@ -207,8 +206,8 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 | `when`   | `'manual' \| 'always'`  | `'manual'` | `manual`: only where the browser leaves Escape to the page: `popover="manual"` and `hint` where unsupported (it reads back as `manual`). `always`: every Escape. |
 | `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.           |
 
-- With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`, which reads the event's composed path, so a layer inside a shadow root counts). Because it is a React handler, Escape from content portaled out of the element still counts.
-- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer. With several such layers open, only the newest handles it. The listener doesn't need the element, so one that mounts after `open` turned true is covered.
+- With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`, which reads the event's composed path, so a layer inside a shadow root counts). Because it is a React handler, Escape from content portaled out of the element still counts, also into a layer that encloses it.
+- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer. With several such layers open in a document, only that document's newest handles it. The listener doesn't need the element, so one that mounts after `open` turned true is covered.
 - Escape already prevented is ignored. A handled Escape is reported first, so `onEscape` can check `isDefaultPrevented()` for a veto, then prevented and stopped: outer layers' handlers and the browser leave it alone.
 
 ## Not covered yet
@@ -226,7 +225,7 @@ Each component composes the hooks it needs. This is the state after #37019; #369
 
 - **Popover / TeachingPopover / InfoLabel.** `useDialogLayerOpenState` with `mode: inertTrapFocus ? 'modal' : mode` and `returnFocus: { target: triggerRef }`, and `useLayerPresence`. `useLayerEscape` closes a `manual` surface on Escape. `PopoverTrigger` keeps its own Escape handler for focus on the trigger.
 - **Dialog / Drawer.** `useDialogLayerOpenState` with `'modal'`, or `'manual'` when non-modal, and `useLayerPresence`. Browser opens and closes are reported as `surfaceToggle`. `useLayerEscape` with `when: 'always'` reports every Escape as `escapeKeyDown`, skipping Escape from a layer nested inside. As on master, `DialogSurface` blocks the browser closing a modal on Escape so `onOpenChange` can veto, and locks scroll. `returnFocus: { when: 'always' }` returns focus to the element focused before a non-modal dialog opened; a modal dialog's `close()` returns it natively.
-- **Tooltip.** `useLayerOpenState` with `mode: 'hint'`, `useLayerPresence`, and `useLayerEscape` with `listen: 'document'`, which closes it on Escape where `hint` falls back to `manual`. Stays mounted so `aria-labelledby` / `aria-describedby` resolve.
+- **Tooltip.** `useLayerOpenState` with `mode: 'hint'`, `useLayerPresence`, and `useLayerEscape` with `listen: 'document'` and `when: 'always'`, which closes only the tooltip on Escape, before an enclosing `DialogSurface` sees it, with or without `hint` support. Stays mounted so `aria-labelledby` / `aria-describedby` resolve.
 - **Menu.** `useLayerOpenState` with `mode: 'auto'`. Stays mounted; `onShow` re-applies `focusgroup` and focuses the first enabled item. `useMenu` returns focus. Browser closes are reported as `clickOutside`.
 - **Combobox / Dropdown / TagPicker listbox.** `useLayerOpenState` with `mode: 'auto'`. Combobox and Dropdown render the listbox while `shouldRenderListbox` from `useLayerPresence` is true. Focus stays on the trigger.
 - **Toaster.** Each toast position is a `manual` popover, shown while it has toasts. Escape on the toaster closes all toasts, unless a layer inside already handled it.
@@ -239,10 +238,9 @@ Each component composes the hooks it needs. This is the state after #37019; #369
 | #36910 | Modal Dialog native close (`<form method="dialog">`)        | closes, not reported, so React state goes out of sync                                                                | closes, reported as `surfaceToggle`                                        |
 | #36910 | Native opens (`popovertarget`, `commandfor`, `showModal()`) | non-modal Dialog synced as `surfaceToggle`; Popover unreachable while closed                                         | also modal Dialog, where dialogs fire `toggle` (Chromium 132+)             |
 | #37018 | Escape in a layer nested in a `DialogSurface`               | the outer dialog closed too, unless a nested handler called `preventDefault()`; popovers the browser closes never do | only the inner one closes                                                  |
-| #37018 | Tooltip Escape where `hint` is unsupported                  | ignored                                                                                                              | closes the tooltip                                                         |
+| #37018 | Tooltip Escape                                              | ignored where `hint` is unsupported; inside a `DialogSurface`, closed the dialog                                     | closes only the tooltip                                                    |
 | #37018 | Popover exit                                                | unmounted once the browser reported the close                                                                        | also waits for exit animations, like `DialogSurface`                       |
-| #37018 | Exiting Popover and Dialog                                  | —                                                                                                                    | `inert` and `aria-hidden="true"` while exit animations run                 |
-| #37018 | Tooltip, Dropdown and Combobox exit                         | unmounted as soon as they closed                                                                                     | wait for exit animations, `inert` while they run                           |
+| #37018 | Tooltip, Dropdown and Combobox exit                         | unmounted as soon as they closed                                                                                     | wait for exit animations                                                   |
 | #37019 | Popover `mode`                                              | always `auto`                                                                                                        | `auto`, `manual` or `hint`; a `manual` surface closes on Escape            |
 
 ## Stacking and nesting

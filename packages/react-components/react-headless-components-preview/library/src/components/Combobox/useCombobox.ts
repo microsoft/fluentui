@@ -19,6 +19,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     triggerNativeProps,
     internalState,
     listbox,
+    shouldRenderListbox,
     rootSlot,
   } = useListboxPopupState<ComboboxProps, HTMLInputElement>(props, {
     primarySlotTagName: 'input',
@@ -60,7 +61,8 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       'data-clearable': toDataAttributeValue(showClearIcon),
     },
     input: triggerSlot,
-    listbox: open || hasFocus ? listbox : undefined,
+    listbox: hasFocus || shouldRenderListbox ? listbox : undefined,
+    shouldRenderListbox,
     clearIcon: slot.optional(mergedProps.clearIcon, {
       defaultProps: { 'aria-hidden': 'true' },
       elementType: 'span',

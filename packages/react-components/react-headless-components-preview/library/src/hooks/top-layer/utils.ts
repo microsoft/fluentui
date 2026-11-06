@@ -54,6 +54,18 @@ export const isModal = (element: HTMLDialogElement): boolean => {
   }
 };
 
+const isLayerElement = (node: EventTarget): boolean => !!(node as Element).matches?.('[popover], dialog');
+
+/**
+ * Whether the Escape `event` is for `layer`: not when it comes from a popover or dialog nested inside it, including one
+ * inside a shadow root. Content portaled out of `layer`, to the page or into a layer that encloses it, still counts.
+ * Call it while the event is dispatched.
+ */
+export const isEscapeForLayer = (layer: Element, event: Event): boolean => {
+  const targetLayer = event.composedPath().find(isLayerElement) as Element | undefined;
+  return !targetLayer || targetLayer === layer || targetLayer.contains(layer);
+};
+
 /**
  * Calls `onFinished` once the finite animations on the element and its pseudo-elements (`::backdrop`, `::before`,
  * `::after`) end, or right away when none run. Animations on descendants are ignored. Returns a cancel function.
