@@ -5,7 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderSpinButton_unstable as renderSpinButton } from '@fluentui/react-spinbutton';
 import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 import { SpinButtonBaseProps as SpinButtonProps } from '@fluentui/react-spinbutton';

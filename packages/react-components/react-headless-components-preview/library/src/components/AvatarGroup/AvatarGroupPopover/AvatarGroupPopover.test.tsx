@@ -70,13 +70,16 @@ describe('AvatarGroupPopover', () => {
   });
 
   it('sets aria-expanded on the trigger as the popover toggles', () => {
-    const { getByRole } = renderOverflow();
+    const { getByRole, getAllByRole } = renderOverflow();
 
     const trigger = getByRole('button');
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(trigger).not.toHaveAttribute('data-open');
 
     userEvent.click(trigger);
 
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(trigger).toHaveAttribute('data-open');
+    getAllByRole('listitem', { hidden: true }).forEach(item => expect(item).toHaveAttribute('data-overflow-item'));
   });
 });

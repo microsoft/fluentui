@@ -64,6 +64,7 @@ export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {
     root: {
         'data-disabled'?: string;
         'data-selected'?: string;
+        'data-interaction-tag-secondary'?: string;
     };
 };
 

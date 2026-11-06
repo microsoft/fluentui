@@ -203,6 +203,18 @@ describe('Nav', () => {
     expect(link).toHaveAttribute('href', 'https://example.com');
   });
 
+  it('defaults the item icon to decorative', () => {
+    const { getByRole, getByTestId } = render(
+      <Nav>
+        <NavItem value="item" icon={<span data-testid="icon">Icon</span>}>
+          Item
+        </NavItem>
+      </Nav>,
+    );
+    expect(getByRole('button', { name: 'Item' })).toBeInTheDocument();
+    expect(getByTestId('icon').parentElement).toHaveAttribute('aria-hidden', 'true');
+  });
+
   it('hides NavCategoryItem expandIcon from assistive technology by default', () => {
     const result = render(
       <Nav>

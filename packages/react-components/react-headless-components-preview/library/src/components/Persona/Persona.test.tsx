@@ -32,4 +32,11 @@ describe('Persona', () => {
     expect(root.firstElementChild).toBe(primaryText);
     expect(root.lastElementChild).toBe(avatar);
   });
+
+  it('exposes the resolved number of text lines', () => {
+    const { container, rerender } = render(<Persona name="User" />);
+    expect(container.firstElementChild).toHaveAttribute('data-text-lines', '1');
+    rerender(<Persona name="User" secondaryText="Role" tertiaryText="Team" />);
+    expect(container.firstElementChild).toHaveAttribute('data-text-lines', '3');
+  });
 });
