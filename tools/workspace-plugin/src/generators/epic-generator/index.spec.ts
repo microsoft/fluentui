@@ -17,7 +17,7 @@ type Package = {
 };
 
 function setupTest(packages: Package[]) {
-  const tree = createTreeWithEmptyWorkspace();
+  const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
   // Initialize NX package structure
   packages.forEach(pckg => {
@@ -88,7 +88,7 @@ describe('epic-generator', () => {
 
   describe('validation', () => {
     it('requires a non-empty title', () => {
-      const tree = createTreeWithEmptyWorkspace();
+      const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
       expect(() =>
         epicGenerator(tree, { title: ' ', repository: 'microsoft/fluentui' }),
@@ -96,7 +96,7 @@ describe('epic-generator', () => {
     });
 
     it('requires a well formatted repository', () => {
-      const tree = createTreeWithEmptyWorkspace();
+      const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
       expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }))
         .toThrowErrorMatchingInlineSnapshot(`
@@ -108,7 +108,7 @@ describe('epic-generator', () => {
     it.each(['microsoft/fluentui;malicious-command', 'microsoft/fluentui/extra', 'microsoft/'])(
       'rejects a repository containing extra characters: %s',
       repository => {
-        const tree = createTreeWithEmptyWorkspace();
+        const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
         expect(() => epicGenerator(tree, { title: 'test title', repository })).toThrow(/invalid repository name/);
       },
@@ -138,7 +138,7 @@ describe('epic-generator', () => {
       spawnSyncMock.mockReturnValueOnce({
         error: new Error('command not found.'),
       });
-      const tree = createTreeWithEmptyWorkspace();
+      const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
       expect(() => epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }))
         .toThrowErrorMatchingInlineSnapshot(`
@@ -152,7 +152,7 @@ describe('epic-generator', () => {
         output: [['You are not logged into any GitHub hosts. Run gh auth login to authenticate.']],
       });
 
-      const tree = createTreeWithEmptyWorkspace();
+      const tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
       expect(() =>
         epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }),

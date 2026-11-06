@@ -34,7 +34,7 @@ describe('migrate-v8-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = setupDummyPackage(tree, options);
     tree = setupDummyPackage(tree, {
       name: '@proj/react',

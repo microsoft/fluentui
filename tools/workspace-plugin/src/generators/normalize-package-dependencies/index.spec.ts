@@ -47,7 +47,7 @@ describe('normalize-package-dependencies generator', () => {
     graphMock = {
       ...getBlankGraphMock(),
     };
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = createProject(tree, {
       projectName: 'react-one',
       projectVersion: '1.0.0',

@@ -2,6 +2,13 @@
   "name": "fluentui-repo",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "targets": {
+    "test-workspace": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config=./jest.config.ts"
+      }
+    },
     "prepare-local-registry": {
       "command": "node ./tools/workspace-plugin/scripts/install-verdaccio"
     },

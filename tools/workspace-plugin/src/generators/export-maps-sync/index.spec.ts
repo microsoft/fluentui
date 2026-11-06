@@ -12,7 +12,7 @@ describe('export-maps-sync generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   function setupProject(options: {

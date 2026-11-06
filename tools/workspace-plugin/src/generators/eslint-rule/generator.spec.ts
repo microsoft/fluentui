@@ -1,6 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, readProjectConfiguration, joinPathFragments } from '@nx/devkit';
-import { lintWorkspaceRulesProjectGenerator } from '@nx/eslint/src/generators/workspace-rules-project/workspace-rules-project';
+import { Tree, readProjectConfiguration, joinPathFragments, getProjects, workspaceRoot } from '@nx/devkit';
+import { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
 
 import { eslintRuleGenerator } from './generator';
 import { EslintRuleGeneratorSchema } from './schema';
@@ -13,7 +13,14 @@ describe('eslint-rule generator', () => {
 
   beforeEach(async () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
+    const { implementationFactory } = getGeneratorInformation(
+      '@nx/eslint',
+      'workspace-rules-project',
+      workspaceRoot,
+      Object.fromEntries(getProjects(tree)),
+    );
+    const lintWorkspaceRulesProjectGenerator = implementationFactory();
     await lintWorkspaceRulesProjectGenerator(tree, {});
   });
 

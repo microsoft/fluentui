@@ -73,15 +73,6 @@
       "cache": true,
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
-    "lint": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build"],
-      "cache": true,
-      "inputs": ["default", "{workspaceRoot/eslint.config.js}"],
-      "options": {
-        "command": "eslint src"
-      }
-    },
     "format": {
       "executor": "nx:run-commands",
       "options": {
@@ -211,6 +202,5 @@
         "packages/react-file-type-icons/**"
       ]
     }
-  ],
-  "useLegacyCache": true
+  ]
 }

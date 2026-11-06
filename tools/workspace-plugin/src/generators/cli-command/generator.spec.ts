@@ -8,7 +8,7 @@ describe('cli-command generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
     // Seed the tree with a minimal cli.ts that the generator will modify
     tree.write(

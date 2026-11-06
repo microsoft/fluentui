@@ -55,7 +55,7 @@ describe('prepare-initial-release generator', () => {
     graphMock = {
       ...getBlankGraphMock(),
     };
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree.write(
       '.nxignore',
       stripIndents`
