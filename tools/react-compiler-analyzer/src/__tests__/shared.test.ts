@@ -1,6 +1,6 @@
 import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { tmpdir } from 'node:os';
+import { testRoot as tmpdir } from './helpers/test-root';
 
 import {
   CliError,
@@ -8,7 +8,7 @@ import {
   closeScanLog,
   openScanLog,
   validateConcurrency,
-  validateParserPlugins,
+  rejectRemovedParserOptions,
   validatePath,
   validatePaths,
 } from '../commands/shared';
@@ -52,23 +52,21 @@ describe('validatePath', () => {
   });
 });
 
-describe('validateParserPlugins', () => {
-  it('accepts known Babel parser plugins', () => {
-    expect(() => validateParserPlugins([])).not.toThrow();
-    expect(() => validateParserPlugins(['decorators-legacy', 'typescript'])).not.toThrow();
+describe('removed parser override migration', () => {
+  it('does not alter native grammar selection or ordinary options', () => {
+    expect(() => rejectRemovedParserOptions(['lint', 'example.ts', '--mode', 'all'])).not.toThrow();
   });
 
-  it('rejects an unknown name, which Babel would otherwise ignore silently', () => {
-    expect(() => validateParserPlugins(['not-a-real-plugin'])).toThrow(CliError);
-    expect(() => validateParserPlugins(['not-a-real-plugin'])).toThrow(/analyzed nothing extra/);
-  });
+  it.each(['--parser-plugin', '--parser-plugin=decorators', '--parserPlugins=flow', '--parser-plugins'])(
+    'rejects %s with actionable guidance',
+    flag => {
+      expect(() => rejectRemovedParserOptions(['analyze', 'example.ts', flag])).toThrow(CliError);
+      expect(() => rejectRemovedParserOptions(['analyze', 'example.ts', flag])).toThrow(/removed.*file extension/);
+    },
+  );
 
-  it('catches a casing typo of a real plugin', () => {
-    expect(() => validateParserPlugins(['decoratorsLegacy'])).toThrow(/unknown --parser-plugin/);
-  });
-
-  it('lists the known plugins so the error is actionable', () => {
-    expect(() => validateParserPlugins(['nope'])).toThrow(/decorators-legacy/);
+  it('respects the option terminator', () => {
+    expect(() => rejectRemovedParserOptions(['lint', '--', '--parser-plugin'])).not.toThrow();
   });
 });
 

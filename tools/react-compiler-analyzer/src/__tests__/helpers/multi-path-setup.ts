@@ -1,6 +1,6 @@
 import { mkdtempSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
+import { testRoot as tmpdir } from './test-root';
 
 /** A component that the React Compiler can optimize (has useMemo). */
 export const COMPILABLE_COMPONENT = `import { useMemo, useState } from 'react';

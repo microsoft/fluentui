@@ -14,7 +14,7 @@ function isPreservedFileOptOut(result: DirectiveAnalysis): boolean {
  */
 export function printReport(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, verbose: boolean): void {
   f.line(
-    'Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.',
+    'Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.',
   );
   f.line(
     'Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.',
@@ -248,7 +248,7 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
 
   if (redundantNoMemo > 0 && actionableActiveNoMemo > 0) {
     f.line(
-      `> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.`,
+      `> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) are removable under this Oxc profile, not proven universally unnecessary.`,
     );
     f.line(
       `> **${actionableActiveNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,

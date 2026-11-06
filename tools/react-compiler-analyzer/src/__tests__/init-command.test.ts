@@ -1,16 +1,17 @@
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { basename, dirname, join, resolve } from 'node:path';
-import { tmpdir } from 'node:os';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { basename, dirname, join, parse, resolve } from 'node:path';
 
 import { transformSync } from 'esbuild';
 
 import { findRepositoryRoot, runInit, type InitArgv } from '../commands/init';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
+import { validateRcaConfig } from '../config';
 import type { PromptFunction, PromptQuestions } from '../prompts';
 
 const PACKAGE_ROOT = resolve(__dirname, '..', '..');
 const DEFAULT_ARGV: InitArgv = { force: false, skill: true, yes: true };
+const repositories: string[] = [];
 
 function promptWith(answers: Record<string, unknown>, seen: string[] = []): PromptFunction {
   return async <T extends Record<string, unknown>>(questions: PromptQuestions): Promise<T> => {
@@ -24,7 +25,8 @@ function promptWith(answers: Record<string, unknown>, seen: string[] = []): Prom
 }
 
 function createRepository(): string {
-  const root = mkdtempSync(join(tmpdir(), 'rca-init-'));
+  const root = mkdtempSync(join(PACKAGE_ROOT, '.rca-init-'));
+  repositories.push(root);
   mkdirSync(join(root, '.git'));
   return root;
 }
@@ -37,6 +39,9 @@ describe('init command', () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    for (const root of repositories.splice(0)) {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 
   it('loads the real Enquirer prompt through a native Node dynamic import', () => {
@@ -76,6 +81,9 @@ describe('init command', () => {
       format: 'cli',
       exclude: DEFAULT_EXCLUDE,
     });
+    const generated = JSON.parse(readFileSync(join(root, 'rca.config.json'), 'utf-8'));
+    expect(() => validateRcaConfig(generated, 'generated init config')).not.toThrow();
+    expect(generated).not.toHaveProperty('analyze');
     expect(readFileSync(join(root, '.agents/skills/react-compiler-analyzer/SKILL.md'), 'utf-8')).toBe(
       readFileSync(join(PACKAGE_ROOT, 'skills/react-compiler-analyzer/SKILL.md'), 'utf-8'),
     );
@@ -140,8 +148,8 @@ describe('init command', () => {
         analyze: {
           risks: {
             detectGetStateReads: true,
-            resolveWrappers: true,
-            pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'] } },
+            resolveWrappers: false,
+            resolver: { additionalConditionNames: ['source'], mainFields: ['source', 'main'] },
           },
         },
       }),
@@ -165,7 +173,8 @@ describe('init command', () => {
       concurrency: 4,
       analyze: {
         risks: {
-          pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'] } },
+          resolveWrappers: false,
+          resolver: { additionalConditionNames: ['source'], mainFields: ['source', 'main'] },
         },
       },
     });
@@ -186,6 +195,49 @@ describe('init command', () => {
       { cwd: root, packageRoot: PACKAGE_ROOT, interactive: false },
     );
     expect(JSON.parse(readFileSync(configPath, 'utf-8'))).toMatchObject({ mode: 'infer', format: 'cli' });
+  });
+
+  it.each([
+    { parserPlugins: ['decorators-legacy'] },
+    { analyze: { risks: { pathAliases: { baseUrl: '.', paths: { '@app/*': ['src/*'] } } } } },
+  ])('does not silently discard removed input on rerun: %j', async legacy => {
+    const root = createRepository();
+    const configPath = join(root, 'rca.config.json');
+    const original = JSON.stringify({ mode: 'infer', ...legacy });
+    writeFileSync(configPath, original);
+    await expect(
+      runInit(
+        { ...DEFAULT_ARGV, skill: false },
+        {
+          cwd: root,
+          packageRoot: PACKAGE_ROOT,
+          interactive: false,
+        },
+      ),
+    ).rejects.toThrow(/--force/);
+    expect(readFileSync(configPath, 'utf8')).toBe(original);
+    await runInit(
+      { ...DEFAULT_ARGV, skill: false, yes: false },
+      {
+        cwd: root,
+        packageRoot: PACKAGE_ROOT,
+        interactive: true,
+        prompt: promptWith({ replaceConfig: false }),
+      },
+    );
+    expect(readFileSync(configPath, 'utf8')).toBe(original);
+    await runInit(
+      { ...DEFAULT_ARGV, skill: false, force: true },
+      {
+        cwd: root,
+        packageRoot: PACKAGE_ROOT,
+        interactive: false,
+      },
+    );
+    const generated = JSON.parse(readFileSync(configPath, 'utf8'));
+    expect(() => validateRcaConfig(generated, 'forced init config')).not.toThrow();
+    expect(generated).not.toHaveProperty('parserPlugins');
+    expect(generated.analyze?.risks ?? {}).not.toHaveProperty('pathAliases');
   });
 
   it('preserves existing custom excludes', async () => {
@@ -279,8 +331,9 @@ describe('init command', () => {
   });
 
   it('installs the skill at the nearest Git root when init runs from a nested directory', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'rca-init-worktree-'));
-    writeFileSync(join(root, '.git'), 'gitdir: /tmp/example-worktree\n');
+    const root = mkdtempSync(join(PACKAGE_ROOT, '.rca-init-worktree-'));
+    repositories.push(root);
+    writeFileSync(join(root, '.git'), 'gitdir: ./example-worktree\n');
     const nested = join(root, 'packages', 'app');
     mkdirSync(nested, { recursive: true });
 
@@ -295,10 +348,7 @@ describe('init command', () => {
   });
 
   it('falls back to the current directory outside Git', () => {
-    const root = mkdtempSync(join(tmpdir(), 'rca-init-no-git-'));
-    const nested = join(root, 'nested');
-    mkdirSync(nested);
-
+    const nested = join(parse(PACKAGE_ROOT).root, '__rca_nonexistent_repository__', 'nested');
     expect(findRepositoryRoot(nested)).toBe(nested);
   });
 

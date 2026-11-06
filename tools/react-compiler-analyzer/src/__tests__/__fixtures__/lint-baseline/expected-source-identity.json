@@ -1,0 +1,1566 @@
+{
+  "crlf.tsx": {
+    "sourceHash": "eb51d2624f560bd16ab922629592c70b7a99aa9f7fe40ffa6e9b2c99f90654a3",
+    "functions": [
+      {
+        "id": "crlf.tsx#30-84",
+        "name": "Crlf",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 2,
+            "column": 7,
+            "offset": 30
+          },
+          "end": {
+            "line": 4,
+            "column": 1,
+            "offset": 84
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 2,
+            "column": 23,
+            "offset": 46
+          },
+          "end": {
+            "line": 4,
+            "column": 1,
+            "offset": 84
+          }
+        },
+        "bodyInsertionOffset": 47,
+        "directives": [
+          {
+            "id": "crlf.tsx#directive-51-65",
+            "functionId": "crlf.tsx#30-84",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 3,
+                "column": 2,
+                "offset": 51
+              },
+              "end": {
+                "line": 3,
+                "column": 16,
+                "offset": 65
+              }
+            },
+            "line": 3,
+            "column": 2,
+            "lineText": "  \"use no memo\"; return unicode;",
+            "justified": false
+          }
+        ]
+      }
+    ],
+    "directives": [
+      {
+        "id": "crlf.tsx#directive-51-65",
+        "functionId": "crlf.tsx#30-84",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 3,
+            "column": 2,
+            "offset": 51
+          },
+          "end": {
+            "line": 3,
+            "column": 16,
+            "offset": 65
+          }
+        },
+        "line": 3,
+        "column": 2,
+        "lineText": "  \"use no memo\"; return unicode;",
+        "justified": false
+      }
+    ]
+  },
+  "directives.tsx": {
+    "sourceHash": "73986d49fb634fe5557140f1dfc1c7acc3005a5fbc150931f98d86607f834034",
+    "functions": [
+      {
+        "id": "directives.tsx#40-87",
+        "name": "Zero",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 3,
+            "column": 7,
+            "offset": 40
+          },
+          "end": {
+            "line": 3,
+            "column": 54,
+            "offset": 87
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 3,
+            "column": 23,
+            "offset": 56
+          },
+          "end": {
+            "line": 3,
+            "column": 54,
+            "offset": 87
+          }
+        },
+        "bodyInsertionOffset": 57,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-58-72",
+            "functionId": "directives.tsx#40-87",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 3,
+                "column": 25,
+                "offset": 58
+              },
+              "end": {
+                "line": 3,
+                "column": 39,
+                "offset": 72
+              }
+            },
+            "line": 3,
+            "column": 25,
+            "lineText": "export function Zero() { 'use no memo'; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#95-144",
+        "name": "OptIn",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 4,
+            "column": 7,
+            "offset": 95
+          },
+          "end": {
+            "line": 4,
+            "column": 56,
+            "offset": 144
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 4,
+            "column": 24,
+            "offset": 112
+          },
+          "end": {
+            "line": 4,
+            "column": 56,
+            "offset": 144
+          }
+        },
+        "bodyInsertionOffset": 113,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-114-125",
+            "functionId": "directives.tsx#95-144",
+            "directiveType": "use-memo",
+            "span": {
+              "start": {
+                "line": 4,
+                "column": 26,
+                "offset": 114
+              },
+              "end": {
+                "line": 4,
+                "column": 37,
+                "offset": 125
+              }
+            },
+            "line": 4,
+            "column": 26,
+            "lineText": "export function OptIn() { \"use memo\"; return <span />; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#152-285",
+        "name": "Rejected",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 5,
+            "column": 7,
+            "offset": 152
+          },
+          "end": {
+            "line": 9,
+            "column": 1,
+            "offset": 285
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 5,
+            "column": 66,
+            "offset": 211
+          },
+          "end": {
+            "line": 9,
+            "column": 1,
+            "offset": 285
+          }
+        },
+        "bodyInsertionOffset": 212,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-215-229",
+            "functionId": "directives.tsx#152-285",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 6,
+                "column": 2,
+                "offset": 215
+              },
+              "end": {
+                "line": 6,
+                "column": 16,
+                "offset": 229
+              }
+            },
+            "line": 6,
+            "column": 2,
+            "lineText": "  'use no memo';",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#293-356",
+        "name": "Conflict",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 10,
+            "column": 7,
+            "offset": 293
+          },
+          "end": {
+            "line": 10,
+            "column": 70,
+            "offset": 356
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 10,
+            "column": 27,
+            "offset": 313
+          },
+          "end": {
+            "line": 10,
+            "column": 70,
+            "offset": 356
+          }
+        },
+        "bodyInsertionOffset": 314,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-315-326",
+            "functionId": "directives.tsx#293-356",
+            "directiveType": "use-memo",
+            "span": {
+              "start": {
+                "line": 10,
+                "column": 29,
+                "offset": 315
+              },
+              "end": {
+                "line": 10,
+                "column": 40,
+                "offset": 326
+              }
+            },
+            "line": 10,
+            "column": 29,
+            "lineText": "export function Conflict() { 'use memo'; 'use no memo'; return null; }",
+            "justified": false
+          },
+          {
+            "id": "directives.tsx#directive-327-341",
+            "functionId": "directives.tsx#293-356",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 10,
+                "column": 41,
+                "offset": 327
+              },
+              "end": {
+                "line": 10,
+                "column": 55,
+                "offset": 341
+              }
+            },
+            "line": 10,
+            "column": 41,
+            "lineText": "export function Conflict() { 'use memo'; 'use no memo'; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#364-431",
+        "name": "Duplicate",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 11,
+            "column": 7,
+            "offset": 364
+          },
+          "end": {
+            "line": 11,
+            "column": 74,
+            "offset": 431
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 11,
+            "column": 28,
+            "offset": 385
+          },
+          "end": {
+            "line": 11,
+            "column": 74,
+            "offset": 431
+          }
+        },
+        "bodyInsertionOffset": 386,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-387-401",
+            "functionId": "directives.tsx#364-431",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 11,
+                "column": 30,
+                "offset": 387
+              },
+              "end": {
+                "line": 11,
+                "column": 44,
+                "offset": 401
+              }
+            },
+            "line": 11,
+            "column": 30,
+            "lineText": "export function Duplicate() { \"use no memo\"; \"use no memo\"; return null; }",
+            "justified": false
+          },
+          {
+            "id": "directives.tsx#directive-402-416",
+            "functionId": "directives.tsx#364-431",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 11,
+                "column": 45,
+                "offset": 402
+              },
+              "end": {
+                "line": 11,
+                "column": 59,
+                "offset": 416
+              }
+            },
+            "line": 11,
+            "column": 45,
+            "lineText": "export function Duplicate() { \"use no memo\"; \"use no memo\"; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#439-542",
+        "name": "Justified",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 12,
+            "column": 7,
+            "offset": 439
+          },
+          "end": {
+            "line": 15,
+            "column": 1,
+            "offset": 542
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 12,
+            "column": 28,
+            "offset": 460
+          },
+          "end": {
+            "line": 15,
+            "column": 1,
+            "offset": 542
+          }
+        },
+        "bodyInsertionOffset": 461,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-464-478",
+            "functionId": "directives.tsx#439-542",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 13,
+                "column": 2,
+                "offset": 464
+              },
+              "end": {
+                "line": 13,
+                "column": 16,
+                "offset": 478
+              }
+            },
+            "line": 13,
+            "column": 2,
+            "lineText": "  'use no memo'; // justified: measured consumer constraint",
+            "justified": true,
+            "justification": "justified: measured consumer constraint"
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#550-644",
+        "name": "JustifiedOptIn",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 16,
+            "column": 7,
+            "offset": 550
+          },
+          "end": {
+            "line": 19,
+            "column": 1,
+            "offset": 644
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 16,
+            "column": 33,
+            "offset": 576
+          },
+          "end": {
+            "line": 19,
+            "column": 1,
+            "offset": 644
+          }
+        },
+        "bodyInsertionOffset": 577,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-580-591",
+            "functionId": "directives.tsx#550-644",
+            "directiveType": "use-memo",
+            "span": {
+              "start": {
+                "line": 17,
+                "column": 2,
+                "offset": 580
+              },
+              "end": {
+                "line": 17,
+                "column": 13,
+                "offset": 591
+              }
+            },
+            "line": 17,
+            "column": 2,
+            "lineText": "  \"use memo\"; /* justified: consumer migration */",
+            "justified": true,
+            "justification": "justified: consumer migration"
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#652-700",
+        "name": "ordinary",
+        "kind": "other",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 20,
+            "column": 7,
+            "offset": 652
+          },
+          "end": {
+            "line": 20,
+            "column": 55,
+            "offset": 700
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 20,
+            "column": 27,
+            "offset": 672
+          },
+          "end": {
+            "line": 20,
+            "column": 55,
+            "offset": 700
+          }
+        },
+        "bodyInsertionOffset": 673,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-674-688",
+            "functionId": "directives.tsx#652-700",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 20,
+                "column": 29,
+                "offset": 674
+              },
+              "end": {
+                "line": 20,
+                "column": 43,
+                "offset": 688
+              }
+            },
+            "line": 20,
+            "column": 29,
+            "lineText": "export function ordinary() { 'use no memo'; return 1; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#735-789",
+        "name": "Wrapped",
+        "kind": "component",
+        "syntax": "expression",
+        "declarationSpan": {
+          "start": {
+            "line": 21,
+            "column": 34,
+            "offset": 735
+          },
+          "end": {
+            "line": 21,
+            "column": 88,
+            "offset": 789
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 21,
+            "column": 53,
+            "offset": 754
+          },
+          "end": {
+            "line": 21,
+            "column": 88,
+            "offset": 789
+          }
+        },
+        "bodyInsertionOffset": 755,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-756-770",
+            "functionId": "directives.tsx#735-789",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 21,
+                "column": 55,
+                "offset": 756
+              },
+              "end": {
+                "line": 21,
+                "column": 69,
+                "offset": 770
+              }
+            },
+            "line": 21,
+            "column": 55,
+            "lineText": "export const Wrapped = React.memo(function Wrapped() { 'use no memo'; return <span />; });",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#834-915",
+        "name": "Forwarded",
+        "kind": "component",
+        "syntax": "expression",
+        "declarationSpan": {
+          "start": {
+            "line": 22,
+            "column": 42,
+            "offset": 834
+          },
+          "end": {
+            "line": 25,
+            "column": 1,
+            "offset": 915
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 22,
+            "column": 74,
+            "offset": 866
+          },
+          "end": {
+            "line": 25,
+            "column": 1,
+            "offset": 915
+          }
+        },
+        "bodyInsertionOffset": 867,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-870-884",
+            "functionId": "directives.tsx#834-915",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 23,
+                "column": 2,
+                "offset": 870
+              },
+              "end": {
+                "line": 23,
+                "column": 16,
+                "offset": 884
+              }
+            },
+            "line": 23,
+            "column": 2,
+            "lineText": "  \"use no memo\";",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#925-1033",
+        "name": "Outer",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 26,
+            "column": 7,
+            "offset": 925
+          },
+          "end": {
+            "line": 30,
+            "column": 1,
+            "offset": 1033
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 26,
+            "column": 24,
+            "offset": 942
+          },
+          "end": {
+            "line": 30,
+            "column": 1,
+            "offset": 1033
+          }
+        },
+        "bodyInsertionOffset": 943,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-946-960",
+            "functionId": "directives.tsx#925-1033",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 27,
+                "column": 2,
+                "offset": 946
+              },
+              "end": {
+                "line": 27,
+                "column": 16,
+                "offset": 960
+              }
+            },
+            "line": 27,
+            "column": 2,
+            "lineText": "  'use no memo';",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#963-1011",
+        "name": "Inner",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 28,
+            "column": 2,
+            "offset": 963
+          },
+          "end": {
+            "line": 28,
+            "column": 50,
+            "offset": 1011
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 28,
+            "column": 19,
+            "offset": 980
+          },
+          "end": {
+            "line": 28,
+            "column": 50,
+            "offset": 1011
+          }
+        },
+        "bodyInsertionOffset": 981,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-982-996",
+            "functionId": "directives.tsx#963-1011",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 28,
+                "column": 21,
+                "offset": 982
+              },
+              "end": {
+                "line": 28,
+                "column": 35,
+                "offset": 996
+              }
+            },
+            "line": 28,
+            "column": 21,
+            "lineText": "  function Inner() { 'use no memo'; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#1064-1134",
+        "name": "Unicode",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 32,
+            "column": 7,
+            "offset": 1064
+          },
+          "end": {
+            "line": 32,
+            "column": 77,
+            "offset": 1134
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 32,
+            "column": 26,
+            "offset": 1083
+          },
+          "end": {
+            "line": 32,
+            "column": 77,
+            "offset": 1134
+          }
+        },
+        "bodyInsertionOffset": 1084,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-1085-1099",
+            "functionId": "directives.tsx#1064-1134",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 32,
+                "column": 28,
+                "offset": 1085
+              },
+              "end": {
+                "line": 32,
+                "column": 42,
+                "offset": 1099
+              }
+            },
+            "line": 32,
+            "column": 28,
+            "lineText": "export function Unicode() { \"use no memo\"; return <span>{unicode}😀</span>; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "directives.tsx#1200-1280",
+        "name": "Overload",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 34,
+            "column": 7,
+            "offset": 1200
+          },
+          "end": {
+            "line": 34,
+            "column": 87,
+            "offset": 1280
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 34,
+            "column": 40,
+            "offset": 1233
+          },
+          "end": {
+            "line": 34,
+            "column": 87,
+            "offset": 1280
+          }
+        },
+        "bodyInsertionOffset": 1234,
+        "directives": [
+          {
+            "id": "directives.tsx#directive-1235-1249",
+            "functionId": "directives.tsx#1200-1280",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 34,
+                "column": 42,
+                "offset": 1235
+              },
+              "end": {
+                "line": 34,
+                "column": 56,
+                "offset": 1249
+              }
+            },
+            "line": 34,
+            "column": 42,
+            "lineText": "export function Overload(value: string) { 'use no memo'; return <span>{value}</span>; }",
+            "justified": false
+          }
+        ]
+      }
+    ],
+    "directives": [
+      {
+        "id": "directives.tsx#directive-58-72",
+        "functionId": "directives.tsx#40-87",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 3,
+            "column": 25,
+            "offset": 58
+          },
+          "end": {
+            "line": 3,
+            "column": 39,
+            "offset": 72
+          }
+        },
+        "line": 3,
+        "column": 25,
+        "lineText": "export function Zero() { 'use no memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-114-125",
+        "functionId": "directives.tsx#95-144",
+        "directiveType": "use-memo",
+        "span": {
+          "start": {
+            "line": 4,
+            "column": 26,
+            "offset": 114
+          },
+          "end": {
+            "line": 4,
+            "column": 37,
+            "offset": 125
+          }
+        },
+        "line": 4,
+        "column": 26,
+        "lineText": "export function OptIn() { \"use memo\"; return <span />; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-215-229",
+        "functionId": "directives.tsx#152-285",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 6,
+            "column": 2,
+            "offset": 215
+          },
+          "end": {
+            "line": 6,
+            "column": 16,
+            "offset": 229
+          }
+        },
+        "line": 6,
+        "column": 2,
+        "lineText": "  'use no memo';",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-315-326",
+        "functionId": "directives.tsx#293-356",
+        "directiveType": "use-memo",
+        "span": {
+          "start": {
+            "line": 10,
+            "column": 29,
+            "offset": 315
+          },
+          "end": {
+            "line": 10,
+            "column": 40,
+            "offset": 326
+          }
+        },
+        "line": 10,
+        "column": 29,
+        "lineText": "export function Conflict() { 'use memo'; 'use no memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-327-341",
+        "functionId": "directives.tsx#293-356",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 10,
+            "column": 41,
+            "offset": 327
+          },
+          "end": {
+            "line": 10,
+            "column": 55,
+            "offset": 341
+          }
+        },
+        "line": 10,
+        "column": 41,
+        "lineText": "export function Conflict() { 'use memo'; 'use no memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-387-401",
+        "functionId": "directives.tsx#364-431",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 11,
+            "column": 30,
+            "offset": 387
+          },
+          "end": {
+            "line": 11,
+            "column": 44,
+            "offset": 401
+          }
+        },
+        "line": 11,
+        "column": 30,
+        "lineText": "export function Duplicate() { \"use no memo\"; \"use no memo\"; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-402-416",
+        "functionId": "directives.tsx#364-431",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 11,
+            "column": 45,
+            "offset": 402
+          },
+          "end": {
+            "line": 11,
+            "column": 59,
+            "offset": 416
+          }
+        },
+        "line": 11,
+        "column": 45,
+        "lineText": "export function Duplicate() { \"use no memo\"; \"use no memo\"; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-464-478",
+        "functionId": "directives.tsx#439-542",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 13,
+            "column": 2,
+            "offset": 464
+          },
+          "end": {
+            "line": 13,
+            "column": 16,
+            "offset": 478
+          }
+        },
+        "line": 13,
+        "column": 2,
+        "lineText": "  'use no memo'; // justified: measured consumer constraint",
+        "justified": true,
+        "justification": "justified: measured consumer constraint"
+      },
+      {
+        "id": "directives.tsx#directive-580-591",
+        "functionId": "directives.tsx#550-644",
+        "directiveType": "use-memo",
+        "span": {
+          "start": {
+            "line": 17,
+            "column": 2,
+            "offset": 580
+          },
+          "end": {
+            "line": 17,
+            "column": 13,
+            "offset": 591
+          }
+        },
+        "line": 17,
+        "column": 2,
+        "lineText": "  \"use memo\"; /* justified: consumer migration */",
+        "justified": true,
+        "justification": "justified: consumer migration"
+      },
+      {
+        "id": "directives.tsx#directive-674-688",
+        "functionId": "directives.tsx#652-700",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 20,
+            "column": 29,
+            "offset": 674
+          },
+          "end": {
+            "line": 20,
+            "column": 43,
+            "offset": 688
+          }
+        },
+        "line": 20,
+        "column": 29,
+        "lineText": "export function ordinary() { 'use no memo'; return 1; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-756-770",
+        "functionId": "directives.tsx#735-789",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 21,
+            "column": 55,
+            "offset": 756
+          },
+          "end": {
+            "line": 21,
+            "column": 69,
+            "offset": 770
+          }
+        },
+        "line": 21,
+        "column": 55,
+        "lineText": "export const Wrapped = React.memo(function Wrapped() { 'use no memo'; return <span />; });",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-870-884",
+        "functionId": "directives.tsx#834-915",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 23,
+            "column": 2,
+            "offset": 870
+          },
+          "end": {
+            "line": 23,
+            "column": 16,
+            "offset": 884
+          }
+        },
+        "line": 23,
+        "column": 2,
+        "lineText": "  \"use no memo\";",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-946-960",
+        "functionId": "directives.tsx#925-1033",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 27,
+            "column": 2,
+            "offset": 946
+          },
+          "end": {
+            "line": 27,
+            "column": 16,
+            "offset": 960
+          }
+        },
+        "line": 27,
+        "column": 2,
+        "lineText": "  'use no memo';",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-982-996",
+        "functionId": "directives.tsx#963-1011",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 28,
+            "column": 21,
+            "offset": 982
+          },
+          "end": {
+            "line": 28,
+            "column": 35,
+            "offset": 996
+          }
+        },
+        "line": 28,
+        "column": 21,
+        "lineText": "  function Inner() { 'use no memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-1085-1099",
+        "functionId": "directives.tsx#1064-1134",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 32,
+            "column": 28,
+            "offset": 1085
+          },
+          "end": {
+            "line": 32,
+            "column": 42,
+            "offset": 1099
+          }
+        },
+        "line": 32,
+        "column": 28,
+        "lineText": "export function Unicode() { \"use no memo\"; return <span>{unicode}😀</span>; }",
+        "justified": false
+      },
+      {
+        "id": "directives.tsx#directive-1235-1249",
+        "functionId": "directives.tsx#1200-1280",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 34,
+            "column": 42,
+            "offset": 1235
+          },
+          "end": {
+            "line": 34,
+            "column": 56,
+            "offset": 1249
+          }
+        },
+        "line": 34,
+        "column": 42,
+        "lineText": "export function Overload(value: string) { 'use no memo'; return <span>{value}</span>; }",
+        "justified": false
+      }
+    ]
+  },
+  "file-level.tsx": {
+    "sourceHash": "b7ca59d7d8023d6dc346ffef34ca28d70e0cafcd7bc3f3ce78d77f71aad57e00",
+    "functions": [
+      {
+        "id": "file-level.tsx#22-75",
+        "name": "FileOptOut",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 2,
+            "column": 7,
+            "offset": 22
+          },
+          "end": {
+            "line": 2,
+            "column": 60,
+            "offset": 75
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 2,
+            "column": 29,
+            "offset": 44
+          },
+          "end": {
+            "line": 2,
+            "column": 60,
+            "offset": 75
+          }
+        },
+        "bodyInsertionOffset": 45,
+        "directives": [
+          {
+            "id": "file-level.tsx#directive-46-60",
+            "functionId": "file-level.tsx#22-75",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 2,
+                "column": 31,
+                "offset": 46
+              },
+              "end": {
+                "line": 2,
+                "column": 45,
+                "offset": 60
+              }
+            },
+            "line": 2,
+            "column": 31,
+            "lineText": "export function FileOptOut() { 'use no memo'; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "file-level.tsx#83-132",
+        "name": "FileOptIn",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 3,
+            "column": 7,
+            "offset": 83
+          },
+          "end": {
+            "line": 3,
+            "column": 56,
+            "offset": 132
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 3,
+            "column": 28,
+            "offset": 104
+          },
+          "end": {
+            "line": 3,
+            "column": 56,
+            "offset": 132
+          }
+        },
+        "bodyInsertionOffset": 105,
+        "directives": [
+          {
+            "id": "file-level.tsx#directive-106-117",
+            "functionId": "file-level.tsx#83-132",
+            "directiveType": "use-memo",
+            "span": {
+              "start": {
+                "line": 3,
+                "column": 30,
+                "offset": 106
+              },
+              "end": {
+                "line": 3,
+                "column": 41,
+                "offset": 117
+              }
+            },
+            "line": 3,
+            "column": 30,
+            "lineText": "export function FileOptIn() { 'use memo'; return null; }",
+            "justified": false
+          }
+        ]
+      },
+      {
+        "id": "file-level.tsx#140-254",
+        "name": "Protected",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 4,
+            "column": 7,
+            "offset": 140
+          },
+          "end": {
+            "line": 7,
+            "column": 1,
+            "offset": 254
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 4,
+            "column": 28,
+            "offset": 161
+          },
+          "end": {
+            "line": 7,
+            "column": 1,
+            "offset": 254
+          }
+        },
+        "bodyInsertionOffset": 162,
+        "directives": [
+          {
+            "id": "file-level.tsx#directive-165-179",
+            "functionId": "file-level.tsx#140-254",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 5,
+                "column": 2,
+                "offset": 165
+              },
+              "end": {
+                "line": 5,
+                "column": 16,
+                "offset": 179
+              }
+            },
+            "line": 5,
+            "column": 2,
+            "lineText": "  'use no memo'; // justified: file and function guards remain independent",
+            "justified": true,
+            "justification": "justified: file and function guards remain independent"
+          }
+        ]
+      }
+    ],
+    "directives": [
+      {
+        "id": "file-level.tsx#directive-0-14",
+        "functionId": null,
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 1,
+            "column": 0,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 14,
+            "offset": 14
+          }
+        },
+        "line": 1,
+        "column": 0,
+        "lineText": "'use no memo';",
+        "justified": false
+      },
+      {
+        "id": "file-level.tsx#directive-46-60",
+        "functionId": "file-level.tsx#22-75",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 2,
+            "column": 31,
+            "offset": 46
+          },
+          "end": {
+            "line": 2,
+            "column": 45,
+            "offset": 60
+          }
+        },
+        "line": 2,
+        "column": 31,
+        "lineText": "export function FileOptOut() { 'use no memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "file-level.tsx#directive-106-117",
+        "functionId": "file-level.tsx#83-132",
+        "directiveType": "use-memo",
+        "span": {
+          "start": {
+            "line": 3,
+            "column": 30,
+            "offset": 106
+          },
+          "end": {
+            "line": 3,
+            "column": 41,
+            "offset": 117
+          }
+        },
+        "line": 3,
+        "column": 30,
+        "lineText": "export function FileOptIn() { 'use memo'; return null; }",
+        "justified": false
+      },
+      {
+        "id": "file-level.tsx#directive-165-179",
+        "functionId": "file-level.tsx#140-254",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 5,
+            "column": 2,
+            "offset": 165
+          },
+          "end": {
+            "line": 5,
+            "column": 16,
+            "offset": 179
+          }
+        },
+        "line": 5,
+        "column": 2,
+        "lineText": "  'use no memo'; // justified: file and function guards remain independent",
+        "justified": true,
+        "justification": "justified: file and function guards remain independent"
+      }
+    ]
+  },
+  "native.ts": {
+    "sourceHash": "c34c3121b831ebde58bd6d7d82a83c2d829c5c8d2129317fc22f153b28765dca",
+    "functions": [
+      {
+        "id": "native.ts#68-142",
+        "name": "Native",
+        "kind": "component",
+        "syntax": "declaration",
+        "declarationSpan": {
+          "start": {
+            "line": 3,
+            "column": 7,
+            "offset": 68
+          },
+          "end": {
+            "line": 3,
+            "column": 81,
+            "offset": 142
+          }
+        },
+        "bodySpan": {
+          "start": {
+            "line": 3,
+            "column": 25,
+            "offset": 86
+          },
+          "end": {
+            "line": 3,
+            "column": 81,
+            "offset": 142
+          }
+        },
+        "bodyInsertionOffset": 87,
+        "directives": [
+          {
+            "id": "native.ts#directive-88-102",
+            "functionId": "native.ts#68-142",
+            "directiveType": "use-no-memo",
+            "span": {
+              "start": {
+                "line": 3,
+                "column": 27,
+                "offset": 88
+              },
+              "end": {
+                "line": 3,
+                "column": 41,
+                "offset": 102
+              }
+            },
+            "line": 3,
+            "column": 27,
+            "lineText": "export function Native() { 'use no memo'; return <number>new Decorated().value; }",
+            "justified": false
+          }
+        ]
+      }
+    ],
+    "directives": [
+      {
+        "id": "native.ts#directive-88-102",
+        "functionId": "native.ts#68-142",
+        "directiveType": "use-no-memo",
+        "span": {
+          "start": {
+            "line": 3,
+            "column": 27,
+            "offset": 88
+          },
+          "end": {
+            "line": 3,
+            "column": 41,
+            "offset": 102
+          }
+        },
+        "line": 3,
+        "column": 27,
+        "lineText": "export function Native() { 'use no memo'; return <number>new Decorated().value; }",
+        "justified": false
+      }
+    ]
+  }
+}

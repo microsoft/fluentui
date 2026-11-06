@@ -9,10 +9,7 @@ export function normalizeCliOutput(captured: string[], tempDir: string): string 
 }
 
 export function normalizeCompilerVersions(text: string): string {
-  return text.replace(
-    /Backend: Babel [^;]+; React Compiler [^;]+;/g,
-    'Backend: Babel <VERSION>; React Compiler <VERSION>;',
-  );
+  return text.replace(/Backend: Oxc [^;]+; parser [^;]+;/g, 'Backend: Oxc <VERSION>; parser <VERSION>;');
 }
 
 export function captureConsole(method: 'log' | 'warn' | 'error', output: string[]) {

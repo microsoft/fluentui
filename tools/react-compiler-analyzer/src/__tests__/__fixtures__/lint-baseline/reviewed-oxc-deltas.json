@@ -1,0 +1,44 @@
+{
+  "compilerVersion": "0.156.0",
+  "parserVersion": "0.156.0",
+  "deltas": [
+    {
+      "file": "file-level.tsx",
+      "function": "FileOptIn",
+      "modes": ["infer", "annotation", "all"],
+      "babel": { "status": "active", "compilerEvent": "CompileSuccess" },
+      "oxc": { "status": "broken", "compilerEvent": "none" },
+      "reason": "The pinned Oxc compiler preserves the module opt-out even for a function carrying use memo. Direct native transforms produce no gates in every mode. Babel accepted this explicit function opt-in despite the module opt-out.",
+      "editEffect": "The opt-in remains unchanged. Its broken status keeps all lint runs nonzero, including --fix runs that previously passed without justified revalidation."
+    },
+    {
+      "file": "file-level.tsx",
+      "function": "FileOptOut",
+      "modes": ["all"],
+      "babel": { "status": "active", "compilerEvent": "CompileSuccess" },
+      "oxc": { "status": "redundant", "compilerEvent": "none" },
+      "reason": "Targeted neutralization leaves the module opt-out intact. Oxc honors that module guard in all mode while Babel accepted the neutralized function.",
+      "editEffect": "Remove only the ordinary function opt-out instead of adding a justification. Preserve the file directive and the independently justified Protected directive."
+    },
+    {
+      "file": "file-level.tsx",
+      "function": "Protected",
+      "modes": ["all"],
+      "revalidateOnly": true,
+      "babel": { "status": "active", "compilerEvent": "CompileSuccess" },
+      "oxc": { "status": "redundant", "compilerEvent": "none" },
+      "reason": "The individual justified probe preserves the module opt-out, so the pinned Oxc compiler does not accept the probed function.",
+      "editEffect": "Report-only: preserve the directive and its exact original justification even with --fix."
+    },
+    {
+      "file": "native.ts",
+      "function": "Native",
+      "modes": ["all"],
+      "babel": { "status": "redundant", "compilerEvent": "CompileError" },
+      "oxc": { "status": "active", "compilerEvent": "CompileSuccess" },
+      "reason": "Babel rejects the TypeScript angle assertion with (BuildHIR::lowerExpression) Handle TSTypeAssertion expressions. Oxc erases TypeScript before compiling and accepts this function in all mode.",
+      "editEffect": "Justify the original ordinary opt-out instead of removing it. Revalidation remains report-only after the fix.",
+      "fixedSource": "class Decorated { accessor value = 1; }\nconst prefix = '😀';\nexport function Native() { 'use no memo'; /* justified: compiler would optimize Native — manual opt-out to preserve runtime behavior */ return <number>new Decorated().value; }\n"
+    }
+  ]
+}

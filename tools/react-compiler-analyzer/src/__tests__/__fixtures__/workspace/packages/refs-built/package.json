@@ -1,0 +1,1 @@
+{ "name": "@ws/refs-built", "type": "module", "main": "./dist/index.js" }

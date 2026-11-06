@@ -1,6 +1,5 @@
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { tmpdir } from 'node:os';
 
 import yargs from 'yargs';
 
@@ -17,8 +16,9 @@ describe('rca.config.json', () => {
   let tempDir: string;
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'rca-config-'));
+    tempDir = mkdtempSync(join(__dirname, '../../.rca-config-'));
   });
+  afterEach(() => rmSync(tempDir, { recursive: true, force: true }));
 
   function writeConfig(config: unknown, name = 'rca.config.json'): string {
     const configPath = join(tempDir, name);
@@ -112,92 +112,75 @@ describe('rca.config.json', () => {
     expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/additional properties/);
   });
 
-  it('resolves risk baseUrl relative to the config file', () => {
-    mkdirSync(join(tempDir, 'src'));
+  it('preserves explicit package resolution policy without manual aliases', () => {
     writeConfig({
       analyze: {
         risks: {
           detectGetStateReads: true,
           resolveWrappers: true,
-          pathAliases: { baseUrl: './src', paths: { '@app/*': ['*'] } },
+          resolver: { additionalConditionNames: ['source'], mainFields: ['source', 'module', 'main'] },
         },
       },
     });
 
-    expect(loadRcaConfig(undefined, tempDir).config.analyze?.risks?.pathAliases?.baseUrl).toBe(join(tempDir, 'src'));
+    expect(loadRcaConfig(undefined, tempDir).config.analyze?.risks?.resolver).toEqual({
+      additionalConditionNames: ['source'],
+      mainFields: ['source', 'module', 'main'],
+    });
   });
 
-  it('preserves an absolute risk baseUrl', () => {
-    const baseUrl = join(tempDir, 'src');
-    mkdirSync(baseUrl);
+  it('rejects removed aliases with actionable per-project migration guidance', () => {
     writeConfig({
-      analyze: { risks: { pathAliases: { baseUrl, paths: { '@app/*': ['*'] } } } },
+      analyze: { risks: { pathAliases: { baseUrl: '.', paths: { '@app/*': ['*'] } } } },
     });
 
-    expect(loadRcaConfig(undefined, tempDir).config.analyze?.risks?.pathAliases?.baseUrl).toBe(baseUrl);
+    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/pathAliases was removed.*tsconfig paths/);
   });
 
-  it('fails when risk baseUrl does not exist', () => {
-    writeConfig({
-      analyze: { risks: { pathAliases: { baseUrl: './missing', paths: { '@app/*': ['*'] } } } },
-    });
-    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/does not exist/);
+  it('rejects removed parser configuration with native grammar migration guidance', () => {
+    writeConfig({ parserPlugins: ['decorators-legacy'] });
+    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/parserPlugins was removed.*file extension/);
   });
 
-  it('warns when wrapper resolution has no leaf rule or aliases', () => {
+  it('warns only when wrapper resolution is explicitly enabled without a leaf rule', () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     writeConfig({ analyze: { risks: { resolveWrappers: true } } });
 
     loadRcaConfig(undefined, tempDir);
 
     expect(warn).toHaveBeenCalledWith(expect.stringContaining('enables no leaf rule'));
-    expect(warn).toHaveBeenCalledWith(expect.stringContaining('without pathAliases'));
+    expect(warn).toHaveBeenCalledTimes(1);
     warn.mockRestore();
   });
 
-  it('warns when a path alias target cannot resolve', () => {
+  it.each([
+    {},
+    { resolveWrappers: false },
+    { detectGetStateReads: true },
+    { detectGetStateReads: true, resolveWrappers: true },
+  ])('does not warn for default or useful wrapper policy %j', risks => {
     const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    mkdirSync(join(tempDir, 'src'));
-    writeConfig({
-      analyze: {
-        risks: {
-          detectGetStateReads: true,
-          resolveWrappers: true,
-          pathAliases: { baseUrl: './src', paths: { '@ghost/*': ['ghost/*'] } },
-        },
-      },
-    });
+    writeConfig({ analyze: { risks } });
 
     loadRcaConfig(undefined, tempDir);
 
-    expect(warn).toHaveBeenCalledWith(expect.stringContaining('@ghost/'));
+    expect(warn).not.toHaveBeenCalled();
     warn.mockRestore();
   });
 
-  it('prints exact and suffixed alias names accurately in dead-target warnings', () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    mkdirSync(join(tempDir, 'src'));
-    writeConfig({
-      analyze: {
-        risks: {
-          detectGetStateReads: true,
-          resolveWrappers: true,
-          pathAliases: {
-            baseUrl: './src',
-            paths: { '@missing': ['missing'], '@ui/*.js': ['missing/*.tsx'], '@ghost/*': ['ghost/*'] },
-          },
-        },
-      },
-    });
-
-    loadRcaConfig(undefined, tempDir);
-
-    const message = warn.mock.calls.map(([text]) => text).join('\n');
-    expect(message).toContain('@missing ->');
-    expect(message).not.toContain('@missing* ->');
-    expect(message).toContain('@ui/*.js ->');
-    expect(message).toContain('@ghost/* ->');
-    warn.mockRestore();
+  it.each([
+    { additionalConditionNames: ['source', 'source'] },
+    { additionalConditionNames: [''] },
+    { additionalConditionNames: ['   '] },
+    { additionalConditionNames: 'source' },
+    { mainFields: [] },
+    { mainFields: ['main', 'main'] },
+    { mainFields: [''] },
+    { mainFields: {} },
+    { unknown: true },
+  ])('rejects malformed resolver policy %j', resolver => {
+    writeConfig({ analyze: { risks: { resolver } } });
+    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/invalid RCA config/);
   });
 });
 

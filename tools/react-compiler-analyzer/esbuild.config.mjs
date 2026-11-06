@@ -9,11 +9,19 @@ const projectRoot = dirname(fileURLToPath(import.meta.url));
 const outdir = join(projectRoot, 'dist');
 
 /**
- * Only first-party code is bundled. Babel and the compiler are loaded through `require.resolve()`,
+ * Only first-party code is bundled. Native Oxc packages must retain their platform loaders,
  * and bundling yargs makes esbuild pick its `import` condition, whose `cliui/index.mjs` swaps
  * `wrap-ansi` for a char-slicing fallback that mangles `--help`.
  */
-const external = ['@babel/core', 'ajv', 'babel-plugin-react-compiler', 'enquirer', 'yargs'];
+const external = [
+  '@jridgewell/trace-mapping',
+  'oxc-parser',
+  'oxc-resolver',
+  'oxc-transform-react',
+  'ajv',
+  'enquirer',
+  'yargs',
+];
 
 await rm(outdir, { recursive: true, force: true });
 
@@ -46,12 +54,15 @@ if (leaked.length > 0) {
 }
 
 const cli = await readFile(join(outdir, 'cli.js'), 'utf-8');
-if (Object.keys(metafile.inputs).some(input => /(?:^|\/)tests\/integration\//.test(input)) || /@swc\/core/.test(cli)) {
-  throw new Error('Test-only native SWC comparison code leaked into the production bundle.');
+if (
+  Object.keys(metafile.inputs).some(input => /(?:^|\/)tests\/integration\//.test(input)) ||
+  /@swc\/core|@babel\/|babel-plugin-react-compiler/.test(cli)
+) {
+  throw new Error('Test-only compiler comparison code leaked into the production bundle.');
 }
-for (const name of ['babel-plugin-react-compiler']) {
-  if (!cli.includes(`require.resolve("${name}")`)) {
-    throw new Error(`\`require.resolve("${name}")\` did not survive bundling — the CLI will fail at runtime.`);
+for (const name of ['oxc-parser', 'oxc-resolver', 'oxc-transform-react']) {
+  if (!cli.includes(`require("${name}")`)) {
+    throw new Error(`Native external \`${name}\` did not survive bundling.`);
   }
 }
 

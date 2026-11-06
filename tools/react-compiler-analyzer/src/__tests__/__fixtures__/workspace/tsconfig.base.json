@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@ws/store": ["packages/store/src/index.ts"] }
+  }
+}

@@ -1,7 +1,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
-import { transformSync } from '@babel/core';
+import { testRoot as tmpdir } from './helpers/test-root';
+import { transformSync } from 'oxc-transform-react';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
@@ -10,9 +10,9 @@ import { createLintCommand, runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
-import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+import type { CompilationMode, DirectiveAnalysis, FileEntry, LintDocument } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
+import { captureJson, normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -123,13 +123,10 @@ export function MyComponent({ label }: { label: string }) {
     expect(readFileSync(componentFile, 'utf-8')).toBe(source);
 
     const transform = (input: string) =>
-      transformSync(input, {
-        filename: componentFile,
-        babelrc: false,
-        configFile: false,
-        parserOpts: { plugins: ['jsx'] },
-        plugins: [[require.resolve('babel-plugin-react-compiler'), { compilationMode: 'infer' }]],
-      })!.code!;
+      transformSync(componentFile, input, {
+        jsx: 'preserve',
+        reactCompiler: { compilationMode: 'infer', target: '19', panicThreshold: 'none' },
+      }).code!;
     expect(transform(source)).not.toContain('react/compiler-runtime');
     expect(transform(source.replace("'use no memo';", ''))).toContain('react/compiler-runtime');
   });
@@ -147,8 +144,8 @@ export function MyComponent({ label }: { label: string }) {
       expect(results).toEqual([
         expect.objectContaining({ status: 'broken', reason: expect.stringContaining('injected probe failure') }),
       ]);
-      expect(
-        await runLint({
+      const { code, doc } = await captureJson<LintDocument>(() =>
+        runLint({
           paths: [componentFile],
           verbose: false,
           concurrency: 1,
@@ -157,7 +154,15 @@ export function MyComponent({ label }: { label: string }) {
           mode: 'infer',
           format: 'json',
         } as never),
-      ).toBe(1);
+      );
+      expect(code).toBe(1);
+      expect(doc.directives).toEqual([
+        expect.objectContaining({ file: expect.stringContaining('FailedProbe.tsx'), status: 'broken' }),
+      ]);
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({ stage: 'probe', category: 'probe', attribution: 'unresolved' }),
+      ]);
+      expect(doc.completeness).toBe('incomplete');
       expect(readFileSync(componentFile, 'utf-8')).toBe(source);
       expect(probe).toHaveBeenCalled();
     } finally {
@@ -632,11 +637,18 @@ export function Ok({ label }: { label: string }) {
     try {
       expect(await runLint(baseArgv({ format: 'json', fix }) as never)).toBe(1);
       const document = JSON.parse(output.join(''));
-      expect(document.directives).toEqual([]);
-      expect(document.summary.unparseableFiles).toBe(1);
-      expect(document.unparseable).toEqual([
-        { file: expect.stringContaining('PipelineFailure.tsx'), error: 'PipelineError: pipeline crashed' },
+      expect(document.directives).toEqual([expect.objectContaining({ directive: 'use-memo', status: 'broken' })]);
+      expect(document.summary.unparseableFiles).toBe(0);
+      expect(document.unparseable).toEqual([]);
+      expect(document.fileDiagnostics).toEqual([
+        expect.objectContaining({
+          stage: 'backend',
+          category: 'pipeline',
+          attribution: 'unresolved',
+          message: 'pipeline crashed',
+        }),
       ]);
+      expect(document.completeness).toBe('incomplete');
       expect(readFileSync(filePath, 'utf-8')).toBe(source);
     } finally {
       write.mockRestore();
@@ -661,8 +673,8 @@ export function Ok({ label }: { label: string }) {
 
     try {
       expect(await runLint(baseArgv() as never)).toBe(1);
-      expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
-      expect(output.join('\n')).toContain('PipelineError: pipeline crashed');
+      expect(output.join('\n')).toContain('File diagnostics (incomplete analysis)');
+      expect(output.join('\n')).toContain('pipeline crashed');
       expect(output.join('\n')).toContain('PipelineFailure.tsx');
     } finally {
       stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
@@ -727,7 +739,7 @@ export function useUncompilable() {
     };
 
     await expect(runLint(baseArgv() as never)).resolves.toBe(1);
-    expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
+    expect(output.join('\n')).toContain('File diagnostics (incomplete analysis)');
     expect(output.join('\n')).toContain('Unparseable.tsx');
   });
 });
@@ -834,7 +846,7 @@ describe('lint command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Lint ━━
 
-      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Backend: Oxc <VERSION>; parser <VERSION>; mode=infer; jsx=preserve; outputMode=client; noEmit=false (in-memory only); panicThreshold=none; target=19; suppression rules=compiler-default; synthetic gating=__rca_gate__/__rcaGate.
       Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
 
       📋 Scan & compile log
@@ -850,7 +862,7 @@ describe('lint command — scan log wrapping', () => {
       Analyzing: <TEMP>/src/L.tsx
         [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
 
-      Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       wrap-test-lint-pkg

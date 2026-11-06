@@ -68,15 +68,19 @@ export type CompilationMode = 'infer' | 'annotation' | 'all';
 export type FunctionStatus = 'compiled' | 'skipped' | 'error';
 
 export interface AnalysisProfile {
-  backend: 'babel';
-  babelVersion: string;
+  backend: 'oxc';
   compilerVersion: string;
+  parserVersion: string;
   mode: CompilationMode;
-  parserPlugins: string[];
-  noEmit: true;
+  jsx: 'preserve';
+  outputMode: 'client';
+  sourcemap: true;
+  noEmit: false;
   panicThreshold: 'none';
-  target: 'compiler-default';
+  reportDiagnostics: true;
+  target: '19';
   suppressionRules: 'compiler-default';
+  gating: { source: '__rca_gate__'; importSpecifierName: '__rcaGate' };
 }
 
 export type ReportedMemoCache = 'positive' | 'zero' | 'unavailable';
@@ -96,10 +100,6 @@ export interface RevalidationEvidence {
 
 export interface NullableMemoStats {
   memoSlots: number | null;
-  memoBlocks: number | null;
-  memoValues: number | null;
-  prunedMemoBlocks: number | null;
-  prunedMemoValues: number | null;
 }
 
 /** @deprecated Use {@link NullableMemoStats}. */
@@ -161,6 +161,53 @@ export interface CompilerDiagnostic {
   reason: string;
   fullReason?: string;
   category?: string;
+  count: number;
+}
+
+export type FileDiagnosticStage = 'input' | 'compiler' | 'backend' | 'probe';
+export type FileDiagnosticAttribution = 'file' | 'function' | 'unresolved';
+
+export interface FileDiagnostic {
+  file: string;
+  package: string | null;
+  stage: FileDiagnosticStage;
+  category: string;
+  severity: 'error' | 'warning';
+  attribution: FileDiagnosticAttribution;
+  line?: number;
+  column?: number;
+  count: number;
+  message: string;
+  code?: string;
+}
+
+export interface CoverageAccounting {
+  discoveredFiles: number;
+  processedFiles: number;
+  failedFiles: number;
+  incompleteFiles: number;
+}
+
+export interface ReportedSuppressionDirective {
+  kind: string;
+  rules: string[] | null;
+  relevantRules: string[];
+  reason: string | null;
+  commentSpan: SourceSpan;
+  scopes: { ruleId: string; span: SourceSpan }[];
+}
+
+export interface SuppressionProtectionReport {
+  dryRun?: true;
+  filesModified: number;
+  filesPlanned: number;
+  results: {
+    file: string;
+    status: 'written' | 'would-write' | 'skipped' | 'conflict';
+    reason: string;
+    suppressions: ReportedSuppressionDirective[];
+    preview?: string;
+  }[];
 }
 
 /**
@@ -221,7 +268,6 @@ export interface CompileFilesOptions {
   verbose: boolean;
   compilationMode: CompilationMode;
   riskConfig?: RiskConfig;
-  parserPlugins?: string[];
   workspaceRoot?: string;
   onResolverStats?: (stats: ResolverStats | undefined) => void;
 }
@@ -249,17 +295,17 @@ export interface RiskConfig {
   /**
    * Follow first-party wrapper calls and re-export barrels to flag risks reached *indirectly*
    * (e.g. a component calling a plain `readActiveId()` helper that does `getStore().getState()`).
-   * Off by default. Resolution is syntactic and first-party only — it stops at `node_modules`,
+   * On by default when a leaf rule is enabled. Resolution is syntactic and first-party only — it stops at `node_modules`,
    * dynamic dispatch, and method calls on inferred receivers. Requires at least one leaf rule.
    */
   resolveWrappers?: boolean;
   /**
-   * tsconfig-style path aliases used by wrapper resolution to follow workspace imports
-   * (e.g. `@app/foo`). `baseUrl` is the absolute dir the `paths` targets are relative to.
+   * Opt-in package resolution policy. Additional conditions augment import/node/default;
+   * mainFields replaces the ordered module/main defaults. Exports restrictions still apply.
    */
-  pathAliases?: {
-    baseUrl: string;
-    paths: Record<string, string[]>;
+  resolver?: {
+    additionalConditionNames?: string[];
+    mainFields?: string[];
   };
 }
 
@@ -272,7 +318,6 @@ export interface RcaConfig {
   exclude?: string[];
   format?: OutputFormat;
   strictPaths?: boolean;
-  parserPlugins?: string[];
   analyze?: {
     quote?: QuoteStyle;
     risks?: RiskConfig;
@@ -292,12 +337,15 @@ export interface MigrationCandidate {
 }
 
 interface DocumentEnvelope {
-  schemaVersion: 3;
+  schemaVersion: 5;
   tool: 'react-compiler-analyzer';
   command: 'analyze' | 'lint';
   mode: CompilationMode;
   profile: AnalysisProfile;
   emittedCaching: 'unverified';
+  completeness: 'complete' | 'incomplete';
+  coverage: CoverageAccounting;
+  fileDiagnostics: FileDiagnostic[];
 }
 
 export interface JsonFunction {
@@ -314,7 +362,7 @@ export interface JsonFunction {
   memoStats?: NullableMemoStats | null;
   manualMemo?: Pick<ManualMemoization, 'useMemo' | 'useCallback' | 'reactMemo' | 'reactMemoHasComparator'>;
   rejectionKind?: FunctionAnalysis['rejectionKind'];
-  diagnostics?: { kind: CompilerDiagnostic['kind']; reason: string; category?: string }[];
+  diagnostics?: { kind: CompilerDiagnostic['kind']; reason: string; category?: string; count: number }[];
 }
 
 export interface JsonFinding {
@@ -332,7 +380,7 @@ export interface JsonFinding {
 }
 
 export interface AnalysisDocument extends DocumentEnvelope {
-  schemaVersion: 3;
+  schemaVersion: 5;
   command: 'analyze';
   summary: {
     functions: number;
@@ -347,11 +395,13 @@ export interface AnalysisDocument extends DocumentEnvelope {
     findings: number;
     findingsOnCompiled: number;
     findingsSuppressed: number;
+    fileDiagnostics: number;
     unparseableFiles: number;
   };
   functions: JsonFunction[];
   findings: JsonFinding[];
   unparseable: { file: string; error: string }[];
+  suppressionProtection?: SuppressionProtectionReport;
   annotate?: Omit<AnnotateResult, 'targets'> & {
     mode: AnnotateMode;
     targets?: (Omit<NonNullable<AnnotateResult['targets']>[number], 'filePath'> & { file: string })[];
@@ -374,7 +424,7 @@ export interface JsonDirective {
 }
 
 export interface LintDocument extends DocumentEnvelope {
-  schemaVersion: 3;
+  schemaVersion: 5;
   command: 'lint';
   summary: {
     directives: number;
@@ -383,6 +433,7 @@ export interface LintDocument extends DocumentEnvelope {
     broken: number;
     conflicting: number;
     skipped: number;
+    fileDiagnostics: number;
     unparseableFiles: number;
   };
   directives: JsonDirective[];
