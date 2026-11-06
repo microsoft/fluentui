@@ -114,13 +114,16 @@ function MyComponent(props) {
 
 Having multiple applications using `FluentProvider` on a single web page can cause interop problems when they come from different bundles, more details in [microsoft/fluentui#26496](https://github.com/microsoft/fluentui/pull/26496).
 
-### React 18
+### React 18 and later
 
-It's possible to handle id prefixing natively with React 18 using the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters) API by configuring `identifierPrefix` on it:
+**Configure roots first.** Give every independently rendered root a document-wide unique
+[`identifierPrefix`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+When all roots are configured correctly, a build namespace is not needed to prevent these
+Fluent-generated ID collisions. Root prefixing also protects direct React `useId` calls outside Fluent.
 
 ```jsx
 import * as React from 'react';
-import { createRoot } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 const root = createRoot(document.getElementById('root'), {
   identifierPrefix: 'APP1-',
@@ -129,9 +132,20 @@ const root = createRoot(document.getElementById('root'), {
 root.render(<App />);
 ```
 
-### React 16 & 17
+Multiple roots sharing one ReactDOM client runtime normally share its client ID counter; a second
+root alone is not proof of a collision. Independent ReactDOM runtimes and separately rendered SSR
+roots are important collision boundaries. Do not rely on a particular counter implementation for
+cross-application isolation.
+Use simple, distinct root prefixes. Fluent removes colons from React-generated IDs, so prefixes
+that differ only by colons are not distinct Fluent namespaces.
 
-Adding the `IdPrefixProvider` component around the `FluentProvider` will resolve the issue of losing styling on components and IDs collisions in an application.
+### Provider prefixes (all supported React versions)
+
+`IdPrefixProvider` works with all supported React versions, including React 18 and later. Wrap it around
+`FluentProvider` so it also prefixes the provider's own theme class and style-tag ID. Use a distinct value
+for each independently rendered application instance.
+An outer application's provider does not propagate context into a separately created React root;
+wrap each root separately.
 
 ```jsx
 import { IdPrefixProvider, FluentProvider } from '@fluentui/react-components';
@@ -145,6 +159,159 @@ function MyApp() {
   );
 }
 ```
+
+### Build-time ID namespace
+
+Use this **additional safeguard** when you cannot reliably configure every root in independently
+built applications. It does not replace per-instance root/provider configuration.
+
+Independently built applications can share a document with a host that cannot configure their React
+roots. To namespace Fluent-generated IDs without adding a wrapper, configure your bundler to replace
+`__FLUENT_USE_ID_BUILD_PREFIX__` with a string literal in Fluent's JavaScript.
+This replacement token is a public build-configuration API, not a runtime export or a browser global.
+`FLUENT_USE_ID_BUILD_PREFIX` is the recommended environment variable read by **your build config**;
+Fluent does not read it automatically.
+
+The namespace affects both component IDs and `FluentProvider` theme classes/style-tag IDs.
+Collisions in provider IDs can otherwise cause theme cross-talk, style reuse, or one application's
+unmount removing another application's styles.
+
+#### Interactive reproduction
+
+Open the [FluentProvider ID namespace demonstration](?path=/story/components-fluentprovider--id-namespace).
+Each panel contains two independent React/Fluent bundles in the same document, with no root or provider
+prefix. Only the protected panel has distinct build namespaces.
+
+Use **Update embedded theme** and **Unmount embedded app**, then inspect the host's computed color,
+font-size, and stroke-width tokens. **Reset scenario** reloads the document and its independent runtimes.
+The whole scenario uses one iframe to protect Storybook itself; the two apps inside that iframe
+are deliberately not isolated from each other.
+
+The controls do not change a build constant at runtime: the two panels load separately built artifacts.
+The unconfigured case is a demonstration of an unsafe setup, not supported configuration.
+
+#### Contract
+
+- An absent token or empty string preserves existing generated IDs.
+- A non-empty namespace must match `[A-Za-z_][A-Za-z0-9_-]*`. Validate it in your build config;
+  development builds also log a `console.error` diagnostic when an invalid substituted value is evaluated. Production bundles
+  omit this runtime validation, so build-config validation is required. Values are not silently sanitized.
+- The namespace is resolved once when the Fluent module loads. It is not a runtime setting.
+- Generated IDs compose as `namespace + "-" + provider prefix + hook prefix + generated suffix`.
+  The provider prefix can be empty, but cannot remove the build namespace.
+- Non-empty caller-provided IDs remain unchanged. As before, an empty provided ID requests generation.
+- The nearest `IdPrefixProvider` wins; nested provider prefixes are not concatenated.
+- Server and client must use the same namespace. The exact generated suffix is not part of this contract.
+- Opting in intentionally changes generated IDs, theme classes, and style-tag IDs.
+
+For example, namespace `calendar`, provider prefix `dialog-`, and the default hook prefix produce IDs
+starting with `calendar-dialog-fui-`. With the same provider prefix, a `FluentProvider` theme class and
+its style-tag ID start with `calendar-dialog-fui-FluentProvider`. The remaining suffix is React/version
+dependent. The static `fui-FluentProvider` class is unchanged.
+
+#### Webpack
+
+```js
+// webpack.config.cjs
+const webpack = require('webpack');
+
+const namespace = process.env.FLUENT_USE_ID_BUILD_PREFIX ?? '';
+if (namespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(namespace)) {
+  throw new Error('Invalid FLUENT_USE_ID_BUILD_PREFIX');
+}
+
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
+  plugins: [
+    new webpack.DefinePlugin({
+      __FLUENT_USE_ID_BUILD_PREFIX__: JSON.stringify(namespace),
+    }),
+  ],
+};
+```
+
+For example, run `FLUENT_USE_ID_BUILD_PREFIX=calendar webpack`. If you use an env file, load it in your
+build config before reading the variable; Webpack does not load it automatically.
+
+#### Vite
+
+```js
+// vite.config.js
+import { defineConfig, loadEnv } from 'vite';
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), 'FLUENT_');
+  const namespace = process.env.FLUENT_USE_ID_BUILD_PREFIX ?? env.FLUENT_USE_ID_BUILD_PREFIX ?? '';
+  if (namespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(namespace)) {
+    throw new Error('Invalid FLUENT_USE_ID_BUILD_PREFIX');
+  }
+
+  const define = {
+    __FLUENT_USE_ID_BUILD_PREFIX__: JSON.stringify(namespace),
+  };
+
+  return {
+    define,
+    // Include the replacement when dependencies are prebundled during development.
+    optimizeDeps: { esbuildOptions: { define } },
+  };
+});
+```
+
+Set `FLUENT_USE_ID_BUILD_PREFIX=calendar` in the environment or the appropriate Vite env file.
+Restart Vite with `--force` when changing the namespace to invalidate dependency prebundles.
+
+#### esbuild
+
+```js
+// build.mjs
+import { build } from 'esbuild';
+
+const namespace = process.env.FLUENT_USE_ID_BUILD_PREFIX ?? '';
+if (namespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(namespace)) {
+  throw new Error('Invalid FLUENT_USE_ID_BUILD_PREFIX');
+}
+
+await build({
+  entryPoints: ['src/index.js'],
+  bundle: true,
+  platform: 'browser',
+  outfile: 'dist/app.js',
+  define: {
+    __FLUENT_USE_ID_BUILD_PREFIX__: JSON.stringify(namespace),
+  },
+});
+```
+
+For example, run `FLUENT_USE_ID_BUILD_PREFIX=calendar node build.mjs`. Load any env file before reading
+the variable. `JSON.stringify` is important: define values are JavaScript expressions, not raw strings.
+These configurations require no browser `process` shim.
+
+Other bundlers must replace the exact token, including its `typeof` expression, in Fluent dependencies,
+not only in application source. Both Fluent ESM and CommonJS output support the token. Do not configure
+it while publishing a shared Fluent package: each consumer build supplies its own namespace.
+
+#### Choosing the isolation boundary
+
+| Scenario                                            | Configuration                                                                            |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Independently built Fluent copies in one document   | Different build namespaces, such as `calendar` and `chat`                                |
+| Multiple instances of the same bundle               | A different React root `identifierPrefix` or outer `IdPrefixProvider` per instance       |
+| Apps consuming one shared/external Fluent singleton | Root/provider prefixes; one module cannot have a different build value for each consumer |
+| IDs generated directly by React outside Fluent      | React root `identifierPrefix`                                                            |
+| React 17 server rendering                           | Request-local `SSRProvider`, plus namespaces/root-instance isolation as appropriate      |
+
+Root prefixes, provider prefixes, and the build namespace are additive. React root prefixes also cover
+React `useId` calls outside Fluent; the other two only affect Fluent `useId`.
+
+A prebuilt remote cannot be reconfigured by defining the token in an unrelated host bundle.
+Neither build namespacing nor provider prefixing rewrites caller-provided IDs, third-party IDs,
+static strings, or Griffel identifiers. Repeated instances and shared modules still need the instance
+configuration above; a build namespace does not guarantee document-wide uniqueness on its own.
+
+See [Server-Side Rendering](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs#build-time-id-namespaces)
+for matching server/client configuration and externalized server dependencies.
 
 ## References
 

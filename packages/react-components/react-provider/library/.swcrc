@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/swcrc",
   "exclude": [
-    "/testing",
+    "/src/testing",
     "/**/*.cy.ts",
     "/**/*.cy.tsx",
     "/**/*.spec.ts",
