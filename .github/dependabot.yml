@@ -12,6 +12,11 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+      github-actions-major:
+        patterns:
+          - '*'
+        update-types:
+          - 'major'
       github-actions-security:
         applies-to: security-updates
         patterns:
@@ -40,6 +45,12 @@ updates:
         update-types:
           - 'version-update:semver-major'
     ignore:
+      # Nx migrations require an explicit maintainer decision, including security fixes.
+      - dependency-name: 'nx'
+      - dependency-name: '@nx/*'
+      - dependency-name: '@nrwl/*'
+      - dependency-name: 'nx-cloud'
+      - dependency-name: '@nx-cloud/*'
       # Ignore major version bumps for scheduled npm version updates
       - dependency-name: '*'
         update-types: ['version-update:semver-major']

@@ -12,20 +12,38 @@ Dependabot is configured to automatically create pull requests for:
 
 1. **Security updates** - Advisory-driven minor and patch updates grouped by ecosystem
 2. **npm dependencies** - Weekly minor and patch updates grouped for development dependencies; routine production version updates are disabled
-3. **GitHub Actions** - Weekly minor and patch version and security update groups
+3. **GitHub Actions** - One weekly minor/patch group and a separate major group, plus the explicit security group
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories
-- **GitHub Actions**: Weekly minor and patch version updates grouped separately from security updates
-- **Security updates**: Minor and patch updates are grouped; major remediations are excluded from groups for isolated review
+- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories. Nx-family packages are manual-only.
+- **GitHub Actions**: Weekly minor/patch updates in `github-actions-minor-patch`, major updates in `github-actions-major`, and advisory-driven updates in the separate `github-actions-security` group
+- **Security updates**: The wildcard `security-dependencies` group covers all allowed minor/patch npm security fixes, including tooling and transitive dependencies. No package-name list is required. Major remediations stay isolated.
+- **Nx family**: `nx`, `@nx/*`, `@nrwl/*`, `nx-cloud`, and `@nx-cloud/*` are ignored for all automated version and security updates. Maintainers must run coordinated migrations and handle their security alerts manually; alerts are not disabled. To re-enable Dependabot for them, a maintainer must explicitly change the ignore policy.
 - **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates
 
 The repository's Advanced Security **Grouped security updates** setting must remain disabled. The explicit groups in `.github/dependabot.yml` provide narrower control over update types, while the repository setting would group as many available security updates as possible.
 
 The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a grouped pull request or change Dependabot's separate security-update pull request limit. Native groups have no dependency-count ceiling; the 11-update ceiling applies only to `/dependabot-rollup`.
+
+Grouping selects candidates; it does not guarantee that Dependabot can generate every update in the combined workspace. In the October 26 updater run [40366154628](https://github.com/microsoft/fluentui/actions/runs/40366154628), Vite, fast-uri, and Undici matched `security-dependencies`. The grouped job produced an eight-update PR, but logged `Security update failed for ...` for those packages, then retried them individually and created singleton PRs. A separate `NoChangeError` affected shell-quote. These logs establish a grouped-update generation/validation failure, not a missing YAML match or a proven common Yarn root cause. Investigate/reproduce the updater failure rather than adding package-specific groups or promising a config-only fix. Do not add a routine production-update group: that would broaden the existing update policy.
+
+After merging configuration changes, verify the next native Dependabot run uses the Nx ignores and wildcard security group. Existing PRs are not guaranteed to regroup automatically. Do not close an individual advisory fix merely because a group is expected: first verify incorporation or supersession and obtain skill confirmation.
+
+## Local Dependabot maintenance
+
+Use [`/dependabot-fix`](../../.agents/skills/dependabot-fix/SKILL.md) from a developer machine to inspect open Dependabot PRs. The skill must display a candidate/action report in chat and obtain explicit confirmation before repairs, pushes, closing superseded PRs, GitHub reviews, or auto-merge. **All** executes the table actions; **List** opens a per-PR Execute/Skip radio picker and executes the submitted subset without asking for typed PR numbers or another confirmation. For updates proven fully present on master, propose **Close superseded PR**; this needs skill confirmation, not a GitHub PR review approval. Verify all group members and relevant lockfile/security fixes before closure. Invocation and `--pr` selection alone do not authorize changes. Use `--dry-run` for inspection only. The default batch excludes majors; explicitly select a major PR with `--pr`.
+
+```text
+Inspect PR state -> show candidates -> user approves PRs/actions -> fix -> validate -> push
+  -> verify final-head CI -> approve -> enable squash auto-merge
+```
+
+The skill uses existing local Git/GitHub authentication, not a repair workflow or new repository credential. It preserves required checks and code-owner protections and reports blocked PRs rather than bypassing them. Existing individual PRs are not guaranteed to regroup retroactively.
+
+Discovery must cover **every open Dependabot PR** before mutation filtering, including majors, Nx updates, older PRs, drafts, and other base branches. Show coverage totals and a row for each inspected/excluded/error PR. A per-PR lookup failure must not stop or truncate the rest of the report.
 
 ## Security Vulnerability Resolution
 
