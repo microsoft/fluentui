@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: normalize falsy scalar defaultOpenItems values in Accordion",
+  "packageName": "@fluentui/react-accordion",
+  "email": "jabradford@microsoft.com"
+}
