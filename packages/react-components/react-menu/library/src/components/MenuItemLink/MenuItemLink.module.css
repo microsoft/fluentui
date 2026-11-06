@@ -1,0 +1,8 @@
+@layer fluent {
+  .resetLink {
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+  }
+}

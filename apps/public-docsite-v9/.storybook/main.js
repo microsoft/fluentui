@@ -88,7 +88,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
       config: localConfig,
     });
-    configureReactIcons({ config: localConfig });
+    configureReactIcons({ config: localConfig, headless: true });
 
     return localConfig;
   },

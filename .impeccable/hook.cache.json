@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "sessions": {
+    "c8d0b002-dba6-4168-b88e-f0d901538cd2": {
+      "updatedAt": 1793111663065,
+      "files": {
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/Attachment.module.css": {
+          "editCount": 1,
+          "findings": ["layout-transition:48"]
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/Attachment.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Video/Video.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentDescription.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentBody.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentIcon.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentDescription.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentIcon.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentAction.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Segment/Segment.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/ItemLayout/ItemLayout.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentBody.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Video/Video.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/ItemLayout/ItemLayout.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Flex/Flex.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Grid/Grid.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/StyledText/StyledText.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Flex/Flex.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/StyledText/StyledText.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/ListItem/ListItem.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/ListItem/useListItemStyles.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/List/List.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/List/useListStyles.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Grid/Grid.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentIcon.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentHeader.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/StyledText/StyledText.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Video/Video.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentDescription.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Flex/Flex.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/ItemLayout/ItemLayout.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentAction.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Segment/Segment.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/AttachmentBody.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Grid/Grid.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/Attachment/Attachment.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/List/useListStyles.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v0-v9/library/src/components/List/ListItem/useListItemStyles.styles.css.test.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Stack/StackShim.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Stack/StackItemShim.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Stack/StackItemShim.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Stack/StackShim.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Checkbox/Checkbox.styles.css.ts": {
+          "editCount": 1,
+          "findings": []
+        },
+        "/Users/dmytrokirpa/Projects/copilot-worktrees/microsoft_fluentui/dmytrokirpa-fantastic-meme/packages/react-components/react-migration-v8-v9/library/src/components/Checkbox/Checkbox.module.css": {
+          "editCount": 1,
+          "findings": [],
+          "cleanAcked": true
+        }
+      }
+    }
+  }
+}

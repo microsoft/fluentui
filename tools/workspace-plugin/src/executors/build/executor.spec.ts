@@ -86,6 +86,31 @@ describe('Build Executor', () => {
     // mute api extractor - END
   });
 
+  it('copies vNext CSS beside each emitted module and preserves custom assets', async () => {
+    const output = await executor(
+      { ...options, generateApi: false },
+      {
+        ...context,
+        projectsConfigurations: {
+          version: 2,
+          projects: {
+            proj: { root: 'libs/proj', name: 'proj', tags: ['vNext'] },
+          },
+        },
+      },
+    );
+
+    expect(output.success).toBe(true);
+    const source = readFileSync(join(workspaceRoot, 'libs/proj/src/utils/Test.module.css'));
+    for (const outputPath of ['lib', 'lib-commonjs']) {
+      expect(readFileSync(join(workspaceRoot, 'libs/proj', outputPath, 'utils/Test.module.css'))).toEqual(source);
+      expect(existsSync(join(workspaceRoot, 'libs/proj', outputPath, 'utils/nested.js'))).toBe(true);
+    }
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/dist/assets/spec.md'))).toEqual(
+      readFileSync(join(workspaceRoot, 'libs/proj/spec.md')),
+    );
+  });
+
   it('runs build and api-generation and fails on api update', async () => {
     const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
       return;

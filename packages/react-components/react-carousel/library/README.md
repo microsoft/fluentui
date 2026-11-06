@@ -31,3 +31,23 @@ A CarouselAnnouncer class is provided that will announce page changes when conte
   </CarouselAnnouncer>
 </Carousel>
 ```
+
+## Opt-in CSS Modules styles
+
+CSS Modules alternatives are available beside the original Griffel style modules as
+`use*Styles.styles.css.ts`, with layered `*.module.css` assets. The default imports
+remain unchanged. Configure the consumer bundler to replace the corresponding
+`.styles` / `.styles.js` modules with their `.styles.css` alternatives, and enable
+CSS Modules processing for package CSS (including `node_modules`).
+
+Alternatives cover all Carousel style hooks, including CarouselButton and
+CarouselAutoplayButton. Those two hooks still compose the public Button/ToggleButton
+style hooks from `@fluentui/react-button`: select that package's CSS alternatives
+consistently as well. Without that selection their base styles remain Griffel, so
+these components are not independently Griffel-free. Derived normal-color rules
+are restricted to non-forced-colors mode to preserve the base high-contrast rules.
+Select the styles for any nested independently styled components separately.
+
+Hook tests cover class mapping and caller classes, not browser styling parity.
+Computed-style, screenshots, forced-colors, Firefox, RTL rendering, SSR, and full
+alternate Storybook/VRT coverage have not been verified for these alternatives.

@@ -5,7 +5,9 @@
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "*.md",
     "dist/*.d.ts",
@@ -31,6 +33,7 @@
     "@fluentui/react-utilities": "^9.27.0",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1",
     "use-sync-external-store": "^1.4.0"
   },
   "peerDependencies": {

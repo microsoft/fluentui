@@ -1,8 +1,8 @@
 'use client';
 
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 
-export const usePortalMountNodeStylesStyles = makeStyles({
+const usePortalMountNodeStylesStyles = makeStyles({
   root: {
     // Creates new stacking context to prevent z-index issues
     // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
@@ -16,3 +16,9 @@ export const usePortalMountNodeStylesStyles = makeStyles({
     zIndex: 1000000,
   },
 });
+
+export const usePortalMountNodeClassName = (themeClassName: string, className?: string): string => {
+  const styles = usePortalMountNodeStylesStyles();
+
+  return mergeClasses(themeClassName, styles.root, className);
+};

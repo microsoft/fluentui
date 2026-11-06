@@ -33,3 +33,7 @@ See [Spec.md](./docs/Spec.md)
 ### Upgrade Guide
 
 If you're upgrading to Fluent UI v9 see the upgrade guide in [Storybook](https://react.fluentui.dev/) under Concepts > Upgrading.
+
+## Opt-in CSS Modules styles
+
+SearchBox has a layered CSS Modules alternative beside its Griffel style hook. It continues to call the public Input style hook; use the same bundler resolver for `@fluentui/react-input` so that hook is replaced wholesale.

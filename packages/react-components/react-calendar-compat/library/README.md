@@ -44,3 +44,21 @@ We will take a similar approach as v0 where we will follow this pattern:
 ## Calendar compat Slots API special case
 
 Due to time constraints, Calendar compat is a special case for compat components. We are not moving the API to our slots API. Calendar is extracted from DatePicker compat and moved to this package as is.
+
+## Opt-in CSS Modules styles
+
+CSS Modules alternatives are available beside the original Griffel style modules as
+`use*Styles.styles.css.ts`, with layered `*.module.css` assets. The default imports
+remain unchanged. Configure the consumer bundler to replace the corresponding
+`.styles` / `.styles.js` modules with their `.styles.css` alternatives, and enable
+CSS Modules processing for package CSS (including `node_modules`).
+
+All calendar style modules have opt-in alternatives, including the shared picker
+helpers and day-grid focus/corner rules. Compatibility class-map helpers preserve
+their existing return shapes; preview state hooks preserve their slot contracts.
+Motion layers and other independently styled components still need their own
+selection; these alternatives do not make a calendar tree Griffel-free.
+
+Hook tests cover class mapping and caller classes, not browser styling parity.
+Computed-style, screenshots, forced-colors, Firefox, RTL rendering, SSR, and full
+alternate Storybook/VRT coverage have not been verified for these alternatives.

@@ -58,6 +58,13 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
       config.plugins = config.plugins.filter(value => value && value.constructor.name !== 'ProgressPlugin');
     }
+    config.resolve = config.resolve ?? {};
+    // Workspace imports resolve to TypeScript source; built packages use explicit .styles.js imports.
+    config.resolve.extensions = ['.css.ts', '.styles.css.js', ...(config.resolve.extensions ?? [])];
+    config.resolve.extensionAlias = {
+      ...config.resolve.extensionAlias,
+      '.styles.js': ['.styles.css.js', '.styles.js'],
+    };
 
     return config;
   },

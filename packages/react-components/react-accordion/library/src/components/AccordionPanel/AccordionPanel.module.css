@@ -1,0 +1,5 @@
+@layer fluent {
+  .root {
+    margin: 0 var(--spacingHorizontalM);
+  }
+}

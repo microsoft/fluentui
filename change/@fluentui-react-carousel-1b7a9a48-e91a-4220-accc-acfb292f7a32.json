@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add CSS Modules style alternatives for carousel",
+  "packageName": "@fluentui/react-carousel",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

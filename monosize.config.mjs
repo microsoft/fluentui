@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import webpackBundler from 'monosize-bundler-webpack';
 import gitStorage from 'monosize-storage-git';
+// import { configureReactIcons } from '@fluentui/scripts-storybook';
 
 /**
  * Single source of truth for the bundle-size report artifact name and path.
@@ -42,6 +43,24 @@ const config = {
     config.module = config.module ?? {};
     config.module.rules = config.module.rules ?? [];
     config.module.rules.push({ test: /\.[cm]?js$/, resolve: { fullySpecified: false } });
+
+    // Temporarily disabled while the CSS Modules alternatives roll out.
+    // configureReactIcons({ config, headless: true });
+    //
+    // config.experiments = config.experiments ?? {};
+    // config.experiments.css = true;
+    // config.module.parser = config.module.parser ?? {};
+    // config.module.parser.css = {
+    //   ...config.module.parser.css,
+    //   namedExports: false,
+    // };
+    //
+    // config.resolve = config.resolve ?? {};
+    // config.resolve.extensionAlias = {
+    //   ...config.resolve.extensionAlias,
+    //   '.styles.js': ['.styles.css.js', '.styles.js'],
+    // };
+
     return config;
   }),
   reportResolvers: {
@@ -51,6 +70,7 @@ const config = {
       return json.name.replace('@fluentui/', '');
     },
   },
+  // assetTypes: ['js', 'css'],
 };
 
 export default config;

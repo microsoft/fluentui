@@ -1,0 +1,10 @@
+@layer fluent {
+  .vertical {
+    flex-direction: column;
+  }
+
+  .verticalIcon {
+    font-size: var(--fontSizeBase600);
+    margin: 0;
+  }
+}

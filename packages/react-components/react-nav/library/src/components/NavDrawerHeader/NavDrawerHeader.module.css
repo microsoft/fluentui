@@ -1,0 +1,7 @@
+@layer fluent {
+  .root {
+    margin: unset;
+    padding-inline-start: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+    padding-block: calc(var(--spacingVerticalXS) + var(--strokeWidthThin));
+  }
+}

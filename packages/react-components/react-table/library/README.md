@@ -553,3 +553,20 @@ export const Default = () => {
   );
 };
 ```
+
+## Opt-in CSS Modules styles
+
+Each Table and DataGrid style module has a sibling `.styles.css.ts` alternative
+and layered stylesheet. Griffel remains the default. Configure a narrowly scoped
+bundler replacement for both `.styles` source imports and `.styles.js` published
+imports; the replacement must also cover the Table hooks composed by DataGrid.
+The package ships these CSS assets in both module formats and marks only CSS as
+side-effectful. Theme variables must be provided by FluentProvider.
+
+The alternatives preserve the native table and flex layouts, size and selection
+states, Tabster focus attributes, and stable slot classes. Checkbox, Radio,
+Avatar, and other rendered components retain their own styling and must be
+selected separately when a fully CSS-styled subtree is required. Hook tests
+exercise class mapping, not browser styling parity; browser interaction, RTL,
+forced-colors, SSR, and visual-regression validation remain required before a
+default switch.

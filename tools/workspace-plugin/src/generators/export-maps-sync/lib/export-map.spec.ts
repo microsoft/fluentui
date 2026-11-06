@@ -133,6 +133,26 @@ describe('buildExportMap', () => {
   };
   const rootEntry = { key: '.', name: 'index', outputPath: 'index' };
 
+  it.each(['module', 'commonjs'] as const)('preserves explicit CSS asset subpaths for %s packages', type => {
+    const exports = buildExportMap(
+      {
+        ...esmPackage,
+        type,
+        exports: {
+          './styles.css': './lib/styles.css',
+          './arrow.module.css': './lib/Arrow.module.css',
+          './stale': './lib/stale.js',
+        },
+      },
+      [rootEntry],
+    );
+
+    expect(exports!['./arrow.module.css']).toBe('./lib/Arrow.module.css');
+    expect(exports!['./styles.css']).toBe('./lib/styles.css');
+    expect(exports!).not.toHaveProperty('./stale');
+    expect(Object.keys(exports!)).toEqual(['.', './arrow.module.css', './styles.css', './package.json']);
+  });
+
   describe('esm first packages', () => {
     it('builds the conditional import/require shape with no node condition', () => {
       expect(buildExportMap(esmPackage, [rootEntry])).toEqual({

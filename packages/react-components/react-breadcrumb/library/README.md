@@ -41,3 +41,7 @@ See the [Spec.md](./docs/Spec.md) file for background information on the design/
 ## API
 
 For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/components-breadcrumb--default).
+
+## Opt-in CSS Modules styles
+
+BreadcrumbButton has a layered CSS Modules alternative beside its Griffel style hook. The alternative continues to call the public Button style hook; use the same bundler resolver for `@fluentui/react-button` so that hook is replaced wholesale.

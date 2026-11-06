@@ -1,0 +1,6 @@
+@layer fluent {
+  .subtleSelection[data-fui-focus-within]:focus-within :global(.fui-TableSelectionCell),
+  .subtleSelection:hover :global(.fui-TableSelectionCell) {
+    opacity: 1;
+  }
+}
