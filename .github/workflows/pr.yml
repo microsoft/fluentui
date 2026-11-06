@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -24,7 +24,7 @@ env:
 jobs:
   main:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     permissions:
       contents: 'read'
       actions: 'read'
@@ -112,7 +112,7 @@ jobs:
 
   react-major-versions-integration:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
