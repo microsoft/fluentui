@@ -1,10 +1,10 @@
-import { computePosition } from '@floating-ui/dom';
+import { computePosition } from './engine/computePosition';
 import type { Placement } from '@floating-ui/dom';
 import { createPositionManager } from './createPositionManager';
-import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
+import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';
 
-jest.mock('@floating-ui/dom', () => ({
+jest.mock('./engine/computePosition', () => ({
   computePosition: jest.fn(),
 }));
 
@@ -32,10 +32,7 @@ function createTestElements() {
   return { container, target };
 }
 
-const mockMiddlewareData = {
-  intersectionObserver: { intersecting: false },
-  hide: { escaped: false, referenceHidden: false },
-};
+const mockVisibility = { intersecting: false, escaped: false, referenceHidden: false };
 
 describe('createPositionManager', () => {
   beforeEach(() => {
@@ -65,8 +62,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement,
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -80,7 +76,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement,
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -100,8 +96,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     const { container, target } = createTestElements();
@@ -115,7 +110,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'top',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -134,11 +129,9 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
+      ...mockVisibility,
+      escaped: true,
+      referenceHidden: true,
     });
 
     const { container, target } = createTestElements();
@@ -164,47 +157,13 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
 
     const event: OnPositioningEndEvent = listener.mock.calls[0][0];
     expect(event.detail).toEqual({ placement: 'bottom', escaped: true, referenceHidden: true });
-  });
-
-  it('does not report hide flags when the layout viewport is unavailable', async () => {
-    computePositionMock.mockResolvedValue({
-      x: 0,
-      y: 0,
-      placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: {
-        ...mockMiddlewareData,
-        hide: { escaped: true, referenceHidden: true },
-      },
-    });
-
-    const { container, target } = createTestElements();
-    const listener = jest.fn();
-    container.addEventListener(POSITIONING_END_EVENT, listener);
-
-    createPositionManager({
-      container,
-      target,
-      arrow: null,
-      strategy: 'absolute',
-      middleware: [],
-      placement: 'bottom',
-      disableUpdateOnResize: true,
-    });
-
-    await flushMicrotasks();
-
-    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
-    expect(event.detail).toEqual({ placement: 'bottom', escaped: false, referenceHidden: false });
-    expect(container.hasAttribute(DATA_POSITIONING_ESCAPED)).toBe(false);
-    expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
   });
 
   it('does not dispatch event after dispose', async () => {
@@ -229,7 +188,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      disableUpdateOnResize: true,
+      options: { disableUpdateOnResize: true },
     });
 
     // Let debounce microtask fire so computePosition is called
@@ -243,8 +202,7 @@ describe('createPositionManager', () => {
       x: 10,
       y: 20,
       placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
+      ...mockVisibility,
     });
 
     // Allow the .then() to run

@@ -1,4 +1,4 @@
-import { size } from '@floating-ui/dom';
+import { size } from '../engine';
 import type { Middleware } from '@floating-ui/dom';
 import type { NormalizedAutoSize, PositioningOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';

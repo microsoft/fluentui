@@ -6,29 +6,17 @@ import type { NormalizedAutoSize, PositioningOptions } from '../types';
  * This function maps them to true/'height'/'width'
  */
 export const normalizeAutoSize = (autoSize?: PositioningOptions['autoSize']): NormalizedAutoSize | false => {
-  switch (autoSize) {
-    case 'always':
-    case true:
-      return {
-        applyMaxWidth: true,
-        applyMaxHeight: true,
-      };
+  const dimensions = getAutoSizeDimensions(autoSize);
+  return dimensions.length
+    ? {
+        applyMaxWidth: dimensions.includes('width'),
+        applyMaxHeight: dimensions.includes('height'),
+      }
+    : false;
+};
 
-    case 'width-always':
-    case 'width':
-      return {
-        applyMaxWidth: true,
-        applyMaxHeight: false,
-      };
-
-    case 'height-always':
-    case 'height':
-      return {
-        applyMaxWidth: false,
-        applyMaxHeight: true,
-      };
-
-    default:
-      return false;
-  }
+export const getAutoSizeDimensions = (autoSize?: PositioningOptions['autoSize']): ('width' | 'height')[] => {
+  // 'width-always' and 'height-always' are obsolete aliases of 'width' and 'height'
+  const dimension = /^(width|height)(-always)?$/.exec(String(autoSize));
+  return autoSize === true || autoSize === 'always' ? ['width', 'height'] : dimension ? [dimension[1] as 'width'] : [];
 };
