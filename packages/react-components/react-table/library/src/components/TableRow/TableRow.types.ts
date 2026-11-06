@@ -18,6 +18,19 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {
 };
 
 /**
+ * TableRow props accepted by `useTableRowBase_unstable`, without design props.
+ */
+export type TableRowBaseProps = ComponentProps<TableRowSlots>;
+
+/**
+ * State returned by `useTableRowBase_unstable`.
+ */
+export type TableRowBaseState = ComponentState<TableRowSlots> &
+  Pick<TableContextValue, 'noNativeElements'> & {
+    isHeaderRow: boolean;
+  };
+
+/**
  * State used in rendering TableRow
  */
 export type TableRowState = ComponentState<TableRowSlots> &

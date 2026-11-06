@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { TableCellProps, TableCellState } from './TableCell.types';
+import type { TableCellBaseState, TableCellProps, TableCellState } from './TableCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
 /**
@@ -15,7 +15,22 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableCell
  */
 export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTMLElement>): TableCellState => {
-  const { noNativeElements, size } = useTableContext();
+  const { size } = useTableContext();
+
+  return {
+    ...useTableCellBase_unstable(props, ref),
+    size,
+  };
+};
+
+/**
+ * Base state hook for TableCell, without the design state (`size`).
+ *
+ * @param props - props from this instance of TableCell
+ * @param ref - reference to root HTMLElement of TableCell
+ */
+export const useTableCellBase_unstable = (props: TableCellProps, ref: React.Ref<HTMLElement>): TableCellBaseState => {
+  const { noNativeElements } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'td';
 
@@ -35,6 +50,5 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
       { elementType: rootComponent },
     ),
     noNativeElements,
-    size,
   };
 };

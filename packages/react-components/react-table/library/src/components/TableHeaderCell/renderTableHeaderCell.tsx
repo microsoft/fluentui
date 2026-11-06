@@ -2,12 +2,12 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TableHeaderCellState, TableHeaderCellSlots } from './TableHeaderCell.types';
+import type { TableHeaderCellBaseState, TableHeaderCellSlots } from './TableHeaderCell.types';
 
 /**
  * Render the final JSX of TableHeaderCell
  */
-export const renderTableHeaderCell_unstable = (state: TableHeaderCellState): JSXElement => {
+export const renderTableHeaderCell_unstable = (state: TableHeaderCellBaseState): JSXElement => {
   assertSlots<TableHeaderCellSlots>(state);
 
   return (
