@@ -321,7 +321,11 @@ export class BaseButton extends FASTElement {
    * @internal
    */
   public formDisabledCallback(disabled: boolean): void {
-    this.disabled = disabled;
+    if (disabled) {
+      this.removeAttribute('tabindex');
+    } else {
+      this.setTabIndex();
+    }
   }
 
   /**
@@ -397,7 +401,7 @@ export class BaseButton extends FASTElement {
    * @internal
    */
   private submitForm(): void {
-    if (!this.elementInternals.form || this.disabled || this.type !== ButtonType.submit) {
+    if (!this.elementInternals.form || this.disabled || this.matches(':disabled') || this.type !== ButtonType.submit) {
       return;
     }
 
