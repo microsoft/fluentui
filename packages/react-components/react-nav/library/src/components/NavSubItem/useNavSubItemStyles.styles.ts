@@ -1,6 +1,7 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import {
   navItemTokens,
   useContentStyles,
@@ -15,19 +16,28 @@ import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
   root: 'fui-NavSubItem',
 };
+
+const subItemMediumIndent = `calc(${tokens.spacingHorizontalXXXL} + ${tokens.spacingHorizontalXS})`;
+const subItemSmallIndent = `calc(${tokens.spacingHorizontalXXL} + ${tokens.spacingHorizontalSNudge})`;
+
 /**
  * Styles for the content slot (children)
  */
 const useNavSubItemSpecificStyles = makeStyles({
   base: {
-    paddingInlineStart: '46px',
+    paddingInlineStart: `calc(${tokens.spacingHorizontalMNudge} + ${subItemMediumIndent})`,
   },
   smallBase: {
-    paddingInlineStart: '40px',
+    paddingInlineStart: `calc(${tokens.spacingHorizontalMNudge} + ${subItemSmallIndent})`,
   },
   selectedIndicator: {
     '::after': {
-      marginInlineStart: `-${navItemTokens.indicatorOffset + 36}px`,
+      marginInlineStart: `calc(-1 * (${subItemMediumIndent} + ${navItemTokens.indicatorOffset}px))`,
+    },
+  },
+  smallSelectedIndicator: {
+    '::after': {
+      marginInlineStart: `calc(-1 * (${subItemSmallIndent} + ${navItemTokens.indicatorOffset}px))`,
     },
   },
 });
@@ -50,11 +60,12 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
     navSubItemClassNames.root,
     rootDefaultClassName,
     isSmallDensity && smallStyles.root,
-    isSmallDensity && navSubItemSpecificStyles.smallBase,
     navSubItemSpecificStyles.base,
+    isSmallDensity && navSubItemSpecificStyles.smallBase,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
-    selected && navSubItemSpecificStyles.selectedIndicator,
+    selected &&
+      (isSmallDensity ? navSubItemSpecificStyles.smallSelectedIndicator : navSubItemSpecificStyles.selectedIndicator),
     state.root.className,
   );
 
