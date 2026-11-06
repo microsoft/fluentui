@@ -328,21 +328,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSXElement[] {
     const placeholderIndex = 1;
-    // Gaps are only drawn between segments rendered as bars. Zero-value segments and the
-    // absolute-scale placeholder (rendered as a label instead) don't need one.
+    const total = data.chartData!.reduce(
+      (acc: number, point: IChartDataPoint) =>
+        acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
+      0,
+    );
+    // Gaps are only drawn between segments rendered as bars. A segment gets a non-zero width only
+    // when its share of the total is positive (negative shares are clamped to 0 below), and the
+    // absolute-scale placeholder is rendered as a label instead.
     const rendersAsBar = (point: IChartDataPoint, index: number): boolean =>
-      (point.horizontalBarChartdata!.x || 0) > 0 &&
+      (point.horizontalBarChartdata!.x || 0) / total > 0 &&
       !(index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale);
     const noOfBars = data.chartData!.filter(rendersAsBar).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) =>
-        acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
-      0,
-    );
     let prevPosition = 0;
     let value = 0;
     let renderedBarsBefore = 0;

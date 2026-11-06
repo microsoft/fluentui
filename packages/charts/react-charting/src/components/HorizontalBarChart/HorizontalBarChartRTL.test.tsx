@@ -384,7 +384,7 @@ describe('Horizontal Bar Chart - axe-core', () => {
 
 describe('Horizontal bar chart - spacing between bars', () => {
   const MARGIN_WIDTH_IN_PX = 3;
-  const getBars = (container: HTMLElement) =>
+  const getBars = (container: Element) =>
     Array.from(container.querySelectorAll('rect'))
       .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
       .filter(bar => bar.width > 0)
@@ -421,6 +421,49 @@ describe('Horizontal bar chart - spacing between bars', () => {
       for (let i = 1; i < bars.length; i++) {
         expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(expectedGap);
       }
+    });
+
+    // Each row is one value plus a placeholder for the rest of y; no point.data. Segments with a
+    // negative share of the total render with no width, so they must not reserve a gap either.
+    const rows: [string, { x: number; y: number }, number][] = [
+      ['positive value', { x: 25, y: 100 }, 2],
+      ['zero value', { x: 0, y: 100 }, 1],
+      ['negative value', { x: -10, y: 100 }, 1],
+      ['negative total', { x: -30, y: -50 }, 2],
+    ];
+    const toChartProps = ([chartTitle, horizontalBarChartdata]: (typeof rows)[number]): IChartProps => ({
+      chartTitle,
+      chartData: [{ legend: chartTitle, horizontalBarChartdata }],
+    });
+    const expectEvenlySpacedBars = (svg: Element, expectedBarCount: number) => {
+      const bars = getBars(svg);
+      expect(bars).toHaveLength(expectedBarCount);
+      expect(bars[0].x).toBeCloseTo(0);
+      expect(bars[bars.length - 1].x + bars[bars.length - 1].width).toBeCloseTo(100);
+      for (let i = 1; i < bars.length; i++) {
+        // 3px gap on a 300px track
+        expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(1);
+      }
+    };
+
+    test.each(rows)('%s: gaps are reserved only between rendered segments', (...row) => {
+      setRTL(isRTL);
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+      const { container } = render(<HorizontalBarChart data={[toChartProps(row)]} />);
+
+      expectEvenlySpacedBars(container.querySelector(`svg[aria-label="${row[0]}"]`)!, row[2]);
+    });
+
+    test('multiple rows: each row reserves gaps only between its rendered segments', () => {
+      setRTL(isRTL);
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+      const { container } = render(<HorizontalBarChart data={rows.map(toChartProps)} />);
+
+      rows.forEach(([chartTitle, , expectedBarCount]) => {
+        expectEvenlySpacedBars(container.querySelector(`svg[aria-label="${chartTitle}"]`)!, expectedBarCount);
+      });
     });
   });
 
