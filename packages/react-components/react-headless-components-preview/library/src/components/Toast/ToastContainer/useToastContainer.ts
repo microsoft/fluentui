@@ -11,10 +11,11 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { Delete } from '@fluentui/keyboard-keys';
+import { Delete, Tab } from '@fluentui/keyboard-keys';
 import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
+import { findAllTabbable, findFirstFocusable, findLastFocusable } from '../../../hooks/focus';
 
 const intentPolitenessMap: Record<NonNullable<ToastContainerProps['intent']>, ToastPoliteness> = {
   success: 'assertive',
@@ -222,6 +223,10 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       close();
     }
 
+    if (e.key === Tab) {
+      handleTab(e);
+    }
+
     userRootSlot?.onKeyDown?.(e);
   });
 
@@ -255,4 +260,34 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     titleId,
     bodyId,
   };
+};
+
+const LAYER_SELECTOR = 'dialog, [popover]';
+
+/**
+ * Keeps Tab inside the toast, like the styled Toast: Tab on the toast moves to its first control (Shift+Tab to
+ * its last), Tab on the last control wraps to the first, and Shift+Tab on the first control returns to the toast.
+ */
+const handleTab = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const toast = e.currentTarget;
+  const target = e.target;
+  if (!isHTMLElement(target) || target.closest(LAYER_SELECTOR) !== toast.closest(LAYER_SELECTOR)) {
+    // Inline popovers and dialogs inside the toast own their Tab handling.
+    return;
+  }
+
+  if (target === toast) {
+    e.preventDefault();
+    (e.shiftKey ? findLastFocusable(toast) : findFirstFocusable(toast))?.focus();
+    return;
+  }
+
+  const tabbable = findAllTabbable(toast);
+  if (!e.shiftKey && target === tabbable[tabbable.length - 1]) {
+    e.preventDefault();
+    tabbable[0].focus();
+  } else if (e.shiftKey && target === tabbable[0]) {
+    e.preventDefault();
+    toast.focus();
+  }
 };

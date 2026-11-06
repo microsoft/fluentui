@@ -10,6 +10,46 @@ describe('TagGroup', () => {
     displayName: 'TagGroup',
   });
 
+  it('moves focus to the next tag when the focused tag is dismissed', () => {
+    const { getByText } = render(
+      <TagGroup>
+        <Tag value="1" dismissible>
+          first
+        </Tag>
+        <Tag value="2" dismissible>
+          second
+        </Tag>
+      </TagGroup>,
+    );
+    const first = getByText('first').closest('button')!;
+    const second = getByText('second').closest('button')!;
+
+    first.focus();
+    fireEvent.click(first);
+
+    expect(second).toHaveFocus();
+  });
+
+  it('moves focus to the previous tag when the last tag is dismissed', () => {
+    const { getByText } = render(
+      <TagGroup>
+        <Tag value="1" dismissible>
+          first
+        </Tag>
+        <Tag value="2" dismissible>
+          second
+        </Tag>
+      </TagGroup>,
+    );
+    const first = getByText('first').closest('button')!;
+    const second = getByText('second').closest('button')!;
+
+    second.focus();
+    fireEvent.click(second);
+
+    expect(first).toHaveFocus();
+  });
+
   it('should invoke onDismiss when a child dismissible Tag is clicked', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(

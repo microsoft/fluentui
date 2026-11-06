@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
 import { MenuTrigger } from './MenuTrigger/MenuTrigger';
@@ -570,6 +570,31 @@ describe('Menu', () => {
       expect(getByTestId('outside-item').querySelectorAll('span')).toHaveLength(3);
       // Inside the split group the trigger half suppresses the icon gutter: indicator + content.
       expect(getByTestId('split-trigger').querySelectorAll('span')).toHaveLength(2);
+    });
+
+    it('moves focus between the split items with ArrowRight and ArrowLeft', () => {
+      const { getByTestId } = render(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuSplitGroup>
+                <MenuItem data-testid="split-main">Split main</MenuItem>
+                <MenuItem data-testid="split-secondary">Secondary</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      getByTestId('split-main').focus();
+      fireEvent.keyDown(getByTestId('split-main'), { key: 'ArrowRight' });
+      expect(getByTestId('split-secondary')).toHaveFocus();
+
+      fireEvent.keyDown(getByTestId('split-secondary'), { key: 'ArrowLeft' });
+      expect(getByTestId('split-main')).toHaveFocus();
     });
   });
 });
