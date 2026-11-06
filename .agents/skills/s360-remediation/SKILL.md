@@ -17,23 +17,32 @@ Creating this skill or invoking it is not approval to change GitHub or queue bui
 ## Inputs and prerequisites
 
 - Default repository: `microsoft/fluentui`. Discover its current default branch.
-- Optional item IDs or URLs restrict the run; otherwise discover all open dependency
-  alerts for the repository's mapped S360 services.
-- Work-item source: `https://dev.azure.com/uifabric/UI%20Fabric/_workitems/edit/<id>`.
-- Pipelines: [UI Fabric folders](https://uifabric.visualstudio.com/UI%20Fabric/_build?view=folders).
+- Optional item IDs or URLs restrict the run; otherwise discover repository-tagged
+  Component Governance work items through ADO. Report their source and scope.
+- Resolve `ADO_ORG_URL`, `ADO_PROJECT`, and the discovery filter `ADO_SECURITY_TAG`
+  from supplied context, environment, or approved ignored local configuration.
+  Ask for missing values; never guess or embed private defaults in this skill.
+- Validate supplied item URLs against that organization/project. Derive pipeline
+  links at runtime; do not publish internal links or configuration in GitHub.
 - Parse `$ARGUMENTS`; reject unknown options, invalid `owner/repo`, nonpositive item
   IDs, mismatched item URLs, or a wait duration outside 0-30 minutes. Default wait: 0.
-- Use authenticated S360 Breeze, ADO, and GitHub tools; load deferred tools before
-  calling them. CLI fallbacks use existing `gh` / corporate `az` authentication.
-  Missing access is a blocker, not permission to invent data or request tokens.
+- Use existing corporate `az` authentication as the primary route for ADO item
+  discovery and retrieval, with `az rest` for documented API operations. Follow
+  [S360 investigation](./references/s360-investigation.md).
+- Authenticated status integrations are optional enrichment, not a prerequisite.
+  Load available deferred tools without requiring a particular private interface.
+- Distinguish a missing connector from an actual authentication/permission error.
+  Do not declare all item access blocked based only on tool absence or
+  `az account show`; probe the ADO work-item API. Never invent data or request tokens.
 
 ## Flow
 
 ### 1. Query open items
 
-Follow [S360 investigation](./references/s360-investigation.md) to discover services,
-retrieve all relevant pages, and enrich alerts with ADO work items. Deduplicate
-mirrored alerts and retain the selected item scope throughout follow-up.
+Follow the primary ADO route in [S360 investigation](./references/s360-investigation.md),
+retrieving all relevant items. ADO state is not authoritative S360 activity:
+label activity unverified unless confirmed by a documented CG/S360 API, portal
+evidence, or an available status integration. Deduplicate mirrored alerts and retain scope.
 
 ### 2. Generate the summary
 
@@ -81,8 +90,10 @@ one default-branch commit, present the required pipelines and obtain separate
 approval. Follow the **Production runs** section in [GitHub operations](./references/github-and-pipelines.md)
 to queue each required pipeline once with `dryRun=true`, pinned to that commit.
 
-Confirm scan execution and requery S360 for the same alerts. A merged PR or passing
-build alone does not prove S360 resolution. Never update S360/ADO status manually.
+Confirm scan execution and check authoritative CG/S360 status through a documented
+authenticated API (including `az rest`), portal evidence, or an approved integration.
+If unavailable, report S360 resolution unverified, not resolved. This does not
+block investigation, approved fixes, or dry runs. Never edit S360/ADO status.
 
 ## Follow-up
 

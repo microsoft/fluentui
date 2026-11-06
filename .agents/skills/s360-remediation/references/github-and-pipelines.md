@@ -162,8 +162,11 @@ selected fix is verified at one default-branch commit.** An unresolved item,
 pending aggregate task, closed-unmerged PR, or blocked evidence prevents all runs
 for the selected scope. A merged fix is not yet authoritative S360 resolution.
 
-Organization: `https://dev.azure.com/uifabric`; project: `UI Fabric`.
-[Pipeline folders](https://uifabric.visualstudio.com/UI%20Fabric/_build?view=folders)
+Resolve `ADO_ORG_URL` and `ADO_PROJECT` from the approved runtime configuration;
+derive `ADO_PROJECT_PATH` with a standard URI encoder for REST paths. Never put
+private organization/project defaults, pipeline IDs, or run links in public
+examples. If pipeline ownership differs from work-item ownership, obtain and
+validate the separate pipeline settings before use; do not assume they match.
 
 | Product        | Allowed stable YAML definition                                                                       |
 | -------------- | ---------------------------------------------------------------------------------------------------- |
@@ -186,10 +189,10 @@ Queue builds, including required resource authorizations. Report authentication
 or permission failures without collecting tokens or changing permissions.
 
 ```bash
-az pipelines list --org https://dev.azure.com/uifabric \
-  --project 'UI Fabric' --output json
-az pipelines show --org https://dev.azure.com/uifabric \
-  --project 'UI Fabric' --id "$PIPELINE_ID" --output json
+az pipelines list --org "$ADO_ORG_URL" \
+  --project "$ADO_PROJECT" --output json
+az pipelines show --org "$ADO_ORG_URL" \
+  --project "$ADO_PROJECT" --id "$PIPELINE_ID" --output json
 ```
 
 Verify actual definition name/ID, repository, `process.yamlFilename`, and queue
@@ -212,12 +215,12 @@ Failed/cancelled runs need an approved retry; ambiguous queue responses need rem
 readback before another request.
 
 ```bash
-az pipelines run --org https://dev.azure.com/uifabric \
-  --project 'UI Fabric' --id "$PIPELINE_ID" \
+az pipelines run --org "$ADO_ORG_URL" \
+  --project "$ADO_PROJECT" --id "$PIPELINE_ID" \
   --branch "$APPROVED_REF" --commit-id "$APPROVED_SHA" \
   --parameters dryRun=true --output json
-az pipelines runs show --org https://dev.azure.com/uifabric \
-  --project 'UI Fabric' --id "$RUN_ID" --output json
+az pipelines runs show --org "$ADO_ORG_URL" \
+  --project "$ADO_PROJECT" --id "$RUN_ID" --output json
 ```
 
 Use `--parameters`, not `--variables dryRun=true`. Retain the returned run ID/URL
@@ -227,7 +230,7 @@ Mismatch is a blocker; never treat a wrong-commit or publishing run as evidence.
 
 REST/tool queueing must set `templateParameters.dryRun` to boolean `true` and
 `resources.repositories.self.refName` / `version` to the approved ref/SHA:
-`POST https://dev.azure.com/uifabric/UI%20Fabric/_apis/pipelines/<id>/runs?api-version=7.1`.
+`POST <ADO_ORG_URL>/<ADO_PROJECT_PATH>/_apis/pipelines/<id>/runs?api-version=7.1`.
 Do not send `previewRun=true`, skip scanning stages, or enable real publishing.
 
 Finally inspect run outcome, actual CG scan execution/ingestion, and matching
