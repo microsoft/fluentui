@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: restore native link behavior (hover URL, middle-click, context menu) on Link and AnchorButton",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
