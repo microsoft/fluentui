@@ -1,0 +1,5 @@
+{
+  "type": "patch",
+  "comment": "Prevent selecting options when the parent dropdown is disabled.",
+  "packageName": "@fluentui/react-combobox"
+}

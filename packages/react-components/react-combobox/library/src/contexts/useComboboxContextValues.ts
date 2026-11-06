@@ -9,6 +9,7 @@ export function useComboboxContextValues(
 ): ComboboxBaseContextValues {
   const {
     appearance,
+    disabled,
     open,
     getOptionById,
     getOptionsMatchingValue,
@@ -36,6 +37,7 @@ export function useComboboxContextValues(
   };
 
   const listbox = {
+    disabled,
     activeOption: undefined,
     focusVisible: false,
     getOptionById,

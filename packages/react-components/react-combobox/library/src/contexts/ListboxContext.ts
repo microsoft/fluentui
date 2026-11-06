@@ -21,6 +21,7 @@ export type ListboxContextValue = Pick<
   | 'selectOption'
   | 'setActiveOption'
 > & {
+  disabled?: boolean;
   onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
   onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
@@ -28,6 +29,7 @@ export type ListboxContextValue = Pick<
 const listboxContextDefaultValue = {
   activeOption: undefined,
   focusVisible: false,
+  disabled: false,
   multiselect: false,
   getOptionById() {
     return undefined;
