@@ -1,10 +1,13 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useRenderer_unstable } from '@griffel/react';
 import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
 import type { SliderBaseProps, SliderBaseState, SliderProps, SliderState } from './Slider.types';
+import { ensureLegacyVerticalSliderInput } from './legacyVerticalSliderAppearance';
 import { useFocusWithin } from '@fluentui/react-tabster';
 
 export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
@@ -12,8 +15,24 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
 
   const baseState = useSliderBase_unstable(baseProps, ref);
 
+  // Styling concern, so it lives here rather than in the base hook that unstyled consumers build on. Client-only and
+  // markup-free; see legacyVerticalSliderAppearance.ts for why the fallback cannot be static CSS.
+  // The root element locates the styling root (document or shadow root) and lets a hidden mount retry once laid out.
+  // It is read from the root slot, which the base hook already composes, so the input ref still reaches the input
+  // unwrapped and keeps React 19 ref cleanup semantics.
+  const { targetDocument } = useFluent();
+  const { styleElementAttributes } = useRenderer_unstable();
+  const vertical = !!baseState.vertical;
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if (vertical) {
+      return ensureLegacyVerticalSliderInput(rootRef.current ?? targetDocument, styleElementAttributes);
+    }
+  }, [vertical, targetDocument, styleElementAttributes]);
+
   return {
     ...baseState,
+    root: { ...baseState.root, ref: useMergedRefs(baseState.root.ref, rootRef) },
     size,
   };
 };
