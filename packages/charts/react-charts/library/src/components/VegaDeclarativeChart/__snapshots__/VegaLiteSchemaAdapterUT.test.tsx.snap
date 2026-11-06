@@ -57,7 +57,6 @@ Object {
 
 exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should extract axis titles and formats 1`] = `
 Object {
-  "chartTitle": "X Axis",
   "data": Object {
     "chartTitle": "Chart with Formats",
     "lineChartData": Array [
@@ -82,6 +81,7 @@ Object {
   "hideLegend": false,
   "tickFormat": ".0f",
   "width": 800,
+  "xAxisTitle": "X Axis",
   "yAxisTickCount": 5,
   "yAxisTickFormat": ".2f",
   "yAxisTitle": "Y Axis",
@@ -115,6 +115,8 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
 }
 `;
 
@@ -142,6 +144,8 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
   "yMaxValue": 200,
   "yMinValue": 0,
 }
@@ -178,6 +182,8 @@ Object {
   "height": undefined,
   "hideLegend": true,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
 }
 `;
 
@@ -217,6 +223,8 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
 }
 `;
 
@@ -248,12 +256,13 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
 }
 `;
 
 exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform line chart with temporal x-axis 1`] = `
 Object {
-  "chartTitle": "Date",
   "data": Object {
     "chartTitle": "Time Series Chart",
     "lineChartData": Array [
@@ -285,6 +294,7 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "Date",
   "yAxisTitle": "Value",
 }
 `;
@@ -336,5 +346,7 @@ Object {
   "height": undefined,
   "hideLegend": false,
   "width": undefined,
+  "xAxisTitle": "x",
+  "yAxisTitle": "y",
 }
 `;

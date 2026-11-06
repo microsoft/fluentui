@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Inline lookup resolves nested secondary fields, renamed columns and missing-key defaults before calculate.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "id": 1, "code": "a", "units": 3 },
+      { "id": 2, "code": "b", "units": 2 },
+      { "id": 3, "code": "c", "units": 4 }
+    ]
+  },
+  "transform": [
+    {
+      "lookup": "code",
+      "from": {
+        "data": {
+          "values": [
+            { "code": "a", "label": "One", "rates": { "base": 2 } },
+            { "code": "b", "label": "Two", "rates": { "base": 5 } }
+          ]
+        },
+        "key": "code",
+        "fields": ["label", "rates.base"]
+      },
+      "as": ["name", "rate"],
+      "default": 0
+    },
+    { "calculate": "datum.units * datum.rate", "as": "total" }
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "id", "type": "quantitative" },
+    "y": { "field": "total", "type": "quantitative" },
+    "tooltip": [
+      { "field": "name", "type": "nominal" },
+      { "field": "rate", "type": "quantitative" }
+    ]
+  }
+}

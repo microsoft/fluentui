@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Ranged bars round the primary value endpoint, including a negative value below its negative baseline.",
+  "width": 272,
+  "height": 172,
+  "data": {
+    "values": [
+      { "category": "A", "value": -8, "baseline": -2 },
+      { "category": "B", "value": 8, "baseline": 2 }
+    ]
+  },
+  "mark": { "type": "bar", "cornerRadiusEnd": 4 },
+  "encoding": {
+    "x": {
+      "field": "category",
+      "type": "nominal",
+      "scale": { "domain": ["A", "B"], "paddingInner": 0, "paddingOuter": 0 }
+    },
+    "y": { "field": "value", "type": "quantitative", "scale": { "domain": [-10, 10] } },
+    "y2": { "field": "baseline" },
+    "tooltip": [
+      { "field": "category", "type": "nominal", "title": "Task" },
+      { "field": "value", "type": "quantitative", "format": ".1f", "title": "Value" }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Local wall-clock yearmonthdate and UTC yearmonthdate cross leap-day boundaries independently.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "id": 1, "local": "2024-02-29T12:34:56", "utc": "2024-02-29T23:30:00-02:00", "amount": 2 },
+      { "id": 2, "local": "2024-03-01T12:34:56", "utc": "2024-03-01T01:30:00+02:00", "amount": 4 }
+    ]
+  },
+  "transform": [
+    { "timeUnit": "yearmonthdate", "field": "local", "as": "local_day" },
+    { "timeUnit": "utcyearmonthdate", "field": "utc", "as": "utc_day" }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "utc_day", "type": "temporal", "scale": { "type": "utc" }, "axis": { "format": "%Y-%m-%d" } },
+    "y": { "field": "amount", "type": "quantitative" },
+    "tooltip": [{ "field": "local_day", "type": "temporal", "format": "%Y-%m-%d" }]
+  }
+}

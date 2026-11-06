@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Even/odd medians and sample versus population variance in encoding aliases.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "group": "A", "amount": 9 },
+      { "group": "A", "amount": 1 },
+      { "group": "A", "amount": 7 },
+      { "group": "A", "amount": 3 },
+      { "group": "B", "amount": 6 },
+      { "group": "B", "amount": 2 },
+      { "group": "B", "amount": 4 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "group", "type": "nominal" },
+    "y": { "field": "amount", "aggregate": "median", "type": "quantitative" },
+    "tooltip": [
+      { "field": "amount", "aggregate": "median", "type": "quantitative", "title": "Median" },
+      {
+        "field": "amount",
+        "aggregate": "variance",
+        "type": "quantitative",
+        "title": "Sample variance",
+        "format": ".3f"
+      },
+      {
+        "field": "amount",
+        "aggregate": "variancep",
+        "type": "quantitative",
+        "title": "Population variance",
+        "format": ".3f"
+      },
+      { "aggregate": "count", "type": "quantitative", "title": "Rows" }
+    ]
+  }
+}
