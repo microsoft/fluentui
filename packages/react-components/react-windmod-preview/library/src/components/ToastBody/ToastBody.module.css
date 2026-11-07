@@ -1,0 +1,24 @@
+@reference '#theme';
+
+/* Griffel sets the subtitle's line-height to a FONT-SIZE token; the measured 16px subtitle height
+   depends on it, so it is authored verbatim rather than normalised to a leading token.
+
+   `wrap-anywhere` reproduces Griffel's `word-break: break-word` — see ToastTitle.module.css. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply col-start-2 col-end-3 pt-vertical-s-nudge text-base-300 leading-20/14 font-regular wrap-anywhere text-neutral-foreground-1;
+
+    @variant group-appearance-inverted/fui-toast {
+      @apply text-neutral-foreground-inverted-2;
+    }
+  }
+
+  .subtitle {
+    @apply col-start-2 col-end-3 pt-vertical-xs text-base-200 leading-100 font-regular text-neutral-foreground-2;
+
+    @variant group-appearance-inverted/fui-toast {
+      @apply text-neutral-foreground-inverted-2;
+    }
+  }
+}

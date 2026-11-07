@@ -1,0 +1,192 @@
+@reference '#theme';
+
+/* Ring geometry lives entirely in masks: the spinner's radial mask cuts the disc down to a
+   stroke-width ring, and the tail's conic mask hides the first 105deg of the two conic-gradient
+   pseudo-elements behind it. The pseudos carry no module class, so Tailwind's before/after
+   variants reach them; those variants also supply `content: var(--tw-content)`, registered with
+   initial-value "". `animation: inherit` must stay ahead of the per-pseudo animation-name blocks. */
+
+/* RTL is the plain horizontal mirror of LTR: mirroring the spinner also mirrors the tail, both
+   conic gradients and the sweep direction, which is what Griffel produces from its rtlTail entry
+   plus its automatic rotate() flipping. `scale` is the individual transform property, so the
+   `transform` keyframes cannot clobber it. */
+
+/* Frames the browser would synthesize from the element's own `transform: none` are omitted:
+   `none` interpolates as the identity, so an explicit rotate(0deg) start or end frame adds
+   nothing. tail-rotate's 50% frame stays — the swing is 135deg out, 225deg back, and deleting
+   the midpoint would flatten it into one uniform 360deg segment. */
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tail-rotate {
+  0% {
+    transform: rotate(-135deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes tail-before-rotate {
+  50% {
+    transform: rotate(105deg);
+  }
+}
+
+@keyframes tail-after-rotate {
+  50% {
+    transform: rotate(225deg);
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex min-w-min items-center justify-center gap-8 overflow-hidden leading-0;
+
+    @variant label-above, label-below {
+      @apply flex-col;
+    }
+  }
+
+  .spinner {
+    @apply relative shrink-0 bg-brand-stroke-2-contrast text-brand-stroke-1;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    animation-timing-function: linear;
+
+    /* The mask cuts the ring out of a solid disc; the 1px stops give both edges a soft ramp. */
+    -webkit-mask-image: radial-gradient(
+      closest-side,
+      transparent calc(100% - var(--fui-spinner-stroke-width) - 1px),
+      white calc(100% - var(--fui-spinner-stroke-width)) calc(100% - 1px),
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      closest-side,
+      transparent calc(100% - var(--fui-spinner-stroke-width) - 1px),
+      white calc(100% - var(--fui-spinner-stroke-width)) calc(100% - 1px),
+      transparent 100%
+    );
+
+    @variant forced-colors {
+      @apply bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+    }
+
+    @variant group-size-extra-tiny/fui-spinner {
+      @apply size-16;
+
+      --fui-spinner-stroke-width: var(--spacing-thick);
+    }
+
+    @variant group-size-tiny/fui-spinner {
+      @apply size-20;
+
+      --fui-spinner-stroke-width: var(--spacing-thick);
+    }
+
+    @variant group-size-extra-small/fui-spinner {
+      @apply size-24;
+
+      --fui-spinner-stroke-width: var(--spacing-thick);
+    }
+
+    @variant group-size-small/fui-spinner {
+      @apply size-28;
+
+      --fui-spinner-stroke-width: var(--spacing-thick);
+    }
+
+    @variant group-size-medium/fui-spinner {
+      @apply size-32;
+
+      --fui-spinner-stroke-width: var(--spacing-thicker);
+    }
+
+    @variant group-size-large/fui-spinner {
+      @apply size-36;
+
+      --fui-spinner-stroke-width: var(--spacing-thicker);
+    }
+
+    @variant group-size-extra-large/fui-spinner {
+      @apply size-40;
+
+      --fui-spinner-stroke-width: var(--spacing-thicker);
+    }
+
+    @variant group-size-huge/fui-spinner {
+      @apply size-44;
+
+      --fui-spinner-stroke-width: var(--spacing-thickest);
+    }
+
+    @variant group-appearance-inverted/fui-spinner {
+      @apply bg-neutral-stroke-alpha-2 text-neutral-stroke-on-brand-2;
+    }
+
+    @variant rtl {
+      @apply -scale-x-100;
+    }
+  }
+
+  .tail {
+    @apply absolute block size-full;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: tail-rotate;
+    animation-timing-function: var(--ease-easy-ease);
+
+    -webkit-mask-image: conic-gradient(transparent 105deg, white 105deg);
+    mask-image: conic-gradient(transparent 105deg, white 105deg);
+
+    @variant before, after {
+      @apply absolute block size-full;
+      animation: inherit;
+
+      background-image: conic-gradient(currentcolor 135deg, transparent 135deg);
+    }
+
+    @variant before {
+      animation-name: tail-before-rotate;
+    }
+
+    @variant after {
+      animation-name: tail-after-rotate;
+    }
+
+    /* Appearance only — the theme's reduced-motion floor already stops the rotation. This swaps
+       the tail for the full-ring conic the static spinner is meant to rest at, and drops the two
+       pseudo-element segments that only read correctly while rotating. */
+    @variant motion-reduce {
+      background-image: conic-gradient(transparent 120deg, currentcolor 360deg);
+
+      @variant before, after {
+        @apply content-none;
+      }
+    }
+  }
+
+  .label {
+    @apply font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
+
+    @variant group-size-medium/fui-spinner, group-size-large/fui-spinner, group-size-extra-large/fui-spinner {
+      @apply text-base-400 leading-11/8 font-semibold;
+    }
+
+    @variant group-size-huge/fui-spinner {
+      @apply text-base-500 leading-140 font-semibold;
+    }
+
+    @variant group-appearance-inverted/fui-spinner {
+      @apply text-neutral-foreground-static-inverted;
+    }
+  }
+}

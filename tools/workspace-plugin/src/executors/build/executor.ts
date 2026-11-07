@@ -2,6 +2,7 @@ import { type ExecutorContext, type PromiseExecutor } from '@nx/devkit';
 
 import { compileSwc } from './lib/swc';
 import { compileWithGriffelStylesAOT, compileWithReactCompiler, hasStylesFilesToProcess } from './lib/babel';
+import { compileCssModules } from './lib/css-modules';
 import { assetGlobsToFiles, copyAssets } from './lib/assets';
 import { cleanOutput } from './lib/clean';
 import { cjsRenameTransforms, copyCjsTypes } from './lib/cjs-extension';
@@ -33,6 +34,10 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
           return generateApiExecutor(generateApiSchema, context).then(res => res.success);
         },
       ),
+    // Serial, and after the parallel leg on purpose: this reads `lib*/` (written by
+    // runBuild) and writes into `dist/` (written by generate-api) — running it inside the
+    // parallel block would race both.
+    () => compileCssModules(options),
     () => copyAssets(assetFiles),
     () => copyCjsTypes(options),
   );

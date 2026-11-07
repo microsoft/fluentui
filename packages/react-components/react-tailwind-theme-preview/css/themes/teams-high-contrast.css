@@ -1,0 +1,474 @@
+/*
+ * DO NOT EDIT — generated file.
+ *
+ * Generator:  packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Source:     @fluentui/tokens@1.0.0-alpha.24 (packages/react-components/react-tailwind-theme-preview/theme-values.json)
+ * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
+ *
+ * teamsHighContrastTheme — 423 custom properties, nothing else.
+ *
+ * Import this file and apply `.fui-theme-teams-high-contrast` to theme a subtree. There is no
+ * default theme: without a theme file + class, these variables are unset (Griffel
+ * parity — its tokens are equally unset without a `theme` object). The class-name
+ * constant ships from ./theme-class-names; the generator asserts the lockstep.
+ *
+ * Pairs with the base sheet (./base.css), which owns the @layer order statement, the
+ * utility registrations and the theme-INVARIANT spacing/stroke values. Load the base
+ * sheet first; this file only fills an already-ordered fui.theme layer.
+ */
+
+@layer fui.theme {
+  .fui-theme-teams-high-contrast {
+    --color-neutral-foreground-1: #ffffff;
+    --color-neutral-foreground-1-hover: #000000;
+    --color-neutral-foreground-1-pressed: #000000;
+    --color-neutral-foreground-1-selected: #000000;
+    --color-neutral-foreground-2: #ffffff;
+    --color-neutral-foreground-2-hover: #000000;
+    --color-neutral-foreground-2-pressed: #000000;
+    --color-neutral-foreground-2-selected: #000000;
+    --color-neutral-foreground-2-brand-hover: #000000;
+    --color-neutral-foreground-2-brand-pressed: #000000;
+    --color-neutral-foreground-2-brand-selected: #000000;
+    --color-neutral-foreground-3: #ffffff;
+    --color-neutral-foreground-3-hover: #000000;
+    --color-neutral-foreground-3-pressed: #000000;
+    --color-neutral-foreground-3-selected: #000000;
+    --color-neutral-foreground-3-brand-hover: #000000;
+    --color-neutral-foreground-3-brand-pressed: #000000;
+    --color-neutral-foreground-3-brand-selected: #000000;
+    --color-neutral-foreground-4: #ffffff;
+    --color-neutral-foreground-5: #ffffff;
+    --color-neutral-foreground-5-hover: #000000;
+    --color-neutral-foreground-5-pressed: #000000;
+    --color-neutral-foreground-5-selected: #000000;
+    --color-neutral-foreground-disabled: #3ff23f;
+    --color-brand-foreground-link: #ffff00;
+    --color-brand-foreground-link-hover: #ffff00;
+    --color-brand-foreground-link-pressed: #ffff00;
+    --color-brand-foreground-link-selected: #ffff00;
+    --color-neutral-foreground-2-link: #ffff00;
+    --color-neutral-foreground-2-link-hover: #ffff00;
+    --color-neutral-foreground-2-link-pressed: #ffff00;
+    --color-neutral-foreground-2-link-selected: #ffff00;
+    --color-compound-brand-foreground-1: #1aebff;
+    --color-compound-brand-foreground-1-hover: #1aebff;
+    --color-compound-brand-foreground-1-pressed: #1aebff;
+    --color-neutral-foreground-on-brand: #000000;
+    --color-neutral-foreground-inverted: #000000;
+    --color-neutral-foreground-inverted-hover: #000000;
+    --color-neutral-foreground-inverted-pressed: #000000;
+    --color-neutral-foreground-inverted-selected: #000000;
+    --color-neutral-foreground-inverted-2: #ffffff;
+    --color-neutral-foreground-static-inverted: #ffffff;
+    --color-neutral-foreground-inverted-link: #ffff00;
+    --color-neutral-foreground-inverted-link-hover: #ffff00;
+    --color-neutral-foreground-inverted-link-pressed: #ffff00;
+    --color-neutral-foreground-inverted-link-selected: #ffff00;
+    --color-neutral-foreground-inverted-disabled: #3ff23f;
+    --color-brand-foreground-1: #ffffff;
+    --color-brand-foreground-2: #ffffff;
+    --color-brand-foreground-2-hover: #ffffff;
+    --color-brand-foreground-2-pressed: #ffffff;
+    --color-neutral-foreground-1-static: #000000;
+    --color-brand-foreground-inverted: #ffffff;
+    --color-brand-foreground-inverted-hover: #000000;
+    --color-brand-foreground-inverted-pressed: #000000;
+    --color-brand-foreground-on-light: #000000;
+    --color-brand-foreground-on-light-hover: #000000;
+    --color-brand-foreground-on-light-pressed: #000000;
+    --color-brand-foreground-on-light-selected: #000000;
+    --color-neutral-background-1: #000000;
+    --color-neutral-background-1-hover: #1aebff;
+    --color-neutral-background-1-pressed: #1aebff;
+    --color-neutral-background-1-selected: #1aebff;
+    --color-neutral-background-2: #000000;
+    --color-neutral-background-2-hover: #1aebff;
+    --color-neutral-background-2-pressed: #1aebff;
+    --color-neutral-background-2-selected: #1aebff;
+    --color-neutral-background-3: #000000;
+    --color-neutral-background-3-hover: #1aebff;
+    --color-neutral-background-3-pressed: #1aebff;
+    --color-neutral-background-3-selected: #1aebff;
+    --color-neutral-background-4: #000000;
+    --color-neutral-background-4-hover: #1aebff;
+    --color-neutral-background-4-pressed: #1aebff;
+    --color-neutral-background-4-selected: #1aebff;
+    --color-neutral-background-5: #000000;
+    --color-neutral-background-5-hover: #1aebff;
+    --color-neutral-background-5-pressed: #1aebff;
+    --color-neutral-background-5-selected: #1aebff;
+    --color-neutral-background-6: #000000;
+    --color-neutral-background-7: #000000;
+    --color-neutral-background-7-hover: #1aebff;
+    --color-neutral-background-7-pressed: #1aebff;
+    --color-neutral-background-7-selected: #1aebff;
+    --color-neutral-background-8: #000000;
+    --color-neutral-background-inverted: #000000;
+    --color-neutral-background-inverted-hover: #1aebff;
+    --color-neutral-background-inverted-pressed: #1aebff;
+    --color-neutral-background-inverted-selected: #1aebff;
+    --color-neutral-background-static: #000000;
+    --color-neutral-background-alpha: #000000;
+    --color-neutral-background-alpha-2: #000000;
+    --color-subtle-background: transparent;
+    --color-subtle-background-hover: #1aebff;
+    --color-subtle-background-pressed: #1aebff;
+    --color-subtle-background-selected: #1aebff;
+    --color-subtle-background-light-alpha-hover: #1aebff;
+    --color-subtle-background-light-alpha-pressed: #1aebff;
+    --color-subtle-background-light-alpha-selected: #1aebff;
+    --color-subtle-background-inverted: transparent;
+    --color-subtle-background-inverted-hover: #1aebff;
+    --color-subtle-background-inverted-pressed: #1aebff;
+    --color-subtle-background-inverted-selected: #1aebff;
+    --color-transparent-background: transparent;
+    --color-transparent-background-hover: #1aebff;
+    --color-transparent-background-pressed: #1aebff;
+    --color-transparent-background-selected: #1aebff;
+    --color-neutral-background-disabled: #000000;
+    --color-neutral-background-disabled-2: #3ff23f;
+    --color-neutral-background-inverted-disabled: #000000;
+    --color-neutral-stencil-1: #ffffff;
+    --color-neutral-stencil-2: #ffffff;
+    --color-neutral-stencil-1-alpha: #ffffff;
+    --color-neutral-stencil-2-alpha: #ffffff;
+    --color-background-overlay: rgba(0, 0, 0, 0.5);
+    --color-scrollbar-overlay: #ffffff;
+    --color-brand-background: #ffffff;
+    --color-brand-background-hover: #1aebff;
+    --color-brand-background-pressed: #1aebff;
+    --color-brand-background-selected: #1aebff;
+    --color-compound-brand-background: #1aebff;
+    --color-compound-brand-background-hover: #1aebff;
+    --color-compound-brand-background-pressed: #1aebff;
+    --color-brand-background-static: #000000;
+    --color-brand-background-2: #000000;
+    --color-brand-background-2-hover: #000000;
+    --color-brand-background-2-pressed: #000000;
+    --color-brand-background-3-static: #000000;
+    --color-brand-background-4-static: #000000;
+    --color-brand-background-inverted: #ffffff;
+    --color-brand-background-inverted-hover: #1aebff;
+    --color-brand-background-inverted-pressed: #1aebff;
+    --color-brand-background-inverted-selected: #1aebff;
+    --color-neutral-card-background: #000000;
+    --color-neutral-card-background-hover: #1aebff;
+    --color-neutral-card-background-pressed: #1aebff;
+    --color-neutral-card-background-selected: #1aebff;
+    --color-neutral-card-background-disabled: #000000;
+    --color-neutral-stroke-accessible: #ffffff;
+    --color-neutral-stroke-accessible-hover: #1aebff;
+    --color-neutral-stroke-accessible-pressed: #1aebff;
+    --color-neutral-stroke-accessible-selected: #1aebff;
+    --color-neutral-stroke-1: #ffffff;
+    --color-neutral-stroke-1-hover: #1aebff;
+    --color-neutral-stroke-1-pressed: #1aebff;
+    --color-neutral-stroke-1-selected: #1aebff;
+    --color-neutral-stroke-2: #ffffff;
+    --color-neutral-stroke-3: #ffffff;
+    --color-neutral-stroke-4: #ffffff;
+    --color-neutral-stroke-4-hover: #1aebff;
+    --color-neutral-stroke-4-pressed: #1aebff;
+    --color-neutral-stroke-4-selected: #1aebff;
+    --color-neutral-stroke-subtle: #ffffff;
+    --color-neutral-stroke-on-brand: #000000;
+    --color-neutral-stroke-on-brand-2: #ffffff;
+    --color-neutral-stroke-on-brand-2-hover: #ffffff;
+    --color-neutral-stroke-on-brand-2-pressed: #ffffff;
+    --color-neutral-stroke-on-brand-2-selected: #ffffff;
+    --color-brand-stroke-1: #ffffff;
+    --color-brand-stroke-2: #ffffff;
+    --color-brand-stroke-2-hover: #1aebff;
+    --color-brand-stroke-2-pressed: #1aebff;
+    --color-brand-stroke-2-contrast: #000000;
+    --color-compound-brand-stroke: #1aebff;
+    --color-compound-brand-stroke-hover: #1aebff;
+    --color-compound-brand-stroke-pressed: #1aebff;
+    --color-neutral-stroke-disabled: #3ff23f;
+    --color-neutral-stroke-disabled-2: #3ff23f;
+    --color-neutral-stroke-inverted-disabled: #3ff23f;
+    --color-transparent-stroke: #ffffff;
+    --color-transparent-stroke-interactive: #1aebff;
+    --color-transparent-stroke-disabled: #3ff23f;
+    --color-neutral-stroke-alpha: #ffffff;
+    --color-neutral-stroke-alpha-2: #000000;
+    --color-stroke-focus-1: #000000;
+    --color-stroke-focus-2: #1aebff;
+    --color-neutral-shadow-ambient: rgba(0, 0, 0, 0.24);
+    --color-neutral-shadow-key: rgba(0, 0, 0, 0.28);
+    --color-neutral-shadow-ambient-lighter: rgba(0, 0, 0, 0.12);
+    --color-neutral-shadow-key-lighter: rgba(0, 0, 0, 0.14);
+    --color-neutral-shadow-ambient-darker: rgba(0, 0, 0, 0.4);
+    --color-neutral-shadow-key-darker: rgba(0, 0, 0, 0.48);
+    --color-brand-shadow-ambient: rgba(0, 0, 0, 0.3);
+    --color-brand-shadow-key: rgba(0, 0, 0, 0.25);
+    --color-palette-red-background-1: #000000;
+    --color-palette-red-background-2: #000000;
+    --color-palette-red-background-3: #ffffff;
+    --color-palette-red-border-active: #1aebff;
+    --color-palette-red-border-1: #ffffff;
+    --color-palette-red-border-2: #ffffff;
+    --color-palette-red-foreground-1: #ffffff;
+    --color-palette-red-foreground-2: #ffffff;
+    --color-palette-red-foreground-3: #ffffff;
+    --color-palette-red-foreground-inverted: #ffffff;
+    --color-palette-green-background-1: #000000;
+    --color-palette-green-background-2: #000000;
+    --color-palette-green-background-3: #ffffff;
+    --color-palette-green-border-active: #1aebff;
+    --color-palette-green-border-1: #ffffff;
+    --color-palette-green-border-2: #ffffff;
+    --color-palette-green-foreground-1: #ffffff;
+    --color-palette-green-foreground-2: #ffffff;
+    --color-palette-green-foreground-3: #ffffff;
+    --color-palette-green-foreground-inverted: #ffffff;
+    --color-palette-dark-orange-background-1: #000000;
+    --color-palette-dark-orange-background-2: #000000;
+    --color-palette-dark-orange-background-3: #ffffff;
+    --color-palette-dark-orange-border-active: #1aebff;
+    --color-palette-dark-orange-border-1: #ffffff;
+    --color-palette-dark-orange-border-2: #ffffff;
+    --color-palette-dark-orange-foreground-1: #ffffff;
+    --color-palette-dark-orange-foreground-2: #ffffff;
+    --color-palette-dark-orange-foreground-3: #ffffff;
+    --color-palette-yellow-background-1: #000000;
+    --color-palette-yellow-background-2: #000000;
+    --color-palette-yellow-background-3: #ffffff;
+    --color-palette-yellow-border-active: #1aebff;
+    --color-palette-yellow-border-1: #ffffff;
+    --color-palette-yellow-border-2: #ffffff;
+    --color-palette-yellow-foreground-1: #ffffff;
+    --color-palette-yellow-foreground-2: #ffffff;
+    --color-palette-yellow-foreground-3: #ffffff;
+    --color-palette-yellow-foreground-inverted: #ffffff;
+    --color-palette-berry-background-1: #000000;
+    --color-palette-berry-background-2: #000000;
+    --color-palette-berry-background-3: #ffffff;
+    --color-palette-berry-border-active: #1aebff;
+    --color-palette-berry-border-1: #ffffff;
+    --color-palette-berry-border-2: #ffffff;
+    --color-palette-berry-foreground-1: #ffffff;
+    --color-palette-berry-foreground-2: #ffffff;
+    --color-palette-berry-foreground-3: #ffffff;
+    --color-palette-marigold-background-1: #000000;
+    --color-palette-marigold-background-2: #000000;
+    --color-palette-marigold-background-3: #ffffff;
+    --color-palette-marigold-border-active: #1aebff;
+    --color-palette-marigold-border-1: #ffffff;
+    --color-palette-marigold-border-2: #ffffff;
+    --color-palette-marigold-foreground-1: #ffffff;
+    --color-palette-marigold-foreground-2: #ffffff;
+    --color-palette-marigold-foreground-3: #ffffff;
+    --color-palette-light-green-background-1: #000000;
+    --color-palette-light-green-background-2: #000000;
+    --color-palette-light-green-background-3: #ffffff;
+    --color-palette-light-green-border-active: #1aebff;
+    --color-palette-light-green-border-1: #ffffff;
+    --color-palette-light-green-border-2: #ffffff;
+    --color-palette-light-green-foreground-1: #ffffff;
+    --color-palette-light-green-foreground-2: #ffffff;
+    --color-palette-light-green-foreground-3: #ffffff;
+    --color-palette-anchor-background-2: #000000;
+    --color-palette-anchor-border-active: #1aebff;
+    --color-palette-anchor-foreground-2: #ffffff;
+    --color-palette-beige-background-2: #000000;
+    --color-palette-beige-border-active: #1aebff;
+    --color-palette-beige-foreground-2: #ffffff;
+    --color-palette-blue-background-2: #000000;
+    --color-palette-blue-border-active: #1aebff;
+    --color-palette-blue-foreground-2: #ffffff;
+    --color-palette-brass-background-2: #000000;
+    --color-palette-brass-border-active: #1aebff;
+    --color-palette-brass-foreground-2: #ffffff;
+    --color-palette-brown-background-2: #000000;
+    --color-palette-brown-border-active: #1aebff;
+    --color-palette-brown-foreground-2: #ffffff;
+    --color-palette-cornflower-background-2: #000000;
+    --color-palette-cornflower-border-active: #1aebff;
+    --color-palette-cornflower-foreground-2: #ffffff;
+    --color-palette-cranberry-background-2: #000000;
+    --color-palette-cranberry-border-active: #1aebff;
+    --color-palette-cranberry-foreground-2: #ffffff;
+    --color-palette-dark-green-background-2: #000000;
+    --color-palette-dark-green-border-active: #1aebff;
+    --color-palette-dark-green-foreground-2: #ffffff;
+    --color-palette-dark-red-background-2: #000000;
+    --color-palette-dark-red-border-active: #1aebff;
+    --color-palette-dark-red-foreground-2: #ffffff;
+    --color-palette-forest-background-2: #000000;
+    --color-palette-forest-border-active: #1aebff;
+    --color-palette-forest-foreground-2: #ffffff;
+    --color-palette-gold-background-2: #000000;
+    --color-palette-gold-border-active: #1aebff;
+    --color-palette-gold-foreground-2: #ffffff;
+    --color-palette-grape-background-2: #000000;
+    --color-palette-grape-border-active: #1aebff;
+    --color-palette-grape-foreground-2: #ffffff;
+    --color-palette-lavender-background-2: #000000;
+    --color-palette-lavender-border-active: #1aebff;
+    --color-palette-lavender-foreground-2: #ffffff;
+    --color-palette-light-teal-background-2: #000000;
+    --color-palette-light-teal-border-active: #1aebff;
+    --color-palette-light-teal-foreground-2: #ffffff;
+    --color-palette-lilac-background-2: #000000;
+    --color-palette-lilac-border-active: #1aebff;
+    --color-palette-lilac-foreground-2: #ffffff;
+    --color-palette-magenta-background-2: #000000;
+    --color-palette-magenta-border-active: #1aebff;
+    --color-palette-magenta-foreground-2: #ffffff;
+    --color-palette-mink-background-2: #000000;
+    --color-palette-mink-border-active: #1aebff;
+    --color-palette-mink-foreground-2: #ffffff;
+    --color-palette-navy-background-2: #000000;
+    --color-palette-navy-border-active: #1aebff;
+    --color-palette-navy-foreground-2: #ffffff;
+    --color-palette-peach-background-2: #000000;
+    --color-palette-peach-border-active: #1aebff;
+    --color-palette-peach-foreground-2: #ffffff;
+    --color-palette-pink-background-2: #000000;
+    --color-palette-pink-border-active: #1aebff;
+    --color-palette-pink-foreground-2: #ffffff;
+    --color-palette-platinum-background-2: #000000;
+    --color-palette-platinum-border-active: #1aebff;
+    --color-palette-platinum-foreground-2: #ffffff;
+    --color-palette-plum-background-2: #000000;
+    --color-palette-plum-border-active: #1aebff;
+    --color-palette-plum-foreground-2: #ffffff;
+    --color-palette-pumpkin-background-2: #000000;
+    --color-palette-pumpkin-border-active: #1aebff;
+    --color-palette-pumpkin-foreground-2: #ffffff;
+    --color-palette-purple-background-2: #000000;
+    --color-palette-purple-border-active: #1aebff;
+    --color-palette-purple-foreground-2: #ffffff;
+    --color-palette-royal-blue-background-2: #000000;
+    --color-palette-royal-blue-border-active: #1aebff;
+    --color-palette-royal-blue-foreground-2: #ffffff;
+    --color-palette-seafoam-background-2: #000000;
+    --color-palette-seafoam-border-active: #1aebff;
+    --color-palette-seafoam-foreground-2: #ffffff;
+    --color-palette-steel-background-2: #000000;
+    --color-palette-steel-border-active: #1aebff;
+    --color-palette-steel-foreground-2: #ffffff;
+    --color-palette-teal-background-2: #000000;
+    --color-palette-teal-border-active: #1aebff;
+    --color-palette-teal-foreground-2: #ffffff;
+    --color-status-success-background-1: #000000;
+    --color-status-success-background-2: #000000;
+    --color-status-success-background-3: #ffffff;
+    --color-status-success-foreground-1: #ffffff;
+    --color-status-success-foreground-2: #ffffff;
+    --color-status-success-foreground-3: #ffffff;
+    --color-status-success-foreground-inverted: #ffffff;
+    --color-status-success-border-active: #1aebff;
+    --color-status-success-border-1: #ffffff;
+    --color-status-success-border-2: #ffffff;
+    --color-status-warning-background-1: #000000;
+    --color-status-warning-background-2: #000000;
+    --color-status-warning-background-3: #ffffff;
+    --color-status-warning-foreground-1: #ffffff;
+    --color-status-warning-foreground-2: #ffffff;
+    --color-status-warning-foreground-3: #ffffff;
+    --color-status-warning-foreground-inverted: #ffffff;
+    --color-status-warning-border-active: #1aebff;
+    --color-status-warning-border-1: #ffffff;
+    --color-status-warning-border-2: #ffffff;
+    --color-status-danger-background-1: #000000;
+    --color-status-danger-background-2: #000000;
+    --color-status-danger-background-3: #ffffff;
+    --color-status-danger-background-3-hover: #1aebff;
+    --color-status-danger-background-3-pressed: #1aebff;
+    --color-status-danger-foreground-1: #ffffff;
+    --color-status-danger-foreground-2: #ffffff;
+    --color-status-danger-foreground-3: #ffffff;
+    --color-status-danger-foreground-inverted: #ffffff;
+    --color-status-danger-border-active: #1aebff;
+    --color-status-danger-border-1: #ffffff;
+    --color-status-danger-border-2: #ffffff;
+    --radius-none: 0;
+    --radius-small: calc(2px * var(--base-scale));
+    --radius-medium: calc(4px * var(--base-scale));
+    --radius-large: calc(6px * var(--base-scale));
+    --radius-x-large: calc(8px * var(--base-scale));
+    --radius-2-x-large: calc(12px * var(--base-scale));
+    --radius-3-x-large: calc(16px * var(--base-scale));
+    --radius-4-x-large: calc(24px * var(--base-scale));
+    --radius-5-x-large: calc(32px * var(--base-scale));
+    --radius-6-x-large: calc(40px * var(--base-scale));
+    --radius-circular: 10000px;
+    --font-base:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+    --font-monospace: Consolas, 'Courier New', Courier, monospace;
+    --font-numeric:
+      Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto,
+      'Helvetica Neue', sans-serif;
+    --text-base-100: calc(10px * var(--base-scale));
+    --text-base-200: calc(12px * var(--base-scale));
+    --text-base-300: calc(14px * var(--base-scale));
+    --text-base-400: calc(16px * var(--base-scale));
+    --text-base-500: calc(20px * var(--base-scale));
+    --text-base-600: calc(24px * var(--base-scale));
+    --text-hero-700: calc(28px * var(--base-scale));
+    --text-hero-800: calc(32px * var(--base-scale));
+    --text-hero-900: calc(40px * var(--base-scale));
+    --text-hero-1000: calc(68px * var(--base-scale));
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --shadow-2:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-4:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(2px * var(--base-scale)) calc(4px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-8:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-16:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-28:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(14px * var(--base-scale)) calc(28px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-64:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.24),
+      0 calc(32px * var(--base-scale)) calc(64px * var(--base-scale)) rgba(0, 0, 0, 0.28);
+    --shadow-2-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(1px * var(--base-scale)) calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-4-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(2px * var(--base-scale)) calc(4px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-8-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-16-brand:
+      0 0 calc(2px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-28-brand:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(14px * var(--base-scale)) calc(28px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --shadow-64-brand:
+      0 0 calc(8px * var(--base-scale)) rgba(0, 0, 0, 0.3),
+      0 calc(32px * var(--base-scale)) calc(64px * var(--base-scale)) rgba(0, 0, 0, 0.25);
+    --duration-ultra-fast: 50ms;
+    --duration-faster: 100ms;
+    --duration-fast: 150ms;
+    --duration-normal: 200ms;
+    --duration-gentle: 250ms;
+    --duration-slow: 300ms;
+    --duration-slower: 400ms;
+    --duration-ultra-slow: 500ms;
+    --ease-accelerate-max: cubic-bezier(0.9, 0.1, 1, 0.2);
+    --ease-accelerate-mid: cubic-bezier(1, 0, 1, 1);
+    --ease-accelerate-min: cubic-bezier(0.8, 0, 0.78, 1);
+    --ease-decelerate-max: cubic-bezier(0.1, 0.9, 0.2, 1);
+    --ease-decelerate-mid: cubic-bezier(0, 0, 0, 1);
+    --ease-decelerate-min: cubic-bezier(0.33, 0, 0.1, 1);
+    --ease-easy-ease-max: cubic-bezier(0.8, 0, 0.2, 1);
+    --ease-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
+    --ease-linear: cubic-bezier(0, 0, 1, 1);
+  }
+}

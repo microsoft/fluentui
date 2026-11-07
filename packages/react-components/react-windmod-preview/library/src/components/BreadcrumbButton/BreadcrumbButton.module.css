@@ -1,0 +1,55 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @apply h-32 min-w-[unset] p-horizontal-s-nudge text-base-300 leading-20/14 font-regular text-nowrap;
+
+    @variant size-small {
+      @apply h-24 text-base-200 leading-16/12;
+    }
+
+    @variant size-large {
+      @apply h-40 p-horizontal-s text-base-400 leading-11/8;
+    }
+
+    /* Griffel keys this branch off the native `:disabled` pseudo-class, so it must not reach the
+       anchor form of this button — hence disabled-native rather than disabled. */
+    @variant current {
+      @apply font-semibold;
+
+      @variant hover, hover-active, disabled-native {
+        @apply cursor-auto bg-transparent-background text-neutral-foreground-2;
+      }
+    }
+  }
+
+  .icon {
+    @apply me-horizontal-xs size-16 text-icon-16 leading-11/8;
+
+    @variant group-size-small/fui-breadcrumb-button {
+      @apply size-12 text-icon-12 leading-16/12;
+    }
+
+    @variant group-size-large/fui-breadcrumb-button {
+      @apply size-20 text-icon-20 leading-160;
+    }
+
+    /* A current entry is not an affordance, so it undoes Button's interactive glyph swap as
+       well as its icon recolour. Both reach Button's l1 rules by layer order alone. */
+    @variant group-current/fui-breadcrumb-button {
+      @variant group-hover/fui-breadcrumb-button,
+        group-hover-active/fui-breadcrumb-button,
+        group-disabled-native/fui-breadcrumb-button {
+        @apply text-inherit;
+
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
+    }
+  }
+}

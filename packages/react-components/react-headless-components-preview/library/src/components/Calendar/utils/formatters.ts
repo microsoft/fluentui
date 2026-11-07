@@ -2,14 +2,7 @@
  * Supported date and time display formats.
  */
 export type CalendarDateTimeFormat =
-  | 'day'
-  | 'month'
-  | 'shortMonth'
-  | 'year'
-  | 'monthDayYear'
-  | 'monthYear'
-  | 'weekday'
-  | 'shortWeekday';
+  'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'monthYear' | 'weekday' | 'shortWeekday';
 
 /**
  * A date and its formatted display value.

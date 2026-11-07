@@ -1,0 +1,21 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-flex;
+  }
+
+  /* The box exists only in the pie layout — the spread and stack layouts size themselves from
+     their children. */
+  .pie {
+    --fui-avatar-group-size: calc(attr(data-size type(<number>), 32) * 1px);
+
+    @apply size-(--fui-avatar-group-size) bg-transparent-stroke;
+
+    clip-path: circle(50%);
+
+    @variant forced-colors {
+      @apply bg-[CanvasText];
+    }
+  }
+}
