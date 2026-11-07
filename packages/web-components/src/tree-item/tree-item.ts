@@ -41,7 +41,7 @@ export class TreeItem extends BaseTreeItem {
   }
 
   /**
-   * The size of the tree item element
+   * The appearance of the tree item element
    * @public
    */
   @attr
