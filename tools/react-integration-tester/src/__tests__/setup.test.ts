@@ -189,6 +189,8 @@ describe('setup()', () => {
     const expectedFiles = [
       'tsconfig.json',
       'jest.config.js',
+      'jest.mock-snapshots.js',
+      'jest.snapshot-resolver.js',
       '.swcrc',
       'cypress.config.ts',
       'tsconfig.cy.json',

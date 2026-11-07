@@ -1,14 +1,13 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
-import { useMenuContext } from '../menuContext';
 import type { MenuPopoverProps, MenuPopoverState } from '@fluentui/react-menu';
+import { useMenuContext } from '../menuContext';
+import { useLayerOpenState } from '../../../hooks/top-layer';
 
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
+const MENU_ITEM_SELECTOR =
+  ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])';
 
 export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const baseState = useMenuPopoverBase_unstable(props, ref);
@@ -22,56 +21,26 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   const setOpen = useMenuContext(ctx => ctx.setOpen);
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
 
-  React.useEffect(() => {
-    const surface = menuPopoverRef.current as HTMLElement | null;
-
-    if (!surface) {
-      return;
-    }
-
-    if (typeof surface.showPopover !== 'function') {
-      return;
-    }
-
-    if (!open) {
-      if (SUPPORTS_POPOVER_OPEN_SELECTOR && !surface.matches(':popover-open')) {
-        return;
-      }
-
-      surface.hidePopover();
-      return;
-    }
-
-    const firstFocusable = surface.querySelector<HTMLElement>(
-      ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])',
-    );
-
-    firstFocusable?.setAttribute('autofocus', '');
-
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
-    const menuListEl = surface.querySelector<HTMLElement>('[focusgroup]');
-
-    if (menuListEl) {
-      menuListEl.setAttribute('focusgroup', menuListEl.getAttribute('focusgroup') ?? '');
-    }
-
-    const onSurfaceToggle = (event: Event) => {
-      const next = (event as ToggleEvent).newState;
-      if (next === 'closed' && open) {
+  // Stays mounted; `useMenu` restores focus. Once shown, the first enabled item takes focus and `focusgroup` is
+  // re-applied, so the polyfill sees the visible items.
+  useLayerOpenState(menuPopoverRef as React.RefObject<HTMLElement | null>, {
+    open,
+    mode: 'auto',
+    onShow: element => {
+      const menuListEl = element.querySelector<HTMLElement>('[focusgroup]');
+      menuListEl?.setAttribute('focusgroup', menuListEl.getAttribute('focusgroup') ?? '');
+      element.querySelector<HTMLElement>(MENU_ITEM_SELECTOR)?.focus();
+    },
+    onOpenChange: (nextOpen, { event }) => {
+      if (!nextOpen) {
         setOpen(event as unknown as MouseEvent, {
           open: false,
           type: 'clickOutside',
           event: event as unknown as MouseEvent,
         });
       }
-    };
-
-    surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [menuPopoverRef, open, setOpen]);
+    },
+  });
 
   return state;
 };

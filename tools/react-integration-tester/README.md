@@ -244,6 +244,10 @@ rit --react 18 --project-id ci --run test
 rit --react 18 --project-id ci --run type-check
 ```
 
+## Concurrency & isolation
+
+Parallel runs for different React majors share the same origin project. For how snapshots, coverage, and dependency installation are isolated, and which flags are unsafe to run concurrently, see [docs/concurrency-and-isolation.md](./docs/concurrency-and-isolation.md).
+
 ## Multiple runners
 
 ```bash
