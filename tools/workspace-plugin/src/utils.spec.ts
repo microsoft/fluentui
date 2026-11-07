@@ -1,6 +1,6 @@
 import { logger, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from 'nx/src/devkit-testing-exports';
-import { getWorkspaceConfig, getProjectNameWithoutScope, printUserLogs } from './utils';
+import { getWorkspaceConfig, getProjectNameWithoutScope, printUserLogs, measureStart, measureEnd } from './utils';
 
 describe(`utils`, () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -40,6 +40,43 @@ describe(`utils`, () => {
 
       actual = getProjectNameWithoutScope('two-foo');
       expect(actual).toEqual('two-foo');
+    });
+  });
+
+  describe('#measureEnd', () => {
+    const originalVerbose = process.env.NX_VERBOSE_LOGGING;
+
+    afterEach(() => {
+      if (originalVerbose === undefined) {
+        delete process.env.NX_VERBOSE_LOGGING;
+      } else {
+        process.env.NX_VERBOSE_LOGGING = originalVerbose;
+      }
+      jest.restoreAllMocks();
+    });
+
+    it('writes verbose timing diagnostics to stderr without contaminating JSON stdout', () => {
+      process.env.NX_VERBOSE_LOGGING = 'true';
+      const stdout = jest.spyOn(console, 'log').mockImplementation(noop);
+      const stderr = jest.spyOn(process.stderr, 'write').mockReturnValue(true);
+
+      measureStart('json-command');
+      measureEnd('json-command');
+
+      expect(stdout).not.toHaveBeenCalled();
+      expect(stderr).toHaveBeenCalledWith(expect.stringMatching(/^Execution Timings: json-command \([\d.]+ s\)\n$/));
+    });
+
+    it('does not emit timing diagnostics when verbose logging is disabled', () => {
+      process.env.NX_VERBOSE_LOGGING = 'false';
+      const stdout = jest.spyOn(console, 'log').mockImplementation(noop);
+      const stderr = jest.spyOn(process.stderr, 'write').mockReturnValue(true);
+
+      measureStart('quiet-command');
+      measureEnd('quiet-command');
+
+      expect(stdout).not.toHaveBeenCalled();
+      expect(stderr).not.toHaveBeenCalled();
     });
   });
 

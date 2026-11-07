@@ -1,0 +1,211 @@
+{
+  "addons": [],
+  "previewAnnotations": [".storybook/preview-granular.ts"],
+  "groups": {
+    "react-accordion": {
+      "packageRoot": "packages/react-components/react-accordion",
+      "stories": ["src/stories/Accordion/**/*.stories.tsx"]
+    },
+    "react-avatar": {
+      "packageRoot": "packages/react-components/react-avatar",
+      "stories": ["src/stories/AvatarGroup/**/*.stories.tsx", "src/stories/Avatar.stories.tsx"]
+    },
+    "react-badge": {
+      "packageRoot": "packages/react-components/react-badge",
+      "stories": [
+        "src/stories/Badge/**/*.stories.tsx",
+        "src/stories/CounterBadge/**/*.stories.tsx",
+        "src/stories/PresenseBadge/**/*.stories.tsx"
+      ]
+    },
+    "react-breadcrumb": {
+      "packageRoot": "packages/react-components/react-breadcrumb",
+      "stories": ["src/stories/Breadcrumb/**/*.stories.tsx"]
+    },
+    "react-button": {
+      "packageRoot": "packages/react-components/react-button",
+      "stories": ["src/stories/Button/**/*.stories.tsx"]
+    },
+    "react-calendar-compat": {
+      "packageRoot": "packages/react-components/react-calendar-compat",
+      "stories": ["src/stories/CalendarCompat/**/*.stories.tsx", "src/stories/CalendarCompat.stories.tsx"]
+    },
+    "react-card": {
+      "packageRoot": "packages/react-components/react-card",
+      "stories": ["src/stories/Card/**/*.stories.tsx"]
+    },
+    "react-charts": {
+      "packageRoot": "packages/charts/react-charts",
+      "stories": ["src/stories/Charts/**/*.stories.tsx"]
+    },
+    "react-checkbox": {
+      "packageRoot": "packages/react-components/react-checkbox",
+      "stories": ["src/stories/Checkbox/**/*.stories.tsx"]
+    },
+    "react-color-picker": {
+      "packageRoot": "packages/react-components/react-color-picker",
+      "stories": ["src/stories/ColorPicker/**/*.stories.tsx"]
+    },
+    "react-combobox": {
+      "packageRoot": "packages/react-components/react-combobox",
+      "stories": ["src/stories/Combobox/**/*.stories.tsx", "src/stories/Dropdown/**/*.stories.tsx"]
+    },
+    "react-datepicker-compat": {
+      "packageRoot": "packages/react-components/react-datepicker-compat",
+      "stories": ["src/stories/DatepickerCompat/**/*.stories.tsx"]
+    },
+    "react-dialog": {
+      "packageRoot": "packages/react-components/react-dialog",
+      "stories": ["src/stories/Dialog/**/*.stories.tsx"]
+    },
+    "react-divider": {
+      "packageRoot": "packages/react-components/react-divider",
+      "stories": ["src/stories/Divider/**/*.stories.tsx"]
+    },
+    "react-drawer": {
+      "packageRoot": "packages/react-components/react-drawer",
+      "stories": ["src/stories/Drawer/**/*.stories.tsx"]
+    },
+    "react-field": {
+      "packageRoot": "packages/react-components/react-field",
+      "stories": ["src/stories/Field.stories.tsx"]
+    },
+    "react-image": {
+      "packageRoot": "packages/react-components/react-image",
+      "stories": ["src/stories/Image/**/*.stories.tsx"]
+    },
+    "react-infolabel": {
+      "packageRoot": "packages/react-components/react-infolabel",
+      "stories": ["src/stories/InfoLabel.stories.tsx"]
+    },
+    "react-input": {
+      "packageRoot": "packages/react-components/react-input",
+      "stories": ["src/stories/Input/**/*.stories.tsx"]
+    },
+    "react-label": {
+      "packageRoot": "packages/react-components/react-label",
+      "stories": ["src/stories/Label.stories.tsx"]
+    },
+    "react-link": {
+      "packageRoot": "packages/react-components/react-link",
+      "stories": ["src/stories/Link/**/*.stories.tsx"]
+    },
+    "react-menu": {
+      "packageRoot": "packages/react-components/react-menu",
+      "stories": ["src/stories/Menu/**/*.stories.tsx"]
+    },
+    "react-message-bar": {
+      "packageRoot": "packages/react-components/react-message-bar",
+      "stories": ["src/stories/MessageBar/**/*.stories.tsx"]
+    },
+    "react-persona": {
+      "packageRoot": "packages/react-components/react-persona",
+      "stories": ["src/stories/Persona.stories.tsx"]
+    },
+    "react-popover": {
+      "packageRoot": "packages/react-components/react-popover",
+      "stories": ["src/stories/Popover/**/*.stories.tsx"]
+    },
+    "react-portal": {
+      "packageRoot": "packages/react-components/react-portal",
+      "stories": ["src/stories/Portal.stories.tsx"]
+    },
+    "react-positioning": {
+      "packageRoot": "packages/react-components/react-positioning",
+      "stories": ["src/stories/Positioning/**/*.stories.tsx"]
+    },
+    "react-progress": {
+      "packageRoot": "packages/react-components/react-progress",
+      "stories": ["src/stories/ProgressBar.stories.tsx"]
+    },
+    "react-provider": {
+      "packageRoot": "packages/react-components/react-provider",
+      "stories": ["src/stories/CustomStyleHooks.stories.tsx", "src/stories/MakeStyles/**/*.stories.tsx"]
+    },
+    "react-radio": {
+      "packageRoot": "packages/react-components/react-radio",
+      "stories": ["src/stories/Radio/**/*.stories.tsx"]
+    },
+    "react-rating": {
+      "packageRoot": "packages/react-components/react-rating",
+      "stories": ["src/stories/Rating/**/*.stories.tsx", "src/stories/RatingDisplay.stories.tsx"]
+    },
+    "react-search": {
+      "packageRoot": "packages/react-components/react-search",
+      "stories": ["src/stories/SearchBox/**/*.stories.tsx"]
+    },
+    "react-select": {
+      "packageRoot": "packages/react-components/react-select",
+      "stories": ["src/stories/Select/**/*.stories.tsx"]
+    },
+    "react-shared-contexts": {
+      "packageRoot": "packages/react-components/react-shared-contexts",
+      "stories": ["src/stories/ShadowDOM/**/*.stories.tsx"]
+    },
+    "react-skeleton": {
+      "packageRoot": "packages/react-components/react-skeleton",
+      "stories": ["src/stories/Skeleton.stories.tsx"]
+    },
+    "react-slider": {
+      "packageRoot": "packages/react-components/react-slider",
+      "stories": ["src/stories/Slider/**/*.stories.tsx"]
+    },
+    "react-spinbutton": {
+      "packageRoot": "packages/react-components/react-spinbutton",
+      "stories": ["src/stories/SpinButton/**/*.stories.tsx"]
+    },
+    "react-spinner": {
+      "packageRoot": "packages/react-components/react-spinner",
+      "stories": ["src/stories/Spinner.stories.tsx"]
+    },
+    "react-swatch-picker": {
+      "packageRoot": "packages/react-components/react-swatch-picker",
+      "stories": ["src/stories/SwatchPicker/**/*.stories.tsx"]
+    },
+    "react-switch": {
+      "packageRoot": "packages/react-components/react-switch",
+      "stories": ["src/stories/Switch.stories.tsx"]
+    },
+    "react-table": {
+      "packageRoot": "packages/react-components/react-table",
+      "stories": ["src/stories/DataGrid/**/*.stories.tsx", "src/stories/Table/**/*.stories.tsx"]
+    },
+    "react-tabs": {
+      "packageRoot": "packages/react-components/react-tabs",
+      "stories": ["src/stories/Tabs.stories.tsx"]
+    },
+    "react-tag-picker": {
+      "packageRoot": "packages/react-components/react-tag-picker",
+      "stories": ["src/stories/TagPicker.stories.tsx"]
+    },
+    "react-tags": {
+      "packageRoot": "packages/react-components/react-tags",
+      "stories": ["src/stories/Tag/**/*.stories.tsx"]
+    },
+    "react-text": {
+      "packageRoot": "packages/react-components/react-text",
+      "stories": ["src/stories/Text.stories.tsx"]
+    },
+    "react-textarea": {
+      "packageRoot": "packages/react-components/react-textarea",
+      "stories": ["src/stories/Textarea/**/*.stories.tsx"]
+    },
+    "react-timepicker-compat": {
+      "packageRoot": "packages/react-components/react-timepicker-compat",
+      "stories": ["src/stories/TimePicker.stories.tsx"]
+    },
+    "react-toast": {
+      "packageRoot": "packages/react-components/react-toast",
+      "stories": ["src/stories/Toast/**/*.stories.tsx"]
+    },
+    "react-toolbar": {
+      "packageRoot": "packages/react-components/react-toolbar",
+      "stories": ["src/stories/Toolbar/**/*.stories.tsx"]
+    },
+    "react-tooltip": {
+      "packageRoot": "packages/react-components/react-tooltip",
+      "stories": ["src/stories/Tooltip/**/*.stories.tsx"]
+    },
+    "react-tree": { "packageRoot": "packages/react-components/react-tree", "stories": ["src/stories/Tree.stories.tsx"] }
+  }
+}

@@ -24,6 +24,11 @@
       "implementation": "./src/executors/clean/executor",
       "schema": "./src/executors/clean/schema.json",
       "description": "clean executor - remove build artifacts."
+    },
+    "visual-regression": {
+      "implementation": "./src/executors/visual-regression/executor",
+      "schema": "./src/executors/visual-regression/schema.json",
+      "description": "Build a scoped Storybook or capture visual regression screenshots."
     }
   }
 }
