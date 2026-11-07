@@ -285,15 +285,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Whether to show the reveal password button for input type `'password'`. This will be ignored
-   * if the `type` prop is not set to `'password'`, or if the browser is known to have a built-in
-   * reveal button for password inputs (Edge, IE).
+   * if the `type` prop is not set to `'password'`, or in IE 11 (which has a built-in unhideable
+   * reveal button). In other browsers with a native reveal button (Edge), the native button is
+   * hidden in favor of this one.
    */
   canRevealPassword?: boolean;
 
   /**
    * If `canRevealPassword` is true, aria label for the reveal password button (example: "Show
-   * password"). Note that this will NOT be used in browsers known to have a built-in reveal
-   * password button for password inputs (Edge, IE).
+   * password"). Note that this will NOT be used in IE 11, which only shows its built-in reveal
+   * button for password inputs.
    */
   revealPasswordAriaLabel?: string;
 }
