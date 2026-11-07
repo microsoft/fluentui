@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): stop the Legends overflow menu from logging a duplicate props warning each time it opens",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
