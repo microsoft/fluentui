@@ -83,6 +83,8 @@ const useLegacyElementFactory: UseElementFactory = options => {
 
 const initializeElementFactory = () => {
   let currentElement: HTMLDivElement | undefined = undefined;
+  let mountAnchor: Comment | undefined = undefined;
+  let hasMounted = false;
 
   function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
     if (currentElement) {
@@ -91,13 +93,39 @@ const initializeElementFactory = () => {
 
     if (forceCreation) {
       currentElement = targetRoot.ownerDocument.createElement('div');
-      targetRoot.appendChild(currentElement);
+      if (hasMounted) {
+        targetRoot.appendChild(currentElement);
+      } else {
+        // Nested portals commit child-first, so reserve the original mount order.
+        mountAnchor = targetRoot.ownerDocument.createComment('');
+        targetRoot.appendChild(mountAnchor);
+      }
     }
 
     return currentElement;
   }
 
+  function mount(targetRoot: HTMLElement | ShadowRoot) {
+    if (!currentElement) {
+      hasMounted = true;
+      get(targetRoot, true);
+    } else if (!hasMounted) {
+      hasMounted = true;
+      const anchor = mountAnchor;
+      mountAnchor = undefined;
+      anchor?.parentNode?.replaceChild(currentElement, anchor);
+    }
+  }
+
+  function getRootNode(targetRoot: HTMLElement | ShadowRoot, options?: GetRootNodeOptions): Node {
+    const element = get(targetRoot, hasMounted);
+    // React reads the hoisting root before inserting portal children.
+    return hasMounted && element ? element.getRootNode(options) : targetRoot.getRootNode(options);
+  }
+
   function dispose() {
+    mountAnchor?.remove();
+    mountAnchor = undefined;
     if (currentElement) {
       currentElement.remove();
       currentElement = undefined;
@@ -106,6 +134,8 @@ const initializeElementFactory = () => {
 
   return {
     get,
+    mount,
+    getRootNode,
     dispose,
   };
 };
@@ -140,6 +170,10 @@ const useModernElementFactory: UseElementFactory = options => {
           return 1; // `Node.ELEMENT_NODE`
         }
 
+        if (property === 'getRootNode') {
+          return (rootOptions?: GetRootNodeOptions) => elementFactory.getRootNode(targetNode, rootOptions);
+        }
+
         // Heads up!
         // We intercept the `remove()` method to remove the mount node only when portal has been unmounted already.
         if (property === 'remove') {
@@ -160,6 +194,27 @@ const useModernElementFactory: UseElementFactory = options => {
         }
 
         const targetElement = elementFactory.get(targetNode, true);
+
+        // Connect after the first child insertion, before React inserts the next
+        // sibling, so custom element connection callbacks keep their ordering.
+        if (targetElement && property === 'appendChild') {
+          const appendChild = targetElement.appendChild.bind(targetElement);
+          return <T extends Node>(child: T) => {
+            const result = appendChild(child);
+            elementFactory.mount(targetNode);
+            return result;
+          };
+        }
+
+        if (targetElement && property === 'insertBefore') {
+          const insertBefore = targetElement.insertBefore.bind(targetElement);
+          return <T extends Node>(child: T, reference: Node | null) => {
+            const result = insertBefore(child, reference);
+            elementFactory.mount(targetNode);
+            return result;
+          };
+        }
+
         const targetProperty = targetElement ? targetElement[property] : undefined;
 
         if (typeof targetProperty === 'function') {
@@ -195,9 +250,12 @@ const useModernElementFactory: UseElementFactory = options => {
   }, [elementFactory, targetNode, options.disabled]);
 
   useInsertionEffect!(() => {
-    if (!elementProxy) {
+    if (!elementProxy || targetNode === undefined) {
       return;
     }
+
+    // Empty portals still need an attached mount node.
+    elementFactory.mount(targetNode);
 
     const classesToApply = className.split(' ').filter(Boolean);
 
@@ -211,7 +269,7 @@ const useModernElementFactory: UseElementFactory = options => {
       elementProxy.classList.remove(...classesToApply);
       elementProxy.removeAttribute('dir');
     };
-  }, [className, dir, elementProxy, focusVisibleRef]);
+  }, [className, dir, elementFactory, elementProxy, focusVisibleRef, targetNode]);
 
   React.useEffect(() => {
     return () => {
