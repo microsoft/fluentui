@@ -1,0 +1,394 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Embed Migration" />
+
+# Embed Migration
+
+## Overview
+
+There is **no public v9 `Embed` or `Video` equivalent**, including in the unstable entry point. Migrate to application-owned composition: a v9 `Button` for activation, a v9 `Image` for a placeholder, and a native `iframe` or `video` for the actual media. Button and Image do not provide activation state, media loading, callbacks, or focus transfer.
+
+This guide uses the released behavior of `@fluentui/react-northstar@0.71.4`, React `18.3.1`, and `@fluentui/react-components@9.74.9`. The primary example is a controlled, entirely local **Project preview**. Its HTML and blank SVG placeholder require no external service or media request.
+
+For the v9 example, the application supplies a root `FluentProvider` with its chosen v9 theme and the host document as `targetDocument`. Do not retain the Northstar Provider around the migrated example. In this release, the suite exports the shared-context hook as `useFluent`; the example aliases that valid public export to `useFluent_unstable`.
+
+## Before: controlled v0 iframe
+
+The control is Box shorthand rendered **as a native button**, not a children render function. Its explicit `styles: { pointerEvents: 'auto' }` is necessary: the default Teams Embed control has `pointerEvents: 'none'`, which otherwise prevents pointer targeting of that button. The wrapper's `title` and the iframe's `title` are independently specified.
+
+```tsx
+import * as React from 'react';
+import { Button, Embed, Provider, teamsTheme } from '@fluentui/react-northstar';
+
+const previewDocument =
+  '<!doctype html><html lang="en"><head><title>Project preview</title></head><body><p>Local project preview</p></body></html>';
+const placeholder =
+  'data:image/svg+xml;charset=utf-8,' +
+  encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><title>Project preview placeholder</title></svg>');
+
+export default function EmbedScenario() {
+  const [active, setActive] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
+  const [activationChanges, setActivationChanges] = React.useState(0);
+  const [requestedActive, setRequestedActive] = React.useState<boolean>();
+
+  return (
+    <Provider theme={teamsTheme}>
+      <section aria-label="Project preview" data-testid="embed-case">
+        <h2>Project preview</h2>
+        <Embed
+          data-testid="embed-root"
+          title="Project preview"
+          active={active}
+          placeholder={placeholder}
+          control={{
+            as: 'button',
+            children: 'Show preview',
+            styles: { pointerEvents: 'auto' },
+          }}
+          iframe={{
+            srcDoc: previewDocument,
+            title: 'Project preview',
+            onLoad: () => setLoaded(true),
+          }}
+          onActiveChange={(_event, data) => {
+            if (typeof data?.active !== 'boolean') {
+              throw new Error('Embed activation callback did not provide a boolean active value.');
+            }
+            setActive(data.active);
+            setActivationChanges(count => count + 1);
+          }}
+          onClick={(_event, data) => {
+            if (typeof data?.active !== 'boolean') {
+              throw new Error('Embed click callback did not provide a boolean active value.');
+            }
+            setRequestedActive(data.active);
+          }}
+        />
+        <Button
+          type="button"
+          content="Reset preview"
+          onClick={() => {
+            setActive(false);
+            setLoaded(false);
+            setActivationChanges(0);
+            setRequestedActive(undefined);
+          }}
+        />
+        <output data-testid="embed-active">Active: {active ? 'yes' : 'no'}</output>
+        <output data-testid="embed-loaded">Loaded: {loaded ? 'yes' : 'no'}</output>
+        <output data-testid="embed-changes">Activation changes: {activationChanges}</output>
+        <output data-testid="embed-request">
+          Requested active: {requestedActive === undefined ? 'none' : requestedActive ? 'yes' : 'no'}
+        </output>
+      </section>
+    </Provider>
+  );
+}
+```
+
+## After: v9 controls and a native iframe
+
+This is the same application scenario, not a replacement library component or an automatic shorthand adapter. It retains the local document, placeholder, visible strings, counters, and markers. The two callbacks are explicitly application-owned; their typed data contains only the `active` value this caller consumes, rather than pretending that v9 emits Northstar's full props object.
+
+`loaded` is the caller's reported load status. The separate `iframeLoaded` reproduces v0's persistent internal visibility flag. A focus request is recorded on each real load, so focus happens after React has made the frame visible, including after Reset and reactivation.
+
+```tsx
+import * as React from 'react';
+import { Button, Image, useFluent as useFluent_unstable, type ForwardRefComponent } from '@fluentui/react-components';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+
+const previewDocument =
+  '<!doctype html><html lang="en"><head><title>Project preview</title></head><body><p>Local project preview</p></body></html>';
+const placeholder =
+  'data:image/svg+xml;charset=utf-8,' +
+  encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><title>Project preview placeholder</title></svg>');
+
+const useStyles = makeStyles({
+  root: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    position: 'relative',
+    marginInlineEnd: tokens.spacingHorizontalM,
+  },
+  placeholder: {
+    display: 'block',
+  },
+  frame: {
+    display: 'block',
+  },
+  loadingFrame: {
+    display: 'none',
+  },
+});
+
+type ActivationCallback = (event: React.SyntheticEvent, data: { active: boolean }) => void;
+
+type EmbedScenarioProps = Pick<React.ComponentPropsWithRef<'div'>, 'className' | 'ref'>;
+
+const EmbedScenario: ForwardRefComponent<EmbedScenarioProps> = React.forwardRef<HTMLDivElement, EmbedScenarioProps>(
+  function EmbedScenario({ className }, ref) {
+    const classes = useStyles();
+    const { targetDocument } = useFluent_unstable();
+    const frameRef = React.useRef<HTMLIFrameElement>(null);
+    const [active, setActive] = React.useState(false);
+    const [loaded, setLoaded] = React.useState(false);
+    const [iframeLoaded, setIframeLoaded] = React.useState(false);
+    const [activationChanges, setActivationChanges] = React.useState(0);
+    const [requestedActive, setRequestedActive] = React.useState<boolean>();
+    const [focusRequest, setFocusRequest] = React.useState<{
+      frame: HTMLIFrameElement;
+    } | null>(null);
+
+    const onActiveChange: ActivationCallback = (_event, data) => {
+      if (typeof data.active !== 'boolean') {
+        throw new Error('Embed activation callback did not provide a boolean active value.');
+      }
+      setActive(data.active);
+      setActivationChanges(count => count + 1);
+    };
+
+    const onClick: ActivationCallback = (_event, data) => {
+      if (typeof data.active !== 'boolean') {
+        throw new Error('Embed click callback did not provide a boolean active value.');
+      }
+      setRequestedActive(data.active);
+    };
+
+    const handleActivation = (event: React.SyntheticEvent) => {
+      event.stopPropagation();
+      event.preventDefault();
+      const proposal = { active: !active };
+      if (proposal.active) {
+        onActiveChange(event, proposal);
+      }
+      onClick(event, proposal);
+    };
+
+    const onLoad: React.ReactEventHandler<HTMLIFrameElement> = () => setLoaded(true);
+
+    const handleFrameLoad: React.ReactEventHandler<HTMLIFrameElement> = event => {
+      onLoad(event);
+      setIframeLoaded(true);
+      setFocusRequest({ frame: event.currentTarget });
+    };
+
+    React.useEffect(() => {
+      if (!active || focusRequest === null) {
+        return;
+      }
+      const frame = focusRequest.frame;
+      if (!targetDocument || frame.ownerDocument !== targetDocument) {
+        throw new Error('Project preview iframe must belong to the FluentProvider targetDocument.');
+      }
+      const ownerWindow = targetDocument.defaultView;
+      const frameWindow = frame.contentWindow;
+      if (!ownerWindow || !frameWindow) {
+        throw new Error('A loaded Project preview iframe must have an owning window and a contentWindow.');
+      }
+      const request = ownerWindow.requestAnimationFrame(() => {
+        if (frame.isConnected && frameRef.current === frame) {
+          frameWindow.focus();
+        }
+      });
+      return () => ownerWindow.cancelAnimationFrame(request);
+    }, [active, focusRequest, targetDocument]);
+
+    return (
+      <section aria-label="Project preview" data-testid="embed-case">
+        <h2>Project preview</h2>
+        <div
+          ref={ref}
+          data-testid="embed-root"
+          title="Project preview"
+          className={mergeClasses(classes.root, className)}
+          onClick={handleActivation}
+        >
+          {active && (
+            <iframe
+              ref={frameRef}
+              srcDoc={previewDocument}
+              title="Project preview"
+              className={mergeClasses(classes.frame, !iframeLoaded && classes.loadingFrame)}
+              onLoad={handleFrameLoad}
+            />
+          )}
+          {(!active || !iframeLoaded) && (
+            <Image src={placeholder} alt="" aria-hidden="true" className={classes.placeholder} />
+          )}
+          {!active && (
+            <Button type="button" onClick={handleActivation}>
+              Show preview
+            </Button>
+          )}
+        </div>
+        <Button
+          type="button"
+          onClick={() => {
+            setActive(false);
+            setLoaded(false);
+            setActivationChanges(0);
+            setRequestedActive(undefined);
+            setFocusRequest(null);
+            // v0 keeps its internal iframeLoaded flag when the caller resets active.
+          }}
+        >
+          Reset preview
+        </Button>
+        <output data-testid="embed-active">Active: {active ? 'yes' : 'no'}</output>
+        <output data-testid="embed-loaded">Loaded: {loaded ? 'yes' : 'no'}</output>
+        <output data-testid="embed-changes">Activation changes: {activationChanges}</output>
+        <output data-testid="embed-request">
+          Requested active: {requestedActive === undefined ? 'none' : requestedActive ? 'yes' : 'no'}
+        </output>
+      </section>
+    );
+  },
+);
+
+export default EmbedScenario;
+```
+
+The activation Button handles pointer, Enter, and Space activation natively. Stopping propagation in its click handler prevents the compatibility wrapper handler from processing the same click again. Do not add another Enter/Space handler to the Button: that can produce duplicate proposals.
+
+The wrapper retains the old pointer-click callback path, including the already-active iframe edge described below. It is no longer a focusable presentation element; keyboard users activate the named Button instead. Events inside an iframe's document do not bubble into this wrapper.
+
+## How to migrate props
+
+These are **dispositions**, not a v9 Embed prop API. Place each responsibility on the appropriate application state, control, image, or native media element.
+
+| v0 prop or API                        | v9 migration                                                                                                                                                                                                                                                                           |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `active`                              | Own a boolean in React and mount media only while it is true. In the controlled case, the caller must accept an activation proposal; no Button or Image `active` prop replaces this.                                                                                                   |
+| `defaultActive`                       | Initialize uncontrolled application state once. The v0 initial fallback is `false`; later changes to `defaultActive` do not control the current state. Do not silently switch between controlled and uncontrolled ownership.                                                           |
+| `alt`                                 | Choose the activation/region name and the placeholder's `alt` independently. v0 uses root `alt` when deciding whether to hide the root, but does **not** forward it to the placeholder Image or iframe. It is not a rename to iframe `title`.                                          |
+| `title`                               | Preserve a native wrapper `title` if needed, and separately give the actual iframe a descriptive `title`. v0's root title prevents default root hiding; it is not copied into the generated iframe.                                                                                    |
+| `control`                             | Replace Box shorthand with explicit activation JSX, usually a semantic v9 Button. The old default `{}` is an empty, themed Box, not a Button with an accessible label. `null`/boolean shorthand can suppress rendering.                                                                |
+| `iframe`                              | Use a native iframe with explicit `src` or `srcDoc`, `title`, refs, events, and any applicable browser attributes. v0's Box shorthand defaults to `as: 'iframe'` and is rendered only while active. There is no v9 iframe slot or generated provider URL.                              |
+| `video`                               | Use a native video; explicitly choose playback defaults, accessible controls, and text alternatives. v0's shorthand creates Video, with a string shorthand mapping to `src`. It is a different path from iframe loading.                                                               |
+| `placeholder`                         | Use a conditional v9 Image with the string as `src`. v0 renders an Image only for a truthy placeholder string, and also offers that string as the embedded video's default `poster`. Set decorative or meaningful alt text yourself.                                                   |
+| `onActiveChange`                      | Implement an application callback/state adapter. v0 passes the original synthetic event and `{ ...props, active: proposedActive }`, only when a change is allowed. The example deliberately adapts just the consumed boolean.                                                          |
+| `onClick`                             | A v9/native click callback does not supply a Northstar data argument. Explicitly retain side effects, proposed-state data, ordering, and cancellation if callers depend on them. A proposal is not proof that state changed.                                                           |
+| `accessibility`                       | Replace behavior functions and their key actions with native semantics, Button keyboard support, explicit names, and appropriate ARIA attributes. Do not pass a v0 behavior object to Button, Image, or iframe.                                                                        |
+| `as`                                  | Replace the default `span` with an appropriate noninteractive media wrapper; this example uses `div`. Do not render the whole iframe/video container as a button or put interactive media inside an activation button.                                                                 |
+| `className`                           | Reapply the caller's class to its intended node. Merge Griffel classes first and the user class last, as on the example's preview wrapper. Old `ui-embed` / `ui-embed__control` selectors do not target v9 components.                                                                 |
+| `styles`                              | Split root/control/iframe/video/image intent into Griffel classes on the individual elements. Fela slot-style functions are not v9 styles or native `style` objects. Native per-instance `style` is a separate mechanism.                                                              |
+| `variables`                           | Replace theme-variable intent with v9 tokens and explicit application media layout. Width/height were forwarded to placeholder Image and Video variables, not automatically assigned to the iframe. See Styling below.                                                                 |
+| `design`                              | Recreate its layout/style intent with native structure and Griffel. There is no corresponding media-composition `design` prop.                                                                                                                                                         |
+| `ref`                                 | The old Embed ref targets the wrapper, not the frame. Keep separate wrapper, Button, iframe, and video refs. The example forwards its wrapper ref and has an independent `HTMLIFrameElement` ref for focus.                                                                            |
+| Native attributes and events          | v0 unhandled props go to the wrapper; iframe/video shorthand props go to those media elements. Put `aria-*`, `data-*`, `title`, `allow`, `sandbox`, `referrerPolicy`, `allowFullScreen`, and media events on their intended node rather than blindly spreading everything onto Button. |
+| `children`, `content`, `Embed.create` | Embed's supported content API is its media/control shorthand: common `children` and `content` are disabled. Replace the shorthand factory with explicit JSX composition. There are no declared Embed subcomponents or v9 Embed factory to migrate to.                                  |
+
+**Choose one media kind.** v0 prop validation disallows `iframe` and `video` together, but its rendering code is not a runtime exclusivity guard. If a new application API accepts media configuration, use a discriminated choice and explicitly reject invalid/untyped combinations rather than silently prioritizing one. The primary example has one fixed iframe, so it has no such ambiguity.
+
+Media and placeholder sources have no defaults. Also distinguish **absent** shorthand from **suppressed rendering**: v0 tests media presence against `null`/`undefined`, while shorthand factories can suppress a boolean value. For example, `iframe={false}` renders no frame but still selects the iframe activation/placeholder policy, including blocking deactivation by a second activation. Omit an unused media choice rather than carrying such a phantom-media configuration into the composition.
+
+## State, events, and loading
+
+### Activation proposals are not toggles for an active iframe
+
+For every root activation, v0 first calls `stopPropagation()` and `preventDefault()`, then computes `!active`.
+
+- With no iframe configured, it allows both activation and deactivation, updates its controllable state, calls `onActiveChange`, and finally calls `onClick`.
+- With an iframe configured, it allows activation only. Once active, a second root activation **does not** change state or call `onActiveChange`.
+- Nevertheless, that second activation still calls `onClick` with **proposed `active: false`**. This is an unusual callback edge, not a request that the media has actually closed.
+
+The After handler retains that edge: an already-active wrapper click can change `Requested active` to `no`, while `Active` remains `yes` and `Activation changes` remains unchanged. Do not implement the migration as an unconditional `setActive(!active)`.
+
+On the first accepted activation, both callbacks see the proposal `true`, the change count becomes `1`, and `Requested active` becomes `yes`. In v0 these callbacks receive full props plus the proposal, which overrides any old `props.active` value. Audit consumers that also read other props or the event type: v0 root keyboard actions can pass a keyboard event, whereas a native Button's keyboard activation produces a click event. The v9 composition does not manufacture the old full-props callback contract.
+
+### Visibility and load callback order
+
+| Source state                             | Media                                                   | Placeholder                                        | Activation control                                                                           |
+| ---------------------------------------- | ------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Inactive                                 | Not mounted                                             | Present if supplied                                | Present unless suppressed                                                                    |
+| Active iframe, before its first load     | Mounted, but `display: none` in the default Teams style | Remains present                                    | Removed immediately on activation                                                            |
+| Active iframe, internal loaded flag true | Mounted and displayed                                   | Removed                                            | Removed                                                                                      |
+| Active video                             | Video mounted                                           | Removed; placeholder can serve as the video poster | Remains rendered; the old active overlay is transparent until hover/focus styling reveals it |
+
+`iframe.onLoad` is a native-style, **event-only** callback inside iframe shorthand. It is not an Embed `(event, data)` callback, and there is no dedicated declared Embed-level load prop. v0 calls the supplied iframe handler first, then sets its internal `iframeLoaded` to `true`, then calls the frame's `contentWindow.focus()`. If a supplied handler throws, execution does not reach those later steps.
+
+The After example preserves callback ordering but deliberately makes focus safer: it captures the loaded `HTMLIFrameElement`, updates visibility, and schedules focus after the committed render. It obtains the host document through Fluent context, verifies the frame's `ownerDocument`, and schedules/cancels work through that document's `defaultView`. It checks that the frame is still connected and still the current frame before focusing its **contentWindow**, not the parent window or a global document. Each load records a new request, even if the same frame navigates again. Reset clears/cancels pending focus work. Missing or mismatched host-document/window invariants raise explicit errors rather than falsely reporting a working focus transfer.
+
+`onLoad` does not prove a remote application rendered successfully. Keep application error/readiness reporting separate. The deterministic local document here contains `Local project preview`; it is not a readiness check for an external host.
+
+### Caller Reset does not reset v0's internal loaded flag
+
+The original caller's `loaded` state and Embed's internal `iframeLoaded` are different values. The internal flag starts false and is never cleared on `active`, `src`, or `srcDoc` changes during the lifetime of that Embed instance.
+
+Reset in both examples externally sets `active` to false, unmounts the iframe, restores the inactive placeholder and Show preview control, and reports `Active: no`, `Loaded: no`, `Activation changes: 0`, and `Requested active: none`. It does not call `onActiveChange` or `onClick`.
+
+After a previous successful load, reactivation still mounts a new iframe and produces a new real load callback, but the retained internal flag means the frame is **already displayed** and the placeholder does **not** return for that loading interval. The After code intentionally preserves this distinction. Keyboard users can return to Show preview and press Enter to reactivate; the old loaded flag must not disable that action.
+
+If the application needs a fresh loading placeholder on every activation or source change, explicitly clear the internal visibility state as well. That is a deliberate change from v0, not a v9 default. Remounting the whole composition resets its state; merely keying/remounting the native iframe does not reset a separately retained visibility flag.
+
+## Video is a separate media path
+
+Do not reuse the iframe load flag as a video's playback state. v0's active video path mounts Video and removes the separate placeholder immediately; it does not wait for a video load event. Deactivation unmounts Video, and activation mounts a fresh element rather than pausing/resuming a persistent player. Its control remains rendered in both states, unlike an iframe's removed control.
+
+Embed supplies these shorthand defaults; explicit video props can override them:
+
+| Setting    | v0 Video inside Embed | Standalone v0 Video     | Native video when omitted |
+| ---------- | --------------------- | ----------------------- | ------------------------- |
+| `autoPlay` | `true`                | `false`                 | `false`                   |
+| `controls` | `false`               | `true`                  | `false`                   |
+| `loop`     | `true`                | Unspecified             | `false`                   |
+| `muted`    | `true`                | `false`                 | `false`                   |
+| `poster`   | Embed's `placeholder` | Supplied poster, if any | No poster                 |
+
+The released v0 Video also synchronizes the DOM `muted` property in an effect and includes an unmount cleanup that clears its source if the ref is still available, as a Chromium resource-cleanup workaround. Button and Image do not recreate those effects, autoplay policy, source cleanup, or native player events. Review cleanup and property synchronization if reproducing that player lifecycle.
+
+For an accessible user-controlled player, deliberately consider `controls: true`, user-initiated playback rather than autoplay, captions using native tracks, and a transcript or other appropriate text alternative. Preserve looping/muting only when they suit the content. Browser autoplay restrictions still apply, and successful mounting is not proof of playback.
+
+Wire actual playback/loading/error events on the native video if needed; do not label an iframe `onLoad` counter as video playback success. If native controls are enabled, do not send every bubbled control interaction through a wrapper click-to-unmount handler. Keep the activation action separate so seeking or adjusting volume does not deactivate the player. Those choices improve semantics but deliberately differ from the old overlay interaction.
+
+## Accessibility and changed defaults
+
+- **Root semantics:** default v0 `embedBehavior` adds `role="presentation"`, `tabIndex={0}`, and Enter/Space activation. It hides the root with `aria-hidden` when both `alt` and `title` are absent/falsy. Neither key is a dedicated play-versus-pause command: both run the same activation handler. The migrated wrapper is nonfocusable and does not hide its interactive descendants; the named native Button owns keyboard activation.
+- **Names are separate:** retain the region/heading, the Button's **Show preview** text, and the iframe's **Project preview** title. A root title is not a frame title or an image alternative. Do not infer names from URLs or rely on an unnamed control.
+- **Decorative placeholder:** Embed did not forward `alt` to its Image, so the default image behavior hid that placeholder. v9 Image is a styled native `img` and does not apply that Northstar behavior. The After code explicitly uses `alt=""` and `aria-hidden="true"` for the same decorative blank SVG. Use meaningful image alt text instead if the placeholder itself communicates information.
+- **Real controls:** the corrected v0 shorthand is a native button with a public pointer-events override. v9 Button supplies a semantic action and themed focus indicator without the old decorative overlay's pointer-events restriction. `type="button"` makes the intended non-submit behavior explicit.
+- **Focus transfer:** moving focus into the loaded iframe retains this scenario's user-visible behavior, but the deferred, cancellable, owner-document-checked transfer is a deliberate safety improvement over v0's unguarded call. Reconsider automatic focus for initially active or background-updated media; do not steal focus without a product requirement.
+- **Video semantics:** standalone v0 Video's default behavior assigns `role="application"`. Do not copy that role automatically onto native video. Prefer native media semantics and accessible controls; do not place either media kind inside a button.
+
+The control's presentation, the wrapper's default `span`, and Northstar's synthesized play/pause image assets are not v9 defaults. v9 Button defaults to secondary appearance, rounded shape, medium size, and an enabled button; v9 Image defaults to square shape, default fit, and no border, shadow, or block sizing. Neither component chooses a media source, loading placeholder policy, or active state.
+
+## Styling
+
+The default Teams Embed style has a relative, inline-block wrapper, middle vertical alignment, a pointer cursor, optional variable width, and height falling back to `auto`. Its focus/hover styles affect the overlay. The control is an absolutely centered circular play/pause-image overlay with fixed geometry, `pointerEvents: 'none'`, and active opacity zero; hover/focus styles reveal it. The iframe style switches between `display: 'none'` and `display: 'block'` using the persistent loaded flag. That style file defines root/control/iframe styles, not independent default video/image slot layouts.
+
+Recreate only the intended layout and interaction, not Fela-generated selectors or image assets. The primary migration deliberately uses a normal-flow, named Button instead of cloning the circular image overlay. Its loading visibility is expressed with Griffel classes, its inter-control spacing uses a token, and its blank SVG contains no hardcoded themed asset styling.
+
+| Old Embed variable       | Released Teams default / use                                                | Migration responsibility                                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `width`, `height`        | Both undefined. Used by the root and forwarded to Image/Video variables.    | Set application layout and each media element's intended dimensions explicitly; there is no automatic iframe size mapping. |
+| `controlColor`           | Teams white, used for the overlay foreground and generated indicator image. | Use Button's themed styling or an appropriate foreground token for a custom control.                                       |
+| `controlBackgroundColor` | Teams onyx shade 900.                                                       | Use Button's chosen appearance or an appropriate background token, not a copied literal color.                             |
+| `controlBackgroundSize`  | Rem-converted 24-by-24 indicator geometry.                                  | Decide application/icon geometry if still needed; this is not a v9 Image `fit` mapping.                                    |
+| `focusBorderColor`       | Teams brand shade 500, applied to the overlay on focus.                     | Prefer Button's native v9 focus treatment; use focus stroke tokens for custom focus styling.                               |
+| `zIndex`                 | The theme's foreground layer, used for the hovered control.                 | Choose application layering explicitly if retaining an overlay; no media-composition z-index prop exists.                  |
+
+Use `makeStyles` from Griffel and `tokens` from `@fluentui/react-theme` for themed colors, spacing, typography, borders, and motion. Apply classes separately to the wrapper, Button, Image, iframe, and video. Preserve caller classes last in `mergeClasses`; do not pass old `variables`, `styles`, or `design` objects through to native media or invent v9 Embed style slots.
+
+## Limitations and application responsibilities
+
+- This example preserves the controlled local iframe scenario; it does not implement a general Embed clone, a provider-specific URL adapter, or video playback. Video behavior above is a separate source audit, not a claim of exercised playback.
+- v0 supplied **no sandbox, allow policy, URL validation, or remote-content safety guarantee**. The native iframe in this trusted, deterministic local example intentionally makes no new sandbox claim. For untrusted `srcDoc`, sanitize/validate content and explicitly decide sandbox restrictions. For external sources, own URL allowlisting, `sandbox`, `allow`, `referrerPolicy`, CSP, permissions, privacy/cookie considerations, and failure handling. Do not assume a v9 control secures embedded content.
+- Do not inspect a remote frame's `contentDocument` to establish readiness or focus. Its owning host document and `contentWindow` serve different purposes; same-origin restrictions still apply. This example focuses the window without inspecting the child document.
+- A frame load notification and a video playback notification are not interchangeable. Plan application readiness, loading failure, source replacement, focus policy, and media cleanup explicitly.
+- Browser focus, autoplay, assistive-technology behavior, and external-host integration need validation in the consuming application. The local example does not establish compatibility for third-party embeds.
+
+## Related migration guides
+
+- [Custom accessibility](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)
+- [Custom style overrides](?path=/docs/concepts-migration-from-v0-custom-style-overrides--docs)
+
+## Authoritative references
+
+- **Released v0 implementation:** [Embed in `@fluentui/react-northstar@0.71.4`](https://unpkg.com/@fluentui/react-northstar@0.71.4/dist/es/components/Embed/Embed.js), with [typed source at its release commit](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Embed/Embed.tsx).
+- **v0 accessibility:** [embedBehavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Embed/embedBehavior.ts), [imageBehavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Image/imageBehavior.ts), and [videoBehavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Video/videoBehavior.ts).
+- **v0 styling/defaults:** [embedStyles](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/themes/teams/components/Embed/embedStyles.ts) and [embedVariables](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/themes/teams/components/Embed/embedVariables.ts).
+- **v0 shorthand and media:** [Box](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Box/Box.tsx), [shorthand factories](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/utils/factories.ts), [Image](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Image/Image.tsx), and [Video](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Video/Video.tsx).
+- **v9 public export boundary:** [`@fluentui/react-components@9.74.9` stable exports](https://unpkg.com/@fluentui/react-components@9.74.9/lib/index.js) and [unstable exports](https://unpkg.com/@fluentui/react-components@9.74.9/lib/unstable/index.js); neither exports Embed or Video.
+- **Released v9 composition primitives:** [Button public types (`9.11.1`)](https://unpkg.com/@fluentui/react-button@9.11.1/dist/index.d.ts) and [Button implementation](https://unpkg.com/@fluentui/react-button@9.11.1/lib/components/Button/useButton.js); [Image public types (`9.4.5`)](https://unpkg.com/@fluentui/react-image@9.4.5/dist/index.d.ts) and [Image implementation](https://unpkg.com/@fluentui/react-image@9.4.5/lib/components/Image/useImage.js).

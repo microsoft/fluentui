@@ -1,0 +1,335 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Status Migration" />
+
+# Status Migration
+
+## Overview
+
+Northstar `Status` represents a **generic state**: `success`, `info`, `warning`, `error`, or `unknown`.
+It is not a personal-presence API. Its default state is **`unknown`**, and setting a state does not
+automatically supply an icon.
+
+There is no v9 `Status` component or `Status.create` factory. For generic build states, compose
+`Badge`, an explicitly chosen icon, and a visible label. Do **not** mechanically translate
+`success` to `available`, `warning` to `away`, or `error` to `busy`. `PresenceBadge` is a separate
+option for actual people-presence data, described later in this guide.
+
+This guide uses the released APIs of `@fluentui/react-northstar@0.71.4`,
+`@fluentui/react-icons-northstar@0.71.4`, React `18.3.1`, and
+`@fluentui/react-components@9.74.9` / `@fluentui/react-badge@9.5.6`.
+The examples are complete modules using the automatic JSX runtime.
+
+## Before: v0
+
+The warning deliberately uses `size="larger"`. The unknown indicator deliberately omits both
+`state` and `size`, keeping the v0 defaults. Each indicator is a named image, with a decorative
+custom icon and a separate visible label.
+
+```tsx
+import { Provider, Status, teamsTheme } from '@fluentui/react-northstar';
+import { ExclamationTriangleIcon, QuestionCircleIcon } from '@fluentui/react-icons-northstar';
+
+export default function StatusScenario() {
+  return (
+    <Provider theme={teamsTheme}>
+      <section aria-label="Build statuses" data-testid="status-case">
+        <h2>Build statuses</h2>
+        <p>
+          <Status
+            aria-label="Build warning"
+            data-testid="status-warning"
+            state="warning"
+            size="larger"
+            icon={{
+              children: <ExclamationTriangleIcon />,
+              'aria-hidden': true,
+              'data-testid': 'status-warning-icon',
+            }}
+          />{' '}
+          Build warning
+        </p>
+        <p>
+          <Status
+            aria-label="Build unknown"
+            data-testid="status-unknown"
+            icon={{
+              children: <QuestionCircleIcon />,
+              'aria-hidden': true,
+              'data-testid': 'status-unknown-icon',
+            }}
+          />{' '}
+          Build unknown
+        </p>
+      </section>
+    </Provider>
+  );
+}
+```
+
+## After: v9
+
+The application supplies a `FluentProvider` and its v9 theme above this module. Keep application
+state in the build domain; when a value is missing or not yet known, retain `unknown` deliberately.
+Choose the color, glyph, size, and accessible name when rendering that state, rather than passing
+the build state to a presence component.
+
+Here, `warning` uses `Badge.color="warning"` and `unknown` explicitly uses the neutral
+`color="informative"` treatment. In this release, a filled informative badge uses
+`tokens.colorNeutralBackground5` and `tokens.colorNeutralForeground3`; it is not brand-colored or
+green availability. `WarningRegular` retains the exclamation-triangle silhouette and
+`QuestionCircleRegular` retains the question-circle silhouette. Both are public
+`@fluentui/react-icons` exports.
+
+```tsx
+import { Badge } from '@fluentui/react-components';
+import { QuestionCircleRegular, WarningRegular } from '@fluentui/react-icons';
+import { tokens } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: tokens.spacingHorizontalS,
+    marginBlockEnd: tokens.spacingVerticalS,
+  },
+});
+
+export default function StatusScenario() {
+  const styles = useStyles();
+
+  return (
+    <section aria-label="Build statuses" data-testid="status-case">
+      <h2>Build statuses</h2>
+      <div className={styles.row}>
+        <Badge
+          role="img"
+          aria-label="Build warning"
+          data-testid="status-warning"
+          color="warning"
+          size="small"
+          shape="circular"
+          appearance="filled"
+          icon={
+            <span aria-hidden="true" data-testid="status-warning-icon">
+              <WarningRegular aria-hidden="true" />
+            </span>
+          }
+        />
+        <span>Build warning</span>
+      </div>
+      <div className={styles.row}>
+        <Badge
+          role="img"
+          aria-label="Build unknown"
+          data-testid="status-unknown"
+          color="informative"
+          size="extra-small"
+          shape="circular"
+          appearance="filled"
+          icon={
+            <span aria-hidden="true" data-testid="status-unknown-icon">
+              <QuestionCircleRegular aria-hidden="true" />
+            </span>
+          }
+        />
+        <span>Build unknown</span>
+      </div>
+    </section>
+  );
+}
+```
+
+This preserves both visible strings, accessible image names, icon-wrapper markers, and the
+larger-warning/smaller-unknown intent. It does not promise identical glyph paths or measurements.
+The rows use `div` rather than `p`: the declared v9 badge root is a `div`, which must not be nested
+inside a paragraph.
+
+The icon values use JSX span wrappers because the published React 18 icon-slot object types do
+not declare `data-testid`. JSX preserves these native data attributes and decorative wrappers
+without casts or type extensions.
+
+## How to migrate props
+
+This table covers the Status-specific props, inherited styling/common props, native pass-through
+behavior, and factory API in the audited v0 release.
+
+| v0 prop or API                         | Disposition                    | v9 migration                                                                                                                                                                                                                                                                                    |
+| -------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `state`                                | Decomposed                     | Keep the domain state in the application. Choose `Badge.color`, an optional `icon`, and the accessible name explicitly. `Badge` has no `state` prop.                                                                                                                                            |
+| `color`                                | Decomposed                     | v0 accepts an actual CSS color string and overrides the background only, leaving the icon's state-derived foreground unchanged. v9 `color` is a semantic enum, not a CSS-color input. Choose a semantic treatment or token-backed root/icon classes with a suitable foreground/background pair. |
+| `icon`                                 | Composed                       | v0 uses `Box` shorthand, whose `children` or `content` can contain the supplied glyph. Rebuild it using the `Badge.icon` span slot and its `children`, native attributes, and `className`. Do not pass through Box-only `content`, `styles`, `variables`, or `accessibility`.                   |
+| `size`                                 | Decomposed                     | Choose a valid `Badge.size` after reviewing the size table below. Identical names do not imply identical dimensions or icon sizing.                                                                                                                                                             |
+| `accessibility`                        | Compatibility work             | The v0 behavior defaults to `role="img"` only. v9 `Badge` has no behavior-function prop and supplies no role or name. Preserve a named image with explicit `role` and `aria-label` or `aria-labelledby`; review any overridden behavior separately.                                             |
+| `as`                                   | Changed default / composition  | v0 defaults to `span` and permits element substitution. The public `Badge` root slot is declared for `div`; do not assume arbitrary v0 `as` values are accepted. Review native semantics and surrounding markup instead of coercing the types.                                                  |
+| `className`                            | Direct, with selector changes  | Pass a root class to `Badge.className`. Replace `ui-status`/old Box-wrapper selectors with your own classes or `badgeClassNames.root` and `badgeClassNames.icon` (`fui-Badge`, `fui-Badge__icon`).                                                                                              |
+| `styles`                               | Decomposed                     | Move v0 style objects/functions to Griffel classes. Apply root styles through `className` and icon styles through the `icon` slot's `className`; there is no `Badge.styles` prop.                                                                                                               |
+| `variables`                            | Decomposed                     | Replace component variables with v9 theme/design tokens and, when necessary, explicit root/icon classes. `Badge` has no `variables` prop.                                                                                                                                                       |
+| `design`                               | Decomposed                     | Move layout/design settings to Griffel or appropriate native layout styling. There is no `Badge.design` prop.                                                                                                                                                                                   |
+| `ref`                                  | Native-root migration          | The ref now targets the rendered badge root, a `div` by default, rather than the old `span`. Update ref typing and tag-specific assumptions accordingly.                                                                                                                                        |
+| Unhandled native attributes and events | Direct where supported         | Preserve `aria-label`, `aria-labelledby`, `role`, `data-testid`, and applicable native handlers on the root. Attributes belonging to the old icon wrapper belong on the new `icon` slot or its JSX wrapper. Status has no special event callback or `onStateChange`.                            |
+| `Status.create(...)`                   | Unsupported factory            | v0 maps primitive factory shorthand to `state`. Replace factory calls with JSX and an application-owned state policy. There is no v9 `Status.create` equivalent and no Status subcomponents to migrate.                                                                                         |
+| Root `children` / `content`            | Not a supported v0 content API | Status disables these common prop types and renders the icon shorthand, not general root content. Do not invent a content migration. `Badge` can have children, but putting a label inside it is a new composition choice, not source API parity.                                               |
+
+### Generic state policy
+
+These are **application choices**, not a renamed state enum or a pixel-equivalent mapping.
+Neither v0 `Status` nor ordinary v9 `Badge` automatically chooses a glyph for these states.
+Keep any existing custom icon and label semantics when choosing the composition.
+
+| v0 generic state                     | Suggested Badge treatment                                 | Semantic decision                                                                                                                                                                    |
+| ------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `success`                            | `color="success"`                                         | Generic success, not a person's availability.                                                                                                                                        |
+| `info`                               | `color="brand"` or deliberately `color="informative"`     | The v0 Teams theme uses a brand background for info. Brand retains that treatment's intent; informative is a deliberate change to a neutral treatment. Neither is a mandated rename. |
+| `warning`                            | `color="warning"`                                         | Keep the generic warning meaning and supplied warning label/glyph.                                                                                                                   |
+| `error`                              | `color="danger"`                                          | Keep the application's error meaning; `error` is not a valid Badge color.                                                                                                            |
+| `unknown`, including omitted `state` | Explicit `color="informative"` with a suitable label/icon | Preserve an intentional neutral unknown treatment. Do not fall through to default brand or default presence availability.                                                            |
+
+In the audited v9 release:
+
+- `Badge.color` accepts `brand`, `danger`, `important`, `informative`, `severe`, `subtle`, `success`,
+  or `warning`; it defaults to `brand`.
+- `Badge.appearance` accepts `filled`, `ghost`, `outline`, or `tint`; it defaults to `filled`.
+- `Badge.shape` accepts `circular`, `rounded`, or `square`; it defaults to `circular`.
+- `Badge.iconPosition` accepts `before` or `after`; it defaults to `before`. It is a Badge-only
+  layout choice, not a former Status prop.
+
+### Defaults and size differences
+
+| Contract             | v0 Status default                                                                              | v9 Badge default                                                             |
+| -------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Domain state / color | `unknown`; neutral Teams-theme treatment                                                       | No domain-state prop; `color="brand"`                                        |
+| Size                 | `medium`: 10px body, 6px icon wrapper in the Teams theme                                       | `medium`: 20px height and minimum width, with a 12px icon size               |
+| Icon                 | Absent; state alone never supplies one                                                         | Optional and absent                                                          |
+| Root / role / name   | `span`, `role="img"`, no generated accessible name                                             | `div`, no default role or generated accessible name                          |
+| Shape / border       | Circular; no added border when `borderColor` is unset, even though `borderWidth` defaults to 2 | Circular, filled; uses its own border pseudo-element and token-backed styles |
+
+The v0 multiplier names are not seven progressively increasing diameters. These values come
+from the released Teams Status styles, before an optional border override:
+
+| v0 size            | v0 body / icon wrapper | Badge body-size starting point                                           |
+| ------------------ | ---------------------- | ------------------------------------------------------------------------ |
+| `smallest`         | 6px / 4px              | `tiny`                                                                   |
+| `smaller`          | 10px / 6px             | `extra-small`                                                            |
+| `small`            | 10px / 6px             | `extra-small`                                                            |
+| `medium` (default) | 10px / 6px             | `extra-small`                                                            |
+| `large`            | 10px / 6px             | `extra-small`                                                            |
+| `larger`           | 16px / 10px            | `small`                                                                  |
+| `largest`          | 0px / 0px              | No useful direct equivalent; establish the intended application behavior |
+
+Valid v9 sizes are `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large`.
+These recommendations are **body-size starting points, not pixel aliases**. In particular, the
+example's small warning has a 16px height/minimum width and a 12px icon, whereas the extra-small
+unknown has a 10px body and a 10px icon. Badge padding, negative icon margins, minimum widths,
+glyph geometry, and borders can change the final bounds. In v0, a configured border adds twice
+its width to the body dimensions. Review both root and icon sizing rather than substituting
+`size="medium"` unchanged or interpreting `largest` as `extra-large`.
+
+## Accessibility and semantics
+
+- Preserve the source's named-image contract: one `role="img"` indicator named `Build warning`
+  and one named `Build unknown`. Ordinary `Badge` does not add that role or derive names from
+  its color. The v0 behavior's mention of `alt` does not generate a name for its span;
+  `aria-label` or `aria-labelledby` is the appropriate explicit naming mechanism here.
+- Keep a wrapper around the supplied icon `aria-hidden` when the parent image is already named. The example
+  also hides the SVGs explicitly and gives them no separate titles or labels, avoiding duplicate
+  accessible named images. Preserve the source's wrapper-level test markers.
+- Retain the visible labels. Together with the triangle and question-circle silhouettes, they
+  make meaning available without distinguishing colors.
+- Neither implementation is a live region or an interactive control. Do not introduce
+  `role="status"`, `aria-live`, focusability, or presence announcements merely because the old
+  component was called Status. If changing build state requires an announcement, design and
+  test that as a separate application requirement.
+- Native event pass-through is not an interaction model. If a state indicator performs an
+  action, use an appropriate interactive control rather than making this named image behave
+  like a button.
+
+## Styling and customization
+
+The old `color` string changes the Status background, while the icon foreground still follows
+`state`. Copying that string into `Badge.color` is neither type-correct nor a contrast policy.
+Choose semantic Badge colors first. When a product needs custom styling, use paired design
+tokens from `@fluentui/react-theme` in Griffel classes, and apply an icon-slot class if the glyph
+needs a different foreground. The primary example deliberately uses the built-in neutral
+informative pair for unknown, not an arbitrary hardcoded color.
+
+The v0 variables are `borderColor`, `borderWidth`, `successBackgroundColor`, `successTextColor`,
+`infoBackgroundColor`, `infoTextColor`, `warningBackgroundColor`, `warningTextColor`,
+`errorBackgroundColor`, `errorTextColor`, `defaultBackgroundColor`, and `defaultTextColor`.
+Map these by purpose to theme tokens rather than copying the variable object into v9.
+The default-prefixed variables describe the unknown treatment. Border customization must
+also account for Badge's border pseudo-element; the old border sizing behavior is not identical.
+
+The v0 icon was a styled Box shorthand with its own sizing and descendant selectors. The v9
+icon is a span slot containing a chosen React node, with Badge's own size/margin styles.
+Recreate necessary wrapper attributes and classes explicitly. Old Box `content`, runtime
+style functions, variables, and accessibility behavior objects are not v9 slot props.
+Use tokens for any custom measurements, spacing, typography, or colors, and preserve
+caller overrides by putting user classes last when using `mergeClasses`.
+
+Use the application's light and dark v9 themes, and review foreground/background contrast in
+each. Leave system forced-color adjustment enabled and check glyph outlines, labels, and
+boundaries when forced colors replace fills. Tokens alone do not establish contrast or exact
+visual equivalence; do not depend on background color as the only state cue.
+
+## Separate option: genuine people presence
+
+Use `PresenceBadge` only when the application is actually describing a person's presence.
+Any conversion from another domain is a **product mapping**, not a Status API synonym.
+Its valid `status` values are `busy`, `out-of-office`, `away`, `available`, `offline`,
+`do-not-disturb`, `unknown`, and `blocked`. None of `success`, `info`, `warning`, or `error`
+is a valid presence status. Even the overlapping word `unknown` refers to presence here.
+
+PresenceBadge defaults to **`available`**, not unknown, and supplies presence-specific glyphs,
+`role="img"`, and generated presence labels. Set the actual status deliberately and supply
+an application-specific accessible name when needed. Its separate `outOfOffice` boolean
+defaults to `false`. Do not use this example to replace the generic build-status example above.
+
+This independent module illustrates actual presence data for Taylor; the application still
+provides `FluentProvider`:
+
+```tsx
+import { PresenceBadge } from '@fluentui/react-components';
+
+export default function PersonPresenceExample() {
+  return (
+    <section aria-label="People presence">
+      <PresenceBadge status="away" aria-label="Taylor away" icon={{ 'aria-hidden': true }} /> <span>Taylor away</span>
+    </section>
+  );
+}
+```
+
+## Limitations
+
+This migration preserves the supplied warning/unknown state meaning, names, visible labels,
+decorative custom-icon silhouettes, and relative size intent. It does not reproduce every
+Northstar style override, arbitrary CSS color, border configuration, or theme pixel for pixel,
+and it does not add a reusable Status package. Other custom behaviors and sizes need their own
+visual and accessibility review. Source/API comparison is not a claim of browser, screenshot,
+contrast, or assistive-technology validation.
+
+## References
+
+Released sources used for the contracts above:
+
+- [v0 Status implementation, props, defaults, and factory](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Status/Status.tsx)
+  and [common props and size enum](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/utils/commonPropTypes.ts).
+- [v0 status accessibility behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Status/statusBehavior.ts).
+- [v0 Teams Status styles](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/themes/teams/components/Status/statusStyles.ts)
+  and [variables](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/themes/teams/components/Status/statusVariables.ts).
+- [v0 Box shorthand](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Box/Box.tsx)
+  and [Northstar icon exports at 0.71.4](https://unpkg.com/@fluentui/react-icons-northstar@0.71.4/dist/es/index.d.ts).
+- [Badge and PresenceBadge public declarations at 9.5.6](https://unpkg.com/@fluentui/react-badge@9.5.6/dist/index.d.ts),
+  [Badge defaults and slots](https://unpkg.com/@fluentui/react-badge@9.5.6/lib/components/Badge/useBadge.js),
+  and [Badge styles](https://unpkg.com/@fluentui/react-badge@9.5.6/lib/components/Badge/useBadgeStyles.styles.js).
+- [PresenceBadge defaults, labels, and icon selection at 9.5.6](https://unpkg.com/@fluentui/react-badge@9.5.6/lib/components/PresenceBadge/usePresenceBadge.js).
+- [Public suite exports at 9.74.9](https://unpkg.com/@fluentui/react-components@9.74.9/lib/index.js)
+  and [public Fluent icon exports at 2.0.311](https://unpkg.com/@fluentui/react-icons@2.0.311/lib/index.d.ts).
+
+Shared migration guidance:
+
+- [Migrating styles](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/Concepts/Migration/FromV0/migrate-styles.mdx).
+- [Migrating custom accessibility](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/Concepts/Migration/FromV0/migrate-custom-accessibility.mdx).
+- [Migrating icons](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/Concepts/Migration/FromV0/Icons.mdx).
