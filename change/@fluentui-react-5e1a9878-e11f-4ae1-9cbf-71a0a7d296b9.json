@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep Calendar day cells from expanding with external table cell padding",
+  "packageName": "@fluentui/react",
+  "email": "kirtiar15502@gmail.com",
+  "dependentChangeType": "patch"
+}
