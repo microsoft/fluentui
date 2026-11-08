@@ -100,6 +100,12 @@ Evidence snapshot: <default-branch-SHA>.
 - Regenerate the lockfile with the repository's pinned Yarn, without unrelated churn.
 - Run immutable installation, dedupe checks, item-specific audit, and relevant Nx
   build, test, lint, and type-check targets, including affected parent/tooling paths.
+- Use `SEVERITY=high` and `yarn npm audit --all --recursive --severity ${SEVERITY}`
+  to include high and critical workspace/transitive findings. Record registry/API
+  failures separately from actual vulnerable paths; audit is not a CG parity check.
+- Run `yarn nx run workspace-plugin:build` and
+  `yarn nx run react-components:build` as required by the security-fix instructions.
+  Record every validation command and result; do not claim blocked checks passed.
 - Follow the security-fix instructions and add consolidated Beachball changes
   when published packages change.
 - Report validation results and any remaining blocked fix in this same PR.
@@ -108,6 +114,10 @@ Evidence snapshot: <default-branch-SHA>.
 
 Include only publicly shareable evidence. Keep the mapping from internal item
 identities to this issue in the ignored local record, never in the issue body.
+Before creating or editing the resulting PR body, inspect and preserve the
+repository's PR template, including its validation checklist. Do not publish
+internal comparison tables. Include public advisory/path coverage and exact
+validation commands with results.
 
 ### Assign Copilot
 
