@@ -4,7 +4,7 @@ We have released our first stable release of Fluent UI React v9 - [find it on np
 
 ## Component Roadmap
 
-We've updated the spot of our [Component Roadmap](Fluent-UI-React-v9-Component-Roadmap). Here you'll get a sense of our upcoming component build out schedule. What's stable in the coming relase as well as what's to follow fast, and proposed in the future.
+We've updated the spot of our [Component Roadmap](Fluent-UI-React-v9-Component-Roadmap). Here you'll get a sense of our upcoming component build out schedule. What's stable in the coming release as well as what's to follow fast, and proposed in the future.
 
 ## Documentation
 

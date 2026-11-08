@@ -85,7 +85,7 @@ Pros
 
 Cons
 
-- Could end up being unmanagable
+- Could end up being unmanageable
 - Possible low quality with broken builds
 - Barrier to entry for customers to have to sync, build, and run examples.
 
@@ -125,7 +125,7 @@ Cons
 - Hard to delete a public repo if customers depend on it
 - Barrier to entry since separate from storybook
 
-DISCARDED: The cost of creating a public complient repo for upgrade is too high.
+DISCARDED: The cost of creating a public compliant repo for upgrade is too high.
 
 ### Option E: Create a community-contrib repo
 
