@@ -19,6 +19,8 @@ export const cardContextDefaultValue: CardContextValue = {
       /* Noop */
     },
   },
+  orientation: 'vertical',
+  size: 'medium',
 };
 
 /**
