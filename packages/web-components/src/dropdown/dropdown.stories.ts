@@ -94,6 +94,32 @@ export const MultipleSelection: Story = {
   },
 };
 
+export const MultipleSelectionConstrainedWidth: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-field>
+      <label slot="label">${story => story.placeholder}</label>
+      <fluent-dropdown slot="input" ?multiple="${story => story.multiple}" style="width: 280px" ${ref('dropdown')}>
+        <fluent-listbox>${repeat(story => story.slottedContent?.(), optionTemplate)}</fluent-listbox>
+      </fluent-dropdown>
+    </fluent-field>
+  `),
+  args: {
+    multiple: true,
+    placeholder: 'Best pet',
+    slottedContent: () => [
+      { selected: true, value: 'cat', slottedContent: () => 'Cat' },
+      { selected: true, value: 'dog', slottedContent: () => 'Dog' },
+      { selected: true, value: 'fish', slottedContent: () => 'Fish' },
+      { selected: true, value: 'hamster', slottedContent: () => 'Hamster' },
+      { selected: true, value: 'snake', slottedContent: () => 'Snake' },
+      { selected: true, value: 'bird', slottedContent: () => 'Bird' },
+      { selected: true, value: 'wolf', slottedContent: () => 'Wolf' },
+      { selected: true, value: 'beetle', slottedContent: () => 'Beetle' },
+      { selected: true, value: 'squirrel', slottedContent: () => 'Squirrel' },
+    ],
+  },
+};
+
 export const Small: Story = {
   args: {
     ...Default.args,
