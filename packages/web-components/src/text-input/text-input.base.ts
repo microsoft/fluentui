@@ -270,8 +270,8 @@ export class BaseTextInput extends FASTElement {
    */
   @attr({
     converter: {
-      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : null),
-      toView: value => value.toString(),
+      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : value),
+      toView: value => (value === null || value === undefined ? null : value.toString()),
     },
   })
   public spellcheck!: boolean;
