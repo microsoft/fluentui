@@ -20,6 +20,7 @@ export { useOverflowContextValues_unstable } from './useOverflowContextValues';
 export { useOverflowCount } from './useOverflowCount';
 export { useOverflowItem } from './useOverflowItem';
 export { useOverflowMenu } from './useOverflowMenu';
+export type { UseOverflowMenuOptions } from './useOverflowMenu';
 export { useOverflowDivider } from './useOverflowDivider';
 export { useOverflowVisibility } from './useOverflowVisibility';
 

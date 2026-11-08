@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: allow opting out of first-paint overflow correctness for hot-path consumers",
+  "packageName": "@fluentui/react-overflow",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
