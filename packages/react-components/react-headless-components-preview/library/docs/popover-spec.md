@@ -97,7 +97,7 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 // Trigger
 <button
   aria-expanded={open ? 'true' : 'false'}
-  aria-haspopup={trapFocus ? 'dialog' : undefined}
+  aria-haspopup={inertTrapFocus ? 'dialog' : undefined}
   aria-details={open ? surfaceId : undefined}
   data-open={open || undefined}
   // click / keydown / context / hover handlers merged onto the cloned child
@@ -127,7 +127,7 @@ Instead, the relationship is wired **explicitly** and uniformly:
 - `usePopover` generates a stable id via `useId('fui-popover-surface-')` and stores it on context as `surfaceId`.
 - `usePopoverSurface` writes `id={surfaceId}` on the surface root **before** spreading `props`, so consumer-supplied `id` still wins (consumers who override `id` opt out of the implicit wiring).
 - `usePopoverTrigger` writes `aria-details={surfaceId}` on the cloned trigger **only while `open` is true**, since the surface only mounts while open (`renderPopover.tsx`). When closed, `aria-details` is omitted to avoid pointing at a non-existent element.
-- `aria-expanded` reflects `open` on every render. `aria-haspopup="dialog"` is set when `trapFocus` is enabled; otherwise it is omitted because the default non-modal surface has `role="group"`. Consumer-supplied trigger attributes take precedence.
+- `aria-expanded` reflects `open` on every render. `aria-haspopup="dialog"` is set when `inertTrapFocus` is enabled; otherwise it is omitted because the default non-modal surface has `role="group"`. Consumer-supplied trigger attributes take precedence.
 
 This matches the behavioural guarantees consumers would get from `popovertarget` (for the ARIA-relationship piece).
 
@@ -150,10 +150,11 @@ The role on the surface depends on `inertTrapFocus`:
 
 ### Focus management
 
-Focus management is delegated to the platform; the component adds no React-side focus trap, focus finder, or restoration logic.
+The surface's show/hide come from the shared top-layer hooks (`useDialogLayerOpenState` with `returnFocus`); there is no React-side focus trap or focus finder.
 
 - **`inertTrapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
-- **`inertTrapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. Because the trap comes from inertness, not from intercepting Tab, Tab from the last focusable element may move focus to the browser UI (address bar, toolbar) before wrapping back into the surface. On close, `dialog.close()` restores focus to whatever element was focused when `showModal()` ran — typically the trigger.
+- **`inertTrapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. Because the trap comes from inertness, not from intercepting Tab, Tab from the last focusable element may move focus to the browser UI (address bar, toolbar) before wrapping back into the surface.
+- **Restore.** The browser restores focus on close. When focus was inside the surface as it started closing and is now lost to `<body>` or still inside it, focus moves to the trigger. Focus the user moved elsewhere is left alone.
 
 #### Why `inertTrapFocus` and not `trapFocus`
 
@@ -176,7 +177,7 @@ Consumers control which child receives initial focus via the standard React `aut
 
 #### Cancel handling (modal Esc)
 
-When `inertTrapFocus={true}`, Escape fires the native `cancel` event on the dialog. `usePopover` listens for `cancel`, calls `event.preventDefault()` (so the browser doesn't close the dialog before React re-renders), and routes through `setOpen(false)`. The subsequent close — driven by `open` flipping to `false` — runs `dialog.close()`, which performs the spec-mandated focus restoration to the trigger. This keeps controlled consumers authoritative without losing the platform's restore behavior.
+When `inertTrapFocus={true}`, Escape fires the native `cancel` event and the browser closes the dialog, restoring focus to the trigger. The surface reports the native `close` event, so `onOpenChange` fires with `type: 'close'` and `open: false`. `onOpenChange` can't veto it; to keep the surface open, call `event.preventDefault()` in an `onCancel` handler on `PopoverSurface`. Dialog differs on purpose: `DialogSurface` prevents `cancel` itself so `onOpenChange` can veto the close.
 
 ### Labeling
 
