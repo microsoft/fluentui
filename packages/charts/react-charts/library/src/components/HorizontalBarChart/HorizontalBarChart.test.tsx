@@ -545,3 +545,59 @@ describe('Render empty chart aria label div when chart is empty', () => {
     expect(renderedDOM!.length).toBe(1);
   });
 });
+
+// NOTE: keep this describe last in the file - its renders advance the global useId counter,
+// which would churn the generated ids inside the snapshot tests above.
+describe('Horizontal bar chart - keyboard popover dismissal', () => {
+  const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
+  beforeEach(() => {
+    // The focus path of _hoverOn positions the popover from the bar's bounding rect and only
+    // opens it when the position moves beyond a 1px threshold from {0, 0}. jsdom returns
+    // all-zero rects, so mock a real geometry to let the popover open on focus.
+    window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+      bottom: 44,
+      height: 10,
+      left: 30,
+      right: 130,
+      top: 34,
+      width: 100,
+      x: 30,
+      y: 34,
+      toJSON: () => '',
+    } as DOMRect);
+  });
+  afterEach(() => {
+    window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  });
+
+  test('Should dismiss the popover when keyboard focus leaves the chart', async () => {
+    const { container } = render(
+      <>
+        <HorizontalBarChart data={chartPoints} />
+        <button data-testid="outside-btn">outside</button>
+      </>,
+    );
+    const bars = getByClass(container, /barWrapper/);
+    await act(() => {
+      fireEvent.focus(bars[0]);
+    });
+    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    await act(() => {
+      fireEvent.blur(bars[0], { relatedTarget: screen.getByTestId('outside-btn') });
+    });
+    expect(getByClass(container, /PopoverSurface/i)[0]).toBeUndefined();
+  });
+
+  test('Should keep the popover open when focus moves to another bar within the same chart', async () => {
+    const { container } = render(<HorizontalBarChart data={chartPoints} />);
+    const bars = getByClass(container, /barWrapper/);
+    await act(() => {
+      fireEvent.focus(bars[0]);
+    });
+    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    await act(() => {
+      fireEvent.blur(bars[0], { relatedTarget: bars[2] });
+    });
+    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+  });
+});
