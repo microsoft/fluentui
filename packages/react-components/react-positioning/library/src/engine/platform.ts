@@ -209,6 +209,9 @@ export const getOffsetParent = (element: HTMLElement): HTMLElement | null => {
   while (isHTMLElement(parent) && /^(TABLE|TD|TH)$/.test(parent.tagName) && isStatic(parent)) {
     parent = parent.offsetParent;
   }
+  if (parent === getRoot(element)) {
+    parent = element.ownerDocument.body;
+  }
   return isHTMLElement(parent) && (!/^(HTML|BODY)$/.test(parent.tagName) || !isStatic(parent))
     ? parent
     : // The element that forms the containing block, `null` is the viewport or the initial containing block
