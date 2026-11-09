@@ -1,0 +1,53 @@
+// @ts-check
+/* eslint-disable */
+
+const { join, relative, sep } = require('node:path');
+
+/**
+ * Resolves snapshots into this scaffolded project instead of the origin project's `__snapshots__` folders.
+ *
+ * Multiple React versions run against the same origin sources concurrently (with `-u`). While snapshot matchers
+ * are mocked, Jest would otherwise treat every origin snapshot as obsolete and unlink it, racing between processes.
+ */
+
+const originRoot = join(__dirname, '<%= relativePathToProjectRoot %>');
+const snapshotsRoot = join(__dirname, 'snapshots');
+// Reversible segment encoding: `..` becomes `parentSegment`, and literal segments starting with `escapePrefix`
+// get one extra prefix, so a real `__rit_parent__` directory never decodes as a parent path.
+const escapePrefix = '__rit_';
+const parentSegment = escapePrefix + 'parent__';
+
+/** @param {string} segment */
+function encodeSegment(segment) {
+  if (segment === '..') {
+    return parentSegment;
+  }
+  return segment.startsWith(escapePrefix) ? escapePrefix + segment : segment;
+}
+
+/** @param {string} segment */
+function decodeSegment(segment) {
+  if (segment === parentSegment) {
+    return '..';
+  }
+  return segment.startsWith(escapePrefix) ? segment.slice(escapePrefix.length) : segment;
+}
+
+/**
+ * @type {import('jest-snapshot').SnapshotResolver}
+ */
+module.exports = {
+  resolveSnapshotPath: (testPath, snapshotExtension) => {
+    const encoded = relative(originRoot, testPath).split(sep).map(encodeSegment).join(sep);
+    return join(snapshotsRoot, encoded + snapshotExtension);
+  },
+  resolveTestPath: (snapshotPath, snapshotExtension) => {
+    const decoded = relative(snapshotsRoot, snapshotPath)
+      .slice(0, -snapshotExtension.length)
+      .split(sep)
+      .map(decodeSegment)
+      .join(sep);
+    return join(originRoot, decoded);
+  },
+  testPathForConsistencyCheck: join(originRoot, 'src', 'example.test.js'),
+};

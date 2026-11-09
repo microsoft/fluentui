@@ -2,6 +2,37 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.75.1",
+      "tag": "@fluentui/react-components_v9.75.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a65a06652e8c5af3400b6818be896c647dbb446e",
+            "comment": "test(react-positioning): pin portable browser geometry and lifecycle contracts with exact engine output"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "df06e284f1da766da7c120b8ceb727b9c64488d1",
+            "comment": "fix: keep the measured aside width instead of cancelling its update after mount"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a22af26f14588c5af093871bbf6150641250610e",
+            "comment": "feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2026 16:42:57 GMT",
       "version": "9.75.0",
       "tag": "@fluentui/react-components_v9.75.0",

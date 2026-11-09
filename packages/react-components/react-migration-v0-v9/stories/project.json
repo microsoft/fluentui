@@ -4,5 +4,17 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-migration-v0-v9/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "storybook": {
+      "inputs": [
+        "production",
+        "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
+        "{projectRoot}/.storybook/**",
+        { "externalDependencies": ["storybook"] },
+        { "env": "FLUENTUI_ICON_VARIANT" }
+      ]
+    }
+  }
 }
