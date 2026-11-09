@@ -424,6 +424,45 @@ describe('Toast (headless)', () => {
     cy.get('#toast-button-2').should('be.focused');
   });
 
+  it('should leave keys that toast content already handles to that content', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToasts = () => {
+        for (const index of [0, 1]) {
+          dispatchToast(
+            <Toast>
+              <ToastTitle>
+                <input id={`toast-input-${index}`} aria-label={`input ${index}`} />
+                <textarea
+                  id={`toast-textarea-${index}`}
+                  aria-label={`textarea ${index}`}
+                  onKeyDown={e => e.key === 'Tab' && e.preventDefault()}
+                />
+              </ToastTitle>
+            </Toast>,
+            { timeout: -1, root: { id: `toast-${index}` } },
+          );
+        }
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToasts}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get('#toast-input-1').focus().realPress('ArrowUp');
+    cy.get('#toast-input-1').should('be.focused');
+    cy.get('#toast-textarea-1').focus().realPress('Tab');
+    cy.get('#toast-textarea-1').should('be.focused');
+  });
+
   it('should follow lifecycle', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();

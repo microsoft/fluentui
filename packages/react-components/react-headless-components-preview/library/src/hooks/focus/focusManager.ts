@@ -93,8 +93,14 @@ const getModalScope = (element: HTMLElement): HTMLElement => {
   return element.ownerDocument.body;
 };
 
-// Tab order follows DOM order: descendants follow their focusable container and ancestors precede them.
+// `candidates` are in native Tab order. When `current` is not one of them (e.g. focus sits on a non-tabbable
+// element), fall back to DOM order: descendants follow their focusable container and ancestors precede them.
 const pickSibling = (candidates: HTMLElement[], current: HTMLElement, backward: boolean): HTMLElement | undefined => {
+  const index = candidates.indexOf(current);
+  if (index !== -1) {
+    return candidates[index + (backward ? -1 : 1)];
+  }
+
   if (backward) {
     for (let i = candidates.length - 1; i >= 0; i--) {
       if (isPreceding(current, candidates[i])) {
@@ -105,6 +111,18 @@ const pickSibling = (candidates: HTMLElement[], current: HTMLElement, backward: 
   }
 
   return candidates.find(candidate => isFollowing(current, candidate));
+};
+
+/**
+ * Takes `elements` out of the native Tab order until the browser has moved focus for the current Tab press.
+ */
+const skipOnce = (elements: HTMLElement[]): void => {
+  const restore = elements.map(element => {
+    const tabIndex = element.getAttribute('tabindex');
+    element.setAttribute('tabindex', '-1');
+    return () => (tabIndex === null ? element.removeAttribute('tabindex') : element.setAttribute('tabindex', tabIndex));
+  });
+  elements[0]?.ownerDocument.defaultView?.setTimeout(() => restore.forEach(fn => fn()));
 };
 
 const handleTab = (event: KeyboardEvent, activeElement: HTMLElement): void => {
@@ -153,6 +171,10 @@ const handleTab = (event: KeyboardEvent, activeElement: HTMLElement): void => {
   } else if (wrap) {
     // Nothing to cycle to: keep focus inside the trap.
     event.preventDefault();
+  } else {
+    // Nothing reachable is left on the page, but the browser would still move into the content of a limited
+    // group. Hide that content for this Tab press so focus leaves the page instead.
+    skipOnce(nativeSequence.filter(element => !sequence.includes(element)));
   }
 };
 

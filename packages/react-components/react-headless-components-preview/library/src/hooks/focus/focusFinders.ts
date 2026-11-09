@@ -57,7 +57,8 @@ export const isFocusable = (element: Element): element is HTMLElement => {
     return false;
   }
 
-  if ((element as HTMLButtonElement).disabled || element.closest('[inert]')) {
+  // `:disabled` also covers controls disabled through an ancestor `<fieldset disabled>`.
+  if (element.matches(':disabled') || element.closest('[inert]')) {
     return false;
   }
 
@@ -91,10 +92,36 @@ export const findAllFocusable = (container: HTMLElement, acceptCondition?: Focus
   collect(container, isFocusable, acceptCondition);
 
 /**
- * Returns all tabbable descendants of `container` in DOM order.
+ * A native radio group has a single Tab stop: its checked radio, or its first radio when none is checked.
  */
-export const findAllTabbable = (container: HTMLElement, acceptCondition?: FocusableAcceptCondition): HTMLElement[] =>
-  collect(container, isTabbable, acceptCondition);
+const isRadioTabStop = (element: HTMLElement, candidates: HTMLElement[]): boolean => {
+  const radio = element as HTMLInputElement;
+  if (radio.tagName !== 'INPUT' || radio.type !== 'radio' || !radio.name) {
+    return true;
+  }
+
+  const group = candidates.filter(
+    candidate =>
+      (candidate as HTMLInputElement).type === 'radio' &&
+      (candidate as HTMLInputElement).name === radio.name &&
+      (candidate as HTMLInputElement).form === radio.form,
+  ) as HTMLInputElement[];
+  const checked = group.find(candidate => candidate.checked);
+
+  return checked ? checked === radio : group[0] === radio;
+};
+
+/**
+ * Returns all tabbable descendants of `container` in native Tab order: elements with a positive `tabindex`
+ * first, by ascending value, then the rest in DOM order.
+ */
+export const findAllTabbable = (container: HTMLElement, acceptCondition?: FocusableAcceptCondition): HTMLElement[] => {
+  const tabbable = collect(container, isTabbable, acceptCondition);
+  const stops = tabbable.filter(element => isRadioTabStop(element, tabbable));
+  const positive = stops.filter(element => element.tabIndex > 0).sort((a, b) => a.tabIndex - b.tabIndex);
+
+  return positive.length ? [...positive, ...stops.filter(element => element.tabIndex === 0)] : stops;
+};
 
 /**
  * Returns the first focusable descendant of `container`.

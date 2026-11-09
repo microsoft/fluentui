@@ -2,10 +2,15 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useFocusableGroup, useModalAttributes } from './index';
+import { findAllTabbable, useFocusableGroup, useModalAttributes } from './index';
 import type { UseFocusableGroupOptions } from './index';
 
 const pressTab = (shiftKey = false) => fireEvent.keyDown(document.activeElement!, { key: 'Tab', shiftKey });
+
+const Trap = ({ children }: { children: React.ReactNode }) => {
+  const { modalAttributes } = useModalAttributes({ trapFocus: true, legacyTrapFocus: true });
+  return <div {...modalAttributes}>{children}</div>;
+};
 
 describe('useModalAttributes', () => {
   const Modal = ({ trapFocus = true, legacyTrapFocus = true }) => {
@@ -38,6 +43,39 @@ describe('useModalAttributes', () => {
     getByText('First').focus();
     expect(pressTab()).toBe(true);
     expect(getByText('First')).toHaveFocus();
+  });
+
+  it('wraps at the native radio group boundary', () => {
+    const { getByText, getByLabelText } = render(
+      <Trap>
+        <button>First</button>
+        <label>
+          <input type="radio" name="choice" defaultChecked /> Checked
+        </label>
+        <label>
+          <input type="radio" name="choice" /> Unchecked
+        </label>
+      </Trap>,
+    );
+
+    getByLabelText('Checked').focus();
+    pressTab();
+    expect(getByText('First')).toHaveFocus();
+  });
+
+  it('wraps at the last stop of the native Tab order when positive tabindex values are used', () => {
+    const { getByText } = render(
+      <Trap>
+        {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- covers native Tab order */}
+        <button tabIndex={2}>A</button>
+        {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- covers native Tab order */}
+        <button tabIndex={1}>B</button>
+      </Trap>,
+    );
+
+    getByText('A').focus();
+    pressTab();
+    expect(getByText('B')).toHaveFocus();
   });
 
   it('does not trap without legacyTrapFocus', () => {
@@ -108,5 +146,55 @@ describe('useFocusableGroup', () => {
     getByText('First').focus();
     fireEvent.keyDown(getByText('First'), { key: 'Escape' });
     expect(getByText('First')).toHaveFocus();
+  });
+});
+
+describe('findAllTabbable', () => {
+  it('skips controls disabled through a fieldset', () => {
+    const { getByText, container } = render(
+      <div>
+        <fieldset disabled>
+          <button>Disabled</button>
+        </fieldset>
+        <button>Enabled</button>
+      </div>,
+    );
+
+    expect(findAllTabbable(container)).toEqual([getByText('Enabled')]);
+  });
+
+  it('keeps a single Tab stop per radio group', () => {
+    const { getByLabelText, container } = render(
+      <div>
+        <label>
+          <input type="radio" name="a" /> A1
+        </label>
+        <label>
+          <input type="radio" name="a" /> A2
+        </label>
+        <label>
+          <input type="radio" name="b" /> B1
+        </label>
+        <label>
+          <input type="radio" name="b" defaultChecked /> B2
+        </label>
+      </div>,
+    );
+
+    expect(findAllTabbable(container)).toEqual([getByLabelText('A1'), getByLabelText('B2')]);
+  });
+
+  it('returns positive tabindex values first, in ascending order', () => {
+    const { getByText, container } = render(
+      <div>
+        <button>Zero</button>
+        {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- covers native Tab order */}
+        <button tabIndex={2}>Two</button>
+        {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- covers native Tab order */}
+        <button tabIndex={1}>One</button>
+      </div>,
+    );
+
+    expect(findAllTabbable(container)).toEqual([getByText('One'), getByText('Two'), getByText('Zero')]);
   });
 });

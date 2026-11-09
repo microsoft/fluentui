@@ -30,10 +30,12 @@ export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>
       return;
     }
 
-    // Skip the rest of the dismissed tag, e.g. the primary action of an InteractionTag whose secondary was focused.
-    const parent = activeElement.parentElement;
-    const dismissedTag = parent && parent !== container ? parent : activeElement;
-    findPrevFocusable(dismissedTag, { container })?.focus();
+    let prev = findPrevFocusable(activeElement, { container });
+    // The secondary action of an InteractionTag is labelled by its primary action, which is dismissed with it.
+    if (prev?.id && activeElement.getAttribute('aria-labelledby')?.split(' ').includes(prev.id)) {
+      prev = findPrevFocusable(prev, { container });
+    }
+    prev?.focus();
   });
 
   const state: TagGroupState = useTagGroupBase_unstable(

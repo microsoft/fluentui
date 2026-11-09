@@ -20,12 +20,18 @@ import { findNextFocusable, findPrevFocusable } from '../../../hooks/focus';
  * items of the group.
  */
 export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
+  const { onKeyDown: onKeyDownProp, ...rest } = props;
   const innerRef = React.useRef<HTMLDivElement>(null);
   const { dir } = useFluent();
   const nextArrowKey = getRTLSafeKey(ArrowRight, dir);
   const prevArrowKey = getRTLSafeKey(ArrowLeft, dir);
 
   const onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    onKeyDownProp?.(event);
+    if (event.defaultPrevented) {
+      return;
+    }
+
     const container = innerRef.current;
     const activeElement = container?.ownerDocument.activeElement;
     if (!container || !isHTMLElement(activeElement) || !container.contains(activeElement)) {
@@ -50,8 +56,8 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
         // `Ref<HTMLDivElement>` upstream; casting to keep behaviour aligned.
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
+        ...rest,
         onKeyDown,
-        ...props,
       }),
       { elementType: 'div' },
     ),

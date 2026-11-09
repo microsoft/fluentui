@@ -271,6 +271,10 @@ const LAYER_SELECTOR = 'dialog, [popover]';
 const handleTab = (e: React.KeyboardEvent<HTMLDivElement>) => {
   const toast = e.currentTarget;
   const target = e.target;
+  if (e.defaultPrevented) {
+    // A control inside the toast already handled Tab, e.g. a textarea inserting a tab character.
+    return;
+  }
   if (!isHTMLElement(target) || target.closest(LAYER_SELECTOR) !== toast.closest(LAYER_SELECTOR)) {
     // Inline popovers and dialogs inside the toast own their Tab handling.
     return;

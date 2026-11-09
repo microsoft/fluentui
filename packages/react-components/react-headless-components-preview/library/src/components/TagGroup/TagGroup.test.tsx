@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagGroup } from './TagGroup';
 import { Tag } from '../Tag';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '../InteractionTag';
 
 describe('TagGroup', () => {
   isConformant({
@@ -28,6 +29,49 @@ describe('TagGroup', () => {
     fireEvent.click(first);
 
     expect(second).toHaveFocus();
+  });
+
+  it('moves focus to a previous tag that shares a wrapper with the dismissed one', () => {
+    const { getByText } = render(
+      <TagGroup>
+        <div>
+          <Tag value="1" dismissible>
+            first
+          </Tag>
+          <Tag value="2" dismissible>
+            second
+          </Tag>
+        </div>
+      </TagGroup>,
+    );
+    const first = getByText('first').closest('button')!;
+    const second = getByText('second').closest('button')!;
+
+    second.focus();
+    fireEvent.click(second);
+
+    expect(first).toHaveFocus();
+  });
+
+  it('skips the primary action of a dismissed InteractionTag', () => {
+    const { getByText, getByRole } = render(
+      <TagGroup>
+        <Tag value="1" dismissible>
+          first
+        </Tag>
+        <InteractionTag value="2">
+          <InteractionTagPrimary hasSecondaryAction>second</InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="remove" />
+        </InteractionTag>
+      </TagGroup>,
+    );
+    const first = getByText('first').closest('button')!;
+    const secondary = getByRole('button', { name: /remove/ });
+
+    secondary.focus();
+    fireEvent.click(secondary);
+
+    expect(first).toHaveFocus();
   });
 
   it('moves focus to the previous tag when the last tag is dismissed', () => {

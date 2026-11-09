@@ -160,8 +160,14 @@ export const useToaster = (props: ToasterProps): ToasterState => {
 const focusAdjacentToast = (e: React.KeyboardEvent<HTMLDivElement>) => {
   const stack = e.currentTarget;
   const target = e.target;
-  if (!isHTMLElement(target) || target.closest('dialog, [popover]') !== stack) {
-    // Inline popovers and dialogs inside a toast own their arrow keys.
+  if (
+    e.defaultPrevented ||
+    !isHTMLElement(target) ||
+    // Inline popovers and dialogs inside a toast own their arrow keys, and so do editable controls.
+    target.closest('dialog, [popover]') !== stack ||
+    target.matches('input, textarea, select') ||
+    target.isContentEditable
+  ) {
     return;
   }
 
@@ -175,5 +181,7 @@ const focusAdjacentToast = (e: React.KeyboardEvent<HTMLDivElement>) => {
     e.key === ArrowDown
       ? toasts[(current + 1) % toasts.length]
       : toasts[current === -1 ? toasts.length - 1 : (current - 1 + toasts.length) % toasts.length];
+  // Keep the page behind the non-modal toaster from scrolling.
+  e.preventDefault();
   next.focus();
 };

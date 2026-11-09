@@ -67,6 +67,22 @@ describe('Card focusMode', () => {
     cy.contains('After').should('be.focused');
   });
 
+  it('does not enter a limited card that is the last element on the page', () => {
+    mount(
+      <>
+        <button>Before</button>
+        <Card focusMode="tab-exit" data-testid="card">
+          <button>Inner first</button>
+        </Card>
+      </>,
+    );
+
+    cy.get('[data-testid=card]').focus().realPress('Tab');
+    cy.contains('Inner first').should('not.be.focused');
+    cy.get('[data-testid=card]').focus().realPress('Tab');
+    cy.contains('Inner first').should('not.be.focused');
+  });
+
   it('tab-only: Tab walks through the inner elements', () => {
     mount(<Example focusMode="tab-only" />);
 
