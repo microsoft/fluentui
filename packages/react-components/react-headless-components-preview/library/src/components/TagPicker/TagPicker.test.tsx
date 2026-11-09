@@ -238,7 +238,7 @@ describe('TagPickerControl', () => {
     expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('does not toggle when the consumer prevents default', () => {
+  it('does not open when the consumer prevents default', () => {
     const onMouseDown = jest.fn((event: React.MouseEvent) => event.preventDefault());
     const { getByRole, getByTestId } = renderUncontrolled({ onMouseDown });
 

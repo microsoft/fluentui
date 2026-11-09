@@ -19,9 +19,15 @@ const listbox = '[data-testid="tag-picker-list"]';
 
 type TagPickerFixtureProps = Pick<TagPickerProps, 'defaultOpen' | 'noPopover'> & {
   defaultSelectedOptions?: string[];
+  onControlClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
-const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover }: TagPickerFixtureProps) => {
+const TagPickerFixture = ({
+  defaultOpen,
+  defaultSelectedOptions = [],
+  noPopover,
+  onControlClick,
+}: TagPickerFixtureProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState(defaultSelectedOptions);
 
   return (
@@ -34,7 +40,7 @@ const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover 
         selectedOptions={selectedOptions}
         onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
       >
-        <TagPickerControl data-testid="tag-picker-control">
+        <TagPickerControl data-testid="tag-picker-control" onClick={onControlClick}>
           <TagPickerGroup aria-label="Selected animals">
             {selectedOptions.map(option => (
               <Tag data-testid={`tag-${option}`} key={option} value={option}>
@@ -85,6 +91,16 @@ describe('TagPicker', () => {
     cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
     cy.get(listbox).should('not.be.visible');
     cy.get(input).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+  });
+
+  it('keeps the open state in sync when a click that closes the list is canceled', () => {
+    // The browser light-dismisses the open list before the click, so canceling the click cannot keep it open.
+    mount(<TagPickerFixture onControlClick={event => event.preventDefault()} defaultOpen />);
+
+    cy.get(listbox).should('match', ':popover-open');
+    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(listbox).should('not.be.visible').and('not.match', ':popover-open');
+    cy.get(input).should('have.attr', 'aria-expanded', 'false');
   });
 
   it('uses active-descendant keyboard navigation', () => {

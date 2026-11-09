@@ -39,6 +39,8 @@ export const useTagPickerControl = (
 
   // The list is a native `popover="auto"`: opening it on mouse down, as the base hook does, lets the browser
   // light-dismiss it on the pointer up of the same gesture. Keep focus on mouse down and toggle on click instead.
+  // A consumer `preventDefault()` cancels opening. While the list is open, the browser has already light-dismissed it
+  // before the click, as for any click outside the popover, so the close cannot be canceled; the open state follows.
   const onMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     props.onMouseDown?.(event);
     toggleOnClick.current = !event.defaultPrevented && isToggleTarget(event);
