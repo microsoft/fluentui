@@ -96,6 +96,111 @@ describe('InfoLabel - close on tab-out', () => {
     return cy.get('button.info-button').focus().realPress('{enter}');
   };
 
+  ([false, true] as const).forEach(controlled => {
+    it(`notifies once on keyboard tab-out (${controlled ? 'controlled' : 'uncontrolled'})`, () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      const onNativeClose = cy.stub().as('onNativeClose');
+      const Example = () => {
+        const [open, setOpen] = React.useState(false);
+        return (
+          <>
+            <InfoButton
+              className="info-button"
+              info="Information"
+              popover={{
+                open: controlled ? open : undefined,
+                onOpenChange: (event, data) => {
+                  onOpenChange(event, data);
+                  setOpen(data.open);
+                },
+              }}
+            />
+            <button data-testid="after">After</button>
+          </>
+        );
+      };
+      mount(<Example />);
+      openInfoButton();
+      cy.get(surfaceSelector)
+        .should('be.visible')
+        .and('have.focus')
+        .then(surface => {
+          surface[0].addEventListener('toggle', event => {
+            if ((event as Event & { newState: string }).newState === 'closed') {
+              onNativeClose();
+            }
+          });
+          onOpenChange.resetHistory();
+        });
+
+      cy.realPress('Tab');
+
+      cy.get('[data-testid=after]').should('have.focus');
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('button.info-button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
+      cy.get('@onNativeClose').should('have.been.calledOnce');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+      cy.get('@onOpenChange').its('firstCall.args.1').should('include', { type: 'blur', open: false });
+    });
+  });
+
+  it('lets a controlled owner refuse a focus-only close request', () => {
+    const onOpenChange = cy.stub().as('onOpenChange');
+    mount(
+      <>
+        <InfoButton className="info-button" info="Information" popover={{ open: true, onOpenChange }} />
+        <button data-testid="after">After</button>
+      </>,
+    );
+    cy.get(surfaceSelector).should('be.visible').and('have.focus');
+    cy.realPress('Tab');
+    cy.get('[data-testid=after]').should('have.focus');
+    cy.get(surfaceSelector).should('be.visible');
+    cy.get('button.info-button').should('have.attr', 'aria-expanded', 'true');
+    cy.get('@onOpenChange').should('have.been.calledOnce');
+    cy.get('@onOpenChange').its('firstCall.args.1').should('include', { type: 'blur', open: false });
+  });
+
+  ([false, true] as const).forEach(inertTrapFocus => {
+    it(`does not duplicate a native Escape close (${inertTrapFocus ? 'modal' : 'non-modal'})`, () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(
+        <InfoButton
+          className="info-button"
+          info="Information"
+          popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }}
+        />,
+      );
+      cy.get(inertTrapFocus ? '[role="dialog"]' : surfaceSelector)
+        .should('be.visible')
+        .and('have.focus');
+
+      cy.realPress('Escape');
+
+      cy.get(inertTrapFocus ? '[role="dialog"]' : surfaceSelector).should('not.exist');
+      cy.get('button.info-button').should('have.focus').and('have.attr', 'aria-expanded', 'false');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+      cy.get('@onOpenChange').its('firstCall.args.1').should('include', { open: false });
+    });
+  });
+
+  it('notifies once when a modal surface loses focus with no related target', () => {
+    const onOpenChange = cy.stub().as('onOpenChange');
+    const onClose = cy.stub().as('onClose');
+    mount(
+      <InfoButton
+        className="info-button"
+        info={{ children: 'Information', onClose }}
+        popover={{ inertTrapFocus: true, defaultOpen: true, onOpenChange }}
+      />,
+    );
+    cy.get('[role="dialog"]').should('be.visible').and('have.focus').blur();
+    cy.get('[role="dialog"]').should('not.exist');
+    cy.get('@onClose').should('have.been.calledOnce');
+    cy.get('@onOpenChange').should('have.been.calledOnce');
+    cy.get('@onOpenChange').its('firstCall.args.1').should('include', { type: 'blur', open: false });
+  });
+
   it('no focusable elements', () => {
     mount(
       <>
