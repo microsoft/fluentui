@@ -2,12 +2,22 @@ import * as ejs from 'ejs';
 import { readFileSync } from 'node:fs';
 import { join, posix, win32 } from 'node:path';
 import { runInNewContext } from 'node:vm';
+import { spawnSync } from 'node:child_process';
 import { transformSync } from '@swc/core';
 import type { SnapshotResolver } from 'jest-snapshot';
 
 function render(name: string, data: Record<string, unknown>) {
   const filename = join(__dirname, '../files', `${name}.template`);
   return ejs.render(readFileSync(filename, 'utf-8'), data, { filename });
+}
+
+function getCypressImportSpecifier(data: Record<string, unknown>): string {
+  const source = render('cypress.config.ts', data);
+  const match = source.match(/^import baseConfig from (.+);$/m);
+  if (!match) {
+    throw new Error('Generated Cypress config is missing its base config import');
+  }
+  return JSON.parse(match[1]);
 }
 
 describe.each([
@@ -25,7 +35,7 @@ describe.each([
     usedNodeModulesDirRelative,
     react: 18,
     jest: { pathToProjectConfig: 'jest.config.js' },
-    cypress: { pathToProjectConfig: 'cypress.config.ts' },
+    cypress: { pathToProjectConfig: 'cypress.config.ts', pathSeparator: path.sep },
   };
 
   it('loads the Jest config with exact runtime paths and aliases', () => {
@@ -144,4 +154,60 @@ describe.each([
       include: [`${relativePathToProjectRoot}/**/*.cy.ts`, `${relativePathToProjectRoot}/**/*.cy.tsx`],
     });
   });
+});
+
+describe.each([
+  {
+    name: 'Windows',
+    path: win32,
+    root: 'C:\\workspace',
+    configUrl: 'file:///C:/workspace/tmp/rit/react-18/prepared/cypress.config.ts',
+    originUrl: 'file:///C:/workspace/origin/',
+  },
+  {
+    name: 'POSIX',
+    path: posix,
+    root: '/workspace',
+    configUrl: 'file:///workspace/tmp/rit/react-18/prepared/cypress.config.ts',
+    originUrl: 'file:///workspace/origin/',
+  },
+])('Cypress native ESM resolution for $name paths', ({ path, root, configUrl, originUrl }) => {
+  it.each([
+    { configPath: 'cypress.config.ts', expectedPath: 'cypress.config.ts' },
+    { configPath: path.join('config', 'cypress.config.ts'), expectedPath: 'config/cypress.config.ts' },
+  ])('resolves the generated import for $configPath', ({ configPath, expectedPath }) => {
+    const configDir = path.join(root, 'tmp', 'rit', 'react-18', 'prepared');
+    const specifier = getCypressImportSpecifier({
+      relativePathToProjectRoot: path.relative(configDir, path.join(root, 'origin')),
+      usedNodeModulesDirRelative: '..',
+      cypress: { pathToProjectConfig: configPath, pathSeparator: path.sep },
+    });
+    const result = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '--experimental-import-meta-resolve',
+        '-e',
+        'console.log(import.meta.resolve(process.argv[1], process.argv[2]));',
+        specifier,
+        configUrl,
+      ],
+      { encoding: 'utf8', timeout: 10000 },
+    );
+
+    expect(result.error).toBeUndefined();
+    expect(result.stderr).toBe('');
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim()).toBe(`${originUrl}${expectedPath}`);
+  });
+});
+
+it('preserves literal backslashes in POSIX Cypress import filenames', () => {
+  expect(
+    getCypressImportSpecifier({
+      relativePathToProjectRoot: '../origin/back\\slash',
+      usedNodeModulesDirRelative: '..',
+      cypress: { pathToProjectConfig: 'config\\name/cypress.config.ts', pathSeparator: posix.sep },
+    }),
+  ).toBe('../origin/back\\slash/config\\name/cypress.config.ts');
 });

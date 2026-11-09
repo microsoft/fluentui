@@ -1,5 +1,5 @@
 import { join, resolve } from 'node:path';
-import baseConfig from <%- JSON.stringify(`${relativePathToProjectRoot}/${cypress.pathToProjectConfig}`) %>;
+import baseConfig from <%- JSON.stringify(`${relativePathToProjectRoot}/${cypress.pathToProjectConfig}`.split(cypress.pathSeparator).join('/')) %>;
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI).
 // Cypress executes this config with `cwd` set to the prepared project root (where this file lives),

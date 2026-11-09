@@ -1,5 +1,5 @@
 import { TempFs } from './fixtures/temp-fs';
-import { join, relative, resolve } from 'node:path';
+import { join, relative, resolve, sep } from 'node:path';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
@@ -390,11 +390,12 @@ describe('rit CLI e2e', () => {
     expect(existsSync(cypressConfigPath)).toBe(true);
 
     const cyContent = readFile(cypressConfigPath);
-    expect(cyContent).toContain(`import baseConfig from ${JSON.stringify(`${relativeProjectRoot}/cypress.config.ts`)}`);
+    const cypressImportPath = `${relativeProjectRoot}/cypress.config.ts`.split(sep).join('/');
+    expect(cyContent).toContain(`import baseConfig from ${JSON.stringify(cypressImportPath)}`);
     // check whole template
     expect(
       templateSourceSnapshot(cyContent, {
-        originConfigPath: `${relativeProjectRoot}/cypress.config.ts`,
+        originConfigPath: cypressImportPath,
         nodeModulesRelativePath: '..',
         specPattern: `${relativeProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`,
       }),
