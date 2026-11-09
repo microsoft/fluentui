@@ -9,6 +9,7 @@ import { ArrowRight } from '@fluentui/keyboard-keys';
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
 import { toDataAttributeValue } from '../../../utils';
 import { isLastFocusableTag } from '../../../utils/tagFocusUtils';
+import { useTagDismissFocus } from '../../../utils/useTagDismissFocus';
 
 /**
  * Returns the state for a headless TagPickerGroup.
@@ -20,6 +21,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const restoreFocusOnDismiss = useTagDismissFocus(tagPickerGroupRef, triggerRef);
 
   const state: Omit<TagPickerGroupState, 'hasSelectedOptions'> = useTagGroupBase_unstable(
     {
@@ -38,6 +40,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
       }),
       onDismiss: useEventCallback((event, data) => {
         props.onDismiss?.(event, data);
+        restoreFocusOnDismiss(event);
         selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
           value: data.value,
           // These values no longer exist because the option has unregistered itself
@@ -45,6 +48,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
           id: 'ERROR_DO_NOT_USE',
           text: 'ERROR_DO_NOT_USE',
         });
+        // The group unmounts with its last tag, so focus the trigger now rather than after the commit.
         if (hasOneSelectedOption && !event.isDefaultPrevented()) {
           triggerRef.current?.focus();
         }

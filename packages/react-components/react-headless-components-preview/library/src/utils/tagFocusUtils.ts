@@ -10,7 +10,7 @@ const FOCUSABLE_TAG_SELECTOR = 'button, [tabindex]';
  * Returns the NodeList of focusable tag elements within `container`, or an empty
  * NodeList when the container has no matching children.
  */
-function getFocusableTags(container: HTMLElement): NodeListOf<HTMLElement> {
+export function getFocusableTags(container: HTMLElement): NodeListOf<HTMLElement> {
   return container.querySelectorAll<HTMLElement>(FOCUSABLE_TAG_SELECTOR);
 }
 

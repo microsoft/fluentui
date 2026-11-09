@@ -196,3 +196,60 @@ describe('TagPickerGroup composition', () => {
     expect(typeof useTagPickerGroupContextValues).toBe('function');
   });
 });
+
+describe('TagPickerGroup dismissal focus', () => {
+  const DismissibleTagPicker = ({ initial }: { initial: string[] }) => {
+    const [selectedOptions, setSelectedOptions] = React.useState(initial);
+    return (
+      <TagPicker
+        selectedOptions={selectedOptions}
+        onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+      >
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected animals">
+            {selectedOptions.map(option => (
+              <Tag data-testid={`tag-${option}`} key={option} value={option}>
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select animals" />
+        </TagPickerControl>
+        <TagPickerList>
+          <TagPickerOption value="Cat">Cat</TagPickerOption>
+          <TagPickerOption value="Dog">Dog</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>
+    );
+  };
+
+  const dismiss = (tag: HTMLElement) => {
+    act(() => tag.focus());
+    fireEvent.keyDown(tag, { key: 'Delete' });
+  };
+
+  it('moves focus to the next tag', () => {
+    const { getByTestId, queryByTestId } = render(<DismissibleTagPicker initial={['Cat', 'Dog']} />);
+
+    dismiss(getByTestId('tag-Cat'));
+
+    expect(queryByTestId('tag-Cat')).not.toBeInTheDocument();
+    expect(getByTestId('tag-Dog')).toHaveFocus();
+  });
+
+  it('moves focus to the previous tag when the last tag is dismissed', () => {
+    const { getByTestId } = render(<DismissibleTagPicker initial={['Cat', 'Dog']} />);
+
+    dismiss(getByTestId('tag-Dog'));
+
+    expect(getByTestId('tag-Cat')).toHaveFocus();
+  });
+
+  it('moves focus to the trigger when the only tag is dismissed', () => {
+    const { getByRole, getByTestId } = render(<DismissibleTagPicker initial={['Cat']} />);
+
+    dismiss(getByTestId('tag-Cat'));
+
+    expect(getByRole('combobox')).toHaveFocus();
+  });
+});

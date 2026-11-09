@@ -75,6 +75,14 @@ describe('TagPicker', () => {
     cy.get(input).should('be.focused');
   });
 
+  it('moves focus to the next tag when a tag is dismissed', () => {
+    mount(<TagPickerFixture defaultSelectedOptions={['Cat', 'Dog']} />);
+
+    cy.get('[data-testid="tag-Cat"]').focus().realPress('Delete');
+    cy.get('[data-testid="tag-Cat"]').should('not.exist');
+    cy.get('[data-testid="tag-Dog"]').should('be.focused');
+  });
+
   it('uses active-descendant keyboard navigation', () => {
     mount(<TagPickerFixture />);
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep focus in TagGroup and TagPickerGroup when a focused tag is dismissed",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
