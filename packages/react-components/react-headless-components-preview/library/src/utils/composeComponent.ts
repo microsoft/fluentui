@@ -38,7 +38,11 @@ type ForwardRefComponent<Props, RefType> = React.ForwardRefExoticComponent<
   React.PropsWithoutRef<Props> & RefAttributes<RefType>
 >;
 
-type Component<Props, Result extends JSXElement | null> = {
+/**
+ * Function component without a ref, as returned by {@link composeComponentWithoutRef}.
+ * Use it to annotate the public type of headless components that do not forward a ref.
+ */
+export type ComponentWithoutRef<Props, Result extends JSXElement | null = JSXElement | null> = {
   (props: Props): Result;
   displayName: string;
 };
@@ -112,18 +116,18 @@ export function composeComponentWithoutRef<Props, State, Result extends JSXEleme
   displayName: string,
   useState: (props: Props) => State,
   render: RenderFn<State, Result>,
-): Component<Props, Result>;
+): ComponentWithoutRef<Props, Result>;
 export function composeComponentWithoutRef<Props, State, ContextValues, Result extends JSXElement | null>(
   displayName: string,
   useState: (props: Props) => State,
   useGetContextValues: ContextValuesHook<State, ContextValues>,
   render: RenderWithContextValuesFn<State, ContextValues, Result>,
-): Component<Props, Result>;
+): ComponentWithoutRef<Props, Result>;
 export function composeComponentWithoutRef<Props, State, ContextValues>(
   displayName: string,
   ...args: ComposeComponentFnArgs<State, ContextValues, (props: Props) => State>
-): Component<Props, JSXElement | null> {
-  const Component = createRender<Props, State, never, ContextValues>(...args) as Component<Props, JSXElement | null>;
+): ComponentWithoutRef<Props> {
+  const Component = createRender<Props, State, never, ContextValues>(...args) as ComponentWithoutRef<Props>;
 
   Component.displayName = displayName;
 

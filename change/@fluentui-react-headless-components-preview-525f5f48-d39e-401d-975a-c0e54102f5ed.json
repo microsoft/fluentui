@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: annotate composed components explicitly with ForwardRefComponent and ComponentWithoutRef; components without a ref now declare a JSXElement | null return type",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

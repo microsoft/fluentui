@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: move headless overlays onto the internal top-layer hooks. Popover now unmounts a microtask after a native close, and stays closed when kept `open` after a browser dismiss.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
