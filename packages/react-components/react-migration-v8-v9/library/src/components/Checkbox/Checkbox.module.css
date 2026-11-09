@@ -1,5 +1,3 @@
-@layer fluent {
-  .root {
-    display: flex;
-  }
+.root {
+  display: flex;
 }

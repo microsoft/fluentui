@@ -1,9 +1,8 @@
-@layer fluent {
-  .root {
-    padding-top: var(--spacingVerticalL);
-    grid-column: 2 / 3;
-    display: flex;
-    align-items: center;
-    gap: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  padding-top: var(--spacingVerticalL);
+  grid-column: 2 / 3;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
 }

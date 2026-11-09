@@ -48,7 +48,7 @@ Due to time constraints, Calendar compat is a special case for compat components
 ## Opt-in CSS Modules styles
 
 CSS Modules alternatives are available beside the original Griffel style modules as
-`use*Styles.styles.css.ts`, with layered `*.module.css` assets. The default imports
+`use*Styles.styles.css.ts`, with `*.module.css` assets. The default imports
 remain unchanged. Configure the consumer bundler to replace the corresponding
 `.styles` / `.styles.js` modules with their `.styles.css` alternatives, and enable
 CSS Modules processing for package CSS (including `node_modules`).

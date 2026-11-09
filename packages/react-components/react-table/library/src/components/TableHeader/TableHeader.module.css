@@ -1,8 +1,6 @@
-@layer fluent {
-  .table {
-    display: table-row-group;
-  }
-  .flex {
-    display: block;
-  }
+.table {
+  display: table-row-group;
+}
+.flex {
+  display: block;
 }

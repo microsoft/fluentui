@@ -1,10 +1,8 @@
-@layer fluent {
-  .root {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacingHorizontalXXS);
-  }
-  .hasMenuContext {
-    height: 100%;
-  }
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingHorizontalXXS);
+}
+.hasMenuContext {
+  height: 100%;
 }

@@ -1,10 +1,8 @@
-@layer fluent {
-  .root {
-    display: flex;
-    overflow-anchor: none;
-  }
+.root {
+  display: flex;
+  overflow-anchor: none;
+}
 
-  .elevated {
-    gap: var(--spacingHorizontalXXL);
-  }
+.elevated {
+  gap: var(--spacingHorizontalXXL);
 }

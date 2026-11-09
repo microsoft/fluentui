@@ -1,6 +1,6 @@
 ---
 name: griffel-to-css-modules
-description: 'Create or synchronize layered CSS Modules alternatives for any Fluent UI v9 component in this repo. Use when porting makeStyles or makeResetStyles, adding .styles.css.ts hooks, maintaining CSS/Griffel parity, or validating CSS asset builds and bundler selection.'
+description: 'Create or synchronize CSS Modules alternatives for any Fluent UI v9 component in this repo. Use when porting makeStyles or makeResetStyles, adding .styles.css.ts hooks, maintaining CSS/Griffel parity, or validating CSS asset builds and bundler selection.'
 argument-hint: '<component or package>'
 ---
 
@@ -56,7 +56,10 @@ the existing `use<Component>Styles.styles.ts`. Keep the original module's export
 names so the resolver can substitute the entire module. For a differently named
 helper, retain the stem: `usePortalMountNodeStyles.styles.css.ts`.
 
-Wrap rules in `@layer fluent`. Reference the theme's CSS custom properties,
+Do not wrap component rules in `@layer`: Griffel rules are unlayered, and existing
+apps override components with unlayered `makeStyles`/CSS. A layer would let any
+app base rule beat every component state (hover, pressed, checked, focus).
+Reference the theme's CSS custom properties,
 for example `var(--colorNeutralForeground1)` and `var(--spacingHorizontalM)`.
 Do not hardcode colors, spacing, or typography. Derive missing dimensions from
 existing tokens only when the calculation preserves the original metrics.
@@ -107,25 +110,23 @@ assignment. Avoid unnecessary casts: the shared `*.module.css` declaration in
 Put combinations in CSS instead:
 
 ```css
-@layer fluent {
-  .disabled:where(.outline, .subtle, .transparent) {
-    &,
-    &:hover,
-    &:hover:active,
-    &:active:focus-visible {
-      background-color: var(--colorTransparentBackground);
-    }
+.disabled:where(.outline, .subtle, .transparent) {
+  &,
+  &:hover,
+  &:hover:active,
+  &:active:focus-visible {
+    background-color: var(--colorTransparentBackground);
   }
+}
 
-  .small {
-    .icon {
-      --fui-Button__icon--spacing: var(--spacingHorizontalXS);
-    }
+.small {
+  .icon {
+    --fui-Button__icon--spacing: var(--spacingHorizontalXS);
   }
+}
 
-  .circular[data-fui-focus-visible] {
-    border-radius: var(--borderRadiusCircular);
-  }
+.circular[data-fui-focus-visible] {
+  border-radius: var(--borderRadiusCircular);
 }
 ```
 
@@ -134,15 +135,13 @@ palette and the ring, rather than separate `colorClassMap` and
 `ringColorClassMap` objects:
 
 ```css
-@layer fluent {
-  :where(.dark-red) > .iconInitials {
-    color: var(--colorPaletteDarkRedForeground2);
-    background-color: var(--colorPaletteDarkRedBackground2);
-  }
+:where(.dark-red) > .iconInitials {
+  color: var(--colorPaletteDarkRedForeground2);
+  background-color: var(--colorPaletteDarkRedBackground2);
+}
 
-  .ring:where(.dark-red)::before {
-    border-color: var(--colorPaletteDarkRedBorderActive);
-  }
+.ring:where(.dark-red)::before {
+  border-color: var(--colorPaletteDarkRedBorderActive);
 }
 ```
 
@@ -161,9 +160,22 @@ does not restyle nested instances. Preserve the original specificity when
 moving state from slots to the root; `:where(.dark-red) > .iconInitials` has
 the same specificity as a single slot class.
 
-Use `:where()` for state qualifiers when they should not increase specificity.
-Keep hover and active selectors separate where grouping them with `:is()` would
-change specificity. CSS class-list order does not determine the cascade.
+Keep the specificity of the Griffel rule being replaced, so app `makeStyles`
+overrides, custom style hooks, and caller class names win and lose as before.
+A Griffel atomic rule is one class plus its pseudo-classes: allow one local
+class per selector and wrap every other state qualifier in `:where()`
+(`.root:where(.small)`, `:where(.large) .icon`, `.root:where(:not(.selected))`).
+Mirror Griffel's root-descendant slot rules (`& .fui-Tab__icon`) with
+`:global(.fui-Tab__icon)`. Keep hover and active selectors separate where
+grouping them with `:is()` would change specificity. CSS class-list order does
+not determine the cascade. The `fluentui/selector-max-local-classes` Stylelint
+rule enforces this budget (see `tools/stylelint-rules/README.md`).
+
+Lowering specificity creates ties, so order rules like Griffel's insertion
+buckets: base, `:focus-within`, `:focus`, `:focus-visible`, `:hover`, `:active`,
+then `@supports`, `@media` (for example forced colors) and `@container` rules.
+Combined-state classes merged later in the Griffel hook (`subtleSelected`) go
+after the rules they override.
 
 ## 3. Preserve composition and the cascade
 
@@ -194,10 +206,10 @@ change specificity. CSS class-list order does not determine the cascade.
   `[dir]` rules; preserve intentionally physical values. Check both directions.
 - Use `:global(.fui-Icon-filled)` and `:global(.fui-Icon-regular)` when targeting
   public icon classes, not locally scoped copies.
-- Keep the stylesheet layered. Use headless/CSS-styled icons and import their
-  defaults into the same layer:
+- Keep component rules unlayered. Use headless/CSS-styled icons and import their
+  defaults into the low-priority `fluent` layer:
   `@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);`.
-  Unlayered icon visibility rules otherwise beat layered component rules.
+  Layered icon defaults then always lose to component and app rules.
 - Respect the repository's client-boundary and immutability lint rules. A pure
   style function may not need `'use client'`; a hook composing another hook
   can require it. Do not add hooks, memoization, DOM access, or blanket lint
@@ -280,10 +292,29 @@ or helper exports: preserve or extract neutral contracts within the package.
    `yarn nx run <project>:type-check`,
    `yarn nx run <project>:build`.
    Check resolved target names first; do not invent targets or skip dependencies
-   without ensuring required outputs exist.
+   without ensuring required outputs exist. For v9 packages whose `sideEffects`
+   include CSS, `lint` also runs Stylelint (`stylelint.config.mjs`): selector
+   specificity, logical properties, known tokens, no `@layer`, no `!important`
+   and no hardcoded colors. Use `--fix` for logical properties. Document every
+   intentional exception: `/* stylelint-disable-next-line <rule> -- <reason> */`.
 3. Verify actual emitted CSS assets in both module formats.
 4. Use a real-browser fixture test for computed-style and screenshot parity.
    JSDOM cannot validate nesting, layers, layout, pseudo-state, or media queries.
+   Add the component to a parity spec in `apps/css-modules-parity`
+   (`e2e/<Group>.cy.tsx`, using `describeParity` and `griffel()` from
+   `e2e/harness.tsx`), which renders the Griffel and CSS versions
+   inside the same Griffel app with base, stateful, slot, layout, custom-hook,
+   wrapper and plain-CSS overrides, then compares computed styles in every
+   interaction state:
+   `yarn nx run css-modules-parity:e2e --spec=e2e/<Group>.cy.tsx`.
+   It is a separate app because specs import packages that depend on
+   `@fluentui/react-components`.
+   Do not run it while editing CSS; watch rebuilds stall the run (set
+   `FUI_CYPRESS_NO_WATCH=1`, plus a distinct `WEBPACK_DEV_SERVER_PORT` per
+   concurrent run). Its only
+   tolerated differences are the documented `knownDifferences` (app plain CSS
+   and app state rules now beating component rules of a later Griffel bucket),
+   restricted to values the app declared.
 5. Render identical fixtures with each implementation in isolated pages or
    frames. Use the same theme, icon implementation, viewport, and fonts.
    Wait for fonts and style transitions to settle before comparing values;
@@ -319,7 +350,7 @@ from the initial ports alone.
 ### Shared positioning arrows
 
 CSS alternatives import the class map from
-`@fluentui/react-positioning/arrow.module.css` (the opt-in, layered `Arrow.module.css`
+`@fluentui/react-positioning/arrow.module.css` (the opt-in `Arrow.module.css`
 asset), then combine its `arrow` class with their local arrow class. This avoids
 copying placement/pseudo-element rules between Tooltip and Popover and leaves
 the default positioning entry point free of stylesheet imports. Configure the

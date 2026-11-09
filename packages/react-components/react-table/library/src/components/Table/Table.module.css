@@ -1,15 +1,13 @@
-@layer fluent {
-  .root {
-    border-collapse: collapse;
-    background-color: var(--colorSubtleBackground);
-  }
-  .table {
-    display: table;
-    vertical-align: middle;
-    width: 100%;
-    table-layout: fixed;
-  }
-  .flex {
-    display: block;
-  }
+.root {
+  border-collapse: collapse;
+  background-color: var(--colorSubtleBackground);
+}
+.table {
+  display: table;
+  vertical-align: middle;
+  width: 100%;
+  table-layout: fixed;
+}
+.flex {
+  display: block;
 }

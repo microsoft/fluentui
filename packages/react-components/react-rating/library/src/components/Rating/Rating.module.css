@@ -1,6 +1,5 @@
-@layer fluent {
-  .root {
-    display: flex;
-    flex-wrap: wrap;
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  display: flex;
+  flex-wrap: wrap;
 }

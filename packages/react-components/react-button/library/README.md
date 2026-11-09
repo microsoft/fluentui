@@ -97,10 +97,10 @@ style hooks. The CSS Module hooks compose Button's shared styles and apply
 independent state classes; nested CSS handles state combinations.
 
 The prototype's component imports select the CSS Module hooks for local testing.
-The original Griffel hooks remain available for comparison. CSS Modules use the
-`fluent` cascade layer and FluentProvider's theme custom properties. They require
+The original Griffel hooks remain available for comparison. CSS Modules rules are
+unlayered, like Griffel's, and use FluentProvider's theme custom properties. They require
 CSS Modules and native CSS nesting support, or an equivalent bundler transform.
-Use headless/CSS-styled icons with their defaults in the same layer:
+Use headless/CSS-styled icons with their defaults in the low-priority `fluent` layer:
 
 ```css
 @import url('@fluentui/react-icons/headless/styles.css') layer(fluent);

@@ -1,9 +1,8 @@
-@layer fluent {
-  .list {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
+/* @griffel-buckets reset: .list */
+.list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }

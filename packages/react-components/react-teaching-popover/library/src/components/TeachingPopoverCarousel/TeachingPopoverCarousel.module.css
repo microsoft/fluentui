@@ -1,4 +1,3 @@
-@layer fluent {
-  .root {
-  }
+/* stylelint-disable-next-line block-no-empty -- Class must exist in the CSS Module map; it is used as a state qualifier. */
+.root {
 }

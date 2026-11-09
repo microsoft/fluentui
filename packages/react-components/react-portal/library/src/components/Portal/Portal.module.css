@@ -1,9 +1,7 @@
-@layer fluent {
-  .root {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000000;
-  }
+.root {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  z-index: 1000000;
 }

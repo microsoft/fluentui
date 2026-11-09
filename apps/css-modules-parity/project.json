@@ -1,0 +1,79 @@
+{
+  "name": "css-modules-parity",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "sourceRoot": "apps/css-modules-parity/e2e",
+  "tags": ["vNext", "platform:web"],
+  "targets": {
+    "e2e": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "cwd": "apps/css-modules-parity",
+        "command": "yarn run -T cypress run --component"
+      },
+      "configurations": {
+        "local": {
+          "command": "yarn run -T cypress open --component"
+        }
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "scripts-cypress"
+        }
+      ],
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "cypress",
+            "@cypress/react",
+            "css-loader",
+            "style-loader",
+            "postcss",
+            "postcss-loader",
+            "postcss-selector-parser",
+            "@griffel/webpack-plugin",
+            "mini-css-extract-plugin",
+            "@griffel/react",
+            "@griffel/shadow-dom"
+          ]
+        },
+        {
+          "env": "FUI_PARITY_GRIFFEL_BUCKETS"
+        },
+        {
+          "env": "FUI_PARITY_EXTRACTION"
+        },
+        {
+          "env": "FUI_PARITY_DIR"
+        },
+        {
+          "env": "FUI_PARITY_FORCED_COLORS"
+        },
+        {
+          "env": "FUI_PARITY_SHADOW_DOM"
+        }
+      ],
+      "metadata": {
+        "technologies": ["cypress"]
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "cwd": "apps/css-modules-parity",
+        "command": "yarn run -T eslint e2e griffel-buckets cypress.config.ts"
+      }
+    },
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check",
+      "cache": true,
+      "dependsOn": ["^build"]
+    }
+  }
+}

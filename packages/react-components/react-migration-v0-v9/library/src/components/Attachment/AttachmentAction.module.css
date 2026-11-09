@@ -1,17 +1,15 @@
-@layer fluent {
-  .root {
-    height: 32px;
-    max-width: 280px;
-    min-width: 32px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    vertical-align: middle;
-    cursor: pointer;
-  }
+.root {
+  height: 32px;
+  max-width: 280px;
+  min-width: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
 
-  .disabled {
-    cursor: default;
-  }
+.disabled {
+  cursor: default;
 }

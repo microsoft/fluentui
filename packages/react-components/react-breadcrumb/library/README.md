@@ -44,4 +44,4 @@ For information about the components, please refer to the [API documentation](ht
 
 ## Opt-in CSS Modules styles
 
-BreadcrumbButton has a layered CSS Modules alternative beside its Griffel style hook. The alternative continues to call the public Button style hook; use the same bundler resolver for `@fluentui/react-button` so that hook is replaced wholesale.
+BreadcrumbButton has a CSS Modules alternative beside its Griffel style hook. The alternative continues to call the public Button style hook; use the same bundler resolver for `@fluentui/react-button` so that hook is replaced wholesale.

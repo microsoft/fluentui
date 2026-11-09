@@ -151,6 +151,39 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(commonjsFirst, 'commonjs-first')).not.toContain('attw');
   });
 
+  it('should also run stylelint in the lint target for v9 projects with CSS side effects', async () => {
+    await tempFs.createFiles({
+      'css/project.json': serializeJson({ tags: ['vNext'] }),
+      'css/package.json': serializeJson({ sideEffects: ['**/*.css'] }),
+      'css/eslint.config.js': 'module.exports = {}',
+      'no-css/project.json': serializeJson({ tags: ['vNext'] }),
+      'no-css/package.json': serializeJson({ sideEffects: false }),
+      'no-css/eslint.config.js': 'module.exports = {}',
+      'v8-css/project.json': serializeJson({ tags: ['v8'] }),
+      'v8-css/package.json': serializeJson({ sideEffects: ['**/*.css'] }),
+      'v8-css/eslint.config.js': 'module.exports = {}',
+    });
+
+    const css = getTargets(await createNodesFunction(['css/project.json'], options, context), 'css');
+    const noCss = getTargets(await createNodesFunction(['no-css/project.json'], options, context), 'no-css');
+    const v8Css = getTargets(await createNodesFunction(['v8-css/project.json'], options, context), 'v8-css');
+
+    expect(css?.lint).toMatchObject({
+      options: {
+        cwd: 'css',
+        commands: ['yarn run -T eslint src', 'yarn run -T stylelint "src/**/*.css" --allow-empty-input'],
+        parallel: false,
+      },
+      inputs: expect.arrayContaining([
+        '{workspaceRoot}/stylelint.config.mjs',
+        '{workspaceRoot}/tools/stylelint-rules/**/*',
+        { externalDependencies: ['eslint', 'stylelint'] },
+      ]),
+    });
+    expect(noCss?.lint?.options).toEqual({ cwd: 'no-css', command: 'yarn run -T eslint src' });
+    expect(v8Css?.lint?.options).toEqual({ cwd: 'v8-css', command: 'yarn run -T eslint src' });
+  });
+
   it('should add lint,test task only if configuration exists', async () => {
     await tempFs.createFiles({
       'proj/project.json': serializeJson({}),

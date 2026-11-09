@@ -1,7 +1,5 @@
-@layer fluent {
-  .root {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

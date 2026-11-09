@@ -1,11 +1,9 @@
-@layer fluent {
-  .root {
-    box-shadow: var(--shadow16);
-    border-radius: var(--borderRadiusMedium);
-    max-height: 80vh;
-    box-sizing: border-box;
-  }
-  .collapsed {
-    display: none;
-  }
+.root {
+  box-shadow: var(--shadow16);
+  border-radius: var(--borderRadiusMedium);
+  max-height: 80vh;
+  box-sizing: border-box;
+}
+.collapsed {
+  display: none;
 }

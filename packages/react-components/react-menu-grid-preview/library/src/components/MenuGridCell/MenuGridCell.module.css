@@ -1,11 +1,9 @@
-@layer fluent {
-  .root {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    min-height: var(--spacingHorizontalXXL);
-  }
-  .visuallyHidden {
-    position: absolute;
-  }
+.root {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--spacingHorizontalXXL);
+}
+.visuallyHidden {
+  position: absolute;
 }

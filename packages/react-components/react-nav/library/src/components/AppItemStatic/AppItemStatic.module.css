@@ -1,11 +1,9 @@
-@layer fluent {
-  .root {
-    cursor: default;
-  }
-  .root:hover {
-    background-color: unset;
-  }
-  .root:active {
-    background-color: unset;
-  }
+.root {
+  cursor: default;
+}
+.root:hover {
+  background-color: unset;
+}
+.root:active {
+  background-color: unset;
 }

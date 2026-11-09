@@ -31,7 +31,12 @@ const avatarSizeClasses: Record<AvatarSize, string> = {
 };
 
 export const useAvatarSizes = (): Record<AvatarSize, string> => avatarSizeClasses;
-export const useSizeStyles = useAvatarSizes;
+const sizeClasses = Object.fromEntries(
+  Object.keys(avatarSizeClasses).map(size => [size, styles[`dimensions${size}`]]),
+) as Record<AvatarSize, string>;
+
+/** Width and height only, like the Griffel `useSizeStyles`. */
+export const useSizeStyles = (): Record<AvatarSize, string> => sizeClasses;
 
 export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, color, active, activeAppearance } = state;

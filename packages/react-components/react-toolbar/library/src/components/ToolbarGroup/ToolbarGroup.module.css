@@ -1,11 +1,9 @@
-@layer fluent {
-  .root {
-    display: flex;
-    align-items: center;
-  }
+.root {
+  display: flex;
+  align-items: center;
+}
 
-  .vertical {
-    flex-direction: column;
-    width: fit-content;
-  }
+.vertical {
+  flex-direction: column;
+  width: fit-content;
 }

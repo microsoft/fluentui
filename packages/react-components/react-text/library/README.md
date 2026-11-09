@@ -98,7 +98,7 @@ For migration information, have a look at the [migration guide](./MIGRATION.md).
 
 ## CSS Modules alternative
 
-Layered CSS Modules style hooks (`*.styles.css.ts`) are available as opt-in alternatives.
+CSS Modules style hooks (`*.styles.css.ts`) are available as opt-in alternatives.
 Configure the bundler to resolve `.styles` to `.styles.css.ts` before `.styles.ts`, and
 `.styles.js` to `.styles.css.js` before `.styles.js`, and enable CSS Modules loading.
 The default component imports continue to use Griffel. Browser styling parity, SSR,

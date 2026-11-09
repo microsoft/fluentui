@@ -1,10 +1,8 @@
-@layer fluent {
-  .root {
-    display: flex;
-    align-items: flex-start;
-  }
+.root {
+  display: flex;
+  align-items: flex-start;
+}
 
-  .vertical {
-    flex-direction: column;
-  }
+.vertical {
+  flex-direction: column;
 }

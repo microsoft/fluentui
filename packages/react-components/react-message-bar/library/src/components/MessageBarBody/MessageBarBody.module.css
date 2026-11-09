@@ -1,10 +1,9 @@
-@layer fluent {
-  .root {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    grid-area: body;
-    padding-inline-end: var(--spacingHorizontalM);
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  grid-area: body;
+  padding-inline-end: var(--spacingHorizontalM);
 }

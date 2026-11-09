@@ -46,7 +46,7 @@ We will take a similar approach as v0 where we will follow this pattern:
 The DatePicker style hook has an opt-in CSS Modules alternative. Griffel remains
 the default. Configure a CSS Modules-capable bundler to replace
 `useDatePickerStyles.styles` with `useDatePickerStyles.styles.css`, including
-`.styles.js` → `.styles.css.js` for built imports, and retain the layered CSS
+`.styles.js` → `.styles.css.js` for built imports, and retain the CSS
 assets. The alternative preserves caller classes and styles the popup surface
 independently so portaled and inline popups both work.
 

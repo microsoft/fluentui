@@ -1,17 +1,19 @@
-@layer fluent {
+.root {
+  text-decoration-line: none;
+  border: none;
+}
+/* Griffel applies these colors in forced colors too; Button's forced colors rules still win for the excluded states. */
+.root:where(:not(:disabled, [aria-disabled='true'])) {
+  background-color: var(--colorNeutralBackground4);
+}
+@media (forced-colors: none) {
   .root {
-    text-decoration-line: none;
-    border: none;
+    background-color: var(--colorNeutralBackground4);
   }
-  @media (forced-colors: none) {
-    .root {
-      background-color: var(--colorNeutralBackground4);
-    }
-    .root:hover {
-      background-color: var(--colorNeutralBackground4Hover);
-    }
-    .root:active {
-      background-color: var(--colorNeutralBackground4Pressed);
-    }
+  .root:hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+  .root:active {
+    background-color: var(--colorNeutralBackground4Pressed);
   }
 }

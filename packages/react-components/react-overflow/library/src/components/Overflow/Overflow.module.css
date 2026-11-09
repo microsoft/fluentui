@@ -1,13 +1,11 @@
-@layer fluent {
-  .overflowMenu {
-    [data-overflow-menu] {
-      flex-shrink: 0;
-    }
+.overflowMenu {
+  [data-overflow-menu] {
+    flex-shrink: 0;
   }
+}
 
-  .overflowingItems {
-    [data-overflowing] {
-      display: none;
-    }
+.overflowingItems {
+  [data-overflowing] {
+    display: none;
   }
 }

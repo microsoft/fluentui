@@ -1,12 +1,11 @@
-@layer fluent {
-  .root {
-    box-sizing: border-box;
-    margin-top: var(--spacingVerticalL);
-    pointer-events: all;
-    border-radius: var(--borderRadiusMedium);
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  box-sizing: border-box;
+  margin-top: var(--spacingVerticalL);
+  pointer-events: all;
+  border-radius: var(--borderRadiusMedium);
+}
 
-  .root[data-fui-focus-visible] {
-    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
-  }
+.root[data-fui-focus-visible] {
+  outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
 }

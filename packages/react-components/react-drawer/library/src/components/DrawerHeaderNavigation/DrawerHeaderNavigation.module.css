@@ -1,5 +1,4 @@
-@layer fluent {
-  .root {
-    margin: calc(var(--spacingVerticalS) * -1) calc(var(--spacingHorizontalL) * -1);
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  margin: calc(var(--spacingVerticalS) * -1) calc(var(--spacingHorizontalL) * -1);
 }

@@ -1,19 +1,18 @@
-@layer fluent {
-  .root {
-    display: flex;
-    flex-direction: row;
-  }
+/* @griffel-buckets logical: margin-inline-end */
+.root {
+  display: flex;
+  flex-direction: row;
+}
 
-  .centered {
-    justify-content: space-between;
-    gap: 8px;
-  }
+.centered {
+  justify-content: space-between;
+  gap: 8px;
+}
 
-  .rightAligned {
-    gap: 8px;
-  }
+.rightAligned {
+  gap: 8px;
+}
 
-  .rightAligned :first-child {
-    margin-inline-end: auto;
-  }
+.rightAligned :first-child {
+  margin-inline-end: auto;
 }

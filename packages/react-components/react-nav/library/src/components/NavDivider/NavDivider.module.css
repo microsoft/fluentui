@@ -1,6 +1,4 @@
-@layer fluent {
-  .root {
-    flex-grow: 0;
-    margin-block: var(--spacingVerticalXS);
-  }
+.root {
+  flex-grow: 0;
+  margin-block: var(--spacingVerticalXS);
 }

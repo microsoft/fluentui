@@ -20,8 +20,21 @@ where available, falls back to Griffel hooks otherwise, and uses headless Fluent
 This target captures screenshots only; a successful run does not assert visual parity against a baseline.
 
 CSS Modules styles do not cross shadow boundaries. The Shadow DOM fixtures explicitly install
-the layered static styles inside each shadow root, alongside the shadow-specific Griffel renderer.
+the static component styles inside each shadow root, alongside the shadow-specific Griffel renderer.
 Consumers using CSS Modules in a shadow root must likewise install their static styles there.
+
+To check CSS Modules components inside an existing Griffel application (app `makeStyles` overrides, custom style
+hooks, wrappers and plain CSS class names), run the [css-modules-parity](../../apps/css-modules-parity/README.md)
+Cypress suite, which compares the Griffel and CSS Modules versions of each component in every interaction state:
+
+```bash
+yarn nx run css-modules-parity:e2e
+```
+
+`yarn nx run react-components:e2e` covers app-level interop (overrides, custom style hooks, providers, portals).
+
+Component stylesheets are linted with Stylelint as part of each v9 package's `lint` target (selector specificity,
+logical properties, design tokens); see [tools/stylelint-rules](../../tools/stylelint-rules/README.md).
 
 For an opt-in browser regression check, serve identical Storybook builds using Griffel and CSS Modules
 on separate URLs, then run:

@@ -1,14 +1,12 @@
-@layer fluent {
-  .root {
-    display: inline-flex;
-  }
-  .medium {
-    column-gap: var(--spacingHorizontalS);
-  }
-  .small {
-    column-gap: var(--spacingHorizontalSNudge);
-  }
-  .extra-small {
-    column-gap: var(--spacingHorizontalXS);
-  }
+.root {
+  display: inline-flex;
+}
+.medium {
+  column-gap: var(--spacingHorizontalS);
+}
+.small {
+  column-gap: var(--spacingHorizontalSNudge);
+}
+.extra-small {
+  column-gap: var(--spacingHorizontalXS);
 }

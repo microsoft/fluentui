@@ -557,7 +557,7 @@ export const Default = () => {
 ## Opt-in CSS Modules styles
 
 Each Table and DataGrid style module has a sibling `.styles.css.ts` alternative
-and layered stylesheet. Griffel remains the default. Configure a narrowly scoped
+and stylesheet. Griffel remains the default. Configure a narrowly scoped
 bundler replacement for both `.styles` source imports and `.styles.js` published
 imports; the replacement must also cover the Table hooks composed by DataGrid.
 The package ships these CSS assets in both module formats and marks only CSS as

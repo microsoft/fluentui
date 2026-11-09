@@ -1,11 +1,10 @@
-@layer fluent {
-  .root {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
-    &::after {
-      content: ' ';
-    }
+/* @griffel-buckets reset: .root */
+.root {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  &::after {
+    content: ' ';
   }
 }

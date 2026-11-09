@@ -1,16 +1,15 @@
-@layer fluent {
-  .root {
-    padding: 0 var(--spacingHorizontalXXL);
-    flex: 1;
-    align-self: stretch;
-    position: relative;
-    z-index: 1;
-    overflow: auto;
-    &:last-child {
-      padding-bottom: calc(var(--spacingHorizontalXXL) + var(--strokeWidthThin));
-    }
-    &:first-child {
-      padding-top: calc(var(--spacingHorizontalXXL) + var(--strokeWidthThin));
-    }
+/* @griffel-buckets reset: .root */
+.root {
+  padding: 0 var(--spacingHorizontalXXL);
+  flex: 1;
+  align-self: stretch;
+  position: relative;
+  z-index: 1;
+  overflow: auto;
+  &:last-child {
+    padding-bottom: calc(var(--spacingHorizontalXXL) + var(--strokeWidthThin));
+  }
+  &:first-child {
+    padding-top: calc(var(--spacingHorizontalXXL) + var(--strokeWidthThin));
   }
 }

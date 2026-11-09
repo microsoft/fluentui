@@ -75,7 +75,7 @@ TagPickerOptionGroup. Griffel remains the default. Opt in with a
 bundler replacement of those `use*Styles.styles` modules by their
 `use*Styles.styles.css` alternatives, handling both source imports and built
 `.styles.js` → `.styles.css.js` imports. The bundler must process CSS Modules and
-retain CSS assets in the `fluent` layer.
+retain CSS assets.
 
 TagPickerGroup, TagPickerOption, and TagPickerOptionGroup keep calling the public
 TagGroup, Option, and OptionGroup style hooks from `@fluentui/react-tags` and

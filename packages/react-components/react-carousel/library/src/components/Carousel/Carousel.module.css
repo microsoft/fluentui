@@ -1,12 +1,10 @@
-@layer fluent {
-  .root {
-    overflow-x: hidden;
-    overflow-anchor: none;
-    position: relative;
-  }
+.root {
+  overflow-x: hidden;
+  overflow-anchor: none;
+  position: relative;
+}
 
-  .elevated {
-    margin: var(--spacingVerticalL);
-    padding: var(--spacingVerticalL);
-  }
+.elevated {
+  margin: var(--spacingVerticalL);
+  padding: var(--spacingVerticalL);
 }

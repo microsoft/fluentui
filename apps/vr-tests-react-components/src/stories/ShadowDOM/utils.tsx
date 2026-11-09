@@ -22,9 +22,11 @@ const ShadowRootProvider: React.FC<{
     const styleElement = targetDocument.createElement('style');
     root.prepend(styleElement);
     const updateStyles = () => {
-      styleElement.textContent = Array.from(targetDocument.head.querySelectorAll('style'))
+      // Skip Griffel buckets (rendered by the shadow renderer) and id-tagged FluentProvider theme styles.
+      styleElement.textContent = Array.from(
+        targetDocument.head.querySelectorAll('style:not([data-make-styles-bucket]):not([id])'),
+      )
         .map(style => style.textContent ?? '')
-        .filter(css => css.includes('@layer fluent'))
         .join('\n');
     };
     updateStyles();

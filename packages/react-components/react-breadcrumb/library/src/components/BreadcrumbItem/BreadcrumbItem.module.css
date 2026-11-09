@@ -1,9 +1,8 @@
-@layer fluent {
-  .root {
-    display: flex;
-    align-items: center;
-    color: var(--colorNeutralForeground2);
-    box-sizing: border-box;
-    text-wrap: nowrap;
-  }
+/* @griffel-buckets reset: .root */
+.root {
+  display: flex;
+  align-items: center;
+  color: var(--colorNeutralForeground2);
+  box-sizing: border-box;
+  text-wrap: nowrap;
 }

@@ -1,15 +1,14 @@
-@layer fluent {
-  .backdrop {
-    inset: 0px;
-    position: fixed;
-    background-color: var(--colorBackgroundOverlay);
-  }
+/* @griffel-buckets reset: .backdrop */
+.backdrop {
+  inset: 0px;
+  position: fixed;
+  background-color: var(--colorBackgroundOverlay);
+}
 
-  .nested {
-    background-color: var(--colorTransparentBackground);
-  }
+.nested {
+  background-color: var(--colorTransparentBackground);
+}
 
-  .hidden {
-    pointer-events: none;
-  }
+.hidden {
+  pointer-events: none;
 }

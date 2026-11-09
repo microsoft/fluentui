@@ -1,18 +1,16 @@
-@layer fluent {
-  .root {
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    cursor: text;
-  }
+.root {
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  cursor: text;
+}
 
-  .medium {
-    padding: var(--spacingVerticalSNudge) 0;
-    gap: var(--spacingHorizontalXS);
-  }
+.medium {
+  padding: var(--spacingVerticalSNudge) 0;
+  gap: var(--spacingHorizontalXS);
+}
 
-  .large,
-  .extra-large {
-    padding: var(--spacingVerticalS) 0;
-    gap: var(--spacingHorizontalSNudge);
-  }
+.large,
+.extra-large {
+  padding: var(--spacingVerticalS) 0;
+  gap: var(--spacingHorizontalSNudge);
 }

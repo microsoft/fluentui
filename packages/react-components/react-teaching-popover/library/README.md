@@ -37,9 +37,9 @@ private deep imports or duplicate their base rules.
 Opt-in resolver swaps must cover those base packages, including public re-exports,
 as well as TeachingPopover, for both source `.styles` and built
 `.styles.js` → `.styles.css.js` imports. Base modules are imported before derived
-stylesheets. CSS Modules must be processed and CSS assets retained in the
-`fluent` layer. Swapping only TeachingPopover intentionally leaves Griffel base
-hooks in the graph; unlayered Griffel rules can override layered CSS, so that
+stylesheets. CSS Modules must be processed and CSS assets retained. Swapping only TeachingPopover intentionally leaves Griffel base
+hooks in the graph; Griffel base rules are inserted at runtime and can override
+the derived CSS, so that
 hybrid is not guaranteed to match the fully selected CSS implementation.
 
 Surface preserves its local-class-before-base-hook call order and returns the

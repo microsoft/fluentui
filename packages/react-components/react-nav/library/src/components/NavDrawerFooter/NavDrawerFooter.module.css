@@ -1,7 +1,8 @@
-@layer fluent {
-  .root {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--spacingVerticalXXS);
-  }
+.root {
+  /* The Griffel original declares an invalid five-value `padding`, which replaces DrawerFooter's padding in the
+     atomic merge and is then dropped by the browser: the rendered footer has no padding. */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalXXS);
 }

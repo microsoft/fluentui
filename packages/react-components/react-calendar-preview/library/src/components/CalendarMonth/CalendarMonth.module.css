@@ -1,7 +1,5 @@
-@layer fluent {
-  .embeddedYearPicker {
-    overflow: visible;
-    padding: 0;
-    width: auto;
-  }
+.embeddedYearPicker {
+  overflow: visible;
+  padding: 0;
+  width: auto;
 }

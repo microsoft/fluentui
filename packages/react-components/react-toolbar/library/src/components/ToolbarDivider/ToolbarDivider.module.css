@@ -1,12 +1,10 @@
-@layer fluent {
-  .root {
-    display: inline-flex;
-    max-width: 1px;
-    padding-block: 0;
-    padding-inline: var(--spacingHorizontalM);
-  }
+.root {
+  display: inline-flex;
+  max-width: 1px;
+  padding-block: 0;
+  padding-inline: var(--spacingHorizontalM);
+}
 
-  .horizontal {
-    max-width: initial;
-  }
+.horizontal {
+  max-width: initial;
 }

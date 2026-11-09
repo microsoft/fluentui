@@ -1,10 +1,8 @@
-@layer fluent {
-  .root {
-    padding-block: 0;
-    padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
-    align-items: unset;
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--spacingVerticalXXS);
-  }
+.root {
+  padding-block: 0;
+  padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+  align-items: unset;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalXXS);
 }
