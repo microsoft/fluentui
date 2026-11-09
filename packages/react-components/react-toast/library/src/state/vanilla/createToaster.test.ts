@@ -97,6 +97,41 @@ describe('createToaster', () => {
     expect(toaster.visibleToasts.size).toBe(0);
   });
 
+  it('removes a dismissed queued toast without changing the order of the remaining queue', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast({ toastId: 'cancelled', priority: 1, onStatusChange }, () => null);
+    toaster.buildToast({ toastId: 'later', priority: 3 }, () => null);
+    toaster.buildToast({ toastId: 'next', priority: 2 }, () => null);
+
+    toaster.dismissToast('cancelled');
+    expect(toaster.toasts.has('cancelled')).toBe(false);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+
+    toaster.toasts.get('visible')!.close();
+    toaster.toasts.get('visible')!.remove();
+    expect(toaster.visibleToasts.has('next')).toBe(true);
+    toaster.toasts.get('next')!.close();
+    toaster.toasts.get('next')!.remove();
+    expect(toaster.visibleToasts.has('later')).toBe(true);
+  });
+
+  it('clears queued toasts when dismissing all and permits reusing their ids', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast({ toastId: 'queued', onStatusChange }, () => null);
+
+    toaster.dismissAllToasts();
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+
+    toaster.toasts.get('visible')!.remove();
+    toaster.buildToast({ toastId: 'queued' }, () => null);
+    expect(toaster.visibleToasts.has('queued')).toBe(true);
+  });
+
   it('should update a toasts', () => {
     const toaster = createToaster({});
 

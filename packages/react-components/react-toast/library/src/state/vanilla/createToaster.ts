@@ -83,10 +83,26 @@ export function createToaster(options: Partial<ToasterOptions>): {
     toastToUpdate.updateId++;
   };
 
+  const discardQueuedToast = (toastId: ToastId) => {
+    const toast = toasts.get(toastId);
+    if (toast) {
+      toasts.delete(toastId);
+      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+    }
+  };
+
   /**
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
+    const queued = queue.all();
+    if (queued.includes(toastId)) {
+      queue.clear();
+      queued.filter(id => id !== toastId).forEach(id => queue.enqueue(id));
+      discardQueuedToast(toastId);
+      return;
+    }
+
     visibleToasts.delete(toastId);
   };
 
@@ -95,7 +111,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
    */
   const dismissAllToasts = () => {
     visibleToasts.clear();
+    const queued = queue.all();
     queue.clear();
+    queued.forEach(discardQueuedToast);
   };
 
   /**

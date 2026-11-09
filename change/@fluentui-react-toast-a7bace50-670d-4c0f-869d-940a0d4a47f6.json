@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix cancellation of queued toasts.",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com"
+}
