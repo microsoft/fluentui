@@ -7,6 +7,30 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => mountBase(element);
 
 describe('Menu', () => {
+  it('focuses the first enabled item on open and closes on light dismiss', () => {
+    mount(
+      <Menu>
+        <MenuTrigger>
+          <button id="trigger">Options</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem id="item-0" disabled>
+              Disabled
+            </MenuItem>
+            <MenuItem id="item-1">New</MenuItem>
+            <MenuItem id="item-2">Open</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    cy.get('#trigger').realClick();
+    cy.get('#item-1').should('be.focused');
+    cy.get('body').realClick({ position: 'bottomRight' });
+    cy.get('#item-1').should('not.be.visible');
+  });
+
   describe('with Tooltip wrapping MenuTrigger', () => {
     const TooltipWrappedMenuExample = () => (
       <Menu>
