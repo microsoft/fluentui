@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep same type output for DeepPartialV2 to match original DeepPartial",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
