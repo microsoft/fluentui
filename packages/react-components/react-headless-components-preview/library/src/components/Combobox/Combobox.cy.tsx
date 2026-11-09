@@ -3,7 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 
 import { Combobox, Option, OptionGroup } from '.';
 import type { ComboboxProps } from '.';
-import { finishListboxExit, listboxExitStyles } from '../../testing/listboxExit';
+import { finishListboxExit, listboxExitStyles } from '../../e2e/listboxExit';
 
 // ---- Selectors ----
 // The Combobox `id` prop maps to the trigger <input> element.

@@ -3,7 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 
 import { Dropdown, Option, OptionGroup } from '.';
 import type { DropdownProps } from '.';
-import { finishListboxExit, listboxExitStyles } from '../../testing/listboxExit';
+import { finishListboxExit, listboxExitStyles } from '../../e2e/listboxExit';
 
 // ---- Selectors ----
 // The Dropdown `id` prop maps to the trigger <button> element.
