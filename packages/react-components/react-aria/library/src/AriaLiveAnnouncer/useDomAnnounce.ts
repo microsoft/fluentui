@@ -29,7 +29,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
   const [setAnnounceTimeout, clearAnnounceTimeout] = useTimeout();
   const tabsterNeverHiddenAttributes = useDangerousNeverHidden();
 
-  const elementRef = React.useRef<HTMLDivElement | null>(null);
+  const elementsRef = React.useRef<{ assertive: HTMLDivElement; polite: HTMLDivElement } | null>(null);
 
   const order = React.useRef(0);
 
@@ -49,12 +49,13 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
   );
 
   const queueMessage = React.useCallback(() => {
-    if (timeoutRef.current || !elementRef.current) {
+    if (timeoutRef.current || !elementsRef.current) {
       return;
     }
 
     const runCycle = () => {
-      if (!elementRef.current) {
+      const elements = elementsRef.current;
+      if (!elements) {
         return;
       }
 
@@ -62,16 +63,23 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
         // need a wrapping element for Narrator/Edge, which currently does not pick up text-only live region changes
         // consistently
         // if this is fixed, we can set textContent to the string directly
-
-        const wrappingEl = targetDocument.createElement('span');
-
-        wrappingEl.innerText = messageQueue
+        const messages = messageQueue
           .all()
           .filter(msg => msg.message.trim().length > 0)
-          .reduce((prevText, currMsg) => prevText + currMsg.message + '. ', '');
+          .sort((a, b) => b.priority - a.priority || a.createdAt - b.createdAt);
 
-        elementRef.current.innerText = '';
-        elementRef.current.appendChild(wrappingEl);
+        for (const polite of [false, true]) {
+          const element = polite ? elements.polite : elements.assertive;
+          const text = messages
+            .filter(msg => msg.polite === polite)
+            .reduce((prevText, currMsg) => prevText + currMsg.message + '. ', '');
+          element.textContent = '';
+          if (text) {
+            const wrappingEl = targetDocument.createElement('span');
+            wrappingEl.innerText = text;
+            element.appendChild(wrappingEl);
+          }
+        }
 
         messageQueue.clear();
         batchMessages.current = [];
@@ -81,7 +89,8 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
           runCycle();
         }, MESSAGE_DURATION);
       } else {
-        elementRef.current.textContent = '';
+        elements.assertive.textContent = '';
+        elements.polite.textContent = '';
         clearAnnounceTimeout();
 
         timeoutRef.current = undefined;
@@ -96,7 +105,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
 
   const announce: AriaLiveAnnounceFn = React.useCallback(
     (message: string, options: AnnounceOptions = {}) => {
-      const { alert = false, priority = 0, batchId } = options;
+      const { alert = false, priority = 0, batchId, polite = false } = options;
 
       // check if message is an alert
       if (alert) {
@@ -108,6 +117,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
         message,
         createdAt: order.current++,
         priority,
+        polite,
         batchId,
       };
 
@@ -140,25 +150,32 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
       return;
     }
 
-    const element = targetDocument.createElement('div');
-    element.setAttribute('aria-live', 'assertive');
+    const elements = {
+      assertive: targetDocument.createElement('div'),
+      polite: targetDocument.createElement('div'),
+    };
+    for (const [politeness, element] of Object.entries(elements)) {
+      element.setAttribute('aria-live', politeness);
+      Object.entries(tabsterNeverHiddenAttributes).forEach(([key, value]) => {
+        element.setAttribute(key, value);
+      });
+      Object.assign(element.style, VISUALLY_HIDDEN_STYLES);
+      targetDocument.body.append(element);
+    }
 
-    Object.entries(tabsterNeverHiddenAttributes).forEach(([key, value]) => {
-      element.setAttribute(key, value);
-    });
-
-    Object.assign(element.style, VISUALLY_HIDDEN_STYLES);
-    targetDocument.body.append(element);
-
-    elementRef.current = element;
+    elementsRef.current = elements;
+    if (messageQueue.peek()) {
+      queueMessage();
+    }
 
     return () => {
-      element.remove();
-      elementRef.current = null;
+      elements.assertive.remove();
+      elements.polite.remove();
+      elementsRef.current = null;
       clearAnnounceTimeout();
       timeoutRef.current = undefined;
     };
-  }, [clearAnnounceTimeout, tabsterNeverHiddenAttributes, targetDocument]);
+  }, [clearAnnounceTimeout, messageQueue, queueMessage, tabsterNeverHiddenAttributes, targetDocument]);
 
   return announce;
 };
