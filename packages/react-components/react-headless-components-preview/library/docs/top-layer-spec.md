@@ -157,6 +157,7 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 - **Close reason.** The browser doesn't say why a popover closed, so every popover close is `light-dismiss`. A modal close is `escape` if a `cancel` that wasn't prevented came first, otherwise `native-close`.
 - **Stale `toggle`.** `toggle` is async. An event whose `newState` no longer matches the element is ignored.
 - **Nested dialogs.** `cancel` from a descendant dialog is ignored.
+- **Open on `click`, not `mousedown`.** A trigger outside an `auto` popover must open it on `click`. Opening on `mousedown` lets the browser light-dismiss it on the `pointerup` of the same gesture, since both ends of the gesture are outside the popover. Closing from such a trigger while open is already a light dismiss, so `preventDefault()` on the trigger can't cancel it. Combobox, `PopoverTrigger`, DatePicker and the TagPicker control follow this.
 
 ## Lifecycle
 
