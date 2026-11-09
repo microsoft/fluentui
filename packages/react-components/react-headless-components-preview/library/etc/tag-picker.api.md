@@ -13,7 +13,7 @@ import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderTagPickerButton_unstable as renderTagPickerButton } from '@fluentui/react-tag-picker';
 import { renderTagPickerControl_unstable as renderTagPickerControl } from '@fluentui/react-tag-picker';
 import { renderTagPickerGroup_unstable as renderTagPickerGroup } from '@fluentui/react-tag-picker';
