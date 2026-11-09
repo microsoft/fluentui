@@ -13,7 +13,9 @@
     "test": {
       "dependsOn": ["^build"]
     },
-    "format": {},
+    "lint": {
+      "dependsOn": ["prebundle"]
+    },
     "type-check": {
       "dependsOn": ["prebundle"]
     },

@@ -15,7 +15,7 @@ import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/rea
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable as renderTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
@@ -66,7 +66,7 @@ import { useTeachingPopoverTitleBase_unstable as useTeachingPopoverTitle } from 
 export type NavButtonRenderFunction = TeachingPopoverCarouselNavState['renderNavButton'];
 
 // @public
-export const renderTeachingPopover: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => React_2.ReactElement;
+export const renderTeachingPopover: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => JSXElement;
 
 export { renderTeachingPopoverBody }
 
@@ -104,10 +104,7 @@ export const renderTeachingPopoverTitle: (state: TeachingPopoverTitleState) => J
 export const renderTeachingPopoverTrigger: (state: TeachingPopoverTriggerState) => JSXElement | null;
 
 // @public
-export const TeachingPopover: {
-    (props: TeachingPopoverProps): JSXElement;
-    displayName: string;
-};
+export const TeachingPopover: ComponentWithoutRef<TeachingPopoverProps>;
 
 // @public
 export type TeachingPopoverBaseBridgedContextValue = Pick<PopoverContextValue_2, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow'>;
@@ -296,7 +293,7 @@ export { TeachingPopoverTitleSlots }
 export { TeachingPopoverTitleState }
 
 // @public
-export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
+export const TeachingPopoverTrigger: ComponentWithoutRef<TeachingPopoverTriggerProps>;
 
 // @public
 export type TeachingPopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType> = PopoverTriggerChildProps<Type, HeadlessPopoverTriggerChildExtras>;

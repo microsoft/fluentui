@@ -14,6 +14,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const RadioGroup: ForwardRefComponent<RadioGroupProps> = /*#__PURE__*/ composeComponent(
   'RadioGroup',
   useRadioGroup,
-  renderRadioGroup,
   useRadioGroupContextValues,
+  renderRadioGroup,
 );

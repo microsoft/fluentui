@@ -46,6 +46,9 @@ if (leaked.length > 0) {
 }
 
 const cli = await readFile(join(outdir, 'cli.js'), 'utf-8');
+if (Object.keys(metafile.inputs).some(input => /(?:^|\/)tests\/integration\//.test(input)) || /@swc\/core/.test(cli)) {
+  throw new Error('Test-only native SWC comparison code leaked into the production bundle.');
+}
 for (const name of ['babel-plugin-react-compiler']) {
   if (!cli.includes(`require.resolve("${name}")`)) {
     throw new Error(`\`require.resolve("${name}")\` did not survive bundling — the CLI will fail at runtime.`);

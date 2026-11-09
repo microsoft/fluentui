@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add aria-controls to PopoverTrigger and name the Default story surface",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

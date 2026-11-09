@@ -15,7 +15,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverTriggerChildProps as PopoverTriggerChildProps_2 } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
@@ -28,10 +28,7 @@ export type OnOpenChangeData = EventData<string, React_2.SyntheticEvent | Event>
 export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
-export const Popover: {
-    (props: PopoverProps): JSXElement;
-    displayName: string;
-};
+export const Popover: ComponentWithoutRef<PopoverProps>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'inertTrapFocus'> & {
@@ -105,7 +102,7 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
 };
 
 // @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+export const PopoverTrigger: ComponentWithoutRef<PopoverTriggerProps>;
 
 // @public
 export type PopoverTriggerProps = Omit<TriggerProps<PopoverTriggerChildProps>, 'children'> & {
@@ -119,7 +116,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => React_2.ReactElement;
+export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;

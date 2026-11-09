@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.spec.json",
+  "include": ["tests/integration/**/*.ts", "jest.integration.config.ts"],
+  "exclude": []
+}

@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Field: ForwardRefComponent<FieldProps> = /*#__PURE__*/ composeComponent(
   'Field',
   useField,
-  renderField,
   useFieldContextValues,
+  renderField,
 );

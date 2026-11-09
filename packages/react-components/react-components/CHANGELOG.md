@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.1)
+
+Mon, 02 Nov 2026 13:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.0..@fluentui/react-components_v9.75.1)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks ([PR #36932](https://github.com/microsoft/fluentui/pull/36932) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tag-picker`
+  - fix: keep the measured aside width instead of cancelling its update after mount ([PR #36986](https://github.com/microsoft/fluentui/pull/36986) by dmytrokirpa@microsoft.com)
 
 ## [9.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.0)
 

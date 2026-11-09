@@ -1,7 +1,18 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  End,
+  Enter,
+  Home,
+  PageDown,
+  PageUp,
+  Space,
+} from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import {
@@ -24,7 +35,7 @@ import { addCivilDays, createDate, matchesCivilDate } from '../utils/dateMath';
 import { getAvailableDates } from '../utils/dateGrid/dateAvailability';
 import { mergeProps } from '../../../utils/mergeProps';
 import { getDateRangeTypeToUse } from '../utils/dateGrid/workWeek';
-import { getCalendarGridCell } from '../hooks/useCalendarGrid';
+import { getCalendarGridCell, getCalendarGridTargetIndex, isCalendarGridNavigationKey } from '../hooks/useCalendarGrid';
 import {
   getCalendarEventType,
   onCalendarEnterKeyDown,
@@ -32,7 +43,7 @@ import {
   setCalendarNavigationDate,
 } from '../utils/calendarNavigation';
 import { useCalendarContext } from '../calendarContext';
-import type { DayGridOptions } from '../utils';
+import type { DayGridOptions, RestrictedDatesOptions } from '../utils';
 import type {
   CalendarDayProps,
   CalendarDayState,
@@ -43,7 +54,6 @@ import { toDataAttributeValue } from '../../../utils';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 type CalendarDayGridSlotProps = React.ComponentProps<'table'> & {
-  focusgroup?: string;
   'data-fui-calendar-grid'?: string;
 };
 
@@ -74,6 +84,30 @@ const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 
     }
 
     if (matchesCivilDate(candidate, civilDate) && compareDatePart(candidate, date) * direction > 0) {
+      return candidate;
+    }
+  }
+};
+
+/**
+ * Finds the nearest available date on the same weekday as `date`, stepping a week at a time and skipping dates that
+ * do not exist in the local timezone. The search stops at the minimum or maximum date.
+ */
+const findAvailableWeekdayDate = (date: Date, direction: 1 | -1, options: RestrictedDatesOptions): Date | undefined => {
+  const origin = { year: date.getFullYear(), month: date.getMonth(), day: date.getDate() };
+  const bound = direction === 1 ? options.maxDate : options.minDate;
+  for (let offset = DAYS_IN_WEEK * direction; ; offset += DAYS_IN_WEEK * direction) {
+    const civilDate = addCivilDays(origin, offset);
+    if (!Number.isFinite(civilDate.year)) {
+      return undefined;
+    }
+
+    const candidate = createDate(civilDate.year, civilDate.month, civilDate.day);
+    if (!Number.isFinite(candidate.getTime()) || (bound && compareDatePart(candidate, bound) * direction > 0)) {
+      return undefined;
+    }
+
+    if (matchesCivilDate(candidate, civilDate) && !isRestrictedDate(candidate, options)) {
       return candidate;
     }
   }
@@ -232,6 +266,17 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   const focusTargetKey = focusTarget
     ? dayGrid.flat().find(day => day.originalDate && compareDatePart(day.originalDate, focusTarget) === 0)?.key
     : undefined;
+  const isDayFocusable = (day: { originalDate: Date | null; isInBounds: boolean }) =>
+    !!day.originalDate && (allFocusable || day.isInBounds);
+  // The focused day keeps the roving tab stop until the grid navigates to another date.
+  const [activeDay, setActiveDay] = React.useState<{ key: string; navigatedDate: number } | undefined>(undefined);
+  const activeDayKey =
+    activeDay?.navigatedDate === navigatedDateTimestamp &&
+    dayGrid.some(week => week.some(day => day.key === activeDay.key && isDayFocusable(day)))
+      ? activeDay.key
+      : undefined;
+  const tabStopKey = activeDayKey ?? focusTargetKey;
+
   const weeks: CalendarDayState['weeks'] = dayGrid.map((week, weekIndex) => {
     const days = week.map(
       (day): CalendarDayCellData => ({
@@ -272,8 +317,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       'aria-current': day.isToday ? ('date' as const) : undefined,
       'aria-disabled': !day.isInBounds,
       'aria-selected': day.isInBounds ? day.isSelected : undefined,
-      tabIndex: date && (allFocusable || day.isInBounds) ? 0 : undefined,
-      focusgroupstart: day.key === focusTargetKey ? '' : undefined,
+      // One roving tab stop; unavailable days stay out of focus unless allFocusable is set.
+      tabIndex: isDayFocusable(day) ? (day.key === tabStopKey ? 0 : -1) : undefined,
       ref: getDayElementRef(day.key),
       'data-day-key': day.key,
       'data-marked': toDataAttributeValue(day.isMarked),
@@ -283,10 +328,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       'data-today': toDataAttributeValue(day.isToday),
     };
     return {
-      root: mergeProps<HTMLTableCellElement, React.ComponentProps<'td'> & { focusgroupstart?: string }>(
-        rootProps,
-        overrides?.root,
-      ),
+      root: mergeProps<HTMLTableCellElement, React.ComponentProps<'td'>>(rootProps, overrides?.root),
       button: mergeProps(
         {
           'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
@@ -306,7 +348,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     const weekNumber = row.type === 'week' ? row.weekNumber : undefined;
     const weekNumberLabel = weekNumber !== undefined ? formatters.weekNumberLabel({ weekNumber }) : '';
     return {
-      root: mergeProps({ role: 'row', focusgrouprow: row.type === 'week' ? '' : undefined }, overrides?.root),
+      root: mergeProps({ role: 'row' }, overrides?.root),
       weekNumber:
         row.type === 'weekday'
           ? showWeekNumbers
@@ -364,7 +406,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     ),
   });
 
-  const getFocusTarget = () => (focusTargetKey ? dayElements.get(focusTargetKey) : undefined);
+  const getFocusTarget = () => (tabStopKey ? dayElements.get(tabStopKey) : undefined);
 
   React.useImperativeHandle(props.imperativeRef, () => ({
     focus(options?: FocusOptions) {
@@ -423,36 +465,20 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       return;
     }
 
-    let targetDate: Date | undefined;
-    let direction: 1 | -1 = 1; // by default search forward
+    const searchOptions = { ...restrictedDatesOptions, restrictedDates: allFocusable ? undefined : restrictedDates };
+    let nextDate: Date | undefined;
 
-    if (ev.key === ArrowUp) {
-      direction = -1;
-      targetDate = getDirectionalTargetDate(date, -7, direction);
-    } else if (ev.key === ArrowDown) {
-      targetDate = getDirectionalTargetDate(date, 7, direction);
+    if (ev.key === ArrowUp || ev.key === ArrowDown) {
+      // Vertical movement keeps the weekday, so unavailable days in the column are skipped a week at a time.
+      nextDate = findAvailableWeekdayDate(date, ev.key === ArrowUp ? -1 : 1, searchOptions);
     } else if (ev.key === ArrowLeft || ev.key === ArrowRight) {
-      const isForward = (ev.key === ArrowRight) !== (dir === 'rtl');
-      direction = isForward ? 1 : -1;
-      targetDate = getDirectionalTargetDate(date, direction, direction);
+      const direction = (ev.key === ArrowRight) !== (dir === 'rtl') ? 1 : -1;
+      // Called only when no visible day in this direction can take focus, so a visible target is unavailable.
+      const targetDate = getDirectionalTargetDate(date, direction, direction);
+      nextDate = targetDate && findAvailableDate({ initialDate: date, targetDate, direction, ...searchOptions });
     } else {
       return;
     }
-
-    if (
-      !targetDate ||
-      visibleDays.some(day => day.originalDate && compareDatePart(day.originalDate, targetDate!) === 0)
-    ) {
-      return;
-    }
-
-    const nextDate = findAvailableDate({
-      initialDate: date,
-      targetDate,
-      direction,
-      ...restrictedDatesOptions,
-      restrictedDates: allFocusable ? undefined : restrictedDates,
-    });
 
     if (nextDate) {
       ev.preventDefault();
@@ -489,10 +515,45 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     onHeaderSelect?.(ev, { event: ev, type: getCalendarEventType(ev) });
   const onClose = (ev: ButtonEvent) => onDismiss?.(ev, { event: ev, type: getCalendarEventType(ev) });
 
+  /**
+   * Moves the roving tab stop with arrows, Home and End, skipping unavailable days. Arrows wrap across weeks.
+   * Reaching an available day of an adjacent month loads that month; moving past the visible days pages to the next
+   * available date. Neither selects a date.
+   */
+  const moveFocus = (ev: React.KeyboardEvent<HTMLElement>, day: CalendarDayCellData): void => {
+    const index = visibleDays.indexOf(day);
+    const targetIndex = getCalendarGridTargetIndex(
+      ev.key,
+      dir,
+      index,
+      visibleDays.length,
+      DAYS_IN_WEEK,
+      candidate => isDayFocusable(visibleDays[candidate]),
+      true,
+    );
+    const target = targetIndex === undefined ? undefined : visibleDays[targetIndex];
+    if (!target?.originalDate) {
+      if (ev.key !== Home && ev.key !== End) {
+        navigateOutsideVisibleDays(ev, day.originalDate!);
+      }
+      // Boundary keys are owned too, so the page does not scroll when focus cannot move further.
+      if (!ev.isDefaultPrevented()) {
+        ev.preventDefault();
+      }
+      return;
+    }
+
+    ev.preventDefault();
+    setActiveDay({ key: target.key, navigatedDate: navigatedDateTimestamp });
+    dayElements.get(target.key)?.focus();
+    if (!target.isInMonth && target.isInBounds) {
+      onNavigateDate(ev, { event: ev, type: 'keydown', date: target.originalDate, focusOnNavigatedDay: true });
+    }
+  };
+
   const gridSlot = slot.always(grid, {
     defaultProps: {
       role: 'grid',
-      focusgroup: 'grid rowflow',
       'aria-label': monthAndYear,
       'aria-multiselectable': dateRangeType !== 'day' || Math.abs(daysToSelectInDayView ?? 1) > 1,
     },
@@ -523,8 +584,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     } else if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
       onSelectDay(ev, date);
       ev.preventDefault();
-    } else if (ev.key === ArrowLeft || ev.key === ArrowRight || ev.key === ArrowUp || ev.key === ArrowDown) {
-      navigateOutsideVisibleDays(ev, date);
+    } else if (isCalendarGridNavigationKey(ev)) {
+      moveFocus(ev, day);
     }
   });
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
@@ -534,6 +595,12 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       if (!ev.isDefaultPrevented() && eventDay[1].isInBounds) {
         onSelectDay(ev, eventDay[1].originalDate!);
       }
+    }
+  });
+  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, (ev: React.FocusEvent<HTMLElement>) => {
+    const eventDay = getEventDay(ev);
+    if (eventDay && ev.target === eventDay[0] && isDayFocusable(eventDay[1])) {
+      setActiveDay({ key: eventDay[1].key, navigatedDate: navigatedDateTimestamp });
     }
   });
   gridSlot.onMouseOver = mergeCallbacks(gridSlot.onMouseOver, onMouseOverOrOut(true));
