@@ -1,5 +1,10 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, indeterminateState, nativeDisabledState } from '../styles/states/index.js';
+import {
+  checkedState,
+  dirtyIndeterminateState,
+  indeterminateState,
+  nativeDisabledState,
+} from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -105,16 +110,20 @@ export const styles = css`
   }
 
   :host(${checkedState}),
-  :host(${indeterminateState}) {
+  :host(
+      :is(${indeterminateState}, [defaultindeterminate]:not(${dirtyIndeterminateState})):not(${nativeDisabledState})
+    ) {
     border-color: ${colorCompoundBrandStroke};
   }
 
   :host(${checkedState}),
-  :host(${indeterminateState}) .indeterminate-indicator {
+  :host(${indeterminateState}) .indeterminate-indicator,
+  :host([defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState})) .indeterminate-indicator {
     background-color: ${colorCompoundBrandBackground};
   }
 
-  :host(${indeterminateState}) .indeterminate-indicator {
+  :host(${indeterminateState}) .indeterminate-indicator,
+  :host([defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState})) .indeterminate-indicator {
     border-radius: ${borderRadiusSmall};
     position: absolute;
     width: calc(var(--size) / 2);
@@ -145,7 +154,9 @@ export const styles = css`
     cursor: unset;
   }
 
-  :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator {
+  :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator,
+  :host(${nativeDisabledState}[defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState}))
+    .indeterminate-indicator {
     background-color: ${colorNeutralStrokeDisabled};
   }
 
@@ -174,12 +185,15 @@ export const styles = css`
     }
 
     :host(${checkedState}),
-    :host(${indeterminateState}) .indeterminate-indicator {
+    :host(${indeterminateState}) .indeterminate-indicator,
+    :host([defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState})) .indeterminate-indicator {
       background-color: FieldText;
     }
 
     :host(${checkedState}:not(${nativeDisabledState}):hover),
-    :host(${indeterminateState}:not(${nativeDisabledState}):hover) .indeterminate-indicator {
+    :host(${indeterminateState}:not(${nativeDisabledState}):hover) .indeterminate-indicator,
+    :host([defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState}):not(${nativeDisabledState}):hover)
+      .indeterminate-indicator {
       background-color: Highlight;
     }
 
@@ -187,7 +201,9 @@ export const styles = css`
       border-color: GrayText;
     }
 
-    :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator {
+    :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator,
+    :host(${nativeDisabledState}[defaultindeterminate]:not(${dirtyIndeterminateState}):not(${checkedState}))
+      .indeterminate-indicator {
       background-color: GrayText;
     }
 
