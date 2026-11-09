@@ -277,6 +277,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   desktopfolder: {},
   docset: {},
   documentsfolder: {},
+  docuworks: {
+    extensions: ['xbd', 'xct', 'xdw'],
+  },
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
