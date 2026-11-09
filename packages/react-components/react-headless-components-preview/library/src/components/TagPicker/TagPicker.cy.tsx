@@ -75,6 +75,18 @@ describe('TagPicker', () => {
     cy.get(input).should('be.focused');
   });
 
+  it('opens and closes from a click on the control outside the input', () => {
+    mount(<TagPickerFixture />);
+
+    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(listbox).should('be.visible').and('match', ':popover-open');
+    cy.get(input).should('have.attr', 'aria-expanded', 'true').and('be.focused');
+
+    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(listbox).should('not.be.visible');
+    cy.get(input).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+  });
+
   it('uses active-descendant keyboard navigation', () => {
     mount(<TagPickerFixture />);
 

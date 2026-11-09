@@ -196,3 +196,55 @@ describe('TagPickerGroup composition', () => {
     expect(typeof useTagPickerGroupContextValues).toBe('function');
   });
 });
+
+describe('TagPickerControl', () => {
+  const renderUncontrolled = (controlProps: React.ComponentProps<typeof TagPickerControl> = {}) =>
+    render(
+      <TagPicker>
+        <TagPickerControl data-testid="control" {...controlProps}>
+          <TagPickerInput aria-label="Select animals" />
+        </TagPickerControl>
+        <TagPickerList>
+          <TagPickerOption value="cat">Cat</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+
+  const clickControl = (control: HTMLElement) => {
+    fireEvent.mouseDown(control);
+    fireEvent.click(control);
+  };
+
+  it('focuses the input on mouse down and opens on click', () => {
+    const { getByRole, getByTestId } = renderUncontrolled();
+    const input = getByRole('combobox');
+
+    fireEvent.mouseDown(getByTestId('control'));
+
+    expect(input).toHaveFocus();
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+
+    fireEvent.click(getByTestId('control'));
+
+    expect(input).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('closes on the next click', () => {
+    const { getByRole, getByTestId } = renderUncontrolled();
+
+    clickControl(getByTestId('control'));
+    clickControl(getByTestId('control'));
+
+    expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('does not toggle when the consumer prevents default', () => {
+    const onMouseDown = jest.fn((event: React.MouseEvent) => event.preventDefault());
+    const { getByRole, getByTestId } = renderUncontrolled({ onMouseDown });
+
+    clickControl(getByTestId('control'));
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+    expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+  });
+});

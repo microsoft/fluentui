@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: open TagPicker from a click on the control without the list light-dismissing on the same gesture",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
