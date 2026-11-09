@@ -9,6 +9,7 @@ export type AriaLiveMessage = {
   createdAt: number;
 
   priority: number;
+  polite: boolean;
   batchId?: string;
 };
 

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Respect politeness and message priority in DOM live announcements.",
+  "packageName": "@fluentui/react-aria",
+  "email": "dmytrokirpa@microsoft.com"
+}
