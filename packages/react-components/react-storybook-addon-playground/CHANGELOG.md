@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-storybook-addon-playground
 
-<!-- This log was last generated on Fri, 16 Oct 2026 14:21:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 03 Nov 2026 12:25:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-playground_v0.1.2)
+
+Tue, 03 Nov 2026 12:25:56 GMT
+
+### Patches
+
+- fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-playground_v0.1.1)
 

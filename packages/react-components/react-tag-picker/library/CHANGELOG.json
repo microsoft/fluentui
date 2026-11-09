@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.10.7",
+      "tag": "@fluentui/react-tag-picker_v9.10.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "df06e284f1da766da7c120b8ceb727b9c64488d1",
+            "comment": "fix: keep the measured aside width instead of cancelling its update after mount"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.10.6",
       "comments": {

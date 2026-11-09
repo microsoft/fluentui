@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons",
+  "packageName": "@fluentui/react-rating",
+  "email": "martinhochel@microsoft.com"
+}
