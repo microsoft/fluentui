@@ -158,12 +158,14 @@ describe('InfoButton', () => {
       const onOpenChange = jest.fn();
       const onNativeClose = jest.fn();
       const { getByRole, queryByRole } = render(
-        <InfoButton
-          info={{ children: 'Information', onClose: onNativeClose, onToggle: onNativeClose }}
-          popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }}
-        />,
+        <InfoButton info="Information" popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }} />,
       );
       const surface = getByRole(surfaceRole, { hidden: true });
+      surface.addEventListener(inertTrapFocus ? 'close' : 'toggle', event => {
+        if (inertTrapFocus || ('newState' in event && event.newState === 'closed')) {
+          onNativeClose();
+        }
+      });
 
       fireEvent.blur(surface, { relatedTarget: null });
 
@@ -173,7 +175,7 @@ describe('InfoButton', () => {
         expect.objectContaining({ type: 'blur', open: false }),
       );
       await waitFor(() => expect(queryByRole(surfaceRole, { hidden: true })).toBeNull());
-      expect(onNativeClose).toHaveBeenCalled();
+      expect(onNativeClose).toHaveBeenCalledTimes(1);
       expect(onOpenChange).toHaveBeenCalledTimes(1);
     });
 
