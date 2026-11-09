@@ -109,8 +109,16 @@ describe('DeclarativeChart', () => {
 
 describe('DeclarativeChart SSR colors', () => {
   const stylesheet = Stylesheet.getInstance();
+  let consoleErrorSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    const consoleError = console.error;
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((message, ...args) => {
+      if (typeof message === 'string' && message.startsWith('Warning: useLayoutEffect does nothing on the server,')) {
+        return;
+      }
+      consoleError(message, ...args);
+    });
     stylesheet.reset();
     stylesheet.setConfig({ injectionMode: InjectionMode.none });
   });
@@ -118,6 +126,7 @@ describe('DeclarativeChart SSR colors', () => {
   afterEach(() => {
     stylesheet.reset();
     stylesheet.setConfig({ injectionMode: InjectionMode.insertNode });
+    consoleErrorSpy.mockRestore();
   });
 
   test.each(['marker', 'piecolorway'] as const)('rejects CSS rules injected through %s colors', source => {
