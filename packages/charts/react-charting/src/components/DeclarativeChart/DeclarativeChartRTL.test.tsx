@@ -2,6 +2,9 @@ import { render } from '@testing-library/react';
 import { DeclarativeChart } from './index';
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
+import { renderToString } from 'react-dom/server';
+import { InjectionMode, Stylesheet } from '@fluentui/react/lib/Styling';
+import type { PlotlySchema } from '@fluentui/chart-utilities';
 
 describe('DeclarativeChart', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
@@ -24,6 +27,7 @@ describe('DeclarativeChart', () => {
       writable: true,
       value: (callback: FrameRequestCallback) => callback(0),
     });
+
     window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ width: 600, height: 350 });
   });
 
@@ -100,5 +104,53 @@ describe('DeclarativeChart', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     const { container } = render(<DeclarativeChart key={'histogram'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('DeclarativeChart SSR colors', () => {
+  const stylesheet = Stylesheet.getInstance();
+
+  beforeEach(() => {
+    stylesheet.reset();
+    stylesheet.setConfig({ injectionMode: InjectionMode.none });
+  });
+
+  afterEach(() => {
+    stylesheet.reset();
+    stylesheet.setConfig({ injectionMode: InjectionMode.insertNode });
+  });
+
+  test.each(['marker', 'piecolorway'] as const)('rejects CSS rules injected through %s colors', source => {
+    const payload = 'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red';
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'pie',
+          labels: ['A'],
+          values: [1],
+          marker: { colors: source === 'marker' ? [payload] : undefined },
+        },
+      ],
+      layout: { piecolorway: source === 'piecolorway' ? [payload] : undefined },
+    };
+
+    const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+    const css = stylesheet.getRules(true);
+
+    expect(html).toContain('A');
+    expect(css).toContain('background-color:');
+    expect(css).not.toContain('css-injection-sentinel');
+    expect(css).not.toContain('--injected');
+  });
+
+  test('preserves valid marker colors in serialized legend styles', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1], marker: { colors: ['rebeccapurple'] } }],
+      layout: {},
+    };
+
+    renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+
+    expect(stylesheet.getRules(true)).toContain('background-color:rebeccapurple');
   });
 });

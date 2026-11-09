@@ -30,6 +30,13 @@ To import charting components:
 import { ComponentName } from '@fluentui/react-charting/lib/ComponentName';
 ```
 
+### Declarative chart colors
+
+Pie and donut `marker.colors` values are validated using the same D3 color parser as other Plotly schema colors.
+Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and `hsl()`/`hsla()`.
+Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
+included in chart or legend styles. This validation also applies during server-side rendering.
+
 ## Contact
 
 The charting project is actively funded by a small feature team. The team responds within 1-2 business days for any queries or doubts.

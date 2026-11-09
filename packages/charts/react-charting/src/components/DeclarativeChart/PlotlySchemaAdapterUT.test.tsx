@@ -216,6 +216,47 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test.each([
+    '#FEBFB3',
+    '#abc',
+    'rebeccapurple',
+    'rgb(12, 34, 56)',
+    'rgba(12, 34, 56, 0.5)',
+    'hsl(120, 50%, 50%)',
+    'transparent',
+  ])('transformPlotlyJsonToDonutProps - preserves valid marker color %s after sorting', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.data?.chartData).toEqual([
+      expect.objectContaining({ legend: 'B', color: 'blue' }),
+      expect.objectContaining({ legend: 'A', color }),
+    ]);
+  });
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    'var(--untrusted-color)',
+    '',
+  ])('transformPlotlyJsonToDonutProps - replaces invalid marker color %s with a palette color', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+    const point = result.data?.chartData?.find(item => item.legend === 'A');
+
+    expect(point?.color).toMatch(/^#[0-9a-f]{6}$/i);
+    expect(result.data?.chartData).toContainEqual(expect.objectContaining({ legend: 'B', color: 'blue' }));
+  });
+
   test('transformPlotlyJsonToDonutProps - treats prototype field names as ordinary legends', () => {
     const plotlySchema: PlotlySchema = {
       data: [

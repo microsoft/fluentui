@@ -88,7 +88,7 @@ import type { ColorwayType } from './PlotlyColorAdapter';
 import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
-import { rgb } from 'd3-color';
+import { color as d3Color, rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 import {
@@ -1318,7 +1318,7 @@ export const transformPlotlyJsonToDonutProps = (
 
   // Sort labels by value descending before mapping
   if (firstData.labels && firstData.values) {
-    const markerColors = (firstData.marker?.colors as unknown as string[]) || undefined;
+    const markerColors = firstData.marker?.colors;
     const hasMarkerColors = Array.isArray(markerColors) && markerColors.length >= firstData.labels.length;
     const labelValuePairs = firstData.labels.map((label, index) => ({
       label,
@@ -1333,16 +1333,17 @@ export const transformPlotlyJsonToDonutProps = (
     validPairs.forEach((pair, sortedIdx) => {
       const legend = `${pair.label}`;
       const color: string =
-        pair.color ??
-        resolveColor(
-          colors,
-          sortedIdx,
-          legend,
-          colorMap,
-          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-          isDarkTheme,
-          true,
-        );
+        typeof pair.color === 'string' && d3Color(pair.color)
+          ? pair.color
+          : resolveColor(
+              colors,
+              hasMarkerColors ? pair.index : sortedIdx,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
       if (!mapLegendToDataPoint[legend]) {
         mapLegendToDataPoint[legend] = {
           legend,
