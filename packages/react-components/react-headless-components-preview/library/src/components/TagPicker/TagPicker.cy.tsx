@@ -16,6 +16,7 @@ polyfillBodyAndObserve();
 const options = ['Cat', 'Dog', 'Ferret'];
 const input = '[data-testid="tag-picker-input"]';
 const listbox = '[data-testid="tag-picker-list"]';
+const control = '[data-testid="tag-picker-control"]';
 
 type TagPickerFixtureProps = Pick<TagPickerProps, 'defaultOpen' | 'noPopover'> & {
   defaultSelectedOptions?: string[];
@@ -84,11 +85,11 @@ describe('TagPicker', () => {
   it('opens and closes from a click on the control outside the input', () => {
     mount(<TagPickerFixture />);
 
-    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(control).realClick({ position: 'right' });
     cy.get(listbox).should('be.visible').and('match', ':popover-open');
     cy.get(input).should('have.attr', 'aria-expanded', 'true').and('be.focused');
 
-    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(control).realClick({ position: 'right' });
     cy.get(listbox).should('not.be.visible');
     cy.get(input).should('have.attr', 'aria-expanded', 'false').and('be.focused');
   });
@@ -98,7 +99,7 @@ describe('TagPicker', () => {
     mount(<TagPickerFixture onControlClick={event => event.preventDefault()} defaultOpen />);
 
     cy.get(listbox).should('match', ':popover-open');
-    cy.get('[data-testid="tag-picker-control"]').realClick({ position: 'right' });
+    cy.get(control).realClick({ position: 'right' });
     cy.get(listbox).should('not.be.visible').and('not.match', ':popover-open');
     cy.get(input).should('have.attr', 'aria-expanded', 'false');
   });
