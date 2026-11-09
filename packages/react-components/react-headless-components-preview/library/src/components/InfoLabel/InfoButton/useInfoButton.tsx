@@ -8,7 +8,6 @@ import {
   slot,
   useMergedRefs,
   elementContains,
-  useEventCallback,
   useId,
 } from '@fluentui/react-utilities';
 
@@ -107,10 +106,11 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
     }
   };
 
-  // eslint-disable-next-line react-hooks/refs
-  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  // Native closing can blur during child layout effects, so these handlers must use the current render.
+  // eslint-disable-next-line react-hooks/refs -- mergeCallbacks defers ref reads until the blur event.
+  state.root.onBlur = mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo);
   const onInfoBlurCapture = state.info.onBlurCapture as React.FocusEventHandler<HTMLElement> | undefined;
-  // eslint-disable-next-line react-hooks/refs
-  state.info.onBlurCapture = useEventCallback(mergeCallbacks(onInfoBlurCapture, onBlurButtonOrInfo));
+  // eslint-disable-next-line react-hooks/refs -- mergeCallbacks defers ref reads until the blur event.
+  state.info.onBlurCapture = mergeCallbacks(onInfoBlurCapture, onBlurButtonOrInfo);
   return state;
 };

@@ -162,6 +162,36 @@ describe('InfoLabel - close on tab-out', () => {
   });
 
   ([false, true] as const).forEach(inertTrapFocus => {
+    it(`does not notify for an owner-driven close (${inertTrapFocus ? 'modal' : 'non-modal'})`, () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      const onBlurCapture = cy.stub().as('onBlurCapture');
+      const render = (open: boolean) => (
+        <Provider>
+          <button data-testid="outside">Outside</button>
+          <InfoButton
+            className="info-button"
+            info={{ children: 'Information', onBlurCapture }}
+            popover={{ open, inertTrapFocus, onOpenChange }}
+          />
+        </Provider>
+      );
+      const selector = inertTrapFocus ? '[role="dialog"]' : surfaceSelector;
+
+      mountBase(render(false)).then(({ rerender }) => {
+        cy.get('[data-testid=outside]').focus();
+        cy.then(() => rerender(render(true)));
+        cy.get(selector).should('be.visible').and('have.focus');
+        cy.get('@onOpenChange').should('not.have.been.called');
+
+        cy.then(() => rerender(render(false)));
+
+        cy.get(selector).should('not.exist');
+        cy.get('button.info-button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
+        cy.get('@onBlurCapture').should('have.been.calledOnce');
+        cy.get('@onOpenChange').should('not.have.been.called');
+      });
+    });
+
     it(`does not duplicate a native Escape close (${inertTrapFocus ? 'modal' : 'non-modal'})`, () => {
       const onOpenChange = cy.stub().as('onOpenChange');
       mount(
