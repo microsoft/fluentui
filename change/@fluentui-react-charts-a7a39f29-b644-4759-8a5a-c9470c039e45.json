@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: validate pie and donut marker colors and rectangle fill colors before styling",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}

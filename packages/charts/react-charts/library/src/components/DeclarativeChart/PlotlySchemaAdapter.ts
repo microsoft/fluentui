@@ -83,7 +83,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
-import { rgb } from 'd3-color';
+import { color as d3Color, rgb } from 'd3-color';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import type { CartesianChartProps } from '../CommonComponents/index';
@@ -1307,7 +1307,7 @@ export const transformPlotlyJsonToDonutProps = (
 
   // Sort labels by value descending before mapping
   if (firstData.labels && firstData.values) {
-    const markerColors = (firstData.marker?.colors as unknown as string[]) || undefined;
+    const markerColors = firstData.marker?.colors;
     const hasMarkerColors = Array.isArray(markerColors) && markerColors.length >= firstData.labels.length;
     const labelValuePairs = firstData.labels.map((label, index) => ({
       label,
@@ -1322,16 +1322,17 @@ export const transformPlotlyJsonToDonutProps = (
     validPairs.forEach((pair, sortedIdx) => {
       const legend = `${pair.label}`;
       const color: string =
-        pair.color ??
-        resolveColor(
-          colors,
-          sortedIdx,
-          legend,
-          colorMap,
-          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-          isDarkTheme,
-          true,
-        );
+        typeof pair.color === 'string' && d3Color(pair.color)
+          ? pair.color
+          : resolveColor(
+              colors,
+              hasMarkerColors ? pair.index : sortedIdx,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
 
       if (!mapLegendToDataPoint[legend]) {
         mapLegendToDataPoint[legend] = {
@@ -1957,7 +1958,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as ScatterChartProps;
 };
 
-const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
+const mapColorFillBars = (layout: Partial<Layout> | undefined, isDarkTheme?: boolean) => {
   if (!Array.isArray(layout?.shapes)) {
     return [];
   }
@@ -1970,7 +1971,10 @@ const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
         return null;
       }
       return {
-        color: shape.fillcolor!,
+        color:
+          typeof shape.fillcolor === 'string' && d3Color(shape.fillcolor)
+            ? shape.fillcolor
+            : getColorFromToken(DataVizPalette.color1, isDarkTheme),
         data: [{ startX: shape.x0, endX: shape.x1 }],
         applyPattern: false,
       };
@@ -2205,7 +2209,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         : {}),
       ...(!isScatterChart &&
         (() => {
-          const bars = mapColorFillBars(input.layout);
+          const bars = mapColorFillBars(input.layout, isDarkTheme);
           return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
         })()),
     } as LineChartProps;

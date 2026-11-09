@@ -37,6 +37,10 @@ Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and
 Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
 included in chart or legend styles. This validation also applies during server-side rendering.
 
+Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars are validated with the same parser.
+Valid colors are preserved, including transparency; invalid or missing fill colors use the first theme-aware DataViz
+palette color.
+
 ## Contact
 
 The charting project is actively funded by a small feature team. The team responds within 1-2 business days for any queries or doubts.

@@ -9,6 +9,17 @@ Fluent charts is a set of modern, accessible, interactive and highly customizabl
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
 The code snippets can be used as usage guide for all the props and chart variations.
 
+### Declarative chart colors
+
+Pie and donut `marker.colors` values are validated using the same D3 color parser as other Plotly schema colors.
+Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and `hsl()`/`hsla()`.
+Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
+included in chart or legend styles. This validation also applies during server-side rendering.
+
+Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars are validated with the same parser.
+Valid colors are preserved, including transparency; invalid or missing fill colors use the first theme-aware DataViz
+palette color.
+
 ## Available charts across fluent platforms
 
 <table>

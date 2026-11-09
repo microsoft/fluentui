@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate pie and donut marker colors before serializing legend styles",
+  "comment": "fix: validate pie and donut marker colors and rectangle fill colors before styling",
   "packageName": "@fluentui/react-charting",
   "email": "v-baambati@microsoft.com"
 }

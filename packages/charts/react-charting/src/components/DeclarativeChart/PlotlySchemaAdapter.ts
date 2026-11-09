@@ -1978,7 +1978,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as IScatterChartProps;
 };
 
-const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
+const mapColorFillBars = (layout: Partial<Layout> | undefined, isDarkTheme?: boolean) => {
   if (!Array.isArray(layout?.shapes)) {
     return [];
   }
@@ -1991,7 +1991,10 @@ const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
         return null;
       }
       return {
-        color: shape.fillcolor!,
+        color:
+          typeof shape.fillcolor === 'string' && d3Color(shape.fillcolor)
+            ? shape.fillcolor
+            : getColorFromToken(DataVizPalette.color1, isDarkTheme),
         data: [{ startX: shape.x0, endX: shape.x1 }],
         applyPattern: false,
       };
@@ -2230,7 +2233,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         : {}),
       ...(!isScatterChart &&
         (() => {
-          const bars = mapColorFillBars(input.layout);
+          const bars = mapColorFillBars(input.layout, isDarkTheme);
           return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
         })()),
     } as ILineChartProps | IScatterChartProps;

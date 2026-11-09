@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 import { DeclarativeChart } from './index';
 import * as React from 'react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { renderToString } from 'react-dom/server';
+import type { PlotlySchema } from '@fluentui/chart-utilities';
 
 // FIXME
 describe.skip('DeclarativeChart', () => {
@@ -112,5 +114,61 @@ describe.skip('DeclarativeChart', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     const { container } = render(<DeclarativeChart key={'histogram'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('DeclarativeChart SSR colors', () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    const consoleError = console.error;
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((message, ...args) => {
+      if (typeof message === 'string' && message.startsWith('Warning: useLayoutEffect does nothing on the server,')) {
+        return;
+      }
+      consoleError(message, ...args);
+    });
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
+  test.each(['marker', 'piecolorway', 'shape'] as const)('rejects CSS injected through %s colors', source => {
+    const payload = 'red; --css-injection-sentinel:731';
+    const plotlySchema: PlotlySchema = {
+      data:
+        source === 'shape'
+          ? [{ type: 'scatter', mode: 'lines', name: 'A', x: [0, 1], y: [1, 2] }]
+          : [
+              {
+                type: 'pie',
+                labels: ['A'],
+                values: [1],
+                marker: { colors: source === 'marker' ? [payload] : undefined },
+              },
+            ],
+      layout: {
+        piecolorway: source === 'piecolorway' ? [payload] : undefined,
+        shapes: source === 'shape' ? [{ type: 'rect', x0: 0, x1: 1, fillcolor: payload }] : undefined,
+      },
+    };
+
+    const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+
+    expect(html).toContain('A');
+    expect(html).toContain(source === 'shape' ? '<rect fill="' : '--rect-backgroundColor:');
+    expect(html).not.toContain('css-injection-sentinel');
+  });
+
+  test('preserves valid marker colors in serialized legend styles', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1], marker: { colors: ['rebeccapurple'] } }],
+      layout: {},
+    };
+
+    const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+
+    expect(html).toContain('--rect-backgroundColor:rebeccapurple');
   });
 });

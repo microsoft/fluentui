@@ -257,6 +257,37 @@ describe('transform Plotly Json To chart Props', () => {
     expect(result.data?.chartData).toContainEqual(expect.objectContaining({ legend: 'B', color: 'blue' }));
   });
 
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent'])(
+    'transformPlotlyJsonToLineChartProps - preserves valid rectangle fill color %s',
+    fillcolor => {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+        layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+      };
+
+      const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+      expect(result.colorFillBars).toEqual([{ color: fillcolor, data: [{ startX: 0, endX: 1 }], applyPattern: false }]);
+    },
+  );
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    '',
+    undefined,
+  ])('transformPlotlyJsonToLineChartProps - replaces invalid rectangle fill color %s', fillcolor => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+      layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+    };
+
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.colorFillBars?.[0].color).toMatch(/^#[0-9a-f]{6}$/i);
+  });
+
   test('transformPlotlyJsonToDonutProps - treats prototype field names as ordinary legends', () => {
     const plotlySchema: PlotlySchema = {
       data: [

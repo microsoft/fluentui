@@ -129,24 +129,31 @@ describe('DeclarativeChart SSR colors', () => {
     consoleErrorSpy.mockRestore();
   });
 
-  test.each(['marker', 'piecolorway'] as const)('rejects CSS rules injected through %s colors', source => {
+  test.each(['marker', 'piecolorway', 'shape'] as const)('rejects CSS rules injected through %s colors', source => {
     const payload = 'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red';
     const plotlySchema: PlotlySchema = {
-      data: [
-        {
-          type: 'pie',
-          labels: ['A'],
-          values: [1],
-          marker: { colors: source === 'marker' ? [payload] : undefined },
-        },
-      ],
-      layout: { piecolorway: source === 'piecolorway' ? [payload] : undefined },
+      data:
+        source === 'shape'
+          ? [{ type: 'scatter', mode: 'lines', name: 'A', x: [0, 1], y: [1, 2] }]
+          : [
+              {
+                type: 'pie',
+                labels: ['A'],
+                values: [1],
+                marker: { colors: source === 'marker' ? [payload] : undefined },
+              },
+            ],
+      layout: {
+        piecolorway: source === 'piecolorway' ? [payload] : undefined,
+        shapes: source === 'shape' ? [{ type: 'rect', x0: 0, x1: 1, fillcolor: payload }] : undefined,
+      },
     };
 
     const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
     const css = stylesheet.getRules(true);
 
     expect(html).toContain('A');
+    expect(html).not.toContain('css-injection-sentinel');
     expect(css).toContain('background-color:');
     expect(css).not.toContain('css-injection-sentinel');
     expect(css).not.toContain('--injected');

@@ -188,6 +188,78 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test.each([
+    '#FEBFB3',
+    '#abc',
+    'rebeccapurple',
+    'rgb(12, 34, 56)',
+    'rgba(12, 34, 56, 0.5)',
+    'hsl(120, 50%, 50%)',
+    'transparent',
+  ])('transformPlotlyJsonToDonutProps - preserves valid marker color %s after sorting', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.data?.chartData).toEqual([
+      expect.objectContaining({ legend: 'B', color: 'blue' }),
+      expect.objectContaining({ legend: 'A', color }),
+    ]);
+  });
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    'var(--untrusted-color)',
+    '',
+  ])('transformPlotlyJsonToDonutProps - replaces invalid marker color %s with a palette color', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+    const point = result.data?.chartData?.find(item => item.legend === 'A');
+
+    expect(point?.color).toMatch(/^#[0-9a-f]{6}$/i);
+    expect(result.data?.chartData).toContainEqual(expect.objectContaining({ legend: 'B', color: 'blue' }));
+  });
+
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent'])(
+    'transformPlotlyJsonToLineChartProps - preserves valid rectangle fill color %s',
+    fillcolor => {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+        layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+      };
+
+      const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+      expect(result.colorFillBars).toEqual([{ color: fillcolor, data: [{ startX: 0, endX: 1 }], applyPattern: false }]);
+    },
+  );
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    '',
+    undefined,
+  ])('transformPlotlyJsonToLineChartProps - replaces invalid rectangle fill color %s', fillcolor => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+      layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+    };
+
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.colorFillBars?.[0].color).toMatch(/^#[0-9a-f]{6}$/i);
+  });
+
   test.each(['__proto__', 'constructor', 'prototype'])(
     'transformPlotlyJsonToDonutProps - handles a "%s" label without polluting Object.prototype',
     label => {
