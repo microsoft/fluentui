@@ -14,6 +14,9 @@ well-formed, the build succeeds, and the rule simply never applies.
 This plugin runs between Tailwind and `postcss-modules` and wraps every such marker in
 `:global(…)`, so CSS Modules leaves it exactly as authored.
 
+This plugin is optional authoring tooling. It is not needed to consume windmod components or
+their precompiled CSS without Tailwind.
+
 ## Install
 
 ```sh
@@ -57,18 +60,29 @@ module.exports = {
 
 ### Vite
 
-Use Tailwind's Vite plugin rather than `@tailwindcss/postcss` — Tailwind's processing then
-happens inside the Vite plugin, ahead of the rest of the PostCSS chain. Your `postcss.config.js`
-contains only this plugin, in object syntax (the array form does not work with Vite):
+Use Tailwind's PostCSS plugin followed by the marker plugin. Vite provides CSS Modules
+handling, so do not configure another `postcss-modules` pass:
 
 ```js
-// postcss.config.js
-export default {
-  plugins: {
-    '@fluentui/postcss-tailwind-css-modules': {},
+// vite.config.js
+import { defineConfig } from 'vite';
+import tailwind from '@tailwindcss/postcss';
+import globalizeMarkers from '@fluentui/postcss-tailwind-css-modules';
+
+export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [tailwind(), globalizeMarkers()],
+    },
   },
-};
+});
 ```
+
+Vite's inline `css.postcss` requires a plugin array. Alternatively, an external PostCSS config
+can use the object form above with only the Tailwind and marker plugins. Use one configuration
+path; an inline config disables external PostCSS config discovery. This recipe compiles Tailwind
+through PostCSS and does not also need `@tailwindcss/vite`. In a standalone PostCSS pipeline,
+install `postcss-modules` explicitly and use the three-stage chain above.
 
 ## The `include` option
 

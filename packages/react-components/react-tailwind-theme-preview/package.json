@@ -49,7 +49,7 @@
     "*.md",
     "css",
     "dist/base.css",
-    "dist/themes",
+    "dist/themes/*.css",
     "dist/styles.css",
     "theme-class-names.mjs",
     "theme-class-names.cjs",

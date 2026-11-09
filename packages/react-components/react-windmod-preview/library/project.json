@@ -9,7 +9,7 @@
     "exportMap": {
       "root": true,
       "subpathEntryPoints": ["src/*.ts"],
-      "staticSubpaths": ["./base.css", "./css/*", "./styles.css", "./variants.css"]
+      "staticSubpaths": ["./base.css", "./css/*", "./styles.css", "./variants.css", "./theme.css"]
     }
   },
   "targets": {
@@ -17,6 +17,15 @@
       "options": {
         "exportSubpaths": true
       }
+    },
+    "test-integration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/css-modules/verify-consumers.cjs"
+      },
+      "dependsOn": ["build"],
+      "inputs": ["default", "^production", "{workspaceRoot}/scripts/css-modules/verify-consumers.cjs"],
+      "cache": false
     }
   }
 }

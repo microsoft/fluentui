@@ -64,9 +64,10 @@ task. Load a reference only on its trigger; each one is self-contained.
 - **NEVER assume `Tooltip`/`Popover` position on Firefox or Safari** — native anchor positioning, no fallback.
 - **NEVER assume drop-in parity with the Griffel twin** — sixty-four deliberate deltas are documented.
 
-## Setup — two stylesheets, one provider
+## Setup: compiled bases, selected themes, one provider
 
-Missing any of these produces symptoms that read as styling bugs.
+These compiled imports need no Tailwind or PostCSS installation. Missing any produces symptoms
+that read as styling bugs.
 
 ```sh
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
@@ -94,7 +95,10 @@ export const App = () => (
 
 There is no root barrel: every component comes from its kebab-case family subpath. CommonJS and SSR
 builds import `@fluentui/react-windmod-preview/styles.css` (root sheet plus every component) instead
-of `base.css`. If you run Tailwind yourself, declare the `fui` layers before `@import 'tailwindcss'`.
+of the windmod `base.css`, delivered through a client entry or `<link>`. The aggregate does not
+include theme CSS. Optional Tailwind authoring uses
+`@reference '@fluentui/react-windmod-preview/theme.css'`; see Setup for tooling and raw-source
+alternatives. When combining with a default Tailwind entry, declare `fui` layers before its import.
 `FluentProvider` is a real `div` that paints its background — it becomes the flex or grid item, not its
 children.
 

@@ -198,10 +198,12 @@ Non-JavaScript subpaths:
 | `./styles.css`   | the batteries-included monolith                               |
 | `./css/*`        | the individual per-component chunks                           |
 | `./variants.css` | the component-specific variant catalog, for your own Tailwind |
+| `./theme.css`    | raw composed reference for optional Tailwind authoring        |
 
-## Plain-CSS consumers: no setup at all
+## Plain-CSS consumers: no Tailwind toolchain
 
-If you are not running Tailwind, you need nothing beyond the two stylesheet imports. Your CSS is
+If you are not running Tailwind, load the theme base, selected theme and windmod base shown above.
+No Tailwind, PostCSS or CSS Modules processing is needed for published components. Your CSS is
 unlayered and beats every `fui.*` layer by default:
 
 ```css
@@ -214,9 +216,76 @@ That is the whole override story. See [overriding.md](overriding.md).
 
 ## Tailwind consumers
 
-### Make your own utilities beat Fluent's
+Tailwind is optional authoring tooling, not a runtime dependency. For PostCSS applications:
 
-Cascade layer order is first-appearance, so declare the `fui` family **before** importing Tailwind:
+```sh
+npm install --save-dev tailwindcss@^4.3.2 @tailwindcss/postcss@^4.3.2 postcss@^8.4.0
+```
+
+### Recommended: compiled library styles plus application utilities
+
+Keep the three compiled imports from Mode 1 (theme base, selected theme, windmod base), then
+process your application stylesheet with `@tailwindcss/postcss`:
+
+```css
+/* src/index.css */
+@reference '@fluentui/react-windmod-preview/theme.css';
+@tailwind utilities;
+```
+
+The public `theme.css` reference combines Fluent tokens, utilities and both variant catalogs.
+It emits no base or theme CSS. Application utilities here are unlayered and override library
+layers. Tailwind must scan the application files containing utility class names; use `@source`
+for extra application paths when needed. `@source` discovers usage, not variant declarations.
+
+```js
+// postcss.config.cjs (global stylesheets)
+module.exports = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+```
+
+### Alternative: compile raw theme sources
+
+Replace the compiled theme base and selected theme imports with these raw inputs in your global
+stylesheet. Keep windmod's compiled base and automatically loaded component chunks:
+
+```css
+@import '@fluentui/react-tailwind-theme-preview/css/index.css';
+@import '@fluentui/react-tailwind-theme-preview/css/themes/web-dark.css';
+@import '@fluentui/react-windmod-preview/variants.css';
+@import '@fluentui/react-icons/headless/styles.css' layer(fui.base);
+@import '@fluentui/react-windmod-preview/base.css';
+```
+
+Install `@fluentui/react-icons@^2.0.339` directly when importing its stylesheet. The raw index
+provides preflight, tokens, utilities and generic variants, but no theme values or icon stylesheet.
+The additional imports supply those pieces. Do not also load compiled theme base/themes in this
+alternative. Generated utilities live in `fui.utilities`; unlayered application CSS still wins.
+Add `source(none)` to the raw index import to suppress scanned utility generation.
+
+### Public raw-source entry points
+
+- `@fluentui/react-windmod-preview/theme.css`: composed authoring reference.
+- `@fluentui/react-windmod-preview/variants.css`: component variants.
+- `@fluentui/react-tailwind-theme-preview/css/index.css`: theme-less Tailwind source entry.
+- `@fluentui/react-tailwind-theme-preview/css/emit.css`: raw base including layered icons.
+- `@fluentui/react-tailwind-theme-preview/css/tokens.css`: token registrations and invariant values.
+- `@fluentui/react-tailwind-theme-preview/css/variants.css`: generic variants.
+- `@fluentui/react-tailwind-theme-preview/css/utilities.css`: custom utilities.
+- `@fluentui/react-tailwind-theme-preview/css/themes/<name>.css`: selected raw theme values.
+- `@fluentui/react-tailwind-theme-preview/css/themes.css`: all seven raw themes.
+- `@fluentui/react-tailwind-theme-preview/css/emit-monolith.css`: raw base plus all themes.
+
+These are authoring inputs, unlike compiled `base.css`, `themes/*.css` and `styles.css`.
+Windmod's `css/*` export contains compiled component chunks, not raw component modules.
+
+### Combining with a separate default Tailwind entry
+
+If you also use Tailwind's default theme and utilities, cascade layer order is first-appearance.
+Declare the `fui` family **before** that separate Tailwind import:
 
 ```css
 @layer fui.theme, fui.base, fui.components, fui.utilities;
@@ -285,33 +354,20 @@ Everything above covers a global Tailwind entry stylesheet. If you author **CSS 
 `@apply` — the same shape the library's own components use — three more things have to be true, and
 two of them fail silently when they are not.
 
-**1. Every module needs a `@reference`.** `@apply` and `@variant` resolve against whatever the file
-references; a module that references nothing sees no Fluent tokens and no catalog variants. Compose
-one reference target once and point every module at it — this is exactly what the library does
-internally with `#theme`:
+**1. Every module needs a `@reference`.** Reference the application Tailwind entry:
 
 ```css
-/* src/theme.css — tokens, generic vocabulary, layer order, then the component-specific catalog */
-@import '@fluentui/react-tailwind-theme-preview/css/index.css';
-@import '@fluentui/react-windmod-preview/variants.css';
-```
-
-```jsonc
-// package.json — a subpath import so the reference is one stable line in every module
-{ "imports": { "#theme": "./src/theme.css" } }
-```
-
-```css
-/* any *.module.css */
-@reference '#theme';
+/* src/Panel.module.css */
+@reference './index.css';
 
 .panel {
   @apply rounded-medium bg-neutral-background-2 px-horizontal-m;
 }
 ```
 
-`@reference` emits nothing — it only makes the vocabulary visible to the compiler. The CSS itself
-still comes from the two stylesheet imports in the setup section.
+Alternatively, reference `@fluentui/react-windmod-preview/theme.css` directly when no application
+vocabulary is needed. References emit no base or theme styles; keep the compiled imports when
+using the recommended route.
 
 **2. Named `group/…` and `peer/…` markers must survive CSS Modules.** Tailwind compiles
 `@apply group-disabled/fui-button:line-through` to a selector containing `.group\/fui-button`;
@@ -323,10 +379,12 @@ must see the wrapper). Your pipeline needs the same step:
 
 ```sh
 npm install --save-dev @fluentui/postcss-tailwind-css-modules
+# Only for a standalone pipeline without bundler-provided CSS Modules:
+npm install --save-dev postcss-modules
 ```
 
 ```js
-// postcss.config.js — the order is the point
+// postcss.config.cjs - standalone pipeline
 module.exports = {
   plugins: {
     '@tailwindcss/postcss': {},
@@ -336,9 +394,13 @@ module.exports = {
 };
 ```
 
-If you use Vite, use Tailwind's Vite plugin instead of `@tailwindcss/postcss`, so `postcss.config.js`
-contains only `@fluentui/postcss-tailwind-css-modules` (object syntax — the array form does not work
-with Vite).
+When the bundler provides CSS Modules, do not add a second `postcss-modules` pass. The marker
+plugin must see Tailwind output before the bundler scopes the classes. With Vite, configure
+`css.postcss.plugins: [tailwind(), globalizeMarkers()]`, importing the plugins from
+`@tailwindcss/postcss` and `@fluentui/postcss-tailwind-css-modules`. Vite then performs module
+scoping. This PostCSS route does not also need `@tailwindcss/vite`. External PostCSS config can
+instead use object syntax with those two plugins. Use one configuration path and verify that
+emitted selectors preserve literal named group/peer classes.
 
 If you would rather not touch the pipeline, write named-group and peer rules in a **global**
 stylesheet (not a module): unlayered, they win anyway, and nothing hashes them.
@@ -356,7 +418,7 @@ the sorter is a safety net; break it and the sorter becomes camouflage.
 
 Any sorter works — `prettier-plugin-tailwindcss`, oxfmt's Tailwind class sorting, Biome's sorted-classes
 rule — on two conditions. It must be pointed at the **same reference target your modules use**
-(`src/theme.css` above; each tool has a setting for the Tailwind v4 stylesheet), or it will not know
+(`src/index.css` above; each tool has a setting for the Tailwind v4 stylesheet), or it will not know
 the Fluent utilities and catalog variants and will leave them unsorted or push them to the end. And
 leave sorting of JavaScript call expressions (`clsx`, `cn`) off if the argument order carries meaning,
 since a sorter may reorder across arguments.
@@ -367,8 +429,8 @@ since a sorter may reorder across arguments.
   (or the all-seven `styles.css`), once, before your own CSS.
 - `@fluentui/react-windmod-preview/base.css` (or the aggregate `styles.css` for CommonJS/SSR) once.
 - A `FluentProvider` above every windmod component.
-- If you run Tailwind: the `fui` layer list declared before `@import 'tailwindcss'`, and both variant
-  catalogs imported.
+- If you run Tailwind: reference the public `theme.css`, or import both catalogs in a raw-source
+  setup. When combining with a separate default Tailwind entry, declare the `fui` layers first.
 - If you write CSS Modules: a `@reference` in every module, the marker-globalizing step between
   Tailwind and `postcss-modules`, a class sorter pointed at the reference target, and one `@apply` per rule.
 

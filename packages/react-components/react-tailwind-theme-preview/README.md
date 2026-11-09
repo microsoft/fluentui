@@ -38,6 +38,8 @@ before your own styles, since theme styles must load first:
 // src/main.jsx (or _app.tsx, root layout, etc.)
 import '@fluentui/react-tailwind-theme-preview/base.css';
 import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
+// Also required when using windmod components:
+import '@fluentui/react-windmod-preview/base.css';
 ```
 
 Then apply that theme's class. windmod's `FluentProvider` is the usual way (a block element
@@ -134,3 +136,30 @@ and one-off overrides that should still lose to your unlayered CSS.
 
 Only `base.css`, `themes/*.css`, `styles.css` and `theme-class-names` are consumable without a
 Tailwind toolchain.
+
+## Optional source authoring
+
+Compiled `base.css`, `themes/*.css` and `styles.css` need no Tailwind or PostCSS. To author
+against raw source exports, install development tooling:
+
+```sh
+npm install --save-dev tailwindcss@^4.3.2 @tailwindcss/postcss@^4.3.2 postcss@^8.4.0
+```
+
+With windmod, keep the compiled stylesheet imports and use its public composed reference:
+
+```css
+/* src/index.css */
+@reference '@fluentui/react-windmod-preview/theme.css';
+@tailwind utilities;
+```
+
+This emits application utilities without re-emitting base or theme styles. Alternatively, compile
+`css/index.css` with `css/themes/<name>.css`, windmod's `variants.css`, the headless icon stylesheet
+in `layer(fui.base)`, and windmod's compiled `base.css`. Install the icons package directly when
+importing its stylesheet. `css/emit.css` is the raw base including layered icons;
+`css/emit-monolith.css` adds all seven themes.
+
+CSS Modules authoring also uses `@fluentui/postcss-tailwind-css-modules` between Tailwind and
+module scoping. See [windmod Setup](../react-windmod-preview/library/skills/fluentui-windmod/references/setup.md#tailwind-consumers)
+for complete recipes and the public raw-source inventory.

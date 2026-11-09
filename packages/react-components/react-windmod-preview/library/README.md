@@ -35,7 +35,11 @@ recipe is in the [skill's README](./skills/fluentui-windmod/README.md).
 Coming from `@fluentui/react-components`? [MIGRATION.md](./MIGRATION.md) is the port guide: the family
 map, the parity contract, every deliberate difference, and what is not shipped.
 
-## Usage
+## Usage without Tailwind
+
+The packages ship compiled CSS. No Tailwind, PostCSS, or CSS Modules plugin is needed to use
+the components or override them with ordinary CSS. Use your bundler's normal CSS import
+support, or serve the compiled stylesheets with `<link>` elements.
 
 ```sh
 npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-preview
@@ -45,6 +49,7 @@ npm install @fluentui/react-windmod-preview @fluentui/react-tailwind-theme-previ
 // Once per document, before your own styles: the theme-less base, then one file per theme you ship.
 import '@fluentui/react-tailwind-theme-preview/base.css';
 import '@fluentui/react-tailwind-theme-preview/themes/web-dark.css';
+import '@fluentui/react-windmod-preview/base.css';
 ```
 
 ```jsx
@@ -77,7 +82,36 @@ CommonJS/SSR consumers instead import `@fluentui/react-windmod-preview/styles.cs
 batteries-included aggregate carrying the root sheet and every component in one file; the theme
 package's `styles.css` is the matching all-in-one for base + all seven themes.
 
-See [MIGRATION.md](./MIGRATION.md#installation-and-imports) for both setups.
+The windmod aggregate does **not** include the theme base or theme values. For SSR, deliver
+the CSS through the client entry or `<link>`, not a CSS import executed by plain Node.js.
+
+### Optional: author with Tailwind and PostCSS
+
+Only install this development tooling if your application authors Tailwind utilities, `@apply`,
+or `@variant`:
+
+```sh
+npm install --save-dev tailwindcss@^4.3.2 @tailwindcss/postcss@^4.3.2 postcss@^8.4.0
+```
+
+Keep the three compiled stylesheet imports above and process your application stylesheet with
+`@tailwindcss/postcss`:
+
+```css
+/* src/index.css */
+@reference '@fluentui/react-windmod-preview/theme.css';
+@tailwind utilities;
+```
+
+The public `theme.css` reference combines Fluent tokens, utilities and both variant catalogs.
+`@reference` emits no base or theme styles. Application utilities emitted here are unlayered,
+so they override the library layers. Tailwind must scan your application class names.
+
+CSS Modules additionally need `@fluentui/postcss-tailwind-css-modules` to preserve named
+group/peer markers. See [Setup](./skills/fluentui-windmod/references/setup.md#tailwind-consumers)
+for the full pipeline, raw-source alternative, and public source inventory.
+
+See [MIGRATION.md](./MIGRATION.md#installation-and-imports) for migration guidance.
 
 ## Scaling a subtree — ScaleRegion
 
@@ -111,7 +145,7 @@ top-layer elements stay in the DOM tree for inheritance.
   `group/fui-button` (Tailwind's real named-group class). Internals use hashed idents and
   `data-*` state attributes (`data-open`, `data-placement`, `data-size`, …).
 - Children inside a component can target it directly with `group-<variant>/fui-<component>`
-  (e.g. `group-disabled/fui-button:text-red-500`) — no group name declaration required.
+  (e.g. `group-disabled/fui-button:text-neutral-foreground-disabled`) — no group name declaration required.
   Consumers may additionally add their own `group/name` via `className` to disambiguate nested
   instances of the same component, but are never required to.
 
@@ -216,3 +250,12 @@ declarations yourself, from an unlayered stylesheet:**
 
 The same probe run above measured this path side by side with the Griffel one and produced
 identical visibility numbers at all eight widths.
+
+## Verify package consumers (contributors)
+
+Run `yarn nx run react-windmod-preview:test-integration` after packaging or source-export changes.
+This separate integration target builds the package, packs the three styling packages, and checks
+production bundling without Tailwind, CommonJS server rendering, exported CSS assets, and optional
+Tailwind/PostCSS application authoring, and standalone and Vite CSS Modules authoring. It reuses installed runtime dependencies
+and the host `tar` command. It does not install from the registry or replace browser
+visual-regression testing. The existing PR `test-integration` stage runs this target when affected.
