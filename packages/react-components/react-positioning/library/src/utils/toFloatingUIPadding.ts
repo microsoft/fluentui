@@ -9,15 +9,20 @@ export function toFloatingUIPadding(
     return padding;
   }
 
-  const { start, end, ...verticalPadding } = padding;
+  const paddingObject: Partial<SideObject> = {};
 
-  const paddingObject: Partial<SideObject> = verticalPadding;
+  // Undefined sides override Floating UI's zero defaults and produce NaN overflow.
+  if (padding.top !== undefined) {
+    paddingObject.top = padding.top;
+  }
+
+  if (padding.bottom !== undefined) {
+    paddingObject.bottom = padding.bottom;
+  }
 
   const left = isRtl ? 'end' : 'start';
   const right = isRtl ? 'start' : 'end';
 
-  // assign properties explicitly since undefined values are actually handled by floating UI
-  // TODO create floating UI issue
   if (padding[left]) {
     paddingObject.left = padding[left];
   }

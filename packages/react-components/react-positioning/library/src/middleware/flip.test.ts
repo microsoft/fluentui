@@ -68,6 +68,18 @@ describe('flip', () => {
     expect(result).toMatchObject({ placement: 'bottom', x: 70, y: 65 });
   });
 
+  it.each(['top', 'bottom'] as const)('treats undefined %s padding as omitted', async side => {
+    for (const flipBoundaryPadding of [{}, { [side]: undefined }, { [side]: 0 }]) {
+      const result = await computePosition(document.createElement('div'), document.createElement('div'), {
+        placement: side,
+        middleware: [flip({ container: null, flipBoundaryPadding })],
+        platform,
+      });
+
+      expect(result).toMatchObject({ placement: side, x: 70, y: side === 'top' ? 5 : 65 });
+    }
+  });
+
   it('does not use overflowBoundaryPadding for flipping', async () => {
     const { result: positioningOptions } = renderHook(() =>
       usePositioningOptions({ position: 'above', overflowBoundaryPadding: 10 }),
