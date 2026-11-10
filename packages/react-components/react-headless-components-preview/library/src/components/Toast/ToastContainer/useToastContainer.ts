@@ -161,7 +161,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       stack.removeEventListener('focusin', onFocusIn);
       stack.removeEventListener('focusout', onFocusOut);
     };
-  }, [pause, targetDocument]);
+  }, [pause, targetDocument, visible]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -172,7 +172,8 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     reportStatus('visible');
   }, [visible, play, reportStatus, updateId]);
 
-  usePausableTimer({ timeout, running, onTimeout: close, resetKey: updateId });
+  // Queued toasts must not count down before they are shown.
+  usePausableTimer({ timeout, running: running && visible, onTimeout: close, resetKey: updateId });
 
   // Queued toasts mount before they are visible; only a toast that was shown can be dismissed and removed.
   const wasVisibleRef = React.useRef(false);
