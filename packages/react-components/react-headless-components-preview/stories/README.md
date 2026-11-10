@@ -25,41 +25,6 @@ module.exports = {
 
 No public API — this package only ships stories.
 
-## Reproducing scrollable menu keyboard opening
-
-With the repository's pinned Node and Yarn versions and dependencies installed,
-run these commands from the repository root:
-
-```sh
-yarn nx run react-headless-components-preview:start --port 6006 --ci
-yarn nx run react-headless-components-preview:e2e --spec src/components/Menu/Menu.cy.tsx
-yarn nx run react-menu:test --runTestsByPath src/components/MenuTrigger/useMenuTrigger.test.tsx --runInBand
-```
-
-Open <http://localhost:6006/iframe.html?id=components-menu--scrollable&viewMode=story>
-in Chromium, using a 1200 by 600 viewport at 100% zoom. This runs the checked-out
-source, not a released package or a deployed PR preview. The fixture is
-`src/Menu/MenuScrollable.stories.tsx`; the native-key regression is
-`../library/src/components/Menu/Menu.cy.tsx`.
-
-1. Reload to reset the closed menu, click unused preview space, then Tab to
-   **Open scrollable menu** so keyboard input reaches the preview.
-2. Press ArrowDown once. **Action 1** should receive focus, remain fully inside
-   the scrollable surface, and the surface's `scrollTop` should stay at `0`,
-   including after the browser finishes any native scroll animation.
-3. Reload and repeat with Enter as a control. It should produce the same initial
-   focused item and scroll position.
-4. From the open menu, use ArrowDown to navigate items and Escape to dismiss.
-   Navigation within the menu should still scroll later items into view.
-
-On the affected baseline, Chromium opens and focuses Action 1 but then scrolls
-the surface, clipping the focused row. The regression checks focus, actual
-overflow, `scrollTop`, and the first item's bounds after native scrolling has
-had time to occur. Check the same recipe on the repaired source; an old deployed
-playground is not evidence that the repair works. WebKit may not exhibit the
-baseline scroll. This recipe establishes browser focus and geometry, not
-screen-reader speech or whole-component accessibility conformance.
-
 ---
 
 ## Authoring a new component story

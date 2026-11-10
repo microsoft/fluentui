@@ -31,7 +31,7 @@ describe('Menu', () => {
         cy.get('#scrollable-trigger').focus().realPress(key);
         cy.get('#scrollable-item-0').should('be.focused');
         // Native ArrowDown scrolling animates after focus; an immediate assertion can miss it.
-        cy.wait(500);
+        cy.wait(200);
         cy.get('#scrollable-surface').should($surface => {
           const surface = $surface[0];
           const item = surface.querySelector<HTMLElement>('#scrollable-item-0')!;
