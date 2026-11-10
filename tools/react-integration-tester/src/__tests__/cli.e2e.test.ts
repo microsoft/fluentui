@@ -411,6 +411,8 @@ describe('rit CLI e2e', () => {
         react: resolve(usedNodeModulesPath, './react'),
         'react-dom': resolve(usedNodeModulesPath, './react-dom'),
       };
+      config.component.devServer.webpackConfig.optimization ??= {};
+      config.component.devServer.webpackConfig.optimization.splitChunks = false;
 
       export default config;
       "
