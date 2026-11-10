@@ -101,6 +101,15 @@ import {
 } from '../../types/IChartAnnotation';
 import { calculatePrecision, precisionRound } from '@fluentui/react';
 import type { ITitleStyles } from '../../utilities/Common.styles';
+import {
+  getValidFont,
+  getValidFontFamily,
+  getValidFontWeight,
+  getValidPadding,
+  getValidStyleLength,
+  getValidStyleNumber,
+  getValidTextAlign,
+} from './PlotlyStyleAdapter';
 import { PolarAxisProps, IPolarChartProps } from '../PolarChart/index';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
@@ -180,15 +189,19 @@ const dashOptions = {
 function getTitles(layout: Partial<Layout> | undefined) {
   const titleObj = layout?.title;
   const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
-  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+  const titleFont = getValidFont(typeof titleObj === 'object' ? titleObj?.font : undefined);
   const titleXAnchor = typeof titleObj === 'object' ? titleObj?.xanchor : undefined;
   const titleYAnchor = typeof titleObj === 'object' ? titleObj?.yanchor : undefined;
-  const titlePad = typeof titleObj === 'object' ? titleObj?.pad : undefined;
+  const titlePad = getValidPadding(typeof titleObj === 'object' ? titleObj?.pad : undefined);
 
   const titleStyles: ITitleStyles = {
     ...(titleFont ? { titleFont } : {}),
-    ...(titleXAnchor ? { titleXAnchor } : {}),
-    ...(titleYAnchor ? { titleYAnchor } : {}),
+    ...(titleXAnchor === 'auto' || titleXAnchor === 'left' || titleXAnchor === 'center' || titleXAnchor === 'right'
+      ? { titleXAnchor }
+      : {}),
+    ...(titleYAnchor === 'auto' || titleYAnchor === 'top' || titleYAnchor === 'middle' || titleYAnchor === 'bottom'
+      ? { titleYAnchor }
+      : {}),
     ...(titlePad ? { titlePad } : {}),
   };
 
@@ -678,19 +691,6 @@ const mapVerticalAlign = (anchor?: string): ChartAnnotationVerticalAlign | undef
   }
 };
 
-const appendPx = (value: unknown): string | undefined => {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-  if (typeof value === 'string') {
-    return value;
-  }
-  if (typeof value === 'number' && Number.isFinite(value)) {
-    return `${value}px`;
-  }
-  return undefined;
-};
-
 /**
  * Maps Plotly's axis reference string to one of our coordinate interpretation modes (axis, relative, or pixel).
  */
@@ -1075,12 +1075,14 @@ const convertPlotlyAnnotation = (
     layoutProps.maxWidth = maxWidth;
   }
 
-  if (annotation.bgcolor) {
-    styleProps.backgroundColor = annotation.bgcolor as string;
+  const backgroundColor = getValidColor(annotation.bgcolor);
+  if (backgroundColor) {
+    styleProps.backgroundColor = backgroundColor;
   }
 
-  if (annotation.bordercolor) {
-    styleProps.borderColor = annotation.bordercolor as string;
+  const borderColor = getValidColor(annotation.bordercolor);
+  if (borderColor) {
+    styleProps.borderColor = borderColor;
   }
 
   const borderWidth = toFiniteNumber(annotation.borderwidth);
@@ -1088,7 +1090,7 @@ const convertPlotlyAnnotation = (
     styleProps.borderWidth = borderWidth;
   }
 
-  const borderPad = appendPx(annotation.borderpad);
+  const borderPad = getValidStyleLength(annotation.borderpad);
   if (borderPad) {
     styleProps.padding = borderPad;
   }
@@ -1104,15 +1106,17 @@ const convertPlotlyAnnotation = (
       size?: string | number;
       weight?: React.CSSProperties['fontWeight'];
     };
-    if (font?.color) {
-      styleProps.textColor = font.color;
+    const textColor = getValidColor(font?.color);
+    if (textColor) {
+      styleProps.textColor = textColor;
     }
-    const fontSize = appendPx(font?.size);
+    const fontSize = getValidStyleLength(font?.size);
     if (fontSize) {
       styleProps.fontSize = fontSize;
     }
-    if (font?.weight) {
-      styleProps.fontWeight = font.weight;
+    const fontWeight = getValidFontWeight(font?.weight);
+    if (fontWeight !== undefined) {
+      styleProps.fontWeight = fontWeight;
     }
   }
 
@@ -1135,7 +1139,7 @@ const convertPlotlyAnnotation = (
   }
 
   if (showArrow) {
-    const arrowColor = (annotation.arrowcolor as string) ?? styleProps.textColor;
+    const arrowColor = getValidColor(annotation.arrowcolor) ?? styleProps.textColor;
     const arrowWidth = toFiniteNumber(annotation.arrowwidth);
     const endPadding = toFiniteNumber(annotation.standoff);
     const startPadding = toFiniteNumber((annotation as { startstandoff?: number }).startstandoff);
@@ -1268,13 +1272,13 @@ export const transformPlotlyJsonToAnnotationChartProps = (
   const description =
     typeof layoutWithMeta?.meta?.description === 'string' ? layoutWithMeta.meta.description : undefined;
 
-  const width = typeof input.layout?.width === 'number' ? input.layout.width : undefined;
-  const height = typeof input.layout?.height === 'number' ? input.layout.height : undefined;
-  const paperBackgroundColor = typeof input.layout?.paper_bgcolor === 'string' ? input.layout.paper_bgcolor : undefined;
-  const plotBackgroundColor = typeof input.layout?.plot_bgcolor === 'string' ? input.layout.plot_bgcolor : undefined;
-  const fontColor = typeof input.layout?.font?.color === 'string' ? input.layout.font.color : undefined;
-  const fontFamily = typeof input.layout?.font?.family === 'string' ? input.layout.font.family : undefined;
-  const margin = input.layout?.margin;
+  const width = getValidStyleNumber(input.layout?.width);
+  const height = getValidStyleNumber(input.layout?.height);
+  const paperBackgroundColor = getValidColor(input.layout?.paper_bgcolor);
+  const plotBackgroundColor = getValidColor(input.layout?.plot_bgcolor);
+  const fontColor = getValidColor(input.layout?.font?.color);
+  const fontFamily = getValidFontFamily(input.layout?.font?.family);
+  const margin = getValidPadding(input.layout?.margin);
 
   return {
     annotations,
@@ -1355,8 +1359,8 @@ export const transformPlotlyJsonToDonutProps = (
     });
   }
 
-  const width: number = input.layout?.width ?? 440;
-  const height: number = input.layout?.height ?? 220;
+  const width: number = getValidStyleNumber(input.layout?.width) ?? 440;
+  const height: number = getValidStyleNumber(input.layout?.height) ?? 220;
   const hideLabels: boolean = firstData.textinfo
     ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
     : false;
@@ -1384,7 +1388,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartData: reorderedEntries.map(([, v]) => v as IChartDataPoint),
     },
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
-    width: input.layout?.width,
+    width: getValidStyleNumber(input.layout?.width),
     height,
     innerRadius,
     hideLabels,
@@ -1592,8 +1596,8 @@ export const transformPlotlyJsonToVSBCProps = (
 
   return {
     data: vsbcData,
-    width: input.layout?.width,
-    height: input.layout?.height ?? 350,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 350,
     barWidth: 'auto',
     yMaxValue,
     yMinValue,
@@ -1782,8 +1786,8 @@ export const transformPlotlyJsonToGVBCProps = (
 
   return {
     dataV2: gvbcDataV2,
-    width: processedInput.layout?.width,
-    height: processedInput.layout?.height ?? 350,
+    width: getValidStyleNumber(processedInput.layout?.width),
+    height: getValidStyleNumber(processedInput.layout?.height) ?? 350,
     barwidth: 'auto',
     mode: 'plotly',
     ...secondaryYAxisValues,
@@ -1905,8 +1909,8 @@ export const transformPlotlyJsonToVBCProps = (
 
   return {
     data: vbcData,
-    width: input.layout?.width,
-    height: input.layout?.height ?? 350,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 350,
     supportNegativeData: true,
     mode: 'histogram',
     hideTickOverlap: true,
@@ -2193,8 +2197,8 @@ const transformPlotlyJsonToScatterTraceProps = (
   const commonProps = {
     supportNegativeData: true,
     ...secondaryYAxisValues,
-    width: input.layout?.width,
-    height: input.layout?.height ?? 350,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 350,
     hideTickOverlap: true,
     hideLegend,
     useUTC: false,
@@ -2287,9 +2291,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight: number = input.layout?.height ?? 450;
-  const margin: number = input.layout?.margin?.l ?? 0;
-  const padding: number = input.layout?.margin?.pad ?? 0;
+  const chartHeight: number = getValidStyleNumber(input.layout?.height) ?? 450;
+  const margin: number = getValidStyleNumber(input.layout?.margin?.l) ?? 0;
+  const padding: number = getValidStyleNumber(input.layout?.margin?.pad) ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
   const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
   const scalingFactor = 0.01;
@@ -2305,7 +2309,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     barHeight,
     showYAxisLables: true,
     height: chartHeight,
-    width: input.layout?.width,
+    width: getValidStyleNumber(input.layout?.width),
     hideTickOverlap: true,
     hideLegend,
     noOfCharsToTruncate: 20,
@@ -2409,8 +2413,8 @@ export const transformPlotlyJsonToGanttChartProps = (
   return {
     data: ganttData,
     showYAxisLables: true,
-    height: input.layout?.height ?? 350,
-    width: input.layout?.width,
+    height: getValidStyleNumber(input.layout?.height) ?? 350,
+    width: getValidStyleNumber(input.layout?.width),
     hideTickOverlap: true,
     hideLegend,
     noOfCharsToTruncate: 20,
@@ -2639,8 +2643,8 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideLegend: true,
     showYAxisLables: true,
     sortOrder: 'none',
-    width: input.layout?.width,
-    height: input.layout?.height ?? 350,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 350,
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
@@ -2724,7 +2728,9 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
+      ...(getValidStyleNumber(input.layout?.font?.size, 1) !== undefined
+        ? { fontSize: getValidStyleNumber(input.layout?.font?.size, 1) }
+        : {}),
     },
   };
 
@@ -2735,8 +2741,8 @@ export const transformPlotlyJsonToSankeyProps = (
       chartTitle,
       SankeyChartData: sankeyChartData,
     },
-    width: input.layout?.width,
-    height: input.layout?.height ?? 468,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 468,
     styles,
     enableReflow: false,
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
@@ -2858,8 +2864,8 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    width: input.layout?.width,
-    height: input.layout?.height ?? 220,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
     roundCorners: true,
@@ -2961,11 +2967,9 @@ export const transformPlotlyJsonToChartTableProps = (
       //headers are at first row only
       const rowIndex = 0;
       const fontColor = getValidColor(resolveCellStyle(header?.font?.color, rowIndex, colIndex));
-      const fontSize = resolveCellStyle(header?.font?.size, rowIndex, colIndex) as number | undefined;
-      const backgroundColor = resolveCellStyle(header?.fill?.color, rowIndex, colIndex) as string | undefined;
-      const textAlign = resolveCellStyle(header?.align, rowIndex, colIndex) as
-        | React.CSSProperties['textAlign']
-        | undefined;
+      const fontSize = getValidStyleNumber(resolveCellStyle(header?.font?.size, rowIndex, colIndex), 1);
+      const backgroundColor = getValidColor(resolveCellStyle(header?.fill?.color, rowIndex, colIndex));
+      const textAlign = getValidTextAlign(resolveCellStyle(header?.align, rowIndex, colIndex));
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -2990,11 +2994,9 @@ export const transformPlotlyJsonToChartTableProps = (
           : cleanValue;
 
       const fontColor = getValidColor(resolveCellStyle(cells?.font?.color, rowIndex, colIndex));
-      const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
-      const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
-      const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as
-        | React.CSSProperties['textAlign']
-        | undefined;
+      const fontSize = getValidStyleNumber(resolveCellStyle(cells?.font?.size, rowIndex, colIndex), 1);
+      const backgroundColor = getValidColor(resolveCellStyle(cells?.fill?.color, rowIndex, colIndex));
+      const textAlign = getValidTextAlign(resolveCellStyle(cells?.align, rowIndex, colIndex));
 
       const style: React.CSSProperties = {
         ...(fontColor ? { color: fontColor } : {}),
@@ -3012,7 +3014,9 @@ export const transformPlotlyJsonToChartTableProps = (
 
   const styles: IChartTableProps['styles'] = {
     root: {
-      ...(input.layout?.font?.size ? { fontSize: input.layout.font.size } : {}),
+      ...(getValidStyleNumber(input.layout?.font?.size, 1) !== undefined
+        ? { fontSize: getValidStyleNumber(input.layout?.font?.size, 1) }
+        : {}),
     },
   };
 
@@ -3037,8 +3041,8 @@ export const transformPlotlyJsonToChartTableProps = (
   return {
     headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
-    width: input.layout?.width,
-    height: input.layout?.height,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height),
     styles,
     chartTitle,
     ...(titleStyles ? { titleStyles } : {}),
@@ -3198,8 +3202,8 @@ export const transformPlotlyJsonToFunnelChartProps = (
   return {
     data: funnelData,
     chartTitle,
-    width: input.layout?.width,
-    height: input.layout?.height,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height),
     orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     ...(titleStyles ? { titleStyles } : {}),
@@ -3303,8 +3307,8 @@ export const transformPlotlyJsonToPolarChartProps = (
 
   return {
     data: polarData,
-    width: input.layout?.width,
-    height: input.layout?.height ?? 400,
+    width: getValidStyleNumber(input.layout?.width),
+    height: getValidStyleNumber(input.layout?.height) ?? 400,
     hideLegend,
     ...getPolarAxisProps(input.data, input.layout),
     //  ...getTitles(input.layout),

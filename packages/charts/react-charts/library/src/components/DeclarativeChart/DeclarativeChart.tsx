@@ -44,6 +44,7 @@ import {
 } from './PlotlySchemaAdapter';
 import { getChartTitleInlineStyles } from '../../utilities/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
+import { getValidFont } from './PlotlyStyleAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
@@ -544,7 +545,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const titleObj = plotlyInputWithValidData.layout?.title;
   const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
-  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+  const titleFont = getValidFont(typeof titleObj === 'object' ? titleObj?.font : undefined);
 
   const titleStyle: React.CSSProperties = {
     ...typographyStyles.caption1,

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate declarative marker, Gantt fill, and table font colors and preserve transparent rectangle defaults",
+  "comment": "fix: validate declarative chart colors and schema-driven font, shadow, padding, alignment, and dimension styles",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

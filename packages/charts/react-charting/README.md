@@ -45,6 +45,21 @@ Valid colors are preserved, including transparency; invalid or missing fill colo
 Table header and cell `font.color` values are validated after resolving scalar, column, or per-cell colors.
 Valid colors are preserved; invalid colors are omitted so the table's default text styling applies.
 
+Title `font.color`, annotation-only layout `paper_bgcolor`, `plot_bgcolor`, and `font.color`, and annotation
+`bgcolor`, `bordercolor`, `font.color`, and `arrowcolor` use the same validation. Invalid colors are omitted to
+retain default styling; invalid arrow colors fall back to the validated annotation text color.
+
+### Declarative chart styles
+
+Schema-driven styles are validated before reaching CSS, including titles on multi-plot charts.
+Font families accept comma-separated CSS font names (including quoted names), but not CSS escapes or declarations.
+Title shadows accept a single shadow with two offsets, an optional nonnegative blur radius, and an optional parsed color.
+Font sizes, chart dimensions, title padding, and layout margins must be finite numbers in their supported ranges.
+Annotation sizes and padding also accept simple CSS lengths; font weights accept supported numeric values or weight keywords.
+Table alignment is limited to Plotly's `left`, `center`, and `right`, including scalar, column, per-cell, and template values.
+Invalid style values are omitted or use the existing chart defaults; arbitrary CSS functions, rules, and declarations
+are not supported in these schema style fields. Direct component styling props are not schema validation boundaries.
+
 ## Contact
 
 The charting project is actively funded by a small feature team. The team responds within 1-2 business days for any queries or doubts.
