@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: resolve the Copy as Markdown URL for story IDs with hyphenated story names",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
