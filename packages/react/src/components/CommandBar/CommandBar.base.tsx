@@ -26,6 +26,8 @@ import type { IOverflowSet } from '../../OverflowSet';
 import type { IResizeGroup } from '../../ResizeGroup';
 import type { IButtonProps } from '../../Button';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
 export interface ICommandBarData {
@@ -67,7 +69,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       items,
       overflowItems,
@@ -121,7 +123,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
-  private _onRenderData = (data: ICommandBarData): JSX.Element => {
+  private _onRenderData = (data: ICommandBarData): JSXElement => {
     const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
     const hasSecondSet = data.farItems && data.farItems.length > 0;
 
@@ -159,7 +161,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     );
   };
 
-  private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
+  private _onRenderItem = (item: ICommandBarItemProps): JSXElement | React.ReactNode => {
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
       // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
@@ -196,7 +198,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return this._commandButton(item, commandButtonProps);
   };
 
-  private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
+  private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSXElement => {
     const ButtonAs = this.props.buttonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const CommandBarButtonAs = item.commandBarButtonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const DefaultButtonAs = CommandBarButton as {} as IComponentAs<ICommandBarItemProps>;
@@ -229,7 +231,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     };
   }
 
-  private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
+  private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSXElement => {
     const {
       overflowButtonProps = {}, // assure that props is not empty
     } = this.props;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react';
 import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import type { JSXElement } from '@fluentui/utilities';
 
 const noOp = () => undefined;
 
@@ -10,14 +11,14 @@ const checkboxStyles = {
   },
 };
 
-const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
+const onRenderItem = (item: IOverflowSetItemProps): JSXElement => {
   if (item.onRender) {
     return item.onRender(item);
   }
   return <CommandBarButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
 };
 
-const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
+const onRenderOverflowButton = (overflowItems: any[] | undefined): JSXElement => {
   const buttonStyles: Partial<IButtonStyles> = {
     root: {
       minWidth: 0,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { makeStyles } from '@griffel/react';
 import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { useActiveDescendant } from './useActiveDescendant';

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Link,
@@ -43,7 +44,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Reflow = () => {
+export const Reflow = (): JSXElement => {
   const styles = useStyles();
   const [compact, setCompact] = React.useState(true);
   return (

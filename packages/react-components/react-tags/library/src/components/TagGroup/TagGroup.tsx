@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTagGroup_unstable } from './useTagGroup';
 import { renderTagGroup_unstable } from './renderTagGroup';

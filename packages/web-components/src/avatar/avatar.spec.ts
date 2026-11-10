@@ -1,15 +1,55 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+import { getInitials } from '../utils/get-initials.js';
+import { AvatarColor, AvatarSize, tagName } from './avatar.options.js';
 
 test.describe('Avatar', () => {
   test.use({
-    tagName: 'fluent-avatar',
+    tagName,
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
   });
 
   test('should have a `role` of `img`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
+  });
+
+  test('should render an icon when no name or initials are provided', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const icon = element.locator('svg');
+
+    await fastPage.setTemplate({ innerHTML: `\n\n\n` });
+
+    await expect(icon).toBeVisible();
+
+    await test.step('should NOT render the icon when empty elements are present in the default slot', async () => {
+      await fastPage.updateTemplate(element, { innerHTML: `<div></div><span></span>\n\n` });
+
+      await expect(icon).toBeHidden();
+    });
+
+    await test.step('should retain comment nodes in the default slot when no name or initials are provided', async () => {
+      await fastPage.updateTemplate(element, { innerHTML: `\n<!--hello-->\n<!--world-->\n` });
+
+      await expect(icon).toBeVisible();
+    });
   });
 
   test('When no name value is set, should render with custom initials based on the provided initials value', async ({
@@ -20,6 +60,12 @@ test.describe('Avatar', () => {
     await fastPage.setTemplate({ attributes: { initials: 'JD' } });
 
     await expect(element).toContainText('JD');
+
+    await test.step('should NOT render the default icon', async () => {
+      const icon = element.locator('svg');
+
+      await expect(icon).toBeHidden();
+    });
   });
 
   test('When name value is set, should generate initials based on the provided name value', async ({ fastPage }) => {
@@ -28,6 +74,19 @@ test.describe('Avatar', () => {
     await fastPage.setTemplate({ attributes: { name: 'John Doe' } });
 
     await expect(element).toContainText('JD');
+  });
+
+  test('should preserve supported phone number forms', () => {
+    expect(getInitials('12345678', false)).toBe('');
+    expect(getInitials('1 Ext 2', false)).toBe('');
+    expect(getInitials('1x1', false)).toBe('');
+    expect(getInitials('1 EXT 234', false)).toBe('');
+    expect(getInitials('1y1', false)).toBe('1');
+    expect(getInitials('1', false)).toBe('1');
+  });
+
+  test('should handle long non-phone names', () => {
+    expect(getInitials(`${'1'.repeat(100_000)}y`, false)).toBe('1');
   });
 
   test('When `name` and `initials` attributes are both set, should prioritize the provided initials', async ({
@@ -40,26 +99,12 @@ test.describe('Avatar', () => {
     await expect(element).toContainText('JJ');
   });
 
-  test('should set the `active` property to `active` when the `active` attribute is set', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { active: 'active' } });
-
-    await expect(element).toHaveJSProperty('active', 'active');
-  });
-
-  test('should set the `active` property to `inactive` when the `active` attribute is set to `inactive`', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { active: 'inactive' } });
-
-    await expect(element).toHaveJSProperty('active', 'inactive');
-  });
-
   test('should have a data-color attribute of `neutral` when no color is provided', async ({ fastPage }) => {
-    await expect(fastPage.element).toHaveAttribute('data-color', 'neutral');
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveAttribute('data-color', 'neutral');
   });
 
   test('should add a data-color attribute of `brand` when `brand is provided as the color', async ({ fastPage }) => {
@@ -81,9 +126,11 @@ test.describe('Avatar', () => {
   test('should set the `data-color` attribute to match the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const color of Object.values(AvatarColor)) {
       await test.step(`should set the \`color\` property to \`${color}\``, async () => {
-        await fastPage.setTemplate({ attributes: { color } });
+        await fastPage.updateTemplate(element, { attributes: { color } });
 
         await expect(element).toHaveAttribute('color', color);
 
@@ -91,6 +138,7 @@ test.describe('Avatar', () => {
 
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (color !== AvatarColor.colorful) {
+          // eslint-disable-next-line playwright/no-conditional-expect
           await expect.soft(element).toHaveAttribute('data-color', color);
         }
       });
@@ -100,27 +148,15 @@ test.describe('Avatar', () => {
   test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const size of Object.values(AvatarSize)) {
       await test.step(`should set the \`size\` property to \`${size}\``, async () => {
-        await fastPage.setTemplate({ attributes: { size: `${size}` } });
+        await fastPage.updateTemplate(element, { attributes: { size: `${size}` } });
 
         await expect(element).toHaveAttribute('size', `${size}`);
 
         await expect(element).toHaveJSProperty('size', size);
-      });
-    }
-  });
-
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const appearance of Object.values(AvatarAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
       });
     }
   });

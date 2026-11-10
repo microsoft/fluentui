@@ -1,7 +1,9 @@
+'use client';
+
 import * as React from 'react';
 
-import { ICheckboxProps } from '@fluentui/react';
-import { CheckboxProps, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { ICheckboxProps } from '@fluentui/react';
+import type { CheckboxProps, CheckboxOnChangeData } from '@fluentui/react-components';
 import { useControllableValue } from '@fluentui/react-hooks';
 import { getHTMLAttributes } from '../utils';
 

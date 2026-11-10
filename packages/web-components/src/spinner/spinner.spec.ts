@@ -1,36 +1,24 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
+import { tagName } from './spinner.options.js';
 
 test.describe('Spinner', () => {
   test.use({
-    tagName: 'fluent-spinner',
+    tagName,
   });
 
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
 
-    for (const appearance of Object.values(SpinnerAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+    let hasError = false;
 
-        await expect(element).toHaveJSProperty('appearance', appearance);
+    page.on('pageerror', () => {
+      hasError = true;
+    });
 
-        await expect(element).toHaveAttribute('appearance', appearance);
-      });
-    }
-  });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const size of Object.values(SpinnerSize)) {
-      await test.step(size, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
-
-        await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveAttribute('size', size);
-      });
-    }
+    expect(hasError).toBe(false);
   });
 });

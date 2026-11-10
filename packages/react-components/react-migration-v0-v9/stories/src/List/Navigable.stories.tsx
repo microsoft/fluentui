@@ -2,6 +2,7 @@ import { Image } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-migration-v0-v9';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   key: string;
@@ -35,7 +36,7 @@ const items: Item[] = [
   },
 ];
 
-export const Navigable = () => {
+export const Navigable = (): JSXElement => {
   return (
     <List navigable truncateHeader truncateContent>
       {items.map(({ key, media, header, headerMedia, content }) => (

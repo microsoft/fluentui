@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
@@ -24,10 +26,9 @@ const useStyles = makeStyles({
  * Apply styling to the NavDrawerFooter slots based on the state
  */
 export const useNavDrawerFooterStyles_unstable = (state: NavDrawerFooterState): NavDrawerFooterState => {
-  'use no memo';
-
   useDrawerFooterStyles_unstable(state);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navDrawerFooterClassNames.root, styles.root, state.root.className);
 
   return state;

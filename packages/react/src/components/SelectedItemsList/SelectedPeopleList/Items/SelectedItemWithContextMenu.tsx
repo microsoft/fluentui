@@ -5,12 +5,14 @@ import type { IBaseProps } from '../../../../Utilities';
 import type { IExtendedPersonaProps } from '../SelectedPeopleList';
 import type { IContextualMenuItem } from '../../../../ContextualMenu';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
 export interface ISelectedItemWithContextMenuProps extends IBaseProps {
-  renderedItem: JSX.Element;
+  renderedItem: JSXElement;
   beginEditing?: (item: IExtendedPersonaProps) => void;
   menuItems: IContextualMenuItem[];
   item: IExtendedPersonaProps;
@@ -20,7 +22,7 @@ export class SelectedItemWithContextMenu extends React.Component<
   ISelectedItemWithContextMenuProps,
   IPeoplePickerItemState
 > {
-  protected itemElement: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
+  protected itemElement: React.RefObject<HTMLDivElement | null> = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedItemWithContextMenuProps) {
     super(props);
@@ -29,7 +31,7 @@ export class SelectedItemWithContextMenu extends React.Component<
     this.state = { contextualMenuVisible: false };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div ref={this.itemElement} onContextMenu={this._onClick}>
         {this.props.renderedItem}

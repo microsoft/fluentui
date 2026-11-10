@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FocusZone, IStackTokens, Stack } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { CollapsibleSection } from '@fluentui/react-experiments/lib/CollapsibleSection';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
@@ -23,7 +24,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <FocusZone>

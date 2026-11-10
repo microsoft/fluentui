@@ -1,6 +1,7 @@
 import * as React from 'react';
+import type { JSXElement, AlphaSliderProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
-import { Button, makeStyles, AlphaSlider, AlphaSliderProps } from '@fluentui/react-components';
+import { Button, makeStyles, AlphaSlider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 });
 const COLOR = { h: 96, s: 1, v: 0.9, a: 1 };
 
-export const AlphaSliderDefault = (props: Partial<AlphaSliderProps>) => {
+export const AlphaSliderDefault = (props: Partial<AlphaSliderProps>): JSXElement => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(COLOR);

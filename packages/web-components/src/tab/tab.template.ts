@@ -1,10 +1,10 @@
 import { type ElementViewTemplate, html } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { Tab, TabOptions } from './tab.js';
 
 export function tabTemplate<T extends Tab>(options: TabOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template slot="tab" role="tab" aria-disabled="${x => x.disabled}">
+    <template slot="tab" role="tab">
       ${startSlotTemplate(options)}
       <span class="tab-content"><slot></slot></span>
       ${endSlotTemplate(options)}

@@ -2,10 +2,15 @@ import { modulePathResolverPlugin } from '@wc-toolkit/module-path-resolver';
 import { cemValidatorPlugin } from '@wc-toolkit/cem-validator';
 import { getTsProgram, typeParserPlugin } from '@wc-toolkit/type-parser';
 import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
+import { presentationalAttributesPlugin } from './scripts/presentational-attributes-plugin.js';
 
 export default {
   /** Globs to analyze */
   globs: ['src/**/*.ts'],
+  /** Directory to output the manifest to */
+  outdir: './',
+  /** Disable package.json updates */
+  packagejson: false,
   /** Globs to exclude */
   exclude: [
     '_docs/**/*',
@@ -27,6 +32,7 @@ export default {
       modulePathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/${getFileName(name)}`,
       definitionPathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/define.js`,
     }),
+    presentationalAttributesPlugin(),
     typeParserPlugin(),
     cemInheritancePlugin(),
     cemValidatorPlugin({
@@ -35,6 +41,7 @@ export default {
           main: 'off',
           module: 'off',
           types: 'off',
+          customElements: 'off',
         },
         manifest: {
           schemaVersion: 'off',

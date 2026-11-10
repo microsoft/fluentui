@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { EventAnnotation } from '../../../types/EventAnnotation';
+import type { EventAnnotation } from '../../../types/EventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
 import { tokens } from '@fluentui/react-theme';
@@ -69,7 +71,7 @@ export const LabelLink: React.FunctionComponent<LabelLinkProps> = props => {
 
   return (
     <>
-      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }}>
+      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }} role="button">
         <Textbox
           text={text}
           x={props.labelDef.x}

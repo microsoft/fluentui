@@ -13,16 +13,15 @@ import {
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
-import { VerticalBarChartProps } from './VerticalBarChart.types';
-import { VerticalBarChartDataPoint } from '../../index';
+import type { VerticalBarChartProps } from './VerticalBarChart.types';
+import type { VerticalBarChartDataPoint } from '../../index';
 import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import * as renderer from 'react-test-renderer';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
+const env = require('../../../config/tests.cjs');
 
 expect.extend(toHaveNoViolations);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 declare const global: any;
 
 beforeAll(() => {
@@ -41,6 +40,8 @@ beforeAll(() => {
 });
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
 function sharedBeforeEach() {
   jest.useFakeTimers();
@@ -48,19 +49,36 @@ function sharedBeforeEach() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
+  window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const pointsWithLine = [
@@ -289,6 +307,7 @@ const simpleDatePoints = [
 const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Vertical bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -518,6 +537,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait('Should render line along with bars', VerticalBarChart, { data: pointsWithLine }, container => {
@@ -569,6 +589,7 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -660,6 +681,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
@@ -748,6 +770,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -755,12 +778,9 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
     VerticalBarChart,
     { data: pointsWithLine, showXAxisLablesTooltip: true },
     container => {
-      const bars = getById(container, /_VBC_bar/i);
-      expect(bars).toHaveLength(8);
-      fireEvent.mouseOver(bars[0]);
-      // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(5);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('20,0...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(11);
+      expect(tickLabels[1].textContent).toEqual('10,0...');
     },
   );
 
@@ -776,6 +796,7 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testScreenResolutionChanges(() => {
@@ -786,6 +807,7 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme Change', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   test('Should reflect theme change', () => {
     // Arrange
@@ -800,6 +822,7 @@ describe('Theme Change', () => {
 });
 
 describe('Vertical bar chart re-rendering', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should re-render the vertical bar chart with data', async () => {
@@ -819,6 +842,7 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -857,8 +881,6 @@ describe('VerticalBarChart - mouse events', () => {
 });
 
 describe('VerticalBarChart - accessibility', () => {
-  afterEach(sharedAfterEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
     let axeResults;
@@ -874,101 +896,92 @@ describe('VerticalBarChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders VerticalBarChart correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'.1f'} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should not render bar labels', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render rounded corners on bars', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 
 describe('VerticalBarChart - basic props', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalBarChart
         data={chartPointsVBC}
         onRenderCalloutPerDataPoint={(props: VerticalBarChartDataPoint) =>
@@ -985,13 +998,15 @@ describe('VerticalBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -1021,20 +1036,24 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalBarChart data={[]} enabledLegendsWrapLines />);
+    const wrapper = render(<VerticalBarChart data={[]} enabledLegendsWrapLines />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
 });
 
 describe('Render empty chart calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,

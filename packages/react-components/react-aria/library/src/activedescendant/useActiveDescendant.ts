@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
@@ -50,6 +52,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
 
+    // eslint-disable-next-line react-hooks/immutability, react-hooks/preserve-manual-memoization
     const active = getActiveDescendant();
     if (!active) {
       return;
@@ -66,6 +69,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const listboxRef = React.useRef<TListboxElement>(null);
   const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);

@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
@@ -87,7 +87,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const styles = useStyles();
   return (
     <>

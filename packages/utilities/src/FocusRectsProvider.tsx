@@ -5,7 +5,7 @@ export type FocusRectsProviderProps = {
   /**
    * Ref to the root element that this is providing focus rects for.
    */
-  providerRef: React.RefObject<HTMLElement>;
+  providerRef: React.RefObject<HTMLElement | null>;
 
   /**
    * Indicates that this is the root of a layer, and should not inherit the providerRef from a parent context.
@@ -17,7 +17,7 @@ export type FocusRectsProviderProps = {
 
 export const FocusRectsProvider: React.FC<FocusRectsProviderProps> = props => {
   const { providerRef, layerRoot } = props;
-  const [registeredProviders] = React.useState<React.RefObject<HTMLElement>[]>([]);
+  const [registeredProviders] = React.useState<React.RefObject<HTMLElement | null>[]>([]);
   const parentContext = React.useContext(FocusRectsContext);
 
   // Inherit the parent context if it exists, unless this is a layer root.
@@ -32,12 +32,12 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderProps> = props => {
         : {
             providerRef,
             registeredProviders,
-            registerProvider: (ref: React.RefObject<HTMLElement>) => {
+            registerProvider: (ref: React.RefObject<HTMLElement | null>) => {
               // Register this child provider with the current context, and any parent contexts
               registeredProviders.push(ref);
               parentContext?.registerProvider(ref);
             },
-            unregisterProvider: (ref: React.RefObject<HTMLElement>) => {
+            unregisterProvider: (ref: React.RefObject<HTMLElement | null>) => {
               parentContext?.unregisterProvider(ref);
               const i = registeredProviders.indexOf(ref);
               if (i >= 0) {

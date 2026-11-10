@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { Separator, mergeStyles } from '@fluentui/react';
 
 const verticalStyles = mergeStyles({
@@ -14,10 +15,10 @@ const horizontalStyles = mergeStyles({
 export default {
   title: 'Separator',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const Root = () => (

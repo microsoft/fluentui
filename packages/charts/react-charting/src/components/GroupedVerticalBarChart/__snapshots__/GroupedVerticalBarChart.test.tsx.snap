@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div>
@@ -15,6 +15,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -28,12 +29,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -42,7 +45,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -96,6 +99,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               }
           id="yAxisGElementchart_3"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -584,6 +593,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_3"
@@ -597,12 +607,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -611,7 +623,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -665,6 +677,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               }
           id="yAxisGElementchart_3"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g

@@ -747,7 +747,11 @@ export const MoverKeys: MoverKeys = {
 };
 
 export interface MoverAPI extends MoverAPIInternal, Disposable {
-  /** @internal (will likely be exposed once the API is fully stable) */
+  /**
+   * (will likely be exposed once the API is fully stable)
+   *
+   * @internal
+   */
   moveFocus(fromElement: HTMLElement, key: MoverKey): HTMLElement | null;
 }
 
@@ -796,7 +800,11 @@ export interface GroupperAPIInternal {
 }
 
 export interface GroupperAPI extends GroupperAPIInternal, Disposable {
-  /** @internal (will likely be exposed once the API is fully stable) */
+  /**
+   * (will likely be exposed once the API is fully stable)
+   *
+   * @internal
+   */
   moveFocus(element: HTMLElement, action: GroupperMoveFocusAction): HTMLElement | null;
 }
 

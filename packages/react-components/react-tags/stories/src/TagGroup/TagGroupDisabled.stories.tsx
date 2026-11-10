@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { TagGroup, InteractionTag, InteractionTagPrimary, Tag, makeStyles } from '@fluentui/react-components';
 
 const WithTags = () => (
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Disabled = () => {
+export const Disabled = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.container}>

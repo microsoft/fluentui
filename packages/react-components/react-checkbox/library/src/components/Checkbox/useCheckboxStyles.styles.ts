@@ -1,7 +1,9 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { CheckboxSlots, CheckboxState } from './Checkbox.types';
+import type { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
@@ -26,6 +28,7 @@ const useRootBaseClassName = makeResetStyles({
   position: 'relative',
   display: 'inline-flex',
   cursor: 'pointer',
+  maxWidth: 'fit-content',
   verticalAlign: 'middle',
   color: tokens.colorNeutralForeground3,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
@@ -184,12 +187,11 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
-  'use no memo';
-
   const { checked, disabled, labelPosition, shape, size } = state;
 
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     checkboxClassNames.root,
     rootBaseClassName,
@@ -205,6 +207,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
 
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     checkboxClassNames.input,
     inputBaseClassName,
@@ -216,6 +219,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
       indicatorBaseClassName,
@@ -227,6 +231,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
 
   const labelStyles = useLabelStyles();
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       checkboxClassNames.label,
       labelStyles.base,

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import {
   makeStyles,
@@ -22,12 +23,12 @@ const resolveAsset = (asset: string) => {
 const useStyles = makeStyles({
   card: {
     margin: 'auto',
-    width: '720px',
-    maxWidth: '100%',
+    maxWidth: '720px',
+    width: '100%',
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   return (

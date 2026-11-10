@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
@@ -35,12 +37,12 @@ const useStyles = makeStyles({
  * Apply styling to the CardFooter slots based on the state.
  */
 export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(cardFooterClassNames.root, styles.root, state.root.className);
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = mergeClasses(cardFooterClassNames.action, styles.action, state.action.className);
   }
 

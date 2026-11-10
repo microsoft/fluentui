@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, InputProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -9,7 +10,6 @@ import {
   tokens,
   Button,
   Input,
-  InputProps,
   Label,
   useId,
   Dialog,
@@ -103,7 +103,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Resizable = () => {
+export const Resizable = (): JSXElement => {
   const styles = useStyles();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isDialogOpen, setDialogOpen] = React.useState(false);

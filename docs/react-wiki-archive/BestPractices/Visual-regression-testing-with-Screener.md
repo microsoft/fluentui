@@ -21,7 +21,7 @@ Here's an example of a story file. See after the code for explanations of its di
 ```tsx
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
+import { storiesOf } from '@storybook/react-webpack5';
 import { TestWrapperDecorator } from '../utilities';
 import { Link, ILinkProps } from '@fluentui/react';
 

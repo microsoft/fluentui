@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useCombobox_unstable } from './useCombobox';
 import { renderCombobox_unstable } from './renderCombobox';

@@ -24,7 +24,7 @@ export interface ITopNavProps<TPlatforms extends string = string> {
   /**
    * Render callback passed to the mobile navigation panel.
    */
-  onRenderNavFooter?: () => JSX.Element | null;
+  onRenderNavFooter?: () => React.ReactElement | null;
 
   /**
    * Text for a badge to display inside the header.

@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  AccordionToggleEventHandler,
-} from '@fluentui/react-components';
+import type { JSXElement, AccordionToggleEventHandler } from '@fluentui/react-components';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState(['1']);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);

@@ -5,8 +5,9 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { RefObjectFunction } from '@fluentui/react-utilities';
+import type { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -31,7 +32,7 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
-// @public
+// @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
 // @public
@@ -65,6 +66,12 @@ export type OffsetShorthand = number;
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
+
+// @public
+export const POSITIONING_SLIDE_DIRECTION_VAR_X = "--fui-positioning-slide-direction-x";
+
+// @public (undocumented)
+export const POSITIONING_SLIDE_DIRECTION_VAR_Y = "--fui-positioning-slide-direction-y";
 
 // @public (undocumented)
 export type PositioningBoundary = PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
@@ -127,17 +134,6 @@ export type PositioningVirtualElement = {
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public (undocumented)
-export type SafeBufferAreaOptions = {
-    debug?: boolean;
-    disabled?: boolean;
-    timeout?: number;
-    onSafeZoneEnter?: (e: React_2.MouseEvent) => void;
-    onSafeZoneMove?: (e: React_2.MouseEvent) => void;
-    onSafeZoneLeave?: (e: React_2.MouseEvent) => void;
-    onSafeZoneTimeout?: () => void;
-};
-
-// @public (undocumented)
 export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
 // @internal (undocumented)
@@ -146,11 +142,25 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 // @internal
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
+// @public
+export function usePositioningSlideDirection(options: UsePositioningSlideDirectionOptions): NonNullable<PositioningProps['onPositioningEnd']>;
+
 // @public (undocumented)
-export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: SafeBufferAreaOptions): {
+export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: UseSafeZoneOptions): {
     containerRef: RefObjectFunction<HTMLElement>;
     targetRef: RefObjectFunction<HTMLElement>;
-    elementToRender: JSX.Element | null;
+    elementToRender: JSXElement | null;
+};
+
+// @public (undocumented)
+export type UseSafeZoneOptions = {
+    debug?: boolean;
+    disabled?: boolean;
+    timeout?: number;
+    onSafeZoneEnter?: (e: React_2.MouseEvent) => void;
+    onSafeZoneMove?: (e: React_2.MouseEvent) => void;
+    onSafeZoneLeave?: (e: React_2.MouseEvent) => void;
+    onSafeZoneTimeout?: () => void;
 };
 
 // (No @packageDocumentation comment for this package)

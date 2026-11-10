@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Badge } from '@fluentui/react-components';
 
-export const Sizes = () => {
+export const Sizes = (): JSXElement => {
   return (
     <>
       <Badge size="tiny" />

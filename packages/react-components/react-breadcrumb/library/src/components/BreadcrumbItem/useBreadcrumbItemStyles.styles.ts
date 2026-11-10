@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,10 +21,9 @@ const useBreadcrumbItemResetStyles = makeResetStyles({
  * Apply styling to the BreadcrumbItem slots based on the state
  */
 export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
-  'use no memo';
-
   const resetStyles = useBreadcrumbItemResetStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbItemClassNames.root, resetStyles, state.root.className);
 
   return state;

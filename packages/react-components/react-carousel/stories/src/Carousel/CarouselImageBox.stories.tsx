@@ -1,7 +1,6 @@
 import { makeStyles, Image, CarouselSlider } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavContainer,
@@ -9,6 +8,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   viewport: {
@@ -66,7 +66,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const ImageSlideshow = () => {
+export const ImageSlideshow = (): JSXElement => {
   const classes = useClasses();
 
   return (

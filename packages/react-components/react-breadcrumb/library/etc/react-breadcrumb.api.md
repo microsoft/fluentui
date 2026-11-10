@@ -4,23 +4,36 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
+import type { ButtonProps } from '@fluentui/react-button';
+import type { ButtonSlots } from '@fluentui/react-button';
+import type { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 
+// @public (undocumented)
+export type BreadcrumbBaseProps = Omit<BreadcrumbProps, 'size'>;
+
+// @public (undocumented)
+export type BreadcrumbBaseState = Omit<BreadcrumbState, 'size'>;
+
 // @public
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
+
+// @public (undocumented)
+export type BreadcrumbButtonBaseProps = DistributiveOmit<BreadcrumbButtonProps, 'size'>;
+
+// @public (undocumented)
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;
 
 // @public
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
@@ -45,6 +58,12 @@ export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>>;
 // @public
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 
+// @public
+export type BreadcrumbDividerBaseProps = BreadcrumbDividerProps;
+
+// @public
+export type BreadcrumbDividerBaseState = Omit<BreadcrumbDividerState, 'size'>;
+
 // @public (undocumented)
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
 
@@ -61,6 +80,12 @@ export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots> & Pi
 
 // @public
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
+
+// @public
+export type BreadcrumbItemBaseProps = Omit<BreadcrumbItemProps, 'size'>;
+
+// @public
+export type BreadcrumbItemBaseState = Omit<BreadcrumbItemState, 'size'>;
 
 // @public (undocumented)
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
@@ -115,16 +140,16 @@ export type PartitionBreadcrumbItemsOptions<T> = {
 };
 
 // @public
-export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
+export const renderBreadcrumb_unstable: (state: BreadcrumbBaseState, contextValues: BreadcrumbContextValues) => JSXElement;
 
 // @public
-export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonState) => JSX.Element;
+export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonBaseState) => JSXElement;
 
 // @public
-export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;
+export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerBaseState) => JSXElement;
 
 // @public
-export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.Element;
+export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemBaseState) => JSXElement;
 
 // @public (undocumented)
 export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
@@ -136,22 +161,40 @@ export const truncateBreadcrumLongTooltip: (content: string, maxLength?: number)
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
 
 // @public
+export const useBreadcrumbA11yBehavior_unstable: ({ focusMode, }: Pick<BreadcrumbBaseProps, "focusMode">) => Partial<TabsterDOMAttribute>;
+
+// @public
+export const useBreadcrumbBase_unstable: (props: BreadcrumbBaseProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbBaseState;
+
+// @public
 export const useBreadcrumbButton_unstable: (props: BreadcrumbButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => BreadcrumbButtonState;
+
+// @public
+export const useBreadcrumbButtonBase_unstable: (props: BreadcrumbButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => BreadcrumbButtonBaseState;
 
 // @public
 export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
 
 // @internal (undocumented)
-export const useBreadcrumbContext_unstable: () => Required<Pick<BreadcrumbProps, "size">>;
+export const useBreadcrumbContext_unstable: () => BreadcrumbContextValues;
+
+// @public (undocumented)
+export function useBreadcrumbContextValues_unstable(state: BreadcrumbState): BreadcrumbContextValues;
 
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
+
+// @public
+export const useBreadcrumbDividerBase_unstable: (props: BreadcrumbDividerBaseProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerBaseState;
 
 // @public
 export const useBreadcrumbDividerStyles_unstable: (state: BreadcrumbDividerState) => BreadcrumbDividerState;
 
 // @public
 export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemState;
+
+// @public
+export const useBreadcrumbItemBase_unstable: (props: BreadcrumbItemBaseProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemBaseState;
 
 // @public
 export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;

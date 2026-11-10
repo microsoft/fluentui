@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout.types';
@@ -73,11 +75,10 @@ const useStyles = makeStyles({
  * Apply styling to the TableCellLayout slots based on the state
  */
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
-  'use no memo';
-
   const styles = useStyles();
   const { truncate } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableCellLayoutClassNames.root,
     styles.root,
@@ -93,6 +94,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
       'extra-small': styles.mediaExtraSmall,
     };
 
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       tableCellLayoutClassNames.media,
       styles.media,
@@ -103,6 +105,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   }
 
   if (state.main) {
+    // eslint-disable-next-line react-hooks/immutability
     state.main.className = mergeClasses(
       tableCellLayoutClassNames.main,
       truncate && styles.mainTruncate,
@@ -112,6 +115,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   }
 
   if (state.description) {
+    // eslint-disable-next-line react-hooks/immutability
     state.description.className = mergeClasses(
       tableCellLayoutClassNames.description,
       styles.description,
@@ -120,6 +124,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   }
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(
       tableCellLayoutClassNames.content,
       styles.content,

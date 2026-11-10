@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Checkbox, Switch, tokens, makeStyles } from '@fluentui/react-components';
 
-export const VerticalStackedBarDefault = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const VerticalStackedBarDefault = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState(650);
   const [height, setHeight] = React.useState(350);
   const [showLine, setShowLine] = React.useState(true);
@@ -39,7 +41,7 @@ export const VerticalStackedBarDefault = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
     if (ev.currentTarget.checked) {
       setMargins({
@@ -57,11 +59,11 @@ export const VerticalStackedBarDefault = () => {
       });
     }
   }, []);
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
@@ -71,70 +73,70 @@ export const VerticalStackedBarDefault = () => {
       data: 40,
       color: getColorFromToken(DataVizPalette.color11),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '61%',
+      yAxisCalloutData: '40%',
     },
     {
       legend: 'Metadata2',
       data: 5,
       color: 'darkblue',
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '8%',
+      yAxisCalloutData: '5%',
     },
     {
       legend: 'Metadata3',
       data: 20,
       color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '31%',
+      yAxisCalloutData: '20%',
     },
     {
       legend: 'Metadata4',
       data: 10,
       color: getColorFromToken(DataVizPalette.color4),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '1%',
+      yAxisCalloutData: '10%',
     },
     {
       legend: 'Metadata5',
       data: 23,
       color: getColorFromToken(DataVizPalette.color5),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '2%',
+      yAxisCalloutData: '23%',
     },
     {
       legend: 'Metadata6',
       data: 0.4,
       color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '3%',
+      yAxisCalloutData: '0.4%',
     },
     {
       legend: 'Metadata7',
       data: 0.5,
       color: getColorFromToken(DataVizPalette.color7),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '4%',
+      yAxisCalloutData: '0.5%',
     },
     {
       legend: 'Metadata8',
       data: 0.3,
       color: getColorFromToken(DataVizPalette.color8),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '5%',
+      yAxisCalloutData: '0.3%',
     },
     {
       legend: 'Metadata9',
       data: 0.7,
       color: getColorFromToken(DataVizPalette.color9),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '6%',
+      yAxisCalloutData: '0.7%',
     },
     {
       legend: 'Metadata10',
       data: 0.1,
       color: getColorFromToken(DataVizPalette.color10),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '7%',
+      yAxisCalloutData: '0.1%',
     },
   ];
 
@@ -280,7 +282,8 @@ export const VerticalStackedBarDefault = () => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -290,7 +293,8 @@ export const VerticalStackedBarDefault = () => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
         <input
@@ -300,7 +304,8 @@ export const VerticalStackedBarDefault = () => {
           max={10}
           id="changeBarGapMax_Basic"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
       </div>
       <div style={{ marginTop: '10px' }}>
@@ -343,6 +348,7 @@ export const VerticalStackedBarDefault = () => {
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -364,6 +370,7 @@ export const VerticalStackedBarDefault = () => {
             hideLabels={hideLabels}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

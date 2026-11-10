@@ -2,7 +2,7 @@ export interface Response {
   results: { name: string }[];
 }
 
-export const mockFetch = (type: string) => {
+export const mockFetch = (type: string): Promise<Response> => {
   return new Promise<Response>(resolve => {
     // eslint-disable-next-line @nx/workspace-no-restricted-globals
     setTimeout(() => {

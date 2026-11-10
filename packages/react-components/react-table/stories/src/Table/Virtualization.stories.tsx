@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+import type { ListChildComponentProps } from 'react-window';
+import { FixedSizeList as List } from 'react-window';
+
+import type { JSXElement, PresenceBadgeStatus, TableRowData as RowStateBase } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -10,10 +13,8 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
-  useScrollbarWidth,
-  useFluent,
+  useApplyScrollbarWidth,
   TableBody,
   TableCell,
   TableRow,
@@ -25,13 +26,12 @@ import {
   createTableColumn,
   useTableFeatures,
   useTableSelection,
-  TableRowData as RowStateBase,
 } from '@fluentui/react-components';
 
 type Item = {
   file: {
     label: string;
-    icon: JSX.Element;
+    icon: JSXElement;
   };
   author: {
     label: string;
@@ -43,7 +43,7 @@ type Item = {
   };
   lastUpdate: {
     label: string;
-    icon: JSX.Element;
+    icon: JSXElement;
   };
 };
 
@@ -153,9 +153,8 @@ const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
   );
 };
 
-export const Virtualization = () => {
-  const { targetDocument } = useFluent();
-  const scrollbarWidth = useScrollbarWidth({ targetDocument });
+export const Virtualization = (): JSXElement => {
+  const appliedScrollbarWidthRef = useApplyScrollbarWidth();
 
   const {
     getRows,
@@ -214,7 +213,7 @@ export const Virtualization = () => {
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: scrollbarWidth }} />
+          <div role="presentation" ref={appliedScrollbarWidthRef} />
         </TableRow>
       </TableHeader>
       <TableBody>

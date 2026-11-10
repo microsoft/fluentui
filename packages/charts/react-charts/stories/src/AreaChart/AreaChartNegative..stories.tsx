@@ -1,13 +1,21 @@
 import * as React from 'react';
+import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
-import { Switch, Field, Radio, RadioGroup, RadioGroupOnChangeData } from '@fluentui/react-components';
+import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
-export const AreaChartNegative = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const AreaChartNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
 
+  const classes = useStyles();
   React.useEffect(() => {
     const style = document.createElement('style');
     const focusStylingCSS = `
@@ -41,7 +49,7 @@ export const AreaChartNegative = () => {
     }
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 
@@ -163,7 +171,8 @@ export const AreaChartNegative = () => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -173,7 +182,8 @@ export const AreaChartNegative = () => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">
@@ -199,6 +209,7 @@ export const AreaChartNegative = () => {
             enablePerfOptimization={true}
             yAxisTitle={showAxisTitles ? 'Variation of stock market prices' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -210,6 +221,7 @@ export const AreaChartNegative = () => {
             width={width}
             data={chartData}
             enablePerfOptimization={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

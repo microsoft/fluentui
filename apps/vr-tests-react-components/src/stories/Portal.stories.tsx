@@ -3,15 +3,16 @@ import { Portal } from '@fluentui/react-portal';
 import { tokens } from '@fluentui/react-theme';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { makeStyles, shorthands } from '@griffel/react';
-import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import type { Meta } from '@storybook/react-webpack5';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 const steps = new Steps().click('#popoverTrigger').snapshot('should have green border').end();
 
 export default {
   title: 'Portal',
   component: Portal,
-  decorators: [story => <StoryWright steps={steps}>{story()}</StoryWright>],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Portal>;
 
 const useStyles = makeStyles({

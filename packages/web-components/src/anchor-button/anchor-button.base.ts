@@ -1,5 +1,4 @@
 import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { keyEnter } from '@microsoft/fast-web-utilities';
 import { AnchorAttributes, type AnchorTarget } from './anchor-button.options.js';
 
 /**
@@ -131,6 +130,9 @@ export class BaseAnchor extends FASTElement {
 
   public connectedCallback() {
     super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+
     Observable.getNotifier(this).subscribe(this);
 
     Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
@@ -168,8 +170,13 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   public clickHandler(e: PointerEvent): boolean {
+    if (e.composedPath()[0] === this.internalProxyAnchor) {
+      e.stopImmediatePropagation();
+      return true;
+    }
+
     if (this.href) {
-      const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      const newTab = e.ctrlKey || e.metaKey;
       this.handleNavigation(newTab);
     }
 
@@ -185,7 +192,7 @@ export class BaseAnchor extends FASTElement {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     if (this.href) {
-      if (e.key === keyEnter) {
+      if (e.key === 'Enter') {
         const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
         this.handleNavigation(newTab);
         return;
@@ -197,7 +204,7 @@ export class BaseAnchor extends FASTElement {
 
   /**
    * Handles navigation based on input
-   * If the metaKey is pressed, opens the href in a new window, if false, uses the click on the proxy
+   * If a modified activation requests a new tab, opens the href in a new window.
    * @internal
    */
   private handleNavigation(newTab: boolean): void {
@@ -220,8 +227,7 @@ export class BaseAnchor extends FASTElement {
 
   private createProxyElement(): HTMLAnchorElement {
     const proxy = this.internalProxyAnchor ?? document.createElement('a');
-    proxy.ariaHidden = 'true';
-    proxy.tabIndex = -1;
+    proxy.inert = true;
     return proxy;
   }
 }

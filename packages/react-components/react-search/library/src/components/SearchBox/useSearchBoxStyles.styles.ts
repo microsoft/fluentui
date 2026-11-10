@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SearchBoxSlots, SearchBoxState } from './SearchBox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -87,7 +89,7 @@ const useDismissClassName = makeResetStyles({
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
-  '> svg': { fontSize: '20px' },
+  '> svg, > .fui-Icon-font': { fontSize: '20px' },
   cursor: 'pointer',
 });
 
@@ -97,13 +99,13 @@ const useDismissStyles = makeStyles({
   },
   // Ensure resizable icons show up with the proper font size
   small: {
-    '> svg': { fontSize: '16px' },
+    '> svg, > .fui-Icon-font': { fontSize: '16px' },
   },
   medium: {
     // included in useDismissClassName
   },
   large: {
-    '> svg': { fontSize: '24px' },
+    '> svg, > .fui-Icon-font': { fontSize: '24px' },
   },
 });
 
@@ -111,8 +113,6 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  'use no memo';
-
   const { disabled, focused, size } = state;
 
   const rootStyles = useRootStyles();
@@ -121,12 +121,14 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const dismissClassName = useDismissClassName();
   const dismissStyles = useDismissStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     searchBoxClassNames.root,
     rootStyles[size],
     !focused && rootStyles.unfocusedNoContentAfter,
     state.root.className,
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     searchBoxClassNames.input,
     rootStyles.input,
@@ -135,6 +137,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   );
 
   if (state.dismiss) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismiss.className = mergeClasses(
       searchBoxClassNames.dismiss,
       dismissClassName,
@@ -146,10 +149,12 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   }
 
   if (state.contentBefore) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentBefore.className = mergeClasses(searchBoxClassNames.contentBefore, state.contentBefore.className);
   }
 
   if (state.contentAfter) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentAfter.className = mergeClasses(
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
@@ -159,6 +164,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       state.contentAfter.className,
     );
   } else if (state.dismiss) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismiss.className = mergeClasses(state.dismiss.className, contentAfterStyles.contentAfter);
   }
 

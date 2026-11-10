@@ -1,9 +1,10 @@
 import { Sparkline } from '@fluentui/react-charts';
 
-import descriptionMd from './SparklineDescription.md';
 import bestPracticesMd from './SparklineBestPractices.md';
+import descriptionMd from './SparklineDescription.md';
 
 export { SparklineBasic } from './SparklineDefault.stories';
+export { SparklineDimensions } from './SparklineDimensions.stories';
 
 export default {
   title: 'Charts/Sparkline',

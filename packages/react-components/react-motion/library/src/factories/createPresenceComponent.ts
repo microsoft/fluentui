@@ -1,4 +1,7 @@
+'use client';
+
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
@@ -16,11 +19,15 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
+import type { MotionComponent } from './createMotionComponent';
+import { createMotionComponent } from './createMotionComponent';
 
 /**
- * @internal A private symbol to store the motion definition on the component for variants.
+ * A private symbol to store the motion definition on the component for variants.
+ *
+ * @internal
  */
-export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
+export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 
 export type PresenceComponentProps = {
   /**
@@ -30,7 +37,7 @@ export type PresenceComponentProps = {
   appear?: boolean;
 
   /** A React element that will be cloned and will have motion effects applied to it. */
-  children: React.ReactElement;
+  children: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
@@ -74,9 +81,13 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
-  (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
-  [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  PresenceComponentProps & MotionParams
+> & {
+  (props: PresenceComponentProps & MotionParams): JSXElement | null;
+  [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+  In: MotionComponent<MotionParams>;
+  Out: MotionComponent<MotionParams>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
@@ -86,8 +97,6 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 ): PresenceComponent<MotionParams> {
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
-      'use no memo';
-
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
       const skipMotions = useMotionBehaviourContext() === 'skip';
@@ -233,6 +242,17 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         ],
       );
 
+      React.useEffect(() => {
+        // Heads up!
+        //
+        // Dispose the handle when unmounting the component to clean up retained references. Doing it in a separate
+        // effect to ensure that the component is unmounted.
+
+        if (unmountOnExit && !mounted) {
+          handleRef.current?.dispose();
+        }
+      }, [handleRef, unmountOnExit, mounted]);
+
       if (mounted) {
         return child;
       }
@@ -242,7 +262,22 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     {
       // Heads up!
       // Always normalize it to a function to simplify types
-      [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+      [PRESENCE_MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+    },
+    {
+      // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
+      In: createMotionComponent(
+        // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
+        // Otherwise, pass the `enter` motion object directly.
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).enter : value.enter,
+      ),
+
+      // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
+      Out: createMotionComponent(
+        // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
+        // Otherwise, pass the `exit` motion object directly.
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).exit : value.exit,
+      ),
     },
   );
 }

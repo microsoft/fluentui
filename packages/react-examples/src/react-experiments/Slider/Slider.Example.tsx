@@ -2,9 +2,10 @@
 import * as React from 'react';
 import { Slider as DeprecatedSlider } from '@fluentui/react-experiments';
 import { IStackTokens, Stack } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 // Workaround to prevent errors on usage of Slider, without disabling all deprecation checks
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 const Slider = DeprecatedSlider;
 
 export interface ISliderBasicExampleState {
@@ -14,7 +15,7 @@ const stackTokens: IStackTokens = { childrenGap: 30 };
 /* eslint-disable react/jsx-no-bind */
 export class SliderExample extends React.Component<{}, ISliderBasicExampleState> {
   public state: ISliderBasicExampleState = { value: 0 };
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const marks = [
       {
         value: 0,

@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 5 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -19,31 +19,31 @@ jobs:
   generate_vrt_screenshots:
     if: ${{ github.repository_owner == 'microsoft' }}
     name: Upload VRT Baseline
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn playwright install --with-deps
 
       - name: Run VR tests (generate screenshots)
         run: yarn nx run-many -t test-vr --nxBail
 
       - name: Prepare VR screenshots for upload
-        uses: actions/github-script@v7
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         id: screenshots_root
         with:
           script: |
             const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
             const config = {
-              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests', 'docs']
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
             };
             const result = await run({github,context,core,config});
             return result;

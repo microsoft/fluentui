@@ -118,7 +118,7 @@ A draft implementation is optional, but you may find it useful to create one bef
 
 ### Resources
 
-- Start with the [Spec Template](Spec-Template)
+- Start with the [Spec Template](https://github.com/microsoft/fluentui/blob/master/docs/react-wiki-archive/Spec-Template.md)
 - Refer to the [Best Practices](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/implementation-best-practices.md) while designing the component
 
 Write the spec in a file named `SPEC.md` in the component's folder. The spec should document your research above, and outline the proposed API, structure, and usage of the component.
@@ -142,12 +142,6 @@ The reviewers will help to double check the spec, and the API is consistent with
 To get a review started:
 
 - Create a pull request that contains `SPEC.md` and `.types.ts` (if applicable).
-  - If you have any open questions, call them out with a comment on the PR.
-  - Assign all of the core spec reviewers. Your PR should get signed off by at least one of these reviewers to be considered complete:
-    - Levi (levithomason)
-    - Miro (miroslavstastny)
-    - Ben (behowell)
-  - Anyone can provide input or feedback on Specs
 - If needed, create a spec review meeting or use Spec Review - Office Hours to walk through the spec, and include a link to the PR in the meeting invite.
   - If you have access to the Fluent UI Internal Teams channel, post a link to the spec in the Convergence channel so people know to look at the spec. At-mention the reviewers to ensure it's on their radar.
 - The spec does not have to be final with all issues or open questions resolved before merging the first draft.

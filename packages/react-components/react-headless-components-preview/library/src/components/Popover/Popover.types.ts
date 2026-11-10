@@ -1,0 +1,153 @@
+import type * as React from 'react';
+import type { EventData, EventHandler, JSXElement } from '@fluentui/react-utilities';
+import type { PositioningShorthand, PositioningReturn } from '../../hooks/usePositioning';
+
+/**
+ * Events that can trigger Popover open/close changes.
+ */
+export type OpenPopoverEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.FocusEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement>;
+
+/**
+ * Data attached to open/close events. Uses the canonical `EventData` shape so
+ * consumers can discriminate on `type` or use the handler directly via
+ * `EventHandler<OnOpenChangeData>`.
+ */
+export type OnOpenChangeData = EventData<string, React.SyntheticEvent | Event> & { open: boolean };
+
+/**
+ * Popover Props
+ */
+export type PopoverProps = {
+  /**
+   * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
+   * Alternatively can only contain `PopoverSurface` if using a custom `target`.
+   */
+  children: [JSXElement, JSXElement] | JSXElement;
+
+  /** Controlled open state. */
+  open?: boolean;
+
+  /**
+   * Default open state for uncontrolled mode.
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /** Callback when the open state changes. */
+  onOpenChange?: EventHandler<OnOpenChangeData>;
+
+  /**
+   * Open on hover.
+   * @default false
+   */
+  openOnHover?: boolean;
+
+  /**
+   * Open on context menu (right-click).
+   * @default false
+   */
+  openOnContext?: boolean;
+
+  /**
+   * Delay in ms before closing on mouse leave.
+   * @default 500
+   */
+  mouseLeaveDelay?: number;
+
+  /**
+   * Positioning configuration. Accepts either a full `PositioningProps`
+   * object or a shorthand string such as `'below'` / `'above-end'`.
+   *
+   * See the {@link https://react.fluentui.dev/?path=/docs/headless-concepts-positioning--docs Positioning concept}
+   * for the full list of options and live examples.
+   */
+  positioning?: PositioningShorthand;
+
+  /**
+   * Display an arrow pointing to the target.
+   * @default false
+   */
+  withArrow?: boolean;
+
+  /**
+   * Optional id for the popover surface. When provided, this id is applied to
+   * the `PopoverSurface` element and referenced by `PopoverTrigger`
+   * (`aria-details` and `aria-controls`). If omitted, a generated id is used.
+   */
+  id?: string;
+
+  /**
+   * When true, opens the popover as a modal via `HTMLDialogElement.showModal()`
+   * and traps focus the way the HTML dialog spec defines it: the rest of the page
+   * is inert, Tab cycles through the surface and may leave it only to the browser
+   * UI (address bar, toolbar), and focus is restored to the trigger when the
+   * popover closes.
+   *
+   * Matches `inertTrapFocus` on the v9 Popover and the headless Dialog. There is
+   * no equivalent of the v9 `trapFocus` without `inertTrapFocus`, which keeps
+   * focus out of the browser UI and does not make the page inert.
+   *
+   * When false (default), the popover is non-modal: opens via `showPopover()`,
+   * the browser handles light dismiss (Escape, click-outside, popover-stack
+   * peer dismissal), and no focus trap or autofocus is applied unless a child
+   * has the HTML `autofocus` attribute.
+   *
+   * @default false
+   */
+  inertTrapFocus?: boolean;
+};
+
+/**
+ * Popover State
+ */
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'>> &
+  Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    toggleOpen: (e: OpenPopoverEvents) => void;
+    triggerRef: React.RefObject<HTMLElement | null>;
+    contentRef: React.RefObject<HTMLElement | null>;
+    arrowRef: React.RefObject<HTMLDivElement | null>;
+    popoverTrigger: React.ReactElement | undefined;
+    popoverSurface: React.ReactElement | undefined;
+    contextTarget: { x: number; y: number } | undefined;
+    setContextTarget: (target: { x: number; y: number } | undefined) => void;
+    positioning: PositioningReturn;
+    surfaceId: string;
+    /** Determines whether the surface is present in the DOM. */
+    shouldRenderSurface: boolean;
+  };
+
+/**
+ * Context shared between Popover and its children.
+ */
+export type PopoverContextValue = Pick<
+  PopoverState,
+  | 'open'
+  | 'setOpen'
+  | 'toggleOpen'
+  | 'triggerRef'
+  | 'contentRef'
+  | 'arrowRef'
+  | 'openOnHover'
+  | 'openOnContext'
+  | 'withArrow'
+  | 'surfaceId'
+  | 'inertTrapFocus'
+> & {
+  positioning: {
+    targetRef: React.RefCallback<HTMLElement>;
+    containerRef: React.RefCallback<HTMLElement>;
+  };
+};
+
+/**
+ * Context values provided by Popover to its children.
+ */
+export type PopoverContextValues = {
+  popover: PopoverContextValue;
+};

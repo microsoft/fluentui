@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +11,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   TableBody,
   TableCell,
@@ -20,14 +21,13 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   createTableColumn,
 } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -37,7 +37,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -106,7 +106,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const MultipleSelect = () => {
+export const MultipleSelect = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

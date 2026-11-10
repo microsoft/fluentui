@@ -15,7 +15,7 @@ import { useDocument, useWindow, WindowProviderProps } from '@fluentui/react-win
  * Use this in place of the global `document` in React function components.
  * @returns Document | undefined
  */
-export const useDocumentEx = () => {
+export const useDocumentEx = (): Document | undefined => {
   // eslint-disable-next-line no-restricted-globals
   return useDocument() ?? (typeof document !== 'undefined' ? document : undefined);
 };
@@ -25,7 +25,7 @@ export const useDocumentEx = () => {
  * Use this in place of the global `window` in React function components.
  * @returns Window | undefined
  */
-export const useWindowEx = () => {
+export const useWindowEx = (): Window | undefined => {
   // eslint-disable-next-line no-restricted-globals
   return useWindow() ?? (typeof window !== 'undefined' ? window : undefined);
 };
@@ -37,7 +37,7 @@ export const useWindowEx = () => {
  * @param ctx - Class component WindowContext
  * @returns Document | undefined
  */
-export const getDocumentEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined) => {
+export const getDocumentEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined): Document | undefined => {
   // eslint-disable-next-line no-restricted-globals
   return ctx?.window?.document ?? (typeof document !== 'undefined' ? document : undefined);
 };
@@ -49,7 +49,7 @@ export const getDocumentEx = (ctx: Pick<WindowProviderProps, 'window'> | undefin
  * @param ctx - Class component WindowContext
  * @returns Window | undefined
  */
-export const getWindowEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined) => {
+export const getWindowEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined): Window | undefined => {
   // eslint-disable-next-line no-restricted-globals
   return ctx?.window ?? (typeof window !== 'undefined' ? window : undefined);
 };

@@ -2,13 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import type { NavItemState, NavItemSlots } from './NavItem.types';
 
 /**
  * Render the final JSX of NavItem
  */
-export const renderNavItem_unstable = (state: NavItemState) => {
+export const renderNavItem_unstable = (state: NavItemState): JSXElement => {
   assertSlots<NavItemSlots>(state);
 
   return (

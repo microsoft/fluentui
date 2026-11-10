@@ -1,19 +1,9 @@
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
+import { getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/Common.styles';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const {
-    theme,
-    chartValueSize,
-    chartWidth,
-    chartHeight,
-    className,
-    lineColor,
-    toDrawShape,
-    solidFill,
-    gradientFill,
-    opacity,
-  } = props;
+  const { theme, chartValueSize, className, lineColor, toDrawShape, solidFill, gradientFill, opacity } = props;
 
   return {
     root: [
@@ -31,8 +21,6 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     chart: {
       display: 'block',
-      width: chartWidth,
-      height: chartHeight,
     },
 
     limits: {
@@ -73,15 +61,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       stroke: theme.semanticColors.bodyBackground,
     },
 
-    chartTitle: {
-      fontSize: FontSizes.small,
-      fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    },
+    svgTooltip: getSvgTooltipStyle(theme),
+    chartTitle: getChartTitleStyle(theme),
 
     segment: {
       outline: 'none',
@@ -98,7 +79,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     },
 
     legendsContainer: {
-      width: chartWidth,
+      width: '100%',
     },
 
     calloutContentRoot: [

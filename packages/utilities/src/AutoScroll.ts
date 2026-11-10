@@ -16,8 +16,14 @@ const MAX_SCROLL_VELOCITY = 15;
  *
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
  *
- * @public
+ * AutoScroll simply hooks up mouse events given a parent element, and scrolls the container
+ * up/down depending on how close the mouse is to the top/bottom of the container.
+ *
+ * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
+ *
  * {@docCategory AutoScroll}
+ *
+ * @public
  */
 export class AutoScroll {
   private _events: EventGroup;

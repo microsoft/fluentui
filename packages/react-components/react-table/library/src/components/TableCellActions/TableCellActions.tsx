@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTableCellActions_unstable } from './useTableCellActions';
 import { renderTableCellActions_unstable } from './renderTableCellActions';

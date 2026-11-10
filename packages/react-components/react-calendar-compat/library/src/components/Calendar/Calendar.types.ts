@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { CalendarStrings, DateFormatting, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
@@ -14,7 +14,7 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<ICalendar>;
+  componentRef?: React.RefObject<ICalendar | null>;
 
   /**
    * Customized props for the calendar day

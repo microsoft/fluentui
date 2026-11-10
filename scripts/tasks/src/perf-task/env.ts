@@ -15,8 +15,4 @@ export const EnvVariablesByProject: { [projectName: string]: { filePath: string;
     filePath: `${envPrefix.filePath}ReactComponents`,
     status: `${envPrefix.status}ReactComponents`,
   },
-  '@fluentui/react-northstar': {
-    filePath: `${envPrefix.filePath}ReactNorthstar`,
-    status: `${envPrefix.status}ReactNorthstar`,
-  },
 };

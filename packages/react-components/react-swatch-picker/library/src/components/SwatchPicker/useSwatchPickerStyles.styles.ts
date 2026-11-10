@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types';
@@ -28,12 +30,11 @@ const useStyles = makeStyles({
  * Apply styling to the SwatchPicker slots based on the state
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
-  'use no memo';
-
   const styles = useStyles();
   const layoutStyle = state.isGrid ? styles.grid : styles.row;
 
   const spacingStyle = state.spacing === 'small' ? styles.spacingSmall : styles.spacingMedium;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     swatchPickerClassNames.root,
     styles.root,

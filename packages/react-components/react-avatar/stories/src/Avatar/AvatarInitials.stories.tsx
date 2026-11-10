@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const Initials = () => <Avatar name="Cecil Robin Folk" initials="CRF" />;
+export const Initials = (): JSXElement => <Avatar name="Cecil Robin Folk" initials="CRF" />;
 
 Initials.storyName = 'Initials: Custom Initials';
 Initials.parameters = {

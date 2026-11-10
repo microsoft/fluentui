@@ -1,3 +1,5 @@
+'use client';
+
 import type { Offset, OffsetObject } from '../types';
 
 /**

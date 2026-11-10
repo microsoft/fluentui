@@ -7,6 +7,7 @@ import {
 } from '@fluentui/react-docsite-components';
 import { VirtualizedListBasicExample } from './VirtualizedList.Basic.Example';
 import { VirtualizedListBasicExample2 } from './VirtualizedList.Basic2.Example';
+import type { JSXElement } from '@fluentui/utilities';
 
 const VirtualizedListBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic.Example.tsx') as string;
@@ -14,7 +15,7 @@ const VirtualizedListBasicExample2Code =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic2.Example.tsx') as string;
 
 export class VirtualizedListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="VirtualizedList"

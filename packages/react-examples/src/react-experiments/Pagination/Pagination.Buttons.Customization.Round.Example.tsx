@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Pagination } from '@fluentui/react-experiments/lib/Pagination';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
@@ -11,7 +12,7 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
     this.state = { selectedPageIndex: 0 };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <Pagination
         selectedPageIndex={this.state.selectedPageIndex}

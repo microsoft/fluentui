@@ -1,33 +1,45 @@
-import * as React from 'react';
+'use client';
+
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
-import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
+import {
+  useRestoreFocusSource,
+  useTabsterAttributes,
+  useMergedTabsterAttributes_unstable,
+} from '@fluentui/react-tabster';
+import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { dispatchMenuEnterEvent, useIsSubmenu } from '../../utils/index';
+import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
 /**
- * Create the state required to render MenuPopover.
+ * Base hook for MenuPopover, produces state required to render the component.
  *
- * The returned state can be modified with hooks such as useMenuPopoverStyles_unstable,
- * before being passed to renderMenuPopover_unstable.
+ * Does not invoke `@fluentui/react-tabster` focus-restoration or
+ * `@fluentui/react-motion` ref-forwarding APIs internally; the wrapper
+ * `useMenuPopover_unstable` layers those on top.
  *
  * @param props - props from this instance of MenuPopover
  * @param ref - reference to root HTMLElement of MenuPopover
  */
-export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
-  'use no memo';
+export const useMenuPopoverBase_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
+  'use no memo'; // justified: compiler would optimize useMenuPopoverBase_unstable — manual opt-out to preserve runtime behavior
 
+  const safeZone = useMenuContext_unstable(context => context.safeZone);
   const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
+
   const isSubmenu = useIsSubmenu();
+  const shouldCloseOnArrowLeft = useMenuListContext_unstable(ctx => ctx.shouldCloseOnArrowLeft ?? true);
+
   const canDispatchCustomEventRef = React.useRef(true);
-  const restoreFocusSourceAttributes = useRestoreFocusSource();
   const [setThrottleTimeout, clearThrottleTimeout] = useTimeout();
 
   const { dir } = useFluent();
@@ -45,7 +57,9 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
           if (canDispatchCustomEventRef.current) {
             canDispatchCustomEventRef.current = false;
             dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
-            setThrottleTimeout(() => (canDispatchCustomEventRef.current = true), 250);
+            setThrottleTimeout(() => {
+              canDispatchCustomEventRef.current = true;
+            }, 250);
           }
         });
       }
@@ -54,7 +68,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   );
 
   React.useEffect(() => {
-    () => clearThrottleTimeout();
+    return () => clearThrottleTimeout();
   }, [clearThrottleTimeout]);
 
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
@@ -63,7 +77,6 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const rootProps = slot.always(
     getIntrinsicElementProps('div', {
       role: 'presentation',
-      ...restoreFocusSourceAttributes,
       ...props,
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
@@ -72,6 +85,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     }),
     { elementType: 'div' },
   );
+
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
   rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover || isSubmenu) {
@@ -79,9 +93,10 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     }
     onMouseEnterOriginal?.(event);
   });
+
   rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const key = event.key;
-    if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
+    if (key === Escape || (isSubmenu && shouldCloseOnArrowLeft && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement) && !event.isDefaultPrevented()) {
         setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
         // stop propagation to avoid conflicting with other elements that listen for `Escape`
@@ -97,5 +112,46 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     }
     onKeyDownOriginal?.(event);
   });
-  return { inline, mountNode, components: { root: 'div' }, root: rootProps };
+
+  return {
+    inline,
+    mountNode,
+    safeZone,
+    components: { root: 'div' },
+    root: rootProps,
+  };
+};
+
+/**
+ * Create the state required to render MenuPopover.
+ *
+ * The returned state can be modified with hooks such as useMenuPopoverStyles_unstable,
+ * before being passed to renderMenuPopover_unstable.
+ *
+ * @param props - props from this instance of MenuPopover
+ * @param ref - reference to root HTMLElement of MenuPopover
+ */
+export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
+  // Opt the menu's popover out of tabster's Escape handling. The menu closes itself on
+  // Escape; without this tabster would also act on Escape (e.g. escaping a parent
+  // groupper/modalizer) and move focus away from the trigger instead of restoring it.
+  const ignoreEscapeKeyAttribute = useTabsterAttributes({
+    focusable: { ignoreKeydown: { Escape: true } },
+  });
+
+  const tabsterAttributes = useMergedTabsterAttributes_unstable(restoreFocusSourceAttributes, ignoreEscapeKeyAttribute);
+
+  const motionRef = useMotionForwardedRef();
+  const baseState = useMenuPopoverBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    root: {
+      ...tabsterAttributes,
+      ...baseState.root,
+      ref: useMergedRefs(baseState.root.ref, motionRef) as React.Ref<HTMLDivElement>,
+    },
+  };
 };

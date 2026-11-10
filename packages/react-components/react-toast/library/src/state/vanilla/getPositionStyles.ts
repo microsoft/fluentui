@@ -1,4 +1,4 @@
-import { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
+import type { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
 
 interface PositionStyles {
   top?: number;
@@ -7,7 +7,11 @@ interface PositionStyles {
   bottom?: number;
 }
 
-export const getPositionStyles = (position: ToastPosition, dir: 'rtl' | 'ltr', offset?: ToastOffset) => {
+export const getPositionStyles = (
+  position: ToastPosition,
+  dir: 'rtl' | 'ltr',
+  offset?: ToastOffset,
+): PositionStyles => {
   const positionStyles: PositionStyles = {};
 
   const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};

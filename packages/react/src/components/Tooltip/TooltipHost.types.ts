@@ -7,6 +7,8 @@ import type { ICalloutProps } from '../../Callout';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IStyle, ITheme } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Tooltip}
  */
@@ -63,7 +65,8 @@ export interface ITooltipHostProps extends Omit<React.HTMLAttributes<HTMLDivElem
   /**
    * Content to display in the Tooltip.
    */
-  content?: string | JSX.Element | JSX.Element[];
+
+  content?: string | JSXElement | JSXElement[];
 
   /**
    * Length of delay before showing the tooltip on hover.

@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './radio-group.definition.js';
+import { RadioGroup } from './radio-group.js';
 
-definition.define(FluentDesignSystem.registry);
+RadioGroup.define(definition);

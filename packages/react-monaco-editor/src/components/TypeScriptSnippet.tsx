@@ -73,7 +73,7 @@ export interface ITypeScriptSnippetProps {
 }
 
 /** TypeScript code snippet with a theme similar to Monaco's VS light. */
-export const TypeScriptSnippet: React.FunctionComponent<ITypeScriptSnippetProps> = props => {
+export const TypeScriptSnippet: React.FunctionComponent<React.PropsWithChildren<ITypeScriptSnippetProps>> = props => {
   return (
     <SyntaxHighlighter className={css(rootClass, props.className)} language="tsx" style={style}>
       {props.children}

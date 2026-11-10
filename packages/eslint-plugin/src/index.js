@@ -1,26 +1,21 @@
-module.exports = {
-  configs: {
-    node: require('./configs/node'),
-    'node--legacy': require('./configs/node-legacy'),
-    react: require('./configs/react'),
-    imports: require('./configs/imports'),
-    'react--legacy': require('./configs/react-legacy'),
-    'react-northstar': require('./configs/react-northstar'),
-  },
+const configHelpers = require('./utils/configHelpers');
+const rules = require('./rules');
 
-  rules: {
-    'ban-imports': require('./rules/ban-imports'),
-    'ban-context-export': require('./rules/ban-context-export'),
-    'ban-instanceof-html-element': require('./rules/ban-instanceof-html-element'),
-    'deprecated-keyboard-event-props': require('./rules/deprecated-keyboard-event-props'),
-    'max-len': require('./rules/max-len'),
-    'no-global-react': require('./rules/no-global-react'),
-    'no-tslint-comments': require('./rules/no-tslint-comments'),
-    'no-visibility-modifiers': require('./rules/no-visibility-modifiers'),
-    'no-restricted-imports': require('./rules/no-restricted-imports'),
-    'no-context-default-value': require('./rules/no-context-default-value'),
-  },
-
-  // Not a standard eslint thing, just exported for convenience
-  configHelpers: require('./utils/configHelpers'),
+/** @type {Record<string, import('eslint').Linter.Config>} */
+const configs = {
+  'flat/core': require('./configs/core'),
+  'flat/react': require('./configs/react'),
+  'flat/react-legacy': require('./configs/react/legacy'),
+  'flat/node': require('./configs/node'),
+  'flat/node-legacy': require('./configs/node/legacy'),
+  'flat/imports': require('./configs/imports'),
 };
+
+const plugin = {
+  namespace: '@fluentui',
+  configs,
+  rules,
+  configHelpers,
+};
+
+module.exports = plugin;

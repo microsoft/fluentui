@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Check } from './Check';
-import { safeCreate } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 
@@ -17,9 +17,7 @@ describe('Check', () => {
 
   // Snapshot Tests:
   it('renders Check (correctly)', () => {
-    safeCreate(<Check checked={true} className={'test-className'} />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const { container } = render(<Check checked={true} className={'test-className'} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

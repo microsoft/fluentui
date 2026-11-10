@@ -3,7 +3,9 @@ import { CustomizerContext, FocusRectsProvider, getNativeElementProps, omit } fr
 import { ThemeContext } from './ThemeContext';
 import type { ThemeProviderState } from './ThemeProvider.types';
 
-export const renderThemeProvider = (state: ThemeProviderState) => {
+import type { JSXElement } from '@fluentui/utilities';
+
+export const renderThemeProvider = (state: ThemeProviderState): JSXElement => {
   const { customizerContext, ref, theme } = state;
   const Root = state.as || 'div';
   const rootProps =

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Size = (props: Partial<DropdownProps>) => {
+export const Size = (props: Partial<DropdownProps>): JSXElement => {
   const comboId = useId('combobox');
   const styles = useStyles();
 

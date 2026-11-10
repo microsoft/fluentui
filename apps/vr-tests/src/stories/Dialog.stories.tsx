@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../utilities';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -20,10 +21,10 @@ const text = {
 export default {
   title: 'Dialog',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.ms-Dialog-main' }).end()),
-  ],
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.ms-Dialog-main' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const Root = () => (

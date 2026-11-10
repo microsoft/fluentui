@@ -1,3 +1,4 @@
+import { tokens } from '@fluentui/react-theme';
 import { rgb as d3Rgb } from 'd3-color';
 
 export const DataVizPalette = {
@@ -166,3 +167,16 @@ export const getColorContrast = (c1: string, c2: string): number => {
   const l2 = lrgbLuminance(rgbLrgb(d3Rgb(c2)));
   return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
 };
+
+export const getInvertedTextColor = (color: string, isDarkTheme: boolean = false): string => {
+  return color === tokens.colorNeutralForeground1 ? tokens.colorNeutralBackground1 : tokens.colorNeutralForeground1;
+};
+
+export function getContrastTextColor(backgroundColor: string, isDarkTheme: boolean = false): string {
+  let textColor = tokens.colorNeutralForeground1;
+  const contrastRatio = getColorContrast(textColor, backgroundColor);
+  if (contrastRatio < 3) {
+    textColor = getInvertedTextColor(textColor, isDarkTheme);
+  }
+  return textColor;
+}

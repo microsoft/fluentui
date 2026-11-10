@@ -1,20 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Nav render Nav with overrides correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone4"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <nav
-    className=
+    class=
         ms-Nav
         {
           -moz-osx-font-smoothing: grayscale;
@@ -29,14 +26,14 @@ exports[`Nav render Nav with overrides correctly 1`] = `
     role="navigation"
   >
     <div
-      className="ms-Nav-group is-expanded"
+      class="ms-Nav-group is-expanded"
     >
       <div
         data-test="header-override"
       >
         <button
-          aria-expanded={true}
-          className=
+          aria-expanded="true"
+          class=
               ms-Nav-chevronButton
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -96,11 +93,11 @@ exports[`Nav render Nav with overrides correctly 1`] = `
               &:visited {
                 color: #323130;
               }
-          onClick={[Function]}
+          tabindex="0"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Nav-chevron
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -128,7 +125,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
         </button>
       </div>
       <div
-        className=
+        class=
             ms-Nav-groupContent
             {
               animation-duration: 0.367s;
@@ -140,7 +137,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
             }
       >
         <ul
-          className=
+          class=
               ms-Nav-navItems
               {
                 list-style-type: none;
@@ -156,7 +153,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
           role="list"
         >
           <li
-            className=
+            class=
                 ms-Nav-navItem
                 {
                   padding-bottom: 0px;
@@ -167,7 +164,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
             role="listitem"
           >
             <div
-              className=
+              class=
                   ms-Nav-compositeLink
                   {
                     color: #323130;
@@ -180,7 +177,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                 data-test="button-override"
               >
                 <a
-                  className=
+                  class=
                       ms-Button
                       ms-Button--action
                       ms-Button--command
@@ -285,18 +282,13 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       .ms-Nav-compositeLink:hover & {
                         background-color: #f3f2f1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   href="http://localhost/#/testing1"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyPress={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
+                  tabindex="-1"
                   title="Bing"
                 >
                   <span
-                    className=
+                    class=
                         ms-Button-flexContainer
                         {
                           align-items: center;
@@ -311,7 +303,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       data-test="link-override"
                     >
                       <div
-                        className=
+                        class=
                             ms-Nav-linkText
                             {
                               margin-bottom: 0;
@@ -333,7 +325,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
             </div>
           </li>
           <li
-            className=
+            class=
                 ms-Nav-navItem
                 {
                   padding-bottom: 0px;
@@ -344,7 +336,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
             role="listitem"
           >
             <div
-              className=
+              class=
                   ms-Nav-compositeLink
                   {
                     color: #323130;
@@ -357,7 +349,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                 data-test="button-override"
               >
                 <a
-                  className=
+                  class=
                       ms-Button
                       ms-Button--action
                       ms-Button--command
@@ -462,18 +454,13 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       .ms-Nav-compositeLink:hover & {
                         background-color: #f3f2f1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   href="http://localhost/#/testing2"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyPress={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
+                  tabindex="-1"
                   title="OneDrive"
                 >
                   <span
-                    className=
+                    class=
                         ms-Button-flexContainer
                         {
                           align-items: center;
@@ -488,7 +475,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       data-test="link-override"
                     >
                       <div
-                        className=
+                        class=
                             ms-Nav-linkText
                             {
                               margin-bottom: 0;
@@ -518,19 +505,16 @@ exports[`Nav render Nav with overrides correctly 1`] = `
 
 exports[`Nav renders Nav correctly 1`] = `
 <div
-  className=
+  class=
       ms-FocusZone
       &:focus {
         outline: none;
       }
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onMouseDownCapture={[Function]}
 >
   <nav
-    className=
+    class=
         ms-Nav
         {
           -moz-osx-font-smoothing: grayscale;
@@ -545,10 +529,10 @@ exports[`Nav renders Nav correctly 1`] = `
     role="navigation"
   >
     <div
-      className="ms-Nav-group is-expanded"
+      class="ms-Nav-group is-expanded"
     >
       <div
-        className=
+        class=
             ms-Nav-groupContent
             {
               animation-duration: 0.367s;
@@ -560,7 +544,7 @@ exports[`Nav renders Nav correctly 1`] = `
             }
       >
         <ul
-          className=
+          class=
               ms-Nav-navItems
               {
                 list-style-type: none;
@@ -576,7 +560,7 @@ exports[`Nav renders Nav correctly 1`] = `
           role="list"
         >
           <li
-            className=
+            class=
                 ms-Nav-navItem
                 {
                   padding-bottom: 0px;
@@ -587,7 +571,7 @@ exports[`Nav renders Nav correctly 1`] = `
             role="listitem"
           >
             <div
-              className=
+              class=
                   ms-Nav-compositeLink
                   {
                     color: #323130;
@@ -597,7 +581,7 @@ exports[`Nav renders Nav correctly 1`] = `
               name=""
             >
               <button
-                className=
+                class=
                     ms-Button
                     ms-Button--action
                     ms-Button--command
@@ -702,18 +686,13 @@ exports[`Nav renders Nav correctly 1`] = `
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
                     }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
+                data-is-focusable="true"
+                tabindex="0"
                 title=""
                 type="button"
               >
                 <span
-                  className=
+                  class=
                       ms-Button-flexContainer
                       {
                         align-items: center;
@@ -725,7 +704,7 @@ exports[`Nav renders Nav correctly 1`] = `
                   data-automationid="splitbuttonprimary"
                 >
                   <div
-                    className=
+                    class=
                         ms-Nav-linkText
                         {
                           margin-bottom: 0;
@@ -737,9 +716,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
-                  >
-                    
-                  </div>
+                  />
                 </span>
               </button>
             </div>

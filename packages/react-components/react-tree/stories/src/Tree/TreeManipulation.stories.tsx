@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
+import type {
+  JSXElement,
   HeadlessFlatTreeItemProps,
-  useHeadlessFlatTree_unstable,
   TreeItemValue,
   FlatTreeItemProps,
 } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
 import { Delete20Regular } from '@fluentui/react-icons';
 import {
   Button,
@@ -78,7 +76,7 @@ const CustomTreeItem = React.forwardRef(
   },
 );
 
-export const Manipulation = () => {
+export const Manipulation = (): JSXElement => {
   const [trees, setTrees] = React.useState(subtrees);
   const itemToFocusRef = React.useRef<HTMLDivElement>(null);
   const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();

@@ -1,5 +1,8 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { usePopover_unstable } from './usePopover';
+import { usePopoverContextValues_unstable } from './usePopoverContextValues';
 import { renderPopover_unstable } from './renderPopover';
 import type { PopoverProps } from './Popover.types';
 
@@ -8,8 +11,9 @@ import type { PopoverProps } from './Popover.types';
  */
 export const Popover: React.FC<PopoverProps> = props => {
   const state = usePopover_unstable(props);
+  const contextValues = usePopoverContextValues_unstable(state);
 
-  return renderPopover_unstable(state);
+  return renderPopover_unstable(state, contextValues);
 };
 
 Popover.displayName = 'Popover';

@@ -12,19 +12,19 @@ import {
 
 export interface ISemanticSlotsDetailsListProps {
   slotNames: string[];
-  noneSlots: JSX.Element[];
-  neutralSlots: JSX.Element[];
-  softSlots: JSX.Element[];
-  strongSlots: JSX.Element[];
+  noneSlots: React.ReactElement[];
+  neutralSlots: React.ReactElement[];
+  softSlots: React.ReactElement[];
+  strongSlots: React.ReactElement[];
 }
 
 interface ISemanticSlotsDetailsList {
   key: string;
   slotName: string;
-  noneSlot: JSX.Element;
-  neutralSlot: JSX.Element;
-  softSlot: JSX.Element;
-  strongSlot: JSX.Element;
+  noneSlot: React.ReactElement;
+  neutralSlot: React.ReactElement;
+  softSlot: React.ReactElement;
+  strongSlot: React.ReactElement;
 }
 
 export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDetailsListProps> = (
@@ -41,7 +41,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
   let groups: IGroup[] = [];
   let columns: IColumn[] = [];
 
-  const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
+  const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): React.ReactElement => {
     if (detailsRowProps) {
       const rowStyles: Partial<IDetailsRowStyles> = {
         root: {

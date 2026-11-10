@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { DonutChart, ChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { DonutChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 import { makeStyles, mergeClasses } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const DonutChartStyled = () => {
+export const DonutChartStyled = (): JSXElement => {
   const classes = useStyles();
 
   const points = [

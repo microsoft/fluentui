@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, ToastPosition } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -7,12 +8,11 @@ import {
   Radio,
   Toaster,
   useToastController,
-  ToastPosition,
   ToastTitle,
   Toast,
 } from '@fluentui/react-components';
 
-export const ToastPositions = () => {
+export const ToastPositions = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const [position, setPosition] = React.useState<ToastPosition>('top');

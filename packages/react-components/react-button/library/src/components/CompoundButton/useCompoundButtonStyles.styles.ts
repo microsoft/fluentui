@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
@@ -26,7 +28,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
@@ -42,7 +44,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'Highlight',
         },
@@ -65,7 +67,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
       },
@@ -91,7 +93,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2Pressed,
       },
@@ -103,7 +105,7 @@ const useRootStyles = makeStyles({
           color: 'Canvas',
         },
       },
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'Canvas',
         },
@@ -121,7 +123,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
       },
@@ -160,7 +162,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover:active': {
+    ':hover:active,:active:focus-visible': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
@@ -180,7 +182,7 @@ const useRootStyles = makeStyles({
         },
       },
 
-      ':hover:active': {
+      ':hover:active,:active:focus-visible': {
         [`& .${compoundButtonClassNames.secondaryContent}`]: {
           color: 'GrayText',
         },
@@ -257,8 +259,6 @@ const useSecondaryContentStyles = makeStyles({
 });
 
 export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
@@ -267,6 +267,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     compoundButtonClassNames.root,
 
@@ -287,6 +288,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.contentContainer.className = mergeClasses(
     compoundButtonClassNames.contentContainer,
     contentContainerStyles.base,
@@ -294,6 +296,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       compoundButtonClassNames.icon,
       iconStyles.base,
@@ -303,6 +306,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       compoundButtonClassNames.secondaryContent,
       secondaryContentStyles.base,

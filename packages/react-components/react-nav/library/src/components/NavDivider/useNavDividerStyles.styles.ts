@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useDividerStyles_unstable, type DividerSlots } from '@fluentui/react-divider';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -20,11 +22,11 @@ const useStyles = makeStyles({
  * Apply styling to the NavDivider slots based on the state
  */
 export const useNavDividerStyles_unstable = (state: NavDividerState): NavDividerState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navDividerClassNames.root, styles.root, state.root.className);
+  // eslint-disable-next-line react-hooks/immutability
   state.wrapper.className = mergeClasses(navDividerClassNames.wrapper, state.wrapper.className);
 
   useDividerStyles_unstable(state);

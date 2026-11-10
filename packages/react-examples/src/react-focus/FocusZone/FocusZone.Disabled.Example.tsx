@@ -12,7 +12,7 @@ export const FocusZoneDisabledExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={tokens} horizontalAlign="start">
       <FocusZone direction={FocusZoneDirection.horizontal}>
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <Stack tokens={tokens} horizontal verticalAlign="center" wrap>
           <span>Enabled FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
@@ -22,7 +22,7 @@ export const FocusZoneDisabledExample: React.FunctionComponent = () => {
       </FocusZone>
       <DefaultButton>Tabbable Element 1</DefaultButton>
       <FocusZone disabled={true}>
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <Stack tokens={tokens} horizontal verticalAlign="center" wrap>
           <span>Disabled FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>

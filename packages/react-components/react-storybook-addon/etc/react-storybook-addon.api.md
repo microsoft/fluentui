@@ -4,12 +4,29 @@
 
 ```ts
 
-import { Args } from '@storybook/react';
-import { Parameters as Parameters_2 } from '@storybook/react';
-import { StoryContext } from '@storybook/react';
+import type { Args } from '@storybook/react-webpack5';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { Parameters as Parameters_2 } from '@storybook/react-webpack5';
+import type { PreparedStory } from 'storybook/internal/types';
+import * as React_2 from 'react';
+import type { Renderer } from 'storybook/internal/types';
+import type { StoryContext } from '@storybook/react-webpack5';
 
 // @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
+
+// @public
+export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
+
+// @public (undocumented)
+export const FluentDocsPage: ({ renderPrimaryStory, renderArgsTable, renderStories, }?: FluentDocsPageProps) => JSXElement;
+
+// @public (undocumented)
+export type FluentDocsPageProps = {
+    renderPrimaryStory?: typeof RenderPrimaryStory;
+    renderArgsTable?: typeof RenderArgsTable;
+    renderStories?: typeof RenderStories;
+};
 
 // @public
 export interface FluentGlobals extends Args {
@@ -19,6 +36,8 @@ export interface FluentGlobals extends Args {
     [STRICT_MODE_ID]?: boolean;
     // (undocumented)
     [THEME_ID]?: ThemeIds;
+    // (undocumented)
+    [THEMES]?: Theme[];
 }
 
 // @public
@@ -28,12 +47,18 @@ export interface FluentParameters extends Parameters_2 {
     // (undocumented)
     fluentTheme?: ThemeIds;
     // (undocumented)
+    fluentThemes?: Theme[];
+    // (undocumented)
     mode?: 'default' | 'vr-test';
     // (undocumented)
     reactStorybookAddon?: {
-        disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+        disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+        docs?: FluentDocsConfig;
     };
 }
+
+// @public
+export const FluentStory: ({ id, height }: FluentStoryProps) => JSXElement;
 
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
@@ -44,20 +69,19 @@ export interface FluentStoryContext extends StoryContext {
 }
 
 // @public (undocumented)
-export function parameters(options?: FluentParameters): {
-    dir: string;
-    fluentTheme: string;
-    mode: string;
-    reactStorybookAddon?: {
-        disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
-    } | undefined;
-};
+export function parameters(options?: FluentParameters): FluentParameters;
+
+// @public (undocumented)
+export type Theme = (typeof themes)[number];
 
 // @public (undocumented)
 export const THEME_ID: "storybook_fluentui-react-addon_theme";
 
 // @public (undocumented)
-export type ThemeIds = (typeof themes)[number]['id'];
+export type ThemeIds = Theme['id'];
+
+// @public (undocumented)
+export const THEMES: "storybook_fluentui-react-addon_themes";
 
 // @public (undocumented)
 export const themes: readonly [{
@@ -72,6 +96,12 @@ export const themes: readonly [{
 }, {
     readonly id: "teams-dark";
     readonly label: "Teams Dark";
+}, {
+    readonly id: "teams-light-v21";
+    readonly label: "Teams Light V2.1";
+}, {
+    readonly id: "teams-dark-v21";
+    readonly label: "Teams Dark V2.1";
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";

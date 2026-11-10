@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Icon renders Icon correctly using iconName 1`] = `
 <i
-  aria-hidden={true}
-  className=
+  aria-hidden="true"
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -23,8 +23,8 @@ exports[`Icon renders Icon correctly using iconName 1`] = `
 
 exports[`Icon renders Icon with children correctly 1`] = `
 <i
-  aria-hidden={true}
-  className=
+  aria-hidden="true"
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -46,8 +46,8 @@ exports[`Icon renders Icon with children correctly 1`] = `
 
 exports[`Icon renders Icon with custom styles 1`] = `
 <i
-  aria-hidden={true}
-  className=
+  aria-hidden="true"
+  class=
       root
       {
         -moz-osx-font-smoothing: grayscale;
@@ -67,8 +67,8 @@ exports[`Icon renders Icon with custom styles 1`] = `
 
 exports[`Icon renders Icon with getStyles 1`] = `
 <i
-  aria-hidden={true}
-  className=
+  aria-hidden="true"
+  class=
       className
       root
       {
@@ -89,8 +89,8 @@ exports[`Icon renders Icon with getStyles 1`] = `
 
 exports[`Icon renders Icon with imageProps correctly 1`] = `
 <span
-  aria-hidden={true}
-  className=
+  aria-hidden="true"
+  class=
       ms-Icon-imageContainer
       {
         -moz-osx-font-smoothing: grayscale;
@@ -106,7 +106,7 @@ exports[`Icon renders Icon with imageProps correctly 1`] = `
   data-icon-name="CompassNW"
 >
   <div
-    className=
+    class=
         ms-Image
         {
           -moz-osx-font-smoothing: grayscale;
@@ -116,15 +116,9 @@ exports[`Icon renders Icon with imageProps correctly 1`] = `
           font-weight: 400;
           overflow: hidden;
         }
-    style={
-      Object {
-        "height": undefined,
-        "width": undefined,
-      }
-    }
   >
     <img
-      className=
+      class=
           ms-Image-image
           ms-Image-image--portrait
           is-notLoaded
@@ -133,8 +127,6 @@ exports[`Icon renders Icon with imageProps correctly 1`] = `
             display: block;
             opacity: 0;
           }
-      onError={[Function]}
-      onLoad={[Function]}
       src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/icon-one.png"
     />
   </div>

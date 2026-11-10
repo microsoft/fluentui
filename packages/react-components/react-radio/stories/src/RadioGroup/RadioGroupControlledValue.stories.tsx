@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup, Button } from '@fluentui/react-components';
 
-export const ControlledValue = () => {
+export const ControlledValue = (): JSXElement => {
   const [value, setValue] = React.useState('banana');
   return (
     <>

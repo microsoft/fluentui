@@ -30,3 +30,7 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | '
 export type PresenceBadgeState = ComponentState<BadgeSlots> &
   BadgeState &
   Required<Pick<PresenceBadgeProps, 'status' | 'outOfOffice'>>;
+
+export type PresenceBadgeBaseProps = Omit<PresenceBadgeProps, 'size'>;
+
+export type PresenceBadgeBaseState = Omit<PresenceBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

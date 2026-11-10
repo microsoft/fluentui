@@ -1,4 +1,7 @@
-import { Button, ButtonProps, mergeClasses } from '@fluentui/react-components';
+'use client';
+
+import type { ButtonProps } from '@fluentui/react-components';
+import { Button, mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
 import { useAttachmentActionStyles } from './AttachmentAction.styles';
 

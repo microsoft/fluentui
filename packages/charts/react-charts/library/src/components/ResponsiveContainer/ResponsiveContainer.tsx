@@ -1,6 +1,10 @@
+'use client';
+
 import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
-import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
+import type { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
+import { useResponsiveChildStyles } from './useResponsiveChildStyles.styles';
+import { mergeClasses } from '@griffel/react';
 
 /**
  * Responsive Container component
@@ -8,10 +12,12 @@ import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveCont
  */
 export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize']>();
+  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize'] | undefined>(undefined);
+  const childClasses = useResponsiveChildStyles();
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
+  // eslint-disable-next-line react-hooks/refs
   onResizeRef.current = props.onResize;
 
   React.useEffect(() => {
@@ -24,6 +30,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       // rAF is an alternative to the throttle function. For more info, see:
       // https://css-tricks.com/debouncing-throttling-explained-examples/#aa-requestanimationframe-raf
       animationFrameId = _window?.requestAnimationFrame(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSize(prevSize => {
           const roundedWidth = Math.floor(containerWidth);
           const roundedHeight = Math.floor(containerHeight);
@@ -69,34 +76,34 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       }
     }
 
-    return (
-      <div
-        ref={containerRef}
-        style={
-          {
-            width: props.width ?? '100%',
-            height: props.height ?? '100%',
-            minWidth: props.minWidth,
-            minHeight: props.minHeight,
-            maxHeight: props.maxHeight,
-            // Ensure the child element fills the parent container
-            // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
-            '--root-width': calculatedWidth + 'px',
-            '--root-height': calculatedHeight + 'px',
-          } as React.CSSProperties
-        }
-      >
-        {React.Children.map(props.children, child => {
-          return React.cloneElement<ResponsiveChildProps>(child, {
-            width: calculatedWidth,
-            height: calculatedHeight,
-            shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
-          });
-        })}
-      </div>
-    );
-  }, [size, props.aspect, props.maxHeight, props.children, props.width, props.height, props.minHeight, props.minWidth]);
+    return React.Children.map(props.children, child => {
+      return React.cloneElement<ResponsiveChildProps>(child, {
+        width: calculatedWidth,
+        height: calculatedHeight,
+        // For SankeyChart
+        shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
+        styles: {
+          root: mergeClasses(child.props.styles?.root, childClasses.root),
+          chartWrapper: mergeClasses(child.props.styles?.chartWrapper, childClasses.chartWrapper),
+          chart: mergeClasses(child.props.styles?.chart, childClasses.chart),
+        },
+      });
+    });
+  }, [size, props.aspect, props.maxHeight, props.children]);
 
-  return chartContent;
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: props.width ?? '100%',
+        height: props.height ?? '100%',
+        minWidth: props.minWidth,
+        minHeight: props.minHeight,
+        maxHeight: props.maxHeight,
+      }}
+    >
+      {chartContent}
+    </div>
+  );
 };
 ResponsiveContainer.displayName = 'ResponsiveContainer';

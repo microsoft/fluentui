@@ -165,7 +165,7 @@ ToggleBase.displayName = COMPONENT_NAME + 'Base';
 const useComponentRef = (
   props: IToggleProps,
   isChecked: boolean | undefined,
-  toggleButtonRef: React.RefObject<IToggle>,
+  toggleButtonRef: React.RefObject<IToggle | null>,
 ) => {
   React.useImperativeHandle(
     props.componentRef,

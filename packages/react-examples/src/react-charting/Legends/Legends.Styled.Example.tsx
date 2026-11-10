@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { FontWeights } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LegendStyledExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',

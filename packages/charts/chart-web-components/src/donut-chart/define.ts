@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '@fluentui/web-components';
 import { definition } from './donut-chart.definition.js';
+import { DonutChart } from './donut-chart.js';
 
-definition.define(FluentDesignSystem.registry);
+DonutChart.define(definition);

@@ -1,7 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';
-import type { TagProps, TagState } from './Tag.types';
+import type { TagBaseProps, TagBaseState, TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
@@ -17,35 +19,25 @@ const tagAvatarShapeMap = {
 } as const;
 
 /**
- * Create the state required to render Tag.
+ * Create the base state required to render Tag, without design-only props.
  *
- * The returned state can be modified with hooks such as useTagStyles_unstable,
- * before being passed to renderTag_unstable.
- *
- * @param props - props from this instance of Tag
+ * @param props - props from this instance of Tag (without appearance, size, shape)
  * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
-export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
+export const useTagBase_unstable = (
+  props: TagBaseProps,
+  ref: React.Ref<HTMLSpanElement | HTMLButtonElement>,
+): TagBaseState => {
   const {
     handleTagDismiss,
-    size: contextSize,
     disabled: contextDisabled,
-    appearance: contextAppearance,
     dismissible: contextDismissible,
     role: tagGroupRole,
   } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
-  const {
-    appearance = contextAppearance ?? 'filled',
-    disabled = false,
-    dismissible = contextDismissible ?? false,
-    selected = false,
-    shape = 'rounded',
-    size = contextSize,
-    value = id,
-  } = props;
+  const { disabled = false, dismissible = contextDismissible ?? false, selected, value = id } = props;
 
   const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
@@ -62,16 +54,13 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
   });
 
   const elementType = dismissible ? 'button' : 'span';
+  const selectedProp = tagGroupRole === 'listbox' ? 'aria-selected' : 'aria-pressed';
+  const selectable = typeof selected === 'boolean' || tagGroupRole === 'listbox';
 
   return {
-    appearance,
-    avatarShape: tagAvatarShapeMap[shape],
-    avatarSize: tagAvatarSizeMap[size],
     disabled: contextDisabled ? true : disabled,
     dismissible,
-    selected,
-    shape,
-    size,
+    selected: !!selected,
 
     components: {
       root: elementType,
@@ -86,12 +75,18 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
       getIntrinsicElementProps(elementType, {
         ref,
         role: tagGroupRole === 'listbox' ? 'option' : undefined,
+        [selectedProp]: selectable ? selected : undefined,
         ...props,
         disabled: contextDisabled ? true : disabled,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType },
+      {
+        defaultProps: {
+          type: elementType === 'button' ? 'button' : undefined,
+        },
+        elementType,
+      },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),
@@ -106,10 +101,37 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
     dismissIcon: slot.optional(props.dismissIcon, {
       renderByDefault: dismissible,
-      defaultProps: {
-        children: <DismissRegular />,
-      },
       elementType: 'span',
     }),
+  };
+};
+
+/**
+ * Create the state required to render Tag.
+ *
+ * The returned state can be modified with hooks such as useTagStyles_unstable,
+ * before being passed to renderTag_unstable.
+ *
+ * @param props - props from this instance of Tag
+ * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
+ */
+export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
+  const { size: contextSize, appearance: contextAppearance } = useTagGroupContext_unstable();
+
+  const { appearance = contextAppearance ?? 'filled', shape = 'rounded', size = contextSize } = props;
+
+  const baseState = useTagBase_unstable(props, ref);
+
+  if (baseState.dismissIcon) {
+    baseState.dismissIcon.children ??= <DismissRegular />;
+  }
+
+  return {
+    ...baseState,
+    appearance,
+    avatarShape: tagAvatarShapeMap[shape],
+    avatarSize: tagAvatarSizeMap[size],
+    shape,
+    size,
   };
 };

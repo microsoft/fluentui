@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
@@ -15,12 +15,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -28,8 +29,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone14"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -42,7 +45,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -69,9 +72,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
-          transform="translate(0, 257)"
+          transform="translate(0, 222)"
         >
           <path
             class="domain"
@@ -161,19 +164,19 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,222.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,222.5)"
           >
             <line
               stroke="currentColor"
@@ -191,7 +194,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,198.25)"
+            transform="translate(0,172)"
           >
             <line
               stroke="currentColor"
@@ -209,7 +212,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,139)"
+            transform="translate(0,121.5)"
           >
             <line
               stroke="currentColor"
@@ -227,7 +230,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,79.75)"
+            transform="translate(0,71)"
           >
             <line
               stroke="currentColor"
@@ -278,12 +281,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="4.74"
+                height="4.040000000000001"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="252.26"
+                y="217.96"
               />
               <rect
                 class=
@@ -293,12 +296,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.0100000000000002"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="216.95000000000002"
               />
             </g>
             <text
@@ -317,7 +320,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="210.95000000000002"
             >
               2.5
             </text>
@@ -338,12 +341,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="71.1"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="185.9"
+                y="161.4"
               />
               <rect
                 class=
@@ -353,12 +356,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="7.109999999999999"
+                height="6.0600000000000005"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="178.79000000000002"
+                y="155.34"
               />
               <rect
                 class=
@@ -368,12 +371,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="94.79999999999998"
+                height="80.8"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="83.99000000000004"
+                y="74.54"
               />
             </g>
             <text
@@ -392,7 +395,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="77.99000000000004"
+              y="68.54"
             >
               73
             </text>
@@ -413,12 +416,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="23.700000000000003"
+                height="20.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="233.3"
+                y="201.8"
               />
               <rect
                 class=
@@ -428,12 +431,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="142.20000000000002"
+                height="121.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="91.1"
+                y="80.60000000000001"
               />
               <rect
                 class=
@@ -443,12 +446,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="71.10000000000001"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="19.999999999999986"
+                y="20.000000000000007"
               />
             </g>
             <text
@@ -467,7 +470,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
-              y="13.999999999999986"
+              y="14.000000000000007"
             >
               100
             </text>
@@ -482,8 +485,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="157.46000000000004"
-            y2="159.83"
+            y1="137.16000000000003"
+            y2="139.18"
           />
           <line
             opacity="1"
@@ -493,12 +496,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="159.83"
+            y1="139.18"
             y2="20"
           />
           <circle
             cx="279"
-            cy="157.46000000000004"
+            cy="137.16000000000003"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -508,7 +511,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <circle
             cx="327"
-            cy="159.83"
+            cy="139.18"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -566,7 +569,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone15"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -575,7 +578,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -591,7 +594,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -650,106 +653,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -792,7 +695,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -892,7 +795,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -978,6 +881,106 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             }
                       >
                         Metadata3
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
                       </div>
                     </button>
                   </div>
@@ -1007,12 +1010,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -1020,8 +1024,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone14"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1034,7 +1040,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1061,9 +1067,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
-          transform="translate(0, 257)"
+          transform="translate(0, 222)"
         >
           <path
             class="domain"
@@ -1153,19 +1159,19 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,222.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,222.5)"
           >
             <line
               stroke="currentColor"
@@ -1183,7 +1189,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,198.25)"
+            transform="translate(0,172)"
           >
             <line
               stroke="currentColor"
@@ -1201,7 +1207,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,139)"
+            transform="translate(0,121.5)"
           >
             <line
               stroke="currentColor"
@@ -1219,7 +1225,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,79.75)"
+            transform="translate(0,71)"
           >
             <line
               stroke="currentColor"
@@ -1270,12 +1276,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="4.74"
+                height="4.040000000000001"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="252.26"
+                y="217.96"
               />
               <rect
                 class=
@@ -1285,12 +1291,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.0100000000000002"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="216.95000000000002"
               />
             </g>
             <text
@@ -1309,7 +1315,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="210.95000000000002"
             >
               2.5
             </text>
@@ -1330,12 +1336,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="71.1"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="185.9"
+                y="161.4"
               />
               <rect
                 class=
@@ -1345,12 +1351,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="7.109999999999999"
+                height="6.0600000000000005"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="178.79000000000002"
+                y="155.34"
               />
               <rect
                 class=
@@ -1360,12 +1366,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="94.79999999999998"
+                height="80.8"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="83.99000000000004"
+                y="74.54"
               />
             </g>
             <text
@@ -1384,7 +1390,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="77.99000000000004"
+              y="68.54"
             >
               73
             </text>
@@ -1405,12 +1411,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="23.700000000000003"
+                height="20.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="233.3"
+                y="201.8"
               />
               <rect
                 class=
@@ -1420,12 +1426,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="142.20000000000002"
+                height="121.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="91.1"
+                y="80.60000000000001"
               />
               <rect
                 class=
@@ -1435,12 +1441,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="71.10000000000001"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="19.999999999999986"
+                y="20.000000000000007"
               />
             </g>
             <text
@@ -1459,7 +1465,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
-              y="13.999999999999986"
+              y="14.000000000000007"
             >
               100
             </text>
@@ -1474,8 +1480,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="157.46000000000004"
-            y2="159.83"
+            y1="137.16000000000003"
+            y2="139.18"
           />
           <line
             opacity="1"
@@ -1485,12 +1491,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="159.83"
+            y1="139.18"
             y2="20"
           />
           <circle
             cx="279"
-            cy="157.46000000000004"
+            cy="137.16000000000003"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -1500,7 +1506,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <circle
             cx="327"
-            cy="159.83"
+            cy="139.18"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -1558,7 +1564,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone15"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1567,7 +1573,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1583,7 +1589,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -1642,106 +1648,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -1784,7 +1690,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -1884,7 +1790,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -1973,6 +1879,106 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       </div>
                     </button>
                   </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1999,12 +2005,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -2012,8 +2019,10 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone14"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2026,7 +2035,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2053,7 +2062,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2145,7 +2154,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2277,12 +2286,12 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.185"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="251.075"
               />
             </g>
             <text
@@ -2301,7 +2310,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="245.075"
             >
               2.5
             </text>
@@ -2550,7 +2559,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone15"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2559,7 +2568,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2575,7 +2584,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -2634,106 +2643,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -2776,7 +2685,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -2876,7 +2785,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -2965,6 +2874,106 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       </div>
                     </button>
                   </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3004,12 +3013,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_5"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_6"
       />
       <div
         class=
@@ -3017,8 +3027,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
-        data-focuszone-id="FocusZone13"
+            {
+              position: relative;
+            }
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -3031,7 +3043,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -3058,7 +3070,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_5"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -3186,7 +3198,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_5"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -3456,7 +3468,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone14"
+                  data-focuszone-id="FocusZone13"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -3465,7 +3477,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -9786,12 +9798,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -9799,8 +9812,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone14"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -9813,7 +9828,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -9840,7 +9855,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -9932,7 +9947,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -10064,12 +10079,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       opacity: ;
                     }
                 fill="#00188f"
-                height="5.925"
+                height="2.9625"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="251.075"
+                y="254.0375"
               />
             </g>
             <text
@@ -10337,7 +10352,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone15"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10346,7 +10361,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -10362,7 +10377,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -10421,106 +10436,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -10563,7 +10478,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -10663,7 +10578,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -10752,6 +10667,106 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       </div>
                     </button>
                   </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -10778,12 +10793,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_2"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -10791,8 +10807,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone10"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10805,7 +10823,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -10832,7 +10850,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -10960,7 +10978,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -11230,7 +11248,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone11"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -11239,7 +11257,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

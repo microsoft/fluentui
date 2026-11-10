@@ -5,5 +5,5 @@ import type { VirtualElement } from './types';
  * @internal
  */
 export function isVirtualElement(element: Node | VirtualElement): element is VirtualElement {
-  return element && !!(<VirtualElement>element)._virtual;
+  return element && !!(element as VirtualElement)._virtual;
 }

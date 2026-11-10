@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
-import { GlobalObject } from './types';
+import type { GlobalObject } from './types';
 import { getMajorVersion } from './utils';
 
 const isBrowser = canUseDOM();
@@ -37,7 +39,12 @@ if (!isBrowser && process.env.NODE_ENV !== 'production') {
  * @param packageVersion - version of the npm package where the module is used
  * @returns @see React.createContext
  */
-export const createContext = <T>(defaultValue: T, name: string, packageName: string, packageVersion: string) => {
+export const createContext = <T>(
+  defaultValue: T,
+  name: string,
+  packageName: string,
+  packageVersion: string,
+): React.Context<T> => {
   // Symbol guaranteed to be unique for the entire runtime
   const sym = Symbol.for(`${SYMBOL_NAMESPACE}${packageName}/${name}/@${getMajorVersion(packageVersion)}`);
 

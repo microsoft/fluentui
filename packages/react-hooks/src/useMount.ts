@@ -5,7 +5,7 @@ import * as React from 'react';
  *
  * @param callback - Function to call before mount.
  */
-export const useMount = (callback: () => void) => {
+export const useMount = (callback: () => void): void => {
   const mountRef = React.useRef(callback);
   mountRef.current = callback;
   React.useEffect(() => {

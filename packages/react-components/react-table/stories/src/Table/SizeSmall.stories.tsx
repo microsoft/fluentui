@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -18,6 +19,7 @@ import {
   TableHeaderCell,
   TableCellLayout,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const items = [
   {
@@ -65,7 +67,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const SizeSmall = () => {
+export const SizeSmall = (): JSXElement => {
   return (
     <Table size="small" aria-label="Table with small size" style={{ minWidth: '475px' }}>
       <TableHeader>

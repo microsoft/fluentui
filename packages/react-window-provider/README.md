@@ -24,10 +24,11 @@ const Foo = () => {
 To provide a new window other than the default, wrap your app in the `WindowProvider` to override the defaults contextually:
 
 ```jsx
-ReactDOM.render(
+import { createRoot } from 'react-dom/client';
+
+createRoot(childWindowElement).render(
   <WindowProvider window={childWindow}>
     <...>
   </WindowProvider>,
-  childWindowElement
 );
 ```

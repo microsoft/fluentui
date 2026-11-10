@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSectionHeaderSlots, NavSectionHeaderState } from './NavSectionHeader.types';
@@ -22,9 +24,8 @@ const useStyles = makeStyles({
  * Apply styling to the NavSectionHeader slots based on the state
  */
 export const useNavSectionHeaderStyles_unstable = (state: NavSectionHeaderState): NavSectionHeaderState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navSectionHeaderClassNames.root, styles.root, state.root.className);
 
   return state;

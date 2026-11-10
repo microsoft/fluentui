@@ -1,9 +1,9 @@
-import { MiddlewareData } from '@floating-ui/dom';
+import type { MiddlewareData } from '@floating-ui/dom';
 
 /**
  * Writes all DOM element updates after position is computed
  */
-export function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
+export function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }): void {
   const { arrow, middlewareData } = options;
   if (!middlewareData.arrow || !arrow) {
     return;

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -32,10 +34,9 @@ const useStyles = makeResetStyles({
  * Apply styling to the DrawerBody slots based on the state
  */
 export const useDrawerBodyStyles_unstable = (state: DrawerBodyState): DrawerBodyState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(drawerBodyClassNames.root, styles, state.root.className);
 
   return state;

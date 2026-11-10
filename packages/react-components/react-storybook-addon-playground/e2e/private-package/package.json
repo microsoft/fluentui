@@ -1,0 +1,9 @@
+{
+  "name": "playground-private-assets",
+  "private": true,
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "sideEffects": [
+    "./lazy.css"
+  ]
+}

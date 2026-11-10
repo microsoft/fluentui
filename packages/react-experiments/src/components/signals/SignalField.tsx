@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from '@fluentui/react/lib/Utilities';
 import * as SignalFieldStyles from './SignalField.scss';
+import type { JSXElement } from '@fluentui/utilities';
 
 export type SignalFieldMode = 'wide' | 'compact';
 
@@ -15,7 +16,8 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass `<Signal />` or related components in for the `before` and `after` fields.
  * Pass the main value as the children.
  */
-export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
+
+export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSXElement => {
   const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
   return (
     <span

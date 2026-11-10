@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- legacy package, style objects are loosely typed */
 import { IStyle } from './IStyle';
 import { IRawStyle } from './IRawStyle';
 
@@ -9,6 +10,7 @@ import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
 import { tokenizeWithParentheses } from './tokenizeWithParentheses';
 import { ShadowConfig } from './shadowConfig';
+import { escapeForStyleTag } from './escapeForStyleTag';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -246,7 +248,9 @@ export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key
 
   // Apply punctuation.
   for (let i = 1; i < allEntries.length; i += 4) {
-    allEntries.splice(i, 1, ':', allEntries[i], ';');
+    const value = String(allEntries[i]);
+
+    allEntries.splice(i, 1, ':', escapeForStyleTag(value), ';');
   }
 
   return allEntries.join('');

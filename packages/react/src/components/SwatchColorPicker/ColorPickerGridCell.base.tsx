@@ -13,6 +13,8 @@ import type {
   IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
 /** Validate if the cell's color is white or not to apply whiteCell style */
@@ -100,7 +102,8 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   });
 
   // Render the core of a color cell
-  const renderColorOption = (colorOption: IColorCellProps): JSX.Element => {
+
+  const renderColorOption = (colorOption: IColorCellProps): JSXElement => {
     const svgClassName = classNames.svg;
 
     // Build an SVG for the cell with the given shape and color properties
@@ -119,9 +122,10 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     );
   };
 
-  const onRenderItem = (option: IColorCellProps): JSX.Element => {
+  const onRenderItem = (option: IColorCellProps): JSXElement => {
     const { onRenderColorCellContent = renderColorOption } = props;
-    return onRenderColorCellContent(option, renderColorOption) as JSX.Element;
+
+    return onRenderColorCellContent(option, renderColorOption) as JSXElement;
   };
 
   const cellSemantics = isRadio

@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import type { NavDividerProps, NavDividerState } from './NavDivider.types';
 import { useDivider_unstable } from '@fluentui/react-divider';
 

@@ -42,8 +42,8 @@ jest.mock('@nx/devkit', () => {
 });
 
 describe('prepare-initial-release generator', () => {
-  const installPackagesTaskSpy = installPackagesTask as unknown as jest.SpyInstance;
-  let execSyncSpy: jest.SpyInstance;
+  const installPackagesTaskSpy = installPackagesTask as unknown as jest.Spied<typeof installPackagesTask>;
+  let execSyncSpy: jest.Spied<typeof childProcess.execSync>;
   let tree: Tree;
 
   beforeEach(() => {
@@ -73,7 +73,6 @@ describe('prepare-initial-release generator', () => {
     );
     tree.write(codeownersPath, `foo/bar @org/all\n`);
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
-    writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   });
 
@@ -174,7 +173,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(1);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release compat package' --type patch --package @proj/react-one-compat"`,
+          `"yarn change --message \\"feat: release compat package\\" --type patch --package @proj/react-one-compat"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -274,7 +273,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(1);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release preview package' --type minor --package @proj/react-one-preview"`,
+          `"yarn change --message \\"feat: release preview package\\" --type minor --package @proj/react-one-preview"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -549,7 +548,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(3);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release stable' --type minor --package @proj/react-one"`,
+          `"yarn change --message \\"feat: release stable\\" --type minor --package @proj/react-one"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -562,7 +561,7 @@ describe('prepare-initial-release generator', () => {
         );
 
         expect(execCalls[1].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components"`,
+          `"yarn change --message \\"feat: add @proj/react-one to suite\\" --type minor --package @proj/react-components"`,
         );
         expect(execCalls[1].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -819,7 +818,7 @@ describe('prepare-initial-release generator', () => {
 
           \\\\\`\\\\\`\\\\\`js
           module.exports = {
-          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
+          stories: ['../packages/react-components/react-one/stories/src/**/*.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
           }
           \\\\\`\\\\\`\\\\\`
           "
@@ -921,7 +920,7 @@ function createSplitProject(
 
         \`\`\`js
         module.exports = {
-        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
         }
         \`\`\`
     `,
@@ -1116,7 +1115,7 @@ These are not production-ready components and **should never be used in product*
   };
 }
 
-function getExecSpyCalls(spy: jest.SpyInstance) {
+function getExecSpyCalls(spy: jest.Spied<typeof childProcess.execSync>) {
   const execSyncCalls = spy.mock.calls;
 
   const normalized = execSyncCalls.map(call => {

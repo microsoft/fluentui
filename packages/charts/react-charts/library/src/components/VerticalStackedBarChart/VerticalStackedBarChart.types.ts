@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 //import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,
@@ -63,7 +63,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalStackedBarChartStyles;
+  styles?: Partial<VerticalStackedBarChartStyles>;
 
   /**
    * Define a custom callout renderer for a stack; default is to render per data point
@@ -76,9 +76,9 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
 
   /**
-   * yMinValue is not supported for bar charts, so only allow "undefined"
+   * yMinValue is supported for bar charts that has only lines
    */
-  yMinValue?: undefined;
+  yMinValue?: number | undefined;
 
   /**
    * Allow hover actions on the legend

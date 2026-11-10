@@ -1,5 +1,8 @@
-import { type Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import * as React from 'react';
+'use client';
+
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { type Context, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type * as React from 'react';
 
 import type { CarouselStore } from './Carousel.types';
 import { createCarouselStore } from './createCarouselStore';

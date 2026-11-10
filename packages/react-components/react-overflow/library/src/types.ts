@@ -1,15 +1,24 @@
-import * as React from 'react';
-import { OverflowContextValue } from './overflowContext';
+import type * as React from 'react';
+import type { OverflowContextValue } from './overflowContext';
 
 /**
- * @internal
+ * @public
  */
 export interface UseOverflowContainerReturn<TElement extends HTMLElement>
-  extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
+  extends Pick<
+    OverflowContextValue,
+    | 'registerItem'
+    | 'updateOverflow'
+    | 'forceUpdateOverflow'
+    | 'registerOverflowMenu'
+    | 'registerDivider'
+    | 'getSnapshot'
+    | 'subscribe'
+  > {
   /**
    * Ref to apply to the container that will overflow
    */
-  containerRef: React.RefObject<TElement>;
+  containerRef: React.RefObject<TElement | null>;
 }
 
 export interface OverflowImperativeRef {

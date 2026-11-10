@@ -1,7 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './link.definition.js';
-
-definition.define(FluentDesignSystem.registry);
+import './define.js';
 
 const itemRenderer = () => {
   const btn = document.createElement('fluent-link');

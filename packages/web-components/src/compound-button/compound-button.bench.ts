@@ -1,7 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './compound-button.definition.js';
-
-definition.define(FluentDesignSystem.registry);
+import './define.js';
 
 const itemRenderer = () => {
   const compoundButton = document.createElement('fluent-compound-button');

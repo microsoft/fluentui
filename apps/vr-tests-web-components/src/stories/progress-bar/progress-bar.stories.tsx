@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
-import { ProgressBarDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import { Steps } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
-ProgressBarDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/progress-bar/define.js';
 
 export default {
   title: 'ProgressBar',
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-          <div className="testWrapper" style={{ width: '300px', padding: '1em 0' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '300px', padding: '1em 0' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() } },
 };
 
 export const Default = () =>

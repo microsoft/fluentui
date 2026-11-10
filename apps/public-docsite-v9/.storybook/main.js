@@ -1,27 +1,60 @@
 const path = require('path');
-const { getPackageStoriesGlob, registerTsPaths, rules, registerRules } = require('@fluentui/scripts-storybook');
+const {
+  configureReactIcons,
+  getPackageStoriesGlob,
+  registerTsPaths,
+  rules,
+  registerRules,
+} = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
+/**
+ * Packages that playground examples can import. Story sources are rewritten to `@fluentui/react-components` by the
+ * export-to-sandbox addon, so the suite entries cover most stories; the remaining entries are the most common extras.
+ *
+ * @type {string[]}
+ */
+const playgroundModules = [
+  '@fluentui/react-components',
+  '@fluentui/react-icons',
+  '@fluentui/react-motion-components-preview',
+  '@fluentui/react-calendar-compat',
+  '@fluentui/react-datepicker-compat',
+  '@fluentui/react-timepicker-compat',
+];
+
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
   stories: [
     ...rootMain.stories,
-    '../src/**/*.stories.mdx',
+    '../src/**/*.mdx',
     '../src/**/index.stories.@(ts|tsx)',
-    ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
+    ...getPackageStoriesGlob({
+      packageName: '@fluentui/react-components',
+      callerPath: __dirname,
+      excludeStoriesInsertionFromPackages: [
+        // Exclude packages that don't have story files
+        '@fluentui/react-icons-compat',
+        '@fluentui/react-tabster',
+        '@fluentui/react-utilities',
+        // Exclude deprecated packages
+        '@fluentui/react-alert',
+        '@fluentui/react-infobutton',
+        '@fluentui/react-virtualizer',
+      ],
+    }),
     ...getPackageStoriesGlob({
       packageName: '@fluentui/public-docsite-v9',
       callerPath: __dirname,
       excludeStoriesInsertionFromPackages: [
         '@fluentui/react-storybook-addon',
+        '@fluentui/react-storybook-addon-export-to-sandbox',
         '@fluentui/theme-designer',
         // Exclude non v9 stories
         '@fluentui/react',
-        '@fluentui/react-northstar',
-        '@fluentui/react-icons-northstar',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
         '@fluentui/react-nav',
       ],
@@ -34,17 +67,38 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
+  addons: [
+    ...rootMain.addons,
+    /** {@link file://./../../../packages/react-components/react-storybook-addon-playground/package.json} */
+    {
+      name: '@fluentui/react-storybook-addon-playground',
+      /** @type {import('@fluentui/react-storybook-addon-playground').PresetConfig} */
+      options: { modules: playgroundModules },
+    },
+  ],
+  build: {
+    previewUrl: process.env.DEPLOY_PATH,
+  },
   webpackFinal: (config, options) => {
-    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
+    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal(config, options) });
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
-    registerRules({ rules: [rules.scssRule], config: localConfig });
+    registerRules({
+      rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
+      config: localConfig,
+    });
+    configureReactIcons({ config: localConfig });
 
     return localConfig;
   },
   refs: {
+    'fluent-system-icons': {
+      title: 'Fluent System Icons',
+      url: 'https://microsoft.github.io/fluentui-system-icons/',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui-system-icons',
+    },
     contrib: {
       title: 'Contributors Packages',
       url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
@@ -54,7 +108,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     charts: {
       title: 'Charts v9',
       // Workaround to enable docsite using PR workflow till master workflow is enabled
-      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
+      url: 'https://storybooks.fluentui.dev/charts/',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts',
     },

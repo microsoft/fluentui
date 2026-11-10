@@ -1,8 +1,12 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { motionTokens } from '@fluentui/react-motion';
+
 import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
 import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
-import { tokens } from '@fluentui/react-theme';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
@@ -21,6 +25,14 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
 
+const { actionButton, toggleButton, menuButton } = splitNavItemClassNames;
+const buttonHoverStyles = {
+  [`& .${actionButton}, & .${toggleButton}, & .${menuButton}`]: {
+    opacity: 1,
+    pointerEvents: 'auto',
+  },
+};
+
 /**
  * Styles for the root slot
  */
@@ -36,7 +48,11 @@ const useSplitNaveItemStyles = makeStyles({
 
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
+      ...buttonHoverStyles,
     },
+
+    ':focus-within': buttonHoverStyles,
+
     ':active': {
       backgroundColor: navItemTokens.backgroundColorPressed,
     },
@@ -62,17 +78,27 @@ const useSplitNaveItemStyles = makeStyles({
   baseMedium: {
     paddingBlockStart: '9px',
   },
+
+  baseLarge: {
+    paddingBlockStart: '12px',
+  },
+
+  hoverAction: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transition: `opacity ${motionTokens.durationFast}ms ${motionTokens.curveEasyEase}`,
+    willChange: 'opacity',
+  },
 });
 
 /**
  * Apply styling to the SplitNavItem slots based on the state
  */
 export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitNavItemState => {
-  'use no memo';
-
   const splitNavItemStyles = useSplitNaveItemStyles();
   const sharedRootClassNames = useRootDefaultClassName();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     splitNavItemClassNames.root,
     sharedRootClassNames,
@@ -81,6 +107,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   );
 
   if (state.navItem) {
+    // eslint-disable-next-line react-hooks/immutability
     state.navItem.className = mergeClasses(
       splitNavItemClassNames.navItem,
       splitNavItemStyles.baseNavItem,
@@ -89,27 +116,33 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   }
 
   if (state.actionButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.actionButton.className = mergeClasses(
       splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.actionButton.className,
     );
   }
 
   if (state.toggleButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.toggleButton.className = mergeClasses(
       splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.toggleButton.className,
     );
   }
 
   if (state.menuButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.menuButton.className = mergeClasses(
       splitNavItemClassNames.menuButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.menuButton.className,
     );

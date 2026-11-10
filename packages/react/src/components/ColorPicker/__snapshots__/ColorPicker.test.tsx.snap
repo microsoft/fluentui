@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ColorPicker renders correctly 1`] = `
 <div>
@@ -245,6 +245,7 @@ exports[`ColorPicker renders correctly 1`] = `
                     right: 0px;
                     top: 0px;
                   }
+              style="background: linear-gradient(to right, transparent, #abcdef);"
             />
             <div
               class=
@@ -1406,6 +1407,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                     right: 0px;
                     top: 0px;
                   }
+              style="background: linear-gradient(to right, transparent, #abcdef);"
             />
             <div
               class=
@@ -2591,6 +2593,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                     right: 0px;
                     top: 0px;
                   }
+              style="background: linear-gradient(to right, #abcdef, transparent);"
             />
             <div
               class=

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -16,11 +17,11 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-  PresenceBadgeStatus,
   Avatar,
   Button,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 
 const items = [
   {
@@ -68,7 +69,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CellNavigation = () => {
+export const CellNavigation = (): JSXElement => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
@@ -131,7 +132,7 @@ CellNavigation.parameters = {
         'Cell navigation can be achieved simply using the `useArrowNavigationGroup` utility provided by the Library.',
         '',
         '>⚠️ Once there is any kind of keyboard navigation on the component it must follow the',
-        '>[aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids).',
+        '>[aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/).',
       ].join('\n'),
     },
   },

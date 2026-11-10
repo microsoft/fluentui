@@ -12,7 +12,7 @@ export function toggleScrollListener(
   next: HTMLElement | PositioningVirtualElement | null,
   prev: HTMLElement | PositioningVirtualElement | null,
   handler: EventListener,
-) {
+): void {
   if (next === prev) {
     return;
   }

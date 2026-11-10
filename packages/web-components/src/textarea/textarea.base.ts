@@ -1,7 +1,9 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable, Updates } from '@microsoft/fast-element';
+import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
-import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
-import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
+import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import type { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
 
 /**
  * A Text Area Custom HTML Element.
@@ -12,8 +14,10 @@ import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
  * @csspart label - The `<label>` element.
  * @csspart root - The container element of the `<textarea>` element.
  * @csspart control - The internal `<textarea>` element.
- * @fires change - Fires after the control loses focus, if the content has changed.
- * @fires select - Fires when the `select()` method is called.
+ * @fires { Event } change - Fires after the control loses focus, if the content has changed.
+ * @fires { Event } select - Fires when the `select()` method is called.
+ * @presentational {boolean} display-shadow - Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
+ * @presentational {TextAreaResize} [resize=none] - Indicates whether the element can be resized by end users.
  *
  * @public
  */
@@ -40,10 +44,36 @@ export class BaseTextArea extends FASTElement {
   public labelEl!: HTMLLabelElement;
 
   /**
+   * The root container element.
+   * @internal
+   */
+  public rootEl!: HTMLDivElement;
+
+  /**
    * The `<textarea>` element.
    * @internal
    */
+  @observable
   public controlEl!: HTMLTextAreaElement;
+
+  /**
+   * Sets up a mutation observer to watch for changes to the control element's
+   * attributes that could affect validity, and binds an input event listener to detect user interaction.
+   *
+   * @internal
+   */
+  protected controlElChanged() {
+    this.controlElAttrObserver = new MutationObserver(() => {
+      this.setValidity();
+    });
+
+    this.controlElAttrObserver.observe(this.controlEl, {
+      attributes: true,
+      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
+    });
+
+    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
+  }
 
   /**
    * @internal
@@ -57,23 +87,30 @@ export class BaseTextArea extends FASTElement {
   @observable
   public defaultSlottedNodes!: Node[];
   protected defaultSlottedNodesChanged() {
-    const next = this.getContent();
-    this.defaultValue = next;
-    this.value = next;
+    Updates.enqueue(() => {
+      const next = this.getContent();
+      this.defaultValue = next;
+      this.value = next;
+    });
   }
+
+  private filteredLabelSlottedNodes: Label[] = [];
 
   /**
    * The list of nodes that are assigned to the `label` slot.
    * @internal
    */
   @observable
-  public labelSlottedNodes!: Label[];
+  public labelSlottedNodes: Label[] = [];
   protected labelSlottedNodesChanged() {
+    this.filteredLabelSlottedNodes = this.labelSlottedNodes.filter(whitespaceFilter);
+
     if (this.labelEl) {
-      this.labelEl.hidden = !this.labelSlottedNodes.length;
+      this.labelEl.hidden = !this.filteredLabelSlottedNodes.length;
     }
-    this.labelSlottedNodes.forEach(node => {
-      node.disabled = this.disabled;
+
+    this.filteredLabelSlottedNodes.forEach(node => {
+      node.toggleAttribute('disabled', this.disabled);
       node.required = this.required;
     });
   }
@@ -137,16 +174,6 @@ export class BaseTextArea extends FASTElement {
   protected disabledChanged() {
     this.setDisabledSideEffect(this.disabled);
   }
-
-  /**
-   * Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `display-shadow`
-   */
-  @attr({ attribute: 'display-shadow', mode: 'boolean' })
-  public displayShadow = false;
 
   /**
    * The id of a form to associate the element to.
@@ -231,7 +258,11 @@ export class BaseTextArea extends FASTElement {
   @attr({ attribute: 'readonly', mode: 'boolean' })
   public readOnly = false;
   protected readOnlyChanged() {
-    this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+    if (this.elementInternals) {
+      this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+
+      this.setValidity();
+    }
   }
 
   /**
@@ -245,28 +276,9 @@ export class BaseTextArea extends FASTElement {
   public required = false;
   protected requiredChanged() {
     this.elementInternals.ariaRequired = `${!!this.required}`;
-    if (this.labelSlottedNodes?.length) {
-      this.labelSlottedNodes.forEach(node => (node.required = this.required));
+    if (this.filteredLabelSlottedNodes?.length) {
+      this.filteredLabelSlottedNodes.forEach(node => (node.required = this.required));
     }
-  }
-
-  /**
-   * Indicates whether the element can be resized by end users.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `resize`
-   */
-  @attr({ mode: 'fromView' })
-  public resize: TextAreaResize = TextAreaResize.none;
-  protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
-    swapStates(this.elementInternals, prev, next, TextAreaResize, 'resize-');
-
-    toggleState(
-      this.elementInternals,
-      'resize',
-      hasMatchingState(TextAreaResize, next) && next !== TextAreaResize.none,
-    );
   }
 
   /**
@@ -387,11 +399,26 @@ export class BaseTextArea extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setDefaultValue();
-    this.maybeCreateAutoSizerEl();
+    requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
 
-    this.bindEvents();
-    this.observeControlElAttrs();
+      const preConnect = this.preConnectControlEl;
+      const content = this.getContent();
+
+      this.defaultValue = content || preConnect?.defaultValue || '';
+      this.value = preConnect?.value || this.defaultValue;
+      this.setFormValue(this.value);
+      this.setValidity();
+      this.preConnectControlEl = null;
+
+      this.maybeCreateAutoSizerEl();
+      maybeSetAutoFocus(this);
+    });
   }
 
   /**
@@ -459,7 +486,7 @@ export class BaseTextArea extends FASTElement {
    * @public
    */
   public setCustomValidity(message: string | null): void {
-    this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
+    this.elementInternals?.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
     this.reportValidity();
   }
 
@@ -473,7 +500,7 @@ export class BaseTextArea extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (!this.$fastController.isConnected) {
+    if (!this.elementInternals) {
       return;
     }
 
@@ -481,8 +508,8 @@ export class BaseTextArea extends FASTElement {
       this.elementInternals.setValidity({});
     } else {
       this.elementInternals.setValidity(
-        flags ?? this.controlEl.validity,
-        message ?? this.controlEl.validationMessage,
+        flags ?? this.controlEl?.validity,
+        message ?? this.controlEl?.validationMessage,
         anchor ?? this.controlEl,
       );
     }
@@ -501,27 +528,13 @@ export class BaseTextArea extends FASTElement {
     this.controlEl.select();
   }
 
-  private setDefaultValue() {
-    this.defaultValue = this.innerHTML.trim() || this.preConnectControlEl!.defaultValue || '';
-    this.value = this.preConnectControlEl!.value || this.defaultValue;
-
-    this.setFormValue(this.value);
-    this.setValidity();
-
-    this.preConnectControlEl = null;
-  }
-
-  private bindEvents() {
-    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
-  }
-
   /**
    * Gets the content inside the light DOM, if any HTML element is present, use its `outerHTML` value.
    */
   private getContent(): string {
     return (
       this.defaultSlottedNodes
-        .map(node => {
+        ?.map(node => {
           switch (node.nodeType) {
             case Node.ELEMENT_NODE:
               return (node as Element).outerHTML;
@@ -535,16 +548,6 @@ export class BaseTextArea extends FASTElement {
     );
   }
 
-  private observeControlElAttrs() {
-    this.controlElAttrObserver = new MutationObserver(() => {
-      this.setValidity();
-    });
-    this.controlElAttrObserver.observe(this.controlEl, {
-      attributes: true,
-      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
-    });
-  }
-
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
 
@@ -552,8 +555,8 @@ export class BaseTextArea extends FASTElement {
       this.controlEl.disabled = disabled;
     }
 
-    if (this.labelSlottedNodes?.length) {
-      this.labelSlottedNodes.forEach(node => (node.disabled = this.disabled));
+    if (this.filteredLabelSlottedNodes?.length) {
+      this.filteredLabelSlottedNodes.forEach(node => node.toggleAttribute('disabled', this.disabled));
     }
   }
 
@@ -581,7 +584,10 @@ export class BaseTextArea extends FASTElement {
       this.autoSizerEl.classList.add('auto-sizer');
       this.autoSizerEl.ariaHidden = 'true';
     }
-    this.shadowRoot!.prepend(this.autoSizerEl);
+    // `rootEl` uses optional chaining because `autoResizeChanged` may be called before
+    // the element connects and the template renders. `connectedCallback` will call this
+    // method again once `rootEl` is available.
+    this.rootEl?.prepend(this.autoSizerEl);
 
     // The `ResizeObserver` is used to observe when the component gains
     // explicit block size, when so, the `autoSizerEl` element should be

@@ -23,14 +23,23 @@ export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}
         </div>
         <div className={this._classNames.calloutInfoContainer}>
           <div className={this._classNames.calloutBlockContainer}>
-            <div className={this._classNames.calloutlegendText}>{formatToLocaleString(Legend, culture)}</div>
-            <div className={this._classNames.calloutContentY}>{formatToLocaleString(YValue, culture)}</div>
+            <div className={this._classNames.calloutlegendText}>
+              {formatToLocaleString(Legend, culture) as React.ReactNode}
+            </div>
+            <div className={this._classNames.calloutContentY}>
+              {formatToLocaleString(YValue, culture) as React.ReactNode}
+            </div>
           </div>
           {!!ratio && (
             <div className={this._classNames.ratio}>
               <>
-                <span className={this._classNames.numerator}>{formatToLocaleString(ratio[0], culture)}</span>/
-                <span className={this._classNames.denominator}>{formatToLocaleString(ratio[1], culture)}</span>
+                <span className={this._classNames.numerator}>
+                  {formatToLocaleString(ratio[0], culture) as React.ReactNode}
+                </span>
+                /
+                <span className={this._classNames.denominator}>
+                  {formatToLocaleString(ratio[1], culture) as React.ReactNode}
+                </span>
               </>
             </div>
           )}

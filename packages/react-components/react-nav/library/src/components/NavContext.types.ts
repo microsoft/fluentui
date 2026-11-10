@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { EventHandler } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { EventHandler } from '@fluentui/react-utilities';
 
 import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 
@@ -41,6 +41,12 @@ export type NavContextValue = Pick<
    * @default true, indicating that multiple categories can be open at the same time.
    */
   multiple: boolean;
+
+  /**
+   * Setting this to true enables tab AND arrow navigation.
+   * @default false
+   */
+  tabbable: boolean;
 };
 
 /**
@@ -67,7 +73,7 @@ export type NavItemRegisterData = {
   /**
    * The reference to the navItem HTML element.
    */
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 };
 
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;

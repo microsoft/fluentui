@@ -4,17 +4,22 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
+
+// @public (undocumented)
+export type BadgeBaseProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+
+// @public (undocumented)
+export type BadgeBaseState = Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export const badgeClassNames: SlotClassNames<BadgeSlots>;
@@ -39,6 +44,12 @@ export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 
 
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+// @public (undocumented)
+export type CounterBadgeBaseProps = Omit<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+
+// @public (undocumented)
+export type CounterBadgeBaseState = Omit<CounterBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
@@ -71,6 +82,12 @@ export const presenceAwayRegular: Record<PresenceBadgeState['size'], React_2.Fun
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public (undocumented)
+export type PresenceBadgeBaseProps = Omit<PresenceBadgeProps, 'size'>;
+
+// @public (undocumented)
+export type PresenceBadgeBaseState = Omit<PresenceBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
@@ -109,10 +126,13 @@ export const presenceOofRegular: Record<PresenceBadgeState['size'], React_2.Func
 export const presenceUnknownRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
 // @public (undocumented)
-export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
+export const renderBadge_unstable: (state: BadgeBaseState) => JSXElement;
 
 // @public
 export const useBadge_unstable: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;
+
+// @public
+export const useBadgeBase_unstable: (props: BadgeBaseProps, ref: React_2.Ref<HTMLDivElement>) => BadgeBaseState;
 
 // @public
 export const useBadgeStyles_unstable: (state: BadgeState) => BadgeState;
@@ -121,10 +141,16 @@ export const useBadgeStyles_unstable: (state: BadgeState) => BadgeState;
 export const useCounterBadge_unstable: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeState;
 
 // @public
+export const useCounterBadgeBase_unstable: (props: CounterBadgeBaseProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeBaseState;
+
+// @public
 export const useCounterBadgeStyles_unstable: (state: CounterBadgeState) => CounterBadgeState;
 
 // @public
 export const usePresenceBadge_unstable: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeState;
+
+// @public
+export const usePresenceBadgeBase_unstable: (props: PresenceBadgeBaseProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeBaseState;
 
 // @public
 export const usePresenceBadgeStyles_unstable: (state: PresenceBadgeState) => PresenceBadgeState;

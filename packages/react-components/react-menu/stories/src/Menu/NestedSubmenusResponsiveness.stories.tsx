@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, PositioningImperativeRef, MenuProps } from '@fluentui/react-components';
 
 import {
   Button,
@@ -7,11 +8,9 @@ import {
   MenuList,
   MenuItem,
   MenuPopover,
-  PositioningImperativeRef,
   makeStyles,
   tokens,
   mergeClasses,
-  MenuProps,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -47,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const NestedSubmenusResponsiveness = () => {
+export const NestedSubmenusResponsiveness = (): JSXElement => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const [boundary, setBoundary] = React.useState<HTMLElement | null>(null);

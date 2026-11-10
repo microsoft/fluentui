@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { InfoLabel, Link } from '@fluentui/react-components';
 import type { InfoLabelProps } from '@fluentui/react-components';
 
-export const Icon = (props: Partial<InfoLabelProps>) => {
+export const Icon = (props: Partial<InfoLabelProps>): JSXElement => {
   return (
     <InfoLabel
       info={

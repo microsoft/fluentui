@@ -61,8 +61,10 @@ import { ShadowTokens } from '@fluentui/tokens';
 import { SpacingTokens } from '@fluentui/tokens';
 import { StrokeWidthTokens } from '@fluentui/tokens';
 import { teamsDarkTheme } from '@fluentui/tokens';
+import { teamsDarkV21Theme } from '@fluentui/tokens';
 import { teamsHighContrastTheme } from '@fluentui/tokens';
 import { teamsLightTheme } from '@fluentui/tokens';
+import { teamsLightV21Theme } from '@fluentui/tokens';
 import { Theme } from '@fluentui/tokens';
 import { themeToTokensObject } from '@fluentui/tokens';
 import { tokens } from '@fluentui/tokens';
@@ -187,9 +189,13 @@ export { StrokeWidthTokens }
 
 export { teamsDarkTheme }
 
+export { teamsDarkV21Theme }
+
 export { teamsHighContrastTheme }
 
 export { teamsLightTheme }
+
+export { teamsLightV21Theme }
 
 export { Theme }
 

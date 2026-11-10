@@ -4,6 +4,7 @@ import {
   KeyCodes,
   getNativeProps,
   divProperties,
+  warn,
   warnDeprecations,
   initializeComponentRef,
 } from '../../Utilities';
@@ -18,6 +19,9 @@ import type {
 } from './DocumentCard.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
+import { isScriptUrl } from '../../utilities/isScriptUrl';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
@@ -34,6 +38,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _rootElement = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IDocumentCardStyles>;
@@ -47,7 +52,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     });
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
@@ -118,6 +123,14 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     if (onClick) {
       onClick(ev);
     } else if (!onClick && onClickHref) {
+      if (process.env.NODE_ENV !== 'production' && isScriptUrl(onClickHref)) {
+        warn(
+          `${COMPONENT_NAME}: 'onClickHref' was given a script URL ('${onClickHref}'), which executes code in your ` +
+            `app's origin when the card is activated. If this value can originate from user input or any other ` +
+            `untrusted source, validate its protocol before passing it to 'onClickHref'.`,
+        );
+      }
+
       // If no onClick Function was provided and we do have an onClickHref, redirect to the onClickHref
       if (onClickTarget) {
         win.open(onClickHref, onClickTarget, 'noreferrer noopener nofollow');

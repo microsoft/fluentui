@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { ChoiceGroupOption } from './ChoiceGroupOption';
 
 describe('ChoiceGroupOption', () => {
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <div>
         <ChoiceGroupOption itemKey="A" text="Option A" />
         <ChoiceGroupOption itemKey="B" text="Option B" focused />
@@ -18,11 +18,10 @@ describe('ChoiceGroupOption', () => {
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarWeek' }} itemKey="I" text="Option I" disabled />
       </div>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
   it('custom renders correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <div>
         <ChoiceGroupOption
           itemKey="A"
@@ -41,7 +40,6 @@ describe('ChoiceGroupOption', () => {
         />
       </div>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

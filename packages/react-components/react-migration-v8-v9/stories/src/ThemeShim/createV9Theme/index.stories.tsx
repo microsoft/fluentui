@@ -1,17 +1,10 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { JSXElement, TextareaProps, Theme as ThemeV9 } from '@fluentui/react-components';
+import type { Meta } from '@storybook/react-webpack5';
 
-import { createTheme, ThemeProvider, Theme as ThemeV8, DefaultPalette } from '@fluentui/react';
-import {
-  Button,
-  makeStyles,
-  Textarea,
-  TextareaProps,
-  tokens,
-  Theme as ThemeV9,
-  webLightTheme,
-  FluentProvider,
-} from '@fluentui/react-components';
+import type { Theme as ThemeV8 } from '@fluentui/react';
+import { createTheme, ThemeProvider, DefaultPalette } from '@fluentui/react';
+import { Button, makeStyles, Textarea, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
 import { createV9Theme } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
@@ -58,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Playground = () => {
+export const Playground = (): JSXElement => {
   const styles = useStyles();
 
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);

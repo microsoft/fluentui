@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, ToggleButton } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const [checked1, setChecked1] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
   const styles = useStyles();

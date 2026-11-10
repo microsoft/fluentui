@@ -1,14 +1,10 @@
 import * as React from 'react';
-import {
-  VerticalStackedBarChart,
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const VerticalStackedBarDateAxis = () => {
+export const VerticalStackedBarDateAxis = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [barGapMax, setBarGapMax] = React.useState<number>(2);
@@ -97,7 +93,8 @@ export const VerticalStackedBarDateAxis = () => {
           max={1000}
           id="ChangeWidth_Styled"
           onChange={e => setWidth(+e.target.value)}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Styled">Height:</label>
         <input
@@ -107,7 +104,8 @@ export const VerticalStackedBarDateAxis = () => {
           max={1000}
           id="changeHeight_Styled"
           onChange={e => setHeight(+e.target.value)}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div>
@@ -119,7 +117,8 @@ export const VerticalStackedBarDateAxis = () => {
           max={10}
           id="changeBarGapMax_Styled"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxslider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
         <label htmlFor="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
         <input
@@ -129,7 +128,8 @@ export const VerticalStackedBarDateAxis = () => {
           max={10}
           id="ChangeBarCornerRadius_condition"
           onChange={e => setBarCornerRadius(+e.target.value)}
-          aria-valuetext={`ChangeBarCornerRadiusSlider${barCornerRadius}`}
+          aria-label="Change Bar Corner Radius"
+          aria-valuetext={`current value ${barCornerRadius}', Minimum 0 and Maximum 10`}
         />
         <label htmlFor="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
         <input
@@ -139,7 +139,8 @@ export const VerticalStackedBarDateAxis = () => {
           max={10}
           id="ChangeBarMinimumHeight_condition"
           onChange={e => setBarMinimumHeight(+e.target.value)}
-          aria-valuetext={`ChangebarBarMinimumHeightslider${barMinimumHeight}`}
+          aria-label="Change Bar Minimum Height"
+          aria-valuetext={`current value ${barMinimumHeight}', Minimum 0 and Maximum 10`}
         />
         <Field label="Pick one">
           <RadioGroup
@@ -155,14 +156,17 @@ export const VerticalStackedBarDateAxis = () => {
         <VerticalStackedBarChart
           chartTitle="Vertical stacked bar chart styled example"
           data={data}
+          width={width}
+          height={height}
+          barGapMax={barGapMax}
+          barCornerRadius={barCornerRadius}
+          barMinimumHeight={barMinimumHeight}
           yAxisTickCount={10}
           tickValues={tickValues}
           tickFormat={timeFormat}
-          // eslint-disable-next-line react/jsx-no-bind
           onBarClick={(event, clickData) => console.log('clicked', event, clickData)}
           yMaxValue={120}
           isCalloutForStack={selectedCallout === 'MultiCallout'}
-          // eslint-disable-next-line react/jsx-no-bind
           yAxisTickFormat={(x: number | string) => `${x} h`}
           margins={{
             bottom: 35,

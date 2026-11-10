@@ -5,12 +5,12 @@ import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
 import { useFluentProvider_unstable } from './useFluentProvider';
-import { FluentProviderCustomStyleHooks } from './FluentProvider.types';
+import type { FluentProviderCustomStyleHooks } from './FluentProvider.types';
 
 describe('useFluentProvider_unstable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  let logWarnSpy: jest.SpyInstance;
+  let logWarnSpy: jest.Spied<typeof console.warn>;
 
   beforeEach(() => {
     logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(noop);

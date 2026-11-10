@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { CardContextValue } from './Card.types';
+import type { CardContextValue } from './Card.types';
 
 const cardContext = React.createContext<CardContextValue | undefined>(undefined);
 
@@ -27,4 +29,4 @@ export const CardProvider = cardContext.Provider;
 /**
  * @internal
  */
-export const useCardContext_unstable = () => React.useContext(cardContext) ?? cardContextDefaultValue;
+export const useCardContext_unstable = (): CardContextValue => React.useContext(cardContext) ?? cardContextDefaultValue;

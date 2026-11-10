@@ -1,7 +1,10 @@
-import * as React from 'react';
-import { Drawer, DrawerProps } from '@fluentui/react-drawer';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { RefAttributes, slot } from '@fluentui/react-utilities';
+'use client';
+
+import type * as React from 'react';
+import type { DrawerProps } from '@fluentui/react-drawer';
+import { Drawer } from '@fluentui/react-drawer';
+import type { RefAttributes } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
@@ -16,24 +19,14 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
-  const { tabbable = false, size = undefined } = props;
+  const { size = undefined, tabbable = false } = props;
 
-  const focusAttributes = useArrowNavigationGroup({
-    axis: 'vertical',
-    circular: true,
-    tabbable,
-  });
-
-  const navState = useNav_unstable(
-    {
-      ...props,
-    },
-    ref,
-  );
+  const navState = useNav_unstable(props, ref);
 
   return {
     ...navState,
     size,
+    tabbable,
     components: {
       // TODO: remove once React v18 slot API is modified
       // this is a problem with the lack of support for union types on React v18
@@ -43,7 +36,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always(
-      { ref, role: 'navigation', ...props, ...focusAttributes },
+      { ref, role: 'navigation', ...props },
       {
         // TODO: remove once React v18 slot API is modified
         // this is a problem with the lack of support for union types on React v18

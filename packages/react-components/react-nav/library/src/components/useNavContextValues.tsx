@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { NavContextValue, NavContextValues, NavState } from '../Nav';
+import type { NavContextValue, NavContextValues, NavState } from '../Nav';
 
 export function useNavContextValues_unstable(state: NavState): NavContextValues {
   const {
@@ -13,6 +15,8 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
     openCategories,
     multiple,
     density,
+    onNavItemSelect,
+    tabbable,
   } = state;
 
   const navContext = React.useMemo<NavContextValue>(
@@ -27,6 +31,8 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       openCategories,
       multiple,
       density,
+      onNavItemSelect,
+      tabbable,
     }),
     [
       selectedValue,
@@ -39,6 +45,8 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       openCategories,
       multiple,
       density,
+      onNavItemSelect,
+      tabbable,
     ],
   );
 

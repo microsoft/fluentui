@@ -1,14 +1,12 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { act, render } from '@testing-library/react';
 import { Customizations } from './Customizations';
 import { CustomizerContext } from './CustomizerContext';
 import { useCustomizationSettings } from './useCustomizationSettings';
 import type { ISettings } from './Customizations';
 
-const { act } = renderer;
-
 describe('useCustomizatioSettings', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReturnType<typeof render> | undefined;
 
   afterEach(() => {
     act(() => {
@@ -30,7 +28,7 @@ describe('useCustomizatioSettings', () => {
     };
 
     act(() => {
-      component = renderer.create(<TestComponent />);
+      component = render(<TestComponent />);
     });
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ a: 'a' });
@@ -48,7 +46,7 @@ describe('useCustomizatioSettings', () => {
     };
 
     act(() => {
-      component = renderer.create(<TestComponent />);
+      component = render(<TestComponent />);
     });
 
     act(() => {
@@ -71,7 +69,7 @@ describe('useCustomizatioSettings', () => {
     };
 
     act(() => {
-      component = renderer.create(<TestComponent />);
+      component = render(<TestComponent />);
     });
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ a: undefined });
@@ -89,7 +87,7 @@ describe('useCustomizatioSettings', () => {
 
     const newContext = { customizations: { settings: { theme: { color: 'red' } }, scopedSettings: {} } };
     act(() => {
-      component = renderer.create(
+      component = render(
         <CustomizerContext.Provider value={newContext}>
           <TestComponent />
         </CustomizerContext.Provider>,
@@ -100,7 +98,7 @@ describe('useCustomizatioSettings', () => {
 
     const updatedContext = { customizations: { settings: { theme: { color: 'green' } }, scopedSettings: {} } };
     act(() => {
-      component!.update(
+      component!.rerender(
         <CustomizerContext.Provider value={updatedContext}>
           <TestComponent />
         </CustomizerContext.Provider>,
@@ -124,7 +122,7 @@ describe('useCustomizatioSettings', () => {
 
     const newContext = { customizations: { settings: { a: 'aa' }, scopedSettings: {}, inCustomizerContext: true } };
     act(() => {
-      component = renderer.create(
+      component = render(
         <CustomizerContext.Provider value={newContext}>
           <TestComponent />
         </CustomizerContext.Provider>,

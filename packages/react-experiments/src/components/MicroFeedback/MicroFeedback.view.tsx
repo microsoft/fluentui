@@ -10,6 +10,7 @@ import type {
   IMicroFeedbackSlots,
   IMicroFeedbackQuestion,
 } from './MicroFeedback.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
@@ -57,8 +58,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     },
   };
 
-  const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
-    const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
+  const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSXElement => {
+    const onRenderCalloutItem = (item: string, index: number | undefined): JSXElement => {
       const listOption = (): void => {
         onCalloutDismiss();
         if (sendFollowUpIndex && index !== undefined && followUp) {
@@ -127,24 +128,28 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     <Slots.root>
       <Slots.iconContainer horizontal>
         {children}
-        <div ref={likeRef}>
+        {withSlots(
+          'div',
+          { ref: likeRef },
           <IconButton
             menuIconProps={{ iconName: likeIcon }}
             title={likeIconTitle}
             ariaLabel={likeIconAriaLabel}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={likeVoteClick}
-          />
-        </div>
-        <div ref={dislikeRef}>
+          />,
+        )}
+        {withSlots(
+          'div',
+          { ref: dislikeRef },
           <IconButton
             menuIconProps={{ iconName: dislikeIcon }}
             title={dislikeIconTitle}
             ariaLabel={dislikeIconAriaLabel}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={dislikeVoteClick}
-          />
-        </div>
+          />,
+        )}
       </Slots.iconContainer>
       {likeQuestion && !hideLikeCallout && renderFollowup(likeQuestion, likeRef.current)}
       {dislikeQuestion && !hideDislikeCallout && renderFollowup(dislikeQuestion, dislikeRef.current)}

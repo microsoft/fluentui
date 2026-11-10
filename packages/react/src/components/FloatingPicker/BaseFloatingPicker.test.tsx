@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, act } from '@testing-library/react';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
@@ -49,15 +48,14 @@ describe('Pickers', () => {
     ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
     it('renders BaseFloatingPicker correctly', () => {
-      const component = renderer.create(
+      const { container } = render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
           suggestionsStore={new SuggestionsStore<ISimple>()}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('shows zero query options on empty input', () => {

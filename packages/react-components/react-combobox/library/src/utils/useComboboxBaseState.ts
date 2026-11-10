@@ -1,16 +1,19 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
-import { ActiveDescendantChangeEvent, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
-import { OptionValue } from '../utils/OptionCollection.types';
+import type { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
-import { SelectionEvents } from './Selection.types';
+import type { SelectionEvents } from './Selection.types';
 
 /**
- * @internal
  * State shared between Combobox and Dropdown components
+ *
+ * @internal
  */
 export const useComboboxBaseState = (
   props: ComboboxBaseProps & {
@@ -21,8 +24,6 @@ export const useComboboxBaseState = (
     activeDescendantController: ActiveDescendantImperativeRef;
   },
 ): ComboboxBaseState => {
-  'use no memo';
-
   const {
     appearance = 'outline',
     disableAutoFocus,
@@ -137,7 +138,7 @@ export const useComboboxBaseState = (
 
   const setOpen = React.useCallback(
     (event: ComboboxBaseOpenEvents, newState: boolean) => {
-      if (disabled) {
+      if (disabled || newState === open) {
         return;
       }
       onOpenChange?.(event, { open: newState });
@@ -148,7 +149,7 @@ export const useComboboxBaseState = (
         setOpenState(newState);
       });
     },
-    [onOpenChange, setOpenState, setValue, freeform, disabled],
+    [disabled, freeform, onOpenChange, open, setOpenState, setValue],
   );
 
   // update active option based on change in open state

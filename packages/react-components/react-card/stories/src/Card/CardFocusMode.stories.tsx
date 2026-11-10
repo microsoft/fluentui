@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement, CardProps } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Card, CardHeader, CardFooter, CardPreview, CardProps } from '@fluentui/react-components';
+import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -24,8 +25,8 @@ const useStyles = makeStyles({
   description: { margin: '0 0 12px' },
 
   card: {
-    width: '400px',
-    maxWidth: '100%',
+    maxWidth: '400px',
+    width: '100%',
     height: 'fit-content',
   },
 
@@ -64,8 +65,8 @@ const CardExample = (props: CardProps) => {
       <CardHeader
         image={<img src={resolveAsset('pptx.png')} width="32px" height="32px" alt="Microsoft PowerPoint logo" />}
         header={
-          <Body1>
-            <b>App Name</b>
+          <Body1 as="h5" style={{ margin: 0, fontWeight: 'bold' }}>
+            App Name
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
@@ -86,7 +87,7 @@ const CardExample = (props: CardProps) => {
   );
 };
 
-export const FocusMode = () => {
+export const FocusMode = (): JSXElement => {
   const styles = useStyles();
 
   return (

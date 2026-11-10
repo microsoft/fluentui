@@ -73,7 +73,13 @@ export function buildTypeCheckTarget(
   const targetConfig: TargetConfiguration = {
     executor: '@fluentui/workspace-plugin:type-check',
     cache: true,
-    inputs: ['default', '{projectRoot}/tsconfig.json', '{projectRoot}/tsconfig.*.json'],
+    // Match common tsconfig variants (tsconfig.json, tsconfig.lib.json, tsconfig.spec.json, ...)
+    inputs: [
+      'default',
+      '{projectRoot}/tsconfig.json',
+      '{projectRoot}/tsconfig*.json',
+      { externalDependencies: ['typescript'] },
+    ],
     metadata: {
       technologies: ['typescript'],
       description: 'Type check code with TypeScript',

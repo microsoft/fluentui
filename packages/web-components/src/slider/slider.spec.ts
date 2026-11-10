@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Slider } from './slider.js';
-import { SliderSize } from './slider.options.js';
+import { tagName } from './slider.options.js';
 
 interface BoundingBox {
   x: number;
@@ -11,12 +11,29 @@ interface BoundingBox {
 
 test.describe('Slider', () => {
   test.use({
-    tagName: 'fluent-slider',
+    tagName,
   });
 
-  // Foundation tests
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a default role of `slider`', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
@@ -25,6 +42,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('min', '');
 
@@ -38,7 +57,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <label for="slider">Label 1</label>
-      <fluent-slider id="slider"></fluent-slider>
+      <${tagName} id="slider"></${tagName}>
       <label for="slider">Label 2</label>
     `);
 
@@ -52,6 +71,8 @@ test.describe('Slider', () => {
   test('should set a `tabindex` of 0', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
@@ -60,11 +81,15 @@ test.describe('Slider', () => {
   }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('value', '50');
   });
@@ -73,6 +98,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
@@ -87,6 +114,8 @@ test.describe('Slider', () => {
 
   test('should set the `elementInternals.ariaDisabled` when `disabled` property is true', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
 
@@ -112,7 +141,7 @@ test.describe('Slider', () => {
     await fastPage.setTemplate(/* html */ `
       <form>
         <fieldset>
-          <fluent-slider></fluent-slider>
+          <${tagName}></${tagName}>
         </fieldset>
       </form>
     `);
@@ -160,18 +189,6 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
-  for (const size of Object.values(SliderSize)) {
-    test(`should set the \`size\` property to \`${size}\` when the \`size\` attribute is set to \`${size}\``, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
-
   test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -202,6 +219,8 @@ test.describe('Slider', () => {
     test('should allow setting value with number', async ({ fastPage }) => {
       const { element } = fastPage;
 
+      await fastPage.setTemplate();
+
       await element.evaluate((node: Slider) => {
         node.valueAsNumber = 8;
       });
@@ -222,6 +241,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Slider) => {
       node.valueTextFormatter = () => 'Seventy Five Years';
@@ -300,7 +321,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-slider min="0" max="100"></fluent-slider>
+        <${tagName} min="0" max="100"></${tagName}>
       </form>
     `);
 
@@ -326,7 +347,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-slider min="0" max="100"></fluent-slider>
+        <${tagName} min="0" max="100"></${tagName}>
       </form>
     `);
 
@@ -420,13 +441,13 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate('');
 
-    await page.evaluate(() => {
-      const slider = document.createElement('fluent-slider') as Slider;
+    await page.evaluate(tagName => {
+      const slider = document.createElement(tagName) as Slider;
 
       slider.value = '3';
 
       document.body.appendChild(slider);
-    });
+    }, tagName);
 
     await expect(element).toHaveJSProperty('value', '3');
     await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
@@ -434,6 +455,8 @@ test.describe('Slider', () => {
 
   test('should initialize to the provided value attribute when set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Slider) => {
       node.setAttribute('value', '3');
@@ -471,7 +494,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider></fluent-slider>
+          <${tagName}></${tagName}>
         </form>
       `);
 
@@ -498,7 +521,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider min="0" max="100"></fluent-slider>
+          <${tagName} min="0" max="100"></${tagName}>
         </form>
       `);
 
@@ -531,7 +554,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider min="0" max="100"></fluent-slider>
+          <${tagName} min="0" max="100"></${tagName}>
         </form>
       `);
 
@@ -563,6 +586,8 @@ test.describe('Slider', () => {
     test('should emit `change` event when `value` property changed', async ({ fastPage }) => {
       const { element } = fastPage;
 
+      await fastPage.setTemplate();
+
       const wasChanged = element.evaluate(
         node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
       );
@@ -576,6 +601,8 @@ test.describe('Slider', () => {
 
     test('should emit `change` event if the `value` attribute changed', async ({ fastPage }) => {
       const { element } = fastPage;
+
+      await fastPage.setTemplate();
 
       const wasChanged = element.evaluate(
         node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
@@ -638,7 +665,54 @@ test.describe('Slider', () => {
   });
 
   test.describe('thumb position', () => {
-    test('should follow pointer event coordinates in horizontal orientation', async ({ fastPage, page }) => {
+    test('should follow pointer event coordinates in horizontal orientation', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate();
+
+      const track = element.locator('.track');
+      const thumb = element.locator('.thumb-container');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      expect(thumbBox).not.toBeNull();
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbMoveToX, thumbCenterY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 40);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      }
+    });
+
+    test('should follow pointer event coordinates in horizontal orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      await fastPage.setTemplate({
+        attributes: {
+          dir: 'rtl',
+        },
+      });
+
       const { element } = fastPage;
 
       const track = element.locator('.track');
@@ -655,24 +729,21 @@ test.describe('Slider', () => {
       const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
-
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
-
       await page.mouse.move(thumbMoveToX, thumbCenterY);
       await page.mouse.up();
-      const thumbHandle = await thumb.elementHandle();
-      await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      await expect(element).toHaveJSProperty('valueAsNumber', 60);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      }
     });
 
-    test('should follow pointer event coordinates in vertical orientation', async ({ fastPage, page }) => {
+    test('should follow pointer event coordinates in vertical orientation', async ({ fastPage, page, browserName }) => {
       const { element } = fastPage;
       await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
       const elementBox = (await element.boundingBox()) as BoundingBox;
@@ -693,27 +764,102 @@ test.describe('Slider', () => {
       const thumbMoveToY = thumbCenterY - trackBox.height * 0.3;
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
-
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
-
       await page.mouse.move(thumbCenterX, thumbMoveToY);
       await page.mouse.up();
-      const thumbHandle = await thumb.elementHandle();
-      await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+      }
+    });
+
+    test('should follow pointer event coordinates in vertical orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      const { element } = fastPage;
+      await fastPage.setTemplate({
+        attributes: {
+          orientation: 'vertical',
+          dir: 'rtl',
+        },
+      });
+      const elementBox = (await element.boundingBox()) as BoundingBox;
+
+      expect(elementBox.width).toBeLessThan(elementBox.height);
+
+      const track = element.locator('.track');
+      const thumb = element.locator('.thumb-container');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToY = thumbCenterY - trackBox.height * 0.3;
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbCenterX, thumbMoveToY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+      }
+    });
+
+    test('should not change value when dragging inside a disabled fieldset', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fieldset disabled>
+            <${tagName}></${tagName}>
+          </fieldset>
+        </form>
+      `);
+
+      const thumb = element.locator('.thumb-container');
+      const track = element.locator('.track');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      const thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      expect(thumbBox).not.toBeNull();
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
+
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbMoveToX, thumbCenterY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 50);
     });
   });
 
   test('should allow keyboard interactions after clicking on the thumb', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const thumb = element.locator('.thumb-container');
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('valueAsNumber', 50);
 

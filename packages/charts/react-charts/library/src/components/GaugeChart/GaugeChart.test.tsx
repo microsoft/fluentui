@@ -2,15 +2,11 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../utilities/TestUtility.test';
+import type { RenderFunction } from '../../utilities/index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import {
-  ExtendedSegment,
-  GaugeChart,
-  calcNeedleRotation,
-  getSegmentLabel,
-  getChartValueLabel,
-  ARC_PADDING,
-} from './GaugeChart';
+import type { ExtendedSegment } from './GaugeChart';
+import type { GaugeChartCalloutData } from './GaugeChart.types';
+import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
 expect.extend(toHaveNoViolations);
 
 enum GaugeValueFormat {
@@ -44,21 +40,6 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
-beforeAll(() => {
-  // https://github.com/jsdom/jsdom/issues/3368
-  global.ResizeObserver = class ResizeObserver {
-    public observe() {
-      // do nothing
-    }
-    public unobserve() {
-      // do nothing
-    }
-    public disconnect() {
-      // do nothing
-    }
-  };
-});
-
 describe('Gauge chart rendering - ', () => {
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
@@ -78,25 +59,20 @@ describe('Gauge chart rendering - ', () => {
       value: mockGetComputedTextLength,
     },
   );
-  testWithoutWait('Should render properly without chart value', GaugeChart, { segments: segments }, container => {
+  testWithoutWait('Should render properly without chart value', GaugeChart, { segments }, container => {
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+
+  testWithoutWait('Should render properly with chart value', GaugeChart, { segments, chartValue: 30 }, container => {
     // Assert
     expect(container).toMatchSnapshot();
   });
 
   testWithoutWait(
-    'Should render properly with chart value',
-    GaugeChart,
-    { segments: segments, chartValue: 30 },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
-
-  testWithoutWait(
     'Should render properly with chart title',
     GaugeChart,
-    { segments: segments, chartValue: 30, chartTitle: 'Gauge Chart with title' },
+    { segments, chartValue: 30, chartTitle: 'Gauge Chart with title' },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -106,7 +82,7 @@ describe('Gauge chart rendering - ', () => {
   testWithoutWait(
     'Should render properly with roundCorners',
     GaugeChart,
-    { segments: segments, chartValue: 30, roundCorners: true },
+    { segments, chartValue: 30, roundCorners: true },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -123,22 +99,17 @@ describe('Gauge chart interactions', () => {
     sharedAfterEach();
   });
 
-  testWithoutWait(
-    'Should show callout on mouse over',
-    GaugeChart,
-    { segments: segments, chartValue: 30 },
-    container => {
-      const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      fireEvent.mouseOver(segments[0]);
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
+  testWithoutWait('Should show callout on mouse over', GaugeChart, { segments, chartValue: 30 }, container => {
+    const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+    fireEvent.mouseOver(segments[0]);
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
 
   testWithoutWait(
     'Should not show callout on mouse over when hideTooltip is true',
     GaugeChart,
-    { segments: segments, chartValue: 30, hideTooltip: true },
+    { segments, chartValue: 30, hideTooltip: true },
     container => {
       const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(segments[0]);
@@ -147,21 +118,16 @@ describe('Gauge chart interactions', () => {
     },
   );
 
-  testWithoutWait(
-    'Should hide callout on mouse leave',
-    GaugeChart,
-    { segments: segments, chartValue: 30 },
-    container => {
-      const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      fireEvent.mouseOver(segments[0]);
-      // Assert
-      expect(container).toMatchSnapshot();
-      fireEvent.mouseLeave(segments[0]);
-      expect(container).toMatchSnapshot();
-    },
-  );
+  testWithoutWait('Should hide callout on mouse leave', GaugeChart, { segments, chartValue: 30 }, container => {
+    const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+    fireEvent.mouseOver(segments[0]);
+    // Assert
+    expect(container).toMatchSnapshot();
+    fireEvent.mouseLeave(segments[0]);
+    expect(container).toMatchSnapshot();
+  });
 
-  testWithoutWait('Should show callout on focus', GaugeChart, { segments: segments, chartValue: 30 }, container => {
+  testWithoutWait('Should show callout on focus', GaugeChart, { segments, chartValue: 30 }, container => {
     const segments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
     fireEvent.focus(segments[0]);
     // Assert
@@ -171,19 +137,14 @@ describe('Gauge chart interactions', () => {
 
 describe('Gauge chart - Subcomponent Legend', () => {
   afterEach(sharedAfterEach);
-  testWithoutWait(
-    'Should render chart with legends properly',
-    GaugeChart,
-    { segments: segments, chartValue: 30 },
-    container => {
-      expect(getByClass(container, /rect/i)).toHaveLength(3);
-    },
-  );
+  testWithoutWait('Should render chart with legends properly', GaugeChart, { segments, chartValue: 30 }, container => {
+    expect(getByClass(container, /rect/i)).toHaveLength(3);
+  });
 
   testWithoutWait(
     'Should not show legends when hideLegend is true',
     GaugeChart,
-    { segments: segments, chartValue: 30, hideLegend: true },
+    { segments, chartValue: 30, hideLegend: true },
     container => {
       expect(getByClass(container, /rect/i)).toHaveLength(0);
     },
@@ -192,7 +153,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should reduce the opacity of the other segments and legends on mouse over a legend',
     GaugeChart,
-    { segments: segments, chartValue: 30 },
+    { segments, chartValue: 30 },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -212,7 +173,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should reduce the opacity of the other segments and legends on mouse click on a legend',
     GaugeChart,
-    { segments: segments, chartValue: 30 },
+    { segments, chartValue: 30 },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -232,7 +193,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should update the opacity of the other segments and legends on double mouse click on a legend',
     GaugeChart,
-    { segments: segments, chartValue: 30 },
+    { segments, chartValue: 30 },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -255,7 +216,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should select legend when mouse click on legend',
     GaugeChart,
-    { segments: segments, chartValue: 30 },
+    { segments, chartValue: 30 },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -269,7 +230,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should deselect legend when mouse double click on legend',
     GaugeChart,
-    { segments: segments, chartValue: 30 },
+    { segments, chartValue: 30 },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -287,7 +248,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should select multiple legends when mouse click on different legends when canSelectMultipleLegends is true',
     GaugeChart,
-    { segments: segments, chartValue: 30, legendProps: { canSelectMultipleLegends: true } },
+    { segments, chartValue: 30, legendProps: { canSelectMultipleLegends: true } },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -305,7 +266,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
   testWithoutWait(
     'Should not select multiple legends when mouse click on different legends when canSelectMultipleLegends is false',
     GaugeChart,
-    { segments: segments, chartValue: 30, legendProps: { canSelectMultipleLegends: false } },
+    { segments, chartValue: 30, legendProps: { canSelectMultipleLegends: false } },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
@@ -375,32 +336,32 @@ describe('Gauge Chart - axe-core', () => {
 
 describe('GaugeChart snapshot tests', () => {
   it('should render GaugeChart correctly', () => {
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} />);
+    const wrapper = render(<GaugeChart segments={segments} chartValue={25} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should not render min and max values of the gauge when the hideMinMax prop is true', () => {
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} hideMinMax />);
+    const wrapper = render(<GaugeChart segments={segments} chartValue={25} hideMinMax />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render the chart title correctly', () => {
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} chartTitle="Riskometer" />);
+    const wrapper = render(<GaugeChart segments={segments} chartValue={25} chartTitle="Riskometer" />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render the sublabel correctly', () => {
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} sublabel="Low Risk" />);
+    const wrapper = render(<GaugeChart segments={segments} chartValue={25} sublabel="Low Risk" />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should not render the legends when the hideLegend prop is true', () => {
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} hideLegend />);
+    const wrapper = render(<GaugeChart segments={segments} chartValue={25} hideLegend />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render the chart value in fraction format', () => {
-    let wrapper = render(
+    const wrapper = render(
       <GaugeChart segments={segments} chartValue={25} chartValueFormat={GaugeValueFormat.Fraction} />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -408,7 +369,7 @@ describe('GaugeChart snapshot tests', () => {
 
   it(`should render a placeholder segment when the total size of the segments is less than
   the difference between maxValue and minValue props`, () => {
-    let wrapper = render(
+    const wrapper = render(
       <GaugeChart
         segments={[{ size: 60, color: 'blue', legend: 'Used' }]}
         chartValue={60}
@@ -418,6 +379,117 @@ describe('GaugeChart snapshot tests', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+});
+
+describe('GaugeChart custom callout', () => {
+  const renderDefaultCallout: RenderFunction<GaugeChartCalloutData> = (calloutData, defaultRender) => (
+    <div data-testid="wrapped-gauge-callout">{defaultRender?.(calloutData)}</div>
+  );
+
+  testWithoutWait(
+    'Should render a custom callout',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 30,
+      chartTitle: 'Server tick time',
+      minValue: 10,
+      maxValue: 120,
+      onRenderCallout: (calloutData?: GaugeChartCalloutData) => {
+        const lastSegment = calloutData?.segments?.at(-1);
+        return (
+          <div data-testid="custom-gauge-callout">
+            {calloutData?.chartTitle}: {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-
+            {calloutData?.maxValue}); last range {lastSegment?.start}-{lastSegment?.end}
+          </div>
+        );
+      },
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent(
+        'Server tick time: Low Risk: 30 blocks (10-120); last range 77-110',
+      );
+      expect(screen.getByTestId('custom-gauge-callout')).not.toHaveTextContent('Unknown');
+    },
+  );
+
+  testWithoutWait(
+    'Should provide the default callout renderer to a custom renderer',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 30,
+      chartValueFormat: ([value]: [number, number]) => `${value}ms`,
+      onRenderCallout: renderDefaultCallout,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Current value is 30ms');
+      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Low Risk');
+    },
+  );
+
+  testWithoutWait(
+    'Should use actual values for default percentage formatting with a nonzero minimum',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 125,
+      minValue: 100,
+      maxValue: 200,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('Current value is 63%')).toBeInTheDocument();
+      expect(screen.getByText('50% - 67%')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 50% to 67%' })).toBeInTheDocument();
+    },
+  );
+
+  testWithoutWait(
+    'Should use actual values for fraction formatting with a nonzero minimum',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 125,
+      minValue: 100,
+      maxValue: 200,
+      chartValueFormat: GaugeValueFormat.Fraction,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('Current value is 125/200')).toBeInTheDocument();
+      expect(screen.getByText('100 - 133')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 100 to 133' })).toBeInTheDocument();
+    },
+  );
+
+  testWithoutWait(
+    'Should preserve single-segment labels in the callout and accessible name',
+    GaugeChart,
+    {
+      segments: [segments[0]],
+      chartValue: 25,
+      maxValue: 100,
+      variant: GaugeChartVariant.SingleSegment,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('33 (33%)')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 33 out of 100 or 33%' })).toBeInTheDocument();
+    },
+  );
 });
 
 describe('GaugeChart rendering and behavior tests', () => {
@@ -498,30 +570,33 @@ describe('GaugeChart rendering and behavior tests', () => {
 
   it('should render the chart value correctly', () => {
     const customChartValue = 'Custom chart value';
+    const formatMilliseconds = ([value]: [number, number]) => (value === 0 ? 'offline' : `${value}ms`);
 
     expect(getChartValueLabel(25, 0, 100)).toBe('25%');
-    expect(getChartValueLabel(25, 0, 100, undefined, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, undefined, true)).toBe('25%');
 
     expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage)).toBe('25%');
-    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage, true)).toBe('25%');
 
     expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction)).toBe('25/100');
-    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction, true)).toBe('25%');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction, true)).toBe('25/100');
 
     expect(getChartValueLabel(25, 0, 100, () => customChartValue)).toBe(customChartValue);
-    expect(getChartValueLabel(25, 0, 100, () => customChartValue, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, () => customChartValue, true)).toBe(customChartValue);
+    expect(getChartValueLabel(50, 0, 200, formatMilliseconds, true)).toBe('50ms');
+    expect(getChartValueLabel(0, 0, 200, formatMilliseconds, true)).toBe('offline');
 
-    expect(getChartValueLabel(125, 100, 200)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200)).toBe('63%');
+    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('63%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('63%');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('63%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125/200');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125/200');
 
     expect(getChartValueLabel(125, 100, 200, () => customChartValue)).toBe(customChartValue);
-    expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe(customChartValue);
   });
 });
 
@@ -620,6 +695,29 @@ describe('GaugeChart interaction and accessibility tests', () => {
 });
 
 describe('Gauge Chart - Callout', () => {
+  it('should use unique callout anchor ids across multiple gauges', () => {
+    const { container } = render(
+      <>
+        <GaugeChart segments={segments} chartValue={25} />
+        <GaugeChart segments={segments} chartValue={50} />
+      </>,
+    );
+    const getElementById = jest.spyOn(document, 'getElementById');
+    const segmentPaths = container.querySelectorAll<SVGPathElement>('path[role="option"]');
+    const needlePaths = container.querySelectorAll<SVGPathElement>('path[id$="-needle"]');
+    const firstGaugeSegment = segmentPaths[0];
+    const secondGaugeSegment = segmentPaths[segments.length];
+
+    expect(segmentPaths).toHaveLength(segments.length * 2);
+    expect(needlePaths).toHaveLength(2);
+    expect(firstGaugeSegment.id).not.toBe(secondGaugeSegment.id);
+    expect(needlePaths[0].id).not.toBe(needlePaths[1].id);
+    fireEvent.focus(secondGaugeSegment);
+
+    expect(getElementById).toHaveBeenCalledWith(secondGaugeSegment.id);
+    getElementById.mockRestore();
+  });
+
   it('should show a callout when the needle is focused and hide it when blurred', () => {
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
 

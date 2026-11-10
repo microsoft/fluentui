@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { useNavContext_unstable } from '../NavContext';
 
 import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';

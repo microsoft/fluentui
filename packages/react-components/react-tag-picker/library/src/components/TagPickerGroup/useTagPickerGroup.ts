@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';

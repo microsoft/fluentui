@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorNeutralBackground1,
   colorNeutralForeground1,
@@ -47,8 +47,6 @@ export const styles = css`
     margin-block-start: calc(${spacingVerticalXXL} * -1);
     padding-block-end: ${spacingVerticalS};
     padding-block-start: ${spacingVerticalXXL};
-    position: sticky;
-    z-index: 1;
   }
 
   .content {
@@ -71,8 +69,6 @@ export const styles = css`
     margin-block-end: calc(${spacingVerticalXXL} * -1);
     padding-block-end: ${spacingVerticalXXL};
     padding-block-start: ${spacingVerticalL};
-    position: sticky;
-    z-index: 2;
   }
 
   ::slotted([slot='title-action']) {
@@ -97,6 +93,18 @@ export const styles = css`
       justify-content: flex-end;
       margin-block-start: calc(${spacingVerticalS} * -1);
       padding-block-start: ${spacingVerticalS};
+    }
+  }
+
+  /* For a11y, set sticky position for title and actions when the viewport is tall enough */
+  @media (min-height: 480px) {
+    .title {
+      position: sticky;
+      z-index: 1;
+    }
+    .actions {
+      position: sticky;
+      z-index: 2;
     }
   }
 `;

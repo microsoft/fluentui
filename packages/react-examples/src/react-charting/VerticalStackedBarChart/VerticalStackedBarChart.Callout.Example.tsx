@@ -10,6 +10,7 @@ import {
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: "Single callout (won't work if lines are present)" },
@@ -39,7 +40,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
       barWidth: 16,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -58,7 +59,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
     this.setState({ showLine: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color2) },

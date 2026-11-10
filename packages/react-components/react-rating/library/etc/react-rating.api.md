@@ -4,19 +4,24 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
+
+// @public
+export type RatingBaseProps = Omit<RatingProps, 'color' | 'size'>;
+
+// @public
+export type RatingBaseState = Omit<RatingState, 'color' | 'size'>;
 
 // @public (undocumented)
 export const ratingClassNames: SlotClassNames<RatingSlots>;
@@ -28,6 +33,12 @@ export type RatingContextValues = {
 
 // @public
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
+
+// @public
+export type RatingDisplayBaseProps = Omit<RatingDisplayProps, 'color' | 'size'>;
+
+// @public
+export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size' | 'icon'> & Pick<RatingDisplayProps, 'icon'>;
 
 // @public (undocumented)
 export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots>;
@@ -60,6 +71,12 @@ export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<P
 
 // @public
 export const RatingItem: ForwardRefComponent<RatingItemProps>;
+
+// @public
+export type RatingItemBaseProps = RatingItemProps;
+
+// @public
+export type RatingItemBaseState = Omit<RatingItemState, 'color' | 'size'>;
 
 // @public (undocumented)
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots>;
@@ -118,22 +135,28 @@ export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProp
 };
 
 // @public
-export const renderRating_unstable: (state: RatingState, contextValues: RatingContextValues) => JSX.Element;
+export const renderRating_unstable: (state: RatingBaseState, contextValues: RatingContextValues) => JSXElement;
 
 // @public
-export const renderRatingDisplay_unstable: (state: RatingDisplayState, contextValues: RatingDisplayContextValues) => JSX.Element;
+export const renderRatingDisplay_unstable: (state: RatingDisplayBaseState, contextValues: RatingDisplayContextValues) => JSXElement;
 
 // @public
-export const renderRatingItem_unstable: (state: RatingItemState) => JSX.Element;
+export const renderRatingItem_unstable: (state: RatingItemBaseState) => JSXElement;
 
 // @public
 export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
+
+// @public
+export const useRatingBase_unstable: (props: RatingBaseProps, ref: React_2.Ref<HTMLDivElement>) => RatingBaseState;
 
 // @public (undocumented)
 export const useRatingContextValues: (ratingState: RatingState) => RatingContextValues;
 
 // @public
 export const useRatingDisplay_unstable: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
+
+// @public
+export const useRatingDisplayBase_unstable: (props: RatingDisplayBaseProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayBaseState;
 
 // @public (undocumented)
 export const useRatingDisplayContextValues: (state: RatingDisplayState) => RatingDisplayContextValues;
@@ -143,6 +166,9 @@ export const useRatingDisplayStyles_unstable: (state: RatingDisplayState) => Rat
 
 // @public
 export const useRatingItem_unstable: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
+
+// @public
+export const useRatingItemBase_unstable: (props: RatingItemBaseProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemBaseState;
 
 // @public
 export const useRatingItemContextValue_unstable: () => RatingItemContextValue;

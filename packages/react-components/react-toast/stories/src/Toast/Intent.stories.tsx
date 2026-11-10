@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, ToastIntent } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -11,10 +12,9 @@ import {
   useToastController,
   ToastTitle,
   Toast,
-  ToastIntent,
 } from '@fluentui/react-components';
 
-export const Intent = () => {
+export const Intent = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const [intent, setIntent] = React.useState<ToastIntent | 'progress' | 'avatar'>('success');

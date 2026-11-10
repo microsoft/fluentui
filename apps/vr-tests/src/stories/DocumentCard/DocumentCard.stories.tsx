@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -9,7 +10,7 @@ import {
 } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { TestWrapperDecorator } from '../../utilities';
 import { previewProps } from './utilts';
 
 const docActivity = (
@@ -24,10 +25,10 @@ const docActivity = (
 export default {
   title: 'DocumentCard',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const NotTruncated = () => (

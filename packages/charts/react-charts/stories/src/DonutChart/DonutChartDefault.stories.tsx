@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { DonutChart, ChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { DonutChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
-export const DonutChartBasic = () => {
+export const DonutChartBasic = (): JSXElement => {
   const points = [
     { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
     {

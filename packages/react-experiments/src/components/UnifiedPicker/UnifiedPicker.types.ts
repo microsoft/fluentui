@@ -4,6 +4,7 @@ import type { IRefObject } from '@fluentui/utilities';
 import type { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import type { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
 import type { IFocusZoneProps, IInputProps, IDragDropEvents } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IUnifiedPickerProps<T> {
   /**
@@ -20,7 +21,8 @@ export interface IUnifiedPickerProps<T> {
    * Component to render selected items
    * selectedItemsListProps will be passed as props to this component
    */
-  onRenderSelectedItems: (props: ISelectedItemsListProps<T>) => JSX.Element;
+
+  onRenderSelectedItems: (props: ISelectedItemsListProps<T>) => JSXElement;
 
   /**
    * Props to pass to SelectedItems component
@@ -31,7 +33,8 @@ export interface IUnifiedPickerProps<T> {
    * Component to render floating suggestions
    * floatingSuggestionProps will be passed as props to this component
    */
-  onRenderFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSX.Element;
+
+  onRenderFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSXElement;
 
   /**
    * Props to pass to floating suggestions component
@@ -72,7 +75,8 @@ export interface IUnifiedPickerProps<T> {
   /**
    * Header component
    */
-  headerComponent?: JSX.Element;
+
+  headerComponent?: JSXElement;
 
   /**
    * On paste to input

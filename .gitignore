@@ -2,20 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
-packages/fluentui/*/componentInfo
-packages/fluentui/docs/src/componentInfo
-packages/fluentui/docs/src/componentMenu.json
-packages/fluentui/docs/src/behaviorMenu.json
-packages/fluentui/docs/src/bundleStats.json
-packages/fluentui/docs/src/currentBundleStats.json
-packages/fluentui/docs/src/exampleMenus
-packages/fluentui/docs/src/exampleSources
-packages/fluentui/docs/dist/
-packages/fluentui/ability-attributes/src/schema.ts
-packages/fluentui/e2e/cypress/fixtures/example.json
 stats/
-# northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
-packages/fluentui/react-northstar/README.md
 
 monosize-report.md
 
@@ -60,6 +47,13 @@ $RECYCLE.BIN/
 dist.stats.json
 bower_components
 node_modules
+
+# Yarn (ignore everything except patches, plugins, and releases)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+
 temp
 tmp
 lib
@@ -104,10 +98,6 @@ _Deploy
 # Commit meta data
 commit.txt
 
-# Webpart typings
-typings/webpart-framework
-typings/webparts
-
 # Configs that contain sensitive information
 TDSDeployConfig.json
 
@@ -123,6 +113,7 @@ npminstall-log.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npmrc
 
 # Dependency change files generated from npmx aka rush
 package-deps.json
@@ -146,10 +137,6 @@ package-lock.json
 /homepage/
 /site-manifests/
 
-# Rush files - since we are moving away from it
-/common
-rush.json
-
 # package manifest
 /package-manifest.json
 
@@ -170,3 +157,7 @@ gulp-cache
 .swc
 .nx/cache
 .nx/workspace-data
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+.playwright-cli

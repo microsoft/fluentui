@@ -114,6 +114,10 @@ export {
   isInvalidValue,
   isStringArray,
   isMonthArray,
+  isObjectArray,
+  getAxisIds,
+  getAxisKey,
+  isScatterAreaChart,
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';
@@ -124,3 +128,5 @@ export {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
 } from './formatter';
+
+export { isSafeUrl } from './isSafeUrl';

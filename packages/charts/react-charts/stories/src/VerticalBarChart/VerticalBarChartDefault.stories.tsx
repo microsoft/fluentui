@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { VerticalBarChart, VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalBarChart } from '@fluentui/react-charts';
+import { Switch, Checkbox, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
-export const VerticalBarDefault = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const VerticalBarDefault = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -43,7 +44,7 @@ export const VerticalBarDefault = () => {
   const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 
@@ -161,7 +162,8 @@ export const VerticalBarDefault = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -171,7 +173,8 @@ export const VerticalBarDefault = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">
@@ -231,6 +234,7 @@ export const VerticalBarDefault = () => {
                 ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
                 : undefined
             }
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -263,6 +267,7 @@ export const VerticalBarDefault = () => {
             legendProps={{
               canSelectMultipleLegends: selectMultipleLegends,
             }}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

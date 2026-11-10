@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CounterBadge } from './CounterBadge';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 
 describe('CounterBadge', () => {
@@ -17,8 +17,7 @@ describe('CounterBadge', () => {
   });
 
   it('renders a default state', () => {
-    const component = renderer.create(<CounterBadge />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<CounterBadge />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

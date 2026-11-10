@@ -4,28 +4,25 @@
   "private": true,
   "description": "Fluent UI React Charts Preview documentation",
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI Charts v9' --distPath ./dist/storybook",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "type-check": "just-scripts type-check",
+    "build-storybook": "yarn run -T storybook build -o ./dist/storybook --docs && yarn rewrite-title && yarn generate-llms-docs",
+    "build-storybook:docsite": "yarn run -T cross-env DEPLOY_PATH=/charts/ storybook build -o ./dist/storybook --docs && yarn rewrite-title && yarn generate-llms-docs",
+    "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI Charts v9' --distPath ./dist/storybook",
+    "generate-llms-docs": "yarn run -T storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/charts/\" --summaryTitle \"Fluent UI Charts v9\" --summaryDescription \"Fluent UI React charts is a set of modern, accessible, interactive, lightweight and highly customizable visualization library representing the Microsoft design system. These charts are used across 100s of projects inside Microsoft across Microsoft 365, Copilot and Azure.\"",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "type-check": "yarn run -T just-scripts type-check",
     "start": "yarn storybook:docs",
-    "storybook": "storybook dev --port 3000",
+    "storybook": "yarn run -T storybook dev --port 3000",
     "storybook:docs": "yarn storybook --docs",
-    "test": "jest --passWithNoTests"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*"
+    "test": "yarn run -T jest --passWithNoTests"
   },
   "dependencies": {
     "@fluentui/react-charts": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0"
   }
 }

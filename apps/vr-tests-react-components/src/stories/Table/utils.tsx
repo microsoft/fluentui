@@ -29,10 +29,11 @@ import {
   createTableColumn,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -42,7 +43,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -127,7 +128,7 @@ interface SharedVrTestArgs {
   selectedRowAppearance?: TableRowProps['appearance'];
 }
 
-export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElements, selectedRowAppearance }) => (
   <Table noNativeElements={noNativeElements}>
     <TableHeader>
       <TableRow>
@@ -138,7 +139,7 @@ export const CellActionsDefault: React.FC<SharedVrTestArgs> = ({ noNativeElement
     </TableHeader>
     <TableBody>
       {items.map((item, i) => (
-        <TableRow key={item.file.label} className={`row-${i}`}>
+        <TableRow key={item.file.label} className={`row-${i}`} appearance={selectedRowAppearance}>
           <TableCell>
             <TableCellLayout media={item.file.icon}>
               {item.file.label}

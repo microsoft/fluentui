@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -57,7 +58,7 @@ const SecondNestedPopover = () => {
   );
 };
 
-export const NestedPopovers = () => {
+export const NestedPopovers = (): JSXElement => {
   const styles = useStyles();
   const id = useId();
 

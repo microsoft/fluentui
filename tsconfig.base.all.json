@@ -11,27 +11,6 @@
     "baseUrl": ".",
     "paths": {
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
-      "@fluentui/a11y-testing": ["packages/a11y-testing/src/index.ts"],
-      "@fluentui/ability-attributes": ["packages/fluentui/ability-attributes/src/index.ts"],
-      "@fluentui/accessibility": ["packages/fluentui/accessibility/src/index.ts"],
-      "@fluentui/code-sandbox": ["packages/fluentui/code-sandbox/src/index.ts"],
-      "@fluentui/digest": ["packages/fluentui/digest/src/index.ts"],
-      "@fluentui/docs-components": ["packages/fluentui/docs-components/src/index.ts"],
-      "@fluentui/react-bindings": ["packages/fluentui/react-bindings/src/index.ts"],
-      "@fluentui/react-builder": ["packages/fluentui/react-builder/src/index.ts"],
-      "@fluentui/react-component-event-listener": ["packages/fluentui/react-component-event-listener/src/index.ts"],
-      "@fluentui/react-component-nesting-registry": ["packages/fluentui/react-component-nesting-registry/src/index.ts"],
-      "@fluentui/react-component-ref": ["packages/fluentui/react-component-ref/src/index.ts"],
-      "@fluentui/react-icons-northstar": ["packages/fluentui/react-icons-northstar/src/index.ts"],
-      "@fluentui/react-northstar": ["packages/fluentui/react-northstar/src/index.ts"],
-      "@fluentui/react-northstar-emotion-renderer": ["packages/fluentui/react-northstar-emotion-renderer/src/index.ts"],
-      "@fluentui/react-northstar-fela-renderer": ["packages/fluentui/react-northstar-fela-renderer/src/index.ts"],
-      "@fluentui/react-northstar-styles-renderer": ["packages/fluentui/react-northstar-styles-renderer/src/index.ts"],
-      "@fluentui/react-northstar-prototypes": ["packages/fluentui/react-northstar-prototypes/src/index.ts"],
-      "@fluentui/react-telemetry": ["packages/fluentui/react-telemetry/src/index.ts"],
-      "@fluentui/react-proptypes": ["packages/fluentui/react-proptypes/src/index.ts"],
-      "@fluentui/state": ["packages/fluentui/state/src/index.ts"],
-      "@fluentui/styles": ["packages/fluentui/styles/src/index.ts"],
       "@fluentui/api-docs": ["packages/api-docs/src/index.ts"],
       "@fluentui/azure-themes": ["packages/azure-themes/src/index.ts"],
       "@fluentui/codemods": ["packages/codemods/src/index.ts"],
@@ -83,6 +62,7 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/cli": ["tools/cli/src/index.ts"],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
@@ -112,6 +92,10 @@
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-calendar-preview": ["packages/react-components/react-calendar-preview/library/src/index.ts"],
+      "@fluentui/react-calendar-preview-stories": [
+        "packages/react-components/react-calendar-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
@@ -134,6 +118,7 @@
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-datepicker-preview": ["packages/react-components/react-datepicker-preview/library/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/library/src/index.ts"],
       "@fluentui/react-dialog-stories": ["packages/react-components/react-dialog/stories/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/library/src/index.ts"],
@@ -143,6 +128,12 @@
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-headless-components-preview-stories": [
+        "packages/react-components/react-headless-components-preview/stories/src/index.ts"
+      ],
+      "@fluentui/react-headless-components-preview/*": [
+        "packages/react-components/react-headless-components-preview/library/src/*.ts"
+      ],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/library/src/index.ts"],
@@ -151,6 +142,7 @@
       "@fluentui/react-infolabel-stories": ["packages/react-components/react-infolabel/stories/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/library/src/index.ts"],
       "@fluentui/react-input-stories": ["packages/react-components/react-input/stories/src/index.ts"],
+      "@fluentui/react-integration-tester": ["tools/react-integration-tester/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
       "@fluentui/react-jsx-runtime/jsx-dev-runtime": [
         "packages/react-components/react-jsx-runtime/src/jsx-dev-runtime.ts"
@@ -163,6 +155,10 @@
       "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
       "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/library/src/index.ts"],
+      "@fluentui/react-menu-grid-preview": ["packages/react-components/react-menu-grid-preview/library/src/index.ts"],
+      "@fluentui/react-menu-grid-preview-stories": [
+        "packages/react-components/react-menu-grid-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
@@ -182,6 +178,8 @@
         "packages/react-components/react-motion-components-preview/stories/src/index.ts"
       ],
       "@fluentui/react-motion-stories": ["packages/react-components/react-motion/stories/src/index.ts"],
+      "@fluentui/react-nav": ["packages/react-components/react-nav/library/src/index.ts"],
+      "@fluentui/react-nav-stories": ["packages/react-components/react-nav/stories/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/library/src/index.ts"],
@@ -199,6 +197,9 @@
       "@fluentui/react-provider-stories": ["packages/react-components/react-provider/stories/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/library/src/index.ts"],
       "@fluentui/react-radio-stories": ["packages/react-components/react-radio/stories/src/index.ts"],
+      "@fluentui/react-range-slider-preview": [
+        "packages/react-components/react-range-slider-preview/library/src/index.ts"
+      ],
       "@fluentui/react-rating": ["packages/react-components/react-rating/library/src/index.ts"],
       "@fluentui/react-rating-stories": ["packages/react-components/react-rating/stories/src/index.ts"],
       "@fluentui/react-search": ["packages/react-components/react-search/library/src/index.ts"],
@@ -220,6 +221,9 @@
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
+      ],
+      "@fluentui/react-storybook-addon-playground": [
+        "packages/react-components/react-storybook-addon-playground/src/index.ts"
       ],
       "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/library/src/index.ts"],
       "@fluentui/react-swatch-picker-stories": ["packages/react-components/react-swatch-picker/stories/src/index.ts"],
@@ -249,6 +253,10 @@
       "@fluentui/react-timepicker-compat-stories": [
         "packages/react-components/react-timepicker-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-timepicker-preview": ["packages/react-components/react-timepicker-preview/library/src/index.ts"],
+      "@fluentui/react-timepicker-preview-stories": [
+        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/library/src/index.ts"],
       "@fluentui/react-toast-stories": ["packages/react-components/react-toast/stories/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/library/src/index.ts"],
@@ -262,16 +270,19 @@
       "@fluentui/react-utilities-compat-stories": [
         "packages/react-components/react-utilities-compat/stories/src/index.ts"
       ],
-      "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/library/src/index.ts"],
-      "@fluentui/react-virtualizer-stories": ["packages/react-components/react-virtualizer/stories/src/index.ts"],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
+      "@fluentui/storybook-llms-extractor": ["tools/storybook-llms-extractor/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-nav-stories": ["packages/react-components/react-nav/stories/src/index.ts"],
-      "@fluentui/react-nav": ["packages/react-components/react-nav/library/src/index.ts"]
+      "@fluentui/react-datepicker-preview-stories": [
+        "packages/react-components/react-datepicker-preview/stories/src/index.ts"
+      ],
+      "@fluentui/react-range-slider-preview-stories": [
+        "packages/react-components/react-range-slider-preview/stories/src/index.ts"
+      ]
     }
   }
 }

@@ -52,11 +52,11 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._isMounted = false;
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactElement | null {
     const { styles, theme } = this.props;
     const { openIssues, closedIssues } = this.state;
 
@@ -119,7 +119,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     });
   }
 
-  private _onRenderCell = (item: IListItem): JSX.Element => {
+  private _onRenderCell = (item: IListItem): React.ReactElement => {
     const classNames = this._classNames;
     return (
       <div className={classNames.itemCell} data-is-focusable={true}>

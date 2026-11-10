@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { RatingItem } from './RatingItem';
 import { RatingItemProvider } from '../../contexts/RatingItemContext';
-import { RatingItemContextValue } from './RatingItem.types';
+import type { RatingItemContextValue } from './RatingItem.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
 describe('RatingItem', () => {

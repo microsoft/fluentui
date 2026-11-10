@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
 
@@ -29,8 +31,6 @@ export function resetIdsForTests(): void {
  * @returns The ID
  */
 export function useId(prefix: string = 'fui-', providedId?: string): string {
-  'use no memo';
-
   const contextValue = useSSRContext();
   const idPrefix = useIdPrefix();
 
@@ -55,6 +55,7 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
       return providedId;
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     return `${idPrefix}${prefix}${++contextValue.current}`;
   }, [idPrefix, prefix, providedId, contextValue]);
 }

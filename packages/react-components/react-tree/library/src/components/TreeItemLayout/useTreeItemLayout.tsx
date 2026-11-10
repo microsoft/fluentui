@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   getIntrinsicElementProps,
@@ -7,19 +9,26 @@ import {
   useEventCallback,
   elementContains,
   useControllableState,
+  useId,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type {
   TreeItemLayoutActionSlotProps,
   TreeItemLayoutActionVisibilityChangeData,
+  TreeItemLayoutBaseProps,
+  TreeItemLayoutBaseState,
   TreeItemLayoutProps,
   TreeItemLayoutState,
 } from './TreeItemLayout.types';
-import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
-import { Radio, RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
+import { Radio } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { registerTreeItemActions } from '../../utils/queryTreeItemActions';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -34,13 +43,109 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  'use no memo';
+  const { selector: selectorProp, ...baseProps } = props;
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const { targetDocument } = useFluent();
+  const state = useTreeItemLayoutBase(
+    // The base hook only needs to know whether the consumer provided or disabled the selector,
+    // the Fluent selector itself is resolved below.
+    { ...baseProps, selector: selectorProp === undefined || selectorProp === null ? selectorProp : {} },
+    ref,
+    targetDocument,
+    isNavigatingWithKeyboard,
+  );
 
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
+  const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
+  const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
+
+  // Link the selector to the main content unless the consumer provided an accessible name
+  const selectorShorthand = isResolvedShorthand(selectorProp) ? selectorProp : undefined;
+  const selectorAriaLabelledBy =
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : state.main.id;
+
+  const selector = slot.optional(selectorProp, {
+    renderByDefault: selectionMode !== 'none',
+    defaultProps: {
+      checked,
+      tabIndex: -1,
+      ref: selectionRef,
+      'aria-labelledby': selectorAriaLabelledBy,
+      // casting here to a union between checkbox and radio
+      // since ref is not present on the selector signature
+      // FIXME: look into Slot type to see if we can make this work
+    } as CheckboxProps | RadioProps,
+    elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+  });
+  // Checkbox and Radio slot props omit `ref` from their type, but consumers can still provide it.
+  const selectorConsumerRef = selector && (selector as typeof selector & { ref?: React.Ref<HTMLInputElement> }).ref;
+  const selectorRef = useMergedRefs(selectorConsumerRef, selectionRef);
+  const selectorWithRef = selector && { ...selector, ref: selectorRef };
+
+  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
+  const expandIcon = state.expandIcon
+    ? slot.optional(props.expandIcon, {
+        renderByDefault: true,
+        defaultProps: {
+          'aria-hidden': true,
+          children: <TreeItemChevron />,
+          ref: expandIconRef,
+        },
+        elementType: 'div',
+      })
+    : undefined;
+  const expandIconRefWithConsumer = useMergedRefs(expandIcon?.ref, expandIconRef);
+  const expandIconWithRef = expandIcon && { ...expandIcon, ref: expandIconRefWithConsumer };
+
+  return {
+    ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      // Casting here to a union between checkbox and radio
+      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+    },
+    buttonContextValue: { size: 'small' },
+    // Consumer props keep winning over the navigation attributes, matching the base slot ordering.
+    actions: state.actions && { ...arrowNavigationProps, ...state.actions },
+    expandIcon: expandIconWithRef,
+    selector: selectorWithRef,
+  };
+};
+
+/**
+ * Base state hook for TreeItemLayout, free of any focus management runtime and of the Fluent
+ * components used for the selector, the expand icon and the actions.
+ *
+ * The selector slot is rendered as a native `input`, of type `checkbox` in multiselect mode and
+ * `radio` in single selection mode, the expand icon has no default content, and the Tabster driven
+ * arrow key navigation of the actions is layered on by the wrapping `useTreeItemLayout_unstable` hook.
+ *
+ * @param props - props from this instance of TreeItemLayout
+ * @param ref - reference to root HTMLElement of TreeItemLayout
+ */
+export const useTreeItemLayoutBase_unstable = (
+  props: TreeItemLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+): TreeItemLayoutBaseState => {
+  const { targetDocument } = useFluent();
+  const isNavigatingWithKeyboard = useDOMKeyboardNavigation(targetDocument, Boolean(props.actions));
+
+  return useTreeItemLayoutBase(props, ref, targetDocument, isNavigatingWithKeyboard);
+};
+
+function useTreeItemLayoutBase(
+  props: TreeItemLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+  targetDocument: Document | undefined,
+  isNavigatingWithKeyboard: () => boolean,
+): TreeItemLayoutBaseState {
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
-  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
 
   const [isActionsVisibleFromProps, onActionVisibilityChange]: [
     TreeItemLayoutActionSlotProps['visible'],
@@ -64,9 +169,51 @@ export const useTreeItemLayout_unstable = (
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
+  const mainShorthand = isResolvedShorthand(main) ? main : undefined;
+  const mainContentId = useId('fui-TreeItemLayout__main-', mainShorthand?.id);
+
+  // Link the selector to the main content unless the consumer provided an accessible name
+  const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
+  const selectorAriaLabelledBy =
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainContentId;
+
+  // The mixed state of a native checkbox can only be set through its `indeterminate` DOM property.
+  const selectorInputRef = React.useRef<HTMLInputElement>(null);
+  useIsomorphicLayoutEffect(() => {
+    if (selectorInputRef.current) {
+      selectorInputRef.current.indeterminate = checked === 'mixed';
+    }
+  });
+
+  const selectorSlot = slot.optional(props.selector, {
+    renderByDefault: selectionMode !== 'none',
+    defaultProps: {
+      type: selectionMode === 'multiselect' ? 'checkbox' : 'radio',
+      checked: checked === true,
+      tabIndex: -1,
+      'aria-labelledby': selectorAriaLabelledBy,
+      // Changes bubble up to the tree item, which owns the selection state.
+      onChange: noop,
+    },
+    elementType: 'input',
+  });
+  const selectorRef = useMergedRefs(selectorSlot?.ref, selectionRef, selectorInputRef);
+  // Clicking a native checkbox clears `indeterminate`, which no commit restores if the change is rejected
+  const handleSelectorChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    selectorSlot?.onChange?.(event);
+    event.currentTarget.indeterminate = checked === 'mixed';
+  });
+  const selector = selectorSlot && { ...selectorSlot, ref: selectorRef, onChange: handleSelectorChange };
+  const mainSlot = slot.always(main, {
+    defaultProps: { id: selector ? mainContentId : undefined },
+    elementType: 'div',
+  });
+
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(treeItemRef);
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(subtreeRef);
 
   const setActionsVisibleIfNotFromSubtree = React.useCallback(
@@ -89,8 +236,7 @@ export const useTreeItemLayout_unstable = (
     [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
-  const { targetDocument } = useFluent();
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const hasActions = Boolean(props.actions);
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
@@ -138,29 +284,15 @@ export const useTreeItemLayout_unstable = (
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
-  const expandIcon = slot.optional(props.expandIcon, {
+  const expandIconSlot = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
-      children: <TreeItemChevron />,
       'aria-hidden': true,
     },
     elementType: 'div',
   });
-  const expandIconRefs = useMergedRefs(expandIcon?.ref, expandIconRef);
-  if (expandIcon) {
-    expandIcon.ref = expandIconRefs;
-  }
-  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
-  const actions = isActionsVisible
-    ? slot.optional(props.actions, {
-        defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
-        elementType: 'div',
-      })
-    : undefined;
-  delete actions?.visible;
-  delete actions?.onVisibilityChange;
-
-  const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
+  const expandIconRefs = useMergedRefs(expandIconSlot?.ref, expandIconRef);
+  const expandIcon = expandIconSlot && { ...expandIconSlot, ref: expandIconRefs };
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -173,12 +305,24 @@ export const useTreeItemLayout_unstable = (
     } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
     setIsActionsVisible(isRelatedTargetFromActions);
   });
-  if (actions) {
-    actions.ref = actionsRefs;
-    actions.onBlur = handleActionsBlur;
-  }
 
-  const hasActions = Boolean(props.actions);
+  const actionsSlot = isActionsVisible
+    ? slot.optional(props.actions, {
+        defaultProps: {
+          role: 'toolbar',
+          onBlur: handleActionsBlur,
+        },
+        elementType: 'div',
+      })
+    : undefined;
+  // The internal refs are merged after slot resolution, so that a consumer provided ref does not override them
+  const actionsRefs = useMergedRefs(actionsSlot?.ref, actionsRef, actionsRefInternal, registerTreeItemActions);
+  const actions = actionsSlot && { ...actionsSlot, ref: actionsRefs };
+  if (actions) {
+    // .visible .onVisibilityChange are consumed above and should not be propagated to the DOM
+    delete actions.visible;
+    delete actions.onVisibilityChange;
+  }
 
   React.useEffect(() => {
     if (treeItemRef.current && hasActions) {
@@ -212,10 +356,8 @@ export const useTreeItemLayout_unstable = (
       iconAfter: 'div',
       actions: 'div',
       aside: 'div',
-      // Casting here to a union between checkbox and radio
-      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+      selector: 'input',
     },
-    buttonContextValue: { size: 'small' },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
@@ -229,28 +371,83 @@ export const useTreeItemLayout_unstable = (
       },
     ),
     iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
-    main: slot.always(main, { elementType: 'div' }),
+    main: mainSlot,
     iconAfter: slot.optional(iconAfter, { elementType: 'div' }),
     aside: !isActionsVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
     actions,
     expandIcon,
-    selector: slot.optional(props.selector, {
-      renderByDefault: selectionMode !== 'none',
-      defaultProps: {
-        checked,
-        tabIndex: -1,
-        'aria-hidden': true,
-        ref: selectionRef,
-        // casting here to a union between checkbox and radio
-        // since ref is not present on the selector signature
-        // FIXME: look into Slot type to see if we can make this work
-      } as CheckboxProps | RadioProps,
-      elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<
-        CheckboxProps | RadioProps
-      >,
-    }),
+    selector,
   };
+}
+
+type DOMKeyboardNavigationTracker = {
+  isNavigatingWithKeyboard: boolean;
+  subscribers: number;
+  dispose: () => void;
 };
+
+/**
+ * Keyboard modality trackers shared by every base layout of a document, so that the number of
+ * document listeners does not grow with the number of mounted tree items.
+ */
+const domKeyboardNavigationTrackers = new WeakMap<Document, DOMKeyboardNavigationTracker>();
+
+// Only pointer activation switches the modality, so that hovering does not discard keyboard focus
+const DOM_POINTER_EVENTS = ['pointerdown', 'mousedown', 'touchstart'] as const;
+
+function subscribeToDOMKeyboardNavigation(targetDocument: Document): DOMKeyboardNavigationTracker {
+  let tracker = domKeyboardNavigationTrackers.get(targetDocument);
+  if (!tracker) {
+    const onKeyDown = () => {
+      state.isNavigatingWithKeyboard = true;
+    };
+    const onPointerInteraction = () => {
+      state.isNavigatingWithKeyboard = false;
+    };
+    const state: DOMKeyboardNavigationTracker = {
+      isNavigatingWithKeyboard: false,
+      subscribers: 0,
+      dispose: () => {
+        targetDocument.removeEventListener('keydown', onKeyDown, true);
+        DOM_POINTER_EVENTS.forEach(type => targetDocument.removeEventListener(type, onPointerInteraction, true));
+        domKeyboardNavigationTrackers.delete(targetDocument);
+      },
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    DOM_POINTER_EVENTS.forEach(type => targetDocument.addEventListener(type, onPointerInteraction, true));
+    domKeyboardNavigationTrackers.set(targetDocument, state);
+    tracker = state;
+  }
+  tracker.subscribers++;
+  return tracker;
+}
+
+function useDOMKeyboardNavigation(targetDocument: Document | undefined, enabled: boolean): () => boolean {
+  const trackerRef = React.useRef<DOMKeyboardNavigationTracker | null>(null);
+
+  React.useEffect(() => {
+    if (!targetDocument || !enabled) {
+      return;
+    }
+
+    const tracker = subscribeToDOMKeyboardNavigation(targetDocument);
+    trackerRef.current = tracker;
+
+    return () => {
+      trackerRef.current = null;
+      if (--tracker.subscribers === 0) {
+        tracker.dispose();
+      }
+    };
+  }, [targetDocument, enabled]);
+
+  return React.useCallback(() => trackerRef.current?.isNavigatingWithKeyboard ?? false, []);
+}
+
+function noop() {
+  /* noop */
+}
 
 function assertIsRefObject<Value>(ref?: React.Ref<Value>): asserts ref is React.RefObject<Value> {
   if (process.env.NODE_ENV !== 'production') {

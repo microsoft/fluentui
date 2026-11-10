@@ -1,3 +1,5 @@
+'use client';
+
 import { canUseDOM } from '@fluentui/react-utilities';
 
 let _window: Window | undefined = undefined;

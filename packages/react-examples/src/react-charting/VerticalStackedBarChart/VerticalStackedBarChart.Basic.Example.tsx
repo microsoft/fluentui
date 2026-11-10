@@ -9,6 +9,7 @@ import {
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IVerticalStackedBarState {
   width: number;
@@ -63,7 +64,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div key={'id_VBC'}>{this._basicExample()}</div>;
   }
 
@@ -117,7 +118,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     this.setState({ legendMultiSelect: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
       {

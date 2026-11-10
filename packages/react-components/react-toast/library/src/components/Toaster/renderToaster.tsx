@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
 import type { ToasterState, ToasterSlotsInternal } from './Toaster.types';
 import { AriaLive } from '../AriaLive';
@@ -9,7 +10,7 @@ import { AriaLive } from '../AriaLive';
 /**
  * Render the final JSX of Toaster
  */
-export const renderToaster_unstable = (state: ToasterState) => {
+export const renderToaster_unstable = (state: ToasterState): JSXElement => {
   const { announceRef, renderAriaLive, inline, mountNode } = state;
   assertSlots<ToasterSlotsInternal>(state);
 

@@ -7,7 +7,7 @@ import { PROVIDER_ID } from './constants';
 import { containsAriaDescriptionWarning } from './helpers';
 
 export class RenderError extends Error {
-  public name = 'RangeError';
+  public name = 'RenderError';
 }
 
 export async function visitPage(browser: Browser, url: string) {
@@ -42,7 +42,7 @@ export async function visitPage(browser: Browser, url: string) {
   });
 
   page.on('pageerror', err => {
-    error = err;
+    error = err as Error;
   });
 
   await visitUrl(page, url);

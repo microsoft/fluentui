@@ -2,6 +2,7 @@ import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IAreaChartBasicState {
   width: number;
@@ -19,7 +20,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
@@ -34,7 +35,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     this.setState({ useUTC: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const chart1Points = [
       {
         x: new Date('2018-01-06'),

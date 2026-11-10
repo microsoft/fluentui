@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles, Textarea, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Resize = () => {
+export const Resize = (): JSXElement => {
   const styles = useStyles();
 
   return (

@@ -12,27 +12,21 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*"
-  },
   "dependencies": {
-    "@fluentui/react-components": "^9.66.1",
-    "@fluentui/react-context-selector": "^9.2.0",
+    "@fluentui/react-components": "^9.75.1",
+    "@fluentui/react-context-selector": "^9.2.21",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
-    "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-utilities": "^9.21.0",
-    "@griffel/react": "^1.5.22",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.4.0",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.27.0",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
-    "dedent": "^1.2.0",
-    "codesandbox-import-utils": "^2.2.3"
+    "codesandbox-import-utils": "^2.2.3",
+    "dedent": "^1.2.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.9.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
-    "react-dom": ">=16.14.0 <19.0.0"
+    "@types/react": ">=16.14.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

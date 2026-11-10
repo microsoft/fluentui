@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 
 import { SpinButton } from './SpinButton';
@@ -10,7 +9,7 @@ import { isConformant } from '../../common/isConformant';
 import type { ISpinButton } from './SpinButton.types';
 
 describe('SpinButton', () => {
-  let ref: React.RefObject<ISpinButton>;
+  let ref: React.RefObject<ISpinButton | null>;
 
   /**
    * Verify the value of the input field and related properties.
@@ -96,7 +95,7 @@ describe('SpinButton', () => {
   }
 
   beforeEach(() => {
-    ref = React.createRef<ISpinButton>();
+    ref = React.createRef<ISpinButton | null>();
     resetIds();
   });
 
@@ -113,17 +112,17 @@ describe('SpinButton', () => {
 
   describe('snapshots', () => {
     it('renders correctly', () => {
-      const component = create(<SpinButton min={0} max={100} label="label" />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SpinButton min={0} max={100} label="label" />);
+
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders correctly with user-provided values', () => {
-      const component = create(
+      const { container } = render(
         <SpinButton min={0} max={100} label="label" value="0" ariaValueText="0 pt" data-test="test" />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 
@@ -690,7 +689,6 @@ describe('SpinButton', () => {
       const onChange = jest.fn();
       let keyCode: number | undefined;
       const onValidate = jest.fn((value: string, event?: React.SyntheticEvent) => {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
         keyCode = (event as React.KeyboardEvent).which;
         return value;
       });

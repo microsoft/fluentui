@@ -8,12 +8,15 @@ import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 import type { IPeoplePickerItemSelectedProps } from './PeoplePickerItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 /**
  * @deprecated Use `PeoplePickerItem` instead. Will be removed in \>= 7.0.
  */
-export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX.Element = (
+
+export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSXElement = (
   peoplePickerItemProps: IPeoplePickerItemSelectedProps,
 ) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel } = peoplePickerItemProps;

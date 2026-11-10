@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { SelectableHandler } from '../selectable/index';
@@ -34,9 +36,25 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
    * the signature remains just to avoid breaking changes
    */
   onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+  /**
+   * Whether child menus (submenus) should open when the user presses the ArrowRight key on their trigger.
+   * Set to `false` when the list context is provided by a grid-like container (e.g. MenuGrid) where
+   * ArrowRight is reserved for column navigation.
+   *
+   * @default true
+   */
+  shouldOpenOnArrowRight?: boolean;
+  /**
+   * Whether child menus (submenus) should close when the user presses the ArrowLeft key.
+   * Set to `false` when the list context is provided by a grid-like container (e.g. MenuGrid) where
+   * ArrowLeft is reserved for column navigation.
+   *
+   * @default true
+   */
+  shouldCloseOnArrowLeft?: boolean;
 };
 
 export const MenuListProvider = MenuListContext.Provider;
 
-export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
+export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>): T =>
   useContextSelector(MenuListContext, (ctx = menuListContextDefaultValue) => selector(ctx));

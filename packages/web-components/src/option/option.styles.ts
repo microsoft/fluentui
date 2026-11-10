@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { typographyBody1Styles, typographyCaption1Styles } from '../styles/partials/typography.partials.js';
-import { activeState, descriptionState, multipleState, selectedState } from '../styles/states/index.js';
+import { descriptionState, multipleState, nativeDisabledState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -41,7 +41,6 @@ export const styles = css`
     align-items: center;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-sizing: border-box;
     color: ${colorNeutralForeground2};
     column-gap: ${spacingHorizontalXS};
@@ -50,6 +49,7 @@ export const styles = css`
     grid-template-columns: auto auto 1fr;
     min-height: 32px;
     padding: ${spacingHorizontalSNudge};
+    text-align: start;
   }
 
   .content {
@@ -71,7 +71,7 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:disabled) {
+  :host(${nativeDisabledState}) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForegroundDisabled};
     cursor: default;
@@ -117,15 +117,15 @@ export const styles = css`
     fill: ${colorNeutralForegroundInverted};
   }
 
-  :host(:disabled${multipleState}) .checkmark-12-regular {
+  :host(${nativeDisabledState}${multipleState}) .checkmark-12-regular {
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host(:disabled${multipleState}${selectedState}) .checkmark-12-regular {
+  :host(${nativeDisabledState}${multipleState}${selectedState}) .checkmark-12-regular {
     background-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host(${activeState}) {
+  :host([active]) {
     border: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
@@ -146,5 +146,11 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     grid-area: description;
     ${typographyCaption1Styles}
+  }
+
+  @media (forced-colors: active) {
+    :host(${nativeDisabledState}) {
+      color: GrayText;
+    }
   }
 `;

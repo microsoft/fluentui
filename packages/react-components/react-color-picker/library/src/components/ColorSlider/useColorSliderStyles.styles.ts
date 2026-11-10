@@ -1,22 +1,16 @@
+'use client';
+
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
   root: 'fui-ColorSlider',
   rail: 'fui-ColorSlider__rail',
   thumb: 'fui-ColorSlider__thumb',
   input: 'fui-ColorSlider__input',
-};
-
-export const colorSliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  thumbColorVar: `--fui-Slider__thumb--color`,
-  railColorVar: `--fui-Slider__rail--color`,
-  thumbSizeVar: `--fui-Slider__thumb--size`,
-  railSizeVar: `--fui-Slider__rail--size`,
 };
 
 const hueBackground = `linear-gradient(${[
@@ -29,6 +23,7 @@ const hueBackground = `linear-gradient(${[
   'yellow',
   'red',
 ].join(',')})`;
+const channelBackground = `linear-gradient(var(${colorSliderCSSVars.sliderDirectionVar}), var(${colorSliderCSSVars.railColorVar}), var(${colorSliderCSSVars.railColorLowVar}))`;
 
 /**
  * Styles for the root slot
@@ -65,10 +60,10 @@ const useChannelStyles = makeStyles({
     backgroundImage: hueBackground,
   },
   saturation: {
-    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
   value: {
-    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
 });
 
@@ -196,8 +191,6 @@ const useInputStyles = makeStyles({
  * Apply styling to the ColorSlider slots based on the state
  */
 export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSliderState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const styles = useStyles();
   const railStyles = useRailStyles();
@@ -207,6 +200,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const channelStyles = useChannelStyles();
   const isVertical = state.vertical;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     colorSliderClassNames.root,
     rootStyles,
@@ -214,6 +208,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
@@ -223,6 +218,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.rail.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     colorSliderClassNames.thumb,
     thumbStyles.thumb,
@@ -230,6 +226,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     colorSliderClassNames.input,
     inputStyles.input,

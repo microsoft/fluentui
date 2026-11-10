@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import { renderText_unstable, useText_unstable, useTextStyles_unstable } from '../Text';
@@ -11,8 +13,6 @@ export function createPreset(options: {
 }): React.FunctionComponent<TextPresetProps> {
   const { useStyles, className, displayName } = options;
   const Wrapper: ForwardRefComponent<TextPresetProps> = React.forwardRef((props, ref) => {
-    'use no memo';
-
     const styles = useStyles();
     const state = useText_unstable(props as TextProps, ref);
 

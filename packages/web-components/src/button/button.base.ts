@@ -1,6 +1,6 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
-import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { ButtonFormTarget, ButtonType } from './button.options.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -14,17 +14,6 @@ import { ButtonFormTarget, ButtonType } from './button.options.js';
  * @public
  */
 export class BaseButton extends FASTElement {
-  /**
-   * Indicates the button should be focused when the page is loaded.
-   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
   /**
    * Default slotted content.
    *
@@ -42,7 +31,19 @@ export class BaseButton extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  disabled?: boolean;
+  disabled!: boolean;
+
+  /**
+   * Handles changes to the disabled attribute. If the button is disabled, it
+   * should not be focusable.
+   *
+   * @param previous - the previous disabled value
+   * @param next - the new disabled value
+   * @internal
+   */
+  disabledChanged() {
+    this.setTabIndex();
+  }
 
   /**
    * Indicates that the button is focusable while disabled.
@@ -55,16 +56,6 @@ export class BaseButton extends FASTElement {
   public disabledFocusable: boolean = false;
 
   /**
-   * Sets that the button tabindex attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `tabindex`
-   */
-  @attr({ attribute: 'tabindex', mode: 'fromView', converter: nullableNumberConverter })
-  public override tabIndex: number = 0;
-
-  /**
    * Sets the element's internal disabled state when the element is focusable while disabled.
    *
    * @param previous - the previous disabledFocusable value
@@ -72,7 +63,7 @@ export class BaseButton extends FASTElement {
    * @internal
    */
   public disabledFocusableChanged(previous: boolean, next: boolean): void {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals) {
       this.elementInternals.ariaDisabled = `${!!next}`;
     }
   }
@@ -257,6 +248,8 @@ export class BaseButton extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
+    this.setTabIndex();
+    maybeSetAutoFocus(this);
   }
 
   constructor() {
@@ -344,7 +337,7 @@ export class BaseButton extends FASTElement {
       return;
     }
 
-    if (e.key === keyEnter || e.key === keySpace) {
+    if (e.key === 'Enter' || e.key === ' ') {
       this.click();
       return;
     }
@@ -378,6 +371,24 @@ export class BaseButton extends FASTElement {
    */
   public resetForm(): void {
     this.elementInternals.form?.reset();
+  }
+
+  /**
+   * Sets the `tabindex` attribute based on the disabled state of the button.
+   *
+   * @internal
+   */
+  protected setTabIndex(): void {
+    if (this.disabled) {
+      this.removeAttribute('tabindex');
+      return;
+    }
+
+    // If author sets tabindex to a non-positive value, the component should
+    // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+    // tabindex to a positive number. See details:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
   }
 
   /**

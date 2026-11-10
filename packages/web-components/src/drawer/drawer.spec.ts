@@ -1,11 +1,13 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as DrawerBodyTagName } from '../drawer-body/drawer-body.options.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Drawer } from './drawer.js';
-import { DrawerPosition } from './drawer.options.js';
-import { DrawerSize, DrawerType } from './drawer.options.js';
+import { DrawerType, tagName } from './drawer.options.js';
 
 test.describe('Drawer', () => {
   test.use({
-    tagName: 'fluent-drawer',
+    tagName,
+    waitFor: [DrawerBodyTagName],
   });
 
   for (const type of Object.values(DrawerType)) {
@@ -19,32 +21,20 @@ test.describe('Drawer', () => {
     });
   }
 
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
 
-    for (const size of Object.values(DrawerSize)) {
-      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
+    let hasError = false;
 
-        await expect(element).toHaveAttribute('size', size);
+    page.on('pageerror', () => {
+      hasError = true;
+    });
 
-        await expect(element).toHaveJSProperty('size', size);
-      });
-    }
-  });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
-  test('should set the `position` property to match the `position` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const position of Object.values(DrawerPosition)) {
-      await test.step(`should set the \`position\` property to \`${position}\``, async () => {
-        await fastPage.setTemplate({ attributes: { position } });
-
-        await expect(element).toHaveAttribute('position', position);
-
-        await expect(element).toHaveJSProperty('position', position);
-      });
-    }
+    expect(hasError).toBe(false);
   });
 
   test('should set the `ariaLabel` property when the `aria-label` attribute is set', async ({ fastPage }) => {
@@ -106,6 +96,8 @@ test.describe('Drawer', () => {
   test('should emit a `toggle` event when the `show` method is called', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     const wasOpened = element.evaluate(
       node => new Promise(resolve => node.addEventListener('toggle', () => resolve(true))),
     );
@@ -120,6 +112,8 @@ test.describe('Drawer', () => {
   test('should emit a `beforetoggle` event before open property changes', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     const wasOpened = element.evaluate(
       node => new Promise(resolve => node.addEventListener('beforetoggle', () => resolve(true))),
     );
@@ -133,6 +127,8 @@ test.describe('Drawer', () => {
 
   test('should emit a `cancel` event when a `cancel` event is invoked on the document', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Drawer) => {
       node.show();
@@ -151,17 +147,17 @@ test.describe('Drawer', () => {
 
   test('should close after a button is slotted into the close slot and clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const closeButton = element.locator('fluent-button[slot="close"]');
+    const closeButton = element.locator('button[slot="close"]');
     const content = element.locator('#content');
 
-    await fastPage.setTemplate(/* html */ `
-        <fluent-drawer>
-          <fluent-drawer-body>
-              <fluent-button slot="close">Close</fluent-button>
-              <div id="content">content</div>
-          </fluent-drawer-body>
-        </fluent-drawer>
-      `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${DrawerBodyTagName}>
+          <button slot="close">Close</button>
+          <div id="content">content</div>
+        </${DrawerBodyTagName}>
+      `,
+    });
 
     await element.evaluate((node: Drawer) => {
       node.show();
@@ -172,5 +168,36 @@ test.describe('Drawer', () => {
     await closeButton.click();
 
     await expect(content).toBeHidden();
+  });
+
+  test.describe('sets focus when show() is called', () => {
+    test.use({
+      tagName,
+      waitFor: [DrawerBodyTagName, TextInputTagName],
+    });
+
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const input = element.getByTestId('input');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DrawerBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
+            <button>after</button>
+          </${DrawerBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Drawer) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(input).toBeFocused();
+    });
   });
 });

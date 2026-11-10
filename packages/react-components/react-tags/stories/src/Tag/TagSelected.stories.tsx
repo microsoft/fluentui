@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tag, makeResetStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -7,7 +8,7 @@ const useContainerStyles = makeResetStyles({
   display: 'flex',
 });
 
-export const Selected = () => {
+export const Selected = (): JSXElement => {
   const containerStyles = useContainerStyles();
 
   return (

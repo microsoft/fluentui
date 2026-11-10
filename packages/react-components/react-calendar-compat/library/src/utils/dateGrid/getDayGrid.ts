@@ -1,6 +1,6 @@
 import { addDays, compareDates, getDateRangeArray, isInDateRangeArray } from '../dateMath/dateMath';
 import { DAYS_IN_WEEK } from '../constants';
-import { Day, DayGridOptions } from './dateGrid.types';
+import type { Day, DayGridOptions } from './dateGrid.types';
 import { getDateRangeTypeToUse } from './getDateRangeTypeToUse';
 import { getBoundedDateRange } from './getBoundedDateRange';
 import { isRestrictedDate } from './isRestrictedDate';

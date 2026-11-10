@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Menu } from './menu.js';
+import { tagName } from './menu.options.js';
 import { styles } from './menu.styles.js';
 import { template } from './menu.template.js';
 
 /**
- * The Fluent Menu Element.
+ * The definition for the `<fluent-menu>` element.
  *
  * @public
- * @remarks
- * HTML Element: <fluent-menu>
  */
-export const definition = Menu.compose({
-  name: `${FluentDesignSystem.prefix}-menu`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

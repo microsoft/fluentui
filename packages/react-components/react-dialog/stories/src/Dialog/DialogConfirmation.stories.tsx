@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
   useId,
 } from '@fluentui/react-components';
 
-export const Confirmation = () => {
+export const Confirmation = (): JSXElement => {
   const dialogId = useId('dialog-');
   return (
     <Dialog>

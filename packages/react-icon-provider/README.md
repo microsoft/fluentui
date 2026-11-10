@@ -7,6 +7,7 @@ This component is used for providing overrides to the icons in `@fluentui/react-
 Below is an example of how to override an icon:
 
 ```js
+import * as ReactDOMClient from 'react-dom/client';
 import { IconProvider } from '@fluentui/react-icon-provider';
 import { IIconSubset } from '@fluentui/style-utilities';
 import { FilterIcon } from '@fluentui/react-icons-mdl2';
@@ -28,5 +29,5 @@ const OverriddenFilterIcon = () => (
   </IconProvider>
 );
 
-ReactDOM.render(<OverriddenFilterIcon />, document.body.firstChild);
+ReactDOMClient.createRoot(document.body.firstChild).render(<OverriddenFilterIcon />);
 ```

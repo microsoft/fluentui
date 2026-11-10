@@ -1,6 +1,4 @@
-import '@testing-library/jest-dom';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import { ColorRectangle } from './ColorRectangle';
@@ -10,7 +8,7 @@ import { KeyCodes } from '../../../Utilities';
 import type { IColor } from '../../../utilities/color/colors';
 
 describe('ColorRectangle', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReturnType<typeof render> | undefined;
   let colorRectangle: ColorRectangleBase | null = null;
   const colorRectRef = (ref: ColorRectangleBase | null) => {
     colorRectangle = ref;
@@ -36,9 +34,8 @@ describe('ColorRectangle', () => {
   });
 
   it('renders correctly', () => {
-    component = renderer.create(<ColorRectangle color={getColorFromString('#abcdef')!} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    component = render(<ColorRectangle color={getColorFromString('#abcdef')!} />);
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('uses provided color', () => {

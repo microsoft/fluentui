@@ -7,19 +7,20 @@ import * as SignalStyles from './Signal.scss';
 import { getRTL } from '../../Utilities';
 import type { IIconProps } from '@fluentui/react/lib/Icon';
 import type { ISignalProps } from './Signal';
+import type { JSXElement } from '@fluentui/utilities';
 
 export * from './Signal';
 export * from './SignalField';
 
-export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.youCheckedOut} iconName="checkedoutbyyou12" />;
 };
 
-export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const BlockedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.blocked} iconName="blocked12" />;
 };
 
-export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const MissingMetadataSignal: Signal = (props: ISignalProps): JSXElement => {
   return (
     <IconSignal
       {...props}
@@ -29,38 +30,39 @@ export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element 
   );
 };
 
-export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const WarningSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.warning} iconName="warning12" />;
 };
 
-export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.awaitingApproval} iconName="clock" />;
 };
 
-export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const TrendingSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.trending} iconName="market" />;
 };
 
-export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.someoneCheckedOut} iconName="checkedoutbyother12" />;
 };
 
-export const RecordSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const RecordSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.record} iconName="lock" />;
 };
 
-export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.needsRepublishing} iconName="readingmode" />;
 };
 
-export const ItemScheduledSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const ItemScheduledSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.itemScheduled} iconName="datetime2" />;
 };
 
 /**
  * Renders a signal marking the proceeding content as new.
  */
-export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
+
+export const NewSignal: Signal = (props: ISignalProps): JSXElement => {
   const { ariaLabel, ...spanProps } = props;
 
   return (
@@ -78,20 +80,22 @@ export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
 /**
  * Renders a signal for a live-edit scenario.
  */
-export const LiveEditSignal: Signal = (props: ISignalProps): JSX.Element => {
+
+export const LiveEditSignal: Signal = (props: ISignalProps): JSXElement => {
   const { className, ...spanProps } = props;
 
   return <Signal className={css(className, SignalsStyles.liveEdit)} {...spanProps} />;
 };
 
-export const MentionSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const MentionSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.mention} iconName="accounts" />;
 };
 
 /**
  * Renders a signal for a number of comments.
  */
-export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+
+export const CommentsSignal: Signal = (props: ISignalProps): JSXElement => {
   const { ariaLabel, className, children, ...spanProps } = props;
 
   return (
@@ -110,39 +114,40 @@ export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
 /**
  * Renders a signal for a number of comments.
  */
-export const UnseenReplySignal: Signal = (props: ISignalProps): JSX.Element => {
+
+export const UnseenReplySignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.unseenReply} iconName="commentprevious" />;
 };
 
-export const UnseenEditSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const UnseenEditSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.unseenEdit} iconName="edit" />;
 };
 
-export const ReadOnlySignal: Signal = (props: ISignalProps): JSX.Element => {
+export const ReadOnlySignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.readOnly} iconName="uneditablesolid12" />;
 };
 
-export const EmailedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const EmailedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.emailed} iconName="mail" />;
 };
 
-export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const SharedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.shared} iconName="people" />;
 };
 
-export const DesktopSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const DesktopSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="TVMonitor" />;
 };
 
-export const DocumentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const DocumentsSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Page" />;
 };
 
-export const PicturesSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const PicturesSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Photo2" />;
 };
 
-export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.malwareDetected} iconName="BlockedSiteSolid12" />;
 };
 
@@ -151,15 +156,16 @@ export const ATPSignal: Signal = MalwareDetectedSignal; // TODO Delete on next m
 /**
  * Renders a signal for an external item.
  */
-export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
+
+export const ExternalSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.external} iconName="Globe" />;
 };
 
-export const NotFollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const NotFollowedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.bookmarkOutline} iconName="SingleBookmark" />;
 };
 
-export const FollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const FollowedSignal: Signal = (props: ISignalProps): JSXElement => {
   return <IconSignal {...props} signalClass={SignalsStyles.bookmarkFilled} iconName="SingleBookmarkSolid" />;
 };
 

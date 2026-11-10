@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
-import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import { render, fireEvent } from '@testing-library/react';
+import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import type { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import type { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 
@@ -55,7 +54,7 @@ describe('FloatingSuggestions', () => {
   const renderNothing = () => <></>;
   const isSuggestionsVisible = false;
   it('renders FloatingSuggestions correctly', () => {
-    const component = create(
+    const { container } = render(
       <BaseFloatingSuggestions
         onRenderNoResultFound={renderNothing}
         isSuggestionsVisible={isSuggestionsVisible}
@@ -63,12 +62,11 @@ describe('FloatingSuggestions', () => {
         targetElement={null}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders FloatingSuggestions with suggestions visible false', () => {
-    const component = create(
+    const { container } = render(
       <BaseFloatingSuggestions
         isSuggestionsVisible={isSuggestionsVisible}
         suggestions={_suggestions}
@@ -76,9 +74,8 @@ describe('FloatingSuggestions', () => {
       />,
     );
 
-    expect(component).toBeTruthy();
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toBeTruthy();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders FloatingSuggestions with suggestions visible true', () => {

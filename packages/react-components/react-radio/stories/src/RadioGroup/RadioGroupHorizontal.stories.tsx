@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const Horizontal = () => (
+export const Horizontal = (): JSXElement => (
   <Field label="Favorite Fruit">
     <RadioGroup layout="horizontal">
       <Radio value="apple" label="Apple" />

@@ -2,8 +2,10 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { CarouselSliderState, CarouselSliderSlots } from './CarouselSlider.types';
-import { CarouselSliderContextProvider, CarouselSliderContextValues } from './CarouselSliderContext';
+import type { CarouselSliderContextValues } from './CarouselSliderContext';
+import { CarouselSliderContextProvider } from './CarouselSliderContext';
 
 /**
  * Render the final JSX of CarouselSlider
@@ -11,7 +13,7 @@ import { CarouselSliderContextProvider, CarouselSliderContextValues } from './Ca
 export const renderCarouselSlider_unstable = (
   state: CarouselSliderState,
   contextValues: CarouselSliderContextValues,
-) => {
+): JSXElement => {
   assertSlots<CarouselSliderSlots>(state);
 
   return (

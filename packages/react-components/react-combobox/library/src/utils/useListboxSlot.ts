@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   mergeCallbacks,
@@ -11,16 +13,16 @@ import {
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 import { Listbox } from '../Listbox';
-import { ListboxProps } from '../Listbox';
+import type { ListboxProps } from '../Listbox';
 
 export type UseListboxSlotState = Pick<ComboboxBaseState, 'multiselect'>;
 
 type UseListboxSlotOptions = {
   state: UseListboxSlotState;
   triggerRef:
-    | React.RefObject<HTMLInputElement>
-    | React.RefObject<HTMLButtonElement>
-    | React.RefObject<HTMLButtonElement | HTMLInputElement>;
+    | React.RefObject<HTMLInputElement | null>
+    | React.RefObject<HTMLButtonElement | null>
+    | React.RefObject<HTMLButtonElement | HTMLInputElement | null>;
   defaultProps?: Partial<ListboxProps>;
 };
 
@@ -80,6 +82,7 @@ export function useListboxSlot(
   );
 
   const onClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       event.preventDefault();
       triggerRef.current?.focus();

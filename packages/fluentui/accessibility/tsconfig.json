@@ -1,8 +1,0 @@
-{
-  "extends": "../../../tsconfig.base.v0.json",
-  "compilerOptions": {
-    "composite": true,
-    "outDir": "dist/dts"
-  },
-  "include": ["src", "test"]
-}

@@ -12,10 +12,11 @@ import {
 } from '@fluentui/react-icons';
 import { TableCellLayout } from '@fluentui/react-table';
 import { Avatar } from '@fluentui/react-avatar';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -25,7 +26,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {

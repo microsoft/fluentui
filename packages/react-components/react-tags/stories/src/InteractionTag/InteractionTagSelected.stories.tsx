@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -14,7 +15,7 @@ const useContainerStyles = makeResetStyles({
   display: 'flex',
 });
 
-export const Selected = () => {
+export const Selected = (): JSXElement => {
   const containerStyles = useContainerStyles();
 
   return (

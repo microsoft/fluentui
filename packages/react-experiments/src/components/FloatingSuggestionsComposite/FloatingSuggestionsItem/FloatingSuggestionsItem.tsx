@@ -8,8 +8,9 @@ import type {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
 } from './FloatingSuggestionsItem.types';
+import type { JSXElement } from '@fluentui/utilities';
 
-export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSX.Element => {
+export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSXElement => {
   const {
     id,
     onClick,
@@ -21,7 +22,7 @@ export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestion
     isSelected,
   } = props;
   const getClassNames = classNamesFunction<IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles>();
-  const classNames = getClassNames(getStyles, { isSelected: isSelected });
+  const classNames = getClassNames(getStyles, { isSelected });
 
   const onClickItem = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     onClick ? onClick(ev, props) : null;

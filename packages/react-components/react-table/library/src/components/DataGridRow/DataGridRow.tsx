@@ -1,16 +1,18 @@
+'use client';
+
 import * as React from 'react';
 import { useDataGridRow_unstable } from './useDataGridRow';
 import { renderDataGridRow_unstable } from './renderDataGridRow';
 import { useDataGridRowStyles_unstable } from './useDataGridRowStyles.styles';
 import type { DataGridRowProps } from './DataGridRow.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent, JSXElement } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DataGridRow component
  */
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
-  (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element) = React.forwardRef<HTMLElement, DataGridRowProps>(
+  (<TItem>(props: DataGridRowProps<TItem>) => JSXElement) = React.forwardRef<HTMLElement, DataGridRowProps>(
   (props, ref) => {
     const state = useDataGridRow_unstable(props, ref);
 
@@ -20,6 +22,6 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
 
     return renderDataGridRow_unstable(state);
   },
-) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
+) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);
 
 DataGridRow.displayName = 'DataGridRow';

@@ -1,17 +1,15 @@
 import * as React from 'react';
 
-import * as renderer from 'react-test-renderer';
+import { render, act } from '@testing-library/react';
 import { FocusRects } from './useFocusRects';
 import { FocusRectsProvider } from './FocusRectsProvider';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName } from './setFocusVisibility';
 import { KeyCodes } from './KeyCodes';
 import { addDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 
-const { act } = renderer;
-
 describe('useFocusRects', () => {
-  let focusRects1: renderer.ReactTestRenderer;
-  let focusRects2: renderer.ReactTestRenderer;
+  let focusRects1: ReturnType<typeof render>;
+  let focusRects2: ReturnType<typeof render>;
 
   class MockWindow {
     public classNames: string[] = [];
@@ -90,8 +88,8 @@ describe('useFocusRects', () => {
   describe('when attaching the classnames to the window body', () => {
     it('can hint to show focus when you press a directional key', () => {
       act(() => {
-        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
-        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = render(<FocusRects rootRef={mockRefObject} />);
       });
 
       const { eventListeners } = mockWindow;
@@ -156,8 +154,8 @@ describe('useFocusRects', () => {
 
     it('can hint to show focus when you press a directional key with multi-window', () => {
       act(() => {
-        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
-        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject2} />);
+        focusRects1 = render(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = render(<FocusRects rootRef={mockRefObject2} />);
       });
 
       expect(mockWindow.eventListeners.keyup).toBeDefined();
@@ -200,8 +198,8 @@ describe('useFocusRects', () => {
 
     it('no-ops when you press a non-directional key', () => {
       act(() => {
-        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
-        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = render(<FocusRects rootRef={mockRefObject} />);
       });
 
       const { eventListeners } = mockWindow;
@@ -227,7 +225,7 @@ describe('useFocusRects', () => {
 
     it('can hint to hide focus on mouse click', () => {
       act(() => {
-        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRects rootRef={mockRefObject} />);
       });
 
       const { eventListeners } = mockWindow;
@@ -253,8 +251,8 @@ describe('useFocusRects', () => {
 
     it('can hint to show focus when you press a custom directional key', () => {
       act(() => {
-        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
-        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = render(<FocusRects rootRef={mockRefObject} />);
       });
 
       const { eventListeners } = mockWindow;
@@ -290,9 +288,9 @@ describe('useFocusRects', () => {
       mockWindow.FabricConfig = {
         disableFocusRects: true,
       };
-      let component: renderer.ReactTestRenderer;
+      let component: ReturnType<typeof render>;
       act(() => {
-        component = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        component = render(<FocusRects rootRef={mockRefObject} />);
       });
 
       const { eventListeners } = mockWindow;
@@ -383,8 +381,8 @@ describe('useFocusRects', () => {
     });
 
     const FocusRectsWithProvider: React.FunctionComponent<{
-      providerRef: React.RefObject<HTMLDivElement>;
-      rootRef?: React.RefObject<HTMLElement>;
+      providerRef: React.RefObject<HTMLDivElement | null>;
+      rootRef?: React.RefObject<HTMLElement | null>;
     }> = ({ providerRef, rootRef }) => {
       return (
         <FocusRectsProvider providerRef={providerRef}>
@@ -405,7 +403,7 @@ describe('useFocusRects', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
       act(() => {
-        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
       });
 
       const providerElem = providerRef.current as MockProviderRef;
@@ -500,7 +498,7 @@ describe('useFocusRects', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
       act(() => {
-        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
       });
 
       const providerElem = providerRef.current as MockProviderRef;
@@ -529,7 +527,7 @@ describe('useFocusRects', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
       act(() => {
-        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
       });
 
       const providerElem = providerRef.current as MockProviderRef;
@@ -568,7 +566,7 @@ describe('useFocusRects', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
       act(() => {
-        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+        focusRects1 = render(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
       });
 
       const providerElem = providerRef.current as MockProviderRef;
@@ -612,9 +610,9 @@ describe('useFocusRects', () => {
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      let component: renderer.ReactTestRenderer;
+      let component: ReturnType<typeof render>;
       act(() => {
-        component = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+        component = render(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
       });
 
       const providerElem = providerRef.current as MockProviderRef;

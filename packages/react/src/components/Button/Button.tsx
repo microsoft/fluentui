@@ -9,6 +9,8 @@ import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 import type { IButtonProps } from './Button.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.
@@ -24,7 +26,7 @@ export class Button extends React.Component<IButtonProps, {}> {
     );
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const props = this.props;
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated

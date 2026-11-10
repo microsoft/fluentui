@@ -1,3 +1,5 @@
+'use client';
+
 import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
@@ -29,13 +31,13 @@ export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
-  const { navType = 'next' } = props;
+  const { navType = 'next', ...buttonProps } = props;
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
 
   const { dir } = useFluent();
-  const buttonRef = React.useRef<HTMLButtonElement>();
+  const buttonRef = React.useRef<HTMLButtonElement>(undefined);
   const circular = useCarouselContext(ctx => ctx.circular);
   const [canLoop, setCanLoop] = React.useState(circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
@@ -113,7 +115,8 @@ export const useCarouselButton_unstable = (
         tabIndex: isTrailing ? -1 : 0,
         'aria-disabled': isTrailing,
         appearance: 'subtle',
-        ...props,
+        ...buttonProps,
+        // eslint-disable-next-line react-hooks/refs
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,

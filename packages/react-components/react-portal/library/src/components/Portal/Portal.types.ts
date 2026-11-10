@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 export type PortalProps = {
   /**
@@ -20,5 +20,6 @@ export type PortalState = Pick<PortalProps, 'children'> & {
   /**
    * Ref to the root span element as virtual parent
    */
-  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
+  virtualParentRootRef: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  React.MutableRefObject<HTMLSpanElement | null>;
 };

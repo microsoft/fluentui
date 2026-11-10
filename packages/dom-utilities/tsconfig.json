@@ -13,7 +13,7 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom", "ES2015.Iterable"],
+    "lib": ["es5", "dom", "ES2015.Iterable", "ES2015.Symbol.WellKnown"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"],
     "isolatedModules": true

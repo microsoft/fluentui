@@ -2,6 +2,7 @@ export {
   Tree,
   treeClassNames,
   useTree_unstable,
+  useTreeBase_unstable,
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
   renderTree_unstable,
@@ -11,6 +12,9 @@ export type {
   TreeSlots,
   TreeProps,
   TreeState,
+  TreeBaseSlots,
+  TreeBaseProps,
+  TreeBaseState,
   TreeContextValues,
   TreeOpenChangeData,
   TreeSelectionValue,
@@ -20,6 +24,7 @@ export type {
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeNavigationMode,
+  TreeNavigationDataParam,
 } from './Tree';
 
 export {
@@ -62,6 +67,7 @@ export {
   useTreeItem_unstable,
 } from './TreeItem';
 export type {
+  TreeItemContextValues,
   TreeItemProps,
   TreeItemState,
   TreeItemSlots,
@@ -69,6 +75,7 @@ export type {
   TreeItemValue,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
+  TreeItemCSSProperties,
 } from './TreeItem';
 
 export { FlatTreeItem } from './FlatTreeItem';
@@ -78,10 +85,20 @@ export {
   TreeItemLayout,
   treeItemLayoutClassNames,
   renderTreeItemLayout_unstable,
+  useTreeItemLayoutBase_unstable,
   useTreeItemLayoutStyles_unstable,
   useTreeItemLayout_unstable,
 } from './TreeItemLayout';
-export type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout';
+export type {
+  TreeItemLayoutActionSlotProps,
+  TreeItemLayoutActionVisibilityChangeData,
+  TreeItemLayoutBaseProps,
+  TreeItemLayoutBaseSlots,
+  TreeItemLayoutBaseState,
+  TreeItemLayoutProps,
+  TreeItemLayoutSlots,
+  TreeItemLayoutState,
+} from './TreeItemLayout';
 
 export {
   TreeItemPersonaLayout,
@@ -98,3 +115,5 @@ export type {
 
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { FlattenTreeItem } from './utils/flattenTree';
+
+export { useTreeNavigation } from './hooks/useTreeNavigation';

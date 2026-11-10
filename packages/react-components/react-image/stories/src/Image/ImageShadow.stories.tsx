@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 
-export const Shadow = () => (
+export const Shadow = (): JSXElement => (
   <Image shadow src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png" alt="Image placeholder" />
 );
 

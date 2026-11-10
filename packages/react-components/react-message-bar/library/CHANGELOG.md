@@ -1,8 +1,480 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.9)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.8..@fluentui/react-message-bar_v9.7.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.8)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-link to v9.8.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.7)
+
+Tue, 22 Sep 2026 11:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.6..@fluentui/react-message-bar_v9.7.7)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.11.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-link to v9.8.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.6)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.5..@fluentui/react-message-bar_v9.7.6)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- Keep motion ref handling out of the headless MessageBar base hook. ([PR #36549](https://github.com/microsoft/fluentui/pull/36549) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-motion to v9.16.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.5)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.4..@fluentui/react-message-bar_v9.7.5)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-link to v9.8.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.4)
+
+Tue, 04 Aug 2026 10:12:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.3..@fluentui/react-message-bar_v9.7.4)
+
+### Patches
+
+- fix(MessageBar): v9 MessageBar Resize Flicker Fix ([PR #36405](https://github.com/microsoft/fluentui/pull/36405) by jiangemma@microsoft.com)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.3)
+
+Mon, 29 Jun 2026 15:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.2..@fluentui/react-message-bar_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.10.1 ([commit](https://github.com/microsoft/fluentui/commit/aedc345f58bc16bb8540615b5afdf3d2d3569db4) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.2)
+
+Wed, 24 Jun 2026 11:09:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.1..@fluentui/react-message-bar_v9.7.2)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.10.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-motion to v9.16.1 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.6 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-link to v9.8.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.1)
+
+Tue, 26 May 2026 09:39:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.0..@fluentui/react-message-bar_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.9.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-motion to v9.16.0 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.5 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-link to v9.8.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.0)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.23..@fluentui/react-message-bar_v9.7.0)
+
+### Minor changes
+
+- feat(react-message-bar): add useMessageBarBase_unstable hook ([PR #35908](https://github.com/microsoft/fluentui/pull/35908) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.9.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-motion to v9.15.0 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.4 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-link to v9.8.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.6.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.23)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.22..@fluentui/react-message-bar_v9.6.23)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.14.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.3 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.6.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.22)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.21..@fluentui/react-message-bar_v9.6.22)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.9.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-link to v9.8.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+
+## [9.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.21)
+
+Wed, 11 Mar 2026 09:22:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.20..@fluentui/react-message-bar_v9.6.21)
+
+### Patches
+
+- Update MessageBar, Field, and Toast to use Dismiss Diamond icons ([PR #35758](https://github.com/microsoft/fluentui/pull/35758) by 198982749+Copilot@users.noreply.github.com)
+
+## [9.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.20)
+
+Tue, 03 Mar 2026 09:43:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.19..@fluentui/react-message-bar_v9.6.20)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.13.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.2 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+
+## [9.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.19)
+
+Wed, 25 Feb 2026 13:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.18..@fluentui/react-message-bar_v9.6.19)
+
+### Patches
+
+- refactor: use shared MotionRefForwarder from react-motion ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- Bump @fluentui/react-button to v9.8.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-motion to v9.12.0 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-link to v9.7.4 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.18)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.17..@fluentui/react-message-bar_v9.6.18)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.8.1 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-link to v9.7.3 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [9.6.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.17)
+
+Thu, 22 Jan 2026 17:06:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.16..@fluentui/react-message-bar_v9.6.17)
+
+### Patches
+
+- fix(react-message-bar): update slide atom param from "fromY" to "outY" ([PR #35592](https://github.com/microsoft/fluentui/pull/35592) by robertpenner@microsoft.com)
+- Bump @fluentui/react-button to v9.8.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-motion to v9.11.6 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-link to v9.7.2 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [9.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.16)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.15..@fluentui/react-message-bar_v9.6.16)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.7.1 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.4 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-motion to v9.11.5 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.14.2 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-link to v9.7.1 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+
+## [9.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.15)
+
+Fri, 05 Dec 2025 22:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.14..@fluentui/react-message-bar_v9.6.15)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
+
+## [9.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.14)
+
+Tue, 11 Nov 2025 19:18:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.13..@fluentui/react-message-bar_v9.6.14)
+
+### Patches
+
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
+- Bump @fluentui/react-button to v9.6.12 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.3 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-motion to v9.11.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.14.1 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.0 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-link to v9.7.0 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-utilities to v9.25.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+
+## [9.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.13)
+
+Thu, 06 Nov 2025 17:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.12..@fluentui/react-message-bar_v9.6.13)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.14.0 ([PR #34705](https://github.com/microsoft/fluentui/pull/34705) by beachball)
+
+## [9.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.12)
+
+Thu, 06 Nov 2025 15:01:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.11..@fluentui/react-message-bar_v9.6.12)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- refactor(react-message-bar): use standard motion atoms for slide and fade ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
+- Bump @fluentui/react-button to v9.6.11 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.2 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-motion to v9.11.3 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.13.0 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-link to v9.6.10 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-utilities to v9.25.3 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+
+## [9.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.11)
+
+Fri, 31 Oct 2025 16:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.10..@fluentui/react-message-bar_v9.6.11)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.1 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-motion to v9.11.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.12.0 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-link to v9.6.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+
+## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.10)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.9..@fluentui/react-message-bar_v9.6.10)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.9 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-link to v9.6.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.9)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.8..@fluentui/react-message-bar_v9.6.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.8 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-motion to v9.11.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.11.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-link to v9.6.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.8)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.7..@fluentui/react-message-bar_v9.6.8)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.11.0 ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by beachball)
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.7)
+
+Thu, 02 Oct 2025 15:12:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.6..@fluentui/react-message-bar_v9.6.7)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- refactor(react-message-bar): migrate slide & fade to motion components ([PR #35168](https://github.com/microsoft/fluentui/pull/35168) by robertpenner@microsoft.com)
+- Bump @fluentui/react-button to v9.6.7 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-motion to v9.11.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.10.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-link to v9.6.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.6)
+
+Mon, 08 Sep 2025 12:51:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.5..@fluentui/react-message-bar_v9.6.6)
+
+### Patches
+
+- fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.6.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.0 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-link to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-utilities to v9.24.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.5)
+
+Thu, 21 Aug 2025 12:25:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.4..@fluentui/react-message-bar_v9.6.5)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-link to v9.6.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.4)
+
+Thu, 07 Aug 2025 10:03:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.3..@fluentui/react-message-bar_v9.6.4)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.4 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.5 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-link to v9.6.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.3)
+
+Wed, 30 Jul 2025 16:55:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.2..@fluentui/react-message-bar_v9.6.3)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.3 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.2)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.1..@fluentui/react-message-bar_v9.6.2)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-link to v9.6.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.1)
+
+Mon, 28 Jul 2025 18:48:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.0..@fluentui/react-message-bar_v9.6.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-link to v9.6.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.0)
+
+Thu, 17 Jul 2025 13:49:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.4..@fluentui/react-message-bar_v9.6.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-link to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.4)
+
+Fri, 11 Jul 2025 15:59:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.3..@fluentui/react-message-bar_v9.5.4)
+
+### Patches
+
+- fix: MessageBarActions renders slots with keys ([PR #34801](https://github.com/microsoft/fluentui/pull/34801) by lingfangao@hotmail.com)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.3)
+
+Fri, 27 Jun 2025 13:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.2..@fluentui/react-message-bar_v9.5.3)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.5.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-link to v9.5.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.2)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.1..@fluentui/react-message-bar_v9.5.2)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.5.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-link to v9.5.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.1)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.0..@fluentui/react-message-bar_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.5.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-link to v9.5.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.0)
 

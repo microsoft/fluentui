@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
@@ -9,7 +10,7 @@ const useClasses = makeStyles({
   },
 });
 
-export const Shape = () => {
+export const Shape = (): JSXElement => {
   const classes = useClasses();
 
   return (

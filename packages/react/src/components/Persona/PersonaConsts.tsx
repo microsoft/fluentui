@@ -36,7 +36,22 @@ export namespace personaPresenceSize {
 }
 
 // TODO: remove the deprecated parts in a future major release.
-export const sizeBoolean = (size: PersonaSize) => ({
+export const sizeBoolean = (
+  size: PersonaSize,
+): {
+  isSize8: boolean;
+  isSize10: boolean;
+  isSize16: boolean;
+  isSize24: boolean;
+  isSize28: boolean;
+  isSize32: boolean;
+  isSize40: boolean;
+  isSize48: boolean;
+  isSize56: boolean;
+  isSize72: boolean;
+  isSize100: boolean;
+  isSize120: boolean;
+} => ({
   isSize8: size === PersonaSize.size8,
   /* eslint-disable @typescript-eslint/no-deprecated */
   isSize10: size === PersonaSize.size10 || size === PersonaSize.tiny,
@@ -77,7 +92,16 @@ export const sizeToPixels: { [key: number]: number } = {
   [PersonaSize.size120]: 120,
 };
 
-export const presenceBoolean = (presence: PersonaPresence) => ({
+export const presenceBoolean = (
+  presence: PersonaPresence,
+): {
+  isAvailable: boolean;
+  isAway: boolean;
+  isBlocked: boolean;
+  isBusy: boolean;
+  isDoNotDisturb: boolean;
+  isOffline: boolean;
+} => ({
   isAvailable: presence === PersonaPresence.online,
   isAway: presence === PersonaPresence.away,
   isBlocked: presence === PersonaPresence.blocked,

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { ToastFooterSlots, ToastFooterState } from './ToastFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -22,9 +24,8 @@ const useRootBaseClassName = makeResetStyles({
  * Apply styling to the ToastFooter slots based on the state
  */
 export const useToastFooterStyles_unstable = (state: ToastFooterState): ToastFooterState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(toastFooterClassNames.root, rootBaseClassName, state.root.className);
 
   return state;

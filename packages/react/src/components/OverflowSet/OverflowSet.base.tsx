@@ -9,7 +9,7 @@ import { useDocumentEx } from '../../utilities/dom';
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
 
-const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject<HTMLDivElement>) => {
+const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject<HTMLDivElement | null>) => {
   const doc = useDocumentEx();
   React.useImperativeHandle(
     props.componentRef,

@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -47,7 +48,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
       roundCorners: false,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -87,7 +88,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IVerticalBarChartDataPoint[] = [
       {
         x: 'Simple Text',

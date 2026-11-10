@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSelect_unstable } from './useSelect';
 import { renderSelect_unstable } from './renderSelect';

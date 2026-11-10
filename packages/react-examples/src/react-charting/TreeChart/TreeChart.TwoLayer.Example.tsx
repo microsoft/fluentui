@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TreeChart, ITreeProps, ITreeState } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 const twoLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
@@ -16,7 +17,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createTreeChart()}</div>;
   }
 
@@ -24,7 +25,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
     this.setState({ _layoutWidth: parseInt(e.target.value, 10) });
   };
 
-  private _createTreeChart(): JSX.Element {
+  private _createTreeChart(): JSXElement {
     return (
       <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>

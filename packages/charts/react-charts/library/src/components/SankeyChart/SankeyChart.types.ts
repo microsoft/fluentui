@@ -1,6 +1,7 @@
-import { RefObject } from 'react';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { Chart, ChartProps } from '../../types/DataPoint';
+import type { Ref } from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { Chart, ChartProps } from '../../types/DataPoint';
 
 export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoint';
 
@@ -9,6 +10,11 @@ export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoi
  * {@docCategory SankeyChart}
  */
 export interface SankeyChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -76,7 +82,7 @@ export interface SankeyChartProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default true
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 
@@ -84,7 +90,7 @@ export interface SankeyChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: RefObject<Chart>;
+  componentRef?: Ref<Chart>;
 
   /**
    * props for the callout in the chart
@@ -95,6 +101,24 @@ export interface SankeyChartProps {
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
+
+  /**
+   * Whether to hide the legend
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Props related to reflow behavior of the chart
+   */
+  reflowProps?: {
+    /**
+     * Determines the reflow behavior of the chart.
+     * When set to `'min-width'`, the chart will not shrink below a certain width and will enable scrolling if it overflows.
+     * @default 'none'
+     */
+    mode: 'none' | 'min-width';
+  };
 }
 
 /**
@@ -131,6 +155,21 @@ export interface SankeyChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 }
 
 /**

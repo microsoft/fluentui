@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
+import { Switch, Checkbox, makeStyles, tokens } from '@fluentui/react-components';
 
-export const LineChartNegative = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const LineChartNegative = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -15,10 +24,10 @@ export const LineChartNegative = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
   const _onCheckChange = (ev: React.FormEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
@@ -146,7 +155,8 @@ export const LineChartNegative = () => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -156,7 +166,8 @@ export const LineChartNegative = () => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <Switch
           label={
@@ -195,6 +206,7 @@ export const LineChartNegative = () => {
           yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
           xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           useUTC={useUTC}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

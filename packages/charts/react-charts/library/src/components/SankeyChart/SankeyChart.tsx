@@ -1,17 +1,24 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { sum as d3Sum } from 'd3-array';
-import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { Selection as D3Selection, select, selectAll } from 'd3-selection';
+import type { SankeyGraph, SankeyLayout } from 'd3-sankey';
+import { sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
+import type { Selection as D3Selection } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode } from '../../types/DataPoint';
-import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
+import type { Margins, SLink, SNode } from '../../types/DataPoint';
+import type { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
-import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
+import type { ChartPopoverProps } from '../CommonComponents/index';
+import { ChartPopover } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
+import { useImageExport } from '../../utilities/hooks';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -68,7 +75,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -113,7 +120,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
@@ -154,8 +161,8 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: SankeyChartData) {
-  const nodesInColumn: NodesInColumns = {};
+export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns {
+  const nodesInColumn: NodesInColumns = Object.create(null);
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
@@ -292,7 +299,7 @@ function duplicateData(data: SankeyChartData): SankeyChartData {
 }
 
 function valuesOfNodes(nodes: SNode[]): NodeValues {
-  const result: NodeValues = {};
+  const result: NodeValues = Object.create(null);
   nodes.forEach((node: SNode) => {
     result[node.nodeId as NodeId] = node.value!;
   });
@@ -300,12 +307,12 @@ function valuesOfNodes(nodes: SNode[]): NodeValues {
 }
 
 function valuesOfLinks(links: SLink[]): LinkValues {
-  const result: LinkValues = {};
+  const result: LinkValues = Object.create(null);
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
@@ -325,18 +332,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -459,12 +464,12 @@ function computeLinkAttributes(
   linkAriaLabel: (link: SLink) => string,
   linkId: string,
 ): LinkItemValues<RenderedLinkAttributes> {
-  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  const result: LinkItemValues<RenderedLinkAttributes> = Object.create(null);
   links.forEach((link: SLink, index: number) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
@@ -540,20 +545,27 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   SankeyChartProps
 >((props, forwardedRef) => {
   const classes = useSankeyChartStyles(props);
-  const chartContainer = React.useRef<HTMLDivElement>(null);
-  const _reqID = React.useRef<number>();
+  const { chartContainerRef: chartContainer } = useImageExport(props.componentRef, true, false);
+  const _reqID = React.useRef<number | undefined>(undefined);
   const _linkId = useId('link');
   const _chartId = useId('sankeyChart');
   const _emptyChartId = useId('_SankeyChart_empty');
   const _labelTooltipId = useId('tooltip');
-  const _margins = React.useRef<Margins>({ top: 36, right: 48, bottom: 32, left: 48 });
+  const titleHeight = props.data?.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        36,
+      )
+    : 36;
+  const _margins = React.useRef<Margins>({ top: titleHeight, right: 48, bottom: 32, left: 48 });
   const { targetDocument, dir } = useFluent();
   const _window = targetDocument?.defaultView;
   const _isRtl: boolean = dir === 'rtl';
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
@@ -569,28 +581,21 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
 
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: chartContainer.current,
-    }),
-    [],
-  );
-
   const _fitParentContainer = React.useCallback((): void => {
     _reqID.current = _window?.requestAnimationFrame(() => {
       // NOTE: Calls to this method trigger a re-render.
       const container = props.parentRef ? props.parentRef : chartContainer.current;
       if (container) {
-        const currentContainerWidth = props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
+        const currentContainerWidth =
+          props.reflowProps?.mode === 'min-width'
+            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
         const currentContainerHeight = container.getBoundingClientRect().height;
         setContainerWidth(currentContainerWidth);
         setContainerHeight(currentContainerHeight);
       }
     });
-  }, [_window, props.enableReflow, props.parentRef]);
+  }, [_window, props.reflowProps?.mode, props.parentRef]);
 
   React.useEffect(() => {
     _fitParentContainer();
@@ -613,7 +618,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 
   const _computeNodeAttributes = React.useCallback(
     (nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string): ItemValues<RenderedNodeAttributes> => {
-      const result: ItemValues<RenderedNodeAttributes> = {};
+      const result: ItemValues<RenderedNodeAttributes> = Object.create(null);
       const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
       const nameSpan = select('.nodeName')
         .append('text')
@@ -707,7 +712,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       const nodeValues = valuesOfNodes(transformed.nodes);
       const linkValues = valuesOfLinks(transformed.links);
       adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-      adjustPadding(sankey, height - 6, nodesInColumn);
+      adjustPadding(sankey, containerHeight - _margins.current.top! - _margins.current.bottom!, nodesInColumn);
       // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
       // NOTE: The second call to `sankey` is required to allow links to be hoverable.
       // Without the second call, the links are not hoverable.
@@ -744,7 +749,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const target = singleLink.target as SNode;
         // TODO: localize the aria-label string
         return (
-          <g key={key}>
+          <g key={key} role="presentation">
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={source.color} />
@@ -765,7 +770,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               fillOpacity={_getOpacityStream(singleLink)}
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
           </g>
         );
@@ -797,7 +802,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const { name, actualValue, x0, x1, y0 } = singleNode;
         const textColor = nodeTextColor({ selectedState, selectedNodes, selectedNode }, singleNode);
         return (
-          <g key={index} id={gElementId}>
+          <g key={index} id={gElementId} role="presentation">
             <rect
               x={x0}
               y={y0}
@@ -813,7 +818,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               opacity="1"
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classes.nodeTextContainer}>
@@ -869,34 +874,29 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _onHover = (singleNode: SNode, mouseEvent: React.MouseEvent<SVGElement>) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const _selectedLinks = getSelectedLinks(singleNode);
-      const _selectedNodes = getSelectedNodes(_selectedLinks);
-      _selectedNodes.push(singleNode);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      setSelectedNode(singleNode);
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
-      setColor(singleNode.color);
-      setXCalloutValue(singleNode.name);
-      setYCalloutValue(_formatNumber(singleNode.actualValue!));
-    }
+    const _selectedLinks = getSelectedLinks(singleNode);
+    const _selectedNodes = getSelectedNodes(_selectedLinks);
+    _selectedNodes.push(singleNode);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    setSelectedNode(singleNode);
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
+    setColor(singleNode.color);
+    setXCalloutValue(singleNode.name);
+    setYCalloutValue(_formatNumber(singleNode.actualValue!));
   };
 
   const _onStreamHover = (mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } =
-        getSelectedLinksforStreamHover(singleLink);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      _linkCalloutAttributes(singleLink, from);
-    }
+    const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } = getSelectedLinksforStreamHover(singleLink);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    _linkCalloutAttributes(singleLink, from);
   };
 
   const _onStreamLeave = (singleLink: SLink) => {
@@ -939,12 +939,13 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       } else if (!selectedNode) {
         return singleNode.color;
       }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
   };
 
   const _fillStreamColors = (singleLink: SLink, gradientUrl: string): string | undefined => {
     if (selectedState && selectedLinks.has(singleLink.index!)) {
-      return selectedNode ? selectedNode.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   };
 
@@ -998,7 +999,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
-        .html(text);
+        .text(text);
     }
   };
 
@@ -1147,11 +1148,28 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId}>
+          <svg
+            width={width}
+            height={height}
+            id={_chartId}
+            className={classes.chart}
+            role="listbox"
+            aria-label={`Sankey chart with ${nodes.length} nodes and ${links.length} links`}
+          >
+            {!props.hideLegend && props.data.chartTitle && (
+              <ChartTitle
+                title={props.data.chartTitle}
+                x={width / 2}
+                maxWidth={width - 20}
+                className={classes.chartTitle}
+                titleStyles={props.titleStyles}
+                tooltipClassName={classes.svgTooltip}
+              />
+            )}
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (
-                  <g key={nodes[item.index].nodeId} className={classes.nodes}>
+                  <g key={nodes[item.index].nodeId} className={classes.nodes} role="presentation">
                     {nodeData![item.index]}
                   </g>
                 );
@@ -1162,6 +1180,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                     className={classes.links}
                     stroke={props.pathColor ? props.pathColor : tokens.colorStrokeFocus2}
                     strokeOpacity={1}
+                    role="presentation"
                   >
                     {linkData![item.index]}
                   </g>
@@ -1179,6 +1198,3 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 });
 
 SankeyChart.displayName = 'SankeyChart';
-SankeyChart.defaultProps = {
-  enableReflow: true,
-};

@@ -3,14 +3,19 @@ const fs = require('node:fs');
 const { createProjectGraphAsync, joinPathFragments, workspaceRoot } = require('@nx/devkit');
 
 /**
+ * @import { PackageJson } from './types';
+ * @import { ProjectGraph } from '@nx/devkit';
+ */
+
+/**
 * @typedef {{
     name: string,
     isTopLevel: boolean,
-    dependencyType: 'dependencies' | 'devDependencies' | 'optionalDependencies' | null,
+    dependencyType: 'dependencies' | 'devDependencies' | 'optionalDependencies',
   }} Dependency
  */
 
-/** @typedef {import('./types').PackageJson & {absoluteRootPath:string}} PackageJsonInfoData */
+/** @typedef {PackageJson & {absoluteRootPath:string}} PackageJsonInfoData */
 
 /**
  * @type {Record<string,PackageJsonInfoData>}
@@ -20,7 +25,7 @@ const packageJsonInfo = {};
 /**
  *
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  */
 function getProjectPackageJsonInfo(project, projectGraph) {
   const normalizedProjectName = getNormalizedName(project);
@@ -48,7 +53,7 @@ function getProjectPackageJsonInfo(project, projectGraph) {
 /**
  * Returns local dependencies of provided project. Local means dependency from within workspace
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  */
 function getLocalDeps(project, projectGraph) {
   const deps = projectGraph.dependencies[project];
@@ -74,8 +79,8 @@ function getLocalDeps(project, projectGraph) {
 /**
  *
  * @param {string} pkgName
- * @param {import('./types').PackageJson} json
- * @returns
+ * @param {PackageJson} json
+ * @returns {"dependencies" | "devDependencies" | "optionalDependencies"} if the dependency is resolved via nx graph but is not physically specified in package.json, it will be inferred as `devDependencies`
  */
 function getDepType(pkgName, json) {
   // need to check against real npmPackageName (including scope) - NOTE: once we move to dynamic project graph creation with nx this will no longer work - redo/simplify implementation
@@ -89,13 +94,13 @@ function getDepType(pkgName, json) {
   if (json.optionalDependencies?.[npmPackageName]) {
     return 'optionalDependencies';
   }
-  return null;
+  return 'devDependencies';
 }
 
 /**
  *
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  * @param {*} options
  * @param {Dependency[]} _acc
  * @param {boolean} _areTopLevelDeps

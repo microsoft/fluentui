@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -13,7 +15,6 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   Button,
   TableBody,
@@ -25,7 +26,6 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   createTableColumn,
   TableCellActions,
@@ -36,7 +36,7 @@ const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegula
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -46,7 +46,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -115,7 +115,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SelectionWithCellActions = () => {
+export const SelectionWithCellActions = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

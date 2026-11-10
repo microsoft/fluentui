@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ToolbarButtonProps } from './ToolbarButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

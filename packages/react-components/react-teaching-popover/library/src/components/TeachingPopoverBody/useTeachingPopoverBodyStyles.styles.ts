@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TeachingPopoverBodySlots, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -48,16 +50,16 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState) => {
-  'use no memo';
-
+export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState): TeachingPopoverBodyState => {
   const { mediaLength } = state;
   const styles = useStyles();
   const mediaStyles = useMediaStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverBodyClassNames.root, styles.root, state.root.className);
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       teachingPopoverBodyClassNames.media,
       mediaStyles.base,

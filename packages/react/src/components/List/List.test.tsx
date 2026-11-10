@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { List } from './List';
 import { isConformant } from '../../common/isConformant';
@@ -32,10 +31,9 @@ function mockData(count: number = 0): IMockItem[] {
 describe('List', () => {
   it('renders List correctly', () => {
     const onRenderCell = () => null;
-    const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} />);
-    const tree = component.toJSON();
+    const { container } = render(<List items={[]} onRenderCell={onRenderCell} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -139,10 +137,9 @@ describe('List', () => {
 
     it('renders List correctly when `renderEarly={true}`', () => {
       const onRenderCell = () => null;
-      const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} renderEarly={true} />);
-      const tree = component.toJSON();
+      const { container } = render(<List items={[]} onRenderCell={onRenderCell} renderEarly={true} />);
 
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 

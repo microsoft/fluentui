@@ -9,7 +9,7 @@ import { clamp } from '@fluentui/react-utilities';
  * @param channel - The color channel to use for clamping. Defaults to 'hue'.
  * @returns The clamped value within the range defined by the color channel.
  */
-export function clampValue(value: number, channel: ColorChannel = 'hue') {
+export function clampValue(value: number, channel: ColorChannel = 'hue'): number {
   const MAX = channel === 'hue' ? HUE_MAX : COLOR_MAX;
   return clamp(value, MIN, MAX);
 }
@@ -29,5 +29,5 @@ export type ChannelActions<T> = {
  * @returns {T} - The result of the action corresponding to the specified channel, or the hue action if the channel is not found.
  */
 export function adjustChannel<T>(channel: ColorChannel, actions: ChannelActions<T>): T {
-  return actions[channel] || actions.hue;
+  return actions[channel] ?? actions.hue;
 }

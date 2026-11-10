@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { InteractionTag, InteractionTagProps, InteractionTagPrimary } from '@fluentui/react-components';
+import type { JSXElement, InteractionTagProps } from '@fluentui/react-components';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-components';
 
-export const Default = (props: Partial<InteractionTagProps>) => (
+export const Default = (props: Partial<InteractionTagProps>): JSXElement => (
   <InteractionTag {...props}>
     <InteractionTagPrimary>Primary text</InteractionTagPrimary>
   </InteractionTag>

@@ -7,7 +7,7 @@ import { clamp } from '@fluentui/react-utilities';
  * @param event - The mouse event containing the clientX and clientY properties.
  * @returns An object containing the normalized x and y coordinates, clamped between 0 and 1.
  */
-export function getCoordinates(element: HTMLElement, event: PointerEvent) {
+export function getCoordinates(element: HTMLElement, event: PointerEvent): { x: number; y: number } {
   const rect = element.getBoundingClientRect();
 
   const newX = roundTwoDecimal((event.clientX - rect.left) / rect.width);
@@ -25,6 +25,6 @@ export function getCoordinates(element: HTMLElement, event: PointerEvent) {
  * @param num - The number to be rounded.
  * @returns The number rounded to two decimal places.
  */
-export function roundTwoDecimal(num: number) {
+export function roundTwoDecimal(num: number): number {
   return Math.round(num * 100) / 100;
 }

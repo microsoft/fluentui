@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+
+  <!-- Wireframe / outline-only component block -->
+  <rect x="28" y="28" width="184" height="104" rx="8" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="7 4" fill="white"/>
+
+  <!-- Placeholder for image area -->
+  <rect x="40" y="40" width="64" height="48" rx="5" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+  <!-- X marks no image / unstyled -->
+  <line x1="40" y1="40" x2="104" y2="88" stroke="#9b1f5a" stroke-width="1" opacity="0.25"/>
+  <line x1="104" y1="40" x2="40" y2="88" stroke="#9b1f5a" stroke-width="1" opacity="0.25"/>
+
+  <!-- Text line placeholders -->
+  <rect x="116" y="44" width="84" height="7" rx="3.5" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <rect x="116" y="59" width="64" height="7" rx="3.5" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <rect x="116" y="74" width="76" height="7" rx="3.5" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <!-- Button placeholder at bottom -->
+  <rect x="40" y="102" width="72" height="22" rx="6" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+  <rect x="124" y="102" width="88" height="22" rx="6" stroke="#9b1f5a" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+
+  <!-- "unstyled" label badge -->
+  <rect x="84" y="144" width="72" height="18" rx="9" fill="#9b1f5a" opacity="0.12"/>
+  <text x="120" y="156" text-anchor="middle" font-family="monospace" font-size="9" fill="#9b1f5a">unstyled</text>
+</svg>

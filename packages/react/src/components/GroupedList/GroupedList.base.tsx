@@ -25,6 +25,8 @@ import type { IGroupHeaderProps } from './GroupHeader';
 import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
@@ -121,7 +123,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { groupProps, groups = [] } = this.props;
 
     if (groupProps && groupProps.isAllGroupsCollapsed) {
@@ -129,7 +131,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       className,
       usePageCache,
@@ -183,7 +185,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdates();
   }

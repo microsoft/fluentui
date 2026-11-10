@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Dialog deprecated props renders Dialog with className 1`] = `
 <span
-  className="ms-layer"
+  class="ms-layer"
 >
   <div
-    className=
+    class=
         ms-Fabric
         ms-Layer-content
         {
@@ -26,52 +26,16 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
         & textarea {
           font-family: inherit;
         }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
   >
     <div
       aria-describedby="Dialog0-subText"
       aria-labelledby="Dialog0-title"
-      aria-modal={true}
-      onKeyDown={[Function]}
+      aria-modal="true"
       role="dialog"
-      style={
-        Object {
-          "outline": "none",
-          "overflowY": undefined,
-        }
-      }
+      style="outline: none;"
     >
       <div
-        className=
+        class=
             ms-Modal
             is-open
             {
@@ -94,8 +58,8 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
         role="document"
       >
         <div
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Overlay
               ms-Overlay--dark
               {
@@ -117,7 +81,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
               }
         />
         <div
-          className=
+          class=
               ms-Dialog-main
               {
                 background-color: #ffffff;
@@ -135,23 +99,16 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
               }
           data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
-          onBlurCapture={[Function]}
-          onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
           <div
-            className=
+            class=
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
@@ -161,10 +118,10 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
                 }
-            data-is-scrollable={true}
+            data-is-scrollable="true"
           >
             <div
-              className=
+              class=
 
                   {
                     flex-grow: 1;
@@ -172,7 +129,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                   }
             >
               <div
-                className=
+                class=
                     ms-Dialog-header
                     {
                       box-sizing: border-box;
@@ -181,8 +138,8 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                     }
               >
                 <div
-                  aria-level={1}
-                  className=
+                  aria-level="1"
+                  class=
                       ms-Dialog-title
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -214,7 +171,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                   Sample title
                 </div>
                 <div
-                  className=
+                  class=
 
                       {
                         display: flex;
@@ -247,7 +204,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                 />
               </div>
               <div
-                className=
+                class=
                     ms-Dialog-inner
                     {
                       padding-bottom: 24px;
@@ -263,7 +220,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                     }
               >
                 <div
-                  className=
+                  class=
                       ms-Dialog-content
                       {
                         position: relative;
@@ -271,7 +228,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                       }
                 >
                   <p
-                    className=
+                    class=
                         ms-Dialog-subText
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -296,16 +253,11 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
             </div>
           </div>
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
         </div>
       </div>
@@ -316,10 +268,10 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
 
 exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
 <span
-  className="ms-layer"
+  class="ms-layer"
 >
   <div
-    className=
+    class=
         ms-Fabric
         ms-Layer-content
         {
@@ -340,52 +292,16 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
         & textarea {
           font-family: inherit;
         }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
   >
     <div
       aria-describedby="Dialog0-subText"
       aria-labelledby="Dialog0-title"
-      aria-modal={true}
-      onKeyDown={[Function]}
+      aria-modal="true"
       role="dialog"
-      style={
-        Object {
-          "outline": "none",
-          "overflowY": undefined,
-        }
-      }
+      style="outline: none;"
     >
       <div
-        className=
+        class=
             ms-Modal
             is-open
             {
@@ -408,8 +324,8 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
         role="document"
       >
         <div
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Overlay
               ms-Overlay--dark
               {
@@ -431,7 +347,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
               }
         />
         <div
-          className=
+          class=
               ms-Dialog-main
               {
                 background-color: #ffffff;
@@ -449,23 +365,16 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
               }
           data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
-          onBlurCapture={[Function]}
-          onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
           <div
-            className=
+            class=
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
@@ -475,10 +384,10 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
                 }
-            data-is-scrollable={true}
+            data-is-scrollable="true"
           >
             <div
-              className=
+              class=
 
                   {
                     flex-grow: 1;
@@ -486,7 +395,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                   }
             >
               <div
-                className=
+                class=
                     ms-Dialog-header
                     {
                       box-sizing: border-box;
@@ -495,8 +404,8 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                     }
               >
                 <div
-                  aria-level={1}
-                  className=
+                  aria-level="1"
+                  class=
                       ms-Dialog-title
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -528,7 +437,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                   Sample title
                 </div>
                 <div
-                  className=
+                  class=
 
                       {
                         display: flex;
@@ -561,7 +470,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                 />
               </div>
               <div
-                className=
+                class=
                     ms-Dialog-inner
                     {
                       padding-bottom: 24px;
@@ -577,7 +486,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                     }
               >
                 <div
-                  className=
+                  class=
                       ms-Dialog-content
                       {
                         position: relative;
@@ -585,7 +494,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                       }
                 >
                   <p
-                    className=
+                    class=
                         ms-Dialog-subText
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -610,16 +519,11 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
             </div>
           </div>
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
         </div>
       </div>
@@ -630,10 +534,10 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
 
 exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] = `
 <span
-  className="ms-layer"
+  class="ms-layer"
 >
   <div
-    className=
+    class=
         ms-Fabric
         ms-Layer-content
         {
@@ -654,52 +558,16 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
         & textarea {
           font-family: inherit;
         }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
   >
     <div
       aria-describedby="Dialog0-subText"
       aria-labelledby="Dialog0-title"
-      aria-modal={true}
-      onKeyDown={[Function]}
+      aria-modal="true"
       role="alertdialog"
-      style={
-        Object {
-          "outline": "none",
-          "overflowY": undefined,
-        }
-      }
+      style="outline: none;"
     >
       <div
-        className=
+        class=
             ms-Modal
             is-open
             {
@@ -722,8 +590,8 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
         role="document"
       >
         <div
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Overlay
               ms-Overlay--dark
               {
@@ -745,7 +613,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
               }
         />
         <div
-          className=
+          class=
               ms-Dialog-main
               {
                 background-color: #ffffff;
@@ -763,23 +631,16 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
               }
           data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
-          onBlurCapture={[Function]}
-          onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
           <div
-            className=
+            class=
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
@@ -789,10 +650,10 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
                 }
-            data-is-scrollable={true}
+            data-is-scrollable="true"
           >
             <div
-              className=
+              class=
 
                   {
                     flex-grow: 1;
@@ -800,7 +661,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                   }
             >
               <div
-                className=
+                class=
                     ms-Dialog-header
                     {
                       box-sizing: border-box;
@@ -809,8 +670,8 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                     }
               >
                 <div
-                  aria-level={1}
-                  className=
+                  aria-level="1"
+                  class=
                       ms-Dialog-title
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -842,7 +703,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                   Sample title
                 </div>
                 <div
-                  className=
+                  class=
 
                       {
                         display: flex;
@@ -875,7 +736,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                 >
                   <button
                     aria-label="Close"
-                    className=
+                    class=
                         ms-Button
                         ms-Button--icon
                         ms-Dialog-button
@@ -963,17 +824,11 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           background-color: #edebe9;
                           color: #005a9e;
                         }
-                    data-is-focusable={true}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyPress={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
+                    data-is-focusable="true"
                     type="button"
                   >
                     <span
-                      className=
+                      class=
                           ms-Button-flexContainer
                           {
                             align-items: center;
@@ -985,8 +840,8 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                       data-automationid="splitbuttonprimary"
                     >
                       <i
-                        aria-hidden={true}
-                        className=
+                        aria-hidden="true"
+                        class=
                             ms-Icon
                             ms-Button-icon
                             {
@@ -1013,11 +868,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                               text-align: center;
                             }
                         data-icon-name="Cancel"
-                        style={
-                          Object {
-                            "fontFamily": "\\"FabricMDL2Icons\\"",
-                          }
-                        }
+                        style="font-family: \\"FabricMDL2Icons\\";"
                       >
                         
                       </i>
@@ -1026,7 +877,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                 </div>
               </div>
               <div
-                className=
+                class=
                     ms-Dialog-inner
                     {
                       padding-bottom: 24px;
@@ -1042,7 +893,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                     }
               >
                 <div
-                  className=
+                  class=
                       ms-Dialog-content
                       {
                         position: relative;
@@ -1050,7 +901,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                       }
                 >
                   <p
-                    className=
+                    class=
                         ms-Dialog-subText
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1075,16 +926,11 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
             </div>
           </div>
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
         </div>
       </div>
@@ -1095,10 +941,10 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
 
 exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1`] = `
 <span
-  className="ms-layer"
+  class="ms-layer"
 >
   <div
-    className=
+    class=
         ms-Fabric
         ms-Layer-content
         {
@@ -1119,52 +965,16 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
         & textarea {
           font-family: inherit;
         }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
   >
     <div
       aria-describedby="Dialog0-subText"
       aria-labelledby="Dialog0-title"
-      aria-modal={true}
-      onKeyDown={[Function]}
+      aria-modal="true"
       role="dialog"
-      style={
-        Object {
-          "outline": "none",
-          "overflowY": undefined,
-        }
-      }
+      style="outline: none;"
     >
       <div
-        className=
+        class=
             ms-Modal
             is-open
             {
@@ -1187,8 +997,8 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
         role="document"
       >
         <div
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-Overlay
               ms-Overlay--dark
               {
@@ -1210,7 +1020,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
               }
         />
         <div
-          className=
+          class=
               ms-Dialog-main
               {
                 background-color: #ffffff;
@@ -1228,23 +1038,16 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
               }
           data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
-          onBlurCapture={[Function]}
-          onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
           <div
-            className=
+            class=
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
@@ -1254,10 +1057,10 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
                 }
-            data-is-scrollable={true}
+            data-is-scrollable="true"
           >
             <div
-              className=
+              class=
 
                   {
                     flex-grow: 1;
@@ -1265,7 +1068,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                   }
             >
               <div
-                className=
+                class=
                     ms-Dialog-header
                     {
                       box-sizing: border-box;
@@ -1274,8 +1077,8 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                     }
               >
                 <div
-                  aria-level={1}
-                  className=
+                  aria-level="1"
+                  class=
                       ms-Dialog-title
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -1307,7 +1110,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                   Sample title
                 </div>
                 <div
-                  className=
+                  class=
 
                       {
                         display: flex;
@@ -1340,7 +1143,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                 />
               </div>
               <div
-                className=
+                class=
                     ms-Dialog-inner
                     {
                       padding-bottom: 24px;
@@ -1356,7 +1159,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                     }
               >
                 <div
-                  className=
+                  class=
                       ms-Dialog-content
                       {
                         position: relative;
@@ -1364,7 +1167,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                       }
                 >
                   <p
-                    className=
+                    class=
                         ms-Dialog-subText
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1389,16 +1192,11 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
             </div>
           </div>
           <div
-            aria-hidden={true}
-            data-is-focus-trap-zone-bumper={true}
-            data-is-visible={true}
-            style={
-              Object {
-                "pointerEvents": "none",
-                "position": "fixed",
-              }
-            }
-            tabIndex={0}
+            aria-hidden="true"
+            data-is-focus-trap-zone-bumper="true"
+            data-is-visible="true"
+            style="pointer-events: none; position: fixed;"
+            tabindex="0"
           />
         </div>
       </div>

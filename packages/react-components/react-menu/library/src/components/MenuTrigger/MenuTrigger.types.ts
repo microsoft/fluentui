@@ -1,6 +1,6 @@
-import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
 import type { TriggerProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
   /**
@@ -8,6 +8,15 @@ export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
    * @default false
    */
   disableButtonEnhancement?: boolean;
+};
+
+export type MenuTriggerBaseProps = MenuTriggerProps & {
+  /**
+   * Optional callback to focus the first focusable element in the menu popover
+   * when an arrow key is pressed on an open submenu trigger.
+   * If omitted, the keyboard handler is a no-op.
+   */
+  focusFirst?: () => void;
 };
 
 /**
@@ -24,6 +33,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseOver?: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     /* eslint-enable @nx/workspace-consistent-callback-type */
   }

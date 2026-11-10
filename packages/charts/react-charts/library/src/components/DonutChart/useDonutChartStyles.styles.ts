@@ -1,7 +1,11 @@
+'use client';
+
+import type { GriffelStyle } from '@griffel/react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { DonutChartProps, DonutChartStyles } from './index';
+import type { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { getAxisTitleStyle, getChartTitleStyles, HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -11,6 +15,9 @@ export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   chart: 'fui-donut__chart',
   legendContainer: 'fui-donut__legendContainer',
   chartWrapper: 'fui-donut__chartWrapper',
+  axisAnnotation: 'fui-donut__axisAnnotation',
+  chartTitle: 'fui-donut__chartTitle',
+  svgTooltip: 'fui-donut__svgTooltip',
 };
 
 /**
@@ -22,8 +29,9 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
+    textAlign: 'left',
   },
   chart: {
     boxSizing: 'content-box',
@@ -31,7 +39,18 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
-  legendContainer: { paddingTop: tokens.spacingVerticalL },
+  legendContainer: {
+    paddingTop: tokens.spacingVerticalL,
+    width: '100%',
+  },
+  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
+  chartTitle: getChartTitleStyles() as GriffelStyle,
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
 });
 
 /**
@@ -49,6 +68,13 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       baseStyles.legendContainer,
       props.styles?.legendContainer,
     ),
-    chartWrapper: donutClassNames.chartWrapper,
+    chartWrapper: mergeClasses(donutClassNames.chartWrapper, props.styles?.chartWrapper),
+    axisAnnotation: mergeClasses(
+      donutClassNames.axisAnnotation,
+      baseStyles.axisAnnotation,
+      props.styles?.axisAnnotation,
+    ),
+    chartTitle: mergeClasses(donutClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
+    svgTooltip: mergeClasses(donutClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
   };
 };

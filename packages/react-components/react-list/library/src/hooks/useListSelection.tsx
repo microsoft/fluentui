@@ -1,4 +1,7 @@
-import { SelectionHookParams, useControllableState, useEventCallback, useSelection } from '@fluentui/react-utilities';
+'use client';
+
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { ListSelectionState } from './types';
 

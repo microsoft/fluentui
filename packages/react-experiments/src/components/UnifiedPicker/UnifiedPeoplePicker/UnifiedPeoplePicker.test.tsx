@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { create } from 'react-test-renderer';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
 import { people, mru } from '@fluentui/example-data';
 import type { IPersonaProps } from '@fluentui/react/lib/Persona';
@@ -36,14 +35,13 @@ const selectedPeopleListProps = {
 
 describe('UnifiedPeoplePicker', () => {
   it('renders correctly with no items', () => {
-    const component = create(
+    const { container } = render(
       <UnifiedPeoplePicker
         floatingSuggestionProps={floatingPeoplePickerProps}
         selectedItemsListProps={selectedPeopleListProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with selected and suggested items', () => {
@@ -59,14 +57,13 @@ describe('UnifiedPeoplePicker', () => {
     ];
 
     selectedPeopleListProps.selectedItems = [people[0]];
-    const component = create(
+    const { container } = render(
       <UnifiedPeoplePicker
         floatingSuggestionProps={floatingPeoplePickerProps}
         selectedItemsListProps={selectedPeopleListProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with selected and suggested items and callbacks provided', () => {

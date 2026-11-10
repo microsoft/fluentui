@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuListSlots, MenuListState } from './MenuList.types';
@@ -21,9 +23,8 @@ const useStyles = makeStyles({
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuListStyles_unstable = (state: MenuListState): MenuListState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     menuListClassNames.root,
     styles.root,

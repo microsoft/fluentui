@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ImageSwatchSlots, ImageSwatchState } from './ImageSwatch.types';
@@ -109,8 +111,6 @@ const useShapeStyles = makeStyles({
  * Apply styling to the ImageSwatch slots based on the state
  */
 export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwatchState => {
-  'use no memo';
-
   const styles = useStyles();
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
@@ -118,6 +118,7 @@ export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwa
 
   const { size = 'medium', shape = 'square' } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     imageSwatchClassNames.root,
     styles,

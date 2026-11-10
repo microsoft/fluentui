@@ -1,8 +1,11 @@
+'use client';
+
 import * as React from 'react';
-import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import { useEventCallback, useSelection } from '@fluentui/react-utilities';
 import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';
 
-const noop = () => undefined;
+const noop = (): void => undefined;
 
 export const defaultTableSelectionState: TableSelectionState = {
   allRowsSelected: false,
@@ -17,9 +20,9 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectionMode: 'multiselect',
 };
 
-export function useTableSelection<TItem>(options: SelectionHookParams) {
-  'use no memo';
-
+export function useTableSelection<TItem>(
+  options: SelectionHookParams,
+): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem> {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableFeaturesState<TItem>) => useTableSelectionState(tableState, options);

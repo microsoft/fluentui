@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -29,6 +29,7 @@ export const styles = css`
   :host {
     max-width: fit-content;
     contain: content;
+    color: ${colorNeutralForeground1};
   }
 
   .heading {
@@ -49,7 +50,7 @@ export const styles = css`
     background: ${colorTransparentBackground};
     border: none;
     box-sizing: border-box;
-    color: ${colorNeutralForeground1};
+    color: inherit;
     cursor: pointer;
     font: inherit;
     grid-column: auto / span 2;
@@ -159,16 +160,17 @@ export const styles = css`
 
   :host([marker-position='end']) ::slotted([slot='start']) {
     grid-column: 1 / span 1;
+    color: currentColor;
   }
 
   :host([marker-position='end']) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 4 / span 1;
+    grid-column: 3;
     padding-inline-start: ${spacingHorizontalS};
     padding-inline-end: 0;
   }
 
   :host([marker-position='end']) .button {
-    grid-column: 2 / span 3;
+    grid-column: 2;
   }
 
   /* --- Block attr styles --- */
@@ -178,19 +180,11 @@ export const styles = css`
   }
 
   :host([marker-position='end']) .heading {
-    grid-template-columns: auto auto 28px;
+    grid-template-columns: auto 1fr auto;
     padding-inline: ${spacingHorizontalM};
   }
 
   :host([marker-position='end']:has([slot='start'])) .heading {
     padding-inline: ${spacingHorizontalMNudge} ${spacingHorizontalM};
-  }
-
-  :host([block][marker-position='end']) .heading {
-    grid-template-columns: auto 1fr;
-  }
-
-  :host([marker-position='end']) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 5 / span 1;
   }
 `;

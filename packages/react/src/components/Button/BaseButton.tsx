@@ -35,6 +35,8 @@ import type { ISplitButtonClassNames } from './SplitButton/SplitButton.className
 import type { IKeytipProps } from '../../Keytip';
 import { composeComponentAs } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Button}
  */
@@ -118,7 +120,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       ariaDescription,
       ariaLabel,
@@ -267,7 +269,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return this._onRenderContent(tag, buttonProps);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the
     // primary action. This gives more hit target space for touch environments. We're setting the onpointerdown here,
     // because React does not support Pointer events yet.
@@ -281,7 +283,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   }
 
-  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
+  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void {
     // If Button's menu was closed, run onAfterMenuDismiss.
     if (this.props.onAfterMenuDismiss && !prevState.menuHidden && this.state.menuHidden) {
       this.props.onAfterMenuDismiss();
@@ -311,7 +313,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   }
 
-  private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+  private _onRenderContent(tag: any, buttonProps: IButtonProps): JSXElement {
     const props = this.props;
     const Tag = tag;
     const {
@@ -330,7 +332,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const Button = (keytipAttributes?: any): JSX.Element => (
+    const Button = (keytipAttributes?: any): JSXElement => (
       <Tag {...buttonProps} {...keytipAttributes}>
         <span className={this._classNames.flexContainer} data-automationid="splitbuttonprimary">
           {onRenderIcon(props, this._onRenderIcon)}
@@ -355,7 +357,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         ariaDescribedBy={(buttonProps as any)['aria-describedby']}
         disabled={disabled}
       >
-        {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
+        {(keytipAttributes: any): JSXElement => Button(keytipAttributes)}
       </KeytipData>
     ) : (
       Button()
@@ -403,7 +405,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onRenderIcon = (
     buttonProps?: IButtonProps,
     defaultRender?: IRenderFunction<IButtonProps>,
-  ): JSX.Element | null => {
+  ): JSXElement | null => {
     const { iconProps } = this.props;
 
     if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
@@ -424,7 +426,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return null;
   };
 
-  private _onRenderTextContents = (): JSX.Element | (JSX.Element | null)[] => {
+  private _onRenderTextContents = (): JSXElement | (JSXElement | null)[] => {
     const {
       text,
       children,
@@ -445,7 +447,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return [onRenderText(this.props, this._onRenderText), onRenderDescription(this.props, this._onRenderDescription)];
   };
 
-  private _onRenderText = (): JSX.Element | null => {
+  private _onRenderText = (): JSXElement | null => {
     let { text } = this.props;
     const { children } = this.props;
 
@@ -473,7 +475,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
-  private _onRenderChildren = (): JSX.Element | null => {
+  private _onRenderChildren = (): JSXElement | null => {
     const { children } = this.props;
 
     // If children is just a string, either it or the text will be rendered via onRenderLabel
@@ -510,7 +512,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     ) : null;
   };
 
-  private _onRenderMenuIcon = (props: IButtonProps): JSX.Element | null => {
+  private _onRenderMenuIcon = (props: IButtonProps): JSXElement | null => {
     const { menuIconProps } = this.props;
 
     return <FontIcon iconName="ChevronDown" {...menuIconProps} className={this._classNames.menuIcon} />;
@@ -540,7 +542,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     };
   }
 
-  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+  private _onRenderMenu = (menuProps: IContextualMenuProps): JSXElement => {
     const MenuType = this.props.menuAs ? composeComponentAs(this.props.menuAs, ContextualMenu) : ContextualMenu;
 
     return <MenuType {...menuProps} />;
@@ -581,7 +583,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this.state.menuHidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
   };
 
-  private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+  private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSXElement {
     const {
       styles = {},
       disabled,
@@ -620,7 +622,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       assign(buttonProps, primaryActionButtonProps);
     }
 
-    const SplitButton = (keytipAttributes?: any): JSX.Element => (
+    const SplitButton = (keytipAttributes?: any): JSXElement => (
       <div
         {...containerProps}
         data-ktp-target={keytipAttributes ? keytipAttributes['data-ktp-target'] : undefined}
@@ -653,7 +655,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     return keytipProps ? (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(keytipAttributes: any): JSX.Element => SplitButton(keytipAttributes)}
+        {(keytipAttributes: any): JSXElement => SplitButton(keytipAttributes)}
       </KeytipData>
     ) : (
       SplitButton()
@@ -688,7 +690,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   };
 
-  private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
+  private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSXElement | null {
     if (classNames && classNames.divider) {
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.stopPropagation();
@@ -701,7 +703,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onRenderSplitButtonMenuButton(
     classNames: ISplitButtonClassNames | undefined,
     keytipAttributes: any,
-  ): JSX.Element {
+  ): JSXElement {
     const { allowDisabledFocus, checked, disabled, splitButtonMenuProps, splitButtonAriaLabel, primaryDisabled } =
       this.props;
     const { menuHidden } = this.state;

@@ -61,8 +61,6 @@ Filters for current teams
 
 - [microsoft/cxe-prg](https://github.com/pulls?q=is%3Aopen+is%3Apr+team-review-requested%3Amicrosoft%2Fcxe-prg)
 - [microsoft/teams-prg](https://github.com/pulls?q=is%3Aopen+is%3Apr+team-review-requested%3Amicrosoft%2Fteams-prg)
-- [microsoft/cxe-red](https://github.com/pulls?q=is%3Aopen+is%3Apr+team-review-requested%3Amicrosoft%2Fcxe-red)
-- [microsoft/cxe-coastal](https://github.com/pulls?q=is%3Aopen+is%3Apr+team-review-requested%3Amicrosoft%2Fcxe-coastal)
 - [microsoft/fluentui-react-build](https://github.com/pulls?q=is%3Aopen+is%3Apr+team-review-requested%3Amicrosoft%2Ffluentui-react-build)
 
 #### Specific user review requests

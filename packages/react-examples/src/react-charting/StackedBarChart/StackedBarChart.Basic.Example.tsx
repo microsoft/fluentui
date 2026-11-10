@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStackedBarState {
   hideTooltip: boolean;
@@ -24,7 +25,7 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
       roundCorners: false,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       {
         legend: 'first',

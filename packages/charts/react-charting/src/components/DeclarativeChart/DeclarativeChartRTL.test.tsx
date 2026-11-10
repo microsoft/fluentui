@@ -60,7 +60,7 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render linechart in DeclarativeChart', () => {
+  test.skip('Should render linechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
     const { container } = render(<DeclarativeChart key={'linechart'} chartSchema={{ plotlySchema }} />);

@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "ES2015.Symbol.WellKnown"],
     "typeRoots": ["../../../node_modules/@types", "../../../typings"],
     "types": ["jest", "node", "custom-global", "@testing-library/jest-dom"],
     "isolatedModules": true

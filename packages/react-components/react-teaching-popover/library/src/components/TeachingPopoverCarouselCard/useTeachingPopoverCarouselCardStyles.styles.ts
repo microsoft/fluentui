@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type {
   TeachingPopoverCarouselCardSlots,
@@ -14,11 +16,12 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverCarouselCardStyles_unstable = (state: TeachingPopoverCarouselCardState) => {
-  'use no memo';
-
+export const useTeachingPopoverCarouselCardStyles_unstable = (
+  state: TeachingPopoverCarouselCardState,
+): TeachingPopoverCarouselCardState => {
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverCarouselCardClassNames.root, styles.root, state.root.className);
 
   return state;

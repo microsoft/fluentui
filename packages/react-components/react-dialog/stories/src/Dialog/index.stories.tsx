@@ -3,11 +3,14 @@ import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from
 import descriptionMd from './DialogDescription.md';
 import bestPracticesMd from './DialogBestPractices.md';
 import a11yMd from './DialogA11y.md';
+import ssrMd from './DialogSSR.md';
 
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
+export { BackdropAppearance } from './DialogBackdropAppearance.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
+export { KeepRenderedInTheDOM } from './DialogKeepRenderedInTheDOM.stories';
 export { Actions } from './DialogActions.stories';
 export { FluidActions } from './DialogFluidDialogActions.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
@@ -19,6 +22,7 @@ export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 export { Confirmation } from './DialogConfirmation.stories';
+export { MotionCustom } from './DialogMotionCustom.stories';
 
 // Typing with Meta<typeof Dialog> generates a type error for the `subcomponents` property.
 // https://github.com/storybookjs/storybook/issues/27535
@@ -36,7 +40,7 @@ const metadata = {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd, a11yMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, a11yMd, ssrMd].join('\n'),
       },
     },
   },

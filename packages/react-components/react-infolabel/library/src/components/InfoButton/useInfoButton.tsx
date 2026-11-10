@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {
@@ -35,7 +37,7 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLButtonElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLButtonElement>): InfoButtonState => {
-  const { size = 'medium', inline = true } = props;
+  const { size = 'medium', inline = true, popover, info, ...rest } = props;
 
   const rootRef = useMergedRefs(ref);
 
@@ -50,16 +52,17 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('button', {
         children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
-        ...props,
+        ...rest,
         ref: rootRef,
       }),
       { elementType: 'button' },
     ),
-    popover: slot.always(props.popover, {
+    popover: slot.always(popover, {
       defaultProps: {
         inline,
         positioning: 'above-start',
@@ -68,7 +71,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       },
       elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
     }),
-    info: slot.always(props.info, {
+    info: slot.always(info, {
       defaultProps: {
         role: 'note',
         tabIndex: -1,
@@ -98,7 +101,9 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     }
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  // eslint-disable-next-line react-hooks/refs
   state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
   return state;
 };

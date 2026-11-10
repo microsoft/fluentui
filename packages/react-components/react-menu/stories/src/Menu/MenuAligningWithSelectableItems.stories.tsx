@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import {
   Button,
@@ -13,7 +14,7 @@ import { CutRegular, CutFilled, bundleIcon } from '@fluentui/react-icons';
 
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 
-export const AligningWithSelectableItems = () => (
+export const AligningWithSelectableItems = (): JSXElement => (
   <Menu hasIcons hasCheckmarks>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>

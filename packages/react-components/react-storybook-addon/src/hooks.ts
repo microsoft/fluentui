@@ -1,8 +1,8 @@
-import { useGlobals as useStorybookGlobals } from '@storybook/manager-api';
-import { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react';
+import { useGlobals as useStorybookGlobals } from 'storybook/manager-api';
+import type { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react-webpack5';
 
-import { DIR_ID, STRICT_MODE_ID, THEME_ID } from './constants';
-import type { ThemeIds } from './theme';
+import type { DIR_ID, STRICT_MODE_ID, THEME_ID, THEMES } from './constants';
+import type { Theme, ThemeIds } from './theme';
 
 export interface FluentStoryContext extends StorybookContext {
   globals: FluentGlobals;
@@ -15,6 +15,7 @@ export interface FluentStoryContext extends StorybookContext {
 export interface FluentGlobals extends StorybookArgs {
   [DIR_ID]?: 'ltr' | 'rtl';
   [THEME_ID]?: ThemeIds;
+  [THEMES]?: Theme[];
   [STRICT_MODE_ID]?: boolean;
 }
 
@@ -24,14 +25,39 @@ export interface FluentGlobals extends StorybookArgs {
 export interface FluentParameters extends Parameters {
   dir?: 'ltr' | 'rtl';
   fluentTheme?: ThemeIds;
+  fluentThemes?: Theme[];
   mode?: 'default' | 'vr-test';
-  reactStorybookAddon?: { disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'] };
+  reactStorybookAddon?: {
+    disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+    docs?: FluentDocsConfig;
+  };
 }
 
-export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
+/**
+ * Configuration for docs components
+ */
+type FluentDocsConfig =
+  | boolean
+  | {
+      tableOfContents?: boolean;
+      dirSwitcher?: boolean;
+      themePicker?: boolean;
+      copyAsMarkdown?: boolean;
+      argTable?:
+        | boolean
+        | {
+            slotsApi?: boolean;
+            nativePropsApi?: boolean;
+          };
+    };
+
+export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();
 }
 
-export function parameters(options?: FluentParameters) {
+export function parameters(options?: FluentParameters): FluentParameters {
   return { dir: 'ltr', fluentTheme: 'web-light', mode: 'default', ...options };
+}
+export function getParametersConfig(context: FluentStoryContext): FluentParameters['reactStorybookAddon'] {
+  return context?.parameters?.reactStorybookAddon;
 }

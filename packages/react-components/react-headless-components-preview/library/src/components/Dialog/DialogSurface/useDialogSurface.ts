@@ -1,0 +1,156 @@
+'use client';
+
+import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useMergedRefs,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
+import { useDialogContext } from '../dialogContext';
+import { toDataAttributeValue } from '../../../utils';
+import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
+import { useDialogLayerOpenState } from '../../../hooks/top-layer';
+import { waitForAnimations } from '../../../hooks/top-layer/utils';
+import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+
+/**
+ * Create the state required to render DialogSurface.
+ * Show/hide come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for non-modal.
+ *
+ * @param props - props from this instance of DialogSurface
+ * @param ref - reference to root HTMLDialogElement of DialogSurface
+ */
+export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>): DialogSurfaceState => {
+  const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId } = useDialogContext();
+  const { targetDocument } = useFluent();
+
+  const dialogRef = React.useRef<HTMLDialogElement>(null);
+  const mergedRef = useMergedRefs(ref, dialogRef);
+
+  const isNonModal = modalType === 'non-modal';
+
+  // A browser open or close (`popovertarget`, `commandfor`, `<form method="dialog">`) is reported as `surfaceToggle`.
+  useDialogLayerOpenState(dialogRef, {
+    open,
+    mode: isNonModal ? 'manual' : 'modal',
+    onOpenChange: (nextOpen, { event }) => requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event }),
+    // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
+    returnFocus: { when: isNonModal ? 'always' : false },
+  });
+
+  // Keep the element connected for native close and consumer-defined exit animations.
+  const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
+
+  // Ensure the element exists before open side-effects run.
+  if ((open || !unmountOnClose) && !shouldRender) {
+    setShouldRender(true);
+  }
+
+  // Unmount once the closed dialog's exit animations end.
+  useIsomorphicLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    if (open || !unmountOnClose || !dialog) {
+      return;
+    }
+    return waitForAnimations(dialog, () => setShouldRender(false));
+  }, [open, unmountOnClose]);
+
+  // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
+  useIsomorphicLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    if (!open || isNonModal || !dialog) {
+      return;
+    }
+    const preventCancel = (event: Event) => event.preventDefault();
+    dialog.addEventListener('cancel', preventCancel);
+    return () => dialog.removeEventListener('cancel', preventCancel);
+  }, [open, isNonModal]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!open || modalType === 'non-modal' || !targetDocument) {
+      return;
+    }
+    lockDocumentScroll(targetDocument);
+    return () => unlockDocumentScroll(targetDocument);
+  }, [open, modalType, targetDocument]);
+
+  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
+    props.onKeyDown?.(event);
+    if (event.key === 'Escape' && !event.isDefaultPrevented()) {
+      requestOpenChange({ type: 'escapeKeyDown', open: false, event });
+      // Stop propagation to avoid closing parent dialogs simultaneously.
+      event.stopPropagation();
+      return;
+    }
+
+    // When the non-modal surface itself is focused, move Tab to the first
+    // focusable descendant explicitly.
+    if (
+      modalType === 'non-modal' &&
+      event.key === 'Tab' &&
+      !event.shiftKey &&
+      !event.isDefaultPrevented() &&
+      event.target === event.currentTarget
+    ) {
+      const firstFocusable = event.currentTarget.querySelector<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (firstFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
+    }
+  });
+
+  // Backdrop click is detected by checking clicks outside the dialog rect.
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDialogElement>) => {
+    props.onClick?.(event);
+    if (modalType !== 'modal' || event.isDefaultPrevented()) {
+      return;
+    }
+
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const isBackdropClick =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (isBackdropClick) {
+      requestOpenChange({ type: 'backdropClick', open: false, event });
+    }
+  });
+
+  const state: DialogSurfaceState = {
+    components: { root: 'dialog' },
+    open,
+    unmountOnClose,
+    modalType,
+    shouldRender,
+    root: slot.always(
+      getIntrinsicElementProps('dialog', {
+        role: modalType === 'alert' ? 'alertdialog' : undefined,
+        'aria-modal': modalType !== 'non-modal' ? true : undefined,
+        'aria-labelledby': props['aria-label'] ? undefined : dialogTitleId || undefined,
+        ...props,
+        tabIndex: -1,
+        ref: mergedRef,
+        onKeyDown: handleKeyDown,
+        onClick: handleClick,
+        popover: modalType === 'non-modal' ? ('manual' as const) : undefined,
+        'data-open': toDataAttributeValue(open),
+        'data-modal-type': modalType,
+      }),
+      { elementType: 'dialog' },
+    ),
+  };
+
+  return state;
+};

@@ -1,23 +1,13 @@
-const js = require('@eslint/js');
+// @ts-check
+const fluentPlugin = require('@fluentui/eslint-plugin');
 const sdl = require('@microsoft/eslint-plugin-sdl');
-const es = require('eslint-plugin-es');
-const { FlatCompat } = require('@eslint/eslintrc');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
+/** @type {import("eslint").Linter.Config[]} */
 module.exports = [
-  ...compat.extends('plugin:@fluentui/eslint-plugin/node'),
+  ...fluentPlugin.configs['flat/node'],
   ...sdl.configs.recommended,
   {
     files: ['**/pr-deploy-site.js'],
-    plugins: {
-      es,
-    },
-
     rules: {
       curly: 'off',
       'no-var': 'off',

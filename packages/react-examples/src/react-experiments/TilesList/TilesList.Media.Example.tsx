@@ -22,6 +22,7 @@ import {
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
 import { lorem } from '@fluentui/example-data';
 import { SignalField, SharedSignal, CommentsSignal } from '@fluentui/react-experiments/lib/Signals';
+import type { JSXElement } from '@fluentui/utilities';
 
 const TilesListExampleStyles = TilesListExampleStylesModule as any;
 
@@ -74,7 +75,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div style={{ padding: '4px' }}>
         <Toggle
@@ -132,7 +133,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     alert(`Invoked item '${item.name}'`);
   };
 
-  private _onRenderMediaCell = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+  private _onRenderMediaCell = (props: ITilesGridItemCellProps<IExampleItem>): JSXElement => {
     const {
       finalSize,
       item,
@@ -191,7 +192,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     });
   };
 
-  private _onRenderHeader = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+  private _onRenderHeader = (props: ITilesGridItemCellProps<IExampleItem>): JSXElement => {
     const {
       item,
       position: { column },

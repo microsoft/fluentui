@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useCardPreview_unstable } from './useCardPreview';
 import { renderCardPreview_unstable } from './renderCardPreview';

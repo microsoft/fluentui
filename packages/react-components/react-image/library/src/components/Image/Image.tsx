@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderImage_unstable } from './renderImage';
 import { useImage_unstable } from './useImage';

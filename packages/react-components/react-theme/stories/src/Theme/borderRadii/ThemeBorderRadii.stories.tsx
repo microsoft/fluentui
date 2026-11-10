@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { teamsLightTheme } from '@fluentui/react-components';
 import type { BorderRadiusTokens } from '@fluentui/react-components';
 
 const theme = teamsLightTheme;
 
-export const BorderRadii = () => {
+export const BorderRadii = (): JSXElement => {
   const borderRadiiTokens = Object.keys(theme).filter(tokenName =>
     tokenName.startsWith('borderRadius'),
   ) as (keyof BorderRadiusTokens)[];

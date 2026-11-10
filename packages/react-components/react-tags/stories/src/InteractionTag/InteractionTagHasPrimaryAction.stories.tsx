@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const HasPrimaryAction = () => {
+export const HasPrimaryAction = (): JSXElement => {
   const styles = useStyles();
   return (
     <InteractionTag>

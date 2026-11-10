@@ -1,57 +1,50 @@
+import { type InitialTemplateAttributes } from '@microsoft/fast-test-harness';
 import { expect, test } from '../../test/playwright/index.js';
+
 import type { Checkbox } from './checkbox.js';
-import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
+import { tagName } from './checkbox.options.js';
 
 test.describe('Checkbox', () => {
   test.use({
-    tagName: 'fluent-checkbox',
-    waitFor: ['fluent-button'],
+    tagName,
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
   });
 
   test('should have a role of `checkbox`', async ({ fastPage }) => {
-    await expect(fastPage.element).toHaveJSProperty('elementInternals.role', 'checkbox');
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveJSProperty('elementInternals.role', 'checkbox');
   });
 
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('value', 'on');
-  });
-
-  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const shape of Object.values(CheckboxShape)) {
-      await test.step(`should set the \`shape\` property to "${shape}"`, async () => {
-        await fastPage.setTemplate({
-          attributes: {
-            shape,
-          },
-        });
-
-        await expect(element).toHaveAttribute('shape', shape);
-
-        await expect(element).toHaveJSProperty('shape', shape);
-      });
-    }
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const size of Object.values(CheckboxSize)) {
-      await test.step(`should set the \`size\` property to "${size}"`, async () => {
-        await fastPage.setTemplate({ attributes: { size: size } });
-
-        await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveAttribute('size', size);
-      });
-    }
   });
 
   test('should set the `ariaChecked` property equal to the `checked` property', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
@@ -65,6 +58,8 @@ test.describe('Checkbox', () => {
   test('should NOT set a default `aria-required` value when `required` is not defined', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).not.toHaveAttribute('required');
 
     await expect(element).not.toHaveAttribute('aria-required');
@@ -72,6 +67,8 @@ test.describe('Checkbox', () => {
 
   test('should be focusable by default', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.focus();
 
@@ -93,6 +90,8 @@ test.describe('Checkbox', () => {
   }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: Checkbox) => {
       node.indeterminate = true;
     });
@@ -108,6 +107,8 @@ test.describe('Checkbox', () => {
 
   test('should set `indeterminate` to false when the `checked` state changes via click', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Checkbox) => {
       node.indeterminate = true;
@@ -126,7 +127,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox></fluent-checkbox>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -160,21 +161,25 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate('');
 
-    const value = await page.evaluate(expectedValue => {
-      const node = document.createElement('fluent-checkbox') as Checkbox;
+    const value = await page.evaluate(
+      ([expectedValue, tagName]) => {
+        const node = document.createElement(tagName) as Checkbox;
 
-      node.setAttribute('value', expectedValue);
+        node.setAttribute('value', expectedValue);
 
-      return node.value;
-    }, expectedValue);
+        return node.value;
+      },
+      [expectedValue, tagName],
+    );
 
     expect(value).toBe(expectedValue);
   });
 
   test('should initialize to the provided `value` attribute when set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
-
     const expectedValue = 'foobar';
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Checkbox, expectedValue) => {
       node.setAttribute('value', expectedValue);
@@ -190,13 +195,16 @@ test.describe('Checkbox', () => {
 
     const expectedValue = 'foobar';
 
-    const value = await page.evaluate(expectedValue => {
-      const node = document.createElement('fluent-checkbox') as Checkbox;
+    const value = await page.evaluate(
+      ([expectedValue, tagName]) => {
+        const node = document.createElement(tagName) as Checkbox;
 
-      node.value = expectedValue;
+        node.value = expectedValue;
 
-      return node.value;
-    }, expectedValue);
+        return node.value;
+      },
+      [expectedValue, tagName],
+    );
 
     expect(value).toBe(expectedValue);
   });
@@ -206,7 +214,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox required></fluent-checkbox>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -218,7 +226,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox required>checkbox</fluent-checkbox>
+        <${tagName} required>checkbox</${tagName}>
       </form>
     `);
 
@@ -235,7 +243,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox></fluent-checkbox>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -260,7 +268,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox></fluent-checkbox>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -288,7 +296,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox required></fluent-checkbox>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -318,7 +326,7 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
+        <${tagName} name="checkbox" value="foo"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -338,8 +346,8 @@ test.describe('Checkbox', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
-        <fluent-checkbox name="checkbox" value="bar"></fluent-checkbox>
+        <${tagName} name="checkbox" value="foo"></${tagName}>
+        <${tagName} name="checkbox" value="bar"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);
@@ -357,13 +365,13 @@ test.describe('Checkbox', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const submitButton = page.locator('fluent-button');
+    const submitButton = page.locator('button[type="submit"]');
 
     await fastPage.setTemplate(/* html */ `
       <form>
         <label for="checkbox">Checkbox</label>
-        <fluent-checkbox required name="checkbox" id="checkbox"></fluent-checkbox>
-        <fluent-button type="submit">submit</fluent-button>
+        <${tagName} required name="checkbox" id="checkbox"></${tagName}>
+        <button type="submit">submit</button>
       </form>
     `);
 
@@ -379,5 +387,21 @@ test.describe('Checkbox', () => {
     await page.keyboard.up(' ');
 
     await expect(element).toHaveJSProperty('checked', false);
+  });
+
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage, ssr }) => {
+    const { element } = fastPage;
+
+    const attributes: InitialTemplateAttributes = { autofocus: true };
+
+    if (ssr) {
+      // the host element needs to be focusable for autofocus to work on the server,
+      // so we need to set tabindex="0"
+      attributes.tabindex = '0';
+    }
+
+    await fastPage.setTemplate({ attributes });
+
+    await expect(element).toBeFocused();
   });
 });

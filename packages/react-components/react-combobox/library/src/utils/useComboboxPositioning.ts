@@ -1,11 +1,14 @@
-import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+'use client';
+
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import type { ComboboxBaseProps } from './ComboboxBase.types';
-import * as React from 'react';
+import type * as React from 'react';
 
 export function useComboboxPositioning(props: ComboboxBaseProps): [
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   listboxRef: React.MutableRefObject<any>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   triggerRef: React.MutableRefObject<any>,
 ] {
   const { positioning } = props;

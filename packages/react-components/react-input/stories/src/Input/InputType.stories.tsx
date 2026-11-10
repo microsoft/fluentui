@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Type = () => {
+export const Type = (): JSXElement => {
   const emailId = useId('input-email');
   const urlId = useId('input-url');
   const passwordId = useId('input-password');

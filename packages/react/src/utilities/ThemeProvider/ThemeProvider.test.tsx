@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
-import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
 import { render, act } from '@testing-library/react';
 import { getBySelector } from '../../common/testUtilities';
@@ -30,9 +29,8 @@ describe('ThemeProvider', () => {
   });
 
   it('renders a div', () => {
-    const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can handle a partial theme', () => {
@@ -42,9 +40,8 @@ describe('ThemeProvider', () => {
       },
     };
 
-    const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('sets correct dir', () => {
@@ -78,13 +75,12 @@ describe('ThemeProvider', () => {
   });
 
   it('renders a div with styling', () => {
-    const component = renderer.create(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders nested themes', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={lightTheme}>
         <div>Light theme</div>
         <ThemeProvider theme={darkTheme}>
@@ -92,8 +88,7 @@ describe('ThemeProvider', () => {
         </ThemeProvider>
       </ThemeProvider>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('provide the theme through context', () => {
@@ -117,14 +112,12 @@ describe('ThemeProvider', () => {
 
   it('can apply body theme to none', () => {
     expect(document.body.className).toBe('');
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider className="foo" theme={darkTheme} applyTo="none">
         app
       </ThemeProvider>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
+    expect(container.firstChild).toMatchSnapshot();
     expect(document.body.className).toBe('');
   });
 
@@ -147,8 +140,7 @@ describe('ThemeProvider', () => {
 
     expect(document.body.className).toBe('');
 
-    const component = renderer.create(TestComponent);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(TestComponent);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

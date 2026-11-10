@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSwitch_unstable } from './useSwitch';
 import { renderSwitch_unstable } from './renderSwitch';

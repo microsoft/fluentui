@@ -25,6 +25,8 @@ import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Pane
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';
 
@@ -51,6 +53,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _async: Async;
   private _events: EventGroup;
@@ -153,7 +156,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this._resizeObserver?.disconnect();
   }
 
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       className = '',
       elementToFocusOnDismiss,
@@ -270,7 +273,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     );
   }
 
-  public open() {
+  public open(): void {
     if (this.props.isOpen !== undefined) {
       return;
     }
@@ -282,7 +285,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
-  public close() {
+  public close(): void {
     if (this.props.isOpen !== undefined) {
       return;
     }
@@ -348,7 +351,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     return !!props.isBlocking && !!props.isOpen;
   }
 
-  private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
+  private _onRenderNavigation = (props: IPanelProps): JSXElement | null => {
     if (!this.props.onRenderNavigationContent && !this.props.onRenderNavigation && !this.props.hasCloseButton) {
       return null;
     }
@@ -360,7 +363,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     );
   };
 
-  private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
+  private _onRenderNavigationContent = (props: IPanelProps): JSXElement | null => {
     const { closeButtonAriaLabel, hasCloseButton, onRenderHeader = this._onRenderHeader } = props;
     if (hasCloseButton) {
       const iconButtonStyles = this._classNames.subComponentStyles?.closeButton();
@@ -385,9 +388,10 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
   private _onRenderHeader = (
     props: IPanelProps,
-    defaultRender?: (props?: IPanelProps) => JSX.Element | null,
+
+    defaultRender?: (props?: IPanelProps) => JSXElement | null,
     headerTextId?: string | undefined,
-  ): JSX.Element | null => {
+  ): JSXElement | null => {
     const { headerText, headerTextProps = {} } = props;
 
     if (headerText) {
@@ -408,11 +412,11 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     return null;
   };
 
-  private _onRenderBody = (props: IPanelProps): JSX.Element => {
+  private _onRenderBody = (props: IPanelProps): JSXElement => {
     return <div className={this._classNames.content}>{props.children}</div>;
   };
 
-  private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
+  private _onRenderFooter = (props: IPanelProps): JSXElement | null => {
     const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
       return (

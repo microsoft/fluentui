@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, makeStyles, tokens, ColorArea } from '@fluentui/react-components';
 import type { ColorAreaProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = { h: 324, s: 0.5, v: 0.5, a: 1 };
 
-export const ColorAreaDefault = () => {
+export const ColorAreaDefault = (): JSXElement => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);

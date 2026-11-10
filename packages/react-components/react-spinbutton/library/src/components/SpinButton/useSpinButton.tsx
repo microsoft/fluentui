@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
@@ -9,7 +11,9 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
-import {
+import type {
+  SpinButtonBaseProps,
+  SpinButtonBaseState,
   SpinButtonProps,
   SpinButtonState,
   SpinButtonSpinState,
@@ -29,7 +33,10 @@ type InternalState = {
   atBound: SpinButtonBounds;
 };
 
-const DEFAULT_SPIN_DELAY_MS = 150;
+// A single tap on a trackpad can take ~200-250ms before mouseup fires. Keep the initial
+// repeat delay above that range so a tap is treated as one click while a true hold still
+// triggers repeat behavior.
+const DEFAULT_SPIN_DELAY_MS = 300;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 
@@ -39,25 +46,23 @@ const MAX_SPIN_TIME_MS = 1000;
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;
 
 /**
- * Create the state required to render SpinButton.
+ * Create the base state required to render SpinButton without design-specific props.
  *
- * The returned state can be modified with hooks such as useSpinButtonStyles_unstable,
- * before being passed to renderSpinButton_unstable.
- *
- * @param props - props from this instance of SpinButton
+ * @param props - props from this instance of SpinButton (without appearance/size)
  * @param ref - reference to root HTMLElement of SpinButton
  */
-export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+export const useSpinButtonBase_unstable = (
+  props: SpinButtonBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): SpinButtonBaseState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
+    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'value'],
   });
-
-  const overrides = useOverrides();
 
   const {
     value,
@@ -69,8 +74,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     stepPage = 1,
     precision: precisionFromProps,
     onChange,
-    size = 'medium',
-    appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,
     incrementButton,
@@ -188,6 +191,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
 
+    if (e.currentTarget.readOnly) {
+      return;
+    }
+
     if (e.key === ArrowUp) {
       stepValue(e, 'up', textValue);
       nextKeyboardSpinState = 'up';
@@ -262,11 +269,15 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     valueToDisplay = textValue;
   } else if (value === null || currentValue === null) {
     valueToDisplay = displayValue ?? '';
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = null;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = 'none';
   } else {
     const roundedValue = precisionRound(currentValue, precision);
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = roundedValue;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = getBound(roundedValue, min, max);
     if (isControlled) {
       valueToDisplay = displayValue ?? String(roundedValue);
@@ -275,10 +286,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
   }
 
-  const state: SpinButtonState = {
-    size,
-    appearance,
+  const state: SpinButtonBaseState = {
     spinState: keyboardSpinState,
+    // eslint-disable-next-line react-hooks/refs
     atBound: internalState.current.atBound,
 
     components: {
@@ -295,7 +305,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         autoComplete: 'off',
         role: 'spinbutton',
-        appearance,
         type: 'text',
         ...nativeProps.primary,
       },
@@ -304,10 +313,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     incrementButton: slot.always(incrementButton, {
       defaultProps: {
         tabIndex: -1,
-        children: <ChevronUp16Regular />,
         disabled:
+          nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'max' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Increment value',
         type: 'button',
@@ -317,10 +328,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     decrementButton: slot.always(decrementButton, {
       defaultProps: {
         tabIndex: -1,
-        children: <ChevronDown16Regular />,
         disabled:
+          nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'min' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Decrement value',
         type: 'button',
@@ -329,25 +342,65 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }),
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.input.value = valueToDisplay;
+  // eslint-disable-next-line react-hooks/refs
   state.input.ref = useMergedRefs(inputRef, ref);
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemin'] = min;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemax'] = max;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuenow'] = internalState.current.value ?? undefined;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onBlur = mergeCallbacks(state.input.onBlur, handleBlur);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyDown = mergeCallbacks(state.input.onKeyDown, handleKeyDown);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyUp = mergeCallbacks(state.input.onKeyUp, handleKeyUp);
 
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseDown = mergeCallbacks(handleIncrementMouseDown, state.incrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseUp = mergeCallbacks(state.incrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseLeave = mergeCallbacks(state.incrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseDown = mergeCallbacks(handleDecrementMouseDown, state.decrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseUp = mergeCallbacks(state.decrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseLeave = mergeCallbacks(state.decrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   return state;
+};
+
+/**
+ * Create the state required to render SpinButton.
+ *
+ * The returned state can be modified with hooks such as useSpinButtonStyles_unstable,
+ * before being passed to renderSpinButton_unstable.
+ *
+ * @param props - props from this instance of SpinButton
+ * @param ref - reference to root HTMLElement of SpinButton
+ */
+export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+  const overrides = useOverrides();
+
+  const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;
+
+  const state = useSpinButtonBase_unstable(baseProps, ref);
+
+  state.incrementButton.children ??= <ChevronUp16Regular />;
+  state.decrementButton.children ??= <ChevronDown16Regular />;
+
+  return { ...state, appearance, size };
 };

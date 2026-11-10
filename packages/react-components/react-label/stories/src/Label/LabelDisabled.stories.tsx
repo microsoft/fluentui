@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Label } from '@fluentui/react-components';
 
-export const Disabled = () => (
+export const Disabled = (): JSXElement => (
   <Label disabled required>
     Disabled label
   </Label>

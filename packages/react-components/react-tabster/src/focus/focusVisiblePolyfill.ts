@@ -1,5 +1,6 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
+import type { KeyborgFocusInEvent } from 'keyborg';
+import { KEYBORG_FOCUSIN, createKeyborg, disposeKeyborg } from 'keyborg';
 
 import { FOCUS_VISIBLE_ATTR } from './constants';
 
@@ -90,7 +91,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
     scope.removeEventListener('focusout', blurListener);
-    delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
+    (scope as HTMLElementWithFocusVisibleScope).focusVisible = undefined;
 
     disposeKeyborg(keyborg);
   };

@@ -26,7 +26,7 @@ import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IAutofill } from '../../Autofill';
@@ -44,6 +44,8 @@ import type { ICalloutProps } from '../../Callout';
 import { getChildren } from '@fluentui/utilities';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IComboBoxState {
   /** The open state */
@@ -111,7 +113,8 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
    * children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
    * to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
    */
-  render: () => JSX.Element;
+
+  render: () => JSXElement;
 }
 
 /**
@@ -212,7 +215,7 @@ ComboBox.displayName = COMPONENT_NAME;
 interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
   hoisted: {
     mergedRootRef: React.Ref<HTMLDivElement>;
-    rootRef: React.RefObject<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement | null>;
     selectedIndices: number[];
     currentOptions: IComboBoxOption[];
     suggestedDisplayValue?: string;
@@ -248,6 +251,7 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
   public static contextType = WindowContext;
+  public context: any;
 
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
@@ -463,7 +467,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Primary Render
-  public render(): JSX.Element {
+
+  public render(): JSXElement {
     const id = this._id;
     const errorMessageId = id + '-error';
     const {
@@ -612,7 +617,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
-  ): JSX.Element => {
+  ): JSXElement => {
     const {
       label,
       disabled,
@@ -1380,7 +1385,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
-  private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSX.Element => {
+
+  private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSXElement => {
     const {
       onRenderList,
       calloutProps,
@@ -1459,7 +1465,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     }
   };
 
-  private _onRenderLabel = (onRenderLabelProps: IOnRenderComboBoxLabelProps): JSX.Element | null => {
+  private _onRenderLabel = (onRenderLabelProps: IOnRenderComboBoxLabelProps): JSXElement | null => {
     const { label, disabled, required } = onRenderLabelProps.props;
 
     if (label) {
@@ -1477,11 +1483,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render List of items
-  private _onRenderList = (props: IComboBoxProps): JSX.Element => {
+
+  private _onRenderList = (props: IComboBoxProps): JSXElement => {
     const { onRenderItem = this._onRenderItem, label, ariaLabel, multiSelect } = props;
 
-    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
-    let renderedList: JSX.Element[] = [];
+    let queue: { id?: string; items: JSXElement[] } = { items: [] };
+
+    let renderedList: JSXElement[] = [];
 
     const emptyQueue = (): void => {
       const newGroup = queue.id
@@ -1551,7 +1559,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render items
-  private _onRenderItem = (item: IComboBoxOption): JSX.Element | null => {
+
+  private _onRenderItem = (item: IComboBoxOption): JSXElement | null => {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -1573,7 +1582,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render separator
-  private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
+
+  private _renderSeparator(item: IComboBoxOption): JSXElement | null {
     const { index, key } = item;
 
     if (index && index > 0) {
@@ -1582,7 +1592,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     return null;
   }
 
-  private _renderHeader(item: IComboBoxOption): JSX.Element {
+  private _renderHeader(item: IComboBoxOption): JSXElement {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
@@ -1592,12 +1602,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     );
   }
 
-  private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element | null {
+  private _renderCheckboxLabel(item: IComboBoxOption): JSXElement | null {
     const { onRenderOption = this._onRenderMultiselectOptionContent } = this.props;
     return onRenderOption(item, this._onRenderMultiselectOptionContent);
   }
 
-  private _renderOption = (item: IComboBoxOption): JSX.Element => {
+  private _renderOption = (item: IComboBoxOption): JSXElement => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = item.id ?? this._id + '-list' + item.index;
     const isSelected: boolean = this._isOptionSelected(item.index);
@@ -1854,7 +1864,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     }
   }
 
-  private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
+  private _onRenderOptionContent = (item: IComboBoxOption): JSXElement => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return <span className={optionClassNames.optionText}>{item.text}</span>;
   };
@@ -1863,7 +1873,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * Render content of a multiselect item label.
    * Text within the label is aria-hidden, to prevent duplicate input/label exposure
    */
-  private _onRenderMultiselectOptionContent = (item: IComboBoxOption): JSX.Element => {
+
+  private _onRenderMultiselectOptionContent = (item: IComboBoxOption): JSXElement => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return (
       <span id={item.id} aria-hidden="true" className={optionClassNames.optionText}>

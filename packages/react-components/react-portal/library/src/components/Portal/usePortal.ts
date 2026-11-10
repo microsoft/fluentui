@@ -1,3 +1,5 @@
+'use client';
+
 import { setVirtualParent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -80,7 +82,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
         setVirtualParent(mountNode, undefined);
       };
     }
-  }, [mountNode]);
+  }, [virtualParentRootRef, mountNode]);
 
   return state;
 };

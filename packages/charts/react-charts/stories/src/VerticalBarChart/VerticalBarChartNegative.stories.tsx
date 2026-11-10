@@ -1,22 +1,17 @@
 import * as React from 'react';
-import {
-  VerticalBarChart,
-  VerticalBarChartDataPoint,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Switch, Checkbox, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
-export const VerticalBarNegative = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const VerticalBarNegative = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -46,13 +41,13 @@ export const VerticalBarNegative = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
-  const _onSwitchRoundCorners = React.useCallback(ev => {
+  const _onSwitchRoundCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
@@ -172,7 +167,8 @@ export const VerticalBarNegative = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -182,7 +178,8 @@ export const VerticalBarNegative = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">
@@ -238,6 +235,7 @@ export const VerticalBarNegative = () => {
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -256,6 +254,7 @@ export const VerticalBarNegative = () => {
             hideLabels={hideLabels}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

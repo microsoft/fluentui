@@ -120,11 +120,17 @@ async function render(element: React.ReactElement, container: HTMLElement) {
       });
     };
   } else {
-    // React 17 approach
-    const ReactDOM = await import('react-dom');
+    // augment legacy react-dom APIs when using React 18 types
+    const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
+
     ReactDOM.render(element, container);
     unmount = () => ReactDOM.unmountComponentAtNode(container);
   }
 
   return { container, unmount };
+}
+
+declare interface ReactDOMLegacy {
+  render(element: React.ReactElement, container: Element | DocumentFragment | null): void;
+  unmountComponentAtNode(container: Element | DocumentFragment | null): void;
 }

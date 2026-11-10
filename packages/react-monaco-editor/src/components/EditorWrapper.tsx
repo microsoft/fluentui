@@ -79,6 +79,6 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
   );
 };
 
-const EditorPreview: React.FunctionComponent<{}> = props => {
+const EditorPreview: React.FunctionComponent<React.PropsWithChildren<{}>> = props => {
   return <div {...props} />;
 };

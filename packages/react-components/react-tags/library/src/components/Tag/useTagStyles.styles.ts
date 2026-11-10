@@ -1,4 +1,7 @@
-import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import type { GriffelResetStyle } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -62,10 +65,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -93,10 +93,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderLeft: `${tokens.strokeWidthThin} solid`,
       borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderRadius: tokens.borderRadiusCircular,
     },
   },
@@ -139,17 +136,20 @@ const useRootStyles = makeStyles({
 
     // Increase clickable area to meet WCAG 2.2 AA
     // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-    '&:before, &:after': {
-      content: '""',
-      position: 'absolute',
-      height: '2px',
-      width: '100%',
-    },
-    '&:before': {
-      bottom: '100%',
-    },
-    '&:after': {
-      top: '100%',
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
     },
   },
 });
@@ -360,8 +360,6 @@ export const useSecondaryTextBaseClassName = makeResetStyles({
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  'use no memo';
-
   const rootRoundedBaseClassName = useRootRoundedBaseClassName();
   const rootCircularBaseClassName = useRootCircularBaseClassName();
 
@@ -378,6 +376,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
   const { disabled, shape, size, appearance, selected } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagClassNames.root,
 
@@ -394,6 +393,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   );
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       tagClassNames.media,
       mediaStyles.base,
@@ -402,9 +402,11 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(tagClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
   if (state.primaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.primaryText.className = mergeClasses(
       tagClassNames.primaryText,
 
@@ -417,6 +419,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.secondaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
       secondaryTextBaseClassName,
@@ -424,6 +427,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.dismissIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissIcon.className = mergeClasses(
       tagClassNames.dismissIcon,
       dismissIconStyles.base,

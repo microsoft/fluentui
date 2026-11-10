@@ -13,15 +13,14 @@ import {
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselProps,
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement, CarouselAnnouncerFunction, CarouselProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -169,7 +168,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const AlignmentAndWhitespace = () => {
+export const AlignmentAndWhitespace = (): JSXElement => {
   const classes = useClasses();
 
   const [alignment, setAlignment] = React.useState<CarouselProps['align']>('center');

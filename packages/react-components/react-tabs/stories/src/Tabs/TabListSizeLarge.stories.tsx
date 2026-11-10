@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Tab, TabList } from '@fluentui/react-components';
 import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
 
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeLarge = () => {
+export const SizeLarge = (): JSXElement => {
   const styles = useStyles();
 
   const renderTabs = () => {

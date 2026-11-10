@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
@@ -20,10 +22,9 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
-  'use no memo';
-
+export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState): MenuGroupHeaderState => {
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuGroupHeaderClassNames.root, styles.root, state.root.className);
 
   return state;

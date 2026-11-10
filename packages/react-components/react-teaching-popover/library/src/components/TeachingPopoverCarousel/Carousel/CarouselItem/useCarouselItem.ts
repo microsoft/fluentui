@@ -1,6 +1,8 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { CarouselItemProps, CarouselItemState } from './CarouselItem.types';
+import type { CarouselItemProps, CarouselItemState } from './CarouselItem.types';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 

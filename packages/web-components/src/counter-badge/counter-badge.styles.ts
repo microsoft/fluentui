@@ -1,5 +1,10 @@
 import { css } from '@microsoft/fast-element';
-import { badgeBaseStyles, badgeFilledStyles, badgeGhostStyles, badgeSizeStyles } from '../styles/index.js';
+import {
+  badgeBaseStyles,
+  badgeFilledStyles,
+  badgeGhostStyles,
+  badgeSizeStyles,
+} from '../styles/partials/badge.partials.js';
 import { borderRadiusMedium, borderRadiusSmall } from '../theme/design-tokens.js';
 
 /** Badge styles

@@ -1,6 +1,6 @@
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { CarouselNavState } from '../CarouselNav/CarouselNav.types';
+import type { CarouselNavState } from '../CarouselNav/CarouselNav.types';
 
 export type CarouselNavButtonSlots = {
   /**

@@ -1,8 +1,86 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Fri, 21 Feb 2025 14:34:03 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.4.2..@fluentui/priority-overflow_v9.4.3)
+
+### Patches
+
+- fix: synchronously measure overflowing managers when the overflow menu attaches ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+- fix: avoid redundant overflow recomputation after conditional menu removal ([PR #36602](https://github.com/microsoft/fluentui/pull/36602) by bsunderhus@microsoft.com)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.2)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.4.1..@fluentui/priority-overflow_v9.4.2)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.1)
+
+Wed, 15 Jul 2026 14:10:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.4.0..@fluentui/priority-overflow_v9.4.1)
+
+### Patches
+
+- fix: avoid overflow snapshot updates after unmount ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by bernardo.sunderhus@gmail.com)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.0)
+
+Wed, 24 Jun 2026 11:10:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.3.0..@fluentui/priority-overflow_v9.4.0)
+
+### Minor changes
+
+- feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported. ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+- feat: expose getSnapshot and subscribe on OverflowManager ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+
+### Patches
+
+- fix: recompute overflow eagerly when the overflow menu attaches or detaches ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.3.0)
+
+Thu, 12 Feb 2026 10:46:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.2.1..@fluentui/priority-overflow_v9.3.0)
+
+### Minor changes
+
+- feat: add support for pinned items ([PR #35712](https://github.com/microsoft/fluentui/pull/35712) by olfedias@microsoft.com)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.2.1)
+
+Fri, 31 Oct 2025 16:22:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.2.0..@fluentui/priority-overflow_v9.2.1)
+
+### Patches
+
+- fix: use numeric literals for Node constants to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.2.0)
+
+Thu, 02 Oct 2025 15:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.16..@fluentui/priority-overflow_v9.2.0)
+
+### Minor changes
+
+- fix: overflowMenuSize is included in occupiedSize ([PR #35090](https://github.com/microsoft/fluentui/pull/35090) by vkozlova@microsoft.com)
+
+## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.16)
+
+Mon, 08 Sep 2025 12:51:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.15..@fluentui/priority-overflow_v9.1.16)
+
+### Patches
+
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.15)
 

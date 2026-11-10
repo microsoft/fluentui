@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { CardHeaderSlots, CardHeaderBaseState } from './CardHeader.types';
 
 /**
  * Render the final JSX of CardHeader.
  */
-export const renderCardHeader_unstable = (state: CardHeaderState) => {
+export const renderCardHeader_unstable = (state: CardHeaderBaseState): JSXElement => {
   assertSlots<CardHeaderSlots>(state);
 
   return (

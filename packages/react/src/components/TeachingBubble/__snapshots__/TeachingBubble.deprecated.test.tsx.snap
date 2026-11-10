@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`] = `
 <div
   aria-describedby="teaching-bubble-content-0"
   aria-labelledby="teaching-bubble-title-1"
-  className=
+  class=
       ms-TeachingBubble-content
       {
         animation-duration: 300ms;
@@ -17,29 +17,22 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
         outline: transparent;
         width: calc(100% + 1px);
       }
-  data-is-focusable={true}
+  data-is-focusable="true"
   role="dialog"
-  tabIndex={-1}
+  tabindex="-1"
 >
   <div
     data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
-    onBlurCapture={[Function]}
-    onFocusCapture={[Function]}
   >
     <div
-      aria-hidden={true}
-      data-is-focus-trap-zone-bumper={true}
-      data-is-visible={true}
-      style={
-        Object {
-          "pointerEvents": "none",
-          "position": "fixed",
-        }
-      }
-      tabIndex={0}
+      aria-hidden="true"
+      data-is-focus-trap-zone-bumper="true"
+      data-is-visible="true"
+      style="pointer-events: none; position: fixed;"
+      tabindex="0"
     />
     <div
-      className=
+      class=
           ms-TeachingBubble-bodycontent
           {
             padding-bottom: 20px;
@@ -49,7 +42,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
           }
     >
       <div
-        className=
+        class=
             ms-TeachingBubble-header
             ms-TeachingBubble-header--large
             {
@@ -60,8 +53,8 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             }
       >
         <p
-          aria-level={3}
-          className=
+          aria-level="3"
+          class=
               ms-TeachingBubble-headline
               {
                 color: #ffffff;
@@ -80,14 +73,14 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
         </p>
       </div>
       <div
-        className=
+        class=
             ms-TeachingBubble-body
             &:not(:last-child) {
               margin-bottom: 20px;
             }
       >
         <p
-          className=
+          class=
               ms-TeachingBubble-subText
               {
                 color: #ffffff;
@@ -104,7 +97,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
         </p>
       </div>
       <div
-        className=
+        class=
             ms-Stack
             ms-TeachingBubble-footer
             {
@@ -127,7 +120,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             }
       >
         <div
-          className=
+          class=
               ms-StackItem
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -145,7 +138,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
           <span />
         </div>
         <div
-          className=
+          class=
               ms-StackItem
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -160,7 +153,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               }
         >
           <button
-            className=
+            class=
                 ms-Button
                 ms-Button--primary
                 ms-TeachingBubble-primaryButton
@@ -285,17 +278,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   outline-offset: -2px;
                   outline: 1px solid #ffffff;
                 }
-            data-is-focusable={true}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
+            data-is-focusable="true"
             type="button"
           >
             <span
-              className=
+              class=
                   ms-Button-flexContainer
                   {
                     align-items: center;
@@ -307,7 +294,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               data-automationid="splitbuttonprimary"
             >
               <span
-                className=
+                class=
                     ms-Button-textContainer
                     {
                       display: block;
@@ -315,7 +302,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                     }
               >
                 <span
-                  className=
+                  class=
                       ms-Button-label
                       {
                         display: block;
@@ -334,7 +321,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             </span>
           </button>
           <button
-            className=
+            class=
                 ms-Button
                 ms-Button--default
                 ms-TeachingBubble-secondaryButton
@@ -440,17 +427,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   outline-offset: -2px;
                   outline: 1px solid #ffffff;
                 }
-            data-is-focusable={true}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
+            data-is-focusable="true"
             type="button"
           >
             <span
-              className=
+              class=
                   ms-Button-flexContainer
                   {
                     align-items: center;
@@ -462,7 +443,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               data-automationid="splitbuttonprimary"
             >
               <span
-                className=
+                class=
                     ms-Button-textContainer
                     {
                       display: block;
@@ -470,7 +451,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                     }
               >
                 <span
-                  className=
+                  class=
                       ms-Button-label
                       {
                         display: block;
@@ -491,7 +472,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
         </div>
       </div>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-TeachingBubble-closebutton
@@ -589,17 +570,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             &:focus {
               border: 1px solid #edebe9;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -611,8 +586,8 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -639,11 +614,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons\\";"
           >
             
           </i>
@@ -651,16 +622,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
       </button>
     </div>
     <div
-      aria-hidden={true}
-      data-is-focus-trap-zone-bumper={true}
-      data-is-visible={true}
-      style={
-        Object {
-          "pointerEvents": "none",
-          "position": "fixed",
-        }
-      }
-      tabIndex={0}
+      aria-hidden="true"
+      data-is-focus-trap-zone-bumper="true"
+      data-is-visible="true"
+      style="pointer-events: none; position: fixed;"
+      tabindex="0"
     />
   </div>
 </div>

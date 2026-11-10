@@ -1,10 +1,12 @@
 import { html, ref } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';
 
 type Story = StoryObj<FluentTextInput>;
+const { argTypes } = getStorybookHelpers<FluentTextInput>('fluent-text-input');
 
 const Person20Regular = html.partial(/* html */ `
     <svg
@@ -24,9 +26,9 @@ const Person20Regular = html.partial(/* html */ `
 
 const storyTemplate = html<StoryArgs<FluentTextInput>>`
   <fluent-text-input
+    ?autofocus="${story => story.autofocus}"
     appearance="${story => story.appearance}"
     autocomplete="${story => story.autocomplete}"
-    ?autofocus="${story => story.autofocus}"
     control-size="${story => story.controlSize}"
     dirname="${story => story.dirname}"
     ?disabled="${story => story.disabled}"
@@ -54,156 +56,7 @@ const storyTemplate = html<StoryArgs<FluentTextInput>>`
 export default {
   title: 'Components/TextInput',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    appearance: {
-      description: 'Indicates the styled appearance of the input.',
-      control: 'select',
-      options: ['', ...Object.values(TextInputAppearance)],
-      mapping: { '': null, ...TextInputAppearance },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(TextInputAppearance).join('|'),
-        },
-      },
-    },
-    autocomplete: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: "Indicates the element's autocomplete state.",
-      type: 'string',
-    },
-    autofocus: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Indicates that this element should get focus after the page finishes loading.',
-      type: 'boolean',
-    },
-    controlSize: {
-      description: 'Indicates the size of the input.',
-      control: 'select',
-      options: ['', ...Object.values(TextInputControlSize)],
-      mapping: { '': null, ...TextInputControlSize },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(TextInputControlSize).join('|'),
-        },
-      },
-    },
-    dirname: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the directionality of the element to be submitted with form data.',
-      type: 'string',
-    },
-    disabled: {
-      description: 'Sets the disabled state',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      control: 'boolean',
-      type: 'boolean',
-    },
-    form: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The id of a form to associate the element to.',
-      type: 'string',
-    },
-    list: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The id of a datalist element that provides a list of suggested values.',
-      type: 'string',
-    },
-    maxlength: {
-      control: 'number',
-      table: { category: 'attributes' },
-      description: 'Sets the maximum number of characters allowed in the input',
-      type: 'number',
-    },
-    minlength: {
-      control: 'number',
-      table: { category: 'attributes' },
-      description: 'Sets the minimum number of characters allowed in the input',
-      type: 'number',
-    },
-    multiple: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Indicates whether the user can enter multiple values.',
-      type: 'boolean',
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the name of the input',
-      type: 'string',
-    },
-    pattern: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the regular expression pattern that the input’s value is checked against.',
-      type: 'string',
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the placeholder text',
-      type: 'string',
-    },
-    readOnly: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Sets the readonly state',
-      type: 'boolean',
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      description: 'Sets the required state',
-      type: 'boolean',
-    },
-    type: {
-      description: 'Sets the input type',
-      control: 'select',
-      options: ['', ...Object.values(TextInputType)],
-      mapping: { '': null, ...TextInputType },
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: `${TextInputType.text}` },
-        type: {
-          summary: Object.values(TextInputType).join('|'),
-        },
-      },
-    },
-    value: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The initial value of the input.',
-      type: 'string',
-    },
-    slottedContent: {
-      name: '',
-      description: 'The default slot. Content in this slot is used as the `<label>` for the input.',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      name: 'start',
-      description: 'Content in this slot is placed at the start of the input.',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      name: 'end',
-      description: 'Content in this slot is placed at the end of the input.',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentTextInput>;
 
 export const Default: Story = {
@@ -297,5 +150,18 @@ export const Inline: Story = {
       <fluent-text-input style="display: inline-flex" placeholder="adjective"></fluent-text-input>
       dog.
     </p>
+  `),
+};
+
+export const InDialog: Story = {
+  args: {
+    slottedContent: () => 'Input in dialog',
+    autofocus: true,
+  },
+  render: renderComponent(html<StoryArgs<FluentTextInput>>`
+    <fluent-button @click="${story => story.dialog.show()}">Open dialog</fluent-button>
+    <fluent-dialog ${ref('dialog')}>
+      <fluent-dialog-body> ${storyTemplate} </fluent-dialog-body>
+    </fluent-dialog>
   `),
 };

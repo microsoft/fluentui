@@ -1,7 +1,10 @@
+/* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
+// TODO: Migrate virtualizer to fluentui-contrib dependency once released
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
@@ -14,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
+export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combobox');
 
   //This should include the item height (32px) and account for rowGap (2px)
@@ -44,7 +47,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
         <Combobox
           id={`${comboId}`}
           placeholder="Select a number"
-          positioning={{ autoSize: 'width' }}
+          positioning={{ autoSize: true }}
           listbox={{ ref: mergedRefs, className: styles.listbox }}
           onOpenChange={(e, data) => {
             clearScrollTimer();
@@ -94,7 +97,7 @@ ComboboxVirtualizer.parameters = {
     description: {
       story:
         'A Combobox can use Virtualizer to display a large number of options\n' +
-        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)`,
+        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://storybooks.fluentui.dev/react/?path=/docs/concepts-developer-positioning-components--docs#auto-size-for-small-viewport)`,
     },
   },
 };

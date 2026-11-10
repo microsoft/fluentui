@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ScaleTime } from 'd3-scale';
+import type { ScaleTime } from 'd3-scale';
 import { tokens } from '@fluentui/react-theme';
 import { findIndex } from '../../../utilities/index';
-import { LineDef, LabelLink, LabelDef } from './LabelLink';
-import { EventsAnnotationProps } from '../LineChart.types';
+import type { LineDef, LabelDef } from './LabelLink';
+import { LabelLink } from './LabelLink';
+import type { EventsAnnotationProps } from '../LineChart.types';
 import { getColorFromToken } from '../../../utilities/colors';
 
 interface IEventsAnnotationExtendProps extends EventsAnnotationProps {
@@ -75,9 +76,9 @@ function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, m
     // base case 2
     if (currentIdx === lineDefs.length - 1) {
       if (lastX < leftXBoundary) {
-        return [{ x: x, anchor: 'end', aggregatedIdx: [currentIdx] }];
+        return [{ x, anchor: 'end', aggregatedIdx: [currentIdx] }];
       } else if (x + textWidth < maxX) {
-        return [{ x: x, anchor: 'start', aggregatedIdx: [currentIdx] }];
+        return [{ x, anchor: 'start', aggregatedIdx: [currentIdx] }];
       }
 
       return [];
@@ -97,7 +98,6 @@ function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, m
 
     let idx = findIndex(
       lineDefs,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render, RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
 import { datePickerClassNames } from './useDatePickerStyles.styles';
@@ -17,7 +18,7 @@ function queryByRoleDialog(result: RenderResult) {
 }
 
 const getDatepickerPopupElement = (result: RenderResult) => {
-  result.getByRole('combobox').click();
+  fireEvent.click(result.getByRole('combobox'));
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
   return dialog!;
@@ -130,7 +131,7 @@ describe('DatePicker', () => {
     const input = result.getByRole('combobox');
 
     fireEvent.click(input);
-    result.getByText('15').click();
+    fireEvent.click(result.getByText('15'));
 
     expect(input.getAttribute('value')).toBe('Wed Jan 15 2020');
   });
@@ -153,7 +154,7 @@ describe('DatePicker', () => {
     const input = result.getByRole('combobox');
 
     fireEvent.click(input);
-    result.getByText('15').click();
+    fireEvent.click(result.getByText('15'));
 
     expect(input.getAttribute('value')).toBe('15/1/20');
   });

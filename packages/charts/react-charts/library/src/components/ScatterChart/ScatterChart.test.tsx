@@ -2,12 +2,12 @@ import { screen, fireEvent } from '@testing-library/react';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { ScatterChart } from './ScatterChart';
 import { toHaveNoViolations } from 'jest-axe';
-import { ChartProps } from '../../ScatterChart';
+import type { ChartProps } from '../../ScatterChart';
 expect.extend(toHaveNoViolations);
 
 const chartData: ChartProps = {
   chartTitle: 'Sales Performance by Category',
-  lineChartData: [
+  scatterChartData: [
     {
       legend: 'Region 1',
       data: [
@@ -89,6 +89,8 @@ beforeAll(() => {
 });
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -96,19 +98,37 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
+  window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
+
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 describe('Scatter chart rendering', () => {
@@ -119,9 +139,32 @@ describe('Scatter chart rendering', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+
+  testWithoutWait(
+    'Should render when a legend is "__proto__"',
+    ScatterChart,
+    {
+      data: {
+        chartTitle: 'Prototype pollution regression',
+        scatterChartData: [
+          {
+            legend: '__proto__',
+            data: [{ x: 'Category', y: 10, markerSize: 5 }],
+            color: '#0078d4',
+          },
+        ],
+      },
+    },
+    () => {
+      expect(screen.getByText('__proto__')).toBeInTheDocument();
+    },
+  );
 });
 
 describe('ScatterChart- Subcomponent Legends', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     ScatterChart,
@@ -177,11 +220,11 @@ describe('ScatterChart- Subcomponent Legends', () => {
       const circles = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle');
       // Assert
       expect(circles).toHaveLength(10);
-      expect(circles[0]).toHaveAttribute('opacity', '1');
-      expect(circles[1]).toHaveAttribute('opacity', '1');
-      expect(circles[2]).toHaveAttribute('opacity', '1');
-      expect(circles[3]).toHaveAttribute('opacity', '1');
-      expect(circles[4]).toHaveAttribute('opacity', '1');
+      expect(circles[0]).toHaveAttribute('opacity', '0.1');
+      expect(circles[1]).toHaveAttribute('opacity', '0.1');
+      expect(circles[2]).toHaveAttribute('opacity', '0.1');
+      expect(circles[3]).toHaveAttribute('opacity', '0.1');
+      expect(circles[4]).toHaveAttribute('opacity', '0.1');
       expect(circles[5]).toHaveAttribute('opacity', '1');
       expect(circles[6]).toHaveAttribute('opacity', '1');
       expect(circles[7]).toHaveAttribute('opacity', '1');

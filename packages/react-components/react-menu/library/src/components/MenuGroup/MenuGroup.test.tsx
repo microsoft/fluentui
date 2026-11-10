@@ -1,7 +1,6 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { MenuGroup } from './MenuGroup';
-import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 
@@ -23,9 +22,8 @@ describe('MenuGroup', () => {
    * Note: see more visual regression tests for MenuGroup in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<MenuGroup>Default MenuGroup</MenuGroup>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<MenuGroup>Default MenuGroup</MenuGroup>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should allow user to specify their own aria-labelledby attribute', () => {

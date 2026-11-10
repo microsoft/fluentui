@@ -1,8 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
+import type { CardHeaderBaseProps, CardHeaderBaseState, CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
-import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
 
 /**
  * Finds the first child of CardHeader with an id prop.
@@ -10,8 +11,8 @@ import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
  * @param header - the header prop of CardHeader
  */
 function getChildWithId(header: React.ReactNode) {
-  function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
-    return React.isValidElement(element) && Boolean(element.props.id);
+  function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement<{ id: string }> {
+    return React.isValidElement<{ id?: string }>(element) && Boolean(element.props.id);
   }
 
   return React.Children.toArray(header).find(isReactElementWithIdProp);
@@ -28,7 +29,7 @@ function getChildWithId(header: React.ReactNode) {
  */
 function getReferenceId(
   headerId: string | undefined,
-  childWithId: React.ReactElement | undefined,
+  childWithId: React.ReactElement<{ id?: string }> | undefined,
   generatedId: string,
 ): string {
   if (headerId) {
@@ -52,6 +53,21 @@ function getReferenceId(
  * @param ref - reference to root HTMLElement of CardHeader
  */
 export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
+  return useCardHeaderBase_unstable(props, ref);
+};
+
+/**
+ * Base hook for CardHeader component, which manages state related to slots structure
+ * and the card's selectable accessibility properties.
+ * Note: CardHeader has no design props, so this is equivalent to useCardHeader_unstable.
+ *
+ * @param props - props from this instance of CardHeader
+ * @param ref - reference to root HTMLElement of CardHeader
+ */
+export const useCardHeaderBase_unstable = (
+  props: CardHeaderBaseProps,
+  ref: React.Ref<HTMLElement>,
+): CardHeaderBaseState => {
   const { image, header, description, action } = props;
 
   const {
@@ -60,12 +76,14 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   const headerRef = React.useRef<HTMLDivElement>(null);
 
   const hasChildId = React.useRef(false);
-  const generatedId = useId(cardHeaderClassNames.header, referenceId);
+  const generatedId = useId('fui-CardHeader__header', referenceId);
 
+  // eslint-disable-next-line react-hooks/refs
   const headerSlot = slot.optional(header, {
     renderByDefault: true,
     defaultProps: {
       ref: headerRef,
+      // eslint-disable-next-line react-hooks/refs
       id: !hasChildId.current ? referenceId : undefined,
     },
     elementType: 'div',

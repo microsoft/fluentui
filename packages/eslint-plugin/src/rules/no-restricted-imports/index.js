@@ -3,11 +3,10 @@ const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import("@typescript-eslint/utils").TSESTree.ImportClause} ImportClause
- * @typedef {import("@typescript-eslint/utils").TSESTree.ImportDeclaration} ImportDeclaration
+ * @import { TSESTree } from "@typescript-eslint/utils"
  *
  * Lookup for insertion point for new imports when moving a restricted import to a preferred import.
- * @typedef {{[preferredPkgName: string] : ImportDeclaration}} FixMap
+ * @typedef {{[preferredPkgName: string] : TSESTree.ImportDeclaration}} FixMap
  *
  * @typedef {{
  *   forbidden: string[],
@@ -27,7 +26,8 @@ module.exports = createRule({
       description: 'Restricts imports of certain packages',
     },
     messages: {
-      restrictedImport: 'Import from {{ packageName }} detected which is not allowed.',
+      restrictedImport:
+        'Import from {{ packageName }} detected which is not allowed. Use the barrel export @fluentui/react-components instead. See docs/architecture/layers.md',
     },
     fixable: 'code',
     schema: [
@@ -132,9 +132,11 @@ module.exports = createRule({
         function getUpdatedImportStatement(fixMap, preferredImportForCurrentPkg) {
           const isTypeImport = imprt.importKind === 'type';
           const currentSpecifiers = fixMap[preferredImportForCurrentPkg].specifiers.map(
-            (/** @type {ImportClause} */ specifier) => specifier.local.name,
+            (/** @type {TSESTree.ImportClause} */ specifier) => specifier.local.name,
           );
-          const specifiersToAdd = imprt.specifiers.map((/** @type {ImportClause} */ specifier) => specifier.local.name);
+          const specifiersToAdd = imprt.specifiers.map(
+            (/** @type {TSESTree.ImportClause} */ specifier) => specifier.local.name,
+          );
           const combinedSpecifiers = currentSpecifiers.concat(specifiersToAdd).join(', ');
 
           return `import${

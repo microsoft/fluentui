@@ -53,7 +53,8 @@ export const styles = css`
     align-items: center;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    position: relative;
+    grid-template-areas: 'label' 'input' 'message';
+    row-gap: ${spacingVerticalXXS};
   }
 
   :has([slot='message']) {
@@ -79,11 +80,6 @@ export const styles = css`
     margin-inline-end: ${spacingHorizontalM};
   }
 
-  :host([label-position='above']) {
-    grid-template-areas: 'label' 'input' 'message';
-    row-gap: ${spacingVerticalXXS};
-  }
-
   :host([label-position='below']) {
     grid-template-areas: 'input' 'label' 'message';
     justify-items: center;
@@ -101,8 +97,6 @@ export const styles = css`
 
   ::slotted([slot='input']) {
     grid-area: input;
-    position: relative;
-    z-index: 1;
   }
 
   ::slotted([slot='message']) {

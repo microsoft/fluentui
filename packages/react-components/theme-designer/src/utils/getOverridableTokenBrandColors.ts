@@ -1,10 +1,10 @@
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 import { createDarkTheme } from '@fluentui/react-components';
-import { ColorOverrideBrands } from '../Context/ThemeDesignerContext';
+import type { ColorOverrideBrands } from '../Context/ThemeDesignerContext';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
-export const sortOverrideableColorTokens = (overridableColorTokens: string[]) => {
+export const sortOverrideableColorTokens = (overridableColorTokens: string[]): string[] => {
   return overridableColorTokens.sort((a, b) => {
     if (a.includes('Inverted') && b.includes('Inverted')) {
       return a.localeCompare(b);

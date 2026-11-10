@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IChartProps, IScatterChartProps, ScatterChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IScatterChartStringState {
   width: number;
@@ -41,7 +42,7 @@ export class ScatterChartStringExample extends React.Component<{}, IScatterChart
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._stringExample()}</div>;
   }
 
@@ -62,7 +63,7 @@ export class ScatterChartStringExample extends React.Component<{}, IScatterChart
     this.setState({ useUTC: checked });
   };
 
-  private _stringExample(): JSX.Element {
+  private _stringExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Sales Performance by Category',
       scatterChartData: [

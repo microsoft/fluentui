@@ -156,7 +156,7 @@ function useMaxHeight(
    * The maximum height the PositioningContainer can grow to
    * without going beyond the window or target bounds
    */
-  const maxHeight = React.useRef<number | undefined>();
+  const maxHeight = React.useRef<number | undefined>(undefined);
   const win = useWindowEx();
 
   // If the target element changed, reset the max height. If we are tracking
@@ -265,7 +265,7 @@ function useAutoDismissEvents(
 export function useHeightOffset(
   { finalHeight }: IPositioningContainerProps,
   contentHost: React.RefObject<HTMLDivElement | null>,
-) {
+): number {
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.

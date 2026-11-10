@@ -1,4 +1,5 @@
 export type {
+  TagPickerControlBaseState,
   TagPickerControlCSSProperties,
   TagPickerControlInternalSlots,
   TagPickerControlProps,
@@ -13,4 +14,5 @@ export {
   tagPickerControlClassNames,
   useTagPickerControlStyles_unstable,
   useTagPickerControl_unstable,
+  useTagPickerControlBase_unstable,
 } from './components/TagPickerControl/index';

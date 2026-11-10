@@ -4,7 +4,7 @@ import { Field } from '@fluentui/react-field';
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { CheckboxOnChangeData } from './Checkbox.types';
+import type { CheckboxOnChangeData } from './Checkbox.types';
 
 // TODO: add more tests here, and create visual regression tests in /apps/vr-tests
 
@@ -157,6 +157,17 @@ describe('Checkbox', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
     expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
     expect(onChange.mock.calls[2][1]).toEqual({ checked: true });
+  });
+
+  it('calls custom onChange passed via input slot prop', () => {
+    const onChange = jest.fn();
+    const slotOnChange = jest.fn();
+
+    const renderedComponent = render(<Checkbox onChange={onChange} input={{ onChange: slotOnChange }} />);
+    fireEvent.click(renderedComponent.getByRole('checkbox'));
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(slotOnChange).toHaveBeenCalledTimes(1);
   });
 
   it("doesn't remove controlled mixed when no onChange provided", () => {

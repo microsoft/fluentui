@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 /**
  * Helper type that works similar to Omit,
@@ -24,12 +24,12 @@ import * as React from 'react';
 export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
 
 /**
- * @public
- *
  * Helper type that works similar to Pick,
  * but when modifying an union type it will distribute the picking to all the union members.
  *
  * See {@link https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types} for more information
+ *
+ * @public
  */
 export type DistributivePick<T, K> = T extends unknown ? Pick<T, K & keyof T> : never;
 
@@ -39,24 +39,24 @@ export type DistributivePick<T, K> = T extends unknown ? Pick<T, K & keyof T> : 
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 /**
- * @internal
  * If type T includes `null`, remove it and add `undefined` instead.
+ *
+ * @internal
  */
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
 /**
- * @internal
  * With react 18, our `children` type starts leaking everywhere and that causes conflicts on component declaration, specially in the `propTypes` property of
  * both `ComponentClass` and `FunctionComponent`.
  *
  * This type substitutes `React.ComponentType` only keeping the function signature, it omits `propTypes`, `displayName` and other properties that are not
  * required for the inference.
+ *
+ * @internal
  */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 
 /**
- * @internal
- *
  * On types/react 18 there are two types being delivered,
  * they rely on the typescript version to decide which will be consumed {@link https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b59dc3ac1e2770fbd6cdbb90ba52abe04c168196/types/react/package.json#L10}
  *
@@ -69,6 +69,8 @@ export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
  * that will work for both cases.
  *
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
+ *
+ * @internal
  */
 export interface FunctionComponent<P> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -89,22 +91,22 @@ export interface NamedExoticComponent<P> extends ExoticComponent<P> {
 }
 
 /**
- * @internal
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
+ *
+ * @internal
  */
 export interface ComponentClass<P = {}, S = React.ComponentState> extends React.StaticLifecycle<P, S> {
   new (props: P): React.Component<P, S>;
 }
 
 /**
- * @internal
- *
  * on types/react 18 ReactNode becomes a more strict type, which is not compatible with our current implementation. to avoid any issues we are creating our own ReactNode type which allows anything.
  *
  * This type should only be used for inference purposes, and should never be exposed.
  *
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
  *
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ReactNode = any;
@@ -122,8 +124,6 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 're
 export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
 /**
- * @internal
- *
  * This type is used to determine if the current version of React is 18+ or not.
  *
  * It checks if the `React.ReactNode` has `{}` it its type.
@@ -132,5 +132,62 @@ export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveO
  * This is useful for ensuring compatibility with different versions of React.
  *
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
+ *
+ * @internal
  */
 export type ReactVersionDependent<Modern, Legacy> = {} extends React.ReactNode ? Legacy : Modern;
+
+/**
+ * Our own alias for `JSX.Element` type that is compatible with both React 17 and React 18+.
+ * Use this type when annotating JSX markup in all our code in order to avoid issues between different React versions.
+ *
+ * Example usage:
+ *
+ * BAD:
+ * ```tsx
+ * const renderFoo = (state: FooState) = <div {...props}>Hello World</div>;
+ * // infers
+ * // R17:  declare const renderFoo: (state: FooState) => JSX.Element;
+ * // R18+: declare const renderFoo: (state: FooState) => React.JSX.Element;
+ * ```
+ *
+ * GOOD:
+ * ```tsx
+ * import type { JSXElement } from '@fluentui/react-utilities';
+ * const renderFoo = (state: FooState): JSXElement = <div {...props}>Hello World</div>;
+ * ```
+ */
+export type JSXElement = React.ReactElement<
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  any,
+  any
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+>;
+
+/**
+ * Type representing all valid JSX intrinsic element names (e.g., 'div', 'button', 'input').
+ * It's derived from `React.ElementType` by excluding all custom component types (`React.ComponentType`), ensuring it only includes standard HTML and SVG elements.
+ *
+ * Use this type when you need to restrict a type to only valid intrinsic element names.
+ *
+ * @example
+ * ```tsx
+ * import * as React from 'react';
+ * import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
+ *
+ * const createElement = (tag: JSXIntrinsicElementKeys) => React.createElement(tag, {});
+ *
+ * createElement('div'); // Valid
+ * createElement('span'); // Valid
+ * createElement('unknown'); // Error: Argument of type '"unknown"' is not assignable to parameter of type 'JSXIntrinsicElementKeys'.
+ * ```
+ *
+ * This type helps ensure that only valid intrinsic elements are used in scenarios where custom components are not allowed.
+ */
+export type JSXIntrinsicElementKeys = Exclude<React.ElementType, React.ComponentType>;
+
+/**
+ * Our own alias for `JSX.IntrinsicElements` type that is compatible with both React 17 and React 18+.
+ * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
+ */
+export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React.ComponentProps<Element>;

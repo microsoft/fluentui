@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input } from '@fluentui/react-components';
 
-export const Horizontal = () => (
+export const Horizontal = (): JSXElement => (
   <Field label="Horizontal" orientation="horizontal" hint="Validation message and hint are below the input.">
     <Input />
   </Field>

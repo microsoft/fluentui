@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from '@testing-library/react';
 import { Calendar } from './Calendar';
 import { isConformant } from '../../testing/isConformant';
 
@@ -14,5 +16,14 @@ describe('Calendar', () => {
       // uses classnames
       'component-has-static-classnames-object',
     ],
+  });
+
+  it('should render without crashing when value is undefined', () => {
+    expect(() => render(<Calendar value={undefined} />)).not.toThrow();
+  });
+
+  it('should render correctly when value is undefined', () => {
+    const { container } = render(<Calendar value={undefined} />);
+    expect(container.querySelector('[role="grid"]')).not.toBeNull();
   });
 });

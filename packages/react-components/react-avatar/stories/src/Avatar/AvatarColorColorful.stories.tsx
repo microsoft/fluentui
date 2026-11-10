@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 import { GuestRegular } from '@fluentui/react-icons';
 
-export const ColorColorful = () => (
+export const ColorColorful = (): JSXElement => (
   <>
     <Avatar color="colorful" name="Katri Athokas" />
     <Avatar color="colorful" name="Elvia Atkins" />

@@ -1,43 +1,37 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { ProgressIndicator } from './ProgressIndicator';
 import { isConformant } from '../../common/isConformant';
 
 describe('ProgressIndicator', () => {
   it('renders ProgressIndicator correctly', () => {
-    const component = renderer.create(<ProgressIndicator label="Test" description="Test" percentComplete={0.75} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator label="Test" description="Test" percentComplete={0.75} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders indeterminate ProgressIndicator correctly', () => {
-    const component = renderer.create(<ProgressIndicator label="Test" description="Test" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator label="Test" description="Test" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with no progress', () => {
-    const component = renderer.create(<ProgressIndicator label="Test" description="Test" progressHidden={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator label="Test" description="Test" progressHidden={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with no label or description', () => {
-    const component = renderer.create(<ProgressIndicator />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with ariaLabel', () => {
-    const component = renderer.create(<ProgressIndicator ariaLabel="Test" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator ariaLabel="Test" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders React content', () => {
-    const component = renderer.create(<ProgressIndicator label={<span>Test</span>} description={<span>Test</span>} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ProgressIndicator label={<span>Test</span>} description={<span>Test</span>} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

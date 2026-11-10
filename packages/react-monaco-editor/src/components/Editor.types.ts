@@ -49,5 +49,6 @@ export interface IEditorProps {
    * Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks.
    * WARNING: Changing this will re-create the editor.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   modelRef?: React.MutableRefObject<IMonacoTextModel | undefined>;
 }

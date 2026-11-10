@@ -1,16 +1,11 @@
 import * as React from 'react';
-import {
-  HorizontalBarChart,
-  ChartProps,
-  ChartDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-  ChartPopoverProps,
-} from '@fluentui/react-charts';
+import type { ChartProps, ChartDataPoint, ChartPopoverProps } from '@fluentui/react-charts';
+import { HorizontalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
-export const HorizontalBarCustomCallout = () => {
+export const HorizontalBarCustomCallout = (): JSXElement => {
   const hideRatio: boolean[] = [true, false];
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
@@ -129,7 +124,7 @@ export const HorizontalBarCustomCallout = () => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
-  const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
+  const customPopover = (props: ChartDataPoint): JSXElement | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';

@@ -3,8 +3,9 @@ import { fireEvent, render } from '@testing-library/react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { isConformant } from '../../testing/isConformant';
 import { MenuItemSwitch } from './MenuItemSwitch';
-import { MenuItemSwitchProps } from './MenuItemSwitch.types';
-import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import type { MenuItemSwitchProps } from './MenuItemSwitch.types';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 
 jest.mock('../../contexts/menuContext');

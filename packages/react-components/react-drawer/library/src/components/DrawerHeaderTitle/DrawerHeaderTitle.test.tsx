@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
 import { isConformant } from '../../testing/isConformant';
-import { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
+import type { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
 import { drawerHeaderTitleClassNames } from './useDrawerHeaderTitleStyles.styles';
 
 describe('DrawerHeaderTitle', () => {

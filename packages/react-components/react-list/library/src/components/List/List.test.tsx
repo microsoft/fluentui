@@ -1,14 +1,54 @@
 import * as React from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
+import { act, fireEvent, render, within } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
-import { ListProps } from './List.types';
+import type { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
-import { ListItemActionEventData } from '../ListItem/ListItem.types';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { ListItemActionEventData } from '../ListItem/ListItem.types';
+import type { EventHandler } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
+import { useListBase_unstable } from './useList';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
+}
+function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: string | null) {
+  expect(item.getAttribute('aria-disabled')).toBe(expected);
+}
+
+// React 19 wraps render-time errors into an AggregateError with empty message.
+// This helper extracts nested messages so we can assert reliably across React versions.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getErrorMessages(err: any): string[] {
+  if (!err) {
+    return [];
+  }
+  const messages: string[] = [];
+  if (typeof err.message === 'string') {
+    messages.push(err.message);
+  }
+  if (Array.isArray(err.errors)) {
+    for (const inner of err.errors) {
+      messages.push(...getErrorMessages(inner));
+    }
+  }
+  if (err.cause) {
+    messages.push(...getErrorMessages(err.cause));
+  }
+  return messages;
+}
+
+function expectRenderToThrowWithMessage(ui: React.ReactElement, expectedSubstring: string) {
+  let thrown: unknown;
+  try {
+    render(ui);
+  } catch (e) {
+    thrown = e;
+  }
+  expect(thrown).toBeDefined();
+  const messages = getErrorMessages(thrown);
+  expect(messages.join('\n')).toContain(expectedSubstring);
 }
 
 describe('List', () => {
@@ -21,8 +61,186 @@ describe('List', () => {
   // and false warnings about the mismatched roles because of tabster not working reliably in tests.
   const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => jest.fn());
 
+  afterEach(() => {
+    resetIdsForTests();
+  });
+
   afterAll(() => {
     consoleWarn.mockRestore();
+    jest.clearAllMocks();
+  });
+
+  describe('useListBase_unstable', () => {
+    it('preserves list role and selection metadata in headless mode', () => {
+      const ref = React.createRef<HTMLUListElement | HTMLDivElement | HTMLOListElement>();
+      const { result } = renderHook(() =>
+        useListBase_unstable({ role: 'listbox', selectionMode: 'single', selectedItems: ['value-1'] }, ref),
+      );
+
+      expect(result.current.root).toMatchObject({
+        role: 'listbox',
+      });
+      expect(result.current.root['aria-multiselectable']).toBeUndefined();
+      expect(result.current.listItemRole).toBe('option');
+      expect(result.current.selection?.isSelected('value-1')).toBe(true);
+      expect(result.current.root).not.toHaveProperty('data-tabster');
+    });
+
+    it('preserves composite roles without adding navigation attributes', () => {
+      const { result } = renderHook(() => useListBase_unstable({ navigationMode: 'composite' }, React.createRef()));
+
+      expect(result.current.root.role).toBe('grid');
+      expect(result.current.listItemRole).toBe('row');
+      expect(result.current.navigationMode).toBe('composite');
+      expect(result.current.selection).toBeUndefined();
+      expect(result.current.root).not.toHaveProperty('data-tabster');
+    });
+
+    it('validates plain DOM items without throwing', () => {
+      const ref = React.createRef<HTMLUListElement | HTMLDivElement | HTMLOListElement>();
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, ref));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">Item</li>
+        </ul>,
+      );
+
+      expect(() => result.current.validateListItem(getByRole('option'))).not.toThrow();
+    });
+
+    it.each([
+      <input key="checkmark" type="checkbox" tabIndex={-1} aria-label="Select item" />,
+      <input key="hidden" type="hidden" />,
+      <button key="disabled" disabled tabIndex={0}>
+        Disabled action
+      </button>,
+    ])('does not treat non-tabbable controls as actionable children (%#)', child => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">{child}</li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).not.toHaveBeenCalled();
+    });
+
+    it('detects actionable children using the DOM', () => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">
+            <button>Secondary action</button>
+          </li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
+    });
+
+    it.each(['', 'true', 'TRUE', 'plaintext-only', 'PLAINTEXT-ONLY'])(
+      'detects keyboard-focusable editing hosts (%s)',
+      contentEditable => {
+        const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+        const { getByRole, getByTestId } = render(
+          <ul role="listbox">
+            <li role="option">
+              <div data-testid="editor" />
+            </li>
+          </ul>,
+        );
+        getByTestId('editor').setAttribute('contenteditable', contentEditable);
+        consoleWarn.mockClear();
+
+        result.current.validateListItem(getByRole('option'));
+
+        expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
+      },
+    );
+
+    it.each(['false', 'FALSE', 'inherit', 'invalid'])(
+      'does not treat non-editing values as focusable hosts (%s)',
+      contentEditable => {
+        const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+        const { getByRole, getByTestId } = render(
+          <ul role="listbox">
+            <li role="option">
+              <div data-testid="editor" />
+            </li>
+          </ul>,
+        );
+        getByTestId('editor').setAttribute('contenteditable', contentEditable);
+        consoleWarn.mockClear();
+
+        result.current.validateListItem(getByRole('option'));
+
+        expect(consoleWarn).not.toHaveBeenCalled();
+      },
+    );
+
+    it.each([
+      <div key="negative-tabindex" contentEditable tabIndex={-1} />,
+      <div key="hidden" contentEditable="plaintext-only" hidden />,
+    ])('ignores non-tabbable editing hosts (%#)', child => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">{child}</li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).not.toHaveBeenCalled();
+    });
+
+    it('detects explicitly tabbed non-editing hosts', () => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">
+            <div contentEditable={false} tabIndex={0} />
+          </li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
+    });
+
+    it('does not inspect the DOM when validating in production', () => {
+      const { result } = renderHook(() => useListBase_unstable({}, React.createRef()));
+      const { getByRole } = render(
+        <ul>
+          <li>Item</li>
+        </ul>,
+      );
+      const listItem = getByRole('listitem');
+      const querySelector = jest.spyOn(listItem, 'querySelector');
+      const querySelectorAll = jest.spyOn(listItem, 'querySelectorAll');
+      const originalEnvironment = process.env.NODE_ENV;
+
+      try {
+        process.env.NODE_ENV = 'production';
+        result.current.validateListItem(listItem);
+
+        expect(querySelector).not.toHaveBeenCalled();
+        expect(querySelectorAll).not.toHaveBeenCalled();
+      } finally {
+        process.env.NODE_ENV = originalEnvironment;
+        querySelector.mockRestore();
+        querySelectorAll.mockRestore();
+      }
+    });
   });
 
   describe('rendering', () => {
@@ -74,30 +292,29 @@ describe('List', () => {
       afterEach(() => {
         (console.error as jest.Mock).mockRestore();
       });
+
       it('div and li throws', () => {
-        expect(() =>
-          render(
-            <List as="div">
-              <ListItem value="test-value-1">First ListItem</ListItem>
-              <ListItem value="test-value-2">Second ListItem</ListItem>
-            </List>,
-          ),
-        ).toThrow('ListItem cannot be rendered as a li when its parent is a div.');
+        expectRenderToThrowWithMessage(
+          <List as="div">
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+          'ListItem cannot be rendered as a li when its parent is a div.',
+        );
       });
 
       it('ul and div throws', () => {
-        expect(() =>
-          render(
-            <List>
-              <ListItem as="div" value="test-value-1">
-                First ListItem
-              </ListItem>
-              <ListItem as="div" value="test-value-2">
-                Second ListItem
-              </ListItem>
-            </List>,
-          ),
-        ).toThrow('ListItem cannot be rendered as a div when its parent is not a div.');
+        expectRenderToThrowWithMessage(
+          <List>
+            <ListItem as="div" value="test-value-1">
+              First ListItem
+            </ListItem>
+            <ListItem as="div" value="test-value-2">
+              Second ListItem
+            </ListItem>
+          </List>,
+          'ListItem cannot be rendered as a div when its parent is not a div.',
+        );
       });
 
       it("div and div doesn't throw", () => {
@@ -270,11 +487,11 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, true);
     });
@@ -294,22 +511,22 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][x]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, true);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [ ][ ]
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
@@ -372,24 +589,32 @@ describe('List', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
         customAction?: EventHandler<ListItemActionEventData>,
+        disabledSelection?: boolean,
       ) {
         const onAction = jest.fn(customAction);
 
         const result = render(
           <List selectionMode="multiselect">
-            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem onAction={customAction ? onAction : undefined} disabledSelection={disabledSelection}>
+              First ListItem
+            </ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
 
         const firstItem = result.getByText('First ListItem');
-        interaction(firstItem);
+        act(() => {
+          interaction(firstItem);
+        });
 
         return { listItem: firstItem, onAction };
       }
 
       it('Click should trigger selection and onAction callback by default', () => {
-        const { listItem, onAction } = interactWithFirstElement(item => item.click());
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+        );
         expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, true);
       });
@@ -409,6 +634,23 @@ describe('List', () => {
         });
         expect(onAction).not.toHaveBeenCalled();
         expectListboxItemSelected(listItem, true);
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be true', () => {
+        const { listItem } = interactWithFirstElement(item => item.click(), undefined, true);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, 'true');
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be false when custom action is present', () => {
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+          true,
+        );
+        expect(onAction).toHaveBeenCalledTimes(1);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, null);
       });
     });
   });
@@ -548,5 +790,27 @@ describe('List', () => {
         expectListboxItemSelected(listItem, false);
       });
     });
+  });
+
+  it('renders and validates an explicit ordered list with an explicit list item', () => {
+    const { getByRole } = render(
+      <List as="ol">
+        <ListItem as="li">Item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('list').tagName).toBe('OL');
+    expect(getByRole('listitem').tagName).toBe('LI');
+  });
+
+  it('renders inferred selection roles when role props are explicitly undefined', () => {
+    const { getByRole } = render(
+      <List role={undefined} selectionMode="single">
+        <ListItem role={undefined}>Item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('listbox')).toBeDefined();
+    expect(getByRole('option')).toBeDefined();
   });
 });

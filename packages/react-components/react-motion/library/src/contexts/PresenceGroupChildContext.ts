@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 export type PresenceGroupChildContextValue = {
@@ -14,4 +16,5 @@ export type PresenceGroupChildContextValue = {
 export const PresenceGroupChildContext = React.createContext<PresenceGroupChildContextValue | undefined>(undefined);
 
 export const PresenceGroupChildProvider = PresenceGroupChildContext.Provider;
-export const usePresenceGroupChildContext = () => React.useContext(PresenceGroupChildContext);
+export const usePresenceGroupChildContext = (): PresenceGroupChildContextValue | undefined =>
+  React.useContext(PresenceGroupChildContext);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
 import type { SpinButtonOnChangeData, SpinButtonChangeEvent } from '@fluentui/react-components';
 
@@ -14,7 +15,7 @@ const useLayoutStyles = makeStyles({
   },
 });
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const layoutStyles = useLayoutStyles();
   const id = useId();
 

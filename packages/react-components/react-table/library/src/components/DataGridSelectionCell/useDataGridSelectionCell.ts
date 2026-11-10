@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useTableRowIdContext } from '../../contexts/rowIdContext';
@@ -52,6 +54,7 @@ export const useDataGridSelectionCell_unstable = (
       invisible: isHeader && type === 'radio',
       'aria-selected': checked === 'mixed' ? undefined : checked,
       subtle,
+      radioIndicator: isHeader ? null : undefined,
       ...props,
       onClick,
     },

@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory ResizeGroup}
  */
@@ -66,7 +68,8 @@ export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>,
    * Function to render the data. Called when rendering the contents to the screen and when
    * rendering in a hidden div to measure the size of the contents.
    */
-  onRenderData: (data: any) => JSX.Element;
+
+  onRenderData: (data: any) => JSXElement;
 
   /**
    * Function to be performed on the data in order to reduce its width and make it fit into the given space.

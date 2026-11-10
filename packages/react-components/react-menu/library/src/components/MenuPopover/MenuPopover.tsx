@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuPopover_unstable } from './useMenuPopover';
 import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles.styles';

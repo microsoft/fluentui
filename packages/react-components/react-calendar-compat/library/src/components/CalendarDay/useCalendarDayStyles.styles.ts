@@ -1,6 +1,7 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
@@ -62,12 +63,6 @@ const useMonthAndYearStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-  animation: {
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
-  },
   headerIsClickable: {
     '&:hover': {
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
@@ -126,17 +121,22 @@ const useDisabledStyleStyles = makeStyles({
     '&, &:disabled, & button': {
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
+
+      // add this explicitly for aria-disabled buttons that don't get default forced-colors disabled styles
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
     },
   },
 });
 
 /**
- * @internal
- *
  * Apply styling to the CalendarDay slots based on the state
+ *
+ * @internal
  */
 export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCalendarDayStyles_unstable — manual opt-out to preserve runtime behavior
 
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();
@@ -159,7 +159,6 @@ export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): Cal
     monthAndYear: mergeClasses(
       calendarDayClassNames.monthAndYear,
       monthAndYearStyles.base,
-      monthAndYearStyles.animation,
       headerIsClickable && monthAndYearStyles.headerIsClickable,
     ),
     monthComponents: mergeClasses(calendarDayClassNames.monthComponents, monthComponentsStyles.base),

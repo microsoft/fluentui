@@ -1,7 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and
-  hide it when the mouse leaves the chart 1`] = `
+exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and\\n  hide it when the mouse leaves the chart 1`] = `
 <div>
   <div
     class=
@@ -34,11 +33,11 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -184,7 +183,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -225,7 +224,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -866,11 +865,11 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -978,7 +977,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1019,7 +1018,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -1369,11 +1368,11 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
 
             {
               display: block;
-              height: 0px;
-              width: 0px;
             }
         focusable="false"
+        height="0"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -16)"
@@ -1552,11 +1551,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -1702,7 +1701,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1743,7 +1742,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -2106,11 +2105,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
 
               {
                 display: block;
-                height: -24px;
-                width: 0px;
               }
           focusable="false"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
             transform="translate(0, -40)"
@@ -2256,7 +2255,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
         class=
 
             {
-              width: 0px;
+              width: 100%;
             }
       >
         <div
@@ -2297,7 +2296,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: center;
                           position: relative;
                         }
@@ -2648,11 +2647,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -2798,7 +2797,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -2839,7 +2838,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3189,11 +3188,11 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -3323,7 +3322,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3364,7 +3363,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3581,8 +3580,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
 </div>
 `;
 
-exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
-  the difference between maxValue and minValue props 1`] = `
+exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than\\n  the difference between maxValue and minValue props 1`] = `
 <div>
   <div
     class=
@@ -3615,11 +3613,11 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -3749,7 +3747,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3790,7 +3788,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4040,26 +4038,50 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
         >
+          <rect
+            class=
+
+                {
+                  fill: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
+                }
+            height="3"
+            width="6"
+            x="-3"
+            y="66"
+          />
           <text
             aria-hidden="true"
             class=
 
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-anchor: middle;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
+            data-is-focusable="false"
+            dominant-baseline="auto"
+            id="tooltip-host4"
+            tabindex="-1"
             text-anchor="middle"
             x="0"
             y="72"
@@ -4191,7 +4213,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     fill: CanvasText;
                   }
               data-is-focusable="true"
-              id="tooltip-host4"
+              id="tooltip-host5"
               tabindex="-1"
               text-anchor="middle"
               x="0"
@@ -4207,7 +4229,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4239,7 +4261,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4248,7 +4270,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4598,11 +4620,11 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -4748,7 +4770,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4789,7 +4811,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -5139,11 +5161,11 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -60)"
@@ -5310,7 +5332,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -5351,7 +5373,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AreaChart - mouse events Should render callout correctly on mouseover 1`] = `
 <body>
@@ -415,7 +415,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1111,7 +1111,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1711,7 +1711,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1911,12 +1911,13 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -1924,8 +1925,10 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1938,7 +1941,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1962,7 +1965,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -1990,7 +1993,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -2072,7 +2075,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2081,7 +2084,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2213,12 +2216,13 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -2226,8 +2230,10 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2240,7 +2246,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2264,7 +2270,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -2292,7 +2298,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -2403,7 +2409,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2412,7 +2418,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2544,12 +2550,13 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -2557,8 +2564,10 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2571,7 +2580,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2595,7 +2604,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -2623,7 +2632,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -2734,7 +2743,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2743,7 +2752,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2875,12 +2884,13 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -2888,8 +2898,10 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2902,7 +2914,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2926,7 +2938,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -2954,7 +2966,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -3056,7 +3068,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3065,7 +3077,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3197,12 +3209,13 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -3210,8 +3223,10 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3224,7 +3239,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3248,7 +3263,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -3276,7 +3291,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -3379,7 +3394,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone10"
+          data-focuszone-id="FocusZone9"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -3517,12 +3532,13 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -3530,8 +3546,10 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3544,7 +3562,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3568,7 +3586,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -3596,7 +3614,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -3689,12 +3707,13 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -3702,8 +3721,10 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3716,7 +3737,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3740,7 +3761,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -3768,7 +3789,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -3879,7 +3900,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3888,7 +3909,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4020,12 +4041,13 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -4033,8 +4055,10 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4047,7 +4071,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4071,7 +4095,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -4099,7 +4123,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -4210,7 +4234,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4219,7 +4243,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4351,12 +4375,13 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -4364,8 +4389,10 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4378,7 +4405,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4402,7 +4429,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -4430,7 +4457,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -4541,7 +4568,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4550,7 +4577,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4682,12 +4709,13 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
-    id="chart_6"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -4695,8 +4723,10 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           &:focus {
             outline: none;
           }
-
-      data-focuszone-id="FocusZone9"
+          {
+            position: relative;
+          }
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4709,7 +4739,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4733,7 +4763,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
+          id="xAxisGElementchart_5"
           transform="translate(0, -35)"
         />
         <g
@@ -4761,7 +4791,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_6"
+          id="yAxisGElementchart_5"
           transform="translate(40, 0)"
         />
         <g>
@@ -4872,7 +4902,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone10"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4881,7 +4911,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

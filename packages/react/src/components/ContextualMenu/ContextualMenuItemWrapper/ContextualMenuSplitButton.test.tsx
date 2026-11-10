@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import { getBySelector } from '../../../common/testUtilities';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
@@ -9,7 +8,7 @@ import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -18,7 +17,7 @@ describe('ContextualMenuSplitButton', () => {
     });
 
     it('renders the contextual menu split button correctly', () => {
-      const component = renderer.create(
+      const { container } = render(
         <ContextualMenuSplitButton
           item={menuItem}
           classNames={menuClassNames}
@@ -27,8 +26,7 @@ describe('ContextualMenuSplitButton', () => {
           totalItemCount={1}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
@@ -51,10 +49,34 @@ describe('ContextualMenuSplitButton', () => {
       expect(onClickMock).toHaveBeenCalledTimes(1);
       expect(onClickMock.mock.calls[0][0]).toEqual(expect.objectContaining(menuItem));
     });
+
+    it('invokes item.onClick exactly once when splitbutton is clicked', () => {
+      const onClickMock = jest.fn();
+      const { container } = render(
+        <ContextualMenuSplitButton
+          item={{ ...menuItem, canCheck: true, onClick: onClickMock }}
+          classNames={menuClassNames}
+          index={0}
+          focusableElementIndex={0}
+          totalItemCount={1}
+          hasCheckmarks={true}
+          onItemClick={jest.fn()}
+          executeItemClick={onClickMock}
+        />,
+      );
+
+      const itemButton = getBySelector(container, '.splitContainer')!;
+      const checkmarkIcon = getBySelector(container, '.checkmarkIcon')!;
+
+      fireEvent.click(itemButton);
+      expect(onClickMock).toHaveBeenCalledTimes(1);
+
+      fireEvent.click(checkmarkIcon);
+      expect(onClickMock).toHaveBeenCalledTimes(2);
+    });
   });
 });
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

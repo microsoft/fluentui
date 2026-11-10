@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = (props: Partial<ComboboxProps>) => {
+export const Appearance = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combobox');
   const styles = useStyles();
 

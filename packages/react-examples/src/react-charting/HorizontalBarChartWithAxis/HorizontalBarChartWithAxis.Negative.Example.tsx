@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'expandYAxisLabels', text: 'Expand Y Axis Ticks' },
@@ -30,7 +31,7 @@ export class HorizontalBarChartWithAxisNegativeExample extends React.Component<{
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicNegativeXAxisExample()}</div>;
   }
 
@@ -131,7 +132,7 @@ export class HorizontalBarChartWithAxisNegativeExample extends React.Component<{
     );
   };
 
-  private _basicNegativeXAxisExample(): JSX.Element {
+  private _basicNegativeXAxisExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = this._generateData();
 
     const rootStyle = { width: '650px', height: '350px' };

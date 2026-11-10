@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { Listbox } from './listbox.js';
 
 /**
@@ -15,3 +16,10 @@ export function isListbox(element?: Node | null, tagName: string = '-listbox'): 
 
   return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
+
+/**
+ * The tag name for the listbox element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-listbox` as const;

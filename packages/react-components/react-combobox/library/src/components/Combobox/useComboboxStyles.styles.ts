@@ -1,5 +1,7 @@
+'use client';
+
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
@@ -217,11 +219,24 @@ const useIconStyles = makeStyles({
     cursor: 'pointer',
     display: 'block',
     fontSize: tokens.fontSizeBase500,
+    // position: relative provides the containing block for the ::after clickable-area extension below.
+    position: 'relative',
 
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
+    // Block display avoids inline baseline space for both icon renderers.
+    '& svg, & .fui-Icon-font': {
       display: 'block',
+    },
+
+    // Extend the clickable area to cover the root's right paddingRight "dead zone".
+    // Without this, clicking between the icon and the right border does not trigger the icon's handler.
+    // The negative `right` is overridden per size variant below to match the root's paddingRight.
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
     },
   },
   hidden: {
@@ -241,14 +256,23 @@ const useIconStyles = makeStyles({
   small: {
     fontSize: iconSizes.small,
     marginLeft: tokens.spacingHorizontalXXS,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalSNudge})`,
+    },
   },
   medium: {
     fontSize: iconSizes.medium,
     marginLeft: tokens.spacingHorizontalXXS,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalMNudge})`,
+    },
   },
   large: {
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalM})`,
+    },
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -260,8 +284,6 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  'use no memo';
-
   const { appearance, open, size, showClearIcon } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const disabled = state.input.disabled;
@@ -269,6 +291,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     comboboxClassNames.root,
     styles.root,
@@ -281,6 +304,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,
@@ -290,6 +314,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   );
 
   if (state.listbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
@@ -300,6 +325,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       comboboxClassNames.expandIcon,
       iconStyles.icon,
@@ -311,6 +337,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.clearIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.clearIcon.className = mergeClasses(
       comboboxClassNames.clearIcon,
       iconStyles.icon,

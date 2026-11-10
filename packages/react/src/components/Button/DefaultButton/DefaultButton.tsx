@@ -4,12 +4,14 @@ import { customizable, nullRender } from '../../../Utilities';
 import { getStyles } from './DefaultButton.styles';
 import type { IButtonProps } from '../Button.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Button}
  */
 @customizable('DefaultButton', ['theme', 'styles'], true)
 export class DefaultButton extends React.Component<IButtonProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { primary = false, styles, theme } = this.props;
 
     return (

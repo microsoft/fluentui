@@ -34,6 +34,8 @@ import type {
 } from './ColorPicker.types';
 import type { IColor, IRGB } from '../../utilities/color/interfaces';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 type ColorComponent = keyof Pick<IColor, 'r' | 'g' | 'b' | 'a' | 't' | 'hex'>;
 type ColorErrorKeys = keyof Pick<
   IColorPickerStrings,
@@ -163,7 +165,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
   public componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void {
     // if props changed (as opposed to a state update), update the color
-    if (prevProps !== this.props) {
+    if (prevProps.color !== this.props.color) {
       const color = _getColorFromProps(this.props);
       if (color) {
         this._updateColor(undefined, color);
@@ -171,7 +173,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const props = this.props;
     const strings = this._strings;
     const textLabels = this._textLabels;

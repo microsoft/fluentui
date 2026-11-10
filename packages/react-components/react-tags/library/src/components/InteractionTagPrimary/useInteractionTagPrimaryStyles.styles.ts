@@ -1,4 +1,7 @@
-import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import type { GriffelResetStyle } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -58,10 +61,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -83,10 +83,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderTop: `${tokens.strokeWidthThin} solid`,
       borderLeft: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusCircular,
       borderBottomLeftRadius: tokens.borderRadiusCircular,
     },
@@ -231,6 +228,25 @@ const useRootStyles = makeStyles({
   },
   'extra-small': {
     paddingRight: '5px',
+    position: 'relative',
+
+    // Increase clickable area to meet WCAG 2.2 AA
+    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 const useRootDisabledAppearances = makeStyles({
@@ -280,6 +296,11 @@ const useRootWithSecondaryActionStyles = makeStyles({
       borderTopRightRadius: tokens.borderRadiusNone,
       borderBottomRightRadius: tokens.borderRadiusNone,
     }),
+    '@media (forced-colors: active)': {
+      '::before': {
+        borderTopRightRadius: '0',
+      },
+    },
   },
   medium: {
     paddingRight: tokens.spacingHorizontalS,
@@ -295,8 +316,6 @@ const useRootWithSecondaryActionStyles = makeStyles({
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
-  'use no memo';
-
   const rootRoundedBaseClassName = useRootRoundedBaseClassName();
   const rootCircularBaseClassName = useRootCircularBaseClassName();
   const rootStyles = useRootStyles();
@@ -313,6 +332,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
   const { disabled, shape, size, appearance, selected } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
 
@@ -332,6 +352,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   );
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       interactionTagPrimaryClassNames.media,
       mediaStyles.base,
@@ -340,6 +361,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       interactionTagPrimaryClassNames.icon,
       iconStyles.base,
@@ -348,6 +370,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.primaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.primaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.primaryText,
 
@@ -360,6 +383,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.secondaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.secondaryText,
       secondaryTextBaseClassName,

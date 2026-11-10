@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Attach24Regular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { Text } from '@fluentui/react-text';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useMediaObjectStyles, useSkeletonStyles, useExampleStyles } from './MediaObjectStyles.styles';
 
 type MediaObjectTypes = {
@@ -11,7 +12,7 @@ type MediaObjectTypes = {
   textAlignment?: 'start' | 'center';
 };
 
-const MediaObject: React.VoidFunctionComponent<MediaObjectTypes> = ({
+const MediaObject: React.FunctionComponent<MediaObjectTypes> = ({
   media,
   text,
   textPosition = 'after',
@@ -50,7 +51,7 @@ const Legend: React.FC<{ children?: React.ReactNode; colorClassName: string }> =
   );
 };
 
-export const FlexSkeleton = () => {
+export const FlexSkeleton = (): JSXElement => {
   const exampleStyles = useExampleStyles();
   const skeletonStyles = useSkeletonStyles();
   const mediaObjectStyles = useMediaObjectStyles();
@@ -68,7 +69,7 @@ export const FlexSkeleton = () => {
   );
 };
 
-export const IconMediaObject = () => (
+export const IconMediaObject = (): JSXElement => (
   <MediaObject
     media={<Attach24Regular />}
     text={
@@ -82,7 +83,7 @@ export const IconMediaObject = () => (
   />
 );
 
-export const TextPositionVariations = () => {
+export const TextPositionVariations = (): JSXElement => {
   const exampleStyles = useExampleStyles();
   const positions: MediaObjectTypes['textPosition'][] = ['after', 'below', 'before'];
 
@@ -107,7 +108,7 @@ export const TextPositionVariations = () => {
   );
 };
 
-export const TextAlignmentVariations = () => {
+export const TextAlignmentVariations = (): JSXElement => {
   const exampleStyles = useExampleStyles();
   const alignments: MediaObjectTypes['textAlignment'][] = ['start', 'center'];
 

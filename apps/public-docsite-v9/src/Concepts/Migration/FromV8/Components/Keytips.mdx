@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Keytips Migration" />
+
+# Keytips Migration
+
+## Overview
+
+Both Fluent UI v8 and v9 provide Keytips component.
+However, the v9 version has changes in the API and is now part of [Fluent UI contrib](https://github.com/microsoft/fluentui-contrib/tree/main/packages/react-keytips).
+
+## Prop Mapping
+
+### KeytipLayer -> Keytips
+
+This table maps v8 `KeytipLayer` component props to their v9 `Keytips` equivalents.
+
+| v8                      | v9                   | Notes                                                                                                                                                                              |
+| ----------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `keytipExitSequences`   | `exitSequence`       | Renamed. Type changed from `IKeytipTransitionKey[]` to `string`. Specify one hotkey or a combination separated by `"+"`.                                                           |
+| `keytipStartSequences`  | `startSequence`      | Renamed. Type changed from `IKeytipTransitionKey[]` to `string`. Specify one hotkey or a combination separated by `"+"`.                                                           |
+| `keytipReturnSequences` | `returnSequence`     | Renamed. Type changed from `IKeytipTransitionKey[]` to `string`. Specify one hotkey or a combination separated by `"+"`.                                                           |
+| `onExitKeytipMode`      | `onExitKeytipsMode`  | Renamed. The v8 callback receives an optional React keyboard or mouse event; the v9 event handler receives `(event, data)`.                                                        |
+| `onEnterKeytipMode`     | `onEnterKeytipsMode` | Renamed. v8 receives an optional `IKeytipTransitionKey`; v9 receives `(event, data)`, where `data.type` is `"keydown"` or `"keyup"` and `data.event` is the native keyboard event. |
+| `content`               | `content`            | Still a string. It supplies the portal text used by `aria-describedby`, not the content displayed by an individual keytip.                                                         |
+| `styles`                | `not supported`      | The component holds only logic and does not require styles.                                                                                                                        |
+| `componentRef`          | `not supported`      |                                                                                                                                                                                    |
+| `no equivalent`         | `invokeEvent`        | New prop, specifies whether `keydown` or `keyup` invokes keytips.                                                                                                                  |
+| `no equivalent`         | `startDelay`         | New prop, adds a delay before entering keytip mode while the start sequence is held.                                                                                               |
+
+### IKeytipProps -> KeytipProps
+
+This table maps changes between `IKeytipProps` and `KeytipProps` type equivalent in v9.
+
+| v8                    | v9                   | v8 type                                                                     | v9 type                      | Notes                                                                                                                                                                                              |
+| --------------------- | -------------------- | --------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `content`             | `content`            | `string`                                                                    | `NonNullable<Slot<'div'>>`   | v9 accepts text or JSX slot content; it is not limited to a string.                                                                                                                                |
+| `visible`             | `visible`            | `boolean`                                                                   | `boolean`                    | Unchanged.                                                                                                                                                                                         |
+| `keySequences`        | `keySequences`       | `string[]`                                                                  | `string[]`                   | Unchanged.                                                                                                                                                                                         |
+| `hasMenu`             | `hasMenu`            | `boolean`                                                                   | `boolean`                    | Unchanged.                                                                                                                                                                                         |
+| `hasDynamicChildren`  | `dynamic`            | `boolean`                                                                   | `boolean`                    | Renamed.                                                                                                                                                                                           |
+| `hasOverflowSubMenu`  | `no equivalent`      | `boolean`                                                                   |                              | Use `hasMenu` instead.                                                                                                                                                                             |
+| `theme`               | `no equivalent`      |                                                                             |                              | Not supported.                                                                                                                                                                                     |
+| `overflowSetSequence` | `overflowSequence`   | `string[]`                                                                  | `string[]`                   | Renamed.                                                                                                                                                                                           |
+| `disabled`            | `no equivalent`      | `boolean`                                                                   |                              | Not supported. v9 keytips do not appear for disabled elements.                                                                                                                                     |
+| `calloutProps`        | individual props     | `ICalloutProps`                                                             |                              | Not a direct mapping. Use `positioning`, `visible`, and `content` individually. See the [positioning API](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs). |
+| `offset`              | `positioning.offset` | `Point`                                                                     | `PositioningProps['offset']` | Move the offset into the `positioning` object; the positioning API's offset shape is not the v8 `Point` shape.                                                                                     |
+| `styles`              | `no equivalent`      |                                                                             |                              | Not supported.                                                                                                                                                                                     |
+| `onExecute`           | `onExecute`          | `(executeTarget: HTMLElement \| null, target: HTMLElement \| null) => void` | `ExecuteKeytipEventHandler`  | v9 receives `(event, data)`; the attached element is `data.targetElement`.                                                                                                                         |
+| `onReturn`            | `onReturn`           | `(executeTarget: HTMLElement \| null, target: HTMLElement \| null) => void` | `ReturnKeytipEventHandler`   | v9 receives `(event, data)`; the attached element is `data.targetElement`.                                                                                                                         |
+
+### useKeytipRef -> useKeytipRef
+
+The hook's input changed from v8 `KeytipDataOptions` to the v9 `KeytipProps`
+object. Pass the individual keytip props directly.
+
+| v8 `KeytipDataOptions` | v9                       | Notes                                                       |
+| ---------------------- | ------------------------ | ----------------------------------------------------------- |
+| `keytipProps`          | individual `KeytipProps` | Spread or pass the individual props directly.               |
+| `ariaDescribedBy`      | `no equivalent`          | Not supported.                                              |
+| `disabled`             | `no equivalent`          | Not supported. Keytips are not shown for disabled elements. |
+
+### KeytipData -> no equivalent
+
+### useKeytipData -> no equivalent
+
+## Examples
+
+### Basic usage of Keytips with Buttons in v8
+
+In v8 some components have `keytipProps` as a part of their props API.
+
+```tsx
+export const KeytipsBasicExampleV8 = () => {
+  return (
+    <Button
+      keytipProps={{
+        keySequences: ['aa'],
+        onExecute: () => console.log('Button'),
+        content: 'AA',
+      }}
+      text="Button"
+    />
+  );
+};
+```
+
+### An equivalent basic Keytips example in v9
+
+v9 components do not have `keytipProps` and keytip have to be attached via
+`useKeytipRef` hook.
+
+```tsx
+import * as React from 'react';
+import { Keytips, useKeytipRef } from '@fluentui-contrib/react-keytips';
+import { Button } from '@fluentui/react-components';
+
+export const KeytipsBasicExampleV9 = () => {
+  const buttonRef = useKeytipRef({
+    keySequences: ['aa'],
+    content: 'AA',
+    onExecute: (_, { targetElement }) => targetElement?.click(),
+  });
+
+  return (
+    <>
+      {/* Render exactly one Keytips component under the app's root FluentProvider. */}
+      <Keytips />
+      <Button ref={buttonRef} onClick={() => console.log('Button')}>
+        Button
+      </Button>
+    </>
+  );
+};
+```
+
+For more examples, please refer to the [Keytip documentation](https://react.fluentui.dev/?path=/docs/contrib_packages-react-keytips--docs) and [source code](https://github.com/microsoft/fluentui-contrib/tree/main/packages/react-keytips/stories).

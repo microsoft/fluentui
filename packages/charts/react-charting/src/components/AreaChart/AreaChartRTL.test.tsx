@@ -16,7 +16,7 @@ import {
   isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 declare const global: any;
 
 const { Timezone } = require('../../../scripts/constants');
@@ -700,10 +700,10 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, showXAxisLablesTooltip: true },
     container => {
-      const xAxisLabels = getById(container, /showDots/i);
+      const xAxisLabels = container.querySelectorAll('tspan');
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
+      expect(xAxisLabels[0].textContent).toEqual('Jan ...');
     },
     undefined,
     undefined,

@@ -16,42 +16,15 @@ import {
  *
  * @tag fluent-avatar
  *
+ * @slot badge - Optional badge content displayed with the avatar.
+ *
+ * @presentational {AvatarActive | undefined} active - Optional activity indicator.
+ * @presentational {AvatarShape | undefined} shape - The avatar can have a circular or square shape.
+ * @presentational {AvatarAppearance | undefined} appearance - The appearance when `active="active"`.
+ *
  * @public
  */
 export class Avatar extends BaseAvatar {
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
-
-  /**
-   * The avatar can have a circular or square shape.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: AvatarShape | undefined;
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: AvatarAppearance | undefined;
-
   /**
    * Size of the avatar in pixels.
    *
@@ -125,8 +98,8 @@ export class Avatar extends BaseAvatar {
     const size = this.size ?? 32;
 
     return (
-      this.initials ??
-      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
+      this.initials ||
+      getInitials(this.name, window.getComputedStyle(this).direction === 'rtl', {
         firstInitialOnly: size <= 16,
       })
     );
@@ -176,7 +149,7 @@ const getHashCode = (str: string): number => {
   for (let len: number = str.length - 1; len >= 0; len--) {
     const ch = str.charCodeAt(len);
     const shift = len % 8;
-    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+    hashCode ^= (ch << shift) + (ch >> (8 - shift));
   }
 
   return hashCode;

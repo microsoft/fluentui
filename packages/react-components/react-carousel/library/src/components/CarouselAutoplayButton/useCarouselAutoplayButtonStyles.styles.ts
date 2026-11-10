@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselAutoplayButtonSlots, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
@@ -34,15 +36,15 @@ const useStyles = makeStyles({
 export const useCarouselAutoplayButtonStyles_unstable = (
   state: CarouselAutoplayButtonState,
 ): CarouselAutoplayButtonState => {
-  'use no memo';
-
   const styles = useStyles();
 
   useToggleButtonStyles_unstable(state);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(carouselAutoplayButtonClassNames.icon, state.icon.className);
   }
 

@@ -10,6 +10,7 @@
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "baseUrl": ".",
     "parser": {
       "syntax": "typescript",
       "tsx": true,
@@ -21,6 +22,14 @@
       "react": {
         "runtime": "classic",
         "useSpread": true
+      },
+      "optimizer": {
+        "simplify": true,
+        "globals": {
+          "envs": {
+            "BABEL_PRESET_FULL_SOURCE_DEV": "\"false\""
+          }
+        }
       }
     },
     "target": "es2019"

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   mergeClasses,
@@ -190,7 +191,7 @@ const Column3 = () => {
   );
 };
 
-export const ThemePreviewV9: React.FC<ContentProps> = props => {
+export const ThemePreviewV9: React.FC<ContentProps> = (props): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

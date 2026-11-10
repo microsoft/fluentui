@@ -1,8 +1,11 @@
+'use client';
+
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
+import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import type {
   CalendarYearStrings,
   CalendarYearProps,
@@ -12,8 +15,6 @@ import type {
 
 const CELL_COUNT = 12;
 const CELLS_PER_ROW = 4;
-
-/* eslint-disable react-compiler/react-compiler */
 
 const DefaultCalendarYearStrings: CalendarYearStrings = {
   prevRangeAriaLabel: undefined,
@@ -35,7 +36,7 @@ interface CalendarYearGridCellProps extends CalendarYearProps {
 interface CalendarYearGridProps extends CalendarYearProps, CalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
-  componentRef?: React.RefObject<CalendarYearGridCell>;
+  componentRef?: React.RefObject<CalendarYearGridCell | null>;
 }
 
 interface CalendarYearGridCell {
@@ -114,12 +115,10 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     componentRef,
   } = props;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const selectedCellRef = React.useRef<CalendarYearGridCell>(null);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const currentCellRef = React.useRef<CalendarYearGridCell>(null);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useImperativeHandle(
     componentRef,
     () => ({
@@ -150,7 +149,6 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     );
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classNames = useCalendarYearStyles_unstable({
     className,
     animateBackwards,
@@ -180,9 +178,16 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
       {cells.map((cellRow: React.ReactNode[], index: number) => {
         return (
-          <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
-            {cellRow}
-          </div>
+          <DirectionalSlideIn
+            key={index}
+            replayKey={fromYear}
+            animationDirection={animationDirection}
+            animateBackwards={animateBackwards}
+          >
+            <div role="row" className={classNames.buttonRow}>
+              {cellRow}
+            </div>
+          </DirectionalSlideIn>
         );
       })}
     </div>
@@ -240,11 +245,12 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
   return (
     <button
       className={mergeClasses(classNames.navigationButton, disabled && classNames.disabled)}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : undefined}
       onClick={!disabled ? onNavigate : undefined}
       onKeyDown={!disabled ? onKeyDown : undefined}
       type="button"
       title={ariaLabelString}
-      disabled={disabled}
     >
       {direction === CalendarYearNavDirection.Previous ? navigationIcons.upNavigation : navigationIcons.downNavigation}
     </button>
@@ -355,18 +361,18 @@ const CalendarYearHeader: React.FunctionComponent<CalendarYearHeaderProps> = pro
 };
 CalendarYearHeader.displayName = 'CalendarYearHeader';
 
-function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps) {
-  const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-  const fromYear = Math.floor(rangeYear / 10) * 10;
-
-  const previousFromYearRef = React.useRef<number | undefined>(fromYear);
-  React.useRef(() => {
+function useAnimateBackwards(fromYear: number): boolean | undefined {
+  const previousFromYearRef = React.useRef<number | undefined>(undefined);
+  React.useEffect(() => {
     previousFromYearRef.current = fromYear;
   });
+  // eslint-disable-next-line react-hooks/refs
   const previousFromYear = previousFromYearRef.current;
 
-  if (!previousFromYear || previousFromYear === fromYear) {
+  // eslint-disable-next-line react-hooks/refs
+  if (previousFromYear === undefined || previousFromYear === fromYear) {
     return undefined;
+    // eslint-disable-next-line react-hooks/refs
   } else if (previousFromYear > fromYear) {
     return true;
   } else {
@@ -374,7 +380,7 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
   }
 }
 
-function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
+function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: CalendarYearProps) {
   const rangeYear = React.useMemo(() => {
     return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
   }, [navigatedYear, selectedYear]);
@@ -382,14 +388,19 @@ function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
   const [fromYear, setFromYear] = React.useState<number>(rangeYear);
 
   const onNavNext = () => {
-    setFromYear(year => year + CELL_COUNT);
+    const newFromYear = fromYear + CELL_COUNT;
+    setFromYear(newFromYear);
+    onNavigateDate?.(newFromYear);
   };
 
   const onNavPrevious = () => {
-    setFromYear(year => year - CELL_COUNT);
+    const newFromYear = fromYear - CELL_COUNT;
+    setFromYear(newFromYear);
+    onNavigateDate?.(newFromYear);
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFromYear(rangeYear);
   }, [rangeYear]);
 
@@ -402,8 +413,8 @@ function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
  * @internal
  */
 export const CalendarYear: React.FunctionComponent<CalendarYearProps> = props => {
-  const animateBackwards = useAnimateBackwards(props);
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
+  const animateBackwards = useAnimateBackwards(fromYear);
 
   const gridRef = React.useRef<CalendarYearGrid>(null);
 

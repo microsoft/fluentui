@@ -1,18 +1,22 @@
 import * as React from 'react';
+
+import type {
+  JSXElement,
+  TableColumnDefinition,
+  TableColumnSizingOptions,
+  PresenceBadgeStatus,
+} from '@fluentui/react-components';
 import {
   Table,
   TableBody,
   TableCell,
   TableCellLayout,
-  TableColumnDefinition,
-  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableFeatures,
-  PresenceBadgeStatus,
   Avatar,
   Input,
   useId,
@@ -53,7 +57,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -63,7 +67,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -117,7 +121,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableColumnsUncontrolled = () => {
+export const ResizableColumnsUncontrolled = (): JSXElement => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {

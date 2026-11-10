@@ -9,6 +9,7 @@ import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@fluentui/example-data';
 import { ISelectedPeopleListProps } from '@fluentui/react-experiments/lib/SelectedItemsList';
 import { IInputProps } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const _suggestions = [
   {
@@ -53,7 +54,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-const UnifiedPeoplePickerExample = (): JSX.Element => {
+const UnifiedPeoplePickerExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
@@ -199,7 +200,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
-      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+      return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
 
     const updatedItems: IPersonaProps[] = [];
@@ -284,7 +285,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   );
 };
 
-export const DoubleUnifiedPeoplePickerExample = (): JSX.Element => {
+export const DoubleUnifiedPeoplePickerExample = (): JSXElement => {
   return (
     <>
       To: <UnifiedPeoplePickerExample />

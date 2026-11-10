@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const LargerDividers = () => {
+export const LargerDividers = (): JSXElement => {
   const styles = useStyles();
 
   return (

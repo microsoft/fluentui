@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import { ColorSlider, type ColorSliderProps, Button, makeStyles } from '@fluentui/react-components';
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 });
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
-export const ColorSliderDefault = (props: Partial<ColorSliderProps>) => {
+export const ColorSliderDefault = (props: Partial<ColorSliderProps>): JSXElement => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hue, setHue] = React.useState(DEFAULT_COLOR_HSV.h);

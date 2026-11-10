@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { OptionCollectionState, OptionValue } from './OptionCollection.types';
 
@@ -50,6 +52,7 @@ export const useOptionCollection = (): OptionCollectionState => {
 
   return {
     ...collectionAPI,
+    // eslint-disable-next-line react-hooks/refs
     options: Array.from(optionsById.current.values()),
     registerOption,
   };

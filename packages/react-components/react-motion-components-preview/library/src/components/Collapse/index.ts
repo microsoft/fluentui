@@ -1,9 +1,2 @@
-export {
-  Collapse,
-  CollapseDelayed,
-  CollapseRelaxed,
-  CollapseSnappy,
-  createCollapseDelayedPresence,
-  createCollapsePresence,
-} from './Collapse';
-export type { CollapseRuntimeParams } from './collapse-types';
+export { Collapse, CollapseDelayed, CollapseRelaxed, CollapseSnappy } from './Collapse';
+export type { CollapseParams, CollapseDurations } from './collapse-types';

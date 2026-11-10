@@ -1,15 +1,38 @@
 import * as React from 'react';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox, makeStyles, Switch, tokens } from '@fluentui/react-components';
+import type { GaugeChartCalloutData } from '@fluentui/react-charts';
 import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
-export const GaugeChartBasic = () => {
-  const [width, setWidth] = React.useState<number>(252);
-  const [height, setHeight] = React.useState<number>(128);
+const useStyles = makeStyles({
+  callout: {
+    display: 'grid',
+    gap: tokens.spacingVerticalXS,
+    padding: tokens.spacingVerticalS,
+  },
+  calloutValue: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  calloutTitle: {
+    fontSize: tokens.fontSizeBase500,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  calloutDescription: {
+    color: tokens.colorNeutralForeground2,
+  },
+});
+
+export const GaugeChartBasic = (): JSXElement => {
+  const styles = useStyles();
+  const [width, setWidth] = React.useState<number>(400);
+  const [height, setHeight] = React.useState<number>(240);
   const [chartValue, setChartValue] = React.useState<number>(50);
   const [hideMinMax, setHideMinMax] = React.useState<boolean>(false);
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundedCorners, setRoundedCorners] = React.useState<boolean>(false);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState<boolean>(false);
+  const [useCustomCallout, setUseCustomCallout] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -24,17 +47,42 @@ export const GaugeChartBasic = () => {
     setHideMinMax(checked.checked as boolean);
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
+
+  const _onSwitchCallout = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+    setUseCustomCallout(ev.currentTarget.checked);
+  }, []);
+
+  const _renderCallout = (data?: GaugeChartCalloutData): JSXElement | null => {
+    if (!data) {
+      return null;
+    }
+    const segments = data.segments ?? [];
+
+    return (
+      <div className={styles.callout}>
+        <span className={styles.calloutTitle}>{data.chartTitle}</span>
+        <span className={styles.calloutDescription}>Average time required to process one server tick.</span>
+        <span className={styles.calloutValue}>Current value: {data.chartValueLabel}</span>
+        {segments.map((segment, index) => (
+          <span key={segment.legend}>
+            {segment.legend}: {segment.start}
+            {index === segments.length - 1 ? '+' : `-${segment.end}`} ms
+          </span>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
@@ -48,7 +96,8 @@ export const GaugeChartBasic = () => {
             max={1000}
             id="width-slider"
             onChange={_onWidthChange}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -61,7 +110,8 @@ export const GaugeChartBasic = () => {
             max={1000}
             id="height-slider"
             onChange={_onHeightChange}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>
@@ -71,10 +121,11 @@ export const GaugeChartBasic = () => {
             type="range"
             value={chartValue}
             min={0}
-            max={100}
+            max={200}
             id="value-slider"
             onChange={_onValueChange}
-            aria-valuetext={`Current value: ${chartValue}`}
+            aria-label="Change Current Value"
+            aria-valuetext={`current value ${chartValue}, Minimum 0 and Maximum 200`}
           />
           <span>{chartValue}</span>
         </div>
@@ -100,6 +151,12 @@ export const GaugeChartBasic = () => {
           checked={legendMultiSelect}
           onChange={_onSwitchLegendMultiSelect}
         />
+        &nbsp;&nbsp;
+        <Switch
+          label={useCustomCallout ? 'Callout: custom (milliseconds)' : 'Callout: default (percentage)'}
+          checked={useCustomCallout}
+          onChange={_onSwitchCallout}
+        />
       </div>
 
       <GaugeChart
@@ -107,22 +164,24 @@ export const GaugeChartBasic = () => {
         height={height}
         segments={[
           {
-            size: 33,
+            size: 50,
             color: getColorFromToken(DataVizPalette.success),
-            legend: 'Low Risk',
+            legend: 'Healthy',
           },
           {
-            size: 34,
+            size: 100,
             color: getColorFromToken(DataVizPalette.warning),
-            legend: 'Medium Risk',
+            legend: 'Elevated',
           },
           {
-            size: 33,
+            size: 50,
             color: getColorFromToken(DataVizPalette.error),
-            legend: 'High Risk',
+            legend: 'Critical',
           },
         ]}
+        chartTitle="Server tick time"
         chartValue={chartValue}
+        chartValueFormat={useCustomCallout ? ([value]) => (value === 0 ? 'offline' : `${value}ms`) : 'percentage'}
         hideMinMax={hideMinMax}
         variant={'multiple-segments'}
         enableGradient={enableGradient}
@@ -130,6 +189,7 @@ export const GaugeChartBasic = () => {
         legendProps={{
           canSelectMultipleLegends: legendMultiSelect,
         }}
+        onRenderCallout={useCustomCallout ? _renderCallout : undefined}
       />
     </>
   );

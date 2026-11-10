@@ -1,6 +1,8 @@
+'use client';
+
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { DividerSlots, DividerState } from './Divider.types';
+import type { DividerSlots, DividerState } from './Divider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const dividerClassNames: SlotClassNames<DividerSlots> = {
@@ -148,6 +150,8 @@ const useHorizontalStyles = makeStyles({
 
   // Alignment variations
   start: {
+    textAlign: 'left',
+
     '::before': {
       content: '""',
       marginRight: contentSpacing,
@@ -159,6 +163,8 @@ const useHorizontalStyles = makeStyles({
     },
   },
   center: {
+    textAlign: 'center',
+
     '::before': {
       marginRight: contentSpacing,
     },
@@ -167,6 +173,8 @@ const useHorizontalStyles = makeStyles({
     },
   },
   end: {
+    textAlign: 'right',
+
     '::before': {
       marginRight: contentSpacing,
     },
@@ -241,14 +249,13 @@ const useVerticalStyles = makeStyles({
 });
 
 export const useDividerStyles_unstable = (state: DividerState): DividerState => {
-  'use no memo';
-
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();
 
   const { alignContent, appearance, inset, vertical } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dividerClassNames.root,
 
@@ -276,6 +283,7 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
   );
 
   if (state.wrapper) {
+    // eslint-disable-next-line react-hooks/immutability
     state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
   }
 

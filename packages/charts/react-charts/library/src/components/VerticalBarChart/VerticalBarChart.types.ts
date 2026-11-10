@@ -1,11 +1,11 @@
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,
   VerticalBarChartDataPoint,
 } from '../../index';
-import { LineChartLineOptions } from '../../types/index';
+import type { LineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties
@@ -62,7 +62,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalBarChartStyles;
+  styles?: Partial<VerticalBarChartStyles>;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -121,7 +121,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * Specifies the mode of the chart.
    * @default 'default'
    */
-  mode?: 'default' | 'plotly';
+  mode?: 'default' | 'plotly' | 'histogram';
 }
 
 /**

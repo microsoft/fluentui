@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverCarouselNavButtonBaseProps,
+  TeachingPopoverCarouselNavButtonBaseState,
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonSlots,
   TeachingPopoverCarouselNavButtonState,
@@ -9,4 +11,5 @@ export {
   teachingPopoverCarouselNavButtonClassNames,
   useTeachingPopoverCarouselNavButtonStyles_unstable,
   useTeachingPopoverCarouselNavButton_unstable,
+  useTeachingPopoverCarouselNavButtonBase_unstable,
 } from './components/TeachingPopoverCarouselNavButton/index';

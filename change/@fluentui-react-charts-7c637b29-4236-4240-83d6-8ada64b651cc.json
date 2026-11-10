@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Consume y axis tick format for bar labels",
-  "packageName": "@fluentui/react-charts",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

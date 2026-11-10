@@ -1,0 +1,665 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/V2 to V3 Migration Guide" />
+
+# Migration Guide
+
+Fluent Web Components v3 is a ground-up rewrite of the library. If you are coming from v2 (the last v2 release was `2.6.1`), expect breaking changes across imports, component registration, theming, and the markup for most form controls. This guide covers what changed and how to update your code.
+
+## Major Changes
+
+- **New foundation.** Fluent Web Components v3 is built directly on [FAST Element](https://fast.design) v3. The hard dependency on `@microsoft/fast-foundation` has been removed.
+- **Individual component exports.** Every component ships its own class, template, styles, and definition, so you can register only what you use.
+- **New registration model.** The `provideFluentDesignSystem().register(...)` pattern is gone. Register components with side-effect `define` imports instead.
+- **Token-based theming.** `setTheme()` replaces the design-token and `DesignSystemProvider` model, so you can apply your own theme to the whole page or a single element.
+- **`ElementInternals` everywhere.** Form-associated components use `ElementInternals` for better native form participation.
+- **Smaller and lighter.** The full-library bundle is about 20% smaller over the wire.
+
+## Bundle Size Comparison
+
+Comparing the CDN bundle that registers the entire library (`web-components.min.js`) in each version:
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Version</th>
+      <th scope="col">Bundle</th>
+      <th scope="col">Minified</th>
+      <th scope="col">Gzip</th>
+      <th scope="col">Brotli</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">v2.6.1</th>
+      <td>
+        <code>web-components.min.js</code>
+      </td>
+      <td>366 KB</td>
+      <td>80.4 KB</td>
+      <td>67.2 KB</td>
+    </tr>
+    <tr>
+      <th scope="row">v3.0.0</th>
+      <td>
+        <code>web-components.min.js</code>
+      </td>
+      <td>267 KB</td>
+      <td>64.5 KB</td>
+      <td>54.1 KB</td>
+    </tr>
+    <tr>
+      <th scope="row">Reduction</th>
+      <td></td>
+      <td>
+        <strong>&minus;27%</strong>
+      </td>
+      <td>
+        <strong>&minus;20%</strong>
+      </td>
+      <td>
+        <strong>&minus;19%</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+The v3 `web-components-all.min.js` bundle (all components plus every named export) is 301 KB minified / 71.3 KB gzip.
+
+The v2 and v3 component sets are not identical. Because every v3 component is individually importable, most applications ship far less than the full bundle by registering only the components they use.
+
+## Usage
+
+### Installation and Dependencies
+
+Fluent Web Components v3 can be installed for direct use in your project with common package managers:
+
+```bash
+# npm
+npm install @fluentui/web-components
+```
+
+`@fluentui/web-components` expects `@microsoft/fast-element@^3.0.0` to be installed as a peer dependency. If you are using a package manager that does not automatically install peer dependencies, you will need to install it manually:
+
+```bash
+# npm
+npm install @microsoft/fast-element
+```
+
+### Registering components
+
+Each component provides a side-effect import that registers the component with the browser. For example, to register the `Button` and `TextInput` components:
+
+```ts
+// V3 — register individual components
+import '@fluentui/web-components/button/define.js';
+import '@fluentui/web-components/text-input/define.js';
+```
+
+You can also register all components at once with a single import:
+
+```ts
+// V3 — register all components
+import '@fluentui/web-components/web-components.js';
+```
+
+Individual export paths allow you to import the component class, template, styles, and definition for use in your own custom elements:
+
+```ts
+// The Fluent component class, which extends the BaseButton class with Fluent-specific behavior and properties
+import { Button } from '@fluentui/web-components/button/class.js';
+
+// Most components provide a base class, which can be extended to create a custom component
+import { BaseButton } from '@fluentui/web-components/button/base.js';
+
+// The raw component definition which
+import { definition as ButtonDefinition } from '@fluentui/web-components/button/definition.js';
+
+// Fluent-specific component template
+import { template as ButtonTemplate } from '@fluentui/web-components/button/template.js';
+
+// Fluent-specific composed styles
+import { styles as ButtonStyles } from '@fluentui/web-components/button/styles.js';
+
+// Attribute and property configuration options, as well as the component tag name
+import {
+  ButtonAppearance,
+  ButtonSize,
+  ButtonShape,
+  tagName as ButtonTagName,
+} from '@fluentui/web-components/button/options.js';
+```
+
+All public exports are provided in the `@fluentui/web-components` package root, so you can also import them from there:
+
+```ts
+import {
+  Button,
+  BaseButton,
+  ButtonDefinition,
+  ButtonTemplate,
+  ButtonStyles,
+  ButtonAppearance,
+  ButtonSize,
+  ButtonShape,
+  ButtonTagName,
+} from '@fluentui/web-components';
+```
+
+If you only need to define all components, you can import from the `web-components.js` entry point. The `setTheme()` function is also provided as a property on the `Fluent` global object, so you can use it without importing anything else:
+
+```ts
+// All components are defined as a side effect of this import, but no public exports are available
+import '@fluentui/web-components/web-components.js';
+
+// the global `Fluent.setTheme()` function is available on the `Fluent` global object
+Fluent.setTheme(/* your theme */);
+```
+
+If you need to define all components _and_ use public exports, you can import from the `web-components-all.js` entry point:
+
+```ts
+// All components are defined as a side effect of this import, and all public exports are available from the same entry point
+import {
+  Button,
+  BaseButton,
+  ButtonDefinition,
+  ButtonTemplate,
+  ButtonStyles,
+  ButtonAppearance,
+  ButtonSize,
+  ButtonShape,
+  ButtonTagName,
+} from '@fluentui/web-components/web-components-all.js';
+
+// the global `Fluent.setTheme()` function is also available from this entry point
+Fluent.setTheme(/* your theme */);
+```
+
+## Theming
+
+v2 configured appearance through design tokens (for example `baseLayerLuminance`) and the `DesignSystemProvider`. v3 replaces this with `setTheme()`, which writes a flat object of theme tokens as CSS custom properties.
+
+```ts
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme, webDarkTheme } from '@fluentui/tokens';
+
+// Theme the whole document (default target)
+setTheme(webLightTheme);
+
+// Theme a single element and its subtree
+setTheme(webDarkTheme, document.querySelector('#panel'));
+
+// Unset a theme globally or on an element
+setTheme(null);
+setTheme(null, document.querySelector('#panel'));
+```
+
+`setTheme()` accepts any flat token object where each value is a string or number; it is not limited to the shipped `@fluentui/tokens` themes.
+
+When you load the CDN bundle via a script tag, `setTheme` is available on `globalThis` under the `Fluent` namespace:
+
+```html
+<script type="module" src="https://unpkg.com/@fluentui/web-components/web-components.min.js"></script>
+<script type="module">
+  Fluent.setTheme(/* your theme */);
+</script>
+```
+
+See the [Theming](?path=/docs/concepts-developer-theming--docs) page for more information.
+
+### New Components in v3
+
+These components are new in v3. Some are entirely new to the library, while others replace or rename a v2 component, as noted.
+
+{/* prettier-ignore */}
+<table>
+  <thead>
+    <tr>
+      <th>Component Class</th>
+      <th>v3 tag name</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AnchorButton</td>
+      <td><code>&lt;fluent-anchor-button&gt;</code></td>
+      <td>Replaces <code>&lt;fluent-anchor&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Avatar</td>
+      <td><code>&lt;fluent-avatar&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CounterBadge</td>
+      <td><code>&lt;fluent-counter-badge&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CompoundButton</td>
+      <td><code>&lt;fluent-compound-button&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DialogBody</td>
+      <td><code>&lt;fluent-dialog-body&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Drawer</td>
+      <td><code>&lt;fluent-drawer&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DrawerBody</td>
+      <td><code>&lt;fluent-drawer-body&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Dropdown</td>
+      <td><code>&lt;fluent-dropdown&gt;</code></td>
+      <td>Replaces <code>&lt;fluent-combobox&gt;</code> and <code>&lt;fluent-select&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Field</td>
+      <td><code>&lt;fluent-field&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Image</td>
+      <td><code>&lt;fluent-image&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td><code>&lt;fluent-label&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td><code>&lt;fluent-link&gt;</code></td>
+      <td>Replaces <code>&lt;fluent-anchor appearance="hypertext"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>MenuButton</td>
+      <td><code>&lt;fluent-menu-button&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MenuList</td>
+      <td><code>&lt;fluent-menu-list&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MessageBar</td>
+      <td><code>&lt;fluent-message-bar&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ProgressBar</td>
+      <td><code>&lt;fluent-progress-bar&gt;</code></td>
+      <td>Renamed from <code>&lt;fluent-progress&gt;</code></td>
+    </tr>
+    <tr>
+      <td>RatingDisplay</td>
+      <td><code>&lt;fluent-rating-display&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Spinner</td>
+      <td><code>&lt;fluent-spinner&gt;</code></td>
+      <td>Handles the indeterminate loading case previously covered by <code>&lt;fluent-progress-ring&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Tablist</td>
+      <td><code>&lt;fluent-tablist&gt;</code></td>
+      <td>Renamed from <code>&lt;fluent-tabs&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td><code>&lt;fluent-text&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TextInput</td>
+      <td><code>&lt;fluent-text-input&gt;</code></td>
+      <td>Renamed from <code>&lt;fluent-text-field&gt;</code></td>
+    </tr>
+    <tr>
+      <td>TextArea</td>
+      <td><code>&lt;fluent-textarea&gt;</code></td>
+      <td>Renamed from <code>&lt;fluent-text-area&gt;</code></td>
+    </tr>
+    <tr>
+      <td>ToggleButton</td>
+      <td><code>&lt;fluent-toggle-button&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Tree</td>
+      <td><code>&lt;fluent-tree&gt;</code></td>
+      <td>Renamed from <code>&lt;fluent-tree-view&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Removed Components
+
+Aside from the renamed and replaced components above, the following components have been removed in v3:
+
+- Breadcrumb (`<fluent-breadcrumb>`)
+- BreadcrumbItem (`<fluent-breadcrumb-item>`)
+- Calendar (`<fluent-calendar>`)
+- Card (`<fluent-card>`)
+- DataGrid (`<fluent-data-grid>`)
+- DataGridCell (`<fluent-data-grid-cell>`)
+- DataGridRow (`<fluent-data-grid-row>`)
+- DesignSystemProvider (`<fluent-design-system-provider>`)
+- Flipper (`<fluent-flipper>`)
+- HorizontalScroll (`<fluent-horizontal-scroll>`)
+- NumberField (`<fluent-number-field>`)
+- ProgressRing (`<fluent-progress-ring>`)
+- Search (`<fluent-search>`)
+- Skeleton (`<fluent-skeleton>`)
+- Toolbar (`<fluent-toolbar>`)
+
+## Major Component API Changes
+
+### Anchor
+
+Button-style anchors are now represented by the `AnchorButton` class and `<fluent-anchor-button>` tag. Hypertext-style anchors are now represented by the `Link` class and `<fluent-link>` tag.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Class Name</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Anchor</td>
+      <td>AnchorButton</td>
+      <td>
+        <code>&lt;fluent-anchor&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-anchor-button&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td>
+        <code>&lt;fluent-anchor appearance="hypertext"&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-link&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### AnchoredRegion
+
+The `AnchoredRegion` class and `<fluent-anchored-region>` tag have been removed in v3. Use CSS anchor positioning instead.
+
+### Combobox and Select
+
+The `Combobox` and `Select` classes in v2 have been replaced with the `Dropdown` class in v3. The `Dropdown` class can be configured to behave like a combobox by setting the `type` attribute to `"combobox"`.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Class Name</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Combobox</td>
+      <td rowspan="2">Dropdown</td>
+      <td>
+        <code>&lt;fluent-combobox&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-dropdown type="combobox"&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Select</td>
+      <td>
+        <code>&lt;fluent-select&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-dropdown&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>ListboxOption</td>
+      <td>DropdownOption</td>
+      <td>
+        <code>&lt;fluent-option&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-option&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Dialog, DialogBody, Drawer, and DrawerBody
+
+The `Dialog` component in v2 didn't allow for expressive dialogs without the default padding and presentation (like full-width imagery). The introduction of the `<fluent-dialog-body>` element allows for more custom compositions. Additionally, the `Drawer` component and `<fluent-drawer-body>` element have been added in v3 to support a new type of modal presentation.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Class Name</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Dialog</td>
+      <td>Dialog</td>
+      <td>
+        <code>&lt;fluent-dialog&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-dialog&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>DialogBody</td>
+      <td></td>
+      <td>
+        <code>&lt;fluent-dialog-body&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2"></td>
+      <td>Drawer</td>
+      <td>
+        <code>&lt;fluent-drawer&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-drawer&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>DrawerBody</td>
+      <td></td>
+      <td>
+        <code>&lt;fluent-drawer-body&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Progress
+
+The `Progress` class in v2 has been renamed to the `ProgressBar` class in v3. It remains a determinate, linear progress indicator.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Component Class</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Progress</td>
+      <td>ProgressBar</td>
+      <td>
+        <code>&lt;fluent-progress&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-progress-bar&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### SliderLabel
+
+The `SliderLabel` class and `<fluent-slider-label>` tag have been removed in v3. Use the `Field` or `Label` classes and `<fluent-field>` or `<fluent-label>` tags instead.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v2 tag name</th>
+      <th>v3 Class Name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">SliderLabel</td>
+      <td rowspan="2">
+        <code>&lt;fluent-slider-label&gt;</code>
+      </td>
+      <td>Field</td>
+      <td>
+        <code>&lt;fluent-field&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td>
+        <code>&lt;fluent-label&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Tabs and TabPanel
+
+The `Tabs` class in v2 has been replaced with the `Tablist` class in v3. The `TabPanel` class and `<fluent-tab-panel>` tag have been removed: supply your own panel element and associate it with a `Tab` through the tab's `aria-controls` attribute, referencing the panel's `id`. The `Tablist` applies `role="tabpanel"` to that element and shows or hides it based on the active tab.
+
+{/* prettier-ignore */}
+<table>
+  <thead>
+    <tr>
+      <th>Component Class</th>
+      <th>v3 Class Name</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tabs</td>
+      <td>Tablist</td>
+      <td>
+        <code>&lt;fluent-tabs&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-tablist&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>TabPanel</td>
+      <td></td>
+      <td>
+        <code>&lt;fluent-tab-panel&gt;</code>
+      </td>
+      <td>Use your own panel element and associate it with a <code>Tab</code> through the tab's <code>aria-controls</code> attribute</td>
+    </tr>
+  </tbody>
+</table>
+
+### TextField and TextArea
+
+The `TextField` class in v2 has been replaced with the `TextInput` class in v3. Additionally, the `<fluent-text-area>` tag has been renamed to `<fluent-textarea>` in v3.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Component Class</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TextField</td>
+      <td>TextInput</td>
+      <td>
+        <code>&lt;fluent-text-field&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-text-input&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>TextArea</td>
+      <td>TextArea</td>
+      <td>
+        <code>&lt;fluent-text-area&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-textarea&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### TreeView
+
+The `TreeView` class in v2 has been replaced with the `Tree` class in v3. `TreeItem` remains unchanged.
+
+<table>
+  <thead>
+    <tr>
+      <th>v2 Component Class</th>
+      <th>v3 Component Class</th>
+      <th>v2 tag name</th>
+      <th>v3 Equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TreeView</td>
+      <td>Tree</td>
+      <td>
+        <code>&lt;fluent-tree-view&gt;</code>
+      </td>
+      <td>
+        <code>&lt;fluent-tree&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
-import { Switch } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
+import { makeStyles, Switch, tokens } from '@fluentui/react-components';
 
-export const ScatterChartDefault = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const ScatterChartDefault = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
@@ -15,13 +24,13 @@ export const ScatterChartDefault = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 
   const data: ChartProps = {
     chartTitle: 'Project Revenue and Transactions Over Time',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Phase 1',
         data: [
@@ -113,7 +122,8 @@ export const ScatterChartDefault = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -123,7 +133,8 @@ export const ScatterChartDefault = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={{ marginBottom: '10px' }}>
@@ -144,6 +155,7 @@ export const ScatterChartDefault = () => {
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

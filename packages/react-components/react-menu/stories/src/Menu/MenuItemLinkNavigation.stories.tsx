@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItemLink, MenuPopover } from '@fluentui/react-components';
 
-export const MenuItemLinkNavigation = () => (
+export const MenuItemLinkNavigation = (): JSXElement => (
   <Menu>
     <MenuTrigger disableButtonEnhancement>
       <Button>Navigation menu</Button>

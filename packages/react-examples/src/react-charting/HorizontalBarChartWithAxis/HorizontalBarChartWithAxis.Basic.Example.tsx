@@ -10,6 +10,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
@@ -61,7 +62,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -95,7 +96,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     this.setState({ selectMultipleLegends: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         x: 10000,

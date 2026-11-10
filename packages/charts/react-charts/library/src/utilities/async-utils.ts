@@ -145,7 +145,7 @@ export class Async {
         this._immediateIds = {};
       }
 
-      let setImmediateCallback = () => {
+      const setImmediateCallback = () => {
         // Time to execute the timeout, enqueue it as a foreground task to be executed.
 
         try {
@@ -248,7 +248,7 @@ export class Async {
       return this._noop as T;
     }
 
-    let waitMS = wait || 0;
+    const waitMS = wait || 0;
     let leading = true;
     let trailing = true;
     let lastExecuteTime = 0;
@@ -265,10 +265,10 @@ export class Async {
       trailing = options.trailing;
     }
 
-    let callback = (userCall?: boolean) => {
-      let now = Date.now();
-      let delta = now - lastExecuteTime;
-      let waitLength = leading ? waitMS - delta : waitMS;
+    const callback = (userCall?: boolean) => {
+      const now = Date.now();
+      const delta = now - lastExecuteTime;
+      const waitLength = leading ? waitMS - delta : waitMS;
       if (delta >= waitMS && (!userCall || leading)) {
         lastExecuteTime = now;
         if (timeoutId) {
@@ -284,7 +284,7 @@ export class Async {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let resultFunction = ((...args: any[]): any => {
+    const resultFunction = ((...args: any[]): any => {
       lastArgs = args;
       return callback(true);
     }) as T;
@@ -318,7 +318,7 @@ export class Async {
     },
   ): ICancelable<T> & T {
     if (this._isDisposed) {
-      let noOpFunction = (() => {
+      const noOpFunction = (() => {
         /** Do nothing */
       }) as ICancelable<T> & T;
 
@@ -331,7 +331,7 @@ export class Async {
       return noOpFunction;
     }
 
-    let waitMS = wait || 0;
+    const waitMS = wait || 0;
     let leading = false;
     let trailing = true;
     let maxWait: number | null = null;
@@ -354,7 +354,7 @@ export class Async {
       maxWait = options.maxWait;
     }
 
-    let markExecuted = (time: number) => {
+    const markExecuted = (time: number) => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
         timeoutId = null;
@@ -362,13 +362,13 @@ export class Async {
       lastExecuteTime = time;
     };
 
-    let invokeFunction = (time: number) => {
+    const invokeFunction = (time: number) => {
       markExecuted(time);
       lastResult = func.apply(this._parent, lastArgs);
     };
 
-    let callback = (userCall?: boolean) => {
-      let now = Date.now();
+    const callback = (userCall?: boolean) => {
+      const now = Date.now();
       let executeImmediately = false;
       if (userCall) {
         if (leading && now - lastCallTime >= waitMS) {
@@ -376,9 +376,9 @@ export class Async {
         }
         lastCallTime = now;
       }
-      let delta = now - lastCallTime;
+      const delta = now - lastCallTime;
       let waitLength = waitMS - delta;
-      let maxWaitDelta = now - lastExecuteTime;
+      const maxWaitDelta = now - lastExecuteTime;
       let maxWaitExpired = false;
 
       if (maxWait !== null) {
@@ -399,18 +399,18 @@ export class Async {
       return lastResult;
     };
 
-    let pending = (): boolean => {
+    const pending = (): boolean => {
       return !!timeoutId;
     };
 
-    let cancel = (): void => {
+    const cancel = (): void => {
       if (pending()) {
         // Mark the debounced function as having executed
         markExecuted(Date.now());
       }
     };
 
-    let flush = () => {
+    const flush = () => {
       if (pending()) {
         invokeFunction(Date.now());
       }
@@ -419,7 +419,7 @@ export class Async {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let resultFunction = ((...args: any[]) => {
+    const resultFunction = ((...args: any[]) => {
       lastArgs = args;
       return callback(true);
     }) as ICancelable<T> & T;
@@ -440,7 +440,7 @@ export class Async {
         this._animationFrameIds = {};
       }
 
-      let animationFrameCallback = () => {
+      const animationFrameCallback = () => {
         try {
           // Now delete the record and call the callback.
           if (this._animationFrameIds) {

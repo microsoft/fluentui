@@ -4,7 +4,7 @@
  * @param callback
  * @returns function to cleanup the resize observer
  */
-export function observeResize(elementToObserve: HTMLElement, callback: ResizeObserverCallback) {
+export function observeResize(elementToObserve: HTMLElement, callback: ResizeObserverCallback): () => void {
   const GlobalResizeObserver = elementToObserve.ownerDocument.defaultView?.ResizeObserver;
 
   if (!GlobalResizeObserver) {

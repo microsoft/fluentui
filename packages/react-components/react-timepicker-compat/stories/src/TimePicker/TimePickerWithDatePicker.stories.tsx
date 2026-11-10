@@ -1,7 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles } from '@fluentui/react-components';
-import { DatePicker, DatePickerProps } from '@fluentui/react-datepicker-compat';
-import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
+import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
+import type { TimePickerProps } from '@fluentui/react-timepicker-compat';
+import { TimePicker, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
 
 const useStyles = makeStyles({
   root: {
@@ -13,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TimePickerWithDatePicker = () => {
+export const TimePickerWithDatePicker = (): JSXElement => {
   const styles = useStyles();
 
   const [selectedDate, setSelectedDate] = React.useState<Date | null | undefined>(null);

@@ -1,9 +1,10 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
-import { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
+import type { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
 import { render } from '@testing-library/react';
+import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
 expect.extend(toHaveNoViolations);
 
@@ -63,6 +64,83 @@ const chartPointsHBCWA: HorizontalBarChartWithAxisDataPoint[] = [
     color: '#002050',
     yAxisCalloutData: '2020/04/30',
     xAxisCalloutData: '88%',
+  },
+];
+
+const stackedChartPointsHBCWA: HorizontalBarChartWithAxisDataPoint[] = [
+  {
+    x: 10000,
+    y: 'Q1',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '10K',
+    yAxisCalloutData: 'Q1',
+  },
+  {
+    x: -5000,
+    y: 'Q1',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '-5K',
+    yAxisCalloutData: 'Q1',
+  },
+  {
+    x: 8000,
+    y: 'Q1',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '8K',
+    yAxisCalloutData: 'Q1',
+  },
+
+  {
+    x: -7000,
+    y: 'Q2',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '-7K',
+    yAxisCalloutData: 'Q2',
+  },
+  {
+    x: 12000,
+    y: 'Q2',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '12K',
+    yAxisCalloutData: 'Q2',
+  },
+  {
+    x: 3000,
+    y: 'Q2',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '3K',
+    yAxisCalloutData: 'Q2',
+  },
+
+  {
+    x: 15000,
+    y: 'Q3',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '15K',
+    yAxisCalloutData: 'Q3',
+  },
+  {
+    x: -4000,
+    y: 'Q3',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '-4K',
+    yAxisCalloutData: 'Q3',
+  },
+  {
+    x: 5000,
+    y: 'Q3',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '5K',
+    yAxisCalloutData: 'Q3',
   },
 ];
 
@@ -128,6 +206,8 @@ beforeAll(() => {
 });
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -135,19 +215,36 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
+  window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 describe('Horizontal bar chart with axis rendering', () => {
@@ -176,6 +273,8 @@ describe('Horizontal bar chart with axis rendering', () => {
 });
 
 describe('Horizontal bar chart with axis - Subcomponent bar', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithWait(
     'Should render the bars with the specified colors',
     HorizontalBarChartWithAxis,
@@ -185,10 +284,10 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars).toHaveLength(4);
-      expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
-      expect(bars[1].getAttribute('fill')).toEqual('#00188f');
-      expect(bars[2].getAttribute('fill')).toEqual('#002050');
-      expect(bars[3].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[1].getAttribute('fill')).toEqual('#002050');
+      expect(bars[2].getAttribute('fill')).toEqual('#00188f');
+      expect(bars[3].getAttribute('fill')).toEqual('#00bcf2');
     },
   );
 
@@ -225,6 +324,8 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
 });
 
 describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     HorizontalBarChartWithAxis,
@@ -300,6 +401,8 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
 });
 
 describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithWait(
     'Should render the bars with labels hidden',
     HorizontalBarChartWithAxis,
@@ -310,105 +413,107 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
     },
   );
 
-  testWithWait(
-    'Should reduce the opacity of the other bars on mouse over a bar legend',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA },
-    async container => {
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends[0]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      // Assert
-      expect(bars).toHaveLength(4);
-      expect(bars[0]).toHaveAttribute('opacity', '0.1');
-      expect(bars[1]).toHaveAttribute('opacity', '0.1');
-      expect(bars[2]).toHaveAttribute('opacity', '0.1');
-      expect(bars[3]).toHaveAttribute('opacity', '1');
-    },
-  );
+  it('Should reduce the opacity of the other bars on mouse over a bar legend', async () => {
+    render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.mouseOver(legends[0]);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    // Assert
+    expect(bars).toHaveLength(4);
+    expect(bars[0]).toHaveAttribute('opacity', '1');
+    expect(bars[1]).toHaveAttribute('opacity', '0.1');
+    expect(bars[2]).toHaveAttribute('opacity', '0.1');
+    expect(bars[3]).toHaveAttribute('opacity', '0.1');
+  });
 
-  testWithWait(
-    'Should reset the opacity of the bars on mouse leave a bar legend',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA },
-    async container => {
-      // Arrange
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends![0]);
-      await new Promise(resolve => setTimeout(resolve));
-      fireEvent.mouseLeave(legends![0]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      // Assert
-      expect(bars[0]).toHaveAttribute('opacity', '1');
-      expect(bars[1]).toHaveAttribute('opacity', '1');
-      expect(bars[2]).toHaveAttribute('opacity', '1');
-      expect(bars[3]).toHaveAttribute('opacity', '1');
-    },
-  );
+  it('Should reset the opacity of the bars on mouse leave a bar legend', async () => {
+    // Arrange
+    render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    fireEvent.mouseOver(legends![0]);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    fireEvent.mouseLeave(legends![0]);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    // Assert
+    expect(bars[0]).toHaveAttribute('opacity', '1');
+    expect(bars[1]).toHaveAttribute('opacity', '1');
+    expect(bars[2]).toHaveAttribute('opacity', '1');
+    expect(bars[3]).toHaveAttribute('opacity', '1');
+  });
 
-  testWithWait(
-    'Should show the callout with axis tooltip data',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsWithAxisToolTipHBCWA, calloutProps: { doNotLayer: true } },
-    async container => {
-      // Arrange
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      fireEvent.mouseOver(bars[0]);
-      await new Promise(resolve => setTimeout(resolve));
-      // Assert
-      expect(getById(container, /toolTipcallout/i)).toBeDefined();
-      expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
-      const xAxisCallOutData = getByClass(container, /calloutContentX/i);
-      expect(xAxisCallOutData).toBeDefined();
-      expect(xAxisCallOutData[0].textContent).toEqual('5000 ');
-      const yAxisCallOutData = getByClass(container, /calloutContentY/i);
-      expect(yAxisCallOutData).toBeDefined();
-      expect(yAxisCallOutData[0].textContent).toEqual('2000');
-    },
-  );
+  it('Should show the callout with axis tooltip data', async () => {
+    // Arrange
+    const { container } = render(<HorizontalBarChartWithAxis data={chartPointsWithAxisToolTipHBCWA} />);
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    fireEvent.mouseOver(bars[0]);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    // Assert
+    expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
+    const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+    expect(xAxisCallOutData).toBeDefined();
+    expect(xAxisCallOutData[0].textContent).toEqual('1000 ');
+    const yAxisCallOutData = getByClass(container, /calloutContentY/i);
+    expect(yAxisCallOutData).toBeDefined();
+    expect(yAxisCallOutData[0].textContent).toEqual('1000');
+    expect((yAxisCallOutData[0] as HTMLElement).style.lineHeight).toEqual(tokens.lineHeightHero700);
+  });
 
-  testWithWait(
-    'Should show the callout with string yaxis tooltip data',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxisHBCWA, calloutProps: { doNotLayer: true } },
-    async container => {
-      // Arrange
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      fireEvent.mouseOver(bars[0]);
-      await new Promise(resolve => setTimeout(resolve));
-      // Assert
-      expect(getById(container, /toolTipcallout/i)).toBeDefined();
-      expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
-      const xAxisCallOutData = getByClass(container, /calloutContentX/i);
-      expect(xAxisCallOutData).toBeDefined();
-      expect(xAxisCallOutData[0].textContent).toEqual('String One ');
-      const yAxisCallOutData = getByClass(container, /calloutContentY/i);
-      expect(yAxisCallOutData).toBeDefined();
-      expect(yAxisCallOutData[0].textContent).toEqual('1000');
-    },
-  );
+  it('Should show the callout with string yaxis tooltip data', async () => {
+    // Arrange
+    const { container } = render(<HorizontalBarChartWithAxis data={chartPointsWithStringYAxisHBCWA} />);
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    fireEvent.mouseOver(bars[0]);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    // Assert
+    expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
+    const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+    expect(xAxisCallOutData).toBeDefined();
+    expect(xAxisCallOutData[0].textContent).toEqual('String One ');
+    const yAxisCallOutData = getByClass(container, /calloutContentY/i);
+    expect(yAxisCallOutData).toBeDefined();
+    expect(yAxisCallOutData[0].textContent).toEqual('1000');
+  });
 });
 
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('renders HorizontalBarChartWithAxis correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders Stacked HorizontalBarChartWithAxis correctly', () => {
+    const component = render(<HorizontalBarChartWithAxis data={stackedChartPointsHBCWA} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
+    const component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders showToolTipForYAxisLabels correctly', () => {
-    let component = render(<HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />);
+    const component = render(<HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />);
     expect(component).toMatchSnapshot();
   });
 
   it('renders showYAxisLables correctly', () => {
-    let component = render(
+    const component = render(
       <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
     );
     expect(component).toMatchSnapshot();
@@ -425,32 +530,36 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
 });
 
 describe('HorizontalBarChartWithAxis - basic props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
     const calloutDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideTooltip={true} />);
+    const wrapper = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} hideTooltip={true} />);
     const calloutDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM!.length).toBe(0);
   });
 });
 
 describe.skip('Render calling with respective to props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: chartPointsHBCWA,

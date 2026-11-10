@@ -67,3 +67,5 @@ export const parameters = {
     theme: webcomponentsTheme, // override the default Storybook theme with a custom fluent theme
   },
 };
+
+export const tags = ['autodocs'];

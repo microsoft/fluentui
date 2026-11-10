@@ -1,6 +1,8 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TextareaSlots, TextareaState } from './Textarea.types';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
@@ -163,11 +165,6 @@ const useTextareaStyles = makeStyles({
       opacity: 1,
     },
 
-    '::selection': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted,
-    },
-
     outlineStyle: 'none', // disable default browser outline
   },
 
@@ -223,14 +220,13 @@ const useTextareaResizeStyles = makeStyles({
  * Apply styling to the Textarea slots based on the state
  */
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
-  'use no memo';
-
   const { size, appearance, resize } = state;
   const disabled = state.textarea.disabled;
   const invalid = `${state.textarea['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
@@ -245,6 +241,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
 
   const textareaStyles = useTextareaStyles();
   const textareaResizeStyles = useTextareaResizeStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.textarea.className = mergeClasses(
     textareaClassNames.textarea,
     textareaStyles.base,

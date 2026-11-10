@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGroupHeader_unstable } from './useMenuGroupHeader';
 import { useMenuGroupHeaderStyles_unstable } from './useMenuGroupHeaderStyles.styles';

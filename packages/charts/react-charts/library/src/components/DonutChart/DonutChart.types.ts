@@ -1,14 +1,21 @@
-import * as React from 'react';
-import { CartesianChartStyleProps } from '../CommonComponents/index';
-import { ChartProps, ChartDataPoint, Chart } from './index';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { LegendsProps } from '../Legends/index';
+import type * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
+import type { ChartProps, ChartDataPoint, Chart } from './index';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Donut Chart properties.
  * {@docCategory DonutChart}
  */
-export interface DonutChartProps {
+export interface DonutChartProps extends CartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -32,7 +39,7 @@ export interface DonutChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
 
   /**
    * Define a custom callout props override
@@ -113,7 +120,21 @@ export interface DonutChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
+
+  /**
+   * Rendering order of the legend
+   * @default 'default'
+   * 'default' - as per data provided
+   * 'sorted' - in descending order of value
+   */
+  order?: 'default' | 'sorted';
 }
 
 /**
@@ -142,7 +163,22 @@ export interface DonutChartStyles {
   legendContainer: string;
 
   /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
+
+  /**
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
 }

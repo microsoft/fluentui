@@ -1,5 +1,6 @@
 import { IChartTableStyleProps, IChartTableStyles } from './ChartTable.types';
 import { FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/Common.styles';
 
 export const getStyles = (props: IChartTableStyleProps): IChartTableStyles => {
   const { theme } = props;
@@ -40,5 +41,7 @@ export const getStyles = (props: IChartTableStyleProps): IChartTableStyles => {
         },
       },
     },
+    chartTitle: getChartTitleStyle(theme!),
+    svgTooltip: getSvgTooltipStyle(theme!),
   };
 };

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -13,7 +15,8 @@ export type UseOnClickOrScrollOutsideOptions = {
   /**
    * Refs to elements that check if the click is outside
    */
-  refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+  refs: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  React.MutableRefObject<HTMLElement | undefined | null>[];
 
   /**
    * By default uses element.contains, but custom contain function can be provided
@@ -42,10 +45,11 @@ export type UseOnClickOrScrollOutsideOptions = {
 const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, child) => !!parent?.contains(child);
 
 /**
- * @internal
  * Utility to perform checks where a click/touch event was made outside a component
+ *
+ * @internal
  */
-export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
@@ -158,10 +162,10 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     element: targetDocument,
     callback,
     contains = DEFAULT_CONTAINS,
-    pollDuration = 1000,
+    pollDuration = 100,
     refs,
   } = options;
-  const timeoutRef = React.useRef<number>();
+  const timeoutRef = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((e: Event) => {
     const isOutside = refs.every(ref => !contains(ref.current || null, e.target as HTMLElement));
@@ -200,7 +204,7 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     }, pollDuration);
 
     return () => {
-      targetDocument?.defaultView?.clearTimeout(timeoutRef.current);
+      targetDocument?.defaultView?.clearInterval(timeoutRef.current);
     };
   }, [targetDocument, disabled, pollDuration]);
 };

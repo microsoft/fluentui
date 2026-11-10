@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
 import { AccessibilityContrastChip } from '../ColorTokens/AccessibilityList';
-import { BrandVariants, createLightTheme, Label, Theme, tokens } from '@fluentui/react-components';
+import type { BrandVariants, Theme } from '@fluentui/react-components';
+import { createLightTheme, Label, tokens } from '@fluentui/react-components';
 import { createDarkThemeWithUpdatedMapping } from '../../utils/getOverridableTokenBrandColors';
 
 export interface AccessibilityPanelProps {

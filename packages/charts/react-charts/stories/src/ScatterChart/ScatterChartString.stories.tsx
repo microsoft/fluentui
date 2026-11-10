@@ -1,7 +1,17 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
-export const ScatterChartString = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const ScatterChartString = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -14,7 +24,7 @@ export const ScatterChartString = () => {
 
   const data: ChartProps = {
     chartTitle: 'Sales Performance by Category',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Region 1',
         data: [
@@ -94,7 +104,8 @@ export const ScatterChartString = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -104,7 +115,8 @@ export const ScatterChartString = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>
@@ -115,6 +127,7 @@ export const ScatterChartString = () => {
           width={width}
           xAxisTitle={'Product Category'}
           yAxisTitle={'Revenue in dollars'}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

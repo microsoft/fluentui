@@ -28,6 +28,8 @@ import type {
   IDetailsHeader,
 } from './DetailsHeader.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -154,7 +156,7 @@ export class DetailsHeaderBase
     this._events.dispose();
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       columns = NO_COLUMNS,
       ariaLabel,
@@ -635,7 +637,7 @@ export class DetailsHeaderBase
     }
   }
 
-  private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSX.Element | null => {
+  private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSXElement | null => {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
     const { columnResizeDetails } = this.state;
@@ -662,7 +664,7 @@ export class DetailsHeaderBase
     ) : null;
   };
 
-  private _renderColumnDivider(columnIndex: number): JSX.Element | null {
+  private _renderColumnDivider(columnIndex: number): JSXElement | null {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
     const { onRenderDivider } = column;
@@ -671,7 +673,7 @@ export class DetailsHeaderBase
       : this._renderColumnSizer({ column, columnIndex });
   }
 
-  private _renderDropHint(dropHintIndex: number): JSX.Element {
+  private _renderDropHint(dropHintIndex: number): JSXElement {
     const classNames = this._classNames;
     const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
     return (
@@ -702,7 +704,7 @@ export class DetailsHeaderBase
     );
   }
 
-  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSXElement => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 

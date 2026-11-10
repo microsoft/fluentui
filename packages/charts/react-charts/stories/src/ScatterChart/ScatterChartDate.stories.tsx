@@ -1,7 +1,17 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
-export const ScatterChartDate = () => {
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
+export const ScatterChartDate = (): JSXElement => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -14,7 +24,7 @@ export const ScatterChartDate = () => {
 
   const data: ChartProps = {
     chartTitle: 'Website Traffic and Sales Performance',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Website Traffic',
         data: [
@@ -55,7 +65,6 @@ export const ScatterChartDate = () => {
           },
         ],
         color: DataVizPalette.color3,
-        onLineClick: () => console.log('Website Traffic'),
       },
       {
         legend: 'Sales Performance',
@@ -126,7 +135,8 @@ export const ScatterChartDate = () => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -136,7 +146,8 @@ export const ScatterChartDate = () => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>
@@ -147,6 +158,7 @@ export const ScatterChartDate = () => {
           width={width}
           xAxisTitle={'Date'}
           yAxisTitle={'Number of visitors'}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>
