@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-migration-v8-v9): preserve v8 button variant classes",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "paulmardling@microsoft.com"
+}
