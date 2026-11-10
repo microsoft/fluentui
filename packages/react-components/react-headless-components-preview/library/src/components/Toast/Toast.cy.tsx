@@ -48,6 +48,57 @@ describe('Toast (headless)', () => {
     cy.get('button').click().get(TOAST_CONTAINER).should('exist');
   });
 
+  it('announces a new toast without moving focus into the toaster', () => {
+    const announce = cy.stub().as('announce');
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+
+      return (
+        <>
+          <button id="make" onClick={() => dispatchToast('Routine warning', { intent: 'warning', timeout: -1 })}>
+            Make toast
+          </button>
+          <Toaster announce={announce} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().should('be.focused');
+    cy.get(TOAST_CONTAINER).should('contain.text', 'Routine warning');
+    cy.get('#make').should('be.focused');
+    cy.get('@announce').should('have.been.calledWith', 'Routine warning', { politeness: 'polite' });
+  });
+
+  it('preserves focus and announces when a popover polyfill focuses the toast', () => {
+    const announce = cy.stub().as('announce');
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+
+      return (
+        <>
+          <button id="make" onClick={() => dispatchToast('Routine warning', { intent: 'warning', timeout: -1 })}>
+            Make toast
+          </button>
+          <Toaster announce={announce} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.window().then(win => {
+      const showPopover = win.HTMLElement.prototype.showPopover;
+      cy.stub(win.HTMLElement.prototype, 'showPopover').callsFake(function (this: HTMLElement) {
+        showPopover.call(this);
+        this.querySelector<HTMLElement>(TOAST_CONTAINER)?.focus();
+      });
+    });
+    cy.get('#make').click();
+    cy.get(TOAST_CONTAINER).should('contain.text', 'Routine warning');
+    cy.get('#make').should('be.focused');
+    cy.get('@announce').should('have.been.calledWith', 'Routine warning', { politeness: 'polite' });
+  });
+
   it('should dismiss toast', () => {
     const Example = () => {
       const toastId = 'foo';

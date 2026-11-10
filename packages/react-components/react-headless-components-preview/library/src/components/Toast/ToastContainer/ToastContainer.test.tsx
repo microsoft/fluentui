@@ -11,7 +11,6 @@ const defaultToastContainerProps: ToastContainerProps = {
   data: {},
   pauseOnHover: false,
   pauseOnWindowBlur: false,
-  politeness: 'polite',
   remove: () => null,
   timeout: -1,
   intent: undefined,
@@ -66,17 +65,62 @@ describe('ToastContainer', () => {
     expect(toast).toHaveAttribute('aria-describedby');
   });
 
-  it('announces on mount with default politeness', () => {
+  it.each([undefined, 'info', 'success', 'warning', 'error'] as const)(
+    'announces %s toasts politely by default',
+    intent => {
+      const announce = jest.fn();
+
+      render(
+        <ToastContainer {...defaultToastContainerProps} intent={intent} announce={announce}>
+          ToastContainer
+        </ToastContainer>,
+      );
+
+      expect(announce).toHaveBeenCalledTimes(1);
+      expect(announce).toHaveBeenCalledWith('ToastContainer', { politeness: 'polite' });
+    },
+  );
+
+  it.each([
+    ['info', 'assertive'],
+    ['success', 'assertive'],
+    ['warning', 'assertive'],
+    ['error', 'assertive'],
+    ['error', 'polite'],
+  ] as const)('honors an explicit %s toast politeness of %s', (intent, politeness) => {
     const announce = jest.fn();
 
     render(
-      <ToastContainer {...defaultToastContainerProps} announce={announce}>
+      <ToastContainer {...defaultToastContainerProps} intent={intent} politeness={politeness} announce={announce}>
         ToastContainer
       </ToastContainer>,
     );
 
+    expect(announce).toHaveBeenCalledWith('ToastContainer', { politeness });
+  });
+
+  it('announces updated content with its current politeness without repeating intent-only changes', () => {
+    const announce = jest.fn();
+    const { rerender } = render(
+      <ToastContainer {...defaultToastContainerProps} announce={announce}>
+        Initial message
+      </ToastContainer>,
+    );
+
+    rerender(
+      <ToastContainer {...defaultToastContainerProps} announce={announce} intent="warning">
+        Initial message
+      </ToastContainer>,
+    );
     expect(announce).toHaveBeenCalledTimes(1);
-    expect(announce).toHaveBeenCalledWith('ToastContainer', { politeness: 'polite' });
+
+    rerender(
+      <ToastContainer {...defaultToastContainerProps} announce={announce} updateId={1} politeness="assertive">
+        Critical update
+      </ToastContainer>,
+    );
+    expect(announce).toHaveBeenCalledTimes(2);
+    expect(announce).toHaveBeenLastCalledWith('Critical update', { politeness: 'assertive' });
   });
 
   it('respects user root props from data.root', () => {

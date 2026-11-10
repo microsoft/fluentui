@@ -12,16 +12,9 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete } from '@fluentui/keyboard-keys';
-import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
+import type { ToastStatus } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
-
-const intentPolitenessMap: Record<NonNullable<ToastContainerProps['intent']>, ToastPoliteness> = {
-  success: 'assertive',
-  warning: 'assertive',
-  error: 'assertive',
-  info: 'polite',
-};
 
 /**
  * The `useToastContainer` hook processes the props sent to `ToastContainer` and returns state and slot props.
@@ -194,9 +187,8 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     if (!visible || !announce) {
       return;
     }
-    const resolvedPoliteness = politeness ?? intentPolitenessMap[intent];
-    announce(toastRef.current?.textContent ?? '', { politeness: resolvedPoliteness });
-  }, [announce, politeness, intent, visible, updateId]);
+    announce(toastRef.current?.textContent ?? '', { politeness: politeness ?? 'polite' });
+  }, [announce, politeness, visible, updateId]);
 
   const userRootSlot = (data as { root?: React.HTMLAttributes<HTMLDivElement> } | undefined)?.root;
 

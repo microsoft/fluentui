@@ -19,7 +19,10 @@ export const AriaLive = (props: AriaLiveProps): JSXElement | null => {
   React.useImperativeHandle<ToastAnnounce, ToastAnnounce>(
     props.announceRef,
     () => (message, options) => {
-      announce(message, { polite: options?.politeness === 'polite' });
+      announce(message, {
+        polite: options?.politeness === 'polite',
+        alert: options?.politeness === 'assertive',
+      });
     },
     [announce],
   );
