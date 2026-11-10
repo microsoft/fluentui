@@ -95,10 +95,8 @@ export function createToaster(options: Partial<ToasterOptions>): {
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
-    const queued = queue.all();
-    if (queued.includes(toastId)) {
-      queue.clear();
-      queued.filter(id => id !== toastId).forEach(id => queue.enqueue(id));
+    if (queue.contains(toastId)) {
+      queue.remove(toastId);
       discardQueuedToast(toastId);
       return;
     }
