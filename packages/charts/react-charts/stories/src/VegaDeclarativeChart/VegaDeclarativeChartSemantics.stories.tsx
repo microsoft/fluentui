@@ -72,13 +72,15 @@ type SemanticExampleProps = Pick<VegaDeclarativeChartProps, 'chartSchema' | 'dat
   summary: string;
   children: React.ReactNode;
   paused?: boolean;
+  chartKey?: string;
 };
 
 const SemanticExample: ForwardRefComponent<SemanticExampleProps> = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const titleId = useId('semantic-example-title-');
   const descriptionId = useId('semantic-example-description-');
-  const { title, description, summary, children, paused, chartSchema, dataResolver, allowedDataOrigins } = props;
+  const { title, description, summary, children, paused, chartKey, chartSchema, dataResolver, allowedDataOrigins } =
+    props;
 
   return (
     <section ref={ref} className={classes.root} aria-labelledby={titleId} aria-describedby={descriptionId}>
@@ -105,6 +107,7 @@ const SemanticExample: ForwardRefComponent<SemanticExampleProps> = React.forward
           </p>
         ) : (
           <VegaDeclarativeChart
+            key={chartKey}
             chartSchema={chartSchema}
             semanticMode="strict"
             dataResolver={dataResolver}
@@ -244,6 +247,13 @@ export const AggregateAndWindowStatistics = (): JSXElement => {
   );
 };
 AggregateAndWindowStatistics.parameters = {
+  // The file-granularity source plugin populates only the last export, ManagedDataResource.
+  // Read it lazily: Babel appends that assignment after this module's story parameters.
+  // Alias the story so source extraction removes annotations, not the nested property read.
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -282,7 +292,7 @@ const filteredMultilineSpec: VegaLiteSpec = {
 };
 const filteredMultilineSchema: VegaSchema = { vegaLiteSpec: filteredMultilineSpec };
 const filteredNoTooltipSchema: VegaSchema = {
-  vegaLiteSpec: { ...filteredMultilineSpec, encoding: { ...filteredMultilineSpec.encoding, tooltip: false } },
+  vegaLiteSpec: { ...filteredMultilineSpec, encoding: { ...filteredMultilineSpec.encoding, tooltip: null } },
 };
 
 export const FilteredMultilineTooltips = (): JSXElement => {
@@ -305,11 +315,15 @@ export const FilteredMultilineTooltips = (): JSXElement => {
   );
 };
 FilteredMultilineTooltips.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
         '`filter: { field: "requests", valid: true }` excludes null, not zero. Tooltip fields are explicit and the note contains ' +
-        'a real newline. Disable the switch to author `tooltip: false`; data and geometry stay unchanged, and point labels remain ' +
+        'a real newline. Disable the switch to author `encoding.tooltip: null`; data and geometry stay unchanged, and coordinate labels remain ' +
         'available to assistive technology. Tab and Space operate the switch; focus chart points using the chart’s arrow navigation ' +
         'to compare day 2’s zero and its two-line note. The filtered chart connects the remaining observations; it does not impute day 3.',
     },
@@ -376,6 +390,10 @@ export const RangedGroupedBars = (): JSXElement => {
   );
 };
 RangedGroupedBars.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -449,6 +467,10 @@ export const NormalizedStackOrder = (): JSXElement => {
   );
 };
 NormalizedStackOrder.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -516,6 +538,10 @@ export const CenteredArea = (): JSXElement => {
   );
 };
 CenteredArea.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -584,6 +610,10 @@ export const FacetMissingCells = (): JSXElement => {
   );
 };
 FacetMissingCells.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -648,6 +678,10 @@ export const RepeatMatrix = (): JSXElement => {
   );
 };
 RepeatMatrix.parameters = {
+  get fullSource(): string | undefined {
+    const sourceStory = ManagedDataResource;
+    return (sourceStory.parameters as { fullSource?: string }).fullSource;
+  },
   docs: {
     description: {
       story:
@@ -704,6 +738,8 @@ export const ManagedDataResource = (): JSXElement => {
       title="The host owns data access"
       description="A statically returned CSV demonstrates parsing, cancellation-aware resolution and visible host errors without networking."
       chartSchema={resourceSchema}
+      // Changing only callback identity does not reload a resource. Remount the chart to demonstrate a fresh host request.
+      chartKey={simulateFailure ? 'host-failure' : 'offline-fixture'}
       dataResolver={simulateFailure ? failingResolver : offlineResolver}
       allowedDataOrigins={resourceOrigins}
       paused={!resolverEnabled}
@@ -735,8 +771,9 @@ ManagedDataResource.parameters = {
       story:
         '`dataResolver` is a module-stable, host-owned callback returning a literal CSV string for one exact allowlisted HTTP/S ' +
         'fixture identifier. Neither callback performs fetch or any other network I/O. `format.parse` converts dates to UTC and ' +
-        'request counts to numbers before chart preparation. Simulated rejection uses the public chart’s visible alert; clearing ' +
-        'the failure switches back to the successful resolver. Without a resolver, a URL-backed strict spec fails preflight, so ' +
+        'request counts to numbers before chart preparation. The failure switch changes the chart key to start a fresh request; ' +
+        'changing callback identity alone does not reload resources. Simulated rejection uses the public chart’s visible alert; ' +
+        'clearing the switch remounts with the successful resolver. Without a resolver, a URL-backed strict spec fails preflight, so ' +
         'the disabled state deliberately unmounts it instead of allowing an uncaught render error. Tab and Space operate both ' +
         'switches; chart arrow navigation inspects parsed values. Unmounting cancels resolution; re-enabling starts a fresh offline read.',
     },

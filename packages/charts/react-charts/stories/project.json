@@ -6,6 +6,14 @@
   "tags": ["vNext", "platform:web", "type:stories", "charting"],
   "implicitDependencies": [],
   "targets": {
+    "test-browser:vega": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node scripts/verify-vega-stories.cjs"
+      }
+    },
     "test-ssr": {
       "options": {
         "cwd": "{projectRoot}",
