@@ -2,17 +2,27 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { fireEvent, render } from '@testing-library/react';
 import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useLayerEscape } from './useLayerEscape';
+import { isPopoverOpen } from './utils';
 import type { UseLayerEscapeOptions } from './types';
 
 type ExampleProps = Partial<UseLayerEscapeOptions> & {
   popover?: 'auto' | 'manual';
   onEscape: jest.Mock;
+  /** Whether a `listen: 'document'` layer is in the top layer; `false` while open is a browser close. */
+  shown?: boolean;
 };
 
-const Example = ({ open = true, popover = 'manual', onEscape, when, listen }: ExampleProps) => {
+const Example = ({ open = true, popover = 'manual', onEscape, when, listen, shown = open }: ExampleProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const { onKeyDown } = useLayerEscape(ref, { open, onEscape, when, listen });
+  useIsomorphicLayoutEffect(() => {
+    const element = ref.current!;
+    if (listen === 'document' && shown !== isPopoverOpen(element)) {
+      element.togglePopover(shown);
+    }
+  });
   return (
     <>
       <button>Outside</button>
@@ -157,7 +167,11 @@ describe('useLayerEscape', () => {
       const ref = React.useRef<HTMLDivElement>(null);
       // No popover polyfill in the frame.
       useLayerEscape(ref, { open: true, onEscape: onFrame, listen: 'document', when: 'always' });
-      return createPortal(<div ref={ref} popover="manual" />, frameDocument.body);
+      return createPortal(
+        // Marked open the way the polyfill does.
+        <div ref={ref} popover="manual" className=":popover-open" />,
+        frameDocument.body,
+      );
     };
     const { getByText, unmount } = render(
       <>
@@ -216,7 +230,7 @@ describe('useLayerEscape', () => {
     const LateLayer = ({ mounted }: { mounted: boolean }) => {
       const ref = React.useRef<HTMLDivElement>(null);
       useLayerEscape(ref, { open: true, onEscape, listen: 'document' });
-      return mounted ? <div ref={ref} popover="manual" /> : null;
+      return mounted ? <div ref={ref} popover="manual" className=":popover-open" /> : null;
     };
     const { rerender } = render(<LateLayer mounted={false} />);
     rerender(<LateLayer mounted />);
@@ -224,5 +238,38 @@ describe('useLayerEscape', () => {
     fireEvent.keyDown(document.body, { key: 'Escape' });
 
     expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it("skips a layer with listen: 'document' that the browser closed while it stays open", () => {
+    const onFirst = jest.fn();
+    const onSecond = jest.fn();
+    const { getAllByText } = render(
+      <>
+        <Example onEscape={onFirst} listen="document" />
+        <Example onEscape={onSecond} listen="document" shown={false} />
+      </>,
+    );
+
+    const notCancelled = fireEvent.keyDown(getAllByText('Outside')[0], { key: 'Escape' });
+
+    expect(onSecond).not.toHaveBeenCalled();
+    expect(onFirst).toHaveBeenCalledTimes(1);
+    expect(notCancelled).toBe(false);
+  });
+
+  it("leaves Escape alone when no layer with listen: 'document' is shown", () => {
+    const onEscape = jest.fn();
+    const onOuterKeyDown = jest.fn();
+    const { getByText } = render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Example onEscape={onEscape} listen="document" shown={false} />
+      </div>,
+    );
+
+    const notCancelled = fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+
+    expect(onEscape).not.toHaveBeenCalled();
+    expect(notCancelled).toBe(true);
+    expect(onOuterKeyDown).toHaveBeenCalledTimes(1);
   });
 });

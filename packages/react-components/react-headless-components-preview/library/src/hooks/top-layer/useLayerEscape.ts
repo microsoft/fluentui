@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { isEscapeForLayer } from './utils';
+import { isEscapeForLayer, isInTopLayer } from './utils';
 import type { UseLayerEscapeOptions } from './types';
 
 /**
@@ -13,12 +13,15 @@ import type { UseLayerEscapeOptions } from './types';
 const needsEscapeHandling = (element: HTMLElement): boolean =>
   (element as HTMLElement & { popover?: string | null }).popover === 'manual';
 
-type DocumentKeyDown = (event: KeyboardEvent) => void;
+type DocumentLayer = { ref: React.RefObject<HTMLElement | null>; onKeyDown: (event: KeyboardEvent) => void };
 
-// Open `listen: 'document'` layers per document, oldest first; only the newest handles Escape.
-const documentLayers = new WeakMap<Document, DocumentKeyDown[]>();
+// Open `listen: 'document'` layers per document, oldest first; only the newest shown one handles Escape.
+const documentLayers = new WeakMap<Document, DocumentLayer[]>();
 
-const getDocumentLayers = (targetDocument: Document): DocumentKeyDown[] => {
+// A browser close leaves a controlled `open` true while the element is hidden.
+const isShown = ({ ref }: DocumentLayer): boolean => !!ref.current && isInTopLayer(ref.current);
+
+const getDocumentLayers = (targetDocument: Document): DocumentLayer[] => {
   let layers = documentLayers.get(targetDocument);
   if (!layers) {
     layers = [];
@@ -64,7 +67,7 @@ export const useLayerEscape = (
 
   const onDocumentKeyDown = useEventCallback((event: KeyboardEvent) => {
     const layers = getDocumentLayers(event.currentTarget as Document);
-    handleEscape(event, () => layers[layers.length - 1] === onDocumentKeyDown);
+    handleEscape(event, () => layers.filter(isShown).pop()?.onKeyDown === onDocumentKeyDown);
   });
 
   // Independent of the element, so one mounted after opening is covered.
@@ -73,13 +76,14 @@ export const useLayerEscape = (
       return;
     }
     const layers = getDocumentLayers(targetDocument);
-    layers.push(onDocumentKeyDown);
+    const layer = { ref, onKeyDown: onDocumentKeyDown };
+    layers.push(layer);
     targetDocument.addEventListener('keydown', onDocumentKeyDown, { capture: true });
     return () => {
-      layers.splice(layers.indexOf(onDocumentKeyDown), 1);
+      layers.splice(layers.indexOf(layer), 1);
       targetDocument.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
     };
-  }, [open, listen, onDocumentKeyDown, targetDocument]);
+  }, [ref, open, listen, onDocumentKeyDown, targetDocument]);
 
   return { onKeyDown };
 };

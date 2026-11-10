@@ -60,15 +60,23 @@ export const useLayerPresence = (
   });
   useElementListeners(ref, onLayerEvent, getCloseEvents, true);
 
-  // After the open-state hook has shown the element, wherever it is declared.
+  const recordCloseEvent = (element: HTMLElement) => {
+    pendingCloseEvent.current = { element, type: getCloseEvent(element) };
+  };
+
+  // Once the open-state hook has shown the element: already, when it is declared first; otherwise after this commit.
   useIsomorphicLayoutEffect(() => {
     if (!open || !unmountOnClose || pendingCloseEvent.current?.element === ref.current) {
+      return;
+    }
+    if (ref.current && isInTopLayer(ref.current)) {
+      recordCloseEvent(ref.current);
       return;
     }
     queueMicrotask(() => {
       const element = ref.current;
       if (openRef.current && element && isInTopLayer(element)) {
-        pendingCloseEvent.current = { element, type: getCloseEvent(element) };
+        recordCloseEvent(element);
       }
     });
   });
@@ -113,6 +121,11 @@ export const useLayerPresence = (
     if (!element) {
       setExitPending(false);
       return;
+    }
+
+    // Closed before the opening's microtask ran, and the open-state hook, declared later, hides it in this commit.
+    if (pendingCloseEvent.current?.element !== element && isInTopLayer(element)) {
+      recordCloseEvent(element);
     }
 
     let cancelWait: () => void = () => undefined;

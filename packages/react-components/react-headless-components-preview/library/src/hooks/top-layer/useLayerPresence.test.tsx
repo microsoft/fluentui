@@ -101,6 +101,30 @@ describe.each([
     expect(getByTestId('layer')).toBe(layer);
     expect(isPopoverOpen(layer)).toBe(true);
   });
+
+  it('waits for the close event when a layout effect closes it before the first microtask', async () => {
+    const CloseOnMount = () => {
+      const [open, setOpen] = React.useState(true);
+      useIsomorphicLayoutEffect(() => setOpen(false), []);
+      return <Layer open={open} />;
+    };
+    let connectedOnClose: boolean | undefined;
+    const onToggle = (event: Event) => {
+      if ((event as Event & { newState?: string }).newState === 'closed') {
+        connectedOnClose = (event.target as HTMLElement).isConnected;
+      }
+    };
+    document.addEventListener('toggle', onToggle, true);
+
+    const { getByTestId, queryByTestId } = render(<CloseOnMount />);
+    // Runs the microtasks and any render they schedule before the queued close event, as React 17 would.
+    await act(() => Promise.resolve());
+    expect(isPopoverOpen(getByTestId('layer'))).toBe(false);
+
+    await waitFor(() => expect(queryByTestId('layer')).toBeNull());
+    document.removeEventListener('toggle', onToggle, true);
+    expect(connectedOnClose).toBe(true);
+  });
 });
 
 describe('useLayerPresence', () => {

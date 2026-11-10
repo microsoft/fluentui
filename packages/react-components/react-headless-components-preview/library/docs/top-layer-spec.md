@@ -207,7 +207,7 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 | `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.           |
 
 - With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`, which reads the event's composed path, so a layer inside a shadow root counts). Because it is a React handler, Escape from content portaled out of the element still counts, also into a layer that encloses it.
-- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer. With several such layers open in a document, only that document's newest handles it. The listener doesn't need the element, so one that mounts after `open` turned true is covered.
+- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer. With several such layers open in a document, only that document's newest one still in the top layer handles it, so one the browser closed while `open` stays true doesn't hold on to Escape. The listener doesn't need the element, so one that mounts after `open` turned true is covered.
 - Escape already prevented is ignored. A handled Escape is reported first, so `onEscape` can check `isDefaultPrevented()` for a veto, then prevented and stopped: outer layers' handlers and the browser leave it alone.
 
 ## Not covered yet
