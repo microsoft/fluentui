@@ -40,8 +40,8 @@ export interface BuildExecutorSchema {
    */
   enableGriffelRawStyles?: boolean;
   /**
-   * Enable babel-plugin-react-compiler processing.
-   * When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.
+   * Enable native SWC React Compiler processing before Griffel AOT.
+   * Compiler options can be set in .swcrc under jsc.transform.reactCompiler; this flag controls enablement.
    */
   reactCompiler?: boolean;
   /**
