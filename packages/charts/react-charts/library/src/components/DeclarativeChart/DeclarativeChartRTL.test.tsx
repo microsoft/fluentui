@@ -183,6 +183,36 @@ describe('DeclarativeChart SSR colors', () => {
     expect(html).not.toContain('css-injection-sentinel');
   });
 
+  test.each(['header', 'cells'] as const)('rejects CSS injected through table %s font colors', source => {
+    const payload = 'red; --css-injection-sentinel:731; position:fixed';
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'table',
+          header: { values: ['Header'], font: { color: source === 'header' ? payload : 'rebeccapurple' } },
+          cells: {
+            values: [['Cell']],
+            font: { color: source === 'cells' ? payload : 'rebeccapurple' },
+            format: '',
+            prefix: '',
+            suffix: '',
+          },
+        },
+      ],
+      layout: {},
+    };
+
+    const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+
+    expect(html).toContain('<th');
+    expect(html).toContain('<td');
+    expect(html).toContain('Header');
+    expect(html).toContain('Cell');
+    expect(html).toContain('color:rebeccapurple');
+    expect(html).not.toContain('css-injection-sentinel');
+    expect(html).not.toContain('position:fixed');
+  });
+
   test('preserves valid marker colors in serialized legend styles', () => {
     const plotlySchema: PlotlySchema = {
       data: [{ type: 'pie', labels: ['A'], values: [1], marker: { colors: ['rebeccapurple'] } }],

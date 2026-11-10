@@ -2934,7 +2934,7 @@ export const transformPlotlyJsonToChartTableProps = (
     return cleanedValues.map((value, colIndex) => {
       //headers are at first row only
       const rowIndex = 0;
-      const fontColor = resolveCellStyle(header?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontColor = getValidColor(resolveCellStyle(header?.font?.color, rowIndex, colIndex));
       const fontSize = resolveCellStyle(header?.font?.size, rowIndex, colIndex) as number | undefined;
       const backgroundColor = resolveCellStyle(header?.fill?.color, rowIndex, colIndex) as string | undefined;
       const textAlign = resolveCellStyle(header?.align, rowIndex, colIndex) as
@@ -2963,7 +2963,7 @@ export const transformPlotlyJsonToChartTableProps = (
           ? formatValue(cleanValue, colIndex, cells)
           : cleanValue;
 
-      const fontColor = resolveCellStyle(cells?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontColor = getValidColor(resolveCellStyle(cells?.font?.color, rowIndex, colIndex));
       const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
       const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
       const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as

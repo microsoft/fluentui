@@ -15,6 +15,7 @@ import {
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGanttChartProps,
+  transformPlotlyJsonToChartTableProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
@@ -24,6 +25,49 @@ import type { PlotlySchema } from '@fluentui/chart-utilities';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
+
+describe('table font colors', () => {
+  test.each([
+    { color: 'red; position:fixed' },
+    { color: ['red; position:fixed', 'rebeccapurple'] },
+    {
+      color: [
+        ['red; position:fixed', '#abc'],
+        ['rebeccapurple', 'transparent'],
+      ],
+    },
+  ])('validates header and cell font colors after resolving %j', ({ color }) => {
+    const schema: PlotlySchema = {
+      data: [
+        {
+          type: 'table',
+          header: { values: ['A', 'B'], font: { color } },
+          cells: {
+            values: [
+              [1, 2],
+              [3, 4],
+            ],
+            font: { color },
+            format: '',
+            prefix: '',
+            suffix: '',
+          },
+        },
+      ],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToChartTableProps(schema, false, { current: new Map() }, 'default');
+
+    expect(result.headers?.[0].style).not.toHaveProperty('color');
+    expect(result.rows?.[0][0].style).not.toHaveProperty('color');
+    if (Array.isArray(color)) {
+      expect(result.headers?.[1].style?.color).toBe('rebeccapurple');
+      expect(result.rows?.[0][1].style?.color).toBe('rebeccapurple');
+      expect(result.rows?.[1][0].style?.color).toBe(Array.isArray(color[0]) ? '#abc' : undefined);
+    }
+  });
+});
 
 describe('isDate', () => {
   test('Should return true when input array contains Date objects', () => {

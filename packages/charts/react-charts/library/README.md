@@ -21,6 +21,9 @@ Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars
 Valid colors are preserved, including transparency; invalid or missing fill colors use Plotly's transparent default,
 `rgba(0,0,0,0)`.
 
+Table header and cell `font.color` values are validated after resolving scalar, column, or per-cell colors.
+Valid colors are preserved; invalid colors are omitted so the table's default text styling applies.
+
 ## Available charts across fluent platforms
 
 <table>

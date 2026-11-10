@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate declarative marker and Gantt fill colors and preserve transparent rectangle defaults",
+  "comment": "fix: validate declarative marker, Gantt fill, and table font colors and preserve transparent rectangle defaults",
   "packageName": "@fluentui/react-charting",
   "email": "v-baambati@microsoft.com"
 }
