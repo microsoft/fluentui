@@ -6,7 +6,8 @@ Tooltips should not be used to provide a full-text alternative to truncated cont
 
 `secondaryContent` is supporting, noninteractive information, such as a keyboard shortcut or sharing metadata.
 With `relationship="label"`, the primary and secondary regions form the trigger's accessible name unless the trigger
-already supplies `aria-label` or `aria-labelledby`. With `relationship="description"`, both regions describe the trigger;
+already supplies `aria-label` or `aria-labelledby`, including triggers returned by a render function.
+With `relationship="description"`, both regions describe the trigger;
 an authored `aria-describedby` takes precedence. `relationship="inaccessible"` does not create an accessibility relationship.
 
 Do not put links, buttons, or other interactive controls inside either content region. Use a Popover for interactive content.

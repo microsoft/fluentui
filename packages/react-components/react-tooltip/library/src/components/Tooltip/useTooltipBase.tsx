@@ -337,5 +337,23 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
 
+  // Render functions can author a label only after receiving the default trigger props.
+  if (typeof children === 'function' && state.secondaryContent && relationship === 'label') {
+    const resolvedChild = getTriggerChild<TooltipChildProps>(state.children);
+    if (
+      triggerAriaProps['aria-labelledby'] !== undefined &&
+      resolvedChild?.props['aria-label'] !== undefined &&
+      resolvedChild.props['aria-labelledby'] === triggerAriaProps['aria-labelledby']
+    ) {
+      state.children = applyTriggerPropsToChildren(state.children, {
+        ...resolvedChild.props,
+        'aria-labelledby': undefined,
+      });
+      const describesTrigger =
+        resolvedChild.props['aria-describedby']?.split(/\s+/).includes(state.content.id) ?? false;
+      state.shouldRenderTooltip = !isServerSideRender && (state.visible || describesTrigger);
+    }
+  }
+
   return state;
 };

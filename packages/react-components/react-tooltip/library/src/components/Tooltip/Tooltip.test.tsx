@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { Tooltip } from './Tooltip';
+import type { TooltipChildProps } from './Tooltip.types';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -112,6 +113,116 @@ describe('Tooltip', () => {
         </>,
       );
       expect(result.getByRole('button', { description: 'Authored description' })).toBeTruthy();
+    });
+
+    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])(
+      'preserves an authored render-function label with %p',
+      secondaryContent => {
+        const onFocus = jest.fn();
+        const renderTrigger = jest.fn((triggerProps: TooltipChildProps) =>
+          React.createElement('button', {
+            ...triggerProps,
+            'aria-label': 'Toggle bold formatting',
+            onFocus: (event: React.FocusEvent<HTMLButtonElement>) => {
+              triggerProps.onFocus?.(event);
+              onFocus();
+            },
+          }),
+        );
+        const result = render(
+          <Tooltip content="Bold" secondaryContent={secondaryContent} relationship="label">
+            {renderTrigger}
+          </Tooltip>,
+        );
+        const trigger = result.getByRole('button', { name: 'Toggle bold formatting' });
+        expect(trigger).not.toHaveAttribute('aria-labelledby');
+        expect(renderTrigger).toHaveBeenCalledTimes(1);
+        expect(queryByRoleTooltip(result)).toBeNull();
+        expect(renderTrigger.mock.calls[0][0].ref).toBeTruthy();
+        fireEvent.focus(trigger);
+        expect(onFocus).toHaveBeenCalledTimes(1);
+      },
+    );
+
+    it('labels an unnamed render-function trigger using both content regions', () => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent={<kbd>Ctrl+B</kbd>} relationship="label">
+          {triggerProps => React.createElement('button', triggerProps)}
+        </Tooltip>,
+      );
+      expect(result.getByRole('button', { name: 'Bold Ctrl+B' })).toHaveAttribute(
+        'aria-labelledby',
+        getByRoleTooltip(result).id,
+      );
+    });
+
+    it('keeps content referenced by an authored render-function description', () => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
+          {triggerProps =>
+            React.createElement('button', {
+              ...triggerProps,
+              'aria-label': 'Toggle bold formatting',
+              'aria-describedby': triggerProps['aria-labelledby'],
+            })
+          }
+        </Tooltip>,
+      );
+      expect(
+        result.getByRole('button', { name: 'Toggle bold formatting', description: 'Bold Ctrl+B' }),
+      ).toHaveAttribute('aria-describedby', getByRoleTooltip(result).id);
+    });
+
+    it.each([false, true])('preserves authored render-function references (composed=%p)', composed => {
+      const result = render(
+        <>
+          <span id="authored-name">Authored name</span>
+          <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
+            {triggerProps =>
+              React.createElement('button', {
+                ...triggerProps,
+                'aria-label': 'Toggle bold formatting',
+                'aria-labelledby': composed ? `authored-name ${triggerProps['aria-labelledby']}` : 'authored-name',
+              })
+            }
+          </Tooltip>
+        </>,
+      );
+      expect(
+        result.getByRole('button', { name: composed ? 'Authored name Bold Ctrl+B' : 'Authored name' }),
+      ).toHaveAttribute('aria-labelledby', composed ? `authored-name ${getByRoleTooltip(result).id}` : 'authored-name');
+    });
+
+    it('supports a render function returning null', () => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
+          {() => null}
+        </Tooltip>,
+      );
+      expect(result.queryByRole('button')).toBeNull();
+    });
+
+    it.each(['description', 'inaccessible'] as const)('preserves render-function %s relationships', relationship => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship={relationship}>
+          {triggerProps => React.createElement('button', { ...triggerProps, 'aria-label': 'Toggle bold formatting' })}
+        </Tooltip>,
+      );
+      const trigger = result.getByRole('button', {
+        name: 'Toggle bold formatting',
+        description: relationship === 'description' ? 'Bold Ctrl+B' : '',
+      });
+      expect(trigger).not.toHaveAttribute('aria-labelledby');
+    });
+
+    it('preserves authored render-function labels without secondary content', () => {
+      const result = render(
+        <Tooltip content="Bold" relationship="label">
+          {triggerProps => React.createElement('button', { ...triggerProps, 'aria-label': 'Toggle bold formatting' })}
+        </Tooltip>,
+      );
+      expect(result.getByRole('button', { name: 'Toggle bold formatting' })).not.toHaveAttribute('aria-labelledby');
+      expect(queryByRoleTooltip(result)).toBeNull();
     });
 
     it('supports slot props and preserves the arrow outside the text layout', () => {

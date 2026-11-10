@@ -8,9 +8,6 @@ const useStyles = makeStyles({
     display: 'flex',
     gap: tokens.spacingHorizontalL,
   },
-  constrained: {
-    maxWidth: '140px',
-  },
 });
 
 export const SecondaryContent = (props: Partial<TooltipProps>): JSXElement => {
@@ -23,6 +20,11 @@ export const SecondaryContent = (props: Partial<TooltipProps>): JSXElement => {
       <Tooltip content="Shared" secondaryContent="Everyone in your organization" relationship="description" {...props}>
         <Button>Sharing settings</Button>
       </Tooltip>
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" {...props}>
+        {triggerProps =>
+          React.createElement('button', { ...triggerProps, 'aria-label': 'Toggle bold formatting' }, 'Bold')
+        }
+      </Tooltip>
     </div>
   );
 };
@@ -33,37 +35,6 @@ SecondaryContent.parameters = {
       story:
         'Use secondaryContent for supporting metadata, including keyboard shortcuts. Both regions contribute to the ' +
         'accessible label or description. An explicit trigger label still takes precedence.',
-    },
-  },
-};
-
-export const SecondaryContentWrapping = (props: Partial<TooltipProps>): JSXElement => {
-  const styles = useStyles();
-  return (
-    <Tooltip
-      visible
-      withArrow
-      content={{ children: 'Shared', className: styles.constrained }}
-      secondaryContent="Available to everyone in this organization"
-      relationship="description"
-      {...props}
-    >
-      <Button>Sharing settings</Button>
-    </Tooltip>
-  );
-};
-
-SecondaryContentWrapping.args = {
-  appearance: 'normal',
-  secondaryContent: 'Available to everyone in this organization',
-};
-
-SecondaryContentWrapping.parameters = {
-  docs: {
-    description: {
-      story:
-        'Secondary content aligns to the logical end. Under a width constraint it moves below the primary content ' +
-        'and wraps within the tooltip instead of overflowing.',
     },
   },
 };
