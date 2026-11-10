@@ -4,13 +4,12 @@ import type { PositioningOptions } from '../types';
 import { getBoundary, resolvePositioningShorthand, toFloatingUIPlacement } from '../utils/index';
 
 export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBoundary' | 'fallbackPositions'> {
-  hasScrollableElement?: boolean;
   container: HTMLElement | null;
   isRtl?: boolean;
 }
 
 export function flip(options: FlipMiddlewareOptions): Middleware {
-  const { hasScrollableElement, flipBoundary, container, fallbackPositions = [], isRtl } = options;
+  const { flipBoundary, container, fallbackPositions = [], isRtl } = options;
 
   const fallbackPlacements = fallbackPositions.reduce<Placement[]>((acc, shorthand) => {
     const { position, align } = resolvePositioningShorthand(shorthand);
@@ -21,8 +20,8 @@ export function flip(options: FlipMiddlewareOptions): Middleware {
     return acc;
   }, []);
 
+  // Without `flipBoundary`, Floating UI's default boundary ('clippingAncestors') already accounts for scroll parents.
   return baseFlip({
-    ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
     fallbackStrategy: 'bestFit',
     ...(fallbackPlacements.length && { fallbackPlacements }),
