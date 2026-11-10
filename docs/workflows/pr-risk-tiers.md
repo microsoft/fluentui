@@ -23,7 +23,8 @@ fast lane, even for an otherwise trivial diff; continue using `/dependabot-rollu
 
 ## Deterministic enforcement
 
-[The map](../../.github/risk-tiers.json) is also an `actions/labeler` configuration:
+[The map](../../.github/risk-tiers.json) retains the `actions/labeler` configuration shape,
+but only the classifier publishes risk labels:
 `any-glob-to-all-files` uses one brace-union pattern for tier 0, and
 `any-glob-to-any-file` identifies tier 3 candidates. Separate positive globs under
 `any-glob-to-all-files` would require one of those globs to match the entire diff,
@@ -37,7 +38,7 @@ enforcing precedence and exclusions, then applying any model escalation. The are
 labeler does not publish preliminary risk labels: an inference failure must not
 replace a previous high-risk warning with a trivial candidate. It considers old and new
 filenames for renames. Incomplete API results or API errors fail the workflow rather
-than certify a low tier. The `PR risk policy` check is attached to the classified head
+than certify a low tier. The `PR risk assessment` check is attached to the classified head
 SHA and fails if a tier 2/3 description lacks a nonempty `Review focus: ...` line.
 The description should identify API/consumer contracts, intent/design, accessibility,
 or trust boundaries that need human attention. Authors verify every claim and report
@@ -46,16 +47,26 @@ real evidence, or explicitly say "not run".
 The privileged `pull_request_target` job only executes base-branch code and reads
 PR metadata through the GitHub API. It never installs dependencies, evaluates PR
 content as code, or checks out the head. Changes to the map/classifier take effect after
-merge, not on the PR proposing them. An in-progress head-SHA check is created before labeler/checkout setup, and an
+merge, not on the PR proposing them. Each attempt resolves and pins the current live
+base SHA, so a rerun is not permanently bound to an obsolete event base.
+An in-progress head-SHA assessment is created before labeler/checkout setup, and an
 `always()` finalizer fails it if setup, classification, or cancellation does not finish.
-A same-SHA description edit must not retain an obsolete passing assessment.
+A separate read-only `pull_request` workflow owns the native **PR risk policy** job:
+runner startup failure/cancellation fails that native gate even if the privileged
+job never starts and cannot invalidate its old custom assessment.
+The gate only accepts the newest GitHub Actions assessment matching a SHA-256 identity
+of head SHA, base repository/ref/SHA, title, and body. Missing, stale, pending, failed,
+or foreign-app assessments cannot pass it. It polls for at most 150 seconds.
+Both workflows group concurrency by PR and head SHA; an obsolete-head rerun cannot
+cancel current-head work. A same-head edit is resolved from current API metadata.
 The classifier checks head SHA and base repository/ref/SHA before publishing, and
 rejects workflow events that no longer match their trusted checkout.
 Reclassification runs on pushes, description
 edits, reopening, and readiness changes.
 
 Labels are routing hints, **not merge authorization**. Repository administrators
-must require the `PR risk policy` check and retain human/code-owner approval in
+must require the native `PR risk policy` job (not the custom `PR risk assessment`
+check) and retain human/code-owner approval in
 the repository ruleset before calling this a merge gate. Additional team-specific
 approvals for protected files must be configured using the ruleset's required
 reviewers facilities where available; a label cannot enforce them. This PR does

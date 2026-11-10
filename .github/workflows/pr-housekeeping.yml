@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize, reopened, edited, ready_for_review]
 
 concurrency:
-  group: pr-housekeeping-${{ github.event.pull_request.number }}
+  group: pr-housekeeping-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
   cancel-in-progress: true
 
 permissions:
@@ -25,15 +25,30 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           script: |
+            const { createHash } = require('node:crypto');
+            const { data: pull } = await github.rest.pulls.get({
+              ...context.repo, pull_number: context.issue.number,
+            });
+            if (pull.head.sha !== context.payload.pull_request.head.sha) {
+              core.notice('Superseded PR head; leaving the current assessment untouched.');
+              return;
+            }
+            const identity = createHash('sha256')
+              .update(JSON.stringify([pull.head.sha, pull.base.sha, pull.base.ref, pull.base.repo.full_name, pull.title, pull.body]))
+              .digest('hex');
             const { data: check } = await github.rest.checks.create({
               ...context.repo,
-              name: 'PR risk policy',
-              head_sha: context.payload.pull_request.head.sha,
+              name: 'PR risk assessment',
+              head_sha: pull.head.sha,
+              external_id: identity,
               status: 'in_progress',
             });
             core.setOutput('check-id', String(check.id));
+            core.setOutput('base-sha', pull.base.sha);
+            core.setOutput('identity', identity);
 
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
+        if: ${{ steps.policy.outputs.check-id != '' }}
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
@@ -41,8 +56,9 @@ jobs:
 
       # Never check out or execute PR-head code in pull_request_target.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        if: ${{ steps.policy.outputs.check-id != '' }}
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ steps.policy.outputs.base-sha }}
           persist-credentials: false
           sparse-checkout: |
             .github/risk-tiers.json
@@ -52,9 +68,12 @@ jobs:
 
       - name: Classify review risk
         id: classify
+        if: ${{ steps.policy.outputs.check-id != '' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           RISK_POLICY_CHECK_ID: ${{ steps.policy.outputs.check-id }}
+          RISK_POLICY_BASE_SHA: ${{ steps.policy.outputs.base-sha }}
+          RISK_POLICY_IDENTITY: ${{ steps.policy.outputs.identity }}
           RISK_CLASSIFIER_AZURE_CLIENT_ID: ${{ vars.RISK_CLASSIFIER_AZURE_CLIENT_ID }}
           RISK_CLASSIFIER_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         with:
@@ -66,9 +85,8 @@ jobs:
               checkRun: {
                 id: Number(process.env.RISK_POLICY_CHECK_ID),
                 headSha: pull.head.sha,
-                baseSha: pull.base.sha,
-                baseRef: pull.base.ref,
-                baseRepo: pull.base.repo.full_name,
+                baseSha: process.env.RISK_POLICY_BASE_SHA,
+                identity: process.env.RISK_POLICY_IDENTITY,
               },
             });
 

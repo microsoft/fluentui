@@ -1,6 +1,7 @@
 // @ts-check
 
 const { decideRisk, getDecisionToken } = require('./risk-decision');
+const { revisionKey } = require('./risk-policy');
 const { classifyRisk, hasReviewFocus, tierLabels } = require('./risk-tiers');
 
 /**
@@ -8,7 +9,7 @@ const { classifyRisk, hasReviewFocus, tierLabels } = require('./risk-tiers');
  *   github: ReturnType<typeof import('@actions/github').getOctokit>,
  *   context: typeof import('@actions/github').context,
  *   core: typeof import('@actions/core'),
- *   checkRun?: { id: number; headSha: string; baseSha: string; baseRef: string; baseRepo: string },
+ *   checkRun?: { id: number; headSha: string; baseSha: string; identity: string },
  *   assessRisk?: (input: Parameters<typeof decideRisk>[0]) => ReturnType<typeof decideRisk>
  * }} args
  */
@@ -33,8 +34,9 @@ module.exports = async ({
       await github.rest.checks.create({
         owner,
         repo,
-        name: 'PR risk policy',
+        name: 'PR risk assessment',
         head_sha: pull.head.sha,
+        external_id: revisionKey(pull),
         status: 'in_progress',
       })
     ).data;
@@ -45,8 +47,7 @@ module.exports = async ({
         checkRun.id <= 0 ||
         pull.head.sha !== checkRun.headSha ||
         pull.base.sha !== checkRun.baseSha ||
-        pull.base.ref !== checkRun.baseRef ||
-        pull.base.repo.full_name !== checkRun.baseRepo)
+        revisionKey(pull) !== checkRun.identity)
     ) {
       throw new Error('The PR no longer matches the trusted workflow revision. Trigger a fresh classification.');
     }

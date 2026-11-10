@@ -1,0 +1,49 @@
+name: PR risk gate
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+concurrency:
+  group: pr-risk-gate-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: read
+
+jobs:
+  risk-policy:
+    name: PR risk policy
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Resolve the current trusted base
+        id: snapshot
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { data: pull } = await github.rest.pulls.get({
+              ...context.repo, pull_number: context.issue.number,
+            });
+            if (pull.head.sha !== context.payload.pull_request.head.sha) {
+              throw new Error('Superseded PR head. Use the current-head gate.');
+            }
+            core.setOutput('base-sha', pull.base.sha);
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ steps.snapshot.outputs.base-sha }}
+          persist-credentials: false
+          sparse-checkout: scripts/github/src/risk-policy.js
+          sparse-checkout-cone-mode: false
+
+      - name: Require a fresh trusted assessment
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          TRUSTED_BASE_SHA: ${{ steps.snapshot.outputs.base-sha }}
+        with:
+          script: |
+            const { waitForAssessment } = require(`${process.env.GITHUB_WORKSPACE}/scripts/github/src/risk-policy.js`);
+            await waitForAssessment({ github, context, trustedBaseSha: process.env.TRUSTED_BASE_SHA });

@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { revisionKey } from './risk-policy';
 import type { ChangedFile } from './risk-tiers';
 import { classifyRisk, hasReviewFocus, tierLabels } from './risk-tiers';
 
@@ -197,7 +198,7 @@ describe('risk workflow', () => {
       'Risk: high',
     ]);
     expect(args.github.rest.checks.create).toHaveBeenCalledWith(
-      expect.objectContaining({ head_sha: 'head-sha', name: 'PR risk policy', status: 'in_progress' }),
+      expect.objectContaining({ head_sha: 'head-sha', name: 'PR risk assessment', status: 'in_progress' }),
     );
     expect(args.github.rest.checks.update).toHaveBeenCalledWith(
       expect.objectContaining({ check_run_id: 456, conclusion: 'success' }),
@@ -265,8 +266,7 @@ describe('risk workflow', () => {
         id: 789,
         headSha: 'head-sha',
         baseSha: 'base-sha',
-        baseRef: 'master',
-        baseRepo: 'microsoft/fluentui',
+        identity: revisionKey(args.data),
       },
     });
     expect(args.github.rest.checks.create).not.toHaveBeenCalled();
@@ -284,8 +284,7 @@ describe('risk workflow', () => {
           id: 789,
           headSha: 'head-sha',
           baseSha: 'old-base',
-          baseRef: 'master',
-          baseRepo: 'microsoft/fluentui',
+          identity: revisionKey(args.data),
         },
       }),
     ).rejects.toThrow('trusted workflow revision');

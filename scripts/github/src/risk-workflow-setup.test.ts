@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { runInNewContext } from 'node:vm';
 
+import { revisionKey } from './risk-policy';
+
 const workflow = readFileSync(join(__dirname, '../../../.github/workflows/pr-housekeeping.yml'), 'utf8');
 const scripts = Array.from(workflow.matchAll(/^ {10}script: \|\n((?: {12}[^\n]*\n?)+)/gm), match =>
   match[1].replace(/^ {12}/gm, ''),
@@ -17,7 +19,7 @@ describe('trusted risk workflow setup', () => {
     expect(workflow).toContain(
       "always() && steps.policy.outputs.check-id != '' && steps.classify.outcome != 'success'",
     );
-    expect(workflow).toContain('ref: ${{ github.event.pull_request.base.sha }}');
+    expect(workflow).toContain('ref: ${{ steps.policy.outputs.base-sha }}');
     expect(workflow).toContain('persist-credentials: false');
   });
 
@@ -26,6 +28,7 @@ describe('trusted risk workflow setup', () => {
     const outputs: Record<string, string> = {};
     const github = {
       rest: {
+        pulls: { get: jest.fn() },
         checks: {
           create: jest.fn(async check => {
             const data = { ...check, id: 2 };
@@ -38,15 +41,25 @@ describe('trusted risk workflow setup', () => {
     };
     const context = {
       repo: { owner: 'microsoft', repo: 'fluentui' },
-      payload: { pull_request: { head: { sha: 'unchanged-head' }, body: 'Review focus removed' } },
+      issue: { number: 123 },
+      payload: { pull_request: { head: { sha: 'unchanged-head' } } },
     };
+    const pull = {
+      head: { sha: 'unchanged-head' },
+      base: { sha: 'live-base', ref: 'master', repo: { full_name: 'microsoft/fluentui' } },
+      title: 'Current title',
+      body: 'Review focus removed',
+    };
+    github.rest.pulls.get.mockResolvedValue({ data: pull });
     const core = {
       setOutput: (key: string, value: string) => {
         outputs[key] = value;
       },
     };
-    await runInNewContext(`(async () => { ${scripts[0]} })()`, { github, context, core });
+    await runInNewContext(`(async () => { ${scripts[0]} })()`, { github, context, core, require });
     expect(checks[1]).toMatchObject({ head_sha: 'unchanged-head', status: 'in_progress' });
+    expect(outputs['base-sha']).toBe('live-base');
+    expect(outputs.identity).toBe(revisionKey(pull));
     // Checkout/labeler fails, so the classifier never runs; the always() finalizer still must run.
     await runInNewContext(`(async () => { ${scripts[2]} })()`, {
       github,
