@@ -10,12 +10,14 @@ import { renderTab_unstable as renderTab } from '@fluentui/react-tabs';
 import { renderTabList_unstable as renderTabList } from '@fluentui/react-tabs';
 import type { TabBaseState } from '@fluentui/react-tabs';
 import type { TabListBaseState } from '@fluentui/react-tabs';
+import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
 import { TabListBaseProps as TabListProps } from '@fluentui/react-tabs';
 import { TabListSlots } from '@fluentui/react-tabs';
 import { TabBaseProps as TabProps } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
+import { useTabListContext_unstable as useTabListContext } from '@fluentui/react-tabs';
 
 export { renderTab }
 
@@ -26,6 +28,10 @@ export const Tab: ForwardRefComponent<TabProps>;
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
+
+export { TabListContextValue }
+
+export { TabListContextValues }
 
 export { TabListProps }
 
@@ -58,6 +64,8 @@ export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabStat
 
 // @public
 export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+export { useTabListContext }
 
 // @public (undocumented)
 export const useTabListContextValues: (state: TabListState) => TabListContextValues;

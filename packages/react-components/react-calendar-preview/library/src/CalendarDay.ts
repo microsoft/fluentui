@@ -1,9 +1,8 @@
 export type {
   CalendarDayBaseProps,
   CalendarDayBaseState,
+  CalendarDayCell,
   CalendarDayCellProps,
-  CalendarDayContextValue,
-  CalendarDayContextValues,
   CalendarDayDismissData,
   CalendarDayHandle,
   CalendarDayHeaderSelectData,
@@ -12,14 +11,16 @@ export type {
   CalendarDaySelectData,
   CalendarDaySlots,
   CalendarDayState,
+  CalendarDayWeek,
+  CalendarDayWeekdayRow,
   DayInfo,
 } from './components/CalendarDay/index';
 export {
   CalendarDay,
   calendarDayClassNames,
+  calendarDayGridClassNames,
   renderCalendarDay_unstable,
   useCalendarDayBase_unstable,
-  useCalendarDayContextValues_unstable,
   useCalendarDay_unstable,
   useCalendarDayStyles_unstable,
 } from './components/CalendarDay/index';

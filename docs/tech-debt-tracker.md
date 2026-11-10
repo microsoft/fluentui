@@ -7,9 +7,9 @@ Items are added during code review, agent runs, and manual audits.
 
 <!-- Add items with: category, description, location, priority, and date added -->
 
-| ID                                                | Category | Description | Location | Priority | Added |
-| ------------------------------------------------- | -------- | ----------- | -------- | -------- | ----- |
-| _To be populated by agent runs and manual audits_ |          |             |          |          |       |
+| ID     | Category          | Description                                                                                                                                                                                                                                                  | Location                                                                                                                                                                                                                   | Priority | Added      |
+| ------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
+| TD-001 | pattern-violation | Slider and RangeSlider styles hardcode thumb, rail and minimum sizes (`16px`, `20px`, `2px`, `4px`, `120px`) and the `#0000` step-mark gradient colour instead of design tokens. Move both components to tokens together so they keep rendering identically. | `packages/react-components/react-slider/library/src/components/Slider/useSliderStyles.styles.ts`, `packages/react-components/react-range-slider-preview/library/src/components/RangeSlider/useRangeSliderStyles.styles.ts` | P3       | 2026-10-15 |
 
 ## Categories
 

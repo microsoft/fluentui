@@ -3,6 +3,9 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { ToggleButton } from '@fluentui/react-button';
+import { TextBoldRegular } from '@fluentui/react-icons';
+import { TextBoldRegular as TextBoldFont } from '@fluentui/react-icons/lib/fonts';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
@@ -210,4 +213,89 @@ describe('ToolbarDivider', () => {
     cy.get(button).eq(0).type('{leftarrow}');
     cy.get(button).eq(2).should('be.focused');
   });
+});
+
+describe('Toolbar checked icon contrast', () => {
+  const assertIconContrast = ($button: JQuery<HTMLElement>) => {
+    const foreground = $button.css('color');
+    const $icon = $button.find('.fui-Button__icon');
+    expect($icon.css('color')).to.equal(foreground);
+    expect($icon.css('forced-color-adjust')).to.equal('none');
+    expect($icon.children().css('color')).to.equal(foreground);
+    expect($icon.children().css('forced-color-adjust')).to.equal('none');
+    if ($icon.find('svg').length) {
+      expect($icon.find('svg').css('fill')).to.equal(foreground);
+    }
+    expect(foreground).not.to.equal($button.css('background-color'));
+  };
+
+  const setForcedColors = (colorScheme?: 'light' | 'dark') =>
+    cy.then(() =>
+      Cypress.automation('remote:debugger:protocol', {
+        command: 'Emulation.setEmulatedMedia',
+        params: {
+          features: colorScheme
+            ? [
+                { name: 'forced-colors', value: 'active' },
+                { name: 'prefers-color-scheme', value: colorScheme },
+                { name: 'prefers-reduced-motion', value: 'reduce' },
+              ]
+            : [],
+        },
+      }),
+    );
+
+  afterEach(() => setForcedColors());
+
+  for (const colorScheme of ['light', 'dark'] as const) {
+    for (const appearance of ['primary', 'subtle', 'transparent'] as const) {
+      for (const [iconType, Icon] of [
+        ['SVG', TextBoldRegular],
+        ['font', TextBoldFont],
+      ] as const) {
+        it(`preserves ${iconType} icon contrast with ${colorScheme} forced colors and ${appearance} appearance`, () => {
+          setForcedColors(colorScheme);
+          const props = { appearance, icon: <Icon /> };
+
+          mount(
+            <Toolbar checkedValues={{ radio: ['selected'], toggle: ['selected'] }}>
+              <ToolbarRadioButton {...props} name="radio" value="selected" aria-label="Selected radio" />
+              <ToolbarToggleButton {...props} name="toggle" value="selected" aria-label="Selected toggle" />
+              <ToggleButton {...props} checked aria-label="Selected button" />
+              <ToggleButton {...props} aria-label="Unselected" />
+              <ToggleButton {...props} checked disabled aria-label="Disabled" />
+              <ToggleButton {...props} checked disabledFocusable aria-label="Disabled focusable" />
+            </Toolbar>,
+          );
+
+          if (iconType === 'font') {
+            cy.get('[aria-label="Selected radio"] i').should('be.visible');
+            cy.document().then(async doc => {
+              const fonts = await doc.fonts.load('20px FluentSystemIcons');
+              expect(fonts).to.have.length(1);
+              expect(fonts[0].status).to.equal('loaded');
+            });
+          }
+
+          for (const label of ['Selected radio', 'Selected toggle', 'Selected button']) {
+            const selector = `[aria-label="${label}"]`;
+            cy.get('body').realHover({ position: 'bottomRight' });
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realHover();
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realMouseDown();
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realMouseUp();
+            cy.get('body').realHover({ position: 'bottomRight' });
+            cy.get(selector).focus();
+            cy.get(selector).should(assertIconContrast);
+          }
+
+          for (const label of ['Unselected', 'Disabled', 'Disabled focusable']) {
+            cy.get(`[aria-label="${label}"] .fui-Button__icon`).should('have.css', 'forced-color-adjust', 'auto');
+          }
+        });
+      }
+    }
+  }
 });

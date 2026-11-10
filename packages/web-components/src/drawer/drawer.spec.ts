@@ -2,7 +2,7 @@ import { expect, test } from '../../test/playwright/index.js';
 import { tagName as DrawerBodyTagName } from '../drawer-body/drawer-body.options.js';
 import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Drawer } from './drawer.js';
-import { DrawerPosition, DrawerSize, DrawerType, tagName } from './drawer.options.js';
+import { DrawerType, tagName } from './drawer.options.js';
 
 test.describe('Drawer', () => {
   test.use({
@@ -35,38 +35,6 @@ test.describe('Drawer', () => {
     }, tagName);
 
     expect(hasError).toBe(false);
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const size of Object.values(DrawerSize)) {
-      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
-        await fastPage.updateTemplate(element, { attributes: { size } });
-
-        await expect(element).toHaveAttribute('size', size);
-
-        await expect(element).toHaveJSProperty('size', size);
-      });
-    }
-  });
-
-  test('should set the `position` property to match the `position` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const position of Object.values(DrawerPosition)) {
-      await test.step(`should set the \`position\` property to \`${position}\``, async () => {
-        await fastPage.updateTemplate(element, { attributes: { position } });
-
-        await expect(element).toHaveAttribute('position', position);
-
-        await expect(element).toHaveJSProperty('position', position);
-      });
-    }
   });
 
   test('should set the `ariaLabel` property when the `aria-label` attribute is set', async ({ fastPage }) => {

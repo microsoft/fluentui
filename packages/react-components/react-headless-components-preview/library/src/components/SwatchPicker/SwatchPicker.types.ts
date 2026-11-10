@@ -1,6 +1,11 @@
 import type { SwatchPickerBaseState } from '@fluentui/react-swatch-picker';
 
-export type { SwatchPickerBaseProps as SwatchPickerProps, SwatchPickerSlots } from '@fluentui/react-swatch-picker';
+export type {
+  SwatchPickerBaseProps as SwatchPickerProps,
+  SwatchPickerSlots,
+  SwatchPickerContextValue,
+  SwatchPickerContextValues,
+} from '@fluentui/react-swatch-picker';
 
 export type SwatchPickerState = SwatchPickerBaseState & {
   root: {

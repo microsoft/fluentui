@@ -9,6 +9,7 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],
@@ -41,6 +42,7 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ]

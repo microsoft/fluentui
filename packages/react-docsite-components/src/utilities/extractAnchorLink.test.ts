@@ -36,6 +36,26 @@ describe('extractAnchorLink', () => {
     expect(extractAnchorLink('#/components/checkbox#Overview')).toBe('Overview');
   });
 
+  it.each([
+    '#/styles/web/icons%23available-icons',
+    'https://developer.microsoft.com/en-us/fluentui#/styles/web/icons%23available-icons',
+    '#/styles/web/icons%23available-icons?min=1',
+  ])('returns the anchor when the route separator is encoded: %s', url => {
+    expect(extractAnchorLink(url)).toBe('available-icons');
+  });
+
+  it.each([
+    'https://example.com/icons%23available-icons',
+    '#/styles/web/icons?next=%23available-icons',
+    '#/styles/web/icons%2523available-icons',
+  ])('does not interpret encoded URL data as an anchor: %s', url => {
+    expect(extractAnchorLink(url)).toBe('');
+  });
+
+  it('preserves encoded characters in a literal anchor', () => {
+    expect(extractAnchorLink('#/styles/web/icons#section%23name')).toBe('section%23name');
+  });
+
   it('returns empty string for url with three hashes', () => {
     // unexpected but just in case?
     expect(extractAnchorLink('http://whatever#/components/checkbox#Overview#wat')).toBe('');

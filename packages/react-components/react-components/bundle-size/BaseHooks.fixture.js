@@ -49,6 +49,7 @@ import { useImageBase_unstable } from '@fluentui/react-image';
 import { useInputBase_unstable } from '@fluentui/react-input';
 import { useLabelBase_unstable } from '@fluentui/react-label';
 import { useLinkBase_unstable } from '@fluentui/react-link';
+import { useListBase_unstable, useListItemBase_unstable } from '@fluentui/react-list';
 import {
   useMenuBase_unstable,
   useMenuItemBase_unstable,
@@ -125,6 +126,7 @@ import {
   useToolbarToggleButtonBase_unstable,
 } from '@fluentui/react-toolbar';
 import { useTooltipBase_unstable } from '@fluentui/react-tooltip';
+import { useTreeBase_unstable, useTreeItemLayoutBase_unstable } from '@fluentui/react-tree';
 
 console.log(
   useAccordionBase_unstable,
@@ -165,6 +167,8 @@ console.log(
   useInputBase_unstable,
   useLabelBase_unstable,
   useLinkBase_unstable,
+  useListBase_unstable,
+  useListItemBase_unstable,
   useMenuBase_unstable,
   useMenuItemBase_unstable,
   useMenuItemCheckboxBase_unstable,
@@ -230,6 +234,8 @@ console.log(
   useToolbarRadioButtonBase_unstable,
   useToolbarToggleButtonBase_unstable,
   useTooltipBase_unstable,
+  useTreeBase_unstable,
+  useTreeItemLayoutBase_unstable,
 );
 
 export default {

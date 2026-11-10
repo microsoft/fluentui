@@ -64,8 +64,13 @@ export interface PlaygroundParameters {
 export interface PlaygroundRuntimeManifest {
     // (undocumented)
     allowedModules: string[];
+    allowedScriptFiles?: string[];
     // (undocumented)
     buildId: string;
+    inlineStyles?: Array<{
+        href: string;
+        cssText: string;
+    }>;
     moduleTypings?: Record<string, string[]>;
     // (undocumented)
     scripts: string[];
@@ -129,9 +134,11 @@ export interface PlaygroundUrlState {
 
 // @public
 export interface PresetConfig {
+    inlineStyles?: boolean;
     modules: string[] | Record<string, string>;
     setup?: string;
     typings?: string[];
+    typingsRoots?: Record<string, string>;
 }
 
 // @public

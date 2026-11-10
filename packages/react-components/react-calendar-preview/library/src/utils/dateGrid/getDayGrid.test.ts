@@ -60,6 +60,30 @@ describe('getDayGrid', () => {
   });
 
   it.each([
+    { firstDayOfWeek: 'sunday', firstVisibleDate: new Date(2020, 7, 2), lastVisibleDate: new Date(2020, 8, 5) },
+    { firstDayOfWeek: 'monday', firstVisibleDate: new Date(2020, 7, 3), lastVisibleDate: new Date(2020, 8, 6) },
+  ] as const)(
+    'keeps a sixth-row navigated date visible in a five-week grid starting on $firstDayOfWeek',
+    ({ firstDayOfWeek, firstVisibleDate, lastVisibleDate }) => {
+      const navigatedDate = new Date(2020, 7, 31);
+      const weeks = getDayGrid({ ...defaultOptions, navigatedDate, firstDayOfWeek, weeksToShow: 5 });
+      const visibleWeeks = weeks.slice(1, -1);
+      expect(weeks).toHaveLength(7);
+      expect(visibleWeeks).toHaveLength(5);
+      expect(visibleWeeks[0][0].originalDate).toEqual(firstVisibleDate);
+      expect(visibleWeeks[4][6].originalDate).toEqual(lastVisibleDate);
+      expect(visibleWeeks.flat().some(day => day.originalDate?.getTime() === navigatedDate.getTime())).toBe(true);
+    },
+  );
+
+  it('preserves month-start anchoring when the navigated day fits in five weeks', () => {
+    const weeks = getDayGrid({ ...defaultOptions, navigatedDate: new Date(2020, 7, 29), weeksToShow: 5 });
+    const visibleWeeks = weeks.slice(1, -1);
+    expect(visibleWeeks[0][0].originalDate).toEqual(new Date(2020, 6, 26));
+    expect(visibleWeeks[4][6].originalDate).toEqual(new Date(2020, 7, 29));
+  });
+
+  it.each([
     [2021, 1, 6],
     [2020, 7, 8],
   ])('covers all days in month %s/%s with %s rows', (year, month, rowCount) => {

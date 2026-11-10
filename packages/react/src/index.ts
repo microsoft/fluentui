@@ -637,6 +637,7 @@ export {
   useKeytipRef,
 } from './Keytips';
 export type {
+  IKeytipActivationBehavior,
   IKeytipConfig,
   IKeytipConfigItem,
   IKeytipConfigMap,

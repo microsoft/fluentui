@@ -5,6 +5,7 @@ export {
   TabList,
   renderTabList,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
 } from './components/TabList/index';
 export type {
@@ -15,4 +16,6 @@ export type {
   TabListSlots,
   TabListProps,
   TabListState,
+  TabListContextValue,
+  TabListContextValues,
 } from './components/TabList/index';

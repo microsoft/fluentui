@@ -1,18 +1,16 @@
 'use client';
 
-import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { DrawerProps } from './Drawer.types';
 import { renderDrawer } from './renderDrawer';
 import { useDrawer } from './useDrawer';
+import { composeComponent } from '../../utils/composeComponent';
 
 /**
  * Drawer contains supplementary content for complex creation, edit, or management experiences.
  */
-export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) => {
-  const state = useDrawer(props, ref);
-
-  return renderDrawer(state);
-});
-
-Drawer.displayName = 'Drawer';
+export const Drawer: ForwardRefComponent<DrawerProps> = /*#__PURE__*/ composeComponent(
+  'Drawer',
+  useDrawer,
+  renderDrawer,
+);
