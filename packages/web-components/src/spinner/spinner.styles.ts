@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorBrandStroke1,
   colorBrandStroke2,
@@ -9,15 +9,6 @@ import {
   strokeWidthThicker,
   strokeWidthThickest,
 } from '../theme/design-tokens.js';
-import {
-  extraLargeState,
-  extraSmallState,
-  hugeState,
-  invertedState,
-  largeState,
-  smallState,
-  tinyState,
-} from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -32,27 +23,27 @@ export const styles = css`
     content-visibility: auto;
   }
 
-  :host(${tinyState}) {
+  :host([size='tiny']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 20px;
   }
-  :host(${extraSmallState}) {
+  :host([size='extra-small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 24px;
   }
-  :host(${smallState}) {
+  :host([size='small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 28px;
   }
-  :host(${largeState}) {
+  :host([size='large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 36px;
   }
-  :host(${extraLargeState}) {
+  :host([size='extra-large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 40px;
   }
-  :host(${hugeState}) {
+  :host([size='huge']) {
     --indicatorSize: ${strokeWidthThickest};
     --size: 44px;
   }
@@ -83,7 +74,7 @@ export const styles = css`
     border-radius: 50%;
   }
 
-  :host(${invertedState}) .background {
+  :host([appearance='inverted']) .background {
     border-color: rgba(255, 255, 255, 0.2);
   }
 
@@ -110,7 +101,7 @@ export const styles = css`
     border-right-color: currentcolor;
   }
 
-  :host(${invertedState}) .indicator {
+  :host([appearance='inverted']) .indicator {
     color: ${colorNeutralStrokeOnBrand2};
   }
 
@@ -163,8 +154,8 @@ export const styles = css`
       transform: rotate(70deg);
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     .background {
       display: none;
     }
@@ -173,5 +164,5 @@ export const styles = css`
       border-block-start-color: Highlight;
       border-right-color: Highlight;
     }
-  `),
-);
+  }
+`;

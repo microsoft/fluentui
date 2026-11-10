@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/esm/index.d.ts",
+  "apiReport": {
+    "enabled": true,
+    "reportFolder": "<projectFolder>/docs"
+  },
+  "docModel": {
+    "enabled": true,
+    "apiJsonFilePath": "<projectFolder>/dist/fluent-web-components.api.json"
+  },
+  "dtsRollup": {
+    "enabled": true
+  },
+  "compiler": {
+    "skipLibCheck": false,
+    "tsconfigFilePath": "<projectFolder>/tsconfig.api-extractor.json"
+  },
+  "messages": {
+    "extractorMessageReporting": {
+      "ae-missing-release-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": true
+      },
+      "ae-different-release-tags": {
+        "logLevel": "none",
+        "addToApiReportFile": true
+      }
+    }
+  }
+}

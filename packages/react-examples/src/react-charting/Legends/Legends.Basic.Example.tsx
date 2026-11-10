@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Legends, ILegend, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LegendBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',

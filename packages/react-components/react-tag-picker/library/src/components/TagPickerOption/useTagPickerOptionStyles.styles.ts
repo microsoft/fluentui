@@ -1,4 +1,6 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+'use client';
+
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerOptionSlots, TagPickerOptionState } from './TagPickerOption.types';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
@@ -10,36 +12,44 @@ export const tagPickerOptionClassNames: SlotClassNames<TagPickerOptionSlots> = {
   secondaryContent: 'fui-TagPickerOption__secondaryContent',
 };
 
-/**
- * Styles for the root slot
- */
-const useStyles = makeStyles({
-  root: {
+const useRootBaseStyle = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const useRootStyles = makeStyles({
+  secondaryContent: {
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
-    alignItems: 'center',
   },
+});
 
-  secondaryContent: {
-    gridColumnStart: 2,
-    gridRowStart: 2,
-    ...typographyStyles.caption1,
-  },
+const useSecondaryContentBaseStyle = makeResetStyles({
+  gridColumnStart: 2,
+  gridRowStart: 2,
+  ...typographyStyles.caption1,
+});
 
-  media: {
-    gridRowStart: 'span 2',
-  },
+const useMediaBaseStyle = makeResetStyles({
+  gridRowStart: 'span 2',
 });
 
 /**
  * Apply styling to the TagPickerOption slots based on the state
  */
 export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): TagPickerOptionState => {
-  'use no memo';
+  const rootBaseStyle = useRootBaseStyle();
+  const rootStyles = useRootStyles();
+  const secondaryContentBaseStyle = useSecondaryContentBaseStyle();
+  const mediaBaseStyle = useMediaBaseStyle();
 
-  const styles = useStyles();
-
-  state.root.className = mergeClasses(tagPickerOptionClassNames.root, styles.root, state.root.className);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.className = mergeClasses(
+    tagPickerOptionClassNames.root,
+    rootBaseStyle,
+    state.secondaryContent && rootStyles.secondaryContent,
+    state.root.className,
+  );
   useOptionStyles_unstable({
     ...state,
     active: false,
@@ -49,13 +59,15 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
     selected: false,
   });
   if (state.media) {
-    state.media.className = mergeClasses(tagPickerOptionClassNames.media, styles.media, state.media.className);
+    // eslint-disable-next-line react-hooks/immutability
+    state.media.className = mergeClasses(tagPickerOptionClassNames.media, mediaBaseStyle, state.media.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       tagPickerOptionClassNames.secondaryContent,
-      styles.secondaryContent,
+      secondaryContentBaseStyle,
       state.secondaryContent.className,
     );
   }

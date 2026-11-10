@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Nested = () => {
+export const Nested = (): JSXElement => {
   const styles = useStyles();
   return (
     <FluentProvider theme={webLightTheme}>

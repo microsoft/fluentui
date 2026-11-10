@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AriaLiveSlots = {
@@ -13,6 +13,7 @@ export type AriaLivePoliteness = 'polite' | 'assertive';
  */
 export type AriaLiveProps = ComponentProps<Partial<AriaLiveSlots>> & {
   announceRef: React.Ref<Announce>;
+  children?: React.ReactNode;
 };
 
 /**

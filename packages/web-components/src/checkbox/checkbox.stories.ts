@@ -1,11 +1,13 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import { LabelPosition, ValidationFlags } from '../field/field.options.js';
+import { LabelPosition } from '../field/field.options.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 type Story = StoryObj<FluentCheckbox>;
+const { argTypes } = getStorybookHelpers<FluentCheckbox>('fluent-checkbox');
 
 const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-checkbox
@@ -18,21 +20,16 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     shape="${story => story.shape}"
     size="${story => story.size}"
     slot="${story => story.slot}"
+    ${ref('checkbox')}
   >
     ${story => story.checkedIndicatorContent?.()} ${story => story.indeterminateIndicatorContent?.()}
   </fluent-checkbox>
 `;
 
-const messageTemplate = html`
-  <fluent-text slot="message" size="200" flag="${story => story.flag}">
-    <span>${story => story.message}</span>
-  </fluent-text>
-`;
-
 const fieldStoryTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-field label-position="${story => story.labelPosition}">
     <label slot="label" for="${story => story.id}">${story => story.label}</label>
-    ${story => story.storyContent} ${repeat(story => story.messages, messageTemplate)}
+    ${story => story.storyContent}
   </fluent-field>
 `;
 
@@ -42,88 +39,13 @@ export default {
   args: {
     disabled: false,
   },
-  argTypes: {
-    autofocus: {
-      control: 'boolean',
-      description: 'Sets the checkbox to autofocus',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    checked: {
-      control: 'boolean',
-      description: 'Sets the checked state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      control: 'text',
-      description: 'The form element that the checkbox belongs to',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    indeterminate: {
-      control: 'boolean',
-      description: 'Sets the indeterminate state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    name: {
-      control: 'text',
-      description: 'The name of the checkbox',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    required: {
-      control: 'boolean',
-      description: 'Sets the checkbox as required',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    value: {
-      control: 'text',
-      description: 'The value of the checkbox',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    shape: {
-      description: 'Sets the shape of the checkbox',
-      control: 'select',
-      options: Object.values(CheckboxShape),
-      mapping: { '': null, ...CheckboxShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CheckboxShape).join('|') },
-      },
-    },
-    size: {
-      description: 'Sets the size of the checkbox',
-      control: 'select',
-      options: Object.values(CheckboxSize),
-      mapping: { '': null, ...CheckboxSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CheckboxSize).join('|') },
-      },
-    },
-    checkedIndicatorContent: {
-      control: false,
-      description: 'Slot for checked indicator',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    indeterminateIndicatorContent: {
-      control: false,
-      description: 'Slot for indeterminate indicator',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-    label: { table: { disable: true } },
-    messageSlottedContent: { table: { disable: true } },
-  },
+  argTypes,
 } as Meta<FluentCheckbox>;
 
 export const Default: Story = {};
 
 export const Checkbox: Story = {
-  render: renderComponent(storyTemplate).bind({}),
+  render: renderComponent(storyTemplate),
   args: {
     id: uniqueId('checkbox-'),
   },
@@ -132,7 +54,7 @@ export const Checkbox: Story = {
 export const Checked: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -159,7 +81,7 @@ export const Checked: Story = {
 export const Indeterminate: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -186,7 +108,7 @@ export const Indeterminate: Story = {
 export const Disabled: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -250,30 +172,33 @@ export const Disabled: Story = {
 
 export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
-    <form style="display: inline-flex; gap: 1em; align-items: baseline">
-      <div>
-        <fluent-checkbox id="required-fluent-checkbox" required></fluent-checkbox>
-        <label for="required-fluent-checkbox">Required</label>
-      </div>
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.checkbox.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+      style="display: inline-flex; flex-direction: column; gap: 1rem; max-width: 400px;"
+    >
       ${fieldStoryTemplate}
-      <fluent-button type="submit">Submit</fluent-button>
+      <div>
+        <fluent-button type="submit">Submit</fluent-button>
+        <fluent-button type="reset">Reset</fluent-button>
+      </div>
+      <fluent-text ${ref('successMessage')} hidden>Form submitted successfully!</fluent-text>
     </form>
-  `).bind({}),
+  `),
   args: {
     storyContent: storyTemplate,
     slot: 'input',
     labelPosition: LabelPosition.after,
     id: uniqueId('checkbox-'),
     required: true,
-    label: 'Required',
-    messages: [{ message: 'This field is required', flag: ValidationFlags.valueMissing }],
+    label: 'Check this to submit the form',
   },
 };
 
 export const Large: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -317,7 +242,7 @@ export const Large: Story = {
 };
 
 export const LabelBefore: Story = {
-  render: renderComponent(fieldStoryTemplate).bind({}),
+  render: renderComponent(fieldStoryTemplate),
   args: {
     storyContent: storyTemplate,
     id: uniqueId('checkbox-'),
@@ -328,7 +253,7 @@ export const LabelBefore: Story = {
 };
 
 export const LabelWrapping: Story = {
-  render: renderComponent(fieldStoryTemplate).bind({}),
+  render: renderComponent(fieldStoryTemplate),
   args: {
     storyContent: storyTemplate,
     id: uniqueId('checkbox-'),
@@ -348,7 +273,7 @@ export const LabelWrapping: Story = {
 export const Circular: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {

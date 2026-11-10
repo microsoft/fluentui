@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDetailsListAnimationExampleItem {
   key: number;
@@ -74,7 +75,7 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
     clearInterval(this._updateTimer);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items } = this.state;
 
     return (

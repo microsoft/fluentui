@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ListItem renders a default state 1`] = `
 <div>
   <li
     class="fui-ListItem"
-    id="listItem7"
+    id="listItem_r_6_"
     role="listitem"
   >
     <div

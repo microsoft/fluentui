@@ -7,6 +7,5 @@
     "@fluentui/scripts-github": "*",
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-ts-node": "*"
-  },
-  "devDependencies": {}
+  }
 }

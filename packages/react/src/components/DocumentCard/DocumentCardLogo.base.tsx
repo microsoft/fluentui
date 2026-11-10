@@ -8,6 +8,8 @@ import type {
   IDocumentCardLogoStyles,
 } from './DocumentCardLogo.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>();
 
 /**
@@ -22,7 +24,7 @@ export class DocumentCardLogoBase extends React.Component<IDocumentCardLogoProps
     initializeComponentRef(this);
   }
 
-  public render() {
+  public render(): JSXElement {
     const { logoIcon, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {

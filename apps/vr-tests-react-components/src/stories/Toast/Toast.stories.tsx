@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import {
   Toast,
   ToastTitle,
@@ -10,18 +10,15 @@ import {
   ToastStatus,
 } from '@fluentui/react-toast';
 import { Link } from '@fluentui/react-link';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../../utilities/getStoryVariant';
 
 export default {
   title: 'Toast',
-  decorators: [
-    Story => (
-      <StoryWright steps={new Steps().click('#dispatch').wait('[data-toast-visible]').snapshot('Toast visible').end()}>
-        <Story />
-      </StoryWright>
-    ),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().click('#dispatch').wait('[data-toast-visible]').snapshot('Toast visible').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Toast>;
 
 const toastIntents = ['success', 'warning', 'info', 'error'] as const;

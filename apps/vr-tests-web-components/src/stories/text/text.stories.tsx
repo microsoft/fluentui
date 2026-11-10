@@ -1,23 +1,21 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
-import { TextDefinition, FluentDesignSystem, colorNeutralBackground6 } from '@fluentui/web-components';
-
-TextDefinition.define(FluentDesignSystem.registry);
+import { Steps } from 'storywright';
+import { colorNeutralBackground6 } from '@fluentui/web-components';
+import '@fluentui/web-components/text/define.js';
 
 export default {
   title: 'Text',
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-          <div className="testWrapper" style={{ width: '322px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '322px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() } },
 };
 
 export const Default = () =>

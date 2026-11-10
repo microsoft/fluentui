@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -7,7 +8,6 @@ import {
   Button,
   makeStyles,
   tokens,
-  DrawerProps,
   mergeClasses,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
@@ -62,7 +62,7 @@ const DrawerSeparatorExample: React.FC<DrawerSeparatorExampleProps> = ({ open, s
   );
 };
 
-export const Separator = () => {
+export const Separator = (): JSXElement => {
   const styles = useStyles();
 
   const [startOpen, setStartOpen] = React.useState(true);

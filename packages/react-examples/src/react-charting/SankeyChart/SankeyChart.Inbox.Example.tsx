@@ -1,5 +1,12 @@
-import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import {
+  IChartProps,
+  ISankeyChartProps,
+  SankeyChart,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 //import { IPalette } from '@fluentui/react/lib/Styling';
 
 interface ISankeyChartBasicState {
@@ -16,7 +23,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._inboxExample()}</div>;
   }
 
@@ -27,7 +34,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _inboxExample(): JSX.Element {
+  private _inboxExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {
@@ -35,74 +42,74 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
           {
             nodeId: 0,
             name: '192.168.42.72',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 1,
             name: '172.152.48.13',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 2,
             name: '124.360.55.1',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 3,
             name: '192.564.10.2',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 4,
             name: '124.124.50.1',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 5,
             name: '172.630.89.4',
-            color: '#8764B8',
-            borderColor: '#4B3867',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
           {
             nodeId: 6,
             name: 'inbox',
-            color: '#0E7878',
-            borderColor: '#004E4E',
+            color: getColorFromToken(DataVizPalette.color3),
+            borderColor: getColorFromToken(DataVizPalette.color23),
           },
           {
             nodeId: 7,
             name: 'Junk Folder',
-            color: '#0E7878',
-            borderColor: '#004E4E',
+            color: getColorFromToken(DataVizPalette.color3),
+            borderColor: getColorFromToken(DataVizPalette.color23),
           },
           {
             nodeId: 8,
             name: 'Deleted Folder',
-            color: '#0E7878',
-            borderColor: '#004E4E',
+            color: getColorFromToken(DataVizPalette.color3),
+            borderColor: getColorFromToken(DataVizPalette.color23),
           },
           {
             nodeId: 9,
             name: 'Clicked',
-            color: '#4F6BED',
-            borderColor: '#3B52B4',
+            color: getColorFromToken(DataVizPalette.color1),
+            borderColor: getColorFromToken(DataVizPalette.color21),
           },
           {
             nodeId: 10,
             name: 'Opened',
-            color: '#4F6BED',
-            borderColor: '#3B52B4',
+            color: getColorFromToken(DataVizPalette.color1),
+            borderColor: getColorFromToken(DataVizPalette.color21),
           },
           {
             nodeId: 11,
             name: ' No further action  required',
-            color: '#4F6BED',
-            borderColor: '#3B52B4',
+            color: getColorFromToken(DataVizPalette.color1),
+            borderColor: getColorFromToken(DataVizPalette.color21),
           },
         ],
         links: [
@@ -174,7 +181,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label>change Width:</label>
         <input type="range" value={this.state.width} min={400} max={1600} onChange={this._onWidthChange} />
         <label>change Height:</label>
@@ -195,7 +202,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

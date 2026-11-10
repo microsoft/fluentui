@@ -11,14 +11,9 @@ import {
   CarouselSlider,
   CarouselAutoplayButton,
 } from '@fluentui/react-components';
-import {
-  Carousel,
-  CarouselAnnouncerFunction,
-  CarouselButton,
-  CarouselCard,
-  CarouselViewport,
-} from '@fluentui/react-components';
+import { Carousel, CarouselButton, CarouselCard, CarouselViewport } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   carousel: {
@@ -78,7 +73,7 @@ const useClasses = makeStyles({
     placeContent: 'center',
 
     padding: '40px',
-    height: '200px',
+    minHeight: '200px',
 
     position: 'relative',
   },
@@ -119,7 +114,7 @@ const WireframeContent: React.FC<{
   );
 };
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [activeIndex, setActiveIndex] = React.useState(1);
   const classes = useClasses();
 
@@ -128,6 +123,7 @@ export const Controlled = () => {
       <Carousel
         activeIndex={activeIndex}
         groupSize={1}
+        draggable
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         announcement={getAnnouncement}
       >
@@ -162,7 +158,7 @@ export const Controlled = () => {
         </div>
 
         <div className={classes.footer}>
-          <CarouselAutoplayButton />
+          <CarouselAutoplayButton aria-label="Enable autoplay" />
           <Divider vertical />
           <code className={classes.code}>{JSON.stringify({ activeIndex }, null, 2)}</code>
           <Divider vertical />

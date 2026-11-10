@@ -127,6 +127,11 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               ':focus-within': {
                 background: palette.themePrimary,
                 color: palette.white,
+
+                [HighContrastSelector]: {
+                  color: 'HighLightText',
+                  background: 'Highlight',
+                },
               },
               [HighContrastSelector]: {
                 borderColor: 'HighLight',
@@ -180,7 +185,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         getFocusStyle(theme, {
           inset: 2,
           borderColor: 'transparent',
-          highContrastStyle: { inset: 2, left: 1, top: 1, bottom: 1, right: 1, outlineColor: 'ButtonText' },
+          highContrastStyle: { inset: 2, left: 1, top: 1, bottom: 1, right: 1, outlineColor: 'HighlightText' },
           outlineColor: palette.white,
           borderRadius: PICKER_PERSONA_RADIUS,
         }),
@@ -196,6 +201,10 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
             },
             ':focus': {
               color: palette.white,
+
+              [HighContrastSelector]: {
+                color: 'HighlightText',
+              },
             },
             [HighContrastSelector]: {
               color: 'HighlightText',

@@ -4,6 +4,7 @@ export {
   useCarouselContext_unstable,
 } from './components/CarouselContext';
 export type {
+  CarouselAppearance,
   CarouselContextValue,
   CarouselContextValues,
   CarouselIndexChangeData,

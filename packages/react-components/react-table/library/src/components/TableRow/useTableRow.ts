@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
 import type { TableRowProps, TableRowState } from './TableRow.types';

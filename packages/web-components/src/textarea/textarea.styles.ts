@@ -42,21 +42,8 @@ import {
   spacingVerticalXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-import {
-  autoResizeState,
-  blockState,
-  displayShadowState,
-  filledDarkerState,
-  filledLighterState,
-  largeState,
-  resizeBothState,
-  resizeHorizontalState,
-  resizeVerticalState,
-  smallState,
-  userInvalidState,
-} from '../styles/states/index.js';
+import { nativeDisabledState, userInvalidState } from '../styles/states/index.js';
 
 /**
  * Styles for the TextArea component.
@@ -117,11 +104,11 @@ export const styles: ElementStyles = css`
     outline: none;
   }
 
-  :host(${blockState}:not([hidden])) {
+  :host([block]:not([hidden])) {
     display: block;
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     --font-size: ${fontSizeBase200};
     --line-height: ${lineHeightBase200};
     --min-block-size: 40px;
@@ -130,7 +117,7 @@ export const styles: ElementStyles = css`
     --control-padding-inline: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) {
+  :host([size='large']) {
     --font-size: ${fontSizeBase400};
     --line-height: ${lineHeightBase400};
     --min-block-size: 64px;
@@ -139,36 +126,36 @@ export const styles: ElementStyles = css`
     --control-padding-inline: ${spacingHorizontalSNudge};
   }
 
-  :host(${resizeBothState}:not(:disabled)) {
+  :host([resize='both']:not(${nativeDisabledState})) {
     --resize: both;
   }
 
-  :host(${resizeHorizontalState}:not(:disabled)) {
+  :host([resize='horizontal']:not(${nativeDisabledState})) {
     --resize: horizontal;
   }
 
-  :host(${resizeVerticalState}:not(:disabled)) {
+  :host([resize='vertical']:not(${nativeDisabledState})) {
     --resize: vertical;
   }
 
-  :host(${autoResizeState}) {
+  :host([auto-resize]) {
     --block-size: auto;
     --contain-size: inline-size;
   }
 
-  :host(${filledDarkerState}) {
+  :host([appearance='filled-darker']) {
     --background-color: ${colorNeutralBackground3};
     --border-color: var(--background-color);
     --border-block-end-color: var(--border-color);
   }
 
-  :host(${filledLighterState}) {
+  :host([appearance='filled-lighter']) {
     --border-color: var(--background-color);
     --border-block-end-color: var(--border-color);
   }
 
-  :host(${filledDarkerState}${displayShadowState}),
-  :host(${filledLighterState}${displayShadowState}) {
+  :host([appearance='filled-darker'][display-shadow]),
+  :host([appearance='filled-lighter'][display-shadow]) {
     --box-shadow: ${shadow2};
   }
 
@@ -177,7 +164,7 @@ export const styles: ElementStyles = css`
     --border-block-end-color: ${colorPaletteRedBorder2};
   }
 
-  :host(:disabled) {
+  :host(${nativeDisabledState}) {
     --color: ${colorNeutralForegroundDisabled};
     --background-color: ${colorTransparentBackground};
     --border-color: ${colorNeutralStrokeDisabled};
@@ -208,7 +195,7 @@ export const styles: ElementStyles = css`
     resize: var(--resize);
   }
 
-  :host(${blockState}) .root {
+  :host([block]) .root {
     inline-size: auto;
   }
 
@@ -235,7 +222,7 @@ export const styles: ElementStyles = css`
   }
 
   :host([readonly]) .root::after,
-  :host(:disabled) .root::after {
+  :host(${nativeDisabledState}) .root::after {
     content: none;
   }
 
@@ -270,7 +257,7 @@ export const styles: ElementStyles = css`
     white-space: pre-wrap;
   }
 
-  :host(${autoResizeState}) .auto-sizer {
+  :host([auto-resize]) .auto-sizer {
     display: block;
   }
 
@@ -282,6 +269,7 @@ export const styles: ElementStyles = css`
     field-sizing: content;
     max-block-size: 100%;
     outline: 0;
+    overflow: auto;
     resize: none;
     text-align: inherit;
   }
@@ -298,8 +286,8 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       --border-color: FieldText;
       --border-block-end-color: FieldText;
@@ -314,11 +302,11 @@ export const styles: ElementStyles = css`
       --border-block-end-color: Highlight;
     }
 
-    :host(:disabled) {
+    :host(${nativeDisabledState}) {
       --color: GrayText;
       --border-color: GrayText;
       --border-block-end-color: GrayText;
       --placeholder-color: GrayText;
     }
-  `),
-);
+  }
+`;

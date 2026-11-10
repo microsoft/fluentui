@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { createTestContainer } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 
 import {
   isElementVisible,
@@ -12,9 +11,9 @@ import {
   getLastTabbable,
 } from './focus';
 
-function renderIntoDocument(element: React.ReactElement<{}>, container: HTMLElement): HTMLElement {
-  const component = ReactDOM.render(element, container) as React.ReactInstance;
-  const renderedDOM = ReactDOM.findDOMNode(component) as HTMLElement;
+function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
+  const component = render(element);
+  const renderedDOM = component.container.firstChild as HTMLElement;
 
   return renderedDOM;
 }
@@ -33,7 +32,7 @@ function createDivWithShadowRoot(initOptions: ShadowRootInit): HTMLElement {
   return div as HTMLElement;
 }
 
-function makeShadowDiv(innerHTML: string): React.FC {
+function makeShadowDiv(innerHTML: string): React.FC<React.PropsWithChildren<unknown>> {
   const ShadowDiv = () => {
     const setRef = (node: HTMLElement | null) => {
       if (node) {
@@ -53,46 +52,37 @@ describe('isElementVisible', () => {
 
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
   });
 
   it('returns false if data-is-visible is false', () => {
-    testContainer = createTestContainer();
-
     const _hiddenElement = renderIntoDocument(
       <div data-is-visible={false}>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     expect(isElementVisible(_hiddenElement)).toEqual(false);
   });
 
   it('returns true if data-is-visible is true', () => {
-    testContainer = createTestContainer();
     const _visibleElement = renderIntoDocument(
       <div data-is-visible={true}>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     expect(isElementVisible(_visibleElement)).toEqual(true);
   });
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
-    testContainer = createTestContainer();
-
     const _element = renderIntoDocument(
       <div>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (_element as any).isVisible = true;
@@ -207,7 +197,6 @@ describe('focusAsync', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
@@ -222,15 +211,12 @@ describe('focusAsync', () => {
   });
 
   it('focuses on an item on the next frame', () => {
-    testContainer = createTestContainer();
-
     const container = renderIntoDocument(
       <div>
         <button className="a">a</button>
         <button className="b">b</button>
         <button className="c">c</button>
       </div>,
-      testContainer,
     );
 
     const buttonA = container.querySelector('.a') as HTMLElement;
@@ -355,14 +341,12 @@ describe('getFirstTabbable', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
   });
 
   it('focuses on the next tabbable item', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -377,7 +361,6 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -388,8 +371,6 @@ describe('getFirstTabbable', () => {
   });
 
   it('focuses on the next tabbable item in shadow DOM', () => {
-    testContainer = createTestContainer();
-
     const innerHTML = `
     <button class="a" data-is-visible="true">
       a
@@ -407,7 +388,6 @@ describe('getFirstTabbable', () => {
       <div>
         <ShadowDiv />
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -418,7 +398,6 @@ describe('getFirstTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -433,7 +412,6 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -447,14 +425,12 @@ describe('getLastTabbable', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
   });
 
   it('focuses on the last tabbable item', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -469,7 +445,6 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -480,8 +455,6 @@ describe('getLastTabbable', () => {
   });
 
   it('focuses on the last tabbable item in shadow DOM', () => {
-    testContainer = createTestContainer();
-
     const innerHTML = `
     <button class="a" data-is-visible="true">
       a
@@ -499,7 +472,6 @@ describe('getLastTabbable', () => {
       <div>
         <ShadowDiv />
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -510,7 +482,6 @@ describe('getLastTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -525,7 +496,6 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;

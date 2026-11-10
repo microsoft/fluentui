@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles } from '@griffel/react';
 
 export const useStackItemShimStyles = makeStyles({

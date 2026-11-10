@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition, TableRowId } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +11,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   TableBody,
   TableCell,
@@ -19,8 +20,6 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   useTableFeatures,
-  TableColumnDefinition,
-  TableRowId,
   useTableSelection,
   TableCellLayout,
   createTableColumn,
@@ -28,7 +27,7 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -38,7 +37,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -107,7 +106,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SingleSelectControlled = () => {
+export const SingleSelectControlled = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(() => new Set<TableRowId>([1]));
   const {
     getRows,

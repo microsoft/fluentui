@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -38,26 +40,31 @@ const useStyles = makeStyles({
     display: 'flex',
     cursor: 'pointer',
   },
+
+  disabled: {
+    cursor: 'default',
+  },
 });
 
 /**
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const checkmarkBaseStyles = useCheckmarkBaseStyles();
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
     (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(
       listItemClassNames.checkmark,
       checkmarkBaseStyles.root,

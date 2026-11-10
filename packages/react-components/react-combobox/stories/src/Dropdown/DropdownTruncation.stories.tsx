@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TruncatedValue = (props: Partial<DropdownProps>) => {
+export const TruncatedValue = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
   const options = [
     'Cat',
@@ -53,9 +54,9 @@ export const TruncatedValue = (props: Partial<DropdownProps>) => {
 
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Best pet</label>
+      <label htmlFor={dropdownId}>Best pet</label>
       <Dropdown
-        aria-labelledby={dropdownId}
+        id={dropdownId}
         listbox={{ className: styles.listbox }}
         button={<span className={styles.truncatedText}>{value}</span>}
         onOptionSelect={(e, data) => setValue(data.optionText ?? placeholder)}

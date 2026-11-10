@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { BreadcrumbContextValues } from './Breadcrumb.types';
+import type { BreadcrumbContextValues } from './Breadcrumb.types';
 
 const BreadcrumbContext = React.createContext<BreadcrumbContextValues | undefined>(undefined);
 
@@ -18,4 +20,5 @@ export const BreadcrumbProvider = BreadcrumbContext.Provider;
 /**
  * @internal
  */
-export const useBreadcrumbContext_unstable = () => React.useContext(BreadcrumbContext) ?? breadcrumbDefaultValue;
+export const useBreadcrumbContext_unstable = (): BreadcrumbContextValues =>
+  React.useContext(BreadcrumbContext) ?? breadcrumbDefaultValue;

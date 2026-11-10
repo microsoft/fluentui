@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -13,23 +14,25 @@ const useStyles = makeStyles({
   },
 });
 
-export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
+export const ActiveOptionChange = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-active-option-change');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
 
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
-  const onActiveOptionChange = React.useCallback(
+  const onActiveOptionChange = React.useCallback<NonNullable<ComboboxProps['onActiveOptionChange']>>(
     (_, data) => {
-      setActiveOptionText(data?.nextOption?.text);
+      if (data?.nextOption?.text) {
+        setActiveOptionText(data?.nextOption?.text);
+      }
     },
     [setActiveOptionText],
   );
 
   const onMouseEnter = React.useCallback(
-    e => {
-      setActiveOptionText(`${e.target.textContent} (Mouse enter)`);
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      setActiveOptionText(`${e.currentTarget.textContent} (Mouse enter)`);
     },
     [setActiveOptionText],
   );

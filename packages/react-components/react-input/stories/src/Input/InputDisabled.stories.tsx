@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Input, Label, tokens, mergeClasses, Switch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Disabled = () => {
+export const Disabled = (): JSXElement => {
   const idPrefix = 'input-disabled-story';
   const inputIds = {
     default: useId(idPrefix),

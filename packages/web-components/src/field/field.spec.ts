@@ -1,11 +1,30 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as DropdownTagName } from '../dropdown/dropdown.options.js';
 import type { TextInput } from '../text-input/text-input.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Field } from './field.js';
+import { tagName } from './field.options.js';
 
 test.describe('Field', () => {
   test.use({
-    tagName: 'fluent-field',
-    waitFor: ['fluent-text-input'],
+    tagName,
+    waitFor: [TextInputTagName],
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
   });
 
   test('should set the `disabled` state when the slotted input is disabled', async ({ fastPage }) => {
@@ -372,7 +391,7 @@ test.describe('Field', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-text-input id="input" slot="input" type="text"></fluent-text-input>
+        <${TextInputTagName} id="input" slot="input" type="text"></${TextInputTagName}>
         <div id="message" slot="message" flag="bad-input">I have no idea how you managed to do this.</div>
       `,
     });
@@ -472,5 +491,35 @@ test.describe('Field', () => {
     });
 
     await expect(element.locator('input:right-of(label)')).toHaveCount(1);
+  });
+
+  test('should connect label to dropdown’s combobox element', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const control = element.getByRole('combobox');
+    const label = element.locator('label');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <label slot="label">Label</label>
+        <${DropdownTagName} slot="input"></${DropdownTagName}>
+      `,
+    });
+
+    await expect(label).toHaveAttribute('for', (await control.getAttribute('id')) ?? '');
+  });
+
+  test('should connect label to combobox’s combobox element', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const control = element.getByRole('combobox');
+    const label = element.locator('label');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <label slot="label">Label</label>
+        <${DropdownTagName} slot="input" type="combobox"></${DropdownTagName}>
+      `,
+    });
+
+    await expect(label).toHaveAttribute('for', (await control.getAttribute('id')) ?? '');
   });
 });

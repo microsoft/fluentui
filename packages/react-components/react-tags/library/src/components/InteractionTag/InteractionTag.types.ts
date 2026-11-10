@@ -1,6 +1,13 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { TagAppearance, TagShape, TagSize, TagValue, TagDismissHandler } from '../../utils/types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { InteractionTagContextValue } from '../../contexts/interactionTagContext';
+import type {
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissHandler,
+  TagSelectHandler,
+} from '../../utils/types';
 
 export type InteractionTagContextValues = {
   interactionTag: InteractionTagContextValue;
@@ -29,6 +36,14 @@ export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<Inter
   disabled?: boolean;
 
   /**
+   * An InteractionTag can be selected.
+   * Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup.
+   *
+   * @default false
+   */
+  selected?: boolean;
+
+  /**
    * An InteractionTag can have rounded or circular shape.
    *
    * @default 'round'
@@ -52,14 +67,40 @@ export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<Inter
  * State used in rendering InteractionTag
  */
 export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> &
-  Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
+  Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size' | 'value'>> & {
     /**
      * Event handler from TagGroup context that allows TagGroup to dismiss the tag
      */
     handleTagDismiss: TagDismissHandler<Value>;
 
     /**
+     * Event handler from TagGroup context that allows TagGroup to select the tag
+     */
+    handleTagSelect?: TagSelectHandler<Value>;
+
+    /**
+     * Selected values from TagGroup context
+     */
+    selectedValues: Value[];
+
+    /**
      * id to assign to InteractionTagPrimary
      */
     interactionTagPrimaryId: string;
   };
+
+/**
+ * InteractionTag Base Props - omits design-only props
+ */
+export type InteractionTagBaseProps<Value = TagValue> = Omit<
+  InteractionTagProps<Value>,
+  'appearance' | 'size' | 'shape'
+>;
+
+/**
+ * InteractionTag Base State - omits design-only state
+ */
+export type InteractionTagBaseState<Value = TagValue> = Omit<
+  InteractionTagState<Value>,
+  'appearance' | 'size' | 'shape'
+>;

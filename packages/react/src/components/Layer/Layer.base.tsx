@@ -26,7 +26,7 @@ import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types'
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement>) => {
+const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement | null>) => {
   if (providerRef?.current) {
     return providerRef.current.classList.contains(IsFocusVisibleClassName);
   }
@@ -51,7 +51,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
-    const layerRef = React.useRef<HTMLDivElement>();
+    const layerRef = React.useRef<HTMLDivElement>(undefined);
     const fabricElementRef = React.useRef<HTMLDivElement>(null);
     const focusContext = React.useContext(FocusRectsContext);
 
@@ -62,7 +62,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // Sets the focus visible className when the FocusRectsProvider for the layer is rendered
     // This allows the current focus visibility style to be carried over to the layer content
     const focusRectsRef = React.useCallback(
-      el => {
+      (el: any) => {
         const isFocusVisible = getFocusVisibility(focusContext?.providerRef);
         if (el && isFocusVisible) {
           el.classList.add(IsFocusVisibleClassName);
@@ -86,7 +86,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       theme,
     } = props;
 
-    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref, focusRectsRef);
+    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref as React.Ref<HTMLDivElement>, focusRectsRef);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,

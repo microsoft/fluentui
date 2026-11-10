@@ -1,3 +1,5 @@
+'use client';
+
 import { useForceUpdate } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -28,5 +30,6 @@ export function useMountedState(
     }
   });
 
+  // eslint-disable-next-line react-hooks/refs
   return [visible || mountedRef.current, setMounted];
 }

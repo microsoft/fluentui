@@ -1,6 +1,8 @@
 export { definition as ButtonDefinition } from './button.definition.js';
-export { BaseButton, Button } from './button.js';
+export { BaseButton } from './button.base.js';
+export { Button } from './button.js';
 export { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 export type { ButtonOptions } from './button.options.js';
 export { styles as ButtonStyles } from './button.styles.js';
 export { template as ButtonTemplate } from './button.template.js';
+export { tagName as ButtonTagName } from './button.options.js';

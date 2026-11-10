@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -68,13 +70,12 @@ const useStyles = makeStyles({
  * Apply styling to the TableCell slots based on the state
  */
 export const useTableCellStyles_unstable = (state: TableCellState): TableCellState => {
-  'use no memo';
-
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableCellClassNames.root,
     styles.root,

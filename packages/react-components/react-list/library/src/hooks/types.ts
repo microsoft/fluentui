@@ -1,5 +1,5 @@
-import { SelectionItemId } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type { SelectionItemId } from '@fluentui/react-utilities';
+import type * as React from 'react';
 
 export type ListSelectionState = {
   isSelected: (item: string | number) => boolean;

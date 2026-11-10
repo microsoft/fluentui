@@ -1,9 +1,11 @@
 export { clamp } from './clamp';
+export { getPercentInRange } from './getPercentInRange';
 export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
 } from './getNativeElementProps';
+export { getReactElementRef } from './getReactElementRef';
 export { getRTLSafeKey } from './getRTLSafeKey';
 export { mergeCallbacks } from './mergeCallbacks';
 export { omit } from './omit';
@@ -42,3 +44,4 @@ export { isHTMLElement } from './isHTMLElement';
 export { isInteractiveHTMLElement } from './isInteractiveHTMLElement';
 export type { PriorityQueue, PriorityQueueCompareFn } from './priorityQueue';
 export { createPriorityQueue } from './priorityQueue';
+export { measureScrollbarWidth } from './measureScrollBarWidth';

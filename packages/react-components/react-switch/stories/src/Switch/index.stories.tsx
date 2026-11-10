@@ -5,6 +5,7 @@ import bestPracticesMd from './SwitchBestPractices.md';
 
 export { Default } from './SwitchDefault.stories';
 export { Checked } from './SwitchChecked.stories';
+export { Size } from './SwitchSize.stories';
 export { Disabled } from './SwitchDisabled.stories';
 export { Label } from './SwitchLabel.stories';
 export { LabelWrapping } from './SwitchLabelWrapping.stories';

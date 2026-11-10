@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
@@ -6,14 +7,17 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return <div key={'id_VBC'}>{this._reflowExample()}</div>;
+  public render(): JSXElement {
+    return (
+      <div className="containerDiv" key={'id_VBC'}>
+        {this._reflowExample()}
+      </div>
+    );
   }
 
-  private _reflowExample(): JSX.Element {
+  private _reflowExample(): JSXElement {
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
@@ -23,7 +27,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 5,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -41,7 +45,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 20,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -59,7 +63,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 28,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -77,7 +81,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 22,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',

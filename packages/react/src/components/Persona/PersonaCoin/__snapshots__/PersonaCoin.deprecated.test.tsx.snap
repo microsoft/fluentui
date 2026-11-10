@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`PersonaCoin renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-Persona-coin
       ms-Persona--size48
       {
@@ -15,7 +15,7 @@ exports[`PersonaCoin renders correctly 1`] = `
   role="presentation"
 >
   <div
-    className=
+    class=
         ms-Persona-imageArea
         {
           flex: 0 0 auto;
@@ -28,7 +28,7 @@ exports[`PersonaCoin renders correctly 1`] = `
   >
     <div
       aria-hidden="true"
-      className=
+      class=
           ms-Persona-initials
           {
             background-color: #0078D4;
@@ -52,8 +52,8 @@ exports[`PersonaCoin renders correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
 
             {
               -moz-osx-font-smoothing: grayscale;
@@ -76,7 +76,7 @@ exports[`PersonaCoin renders correctly 1`] = `
 
 exports[`PersonaCoin renders correctly with image 1`] = `
 <div
-  className=
+  class=
       ms-Persona-coin
       ms-Persona--size48
       {
@@ -89,7 +89,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
   role="presentation"
 >
   <div
-    className=
+    class=
         ms-Persona-imageArea
         {
           flex: 0 0 auto;
@@ -101,7 +101,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
     role="presentation"
   >
     <div
-      className=
+      class=
           ms-Image
           ms-Persona-image
           {
@@ -121,16 +121,11 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             top: 0px;
             width: 48px;
           }
-      style={
-        Object {
-          "height": 48,
-          "width": 48,
-        }
-      }
+      style="width: 48px; height: 48px;"
     >
       <img
         alt=""
-        className=
+        class=
             ms-Image-image
             ms-Image-image--cover
             ms-Image-image--portrait
@@ -143,8 +138,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
               opacity: 0;
               width: 100%;
             }
-        onError={[Function]}
-        onLoad={[Function]}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
@@ -154,7 +147,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
 
 exports[`PersonaCoin renders correctly with provided initials 1`] = `
 <div
-  className=
+  class=
       ms-Persona-coin
       ms-Persona--size48
       {
@@ -167,7 +160,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
   role="presentation"
 >
   <div
-    className=
+    class=
         ms-Persona-imageArea
         {
           flex: 0 0 auto;
@@ -180,7 +173,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
   >
     <div
       aria-hidden="true"
-      className=
+      class=
           ms-Persona-initials
           {
             background-color: #0078D4;
@@ -213,7 +206,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
 
 exports[`PersonaCoin renders correctly with text 1`] = `
 <div
-  className=
+  class=
       ms-Persona-coin
       ms-Persona--size48
       {
@@ -226,7 +219,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
   role="presentation"
 >
   <div
-    className=
+    class=
         ms-Persona-imageArea
         {
           flex: 0 0 auto;
@@ -239,7 +232,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
   >
     <div
       aria-hidden="true"
-      className=
+      class=
           ms-Persona-initials
           {
             background-color: #498205;

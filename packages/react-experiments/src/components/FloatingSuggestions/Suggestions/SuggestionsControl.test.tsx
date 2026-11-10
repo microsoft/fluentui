@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
 import { SuggestionsControl } from './SuggestionsControl';
+import { render } from '@testing-library/react';
 
 const doNothing = () => {
   return;
@@ -12,8 +12,7 @@ const renderNothing = () => <></>;
 describe('Pickers', () => {
   describe('SuggestionsControl', () => {
     it('renders header/footer items with the provided className', () => {
-      const root = document.createElement('div');
-      ReactDOM.render(
+      const { container } = render(
         <SuggestionsControl
           headerItemsProps={[
             {
@@ -35,13 +34,10 @@ describe('Pickers', () => {
           onSuggestionClick={doNothing}
           onRenderSuggestion={renderNothing}
         />,
-        root,
       );
 
-      expect(root.querySelector('.header-item-wrapper .header-item-inner')).not.toBe(null);
-      expect(root.querySelector('.footer-item-wrapper .footer-item-inner')).not.toBe(null);
-
-      ReactDOM.unmountComponentAtNode(root);
+      expect(container.querySelector('.header-item-wrapper .header-item-inner')).not.toBe(null);
+      expect(container.querySelector('.footer-item-wrapper .footer-item-inner')).not.toBe(null);
     });
   });
 });

@@ -74,6 +74,5 @@ function verifyPackaging(options) {
   assert.ok(micromatch(processedResultArr, 'dist/*.(min.js|js)').length, 'ships rolluped js');
   assert.equal(micromatch(processedResultArr, 'src/*').length, 0, `wont ship source code from "/src"`);
 
-  assert.ok(micromatch(processedResultArr, 'dist/esm/**/*.(js|map)').length, 'ships esm');
-  assert.ok(micromatch(processedResultArr, 'dist/dts/**/*.d.ts').length, 'ships types');
+  assert.ok(micromatch(processedResultArr, 'dist/esm/**/*.(js|map|d.ts)').length, 'ships esm');
 }

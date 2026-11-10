@@ -1,4 +1,6 @@
-import { SlotClassNames } from '@fluentui/react-utilities';
+'use client';
+
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TabListSlots, TabListState } from './TabList.types';
@@ -38,14 +40,13 @@ const useStyles = makeStyles({
  * Apply styling to the TabList slots based on the state
  */
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
-  'use no memo';
-
   const { appearance, vertical, size } = state;
 
   const styles = useStyles();
 
   const isRounded = appearance === 'subtle-circular' || appearance === 'filled-circular';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tabListClassNames.root,
     styles.root,

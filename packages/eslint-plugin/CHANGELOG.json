@@ -2,6 +2,133 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 13:28:46 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.20.0",
+      "version": "1.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "fix: remove devDeps from deps"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b84a02ea72c8c383d64c0e81868f61cf2f8e661d",
+            "comment": "chore: bump minimal ts peer dep"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name and update react config to accommodate project name change"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e084a5620f3bcd04c57cd874a8dd89f2b20bfb92",
+            "comment": "chore: add Griffel's pseudo element lint rule"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b6651a44885d3bb90131ca3fb544e2e45e1043c0",
+            "comment": "updated eslint-plugin deprecation to v3"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "dc7bb663e3d93a19b611cf1892556d69c57b1269",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: migrate to @typescript/eslint v6"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d0e28c6674287caeeef341f1f355e53d152fcf37",
+            "comment": "fix: bump minimal typescript version to 4.8.4"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5e3705df32a47dcfdea9c47cf8da209d80a1aabd",
+            "comment": "chore: removes type dependency on @fluentui/react-utilities internals in ban-instanceof-html-element"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: add no-restricted-syntax to react-config"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: resolve circular dependencies and remove ban-context-export tests tight coupling to monorepo setup/package"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d6af8e30ddd353c900441eea489b4a5aea0db088",
+            "comment": "update tsconfig after migration to 5.2"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add tools nx project tag"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "feat: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4542341d9b22e75d9876796ab6676160b94bd98f",
+            "comment": "feat: add browser compatibility plugin"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a5791a57966f752b47488ced9f8d10e2b3a7512b",
+            "comment": "feat: enable @nx/workspace-no-missing-jsx-pragma rule for react v9 projects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Jun 2024 07:33:22 GMT",
       "tag": "@fluentui/eslint-plugin_v1.19.0",
       "version": "1.19.0",

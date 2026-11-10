@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn, IDetailsColumnProps } from '@fluentui/react/lib/DetailsList';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDetailsListProportionalColumnsExampleItem {
   key: number;
@@ -43,7 +44,7 @@ export class DetailsListProportionalColumnsExample extends React.Component<{}, I
         onRenderHeader: (
           colProps?: IDetailsColumnProps,
           defaultRender?: IRenderFunction<IDetailsColumnProps>,
-        ): JSX.Element | null => (
+        ): JSXElement | null => (
           <ActionButton onClick={this._onColumnButtonInvoked}>
             {(defaultRender && defaultRender(colProps)) || <></>}
           </ActionButton>
@@ -75,7 +76,7 @@ export class DetailsListProportionalColumnsExample extends React.Component<{}, I
     clearInterval(this._updateTimer);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items } = this.state;
 
     return (

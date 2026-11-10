@@ -1,14 +1,19 @@
+'use client';
+
 import * as React from 'react';
 import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ButtonState } from '../Button';
 import type { ToggleButtonProps, ToggleButtonState } from '../ToggleButton';
 
 export function useToggleState<
-  TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>,
+  TToggleButtonProps extends Pick<
+    ToggleButtonProps,
+    'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable' | 'isAccessible'
+  >,
   TButtonState extends Pick<ButtonState, 'root'>,
-  TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>,
+  TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root' | 'isAccessible'>,
 >(props: TToggleButtonProps, state: TButtonState): TToggleButtonState {
-  const { checked, defaultChecked, disabled, disabledFocusable } = props;
+  const { checked, defaultChecked, disabled, disabledFocusable, isAccessible = false } = props;
   const { onClick, role } = state.root;
 
   const [checkedValue, setCheckedValue] = useControllableState({
@@ -20,7 +25,7 @@ export function useToggleState<
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
   const onToggleClick = React.useCallback(
-    ev => {
+    (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!disabled && !disabledFocusable) {
         if (ev.defaultPrevented) {
           return;
@@ -36,6 +41,8 @@ export function useToggleState<
     ...state,
 
     checked: checkedValue,
+
+    isAccessible,
 
     root: {
       ...state.root,

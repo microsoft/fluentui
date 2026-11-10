@@ -1,0 +1,674 @@
+{
+  "data": [
+    {
+      "cells": {
+        "align": "left",
+        "fill": { "color": "white" },
+        "font": { "size": 11 },
+        "height": 28,
+        "values": [
+          [
+            "ID-001",
+            "ID-002",
+            "ID-003",
+            "ID-004",
+            "ID-005",
+            "ID-006",
+            "ID-007",
+            "ID-008",
+            "ID-009",
+            "ID-010",
+            "ID-011",
+            "ID-012",
+            "ID-013",
+            "ID-014",
+            "ID-015",
+            "ID-016",
+            "ID-017",
+            "ID-018",
+            "ID-019",
+            "ID-020",
+            "ID-021",
+            "ID-022",
+            "ID-023",
+            "ID-024",
+            "ID-025",
+            "ID-026",
+            "ID-027",
+            "ID-028",
+            "ID-029",
+            "ID-030",
+            "ID-031",
+            "ID-032",
+            "ID-033",
+            "ID-034",
+            "ID-035",
+            "ID-036",
+            "ID-037",
+            "ID-038",
+            "ID-039",
+            "ID-040",
+            "ID-041",
+            "ID-042",
+            "ID-043",
+            "ID-044",
+            "ID-045",
+            "ID-046",
+            "ID-047",
+            "ID-048",
+            "ID-049",
+            "ID-050"
+          ],
+          [
+            "Jun 22, 2023",
+            "Feb 17, 2023",
+            "Apr 28, 2023",
+            "Jul 12, 2023",
+            "Nov 20, 2023",
+            "Sep 09, 2023",
+            "Jul 15, 2023",
+            "Dec 26, 2023",
+            "Jan 10, 2023",
+            "Jul 31, 2023",
+            "Oct 05, 2023",
+            "Aug 31, 2023",
+            "Oct 20, 2023",
+            "Mar 29, 2023",
+            "Mar 12, 2023",
+            "Mar 30, 2023",
+            "Nov 11, 2023",
+            "Jul 13, 2023",
+            "Feb 09, 2023",
+            "Mar 29, 2023",
+            "Jun 24, 2023",
+            "Mar 30, 2023",
+            "Dec 04, 2023",
+            "Jun 15, 2023",
+            "Jan 26, 2023",
+            "Nov 30, 2023",
+            "Mar 14, 2023",
+            "Sep 23, 2023",
+            "Apr 26, 2023",
+            "Sep 01, 2023",
+            "Jul 17, 2023",
+            "Dec 02, 2023",
+            "Dec 05, 2023",
+            "Apr 10, 2023",
+            "Jun 27, 2023",
+            "Sep 01, 2023",
+            "Oct 13, 2023",
+            "May 28, 2023",
+            "May 28, 2023",
+            "Oct 16, 2023",
+            "Sep 23, 2023",
+            "Jul 05, 2023",
+            "May 08, 2023",
+            "Feb 02, 2023",
+            "Feb 01, 2023",
+            "Jul 22, 2023",
+            "Sep 02, 2023",
+            "Jun 01, 2023",
+            "Jun 13, 2023",
+            "Jul 03, 2023"
+          ],
+          [
+            "$18,662.01",
+            "$15,408.73",
+            "$22,965.64",
+            "$15,986.99",
+            "$18,892.86",
+            "$25,459.56",
+            "$46,103.94",
+            "$27,998.00",
+            "$34,522.54",
+            "$46,093.94",
+            "$13,971.21",
+            "$48,792.36",
+            "$36,125.60",
+            "$16,836.38",
+            "$24,326.09",
+            "$40,027.45",
+            "$34,313.23",
+            "$23,001.89",
+            "$11,537.02",
+            "$35,370.96",
+            "$48,357.97",
+            "$36,111.61",
+            "$35,402.35",
+            "$49,811.98",
+            "$33,274.01",
+            "$26,574.74",
+            "$28,987.90",
+            "$34,940.40",
+            "$23,520.30",
+            "$36,990.09",
+            "$22,688.07",
+            "$41,133.82",
+            "$47,982.84",
+            "$36,501.07",
+            "$10,542.87",
+            "$34,913.84",
+            "$36,946.39",
+            "$48,877.80",
+            "$45,127.74",
+            "$30,384.98",
+            "$12,228.59",
+            "$28,046.37",
+            "$10,799.51",
+            "$27,668.44",
+            "$49,183.47",
+            "$24,377.78",
+            "$29,235.74",
+            "$37,546.45",
+            "$45,219.04",
+            "$46,729.42"
+          ],
+          [
+            132, 480, 277, 198, 259, 100, 461, 320, 91, 108, 243, 86, 316, 136, 93, 410, 61, 308, 357, 130, 82, 232,
+            178, 344, 325, 224, 92, 421, 234, 494, 127, 336, 330, 175, 308, 53, 144, 276, 413, 319, 418, 346, 378, 69,
+            145, 378, 460, 298, 230, 373
+          ],
+          [
+            "37.6\u00b0C",
+            "12.4\u00b0C",
+            "32.3\u00b0C",
+            "25.0\u00b0C",
+            "4.9\u00b0C",
+            "30.7\u00b0C",
+            "9.8\u00b0C",
+            "34.1\u00b0C",
+            "19.1\u00b0C",
+            "34.1\u00b0C",
+            "24.6\u00b0C",
+            "26.3\u00b0C",
+            "15.1\u00b0C",
+            "37.8\u00b0C",
+            "22.2\u00b0C",
+            "11.2\u00b0C",
+            "20.3\u00b0C",
+            "-9.0\u00b0C",
+            "5.1\u00b0C",
+            "23.0\u00b0C",
+            "4.5\u00b0C",
+            "20.9\u00b0C",
+            "11.4\u00b0C",
+            "-3.2\u00b0C",
+            "4.9\u00b0C",
+            "18.5\u00b0C",
+            "19.5\u00b0C",
+            "18.7\u00b0C",
+            "22.7\u00b0C",
+            "22.6\u00b0C",
+            "11.6\u00b0C",
+            "34.8\u00b0C",
+            "8.4\u00b0C",
+            "11.8\u00b0C",
+            "34.6\u00b0C",
+            "30.3\u00b0C",
+            "25.2\u00b0C",
+            "-5.0\u00b0C",
+            "36.0\u00b0C",
+            "25.7\u00b0C",
+            "39.9\u00b0C",
+            "-2.5\u00b0C",
+            "33.4\u00b0C",
+            "-1.9\u00b0C",
+            "20.8\u00b0C",
+            "-3.8\u00b0C",
+            "32.4\u00b0C",
+            "30.4\u00b0C",
+            "18.5\u00b0C",
+            "10.4\u00b0C"
+          ],
+          [
+            "B",
+            "B",
+            "B",
+            "C",
+            "C",
+            "C",
+            "A",
+            "B",
+            "C",
+            "B",
+            "B",
+            "B",
+            "B",
+            "A",
+            "C",
+            "C",
+            "A",
+            "B",
+            "B",
+            "A",
+            "A",
+            "A",
+            "C",
+            "B",
+            "C",
+            "B",
+            "C",
+            "A",
+            "C",
+            "A",
+            "B",
+            "B",
+            "B",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "B",
+            "A",
+            "C",
+            "C",
+            "B",
+            "B",
+            "B",
+            "C",
+            "B",
+            "B",
+            "A"
+          ]
+        ]
+      },
+      "header": {
+        "align": "left",
+        "fill": { "color": "lightblue" },
+        "font": { "color": "black", "size": 12 },
+        "values": ["ID", "Date", "Revenue", "Units Sold", "Temperature (\u00b0C)", "Category"]
+      },
+      "type": "table"
+    }
+  ],
+  "layout": {
+    "template": {
+      "data": {
+        "histogram2dcontour": [
+          {
+            "type": "histogram2dcontour",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "choropleth": [
+          {
+            "type": "choropleth",
+            "colorbar": { "outlinewidth": 0, "ticks": "" }
+          }
+        ],
+        "histogram2d": [
+          {
+            "type": "histogram2d",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "heatmap": [
+          {
+            "type": "heatmap",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "contourcarpet": [
+          {
+            "type": "contourcarpet",
+            "colorbar": { "outlinewidth": 0, "ticks": "" }
+          }
+        ],
+        "contour": [
+          {
+            "type": "contour",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "surface": [
+          {
+            "type": "surface",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "mesh3d": [{ "type": "mesh3d", "colorbar": { "outlinewidth": 0, "ticks": "" } }],
+        "scatter": [
+          {
+            "fillpattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+            },
+            "type": "scatter"
+          }
+        ],
+        "parcoords": [
+          {
+            "type": "parcoords",
+            "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterpolargl": [
+          {
+            "type": "scatterpolargl",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "bar": [
+          {
+            "error_x": { "color": "#2a3f5f" },
+            "error_y": { "color": "#2a3f5f" },
+            "marker": {
+              "line": { "color": "#E5ECF6", "width": 0.5 },
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "bar"
+          }
+        ],
+        "scattergeo": [
+          {
+            "type": "scattergeo",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterpolar": [
+          {
+            "type": "scatterpolar",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "histogram": [
+          {
+            "marker": {
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "histogram"
+          }
+        ],
+        "scattergl": [
+          {
+            "type": "scattergl",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatter3d": [
+          {
+            "type": "scatter3d",
+            "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } },
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattermap": [
+          {
+            "type": "scattermap",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattermapbox": [
+          {
+            "type": "scattermapbox",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterternary": [
+          {
+            "type": "scatterternary",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattercarpet": [
+          {
+            "type": "scattercarpet",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "carpet": [
+          {
+            "aaxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+          }
+        ],
+        "table": [
+          {
+            "cells": {
+              "fill": { "color": "#EBF0F8" },
+              "line": { "color": "white" }
+            },
+            "header": {
+              "fill": { "color": "#C8D4E3" },
+              "line": { "color": "white" }
+            },
+            "type": "table"
+          }
+        ],
+        "barpolar": [
+          {
+            "marker": {
+              "line": { "color": "#E5ECF6", "width": 0.5 },
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "barpolar"
+          }
+        ],
+        "pie": [{ "automargin": true, "type": "pie" }]
+      },
+      "layout": {
+        "autotypenumbers": "strict",
+        "colorway": [
+          "#636efa",
+          "#EF553B",
+          "#00cc96",
+          "#ab63fa",
+          "#FFA15A",
+          "#19d3f3",
+          "#FF6692",
+          "#B6E880",
+          "#FF97FF",
+          "#FECB52"
+        ],
+        "font": { "color": "#2a3f5f" },
+        "hovermode": "closest",
+        "hoverlabel": { "align": "left" },
+        "paper_bgcolor": "white",
+        "plot_bgcolor": "#E5ECF6",
+        "polar": {
+          "bgcolor": "#E5ECF6",
+          "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "ternary": {
+          "bgcolor": "#E5ECF6",
+          "aaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" },
+          "baxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" },
+          "caxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }
+        },
+        "coloraxis": { "colorbar": { "outlinewidth": 0, "ticks": "" } },
+        "colorscale": {
+          "sequential": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "sequentialminus": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "diverging": [
+            [0, "#8e0152"],
+            [0.1, "#c51b7d"],
+            [0.2, "#de77ae"],
+            [0.3, "#f1b6da"],
+            [0.4, "#fde0ef"],
+            [0.5, "#f7f7f7"],
+            [0.6, "#e6f5d0"],
+            [0.7, "#b8e186"],
+            [0.8, "#7fbc41"],
+            [0.9, "#4d9221"],
+            [1, "#276419"]
+          ]
+        },
+        "xaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": { "standoff": 15 },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "yaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": { "standoff": 15 },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "scene": {
+          "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          }
+        },
+        "shapedefaults": { "line": { "color": "#2a3f5f" } },
+        "annotationdefaults": {
+          "arrowcolor": "#2a3f5f",
+          "arrowhead": 0,
+          "arrowwidth": 1
+        },
+        "geo": {
+          "bgcolor": "white",
+          "landcolor": "#E5ECF6",
+          "subunitcolor": "white",
+          "showland": true,
+          "showlakes": true,
+          "lakecolor": "white"
+        },
+        "title": { "x": 0.05 },
+        "mapbox": { "style": "light" }
+      }
+    },
+    "title": {
+      "text": "\ud83d\udcca Plotly Table with Currency, Date, Numbers, and Temperature"
+    },
+    "height": 600,
+    "width": 750
+  }
+}

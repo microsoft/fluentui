@@ -7,8 +7,8 @@ import type { Slider } from './slider.js';
 export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      tabindex="${x => (x.disabled ? null : 0)}"
       @pointerdown="${(x, c) => x.handlePointerDown(c.event as PointerEvent)}"
+      @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
     >
       <div ${ref('track')} part="track-container" class="track" style="${x => x.position}"></div>
       <div

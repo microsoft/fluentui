@@ -26,7 +26,7 @@ export function getTagToChangelogMap(maxAgeDays?: number): Map<string, IChangelo
     if (fs.existsSync(changelogPath)) {
       const changelog: ChangelogJson = fs.readJSONSync(changelogPath);
       for (const entry of changelog.entries) {
-        if (_isNewEnough(entry.date, maxAgeDays)) {
+        if (entry.tag && _isNewEnough(entry.date, maxAgeDays)) {
           map.set(entry.tag, { ...entry, name: changelog.name });
         } else {
           // changelog entries should be in reverse chronological order, so stop after the first one

@@ -1,9 +1,0 @@
-{
-  "extends": "../../../tsconfig.base.v0.json",
-  "compilerOptions": {
-    "module": "esnext",
-    "types": ["node", "webpack-env"],
-    "skipLibCheck": true
-  },
-  "include": ["./src"]
-}

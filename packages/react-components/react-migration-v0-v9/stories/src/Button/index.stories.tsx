@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, Button as V9Button } from '@fluentui/react-components';
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const DisabledCursor = () => {
+export const DisabledCursor = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -35,7 +36,7 @@ export const DisabledCursor = () => {
   );
 };
 
-export const Icon = () => {
+export const Icon = (): JSXElement => {
   const styles = useStyles();
 
   return (

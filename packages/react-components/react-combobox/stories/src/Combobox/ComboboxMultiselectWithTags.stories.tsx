@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 import { Dismiss12Regular } from '@fluentui/react-icons';
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const MultiselectWithTags = (props: Partial<ComboboxProps>) => {
+export const MultiselectWithTags = (props: Partial<ComboboxProps>): JSXElement => {
   // generate ids for handling labelling
   const comboId = useId('combo-multi');
   const selectedListId = `${comboId}-selection`;

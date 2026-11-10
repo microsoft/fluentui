@@ -10,6 +10,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentFunctionParams.stories.md';
 
@@ -91,11 +92,11 @@ const Scale = createPresenceComponent<{ startFrom?: number }>(({ startFrom = 0.5
   };
 });
 
-export const CreatePresenceComponentFunctionParams = () => {
+export const CreatePresenceComponentFunctionParams = (): JSXElement => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionBRef = React.useRef<MotionImperativeRef>(null);
+  const motionARef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

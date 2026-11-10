@@ -89,7 +89,7 @@ const previewProps: IDocumentCardPreviewProps = {
   ],
 };
 
-const onActionClick = (action: string, ev: React.SyntheticEvent<HTMLElement>): void => {
+const onActionClick = (action: string, ev: React.MouseEvent<HTMLElement>): void => {
   console.log(`You clicked the ${action} action`);
   ev.stopPropagation();
   ev.preventDefault();

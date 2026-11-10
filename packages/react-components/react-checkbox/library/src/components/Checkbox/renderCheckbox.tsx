@@ -2,9 +2,10 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import { CheckboxState, CheckboxSlots } from './Checkbox.types';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { CheckboxBaseState, CheckboxSlots } from './Checkbox.types';
 
-export const renderCheckbox_unstable = (state: CheckboxState) => {
+export const renderCheckbox_unstable = (state: CheckboxBaseState): JSXElement => {
   assertSlots<CheckboxSlots>(state);
 
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  *
  * @param r {__WebpackModuleApi.RequireContext}

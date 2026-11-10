@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import type { DataGridBodyProps, DataGridBodyState } from './DataGridBody.types';
 import { useTableBody_unstable } from '../TableBody/useTableBody';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';

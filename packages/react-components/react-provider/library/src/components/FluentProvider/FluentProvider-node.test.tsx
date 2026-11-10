@@ -5,13 +5,18 @@
 // 👆 this is intentionally to test in SSR like environment
 
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
 import { createDOMRenderer } from '@griffel/core';
 import { RendererProvider } from '@griffel/react';
-import { PartialTheme } from '@fluentui/react-theme';
+import type { PartialTheme } from '@fluentui/react-theme';
+
+jest.mock('@fluentui/react-utilities', () => ({
+  ...jest.requireActual('@fluentui/react-utilities'),
+  ...jest.requireActual('../../testing/createUseIdMock').createUseIdMock(),
+}));
 
 const parseHTMLString = (html: string) => {
   return prettier.format(html, { parser: 'html' });
@@ -28,7 +33,7 @@ describe('FluentProvider (node)', () => {
   });
 
   it('should render CSS variables as inline style', () => {
-    const html = ReactDOM.renderToStaticMarkup(<FluentProvider theme={testTheme} />);
+    const html = renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div
@@ -51,7 +56,7 @@ describe('FluentProvider (node)', () => {
       styleElementAttributes: { nonce },
     });
 
-    const html = ReactDOM.renderToStaticMarkup(
+    const html = renderToStaticMarkup(
       <RendererProvider renderer={renderer}>
         <FluentProvider theme={testTheme} />
       </RendererProvider>,
@@ -70,5 +75,54 @@ describe('FluentProvider (node)', () => {
         </style>
       </div>"
     `);
+  });
+
+  it.each([
+    'red\\',
+    'red;}</style><script>bad</script>',
+    '<url(a{)',
+    '>url(a{)',
+    ';url(a{)',
+    '"</style><script>text</script>"',
+  ])('escapes delimiters in server-rendered style output for %j', value => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
+    );
+
+    expect(html.match(/<style\b/g)).toHaveLength(1);
+    expect(html.match(/<\/style>/g)).toHaveLength(1);
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('--fontFamilyBase:');
+    expect(html).toContain('--colorBrandBackground: blue;');
+  });
+
+  it.each([
+    "'Segoe UI Web (West European)', sans-serif",
+    'linear-gradient(red, blue)',
+    'attr(data-color)',
+    'unsupportedrgb(0,0,0)',
+    'custom-function(anything / else: value)',
+    'url(images/icon.svg)',
+    'calc(var(--custom-size) * 2)',
+    'custom((nested))',
+    'oklch(from var(--custom-color) l c h / 0.5)',
+    'var(--custom-font, "Segoe UI")',
+    'url("image.png")',
+  ])('preserves values without a function-name allowlist during SSR for %j', value => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const html = renderToStaticMarkup(
+        <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
+      );
+
+      expect(html.match(/<style\b/g)).toHaveLength(1);
+      expect(html.match(/<\/style>/g)).toHaveLength(1);
+      expect(html).not.toContain('<script>');
+      expect(html).toContain(`--fontFamilyBase: ${value};`);
+      expect(html).toContain('--colorBrandBackground: blue;');
+      expect(logWarnSpy).not.toHaveBeenCalled();
+    } finally {
+      logWarnSpy.mockRestore();
+    }
   });
 });

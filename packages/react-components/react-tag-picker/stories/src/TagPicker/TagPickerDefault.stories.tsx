@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
@@ -21,7 +21,7 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     if (data.value === 'no-options') {
@@ -53,7 +53,6 @@ export const Default = () => {
           {tagPickerOptions.length > 0 ? (
             tagPickerOptions.map(option => (
               <TagPickerOption
-                secondaryContent="Microsoft FTE"
                 media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}

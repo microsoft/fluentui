@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { fluentProviderClassNames, useThemeClassName } from '@fluentui/react-components';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
@@ -8,8 +10,6 @@ import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 const CLASS_NAME_REGEX = new RegExp(`([^\\s]*${fluentProviderClassNames.root}\\w+)`, 'g');
 
 export function useProviderThemeClasses(): string[] {
-  'use no memo';
-
   const themeClassName = useThemeClassName();
   const cssVariablesClasses = React.useMemo<string[]>(
     // "themeClassName" may contain multiple classes while we want to add only classes that host CSS variables

@@ -1,5 +1,5 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { CarouselItemProps } from '../TeachingPopoverCarousel/Carousel/CarouselItem/CarouselItem.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { CarouselItemProps } from '../TeachingPopoverCarousel/Carousel/CarouselItem/CarouselItem.types';
 
 export type TeachingPopoverCarouselCardSlots = {
   /**

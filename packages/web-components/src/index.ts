@@ -1,19 +1,19 @@
 export {
   AccordionItem,
-  accordionItemDefinition,
+  AccordionItemDefinition,
   AccordionItemMarkerPosition,
   AccordionItemSize,
-  accordionItemStyles,
-  accordionItemTemplate,
+  AccordionItemStyles,
+  AccordionItemTemplate,
   BaseAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
   Accordion,
-  accordionDefinition,
+  AccordionDefinition,
   AccordionExpandMode,
-  accordionStyles,
-  accordionTemplate,
+  AccordionStyles,
+  AccordionTemplate,
 } from './accordion/index.js';
 export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkStyles, LinkTarget } from './link/index.js';
 export {
@@ -72,6 +72,7 @@ export {
   CompoundButtonTemplate,
 } from './compound-button/index.js';
 export {
+  BaseCounterBadge,
   CounterBadge,
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -79,9 +80,10 @@ export {
   CounterBadgeShape,
   CounterBadgeSize,
   CounterBadgeStyles,
+  CounterBadgeTagName,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
-export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
+export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles, isDialog } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
   BaseDivider,
@@ -104,6 +106,29 @@ export {
   DrawerStyles,
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
+export {
+  DropdownDefinition,
+  BaseDropdown,
+  Dropdown,
+  DropdownAppearance,
+  DropdownSize,
+  DropdownType,
+  isDropdown,
+  type DropdownOptions,
+  DropdownStyles,
+  dropdownButtonTemplate,
+  dropdownInputTemplate,
+  DropdownTemplate,
+} from './dropdown/index.js';
+export {
+  ListboxDefinition,
+  Listbox,
+  isListbox,
+  ListboxStyles,
+  ListboxTemplate,
+  listboxTemplate,
+} from './listbox/index.js';
+
 export {
   BaseField,
   Field,
@@ -155,8 +180,16 @@ export {
   roleForMenuItem,
 } from './menu-item/index.js';
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
-export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
+export { BaseMenuList, MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export {
+  DropdownOption,
+  DropdownOptionDefinition,
+  DropdownOptionStyles,
+  DropdownOptionTemplate,
+  isDropdownOption,
+  type DropdownOptionOptions,
+} from './option/index.js';
 export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
 export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
@@ -170,6 +203,7 @@ export {
   ProgressBarValidationState,
 } from './progress-bar/index.js';
 export {
+  BaseRadioGroup,
   RadioGroup,
   RadioGroupDefinition,
   RadioGroupOrientation,
@@ -207,9 +241,18 @@ export {
   SpinnerTemplate,
 } from './spinner/index.js';
 export {
-  typographyBody1StrongerStyles,
-  typographyBody1StrongStyles,
+  Switch,
+  type SwitchOptions,
+  SwitchLabelPosition,
+  SwitchDefinition,
+  SwitchStyles,
+  SwitchTemplate,
+} from './switch/index.js';
+export { isTab, Tab, type TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
+export {
   typographyBody1Styles,
+  typographyBody1StrongStyles,
+  typographyBody1StrongerStyles,
   typographyBody2Styles,
   typographyCaption1StrongerStyles,
   typographyCaption1StrongStyles,
@@ -225,20 +268,6 @@ export {
   typographyTitle2Styles,
   typographyTitle3Styles,
 } from './styles/partials/typography.partials.js';
-export { Switch, SwitchDefinition, SwitchLabelPosition, SwitchStyles, SwitchTemplate } from './switch/index.js';
-export type { SwitchOptions } from './switch/index.js';
-export { TabPanel, TabPanelDefinition, TabPanelStyles, TabPanelTemplate } from './tab-panel/index.js';
-export { Tab, TabDefinition, TabStyles, TabTemplate } from './tab/index.js';
-export type { TabOptions } from './tab/index.js';
-export {
-  Tabs,
-  TabsAppearance,
-  TabsDefinition,
-  TabsOrientation,
-  TabsSize,
-  TabsStyles,
-  TabsTemplate,
-} from './tabs/index.js';
 export {
   BaseTablist,
   Tablist,
@@ -249,7 +278,6 @@ export {
   TablistStyles,
   TablistTemplate,
 } from './tablist/index.js';
-export type { TabsOptions } from './tabs/index.js';
 export {
   BaseTextArea,
   TextArea,
@@ -284,7 +312,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor, type Theme } from './theme/index.js';
+export { setTheme, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,
@@ -302,13 +330,9 @@ export {
   TooltipStyles,
   TooltipTemplate,
 } from './tooltip/index.js';
-export {
-  darkModeStylesheetBehavior,
-  forcedColorsStylesheetBehavior,
-  lightModeStylesheetBehavior,
-  MatchMediaBehavior,
-  MatchMediaStyleSheetBehavior,
-} from './utils/behaviors/match-media-stylesheet-behavior.js';
-export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
-export { getDirection } from './utils/direction.js';
+export { BaseTree, Tree, TreeDefinition, TreeTemplate, TreeStyles } from './tree/index.js';
+export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
+export type { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
+export { Direction, getDirection } from './utils/direction.js';
+export { Orientation } from './utils/orientation.js';
 export { display } from './utils/display.js';

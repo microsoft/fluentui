@@ -1,4 +1,6 @@
-import { SlotClassNames } from '@fluentui/react-utilities';
+'use client';
+
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -391,8 +393,6 @@ const useButtonStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  'use no memo';
-
   const { appearance, spinState, size } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';
@@ -402,6 +402,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   const buttonStyles = useButtonStyles();
   const inputStyles = useInputStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     spinButtonClassNames.root,
     useRootClassName(),
@@ -416,6 +417,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.incrementButton.className = mergeClasses(
     spinButtonClassNames.incrementButton,
     spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
@@ -425,6 +427,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     size === 'small' && buttonStyles.incrementButtonSmall,
     state.incrementButton.className,
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.decrementButton.className = mergeClasses(
     spinButtonClassNames.decrementButton,
     spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
@@ -435,6 +438,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     state.decrementButton.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     spinButtonClassNames.input,
     useInputClassName(),

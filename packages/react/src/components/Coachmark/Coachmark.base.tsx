@@ -53,7 +53,7 @@ const DEFAULT_PROPS: Partial<ICoachmarkProps> = {
   },
 };
 
-function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
+function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement | null>) {
   const { isCollapsed: propsIsCollapsed, onAnimationOpenStart, onAnimationOpenEnd } = props;
 
   /** Is the Coachmark currently collapsed into a tear drop shape */
@@ -204,7 +204,7 @@ function useBeakPosition(
 
 function useListeners(
   props: ICoachmarkProps,
-  translateAnimationContainer: React.RefObject<HTMLDivElement>,
+  translateAnimationContainer: React.RefObject<HTMLDivElement | null>,
   openCoachmark: () => void,
 ) {
   const document = getDocument()?.documentElement;
@@ -246,14 +246,14 @@ function useListeners(
 
 function useProximityHandlers(
   props: ICoachmarkProps,
-  translateAnimationContainer: React.RefObject<HTMLDivElement>,
+  translateAnimationContainer: React.RefObject<HTMLDivElement | null>,
   openCoachmark: () => void,
   setBounds: (bounds: IRectangle | undefined) => void,
 ) {
   const { setTimeout, clearTimeout } = useSetTimeout();
 
   /** The target element the mouse would be in proximity to */
-  const targetElementRect = React.useRef<DOMRect>();
+  const targetElementRect = React.useRef<DOMRect>(undefined);
   const win = useWindowEx();
   const doc = useDocumentEx();
 
@@ -364,7 +364,10 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
   return entityHost;
 }
 
-function useEntityHostMeasurements(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
+function useEntityHostMeasurements(
+  props: ICoachmarkProps,
+  entityInnerHostElementRef: React.RefObject<HTMLDivElement | null>,
+) {
   /** Is the teaching bubble currently retrieving the original dimensions of the hosted entity. */
   const [isMeasuring, setIsMeasuring] = React.useState<boolean>(!!props.isCollapsed);
   /** Cached width and height of _entityInnerHostElement */

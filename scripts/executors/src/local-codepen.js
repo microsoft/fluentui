@@ -1,12 +1,12 @@
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const path = require('path');
-const fs = require('fs');
-const yargs = require('yargs');
 const { execSync } = require('child_process');
-const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
 
 const { findGitRoot } = require('@fluentui/scripts-monorepo');
+const chalk = require('chalk');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const yargs = require('yargs');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
@@ -26,7 +26,7 @@ if (fs.existsSync(configPath)) {
     execSync('npm link ngrok@3', { cwd: gitRoot, stdio: 'inherit' });
     // @ts-expect-error - no types for ngrok
     ngrok = require('ngrok');
-  } catch (err) {
+  } catch {
     // ngrok has a postbuild step which was slowing down yarn install, so it's been removed
     // from the repo dependency list (since this script is the only place it's used)
     console.error('This script requires a global install of ngrok: "npm i -g ngrok@3"');

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTableBody_unstable } from './useTableBody';
 import { renderTableBody_unstable } from './renderTableBody';

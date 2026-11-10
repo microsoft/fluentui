@@ -13,4 +13,4 @@ that as the feature set expands, users will not need to pay the bundle size pric
 to use. Please consult the usage examples below for more details.
 
 > ⚠️ Once there is any kind of keyboard navigation on the component it must follow the
-> [aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids)
+> [aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/)

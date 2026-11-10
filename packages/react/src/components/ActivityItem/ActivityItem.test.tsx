@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { TestImages } from '@fluentui/example-data';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
@@ -32,49 +32,43 @@ const defaultPersonaProps: IPersonaSharedProps[] = [
 
 describe('ActivityItem', () => {
   it('renders with an icon correctly', () => {
-    const component = renderer.create(<ActivityItem {...defaultProps} activityIcon={<Icon iconName={'Message'} />} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ActivityItem {...defaultProps} activityIcon={<Icon iconName={'Message'} />} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with a single persona correctly', () => {
-    const component = renderer.create(<ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with multiple personas correctly', () => {
-    const component = renderer.create(<ActivityItem {...defaultProps} activityPersonas={defaultPersonaProps} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ActivityItem {...defaultProps} activityPersonas={defaultPersonaProps} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders compact with an icon correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ActivityItem {...defaultProps} activityIcon={<Icon iconName={'Message'} />} isCompact={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders compact with a single persona correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} isCompact={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders compact with multiple personas correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ActivityItem {...defaultProps} activityPersonas={defaultPersonaProps} isCompact={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders compact with animation correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ActivityItem
         {...defaultProps}
         activityPersonas={[defaultPersonaProps[0]]}
@@ -82,8 +76,7 @@ describe('ActivityItem', () => {
         animateBeaconSignal={true}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

@@ -1,18 +1,14 @@
-import * as React from 'react';
-import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+'use client';
+
+import type * as React from 'react';
+import { clamp, getPercentInRange, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { sliderCSSVars } from './useSliderStyles.styles';
-import type { SliderState, SliderProps } from './Slider.types';
+import { sliderCSSVars } from './Slider.constants';
+import type { SliderBaseState, SliderBaseProps } from './Slider.types';
 
 const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
 
-const getPercent = (value: number, min: number, max: number) => {
-  return max === min ? 0 : ((value - min) / (max - min)) * 100;
-};
-
-export const useSliderState_unstable = (state: SliderState, props: SliderProps) => {
-  'use no memo';
-
+export const useSliderState_unstable = (state: SliderBaseState, props: SliderBaseProps): SliderBaseState => {
   const { min = 0, max = 100, step } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
@@ -21,7 +17,7 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     initialState: 0,
   });
   const clampedValue = clamp(currentValue, min, max);
-  const valuePercent = getPercent(clampedValue, min, max);
+  const valuePercent = getPercentInRange(clampedValue, min, max);
 
   const inputOnChange = state.input.onChange;
   const propsOnChange = props.onChange;
@@ -37,20 +33,27 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     }
   });
 
+  const stepPercent = step && step > 0 ? `${(step * 100) / (max - min)}%` : undefined;
   const rootVariables = {
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
-    [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
+    // Set the sliderStepsPercentVar only if defined - fixes SSR errors in React 18
+    ...(stepPercent !== undefined && {
+      [sliderStepsPercentVar]: stepPercent,
+    }),
   };
 
   // Root props
+  // eslint-disable-next-line react-hooks/immutability
   state.root.style = {
     ...rootVariables,
     ...state.root.style,
   };
 
   // Input Props
+  // eslint-disable-next-line react-hooks/immutability
   state.input.value = clampedValue;
+  // eslint-disable-next-line react-hooks/immutability
   state.input.onChange = onChange;
 
   return state;

@@ -19,6 +19,8 @@ import type { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, IHoverCar
 import type { IExpandingCardProps } from './ExpandingCard.types';
 import type { IPlainCardProps } from './PlainCard/PlainCard.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
 export interface IHoverCardState {
@@ -79,7 +81,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
     this._events.dispose();
   }
 
-  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState): void {
     if (prevProps.target !== this.props.target) {
       this._events.off();
       this._setEventListeners();
@@ -120,7 +122,8 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
   };
 
   // Render
-  public render(): JSX.Element {
+
+  public render(): JSXElement {
     const {
       expandingCardProps,
       children,

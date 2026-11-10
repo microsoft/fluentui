@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 import { Button, Tooltip } from '@fluentui/react-components';
 
-export const RelationshipLabel = () => (
+export const RelationshipLabel = (): JSXElement => (
   <>
     <Tooltip content="Bold" relationship="label">
       <Button icon={<TextBoldRegular />} />

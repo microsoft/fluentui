@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
@@ -69,20 +70,15 @@ const useStyles = makeStyles({
   },
 });
 
-export const CustomOptions = (props: Partial<DropdownProps>) => {
+export const CustomOptions = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
   const land = ['Cat', 'Dog', 'Rabbit'] as (keyof typeof animalIcons)[];
   const water = ['Fish', 'Turtle'] as (keyof typeof animalIcons)[];
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Best pet</label>
-      <Dropdown
-        aria-labelledby={dropdownId}
-        listbox={{ className: styles.listbox }}
-        placeholder="Select an animal"
-        {...props}
-      >
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown id={dropdownId} listbox={{ className: styles.listbox }} placeholder="Select an animal" {...props}>
         <CustomOptionGroup label="Land" options={land} />
         <CustomOptionGroup label="Sea" options={water} />
       </Dropdown>

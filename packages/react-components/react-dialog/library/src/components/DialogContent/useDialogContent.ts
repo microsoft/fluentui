@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { DialogContentProps, DialogContentState } from './DialogContent.types';
+import type { DialogContentProps, DialogContentState } from './DialogContent.types';
 
 /**
  * Create the state required to render DialogBody.

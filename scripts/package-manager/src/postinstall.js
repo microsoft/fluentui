@@ -1,5 +1,3 @@
-const { spawnSync } = require('node:child_process');
-
 const chalk = require('chalk');
 
 const { isCI } = require('./is-ci');
@@ -7,18 +5,11 @@ const { isCI } = require('./is-ci');
 main();
 
 function main() {
-  registerCustomGitHooksDirectory();
-
   if (isCI()) {
     process.exit(0);
   }
 
   gettingStarted();
-}
-
-function registerCustomGitHooksDirectory() {
-  // git v2.9.0 supports a custom hooks directory. This means we just need to check in the hooks scripts.
-  spawnSync('git', ['config', 'core.hooksPath', '.githooks']);
 }
 
 function gettingStarted() {

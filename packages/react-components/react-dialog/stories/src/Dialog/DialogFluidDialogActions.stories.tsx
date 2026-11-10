@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogFluidDialogActions.md';
 
-export const FluidActions = () => {
+export const FluidActions = (): JSXElement => {
   return (
     <Dialog>
       <DialogTrigger disableButtonEnhancement>

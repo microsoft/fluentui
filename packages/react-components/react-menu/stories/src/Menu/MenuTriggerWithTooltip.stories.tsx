@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, Tooltip } from '@fluentui/react-components';
 
-export const MenuTriggerWithTooltip = () => (
+export const MenuTriggerWithTooltip = (): JSXElement => (
   <Menu>
     <Tooltip content="This is a tooltip" relationship="description">
       <MenuTrigger disableButtonEnhancement>

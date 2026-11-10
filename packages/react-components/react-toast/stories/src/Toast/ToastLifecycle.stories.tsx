@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, ToastStatus } from '@fluentui/react-components';
 import {
   useId,
   Link,
@@ -12,7 +13,6 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
-  ToastStatus,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ToastLifecycle = () => {
+export const ToastLifecycle = (): JSXElement => {
   const styles = useStyles();
   const toasterId = useId('toaster');
   const labelId = useId();

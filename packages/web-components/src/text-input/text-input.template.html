@@ -1,0 +1,35 @@
+<f-template name="fluent-text-input" shadowrootmode="open" shadowrootdelegatesfocus>
+  <template @keydown="{keydownHandler($e)}">
+    {{styles}}
+    <label part="label" for="control" class="label" f-ref="{controlLabel}">
+      <slot f-slotted="{defaultSlottedNodes}"></slot>
+    </label>
+    <div class="root" part="root">
+      <slot name="start" f-ref="{start}"></slot>
+      <input
+        class="control"
+        part="control"
+        id="control"
+        @change="{changeHandler($e)}"
+        @input="{inputHandler($e)}"
+        autocomplete="{{autocomplete}}"
+        ?disabled="{{disabled}}"
+        list="{{list}}"
+        maxlength="{{maxlength}}"
+        minlength="{{minlength}}"
+        ?multiple="{{multiple}}"
+        name="{{name}}"
+        pattern="{{pattern}}"
+        placeholder="{{placeholder}}"
+        ?readonly="{{readOnly}}"
+        ?required="{{required}}"
+        size="{{size}}"
+        spellcheck="{{spellcheck}}"
+        type="{{type}}"
+        value="{{value}}"
+        f-ref="{control}"
+      />
+      <slot name="end" f-ref="{end}"></slot>
+    </div>
+  </template>
+</f-template>

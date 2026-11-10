@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ScaleParams } from '@fluentui/react-motion-components-preview';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
@@ -10,11 +11,11 @@ export type DialogSlots = {
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
-  surfaceMotion: Slot<PresenceMotionSlotProps>;
+  surfaceMotion: Slot<PresenceMotionSlotProps<ScaleParams>>;
 };
 
 export type InternalDialogSlots = {
-  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps<ScaleParams>>>;
 };
 
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
@@ -99,7 +100,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Can contain two children including `DialogTrigger` and `DialogSurface`.
    * Alternatively can only contain `DialogSurface` if using trigger outside dialog, or controlling state.
    */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  children: [JSXElement, JSXElement] | JSXElement;
   /**
    * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
    * where the focus trap involves setting outside elements inert.
@@ -107,6 +108,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   inertTrapFocus?: boolean;
+  /**
+   * Decides whether the dialog should be removed from the DOM tree when it is closed.
+   * This can be useful when dealing with components that may contain state that should not
+   * be reset when the dialog is closed.
+   *
+   * @default true
+   */
+  unmountOnClose?: boolean;
 };
 
 export type DialogState = ComponentState<InternalDialogSlots> &

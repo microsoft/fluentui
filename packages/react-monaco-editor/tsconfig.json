@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "preserveConstEnums": true,
-    "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
+    "lib": ["es5", "dom", "es2015.promise", "es2015.iterable", "ES2015.Symbol.WellKnown"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global", "node"]
   },

@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
@@ -28,7 +29,25 @@ export class HorizontalBarChartBasicExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -147,7 +166,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
     ];
 
     return (
-      <>
+      <div className="containerDiv">
         <div style={{ display: 'flex' }}>
           <Toggle
             label="Show labels as percentage"
@@ -171,7 +190,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

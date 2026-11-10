@@ -4,9 +4,8 @@
   "private": true,
   "main": "src/index.ts",
   "dependencies": {
-    "@fluentui/scripts-utils": "*",
+    "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-puppeteer": "*",
-    "@fluentui/scripts-monorepo": "*"
-  },
-  "devDependencies": {}
+    "@fluentui/scripts-utils": "*"
+  }
 }

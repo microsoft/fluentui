@@ -1,12 +1,13 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
-import { safeMount } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import { act, render } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 describe('Shimmer', () => {
   beforeEach(() => {
@@ -20,7 +21,7 @@ describe('Shimmer', () => {
   });
 
   it('renders Shimmer correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Shimmer
         width={'50%'}
         shimmerElements={[
@@ -30,12 +31,11 @@ describe('Shimmer', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Shimmer with custom elements correctly', () => {
-    const customElements: JSX.Element = (
+    const customElements: JSXElement = (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
           shimmerElements={[
@@ -54,9 +54,8 @@ describe('Shimmer', () => {
       </div>
     );
 
-    const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Shimmer customElementsGroup={customElements} width={350} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -65,24 +64,29 @@ describe('Shimmer', () => {
   });
 
   it('removes Shimmer animation div when data is loaded', () => {
-    safeMount(
+    const { container, rerender } = render(
       <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'}>
         <div>TEST DATA</div>
       </Shimmer>,
-      shimmer => {
-        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
-
-        // update props to trigger the setTimeout.
-        ReactTestUtils.act(() => {
-          shimmer.setProps({ isDataLoaded: true });
-        });
-
-        ReactTestUtils.act(() => {
-          jest.runAllTimers();
-        });
-
-        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(2);
-      },
     );
+
+    let shimmerContainer = getBySelector(container, '.ms-Shimmer-container')!;
+
+    expect(shimmerContainer.children.length).toBe(3);
+
+    // update props to trigger the setTimeout.
+    rerender(
+      <Shimmer isDataLoaded={true} ariaLabel={'Shimmer component'}>
+        <div>TEST DATA</div>
+      </Shimmer>,
+    );
+
+    // Run timers to trigger the animation completion
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    shimmerContainer = getBySelector(container, '.ms-Shimmer-container')!;
+    expect(shimmerContainer.children.length).toBe(1);
   });
 });

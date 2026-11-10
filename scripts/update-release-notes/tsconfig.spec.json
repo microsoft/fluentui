@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
+    "moduleResolution": "Node10",
     "outDir": "dist",
     "types": ["jest", "node"]
   },

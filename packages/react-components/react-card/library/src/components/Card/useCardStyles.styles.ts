@@ -1,9 +1,13 @@
+'use client';
+
 import * as React from 'react';
+import type { GriffelStyle } from '@griffel/react';
 import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { textClassNames } from '@fluentui/react-text';
-import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
@@ -64,6 +68,26 @@ const useCardResetStyles = makeResetStyles({
     flexShrink: 0,
   },
 });
+
+const disabledStyles: GriffelStyle = {
+  cursor: 'not-allowed',
+  userSelect: 'none',
+  color: tokens.colorNeutralForegroundDisabled,
+  backgroundColor: tokens.colorNeutralBackgroundDisabled,
+  boxShadow: tokens.shadow2,
+  ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    zIndex: `calc(${tokens.zIndexContent} + 1)`,
+  },
+
+  '::after': {
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+  },
+};
 
 const useCardStyles = makeStyles({
   focused: {
@@ -274,6 +298,20 @@ const useCardStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundSelected,
     },
   },
+  outlineDisabled: {
+    backgroundColor: tokens.colorTransparentBackground,
+    boxShadow: 'none',
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+
+    '&:hover, &:active': {
+      backgroundColor: tokens.colorTransparentBackground,
+      boxShadow: 'none',
+    },
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    },
+  },
 
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -351,7 +389,7 @@ const useCardStyles = makeStyles({
     position: 'absolute',
     top: '4px',
     right: '4px',
-    zIndex: 1,
+    zIndex: tokens.zIndexContent,
   },
 
   hiddenCheckbox: {
@@ -363,14 +401,17 @@ const useCardStyles = makeStyles({
     clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
   },
+
+  disabled: {
+    ...disabledStyles,
+    '&:hover, &:active': disabledStyles,
+  },
 });
 
 /**
  * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
-  'use no memo';
-
   const resetStyles = useCardResetStyles();
   const styles = useCardStyles();
 
@@ -405,9 +446,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtleInteractive,
   };
 
-  const isSelectableOrInteractive = state.interactive || state.selectable;
+  const isSelectableOrInteractive = !state.disabled && (state.interactive || state.selectable);
 
   const focusedClassName = React.useMemo(() => {
+    if (state.disabled) {
+      return '';
+    }
+
     if (state.selectable) {
       if (state.selectFocused) {
         return styles.selectableFocused;
@@ -417,8 +462,9 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     }
 
     return styles.focused;
-  }, [state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
+  }, [state.disabled, state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     cardClassNames.root,
     resetStyles,
@@ -431,10 +477,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     focusedClassName,
     isSelectableOrInteractive && styles.highContrastInteractive,
     state.selected && styles.highContrastSelected,
+    state.disabled && styles.disabled,
+    state.disabled && state.appearance === 'outline' && styles.outlineDisabled,
     state.root.className,
   );
 
   if (state.floatingAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.floatingAction.className = mergeClasses(
       cardClassNames.floatingAction,
       styles.select,
@@ -443,6 +492,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   }
 
   if (state.checkbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkbox.className = mergeClasses(cardClassNames.checkbox, styles.hiddenCheckbox, state.checkbox.className);
   }
 

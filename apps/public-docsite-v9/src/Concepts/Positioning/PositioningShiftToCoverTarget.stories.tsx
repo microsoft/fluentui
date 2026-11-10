@@ -112,7 +112,7 @@ export const CoverTargetForSmallViewport = () => {
           <MenuPopover>
             <MenuList>
               {Array.from({ length: menuItemCount }, (_, i) => (
-                <MenuItem>Item {i}</MenuItem>
+                <MenuItem key={i}>Item {i}</MenuItem>
               ))}
             </MenuList>
           </MenuPopover>

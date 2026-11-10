@@ -2,6 +2,146 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.6.16",
+      "tag": "@fluentui/merge-styles_v8.6.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "8bc156e925bd289f9776e9e74d1d40ba5de8f4c7",
+            "comment": "fix(merge-styles): contain serialized CSS output for server rendering."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Oct 2026 07:11:33 GMT",
+      "version": "8.6.15",
+      "tag": "@fluentui/merge-styles_v8.6.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "d46cb5ca3426a5bbd49f9e3bb6653cbef06217fe",
+            "comment": "fix(security): escape < and > in serialized CSS values and stylesheet state so they cannot terminate a <style> or <script> element during SSR"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2026 10:02:36 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jan 2026 05:18:57 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Dec 2025 06:27:50 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "style: remove unused import, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "e7c49a16e9f62e150d73b5a16d2dcae101462696",
+            "comment": "chore: migrate to jest v30"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:27 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "style: remove unused import"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:47 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove ts reported errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2025 07:22:41 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.24",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jan 2025 07:21:46 GMT",
       "tag": "@fluentui/merge-styles_v8.6.13",
       "version": "8.6.13",

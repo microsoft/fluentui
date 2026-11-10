@@ -1,56 +1,45 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { ColorPicker } from './ColorPicker';
-import { ColorPickerBase } from './ColorPicker.base';
-import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
-import { setWarningCallback } from '../../Utilities';
-import type { IColorPickerState } from './ColorPicker.base';
-import type { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
+import type { IColorPickerStrings } from './ColorPicker.types';
+import { setWarningCallback } from '@fluentui/utilities';
+import { getByAllSelector, getBySelector } from '../../common/testUtilities';
 
 describe('ColorPicker', () => {
-  let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
-
   beforeAll(() => {
     // Prevent warn deprecations from failing test
     setWarningCallback(() => {
       /* no-op */
     });
   });
-
-  afterAll(() => {
-    setWarningCallback();
-  });
-
   afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    jest.clearAllMocks();
   });
 
   it('hides alpha control slider', () => {
-    wrapper = mount(<ColorPicker color="#ffffff" alphaSliderHidden={true} />);
+    const { container } = render(<ColorPicker color="#ffffff" alphaSliderHidden={true} />);
 
-    const alphaSlider = wrapper.find('.is-alpha');
-    const tableHeaders = wrapper.find('thead td');
+    const alphaSlider = getBySelector(container, '.is-alpha');
+    const tableHeaders = getByAllSelector(container, 'thead td');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
-    expect(alphaSlider.exists()).toBe(false);
+    expect(alphaSlider).toBeNull();
     expect(tableHeaders).toHaveLength(4);
 
-    const inputs = wrapper.getDOMNode().querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    const inputs = screen.getAllByRole('textbox');
     expect(inputs).toHaveLength(4);
-    expect(inputs[0].value).toBe('ffffff');
-    expect(inputs[1].value).toBe('255');
-    expect(inputs[2].value).toBe('255');
-    expect(inputs[3].value).toBe('255');
+    expect(inputs[0]).toHaveValue('ffffff');
+    expect(inputs[1]).toHaveValue('255');
+    expect(inputs[2]).toHaveValue('255');
+    expect(inputs[3]).toHaveValue('255');
   });
 
   it('renders deprecated custom strings', () => {
     const fields = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
 
-    wrapper = mount(
+    const { container } = render(
       <ColorPicker
         color="#FFFFFF"
         hexLabel={fields[0]}
@@ -61,32 +50,33 @@ describe('ColorPicker', () => {
       />,
     );
 
-    const tableHeaders = wrapper.find('thead td');
+    const tableHeaders = getByAllSelector(container, 'thead td');
     tableHeaders.forEach((node, index) => {
-      expect(node.text()).toEqual(fields[index]);
+      expect(node).toHaveTextContent(fields[index]);
     });
 
-    const sliders = wrapper.find(ColorSliderBase);
-    expect(sliders.at(1).html()).toContain('Custom Alpha');
+    const sliders = screen.getAllByRole('slider');
+
+    expect(sliders.at(2)?.getAttribute('aria-label')).toEqual('Custom Alpha');
   });
 
   it('renders mix of new and deprecated custom strings', () => {
     const customRed = 'Custom Red';
     const customAlpha = 'Custom Alpha';
-    const customStrings: IColorPickerStrings = {
+    const customStrings = {
       hex: 'Custom Hex',
       blue: 'Custom Blue',
-    };
+    } satisfies IColorPickerStrings;
 
-    wrapper = mount(
+    const { container } = render(
       <ColorPicker color="#FFFFFF" strings={customStrings} redLabel={customRed} alphaLabel={customAlpha} />,
     );
 
-    const tableHeaders = wrapper.find('thead td');
-    expect(tableHeaders.at(0).text()).toEqual(customStrings.hex);
-    expect(tableHeaders.at(1).text()).toEqual(customRed);
-    expect(tableHeaders.at(2).text()).toEqual('Green'); // not customized
-    expect(tableHeaders.at(3).text()).toEqual(customStrings.blue);
-    expect(tableHeaders.at(4).text()).toEqual(customAlpha);
+    const tableHeaders = getByAllSelector(container, 'thead td');
+    expect(tableHeaders[0]).toHaveTextContent(customStrings.hex);
+    expect(tableHeaders[1]).toHaveTextContent(customRed);
+    expect(tableHeaders[2]).toHaveTextContent('Green'); // not customized
+    expect(tableHeaders[3]).toHaveTextContent(customStrings.blue);
+    expect(tableHeaders[4]).toHaveTextContent(customAlpha);
   });
 });

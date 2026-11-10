@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, Label, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,14 +12,14 @@ const useStyles = makeStyles({
   },
 });
 
-export const Clearable = () => {
+export const Clearable = (): JSXElement => {
   const dropdownId = useId('');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label id={dropdownId}>Pick a color</Label>
-      <Dropdown clearable aria-labelledby={dropdownId} placeholder="Select a color">
+      <Label htmlFor={dropdownId}>Pick a color</Label>
+      <Dropdown clearable id={dropdownId} placeholder="Select a color">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>

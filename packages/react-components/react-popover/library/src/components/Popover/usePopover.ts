@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useControllableState,
@@ -13,11 +15,14 @@ import {
   resolvePositioningShorthand,
   mergeArrowOffset,
   usePositioningMouseTarget,
+  usePositioningSlideDirection,
 } from '@fluentui/react-positioning';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
 
 /**
  * Create the state required to render Popover.
@@ -29,11 +34,23 @@ import { popoverSurfaceBorderRadius } from './constants';
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
+  const { targetDocument } = useFluent();
+
+  const positioning = resolvePositioningShorthand(props.positioning);
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetDocument,
+    onPositioningEnd: positioning.onPositioningEnd,
+  });
+
   const initialState = {
     size: 'medium',
     contextTarget,
     setContextTarget,
     ...props,
+    positioning: {
+      ...positioning,
+      onPositioningEnd: handlePositionEnd,
+    },
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -82,14 +99,13 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
-    e => {
+    (e: OpenPopoverEvents) => {
       setOpen(e, !open);
     },
     [setOpen, open],
   );
 
   const positioningRefs = usePopoverRefs(initialState);
-  const { targetDocument } = useFluent();
 
   useOnClickOutside({
     contains: elementContains,
@@ -110,23 +126,77 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     disabled: !open || !closeOnScroll,
   });
 
+  // When trapFocus is enabled, dismiss the popover only on a genuine inside -> outside focus
+  // transition. Focus that was never inside - e.g. a consumer keeping focus on an external element
+  // via `unstable_disableAutoFocus` - must not dismiss it on an outside -> outside focus change.
+  // Internal `closeOnFocusOutside` prop allows consumers to opt out during gradual rollout.
+  const closeOnFocusOutside = (props as PopoverProps & { closeOnFocusOutside?: boolean }).closeOnFocusOutside ?? true;
+
+  const focusWasInsideRef = React.useRef(false);
+
+  const closeOnFocusOutCallback = useEventCallback((ev: FocusEvent) => {
+    const target = (ev.composedPath()[0] ?? ev.target) as HTMLElement | null;
+    const contentElement = positioningRefs.contentRef.current;
+    const triggerElement = positioningRefs.triggerRef.current ?? null;
+
+    if (!contentElement) {
+      return;
+    }
+
+    const isInside = elementContains(contentElement, target) || elementContains(triggerElement, target);
+
+    if (isInside) {
+      focusWasInsideRef.current = true;
+      return;
+    }
+
+    // Only dismiss if focus previously lived inside the popover.
+    if (focusWasInsideRef.current) {
+      focusWasInsideRef.current = false;
+      setOpen(ev, false);
+    }
+  });
+
+  React.useEffect(() => {
+    if (!open || !props.trapFocus || !closeOnFocusOutside) {
+      return;
+    }
+
+    focusWasInsideRef.current = false;
+    targetDocument?.addEventListener('focusin', closeOnFocusOutCallback, true);
+    return () => {
+      targetDocument?.removeEventListener('focusin', closeOnFocusOutCallback, true);
+    };
+  }, [open, props.trapFocus, closeOnFocusOutside, targetDocument, closeOnFocusOutCallback]);
+
   const { findFirstFocusable } = useFocusFinders();
+  const activateModal = useActivateModal();
 
   React.useEffect(() => {
     if (props.unstable_disableAutoFocus) {
       return;
     }
 
-    if (open && positioningRefs.contentRef.current) {
-      const containerTabIndex = positioningRefs.contentRef.current.getAttribute('tabIndex') ?? undefined;
-      const firstFocusable = isNaN(containerTabIndex)
-        ? findFirstFocusable(positioningRefs.contentRef.current)
-        : positioningRefs.contentRef.current;
+    const contentElement = positioningRefs.contentRef.current;
+
+    if (open && contentElement) {
+      const shouldFocusContainer = !isNaN(contentElement.getAttribute('tabIndex') ?? undefined);
+      const firstFocusable = shouldFocusContainer ? contentElement : findFirstFocusable(contentElement);
+
       firstFocusable?.focus();
+
+      if (shouldFocusContainer) {
+        // Modal activation happens automatically when something inside the modal is focused programmatically.
+        // When the container is focused, we need to activate the modal manually.
+        activateModal(contentElement);
+      }
     }
-  }, [findFirstFocusable, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
+  }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
+    components: {
+      surfaceMotion: PopoverSurfaceMotion,
+    },
     ...initialState,
     ...positioningRefs,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -139,6 +209,14 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     setContextTarget,
     contextTarget,
     inline: props.inline ?? false,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: PopoverSurfaceMotion,
+      defaultProps: {
+        visible: open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
   };
 };
 
@@ -148,8 +226,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 function useOpenState(
   state: Pick<PopoverState, 'setContextTarget' | 'onOpenChange'> & Pick<PopoverProps, 'open' | 'defaultOpen'>,
 ) {
-  'use no memo';
-
   const onOpenChange: PopoverState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpenState] = useControllableState({
@@ -157,6 +233,7 @@ function useOpenState(
     defaultState: state.defaultOpen,
     initialState: false,
   });
+  // eslint-disable-next-line react-hooks/immutability
   state.open = open !== undefined ? open : state.open;
   const setContextTarget = state.setContextTarget;
 
@@ -186,8 +263,6 @@ function usePopoverRefs(
   state: Pick<PopoverState, 'size' | 'contextTarget'> &
     Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
 ) {
-  'use no memo';
-
   const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,
@@ -198,6 +273,7 @@ function usePopoverRefs(
 
   // no reason to render arrow when covering the target
   if (positioningOptions.coverTarget) {
+    // eslint-disable-next-line react-hooks/immutability
     state.withArrow = false;
   }
 

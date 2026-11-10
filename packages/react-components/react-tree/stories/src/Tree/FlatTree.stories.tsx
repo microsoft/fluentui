@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
-  TreeItemValue,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-components';
+import type { JSXElement, TreeItemValue, TreeOpenChangeData, TreeOpenChangeEvent } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout } from '@fluentui/react-components';
 
-export const FlatTreeStory = () => {
+export const FlatTreeStory = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(() => new Set());
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(data.openItems);

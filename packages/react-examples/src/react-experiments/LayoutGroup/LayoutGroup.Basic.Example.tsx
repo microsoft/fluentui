@@ -6,9 +6,10 @@ import { TextField } from '@fluentui/react/lib/TextField';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Label } from '@fluentui/react/lib/Label';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LayoutGroupBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <h3>Layout Group</h3>

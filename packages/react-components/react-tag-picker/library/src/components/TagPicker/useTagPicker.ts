@@ -1,13 +1,18 @@
+'use client';
+
 import * as React from 'react';
-import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
+  TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
   TagPickerProps,
   TagPickerState,
 } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
-import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '@fluentui/react-combobox';
 
@@ -15,28 +20,16 @@ import { useComboboxBaseState } from '@fluentui/react-combobox';
 const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
 
 /**
- * Create the state required to render Picker.
- *
- * The returned state can be modified with hooks such as usePickerStyles_unstable,
- * before being passed to renderPicker_unstable.
- *
- * @param props - props from this instance of Picker
+ * Create the base state required to render TagPicker, without floating-ui positioning.
+ * @param props - props from this instance of TagPicker (without `positioning`)
  */
-export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerBaseState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false } = props;
-
-  const { targetRef, containerRef } = usePositioning({
-    position: 'below' as const,
-    align: 'start' as const,
-    offset: { crossAxis: 0, mainAxis: 2 },
-    fallbackPositions,
-    matchTargetSize: 'width' as const,
-    ...resolvePositioningShorthand(positioning),
-  });
+  const passiveTargetRef = React.useRef<HTMLDivElement>(null);
+  const { noPopover = false, disableAutoFocus } = props;
 
   const {
     controller: activeDescendantController,
@@ -64,13 +57,12 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
       } as TagPickerOnOpenChangeData),
     ),
     activeDescendantController,
+    disableAutoFocus,
     editable: true,
     multiselect: true,
-    size: 'medium',
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
-
   return {
     activeDescendantController,
     components: {},
@@ -80,29 +72,74 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     noPopover,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
-    popoverRef: useMergedRefs(listboxRef, containerRef),
+    popoverRef: useMergedRefs(listboxRef),
     secondaryActionRef,
     tagPickerGroupRef,
-    targetRef,
-    size,
-    inline,
+    targetRef: passiveTargetRef,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
     onOptionClick: useEventCallback(event => {
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
     selectedOptions: comboboxState.selectedOptions,
-    selectOption: comboboxState.selectOption,
+    selectOption: useEventCallback((event, data) => {
+      // if the option is already selected, invoke onOptionSelect callback with current selected values
+      // the combobox state would unselect the option, which is not the behavior expected
+      if (
+        comboboxState.selectedOptions.includes(data.value) &&
+        !elementContains(tagPickerGroupRef.current, event.target as Node)
+      ) {
+        props.onOptionSelect?.(event, {
+          selectedOptions: comboboxState.selectedOptions,
+          value: data.value,
+          type: event.type,
+          event,
+        } as TagPickerOnOptionSelectData);
+        return;
+      }
+      comboboxState.selectOption(event, data);
+    }),
     setHasFocus: comboboxState.setHasFocus,
     setOpen: comboboxState.setOpen,
     setValue: comboboxState.setValue,
     value: comboboxState.value,
+  };
+};
+
+/**
+ * Create the state required to render Picker.
+ *
+ * The returned state can be modified with hooks such as usePickerStyles_unstable,
+ * before being passed to renderPicker_unstable.
+ *
+ * @param props - props from this instance of Picker
+ */
+export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+  const { positioning, size = 'medium', appearance = 'outline', inline = false } = props;
+
+  const { targetRef, containerRef } = usePositioning({
+    position: 'below' as const,
+    align: 'start' as const,
+    offset: { crossAxis: 0, mainAxis: 2 },
+    fallbackPositions,
+    matchTargetSize: 'width' as const,
+    ...resolvePositioningShorthand(positioning),
+  });
+
+  const baseState = useTagPickerBase_unstable(props);
+
+  return {
+    ...baseState,
+    size,
+    appearance,
+    inline,
+    targetRef,
+    popoverRef: useMergedRefs(baseState.popoverRef, containerRef),
   };
 };
 

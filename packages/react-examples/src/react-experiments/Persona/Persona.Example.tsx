@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@fluentui/react-experiments/lib/common/TestImages';
 import { Persona } from '@fluentui/react-experiments';
+import type { JSXElement } from '@fluentui/utilities';
 
 const tokens = {
   sectionStack: {
@@ -16,10 +17,14 @@ const tokens = {
 };
 
 export class PersonaExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack
+          tokens={tokens.headingStack}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          padding={8}
+        >
           <Stack tokens={tokens.personaCoinStack}>
             <Text>Basic Usage</Text>
             <Stack tokens={tokens.personaCoinStack}>

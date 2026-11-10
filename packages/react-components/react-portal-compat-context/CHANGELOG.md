@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Mon, 11 Nov 2024 10:00:51 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.17)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.16..@fluentui/react-portal-compat-context_v9.0.17)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.16)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.15..@fluentui/react-portal-compat-context_v9.0.16)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.15)
+
+Thu, 02 Oct 2025 15:12:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.14..@fluentui/react-portal-compat-context_v9.0.15)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.14)
+
+Mon, 08 Sep 2025 12:51:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.13..@fluentui/react-portal-compat-context_v9.0.14)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.13)
 

@@ -9,20 +9,22 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export type RegisterTabEventHandler = (data: TabRegisterData) => void;
 
 // @public
-export const renderTab_unstable: (state: TabState) => JSX.Element;
+export const renderTab_unstable: (state: TabBaseState) => JSXElement;
 
 // @public
-export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+export const renderTabList_unstable: (state: TabListBaseState, contextValues: TabListContextValues) => JSXElement;
 
 // @public (undocumented)
 export type SelectTabData = {
@@ -39,10 +41,22 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public (undocumented)
+export type TabBaseProps = Omit<TabProps, 'contentReservedSpace'>;
+
+// @public (undocumented)
+export type TabBaseState = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;
+
+// @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public (undocumented)
+export type TabListBaseProps = Omit<TabListProps, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
+
+// @public (undocumented)
+export type TabListBaseState = Omit<TabListState, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
 
 // @public (undocumented)
 export const tabListClassNames: SlotClassNames<TabListSlots>;
@@ -89,7 +103,7 @@ export type TabListSlots = {
 export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
 // @public
-export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick<Partial<TabSlots>, 'content'> & {
+export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'value'> & Pick<Partial<TabSlots>, 'content'> & {
     disabled?: boolean;
     value: TabValue;
 };
@@ -97,7 +111,12 @@ export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick
 // @public (undocumented)
 export type TabRegisterData = {
     value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement | null>;
+};
+
+// @public (undocumented)
+export const tabReservedSpaceClassNames: {
+    content: string;
 };
 
 // @public (undocumented)
@@ -124,7 +143,13 @@ export type TabValue = unknown;
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public
-export const useTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useTabBase_unstable: (props: TabBaseProps, ref: React_2.Ref<HTMLElement>) => TabBaseState;
+
+// @public
+export const useTabButtonStyles_unstable: (state: TabState, slot: TabState["root"]) => TabState;
 
 // @public
 export const useTabContentStyles_unstable: (state: TabState) => TabState;
@@ -134,6 +159,12 @@ export const useTabIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+// @public
+export const useTabListA11yBehavior_unstable: ({ vertical, }: Pick<TabListBaseState, "vertical">) => TabsterDOMAttribute;
+
+// @public
+export const useTabListBase_unstable: (props: TabListBaseProps, ref: React_2.Ref<HTMLElement>) => TabListBaseState;
 
 // @public (undocumented)
 export const useTabListContext_unstable: <T>(selector: ContextSelector<TabListContextValue, T>) => T;

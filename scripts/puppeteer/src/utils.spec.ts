@@ -6,9 +6,9 @@ import { launch, visitUrl } from './utils';
 const noop = () => {};
 
 describe(`utils`, () => {
-  let consoleWarnSpy: jest.SpyInstance;
-  let consoleErrorSpy: jest.SpyInstance;
-  let consoleLogSpy: jest.SpyInstance;
+  let consoleWarnSpy: jest.Spied<typeof console.warn>;
+  let consoleErrorSpy: jest.Spied<typeof console.error>;
+  let consoleLogSpy: jest.Spied<typeof console.log>;
 
   beforeEach(() => {
     consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(noop);

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselViewportProps, CarouselViewportState } from './CarouselViewport.types';
@@ -21,14 +23,11 @@ export const useCarouselViewport_unstable = (
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
 
-  const handleFocusCapture = React.useCallback(
-    (e: React.FocusEvent) => {
-      hasFocus.current = true;
-      // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
-      enableAutoplay(false, true);
-    },
-    [enableAutoplay],
-  );
+  const handleFocusCapture = React.useCallback(() => {
+    hasFocus.current = true;
+    // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
+    enableAutoplay(false, true);
+  }, [enableAutoplay]);
 
   const handleBlurCapture = React.useCallback(
     (e: React.FocusEvent) => {
@@ -43,26 +42,24 @@ export const useCarouselViewport_unstable = (
     [enableAutoplay],
   );
 
-  const handleMouseEnter = React.useCallback(
-    (event: React.MouseEvent) => {
-      hasMouse.current = true;
-      enableAutoplay(false, true);
-    },
-    [enableAutoplay],
-  );
-  const handleMouseLeave = React.useCallback(
-    (event: React.MouseEvent) => {
-      hasMouse.current = false;
-      if (!hasFocus.current) {
-        enableAutoplay(true, true);
-      }
-    },
-    [enableAutoplay],
-  );
+  const handleMouseEnter = React.useCallback(() => {
+    hasMouse.current = true;
+    enableAutoplay(false, true);
+  }, [enableAutoplay]);
+  const handleMouseLeave = React.useCallback(() => {
+    hasMouse.current = false;
+    if (!hasFocus.current) {
+      enableAutoplay(true, true);
+    }
+  }, [enableAutoplay]);
 
+  // eslint-disable-next-line react-hooks/refs
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseEnter = mergeCallbacks(props.onMouseEnter, handleMouseEnter);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseLeave = mergeCallbacks(props.onMouseLeave, handleMouseLeave);
 
   return {

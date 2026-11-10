@@ -1,9 +1,9 @@
-import { ShowToastEventDetail, ToastOptions } from '../types';
+import type { ShowToastEventDetail, ToastOptions } from '../types';
 import { EVENTS } from '../constants';
 
 let counter = 0;
 
-export function dispatchToast(content: unknown, options: Partial<ToastOptions> = {}, targetDocument: Document) {
+export function dispatchToast(content: unknown, options: Partial<ToastOptions> = {}, targetDocument: Document): void {
   const detail: ShowToastEventDetail = {
     ...options,
     content,

@@ -5,6 +5,8 @@ const env = require('../../config/tests');
 
 const { Timezone } = require('../../scripts/constants');
 
+declare const global: any;
+
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
 

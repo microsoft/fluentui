@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
-import { smallState, verticalState } from '../styles/states/index.js';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
+import { nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -55,12 +55,12 @@ export const styles = css`
     --rail-color: ${colorCompoundBrandBackgroundPressed};
   }
 
-  :host(:disabled) {
+  :host(${nativeDisabledState}) {
     --rail-color: ${colorNeutralForegroundDisabled};
     --track-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host(:not(:disabled)) {
+  :host(:not(${nativeDisabledState})) {
     cursor: pointer;
   }
 
@@ -68,14 +68,14 @@ export const styles = css`
     --slider-direction: -90deg;
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     --thumb-size: 16px;
     --track-overhang: -1px;
     --track-size: 2px;
     --border-radius: ${borderRadiusSmall};
   }
 
-  :host(${verticalState}) {
+  :host([orientation='vertical']) {
     --slider-direction: 0deg;
     --step-marker-inset: -1px var(--track-overhang);
     min-height: 120px;
@@ -120,15 +120,10 @@ export const styles = css`
     overflow: hidden;
   }
 
-  :host(${verticalState})::after,
-  :host(${verticalState}) .track {
+  :host([orientation='vertical'])::after,
+  :host([orientation='vertical']) .track {
     height: 100%;
     width: var(--track-size);
-  }
-
-  :host(${verticalState}) .track {
-    top: var(--track-overhang);
-    bottom: var(--track-overhang);
   }
 
   .track::before {
@@ -140,7 +135,11 @@ export const styles = css`
     width: var(--slider-progress);
   }
 
-  :host(${verticalState}) .track::before {
+  :host(:dir(rtl)) .track::before {
+    width: calc(100% - var(--slider-progress));
+  }
+
+  :host([orientation='vertical']) .track::before {
     width: 100%;
     bottom: 0;
     height: var(--slider-progress);
@@ -168,7 +167,7 @@ export const styles = css`
     left: var(--slider-thumb);
   }
 
-  :host(${verticalState}) .thumb-container {
+  :host([orientation='vertical']) .thumb-container {
     transform: translateY(50%);
     left: unset;
     bottom: var(--slider-thumb);
@@ -191,8 +190,8 @@ export const styles = css`
   .track::before {
     background-color: var(--rail-color);
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     .track:hover,
     .track:active,
     .track {
@@ -209,5 +208,5 @@ export const styles = css`
     .track::before {
       background: Highlight;
     }
-  `),
-);
+  }
+`;

@@ -41,7 +41,7 @@ export const HorizontalBarChartBenchmarkExample: React.FunctionComponent<{}> = (
   ];
 
   return (
-    <div style={{ maxWidth: 600 }}>
+    <div className="containerDiv" style={{ maxWidth: 600 }}>
       <HorizontalBarChart data={data} hideRatio={hideRatio} chartDataMode="fraction" />
     </div>
   );

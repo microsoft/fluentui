@@ -8,6 +8,8 @@ import {
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
+
 interface IGroupedBarChartState {
   width: number;
   height: number;
@@ -18,7 +20,6 @@ interface IGroupedBarChartState {
   roundCorners: boolean;
   selectMultipleLegends: boolean;
 }
-
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
   constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -34,7 +35,25 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     };
   }
 
-  public render(): JSX.Element {
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -66,7 +85,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.setState({ selectMultipleLegends: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data = [
       {
         name: 'Jan - Mar',
@@ -274,12 +293,12 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
-        <p>
+      <div className="containerDiv">
+        <div>
           In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
           So instead of a numeric value, the callout will show the date that is passed in the{' '}
           <code>xAxisCalloutData</code> property.
-        </p>
+        </div>
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -354,7 +373,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

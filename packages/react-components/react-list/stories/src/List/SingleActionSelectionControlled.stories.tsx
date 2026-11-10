@@ -1,7 +1,8 @@
-import { Button, makeStyles, Persona, SelectionItemId } from '@fluentui/react-components';
+import { Button, makeStyles, Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement, SelectionItemId } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SingleActionSelectionControlled = () => {
+export const SingleActionSelectionControlled = (): JSXElement => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Demetra Manwaring', 'Bart Merrill']);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 import story from './DialogTitleCustomAction.md';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const TitleCustomAction = () => {
+export const TitleCustomAction = (): JSXElement => {
   return (
     <Dialog>
       <DialogTrigger disableButtonEnhancement>

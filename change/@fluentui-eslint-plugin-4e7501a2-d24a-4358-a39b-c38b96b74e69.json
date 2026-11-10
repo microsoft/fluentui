@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated eslint-plugin deprecation to v3",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

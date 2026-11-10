@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
@@ -42,9 +44,8 @@ const useStyles = makeStyles({
  * Apply styling to the MenuSplitGroup slots based on the state
  */
 export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
   return state;
 };

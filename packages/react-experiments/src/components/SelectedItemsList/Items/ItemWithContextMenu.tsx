@@ -21,7 +21,7 @@ export const ItemWithContextMenu = <T extends any>(
       setIsContextMenuOpen(true);
     }, [setIsContextMenuOpen]);
     const closeContextMenu = React.useCallback(
-      e => {
+      (e: any) => {
         e.preventDefault();
         setIsContextMenuOpen(false);
       },

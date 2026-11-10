@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { PresenceComponentProps } from '@fluentui/react-components';
-import { Collapse, CollapseRuntimeParams } from '@fluentui/react-motion-components-preview';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
+import { Collapse, type CollapseParams } from '@fluentui/react-motion-components-preview';
+
+const useClasses = makeStyles({
+  wrapper: {
+    padding: tokens.spacingVerticalXL,
+  },
+});
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -10,10 +17,13 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultCollapse = (props: PresenceComponentProps & CollapseRuntimeParams) => {
+export const DefaultCollapse = (props: PresenceComponentProps & CollapseParams): JSXElement => {
+  const classes = useClasses();
   return (
-    <Collapse {...props}>
-      <LoremIpsum />
-    </Collapse>
+    <div className={classes.wrapper}>
+      <Collapse {...props}>
+        <LoremIpsum />
+      </Collapse>
+    </div>
   );
 };

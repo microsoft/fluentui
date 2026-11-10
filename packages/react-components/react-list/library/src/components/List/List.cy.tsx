@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { List } from './List';
 import { ListItem } from '../ListItem';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { JSXElement, SelectionItemId } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -23,7 +23,12 @@ const mount = (element: JSX.Element) => {
  * ])
  */
 const testSequence = (sequence: Array<string>) => {
+  cy.get('#outside-button').click();
+  cy.get('#outside-button').should('be.focused');
+
   cy.get('[data-test^=list-item-]').first().focus();
+  cy.get('[data-test^=list-item-]').should('be.focused');
+
   for (const command of sequence) {
     if (command.startsWith('focused:')) {
       const tid = command.split(':')[1];
@@ -36,30 +41,38 @@ const testSequence = (sequence: Array<string>) => {
 
 const mountSimpleList = () => {
   mount(
-    <List navigationMode="items">
-      <ListItem data-test="list-item-1">List Item 1</ListItem>
-      <ListItem data-test="list-item-2">List Item 2</ListItem>
-      <ListItem data-test="list-item-3">List Item 3</ListItem>
-    </List>,
+    <>
+      <button id="outside-button">Outside Button</button>
+
+      <List navigationMode="items">
+        <ListItem data-test="list-item-1">List Item 1</ListItem>
+        <ListItem data-test="list-item-2">List Item 2</ListItem>
+        <ListItem data-test="list-item-3">List Item 3</ListItem>
+      </List>
+    </>,
   );
 };
 
 const mountListWithSecondaryActions = () => {
   mount(
-    <List navigationMode="composite">
-      <ListItem data-test="list-item-1">
-        List Item 1<button data-test="list-item-1-button-1">1:button1</button>
-        <button data-test="list-item-1-button-2">1:button2</button>
-      </ListItem>
-      <ListItem data-test="list-item-2">
-        List Item 2<button data-test="list-item-2-button-1">2:button1</button>
-        <button data-test="button-2-2">2:button2</button>
-      </ListItem>
-      <ListItem data-test="list-item-3">
-        List Item 3<button data-test="button-3-1">3:button1</button>
-        <button data-test="button-3-2">3:button2</button>
-      </ListItem>
-    </List>,
+    <>
+      <button id="outside-button">Outside Button</button>
+
+      <List navigationMode="composite">
+        <ListItem data-test="list-item-1">
+          List Item 1<button data-test="list-item-1-button-1">1:button1</button>
+          <button data-test="list-item-1-button-2">1:button2</button>
+        </ListItem>
+        <ListItem data-test="list-item-2">
+          List Item 2<button data-test="list-item-2-button-1">2:button1</button>
+          <button data-test="button-2-2">2:button2</button>
+        </ListItem>
+        <ListItem data-test="list-item-3">
+          List Item 3<button data-test="button-3-1">3:button1</button>
+          <button data-test="button-3-2">3:button2</button>
+        </ListItem>
+      </List>
+    </>,
   );
 };
 
@@ -67,16 +80,25 @@ type SelectionTestListProps = {
   selectionMode: React.ComponentProps<typeof List>['selectionMode'];
   defaultSelectedItems?: React.ComponentProps<typeof List>['defaultSelectedItems'];
   controlled?: boolean;
+  itemsWithSelectionDisabled?: Array<SelectionItemId>;
 };
 
-const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: SelectionTestListProps) => {
+const SelectionTestList = ({
+  selectionMode,
+  defaultSelectedItems,
+  controlled,
+  itemsWithSelectionDisabled = [],
+}: SelectionTestListProps) => {
   const [selectedItems, setSelectedItems] = React.useState(defaultSelectedItems || []);
 
-  const onChange = React.useCallback((_, { selectedItems: selected }) => {
-    setSelectedItems(selected);
-  }, []);
+  const onChange = React.useCallback(
+    (_: React.SyntheticEvent | Event, { selectedItems: selected }: { selectedItems: SelectionItemId[] }) => {
+      setSelectedItems(selected);
+    },
+    [],
+  );
 
-  const onSelectLastClick = React.useCallback(_ => {
+  const onSelectLastClick = React.useCallback(() => {
     setSelectedItems(['list-item-3']);
   }, []);
 
@@ -89,13 +111,25 @@ const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: 
         selectedItems={controlled ? selectedItems : undefined}
         onSelectionChange={onChange}
       >
-        <ListItem value="list-item-1" data-test="list-item-1">
+        <ListItem
+          value="list-item-1"
+          data-test="list-item-1"
+          disabledSelection={itemsWithSelectionDisabled.includes('list-item-1')}
+        >
           List Item 1
         </ListItem>
-        <ListItem value="list-item-2" data-test="list-item-2">
+        <ListItem
+          value="list-item-2"
+          data-test="list-item-2"
+          disabledSelection={itemsWithSelectionDisabled.includes('list-item-2')}
+        >
           List Item 2
         </ListItem>
-        <ListItem value="list-item-3" data-test="list-item-3">
+        <ListItem
+          value="list-item-3"
+          data-test="list-item-3"
+          disabledSelection={itemsWithSelectionDisabled.includes('list-item-3')}
+        >
           List Item 3
         </ListItem>
       </List>
@@ -111,12 +145,14 @@ const mountListForSelection = (
   selectionMode: 'single' | 'multiselect',
   defaultSelectedItems?: Array<SelectionItemId>,
   controlled?: boolean,
+  itemsWithSelectionDisabled?: Array<SelectionItemId>,
 ) => {
   mount(
     <SelectionTestList
       selectionMode={selectionMode}
       defaultSelectedItems={defaultSelectedItems}
       controlled={controlled}
+      itemsWithSelectionDisabled={itemsWithSelectionDisabled}
     />,
   );
 };
@@ -287,6 +323,17 @@ describe('List', () => {
         validateSetOfListItems([false, true, false]);
       });
 
+      it('Doesnt select the item when clicked and selection is disabled', () => {
+        mountListForSelection('single', undefined, undefined, ['list-item-2']);
+        validateSetOfListItems([false, false, false]);
+        toggleListItem('1');
+        validateSetOfListItems([true, false, false]);
+        toggleListItem('2');
+        validateSetOfListItems([true, false, false]);
+        toggleListItem('2');
+        validateSetOfListItems([true, false, false]);
+      });
+
       it('uncontrolled selection with defaultSelectedItems works', () => {
         mountListForSelection('single', ['list-item-2']);
         validateSetOfListItems([false, true, false]);
@@ -314,6 +361,15 @@ describe('List', () => {
         validateSetOfListItems([true, true, false]);
       });
 
+      it("Doesn't select the item when selection is disabled", () => {
+        mountListForSelection('multiselect', undefined, undefined, ['list-item-2']);
+        validateSetOfListItems([false, false, false]);
+        toggleListItem('1');
+        validateSetOfListItems([true, false, false]);
+        toggleListItem('2');
+        validateSetOfListItems([true, false, false]);
+      });
+
       it('uncontrolled selection with defaultSelectedItems works', () => {
         mountListForSelection('multiselect', ['list-item-2']);
         validateSetOfListItems([false, true, false]);
@@ -325,6 +381,17 @@ describe('List', () => {
         validateSetOfListItems([true, false, true]);
       });
 
+      it('uncontrolled selection with defaultSelectedItems works with selection disabled on an item', () => {
+        mountListForSelection('multiselect', ['list-item-2'], undefined, ['list-item-2']);
+        validateSetOfListItems([false, true, false]);
+        toggleListItem('3');
+        validateSetOfListItems([false, true, true]);
+        toggleListItem('2');
+        validateSetOfListItems([false, true, true]);
+        toggleListItem('1');
+        validateSetOfListItems([true, true, true]);
+      });
+
       it('controlled selection works', () => {
         mountListForSelection('multiselect', ['list-item-2'], true);
         validateSetOfListItems([false, true, false]);
@@ -334,6 +401,17 @@ describe('List', () => {
         validateSetOfListItems([false, false, true]);
         toggleListItem('2');
         validateSetOfListItems([false, true, true]);
+      });
+
+      it('controlled selection works with selection disabled on an item', () => {
+        mountListForSelection('multiselect', ['list-item-2'], true, ['list-item-2']);
+        validateSetOfListItems([false, true, false]);
+        toggleListItem('1');
+        validateSetOfListItems([true, true, false]);
+        selectOnlyLastItem();
+        validateSetOfListItems([false, false, true]);
+        toggleListItem('2');
+        validateSetOfListItems([false, false, true]);
       });
     });
   });
@@ -363,12 +441,15 @@ describe('List', () => {
           <List selectionMode="multiselect">
             <ListItem data-test="list-item-1">List Item 1</ListItem>
             <ListItem data-test="list-item-2">List Item 2</ListItem>
-            <ListItem data-test="list-item-3">List Item 3</ListItem>
+            <ListItem data-test="list-item-3" disabledSelection>
+              List Item 3
+            </ListItem>
           </List>,
         );
         cy.get('.fui-List').should('have.attr', 'aria-multiselectable', 'true');
         cy.get('.fui-List').should('have.attr', 'role', 'listbox');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'option');
+        cy.get('[data-test=list-item-3] input[type=checkbox]').should('be.disabled');
       });
 
       it('custom roles work', () => {

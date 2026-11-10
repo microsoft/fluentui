@@ -10,6 +10,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
@@ -43,7 +44,25 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -77,7 +96,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     this.setState({ selectMultipleLegends: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         x: 10000,
@@ -122,7 +141,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"
@@ -186,7 +205,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

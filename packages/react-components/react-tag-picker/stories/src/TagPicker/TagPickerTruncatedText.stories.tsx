@@ -1,10 +1,10 @@
 import * as React from 'react';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TruncatedText = () => {
+export const TruncatedText = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<Option[]>(options);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     if (data.value === 'no-options') {

@@ -1,0 +1,8 @@
+{
+  "name": "chart-utilities",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/charts/chart-utilities/src",
+  "tags": ["v8", "ships-bundle", "charting"],
+  "implicitDependencies": []
+}

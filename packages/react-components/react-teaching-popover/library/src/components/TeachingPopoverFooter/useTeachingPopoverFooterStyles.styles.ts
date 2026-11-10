@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverFooterSlots, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -48,12 +50,13 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFooterState) => {
-  'use no memo';
-
+export const useTeachingPopoverFooterStyles_unstable = (
+  state: TeachingPopoverFooterState,
+): TeachingPopoverFooterState => {
   const styles = useStyles();
   const { appearance, footerLayout } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverFooterClassNames.root,
     styles.root,
@@ -61,6 +64,7 @@ export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFo
     state.root.className,
   );
   if (state.secondary) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondary.className = mergeClasses(
       teachingPopoverFooterClassNames.secondary,
       footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,
@@ -68,6 +72,7 @@ export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFo
       state.secondary.className,
     );
   }
+  // eslint-disable-next-line react-hooks/immutability
   state.primary.className = mergeClasses(
     teachingPopoverFooterClassNames.primary,
     footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,

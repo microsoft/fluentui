@@ -1,0 +1,7 @@
+{
+  "name": "web-features-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/web-features/src",
+  "projectType": "library",
+  "tags": ["tools"]
+}

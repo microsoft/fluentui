@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   getIntrinsicElementProps,
@@ -23,7 +25,7 @@ import { useAnnounce } from '@fluentui/react-shared-contexts';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCarousel_unstable — manual opt-out to preserve runtime behavior
 
   const {
     align = 'center',
@@ -34,6 +36,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     whitespace = false,
     announcement,
     motion = 'slide',
+    autoplayInterval = 4000,
+    appearance = 'flat',
   } = props;
 
   const { dir } = useFluent();
@@ -50,6 +54,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       motion,
       onDragIndexChange: onActiveIndexChange,
       onAutoplayIndexChange: onActiveIndexChange,
+      autoplayInterval,
     });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
@@ -127,6 +132,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     ),
 
     activeIndex,
+    appearance,
     circular,
     containerRef: mergedContainerRef,
     viewportRef,

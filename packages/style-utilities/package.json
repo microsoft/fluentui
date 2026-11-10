@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/style-utilities",
-  "version": "8.11.6",
+  "version": "8.15.4",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -15,27 +15,21 @@
   ],
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint",
+    "start-test": "yarn run -T just-scripts jest-watch",
+    "test": "yarn run -T just-scripts test",
+    "update-snapshots": "yarn run -T just-scripts jest -u"
   },
   "dependencies": {
+    "@fluentui/merge-styles": "^8.6.16",
+    "@fluentui/set-version": "^8.2.24",
+    "@fluentui/theme": "^2.7.4",
+    "@fluentui/utilities": "^8.17.4",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/theme": "^2.6.64",
-    "@fluentui/merge-styles": "^8.6.13",
-    "@fluentui/set-version": "^8.2.23",
-    "@fluentui/utilities": "^8.15.19",
     "tslib": "^2.1.0"
   },
   "exports": {

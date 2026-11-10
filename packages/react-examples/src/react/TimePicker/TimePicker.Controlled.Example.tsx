@@ -17,7 +17,7 @@ export const TimePickerControlledExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const [time, setTime] = React.useState<Date>(new Date('February 27, 2023 10:00:00'));
 
-  const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
+  const onControlledExampleChange = React.useCallback((_: any, newTime: Date) => {
     setTime(newTime);
   }, []);
 

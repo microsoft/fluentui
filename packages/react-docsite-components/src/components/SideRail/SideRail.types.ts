@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { ITheme, IStyleFunctionOrObject, IStyle } from '@fluentui/react';
 
 export interface ISideRailProps {
@@ -9,12 +10,12 @@ export interface ISideRailProps {
   /**
    * List of links to related pages, as link objects or pre-rendered.
    */
-  relatedLinks?: ISideRailLink[] | JSX.Element;
+  relatedLinks?: ISideRailLink[] | React.ReactElement;
 
   /**
    * Mailto links for people related to the page, as link objects or pre-rendered.
    */
-  contactLinks?: ISideRailLink[] | JSX.Element;
+  contactLinks?: ISideRailLink[] | React.ReactElement;
 
   /**
    * If the page has elements to observe.

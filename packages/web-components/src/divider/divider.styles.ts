@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -14,15 +14,6 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import {
-  alignEndState,
-  alignStartState,
-  brandState,
-  insetState,
-  strongState,
-  subtleState,
-  verticalState,
-} from '../styles/states/index.js';
 
 /** Divider styles
  * @public
@@ -31,6 +22,8 @@ export const styles = css`
   ${display('flex')}
 
   :host {
+    --_vertical-min-height: 10px;
+
     contain: content;
   }
 
@@ -45,7 +38,7 @@ export const styles = css`
     height: ${strokeWidthThin};
   }
 
-  :host(${insetState}) {
+  :host([inset]) {
     padding: 0 12px;
   }
 
@@ -58,94 +51,98 @@ export const styles = css`
     padding: 0 12px;
   }
 
-  :host(${alignStartState})::before,
-  :host(${alignEndState})::after {
+  :host([align-content='start'])::before,
+  :host([align-content='end'])::after {
     flex-basis: 12px;
     flex-grow: 0;
     flex-shrink: 0;
   }
 
-  :host(${verticalState}) {
-    height: 100%;
-    min-height: 84px;
-  }
-  :host(${verticalState}):empty {
-    min-height: 20px;
-  }
-
-  :host(${verticalState}) {
-    flex-direction: column;
+  :host([orientation='vertical']) {
     align-items: center;
+    flex-direction: column;
+    height: 100%;
   }
 
-  :host(${verticalState}${insetState})::before {
+  :host([orientation='vertical'][inset])::before {
     margin-top: 12px;
   }
-  :host(${verticalState}${insetState})::after {
+
+  :host([orientation='vertical'][inset])::after {
     margin-bottom: 12px;
   }
 
-  :host(${verticalState}):empty::before,
-  :host(${verticalState}):empty::after {
-    height: 10px;
-    min-height: 10px;
-    flex-grow: 0;
-  }
-
-  :host(${verticalState})::before,
-  :host(${verticalState})::after {
+  :host([orientation='vertical'])::before,
+  :host([orientation='vertical'])::after {
     width: ${strokeWidthThin};
-    min-height: 20px;
+    min-height: var(--_vertical-min-height);
     height: 100%;
   }
 
-  :host(${verticalState}) ::slotted(*) {
+  /**
+   * Use @supports to avoid the scoped styles from applying in Safari. Because
+   * Safari supports @scope but ':scope:has(*)' would select a host with no
+   * children.
+   */
+  @supports not selector(:host(:has(*))) {
+    @scope {
+      :scope:has(*) {
+        --_vertical-min-height: 20px;
+      }
+    }
+  }
+
+  :host(:has(*)) {
+    --_vertical-min-height: 20px;
+  }
+
+  :host([orientation='vertical']) ::slotted(*) {
     display: flex;
     flex-direction: column;
     padding: 12px 0;
     line-height: 20px;
   }
 
-  :host(${verticalState}${alignStartState})::before {
+  :host([orientation='vertical'][align-content='start'])::before {
     min-height: 8px;
   }
-  :host(${verticalState}${alignEndState})::after {
+  :host([orientation='vertical'][align-content='end'])::after {
     min-height: 8px;
   }
 
-  :host(${strongState})::before,
-  :host(${strongState})::after {
+  :host([appearance='strong'])::before,
+  :host([appearance='strong'])::after {
     background: ${colorNeutralStroke1};
   }
-  :host(${strongState}) ::slotted(*) {
+  :host([appearance='strong']) ::slotted(*) {
     color: ${colorNeutralForeground1};
   }
-  :host(${brandState})::before,
-  :host(${brandState})::after {
+  :host([appearance='brand'])::before,
+  :host([appearance='brand'])::after {
     background: ${colorBrandStroke1};
   }
-  :host(${brandState}) ::slotted(*) {
+  :host([appearance='brand']) ::slotted(*) {
     color: ${colorBrandForeground1};
   }
-  :host(${subtleState})::before,
-  :host(${subtleState})::after {
+  :host([appearance='subtle'])::before,
+  :host([appearance='subtle'])::after {
     background: ${colorNeutralStroke3};
   }
-  :host(${subtleState}) ::slotted(*) {
+  :host([appearance='subtle']) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
-    :host(${strongState})::before,
-    :host(${strongState})::after,
-    :host(${brandState})::before,
-    :host(${brandState})::after,
-    :host(${subtleState})::before,
-    :host(${subtleState})::after,
+
+  @media (forced-colors: active) {
+    :host([appearance='strong'])::before,
+    :host([appearance='strong'])::after,
+    :host([appearance='brand'])::before,
+    :host([appearance='brand'])::after,
+    :host([appearance='subtle'])::before,
+    :host([appearance='subtle'])::after,
     :host::after,
     :host::before {
       background: WindowText;
       color: WindowText;
     }
-  `),
-);
+  }
+`;

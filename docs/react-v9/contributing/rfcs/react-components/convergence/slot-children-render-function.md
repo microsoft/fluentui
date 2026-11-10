@@ -59,7 +59,7 @@ and will be capable of properly rendering with children render function.
 
 ---
 
-By our [documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot):
+By our [documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs#replacing-the-entire-slot):
 
 > When you pass content or props to a slot, the component renders the content within a component or element based on the slot type.
 > If you need to replace the slot's entire content, including the containing element, pass a render function as the children.

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useInteractionTag_unstable } from './useInteractionTag';
 import { renderInteractionTag_unstable } from './renderInteractionTag';

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type {
@@ -52,7 +54,7 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselFooterButtonStyles_unstable = (
   state: TeachingPopoverCarouselFooterButtonState,
 ): TeachingPopoverCarouselFooterButtonState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTeachingPopoverCarouselFooterButtonStyles_unstable — manual opt-out to preserve runtime behavior
 
   const styles = useStyles();
   const { navType, popoverAppearance } = state;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -22,11 +23,12 @@ const ExampleContent = () => {
       <h3 className={styles.contentHeader}>Popover content</h3>
 
       <div>This is some popover content</div>
+      <Button>Action</Button>
     </div>
   );
 };
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const layoutStyles = useLayoutStyles();
 
   return (
@@ -36,7 +38,7 @@ export const Appearance = () => {
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -46,7 +48,7 @@ export const Appearance = () => {
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -56,7 +58,7 @@ export const Appearance = () => {
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

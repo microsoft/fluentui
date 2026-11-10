@@ -12,6 +12,10 @@ import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.B
 import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVerticalBarChart.CustomAccessibility.Example';
+import { GroupedVerticalBarChartSecondaryYAxisExample } from './GroupedVerticalBarChart.SecondaryYAxis.Example';
+import { GroupedVerticalBarChartNegativeExample } from './GroupedVerticalBarChart.Negative.Example';
+import { GroupedVerticalBarChartLineExample } from './GroupedVerticalBarChart.Line.Example';
+import type { JSXElement } from '@fluentui/utilities';
 
 const GroupedVerticalBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
@@ -21,9 +25,15 @@ const GroupedVerticalTruncatedExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
 const GroupedVerticalCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.CustomAccessibility.Example.tsx') as string;
+const GroupedVerticalBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.SecondaryYAxis.Example.tsx') as string;
+const GroupedVerticalBarChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Negative.Example.tsx') as string;
+const GroupedVerticalBarChartLineExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Line.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Grouped Vertical Bar Chart"
@@ -44,6 +54,21 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
               code={GroupedVerticalCustomAccessibilityExampleCode}
             >
               <GroupedVerticalBarChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard
+              title="Grouped Vertical Bar Chart Secondary Y-Axis"
+              code={GroupedVerticalBarChartSecondaryYAxisExampleCode}
+            >
+              <GroupedVerticalBarChartSecondaryYAxisExample />
+            </ExampleCard>
+            <ExampleCard
+              title="Grouped Vertical Bar Chart Negative Y-Axis"
+              code={GroupedVerticalBarChartNegativeExampleCode}
+            >
+              <GroupedVerticalBarChartNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="Grouped Vertical Bar Chart With Lines" code={GroupedVerticalBarChartLineExampleCode}>
+              <GroupedVerticalBarChartLineExample />
             </ExampleCard>
           </div>
         }

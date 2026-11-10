@@ -1,13 +1,60 @@
 version: 2
 updates:
-  # Weekly updates for devDependencies.
+  # GitHub Actions updates
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      github-actions-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      github-actions-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+  # npm dependencies - weekly minor and patch updates
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
-      schedule: 'tuesday'
-      time: '09:00'
-    allow:
-      - dependency-type: 'development'
     open-pull-requests-limit: 6
     versioning-strategy: increase
+    allow:
+      - dependency-type: 'development'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
+      # Production dependencies must stay in `allow` so security updates still apply;
+      # `allow.update-types` is ignored for security updates. Allowing only major version
+      # updates here, combined with the major version `ignore` rule below, disables all
+      # routine version updates for production dependencies.
+      - dependency-type: 'production'
+        update-types:
+          - 'version-update:semver-major'
+    ignore:
+      # Ignore major version bumps for scheduled npm version updates
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    groups:
+      development-dependencies:
+        dependency-type: 'development'
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      security-dependencies:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToolbar_unstable } from './useToolbar';
 import { renderToolbar_unstable } from './renderToolbar';

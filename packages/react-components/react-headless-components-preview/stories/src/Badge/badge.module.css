@@ -1,0 +1,77 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-block-size: var(--space-6);
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
+  color: var(--text);
+  border: var(--stroke-thin) solid var(--border);
+}
+
+.solid {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: transparent;
+}
+
+.success {
+  background: var(--success-soft);
+  color: var(--success);
+  border-color: transparent;
+}
+
+.warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+  border-color: transparent;
+}
+
+.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: transparent;
+}
+
+.info {
+  background: var(--info-soft);
+  color: var(--info);
+  border-color: transparent;
+}
+
+.accent {
+  background: var(--surface-muted);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dot {
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--space-6);
+  min-block-size: var(--space-6);
+  padding-inline: var(--space-1);
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: var(--text-on-accent);
+  font-weight: 600;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../reviewers.schema.json",
+  "version": 1,
+  "repo": "microsoft/monosize",
+  "queues": ["microsoft/fluentui-react-build"],
+  "team": { "org": "microsoft", "slug": "fluentui-react-build" },
+  "settings": { "reviewers": 1, "areaMatch": "hard", "unknownMemberPolicy": "exclude-and-report" },
+  "areas": {
+    "core": { "label": "Monosize CLI", "scopes": ["monosize"], "paths": ["packages/monosize/**"] },
+    "bundlers": { "label": "Bundler adapters", "scopes": ["bundler*"], "paths": ["packages/monosize-bundler-*/**"] },
+    "storage": { "label": "Storage adapters", "scopes": ["storage*"], "paths": ["packages/monosize-storage-*/**"] },
+    "build": {
+      "label": "Tooling and infrastructure",
+      "scopes": ["build", "ci", "deps"],
+      "paths": [".github/**", "tools/**", "package.json", "yarn.lock", "nx.json"]
+    }
+  },
+  "reviewers": [
+    {
+      "login": "Hotell",
+      "eligible": true,
+      "fallbackEligible": false,
+      "primary": ["core", "build", "bundlers", "storage"],
+      "secondary": []
+    },
+    { "login": "dmytrokirpa", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "mainframev", "eligible": false, "primary": [], "secondary": ["build"] },
+    { "login": "tudorpopams", "eligible": false, "primary": [], "secondary": [] }
+  ]
+}

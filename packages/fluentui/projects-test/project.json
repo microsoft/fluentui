@@ -1,7 +1,0 @@
-{
-  "name": "projects-test",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "implicitDependencies": [],
-  "tags": ["react-northstar"]
-}

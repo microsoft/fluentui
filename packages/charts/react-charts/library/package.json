@@ -1,0 +1,86 @@
+{
+  "name": "@fluentui/react-charts",
+  "version": "9.3.29",
+  "description": "React web chart controls for Microsoft fluentui v9 system.",
+  "type": "module",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "syncpack": {
+    "dependencyTypes": []
+  },
+  "dependencies": {
+    "@fluentui/chart-utilities": "^1.1.41",
+    "@fluentui/react-button": "^9.11.3",
+    "@fluentui/react-jsx-runtime": "^9.4.7",
+    "@fluentui/react-overflow": "^9.9.5",
+    "@fluentui/react-popover": "^9.14.10",
+    "@fluentui/react-shared-contexts": "^9.26.4",
+    "@fluentui/react-tabster": "^9.26.19",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-tooltip": "^9.10.8",
+    "@fluentui/react-utilities": "^9.27.0",
+    "@griffel/react": "^1.5.32",
+    "@swc/helpers": "^0.5.1",
+    "@types/d3-array": "^3.0.0",
+    "@types/d3-axis": "^3.0.0",
+    "@types/d3-color": "^3.0.0",
+    "@types/d3-format": "^3.0.0",
+    "@types/d3-hierarchy": "^3.0.0",
+    "@types/d3-sankey": "^0.12.3",
+    "@types/d3-scale": "^4.0.0",
+    "@types/d3-selection": "^3.0.0",
+    "@types/d3-shape": "^3.0.0",
+    "@types/d3-time": "^3.0.0",
+    "@types/d3-time-format": "^3.0.0",
+    "d3-array": "^3.0.0",
+    "d3-axis": "^3.0.0",
+    "d3-color": "^3.0.0",
+    "d3-format": "^3.0.0",
+    "d3-hierarchy": "^3.0.0",
+    "d3-sankey": "^0.12.3",
+    "d3-scale": "^4.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.0",
+    "d3-time": "^3.0.0",
+    "d3-time-format": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <20.0.0",
+    "@types/react-dom": ">=16.9.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  }
+}

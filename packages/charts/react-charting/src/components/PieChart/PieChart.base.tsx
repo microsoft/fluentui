@@ -3,6 +3,7 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
@@ -20,7 +21,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     this._emptyChartId = getId('_PieChart_empty');
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, width, height, colors, chartTitle } = this.props;
 
     const { theme, className, styles, culture } = this.props;
@@ -33,6 +34,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
 
     const TEXT_MAX_WIDTH = 40;
     const TEXT_LINE_HEIGHT = 16;
+    const PADDING = 4;
 
     /**
      * The radius for the pie chart is computed based on the space available inside the svg
@@ -47,8 +49,8 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
           culture={culture}
-          width={width!}
-          height={height!}
+          width={width! + 2 * PADDING}
+          height={height! + 2 * PADDING}
           outerRadius={outerRadius}
           innerRadius={1}
           data={data!}

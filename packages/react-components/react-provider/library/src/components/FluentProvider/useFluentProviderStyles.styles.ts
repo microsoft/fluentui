@@ -1,8 +1,10 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/core';
 import { useRenderer_unstable } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
   root: 'fui-FluentProvider',
@@ -18,12 +20,11 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
-  'use no memo';
-
+export const useFluentProviderStyles_unstable = (state: FluentProviderState): FluentProviderState => {
   const renderer = useRenderer_unstable();
   const styles = useStyles({ dir: state.dir, renderer });
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     fluentProviderClassNames.root,
     state.themeClassName,

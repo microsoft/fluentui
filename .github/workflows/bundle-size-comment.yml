@@ -8,12 +8,18 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'microsoft' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     permissions:
       pull-requests: write
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github
+
       - name: Download artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: monosize-report
           path: ./results
@@ -22,12 +28,16 @@ jobs:
 
       - name: Load PR number
         id: pr_number
-        run: echo "id=$(cat pr.txt)" >> $GITHUB_OUTPUT
-        working-directory: ./results
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          result-encoding: string
+          script: |
+            const run = require('./.github/scripts/validate-pr-number');
+            return await run({ filePath: 'results/pr.txt', github, context });
 
       - name: 'Comment on PR'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
         with:
           header: bundle-size-report
-          number: ${{ steps.pr_number.outputs.id }}
+          number: ${{ steps.pr_number.outputs.result }}
           path: ./results/monosize-report.md

@@ -1,7 +1,8 @@
 import type { ITheme, IStyle } from '@fluentui/style-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IFloatingSuggestionsHeaderFooterProps {
-  renderItem: () => JSX.Element;
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   className?: string;
   ariaLabel?: string;
@@ -9,7 +10,7 @@ export interface IFloatingSuggestionsHeaderFooterProps {
 }
 
 export interface IFloatingSuggestionsHeaderFooterItemProps {
-  renderItem: () => JSX.Element;
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   isSelected: boolean;
   id: string;

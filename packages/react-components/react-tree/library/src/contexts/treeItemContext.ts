@@ -1,8 +1,11 @@
+'use client';
+
 import * as React from 'react';
-import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
 import { headlessTreeRootId } from '../utils/createHeadlessTree';
-import { TreeSelectionValue } from '../Tree';
+import type { TreeSelectionValue } from '../Tree';
 
 export type TreeItemContextValue = {
   /**
@@ -22,7 +25,7 @@ export type TreeItemContextValue = {
   subtreeRef: React.Ref<HTMLDivElement>;
   // FIXME: this is only marked as optional to avoid breaking changes
   // it should always be provided internally
-  treeItemRef?: React.RefObject<HTMLDivElement>;
+  treeItemRef?: React.RefObject<HTMLDivElement | null>;
   itemType: TreeItemType;
   value: TreeItemValue;
   open: boolean;

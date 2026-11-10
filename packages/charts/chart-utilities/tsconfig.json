@@ -1,0 +1,24 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "ES2019",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "strictBindCallApply": true,
+    "preserveConstEnums": true,
+    "isolatedModules": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

@@ -5,7 +5,9 @@ import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix } from '../../../utilities/index';
+import { formatScientificLimitWidth } from '../../../utilities/index';
+import { isSafeUrl } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -30,10 +32,13 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
-    const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
+    const id =
+      this.props.uniqText! +
+      (typeof this.props.data!.data.legend === 'string' ? this.props.data!.data.legend.replace(/\s+/g, '') : '') +
+      this.props.data!.data.data;
     const opacity: number =
       activeArc && activeArc.length > 0 ? (activeArc.includes(this.props.data?.data.legend!) ? 1 : 0.1) : 1;
     const startAngle = this.props.data?.startAngle ?? 0;
@@ -114,7 +119,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   };
 
   private _redirectToUrl(href: string | undefined): void {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   }
 
   private _getAriaLabel = (): string => {
@@ -157,7 +164,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
       >
         {showLabelsInPercent
           ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-          : formatValueWithSIPrefix(arcValue)}
+          : formatScientificLimitWidth(arcValue)}
       </text>
     );
   };

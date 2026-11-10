@@ -11,6 +11,7 @@ import {
   DataVizGradientPalette,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDonutChartState {
   enableGradient: boolean;
@@ -27,7 +28,7 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       {
         legend: 'first',

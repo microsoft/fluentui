@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 import { IsConformantOptions, DefaultTestObject } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
-import { act } from 'react-dom/test-utils';
 
 /**
  * TODO - TS 4.5 introduces strict catch `err` callback handling - opting out for sake of smoother ts 4.5 upgrade
@@ -29,8 +28,6 @@ function getTargetElement(
     ? testInfo.getTargetElement(result, attr)
     : (result.container.firstElementChild as HTMLElement);
 }
-
-/* eslint-disable @typescript-eslint/naming-convention */
 
 export const defaultTests: DefaultTestObject = {
   /** Component file exports a valid React element type  */
@@ -497,6 +494,7 @@ export const defaultTests: DefaultTestObject = {
           try {
             validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
           } catch (err: OptOutStrictCatchTypes) {
+            // eslint-disable-next-line no-console
             console.log('err', err);
 
             return { ...errors, [propName]: err };

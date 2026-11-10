@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Link } from './link.js';
-import { LinkAppearance } from './link.options.js';
+import { tagName } from './link.options.js';
 
 const attributes = {
   download: 'download',
@@ -14,15 +14,35 @@ const attributes = {
 };
 
 test.describe('Link', () => {
-  test.use({ tagName: 'fluent-link' });
+  test.use({
+    tagName,
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
+  });
 
   test(`should set each property to match its corresponding attribute`, async ({ fastPage }) => {
     const { element } = fastPage;
     const anchor = element.locator('a');
 
+    await fastPage.setTemplate();
+
     for (const [attribute, value] of Object.entries(attributes)) {
       await test.step(`should set the \`${attribute}\` property to match the \`${attribute}\` attribute`, async () => {
-        await fastPage.setTemplate({ attributes: { [attribute]: value } });
+        await fastPage.updateTemplate(element, { attributes: { [attribute]: value } });
 
         await expect(element).toHaveAttribute(attribute, value);
 
@@ -35,33 +55,24 @@ test.describe('Link', () => {
     }
   });
 
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+  test('should emit a single click event when clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
-    for (const appearance of Object.values(LinkAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
 
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
+    await element.evaluate((link: Link) => {
+      let clickCount = 0;
+      link.addEventListener('click', () => {
+        clickCount += 1;
+        link.setAttribute('data-click-count', String(clickCount));
       });
-    }
-  });
-
-  test('should add an "inline" state when the `inline` property is true', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await element.evaluate((node: Link) => {
-      node.inline = true;
+      link.setAttribute('data-click-count', '0');
     });
 
-    await expect(element).toHaveCustomState('inline');
-
-    await element.evaluate((node: Link) => {
-      node.inline = false;
+    await element.evaluate((node: HTMLElement) => {
+      node.click();
     });
 
-    await expect(element).not.toHaveCustomState('inline');
+    await expect(element).toHaveAttribute('data-click-count', '1');
   });
 });

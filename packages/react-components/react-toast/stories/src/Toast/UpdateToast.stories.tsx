@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
-export const UpdateToast = () => {
+export const UpdateToast = (): JSXElement => {
   const toastId = useId('toast');
   const toasterId = useId('toaster');
   const [unmounted, setUnmounted] = React.useState(true);

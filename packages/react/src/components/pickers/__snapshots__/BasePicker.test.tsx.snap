@@ -1,64 +1,37 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`BasePicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
+  class="ms-BasePicker"
 >
   <div
     aria-live="assertive"
     id="selected-suggestion-alert-id__0"
-  >
-    
-  </div>
+  />
   <span
-    hidden={true}
+    hidden=""
     id="selected-items-id__0-label"
   />
   <div
-    className="ms-SelectionZone"
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onFocusCapture={[Function]}
-    onKeyDown={[Function]}
-    onKeyDownCapture={[Function]}
-    onMouseDown={[Function]}
-    onMouseDownCapture={[Function]}
+    class="ms-SelectionZone"
     role="presentation"
   >
     <div
-      className="ms-BasePicker-text"
+      class="ms-BasePicker-text"
     >
       <input
         aria-autocomplete="both"
         aria-describedby=""
-        aria-expanded={false}
+        aria-expanded="false"
         aria-haspopup="listbox"
-        autoCapitalize="off"
-        autoComplete="off"
-        className="ms-BasePicker-input"
-        data-lpignore={true}
+        autocapitalize="off"
+        autocomplete="off"
+        class="ms-BasePicker-input"
+        data-lpignore="true"
         id="combobox-id__0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onCompositionEnd={[Function]}
-        onCompositionStart={[Function]}
-        onCompositionUpdate={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
         role="combobox"
-        spellCheck={false}
-        style={
-          Object {
-            "fontFamily": "inherit",
-          }
-        }
+        spellcheck="false"
+        style="font-family: inherit;"
         value=""
       />
     </div>
@@ -68,64 +41,37 @@ exports[`BasePicker renders correctly 1`] = `
 
 exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
 <div
-  className="ms-BasePicker"
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
+  class="ms-BasePicker"
 >
   <div
     aria-live="assertive"
     id="selected-suggestion-alert-id__0"
-  >
-    
-  </div>
+  />
   <span
-    hidden={true}
+    hidden=""
     id="selected-items-id__0-label"
   />
   <div
-    className="ms-SelectionZone"
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onFocusCapture={[Function]}
-    onKeyDown={[Function]}
-    onKeyDownCapture={[Function]}
-    onMouseDown={[Function]}
-    onMouseDownCapture={[Function]}
+    class="ms-SelectionZone"
     role="presentation"
   >
     <div
-      className="ms-BasePicker-text"
+      class="ms-BasePicker-text"
     >
       <input
         aria-autocomplete="both"
         aria-describedby=""
-        aria-expanded={false}
+        aria-expanded="false"
         aria-haspopup="listbox"
-        autoCapitalize="off"
-        autoComplete="off"
-        className="ms-BasePicker-input testclass "
-        data-lpignore={true}
+        autocapitalize="off"
+        autocomplete="off"
+        class="ms-BasePicker-input testclass "
+        data-lpignore="true"
         id="pckSelectedUser"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onCompositionEnd={[Function]}
-        onCompositionStart={[Function]}
-        onCompositionUpdate={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
         placeholder="Bitte einen Benutzer angeben..."
         role="combobox"
-        spellCheck={false}
-        style={
-          Object {
-            "fontFamily": "inherit",
-          }
-        }
+        spellcheck="false"
+        style="font-family: inherit;"
         value=""
       />
     </div>

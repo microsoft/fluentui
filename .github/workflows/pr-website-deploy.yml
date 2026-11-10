@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 5 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -17,29 +17,34 @@ env:
 jobs:
   bundle:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     permissions:
       contents: 'read'
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5.1.0
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+      - name: NodeJS heap default size
+        run: node -e 'console.log(v8.getHeapStatistics().heap_size_limit / 1024 / 1024 + " MB");'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
+
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
 
       - name: Bundle
         run: yarn nx affected -t bundle --nxBail
@@ -49,7 +54,7 @@ jobs:
 
       - name: Generate PR Deploy Site
         run: yarn nx run pr-deploy-site:generate:site
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: pr-website-artifacts
           retention-days: 1
@@ -59,7 +64,7 @@ jobs:
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: pr-number
           retention-days: 1

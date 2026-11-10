@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   createPresenceComponent,
+  createPresenceComponentVariant,
   motionTokens,
   OverlayDrawer,
   DrawerBody,
@@ -13,8 +15,11 @@ import {
   ToolbarGroup,
   ToolbarButton,
   makeStyles,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
+import { fadeAtom, Scale, slideAtom } from '@fluentui/react-motion-components-preview';
 
 const useStyles = makeStyles({
   toolbar: {
@@ -50,55 +55,43 @@ const useStyles = makeStyles({
 });
 
 const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level }) => {
-  const keyframes = [
-    { opacity: 0, transform: level === 1 ? 'translateX(-100%)' : 'translateX(100%)' },
-    { opacity: 1, transform: 'translateX(0)' },
-  ];
   const duration = motionTokens.durationNormal;
   const easing = motionTokens.curveEasyEase;
+  const outX = level === 1 ? '-100%' : '100%';
 
   return {
-    enter: {
-      keyframes,
-      duration,
-      easing,
-    },
-    exit: {
-      keyframes: [...keyframes].reverse(),
-      duration,
-      easing,
-    },
-  };
-});
-const IconPresenceMotion = createPresenceComponent(() => {
-  const keyframes = [
-    { opacity: 0, transform: 'scale(0)' },
-    { opacity: 1, transform: 'scale(1)' },
-  ];
-
-  return {
-    enter: {
-      keyframes,
-      duration: motionTokens.durationNormal,
-      easing: motionTokens.curveEasyEase,
-    },
-    exit: {
-      keyframes: [...keyframes].reverse(),
-      duration: motionTokens.durationNormal,
-      easing: motionTokens.curveEasyEase,
-    },
+    enter: [
+      fadeAtom({ direction: 'enter', duration, easing }),
+      slideAtom({ direction: 'enter', duration, easing, outX }),
+    ],
+    exit: [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outX })],
   };
 });
 
-export const MultipleLevels = () => {
+const IconPresenceMotion = createPresenceComponentVariant(Scale, {
+  duration: motionTokens.durationNormal,
+  easing: motionTokens.curveEasyEase,
+});
+
+export const MultipleLevels = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
   const [level, setLevel] = React.useState<1 | 2>(1);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer
+        {...restoreFocusSourceAttributes}
+        position="start"
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
@@ -161,7 +154,7 @@ export const MultipleLevels = () => {
         </DrawerFooter>
       </OverlayDrawer>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+      <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
       </Button>
     </div>

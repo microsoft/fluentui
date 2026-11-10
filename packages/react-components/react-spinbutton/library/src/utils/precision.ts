@@ -31,6 +31,6 @@ export function calculatePrecision(value: number | string): number {
  * @param precision - The number of decimal places to round the number to
  */
 export function precisionRound(value: number, precision: number, base: number = 10): number {
-  const exp = Math.pow(base, precision);
+  const exp = base ** precision;
   return Math.round(value * exp) / exp;
 }

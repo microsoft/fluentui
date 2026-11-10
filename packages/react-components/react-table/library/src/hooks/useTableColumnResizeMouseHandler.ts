@@ -1,16 +1,15 @@
-import * as React from 'react';
-import { TableColumnId, ColumnResizeState } from './types';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import {
-  NativeTouchOrMouseEvent,
-  ReactTouchOrMouseEvent,
-  getEventClientCoords,
-  isMouseEvent,
-  isTouchEvent,
-  useAnimationFrame,
-} from '@fluentui/react-utilities';
+'use client';
 
-export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
+import * as React from 'react';
+import type { TableColumnId, ColumnResizeState } from './types';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent } from '@fluentui/react-utilities';
+import { getEventClientCoords, isMouseEvent, isTouchEvent, useAnimationFrame } from '@fluentui/react-utilities';
+
+export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState): {
+  getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
+  dragging: boolean;
+} {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);
@@ -46,6 +45,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const onDragEnd = React.useCallback(
     (event: NativeTouchOrMouseEvent) => {
       if (isMouseEvent(event)) {
+        // eslint-disable-next-line react-hooks/immutability
         targetDocument?.removeEventListener('mouseup', onDragEnd);
         targetDocument?.removeEventListener('mousemove', onDrag);
       }

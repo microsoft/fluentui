@@ -121,7 +121,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   }
 
-  private _renderHeroSection = (): JSX.Element => {
+  private _renderHeroSection = (): React.ReactElement => {
     return (
       <section className={this._classNames.heroSection}>
         <div className={this._classNames.sectionContent}>
@@ -160,7 +160,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  private _renderPlatformCardsSection = (): JSX.Element => {
+  private _renderPlatformCardsSection = (): React.ReactElement => {
     const { isMountedOffset } = this.state;
     const { theme, styles } = this.props;
 
@@ -330,7 +330,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  private _renderPlatformsSection = (): JSX.Element => {
+  private _renderPlatformsSection = (): React.ReactElement => {
     const { isMountedOffset } = this.state;
     const { theme, styles } = this.props;
 
@@ -358,7 +358,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  private _renderResourcesSection = (): JSX.Element => {
+  private _renderResourcesSection = (): React.ReactElement => {
     return (
       <section className={this._classNames.resourcesSection}>
         <div className={this._classNames.sectionContent}>
@@ -386,7 +386,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  private _renderUsageSection = (): JSX.Element => {
+  private _renderUsageSection = (): React.ReactElement => {
     return (
       <section className={this._classNames.usageSection}>
         <div className={this._classNames.sectionContent} style={{ justifyContent: 'space-between' }}>
@@ -408,7 +408,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   /** Renders a link with an icon */
-  private _renderLink = (url: string, text: React.ReactNode, options: IRenderLinkOptions = {}): JSX.Element => {
+  private _renderLink = (url: string, text: React.ReactNode, options: IRenderLinkOptions = {}): React.ReactElement => {
     const { disabled, isCTA, icon = 'Forward', dark = true, ariaLabel } = options;
     return (
       <Link
@@ -425,7 +425,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   /** Renders list of app/brand icons that use Fabric. */
-  private _renderUsageIconList = (): JSX.Element[] => {
+  private _renderUsageIconList = (): React.ReactElement[] => {
     return fabricUsageIcons.map((icon, iconIndex) => (
       <li key={icon.title + iconIndex} className={this._classNames.usageIconListItem}>
         <TooltipHost content={icon.title} id={icon.title + iconIndex} styles={{ root: { display: 'inline-block' } }}>

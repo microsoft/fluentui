@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Persona } from '@fluentui/react-components';
 import type { PersonaProps } from '@fluentui/react-components';
 
-export const Default = (props: Partial<PersonaProps>) => {
+export const Default = (props: Partial<PersonaProps>): JSXElement => {
   return (
     <Persona
       name="Kevin Sturgis"

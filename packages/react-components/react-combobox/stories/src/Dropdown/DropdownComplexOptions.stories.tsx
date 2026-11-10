@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -13,13 +14,13 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComplexOptions = (props: Partial<DropdownProps>) => {
+export const ComplexOptions = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} {...props}>
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown id={dropdownId} {...props}>
         <Option text="Katri Athokas">
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}

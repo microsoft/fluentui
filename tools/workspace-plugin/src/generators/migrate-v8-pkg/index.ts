@@ -159,7 +159,8 @@ function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
     };
 
     if (tree.exists(paths.json)) {
-      const eslintConfig: Linter.Config = readJson<Record<string, unknown>>(tree, paths.json);
+      // TODO: update after remove to flat config
+      const eslintConfig: Linter.LegacyConfig = readJson<Record<string, unknown>>(tree, paths.json);
       return eslintConfig;
     }
 
@@ -167,7 +168,8 @@ function getProjectMetadata(tree: Tree, project: ProjectConfiguration) {
       const eslintConfigAST = getCjsConfigObjectAst(tree.read(paths.js, 'utf8') as string);
       const extendsFieldValue = getASTconfigObjectProp(eslintConfigAST, 'extends');
 
-      const eslintConfig: Linter.Config = { extends: extendsFieldValue };
+      // TODO: update after remove to flat config
+      const eslintConfig: Linter.LegacyConfig = { extends: extendsFieldValue };
 
       return eslintConfig;
     }

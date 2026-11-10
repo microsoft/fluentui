@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type {
@@ -74,13 +76,12 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
   state: TeachingPopoverCarouselNavButtonState,
 ): TeachingPopoverCarouselNavButtonState => {
-  'use no memo';
-
   const styles = useStyles();
   const { appearance, isSelected } = state;
 
   const brandStyles = isSelected ? styles.rootBrand : styles.rootBrandUnselected;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverCarouselNavButtonClassNames.root,
     styles.root,

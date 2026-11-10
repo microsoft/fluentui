@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import {
   Checkbox,
@@ -22,7 +23,7 @@ const useStackClassName = makeResetStyles({
   rowGap: tokens.spacingVerticalL,
 });
 
-export const ComponentExamples = () => (
+export const ComponentExamples = (): JSXElement => (
   <div className={useStackClassName()}>
     <Field label="Input">
       <Input />

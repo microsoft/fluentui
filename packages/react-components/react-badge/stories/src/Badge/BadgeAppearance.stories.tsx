@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Badge } from '@fluentui/react-components';
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   return (
     <>
       <Badge appearance="filled">999+</Badge>
@@ -16,7 +17,7 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A badge can have a `ghost`, `filled`, `outline`, or `tint` appearance. The default is `filled`.',
+      story: 'A badge can have a `filled`, `ghost`, `outline`, or `tint` appearance. The default is `filled`.',
     },
   },
 };

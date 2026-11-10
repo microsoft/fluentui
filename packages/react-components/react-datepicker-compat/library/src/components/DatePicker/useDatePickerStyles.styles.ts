@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -46,12 +48,11 @@ const usePopupSurfaceClassName = makeResetStyles({
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
-  'use no memo';
-
   const styles = useStyles();
   const popupSurfaceClassName = usePopupSurfaceClassName();
   const { disabled, inlinePopup } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     datePickerClassNames.root,
     styles.base,
@@ -60,6 +61,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
   );
 
   if (state.popupSurface) {
+    // eslint-disable-next-line react-hooks/immutability
     state.popupSurface.className = mergeClasses(
       datePickerClassNames.popupSurface,
       popupSurfaceClassName,
@@ -68,6 +70,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     );
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
 
   return state;

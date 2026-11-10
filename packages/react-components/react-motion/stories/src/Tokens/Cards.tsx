@@ -1,4 +1,7 @@
-import { Divider, tokens, Switch } from '@fluentui/react-components';
+'use client';
+
+import { Divider, Switch } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { curves, durations } from '@fluentui/react-motion';
 import * as React from 'react';
 
@@ -32,9 +35,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
             d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
               100 - easingPoints[3]
             }, 100 0`}
-            fill="none"
-            stroke={tokens.colorNeutralStrokeAccessible}
-            strokeWidth="2"
+            className={classes.path}
           />
         </svg>
 
@@ -95,7 +96,7 @@ function useAnimationEnabled() {
   return [animationEnabled, setAnimationEnabled] as const;
 }
 
-export const MotionCurves = () => {
+export const MotionCurves = (): JSXElement => {
   const classes = useClasses();
   const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 
@@ -122,7 +123,7 @@ export const MotionCurves = () => {
   );
 };
 
-export const MotionDuration = () => {
+export const MotionDuration = (): JSXElement => {
   const classes = useClasses();
   const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { AccordionContextValue } from '../../contexts/accordion';
+import type { AccordionContextValue } from '../../contexts/accordion';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -25,7 +25,7 @@ export type AccordionToggleData<Value = AccordionItemValue> = {
   openItems: Value[];
 };
 
-export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<AccordionSlots>, 'onToggle'> & {
   /**
    * Default value for the uncontrolled state of the panel.
    */
@@ -59,4 +59,8 @@ export type AccordionProps<Value = AccordionItemValue> = ComponentProps<Accordio
   openItems?: Value | Value[];
 };
 
+export type AccordionBaseProps<Value = AccordionItemValue> = Omit<AccordionProps<Value>, 'navigation'>;
+
 export type AccordionState<Value = AccordionItemValue> = ComponentState<AccordionSlots> & AccordionContextValue<Value>;
+
+export type AccordionBaseState<Value = AccordionItemValue> = Omit<AccordionState<Value>, 'navigation'>;

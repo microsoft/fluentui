@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AriaLiveAnnouncer, Button, Field, Input, makeStyles, tokens, useAnnounce } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
@@ -34,7 +35,7 @@ const AnnouncePlayground: React.FC = () => {
   );
 };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <AriaLiveAnnouncer>
       <p>

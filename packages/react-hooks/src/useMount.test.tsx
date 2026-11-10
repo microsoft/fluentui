@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useMount } from './useMount';
 
 describe('useMount', () => {
@@ -15,9 +15,9 @@ describe('useMount', () => {
     };
 
     expect(onMount).toHaveBeenCalledTimes(0);
-    const wrapper = mount(<TestComponent />);
+    const { unmount } = render(<TestComponent />);
     expect(onMount).toHaveBeenCalledTimes(1);
-    wrapper.unmount();
+    unmount();
     expect(onMount).toHaveBeenCalledTimes(1);
   });
 });

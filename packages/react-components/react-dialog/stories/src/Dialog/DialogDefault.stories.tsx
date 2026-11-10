@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -10,7 +11,7 @@ import {
   Button,
 } from '@fluentui/react-components';
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <Dialog>
       <DialogTrigger disableButtonEnhancement>

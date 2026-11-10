@@ -1,0 +1,106 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "name": "Series A",
+      "x": ["2024-01-01", "2024-01-02", "2024-01-03"],
+      "y": [10, 20, 15],
+      "line": {
+        "color": "#0078d4"
+      }
+    }
+  ],
+  "layout": {
+    "title": "Line with annotations",
+    "width": 480,
+    "height": 320,
+    "xaxis": {
+      "type": "date"
+    },
+    "yaxis": {
+      "type": "linear"
+    },
+    "annotations": [
+      {
+        "name": "peak",
+        "text": "Peak value",
+        "xref": "x",
+        "yref": "y",
+        "x": "2024-01-02",
+        "y": 20,
+        "showarrow": true,
+        "arrowcolor": "#ff0000",
+        "arrowwidth": 2,
+        "arrowdash": "dash",
+        "arrowhead": 3,
+        "ax": -40,
+        "ay": -30,
+        "xshift": 10,
+        "yshift": 5,
+        "bgcolor": "#ffffff",
+        "bordercolor": "#ff0000",
+        "borderwidth": 1,
+        "borderpad": 8,
+        "xanchor": "left",
+        "yanchor": "bottom",
+        "font": {
+          "color": "#ff0000",
+          "size": 14
+        },
+        "opacity": 0.9,
+        "standoff": 6,
+        "cliponaxis": true,
+        "width": 180
+      },
+      {
+        "text": "Midpoint marker",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.5,
+        "y": 0.1,
+        "showarrow": false,
+        "bgcolor": "#333333",
+        "font": {
+          "color": "#ffffff",
+          "size": 12
+        }
+      },
+      {
+        "text": "Pixel note",
+        "xref": "pixel",
+        "yref": "pixel",
+        "x": 40,
+        "y": 40,
+        "showarrow": true,
+        "arrowhead": 0,
+        "arrowside": "start",
+        "startarrowhead": 3,
+        "arrowcolor": "#0078d4",
+        "arrowwidth": 1.5,
+        "arrowdash": "dot",
+        "ax": 20,
+        "ay": 15,
+        "xshift": -5,
+        "yshift": -3,
+        "startstandoff": 4,
+        "font": {
+          "color": "#111111"
+        }
+      },
+      {
+        "text": "Domain threshold",
+        "xref": "x domain",
+        "yref": "y",
+        "x": 0.25,
+        "y": 18,
+        "showarrow": false,
+        "font": {
+          "color": "#222222",
+          "size": 12
+        }
+      }
+    ]
+  }
+}

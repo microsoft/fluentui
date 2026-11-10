@@ -1,10 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TagPickerButton renders a default state 1`] = `
 <div>
   <button
     aria-expanded="false"
     class="fui-TagPickerButton"
+    data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":false}}}"
     role="combobox"
     tabindex="0"
     type="button"

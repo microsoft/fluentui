@@ -1,8 +1,35 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Thu, 08 Aug 2024 07:24:14 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.16)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.15..@fluentui/merge-styles_v8.6.16)
+
+### Patches
+
+- fix(merge-styles): contain serialized CSS output for server rendering. ([PR #36709](https://github.com/microsoft/fluentui/pull/36709) by paulmardling@microsoft.com)
+
+## [8.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.15)
+
+Thu, 01 Oct 2026 07:11:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.14..@fluentui/merge-styles_v8.6.15)
+
+### Patches
+
+- fix(security): escape < and > in serialized CSS values and stylesheet state so they cannot terminate a <style> or <script> element during SSR ([PR #36582](https://github.com/microsoft/fluentui/pull/36582) by martinhochel@microsoft.com)
+
+## [8.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.14)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.13..@fluentui/merge-styles_v8.6.14)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
 
 ## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.13)
 

@@ -27,7 +27,7 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
     this.state = { isVisible };
   }
 
-  public render() {
+  public render(): React.ReactElement | null {
     const { text, linkUrl, linkText, styles, ...rest } = this.props;
     const { isVisible } = this.state;
 

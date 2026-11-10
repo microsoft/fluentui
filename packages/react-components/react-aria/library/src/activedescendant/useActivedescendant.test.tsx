@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useActiveDescendant } from './useActiveDescendant';
-import { ActiveDescendantImperativeRef } from './types';
+import type { ActiveDescendantImperativeRef } from './types';
 import { render } from '@testing-library/react';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
 
@@ -61,7 +61,9 @@ expect.extend({
 });
 
 describe('useActivedescendant', () => {
-  const Test: React.FC<{ imperativeRef: React.RefObject<ActiveDescendantImperativeRef> }> = ({ imperativeRef }) => {
+  const Test: React.FC<{ imperativeRef: React.RefObject<ActiveDescendantImperativeRef | null> }> = ({
+    imperativeRef,
+  }) => {
     const { listboxRef, activeParentRef } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
       matchOption: el => el.getAttribute('role') === 'option',
       imperativeRef,

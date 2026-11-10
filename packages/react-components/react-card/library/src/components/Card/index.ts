@@ -1,5 +1,7 @@
 export { Card } from './Card';
 export type {
+  CardBaseProps,
+  CardBaseState,
   CardContextValue,
   CardOnSelectData,
   CardOnSelectionChangeEvent,
@@ -9,5 +11,5 @@ export type {
 } from './Card.types';
 export { CardProvider, cardContextDefaultValue, useCardContext_unstable } from './CardContext';
 export { renderCard_unstable } from './renderCard';
-export { useCard_unstable } from './useCard';
+export { useCard_unstable, useCardBase_unstable } from './useCard';
 export { cardCSSVars, cardClassNames, useCardStyles_unstable } from './useCardStyles.styles';

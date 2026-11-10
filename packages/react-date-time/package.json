@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-date-time",
-  "version": "8.7.197",
+  "version": "8.8.10",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,28 +14,22 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "build": "yarn run -T just-scripts build",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style"
   },
   "dependencies": {
-    "@fluentui/react": "^8.122.8",
-    "@fluentui/set-version": "^8.2.23",
+    "@fluentui/react": "^8.125.10",
+    "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

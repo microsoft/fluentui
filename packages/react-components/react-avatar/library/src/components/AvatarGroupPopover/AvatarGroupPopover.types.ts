@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { AvatarSize } from '../Avatar/Avatar.types';
 import type { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -51,6 +51,8 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
   children: React.ReactNode;
 };
 
+export type AvatarGroupPopoverBaseProps = AvatarGroupPopoverProps;
+
 /**
  * State used in rendering AvatarGroupPopover
  */
@@ -60,3 +62,5 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
     layout: AvatarGroupProps['layout'];
     size: AvatarSize;
   };
+
+export type AvatarGroupPopoverBaseState = Omit<AvatarGroupPopoverState, 'size'>;

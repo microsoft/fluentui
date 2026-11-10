@@ -1,3 +1,5 @@
+'use client';
+
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ImageSlots, ImageState } from './Image.types';
@@ -39,14 +41,10 @@ const useStyles = makeStyles({
   center: {
     objectFit: 'none',
     objectPosition: 'center',
-    height: '100%',
-    width: '100%',
   },
   contain: {
     objectFit: 'contain',
     objectPosition: 'center',
-    height: '100%',
-    width: '100%',
   },
   default: {
     /* The default styles are exactly the same as the base styles. */
@@ -54,12 +52,15 @@ const useStyles = makeStyles({
   cover: {
     objectFit: 'cover',
     objectPosition: 'center',
-    height: '100%',
-    width: '100%',
   },
   none: {
     objectFit: 'none',
     objectPosition: 'left top',
+  },
+
+  // When no explicit height/width props are provided, apply full-size
+  // sizing so fit modes behave as intended (object-fit fills the element).
+  fitFill: {
     height: '100%',
     width: '100%',
   },
@@ -71,10 +72,14 @@ const useStyles = makeStyles({
 });
 
 export const useImageStyles_unstable = (state: ImageState): ImageState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  const { height, width } = state.root;
+  // eslint-disable-next-line eqeqeq
+  const hasExplicitSize = height != null || width != null;
+  const shouldApplyFitFill = state.fit !== 'default' && !hasExplicitSize;
+
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     imageClassNames.root,
     styles.base,
@@ -82,6 +87,7 @@ export const useImageStyles_unstable = (state: ImageState): ImageState => {
     state.bordered && styles.bordered,
     state.shadow && styles.shadow,
     styles[state.fit],
+    shouldApplyFitFill && styles.fitFill,
     styles[state.shape],
     state.root.className,
   );

@@ -1,29 +1,24 @@
-import { attr, css, FASTElement, observable, Observable } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
-import {
-  Direction,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyHome,
-  limit,
-  Orientation,
-} from '@microsoft/fast-web-utilities';
+import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
+import { Direction } from '../utils/direction.js';
+import { limit } from '../utils/numbers.js';
+import { Orientation } from '../utils/orientation.js';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
-import { swapStates } from '../utils/element-internals.js';
-import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { convertPixelToPercent } from './slider-utilities.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, type SliderSize } from './slider.options.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
  *
+ * @tag fluent-slider
+ *
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
- * @fires change - Fires a custom 'change' event when the value changes.
+ * @fires { Event } change - Fires a custom 'change' event when the value changes.
+ * @presentational {SliderSize | undefined} size - The size of the slider.
  *
  * @public
  */
@@ -52,23 +47,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
     return Object.freeze(Array.from(this.elementInternals.labels));
   }
 
-  /**
-   * The size of the slider
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: SliderSize;
-  protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined) {
-    swapStates(this.elementInternals, prev, next, SliderSize);
-  }
-
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
       case 'max':
-        this.setSliderPosition(this.direction);
+        this.setSliderPosition();
       case 'step':
         this.handleStepStyles();
         break;
@@ -198,7 +181,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
     if (this.$fastController.isConnected) {
-      if (this.disabled) {
+      if (this.isDisabled) {
         this.elementInternals.setValidity({});
         return;
       }
@@ -225,7 +208,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value.toString();
+    return this._value?.toString() ?? '';
   }
 
   public set value(value: string) {
@@ -245,7 +228,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this._value = value.toString();
     this.elementInternals.ariaValueNow = this._value;
     this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
-    this.setSliderPosition(this.direction);
+    this.setSliderPosition();
     this.$emit('change');
     this.setFormValue(value);
     Observable.notify(this, 'value');
@@ -303,6 +286,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @observable
   public direction: Direction = Direction.ltr;
+  public directionChanged(): void {
+    this.setSliderPosition();
+  }
 
   /**
    * @internal
@@ -384,6 +370,18 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public disabled: boolean = false;
   protected disabledChanged(): void {
     this.setDisabledSideEffect(this.disabled);
+  }
+
+  /**
+   * Returns true if the component is disabled, taking into account the `disabled`
+   * attribute, `aria-disabled` attribute, and the `:disabled` pseudo-class.
+   *
+   * @internal
+   */
+  protected get isDisabled() {
+    return (
+      this.disabled || this.elementInternals?.ariaDisabled === 'true' || (this.isConnected && this.matches(':disabled'))
+    );
   }
 
   /**
@@ -499,10 +497,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
 
-    swapStates(this.elementInternals, prev, next, Orientation);
-
     if (this.$fastController.isConnected) {
-      this.setSliderPosition(this.direction);
+      this.setSliderPosition();
     }
   }
 
@@ -523,26 +519,34 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }
 
-  /**
-   * @internal
-   */
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.direction = getDirection(this);
+    requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
 
-    this.setDisabledSideEffect(this.disabled);
-    this.updateStepMultiplier();
-    this.setupTrackConstraints();
-    this.setupListeners();
-    this.setupDefaultValue();
-    this.setSliderPosition(this.direction);
+      this.direction = getDirection(this);
 
-    Observable.getNotifier(this).subscribe(this, 'max');
-    Observable.getNotifier(this).subscribe(this, 'min');
-    Observable.getNotifier(this).subscribe(this, 'step');
+      this.setDisabledSideEffect(this.disabled);
+      this.updateStepMultiplier();
+      this.setupTrackConstraints();
+      this.setupDefaultValue();
+      this.setSliderPosition();
 
-    this.handleStepStyles();
+      this.handleStepStyles();
+
+      const notifier = Observable.getNotifier(this);
+      notifier.subscribe(this, 'max');
+      notifier.subscribe(this, 'min');
+      notifier.subscribe(this, 'step');
+    });
+
+    maybeSetAutoFocus(this);
   }
 
   /**
@@ -551,11 +555,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    this.setupListeners(true);
-
-    Observable.getNotifier(this).unsubscribe(this, 'max');
-    Observable.getNotifier(this).unsubscribe(this, 'min');
-    Observable.getNotifier(this).unsubscribe(this, 'step');
+    const notifier = Observable.getNotifier(this);
+    notifier.unsubscribe(this, 'max');
+    notifier.unsubscribe(this, 'min');
+    notifier.unsubscribe(this, 'step');
   }
 
   /**
@@ -590,57 +593,57 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
-  public keypressHandler = (event: KeyboardEvent): void => {
-    if (this.disabled) {
-      return;
+  public handleKeydown(event: KeyboardEvent): boolean {
+    if (this.isDisabled) {
+      return true;
     }
 
     switch (event.key) {
-      case keyHome:
+      case 'Home':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.minAsNumber}`
             : `${this.maxAsNumber}`;
         break;
-      case keyEnd:
+      case 'End':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.maxAsNumber}`
             : `${this.minAsNumber}`;
         break;
-      case keyArrowRight:
-      case keyArrowUp:
+      case 'ArrowRight':
+      case 'ArrowUp':
         if (!event.shiftKey) {
           event.preventDefault();
           this.increment();
         }
         break;
-      case keyArrowLeft:
-      case keyArrowDown:
+      case 'ArrowLeft':
+      case 'ArrowDown':
         if (!event.shiftKey) {
           event.preventDefault();
           this.decrement();
         }
         break;
     }
-  };
+
+    return true;
+  }
 
   /**
    * Places the thumb based on the current value
-   *
-   * @param direction - writing mode
    */
-  private setSliderPosition(direction: Direction): void {
-    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, direction);
-    const percentage: number = (1 - newPct) * 100;
-    const thumbPosition = `calc(100% - ${percentage}%)`;
-    const trackProgress =
-      !(this.orientation === Orientation.vertical) && direction === Direction.rtl
-        ? `${percentage}%`
-        : `calc(100% - ${percentage}%)`;
-    this.position = `--slider-thumb: ${thumbPosition}; --slider-progress: ${trackProgress}`;
+  private setSliderPosition(): void {
+    const newPct: number = convertPixelToPercent(
+      parseFloat(this.value),
+      this.minAsNumber,
+      this.maxAsNumber,
+      this.orientation === Orientation.vertical ? undefined : this.direction,
+    );
+    const percentage: number = newPct * 100;
+    this.position = `--slider-thumb: ${percentage}%; --slider-progress: ${percentage}%`;
   }
 
   /**
@@ -662,15 +665,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.trackLeft = this.getBoundingClientRect().left;
     if (this.trackWidth === 0) {
       this.trackWidth = 1;
-    }
-  };
-
-  private setupListeners = (remove: boolean = false): void => {
-    //TODO Bug: https://github.com/microsoft/fluentui/issues/30087
-    this.addEventListener('keydown', this.keypressHandler);
-
-    if (remove) {
-      this.removeEventListener('keydown', this.keypressHandler);
     }
   };
 
@@ -697,29 +691,36 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *  Handle mouse moves during a thumb drag operation
    *  If the event handler is null it removes the events
    */
-  public handleThumbPointerDown = (event: PointerEvent | null): void => {
+  public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
+    if (this.isDisabled) {
+      return true;
+    }
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
     windowFn('pointerup', this.handleWindowPointerUp);
     windowFn('pointermove', this.handlePointerMove, { passive: true });
     windowFn('touchmove', this.handlePointerMove, { passive: true });
     windowFn('touchend', this.handleWindowPointerUp);
     this.isDragging = event !== null;
+    return true;
   };
 
   /**
    *  Handle mouse moves during a thumb drag operation
    */
   private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
-    if (this.disabled || event.defaultPrevented) {
+    if (this.isDisabled || event.defaultPrevented) {
       return;
     }
 
     // update the value based on current position
     const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
+
+    const thumbWidth = this.thumb.getBoundingClientRect().width;
+
     const eventValue: number =
       this.orientation === Orientation.vertical
         ? sourceEvent.pageY - document.documentElement.scrollTop
-        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft;
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -740,7 +741,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
       rawValue,
       this.orientation === Orientation.vertical ? this.trackMinHeight : this.trackMinWidth,
       this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
-      this.direction,
+      this.orientation === Orientation.vertical ? undefined : this.direction,
     );
     const newValue: number = (this.maxAsNumber - this.minAsNumber) * newPosition + this.minAsNumber;
     return this.convertToConstrainedValue(newValue);
@@ -764,23 +765,26 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
   public handlePointerDown = (event: PointerEvent | null) => {
-    if (event === null || !this.disabled) {
+    if (event === null || !this.isDisabled) {
       const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
       const documentFn = event !== null ? document.addEventListener : document.removeEventListener;
       windowFn('pointerup', this.handleWindowPointerUp);
       documentFn('mouseleave', this.handleWindowPointerUp);
       windowFn('pointermove', this.handlePointerMove);
 
+      const thumbWidth = this.thumb.getBoundingClientRect().width;
+
       if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
           this.orientation === Orientation.vertical
             ? event.pageY - document.documentElement.scrollTop
-            : event.pageX - document.documentElement.scrollLeft - this.trackLeft;
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
     }
+    return true;
   };
 
   private convertToConstrainedValue(value: number): number {
@@ -809,11 +813,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * Makes sure the side effects of set up when the disabled state changes.
    */
-  private setDisabledSideEffect(disabled: boolean) {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-    this.elementInternals.ariaDisabled = disabled.toString();
-    this.tabIndex = disabled ? -1 : 0;
+  private setDisabledSideEffect(disabled: boolean = this.isDisabled): void {
+    Updates.enqueue(() => {
+      this.elementInternals.ariaDisabled = disabled.toString();
+      this.tabIndex = disabled ? -1 : 0;
+    });
   }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { resetIds } from '../../Utilities';
 import { Pagination } from './index';
@@ -10,7 +10,7 @@ describe('Pagination', () => {
   });
 
   it('render buttons Pagination correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Pagination
         pageCount={10}
         itemsPerPage={10}
@@ -24,12 +24,12 @@ describe('Pagination', () => {
         selectedAriaLabel={'selected'}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('render comboBox Pagination correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Pagination
         pageCount={10}
         format={'comboBox'}
@@ -41,7 +41,7 @@ describe('Pagination', () => {
         selectedAriaLabel={'selected'}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

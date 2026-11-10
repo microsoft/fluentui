@@ -12,6 +12,8 @@ import type { IDialogContentProps } from './DialogContent.types';
 import type { IModalProps } from '../../Modal';
 import type { ILayerProps } from '../../Layer';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const DefaultModalProps: IModalProps = {
   isDarkOverlay: false,
   isBlocking: false,
@@ -64,7 +66,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const props = this.props;
     const {
       /* eslint-disable @typescript-eslint/no-deprecated */

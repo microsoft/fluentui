@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { ComboboxProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import { CheckmarkCircle20Filled } from '@fluentui/react-icons';
@@ -33,7 +34,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const CustomOptions = (props: Partial<ComboboxProps>) => {
+export const CustomOptions = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
   const land = ['Cat', 'Dog', 'Ferret', 'Hamster'];
   const water = ['Fish', 'Jellyfish', 'Octopus', 'Seal'];

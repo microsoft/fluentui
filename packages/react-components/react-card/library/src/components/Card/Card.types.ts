@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
@@ -126,6 +126,20 @@ export type CardProps = ComponentProps<CardSlots> & {
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+
+  /**
+   * Makes the card and card selection disabled (not propagated to children).
+   *
+   * @default false
+   */
+  disabled?: boolean;
+};
+
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'> & {
+  /**
+   * Predicate function to determine whether the card's selection action should be restricted.
+   */
+  shouldRestrictTriggerAction?: (event: CardOnSelectionChangeEvent) => boolean;
 };
 
 /**
@@ -162,5 +176,14 @@ export type CardState = ComponentState<CardSlots> &
        * @default false
        */
       selectFocused: boolean;
+
+      /**
+       * Defines whether the card is disabled.
+       *
+       * @default false
+       */
+      disabled: boolean;
     }
   >;
+
+export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;

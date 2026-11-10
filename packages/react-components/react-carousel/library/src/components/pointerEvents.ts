@@ -10,26 +10,33 @@ export type PointerEventPlugin = CreatePluginType<{}, PointerEventPluginOptions>
 export function pointerEventPlugin(options: PointerEventPluginOptions): PointerEventPlugin {
   let emblaApi: EmblaCarouselType;
   let pointerEvent: PointerEvent | MouseEvent | undefined;
+  let carouselListenerTarget: HTMLElement | undefined;
 
+  /**
+   * Heads up!
+   *
+   * We don't use `emblaApi.on('pointerDown', ...)` as the callback does not provide the event.
+   */
   function documentDownListener(event: PointerEvent | MouseEvent) {
-    const targetDocument = emblaApi.containerNode().ownerDocument;
-
     if (event.target) {
       const targetNode = event.target as Element;
-      if (targetNode.classList.contains(carouselClassNames.root) || emblaApi.containerNode().contains(targetNode)) {
+
+      if (targetNode.classList.contains(carouselClassNames.root) || carouselListenerTarget?.contains(targetNode)) {
         pointerEvent = event;
       }
     }
 
-    targetDocument.removeEventListener('mousedown', documentDownListener);
-    targetDocument.removeEventListener('pointerdown', documentDownListener);
+    if (carouselListenerTarget) {
+      carouselListenerTarget.removeEventListener('mousedown', documentDownListener);
+      carouselListenerTarget.removeEventListener('pointerdown', documentDownListener);
+    }
   }
 
   function pointerUpListener() {
-    const targetDocument = emblaApi.containerNode().ownerDocument;
-
-    targetDocument.addEventListener('mousedown', documentDownListener);
-    targetDocument.addEventListener('pointerdown', documentDownListener);
+    if (carouselListenerTarget) {
+      carouselListenerTarget.addEventListener('mousedown', documentDownListener);
+      carouselListenerTarget.addEventListener('pointerdown', documentDownListener);
+    }
   }
 
   function clearPointerEvent() {
@@ -40,30 +47,32 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
   function selectListener() {
     if (pointerEvent) {
       const newIndex = emblaApi.selectedScrollSnap() ?? 0;
-
       options.onSelectViaDrag(pointerEvent, newIndex);
     }
-    clearPointerEvent();
   }
 
   function init(emblaApiInstance: EmblaCarouselType, optionsHandler: OptionsHandlerType): void {
     emblaApi = emblaApiInstance;
-
     // Initialize the listener for first mouse/pointerDown event
-    const targetDocument = emblaApi.containerNode().ownerDocument;
-    targetDocument.addEventListener('mousedown', documentDownListener);
-    targetDocument.addEventListener('pointerdown', documentDownListener);
+    carouselListenerTarget = emblaApi.containerNode();
+
+    carouselListenerTarget.addEventListener('mousedown', documentDownListener);
+    carouselListenerTarget.addEventListener('pointerdown', documentDownListener);
 
     emblaApi.on('pointerUp', pointerUpListener);
     emblaApi.on('select', selectListener);
-    // Settle is used to clear pointer in cases where active index does not change
+    // Settle is used to clear pointer and conclude drag event
     emblaApi.on('settle', clearPointerEvent);
   }
 
   function destroy(): void {
-    const targetDocument = emblaApi.containerNode().ownerDocument;
-    targetDocument.removeEventListener('mousedown', documentDownListener);
-    targetDocument.removeEventListener('pointerdown', documentDownListener);
+    if (carouselListenerTarget) {
+      carouselListenerTarget.removeEventListener('mousedown', documentDownListener);
+      carouselListenerTarget.removeEventListener('pointerdown', documentDownListener);
+    }
+
+    carouselListenerTarget = undefined;
+
     emblaApi.off('pointerUp', pointerUpListener);
     emblaApi.off('select', selectListener);
     emblaApi.off('settle', clearPointerEvent);

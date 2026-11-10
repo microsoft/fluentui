@@ -28,7 +28,7 @@ export const ShadowDOMFocusZoneHorizontalMenuShadowDomExample: React.FunctionCom
       <FocusZone
         direction={FocusZoneDirection.domOrder}
         role="menubar"
-        // eslint-disable-next-line react/jsx-no-bind
+        // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
         elementRef={setRef}
         style={{ display: 'flex', gap: 10 }}
       >

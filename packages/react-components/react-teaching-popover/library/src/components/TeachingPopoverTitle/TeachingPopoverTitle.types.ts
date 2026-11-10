@@ -1,4 +1,4 @@
-import { PopoverContextValue } from '@fluentui/react-popover';
+import type { PopoverContextValue } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverTitleSlots = {
@@ -22,3 +22,7 @@ export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots
  */
 export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> &
   Pick<PopoverContextValue, 'appearance'>;
+
+export type TeachingPopoverTitleBaseProps = TeachingPopoverTitleProps;
+
+export type TeachingPopoverTitleBaseState = Omit<TeachingPopoverTitleState, 'appearance'>;

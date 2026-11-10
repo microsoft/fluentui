@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 
 const wrapperStyle: React.CSSProperties = {
@@ -7,24 +8,24 @@ const wrapperStyle: React.CSSProperties = {
   width: '100%',
 };
 
-export const Label = () => {
+export const Label = (): JSXElement => {
   const [checked, setChecked] = React.useState(false);
   const onChange = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked(ev.currentTarget.checked);
     },
     [setChecked],
   );
   const [checked2, setChecked2] = React.useState(false);
   const onChange2 = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked2(ev.currentTarget.checked);
     },
     [setChecked2],
   );
   const [checked3, setChecked3] = React.useState(false);
   const onChange3 = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked3(ev.currentTarget.checked);
     },
     [setChecked3],

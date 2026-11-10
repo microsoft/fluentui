@@ -29,7 +29,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { title, styles, isLargeDown = false, theme } = this.props;
     const { contextMenu } = this.state;
 

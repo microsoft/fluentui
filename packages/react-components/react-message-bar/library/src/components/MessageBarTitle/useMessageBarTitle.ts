@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MessageBarTitleProps, MessageBarTitleState } from './MessageBarTitle.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';

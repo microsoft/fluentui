@@ -16,6 +16,11 @@ function main(changedFiles) {
   if (wasNxChanged) {
     console.warn(renderNotification('nx.json changed, please run `yarn nx reset` to ensure nx graph is up to date.'));
   }
+  if (wasYarnLockChanged && wasNxChanged) {
+    console.warn(
+      renderNotification('Run `yarn install` first to ensure you get any `nx` updates before updating the nx graph.'),
+    );
+  }
 }
 
 /**

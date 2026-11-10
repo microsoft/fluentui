@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { render, cleanup } from '@testing-library/react';
+
 import { useSetTimeout } from './useSetTimeout';
-import { safeMount } from '@fluentui/test-utilities';
 import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useSetTimeout', () => {
@@ -17,6 +18,7 @@ describe('useSetTimeout', () => {
 
   afterEach(() => {
     timesCalled = 0;
+    cleanup();
   });
 
   const TestComponent = React.forwardRef((props: unknown, ref: React.Ref<{ clearTimeout: () => void }>) => {
@@ -35,21 +37,20 @@ describe('useSetTimeout', () => {
       timesCalled++;
     }, 0);
 
-    return <div />;
+    return <div data-testid="test-component" />;
   });
 
   it('updates value when mounted', () => {
-    safeMount(<TestComponent />, () => {
-      expect(timesCalled).toEqual(0);
+    render(<TestComponent />);
+    expect(timesCalled).toEqual(0);
 
-      jest.runOnlyPendingTimers();
+    jest.runOnlyPendingTimers();
 
-      expect(timesCalled).toEqual(1);
+    expect(timesCalled).toEqual(1);
 
-      jest.runOnlyPendingTimers();
+    jest.runOnlyPendingTimers();
 
-      expect(timesCalled).toEqual(1);
-    });
+    expect(timesCalled).toEqual(1);
   });
 
   validateHookValueNotChanged('returns the same callbacks each time', () => {
@@ -58,29 +59,27 @@ describe('useSetTimeout', () => {
   });
 
   it('does not execute the timeout when unmounted', () => {
-    safeMount(<TestComponent />, wrapper => {
-      expect(timesCalled).toEqual(0);
+    const { unmount } = render(<TestComponent />);
+    expect(timesCalled).toEqual(0);
 
-      wrapper.unmount();
+    unmount();
 
-      jest.runOnlyPendingTimers();
+    jest.runOnlyPendingTimers();
 
-      expect(timesCalled).toEqual(0);
-    });
+    expect(timesCalled).toEqual(0);
   });
 
   it('can cancel timeout', () => {
     const ref = React.createRef<{ clearTimeout: () => void }>();
-    safeMount(<TestComponent ref={ref} />, () => {
-      jest.runOnlyPendingTimers();
+    render(<TestComponent ref={ref} />);
+    jest.runOnlyPendingTimers();
 
-      expect(timesCalled).toEqual(1);
+    expect(timesCalled).toEqual(1);
 
-      ref.current!.clearTimeout();
+    ref.current!.clearTimeout();
 
-      jest.runOnlyPendingTimers();
+    jest.runOnlyPendingTimers();
 
-      expect(timesCalled).toEqual(1);
-    });
+    expect(timesCalled).toEqual(1);
   });
 });

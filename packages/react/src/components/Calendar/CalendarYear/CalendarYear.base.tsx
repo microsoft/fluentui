@@ -128,6 +128,7 @@ const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props 
   } = props;
 
   const selectedCellRef = React.useRef<ICalendarYearGridCell>(null);
+
   const currentCellRef = React.useRef<ICalendarYearGridCell>(null);
 
   React.useImperativeHandle(

@@ -72,6 +72,11 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
             ':focus-within': {
               background: palette.themePrimary,
               color: palette.white,
+
+              [HighContrastSelector]: {
+                color: 'HighLightText',
+                background: 'Highlight',
+              },
             },
           },
         ],

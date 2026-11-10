@@ -26,6 +26,7 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedItem, setSelectedItem] = React.useState('react-font');
   switch (platform) {
     case 'web':
@@ -38,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           jumpLinks: [
             { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
+            { text: enDash + ' Icon subsets', url: 'icon-subsets' },
           ],
         },
 

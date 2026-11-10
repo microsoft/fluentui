@@ -41,7 +41,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
     window.removeEventListener('resize', this._handleResize);
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     let { content } = this.props;
     return this.state.currentBreakpoint === 'mobile' && this.props.responsive
       ? this._renderMobile(content)
@@ -52,7 +52,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
    * Render Table cell.  Cell content is either cell's value property, or cell's html property
    * (if value is an empty string).
    */
-  private _renderCell(cell: ITableCell, index: number): JSX.Element {
+  private _renderCell(cell: ITableCell, index: number): React.ReactElement {
     return cell.value.length ? (
       <td className={cell.className} key={index}>
         {cell.value}
@@ -63,7 +63,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
     );
   }
 
-  private _renderDesktop(content: ITableContent): JSX.Element {
+  private _renderDesktop(content: ITableContent): React.ReactElement {
     return (
       <table className={styles.table}>
         <thead>
@@ -82,7 +82,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
     );
   }
 
-  private _renderMobile(content: ITableContent): JSX.Element {
+  private _renderMobile(content: ITableContent): React.ReactElement {
     const headers = this.props.content.headers;
     return (
       <div>

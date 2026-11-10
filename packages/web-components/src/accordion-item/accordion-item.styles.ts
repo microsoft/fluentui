@@ -1,14 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
-import {
-  alignEndState,
-  blockState,
-  disabledState,
-  expandedState,
-  extraLargeState,
-  largeState,
-  smallState,
-} from '../styles/states/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -38,6 +29,7 @@ export const styles = css`
   :host {
     max-width: fit-content;
     contain: content;
+    color: ${colorNeutralForeground1};
   }
 
   .heading {
@@ -58,7 +50,7 @@ export const styles = css`
     background: ${colorTransparentBackground};
     border: none;
     box-sizing: border-box;
-    color: ${colorNeutralForeground1};
+    color: inherit;
     cursor: pointer;
     font: inherit;
     grid-column: auto / span 2;
@@ -116,29 +108,29 @@ export const styles = css`
 
   /* --- Disabled attr styles --- */
 
-  :host(${disabledState}) .button {
+  :host([disabled]) .button {
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) svg {
+  :host([disabled]) svg {
     filter: invert(89%) sepia(0%) saturate(569%) hue-rotate(155deg) brightness(88%) contrast(87%);
   }
 
   /* --- Expanded attr styles --- */
 
-  :host(${expandedState}) .content {
+  :host([expanded]) .content {
     display: block;
   }
 
-  :host(${expandedState}) .default-marker-collapsed,
-  :host(${expandedState}) ::slotted([slot='marker-collapsed']),
-  :host(:not(${expandedState})) :is(.default-marker-expanded, .content),
-  :host(:not(${expandedState})) ::slotted([slot='marker-expanded']) {
+  :host([expanded]) .default-marker-collapsed,
+  :host([expanded]) ::slotted([slot='marker-collapsed']),
+  :host(:not([expanded])) :is(.default-marker-expanded, .content),
+  :host(:not([expanded])) ::slotted([slot='marker-expanded']) {
     display: none;
   }
 
-  :host(${expandedState}) ::slotted([slot='marker-expanded']),
-  :host(:not(${expandedState})) ::slotted([slot='marker-collapsed']) {
+  :host([expanded]) ::slotted([slot='marker-expanded']),
+  :host(:not([expanded])) ::slotted([slot='marker-collapsed']) {
     display: flex;
   }
 
@@ -149,35 +141,36 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
-  :host(${smallState}) .heading {
+  :host([size='small']) .heading {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host(${largeState}) .heading {
+  :host([size='large']) .heading {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host(${extraLargeState}) .heading {
+  :host([size='extra-large']) .heading {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
 
   /* --- marker-position attr styles --- */
 
-  :host(${alignEndState}) :slotted([slot='start']) {
+  :host([marker-position='end']) ::slotted([slot='start']) {
     grid-column: 1 / span 1;
+    color: currentColor;
   }
 
-  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 4 / span 1;
+  :host([marker-position='end']) :is(.default-marker-collapsed, .default-marker-expanded) {
+    grid-column: 3;
     padding-inline-start: ${spacingHorizontalS};
     padding-inline-end: 0;
   }
 
-  :host(${alignEndState}) .button {
-    grid-column: 2 / span 3;
+  :host([marker-position='end']) .button {
+    grid-column: 2;
   }
 
   /* --- Block attr styles --- */
@@ -186,20 +179,12 @@ export const styles = css`
     max-width: 100%;
   }
 
-  :host(${alignEndState}) .heading {
-    grid-template-columns: auto auto 28px;
+  :host([marker-position='end']) .heading {
+    grid-template-columns: auto 1fr auto;
     padding-inline: ${spacingHorizontalM};
   }
 
-  :host(${alignEndState}:has([slot='start'])) .heading {
+  :host([marker-position='end']:has([slot='start'])) .heading {
     padding-inline: ${spacingHorizontalMNudge} ${spacingHorizontalM};
-  }
-
-  :host(${blockState}${alignEndState}) .heading {
-    grid-template-columns: auto 1fr;
-  }
-
-  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 5 / span 1;
   }
 `;

@@ -1,5 +1,5 @@
 import { EVENTS } from './constants';
-import { Toast, ToastId } from './types';
+import type { Toast, ToastId } from './types';
 import { useToaster } from './useToaster';
 import { createToaster } from './vanilla/createToaster';
 import { renderHook, act } from '@testing-library/react-hooks';

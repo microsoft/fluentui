@@ -58,16 +58,15 @@ export class KeytipTree {
    * @param uniqueID - Unique ID for this keytip
    */
   public updateNode(keytipProps: IKeytipProps, uniqueID: string): void {
-    const fullSequence = this._getFullSequence(keytipProps);
-    const nodeID = sequencesToID(fullSequence);
-
-    // Take off the last item to calculate the parent sequence
-    fullSequence.pop();
-    // Parent ID is the root if there aren't any more sequences
-    const parentID = this._getParentID(fullSequence);
     const node = this.nodeMap[uniqueID];
-    const prevParent = node.parent;
     if (node) {
+      const fullSequence = this._getFullSequence(keytipProps);
+      const nodeID = sequencesToID(fullSequence);
+      // Take off the last item to calculate the parent sequence
+      fullSequence.pop();
+      // Parent ID is the root if there aren't any more sequences
+      const parentID = this._getParentID(fullSequence);
+      const prevParent = node.parent;
       // Fix parent nodes if needed
       if (prevParent !== parentID) {
         // If parent has changed, remove child from old parent

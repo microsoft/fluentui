@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
+import type { CarouselAppearance, CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
@@ -13,7 +13,7 @@ export type CarouselAnnouncerFunction = (index: number, totalSlides: number, sli
 /**
  * List of integrated motion types
  */
-export type CarouselMotion = 'slide' | 'fade';
+export type CarouselMotion = 'slide' | { kind: 'slide'; duration?: number } | 'fade';
 
 /**
  * Carousel Props
@@ -33,6 +33,19 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * The value of the currently active page.
    */
   activeIndex?: number;
+
+  /**
+   * Sets visual treatment for the Carousel container.
+   *
+   * `flat`
+   * Retains the minimal styling used by default prior to introducing appearance-based styles.
+   *
+   * `elevated`
+   * Applies rounded corners, background, and shadow tokens so the Carousel is presented as a surfaced container.
+   *
+   * @default 'flat'
+   */
+  appearance?: CarouselAppearance;
 
   /**
    * Callback to notify a page change.
@@ -63,8 +76,15 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   whitespace?: boolean;
 
   /**
-   * Sets motion to fade in/out style with minimal movement
-   * Defaults: false
+   * Sets motion type as either 'slide' or 'fade'
+   * Defaults: 'slide'
+   *
+   * Users can also pass 'slide' & duration via CarouselMotion object to control carousel speed.
+   * Drag interactions are not affected because duration is then determined by the drag force.
+   *
+   * Note: Duration is not in milliseconds because Carousel uses an
+   * attraction physics simulation when scrolling instead of easings.
+   * Only values between 20-60 are recommended, 25 is the default.
    */
   motion?: CarouselMotion;
 
@@ -73,6 +93,14 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Defaults to: undefined
    */
   announcement?: CarouselAnnouncerFunction;
+
+  /**
+   * Choose a delay between autoplay transitions in milliseconds.
+   * Only active if Autoplay is enabled via CarouselAutoplayButton
+   *
+   * Defaults: 4000
+   */
+  autoplayInterval?: number;
 };
 
 /**
@@ -106,4 +134,8 @@ export interface CarouselUpdateData {
    * An array of the card DOM elements after render
    */
   slideNodes: HTMLElement[];
+  /**
+   * Whether the carousel has enough cards present to enable looping without issues.
+   */
+  canLoop?: boolean;
 }

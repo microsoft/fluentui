@@ -1,16 +1,13 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 
 import * as rootPreview from '../../../.storybook/preview';
 
-import { FluentDocsContainer } from '../../public-docsite-v9/src/DocsComponents/FluentDocsContainer.stories';
-
-const preview: Preview = {
+const preview: Preview & { parameters: import('@fluentui/react-storybook-addon').FluentParameters } = {
   ...rootPreview,
   parameters: {
     ...rootPreview.parameters,
     docs: {
       ...rootPreview.parameters.docs,
-      container: FluentDocsContainer,
     },
     options: {
       storySort: {
@@ -18,7 +15,10 @@ const preview: Preview = {
         order: ['Introduction', 'Packages'],
       },
     },
+    reactStorybookAddon: { docs: true },
   },
 };
+
+export const tags = ['autodocs'];
 
 export default preview;

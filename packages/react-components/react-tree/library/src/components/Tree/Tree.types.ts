@@ -1,11 +1,12 @@
 import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
+import type { ComponentProps, ComponentState, DistributiveOmit, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
 
 type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 type SingleSelectValue = NonNullable<RadioProps['checked']>;
@@ -13,8 +14,13 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
-  collapseMotion?: Slot<PresenceMotionSlotProps>;
+  collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
+
+/**
+ * Tree slots without any design dependency, used by `useTreeBase_unstable`.
+ */
+export type TreeBaseSlots = Pick<TreeSlots, 'root'>;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationData_unstable = {
@@ -55,13 +61,11 @@ export type TreeOpenChangeData = {
 );
 
 /**
- * @internal
- *
  * To avoid breaking changes on TreeNavigationData
  * we are creating a new type that extends the old one
- * and adds the new methods, and this type will not be exported
+ * and adds the new methods
  */
-type TreeNavigationDataParam = TreeNavigationData_unstable & {
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
   preventScroll(): void;
   isScrollPrevented(): boolean;
 };
@@ -178,3 +182,15 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 export type TreeState = ComponentState<TreeSlots> & {
   open: boolean;
 } & (TreeContextValue | SubtreeContextValue);
+
+/**
+ * Tree props accepted by `useTreeBase_unstable`, without design only props and the collapse motion.
+ */
+export type TreeBaseProps = Omit<TreeProps, 'appearance' | 'size' | 'collapseMotion'>;
+
+/**
+ * State returned by `useTreeBase_unstable`, without design only state and the collapse motion.
+ */
+export type TreeBaseState = ComponentState<TreeBaseSlots> & {
+  open: boolean;
+} & (DistributiveOmit<TreeContextValue, 'appearance' | 'size'> | SubtreeContextValue);

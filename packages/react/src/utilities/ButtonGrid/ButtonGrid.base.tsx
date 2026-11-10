@@ -68,6 +68,7 @@ export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.f
     content
   ) : (
     <FocusZone
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       elementRef={forwardedRef}
       isCircularNavigation={props.shouldFocusCircularNavigate}
       className={classNames.focusedContainer}

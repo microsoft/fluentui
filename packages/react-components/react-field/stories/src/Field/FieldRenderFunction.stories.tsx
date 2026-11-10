@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, makeStyles } from '@fluentui/react-components';
 import { AnimalCat24Regular } from '@fluentui/react-icons';
@@ -21,7 +22,7 @@ const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props =>
   );
 };
 
-export const RenderFunction = () => (
+export const RenderFunction = (): JSXElement => (
   <Field label="Third party input" hint="Use a render function to properly associate the label with the control.">
     {fieldProps => <CatInput {...fieldProps} />}
   </Field>

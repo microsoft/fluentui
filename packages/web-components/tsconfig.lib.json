@@ -1,12 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
-    "lib": ["ESNext", "DOM"],
     "declaration": true,
-    "declarationDir": "dist/dts",
     "outDir": "dist/esm",
-    "importHelpers": true
+    "importHelpers": true,
+    "types": []
   },
   "include": ["src"],
   "exclude": ["**/*.stories.*", "**/*.spec.*"]

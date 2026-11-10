@@ -34,6 +34,7 @@ export const FocusTrapZoneDialogInPanelExample: React.FunctionComponent = () => 
         <Dialog
           hidden={hideDialog}
           onDismiss={toggleHideDialog}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           isBlocking
           dialogContentProps={dialogContentProps}
           modalProps={modelProps}

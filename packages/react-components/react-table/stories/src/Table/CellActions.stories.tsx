@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -21,10 +22,10 @@ import {
   TableHeaderCell,
   TableCellActions,
   TableCellLayout,
-  PresenceBadgeStatus,
   Avatar,
   Button,
 } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -75,7 +76,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CellActions = () => {
+export const CellActions = (): JSXElement => {
   return (
     <Table aria-label="Table with cell actions" style={{ minWidth: '500px' }}>
       <TableHeader>

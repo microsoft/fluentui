@@ -36,6 +36,16 @@ export type CardHeaderSlots = {
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 /**
+ * CardHeader base props (same as CardHeaderProps since CardHeader has no design props)
+ */
+export type CardHeaderBaseProps = CardHeaderProps;
+
+/**
  * State used in rendering CardHeader.
  */
 export type CardHeaderState = ComponentState<CardHeaderSlots>;
+
+/**
+ * CardHeader base state (same as CardHeaderState since CardHeader has no design props)
+ */
+export type CardHeaderBaseState = CardHeaderState;

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -126,9 +128,8 @@ const useStyles = makeStyles({
  * Apply styling to the PickerButton slots based on the state
  */
 export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): TagPickerButtonState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerButtonClassNames.root,
     styles.button,

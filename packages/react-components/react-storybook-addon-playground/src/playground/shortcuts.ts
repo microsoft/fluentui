@@ -1,0 +1,38 @@
+/** `true` for macOS / iOS user agents, where Monaco binds `Cmd`/`Option` instead of `Ctrl`/`Alt`. */
+export function isAppleDevice(userAgent: string): boolean {
+  return /macintosh|mac os|iphone|ipad/i.test(userAgent);
+}
+
+/**
+ * Keyboard shortcut of Monaco's built-in "Format Document" action for the current platform
+ * (`editor.action.formatDocument`: Shift+Alt+F, but Ctrl+Shift+I on Linux).
+ */
+export function getFormatShortcutLabel(userAgent: string): string {
+  if (isAppleDevice(userAgent)) {
+    return 'Shift+Option+F';
+  }
+  if (/linux/i.test(userAgent) && !/android/i.test(userAgent)) {
+    return 'Ctrl+Shift+I';
+  }
+  return 'Shift+Alt+F';
+}
+
+/** Keyboard shortcut of the playground "Run" action (`CtrlCmd+Enter`). */
+export function getRunShortcutLabel(userAgent: string): string {
+  return isAppleDevice(userAgent) ? 'Cmd+Enter' : 'Ctrl+Enter';
+}
+
+/** Keyboard shortcut of the playground "Save" action (`CtrlCmd+S`), which formats the code and updates the link. */
+export function getSaveShortcutLabel(userAgent: string): string {
+  return isAppleDevice(userAgent) ? 'Cmd+S' : 'Ctrl+S';
+}
+
+/** `true` for `Cmd+S` on Apple devices and `Ctrl+S` elsewhere, without other modifiers. */
+export function isSaveShortcut(
+  event: Pick<KeyboardEvent, 'key' | 'ctrlKey' | 'metaKey' | 'altKey' | 'shiftKey'>,
+  userAgent: string,
+): boolean {
+  const primary = isAppleDevice(userAgent) ? event.metaKey && !event.ctrlKey : event.ctrlKey && !event.metaKey;
+
+  return primary && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 's';
+}

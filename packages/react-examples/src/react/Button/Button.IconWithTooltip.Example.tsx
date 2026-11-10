@@ -35,6 +35,7 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
         id={tooltipId}
         calloutProps={calloutProps}
         styles={hostStyles}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         setAriaDescribedBy={false}
       >
         <IconButton iconProps={emojiIcon} aria-label="Emoji" disabled={disabled} checked={checked} />

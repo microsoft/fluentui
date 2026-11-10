@@ -1,13 +1,7 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as menuButtonDefinition } from '../menu-button/menu-button.definition.js';
-import { definition as menuItemDefinition } from '../menu-item/menu-item.definition.js';
-import { definition as menuListDefinition } from '../menu-list/menu-list.definition.js';
-import { definition as menuDefinition } from './menu.definition.js';
-
-menuDefinition.define(FluentDesignSystem.registry);
-menuButtonDefinition.define(FluentDesignSystem.registry);
-menuListDefinition.define(FluentDesignSystem.registry);
-menuItemDefinition.define(FluentDesignSystem.registry);
+import '../menu-button/define.js';
+import '../menu-item/define.js';
+import '../menu-list/define.js';
+import './define.js';
 
 const itemRenderer = () => {
   const menu = document.createElement('fluent-menu');

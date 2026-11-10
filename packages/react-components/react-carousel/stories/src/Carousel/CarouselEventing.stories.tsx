@@ -11,7 +11,6 @@ import {
 } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -20,6 +19,7 @@ import {
   Text,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -133,7 +133,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Eventing = () => {
+export const Eventing = (): JSXElement => {
   const classes = useClasses();
   const labelId = useId();
 

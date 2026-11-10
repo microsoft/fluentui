@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { PersonaCoin } from './index';
-import { Icon, Image, Text } from '@fluentui/react';
 import { setRTL } from '../../Utilities';
 import { PersonaTestImages } from '../../common/TestImages';
 import type { IPersonaCoinComponent } from './PersonaCoin.types';
@@ -18,109 +17,102 @@ const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
 //    with snapshot tests exercising permutations of the props.
 describe('PersonaCoin', () => {
   it('renders a correct persona', () => {
-    const tree = renderer.create(<PersonaCoin text="James Bond" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="James Bond" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with the initials JB', () => {
-    const tree = renderer.create(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a red coin', () => {
-    const tree = renderer.create(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} coinColor="red" />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} coinColor="red" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with a contact icon', () => {
-    const tree = renderer.create(<PersonaCoin styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with a contact icon for a Chinese name', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders presence when it is passed', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders presence correctly when a very large coin is rendered', () => {
-    const tree = renderer
-      .create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders the coin with the provided image', () => {
-    const tree = renderer
-      .create(<PersonaCoin text="Ellen Grace" imageUrl={PersonaTestImages.personMale} styles={testPersonaCoinStyles} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <PersonaCoin text="Ellen Grace" imageUrl={PersonaTestImages.personMale} styles={testPersonaCoinStyles} />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calculates an expected initials in LTR if one was not specified', () => {
-    let wrapper = mount(<PersonaCoin text="Kat Larrson" styles={testPersonaCoinStyles} />);
-    let result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('KL');
-    wrapper.unmount();
+    // Kat Larrson
+    let { container } = render(<PersonaCoin text="Kat Larrson" styles={testPersonaCoinStyles} />);
+    let textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('KL');
 
-    wrapper = mount(<PersonaCoin text="David Zearing-Goff" styles={testPersonaCoinStyles} />);
-    result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('DZ');
-    wrapper.unmount();
+    // David Zearing-Goff
+    ({ container } = render(<PersonaCoin text="David Zearing-Goff" styles={testPersonaCoinStyles} />));
+    textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('DZ');
 
-    wrapper = mount(<PersonaCoin text="4lex 5loo" styles={testPersonaCoinStyles} />);
-    result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('45');
-    wrapper.unmount();
+    // 4lex 5loo
+    ({ container } = render(<PersonaCoin text="4lex 5loo" styles={testPersonaCoinStyles} />));
+    textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('45');
 
-    wrapper = mount(<PersonaCoin text="Swapnil Vaibhav" styles={testPersonaCoinStyles} />);
-    result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('SV');
-    wrapper.unmount();
+    // Swapnil Vaibhav
+    ({ container } = render(<PersonaCoin text="Swapnil Vaibhav" styles={testPersonaCoinStyles} />));
+    textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('SV');
 
-    wrapper = mount(<PersonaCoin text="+1 (555) 6789" styles={testPersonaCoinStyles} />);
-    const iconResult = wrapper.find(Icon);
-    expect(iconResult).toHaveLength(1);
-    expect((iconResult.props() as any).iconName).toEqual('Contact');
-    wrapper.unmount();
+    // +1 (555) 6789
+    ({ container } = render(<PersonaCoin text="+1 (555) 6789" styles={testPersonaCoinStyles} />));
+    // For icons we need to check if the Contact icon is present
+    const iconElement = container.querySelector('i');
+    expect(iconElement?.getAttribute('data-icon-name')).toBe('Contact');
 
-    wrapper = mount(<PersonaCoin text="+1 (555) 6789" allowPhoneInitials={true} styles={testPersonaCoinStyles} />);
-    result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('16');
-    wrapper.unmount();
+    // +1 (555) 6789 with phone initials allowed
+    ({ container } = render(
+      <PersonaCoin text="+1 (555) 6789" allowPhoneInitials={true} styles={testPersonaCoinStyles} />,
+    ));
+    textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('16');
 
-    wrapper = mount(<PersonaCoin text="David (The man) Goff" styles={testPersonaCoinStyles} />);
-    result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('DG');
+    // David (The man) Goff
+    ({ container } = render(<PersonaCoin text="David (The man) Goff" styles={testPersonaCoinStyles} />));
+    textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('DG');
   });
 
   it('calculates an expected initials in RTL if one was not specified', () => {
     setRTL(true);
 
-    const wrapper = mount(<PersonaCoin text="Kat Larrson" styles={testPersonaCoinStyles} />);
-    const result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('LK');
+    const { container } = render(<PersonaCoin text="Kat Larrson" styles={testPersonaCoinStyles} />);
+    const textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('LK');
 
     setRTL(false);
   });
 
   it('uses provided initial', () => {
     setRTL(true);
-    const wrapper = mount(<PersonaCoin text="Kat Larrson" initials="AT" styles={testPersonaCoinStyles} />);
-    const result = wrapper.find(Text);
-    expect(result).toHaveLength(1);
-    expect(result.props().children).toEqual('AT');
+    const { container } = render(<PersonaCoin text="Kat Larrson" initials="AT" styles={testPersonaCoinStyles} />);
+    const textElement = container.querySelector(`.${testPersonaCoinStyles.initials}`);
+    expect(textElement).toHaveTextContent('AT');
 
     setRTL(false);
   });
@@ -130,19 +122,19 @@ describe('PersonaCoin', () => {
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
     it('renders empty alt text by default', () => {
-      const wrapper = mount(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} styles={testPersonaCoinStyles} />);
-      const image = wrapper.find(Image);
-
-      expect(image.props().alt).toEqual('');
+      const { container } = render(
+        <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} styles={testPersonaCoinStyles} />,
+      );
+      const image = container.querySelector('img');
+      expect(image).toHaveAttribute('alt', '');
     });
 
     it('renders its given alt text', () => {
-      const wrapper = mount(
+      const { container } = render(
         <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" styles={testPersonaCoinStyles} />,
       );
-      const image = wrapper.find(Image);
-
-      expect(image.props().alt).toEqual('ALT TEXT');
+      const image = container.querySelector('img');
+      expect(image).toHaveAttribute('alt', 'ALT TEXT');
     });
   });
 });

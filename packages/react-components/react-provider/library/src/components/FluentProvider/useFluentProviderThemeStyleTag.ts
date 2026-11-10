@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -11,7 +13,9 @@ const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
   : useIsomorphicLayoutEffect;
 
 const createStyleTag = (target: Document | undefined, elementAttributes: Record<string, string>) => {
-  if (!target) {
+  // Document might exist but not be ready yet (e.g. during SSR)
+  // In that case, we should not create a style tag
+  if (!target?.head) {
     return undefined;
   }
 
@@ -46,12 +50,10 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (
   options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
-) => {
-  'use no memo';
-
+): { styleTagId: string; rule: string } => {
   const { targetDocument, theme, rendererAttributes } = options;
 
-  const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
+  const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
 
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;
@@ -59,7 +61,7 @@ export const useFluentProviderThemeStyleTag = (
   const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // eslint-disable-next-line react-hooks/rules-of-hooks, react-hooks/void-use-memo
     React.useMemo(() => {
       // Heads up!
       // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,
@@ -67,11 +69,32 @@ export const useFluentProviderThemeStyleTag = (
       // of double render.
 
       if (targetDocument) {
-        const providerSelector = `.${fluentProviderClassNames.root}.${styleTagId}`;
-        const providerElements = targetDocument.querySelectorAll(providerSelector);
+        const providerElementSelector = `.${fluentProviderClassNames.root}.${styleTagId}`;
+        const providerElements = targetDocument.querySelectorAll(providerElementSelector);
 
-        // In SSR, we will have DOM upfront. To avoid false positives the check on nested style tag is performed
-        const isSSR = targetDocument.querySelector(`${providerSelector} > style[id="${styleTagId}"]`) !== null;
+        const styleElementSelector = `style[id="${styleTagId}"]`;
+        const styleElements = targetDocument.querySelectorAll<HTMLStyleElement>(styleElementSelector);
+
+        if (styleElements.length > 1) {
+          // eslint-disable-next-line no-console
+          console.error(
+            [
+              '@fluentui/react-provider: We found multiple <style> elements with same IDs in your DOM.',
+              'Please make sure that you configured your application properly.',
+              '\n',
+              '\n',
+              'Configuration guide: https://aka.ms/fluentui-conflicting-ids',
+            ].join(' '),
+          );
+          return;
+        }
+
+        const styleElement = styleElements.item(0) as HTMLStyleElement | null;
+
+        // Heads up!
+        //
+        // In SSR, we will have DOM upfront & style tags will have CSS rules defined in `.textContent`
+        const isSSR = (styleElement?.textContent?.length ?? 0) > 0;
         const elementsCount = isSSR ? 1 : 0;
 
         if (providerElements.length > elementsCount) {

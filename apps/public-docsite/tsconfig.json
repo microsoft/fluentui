@@ -14,5 +14,6 @@
     "lib": ["ES2015", "DOM"],
     "types": ["webpack-env", "custom-global", "node"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
 }

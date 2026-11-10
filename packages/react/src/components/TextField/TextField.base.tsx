@@ -22,6 +22,8 @@ import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 import type { IStyleFunctionOrObject } from '../../Utilities';
 import type { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
 /** @internal */
@@ -36,7 +38,8 @@ export interface ITextFieldState {
    * Dynamic error message returned by `onGetErrorMessage`.
    * Use `this._errorMessage` to get the actual current error message.
    */
-  errorMessage: string | JSX.Element;
+
+  errorMessage: string | JSXElement;
 
   /**
    * Whether this field has `type='password'` and `canRevealPassword=true`, and the password is
@@ -136,7 +139,7 @@ export class TextFieldBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
@@ -195,7 +198,7 @@ export class TextFieldBase
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       borderless,
       className,
@@ -299,7 +302,7 @@ export class TextFieldBase
   /**
    * Sets focus on the text field
    */
-  public focus() {
+  public focus(): void {
     if (this._textElement.current) {
       this._textElement.current.focus();
     }
@@ -308,7 +311,7 @@ export class TextFieldBase
   /**
    * Blurs the text field.
    */
-  public blur() {
+  public blur(): void {
     if (this._textElement.current) {
       this._textElement.current.blur();
     }
@@ -317,7 +320,7 @@ export class TextFieldBase
   /**
    * Selects the text field
    */
-  public select() {
+  public select(): void {
     if (this._textElement.current) {
       this._textElement.current.select();
     }
@@ -421,7 +424,7 @@ export class TextFieldBase
     });
   };
 
-  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+  private _onRenderLabel = (props: ITextFieldProps): JSXElement | null => {
     const { label, required } = props;
     // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
     const labelStyles = this._classNames.subComponentStyles
@@ -438,19 +441,19 @@ export class TextFieldBase
     return null;
   };
 
-  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
+  private _onRenderDescription = (props: ITextFieldProps): JSXElement | null => {
     if (props.description) {
       return <span className={this._classNames.description}>{props.description}</span>;
     }
     return null;
   };
 
-  private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
+  private _onRenderPrefix(props: ITextFieldProps): JSXElement {
     const { prefix } = props;
     return <span style={{ paddingBottom: '1px' }}>{prefix}</span>;
   }
 
-  private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
+  private _onRenderSuffix(props: ITextFieldProps): JSXElement {
     const { suffix } = props;
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
@@ -461,7 +464,8 @@ export class TextFieldBase
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  private get _errorMessage(): string | JSX.Element {
+
+  private get _errorMessage(): string | JSXElement {
     const { errorMessage = this.state.errorMessage } = this.props;
     return errorMessage || '';
   }
@@ -472,7 +476,8 @@ export class TextFieldBase
    * - If error message is string, it will render using the built in styles.
    * - If error message is an element, user has full control over how it's rendered.
    */
-  private _renderErrorMessage(): JSX.Element | null {
+
+  private _renderErrorMessage(): JSXElement | null {
     const errorMessage = this._errorMessage;
 
     return errorMessage ? (
@@ -525,7 +530,7 @@ export class TextFieldBase
     );
   }
 
-  private _renderInput(): JSX.Element | null {
+  private _renderInput(): JSXElement | null {
     const {
       ariaLabel,
       invalid = !!this._errorMessage,
@@ -619,7 +624,7 @@ export class TextFieldBase
       } else {
         const currentValidation: number = ++this._lastValidation;
 
-        result.then((errorMessage: string | JSX.Element) => {
+        result.then((errorMessage: string | JSXElement) => {
           if (currentValidation === this._lastValidation) {
             this.setState({ errorMessage });
           }
@@ -631,7 +636,7 @@ export class TextFieldBase
     }
   }
 
-  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSX.Element): void {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSXElement): void {
     if (value === this.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);
     }

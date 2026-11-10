@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Slider, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, Slider as V9Slider, useId } from '@fluentui/react-components';
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Fluid = () => {
+export const Fluid = (): JSXElement => {
   const styles = useStyles();
   const id = useId('sliders');
 

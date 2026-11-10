@@ -1,1 +1,2 @@
-export { Scale, ScaleRelaxed, ScaleSnappy, createScalePresence } from './Scale';
+export { Scale, ScaleRelaxed, ScaleSnappy } from './Scale';
+export type { ScaleParams } from './scale-types';

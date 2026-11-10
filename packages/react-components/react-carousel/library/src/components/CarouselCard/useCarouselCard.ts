@@ -1,3 +1,5 @@
+'use client';
+
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
@@ -91,8 +93,11 @@ export const useCarouselCard_unstable = (
     }
   };
 
+  // eslint-disable-next-line react-hooks/refs
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocus);
+  // eslint-disable-next-line react-hooks/refs
   const onPointerUp = mergeCallbacks(props.onPointerUp, handlePointerUp);
+  // eslint-disable-next-line react-hooks/refs
   const onPointerDown = mergeCallbacks(props.onPointerDown, handlePointerDown);
 
   const state: CarouselCardState = {

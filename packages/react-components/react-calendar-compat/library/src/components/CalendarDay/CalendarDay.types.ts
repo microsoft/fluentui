@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarNavigationIcons } from '../Calendar/calendarNavigationIcons';
@@ -13,7 +13,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<ICalendarDay>;
+  componentRef?: React.RefObject<ICalendarDay | null>;
 
   /**
    * Additional CSS class(es) to apply to the CalendarDay.

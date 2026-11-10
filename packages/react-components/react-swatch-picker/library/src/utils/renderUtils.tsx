@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ColorSwatch, SwatchPickerRow, ImageSwatch } from '../';
 import type { ColorSwatchProps, ImageSwatchProps } from '../';
 
@@ -7,11 +8,11 @@ export type SwatchProps = ImageSwatchProps | ColorSwatchProps;
 export type SwatchPickerGridProps = {
   items: SwatchProps[];
   columnCount: number;
-  renderRow?: (props: { children: JSX.Element[]; rowId: string | number }) => JSX.Element;
-  renderSwatch?: (item: SwatchProps) => JSX.Element;
+  renderRow?: (props: { children: JSXElement[]; rowId: string | number }) => JSXElement;
+  renderSwatch?: (item: SwatchProps) => JSXElement;
 };
 
-export const renderSwatchPickerGrid = (props: SwatchPickerGridProps) => {
+export const renderSwatchPickerGrid = (props: SwatchPickerGridProps): JSXElement[] => {
   const { items, columnCount, renderRow, renderSwatch } = props;
   const _renderRow = renderRow || (({ children, rowId }) => <SwatchPickerRow key={rowId}>{children}</SwatchPickerRow>);
   const _renderSwatch =

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
@@ -13,14 +14,14 @@ const useStyles = makeStyles({
   },
 });
 
-export const Multiselect = (props: Partial<DropdownProps>) => {
+export const Multiselect = (props: Partial<DropdownProps>): JSXElement => {
   const comboId = useId('combo-multi');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={comboId}>Best pet</label>
-      <Dropdown aria-labelledby={comboId} multiselect={true} placeholder="Select an animal" {...props}>
+      <label htmlFor={comboId}>Best pet</label>
+      <Dropdown id={comboId} multiselect={true} placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

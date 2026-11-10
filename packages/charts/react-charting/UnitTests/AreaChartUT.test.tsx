@@ -698,3 +698,36 @@ runTest('_getAriaLabel', () => {
     },
   );
 });
+
+runTest('_createDatasetForDuplicateValues', () => {
+  beforeEach(sharedBeforeEach);
+
+  testWithoutWait(
+    'Should return the correct dataset for duplicate values',
+    AreaChart,
+    {
+      data: {
+        chartTitle: 'Area chart duplicate values example',
+        lineChartData: [
+          {
+            legend: 'Legend 1',
+            data: [
+              { x: 1, y: 10 },
+              { x: 2, y: 20 },
+              { x: 2, y: 30 },
+              { x: 3, y: 40 },
+            ],
+          },
+        ],
+      },
+    },
+    container => {
+      const points = getById(container, /circle/i);
+      expect(points).toHaveLength(4);
+      expect(points[0].getAttribute('aria-label')).toEqual('x: 1, y: 10');
+      expect(points[1].getAttribute('aria-label')).toEqual('x: 2, y: 20');
+      expect(points[2].getAttribute('aria-label')).toEqual('x: 2, y: 30');
+      expect(points[3].getAttribute('aria-label')).toEqual('x: 3, y: 40');
+    },
+  );
+});

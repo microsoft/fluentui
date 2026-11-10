@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { FlatTreeProps } from './FlatTree.types';
@@ -5,6 +7,7 @@ import { useFlatTree_unstable } from './useFlatTree';
 import { useFlatTreeStyles_unstable } from './useFlatTreeStyles.styles';
 import { useFlatTreeContextValues_unstable } from './useFlatTreeContextValues';
 import { renderFlatTree_unstable } from './renderFlatTree';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `FlatTree` component is a variation of the `Tree` component that deals with a flattened data structure.
@@ -16,6 +19,8 @@ export const FlatTree: ForwardRefComponent<FlatTreeProps> = React.forwardRef((pr
   const state = useFlatTree_unstable(props, ref);
   const contextValues = useFlatTreeContextValues_unstable(state);
   useFlatTreeStyles_unstable(state);
+  useCustomStyleHook_unstable('useFlatTreeStyles_unstable')(state);
+
   return renderFlatTree_unstable(state, contextValues);
 });
 

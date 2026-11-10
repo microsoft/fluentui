@@ -1,6 +1,7 @@
 import * as React from 'react';
+import type { JSXElement, CardProps } from '@fluentui/react-components';
 import { makeStyles, tokens, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
-import { Card, CardHeader, CardProps } from '@fluentui/react-components';
+import { Card, CardHeader } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -21,8 +22,8 @@ const useStyles = makeStyles({
   title: { margin: '0 0 12px' },
 
   card: {
-    width: '300px',
-    maxWidth: '100%',
+    maxWidth: '300px',
+    width: '100%',
     height: 'fit-content',
   },
 
@@ -69,7 +70,11 @@ const CardExample = (props: CardProps) => {
       </header>
 
       <CardHeader
-        header={<Text weight="semibold">Alert in Teams when a new document is uploaded in channel</Text>}
+        header={
+          <Text as="h5" weight="semibold" style={{ margin: 0 }}>
+            Alert in Teams when a new document is uploaded in channel
+          </Text>
+        }
         description={<Caption1 className={styles.caption}>By Microsoft</Caption1>}
       />
 
@@ -81,7 +86,7 @@ const CardExample = (props: CardProps) => {
   );
 };
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -107,8 +112,9 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: `Size options are mainly to provide variety, and consistency when using cards for different usages. It
-      relates to padding and border-radius and not so much the actual dimensions of the card.`,
+      story:
+        'Size options are mainly to provide variety, and consistency when using cards for different usages.' +
+        'It relates to padding and border-radius and not so much the actual dimensions of the card.',
     },
   },
 };

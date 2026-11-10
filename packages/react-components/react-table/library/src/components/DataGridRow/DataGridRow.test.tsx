@@ -2,14 +2,14 @@ import * as React from 'react';
 import { fireEvent, render, createEvent } from '@testing-library/react';
 import { DataGridRow } from './DataGridRow';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridRowProps } from './DataGridRow.types';
+import type { DataGridRowProps } from './DataGridRow.types';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
 import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
 describe('DataGridRow', () => {
-  const Wrapper: React.FC = props => {
+  const Wrapper: React.FC<{ children?: React.ReactNode }> = props => {
     const ctx = mockDataGridContext({ selectableRows: true });
     return <DataGridContextProvider value={ctx}>{props.children}</DataGridContextProvider>;
   };

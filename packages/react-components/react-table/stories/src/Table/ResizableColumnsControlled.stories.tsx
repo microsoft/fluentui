@@ -1,6 +1,11 @@
-import {
+import type {
+  JSXElement,
   TableColumnDefinition,
   TableColumnId,
+  TableColumnSizingOptions,
+  PresenceBadgeStatus,
+} from '@fluentui/react-components';
+import {
   Table,
   TableBody,
   TableCell,
@@ -13,8 +18,6 @@ import {
   useTableColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
-  TableColumnSizingOptions,
-  PresenceBadgeStatus,
   Avatar,
   Button,
   Input,
@@ -96,7 +99,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -106,7 +109,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -160,7 +163,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableColumnsControlled = () => {
+export const ResizableColumnsControlled = (): JSXElement => {
   const [columns, setColumns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {
@@ -220,15 +223,27 @@ export const ResizableColumnsControlled = () => {
     }));
   };
 
-  const onColumnResize = React.useCallback((_, { columnId, width }) => {
-    setColumnSizingOptions(state => ({
-      ...state,
-      [columnId]: {
-        ...state[columnId],
-        idealWidth: width,
+  const onColumnResize = React.useCallback(
+    (
+      _: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+      {
+        columnId,
+        width,
+      }: {
+        columnId: TableColumnId;
+        width: number;
       },
-    }));
-  }, []);
+    ) => {
+      setColumnSizingOptions(state => ({
+        ...state,
+        [columnId]: {
+          ...state[columnId],
+          idealWidth: width,
+        },
+      }));
+    },
+    [],
+  );
 
   const {
     getRows,

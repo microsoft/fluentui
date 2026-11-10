@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -54,9 +56,8 @@ const useStyles = makeStyles({
  * Apply styling to the TableResizeHandle slots based on the state
  */
 export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleState): TableResizeHandleState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(tableResizeHandleClassNames.root, styles.root, state.root.className);
   return state;
 };

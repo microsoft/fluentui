@@ -1,25 +1,26 @@
 import * as React from 'react';
 import { Tag } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
+import type { Meta } from '@storybook/react-webpack5';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 import { Steps } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const dismissIconId = 'dismiss-icon-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover(`#${dismissIconId}}`)
-  .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown(`#${dismissIconId}}`)
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('default')
+  .hover(`#${dismissIconId}`)
+  .snapshot('hover')
+  .mouseDown(`#${dismissIconId}`)
+  .snapshot('pressed')
   .end();
 
 export default {
   title: 'Tag Converged',
   component: Tag,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Tag>;
 
 export const Filled = () => (

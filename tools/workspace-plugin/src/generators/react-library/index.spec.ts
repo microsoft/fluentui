@@ -25,7 +25,6 @@ describe('react-library generator', () => {
     tree = createLibrary(tree, 'react-utilities');
     tree = createLibrary(tree, 'react-shared-contexts');
 
-    writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   });
@@ -55,14 +54,14 @@ describe('react-library generator', () => {
       Array [
         "project.json",
         ".babelrc.json",
-        ".eslintrc.json",
         ".swcrc",
         "LICENSE",
         "README.md",
         "config",
         "docs",
+        "eslint.config.cjs",
         "etc",
-        "jest.config.js",
+        "jest.config.cjs",
         "package.json",
         "src",
         "tsconfig.json",
@@ -73,7 +72,7 @@ describe('react-library generator', () => {
     expect(tree.children(joinPathFragments(library.root, 'docs'))).toEqual(['Spec.md']);
     expect(tree.children(joinPathFragments(library.root, 'src'))).toEqual(['index.ts', 'testing']);
     expect(tree.exists(joinPathFragments(library.root, 'src', 'testing', 'isConformant.ts'))).toEqual(true);
-    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.js']);
+    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.cjs']);
     expect(tree.children(joinPathFragments(library.root, 'etc'))).toEqual(['react-one-preview.api.md']);
 
     expect(library).toMatchInlineSnapshot(`
@@ -104,7 +103,7 @@ describe('react-library generator', () => {
         name: '@proj/react-one-preview',
         private: true,
         version: '0.0.0',
-        files: ['*.md', 'dist/*.d.ts', 'lib', 'lib-commonjs'],
+        files: ['*.md', 'dist/*.d.ts', 'dist/*.d.cts', 'lib', 'lib-commonjs'],
         dependencies: {
           '@proj/react-jsx-runtime': '^9.0.0',
           '@proj/react-shared-contexts': '^9.0.0',
@@ -115,6 +114,7 @@ describe('react-library generator', () => {
         },
       }),
     );
+    expect(libPackageJson.devDependencies).toEqual(undefined);
     expect(readJson(tree, `${library.root}/tsconfig.json`)).toEqual(
       expect.objectContaining({ extends: '../../../../tsconfig.base.json' }),
     );
@@ -155,7 +155,7 @@ describe('react-library generator', () => {
       expect.objectContaining({ extends: '../../../../.babelrc-v9.json' }),
     );
 
-    const jestConfig = tree.read(`${library.root}/jest.config.js`, 'utf-8');
+    const jestConfig = tree.read(`${library.root}/jest.config.cjs`, 'utf-8');
     expect(jestConfig).toEqual(expect.stringContaining(`displayName: 'react-one-preview',`));
     expect(jestConfig).toEqual(expect.stringContaining(`'^.+\\\\.tsx?$': ['@swc/jest', swcJestConfig],`));
     expect(tree.read(`${library.root}/README.md`, 'utf-8')).toEqual(
@@ -173,7 +173,7 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        ".eslintrc.json",
+        "eslint.config.js",
         "tsconfig.json",
         "tsconfig.lib.json",
         "package.json",
@@ -185,12 +185,7 @@ describe('react-library generator', () => {
       name: '@proj/react-one-preview-stories',
       version: '0.0.0',
       private: true,
-      devDependencies: {
-        '@proj/eslint-plugin': '*',
-        '@proj/react-storybook-addon': '*',
-        '@proj/react-storybook-addon-export-to-sandbox': '*',
-        '@proj/scripts-storybook': '*',
-      },
+      devDependencies: {},
     });
 
     expect(stories).toMatchInlineSnapshot(`
@@ -214,24 +209,25 @@ describe('react-library generator', () => {
       "
     `);
 
-    expect(readJson(tree, `${stories.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
-      Object {
-        "extends": Array [
-          "plugin:@fluentui/eslint-plugin/react",
-        ],
-        "root": true,
-        "rules": Object {
-          "import/no-extraneous-dependencies": Array [
-            "error",
-            Object {
-              "packageDir": Array [
-                ".",
-                "../../../../",
-              ],
-            },
-          ],
+    const storybookMain = tree.read(`${stories.root}/.storybook/main.cjs`, 'utf-8');
+    expect(storybookMain).toContain(`require('../../../../../.storybook/main')`);
+    expect(storybookMain).toContain(`'../src/**/index.stories.@(ts|tsx)'`);
+    expect(storybookMain).not.toContain('../stories/');
+    expect(readJson(tree, `${stories.root}/.storybook/tsconfig.json`).include).toEqual(['*.js', '*.cjs']);
+
+    const eslintConfig = tree.read(`${stories.root}/eslint.config.js`, 'utf-8');
+    expect(eslintConfig).toMatchInlineSnapshot(`
+      "// @ts-check
+
+      const fluentPlugin = require('@fluentui/eslint-plugin');
+
+      module.exports = [
+        ...fluentPlugin.configs['flat/react'],
+        {
+          rules: {},
         },
-      }
+      ];
+      "
     `);
 
     // global updates
@@ -265,14 +261,14 @@ describe('react-library generator', () => {
       Array [
         "project.json",
         ".babelrc.json",
-        ".eslintrc.json",
         ".swcrc",
         "LICENSE",
         "README.md",
         "config",
         "docs",
+        "eslint.config.cjs",
         "etc",
-        "jest.config.js",
+        "jest.config.cjs",
         "package.json",
         "src",
         "tsconfig.json",
@@ -295,7 +291,7 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        ".eslintrc.json",
+        "eslint.config.js",
         "tsconfig.json",
         "tsconfig.lib.json",
         "package.json",

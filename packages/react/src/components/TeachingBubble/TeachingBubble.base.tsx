@@ -24,8 +24,8 @@ const defaultCalloutProps: ICalloutProps = {
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 const useComponentRef = (
-  componentRef: React.Ref<ITeachingBubble> | undefined,
-  rootElementRef: React.RefObject<HTMLDivElement>,
+  componentRef: React.Ref<ITeachingBubble | null> | undefined,
+  rootElementRef: React.RefObject<HTMLDivElement | null>,
 ) => {
   React.useImperativeHandle(
     componentRef,

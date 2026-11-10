@@ -1,4 +1,7 @@
-import { Types, getGroupper, GroupperTabbabilities } from 'tabster';
+'use client';
+
+import type { Types } from 'tabster';
+import { getGroupper, GroupperTabbabilities } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
@@ -19,11 +22,7 @@ export interface UseFocusableGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
-  const tabster = useTabster();
-
-  if (tabster) {
-    getGroupper(tabster);
-  }
+  useTabster(getGroupper);
 
   return useTabsterAttributes({
     groupper: {

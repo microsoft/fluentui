@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Mon, 11 Nov 2024 10:01:03 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.9)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.8..@fluentui/keyboard-keys_v9.0.9)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
 
 ## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.8)
 

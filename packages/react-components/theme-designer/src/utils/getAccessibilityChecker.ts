@@ -1,5 +1,6 @@
-import { contrast, hex_to_sRGB, hex_to_LCH, Vec3 } from '../colors';
-import { Theme } from '@fluentui/react-components';
+import type { Vec3 } from '../colors';
+import { contrast, hex_to_sRGB, hex_to_LCH } from '../colors';
+import type { Theme } from '@fluentui/react-components';
 import { accessiblePairs, lightnessPairs } from '../components/ColorTokens/AccessiblePairs';
 
 export enum TestType {
@@ -76,7 +77,9 @@ export const calculateContrastRatio = (
     },
   };
 };
-export const getAccessibilityChecker = (theme: Partial<Theme>) => {
+export const getAccessibilityChecker = (
+  theme: Partial<Theme>,
+): { all: string[]; failedLuminosityTests: TestResult[]; failedContrastTests: TestResult[] } => {
   const currTheme = theme as unknown as Record<string, string>;
 
   const testPercentDiff = (currToken: string, compToken: string, desiredPercentDiff: number): TestResult => {

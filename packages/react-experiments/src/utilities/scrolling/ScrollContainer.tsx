@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { css, Async, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
 import type { IScrollContainerProps } from './ScrollContainer.types';
@@ -21,13 +22,20 @@ export interface IScrollContainerContext {
   scrollContainer: IScrollContainer;
 }
 
+/**
+ * Use the `ScrollContainerContext` instead, as PropTypes legacy context types are deprecated in React 19.
+ * @deprecated
+ */
 export const ScrollContainerContextTypes = {
   scrollContainer: PropTypes.object.isRequired,
 };
 
-export class ScrollContainer extends React.Component<IScrollContainerProps> implements IScrollContainer {
-  public static childContextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
+export const ScrollContainerContext = React.createContext<IScrollContainerContext | null>(null);
 
+export class ScrollContainer
+  extends React.Component<React.PropsWithChildren<IScrollContainerProps>>
+  implements IScrollContainer
+{
   private _observer: IntersectionObserver;
 
   private _root: HTMLDivElement;
@@ -68,17 +76,19 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
     this._callbacks.push(callback);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { children, className } = this.props;
 
     return (
-      <div
-        className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
-        data-is-scrollable={true}
-        ref={this._resolveRoot}
-      >
-        {children as JSX.Element}
-      </div>
+      <ScrollContainerContext.Provider value={{ scrollContainer: this }}>
+        <div
+          className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
+          data-is-scrollable={true}
+          ref={this._resolveRoot}
+        >
+          {children as React.ReactElement}
+        </div>
+      </ScrollContainerContext.Provider>
     );
   }
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -25,6 +27,7 @@ const useRootBaseClassName = makeResetStyles({
   lineHeight: '0',
   gap: '8px',
   overflow: 'hidden', // prevents height changes from rotating children
+  minWidth: 'min-content',
 });
 
 const useRootStyles = makeStyles({
@@ -224,8 +227,6 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  'use no memo';
-
   const { labelPosition, size, appearance } = state;
   const { dir } = useFluent();
 
@@ -236,6 +237,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   const spinnerTailBaseClassName = useSpinnerTailBaseClassName();
   const labelStyles = useLabelStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     spinnerClassNames.root,
     rootBaseClassName,
@@ -243,6 +245,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     state.root.className,
   );
   if (state.spinner) {
+    // eslint-disable-next-line react-hooks/immutability
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerBaseClassName,
@@ -252,6 +255,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     );
   }
   if (state.spinnerTail) {
+    // eslint-disable-next-line react-hooks/immutability
     state.spinnerTail.className = mergeClasses(
       spinnerClassNames.spinnerTail,
       spinnerTailBaseClassName,
@@ -260,6 +264,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     );
   }
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(
       spinnerClassNames.label,
       labelStyles[size],

@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, ILineChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  IChartProps,
+  ILineChartProps,
+  LineChart,
+  ILineChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
@@ -19,7 +26,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -69,14 +76,14 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     return res;
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
         {
           legend: 'From_Legacy_to_O365',
           data: this._getdata(),
-          color: DefaultPalette.blue,
+          color: getColorFromToken(DataVizPalette.color1),
           onLineClick: () => console.log('From_Legacy_to_O365'),
           hideNonActiveDots: true,
           lineOptions: {
@@ -86,7 +93,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
         {
           legend: 'All',
           data: this._getdata2(),
-          color: DefaultPalette.green,
+          color: getColorFromToken(DataVizPalette.color5),
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -99,7 +106,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
               y: 282000,
             },
           ],
-          color: DefaultPalette.yellow,
+          color: getColorFromToken(DataVizPalette.color9),
         },
       ],
     };
@@ -108,7 +115,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -151,7 +158,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
             enablePerfOptimization={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

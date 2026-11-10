@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
@@ -189,13 +189,24 @@ describe('FocusTrapZone', () => {
     });
 
     it('Focuses on firstFocusableSelector on mount', () => {
-      mount(<PropValues firstFocusableSelector="last-class" />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="last-class"
+        />,
+      );
 
       cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableSelector on mount while disabled', () => {
-      mount(<PropValues firstFocusableSelector="last-class" disabled />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="last-class"
+          disabled
+        />,
+      );
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -204,7 +215,12 @@ describe('FocusTrapZone', () => {
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', () => {
-      mount(<PropValues firstFocusableSelector="invalidSelector" />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="invalidSelector"
+        />,
+      );
 
       cy.focused().should('have.text', 'first');
     });
@@ -465,7 +481,7 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Imperatively focusing the FTZ', () => {
-    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone>) {
+    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone | null>) {
       // Ensure the component has rendered before calling focus()
       cy.contains('first').then(() => {
         componentRef.current!.focus();
@@ -586,7 +602,12 @@ describe('FocusTrapZone', () => {
     });
 
     it('does not return focus on unmount if ignoreExternalFocusing (deprecated) is set', () => {
-      mount(<ReturnFocus ignoreExternalFocusing />);
+      mount(
+        <ReturnFocus
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          ignoreExternalFocusing
+        />,
+      );
 
       // show the FTZ
       cy.contains('show FTZ').realClick();

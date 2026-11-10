@@ -5,6 +5,8 @@ export type {
   RadioGroupProps,
   RadioGroupSlots,
   RadioGroupState,
+  RadioGroupBaseProps,
+  RadioGroupBaseState,
 } from './components/RadioGroup/index';
 export {
   RadioGroup,
@@ -12,4 +14,5 @@ export {
   renderRadioGroup_unstable,
   useRadioGroupStyles_unstable,
   useRadioGroup_unstable,
+  useRadioGroupBase_unstable,
 } from './components/RadioGroup/index';

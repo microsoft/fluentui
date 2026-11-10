@@ -1,15 +1,17 @@
-import {
+import type {
   TableHeaderCellProps,
   TableHeaderCellSlots,
   TableHeaderCellState,
 } from '../TableHeaderCell/TableHeaderCell.types';
+
+import type { DataGridCellProps } from '../DataGridCell/DataGridCell.types';
 
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
 
 /**
  * DataGridHeaderCell Props
  */
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'> & Pick<DataGridCellProps, 'focusMode'>;
 
 /**
  * State used in rendering DataGridHeaderCell

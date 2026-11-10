@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Spinner } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -7,7 +8,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Labels = () => {
+export const Labels = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.container}>

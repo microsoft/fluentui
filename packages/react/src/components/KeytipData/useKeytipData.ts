@@ -14,7 +14,7 @@ export interface IKeytipData {
  * Hook that creates attributes for components which are enabled with Keytip.
  */
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
-  const uniqueId = React.useRef<string>();
+  const uniqueId = React.useRef<string>(undefined);
   const keytipProps: IKeytipProps | undefined = options.keytipProps
     ? {
         disabled: options.disabled,

@@ -1,21 +1,22 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 export default {
   title: 'FocusTrapZones',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default')
         .click('.ms-Panel-closeButton')
         .snapshot('click on panel close button')
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 };
 
 export const DialogNestedInPanel = () => (

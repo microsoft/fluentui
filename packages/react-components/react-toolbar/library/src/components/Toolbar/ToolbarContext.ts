@@ -1,5 +1,7 @@
-import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
+'use client';
+
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import type { ToolbarContextValue } from './Toolbar.types';
 
 export const ToolbarContext = createContext<ToolbarContextValue | undefined>(undefined) as Context<ToolbarContextValue>;

@@ -31,6 +31,46 @@
       "tagName": "@fires",
       "syntaxKind": "block",
       "allowMultiple": true
+    },
+    {
+      "tagName": "@tag",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@attr",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@class",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@extends",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@method",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@summary",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@type",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@default",
+      "syntaxKind": "block",
+      "allowMultiple": false
     }
   ],
   "supportForTags": {
@@ -39,6 +79,14 @@
     "@cssprop": true,
     "@cssproperty": true,
     "@event": true,
-    "@fires": true
+    "@fires": true,
+    "@tag": true,
+    "@attr": true,
+    "@class": true,
+    "@extends": true,
+    "@method": true,
+    "@summary": true,
+    "@type": true,
+    "@default": true
   }
 }

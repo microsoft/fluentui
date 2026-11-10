@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import type { PresenceMotionFn } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
-import { overridePresenceMotion, createPresenceComponentVariant } from './createPresenceComponentVariant';
+import { createPresenceComponentVariant } from './createPresenceComponentVariant';
 
 jest.mock('./createPresenceComponent', () => {
   const module = jest.requireActual('./createPresenceComponent');
@@ -14,79 +14,36 @@ jest.mock('./createPresenceComponent', () => {
   };
 });
 
-const PRESENCE_MOTION: PresenceMotionFn<{ direction: 'start' | 'end' }> = () => ({
-  enter: { keyframes: [], duration: 1000, easing: 'linear' },
-  exit: { keyframes: [], duration: 1000, easing: 'linear' },
+const PRESENCE_MOTION: PresenceMotionFn<{ outOpacity?: number; duration?: number; easing?: string }> = ({
+  outOpacity = 0,
+  duration = 1000,
+  easing = 'linear',
+}) => ({
+  enter: [{ keyframes: [{ opacity: outOpacity }, { opacity: 1 }], duration, easing }],
+  exit: [{ keyframes: [{ opacity: 1 }, { opacity: outOpacity }], duration, easing }],
 });
-const PRESENCE_COMPONENT = createPresenceComponent<{ direction: 'start' | 'end' }>(PRESENCE_MOTION);
+const PRESENCE_COMPONENT = createPresenceComponent(PRESENCE_MOTION);
 
 const MOTION_PARAMS = {
   element: document.createElement('div'),
-  direction: 'start' as const,
 };
 
-describe('overridePresenceMotion', () => {
-  it('overrides "all"', () => {
-    expect(
-      overridePresenceMotion(PRESENCE_MOTION, { all: { duration: 500, easing: 'ease-in-out' } })(MOTION_PARAMS),
-    ).toEqual({
-      enter: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
-      exit: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
-    });
-  });
-
-  it('overrides "enter"', () => {
-    expect(
-      overridePresenceMotion(PRESENCE_MOTION, { enter: { duration: 500, easing: 'ease-in-out' } })(MOTION_PARAMS),
-    ).toEqual({
-      enter: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
-      exit: {
-        keyframes: [],
-        duration: 1000,
-        easing: 'linear',
-      },
-    });
-  });
-
-  it('overrides "exit"', () => {
-    expect(
-      overridePresenceMotion(PRESENCE_MOTION, { exit: { duration: 500, easing: 'ease-in-out' } })(MOTION_PARAMS),
-    ).toEqual({
-      enter: {
-        keyframes: [],
-        duration: 1000,
-        easing: 'linear',
-      },
-      exit: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
-    });
-  });
-});
-
 describe('createPresenceComponentVariant', () => {
-  it('appends override to the original motion', () => {
+  it('overrides motion parameters used within motion atom arrays', () => {
+    // variant params overriding the default motion params
+    const outOpacity = 0.3;
+    const duration = 500;
+    const easing = 'ease-in-out';
+
     const PresenceVariant = createPresenceComponentVariant(PRESENCE_COMPONENT, {
-      all: { duration: 500, easing: 'ease-in-out' },
+      outOpacity,
+      duration,
+      easing,
     });
     const overrideFn = (createPresenceComponent as jest.Mock).mock.calls[0][0];
 
     const { getByText } = render(
-      <PresenceVariant direction="start" visible>
+      <PresenceVariant visible>
         <div>Hello world!</div>
       </PresenceVariant>,
     );
@@ -99,16 +56,20 @@ describe('createPresenceComponentVariant', () => {
 
     expect(overrideFn).toBeInstanceOf(Function);
     expect(overrideFn(MOTION_PARAMS)).toEqual({
-      enter: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
-      exit: {
-        duration: 500,
-        easing: 'ease-in-out',
-        keyframes: [],
-      },
+      enter: [
+        {
+          duration,
+          easing,
+          keyframes: [{ opacity: outOpacity }, { opacity: 1 }],
+        },
+      ],
+      exit: [
+        {
+          duration,
+          easing,
+          keyframes: [{ opacity: 1 }, { opacity: outOpacity }],
+        },
+      ],
     });
   });
 });

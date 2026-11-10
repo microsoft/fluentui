@@ -18,11 +18,17 @@ import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
 import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
+import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
+import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import { LineChartAnnotationsExample } from './LineChart.Annotations.Example';
+import type { JSXElement } from '@fluentui/utilities';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const LineChartAnnotationsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Annotations.Example.tsx') as string;
 const MultipleLineChartExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode =
@@ -39,11 +45,15 @@ const LineChartNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Negative.Example.tsx') as string;
 const LineChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AllNegative.Example.tsx') as string;
+const LineChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.SecondaryYAxis.Example.tsx') as string;
+const LineChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LogAxis.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Line Chart"
@@ -55,6 +65,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart styled" code={LineChartStyledExampleCode}>
               <LineChartStyledExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with annotations" code={LineChartAnnotationsExampleCode}>
+              <LineChartAnnotationsExample />
             </ExampleCard>
             <ExampleCard title="Multiple Line chart" code={MultipleLineChartExampleCode}>
               <LineChartMultipleExample />
@@ -79,6 +92,12 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart with All Negative y values" code={LineChartAllNegativeExampleCode}>
               <LineChartAllNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart secondary y-axis" code={LineChartSecondaryYAxisExampleCode}>
+              <LineChartSecondaryYAxisExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart log axis" code={LineChartLogAxisExampleCode}>
+              <LineChartLogAxisExample />
             </ExampleCard>
           </div>
         }

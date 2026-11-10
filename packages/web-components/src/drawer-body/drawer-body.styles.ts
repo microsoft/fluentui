@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import { spacingHorizontalM, spacingHorizontalXL } from '../theme/design-tokens.js';
 import { typographySubtitle1Styles } from '../styles/partials/typography.partials.js';
 
@@ -27,5 +27,11 @@ export const styles = css`
     display: flex;
     justify-content: flex-start;
     gap: ${spacingHorizontalM};
+  }
+
+  ::slotted([slot='title']) {
+    font: inherit;
+    padding: 0;
+    margin: 0;
   }
 `;

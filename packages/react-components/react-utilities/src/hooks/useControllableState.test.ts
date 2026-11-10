@@ -24,6 +24,7 @@ describe('useControllableState', () => {
     expect(result.current[0]).toBe(false);
 
     // this will cause console.error to be called
+    // @ts-expect-error - intentionally passing both state and defaultState to trigger error
     rerender({ defaultState: true, state: false, initialState: false });
     expect(result.current[0]).toBe(false);
     expect(consoleErrorSpy).toHaveBeenCalledTimes(1);

@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { ActiveDescendantImperativeRef } from './types';
+import type { ActiveDescendantImperativeRef } from './types';
 
 export type ActiveDescendantContextValue = {
   controller: ActiveDescendantImperativeRef;
@@ -29,6 +31,6 @@ const activeDescendantContextDefaultValue: ActiveDescendantContextValue = {
 const ActiveDescendantContext = React.createContext<ActiveDescendantContextValue | undefined>(undefined);
 
 export const ActiveDescendantContextProvider = ActiveDescendantContext.Provider;
-export const useActiveDescendantContext = () =>
+export const useActiveDescendantContext = (): ActiveDescendantContextValue =>
   React.useContext(ActiveDescendantContext) ?? activeDescendantContextDefaultValue;
-export const useHasParentActiveDescendantContext = () => !!React.useContext(ActiveDescendantContext);
+export const useHasParentActiveDescendantContext = (): boolean => !!React.useContext(ActiveDescendantContext);

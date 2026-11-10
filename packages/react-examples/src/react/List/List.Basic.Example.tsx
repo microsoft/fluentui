@@ -9,6 +9,7 @@ import { ITheme, mergeStyleSets, getFocusStyle } from '@fluentui/react/lib/Styli
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useConst } from '@fluentui/react-hooks';
 import { useTheme } from '@fluentui/react/lib/Theme';
+import type { JSXElement } from '@fluentui/utilities';
 
 const generateStyles = (theme: ITheme) => {
   const { palette, semanticColors, fonts } = theme;
@@ -64,12 +65,13 @@ export const ListBasicExample: React.FunctionComponent = () => {
   const classNames = React.useMemo(() => generateStyles(theme), [theme]);
 
   const onRenderCell = React.useCallback(
-    (item: IExampleItem, index: number | undefined): JSX.Element => {
+    (item: IExampleItem, index: number | undefined): JSXElement => {
       return (
         <div className={classNames.itemCell} data-is-focusable={true}>
           <Image
             className={classNames.itemImage}
             src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+            alt=""
             width={50}
             height={50}
             imageFit={ImageFit.cover}

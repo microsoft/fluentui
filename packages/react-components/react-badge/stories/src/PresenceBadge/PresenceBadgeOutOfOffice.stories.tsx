@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { PresenceBadge } from '@fluentui/react-components';
 
-export const OutOfOffice = () => {
+export const OutOfOffice = (): JSXElement => {
   return (
     <>
       <PresenceBadge outOfOffice status="available" />

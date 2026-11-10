@@ -1,0 +1,15 @@
+{
+  "name": "rit-tests-v9",
+  "description": "React Integration Tester application for problematic v9 scenarios",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-menu-grid-preview": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-timepicker-compat": "*",
+    "tslib": "^2.1.0"
+  }
+}

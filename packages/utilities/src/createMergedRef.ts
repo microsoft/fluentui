@@ -21,6 +21,7 @@ const createResolver =
         ref(newValue);
       } else if (ref) {
         // work around the immutability of the React.Ref type
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ref as unknown as React.MutableRefObject<TType | TValue | null | undefined>).current = newValue;
       }
     }

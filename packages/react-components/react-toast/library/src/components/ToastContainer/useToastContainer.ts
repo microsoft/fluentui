@@ -1,19 +1,15 @@
+'use client';
+
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  useMergedRefs,
-  ExtractSlotProps,
-  Slot,
-  useEventCallback,
-  useId,
-  slot,
-} from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
 import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
-import { ToastStatus } from '../../state';
+import type { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
-import { Timer, TimerProps } from '../Timer/Timer';
+import type { TimerProps } from '../Timer/Timer';
+import { Timer } from '../Timer/Timer';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -50,6 +46,7 @@ export const useToastContainer_unstable = (
     pauseOnWindowBlur,
     imperativeRef,
     tryRestoreFocus,
+    content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
     ...rest
   } = props;
   const titleId = useId('toast-title');
@@ -131,8 +128,8 @@ export const useToastContainer_unstable = (
 
   // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
-  const onMotionFinish: ToastContainerState['onMotionFinish'] = React.useCallback(
-    (_, { direction }) => {
+  const onMotionFinish = React.useCallback(
+    (_: null, { direction }: { direction: 'exit' | 'enter' }) => {
       if (direction === 'exit') {
         remove();
       }

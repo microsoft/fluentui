@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Args, Decorator, StoryFn } from '@storybook/react';
+import type { Args, Decorator, StoryFn } from '@storybook/react-webpack5';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';

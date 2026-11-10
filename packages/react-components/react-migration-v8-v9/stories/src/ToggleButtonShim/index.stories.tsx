@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import descriptionMd from './Description.md';
 
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 const volume0Icon: IIconProps = { iconName: 'Volume0' };
 const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const [muted1, setMuted1] = React.useState(false);

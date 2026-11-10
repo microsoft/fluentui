@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +10,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   DataGridBody,
   DataGridRow,
@@ -18,13 +18,13 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableCellLayout,
-  TableColumnDefinition,
   createTableColumn,
 } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -34,7 +34,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -148,7 +148,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <DataGrid
       items={items}

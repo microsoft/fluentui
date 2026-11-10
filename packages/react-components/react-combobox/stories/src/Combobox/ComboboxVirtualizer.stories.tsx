@@ -1,7 +1,10 @@
+/* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
-import { Combobox, Option, makeStyles, useId } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
+// TODO: Migrate virtualizer to fluentui-contrib dependency once released
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
@@ -14,11 +17,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
+export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combobox');
 
   //This should include the item height (32px) and account for rowGap (2px)
-  const itemHeight = 34;
+  const itemHeight = 32;
+  const rowGap = 2;
   const numberOfItems = 10000;
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
@@ -29,8 +33,12 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
     // We need to recalculate index when at least 10 items (+1px) from the bottom or top for page up/down
     bufferSize: itemHeight * 10 + 1,
   });
+  const selectedIndex = React.useRef(0);
 
   const styles = useStyles();
+  const mergedRefs = useMergedRefs(scrollRef);
+  // Scroll timer required to post scrollTo on stack post-open state change
+  const [setScrollTimer, clearScrollTimer] = useTimeout();
 
   return (
     <div>
@@ -39,8 +47,21 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
         <Combobox
           id={`${comboId}`}
           placeholder="Select a number"
-          positioning={{ autoSize: 'width' }}
-          listbox={{ ref: scrollRef, className: styles.listbox }}
+          positioning={{ autoSize: true }}
+          listbox={{ ref: mergedRefs, className: styles.listbox }}
+          onOpenChange={(e, data) => {
+            clearScrollTimer();
+            if (data.open) {
+              setScrollTimer(() => {
+                mergedRefs.current?.scrollTo({ top: (itemHeight + rowGap) * selectedIndex.current });
+              }, 0);
+            }
+          }}
+          onOptionSelect={(e, data) => {
+            if (data.optionValue) {
+              selectedIndex.current = parseInt(data.optionValue, 10);
+            }
+          }}
         >
           <Virtualizer
             numItems={numberOfItems}
@@ -49,6 +70,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
             bufferSize={bufferSize}
             itemSize={itemHeight}
             containerSizeRef={containerSizeRef}
+            gap={rowGap}
           >
             {index => {
               return (
@@ -57,7 +79,10 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
                   aria-posinset={index}
                   aria-setsize={numberOfItems}
                   key={`item-${index}`}
-                >{`Item ${index + 1}`}</Option>
+                  value={index.toString()}
+                >
+                  {`Item ${index + 1}`}
+                </Option>
               );
             }}
           </Virtualizer>
@@ -72,7 +97,7 @@ ComboboxVirtualizer.parameters = {
     description: {
       story:
         'A Combobox can use Virtualizer to display a large number of options\n' +
-        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)`,
+        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://storybooks.fluentui.dev/react/?path=/docs/concepts-developer-positioning-components--docs#auto-size-for-small-viewport)`,
     },
   },
 };

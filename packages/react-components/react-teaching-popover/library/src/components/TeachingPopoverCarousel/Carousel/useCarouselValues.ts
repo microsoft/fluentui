@@ -1,3 +1,5 @@
+'use client';
+
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 import { useCarouselContext_unstable } from './CarouselContext';

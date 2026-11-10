@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { useTooltip_unstable } from './useTooltip';
 import { renderTooltip_unstable } from './renderTooltip';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

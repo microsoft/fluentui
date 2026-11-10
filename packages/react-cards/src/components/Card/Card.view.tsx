@@ -28,7 +28,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   // The map function below takes the Card children and applies the correct margin and gap tokens to them,
   // ensuring at the same time that they are of type CardItem or CardSection.
-  const cardChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
+  const cardChildren: (React.ReactElement<any> | number | string | null)[] | null | undefined = React.Children.map(
     children,
     (child: React.ReactElement<ICardItemProps | ICardSectionProps>, index: number) => {
       if (!child) {
@@ -113,11 +113,11 @@ export const CardView: ICardComponent['view'] = props => {
   );
 };
 
-function _isReactElement(item: React.ReactNode): item is React.ReactElement {
-  return !!item && typeof item === 'object' && !!(item as React.ReactElement).type;
+function _isReactElement(item: unknown): item is React.ReactElement<any> {
+  return !!item && typeof item === 'object' && !!(item as React.ReactElement<any>).type;
 }
 
-function _isCardItem(item: React.ReactNode): item is typeof CardItem {
+function _isCardItem(item: unknown): item is typeof CardItem {
   // In theory, we should be able to just check item.type === CardItem.
   // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
@@ -125,6 +125,6 @@ function _isCardItem(item: React.ReactNode): item is typeof CardItem {
   return _isReactElement(item) && (item.type as React.ComponentType).displayName === CardItem.displayName;
 }
 
-function _isCardSection(item: React.ReactNode): item is typeof CardSection {
+function _isCardSection(item: unknown): item is typeof CardSection {
   return _isReactElement(item) && (item.type as React.ComponentType).displayName === CardSection.displayName;
 }

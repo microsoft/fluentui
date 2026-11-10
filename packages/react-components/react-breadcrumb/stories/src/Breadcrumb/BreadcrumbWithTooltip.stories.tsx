@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -205,7 +206,7 @@ const BreadcrumbWithTooltipExample = () => {
   );
 };
 
-export const BreadcrumbWithTooltip = () => {
+export const BreadcrumbWithTooltip = (): JSXElement => {
   const itemsLength = itemsWithLongNames.length - 1;
   return (
     <>

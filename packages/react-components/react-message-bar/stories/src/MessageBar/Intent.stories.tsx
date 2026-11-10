@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-  MessageBar,
-  MessageBarTitle,
-  MessageBarBody,
-  MessageBarIntent,
-  Link,
-  makeStyles,
-} from '@fluentui/react-components';
+import type { JSXElement, MessageBarIntent } from '@fluentui/react-components';
+import { MessageBar, MessageBarTitle, MessageBarBody, Link, makeStyles } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -17,7 +11,7 @@ const useClasses = makeStyles({
 });
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
-export const Intent = () => {
+export const Intent = (): JSXElement => {
   const classes = useClasses();
 
   return (

@@ -1,4 +1,5 @@
-import { createKeyborg, disposeKeyborg, Keyborg } from 'keyborg';
+import type { Keyborg } from 'keyborg';
+import { createKeyborg, disposeKeyborg } from 'keyborg';
 import { FOCUS_VISIBLE_ATTR } from './constants';
 import { applyFocusVisiblePolyfill } from './focusVisiblePolyfill';
 import { fireEvent } from '@testing-library/dom';
@@ -58,5 +59,20 @@ describe('focus visible polyfill', () => {
     expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
     dispose();
     expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(false);
+  });
+
+  it('should add focus visible attribute on active element when modality changes', () => {
+    const scope = document.createElement('div');
+    const button = document.createElement('button');
+    scope.append(button);
+    document.body.append(scope);
+
+    const dispose = applyFocusVisiblePolyfill(scope, window);
+
+    button.focus();
+    fireEvent.keyDown(window);
+
+    expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+    dispose();
   });
 });

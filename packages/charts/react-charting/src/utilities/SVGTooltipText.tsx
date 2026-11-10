@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
+import { ITheme } from '@fluentui/react';
 
-interface ISVGTooltipTextProps {
+export interface ISVGTooltipTextProps {
   /**
    * Number of milliseconds to delay closing the tooltip, so that the user has time to hover over
    * the tooltip and interact with it. Hovering over the tooltip will count as hovering over the
@@ -62,12 +63,34 @@ interface ISVGTooltipTextProps {
    * and return a boolean value indicating whether the text overflowed
    */
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
+
+  /**
+   * Theme provided by High Order Component
+   */
+  theme?: ITheme;
+
+  /**
+   * @default false
+   * Prop to selectively display the tooltip background
+   */
+  showBackground?: boolean;
+
+  /**
+   * Prop to set classname
+   */
+  className?: string;
 }
 
 interface ISVGTooltipTextState {
   isTooltipVisible: boolean;
   isOverflowing: boolean;
+  textX?: number;
+  textY?: number;
+  textWidth?: number;
+  textHeight?: number;
 }
+
+const PADDING = 3;
 
 /**
  * Component to render an SVG text element with an optional tooltip.
@@ -104,8 +127,8 @@ export class SVGTooltipText
   }
 
   public render(): React.ReactNode {
-    const { content, tooltipProps, textProps, shouldReceiveFocus = true } = this.props;
-    const { isTooltipVisible } = this.state;
+    const { content, tooltipProps, textProps, shouldReceiveFocus = true, showBackground = false } = this.props;
+    const { isTooltipVisible, textWidth, textHeight } = this.state;
     const tooltipRenderProps: ITooltipProps = {
       content,
       targetElement: this._getTargetElement(),
@@ -121,9 +144,20 @@ export class SVGTooltipText
 
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
-
+    const rectX = (typeof textProps?.x === 'number' ? textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
+    const rectY = (typeof textProps?.y === 'number' ? textProps.y : 0) - (textHeight ?? 0) / 2 - 2 * PADDING;
     return (
       <>
+        {showBackground && (
+          <rect
+            x={rectX}
+            y={rectY}
+            width={(textWidth ?? 0) + 2 * PADDING}
+            height={(textHeight ?? 0) + PADDING}
+            transform={textProps?.transform}
+            className={this.props.className}
+          />
+        )}
         <text
           {...textProps}
           id={this._tooltipHostId}
@@ -144,11 +178,13 @@ export class SVGTooltipText
 
   public componentDidMount(): void {
     this._wrapContent();
+    this._measureText();
   }
 
   public componentDidUpdate(prevProps: Readonly<ISVGTooltipTextProps>): void {
     if (this.props.maxWidth !== prevProps.maxWidth || this.props.maxHeight !== prevProps.maxHeight) {
       this._wrapContent();
+      this._measureText();
     }
   }
 
@@ -166,6 +202,18 @@ export class SVGTooltipText
 
   public dismiss = (): void => {
     this._hideTooltip();
+  };
+
+  private _measureText = (): void => {
+    if (this._tooltipHost.current && typeof this._tooltipHost.current.getBBox === 'function') {
+      const bbox = this._tooltipHost.current.getBBox();
+      this.setState({
+        textX: bbox.x,
+        textY: bbox.y,
+        textWidth: bbox.width,
+        textHeight: bbox.height,
+      });
+    }
   };
 
   private _getTargetElement = (): HTMLElement | undefined => {

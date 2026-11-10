@@ -1,4 +1,4 @@
-ARG VARIANT=20-bookworm
+ARG VARIANT=22-bookworm
 # https://github.com/devcontainers/images/tree/main/src/typescript-node
 FROM mcr.microsoft.com/devcontainers/typescript-node:1-${VARIANT}
 

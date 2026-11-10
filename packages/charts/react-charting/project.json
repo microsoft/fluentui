@@ -2,11 +2,11 @@
   "name": "react-charting",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "tags": ["v8", "ships-bundle"],
-  "implicitDependencies": [],
+  "tags": ["v8", "ships-bundle", "charting"],
   "targets": {
     "test": {
       "dependsOn": ["^build"]
-    }
+    },
+    "type-check": { "command": "echo 'type-check is noop for v8 project which uses tsc for build'" }
   }
 }

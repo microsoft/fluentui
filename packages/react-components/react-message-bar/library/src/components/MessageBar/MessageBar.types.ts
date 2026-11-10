@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { MessageBarContextValue } from '../../contexts/messageBarContext';
 
 export type MessageBarSlots = {
@@ -53,3 +53,6 @@ export type MessageBarState = ComponentState<MessageBarSlots> &
      */
     transitionClassName: string;
   };
+
+export type MessageBarBaseProps = DistributiveOmit<MessageBarProps, 'shape'>;
+export type MessageBarBaseState = DistributiveOmit<MessageBarState, 'shape'>;

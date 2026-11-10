@@ -1,3 +1,5 @@
+'use client';
+
 import { useBrowserTimer } from './useBrowserTimer';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -5,14 +7,14 @@ const setTimeoutNoop = (_callback: Function) => -1;
 const clearTimeoutNoop = (_handle: number) => undefined;
 
 /**
- * @internal
  * Helper to manage a browser timeout.
  * Ensures that the timeout isn't set multiple times at once and is cleaned up
  * when the component is unloaded.
  *
+ * @internal
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
-export function useTimeout() {
+export function useTimeout(): readonly [(fn: () => void, delay?: number) => number, () => void] {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 

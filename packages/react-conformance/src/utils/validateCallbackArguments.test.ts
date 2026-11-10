@@ -54,7 +54,6 @@ describe('validateCallbackArguments', () => {
     });
 
     it('throws on generic params', () => {
-      /* eslint-disable @fluentui/max-len */
       expect(() => {
         validateCallbackArguments([
           ['e', 'Event'],
@@ -71,7 +70,6 @@ describe('validateCallbackArguments', () => {
       }).toThrowErrorMatchingInlineSnapshot(
         `"A first (event) argument cannot use generic React.SyntheticEvent or Event types. Please use more specific types like React.MouseEvent/MouseEvent"`,
       );
-      /* eslint-enable @fluentui/max-len */
     });
   });
 

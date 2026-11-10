@@ -1,9 +1,8 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { ThemeProvider } from './ThemeProvider';
-import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 import type { Theme, PartialTheme } from '@fluentui/theme';
@@ -30,9 +29,8 @@ describe('ThemeProvider', () => {
   });
 
   it('renders a div', () => {
-    const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can handle a partial theme', () => {
@@ -42,13 +40,12 @@ describe('ThemeProvider', () => {
       },
     };
 
-    const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('sets correct dir', () => {
-    const wrapper = mount(
+    const { container } = render(
       <ThemeProvider className="tp-1" theme={{ rtl: true }}>
         <ThemeProvider className="tp-2" theme={{ rtl: false }}>
           Hello
@@ -56,29 +53,34 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const themeProvider1 = wrapper.find('.tp-1').first().getDOMNode();
-    const themeProvider2 = wrapper.find('.tp-2').first().getDOMNode();
+    const themeProvider1 = getBySelector(container, '.tp-1') as HTMLElement;
+    const themeProvider2 = getBySelector(container, '.tp-2') as HTMLElement;
 
     expect(themeProvider1.getAttribute('dir')).toBe('rtl');
     expect(themeProvider2.getAttribute('dir')).toBe('ltr');
 
-    wrapper.setProps({ theme: { rtl: false } });
+    act(() => {
+      render(
+        <ThemeProvider className="tp-1" theme={{ rtl: false }}>
+          <ThemeProvider className="tp-2" theme={{ rtl: false }}>
+            Hello
+          </ThemeProvider>
+        </ThemeProvider>,
+        { container },
+      );
+    });
+
     expect(themeProvider1.getAttribute('dir')).toBe('ltr');
     expect(themeProvider2.getAttribute('dir')).toBe(null);
-
-    ReactTestUtils.act(() => {
-      wrapper.unmount();
-    });
   });
 
   it('renders a div with styling', () => {
-    const component = renderer.create(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ThemeProvider theme={lightTheme}>Hello</ThemeProvider>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders nested themes', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={lightTheme}>
         <div>Light theme</div>
         <ThemeProvider theme={darkTheme}>
@@ -86,8 +88,7 @@ describe('ThemeProvider', () => {
         </ThemeProvider>
       </ThemeProvider>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('provide the theme through context', () => {
@@ -97,7 +98,7 @@ describe('ThemeProvider', () => {
       return null;
     };
 
-    mount(
+    render(
       <ThemeProvider theme={lightTheme}>
         <TestComponent />
       </ThemeProvider>,
@@ -111,14 +112,12 @@ describe('ThemeProvider', () => {
 
   it('can apply body theme to none', () => {
     expect(document.body.className).toBe('');
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider className="foo" theme={darkTheme} applyTo="none">
         app
       </ThemeProvider>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
+    expect(container.firstChild).toMatchSnapshot();
     expect(document.body.className).toBe('');
   });
 
@@ -131,18 +130,17 @@ describe('ThemeProvider', () => {
       </ThemeProvider>
     );
 
-    const wrapper = mount(TestComponent);
+    const { unmount } = render(TestComponent);
 
     expect(document.body).toMatchSnapshot();
 
-    ReactTestUtils.act(() => {
-      wrapper.unmount();
+    act(() => {
+      unmount();
     });
 
     expect(document.body.className).toBe('');
 
-    const component = renderer.create(TestComponent);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(TestComponent);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

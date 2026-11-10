@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Menu,
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeLarge = () => {
+export const SizeLarge = (): JSXElement => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
     HTMLButtonElement | HTMLAnchorElement | null
   >(null);

@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { useId, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
@@ -34,6 +36,7 @@ export const useTableSelectionCell_unstable = (
   return {
     ...tableCellState,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...tableCellState.components,
       checkboxIndicator: Checkbox,
       radioIndicator: Radio,
@@ -44,7 +47,7 @@ export const useTableSelectionCell_unstable = (
       elementType: Checkbox,
     }),
     radioIndicator: slot.optional(props.radioIndicator, {
-      renderByDefault: type === 'radio',
+      renderByDefault: type === 'radio' && !invisible,
       defaultProps: { checked: !!checked, input: { name: useId('table-selection-radio') } },
       elementType: Radio,
     }),

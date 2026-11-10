@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
-  HeadlessFlatTreeItemProps,
-  useHeadlessFlatTree_unstable,
-  TreeItemValue,
-} from '@fluentui/react-components';
+import type { JSXElement, HeadlessFlatTreeItemProps, TreeItemValue } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
 import { makeStyles, Spinner } from '@fluentui/react-components';
 
 const ITEMS_PER_PAGE = 10;
@@ -42,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const InfiniteScrolling = () => {
+export const InfiniteScrolling = (): JSXElement => {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
 

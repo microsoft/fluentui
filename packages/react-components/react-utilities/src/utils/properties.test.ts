@@ -1,5 +1,12 @@
-import * as React from 'react';
-import { getNativeProps, divProperties, inputProperties } from './properties';
+import type * as React from 'react';
+import {
+  getNativeProps,
+  divProperties,
+  inputProperties,
+  anchorProperties,
+  buttonProperties,
+  imgProperties,
+} from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
@@ -88,5 +95,90 @@ describe('getNativeProps', () => {
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
+  });
+
+  it('only allows own properties from a record allow-list', () => {
+    const allowedPropNames = Object.create({ inherited: 1 }) as Record<string, number>;
+    allowedPropNames.allowed = 1;
+
+    expect(getNativeProps({ allowed: 'safe', inherited: 'unsafe' }, allowedPropNames)).toEqual({ allowed: 'safe' });
+  });
+
+  it('rejects __proto__ even when it is explicitly allowed', () => {
+    const props = JSON.parse('{"__proto__":{"inherited":true}}') as Record<string, unknown>;
+    const result = getNativeProps<Record<string, unknown>>(props, ['__proto__']);
+
+    expect(Object.getPrototypeOf(result)).toBe(Object.prototype);
+  });
+
+  it('can pass through anchor props including referrerPolicy', () => {
+    const result = getNativeProps<React.AnchorHTMLAttributes<HTMLAnchorElement>>(
+      {
+        href: 'https://www.bing.com',
+        target: '_blank',
+        referrerPolicy: 'no-referrer',
+        download: 'file.txt',
+        // Non-anchor property
+        foobar: 1,
+      },
+      anchorProperties,
+    );
+
+    expect(result).toMatchObject({
+      href: 'https://www.bing.com',
+      target: '_blank',
+      referrerPolicy: 'no-referrer',
+      download: 'file.txt',
+    });
+
+    expect(result).not.toHaveProperty('foobar');
+  });
+
+  it('can pass through img props including loading', () => {
+    const result = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(
+      {
+        src: 'https://example.com/image.png',
+        alt: 'An image',
+        loading: 'lazy',
+        // Non-img property
+        foobar: 1,
+      },
+      imgProperties,
+    );
+
+    expect(result).toMatchObject({
+      src: 'https://example.com/image.png',
+      alt: 'An image',
+      loading: 'lazy',
+    });
+
+    expect(result).not.toHaveProperty('foobar');
+  });
+
+  describe('popover', () => {
+    it('allows the popoverTarget attribute on button', () => {
+      const result = getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(
+        {
+          popoverTarget: 'some-id',
+        },
+        buttonProperties,
+      );
+
+      expect(result.popoverTarget).toEqual('some-id');
+    });
+
+    it('allows the popover attribute on divs', () => {
+      const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
+        {
+          popover: 'auto',
+          popoverTarget: 'some-id',
+        },
+        divProperties,
+      );
+
+      expect(result.popover).toEqual('auto');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect((result as any).popoverTarget).toEqual(undefined);
+    });
   });
 });

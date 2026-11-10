@@ -1,5 +1,5 @@
 const path = require('path');
-const { registerTsPaths } = require('@fluentui/scripts-storybook');
+const { configureReactIcons, registerTsPaths } = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../../../.storybook/main');
 
@@ -7,7 +7,7 @@ const tsConfigAllPath = path.join(__dirname, '../../../../../tsconfig.base.all.j
 
 module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
-  stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
+  stories: [...rootMain.stories, '../src/**/*.mdx', '../src/**/index.stories.@(ts|tsx)'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = /** @type config */ ({ ...rootMain.webpackFinal(config, options) });
@@ -15,6 +15,7 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
     // add your own webpack tweaks if needed
 
     registerTsPaths({ config: localConfig, configFile: tsConfigAllPath });
+    configureReactIcons({ config: localConfig });
 
     return localConfig;
   },

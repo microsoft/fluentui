@@ -1,5 +1,5 @@
-import { FlatTreeItemProps } from './FlatTreeItem.types';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { FlatTreeItemProps } from './FlatTreeItem.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { TreeItem } from '../TreeItem/TreeItem';
 
 /**

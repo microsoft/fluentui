@@ -8,6 +8,7 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { mergeStyleSets, normalize, ITheme } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
 import { useTheme } from '@fluentui/react/lib/Theme';
+import type { JSXElement } from '@fluentui/utilities';
 
 const evenItemHeight = 50;
 const oddItemHeight = 25;
@@ -56,12 +57,12 @@ export const ListScrollingExample: React.FunctionComponent = () => {
   const items = useConst(() => createListItems(5000));
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
-  const listRef: React.RefObject<IList> = React.useRef(null);
+  const listRef: React.RefObject<IList | null> = React.useRef(null);
   const theme = useTheme();
   const classNames = React.useMemo(() => generateStyles(theme), [theme]);
 
   const onRenderCell = React.useCallback(
-    (item: IExampleItem, index: number): JSX.Element => {
+    (item: IExampleItem, index: number): JSXElement => {
       return (
         <div data-is-focusable className={index % 2 === 0 ? 'even' : 'odd'}>
           <div className={classNames.itemContent}>

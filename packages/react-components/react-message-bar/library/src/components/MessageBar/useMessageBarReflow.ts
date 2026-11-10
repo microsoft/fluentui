@@ -1,92 +1,94 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
-export function useMessageBarReflow(enabled: boolean = false) {
+export function useMessageBarReflow(enabled: boolean = false): {
+  ref: React.RefCallback<HTMLElement>;
+  reflowing: boolean;
+} {
   const { targetDocument } = useFluent();
-  const prevInlineSizeRef = React.useRef(-1);
-  const messageBarRef = React.useRef<HTMLElement | null>(null);
+  const forceUpdate = React.useReducer(() => ({}), {})[1];
+  const reflowingRef = React.useRef(false);
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
-  const [reflowing, setReflowing] = React.useState(false);
+  const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
+  const singleLineWidthRef = React.useRef(Number.POSITIVE_INFINITY);
 
-  // This layout effect 'sanity checks' what observers have done
-  // since DOM has not been flushed when observers run
-  useIsomorphicLayoutEffect(() => {
-    if (!messageBarRef.current) {
-      return;
-    }
-
-    setReflowing(prevReflowing => {
-      if (!prevReflowing && messageBarRef.current && isReflowing(messageBarRef.current)) {
-        return true;
+  const handleResize: ResizeObserverCallback = React.useCallback(
+    entries => {
+      // Resize observer is only owned by this component - one resize observer entry expected
+      // No need to support multiple fragments - one border box entry expected
+      if (process.env.NODE_ENV !== 'production' && entries.length > 1) {
+        // eslint-disable-next-line no-console
+        console.error(
+          [
+            'useMessageBarReflow: Resize observer should only have one entry. ',
+            'If multiple entries are observed, the first entry will be used.',
+            'This is a bug, please report it to the Fluent UI team.',
+          ].join(' '),
+        );
       }
 
-      return prevReflowing;
-    });
-  }, [reflowing]);
+      const entry = entries[0];
+      // `borderBoxSize` is not supported before Chrome 84, Firefox 92, nor Safari 15.4
+      const inlineSize = entry?.borderBoxSize?.[0]?.inlineSize ?? entry?.target.getBoundingClientRect().width;
 
-  const handleResize: ResizeObserverCallback = React.useCallback(() => {
-    if (!messageBarRef.current) {
-      return;
-    }
-
-    const inlineSize = messageBarRef.current.getBoundingClientRect().width;
-    const scrollWidth = messageBarRef.current.scrollWidth;
-
-    const expanding = prevInlineSizeRef.current < inlineSize;
-    const overflowing = inlineSize < scrollWidth;
-
-    setReflowing(!expanding || overflowing);
-  }, []);
-
-  const handleIntersection: IntersectionObserverCallback = React.useCallback(entries => {
-    if (entries[0].intersectionRatio < 1) {
-      setReflowing(true);
-    }
-  }, []);
-
-  const ref = React.useMemo(() => {
-    let resizeObserver: ResizeObserver | null = null;
-    let intersectionObserer: IntersectionObserver | null = null;
-
-    return (el: HTMLElement | null) => {
-      if (!enabled || !el || !targetDocument?.defaultView) {
-        resizeObserver?.disconnect();
-        intersectionObserer?.disconnect();
+      if (inlineSize === undefined || !entry) {
         return;
       }
 
-      messageBarRef.current = el;
+      const { target } = entry;
+
+      if (!isHTMLElement(target)) {
+        return;
+      }
+
+      let nextReflowing: boolean | undefined;
+
+      if (reflowingRef.current) {
+        if (inlineSize >= singleLineWidthRef.current) {
+          nextReflowing = false;
+        }
+      } else {
+        const scrollWidth = target.scrollWidth;
+        if (inlineSize < scrollWidth) {
+          nextReflowing = true;
+          singleLineWidthRef.current = scrollWidth;
+        }
+      }
+
+      if (typeof nextReflowing !== 'undefined' && reflowingRef.current !== nextReflowing) {
+        reflowingRef.current = nextReflowing;
+        forceUpdate();
+      }
+    },
+    [forceUpdate],
+  );
+
+  const ref = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (!enabled || !el || !targetDocument?.defaultView) {
+        return;
+      }
+
+      resizeObserverRef.current?.disconnect();
 
       const win = targetDocument.defaultView;
-      resizeObserver = new win.ResizeObserver(handleResize);
-      intersectionObserer = new win.IntersectionObserver(handleIntersection, { threshold: 1 });
-
-      intersectionObserer.observe(el);
+      const resizeObserver = new win.ResizeObserver(handleResize);
+      resizeObserverRef.current = resizeObserver;
       resizeObserver.observe(el, { box: 'border-box' });
-    };
-  }, [handleResize, handleIntersection, enabled, targetDocument]);
-
-  return { ref, reflowing };
-}
-
-const isReflowing = (el: HTMLElement) => {
-  return el.scrollWidth > el.offsetWidth || !isFullyInViewport(el);
-};
-
-const isFullyInViewport = (el: HTMLElement) => {
-  const rect = el.getBoundingClientRect();
-  const doc = el.ownerDocument;
-  const win = doc.defaultView;
-
-  if (!win) {
-    return true;
-  }
-
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (win.innerHeight || doc.documentElement.clientHeight) &&
-    rect.right <= (win.innerWidth || doc.documentElement.clientWidth)
+    },
+    [targetDocument, handleResize, enabled],
   );
-};
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserverRef.current?.disconnect();
+    };
+  }, []);
+
+  // eslint-disable-next-line react-hooks/refs
+  return { ref, reflowing: reflowingRef.current };
+}

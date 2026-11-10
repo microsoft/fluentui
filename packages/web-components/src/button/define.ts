@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './button.definition.js';
+import { Button } from './button.js';
 
-definition.define(FluentDesignSystem.registry);
+Button.define(definition);

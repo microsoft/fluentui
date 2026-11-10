@@ -1,16 +1,12 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
-import {
-  ComponentProps,
-  ComponentState,
-  getIntrinsicElementProps,
-  Slot,
-  slot,
-  assertSlots,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, assertSlots } from '@fluentui/react-utilities';
 
 import { useItemLayoutStyles } from './ItemLayout.styles';
 

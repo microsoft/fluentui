@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -31,11 +33,18 @@ const useStyles = makeStyles({
  * Apply styling to the DrawerHeaderTitle slots based on the state
  */
 export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleState): DrawerHeaderTitleState => {
-  'use no memo';
-
   const styles = useStyles();
 
-  const { heading: root = {}, action, components } = state;
+  const {
+    heading: root = {},
+    action,
+    // We should not use components to pass along the base element type of a slot
+    // but there's no way to retrieve the element type of a slot from the slot definition
+    // right now without using SLOT_ELEMENT_TYPE_SYMBOL
+    // TODO: create a method to retrieve the element type of a slot
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    components,
+  } = state;
 
   useDialogTitleStyles_unstable({
     components: {
@@ -46,13 +55,16 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
     action,
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(drawerHeaderTitleClassNames.root, styles.root, state.root.className);
 
   if (state.heading) {
+    // eslint-disable-next-line react-hooks/immutability
     state.heading.className = mergeClasses(drawerHeaderTitleClassNames.heading, state.heading.className);
   }
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = mergeClasses(drawerHeaderTitleClassNames.action, styles.action, state.action.className);
   }
 

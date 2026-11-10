@@ -1,11 +1,10 @@
-import { attr, type ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
-import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import type { MenuList } from '../menu-list/menu-list.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { MenuItemRole, roleForMenuItem } from './menu-item.options.js';
 
 export type MenuItemColumnCount = 0 | 1 | 2;
@@ -22,15 +21,10 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
 };
 
 /**
- * Creates a function that can be used to filter a Node array, selecting only elements with elementInternals role of "menu".
- * @public
- */
-export const menuFilter = (): ElementsFilter => value =>
-  value.nodeType === 1 && (value as MenuList).elementInternals.role === 'menu';
-
-/**
  * A Switch Custom HTML Element.
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
+ *
+ * @tag fluent-menu-item
  *
  * @slot indicator - The checkbox or radio indicator
  * @slot start - Content which can be provided before the menu item content
@@ -39,7 +33,7 @@ export const menuFilter = (): ElementsFilter => value =>
  * @slot submenu-glyph - The submenu expand/collapse indicator
  * @slot submenu - Used to nest menu's within menu items
  * @csspart content - The element wrapping the menu item content
- * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
+ * @fires { Event } change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
  *
  * @public
  */
@@ -139,12 +133,15 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
-    this.submenu?.removeEventListener('toggle', this.toggleHandler);
+    this.submenu?.removeEventListener('toggle', this.handleToggle);
+    this.submenu?.removeEventListener('focusout', this.handleSubmenuFocusOut);
 
     if (next.length) {
       this.submenu = next[0];
       this.submenu.toggleAttribute('popover', true);
-      this.submenu.addEventListener('toggle', this.toggleHandler);
+      this.submenu.setAttribute('focusgroup', 'none');
+      this.submenu.addEventListener('toggle', this.handleToggle);
+      this.submenu.addEventListener('focusout', this.handleSubmenuFocusOut);
       this.elementInternals.ariaHasPopup = 'menu';
       toggleState(this.elementInternals, 'submenu', true);
     } else {
@@ -164,6 +161,8 @@ export class MenuItem extends FASTElement {
 
     this.elementInternals.role = this.role ?? MenuItemRole.menuitem;
     this.elementInternals.ariaChecked = this.role !== MenuItemRole.menuitem ? `${!!this.checked}` : null;
+
+    maybeSetAutoFocus(this);
   }
 
   /**
@@ -175,12 +174,12 @@ export class MenuItem extends FASTElement {
     }
 
     switch (e.key) {
-      case keyEnter:
-      case keySpace:
+      case 'Enter':
+      case ' ':
         this.invoke();
         return false;
 
-      case keyArrowRight:
+      case 'ArrowRight':
         //open/focus on submenu
         if (!this.disabled) {
           this.submenu?.togglePopover(true);
@@ -189,7 +188,7 @@ export class MenuItem extends FASTElement {
 
         return false;
 
-      case keyArrowLeft:
+      case 'ArrowLeft':
         //close submenu
         if (this.parentElement?.hasAttribute('popover')) {
           this.parentElement.togglePopover(false);
@@ -242,16 +241,29 @@ export class MenuItem extends FASTElement {
    * Setup required ARIA on open/close
    * @internal
    */
-  public toggleHandler = (e: Event): void => {
-    if (e instanceof ToggleEvent && e.newState === 'open') {
-      this.setAttribute('tabindex', '-1');
+  public handleToggle = (e: Event): void => {
+    if (!(e instanceof ToggleEvent)) {
+      return;
+    }
+
+    if (e.newState === 'open') {
       this.elementInternals.ariaExpanded = 'true';
       this.setSubmenuPosition();
     }
-    if (e instanceof ToggleEvent && e.newState === 'closed') {
+    if (e.newState === 'closed') {
       this.elementInternals.ariaExpanded = 'false';
-      this.setAttribute('tabindex', '0');
     }
+
+    this.submenu?.setAttribute('focusgroup', e.newState === 'open' ? 'menu' : 'none');
+  };
+
+  /** @internal */
+  public handleSubmenuFocusOut = (e: FocusEvent) => {
+    if (e.relatedTarget && this.submenu?.contains(e.relatedTarget as Node)) {
+      return;
+    }
+
+    this.submenu?.togglePopover(false);
   };
 
   /**

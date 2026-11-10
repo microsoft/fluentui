@@ -1,0 +1,365 @@
+.story {
+  display: block;
+  padding: var(--space-6);
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+
+.calendar {
+  display: grid;
+  align-items: start;
+  gap: var(--space-4);
+  width: fit-content;
+  max-inline-size: 100%;
+  padding: var(--space-4);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow-2);
+}
+
+.calendar:has(> .divider) {
+  grid-template-columns: auto var(--stroke-thin) auto;
+}
+
+.calendar > [data-fui-calendar-picker='day'],
+.calendar > .monthPicker {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.calendar > .todayButton {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.calendar > .divider {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.calendar:has(> .divider) > .monthPicker {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-block-end: var(--space-2);
+}
+
+.heading {
+  padding: var(--space-1) var(--space-2);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: var(--font-weight-semibold);
+  text-align: start;
+}
+
+button.heading {
+  cursor: pointer;
+}
+
+button.heading:hover {
+  background: var(--surface-muted);
+}
+
+.navigation {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.navButton {
+  display: grid;
+  place-items: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.navButton[aria-disabled='true'] {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.navButton[aria-disabled='true']:hover {
+  background: none;
+}
+
+/* ------------------------------------------------------------- day grid */
+
+.grid {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.grid th {
+  width: var(--space-8);
+  height: var(--space-8);
+  color: var(--text-soft);
+  font-size: inherit;
+  font-weight: var(--font-weight-semibold);
+}
+
+.grid td {
+  padding: 0;
+}
+
+/*
+ * Every day's appearance comes from the data attributes the headless layer emits, so none of this
+ * is coupled to a class name the library owns.
+ */
+.grid td button {
+  display: grid;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: var(--stroke-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.grid td button:hover {
+  background: var(--surface-muted);
+}
+
+.grid td[data-outside-month] button {
+  color: var(--text-faint);
+}
+
+.grid td[data-today] button {
+  border-color: var(--border-stronger);
+  font-weight: var(--font-weight-semibold);
+}
+
+.grid td[data-selected] button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.grid td[data-outside-bounds] button {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.grid td[data-outside-bounds] button:hover {
+  background: none;
+}
+
+.grid td[data-marked] button {
+  position: relative;
+}
+
+.grid td[data-marked] button [aria-hidden='true'] {
+  position: absolute;
+  inset-block-end: var(--space-1);
+  inline-size: var(--space-1);
+  block-size: var(--space-1);
+  border-radius: var(--radius-sm);
+  background: currentColor;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-end: var(--space-4);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------- month & year picker */
+
+.monthPicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.pickerGrid {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.pickerGrid > [role='row'] {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: var(--space-1);
+}
+
+.pickerGrid [role='gridcell'] {
+  color: var(--text);
+}
+
+.pickerGrid [role='gridcell'] > button {
+  width: 100%;
+  padding: var(--space-2) var(--space-1);
+  border: var(--stroke-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.pickerGrid [role='gridcell']:hover > button {
+  background: var(--surface-muted);
+}
+
+.pickerGrid [role='gridcell'][data-current] {
+  border-color: var(--border-stronger);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pickerGrid [role='gridcell'][data-current] > button {
+  border-color: var(--border-stronger);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pickerGrid [role='gridcell'][data-selected],
+.pickerGrid [role='gridcell'][aria-selected='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds] {
+  color: var(--text-faint);
+}
+
+.pickerGrid [role='gridcell'][data-selected] > button,
+.pickerGrid [role='gridcell'][aria-selected='true'] > button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds] > button {
+  cursor: default;
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds]:hover > button {
+  background: none;
+}
+
+.divider {
+  align-self: stretch;
+  width: var(--stroke-thin);
+  background: var(--border);
+}
+
+.todayButton {
+  padding: var(--space-2);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.todayButton:hover:not(:disabled):not([aria-disabled='true']) {
+  background: var(--surface-muted);
+}
+
+.todayButton:disabled,
+.todayButton[aria-disabled='true'] {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+/* The headless layer ships no styling, so the announcement region must be hidden by the consumer. */
+.liveRegion {
+  position: absolute;
+  width: var(--stroke-thin);
+  height: var(--stroke-thin);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.selectedDate {
+  margin-block-start: var(--space-4);
+  color: var(--text-muted);
+  font-size: inherit;
+}
+
+/* Day focus belongs to the cell, not its nested button. */
+.grid td:focus-visible,
+button.heading:focus-visible,
+.navButton:focus-visible,
+.todayButton:focus-visible,
+.pickerGrid [role='gridcell']:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: var(--stroke-thin);
+}
+
+@media (max-width: 440px) {
+  .story,
+  .calendar {
+    padding: var(--space-2);
+  }
+}
+
+@media (forced-colors: active) {
+  .grid td[data-today] button,
+  .pickerGrid [role='gridcell'][data-current] {
+    border-color: CanvasText;
+  }
+
+  .grid td[data-selected] button,
+  .pickerGrid [role='gridcell'][data-selected] > button,
+  .pickerGrid [role='gridcell'][aria-selected='true'] > button {
+    forced-color-adjust: none;
+    background: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+  }
+
+  .grid td[data-outside-bounds] button,
+  .pickerGrid [role='gridcell'][data-outside-bounds],
+  .navButton[aria-disabled='true'],
+  .todayButton[aria-disabled='true'] {
+    color: GrayText;
+  }
+
+  .grid td:focus-visible,
+  button.heading:focus-visible,
+  .navButton:focus-visible,
+  .todayButton:focus-visible,
+  .pickerGrid [role='gridcell']:focus-visible {
+    outline-color: CanvasText;
+  }
+}

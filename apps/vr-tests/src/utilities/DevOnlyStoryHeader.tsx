@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const DevOnlyStoryHeader = ({ children }: { children: JSX.Element | string }) => (
+export const DevOnlyStoryHeader = ({ children }: { children: React.ReactElement | string }) => (
   <div
     style={{
       padding: '1em',

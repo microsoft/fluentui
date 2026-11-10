@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as path from 'path';
 import { resetIds, setWarningCallback, resetControlledWarnings } from '../../Utilities';
@@ -11,6 +10,8 @@ import { TextField } from './TextField';
 import { isConformant } from '../../common/isConformant';
 import type { IRefObject } from '../../Utilities';
 import type { ITextFieldStyles, ITextField } from './TextField.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * The currently rendered ITextField.
@@ -287,7 +288,6 @@ describe('TextField with error message', () => {
     sharedBeforeEach();
     jest.useFakeTimers();
   });
-  afterEach(sharedAfterEach);
 
   const errorMessage = 'The string is too long, should not exceed 3 characters.';
   const errorMessageJSX = (
@@ -298,7 +298,7 @@ describe('TextField with error message', () => {
     </span>
   );
 
-  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSX.Element | boolean): void {
+  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSXElement | boolean): void {
     const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 
     if (expectedErrorMessage === false) {
@@ -308,8 +308,10 @@ describe('TextField with error message', () => {
       if (typeof expectedErrorMessage === 'string') {
         expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
       } else if (typeof expectedErrorMessage !== 'boolean') {
-        const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
-        expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
+        // For JSX error messages, compare the text content instead of HTML structure
+        // The <br> in JSX doesn't add a space, so the text content is without space after comma
+        const expectedText = 'The string is too long,should not exceed 3 characters.';
+        expect(errorMessageDOM!.textContent).toEqual(expectedText);
       }
     }
   }
@@ -317,100 +319,167 @@ describe('TextField with error message', () => {
   it('should not validate on render when validateOnLoad is false', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { unmount } = render(
+      <TextField defaultValue="invalid value" onGetErrorMessage={validator} validateOnLoad={false} />,
+    );
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(validator).toHaveBeenCalledTimes(0);
+
+    unmount();
   });
 
   it('should validate on render when validateOnLoad is true', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} validateOnLoad={true} />);
-    jest.runAllTimers();
+    const { unmount } = render(
+      <TextField defaultValue="invalid value" onGetErrorMessage={validator} validateOnLoad={true} />,
+    );
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(validator).toHaveBeenCalledTimes(1);
+
+    unmount();
   });
 
   it('should render error message when onGetErrorMessage returns a string', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole, unmount } = render(
+      <TextField onGetErrorMessage={validator} validateOnLoad={false} />,
+    );
     const input = getByRole('textbox') as HTMLInputElement;
 
     userEvent.type(input, 'also invalid');
-    jest.runAllTimers();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessage);
+
+    unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
+  it('should render error message when onGetErrorMessage returns a JSXElement', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessageJSX : ''));
 
-    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { unmount, container, getByRole } = render(
+      <TextField onGetErrorMessage={validator} validateOnLoad={false} />,
+    );
     const input = getByRole('textbox') as HTMLInputElement;
 
     userEvent.type(input, 'also invalid');
-    jest.runAllTimers();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessageJSX);
+    unmount();
   });
 
   it('should render error message when onGetErrorMessage returns a Promise<string>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessage : ''));
 
-    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole, unmount } = render(
+      <TextField onGetErrorMessage={validator} validateOnLoad={false} />,
+    );
     const input = getByRole('textbox') as HTMLInputElement;
 
     userEvent.type(input, 'also invalid');
 
     // Extra rounds of running everything to account for the debounced validator and the promise...
-    jest.runAllTimers();
-    await flushPromises();
-    jest.runAllTimers();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    await act(async () => {
+      await flushPromises();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessage);
+
+    unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', async () => {
+  it('should render error message when onGetErrorMessage returns a Promise<JSXElement>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessageJSX : ''));
 
-    const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
+    const { container, getByRole, unmount } = render(
+      <TextField onGetErrorMessage={validator} validateOnLoad={false} />,
+    );
     const input = getByRole('textbox') as HTMLInputElement;
 
     userEvent.type(input, 'also invalid');
 
-    jest.runAllTimers();
-    await flushPromises();
-    jest.runAllTimers();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    await act(async () => {
+      await flushPromises();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessageJSX);
+
+    unmount();
   });
 
   it('should render error message on first render when onGetErrorMessage returns a string', () => {
     const validator = jest.fn(() => errorMessage);
-    const { container } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
-    jest.runAllTimers();
+    const { container, unmount } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessage);
+
+    unmount();
   });
 
   it('should render error message on first render when onGetErrorMessage returns a Promise<string>', async () => {
     const validator = jest.fn(() => Promise.resolve(errorMessage));
-    const { container } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
+    const { container, unmount } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
 
-    await flushPromises();
-    jest.runAllTimers();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    await act(async () => {
+      await flushPromises();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, errorMessage);
+
+    unmount();
   });
 
   it('should not render error message when onGetErrorMessage return an empty string', () => {
     const validator = jest.fn(() => '');
     const { container } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(1);
     assertErrorMessage(container, /* exist */ false);
@@ -420,7 +489,9 @@ describe('TextField with error message', () => {
     let actualValue: string | undefined = undefined;
 
     const { container } = render(<TextField onGetErrorMessage={(value: string) => (actualValue = value)} />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     assertErrorMessage(container, /* exist */ false);
     expect(actualValue).toEqual('');
@@ -434,12 +505,16 @@ describe('TextField with error message', () => {
     const { container, rerender } = render(
       <TextField value="initial value" onChange={noOp} onGetErrorMessage={validator} />,
     );
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     assertErrorMessage(container, errorMessage);
 
     rerender(<TextField value="" onChange={noOp} onGetErrorMessage={validator} />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     assertErrorMessage(container, /* exist */ false);
   });
@@ -449,12 +524,16 @@ describe('TextField with error message', () => {
     const baseProps = { validateOnFocusIn: true, onChange: noOp, onGetErrorMessage: validator, validateOnLoad: false };
 
     const { container, rerender } = render(<TextField {...baseProps} value="initial value" />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
 
     rerender(<TextField {...baseProps} value="failValidationValue" />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
@@ -465,12 +544,16 @@ describe('TextField with error message', () => {
     const baseProps = { validateOnFocusOut: true, onChange: noOp, onGetErrorMessage: validator, validateOnLoad: false };
 
     const { container, rerender } = render(<TextField {...baseProps} value="initial value" />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
 
     rerender(<TextField {...baseProps} value="failValidationValue" />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(validator).toHaveBeenCalledTimes(0);
     assertErrorMessage(container, false);
@@ -767,7 +850,9 @@ describe('TextField', () => {
     const { getByRole } = render(<TextField componentRef={textFieldRef} />);
 
     const input = getByRole('textbox') as HTMLInputElement;
-    textField!.focus();
+    act(() => {
+      textField!.focus();
+    });
     expect(document.activeElement).toBe(input);
   });
 
@@ -776,10 +861,16 @@ describe('TextField', () => {
 
     const input = getByRole('textbox') as HTMLInputElement;
 
-    textField!.focus();
+    act(() => {
+      textField!.focus();
+    });
+
     expect(document.activeElement).toBe(input);
 
-    textField!.blur();
+    act(() => {
+      textField!.blur();
+    });
+
     expect(document.activeElement).toBe(document.body);
   });
 
@@ -807,7 +898,9 @@ describe('TextField', () => {
     const { rerender, getByRole } = render(<TextField componentRef={textFieldRef} />);
 
     // focus input
-    textField!.focus();
+    act(() => {
+      textField!.focus();
+    });
     expect(document.activeElement).toBe(getByRole('textbox'));
 
     // switch to multiline
@@ -826,8 +919,10 @@ describe('TextField', () => {
     const { rerender } = render(<TextField componentRef={textFieldRef} defaultValue="some text" />);
 
     // select
-    textField!.focus();
-    textField!.setSelectionRange(start, end);
+    act(() => {
+      textField!.focus();
+      textField!.setSelectionRange(start, end);
+    });
     expect(textField!.selectionStart).toBe(start);
     expect(textField!.selectionEnd).toBe(end);
 

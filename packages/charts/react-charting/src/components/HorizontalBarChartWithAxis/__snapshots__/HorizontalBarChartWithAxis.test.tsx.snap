@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -14,43 +14,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -59,26 +53,26 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -88,8 +82,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -98,57 +92,18 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <defs>
-          <linearGradient
-            id="HBCWA_Gradient4_0_20000"
-          >
-            <stop
-              offset="0"
-              stopColor="#795AA6"
-            />
-            <stop
-              offset="100%"
-              stopColor="#9373C0"
-            />
-          </linearGradient>
-        </defs>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="url(#HBCWA_Gradient4_0_20000)"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -156,7 +111,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -170,49 +125,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -222,10 +165,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 >
                   <button
                     aria-label="Oranges"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -272,16 +215,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #4760D5;
@@ -298,7 +237,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -316,7 +255,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -326,10 +265,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 >
                   <button
                     aria-label="Dogs"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -376,16 +315,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #795AA6;
@@ -402,7 +337,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -420,7 +355,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -430,10 +365,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 >
                   <button
                     aria-label="Apples"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -480,16 +415,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #159195;
@@ -506,7 +437,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -524,7 +455,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -534,10 +465,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 >
                   <button
                     aria-label="Bananas"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="4"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -584,16 +515,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #B146C2;
@@ -610,7 +537,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -639,7 +566,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
 
 exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -651,43 +578,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -696,26 +617,26 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -725,8 +646,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -735,43 +656,18 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#795AA6"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={3}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -779,7 +675,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -793,49 +689,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -845,10 +729,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                 >
                   <button
                     aria-label="Oranges"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -895,16 +779,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -921,7 +801,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -939,7 +819,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -949,10 +829,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                 >
                   <button
                     aria-label="Dogs"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -999,20 +879,16 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
-                            background-color: #795AA6;
-                            border-color: #795AA6;
+                            background-color: #002050;
+                            border-color: #002050;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1020,12 +896,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #795AA6, #795AA6);
+                            content: linear-gradient(to right, #002050, #002050);
                             opacity: ;
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1043,7 +919,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1053,10 +929,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                 >
                   <button
                     aria-label="Apples"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1103,16 +979,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -1129,7 +1001,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1147,7 +1019,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1157,10 +1029,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                 >
                   <button
                     aria-label="Bananas"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="4"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1207,16 +1079,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00bcf2;
@@ -1233,7 +1101,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1262,7 +1130,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
 
 exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartWithAxis correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1274,43 +1142,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1319,26 +1181,26 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1348,8 +1210,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1358,43 +1220,18 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -1402,7 +1239,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -1416,49 +1253,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1468,10 +1293,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                 >
                   <button
                     aria-label="Oranges"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1518,16 +1343,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -1544,7 +1365,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1562,7 +1383,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1572,10 +1393,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                 >
                   <button
                     aria-label="Dogs"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1622,16 +1443,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -1648,7 +1465,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1666,7 +1483,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1676,10 +1493,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                 >
                   <button
                     aria-label="Apples"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1726,16 +1543,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -1752,7 +1565,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1770,7 +1583,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1780,10 +1593,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                 >
                   <button
                     aria-label="Bananas"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="4"
+                    aria-selected="false"
+                    aria-setsize="4"
+                    class=
 
                         {
                           align-items: center;
@@ -1830,16 +1643,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00bcf2;
@@ -1856,7 +1665,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1885,7 +1694,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
 
 exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1897,43 +1706,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1942,26 +1745,26 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1971,8 +1774,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1981,39 +1784,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
 </div>
@@ -2021,7 +1799,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
 
 exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxisLabels correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2033,43 +1811,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2078,26 +1850,26 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2107,8 +1879,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2117,44 +1889,18 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -2162,7 +1908,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -2176,49 +1922,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -2228,10 +1962,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                 >
                   <button
                     aria-label="undefined"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="1"
+                    class=
 
                         {
                           align-items: center;
@@ -2278,16 +2012,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -2304,7 +2034,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2316,313 +2046,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                             line-height: 16px;
                             opacity: ;
                           }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #002050;
-                            border-color: #002050;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #002050, #002050);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #00188f;
-                            border-color: #00188f;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00188f, #00188f);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #0078d4;
-                            border-color: #0078d4;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #0078d4, #0078d4);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
+                    >
+                      undefined
+                    </div>
                   </button>
                 </div>
               </div>
@@ -2637,7 +2063,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
 
 exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2649,43 +2075,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_2"
-  onMouseLeave={[Function]}
+  id="chart_1"
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2694,26 +2114,144 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_1"
+        text-anchor="middle"
         transform="translate(0, -35)"
-      />
+      >
+        <path
+          class="domain"
+          d="M40.5,6V0.5H-19.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(40.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(28.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            1000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(16.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            2000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(4.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            3000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(-7.500000000000002,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            4000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(-19.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="20"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="30"
+          >
+            5000
+          </text>
+        </g>
+      </g>
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2723,8 +2261,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2733,44 +2271,96 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_1"
+        text-anchor="end"
         transform="translate(40, 0)"
-      />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
+      >
+        <path
+          class="domain"
+          d="M-6,-42.5H0.5V28.5H-6"
+          stroke="currentColor"
         />
-         
-         
-         
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,-31.16666666666667)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            String Four
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,-15.388888888888891)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            String Three
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,0.3888888888888875)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            String Two
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,16.166666666666664)"
+        >
+          <line
+            stroke="currentColor"
+            x2="-6"
+          />
+          <text
+            dy="0.32em"
+            fill="currentColor"
+            x="-16"
+          >
+            String One
+          </text>
+        </g>
       </g>
+      <g />
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -2778,7 +2368,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -2792,49 +2382,37 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -2844,10 +2422,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                 >
                   <button
                     aria-label="undefined"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="1"
+                    class=
 
                         {
                           align-items: center;
@@ -2894,16 +2472,12 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -2920,7 +2494,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2932,313 +2506,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                             line-height: 16px;
                             opacity: ;
                           }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #002050;
-                            border-color: #002050;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #002050, #002050);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #00188f;
-                            border-color: #00188f;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00188f, #00188f);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #0078d4;
-                            border-color: #0078d4;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #0078d4, #0078d4);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
+                    >
+                      undefined
+                    </div>
                   </button>
                 </div>
               </div>

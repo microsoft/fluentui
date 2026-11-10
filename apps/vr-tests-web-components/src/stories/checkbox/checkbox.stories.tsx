@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
-import { CheckboxDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import { Steps } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
-CheckboxDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/checkbox/define.js';
 
 export default {
   title: 'Checkbox',
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-          <div className="testWrapper" style={{ width: '300px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '300px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() } },
 };
 
 export const Default = () =>

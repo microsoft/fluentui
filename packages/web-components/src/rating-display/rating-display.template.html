@@ -1,0 +1,9 @@
+<f-template name="fluent-rating-display" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <div f-ref="{display}" class="display" aria-hidden="true"></div>
+    <slot name="icon" f-ref="{iconSlot}" @slotchange="{handleSlotChange()}"></slot>
+    <slot name="value"><span class="value-label" aria-hidden="true">{{value}}</span></slot>
+    <slot name="count"><span class="count-label" aria-hidden="true">{{formattedCount}}</span></slot>
+  </template>
+</f-template>

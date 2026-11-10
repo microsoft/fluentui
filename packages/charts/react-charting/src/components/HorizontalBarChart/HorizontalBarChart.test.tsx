@@ -1,31 +1,14 @@
-jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import {
-  IChartProps,
-  IChartDataPoint,
-  IHorizontalBarChartProps,
-  HorizontalBarChart,
-  HorizontalBarChartVariant,
-} from './index';
-import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
-import toJson from 'enzyme-to-json';
-import * as renderer from 'react-test-renderer';
+import { IChartProps, IChartDataPoint, HorizontalBarChart, HorizontalBarChartVariant } from './index';
+import { render, act } from '@testing-library/react';
 
-// Wrapper of the HorizontalBarChart to be tested.
-let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 function sharedBeforeEach() {
   resetIds();
-}
-
-function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
 }
 
 export const chartPoints: IChartProps[] = [
@@ -54,7 +37,20 @@ export const chartPoints: IChartProps[] = [
     ],
   },
 ];
-
+const chartPointsWithBenchMark: IChartProps[] = [
+  {
+    chartTitle: 'one',
+    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: '#004b50' }],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: '#5c2d91' }],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: '#a4262c' }],
+  },
+];
 describe('HorizontalBarChart snapShot testing', () => {
   beforeEach(() => {
     sharedBeforeEach();
@@ -65,51 +61,46 @@ describe('HorizontalBarChart snapShot testing', () => {
   });
 
   it('Should render absolute-scale variant correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Should not render bar labels in absolute-scale variant', () => {
-    const component = renderer.create(
+    const { container } = render(
       <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    const component = renderer.create(<HorizontalBarChart data={chartPoints} enableGradient={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<HorizontalBarChart data={chartPoints} enableGradient={true} />);
+    expect(container).toMatchSnapshot();
   });
   it('Should render rounded corners on bars', () => {
-    const component = renderer.create(<HorizontalBarChart data={chartPoints} roundCorners={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<HorizontalBarChart data={chartPoints} roundCorners={true} />);
+    expect(container).toMatchSnapshot();
   });
 });
 
 describe('HorizontalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
 
   it('Should mount callout when hideTootip false ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    const wrapper = render(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
+    const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerHorizonalBar ', () => {
-    wrapper = mount(
+    const wrapper = render(
       <HorizontalBarChart
         data={chartPoints}
         onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
@@ -121,44 +112,51 @@ describe('HorizontalBarChart - basic props', () => {
         }
       />,
     );
-    const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM).toBeDefined();
   });
 
   it('Should not render onRenderCalloutPerHorizonalBar ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerHorizonalBar');
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerHorizonalBar');
     expect(renderedDOM!.length).toBe(0);
   });
 });
 
 describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
-
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(HorizontalBarChartBase.prototype, 'render');
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
     };
-    const component = mount(<HorizontalBarChart {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    const { rerender, container } = render(<HorizontalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<HorizontalBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).toBe(htmlBefore);
   });
 
   it('prop changes', () => {
-    const renderMock = jest.spyOn(HorizontalBarChartBase.prototype, 'render');
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
+      hidelabels: false,
     };
-    const component = mount(<HorizontalBarChart {...props} />);
-    component.setProps({ ...props, hideTooltip: true });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+
+    const props1 = {
+      data: chartPointsWithBenchMark,
+      height: 300,
+      width: 600,
+      hidelabels: true,
+    };
+    const { rerender, container } = render(<HorizontalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<HorizontalBarChart {...props1} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
 
@@ -168,19 +166,23 @@ describe('HorizontalBarChart - mouse events', () => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
-    sharedAfterEach();
     jest.spyOn(global.Math, 'random').mockRestore();
   });
 
-  it('Should render callout correctly on mouseover', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
-    wrapper.find('rect').at(2).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  it('Should render callout correctly on mouseover', async () => {
+    const wrapper = render(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    // Find the first bar (rect) and fire mouseOver
+    const rects = wrapper.container.querySelectorAll('rect');
+    expect(rects.length).toBeGreaterThan(0);
+    act(() => {
+      rects[2].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
+    // Wait for callout to appear
+    expect(wrapper.container).toMatchSnapshot();
   });
 
-  it('Should render customized callout on mouseover', () => {
-    wrapper = mount(
+  it('Should render customized callout on mouseover', async () => {
+    const { container } = render(
       <HorizontalBarChart
         data={chartPoints}
         calloutProps={{ doNotLayer: true }}
@@ -193,9 +195,13 @@ describe('HorizontalBarChart - mouse events', () => {
         }
       />,
     );
-    wrapper.find('rect').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const rects = container.querySelectorAll('rect');
+    expect(rects.length).toBeGreaterThan(0);
+    act(() => {
+      rects[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
+    // Wait for the custom callout content to appear
+    expect(container).toMatchSnapshot();
   });
 });
 
@@ -203,14 +209,14 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
 
   it('No empty chart aria label div rendered', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<HorizontalBarChart data={[]} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    const wrapper = render(<HorizontalBarChart data={[]} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
 });

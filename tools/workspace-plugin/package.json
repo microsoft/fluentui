@@ -6,7 +6,6 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
-    "@nx/devkit": "~19.5.7"
-  },
-  "devDependencies": {}
+    "@nx/devkit": "22.7.9"
+  }
 }

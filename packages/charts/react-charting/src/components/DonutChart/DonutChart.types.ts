@@ -3,6 +3,7 @@ import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/r
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChartProps, IChartDataPoint, IChart } from './index';
+import type { ITitleStyles } from '../../utilities/Common.styles';
 
 export interface IDonutChart {}
 
@@ -11,6 +12,11 @@ export interface IDonutChart {}
  * {@docCategory DonutChart}
  */
 export interface IDonutChartProps extends ICartesianChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -75,6 +81,14 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IChart>;
+
+  /**
+   * Rendering order of the legend
+   * @default 'default'
+   * 'default' - as per data provided
+   * 'sorted' - in descending order of value
+   */
+  order?: 'default' | 'sorted';
 }
 
 /**
@@ -101,4 +115,24 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: IStyle;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: IStyle;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: IStyle;
 }

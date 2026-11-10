@@ -11,11 +11,16 @@ import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
 import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
+import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
+import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import { LineChartAnnotationsExample } from './LineChart.Annotations.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const LineChartAnnotationsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Annotations.Example.tsx') as string;
 const MultipleLineChartExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode =
@@ -30,6 +35,10 @@ const LineChartNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Negative.Example.tsx') as string;
 const LineChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AllNegative.Example.tsx') as string;
+const LineChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.SecondaryYAxis.Example.tsx') as string;
+const LineChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LogAxis.Example.tsx') as string;
 
 export const LineChartPageProps: IDocPageProps = {
   title: 'LineChart',
@@ -46,6 +55,11 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart styled',
       code: LineChartStyledExampleCode,
       view: <LineChartStyledExample />,
+    },
+    {
+      title: 'LineChart with annotations',
+      code: LineChartAnnotationsExampleCode,
+      view: <LineChartAnnotationsExample />,
     },
     {
       title: 'Multiple Line chart',
@@ -81,6 +95,16 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart with All Negative Y values',
       code: LineChartAllNegativeExampleCode,
       view: <LineChartAllNegativeExample />,
+    },
+    {
+      title: 'LineChart secondary y-axis',
+      code: LineChartSecondaryYAxisExampleCode,
+      view: <LineChartSecondaryYAxisExample />,
+    },
+    {
+      title: 'LineChart log axis',
+      code: LineChartLogAxisExampleCode,
+      view: <LineChartLogAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartOverview.md'),

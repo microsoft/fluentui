@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-import { mount } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { fireEvent, render } from '@testing-library/react';
 
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
 import { isConformant } from '../../common/isConformant';
 import type { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
 import type { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 const linkOne: INavLink = {
   key: 'Bing',
@@ -23,7 +24,7 @@ const linkTwo: INavLink = {
 
 describe('Nav', () => {
   it('renders Nav correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Nav
         groups={[
           {
@@ -37,8 +38,7 @@ describe('Nav', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -50,7 +50,7 @@ describe('Nav', () => {
   });
 
   it('render Nav with overrides correctly', () => {
-    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
+    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSXElement | null => {
       const { defaultRender: DefaultRender, ...buttonProps } = props;
 
       if (!DefaultRender) {
@@ -64,7 +64,7 @@ describe('Nav', () => {
       );
     };
 
-    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
+    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }
@@ -75,7 +75,7 @@ describe('Nav', () => {
     function onRenderGroupHeader(
       props?: IRenderGroupHeaderProps,
       defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
-    ): JSX.Element | null {
+    ): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }
@@ -89,16 +89,16 @@ describe('Nav', () => {
       },
     ];
 
-    const component = renderer.create(
+    const { container } = render(
       <Nav groups={groups} onRenderGroupHeader={onRenderGroupHeader} onRenderLink={onRenderNavLink} linkAs={LinkAs} />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onClick() correctly', () => {
     const handler = jest.fn();
-    const nav = mount<NavBase>(
+    const nav = render(
       <NavBase
         groups={[
           {
@@ -114,14 +114,14 @@ describe('Nav', () => {
       />,
     );
 
-    const link = nav.find('a.ms-Button');
-    link.simulate('click');
+    const link = nav.container.querySelector('a.ms-Button') as HTMLAnchorElement;
+    fireEvent.click(link);
     expect(handler.mock.calls.length).toBe(1);
   });
 
   it('do not call onClick() on disabled link', () => {
     const handler = jest.fn();
-    const nav = mount<NavBase>(
+    const nav = render(
       <NavBase
         groups={[
           {
@@ -138,36 +138,36 @@ describe('Nav', () => {
       />,
     );
 
-    const link = nav.find('button.ms-Button');
-    link.simulate('click');
+    const link = nav.container.querySelector('button.ms-Button') as HTMLButtonElement;
+    fireEvent.click(link);
     expect(handler.mock.calls.length).toBe(0);
   });
 
   it('sets ARIA label on the nav element', () => {
     const label = 'The navigation label';
-    const nav = mount<NavBase>(<Nav ariaLabel={label} groups={[]} />);
-    expect(nav.find('[role="navigation"]').prop('aria-label')).toEqual(label);
+    const nav = render(<Nav ariaLabel={label} groups={[]} />);
+    expect(nav.container.querySelector('[role="navigation"]')?.getAttribute('aria-label')).toEqual(label);
   });
 
   it('uses location.href to determine link selected status if state/props is not set', () => {
     const props = { groups: [{ links: [linkOne, linkTwo] }] };
-    const nav = mount<NavBase>(<Nav {...props} />);
+    const nav = render(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing1');
-    nav.setProps(props);
+    nav.rerender(<Nav {...props} />);
 
-    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
-    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
+    expect(nav.container.querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
+    expect(nav.container.querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });
 
   it('prioritizes state over location.href to determine link selected status', () => {
     const props = { groups: [{ links: [linkOne, linkTwo] }] };
-    const nav = mount<NavBase>(<Nav {...props} />);
+    const nav = render(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing2');
-    nav.setProps(props);
+    nav.rerender(<Nav {...props} />);
 
-    nav.find('.ms-Button').first().simulate('click');
-    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
-    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
+    fireEvent.click(nav.container.querySelector('.ms-Button') as HTMLButtonElement);
+    expect(nav.container.querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
+    expect(nav.container.querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });
 
   it('places the correct values on rel depending on the url and target specified', () => {
@@ -194,7 +194,7 @@ describe('Nav', () => {
       target: '_blank',
       url: 'http://cdpn.io/bar',
     };
-    const nav = mount<NavBase>(
+    const nav = render(
       <Nav
         groups={[
           { links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] },
@@ -202,7 +202,7 @@ describe('Nav', () => {
       />,
     );
 
-    const links = nav.getDOMNode().querySelectorAll('.ms-Nav-link');
+    const links = nav.container.querySelectorAll('.ms-Nav-link');
     expect(links.length).toBe(4);
     expect(links[0].getAttribute('rel')).toBeFalsy();
     expect(links[1].getAttribute('rel')).toBeFalsy();
@@ -227,14 +227,14 @@ describe('Nav', () => {
       },
     ];
 
-    const nav = mount<NavBase>(<Nav groups={groups} />);
+    const nav = render(<Nav groups={groups} />);
 
-    expect(nav.find('.ms-Nav-chevronButton').getElement().props['aria-expanded']).toEqual(true);
+    expect(nav.container.querySelector('.ms-Nav-chevronButton')?.getAttribute('aria-expanded')).toEqual('true');
 
     //update groups isExpanded state to false
     const updatedGroups = [{ ...groups[0], isExpanded: false }];
-    nav.setProps({ groups: updatedGroups });
+    nav.rerender(<Nav groups={updatedGroups} />);
 
-    expect(nav.find('.ms-Nav-chevronButton').getElement().props['aria-expanded']).toEqual(false);
+    expect(nav.container.querySelector('.ms-Nav-chevronButton')?.getAttribute('aria-expanded')).toEqual('false');
   });
 });

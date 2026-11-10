@@ -6,14 +6,11 @@ const { getConfig } = require('./utils');
 const { scope } = getConfig({ version: 'web-components' });
 
 /**
- * @type {typeof sharedConfig}
+ * @type {import('./shared.config').ScopedConfig}
  */
 const config = {
   ...sharedConfig,
-  scope: [...sharedConfig.scope, ...scope],
-  changelog: {
-    ...sharedConfig.changelog,
-  },
+  scope,
 };
 
 module.exports = config;

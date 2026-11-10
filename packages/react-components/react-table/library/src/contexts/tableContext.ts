@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { TableContextValue } from '../components/Table/Table.types';
+import type { TableContextValue } from '../components/Table/Table.types';
 
 const tableContext = React.createContext<TableContextValue | undefined>(undefined);
 
@@ -10,4 +12,4 @@ export const tableContextDefaultValue: TableContextValue = {
 };
 
 export const TableContextProvider = tableContext.Provider;
-export const useTableContext = () => React.useContext(tableContext) ?? tableContextDefaultValue;
+export const useTableContext = (): TableContextValue => React.useContext(tableContext) ?? tableContextDefaultValue;

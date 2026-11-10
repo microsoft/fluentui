@@ -1,0 +1,192 @@
+'use client';
+
+import type * as React from 'react';
+import {
+  getPartitionedNativeProps,
+  getPercentInRange,
+  useId,
+  slot,
+  useControllableState,
+  useEventCallback,
+} from '@fluentui/react-utilities';
+import { colorSliderCSSVars } from './ColorSlider.constants';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type {
+  ColorSliderBaseProps,
+  ColorSliderBaseState,
+  ColorSliderProps,
+  ColorSliderState,
+} from './ColorSlider.types';
+import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
+import { MIN, HUE_MAX, MAX as COLOR_MAX } from '../../utils/constants';
+import { createHsvColor } from '../../utils/createHsvColor';
+import { clampValue, type ChannelActions, adjustChannel } from '../../utils/adjustChannel';
+import type { HsvColor } from '../../types/color';
+import { INITIAL_COLOR_HSV } from '../../utils/constants';
+import { createHslColor, createHslColorString } from '../../utils/createHslColor';
+
+/**
+ * Create the base state required to render unstyled ColorSlider.
+ *
+ * The returned state can be modified with hooks before being passed to renderColorSlider_unstable.
+ *
+ * @param props - props from this instance of ColorSlider
+ * @param ref - reference to root HTMLInputElement of ColorSlider
+ */
+export const useColorSliderBase_unstable = (
+  props: ColorSliderBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): ColorSliderBaseState => {
+  'use no memo'; // justified: compiler would optimize useColorSlider_unstable — manual opt-out to preserve runtime behavior
+
+  const { dir } = useFluent();
+  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['onChange', 'color'],
+  });
+
+  const {
+    color,
+    channel = 'hue',
+    onChange = onChangeFromContext,
+    vertical,
+    // Slots
+    root,
+    input,
+    rail,
+    thumb,
+  } = props;
+
+  const hslColor = createHslColor(color || colorFromContext);
+  const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
+    defaultState: props.defaultColor,
+    state: color || colorFromContext,
+    initialState: INITIAL_COLOR_HSV,
+  });
+
+  const MAX = channel === 'hue' ? HUE_MAX : COLOR_MAX;
+
+  const valueChannelActions: ChannelActions<number> = {
+    hue: clampValue(currentColor.h),
+    saturation: clampValue(currentColor.s * 100),
+    value: clampValue(currentColor.v * 100),
+  };
+
+  const clampedValue = adjustChannel(channel, valueChannelActions);
+  const valuePercent = getPercentInRange(clampedValue, MIN, MAX);
+
+  const inputOnChange = input?.onChange;
+
+  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const newValue = Number(event.target.value);
+    const colorActions: ChannelActions<() => HsvColor> = {
+      hue: () => createHsvColor({ ...currentColor, h: newValue }),
+      saturation: () => createHsvColor({ ...currentColor, s: newValue / 100 }),
+      value: () => createHsvColor({ ...currentColor, v: newValue / 100 }),
+    };
+    const newColor = adjustChannel(channel, colorActions)();
+
+    setCurrentColor(newColor);
+
+    inputOnChange?.(event);
+    onChange?.(event, {
+      type: 'change',
+      event,
+      color: newColor,
+    });
+  });
+
+  const rootVariables = {
+    [colorSliderCSSVars.sliderDirectionVar]: vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
+    [colorSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
+    [colorSliderCSSVars.thumbColorVar]:
+      channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : createHslColorString(currentColor),
+    [colorSliderCSSVars.railColorVar]:
+      channel === 'hue'
+        ? `hsl(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
+        : createHslColorString({
+            ...currentColor,
+            ...(channel === 'saturation' ? { s: 1 } : { v: 1 }),
+            a: 1,
+          }),
+    ...(channel !== 'hue' && {
+      [colorSliderCSSVars.railColorLowVar]: createHslColorString({
+        ...currentColor,
+        ...(channel === 'saturation' ? { s: 0 } : { v: 0 }),
+        a: 1,
+      }),
+    }),
+  };
+
+  const state: ColorSliderBaseState = {
+    vertical,
+    channel,
+    components: {
+      input: 'input',
+      rail: 'div',
+      root: 'div',
+      thumb: 'div',
+    },
+    root: slot.always(root, {
+      defaultProps: {
+        role: 'group',
+        ...nativeProps.root,
+      },
+      elementType: 'div',
+    }),
+    input: slot.always(input, {
+      defaultProps: {
+        id: useId('slider-', props.id),
+        ref,
+        min: MIN,
+        max: MAX,
+        tabIndex: 0,
+        ['aria-orientation']: vertical ? 'vertical' : 'horizontal',
+        ...nativeProps.primary,
+        type: 'range',
+      },
+      elementType: 'input',
+    }),
+    rail: slot.always(rail, { elementType: 'div' }),
+    thumb: slot.always(thumb, { elementType: 'div' }),
+  };
+
+  // Root props
+  state.root.style = {
+    ...rootVariables,
+    ...state.root.style,
+  };
+
+  // Input Props
+  state.input.value = clampedValue;
+  state.input.onChange = _onChange;
+  return state;
+};
+
+/**
+ * Create the state required to render ColorSlider.
+ *
+ * The returned state can be modified with hooks such as useColorSliderStyles_unstable,
+ * before being passed to renderColorSlider_unstable.
+ *
+ * @param props - props from this instance of ColorSlider
+ * @param ref - reference to root HTMLInputElement of ColorSlider
+ */
+export const useColorSlider_unstable = (
+  props: ColorSliderProps,
+  ref: React.Ref<HTMLInputElement>,
+): ColorSliderState => {
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+
+  const { shape = shapeFromContext, ...baseProps } = props;
+
+  const state: ColorSliderState = {
+    ...useColorSliderBase_unstable(baseProps, ref),
+    shape,
+  };
+
+  return state;
+};

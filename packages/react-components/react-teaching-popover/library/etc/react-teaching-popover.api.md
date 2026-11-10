@@ -4,72 +4,71 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { Button } from '@fluentui/react-button';
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { EventData } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { Button } from '@fluentui/react-button';
+import type { ButtonProps } from '@fluentui/react-button';
+import type { ButtonState } from '@fluentui/react-button';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
+import { JSXElement } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
+import { PopoverContextValues } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
-import { PopoverSurfaceSlots } from '@fluentui/react-popover';
-import { PopoverSurfaceState } from '@fluentui/react-popover';
-import { PopoverTriggerChildProps } from '@fluentui/react-popover';
-import { PopoverTriggerProps } from '@fluentui/react-popover';
-import { PopoverTriggerState } from '@fluentui/react-popover';
+import type { PopoverSurfaceSlots } from '@fluentui/react-popover';
+import type { PopoverSurfaceState } from '@fluentui/react-popover';
+import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
+import type { PopoverTriggerProps } from '@fluentui/react-popover';
+import type { PopoverTriggerState } from '@fluentui/react-popover';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
-import { Slot } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderTeachingPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
 
 // @public
-export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSX.Element;
+export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCarouselState, contextValues: TeachingPopoverCarouselContextValues) => JSX.Element;
+export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCarouselState, contextValues: TeachingPopoverCarouselContextValues) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselCard_unstable: (state: TeachingPopoverCarouselCardState) => JSX.Element;
+export const renderTeachingPopoverCarouselCard_unstable: (state: TeachingPopoverCarouselCardState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselFooter_unstable: (state: TeachingPopoverCarouselFooterState) => JSX.Element;
+export const renderTeachingPopoverCarouselFooter_unstable: (state: TeachingPopoverCarouselFooterState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState) => JSX.Element;
+export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSX.Element;
+export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselNavButton_unstable: (state: TeachingPopoverCarouselNavButtonState) => JSX.Element;
+export const renderTeachingPopoverCarouselNavButton_unstable: (state: TeachingPopoverCarouselNavButtonState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselPageCount_unstable: (state: TeachingPopoverCarouselPageCountState) => JSX.Element;
+export const renderTeachingPopoverCarouselPageCount_unstable: (state: TeachingPopoverCarouselPageCountState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverFooter_unstable: (state: TeachingPopoverFooterState) => JSX.Element;
+export const renderTeachingPopoverFooter_unstable: (state: TeachingPopoverFooterState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverHeader_unstable: (state: TeachingPopoverHeaderState) => JSX.Element;
+export const renderTeachingPopoverHeader_unstable: (state: TeachingPopoverHeaderState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverSurface_unstable: (state: TeachingPopoverSurfaceState) => JSX.Element;
+export const renderTeachingPopoverSurface_unstable: (state: TeachingPopoverSurfaceState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverTitle_unstable: (state: TeachingPopoverTitleState) => JSX.Element;
+export const renderTeachingPopoverTitle_unstable: (state: TeachingPopoverTitleState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverTrigger_unstable: (state: TeachingPopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderTeachingPopoverTrigger_unstable: (state: TeachingPopoverTriggerState) => JSXElement | null;
 
 // @public
 export const TeachingPopover: React_2.FC<TeachingPopoverProps>;
@@ -96,6 +95,12 @@ export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> 
 
 // @public
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps>;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselBaseProps = TeachingPopoverCarouselProps;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselBaseState = Omit<TeachingPopoverCarouselState, 'appearance'>;
 
 // @public
 export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps>;
@@ -124,6 +129,12 @@ export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverC
 
 // @public
 export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps>;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarouselFooterButtonProps;
+
+// @public
+export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;
 
 // @public (undocumented)
 export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<TeachingPopoverCarouselFooterButtonSlots>;
@@ -167,8 +178,20 @@ export type TeachingPopoverCarouselFooterState = ComponentState<Required<Teachin
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
 
+// @public (undocumented)
+export type TeachingPopoverCarouselNavBaseProps = TeachingPopoverCarouselNavProps;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselNavBaseState = TeachingPopoverCarouselNavState;
+
 // @public
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselNavButtonBaseProps = TeachingPopoverCarouselNavButtonProps;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselNavButtonBaseState = Omit<TeachingPopoverCarouselNavButtonState, 'appearance'>;
 
 // @public (undocumented)
 export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots>;
@@ -232,12 +255,7 @@ export type TeachingPopoverCarouselPageCountState = ComponentState<TeachingPopov
 };
 
 // @public
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
-    defaultValue?: string;
-    value?: string;
-    onValueChange?: EventHandler<CarouselValueChangeData>;
-    onFinish?: EventHandler<CarouselValueChangeData>;
-};
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & UseCarouselOptions;
 
 // @public (undocumented)
 export type TeachingPopoverCarouselSlots = {
@@ -249,6 +267,15 @@ export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopov
 
 // @public
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
+
+// @public
+export type TeachingPopoverFooterBaseProps = DistributiveOmit<TeachingPopoverFooterProps, 'primary' | 'secondary'>;
+
+// @public
+export type TeachingPopoverFooterBaseState = ComponentState<Pick<TeachingPopoverFooterSlots, 'root'>> & {
+    footerLayout?: 'horizontal' | 'vertical';
+    handleButtonClick: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+};
 
 // @public (undocumented)
 export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFooterSlots>;
@@ -263,6 +290,12 @@ export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlo
 
 // @public
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
+
+// @public (undocumented)
+export type TeachingPopoverHeaderBaseProps = TeachingPopoverHeaderProps;
+
+// @public (undocumented)
+export type TeachingPopoverHeaderBaseState = Omit<TeachingPopoverHeaderState, 'appearance'>;
 
 // @public (undocumented)
 export const teachingPopoverHeaderClassNames: SlotClassNames<TeachingPopoverHeaderSlots>;
@@ -305,6 +338,12 @@ export type TeachingPopoverSurfaceState = PopoverSurfaceState;
 export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps>;
 
 // @public (undocumented)
+export type TeachingPopoverTitleBaseProps = TeachingPopoverTitleProps;
+
+// @public (undocumented)
+export type TeachingPopoverTitleBaseState = Omit<TeachingPopoverTitleState, 'appearance'>;
+
+// @public (undocumented)
 export const teachingPopoverTitleClassNames: SlotClassNames<TeachingPopoverTitleSlots>;
 
 // @public
@@ -344,6 +383,9 @@ export const useTeachingPopoverBodyStyles_unstable: (state: TeachingPopoverBodyS
 export const useTeachingPopoverCarousel_unstable: (props: TeachingPopoverCarouselProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselState;
 
 // @public
+export const useTeachingPopoverCarouselBase_unstable: (props: TeachingPopoverCarouselBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselBaseState;
+
+// @public
 export const useTeachingPopoverCarouselCard_unstable: (props: TeachingPopoverCarouselCardProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselCardState;
 
 // @public
@@ -359,6 +401,9 @@ export const useTeachingPopoverCarouselFooter_unstable: (props: TeachingPopoverC
 export const useTeachingPopoverCarouselFooterButton_unstable: (props: TeachingPopoverCarouselFooterButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselFooterButtonState;
 
 // @public
+export const useTeachingPopoverCarouselFooterButtonBase_unstable: (props: TeachingPopoverCarouselFooterButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselFooterButtonBaseState;
+
+// @public
 export const useTeachingPopoverCarouselFooterButtonStyles_unstable: (state: TeachingPopoverCarouselFooterButtonState) => TeachingPopoverCarouselFooterButtonState;
 
 // @public
@@ -368,7 +413,13 @@ export const useTeachingPopoverCarouselFooterStyles_unstable: (state: TeachingPo
 export const useTeachingPopoverCarouselNav_unstable: (props: TeachingPopoverCarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavState;
 
 // @public
+export const useTeachingPopoverCarouselNavBase_unstable: (props: TeachingPopoverCarouselNavBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavBaseState;
+
+// @public
 export const useTeachingPopoverCarouselNavButton_unstable: (props: TeachingPopoverCarouselNavButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselNavButtonState;
+
+// @public
+export const useTeachingPopoverCarouselNavButtonBase_unstable: (props: TeachingPopoverCarouselNavButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselNavButtonBaseState;
 
 // @public
 export const useTeachingPopoverCarouselNavButtonStyles_unstable: (state: TeachingPopoverCarouselNavButtonState) => TeachingPopoverCarouselNavButtonState;
@@ -385,11 +436,20 @@ export const useTeachingPopoverCarouselPageCountStyles_unstable: (state: Teachin
 // @public
 export const useTeachingPopoverCarouselStyles_unstable: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
 
+// @public (undocumented)
+export const useTeachingPopoverContextValues_unstable: (state: TeachingPopoverState) => TeachingPopoverContextValues;
+
 // @public
 export const useTeachingPopoverFooter_unstable: (props: TeachingPopoverFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverFooterState;
 
 // @public
+export const useTeachingPopoverFooterBase_unstable: (props: TeachingPopoverFooterBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverFooterBaseState;
+
+// @public
 export const useTeachingPopoverHeader_unstable: (props: TeachingPopoverHeaderProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverHeaderState;
+
+// @public
+export const useTeachingPopoverHeaderBase_unstable: (props: TeachingPopoverHeaderBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverHeaderBaseState;
 
 // @public
 export const useTeachingPopoverHeaderStyles_unstable: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
@@ -402,6 +462,9 @@ export const useTeachingPopoverSurfaceStyles_unstable: (state: TeachingPopoverSu
 
 // @public
 export const useTeachingPopoverTitle_unstable: (props: TeachingPopoverTitleProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverTitleState;
+
+// @public
+export const useTeachingPopoverTitleBase_unstable: (props: TeachingPopoverTitleBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverTitleBaseState;
 
 // @public
 export const useTeachingPopoverTitleStyles_unstable: (state: TeachingPopoverTitleState) => TeachingPopoverTitleState;

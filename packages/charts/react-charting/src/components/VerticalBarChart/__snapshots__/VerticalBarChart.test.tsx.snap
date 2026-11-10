@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -14,43 +14,37 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -59,26 +53,26 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -88,8 +82,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -98,11 +92,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -113,7 +107,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -121,7 +115,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -135,49 +129,37 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -187,10 +169,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -237,16 +219,12 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -263,7 +241,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -281,7 +259,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -291,10 +269,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -341,16 +319,12 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -367,7 +341,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -385,7 +359,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -395,10 +369,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -445,16 +419,12 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -471,7 +441,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -500,7 +470,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 
 exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -512,43 +482,37 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -557,26 +521,26 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -586,8 +550,8 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -596,11 +560,11 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -611,7 +575,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -619,7 +583,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -633,49 +597,37 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -685,10 +637,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -735,16 +687,12 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -761,7 +709,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -779,7 +727,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -789,10 +737,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -839,16 +787,12 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -865,7 +809,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -883,7 +827,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -893,10 +837,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -943,16 +887,12 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -969,7 +909,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -998,7 +938,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
 
 exports[`VerticalBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1010,43 +950,37 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1055,26 +989,26 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1084,8 +1018,8 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1094,11 +1028,11 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -1109,7 +1043,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -1117,7 +1051,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -1131,49 +1065,37 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1183,10 +1105,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1233,16 +1155,12 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -1259,7 +1177,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1277,7 +1195,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1287,10 +1205,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1337,16 +1255,12 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -1363,7 +1277,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1381,7 +1295,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1391,10 +1305,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1441,16 +1355,12 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -1467,7 +1377,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1496,7 +1406,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
 
 exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1508,43 +1418,37 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1553,26 +1457,26 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1582,8 +1486,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1592,11 +1496,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -1607,7 +1511,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -1615,7 +1519,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -1629,49 +1533,37 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1681,10 +1573,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1731,16 +1623,12 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -1757,7 +1645,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1775,7 +1663,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1785,10 +1673,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1835,16 +1723,12 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -1861,7 +1745,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1879,7 +1763,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1889,10 +1773,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -1939,16 +1823,12 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -1965,7 +1845,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1994,7 +1874,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
 exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2006,43 +1886,37 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2051,26 +1925,26 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2080,8 +1954,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2090,11 +1964,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2105,7 +1979,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -2113,7 +1987,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -2127,21 +2001,18 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={false}
-        className=
+        aria-multiselectable="false"
+        class=
             ms-FocusZone
             &:focus {
               outline: none;
             }
         data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
         role="listbox"
       >
         <div
-          className=
+          class=
               ms-OverflowSet
               {
                 display: flex;
@@ -2152,7 +2023,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="group"
         >
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -2162,10 +2033,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           >
             <button
               aria-label="First"
-              aria-posinset={1}
-              aria-selected={false}
-              aria-setsize={3}
-              className=
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class=
 
                   {
                     align-items: center;
@@ -2212,16 +2083,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
+              data-is-focusable="true"
               role="option"
+              tabindex="0"
             >
               <div
-                className=
+                class=
 
                     {
                       background-color: #0078d4;
@@ -2238,7 +2105,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     }
               />
               <div
-                className=
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -2256,7 +2123,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             </button>
           </div>
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -2266,10 +2133,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           >
             <button
               aria-label="Second"
-              aria-posinset={2}
-              aria-selected={false}
-              aria-setsize={3}
-              className=
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class=
 
                   {
                     align-items: center;
@@ -2316,16 +2183,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
+              data-is-focusable="true"
               role="option"
+              tabindex="-1"
             >
               <div
-                className=
+                class=
 
                     {
                       background-color: #002050;
@@ -2342,7 +2205,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     }
               />
               <div
-                className=
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -2360,7 +2223,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             </button>
           </div>
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -2370,10 +2233,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           >
             <button
               aria-label="Third"
-              aria-posinset={3}
-              aria-selected={false}
-              aria-setsize={3}
-              className=
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class=
 
                   {
                     align-items: center;
@@ -2420,16 +2283,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
+              data-is-focusable="true"
               role="option"
+              tabindex="-1"
             >
               <div
-                className=
+                class=
 
                     {
                       background-color: #00188f;
@@ -2446,7 +2305,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     }
               />
               <div
-                className=
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -2472,7 +2331,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
 exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2484,43 +2343,37 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2529,26 +2382,26 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2558,8 +2411,8 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2568,11 +2421,11 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2587,7 +2440,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2599,43 +2452,37 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2644,26 +2491,26 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2673,8 +2520,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2683,11 +2530,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2698,7 +2545,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -2706,7 +2553,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -2720,49 +2567,37 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -2772,10 +2607,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -2822,16 +2657,12 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -2848,7 +2679,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2866,7 +2697,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -2876,10 +2707,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -2926,16 +2757,12 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -2952,7 +2779,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2970,7 +2797,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -2980,10 +2807,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3030,16 +2857,12 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -3056,7 +2879,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3085,7 +2908,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -3097,43 +2920,37 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3142,26 +2959,26 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3171,8 +2988,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -3181,11 +2998,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -3196,7 +3013,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -3204,7 +3021,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -3218,49 +3035,37 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3270,10 +3075,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3320,16 +3125,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -3346,7 +3147,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3364,7 +3165,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3374,10 +3175,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3424,16 +3225,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -3450,7 +3247,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3468,7 +3265,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3478,10 +3275,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3528,16 +3325,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -3554,7 +3347,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3583,7 +3376,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
 exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -3595,43 +3388,37 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3640,26 +3427,26 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3669,8 +3456,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -3679,11 +3466,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -3694,7 +3481,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -3702,7 +3489,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -3716,49 +3503,37 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3768,10 +3543,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3818,16 +3593,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -3844,7 +3615,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3862,7 +3633,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3872,10 +3643,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -3922,16 +3693,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -3948,7 +3715,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3966,7 +3733,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3976,10 +3743,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -4026,16 +3793,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -4052,7 +3815,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4081,7 +3844,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
 exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -4093,43 +3856,37 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
-  onMouseLeave={[Function]}
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
         {
-          overflow: auto;
+          position: relative;
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
-
+        class=
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -4138,26 +3895,26 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -4167,8 +3924,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -4177,11 +3934,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -4192,7 +3949,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -4200,7 +3957,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -4214,49 +3971,37 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4266,10 +4011,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 >
                   <button
                     aria-label="First"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -4316,16 +4061,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -4342,7 +4083,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4360,7 +4101,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4370,10 +4111,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 >
                   <button
                     aria-label="Second"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -4420,16 +4161,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #002050;
@@ -4446,7 +4183,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4464,7 +4201,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4474,10 +4211,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 >
                   <button
                     aria-label="Third"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={3}
-                    className=
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class=
 
                         {
                           align-items: center;
@@ -4524,16 +4261,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -4550,7 +4283,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;

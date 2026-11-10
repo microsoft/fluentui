@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -13,17 +13,19 @@ export interface ILegendOverflowData {
 }
 
 /**
- * @public
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
 /**
- * @public
  * Legends styles
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendsStyles {
   /**
@@ -78,9 +80,10 @@ export interface ILegendsStyles {
 }
 
 /**
- * @public
  * ILegend interface
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegend {
   /**
@@ -135,9 +138,10 @@ export interface ILegend {
 }
 
 /**
- * @public
  * Legend style properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendStyleProps {
   theme?: ITheme;
@@ -151,9 +155,10 @@ export interface ILegendStyleProps {
 }
 
 /**
- * @public
  * Legend properties
  * {@docCategory Legends}
+ *
+ * @public
  */
 export interface ILegendsProps {
   /**
@@ -279,13 +284,33 @@ export interface ILegendsProps {
    * The shape for the legend.
    */
   shape?: LegendShape;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<ILegendContainer>;
 }
 
 /**
- * @public
  * The shape for the legend
  * default: show the rect legend
  * triangle: show the triangle legend
  * {@docCategory Legends}
+ *
+ * @public
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+/**
+ * {@docCategory Legends}
+ */
+export interface ILegendContainer {
+  toSVG: (
+    svgWidth: number,
+    isRTL?: boolean,
+  ) => {
+    node: SVGSVGElement | null;
+    width: number;
+    height: number;
+  };
+}

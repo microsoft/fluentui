@@ -1,4 +1,5 @@
 import { IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles } from '../../index';
+import { FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IHorizontalBarChartWithAxisStyleProps): IHorizontalBarChartWithAxisStyles => {
   const { shouldHighlight, theme } = props;
@@ -9,17 +10,13 @@ export const getStyles = (props: IHorizontalBarChartWithAxisStyleProps): IHorizo
 
     xAxisTicks: [],
 
-    tooltip: {
-      ...theme.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: theme.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
+    barLabel: {
+      fontSize: theme.fonts.small.fontSize,
+      fontWeight: FontWeights.semibold,
+      fill: theme.semanticColors.bodyText,
+      [HighContrastSelector]: {
+        stroke: 'CanvasText',
+      },
     },
   };
 };

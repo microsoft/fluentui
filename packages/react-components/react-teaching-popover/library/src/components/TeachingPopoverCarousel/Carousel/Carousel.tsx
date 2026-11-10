@@ -1,33 +1,36 @@
+'use client';
+
 import * as React from 'react';
 import {
   isHTMLElement,
   useMergedRefs,
   useControllableState,
-  type EventHandler,
   useEventCallback,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { CAROUSEL_ITEM } from './constants';
+import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
-import type { CarouselValueChangeData } from './Carousel.types';
-import { CarouselContextValue } from './CarouselContext';
-
-export type UseCarouselOptions = {
-  defaultValue?: string;
-  value?: string;
-
-  onValueChange?: EventHandler<CarouselValueChangeData>;
-  onFinish?: EventHandler<CarouselValueChangeData>;
-};
+import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
+import type { CarouselContextValue } from './CarouselContext';
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
-export function useCarousel_unstable(options: UseCarouselOptions) {
-  'use no memo';
-
-  const { onValueChange, onFinish } = options;
+export function useCarousel_unstable(options: UseCarouselOptions): {
+  carouselRef: React.RefObject<HTMLDivElement | null>;
+  carousel: {
+    store: CarouselStore;
+    value: string | null;
+    selectPageByDirection: (
+      event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+      direction: 'next' | 'prev',
+    ) => void;
+    selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => void;
+  };
+} {
+  const { announcement, onValueChange, onFinish } = options;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -40,6 +43,44 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     initialState: null,
   });
   const rootRef = React.useRef<HTMLDivElement>(null);
+
+  const { announce } = useAnnounce();
+
+  const previousValueRef = React.useRef(value);
+  const pendingAnnouncementRef = React.useRef<string | null>(null);
+
+  const announcePage = useEventCallback(() => {
+    const pendingValue = pendingAnnouncementRef.current;
+    const active = carouselWalker.active();
+    if (pendingValue === null || active?.value !== pendingValue) {
+      return;
+    }
+
+    pendingAnnouncementRef.current = null;
+    const text = announcement?.(pendingValue);
+    if (text) {
+      announce(text, { polite: true });
+    }
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    if (!announcement) {
+      pendingAnnouncementRef.current = null;
+    }
+
+    if (previousValueRef.current === value) {
+      return;
+    }
+
+    previousValueRef.current = value;
+    pendingAnnouncementRef.current = null;
+    if (value === null || !announcement) {
+      return;
+    }
+
+    pendingAnnouncementRef.current = value;
+    announcePage();
+  }, [value, announcement, announcePage]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -72,7 +113,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
 
     const config: MutationObserverInit = {
       attributes: true,
-      attributeFilter: [CAROUSEL_ITEM],
+      attributeFilter: [CAROUSEL_ITEM, CAROUSEL_ACTIVE_ITEM],
       childList: true,
       subtree: true,
     };
@@ -101,6 +142,9 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
           }
         }
       }
+
+      // Selector-based context updates can commit cards after the carousel's layout effect.
+      announcePage();
     };
 
     // Create an observer instance linked to the callback function
@@ -112,8 +156,16 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     // Later, you can stop observing
     return () => {
       observer.disconnect();
+      pendingAnnouncementRef.current = null;
     };
-  }, [carouselWalker, store, win]);
+  }, [announcePage, carouselWalker, store, win]);
+
+  const updateSlide = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => {
+      setValue(newValue);
+      onValueChange?.(event, { event, type: 'click', value: newValue });
+    },
+  );
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
@@ -126,16 +178,10 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
       direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
     if (newPage) {
-      setValue(newPage?.value);
-      onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+      updateSlide(event, newPage?.value);
     } else {
       onFinish?.(event, { event, type: 'click', value: active?.value });
     }
-  });
-
-  const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
-    setValue(_value);
-    onValueChange?.(event, { event, type: 'click', value: _value });
   });
 
   return {
@@ -144,7 +190,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
       store,
       value,
       selectPageByDirection,
-      selectPageByValue,
+      selectPageByValue: updateSlide,
     },
   };
 }

@@ -1,8 +1,10 @@
+'use client';
+
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselNavProps } from './CarouselNav.types';
-import { useCarouselNavContextValues_unstable } from './CarouselNavContext';
+import { useCarouselNavContextValues_unstable } from './useCarouselNavContextValues';
 import { renderCarouselNav_unstable } from './renderCarouselNav';
 import { useCarouselNav_unstable } from './useCarouselNav';
 import { useCarouselNavStyles_unstable } from './useCarouselNavStyles.styles';

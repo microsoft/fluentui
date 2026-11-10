@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["ES2019", "DOM"],
-    "types": ["jest"],
+    "types": ["jest", "node"],
     "isolatedModules": true
   },
   "include": ["src"]

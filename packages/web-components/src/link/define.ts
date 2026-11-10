@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './link.definition.js';
+import { Link } from './link.js';
 
-definition.define(FluentDesignSystem.registry);
+Link.define(definition);

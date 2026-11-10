@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -18,19 +19,18 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   useTableSort,
   createTableColumn,
-  TableColumnId,
-  PresenceBadgeStatus,
   Avatar,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
 
+import type { JSXElement, TableColumnDefinition, TableColumnId, PresenceBadgeStatus } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -40,7 +40,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -121,7 +121,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const DataGrid = () => {
+export const DataGrid = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

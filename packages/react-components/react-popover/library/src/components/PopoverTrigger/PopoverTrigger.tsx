@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { usePopoverTrigger_unstable } from './usePopoverTrigger';
 import { renderPopoverTrigger_unstable } from './renderPopoverTrigger';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';

@@ -9,6 +9,8 @@ import type {
   IDocumentCardImageStyles,
 } from './DocumentCardImage.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IDocumentCardImageState {
   readonly imageHasLoaded: boolean;
 }
@@ -28,7 +30,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     this.state = { imageHasLoaded: false };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { styles, width, height, imageFit, imageSrc } = this.props;
 
     this._classNames = getClassNames(styles!, this.props);
@@ -55,7 +57,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     this.setState({ imageHasLoaded: true });
   };
 
-  private _renderCenterIcon(): JSX.Element {
+  private _renderCenterIcon(): JSXElement {
     const { iconProps } = this.props;
     return (
       <div className={this._classNames.centeredIconWrapper}>
@@ -64,7 +66,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     );
   }
 
-  private _renderCornerIcon(): JSX.Element {
+  private _renderCornerIcon(): JSXElement {
     const { iconProps } = this.props;
     return <Icon className={this._classNames.cornerIcon} {...iconProps} />;
   }

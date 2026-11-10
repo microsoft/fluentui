@@ -98,6 +98,7 @@ export const ListGridExample: React.FunctionComponent = () => {
                 src={
                   'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg'
                 }
+                alt=""
                 className={classNames.listGridExampleImage}
               />
               <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>

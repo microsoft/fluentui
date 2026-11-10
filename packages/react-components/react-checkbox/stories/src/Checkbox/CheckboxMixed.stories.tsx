@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react-components';
 
-export const Mixed = () => {
+export const Mixed = (): JSXElement => {
   const [option1, setOption1] = React.useState(false);
   const [option2, setOption2] = React.useState(true);
   const [option3, setOption3] = React.useState(false);

@@ -8,8 +8,9 @@ import { DragDropHelper } from '@fluentui/react/lib/DragDrop';
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { IDragDropEvents, Selection } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
-export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {
+export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSXElement => {
   const [index, setIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersona[]>([people[40]]);
 
@@ -17,7 +18,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
   const [draggedItem, setDraggedItem] = React.useState<IPersona>();
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const dragDropHelper = new DragDropHelper({
-    selection: selection,
+    selection,
     minimumPixelsForDrag: 5,
   });
 

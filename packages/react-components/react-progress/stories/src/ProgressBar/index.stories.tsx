@@ -6,6 +6,7 @@ import bestPracticesMd from './ProgressBarBestPractices.md';
 export { Default } from './ProgressBarDefault.stories';
 export { Color } from './ProgressBarColor.stories';
 export { Indeterminate } from './ProgressBarIndeterminate.stories';
+export { MotionCustom } from './ProgressBarMotionCustom.stories';
 export { Max } from './ProgressBarMax.stories';
 export { Shape } from './ProgressBarShape.stories';
 export { Thickness } from './ProgressBarThickness.stories';

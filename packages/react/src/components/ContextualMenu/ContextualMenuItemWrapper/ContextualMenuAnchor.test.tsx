@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
+import { getBySelector } from '../../../common/testUtilities';
 import { ContextualMenuAnchor } from './ContextualMenuAnchor';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
@@ -8,7 +8,7 @@ import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -17,7 +17,7 @@ describe('ContextualMenuButton', () => {
     });
 
     it('renders the contextual menu split button correctly', () => {
-      const component = renderer.create(
+      const { container } = render(
         <ContextualMenuAnchor
           item={menuItem}
           classNames={menuClassNames}
@@ -26,14 +26,12 @@ describe('ContextualMenuButton', () => {
           totalItemCount={1}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('invokes optional onItemClick on anchor node "click"', () => {
-      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
-      const component = mount(
+      const { container } = render(
         <ContextualMenuAnchor
           item={menuItem}
           classNames={menuClassNames}
@@ -44,15 +42,17 @@ describe('ContextualMenuButton', () => {
           onItemClick={onClickMock}
         />,
       );
-      component.find('a').simulate('click', mockEvent);
+
+      const anchorElement = getBySelector(container, 'a') as HTMLAnchorElement;
+      fireEvent.click(anchorElement);
+
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));
+      expect(onClickMock.mock.calls[0][0]).toBe(menuItem);
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
-      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
-      const component = mount(
+      const { container } = render(
         <ContextualMenuAnchor
           item={menuItem}
           classNames={menuClassNames}
@@ -64,20 +64,19 @@ describe('ContextualMenuButton', () => {
         />,
       );
 
-      component.find('.checkmarkIcon').at(0).simulate('click', mockEvent);
+      const checkmarkIcon = getBySelector(container, '.checkmarkIcon')!;
+      fireEvent.click(checkmarkIcon);
 
       // onItemClick is invoked twice, once for Check and again for ContextualMenuItem.
       // This logic can be cleaned-up using Jest's toHaveNthReturnedWith when available.
       expect(onClickMock).toHaveBeenCalledTimes(2);
       expect(onClickMock.mock.calls[0][0]).toBe(menuItem);
-      expect(onClickMock.mock.calls[0][1]).toHaveProperty('foo', 'bar');
+
       expect(onClickMock.mock.calls[1][0]).toBe(menuItem);
-      expect(onClickMock.mock.calls[1][1]).toHaveProperty('foo', 'bar');
     });
   });
 });
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

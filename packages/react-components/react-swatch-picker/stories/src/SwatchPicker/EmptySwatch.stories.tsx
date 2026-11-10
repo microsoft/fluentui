@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
@@ -10,15 +11,12 @@ import {
   PopoverTrigger,
   PopoverSurface,
   Tooltip,
-} from '@fluentui/react-components';
-import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
-import {
   ColorPicker,
   ColorSlider,
   AlphaSlider,
-  ColorPickerProps,
   ColorArea,
-} from '@fluentui/react-color-picker-preview';
+} from '@fluentui/react-components';
+import type { SwatchPickerOnSelectEventHandler, ColorPickerProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -73,7 +71,7 @@ const defaultItems = [
 
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
 
-export const EmptySwatchExample = () => {
+export const EmptySwatchExample = (): JSXElement => {
   const styles = useStyles();
 
   const [selectedValue, setSelectedValue] = React.useState('00B053');

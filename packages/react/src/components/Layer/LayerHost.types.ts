@@ -13,6 +13,7 @@ export interface ILayerHost {
    * An element ref to the layer host's content root.
    * This is the element to which layers will be added.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   rootRef: React.MutableRefObject<HTMLDivElement | null>;
   /**
    * Notifies the layer host that layers may have been added or removed within its root element.

@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import {
   Overflow,
   OverflowItem,
   OverflowDivider,
-  OverflowItemProps,
-  OverflowProps,
+  OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useOverflowMenu,
-  useOverflowContext,
+  useOverflowVisibility,
+  type OverflowProps,
+  type OverflowItemProps,
   type OnOverflowChangeData,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
-import { OverflowAxis } from '@fluentui/priority-overflow';
+import type { OverflowAxis } from '@fluentui/priority-overflow';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 
 const selectors = {
   container: 'data-test-container',
@@ -73,11 +75,12 @@ const setContainerHeight = (size: number) => {
   setContainerSize(size, 'height');
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
-  children,
-  width,
-  ...overflowItemProps
-}) => {
+type ItemProps = { children?: React.ReactNode; width?: number | string } & DistributiveOmit<
+  OverflowItemProps,
+  'children'
+>;
+
+const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
   const selector = {
     [selectors.item]: overflowItemProps.id,
   };
@@ -93,7 +96,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & O
 
 const Menu: React.FC<{ width?: number }> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
+  const { itemVisibility } = useOverflowVisibility();
   const selector = {
     [selectors.menu]: '',
   };
@@ -105,7 +108,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, minWidth: width, height: 50 }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -251,9 +254,91 @@ describe('Overflow', () => {
     });
   });
 
+  it('should keep the menu visible when one phone number overflows next to a divider', () => {
+    cy.on('uncaught:exception', error => {
+      if (error.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+        return false;
+      }
+    });
+
+    const PhoneNumbers = () => {
+      const [width, setWidth] = React.useState(280);
+
+      return (
+        <>
+          {[40, 180, 250, 280].map(nextWidth => (
+            <button key={nextWidth} data-test-width={nextWidth} onClick={() => setWidth(nextWidth)}>
+              {nextWidth}
+            </button>
+          ))}
+          <Container size={width} padding={10}>
+            <OverflowItem id="primary-phone" groupId="primary-phone-group" priority={1}>
+              <a
+                {...{ [selectors.item]: 'primary-phone' }}
+                href="tel:+4790981948"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 120 }}
+              >
+                +4790981948
+              </a>
+            </OverflowItem>
+            <OverflowDivider groupId="primary-phone-group">
+              <div
+                {...{ [selectors.divider]: 'primary-phone-group' }}
+                style={{ flexShrink: 0, width: 8 }}
+                aria-hidden="true"
+              >
+                •
+              </div>
+            </OverflowDivider>
+            <OverflowItem id="secondary-phone" priority={0}>
+              <a
+                {...{ [selectors.item]: 'secondary-phone' }}
+                href="tel:+47 (2) 3011302"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 140 }}
+              >
+                +47 (2) 3011302
+              </a>
+            </OverflowItem>
+            <Menu width={36} />
+          </Container>
+        </>
+      );
+    };
+
+    const setPhoneContainerWidth = (width: number) => {
+      cy.get(`[data-test-width="${width}"]`).click();
+    };
+
+    mount(<PhoneNumbers />);
+    cy.get(`[${selectors.container}]`).should('have.css', 'width', '280px');
+    cy.window().then(win => new Cypress.Promise(resolve => win.requestAnimationFrame(() => resolve())));
+
+    setPhoneContainerWidth(40);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+
+    setPhoneContainerWidth(180);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(250);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(280);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
   it(`should overflow items when there's more than one child element`, () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     const overflowElementIndex = 6;
+
     mount(
       <Container size={350}>
         <div>
@@ -267,11 +352,12 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    cy.get(`[${selectors.item}]`).each((value, index) => {
+    cy.get(`[${selectors.item}]`).each((el, index) => {
       if (index >= overflowElementIndex) {
-        expect(Cypress.$(value).css('display')).to.equal('none');
+        cy.wrap(el).should('be.hidden');
+        cy.wrap(el).should('have.css', 'display', 'none');
       } else {
-        expect(Cypress.$(value).css('display')).to.equal('inline-block');
+        cy.wrap(el).should('have.css', 'display', 'inline-block');
       }
     });
   });
@@ -615,7 +701,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -666,7 +752,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -714,7 +800,7 @@ describe('Overflow', () => {
   it('should remove overflow menu when all overflow items are removed', () => {
     const Example = () => {
       const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -1108,6 +1194,237 @@ describe('Overflow', () => {
           expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(false);
         }
       });
+    });
+  });
+
+  describe('pinned items', () => {
+    it('should keep pinned item visible when container shrinks', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // At 150px with 50px items + ~50px menu, only ~2 items fit
+      // Item 5 is pinned so it must be visible, item 0 fills remaining space
+      // Item 1 and later non-pinned items should overflow
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="5"]`).should('be.visible');
+      cy.get(`[${selectors.item}="0"]`).should('be.visible');
+      cy.get(`[${selectors.item}="1"]`).should('not.be.visible');
+      cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+
+      // 8 items overflow (1, 2, 3, 4, 6, 7, 8, 9) - pinned item 5 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should keep multiple pinned items visible', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 3 || i === 7}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="3"]`).should('be.visible');
+      cy.get(`[${selectors.item}="7"]`).should('be.visible');
+
+      // 8 items overflow (0, 1, 2, 4, 5, 6, 8, 9) - pinned items 3 and 7 are not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should keep pinned items visible even when they exceed container size', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            // Pin 5 items (0-4), each 50px = 250px total
+            <Item key={i} id={i.toString()} pinned={i < 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // Container is only 60px but pinned items need 250px (5 × 50px)
+      // All pinned items should not be hidden by overflow logic (no display: none)
+      // They may be visually clipped by CSS overflow, but that's expected
+      setContainerWidth(60);
+
+      cy.get(`[${selectors.item}="0"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="1"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="2"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="3"]`).should('not.have.css', 'display', 'none');
+      cy.get(`[${selectors.item}="4"]`).should('not.have.css', 'display', 'none');
+
+      // First item fits in viewport
+      cy.get(`[${selectors.item}="0"]`).should('be.visible');
+      // Last pinned item is outside viewport (clipped by CSS, not hidden by overflow logic)
+      cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+
+      // Non-pinned items should be hidden by overflow logic
+      cy.get(`[${selectors.item}="5"]`).should('have.css', 'display', 'none');
+      // 5 items overflow (5, 6, 7, 8, 9) - pinned items 0-4 are not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+    });
+
+    it('should exclude pinned items from overflow count', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 9}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // Container fits ~5 items. Item 9 is pinned.
+      // With pinned: items 0-3 and 9 visible, items 4-8 overflow = +5
+      // The count should still reflect actual hidden items
+      setContainerWidth(300);
+
+      cy.get(`[${selectors.item}="9"]`).should('be.visible');
+      // 5 items overflow (4, 5, 6, 7, 8) - pinned item 9 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+    });
+
+    it('should keep pinned item visible regardless of position', () => {
+      // Items with higher priority overflow later, item 9 is last in DOM and pinned
+      const priorities = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+      mount(
+        <Container>
+          {priorities.map((priority, i) =>
+            i === 9 ? (
+              <Item key={i} id={i.toString()} pinned>
+                {i}
+              </Item>
+            ) : (
+              <Item key={i} id={i.toString()} priority={priority}>
+                {i}
+              </Item>
+            ),
+          )}
+          <Menu />
+        </Container>,
+      );
+
+      // Item 9 is last in DOM order but pinned, so it should stay visible
+      setContainerWidth(150);
+      cy.get(`[${selectors.item}="9"]`).should('be.visible');
+      // 8 items overflow (1, 2, 3, 4, 5, 6, 7, 8) - pinned item 9 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+
+    it('should respect minimumVisible with pinned items', () => {
+      const mapHelper = new Array(10).fill(0).map((_, i) => i);
+      mount(
+        <Container minimumVisible={3}>
+          {mapHelper.map(i => (
+            <Item key={i} id={i.toString()} pinned={i === 5}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      // minimumVisible=3 means at least 3 items should be visible
+      // Item 5 is pinned
+      // At very small size, we should see items 0, 1, 2 (minimum) plus item 5 (pinned)
+      setContainerWidth(100);
+      cy.get(`[${selectors.item}="5"]`).should('be.visible');
+      // 7 items overflow (3, 4, 6, 7, 8, 9 + one more due to space constraints)
+      cy.get(`[${selectors.menu}]`).should('have.text', '+7');
+    });
+
+    it('should allow pinned item to be dynamically set', () => {
+      const Example = () => {
+        const [pinnedId, setPinnedId] = React.useState<string | null>(null);
+        return (
+          <>
+            <Container>
+              {new Array(10).fill(0).map((_, i) => (
+                <Item key={i} id={i.toString()} pinned={pinnedId === i.toString()}>
+                  {i}
+                </Item>
+              ))}
+              <Menu />
+            </Container>
+            <button id="pin-8" onClick={() => setPinnedId('8')}>
+              Pin item 8
+            </button>
+          </>
+        );
+      };
+      mount(<Example />);
+
+      setContainerWidth(150);
+
+      cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
+      // Before pinning: 8 items overflow (2-9)
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+
+      cy.get('#pin-8').click();
+      cy.get(`[${selectors.item}="8"]`).should('be.visible');
+      // After pinning item 8: 8 items overflow (1-7, 9) - pinned item 8 is not counted
+      cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+  });
+
+  describe('OverflowReorderObserver', () => {
+    const INITIAL_IDS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+    const ReorderExample: React.FC = () => {
+      const [ids, setIds] = React.useState(INITIAL_IDS);
+      return (
+        <>
+          <Container size={300}>
+            <OverflowReorderObserver />
+            {ids.map(id => (
+              <Item key={id} id={id} priority={1}>
+                {id}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <button id="reverse" onClick={() => setIds(prev => [...prev].reverse())}>
+            Reverse
+          </button>
+        </>
+      );
+    };
+
+    it('recomputes overflow when items are reordered via React state', () => {
+      mount(<ReorderExample />);
+
+      // Initial layout: container=300px, items=50px each + 50px menu → ~5 visible, 3 overflow.
+      cy.get(`[${selectors.item}="a"]`).should('be.visible');
+      cy.get(`[${selectors.item}="h"]`).should('not.be.visible');
+
+      cy.get('#reverse').click();
+
+      // After reversing, the items at the front of the new order (h, g, f, ...) should be
+      // visible. Items pushed to the tail (..., b, a) should overflow.
+      cy.get(`[${selectors.item}="h"]`).should('be.visible');
+      cy.get(`[${selectors.item}="a"]`).should('not.be.visible');
     });
   });
 });

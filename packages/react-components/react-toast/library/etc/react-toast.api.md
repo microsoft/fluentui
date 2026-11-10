@@ -4,45 +4,65 @@
 
 ```ts
 
-/// <reference types="react" />
-
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
-import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
+import type { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSX.Element;
+export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSXElement;
 
 // @public
-export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
+export const renderToastBody_unstable: (state: ToastBodyState) => JSXElement;
 
 // @public
-export const renderToaster_unstable: (state: ToasterState) => JSX.Element;
+export const renderToastContainer_unstable: (state: ToastContainerState, contextValues: ToastContainerContextValues) => JSXElement;
 
 // @public
-export const renderToastFooter_unstable: (state: ToastFooterState) => JSX.Element;
+export const renderToaster_unstable: (state: ToasterState) => JSXElement;
 
 // @public
-export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
+export const renderToastFooter_unstable: (state: ToastFooterState) => JSXElement;
 
 // @public
-export const renderToastTrigger_unstable: (state: ToastTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderToastTitle_unstable: (state: ToastTitleState) => JSXElement;
+
+// @public
+export const renderToastTrigger_unstable: (state: ToastTriggerState) => JSXElement | null;
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
 
+// @public (undocumented)
+export type ToastAnnounce = (message: string, options: ToastAnnounceOptions) => void;
+
+// @public (undocumented)
+export type ToastAnnounceOptions = {
+    politeness: AriaLivePoliteness;
+};
+
+// @public
+export type ToastBaseProps = Omit<ToastProps, 'appearance'>;
+
+// @public
+export type ToastBaseState = Omit<ToastState, 'backgroundAppearance'>;
+
 // @public
 export const ToastBody: ForwardRefComponent<ToastBodyProps>;
+
+// @public
+export type ToastBodyBaseProps = ToastBodyProps;
+
+// @public
+export type ToastBodyBaseState = Omit<ToastBodyState, 'backgroundAppearance'>;
 
 // @public (undocumented)
 export const toastBodyClassNames: SlotClassNames<ToastBodySlots>;
@@ -62,7 +82,72 @@ export type ToastBodyState = ComponentState<ToastBodySlots> & {
 };
 
 // @public (undocumented)
+export interface ToastChangeData extends ToastOptions, Pick<ToastData, 'updateId'> {
+    // (undocumented)
+    status: ToastStatus;
+}
+
+// @public (undocumented)
+export type ToastChangeHandler = (event: null, data: ToastChangeData) => void;
+
+// @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
+
+// @public (undocumented)
+export const toastContainerClassNames: SlotClassNames<ToastContainerSlots>;
+
+// @public (undocumented)
+export const ToastContainerContextProvider: React_2.Provider<ToastContainerContextValue | undefined>;
+
+// @public (undocumented)
+export type ToastContainerContextValue = {
+    close: () => void;
+    intent: ToastIntent | undefined;
+    bodyId: string;
+    titleId: string;
+};
+
+// @public
+export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> & ToastData & {
+    visible: boolean;
+    announce: ToastAnnounce;
+    intent: ToastIntent | undefined;
+    tryRestoreFocus: () => void;
+};
+
+// @public (undocumented)
+export type ToastContainerSlots = {
+    root: NonNullable<Slot<'div'>>;
+    timer: NonNullable<Slot<TimerProps>>;
+};
+
+// @public
+export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & Pick<ToastContainerContextValue, 'titleId' | 'bodyId'> & {
+    transitionTimeout: number;
+    timerTimeout: number;
+    running: boolean;
+    onTransitionEntering: () => void;
+    nodeRef: React_2.Ref<HTMLDivElement>;
+    onMotionFinish?: (event: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+};
+
+// @public (undocumented)
+export interface ToastData<TData = object> extends ToastOptions<TData> {
+    close: () => void;
+    // (undocumented)
+    imperativeRef: React_2.RefObject<ToastImperativeRef | null>;
+    order: number;
+    remove: () => void;
+    updateId: number;
+}
+
+// @public (undocumented)
+export interface ToastDispatchOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
+    // (undocumented)
+    root?: Slot<'div'>;
+}
 
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
@@ -70,11 +155,32 @@ export const Toaster: React_2.FC<ToasterProps>;
 // @public (undocumented)
 export const toasterClassNames: SlotClassNames<ToasterSlots>;
 
+// @public (undocumented)
+export type ToasterId = string;
+
+// @public (undocumented)
+export interface ToasterOptions extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'> {
+    // (undocumented)
+    limit?: number;
+    // (undocumented)
+    offset?: ToastOffset;
+    // (undocumented)
+    shortcuts?: ToasterShortcuts;
+    // (undocumented)
+    toasterId?: ToasterId;
+}
+
 // @public
 export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & Pick<PortalProps, 'mountNode'> & {
-    announce?: Announce;
+    announce?: ToastAnnounce;
     inline?: boolean;
 };
+
+// @public (undocumented)
+export interface ToasterShortcuts {
+    // (undocumented)
+    focus: (e: KeyboardEvent) => boolean;
+}
 
 // @public (undocumented)
 export type ToasterSlots = {
@@ -109,10 +215,40 @@ export type ToastFooterState = ComponentState<ToastFooterSlots>;
 export type ToastId = string;
 
 // @public (undocumented)
+export type ToastImperativeRef = {
+    focus: () => void;
+    play: () => void;
+    pause: () => void;
+};
+
+// @public (undocumented)
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
 
 // @public (undocumented)
+export type ToastLiveMessage = {
+    message: string;
+    createdAt: number;
+    politeness: AriaLivePoliteness;
+};
+
+// @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
+
+// @public (undocumented)
+export interface ToastOptions<TData = object> {
+    content: unknown;
+    data: TData;
+    intent?: ToastIntent;
+    onStatusChange: ToastChangeHandler | undefined;
+    pauseOnHover: boolean;
+    pauseOnWindowBlur: boolean;
+    politeness?: ToastPoliteness;
+    position: ToastPosition;
+    priority: number;
+    timeout: number;
+    toasterId: ToasterId | undefined;
+    toastId: ToastId;
+}
 
 // @public (undocumented)
 export type ToastPoliteness = 'assertive' | 'polite';
@@ -141,6 +277,12 @@ export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
+
+// @public
+export type ToastTitleBaseProps = ToastTitleProps;
+
+// @public
+export type ToastTitleBaseState = Omit<ToastTitleState, 'backgroundAppearance'>;
 
 // @public (undocumented)
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
@@ -176,23 +318,66 @@ export type ToastTriggerState = {
     children: React_2.ReactElement | null;
 };
 
+// @public (undocumented)
+export interface ToastUpdateEventDetail extends Partial<ToastOptions>, CommonToastDetail {
+    // (undocumented)
+    toastId: ToastId;
+}
+
+// @public (undocumented)
+export interface ToastUpdateOptions extends ToastUpdateEventDetail {
+    // (undocumented)
+    root?: Slot<'div'>;
+}
+
 // @public
 export const useToast_unstable: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
+
+// @public
+export function useToastAnnounce(announce: ToastAnnounce): {
+    announceToast: ToastAnnounce;
+    toasterRef: React_2.RefCallback<HTMLDivElement>;
+};
+
+// @public
+export const useToastBase_unstable: (props: ToastBaseProps, ref: React_2.Ref<HTMLElement>) => ToastBaseState;
 
 // @public
 export const useToastBody_unstable: (props: ToastBodyProps, ref: React_2.Ref<HTMLElement>) => ToastBodyState;
 
 // @public
+export const useToastBodyBase_unstable: (props: ToastBodyBaseProps, ref: React_2.Ref<HTMLElement>) => ToastBodyBaseState;
+
+// @public
 export const useToastBodyStyles_unstable: (state: ToastBodyState) => ToastBodyState;
+
+// @public
+export const useToastContainer_unstable: (props: ToastContainerProps, ref: React_2.Ref<HTMLElement>) => ToastContainerState;
+
+// @public (undocumented)
+export const useToastContainerContext: () => ToastContainerContextValue;
+
+// @public (undocumented)
+export function useToastContainerContextValues_unstable(state: ToastContainerState): ToastContainerContextValues;
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
-    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions) => void;
+    dispatchToast: (content: React_2.ReactNode, options?: ToastDispatchOptions) => void;
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
-    updateToast: (options: UpdateToastOptions) => void;
+    updateToast: (options: ToastUpdateOptions) => void;
     pauseToast: (toastId: ToastId) => void;
     playToast: (toastId: ToastId) => void;
+};
+
+// @public (undocumented)
+export function useToaster<TElement extends HTMLElement = HTMLDivElement>(options?: Partial<ToasterOptions>): {
+    isToastVisible: (toastId: ToastId) => boolean;
+    toastsToRender: Map<ToastPosition, ToastData[]>;
+    pauseAllToasts: () => void;
+    playAllToasts: () => void;
+    tryRestoreFocus: () => void;
+    closeAllToasts: () => void;
 };
 
 // @public
@@ -212,6 +397,9 @@ export const useToastStyles_unstable: (state: ToastState) => ToastState;
 
 // @public
 export const useToastTitle_unstable: (props: ToastTitleProps, ref: React_2.Ref<HTMLElement>) => ToastTitleState;
+
+// @public
+export const useToastTitleBase_unstable: (props: ToastTitleBaseProps, ref: React_2.Ref<HTMLElement>) => ToastTitleBaseState;
 
 // @public
 export const useToastTitleStyles_unstable: (state: ToastTitleState) => ToastTitleState;

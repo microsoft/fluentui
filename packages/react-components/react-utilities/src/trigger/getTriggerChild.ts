@@ -3,7 +3,6 @@ import { isFluentTrigger } from './isFluentTrigger';
 import type { TriggerProps } from './types';
 
 /**
- * @internal
  * Gets the trigger element of a FluentTriggerComponent (such as Tooltip or MenuTrigger).
  *
  * In the case where the immediate child is itself a FluentTriggerComponent and/or React Fragment,
@@ -23,6 +22,8 @@ import type { TriggerProps } from './types';
  *
  * In the case where the immediate child is not a valid element,
  * null is returned
+ *
+ * @internal
  */
 export function getTriggerChild<TriggerChildProps>(
   children: TriggerProps<TriggerChildProps>['children'],

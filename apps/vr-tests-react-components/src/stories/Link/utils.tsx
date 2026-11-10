@@ -11,6 +11,13 @@ const useInvertedBackgroundStyles = makeStyles({
   },
 });
 
+const useBrandBackgroundStyles = makeStyles({
+  root: {
+    ...shorthands.padding('14px'),
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+  },
+});
+
 export const InvertedBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const styles = useInvertedBackgroundStyles();
   return (
@@ -20,26 +27,35 @@ export const InvertedBackground: React.FC<{ children: React.ReactNode }> = ({ ch
   );
 };
 
+export const BrandBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const styles = useBrandBackgroundStyles();
+  return (
+    <div className={styles.root}>
+      <BackgroundAppearanceProvider value="brand">{children}</BackgroundAppearanceProvider>
+    </div>
+  );
+};
+
 export const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover('.fui-Link')
-  .snapshot('hover', { cropTo: '.testWrapper' })
+  .snapshot('hover')
   // This needs to be added so that the focus outline is shown correctly
   .executeScript("document.getElementsByClassName('fui-Link')[0].setAttribute('data-fui-focus-visible', '')")
   .focus('.fui-Link')
-  .snapshot('focused', { cropTo: '.testWrapper' })
+  .snapshot('focused')
   .executeScript("document.getElementsByClassName('fui-Link')[0].removeAttribute('data-fui-focus-visible')")
   .mouseDown('.fui-Link')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .mouseUp('.fui-Link')
   .end();
 
 // Disabled stories use steps without focus so they do not error out on the focused step.
 export const disabledUnfocusableSteps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover('.fui-Link')
-  .snapshot('hover', { cropTo: '.testWrapper' })
+  .snapshot('hover')
   .mouseDown('.fui-Link')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .mouseUp('.fui-Link')
   .end();

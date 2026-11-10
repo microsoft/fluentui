@@ -9,7 +9,7 @@ export function drawerBodyTemplate<T extends DrawerBody>(): ElementViewTemplate<
   return html<T>`
     <div class="header" part="header">
       <slot name="title"></slot>
-      <slot name="close"></slot>
+      <slot name="close" @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"></slot>
     </div>
     <div class="content" part="content">
       <slot></slot>

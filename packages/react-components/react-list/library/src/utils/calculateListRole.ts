@@ -1,4 +1,4 @@
-import { ListNavigationMode } from '../List';
+import type { ListNavigationMode } from '../List';
 
 /**
  * Calculate the role for the list based on the navigation mode and selectable state
@@ -7,7 +7,10 @@ import { ListNavigationMode } from '../List';
  * @returns 'grid' if navigationMode is 'composite', otherwise 'listbox' if selectable or 'list' if not
  */
 
-export const calculateListRole = (navigationMode: ListNavigationMode | undefined, selectable: boolean) => {
+export const calculateListRole = (
+  navigationMode: ListNavigationMode | undefined,
+  selectable: boolean,
+): 'grid' | 'listbox' | 'list' => {
   if (navigationMode === 'composite') {
     return 'grid';
   } else if (selectable) {

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LegendOverflowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',
@@ -72,7 +73,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 7',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color3),
         action: () => {
           console.log('Legend7 clicked');
         },

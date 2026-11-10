@@ -1,13 +1,19 @@
 // @ts-check
 
 const path = require('path');
-
-const { registerTsPaths, registerRules, rules, loadWorkspaceAddon } = require('@fluentui/scripts-storybook');
+const { getIconStoryPatterns, isolateIconBuildCache } = require('./icon-sizing');
+const {
+  configureReactIcons,
+  registerTsPaths,
+  registerRules,
+  rules,
+  loadWorkspaceAddon,
+} = require('@fluentui/scripts-storybook');
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 
-module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
+module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath })],
-  stories: ['../src/**/*.stories.tsx'],
+  stories: getIconStoryPatterns(),
   core: {
     disableTelemetry: true,
   },
@@ -15,7 +21,6 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     name: '@storybook/react-webpack5',
     options: {
       builder: {
-        useSWC: true,
         lazyCompilation: false,
       },
     },
@@ -24,33 +29,13 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,
   },
-  webpackFinal: config => {
+  webpackFinal(config) {
     registerTsPaths({ config, configFile: tsConfigPath });
-    registerRules({ config, rules: [rules.griffelRule] });
+    registerRules({ config, rules: [rules.swcRule, rules.griffelRule] });
+    configureReactIcons({ config });
+
+    isolateIconBuildCache(config);
 
     return config;
-  },
-  swc() {
-    return {
-      jsc: {
-        target: 'es2019',
-        parser: {
-          syntax: 'typescript',
-          tsx: true,
-          decorators: true,
-          dynamicImport: true,
-        },
-        transform: {
-          decoratorMetadata: true,
-          legacyDecorator: true,
-        },
-        keepClassNames: true,
-        externalHelpers: true,
-        loose: true,
-        minify: {
-          mangle: false,
-        },
-      },
-    };
   },
 });

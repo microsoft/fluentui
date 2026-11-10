@@ -8,8 +8,9 @@ import type {
   IBaseFloatingSuggestionsStyles,
   IBaseFloatingSuggestionsStylesProps,
 } from './FloatingSuggestions.types';
+import type { JSXElement } from '@fluentui/utilities';
 
-export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSuggestionsProps<T>): JSX.Element => {
+export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSuggestionsProps<T>): JSXElement => {
   const getClassNames = classNamesFunction<IBaseFloatingSuggestionsStylesProps, IBaseFloatingSuggestionsStyles>();
   const classNames = getClassNames(getStyles);
   const {

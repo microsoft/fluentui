@@ -1,4 +1,7 @@
-import { getRestorer, getTabsterAttribute, Types as TabsterTypes, RestorerTypes } from 'tabster';
+'use client';
+
+import type { Types as TabsterTypes } from 'tabster';
+import { getRestorer, getTabsterAttribute, RestorerTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 /**
@@ -6,11 +9,8 @@ import { useTabster } from './useTabster';
  * @returns Attribute to apply to the target element where focus is restored
  */
 export function useRestoreFocusTarget(): TabsterTypes.TabsterDOMAttribute {
-  const tabster = useTabster();
   // Initializes the restorer API
-  if (tabster) {
-    getRestorer(tabster);
-  }
+  useTabster(getRestorer);
 
   return getTabsterAttribute({ restorer: { type: RestorerTypes.Target } });
 }
@@ -20,11 +20,8 @@ export function useRestoreFocusTarget(): TabsterTypes.TabsterDOMAttribute {
  * @returns Attribute to apply to the element that might lose focus
  */
 export function useRestoreFocusSource(): TabsterTypes.TabsterDOMAttribute {
-  const tabster = useTabster();
   // Initializes the restorer API
-  if (tabster) {
-    getRestorer(tabster);
-  }
+  useTabster(getRestorer);
 
   return getTabsterAttribute({ restorer: { type: RestorerTypes.Source } });
 }

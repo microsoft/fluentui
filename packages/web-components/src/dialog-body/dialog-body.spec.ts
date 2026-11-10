@@ -1,54 +1,94 @@
 import { expect, test } from '../../test/playwright/index.js';
-import type { Dialog } from '../dialog/dialog.js';
-import type { DialogBody } from './dialog-body.js';
+import { tagName } from './dialog-body.options.js';
 
-test.describe('Dialog Body', () => {
+test.describe('DialogBody', () => {
   test.use({
-    tagName: 'fluent-dialog-body',
-    waitFor: ['fluent-dialog'],
+    tagName,
+    innerHTML: 'Dialog Body',
   });
 
-  test('should render a dialog body with a close button', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const closeButton = element.locator('.title-action');
+  test('should create with `document.createElement()`', async ({ page, fastPage }) => {
+    await fastPage.setTemplate('');
 
-    await expect(element).toBeVisible();
-    await expect(closeButton).toBeVisible();
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
+
+    expect(hasError).toBe(false);
   });
 
-  test('should add default close button for non-modal dialogs', async ({ fastPage, page }) => {
+  test('should display a title when content is provided in the title slot', async ({ fastPage }) => {
     const { element } = fastPage;
-    const closeButton = element.locator('.title-action');
-    const dialog = page.locator('fluent-dialog');
-    const content = element.locator('#content');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+          <h2 slot="title">Dialog Title</h2>
+      `,
+    });
+
+    await expect(element).toHaveText('Dialog Title');
+  });
+
+  test("should call the parent element's `hide` method when elements in the close slot are clicked", async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const closeButton = element.locator('#close-button');
+    const customDialog = page.locator('custom-dialog');
 
     await fastPage.setTemplate(/* html */ `
-      <fluent-dialog type="non-modal">
-        <fluent-dialog-body>
-            <div id="content">content</div>
-        </fluent-dialog-body>
-      </fluent-dialog>
+      <custom-dialog>
+        <${tagName}>
+          <h2 slot="title">Dialog Title</h2>
+          <div>Dialog Body</div>
+          <button id="close-button" slot="close">Close</button>
+        </${tagName}>
+      </custom-dialog>
     `);
 
-    await test.step('should show the default close button in title for non-modal dialog', async () => {
-      await expect(content).toBeHidden();
-
-      dialog.evaluate((node: Dialog) => {
-        node.show();
-      });
-
-      await expect(content).toBeVisible();
-
-      // Shows the close button in title in non-modal dialog
-      await expect(closeButton).toBeVisible();
+    await customDialog.evaluate((node: HTMLElement) => {
+      (node as any).hide = () => {
+        node.dataset.hideCalled = 'true';
+      };
     });
 
-    await test.step('should hide the close button when noTitleAction is set', async () => {
-      await element.evaluate((node: DialogBody) => {
-        node.noTitleAction = true;
-      });
+    await closeButton.click();
 
-      await expect(closeButton).toBeHidden();
+    await expect(customDialog).toHaveAttribute('data-hide-called', 'true');
+  });
+
+  test("should not throw an error if the parent element doesn't have a `hide` method when elements in the close slot are clicked", async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const closeButton = element.locator('#close-button');
+
+    await fastPage.setTemplate(/* html */ `
+      <div>
+        <${tagName}>
+          <h2 slot="title">Dialog Title</h2>
+          <div>Dialog Body</div>
+          <button id="close-button" slot="close">Close</button>
+        </${tagName}>
+      </div>
+    `);
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
     });
+
+    await closeButton.click();
+
+    expect(hasError).toBe(false);
   });
 });

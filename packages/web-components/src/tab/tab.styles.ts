@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -24,7 +24,8 @@ export const styles = css`
 
   :host {
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
@@ -36,11 +37,14 @@ export const styles = css`
     grid-row: 1;
     padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
+    gap: 4px;
   }
+
   :host .tab-content {
     display: inline-flex;
     flex-direction: column;
     padding: 0 2px;
+    grid-column: 3;
   }
 
   :host([aria-selected='true']) {
@@ -75,24 +79,44 @@ export const styles = css`
     z-index: 1;
   }
 
+  /*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tablist.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+  @supports (anchor-name: --a) and (text-size-adjust: auto) {
+    :host([aria-selected='true'])::after {
+      background-color: transparent;
+    }
+
+    :host([aria-selected='true']:hover)::after {
+      background-color: ${colorNeutralStroke1Hover};
+    }
+  }
+
   :host([aria-selected='true'][disabled])::after {
     background-color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::slotted([slot='start']) {
+    grid-column: 2;
+  }
+
+  ::slotted([slot='end']) {
+    grid-column: -1;
   }
 
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     display: flex;
   }
-  ::slotted([slot='start']) {
-    margin-inline-end: 11px;
-  }
-  ::slotted([slot='end']) {
-    margin-inline-start: 11px;
-  }
   :host([disabled]) {
     cursor: not-allowed;
     fill: ${colorNeutralForegroundDisabled};
     color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
   }
 
   :host([disabled]:hover)::after {
@@ -108,10 +132,10 @@ export const styles = css`
     box-shadow: 0 0 0 3px ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host([aria-selected='true'])::after {
       background-color: Highlight;
     }
-  `),
-);
+  }
+`;

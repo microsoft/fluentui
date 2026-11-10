@@ -1,14 +1,9 @@
 import * as React from 'react';
-import {
-  TagPicker,
-  TagPickerInput,
-  TagPickerControl,
-  TagPickerProps,
-  TagPickerGroup,
-} from '@fluentui/react-components';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
+import { TagPicker, TagPickerInput, TagPickerControl, TagPickerGroup } from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
 
-export const NoPopover = () => {
+export const NoPopover = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [inputValue, setInputValue] = React.useState('');
 

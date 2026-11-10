@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverBodySlots = {
   /**

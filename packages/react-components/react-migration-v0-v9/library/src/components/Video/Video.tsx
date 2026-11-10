@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, useMergedRefs } from '@fluentui/react-components';
 import * as React from 'react';
 import { useVideoStyles } from './Video.styles';
@@ -42,11 +44,9 @@ export interface VideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> 
 }
 
 export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
-  'use no memo';
-
   const { className, muted, ...rest } = props;
 
-  const videoRef = React.useRef<HTMLVideoElement>();
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   const classes = useVideoStyles();
   React.useEffect(() => {

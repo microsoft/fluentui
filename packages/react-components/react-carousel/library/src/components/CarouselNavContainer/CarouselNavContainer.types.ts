@@ -1,12 +1,16 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { CarouselAutoplayButton } from '../CarouselAutoplayButton/CarouselAutoplayButton';
-import { CarouselButtonProps } from '../CarouselButton/CarouselButton.types';
+import type { CarouselAutoplayButton } from '../CarouselAutoplayButton/CarouselAutoplayButton';
+import type { CarouselButtonProps } from '../CarouselButton/CarouselButton.types';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 export type CarouselNavContainerSlots = {
   root: Slot<'div'>;
   next?: Slot<CarouselButtonProps>;
+  nextTooltip?: Slot<TooltipProps>;
   prev?: Slot<CarouselButtonProps>;
+  prevTooltip?: Slot<TooltipProps>;
   autoplay?: Slot<typeof CarouselAutoplayButton>;
+  autoplayTooltip?: Slot<TooltipProps>;
 };
 
 /**

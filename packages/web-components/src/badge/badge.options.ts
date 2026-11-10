@@ -1,9 +1,13 @@
-import type { StartEndOptions } from '../patterns/index.js';
-import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { Badge } from './badge.js';
 
 /**
- * @internal - marking as internal update when Badge PR for start/end is in
+ * - marking as internal update when Badge PR for start/end is in
+ *
+ * @internal
  */
 export type BadgeOptions = StartEndOptions<Badge> & {
   defaultContent?: StaticallyComposableHTML;
@@ -81,3 +85,10 @@ export const BadgeSize = {
  * @public
  */
 export type BadgeSize = ValuesOf<typeof BadgeSize>;
+
+/**
+ * The tag name for the badge element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-badge` as const;

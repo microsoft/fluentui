@@ -33,7 +33,7 @@ const COMPONENT_NAME = 'MaskedTextField';
 const useComponentRef = (
   componentRef: IRefObject<IMaskedTextField> | undefined,
   internalState: IMaskedTextFieldInternalState,
-  textField: React.RefObject<IMaskedTextField>,
+  textField: React.RefObject<IMaskedTextField | null>,
 ) => {
   React.useImperativeHandle(
     componentRef,
@@ -369,6 +369,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
   return (
     <TextField
       {...props}
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       elementRef={ref}
       onFocus={handleFocus}
       onBlur={handleBlur}

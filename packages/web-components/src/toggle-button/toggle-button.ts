@@ -5,6 +5,8 @@ import { toggleState } from '../utils/element-internals.js';
 /**
  * The base class used for constructing a `<fluent-toggle-button>` custom element.
  *
+ * @tag fluent-toggle-button
+ *
  * @public
  */
 export class ToggleButton extends Button {
@@ -68,9 +70,8 @@ export class ToggleButton extends Button {
    * @internal
    */
   private setPressedState(): void {
-    if (this.$fastController.isConnected) {
-      const ariaPressed = `${this.mixed ? 'mixed' : !!this.pressed}`;
-      this.elementInternals.ariaPressed = ariaPressed;
+    if (this.elementInternals) {
+      this.elementInternals.ariaPressed = `${this.mixed ? 'mixed' : !!this.pressed}`;
       toggleState(this.elementInternals, 'pressed', !!this.pressed || !!this.mixed);
     }
   }

@@ -1,12 +1,15 @@
+'use client';
+
 import * as React from 'react';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
-import { ComboboxProps } from '../Combobox/Combobox.types';
-import { UseTriggerSlotState, useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
-import { OptionValue } from '../../utils/OptionCollection.types';
+import type { ComboboxProps } from '../Combobox/Combobox.types';
+import type { UseTriggerSlotOptions, UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { useTriggerSlot } from '../../utils/useTriggerSlot';
+import type { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UsedComboboxState = UseTriggerSlotState &
@@ -17,21 +20,21 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
+  shouldCloseOnBlur?: UseTriggerSlotOptions['shouldCloseOnBlur'];
 };
 
 /**
- * @internal
  * useInputTriggerSlot returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
+ *
+ * @internal
  */
 export function useInputTriggerSlot(
   triggerFromProps: NonNullable<Slot<'input'>>,
   ref: React.Ref<HTMLInputElement>,
   options: UseInputTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
-  'use no memo';
-
   const {
     state: {
       open,
@@ -47,6 +50,7 @@ export function useInputTriggerSlot(
     freeform,
     defaultProps,
     activeDescendantController,
+    shouldCloseOnBlur,
   } = options;
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -106,9 +110,12 @@ export function useInputTriggerSlot(
     defaultProps,
     elementType: 'input',
     activeDescendantController,
+    shouldCloseOnBlur,
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 
   // NVDA and JAWS have bugs that suppress reading the input value text when aria-activedescendant is set
@@ -163,9 +170,11 @@ export function useInputTriggerSlot(
     defaultOnKeyDown?.(event);
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onKeyDown = onKeyDown;
 
   if (hideActiveDescendant) {
+    // eslint-disable-next-line react-hooks/immutability
     trigger['aria-activedescendant'] = undefined;
   }
 

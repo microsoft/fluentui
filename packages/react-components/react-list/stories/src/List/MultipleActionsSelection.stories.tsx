@@ -17,6 +17,7 @@ import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useListItemRootStyles = makeResetStyles({
   position: 'relative',
@@ -149,7 +150,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
   );
 };
 
-export const MultipleActionsSelection = () => {
+export const MultipleActionsSelection = (): JSXElement => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);

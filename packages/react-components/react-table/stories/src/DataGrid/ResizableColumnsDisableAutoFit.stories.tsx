@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +10,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   DataGrid,
   DataGridBody,
@@ -18,7 +18,6 @@ import {
   DataGridHeaderCell,
   DataGridRow,
   TableCellLayout,
-  TableColumnDefinition,
   createTableColumn,
   Menu,
   MenuList,
@@ -27,9 +26,11 @@ import {
   MenuItem,
 } from '@fluentui/react-components';
 
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -39,7 +40,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -174,7 +175,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumns = () => {
+export const ResizableColumnsDisableAutoFit = (): JSXElement => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
   return (
@@ -197,7 +198,11 @@ export const ResizableColumns = () => {
               dataGrid.resizableColumns ? (
                 <Menu openOnContext>
                   <MenuTrigger>
-                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    <DataGridHeaderCell
+                      ref={el => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
                       {renderHeaderCell()}
                     </DataGridHeaderCell>
                   </MenuTrigger>
@@ -227,8 +232,8 @@ export const ResizableColumns = () => {
   );
 };
 
-ResizableColumns.storyName = 'Resizable Columns - Disabled container auto-fit';
-ResizableColumns.parameters = {
+ResizableColumnsDisableAutoFit.storyName = 'Resizable Columns - Disabled container auto-fit';
+ResizableColumnsDisableAutoFit.parameters = {
   docs: {
     description: {
       story: [

@@ -1,6 +1,13 @@
 import { Toggle } from '@fluentui/react';
-import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import {
+  IChartProps,
+  ISankeyChartProps,
+  SankeyChart,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const enum DataSouce {
   Simple,
@@ -17,10 +24,30 @@ const dataSimple: IChartProps = {
   chartTitle: 'Sankey Chart',
   SankeyChartData: {
     nodes: [
-      { nodeId: 0, name: 'Large Source' },
-      { nodeId: 1, name: 'Tiny Source' },
-      { nodeId: 2, name: 'Large Target' },
-      { nodeId: 3, name: 'Tiny Target' },
+      {
+        nodeId: 0,
+        name: 'Large Source',
+        color: getColorFromToken(DataVizPalette.color1),
+        borderColor: getColorFromToken(DataVizPalette.color21),
+      },
+      {
+        nodeId: 1,
+        name: 'Tiny Source',
+        color: getColorFromToken(DataVizPalette.color2),
+        borderColor: getColorFromToken(DataVizPalette.color22),
+      },
+      {
+        nodeId: 2,
+        name: 'Large Target',
+        color: getColorFromToken(DataVizPalette.color3),
+        borderColor: getColorFromToken(DataVizPalette.color23),
+      },
+      {
+        nodeId: 3,
+        name: 'Tiny Target',
+        color: getColorFromToken(DataVizPalette.color4),
+        borderColor: getColorFromToken(DataVizPalette.color24),
+      },
     ],
     links: [
       { source: 0, target: 2, value: 10000 },
@@ -337,7 +364,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
     this.state = { width: 820, height: 400, dataSource: DataSouce.Simple };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._rebalanceExample()}</div>;
   }
 
@@ -352,13 +379,13 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
     this.setState({ dataSource: checked ? DataSouce.Simple : DataSouce.Complex });
   };
 
-  private _rebalanceExample(): JSX.Element {
+  private _rebalanceExample(): JSXElement {
     const data: IChartProps = this.state.dataSource === DataSouce.Simple ? dataSimple : dataComplex;
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <Toggle
           label="Data Source"
           onText="simple"
@@ -386,7 +413,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

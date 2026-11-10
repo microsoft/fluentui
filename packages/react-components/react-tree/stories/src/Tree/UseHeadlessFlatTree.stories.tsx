@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement, HeadlessFlatTreeItemProps } from '@fluentui/react-components';
 import {
   FlatTree,
   TreeItem,
@@ -6,7 +7,6 @@ import {
   // TreeItemProps,
   TreeItemLayout,
   useHeadlessFlatTree_unstable,
-  HeadlessFlatTreeItemProps,
 } from '@fluentui/react-components';
 import {
   Button,
@@ -100,7 +100,7 @@ const ActionsExample = () => (
   </>
 );
 
-export const UseHeadlessFlatTree = () => {
+export const UseHeadlessFlatTree = (): JSXElement => {
   const flatTree = useHeadlessFlatTree_unstable(flatTreeItems);
   const focusTargetAttribute = useRestoreFocusTarget();
 

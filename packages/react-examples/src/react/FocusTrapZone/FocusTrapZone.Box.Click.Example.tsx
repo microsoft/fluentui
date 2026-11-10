@@ -17,7 +17,7 @@ const stackTokens = { childrenGap: 15 };
 
 export const FocusTrapZoneBoxClickExample: React.FunctionComponent = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
-  const toggle = React.useRef<IToggle>(null);
+  const toggle = React.useRef<IToggle | null>(null);
   return (
     <FocusTrapZone disabled={!useTrapZone} isClickableOutsideFocusTrap forceFocusInsideTrap={false}>
       <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>

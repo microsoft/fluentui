@@ -1,3 +1,5 @@
+'use client';
+
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../contexts/menuContext';
 import { MenuListContext } from '../contexts/menuListContext';
@@ -10,7 +12,7 @@ import { MenuListContext } from '../contexts/menuListContext';
  *
  * @returns whether the component is part of a submenu
  */
-export function useIsSubmenu() {
+export function useIsSubmenu(): boolean {
   const menuContextValue = useMenuContext_unstable(context => context.isSubmenu);
   const hasMenuListContext = useHasParentContext(MenuListContext);
 

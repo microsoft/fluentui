@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverTitle } from './TeachingPopoverTitle';
-import { TeachingPopoverTitleProps } from './TeachingPopoverTitle.types';
+import type { TeachingPopoverTitleProps } from './TeachingPopoverTitle.types';
 
 describe('TeachingPopoverTitle', () => {
   isConformant<TeachingPopoverTitleProps>({

@@ -5,7 +5,7 @@ import { ContextualMenuItemType } from '@fluentui/react/lib/ContextualMenu';
 export const CommandBarLazyExample: React.FunctionComponent = () => {
   const [menuItems, setMenuItems] = React.useState<ICommandBarItemProps[] | undefined>(undefined);
 
-  const timeoutRef = React.useRef<number | null>();
+  const timeoutRef = React.useRef<number | null>(null);
 
   const items = React.useMemo((): ICommandBarItemProps[] => {
     const loadItems = () => {
@@ -61,7 +61,7 @@ export const CommandBarLazyExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <CommandBar items={items} />
+      <CommandBar items={items} ariaLabel="CommandBar example with a lazy-loaded menu" />
     </div>
   );
 };

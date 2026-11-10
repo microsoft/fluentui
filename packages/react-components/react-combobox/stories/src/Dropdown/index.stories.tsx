@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Dropdown, Listbox, Option } from '@fluentui/react-components';
 
 import descriptionMd from './DropdownDescription.md';
@@ -7,6 +7,7 @@ import accessibilityMd from './DropdownAccessibility.md';
 
 export { Default } from './DropdownDefault.stories';
 export { Appearance } from './DropdownAppearance.stories';
+export { WithField } from './DropdownField.stories';
 export { Grouped } from './DropdownGrouped.stories';
 export { Clearable } from './DropdownClearable.stories';
 export { ComplexOptions } from './DropdownComplexOptions.stories';

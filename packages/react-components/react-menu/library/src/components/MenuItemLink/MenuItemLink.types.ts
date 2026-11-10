@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { MenuItemProps, MenuItemSlots } from '../MenuItem/MenuItem.types';
+import type { MenuItemProps, MenuItemSlots } from '../MenuItem/MenuItem.types';
 
 export type MenuItemLinkSlots = {
   root: Slot<'a'>;

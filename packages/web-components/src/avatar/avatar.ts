@@ -1,6 +1,6 @@
-import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
+import { attr, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
-import { swapStates } from '../utils/element-internals.js';
+import { BaseAvatar } from './avatar.base.js';
 import {
   type AvatarActive,
   type AvatarAppearance,
@@ -11,84 +11,20 @@ import {
 } from './avatar.options.js';
 
 /**
- * The base class used for constructing a fluent-avatar custom element
- * @public
- */
-export class BaseAvatar extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: name
-   */
-  @attr
-  public name?: string | undefined;
-
-  /**
-   * Provide custom initials rather than one generated via the name
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: name
-   */
-  @attr
-  public initials?: string | undefined;
-
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
-
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'img';
-  }
-}
-
-/**
  * An Avatar Custom HTML Element.
  * Based on BaseAvatar and includes style and layout specific attributes
+ *
+ * @tag fluent-avatar
+ *
+ * @slot badge - Optional badge content displayed with the avatar.
+ *
+ * @presentational {AvatarActive | undefined} active - Optional activity indicator.
+ * @presentational {AvatarShape | undefined} shape - The avatar can have a circular or square shape.
+ * @presentational {AvatarAppearance | undefined} appearance - The appearance when `active="active"`.
  *
  * @public
  */
 export class Avatar extends BaseAvatar {
-  /**
-   * The avatar can have a circular or square shape.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: AvatarShape | undefined;
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: AvatarAppearance | undefined;
-
   /**
    * Size of the avatar in pixels.
    *
@@ -162,8 +98,8 @@ export class Avatar extends BaseAvatar {
     const size = this.size ?? 32;
 
     return (
-      this.initials ??
-      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
+      this.initials ||
+      getInitials(this.name, window.getComputedStyle(this).direction === 'rtl', {
         firstInitialOnly: size <= 16,
       })
     );
@@ -184,7 +120,7 @@ export class Avatar extends BaseAvatar {
         ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color ?? AvatarColor.neutral;
 
-    swapStates(this.elementInternals, prev, this.currentColor);
+    this.setAttribute('data-color', this.currentColor);
   }
 
   /**
@@ -213,7 +149,7 @@ const getHashCode = (str: string): number => {
   for (let len: number = str.length - 1; len >= 0; len--) {
     const ch = str.charCodeAt(len);
     const shift = len % 8;
-    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+    hashCode ^= (ch << shift) + (ch >> (8 - shift));
   }
 
   return hashCode;

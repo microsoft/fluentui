@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Accordion } from './Accordion';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
+
 import { isConformant } from '../../testing/isConformant';
+import { Accordion } from './Accordion';
 
 describe('Accordion', () => {
   isConformant({
@@ -15,8 +16,7 @@ describe('Accordion', () => {
    * Note: see more visual regression tests for Accordion in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<Accordion>Default Accordion</Accordion>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Accordion>Default Accordion</Accordion>);
+    expect(container).toMatchSnapshot();
   });
 });

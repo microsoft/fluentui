@@ -1,4 +1,14 @@
 import * as React from 'react';
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
+  TableColumnId,
+  TableRowId,
+  TableRowProps,
+  TableSelectionState,
+} from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -9,7 +19,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   useArrowNavigationGroup,
   TableBody,
@@ -21,19 +30,14 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   useTableSort,
   createTableColumn,
-  TableColumnId,
-  TableRowId,
-  TableRowProps,
-  TableSelectionState,
 } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -43,7 +47,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -124,7 +128,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const Memoization = () => {
+export const Memoization = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

@@ -8,6 +8,8 @@ import { ISchemeNames } from '@fluentui/style-utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleSetBase } from '@fluentui/style-utilities';
 import { ITheme } from '@fluentui/style-utilities';
+import type { JSXIntrinsicElement } from '@fluentui/utilities';
+import type { JSXIntrinsicElementKeys } from '@fluentui/utilities';
 import { styled as legacyStyled } from '@fluentui/utilities';
 import * as React_2 from 'react';
 
@@ -73,7 +75,7 @@ export interface IFactoryOptions<TProps> {
 }
 
 // @public
-export type IHTMLElementSlot<TElement extends keyof JSX.IntrinsicElements> = ISlotProp<JSX.IntrinsicElements[TElement]>;
+export type IHTMLElementSlot<TElement extends JSXIntrinsicElementKeys> = ISlotProp<JSXIntrinsicElement<TElement>>;
 
 // @public
 export type IHTMLSlot = ISlotProp<React_2.DetailedHTMLProps<React_2.HTMLAttributes<any>, any>>;
@@ -121,7 +123,7 @@ export interface ISlotOptions<TProps> {
 export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 // @public
-export type ISlotRender<TProps> = (props: React_2.PropsWithChildren<TProps>, defaultComponent: React_2.ComponentType<TProps>) => ReturnType<React_2.FunctionComponent<TProps>>;
+export type ISlotRender<TProps> = (props: React_2.PropsWithChildren<TProps>, defaultComponent: React_2.ComponentType<React_2.PropsWithChildren<TProps>>) => ReturnType<React_2.FunctionComponent<React_2.PropsWithChildren<TProps>>>;
 
 // @public
 export type ISlots<TSlots> = {
@@ -192,7 +194,7 @@ export type IViewComponent<TViewProps> = (props: React_2.PropsWithChildren<TView
 export { legacyStyled }
 
 // @public @deprecated
-export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
+export const ThemeProvider: React_2.FunctionComponent<React_2.PropsWithChildren<IThemeProviderProps>>;
 
 // @public
 export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React_2.Dispatch<React_2.SetStateAction<TProps[TProp]>>];

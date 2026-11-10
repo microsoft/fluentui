@@ -188,7 +188,7 @@ const measureGroup = (group: IGroup): number => {
 };
 
 export const DetailsListGroupedV2ScrollToIndexExample: React.FC = () => {
-  const root = React.useRef<IDetailsList>(null);
+  const root = React.useRef<IDetailsList | null>(null);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);

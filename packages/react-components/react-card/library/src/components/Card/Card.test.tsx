@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Card } from './Card';
+
 import { isConformant } from '../../testing/isConformant';
-import { CardProps } from './Card.types';
+
+import { Card } from './Card';
+import type { CardProps } from './Card.types';
 import { cardClassNames } from './useCardStyles.styles';
 
 describe('Card', () => {
@@ -86,5 +89,63 @@ describe('Card', () => {
 
     expect(getByTestId('card').getAttribute('tabindex')).toBeNull();
     expect(document.activeElement).toEqual(getByTestId('button'));
+  });
+
+  it('applies disabled state correctly', () => {
+    const { getByTestId } = render(
+      <Card data-testid="card" disabled>
+        Default Card
+      </Card>,
+    );
+
+    expect(getByTestId('card').getAttribute('aria-disabled')).toEqual('true');
+  });
+
+  it('does not respond to clicks when disabled', () => {
+    const clickFn = jest.fn();
+    const { getByTestId } = render(
+      <Card data-testid="card" disabled onClick={clickFn}>
+        Default Card
+      </Card>,
+    );
+
+    fireEvent.click(getByTestId('card'));
+    expect(clickFn).not.toHaveBeenCalled();
+  });
+
+  it('disables selection when disabled', () => {
+    const onSelectionChange = jest.fn();
+    const { getByTestId } = render(
+      <Card data-testid="card" disabled selected={false} onSelectionChange={onSelectionChange}>
+        Default Card
+      </Card>,
+    );
+
+    fireEvent.click(getByTestId('card'));
+    expect(onSelectionChange).not.toHaveBeenCalled();
+  });
+
+  it('disables checkbox when card is disabled', () => {
+    const onSelectionChange = jest.fn();
+    const { getByRole } = render(
+      <Card disabled selected={false} onSelectionChange={onSelectionChange}>
+        Default Card
+      </Card>,
+    );
+
+    const checkbox = getByRole('checkbox');
+    expect(checkbox).toHaveAttribute('disabled');
+  });
+
+  it('does not apply tabindex when disabled', () => {
+    const clickFn = jest.fn();
+    const { getByTestId } = render(
+      <Card data-testid="card" disabled onClick={clickFn}>
+        Default Card
+        <button data-testid="button">focusable</button>
+      </Card>,
+    );
+
+    expect(getByTestId('card').getAttribute('tabindex')).toBeNull();
   });
 });

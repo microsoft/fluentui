@@ -1,6 +1,8 @@
+'use client';
+
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
-import {
+import type {
   TableColumnDefinition,
   TableColumnId,
   ColumnResizeState,

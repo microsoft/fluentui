@@ -1,5 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
+import type { JSXIntrinsicElement, JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 
 // Simplified version from https://github.com/reach/reach-ui/blob/55d28eda39afc4c667e97f5f62a48d1de034b93f/packages/utils/src/polymorphic.ts
 interface PrimitiveComponent {
@@ -7,7 +10,7 @@ interface PrimitiveComponent {
    * Infers props from JSX.IntrinsicElements based on "as" value. Explicitly avoids `React.ElementType` and manually
    * narrow the prop types so that events are typed when using JSX.IntrinsicElements.
    */
-  <As extends keyof JSX.IntrinsicElements>(props: { as?: As } & JSX.IntrinsicElements[As]): React.ReactElement | null;
+  <As extends JSXIntrinsicElementKeys>(props: { as?: As } & JSXIntrinsicElement<As>): React.ReactElement | null;
 
   displayName: string;
 }

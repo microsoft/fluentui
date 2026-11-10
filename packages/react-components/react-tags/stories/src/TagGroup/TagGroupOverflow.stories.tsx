@@ -1,12 +1,11 @@
 import * as React from 'react';
+import type { JSXElement, TagProps, InteractionTagPrimaryProps } from '@fluentui/react-components';
 import {
   TagGroup,
   Tag,
-  TagProps,
   tagClassNames,
   InteractionTag,
   InteractionTagPrimary,
-  InteractionTagPrimaryProps,
   makeStyles,
   shorthands,
   Menu,
@@ -142,7 +141,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithOverflow = () => {
+export const WithOverflow = (): JSXElement => {
   const styles = useStyles();
 
   return (

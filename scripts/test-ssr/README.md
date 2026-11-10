@@ -3,8 +3,19 @@
 ## Usage
 
 ```shell
-# test-ssr "./stories/**/*.stories.tsx"
+test-ssr "./stories/**/*.stories.tsx"
+
+# Exclude specific patterns
+test-ssr "./stories/**/*.stories.tsx" --exclude "**/react-portal/**" --exclude "**/Virtualization.stories.tsx"
+
+# Multiple exclude patterns can be specified
+test-ssr "./stories/**/*.stories.tsx" --exclude "**/react-portal/**" "**/react-positioning/stories/src/UseSafeZoneArea/**"
 ```
+
+### Options
+
+- `stories` (required): A glob pattern that contains story files to test
+- `--exclude`: Glob patterns to exclude from testing. Can be specified multiple times or as an array. Stories matching these patterns will be skipped during SSR testing.
 
 The utility produces assets for testing, this includes:
 
@@ -41,3 +52,11 @@ flowchart TB
 #### Debugging
 
 All assets are available in `node_modules/.cache/ssr-tests` folder. You can open `./node_modules/.cache/ssr-tests/index.html` in any browser and debug relevant issues.
+
+#### Webpack-only loaders supported during SSR
+
+`buildAssets.ts` registers a custom esbuild plugin (`src/utils/esbuild-plugin.ts`) so stories that work in webpack-driven Storybook also work in the SSR pipeline:
+
+- `*.module.css` imports — shimmed to a `Proxy` whose getter echoes the property name (so `styles.foo === 'foo'`). Sufficient for SSR snapshots without running the full CSS-Modules transform.
+
+If a story authors needs another webpack-only loader (e.g. `?inline`, custom asset modules), extend the plugins in `src/utils/esbuild-plugin.ts` rather than excluding the package from `testSSR`.

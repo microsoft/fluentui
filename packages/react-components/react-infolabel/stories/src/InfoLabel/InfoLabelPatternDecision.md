@@ -5,9 +5,7 @@
 An InfoLabel is composed of two components and a wrapper. The main component is a Label and the secondary component is an InfoButton.
 We packaged both components to be able to achieve the correct accessibility out of the box. We automatically link the label to the
 button from the InfoButton component and apply `aria-owns` to the wrapper when the InfoButton's Popover is open. In addition, InfoLabel
-allows you to render only the InfoButton if that's desired. The reason why we don't export InfoButton separately is to avoid having
-issues with `aria-owns`. The PopoverSurface must be linked to the wrapper of the InfoButton when open, not doing so results in a
-violation.
+allows you to render only the InfoButton if that's desired. While InfoButton is exported, it should be used with care. To meet accessibility requirements, the PopoverSurface must be correctly linked to the wrapper using aria-owns when open. Using InfoButton incorrectly or in isolation may result in accessibility violations.
 
 ### What is the InfoButton pattern?
 

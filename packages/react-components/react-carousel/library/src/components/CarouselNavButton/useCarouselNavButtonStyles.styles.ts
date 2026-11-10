@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton.types';
@@ -47,7 +49,7 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
     }),
     '::after': {
-      opacity: 0.65,
+      opacity: 0.6,
     },
     ':hover': {
       '::after': {
@@ -86,18 +88,18 @@ const useStyles = makeStyles({
   },
   brand: {
     '::after': {
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: tokens.colorCompoundBrandBackground,
       opacity: 1,
     },
     ':hover': {
       '::after': {
-        backgroundColor: tokens.colorBrandBackgroundHover,
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
         opacity: 1,
       },
     },
     ':active': {
       '::after': {
-        backgroundColor: tokens.colorBrandBackgroundPressed,
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
         opacity: 1,
       },
     },
@@ -105,6 +107,17 @@ const useStyles = makeStyles({
   unselectedBrand: {
     '::after': {
       opacity: 0.6,
+      backgroundColor: tokens.colorNeutralForeground1,
+    },
+    ':hover': {
+      '::after': {
+        opacity: 0.75,
+      },
+    },
+    ':active': {
+      '::after': {
+        opacity: 1,
+      },
     },
   },
 });
@@ -113,12 +126,11 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNavButton slots based on the state
  */
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
-  'use no memo';
-
   const styles = useStyles();
 
   const { selected, appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselNavButtonClassNames.root,
     styles.root,

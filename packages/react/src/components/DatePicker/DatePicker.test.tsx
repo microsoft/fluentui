@@ -1,18 +1,12 @@
 import * as React from 'react';
-import { Calendar } from '../../Calendar';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { resetIds } from '@fluentui/utilities';
+
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '@fluentui/utilities';
-import { Callout } from '../../Callout';
-import { safeCreate } from '@fluentui/test-utilities';
-import { TextField } from '../../TextField';
-import * as renderer from 'react-test-renderer';
-import * as ReactDOM from 'react-dom';
-import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
 import { isConformant } from '../../common/isConformant';
-import type { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
+import { IDatePickerStrings } from './DatePicker.types';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -27,578 +21,363 @@ describe('DatePicker', () => {
 
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
-    safeCreate(<DatePicker />, component => {
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const { container } = render(<DatePicker />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DatePicker with value correctly', () => {
     // Format the date as a fake value to avoid snapshot churn
-    safeCreate(<DatePicker value={new Date()} formatDate={() => 'fake date'} />, component => {
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const { container } = render(<DatePicker value={new Date()} formatDate={() => 'fake date'} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DatePicker allowing text input correctly', () => {
-    safeCreate(<DatePicker allowTextInput />, component => {
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const { container } = render(<DatePicker allowTextInput />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});
+
+isConformant({
+  Component: DatePicker,
+  displayName: 'DatePicker',
+});
+
+it('can add an id to the container', () => {
+  const { container } = render(<DatePickerBase id="foo" />);
+
+  expect(container.firstChild).toHaveAttribute('id', 'foo');
+});
+
+it('should not open DatePicker when disabled, no label', () => {
+  const { container } = render(<DatePickerBase disabled />);
+  const icon = container.querySelector('i');
+  userEvent.click(icon!);
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+});
+
+it('should not render DatePicker when isDatePickerShown is not set', () => {
+  render(<DatePickerBase />);
+  const input = screen.getByRole('combobox');
+  expect(input.getAttribute('aria-owns')).toBeNull();
+});
+
+it('should render DatePicker when isDatePickerShown is set', () => {
+  const { container } = render(<DatePickerBase />);
+  const icon = container.querySelector('i');
+  userEvent.click(icon!);
+  const input = screen.getByRole('combobox');
+  expect(input.getAttribute('aria-owns')).toBeDefined();
+});
+
+it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
+  const { container } = render(<DatePickerBase />);
+  const icon = container.querySelector('i');
+  userEvent.click(icon!);
+  expect(screen.getByRole('dialog')).toBeInTheDocument();
+});
+
+it('should not open DatePicker when disabled, with label', () => {
+  const { container } = render(<DatePickerBase disabled label="label" />);
+  const icon = container.querySelector('i');
+  userEvent.click(icon!);
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+});
+
+it('with allowTextInput false, renders read-only input as a div with placeholder', () => {
+  const placeholder = 'Select a date';
+  render(<DatePickerBase placeholder={placeholder} />);
+  expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+  const combobox = screen.getByRole('combobox');
+  expect(combobox).toHaveTextContent(placeholder);
+});
+
+it('with allowTextInput false, renders read-only input as a div with value', () => {
+  render(<DatePickerBase placeholder="Select a date" value={new Date()} formatDate={() => 'fake date'} />);
+  expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+  const combobox = screen.getByRole('combobox');
+  expect(combobox).toHaveTextContent('fake date');
+});
+
+it('with allowTextInput true, renders normal input', () => {
+  render(<DatePickerBase allowTextInput />);
+  expect(screen.getByRole('combobox')).toBeInTheDocument();
+});
+
+it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
+  const onSelectDate = jest.fn();
+  render(<DatePickerBase isRequired allowTextInput onSelectDate={onSelectDate} />);
+  const input = screen.getByRole('combobox');
+
+  userEvent.type(input, 'Jan 1 2030');
+  userEvent.clear(input);
+
+  expect(onSelectDate).toHaveBeenCalledTimes(2);
+});
+
+it('should clear error message when required input has date text and allowTextInput is true', async () => {
+  const { container } = render(<DatePickerBase isRequired={true} allowTextInput={true} />);
+  const input = container.querySelector('input')!;
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.click(input);
+
+  await waitFor(() => {
+    expect(container.querySelector('[data-automation-id="error-message"]')).toHaveTextContent('Field is required');
   });
 
-  isConformant({
-    Component: DatePicker,
-    displayName: 'DatePicker',
+  userEvent.type(input, 'Jan 1 2030');
+  userEvent.click(input);
+
+  expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
+});
+
+it('should not set initial error when required input is empty and validateOnLoad is false', async () => {
+  const { container } = render(
+    <DatePickerBase isRequired={true} allowTextInput={true} textField={{ validateOnLoad: false }} />,
+  );
+
+  const input = container.querySelector('input')!;
+
+  expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.click(input);
+
+  await waitFor(() => {
+    expect(container.querySelector('[data-automation-id="error-message"]')).toBeInTheDocument();
+  });
+});
+
+it('clears error message when required input has date selected from calendar and allowTextInput is true', async () => {
+  const { container } = render(<DatePickerBase isRequired={true} allowTextInput={true} />);
+  const input = container.querySelector('input')!;
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.click(input);
+
+  await waitFor(() => {
+    expect(container.querySelector('[data-automation-id="error-message"]')).toHaveTextContent('Field is required');
   });
 
-  it('can add an id to the container', () => {
-    const wrapper = mount(<DatePickerBase id="foo" />);
+  userEvent.click(input);
+  const date = new Date();
+  userEvent.type(input, date.toDateString());
 
-    expect(wrapper.getElement().props.id).toEqual('foo');
+  expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
+});
+
+it('should not clear initial error when datepicker is opened', async () => {
+  const { container } = render(
+    <DatePickerBase
+      isRequired={true}
+      allowTextInput={true}
+      maxDate={new Date('2020-04-01')}
+      value={new Date('2020-04-02')}
+    />,
+  );
+  const input = container.querySelector('input')!;
+
+  expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.click(input);
+
+  await waitFor(() => {
+    expect(container.querySelector('[data-automation-id="error-message"]')).not.toBeNull();
+  });
+});
+
+it('should show status message and reset value when allowTextInput is true and invalid string is entered', async () => {
+  const { container } = render(<DatePickerBase allowTextInput={true} />);
+  const input = container.querySelector('input')!;
+  const status = container.querySelector('[aria-live="assertive"]');
+
+  expect(status).toBeEmptyDOMElement();
+
+  // input invalid string "test", then blur
+  userEvent.type(input, 'test');
+  userEvent.click(container);
+
+  await waitFor(() => {
+    expect(status).not.toBeEmptyDOMElement();
+    expect(input.value).toBe('');
+  });
+});
+
+it('should reset status message after selecting a valid date', async () => {
+  const { container } = render(<DatePickerBase allowTextInput={true} initialPickerDate={new Date('2021-04-15')} />);
+  const input = container.querySelector('input')!;
+  const status = container.querySelector('[aria-live="assertive"]');
+
+  // input invalid string "test", then blur
+  userEvent.type(input, 'test');
+  userEvent.click(container);
+
+  await waitFor(() => {
+    expect(status).not.toBeEmptyDOMElement();
   });
 
-  it('should not open DatePicker when disabled, no label', () => {
-    const wrapper = mount(<DatePickerBase disabled />);
-    wrapper.find('i').simulate('click');
+  // pick valid date, then blur
+  userEvent.clear(input);
+  userEvent.type(input, '2021-04-10');
+  userEvent.click(container);
 
-    expect(wrapper.find('[role="dialog"]').length).toBe(0);
+  await waitFor(() => {
+    expect(status).toBeEmptyDOMElement();
+  });
+});
+
+it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+  const onSelectDate = jest.fn();
+
+  const { container } = render(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
+  const input = container.querySelector('input')!;
+
+  // open the datepicker then dismiss
+  userEvent.type(input, '2021-04-10');
+  userEvent.click(input);
+
+  expect(onSelectDate).toHaveBeenCalledTimes(1);
+});
+
+it('should set "Calendar" as the Callout\'s aria-label', () => {
+  const { container, getByLabelText } = render(<DatePickerBase />);
+  const input = container.querySelectorAll('div')[5];
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+
+  const callout = getByLabelText('Calendar');
+
+  expect(callout).toBeInTheDocument();
+  expect(callout).toHaveAttribute('role', 'dialog');
+  expect(callout).toHaveClass('ms-Callout-main');
+});
+
+it('should reflect the correct date in the input field when selecting a value', () => {
+  const today = new Date('January 15, 2020');
+  const initiallySelectedDate = new Date('January 10, 2020');
+  // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
+  // that the datepicker opens on the correct month
+
+  const { container } = render(
+    <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
+  );
+  const input = container.querySelector('input')!;
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.type(input, today.toDateString());
+
+  expect(input.value).toBe('Wed Jan 15 2020');
+});
+
+it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
+  const today = new Date('January 15, 2020');
+  const initiallySelectedDate = new Date('January 10, 2020');
+  const onFormatDate = (date: Date): string => {
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+  };
+  // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
+  // that the datepicker opens on the correct month
+
+  const { container } = render(
+    <DatePickerBase
+      allowTextInput={true}
+      today={today}
+      formatDate={onFormatDate}
+      initialPickerDate={initiallySelectedDate}
+    />,
+  );
+  const input = container.querySelector('input')!;
+
+  // open the datepicker then dismiss
+  userEvent.click(input);
+  userEvent.type(input, today.toDateString());
+
+  expect(input.value).toBe('Wed Jan 15 2020');
+});
+
+describe('DatePickerBase - date boundaries', () => {
+  const defaultDate = new Date('Dec 15 2017');
+  const minDate = new Date('Jan 1 2017');
+  const maxDate = new Date('Dec 31 2017');
+  const strings: IDatePickerStrings = {
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    goToToday: 'Go to today',
+    isOutOfBoundsErrorMessage: 'out of bounds',
+  };
+
+  it('should display error for dates outside boundary', () => {
+    render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
+    const input = screen.getByRole('combobox');
+
+    userEvent.type(input, 'Jan 1 2010');
+    userEvent.tab();
+
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2020');
+    userEvent.tab();
+
+    expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
-  // if isDatePickerShown is not set, the DatePicker should not
-  // be rendered and therefore aria-owns should not exist
-  it('should not render DatePicker when isDatePickerShown is not set', () => {
-    const datePicker = mount(<DatePickerBase />);
+  it('should not display error for dates within or on boundary', () => {
+    render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
+    const input = screen.getByRole('combobox');
 
-    expect(datePicker.getDOMNode().getAttribute('aria-owns')).toBeNull();
+    userEvent.type(input, 'Dec 16 2017');
+    userEvent.tab();
+
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2017');
+    userEvent.tab();
+
+    expect(input).toHaveAttribute('aria-invalid', 'false');
   });
 
-  // if isDatePickerShown is set, the DatePicker should be rendered
-  // and aria-owns should exist
-  it('should render DatePicker when isDatePickerShown is set', () => {
-    const datePicker = mount(<DatePickerBase />);
-    datePicker.find('i').simulate('click');
-
-    expect(datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns')).toBeDefined();
-  });
-
-  // if isDatePickerShown is set, the DatePicker should be rendered
-  // and the calloutId should exist in the DOM
-  it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
-    const datePicker = mount(<DatePickerBase />);
-    datePicker.find('i').simulate('click');
-
-    const calloutId = datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns');
-
-    expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
-  });
-
-  it('should not open DatePicker when disabled, with label', () => {
-    const wrapper = mount(<DatePickerBase disabled label="label" />);
-    wrapper.find('i').simulate('click');
-    expect(wrapper.find('[role="dialog"]').length).toBe(0);
-  });
-
-  it('with allowTextInput false, renders read-only input as a div with placeholder', () => {
-    // This works around a bug with Talkback on Android (see comments in onRenderInput in DatePickerBase)
-    const wrapper = mount(<DatePickerBase placeholder="Select a date" />);
-    expect(wrapper.find('input')).toHaveLength(0);
-    const fieldElement = wrapper.find('.ms-TextField-field');
-    expect(fieldElement).toHaveLength(1);
-    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
-    expect(fieldElement.prop('role')).toBe('combobox');
-    expect(fieldElement.text()).toBe('Select a date');
-  });
-
-  it('with allowTextInput false, renders read-only input as a div with value', () => {
-    const wrapper = mount(
-      <DatePickerBase placeholder="Select a date" value={new Date()} formatDate={() => 'fake date'} />,
+  it('should show error when boundaries change and intersect value', () => {
+    const { rerender } = render(
+      <DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />,
     );
-    expect(wrapper.find('input')).toHaveLength(0);
-    const fieldElement = wrapper.find('.ms-TextField-field');
-    expect(fieldElement).toHaveLength(1);
-    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
-    expect(fieldElement.prop('role')).toBe('combobox');
-    expect(fieldElement.text()).toBe('fake date');
-  });
 
-  it('with allowTextInput true, renders normal input', () => {
-    const wrapper = mount(<DatePickerBase allowTextInput />);
-    expect(wrapper.find('input')).toHaveLength(1);
-  });
+    const input = screen.getByRole('combobox');
 
-  it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
-    const onSelectDate = jest.fn();
-    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
-    const textField = datePicker.find('input');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
 
-    expect(textField).toHaveLength(1);
-
-    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
-    textField.simulate('change', { target: { value: '' } }).simulate('blur');
-
-    expect(onSelectDate).toHaveBeenCalledTimes(2);
-  });
-
-  it('should clear error message when required input has date text and allowTextInput is true', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
-      const textfield = datePicker.root.findByType(TextField);
-      const input = datePicker.root.findByType('input');
-
-      // open the datepicker then dismiss
-      renderer.act(() => {
-        input.props.onClick();
-      });
-      renderer.act(() => {
-        input.props.onClick();
-      });
-
-      expect(textfield.props.errorMessage).toBe('Field is required');
-
-      renderer.act(() => {
-        input.props.onChange({ target: { value: 'Jan 1 2030' }, persist: jest.fn() });
-      });
-      renderer.act(() => {
-        input.props.onBlur();
-      });
-
-      expect(textfield.props.errorMessage).toBeUndefined();
-    });
-  });
-
-  it('should not set initial error when required input is empty and validateOnLoad is false', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(
-      <DatePickerBase isRequired={true} allowTextInput={true} textField={{ validateOnLoad: false }} />,
-      datePicker => {
-        const textfield = datePicker.root.findByType(TextField);
-        const input = datePicker.root.findByType('input');
-
-        expect(textfield.props.errorMessage).toBeUndefined();
-
-        // open the datepicker then dismiss
-        renderer.act(() => {
-          input.props.onClick();
-        });
-        renderer.act(() => {
-          input.props.onClick();
-        });
-
-        expect(textfield.props.errorMessage).not.toBeUndefined();
-      },
-    );
-  });
-
-  it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
-      const textfield = datePicker.root.findByType(TextField);
-      const input = datePicker.root.findByType('input');
-
-      // open the datepicker then dismiss
-      renderer.act(() => {
-        input.props.onClick();
-      });
-      renderer.act(() => {
-        input.props.onClick();
-      });
-
-      expect(textfield.props.errorMessage).toBe('Field is required');
-
-      renderer.act(() => {
-        input.props.onClick();
-      });
-      renderer.act(() => {
-        const date = new Date();
-        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
-      });
-
-      expect(textfield.props.errorMessage).toBeUndefined();
-    });
-  });
-
-  it('should not clear initial error when datepicker is opened', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(
+    rerender(
       <DatePickerBase
-        isRequired={true}
-        allowTextInput={true}
-        maxDate={new Date('2020-04-01')}
-        value={new Date('2020-04-02')}
-      />,
-      datePicker => {
-        const textfield = datePicker.root.findByType(TextField);
-        const input = datePicker.root.findByType('input');
-
-        expect(textfield.props.errorMessage).not.toBeUndefined();
-
-        // open the datepicker then dismiss
-        renderer.act(() => {
-          input.props.onClick();
-        });
-        renderer.act(() => {
-          input.props.onClick();
-        });
-
-        expect(textfield.props.errorMessage).not.toBeUndefined();
-      },
-    );
-  });
-
-  it('should show status message and reset value when allowTextInput is true and invalid string is entered', () => {
-    safeCreate(<DatePickerBase allowTextInput={true} />, datePicker => {
-      const input = datePicker.root.findByType('input');
-      const status = datePicker.root.findByProps({ 'aria-live': 'assertive' });
-
-      expect(status.children[0]).toBeUndefined();
-
-      // input invalid string "test", then blur
-      const fakeInputEvent = { target: { value: 'test' } };
-      renderer.act(() => {
-        input.props.onInput(fakeInputEvent);
-      });
-      renderer.act(() => {
-        input.props.onBlur();
-      });
-
-      expect(typeof status.children[0]).toBe('string');
-      expect((status.children[0] as string).length).toBeGreaterThan(0);
-      expect(input.props.value).toBe('');
-    });
-  });
-
-  it('should reset status message after selecting a valid date', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(<DatePickerBase allowTextInput={true} initialPickerDate={new Date('2021-04-15')} />, datePicker => {
-      const input = datePicker.root.findByType('input');
-      const status = datePicker.root.findByProps({ 'aria-live': 'assertive' });
-
-      // input invalid string "test", then blur
-      const fakeInputEvent = { target: { value: 'test' } };
-      renderer.act(() => {
-        input.props.onInput(fakeInputEvent);
-      });
-      renderer.act(() => {
-        input.props.onBlur();
-      });
-
-      expect(typeof status.children[0]).toBe('string');
-
-      // pick valid date
-      renderer.act(() => {
-        input.props.onClick();
-      });
-      renderer.act(() => {
-        const date = new Date('2021-04-10');
-        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
-      });
-
-      expect(status.children[0]).toBeUndefined();
-    });
-  });
-
-  // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
-  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-    const onSelectDate = jest.fn();
-
-    safeCreate(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />, datePicker => {
-      const input = datePicker.root.findByType('input');
-
-      // open the datepicker then dismiss
-      renderer.act(() => {
-        input.props.onClick();
-      });
-      renderer.act(() => {
-        const date = new Date();
-        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
-      });
-
-      expect(onSelectDate).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it('should set "Calendar" as the Callout\'s aria-label', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(<DatePickerBase />, datePicker => {
-      const input = datePicker.root.findAllByType('div')[5];
-
-      // open the datepicker then dismiss
-      renderer.act(() => {
-        input.props.onClick();
-      });
-
-      const calloutProps = datePicker.root.findByType(Callout).props;
-
-      expect(calloutProps.ariaLabel).toBe('Calendar');
-    });
-  });
-
-  it('should reflect the correct date in the input field when selecting a value', () => {
-    const today = new Date('January 15, 2020');
-    const initiallySelectedDate = new Date('January 10, 2020');
-    // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
-    // that the datepicker opens on the correct month
-
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(
-      <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
-      datePicker => {
-        const input = datePicker.root.findByType('input');
-
-        // open the datepicker then dismiss
-        renderer.act(() => {
-          input.props.onClick();
-        });
-        renderer.act(() => {
-          datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(today, [today]);
-        });
-
-        expect(input.props.value).toBe('Wed Jan 15 2020');
-      },
-    );
-  });
-
-  xit('reflects the correct date in the input field when selecting a value and a different format is given', () => {
-    const today = new Date('January 15, 2020');
-    const initiallySelectedDate = new Date('January 10, 2020');
-    const onFormatDate = (date: Date): string => {
-      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
-    };
-    // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
-    // that the datepicker opens on the correct month
-
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
-
-    safeCreate(
-      <DatePickerBase
-        allowTextInput={true}
-        today={today}
-        formatDate={onFormatDate}
-        initialPickerDate={initiallySelectedDate}
-      />,
-      datePicker => {
-        const input = datePicker.root.findByType('input');
-
-        // open the datepicker then dismiss
-        renderer.act(() => {
-          input.props.onClick();
-        });
-        renderer.act(() => {
-          datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(today, [today]);
-        });
-
-        expect(input.props.value).toBe('15/1/20');
-      },
-    );
-  });
-
-  describe('when Calendar properties are not specified', () => {
-    const datePicker = shallow(<DatePickerBase />);
-    datePicker
-      .find(TextField)
-      ?.props()
-      .onClick?.({} as any);
-    const calendarProps = datePicker.find(Calendar).props();
-
-    it('renders Calendar with isMonthPickerVisible as true by defaut', () => {
-      expect(calendarProps.isMonthPickerVisible).toBe(true);
-    });
-
-    it('renders Calendar with showMonthPickerAsOverlay as false by defaut', () => {
-      expect(calendarProps.showMonthPickerAsOverlay).toBe(false);
-    });
-
-    it('renders Calendar with highlightCurrentMonth as false by defaut', () => {
-      expect(calendarProps.highlightCurrentMonth).toBe(false);
-    });
-
-    it('renders Calendar with showWeekNumbers as false by defaut', () => {
-      expect(calendarProps.showWeekNumbers).toBe(false);
-    });
-
-    it('renders Calendar with firstWeekOfYear as FirstWeekOfYear.FirstDay by defaut', () => {
-      expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstDay);
-    });
-
-    it('renders Calendar with showGoToToday as true by defaut', () => {
-      expect(calendarProps.showGoToToday).toBe(true);
-    });
-  });
-
-  describe('when Calendar properties are specified', () => {
-    const value = new Date(2017, 10, 1);
-    const today = new Date(2017, 9, 31);
-
-    const dateTimeFormatter: IDatePickerProps['dateTimeFormatter'] = {
-      formatMonthDayYear: () => 'm/d/y',
-      formatMonthYear: () => 'm/y',
-      formatDay: () => 'd',
-      formatMonth: () => 'm',
-      formatYear: () => 'y',
-    };
-
-    const datePicker = shallow(
-      <DatePickerBase
-        isMonthPickerVisible={false}
-        showMonthPickerAsOverlay={true}
-        value={value}
-        today={today}
-        firstDayOfWeek={2}
-        highlightCurrentMonth={true}
-        showWeekNumbers={true}
-        firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
-        showGoToToday={false}
-        dateTimeFormatter={dateTimeFormatter}
+        allowTextInput
+        minDate={new Date('Dec 16 2017')}
+        maxDate={maxDate}
+        value={defaultDate}
+        strings={strings}
       />,
     );
-    datePicker
-      .find(TextField)
-      ?.props()
-      .onClick?.({} as any);
-
-    const calendarProps = datePicker.find(Calendar).props();
-
-    it('renders Calendar with same isMonthPickerVisible', () => {
-      expect(calendarProps.isMonthPickerVisible).toBe(false);
-    });
-
-    it('renders Calendar with same showMonthPickerAsOverlay', () => {
-      expect(calendarProps.showMonthPickerAsOverlay).toBe(true);
-    });
-
-    it('renders Calendar with same value', () => {
-      expect(calendarProps.value).toBe(value);
-    });
-
-    it('renders Calendar with same today', () => {
-      expect(calendarProps.today).toBe(today);
-    });
-
-    it('renders Calendar with same firstDayOfWeek', () => {
-      expect(calendarProps.firstDayOfWeek).toBe(2);
-    });
-
-    it('renders Calendar with same highlightCurrentMonth', () => {
-      expect(calendarProps.highlightCurrentMonth).toBe(true);
-    });
-
-    it('renders Calendar with same showWeekNumbers', () => {
-      expect(calendarProps.showWeekNumbers).toBe(true);
-    });
-
-    it('renders Calendar with same firstWeekOfYear', () => {
-      expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstFullWeek);
-    });
-
-    it('renders Calendar with same showGoToToday', () => {
-      expect(calendarProps.showGoToToday).toBe(false);
-    });
-
-    it('renders Calendar with same dateTimeFormatter', () => {
-      expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
-    });
-  });
-
-  describe('when date boundaries are specified', () => {
-    const defaultDate = new Date('Dec 15 2017');
-    const minDate = new Date('Jan 1 2017');
-    const maxDate = new Date('Dec 31 2017');
-    const strings: IDatePickerStrings = {
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ],
-      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-      goToToday: 'Go to today',
-      isOutOfBoundsErrorMessage: 'out of bounds',
-    };
-    let datePicker: ReactWrapper<IDatePickerProps, never>;
-
-    beforeEach(() => {
-      datePicker = mount(
-        <DatePickerBase
-          allowTextInput={true}
-          minDate={minDate}
-          maxDate={maxDate}
-          value={defaultDate}
-          strings={strings}
-        />,
-      );
-    });
-
-    afterEach(() => {
-      datePicker.unmount();
-    });
-
-    it('should throw validation error for date outside boundary', () => {
-      // before minDate
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2010' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
-
-      // after maxDate
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2020' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
-    });
-
-    it('should not throw validation error for date inside boundary', () => {
-      // in boundary
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Dec 16 2017' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
-
-      // on boundary
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2017' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
-    });
-
-    it('should throw validation error if boundaries are moved to intersect selected date', () => {
-      // ReactTestUtils.act(() => {
-      datePicker.setProps({ minDate: new Date('Dec 16 2017') });
-      datePicker.update();
-      // });
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 });

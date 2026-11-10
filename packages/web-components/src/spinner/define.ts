@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './spinner.definition.js';
+import { Spinner } from './spinner.js';
 
-definition.define(FluentDesignSystem.registry);
+Spinner.define(definition);

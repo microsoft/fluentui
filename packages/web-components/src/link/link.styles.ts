@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorBrandForegroundLink,
   colorBrandForegroundLinkHover,
@@ -7,12 +7,12 @@ import {
   colorNeutralForeground2Link,
   colorNeutralForeground2LinkHover,
   colorNeutralForeground2LinkPressed,
+  colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { inlineState, subtleState } from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline')}
@@ -34,7 +34,7 @@ export const styles = css`
     user-select: text;
   }
 
-  :host(:is(:hover, :focus-visible)) {
+  :host(:hover) {
     outline: none;
     text-decoration-line: underline;
   }
@@ -48,23 +48,32 @@ export const styles = css`
       color: ${colorBrandForegroundLinkPressed};
     }
 
-    :host(${subtleState}:hover) {
+    :host([appearance='subtle']:hover) {
       color: ${colorNeutralForeground2LinkHover};
     }
 
-    :host(${subtleState}:active) {
+    :host([appearance='subtle']:active) {
       color: ${colorNeutralForeground2LinkPressed};
     }
   }
 
-  :host(${subtleState}) {
+  :host([appearance='subtle']) {
     color: ${colorNeutralForeground2Link};
   }
 
   :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)),
-  :host(${inlineState}) {
+  :host([inline]) {
     font: inherit;
     text-decoration: underline;
+  }
+
+  :host(:focus-visible),
+  :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)):focus-visible,
+  :host([inline]:focus-visible) {
+    outline-style: none;
+    text-decoration-line: underline;
+    text-decoration-style: double;
+    text-decoration-color: ${colorStrokeFocus2};
   }
 
   :host(:not([href])) {
@@ -76,10 +85,10 @@ export const styles = css`
     position: absolute;
     inset: 0;
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       color: LinkText;
     }
-  `),
-);
+  }
+`;

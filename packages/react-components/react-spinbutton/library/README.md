@@ -32,4 +32,4 @@ See [Spec.md](./Spec.md).
 
 ### Migration Guide
 
-When upgrading to Fluent UI v9 see the [upgrade guide](https://react.fluentui.dev/?path=/docs/concepts-upgrading-from-v8-components-spinbutton-upgrade--page) for guidance on updating to the latest SpinButton implementation.
+When upgrading to Fluent UI v9 see the [upgrade guide](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-spinbutton-migration--docs) for guidance on updating to the latest SpinButton implementation.

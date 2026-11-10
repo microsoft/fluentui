@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -14,17 +15,18 @@ const ExampleContent = () => {
       <h3 className={styles.contentHeader}>Popover content</h3>
 
       <div>This popover has an arrow pointing to its target</div>
+      <Button>Action</Button>
     </div>
   );
 };
 
-export const WithArrow = () => (
+export const WithArrow = (): JSXElement => (
   <Popover withArrow>
     <PopoverTrigger disableButtonEnhancement>
       <Button>Popover trigger</Button>
     </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
+    <PopoverSurface>
       <ExampleContent />
     </PopoverSurface>
   </Popover>

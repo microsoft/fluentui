@@ -1,29 +1,18 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { Steps, StoryWright } from 'storywright';
-import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
+import { Steps, type StoryParameters } from 'storywright';
+import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/HorizontalBarChart',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps =
-        context.name.includes('Basic') && !context.name.includes('RTL')
-          ? new Steps()
-              .snapshot('default', { cropTo: '.testWrapper' })
-              .executeScript(
-                // eslint-disable-next-line @fluentui/max-len
-                `document.querySelectorAll('g[id^="_HorizontalLine"]')[2].children[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));`,
-              )
-              .snapshot('hover', { cropTo: '.testWrapper' })
-              .end()
-          : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story(context)}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof HorizontalBarChart>;
 
 export const Basic = () => {
@@ -34,7 +23,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: '#4cb4b7',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
@@ -46,7 +35,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: '#800080',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
@@ -58,7 +47,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: '#ff0000',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
@@ -70,7 +59,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: '#fbc0c3',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '105%',
@@ -82,7 +71,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: '#f7630c',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
@@ -94,7 +83,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: '#107c10',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '93%',
@@ -106,7 +95,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: '#6e0811',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '65%',
@@ -118,7 +107,7 @@ export const Basic = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: '#3a96dd',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
@@ -134,9 +123,23 @@ export const Basic = () => {
   );
 };
 
+Basic.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .executeScript(
+        `document.querySelectorAll('g[id^="_HorizontalLine"]')[2].children[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));`,
+      )
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .end(),
+  } satisfies StoryParameters,
+};
+
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const BasicRTL = getStoryVariant(Basic, RTL);
+// Disable custom StoryWright steps for the story
+BasicRTL.parameters.storyWright = undefined;
 
 export const WithBenchmark = () => {
   const hideRatio: boolean[] = [true, false];
@@ -148,7 +151,7 @@ export const WithBenchmark = () => {
         {
           legend: 'one',
           data: 50,
-          horizontalBarChartdata: { x: 10, y: 100 },
+          horizontalBarChartdata: { x: 10, total: 100 },
           color: '#4cb4b7',
         },
       ],
@@ -159,7 +162,7 @@ export const WithBenchmark = () => {
         {
           legend: 'two',
           data: 30,
-          horizontalBarChartdata: { x: 30, y: 200 },
+          horizontalBarChartdata: { x: 30, total: 200 },
           color: '#800080',
         },
       ],
@@ -170,7 +173,7 @@ export const WithBenchmark = () => {
         {
           legend: 'three',
           data: 5,
-          horizontalBarChartdata: { x: 15, y: 50 },
+          horizontalBarChartdata: { x: 15, total: 50 },
           color: '#ff0000',
         },
       ],
@@ -197,7 +200,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: '#4cb4b7',
         },
       ],
@@ -207,7 +210,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: '#800080',
         },
       ],
@@ -217,7 +220,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: '#ff0000',
         },
       ],
@@ -227,7 +230,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: '#fbc0c3',
         },
       ],
@@ -237,7 +240,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: '#f7630c',
         },
       ],
@@ -247,7 +250,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: '#107c10',
         },
       ],
@@ -257,7 +260,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: '#6e0811',
         },
       ],
@@ -267,7 +270,7 @@ export const Variant = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: '#3a96dd',
         },
       ],

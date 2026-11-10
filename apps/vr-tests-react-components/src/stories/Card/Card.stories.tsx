@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Body1, Caption1, Text } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
@@ -15,13 +15,14 @@ export default {
 
   decorators: [
     story => (
-      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-        <div className="testWrapper" style={{ width: '600px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '600px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Card>;
 
 export const CardTemplates = () => (

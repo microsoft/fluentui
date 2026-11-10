@@ -1,7 +1,9 @@
-import * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+'use client';
+
+import type * as React from 'react';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { TextareaProps, TextareaState } from './Textarea.types';
+import type { TextareaBaseProps, TextareaBaseState, TextareaProps, TextareaState } from './Textarea.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
@@ -14,16 +16,13 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to root HTMLElement of Textarea
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const overrides = useOverrides();
+  const fieldContext = useFieldContext_unstable();
 
   const {
-    size = 'medium',
+    size = fieldContext?.size ?? 'medium',
     appearance = overrides.inputDefaultAppearance ?? 'outline',
-    resize = 'none',
-    onChange,
+    ...baseProps
   } = props;
 
   if (
@@ -37,6 +36,31 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
     );
   }
 
+  const baseState = useTextareaBase_unstable(baseProps, ref);
+
+  return {
+    ...baseState,
+    size,
+    appearance,
+  };
+};
+
+/**
+ * Base hook for Textarea component, which manages state related to slots structure and
+ * controlled/uncontrolled value state.
+ *
+ * @param props - User provided props to the Textarea component.
+ * @param ref - User provided ref to be passed to the Textarea component.
+ */
+export const useTextareaBase_unstable = (
+  props: TextareaBaseProps,
+  ref?: React.Ref<HTMLTextAreaElement>,
+): TextareaBaseState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
+  const { resize = 'none', onChange } = props;
+
   const [value, setValue] = useControllableState({
     state: props.value,
     defaultState: props.defaultValue,
@@ -49,9 +73,7 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
     excludedPropNames: ['onChange', 'value', 'defaultValue'],
   });
 
-  const state: TextareaState = {
-    size,
-    appearance,
+  const state: TextareaBaseState = {
     resize,
     components: {
       root: 'span',

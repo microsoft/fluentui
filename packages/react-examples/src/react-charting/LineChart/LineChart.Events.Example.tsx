@@ -5,6 +5,7 @@ import * as d3 from 'd3-format';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ColorPicker, IColor } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -29,9 +30,9 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Events">Change Width:</label>
         <input
           type="range"
@@ -71,7 +72,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           />
         )}
         <div>{this._basicExample()}</div>
-      </>
+      </div>
     );
   }
 
@@ -91,7 +92,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
     this.setState({ customEventAnnotationColor: color.str });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
@@ -227,7 +228,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
             strokeColor: this.state.customEventAnnotationColor,
             labelColor: this.state.customEventAnnotationColor,
             labelHeight: 18,
-            labelWidth: 50,
+            labelWidth: 80,
             mergedLabel: (count: number) => `${count} events`,
           }}
           height={this.state.height}

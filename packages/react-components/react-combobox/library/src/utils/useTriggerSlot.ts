@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
@@ -5,17 +7,18 @@ import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
-import { OptionValue } from './OptionCollection.types';
+import type { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
   'open' | 'getOptionById' | 'selectOption' | 'setOpen' | 'multiselect' | 'setHasFocus'
 >;
 
-type UseTriggerSlotOptions = {
+export type UseTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
   activeDescendantController: ActiveDescendantImperativeRef;
+  shouldCloseOnBlur?: (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => boolean;
 };
 
 export function useTriggerSlot(
@@ -44,6 +47,7 @@ export function useTriggerSlot(
     defaultProps,
     elementType,
     activeDescendantController,
+    shouldCloseOnBlur,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
@@ -62,8 +66,10 @@ export function useTriggerSlot(
 
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
-    setOpen(event, false);
-    setHasFocus(false);
+    if (shouldCloseOnBlur?.(event) ?? true) {
+      setOpen(event, false);
+      setHasFocus(false);
+    }
   }, trigger.onBlur);
 
   trigger.onFocus = mergeCallbacks(

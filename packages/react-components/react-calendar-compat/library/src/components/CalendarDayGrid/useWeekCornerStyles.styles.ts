@@ -1,9 +1,11 @@
+'use client';
+
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { mergeClasses } from '@griffel/react';
 import { DateRangeType } from '../../utils/constants';
 import { getDateRangeArray } from '../../utils/index';
-import { DayInfo } from './CalendarDayGrid';
-import { CalendarDayGridProps } from './CalendarDayGrid.types';
+import type { DayInfo } from './CalendarDayGrid';
+import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
 /**
  * @internal
@@ -25,7 +27,12 @@ export interface WeekCorners {
 /**
  * @internal
  */
-export function useWeekCornerStyles(props: CalendarDayGridProps) {
+export function useWeekCornerStyles(
+  props: CalendarDayGridProps,
+): readonly [
+  (initialWeeks: DayInfo[][]) => WeekCorners,
+  (above: boolean, below: boolean, left: boolean, right: boolean) => string,
+] {
   const { dir } = useFluent_unstable();
 
   /**

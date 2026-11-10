@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -11,7 +13,10 @@ export type CarouselWalker = {
   active(): { el: HTMLElement; value: string } | null;
 };
 
-export const useCarouselWalker_unstable = () => {
+export const useCarouselWalker_unstable = (): {
+  ref: React.RefCallback<HTMLDivElement>;
+  walker: CarouselWalker;
+} => {
   const { targetDocument } = useFluent();
 
   const treeWalkerRef = React.useRef<TreeWalker | undefined>(targetDocument?.createTreeWalker(targetDocument.body));

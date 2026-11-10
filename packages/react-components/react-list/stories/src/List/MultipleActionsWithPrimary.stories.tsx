@@ -17,6 +17,7 @@ import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useListItemRootStyles = makeResetStyles({
   position: 'relative',
@@ -66,7 +67,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
   const { value } = props;
 
   // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback(event => {
+  const onAction = React.useCallback((event: React.SyntheticEvent | Event) => {
     // This prevents the change in selection on click/Enter
     event.preventDefault();
     alert(`Triggered custom action!`);
@@ -148,7 +149,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
   );
 };
 
-export const MultipleActionsWithPrimary = () => {
+export const MultipleActionsWithPrimary = (): JSXElement => {
   const classes = useStyles();
 
   return (

@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import type { DatePickerProps } from '../DatePicker';
 
@@ -11,7 +13,8 @@ import type { DatePickerProps } from '../DatePicker';
  */
 export function usePopupPositioning(
   props: DatePickerProps,
-): [triggerRef: React.MutableRefObject<HTMLElement>, popupRef: React.MutableRefObject<HTMLDivElement>] {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+): [triggerRef: React.MutableRefObject<HTMLElement | null>, popupRef: React.MutableRefObject<HTMLDivElement | null>] {
   const { positioning } = props;
 
   const popupOptions = {

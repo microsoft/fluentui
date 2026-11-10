@@ -2,10 +2,12 @@ import { html, ref, repeat } from '@microsoft/fast-element';
 import type { Field as FluentField } from '../field/field.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { ValidationFlags } from '../field/field.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 type Story = StoryObj<FluentRadioGroup>;
+const { argTypes } = getStorybookHelpers<FluentRadioGroup>('fluent-radio-group');
 
 const radioFieldTemplate = html<StoryArgs<FluentField>>`
   <fluent-field label-position="${story => story.labelPosition ?? 'after'}">
@@ -33,7 +35,7 @@ const storyTemplate = html<StoryArgs<FluentRadioGroup>>`
       required="${story => story.required}"
       ${ref('radioGroup')}
     >
-      ${story => story.defaultSlotContent?.()}
+      ${story => story.slottedContent?.()}
     </fluent-radio-group>
     ${story => story.messageSlottedContent?.()}
   </fluent-field>
@@ -43,7 +45,7 @@ export default {
   title: 'Components/RadioGroup',
   render: renderComponent(storyTemplate),
   args: {
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -70,43 +72,9 @@ export default {
     name: 'favorite-fruit',
   },
   argTypes: {
-    disabled: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Disables the radio group and child radios.',
-      type: 'boolean',
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The name of the radio group.',
-      type: 'string',
-    },
-    orientation: {
-      control: 'select',
-      description: 'The orientation of the radio group.',
-      options: ['', ...Object.values(RadioGroupOrientation)],
-      mapping: { '': null, ...RadioGroupOrientation },
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: RadioGroupOrientation.horizontal },
-        type: {
-          summary: Object.values(RadioGroupOrientation).join('|'),
-        },
-      },
-    },
-    value: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The value of the checked radio.',
-      type: 'string',
-    },
+    ...argTypes,
     labelSlottedContent: { table: { disable: true } },
-    defaultSlotContent: {
-      name: '',
-      description: 'The default slot',
-      table: { category: 'slots', type: {} },
-    },
+    messageSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentRadioGroup>;
 
@@ -129,7 +97,7 @@ export const InitialValue: Story = {
 export const InitialCheckedRadio: Story = {
   args: {
     id: 'radio-group-checked',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -167,7 +135,7 @@ export const DisabledItems: Story = {
   args: {
     orientation: RadioGroupOrientation.vertical,
     id: 'radio-group-disabled-items',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -209,7 +177,7 @@ export const DisabledAndCheckedItem: Story = {
     orientation: RadioGroupOrientation.vertical,
     id: 'radio-group-disabled-and-checked-item',
     value: 'pear',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -252,20 +220,18 @@ export const Required: Story = {
     <form
       @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
       @submit="${story => story.radioGroup.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+      style="display: inline-flex; flex-direction: column; gap: 1rem; max-width: 400px;"
     >
       ${storyTemplate}
-      <br />
       <div>
         <fluent-button type="submit" appearance="primary">Submit</fluent-button>
-        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}> Reset </fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}>Reset</fluent-button>
       </div>
       <span id="success-message" hidden ${ref('successMessage')}> Form submitted successfully! </span>
     </form>
   `),
   args: {
+    orientation: RadioGroupOrientation.vertical,
     required: true,
-    messageSlottedContent: () => html`
-      <span slot="message" flag="${ValidationFlags.valueMissing}"> Please select a fruit. </span>
-    `,
   },
 };

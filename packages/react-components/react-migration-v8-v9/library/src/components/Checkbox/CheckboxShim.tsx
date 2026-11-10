@@ -1,17 +1,19 @@
+'use client';
+
 import * as React from 'react';
 
-import { classNamesFunction, ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
+import type { ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
+import { classNamesFunction } from '@fluentui/react';
 import { Checkbox, mergeClasses } from '@fluentui/react-components';
 import { useCheckboxProps } from './shimCheckboxProps';
 import { useCheckboxStyles } from './Checkbox.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
   useStaticStyles: false,
 });
 
-export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React.ForwardedRef<HTMLInputElement>) => {
-  'use no memo';
-
+export const CheckboxShim = React.forwardRef((props, _ref) => {
   const { className, styles: stylesV8, onRenderLabel, label, componentRef } = props;
   const shimProps = useCheckboxProps(props);
   const styles = getClassNames(stylesV8);
@@ -24,7 +26,7 @@ export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React
     focus: () => checkboxRef.current?.focus(),
   }));
 
-  const defaultLabelRenderer = (checkboxProps?: ICheckboxProps): JSX.Element | null => {
+  const defaultLabelRenderer = (checkboxProps?: ICheckboxProps): JSXElement | null => {
     if (!checkboxProps) {
       return null;
     }
@@ -51,6 +53,11 @@ export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React
       indicator={{ className: mergeClasses('ms-Checkbox-checkbox', styles.checkbox) }}
     />
   );
-});
+  // NOTE: cast is necessary as `ICheckboxProps` extends React.Ref<HTMLDivElement> which is not compatible with our defined  React.Ref<HTMLInputElement>
+}) as React.ForwardRefExoticComponent<
+  ICheckboxProps &
+    // eslint-disable-next-line @typescript-eslint/no-restricted-types -- this is expected in order to be compatible with v8, as every v8 interface contains `React.RefAttributes` to accept ref as string
+    React.RefAttributes<HTMLInputElement>
+>;
 
 CheckboxShim.displayName = 'CheckboxShim';

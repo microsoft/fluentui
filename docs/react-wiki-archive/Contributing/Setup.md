@@ -28,7 +28,7 @@ This document describes how to set up your development environment and contribut
 
 Open a command line and run:
 
-- `node -v`: Should be `14.x.x` or `16.x.x` (where "x" is some number). Newer versions may not work.
+- `node -v`: Should be `22.x.x` (where "x" is some number).
 - `npm -v`: Should be >= 6. If not, run `npm install -g npm`.
 - `yarn -v`: Should be >= 1.15.0 but **less than 2**. If not, run `npm install -g yarn@1`.
 - `git --version` to ensure you have Git installed.

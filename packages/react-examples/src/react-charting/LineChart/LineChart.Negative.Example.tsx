@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
@@ -23,7 +24,7 @@ export class LineChartNegativeExample extends React.Component<{}, ILineChartBasi
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._negativeExample()}</div>;
   }
 
@@ -44,7 +45,7 @@ export class LineChartNegativeExample extends React.Component<{}, ILineChartBasi
     this.setState({ useUTC: checked });
   };
 
-  private _negativeExample(): JSX.Element {
+  private _negativeExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
@@ -156,7 +157,7 @@ export class LineChartNegativeExample extends React.Component<{}, ILineChartBasi
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -209,7 +210,6 @@ export class LineChartNegativeExample extends React.Component<{}, ILineChartBasi
             yMaxValue={301}
             height={this.state.height}
             width={this.state.width}
-            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             enablePerfOptimization={true}
             yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
@@ -218,7 +218,7 @@ export class LineChartNegativeExample extends React.Component<{}, ILineChartBasi
             supportNegativeData={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

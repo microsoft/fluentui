@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
-import { AccordionItemValue } from '../AccordionItem';
-import { AccordionToggleEvent } from '../Accordion';
+import type { AccordionItemValue } from '../AccordionItem';
+import type { AccordionToggleEvent } from '../Accordion';
 
 export type AccordionItemContextValue<Value = AccordionItemValue> = {
   open: boolean;
@@ -27,6 +29,6 @@ const accordionItemContextDefaultValue: AccordionItemContextValue<unknown> = {
 
 export const { Provider: AccordionItemProvider } = AccordionItemContext;
 
-export const useAccordionItemContext_unstable = () => {
+export const useAccordionItemContext_unstable = (): AccordionItemContextValue<unknown> => {
   return React.useContext(AccordionItemContext) ?? accordionItemContextDefaultValue;
 };

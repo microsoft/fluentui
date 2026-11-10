@@ -1,0 +1,11 @@
+'use client';
+
+import * as React from 'react';
+import type { MenuGridGroupContextValues, MenuGridGroupState } from './MenuGridGroup.types';
+
+export function useMenuGridGroupContextValues_unstable(state: MenuGridGroupState): MenuGridGroupContextValues {
+  const { headerId } = state;
+  const menuGridGroup = React.useMemo(() => ({ headerId }), [headerId]);
+
+  return { menuGridGroup };
+}

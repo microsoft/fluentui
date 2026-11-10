@@ -1,7 +1,12 @@
+'use client';
+
+import { getModalizer, getRestorer, RestorerTypes } from 'tabster';
+import type { Types as TabsterTypes } from 'tabster';
+
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 'tabster';
 import { useTabster } from './useTabster';
+import { DangerousNeverHiddenAttribute } from './useDangerousNeverHidden';
 
 export interface UseModalAttributesOptions {
   /**
@@ -30,6 +35,15 @@ export interface UseModalAttributesOptions {
   id?: string;
 }
 
+const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
+  return element.hasAttribute(DangerousNeverHiddenAttribute);
+};
+
+function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
+  getModalizer(tabster, undefined, tabsterAccessibleCheck);
+  getRestorer(tabster);
+}
+
 /**
  * Applies modal dialog behaviour through DOM attributes
  * Modal element will focus trap and hide other content on the page
@@ -41,12 +55,9 @@ export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
   const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
-  const tabster = useTabster();
+
   // Initializes the modalizer and restorer APIs
-  if (tabster) {
-    getModalizer(tabster);
-    getRestorer(tabster);
-  }
+  useTabster(initTabsterModules);
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({

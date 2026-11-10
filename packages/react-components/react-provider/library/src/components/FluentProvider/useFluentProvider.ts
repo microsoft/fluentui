@@ -1,3 +1,5 @@
+'use client';
+
 import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
@@ -33,8 +35,6 @@ export const useFluentProvider_unstable = (
   props: FluentProviderProps,
   ref: React.Ref<HTMLElement>,
 ): FluentProviderState => {
-  'use no memo';
-
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();

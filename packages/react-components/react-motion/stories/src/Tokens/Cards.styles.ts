@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useClasses = makeStyles({
@@ -57,6 +59,10 @@ export const useCardClasses = makeStyles({
     animationDuration: '2s',
     animationIterationCount: 'infinite',
     animationFillMode: 'forwards',
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'LinkText',
+    },
   },
 
   graph: {
@@ -67,6 +73,10 @@ export const useCardClasses = makeStyles({
       ".      graphT" / min-content 1fr
     `,
     gap: '6px',
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Canvas',
+    },
   },
   graphP: {
     gridArea: 'graphP',
@@ -89,6 +99,15 @@ export const useCardClasses = makeStyles({
     height: 'var(--container-size)',
     width: 'var(--container-size)',
   },
+  path: {
+    fill: 'none',
+    stroke: tokens.colorNeutralStrokeAccessible,
+    strokeWidth: '2',
+
+    '@media (forced-colors: active)': {
+      stroke: 'CanvasText',
+    },
+  },
 
   duration: {
     placeSelf: 'center',
@@ -103,6 +122,10 @@ export const useCardClasses = makeStyles({
       to: { transform: 'rotate(180deg)' },
     },
     animationIterationCount: 'infinite',
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
 
   view: {

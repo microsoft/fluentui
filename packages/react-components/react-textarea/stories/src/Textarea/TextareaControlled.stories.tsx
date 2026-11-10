@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, Textarea } from '@fluentui/react-components';
 import type { TextareaProps } from '@fluentui/react-components';
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [value, setValue] = React.useState('initial value');
 
   const onChange: TextareaProps['onChange'] = (ev, data) => {

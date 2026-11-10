@@ -23,6 +23,8 @@ const context: ExecutorContext = {
   },
   cwd: process.cwd(),
   isVerbose: true,
+  nxJsonConfiguration: {},
+  projectGraph: { nodes: {}, dependencies: {} },
 };
 
 const noop = () => {

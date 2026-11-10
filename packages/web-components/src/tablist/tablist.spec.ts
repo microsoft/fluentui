@@ -1,46 +1,40 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Tab } from '../tab/tab.js';
+import { tagName as TabTagName } from '../tab/tab.options.js';
 import type { Tablist } from './tablist.js';
-import { TablistAppearance, TablistSize } from './tablist.options.js';
+import { tagName } from './tablist.options.js';
 
 test.describe('Tablist', () => {
   test.use({
-    tagName: 'fluent-tablist',
-    waitFor: ['fluent-tab'],
+    tagName,
     innerHTML: /* html */ `
-      <fluent-tab>Tab one</fluent-tab>
-      <fluent-tab>Tab two</fluent-tab>
-      <fluent-tab>Tab three</fluent-tab>
+      <${TabTagName}>Tab one</${TabTagName}>
+      <${TabTagName}>Tab two</${TabTagName}>
+      <${TabTagName}>Tab three</${TabTagName}>
     `,
+    waitFor: [TabTagName],
   });
 
-  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+  test('should create with document.createElement()', async ({ page, fastPage, innerHTML }) => {
+    await fastPage.setTemplate();
 
-    await tabs.nth(2).click();
+    let hasError = false;
 
-    await expect(element).toHaveCSS('--tabIndicatorOffset', '0px');
+    page.on('pageerror', () => {
+      hasError = true;
+    });
 
-    await expect(element).toHaveCSS('--tabIndicatorScale', '1');
-  });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
-  test('should animate the active tab indicator', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
-    const tab = tabs.nth(2);
-
-    await expect(tab).not.toHaveAttribute('data-animate');
-
-    await tab.click();
-
-    await expect(tab).toHaveAttribute('data-animate', 'true');
+    expect(hasError).toBe(false);
   });
 
   test('should have reflect disabled attribute on control', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).not.toHaveAttribute('disabled');
 
@@ -51,10 +45,44 @@ test.describe('Tablist', () => {
     await expect(element).toHaveAttribute('disabled');
   });
 
+  test('should set aria-disabled on individual tabs when tablist is disabled', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator(TabTagName);
+
+    await fastPage.setTemplate();
+
+    // Initially tabs should not have aria-disabled
+    await expect(tabs.nth(0)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(1)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(2)).not.toHaveAttribute('aria-disabled');
+
+    // Disable the tablist
+    await element.evaluate((node: Tablist) => {
+      node.disabled = true;
+    });
+
+    // All tabs should now have aria-disabled="true"
+    await expect(tabs.nth(0)).toHaveAttribute('aria-disabled', 'true');
+    await expect(tabs.nth(1)).toHaveAttribute('aria-disabled', 'true');
+    await expect(tabs.nth(2)).toHaveAttribute('aria-disabled', 'true');
+
+    // Re-enable the tablist
+    await element.evaluate((node: Tablist) => {
+      node.disabled = false;
+    });
+
+    // aria-disabled should be removed from all tabs
+    await expect(tabs.nth(0)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(1)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(2)).not.toHaveAttribute('aria-disabled');
+  });
+
   test('should have role of `tablist`', async ({ fastPage }) => {
     const { element } = fastPage;
 
-    await expect(element).toHaveAttribute('role', 'tablist');
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveJSProperty('elementInternals.role', 'tablist');
   });
 
   test('should set a default orientation value of `horizontal` when `orientation` is not provided', async ({
@@ -62,12 +90,16 @@ test.describe('Tablist', () => {
   }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('orientation', 'horizontal');
   });
 
   test('should set an `id` attribute on the active tab when an `id` is provided', async ({ fastPage }) => {
     const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+    const tabs = element.locator(TabTagName);
+
+    await fastPage.setTemplate();
 
     const tabCount = await tabs.count();
 
@@ -87,7 +119,9 @@ test.describe('Tablist', () => {
       fastPage,
     }) => {
       const { element } = fastPage;
-      const tabs = element.locator('fluent-tab');
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
 
       const tabCount = await tabs.count();
 
@@ -107,20 +141,89 @@ test.describe('Tablist', () => {
 
     test('should default the first tab as the active index if `activeid` is NOT provided', async ({ fastPage }) => {
       const { element } = fastPage;
-      const tabs = element.locator('fluent-tab');
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
-
-      await expect(element).toHaveJSProperty('activeTabIndex', 0);
     });
   });
 
   test.describe('active tab', () => {
+    test('should select a tab when it’s clicked', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.click();
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when it’s focused', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.focus();
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when the focus is moved onto it', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const firstTab = tabs.nth(0);
+      const secondTabId = (await tabs.nth(1).getAttribute('id')) as string;
+
+      await firstTab.focus();
+      await firstTab.press('ArrowRight');
+
+      await expect(firstTab).not.toHaveAttribute('aria-selected', 'true');
+      await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when `click()` is called on it', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.evaluate((node: Tab) => {
+        node.click();
+      });
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
     test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async ({
       fastPage,
     }) => {
       const { element } = fastPage;
-      const tabs = element.locator('fluent-tab');
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
 
       const secondTab = tabs.nth(1);
 
@@ -137,7 +240,9 @@ test.describe('Tablist', () => {
       fastPage,
     }) => {
       const { element } = fastPage;
-      const tabs = element.locator('fluent-tab');
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
 
@@ -153,43 +258,15 @@ test.describe('Tablist', () => {
     });
   });
 
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const appearance of Object.values(TablistAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
-      });
-    }
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    for (const size of Object.values(TablistSize)) {
-      await test.step(size, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
-
-        await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveAttribute('size', size);
-      });
-    }
-  });
-
   test('should not allow selecting a tab that has been disabled after it has been connected', async ({ fastPage }) => {
     const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+    const tabs = element.locator(TabTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tab id="tab-1">Tab one</fluent-tab>
-        <fluent-tab id="tab-2">Tab two</fluent-tab>
-        <fluent-tab id="tab-3">Tab three</fluent-tab>
+        <${TabTagName} id="tab-1">Tab one</${TabTagName}>
+        <${TabTagName} id="tab-2">Tab two</${TabTagName}>
+        <${TabTagName} id="tab-3">Tab three</${TabTagName}>
       `,
     });
 
@@ -215,15 +292,51 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
 
+  for (const interaction of ['focus', 'click'] as const) {
+    test(`should preserve selection when ${interaction}() is called immediately after disabling a tab`, async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${TabTagName} id="tab-1">Tab one</${TabTagName}>
+          <${TabTagName} id="tab-2">Tab two</${TabTagName}>
+        `,
+      });
+
+      await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
+
+      const selection = await element.evaluate((node: Tablist, interaction) => {
+        const secondTab = node.tabs[1];
+        secondTab.disabled = true;
+        secondTab[interaction]();
+
+        return {
+          activeid: node.activeid,
+          activetab: node.activetab.id,
+          selectedTabs: node.tabs.filter(tab => tab.getAttribute('aria-selected') === 'true').map(tab => tab.id),
+        };
+      }, interaction);
+
+      expect(selection).toEqual({
+        activeid: 'tab-1',
+        activetab: 'tab-1',
+        selectedTabs: ['tab-1'],
+      });
+    });
+  }
+
   test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
     const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+    const tabs = element.locator(TabTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tab>Tab one</fluent-tab>
-        <fluent-tab disabled>Tab two</fluent-tab>
-        <fluent-tab>Tab three</fluent-tab>
+        <${TabTagName}>Tab one</${TabTagName}>
+        <${TabTagName} disabled>Tab two</${TabTagName}>
+        <${TabTagName}>Tab three</${TabTagName}>
       `,
     });
 
@@ -255,15 +368,46 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
-  test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+  test('should keep disabled selected tab focusable until it loses selected state', async ({ fastPage }) => {
+    const { element, page } = fastPage;
+    const tabs = element.locator(TabTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tab>Tab one</fluent-tab>
-        <fluent-tab hidden>Tab two</fluent-tab>
-        <fluent-tab>Tab three</fluent-tab>
+        <${TabTagName}>Tab one</${TabTagName}>
+        <${TabTagName}>Tab two</${TabTagName}>
+        <${TabTagName}>Tab three</${TabTagName}>
+      `,
+    });
+
+    const secondTab = tabs.nth(1);
+
+    await secondTab.focus();
+    await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+
+    await secondTab.evaluate((node: Tab) => {
+      node.disabled = true;
+    });
+
+    await secondTab.focus();
+    await page.keyboard.press('ArrowLeft');
+
+    await expect(tabs.nth(0)).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(tabs.nth(2)).toBeFocused();
+  });
+
+  test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator(TabTagName);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${TabTagName}>Tab one</${TabTagName}>
+        <${TabTagName} hidden>Tab two</${TabTagName}>
+        <${TabTagName}>Tab three</${TabTagName}>
       `,
     });
 
@@ -285,13 +429,13 @@ test.describe('Tablist', () => {
 
   test('should not allow selecting hidden tab by pressing End', async ({ fastPage }) => {
     const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
+    const tabs = element.locator(TabTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tab>Tab one</fluent-tab>
-        <fluent-tab>Tab two</fluent-tab>
-        <fluent-tab hidden>Tab three</fluent-tab>
+        <${TabTagName}>Tab one</${TabTagName}>
+        <${TabTagName}>Tab two</${TabTagName}>
+        <${TabTagName} hidden>Tab three</${TabTagName}>
       `,
     });
 
@@ -309,5 +453,40 @@ test.describe('Tablist', () => {
     await firstTab.press('End');
 
     await expect(element).toHaveJSProperty('activeid', secondTabId);
+  });
+
+  test('should associate panel elements with `aria-controls` attributes', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate(`
+          <${tagName}>
+              <${TabTagName} aria-controls="panel1">Tab one</${TabTagName}>
+              <${TabTagName} aria-controls="panel2">Tab two</${TabTagName}>
+              <${TabTagName} aria-controls="panel3">Tab three</${TabTagName}>
+          </${tagName}>
+          <div id="panel1">Panel one</div>
+          <div id="panel2">Panel two</div>
+          <div id="panel3">Panel three</div>
+      `);
+
+    const tabs = element.locator(TabTagName);
+    const firstTab = tabs.nth(0);
+    const secondTab = tabs.nth(1);
+    const firstPanel = page.getByText('Panel one');
+    const secondPanel = page.getByText('Panel two');
+    const thirdPanel = page.getByText('Panel three');
+
+    await expect(firstTab).toHaveAttribute('aria-selected', 'true');
+    await expect(firstPanel).toBeVisible();
+    await expect(firstPanel).toHaveRole('tabpanel');
+    await expect(secondPanel).toBeHidden();
+    await expect(secondPanel).toHaveRole('tabpanel');
+    await expect(thirdPanel).toBeHidden();
+    await expect(thirdPanel).toHaveRole('tabpanel');
+
+    await secondTab.click();
+
+    await expect(firstPanel).toBeHidden();
+    await expect(secondPanel).toBeVisible();
+    await expect(thirdPanel).toBeHidden();
   });
 });

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { StackedBarChart, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  StackedBarChart,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStackedBarState {
   hideTooltip: boolean;
@@ -19,16 +25,16 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
       roundCorners: false,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       {
         legend: 'first',
         data: 3000000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '99%',
       },
-      { legend: 'second', data: 1, color: DefaultPalette.green },
+      { legend: 'second', data: 1, color: getColorFromToken(DataVizPalette.color5) },
     ];
 
     const data0: IChartProps = {

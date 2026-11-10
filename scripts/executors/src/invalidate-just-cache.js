@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { workspaceRoot } = require('nx/src/utils/app-root');
+
+const { workspaceRoot } = require('@nx/devkit');
 
 const topLevelDep = path.join(workspaceRoot, 'node_modules/.just');
 

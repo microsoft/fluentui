@@ -1,4 +1,6 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 
 import { usePortal_unstable } from './usePortal';
 import { renderPortal_unstable } from './renderPortal';

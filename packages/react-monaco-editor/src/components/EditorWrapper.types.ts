@@ -12,7 +12,7 @@ export interface IEditorWrapperProps {
   editorClassName?: string;
 
   /** Custom component for the preview. It **must** render the children passed in. */
-  previewAs?: React.ComponentType<{}>;
+  previewAs?: React.ComponentType<React.PropsWithChildren<{}>>;
 
   /** Props to use on the wrapper for the rendered example. */
   previewProps?: {};
@@ -39,6 +39,7 @@ export interface IEditorWrapperProps {
    * Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks.
    * WARNING: Changing this will re-create the editor.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   modelRef?: React.MutableRefObject<IMonacoTextModel | undefined>;
 
   /** Force using the editor (vs the code viewer) on or off */

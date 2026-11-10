@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ColorRectangle renders correctly 1`] = `
 <div
   aria-describedby="ColorRectangle-description0"
   aria-label="Saturation and brightness"
-  aria-valuemax={100}
-  aria-valuemin={0}
-  aria-valuenow={28}
+  aria-valuemax="100"
+  aria-valuemin="0"
+  aria-valuenow="28"
   aria-valuetext="Saturation 28 brightness 94"
-  className=
+  class=
       ms-ColorPicker-colorRect
       {
         border-radius: 2px;
@@ -35,19 +35,13 @@ exports[`ColorRectangle renders correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
         outline: 2px solid CanvasText;
       }
-  data-is-focusable={true}
-  onKeyDown={[Function]}
-  onMouseDown={[Function]}
+  data-is-focusable="true"
   role="slider"
-  style={
-    Object {
-      "backgroundColor": "#0080ff",
-    }
-  }
-  tabIndex={0}
+  style="background-color: rgb(0, 128, 255);"
+  tabindex="0"
 >
   <div
-    className=
+    class=
 
         {
           border: 0px;
@@ -70,7 +64,7 @@ exports[`ColorRectangle renders correctly 1`] = `
     Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.
   </div>
   <div
-    className=
+    class=
         ms-ColorPicker-light
         {
           background: linear-gradient(to right, white 0%, transparent 100%) /*@noflip*/;
@@ -82,7 +76,7 @@ exports[`ColorRectangle renders correctly 1`] = `
         }
   />
   <div
-    className=
+    class=
         ms-ColorPicker-dark
         {
           background: linear-gradient(to bottom, transparent 0, #000 100%);
@@ -94,7 +88,7 @@ exports[`ColorRectangle renders correctly 1`] = `
         }
   />
   <div
-    className=
+    class=
         ms-ColorPicker-thumb
         {
           background: white;
@@ -117,13 +111,7 @@ exports[`ColorRectangle renders correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-    style={
-      Object {
-        "backgroundColor": "#abcdef",
-        "left": "28%",
-        "top": "6%",
-      }
-    }
+    style="left: 28%; top: 6%; background-color: rgb(171, 205, 239);"
   />
 </div>
 `;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, mergeClasses, Select, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const styles = useStyles();
   const selectId = useId();
 
