@@ -174,8 +174,13 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
 
   usePausableTimer({ timeout, running, onTimeout: close, resetKey: updateId });
 
+  // Queued toasts mount before they are visible; only a toast that was shown can be dismissed and removed.
+  const wasVisibleRef = React.useRef(false);
   React.useEffect(() => {
-    if (!visible) {
+    if (visible) {
+      wasVisibleRef.current = true;
+    } else if (wasVisibleRef.current) {
+      wasVisibleRef.current = false;
       reportStatus('dismissed');
       remove();
     }
