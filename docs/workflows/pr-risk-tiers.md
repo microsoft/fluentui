@@ -124,6 +124,9 @@ The trusted job exchanges a GitHub OIDC assertion for the
 No Azure resources, federated credentials, role assignments, or repository settings
 are provisioned by this PR. Missing access fails explicitly. Do not log prompts, raw
 provider responses, assertions, or bearer tokens.
+Transport and body-stream errors (including cancellation cleanup and nested parser
+causes) are replaced with content-free errors before Actions can inspect/log them.
+Only safe HTTP status and timeout information is retained.
 
 Offline tests mock native HTTP, verify the decision floor, and exercise invalid
 responses, injection-bearing diffs, and provider failures. An opt-in synthetic native

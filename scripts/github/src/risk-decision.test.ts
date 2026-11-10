@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention -- Native Decision and OAuth fixtures use upstream field names. */
 import { execFileSync } from 'node:child_process';
+import { inspect } from 'node:util';
 
 import { buildDecisionRequest, decideRisk, getDecisionToken, validateDecision } from './risk-decision';
 
@@ -117,7 +118,7 @@ describe('Decision tier assessment', () => {
       expect(fetcher).toHaveBeenCalledTimes(1);
     }
     const fetcher = jest.fn().mockRejectedValue(new Error('deadline exceeded'));
-    await expect(decideRisk(input, { getToken: async () => 'token', fetcher })).rejects.toThrow('deadline exceeded');
+    await expect(decideRisk(input, { getToken: async () => 'token', fetcher })).rejects.toThrow('transport failed');
     expect(fetcher).toHaveBeenCalledTimes(1);
   });
 
@@ -135,6 +136,57 @@ describe('Decision tier assessment', () => {
     expect(request.body.get('client_assertion')).toBe('test-only-assertion');
     await expect(getDecisionToken(core, {}, fetcher)).rejects.toThrow('Configure');
     expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  test.each(['inference', 'oauth'])(
+    'sanitizes %s stream and cancellation failures before Actions logs inspect them',
+    async mode => {
+      const marker = 'synthetic-private-provider-response';
+      const raw = Object.assign(new Error('terminated'), { cause: { data: Buffer.from(marker) } });
+      const response = new Response(
+        new ReadableStream({
+          start(controller) {
+            controller.error(raw);
+          },
+        }),
+      );
+      const fetcher = jest.fn().mockResolvedValue(response);
+      const operation =
+        mode === 'inference'
+          ? decideRisk(input, { getToken: async () => 'token', fetcher })
+          : getDecisionToken(
+              { getIDToken: async () => 'assertion' },
+              {
+                RISK_CLASSIFIER_AZURE_CLIENT_ID: '11111111-1111-1111-1111-111111111111',
+                RISK_CLASSIFIER_AZURE_TENANT_ID: '22222222-2222-2222-2222-222222222222',
+              },
+              fetcher,
+            );
+      expect.assertions(2);
+      try {
+        await operation;
+      } catch (error) {
+        expect(inspect(error, { depth: 10 })).not.toContain(marker);
+        expect(error).toEqual(expect.objectContaining({ message: expect.stringContaining('transport failed') }));
+      }
+    },
+  );
+
+  test('sanitizes credential errors and preserves safe deadline errors without retaining raw causes', async () => {
+    await expect(
+      decideRisk(input, {
+        getToken: async () => {
+          throw new Error('private credential output');
+        },
+        fetcher: jest.fn(),
+      }),
+    ).rejects.toThrow('credential error details are not logged');
+    await expect(
+      decideRisk(input, {
+        getToken: async () => 'token',
+        fetcher: jest.fn().mockRejectedValue(new DOMException('private response', 'TimeoutError')),
+      }),
+    ).rejects.toThrow('deadline');
   });
 });
 

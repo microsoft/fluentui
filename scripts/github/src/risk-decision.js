@@ -11,6 +11,8 @@ const maxResponseBytes = 1024 * 1024;
 const rules = JSON.parse(readFileSync(join(__dirname, '../../../.github/risk-tiers.json'), 'utf8'));
 const policy = readFileSync(join(__dirname, '../../../docs/workflows/pr-risk-tiers.md'), 'utf8');
 
+class DecisionTransportError extends Error {}
+
 /** @param {unknown} value @returns {value is Record<string, unknown>} */
 function isRecord(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -110,10 +112,12 @@ function buildDecisionRequest(input) {
 async function readBoundedJson(response, limit) {
   if (!response.ok) {
     await response.body?.cancel();
-    throw new Error(`Decision service request failed (HTTP ${response.status}); response content is not logged.`);
+    throw new DecisionTransportError(
+      `Decision service request failed (HTTP ${response.status}); response content is not logged.`,
+    );
   }
   if (!response.body) {
-    throw new Error('Decision service returned no response body.');
+    throw new DecisionTransportError('Decision service returned no response body.');
   }
   const reader = response.body.getReader();
   const chunks = [];
@@ -126,7 +130,7 @@ async function readBoundedJson(response, limit) {
       }
       bytes += value.byteLength;
       if (bytes > limit) {
-        throw new Error('Decision service response exceeds its byte limit.');
+        throw new DecisionTransportError('Decision service response exceeds its byte limit.');
       }
       chunks.push(value);
     }
@@ -136,7 +140,29 @@ async function readBoundedJson(response, limit) {
   try {
     return JSON.parse(Buffer.concat(chunks).toString('utf8'));
   } catch {
-    throw new Error('Decision service returned invalid JSON; response content is not logged.');
+    throw new DecisionTransportError('Decision service returned invalid JSON; response content is not logged.');
+  }
+}
+
+/**
+ * @param {string} url
+ * @param {RequestInit} options
+ * @param {typeof fetch} fetcher
+ * @param {number} limit
+ */
+async function requestJson(url, options, fetcher, limit) {
+  try {
+    return await readBoundedJson(await fetcher(url, options), limit);
+  } catch (error) {
+    if (error instanceof DecisionTransportError) {
+      throw error;
+    }
+    const timedOut = isRecord(error) && (error.name === 'TimeoutError' || error.name === 'AbortError');
+    throw new DecisionTransportError(
+      timedOut
+        ? 'Decision service request exceeded its deadline or was aborted.'
+        : 'Decision service transport failed; provider response content is not logged.',
+    );
   }
 }
 
@@ -146,18 +172,31 @@ async function readBoundedJson(response, limit) {
  */
 async function decideRisk(input, { getToken, fetcher = fetch }) {
   const body = buildDecisionRequest(input);
-  const token = await getToken();
+  let token;
+  try {
+    token = await getToken();
+  } catch (error) {
+    if (error instanceof DecisionTransportError) {
+      throw error;
+    }
+    throw new DecisionTransportError('Decision authentication failed; credential error details are not logged.');
+  }
   if (!token.trim()) {
     throw new Error('Decision authentication returned an empty token.');
   }
-  const response = await fetcher(endpoint, {
-    method: 'POST',
-    redirect: 'error',
-    signal: AbortSignal.timeout(30_000),
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body,
-  });
-  return validateDecision(await readBoundedJson(response, maxResponseBytes));
+  const payload = await requestJson(
+    endpoint,
+    {
+      method: 'POST',
+      redirect: 'error',
+      signal: AbortSignal.timeout(30_000),
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body,
+    },
+    fetcher,
+    maxResponseBytes,
+  );
+  return validateDecision(payload);
 }
 
 /**
@@ -174,20 +213,29 @@ async function getDecisionToken(core, env = process.env, fetcher = fetch) {
       'Configure the risk classifier Azure client/tenant IDs and OIDC access to the Decision-1 deployment.',
     );
   }
-  const assertion = await core.getIDToken('api://AzureADTokenExchange');
-  const response = await fetcher(`https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`, {
-    method: 'POST',
-    redirect: 'error',
-    signal: AbortSignal.timeout(10_000),
-    body: new URLSearchParams({
-      client_id: clientId,
-      scope: 'https://cognitiveservices.azure.com/.default',
-      grant_type: 'client_credentials',
-      client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-      client_assertion: assertion,
-    }),
-  });
-  const payload = await readBoundedJson(response, 32 * 1024);
+  let assertion;
+  try {
+    assertion = await core.getIDToken('api://AzureADTokenExchange');
+  } catch {
+    throw new DecisionTransportError('GitHub OIDC token acquisition failed; assertion details are not logged.');
+  }
+  const payload = await requestJson(
+    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+    {
+      method: 'POST',
+      redirect: 'error',
+      signal: AbortSignal.timeout(10_000),
+      body: new URLSearchParams({
+        client_id: clientId,
+        scope: 'https://cognitiveservices.azure.com/.default',
+        grant_type: 'client_credentials',
+        client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+        client_assertion: assertion,
+      }),
+    },
+    fetcher,
+    32 * 1024,
+  );
   if (!isRecord(payload) || typeof payload.access_token !== 'string' || !payload.access_token.trim()) {
     throw new Error('Decision authentication did not return an access token.');
   }
