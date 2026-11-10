@@ -1067,10 +1067,14 @@ describe('Context menu', () => {
   const CustomTargetExample = ({
     controlled = false,
     override = true,
+    overrideOnClose = false,
+    openOnContext = true,
     targetOption,
   }: {
     controlled?: boolean;
     override?: boolean;
+    overrideOnClose?: boolean;
+    openOnContext?: boolean;
     targetOption?: 'element' | 'undefined' | 'null';
   }) => {
     const positioningRef = React.useRef<PositioningImperativeRef>(null);
@@ -1083,7 +1087,7 @@ describe('Context menu', () => {
           Custom positioning target
         </button>
         <Menu
-          openOnContext
+          openOnContext={openOnContext}
           open={controlled ? open : undefined}
           positioning={{
             positioningRef,
@@ -1093,7 +1097,7 @@ describe('Context menu', () => {
             offset: 0,
           }}
           onOpenChange={(_, data) => {
-            if (data.open && override && !targetOption) {
+            if ((data.open && override && !targetOption) || (!data.open && overrideOnClose)) {
               positioningRef.current?.setTarget(target);
             }
             setOpen(data.open);
@@ -1134,6 +1138,43 @@ describe('Context menu', () => {
       cy.get(contextPopoverSelector).should(([menu]) => {
         const target = menu.ownerDocument.getElementById('custom-context-target');
         expect(menu.getBoundingClientRect().left).to.be.closeTo(target!.getBoundingClientRect().left, 1);
+      });
+    });
+
+    (['disabled', 'undefined', 'null', 'element'] as const).forEach(departure => {
+      it(`reconciles a close-time override after ${departure} departure (controlled: ${controlled})`, () => {
+        const renderExample = (departed = false) => (
+          <FluentProvider theme={teamsLightTheme}>
+            <CustomTargetExample
+              controlled={controlled}
+              override={false}
+              overrideOnClose
+              openOnContext={!departed || departure !== 'disabled'}
+              targetOption={departed && departure !== 'disabled' ? departure : undefined}
+            />
+          </FluentProvider>
+        );
+        mountBase(renderExample()).then(({ rerender }) => {
+          cy.get(menuTriggerSelector).rightclick();
+          cy.get(menuSelector).should('exist');
+          cy.get(menuItemSelector).type('{esc}');
+          cy.get(menuSelector).should('not.exist');
+
+          cy.then(() => rerender(renderExample(true)));
+          if (departure === 'disabled') {
+            cy.get(menuTriggerSelector).click();
+          } else {
+            cy.get(menuTriggerSelector).rightclick();
+          }
+          cy.get(contextPopoverSelector).should(([menu]) => {
+            const target = menu.ownerDocument.getElementById(
+              departure === 'element' ? 'custom-context-target' : menuTriggerId,
+            );
+            const bounds = target!.getBoundingClientRect();
+            expect(menu.getBoundingClientRect().left).to.be.closeTo(bounds.left, 1);
+            expect(menu.getBoundingClientRect().top).to.be.closeTo(bounds.bottom, 1);
+          });
+        });
       });
     });
   });

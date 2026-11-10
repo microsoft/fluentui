@@ -169,6 +169,82 @@ describe('useMenu_unstable', () => {
       expect(result.current.open).toBe(open === true);
     });
 
+    [undefined, true].forEach(open => {
+      it.each(['undefined target', 'disabled context mode'])(
+        `clears a close-time target override on departure to %s with open=${open}`,
+        departure => {
+          const positioningRef = React.createRef<PositioningImperativeRef>();
+          const target = document.createElement('button');
+          const { result, rerender } = renderHook(
+            ({ departed }) =>
+              useMenu_unstable({
+                children: [trigger, popover],
+                open,
+                defaultOpen: true,
+                openOnContext: !(departed && departure === 'disabled context mode'),
+                positioning: {
+                  positioningRef,
+                  ...(departed && departure === 'undefined target' ? { target: undefined } : {}),
+                },
+                onOpenChange: (_, data) => {
+                  if (!data.open) {
+                    positioningRef.current?.setTarget(target);
+                  }
+                },
+              }),
+            { initialProps: { departed: false } },
+          );
+          if (!positioningRef.current) {
+            throw new Error('Menu must expose its positioning handle');
+          }
+          const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+          act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+          setTarget.mockClear();
+
+          const event = new MouseEvent('click');
+          act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+          expect(setTarget.mock.calls).toEqual([[null], [target]]);
+          expect(result.current.contextTarget).toBeUndefined();
+          expect(result.current.open).toBe(open === true);
+          setTarget.mockClear();
+
+          rerender({ departed: false });
+          expect(setTarget).not.toHaveBeenCalled();
+
+          rerender({ departed: true });
+          expect(setTarget).toHaveBeenCalledTimes(1);
+          expect(setTarget).toHaveBeenLastCalledWith(null);
+        },
+      );
+    });
+
+    it('preserves an ordinary menu close override when an undefined target option is added', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result, rerender } = renderHook(
+        ({ explicit }) =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            defaultOpen: true,
+            positioning: { positioningRef, ...(explicit ? { target: undefined } : {}) },
+            onOpenChange: () => positioningRef.current?.setTarget(target),
+          }),
+        { initialProps: { explicit: false } },
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget.mock.calls).toEqual([[target]]);
+      setTarget.mockClear();
+      rerender({ explicit: true });
+      expect(setTarget).not.toHaveBeenCalled();
+    });
+
     it('does not clear imperative targets when an ordinary menu closes', () => {
       const positioningRef = React.createRef<PositioningImperativeRef>();
       const { result } = renderHook(() =>

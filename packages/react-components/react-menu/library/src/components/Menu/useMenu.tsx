@@ -164,8 +164,12 @@ export const useMenuBase_unstable = (
   const syncContextTarget = useEventCallback(() => {
     const wasUsingContextTarget = previousShouldUseContextTarget.current;
     previousShouldUseContextTarget.current = shouldUseContextTarget;
-    if (contextTarget && !positioningOptions.target && (shouldUseContextTarget || wasUsingContextTarget)) {
-      positioningRef.current?.setTarget(shouldUseContextTarget ? contextTarget : null);
+    if (!positioningOptions.target) {
+      if (wasUsingContextTarget && !shouldUseContextTarget) {
+        positioningRef.current?.setTarget(null);
+      } else if (shouldUseContextTarget && contextTarget) {
+        positioningRef.current?.setTarget(contextTarget);
+      }
     }
   });
   // Only reconcile prop changes; a new context target must not overwrite the consumer's event-time override.
