@@ -9,6 +9,47 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => mountBase(element);
 
 describe('Menu', () => {
+  describe('scrollable root menu opening', () => {
+    const ScrollableMenu = () => (
+      <Menu>
+        <MenuTrigger>
+          <button id="scrollable-trigger">Open scrollable menu</button>
+        </MenuTrigger>
+        <MenuPopover id="scrollable-surface" style={{ maxHeight: '25vh', overflowY: 'auto' }}>
+          <MenuList>
+            {Array.from({ length: 20 }, (_, index) => (
+              <MenuItem key={index} id={`scrollable-item-${index}`}>
+                Action {index + 1}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    );
+
+    for (const key of ['ArrowDown', 'Enter'] as const) {
+      it(`keeps the first focused item in view after ${key}`, () => {
+        mount(<ScrollableMenu />);
+        cy.get('#scrollable-trigger').focus().realPress(key);
+        cy.get('#scrollable-item-0').should('be.focused');
+        // Native ArrowDown scrolling animates after focus; an immediate assertion can miss it.
+        cy.wait(200);
+        cy.get('#scrollable-surface').should($surface => {
+          const surface = $surface[0];
+          const item = surface.querySelector<HTMLElement>('#scrollable-item-0')!;
+          const bounds = surface.getBoundingClientRect();
+          const itemBounds = item.getBoundingClientRect();
+
+          expect(surface.scrollHeight).to.be.greaterThan(surface.clientHeight);
+          expect(surface.scrollTop).to.equal(0);
+          expect(itemBounds.top).to.be.at.least(bounds.top + surface.clientTop);
+          expect(itemBounds.bottom).to.be.at.most(bounds.top + surface.clientTop + surface.clientHeight);
+        });
+        cy.get('#scrollable-item-0').should('be.focused');
+      });
+    }
+  });
+
   describe('close focus restoration', () => {
     type RootKind = 'document' | 'open' | 'closed';
     let root: HTMLElement | ShadowRoot;
