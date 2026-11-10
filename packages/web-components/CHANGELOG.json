@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 04:11:16 GMT",
+      "version": "3.2.1",
+      "tag": "@fluentui/web-components_v3.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9d384adf1cd1572d875693e6dfd2a3e870ddd258",
+            "comment": "fix: preserve tablist selection when a disabled tab receives focus or a programmatic click"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Nov 2026 17:13:29 GMT",
       "version": "3.2.0",
       "tag": "@fluentui/web-components_v3.2.0",
