@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  transformPlotlyJsonToGanttChartProps,
   transformPlotlyJsonToChartTableProps,
   findArrayAttributes,
   getAllupLegendsProps,
@@ -253,7 +254,7 @@ describe('transform Plotly Json To chart Props', () => {
     const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
     const point = result.data?.chartData?.find(item => item.legend === 'A');
 
-    expect(point?.color).toMatch(/^#[0-9a-f]{6}$/i);
+    expect(point?.color).toBe(getColor('Label_0', { current: new Map() }, 'others', undefined, true));
     expect(result.data?.chartData).toContainEqual(expect.objectContaining({ legend: 'B', color: 'blue' }));
   });
 
@@ -285,7 +286,67 @@ describe('transform Plotly Json To chart Props', () => {
 
     const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
 
-    expect(result.colorFillBars?.[0].color).toMatch(/^#[0-9a-f]{6}$/i);
+    expect(result.colorFillBars).toEqual([
+      { color: 'rgba(0,0,0,0)', data: [{ startX: 0, endX: 1 }], applyPattern: false },
+    ]);
+  });
+
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent'])(
+    'transformPlotlyJsonToGanttChartProps - preserves valid toself fill color %s',
+    fillcolor => {
+      const plotlySchema: PlotlySchema = {
+        data: [
+          {
+            type: 'scatter',
+            mode: 'none',
+            fill: 'toself',
+            name: 'A',
+            x: [0, 2, 2, 0, null],
+            y: [0, 0, 2, 2, null],
+            fillcolor,
+          },
+        ],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToGanttChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+      expect(result.data).toEqual([{ x: { start: 0, end: 2 }, y: 1, legend: 'A', color: fillcolor }]);
+    },
+  );
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    '',
+    undefined,
+  ])('transformPlotlyJsonToGanttChartProps - replaces invalid toself fill color %s', fillcolor => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'scatter',
+          mode: 'none',
+          fill: 'toself',
+          name: 'A',
+          x: [0, 2, 2, 0, null],
+          y: [0, 0, 2, 2, null],
+          fillcolor,
+        },
+      ],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToGanttChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.data).toEqual([
+      {
+        x: { start: 0, end: 2 },
+        y: 1,
+        legend: 'A',
+        color: getColor('A', { current: new Map() }, 'others'),
+      },
+    ]);
   });
 
   test('transformPlotlyJsonToDonutProps - treats prototype field names as ordinary legends', () => {

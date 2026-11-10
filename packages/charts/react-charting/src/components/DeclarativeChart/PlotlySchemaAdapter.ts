@@ -86,9 +86,9 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
-import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale, getValidColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
-import { color as d3Color, rgb } from 'd3-color';
+import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 import {
@@ -1333,17 +1333,16 @@ export const transformPlotlyJsonToDonutProps = (
     validPairs.forEach((pair, sortedIdx) => {
       const legend = `${pair.label}`;
       const color: string =
-        typeof pair.color === 'string' && d3Color(pair.color)
-          ? pair.color
-          : resolveColor(
-              colors,
-              hasMarkerColors ? pair.index : sortedIdx,
-              legend,
-              colorMap,
-              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-              isDarkTheme,
-              true,
-            );
+        getValidColor(pair.color) ??
+        resolveColor(
+          colors,
+          hasMarkerColors ? pair.index : sortedIdx,
+          legend,
+          colorMap,
+          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+          true,
+        );
       if (!mapLegendToDataPoint[legend]) {
         mapLegendToDataPoint[legend] = {
           legend,
@@ -1978,7 +1977,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as IScatterChartProps;
 };
 
-const mapColorFillBars = (layout: Partial<Layout> | undefined, isDarkTheme?: boolean) => {
+const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
   if (!Array.isArray(layout?.shapes)) {
     return [];
   }
@@ -1991,10 +1990,8 @@ const mapColorFillBars = (layout: Partial<Layout> | undefined, isDarkTheme?: boo
         return null;
       }
       return {
-        color:
-          typeof shape.fillcolor === 'string' && d3Color(shape.fillcolor)
-            ? shape.fillcolor
-            : getColorFromToken(DataVizPalette.color1, isDarkTheme),
+        // Match Plotly's transparent default for rectangle interiors.
+        color: getValidColor(shape.fillcolor) ?? 'rgba(0,0,0,0)',
         data: [{ startX: shape.x0, endX: shape.x1 }],
         applyPattern: false,
       };
@@ -2233,7 +2230,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         : {}),
       ...(!isScatterChart &&
         (() => {
-          const bars = mapColorFillBars(input.layout, isDarkTheme);
+          const bars = mapColorFillBars(input.layout);
           return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
         })()),
     } as ILineChartProps | IScatterChartProps;
@@ -2401,7 +2398,9 @@ export const transformPlotlyJsonToGanttChartProps = (
           },
           y: Math.round((y0 + y1) / 2),
           legend,
-          color: series.fillcolor,
+          color:
+            getValidColor(series.fillcolor) ??
+            resolveColor(undefined, index, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme),
         });
       }
     }

@@ -161,6 +161,28 @@ describe('DeclarativeChart SSR colors', () => {
     expect(html).not.toContain('css-injection-sentinel');
   });
 
+  test('rejects CSS injected through Gantt toself fill colors', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'scatter',
+          mode: 'none',
+          fill: 'toself',
+          name: 'A',
+          x: [0, 2, 2, 0, null],
+          y: [0, 0, 2, 2, null],
+          fillcolor: 'red; --css-injection-sentinel:731',
+        },
+      ],
+      layout: {},
+    };
+
+    const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+
+    expect(html).toContain('<rect');
+    expect(html).not.toContain('css-injection-sentinel');
+  });
+
   test('preserves valid marker colors in serialized legend styles', () => {
     const plotlySchema: PlotlySchema = {
       data: [{ type: 'pie', labels: ['A'], values: [1], marker: { colors: ['rebeccapurple'] } }],

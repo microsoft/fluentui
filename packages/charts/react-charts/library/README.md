@@ -11,14 +11,15 @@ The code snippets can be used as usage guide for all the props and chart variati
 
 ### Declarative chart colors
 
-Pie and donut `marker.colors` values are validated using the same D3 color parser as other Plotly schema colors.
+Pie and donut `marker.colors` values and Gantt scatter `fillcolor` values for `fill: 'toself'` traces are validated
+using D3's color parser.
 Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and `hsl()`/`hsla()`.
 Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
 included in chart or legend styles. This validation also applies during server-side rendering.
 
 Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars are validated with the same parser.
-Valid colors are preserved, including transparency; invalid or missing fill colors use the first theme-aware DataViz
-palette color.
+Valid colors are preserved, including transparency; invalid or missing fill colors use Plotly's transparent default,
+`rgba(0,0,0,0)`.
 
 ## Available charts across fluent platforms
 

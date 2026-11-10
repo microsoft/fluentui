@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate pie and donut marker colors and rectangle fill colors before styling",
+  "comment": "fix: validate declarative marker and Gantt fill colors and preserve transparent rectangle defaults",
   "packageName": "@fluentui/react-charting",
   "email": "v-baambati@microsoft.com"
 }
