@@ -117,6 +117,27 @@ describe('createToaster', () => {
     expect(toaster.visibleToasts.has('later')).toBe(true);
   });
 
+  it('keeps priority order after dismissing a queued toast that is not at the front of the queue', () => {
+    const toaster = createToaster({ limit: 1 });
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    [1, 7, 3, 5, 4, 6, 2].forEach(priority => {
+      toaster.buildToast({ toastId: `p${priority}`, priority }, () => null);
+    });
+
+    toaster.dismissToast('p7');
+
+    const shown: string[] = [];
+    let current = 'visible';
+    for (let i = 0; i < 6; i++) {
+      toaster.toasts.get(current)!.close();
+      toaster.toasts.get(current)!.remove();
+      current = Array.from(toaster.visibleToasts)[0] as string;
+      shown.push(current);
+    }
+
+    expect(shown).toEqual(['p1', 'p2', 'p3', 'p4', 'p5', 'p6']);
+  });
+
   it('clears queued toasts when dismissing all and permits reusing their ids', () => {
     const toaster = createToaster({ limit: 1 });
     const onStatusChange = jest.fn();

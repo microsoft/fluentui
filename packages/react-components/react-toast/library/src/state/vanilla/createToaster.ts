@@ -96,7 +96,10 @@ export function createToaster(options: Partial<ToasterOptions>): {
    */
   const dismissToast = (toastId: ToastId) => {
     if (queue.contains(toastId)) {
-      queue.remove(toastId);
+      // Rebuild the queue rather than using `queue.remove`, which only restores heap order downwards
+      const remaining = queue.all().filter(id => id !== toastId);
+      queue.clear();
+      remaining.forEach(id => queue.enqueue(id));
       discardQueuedToast(toastId);
       return;
     }
