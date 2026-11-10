@@ -198,28 +198,7 @@ describe('Combobox', () => {
       </>
     );
 
-    it('keeps the listbox mounted until its exit ends after an option click', () => {
-      mount(<Animated />);
-      cy.get(trigger).realClick();
-      cy.contains(option, 'Cat').realClick();
-      cy.get(trigger).should('have.value', 'Cat');
-      finishListboxExit(listbox);
-      cy.get(listbox).should('not.exist');
-    });
-
-    it('reopens the listbox during its exit and keeps it mounted', () => {
-      mount(<Animated />);
-      cy.get(trigger).realClick();
-      cy.realPress('Escape');
-      cy.get(listbox).should('not.match', ':popover-open');
-      cy.get(trigger).realClick();
-      cy.get(listbox).should('match', ':popover-open');
-      cy.get<HTMLElement>(listbox).then(([element]) => {
-        element.getAnimations({ subtree: true }).forEach(animation => animation.finish());
-      });
-      cy.get(listbox).should('match', ':popover-open');
-    });
-
+    // Option click and reopen go through `useListboxPopupState`, covered in Dropdown.cy.tsx.
     it('keeps the listbox mounted until its exit ends after an input blur', () => {
       mount(<Animated defaultOpen expandIcon={null} />);
       cy.get(listbox).should('match', ':popover-open');

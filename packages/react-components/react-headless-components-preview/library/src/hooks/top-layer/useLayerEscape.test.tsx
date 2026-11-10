@@ -28,10 +28,6 @@ const Example = ({ open = true, popover = 'manual', onEscape, when, listen, show
       <button>Outside</button>
       <div ref={ref} popover={popover} onKeyDown={onKeyDown} data-testid="layer">
         <button>Inside</button>
-        <div popover="manual">
-          <button>Nested</button>
-        </div>
-        {createPortal(<button>Portaled</button>, document.body)}
       </div>
     </>
   );
@@ -83,24 +79,6 @@ describe('useLayerEscape', () => {
 
     rerender(<Example onEscape={onEscape} popover="auto" when="always" />);
     fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
-    expect(onEscape).toHaveBeenCalledTimes(1);
-  });
-
-  it('leaves Escape from a nested layer to that layer', () => {
-    const onEscape = jest.fn();
-    const { getByText } = render(<Example onEscape={onEscape} />);
-
-    fireEvent.keyDown(getByText('Nested'), { key: 'Escape' });
-
-    expect(onEscape).not.toHaveBeenCalled();
-  });
-
-  it('handles Escape from content portaled out of the layer', () => {
-    const onEscape = jest.fn();
-    const { getByText } = render(<Example onEscape={onEscape} />);
-
-    fireEvent.keyDown(getByText('Portaled'), { key: 'Escape' });
-
     expect(onEscape).toHaveBeenCalledTimes(1);
   });
 

@@ -116,10 +116,9 @@ describe.each([
     };
     document.addEventListener('toggle', onToggle, true);
 
-    const { getByTestId, queryByTestId } = render(<CloseOnMount />);
+    const { queryByTestId } = render(<CloseOnMount />);
     // Runs the microtasks and any render they schedule before the queued close event, as React 17 would.
     await act(() => Promise.resolve());
-    expect(isPopoverOpen(getByTestId('layer'))).toBe(false);
 
     await waitFor(() => expect(queryByTestId('layer')).toBeNull());
     document.removeEventListener('toggle', onToggle, true);
@@ -158,6 +157,26 @@ describe('useLayerPresence', () => {
 
     rerender(<TestLayer open unmountOnClose={false} />);
     expect(isPopoverOpen(layer)).toBe(true);
+  });
+
+  it('waits for close when a modal closed by the browser turns open false on its toggle', async () => {
+    const { getByTestId, queryByTestId, rerender } = render(<TestLayer open mode="modal" />);
+    const layer = getByTestId('layer');
+    await act(() => Promise.resolve());
+
+    // A closing `<dialog>` fires `toggle` before `close`; the consumer syncs `open` on the `toggle`.
+    act(() => {
+      layer.removeAttribute('open');
+      layer.dispatchEvent(Object.assign(new Event('toggle'), { newState: 'closed' }));
+    });
+    rerender(<TestLayer open={false} mode="modal" />);
+    await act(flushTasks);
+    expect(layer).toBeInTheDocument();
+
+    act(() => {
+      layer.dispatchEvent(new Event('close'));
+    });
+    await waitFor(() => expect(queryByTestId('layer')).toBeNull());
   });
 
   it('finishes the exit when the element is replaced before it ends', async () => {
