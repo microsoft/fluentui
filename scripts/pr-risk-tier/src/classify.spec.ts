@@ -73,6 +73,10 @@ describe(`classify`, () => {
   });
 
   describe(`tier 1`, () => {
+    it(`classifies a small web-components source fix (source in src) as tier 1`, () => {
+      expect(tierOf(file(`packages/web-components/src/switch/switch.styles.ts`, 4), file(CHANGE_FILE, 7))).toBe(1);
+    });
+
     it(`classifies test-only changes as tier 1`, () => {
       expect(tierOf(file(`${BUTTON}/library/src/components/Button/Button.test.tsx`, 40, 10))).toBe(1);
     });
@@ -141,6 +145,10 @@ describe(`classify`, () => {
   });
 
   describe(`tier 3`, () => {
+    it(`classifies a web-components API report (outside an etc folder) as tier 3`, () => {
+      expect(tierOf(file(`packages/web-components/docs/web-components.api.md`, 24))).toBe(3);
+    });
+
     it(`classifies a public API report change as tier 3`, () => {
       expect(tierOf(file(`${BUTTON}/library/etc/react-button.api.md`))).toBe(3);
     });

@@ -10,13 +10,13 @@
  * @type {import('./types').TierRules}
  */
 const tierRules = {
-  version: '2026-11-10.1',
+  version: '2026-11-10.2',
   maxSmallFixLines: 50,
   maxListedFiles: 3000,
   changeFiles: ['change/*.json'],
   tier3: [
     // Public API reports and package manifests.
-    '**/etc/*.api.md',
+    '**/*.api.md',
     '**/package.json',
     // Release, build and CI tooling.
     'yarn.lock',
@@ -48,7 +48,8 @@ const tierRules = {
     exclude: ['**/.storybook/**', '**/tsconfig*.json', '**/project.json', '**/package.json'],
   },
   tests: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', '**/__snapshots__/**', '**/*.snap'],
-  librarySource: ['**/library/src/**'],
+  // Most packages keep source in library/src; web-components keeps it in src.
+  librarySource: ['**/library/src/**', 'packages/web-components/src/**'],
   packageRoots: [/^packages\/(?:react-components|charts)\/[^/]+\//, /^packages\/[^/]+\//],
 };
 
