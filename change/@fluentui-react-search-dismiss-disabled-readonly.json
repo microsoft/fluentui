@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only",
+  "packageName": "@fluentui/react-search",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
