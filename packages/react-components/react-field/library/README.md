@@ -61,8 +61,8 @@ Alternatively, run Storybook locally with:
 
 ### Specification
 
-See [SPEC.md](./SPEC.md).
+See [SPEC.md](./docs/Spec.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating the Field component.
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./docs/Migration.md) for guidance on updating the Field component.
