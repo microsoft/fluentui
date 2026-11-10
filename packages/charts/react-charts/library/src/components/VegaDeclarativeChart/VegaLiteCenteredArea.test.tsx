@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderToString } from 'react-dom/server';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -508,7 +508,10 @@ describe('native centered area renderer', () => {
     const point = points(container)[0];
     fireEvent.mouseEnter(point);
     fireEvent.focus(point);
-    const tooltip = screen.getByRole('tooltip');
+    const tooltip = within(container.ownerDocument.body).getByRole('tooltip');
+    expect(container.ownerDocument.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+    expect(tooltip.closest('[data-portal-node]')).not.toBeNull();
+    expect(container.contains(tooltip)).toBe(false);
     expect(container.ownerDocument.getElementById(point.getAttribute('aria-describedby')!)!.contains(tooltip)).toBe(
       true,
     );
@@ -535,9 +538,9 @@ describe('native centered area renderer', () => {
     fireEvent.mouseEnter(point);
     fireEvent.focus(point);
     expect(screen.queryByRole('tooltip')).toBeNull();
-    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')).toBeNull();
     expect(point).not.toHaveAttribute('aria-describedby');
-    expect(container.textContent).not.toContain('hidden');
+    expect(container.ownerDocument.body.textContent).not.toContain('hidden');
   });
 
   it('renders filled semantic area paths, endpoint metadata, points and exact viewport gutters', () => {
@@ -547,6 +550,9 @@ describe('native centered area renderer', () => {
     );
     expect(ref.current).toBe(container.firstChild);
     expect(ref.current).toHaveClass('authored');
+    expect(ref.current).toHaveStyle({ width: '272px' });
+    // The SVG viewport is fixed-height; the surrounding title and legends retain intrinsic height.
+    expect(ref.current!.style.height).toBe('');
     expect(series(container).map(path => path.getAttribute('d'))).toEqual(geometry().series.map(item => item.d));
     expect(series(container)[0]).toHaveAttribute('aria-hidden', 'true');
     expect(series(container)[0].getAttribute('fill')).toBeTruthy();
@@ -555,10 +561,36 @@ describe('native centered area renderer', () => {
     expect(points(container)[0]).toHaveAttribute('data-upper', '8');
     expect(points(container)[0]).toHaveAttribute('tabindex', '0');
     expect(container.querySelector('svg')).toHaveAttribute('viewBox', '-56 -24 272 172');
+    expect(container.querySelector('svg')).toHaveAttribute('height', '172');
     expect(container.querySelector('clipPath rect')).toHaveAttribute('width', '200');
-    rerender(<VegaLiteCenteredArea spec={centeredAreaSpec()} width={172} height={172} />);
+    rerender(<VegaLiteCenteredArea ref={ref} spec={centeredAreaSpec()} width={172} height={172} />);
+    expect(ref.current).toHaveStyle({ width: '172px' });
+    expect(ref.current!.style.height).toBe('');
+    expect(container.querySelector('svg')).toHaveAttribute('height', '172');
     expect(container.querySelector('clipPath rect')).toHaveAttribute('width', '100');
     expect(series(container)[0].getAttribute('d')).toContain('L100,0');
+  });
+
+  it.each([320, '75vh'])('honors explicit outer CSS height %p independently of resized SVG dimensions', cssHeight => {
+    const ref = React.createRef<HTMLDivElement>();
+    const outerHeight = typeof cssHeight === 'number' ? `${cssHeight}px` : cssHeight;
+    const spec = centeredAreaSpec();
+    const { container, rerender } = render(
+      <VegaLiteCenteredArea ref={ref} spec={spec} width={272} height={172} style={{ height: cssHeight }} />,
+    );
+    const svg = container.querySelector('svg')!;
+    expect(ref.current).toBe(container.firstElementChild);
+    expect(ref.current).toHaveStyle({ width: '272px', height: outerHeight });
+    expect(svg).toHaveAttribute('height', '172');
+    expect(svg).toHaveAttribute('viewBox', '-56 -24 272 172');
+    expect(series(container).map(path => path.getAttribute('d'))).toEqual(geometry(spec).series.map(item => item.d));
+    rerender(<VegaLiteCenteredArea ref={ref} spec={spec} width={372} height={272} style={{ height: cssHeight }} />);
+    expect(ref.current).toHaveStyle({ width: '372px', height: outerHeight });
+    expect(svg).toHaveAttribute('height', '272');
+    expect(svg).toHaveAttribute('viewBox', '-56 -24 372 272');
+    expect(series(container).map(path => path.getAttribute('d'))).toEqual(
+      getVegaCenteredAreaGeometry(spec, 300, 200).series.map(item => item.d),
+    );
   });
 
   it('uses per-chart unique IDs and event-owned anchors in the second chart', () => {
@@ -675,20 +707,22 @@ describe('native centered area renderer', () => {
     fireEvent.click(screen.getByRole('option', { name: 'B' }));
     const [first, second] = points(container);
     act(() => first.focus());
-    const focusedContent = container.querySelector('.fui-PopoverSurface')!.textContent;
+    const focusedContent = container.ownerDocument.querySelector('.fui-PopoverSurface')!.textContent;
+    expect(container.ownerDocument.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+    expect(container.contains(within(container.ownerDocument.body).getByRole('tooltip'))).toBe(false);
     expect(renderTooltip.mock.calls[0][0]).toBe(spec.data!.values![0]);
     fireEvent.mouseEnter(second);
     expect(anchor().target).toBe(second);
-    expect(container.querySelector('.fui-PopoverSurface')!.textContent).not.toBe(focusedContent);
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')!.textContent).not.toBe(focusedContent);
     fireEvent.mouseLeave(second, { relatedTarget: first });
     expect(first).toHaveFocus();
     expect(anchor().target).toBe(first);
-    expect(container.querySelector('.fui-PopoverSurface')!.textContent).toBe(focusedContent);
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')!.textContent).toBe(focusedContent);
     expect(first).toHaveAttribute('aria-describedby', `${first.ownerSVGElement!.id}-tooltip`);
     expect(series(container)[0]).toHaveAttribute('data-selected', 'false');
     fireEvent.keyDown(first, { key: 'Escape' });
     expect(first).toHaveFocus();
-    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')).toBeNull();
     expect(first).not.toHaveAttribute('aria-describedby');
   });
 
@@ -777,7 +811,11 @@ describe('native centered area renderer', () => {
     spec.encoding!.tooltip = { field: 'value', title: 'Amount' };
     const { container } = render(<VegaLiteCenteredArea spec={spec} />);
     fireEvent.mouseEnter(points(container)[0]);
-    expect(container.querySelector('.fui-PopoverSurface')!.textContent).toBe('Amount2');
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')!.textContent).toBe('Amount2');
+    expect(container.ownerDocument.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+    const tooltip = within(container.ownerDocument.body).getByRole('tooltip');
+    expect(container.contains(tooltip)).toBe(false);
+    expect(tooltip.textContent).not.toMatch(/hidden|lower|upper|series/);
     expect(anchor().target).toBe(points(container)[0]);
   });
 

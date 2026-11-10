@@ -250,6 +250,9 @@ Object {
         ],
         "hideNonActiveDots": false,
         "legend": "default",
+        "lineOptions": Object {
+          "mode": "lines+markers",
+        },
       },
     ],
   },

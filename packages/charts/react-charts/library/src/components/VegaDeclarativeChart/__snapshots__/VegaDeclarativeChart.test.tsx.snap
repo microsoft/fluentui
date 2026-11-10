@@ -1527,6 +1527,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
 exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations should render the actual line_bar_combo schema from schemas folder 1`] = `
 <div>
   <div>
+    <h3
+      class=""
+    >
+      Sales and Profit Trend
+    </h3>
     <div
       style="width: 100%; height: 350px;"
     >
@@ -2777,6 +2782,11 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
 exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial ratios heatmap without errors 1`] = `
 <div>
   <div>
+    <h3
+      class=""
+    >
+      Financial Ratios Heatmap
+    </h3>
     <div
       style="width: 100%; height: 350px;"
     >
@@ -3825,6 +3835,11 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
 exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from actual air_quality_heatmap.json schema 1`] = `
 <div>
   <div>
+    <h3
+      class=""
+    >
+      Air Quality Index Heatmap
+    </h3>
     <div
       style="width: 100%; height: 350px;"
     >
@@ -4311,6 +4326,11 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
 exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from actual attendance_heatmap.json schema 1`] = `
 <div>
   <div>
+    <h3
+      class=""
+    >
+      Weekly Attendance Patterns
+    </h3>
     <div
       style="width: 100%; height: 350px;"
     >
@@ -5009,8 +5029,13 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
 exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from actual bmi_scatter.json schema 1`] = `
 <div>
   <div>
+    <h3
+      class=""
+    >
+      BMI Distribution Scatter
+    </h3>
     <div
-      style="width: 100%; height: 100%;"
+      style="width: 100%; height: 350px;"
     >
       <div
         class="fui-cart__root fui-charts-resp-child__root"
@@ -5306,38 +5331,6 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
-                  type="button"
-                >
-                  <svg
-                    class="fui-legend__shape"
-                    height="14"
-                    style="width: 14px; height: 14px;"
-                    transform="rotate(0, 0, 0)"
-                    viewBox="-1 -1 14 14"
-                    width="14"
-                  >
-                    <path
-                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                      fill="#ff7f0e"
-                      stroke="#ff7f0e"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="fui-legend__text"
-                  >
-                    Normal
-                  </div>
-                </button>
-                <button
-                  aria-label="Overweight"
-                  aria-posinset="2"
-                  aria-selected="false"
-                  aria-setsize="3"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
                   type="button"
                 >
@@ -5359,12 +5352,12 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   <div
                     class="fui-legend__text"
                   >
-                    Overweight
+                    Normal
                   </div>
                 </button>
                 <button
-                  aria-label="Underweight"
-                  aria-posinset="3"
+                  aria-label="Overweight"
+                  aria-posinset="2"
                   aria-selected="false"
                   aria-setsize="3"
                   class="fui-Button fui-legend__legend"
@@ -5391,6 +5384,38 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   <div
                     class="fui-legend__text"
                   >
+                    Overweight
+                  </div>
+                </button>
+                <button
+                  aria-label="Underweight"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
+                  type="button"
+                >
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#ff7f0e"
+                      stroke="#ff7f0e"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
                     Underweight
                   </div>
                 </button>
@@ -5408,7 +5433,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
 <div>
   <div>
     <div
-      style="width: 100%; height: 100%;"
+      style="width: 100%; height: 350px;"
     >
       <div
         class="fui-cart__root fui-charts-resp-child__root"
@@ -5745,7 +5770,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
 <div>
   <div>
     <div
-      style="width: 100%; height: 100%;"
+      style="width: 100%; height: 350px;"
     >
       <div
         class="fui-cart__root fui-charts-resp-child__root"

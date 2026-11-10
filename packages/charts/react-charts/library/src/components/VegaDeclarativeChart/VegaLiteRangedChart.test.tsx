@@ -489,7 +489,10 @@ describe('native SVG integration', () => {
     const mark = container.querySelector('path[data-ranged-mark]')!;
     fireEvent.mouseEnter(mark);
     fireEvent.focus(mark);
-    const tooltip = screen.getByRole('tooltip');
+    const tooltip = within(container.ownerDocument.body).getByRole('tooltip');
+    expect(container.ownerDocument.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+    expect(tooltip.closest('[data-portal-node]')).not.toBeNull();
+    expect(container.contains(tooltip)).toBe(false);
     expect(container.ownerDocument.getElementById(mark.getAttribute('aria-describedby')!)!.contains(tooltip)).toBe(
       true,
     );
@@ -517,9 +520,9 @@ describe('native SVG integration', () => {
     fireEvent.mouseEnter(mark);
     fireEvent.focus(mark);
     expect(screen.queryByRole('tooltip')).toBeNull();
-    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+    expect(container.ownerDocument.querySelector('.fui-PopoverSurface')).toBeNull();
     expect(mark).not.toHaveAttribute('aria-describedby');
-    expect(container.textContent).not.toContain('secret');
+    expect(container.ownerDocument.body.textContent).not.toContain('secret');
   });
 
   it('clears removed anchors even if the mark key is reused later', () => {
@@ -727,11 +730,16 @@ describe('native SVG integration', () => {
         expect(marks[marks.length - 1]).toHaveFocus();
         await act(async () => userEvent.keyboard('{Escape}'));
         expect(marks[marks.length - 1]).toHaveFocus();
-        expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+        expect(container.ownerDocument.querySelector('.fui-PopoverSurface')).toBeNull();
         expect(marks[marks.length - 1]).not.toHaveAttribute('aria-describedby');
         await act(async () => userEvent.keyboard('{ArrowRight}'));
         expect(marks[0]).toHaveFocus();
-        expect(container.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+        expect(container.ownerDocument.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+        const tooltip = within(container.ownerDocument.body).getByRole('tooltip');
+        expect(container.contains(tooltip)).toBe(false);
+        expect(
+          container.ownerDocument.getElementById(marks[0].getAttribute('aria-describedby')!)!.contains(tooltip),
+        ).toBe(true);
         await act(async () => userEvent.tab());
         expect(root.contains(container.ownerDocument.activeElement)).toBe(false);
       }
@@ -885,7 +893,7 @@ describe('field safety regressions', () => {
 });
 
 describe('responsive dimension regressions', () => {
-  it('uses measured dimensions exactly and resizes plot geometry', () => {
+  it('uses measured SVG dimensions exactly and resizes plot geometry without constraining outer height', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { container, rerender } = render(
       <VegaLiteRangedChart ref={ref} spec={rectangleRangeSpec} {...{ width: 400, height: 200 }} />,
@@ -894,12 +902,50 @@ describe('responsive dimension regressions', () => {
     expect(svg).toHaveAttribute('width', '400');
     expect(svg).toHaveAttribute('height', '200');
     expect(svg).toHaveAttribute('viewBox', '-56 -24 400 200');
-    expect(ref.current).toHaveStyle({ width: '400px', height: '200px' });
+    expect(ref.current).toBe(container.firstElementChild);
+    expect(ref.current).toHaveStyle({ width: '400px' });
+    // The title, SVG and legends use intrinsic outer height; height sizes only the SVG viewport.
+    expect(ref.current!.style.height).toBe('');
     const first = container.querySelector('path[data-ranged-mark]')!.getAttribute('d');
     rerender(<VegaLiteRangedChart ref={ref} spec={rectangleRangeSpec} {...{ width: 600, height: 300 }} />);
     expect(svg).toHaveAttribute('width', '600');
     expect(svg).toHaveAttribute('height', '300');
-    expect(ref.current).toHaveStyle({ width: '600px', height: '300px' });
+    expect(svg).toHaveAttribute('viewBox', '-56 -24 600 300');
+    expect(ref.current).toHaveStyle({ width: '600px' });
+    expect(ref.current!.style.height).toBe('');
+    expect(container.querySelector('path[data-ranged-mark]')!.getAttribute('d')).not.toBe(first);
+  });
+
+  it.each([320, '75vh'])('honors explicit outer CSS height %p independently of resized SVG dimensions', cssHeight => {
+    const ref = React.createRef<HTMLDivElement>();
+    const outerHeight = typeof cssHeight === 'number' ? `${cssHeight}px` : cssHeight;
+    const { container, rerender } = render(
+      <VegaLiteRangedChart
+        ref={ref}
+        spec={rectangleRangeSpec}
+        width={400}
+        height={200}
+        style={{ height: cssHeight }}
+      />,
+    );
+    const svg = container.querySelector('svg')!;
+    expect(ref.current).toBe(container.firstElementChild);
+    expect(ref.current).toHaveStyle({ width: '400px', height: outerHeight });
+    expect(svg).toHaveAttribute('height', '200');
+    expect(svg).toHaveAttribute('viewBox', '-56 -24 400 200');
+    const first = container.querySelector('path[data-ranged-mark]')!.getAttribute('d');
+    rerender(
+      <VegaLiteRangedChart
+        ref={ref}
+        spec={rectangleRangeSpec}
+        width={600}
+        height={300}
+        style={{ height: cssHeight }}
+      />,
+    );
+    expect(ref.current).toHaveStyle({ width: '600px', height: outerHeight });
+    expect(svg).toHaveAttribute('height', '300');
+    expect(svg).toHaveAttribute('viewBox', '-56 -24 600 300');
     expect(container.querySelector('path[data-ranged-mark]')!.getAttribute('d')).not.toBe(first);
   });
 
