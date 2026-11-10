@@ -1,0 +1,9 @@
+{
+  "name": "@fluentui/scripts-pr-risk-tier",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  }
+}
