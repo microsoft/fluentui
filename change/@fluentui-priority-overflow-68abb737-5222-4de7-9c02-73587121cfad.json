@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "perf(priority-overflow): bound divider aggregation by registered dividers",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "141153077+andreivms@users.noreply.github.com"
+}

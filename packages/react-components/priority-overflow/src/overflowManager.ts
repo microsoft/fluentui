@@ -121,9 +121,8 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       totalItemSize += getOffsetSize(overflowItems[id].element);
     }
 
-    const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
-      (acc, [id, state]) =>
-        acc + (state !== 'hidden' && overflowDividers[id] ? getOffsetSize(overflowDividers[id].element) : 0),
+    const totalDividerSize = Object.entries(overflowDividers).reduce(
+      (acc, [id, divider]) => acc + (groupManager.isGroupVisible(id) ? getOffsetSize(divider.element) : 0),
       0,
     );
 
@@ -455,6 +454,7 @@ const createGroupManager = () => {
   }
   return {
     groupVisibility: () => groupVisibility,
+    isGroupVisible,
     isSingleItemVisible(itemId: string, groupId: string) {
       return (
         isGroupVisible(groupId) &&

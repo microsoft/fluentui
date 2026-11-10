@@ -57,6 +57,135 @@ describe('overflowManager', () => {
       .map(([id]) => id)
       .sort();
 
+  describe('divider aggregation', () => {
+    it.each([
+      [0, 0],
+      [24, 0],
+      [24, 1],
+    ])(
+      'bounds enumeration by registered dividers with %i retired groups and %i dividers',
+      (retiredGroups, dividers) => {
+        const manager = createOverflowManager(createObserveOptions({ padding: 0 }));
+        for (let index = 0; index < retiredGroups; index++) {
+          manager.addItem({
+            id: `retired-${index}`,
+            groupId: `retired-group-${index}`,
+            priority: 0,
+            element: createElementWithSize('button', 10),
+          });
+          manager.removeItem(`retired-${index}`);
+        }
+        for (let index = 0; index < 4; index++) {
+          manager.addItem({
+            id: `active-${index}`,
+            groupId: `active-group-${index}`,
+            priority: index,
+            element: createElementWithSize('button', 10),
+          });
+        }
+        for (let index = 0; index < dividers; index++) {
+          manager.addDivider({
+            groupId: `active-group-${index}`,
+            element: createElementWithSize('span', 5),
+          });
+        }
+        manager.observe(createContainer(200));
+        manager.forceUpdate();
+        const groupsBefore = { ...manager.getSnapshot().groupVisibility };
+
+        try {
+          const entries = jest.spyOn(Object, 'entries');
+          let sizes: number[];
+          try {
+            manager.forceUpdate();
+            sizes = entries.mock.results.map(result => {
+              if (result.type !== 'return') {
+                throw new Error('Expected successful object enumeration');
+              }
+              return result.value.length;
+            });
+          } finally {
+            entries.mockRestore();
+          }
+
+          expect(sizes.length).toBeGreaterThan(0);
+          expect(sizes.reduce((sum, size) => sum + size, 0)).toBeLessThanOrEqual(dividers * sizes.length);
+          expect(manager.getSnapshot().groupVisibility).toEqual(groupsBefore);
+          expect(Object.keys(groupsBefore)).toHaveLength(retiredGroups + 4);
+          expect(getVisibleIds(manager)).toEqual(['active-0', 'active-1', 'active-2', 'active-3']);
+        } finally {
+          manager.disconnect();
+        }
+      },
+    );
+
+    it('does not measure a divider whose group has no items', () => {
+      const manager = createOverflowManager(createObserveOptions());
+      const divider = createElementWithSize('span', 80);
+      const getDividerWidth = jest.fn(() => 80);
+      Object.defineProperty(divider, 'offsetWidth', { configurable: true, get: getDividerWidth });
+      manager.addDivider({ groupId: 'missing', element: divider });
+      manager.addItem({ id: 'a', priority: 1, element: createElementWithSize('button', 40) });
+      manager.observe(createContainer(100));
+
+      try {
+        manager.forceUpdate();
+        expect(getDividerWidth).not.toHaveBeenCalled();
+        expect(getVisibleIds(manager)).toEqual(['a']);
+        expect(manager.getSnapshot().groupVisibility).toEqual({});
+      } finally {
+        manager.disconnect();
+      }
+    });
+
+    it('preserves repeated sizing with a divider larger than the overflow menu', () => {
+      const manager = createOverflowManager(createObserveOptions());
+      const container = createContainer(160);
+      manager.addItem({ id: 'a', groupId: 'group', priority: 2, element: createElementWithSize('button', 40) });
+      manager.addItem({ id: 'b', groupId: 'group', priority: 1, element: createElementWithSize('button', 40) });
+      manager.addDivider({ groupId: 'group', element: createElementWithSize('span', 80) });
+      manager.addOverflowMenu(createElementWithSize('button', 24));
+      manager.observe(container);
+
+      try {
+        for (let iteration = 0; iteration < 3; iteration++) {
+          manager.forceUpdate();
+          expect(getVisibleIds(manager)).toEqual(['a']);
+          expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'overflow' });
+        }
+        Object.defineProperty(container, 'clientWidth', { configurable: true, value: 240 });
+        manager.forceUpdate();
+        expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+        Object.defineProperty(container, 'clientWidth', { configurable: true, value: 160 });
+        manager.forceUpdate();
+        expect(getVisibleIds(manager)).toEqual(['a']);
+      } finally {
+        manager.disconnect();
+      }
+    });
+
+    it('propagates errors while measuring a visible group divider', () => {
+      const manager = createOverflowManager(createObserveOptions());
+      const divider = createElementWithSize('span', 80);
+      const failure = new Error('divider measurement failed');
+      Object.defineProperty(divider, 'offsetWidth', {
+        configurable: true,
+        get: () => {
+          throw failure;
+        },
+      });
+      manager.addItem({ id: 'a', groupId: 'group', priority: 1, element: createElementWithSize('button', 40) });
+      manager.addDivider({ groupId: 'group', element: divider });
+      manager.observe(createContainer(200));
+
+      try {
+        expect(() => manager.forceUpdate()).toThrow(failure);
+      } finally {
+        manager.disconnect();
+      }
+    });
+  });
+
   it('should expose a stable snapshot after forceUpdate', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
