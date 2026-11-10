@@ -1,4 +1,4 @@
-import { isHTMLElement } from '@fluentui/react-utilities';
+import { elementContains, isHTMLElement } from '@fluentui/react-utilities';
 import type { KeyborgFocusInEvent } from 'keyborg';
 import { KEYBORG_FOCUSIN, createKeyborg, disposeKeyborg } from 'keyborg';
 
@@ -40,7 +40,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   const keyborg = createKeyborg(targetWindow);
 
   function registerElementIfNavigating(el: EventTarget | HTMLElement | null) {
-    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el) && scope.contains(el)) {
+    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el) && elementContains(scope, el)) {
       state.current = el;
       el.setAttribute(FOCUS_VISIBLE_ATTR, '');
     }
@@ -58,7 +58,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
     if (!isNavigatingWithKeyboard) {
       disposeCurrentElement();
     } else {
-      registerElementIfNavigating(targetWindow.document.activeElement);
+      registerElementIfNavigating(getActiveElement(targetWindow.document));
     }
   });
 
@@ -72,7 +72,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
   // Make sure that when focus leaves the scope, the focus visible class is removed
   const blurListener = (e: FocusEvent) => {
-    if (!e.relatedTarget || (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget))) {
+    if (!e.relatedTarget || (isHTMLElement(e.relatedTarget) && !elementContains(scope, e.relatedTarget))) {
       disposeCurrentElement();
     }
   };
@@ -81,8 +81,9 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
-  if (scope.contains(targetWindow.document.activeElement)) {
-    registerElementIfNavigating(targetWindow.document.activeElement);
+  const initialActiveElement = getActiveElement(targetWindow.document);
+  if (elementContains(scope, initialActiveElement)) {
+    registerElementIfNavigating(initialActiveElement);
   }
 
   // Return disposer
@@ -95,4 +96,12 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
     disposeKeyborg(keyborg);
   };
+}
+
+function getActiveElement(doc: Document): Element | null {
+  let ae = doc.activeElement;
+  while (ae?.shadowRoot?.activeElement) {
+    ae = ae.shadowRoot.activeElement;
+  }
+  return ae;
 }

@@ -106,4 +106,24 @@ describe('focus visible polyfill', () => {
     disposeInner();
     expect(innerButton2.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(false);
   });
+
+  it('should apply focus visible inside shadow DOM', () => {
+    const scope = document.createElement('div');
+    const host = document.createElement('div');
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const button = document.createElement('button');
+
+    shadowRoot.append(button);
+    scope.append(host);
+    document.body.append(scope);
+
+    const dispose = applyFocusVisiblePolyfill(scope, window);
+
+    button.focus();
+    fireEvent.keyDown(window);
+
+    expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+
+    dispose();
+  });
 });
