@@ -3,6 +3,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useCalendarItemStyles } from '../../hooks/useCalendarItemStyles.styles';
 import { useCalendarPickerStyles } from '../../hooks/useCalendarPickerStyles.styles';
+import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarMonthSlots, CalendarMonthState } from './CalendarMonth.types';
 
@@ -19,6 +20,14 @@ export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'y
   grid: 'fui-CalendarMonth__grid',
 };
 
+/**
+ * Class names of the rows and cells rendered inside the month grid.
+ */
+export const calendarMonthGridClassNames = {
+  row: 'fui-CalendarMonthGridRow',
+  cell: 'fui-CalendarMonthGridCell',
+} as const;
+
 const useStyles = makeStyles({
   embeddedYearPicker: {
     overflow: 'visible',
@@ -34,6 +43,8 @@ export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): Cale
   const pickerStyles = useCalendarPickerStyles();
   const itemStyles = useCalendarItemStyles();
   const styles = useStyles();
+  const highlightCurrent = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
+  const highlightSelected = useCalendarContext_unstable(ctx => ctx.highlightSelected);
 
   /* eslint-disable react-hooks/immutability */
   state.root.className = mergeClasses(
@@ -75,6 +86,19 @@ export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): Cale
     !state.isNextYearInBounds && itemStyles.disabled,
     state.nextYearButton.className,
   );
+
+  for (const row of state.monthRows) {
+    row.props.className = mergeClasses(calendarMonthGridClassNames.row, itemStyles.buttonRow);
+    for (const cell of row.cells) {
+      cell.props.className = mergeClasses(
+        calendarMonthGridClassNames.cell,
+        itemStyles.itemButton,
+        cell.isCurrent && highlightCurrent && itemStyles.highlightCurrent,
+        cell.isSelected && highlightSelected && itemStyles.highlightSelected,
+        !cell.isInBounds && itemStyles.disabled,
+      );
+    }
+  }
   /* eslint-enable react-hooks/immutability */
   return state;
 };

@@ -3,6 +3,97 @@
 Use this guide when upgrading between package versions. Entries are ordered by target version,
 newest first; dates within an entry identify changes made during its development, not release dates.
 
+## 0.0.3 to 0.0.4
+
+| Upgrade            | Release date | Guide updated |
+| ------------------ | ------------ | ------------- |
+| `0.0.3` to `0.0.4` | Unreleased   | 2026-10-26    |
+
+`0.0.4` changes the JSON output contract from schema version 2 to 3. **This is a breaking
+change for JSON consumers**, despite the package's patch-version increment. CLI flags,
+configuration, annotation eligibility, directive statuses, and exit-code rules are unchanged.
+Justified directives remain protected from `--fix`.
+
+### Required changes for JSON consumers
+
+1. Accept `schemaVersion: 3` and update strict validators to the shipped
+   [analyze schema](rca.analyze.schema.json) and [lint schema](rca.lint.schema.json).
+   Register the analyze schema when validating lint; it supplies shared definitions.
+2. Replace `summary.memoCacheEmitted` with `summary.reportedMemoCachePositive` when counting
+   accepted functions with positive reported memo slots. The new `reportedMemoCacheZero` and
+   `reportedMemoCacheUnavailable` counters complete the partition. These are analysis statistics,
+   **not proof of emitted caching** or of a particular operation being cached.
+3. Allow the new `profile` and `emittedCaching` envelope fields, optional function diagnostics
+   and suppression classification, annotation `targets`, and revalidation `evidence`.
+   Refer to the schemas for their complete shapes.
+
+If you only use the CLI interactively, no command changes are required. Human report labels
+and generated bailout justifications now distinguish reported statistics from preventive
+recommendations; update any scripts that scrape those labels.
+
+### New review information
+
+- Suppression-related compiler rejections retain risk findings and can be enumerated using
+  `functions[].rejectionKind`. They remain excluded from automatic annotation.
+- Annotation previews and writes include target rationale. Zero reported slots do not
+  disqualify a preventive bailout.
+- Justified revalidation reports before/after acceptance and statistics under the recorded
+  profile. No observed effect does not establish universal redundancy; emitted optimization
+  remains unmeasured.
+
+Existing removal behavior for unjustified guards is unchanged. Review guard changes against
+your build and run application behavior tests before accepting them.
+
+## 0.0.2 to 0.0.3
+
+| Upgrade            | Release date | Guide updated |
+| ------------------ | ------------ | ------------- |
+| `0.0.2` to `0.0.3` | Unreleased   | 2026-10-21    |
+
+`0.0.3` is a non-breaking patch release. Removing TypeScript lowering fixes unnecessary
+transform failures: previously rejected files can now contribute functions, findings, and
+annotation targets, and analysis observes original TypeScript nodes rather than lowered nodes.
+Re-run saved coverage/risk baselines and preview source-writing operations before applying them.
+Verbose human output also changes; scripts that consume it should use JSON instead.
+
+This is not a JSON schema-version migration. Default CLI options, default JSON shapes, and
+existing field meanings remain compatible with schema version 2. The new workflow flags are
+opt-in, and their optional JSON fields require the updated schema for strict validation.
+
+### Changes and migration actions
+
+- TypeScript is parsed without the TypeScript-to-JavaScript preset. Mutable namespace exports,
+  `import = require(...)`, and `export =` no longer fail solely because of Babel lowering
+  limitations. JSX remains extension-sensitive, auto-accessors are accepted, and decorators
+  remain explicitly configured. This does not establish native React Compiler parity.
+- `lint --revalidate-justified` rechecks both memo directive kinds against the selected Babel
+  mode. Justified directives remain report-only even with `--fix`; redundant, broken, and
+  conflicting results cause a nonzero exit. Explicitly revalidated justified JSON rows add
+  `justified: true` and `revalidated: true`. Default justified skipping is unchanged.
+- `analyze --annotate <mode> --dry-run` previews the same edits as write mode without writing.
+  JSON actual write counters stay zero, with `annotate.dryRun: true` and `annotate.planned`
+  containing projected counters. `--dry-run` without `--annotate` is an error.
+- JSON remains schema version 2; default shapes and existing field meanings are unchanged.
+  Consumers validating the new opt-in fields against an older strict schema must use the
+  updated schema. No backend or version provenance is added to JSON.
+- Verbose human output now identifies the Babel and Babel React Compiler versions.
+
+Before applying new annotations, review the proposed targets:
+
+```bash
+react-compiler-analyzer analyze ./src --mode infer --annotate all-safe --dry-run
+```
+
+To reassess historical justifications explicitly, use the mode assumed by your build:
+
+```bash
+react-compiler-analyzer lint ./src --mode infer --revalidate-justified
+```
+
+Neither command above modifies source. Justified directives remain protected even if a later
+lint invocation includes `--fix`. Babel-specific conclusions do not establish that a directive
+is redundant for a native compiler or for another consumer build.
+
 ## Experimental builds to 0.0.1
 
 | Upgrade                                  | Release date | Guide updated |

@@ -1,14 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CalendarYearCell } from '../../contexts/calendarYearContext';
-
-export type { CalendarContextValue, CalendarContextValues } from '../../contexts/calendarContext';
-
-export type {
-  CalendarYearCell,
-  CalendarYearContextValue,
-  CalendarYearContextValues,
-} from '../../contexts/calendarYearContext';
+import type { CalendarElementProps, CalendarGridRow, CalendarRowWrapper } from '../../utils/calendarGrid.types';
 
 /**
  * The imperative API exposed on CalendarYear's forwarded ref.
@@ -18,11 +10,11 @@ export type CalendarYearHandle = {
    * Focuses the navigated year, or the selected/current year when navigation is unspecified,
    * within the focusable visible range.
    */
-  focus(): void;
+  focus(options?: FocusOptions): void;
 };
 
 /**
- * Defines the CalendarYearRange contract.
+ * A range of years, inclusive.
  */
 export interface CalendarYearRange {
   fromYear: number;
@@ -30,8 +22,44 @@ export interface CalendarYearRange {
 }
 
 /**
- * Defines the CalendarYearSlots contract.
+ * One year cell in the grid.
  */
+export type CalendarYearCell = {
+  /**
+   * Four-digit year represented by the cell.
+   */
+  year: number;
+  /**
+   * Visible cell content.
+   */
+  content: React.ReactNode;
+  /**
+   * Whether this is the current year.
+   */
+  isCurrent: boolean;
+  /**
+   * Whether this is the selected year.
+   */
+  isSelected: boolean;
+  /**
+   * Whether this is the focus target in the displayed range.
+   */
+  isNavigated: boolean;
+  /**
+   * Whether this year cannot be selected.
+   */
+  isDisabled: boolean;
+  /**
+   * Props of the `button` rendered for the cell.
+   */
+  props: CalendarElementProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+};
+
+/**
+ * One row of year cells.
+ */
+export type CalendarYearRow = CalendarGridRow<CalendarYearCell>;
+
 export type CalendarYearSlots = {
   root: NonNullable<Slot<'div'>>;
 
@@ -46,42 +74,39 @@ export type CalendarYearSlots = {
    */
   heading: NonNullable<Slot<'button', 'div'>>;
 
+  /**
+   * Wraps the previous and next range buttons.
+   */
   navigation: NonNullable<Slot<'div'>>;
 
+  /**
+   * The button to navigate to the previous year range.
+   */
   previousRangeButton: NonNullable<Slot<'button'>>;
 
+  /**
+   * The button to navigate to the next year range.
+   */
   nextRangeButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The `role="grid"` container holding the year rows.
+   * The `role="grid"` container holding the year rows. Owns arrow key navigation and the roving tab stop.
    */
   grid: NonNullable<Slot<'div'>>;
 };
 
-/**
- * Defines the CalendarYearSelectData contract.
- */
 export type CalendarYearSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   year: number;
 };
 
-/**
- * Defines the CalendarYearNavigateData contract.
- */
 export type CalendarYearNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   year: number;
 };
 
-/**
- * Defines the CalendarYearHeaderSelectData contract.
- */
 export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   focus: boolean;
 };
 
-/**
- * Defines the CalendarYearProps contract.
- */
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   /**
    * The currently navigated year. Takes precedence over selectedYear for the displayed range and focus.
@@ -117,41 +142,38 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   onHeaderSelect?: EventHandler<CalendarYearHeaderSelectData>;
 };
 
-/**
- * Defines the CalendarYearState contract.
- */
 export type CalendarYearState = ComponentState<CalendarYearSlots> & {
   /**
-   * The first year of the visible range, used to replay the row motions on navigation.
+   * The first year of the visible range.
    */
   fromYear: number;
 
+  /**
+   * Whether the heading is a button.
+   */
   hasHeaderClickCallback: boolean;
 
-  onSelectYear: CalendarYearProps['onSelectYear'];
-
+  /**
+   * Whether navigating to the previous range is allowed by `minDate`.
+   */
   prevDisabled: boolean;
 
+  /**
+   * Whether navigating to the next range is allowed by `maxDate`.
+   */
   nextDisabled: boolean;
 
   /**
    * Year cells grouped into rows of four.
    */
-  yearRows: CalendarYearCell[][];
+  yearRows: CalendarYearRow[];
 
-  currentYearRef: React.RefObject<HTMLButtonElement | null>;
-
-  selectedYearRef: React.RefObject<HTMLButtonElement | null>;
-
-  navigatedYearRef: React.RefObject<HTMLButtonElement | null>;
+  /**
+   * Wraps each rendered row. The styled layer uses it for the row motion.
+   */
+  wrapRow?: CalendarRowWrapper<CalendarYearRow>;
 };
 
-/**
- * Row motion lives on CalendarYearGridRow, so the base and styled layers share the same props.
- */
 export type CalendarYearBaseProps = CalendarYearProps;
 
-/**
- * Defines the CalendarYearBaseState contract.
- */
 export type CalendarYearBaseState = CalendarYearState;

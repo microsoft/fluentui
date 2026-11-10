@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-combobox
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.9)
+
+Tue, 10 Nov 2026 16:50:23 GMT
+
+### Patches
+
+- fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+
+## [9.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.8)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.7..@fluentui/react-combobox_v9.17.8)
+
+### Patches
+
+- fix: make the Combobox expand icon keyboard- and click-operable without duplicate pointer toggles or hidden, missing-icon, or duplicate blur interactions ([PR #36574](https://github.com/microsoft/fluentui/pull/36574) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.21 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-field to v9.5.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-portal to v9.8.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-positioning to v9.23.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.7)
 

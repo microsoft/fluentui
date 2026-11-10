@@ -1,19 +1,20 @@
 'use client';
 
-import type { FluentTriggerComponent, JSXElement } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useTooltip } from './useTooltip';
 import { renderTooltip } from './renderTooltip';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
 import type { TooltipProps } from './Tooltip.types';
 
 /**
  * Tooltip renders a non-modal floating label or description anchored to a trigger element.
  */
-export const Tooltip = (props: TooltipProps): JSXElement => {
-  const state = useTooltip(props);
-  return renderTooltip(state);
-};
-
-Tooltip.displayName = 'Tooltip';
+export const Tooltip: ComponentWithoutRef<TooltipProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Tooltip',
+  useTooltip,
+  renderTooltip,
+);
 
 /**
  * Marks the Tooltip component as a FluentTriggerComponent by setting the isFluentTriggerComponent flag.

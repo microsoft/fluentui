@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-search
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.9)
+
+Tue, 10 Nov 2026 16:50:23 GMT
+
+### Patches
+
+- fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only ([PR #37107](https://github.com/microsoft/fluentui/pull/37107) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-input to v9.8.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.8)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-input to v9.8.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.7)
 

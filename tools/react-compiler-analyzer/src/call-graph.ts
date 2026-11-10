@@ -1,10 +1,10 @@
 import { readFileSync } from 'node:fs';
-import { extname } from 'node:path';
 
 import { parseSync, traverse } from '@babel/core';
-import type { NodePath, TransformOptions } from '@babel/core';
+import type { NodePath } from '@babel/core';
 import type { File, Node, Function as BabelFunction } from '@babel/types';
 
+import { createBabelOptions } from './babel-options';
 import type { ModuleResolver, ResolverStats } from './module-resolver';
 import { locationKey } from './identity';
 import {
@@ -116,27 +116,7 @@ export function createCallGraphAnalyzer(
     let model: ModuleModel | null = null;
     try {
       const source = readFileSync(filePath, 'utf-8');
-      const ext = extname(filePath);
-      const ast = parseSync(source, {
-        filename: filePath,
-        babelrc: false,
-        configFile: false,
-        ...(parserPlugins.length
-          ? {
-              parserOpts: {
-                plugins: [...parserPlugins] as NonNullable<NonNullable<TransformOptions['parserOpts']>['plugins']>,
-              },
-            }
-          : {}),
-        presets: [
-          [
-            require.resolve('@babel/preset-typescript'),
-            // Enabling JSX for `.ts` would make `<Foo>bar` parse as an unterminated JSX element,
-            // silently turning a resolvable wrapper module into an opaque boundary.
-            { isTSX: ext === '.tsx', allExtensions: true },
-          ],
-        ],
-      }) as File | null;
+      const ast = parseSync(source, createBabelOptions(filePath, parserPlugins)) as File | null;
       if (ast) {
         model = buildModuleModel(filePath, ast, leafConfig);
       }

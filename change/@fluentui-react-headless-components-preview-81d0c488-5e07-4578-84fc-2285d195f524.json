@@ -1,6 +1,0 @@
-{
-  "type": "none",
-  "comment": "Declare generated bundle-size fixtures in Nx project metadata.",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "martinhochel@microsoft.com"
-}

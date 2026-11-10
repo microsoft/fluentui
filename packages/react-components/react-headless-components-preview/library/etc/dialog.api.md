@@ -14,7 +14,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const Dialog: React_2.FC<DialogProps>;
+export const Dialog: React_2.MemoExoticComponent<ComponentWithoutRef<DialogProps>>;
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
@@ -164,7 +164,7 @@ export type DialogTitleSlots = {
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps>;
+export const DialogTrigger: ComponentWithoutRef<DialogTriggerProps>;
 
 // @public (undocumented)
 export type DialogTriggerAction = 'open' | 'close';
@@ -196,6 +196,9 @@ export const renderDialogSurface: (state: DialogSurfaceState) => JSXElement | nu
 
 // @public (undocumented)
 export const renderDialogTitle: (state: DialogTitleState) => JSXElement;
+
+// @public
+export const renderDialogTrigger: (state: DialogTriggerState) => JSXElement | null;
 
 // @public
 export const useDialog: (props: DialogProps) => DialogState;
