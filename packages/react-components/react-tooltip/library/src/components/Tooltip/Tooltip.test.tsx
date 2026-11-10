@@ -103,6 +103,86 @@ describe('Tooltip', () => {
       expect(result.getByRole('button', { name: 'Authored name' })).toHaveAttribute('aria-labelledby', 'authored-name');
     });
 
+    it.each(['aria-labelledby', 'aria-describedby'] as const)(
+      'keeps closed content referenced by an authored %s',
+      attribute => {
+        const result = render(
+          <Tooltip
+            content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+            secondaryContent="Ctrl+B"
+            relationship="label"
+          >
+            <button
+              aria-label={attribute === 'aria-describedby' ? 'Toggle formatting' : undefined}
+              {...{ [attribute]: 'tooltip-help' }}
+            />
+          </Tooltip>,
+        );
+        expect(
+          result.getByRole('button', {
+            name: attribute === 'aria-labelledby' ? 'Bold Ctrl+B' : 'Toggle formatting',
+            description: attribute === 'aria-describedby' ? 'Bold Ctrl+B' : '',
+          }),
+        ).toHaveAttribute(attribute, getByRoleTooltip(result).id);
+      },
+    );
+
+    it.each(['aria-labelledby', 'aria-describedby'] as const)(
+      'recognizes authored whitespace-separated %s tokens',
+      attribute => {
+        const reference = 'authored-reference\t tooltip-help\n';
+        const result = render(
+          <>
+            <span id="authored-reference">Authored text</span>
+            <Tooltip
+              content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+              secondaryContent="Ctrl+B"
+              relationship="label"
+            >
+              <button {...{ [attribute]: reference }} />
+            </Tooltip>
+          </>,
+        );
+        expect(getByRoleTooltip(result)).toHaveAttribute('id', 'tooltip-help');
+        expect(result.getByRole('button')).toHaveAttribute(attribute, reference);
+      },
+    );
+
+    it('does not mount closed content for unrelated authored references', () => {
+      const result = render(
+        <>
+          <span id="tooltip-help-other">Authored description</span>
+          <Tooltip
+            content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+            secondaryContent="Ctrl+B"
+            relationship="label"
+          >
+            <button aria-label="Toggle formatting" aria-describedby="tooltip-help-other" />
+          </Tooltip>
+        </>,
+      );
+      expect(
+        result.getByRole('button', { name: 'Toggle formatting', description: 'Authored description' }),
+      ).toBeTruthy();
+      expect(queryByRoleTooltip(result)).toBeNull();
+    });
+
+    it.each([undefined, null])('preserves authored ID references without secondary content=%p', secondaryContent => {
+      const result = render(
+        <Tooltip
+          content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+          secondaryContent={secondaryContent}
+          relationship="label"
+        >
+          <button aria-labelledby="tooltip-help" />
+        </Tooltip>,
+      );
+      expect(result.getByRole('button', { name: 'Bold' })).toHaveAttribute(
+        'aria-labelledby',
+        getByRoleTooltip(result).id,
+      );
+    });
+
     it('preserves an authored description reference', () => {
       const result = render(
         <>

@@ -349,10 +349,19 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
         ...resolvedChild.props,
         'aria-labelledby': undefined,
       });
-      const describesTrigger =
-        resolvedChild.props['aria-describedby']?.split(/\s+/).includes(state.content.id) ?? false;
-      state.shouldRenderTooltip = !isServerSideRender && (state.visible || describesTrigger);
     }
+  }
+
+  if (state.secondaryContent) {
+    const resolvedChild = getTriggerChild<TooltipChildProps>(state.children);
+    const contentId = state.content.id;
+    // Keep authored and generated ID references valid even while the tooltip is closed.
+    const isReferenced =
+      contentId !== undefined &&
+      [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(reference =>
+        reference?.split(/\s+/).includes(contentId),
+      );
+    state.shouldRenderTooltip = !isServerSideRender && (state.visible || isReferenced);
   }
 
   return state;

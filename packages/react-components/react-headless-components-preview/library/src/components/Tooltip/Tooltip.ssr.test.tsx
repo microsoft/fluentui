@@ -8,6 +8,27 @@ import { SSRProvider } from '@fluentui/react-utilities';
 import { Tooltip } from './Tooltip';
 
 describe('Tooltip secondary content SSR', () => {
+  it.each(['aria-labelledby', 'aria-describedby'] as const)(
+    'defers an authored %s target until hydration',
+    attribute => {
+      const markup = renderToString(
+        <SSRProvider>
+          <Tooltip
+            visible
+            content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+            secondaryContent="Ctrl+B"
+            relationship="label"
+          >
+            <button {...{ [attribute]: 'tooltip-help' }}>Trigger</button>
+          </Tooltip>
+        </SSRProvider>,
+      );
+      expect(markup).toContain(`${attribute}="tooltip-help"`);
+      expect(markup).not.toContain('id="tooltip-help"');
+      expect(markup).not.toContain('role="tooltip"');
+    },
+  );
+
   it.each(['Bold', <strong key="primary">Bold</strong>])(
     'preserves an authored render-function label without rendering visible content %p',
     content => {
