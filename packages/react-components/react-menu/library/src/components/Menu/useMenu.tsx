@@ -3,11 +3,12 @@
 import * as React from 'react';
 import {
   resolvePositioningShorthand,
-  usePositioningMouseTarget,
+  createVirtualElementFromClick,
   usePositioning,
   useSafeZoneArea,
   usePositioningSlideDirection,
   type PositioningShorthandValue,
+  type PositioningImperativeRef,
 } from '@fluentui/react-positioning';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
@@ -20,6 +21,7 @@ import {
   useTimeout,
   useFirstMount,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -102,9 +104,24 @@ export const useMenuBase_unstable = (
 
   const { targetDocument } = useFluent();
   const triggerId = useId('menu');
-  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
+  const [contextTarget, setContextTargetState] = React.useState<MenuState['contextTarget']>();
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
 
   const resolvedPositioning = resolvePositioningShorthand(props.positioning);
+  // Match spread precedence, including an explicitly undefined or null target.
+  const shouldUseContextTarget =
+    openOnContext && !Object.prototype.propertyIsEnumerable.call(resolvedPositioning, 'target');
+  const previousShouldUseContextTarget = React.useRef(shouldUseContextTarget);
+  const mergedPositioningRef = useMergedRefs(positioningRef, resolvedPositioning.positioningRef);
+  const setContextTarget: MenuState['setContextTarget'] = useEventCallback(event => {
+    const target = event
+      ? createVirtualElementFromClick('nativeEvent' in event ? event.nativeEvent : event)
+      : undefined;
+    setContextTargetState(target);
+    if (shouldUseContextTarget) {
+      positioningRef.current?.setTarget(target ?? null);
+    }
+  });
   const handlePositionEnd = usePositioningSlideDirection({
     targetDocument,
     onPositioningEnd: resolvedPositioning.onPositioningEnd,
@@ -113,9 +130,9 @@ export const useMenuBase_unstable = (
   const positioningOptions = {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
-    target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
     ...resolvedPositioning,
+    positioningRef: mergedPositioningRef,
     onPositioningEnd: handlePositionEnd,
   } as const;
 
@@ -143,6 +160,16 @@ export const useMenuBase_unstable = (
   }
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
+
+  const syncContextTarget = useEventCallback(() => {
+    const wasUsingContextTarget = previousShouldUseContextTarget.current;
+    previousShouldUseContextTarget.current = shouldUseContextTarget;
+    if (contextTarget && !positioningOptions.target && (shouldUseContextTarget || wasUsingContextTarget)) {
+      positioningRef.current?.setTarget(shouldUseContextTarget ? contextTarget : null);
+    }
+  });
+  // Only reconcile prop changes; a new context target must not overwrite the consumer's event-time override.
+  useIsomorphicLayoutEffect(syncContextTarget, [shouldUseContextTarget, positioningOptions.target, syncContextTarget]);
 
   const enableSafeZone = safeZone && openOnHover;
   const safeZoneDescriptorRef = React.useRef({
@@ -286,7 +313,6 @@ const useMenuOpenState = (
 
   const trySetOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
-    onOpenChange?.(event, { ...data });
     if (data.open && e.type === 'contextmenu') {
       state.setContextTarget(e as React.MouseEvent);
     }
@@ -294,6 +320,8 @@ const useMenuOpenState = (
     if (!data.open) {
       state.setContextTarget(undefined);
     }
+
+    onOpenChange?.(event, { ...data });
 
     if (data.bubble) {
       parentSetOpen(e, { ...data });

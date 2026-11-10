@@ -3,6 +3,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useMenu_unstable } from './useMenu';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 const defaultMenuListContextValue: MenuListContextValue = {
   checkedValues: {},
@@ -21,6 +22,170 @@ const trigger = <button key="trigger">trigger</button>;
 const popover = <div key="popover">popover</div>;
 
 describe('useMenu_unstable', () => {
+  describe('context target', () => {
+    it('sets and clears the positioning target synchronously through the exported setter', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result } = renderHook(() =>
+        useMenu_unstable({ children: [trigger, popover], openOnContext: true, positioning: { positioningRef } }),
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+
+      expect(setTarget).toHaveBeenLastCalledWith(result.current.contextTarget);
+      expect(result.current.contextTarget?.getBoundingClientRect()).toEqual(
+        expect.objectContaining({ left: 100, top: 200 }),
+      );
+
+      act(() => result.current.setContextTarget(undefined));
+
+      expect(setTarget).toHaveBeenLastCalledWith(null);
+      expect(result.current.contextTarget).toBeUndefined();
+    });
+
+    it('preserves an explicit positioning target when the context target changes', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result } = renderHook(() =>
+        useMenu_unstable({
+          children: [trigger, popover],
+          openOnContext: true,
+          positioning: { positioningRef, target },
+        }),
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      act(() => result.current.setContextTarget(null));
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.contextTarget).toBeUndefined();
+    });
+
+    it.each([undefined, null])('preserves an explicitly supplied target=%s', target => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result, rerender } = renderHook(
+        ({ openOnContext }) =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            openOnContext,
+            positioning: { positioningRef, target },
+          }),
+        { initialProps: { openOnContext: true } },
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      rerender({ openOnContext: false });
+      rerender({ openOnContext: true });
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.contextTarget?.getBoundingClientRect()).toEqual(
+        expect.objectContaining({ left: 100, top: 200 }),
+      );
+    });
+
+    it('reconciles an explicitly undefined target being added and removed', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result, rerender } = renderHook(
+        ({ explicit }) =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            openOnContext: true,
+            positioning: { positioningRef, ...(explicit ? { target: undefined } : {}) },
+          }),
+        { initialProps: { explicit: false } },
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      const target = result.current.contextTarget;
+      setTarget.mockClear();
+
+      rerender({ explicit: true });
+      expect(setTarget).toHaveBeenLastCalledWith(null);
+
+      rerender({ explicit: false });
+      expect(setTarget).toHaveBeenLastCalledWith(target);
+    });
+
+    it('updates the target when context-menu mode changes without changing the exposed handle', () => {
+      const positioningRef = jest.fn<void, [PositioningImperativeRef | null]>();
+      const { result, rerender } = renderHook(
+        ({ openOnContext }) =>
+          useMenu_unstable({ children: [trigger, popover], openOnContext, positioning: { positioningRef } }),
+        { initialProps: { openOnContext: true } },
+      );
+      const handle = positioningRef.mock.calls[0][0];
+      if (!handle) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(handle, 'setTarget');
+      act(() => result.current.setContextTarget(new MouseEvent('contextmenu', { clientX: 100, clientY: 200 })));
+      const target = result.current.contextTarget;
+      setTarget.mockClear();
+
+      rerender({ openOnContext: false });
+      expect(setTarget).toHaveBeenLastCalledWith(null);
+
+      rerender({ openOnContext: true });
+      expect(setTarget).toHaveBeenLastCalledWith(target);
+      expect(positioningRef).toHaveBeenCalledTimes(1);
+      expect(positioningRef).toHaveBeenLastCalledWith(handle);
+    });
+
+    it.each([undefined, true])('preserves consumer close overrides with open=%s', open => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const target = document.createElement('button');
+      const { result } = renderHook(() =>
+        useMenu_unstable({
+          children: [trigger, popover],
+          open,
+          defaultOpen: true,
+          openOnContext: true,
+          positioning: { positioningRef },
+          onOpenChange: () => positioningRef.current?.setTarget(target),
+        }),
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget.mock.calls).toEqual([[null], [target]]);
+      expect(result.current.open).toBe(open === true);
+    });
+
+    it('does not clear imperative targets when an ordinary menu closes', () => {
+      const positioningRef = React.createRef<PositioningImperativeRef>();
+      const { result } = renderHook(() =>
+        useMenu_unstable({ children: [trigger, popover], defaultOpen: true, positioning: { positioningRef } }),
+      );
+      if (!positioningRef.current) {
+        throw new Error('Menu must expose its positioning handle');
+      }
+      const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+      const event = new MouseEvent('click');
+      act(() => result.current.setOpen(event, { open: false, type: 'clickOutside', event }));
+
+      expect(setTarget).not.toHaveBeenCalled();
+      expect(result.current.open).toBe(false);
+    });
+  });
+
   describe('components and slots', () => {
     it('returns a surfaceMotion component', () => {
       const { result } = renderHook(() => useMenu_unstable({ children: [trigger, popover] }));

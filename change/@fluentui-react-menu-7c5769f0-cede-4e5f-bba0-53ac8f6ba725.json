@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-menu): preserve imperative context menu target overrides from onOpenChange",
+  "packageName": "@fluentui/react-menu",
+  "email": "paulmardling@microsoft.com"
+}

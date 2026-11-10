@@ -10,6 +10,7 @@ import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
 import { MenuPopover } from '../MenuPopover/index';
 import type { MenuOpenChangeData } from './Menu.types';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 describe('Menu', () => {
   isConformant({
@@ -63,6 +64,42 @@ describe('Menu', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it.each([undefined, false])('sets the context target before the consumer override with controlled open: %s', open => {
+    const positioningRef = React.createRef<PositioningImperativeRef>();
+    const customTarget = document.createElement('button');
+    const { getByRole } = render(
+      <Menu
+        openOnContext
+        open={open}
+        positioning={{ positioningRef }}
+        onOpenChange={() => positioningRef.current?.setTarget(customTarget)}
+      >
+        <MenuTrigger disableButtonEnhancement>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    if (!positioningRef.current) {
+      throw new Error('Menu must expose its positioning handle');
+    }
+    const setTarget = jest.spyOn(positioningRef.current, 'setTarget');
+
+    fireEvent.contextMenu(getByRole('button'), { clientX: 100, clientY: 200 });
+
+    expect(setTarget).toHaveBeenCalledTimes(2);
+    expect(setTarget).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({ getBoundingClientRect: expect.any(Function) }),
+    );
+    expect(setTarget).toHaveBeenNthCalledWith(2, customTarget);
   });
 
   it.each([true, false])('should call onOpenChange when the menu is controlled with open: %s', open => {
