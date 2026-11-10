@@ -58,9 +58,16 @@ An in-progress head-SHA assessment is created before labeler/checkout setup, and
 A separate read-only `pull_request` workflow owns the native **PR risk policy** job:
 runner startup failure/cancellation fails that native gate even if the privileged
 job never starts and cannot invalidate its old custom assessment.
-The gate only accepts the newest GitHub Actions assessment matching a SHA-256 identity
-of head SHA, base repository/ref/SHA, title, and body. Missing, stale, pending, failed,
-or foreign-app assessments cannot pass it. It polls for at most 150 seconds.
+The gate does not trust custom checks, their names, app slugs, or `external_id` values.
+It resolves the canonical housekeeping workflow ID and inspects native Actions runs
+for that workflow/path, target repository, `pull_request_target` event, head SHA,
+and PR-number run title. Only the newest matching run is considered. It must finish
+successfully and contain a successful native classification job in its latest attempt,
+named with the PR number and a SHA-256 identity of head SHA, base repository/ref/SHA,
+title, and body. That job name comes from the trusted bootstrap's outputs, not the
+PR workflow or a caller-supplied custom check. Run attempt and PR metadata are checked
+again before acceptance. Missing, stale, pending, skipped, failed, or unrelated native
+jobs cannot pass it. It polls for at most 150 seconds.
 Housekeeping is serialized per PR without cancelling the active run, so an
 obsolete-head classifier cannot overwrite a newer head's risk labels. The bootstrap
 resolves current metadata after acquiring that serialization and skips obsolete heads.
@@ -74,12 +81,38 @@ rejects workflow events that no longer match their trusted checkout.
 Reclassification runs on pushes, description
 edits, reopening, and readiness changes.
 
-Labels are routing hints, **not merge authorization**. Repository administrators
-must require the native `PR risk policy` job (not the custom `PR risk assessment`
-check), **require branches to be up to date before merging** (strict required checks),
-and retain human/code-owner approval in the repository ruleset before calling this
-a merge gate. Loose required checks are unsupported: base-branch changes do not
-emit PR events and could otherwise leave a previous success valid under old policy.
+Labels are routing hints, **not merge authorization**. A high tier is not a rejection:
+even tier 3 passes when classification succeeds and the description has a nonempty
+review-focus line. The line's meaning is not verified; `Review focus: x` satisfies
+that syntactic condition. This classifier does not prove that code is safe.
+
+**Requiring a check named `PR risk policy` is not secure enforcement.** A normal
+`pull_request` workflow definition is PR-controlled: an author can preserve that name
+and replace its steps with a successful no-op. Checking out base code inside the job,
+selecting GitHub Actions as the check source, or adding more in-job guards does not
+protect the enclosing YAML.
+
+Organization administrators must enforce **the workflow identity**, not a check name,
+using an organization ruleset's **Require workflows to pass before merging** rule.
+Select `.github/workflows/pr-risk-gate.yml` from `microsoft/fluentui` at a protected,
+trusted source ref (or an approved pinned SHA), never the PR head. Activate the rule
+for the target branch without agent bypass actors. This is separate from the
+ordinary required-status-check rule. See
+[GitHub's required-workflow enforcement](https://github.blog/enterprise-software/ci-cd/enforcing-code-reliability-by-requiring-workflows-with-github-repository-rules/).
+Verify availability and actual source/ref behavior with the organization's administrator;
+the repository files cannot create this trust boundary. If identity-bound required
+workflows are unavailable, do not treat this pilot as a merge gate; a separately
+trusted policy GitHub App would be needed instead and is not implemented here.
+
+Also **require branches to be up to date before merging** (strict required checks),
+retain human/code-owner approval, and dismiss stale approvals after new commits.
+Keep agent identities out of reviewer/bypass roles and protect the workflow source
+and policy ownership. The classifier does not inspect reviews or distinguish a
+human from an agent using that human's credentials; those are external permission
+and review controls. An administrator or authorized bypass actor remains outside
+this protection's threat model.
+Loose required checks are unsupported: base-branch changes do not emit PR events
+and could otherwise leave a previous success valid under old policy.
 Additional team-specific
 approvals for protected files must be configured using the ruleset's required
 reviewers facilities where available; a label cannot enforce them. This PR does
@@ -125,11 +158,18 @@ Before enabling this workflow, repository administrators must configure:
 - Repository variable `RISK_CLASSIFIER_AZURE_CLIENT_ID` for a dedicated Entra application.
 - Existing repository secret `AZURE_TENANT_ID` for the deployment's tenant.
 - A federated credential permitting only the trusted repository workflow's GitHub OIDC
-  subject, and least-privilege inference access to the existing Decision-1 resource.
+  execution context, and least-privilege inference access to the existing Decision-1 resource.
   Do not reuse a broad publishing identity or grant PR-head code access.
 
 The trusted job exchanges a GitHub OIDC assertion for the
 `https://cognitiveservices.azure.com/.default` scope. No long-lived model key is stored.
+The default OIDC subject identifies repository/branch/PR/environment context, not a
+unique workflow. The audience alone is not workflow authentication. Configure and
+verify supported subject customization including trusted workflow identity, or an
+equivalently isolated identity arrangement; do not allow arbitrary editable PR jobs
+to obtain the classifier's Azure identity. This configuration is an external rollout
+prerequisite, not a property established by the workflow's `id-token: write`.
+See [GitHub OIDC claims and subject customization](https://docs.github.com/en/actions/reference/security/oidc).
 No Azure resources, federated credentials, role assignments, or repository settings
 are provisioned by this PR. Missing access fails explicitly. Do not log prompts, raw
 provider responses, assertions, or bearer tokens.
@@ -157,13 +197,19 @@ workflow, classifier, and agent instructions are themselves tier 3 changes.
 
 This first increment implements deterministic-plus-model classification, labels, and description enforcement.
 It is not production-qualified by offline tests alone. Bootstrap in stages: provision
-the identity/access first, merge the trusted helpers and workflows without requiring
-the new gate, then exercise subsequent PRs whose base contains those helpers.
+the identity/access first, merge the trusted helpers and workflows, then have the
+organization administrator select the trusted workflow source/ref in an evaluating
+workflow-identity ruleset. Exercise subsequent PRs whose base contains those helpers.
 The introducing PR cannot load new helpers from its pre-merge trusted base; do not
 solve this by executing PR-head code in the privileged job. Only enable the required
 gate after live fork, same-SHA metadata edit, cancellation/setup failure, queued-run
 recovery, and base-advancement cases pass. Verify strict checks actually block a
-previously passing PR after its base advances. Record those results with the rollout
+previously passing PR after its base advances. In a controlled test repository also
+prove that a PR replacing/deleting/skipping the gate YAML cannot satisfy the
+identity-bound rule, and that a forged successful same-name custom check cannot
+satisfy the genuine verifier. Test a new push after approval to confirm fresh review
+is mandatory. Only then activate the workflow rule. Record the selected workflow
+repository/path/ref, rule enforcement, bypass actors, and test results with the rollout
 decision; a synthetic local model request does not verify this deployment.
 
 Automated AI summaries/reviews, named fast-lane reviewer assignment, scheduled

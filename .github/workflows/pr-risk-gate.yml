@@ -1,4 +1,6 @@
 name: PR risk gate
+# Enforce this workflow by trusted source/ref in an organization workflow ruleset.
+# Requiring only the job name lets a PR replace its definition with a successful no-op.
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited, ready_for_review]
@@ -10,7 +12,7 @@ concurrency:
 permissions:
   contents: read
   pull-requests: read
-  checks: read
+  actions: read
 
 jobs:
   risk-policy:

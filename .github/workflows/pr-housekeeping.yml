@@ -1,4 +1,5 @@
 name: Pull request housekeeping 🧹
+run-name: 'PR risk assessment #${{ github.event.pull_request.number }}'
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, edited, ready_for_review]
@@ -16,10 +17,15 @@ permissions:
   id-token: write
 
 jobs:
-  label:
+  snapshot:
+    name: Prepare risk assessment
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 1
+    outputs:
+      check-id: ${{ steps.policy.outputs.check-id }}
+      base-sha: ${{ steps.policy.outputs.base-sha }}
+      identity: ${{ steps.policy.outputs.identity }}
     steps:
       - name: Invalidate the previous risk assessment before setup
         id: policy
@@ -48,8 +54,15 @@ jobs:
             core.setOutput('base-sha', pull.base.sha);
             core.setOutput('identity', identity);
 
+  label:
+    # Native job metadata belongs to this trusted run; a custom check name is not provenance.
+    name: 'Assess PR #${{ github.event.pull_request.number }} revision ${{ needs.snapshot.outputs.identity }}'
+    needs: snapshot
+    if: ${{ needs.snapshot.outputs.check-id != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
-        if: ${{ steps.policy.outputs.check-id != '' }}
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
@@ -57,9 +70,8 @@ jobs:
 
       # Never check out or execute PR-head code in pull_request_target.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        if: ${{ steps.policy.outputs.check-id != '' }}
         with:
-          ref: ${{ steps.policy.outputs.base-sha }}
+          ref: ${{ needs.snapshot.outputs.base-sha }}
           persist-credentials: false
           sparse-checkout: |
             .github/risk-tiers.json
@@ -69,12 +81,11 @@ jobs:
 
       - name: Classify review risk
         id: classify
-        if: ${{ steps.policy.outputs.check-id != '' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          RISK_POLICY_CHECK_ID: ${{ steps.policy.outputs.check-id }}
-          RISK_POLICY_BASE_SHA: ${{ steps.policy.outputs.base-sha }}
-          RISK_POLICY_IDENTITY: ${{ steps.policy.outputs.identity }}
+          RISK_POLICY_CHECK_ID: ${{ needs.snapshot.outputs.check-id }}
+          RISK_POLICY_BASE_SHA: ${{ needs.snapshot.outputs.base-sha }}
+          RISK_POLICY_IDENTITY: ${{ needs.snapshot.outputs.identity }}
           RISK_CLASSIFIER_AZURE_CLIENT_ID: ${{ vars.RISK_CLASSIFIER_AZURE_CLIENT_ID }}
           RISK_CLASSIFIER_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         with:
@@ -92,10 +103,10 @@ jobs:
             });
 
       - name: Fail the risk check if setup or classification did not finish
-        if: ${{ always() && steps.policy.outputs.check-id != '' && steps.classify.outcome != 'success' }}
+        if: ${{ always() && steps.classify.outcome != 'success' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          RISK_POLICY_CHECK_ID: ${{ steps.policy.outputs.check-id }}
+          RISK_POLICY_CHECK_ID: ${{ needs.snapshot.outputs.check-id }}
         with:
           script: |
             await github.rest.checks.update({

@@ -16,11 +16,19 @@ describe('trusted risk workflow setup', () => {
     expect(workflow.indexOf('id: policy')).toBeLessThan(workflow.indexOf('uses: actions/labeler'));
     expect(workflow.indexOf('id: policy')).toBeLessThan(workflow.indexOf('uses: actions/checkout'));
     expect(workflow).not.toContain('configuration-path: .github/risk-tiers.json');
-    expect(workflow).toContain(
-      "always() && steps.policy.outputs.check-id != '' && steps.classify.outcome != 'success'",
-    );
-    expect(workflow).toContain('ref: ${{ steps.policy.outputs.base-sha }}');
+    expect(workflow).toContain("always() && steps.classify.outcome != 'success'");
+    expect(workflow).toContain('ref: ${{ needs.snapshot.outputs.base-sha }}');
     expect(workflow).toContain('persist-credentials: false');
+  });
+
+  test('binds native run/job metadata to the PR and trusted bootstrap revision', () => {
+    expect(workflow).toContain("run-name: 'PR risk assessment #${{ github.event.pull_request.number }}'");
+    expect(workflow).toContain(
+      "name: 'Assess PR #${{ github.event.pull_request.number }} revision ${{ needs.snapshot.outputs.identity }}'",
+    );
+    expect(workflow).toContain('needs: snapshot');
+    expect(workflow).toContain("if: ${{ needs.snapshot.outputs.check-id != '' }}");
+    expect(workflow).toContain('identity: ${{ steps.policy.outputs.identity }}');
   });
 
   test('serializes label writers across PR heads without cancelling the active writer', () => {
