@@ -1,19 +1,53 @@
 name: Pull request housekeeping 🧹
 on:
-  - pull_request_target
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+concurrency:
+  group: pr-housekeeping-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
   pull-requests: write
   issues: write
+  checks: write
+  id-token: write
 
 jobs:
   label:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
           configuration-path: .github/labeler.yml
+
+      - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          sync-labels: true
+          configuration-path: .github/risk-tiers.json
+
+      # Never check out or execute PR-head code in pull_request_target.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            .github/risk-tiers.json
+            scripts/github
+            docs/workflows/pr-risk-tiers.md
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          RISK_CLASSIFIER_AZURE_CLIENT_ID: ${{ vars.RISK_CLASSIFIER_AZURE_CLIENT_ID }}
+          RISK_CLASSIFIER_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        with:
+          script: |
+            const run = require(`${process.env.GITHUB_WORKSPACE}/scripts/github/src/risk-tiers-workflow.js`);
+            await run({ github, context, core });
