@@ -49,7 +49,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   });
 
   const infoButton = slot.optional(infoButtonShorthand, {
-    renderByDefault: !!info,
+    renderByDefault: !!info || info === 0,
     defaultProps: {
       id: baseId + '__infoButton',
       size,

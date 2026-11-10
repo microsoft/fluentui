@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve explicit numeric zero content in CounterBadge",
+  "packageName": "@fluentui/react-badge",
+  "email": "paulmardling@microsoft.com"
+}
