@@ -61,8 +61,14 @@ job never starts and cannot invalidate its old custom assessment.
 The gate only accepts the newest GitHub Actions assessment matching a SHA-256 identity
 of head SHA, base repository/ref/SHA, title, and body. Missing, stale, pending, failed,
 or foreign-app assessments cannot pass it. It polls for at most 150 seconds.
-Both workflows group concurrency by PR and head SHA; an obsolete-head rerun cannot
-cancel current-head work. A same-head edit is resolved from current API metadata.
+Housekeeping is serialized per PR without cancelling the active run, so an
+obsolete-head classifier cannot overwrite a newer head's risk labels. The bootstrap
+resolves current metadata after acquiring that serialization and skips obsolete heads.
+The read-only gate groups concurrency by PR and head SHA, so obsolete-head reruns
+cannot cancel the current-head gate. A same-head edit is resolved from current API metadata.
+GitHub concurrency retains only one pending housekeeping run; pending replacement,
+runner queues, or fork approval delays can exhaust the gate deadline. Rerun current-head
+housekeeping, then the gate after the assessment finishes; no stale success is substituted.
 The classifier checks head SHA and base repository/ref/SHA before publishing, and
 rejects workflow events that no longer match their trusted checkout.
 Reclassification runs on pushes, description
@@ -70,8 +76,11 @@ edits, reopening, and readiness changes.
 
 Labels are routing hints, **not merge authorization**. Repository administrators
 must require the native `PR risk policy` job (not the custom `PR risk assessment`
-check) and retain human/code-owner approval in
-the repository ruleset before calling this a merge gate. Additional team-specific
+check), **require branches to be up to date before merging** (strict required checks),
+and retain human/code-owner approval in the repository ruleset before calling this
+a merge gate. Loose required checks are unsupported: base-branch changes do not
+emit PR events and could otherwise leave a previous success valid under old policy.
+Additional team-specific
 approvals for protected files must be configured using the ruleset's required
 reviewers facilities where available; a label cannot enforce them. This PR does
 not modify organization settings, CODEOWNERS, AI approval policy, or skip any checks.
@@ -147,6 +156,16 @@ review. Area teams maintain their map entries and specialist instructions. The m
 workflow, classifier, and agent instructions are themselves tier 3 changes.
 
 This first increment implements deterministic-plus-model classification, labels, and description enforcement.
+It is not production-qualified by offline tests alone. Bootstrap in stages: provision
+the identity/access first, merge the trusted helpers and workflows without requiring
+the new gate, then exercise subsequent PRs whose base contains those helpers.
+The introducing PR cannot load new helpers from its pre-merge trusted base; do not
+solve this by executing PR-head code in the privileged job. Only enable the required
+gate after live fork, same-SHA metadata edit, cancellation/setup failure, queued-run
+recovery, and base-advancement cases pass. Verify strict checks actually block a
+previously passing PR after its base advances. Record those results with the rollout
+decision; a synthetic local model request does not verify this deployment.
+
 Automated AI summaries/reviews, named fast-lane reviewer assignment, scheduled
 `/assign-prs`, Teams digests, and third-party reviewer apps are **not enabled** here.
 Until routing is automated, maintainers select a reviewer via the existing process.

@@ -23,6 +23,34 @@ describe('trusted risk workflow setup', () => {
     expect(workflow).toContain('persist-credentials: false');
   });
 
+  test('serializes label writers across PR heads without cancelling the active writer', () => {
+    expect(workflow).toContain('group: pr-housekeeping-${{ github.event.pull_request.number }}\n');
+    expect(workflow).toContain('cancel-in-progress: false');
+    expect(workflow).not.toContain('cancel-in-progress: true');
+    expect(workflow).not.toContain(
+      'group: pr-housekeeping-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}',
+    );
+  });
+
+  test('an obsolete queued head exits before creating an assessment or publishing labels', async () => {
+    const github = {
+      rest: {
+        pulls: { get: jest.fn().mockResolvedValue({ data: { head: { sha: 'current-head' } } }) },
+        checks: { create: jest.fn() },
+      },
+    };
+    const core = { notice: jest.fn(), setOutput: jest.fn() };
+    const context = {
+      repo: { owner: 'microsoft', repo: 'fluentui' },
+      issue: { number: 123 },
+      payload: { pull_request: { head: { sha: 'obsolete-head' } } },
+    };
+    await runInNewContext(`(async () => { ${scripts[0]} })()`, { github, context, core, require });
+    expect(core.notice).toHaveBeenCalledWith(expect.stringContaining('Superseded PR head'));
+    expect(core.setOutput).not.toHaveBeenCalled();
+    expect(github.rest.checks.create).not.toHaveBeenCalled();
+  });
+
   test('a same-head edit followed by setup failure replaces an old passing check with failure', async () => {
     const checks: Record<string, unknown>[] = [{ id: 1, head_sha: 'unchanged-head', conclusion: 'success' }];
     const outputs: Record<string, string> = {};
