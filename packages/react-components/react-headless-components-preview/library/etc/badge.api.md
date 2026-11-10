@@ -13,7 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PresenceBadgeBaseState } from '@fluentui/react-badge';
 import { PresenceBadgeBaseProps as PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 
 // @public
