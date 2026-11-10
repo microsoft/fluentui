@@ -15,18 +15,17 @@ const easing = motionTokens.curveDecelerateMid;
 // Custom "SpinBlur" — combines rotate + blur + scale
 const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration, easing, axis: 'z', outAngle: -20, inAngle: 0 }),
+    rotateAtom({ duration, easing, axis: 'z', fromAngle: -20, toAngle: 0 }),
     blurAtom({ direction: 'enter', duration, easing, outRadius: '8px', inRadius: '0px' }),
     scaleAtom({ direction: 'enter', duration, easing, outScale: 2 }),
   ],
   exit: [
     rotateAtom({
-      direction: 'exit',
       duration: exitDuration,
       easing: motionTokens.curveAccelerateMid,
       axis: 'z',
-      outAngle: 90,
-      inAngle: 0,
+      fromAngle: 0,
+      toAngle: 90,
     }),
     blurAtom({
       direction: 'exit',
@@ -41,12 +40,12 @@ const SpinBlur = createPresenceComponent({
 
 const codeSnippet = `const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration: 800, axis: 'z', outAngle: -20 }),
+    rotateAtom({ duration: 800, axis: 'z', fromAngle: -20, toAngle: 0 }),
     blurAtom({ direction: 'enter', duration: 800, outRadius: '8px' }),
     scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
   ],
   exit: [
-    rotateAtom({ direction: 'exit', duration: 600, axis: 'z', outAngle: -20 }),
+    rotateAtom({ duration: 600, axis: 'z', fromAngle: 0, toAngle: -20 }),
     blurAtom({ direction: 'exit', duration: 600, outRadius: '8px' }),
     scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
   ],
@@ -83,12 +82,12 @@ const useClasses = makeStyles({
 
 const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration: 800, axis: 'z', outAngle: -20 }),
+    rotateAtom({ duration: 800, axis: 'z', fromAngle: -20, toAngle: 0 }),
     blurAtom({ direction: 'enter', duration: 800, outRadius: '8px' }),
     scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
   ],
   exit: [
-    rotateAtom({ direction: 'exit', duration: 600, axis: 'z', outAngle: -20 }),
+    rotateAtom({ duration: 600, axis: 'z', fromAngle: 0, toAngle: -20 }),
     blurAtom({ direction: 'exit', duration: 600, outRadius: '8px' }),
     scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
   ],
