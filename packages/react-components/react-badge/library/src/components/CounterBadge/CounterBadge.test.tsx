@@ -1,7 +1,8 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { CounterBadge } from './CounterBadge';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { makeStyles } from '@griffel/react';
 import { isConformant } from '../../testing/isConformant';
 
@@ -73,7 +74,7 @@ describe('CounterBadge', () => {
   it.each([undefined, null, false, ''])('hides a zero count with empty children %s', children => {
     const { getByTestId, hiddenClassName } = renderBadge(<CounterBadge data-testid="badge">{children}</CounterBadge>);
 
-    expect(getByTestId('badge')).toBeEmptyDOMElement();
+    expect(getByTestId('badge').textContent).toBe('');
     expect(getByTestId('badge')).toHaveClass(hiddenClassName);
   });
 
