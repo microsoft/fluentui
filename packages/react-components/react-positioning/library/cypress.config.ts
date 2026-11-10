@@ -19,6 +19,11 @@ if (source) {
         : { './usePositioning$': path.join(source, 'usePositioning.ts') }),
     },
   };
+  if (process.env.FLUENT_POSITIONING_BENCHMARK) {
+    // Measure what ships: development builds add the Floating UI devtools reporting (once per middleware pass
+    // in the oracle) and React's development checks to every sample
+    webpackConfig.optimization = { ...webpackConfig.optimization, nodeEnv: 'production' };
+  }
   webpackConfig.plugins = [
     ...(webpackConfig.plugins || []),
     {

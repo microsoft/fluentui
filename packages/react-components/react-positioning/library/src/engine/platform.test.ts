@@ -14,7 +14,7 @@ describe('isContainingBlock', () => {
     element.style.filter = 'blur(1px)';
     win.document.body.appendChild(element);
 
-    expect(isContainingBlock(element, win.getComputedStyle(element), 'fixed')).toBe(true);
+    expect(isContainingBlock(element, win.getComputedStyle(element))).toBe(true);
   });
 
   it('uses the element owning window for WebKit detection', () => {
@@ -27,7 +27,27 @@ describe('isContainingBlock', () => {
     element.style.filter = 'blur(1px)';
     win.document.body.appendChild(element);
 
-    expect(isContainingBlock(element, win.getComputedStyle(element), 'fixed')).toBe(false);
+    expect(isContainingBlock(element, win.getComputedStyle(element))).toBe(false);
     expect(supports).toHaveBeenCalledWith('-webkit-backdrop-filter', 'none');
+  });
+
+  it.each(['transform', 'translate', 'scale', 'rotate', 'perspective', 'filter'])(
+    'treats will-change: %s as a containing block',
+    property => {
+      const element = document.createElement('div');
+      const style = { ...getComputedStyle(element), willChange: `opacity, ${property}` } as CSSStyleDeclaration;
+
+      expect(isContainingBlock(element, style)).toBe(true);
+      expect(isContainingBlock(element, { ...style, willChange: 'opacity' })).toBe(false);
+    },
+  );
+
+  it('treats positioned elements as containing blocks of absolute descendants only', () => {
+    const element = document.createElement('div');
+    element.style.position = 'relative';
+    document.body.appendChild(element);
+
+    expect(isContainingBlock(element, getComputedStyle(element), true)).toBe(true);
+    expect(isContainingBlock(element, getComputedStyle(element))).toBe(false);
   });
 });

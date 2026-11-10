@@ -41,20 +41,22 @@ export const intersect = (a: Rect, b: Rect): Rect => {
   return rect(x, y, Math.min(a.x + a.width, b.x + b.width) - x, Math.min(a.y + a.height, b.y + b.height) - y);
 };
 
-export const isContainingBlock = (
-  element: Element,
-  style: CSSStyleDeclaration,
-  strategy: 'absolute' | 'fixed',
-): boolean =>
-  // Boxless elements can't form containing blocks, and WebKit ignores filters
-  style.display !== 'contents' &&
-  ((strategy === 'absolute' && !/^(static)?$/.test(style.position)) ||
-    ('transform translate scale rotate perspective'.split(' ') as 'scale'[]).some(property => isSet(style[property])) ||
-    ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
-    /auto|hidden/.test(style.contentVisibility) ||
-    (!!style.containerType && style.containerType !== 'normal') ||
-    /transform|perspective|filter/.test(style.willChange) ||
-    /paint|layout|strict|content/.test(style.contain));
+/**
+ * Whether a boxed element is the containing block of its fixed descendants, and of its absolute descendants
+ * when `absolute` is set. Boxless (`display: contents`) elements never are, `findAncestor` skips them.
+ */
+export const isContainingBlock = (element: Element, style: CSSStyleDeclaration, absolute?: boolean): boolean =>
+  (absolute && !/^(static)?$/.test(style.position)) ||
+  // `will-change` forms the containing block before the property itself is applied (unsupported in jsdom)
+  ('transform translate scale rotate perspective'.split(' ') as 'scale'[]).some(
+    property => isSet(style[property]) || String(style.willChange).includes(property),
+  ) ||
+  // WebKit ignores filters
+  ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
+  /auto|hidden/.test(style.contentVisibility) ||
+  (!!style.containerType && style.containerType !== 'normal') ||
+  /filter/.test(style.willChange) ||
+  /paint|layout|strict|content/.test(style.contain);
 
 /** The parent element, through slot assignments and shadow roots but not virtual parents */
 export const getPhysicalParent = (element: Element): Element | null => {
@@ -81,7 +83,8 @@ const isTopLayer = (element: Element): boolean => {
 
 /**
  * Walks the physical ancestors (including SVG elements) of an element up to (excluding) the root element,
- * stops when the callback returns true and returns that ancestor.
+ * stops when the callback returns true and returns that ancestor. Boxless (`display: contents`) ancestors are
+ * skipped: without a box they can't scroll, clip, be positioned or form a containing block.
  */
 export const findAncestor = (
   element: Element,
@@ -89,7 +92,8 @@ export const findAncestor = (
 ): Element | null => {
   const root = getRoot(element);
   for (let node = getPhysicalParent(element); node && node !== root; node = getPhysicalParent(node)) {
-    if (callback(node, getStyle(node))) {
+    const style = getStyle(node);
+    if (style.display !== 'contents' && callback(node, style)) {
       return node;
     }
   }
@@ -99,13 +103,13 @@ export const findAncestor = (
 /** The ancestors that can clip the element, the closest first */
 export const getScrollAncestors = (element: Element): HTMLElement[] => {
   const ancestors: HTMLElement[] = [];
-  const isPositioned = (position: string) => position === 'fixed' || position === 'absolute';
-  const { position } = getStyle(element);
-  let strategy = isPositioned(position) ? position : '';
+  // The position of an out-of-flow box, which escapes the overflow of the ancestors inside its containing block
+  const escaping = (position: string) => (position === 'fixed' || position === 'absolute' ? position : '');
+  let strategy = escaping(getStyle(element).position);
 
   findAncestor(element, (node, style) => {
     // Positioned descendants escape overflow between themselves and their containing block.
-    if (strategy && isContainingBlock(node, style, strategy as 'absolute' | 'fixed')) {
+    if (strategy && isContainingBlock(node, style, strategy === 'absolute')) {
       strategy = '';
     }
     // The overflow of the body propagates to the viewport, which is always part of the clipping rect
@@ -113,14 +117,12 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
       !strategy &&
       node !== element.ownerDocument.body &&
       isHTMLElement(node) &&
-      !/^(inline|contents)$/.test(style.display) &&
+      style.display !== 'inline' &&
       /auto|scroll|overlay|hidden|clip/.test(style.overflow + style.overflowX + style.overflowY)
     ) {
       ancestors.push(node);
     }
-    if (!strategy && isPositioned(style.position)) {
-      strategy = style.position;
-    }
+    strategy ||= escaping(style.position);
   });
 
   return ancestors;
@@ -204,20 +206,22 @@ export const getOffsetParent = (element: HTMLElement): HTMLElement | null => {
   if (isTopLayer(element)) {
     return null;
   }
-  const strategy = getStyle(element).position === 'fixed' ? 'fixed' : 'absolute';
-  let parent = strategy === 'fixed' ? null : element.offsetParent;
+  const fixed = getStyle(element).position === 'fixed';
+  let parent = fixed ? null : element.offsetParent;
   while (isHTMLElement(parent) && /^(TABLE|TD|TH)$/.test(parent.tagName) && isStatic(parent)) {
     parent = parent.offsetParent;
   }
+  // Firefox returns a positioned root element, which is normalized to the body like in other browsers
+  const { body } = element.ownerDocument;
   if (parent === getRoot(element)) {
-    parent = element.ownerDocument.body;
+    parent = body;
   }
-  return isHTMLElement(parent) && (!/^(HTML|BODY)$/.test(parent.tagName) || !isStatic(parent))
+  return isHTMLElement(parent) && (parent !== body || !isStatic(parent))
     ? parent
     : // The element that forms the containing block, `null` is the viewport or the initial containing block
       (findAncestor(
         element,
-        (node, style) => isHTMLElement(node) && isContainingBlock(node, style, strategy),
+        (node, style) => isHTMLElement(node) && isContainingBlock(node, style, !fixed),
       ) as HTMLElement | null);
 };
 
@@ -268,7 +272,7 @@ export const getClippingRect = (
   element: Element,
   boundary: Boundary,
   floatingWindow = getWindow(element),
-  strategy: Strategy = 'absolute',
+  strategy?: Strategy,
 ): Rect => {
   const win = getWindow(element);
   const root = getRoot(element);

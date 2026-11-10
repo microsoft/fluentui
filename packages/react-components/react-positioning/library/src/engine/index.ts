@@ -12,6 +12,7 @@ import type {
   ShiftOptions,
   SizeOptions,
 } from '@floating-ui/dom';
+import { limit } from './computePosition';
 
 const opposite: Record<Side, Side> = { top: 'bottom', bottom: 'top', left: 'right', right: 'left' };
 const sideOf = (placement: Placement) => placement.split('-')[0] as Side;
@@ -153,13 +154,13 @@ export function limitShift(options: LimitShiftOptions = {}): NonNullable<ShiftOp
       const { reference: r, floating: f } = state.rects;
       if (options.mainAxis !== false) {
         const length = main === 'x' ? 'width' : 'height';
-        coords[main] = clamp(r[main] - f[length], coords[main], r[main] + r[length]);
+        coords[main] = limit(r[main] - f[length], coords[main], r[main] + r[length]);
       }
       if (options.crossAxis !== false) {
         const length = cross === 'x' ? 'width' : 'height';
         const origin = /^(top|left)/.test(state.placement);
         const delta = state.middlewareData.offset?.[cross] || 0;
-        coords[cross] = clamp(
+        coords[cross] = limit(
           r[cross] - f[length] + (origin ? delta : 0),
           coords[cross],
           r[cross] + r[length] + (origin ? 0 : delta),

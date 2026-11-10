@@ -81,14 +81,20 @@ surfaces inside absolute wrappers, and bordered/padded/scaled same-origin iframe
 It also covers boolean/all disabled-tether limiting, assigned-slot ancestry, SVG virtual-reference
 clipping, viewport-propagated body overflow, top-layer popovers and modal dialogs and their
 descendants, and positioned `display: contents` ancestors in scrolled documents.
-These cases compare against Floating UI where supported. Individual transform properties predate
-support in the pinned oracle, so those cases instead assert physical target/surface alignment.
+These cases compare against Floating UI where supported. Individual transform properties, their
+`will-change` hints, and boxless positioned ancestors are not handled by the pinned oracle, so those
+cases instead assert physical target/surface alignment and clipping.
+The ordered (not clamped) cross-axis limiter bounds are compared against Floating UI with an offset
+that inverts them, and an auto-sized surface that removes the scrollbar of its scroll container
+checks that clipping is measured again with the rectangles.
 
 ## Engine parity, size and performance validation
 
 The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
 best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
 Positioning callbacks and imperative refs do not recreate the manager on callback-only rerenders.
+Outside of production builds every result is still reported to the Floating UI devtools extension;
+the state it reads is assembled from the result as the engine has no middleware.
 
 ```sh
 yarn nx run react-positioning:bundle-size --skip-nx-cache
@@ -133,6 +139,9 @@ and its listeners are disposed before timing, so global events cannot contaminat
 engine's samples. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
 autosizing. It measures completion through the actual `usePositioning` end-event path; setup is
 excluded from update timings, while initialization intentionally includes mount-to-all-positioned.
+The benchmark bundle is built with `NODE_ENV=production`: a development build adds the devtools
+reporting (once per middleware pass in the Floating UI implementation) and React's development
+checks to every sample, which does not reflect what ships.
 
 Every workload runs in two layouts:
 

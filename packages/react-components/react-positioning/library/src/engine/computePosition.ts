@@ -1,6 +1,8 @@
-import type { Placement, Rect, Side, SideObject, Strategy } from '@floating-ui/dom';
+import { devtools } from '@floating-ui/devtools';
+import type { MiddlewareState, Placement, Rect, Side, SideObject, Strategy } from '@floating-ui/dom';
 import type { Alignment, Position, PositioningBoundary, PositioningOptions, TargetElement } from '../types';
 import { getBoundary, toFloatingUIPlacement } from '../utils';
+import { devtoolsCallback } from '../utils/devtools';
 import { toPositioningValues } from '../utils/fromFloatingUIPlacement';
 import { getAutoSizeDimensions } from '../utils/normalizeAutoSize';
 import {
@@ -44,6 +46,12 @@ const startOf = (axis: Axis) => (axis === 'x' ? 'left' : 'top');
 const endOf = (axis: Axis) => (axis === 'x' ? 'right' : 'bottom');
 const sides = (top: number, right: number, bottom: number, left: number): SideObject => ({ top, right, bottom, left });
 const clamp = (min: number, value: number, max: number) => Math.max(min, Math.min(value, max));
+/**
+ * Ordered bounds checks: unlike `clamp`, inverted bounds (e.g. an offset that pushes the floating element past the
+ * target) resolve to `max` unless the value is below `min`.
+ */
+export const limit = (min: number, value: number, max: number): number =>
+  value < min ? min : value > max ? max : value;
 /** Moves the coordinate on the axis by the least amount that removes the overflow */
 const shiftOverflow = (coords: Coords, axis: Axis, overflow: SideObject) =>
   (coords[axis] = clamp(coords[axis] + overflow[startOf(axis)], coords[axis], coords[axis] - overflow[endOf(axis)]));
@@ -55,7 +63,7 @@ const shiftOverflow = (coords: Coords, axis: Axis, overflow: SideObject) =>
 export async function computePosition(
   target: TargetElement,
   container: HTMLElement,
-  { placement: initial = 'bottom', strategy, options = {}, isRtl = false, arrow }: Options,
+  { placement: initial = 'bottom', strategy, options = {}, isRtl, arrow }: Options,
 ): Promise<ComputePositionResult> {
   const {
     autoSize: rawAutoSize,
@@ -82,15 +90,19 @@ export async function computePosition(
   }
   const rtl = getStyle(container).direction === 'rtl';
   const referenceElement = 'nodeType' in target ? target : target.contextElement || getRoot(container);
-  const clip = (element: Element, boundary?: PositioningBoundary) =>
-    getClippingRect(element, getBoundary(container, boundary) || 'clippingAncestors', getWindow(container), strategy);
-  // Without explicit boundaries flipping and shifting share the clipping ancestors of the container
-  let containerClip: Rect | undefined;
+  const clip = (element: Element, boundary?: PositioningBoundary | null) =>
+    getClippingRect(
+      element,
+      getBoundary(container, boundary as PositioningBoundary) || 'clippingAncestors',
+      getWindow(container),
+      strategy,
+    );
+  // An explicit boundary clips the target, otherwise the clipping ancestors of the container are used
   const boundaryClip = (boundary?: PositioningBoundary | null) =>
-    boundary ? clip(referenceElement, boundary) : (containerClip ||= clip(container));
-  const flipClip = boundaryClip(flipBoundary);
-  const shiftClip = boundaryClip(overflowBoundary);
-  const visibilityClip = clip(referenceElement);
+    clip(boundary ? referenceElement : container, boundary);
+  let flipClip!: Rect;
+  let shiftClip!: Rect;
+  let visibilityClip!: Rect;
   const padding =
     typeof rawPadding === 'number'
       ? sides(rawPadding, rawPadding, rawPadding, rawPadding)
@@ -102,11 +114,11 @@ export async function computePosition(
         );
   /** How far the box (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
   const overflow = (box: Rect, bounds: Rect, inset = sides(0, 0, 0, 0)) => {
-    const result = { ...inset };
+    const result = {} as SideObject;
     for (const axis of ['x', 'y'] as const) {
       const length = lengthOf(axis);
-      const axisScale = scale[axis];
-      const origin = initialSpace[axis];
+      const axisScale = space.scale[axis];
+      const origin = space[axis];
       result[startOf(axis)] = (bounds[axis] - (box[axis] * axisScale + origin) + inset[startOf(axis)]) / axisScale;
       result[endOf(axis)] =
         ((box[axis] + box[length]) * axisScale + origin - bounds[axis] - bounds[length] + inset[endOf(axis)]) /
@@ -129,16 +141,21 @@ export async function computePosition(
       ) as Placement[]);
   const attempts: [placement: Placement, overflows: number[]][] = [];
   let space: ReturnType<typeof getCoordinateSpace>;
-  /** The reference and floating rects in the container's coordinate space */
+  /**
+   * The reference and floating rects in the container's coordinate space. Resizing the container can move its
+   * containing block and change the scrollbars of its ancestors, so the coordinate space and the clipping
+   * rects are measured together with the rects.
+   */
   const measure = (): [Rect, Rect] => {
+    flipClip = boundaryClip(flipBoundary);
+    // Without explicit boundaries flipping and shifting share one measurement
+    shiftClip = flipBoundary || overflowBoundary ? boundaryClip(overflowBoundary) : flipClip;
+    visibilityClip = clip(referenceElement);
     space = getCoordinateSpace(container, strategy);
     const { width, height } = getDimensions(container);
     return [getReferenceRect(target, referenceElement, container, space, strategy), rect(0, 0, width, height)];
   };
   let rects = measure();
-  // Overflow is always measured in the initial coordinate space
-  const initialSpace = space!;
-  const { scale } = initialSpace;
   let candidateIndex = 0;
   let placement = initial;
   let matchAttempt = false;
@@ -223,7 +240,7 @@ export async function computePosition(
         }
       }
     }
-    const shiftCross = disableTether ? disableTether === 'all' : !!shiftToCoverTarget;
+    const shiftCross = disableTether ? disableTether === 'all' : shiftToCoverTarget;
     const values = overflow(floatingRect(), shiftClip, padding);
     shiftOverflow(coords, main, values);
     if (shiftCross) {
@@ -231,7 +248,7 @@ export async function computePosition(
     }
     // Shifting on the cross axis, and disabling the tether on one axis, keep the floating element next to the target
     if (disableTether !== 'all' && (shiftCross || disableTether)) {
-      coords[cross] = clamp(
+      coords[cross] = limit(
         r[cross] - f[crossLength] + (isStart ? delta[cross] : 0),
         coords[cross],
         r[cross] + r[crossLength] + (isStart ? 0 : delta[cross]),
@@ -285,7 +302,7 @@ export async function computePosition(
   // Visibility can't be determined without a layout viewport (e.g. in jsdom)
   const isHidden = (values: SideObject, box: Rect) =>
     !!(clientWidth || clientHeight) && SIDES.some((side, index) => values[side] >= box[index % 2 ? 'width' : 'height']);
-  return {
+  const result = {
     ...coords,
     placement,
     arrow: arrowData,
@@ -293,4 +310,24 @@ export async function computePosition(
     escaped: isHidden(floatingOverflow, floating),
     intersecting: [floatingOverflow.top, floatingOverflow.bottom].some(value => value > 0 && value < floating.height),
   };
+  if (process.env.NODE_ENV !== 'production') {
+    // Keeps the Floating UI devtools extension working. The engine has no middleware, so the state that the
+    // extension reads is assembled from the result.
+    devtools(container.ownerDocument, devtoolsCallback(options)).fn({
+      ...coords,
+      initialPlacement: initial,
+      placement,
+      strategy,
+      rects: { reference, floating },
+      elements: { reference: target, floating: container },
+      middlewareData: {
+        arrow: arrowData as MiddlewareState['middlewareData']['arrow'],
+        offset: { ...delta, placement },
+        hide: { referenceHidden: result.referenceHidden, escaped: result.escaped },
+        intersectionObserver: { intersecting: result.intersecting },
+      },
+      platform: {} as MiddlewareState['platform'],
+    });
+  }
+  return result;
 }

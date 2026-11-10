@@ -168,6 +168,83 @@ describe('positioning engine browser regressions', () => {
     });
   }
 
+  it('keeps the ordered limiter bounds when a negative offset inverts them', () => {
+    cy.document().then(async doc => {
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+      const expected = await computeOracle(target, floating, {
+        placement: 'top',
+        strategy: 'fixed',
+        middleware: [
+          offset(-200),
+          shift({ crossAxis: true, limiter: limitShift({ crossAxis: true, mainAxis: false }) }),
+        ],
+      });
+      const actual = await computePosition(target, floating, {
+        placement: 'top',
+        strategy: 'fixed',
+        options: { pinned: true, offset: -200, shiftToCoverTarget: true },
+      });
+      // The limits are 380 (min) and 280 (max): the surface stays attached to the bottom edge of the target
+      expect(actual.y).to.equal(280);
+      expect(actual.x).to.equal(expected.x);
+      expect(actual.y).to.equal(expected.y);
+    });
+  });
+
+  it('measures clipping again after auto-sizing removes the scrollbar of an ancestor', () => {
+    cy.document().then(async doc => {
+      // Classic scrollbars of a known size, regardless of the overlay scrollbar settings of the host
+      const scrollbars = element(doc, 'style', {}, root);
+      scrollbars.textContent = '.fui-test-scrollbars::-webkit-scrollbar { width: 20px; height: 20px }';
+      const scroller = element(
+        doc,
+        'div',
+        { position: 'relative', width: '300px', height: '200px', overflow: 'auto' },
+        root,
+      );
+      scroller.className = 'fui-test-scrollbars';
+      const target = element(doc, 'div', { width: '80px', height: '40px' }, scroller);
+      // Overflows the scroller until its height is limited, which removes the vertical scrollbar. The size comes
+      // from the content as auto-sizing resets the inline dimensions.
+      const floating = element(doc, 'div', { position: 'absolute' }, scroller);
+      element(doc, 'div', { width: '100px', height: '400px' }, floating);
+      expect(scroller.clientWidth, 'width with a scrollbar').to.equal(280);
+
+      const actual = await computePosition(target, floating, {
+        strategy: 'absolute',
+        options: { autoSize: 'always' },
+      });
+
+      expect(scroller.clientWidth, 'width without a scrollbar').to.equal(300);
+      expect(actual.placement).to.equal('bottom');
+      expect(floating.style.maxHeight).to.equal('160px');
+      expect(floating.style.maxWidth, 'available width of the resized scroller').to.equal('300px');
+    });
+  });
+
+  it('does not escape clipping through a positioned display: contents ancestor', () => {
+    cy.document().then(async doc => {
+      const clipper = element(doc, 'div', { width: '200px', height: '100px', overflow: 'hidden' }, root);
+      // Boxless, so its position doesn't make it the containing block of anything
+      const wrapper = element(doc, 'div', { display: 'contents', position: 'absolute' }, clipper);
+      const target = element(doc, 'div', { marginTop: '300px', width: '80px', height: '40px' }, wrapper);
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+
+      expect(getClippingRect(target, 'clippingAncestors').height).to.equal(100);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        options: { pinned: true },
+      });
+      expect(result.referenceHidden, 'clipped target').to.equal(true);
+    });
+  });
+
   it('finds containing blocks and clipping wrappers through an assigned slot', () => {
     cy.document().then(async doc => {
       const host = element(doc, 'div', {}, root);
@@ -308,6 +385,37 @@ describe('positioning engine browser regressions', () => {
           root,
         );
         host.style[property] = property === 'translate' ? '40px 30px' : property === 'scale' ? '1.5' : '0deg';
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+        // The pinned Floating UI version predates individual transform properties.
+        const result = await computePosition(target, floating, {
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        floating.style.left = `${result.x}px`;
+        floating.style.top = `${result.y}px`;
+        const targetRect = target.getBoundingClientRect();
+        const floatingRect = floating.getBoundingClientRect();
+        expect(floatingRect.x).to.equal(targetRect.x + (targetRect.width - floatingRect.width) / 2);
+        expect(floatingRect.y).to.equal(targetRect.bottom);
+      });
+    });
+  }
+
+  for (const property of ['transform', 'translate', 'scale', 'rotate', 'perspective', 'filter']) {
+    it(`recognizes the will-change: ${property} containing block before the property is applied`, () => {
+      cy.document().then(async doc => {
+        const host = element(
+          doc,
+          'div',
+          { position: 'absolute', left: '40px', top: '40px', width: '200px', height: '200px', willChange: property },
+          root,
+        );
         const target = element(
           doc,
           'div',
