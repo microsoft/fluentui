@@ -1,6 +1,11 @@
 import type { TabListBaseState } from '@fluentui/react-tabs';
 
-export type { TabListSlots, TabListBaseProps as TabListProps, TabListContextValues } from '@fluentui/react-tabs';
+export type {
+  TabListSlots,
+  TabListBaseProps as TabListProps,
+  TabListContextValue,
+  TabListContextValues,
+} from '@fluentui/react-tabs';
 
 /**
  * TabList component state

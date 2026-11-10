@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -19,14 +19,14 @@ env:
 jobs:
   bundle-size-base:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     permissions:
       contents: 'read'
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           cache: 'yarn'
           node-version: '22'
@@ -48,7 +48,7 @@ jobs:
       # from the value monosize-storage-git uses to read the base report.
       - name: Resolve report artifact metadata
         id: report
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const path = require('node:path');

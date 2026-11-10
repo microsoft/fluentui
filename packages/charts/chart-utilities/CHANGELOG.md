@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-<!-- This log was last generated on Thu, 01 Oct 2026 07:11:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [1.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.41)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.40..@fluentui/chart-utilities_v1.1.41)
+
+### Patches
+
+- fix(chart-utilities): prevent unbounded allocation from Plotly shapes ([PR #36853](https://github.com/microsoft/fluentui/pull/36853) by v-baambati@microsoft.com)
 
 ## [1.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.40)
 

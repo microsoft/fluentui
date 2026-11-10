@@ -18,15 +18,20 @@ const SOURCE_EXTENSIONS = ['.ts', '.tsx'];
  * Walks the module graph off the Tree with the TS parser only - no `ts.createProgram` and no type
  * checker, since the Tree has no real file system and only binding names are needed.
  */
-export function collectPublicExports(tree: Tree, entryFilePath: string): PublicExports {
+export function collectPublicExports(
+  tree: Tree,
+  entryFilePath: string,
+  /** Include the entry file's default value; defaults reached through `export *` remain excluded. */
+  options: { includeDefault?: boolean } = {},
+): PublicExports {
   const result: PublicExports = { values: new Set(), unresolved: [] };
   const visited = new Set<string>();
 
-  visit(entryFilePath);
+  visit(entryFilePath, options.includeDefault ?? false);
 
   return result;
 
-  function visit(filePath: string) {
+  function visit(filePath: string, includeDefault: boolean) {
     if (visited.has(filePath)) {
       return;
     }
@@ -45,8 +50,13 @@ export function collectPublicExports(tree: Tree, entryFilePath: string): PublicE
         continue;
       }
 
+      if (includeDefault && ts.isExportAssignment(statement) && !statement.isExportEquals) {
+        result.values.add('default');
+        continue;
+      }
+
       if (hasExportModifier(statement)) {
-        collectLocalDeclaration(statement);
+        collectLocalDeclaration(statement, includeDefault);
       }
     }
   }
@@ -83,14 +93,20 @@ export function collectPublicExports(tree: Tree, entryFilePath: string): PublicE
       return;
     }
 
-    visit(resolved);
+    visit(resolved, false);
   }
 
-  function collectLocalDeclaration(node: ts.Statement) {
-    if (
+  function collectLocalDeclaration(node: ts.Statement, includeDefault: boolean) {
+    const isDefaultDeclaration =
       ts.canHaveModifiers(node) &&
-      ts.getModifiers(node)?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword)
-    ) {
+      ts.getModifiers(node)?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword);
+    if (isDefaultDeclaration) {
+      if (
+        includeDefault &&
+        (ts.isFunctionDeclaration(node) || ts.isClassDeclaration(node) || ts.isEnumDeclaration(node))
+      ) {
+        result.values.add('default');
+      }
       return;
     }
 

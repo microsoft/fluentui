@@ -7,7 +7,11 @@ const overflowButtonProps: IButtonProps = { ariaLabel: 'More commands' };
 export const CommandBarSplitDisabledExample: React.FunctionComponent = () => {
   return (
     <div>
-      <CommandBar items={_items} overflowButtonProps={overflowButtonProps} />
+      <CommandBar
+        items={_items}
+        overflowButtonProps={overflowButtonProps}
+        ariaLabel="CommandBar example with disabled split buttons"
+      />
     </div>
   );
 };

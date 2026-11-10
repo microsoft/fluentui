@@ -154,6 +154,7 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'utils',
     ]);
     expect(readdirSync(join(workspaceRoot, 'libs/proj/lib-commonjs'))).toEqual([
       'greeter.js',
@@ -162,6 +163,7 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'utils',
     ]);
 
     // ====================================
@@ -231,6 +233,17 @@ describe('Build Executor', () => {
       }
       "
     `);
+
+    for (const [outputFile, sourceFile, expectedSource] of [
+      ['lib/greeter.js.map', 'src/greeter.ts', '../src/greeter.ts'],
+      ['lib/utils/nested.js.map', 'src/utils/nested.ts', '../../src/utils/nested.ts'],
+      ['lib-commonjs/greeter.js.map', 'src/greeter.ts', '../src/greeter.ts'],
+      ['lib-commonjs/utils/nested.js.map', 'src/utils/nested.ts', '../../src/utils/nested.ts'],
+    ]) {
+      const map = JSON.parse(readFileSync(join(workspaceRoot, 'libs/proj', outputFile), 'utf-8'));
+      expect(map.sources).toEqual([expectedSource]);
+      expect(map.sourcesContent).toEqual([readFileSync(join(workspaceRoot, 'libs/proj', sourceFile), 'utf-8')]);
+    }
 
     // =====================
     // assert griffel AOT

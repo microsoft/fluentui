@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { webLightTheme } from '@fluentui/react-theme';
 
@@ -340,6 +341,57 @@ describe('DialogSurface exit animations', () => {
       openSurface();
       closeSurface();
       cy.get(surfaceSelector).should('not.exist');
+    });
+  });
+});
+
+describe('DialogSurface Escape', () => {
+  const ControlledDialog = ({
+    modalType,
+    children,
+  }: Pick<DialogProps, 'modalType'> & { children: React.ReactNode }) => {
+    const [open, setOpen] = React.useState(true);
+    return (
+      <Dialog open={open} modalType={modalType} onOpenChange={(_, data) => setOpen(data.open)}>
+        <DialogSurface aria-label="Dialog" data-testid="surface">
+          {children}
+        </DialogSurface>
+      </Dialog>
+    );
+  };
+
+  it('closes a non-modal surface on Escape from content portaled out of it', () => {
+    mountBase(
+      <ControlledDialog modalType="non-modal">
+        Content
+        {createPortal(<input data-testid="portaled" aria-label="Portaled" />, document.body)}
+      </ControlledDialog>,
+    );
+
+    cy.get('[data-testid=portaled]').focus();
+    cy.realPress('Escape');
+    cy.get('[data-testid=surface]').should('not.exist');
+  });
+
+  it('reports the browser closing a modal on a repeated Escape the consumer vetoed', () => {
+    const calls: string[] = [];
+    mountBase(
+      <Dialog open onOpenChange={(_, data) => calls.push(`${data.type}:${data.open}`)}>
+        <DialogSurface aria-label="Dialog" data-testid="surface">
+          <button data-testid="inside">Inside</button>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get('[data-testid=inside]').focus();
+    cy.realPress('Escape');
+    cy.realPress('Escape');
+    cy.get<HTMLDialogElement>('[data-testid=surface]').should(([surface]) => {
+      expect(calls[0]).to.equal('escapeKeyDown:false');
+      // Chromium closes a modal without `cancel` when Escape repeats without user activation in between.
+      if (!surface.open) {
+        expect(calls).to.include('surfaceToggle:false');
+      }
     });
   });
 });

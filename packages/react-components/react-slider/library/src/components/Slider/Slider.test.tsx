@@ -106,6 +106,67 @@ describe('Slider', () => {
   });
 
   // Accessibility tests
+  it.each([undefined, false, true])('defaults aria-orientation when vertical is %s', vertical => {
+    const { getByRole } = render(<Slider vertical={vertical} />);
+
+    expect(getByRole('slider').getAttribute('aria-orientation')).toEqual(vertical ? 'vertical' : 'horizontal');
+  });
+
+  it('updates the default aria-orientation when vertical changes in either direction', () => {
+    const { getByRole, rerender } = render(<Slider />);
+    const slider = getByRole('slider');
+
+    expect(slider.getAttribute('aria-orientation')).toEqual('horizontal');
+    rerender(<Slider vertical />);
+    expect(slider.getAttribute('aria-orientation')).toEqual('vertical');
+    rerender(<Slider vertical={false} />);
+    expect(slider.getAttribute('aria-orientation')).toEqual('horizontal');
+  });
+
+  it.each(['horizontal', 'vertical'] as const)('preserves native aria-orientation=%s on rerender', orientation => {
+    const { getByRole, rerender } = render(<Slider aria-orientation={orientation} />);
+    const slider = getByRole('slider');
+
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+    rerender(<Slider vertical aria-orientation={orientation} />);
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+    rerender(<Slider vertical={false} aria-orientation={orientation} />);
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+  });
+
+  it.each(['horizontal', 'vertical'] as const)('preserves input-slot aria-orientation=%s on rerender', orientation => {
+    const { getByRole, rerender } = render(<Slider input={{ 'aria-orientation': orientation }} />);
+    const slider = getByRole('slider');
+
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+    rerender(<Slider vertical input={{ 'aria-orientation': orientation }} />);
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+    rerender(<Slider vertical={false} input={{ 'aria-orientation': orientation }} />);
+    expect(slider.getAttribute('aria-orientation')).toEqual(orientation);
+  });
+
+  it('preserves input-slot aria-orientation precedence over the native prop', () => {
+    const { getByRole } = render(<Slider aria-orientation="vertical" input={{ 'aria-orientation': 'horizontal' }} />);
+
+    expect(getByRole('slider').getAttribute('aria-orientation')).toEqual('horizontal');
+  });
+
+  it('defaults aria-orientation when the resolved input-slot attribute is undefined', () => {
+    const { getByRole } = render(
+      <Slider vertical aria-orientation="horizontal" input={{ 'aria-orientation': undefined }} />,
+    );
+
+    expect(getByRole('slider').getAttribute('aria-orientation')).toEqual('vertical');
+  });
+
+  it('restores the default aria-orientation when an override is removed', () => {
+    const { getByRole, rerender } = render(<Slider vertical aria-orientation="horizontal" />);
+
+    rerender(<Slider vertical />);
+
+    expect(getByRole('slider').getAttribute('aria-orientation')).toEqual('vertical');
+  });
+
   it('handles role prop', () => {
     render(<Slider role="test" />);
     const customRole = screen.getByRole('test');

@@ -1,14 +1,13 @@
 'use client';
 
-import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuPopover } from './useMenuPopover';
 import { renderMenuPopover } from './renderMenuPopover';
 import type { MenuPopoverProps } from '@fluentui/react-menu';
+import { composeComponent } from '../../../utils/composeComponent';
 
-export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef((props, ref) => {
-  const state = useMenuPopover(props, ref);
-  return renderMenuPopover(state);
-});
-
-MenuPopover.displayName = 'MenuPopover';
+export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = /*#__PURE__*/ composeComponent(
+  'MenuPopover',
+  useMenuPopover,
+  renderMenuPopover,
+);

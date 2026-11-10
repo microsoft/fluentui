@@ -38,6 +38,25 @@ export interface PresetConfig {
    * Additional package entries whose declarations should be loaded into Monaco (declaration-only, not importable).
    */
   typings?: string[];
+
+  /**
+   * Explicit package roots for editor declarations, keyed by public Playground import name (or `typings` entry).
+   * Each root must contain a package.json with declaration metadata. Relative paths use the Storybook config directory.
+   * Use this when a runtime alias or local wrapper does not identify its declaration package unambiguously.
+   * This does not change runtime resolution; the selected declarations must describe the configured runtime module.
+   */
+  typingsRoots?: Record<string, string>;
+
+  /**
+   * Inline the runtime's extracted CSS and its emitted font/image assets into the manifest, including lazy styles.
+   * Use for private hosts with same-origin CORP or authenticated assets. Only assets emitted by this build are read;
+   * unresolved CSS imports or resource URLs fail the build. Storybook's own CSS loading is unchanged.
+   * All referenced styles and embedded assets transfer up front, and lazy styles affect the cascade before import.
+   * Opt in only when this ordering and transfer cost are appropriate; this does not preserve lazy CSS loading.
+   *
+   * @default false
+   */
+  inlineStyles?: boolean;
 }
 
 export interface ParametersExtension {

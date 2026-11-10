@@ -1,16 +1,8 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CalendarMonthCell } from '../../contexts/calendarMonthContext';
-import type { CalendarYear } from '../CalendarYear';
+import type { CalendarElementProps, CalendarGridRow, CalendarRowWrapper } from '../../utils/calendarGrid.types';
+import type { CalendarYear } from '../CalendarYear/CalendarYear';
 import type { CalendarYearHandle } from '../CalendarYear/CalendarYear.types';
-
-export type { CalendarContextValue, CalendarContextValues } from '../../contexts/calendarContext';
-
-export type {
-  CalendarMonthCell,
-  CalendarMonthContextValue,
-  CalendarMonthContextValues,
-} from '../../contexts/calendarMonthContext';
 
 /**
  * The imperative API exposed on CalendarMonth's forwarded ref.
@@ -20,12 +12,48 @@ export type CalendarMonthHandle = {
    * Moves focus to the navigated month (or the first available month if it is disabled),
    * or to the year picker while it is open.
    */
-  focus(): void;
+  focus(options?: FocusOptions): void;
 };
 
 /**
- * Defines the CalendarMonthSlots contract.
+ * One month cell in the grid.
  */
+export type CalendarMonthCell = {
+  /**
+   * Index of the month within the year, matching `Date.prototype.getMonth()`.
+   */
+  index: number;
+  /**
+   * Visible month name.
+   */
+  label: string;
+  /**
+   * Whether this is the displayed month.
+   */
+  isNavigated: boolean;
+  /**
+   * Whether this is the current month.
+   */
+  isCurrent: boolean;
+  /**
+   * Whether this is the selected month.
+   */
+  isSelected: boolean;
+  /**
+   * Whether this month can be selected.
+   */
+  isInBounds: boolean;
+  /**
+   * Props of the `button` rendered for the cell.
+   */
+  props: CalendarElementProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+};
+
+/**
+ * One row of month cells.
+ */
+export type CalendarMonthRow = CalendarGridRow<CalendarMonthCell>;
+
 export type CalendarMonthSlots = {
   root: NonNullable<Slot<'div'>>;
 
@@ -39,14 +67,23 @@ export type CalendarMonthSlots = {
    */
   heading: NonNullable<Slot<'button'>>;
 
+  /**
+   * Wraps the previous and next year buttons.
+   */
   navigation: NonNullable<Slot<'div'>>;
 
+  /**
+   * The button to navigate to the previous year.
+   */
   previousYearButton: NonNullable<Slot<'button'>>;
 
+  /**
+   * The button to navigate to the next year.
+   */
   nextYearButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The `role="grid"` container holding the month rows.
+   * The `role="grid"` container holding the month rows. Owns arrow key navigation and the roving tab stop.
    */
   grid: NonNullable<Slot<'div'>>;
 
@@ -57,30 +94,18 @@ export type CalendarMonthSlots = {
   yearPicker: NonNullable<Slot<typeof CalendarYear>>;
 };
 
-/**
- * Defines the CalendarMonthSelectData contract.
- */
 export type CalendarMonthSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
   date: Date;
   selectedDateRange: Date[];
 };
 
-/**
- * Defines the CalendarMonthNavigateData contract.
- */
 export type CalendarMonthNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
   date: Date;
   focusOnNavigatedDay: boolean;
 };
 
-/**
- * Defines the CalendarMonthHeaderSelectData contract.
- */
 export type CalendarMonthHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>>;
 
-/**
- * Defines the CalendarMonthProps contract.
- */
 export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   /**
    * The currently navigated date
@@ -118,47 +143,48 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   yearPickerHidden?: boolean;
 };
 
-/**
- * Defines the CalendarMonthState contract.
- */
 export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
   /**
    * When the year picker is open, CalendarMonth renders CalendarYear instead of its own grid.
    */
   isYearPickerVisible: boolean;
 
+  /**
+   * Reference to the year picker while it is open.
+   */
   yearPickerRef: React.RefObject<CalendarYearHandle | null>;
 
+  /**
+   * Whether the heading opens the year picker or reports `onHeaderSelect`.
+   */
   headerIsClickable: boolean;
 
+  /**
+   * Whether navigating to the previous year is allowed by `minDate`.
+   */
   isPrevYearInBounds: boolean;
 
+  /**
+   * Whether navigating to the next year is allowed by `maxDate`.
+   */
   isNextYearInBounds: boolean;
 
   /**
    * Month cells grouped into rows of four.
    */
-  monthRows: CalendarMonthCell[][];
-
-  navigatedMonthRef: React.RefObject<HTMLButtonElement | null>;
+  monthRows: CalendarMonthRow[];
 
   /**
-   * The year the grid is showing, used to replay the row motions on navigation.
+   * The year the grid is showing.
    */
   navigatedYear: number;
 
   /**
-   * The formatted year shown in the header, also used as the grid's accessible name.
+   * Wraps each rendered row. The styled layer uses it for the row motion.
    */
-  yearString: string;
+  wrapRow?: CalendarRowWrapper<CalendarMonthRow>;
 };
 
-/**
- * Row motion lives on CalendarMonthGridRow, so the base and styled layers share the same props.
- */
 export type CalendarMonthBaseProps = CalendarMonthProps;
 
-/**
- * Defines the CalendarMonthBaseState contract.
- */
 export type CalendarMonthBaseState = CalendarMonthState;

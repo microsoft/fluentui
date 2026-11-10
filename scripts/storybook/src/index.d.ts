@@ -9,3 +9,5 @@ export {
 } from './utils';
 
 export * as rules from './rules';
+
+export { configureReactIcons } from './react-icons-webpack';
