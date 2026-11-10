@@ -105,10 +105,7 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<Toa
 };
 
 // @public
-export const Toaster: {
-    (props: ToasterProps): JSXElement;
-    displayName: string;
-};
+export const Toaster: ComponentWithoutRef<ToasterProps>;
 
 export { ToasterId }
 

@@ -1,19 +1,18 @@
 'use client';
 
-import type * as React from 'react';
 import { useMenu } from './useMenu';
 import { useMenuContextValues } from './useMenuContextValues';
 import { renderMenu } from './renderMenu';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
 import type { MenuProps } from './Menu.types';
 
 /**
  * Headless Menu component.
  */
-export const Menu: React.FC<MenuProps> = props => {
-  const state = useMenu(props);
-  const contextValues = useMenuContextValues(state);
-
-  return renderMenu(state, contextValues);
-};
-
-Menu.displayName = 'Menu';
+export const Menu: ComponentWithoutRef<MenuProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Menu',
+  useMenu,
+  useMenuContextValues,
+  renderMenu,
+);

@@ -15,6 +15,8 @@
     "prebundle": "yarn run -T just-scripts build",
     "bundle": "yarn run -T just-scripts bundle",
     "lint": "yarn run -T eslint src e2e playwright.config.ts",
+    "format": "yarn run -T prettier --write . --ignore-path ../../.prettierignore",
+    "format:check": "yarn run -T prettier --check . --ignore-path ../../.prettierignore",
     "test": "yarn run -T jest",
     "e2e": "yarn run -T cross-env NODE_OPTIONS=--no-experimental-strip-types playwright test",
     "just": "yarn run -T just-scripts",

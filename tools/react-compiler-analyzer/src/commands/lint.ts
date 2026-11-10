@@ -96,7 +96,12 @@ export async function runLint(argv: LintArgv): Promise<number> {
 
       if (argv.format === 'json') {
         writeDocument(
-          toLintDocument(validation.results, { mode: argv.mode, workspaceRoot, unparseable: validation.unparseable }),
+          toLintDocument(validation.results, {
+            mode: argv.mode,
+            parserPlugins: argv['parser-plugin'],
+            workspaceRoot,
+            unparseable: validation.unparseable,
+          }),
         );
         return exitCode;
       }

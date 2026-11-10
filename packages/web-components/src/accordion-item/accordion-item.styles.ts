@@ -164,13 +164,13 @@ export const styles = css`
   }
 
   :host([marker-position='end']) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 4 / span 1;
+    grid-column: 3;
     padding-inline-start: ${spacingHorizontalS};
     padding-inline-end: 0;
   }
 
   :host([marker-position='end']) .button {
-    grid-column: 2 / span 3;
+    grid-column: 2;
   }
 
   /* --- Block attr styles --- */
@@ -180,19 +180,11 @@ export const styles = css`
   }
 
   :host([marker-position='end']) .heading {
-    grid-template-columns: auto auto 28px;
+    grid-template-columns: auto 1fr auto;
     padding-inline: ${spacingHorizontalM};
   }
 
   :host([marker-position='end']:has([slot='start'])) .heading {
     padding-inline: ${spacingHorizontalMNudge} ${spacingHorizontalM};
-  }
-
-  :host([block][marker-position='end']) .heading {
-    grid-template-columns: auto 1fr;
-  }
-
-  :host([marker-position='end']) :is(.default-marker-collapsed, .default-marker-expanded) {
-    grid-column: 5 / span 1;
   }
 `;

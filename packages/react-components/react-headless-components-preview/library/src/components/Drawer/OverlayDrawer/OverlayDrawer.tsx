@@ -13,6 +13,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = /*#__PURE__*/ composeComponent(
   'OverlayDrawer',
   useOverlayDrawer,
-  renderOverlayDrawer,
   useDrawerContextValue,
+  renderOverlayDrawer,
 );
