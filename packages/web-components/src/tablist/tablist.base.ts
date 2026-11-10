@@ -154,7 +154,12 @@ export class BaseTablist extends FASTElement {
 
   /** @internal */
   public handleFocusIn(event: FocusEvent) {
-    this.activeid = (event.target as HTMLElement).id;
+    const target = event.target as Node;
+    if (!isTab(target) || target.disabled) {
+      return;
+    }
+
+    this.activeid = target.id;
   }
 
   /** @internal */
@@ -167,7 +172,12 @@ export class BaseTablist extends FASTElement {
       return;
     }
 
-    this.activeid = (event.target as HTMLElement).id;
+    const target = event.target as Node;
+    if (!isTab(target) || target.disabled) {
+      return;
+    }
+
+    this.activeid = target.id;
   }
 
   private changeTab(oldId: undefined | string, newId: string) {

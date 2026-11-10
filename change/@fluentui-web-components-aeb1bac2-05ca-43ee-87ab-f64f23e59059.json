@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve tablist selection when a disabled tab receives focus or a programmatic click",
+  "packageName": "@fluentui/web-components",
+  "email": "paulmardling@microsoft.com"
+}
