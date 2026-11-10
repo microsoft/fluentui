@@ -95,3 +95,27 @@ For more information about the components, please refer to the [API documentatio
 ## Migration
 
 For migration information, have a look at the [migration guide](./MIGRATION.md).
+
+## Dependency lint pilot
+
+From the repository root, run `yarn nx run react-text:lint-dependencies` to check that production source dependencies
+are declared in this package's `dependencies`, `peerDependencies`, or `optionalDependencies`. This opt-in Nx
+manifest check does not build component packages. Run it through Nx so that its source dependency graph and file map
+are refreshed first; missing graph data is an error, not a successful check.
+
+The pilot excludes test files through the build's production inputs, and excludes configuration and `src/testing`
+helpers explicitly. It accounts for generated external SWC helpers, but Nx does not infer the workspace JSX runtime
+dependency from `@jsxImportSource` pragmas. Obsolete dependencies and version ranges are not checked. Nx source
+analysis also includes type-only imports, so this is not yet a drop-in replacement for
+`import/no-extraneous-dependencies`. Keep the JSX runtime declaration when using the corresponding pragma.
+
+This check only covers imports represented in Nx's dependency graph; it does not validate unresolved imports.
+The shared `import/no-unresolved` rule is disabled, so retain normal type-check validation rather than relying
+on this manifest check to catch unresolved imports.
+
+The existing source lint rule and workspace build prerequisites are unchanged. This pilot builds on
+[#32338](https://github.com/microsoft/fluentui/pull/32338); v8 support and broader rollout for
+[#27727](https://github.com/microsoft/fluentui/issues/27727) remain separate work.
+
+Run the focused regression suite with
+`yarn nx run react-text:test --runInBand --runTestsByPath config/dependency-lint.test.js`.

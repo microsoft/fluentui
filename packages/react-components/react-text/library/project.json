@@ -3,6 +3,27 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-text/library/src",
+  "targets": {
+    "lint-dependencies": {
+      "executor": "@nx/eslint:lint",
+      "dependsOn": [],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/nx.json",
+        "{workspaceRoot}/tsconfig.base.json",
+        "{workspaceRoot}/package.json",
+        "{workspaceRoot}/yarn.lock",
+        { "externalDependencies": ["@nx/eslint", "@nx/eslint-plugin", "jsonc-eslint-parser", "eslint"] }
+      ],
+      "options": {
+        "eslintConfig": "packages/react-components/react-text/library/config/eslint.config.cjs",
+        "lintFilePatterns": ["{projectRoot}/package.json"],
+        "errorOnUnmatchedPattern": true
+      }
+    }
+  },
   "tags": ["vNext", "platform:web"],
   "implicitDependencies": []
 }
