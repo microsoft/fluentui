@@ -352,16 +352,14 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     }
   }
 
-  if (state.secondaryContent) {
+  // Descriptions can reference descendants, so preserve their always-mounted subtree.
+  if (state.secondaryContent && relationship !== 'description') {
     const resolvedChild = getTriggerChild<TooltipChildProps>(state.children);
-    const contentId = state.content.id;
-    // Keep authored and generated ID references valid even while the tooltip is closed.
-    const isReferenced =
-      contentId !== undefined &&
-      [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(reference =>
-        reference?.split(/\s+/).includes(contentId),
-      );
-    state.shouldRenderTooltip = !isServerSideRender && (state.visible || isReferenced);
+    // Any ID reference may target a descendant, so conservatively keep the subtree mounted.
+    const hasAriaReference = [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(
+      reference => Boolean(reference?.trim()),
+    );
+    state.shouldRenderTooltip = !isServerSideRender && (state.visible || hasAriaReference);
   }
 
   return state;

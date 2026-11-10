@@ -8,6 +8,49 @@ import { SSRProvider } from '@fluentui/react-utilities';
 import { Tooltip } from './Tooltip';
 
 describe('Tooltip secondary content SSR', () => {
+  it.each(['summary', 'shortcut'])('defers the descendant description target %s until hydration', targetId => {
+    const markup = renderToString(
+      <SSRProvider>
+        <Tooltip
+          visible
+          content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
+          secondaryContent={{ id: 'shortcut', children: 'Ctrl+B' }}
+          relationship="description"
+        >
+          <button aria-describedby={targetId}>Format</button>
+        </Tooltip>
+      </SSRProvider>,
+    );
+    expect(markup).toContain(`aria-describedby="${targetId}"`);
+    expect(markup).not.toContain('id="summary"');
+    expect(markup).not.toContain('id="shortcut"');
+    expect(markup).not.toContain('role="tooltip"');
+  });
+
+  it.each([
+    ['aria-labelledby', 'summary'],
+    ['aria-labelledby', 'shortcut'],
+    ['aria-describedby', 'summary'],
+    ['aria-describedby', 'shortcut'],
+  ] as const)('defers a label trigger descendant %s target %s until hydration', (attribute, targetId) => {
+    const markup = renderToString(
+      <SSRProvider>
+        <Tooltip
+          visible
+          content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
+          secondaryContent={{ id: 'shortcut', children: 'Ctrl+B' }}
+          relationship="label"
+        >
+          <button {...{ [attribute]: targetId }}>Trigger</button>
+        </Tooltip>
+      </SSRProvider>,
+    );
+    expect(markup).toContain(`${attribute}="${targetId}"`);
+    expect(markup).not.toContain('id="summary"');
+    expect(markup).not.toContain('id="shortcut"');
+    expect(markup).not.toContain('role="tooltip"');
+  });
+
   it.each(['aria-labelledby', 'aria-describedby'] as const)(
     'defers an authored %s target until hydration',
     attribute => {
