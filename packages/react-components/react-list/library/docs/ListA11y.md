@@ -190,9 +190,9 @@ When the list supports selection, the main action of the list item is **to toggl
 
 **Spacebar** on the `ListItem` always toggles the selection.
 
-**Enter** on the `ListItem` triggers the main action, which can be changed by passing the `onClick` handler, i.e. by default it triggers selection, but this behavior can be overriden (by changing the onClick handler).
+**Enter** on the `ListItem` triggers the main action, which can be changed by passing the `onClick` handler, i.e. by default it triggers selection, but this behavior can be overridden (by changing the onClick handler).
 
-Both keys behavior can be changed by passing the `onKeyDown` handler and preventing teh default by calling `preventDefault()` on the event. Please note that the uncontrolled selection can no longer be utilized in this case and you have to take control.
+Both keys behavior can be changed by passing the `onKeyDown` handler and preventing the default by calling `preventDefault()` on the event. Please note that the uncontrolled selection can no longer be utilized in this case and you have to take control.
 
 #### Listbox / option
 
