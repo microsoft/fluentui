@@ -20,6 +20,7 @@ import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import type { FluentParameters } from '../hooks';
 import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
@@ -92,6 +93,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
     flex: 1,
+  },
+  classNamesTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+  },
+  classNamesCaption: {
+    textAlign: 'start',
+    paddingBlock: tokens.spacingVerticalS,
+  },
+  classNamesCell: {
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    textAlign: 'start',
   },
 });
 
@@ -264,6 +278,10 @@ const RenderArgsTable = ({
     nativePropsApi: showNativePropsApi,
   });
   const styles = useStyles();
+  const parameters: FluentParameters = story.parameters;
+  const classNameGroups = parameters.reactStorybookAddon?.classNames?.filter(
+    group => Object.keys(group.classNames).length > 0,
+  );
 
   return hideArgsTable ? null : (
     <>
@@ -301,6 +319,48 @@ const RenderArgsTable = ({
                 </Link>
               </span>
             </p>
+          </AdditionalApiDocs>
+        )}
+        {Boolean(classNameGroups?.length) && (
+          <AdditionalApiDocs>
+            <>
+              <p>
+                <b>Customizing component slot styles with class names</b>
+                <br />
+                Import these class-name objects from <code>@fluentui/react-components</code> to target component slots
+                in style overrides. They are exported constants, not React hooks. Only slots with an exported class name
+                are listed.
+              </p>
+              {classNameGroups?.map(group => (
+                <table className={styles.classNamesTable} key={group.exportName}>
+                  <caption className={styles.classNamesCaption}>
+                    <code>{group.exportName}</code>
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th className={styles.classNamesCell} scope="col">
+                        Slot
+                      </th>
+                      <th className={styles.classNamesCell} scope="col">
+                        Class name
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(group.classNames).map(([slot, className]) => (
+                      <tr key={slot}>
+                        <th className={styles.classNamesCell} scope="row">
+                          <code>{slot}</code>
+                        </th>
+                        <td className={styles.classNamesCell}>
+                          <code>{className}</code>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ))}
+            </>
           </AdditionalApiDocs>
         )}
       </div>

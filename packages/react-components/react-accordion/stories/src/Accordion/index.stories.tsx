@@ -1,4 +1,14 @@
-import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  accordionClassNames,
+  accordionHeaderClassNames,
+  accordionItemClassNames,
+  accordionPanelClassNames,
+} from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Controlled } from './AccordionControlled.stories';
@@ -23,13 +33,21 @@ export default {
     AccordionPanel,
   },
   parameters: {
+    reactStorybookAddon: {
+      classNames: [
+        { exportName: 'accordionClassNames', classNames: accordionClassNames },
+        { exportName: 'accordionItemClassNames', classNames: accordionItemClassNames },
+        { exportName: 'accordionHeaderClassNames', classNames: accordionHeaderClassNames },
+        { exportName: 'accordionPanelClassNames', classNames: accordionPanelClassNames },
+      ],
+    },
     actions: { argTypesRegex: '^on.*' },
     docs: {
       description: {
         component: [descriptionMd].join('\n'),
       },
     },
-  },
+  } satisfies FluentParameters,
   argTypes: {
     navigation: {
       defaultValue: undefined,

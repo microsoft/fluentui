@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "docs: add opt-in slot class-name API cards for the Button and Accordion pilot",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "paulmardling@microsoft.com"
+}

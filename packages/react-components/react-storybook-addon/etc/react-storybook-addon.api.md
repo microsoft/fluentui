@@ -54,6 +54,10 @@ export interface FluentParameters extends Parameters_2 {
     reactStorybookAddon?: {
         disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
         docs?: FluentDocsConfig;
+        classNames?: readonly {
+            exportName: string;
+            classNames: Readonly<Record<string, string>>;
+        }[];
     };
 }
 

@@ -30,6 +30,14 @@ export interface FluentParameters extends Parameters {
   reactStorybookAddon?: {
     disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
     docs?: FluentDocsConfig;
+    /**
+     * Opt a component docs page into class-name tables. Supply public class-name
+     * objects in display order, for example `{ exportName: 'buttonClassNames', classNames: buttonClassNames }`.
+     */
+    classNames?: readonly {
+      exportName: string;
+      classNames: Readonly<Record<string, string>>;
+    }[];
   };
 }
 
