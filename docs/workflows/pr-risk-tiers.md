@@ -32,8 +32,10 @@ require every file to match every glob. Keep the union to at most 15 positive pa
 Never add a
 broad `**/*.md` rule: agent instructions must not enter the fast lane.
 
-The classifier runs after the labeler and reconciles the four mutually exclusive
-`Risk:` labels, enforcing precedence and exclusions, then applying any model escalation. It considers old and new
+The classifier is the only writer of the four mutually exclusive `Risk:` labels,
+enforcing precedence and exclusions, then applying any model escalation. The area
+labeler does not publish preliminary risk labels: an inference failure must not
+replace a previous high-risk warning with a trivial candidate. It considers old and new
 filenames for renames. Incomplete API results or API errors fail the workflow rather
 than certify a low tier. The `PR risk policy` check is attached to the classified head
 SHA and fails if a tier 2/3 description lacks a nonempty `Review focus: ...` line.
@@ -44,7 +46,12 @@ real evidence, or explicitly say "not run".
 The privileged `pull_request_target` job only executes base-branch code and reads
 PR metadata through the GitHub API. It never installs dependencies, evaluates PR
 content as code, or checks out the head. Changes to the map/classifier take effect after
-merge, not on the PR proposing them. Reclassification runs on pushes, description
+merge, not on the PR proposing them. An in-progress head-SHA check is created before labeler/checkout setup, and an
+`always()` finalizer fails it if setup, classification, or cancellation does not finish.
+A same-SHA description edit must not retain an obsolete passing assessment.
+The classifier checks head SHA and base repository/ref/SHA before publishing, and
+rejects workflow events that no longer match their trusted checkout.
+Reclassification runs on pushes, description
 edits, reopening, and readiness changes.
 
 Labels are routing hints, **not merge authorization**. Repository administrators

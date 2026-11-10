@@ -11,6 +11,7 @@
         "^production",
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/.github/risk-tiers.json",
+        "{workspaceRoot}/.github/workflows/pr-housekeeping.yml",
         "{workspaceRoot}/docs/workflows/pr-risk-tiers.md",
         { "env": "FLUENT_RISK_LIVE_TEST" }
       ]

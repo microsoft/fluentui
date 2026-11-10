@@ -141,6 +141,7 @@ describe('risk classification', () => {
 function workflowFixture(paths = [file(source)]) {
   const data = {
     head: { sha: 'head-sha' },
+    base: { sha: 'base-sha', ref: 'master', repo: { full_name: 'microsoft/fluentui' } },
     user: { login: pull.author },
     title: pull.title,
     body: 'Review focus: Confirm the intended behavior.',
@@ -240,6 +241,59 @@ describe('risk workflow', () => {
     await expect(runWorkflow(args)).rejects.toThrow('changed during classification');
     expect(args.github.rest.issues.addLabels).not.toHaveBeenCalled();
     expect(args.github.rest.checks.update).toHaveBeenCalledWith(expect.objectContaining({ conclusion: 'failure' }));
+  });
+
+  test.each([
+    { sha: 'new-base', ref: 'master', repo: { full_name: 'microsoft/fluentui' } },
+    { sha: 'base-sha', ref: 'release', repo: { full_name: 'microsoft/fluentui' } },
+    { sha: 'base-sha', ref: 'master', repo: { full_name: 'other/fluentui' } },
+  ])('does not certify a changed PR base: %j', async base => {
+    const args = workflowFixture();
+    args.github.rest.pulls.get
+      .mockResolvedValueOnce({ data: args.data })
+      .mockResolvedValueOnce({ data: 'diff --git a/example b/example\n+change' })
+      .mockResolvedValueOnce({ data: { ...args.data, base } });
+    await expect(runWorkflow(args)).rejects.toThrow('changed during classification');
+    expect(args.github.rest.issues.addLabels).not.toHaveBeenCalled();
+  });
+
+  test('updates the bootstrap check rather than creating a second check', async () => {
+    const args = workflowFixture();
+    await runWorkflow({
+      ...args,
+      checkRun: {
+        id: 789,
+        headSha: 'head-sha',
+        baseSha: 'base-sha',
+        baseRef: 'master',
+        baseRepo: 'microsoft/fluentui',
+      },
+    });
+    expect(args.github.rest.checks.create).not.toHaveBeenCalled();
+    expect(args.github.rest.checks.update).toHaveBeenCalledWith(
+      expect.objectContaining({ check_run_id: 789, conclusion: 'success' }),
+    );
+  });
+
+  test('rejects stale workflow events before calling the provider or changing labels', async () => {
+    const args = workflowFixture();
+    await expect(
+      runWorkflow({
+        ...args,
+        checkRun: {
+          id: 789,
+          headSha: 'head-sha',
+          baseSha: 'old-base',
+          baseRef: 'master',
+          baseRepo: 'microsoft/fluentui',
+        },
+      }),
+    ).rejects.toThrow('trusted workflow revision');
+    expect(args.assessRisk).not.toHaveBeenCalled();
+    expect(args.github.rest.issues.addLabels).not.toHaveBeenCalled();
+    expect(args.github.rest.checks.update).toHaveBeenCalledWith(
+      expect.objectContaining({ check_run_id: 789, conclusion: 'failure' }),
+    );
   });
 
   test('does not remove labels or report success if adding the new label fails', async () => {

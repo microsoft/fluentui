@@ -20,17 +20,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
+      - name: Invalidate the previous risk assessment before setup
+        id: policy
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          sync-labels: true
-          configuration-path: .github/labeler.yml
+          script: |
+            const { data: check } = await github.rest.checks.create({
+              ...context.repo,
+              name: 'PR risk policy',
+              head_sha: context.payload.pull_request.head.sha,
+              status: 'in_progress',
+            });
+            core.setOutput('check-id', String(check.id));
 
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
-          configuration-path: .github/risk-tiers.json
+          configuration-path: .github/labeler.yml
 
       # Never check out or execute PR-head code in pull_request_target.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -43,11 +50,42 @@ jobs:
             docs/workflows/pr-risk-tiers.md
           sparse-checkout-cone-mode: false
 
-      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+      - name: Classify review risk
+        id: classify
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
+          RISK_POLICY_CHECK_ID: ${{ steps.policy.outputs.check-id }}
           RISK_CLASSIFIER_AZURE_CLIENT_ID: ${{ vars.RISK_CLASSIFIER_AZURE_CLIENT_ID }}
           RISK_CLASSIFIER_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         with:
           script: |
             const run = require(`${process.env.GITHUB_WORKSPACE}/scripts/github/src/risk-tiers-workflow.js`);
-            await run({ github, context, core });
+            const pull = context.payload.pull_request;
+            await run({
+              github, context, core,
+              checkRun: {
+                id: Number(process.env.RISK_POLICY_CHECK_ID),
+                headSha: pull.head.sha,
+                baseSha: pull.base.sha,
+                baseRef: pull.base.ref,
+                baseRepo: pull.base.repo.full_name,
+              },
+            });
+
+      - name: Fail the risk check if setup or classification did not finish
+        if: ${{ always() && steps.policy.outputs.check-id != '' && steps.classify.outcome != 'success' }}
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          RISK_POLICY_CHECK_ID: ${{ steps.policy.outputs.check-id }}
+        with:
+          script: |
+            await github.rest.checks.update({
+              ...context.repo,
+              check_run_id: Number(process.env.RISK_POLICY_CHECK_ID),
+              status: 'completed',
+              conclusion: 'failure',
+              output: {
+                title: 'Risk classification did not finish',
+                summary: 'Setup, classification, or cancellation prevented certification. No new tier is certified.',
+              },
+            });

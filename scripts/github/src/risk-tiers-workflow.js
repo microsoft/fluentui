@@ -8,6 +8,7 @@ const { classifyRisk, hasReviewFocus, tierLabels } = require('./risk-tiers');
  *   github: ReturnType<typeof import('@actions/github').getOctokit>,
  *   context: typeof import('@actions/github').context,
  *   core: typeof import('@actions/core'),
+ *   checkRun?: { id: number; headSha: string; baseSha: string; baseRef: string; baseRepo: string },
  *   assessRisk?: (input: Parameters<typeof decideRisk>[0]) => ReturnType<typeof decideRisk>
  * }} args
  */
@@ -15,6 +16,7 @@ module.exports = async ({
   github,
   context,
   core,
+  checkRun,
   assessRisk = input =>
     decideRisk(input, {
       getToken: () => getDecisionToken(core),
@@ -25,14 +27,29 @@ module.exports = async ({
   const pullNumber = context.issue.number;
   const params = { owner, repo, pull_number: pullNumber };
   const { data: pull } = await github.rest.pulls.get(params);
-  const { data: check } = await github.rest.checks.create({
-    owner,
-    repo,
-    name: 'PR risk policy',
-    head_sha: pull.head.sha,
-    status: 'in_progress',
-  });
+  const check =
+    checkRun ||
+    (
+      await github.rest.checks.create({
+        owner,
+        repo,
+        name: 'PR risk policy',
+        head_sha: pull.head.sha,
+        status: 'in_progress',
+      })
+    ).data;
   try {
+    if (
+      checkRun &&
+      (!Number.isSafeInteger(checkRun.id) ||
+        checkRun.id <= 0 ||
+        pull.head.sha !== checkRun.headSha ||
+        pull.base.sha !== checkRun.baseSha ||
+        pull.base.ref !== checkRun.baseRef ||
+        pull.base.repo.full_name !== checkRun.baseRepo)
+    ) {
+      throw new Error('The PR no longer matches the trusted workflow revision. Trigger a fresh classification.');
+    }
     if (!pull.user) {
       throw new Error('The pull request author is unavailable. No tier is certified.');
     }
@@ -62,7 +79,14 @@ module.exports = async ({
     }
     const focusPresent = result.tier < 2 || hasReviewFocus(pull.body);
     const { data: current } = await github.rest.pulls.get(params);
-    if (current.head.sha !== pull.head.sha || current.title !== pull.title || current.body !== pull.body) {
+    if (
+      current.head.sha !== pull.head.sha ||
+      current.base.sha !== pull.base.sha ||
+      current.base.ref !== pull.base.ref ||
+      current.base.repo.full_name !== pull.base.repo.full_name ||
+      current.title !== pull.title ||
+      current.body !== pull.body
+    ) {
       throw new Error('The pull request changed during classification. Rerun against the latest revision.');
     }
 
