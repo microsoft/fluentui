@@ -14,6 +14,7 @@ const story = 'packages/react-components/react-button/stories/Button.stories.tsx
 const pull = { author: 'contributor', title: 'fix(button): correct behavior' };
 const file = (filename: string, additions = 1, deletions = 0, previousFilename?: string) => ({
   filename,
+  status: 'modified',
   additions,
   deletions,
   previous_filename: previousFilename,
@@ -73,6 +74,12 @@ describe('risk classification', () => {
     'packages/react-components/react-button/stories/.agents/rules.md',
     'packages/react-components/react-button/stories/.hidden/AGENTS.md',
     'packages/react-components/react-button/library/src/.hidden/package.json',
+    'packages/react-components/react-utilities/.swcrc',
+    'packages/react-components/react-utilities/library/src/foo/.internal.ts',
+    'packages/react-components/react-theme/.hidden/theme.test.ts',
+    'packages/.hidden/react-theme/library/src/theme.ts',
+    '.github/workflows/.hidden/file.yml',
+    'packages/react-components/react-button/stories/AGENTS.override.md',
     'packages/react-components/react-button/library/docs/review.instructions.md',
   ])('protected paths override trivial and low rules: %s', path => {
     expect(tier([file(path)])).toBe(3);
@@ -84,6 +91,8 @@ describe('risk classification', () => {
     expect(tier([file('AGENTS.md', 0, 0, story)])).toBe(3);
     expect(tier([file(story, 0, 0, source)])).toBe(2);
     expect(tier([file(source, 1, 0, 'packages/react-components/react-input/library/src/Input.tsx')])).toBe(2);
+    expect(tier([file(story, 0, 0, 'packages/react-components/react-button/stories/AGENTS.override.md')])).toBe(3);
+    expect(tier([file('packages/react-components/react-button/stories/AGENTS.override.md', 0, 0, story)])).toBe(3);
   });
 
   test.each([
@@ -350,6 +359,33 @@ describe('risk workflow', () => {
 
   test('unavailable patches cannot enter the fast lane even if the model selects trivial', async () => {
     const args = workflowFixture([{ ...file(story), patch: '' }]);
+    await runWorkflow(args);
+    expect(args.github.rest.issues.addLabels).toHaveBeenCalledWith(
+      expect.objectContaining({ labels: ['Risk: standard'] }),
+    );
+  });
+
+  test('renamed binaries with unavailable patches cannot bypass the standard floor', async () => {
+    const args = workflowFixture([
+      {
+        ...file(
+          'packages/react-components/react-button/stories/after.png',
+          0,
+          0,
+          'packages/react-components/react-button/stories/before.png',
+        ),
+        status: 'renamed',
+        patch: '',
+      },
+    ]);
+    args.github.rest.pulls.get.mockImplementation(params =>
+      Promise.resolve({
+        data:
+          params.mediaType?.format === 'diff'
+            ? 'diff --git a/before.png b/after.png\nsimilarity index 90%\nBinary files a/before.png and b/after.png differ\n'
+            : args.data,
+      }),
+    );
     await runWorkflow(args);
     expect(args.github.rest.issues.addLabels).toHaveBeenCalledWith(
       expect.objectContaining({ labels: ['Risk: standard'] }),

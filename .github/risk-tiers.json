@@ -25,6 +25,7 @@
             "**/.agents/**",
             "**/.claude/**",
             "**/AGENTS.md",
+            "**/AGENTS.override.md",
             "**/CLAUDE.md",
             "**/SKILL.md",
             "**/*.instructions.md",

@@ -67,7 +67,7 @@ module.exports = async ({
         throw new Error('GitHub did not return the full PR diff. No model tier is certified.');
       }
       const decision = await assessRisk({ diff, deterministic, title: pull.title });
-      const missingPatchFloor = files.some(file => !file.patch && file.status !== 'renamed') ? 2 : 0;
+      const missingPatchFloor = files.some(file => !file.patch) ? 2 : 0;
       result = {
         tier: Math.max(deterministic.tier, decision.tier, missingPatchFloor),
         reason: deterministic.reason,

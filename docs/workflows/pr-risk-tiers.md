@@ -32,6 +32,10 @@ rejecting mixed story/documentation PRs. `all-globs-to-all-files` would incorrec
 require every file to match every glob. Keep the union to at most 15 positive paths.
 Never add a
 broad `**/*.md` rule: agent instructions must not enter the fast lane.
+Protected globs are dot-inclusive and support literal paths plus `*` and `**`;
+unsupported pattern syntax fails explicitly instead of silently weakening the floor.
+The trivial allowlist remains conservative about hidden paths. `AGENTS.override.md`
+is protected alongside `AGENTS.md`.
 
 The classifier is the only writer of the four mutually exclusive `Risk:` labels,
 enforcing precedence and exclusions, then applying any model escalation. The area
@@ -89,7 +93,10 @@ or policy and are never executed. Prompt-injection instructions explicitly have 
 authority. This prompt defense does not establish general injection resistance.
 
 **Final tier = max(deterministic tier, model tier, unavailable-patch floor).**
-Missing non-rename patches impose a tier 2 floor. The model can escalate stories,
+Every missing patch imposes a tier 2 floor, including renames: a renamed binary may
+also have changed bytes even when GitHub reports zero added/deleted lines.
+Pure renames without a patch conservatively use tier 2 rather than assuming byte identity.
+The model can escalate stories,
 tests, or small fixes for semantic API/consumer, accessibility, or trust-boundary
 risks, but never downgrade a deterministic rule. Deterministic tier 3 skips the model
 entirely: no inference could lower it. The check reports deterministic, model, and

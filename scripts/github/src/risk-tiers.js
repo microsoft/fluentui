@@ -1,13 +1,36 @@
 // @ts-check
 
 const { readFileSync } = require('node:fs');
-const { matchesGlob, posix, join } = require('node:path');
+const { matchesGlob, join } = require('node:path');
 /** @type {Record<string, { 'changed-files': Record<string, string[]>[] }[]>} */
 const rules = JSON.parse(readFileSync(join(__dirname, '../../../.github/risk-tiers.json'), 'utf8'));
 
 const tierLabels = ['Risk: trivial', 'Risk: low', 'Risk: standard', 'Risk: high'];
 const trivialGlobs = rules['Risk: trivial'][0]['changed-files'][0]['any-glob-to-all-files'];
 const highGlobs = rules['Risk: high'][0]['changed-files'][0]['any-glob-to-any-file'];
+const protectedPatterns = highGlobs.map(glob => {
+  if (/[?[\]{}!\\]/.test(glob)) {
+    throw new Error('Protected risk globs support only literal paths, * and **.');
+  }
+  const segments = glob.split('/');
+  return new RegExp(
+    '^' +
+      segments
+        .map((segment, index) => {
+          if (segment === '**') {
+            return index === segments.length - 1 ? '[\\s\\S]*' : '(?:[^/]+/)*';
+          }
+          return (
+            segment
+              .split('*')
+              .map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+              .join('[^/]*') + (index < segments.length - 1 ? '/' : '')
+          );
+        })
+        .join('') +
+      '$',
+  );
+});
 
 /** @typedef {{ filename: string; previous_filename?: string; additions: number; deletions: number; patch?: string }} ChangedFile */
 
@@ -44,12 +67,7 @@ function classifyRisk(files, pull) {
   const matches = (/** @type {string} */ path, /** @type {string[]} */ globs) =>
     globs.some(glob => matchesGlob(path, glob));
 
-  const protectedNames = highGlobs.filter(glob => glob.startsWith('**/') && !glob.slice(3).includes('/'));
-  if (
-    paths.some(
-      path => matches(path, highGlobs) || protectedNames.some(glob => matchesGlob(posix.basename(path), glob.slice(3))),
-    )
-  ) {
+  if (paths.some(path => protectedPatterns.some(pattern => pattern.test(path)))) {
     return { tier: 3, reason: 'Changes a protected path; owning-team human review is required.' };
   }
   if (pull.author === 'dependabot[bot]') {
