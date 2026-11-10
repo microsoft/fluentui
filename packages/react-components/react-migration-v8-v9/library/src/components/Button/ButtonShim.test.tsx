@@ -48,6 +48,54 @@ describe('Button shim variant classes', () => {
       () => <ButtonShim primary secondaryText="Description" />,
       ['ms-Button--compoundPrimary'],
     ],
+    [
+      'PrimaryButtonShim secondary text',
+      () => <PrimaryButtonShim secondaryText="Description">Save</PrimaryButtonShim>,
+      ['ms-Button--primary'],
+    ],
+    [
+      'PrimaryButtonShim rendered description',
+      () => <PrimaryButtonShim onRenderDescription={() => <span>Description</span>}>Save</PrimaryButtonShim>,
+      ['ms-Button--primary'],
+    ],
+    [
+      'DefaultButtonShim primary secondary text',
+      () => (
+        <DefaultButtonShim primary secondaryText="Description">
+          Save
+        </DefaultButtonShim>
+      ),
+      ['ms-Button--primary'],
+    ],
+    [
+      'DefaultButtonShim primary rendered description',
+      () => (
+        <DefaultButtonShim primary onRenderDescription={() => <span>Description</span>}>
+          Save
+        </DefaultButtonShim>
+      ),
+      ['ms-Button--primary'],
+    ],
+    [
+      'ButtonShim rendered description',
+      () => <ButtonShim onRenderDescription={() => <span>Description</span>} />,
+      ['ms-Button--compound'],
+    ],
+    [
+      'ButtonShim primary rendered description',
+      () => <ButtonShim primary onRenderDescription={() => <span>Description</span>} />,
+      ['ms-Button--compoundPrimary'],
+    ],
+    [
+      'ButtonShim secondary text custom variant',
+      () => <ButtonShim secondaryText="Description" variantClassName="ms-Button--custom" />,
+      ['ms-Button--custom'],
+    ],
+    [
+      'ButtonShim secondary text empty variant',
+      () => <ButtonShim secondaryText="Description" variantClassName="" />,
+      [],
+    ],
   ])('%s renders only the expected v8 variant classes', (_name, renderShim, expected) => {
     const { getByRole } = render(renderShim());
     const button = getByRole('button');
