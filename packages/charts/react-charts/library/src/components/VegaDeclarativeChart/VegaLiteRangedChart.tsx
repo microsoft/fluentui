@@ -180,7 +180,9 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
       {...interaction.rootProps}
       ref={ref}
       className={className}
-      style={{ ...style, width, ...(spec.title ? {} : { height }) }}
+      // Height describes the SVG viewport, not the title + SVG + legend surface.
+      // Only an explicitly authored CSS height constrains the outer surface.
+      style={{ ...style, width }}
       spec={spec}
       hideTitle={hideTitle}
       chartTitle={title}

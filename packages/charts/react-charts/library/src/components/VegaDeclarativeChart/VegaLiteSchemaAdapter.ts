@@ -49,6 +49,7 @@ import type { ColorMapRef } from './VegaLiteColorAdapter';
 import { bin as d3Bin, extent as d3Extent, min as d3Min, max as d3Max } from 'd3-array';
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
+import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { isInvalidValue } from '@fluentui/chart-utilities';
 import * as React from 'react';
 import { tokens } from '@fluentui/react-theme';
@@ -693,7 +694,13 @@ function applyNativeSemanticOrderAndStack<T extends object>(
   for (const channel of ['x', 'y'] as const) {
     const definition = encoding[channel];
     const sort =
-      Array.isArray(definition?.scale?.domain) && (definition?.type === 'nominal' || definition?.type === 'ordinal')
+      // The public view tree can infer an alphabetized domain. An authored
+      // stacked-bar category sort must still control the actual native x positions.
+      kind === 'stacked-bar' && channel === 'x' && Array.isArray(definition?.sort)
+        ? definition.scale?.reverse
+          ? [...definition.sort].reverse()
+          : definition.sort
+        : Array.isArray(definition?.scale?.domain) && (definition?.type === 'nominal' || definition?.type === 'ordinal')
         ? categoricalDomain(definition)
         : definition?.sort;
     if (!Array.isArray(sort)) {
@@ -2021,11 +2028,11 @@ function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
   // Check if there's a point layer in addition to line layer (for line+point combo charts)
   const hasPointLayer = unitSpecs.some(unitSpec => getMarkType(unitSpec.mark) === 'point');
   const hasLineLayer = unitSpecs.some(unitSpec => getMarkType(unitSpec.mark) === 'line');
-  const shouldShowPoints = hasPointLayer && hasLineLayer;
 
   const dataValues = extractDataValues(primarySpec.data);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
+  const shouldShowPoints = Boolean(markProps.point) || (hasPointLayer && hasLineLayer);
   const lineUnits = unitSpecs.filter(unit => getMarkType(unit.mark) === 'line');
   const tooltipSpec = tooltipSpecs.get(spec) ?? spec;
   const primaryTooltip = normalizeSpec(tooltipSpec)[unitSpecs.indexOf(primarySpec)];
@@ -2131,6 +2138,10 @@ function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
 
     // Build line options with curve, strokeDash, and strokeWidth
     const lineOptions: Partial<LineChartLineOptions> = {};
+    if (shouldShowPoints) {
+      // Native default point paths are tiny hover targets, not visible line markers.
+      lineOptions.mode = 'lines+markers';
+    }
     if (curveOption) {
       lineOptions.curve = curveOption;
     }
@@ -2189,7 +2200,11 @@ function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
               isDarkTheme,
             );
           }
-          series.hideNonActiveDots = !shouldShowPoints;
+          // Keep this unit's mark.point choice; only a point companion enables all lines.
+          if (hasPointLayer) {
+            series.hideNonActiveDots = false;
+            series.lineOptions = { ...series.lineOptions, mode: 'lines+markers' };
+          }
         });
         lineChartData.push(...extra);
       });
@@ -2284,6 +2299,9 @@ function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
     data: chartProps,
     width: typeof spec.width === 'number' ? spec.width : undefined,
     height: typeof spec.height === 'number' ? spec.height : undefined,
+    // Centered ISO-day endpoint labels need more than the native 20px right gutter.
+    // Keep this bounded to the authored format, not arbitrary localized date labels.
+    ...(isXTemporal && tickFormat === '%Y-%m-%d' && { margins: { right: 40 } }),
     ...(xAxisTitle && { xAxisTitle }),
     ...(yAxisTitle && { yAxisTitle }),
     ...(tickFormat && { tickFormat }),
@@ -2306,7 +2324,7 @@ function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
         yMaxValue: yOrdinalLabels.length - 0.5,
       }),
     ...categoryOrderProps,
-    hideLegend: encoding.color?.legend?.disable ?? false,
+    hideLegend: encoding.color?.legend === null || (encoding.color?.legend?.disable ?? false),
   };
 }
 
@@ -2645,6 +2663,9 @@ function renderVerticalBarChartProps(
 
   const result: VerticalBarChartProps = {
     data: barData,
+    width: typeof spec.width === 'number' ? spec.width : undefined,
+    // A definite height keeps the responsive container from measuring its own growing SVG.
+    height: typeof spec.height === 'number' ? spec.height : DEFAULT_CHART_HEIGHT,
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
@@ -2735,6 +2756,37 @@ function renderVerticalStackedBarChartProps(
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
+
+  // Legend domain order is independent of the order channel that sorts segments.
+  // Include absent domain entries without inventing zero-valued data points.
+  const colorDomain =
+    colorField && (encoding.color?.type === 'nominal' || encoding.color?.type === 'ordinal')
+      ? encoding.color.scale?.domain
+      : undefined;
+  const legends: Legend[] = [];
+  if (Array.isArray(colorDomain)) {
+    colorDomain.forEach(value => {
+      const legend = String(value);
+      if (colorIndex.has(legend)) {
+        return;
+      }
+      const index = currentColorIndex++;
+      colorIndex.set(legend, index);
+      legends.push({
+        title: legend,
+        color: resolveColor(
+          legend,
+          index,
+          colorValue as string | undefined,
+          markProps.color,
+          colorMap,
+          colorScheme,
+          colorRange,
+          isDarkTheme,
+        ),
+      });
+    });
+  }
 
   if (aggregatedData) {
     // Use aggregated data
@@ -2991,6 +3043,24 @@ function renderVerticalStackedBarChartProps(
   const chartData = Object.values(mapXToDataPoints);
   const titles = getVegaLiteTitles(spec);
 
+  if (Array.isArray(colorDomain)) {
+    const seen = new Set(legends.map(legend => legend.title));
+    chartData.forEach(stack => {
+      [...stack.chartData, ...(stack.lineData ?? [])].forEach(point => {
+        if (!seen.has(point.legend)) {
+          seen.add(point.legend);
+          legends.push({
+            title: point.legend,
+            color: point.color!,
+            ...(stack.lineData?.includes(point as LineDataInVerticalStackedBarChart) && {
+              isLineLegendInBarChart: true,
+            }),
+          });
+        }
+      });
+    });
+  }
+
   // Check if we have secondary Y-axis data
   const hasSecondaryYAxis = chartData.some(point => point.lineData?.some(line => line.useSecondaryYScale));
 
@@ -3046,6 +3116,8 @@ function renderVerticalStackedBarChartProps(
     width: spec.width as number | undefined,
     height: (spec.height as number | undefined) ?? DEFAULT_CHART_HEIGHT,
     hideLegend: encoding.color?.legend?.disable ?? false,
+    ...(Array.isArray(colorDomain) && { legendProps: { legends } }),
+    ...(encoding.y?.stack === 'normalize' && { hideLabels: true }),
     showYAxisLables: true,
     roundCorners: true,
     hideTickOverlap: true,
@@ -3390,6 +3462,78 @@ function renderAreaChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
 }
 
 /**
+ * Linear continuous scatter colors use the same bounded ramps as native heatmaps.
+ * Keep one series per color value: ScatterChart consumes series colors, not markerColor.
+ * This is interpolation of our shared stops, not the full Vega/D3 scheme runtime.
+ */
+function createScatterColorScale(
+  encoding: VegaLiteEncoding,
+  rows: VegaDataRow[],
+  field: string | undefined,
+): ((value: unknown) => string | undefined) | undefined {
+  const definition = encoding.color;
+  if (
+    !field ||
+    definition?.value !== undefined ||
+    definition?.scale === null ||
+    definition?.scale?.type === 'ordinal' ||
+    (definition?.type !== 'quantitative' && definition?.type !== 'temporal')
+  ) {
+    return undefined;
+  }
+  if (definition.scale?.type !== undefined && definition.scale.type !== 'linear') {
+    throw new Error('VegaLiteSchemaAdapter: continuous scatter color supports only a linear scale');
+  }
+  const numeric = (value: unknown): number =>
+    value === null || value === undefined
+      ? NaN
+      : definition.type === 'temporal'
+      ? +new Date(value as string | number)
+      : Number(value);
+  const extent = d3Extent(rows, row => numeric(row[field]));
+  const declaredDomain = definition.scale?.domain?.map(numeric);
+  let minimum = declaredDomain?.[0] ?? extent[0] ?? 0;
+  let maximum = declaredDomain?.[declaredDomain.length - 1] ?? extent[1] ?? minimum;
+  if (!declaredDomain && definition.scale?.zero === true) {
+    minimum = Math.min(minimum, 0);
+    maximum = Math.max(maximum, 0);
+  }
+  const customRange = definition.scale?.range;
+  const scheme = definition.scale?.scheme ?? 'blues';
+  const range =
+    customRange?.length && customRange.every(color => typeof color === 'string')
+      ? ([...customRange] as string[])
+      : getSequentialSchemeColors(scheme);
+  if (!range?.length) {
+    throw new Error(`VegaLiteSchemaAdapter: unsupported continuous scatter color scheme "${scheme}"`);
+  }
+  if (definition.scale?.reverse) {
+    range.reverse();
+  }
+  const domain =
+    minimum === maximum
+      ? range.map((_, index) => index / (range.length - 1 || 1))
+      : declaredDomain?.length === range.length
+      ? declaredDomain
+      : range.map((_, index) => minimum + ((maximum - minimum) * index) / (range.length - 1 || 1));
+  const scale = d3ScaleLinear<string>().domain(domain).range(range);
+  return value => {
+    const numericValue = numeric(value);
+    if (!Number.isFinite(numericValue)) {
+      return undefined;
+    }
+    if (range.length === 1) {
+      return range[0];
+    }
+    // Retain the authored/shared hex representation at exact scheme stops.
+    const stop = domain.indexOf(numericValue);
+    return !customRange && minimum !== maximum && stop >= 0
+      ? range[stop]
+      : scale(minimum === maximum ? 0.5 : numericValue);
+  };
+}
+
+/**
  * Transforms Vega-Lite specification to Fluent ScatterChart props
  *
  * Supports scatter plots with quantitative x and y axes and color-encoded series
@@ -3412,6 +3556,9 @@ function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDa
 
   const isXTemporal = encoding.x?.type === 'temporal';
   const isYTemporal = encoding.y?.type === 'temporal';
+  const continuousColor = createScatterColorScale(encoding, dataValues, colorField);
+  const colorDomain = encoding.color?.scale?.domain?.map(String);
+  const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Check if y-values are strings (nominal/ordinal) and build ordinal mapping
   const yIsNominal = encoding.y?.type === 'nominal' || encoding.y?.type === 'ordinal';
@@ -3454,14 +3601,9 @@ function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDa
   });
 
   const seriesNames = Object.keys(groupedData);
-  const colorIndex = new Map<string, number>();
-  let currentColorIndex = 0;
 
   const tooltipSpec = tooltipSpecs.get(spec) ?? spec;
   const chartData: LineChartPoints[] = seriesNames.map((seriesName, index) => {
-    if (!colorIndex.has(seriesName)) {
-      colorIndex.set(seriesName, currentColorIndex++);
-    }
     const seriesData = groupedData[seriesName];
 
     const points: ScatterChartDataPoint[] = seriesData.map(row => {
@@ -3486,22 +3628,26 @@ function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDa
       return point;
     });
 
-    // Get color for this series
+    // A field scale or encoding value takes precedence over the mark's default color.
+    const domainIndex = colorDomain?.indexOf(seriesName) ?? -1;
+    const paletteIndex = domainIndex >= 0 ? domainIndex : index;
     const colorValue =
-      colorField && encoding.color?.scale?.range && Array.isArray(encoding.color.scale.range)
-        ? encoding.color.scale.range[index]
-        : markProps.color;
+      encoding.color?.value ??
+      (colorField && encoding.color?.scale === null ? seriesName : undefined) ??
+      continuousColor?.(colorField ? seriesData[0][colorField] : undefined);
     const color =
       typeof colorValue === 'string'
         ? colorValue
+        : colorField && (colorScheme || colorRange?.length)
+        ? getVegaColor(paletteIndex, colorScheme, colorRange, isDarkTheme)
         : resolveColor(
             seriesName,
-            colorIndex.get(seriesName)!,
+            paletteIndex,
             undefined,
-            undefined,
+            colorField ? undefined : markProps.color,
             colorMap,
-            undefined,
-            undefined,
+            colorScheme,
+            colorRange,
             isDarkTheme,
           );
 
@@ -3532,6 +3678,8 @@ function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDa
       chartTitle: titles.chartTitle,
       scatterChartData: chartData,
     },
+    width: typeof spec.width === 'number' ? spec.width : undefined,
+    height: typeof spec.height === 'number' ? spec.height : DEFAULT_CHART_HEIGHT,
     xAxisTitle: titles.xAxisTitle,
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
@@ -3548,7 +3696,10 @@ function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDa
         yMaxValue: yOrdinalLabels.length - 0.5,
       }),
     ...categoryOrderProps,
-    hideLegend: encoding.color?.legend?.disable ?? false,
+    hideLegend:
+      (!colorField && encoding.color?.value !== undefined) ||
+      encoding.color?.legend === null ||
+      encoding.color?.legend?.disable === true,
   };
 
   if (annotations.length > 0) {

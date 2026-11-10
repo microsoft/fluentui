@@ -470,6 +470,7 @@ export interface ChartPopoverProps {
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
+    inline?: boolean;
     // (undocumented)
     isCalloutForStack?: boolean;
     // (undocumented)

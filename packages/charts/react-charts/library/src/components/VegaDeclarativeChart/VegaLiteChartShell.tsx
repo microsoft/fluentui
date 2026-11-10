@@ -29,6 +29,8 @@ type ShellProps = React.ComponentPropsWithoutRef<'div'> &
     classes: { root: string; svg: string; axis: string; axisLine: string; tooltip: string };
     beforeNavigation?: React.ReactNode;
     beforeAxes?: React.ReactNode;
+    /** Interaction-only targets may extend into SVG gutters; filled geometry stays in children. */
+    navigationOverlay?: React.ReactNode;
     legendProps?: React.ComponentProps<typeof Legends>;
     tooltip?: { target: SVGElement; content: React.ReactNode };
   };
@@ -53,6 +55,7 @@ export const VegaLiteChartShell: ForwardRefComponent<ShellProps> = React.forward
     classes,
     beforeNavigation,
     beforeAxes,
+    navigationOverlay,
     legendProps,
     tooltip,
     children,
@@ -96,12 +99,15 @@ export const VegaLiteChartShell: ForwardRefComponent<ShellProps> = React.forward
           {beforeAxes}
           {renderVegaLiteAxes({ id, axes, plotWidth, plotHeight, showXAxis, showYAxis, classes })}
           <g clipPath={`url(#${id}-clip)`}>{children}</g>
+          {navigationOverlay}
         </svg>
       </div>
       {legendProps && <Legends {...legendProps} />}
       {tooltip && (
         <ChartPopover
           isPopoverOpen
+          // A scrollable chart surface must not clip the callout or its shadow.
+          inline={false}
           positioning={{ target: tooltip.target }}
           customCallout={{
             customizedCallout: (

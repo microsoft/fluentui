@@ -104,12 +104,14 @@ const scalarText = (value: unknown): string | undefined => {
 const labelValue = (value: unknown): string =>
   scalarText(value) ?? (value === null || value === undefined ? String(value) : '[Object]');
 
+// A bar's x2 can describe bin width, not its value axis. Continuous x/y bars default to vertical.
 const valueAxisFor = (encoding: Encoding, mark: RangedMark): 'x' | 'y' =>
   mark.orient
     ? mark.orient === 'horizontal'
       ? 'x'
       : 'y'
-    : (!isDiscrete(encoding.x) && isDiscrete(encoding.y)) || (encoding.x2 && !encoding.y2)
+    : (!isDiscrete(encoding.x) && isDiscrete(encoding.y)) ||
+      (encoding.x2 && !encoding.y2 && (mark.type !== 'bar' || !encoding.y))
     ? 'x'
     : 'y';
 

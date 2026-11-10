@@ -33,9 +33,12 @@ import { getVegaRenderRoute } from './VegaLiteRenderRoute';
 import type { VegaRenderRoute } from './VegaLiteRenderRoute';
 import type { VegaNativeChartKind } from './VegaLiteCapabilities';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
+import { VegaLiteChartTitle } from './VegaLiteChartPresentation';
 import type { useVegaDeclarativeChartStyles } from './useVegaDeclarativeChartStyles.styles';
 import type { ResponsiveChildProps } from '../ResponsiveContainer/ResponsiveContainer.types';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { ResponsiveContainer } from '../ResponsiveContainer/ResponsiveContainer';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Legends } from '../Legends/index';
 import { LineChart } from '../LineChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
@@ -66,7 +69,10 @@ type GeometryRouteProps = { route: Exclude<VegaRenderRoute, 'native'> };
 const ResponsiveRangedContent: ForwardRefComponent<
   VegaLiteRangedChartProps & ResponsiveChildProps & GeometryRouteProps
 > = React.forwardRef(
-  ({ spec, semanticMode, route, width, height, styles: _styles, shouldResize: _shouldResize, ...props }, ref) => {
+  (
+    { spec, semanticMode, route, width, height: _height, styles: _styles, shouldResize: _shouldResize, ...props },
+    ref,
+  ) => {
     const renderTooltip = React.useCallback(
       (row: Record<string, unknown>, unitSpec?: VegaLiteSpec) =>
         renderVegaTooltip(unitSpec ?? spec, row, { mode: semanticMode }),
@@ -84,7 +90,9 @@ const ResponsiveRangedContent: ForwardRefComponent<
         spec={spec}
         semanticMode={semanticMode}
         width={width}
-        height={height}
+        // The responsive host measures the whole title/plot/legend surface. Never feed
+        // that total back into SVG height: authored height defines the viewport only.
+        height={typeof spec.height === 'number' ? spec.height : undefined}
         ref={ref}
         renderTooltip={renderTooltip}
         getAriaLabel={getAriaLabel}
@@ -93,7 +101,6 @@ const ResponsiveRangedContent: ForwardRefComponent<
   },
 );
 ResponsiveRangedContent.displayName = 'ResponsiveRangedContent';
-const ResponsiveRangedChart = withResponsiveContainer(ResponsiveRangedContent);
 
 /** Module-owned responsive factories do not change identity between renders. */
 const vegaChartMap = {
@@ -178,8 +185,16 @@ const VegaNativeUnit: ForwardRefComponent<UnitProps> = React.forwardRef(
       }
     }, [view, mode, isDarkTheme]);
     // Each native unit owns its imperative ref; composed siblings never overwrite each other.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- The factory selects heterogeneous native props.
-    return <ChartRenderer {...(chartProps as any)} componentRef={chartRef} legendProps={legendProps} />;
+    return (
+      <ChartRenderer
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- The factory selects heterogeneous native props.
+        {...(chartProps as any)}
+        componentRef={chartRef}
+        // Only declarative charts opt out of native inline callouts inside clipped SVG hosts.
+        calloutProps={{ ...(chartProps.calloutProps as ChartPopoverProps), inline: false }}
+        legendProps={{ ...(chartProps.legendProps as object), ...legendProps }}
+      />
+    );
   },
 );
 VegaNativeUnit.displayName = 'VegaNativeUnit';
@@ -201,16 +216,20 @@ const VegaGeometryUnit: ForwardRefComponent<UnitProps & GeometryRouteProps> = Re
   ({ view, mode, legendProps, route }, _ref) => {
     const spec = React.useMemo(() => (view.hideLegend ? withoutGeometryLegends(view.spec) : view.spec), [view]);
     return (
-      <ResponsiveRangedChart
-        spec={spec}
-        route={route}
-        semanticMode={mode}
-        hideTitle={view.composed}
+      <ResponsiveContainer
         width={typeof spec.width === 'number' ? spec.width : undefined}
-        height={typeof spec.height === 'number' ? spec.height : undefined}
-        selectedLegends={legendProps.selectedLegends}
-        onLegendChange={legendProps.onChange}
-      />
+        // Intrinsic height includes the heading and real legend; width still observes the host.
+        height="auto"
+      >
+        <ResponsiveRangedContent
+          spec={spec}
+          route={route}
+          semanticMode={mode}
+          hideTitle={view.composed}
+          selectedLegends={legendProps.selectedLegends}
+          onLegendChange={legendProps.onChange}
+        />
+      </ResponsiveContainer>
     );
   },
 );
@@ -240,6 +259,11 @@ function renderView(view: VegaViewPlan, state: VegaDeclarativeChartState, classe
         {view.title && <h3 className={classes.header}>{view.title}</h3>}
         {chart}
       </div>
+    ) : route === 'native' && view.spec.title !== undefined ? (
+      <React.Fragment>
+        <VegaLiteChartTitle spec={view.spec} />
+        {chart}
+      </React.Fragment>
     ) : (
       chart
     );

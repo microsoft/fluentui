@@ -482,6 +482,7 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
       {...getIntrinsicElementProps('div', rest)}
       {...interaction.rootProps}
       ref={ref}
+      // Keep SVG viewport dimensions separate from an authored outer CSS height.
       style={{ ...style, width }}
       className={className}
       spec={spec}
@@ -511,24 +512,7 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
           : undefined
       }
       tooltip={showTooltip && active ? { target: active.target, content } : undefined}
-    >
-      {geometry.series.map(item => (
-        <path
-          key={item.key}
-          id={`${id}-series-${item.key}`}
-          className={classes.area}
-          data-centered-series={item.key}
-          data-legend={item.legend}
-          data-selected={selectedPoint(item.legend)}
-          d={item.d}
-          fill={colorFor(item.legend, item.spec)}
-          aria-hidden="true"
-          opacity={
-            selectedPoint(item.legend) ? (mark(item.spec).opacity ?? 1) * (mark(item.spec).fillOpacity ?? 1) : 0.25
-          }
-        />
-      ))}
-      {geometry.points
+      navigationOverlay={geometry.points
         .filter(point => !!point.row)
         .map(point => {
           const row = point.row!;
@@ -561,6 +545,23 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
             />
           );
         })}
+    >
+      {geometry.series.map(item => (
+        <path
+          key={item.key}
+          id={`${id}-series-${item.key}`}
+          className={classes.area}
+          data-centered-series={item.key}
+          data-legend={item.legend}
+          data-selected={selectedPoint(item.legend)}
+          d={item.d}
+          fill={colorFor(item.legend, item.spec)}
+          aria-hidden="true"
+          opacity={
+            selectedPoint(item.legend) ? (mark(item.spec).opacity ?? 1) * (mark(item.spec).fillOpacity ?? 1) : 0.25
+          }
+        />
+      ))}
     </VegaLiteChartShell>
   );
 });

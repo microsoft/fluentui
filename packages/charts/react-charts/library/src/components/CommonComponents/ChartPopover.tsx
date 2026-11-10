@@ -47,7 +47,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
       <Popover
         positioning={{ target, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
-        inline
+        inline={props.inline ?? true}
       >
         <PopoverSurface>
           {/** Given custom callout, then it will render */}
