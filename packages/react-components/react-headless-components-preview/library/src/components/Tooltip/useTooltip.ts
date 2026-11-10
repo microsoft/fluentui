@@ -37,6 +37,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const {
     children,
     content,
+    secondaryContent,
     positioning = 'above',
     withArrow = false,
     onVisibleChange,
@@ -45,17 +46,25 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     hideDelay = 250,
   } = props;
 
+  const child = getTriggerChild(children);
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  const secondaryContentSlot = slot.optional(secondaryContent, { elementType: 'span' });
+  const renderedVisible = visible && !(secondaryContentSlot && isPopupExpanded);
+
   const state: TooltipState = {
     positioning,
     showDelay,
     hideDelay,
     relationship,
-    visible,
-    shouldRenderTooltip: visible,
+    visible: renderedVisible,
+    shouldRenderTooltip: renderedVisible,
     withArrow,
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
@@ -64,6 +73,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       },
       elementType: 'div',
     }),
+    secondaryContent: secondaryContentSlot,
   };
 
   const positioningOptions = resolvePositioningShorthand(positioning);
@@ -93,7 +103,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
   // never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
-    open: visible,
+    open: renderedVisible,
     mode: 'hint',
     onOpenChange: nextOpen => {
       if (!nextOpen) {
@@ -108,7 +118,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
         ignoreNextFocusEventRef.current = false;
@@ -117,11 +126,11 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
       setDelayTimeout(() => {
         setVisible(ev, { visible: true });
-      }, state.showDelay);
+      }, showDelay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay],
+    [setDelayTimeout, setVisible, showDelay],
   );
 
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
@@ -151,9 +160,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      let delay = state.hideDelay;
+      let delay = hideDelay;
 
       if (ev.type === 'blur') {
         // Hide immediately when losing focus
@@ -173,7 +181,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
+    [setDelayTimeout, setVisible, hideDelay, targetDocument],
   );
 
   const onPointerUpTrigger = React.useCallback(
@@ -196,18 +204,21 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // eslint-disable-next-line react-hooks/immutability
   state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
-  const child = getTriggerChild(children);
-
   const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isPopupExpanded =
-    child?.props?.['aria-haspopup'] &&
-    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
 
   if (relationship === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerAriaProps['aria-label'] = state.content.children;
-    } else {
+    // Use rendered secondary content for native naming semantics, with a string fallback during SSR.
+    if (typeof state.content.children === 'string' && (!state.secondaryContent || isServerSideRender)) {
+      const secondaryText = state.secondaryContent?.children;
+      const secondaryHidden = state.secondaryContent?.['aria-hidden'];
+      triggerAriaProps['aria-label'] =
+        typeof secondaryText === 'string' && secondaryHidden !== true && secondaryHidden !== 'true'
+          ? `${state.content.children} ${secondaryText}`
+          : state.content.children;
+    } else if (
+      !state.secondaryContent ||
+      (child?.props?.['aria-label'] === undefined && child?.props?.['aria-labelledby'] === undefined)
+    ) {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       // eslint-disable-next-line react-hooks/immutability
@@ -221,8 +232,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
-  if (isServerSideRender || isPopupExpanded) {
+  // Case 2: Preserve existing popup rendering without the secondary slot.
+  if (isServerSideRender || (isPopupExpanded && !state.secondaryContent)) {
     // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = false;
   }

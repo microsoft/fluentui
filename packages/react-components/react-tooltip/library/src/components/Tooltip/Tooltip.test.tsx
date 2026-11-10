@@ -1,11 +1,12 @@
 import * as React from 'react';
+import '@testing-library/jest-dom';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type { RenderResult } from '@testing-library/react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleTooltip(result: RenderResult) {
@@ -42,6 +43,7 @@ describe('Tooltip', () => {
       'component-handles-classname',
     ],
     testOptions: {
+      'has-static-classnames': [{ props: { secondaryContent: 'Ctrl+B' } }],
       'consistent-callback-args': {
         legacyCallbacks: ['onVisibleChange'],
       },
@@ -50,6 +52,169 @@ describe('Tooltip', () => {
 
   afterEach(() => {
     resetIdsForTests();
+  });
+
+  describe('secondary content', () => {
+    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])(
+      'combines labels using rendered content %p',
+      secondaryContent => {
+        const result = render(
+          <Tooltip content="Bold" secondaryContent={secondaryContent} relationship="label">
+            <button />
+          </Tooltip>,
+        );
+        expect(result.getByRole('button', { name: 'Bold Ctrl+B' })).toBeTruthy();
+        expect(result.getByRole('button')).toHaveAttribute('aria-labelledby', getByRoleTooltip(result).id);
+      },
+    );
+
+    it('combines descriptions without replacing the trigger name', () => {
+      const result = render(
+        <Tooltip
+          content={<strong>Shared</strong>}
+          secondaryContent={<span>Everyone in your organization</span>}
+          relationship="description"
+        >
+          <button>Sharing settings</button>
+        </Tooltip>,
+      );
+      expect(
+        result.getByRole('button', {
+          name: 'Sharing settings',
+          description: 'Shared Everyone in your organization',
+        }),
+      ).toBeTruthy();
+    });
+
+    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])('preserves authored names with %p', secondaryContent => {
+      const result = render(
+        <>
+          <span id="authored-name">Authored name</span>
+          <Tooltip content="Bold" secondaryContent={secondaryContent} relationship="label">
+            <button aria-label="Toggle bold formatting" />
+          </Tooltip>
+          <Tooltip content="Bold" secondaryContent={secondaryContent} relationship="label">
+            <button aria-labelledby="authored-name" />
+          </Tooltip>
+        </>,
+      );
+      expect(result.getByRole('button', { name: 'Toggle bold formatting' })).not.toHaveAttribute('aria-labelledby');
+      expect(result.getByRole('button', { name: 'Authored name' })).toHaveAttribute('aria-labelledby', 'authored-name');
+    });
+
+    it('preserves an authored description reference', () => {
+      const result = render(
+        <>
+          <span id="authored-description">Authored description</span>
+          <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="description">
+            <button aria-describedby="authored-description">Bold</button>
+          </Tooltip>
+        </>,
+      );
+      expect(result.getByRole('button', { description: 'Authored description' })).toBeTruthy();
+    });
+
+    it('supports slot props and preserves the arrow outside the text layout', () => {
+      const ref = React.createRef<HTMLSpanElement>();
+      const result = render(
+        <Tooltip
+          visible
+          withArrow
+          content="Bold"
+          secondaryContent={{ children: 'Ctrl+B', className: 'custom-secondary', ref, lang: 'en' }}
+          relationship="label"
+        >
+          <button />
+        </Tooltip>,
+      );
+      const tooltip = getByRoleTooltip(result);
+      expect(ref.current).toHaveClass('fui-Tooltip__secondaryContent', 'custom-secondary');
+      expect(ref.current).toHaveAttribute('lang', 'en');
+      expect(tooltip.children).toHaveLength(2);
+      expect(tooltip.lastElementChild).toContainElement(ref.current);
+    });
+
+    it.each([undefined, null])('preserves the original content DOM with secondaryContent=%p', secondaryContent => {
+      const result = render(
+        <Tooltip visible content="Bold" secondaryContent={secondaryContent} relationship="label">
+          <button />
+        </Tooltip>,
+      );
+      const tooltip = getByRoleTooltip(result);
+      expect(tooltip.childNodes).toHaveLength(1);
+      expect(tooltip.firstChild?.nodeType).toBe(Node.TEXT_NODE);
+      expect(result.getByRole('button')).toHaveAttribute('aria-label', 'Bold');
+    });
+
+    it('supports empty secondary text without changing the accessible name', () => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent="" relationship="label">
+          <button />
+        </Tooltip>,
+      );
+      expect(result.getByRole('button', { name: 'Bold' })).toBeTruthy();
+    });
+
+    it('does not create naming attributes for an inaccessible tooltip', () => {
+      const result = render(
+        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="inaccessible">
+          <button>Authored name</button>
+        </Tooltip>,
+      );
+      expect(result.getByRole('button', { name: 'Authored name' })).toBeTruthy();
+      expect(result.getByRole('button')).not.toHaveAttribute('aria-labelledby');
+      expect(result.getByRole('button')).not.toHaveAttribute('aria-describedby');
+      expect(queryByRoleTooltip(result)).toBeNull();
+    });
+
+    it.each(['label', 'description'] as const)(
+      'keeps %s references valid while an expanded popup suppresses visibility',
+      relationship => {
+        const result = render(
+          <Tooltip visible content="Bold" secondaryContent="Ctrl+B" relationship={relationship}>
+            <button aria-haspopup="menu" aria-expanded />
+          </Tooltip>,
+        );
+        const tooltip = getByRoleTooltip(result);
+        expect(getComputedStyle(tooltip).display).toBe('none');
+        expect(result.getByRole('button')).toHaveAttribute(
+          relationship === 'label' ? 'aria-labelledby' : 'aria-describedby',
+          tooltip.id,
+        );
+      },
+    );
+
+    it.each(['label', 'description'] as const)('preserves no-slot expanded-popup DOM for %s', relationship => {
+      const result = render(
+        <Tooltip visible content={<strong>Bold</strong>} relationship={relationship}>
+          <button aria-haspopup="menu" aria-expanded />
+        </Tooltip>,
+      );
+      expect(queryByRoleTooltip(result)).toBeNull();
+    });
+
+    it('hydrates a server label before using the rendered secondary content', () => {
+      const container = document.createElement('div');
+      container.innerHTML = '<button aria-label="Bold Ctrl+B">Trigger</button>';
+      document.body.appendChild(container);
+      const onError = jest.spyOn(console, 'error');
+      const result = render(
+        <SSRProvider>
+          <Tooltip
+            content={{ children: 'Bold', id: 'hydrated-tooltip' }}
+            secondaryContent="Ctrl+B"
+            relationship="label"
+          >
+            <button>Trigger</button>
+          </Tooltip>
+        </SSRProvider>,
+        { container, hydrate: true },
+      );
+      expect(result.getByRole('button', { name: 'Bold Ctrl+B' })).toBeTruthy();
+      expect(result.getByRole('button')).toHaveAttribute('aria-labelledby', 'hydrated-tooltip');
+      expect(onError).not.toHaveBeenCalled();
+      onError.mockRestore();
+    });
   });
 
   it('renders only aria-label for a simple label tooltip', () => {

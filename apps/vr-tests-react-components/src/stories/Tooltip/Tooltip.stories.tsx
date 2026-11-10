@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react-webpack5';
 import { Tooltip } from '@fluentui/react-tooltip';
 
 import { useStyles } from './utils';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, type StoryParameters } from 'storywright';
 
 export default {
@@ -96,3 +96,55 @@ export const OverflowWrapWithArrow = () => (
   </div>
 );
 OverflowWrapWithArrow.storyName = 'overflow-wrap withArrow';
+
+export const SecondaryContent = () => (
+  <div className={useStyles().wrapper}>
+    <Tooltip visible withArrow content="Bold" secondaryContent="Ctrl+B" relationship="label">
+      <button>Target</button>
+    </Tooltip>
+  </div>
+);
+
+export const SecondaryContentDarkMode = getStoryVariant(SecondaryContent, DARK_MODE);
+export const SecondaryContentHighContrast = getStoryVariant(SecondaryContent, HIGH_CONTRAST);
+export const SecondaryContentRtl = getStoryVariant(SecondaryContent, RTL);
+
+export const SecondaryContentInverted = () => (
+  <div className={useStyles().wrapper}>
+    <Tooltip visible withArrow appearance="inverted" content="Bold" secondaryContent="Ctrl+B" relationship="label">
+      <button>Target</button>
+    </Tooltip>
+  </div>
+);
+
+export const SecondaryContentInvertedDarkMode = getStoryVariant(SecondaryContentInverted, DARK_MODE);
+export const SecondaryContentInvertedHighContrast = getStoryVariant(SecondaryContentInverted, HIGH_CONTRAST);
+
+export const SecondaryContentWrapping = () => (
+  <div className={useStyles().wrapper}>
+    <Tooltip
+      visible
+      withArrow
+      content={{ children: 'Shared', style: { maxWidth: '140px' } }}
+      secondaryContent="Available to everyone in this organization"
+      relationship="description"
+    >
+      <button>Target</button>
+    </Tooltip>
+  </div>
+);
+
+export const SecondaryContentOverflowWrap = () => (
+  <div className={useStyles().wrapper}>
+    <Tooltip
+      visible
+      content="Shared"
+      secondaryContent="Thissecondarycontentislongenoughtobebrokenintoanewline"
+      relationship="description"
+    >
+      <button>Target</button>
+    </Tooltip>
+  </div>
+);
+
+export const SecondaryContentWrappingRtl = getStoryVariant(SecondaryContentWrapping, RTL);

@@ -9,6 +9,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
   content: 'fui-Tooltip__content',
+  secondaryContent: 'fui-Tooltip__secondaryContent',
 };
 
 /**
@@ -51,6 +52,34 @@ const useStyles = makeStyles({
   },
 
   arrow: createArrowStyles({ arrowHeight }),
+
+  contentLayout: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    columnGap: tokens.spacingHorizontalS,
+    rowGap: tokens.spacingVerticalXXS,
+  },
+
+  primaryContent: {
+    minWidth: 0,
+    flexGrow: 1,
+  },
+
+  secondaryContent: {
+    minWidth: 0,
+    maxWidth: '100%',
+    marginInlineStart: 'auto',
+    whiteSpace: 'normal',
+    color: tokens.colorNeutralForeground3,
+
+    '@media (forced-colors: active)': {
+      color: 'inherit',
+    },
+  },
+
+  secondaryContentInverted: {
+    color: tokens.colorNeutralForegroundStaticInverted,
+  },
 });
 
 /**
@@ -71,6 +100,20 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
 
   // eslint-disable-next-line react-hooks/immutability
   state.arrowClassName = styles.arrow;
+
+  if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.contentLayoutClassName = styles.contentLayout;
+    // eslint-disable-next-line react-hooks/immutability
+    state.primaryContentClassName = styles.primaryContent;
+    // eslint-disable-next-line react-hooks/immutability
+    state.secondaryContent.className = mergeClasses(
+      tooltipClassNames.secondaryContent,
+      styles.secondaryContent,
+      state.appearance === 'inverted' && styles.secondaryContentInverted,
+      state.secondaryContent.className,
+    );
+  }
 
   return state;
 };

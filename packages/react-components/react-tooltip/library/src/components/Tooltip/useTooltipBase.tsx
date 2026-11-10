@@ -49,6 +49,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const {
     children,
     content,
+    secondaryContent,
     withArrow = false,
     positioning = 'above',
     onVisibleChange,
@@ -58,19 +59,27 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     mountNode,
   } = props;
 
+  const child = getTriggerChild(children);
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  const secondaryContentSlot = slot.optional(secondaryContent, { elementType: 'span' });
+  const renderedVisible = visible && !(secondaryContentSlot && isPopupExpanded);
+
   const state: TooltipBaseState = {
     withArrow,
     positioning,
     showDelay,
     hideDelay,
     relationship,
-    visible,
+    visible: renderedVisible,
     hidden,
-    shouldRenderTooltip: visible,
+    shouldRenderTooltip: renderedVisible,
     mountNode,
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
@@ -78,6 +87,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
       },
       elementType: 'div',
     }),
+    secondaryContent: secondaryContentSlot,
   };
 
   state.content.id = useId('tooltip-', state.content.id);
@@ -140,7 +150,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   // as the visibleTooltip with the TooltipContext.
   // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
-    if (visible) {
+    if (renderedVisible) {
       const thisTooltip = {
         hide: (ev?: KeyboardEvent) => setVisible(undefined, { visible: false, documentKeyboardEvent: ev }),
       };
@@ -184,7 +194,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
         targetDocument?.removeEventListener('visibilitychange', onDocumentVisibilityChange);
       };
     }
-  }, [context, targetDocument, visible, setVisible]);
+  }, [context, targetDocument, renderedVisible, setVisible]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
@@ -192,7 +202,6 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
         ignoreNextFocusEventRef.current = false;
@@ -200,7 +209,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
       }
 
       // Show immediately if another tooltip is already visible
-      const delay = context.visibleTooltip ? 0 : state.showDelay;
+      const delay = context.visibleTooltip ? 0 : showDelay;
 
       setDelayTimeout(() => {
         setVisible(ev, { visible: true });
@@ -208,7 +217,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay, context],
+    [setDelayTimeout, setVisible, showDelay, context],
   );
 
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
@@ -238,9 +247,8 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      let delay = state.hideDelay;
+      let delay = hideDelay;
 
       if (ev.type === 'blur') {
         // Hide immediately when losing focus
@@ -260,7 +268,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
+    [setDelayTimeout, setVisible, hideDelay, targetDocument],
   );
 
   // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
@@ -274,18 +282,21 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
-  const child = getTriggerChild(children);
-
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isPopupExpanded =
-    child?.props?.['aria-haspopup'] &&
-    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
 
   if (relationship === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerAriaProps['aria-label'] = state.content.children;
-    } else {
+    // Use rendered secondary content for native naming semantics, with a string fallback during SSR.
+    if (typeof state.content.children === 'string' && (!state.secondaryContent || isServerSideRender)) {
+      const secondaryText = state.secondaryContent?.children;
+      const secondaryHidden = state.secondaryContent?.['aria-hidden'];
+      triggerAriaProps['aria-label'] =
+        typeof secondaryText === 'string' && secondaryHidden !== true && secondaryHidden !== 'true'
+          ? `${state.content.children} ${secondaryText}`
+          : state.content.children;
+    } else if (
+      !state.secondaryContent ||
+      (child?.props?.['aria-label'] === undefined && child?.props?.['aria-labelledby'] === undefined)
+    ) {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       // eslint-disable-next-line react-hooks/immutability
@@ -299,8 +310,8 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
-  if (isServerSideRender || isPopupExpanded) {
+  // Case 2: Preserve existing popup rendering without the secondary slot.
+  if (isServerSideRender || (isPopupExpanded && !state.secondaryContent)) {
     // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = false;
   }

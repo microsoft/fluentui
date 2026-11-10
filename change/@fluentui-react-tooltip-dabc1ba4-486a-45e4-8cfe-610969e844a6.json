@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(tooltip): add optional secondary content with accessible labels, descriptions, and wrapping",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "paulmardling@microsoft.com"
+}
