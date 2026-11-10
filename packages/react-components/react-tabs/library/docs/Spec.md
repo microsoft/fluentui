@@ -234,7 +234,7 @@ An icon only tab is displayed when the icon slot is filled and tab content is om
 
 ### Tab
 
-See API at [Tab.types.ts](./src/components/Tab/Tab.types.ts).
+See API at [Tab.types.ts](../src/components/Tab/Tab.types.ts).
 
 Notes:
 
@@ -243,7 +243,7 @@ Notes:
 
 ### TabList
 
-See API at [TabList.types.ts](./src/components/TabList/TabList.types.ts).
+See API at [TabList.types.ts](../src/components/TabList/TabList.types.ts).
 
 Notes:
 
