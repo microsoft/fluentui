@@ -1198,7 +1198,7 @@ describe('Overflow', () => {
   it(`should overflow items with flex gap`, () => {
     const mapHelper = new Array(6).fill(0).map((_, i) => i);
     mount(
-      <Container style={{ gap: 10 }}>
+      <Container style={{ gap: 10 }} measureGap>
         {mapHelper.map(i => (
           <Item key={i} id={i.toString()}>
             {i}
@@ -1209,6 +1209,7 @@ describe('Overflow', () => {
     );
     const overflowCases = [
       { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
       { containerSize: 230, overflowCount: 3 },
       { containerSize: 170, overflowCount: 4 },
       { containerSize: 110, overflowCount: 5 },
@@ -1223,7 +1224,7 @@ describe('Overflow', () => {
   it(`should overflow items with margin`, () => {
     const mapHelper = new Array(6).fill(0).map((_, i) => i);
     mount(
-      <Container>
+      <Container measureGap>
         {mapHelper.map((i, index) => (
           <Item style={{ marginInlineStart: index > 0 ? 10 : 0 }} key={i} id={i.toString()}>
             {i}
@@ -1234,6 +1235,7 @@ describe('Overflow', () => {
     );
     const overflowCases = [
       { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
       { containerSize: 230, overflowCount: 3 },
       { containerSize: 170, overflowCount: 4 },
       { containerSize: 110, overflowCount: 5 },
@@ -1245,10 +1247,10 @@ describe('Overflow', () => {
     });
   });
 
-  it(`should overflow items with gap and`, () => {
+  it(`should overflow items with gap and margin`, () => {
     const mapHelper = new Array(6).fill(0).map((_, i) => i);
     mount(
-      <Container style={{ gap: 5 }}>
+      <Container style={{ gap: 5 }} measureGap>
         {mapHelper.map((i, index) => (
           <Item style={{ marginInlineStart: index > 0 ? 5 : 0 }} key={i} id={i.toString()}>
             {i}
@@ -1259,6 +1261,7 @@ describe('Overflow', () => {
     );
     const overflowCases = [
       { containerSize: 290, overflowCount: 2 },
+      { containerSize: 280, overflowCount: 3 },
       { containerSize: 230, overflowCount: 3 },
       { containerSize: 170, overflowCount: 4 },
       { containerSize: 110, overflowCount: 5 },
@@ -1267,6 +1270,83 @@ describe('Overflow', () => {
     overflowCases.forEach(({ overflowCount, containerSize }) => {
       setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it('should leave spacing measurement disabled by default', () => {
+    mount(
+      <Container size={280} style={{ gap: 10 }}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+  });
+
+  it('should account for overlapping item margins', () => {
+    mount(
+      <Container size={250} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ marginInlineStart: i > 0 ? -10 : 0 }}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  const spacingLayouts: { name: string; axis: OverflowAxis; style: React.CSSProperties }[] = [
+    { name: 'LTR', axis: 'horizontal', style: {} },
+    { name: 'RTL', axis: 'horizontal', style: { direction: 'rtl' } },
+    { name: 'row-reverse', axis: 'horizontal', style: { flexDirection: 'row-reverse' } },
+    {
+      name: 'RTL row-reverse',
+      axis: 'horizontal',
+      style: { direction: 'rtl', flexDirection: 'row-reverse' },
+    },
+    { name: 'vertical', axis: 'vertical', style: {} },
+    { name: 'column-reverse', axis: 'vertical', style: { flexDirection: 'column-reverse' } },
+  ];
+
+  spacingLayouts.forEach(({ name, axis, style }) => {
+    it(`should measure spacing in ${name} layouts`, () => {
+      mount(
+        <Container size={350} overflowAxis={axis} style={{ gap: 10, ...style }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={i.toString()}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      const setSize = axis === 'horizontal' ? setContainerWidth : setContainerHeight;
+      [
+        { containerSize: 350, overflowCount: 0 },
+        { containerSize: 290, overflowCount: 2 },
+        { containerSize: 280, overflowCount: 3 },
+        { containerSize: 230, overflowCount: 3 },
+        { containerSize: 220, overflowCount: 4 },
+        { containerSize: 350, overflowCount: 0 },
+      ].forEach(({ containerSize, overflowCount }) => {
+        setSize(containerSize);
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', overflowCount);
+        if (overflowCount) {
+          cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+        } else {
+          cy.get(`[${selectors.menu}]`).should('not.exist');
+        }
+      });
     });
   });
 

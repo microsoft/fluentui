@@ -127,36 +127,31 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   function gapSize(): number {
     const elements = Array.from(visibleItemQueue, id => overflowItems[id].element);
 
-    if (Object.keys(overflowDividers).length > 0) {
-      const visibleDividers = Object.entries(overflowDividers)
-        .filter(([id]) => groupManager.groupVisibility()[id] !== 'hidden')
-        .map(([, divider]) => divider.element);
-
-      elements.push(...visibleDividers);
+    for (const [id, divider] of Object.entries(overflowDividers)) {
+      if (groupManager.groupVisibility()[id] !== 'hidden') {
+        elements.push(divider.element);
+      }
     }
 
     if (hasOverflowItems() && overflowMenu) {
       elements.push(overflowMenu);
     }
 
+    const vertical = options.overflowAxis === 'vertical';
+    const start = vertical ? 'top' : 'left';
+    const end = vertical ? 'bottom' : 'right';
+
     return elements
-      .sort((a, b) => {
-        // Node.DOCUMENT_POSITION_FOLLOWING = 4
-        // eslint-disable-next-line no-bitwise
-        return a.compareDocumentPosition(b) & 4 ? -1 : 1;
-      })
-      .reduce((totalGapSize, el, i, arr) => {
+      .map(element => element.getBoundingClientRect())
+      .sort((a, b) => a[start] - b[start])
+      .reduce((totalGapSize, rect, i, rects) => {
         if (i === 0) {
           // We deliberately don't measure the spacing between first and last elements and the container
           // Space at the ends of a container can be either be container padding or collapsed empty space
           return totalGapSize;
         }
 
-        // If perf becomes an issue we can extend the current sizeCache and cache rects
-        const current = el.getBoundingClientRect();
-        const prev = arr[i - 1].getBoundingClientRect();
-
-        return totalGapSize + (current.left - prev.right);
+        return totalGapSize + (rect[start] - rects[i - 1][end]);
       }, 0);
   }
 

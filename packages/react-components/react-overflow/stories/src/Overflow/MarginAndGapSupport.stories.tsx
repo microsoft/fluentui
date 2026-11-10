@@ -12,12 +12,13 @@ import {
   mergeClasses,
   Overflow,
   OverflowItem,
-  OverflowItemProps,
+  type OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
   Checkbox,
   type CheckboxProps,
   type OverflowImperativeRef,
+  type JSXElement,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -29,42 +30,41 @@ const useStyles = makeStyles({
   },
 
   gap: {
-    gap: '10px',
+    gap: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 
   margin: {
-    margin: '10px',
+    margin: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 
   resizableArea: {
     minWidth: '200px',
     maxWidth: '1000px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '20px 10px 10px 10px',
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandBackground}`,
+    padding: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge} ${tokens.spacingVerticalMNudge}`,
     position: 'relative',
     resize: 'horizontal',
     '::after': {
       content: `'Resizable Area'`,
       position: 'absolute',
-      padding: '1px 4px 1px',
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
+      padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS}`,
+      top: `calc(-1 * ${tokens.strokeWidthThick})`,
+      left: `calc(-1 * ${tokens.strokeWidthThick})`,
+      fontFamily: tokens.fontFamilyMonospace,
+      fontSize: tokens.fontSizeBase300,
+      fontWeight: tokens.fontWeightBold,
+      lineHeight: tokens.lineHeightBase300,
       color: tokens.colorNeutralForegroundOnBrand,
       backgroundColor: tokens.colorBrandBackground,
     },
   },
 });
 
-export const MarginAndGapSupport = () => {
+export const MarginAndGapSupport = (): JSXElement => {
   const styles = useStyles();
   const [useGap, setUseGap] = React.useState(true);
   const [useMargin, setUseMargin] = React.useState(false);
-  const imperativeRef = React.useRef<OverflowImperativeRef>();
+  const imperativeRef = React.useRef<OverflowImperativeRef | null>(null);
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
 
@@ -85,7 +85,13 @@ export const MarginAndGapSupport = () => {
         <div className={mergeClasses(styles.container, styles.resizableArea, useGap && styles.gap)}>
           {itemIds.map((i, index) => (
             <OverflowItem key={i} id={i}>
-              <Button style={{ marginLeft: useMargin && index > 0 ? 20 : 0 }}>Item {i}</Button>
+              <Button
+                style={{
+                  marginLeft: useMargin && index > 0 ? tokens.spacingHorizontalXL : tokens.spacingHorizontalNone,
+                }}
+              >
+                Item {i}
+              </Button>
             </OverflowItem>
           ))}
           <OverflowMenu useMargin={useMargin} itemIds={itemIds} />
@@ -117,7 +123,10 @@ const OverflowMenu: React.FC<{ itemIds: string[]; useMargin: boolean }> = ({ ite
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <MenuButton style={{ marginLeft: useMargin ? 20 : 0 }} ref={ref}>
+        <MenuButton
+          style={{ marginLeft: useMargin ? tokens.spacingHorizontalXL : tokens.spacingHorizontalNone }}
+          ref={ref}
+        >
           +{overflowCount} items
         </MenuButton>
       </MenuTrigger>
@@ -137,8 +146,8 @@ MarginAndGapSupport.parameters = {
   docs: {
     description: {
       story: [
-        'The `Overflow` component allows you to opt-in for a more advandced measuring approach.',
-        'When the `measureGap` prop is set the gap spacing between overflow items will dynamically be calculated.'
+        'The `Overflow` component allows you to opt in to spacing measurement with `measureGap`.',
+        'Spacing between items is measured along the overflow axis in visual order, including RTL and reversed layouts.',
       ].join('\n'),
     },
   },
