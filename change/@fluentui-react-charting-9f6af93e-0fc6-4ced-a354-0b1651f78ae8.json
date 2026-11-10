@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate declarative chart colors and schema-driven font, shadow, padding, alignment, and dimension styles",
+  "comment": "fix: validate declarative chart colors and schema-driven styles while preserving supported font-weight keywords",
   "packageName": "@fluentui/react-charting",
   "email": "v-baambati@microsoft.com"
 }

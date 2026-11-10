@@ -258,6 +258,28 @@ describe('DeclarativeChart SSR colors', () => {
   );
 
   describe.each([false, true])('title styles with multiple plots: %s', multiPlot => {
+    test.each(['normal', 'bold', 'bolder', 'lighter'] as const)('preserves title font weight %s during SSR', weight => {
+      const plotlySchema: PlotlySchema = {
+        data: [
+          { type: 'pie', labels: ['A'], values: [1], domain: { x: [0, multiPlot ? 0.4 : 1], y: [0, 1] } },
+          ...(multiPlot
+            ? [{ type: 'pie' as const, labels: ['B'], values: [2], domain: { x: [0.6, 1], y: [0, 1] } }]
+            : []),
+        ],
+        layout: { title: { text: 'Title', font: { weight } } },
+      };
+      const html = renderToString(
+        <SSRProvider>
+          <DeclarativeChart chartSchema={{ plotlySchema }} />
+        </SSRProvider>,
+      );
+      expect(html).toContain('Title');
+      expect(html).toContain(`font-weight:${weight}`);
+      if (multiPlot) {
+        expect(html).toMatch(new RegExp(`<div[^>]*font-weight:${weight}[^>]*>Title</div>`));
+      }
+    });
+
     test.each(['family', 'size', 'weight', 'shadow', 'color'])('rejects injected title font %s', field => {
       const plotlySchema: PlotlySchema = JSON.parse(
         JSON.stringify({

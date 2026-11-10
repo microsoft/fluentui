@@ -711,6 +711,54 @@ describe('VegaLiteSchemaAdapter', () => {
   });
 
   describe('getVegaLiteTitles', () => {
+    test.each([
+      { fontWeight: 1, expected: 1 },
+      { fontWeight: 600, expected: 600 },
+      { fontWeight: 1000, expected: 1000 },
+      { fontWeight: 'normal', expected: 400 },
+      { fontWeight: 'bold', expected: 700 },
+      { fontWeight: 'lighter', expected: 300 },
+      { fontWeight: 'bolder', expected: 600 },
+      { fontWeight: 'BOLD', expected: 700 },
+    ])('preserves the existing title weight mapping for $fontWeight', ({ fontWeight, expected }) => {
+      const spec: VegaLiteSpec = {
+        title: { text: 'Title', fontWeight },
+        mark: 'line',
+        data: { values: [{ x: 1, y: 2 }] },
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      };
+
+      expect(getVegaLiteTitles(spec).titleStyles?.titleFont?.weight).toBe(expected);
+      expect(spec.title).toEqual({ text: 'Title', fontWeight });
+    });
+
+    test.each([
+      0,
+      -1,
+      1001,
+      NaN,
+      Infinity,
+      'unknown',
+      'constructor',
+      '__proto__',
+      'bold; --css-injection-sentinel:731',
+    ])('omits invalid title font weight %s', fontWeight => {
+      const spec: VegaLiteSpec = {
+        title: { text: 'Title', fontWeight },
+        mark: 'line',
+        data: { values: [{ x: 1, y: 2 }] },
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      };
+
+      expect(getVegaLiteTitles(spec).titleStyles?.titleFont?.weight).toBeUndefined();
+    });
+
     test('Should extract chart and axis titles', () => {
       const spec: VegaLiteSpec = {
         title: 'Sales Over Time',

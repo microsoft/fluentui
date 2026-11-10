@@ -396,7 +396,7 @@ export interface Font {
     family: string;
     shadow: string;
     size: number;
-    weight: number;
+    weight: number | 'normal' | 'bold' | 'bolder' | 'lighter';
 }
 
 // @public

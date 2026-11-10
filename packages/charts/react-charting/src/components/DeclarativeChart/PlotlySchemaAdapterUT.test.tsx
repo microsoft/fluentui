@@ -91,8 +91,15 @@ describe('schema CSS styles', () => {
     expect(getValidStyleLength(value)).toBe(expected);
   });
 
-  test.each([1, 600, 1000, 'normal', 'bold', 'bolder', 'lighter'])('preserves font weight %s', weight => {
+  test.each([1, 600, 1000, 'normal', 'bold', 'bolder', 'lighter'] as const)('preserves font weight %s', weight => {
     expect(getValidFontWeight(weight)).toBe(weight);
+    expect(getValidFont({ weight })?.weight).toBe(weight);
+    const schema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1] }],
+      layout: { title: { text: 'Title', font: { weight } } },
+    };
+    const result = transformPlotlyJsonToDonutProps(schema, false, { current: new Map() }, 'default');
+    expect(result.titleStyles?.titleFont?.weight).toBe(weight);
   });
 
   test.each([

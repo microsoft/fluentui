@@ -65,7 +65,7 @@ export const getValidFont = (font: Partial<Font> | undefined): Partial<Font> | u
         color: getValidColor(font.color),
         ...(font.family !== undefined ? { family: getValidFontFamily(font.family) } : {}),
         ...(font.size !== undefined ? { size: getValidStyleNumber(font.size, 1) } : {}),
-        ...(font.weight !== undefined ? { weight: getValidStyleNumber(font.weight, 1, 1000) } : {}),
+        ...(font.weight !== undefined ? { weight: getValidFontWeight(font.weight) } : {}),
         ...(font.shadow !== undefined ? { shadow: getValidShadow(font.shadow) } : {}),
       }
     : undefined;

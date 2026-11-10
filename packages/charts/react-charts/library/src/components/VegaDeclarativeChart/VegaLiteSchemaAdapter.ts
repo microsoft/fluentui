@@ -51,6 +51,7 @@ import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
+import { getValidFontWeight } from '../DeclarativeChart/PlotlyStyleAdapter';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.
@@ -2086,20 +2087,18 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
     if (titleObj.fontSize) {
       titleFont.size = titleObj.fontSize;
     }
-    if (titleObj.fontWeight) {
-      // Convert string weights to numbers (Font interface expects number)
-      const weight = titleObj.fontWeight;
-      if (typeof weight === 'string') {
-        const weightMap: Record<string, number> = {
-          normal: 400,
-          bold: 700,
-          lighter: 300,
-          bolder: 600,
-        };
-        titleFont.weight = weightMap[weight.toLowerCase()] || 400;
-      } else {
-        titleFont.weight = weight;
-      }
+    const weight = getValidFontWeight(
+      typeof titleObj.fontWeight === 'string' ? titleObj.fontWeight.toLowerCase() : titleObj.fontWeight,
+    );
+    if (weight !== undefined) {
+      // Preserve Vega's existing keyword-to-number mappings.
+      const weightMap = {
+        normal: 400,
+        bold: 700,
+        lighter: 300,
+        bolder: 600,
+      };
+      titleFont.weight = typeof weight === 'string' ? weightMap[weight] : weight;
     }
     if (titleObj.color) {
       titleFont.color = titleObj.color;
