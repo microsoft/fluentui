@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-tag-picker
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.8)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.10.7..@fluentui/react-tag-picker_v9.10.8)
+
+### Patches
+
+- fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- Bump @fluentui/react-combobox to v9.17.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tags to v9.9.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.7)
+
+Mon, 02 Nov 2026 13:22:59 GMT
+
+### Patches
+
+- fix: keep the measured aside width instead of cancelling its update after mount ([PR #36986](https://github.com/microsoft/fluentui/pull/36986) by dmytrokirpa@microsoft.com)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.6)
 
