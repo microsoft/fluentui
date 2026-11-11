@@ -412,18 +412,29 @@ describe('Legends - dynamic overflow', () => {
     expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
   });
 
-  it('opens the overflow menu without warning about duplicate Menu and MenuList props', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  it('opens the overflow menu without the duplicate Menu and MenuList props warning', () => {
+    // Observe warnings rather than suppress them, so an unrelated warning is still reported.
+    const warnSpy = jest.spyOn(console, 'warn');
     try {
       const result = render(<Legends legends={legends} overflowText="Overflow Items" />);
 
       fireEvent.click(result.getByText('+14 Overflow Items'));
 
       expect(document.querySelector('div[role="menu"]')).not.toBeNull();
-      const menuPropsWarnings = warnSpy.mock.calls.filter(call =>
-        String(call[0]).includes('both MenuList and Menu props'),
+
+      // The popover must still render every overflowed legend with its aria metadata intact,
+      // so this guards the prop move itself and not only the absence of the warning.
+      const checkboxItems = document.querySelectorAll('div[role="menuitemcheckbox"]');
+      expect(checkboxItems.length).toBe(14);
+      checkboxItems.forEach(item => {
+        expect(item.getAttribute('aria-setsize')).toBe('17');
+        expect(item.getAttribute('aria-posinset')).not.toBeNull();
+      });
+
+      const duplicatePropsWarnings = warnSpy.mock.calls.filter(call =>
+        /MenuList and Menu props/i.test(String(call[0])),
       );
-      expect(menuPropsWarnings).toHaveLength(0);
+      expect(duplicatePropsWarnings).toHaveLength(0);
     } finally {
       warnSpy.mockRestore();
     }
