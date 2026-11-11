@@ -4,7 +4,7 @@
 
 ```ts
 
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
@@ -21,10 +21,7 @@ export { OnVisibleChangeData }
 export const renderTooltip: (state: TooltipState) => JSXElement;
 
 // @public
-export const Tooltip: {
-    (props: TooltipProps): JSXElement;
-    displayName: string;
-};
+export const Tooltip: ComponentWithoutRef<TooltipProps>;
 
 // @public
 export type TooltipProps = Omit<TooltipBaseProps, 'children' | 'mountNode' | 'positioning'> & TriggerProps<TooltipTriggerProps> & {
