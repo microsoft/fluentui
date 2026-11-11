@@ -113,7 +113,8 @@ export function createToaster(options: Partial<ToasterOptions>): {
    * Dismisses a toast with a specific id
    *
    * A visible toast is only removed from `visibleToasts`: it stays in `toasts` so its exit motion
-   * can run, and `remove()` finishes the teardown once the motion completes.
+   * can run, and `remove()` finishes the teardown once the motion completes. `dismissed` is
+   * reported here, matching `close()`, so a consumer cannot tell which API dismissed the toast.
    */
   const dismissToast = (toastId: ToastId) => {
     if (queue.contains(toastId)) {
@@ -124,7 +125,14 @@ export function createToaster(options: Partial<ToasterOptions>): {
       return;
     }
 
+    const toast = toasts.get(toastId);
+    // Guard on `visibleToasts` so a second call for an already dismissed toast stays silent.
+    if (!toast || !visibleToasts.has(toastId)) {
+      return;
+    }
+
     visibleToasts.delete(toastId);
+    notifyDismissed(toast);
   };
 
   /**
@@ -147,9 +155,16 @@ export function createToaster(options: Partial<ToasterOptions>): {
     }
 
     // Visible toasts stay in `toasts` so their exit motion can run.
+    const visibleToastsList: Toast[] = [];
+    for (const toastId of visibleToasts) {
+      const toast = toasts.get(toastId);
+      if (toast) {
+        visibleToastsList.push(toast);
+      }
+    }
     visibleToasts.clear();
 
-    for (const toast of queuedToasts) {
+    for (const toast of [...queuedToasts, ...visibleToastsList]) {
       notifyDismissed(toast);
     }
   };

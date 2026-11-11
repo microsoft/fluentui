@@ -352,4 +352,91 @@ describe('createToaster', () => {
       expect(toaster.visibleToasts.has('baz')).toBe(true);
     });
   });
+
+  describe('status reporting for visible toasts', () => {
+    it('should report dismissed when a visible toast is dismissed by id', () => {
+      // `close()` reports `dismissed` for the same state change, so the status a consumer observes
+      // should not depend on which API dismissed the toast.
+      const statuses: string[] = [];
+      const toaster = createToaster({});
+
+      toaster.buildToast(
+        {
+          content: 'foo',
+          toastId: 'foo',
+          onStatusChange: (_event, data) => statuses.push(data.status),
+        },
+        () => null,
+      );
+
+      toaster.dismissToast('foo');
+
+      expect(statuses).toEqual(['queued', 'dismissed']);
+      expect(toaster.visibleToasts.has('foo')).toBe(false);
+    });
+
+    it('should report dismissed only once when a toast is dismissed twice', () => {
+      const statuses: string[] = [];
+      const toaster = createToaster({});
+
+      toaster.buildToast(
+        {
+          content: 'foo',
+          toastId: 'foo',
+          onStatusChange: (_event, data) => statuses.push(data.status),
+        },
+        () => null,
+      );
+
+      toaster.dismissToast('foo');
+      toaster.dismissToast('foo');
+
+      expect(statuses).toEqual(['queued', 'dismissed']);
+    });
+
+    it('should report dismissed for visible toasts when dismissing all toasts', () => {
+      const statuses: string[] = [];
+      const onStatusChange: ToastChangeHandler = (_event, data) => {
+        statuses.push(`${data.toastId}:${data.status}`);
+      };
+      const toaster = createToaster({});
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo', onStatusChange }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar', onStatusChange }, () => null);
+
+      toaster.dismissAllToasts();
+
+      expect(statuses).toEqual(['foo:queued', 'bar:queued', 'foo:dismissed', 'bar:dismissed']);
+      expect(toaster.visibleToasts.size).toBe(0);
+    });
+
+    it('should ignore a toast id that was never dispatched', () => {
+      const toaster = createToaster({});
+
+      expect(() => toaster.dismissToast('missing')).not.toThrow();
+      expect(toaster.visibleToasts.size).toBe(0);
+      expect(toaster.toasts.size).toBe(0);
+    });
+
+    it('should not report dismissed twice when close is followed by dismiss', () => {
+      const statuses: string[] = [];
+      const toaster = createToaster({});
+
+      toaster.buildToast(
+        {
+          content: 'foo',
+          toastId: 'foo',
+          onStatusChange: (_event, data) => statuses.push(data.status),
+        },
+        () => null,
+      );
+
+      const toast = toaster.toasts.get('foo');
+      assertToast(toast);
+      toast.close();
+      toaster.dismissToast('foo');
+
+      expect(statuses).toEqual(['queued', 'dismissed']);
+    });
+  });
 });
