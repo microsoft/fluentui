@@ -82,6 +82,9 @@ describe.each([false, true])('FluentDocsPage class names (configured: %s)', conf
   it('renders the imported class names in a labeled semantic table', () => {
     renderDocs(buttonParameters, configured);
 
+    expect(
+      screen.getByRole('heading', { name: 'Customizing component slot styles with class names', level: 2 }),
+    ).toBeTruthy();
     const table = screen.getByRole('table', { name: 'buttonClassNames' });
     expect(
       within(table)

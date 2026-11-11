@@ -94,6 +94,11 @@ const useStyles = makeStyles({
     gap: tokens.spacingVerticalXS,
     flex: 1,
   },
+  classNamesHeading: {
+    margin: tokens.spacingVerticalNone,
+    fontSize: 'inherit',
+    fontWeight: tokens.fontWeightBold,
+  },
   classNamesTable: {
     width: '100%',
     borderCollapse: 'collapse',
@@ -324,9 +329,10 @@ const RenderArgsTable = ({
         {Boolean(classNameGroups?.length) && (
           <AdditionalApiDocs>
             <>
+              <h2 className={`fluent-docs-class-names-heading ${styles.classNamesHeading}`}>
+                Customizing component slot styles with class names
+              </h2>
               <p>
-                <b>Customizing component slot styles with class names</b>
-                <br />
                 Import these class-name objects from <code>@fluentui/react-components</code> to target component slots
                 in style overrides. They are exported constants, not React hooks. Only slots with an exported class name
                 are listed.
