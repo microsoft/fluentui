@@ -179,6 +179,56 @@ describe('useLayerPresence', () => {
     await waitFor(() => expect(queryByTestId('layer')).toBeNull());
   });
 
+  type UseModalLayer = (
+    ref: React.RefObject<HTMLDialogElement | null>,
+    open: boolean,
+    mode: 'manual' | 'modal',
+  ) => boolean;
+  const useOpenStateThenPresence: UseModalLayer = (ref, open, mode) => {
+    useDialogLayerOpenState(ref, { open, mode });
+    return useLayerPresence(ref, { open }).shouldRender;
+  };
+  const usePresenceThenOpenState: UseModalLayer = (ref, open, mode) => {
+    const { shouldRender } = useLayerPresence(ref, { open });
+    useDialogLayerOpenState(ref, { open, mode });
+    return shouldRender;
+  };
+
+  it.each([
+    ['open state first', useOpenStateThenPresence],
+    ['presence first', usePresenceThenOpenState],
+  ])('waits for close when a layout effect closes it right after a switch to modal (%s)', async (_, useModalLayer) => {
+    const Example = () => {
+      const [open, setOpen] = React.useState(true);
+      const [mode, setMode] = React.useState<'manual' | 'modal'>('manual');
+      const ref = React.useRef<HTMLDialogElement>(null);
+      const shouldRender = useModalLayer(ref, open, mode);
+      useIsomorphicLayoutEffect(() => {
+        if (mode === 'modal') {
+          setOpen(false);
+        }
+      }, [mode]);
+      return (
+        <>
+          <button onClick={() => setMode('modal')}>Modal</button>
+          {shouldRender && <dialog ref={ref} popover="manual" data-testid="layer" />}
+        </>
+      );
+    };
+    const { getByTestId, getByText, queryByTestId } = render(<Example />);
+    const layer = getByTestId('layer');
+    await act(flushTasks);
+    let connectedOnClose: boolean | undefined;
+    layer.addEventListener('close', () => {
+      connectedOnClose = layer.isConnected;
+    });
+
+    fireEvent.click(getByText('Modal'));
+
+    await waitFor(() => expect(queryByTestId('layer')).toBeNull());
+    expect(connectedOnClose).toBe(true);
+  });
+
   it('finishes the exit when the element is replaced before it ends', async () => {
     const KeyedLayer = ({ open, version }: { open: boolean; version: number }) => {
       const ref = React.useRef<HTMLDivElement>(null);

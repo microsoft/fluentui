@@ -59,9 +59,9 @@ const waitForExit = (element: HTMLElement, closeEvent: string | null, onExited: 
  * end, so the element's own `onClose` / `onToggle` still run and it can animate out.
  *
  * - `open` turning false is tracked during render, so the element is still rendered in that render.
- * - `close()` and `hidePopover()` queue their event. The event to wait for is recorded once the element is shown: in
- *   this commit when the open-state hook is declared first, otherwise in a microtask after it. A close in the same
- *   commit records it before the open-state hook hides the element. An open `<dialog>` fires `toggle` before `close`,
+ * - `close()` and `hidePopover()` queue their event. The event to wait for is recorded on every commit the element is
+ *   shown, so a switch to modal updates it: in that commit when the open-state hook is declared first, otherwise in a
+ *   microtask after the opening one. A close in the same commit records it before the open-state hook hides the element. An open `<dialog>` fires `toggle` before `close`,
  *   so it waits for `close`; a queued `toggle` from the opening can still arrive after a close and is ignored.
  * - A capture listener runs before the open-state hook's: it drops the pending event when the browser closed the
  *   element with that event, and updates it when the element is shown again, e.g. as a modal.
@@ -108,11 +108,14 @@ export const useLayerPresence = (
 
   useIsomorphicLayoutEffect(() => {
     openRef.current = open;
-    if (!open || !unmountOnClose || pendingCloseEvent.current?.element === ref.current) {
+    if (!open || !unmountOnClose) {
       return;
     }
     if (ref.current && isInTopLayer(ref.current)) {
       recordCloseEvent(ref.current);
+      return;
+    }
+    if (pendingCloseEvent.current?.element === ref.current) {
       return;
     }
     queueMicrotask(() => {
@@ -141,7 +144,7 @@ export const useLayerPresence = (
       return;
     }
 
-    if (pendingCloseEvent.current?.element !== element && isInTopLayer(element)) {
+    if (isInTopLayer(element)) {
       recordCloseEvent(element);
     }
 

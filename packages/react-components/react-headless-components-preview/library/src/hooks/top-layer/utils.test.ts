@@ -50,6 +50,18 @@ describe('isEscapeForLayer', () => {
     expect(isEscapeFrom(get('nested'), portaled)).toBe(true);
   });
 
+  it('is true for Escape from content portaled into an enclosing layer from inside a shadow root', () => {
+    const get = setup();
+    const host = document.createElement('span');
+    get('layer').append(host);
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = '<div popover="manual" id="inner"></div>';
+    const portaled = document.createElement('button');
+    get('layer').append(portaled);
+
+    expect(isEscapeFrom(shadowRoot.getElementById('inner')!, portaled)).toBe(true);
+  });
+
   it('is false for Escape from a popover nested inside a shadow root in the layer', () => {
     const get = setup();
     const host = document.createElement('span');
