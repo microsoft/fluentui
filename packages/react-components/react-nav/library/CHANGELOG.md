@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-nav
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.4.10)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.4.9..@fluentui/react-nav_v9.4.10)
+
+### Patches
+
+- fix: NavCategoryItem renders type="button" so it does not submit an enclosing form ([PR #37114](https://github.com/microsoft/fluentui/pull/37114) by dmytrokirpa@microsoft.com)
 
 ## [9.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.4.9)
 

@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item",
-  "packageName": "@fluentui/react-menu",
-  "email": "paulmardling@microsoft.com"
-}

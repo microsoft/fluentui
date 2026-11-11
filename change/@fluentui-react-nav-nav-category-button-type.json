@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: NavCategoryItem renders type=\"button\" so it does not submit an enclosing form",
-  "packageName": "@fluentui/react-nav",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
