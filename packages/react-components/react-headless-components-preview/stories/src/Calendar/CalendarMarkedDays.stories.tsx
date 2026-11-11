@@ -11,13 +11,10 @@ export const MarkedDays = (): React.ReactNode => (
       today={new Date(2025, 9, 14)}
       defaultValue={new Date(2025, 9, 14)}
       monthPicker={null}
-      dayPicker={{
-        ...calendarAppearance.dayPicker,
-        getMarkedDays: () => [new Date(2025, 9, 8), new Date(2025, 9, 14), new Date(2025, 9, 22)],
-        getCellProps: day => ({
-          root: day.isMarked ? { title: 'Appointment' } : {},
-        }),
-      }}
+      getMarkedDays={() => [new Date(2025, 9, 8), new Date(2025, 9, 14), new Date(2025, 9, 22)]}
+      getCellProps={cell => ({
+        root: cell.type === 'day' && cell.isMarked ? { title: 'Appointment' } : {},
+      })}
     />
   </div>
 );

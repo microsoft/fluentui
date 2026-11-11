@@ -1,5 +1,5 @@
 import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from './constants';
-import { getDayIndex, getMonthIndex } from './dateUtils';
+import { getDayIndex } from './dateUtils';
 import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from './constants';
 
 /**
@@ -282,19 +282,31 @@ export function isDateInRange(date: Date, dateRange: Date[]): boolean {
  * @returns The week's number in the year.
  */
 export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number {
-  // First four-day week of the year - minimum days count
-  const fourDayWeek = 4;
+  // The fewest days of the new year that its first week must contain.
+  const minDays = firstWeekOfYear === 'firstFullWeek' ? DAYS_IN_WEEK : firstWeekOfYear === 'firstFourDayWeek' ? 4 : 1;
+  const year = date.getFullYear();
+  const day = getCivilDayNumber(year, date.getMonth(), date.getDate());
+  // The civil day number on which week 1 of `weekYear` starts.
+  const getFirstWeekStart = (weekYear: number) => {
+    const firstDay = getCivilDayNumber(weekYear, 0, 1);
+    // Days from the start of the week to January 1st; day 0 was a Thursday.
+    const offset = (((firstDay + 4 - getDayIndex(firstDayOfWeek)) % DAYS_IN_WEEK) + DAYS_IN_WEEK) % DAYS_IN_WEEK;
+    return firstDay - offset + (DAYS_IN_WEEK - offset >= minDays ? 0 : DAYS_IN_WEEK);
+  };
 
-  switch (firstWeekOfYear) {
-    case 'firstFullWeek':
-      return getWeekOfYearFullDays(date, firstDayOfWeek, DAYS_IN_WEEK);
-
-    case 'firstFourDayWeek':
-      return getWeekOfYearFullDays(date, firstDayOfWeek, fourDayWeek);
-
-    default:
-      return getFirstDayWeekOfYear(date, firstDayOfWeek);
+  // With a minimum, the last days of December can belong to week 1 of the next year.
+  if (minDays > 1 && day >= getFirstWeekStart(year + 1)) {
+    return 1;
   }
+  const firstWeekStart = getFirstWeekStart(year);
+  return Math.floor((day - (day < firstWeekStart ? getFirstWeekStart(year - 1) : firstWeekStart)) / DAYS_IN_WEEK) + 1;
+}
+
+/** Counts civil days since 1970-01-01, independent of the local timezone. */
+function getCivilDayNumber(year: number, month: number, day: number): number {
+  const date = new Date(0);
+  date.setUTCFullYear(year, month, day);
+  return Math.round(date.getTime() / 86400000);
 }
 
 /**
@@ -320,92 +332,4 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
   }
 
   throw new RangeError('Could not find a representable week start within two weeks.');
-}
-
-/**
- * Helper function for `getWeekNumber`.
- * Returns week number for a date.
- * @param date - current selected date.
- * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
- * @param numberOfFullDays - week settings.
- * @returns The week's number in the year.
- */
-function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number): number {
-  const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  const dayOfYear = getDayOfYear(date) - 1;
-  let num = date.getDay() - (dayOfYear % DAYS_IN_WEEK);
-
-  const lastDayOfPrevYear = createDate(date.getFullYear() - 1, getMonthIndex('december'), 31);
-  const daysInYear = getDayOfYear(lastDayOfPrevYear) - 1;
-
-  let num2 = (firstDayOfWeekIndex - num + 2 * DAYS_IN_WEEK) % DAYS_IN_WEEK;
-  if (num2 !== 0 && num2 >= numberOfFullDays) {
-    num2 -= DAYS_IN_WEEK;
-  }
-
-  let num3 = dayOfYear - num2;
-  if (num3 < 0) {
-    num -= daysInYear % DAYS_IN_WEEK;
-    num2 = (firstDayOfWeekIndex - num + 2 * DAYS_IN_WEEK) % DAYS_IN_WEEK;
-    if (num2 !== 0 && num2 + 1 >= numberOfFullDays) {
-      num2 -= DAYS_IN_WEEK;
-    }
-
-    num3 = daysInYear - num2;
-  }
-
-  const nextYearFirstWeekStart = getStartDateOfWeek(createDate(date.getFullYear() + 1, 0, 1), firstDayOfWeek);
-  const nextYearFirstWeekDays = Array.from({ length: DAYS_IN_WEEK }, (_, index) =>
-    addDays(nextYearFirstWeekStart, index),
-  ).filter(nextYearDate => nextYearDate.getFullYear() === date.getFullYear() + 1).length;
-  if (nextYearFirstWeekDays >= numberOfFullDays && compareDatePart(date, nextYearFirstWeekStart) >= 0) {
-    return 1;
-  }
-
-  return Math.floor(num3 / DAYS_IN_WEEK + 1);
-}
-
-/**
- * Helper function for `getWeekNumber`.
- * Returns week number for a date.
- * @param date - current selected date.
- * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
- * @returns The week's number in the year.
- */
-function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: DayOfWeek): number {
-  const num = getDayOfYear(date) - 1;
-  const num2 = date.getDay() - (num % DAYS_IN_WEEK);
-  const num3 = (num2 - getDayIndex(firstDayOfWeek) + 2 * DAYS_IN_WEEK) % DAYS_IN_WEEK;
-
-  return Math.floor((num + num3) / DAYS_IN_WEEK + 1);
-}
-
-/**
- * Returns the day number for a date in a year:
- * the number of days since January 1st in the particular year.
- * @param date - A date to find the day number for.
- * @returns The day's number in the year.
- */
-function getDayOfYear(date: Date): number {
-  const month = date.getMonth();
-  const year = date.getFullYear();
-  let daysUntilDate = 0;
-
-  for (let i = 0; i < month; i++) {
-    daysUntilDate += daysInMonth(i + 1, year);
-  }
-
-  daysUntilDate += date.getDate();
-
-  return daysUntilDate;
-}
-
-/**
- * Returns the number of days in the month
- * @param month - The month number to target (months 1-12).
- * @param year - The year to target.
- * @returns The number of days in the month.
- */
-function daysInMonth(month: number, year: number): number {
-  return createDate(year, month, 0).getDate();
 }

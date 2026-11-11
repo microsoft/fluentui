@@ -25,4 +25,3 @@ export {
   isDateInRange,
   setMonth,
 } from './dateMath';
-export type { CalendarGridRow } from '../hooks/useCalendarGrid';

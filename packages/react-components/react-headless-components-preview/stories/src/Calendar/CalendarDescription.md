@@ -28,12 +28,12 @@ so it works in every browser without `focusgroup` support or a polyfill.
 
 Unavailable cells are skipped unless `allFocusable` is set; they cannot be selected in either mode.
 Weekday and week-number headers are not navigation targets. Modified arrows are left to the page.
-If no visible day is eligible, imperative day-picker focus falls back to the next available
+If no visible day is eligible, moving focus into the day panel falls back to the next available
 month-navigation control, preferring Next month.
 
 When an arrow crosses the visible day-grid boundary, Calendar requests navigation to the next
 available date without selecting it, within the date bounds. PageUp/PageDown page from the focused
-day in Calendar and standalone day pickers. The weekday header is rendered in `<thead>` and week
+day. The weekday header is rendered in `<thead>` and week
 rows in `<tbody>`.
 
 When server rendering, pass `today` explicitly so server and browser output use the same date.
@@ -50,16 +50,35 @@ Consumers must provide visible focus styles on the day `td[role="gridcell"]` and
 grid cells, and visually hide the announcement region without removing it from the accessibility
 tree.
 
-### Pickers, layout and focus
+### Panels, layout and focus
 
-Layout is consumer-controlled: `layout="sideBySide"` (the default) displays both pickers,
-while `layout="overlay"` displays the active `view` (`"day"` or `"month"`). Calendar does not
-detect viewport size or choose breakpoints. Use your own responsive logic to set `layout`.
-Use `view` and `onViewChange` to control the active overlay picker, or `defaultView` for its
-initial uncontrolled value. Calendar preserves focus when a layout change hides the focused picker,
-without reclaiming focus that has already moved outside the calendar.
+Calendar renders up to two panels, each with a header (heading, previous/next and close buttons) and a grid:
 
-The month and year pickers each default to four columns. Set `calendarMonthColumns` and
+- the **day panel** (`dayPicker` slot, `data-view="day"`) shows the day grid;
+- the **month panel** (`monthPicker` slot) shows the month grid (`data-view="month"`) or the year grid
+  (`data-view="year"`).
+
+Set `dayPicker={null}` to select months without a day grid, or `monthPicker={null}` to show only days.
+The header slots (`header`, `heading`, `navigation`, `previousButton`, `nextButton`, `closeButton`) and
+`grid` are set once on Calendar and apply to every visible panel; target one panel in CSS with its
+`data-view` attribute or the `dayPicker`/`monthPicker` class.
+
+Layout is consumer-controlled: `layout="sideBySide"` (the default) displays both panels,
+while `layout="overlay"` displays the panel of the active `view` (`"day"`, `"month"` or `"year"`).
+Calendar does not detect viewport size or choose breakpoints. Use your own responsive logic to set `layout`.
+Use `view` and `onViewChange` to control the active view, or `defaultView` for its initial uncontrolled
+value. A controlled `view` must accept `"year"`, which the month heading requests. In the side-by-side layout
+the day panel stays visible and `view` only chooses between the month and year grids.
+
+The month heading opens the year grid unless `yearPickerHidden` is set. In the overlay layout the day heading
+opens the month grid; set `dayHeadingView` to `"month"` or `"year"` to choose what the day heading opens in
+either layout. The year grid shows twelve years starting at the displayed year; its previous/next buttons page
+by twelve years.
+
+Calendar preserves focus when a layout or view change hides the focused panel, without reclaiming focus that has
+already moved outside the calendar.
+
+The month and year grids each default to four columns. Set `calendarMonthColumns` and
 `calendarYearColumns` independently to `3` or `4`; row grouping and arrow navigation use
 the same configuration. Both grids always contain twelve cells.
 
@@ -67,60 +86,50 @@ the same configuration. Both grids always contain twelve cells.
 <Calendar calendarMonthColumns={3} calendarYearColumns={4} />
 ```
 
-Each picker's regular `ref` points to its root `HTMLDivElement`. Use `imperativeRef` to access
-its focus handle: `focus()` moves focus into the grid, or the nested year picker while it is open.
-Both object refs and callback refs are supported.
-
-```tsx
-const rootRef = React.useRef<HTMLDivElement>(null);
-const pickerRef = React.useRef<CalendarDayHandle>(null);
-
-<CalendarDay ref={rootRef} imperativeRef={pickerRef} />;
-// pickerRef.current?.focus() focuses the grid's initial focus target, not the root.
-```
+`ref` points to the root `HTMLDivElement`; a `ref` on `dayPicker` or `monthPicker` points to that panel.
+To move focus into a grid, focus its gridcell with `tabindex="0"`.
 
 ### Customizing rows and cells
 
-Every picker supports `getCellProps` and `getRowProps`; the day picker also supports
-`getWeekdayCellProps`. Getters receive data such as dates, labels and state flags, and return
-prop overrides for existing elements. Use a custom renderer for structural changes.
+Calendar supports `getCellProps`, `getRowProps` and `getWeekdayCellProps` for all grids. Getters receive
+data such as dates, labels and state flags, and return prop overrides for existing elements. Cell data is
+discriminated by `type: 'day' | 'month' | 'year'`; row data by `type: 'week' | 'weekday' | 'month' | 'year'`.
+Use a custom renderer for structural changes.
 
 ```tsx
-dayPicker={{
-  getCellProps: day => ({
-    root: { title: day.isMarked ? 'Appointment' : undefined },
-    label: { children: <strong>{day.label}</strong> },
-  }),
-  getRowProps: row => ({
-    root: { className: row.type === 'week' ? 'week' : 'weekday-header' },
-  }),
-  getWeekdayCellProps: cell => ({
+<Calendar
+  getCellProps={cell => ({
+    root: { title: cell.type === 'day' && cell.isMarked ? 'Appointment' : undefined },
+    label: { children: <strong>{cell.label}</strong> },
+  })}
+  getRowProps={row => ({
+    root: { className: row.type === 'weekday' ? 'weekday-header' : 'row' },
+  })}
+  getWeekdayCellProps={cell => ({
     root: { title: cell.dayOfWeek },
-  }),
-}}
+  })}
+/>
 ```
 
-Day cells expose `root`, `button`, `label` and `marker` prop bags. Marker overrides apply only to
-marked days. Use `label.children` to change the day content while preserving its marker, or
-`button.children` to replace both; `null` intentionally removes content. Month and year cells expose
-`root` for the gridcell and `button` for its interactive content; use `button.children` to customize
-the visible label. Row getters expose `root`; the day row getter
+Cells expose `root` for the gridcell and `button` for its interactive content; day cells also expose `label`
+and `marker`. Marker overrides apply only to marked days. Use `label.children` to change the day content
+while preserving its marker, or `button.children` to replace both; `null` intentionally removes content. Month
+and year cells render their label as `button` children. Row getters expose `root`; the day row getter
 also exposes `weekNumber` for a week's number or the weekday header's spacer when week numbers are shown.
 Default content is rendered only when `children` is `undefined`; explicit `null`, `false` or an empty
-string suppresses it. This also applies to the day picker's `body` slot and month/year `grid` slots.
-Day row data is discriminated by `type: 'week' | 'weekday'`. Week rows include data-only `days`
-and an optional numeric `weekNumber`; weekday rows include data-only `cells`. Weekday data exposes
-`dayOfWeek`, the visible `label` and its full `accessibleLabel`. All cell getters expose a formatted
+string suppresses it. This also applies to the `grid` slot: its `children` replace all rows, including the
+weekday header, and the cell and row getters are then not called.
+Every row exposes data-only `cells`; week rows also have an optional numeric `weekNumber`. Weekday data
+exposes `dayOfWeek`, the visible `label` and its full `accessibleLabel`. All cells expose a formatted
 string `label`, including day placeholders; placeholder dates have `originalDate: null`.
-Custom renderers resolve HTML props through
-the hook state's `getDayCellProps`, `getDayRowProps` and `getWeekdayCellProps`, or the corresponding
-`getMonthCellProps`/`getMonthRowProps` and `getYearCellProps`/`getYearRowProps` methods. These methods
-combine defaults with consumer overrides and invoke the corresponding getter callback.
-Call each method once per rendered item and spread the returned props onto its elements:
+Custom renderers iterate `state.panels` and resolve HTML props through the hook state's `resolveCellProps`,
+`resolveRowProps` and `resolveWeekdayCellProps`. These methods combine defaults with consumer overrides and
+invoke the corresponding getter. Call each method once per rendered item and spread the returned props onto
+its elements:
 
 ```tsx
-const cellProps = state.getDayCellProps(day);
-// cellProps.root, cellProps.button, cellProps.label and optional cellProps.marker
+const cellProps = state.resolveCellProps(cell);
+// cellProps.root, cellProps.button, and for days cellProps.label and an optional cellProps.marker
 ```
 
 Refs are composed, class names appended with consumer classes last, and styles shallow-merged.
@@ -130,18 +139,11 @@ attributes. Changing DOM attributes does not change date restrictions or selecti
 Consumer handlers run before the grid's delegated selection and navigation; `preventDefault`
 cancels the built-in action. Use custom hook/render composition for structural replacement.
 
-### Hooks, context and utilities
+### Hooks and utilities
 
-For a custom Calendar component, compose `useCalendar`, `useCalendarContextValues` and
-`renderCalendar` from the public `@fluentui/react-headless-components-preview/calendar` subpath.
-The subpath also exports `CalendarDay`, `CalendarMonth` and `CalendarYear` with their hooks and
-renderers, and the event, layout, view and context types used by the family.
-
-For standalone pickers, use `CalendarProvider` to supply selection, date restrictions, formatting
-and `calendarMonthColumns`/`calendarYearColumns` through a `CalendarContextValue`.
-`useCalendarContext()` reads this same headless context using regular React context. Without a
-provider, it uses the package's internal defaults.
-The subpath exports `calendarFormatters` and `createCalendarDateTimeFormatter` for formatting.
+For a custom Calendar component, compose `useCalendar` and `renderCalendar` from the public
+`@fluentui/react-headless-components-preview/calendar` subpath. The subpath also exports the cell, row,
+event, layout and view types, plus `calendarFormatters` and `createCalendarDateTimeFormatter` for formatting.
 
 Default date formatting uses en-US ordering and the Gregorian calendar. Pass
 `createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` for other locales; override the

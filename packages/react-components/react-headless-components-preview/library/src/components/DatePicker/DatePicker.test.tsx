@@ -707,7 +707,7 @@ describe('DatePicker', () => {
     const { getByRole } = renderDatePicker({
       open: true,
       calendar: {
-        dayPicker: { closeButton: { children: 'Close calendar' } },
+        closeButton: { children: 'Close calendar' },
         onDismiss: event => event.preventDefault(),
       },
     });

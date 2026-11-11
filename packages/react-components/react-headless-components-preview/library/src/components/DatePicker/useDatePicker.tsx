@@ -5,7 +5,6 @@ import { ArrowDown, Enter, Escape, Space } from '@fluentui/keyboard-keys';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
-  getPartitionedNativeProps,
   mergeCallbacks,
   slot,
   useControllableState,
@@ -26,9 +25,8 @@ import {
   isRestrictedDate,
   setMonth,
 } from '../Calendar/utils';
-import type { CalendarProps, CalendarViewChangeData } from '../Calendar/Calendar.types';
-import type { CalendarDayHandle, CalendarDayProps } from '../Calendar/CalendarDay/CalendarDay.types';
-import type { CalendarMonthHandle, CalendarMonthProps } from '../Calendar/CalendarMonth/CalendarMonth.types';
+import { focusCalendarGrid } from '../Calendar/calendarGrid';
+import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarFormatters } from '../Calendar/utils';
 import { defaultFormatDate, defaultParseDate } from './datePickerFormatting';
 import { useDatePickerDateState } from './useDatePickerDateState';
@@ -114,11 +112,40 @@ export const useDatePicker = (
   // A Field label's htmlFor would name the trigger button by the label alone, so the button uses aria-labelledby and
   // appends the displayed date.
   const fieldControlProps = useFieldControlProps_unstable(props, { supportsLabelFor: allowTextInput });
-  const nativeProps = getPartitionedNativeProps({
-    props: fieldControlProps,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['defaultValue', 'disabled', 'placeholder', 'required', 'value'],
-  });
+  // DatePicker's own props and slots stay out of the DOM; className and style go to the root, everything else to the
+  // field control.
+  const {
+    allowTextInput: _allowTextInput,
+    calendar: _calendar,
+    className,
+    defaultOpen: _defaultOpen,
+    defaultValue: _defaultValue,
+    disabled: _disabled,
+    displayValue: _displayValue,
+    errorMessage: _errorMessage,
+    formatDate: _formatDate,
+    formatErrorMessage: _formatErrorMessage,
+    icon: _icon,
+    input: _input,
+    maxDate: _maxDate,
+    minDate: _minDate,
+    onDateChange: _onDateChange,
+    onOpenChange: _onOpenChange,
+    onValidationResult: _onValidationResult,
+    open: _open,
+    parseDate: _parseDate,
+    placeholder: _placeholder,
+    popupSurface: _popupSurface,
+    positioning: _positioning,
+    required: _required,
+    root: _root,
+    showGoToToday: _showGoToToday,
+    style,
+    today: _today,
+    trigger: _trigger,
+    value: _value,
+    ...controlProps
+  } = fieldControlProps as DatePickerProps & Record<string, unknown>;
   const required =
     props.required === true ||
     fieldControlProps['aria-required'] === true ||
@@ -192,25 +219,17 @@ export const useDatePicker = (
   const rootRef = React.useRef<HTMLDivElement>(null);
   const controlRef = React.useRef<HTMLInputElement & HTMLButtonElement>(null);
   const surfaceRef = React.useRef<HTMLDivElement>(null);
-  const dayPickerRef = React.useRef<CalendarDayHandle>(null);
-  const monthPickerRef = React.useRef<CalendarMonthHandle>(null);
   // Set while a request runs, so the blur caused by returning focus to the field does not request a second change.
   const isRequestingOpen = React.useRef(false);
   const wasOpenOnLastEffect = React.useRef(false);
   const focusWithinSurface = React.useRef(false);
-  // In the overlay layout the day heading first switches to the month view, which then opens the year-range grid.
-  const showYearPickerOnMount = React.useRef(false);
 
   const isWithin = (element: HTMLElement | null, target: EventTarget | null) =>
     !!element && !!target && element.contains(target as Node);
 
   // Focuses the day picker, otherwise the month picker of a month-only calendar, otherwise the surface.
   const focusCalendar = useEventCallback(() => {
-    if (dayPickerRef.current) {
-      dayPickerRef.current.focus({ preventScroll: true });
-    } else if (monthPickerRef.current) {
-      monthPickerRef.current.focus({ preventScroll: true });
-    } else {
+    if (!focusCalendarGrid(surfaceRef.current)) {
       surfaceRef.current?.focus({ preventScroll: true });
     }
   });
@@ -246,7 +265,6 @@ export const useDatePicker = (
       return;
     }
 
-    showYearPickerOnMount.current = false;
     // A controlled close may remove the focused surface without a blur; restore focus from the surface tracker.
     const root = rootRef.current;
     const activeElement = root ? getActiveElement(root) : targetDocument?.activeElement;
@@ -346,33 +364,13 @@ export const useDatePicker = (
   const input = allowTextInput
     ? slot.always(props.input, {
         defaultProps: {
-          ...(nativeProps.primary as Omit<React.ComponentProps<'input'>, 'children'>),
+          ...(controlProps as Omit<React.ComponentProps<'input'>, 'children'>),
           autoComplete: 'off',
           type: 'text',
         },
         elementType: 'input',
       })
     : undefined;
-  if (input) {
-    const inputDescribedBy = input['aria-describedby'];
-    const inputInvalid = input['aria-invalid'];
-    Object.assign(input, controlAriaProps);
-    input['aria-describedby'] = mergeAriaDescribedBy(describedBy, inputDescribedBy);
-    input['aria-invalid'] = error ? true : inputInvalid ?? fieldControlProps['aria-invalid'];
-    // aria-expanded is not supported on text inputs, and the popup is not a listbox, so the field is not a combobox.
-    // The calendar icon exposes the expanded state instead.
-    delete input['aria-expanded'];
-    input.id = controlId;
-    input.disabled = disabled;
-    input.placeholder = placeholder;
-    input.value = dateState.text;
-    input.onChange = mergeCallbacks(input.onChange, event => {
-      dateState.setText(event.target.value);
-    });
-    input.onKeyDown = mergeCallbacks(input.onKeyDown, onControlKeyDown);
-    input.onBlur = mergeCallbacks(input.onBlur, onControlBlur);
-  }
-
   const displayValue = slot.always(props.displayValue, {
     defaultProps: { children: formattedValue || placeholder },
     elementType: 'span',
@@ -383,32 +381,39 @@ export const useDatePicker = (
     ? undefined
     : slot.always(props.trigger, {
         // Native props target the field control, which is a button when the field is not editable.
-        defaultProps: { ...(nativeProps.primary as React.ComponentProps<'button'>), type: 'button' },
+        defaultProps: { ...(controlProps as React.ComponentProps<'button'>), type: 'button' },
         elementType: 'button',
       });
-  const control = input ?? trigger;
-  const mergedControlRef = useMergedRefs<HTMLInputElement & HTMLButtonElement>(
-    control?.ref as React.Ref<HTMLInputElement & HTMLButtonElement> | undefined,
-    ref as React.Ref<HTMLInputElement & HTMLButtonElement>,
-    controlRef,
-  );
-  if (control) {
-    control.ref = mergedControlRef;
-  }
+  // Wiring shared by the text input and the trigger button.
+  const control = (input ?? trigger)! as React.InputHTMLAttributes<HTMLElement> & {
+    ref?: React.Ref<HTMLInputElement & HTMLButtonElement>;
+  };
+  const controlDescribedBy = control['aria-describedby'];
+  const controlInvalid = control['aria-invalid'];
+  Object.assign(control, controlAriaProps);
+  control['aria-describedby'] = mergeAriaDescribedBy(describedBy, controlDescribedBy);
+  control['aria-invalid'] = error ? true : controlInvalid ?? fieldControlProps['aria-invalid'];
+  control.id = controlId;
+  control.disabled = disabled;
+  control.ref = useMergedRefs(control.ref, ref as React.Ref<HTMLInputElement & HTMLButtonElement>, controlRef);
+  control.onKeyDown = mergeCallbacks(control.onKeyDown, onControlKeyDown);
+  control.onBlur = mergeCallbacks(control.onBlur, onControlBlur);
 
-  if (trigger) {
-    const triggerDescribedBy = trigger['aria-describedby'];
-    const triggerInvalid = trigger['aria-invalid'];
-    Object.assign(trigger, controlAriaProps);
-    trigger['aria-describedby'] = mergeAriaDescribedBy(describedBy, triggerDescribedBy);
-    trigger['aria-invalid'] = error ? true : triggerInvalid ?? fieldControlProps['aria-invalid'];
+  if (input) {
+    // aria-expanded is not supported on text inputs, and the popup is not a listbox, so the field is not a combobox.
+    // The calendar icon exposes the expanded state instead.
+    delete input['aria-expanded'];
+    input.placeholder = placeholder;
+    input.value = dateState.text;
+    input.onChange = mergeCallbacks(input.onChange, event => {
+      dateState.setText(event.target.value);
+    });
+  } else if (trigger) {
     // aria-required is not supported on buttons; a surrounding Field conveys that a date is required.
     delete trigger['aria-required'];
     // The accessible name combines the field's purpose with the displayed date or placeholder.
     const labelledBy = trigger['aria-labelledby'] ?? (trigger['aria-label'] ? controlId : undefined);
     trigger['aria-labelledby'] = labelledBy ? `${labelledBy} ${displayValue.id}` : undefined;
-    trigger.id = controlId;
-    trigger.disabled = disabled;
     trigger.onClick = mergeCallbacks(trigger.onClick, event => {
       if (!event.isDefaultPrevented() && !disabled) {
         requestOpen(event, !open, 'trigger');
@@ -420,8 +425,6 @@ export const useDatePicker = (
         event.preventDefault();
       }
     });
-    trigger.onKeyDown = mergeCallbacks(trigger.onKeyDown, onControlKeyDown);
-    trigger.onBlur = mergeCallbacks(trigger.onBlur, onControlBlur);
   }
 
   const icon = slot.optional(props.icon, { renderByDefault: true, elementType: 'span' });
@@ -465,16 +468,6 @@ export const useDatePicker = (
     errorMessage.children ??= error ? formatErrorMessage({ error, formatDate, maxDate, minDate }) : undefined;
   }
 
-  const onDayPickerHeaderSelect = useEventCallback(() => monthPickerRef.current?.showYearPicker());
-  const onMonthPickerHandle = React.useCallback((handle: CalendarMonthHandle | null) => {
-    if (handle && showYearPickerOnMount.current) {
-      showYearPickerOnMount.current = false;
-      handle.showYearPicker();
-    }
-  }, []);
-  const onCalendarViewChange = useEventCallback((_event: DatePickerEvent, data: CalendarViewChangeData) => {
-    showYearPickerOnMount.current = data.view === 'month';
-  });
   const onDisplayedDateChange = useEventCallback((_event: DatePickerEvent, data: { displayedDate: Date }) => {
     setDisplayedDate(data.displayedDate);
   });
@@ -533,38 +526,21 @@ export const useDatePicker = (
     calendar.goToTodayButton = null;
   }
 
-  const dayPickerProps: CalendarDayProps | null | undefined =
-    calendarProps.dayPicker === null ? null : slot.resolveShorthand(calendarProps.dayPicker);
-  const monthPickerProps: CalendarMonthProps | null | undefined =
-    calendarProps.monthPicker === null ? null : slot.resolveShorthand(calendarProps.monthPicker);
-  const mergedDayPickerRef = useMergedRefs(dayPickerProps?.imperativeRef, dayPickerRef);
-  const mergedMonthPickerRef = useMergedRefs(monthPickerProps?.imperativeRef, monthPickerRef, onMonthPickerHandle);
-  // The overlay layout mounts one picker at a time, so the day heading keeps Calendar's switch to the month view.
-  const isOverlay = calendarProps.layout === 'overlay' && dayPickerProps !== null && monthPickerProps !== null;
-
-  if (dayPickerProps !== null) {
-    calendar.dayPicker = {
-      ...(monthPickerProps === null || isOverlay ? undefined : { onHeaderSelect: onDayPickerHeaderSelect }),
-      ...dayPickerProps,
-      imperativeRef: mergedDayPickerRef,
+  const getCellProps = calendarProps.getCellProps;
+  // The day heading opens the year-range grid.
+  calendar.dayHeadingView ??= 'year';
+  calendar.getCellProps = cell => {
+    const overrides = getCellProps?.(cell);
+    if (cell.type !== 'month') {
+      return overrides ?? {};
+    }
+    // Name months with their year, such as "August 2026", rather than an abbreviation.
+    const date = setMonth(displayedDate, cell.index);
+    return {
+      ...overrides,
+      root: { 'aria-label': formatters.dateTime({ date, format: 'monthYear' }), ...overrides?.root },
     };
-  }
-  if (monthPickerProps !== null) {
-    const getMonthCellProps = monthPickerProps?.getCellProps;
-    calendar.monthPicker = {
-      ...monthPickerProps,
-      imperativeRef: mergedMonthPickerRef,
-      getCellProps: month => {
-        const overrides = getMonthCellProps?.(month);
-        const date = setMonth(displayedDate, month.index);
-        // Name months with their year, such as "August 2026", rather than an abbreviation.
-        return {
-          ...overrides,
-          root: { 'aria-label': formatters.dateTime({ date, format: 'monthYear' }), ...overrides?.root },
-        };
-      },
-    };
-  }
+  };
 
   calendar.formatters = formatters;
   calendar.value = dateState.value;
@@ -575,7 +551,6 @@ export const useDatePicker = (
   calendar.onDisplayedDateChange = mergeCallbacks(calendar.onDisplayedDateChange, onDisplayedDateChange);
   calendar.onSelectDate = mergeCallbacks(calendar.onSelectDate, onCalendarSelectDate);
   calendar.onDismiss = mergeCallbacks(calendar.onDismiss, onCalendarDismiss);
-  calendar.onViewChange = mergeCallbacks(calendar.onViewChange, onCalendarViewChange);
 
   // Popup surface
 
@@ -605,7 +580,7 @@ export const useDatePicker = (
 
   // Root
 
-  const root = slot.always(props.root, { defaultProps: nativeProps.root, elementType: 'div' });
+  const root = slot.always(props.root, { defaultProps: { className, style }, elementType: 'div' });
   root.ref = useMergedRefs(root.ref, rootRef, targetRef);
   // Applied after consumer props so reserved state cannot be misrepresented.
   Object.assign(root, {

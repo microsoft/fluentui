@@ -67,7 +67,7 @@ describe('Calendar', () => {
         today={today}
         calendarMonthColumns={3}
         defaultValue={new Date(2020, 9, 4)}
-        dayPicker={{ weeksToShow: 6 }}
+        weeksToShow={6}
         onSelectDate={onSelectDate}
       />,
     );
@@ -295,14 +295,9 @@ describe('Calendar', () => {
           today={today}
           value={today}
           onFocus={onFocus}
-          dayPicker={picker === 'day' ? { grid: { onKeyDownCapture } } : null}
-          monthPicker={
-            picker === 'day'
-              ? null
-              : picker === 'month'
-              ? { grid: { onKeyDownCapture } }
-              : { yearPicker: { grid: { onKeyDownCapture } } }
-          }
+          grid={{ onKeyDownCapture }}
+          dayPicker={picker === 'day' ? undefined : null}
+          monthPicker={picker === 'day' ? null : undefined}
         />,
       );
       if (picker === 'year') {
@@ -361,23 +356,24 @@ describe('Calendar', () => {
           today={today}
           value={new Date(2024, 0, 1)}
           dayPicker={null}
-          monthPicker={{ yearPicker: { navigatedYear: 2020 } }}
-          minDate={new Date(2022, 0, 1)}
+          minDate={new Date(2016, 0, 1)}
           allFocusable={allFocusable}
           onSelectDate={onSelectDate}
         />,
       );
       cy.get('button[aria-label="2024, change year"]').click();
+      // The year range starts at the displayed year; page back to a range that contains minDate.
+      cy.get('button[aria-label="Previous year range 2012 - 2023"]').click();
 
-      cy.contains('[role="gridcell"]', '2024').focus().realPress('ArrowDown');
-      cy.contains('[role="gridcell"]', '2028').should('be.focused').realPress('ArrowUp');
-      cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('ArrowUp');
-      cy.contains('[role="gridcell"]', allFocusable ? '2020' : '2024').should('be.focused');
+      cy.contains('[role="gridcell"]', '2019').focus().realPress('ArrowDown');
+      cy.contains('[role="gridcell"]', '2023').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', '2019').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', allFocusable ? '2015' : '2019').should('be.focused');
       if (allFocusable) {
-        cy.contains('[role="gridcell"]', '2020').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
+        cy.contains('[role="gridcell"]', '2015').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
         cy.get('@onSelectDate').should('not.have.been.called');
-        cy.get('button[aria-label="2020 - 2031, change year"]').should('exist');
-        cy.contains('[role="gridcell"]', '2020').should('be.focused');
+        cy.get('button[aria-label="2012 - 2023, change year"]').should('exist');
+        cy.contains('[role="gridcell"]', '2015').should('be.focused');
       }
     });
   });
@@ -389,32 +385,31 @@ describe('Calendar', () => {
           today={today}
           value={today}
           monthPicker={null}
-          dayPicker={{
-            getCellProps: dayInfo =>
-              dayInfo.originalDate?.getTime() === today.getTime()
-                ? {
-                    button: {
-                      children: (
-                        <span
-                          role="toolbar"
-                          onKeyDown={event => {
-                            if (handlesArrow && event.key === 'ArrowRight') {
-                              event.currentTarget.querySelector<HTMLElement>('[data-testid="nested-second"]')?.focus();
-                            }
-                          }}
-                        >
-                          <span tabIndex={0} data-testid="nested-first">
-                            First
-                          </span>
-                          <span tabIndex={0} data-testid="nested-second">
-                            Second
-                          </span>
+          getCellProps={cell =>
+            cell.type === 'day' && cell.originalDate?.getTime() === today.getTime()
+              ? {
+                  button: {
+                    children: (
+                      <span
+                        role="toolbar"
+                        onKeyDown={event => {
+                          if (handlesArrow && event.key === 'ArrowRight') {
+                            event.currentTarget.querySelector<HTMLElement>('[data-testid="nested-second"]')?.focus();
+                          }
+                        }}
+                      >
+                        <span tabIndex={0} data-testid="nested-first">
+                          First
                         </span>
-                      ),
-                    },
-                  }
-                : {},
-          }}
+                        <span tabIndex={0} data-testid="nested-second">
+                          Second
+                        </span>
+                      </span>
+                    ),
+                  },
+                }
+              : {}
+          }
         />,
       );
 
@@ -531,11 +526,9 @@ describe('Calendar', () => {
           today={today}
           value={picker === 'year' ? new Date(2024, 0, 1) : today}
           dayPicker={picker === 'day' ? undefined : null}
-          monthPicker={
-            picker === 'day' ? null : picker === 'year' ? { yearPicker: { navigatedYear: 2020 } } : undefined
-          }
-          minDate={picker === 'month' ? new Date(2020, 4, 1) : picker === 'year' ? new Date(2022, 0, 1) : undefined}
-          maxDate={picker === 'month' ? new Date(2020, 9, 31) : picker === 'year' ? new Date(2028, 11, 31) : undefined}
+          monthPicker={picker === 'day' ? null : undefined}
+          minDate={picker === 'month' ? new Date(2020, 4, 1) : picker === 'year' ? new Date(2016, 0, 1) : undefined}
+          maxDate={picker === 'month' ? new Date(2020, 9, 31) : picker === 'year' ? new Date(2030, 11, 31) : undefined}
           restrictedDates={picker === 'day' ? [new Date(2020, 8, 13), new Date(2020, 8, 19)] : undefined}
           onSelectDate={onSelectDate}
         />,
@@ -550,9 +543,15 @@ describe('Calendar', () => {
         cy.get(month('October')).should('be.focused');
       } else {
         cy.get('button[aria-label="2024, change year"]').click();
-        cy.contains('[role="gridcell"]', '2024').focus().realPress('Home');
-        cy.contains('[role="gridcell"]', '2022').should('be.focused').realPress('End');
-        cy.contains('[role="gridcell"]', '2028').should('be.focused');
+        // 2024 - 2035: maxDate limits End.
+        cy.contains('[role="gridcell"]', '2027').focus().realPress('Home');
+        cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('End');
+        cy.contains('[role="gridcell"]', '2030').should('be.focused');
+        // 2012 - 2023: minDate limits Home.
+        cy.get('button[aria-label="Previous year range 2012 - 2023"]').click();
+        cy.contains('[role="gridcell"]', '2020').focus().realPress('Home');
+        cy.contains('[role="gridcell"]', '2016').should('be.focused').realPress('End');
+        cy.contains('[role="gridcell"]', '2023').should('be.focused');
       }
       cy.get('[role="grid"] [role="gridcell"][tabindex="0"]').should('have.length', 1);
       cy.get('@onSelectDate').should('not.have.been.called');

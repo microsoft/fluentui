@@ -67,7 +67,7 @@ describe('DatePicker', () => {
 
   (['Enter', 'Space'] as const).forEach(key => {
     it(`closes from the Calendar close button with ${key}`, () => {
-      mount(<Example calendar={{ dayPicker: { closeButton: { children: 'Close calendar' } } }} />);
+      mount(<Example calendar={{ closeButton: { children: 'Close calendar' } }} />);
 
       cy.get('button[aria-haspopup="dialog"]').click();
       cy.contains('button', 'Close calendar').focus().realPress(key);

@@ -2,21 +2,16 @@ import * as React from 'react';
 import { flushSync } from 'react-dom';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { isConformant } from '../../../testing/isConformant';
-import { CalendarProvider, calendarContextDefaultValue } from '../calendarContext';
-import { CalendarDay } from './CalendarDay';
-import { useCalendarDay } from './useCalendarDay';
-import type {
-  CalendarDayHandle,
-  CalendarDayProps,
-  CalendarDayCellData,
-  CalendarDayRowData,
-  CalendarDayWeekdayCellData,
-} from './CalendarDay.types';
+import { Calendar } from './Calendar';
+import { useCalendar } from './useCalendar';
+import { focusCalendarGrid } from './calendarGrid';
+import type { CalendarCellData, CalendarProps, CalendarRowData, CalendarWeekdayCellData } from './Calendar.types';
+
+// Day-grid behavior, ported from the former standalone CalendarDay suite. Calendar renders only the day panel here.
 
 const today = new Date(2020, 8, 18);
 
-type DayOptions = Pick<CalendarDayProps, 'weeksToShow' | 'getCellProps'> & {
+type DayOptions = Pick<CalendarProps, 'weeksToShow' | 'getCellProps' | 'dateRangeType'> & {
   allFocusable?: boolean;
   minDate?: Date;
   restrictedDates?: Date[];
@@ -29,13 +24,11 @@ type DayOptions = Pick<CalendarDayProps, 'weeksToShow' | 'getCellProps'> & {
   renderIcon?: boolean;
 };
 
+/** Renders a day-only Calendar with a controlled displayed date, so navigation requests are only reported. */
 function renderDay(options: DayOptions = {}) {
   const onSelect = jest.fn();
   const onNavigate = jest.fn();
   const element = ({
-    allFocusable = false,
-    minDate,
-    restrictedDates,
     onGridKeyDown,
     onGridKeyDownCapture,
     onCellClick,
@@ -46,42 +39,34 @@ function renderDay(options: DayOptions = {}) {
     getCellProps,
     ...props
   }: DayOptions) => (
-    <CalendarProvider
-      value={{
-        ...calendarContextDefaultValue,
-        today,
-        value: today,
-        allFocusable,
-        minDate,
-        restrictedDates,
-        setValue: onSelect,
-      }}
-    >
-      <CalendarDay
-        navigatedDate={today}
-        onNavigateDate={onNavigate}
-        grid={{ onKeyDown: onGridKeyDown, onKeyDownCapture: onGridKeyDownCapture }}
-        getCellProps={day => ({
-          root: { onClick: onCellClick, onKeyDown: onCellKeyDown },
-          ...(renderIcon
-            ? {
-                button: {
-                  children: (
-                    <span>
-                      <svg aria-label="Custom icon">
-                        <path />
-                      </svg>
-                    </span>
-                  ),
-                },
-              }
-            : {}),
-          ...getCellProps?.(day),
-        })}
-        getRowProps={() => ({ root: { onClick: onRowClick, onKeyDown: onRowKeyDown } })}
-        {...props}
-      />
-    </CalendarProvider>
+    <Calendar
+      today={today}
+      value={today}
+      displayedDate={today}
+      monthPicker={null}
+      onSelectDate={onSelect}
+      onDisplayedDateChange={onNavigate}
+      grid={{ onKeyDown: onGridKeyDown, onKeyDownCapture: onGridKeyDownCapture }}
+      getCellProps={cell => ({
+        root: { onClick: onCellClick, onKeyDown: onCellKeyDown },
+        ...(renderIcon
+          ? {
+              button: {
+                children: (
+                  <span>
+                    <svg aria-label="Custom icon">
+                      <path />
+                    </svg>
+                  </span>
+                ),
+              },
+            }
+          : {}),
+        ...getCellProps?.(cell),
+      })}
+      getRowProps={() => ({ root: { onClick: onRowClick, onKeyDown: onRowKeyDown } })}
+      {...props}
+    />
   );
   const result = render(element(options));
   return {
@@ -93,39 +78,46 @@ function renderDay(options: DayOptions = {}) {
   };
 }
 
-describe('CalendarDay', () => {
+const isToday = (cell: CalendarCellData) => cell.type === 'day' && cell.originalDate?.getTime() === today.getTime();
+
+describe('Calendar day grid', () => {
   it('keeps repeated-element state data-only and resolves HTML props on demand', () => {
     const getCellProps = jest.fn(() => ({ root: { title: 'Custom day' } }));
     const getRowProps = jest.fn(() => ({ root: { title: 'Custom row' } }));
     const getWeekdayCellProps = jest.fn(() => ({ root: { title: 'Custom weekday' } }));
     const { result } = renderHook(() =>
-      useCalendarDay({ navigatedDate: today, getCellProps, getRowProps, getWeekdayCellProps }, null),
+      useCalendar(
+        { today, displayedDate: today, monthPicker: null, getCellProps, getRowProps, getWeekdayCellProps },
+        null,
+      ),
     );
     const state = result.current;
-    const week = state.weeks[0];
-    const day = week.days[0];
-    const weekday = state.weekdayRow.cells[0];
+    const [weekdayRow, week] = state.panels[0].rows;
+    if (weekdayRow.type !== 'weekday' || week.type !== 'week') {
+      throw new Error('Expected the weekday header followed by weeks');
+    }
+    const day = week.cells[0];
+    const weekday = weekdayRow.cells[0];
 
     expect(getCellProps).not.toHaveBeenCalled();
     expect(getRowProps).not.toHaveBeenCalled();
     expect(getWeekdayCellProps).not.toHaveBeenCalled();
-    for (const row of [state.weekdayRow, ...state.weeks]) {
+    for (const row of state.panels[0].rows) {
       expect(row).not.toHaveProperty('root');
-      const cells = row.type === 'week' ? row.days : row.cells;
-      cells.forEach(cell => {
+      (row.cells as Array<CalendarCellData | CalendarWeekdayCellData>).forEach(cell => {
         expect(cell).not.toHaveProperty('root');
         expect(cell).not.toHaveProperty('button');
         expect(cell).not.toHaveProperty('marker');
         expect(cell.label).toEqual(expect.any(String));
       });
     }
-    const dayProps = state.getDayCellProps(day);
+    const dayProps = state.resolveCellProps(day);
     expect(dayProps.root).toMatchObject({ role: 'gridcell', title: 'Custom day' });
     expect(dayProps.button).toMatchObject({ type: 'button', tabIndex: -1 });
-    expect(dayProps.label.children).toBe(day.label);
-    expect(state.getDayRowProps(week).root).toMatchObject({ role: 'row', title: 'Custom row' });
-    expect(state.getDayRowProps(state.weekdayRow).root).toMatchObject({ role: 'row', title: 'Custom row' });
-    expect(state.getWeekdayCellProps(weekday).root).toMatchObject({
+    expect(dayProps.label?.children).toBe(day.label);
+    expect(state.resolveRowProps(week).root).toMatchObject({ role: 'row', title: 'Custom row' });
+    expect(state.resolveRowProps(weekdayRow).root).toMatchObject({ role: 'row', title: 'Custom row' });
+    expect(state.resolveWeekdayCellProps(weekday)).toMatchObject({
       role: 'columnheader',
       children: weekday.label,
       title: 'Custom weekday',
@@ -136,29 +128,23 @@ describe('CalendarDay', () => {
     expect(day).not.toHaveProperty('root');
   });
 
-  isConformant({
-    Component: CalendarDay,
-    displayName: 'CalendarDay',
-    disabledTests: ['has-top-level-file-extra', 'consistent-callback-args'],
-  });
-
   it('renders its day grid through the grid slot', () => {
-    const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} grid={{ id: 'custom-grid' }} />);
+    const { container } = render(<Calendar today={today} monthPicker={null} grid={{ id: 'custom-grid' }} />);
 
-    const grid = container.querySelector('table[role="grid"]')!;
-    expect(grid.id).toBe('custom-grid');
+    expect(container.querySelector('table[role="grid"]')!.id).toBe('custom-grid');
   });
 
   it('customizes day cells and their content without replacing the grid behavior', () => {
-    const cellRef = React.createRef<HTMLTableCellElement>();
+    const cellRef = React.createRef<HTMLElement>();
     const { getByRole } = render(
-      <CalendarDay
-        navigatedDate={new Date(2020, 8, 18)}
-        getCellProps={day =>
-          day.originalDate?.getDate() === 15
+      <Calendar
+        today={today}
+        monthPicker={null}
+        getCellProps={cell =>
+          cell.type === 'day' && cell.originalDate?.getDate() === 15
             ? {
                 root: { ref: cellRef, title: 'Appointment' },
-                label: { children: <strong>{day.label}</strong> },
+                label: { children: <strong>{cell.label}</strong> },
               }
             : {}
         }
@@ -173,44 +159,45 @@ describe('CalendarDay', () => {
   });
 
   it('renders no navigation icons, since icons are a styled concern', () => {
-    const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
+    const { container } = render(<Calendar today={today} monthPicker={null} />);
 
     expect(container.querySelector('svg')).toBeNull();
   });
 
   it('passes only semantic data to cell, row and weekday getters, including nested items', () => {
-    const checkDay = (day: CalendarDayCellData) => {
-      expect(day.label).toEqual(expect.any(String));
-      expect(day.isNavigated).toEqual(expect.any(Boolean));
+    const checkCell = (cell: CalendarCellData) => {
+      expect(cell.label).toEqual(expect.any(String));
+      expect(cell.isNavigated).toEqual(expect.any(Boolean));
       for (const key of ['root', 'props', 'button', 'marker']) {
-        expect(day).not.toHaveProperty(key);
+        expect(cell).not.toHaveProperty(key);
       }
     };
-    const checkWeekday = (weekday: CalendarDayWeekdayCellData) => {
+    const checkWeekday = (weekday: CalendarWeekdayCellData) => {
       expect(weekday.label).toEqual(expect.any(String));
       expect(weekday.accessibleLabel).toEqual(expect.any(String));
       expect(weekday).not.toHaveProperty('root');
     };
-    const getCellProps = jest.fn((day: CalendarDayCellData) => {
-      checkDay(day);
-      return { root: { title: day.label } };
+    const getCellProps = jest.fn((cell: CalendarCellData) => {
+      checkCell(cell);
+      return { root: { title: cell.label } };
     });
-    const getRowProps = jest.fn((row: CalendarDayRowData) => {
+    const getRowProps = jest.fn((row: CalendarRowData) => {
       expect(row).not.toHaveProperty('root');
-      if (row.type === 'week') {
-        row.days.forEach(checkDay);
-      } else {
+      if (row.type === 'weekday') {
         row.cells.forEach(checkWeekday);
+      } else {
+        (row.cells as CalendarCellData[]).forEach(checkCell);
       }
       return {};
     });
-    const getWeekdayCellProps = jest.fn((weekday: CalendarDayWeekdayCellData) => {
+    const getWeekdayCellProps = jest.fn((weekday: CalendarWeekdayCellData) => {
       checkWeekday(weekday);
       return {};
     });
     const { container } = render(
-      <CalendarDay
-        navigatedDate={today}
+      <Calendar
+        today={today}
+        monthPicker={null}
         getCellProps={getCellProps}
         getRowProps={getRowProps}
         getWeekdayCellProps={getWeekdayCellProps}
@@ -223,21 +210,20 @@ describe('CalendarDay', () => {
     expect(container.querySelector('td')).toHaveAttribute('title', '30');
   });
 
-  it('composes element refs without replacing the imperative focus target', () => {
-    const handle = React.createRef<CalendarDayHandle>();
+  it('composes element refs without replacing the panel focus target', () => {
     const pickerRef = React.createRef<HTMLDivElement>();
-    const rootRef = React.createRef<HTMLTableCellElement>();
+    const rootRef = React.createRef<HTMLElement>();
     const buttonRef = React.createRef<HTMLButtonElement>();
     const labelRef = React.createRef<HTMLSpanElement>();
     const markerRef = React.createRef<HTMLSpanElement>();
-    const { container, getByRole, unmount } = render(
-      <CalendarDay
-        ref={pickerRef}
-        imperativeRef={handle}
-        navigatedDate={today}
+    const { getByRole, unmount } = render(
+      <Calendar
+        today={today}
+        monthPicker={null}
+        dayPicker={{ ref: pickerRef }}
         getMarkedDays={() => [today]}
-        getCellProps={day =>
-          day.originalDate?.getTime() === today.getTime()
+        getCellProps={cell =>
+          isToday(cell)
             ? {
                 root: { ref: rootRef },
                 button: { ref: buttonRef },
@@ -249,17 +235,18 @@ describe('CalendarDay', () => {
       />,
     );
     const button = getByRole('button', { name: 'September 18, 2020, marked' });
-    expect(pickerRef.current).toBe(container.firstElementChild);
+    expect(pickerRef.current).toHaveAttribute('data-view', 'day');
     expect(rootRef.current).toBe(button.closest('td'));
     expect(buttonRef.current).toBe(button);
     expect(labelRef.current).toHaveTextContent('18');
     expect(markerRef.current).toHaveTextContent('Appointment');
-    act(() => handle.current?.focus());
+    act(() => {
+      focusCalendarGrid(pickerRef.current);
+    });
     expect(rootRef.current).toHaveFocus();
 
     unmount();
     expect(pickerRef.current).toBeNull();
-    expect(handle.current).toBeNull();
     expect(rootRef.current).toBeNull();
     expect(buttonRef.current).toBeNull();
     expect(labelRef.current).toBeNull();
@@ -270,32 +257,31 @@ describe('CalendarDay', () => {
     const rowRef = React.createRef<HTMLTableRowElement>();
     const headerRef = React.createRef<HTMLTableCellElement>();
     const getCellProps = jest.fn(() => ({}));
-    const getRowProps = jest.fn(
-      (row: Parameters<NonNullable<React.ComponentProps<typeof CalendarDay>['getRowProps']>>[0]) => ({
-        root: {
-          title: row.type === 'week' ? 'Week' : 'Weekdays',
-          ref: row.type === 'week' && row.key === 0 ? rowRef : undefined,
-        },
-        weekNumber: { className: 'custom-week-number' },
-      }),
-    );
+    const getRowProps = jest.fn((row: CalendarRowData) => ({
+      root: {
+        title: row.type === 'week' ? 'Week' : 'Weekdays',
+        ref: row.type === 'week' && row.key === 0 ? rowRef : undefined,
+      },
+      weekNumber: { className: 'custom-week-number' },
+    }));
     const { container, getByRole } = render(
-      <CalendarProvider value={{ ...calendarContextDefaultValue, showWeekNumbers: true }}>
-        <CalendarDay
-          navigatedDate={today}
-          getCellProps={getCellProps}
-          getRowProps={getRowProps}
-          getWeekdayCellProps={cell => ({
-            root: cell.dayOfWeek === 'monday' ? { ref: headerRef, children: 'Monday', scope: 'row' } : {},
-          })}
-        />
-      </CalendarProvider>,
+      <Calendar
+        today={today}
+        monthPicker={null}
+        showWeekNumbers
+        getCellProps={getCellProps}
+        getRowProps={getRowProps}
+        getWeekdayCellProps={cell => ({
+          root: cell.dayOfWeek === 'monday' ? { ref: headerRef, children: 'Monday', scope: 'row' } : {},
+        })}
+      />,
     );
 
     expect(getCellProps).toHaveBeenCalledTimes(container.querySelectorAll('td').length);
     expect(getRowProps).toHaveBeenCalledTimes(container.querySelectorAll('tr').length);
     expect(rowRef.current).toHaveAttribute('title', 'Week');
     expect(container.querySelector('tr[title="Weekdays"]')).not.toBeNull();
+    // Five week numbers and the weekday header's spacer.
     expect(container.querySelectorAll('th.custom-week-number')).toHaveLength(6);
     expect(headerRef.current).toBe(getByRole('columnheader', { name: 'Monday' }));
     expect(headerRef.current).toHaveAttribute('scope', 'row');
@@ -304,11 +290,12 @@ describe('CalendarDay', () => {
 
   it.each([undefined, null, '', false, 0])('preserves a button children override of %p', children => {
     const { getByRole } = render(
-      <CalendarDay
-        navigatedDate={today}
+      <Calendar
+        today={today}
+        monthPicker={null}
         getMarkedDays={() => [today]}
-        getCellProps={day =>
-          day.originalDate?.getTime() === today.getTime()
+        getCellProps={cell =>
+          isToday(cell)
             ? { button: { children }, label: { children: 'Custom day' }, marker: { children: 'Marker' } }
             : { marker: { children: 'Must not create a marker' } }
         }
@@ -323,22 +310,23 @@ describe('CalendarDay', () => {
 
   it('lets defined consumer props override default cell and button attributes', () => {
     const { getByRole } = render(
-      <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today, minDate: today }}>
-        <CalendarDay
-          navigatedDate={today}
-          getCellProps={() => ({
-            root: {
-              role: 'link',
-              tabIndex: -1,
-              'aria-disabled': false,
-              'aria-selected': false,
-              'data-selected': 'custom',
-              'data-outside-bounds': undefined,
-            },
-            button: { type: 'submit', disabled: false, tabIndex: 0 },
-          })}
-        />
-      </CalendarProvider>,
+      <Calendar
+        today={today}
+        value={today}
+        minDate={today}
+        monthPicker={null}
+        getCellProps={() => ({
+          root: {
+            role: 'link',
+            tabIndex: -1,
+            'aria-disabled': false,
+            'aria-selected': false,
+            'data-selected': 'custom',
+            'data-outside-bounds': undefined,
+          } as React.HTMLAttributes<HTMLElement>,
+          button: { type: 'submit', disabled: false, tabIndex: 0 },
+        })}
+      />,
     );
     const unavailable = getByRole('button', { name: 'September 17, 2020' });
     expect(unavailable).toBeEnabled();
@@ -354,67 +342,57 @@ describe('CalendarDay', () => {
   });
 
   it('marks the navigated day as the initial entry point', () => {
-    const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
+    const { container } = render(<Calendar today={today} monthPicker={null} />);
 
     expect(container.querySelector('table')).not.toHaveAttribute('focusgroup');
     expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 18, 2020');
-    expect(container.querySelector('td[tabindex="0"]')).toHaveAttribute('tabindex', '0');
     expect(container.querySelector('table[aria-activedescendant]')).toBeNull();
   });
 
   it('keeps the noninteractive heading out of the tab order', () => {
-    const { container } = render(<CalendarDay navigatedDate={today} />);
-    const heading = container.querySelector('[data-fui-calendar-picker="day"] > div > div')!;
+    const { container } = render(<Calendar today={today} monthPicker={null} />);
+    const heading = container.querySelector('[data-view="day"] > div > div')!;
 
     expect(heading.tagName).toBe('DIV');
     expect(heading).not.toHaveAttribute('tabindex');
     expect(heading).not.toHaveAttribute('aria-label');
-    expect(heading).not.toHaveAttribute('onClick');
-    expect(heading).not.toHaveAttribute('onKeyDown');
     expect(heading).not.toHaveAttribute('type');
   });
 
   it('prevents nested day buttons from taking focus away from the gridcell', () => {
-    const { getByRole } = render(<CalendarDay navigatedDate={today} />);
-    const button = getByRole('button', { name: 'September 18, 2020' });
+    const { getByRole } = render(<Calendar today={today} monthPicker={null} />);
     const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
 
-    button.dispatchEvent(event);
+    getByRole('button', { name: 'September 18, 2020' }).dispatchEvent(event);
 
     expect(event.defaultPrevented).toBe(true);
   });
 
   it('focuses the next-month control when no visible date is available', () => {
-    const imperativeRef = React.createRef<CalendarDayHandle>();
     const nextMonthRef = React.createRef<HTMLButtonElement>();
     const { container, getByTitle } = render(
-      <CalendarProvider
-        value={{
-          ...calendarContextDefaultValue,
-          today,
-          restrictedDates: Array.from({ length: 7 }, (_, index) => new Date(2020, 8, 13 + index)),
-        }}
-      >
-        <CalendarDay
-          navigatedDate={today}
-          weeksToShow={1}
-          imperativeRef={imperativeRef}
-          nextMonthButton={{ ref: nextMonthRef }}
-        />
-      </CalendarProvider>,
+      <Calendar
+        today={today}
+        monthPicker={null}
+        weeksToShow={1}
+        restrictedDates={Array.from({ length: 7 }, (_, index) => new Date(2020, 8, 13 + index))}
+        nextButton={{ ref: nextMonthRef }}
+      />,
     );
     expect(container.querySelectorAll('td[tabindex="0"]')).toHaveLength(0);
-    act(() => imperativeRef.current?.focus());
+    act(() => {
+      focusCalendarGrid(container.firstElementChild);
+    });
     expect(getByTitle('Next month October')).toHaveFocus();
     expect(nextMonthRef.current).toBe(getByTitle('Next month October'));
   });
 
-  it('updates the roving tab stop without stealing focus when the navigated date changes', () => {
-    const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
+  it('updates the roving tab stop without stealing focus when the displayed date changes', () => {
+    const { container, rerender } = render(<Calendar today={today} displayedDate={today} monthPicker={null} />);
     const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
     act(() => remembered.focus());
 
-    rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
+    rerender(<Calendar today={today} displayedDate={new Date(2020, 8, 20)} monthPicker={null} />);
 
     expect(remembered).toHaveFocus();
     expect(container.querySelectorAll('td[tabindex="0"]')).toHaveLength(1);
@@ -422,61 +400,49 @@ describe('CalendarDay', () => {
     expect(remembered).toHaveAttribute('tabindex', '-1');
   });
 
-  it('renders its rows without motion wrappers', () => {
-    const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
+  // Hidden filler rows are only needed by a styled slide animation; the headless layer has no CSS to hide them.
+  it('renders week rows without motion wrappers or animation transition rows', () => {
+    const { container } = render(<Calendar today={today} monthPicker={null} />);
 
-    Array.from(container.querySelector('tbody')!.children).forEach(child => {
-      expect(child.tagName).toBe('TR');
-    });
-  });
-
-  // Those rows are hidden filler that only the styled slide animation needs. Rendering them here
-  // would show two bogus weeks, since the headless layer has no CSS to hide them.
-  it('omits the animation transition rows', () => {
-    const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
-
+    Array.from(container.querySelector('tbody')!.children).forEach(child => expect(child.tagName).toBe('TR'));
     expect(container.querySelectorAll('tr[aria-hidden="true"]')).toHaveLength(0);
     expect(container.querySelectorAll('thead > tr')).toHaveLength(1);
     expect(container.querySelectorAll('tbody > tr')).toHaveLength(5);
   });
 
-  it('preserves null body children while rendering defaults when omitted', () => {
-    const navigatedDate = new Date(2020, 8, 18);
-    const defaultBody = render(<CalendarDay navigatedDate={navigatedDate} body={{ id: 'day-body' }} />);
-    const body = defaultBody.container.querySelector('tbody#day-body')!;
-    expect(body.children.length).toBeGreaterThan(0);
-    expect(body.parentElement).toBe(defaultBody.container.querySelector('table'));
-    expect(defaultBody.container.querySelectorAll('table > tr')).toHaveLength(0);
-
-    const emptyBody = render(<CalendarDay navigatedDate={navigatedDate} body={{ children: null }} />);
-    expect(emptyBody.container.querySelector('tbody')!.children).toHaveLength(0);
+  it('preserves null grid children while rendering defaults when omitted', () => {
+    const empty = render(<Calendar today={today} monthPicker={null} grid={{ children: null }} />);
+    expect(empty.container.querySelector('table')!.children).toHaveLength(0);
   });
 
-  it('preserves the body slot while rendering the independent weekday header', () => {
+  it('renders custom grid children without resolving cells or rows', () => {
     const getCellProps = jest.fn(() => ({}));
     const getRowProps = jest.fn(() => ({}));
     const getWeekdayCellProps = jest.fn(() => ({}));
     const { container, getByText } = render(
-      <CalendarDay
-        navigatedDate={today}
+      <Calendar
+        today={today}
+        monthPicker={null}
         getCellProps={getCellProps}
         getRowProps={getRowProps}
         getWeekdayCellProps={getWeekdayCellProps}
-        body={{
-          id: 'custom-body',
+        grid={{
+          id: 'custom-grid',
           children: (
-            <tr>
-              <td>Custom row</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>Custom row</td>
+              </tr>
+            </tbody>
           ),
         }}
       />,
     );
 
-    expect(container.querySelector('tbody#custom-body')).toContainElement(getByText('Custom row'));
+    expect(container.querySelector('table#custom-grid')).toContainElement(getByText('Custom row'));
     expect(getCellProps).not.toHaveBeenCalled();
-    expect(getRowProps).toHaveBeenCalledTimes(1);
-    expect(getWeekdayCellProps).toHaveBeenCalledTimes(7);
+    expect(getRowProps).not.toHaveBeenCalled();
+    expect(getWeekdayCellProps).not.toHaveBeenCalled();
   });
 
   describe('day-grid domain behavior', () => {
@@ -495,40 +461,31 @@ describe('CalendarDay', () => {
       expect(fireEvent.keyDown(cells[0], { key: 'ArrowLeft' })).toBe(false);
       expect(cells[0]).toHaveFocus();
       expect(onNavigate).toHaveBeenCalledTimes(1);
-      expect(onNavigate.mock.calls[0][1].date).toEqual(new Date(2020, 7, 29));
+      expect(onNavigate.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 7, 29));
     });
 
-    it('pages from the focused day when rendered without the Calendar root', () => {
+    it('pages from the focused day', () => {
       const { getByRole, onNavigate } = renderDay();
-      const cell = getByRole('button', { name: 'September 18, 2020' }).closest('[role="gridcell"]')!;
+      const cell = getByRole('button', { name: 'September 18, 2020' }).closest<HTMLElement>('[role="gridcell"]')!;
+      act(() => cell.focus());
 
       expect(fireEvent.keyDown(cell, { key: 'PageUp' })).toBe(false);
       expect(onNavigate).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({
-          date: new Date(2020, 7, 18),
-          focusOnNavigatedDay: true,
-          type: 'keydown',
-        }),
+        expect.objectContaining({ displayedDate: new Date(2020, 7, 18), type: 'keydown' }),
       );
     });
 
     it('clears range hover attributes when paging to another month', async () => {
-      const Picker = () => {
-        const [navigatedDate, setNavigatedDate] = React.useState(today);
-        return (
-          <CalendarProvider value={{ ...calendarContextDefaultValue, today }}>
-            <CalendarDay navigatedDate={navigatedDate} onNavigateDate={(_event, data) => setNavigatedDate(data.date)} />
-          </CalendarProvider>
-        );
-      };
-      const { getByRole } = render(<Picker />);
+      const { getByRole } = render(<Calendar today={today} monthPicker={null} />);
       const button = getByRole('button', { name: 'September 18, 2020' });
       const grid = getByRole('grid');
       fireEvent.mouseOver(button);
       expect(grid.querySelectorAll('[data-range-hovered]').length).toBeGreaterThan(0);
 
-      fireEvent.keyDown(button.closest('[role="gridcell"]')!, { key: 'PageDown' });
+      const cell = button.closest<HTMLElement>('[role="gridcell"]')!;
+      act(() => cell.focus());
+      fireEvent.keyDown(cell, { key: 'PageDown' });
 
       await waitFor(() => expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0));
     });
@@ -544,13 +501,13 @@ describe('CalendarDay', () => {
       ['ArrowUp', 'September 12, 2020', [new Date(2020, 8, 5)], new Date(2020, 7, 29)],
     ] as const)(
       'keeps the weekday when %s passes restricted days in the column',
-      (key, label, restrictedDates, expected) => {
-        const { getByRole, onNavigate } = renderDay({ restrictedDates: [...restrictedDates] });
+      (key, label, restricted, expected) => {
+        const { getByRole, onNavigate } = renderDay({ restrictedDates: [...restricted] });
         const cell = getByRole('button', { name: label }).closest<HTMLElement>('[role="gridcell"]')!;
         act(() => cell.focus());
         expect(fireEvent.keyDown(cell, { key })).toBe(false);
         expect(onNavigate).toHaveBeenCalledTimes(1);
-        expect(onNavigate.mock.calls[0][1].date).toEqual(expected);
+        expect(onNavigate.mock.calls[0][1].displayedDate).toEqual(expected);
       },
     );
 
@@ -601,9 +558,7 @@ describe('CalendarDay', () => {
 
     it.each(['Enter', ' ', 'ArrowLeft'])('honors cell cancellation of %p before selection or paging', key => {
       const onKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
-      const { cells, onSelect, onNavigate } = renderDay({
-        getCellProps: () => ({ root: { onKeyDown } }),
-      });
+      const { cells, onSelect, onNavigate } = renderDay({ getCellProps: () => ({ root: { onKeyDown } }) });
       fireEvent.keyDown(cells[0], { key });
       expect(onKeyDown).toHaveBeenCalledTimes(1);
       expect(onSelect).not.toHaveBeenCalled();
@@ -615,9 +570,7 @@ describe('CalendarDay', () => {
       const onKeyDown = jest.fn(() => {
         flushSync(() => rerenderPicker({ getCellProps: () => ({ root: { onKeyDown: onAfterRerender } }) }));
       });
-      const { cells, rerenderPicker } = renderDay({
-        getCellProps: () => ({ root: { onKeyDown } }),
-      });
+      const { cells, rerenderPicker } = renderDay({ getCellProps: () => ({ root: { onKeyDown } }) });
       fireEvent.keyDown(cells[14], { key: 'ArrowRight' });
       expect(onKeyDown).toHaveBeenCalledTimes(1);
       expect(onAfterRerender).not.toHaveBeenCalled();
@@ -625,21 +578,22 @@ describe('CalendarDay', () => {
 
     it.each(['input', 'contenteditable'])('clears range hover and press state when leaving %s content', owner => {
       const { getByRole } = render(
-        <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today, dateRangeType: 'week' }}>
-          <CalendarDay
-            navigatedDate={today}
-            getCellProps={day => ({
-              label: {
-                children: (
-                  <>
-                    {day.label}
-                    {owner === 'input' ? <input aria-label="Editor" /> : <span contentEditable />}
-                  </>
-                ),
-              },
-            })}
-          />
-        </CalendarProvider>,
+        <Calendar
+          today={today}
+          value={today}
+          dateRangeType="week"
+          monthPicker={null}
+          getCellProps={cell => ({
+            label: {
+              children: (
+                <>
+                  {cell.label}
+                  {owner === 'input' ? <input aria-label="Editor" /> : <span contentEditable />}
+                </>
+              ),
+            },
+          })}
+        />,
       );
       const button = getByRole('button', { name: 'September 18, 2020' });
       const editor = button.querySelector<HTMLElement>('input, [contenteditable]')!;
@@ -664,6 +618,7 @@ describe('CalendarDay', () => {
       expect(cells.filter(cell => cell.tabIndex === 0)).toHaveLength(1);
       expect(grid.querySelectorAll('td button:not([tabindex="-1"])')).toHaveLength(0);
     });
+
     it.each([
       ['ArrowLeft', 13],
       ['ArrowRight', 15],
@@ -681,6 +636,7 @@ describe('CalendarDay', () => {
       expect(onNavigate).not.toHaveBeenCalled();
       expect(cells.filter(item => item.tabIndex === 0)).toEqual([cells[targetIndex]]);
     });
+
     it.each(['altKey', 'ctrlKey', 'metaKey', 'shiftKey'])('leaves modified arrows uncancelled with %s', modifier => {
       const { cells, onSelect, onNavigate } = renderDay();
       act(() => cells[0].focus());
@@ -691,6 +647,7 @@ describe('CalendarDay', () => {
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
     });
+
     it.each(['click', 'keydown'] as const)('selects with %s independently of navigation', type => {
       const { cells, onSelect } = renderDay();
       if (type === 'click') {
@@ -701,26 +658,29 @@ describe('CalendarDay', () => {
       expect(onSelect).toHaveBeenCalledTimes(1);
       expect(onSelect.mock.calls[0][1].type).toBe(type);
     });
+
     it.each(['cell', 'row'] as const)('honors click cancellation from the %s prop getter', target => {
       const onClick = jest.fn((event: React.MouseEvent<HTMLElement>) => event.preventDefault());
-      const { cells, onSelect, onNavigate } = renderDay({
-        ...(target === 'cell' ? { onCellClick: onClick } : { onRowClick: onClick }),
-      });
+      const { cells, onSelect, onNavigate } = renderDay(
+        target === 'cell' ? { onCellClick: onClick } : { onRowClick: onClick },
+      );
       expect(fireEvent.click(cells[2])).toBe(false);
       expect(onClick).toHaveBeenCalledTimes(1);
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
     });
+
     it.each(['cell', 'row'] as const)('honors keyboard cancellation from the %s prop getter', target => {
       const onKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
-      const { cells, onSelect, onNavigate } = renderDay({
-        ...(target === 'cell' ? { onCellKeyDown: onKeyDown } : { onRowKeyDown: onKeyDown }),
-      });
+      const { cells, onSelect, onNavigate } = renderDay(
+        target === 'cell' ? { onCellKeyDown: onKeyDown } : { onRowKeyDown: onKeyDown },
+      );
       fireEvent.keyDown(cells[2], { key: 'Enter' });
       expect(onKeyDown).toHaveBeenCalledTimes(1);
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
     });
+
     it('runs cell and row handlers before delegated selection', () => {
       const order: string[] = [];
       const { cells, onSelect } = renderDay({
@@ -731,6 +691,7 @@ describe('CalendarDay', () => {
       fireEvent.click(cells[2]);
       expect(order).toEqual(['cell', 'row', 'selection']);
     });
+
     it.each(['ArrowLeft', 'Enter'])('honors consumer cancellation of %s', key => {
       const onGridKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
       const { cells, onSelect, onNavigate } = renderDay({ onGridKeyDown });
@@ -741,6 +702,7 @@ describe('CalendarDay', () => {
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
     });
+
     it('honors grid capture cancellation', () => {
       const onGridKeyDownCapture = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
       const { cells, onSelect, onNavigate } = renderDay({ onGridKeyDownCapture });
@@ -749,6 +711,7 @@ describe('CalendarDay', () => {
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
     });
+
     it.each([false, true])('preserves unavailable-cell semantics with allFocusable=%s', allFocusable => {
       const { cells, onSelect } = renderDay({
         allFocusable,
@@ -763,6 +726,7 @@ describe('CalendarDay', () => {
       fireEvent.click(unavailable);
       expect(onSelect).not.toHaveBeenCalled();
     });
+
     it.each(['input', 'textarea', 'select', 'contenteditable', 'grid', 'toolbar'])(
       'preserves input ownership inside nested %s content',
       owner => {
@@ -786,6 +750,7 @@ describe('CalendarDay', () => {
         expect(onNavigate).not.toHaveBeenCalled();
       },
     );
+
     it.each(['click', 'keydown'] as const)('selects SVG-child %s content', type => {
       const { cells, onSelect } = renderDay({ renderIcon: true });
       const path = cells[2].querySelector('path')!;
@@ -797,6 +762,7 @@ describe('CalendarDay', () => {
       expect(onSelect).toHaveBeenCalledTimes(1);
       expect(onSelect.mock.calls[0][1]).toMatchObject({ type, date: new Date(2020, 8, 1) });
     });
+
     it('allows pointer selection but not keyboard selection inside nested toolbar SVG content', () => {
       const { cells, onSelect } = renderDay({ renderIcon: true });
       const path = cells[2].querySelector('path')!;
