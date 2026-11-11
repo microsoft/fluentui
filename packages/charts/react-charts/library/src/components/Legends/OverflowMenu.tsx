@@ -65,9 +65,7 @@ export const OverflowMenu: React.FC<{
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList aria-label="Legends">
-          {menuList}
-        </MenuList>
+        <MenuList aria-label="Legends">{menuList}</MenuList>
       </MenuPopover>
     </Menu>
   );
