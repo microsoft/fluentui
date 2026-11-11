@@ -168,8 +168,12 @@ describe.each([
     name: 'POSIX',
     path: posix,
     root: '/workspace',
-    configUrl: 'file:///workspace/tmp/rit/react-18/prepared/cypress.config.ts',
-    originUrl: 'file:///workspace/origin/',
+    // Node resolves file URLs using host rules, even when the import uses POSIX paths.
+    configUrl:
+      process.platform === 'win32'
+        ? 'file:///C:/workspace/tmp/rit/react-18/prepared/cypress.config.ts'
+        : 'file:///workspace/tmp/rit/react-18/prepared/cypress.config.ts',
+    originUrl: process.platform === 'win32' ? 'file:///C:/workspace/origin/' : 'file:///workspace/origin/',
   },
 ])('Cypress native ESM resolution for $name paths', ({ path, root, configUrl, originUrl }) => {
   it.each([
