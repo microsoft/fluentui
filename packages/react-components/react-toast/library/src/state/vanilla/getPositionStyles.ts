@@ -5,7 +5,21 @@ interface PositionStyles {
   left?: number;
   right?: number;
   bottom?: number;
+  maxWidth?: string;
 }
+
+/**
+ * The toast has a fixed width, so on a viewport narrower than that width it would run past the
+ * edge. Cap it at the space the offset leaves on both sides.
+ *
+ * A start or end toast sits `horizontal` away from its edge, so a symmetric gutter of
+ * `horizontal` on each side needs `2 * horizontal`. A centered toast is shifted by
+ * `horizontal`, and both edges have to stay inside the viewport, which works out to the same
+ * `2 * abs(horizontal)`. The floor keeps the default 20px gutter when the offset is smaller.
+ */
+const getMaxWidth = (horizontal: number): string => {
+  return `calc(100% - ${Math.max(2 * Math.abs(horizontal), 40)}px)`;
+};
 
 export const getPositionStyles = (
   position: ToastPosition,
@@ -28,6 +42,7 @@ export const getPositionStyles = (
         top: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
 
@@ -36,6 +51,7 @@ export const getPositionStyles = (
         bottom: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
 
@@ -43,24 +59,28 @@ export const getPositionStyles = (
       Object.assign(positionStyles, {
         top: vertical,
         [start]: horizontal,
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
     case 'top-end':
       Object.assign(positionStyles, {
         top: vertical,
         [end]: horizontal,
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
     case 'bottom-start':
       Object.assign(positionStyles, {
         bottom: vertical,
         [start]: horizontal,
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
     case 'bottom-end':
       Object.assign(positionStyles, {
         bottom: vertical,
         [end]: horizontal,
+        maxWidth: getMaxWidth(horizontal),
       });
       break;
   }

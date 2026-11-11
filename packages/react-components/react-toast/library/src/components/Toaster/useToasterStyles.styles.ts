@@ -3,7 +3,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TOAST_POSITIONS, getPositionStyles } from '../../state/index';
+import { TOAST_POSITIONS, getPositionStyles } from '../../state';
 
 export const toasterClassNames: SlotClassNames<ToasterSlots> = {
   root: 'fui-Toaster',
@@ -11,12 +11,13 @@ export const toasterClassNames: SlotClassNames<ToasterSlots> = {
 
 /**
  * Styles for the root slot
+ *
+ * The width is fixed, so the cap that keeps the toast inside a narrow viewport lives in
+ * `getPositionStyles` instead: it depends on the configured offset, which is not available here.
  */
 const useRootBaseClassName = makeResetStyles({
   position: 'fixed',
   width: '292px',
-  // Keep the default offset on both sides on viewports narrower than the toast, so it cannot run past the edge.
-  maxWidth: 'calc(100vw - 40px)',
   pointerEvents: 'none',
 });
 
