@@ -2,13 +2,21 @@ import { getPositionStyles } from './getPositionStyles';
 
 describe('getPositionStyles', () => {
   it.each([
-    ['bottom', 'ltr', { bottom: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' }],
+    [
+      'bottom',
+      'ltr',
+      { bottom: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' },
+    ],
     ['bottom-end', 'ltr', { bottom: 16, right: 20, maxWidth: 'calc(100% - 40px)' }],
     ['bottom-start', 'ltr', { bottom: 16, left: 20, maxWidth: 'calc(100% - 40px)' }],
     ['top', 'ltr', { top: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' }],
     ['top-end', 'ltr', { top: 16, right: 20, maxWidth: 'calc(100% - 40px)' }],
     ['top-start', 'ltr', { top: 16, left: 20, maxWidth: 'calc(100% - 40px)' }],
-    ['bottom', 'rtl', { bottom: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' }],
+    [
+      'bottom',
+      'rtl',
+      { bottom: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' },
+    ],
     ['bottom-end', 'rtl', { bottom: 16, left: 20, maxWidth: 'calc(100% - 40px)' }],
     ['bottom-start', 'rtl', { bottom: 16, right: 20, maxWidth: 'calc(100% - 40px)' }],
     ['top', 'rtl', { top: 16, left: 'calc(50% + 0px)', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 40px)' }],
