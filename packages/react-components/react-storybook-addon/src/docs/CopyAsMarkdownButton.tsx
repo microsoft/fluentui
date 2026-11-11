@@ -198,7 +198,7 @@ function getStorybookMarkdownApiBaseUrl(targetWindow: Window): string {
  * @returns The full URL to the markdown endpoint for the story
  * @example "button--primary" -> "https://storybooks.fluentui.dev/llms/button.txt"
  */
-export function convertStoryIdToMarkdownUrl(targetWindow: Window, storyId: string): string {
+function convertStoryIdToMarkdownUrl(targetWindow: Window, storyId: string): string {
   return `${getStorybookMarkdownApiBaseUrl(targetWindow)}${storyId.replace(STORYBOOK_VARIANT_SUFFIX_PATTERN, '.txt')}`;
 }
 
