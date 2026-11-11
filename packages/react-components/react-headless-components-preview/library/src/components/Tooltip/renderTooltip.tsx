@@ -19,7 +19,9 @@ export const renderTooltip = (state: TooltipState): JSXElement => {
           {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} data-arrow="" />}
           {state.secondaryContent ? (
             <div className={state.contentLayoutClassName}>
-              <div className={state.primaryContentClassName}>{state.content.children}</div>
+              <div id={state.primaryContentId} className={state.primaryContentClassName}>
+                {state.content.children}
+              </div>
               <state.secondaryContent />
             </div>
           ) : (

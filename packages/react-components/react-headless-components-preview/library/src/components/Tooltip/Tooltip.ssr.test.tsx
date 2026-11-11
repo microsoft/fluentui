@@ -8,6 +8,22 @@ import { SSRProvider } from '@fluentui/react-utilities';
 import { Tooltip } from './Tooltip';
 
 describe('Tooltip secondary content SSR', () => {
+  it.each([true, 'true'] as const)('excludes aria-hidden=%p secondary content from the string fallback', ariaHidden => {
+    expect(
+      renderToString(
+        <SSRProvider>
+          <Tooltip
+            content="Bold"
+            secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': ariaHidden }}
+            relationship="label"
+          >
+            <button>Trigger</button>
+          </Tooltip>
+        </SSRProvider>,
+      ),
+    ).toBe('<button aria-label="Bold">Trigger</button>');
+  });
+
   it.each(['summary', 'shortcut'])('defers the descendant description target %s until hydration', targetId => {
     const markup = renderToString(
       <SSRProvider>

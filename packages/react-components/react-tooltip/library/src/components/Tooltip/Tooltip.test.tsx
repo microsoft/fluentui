@@ -56,6 +56,63 @@ describe('Tooltip', () => {
   });
 
   describe('secondary content', () => {
+    it.each([
+      ['label', 'aria-labelledby', true, 'Bold'],
+      ['label', 'aria-labelledby', 'true', <strong key="primary">Bold</strong>],
+      ['description', 'aria-describedby', true, 'Bold'],
+      ['description', 'aria-describedby', 'true', <strong key="primary">Bold</strong>],
+    ] as const)(
+      'routes the %s %s reference around aria-hidden=%p secondary content',
+      (relationship, attribute, ariaHidden, content) => {
+        const example = (visible: boolean) => (
+          <Tooltip
+            visible={visible}
+            content={{ id: 'tooltip', children: content }}
+            secondaryContent={{ id: 'shortcut', children: 'Ctrl+B', 'aria-hidden': ariaHidden }}
+            relationship={relationship}
+          >
+            <button>{relationship === 'description' ? 'Format' : null}</button>
+          </Tooltip>
+        );
+        const result = render(example(false));
+
+        for (const visible of [false, true, false]) {
+          result.rerender(example(visible));
+          const trigger = result.getByRole('button', {
+            name: relationship === 'label' ? 'Bold' : 'Format',
+            description: relationship === 'description' ? 'Bold' : '',
+          });
+          const tooltip = getByRoleTooltip(result);
+          const referencedContent = tooltip.ownerDocument.getElementById(trigger.getAttribute(attribute)!);
+          expect(referencedContent).toHaveTextContent('Bold');
+          expect(referencedContent).not.toContainElement(result.getByText('Ctrl+B'));
+          expect(tooltip).toHaveAttribute('id', 'tooltip');
+          expect(tooltip).toContainElement(referencedContent);
+          expect(result.getByText('Ctrl+B')).toHaveAttribute('id', 'shortcut');
+        }
+      },
+    );
+
+    it('updates the generated reference when secondary aria-hidden changes', () => {
+      const example = (ariaHidden: React.AriaAttributes['aria-hidden']) => (
+        <Tooltip
+          content="Bold"
+          secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': ariaHidden }}
+          relationship="label"
+        >
+          <button />
+        </Tooltip>
+      );
+      const result = render(example(true));
+      for (const ariaHidden of [true, false, 'true', 'false', undefined] as const) {
+        result.rerender(example(ariaHidden));
+        const hidden = ariaHidden === true || ariaHidden === 'true';
+        const trigger = result.getByRole('button', { name: hidden ? 'Bold' : 'Bold Ctrl+B' });
+        const tooltip = getByRoleTooltip(result);
+        expect(trigger.getAttribute('aria-labelledby') === tooltip.id).toBe(!hidden);
+      }
+    });
+
     it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])(
       'combines labels using rendered content %p',
       secondaryContent => {
@@ -343,7 +400,7 @@ describe('Tooltip', () => {
       expect(getByRoleTooltip(result)).toContainElement(result.getByText('Ctrl+B'));
     });
 
-    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])(
+    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>, { children: 'Ctrl+B', 'aria-hidden': true }])(
       'preserves an authored render-function label with %p',
       secondaryContent => {
         const onFocus = jest.fn();

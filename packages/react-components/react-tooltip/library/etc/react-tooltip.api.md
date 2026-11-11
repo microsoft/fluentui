@@ -62,6 +62,7 @@ export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mo
     arrowClassName?: string;
     contentLayoutClassName?: string;
     primaryContentClassName?: string;
+    primaryContentId?: string;
 };
 
 // @public

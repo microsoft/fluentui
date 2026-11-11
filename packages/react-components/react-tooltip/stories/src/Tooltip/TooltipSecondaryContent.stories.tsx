@@ -97,6 +97,22 @@ export const SecondaryContent = (props: Partial<TooltipProps>): JSXElement => {
       >
         <Button icon={<TextBoldRegular />} aria-label="Toggle formatting" aria-describedby={secondaryDetailId} />
       </Tooltip>
+      <Tooltip
+        content="Bold"
+        secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': true }}
+        relationship="label"
+        {...props}
+      >
+        <Button data-testid="secondary-hidden-label" icon={<TextBoldRegular />} />
+      </Tooltip>
+      <Tooltip
+        content={<strong>Bold</strong>}
+        secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': true }}
+        relationship="description"
+        {...props}
+      >
+        <Button data-testid="secondary-hidden-description">Format</Button>
+      </Tooltip>
     </div>
   );
 };
@@ -108,7 +124,8 @@ SecondaryContent.parameters = {
         'Use secondaryContent for supporting metadata, including keyboard shortcuts. Both regions contribute to the ' +
         'accessible label or description. An explicit trigger label still takes precedence. Authored ID references ' +
         'to the tooltip remain available while it is closed. Authored labels and descriptions can also reference ' +
-        'only the primary content or secondary slot.',
+        'only the primary content or secondary slot. The final two examples set aria-hidden on secondaryContent: ' +
+        'the icon button keeps the name "Bold" and the Format button keeps the description "Bold" while closed or open.',
     },
   },
 };

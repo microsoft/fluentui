@@ -80,6 +80,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
+  const primaryContentId = useId('tooltip-primary-');
+  const secondaryHidden =
+    state.secondaryContent?.['aria-hidden'] === true || state.secondaryContent?.['aria-hidden'] === 'true';
+  state.primaryContentId = secondaryHidden ? primaryContentId : undefined;
   state.content['data-open'] = toDataAttributeValue(state.visible);
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
@@ -205,27 +209,28 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
   const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
+  // Referencing the hidden tooltip root would include even its aria-hidden secondary content.
+  const accessibleContentId = state.primaryContentId ?? state.content.id;
 
   if (relationship === 'label') {
     // Use rendered secondary content for native naming semantics, with a string fallback during SSR.
     if (typeof state.content.children === 'string' && (!state.secondaryContent || isServerSideRender)) {
       const secondaryText = state.secondaryContent?.children;
-      const secondaryHidden = state.secondaryContent?.['aria-hidden'];
       triggerAriaProps['aria-label'] =
-        typeof secondaryText === 'string' && secondaryHidden !== true && secondaryHidden !== 'true'
+        typeof secondaryText === 'string' && !secondaryHidden
           ? `${state.content.children} ${secondaryText}`
           : state.content.children;
     } else if (
       !state.secondaryContent ||
       (child?.props?.['aria-label'] === undefined && child?.props?.['aria-labelledby'] === undefined)
     ) {
-      triggerAriaProps['aria-labelledby'] = state.content.id;
+      triggerAriaProps['aria-labelledby'] = accessibleContentId;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       // eslint-disable-next-line react-hooks/immutability
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
-    triggerAriaProps['aria-describedby'] = state.content.id;
+    triggerAriaProps['aria-describedby'] = accessibleContentId;
     // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
     // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = true;

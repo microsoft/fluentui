@@ -10,6 +10,10 @@ already supplies `aria-label` or `aria-labelledby`, including triggers returned 
 With `relationship="description"`, both regions describe the trigger;
 an authored `aria-describedby` takes precedence. `relationship="inaccessible"` does not create an accessibility relationship.
 
+Set `secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': true }}` to exclude the secondary slot from the generated
+label or description, whether the tooltip is closed or open. Authored ID references remain unchanged and follow native
+accessible-name and description computation.
+
 Do not put links, buttons, or other interactive controls inside either content region. Use a Popover for interactive content.
 Secondary content wraps at constrained widths and follows the logical end alignment in both left-to-right and right-to-left layouts.
 During server rendering, string primary content provides a fallback label, combined with string secondary content when available.

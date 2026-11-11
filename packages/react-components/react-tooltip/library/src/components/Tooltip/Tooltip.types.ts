@@ -14,7 +14,7 @@ export type TooltipSlots = {
 
   /**
    * Supporting information rendered opposite the primary content, such as a keyboard shortcut.
-   * Participates in the trigger's accessible label or description.
+   * Participates in the trigger's accessible label or description unless `aria-hidden` is true.
    */
   secondaryContent?: Slot<'span'>;
 };
@@ -167,6 +167,11 @@ export type TooltipState = ComponentState<TooltipSlots> &
      * CSS class for the primary content when secondary content is present.
      */
     primaryContentClassName?: string;
+
+    /**
+     * ID of the primary region when generated accessibility references exclude secondary content.
+     */
+    primaryContentId?: string;
   };
 
 export type TooltipBaseState = Omit<TooltipState, 'appearance'>;
