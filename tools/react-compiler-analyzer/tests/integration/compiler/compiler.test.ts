@@ -4,19 +4,25 @@ import {
   nativeBinary,
   runFixture,
   summarize,
+  summarizeOxcAnalyzer,
+  summarizeOxcEmission,
   targetCacheEvidence,
   versions,
   writeEvidence,
+  oxcBindingTarget,
 } from './harness';
 
 describe('compiler integration (bounded behavior, not parity)', () => {
-  it('uses the workspace compiler dependencies and records resolved versions', () => {
+  it('uses all three compiler oracles and records resolved versions and native bindings', () => {
     expect(versions).toMatchObject({
       babel: require('@babel/core/package.json').version,
-      compiler: require('babel-plugin-react-compiler/package.json').version,
+      babelCompiler: require('babel-plugin-react-compiler/package.json').version,
+      oxcCompiler: require('oxc-transform-react/package.json').version,
+      oxcParser: require('oxc-parser/package.json').version,
       swc: require('@swc/core/package.json').version,
     });
     expect(nativeBinary.target).toEqual(expect.any(String));
+    expect(oxcBindingTarget).toEqual(expect.any(String));
   });
 
   it('attributes runtime cache bindings to their actual function, never strings or module totals', () => {
@@ -38,6 +44,17 @@ describe('compiler integration (bounded behavior, not parity)', () => {
     );
   });
 
+  it('lowers TypeScript while preserving JSX and the original source in Oxc output maps', async () => {
+    const fixture = fixtures.find(candidate => candidate.id === 'positive');
+    if (!fixture) {
+      throw new Error('Missing TypeScript/JSX fidelity fixture');
+    }
+    const evidence = await runFixture(fixture);
+    expect(evidence.oxcEmission.code).not.toContain('value: number');
+    expect(evidence.oxcEmission.code).toContain('<output>');
+    expect(evidence.oxcEmission.map).toMatchObject({ sourcesContent: [fixture.source] });
+  });
+
   it.each(fixtures)('$id', async fixture => {
     const evidence = await runFixture(fixture);
     const artifact = writeEvidence(evidence);
@@ -45,8 +62,12 @@ describe('compiler integration (bounded behavior, not parity)', () => {
       expect(evidence.analyzer.error).toBeNull();
       expect(evidence.babel.error).toBeNull();
       expect(evidence.swc.error).toBeNull();
+      expect(evidence.oxcEmission.error).toBeNull();
       expect(evidence.babel.inspectionError).toBeNull();
       expect(evidence.swc.inspectionError).toBeNull();
+      if (!evidence.oxcEmission.fatal) {
+        expect(evidence.oxcEmission.inspectionError).toBeNull();
+      }
       expect(evidence.swc.acceptance).toBe('unavailable');
       const caches = {
         babel: targetCacheEvidence(evidence.babel.functions, fixture.target),
@@ -63,6 +84,9 @@ describe('compiler integration (bounded behavior, not parity)', () => {
       }
       if (fixture.id.startsWith('exported-overload')) {
         for (const runtime of evidence.runtime) {
+          if (!('enabled' in runtime)) {
+            throw new Error('Expected gate-on/off overload runtime evidence');
+          }
           expect(runtime.error).toBeNull();
           expect(runtime.gateCalls.length > 0).toBe(Boolean(fixture.gated));
           expect(runtime.gateCalls.every(value => value === runtime.enabled)).toBe(true);
@@ -84,6 +108,12 @@ describe('compiler integration (bounded behavior, not parity)', () => {
           }
         }
       }
+      if (fixture.id.startsWith('outlined-closure')) {
+        const expectedError = fixture.id === 'outlined-closure' ? 'ReferenceError: factory is not defined' : null;
+        for (const runtime of evidence.runtime) {
+          expect(runtime.error).toBe(expectedError);
+        }
+      }
       if (fixture.id === 'hidden-selector') {
         expect(evidence.analyzer.risks).toContain('hidden-selector-hook');
       }
@@ -93,6 +123,10 @@ describe('compiler integration (bounded behavior, not parity)', () => {
       // The checked-in per-backend baseline intentionally includes divergences.
       // A version upgrade requires reviewing evidence, not asserting strict parity.
       expect(summarize(evidence)).toMatchSnapshot(fixture.id);
+      // Oxc emitted output is a separate observation from production analyzer acceptance.
+      // Adding its baseline must not rewrite the frozen Babel/SWC observations above.
+      expect(summarizeOxcEmission(evidence)).toMatchSnapshot(`oxc-${fixture.id}`);
+      expect(summarizeOxcAnalyzer(evidence)).toMatchSnapshot(`oxc-analyzer-${fixture.id}`);
     } catch (error) {
       throw new Error(`${String(error)}\nCompiler integration evidence: ${artifact}`);
     }
@@ -105,37 +139,56 @@ describe('compiler integration (bounded behavior, not parity)', () => {
     }
     const evidence = await runFixture(fixture);
     const baseline = summarize(evidence);
-    for (const backend of ['analyzer', 'babel'] as const) {
-      expect(baseline[backend].events).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            kind: 'CompileError',
-            reason: expect.stringContaining('React ESLint rules were disabled'),
-          }),
-        ]),
-      );
-      expect(baseline[backend].diagnostics).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            kind: 'CompileError',
-            reason: expect.stringContaining('React ESLint rules were disabled'),
-          }),
-        ]),
-      );
-      const changed = summarize({
-        ...evidence,
-        [backend]: {
-          ...evidence[backend],
-          diagnostics: evidence[backend].diagnostics.map(diagnostic => ({
-            ...diagnostic,
-            reason: diagnostic.kind === 'CompileError' ? 'Unrelated compiler limitation' : diagnostic.reason,
-          })),
-        },
-      });
-      expect(changed[backend].events).toEqual(baseline[backend].events);
-      expect(changed.babel.targetCacheEvidence).toBe(baseline.babel.targetCacheEvidence);
-      expect(changed.swc.targetCacheEvidence).toBe(baseline.swc.targetCacheEvidence);
-      expect(changed[backend]).not.toEqual(baseline[backend]);
-    }
+    const babel = baseline.babel;
+    expect(babel.events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'CompileError',
+          reason: expect.stringContaining('React ESLint rules were disabled'),
+        }),
+      ]),
+    );
+    expect(babel.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'CompileError',
+          reason: expect.stringContaining('React ESLint rules were disabled'),
+        }),
+      ]),
+    );
+
+    const oxc = summarizeOxcAnalyzer(evidence);
+    expect(oxc.events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'CompileError',
+          reason: expect.stringContaining('React rule suppression prevents optimization'),
+        }),
+      ]),
+    );
+    const changed = summarizeOxcAnalyzer({
+      ...evidence,
+      analyzer: {
+        ...evidence.analyzer,
+        diagnostics: evidence.analyzer.diagnostics.map(diagnostic => ({
+          ...diagnostic,
+          reason: diagnostic.kind === 'CompileError' ? 'Unrelated compiler limitation' : diagnostic.reason,
+        })),
+      },
+    });
+    const changedWhole = summarize({
+      ...evidence,
+      analyzer: {
+        ...evidence.analyzer,
+        diagnostics: evidence.analyzer.diagnostics.map(diagnostic => ({
+          ...diagnostic,
+          reason: diagnostic.kind === 'CompileError' ? 'Unrelated compiler limitation' : diagnostic.reason,
+        })),
+      },
+    });
+    expect(changed.events).toEqual(oxc.events);
+    expect(changedWhole.babel).toEqual(baseline.babel);
+    expect(changedWhole.swc).toEqual(baseline.swc);
+    expect(changed).not.toEqual(oxc);
   });
 });

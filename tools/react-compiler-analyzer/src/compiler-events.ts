@@ -33,10 +33,6 @@ export interface NormalizedCompilerEvents {
 function nullableMemoStats(event: CompilerEvent): NullableMemoStats {
   return {
     memoSlots: event.memoSlots ?? null,
-    memoBlocks: event.memoBlocks ?? null,
-    memoValues: event.memoValues ?? null,
-    prunedMemoBlocks: event.prunedMemoBlocks ?? null,
-    prunedMemoValues: event.prunedMemoValues ?? null,
   };
 }
 
@@ -80,32 +76,6 @@ function occurrenceFor(
   };
 }
 
-function occurrenceKey(occurrence: CompilerOccurrence): string {
-  return JSON.stringify([
-    occurrence.kind,
-    occurrence.functionId,
-    occurrence.rawFunctionSpan,
-    occurrence.diagnosticSpan,
-    occurrence.reason ?? null,
-    occurrence.fullReason ?? null,
-    occurrence.memoStats ?? null,
-    occurrence.category ?? null,
-  ]);
-}
-
-function dedupeOccurrences(occurrences: CompilerOccurrence[]): CompilerOccurrence[] {
-  const deduped: CompilerOccurrence[] = [];
-  let previousKey: string | undefined;
-  for (const occurrence of occurrences) {
-    const key = occurrenceKey(occurrence);
-    if (key !== previousKey) {
-      deduped.push(occurrence);
-    }
-    previousKey = key;
-  }
-  return deduped;
-}
-
 function reduceStatus(events: CompilerOccurrence[]): FunctionStatus {
   const terminal = events[events.length - 1];
   if (terminal.kind === 'CompileSuccess') {
@@ -118,18 +88,28 @@ function reduceStatus(events: CompilerOccurrence[]): FunctionStatus {
 }
 
 function diagnosticsFor(events: CompilerOccurrence[]): CompilerDiagnostic[] {
-  return events
-    .filter(
-      (event): event is CompilerOccurrence & { kind: 'CompileError' | 'PipelineError' } =>
-        event.kind === 'CompileError' || event.kind === 'PipelineError',
-    )
-    .map(event => ({
+  const grouped = new Map<string, CompilerDiagnostic>();
+  for (const event of events.filter(
+    (occurrence): occurrence is CompilerOccurrence & { kind: 'CompileError' | 'PipelineError' } =>
+      occurrence.kind === 'CompileError' || occurrence.kind === 'PipelineError',
+  )) {
+    const diagnostic: CompilerDiagnostic = {
       kind: event.kind,
       span: event.diagnosticSpan,
       reason: event.reason ?? '',
       ...(event.category ? { category: event.category } : {}),
       ...(event.fullReason ? { fullReason: event.fullReason } : {}),
-    }));
+      count: 1,
+    };
+    const key = JSON.stringify([diagnostic.kind, diagnostic.span, diagnostic.reason, diagnostic.category ?? null]);
+    const existing = grouped.get(key);
+    if (existing) {
+      existing.count++;
+    } else {
+      grouped.set(key, diagnostic);
+    }
+  }
+  return [...grouped.values()];
 }
 
 /** Normalize compiler events into one terminal analysis per canonical source function. */
@@ -145,7 +125,7 @@ export function normalizeCompilerEvents(
     .map((event, ordinal) => ({ event, ordinal }))
     .filter(({ event }) => TERMINAL_KINDS.has(event.kind))
     .map(({ event, ordinal }) => occurrenceFor(event, ordinal, source, index, includeFullDiagnostics));
-  const occurrences = dedupeOccurrences(rawOccurrences);
+  const occurrences = rawOccurrences;
   const grouped = new Map<string, CompilerOccurrence[]>();
   const unattributedErrors = diagnosticsFor(occurrences.filter(occurrence => !occurrence.functionId));
 

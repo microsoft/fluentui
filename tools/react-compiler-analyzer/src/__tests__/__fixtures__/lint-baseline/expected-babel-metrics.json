@@ -1,0 +1,263 @@
+{
+  "backend": "babel",
+  "babelVersion": "7.29.7",
+  "compilerVersion": "1.0.0",
+  "concurrency": 2,
+  "files": 4,
+  "cliSha256": "adb2b7c0fdde9a1622e527e80bb4db310a0b2fb66ea967524dcb312e7e22a6ab",
+  "inputCommit": "a65a06652e8c5af3400b6818be896c647dbb446e",
+  "results": [
+    {
+      "mode": "infer",
+      "fix": false,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 1121.127209,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 155536
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 776.973958,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 154784
+        }
+      ]
+    },
+    {
+      "mode": "infer",
+      "fix": false,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 832.788416,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 162032
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 1023.713459,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 163216
+        }
+      ]
+    },
+    {
+      "mode": "infer",
+      "fix": true,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 0,
+          "totalMs": 1195.587541,
+          "firstPasses": 8,
+          "probes": 4,
+          "maxRssKiB": 158592
+        },
+        {
+          "exitCode": 0,
+          "totalMs": 939.391292,
+          "firstPasses": 2,
+          "probes": 0,
+          "maxRssKiB": 152400
+        }
+      ]
+    },
+    {
+      "mode": "infer",
+      "fix": true,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 983.03175,
+          "firstPasses": 8,
+          "probes": 14,
+          "maxRssKiB": 170560
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 954.611959,
+          "firstPasses": 2,
+          "probes": 7,
+          "maxRssKiB": 164128
+        }
+      ]
+    },
+    {
+      "mode": "annotation",
+      "fix": false,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 804.441834,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 151152
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 856.55525,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 150816
+        }
+      ]
+    },
+    {
+      "mode": "annotation",
+      "fix": false,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 895.158334,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 157456
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 1037.176625,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 154256
+        }
+      ]
+    },
+    {
+      "mode": "annotation",
+      "fix": true,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 0,
+          "totalMs": 918.567292,
+          "firstPasses": 8,
+          "probes": 4,
+          "maxRssKiB": 153664
+        },
+        {
+          "exitCode": 0,
+          "totalMs": 716.338625,
+          "firstPasses": 2,
+          "probes": 0,
+          "maxRssKiB": 145872
+        }
+      ]
+    },
+    {
+      "mode": "annotation",
+      "fix": true,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 1169.23675,
+          "firstPasses": 8,
+          "probes": 10,
+          "maxRssKiB": 159392
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 764.329166,
+          "firstPasses": 2,
+          "probes": 3,
+          "maxRssKiB": 155184
+        }
+      ]
+    },
+    {
+      "mode": "all",
+      "fix": false,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 907.6735,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 159648
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 798.285334,
+          "firstPasses": 4,
+          "probes": 4,
+          "maxRssKiB": 157264
+        }
+      ]
+    },
+    {
+      "mode": "all",
+      "fix": false,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 5141.576458,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 155840
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 3820.750875,
+          "firstPasses": 4,
+          "probes": 7,
+          "maxRssKiB": 162944
+        }
+      ]
+    },
+    {
+      "mode": "all",
+      "fix": true,
+      "revalidate": false,
+      "runs": [
+        {
+          "exitCode": 0,
+          "totalMs": 2613.72725,
+          "firstPasses": 8,
+          "probes": 4,
+          "maxRssKiB": 162160
+        },
+        {
+          "exitCode": 0,
+          "totalMs": 1876.695791,
+          "firstPasses": 3,
+          "probes": 0,
+          "maxRssKiB": 151712
+        }
+      ]
+    },
+    {
+      "mode": "all",
+      "fix": true,
+      "revalidate": true,
+      "runs": [
+        {
+          "exitCode": 1,
+          "totalMs": 1830.151708,
+          "firstPasses": 8,
+          "probes": 21,
+          "maxRssKiB": 176720
+        },
+        {
+          "exitCode": 1,
+          "totalMs": 3298.031375,
+          "firstPasses": 3,
+          "probes": 14,
+          "maxRssKiB": 172992
+        }
+      ]
+    }
+  ]
+}

@@ -14,8 +14,10 @@ export default {
   displayName: 'react-compiler-analyzer',
   preset: '../../jest.preset.js',
   transform: {
+    '^.+/node_modules/(oxc-parser|oxc-transform-react)/.+\\.js$': '<rootDir>/tests/oxc-transformer.cjs',
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
+  transformIgnorePatterns: ['/node_modules/(?!oxc-parser/|oxc-transform-react/)'],
   moduleFileExtensions: ['ts', 'js', 'html'],
   testEnvironment: 'node',
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/tests/integration/'],

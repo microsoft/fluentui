@@ -1,4 +1,4 @@
-# Upstream: React Compiler outlines a `useState` initializer past its captured scope
+# React Compiler outlines a `useState` initializer past its captured scope
 
 **Target:** [facebook/react](https://github.com/facebook/react/issues) — `babel-plugin-react-compiler`
 **Status:** not yet filed
@@ -8,16 +8,18 @@
 
 ## Summary
 
-When a factory function returns a component **defined as an arrow function**, and that component's
-`useState` initializer closes over one of the factory's parameters, the compiler outlines the
-initializer to **module scope** while leaving the captured binding behind. The emitted code
-references an identifier that is not bound in its new scope, producing a `ReferenceError` the first
-time the component mounts.
+In the bounded integration reproduction, when a factory returns a component **defined as an arrow
+function** and its `useState` initializer closes over a factory parameter, Babel, native SWC, and
+Oxc all emit an outlined initializer that references the parameter at **module scope**. Evaluating
+the emitted function produces `ReferenceError: factory is not defined`. A function-declaration
+control keeps the helper inside the factory and does not throw under the same test harness.
 
-The compiler reports `CompileSuccess`. The emitted code is syntactically valid. Nothing in a normal
-build pipeline catches it.
+This is a measured, source-specific reproduction—not a claim of general parity. Babel and Oxc
+report compile success for the arrow form; native SWC has no acceptance telemetry in this harness.
+The runtime check uses TypeScript lowering and stubs for hooks, cache, and JSX, not a React renderer
+or a consumer build.
 
-## Environment
+## Original report environment
 
 | Package                       | Version  |
 | ----------------------------- | -------- |
@@ -26,6 +28,25 @@ build pipeline catches it.
 | `react`                       | `19.2.0` |
 
 Compiler options: `{ panicThreshold: 'none' }` (defaults otherwise; `compilationMode: 'infer'`).
+
+## Live bounded harness environment
+
+The current three-way fixture records resolved versions and native bindings in its generated
+evidence. The validated run used:
+
+| Package                       | Version                         |
+| ----------------------------- | ------------------------------- |
+| `babel-plugin-react-compiler` | `1.0.0`                         |
+| `@babel/core`                 | `7.29.7`                        |
+| `@swc/core`                   | `1.15.47`                       |
+| `oxc-transform-react`         | `0.156.0`                       |
+| `oxc-parser`                  | `0.156.0`                       |
+| TypeScript runtime harness    | `5.7.3`                         |
+| Oxc binding                   | native (`aarch64-apple-darwin`) |
+
+The harness transpiles output to CommonJS/ES2020 with TypeScript and stubs `useState`,
+`createElement`, and compiler-cache calls. The binding target is platform-dependent and is recorded
+in each fixture's evidence.
 
 ## Reproduction
 
@@ -82,8 +103,8 @@ ReferenceError: factory is not defined
 
 ### Expected output
 
-`_temp` should be placed inside `createLazy`, where `factory` is in scope — which is exactly what
-the compiler does when the component is a **function declaration** instead of an arrow function.
+`_temp` must be placed inside `createLazy`, where `factory` is in scope. In the bounded harness, all
+three backends do this for the function-declaration control.
 
 ## The differential: arrow function vs. function declaration
 
@@ -126,9 +147,10 @@ export function createLazy(factory) {
 }
 ```
 
-So the outlining destination is chosen correctly for one function form and incorrectly for the
-other. This looks like the outlining pass picking an insertion point without checking that the
-outlined body's free variables remain bound there.
+The live harness directly tests both forms. The arrow reproduction throws for Babel, SWC, and Oxc;
+the function-declaration control does not throw for those same versions. This isolates a measured
+function-form difference without implying that other source shapes or compiler versions behave the
+same way.
 
 ## It is not limited to one initializer
 
@@ -166,15 +188,16 @@ function _temp2() {
 
 ## Why this is hard to catch downstream
 
-Every layer reports success:
+The original Babel report and the bounded current harness show why this is hard to catch:
 
 | Layer                          | Result                                                   |
 | ------------------------------ | -------------------------------------------------------- |
 | TypeScript                     | passes — the **source** is valid                         |
-| React Compiler                 | logs `CompileSuccess`                                    |
+| Babel and Oxc analyzer         | report `CompileSuccess` for the arrow reproduction       |
+| Native SWC                     | emits output; it has no acceptance telemetry here        |
 | `node --check` / bundler parse | passes — the **output** is syntactically valid           |
 | Bundlers                       | no error; an unbound identifier is a legal global lookup |
-| Runtime                        | `ReferenceError` on first mount                          |
+| Bounded runtime harness        | all three emitted outputs throw `ReferenceError`         |
 
 `panicThreshold` does not help: it governs errors the compiler _detects_, and the compiler does not
 consider this an error. In the reporting app this reached production behaviour and cost roughly a
@@ -187,9 +210,9 @@ at the chosen insertion point; if not, insert into the nearest enclosing scope t
 behaviour already exhibited for function-declaration components).
 
 A cheap defensive check for the compiler's own test suite: after codegen, assert that the emitted
-program introduces no unbound identifiers relative to the input program. We prototyped exactly this
-(diff `Program.scope.globals` between input and output, minus standard built-ins) and measured
-**0 false positives across 948 real source files**, while catching both shapes above.
+program introduces no unbound identifiers relative to the input program. The original reporter
+prototyped this (diff `Program.scope.globals` between input and output, minus standard built-ins)
+and measured **0 false positives across 948 real source files**, while catching both shapes above.
 
 ## Workaround for consumers
 

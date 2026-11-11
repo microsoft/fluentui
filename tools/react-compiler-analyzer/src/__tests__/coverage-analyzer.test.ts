@@ -35,8 +35,14 @@ describe('deriveCoverage — manual memo integration', () => {
       /Compiler failed .* plugin crashed/,
     );
 
-    const parseError = Object.assign(new Error('invalid syntax'), { code: 'BABEL_PARSE_ERROR' });
+    const parseError = Object.assign(new Error('invalid syntax'), { code: 'RCA_PARSE_ERROR' });
     expect(deriveCoverage({ ...compiled, error: parseError })).toEqual([]);
+    const outputParseError = Object.assign(new Error('generated output syntax failed'), {
+      code: 'RCA_OUTPUT_PARSE_ERROR',
+    });
+    expect(() => deriveCoverage({ ...compiled, error: outputParseError })).toThrow(
+      /Compiler failed .* generated output syntax failed/,
+    );
   });
 
   it('detects manual memoization in a compilable function', async () => {

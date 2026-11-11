@@ -31,7 +31,6 @@ describe('SourceFunctionIndex', () => {
       false,
       { detectGetStateReads: true },
       undefined,
-      [],
       root,
     );
   }
@@ -97,6 +96,30 @@ export function Outer() {
 }`);
     const [, inner] = result.sourceFunctions.values();
     expect(result.sourceFunctions.resolveSpan(inner.bodySpan)?.id).toBe(inner.id);
+  });
+
+  it('resolves a diagnostic to the nearest eligible enclosing compiler candidate', async () => {
+    const result = await fixture(`
+export function useActiveDescendant() {
+  React.useEffect(() => {
+    function onSelectDate() {
+      return true;
+    }
+    return onSelectDate();
+  }, []);
+}`);
+    const functions = result.sourceFunctions.values();
+    const hook = functions.find(fn => fn.name === 'useActiveDescendant')!;
+    const helper = functions.find(fn => fn.name === 'onSelectDate')!;
+    const eligibleCandidates = new Set([hook.id]);
+
+    expect(result.sourceFunctions.enclosingFunctions(helper.bodySpan).map(fn => fn.name)).toEqual([
+      'onSelectDate',
+      null,
+      'useActiveDescendant',
+    ]);
+    expect(result.sourceFunctions.resolveEnclosingFunction(helper.bodySpan, eligibleCandidates)?.id).toBe(hook.id);
+    expect(result.sourceFunctions.resolveEnclosingFunction(helper.bodySpan, new Set())).toBeNull();
   });
 
   it('keeps same-named and anonymous functions addressable', async () => {

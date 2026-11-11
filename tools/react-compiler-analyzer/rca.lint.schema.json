@@ -11,21 +11,39 @@
     "mode",
     "profile",
     "emittedCaching",
+    "completeness",
+    "coverage",
+    "fileDiagnostics",
     "summary",
     "directives",
     "unparseable"
   ],
   "properties": {
-    "schemaVersion": { "const": 3 },
+    "schemaVersion": { "const": 5 },
     "tool": { "const": "react-compiler-analyzer" },
     "command": { "const": "lint" },
     "mode": { "enum": ["infer", "annotation", "all"] },
     "profile": { "$ref": "rca.analyze.schema.json#/definitions/profile" },
     "emittedCaching": { "const": "unverified" },
+    "completeness": { "enum": ["complete", "incomplete"] },
+    "coverage": { "$ref": "rca.analyze.schema.json#/definitions/coverage" },
+    "fileDiagnostics": {
+      "type": "array",
+      "items": { "$ref": "rca.analyze.schema.json#/definitions/fileDiagnostic" }
+    },
     "summary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["directives", "active", "redundant", "broken", "conflicting", "skipped", "unparseableFiles"],
+      "required": [
+        "directives",
+        "active",
+        "redundant",
+        "broken",
+        "conflicting",
+        "skipped",
+        "fileDiagnostics",
+        "unparseableFiles"
+      ],
       "properties": {
         "directives": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
         "active": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
@@ -33,6 +51,7 @@
         "broken": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
         "conflicting": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
         "skipped": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "fileDiagnostics": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
         "unparseableFiles": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" }
       }
     },

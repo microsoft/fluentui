@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/microsoft/fluentui/master/tools/react-compiler-analyzer/rca.analyze.schema.json",
   "title": "React Compiler Analyzer analyze output",
-  "description": "SchemaVersion 3 analysis evidence emitted by analyze --format json. Statistics are not emitted-code evidence.",
+  "description": "SchemaVersion 5 Oxc analysis evidence emitted by analyze --format json. Completeness describes analysis and attribution only; it is not native-build proof. In-memory synthetic output statistics are not consumer emitted-code evidence.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,6 +12,9 @@
     "mode",
     "profile",
     "emittedCaching",
+    "completeness",
+    "coverage",
+    "fileDiagnostics",
     "summary",
     "functions",
     "findings",
@@ -19,7 +22,7 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": 3
+      "const": 5
     },
     "tool": {
       "const": "react-compiler-analyzer"
@@ -32,6 +35,12 @@
     },
     "profile": { "$ref": "#/definitions/profile" },
     "emittedCaching": { "const": "unverified" },
+    "completeness": { "enum": ["complete", "incomplete"] },
+    "coverage": { "$ref": "#/definitions/coverage" },
+    "fileDiagnostics": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/fileDiagnostic" }
+    },
     "summary": {
       "$ref": "#/definitions/summary"
     },
@@ -53,6 +62,7 @@
         "$ref": "#/definitions/unparseable"
       }
     },
+    "suppressionProtection": { "$ref": "#/definitions/suppressionProtection" },
     "annotate": {
       "$ref": "#/definitions/annotate"
     }
@@ -63,30 +73,162 @@
       "additionalProperties": false,
       "required": [
         "backend",
-        "babelVersion",
         "compilerVersion",
+        "parserVersion",
         "mode",
-        "parserPlugins",
+        "jsx",
+        "outputMode",
+        "sourcemap",
         "noEmit",
         "panicThreshold",
+        "reportDiagnostics",
         "target",
-        "suppressionRules"
+        "suppressionRules",
+        "gating"
       ],
       "properties": {
-        "backend": { "const": "babel" },
-        "babelVersion": { "type": "string", "minLength": 1 },
-        "compilerVersion": { "type": "string", "minLength": 1 },
+        "backend": { "const": "oxc" },
+        "compilerVersion": {
+          "type": "string",
+          "minLength": 1,
+          "description": "oxc-transform-react port package version, not an independently measured upstream React Compiler version."
+        },
+        "parserVersion": { "type": "string", "minLength": 1 },
         "mode": { "enum": ["infer", "annotation", "all"] },
-        "parserPlugins": { "type": "array", "items": { "type": "string" } },
-        "noEmit": { "const": true },
+        "jsx": { "const": "preserve" },
+        "outputMode": { "const": "client" },
+        "sourcemap": {
+          "const": true,
+          "description": "Generated/source provenance maps are used in memory for verified function attribution."
+        },
+        "noEmit": {
+          "const": false,
+          "description": "Synthetic gated output exists only in memory. Analysis never writes transformed source."
+        },
         "panicThreshold": { "const": "none" },
-        "target": { "const": "compiler-default" },
-        "suppressionRules": { "const": "compiler-default" }
+        "reportDiagnostics": { "const": true },
+        "target": { "const": "19" },
+        "suppressionRules": { "const": "compiler-default" },
+        "gating": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "importSpecifierName"],
+          "properties": {
+            "source": { "const": "__rca_gate__" },
+            "importSpecifierName": { "const": "__rcaGate" }
+          }
+        }
       }
     },
     "nonNegativeInteger": {
       "type": "integer",
       "minimum": 0
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["discoveredFiles", "processedFiles", "failedFiles", "incompleteFiles"],
+      "properties": {
+        "discoveredFiles": { "$ref": "#/definitions/nonNegativeInteger" },
+        "processedFiles": { "$ref": "#/definitions/nonNegativeInteger" },
+        "failedFiles": { "$ref": "#/definitions/nonNegativeInteger" },
+        "incompleteFiles": { "$ref": "#/definitions/nonNegativeInteger" }
+      }
+    },
+    "fileDiagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "package", "stage", "category", "severity", "attribution", "count", "message"],
+      "properties": {
+        "file": { "type": "string", "minLength": 1 },
+        "package": { "$ref": "#/definitions/nullableString" },
+        "stage": { "enum": ["input", "compiler", "backend", "probe"] },
+        "category": { "type": "string", "minLength": 1 },
+        "severity": { "enum": ["error", "warning"] },
+        "attribution": { "enum": ["file", "function", "unresolved"] },
+        "line": { "type": "integer", "minimum": 1 },
+        "column": { "$ref": "#/definitions/nonNegativeInteger" },
+        "count": { "$ref": "#/definitions/positiveInteger" },
+        "message": { "type": "string", "minLength": 1 },
+        "code": { "type": "string", "minLength": 1 }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line", "column", "offset"],
+      "properties": {
+        "line": { "type": "integer", "minimum": 1 },
+        "column": { "$ref": "#/definitions/nonNegativeInteger" },
+        "offset": { "$ref": "#/definitions/nonNegativeInteger" }
+      }
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "$ref": "#/definitions/position" },
+        "end": { "$ref": "#/definitions/position" }
+      }
+    },
+    "suppressionDirective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "rules", "relevantRules", "reason", "commentSpan", "scopes"],
+      "properties": {
+        "kind": { "enum": ["disable", "enable", "disable-next-line", "disable-line"] },
+        "rules": {
+          "anyOf": [{ "type": "array", "items": { "type": "string" } }, { "type": "null" }]
+        },
+        "relevantRules": { "type": "array", "items": { "type": "string" } },
+        "reason": { "type": ["string", "null"] },
+        "commentSpan": { "$ref": "#/definitions/span" },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ruleId", "span"],
+            "properties": {
+              "ruleId": { "type": "string" },
+              "span": { "$ref": "#/definitions/span" }
+            }
+          }
+        }
+      }
+    },
+    "suppressionProtection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filesModified", "filesPlanned", "results"],
+      "properties": {
+        "dryRun": { "const": true },
+        "filesModified": { "$ref": "#/definitions/nonNegativeInteger" },
+        "filesPlanned": { "$ref": "#/definitions/nonNegativeInteger" },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["file", "status", "reason", "suppressions"],
+            "properties": {
+              "file": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["written", "would-write", "skipped", "conflict"] },
+              "reason": { "type": "string", "minLength": 1 },
+              "suppressions": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/suppressionDirective" }
+              },
+              "preview": { "type": "string" }
+            }
+          }
+        }
+      }
     },
     "nullableString": {
       "type": ["string", "null"]
@@ -107,6 +249,7 @@
         "findings",
         "findingsOnCompiled",
         "findingsSuppressed",
+        "fileDiagnostics",
         "unparseableFiles"
       ],
       "properties": {
@@ -138,6 +281,9 @@
         "findingsSuppressed": {
           "$ref": "#/definitions/nonNegativeInteger"
         },
+        "fileDiagnostics": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
         "unparseableFiles": {
           "$ref": "#/definitions/nonNegativeInteger"
         }
@@ -146,25 +292,9 @@
     "memoStats": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["memoSlots", "memoBlocks", "memoValues", "prunedMemoBlocks", "prunedMemoValues"],
+      "required": ["memoSlots"],
       "properties": {
         "memoSlots": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "memoBlocks": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "memoValues": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "prunedMemoBlocks": {
-          "type": ["integer", "null"],
-          "minimum": 0
-        },
-        "prunedMemoValues": {
           "type": ["integer", "null"],
           "minimum": 0
         }
@@ -226,11 +356,12 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["kind", "reason"],
+            "required": ["kind", "reason", "count"],
             "properties": {
               "kind": { "enum": ["CompileError", "PipelineError"] },
               "reason": { "type": "string" },
-              "category": { "type": "string" }
+              "category": { "type": "string" },
+              "count": { "$ref": "#/definitions/positiveInteger" }
             }
           }
         },
@@ -332,7 +463,10 @@
         "dryRun": ["planned"],
         "planned": ["dryRun"]
       },
-      "if": { "required": ["dryRun"] },
+      "if": {
+        "properties": { "dryRun": { "const": true } },
+        "required": ["dryRun"]
+      },
       "then": {
         "properties": {
           "filesModified": { "const": 0 },

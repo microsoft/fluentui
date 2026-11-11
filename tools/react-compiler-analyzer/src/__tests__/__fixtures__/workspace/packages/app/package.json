@@ -1,0 +1,5 @@
+{
+  "name": "@ws/app",
+  "type": "module",
+  "imports": { "#internal/*": "./src/*.ts" }
+}
