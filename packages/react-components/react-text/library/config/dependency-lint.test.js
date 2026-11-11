@@ -173,7 +173,12 @@ describe('dependency lint pilot', () => {
     }
   });
 
-  it.each(['project', 'build target', 'file map'])('fails when the cached %s is missing', missing => {
+  it.each([
+    ['project', 'cannot find react-text in the cached Nx graph', 'Run yarn nx reset'],
+    ['build target', 'requires the react-text build target definition', 'building the package is not required'],
+    ['file map', 'cannot find the react-text dependency file map', 'Invoke this config through Nx'],
+    ['file map entry', 'cannot find the react-text dependency file map', 'Invoke this config through Nx'],
+  ])('fails with recovery guidance when the cached %s is missing', (missing, diagnostic, guidance) => {
     const directory = mkdtempSync(join(tmpdir(), 'react-text-dependency-graph-'));
     try {
       if (missing === 'project') {
@@ -183,6 +188,9 @@ describe('dependency lint pilot', () => {
       }
       writeFileSync(join(directory, 'project-graph.json'), JSON.stringify(graph));
       if (missing !== 'file map') {
+        if (missing === 'file map entry') {
+          delete fileMap['react-text'];
+        }
         writeFileSync(join(directory, 'file-map.json'), JSON.stringify({ fileMap: { projectFileMap: fileMap } }));
       }
       const result = spawnSync(process.execPath, ['-e', 'require("./config/eslint.config.cjs")'], {
@@ -192,7 +200,9 @@ describe('dependency lint pilot', () => {
       });
       expect(result.error).toBeUndefined();
       expect(result.status).not.toBe(0);
-      expect(result.stderr).toContain('Dependency lint requires the react-text project graph and file map');
+      expect(result.stderr).toContain(diagnostic);
+      expect(result.stderr).toContain(guidance);
+      expect(result.stderr).not.toContain('TypeError');
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }

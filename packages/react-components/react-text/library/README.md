@@ -103,6 +103,11 @@ are declared in this package's `dependencies`, `peerDependencies`, or `optionalD
 manifest check does not build component packages. Run it through Nx so that its source dependency graph and file map
 are refreshed first; missing graph data is an error, not a successful check.
 
+Nx's rule requires a `build` target definition to select production inputs, but does not execute that target.
+The config checks this prerequisite explicitly so a renamed or missing target cannot silently skip linting.
+It also uses Nx's internal dependency file-map cache reader: the public file-map API does not include dependency
+edges. Keep the missing-cache regression cases when upgrading Nx.
+
 The pilot excludes test files through the build's production inputs, and excludes configuration and `src/testing`
 helpers explicitly. It accounts for generated external SWC helpers, but Nx does not infer the workspace JSX runtime
 dependency from `@jsxImportSource` pragmas. Obsolete dependencies and version ranges are not checked. Nx source
