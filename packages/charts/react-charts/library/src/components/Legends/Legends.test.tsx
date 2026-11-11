@@ -339,8 +339,11 @@ describe('Legends - dynamic overflow', () => {
     expect(checkboxItems.length).toBe(7);
 
     checkboxItems.forEach((item, itemIndex) => {
-      expect(item.getAttribute('aria-setsize')).toBe('10');
-      expect(item.getAttribute('aria-posinset')).toBe(String(itemIndex + 4));
+      // The menu is its own set, so the counts describe its seven rows rather than the ten
+      // legends in the listbox. Reporting the full-list position made the first row announce
+      // "4 of 10", referring to entries that are not in this menu.
+      expect(item.getAttribute('aria-setsize')).toBeNull();
+      expect(item.getAttribute('aria-posinset')).toBeNull();
       expect(item.querySelector(`[data-title="Legend ${itemIndex + 4}"]`)).not.toBeNull();
     });
 
@@ -348,7 +351,7 @@ describe('Legends - dynamic overflow', () => {
       expect(document.querySelector(`div[role="menuitemcheckbox"] [data-title="Legend ${index}"]`)).toBeNull();
     }
 
-    const selectedItem = document.querySelector('div[role="menuitemcheckbox"][aria-posinset="5"]');
+    const selectedItem = document.querySelectorAll('div[role="menuitemcheckbox"]')[1];
     expect(selectedItem?.getAttribute('aria-checked')).toBe('true');
   });
 
