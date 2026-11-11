@@ -1,4 +1,4 @@
-import type { Toast } from '../types';
+import type { Toast, ToastChangeHandler } from '../types';
 import { createToaster } from './createToaster';
 
 describe('createToaster', () => {
@@ -174,5 +174,51 @@ describe('createToaster', () => {
     four.remove();
 
     expect(toaster.visibleToasts.has('two')).toBe(true);
+  });
+  it('should report dismissed for queued toasts when dismissing all toasts', () => {
+    const statuses: string[] = [];
+    const onStatusChange: ToastChangeHandler = (_event, data) => {
+      statuses.push(`${data.toastId}:${data.status}`);
+    };
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo', onStatusChange }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar', onStatusChange }, () => null);
+
+    expect(toaster.visibleToasts.has('bar')).toBe(false);
+
+    toaster.dismissAllToasts();
+
+    expect(statuses).toContain('bar:dismissed');
+  });
+
+  it('should allow the id of a dismissed queued toast to be dispatched again', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+
+    toaster.dismissAllToasts();
+    toaster.buildToast({ content: 'bar again', toastId: 'bar' }, () => null);
+
+    expect(toaster.visibleToasts.has('bar')).toBe(true);
+  });
+
+  it('should not make a dismissed queued toast visible', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+
+    toaster.dismissToast('bar');
+
+    expect(toaster.toasts.has('bar')).toBe(false);
+
+    const foo = toaster.toasts.get('foo');
+    assertToast(foo);
+    foo.close();
+    foo.remove();
+
+    expect(toaster.visibleToasts.has('bar')).toBe(false);
   });
 });
