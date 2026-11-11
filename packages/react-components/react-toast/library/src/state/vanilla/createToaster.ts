@@ -84,9 +84,32 @@ export function createToaster(options: Partial<ToasterOptions>): {
   };
 
   /**
+   * Removes a toast that is still in the queue.
+   *
+   * A queued toast never renders, so `remove()` is never called for it and it would
+   * otherwise stay in `toasts` forever: its `toastId` could not be dispatched again
+   * and it would become visible as soon as a slot freed up.
+   */
+  const discardQueuedToast = (toastId: ToastId) => {
+    const toast = toasts.get(toastId);
+    if (!toast) {
+      return;
+    }
+
+    queue.remove(toastId);
+    toasts.delete(toastId);
+    toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+  };
+
+  /**
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
+    if (queue.contains(toastId)) {
+      discardQueuedToast(toastId);
+      return;
+    }
+
     visibleToasts.delete(toastId);
   };
 
@@ -94,6 +117,10 @@ export function createToaster(options: Partial<ToasterOptions>): {
    * Dismisses all toasts and clears the queue
    */
   const dismissAllToasts = () => {
+    for (const toastId of queue.all()) {
+      discardQueuedToast(toastId);
+    }
+
     visibleToasts.clear();
     queue.clear();
   };
