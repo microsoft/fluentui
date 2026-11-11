@@ -87,4 +87,20 @@ describe('Priority queue', () => {
 
     expect(priorityQueue.contains(99)).toBe(false);
   });
+
+  it('should iterate only active entries after removal and reuse', () => {
+    const queue = createPriorityQueue<number>((a, b) => a - b);
+    [1, 2, 3].forEach(value => queue.enqueue(value));
+    queue.dequeue();
+    expect([...queue]).toEqual([2, 3]);
+    expect(queue.contains(1)).toBe(false);
+    queue.remove(3);
+    expect([...queue]).toEqual([2]);
+    expect(queue.contains(3)).toBe(false);
+    queue.clear();
+    expect([...queue]).toEqual([]);
+    expect(queue.contains(2)).toBe(false);
+    queue.enqueue(4);
+    expect([...queue]).toEqual([4]);
+  });
 });

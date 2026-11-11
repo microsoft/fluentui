@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(Overflow): Support gaps and margins with batched layout measurements, including flexible alignment, transforms and overlapping items",
+  "comment": "feat(Overflow): Support gaps and margins with batched fractional layout measurements and incremental size accounting, including writing modes, auto margins, hidden elements, transforms and overlaps without changing item styles",
   "packageName": "@fluentui/priority-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

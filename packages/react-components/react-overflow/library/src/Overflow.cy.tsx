@@ -11,6 +11,7 @@ import {
   type OverflowProps,
   type OverflowItemProps,
   type OnOverflowChangeData,
+  type OverflowImperativeRef,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 import type { OverflowAxis } from '@fluentui/priority-overflow';
@@ -1365,6 +1366,266 @@ describe('Overflow', () => {
     setContainerWidth(250);
     cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
     cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  ['none', 'flex-grow 1s linear', 'all 1s linear'].forEach(transition => {
+    it(`should exclude internal auto margins without changing sizing styles (${transition})`, () => {
+      mount(
+        <Container size={500} padding={10} style={{ gap: 10 }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item
+              key={i}
+              id={i.toString()}
+              priority={i === 3 ? 1 : 0}
+              style={{ maxWidth: 50, marginInlineStart: i === 3 ? 'auto' : undefined, transition }}
+            />
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      [500, 280, 500, 280, 600].forEach(size => {
+        setContainerWidth(size);
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 280 ? 3 : 0);
+        cy.get(`[${selectors.item}]`).should(items => {
+          items.each((_, element) => {
+            expect(element.style.maxWidth).to.equal('50px');
+            expect(element.style.flexGrow).to.equal('');
+          });
+        });
+      });
+    });
+  });
+
+  it('should not retrigger style-based overflow refreshes during measurement', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container size={500} padding={10} style={{ gap: 10 }} imperativeRef={imperativeRef} measureGap>
+        <OverflowReorderObserver />
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ marginInlineStart: i === 3 ? 'auto' : undefined }} />
+        ))}
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.container}]`).then(containers => {
+      const container = containers[0];
+      const view = container.ownerDocument.defaultView!;
+      let updates = 0;
+      const observer = new view.MutationObserver(() => {
+        if (++updates === 12) {
+          observer.disconnect();
+        } else {
+          imperativeRef.current!.updateOverflow();
+        }
+      });
+      observer.observe(container, { attributes: true, attributeFilter: ['style'], subtree: true });
+      imperativeRef.current!.updateOverflow();
+      return new Promise<void>(resolve => {
+        view.requestAnimationFrame(() => view.requestAnimationFrame(() => resolve()));
+      }).then(() => {
+        observer.disconnect();
+        expect(updates).to.equal(0);
+      });
+    });
+  });
+
+  it('should clamp negative calculated gaps to zero', () => {
+    mount(
+      <Container size={280} style={{ gap: 'calc(10% - 40px)' }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} />
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    cy.get(`[${selectors.container}]`).should(containers => {
+      expect(containers[0].scrollWidth).to.be.at.most(containers[0].clientWidth);
+    });
+  });
+
+  (['border-box', 'content-box'] as const).forEach(boxSizing => {
+    [
+      { width: 50.6, size: 312, hidden: 0 },
+      { width: 50.4, size: 309, hidden: 1 },
+    ].forEach(({ width, size, hidden }) => {
+      it(`should preserve fractional ${boxSizing} sizes (${width}px)`, () => {
+        mount(
+          <Container size={size} style={{ gap: 1.5 }} measureGap>
+            {Array.from({ length: 6 }, (_, i) => (
+              <Item
+                key={i}
+                id={i.toString()}
+                width={boxSizing === 'content-box' ? width - 3 : width}
+                style={{ boxSizing, border: '1px solid', padding: 0.5 }}
+              />
+            ))}
+          </Container>,
+        );
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', hidden);
+        cy.get(`[${selectors.container}]`).should(containers => {
+          expect(containers[0].scrollWidth).to.be.at.most(containers[0].clientWidth);
+        });
+      });
+    });
+  });
+
+  it('should isolate calculated gaps from important application sizing rules', () => {
+    mount(
+      <>
+        <style>{`div:not([${selectors.container}]) { max-width: 100px !important; }`}</style>
+        <Container size={300} style={{ gap: 'calc(5% + 1px)' }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={i.toString()} />
+          ))}
+        </Container>
+      </>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+    cy.get(`[${selectors.container}]`).should(containers => {
+      expect(containers[0].scrollWidth).to.be.at.most(containers[0].clientWidth);
+    });
+  });
+
+  it('should not reserve gaps for an externally hidden overflow menu', () => {
+    mount(
+      <Container size={290} style={{ gap: 10 }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} />
+        ))}
+        <Menu style={{ display: 'none' }} />
+      </Container>,
+    );
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+  });
+  it('should omit externally hidden items from spacing and remeasure them when displayed', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container size={290} style={{ gap: 10 }} imperativeRef={imperativeRef} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ display: i === 2 ? 'none' : undefined }} />
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.item}="2"]`).invoke('css', 'display', '');
+    cy.then(() => imperativeRef.current!.updateOverflow());
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+    cy.get(`[${selectors.item}="2"]`).invoke('css', 'display', 'none');
+    cy.then(() => imperativeRef.current!.updateOverflow());
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  it('should retain gaps around displayed zero-width items', () => {
+    mount(
+      <Container size={290} style={{ gap: 10 }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} width={i === 2 ? 0 : 50} style={{ minWidth: 0, padding: 0, border: 0 }} />
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+  });
+
+  it('should account for overlapping items removed in priority order', () => {
+    mount(
+      <Container size={100} style={{ gap: 10 }} measureGap>
+        {[60, 30, 20, 80].map((width, i) => (
+          <Item
+            key={i}
+            id={i.toString()}
+            width={width}
+            priority={[3, 0, 1, 2][i]}
+            style={{ marginLeft: [0, -50, 20, -90][i], minWidth: 0, padding: 0, border: 0 }}
+          />
+        ))}
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    setContainerWidth(90);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+    cy.get(`[${selectors.item}="1"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="2"]`).should('have.attr', 'data-overflowing');
+    setContainerWidth(100);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  it('should refresh hidden item sizes when a small resize changes which items fit', () => {
+    mount(
+      <Container size={280} style={{ gap: 10 }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ minWidth: 0, padding: 0, border: 0 }} />
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 3).invoke('css', 'width', '10px');
+    setContainerWidth(279);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  (['row', 'row-reverse'] as const).forEach(flexDirection => {
+    (['ltr', 'rtl'] as const).forEach(direction => {
+      it(`should use column gaps in vertical writing (${flexDirection}, ${direction})`, () => {
+        mount(
+          <Container
+            size={400}
+            overflowAxis="vertical"
+            style={{ writingMode: 'vertical-rl', flexDirection, direction, width: 50, gap: '10px 20px' }}
+            measureGap
+          >
+            {Array.from({ length: 6 }, (_, i) => (
+              <Item key={i} id={i.toString()} />
+            ))}
+            <Menu />
+          </Container>,
+        );
+
+        [400, 290, 400].forEach(size => {
+          setContainerHeight(size);
+          cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 290 ? 3 : 0);
+          cy.get(`[${selectors.container}]`).should(containers => {
+            const container = containers[0];
+            const top = container.getBoundingClientRect().top + container.clientTop;
+            container.querySelectorAll(`[${selectors.item}]:not([data-overflowing])`).forEach(element => {
+              const rectangle = element.getBoundingClientRect();
+              expect(rectangle.top).to.be.at.least(top);
+              expect(rectangle.bottom).to.be.at.most(top + container.clientHeight);
+            });
+          });
+        });
+      });
+    });
+  });
+
+  ['5%', 'calc(5% + 1px)', 'calc(5% + 0.05em)'].forEach(gap => {
+    it(`should isolate ${gap} measurement from application sizing rules`, () => {
+      mount(
+        <>
+          <style>{'div { min-width: 100px; min-inline-size: 100px; }'}</style>
+          <Container size={430} style={{ gap, fontSize: 20 }} measureGap>
+            {Array.from({ length: 6 }, (_, i) => (
+              <Item key={i} id={i.toString()} />
+            ))}
+            <Menu />
+          </Container>
+        </>,
+      );
+
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+      setContainerWidth(300);
+      cy.get(`[${selectors.menu}]`).should('have.text', '+3');
+      setContainerWidth(430);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    });
   });
 
   ['5%', 'calc(5% + 1px)'].forEach(gap => {

@@ -57,6 +57,45 @@ describe('overflowManager', () => {
       .map(([id]) => id)
       .sort();
 
+  it('should bound candidate accounting during repeated small resizes', () => {
+    const itemCount = 200;
+    const manager = createOverflowManager(
+      createObserveOptions({
+        padding: 0,
+        measureGap: true,
+        onUpdateItemVisibility: ({ item, visible }) => item.element.toggleAttribute('data-overflowing', !visible),
+      }),
+    );
+    const container = createContainer(300);
+    container.style.cssText = 'display:flex;flex-direction:row;column-gap:10px';
+    for (let i = 0; i < itemCount; i++) {
+      const element = container.appendChild(createElementWithSize('button', 50));
+      manager.addItem({ element, id: String(i), priority: 0 });
+    }
+    manager.observe(container, { forceUpdate: true });
+
+    const maximum = jest.spyOn(Math, 'max');
+    const comparePositions = jest.spyOn(Node.prototype, 'compareDocumentPosition');
+    let operations = 0;
+    let comparisons = 0;
+    try {
+      [301, 300, 301].forEach(width => {
+        Object.defineProperty(container, 'clientWidth', { configurable: true, value: width });
+        manager.forceUpdate();
+      });
+      operations = maximum.mock.calls.length;
+      comparisons = comparePositions.mock.calls.length;
+    } finally {
+      maximum.mockRestore();
+      comparePositions.mockRestore();
+    }
+
+    expect(operations).toBeLessThan(itemCount * 40 * 3);
+    expect(comparisons).toBe(0);
+    expect(getVisibleIds(manager)).toHaveLength(5);
+    manager.disconnect();
+  });
+
   it('should preserve group and divider transitions through shrink and grow', () => {
     const manager = createOverflowManager(createObserveOptions({ padding: 0 }));
     const container = createContainer(160);

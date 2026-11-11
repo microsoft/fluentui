@@ -5,7 +5,8 @@
  * @returns function to cleanup the resize observer
  */
 export function observeResize(elementToObserve: HTMLElement, callback: ResizeObserverCallback): () => void {
-  const GlobalResizeObserver = elementToObserve.ownerDocument.defaultView?.ResizeObserver;
+  const view = elementToObserve.ownerDocument.defaultView;
+  const GlobalResizeObserver = view && view.ResizeObserver;
 
   if (!GlobalResizeObserver) {
     if (process.env.NODE_ENV !== 'production') {
@@ -15,11 +16,10 @@ export function observeResize(elementToObserve: HTMLElement, callback: ResizeObs
     return () => null;
   }
 
-  let resizeObserver: InstanceType<typeof GlobalResizeObserver> | undefined = new GlobalResizeObserver(callback);
+  const resizeObserver = new GlobalResizeObserver(callback);
   resizeObserver.observe(elementToObserve);
 
   return () => {
-    resizeObserver?.disconnect();
-    resizeObserver = undefined;
+    resizeObserver.disconnect();
   };
 }

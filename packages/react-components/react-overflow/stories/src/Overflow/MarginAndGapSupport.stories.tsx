@@ -147,8 +147,9 @@ MarginAndGapSupport.parameters = {
     description: {
       story: [
         'The `Overflow` component allows you to opt in to spacing measurement with `measureGap`.',
-        'In a single-line layout, gaps and margins are measured along the overflow axis, including RTL and reversed layouts.',
-        'Alignment free space and container-edge spacing are excluded; CSS transforms do not affect which items fit.',
+        'In a single-line layout, gaps and margins are measured along the overflow axis, including RTL, reversed layouts, and vertical writing modes.',
+        'Alignment free space (including auto margins), hidden elements, and container-edge spacing are excluded; CSS transforms do not affect which items fit.',
+        'Fractional layout sizes are preserved, and measurement leaves item styles and transitions unchanged.',
       ].join('\n'),
     },
   },

@@ -168,6 +168,7 @@ export interface OverflowOptions {
   /**
    * Account for the main-axis gap and margins in a single-line layout.
    * Alignment free space (including auto margins) and spacing at the container edges are excluded.
+   * Elements with display: none do not contribute spacing; displayed zero-size elements still do.
    * Measurements use layout pixels, independently of CSS transforms.
    */
   measureGap?: boolean;
