@@ -782,10 +782,28 @@ describe('VegaLiteSchemaAdapter', () => {
     });
 
     test.each([
+      { offset: -10, subtitlePadding: 8 },
+      { offset: 4, subtitlePadding: -3 },
+      { offset: -10, subtitlePadding: -3 },
+      { offset: 0, subtitlePadding: 0 },
+    ])('preserves signed title offsets $offset and $subtitlePadding', ({ offset, subtitlePadding }) => {
+      const spec: VegaLiteSpec = {
+        title: { text: 'Title', offset, subtitlePadding },
+        mark: 'line',
+        encoding: {},
+      };
+
+      expect(getVegaLiteTitles(spec).titleStyles?.titlePad).toEqual({ t: offset, b: subtitlePadding });
+      expect(spec.title).toEqual({ text: 'Title', offset, subtitlePadding });
+    });
+
+    test.each([
       { field: 'offset', value: '8; --css-injection-sentinel:731' },
       { field: 'subtitlePadding', value: '8; --css-injection-sentinel:731' },
-      { field: 'offset', value: -1 },
-      { field: 'subtitlePadding', value: -1 },
+      { field: 'offset', value: '-10' },
+      { field: 'subtitlePadding', value: '-3' },
+      { field: 'offset', value: -Infinity },
+      { field: 'subtitlePadding', value: -Infinity },
       { field: 'offset', value: NaN },
       { field: 'subtitlePadding', value: Infinity },
     ])('omits invalid title padding $field: $value', ({ field, value }) => {
@@ -825,7 +843,15 @@ describe('VegaLiteSchemaAdapter', () => {
     ] as const)('validates title metadata in the $name transformer', ({ name, transform, mark }) => {
       const payload = 'red; --css-injection-sentinel:731';
       const spec: VegaLiteSpec = {
-        title: { text: 'Title', font: payload, color: payload, fontSize: 24, fontWeight: 'bold' },
+        title: {
+          text: 'Title',
+          font: payload,
+          color: payload,
+          fontSize: 24,
+          fontWeight: 'bold',
+          offset: -10,
+          subtitlePadding: -3,
+        },
         mark,
         data: {
           values: [
@@ -848,6 +874,7 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(JSON.stringify(result)).not.toContain('css-injection-sentinel');
       expect(result).toHaveProperty('titleFont.size', 24);
       expect(result).toHaveProperty('titleFont.weight', 700);
+      expect(result).toHaveProperty('titlePad', { t: -10, b: -3 });
     });
 
     test.each([

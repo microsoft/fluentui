@@ -70,13 +70,13 @@ export const getValidFont = (font: Partial<Font> | undefined): Partial<Font> | u
       }
     : undefined;
 
-export const getValidPadding = (padding: Partial<Margin> | undefined): Partial<Margin> | undefined => {
+export const getValidPadding = (padding: Partial<Margin> | undefined, min = 0): Partial<Margin> | undefined => {
   if (!padding) {
     return undefined;
   }
   const result: Partial<Margin> = {};
   (['t', 'r', 'b', 'l', 'pad'] as const).forEach(key => {
-    const value = getValidStyleNumber(padding[key]);
+    const value = getValidStyleNumber(padding[key], min);
     if (value !== undefined) {
       result[key] = value;
     }

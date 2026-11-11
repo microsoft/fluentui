@@ -2097,7 +2097,7 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
       };
       titleFont.weight = weightMap[titleFont.weight];
     }
-    const titlePad = getValidPadding({ t: titleObj.offset, b: titleObj.subtitlePadding });
+    const titlePad = getValidPadding({ t: titleObj.offset, b: titleObj.subtitlePadding }, -Infinity);
 
     // Map Vega-Lite anchor values to TitleStyles anchor values
     const anchorMap: Record<string, TitleStyles['titleXAnchor']> = {

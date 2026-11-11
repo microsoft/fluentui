@@ -187,7 +187,7 @@ function getTitles(layout: Partial<Layout> | undefined) {
   const titleFont = getValidFont(typeof titleObj === 'object' ? titleObj?.font : undefined);
   const titleXAnchor = typeof titleObj === 'object' ? titleObj?.xanchor : undefined;
   const titleYAnchor = typeof titleObj === 'object' ? titleObj?.yanchor : undefined;
-  const titlePad = getValidPadding(typeof titleObj === 'object' ? titleObj?.pad : undefined);
+  const titlePad = getValidPadding(typeof titleObj === 'object' ? titleObj?.pad : undefined, -Infinity);
 
   const titleStyles: TitleStyles = {
     ...(titleFont ? { titleFont } : {}),

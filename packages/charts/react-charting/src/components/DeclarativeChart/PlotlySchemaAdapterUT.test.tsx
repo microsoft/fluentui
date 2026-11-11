@@ -37,6 +37,7 @@ import {
   getValidFont,
   getValidFontFamily,
   getValidFontWeight,
+  getValidPadding,
   getValidStyleLength,
   getValidStyleNumber,
 } from './PlotlyStyleAdapter';
@@ -102,6 +103,29 @@ describe('schema CSS styles', () => {
     expect(result.titleStyles?.titleFont?.weight).toBe(weight);
   });
 
+  test('preserves signed title offsets while keeping layout margins nonnegative', () => {
+    const pad = { t: -10, r: -2, b: -3, l: -4 };
+    const schema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1] }],
+      layout: { title: { text: 'Title', pad }, margin: { ...pad, pad: 2 } },
+    };
+
+    expect(getValidPadding(pad, -Infinity)).toEqual(pad);
+    expect(getValidPadding({ ...pad, pad: 2 })).toEqual({ pad: 2 });
+    expect(
+      transformPlotlyJsonToDonutProps(schema, false, { current: new Map() }, 'default').titleStyles?.titlePad,
+    ).toEqual(pad);
+    expect(
+      transformPlotlyJsonToAnnotationChartProps({ ...schema, data: [] }, false, { current: new Map() }, 'default')
+        .margin,
+    ).toEqual({ pad: 2 });
+    expect(schema.layout?.title).toEqual({ text: 'Title', pad });
+  });
+
+  test('rejects non-finite padding even when signed title offsets are enabled', () => {
+    expect(getValidPadding({ t: Infinity, r: 12, b: NaN, l: -Infinity }, -Infinity)).toEqual({ r: 12 });
+  });
+
   test.each([
     { name: 'pie', transform: transformPlotlyJsonToDonutProps, file: 'fluent_pie_test.json' },
     {
@@ -126,17 +150,24 @@ describe('schema CSS styles', () => {
     { name: 'heatmap', transform: transformPlotlyJsonToHeatmapProps, file: 'fluent_heatmap_test.json' },
     { name: 'Sankey', transform: transformPlotlyJsonToSankeyProps, file: 'fluent_sankey_test.json' },
     { name: 'gauge', transform: transformPlotlyJsonToGaugeProps, file: 'fluent_gauge_test.json' },
-  ])('validates $name chart dimensions', ({ transform, file }) => {
+  ])('validates $name chart dimensions and preserves signed title offsets', ({ transform, file }) => {
     const fixture: PlotlySchema = require(`./tests/schema/${file}`);
     for (const dimension of ['12; --css-injection-sentinel:731', 580]) {
       const input: PlotlySchema = JSON.parse(
         JSON.stringify({
           ...fixture,
-          layout: { ...fixture.layout, width: dimension, height: dimension, font: { size: dimension } },
+          layout: {
+            ...fixture.layout,
+            width: dimension,
+            height: dimension,
+            font: { size: dimension },
+            title: { text: 'Title', pad: { t: -10, r: -2, b: -3, l: -4 } },
+          },
         }),
       );
       const result = transform(input, false, { current: new Map() }, 'default');
       expect(result.width).toBe(typeof dimension === 'number' ? dimension : undefined);
+      expect(result).toHaveProperty('titleStyles.titlePad', { t: -10, r: -2, b: -3, l: -4 });
       expect(JSON.stringify(result)).not.toContain('css-injection-sentinel');
       if (result.height !== undefined) {
         expect(Number.isFinite(result.height)).toBe(true);

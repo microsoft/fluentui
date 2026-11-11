@@ -254,6 +254,39 @@ describe('DeclarativeChart SSR colors', () => {
     },
   );
 
+  describe.each(['pie', 'scatter'] as const)('signed title offsets in %s charts', type => {
+    test.each([
+      { pad: { t: -10 }, dx: 0, dy: -10 },
+      { pad: { b: -10 }, dx: 0, dy: 10 },
+      { pad: { l: -10 }, dx: -10, dy: 0 },
+      { pad: { r: -10 }, dx: 10, dy: 0 },
+    ])('preserves the rendered offset for $pad', ({ pad, dx, dy }) => {
+      const getTitlePosition = (titlePad: typeof pad) => {
+        const plotlySchema: PlotlySchema = {
+          data:
+            type === 'pie'
+              ? [{ type: 'pie', labels: ['A'], values: [1] }]
+              : [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+          layout: { title: { text: 'Signed padding title', pad: titlePad }, width: 600, height: 350 },
+        };
+        const html = renderToString(<DeclarativeChart chartSchema={{ plotlySchema }} />);
+        const parsed = new DOMParser().parseFromString(html, 'text/html');
+        const title = Array.from(parsed.querySelectorAll('text')).find(
+          element => element.textContent === 'Signed padding title',
+        );
+        if (!title) {
+          throw new Error('Chart title was not rendered');
+        }
+        expect(title.getAttribute('x')).not.toBeNull();
+        expect(title.getAttribute('y')).not.toBeNull();
+        return { x: Number(title.getAttribute('x')), y: Number(title.getAttribute('y')) };
+      };
+
+      const baseline = getTitlePosition({ t: 0 });
+      expect(getTitlePosition(pad)).toEqual({ x: baseline.x + dx, y: baseline.y + dy });
+    });
+  });
+
   describe.each([false, true])('title styles with multiple plots: %s', multiPlot => {
     test.each(['normal', 'bold', 'bolder', 'lighter'] as const)('preserves title font weight %s during SSR', weight => {
       const plotlySchema: PlotlySchema = {

@@ -33,11 +33,13 @@ retain default styling; invalid arrow colors fall back to the validated annotati
 Schema-driven styles are validated before reaching CSS, including titles on multi-plot charts.
 Font families accept comma-separated CSS font names (including quoted names), but not CSS escapes or declarations.
 Title shadows accept a single shadow with two offsets, an optional nonnegative blur radius, and an optional parsed color.
-Font sizes, chart dimensions, title padding, and layout margins must be finite numbers in their supported ranges.
+Font sizes, chart dimensions, and layout margins must be finite numbers in their supported ranges.
+Plotly title padding accepts finite signed offsets; layout margins remain nonnegative.
 Annotation sizes and padding also accept simple CSS lengths. Title and annotation font weights accept numbers from 1 to 1000
 or the keywords `normal`, `bold`, `bolder`, and `lighter`.
-Vega title metadata uses the same font-family, font-size, color, weight, and nonnegative padding validation across
+Vega title metadata uses the same font-family, font-size, color, and weight validation across
 all nine title-producing transformers, retaining the existing case-insensitive keyword-to-number weight mappings.
+Vega title offsets and subtitle padding accept finite signed numbers, but not numeric strings or declarations.
 Vega title anchors are limited to `start`, `middle`, and `end`.
 Table alignment is limited to Plotly's `left`, `center`, and `right`, including scalar, column, per-cell, and template values.
 Invalid style values are omitted or use the existing chart defaults; arbitrary CSS functions, rules, and declarations
