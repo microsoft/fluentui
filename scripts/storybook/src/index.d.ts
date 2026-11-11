@@ -10,4 +10,6 @@ export {
 
 export * as rules from './rules';
 
+export { registerStylingMetadataRule } from './styling-metadata';
+
 export { configureReactIcons } from './react-icons-webpack';

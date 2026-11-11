@@ -1,5 +1,6 @@
 const { configureReactIcons } = require('./react-icons-webpack');
 const rules = require('./rules');
+const { registerStylingMetadataRule } = require('./styling-metadata');
 const {
   getPackageStoriesGlob,
   loadWorkspaceAddon,
@@ -14,6 +15,7 @@ module.exports = {
   getPackageStoriesGlob,
   loadWorkspaceAddon,
   registerRules,
+  registerStylingMetadataRule,
   registerTsPaths,
   rules,
   getImportMappingsForExportToSandboxAddon,

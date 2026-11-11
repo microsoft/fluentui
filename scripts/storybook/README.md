@@ -24,6 +24,24 @@ module.exports = {
 
 The helper, its CSS, and its unit tests are colocated in this project's `src` directory.
 
+## `registerStylingMetadataRule`
+
+Registers a webpack `pre` loader that statically analyzes the components a story documents and injects
+`parameters.__generatedStylingMetadata`, which `@fluentui/react-storybook-addon` renders as "Classes" (v9 `*ClassNames`)
+and "Data attributes" (headless `data-*`) sections on docs pages.
+
+```js
+const { registerStylingMetadataRule } = require('@fluentui/scripts-storybook');
+
+module.exports = {
+  webpackFinal(config) {
+    return registerStylingMetadataRule({ config, tsConfigPath, classNames: true });
+  },
+};
+```
+
+See [`src/styling-metadata/README.md`](./src/styling-metadata/README.md) for sources, constraints and diagnostics.
+
 ## `loadWorkspaceAddon`
 
 Function that registers custom workspace(monorepo) storybook addon written in TypeScript without need to "build first" before use.
