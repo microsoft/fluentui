@@ -166,8 +166,9 @@ export interface OverflowOptions {
   onUpdateOverflow: OnUpdateOverflow;
 
   /**
-   * The library will read the gap spacing between overflow items when calculating available space
-   * NOTE: The library will deliberately not read the spacing between end elements and the container
+   * Account for the main-axis gap and margins in a single-line layout.
+   * Alignment free space (including auto margins) and spacing at the container edges are excluded.
+   * Measurements use layout pixels, independently of CSS transforms.
    */
   measureGap?: boolean;
 

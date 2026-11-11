@@ -57,6 +57,60 @@ describe('overflowManager', () => {
       .map(([id]) => id)
       .sort();
 
+  it('should preserve group and divider transitions through shrink and grow', () => {
+    const manager = createOverflowManager(createObserveOptions({ padding: 0 }));
+    const container = createContainer(160);
+    const divider = createElementWithSize('span', 5);
+    manager.addDivider({ element: divider, groupId: 'group' });
+    manager.addOverflowMenu(createElementWithSize('button', 20));
+    for (let i = 0; i < 3; i++) {
+      const element = container.appendChild(createElementWithSize('button', 40));
+      manager.addItem({ element, id: String(i), priority: 0, groupId: 'group' });
+    }
+    manager.observe(container);
+
+    [160, 100, 20, 160].forEach(width => {
+      Object.defineProperty(container, 'clientWidth', { configurable: true, value: width });
+      manager.forceUpdate();
+      expect(manager.getSnapshot().groupVisibility.group).toBe(
+        width === 20 ? 'hidden' : width === 100 ? 'overflow' : 'visible',
+      );
+      expect(divider.hasAttribute('data-overflowing')).toBe(width === 20);
+      expect(getVisibleIds(manager)).toHaveLength(width === 20 ? 0 : width === 100 ? 1 : 3);
+    });
+    manager.disconnect();
+  });
+
+  it.each(['before-observe', 'visible', 'hidden'])('should count group removal when %s', removal => {
+    const manager = createOverflowManager(createObserveOptions({ padding: 0 }));
+    const container = createContainer(70);
+    manager.addOverflowMenu(createElementWithSize('button', 20));
+    ['a', 'b'].forEach(id => {
+      const element = container.appendChild(createElementWithSize('button', 40));
+      manager.addItem({ element, id, priority: 0, groupId: 'group' });
+    });
+
+    if (removal !== 'before-observe') {
+      manager.observe(container, { forceUpdate: true });
+    }
+    const id =
+      removal === 'before-observe' ? 'a' : (removal === 'hidden' ? getInvisibleIds : getVisibleIds)(manager)[0];
+    manager.removeItem(id);
+    manager.removeItem(id);
+    if (removal === 'before-observe') {
+      manager.observe(container);
+    }
+    manager.forceUpdate();
+    expect(manager.getSnapshot().groupVisibility.group).toBe('visible');
+    expect(getVisibleIds(manager)).toHaveLength(1);
+
+    manager.removeItem(id === 'a' ? 'b' : 'a');
+    manager.forceUpdate();
+    expect(manager.getSnapshot().groupVisibility.group).toBe('hidden');
+    expect(getVisibleIds(manager)).toHaveLength(0);
+    manager.disconnect();
+  });
+
   it('should expose a stable snapshot after forceUpdate', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

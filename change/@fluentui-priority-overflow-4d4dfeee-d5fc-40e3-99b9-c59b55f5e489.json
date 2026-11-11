@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(Overflow): Support margin and gaps to space overflow items",
+  "comment": "feat(Overflow): Support gaps and margins with batched layout measurements, including flexible alignment, transforms and overlapping items",
   "packageName": "@fluentui/priority-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

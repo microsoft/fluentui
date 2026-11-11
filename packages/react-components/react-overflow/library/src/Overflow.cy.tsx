@@ -1304,6 +1304,115 @@ describe('Overflow', () => {
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
+  [0.5, 2].forEach(scale => {
+    it(`should use layout sizes inside a scaled ancestor (${scale})`, () => {
+      mount(
+        <div style={{ transform: `scale(${scale})`, transformOrigin: 'top left' }}>
+          <Container size={350} style={{ gap: 10 }} measureGap>
+            {Array.from({ length: 6 }, (_, i) => (
+              <Item key={i} id={i.toString()} />
+            ))}
+            <Menu />
+          </Container>
+        </div>,
+      );
+
+      [350, 280, 350].forEach(size => {
+        setContainerWidth(size);
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 280 ? 3 : 0);
+        cy.get(`[${selectors.container}]`).should(containers => {
+          expect(containers[0].scrollWidth).to.be.at.most(containers[0].clientWidth);
+        });
+      });
+    });
+  });
+
+  ['space-between', 'auto-margin'].forEach(alignment => {
+    it(`should reclaim ${alignment} free space on shrink and grow`, () => {
+      mount(
+        <Container
+          size={500}
+          padding={10}
+          style={{ gap: 10, justifyContent: alignment === 'space-between' ? 'space-between' : undefined }}
+          measureGap
+        >
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={i.toString()} />
+          ))}
+          <Menu style={{ marginInlineStart: alignment === 'auto-margin' ? 'auto' : undefined }} />
+        </Container>,
+      );
+
+      [500, 280, 600, 280, 500].forEach(size => {
+        setContainerWidth(size);
+        cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 280 ? 3 : 0);
+      });
+    });
+  });
+
+  it('should preserve the furthest edge of contained overlapping items', () => {
+    mount(
+      <Container size={200} measureGap>
+        <Item id="0" width={140} />
+        <Item id="1" width={100} style={{ marginLeft: 10 }} />
+        <Item id="2" width={10} style={{ marginLeft: -80, minWidth: 0, padding: 0, border: 0 }} />
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+    setContainerWidth(250);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  ['5%', 'calc(5% + 1px)'].forEach(gap => {
+    it(`should resolve ${gap} gaps against the container content box`, () => {
+      mount(
+        <Container size={430} style={{ gap, paddingInline: 10, boxSizing: 'border-box', border: 0 }} measureGap>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={i.toString()} />
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      setContainerWidth(300);
+      cy.get(`[${selectors.menu}]`).should('have.text', '+3');
+      setContainerWidth(430);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    });
+  });
+
+  it('should batch spacing measurements when overflowing a large collection', () => {
+    const itemCount = 500;
+    mount(
+      <Container size={40000} style={{ gap: 10 }} measureGap>
+        {Array.from({ length: itemCount }, (_, i) => (
+          <Item key={i} id={i.toString()} />
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.window().then(win => {
+      cy.spy(win.Element.prototype, 'getBoundingClientRect').as('rectReads');
+      cy.spy(win, 'getComputedStyle').as('styleReads');
+    });
+    setContainerWidth(300);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+496');
+    cy.get('@rectReads')
+      .its('callCount')
+      .should('be.lessThan', itemCount * 4);
+    cy.get('@styleReads')
+      .its('callCount')
+      .should('be.lessThan', itemCount * 8);
+    setContainerWidth(40000);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
   const spacingLayouts: { name: string; axis: OverflowAxis; style: React.CSSProperties }[] = [
     { name: 'LTR', axis: 'horizontal', style: {} },
     { name: 'RTL', axis: 'horizontal', style: { direction: 'rtl' } },
