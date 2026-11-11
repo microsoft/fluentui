@@ -57,6 +57,8 @@ Do not rely on the `dependencies` label: repositories may customize or omit it.
 
 Before parsing individual updates, strip an optional conventional commit prefix of `chore(deps): ` or `chore(deps-dev): ` from the title. Detect native grouped PRs by either the remaining title being in the form `bump the <group> group ...` (case-insensitive) or a `headRefName` containing one of the configured group identifiers: `github-actions-minor-patch`, `github-actions-security`, `production-dependencies`, `development-dependencies`, or `security-dependencies`. Exclude and report these PRs as `already grouped by Dependabot`; never place one rollup inside another.
 
+Treat `github-actions-major` as a native group too; it remains excluded from this non-major rollup. To repair existing PRs, approve them, and enable auto-merge without combining branches, use `/dependabot-fix` instead.
+
 After removing the optional conventional commit prefix, parse each title case-insensitively as `bump <dependency> from <version> to <version>`. Use the parsed dependency name as the deduplication key. Normalize a leading `v` in versions and accept only strict three-part numeric versions (`major.minor.patch`).
 
 Classify an update as eligible only when:
