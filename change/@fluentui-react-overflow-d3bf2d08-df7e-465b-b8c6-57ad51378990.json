@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(Overflow): Support gap and margin measurement with getAutoMargins metadata for items, dividers and menus",
+  "comment": "feat(Overflow): Support gap and margin measurement with getAutoMargins metadata for items, dividers and menus without redundant overflow notifications",
   "packageName": "@fluentui/react-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

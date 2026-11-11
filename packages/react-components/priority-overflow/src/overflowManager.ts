@@ -32,14 +32,13 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<OverflowOptions> = {
+  const options = {
     overflowAxis: 'horizontal',
     overflowDirection: 'end',
     padding: 10,
     minimumVisible: 0,
     hasHiddenItems: false,
     measureGap: false,
-    getAutoMargins: () => [],
     onUpdateItemVisibility: noop,
     onUpdateOverflow: noop,
     ...initialOptions,
@@ -163,7 +162,7 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
     const ORDER = INDEX;
     let entries: Measurement[] = [];
     const add = (element: HTMLElement, visible: boolean) => {
-      entries.push([element, visible, visible ? getSize(element) : 0, 0, 0, 0]);
+      entries.push([element, visible, visible ? getSize(element) : NaN, 0, 0, 0]);
     };
     for (const queue of [visibleItemQueue, invisibleItemQueue]) {
       for (const id of queue) {
@@ -176,15 +175,32 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
     }
 
     let gap = 0;
+    let resolveGap: (() => number) | undefined;
     let availableSize = getSize(container!, true);
     if (options.measureGap) {
       const ownerDocument = container!.ownerDocument;
       const view = ownerDocument.defaultView!;
+      const styles = new Map<Element, CSSStyleDeclaration>();
+      const getStyle = (element: Element) => {
+        let style = styles.get(element);
+        if (!style) {
+          style = view.getComputedStyle(element);
+          styles.set(element, style);
+        }
+        return style;
+      };
       entries = entries.filter(entry => entry[ELEMENT].getClientRects().length);
-      const candidate = entries[0] && entries[0][ELEMENT].parentElement;
+      const getParent = (element: HTMLElement) => {
+        let parent = element.parentElement;
+        while (parent && getStyle(parent).display === 'contents') {
+          parent = parent.parentElement;
+        }
+        return parent;
+      };
+      const candidate = entries[0] && getParent(entries[0][ELEMENT]);
       const parent =
-        candidate && entries.every(entry => entry[ELEMENT].parentElement === candidate) ? candidate : container!;
-      const containerStyle = view.getComputedStyle(parent);
+        candidate && entries.every(entry => getParent(entry[ELEMENT]) === candidate) ? candidate : container!;
+      const containerStyle = getStyle(parent);
       const { writingMode } = containerStyle;
       const flexDirection = containerStyle.display.includes('flex') ? containerStyle.flexDirection : '';
       const vertical = options.overflowAxis === 'vertical';
@@ -194,6 +210,19 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
         /reverse$/.test(flexDirection) !==
         (row ? (containerStyle.direction === 'rtl') !== (writingMode === 'sideways-lr') : /-rl$/.test(writingMode));
       const sides = vertical ? (['Top', 'Bottom'] as const) : (['Left', 'Right'] as const);
+      let rectEligible: boolean | undefined;
+      const canUseRect = () => {
+        if (rectEligible === undefined) {
+          rectEligible = true;
+          for (let element: HTMLElement | null = parent; element && rectEligible; element = element.parentElement) {
+            const style = getStyle(element);
+            rectEligible = ['transform', 'perspective', 'scale', 'rotate', 'translate', 'zoom'].every(property =>
+              /^(none|normal|1)?$/.test(style.getPropertyValue(property)),
+            );
+          }
+        }
+        return rectEligible;
+      };
       const measure = (element: HTMLElement, style: CSSStyleDeclaration, client = false) => {
         const fallback = getSize(element, client);
         let size = parseFloat(vertical ? style.height : style.width);
@@ -202,7 +231,7 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
           style.display === 'inline' &&
           !/^(IMG|INPUT|SELECT|TEXTAREA|VIDEO|CANVAS|IFRAME|OBJECT|EMBED)$/.test(element.tagName)
         ) {
-          return fallback;
+          return canUseRect() ? element.getBoundingClientRect()[vertical ? 'height' : 'width'] : fallback;
         }
         const borderBox = style.boxSizing === 'border-box';
         for (const side of sides) {
@@ -213,32 +242,21 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
         // Retain the rendered integer box (including scrollbars), restoring its fractional part.
         return fallback + (size - Math.round(size) || 0);
       };
-      availableSize = measure(container!, view.getComputedStyle(container!), true);
+      availableSize = measure(container!, getStyle(container!), true);
       const properties = sides.map(side => `margin${side}` as const);
       if (reverse) {
         properties.reverse();
       }
-      const gapValue = row ? containerStyle.columnGap : containerStyle.rowGap;
+      const gapValue = /flex|grid/.test(containerStyle.display)
+        ? row
+          ? containerStyle.columnGap
+          : containerStyle.rowGap
+        : '0';
       gap = parseSize(gapValue);
-      if (gapValue.includes('%')) {
-        const probe = ownerDocument.createElement('div');
-        try {
-          const contentSize = sides.reduce(
-            (size, side) => size - parseSize(containerStyle[`padding${side}`]),
-            measure(parent, containerStyle, true),
-          );
-          // Translate percentages resolve against this width, independent of application div styles.
-          probe.style.cssText = `all:initial!important;position:fixed!important;width:${contentSize}px!important;transform:translateX(${gapValue})!important`;
-          ownerDocument.body.append(probe);
-          gap = Math.max(0, parseSize(view.getComputedStyle(probe).transform.split(',')[4]));
-        } finally {
-          probe.remove();
-        }
-      }
       entries.forEach(entry => {
         const element = entry[ELEMENT];
-        const style = view.getComputedStyle(element);
-        const autoMargins = options.getAutoMargins(element);
+        const style = getStyle(element);
+        const autoMargins = options.getAutoMargins ? options.getAutoMargins(element) : [];
         entry[SIZE] = measure(element, style);
         properties.forEach((property, index) => {
           entry[BEFORE + index] = autoMargins.includes(property) ? 0 : parseSize(style[property]);
@@ -246,6 +264,40 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
         entry[ORDER] = +style.order;
       });
       entries.sort((a, b) => a[ORDER] - b[ORDER] || compareElements(a[ELEMENT], b[ELEMENT]));
+      if (gapValue.includes('%')) {
+        const [first, second] = entries.filter(entry => entry[VISIBLE]);
+        let usedGap = NaN;
+        if (flexDirection && first && second) {
+          const position = (element: HTMLElement) =>
+            canUseRect()
+              ? element.getBoundingClientRect()[vertical ? 'top' : 'left']
+              : element[vertical ? 'offsetTop' : 'offsetLeft'];
+          const delta = position(second[ELEMENT]) - position(first[ELEMENT]);
+          usedGap = reverse ? -delta - second[SIZE] : delta - first[SIZE];
+          usedGap -=
+            parseSize(getStyle(first[ELEMENT])[properties[1]]) + parseSize(getStyle(second[ELEMENT])[properties[0]]);
+        }
+        // Cyclic flex percentages have a zero used gap, not a percentage of the resulting size.
+        if (Math.abs(usedGap) < 0.0001) {
+          gap = 0;
+        } else {
+          resolveGap = () => {
+            const probe = ownerDocument.createElement('div');
+            try {
+              const contentSize = sides.reduce(
+                (size, side) => size - parseSize(containerStyle[`padding${side}`]),
+                measure(parent, containerStyle, true),
+              );
+              probe.style.cssText = `all:initial!important;position:fixed!important;width:${contentSize}px!important;transform:translateX(${gapValue})!important`;
+              ownerDocument.body.append(probe);
+              return Math.max(0, parseSize(getStyle(probe).transform.split(',')[4]));
+            } finally {
+              probe.remove();
+            }
+          };
+          gap = resolveGap();
+        }
+      }
     }
 
     let base = 1;
@@ -263,7 +315,8 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
         return;
       }
       let index = entry[INDEX];
-      if (visible && !entry[SIZE]) {
+      entry[VISIBLE] = visible;
+      if (visible && Number.isNaN(entry[SIZE])) {
         entry[SIZE] = getSize(entry[ELEMENT]);
       }
       const endPosition = entry[BEFORE] + entry[SIZE];
@@ -290,6 +343,13 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
     return [
       () => {
         setVisible(overflowMenu, hasOverflowItems());
+        if (resolveGap) {
+          const nextGap = resolveGap();
+          if (nextGap !== gap) {
+            gap = nextGap;
+            entries.forEach(entry => setVisible(entry[ELEMENT], entry[VISIBLE]));
+          }
+        }
         return Math.max(0, spans[1][2] - spans[1][1]);
       },
       availableSize - options.padding,
@@ -367,15 +427,22 @@ export function createOverflowManager(initialOptions?: Partial<OverflowOptions>)
   const update: OverflowManager['update'] = debounce(forceUpdate);
 
   const setOptions: OverflowManager['setOptions'] = nextOptions => {
-    const shouldTriggerUpdate = Object.entries(nextOptions).some(
-      ([key, value]) =>
-        !/^on/.test(key) && (value || key === 'measureGap') && options[key as keyof OverflowOptions] !== value,
-    );
+    let shouldTriggerUpdate = false;
+    for (const [key, value] of Object.entries(nextOptions)) {
+      const metadata = key === 'getAutoMargins';
+      if (
+        !/^on/.test(key) &&
+        (value || key === 'measureGap' || metadata) &&
+        options[key as keyof OverflowOptions] !== value
+      ) {
+        shouldTriggerUpdate = true;
+        forceDispatch ||= !metadata;
+      }
+    }
 
     Object.assign(options, nextOptions);
 
     if (shouldTriggerUpdate) {
-      forceDispatch = true;
       update();
     }
   };

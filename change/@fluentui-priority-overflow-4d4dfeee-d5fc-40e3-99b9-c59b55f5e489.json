@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(Overflow): Support gap and margin measurement with explicit auto-margin metadata, fractional layout sizing, nested layout gaps, hidden ancestor handling and reentrant menu registration",
+  "comment": "feat(Overflow): Support gap and margin measurement with explicit auto-margin metadata, nested layout recalculation and cached zero-size measurements",
   "packageName": "@fluentui/priority-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

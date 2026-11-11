@@ -166,7 +166,8 @@ export interface OverflowOptions {
   onUpdateOverflow: OnUpdateOverflow;
 
   /**
-   * Account for the main-axis gap and margins in a single-line layout.
+   * Account for active flex/grid gaps and margins in a single-line layout.
+   * Percentage gaps follow the current layout as items are hidden or revealed.
    * Alignment free space and spacing at the container edges are excluded.
    * Declare auto margins with getAutoMargins so their used free space is excluded.
    * Elements without layout boxes do not contribute spacing; displayed zero-size elements still do.

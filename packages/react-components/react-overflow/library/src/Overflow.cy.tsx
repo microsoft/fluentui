@@ -1199,6 +1199,118 @@ describe('Overflow', () => {
     });
   });
 
+  it('should settle inline metadata callbacks when the parent stores overflow state', () => {
+    const updates = cy.stub();
+    const Consumer = () => {
+      const [, setState] = React.useState<OnOverflowChangeData>();
+      return (
+        <Container
+          size={280}
+          style={{ gap: 10 }}
+          measureGap
+          getAutoMargins={() => []}
+          onOverflowChange={(_, data) => {
+            updates(data);
+            if (updates.callCount < 12) {
+              setState(data);
+            }
+          }}
+        >
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </Container>
+      );
+    };
+    mount(<Consumer />);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+    cy.wait(50).then(() => {
+      expect(updates.callCount).to.be.within(1, 2);
+      const settledCount = updates.callCount;
+      cy.wait(50).then(() => expect(updates.callCount).to.equal(settledCount));
+    });
+  });
+
+  it('should find flex gaps through display:contents wrappers', () => {
+    mount(
+      <Container size={300} style={{ gap: 20 }} measureGap>
+        <div style={{ display: 'contents' }}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    [300, 400, 300].forEach(size => {
+      setContainerWidth(size);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 400 ? 0 : 2);
+    });
+  });
+
+  it('should ignore inactive gaps in an inline formatting context', () => {
+    mount(
+      <Container size={300} style={{ display: 'block', gap: 20 }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={String(i)} style={{ display: 'inline-block' }} />
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  it('should preserve zero cyclic percentage gaps in auto-height flex columns', () => {
+    mount(
+      <Container size={300} overflowAxis="vertical" style={{ display: 'block' }} measureGap>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10%' }}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    [300, 250, 300].forEach(size => {
+      setContainerHeight(size);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 250 ? 1 : 0);
+    });
+  });
+
+  it('should recalculate percentage gaps when an intrinsic parent shrinks', () => {
+    mount(
+      <Container size={355} style={{ display: 'block' }} measureGap>
+        <div style={{ display: 'inline-flex', gap: '10%' }}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    [355, 340, 450, 355].forEach(size => {
+      setContainerWidth(size);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', size === 450 ? 0 : size === 340 ? 2 : 1);
+    });
+  });
+
+  it('should preserve fractional text sizes without using ignored inline dimensions', () => {
+    mount(
+      <Container size={600} style={{ display: 'block', font: '20.1px monospace' }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <OverflowItem key={i} id={String(i)}>
+            <span data-test-item={i} style={{ width: 60.2 }}>
+              xxxxx
+            </span>
+          </OverflowItem>
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}]`).then(items => {
+      const span = items[5].getBoundingClientRect().right - items[0].getBoundingClientRect().left;
+      setContainerWidth(span - 0.25);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+      setContainerWidth(span + 0.25);
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    });
+  });
+
   it(`should overflow items with flex gap`, () => {
     const mapHelper = new Array(6).fill(0).map((_, i) => i);
     mount(

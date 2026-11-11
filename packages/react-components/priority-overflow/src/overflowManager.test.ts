@@ -58,6 +58,68 @@ describe('overflowManager', () => {
       .map(([id]) => id)
       .sort();
 
+  it('should remeasure metadata changes without redispatching unchanged visibility', () => {
+    const container = createContainer(100);
+    container.style.cssText = 'display:flex;flex-direction:row';
+    const onUpdateOverflow = jest.fn();
+    const manager = createOverflowManager(createObserveOptions({ measureGap: true, padding: 0, onUpdateOverflow }));
+    for (let i = 0; i < 2; i++) {
+      const element = container.appendChild(createElementWithSize('button', 40));
+      element.style.marginLeft = i ? '30px' : '0';
+      manager.addItem({ element, id: String(i), priority: 0 });
+    }
+    manager.observe(container, { forceUpdate: true });
+    expect(getVisibleIds(manager)).toHaveLength(1);
+    onUpdateOverflow.mockClear();
+
+    manager.setOptions({ getAutoMargins: () => [] });
+    manager.forceUpdate();
+    expect(onUpdateOverflow).not.toHaveBeenCalled();
+
+    manager.setOptions({ getAutoMargins: () => ['marginLeft'] });
+    manager.forceUpdate();
+    expect(getVisibleIds(manager)).toHaveLength(2);
+    expect(onUpdateOverflow).toHaveBeenCalledTimes(1);
+
+    manager.setOptions({ getAutoMargins: undefined });
+    manager.forceUpdate();
+    expect(getVisibleIds(manager)).toHaveLength(1);
+    expect(onUpdateOverflow).toHaveBeenCalledTimes(2);
+    manager.disconnect();
+  });
+
+  it('should accept explicitly undefined metadata at initialization and observe time', () => {
+    const container = createContainer(100);
+    const manager = createOverflowManager(
+      createObserveOptions({ measureGap: true, padding: 0, getAutoMargins: undefined }),
+    );
+    manager.addItem({ element: container.appendChild(createElementWithSize('button', 40)), id: 'a', priority: 0 });
+    expect(() => manager.observe(container, { forceUpdate: true, getAutoMargins: undefined })).not.toThrow();
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    manager.disconnect();
+  });
+
+  it.each([false, true])('should cache a measured zero-size menu (measureGap=%s)', measureGap => {
+    const container = createContainer(300);
+    container.style.cssText = 'display:flex;flex-direction:row;column-gap:10px';
+    const manager = createOverflowManager(createObserveOptions({ measureGap, padding: 0 }));
+    const menu = container.appendChild(createElementWithSize('button', 0));
+    const measureMenu = jest.fn(() => 0);
+    Object.defineProperty(menu, 'offsetWidth', { configurable: true, get: measureMenu });
+    manager.addOverflowMenu(menu);
+    for (let i = 0; i < 200; i++) {
+      manager.addItem({
+        element: container.appendChild(createElementWithSize('button', 50)),
+        id: String(i),
+        priority: 0,
+      });
+    }
+    manager.observe(container, { forceUpdate: true });
+    expect(getVisibleIds(manager)).toHaveLength(measureGap ? 5 : 6);
+    expect(measureMenu).toHaveBeenCalledTimes(1);
+    manager.disconnect();
+  });
+
   it.each([false, true])('should settle reentrant menu registration before dispatch (measureGap=%s)', measureGap => {
     const container = createContainer(500);
     container.style.cssText = 'display:flex;flex-direction:row;column-gap:10px';
