@@ -114,4 +114,141 @@ describe('InfoButton', () => {
       error.mockRestore();
     }
   });
+
+  describe.each([false, true])('blur dismissal (inertTrapFocus=%s)', inertTrapFocus => {
+    const surfaceRole = inertTrapFocus ? 'dialog' : 'note';
+
+    it('notifies a controlled owner that accepts the close request', async () => {
+      const onOpenChange = jest.fn();
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <>
+            <InfoButton
+              info="Information"
+              popover={{
+                inertTrapFocus,
+                open,
+                onOpenChange: (event, data) => {
+                  onOpenChange(event, data);
+                  setOpen(data.open);
+                },
+              }}
+            />
+            <button>Outside</button>
+          </>
+        );
+      };
+      const { getByRole, queryByRole } = render(<Example />);
+
+      fireEvent.blur(getByRole(surfaceRole, { hidden: true }), {
+        relatedTarget: getByRole('button', { name: 'Outside' }),
+      });
+
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      const event = onOpenChange.mock.calls[0][0];
+      expect(event.type).toBe('blur');
+      expect(onOpenChange).toHaveBeenCalledWith(event, { event, type: 'blur', open: false });
+      expect(getByRole('button', { name: 'information' })).toHaveAttribute('aria-expanded', 'false');
+      await waitFor(() => expect(queryByRole(surfaceRole, { hidden: true })).toBeNull());
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('notifies an uncontrolled observer once, including after the queued native close', async () => {
+      const onOpenChange = jest.fn();
+      const onNativeClose = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <InfoButton info="Information" popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }} />,
+      );
+      const surface = getByRole(surfaceRole, { hidden: true });
+      surface.addEventListener(inertTrapFocus ? 'close' : 'toggle', event => {
+        if (inertTrapFocus || ('newState' in event && event.newState === 'closed')) {
+          onNativeClose();
+        }
+      });
+
+      fireEvent.blur(surface, { relatedTarget: null });
+
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'blur', relatedTarget: null }),
+        expect.objectContaining({ type: 'blur', open: false }),
+      );
+      await waitFor(() => expect(queryByRole(surfaceRole, { hidden: true })).toBeNull());
+      expect(onNativeClose).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('respects a controlled owner that refuses the close request', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = render(
+        <InfoButton info="Information" popover={{ inertTrapFocus, open: true, onOpenChange }} />,
+      );
+      const surface = getByRole(surfaceRole, { hidden: true });
+
+      fireEvent.blur(surface, { relatedTarget: null });
+
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+      expect(getByRole('button', { name: 'information' })).toHaveAttribute('aria-expanded', 'true');
+      expect(getByRole(surfaceRole, { hidden: true })).toBe(surface);
+    });
+
+    it('does not dismiss when focus moves between the trigger, surface, and its descendants', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = render(
+        <InfoButton
+          info={
+            <>
+              <button>First</button>
+              <button>Second</button>
+            </>
+          }
+          popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }}
+        />,
+      );
+      const trigger = getByRole('button', { name: 'information' });
+      const surface = getByRole(surfaceRole, { hidden: true });
+      const first = getByRole('button', { name: 'First', hidden: true });
+      const second = getByRole('button', { name: 'Second', hidden: true });
+
+      fireEvent.blur(surface, { relatedTarget: trigger });
+      fireEvent.blur(trigger, { relatedTarget: surface });
+      fireEvent.blur(surface, { relatedTarget: first });
+      fireEvent.blur(first, { relatedTarget: second });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+      expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('preserves consumer blur handlers and ignores blur when already closed', async () => {
+      const onBlur = jest.fn();
+      const onBlurCapture = jest.fn();
+      const onOpenChange = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <>
+          <InfoButton
+            onBlur={onBlur}
+            info={{ children: 'Information', onBlurCapture }}
+            popover={{ inertTrapFocus, defaultOpen: true, onOpenChange }}
+          />
+          <button>Outside</button>
+        </>,
+      );
+      const trigger = getByRole('button', { name: 'information' });
+      const outside = getByRole('button', { name: 'Outside' });
+
+      fireEvent.blur(getByRole(surfaceRole, { hidden: true }), { relatedTarget: trigger });
+      expect(onBlurCapture).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).not.toHaveBeenCalled();
+      fireEvent.blur(trigger, { relatedTarget: outside });
+
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      await waitFor(() => expect(queryByRole(surfaceRole, { hidden: true })).toBeNull());
+      fireEvent.blur(trigger, { relatedTarget: outside });
+      expect(onBlur).toHaveBeenCalledTimes(2);
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+  });
 });
