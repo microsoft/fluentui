@@ -69,6 +69,10 @@ export function createToaster(options: Partial<ToasterOptions>): {
     return visibleToasts.has(toastId);
   };
 
+  const notifyDismissed = (toast: Toast) => {
+    toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+  };
+
   /**
    * Updates an existing toast with any available option
    */
@@ -86,27 +90,37 @@ export function createToaster(options: Partial<ToasterOptions>): {
   /**
    * Removes a toast that is still in the queue.
    *
-   * A queued toast never renders, so `remove()` is never called for it and it would
-   * otherwise stay in `toasts` forever: its `toastId` could not be dispatched again
-   * and it would become visible as soon as a slot freed up.
+   * A queued toast is never added to `visibleToasts`, so `remove()` is never called for it and it
+   * would otherwise stay in `toasts` forever: its `toastId` could not be dispatched again and it
+   * would become visible as soon as a slot freed up.
+   *
+   * Both containers are mutated together, so a queued id cannot be left in `queue` without a
+   * matching entry in `toasts`.
    */
-  const discardQueuedToast = (toastId: ToastId) => {
+  const discardQueuedToast = (toastId: ToastId): Toast | undefined => {
     const toast = toasts.get(toastId);
     if (!toast) {
-      return;
+      return undefined;
     }
 
     queue.remove(toastId);
     toasts.delete(toastId);
-    toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+
+    return toast;
   };
 
   /**
    * Dismisses a toast with a specific id
+   *
+   * A visible toast is only removed from `visibleToasts`: it stays in `toasts` so its exit motion
+   * can run, and `remove()` finishes the teardown once the motion completes.
    */
   const dismissToast = (toastId: ToastId) => {
     if (queue.contains(toastId)) {
-      discardQueuedToast(toastId);
+      const toast = discardQueuedToast(toastId);
+      if (toast) {
+        notifyDismissed(toast);
+      }
       return;
     }
 
@@ -115,14 +129,29 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
   /**
    * Dismisses all toasts and clears the queue
+   *
+   * Every container is updated before any callback runs. A `dismissed` handler can dispatch a new
+   * toast synchronously, and a handler that throws must not leave the containers half updated.
    */
   const dismissAllToasts = () => {
-    for (const toastId of queue.all()) {
-      discardQueuedToast(toastId);
+    const queuedIds = queue.all();
+    const queuedToasts: Toast[] = [];
+
+    queue.clear();
+    for (const toastId of queuedIds) {
+      const toast = toasts.get(toastId);
+      if (toast) {
+        queuedToasts.push(toast);
+        toasts.delete(toastId);
+      }
     }
 
+    // Visible toasts stay in `toasts` so their exit motion can run.
     visibleToasts.clear();
-    queue.clear();
+
+    for (const toast of queuedToasts) {
+      notifyDismissed(toast);
+    }
   };
 
   /**
@@ -144,7 +173,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
       visibleToasts.delete(toastId);
       onUpdate();
-      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+      notifyDismissed(toast);
     };
 
     const remove = () => {
@@ -155,10 +184,12 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
       toasts.delete(toastId);
 
-      if (visibleToasts.size < limit && queue.peek()) {
+      // Skip ids that are no longer in `toasts` rather than returning early, so one stale queue
+      // entry cannot strand every toast behind it.
+      while (visibleToasts.size < limit && queue.peek() !== null) {
         const nextToast = toasts.get(queue.dequeue());
         if (!nextToast) {
-          return;
+          continue;
         }
 
         visibleToasts.add(nextToast.toastId);

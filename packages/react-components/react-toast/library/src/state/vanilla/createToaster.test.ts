@@ -43,14 +43,22 @@ describe('createToaster', () => {
     expect(toaster.visibleToasts.has('foo')).toBe(true);
   });
 
-  it('should make a toast visible', () => {
-    const toaster = createToaster({});
+  it('should report queued for a toast over the limit', () => {
+    const toaster = createToaster({ limit: 1 });
+    const statuses: string[] = [];
 
     toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast(
+      {
+        content: 'bar',
+        toastId: 'bar',
+        onStatusChange: (_event, data) => statuses.push(data.status),
+      },
+      () => null,
+    );
 
-    expect(toaster.toasts.size).toBe(1);
-    expect(toaster.visibleToasts.size).toBe(1);
-    expect(toaster.visibleToasts.has('foo')).toBe(true);
+    expect(statuses).toEqual(['queued']);
+    expect(toaster.visibleToasts.has('bar')).toBe(false);
   });
 
   it('should close a toast', () => {
@@ -175,50 +183,173 @@ describe('createToaster', () => {
 
     expect(toaster.visibleToasts.has('two')).toBe(true);
   });
-  it('should report dismissed for queued toasts when dismissing all toasts', () => {
-    const statuses: string[] = [];
-    const onStatusChange: ToastChangeHandler = (_event, data) => {
-      statuses.push(`${data.toastId}:${data.status}`);
-    };
-    const toaster = createToaster({ limit: 1 });
 
-    toaster.buildToast({ content: 'foo', toastId: 'foo', onStatusChange }, () => null);
-    toaster.buildToast({ content: 'bar', toastId: 'bar', onStatusChange }, () => null);
+  describe('dismissing queued toasts', () => {
+    it('should report dismissed for a queued toast dismissed by id', () => {
+      const statuses: string[] = [];
+      const toaster = createToaster({ limit: 1 });
+      const onStatusChange: ToastChangeHandler = (_event, data) => {
+        statuses.push(`${data.toastId}:${data.status}`);
+      };
 
-    expect(toaster.visibleToasts.has('bar')).toBe(false);
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar', onStatusChange }, () => null);
 
-    toaster.dismissAllToasts();
+      toaster.dismissToast('bar');
 
-    expect(statuses).toContain('bar:dismissed');
-  });
+      expect(statuses).toEqual(['bar:queued', 'bar:dismissed']);
+    });
 
-  it('should allow the id of a dismissed queued toast to be dispatched again', () => {
-    const toaster = createToaster({ limit: 1 });
+    it('should remove a queued toast from the toaster when dismissed by id', () => {
+      const toaster = createToaster({ limit: 1 });
 
-    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
-    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
 
-    toaster.dismissAllToasts();
-    toaster.buildToast({ content: 'bar again', toastId: 'bar' }, () => null);
+      toaster.dismissToast('bar');
 
-    expect(toaster.visibleToasts.has('bar')).toBe(true);
-  });
+      expect(toaster.toasts.has('bar')).toBe(false);
+      expect(toaster.visibleToasts.has('bar')).toBe(false);
+    });
 
-  it('should not make a dismissed queued toast visible', () => {
-    const toaster = createToaster({ limit: 1 });
+    it('should not make a dismissed queued toast visible when a slot frees up', () => {
+      const toaster = createToaster({ limit: 1 });
 
-    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
-    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
 
-    toaster.dismissToast('bar');
+      toaster.dismissToast('bar');
 
-    expect(toaster.toasts.has('bar')).toBe(false);
+      const foo = toaster.toasts.get('foo');
+      assertToast(foo);
+      foo.close();
+      foo.remove();
 
-    const foo = toaster.toasts.get('foo');
-    assertToast(foo);
-    foo.close();
-    foo.remove();
+      expect(toaster.visibleToasts.has('bar')).toBe(false);
+      expect(toaster.toasts.has('bar')).toBe(false);
+    });
 
-    expect(toaster.visibleToasts.has('bar')).toBe(false);
+    it('should allow the id of a dismissed queued toast to be dispatched again', () => {
+      const toaster = createToaster({ limit: 1 });
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+
+      toaster.dismissToast('bar');
+      toaster.buildToast({ content: 'bar again', toastId: 'bar' }, () => null);
+
+      // The replacement must be the newly built toast, not the original one being promoted.
+      const bar = toaster.toasts.get('bar');
+      assertToast(bar);
+      expect(bar.content).toBe('bar again');
+
+      const foo = toaster.toasts.get('foo');
+      assertToast(foo);
+      foo.close();
+      foo.remove();
+
+      expect(toaster.visibleToasts.has('bar')).toBe(true);
+    });
+
+    it('should report dismissed for queued toasts when dismissing all toasts', () => {
+      const statuses: string[] = [];
+      const toaster = createToaster({ limit: 1 });
+      const onStatusChange: ToastChangeHandler = (_event, data) => {
+        statuses.push(`${data.toastId}:${data.status}`);
+      };
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar', onStatusChange }, () => null);
+
+      toaster.dismissAllToasts();
+
+      expect(statuses).toEqual(['bar:queued', 'bar:dismissed']);
+    });
+
+    it('should not leave dismissed queued toasts in the toaster', () => {
+      const toaster = createToaster({ limit: 1 });
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+      toaster.buildToast({ content: 'baz', toastId: 'baz' }, () => null);
+
+      toaster.dismissAllToasts();
+
+      expect(toaster.toasts.has('bar')).toBe(false);
+      expect(toaster.toasts.has('baz')).toBe(false);
+    });
+
+    it('should keep a toast dispatched from a dismissal handler', () => {
+      // A handler can dispatch synchronously while `dismissAllToasts` is notifying. The new toast
+      // must survive: it must not be queued and then cleared, and it must not be orphaned in
+      // `toasts` without being visible.
+      const toaster = createToaster({ limit: 1 });
+      let dispatched = false;
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast(
+        {
+          content: 'bar',
+          toastId: 'bar',
+          onStatusChange: (_event, data) => {
+            if (data.status === 'dismissed' && !dispatched) {
+              dispatched = true;
+              toaster.buildToast({ content: 'replacement', toastId: 'replacement' }, () => null);
+            }
+          },
+        },
+        () => null,
+      );
+
+      toaster.dismissAllToasts();
+
+      expect(dispatched).toBe(true);
+      expect(toaster.toasts.has('replacement')).toBe(true);
+      expect(toaster.visibleToasts.has('replacement')).toBe(true);
+    });
+
+    it('should keep every container consistent when a dismissal handler throws', () => {
+      const toaster = createToaster({ limit: 1 });
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+      toaster.buildToast(
+        {
+          content: 'baz',
+          toastId: 'baz',
+          onStatusChange: (_event, data) => {
+            if (data.status === 'dismissed') {
+              throw new Error('handler failed');
+            }
+          },
+        },
+        () => null,
+      );
+
+      expect(() => toaster.dismissAllToasts()).toThrow('handler failed');
+
+      expect(toaster.visibleToasts.size).toBe(0);
+      expect(toaster.toasts.has('bar')).toBe(false);
+      expect(toaster.toasts.has('baz')).toBe(false);
+    });
+
+    it('should promote past a queue entry that is no longer in the toaster', () => {
+      // `toasts` is public, so an entry can disappear while its id is still queued. Promotion must
+      // skip that id instead of returning early and stranding everything behind it.
+      const toaster = createToaster({ limit: 1 });
+
+      toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+      toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+      toaster.buildToast({ content: 'baz', toastId: 'baz' }, () => null);
+
+      toaster.toasts.delete('bar');
+
+      const foo = toaster.toasts.get('foo');
+      assertToast(foo);
+      foo.close();
+      foo.remove();
+
+      expect(toaster.visibleToasts.has('baz')).toBe(true);
+    });
   });
 });
