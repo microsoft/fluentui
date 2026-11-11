@@ -75,4 +75,55 @@ describe('focus visible polyfill', () => {
     expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
     dispose();
   });
+
+  it('should maintain focus visible in nested scope when outer scope is disposed', () => {
+    const outerScope = document.createElement('div');
+    const innerScope = document.createElement('div');
+    const innerButton1 = document.createElement('button');
+    const innerButton2 = document.createElement('button');
+
+    innerScope.append(innerButton1);
+    innerScope.append(innerButton2);
+    outerScope.append(innerScope);
+    document.body.append(outerScope);
+
+    const disposeOuter = applyFocusVisiblePolyfill(outerScope, window);
+    const disposeInner = applyFocusVisiblePolyfill(innerScope, window);
+
+    innerButton1.focus();
+    fireEvent.keyDown(window);
+
+    expect(innerButton1.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+
+    // Dispose outer scope (simulating unmounting outer provider)
+    disposeOuter();
+
+    // Focusing another button inside inner scope should still apply focus-visible
+    innerButton2.focus();
+    expect(innerButton2.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+
+    // Disposing inner scope clears focus-visible
+    disposeInner();
+    expect(innerButton2.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(false);
+  });
+
+  it('should apply focus visible inside shadow DOM', () => {
+    const scope = document.createElement('div');
+    const host = document.createElement('div');
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const button = document.createElement('button');
+
+    shadowRoot.append(button);
+    scope.append(host);
+    document.body.append(scope);
+
+    const dispose = applyFocusVisiblePolyfill(scope, window);
+
+    button.focus();
+    fireEvent.keyDown(window);
+
+    expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+
+    dispose();
+  });
 });
