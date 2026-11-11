@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate declarative chart colors and schema-driven styles, preserving Plotly font-weight keywords and Vega font-weight mappings",
+  "comment": "fix: validate declarative chart colors and schema-driven styles, including Vega title fonts, padding, and anchors, preserving Plotly font-weight keywords and Vega font-weight mappings",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

@@ -6,11 +6,15 @@ import {
   transformVegaLiteToGroupedVerticalBarChartProps,
   transformVegaLiteToVerticalStackedBarChartProps,
   transformVegaLiteToScatterChartProps,
+  transformVegaLiteToHorizontalBarChartProps,
+  transformVegaLiteToDonutChartProps,
+  transformVegaLiteToHeatMapChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { specialChartNames } from '../../utilities/test-data/specialChartNames';
+import { getChartTitleInlineStyles } from '../../utilities/Common.styles';
 
 const colorMap = new Map<string, string>();
 
@@ -711,6 +715,141 @@ describe('VegaLiteSchemaAdapter', () => {
   });
 
   describe('getVegaLiteTitles', () => {
+    test('preserves valid title font, anchor, and padding styles without mutating the schema', () => {
+      const title = {
+        text: 'Title',
+        font: '"Segoe UI", sans-serif',
+        fontSize: 24,
+        fontWeight: 'BOLD',
+        color: 'rgba(0, 120, 212, 0.5)',
+        anchor: 'middle' as const,
+        offset: 0,
+        subtitlePadding: 8,
+      };
+      const originalTitle = { ...title };
+      const spec: VegaLiteSpec = { title, mark: 'line', encoding: {} };
+
+      const result = getVegaLiteTitles(spec);
+
+      expect(result.titleStyles).toEqual({
+        titleFont: {
+          family: title.font,
+          size: 24,
+          weight: 700,
+          color: title.color,
+        },
+        titleXAnchor: 'center',
+        titlePad: { t: 0, b: 8 },
+      });
+      expect(
+        getChartTitleInlineStyles(
+          result.titleStyles?.titleFont,
+          result.titleStyles?.titleXAnchor,
+          undefined,
+          result.titleStyles?.titlePad,
+        ),
+      ).toEqual({
+        fontFamily: title.font,
+        fontSize: '24px',
+        fontWeight: 700,
+        fill: title.color,
+        textAlign: 'center',
+        padding: '0px 0px 8px 0px',
+      });
+      expect(spec.title).toEqual(originalTitle);
+    });
+
+    test.each([
+      { field: 'font', value: 'Arial; --css-injection-sentinel:731' },
+      { field: 'font', value: 'Arial\\3b serif' },
+      { field: 'color', value: 'red; --css-injection-sentinel:731' },
+      { field: 'color', value: 'red;} html{color:red' },
+      { field: 'fontSize', value: '24; --css-injection-sentinel:731' },
+      { field: 'fontSize', value: 0 },
+      { field: 'fontSize', value: -1 },
+      { field: 'fontSize', value: NaN },
+      { field: 'fontSize', value: Infinity },
+    ])('omits invalid title font field $field: $value', ({ field, value }) => {
+      const title = { text: 'Title', [field]: value };
+      const originalTitle = { ...title };
+      const spec: VegaLiteSpec = { title, mark: 'line', encoding: {} };
+
+      const result = getVegaLiteTitles(spec);
+
+      expect(result.titleStyles?.titleFont).toBeUndefined();
+      expect(getChartTitleInlineStyles(result.titleStyles?.titleFont)).toEqual({});
+      expect(spec.title).toEqual(originalTitle);
+    });
+
+    test.each([
+      { field: 'offset', value: '8; --css-injection-sentinel:731' },
+      { field: 'subtitlePadding', value: '8; --css-injection-sentinel:731' },
+      { field: 'offset', value: -1 },
+      { field: 'subtitlePadding', value: -1 },
+      { field: 'offset', value: NaN },
+      { field: 'subtitlePadding', value: Infinity },
+    ])('omits invalid title padding $field: $value', ({ field, value }) => {
+      const spec: VegaLiteSpec = {
+        title: { text: 'Title', [field]: value },
+        mark: 'line',
+        encoding: {},
+      };
+
+      expect(getVegaLiteTitles(spec).titleStyles?.titlePad).toBeUndefined();
+    });
+
+    test.each(['constructor', '__proto__', 'start; --css-injection-sentinel:731'])(
+      'omits invalid title anchor %s',
+      anchor => {
+        const field: string = 'anchor';
+        const spec: VegaLiteSpec = {
+          title: { text: 'Title', [field]: anchor },
+          mark: 'line',
+          encoding: {},
+        };
+
+        expect(getVegaLiteTitles(spec).titleStyles?.titleXAnchor).toBeUndefined();
+      },
+    );
+
+    test.each([
+      { name: 'vertical bar', transform: transformVegaLiteToVerticalBarChartProps, mark: 'bar' },
+      { name: 'stacked bar', transform: transformVegaLiteToVerticalStackedBarChartProps, mark: 'bar' },
+      { name: 'grouped bar', transform: transformVegaLiteToGroupedVerticalBarChartProps, mark: 'bar' },
+      { name: 'horizontal bar', transform: transformVegaLiteToHorizontalBarChartProps, mark: 'bar' },
+      { name: 'scatter', transform: transformVegaLiteToScatterChartProps, mark: 'point' },
+      { name: 'donut', transform: transformVegaLiteToDonutChartProps, mark: 'arc' },
+      { name: 'heatmap', transform: transformVegaLiteToHeatMapChartProps, mark: 'rect' },
+      { name: 'histogram', transform: transformVegaLiteToHistogramProps, mark: 'bar' },
+      { name: 'polar', transform: transformVegaLiteToPolarChartProps, mark: 'line' },
+    ] as const)('validates title metadata in the $name transformer', ({ name, transform, mark }) => {
+      const payload = 'red; --css-injection-sentinel:731';
+      const spec: VegaLiteSpec = {
+        title: { text: 'Title', font: payload, color: payload, fontSize: 24, fontWeight: 'bold' },
+        mark,
+        data: {
+          values: [
+            { x: 1, y: 2, value: 3 },
+            { x: 2, y: 3, value: 4 },
+          ],
+        },
+        encoding: {
+          x: { field: 'x', type: 'quantitative', ...(name === 'histogram' ? { bin: true } : {}) },
+          y: { field: 'y', type: 'quantitative' },
+          color: { field: 'value', type: 'quantitative' },
+          xOffset: { field: 'value' },
+          theta: { field: 'x', type: 'quantitative' },
+          radius: { field: 'y', type: 'quantitative' },
+        },
+      };
+
+      const result = transform(spec, { current: colorMap }, false);
+
+      expect(JSON.stringify(result)).not.toContain('css-injection-sentinel');
+      expect(result).toHaveProperty('titleFont.size', 24);
+      expect(result).toHaveProperty('titleFont.weight', 700);
+    });
+
     test.each([
       { fontWeight: 1, expected: 1 },
       { fontWeight: 600, expected: 600 },

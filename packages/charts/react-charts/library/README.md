@@ -36,14 +36,17 @@ Title shadows accept a single shadow with two offsets, an optional nonnegative b
 Font sizes, chart dimensions, title padding, and layout margins must be finite numbers in their supported ranges.
 Annotation sizes and padding also accept simple CSS lengths. Title and annotation font weights accept numbers from 1 to 1000
 or the keywords `normal`, `bold`, `bolder`, and `lighter`.
-Vega title font weights use the same validation, retaining their existing keyword-to-number mappings.
+Vega title metadata uses the same font-family, font-size, color, weight, and nonnegative padding validation across
+all nine title-producing transformers, retaining the existing case-insensitive keyword-to-number weight mappings.
+Vega title anchors are limited to `start`, `middle`, and `end`.
 Table alignment is limited to Plotly's `left`, `center`, and `right`, including scalar, column, per-cell, and template values.
 Invalid style values are omitted or use the existing chart defaults; arbitrary CSS functions, rules, and declarations
 are not supported in these schema style fields. Direct component styling props are not schema validation boundaries.
 
-Vega title rendering has a separate existing limitation: its transformers do not consistently forward title styles
-to the chart renderers, and Cartesian charts do not forward the schema title to the visible title slot.
-Font-weight validation does not add this missing title-rendering support.
+Vega title rendering has a separate existing limitation: all nine title-producing transformers spread the validated
+style fields at the top level instead of forwarding them as `titleStyles`, and Cartesian charts do not forward the
+schema title to the visible title slot. This validation protects adapter metadata; it does not add the missing
+title-rendering support.
 
 ## Available charts across fluent platforms
 
