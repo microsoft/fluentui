@@ -18,7 +18,7 @@ export default {
   component: Button,
   parameters: {
     reactStorybookAddon: {
-      classNames: [{ exportName: 'buttonClassNames', classNames: buttonClassNames }],
+      slotClassNameGroups: [{ exportName: 'buttonClassNames', slots: buttonClassNames }],
     },
     docs: {
       description: {

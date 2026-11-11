@@ -284,8 +284,8 @@ const RenderArgsTable = ({
   });
   const styles = useStyles();
   const parameters: FluentParameters = story.parameters;
-  const classNameGroups = parameters.reactStorybookAddon?.classNames?.filter(
-    group => Object.keys(group.classNames).length > 0,
+  const slotClassNameGroups = parameters.reactStorybookAddon?.slotClassNameGroups?.filter(
+    group => Object.keys(group.slots).length > 0,
   );
 
   return hideArgsTable ? null : (
@@ -326,7 +326,7 @@ const RenderArgsTable = ({
             </p>
           </AdditionalApiDocs>
         )}
-        {Boolean(classNameGroups?.length) && (
+        {Boolean(slotClassNameGroups?.length) && (
           <AdditionalApiDocs>
             <>
               <h2 className={`fluent-docs-class-names-heading ${styles.classNamesHeading}`}>
@@ -337,7 +337,7 @@ const RenderArgsTable = ({
                 in style overrides. They are exported constants, not React hooks. Only slots with an exported class name
                 are listed.
               </p>
-              {classNameGroups?.map(group => (
+              {slotClassNameGroups?.map(group => (
                 <table className={styles.classNamesTable} key={group.exportName}>
                   <caption className={styles.classNamesCaption}>
                     <code>{group.exportName}</code>
@@ -353,7 +353,7 @@ const RenderArgsTable = ({
                     </tr>
                   </thead>
                   <tbody>
-                    {Object.entries(group.classNames).map(([slot, className]) => (
+                    {Object.entries(group.slots).map(([slot, className]) => (
                       <tr key={slot}>
                         <th className={styles.classNamesCell} scope="row">
                           <code>{slot}</code>

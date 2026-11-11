@@ -32,11 +32,11 @@ export interface FluentParameters extends Parameters {
     docs?: FluentDocsConfig;
     /**
      * Opt a component docs page into class-name tables. Supply public class-name
-     * objects in display order, for example `{ exportName: 'buttonClassNames', classNames: buttonClassNames }`.
+     * objects in display order, for example `{ exportName: 'buttonClassNames', slots: buttonClassNames }`.
      */
-    classNames?: readonly {
+    slotClassNameGroups?: readonly {
       exportName: string;
-      classNames: Readonly<Record<string, string>>;
+      slots: Readonly<Record<string, string>>;
     }[];
   };
 }

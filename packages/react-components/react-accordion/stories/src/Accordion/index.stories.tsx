@@ -34,11 +34,11 @@ export default {
   },
   parameters: {
     reactStorybookAddon: {
-      classNames: [
-        { exportName: 'accordionClassNames', classNames: accordionClassNames },
-        { exportName: 'accordionItemClassNames', classNames: accordionItemClassNames },
-        { exportName: 'accordionHeaderClassNames', classNames: accordionHeaderClassNames },
-        { exportName: 'accordionPanelClassNames', classNames: accordionPanelClassNames },
+      slotClassNameGroups: [
+        { exportName: 'accordionClassNames', slots: accordionClassNames },
+        { exportName: 'accordionItemClassNames', slots: accordionItemClassNames },
+        { exportName: 'accordionHeaderClassNames', slots: accordionHeaderClassNames },
+        { exportName: 'accordionPanelClassNames', slots: accordionPanelClassNames },
       ],
     },
     actions: { argTypesRegex: '^on.*' },

@@ -3,7 +3,6 @@ import { render, screen, within } from '@testing-library/react';
 import { DocsContext, type DocsContextProps } from '@storybook/addon-docs/blocks';
 import type { PreparedStory } from 'storybook/internal/types';
 import { Channel } from 'storybook/internal/channels';
-import { buttonClassNames } from '@fluentui/react-button';
 
 import type { FluentParameters } from '../hooks';
 import { FluentDocsPage, type FluentDocsPageProps } from './FluentDocsPage';
@@ -22,9 +21,10 @@ jest.mock('./DirSwitch', () => ({ DirSwitch: jest.fn(() => null) }));
 jest.mock('./CopyAsMarkdownButton', () => ({ CopyAsMarkdownButton: jest.fn(() => null) }));
 jest.mock('./Toc', () => ({ Toc: jest.fn(() => null) }));
 
+const buttonClassNames = { root: 'fui-Button', icon: 'fui-Button__icon' };
 const buttonParameters: FluentParameters = {
   reactStorybookAddon: {
-    classNames: [{ exportName: 'buttonClassNames', classNames: buttonClassNames }],
+    slotClassNameGroups: [{ exportName: 'buttonClassNames', slots: buttonClassNames }],
   },
 };
 
@@ -79,7 +79,7 @@ function renderDocs(parameters: FluentParameters, configured: boolean, props: Fl
 }
 
 describe.each([false, true])('FluentDocsPage class names (configured: %s)', configured => {
-  it('renders the imported class names in a labeled semantic table', () => {
+  it('renders the supplied class names in a labeled semantic table', () => {
     renderDocs(buttonParameters, configured);
 
     expect(
@@ -95,7 +95,7 @@ describe.each([false, true])('FluentDocsPage class names (configured: %s)', conf
       within(table)
         .getAllByRole('row')
         .map(row => row.textContent),
-    ).toEqual(['SlotClass name', `root${buttonClassNames.root}`, `icon${buttonClassNames.icon}`]);
+    ).toEqual(['SlotClass name', 'rootfui-Button', 'iconfui-Button__icon']);
     expect(screen.getByTestId('arg-types')).toBeTruthy();
   });
 
@@ -103,9 +103,9 @@ describe.each([false, true])('FluentDocsPage class names (configured: %s)', conf
     renderDocs(
       {
         reactStorybookAddon: {
-          classNames: [
-            { exportName: 'rootOnlyClassNames', classNames: { root: 'fui-RootOnly' } },
-            { exportName: 'buttonClassNames', classNames: buttonClassNames },
+          slotClassNameGroups: [
+            { exportName: 'rootOnlyClassNames', slots: { root: 'fui-RootOnly' } },
+            { exportName: 'buttonClassNames', slots: buttonClassNames },
           ],
         },
       },
@@ -126,8 +126,8 @@ describe.each([false, true])('FluentDocsPage class names (configured: %s)', conf
 
   it.each([
     {},
-    { reactStorybookAddon: { classNames: [] } },
-    { reactStorybookAddon: { classNames: [{ exportName: 'emptyClassNames', classNames: {} }] } },
+    { reactStorybookAddon: { slotClassNameGroups: [] } },
+    { reactStorybookAddon: { slotClassNameGroups: [{ exportName: 'emptyClassNames', slots: {} }] } },
   ])('does not render a class-name card without exported entries (%j)', parameters => {
     renderDocs(parameters, configured);
 
