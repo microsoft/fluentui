@@ -61,6 +61,8 @@ Template:
 
 - The label name is configurable; default `teg-ready`.
 - Before applying, check it exists on the target repo: `gh label list --repo microsoft/fluentui --search '<label>' --json name -q '.[] | select(.name == "<label>") | .name'` (exact match; `--search` alone is fuzzy). **Never create it.** A repo-wide label triggers every agent instance watching that label, not just yours, so adding it is a team decision.
-- If the label is missing, post **nothing** for agent-ready issues — no spec comment, no label. List the candidates and their draft specs in the final summary so the user can act later.
+- Post the approved task spec whether or not the label exists. The spec doesn't start any agent on its own, and it documents the work for humans too.
+- If the label is missing, skip only the label. List those issues in the final summary as "spec posted, waiting for handoff label".
+- When the label becomes available, a later run adds it without reposting the spec: if a trusted comment with the `<!-- agent-task-spec v1 -->` marker already exists, re-check it against the current thread, update it only if scope changed (with approval), then add the label.
 - The handoff agent needs push access to the repo or fork support. If neither is available, treat the label as missing.
 - On later runs, if a trusted comment was posted after the spec, re-read it: it now steers the agent too. Flag anything that changes scope.

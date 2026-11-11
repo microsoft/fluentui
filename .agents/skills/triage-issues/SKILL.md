@@ -38,7 +38,7 @@ For every issue, you're producing a **recommendation** with these fields:
 | `breaking_change`      | `none`, `api`, `behavior`, `unclear` — what the likely fix or feature would break                                                               |
 | `still_valid`          | `valid`, `fixed`, `fixed-unreleased`, `unconfirmed`, `cannot_determine`, `not-checked` (see `references/still-valid.md`)                        |
 | `agent_ready`          | `true` / `false` plus `agent_ready_reason` — could a coding agent take this end-to-end? (see `references/agent-handoff.md`)                     |
-| `task_spec`            | draft task-spec comment, only when `agent_ready: true` and the handoff label exists                                                             |
+| `task_spec`            | draft task-spec comment, whenever `agent_ready: true` (posted even if the handoff label doesn't exist yet)                                      |
 | `add_labels`           | list of label names to add                                                                                                                      |
 | `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)                                                              |
 | `assignee`             | GitHub login of the area owner (see routing table below)                                                                                        |
@@ -141,7 +141,7 @@ For every bug and feature request, run the merit, risk, and breaking-change asse
 
 If the issue is older than about 90 days or names a package version older than the latest release, run the still-valid check from `references/still-valid.md`. Otherwise set `still_valid: not-checked`. A `fixed` result replaces the normal labels with a close-as-completed recommendation; `unconfirmed` adds `Needs: Author Feedback`.
 
-Run the agent-ready checklist from `references/agent-handoff.md`. For agent-ready issues, check once per session whether the handoff label exists on the repo. Draft a `task_spec` only if it does. If you'll hand the issue off, leave `assignee` empty and note the area owner in `notes` — an assignee tells other tools a human is working on it.
+Run the agent-ready checklist from `references/agent-handoff.md`. For agent-ready issues, draft a `task_spec`, and check once per session whether the handoff label exists on the repo. The spec is posted either way; only the label depends on it. If you'll hand the issue off, leave `assignee` empty and note the area owner in `notes` — an assignee tells other tools a human is working on it.
 
 Draft the triage comment for each issue at this point (see the comment rules in `references/issue-assessment.md`).
 
@@ -151,7 +151,7 @@ Keep each issue's classification in an in-memory structure (don't write intermed
 
 Produce a compact table the user can scan. One row per issue. Columns: `#`, `classification`, `merit / risk / breaking`, `still valid`, `agent ready`, `add labels`, `remove labels`, `assignee`, `priority`, `notes`. Put the `comment` drafts separately below the table, keyed by issue number — comments are long and clutter the table. Every non-security issue must have a comment draft. Show each `task_spec` verbatim below the comments; the user approves specs individually.
 
-If you found possible security reports, duplicates, partner asks, `questionable` / `unsafe-pattern` requests, breaking changes, already-fixed issues, or agent-ready issues, call them out explicitly above the table. List security reports first. If agent-ready issues exist but the handoff label doesn't, say so.
+If you found possible security reports, duplicates, partner asks, `questionable` / `unsafe-pattern` requests, breaking changes, already-fixed issues, or agent-ready issues, call them out explicitly above the table. List security reports first. If agent-ready issues exist but the handoff label doesn't, say so: their specs will be posted without the label.
 
 **Then propose a validation set.** Below the table, list the bugs you flagged as `validation_candidate: true` with a one-line reason each, and ask the user to confirm. Take the initiative here — don't wait for the user to think of validation. Example:
 
@@ -243,7 +243,7 @@ Ask the user: "Apply all / approve specific numbers / skip / edit?". Accept inpu
 
 ### Step 5 — Apply approved changes
 
-Use `gh issue edit` for labels and assignees. Use `gh issue comment` to post the approved comment for every triaged issue (never for `security`). For approved agent-ready issues, post the approved task spec as a separate comment, then add the handoff label last — the label is what starts the agent. Apply one issue at a time and print a one-line result per issue (success or error). Do not retry blindly on failure; stop and ask the user what to do.
+Use `gh issue edit` for labels and assignees. Use `gh issue comment` to post the approved comment for every triaged issue (never for `security`). For approved agent-ready issues, post the approved task spec as a separate comment, then add the handoff label last if it exists — the label is what starts the agent. Apply one issue at a time and print a one-line result per issue (success or error). Do not retry blindly on failure; stop and ask the user what to do.
 
 ```bash
 # Labels

@@ -84,6 +84,7 @@ Re-evaluation windows (skip an issue if its latest ledger entry is younger than 
 | `ping`                           | 14 days           |
 | `needs-info`, `fixed-unreleased` | 30 days           |
 | `handoff`                        | 30 days           |
+| `spec-posted` (no label yet)     | next run          |
 | `keep`, `needs-human`            | 90 days           |
 | `deferred` (over a cap)          | next run          |
 | `skipped` (user skipped it)      | next run          |
@@ -99,7 +100,7 @@ gh api user -q .login                                    # operator
 gh label list --repo microsoft/fluentui --search "<label>" --json name -q '.[] | select(.name == "<label>") | .name'
 ```
 
-If the handoff label is missing, say so up front: agent-ready issues will only be listed in the summary, with nothing posted (see `agent-handoff.md`).
+If the handoff label is missing, say so up front: agent-ready issues still get their task spec posted, but no label (see `agent-handoff.md`).
 
 ### Step 1 — Fetch the backlog
 
@@ -137,7 +138,7 @@ For each issue, in order — stop at the first terminal result:
 3. **Merit / risk / breaking** — per `issue-assessment.md`.
 4. **Duplicates and clusters** — search open and closed issues with the same component and symptom. Group related open issues into a cluster with one primary (oldest with the best repro). Only the primary can be handed off; the others get a comment linking it, or `Resolution: Duplicate` if they're the same report.
 5. **In progress** → outcome includes `ping` (see below). It is still assessed — if it's already fixed, out of scope, or a duplicate, recommend that too, addressed to the people involved.
-6. **Agent ready** — the checklist in `agent-handoff.md`. Draft the task spec only if the handoff label exists.
+6. **Agent ready** — the checklist in `agent-handoff.md`. Draft the task spec. If a trusted `agent-task-spec` comment already exists, reuse it (re-check scope) instead of drafting a new one.
 
 ### Outcomes
 
@@ -151,7 +152,8 @@ For each issue, in order — stop at the first terminal result:
 | `needs-info`       | still-valid `unconfirmed`, or no usable repro             | `Needs: Author Feedback` (+ `Needs: Repro`)                                 | asks the reporter to confirm on the latest version or share a repro |
 | `needs-human`      | merit `questionable`, risk `unsafe-pattern`, any breaking | `Needs: Discussion` / `Needs: Design` / `Needs: PM`, breaking-change labels | explains what decision is needed                                    |
 | `ping`             | in progress                                               | none                                                                        | see "Pings"                                                         |
-| `handoff`          | agent-ready, label exists, under `--handoff-cap`          | handoff label (added last)                                                  | task spec (separate comment)                                        |
+| `handoff`          | agent-ready, label exists, under `--handoff-cap`          | handoff label (added last)                                                  | task spec (separate comment, unless one exists)                     |
+| `spec-posted`      | agent-ready, label missing                                | none                                                                        | task spec (separate comment, unless one exists)                     |
 | `keep`             | valid, not agent-ready                                    | only fix missing Type/Component labels                                      | **none** (metadata-only label fixes don't need a comment)           |
 
 Feature requests make up most of the backlog, and many were left open on purpose. Closing a feature (`close-by-design`, `close-wont-do`, `close-duplicate`) is never part of "apply all" — the user approves each one individually. Show the package's CODEOWNERS entry next to each closure so the user can check with the owner first.
@@ -185,7 +187,7 @@ Never ask an external contributor "OK to unassign?" in public. Never hand off an
 ### Step 4 — Present the batch plan
 
 1. Counts by outcome.
-2. Call-outs: security flags first, then closures, breaking changes, clusters, and handoff candidates (including "label missing — not posting").
+2. Call-outs: security flags first, then closures, breaking changes, clusters, and handoff candidates (including "label missing — spec only").
 3. Table: `#`, `type`, `still valid`, `merit / risk / breaking`, `in progress`, `outcome`, `labels`, `notes`.
 4. Below the table, keyed by issue number: comment drafts, ping drafts (with target issue/PR), and task specs **verbatim**.
 5. Closures grouped by package with the CODEOWNERS owner.
@@ -211,7 +213,7 @@ Append one ledger line for every issue in the batch: the applied outcome, `skipp
 
 ### Step 6 — Summarize and continue
 
-Print counts by outcome, issues needing human follow-up, agent-ready candidates that weren't handed off (cap or missing label) with their draft specs, and how many issues remain. Offer the next batch.
+Print counts by outcome, issues needing human follow-up, agent-ready issues that weren't labeled (cap or missing label), noting which already have a spec posted, and how many issues remain. Offer the next batch.
 
 ## Anti-patterns
 
