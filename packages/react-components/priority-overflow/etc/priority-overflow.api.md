@@ -77,6 +77,7 @@ export interface OverflowManager {
 
 // @public
 export interface OverflowOptions {
+    getAutoMargins?: (element: HTMLElement) => readonly ('marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom')[];
     hasHiddenItems?: boolean;
     measureGap?: boolean;
     minimumVisible?: number;

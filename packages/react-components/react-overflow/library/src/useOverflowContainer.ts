@@ -36,6 +36,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     onUpdateItemVisibility = noop,
     measureGap = false,
     hasHiddenItems = false,
+    getAutoMargins = noAutoMargins,
   } = options;
 
   const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
@@ -50,6 +51,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       onUpdateItemVisibility: onUpdateItemVisibilityCallback,
       onUpdateOverflow: update,
       hasHiddenItems,
+      getAutoMargins,
     }),
     [
       minimumVisible,
@@ -60,6 +62,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       update,
       hasHiddenItems,
       measureGap,
+      getAutoMargins,
     ],
   );
 
@@ -149,6 +152,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 const noop = () => {
   /* noop */
 };
+
+const noAutoMargins: NonNullable<OverflowOptions['getAutoMargins']> = () => [];
 
 export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visible }) => {
   if (visible) {

@@ -167,11 +167,20 @@ export interface OverflowOptions {
 
   /**
    * Account for the main-axis gap and margins in a single-line layout.
-   * Alignment free space (including auto margins) and spacing at the container edges are excluded.
-   * Elements with display: none do not contribute spacing; displayed zero-size elements still do.
+   * Alignment free space and spacing at the container edges are excluded.
+   * Declare auto margins with getAutoMargins so their used free space is excluded.
+   * Elements without layout boxes do not contribute spacing; displayed zero-size elements still do.
    * Measurements use layout pixels, independently of CSS transforms.
    */
   measureGap?: boolean;
+
+  /**
+   * Physical auto-margin properties to exclude when measureGap is enabled.
+   * Supply metadata for items, dividers and the overflow menu, for example
+   * `element => element.hasAttribute('data-align-end') ? ['marginLeft'] : []`.
+   * Keep this callback free of DOM mutations. Refresh overflow when the metadata changes.
+   */
+  getAutoMargins?: (element: HTMLElement) => readonly ('marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom')[];
 
   /**
    * When true, reserve space as if the overflow menu were visible even with no overflowing items.

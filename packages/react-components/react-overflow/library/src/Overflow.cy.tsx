@@ -24,6 +24,9 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
+const getAutoMargins: NonNullable<OverflowProps['getAutoMargins']> = element =>
+  element.style.marginInlineStart === 'auto' ? ['marginLeft'] : [];
+
 const Container: React.FC<
   { children?: React.ReactNode; size?: number; style?: React.CSSProperties } & Omit<OverflowProps, 'children'>
 > = ({ children, size, overflowAxis = 'horizontal' as const, style, ...userProps }) => {
@@ -1335,6 +1338,7 @@ describe('Overflow', () => {
           size={500}
           padding={10}
           style={{ gap: 10, justifyContent: alignment === 'space-between' ? 'space-between' : undefined }}
+          getAutoMargins={getAutoMargins}
           measureGap
         >
           {Array.from({ length: 6 }, (_, i) => (
@@ -1371,7 +1375,7 @@ describe('Overflow', () => {
   ['none', 'flex-grow 1s linear', 'all 1s linear'].forEach(transition => {
     it(`should exclude internal auto margins without changing sizing styles (${transition})`, () => {
       mount(
-        <Container size={500} padding={10} style={{ gap: 10 }} measureGap>
+        <Container size={500} padding={10} style={{ gap: 10 }} getAutoMargins={getAutoMargins} measureGap>
           {Array.from({ length: 6 }, (_, i) => (
             <Item
               key={i}
@@ -1400,7 +1404,14 @@ describe('Overflow', () => {
   it('should not retrigger style-based overflow refreshes during measurement', () => {
     const imperativeRef = React.createRef<OverflowImperativeRef>();
     mount(
-      <Container size={500} padding={10} style={{ gap: 10 }} imperativeRef={imperativeRef} measureGap>
+      <Container
+        size={500}
+        padding={10}
+        style={{ gap: 10 }}
+        imperativeRef={imperativeRef}
+        getAutoMargins={getAutoMargins}
+        measureGap
+      >
         <OverflowReorderObserver />
         {Array.from({ length: 6 }, (_, i) => (
           <Item key={i} id={i.toString()} style={{ marginInlineStart: i === 3 ? 'auto' : undefined }} />
@@ -1431,6 +1442,156 @@ describe('Overflow', () => {
     });
   });
 
+  it('should not retrigger subtree child-list refreshes during margin measurement', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container
+        size={500}
+        padding={10}
+        style={{ gap: 10 }}
+        imperativeRef={imperativeRef}
+        getAutoMargins={getAutoMargins}
+        measureGap
+      >
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={i.toString()} style={{ marginInlineStart: i === 3 ? 'auto' : undefined }} />
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.container}]`).then(containers => {
+      const container = containers[0];
+      const view = container.ownerDocument.defaultView!;
+      let updates = 0;
+      const observer = new view.MutationObserver(() => {
+        if (++updates === 12) {
+          observer.disconnect();
+        } else {
+          imperativeRef.current!.updateOverflow();
+        }
+      });
+      observer.observe(container, { childList: true, subtree: true });
+      imperativeRef.current!.updateOverflow();
+      return new Promise<void>(resolve => {
+        view.requestAnimationFrame(() => view.requestAnimationFrame(() => resolve()));
+      }).then(() => {
+        observer.disconnect();
+        expect(updates).to.equal(0);
+      });
+    });
+  });
+
+  it('should preserve selector-defined auto margins without inserting children', () => {
+    mount(
+      <>
+        <style>{`[${selectors.item}="3"]:empty { margin-left:auto; }`}</style>
+        <Container
+          size={500}
+          padding={10}
+          style={{ gap: 10 }}
+          getAutoMargins={element => (element.getAttribute(selectors.item) === '3' ? ['marginLeft'] : [])}
+          measureGap
+        >
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </Container>
+      </>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.item}="3"]`).should('be.empty').and('have.css', 'margin-left', '150px');
+  });
+
+  it('should preserve fractional container capacity', () => {
+    mount(
+      <Container size={312.4} style={{ gap: 1.5 }} measureGap>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Item key={i} id={String(i)} width={50.8} style={{ padding: 0, border: 0 }} />
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  it('should use the nested layout gap while retaining the observed container capacity', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container size={280} imperativeRef={imperativeRef} measureGap>
+        <div data-nested-layout style={{ display: 'flex', width: 280, flexShrink: 0, gap: 20 }}>
+          {Array.from({ length: 5 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    setContainerWidth(350);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get('[data-nested-layout]').invoke('css', 'gap', '40px');
+    cy.then(() => imperativeRef.current!.updateOverflow());
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    setContainerWidth(240);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+  });
+
+  it('should use column gaps for the vertical inline axis of a grid', () => {
+    mount(
+      <Container
+        size={300}
+        overflowAxis="vertical"
+        style={{
+          display: 'grid',
+          gridAutoFlow: 'column',
+          writingMode: 'vertical-rl',
+          width: 50,
+          gap: '10px 20px',
+          justifyContent: 'start',
+        }}
+        measureGap
+      >
+        {Array.from({ length: 5 }, (_, i) => (
+          <Item key={i} id={String(i)} />
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    cy.get(`[${selectors.container}]`).should(containers => {
+      expect(containers[0].scrollHeight).to.equal(containers[0].clientHeight);
+    });
+  });
+
+  it('should measure non-replaced inline boxes rather than their ignored width declaration', () => {
+    mount(
+      <Container size={200} style={{ display: 'block', fontFamily: 'monospace', fontSize: 20 }} measureGap>
+        {[0, 1].map(i => (
+          <OverflowItem key={i} id={String(i)}>
+            <span data-test-item={i} style={{ width: 50, marginRight: 10 }}>
+              xxxxxxxxxx
+            </span>
+          </OverflowItem>
+        ))}
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+  });
+
+  it('should omit descendants of hidden wrappers and measure them again when displayed', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container size={280} style={{ gap: 10 }} imperativeRef={imperativeRef} measureGap>
+        <div data-hidden-wrapper style={{ display: 'none' }}>
+          {Array.from({ length: 6 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get('[data-hidden-wrapper]').invoke('css', 'display', 'flex').invoke('css', 'gap', '10px');
+    cy.then(() => imperativeRef.current!.updateOverflow());
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 2);
+  });
+
   it('should clamp negative calculated gaps to zero', () => {
     mount(
       <Container size={280} style={{ gap: 'calc(10% - 40px)' }} measureGap>
@@ -1443,6 +1604,51 @@ describe('Overflow', () => {
     cy.get(`[${selectors.container}]`).should(containers => {
       expect(containers[0].scrollWidth).to.be.at.most(containers[0].clientWidth);
     });
+  });
+
+  it('should refresh when auto-margin metadata changes', () => {
+    const Example = () => {
+      const [enabled, setEnabled] = React.useState(false);
+      return (
+        <>
+          <button data-enable-metadata onClick={() => setEnabled(true)}>
+            Enable metadata
+          </button>
+          <Container
+            size={500}
+            padding={10}
+            style={{ gap: 10 }}
+            measureGap
+            getAutoMargins={element => (enabled && element.getAttribute(selectors.item) === '3' ? ['marginLeft'] : [])}
+          >
+            {Array.from({ length: 6 }, (_, i) => (
+              <Item key={i} id={String(i)} style={{ marginInlineStart: i === 3 ? 'auto' : undefined }} />
+            ))}
+          </Container>
+        </>
+      );
+    };
+    mount(<Example />);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    cy.get('[data-enable-metadata]').click();
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+  });
+
+  it('should resolve nested percentage gaps against the layout parent', () => {
+    const imperativeRef = React.createRef<OverflowImperativeRef>();
+    mount(
+      <Container size={327} imperativeRef={imperativeRef} measureGap>
+        <div data-percentage-layout style={{ display: 'flex', width: 400, flexShrink: 0, gap: 'calc(5% + 1px)' }}>
+          {Array.from({ length: 5 }, (_, i) => (
+            <Item key={i} id={String(i)} />
+          ))}
+        </div>
+      </Container>,
+    );
+    cy.get(`[${selectors.item}][data-overflowing]`).should('have.length', 1);
+    cy.get('[data-percentage-layout]').invoke('css', 'width', '300px');
+    cy.then(() => imperativeRef.current!.updateOverflow());
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
   });
 
   (['border-box', 'content-box'] as const).forEach(boxSizing => {

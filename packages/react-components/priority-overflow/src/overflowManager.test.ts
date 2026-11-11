@@ -22,6 +22,7 @@ describe('overflowManager', () => {
     const element = document.createElement(tagName);
     Object.defineProperty(element, 'offsetWidth', { configurable: true, value: width });
     Object.defineProperty(element, 'offsetHeight', { configurable: true, value: width });
+    Object.defineProperty(element, 'getClientRects', { value: () => ({ length: 1 }) });
 
     return element;
   };
@@ -56,6 +57,42 @@ describe('overflowManager', () => {
       .filter(([, visible]) => !visible)
       .map(([id]) => id)
       .sort();
+
+  it.each([false, true])('should settle reentrant menu registration before dispatch (measureGap=%s)', measureGap => {
+    const container = createContainer(500);
+    container.style.cssText = 'display:flex;flex-direction:row;column-gap:10px';
+    const onUpdateOverflow = jest.fn();
+    let menu: HTMLElement | undefined;
+    const manager = createOverflowManager(
+      createObserveOptions({
+        padding: 0,
+        measureGap,
+        onUpdateOverflow,
+        onUpdateItemVisibility: ({ item, visible }) => {
+          item.element.toggleAttribute('data-overflowing', !visible);
+          if (!visible && !menu) {
+            menu = container.appendChild(createElementWithSize('button', 50));
+            manager.addOverflowMenu(menu);
+          }
+        },
+      }),
+    );
+    for (let i = 0; i < 6; i++) {
+      manager.addItem({
+        element: container.appendChild(createElementWithSize('button', 50)),
+        id: String(i),
+        priority: 0,
+      });
+    }
+    manager.observe(container, { forceUpdate: true });
+    onUpdateOverflow.mockClear();
+    Object.defineProperty(container, 'clientWidth', { configurable: true, value: 280 });
+    manager.forceUpdate();
+    expect(getVisibleIds(manager)).toHaveLength(measureGap ? 3 : 4);
+    expect(onUpdateOverflow).toHaveBeenCalledTimes(1);
+    expect(onUpdateOverflow.mock.calls[0][0].visibleItems).toHaveLength(measureGap ? 3 : 4);
+    manager.disconnect();
+  });
 
   it('should bound candidate accounting during repeated small resizes', () => {
     const itemCount = 200;
