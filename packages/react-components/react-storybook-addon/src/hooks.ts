@@ -3,6 +3,7 @@ import type { Args as StorybookArgs, StoryContext as StorybookContext, Parameter
 
 import type { DIR_ID, STRICT_MODE_ID, THEME_ID, THEMES } from './constants';
 import type { Theme, ThemeIds } from './theme';
+import type { StylingMetadata } from './docs/stylingMetadata';
 
 export interface FluentStoryContext extends StorybookContext {
   globals: FluentGlobals;
@@ -38,7 +39,7 @@ export interface FluentParameters extends Parameters {
  */
 type FluentDocsConfig =
   | boolean
-  | {
+  | ({
       tableOfContents?: boolean;
       dirSwitcher?: boolean;
       themePicker?: boolean;
@@ -49,7 +50,7 @@ type FluentDocsConfig =
             slotsApi?: boolean;
             nativePropsApi?: boolean;
           };
-    };
+    } & StylingMetadata);
 
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();

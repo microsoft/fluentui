@@ -27,6 +27,8 @@ import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
+import { ApiReference } from './StylingTables';
+import { resolveStylingMetadata } from './stylingMetadata';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -377,6 +379,7 @@ export const FluentDocsPage = ({
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
   const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
+  const stylingMetadata = resolveStylingMetadata(primaryStoryContext.parameters);
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
@@ -389,7 +392,11 @@ export const FluentDocsPage = ({
         <Subtitle />
         <Description />
         {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
-        {renderArgsTable({ story: primaryStory, hideArgsTable })}
+        {!hideArgsTable && (
+          <ApiReference metadata={stylingMetadata}>
+            {renderArgsTable({ story: primaryStory, hideArgsTable })}
+          </ApiReference>
+        )}
         {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
@@ -434,12 +441,16 @@ export const FluentDocsPage = ({
             {videos && <VideoPreviews videos={videos} />}
           </div>
           {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
-          {renderArgsTable({
-            story: primaryStory,
-            hideArgsTable,
-            showSlotsApi: argTable.slotsApi,
-            showNativePropsApi: argTable.nativePropsApi,
-          })}
+          {!hideArgsTable && (
+            <ApiReference metadata={stylingMetadata}>
+              {renderArgsTable({
+                story: primaryStory,
+                hideArgsTable,
+                showSlotsApi: argTable.slotsApi,
+                showNativePropsApi: argTable.nativePropsApi,
+              })}
+            </ApiReference>
+          )}
           {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
         {showTableOfContents && (

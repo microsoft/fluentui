@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: show Props, data attributes and classes as collapsible API Reference sections on the docs page",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
