@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-toast): clean up queued toasts when they are dismissed imperatively",
-  "packageName": "@fluentui/react-toast",
-  "email": "171317405+jakesalvesen@users.noreply.github.com"
-}
