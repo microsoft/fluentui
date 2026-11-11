@@ -43,7 +43,7 @@ describe('AriaLive', () => {
     });
 
     expect(announceSpy).toHaveBeenCalledTimes(1);
-    expect(announceSpy).toHaveBeenCalledWith('hello', { polite: false });
+    expect(announceSpy).toHaveBeenCalledWith('hello', { polite: false, alert: true });
   });
 
   it('adapts politeness "polite" → polite: true', () => {
@@ -60,7 +60,7 @@ describe('AriaLive', () => {
       announceRef.current?.('polite message', { politeness: 'polite' });
     });
 
-    expect(announceSpy).toHaveBeenLastCalledWith('polite message', { polite: true });
+    expect(announceSpy).toHaveBeenLastCalledWith('polite message', { polite: true, alert: false });
   });
 
   it('adapts politeness "assertive" → polite: false', () => {
@@ -77,7 +77,7 @@ describe('AriaLive', () => {
       announceRef.current?.('assertive message', { politeness: 'assertive' });
     });
 
-    expect(announceSpy).toHaveBeenLastCalledWith('assertive message', { polite: false });
+    expect(announceSpy).toHaveBeenLastCalledWith('assertive message', { polite: false, alert: true });
   });
 
   it('updates the bound ref when the context announce changes', () => {
@@ -94,7 +94,7 @@ describe('AriaLive', () => {
     act(() => {
       announceRef.current?.('msg-1', { politeness: 'polite' });
     });
-    expect(first).toHaveBeenCalledWith('msg-1', { polite: true });
+    expect(first).toHaveBeenCalledWith('msg-1', { polite: true, alert: false });
 
     rerender(
       <AnnounceProvider value={{ announce: second }}>
@@ -105,7 +105,7 @@ describe('AriaLive', () => {
     act(() => {
       announceRef.current?.('msg-2', { politeness: 'polite' });
     });
-    expect(second).toHaveBeenCalledWith('msg-2', { polite: true });
+    expect(second).toHaveBeenCalledWith('msg-2', { polite: true, alert: false });
     expect(first).toHaveBeenCalledTimes(1); // no double-fire
   });
 

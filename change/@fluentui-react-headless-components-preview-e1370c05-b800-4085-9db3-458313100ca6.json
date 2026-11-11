@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: default toast announcements to polite, honor explicit announcement priority, and preserve focus when showing toasts",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

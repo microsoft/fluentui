@@ -15,7 +15,8 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
-import { useLayerOpenState } from '../../../hooks/top-layer';
+import { useLayerOpenStateWith } from '../../../hooks/top-layer/useLayerOpenState';
+import { getActiveElement, getDeepActiveElement } from '../../../hooks/top-layer/utils';
 
 /**
  * Create the state required to render the Toaster.
@@ -68,7 +69,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
 
   const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always(
     getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest),
@@ -87,10 +88,90 @@ export const useToaster = (props: ToasterProps): ToasterState => {
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
     const popoverRef = React.useRef<HTMLDivElement>(null);
+    const focusBeforeShow = React.useRef<{ element: Element | null; focusChanges: number } | null>(null);
     const positionHasToasts = toastsToRender.has(toastPosition);
 
+    useIsomorphicLayoutEffect(() => {
+      const element = popoverRef.current;
+      if (!element) {
+        return;
+      }
+
+      const onFocus = () => {
+        if (focusBeforeShow.current) {
+          focusBeforeShow.current.focusChanges += 1;
+        }
+      };
+      element.addEventListener('focus', onFocus, true);
+      return () => element.removeEventListener('focus', onFocus, true);
+    }, [positionHasToasts]);
+
     // Unmounted when the position has no toasts. Toasts restore focus themselves.
-    useLayerOpenState(popoverRef, { open: positionHasToasts, mode: 'manual' });
+    useLayerOpenStateWith(
+      popoverRef,
+      {
+        open: positionHasToasts,
+        mode: 'manual',
+        onShow: element => {
+          const previous = focusBeforeShow.current;
+          focusBeforeShow.current = null;
+          const active = getActiveElement(element);
+          const focused = targetDocument && getDeepActiveElement(targetDocument);
+          // A polyfill can focus a toast on show; preserve explicit autofocus or subsequent focus changes.
+          if (
+            !previous ||
+            previous.focusChanges !== 1 ||
+            !active ||
+            !element.contains(active) ||
+            active.matches('[autofocus]') ||
+            focused?.matches('[autofocus]')
+          ) {
+            return;
+          }
+
+          const focusChanges = previous.focusChanges;
+          if (
+            previous.element &&
+            previous.element !== targetDocument?.body &&
+            previous.element.isConnected &&
+            'focus' in previous.element &&
+            typeof previous.element.focus === 'function'
+          ) {
+            focusBeforeShow.current = previous;
+            try {
+              previous.element.focus({ preventScroll: true });
+            } finally {
+              focusBeforeShow.current = null;
+            }
+          }
+
+          const activeAfterRestore = getActiveElement(element);
+          const focusedAfterRestore = targetDocument && getDeepActiveElement(targetDocument);
+          if (
+            previous.focusChanges === focusChanges &&
+            focusedAfterRestore !== previous.element &&
+            activeAfterRestore &&
+            element.contains(activeAfterRestore) &&
+            focusedAfterRestore &&
+            'blur' in focusedAfterRestore &&
+            typeof focusedAfterRestore.blur === 'function'
+          ) {
+            focusedAfterRestore.blur();
+          }
+        },
+      },
+      undefined,
+      {
+        onBeforeShow: () => {
+          focusBeforeShow.current = {
+            element: targetDocument ? getDeepActiveElement(targetDocument) : null,
+            focusChanges: 0,
+          };
+        },
+        onBeforeHide: () => undefined,
+        onHide: () => undefined,
+      },
+    );
 
     return slot.optional<ExtractSlotProps<Slot<'div'>>>(positionHasToasts ? {} : null, {
       defaultProps: {

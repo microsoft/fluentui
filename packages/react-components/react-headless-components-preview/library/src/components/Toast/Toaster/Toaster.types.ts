@@ -20,6 +20,8 @@ export type ToasterSlotsInternal = ToasterSlots & {
  *
  * Headless Toaster always uses the native Popover API to render in the browser
  * top layer — there is no `mountNode` prop and no `inline` opt-out.
+ * Toasts are announced politely by default, regardless of intent. Set
+ * `politeness: 'assertive'` when dispatching a genuinely critical toast.
  */
 export type ToasterProps = Omit<ToasterBaseProps, 'mountNode' | 'inline'>;
 

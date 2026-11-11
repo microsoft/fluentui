@@ -49,7 +49,7 @@ export const useLayerOpenState = (ref: React.RefObject<HTMLElement | null>, opti
   useLayerOpenStateWith(ref, options);
 
 /**
- * The shared implementation. Only `useDialogLayerOpenState` passes `dialog` and `lifecycle`.
+ * The shared implementation for popovers, dialogs, and custom lifecycle handling.
  */
 export const useLayerOpenStateWith = (
   ref: React.RefObject<HTMLElement | null>,
