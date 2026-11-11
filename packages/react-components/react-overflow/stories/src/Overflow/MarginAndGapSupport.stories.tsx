@@ -147,14 +147,9 @@ MarginAndGapSupport.parameters = {
     description: {
       story: [
         'The `Overflow` component allows you to opt in to spacing measurement with `measureGap`.',
-        'In a single-line layout, gaps and margins are measured along the overflow axis, including RTL, reversed layouts, and vertical writing modes.',
-        'Alignment free space, hidden elements, and container-edge spacing are excluded; CSS transforms do not affect which items fit.',
-        'For auto margins, provide `getAutoMargins`, for example `element => element.hasAttribute("data-align-end") ? ["marginLeft"] : []` for elements marked with `data-align-end`.',
-        'This metadata applies to items, dividers, and the overflow menu. Use physical margin properties, and refresh overflow when the metadata changes.',
-        'Nested single-line items share a layout parent for gap measurement, including through display:contents wrappers; available capacity remains the observed outer container.',
-        'Only active flex/grid gaps contribute spacing. Percentage gaps follow the current layout, including zero cyclic flex gaps.',
-        'Call `updateOverflow()` after inner layout changes that do not resize the observed container.',
-        'Fractional layout box dimensions and untransformed inline sizes are preserved, and measurement leaves item styles and transitions unchanged.',
+        'Use fixed gaps and ordinary margins between direct overflow participants in a single, untransformed line.',
+        'Spacing is measured along the overflow axis in visual order, including RTL and reversed layouts. Spacing between the end items and the container is excluded.',
+        'Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents, wrapping, and complex overlaps are not supported.',
       ].join('\n'),
     },
   },

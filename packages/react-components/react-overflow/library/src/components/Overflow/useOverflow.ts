@@ -23,7 +23,6 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     onOverflowChange,
     hasHiddenItems,
     measureGap,
-    getAutoMargins,
     imperativeRef,
   } = props;
 
@@ -54,7 +53,6 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     minimumVisible,
     hasHiddenItems,
     measureGap,
-    getAutoMargins,
     onUpdateItemVisibility: updateVisibilityAttribute,
   });
 

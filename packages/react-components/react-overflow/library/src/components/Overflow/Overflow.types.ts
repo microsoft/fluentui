@@ -14,13 +14,7 @@ export interface OnOverflowChangeData extends OverflowState {}
 export type OverflowProps = Partial<
   Pick<
     OverflowOptions,
-    | 'overflowAxis'
-    | 'overflowDirection'
-    | 'padding'
-    | 'minimumVisible'
-    | 'hasHiddenItems'
-    | 'measureGap'
-    | 'getAutoMargins'
+    'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems' | 'measureGap'
   >
 > & {
   children: React.ReactElement;

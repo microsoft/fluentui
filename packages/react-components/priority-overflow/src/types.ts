@@ -166,22 +166,13 @@ export interface OverflowOptions {
   onUpdateOverflow: OnUpdateOverflow;
 
   /**
-   * Account for active flex/grid gaps and margins in a single-line layout.
-   * Percentage gaps follow the current layout as items are hidden or revealed.
-   * Alignment free space and spacing at the container edges are excluded.
-   * Declare auto margins with getAutoMargins so their used free space is excluded.
-   * Elements without layout boxes do not contribute spacing; displayed zero-size elements still do.
-   * Measurements use layout pixels, independently of CSS transforms.
+   * Measures spacing between direct overflow participants in a single, untransformed line.
+   * Supports fixed gaps and ordinary margins along the overflow axis, including RTL and reversed layouts.
+   * Spacing between the end elements and the container is deliberately excluded.
+   * Auto margins, distributed alignment, percentage or intrinsic gaps, nested layout parents,
+   * wrapping, and complex overlaps are not supported.
    */
   measureGap?: boolean;
-
-  /**
-   * Physical auto-margin properties to exclude when measureGap is enabled.
-   * Supply metadata for items, dividers and the overflow menu, for example
-   * `element => element.hasAttribute('data-align-end') ? ['marginLeft'] : []`.
-   * Keep this callback free of DOM mutations. Refresh overflow when the metadata changes.
-   */
-  getAutoMargins?: (element: HTMLElement) => readonly ('marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom')[];
 
   /**
    * When true, reserve space as if the overflow menu were visible even with no overflowing items.

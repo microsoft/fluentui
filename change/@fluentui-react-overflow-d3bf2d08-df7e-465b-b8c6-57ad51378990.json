@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(Overflow): Support gap and margin measurement with getAutoMargins metadata for items, dividers and menus without redundant overflow notifications",
+  "comment": "feat(Overflow): Add opt-in measurement of fixed gaps and ordinary margins in single-line layouts, including RTL and reversed overflow axes",
   "packageName": "@fluentui/react-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

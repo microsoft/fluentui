@@ -18,6 +18,18 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
   const arr: T[] = [];
   let size = 0;
 
+  const left = (i: number) => {
+    return 2 * i + 1;
+  };
+
+  const right = (i: number) => {
+    return 2 * i + 2;
+  };
+
+  const parent = (i: number) => {
+    return Math.floor((i - 1) / 2);
+  };
+
   const swap = (a: number, b: number) => {
     const tmp = arr[a];
     arr[a] = arr[b];
@@ -26,8 +38,8 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
 
   const heapify = (i: number) => {
     let smallest = i;
-    const l = 2 * i + 1;
-    const r = 2 * i + 2;
+    const l = left(i);
+    const r = right(i);
 
     if (l < size && compare(arr[l], arr[smallest]) < 0) {
       smallest = l;
@@ -43,52 +55,55 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     }
   };
 
-  const removeAt = (index: number) => {
-    swap(index, --size);
-    arr.pop();
-    heapify(index);
-  };
-
   const dequeue = () => {
-    if (!size) {
+    if (size === 0) {
       throw new Error('Priority queue empty');
     }
 
     const res = arr[0];
-    removeAt(0);
+    arr[0] = arr[--size];
+    heapify(0);
 
     return res;
   };
 
-  const peek = () => (size ? arr[0] : null);
+  const peek = () => {
+    if (size === 0) {
+      return null;
+    }
+
+    return arr[0];
+  };
 
   const enqueue = (item: T) => {
     arr[size++] = item;
     let i = size - 1;
-    // eslint-disable-next-line no-bitwise
-    let p = (i - 1) >>> 1;
+    let p = parent(i);
     while (i > 0 && compare(arr[p], arr[i]) > 0) {
       swap(p, i);
       i = p;
-      // eslint-disable-next-line no-bitwise
-      p = (i - 1) >>> 1;
+      p = parent(i);
     }
   };
 
-  const contains = (item: T) => arr.indexOf(item) >= 0;
+  const contains = (item: T) => {
+    const index = arr.indexOf(item);
+    return index >= 0 && index < size;
+  };
 
   const remove = (item: T) => {
     const i = arr.indexOf(item);
 
-    if (i === -1) {
+    if (i === -1 || i >= size) {
       return;
     }
 
-    removeAt(i);
+    arr[i] = arr[--size];
+    heapify(i);
   };
 
   const clear = () => {
-    arr.length = size = 0;
+    size = 0;
   };
 
   return {
@@ -99,6 +114,13 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     peek,
     remove,
     size: () => size,
-    [Symbol.iterator]: () => arr.values(),
+    // Iterates items in heap order, without allocating an intermediate array. Bounded by `size`:
+    // `arr` keeps stale entries past `size` (dequeue/remove/clear shrink `size`, not `arr`), so the
+    // array's own iterator would yield removed items.
+    *[Symbol.iterator]() {
+      for (let index = 0; index < size; index++) {
+        yield arr[index];
+      }
+    },
   };
 }
