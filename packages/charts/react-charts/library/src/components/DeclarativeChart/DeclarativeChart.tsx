@@ -44,7 +44,7 @@ import {
 } from './PlotlySchemaAdapter';
 import { getChartTitleInlineStyles } from '../../utilities/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { getValidFont } from './PlotlyStyleAdapter';
+import { getValidFont } from '../../utilities/StyleAdapter';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';

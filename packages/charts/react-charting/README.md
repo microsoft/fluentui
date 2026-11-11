@@ -51,6 +51,7 @@ retain default styling; invalid arrow colors fall back to the validated annotati
 
 ### Declarative chart styles
 
+The internal [StyleAdapter](src/utilities/StyleAdapter.ts) provides shared schema style validation.
 Schema-driven styles are validated before reaching CSS, including titles on multi-plot charts.
 Font families accept comma-separated CSS font names (including quoted names), but not CSS escapes or declarations.
 Title shadows accept a single shadow with two offsets, an optional nonnegative blur radius, and an optional parsed color.

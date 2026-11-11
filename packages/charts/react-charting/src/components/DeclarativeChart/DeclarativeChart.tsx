@@ -36,7 +36,7 @@ import {
   DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { getValidFont } from './PlotlyStyleAdapter';
+import { getValidFont } from '../../utilities/StyleAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';

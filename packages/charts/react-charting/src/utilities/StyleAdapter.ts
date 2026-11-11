@@ -1,5 +1,8 @@
 import type { Font, Margin } from '@fluentui/chart-utilities';
-import { getValidColor } from './PlotlyColorAdapter';
+import { color as d3Color } from 'd3-color';
+
+export const getValidColor = (value: unknown): string | undefined =>
+  typeof value === 'string' && d3Color(value) ? value : undefined;
 
 export const getValidStyleNumber = (value: unknown, min = 0, max = Infinity): number | undefined =>
   typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max ? value : undefined;

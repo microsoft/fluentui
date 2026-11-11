@@ -51,7 +51,7 @@ import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
-import { getValidFont, getValidFontWeight, getValidPadding } from '../DeclarativeChart/PlotlyStyleAdapter';
+import { getValidFont, getValidFontWeight, getValidPadding } from '../../utilities/StyleAdapter';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.

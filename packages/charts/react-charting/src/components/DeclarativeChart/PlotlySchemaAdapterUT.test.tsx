@@ -34,13 +34,15 @@ import {
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
 import {
+  getValidColor,
   getValidFont,
   getValidFontFamily,
   getValidFontWeight,
   getValidPadding,
   getValidStyleLength,
   getValidStyleNumber,
-} from './PlotlyStyleAdapter';
+  getValidTextAlign,
+} from '../../utilities/StyleAdapter';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
@@ -62,10 +64,75 @@ describe('schema CSS styles', () => {
       NaN,
     ].map(value => ({ value })),
   )('rejects invalid style value $value', ({ value }) => {
+    expect(getValidColor(value)).toBeUndefined();
     expect(getValidFontFamily(value)).toBeUndefined();
     expect(getValidFontWeight(value)).toBeUndefined();
     expect(getValidStyleLength(value)).toBeUndefined();
     expect(getValidStyleNumber(value)).toBeUndefined();
+    expect(getValidTextAlign(value)).toBeUndefined();
+  });
+
+  test.each(['rebeccapurple', '#AbC', 'rgb(1, 2, 3)', 'rgba(1, 2, 3, 0.5)', 'hsl(120, 50%, 50%)', 'transparent'])(
+    'preserves valid color %s without normalization',
+    color => expect(getValidColor(color)).toBe(color),
+  );
+
+  test.each([
+    { value: -10, min: -Infinity, max: Infinity, expected: -10 },
+    { value: 0, min: 0, max: Infinity, expected: 0 },
+    { value: 1, min: 1, max: 1000, expected: 1 },
+    { value: 1000, min: 1, max: 1000, expected: 1000 },
+    { value: -1, min: 0, max: Infinity, expected: undefined },
+    { value: 0, min: 1, max: 1000, expected: undefined },
+    { value: 1001, min: 1, max: 1000, expected: undefined },
+  ])('validates number $value between $min and $max', ({ value, min, max, expected }) => {
+    expect(getValidStyleNumber(value, min, max)).toBe(expected);
+  });
+
+  test.each([0, -1, 1001, '600', 'BOLD'])('rejects invalid font weight %s', weight => {
+    expect(getValidFontWeight(weight)).toBeUndefined();
+  });
+
+  test.each(['left', 'center', 'right'])('preserves text alignment %s', alignment => {
+    expect(getValidTextAlign(alignment)).toBe(alignment);
+  });
+
+  test.each(['justify', 'LEFT', 'inherit'])('rejects unsupported text alignment %s', alignment => {
+    expect(getValidTextAlign(alignment)).toBeUndefined();
+  });
+
+  test('omits absent optional font and padding', () => {
+    expect(getValidFont(undefined)).toBeUndefined();
+    expect(getValidPadding(undefined)).toBeUndefined();
+  });
+
+  test('validates font fields independently without retaining unknown fields or mutating input', () => {
+    const font = {
+      family: 'Arial',
+      color: 'red; --css-injection-sentinel:731',
+      size: 24,
+      weight: 'bold' as const,
+      shadow: 'url(https://example.invalid)',
+      extra: 'ignored',
+    };
+    const original = { ...font };
+
+    expect(getValidFont(font)).toEqual({
+      family: 'Arial',
+      color: undefined,
+      size: 24,
+      weight: 'bold',
+      shadow: undefined,
+    });
+    expect(font).toEqual(original);
+  });
+
+  test('keeps only valid supported padding fields without mutating input', () => {
+    const padding = { t: 0, r: 12, b: -1, l: NaN, pad: 2, extra: 99 };
+    const original = { ...padding };
+
+    expect(getValidPadding(padding)).toEqual({ t: 0, r: 12, pad: 2 });
+    expect(padding).toEqual(original);
   });
 
   test.each(['Arial, sans-serif', '"Times New Roman", serif', "'Font, Name', monospace", '\u65e5\u672c\u8a9e'])(
@@ -73,23 +140,37 @@ describe('schema CSS styles', () => {
     family => expect(getValidFontFamily(family)).toBe(family),
   );
 
-  test.each(['0 0 2px red', 'rgba(0, 0, 0, 0.5) -1px 2px 3px', 'none'])('preserves title shadow %s', shadow => {
-    const font = { family: 'Arial', size: 20, weight: 600, color: '#abc', shadow };
-    expect(getValidFont(font)).toEqual(font);
-  });
-
-  test.each(['0 0 red); --css-injection-sentinel:731', '0 0 url(https://example.invalid)', '0 0 -2px red'])(
-    'rejects invalid title shadow %s',
-    shadow => expect(getValidFont({ shadow })?.shadow).toBeUndefined(),
+  test.each(['0 0 2px red', 'rgba(0, 0, 0, 0.5) -1px 2px 3px', 'none', '1px -2px 3px currentColor', '0 0', '0 0 0'])(
+    'preserves title shadow %s',
+    shadow => {
+      const font = { family: 'Arial', size: 20, weight: 600, color: '#abc', shadow };
+      expect(getValidFont(font)).toEqual(font);
+    },
   );
+
+  test.each([
+    '0 0 red); --css-injection-sentinel:731',
+    '0 0 url(https://example.invalid)',
+    '0 0 -2px red',
+    '0 red',
+    '0 0 red blue',
+    '0 0 2px 3px red',
+    '0 0 10% red',
+    '1 2 red',
+  ])('rejects invalid title shadow %s', shadow => expect(getValidFont({ shadow })?.shadow).toBeUndefined());
 
   test.each([
     { value: 12, expected: '12px' },
     { value: '1.5rem', expected: '1.5rem' },
     { value: '80%', expected: '80%' },
     { value: 0, expected: '0px' },
+    { value: '12', expected: '12px' },
   ])('preserves valid annotation length $value', ({ value, expected }) => {
     expect(getValidStyleLength(value)).toBe(expected);
+  });
+
+  test.each([-1, '-1px', 'calc(100% - 1px)', '1qu', '1e309px'])('rejects unsupported annotation length %s', value => {
+    expect(getValidStyleLength(value)).toBeUndefined();
   });
 
   test.each([1, 600, 1000, 'normal', 'bold', 'bolder', 'lighter'] as const)('preserves font weight %s', weight => {

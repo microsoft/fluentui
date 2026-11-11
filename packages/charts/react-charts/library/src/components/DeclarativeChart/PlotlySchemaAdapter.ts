@@ -82,7 +82,7 @@ import {
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { getOpacity, extractColor, resolveColor, createColorScale, getValidColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
@@ -99,6 +99,7 @@ import type {
 } from '../../types/ChartAnnotation';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import {
+  getValidColor,
   getValidFont,
   getValidFontFamily,
   getValidFontWeight,
@@ -106,7 +107,7 @@ import {
   getValidStyleLength,
   getValidStyleNumber,
   getValidTextAlign,
-} from './PlotlyStyleAdapter';
+} from '../../utilities/StyleAdapter';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';

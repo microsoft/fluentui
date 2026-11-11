@@ -86,7 +86,7 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
-import { getOpacity, extractColor, resolveColor, createColorScale, getValidColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
@@ -102,6 +102,7 @@ import {
 import { calculatePrecision, precisionRound } from '@fluentui/react';
 import type { ITitleStyles } from '../../utilities/Common.styles';
 import {
+  getValidColor,
   getValidFont,
   getValidFontFamily,
   getValidFontWeight,
@@ -109,7 +110,7 @@ import {
   getValidStyleLength,
   getValidStyleNumber,
   getValidTextAlign,
-} from './PlotlyStyleAdapter';
+} from '../../utilities/StyleAdapter';
 import { PolarAxisProps, IPolarChartProps } from '../PolarChart/index';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
