@@ -5,6 +5,7 @@ const {
   registerTsPaths,
   rules,
   registerRules,
+  registerStylingMetadataRule,
 } = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
@@ -84,6 +85,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
+    registerStylingMetadataRule({ config: localConfig, tsConfigPath: tsConfigAllPath, classNames: true });
     registerRules({
       rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
       config: localConfig,

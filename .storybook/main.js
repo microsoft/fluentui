@@ -7,6 +7,7 @@ const {
   loadWorkspaceAddon,
   registerTsPaths,
   registerRules,
+  registerStylingMetadataRule,
   rules,
   processBabelLoaderOptions,
   getImportMappingsForExportToSandboxAddon,
@@ -53,6 +54,8 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
   webpackFinal: config => {
     registerRules({ config, rules: [rules.swcRule] });
     registerTsPaths({ config, configFile: tsConfigPath });
+    // v9 docs pages list each component's `*ClassNames` in a "Classes" section.
+    registerStylingMetadataRule({ config, tsConfigPath, classNames: true });
 
     if ((process.env.CI || process.env.TF_BUILD) && config.plugins) {
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
