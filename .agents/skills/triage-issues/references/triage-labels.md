@@ -85,3 +85,8 @@ Format: `Component: <Name>` (e.g., `Component: Announced`). Add when the issue t
 | Partner ask, critical                                                    | (above) + `Partner Ask` + `Shield: P1`                                                                                         |
 | Good first issue candidate                                               | (above) + `Good First Issue 🏆` + `Help Wanted ✨`                                                                             |
 | Duplicate                                                                | `Resolution: Duplicate` + comment with link to original                                                                        |
+| Fix or feature would remove/rename/narrow public API                     | (above) + `Needs: API Breaking Change`                                                                                         |
+| Fix or feature would change runtime behavior consumers may rely on       | (above) + `Needs: Behavior Breaking Change`                                                                                    |
+| Request conflicts with design principles or is unsafe for consumers      | (above) + `Needs: Discussion` (or `Needs: Design` / `Needs: PM`)                                                               |
+| Request belongs outside Fluent UI                                        | `Resolution: Won't Do` + comment explaining why and suggesting an alternative                                                  |
+| Possible security vulnerability                                          | **No labels.** No comment. Flag for a maintainer to route via MSRC (see `SECURITY.md`)                                         |

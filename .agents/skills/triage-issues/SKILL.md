@@ -27,18 +27,24 @@ Sort oldest-first — the guidelines prioritize the longest-waiting issues.
 
 For every issue, you're producing a **recommendation** with these fields:
 
-| Field                  | Possible values                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`     |
-| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`                                  |
-| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                  |
-| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                    |
-| `add_labels`           | list of label names to add                                                           |
-| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)   |
-| `assignee`             | GitHub login of the area owner (see routing table below)                             |
-| `comment`              | optional message to leave for the author (required if asking for more info)          |
-| `validation_candidate` | `true` / `false` — does this bug warrant a playwright-cli repro check before triage? |
-| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                       |
+| Field                  | Possible values                                                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`, `security`                                                    |
+| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`                                                                                             |
+| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                                                                             |
+| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                                                                               |
+| `merit`                | `sound`, `questionable`, `out-of-scope` — plus a one-line reason (see `references/issue-assessment.md`)                                         |
+| `risk`                 | `none`, `security`, `unsafe-pattern` — plus a one-line reason                                                                                   |
+| `breaking_change`      | `none`, `api`, `behavior`, `unclear` — what the likely fix or feature would break                                                               |
+| `still_valid`          | `valid`, `fixed`, `fixed-unreleased`, `unconfirmed`, `cannot_determine`, `not-checked` (see `references/still-valid.md`)                        |
+| `agent_ready`          | `true` / `false` plus `agent_ready_reason` — could a coding agent take this end-to-end? (see `references/agent-handoff.md`)                     |
+| `task_spec`            | draft task-spec comment, only when `agent_ready: true` and the handoff label exists                                                             |
+| `add_labels`           | list of label names to add                                                                                                                      |
+| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)                                                              |
+| `assignee`             | GitHub login of the area owner (see routing table below)                                                                                        |
+| `comment`              | message to the author explaining the triage outcome — required for every triaged issue except `security` (see `references/issue-assessment.md`) |
+| `validation_candidate` | `true` / `false` — does this bug warrant a playwright-cli repro check before triage?                                                            |
+| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                                                                                  |
 
 Don't invent labels. Every label you recommend must exist in the repo — see `references/triage-labels.md` for the allow-list.
 
@@ -46,6 +52,7 @@ Don't invent labels. Every label you recommend must exist in the repo — see `r
 
 Read `references/shield-guidelines.md` for the full rules. The short version:
 
+0. **Security vulnerability** (XSS, injection, prototype pollution, unsafe `dangerouslySetInnerHTML`, credential or data exposure, supply-chain concerns) → stop the normal flow. Classify as `security`, recommend **no labels, no assignee, no comment**, and flag `needs_human_followup: "possible security report — route via MSRC per SECURITY.md"`. Do not restate exploit details anywhere public. A maintainer decides whether to hide the issue and point the reporter to MSRC (https://aka.ms/security.md/msrc/create-report).
 1. **Questions** → convert to a GitHub Discussion; don't triage as an issue.
 2. **Bug with clear repro**:
    - Assign area owner (see routing below).
@@ -62,6 +69,14 @@ Read `references/shield-guidelines.md` for the full rules. The short version:
 5. **Accessibility-related** (mention of screen readers, WCAG, keyboard nav, aria-\*, focus order, contrast, etc.) → add `Area: Accessibility` and assign `smhigley` alongside the area owner.
 6. **Duplicate** → `Resolution: Duplicate` + comment linking the original. Before claiming a duplicate, actually search: `gh issue list --repo microsoft/fluentui --search '<keywords>' --limit 10`.
 7. **Spam / not-an-issue** → `Resolution: Not An Issue`, close.
+
+## Assessment, comments, and agent handoff (shared references)
+
+**Must read before Step 2** — these files are shared with the `v9-backlog-groom` skill:
+
+- `.agents/skills/triage-issues/references/issue-assessment.md` — merit, risk, and breaking-change assessment, plus the rules for triage comments.
+- `.agents/skills/triage-issues/references/still-valid.md` — how to check whether an older report still applies on current code.
+- `.agents/skills/triage-issues/references/agent-handoff.md` — the agent-ready checklist, the task-spec comment, and the handoff label.
 
 ## Area-owner routing
 
@@ -122,13 +137,21 @@ gh issue list --repo microsoft/fluentui \
   --json number,title,state
 ```
 
+For every bug and feature request, run the merit, risk, and breaking-change assessment from `references/issue-assessment.md`.
+
+If the issue is older than about 90 days or names a package version older than the latest release, run the still-valid check from `references/still-valid.md`. Otherwise set `still_valid: not-checked`. A `fixed` result replaces the normal labels with a close-as-completed recommendation; `unconfirmed` adds `Needs: Author Feedback`.
+
+Run the agent-ready checklist from `references/agent-handoff.md`. For agent-ready issues, check once per session whether the handoff label exists on the repo. Draft a `task_spec` only if it does. If you'll hand the issue off, leave `assignee` empty and note the area owner in `notes` — an assignee tells other tools a human is working on it.
+
+Draft the triage comment for each issue at this point (see the comment rules in `references/issue-assessment.md`).
+
 Keep each issue's classification in an in-memory structure (don't write intermediate files).
 
 ### Step 3 — Present recommendations
 
-Produce a compact table the user can scan. One row per issue. Columns: `#`, `classification`, `add labels`, `remove labels`, `assignee`, `priority`, `notes`. Put the `comment` drafts separately below the table, keyed by issue number — comments are long and clutter the table.
+Produce a compact table the user can scan. One row per issue. Columns: `#`, `classification`, `merit / risk / breaking`, `still valid`, `agent ready`, `add labels`, `remove labels`, `assignee`, `priority`, `notes`. Put the `comment` drafts separately below the table, keyed by issue number — comments are long and clutter the table. Every non-security issue must have a comment draft. Show each `task_spec` verbatim below the comments; the user approves specs individually.
 
-If you found duplicates or partner asks, call them out explicitly above the table.
+If you found possible security reports, duplicates, partner asks, `questionable` / `unsafe-pattern` requests, breaking changes, already-fixed issues, or agent-ready issues, call them out explicitly above the table. List security reports first. If agent-ready issues exist but the handoff label doesn't, say so.
 
 **Then propose a validation set.** Below the table, list the bugs you flagged as `validation_candidate: true` with a one-line reason each, and ask the user to confirm. Take the initiative here — don't wait for the user to think of validation. Example:
 
@@ -220,7 +243,7 @@ Ask the user: "Apply all / approve specific numbers / skip / edit?". Accept inpu
 
 ### Step 5 — Apply approved changes
 
-Use `gh issue edit` for labels and assignees. Use `gh issue comment` for drafted comments. Apply one issue at a time and print a one-line result per issue (success or error). Do not retry blindly on failure; stop and ask the user what to do.
+Use `gh issue edit` for labels and assignees. Use `gh issue comment` to post the approved comment for every triaged issue (never for `security`). For approved agent-ready issues, post the approved task spec as a separate comment, then add the handoff label last — the label is what starts the agent. Apply one issue at a time and print a one-line result per issue (success or error). Do not retry blindly on failure; stop and ask the user what to do.
 
 ```bash
 # Labels
@@ -251,9 +274,17 @@ After applying, print: X issues triaged, Y still need human follow-up (list them
 - **Don't remove `Needs: Triage :mag:` on issues you're flagging for human follow-up.** If you can't decide, leave the triage label on so it stays in the queue.
 - **Don't assign a team as if it were a user.** `gh issue edit --add-assignee` only accepts user logins. For team routing, leave the assignee empty and note the team in `needs_human_followup`.
 - **Don't say "we'll fix this soon" in comments.** The guidelines are explicit: only promise work we're committed to delivering.
+- **Don't triage security reports in public.** No labels, comments, or exploit details — flag for a maintainer to route through MSRC.
+- **Don't change labels silently.** If labels change, the reporter gets a comment explaining why.
+- **Don't treat "breaking" as "rejected".** Breaking-change labels flag planning work for the owner; they're not a reason to close a v9 issue.
+- **Don't close on a failed repro alone.** "Fixed" needs a merged, released PR. Otherwise ask the reporter to confirm on the latest version.
+- **Don't hand off risky work to an agent.** Never mark security reports, breaking changes, `questionable` / `out-of-scope` merit, or `unsafe-pattern` risk as agent-ready, and never create the handoff label.
 
 ## Reference files
 
+- `references/issue-assessment.md` — merit, risk, and breaking-change assessment; comment rules; GitHub hygiene
+- `references/still-valid.md` — checks for whether an older report still applies
+- `references/agent-handoff.md` — agent-ready checklist, task-spec template, handoff label rules
 - `references/shield-guidelines.md` — full triage decision tree from the Shield dev guidelines
 - `references/triage-labels.md` — exact label names allowed in triage
 - `references/partner-orgs.md` — what `Shield: P1` / `Partner Ask` mean and, importantly, what they don't
