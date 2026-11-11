@@ -1,0 +1,59 @@
+{
+  "Risk: trivial": [
+    {
+      "changed-files": [
+        {
+          "any-glob-to-all-files": ["packages/**/{stories/**,README.md,library/docs/**}"]
+        }
+      ]
+    }
+  ],
+  "Risk: high": [
+    {
+      "changed-files": [
+        {
+          "any-glob-to-any-file": [
+            "**/etc/*.api.md",
+            "**/package.json",
+            "**/project.json",
+            "**/tsconfig*.json",
+            "**/just.config.*",
+            ".github/**",
+            ".devops/**",
+            ".agents/**",
+            ".claude/**",
+            "**/.agents/**",
+            "**/.claude/**",
+            "**/AGENTS.md",
+            "**/AGENTS.override.md",
+            "**/CLAUDE.md",
+            "**/SKILL.md",
+            "**/*.instructions.md",
+            "**/*.agent.md",
+            "**/*.prompt.md",
+            "tools/**",
+            "scripts/**",
+            ".yarn/**",
+            ".yarnrc.yml",
+            ".npmrc",
+            ".npmignore",
+            ".babelrc*",
+            ".githooks/**",
+            ".devcontainer/**",
+            ".storybook/**",
+            "yarn.lock",
+            "nx.json",
+            "migrations.json",
+            "jest.preset.*",
+            "*.config.*",
+            "azure-pipelines*.yml",
+            "packages/**/react-theme/**",
+            "packages/**/tokens/**",
+            "packages/**/react-utilities/**",
+            "packages/**/react-shared-contexts/**"
+          ]
+        }
+      ]
+    }
+  ]
+}

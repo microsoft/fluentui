@@ -3,5 +3,19 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/github/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools"],
+  "targets": {
+    "test": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/.github/risk-tiers.json",
+        "{workspaceRoot}/.github/workflows/pr-housekeeping.yml",
+        "{workspaceRoot}/.github/workflows/pr-risk-gate.yml",
+        "{workspaceRoot}/docs/workflows/pr-risk-tiers.md",
+        { "env": "FLUENT_RISK_LIVE_TEST" }
+      ]
+    }
+  }
 }

@@ -1,19 +1,121 @@
 name: Pull request housekeeping 🧹
+run-name: 'PR risk assessment #${{ github.event.pull_request.number }}'
 on:
-  - pull_request_target
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+concurrency:
+  # Serialize risk-label writes across heads; obsolete reruns must not cancel an active writer.
+  group: pr-housekeeping-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
   pull-requests: write
   issues: write
+  checks: write
+  id-token: write
 
 jobs:
-  label:
+  snapshot:
+    name: Prepare risk assessment
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 1
+    outputs:
+      check-id: ${{ steps.policy.outputs.check-id }}
+      base-sha: ${{ steps.policy.outputs.base-sha }}
+      identity: ${{ steps.policy.outputs.identity }}
+    steps:
+      - name: Invalidate the previous risk assessment before setup
+        id: policy
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { createHash } = require('node:crypto');
+            const { data: pull } = await github.rest.pulls.get({
+              ...context.repo, pull_number: context.issue.number,
+            });
+            if (pull.head.sha !== context.payload.pull_request.head.sha) {
+              core.notice('Superseded PR head; leaving the current assessment untouched.');
+              return;
+            }
+            const identity = createHash('sha256')
+              .update(JSON.stringify([pull.head.sha, pull.base.sha, pull.base.ref, pull.base.repo.full_name, pull.title, pull.body]))
+              .digest('hex');
+            const { data: check } = await github.rest.checks.create({
+              ...context.repo,
+              name: 'PR risk assessment',
+              head_sha: pull.head.sha,
+              external_id: identity,
+              status: 'in_progress',
+            });
+            core.setOutput('check-id', String(check.id));
+            core.setOutput('base-sha', pull.base.sha);
+            core.setOutput('identity', identity);
+
+  label:
+    # Native job metadata belongs to this trusted run; a custom check name is not provenance.
+    name: 'Assess PR #${{ github.event.pull_request.number }} revision ${{ needs.snapshot.outputs.identity }}'
+    needs: snapshot
+    if: ${{ needs.snapshot.outputs.check-id != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
           configuration-path: .github/labeler.yml
+
+      # Never check out or execute PR-head code in pull_request_target.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ needs.snapshot.outputs.base-sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            .github/risk-tiers.json
+            scripts/github
+            docs/workflows/pr-risk-tiers.md
+          sparse-checkout-cone-mode: false
+
+      - name: Classify review risk
+        id: classify
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          RISK_POLICY_CHECK_ID: ${{ needs.snapshot.outputs.check-id }}
+          RISK_POLICY_BASE_SHA: ${{ needs.snapshot.outputs.base-sha }}
+          RISK_POLICY_IDENTITY: ${{ needs.snapshot.outputs.identity }}
+          RISK_CLASSIFIER_AZURE_CLIENT_ID: ${{ vars.RISK_CLASSIFIER_AZURE_CLIENT_ID }}
+          RISK_CLASSIFIER_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        with:
+          script: |
+            const run = require(`${process.env.GITHUB_WORKSPACE}/scripts/github/src/risk-tiers-workflow.js`);
+            const pull = context.payload.pull_request;
+            await run({
+              github, context, core,
+              checkRun: {
+                id: Number(process.env.RISK_POLICY_CHECK_ID),
+                headSha: pull.head.sha,
+                baseSha: process.env.RISK_POLICY_BASE_SHA,
+                identity: process.env.RISK_POLICY_IDENTITY,
+              },
+            });
+
+      - name: Fail the risk check if setup or classification did not finish
+        if: ${{ always() && steps.classify.outcome != 'success' }}
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          RISK_POLICY_CHECK_ID: ${{ needs.snapshot.outputs.check-id }}
+        with:
+          script: |
+            await github.rest.checks.update({
+              ...context.repo,
+              check_run_id: Number(process.env.RISK_POLICY_CHECK_ID),
+              status: 'completed',
+              conclusion: 'failure',
+              output: {
+                title: 'Risk classification did not finish',
+                summary: 'Setup, classification, or cancellation prevented certification. No new tier is certified.',
+              },
+            });
