@@ -2,6 +2,32 @@
   "name": "@fluentui/react-search",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "9.4.9",
+      "tag": "@fluentui/react-search_v9.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "4846275a92419b2dd0440a432df755dcdcd427c3",
+            "comment": "fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search",
+            "comment": "Bump @fluentui/react-input to v9.8.9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.4.8",
       "comments": {
