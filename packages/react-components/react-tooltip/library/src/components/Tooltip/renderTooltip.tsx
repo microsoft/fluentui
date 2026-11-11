@@ -21,7 +21,11 @@ export const renderTooltip_unstable = (state: TooltipBaseState): JSXElement => {
             {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
             {state.secondaryContent ? (
               <div className={state.contentLayoutClassName}>
-                <div id={state.primaryContentId} className={state.primaryContentClassName}>
+                <div
+                  id={state.primaryContentId}
+                  aria-label={state.primaryContentId ? state.content['aria-label'] : undefined}
+                  className={state.primaryContentClassName}
+                >
                   {state.content.children}
                 </div>
                 <state.secondaryContent />

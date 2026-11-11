@@ -57,6 +57,41 @@ describe('Tooltip', () => {
 
   describe('secondary content', () => {
     it.each([
+      ['label', 'Bold', undefined],
+      ['label', <strong key="primary">Bold</strong>, 'tooltip'],
+      ['description', 'Bold', undefined],
+      ['description', <strong key="primary">Bold</strong>, 'tooltip'],
+    ] as const)(
+      'preserves the authored content label for relationship=%s with content=%p and id=%p',
+      (relationship, content, id) => {
+        const example = (visible: boolean) => (
+          <Tooltip
+            visible={visible}
+            content={{ id, children: content, 'aria-label': 'Bold formatting' }}
+            secondaryContent={{ children: 'Ctrl+B', 'aria-hidden': true }}
+            relationship={relationship}
+          >
+            <button>{relationship === 'description' ? 'Format' : null}</button>
+          </Tooltip>
+        );
+        const result = render(example(false));
+
+        for (const visible of [false, true, false]) {
+          result.rerender(example(visible));
+          const trigger = result.getByRole('button', {
+            name: relationship === 'label' ? 'Bold formatting' : 'Format',
+          });
+          const attribute = relationship === 'label' ? 'aria-labelledby' : 'aria-describedby';
+          const tooltip = getByRoleTooltip(result);
+          const referencedContent = tooltip.ownerDocument.getElementById(trigger.getAttribute(attribute)!);
+          expect(referencedContent).toHaveAttribute('aria-label', 'Bold formatting');
+          expect(tooltip).toHaveAttribute('aria-label', 'Bold formatting');
+          expect(referencedContent).not.toContainElement(result.getByText('Ctrl+B'));
+        }
+      },
+    );
+
+    it.each([
       ['label', 'aria-labelledby', true, 'Bold'],
       ['label', 'aria-labelledby', 'true', <strong key="primary">Bold</strong>],
       ['description', 'aria-describedby', true, 'Bold'],

@@ -19,7 +19,11 @@ export const renderTooltip = (state: TooltipState): JSXElement => {
           {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} data-arrow="" />}
           {state.secondaryContent ? (
             <div className={state.contentLayoutClassName}>
-              <div id={state.primaryContentId} className={state.primaryContentClassName}>
+              <div
+                id={state.primaryContentId}
+                aria-label={state.primaryContentId ? state.content['aria-label'] : undefined}
+                className={state.primaryContentClassName}
+              >
                 {state.content.children}
               </div>
               <state.secondaryContent />

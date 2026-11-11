@@ -91,10 +91,9 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   };
 
   state.content.id = useId('tooltip-', state.content.id);
-  const primaryContentId = useId('tooltip-primary-');
   const secondaryHidden =
     state.secondaryContent?.['aria-hidden'] === true || state.secondaryContent?.['aria-hidden'] === 'true';
-  state.primaryContentId = secondaryHidden ? primaryContentId : undefined;
+  state.primaryContentId = secondaryHidden ? `${state.content.id}--fui-tooltip-primary` : undefined;
 
   const resolvedPositioning = resolvePositioningShorthand(state.positioning);
   const isVirtualTarget = resolvedPositioning.target !== undefined && !isHTMLElement(resolvedPositioning.target);

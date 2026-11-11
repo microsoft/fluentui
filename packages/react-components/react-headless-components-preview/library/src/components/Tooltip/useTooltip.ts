@@ -80,10 +80,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
-  const primaryContentId = useId('tooltip-primary-');
   const secondaryHidden =
     state.secondaryContent?.['aria-hidden'] === true || state.secondaryContent?.['aria-hidden'] === 'true';
-  state.primaryContentId = secondaryHidden ? primaryContentId : undefined;
+  state.primaryContentId = secondaryHidden ? `${state.content.id}--fui-tooltip-primary` : undefined;
   state.content['data-open'] = toDataAttributeValue(state.visible);
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
