@@ -229,32 +229,6 @@ describe('usePositioning', () => {
       expect(positioningRef.current).not.toBeNull();
       expect(() => positioningRef.current?.updatePosition()).not.toThrow();
     });
-
-    it.each([
-      ['above', 8],
-      ['below', 8],
-      ['before', 4],
-      ['after', 4],
-    ] as const)('publishes the resolved block offset for %s', (position, expected) => {
-      const result = mountHook({ position, offset: { mainAxis: 8, crossAxis: 4 } });
-      const node = document.createElement('div');
-      act(() => result.current.containerRef(node));
-      expect(node.style.getPropertyValue('--fui-positioning-block-offset')).toBe(`${expected}px`);
-    });
-
-    it('updates covering and offset metadata when positioning changes', () => {
-      const Example = ({ coverTarget, offset }: PositioningProps) => {
-        const { containerRef } = usePositioning({ coverTarget, offset, position: 'before' });
-        return <div data-testid="surface" ref={containerRef} />;
-      };
-      const view = render(<Example coverTarget offset={{ mainAxis: 8, crossAxis: -4 }} />);
-      const node = view.getByTestId('surface');
-      expect(node).toHaveAttribute('data-cover-target');
-      expect(node.style.getPropertyValue('--fui-positioning-block-offset')).toBe('-4px');
-      view.rerender(<Example coverTarget={false} offset={0} />);
-      expect(node).not.toHaveAttribute('data-cover-target');
-      expect(node.style.getPropertyValue('--fui-positioning-block-offset')).toBe('0px');
-    });
   });
 });
 

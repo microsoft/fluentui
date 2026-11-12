@@ -16,7 +16,3 @@ Existing attributes retain their current names and value semantics. Visual axes 
 
 Consumers own MenuPopover sizing and scrolling styles. Headless keeps focused items and ancestor
 submenu invokers visible after viewport or scrollport changes, without moving focus.
-
-Positioned surfaces expose `data-cover-target` when enabled and `--fui-positioning-block-offset`
-as a CSS pixel length (`mainAxis` for above/below, `crossAxis` for before/after). These describe
-positioning inputs, not available space after fallback placement; consumer size limits still apply.
