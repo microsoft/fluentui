@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-toast): report dismissed status for imperative dismissal",
+  "packageName": "@fluentui/react-toast",
+  "email": "163576506+minwookshin@users.noreply.github.com"
+}
