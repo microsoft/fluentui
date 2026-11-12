@@ -1,0 +1,9 @@
+.root {
+  position: fixed;
+  width: calc(9 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalXS));
+  pointer-events: none;
+}
+
+.inline {
+  position: absolute;
+}

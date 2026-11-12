@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2019", "dom"],
+    "types": ["node", "cypress", "cypress-real-events", "static-assets", "environment"],
+    "typeRoots": ["../../node_modules", "../../node_modules/@types", "../../typings"]
+  },
+  "include": ["cypress.config.ts", "griffel-buckets/**/*.ts", "e2e/**/*.ts", "e2e/**/*.tsx"]
+}

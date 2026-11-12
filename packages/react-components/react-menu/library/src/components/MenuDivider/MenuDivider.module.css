@@ -1,0 +1,6 @@
+.root {
+  margin-block: var(--spacingVerticalXS);
+  margin-inline: calc(0px - var(--spacingHorizontalXS) - var(--strokeWidthThin));
+  width: auto;
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+}

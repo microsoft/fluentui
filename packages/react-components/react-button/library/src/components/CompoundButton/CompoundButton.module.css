@@ -1,0 +1,137 @@
+.root {
+  height: auto;
+}
+
+.icon {
+  font-size: calc(var(--fontSizeBase500) * 2);
+  height: calc(var(--fontSizeBase500) * 2);
+  width: calc(var(--fontSizeBase500) * 2);
+}
+
+.root:where(.outline, .secondary, .subtle, .transparent) :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForeground2);
+}
+
+.root:hover :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForeground2Hover);
+}
+
+.root:hover:active :global(.fui-CompoundButton__secondaryContent),
+.root:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForeground2Pressed);
+}
+
+.primary :global(.fui-CompoundButton__secondaryContent),
+.primary:hover :global(.fui-CompoundButton__secondaryContent),
+.primary:hover:active :global(.fui-CompoundButton__secondaryContent),
+.primary:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+.transparent:hover :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForeground2BrandHover);
+}
+
+.transparent:hover:active :global(.fui-CompoundButton__secondaryContent),
+.transparent:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForeground2BrandPressed);
+}
+
+.small {
+  padding: var(--spacingVerticalS) var(--spacingHorizontalS) var(--spacingVerticalMNudge);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+.medium {
+  padding: calc(var(--spacingVerticalL) - var(--strokeWidthThick)) var(--spacingHorizontalM) var(--spacingVerticalL);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+.large {
+  padding: calc(var(--spacingVerticalXL) - var(--strokeWidthThick)) var(--spacingHorizontalL) var(--spacingVerticalXL);
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+.disabled :global(.fui-CompoundButton__secondaryContent),
+.disabled:hover :global(.fui-CompoundButton__secondaryContent),
+.disabled:hover:active :global(.fui-CompoundButton__secondaryContent),
+.disabled:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+.iconOnly {
+  padding: var(--spacingVerticalSNudge);
+  max-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalXS));
+  min-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalXS));
+
+  &:where(.small) {
+    padding: var(--spacingVerticalXS);
+    max-width: calc(var(--spacingHorizontalXXL) * 2);
+    min-width: calc(var(--spacingHorizontalXXL) * 2);
+  }
+
+  &:where(.large) {
+    padding: var(--spacingVerticalS);
+    max-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalS));
+    min-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalS));
+  }
+}
+
+.before {
+  margin-inline-end: var(--spacingHorizontalM);
+}
+
+.after {
+  margin-inline-start: var(--spacingHorizontalM);
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  &:where(:dir(rtl)) {
+    text-align: right;
+  }
+}
+
+.secondaryContent {
+  line-height: 100%;
+  font-weight: var(--fontWeightRegular);
+}
+
+:where(.small, .medium) .secondaryContent {
+  font-size: var(--fontSizeBase200);
+}
+
+:where(.large) .secondaryContent {
+  font-size: var(--fontSizeBase300);
+}
+
+@media (forced-colors: active) {
+  .root:hover :global(.fui-CompoundButton__secondaryContent),
+  .root:hover:active :global(.fui-CompoundButton__secondaryContent),
+  .root:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+    color: Highlight;
+  }
+
+  .primary :global(.fui-CompoundButton__secondaryContent) {
+    color: HighlightText;
+  }
+
+  .subtle:hover :global(.fui-CompoundButton__secondaryContent),
+  .subtle:hover:active :global(.fui-CompoundButton__secondaryContent),
+  .subtle:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+    color: Canvas;
+  }
+
+  .disabled :global(.fui-CompoundButton__secondaryContent),
+  .disabled:hover :global(.fui-CompoundButton__secondaryContent),
+  .disabled:hover:active :global(.fui-CompoundButton__secondaryContent),
+  .disabled:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+    color: GrayText;
+  }
+}

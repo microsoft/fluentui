@@ -2,6 +2,12 @@
 
 A React utilities built on top of [Floating UI](https://floating-ui.com/) for positioning elements in the DOM.
 
+## CSS arrow asset
+
+The opt-in `@fluentui/react-positioning/arrow.module.css` export requires a CSS
+Modules loader. It is excluded from Are the Types Wrong's JavaScript entry-point
+checks in `.attw.json`; the package's JavaScript exports remain checked.
+
 ## Usage
 
 ```tsx

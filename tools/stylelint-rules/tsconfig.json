@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    // Plain ESM JavaScript, covered by its `node --test` suites. JSDoc types aren't checked yet: stylelint nests its own
+    // postcss copy, whose types don't match the root postcss used by the rules.
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"]
+  },
+  "include": ["*.js", "rules/**/*.js"]
+}

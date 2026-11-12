@@ -1,0 +1,58 @@
+import { makeResetStyles, makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+
+/** App-level Griffel styles applied on top of the components under test. */
+export const useParityAppStyles = makeStyles({
+  base: {
+    backgroundColor: tokens.colorPaletteBerryBackground2,
+    color: tokens.colorPaletteBerryForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteBerryBorderActive),
+  },
+  stateful: {
+    backgroundColor: tokens.colorPaletteBerryBackground2,
+    ':hover': { backgroundColor: tokens.colorPaletteBlueBackground2, color: tokens.colorPaletteBlueForeground2 },
+    ':hover:active': { backgroundColor: tokens.colorPaletteGreenBackground2 },
+    ':focus-within': { ...shorthands.borderColor(tokens.colorPaletteBerryBorderActive) },
+  },
+  slot: { color: tokens.colorPaletteBerryForeground2, fontSize: tokens.fontSizeBase600 },
+  layout: {
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXXL}`,
+    minWidth: 'auto',
+    borderRadius: tokens.borderRadiusCircular,
+    fontWeight: tokens.fontWeightRegular,
+  },
+  hook: { backgroundColor: tokens.colorPaletteRedBackground2, color: tokens.colorPaletteRedForeground2 },
+  hookSlot: { color: tokens.colorPaletteRedForeground2 },
+  hookPrimary: {
+    backgroundColor: tokens.colorPaletteGreenBackground2,
+    ':hover': { color: tokens.colorPaletteGreenForeground2 },
+  },
+  hookChecked: {
+    backgroundColor: tokens.colorPaletteBlueBackground2,
+    ':hover:active': { color: tokens.colorPaletteBlueForeground2 },
+  },
+  hookDisabled: {
+    backgroundColor: tokens.colorPaletteBerryBackground2,
+    ':hover': { color: tokens.colorPaletteBerryForeground2 },
+  },
+  hookNested: {
+    color: tokens.colorPaletteMarigoldForeground2,
+    ':hover': { backgroundColor: tokens.colorPaletteMarigoldBackground2 },
+  },
+  caller: { backgroundColor: tokens.colorPaletteGreenBackground2 },
+  wrapper: { backgroundColor: tokens.colorPaletteBerryBackground2, fontWeight: tokens.fontWeightRegular },
+});
+
+/**
+ * App-level `makeResetStyles()`: one class whose rules Griffel puts in its reset bucket, before every atomic class, so
+ * component styles of equal specificity beat it. Covers base, state and layout properties.
+ */
+export const useParityAppResetStyles = makeResetStyles({
+  backgroundColor: tokens.colorPaletteBerryBackground2,
+  color: tokens.colorPaletteBerryForeground2,
+  borderColor: tokens.colorPaletteBerryBorderActive,
+  padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXXL}`,
+  borderRadius: tokens.borderRadiusCircular,
+  fontWeight: tokens.fontWeightRegular,
+  ':hover': { backgroundColor: tokens.colorPaletteBlueBackground2 },
+});

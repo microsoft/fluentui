@@ -1,9 +1,18 @@
 jest.mock('@fluentui/react-icons-font-subsetting-webpack-plugin', () => ({ default: jest.fn() }));
 
+const { readFileSync } = require('node:fs');
+
 const { configureReactIcons } = require('./index');
 
 describe('Storybook React icon configuration', () => {
   const originalVariant = process.env.FLUENTUI_ICON_VARIANT;
+
+  it.each(['./react-icons-headless.css', './react-icons-headless-fonts.css'])(
+    'imports %s into the component cascade layer',
+    stylesheet => {
+      expect(readFileSync(require.resolve(stylesheet), 'utf8')).toMatch(/\blayer\(fluent\);/);
+    },
+  );
 
   afterEach(() => {
     if (originalVariant === undefined) {
@@ -54,5 +63,32 @@ describe('Storybook React icon configuration', () => {
       throw new Error('Font styles must be prepended through an entry function');
     }
     expect(await config.entry()).toEqual([require.resolve('./react-icons-font.css'), './preview.js']);
+  });
+
+  it.each(['svg', 'fonts'])('layers headless %s defaults below component overrides', async variant => {
+    process.env.FLUENTUI_ICON_VARIANT = variant;
+    const config = configureReactIcons({ config: { entry: './preview.js' }, headless: true });
+
+    expect(config.module?.rules).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          use: [
+            expect.objectContaining({
+              options: { iconVariant: variant, fallbackVariant: 'svg', headless: true },
+            }),
+          ],
+        }),
+      ]),
+    );
+    if (typeof config.entry !== 'function') {
+      throw new Error('Headless styles must be prepended through an entry function');
+    }
+    expect(await config.entry()).toEqual([
+      require.resolve('./react-icons-headless.css'),
+      ...(variant === 'fonts'
+        ? [require.resolve('./react-icons-headless-fonts.css'), require.resolve('./react-icons-font.css')]
+        : []),
+      './preview.js',
+    ]);
   });
 });

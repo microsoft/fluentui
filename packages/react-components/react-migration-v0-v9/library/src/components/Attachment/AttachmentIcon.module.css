@@ -1,0 +1,20 @@
+.root {
+  height: 32px;
+  width: 32px;
+  margin-inline-end: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root svg {
+  height: 100%;
+  width: 100%;
+}
+
+.root :global(.fui-Icon-font) {
+  height: 100%;
+  width: 100%;
+  /* stylelint-disable-next-line declaration-no-important -- mirrors the Griffel source, which forces the icon font size */
+  font-size: 32px !important;
+}

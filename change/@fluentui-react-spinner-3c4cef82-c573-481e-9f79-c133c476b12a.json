@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add CSS Modules style alternatives for react-spinner",
+  "packageName": "@fluentui/react-spinner",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

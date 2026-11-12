@@ -1,0 +1,20 @@
+{
+  "name": "stylelint-rules",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/stylelint-rules",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*",
+        "{workspaceRoot}/packages/tokens/src/tokens.ts",
+        { "externalDependencies": ["stylelint"] }
+      ],
+      "options": {
+        "command": "node --test 'tools/stylelint-rules/**/*.test.js'"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "allowImportingTsExtensions": true,
+    "types": ["node", "cypress", "cypress-real-events", "static-assets", "environment"],
+    "typeRoots": ["../../../node_modules", "../../../node_modules/@types", "../../../typings"],
+    "lib": ["ES2019", "dom"]
+  },
+  "include": ["cypress.config.ts", "e2e/**/*.ts", "e2e/**/*.tsx"]
+}

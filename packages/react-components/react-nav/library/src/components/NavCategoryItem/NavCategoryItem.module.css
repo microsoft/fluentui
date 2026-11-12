@@ -1,0 +1,8 @@
+/* @griffel-buckets logical: margin-inline-start */
+.root {
+  width: 100%;
+}
+.expandIcon {
+  margin-inline-start: auto;
+  height: var(--spacingVerticalXL);
+}

@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacingHorizontalM);
+}
+.action {
+  margin-inline-start: auto;
+  @media (forced-colors: active) {
+    & :global(.fui-Button),
+    & :global(.fui-Link) {
+      border-top-color: currentColor;
+      border-inline-end-color: currentColor;
+      border-bottom-color: currentColor;
+      border-inline-start-color: currentColor;
+      color: currentColor;
+      outline-color: currentColor;
+    }
+  }
+}

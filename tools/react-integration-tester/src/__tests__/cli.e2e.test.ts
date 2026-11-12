@@ -397,10 +397,10 @@ describe('rit CLI e2e', () => {
       templateSourceSnapshot(cyContent, {
         originConfigPath: cypressImportPath,
         nodeModulesRelativePath: '..',
-        specPattern: `${relativeProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`,
+        originRootPath: relativeProjectRoot,
       }),
     ).toMatchInlineSnapshot(`
-      "import { join, resolve } from 'node:path';
+      "import { isAbsolute, join, relative, resolve } from 'node:path';
       import baseConfig from <originConfigPath>;
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI).
@@ -411,9 +411,18 @@ describe('rit CLI e2e', () => {
 
       const config = { ...baseConfig };
 
-      const specs = [
-        resolve(<specPattern>),
-      ];
+      const originRoot = resolve(<originRootPath>);
+      // The shared base config builds absolute patterns from \`process.cwd()\`, which is this prepared project here, so they
+      // are rebased onto the origin project. Relative patterns resolve from the origin project root.
+      const toOriginPattern = (pattern: string) => {
+        if (!isAbsolute(pattern)) {
+          return resolve(originRoot, pattern);
+        }
+        const fromPreparedProject = relative(process.cwd(), pattern);
+        return fromPreparedProject.startsWith('..') ? pattern : join(originRoot, fromPreparedProject);
+      };
+      const specPattern = baseConfig.component.specPattern ?? '**/src/**/*.{cy,e2e}.{tsx,ts}';
+      const specs = (Array.isArray(specPattern) ? specPattern : [specPattern]).map(toOriginPattern);
 
       config.component.specPattern = specs;
       config.component.devServer.webpackConfig.resolve ??= {};

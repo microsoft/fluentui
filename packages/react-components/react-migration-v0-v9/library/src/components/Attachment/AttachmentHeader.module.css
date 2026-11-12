@@ -1,0 +1,6 @@
+.root {
+  display: block;
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: 1.4286;
+}

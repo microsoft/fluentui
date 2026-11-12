@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add CSS Modules style alternatives for react-skeleton",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

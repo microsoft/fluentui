@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add an opt-in layered CSS Modules style hook for FluentProvider, and insert Fluent CSS Modules registered by the opt-in Griffel ordering integration with the provider's Griffel renderer.",
+  "packageName": "@fluentui/react-provider",
+  "email": "dmytrokirpa@microsoft.com"
+}
