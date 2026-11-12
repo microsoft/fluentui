@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 // which the lazy loading spec must avoid.
 import { FluentProvider } from '@fluentui/react-provider';
 import type { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webDarkTheme, webLightTheme } from '@fluentui/react-theme';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -36,6 +36,13 @@ export type State = 'rest' | 'hover' | 'pressed' | 'focus-visible';
 type Styles = Record<string, string>;
 type SlotState = { className?: string };
 type AnyState = Record<string, SlotState | undefined> & { root: SlotState };
+/** Component state fields the "custom style hook reading state" scenario reads. */
+type StyleHookState = {
+  appearance?: string;
+  checked?: unknown;
+  disabled?: boolean;
+  disabledFocusable?: boolean;
+};
 
 export type ParityVariant = AnyProps & { disabled?: boolean };
 
@@ -115,6 +122,10 @@ export const scenarios = [
   'global reset CSS',
   'app reset styles',
   'app reset styles with makeStyles',
+  // Opt-in custom style hook variants (see `e2e/CustomStyleHooks.cy.tsx`).
+  'custom style hook prepended',
+  'custom style hook reading state',
+  'nested provider custom style hook',
 ] as const;
 export type Scenario = (typeof scenarios)[number];
 
@@ -158,7 +169,9 @@ const rootProperties = [
   'padding-inline-start',
   'padding-inline-end',
   'margin-top',
+  'margin-bottom',
   'margin-inline-start',
+  'margin-inline-end',
   'min-width',
   'max-width',
   'width',
@@ -167,6 +180,8 @@ const rootProperties = [
   'gap',
   'flex-grow',
   'flex-shrink',
+  'flex-basis',
+  'overflow-x',
   'justify-content',
   'align-items',
   'font-family',
@@ -175,6 +190,9 @@ const rootProperties = [
   'line-height',
   'text-decoration-line',
   'outline-style',
+  'outline-width',
+  'outline-color',
+  'border-top-style',
   'box-shadow',
   'cursor',
   'opacity',
@@ -257,6 +275,12 @@ const knownDifferences: KnownDifferences = {
     ...appResetStyleValues,
     'root background-color': [...appResetStyleValues['root background-color'], '--colorPaletteGreenBackground2'],
   },
+  // Griffel's `mergeClasses()` lets the last class win, so component classes merged after the hook's class won. CSS
+  // Modules classes aren't atomic Griffel classes: the hook's class wins regardless of its position.
+  'custom style hook prepended': {
+    'root background-color': ['--colorPaletteRedBackground2'],
+    'root color': ['--colorPaletteRedForeground2'],
+  },
 };
 
 /** Whether `actual` is a tolerated value for `key`, either declared by the app or inherited from its root color. */
@@ -301,22 +325,54 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
   const useAppPattern = spec.useAppPattern ?? noAppPattern;
   const pattern = useAppPattern(toggled);
   const appPattern = scenario === 'app pattern' ? pattern : undefined;
-  const customStyleHooks: FluentProviderCustomStyleHooks = scenario.startsWith('custom style hook')
-    ? {
-        [spec.customStyleHook ?? `use${name}Styles_unstable`]: (state: unknown) => {
-          const slots = state as AnyState;
-          slots.root.className = mergeClasses(
-            slots.root.className,
-            classes.hook,
-            getSlotClassNameProp_unstable(slots.root),
-          );
-          const slot = spec.slot && slots[spec.slot];
-          if (slot) {
-            slot.className = mergeClasses(slot.className, classes.hookSlot, getSlotClassNameProp_unstable(slot));
-          }
-        },
+  const customStyleHookName = spec.customStyleHook ?? `use${name}Styles_unstable`;
+  /** A custom style hook adding `rootClassName` to the root and `classes.hookSlot` to the app-styled slot. */
+  const createCustomStyleHook =
+    (getRootClassName: (state: StyleHookState) => string, prepend = false) =>
+    (state: unknown) => {
+      const slots = state as AnyState;
+      // Apps usually merge last; some prepend, which in Griffel lets component styles win every conflict.
+      const merge = (current: string | undefined, extra: string, slot: SlotState) =>
+        prepend
+          ? mergeClasses(extra, current, getSlotClassNameProp_unstable(slot))
+          : mergeClasses(current, extra, getSlotClassNameProp_unstable(slot));
+      slots.root.className = merge(slots.root.className, getRootClassName(state as StyleHookState), slots.root);
+      const slot = spec.slot && slots[spec.slot];
+      if (slot) {
+        slot.className = merge(slot.className, classes.hookSlot, slot);
       }
-    : {};
+    };
+  /** Picks classes from component state, like hooks that restyle only some variants. */
+  const classNameForState = (state: StyleHookState) =>
+    state.disabled || state.disabledFocusable
+      ? classes.hookDisabled
+      : state.checked === true || state.checked === 'mixed'
+      ? classes.hookChecked
+      : state.appearance === 'primary'
+      ? classes.hookPrimary
+      : classes.hook;
+  const customStyleHooks: FluentProviderCustomStyleHooks =
+    scenario === 'custom style hook reading state'
+      ? { [customStyleHookName]: createCustomStyleHook(classNameForState) }
+      : scenario === 'custom style hook prepended'
+      ? { [customStyleHookName]: createCustomStyleHook(() => classes.hook, true) }
+      : scenario.startsWith('custom style hook') || scenario === 'nested provider custom style hook'
+      ? { [customStyleHookName]: createCustomStyleHook(() => classes.hook) }
+      : {};
+  // A nested provider (another theme and its own hook), like app regions rendered with a different theme.
+  const nestedProvider = (children: React.ReactNode) =>
+    scenario === 'nested provider custom style hook' ? (
+      <FluentProvider
+        targetDocument={targetDocument}
+        dir={dir}
+        theme={webDarkTheme}
+        customStyleHooks_unstable={{ [customStyleHookName]: createCustomStyleHook(() => classes.hookNested) }}
+      >
+        {children}
+      </FluentProvider>
+    ) : (
+      children
+    );
   const className = clsx(
     scenario === 'base-only makeStyles override' && classes.base,
     scenario === 'stateful makeStyles override' && classes.stateful,
@@ -346,37 +402,39 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
       theme={webLightTheme}
       customStyleHooks_unstable={customStyleHooks}
     >
-      {spec.variants.map((variant, index) =>
-        (['griffel', 'css'] as const).map(implementation => {
-          const Component = spec[implementation];
-          const props = typeof spec.props === 'function' ? spec.props(implementation) : spec.props;
-          const slotProps =
-            spec.slot && scenario === 'slot makeStyles override'
-              ? {
-                  [spec.slot]: {
-                    className: classes.slot,
-                    ...(spec.slot === 'icon' ? { children: icon } : {}),
-                  },
-                }
-              : {};
-          const id = `${implementation}-${index}`;
-          const element = (
-            <Component
-              {...props}
-              {...appPattern?.props}
-              {...variant}
-              {...slotProps}
-              className={wrapperClassName || undefined}
-            />
-          );
-          const wrap = appPattern?.wrap ?? spec.wrap;
-          return (
-            <div key={id} data-testid={id} style={{ padding: 4 }}>
-              <button data-testid={`${id}-start`}>Start</button>
-              <React.Suspense fallback={null}>{wrap ? wrap(element, implementation) : element}</React.Suspense>
-            </div>
-          );
-        }),
+      {nestedProvider(
+        spec.variants.map((variant, index) =>
+          (['griffel', 'css'] as const).map(implementation => {
+            const Component = spec[implementation];
+            const props = typeof spec.props === 'function' ? spec.props(implementation) : spec.props;
+            const slotProps =
+              spec.slot && scenario === 'slot makeStyles override'
+                ? {
+                    [spec.slot]: {
+                      className: classes.slot,
+                      ...(spec.slot === 'icon' ? { children: icon } : {}),
+                    },
+                  }
+                : {};
+            const id = `${implementation}-${index}`;
+            const element = (
+              <Component
+                {...props}
+                {...appPattern?.props}
+                {...variant}
+                {...slotProps}
+                className={wrapperClassName || undefined}
+              />
+            );
+            const wrap = appPattern?.wrap ?? spec.wrap;
+            return (
+              <div key={id} data-testid={id} style={{ padding: 4 }}>
+                <button data-testid={`${id}-start`}>Start</button>
+                <React.Suspense fallback={null}>{wrap ? wrap(element, implementation) : element}</React.Suspense>
+              </div>
+            );
+          }),
+        ),
       )}
     </FluentProvider>
   );
