@@ -134,6 +134,7 @@ extends:
                   - script: |
                       git add .
                       yarn change \
+                        -b "origin/$BRANCH_PATH" \
                         --config "$BEACHBALL_CONFIG" \
                         --type prerelease \
                         --message "Release $RELEASE_LABEL" \
@@ -279,7 +280,9 @@ extends:
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   PACKED_PACKAGES_PATH: $(PACKAGES_ARTIFACT_PATH)
-                  ESRP_PRODUCT_NAME: fluentui - ${{ parameters.label }}
+                  # Use the build ID as the product name since this better handles nightly/experimental releases
+                  # and ensures that the release state cache keys are unique.
+                  ESRP_PRODUCT_NAME: $(Build.BuildId)
                   # For non-official releases, use the npm tag "experimental" or "nightly".
                   # ESRP also respects publishConfig.tag in package.json for an individual package.
                   ${{ if ne(parameters.releaseType, 'official') }}:
@@ -339,17 +342,21 @@ extends:
                       APP_CLIENT_ID: Iv23ligBoU5jc9SIFnGR
                       KEY_ID: https://ogx-oss-release-keyvault.vault.azure.net/keys/office-ogx-auth-helper-key
                       REPOSITORY: $(Build.Repository.Name)
-                      PERMISSIONS: contents:write
+                      # pull_requests:read is needed for update-release-notes when used
+                      PERMISSIONS: contents:write,pull_requests:read
                       CI_OUTPUT_NAME: GITHUB_APP_TOKEN
 
                   # Bump again and push the version updates, changelogs, change file deletions, and tags.
                   # The release configs set `fetch: false` to ensure that all beachball operations in
                   # the multi-stage pipeline use the original Build.SourceVersion.
+                  # After pushing, fetch and reset to the remote branch for any post-push steps.
                   - script: |
                       yarn beachball publish \
                         --no-publish \
                         --config "$BEACHBALL_CONFIG" \
                         --message "release: applying package updates - $RELEASE_LABEL"
+                      git fetch
+                      git reset --hard "origin/$BRANCH_PATH"
                     displayName: Push package updates
                     condition: and(succeeded(), not(${{ parameters.dryRun }}))
                     env:
