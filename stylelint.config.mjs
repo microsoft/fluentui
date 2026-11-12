@@ -14,6 +14,8 @@ export default {
   reportDescriptionlessDisables: true,
   reportInvalidScopeDisables: true,
   reportNeedlessDisables: true,
+  // Test inputs, not component styles.
+  ignoreFiles: ['**/__fixtures__/**'],
   rules: {
     // Fluent UI conventions
     'fluentui/griffel-buckets': true,
