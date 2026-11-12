@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(priority-overflow): repair the heap upwards when remove() moves a smaller entry into the hole",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
