@@ -29,12 +29,16 @@ Environment axes, combinable with every mode below:
 | `FUI_PARITY_DIR=rtl`         | Renders the app right-to-left; app styles resolve in the same direction.                     |
 | `FUI_PARITY_FORCED_COLORS=1` | Emulates `forced-colors: active` (asserted before every test).                               |
 | `FUI_PARITY_SHADOW_DOM=1`    | Renders the app in a shadow root with Griffel's Shadow DOM renderer; plain CSS is copied in. |
+| `FUI_PARITY_LAYER=1`         | Wraps every Fluent CSS Modules stylesheet in `@layer fluent` (default mode only), see below. |
 
 Dedicated specs:
 
 - [`Lazy.cy.tsx`](./e2e/Lazy.cy.tsx): CSS Modules components load in chunks after the app inserted its Griffel styles
   (the harness avoids the `@fluentui/react-components` barrel for this). The Griffel baseline renders eagerly: Griffel's
   own result depends on insertion order, a lazily rendered Griffel component wins ties against app rules.
+- [`AppGlobalStyles.cy.tsx`](./e2e/AppGlobalStyles.cy.tsx): core components under a global reset stylesheet loaded
+  first (element and universal selectors, like normalize or Tailwind preflight) and with app `makeResetStyles()`
+  classes, alone and merged with `makeStyles()` overrides.
 - [`app-patterns/`](./e2e/app-patterns): styling reduced from real applications, one spec per pattern, run in the
   `app pattern` scenario (`ComponentSpec.useAppPattern`). A pattern hook returns the app's class name, props and
   surrounding markup, and can toggle app state (`toggles`, for example a selection), after which every state is sampled
@@ -76,6 +80,9 @@ Tolerated only for values the app declared (and colors inherited from them):
 - An app rule without a pseudo-class now beats a component state rule of equal specificity, for example
   `&[data-position="first"]` (one class plus an attribute) against a component `:hover` rule. Griffel put the app rule
   in its default bucket, before the component's `:hover` bucket ([`SegmentedToggle`](./e2e/app-patterns/SegmentedToggle.cy.tsx)).
+- An app `makeResetStyles()` class now beats component styles. Griffel puts reset styles in its first bucket, so
+  component styles of equal specificity won; CSS Modules component styles are an earlier stylesheet. Layout sizes that
+  follow the app's padding and radius are tolerated too.
 
 Some specs declare further, component-specific `knownDifferences` (for example, inherited backgrounds in plain CSS
 scenarios), each with an explanation.
@@ -120,8 +127,24 @@ reverses CSS Modules source order; the harness appends rules instead, `@griffel/
 
 Remaining differences (all specs, nothing tolerated):
 
+- App `makeResetStyles()` against Button, ToggleButton and Avatar: Griffel kept their default variant styles (secondary,
+  medium, rounded) in the component's reset class, which the later-inserted app reset class beats. The CSS Modules
+  ports moved them to `.secondary`, `.medium` and `.rounded`, which go to the default bucket. Listing those classes in
+  `@griffel-buckets reset:` restores parity for Button and ToggleButton (checked locally); Avatar's `font-weight`
+  needs the same.
 - Tab and TabList (extraction only): the Griffel baseline itself differs from runtime Griffel, because extraction keeps
   shared atomic classes at their first occurrence, which reorders `padding` and `paddingBlock` (both priority `-1`).
+
+## Cascade layer (`FUI_PARITY_LAYER=1`)
+
+Wraps Fluent CSS Modules stylesheets in `@layer fluent { ... }`, as the experimental layered packages do. Unlayered
+styles beat layered ones whatever their specificity, so this axis shows what a layer changes for apps:
+
+- Global reset CSS: every core component differs (icon margins, colors, borders and sizes come from the reset).
+- App overrides: an app's base declaration now also wins in hover, pressed and focus, because component state rules
+  can't beat it (base-only, slot, layout, custom style hook and wrapper scenarios).
+
+The axis is expected to fail; it isn't a mode the components should pass.
 
 ## Not covered
 

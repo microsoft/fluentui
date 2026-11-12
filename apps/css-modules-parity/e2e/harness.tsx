@@ -14,7 +14,7 @@ import { createShadowDOMRenderer } from '@griffel/shadow-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import type { AnyComponent, AnyProps } from './compose';
 import styles from './ParityApp.module.css';
-import { useParityAppStyles } from './useParityAppStyles.styles';
+import { useParityAppResetStyles, useParityAppStyles } from './useParityAppStyles.styles';
 
 export { griffel } from './compose';
 export type { AnyComponent } from './compose';
@@ -111,8 +111,29 @@ export const scenarios = [
   'plain CSS stateful class name',
   // Only runs for specs with `useAppPattern`.
   'app pattern',
+  // App-level scenarios, opt-in through `DescribeParityOptions.scenarios` (see `e2e/AppGlobalStyles.cy.tsx`).
+  'global reset CSS',
+  'app reset styles',
+  'app reset styles with makeStyles',
 ] as const;
 export type Scenario = (typeof scenarios)[number];
+
+/** Scenarios every `describeParity` call runs unless it lists its own. */
+export const defaultScenarios: readonly Scenario[] = scenarios.slice(0, scenarios.indexOf('app pattern') + 1);
+
+/**
+ * A global reset stylesheet like apps ship before any component CSS (normalize, Tailwind preflight, hand-written
+ * resets). Element and universal selectors lose to every component class, unless component styles sit in a cascade
+ * layer: unlayered styles beat layered ones regardless of specificity.
+ */
+const globalResetCSS = `
+*, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: currentColor; margin: 0; padding: 0; }
+button, input, select, textarea { font: inherit; color: inherit; background-color: transparent; letter-spacing: inherit; }
+button, [role='button'] { cursor: pointer; }
+a { color: inherit; text-decoration: inherit; }
+:disabled { cursor: default; }
+img, svg { display: block; vertical-align: middle; }
+`;
 type KnownDifferences = Partial<Record<Scenario, Record<string, string[]>>>;
 
 export const icon = <span aria-hidden="true">+</span>;
@@ -184,6 +205,33 @@ const pseudoProperties = ['content', 'background-color', 'border-bottom-color', 
  *   is a separate, earlier stylesheet, so the app's state rule now also applies in the later states. Raising the
  *   component's specificity instead would make it beat app `:active` overrides, which Griffel lets apps replace.
  */
+/** Values `useParityAppResetStyles` declares; layout sizes follow its padding and radius (`*`: any value). */
+const appResetStyleValues: Record<string, string[]> = {
+  'root background-color': ['--colorPaletteBerryBackground2', '--colorPaletteBlueBackground2'],
+  'root color': ['--colorPaletteBerryForeground2'],
+  'root border-top-color': ['--colorPaletteBerryBorderActive'],
+  'root border-bottom-color': ['--colorPaletteBerryBorderActive'],
+  'root border-inline-start-color': ['--colorPaletteBerryBorderActive'],
+  'root border-inline-end-color': ['--colorPaletteBerryBorderActive'],
+  // Badge outlines its `::after` with the root's border color.
+  'root::after border-bottom-color': ['--colorPaletteBerryBorderActive'],
+  'root padding-top': ['--spacingVerticalXS'],
+  'root padding-bottom': ['--spacingVerticalXS'],
+  'root padding-inline-start': ['--spacingHorizontalXXL'],
+  'root padding-inline-end': ['--spacingHorizontalXXL'],
+  'root border-top-left-radius': ['--borderRadiusCircular'],
+  'root border-top-right-radius': ['--borderRadiusCircular'],
+  'root border-bottom-left-radius': ['--borderRadiusCircular'],
+  'root border-bottom-right-radius': ['--borderRadiusCircular'],
+  'root font-weight': ['--fontWeightRegular'],
+  'root width': ['*'],
+  'root height': ['*'],
+  'root box width': ['*'],
+  'root box height': ['*'],
+  'parent box width': ['*'],
+  'parent box height': ['*'],
+};
+
 const knownDifferences: KnownDifferences = {
   'stateful makeStyles override': {
     'root color': ['--colorPaletteBlueForeground2'],
@@ -202,11 +250,18 @@ const knownDifferences: KnownDifferences = {
   'wrapper component with extra class name': {
     'root text-decoration-line': ['underline'],
   },
+  // `makeResetStyles()` rules sit in Griffel's first bucket, so component styles beat them. As a separate, earlier
+  // stylesheet, CSS Modules component styles now lose to them (see `useParityAppResetStyles`).
+  'app reset styles': appResetStyleValues,
+  'app reset styles with makeStyles': {
+    ...appResetStyleValues,
+    'root background-color': [...appResetStyleValues['root background-color'], '--colorPaletteGreenBackground2'],
+  },
 };
 
 /** Whether `actual` is a tolerated value for `key`, either declared by the app or inherited from its root color. */
 function isKnownDifference(allowed: Record<string, string[]>, key: string, actual: string) {
-  if (allowed[key]?.includes(actual)) {
+  if (allowed[key]?.includes(actual) || allowed[key]?.includes('*')) {
     return true;
   }
   // `currentColor` borders and inheriting slots follow the app's root color.
@@ -223,6 +278,18 @@ type ParityAppProps = {
 /** Renders every variant twice — original Griffel and CSS Modules — with identical app styling. */
 const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JSXElement => {
   const classes = useParityAppStyles();
+  const resetClassName = useParityAppResetStyles();
+  // The reset stylesheet goes first in the document, like an app's global CSS: it must not win by position.
+  React.useInsertionEffect(() => {
+    if (scenario !== 'global reset CSS') {
+      return undefined;
+    }
+    const style = targetDocument.createElement('style');
+    style.dataset.parityGlobalReset = '';
+    style.textContent = globalResetCSS;
+    targetDocument.head.prepend(style);
+    return () => style.remove();
+  }, [scenario, targetDocument]);
   const [toggled, setToggled] = React.useState(false);
   React.useEffect(() => {
     setAppToggled = setToggled;
@@ -259,11 +326,18 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
     scenario === 'plain CSS stateful class name' && styles.stateful,
     appPattern?.className,
   );
+  const resetScenarioClassName =
+    scenario === 'app reset styles'
+      ? resetClassName
+      : scenario === 'app reset styles with makeStyles'
+      ? // An app component combining its reset styles with atomic overrides, like most `makeResetStyles()` users.
+        mergeClasses(resetClassName, classes.caller)
+      : undefined;
   const wrapperClassName =
     scenario === 'wrapper component with extra class name'
       ? // An app wrapper merging its Griffel styles with the className received from its caller.
         mergeClasses(classes.wrapper, clsx(styles.extra, className))
-      : className;
+      : resetScenarioClassName ?? className;
 
   return (
     <FluentProvider
@@ -455,6 +529,9 @@ function resolveDeclarations(declarations: Record<string, string[]>) {
     for (const [key, values] of Object.entries(declarations)) {
       const property = key.split(' ').pop()!;
       resolved[key] = values.map(value => {
+        if (value === '*') {
+          return value;
+        }
         probe.style.setProperty(property, value.startsWith('--') ? `var(${value})` : value);
         return view.getComputedStyle(probe).getPropertyValue(property);
       });
@@ -581,7 +658,7 @@ function renderApp(targetDocument: Document, appWithoutDirection: JSXElement): J
 }
 
 export type DescribeParityOptions = {
-  /** Runs these scenarios, in this order (defaults to every scenario). */
+  /** Runs these scenarios, in this order (defaults to `defaultScenarios`). */
   scenarios?: readonly Scenario[];
 };
 
@@ -628,7 +705,7 @@ export function describeParity(
     });
 
     for (const [name, spec] of Object.entries(components)) {
-      for (const scenario of options.scenarios ?? scenarios) {
+      for (const scenario of options.scenarios ?? defaultScenarios) {
         if (scenario === 'app pattern' && !spec.useAppPattern) {
           continue;
         }

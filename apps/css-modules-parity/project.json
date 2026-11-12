@@ -60,6 +60,9 @@
         },
         {
           "env": "FUI_PARITY_SHADOW_DOM"
+        },
+        {
+          "env": "FUI_PARITY_LAYER"
         }
       ],
       "metadata": {

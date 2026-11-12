@@ -2,6 +2,8 @@ import * as path from 'path';
 import { defineConfig } from 'cypress';
 import { GriffelPlugin } from '@griffel/webpack-plugin';
 import * as MiniCssExtractPluginModule from 'mini-css-extract-plugin';
+import postcss from 'postcss';
+import type { Root } from 'postcss';
 import type { RuleSetRule, WebpackPluginInstance } from 'webpack';
 import { baseConfig } from '@fluentui/scripts-cypress';
 import { postcssGriffelBuckets } from './griffel-buckets/postcssGriffelBuckets';
@@ -24,12 +26,39 @@ const griffelBuckets = extraction || process.env.FUI_PARITY_GRIFFEL_BUCKETS === 
 const dir = process.env.FUI_PARITY_DIR === 'rtl' ? 'rtl' : 'ltr';
 const forcedColors = process.env.FUI_PARITY_FORCED_COLORS === '1';
 const shadowDOM = process.env.FUI_PARITY_SHADOW_DOM === '1';
+/**
+ * `FUI_PARITY_LAYER=1`: wraps every Fluent CSS Modules stylesheet in `@layer fluent { ... }`, like the experimental
+ * layered packages. Unlayered app styles (Griffel's included) then beat component styles regardless of specificity.
+ * Only for the default mode: the Griffel buckets modes order component rules through Griffel instead.
+ */
+const fluentLayer = process.env.FUI_PARITY_LAYER === '1';
+if (fluentLayer && griffelBuckets) {
+  throw new Error('FUI_PARITY_LAYER=1 is not combinable with FUI_PARITY_GRIFFEL_BUCKETS=1 or FUI_PARITY_EXTRACTION=1.');
+}
 
 const appRoot = path.resolve(__dirname);
 const cssLoader = { loader: 'css-loader', options: { modules: { auto: true, namedExport: false }, importLoaders: 1 } };
 const griffelBucketsLoader = {
   loader: 'postcss-loader',
   options: { postcssOptions: { plugins: [postcssGriffelBuckets()] } },
+};
+const fluentLayerLoader = {
+  loader: 'postcss-loader',
+  options: {
+    postcssOptions: {
+      plugins: [
+        {
+          postcssPlugin: 'fluentui-parity-layer',
+          // eslint-disable-next-line @typescript-eslint/naming-convention -- PostCSS plugin API
+          Once(root: Root) {
+            const layer = postcss.atRule({ name: 'layer', params: 'fluent' });
+            layer.append(root.nodes.filter(node => node.type !== 'comment'));
+            root.append(layer);
+          },
+        },
+      ],
+    },
+  },
 };
 
 const cssRules: RuleSetRule[] = [
@@ -49,6 +78,9 @@ const cssRules: RuleSetRule[] = [
           ],
         },
       ]
+    : []),
+  ...(fluentLayer
+    ? [{ include: (file: string) => !file.startsWith(appRoot), use: ['style-loader', cssLoader, fluentLayerLoader] }]
     : []),
   { use: ['style-loader', cssLoader] },
 ];
@@ -71,7 +103,7 @@ const extractionPlugins: WebpackPluginInstance[] = extraction
 
 export default defineConfig({
   ...baseConfig,
-  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM },
+  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer },
   component: {
     ...baseConfig.component,
     // Queries reach into the shadow root the app renders into.
