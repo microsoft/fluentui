@@ -21,6 +21,25 @@ export class BaseAnchor extends FASTElement {
   private readonly isMac = navigator.userAgent.includes('Mac');
 
   /**
+   * The features for the new window when opening a link.
+   * @internal
+   */
+  private get windowFeatures(): string {
+    const rel = this.rel?.toLowerCase().split(/[\t\n\f\r ]+/) ?? [];
+    const features: string[] = [];
+
+    if (rel.includes('noopener')) {
+      features.push('noopener');
+    }
+
+    if (rel.includes('noreferrer') || this.referrerpolicy?.toLowerCase() === 'no-referrer') {
+      features.push('noreferrer');
+    }
+
+    return features.join(',');
+  }
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -208,7 +227,12 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   private handleNavigation(newTab: boolean): void {
-    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
+    if (newTab) {
+      window.open(this.href, '_blank', this.windowFeatures);
+      return;
+    }
+
+    this.internalProxyAnchor.click();
   }
 
   /**

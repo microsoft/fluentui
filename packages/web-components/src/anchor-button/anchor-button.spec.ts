@@ -1,3 +1,4 @@
+import type { Locator } from '@playwright/test';
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName } from './anchor-button.options.js';
 
@@ -219,4 +220,57 @@ test.describe('Anchor Button', () => {
 
     await newPage.close();
   });
+
+  for (const { name, attributes } of [
+    { name: 'rel="noopener noreferrer"', attributes: { rel: 'noopener noreferrer' } },
+    { name: 'rel="noreferrer"', attributes: { rel: 'noreferrer' } },
+    { name: 'referrerpolicy="no-referrer"', attributes: { referrerpolicy: 'no-referrer' } },
+    { name: 'mixed-case referrer policy', attributes: { referrerpolicy: 'No-ReFeRrEr' } },
+    { name: 'rel="noopener"', attributes: { rel: 'noopener' } },
+    { name: 'mixed-case rel tokens', attributes: { rel: '\tNOOPENER\nNoReFeRrEr\f' } },
+    { name: 'partial rel tokens', attributes: { rel: 'noopener notnoreferrer' } },
+  ]) {
+    for (const activation of [
+      { name: 'click', activate: (element: Locator) => element.click() },
+      { name: 'modified click', activate: (element: Locator) => element.click({ modifiers: ['ControlOrMeta'] }) },
+      { name: 'Enter', activate: (element: Locator) => element.press('Enter') },
+      { name: 'modified Enter', activate: (element: Locator) => element.press('ControlOrMeta+Enter') },
+      { name: 'Control+Enter', activate: (element: Locator) => element.press('Control+Enter') },
+    ]) {
+      test(`should preserve ${name} on ${activation.name}`, async ({ context, fastPage, page }) => {
+        const { element } = fastPage;
+        const href = '/?anchor-navigation-result';
+
+        await fastPage.setTemplate({ attributes: { ...attributes, href, target: '_blank' } });
+
+        const sourceUrl = page.url();
+        const expectedUrl = new URL(href, sourceUrl).href;
+
+        const newPagePromise = context.waitForEvent('page');
+
+        await activation.activate(element);
+
+        const newPage = await newPagePromise;
+
+        await expect(newPage).toHaveURL(expectedUrl);
+        await newPage.waitForLoadState('domcontentloaded');
+
+        const { openerIsNull, referrer } = await newPage.locator('html').evaluate(root => ({
+          openerIsNull: root.ownerDocument.defaultView!.opener === null,
+          referrer: root.ownerDocument.referrer,
+        }));
+
+        expect(openerIsNull).toBe(true);
+        expect(referrer).toBe(
+          /\bnoreferrer\b/i.test(attributes.rel ?? '') || attributes.referrerpolicy?.toLowerCase() === 'no-referrer'
+            ? ''
+            : sourceUrl,
+        );
+
+        await expect(page).toHaveURL(sourceUrl);
+
+        await newPage.close();
+      });
+    }
+  }
 });
