@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add the DocuWorks file type icon for the xbd, xct, and xdw extensions.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
