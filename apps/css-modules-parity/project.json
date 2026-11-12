@@ -22,6 +22,10 @@
         {
           "target": "build",
           "projects": "scripts-cypress"
+        },
+        {
+          "target": "build",
+          "projects": ["react-positioning", "react-migration-v8-v9"]
         }
       ],
       "inputs": [
