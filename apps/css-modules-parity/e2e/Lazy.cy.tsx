@@ -16,7 +16,7 @@ import { useLinkStyles_unstable as useGriffelLinkStyles } from '../../../package
 import { useSwitch_unstable } from '../../../packages/react-components/react-switch/library/src/components/Switch/useSwitch.tsx';
 import { renderSwitch_unstable } from '../../../packages/react-components/react-switch/library/src/components/Switch/renderSwitch.tsx';
 import { useSwitchStyles_unstable as useGriffelSwitchStyles } from '../../../packages/react-components/react-switch/library/src/components/Switch/useSwitchStyles.styles.ts';
-import { describeParity, griffel, icon, scenarios } from './harness';
+import { defaultScenarios, describeParity, griffel, icon } from './harness';
 import type { AnyComponent, Scenario } from './harness';
 
 type LazyModule = { css: AnyComponent };
@@ -56,7 +56,7 @@ function lazyComponent(name: string, load: () => Promise<LazyModule>): AnyCompon
 // The first test of every component loads its chunk: start with the app overrides most sensitive to ordering.
 const lazyScenarios: Scenario[] = [
   'stateful makeStyles override',
-  ...scenarios.filter(scenario => scenario !== 'stateful makeStyles override'),
+  ...defaultScenarios.filter(scenario => scenario !== 'stateful makeStyles override'),
 ];
 
 describeParity(

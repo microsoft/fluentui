@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 /** App-level Griffel styles applied on top of the components under test. */
@@ -25,4 +25,18 @@ export const useParityAppStyles = makeStyles({
   hookSlot: { color: tokens.colorPaletteRedForeground2 },
   caller: { backgroundColor: tokens.colorPaletteGreenBackground2 },
   wrapper: { backgroundColor: tokens.colorPaletteBerryBackground2, fontWeight: tokens.fontWeightRegular },
+});
+
+/**
+ * App-level `makeResetStyles()`: one class whose rules Griffel puts in its reset bucket, before every atomic class, so
+ * component styles of equal specificity beat it. Covers base, state and layout properties.
+ */
+export const useParityAppResetStyles = makeResetStyles({
+  backgroundColor: tokens.colorPaletteBerryBackground2,
+  color: tokens.colorPaletteBerryForeground2,
+  borderColor: tokens.colorPaletteBerryBorderActive,
+  padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXXL}`,
+  borderRadius: tokens.borderRadiusCircular,
+  fontWeight: tokens.fontWeightRegular,
+  ':hover': { backgroundColor: tokens.colorPaletteBlueBackground2 },
 });
