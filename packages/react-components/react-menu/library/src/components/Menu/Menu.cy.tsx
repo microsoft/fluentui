@@ -14,10 +14,12 @@ import {
   MenuSplitGroup,
   type MenuProps,
   menuItemClassNames,
+  menuPopoverClassNames,
 } from '@fluentui/react-menu';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import * as React from 'react';
 
 import {
@@ -1061,6 +1063,166 @@ describe(`Nested Menus`, () => {
 });
 
 describe('Context menu', () => {
+  const contextPopoverSelector = `.${menuPopoverClassNames.root}`;
+  const CustomTargetExample = ({
+    controlled = false,
+    override = true,
+    overrideOnClose = false,
+    openOnContext = true,
+    targetOption,
+  }: {
+    controlled?: boolean;
+    override?: boolean;
+    overrideOnClose?: boolean;
+    openOnContext?: boolean;
+    targetOption?: 'element' | 'undefined' | 'null';
+  }) => {
+    const positioningRef = React.useRef<PositioningImperativeRef>(null);
+    const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <>
+        <button ref={setTarget} id="custom-context-target">
+          Custom positioning target
+        </button>
+        <Menu
+          openOnContext={openOnContext}
+          open={controlled ? open : undefined}
+          positioning={{
+            positioningRef,
+            ...(targetOption
+              ? { target: targetOption === 'element' ? target : targetOption === 'null' ? null : undefined }
+              : {}),
+            offset: 0,
+          }}
+          onOpenChange={(_, data) => {
+            if ((data.open && override && !targetOption) || (!data.open && overrideOnClose)) {
+              positioningRef.current?.setTarget(target);
+            }
+            setOpen(data.open);
+          }}
+        >
+          <MenuTrigger disableButtonEnhancement>
+            <button id={menuTriggerId}>Context trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </>
+    );
+  };
+
+  [false, true].forEach(controlled => {
+    it(`preserves an onOpenChange target override after positioning settles (controlled: ${controlled})`, () => {
+      mount(<CustomTargetExample controlled={controlled} />);
+
+      // Simulate zero-coordinate contextmenu delivery; this does not test native keyboard event generation.
+      cy.get(menuTriggerSelector)
+        .focus()
+        .trigger('contextmenu', { eventConstructor: 'MouseEvent', clientX: 0, clientY: 0 });
+      cy.get(contextPopoverSelector).should(([menu]) => {
+        const target = menu.ownerDocument.getElementById('custom-context-target');
+        expect(target).not.to.equal(null);
+        const bounds = target!.getBoundingClientRect();
+        const menuBounds = menu.getBoundingClientRect();
+        expect(menuBounds.left).to.be.closeTo(bounds.left, 1);
+        expect(menuBounds.top).to.be.closeTo(bounds.bottom, 1);
+      });
+
+      cy.get(menuItemSelector).type('{esc}');
+      cy.get(menuTriggerSelector).rightclick();
+      cy.get(contextPopoverSelector).should(([menu]) => {
+        const target = menu.ownerDocument.getElementById('custom-context-target');
+        expect(menu.getBoundingClientRect().left).to.be.closeTo(target!.getBoundingClientRect().left, 1);
+      });
+    });
+
+    (['disabled', 'undefined', 'null', 'element'] as const).forEach(departure => {
+      it(`reconciles a close-time override after ${departure} departure (controlled: ${controlled})`, () => {
+        const renderExample = (departed = false) => (
+          <FluentProvider theme={teamsLightTheme}>
+            <CustomTargetExample
+              controlled={controlled}
+              override={false}
+              overrideOnClose
+              openOnContext={!departed || departure !== 'disabled'}
+              targetOption={departed && departure !== 'disabled' ? departure : undefined}
+            />
+          </FluentProvider>
+        );
+        mountBase(renderExample()).then(({ rerender }) => {
+          cy.get(menuTriggerSelector).rightclick();
+          cy.get(menuSelector).should('exist');
+          cy.get(menuItemSelector).type('{esc}');
+          cy.get(menuSelector).should('not.exist');
+
+          cy.then(() => rerender(renderExample(true)));
+          if (departure === 'disabled') {
+            cy.get(menuTriggerSelector).click();
+          } else {
+            cy.get(menuTriggerSelector).rightclick();
+          }
+          cy.get(contextPopoverSelector).should(([menu]) => {
+            const target = menu.ownerDocument.getElementById(
+              departure === 'element' ? 'custom-context-target' : menuTriggerId,
+            );
+            const bounds = target!.getBoundingClientRect();
+            expect(menu.getBoundingClientRect().left).to.be.closeTo(bounds.left, 1);
+            expect(menu.getBoundingClientRect().top).to.be.closeTo(bounds.bottom, 1);
+          });
+        });
+      });
+    });
+  });
+
+  it('preserves explicit target precedence over context coordinates', () => {
+    mount(<CustomTargetExample targetOption="element" />);
+
+    cy.get(menuTriggerSelector).rightclick();
+    cy.get(contextPopoverSelector).should(([menu]) => {
+      const target = menu.ownerDocument.getElementById('custom-context-target');
+      expect(menu.getBoundingClientRect().left).to.be.closeTo(target!.getBoundingClientRect().left, 1);
+      expect(menu.getBoundingClientRect().top).to.be.closeTo(target!.getBoundingClientRect().bottom, 1);
+    });
+  });
+
+  (['undefined', 'null'] as const).forEach(targetOption => {
+    it(`uses the trigger when an explicit target is ${targetOption}`, () => {
+      mount(<CustomTargetExample targetOption={targetOption} />);
+
+      cy.get(menuTriggerSelector).trigger('contextmenu', {
+        eventConstructor: 'MouseEvent',
+        clientX: 300,
+        clientY: 200,
+      });
+      cy.get(contextPopoverSelector).should(([menu]) => {
+        const trigger = menu.ownerDocument.getElementById(menuTriggerId);
+        const bounds = trigger!.getBoundingClientRect();
+        expect(menu.getBoundingClientRect().left).to.be.closeTo(bounds.left, 1);
+        expect(menu.getBoundingClientRect().top).to.be.closeTo(bounds.bottom, 1);
+      });
+    });
+  });
+
+  it('repositions an already-open menu at the next pointer location', () => {
+    mount(<CustomTargetExample override={false} />);
+
+    cy.get(menuTriggerSelector).trigger('contextmenu', { eventConstructor: 'MouseEvent', clientX: 100, clientY: 100 });
+    cy.get(contextPopoverSelector).should(([menu]) => {
+      expect(menu.getBoundingClientRect().left).to.be.closeTo(100, 1);
+      expect(menu.getBoundingClientRect().top).to.be.closeTo(101, 1);
+    });
+    cy.get(menuTriggerSelector).trigger('contextmenu', { eventConstructor: 'MouseEvent', clientX: 300, clientY: 200 });
+    cy.get(contextPopoverSelector).should(([menu]) => {
+      expect(menu.getBoundingClientRect().left).to.be.closeTo(300, 1);
+      expect(menu.getBoundingClientRect().top).to.be.closeTo(201, 1);
+    });
+  });
+
   const ContextMenuExample = () => (
     <Menu openOnContext>
       <MenuTrigger disableButtonEnhancement>
