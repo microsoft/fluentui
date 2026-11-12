@@ -49,7 +49,7 @@ FocusKeyboardShortcut.parameters = {
   docs: {
     description: {
       story: [
-        'Developers can be define a shortcut to focus on the most recent visible toast . This example',
+        'Developers can define a shortcut to focus on the most recent visible toast. This example',
         'configures the shortcut to be `CTRL+M`. Once a toast is focused, all toasts belonging to that toaster',
         'are paused and will not timeout.',
       ].join('\n'),

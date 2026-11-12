@@ -46,7 +46,7 @@ ToastPositions.parameters = {
   docs: {
     description: {
       story: [
-        'Toasts can be dispatched to all four corners of a page. We do not recommend to use more than one',
+        'Toasts can be dispatched to all four corners of a page. We do not recommend using more than one',
         'position for toasts in an application because that could be disorienting for users. Pick',
         'one desired position and configure it in the `Toaster`.',
       ].join('\n'),

@@ -90,9 +90,9 @@ ProgressToast.parameters = {
     description: {
       story: [
         'In order to avoid excessive toast updates and optimize performance, we recommend encapsulating',
-        'progress bars with any state or remove data sources. That way the progress bar can tick independently',
+        'progress bars with any state or remote data sources. That way the progress bar can tick independently',
         'and trigger the toast dismiss when it finishes. You can pass a callback to your toast content',
-        'to dismiss to the toast based on any side effects.',
+        'to dismiss the toast based on any side effects.',
       ].join('\n'),
     },
   },
