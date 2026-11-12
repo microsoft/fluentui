@@ -1163,10 +1163,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         tabIndex={isLegendSelected ? 0 : undefined}
                       />
                     )}
-                    {/* Dummy circle acting as magnetic latch for last callout point */}
+                    {/* Keep the magnetic latch for line-only paths without intercepting rendered circles. */}
                     <circle
                       id={hiddenHoverCircleId}
                       key={hiddenHoverCircleId}
+                      pointerEvents={
+                        _points[i].lineOptions?.mode?.includes('markers') || lastSupportsTextMode ? 'none' : undefined
+                      }
                       r={8}
                       cx={xPoint2}
                       cy={yPoint2}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Altair-style named inline dataset inherited through recursive concatenation; parent transforms run once.",
+  "datasets": {
+    "data-seeded-7f3a": [
+      { "x": 1, "y": 2 },
+      { "x": 2, "y": 4 }
+    ]
+  },
+  "data": { "name": "data-seeded-7f3a" },
+  "transform": [{ "calculate": "datum.y * 2", "as": "y" }],
+  "vconcat": [
+    {
+      "transform": [{ "calculate": "datum.y + 1", "as": "y" }],
+      "hconcat": [
+        {
+          "width": 640,
+          "height": 400,
+          "mark": "line",
+          "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "field": "y", "type": "quantitative" } }
+        },
+        {
+          "width": 640,
+          "height": 400,
+          "mark": "point",
+          "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "field": "y", "type": "quantitative" } }
+        }
+      ]
+    },
+    {
+      "width": 640,
+      "height": 400,
+      "transform": [{ "filter": { "field": "x", "gt": 1 } }],
+      "mark": "line",
+      "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "field": "y", "type": "quantitative" } }
+    }
+  ]
+}

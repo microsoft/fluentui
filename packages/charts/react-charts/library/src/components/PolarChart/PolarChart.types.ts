@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   AreaPolarSeries,
   AxisCategoryOrder,
@@ -7,6 +8,7 @@ import type {
   Chart,
   LinePolarSeries,
   Margins,
+  PolarDataPoint,
   ScatterPolarSeries,
 } from '../../types/DataPoint';
 import type { LegendsProps } from '../Legends/Legends.types';
@@ -94,6 +96,16 @@ export interface PolarChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /**
+   * Renders custom JSX for the active marker using the original polar data point.
+   * Returning null hides the callout; undefined uses the native default content.
+   * No defaultRender function is supplied.
+   */
+  onRenderCalloutPerDataPoint?: (
+    props?: PolarDataPoint,
+    defaultRender?: (props?: PolarDataPoint) => JSXElement | null,
+  ) => JSXElement | null | undefined;
 
   /*
    * Properties for customizing the legend.

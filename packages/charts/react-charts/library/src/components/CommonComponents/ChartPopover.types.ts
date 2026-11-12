@@ -5,6 +5,8 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 export interface ChartPopoverProps {
   clickPosition?: { x: number; y: number };
   isPopoverOpen?: boolean;
+  /** Render within the chart DOM instead of a Fluent portal. Defaults to true for native chart compatibility. */
+  inline?: boolean;
   xCalloutValue?: string;
   legend?: string | number | Date;
   yCalloutValue?: string;

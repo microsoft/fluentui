@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Parallel flattened arrays preserve aliases and pad the short labels array with null.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "id": "A", "steps": [1, 2, 3], "amounts": [2, 4, 6], "labels": ["one", "two"] },
+      { "id": "B", "steps": [1], "amounts": [8], "labels": ["only"] }
+    ]
+  },
+  "transform": [{ "flatten": ["steps", "amounts", "labels"], "as": ["step", "value", "label"] }],
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "step", "type": "quantitative" },
+    "y": { "field": "value", "type": "quantitative" },
+    "color": { "field": "id", "type": "nominal" },
+    "tooltip": [{ "field": "label", "type": "nominal" }]
+  }
+}
