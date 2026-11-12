@@ -7,6 +7,7 @@ import { isHTMLElement, useEventCallback, useMergedRefs } from '@fluentui/react-
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { toDataAttributeValue } from '../../utils';
 import { findNextFocusable, findPrevFocusable } from '../../hooks/focus';
+import { INTERACTION_TAG_ATTRIBUTE } from '../InteractionTag/useInteractionTag';
 
 /**
  * Returns the state for a TagGroup component, given its props and ref.
@@ -24,18 +25,20 @@ export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>
       return;
     }
 
-    const next = findNextFocusable(activeElement, { container });
+    // An InteractionTag is dismissed as a whole, so neither of its actions is a valid destination.
+    const dismissedTag = activeElement.closest<HTMLElement>(`[${INTERACTION_TAG_ATTRIBUTE}]`);
+    const dismissed = dismissedTag && container.contains(dismissedTag) ? dismissedTag : activeElement;
+
+    let next = findNextFocusable(activeElement, { container });
+    while (next && dismissed.contains(next)) {
+      next = findNextFocusable(next, { container });
+    }
     if (next) {
       next.focus();
       return;
     }
 
-    let prev = findPrevFocusable(activeElement, { container });
-    // The secondary action of an InteractionTag is labelled by its primary action, which is dismissed with it.
-    if (prev?.id && activeElement.getAttribute('aria-labelledby')?.split(' ').includes(prev.id)) {
-      prev = findPrevFocusable(prev, { container });
-    }
-    prev?.focus();
+    findPrevFocusable(dismissed, { container })?.focus();
   });
 
   const state: TagGroupState = useTagGroupBase_unstable(

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useCardBase_unstable } from '@fluentui/react-card';
 import type { CardOnSelectionChangeEvent } from '@fluentui/react-card';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
 import { toDataAttributeValue } from '../../utils/toDataAttributeValue';
@@ -49,12 +49,18 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardS
   }, []);
 
   const focusMode = focusModeProp ?? (isInteractive(props) ? 'no-tab' : 'off');
-  const focusableGroupAttributes = useFocusableGroup({ tabBehavior: focusMap[focusMode] });
+  const { onKeyDown: onGroupKeyDown, ...focusableGroupAttributes } = useFocusableGroup({
+    tabBehavior: focusMap[focusMode],
+  });
 
   const state: CardState = useCardBase_unstable({ shouldRestrictTriggerAction, ...props }, mergedRef);
 
   if (!disabled && !state.selectable && focusMode !== 'off') {
-    Object.assign(state.root, focusableGroupAttributes, { tabIndex: 0 });
+    Object.assign(state.root, focusableGroupAttributes, {
+      tabIndex: 0,
+      // The consumer's handler runs first and can keep the group from handling Escape with `preventDefault()`.
+      onKeyDown: mergeCallbacks(state.root.onKeyDown, onGroupKeyDown),
+    });
   }
 
   // eslint-disable-next-line react-hooks/immutability

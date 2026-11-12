@@ -38,10 +38,16 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
       return;
     }
 
-    if (event.key === nextArrowKey) {
-      findNextFocusable(activeElement, { container })?.focus();
-    } else if (event.key === prevArrowKey) {
-      findPrevFocusable(activeElement, { container })?.focus();
+    const destination =
+      event.key === nextArrowKey
+        ? findNextFocusable(activeElement, { container })
+        : event.key === prevArrowKey
+        ? findPrevFocusable(activeElement, { container })
+        : null;
+    if (destination) {
+      // Keep a horizontally scrollable menu or page from scrolling as well.
+      event.preventDefault();
+      destination.focus();
     }
   });
 

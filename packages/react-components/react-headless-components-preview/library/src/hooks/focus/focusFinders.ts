@@ -45,7 +45,13 @@ const isVisible = (element: HTMLElement): boolean => {
     return element.checkVisibility({ visibilityProperty: true, contentVisibilityAuto: true } as CheckVisibilityOptions);
   }
 
-  return element.getClientRects().length > 0;
+  if (element.getClientRects().length === 0) {
+    return false;
+  }
+
+  // `visibility: hidden` elements keep their layout boxes but cannot receive focus.
+  const visibility = element.ownerDocument.defaultView?.getComputedStyle(element).visibility;
+  return visibility !== 'hidden' && visibility !== 'collapse';
 };
 
 /**

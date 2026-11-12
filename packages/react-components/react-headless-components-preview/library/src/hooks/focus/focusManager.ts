@@ -193,14 +193,35 @@ const handleEnter = (event: KeyboardEvent, activeElement: HTMLElement): void => 
   }
 };
 
-const handleEscape = (event: KeyboardEvent, activeElement: HTMLElement): void => {
-  const group = closestInLayer(activeElement, GROUP_SELECTOR);
-  if (!group || group === activeElement || ignoresKey(group, 'Escape')) {
+/**
+ * Escape inside a focusable group moves focus back to the group. It runs as the group's own `onKeyDown`, so
+ * descendants (e.g. a composite list item returning focus to its row) handle Escape first, and an inner group
+ * consumes it before an outer group or an ancestor dialog sees it.
+ */
+export const handleGroupEscape = (event: React.KeyboardEvent<HTMLElement>): void => {
+  if (
+    event.key !== 'Escape' ||
+    event.isDefaultPrevented() ||
+    event.altKey ||
+    event.ctrlKey ||
+    event.metaKey ||
+    event.shiftKey
+  ) {
     return;
   }
 
-  // An expanded control (combobox, menu button, ...) closes its popup first.
-  if (activeElement.getAttribute('aria-expanded') === 'true' || !group.hasAttribute('tabindex')) {
+  const group = event.currentTarget;
+  const target = event.target;
+  if (
+    !isHTMLElement(target) ||
+    target === group ||
+    ignoresKey(group, 'Escape') ||
+    !group.hasAttribute('tabindex') ||
+    // Content of an inline popover or dialog inside the group is governed by that layer.
+    target.closest(LAYER_SELECTOR) !== group.closest(LAYER_SELECTOR) ||
+    // An expanded control (combobox, menu button, ...) closes its popup first.
+    target.getAttribute('aria-expanded') === 'true'
+  ) {
     return;
   }
 
@@ -220,7 +241,11 @@ const createFocusManager = (targetDocument: Document): FocusManagerEntry => {
     if (event.defaultPrevented) {
       return null;
     }
-    const activeElement = targetDocument.activeElement;
+    // Follow focus into open shadow roots: the document only reports their host.
+    let activeElement = targetDocument.activeElement;
+    while (activeElement?.shadowRoot?.activeElement) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
     return isHTMLElement(activeElement) ? activeElement : null;
   };
 
@@ -242,28 +267,22 @@ const createFocusManager = (targetDocument: Document): FocusManagerEntry => {
     }
   };
 
-  // Enter and Escape run in the capture phase so that a group consumes them before its ancestors (e.g. a
-  // dialog closing on Escape) see them.
+  // Enter runs in the capture phase so that a group consumes it before its content activates.
   const onKeyDownCapture = (event: KeyboardEvent) => {
-    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+    if (event.key !== 'Enter' || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
       return;
     }
 
-    const activeElement = event.key === 'Enter' || event.key === 'Escape' ? getActiveElement(event) : null;
-    if (!activeElement) {
-      return;
-    }
-
-    if (event.key === 'Enter') {
+    const activeElement = getActiveElement(event);
+    if (activeElement) {
       handleEnter(event, activeElement);
-    } else {
-      handleEscape(event, activeElement);
     }
   };
 
   // Shift+Tab from after a limited group lands on its last item natively; redirect to the group itself.
   const onFocusIn = (event: FocusEvent) => {
-    const target = event.target;
+    // `composedPath()[0]` is the focused element even inside an open shadow root.
+    const target = event.composedPath()[0];
     if (!tabPending || !isHTMLElement(target)) {
       return;
     }

@@ -661,7 +661,8 @@ describe('Menu', () => {
       );
 
       getByTestId('split-main').focus();
-      fireEvent.keyDown(getByTestId('split-main'), { key: 'ArrowRight' });
+      // `fireEvent` returns false when the default action (scrolling) was prevented.
+      expect(fireEvent.keyDown(getByTestId('split-main'), { key: 'ArrowRight' })).toBe(false);
       expect(getByTestId('split-secondary')).toHaveFocus();
 
       fireEvent.keyDown(getByTestId('split-secondary'), { key: 'ArrowLeft' });

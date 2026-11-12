@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { FOCUSABLE_GROUP_ATTRIBUTE, FOCUSABLE_GROUP_IGNORE_ATTRIBUTE, useFocusManager } from './focusManager';
+import {
+  FOCUSABLE_GROUP_ATTRIBUTE,
+  FOCUSABLE_GROUP_IGNORE_ATTRIBUTE,
+  handleGroupEscape,
+  useFocusManager,
+} from './focusManager';
 
 export interface UseFocusableGroupOptions {
   /**
@@ -27,11 +32,16 @@ export interface UseFocusableGroupOptions {
 export type FocusableGroupAttributes = {
   [FOCUSABLE_GROUP_ATTRIBUTE]: NonNullable<UseFocusableGroupOptions['tabBehavior']>;
   [FOCUSABLE_GROUP_IGNORE_ATTRIBUTE]?: string;
+  /**
+   * Handles Escape at the group; compose it with any other `onKeyDown` of the group element.
+   */
+  onKeyDown: React.KeyboardEventHandler<HTMLElement>;
 };
 
 /**
- * Returns the DOM attributes that turn an element into a focusable group: Enter moves focus into the group,
- * Escape moves it back to the group, and `tabBehavior` controls how Tab treats the group's content.
+ * Returns the DOM attributes and `onKeyDown` handler that turn an element into a focusable group: Enter moves
+ * focus into the group, Escape moves it back to the group, and `tabBehavior` controls how Tab treats the
+ * group's content.
  *
  * @param options - Options to configure keyboard navigation
  */
@@ -47,6 +57,7 @@ export const useFocusableGroup = (options: UseFocusableGroupOptions = {}): Focus
     () => ({
       [FOCUSABLE_GROUP_ATTRIBUTE]: tabBehavior,
       ...(ignoredKeys && { [FOCUSABLE_GROUP_IGNORE_ATTRIBUTE]: ignoredKeys }),
+      onKeyDown: handleGroupEscape,
     }),
     [tabBehavior, ignoredKeys],
   );

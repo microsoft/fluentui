@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import { createPortal } from 'react-dom';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { findAllTabbable, useFocusableGroup, useModalAttributes } from './index';
@@ -78,6 +79,31 @@ describe('useModalAttributes', () => {
     expect(getByText('B')).toHaveFocus();
   });
 
+  it('cycles Tab inside a trap rendered in an open shadow root', () => {
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+
+    try {
+      render(
+        createPortal(
+          <Trap>
+            <button>First</button>
+            <button>Last</button>
+          </Trap>,
+          shadowRoot as unknown as Element,
+        ),
+      );
+      const [first, last] = Array.from(shadowRoot.querySelectorAll('button'));
+
+      last.focus();
+      fireEvent.keyDown(last, { key: 'Tab', composed: true });
+      expect(shadowRoot.activeElement).toBe(first);
+    } finally {
+      host.remove();
+    }
+  });
+
   it('does not trap without legacyTrapFocus', () => {
     const { getByTestId } = render(<Modal legacyTrapFocus={false} />);
 
@@ -107,6 +133,7 @@ describe('useFocusableGroup', () => {
     expect(result.current).toEqual({
       'data-fui-focusable-group': 'limited',
       'data-fui-focusable-group-ignore': 'Escape',
+      onKeyDown: expect.any(Function),
     });
   });
 
@@ -138,6 +165,44 @@ describe('useFocusableGroup', () => {
 
     pressTab(true);
     expect(getByText('Last')).toHaveFocus();
+  });
+
+  it('leaves Escape to a descendant that handles it', () => {
+    const NestedHandler = () => {
+      const attributes = useFocusableGroup({ tabBehavior: 'limited' });
+      return (
+        <div {...attributes} tabIndex={0} data-testid="group">
+          <button onKeyDown={event => event.key === 'Escape' && event.preventDefault()}>Inner</button>
+        </div>
+      );
+    };
+    const { getByText } = render(<NestedHandler />);
+
+    getByText('Inner').focus();
+    fireEvent.keyDown(getByText('Inner'), { key: 'Escape' });
+    expect(getByText('Inner')).toHaveFocus();
+  });
+
+  it('moves focus from a nested group to the enclosing group on Escape', () => {
+    const Groups = () => {
+      const outer = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+      const inner = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+      return (
+        <div {...outer} tabIndex={0} data-testid="outer">
+          <div {...inner} tabIndex={0} data-testid="inner">
+            <button>Inner</button>
+          </div>
+        </div>
+      );
+    };
+    const { getByTestId, getByText } = render(<Groups />);
+
+    getByText('Inner').focus();
+    fireEvent.keyDown(getByText('Inner'), { key: 'Escape' });
+    expect(getByTestId('inner')).toHaveFocus();
+
+    fireEvent.keyDown(getByTestId('inner'), { key: 'Escape' });
+    expect(getByTestId('outer')).toHaveFocus();
   });
 
   it('respects ignored keys', () => {
@@ -196,5 +261,28 @@ describe('findAllTabbable', () => {
     );
 
     expect(findAllTabbable(container)).toEqual([getByText('One'), getByText('Two'), getByText('Zero')]);
+  });
+
+  it('skips visibility: hidden controls when checkVisibility is unavailable', () => {
+    const checkVisibility = HTMLElement.prototype.checkVisibility;
+    // @ts-expect-error -- simulate a browser without checkVisibility()
+    delete HTMLElement.prototype.checkVisibility;
+    const getClientRects = jest
+      .spyOn(HTMLElement.prototype, 'getClientRects')
+      .mockReturnValue([{}] as unknown as DOMRectList);
+
+    try {
+      const { getByText, container } = render(
+        <div>
+          <button style={{ visibility: 'hidden' }}>Hidden</button>
+          <button>Visible</button>
+        </div>,
+      );
+
+      expect(findAllTabbable(container)).toEqual([getByText('Visible')]);
+    } finally {
+      getClientRects.mockRestore();
+      HTMLElement.prototype.checkVisibility = checkVisibility;
+    }
   });
 });

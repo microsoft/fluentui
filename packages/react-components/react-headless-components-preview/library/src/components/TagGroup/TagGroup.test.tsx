@@ -74,6 +74,27 @@ describe('TagGroup', () => {
     expect(first).toHaveFocus();
   });
 
+  it('skips the dismissed InteractionTag even when its secondary action has a custom label', () => {
+    const { getByText, getByRole } = render(
+      <TagGroup>
+        <Tag value="1" dismissible>
+          first
+        </Tag>
+        <InteractionTag value="2">
+          <InteractionTagPrimary hasSecondaryAction>second</InteractionTagPrimary>
+          <InteractionTagSecondary aria-labelledby="custom-label" aria-label="remove" />
+        </InteractionTag>
+      </TagGroup>,
+    );
+    const first = getByText('first').closest('button')!;
+    const secondary = getByRole('button', { name: /remove/ });
+
+    secondary.focus();
+    fireEvent.click(secondary);
+
+    expect(first).toHaveFocus();
+  });
+
   it('moves focus to the previous tag when the last tag is dismissed', () => {
     const { getByText } = render(
       <TagGroup>
