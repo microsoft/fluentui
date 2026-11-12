@@ -117,6 +117,12 @@ describe.each([
       specPattern: ['src/**/*.cy.tsx', 'e2e/**/*.cy.tsx', path.join(root, 'external', '*.cy.tsx')],
       expectedPatterns: ['src/**/*.cy.tsx', 'e2e/**/*.cy.tsx', path.join(root, 'external', '*.cy.tsx')],
     },
+    {
+      // The shared base config joins its patterns to `process.cwd()`, the prepared project when RIT runs it.
+      name: 'shared base config patterns built from the prepared project',
+      specPattern: [path.join(configDir, '**/*.e2e.tsx'), path.join(configDir, '**/*.cy.tsx')],
+      expectedPatterns: [path.join(originRoot, '**/*.e2e.tsx'), path.join(originRoot, '**/*.cy.tsx')],
+    },
   ])(
     'compiles and loads the Cypress config with $name and exact runtime paths',
     ({ specPattern, expectedPatterns }) => {
