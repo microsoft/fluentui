@@ -42,6 +42,7 @@ export const useNavCategoryItem = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
+        type: 'button',
         ...props,
         'aria-current': validAriaCurrent,
         'aria-expanded': open,

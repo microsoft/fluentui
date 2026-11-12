@@ -43,7 +43,7 @@ Alternatively, run Storybook locally with:
 
 ### Specification
 
-See [Spec.md](./Spec.md).
+See [Spec.md](./docs/Spec.md).
 
 ## Opt-in CSS Modules styles
 

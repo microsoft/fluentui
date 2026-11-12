@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster",
+  "packageName": "@fluentui/react-rating",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -2,6 +2,53 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:38:08 GMT",
+      "version": "0.4.1",
+      "tag": "@fluentui/react-headless-components-preview_v0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1e3ae874ae7b864cbd0d1c2e6497f625a9536830",
+            "comment": "fix: annotate composed components explicitly with ForwardRefComponent and ComponentWithoutRef; components without a ref now declare a JSXElement | null return type"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "be26343fa59b924a63673078fac018980451c721",
+            "comment": "refactor: move headless overlays onto the internal top-layer hooks. Popover now unmounts a microtask after a native close, and stays closed when kept `open` after a browser dismiss."
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "949da47ceff77d46b1f439b66fc26da5290b99f8",
+            "comment": "fix: notify InfoButton onOpenChange when focus leaves the trigger and information surface"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b18c8ab0ac50c0402526ea4a5b7a893f4f4e8b94",
+            "comment": "fix(Menu): restore focus when closing within a shadow root"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "400ee0c145e863a358eac4debeebc3b03d071060",
+            "comment": "fix: NavCategoryItem renders type=\"button\" so it does not submit an enclosing form"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9c21962f67d6248e3b9f0af2942ee90fb18cda46",
+            "comment": "chore: add internal top-layer hooks for the headless overlays"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2026 18:20:43 GMT",
       "version": "0.4.0",
       "tag": "@fluentui/react-headless-components-preview_v0.4.0",
