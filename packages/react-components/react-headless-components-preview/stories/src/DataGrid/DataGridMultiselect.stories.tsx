@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryGrid } from './DataGridShared.stories';
+import { StoryGrid } from './utils';
 
 export const Multiselect = (): React.ReactNode => <StoryGrid selectionMode="multiselect" defaultSelectedItems={[1]} />;
 

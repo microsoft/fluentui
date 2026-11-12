@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryGrid } from './DataGridShared.stories';
+import { StoryGrid } from './utils';
 
 export const RowFocus = (): React.ReactNode => <StoryGrid focusMode="row_unstable" selectionMode="multiselect" />;
 

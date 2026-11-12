@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryGrid } from './DataGridShared.stories';
+import { StoryGrid } from './utils';
 
 export const Sortable = (): React.ReactNode => (
   <StoryGrid sortable defaultSortState={{ sortColumn: 'file', sortDirection: 'ascending' }} />
