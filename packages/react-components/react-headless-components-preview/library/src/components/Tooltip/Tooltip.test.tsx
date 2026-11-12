@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
@@ -67,6 +67,38 @@ describe('Tooltip', () => {
 
     expect(screen.queryByRole('tooltip')).toBeNull();
     expect(screen.getByRole('button')).toHaveAttribute('aria-label', tooltipText);
+  });
+
+  it('does not show a tooltip when a mouse restores focus to a text input', () => {
+    jest.useFakeTimers();
+
+    try {
+      render(
+        <Tooltip content="Input tooltip" relationship="label" showDelay={1}>
+          <input aria-label="trigger" />
+        </Tooltip>,
+      );
+
+      const trigger = screen.getByRole('textbox');
+      jest.spyOn(trigger, 'matches').mockReturnValue(true);
+
+      fireEvent.mouseDown(document.body, {
+        buttons: 1,
+        clientX: 1,
+        clientY: 1,
+        screenX: 1,
+        screenY: 1,
+      });
+      fireEvent.focus(trigger);
+      act(() => {
+        jest.advanceTimersByTime(1);
+      });
+
+      expect(screen.queryByRole('tooltip')).toBeNull();
+    } finally {
+      jest.useRealTimers();
+      jest.restoreAllMocks();
+    }
   });
 
   it('renders the content of a nontrivial label tooltip', () => {

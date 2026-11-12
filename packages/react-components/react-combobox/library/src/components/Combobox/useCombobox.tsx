@@ -13,6 +13,7 @@ import {
   useOnClickOutside,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -242,6 +243,16 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
 
+  // keyborg ignores keys pressed in text inputs, so mark keyboard navigation explicitly to keep
+  // Tabster's focus indicators in sync. Done here rather than in the base hook so the base hook
+  // does not depend on react-tabster (keyborg).
+  const setKeyboardNavigation = useSetKeyboardNavigation();
+  const onInputKeyDown = useEventCallback(
+    mergeCallbacks((_event: React.KeyboardEvent<HTMLInputElement>) => {
+      setKeyboardNavigation(true);
+    }, baseState.input.onKeyDown),
+  );
+
   if (baseState.clearIcon) {
     baseState.clearIcon.children ??= <DismissIcon />;
   }
@@ -257,6 +268,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     input: {
       ...useTabsterEscapeIgnore(baseState.input, baseState.open),
       ...baseState.input,
+      onKeyDown: onInputKeyDown,
     },
   };
 };
