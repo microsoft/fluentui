@@ -72,6 +72,20 @@ describe('griffel-buckets directive', () => {
       '@griffel-buckets reset: .root, .icon; logical: padding-inline-start',
     );
     assert.equal(parseDirective(' a regular comment '), undefined);
+    assert.deepEqual(parseDirective('@griffel-buckets reset: .root; defaults: .secondary, .medium'), {
+      resetClassNames: ['root'],
+      logicalProperties: [],
+      defaultClassNames: ['secondary', 'medium'],
+    });
+    assert.equal(
+      formatDirective({
+        resetClassNames: ['root'],
+        logicalProperties: ['padding-inline-start'],
+        defaultClassNames: ['medium'],
+      }),
+      '@griffel-buckets reset: .root; defaults: .medium; logical: padding-inline-start',
+    );
+    assert.ok(parseDirective('@griffel-buckets defaults: medium') instanceof Error);
     assert.ok(parseDirective('@griffel-buckets reset: root') instanceof Error);
     assert.ok(parseDirective('@griffel-buckets priority: 1') instanceof Error);
   });
@@ -82,6 +96,38 @@ describe('griffel-buckets directive', () => {
       logicalProperties: ['padding-inline-start', 'margin-inline-start', 'margin-inline-end'],
     });
     assert.equal(deriveFromGriffelSource(join(component, 'Other.module.css')), undefined);
+  });
+
+  it('derives reset classes passed through spread class lists', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'griffel-buckets-'));
+    try {
+      writeFileSync(
+        join(dir, 'useAvatarStyles.styles.ts'),
+        `
+const useRootClassName = makeResetStyles({ display: 'inline-block' });
+export const useAvatarStyles_unstable = state => {
+  const rootClassName = useRootClassName();
+  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size]];
+  state.root.className = mergeClasses('fui-Avatar', ...rootClasses, state.root.className);
+};
+`,
+      );
+      writeFileSync(
+        join(dir, 'useAvatarStyles.styles.css.ts'),
+        `
+import styles from './Avatar.module.css';
+export const useAvatarStyles_unstable = state => {
+  state.root.className = clsx('fui-Avatar', styles.root, state.root.className);
+};
+`,
+      );
+      assert.deepEqual(deriveFromGriffelSource(join(dir, 'Avatar.module.css')), {
+        resetClassNames: ['root'],
+        logicalProperties: [],
+      });
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 
@@ -106,6 +152,25 @@ describe('fluentui/griffel-buckets', () => {
     assert.equal(warnings.length, 1);
     assert.match(warnings[0], /instead of "@griffel-buckets reset: \.root"/);
     assert.equal((await lint(drifted, { file, fix: true })).output, `${directive}\n${css}`);
+  });
+
+  it('keeps default classes, which the Griffel source cannot derive', async () => {
+    const withDefaults = `/* @griffel-buckets reset: .root, .icon; defaults: .small; logical: padding-inline-start, margin-inline-start */\n${css}`;
+    assert.deepEqual((await lint(withDefaults, { file })).warnings, []);
+    const drifted = `/* @griffel-buckets reset: .root; defaults: .small */\n${css}`;
+    assert.equal(
+      (await lint(drifted, { file, fix: true })).output,
+      `/* @griffel-buckets reset: .root, .icon; defaults: .small; logical: padding-inline-start, margin-inline-start */\n${css}`,
+    );
+    assert.deepEqual(
+      (
+        await lint(
+          `/* @griffel-buckets reset: .root, .icon; defaults: .large; logical: padding-inline-start, margin-inline-start */\n${css}`,
+          { file },
+        )
+      ).warnings,
+      ['Unexpected default class ".large": no rule uses it.'],
+    );
   });
 
   it('accepts reordered values', async () => {

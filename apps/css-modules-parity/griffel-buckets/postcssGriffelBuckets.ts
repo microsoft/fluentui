@@ -15,7 +15,7 @@ export type PostcssGriffelBucketsOptions = {
 };
 
 export type GriffelSourceInfo = {
-  /** Classes replacing `makeResetStyles()` styles. */
+  /** Classes replacing `makeResetStyles()` styles, and default variant classes holding styles they contained. */
   resetClassNames: Set<string>;
   /** Logical properties (kebab-case) declared by the Griffel styles. */
   logicalProperties: Set<string>;
@@ -39,7 +39,8 @@ export function getGriffelSourceInfo(root: Root): GriffelSourceInfo {
       .split(',')
       .map(value => value.trim())
       .filter(Boolean);
-    if (key === 'reset') {
+    // Default classes hold styles the Griffel reset class contained (for example a Button's `secondary` styles).
+    if (key === 'reset' || key === 'defaults') {
       list.forEach(value => info.resetClassNames.add(value.replace(/^\./, '')));
     } else if (key === 'logical') {
       list.forEach(value => info.logicalProperties.add(value));

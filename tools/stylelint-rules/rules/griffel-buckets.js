@@ -21,6 +21,8 @@ const messages = ruleMessages(name, {
   duplicate: () => `Unexpected second ${DIRECTIVE} directive.`,
   position: () => `Expected the ${DIRECTIVE} directive before the first rule.`,
   unknownClass: (/** @type {string} */ className) => `Unexpected reset class ".${className}": no rule uses it.`,
+  unknownDefaultClass: (/** @type {string} */ className) =>
+    `Unexpected default class ".${className}": no rule uses it.`,
   unknownProperty: (/** @type {string} */ property) =>
     `Unexpected logical property "${property}": no declaration uses it.`,
 });
@@ -117,6 +119,15 @@ const rule = primary => (root, result) => {
         ruleName: name,
       });
     }
+    for (const className of (parsed.defaultClassNames ?? []).filter(value => !classNames.has(value))) {
+      report({
+        message: messages.unknownDefaultClass(className),
+        node: directive,
+        word: `.${className}`,
+        result,
+        ruleName: name,
+      });
+    }
     for (const property of parsed.logicalProperties.filter(value => !declaredProperties.includes(value))) {
       report({ message: messages.unknownProperty(property), node: directive, word: property, result, ruleName: name });
     }
@@ -128,11 +139,16 @@ const rule = primary => (root, result) => {
     return;
   }
   // Only logical properties the stylesheet declares matter, in the order it declares them.
+  // Default classes can't be derived: the directive's own list is kept.
   const expected = {
     resetClassNames: derived.resetClassNames,
+    defaultClassNames: parsed?.defaultClassNames ?? [],
     logicalProperties: declaredProperties.filter(property => derived.logicalProperties.includes(property)),
   };
-  const isEmpty = expected.resetClassNames.length === 0 && expected.logicalProperties.length === 0;
+  const isEmpty =
+    expected.resetClassNames.length === 0 &&
+    expected.defaultClassNames.length === 0 &&
+    expected.logicalProperties.length === 0;
   const expectedText = formatDirective(expected);
 
   if (!directive) {

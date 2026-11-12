@@ -148,7 +148,17 @@
   }
 }
 
+/* After the checked styles: a disabled toggle shows disabled colors whether or not it's checked. */
 .disabled {
+  &,
+  &:hover,
+  &:hover:active,
+  &:active:focus-visible {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
   &:where(.primary) {
     &,
     &:hover,

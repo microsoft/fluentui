@@ -1,4 +1,4 @@
-/* @griffel-buckets reset: .root, .icon */
+/* @griffel-buckets reset: .root, .icon; defaults: .secondary, .medium, .rounded */
 .root {
   align-items: center;
   box-sizing: border-box;

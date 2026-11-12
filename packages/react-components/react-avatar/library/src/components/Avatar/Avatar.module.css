@@ -1,4 +1,4 @@
-/* @griffel-buckets reset: .image, .iconInitials */
+/* @griffel-buckets reset: .root, .image, .iconInitials */
 /* ---- Root base (32px default, circular) ---- */
 .root {
   display: inline-block;
