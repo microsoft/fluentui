@@ -12,8 +12,11 @@ import { basename, dirname, join, resolve } from 'node:path';
  * - `reset`: classes replacing `makeResetStyles()` styles, which Griffel inserts before every `makeStyles()` style.
  * - `logical`: logical properties the Griffel styles declared as such. Griffel's physical shorthands (`padding`)
  *   don't remove them, so they keep beating app shorthand overrides.
+ * - `defaults`: variant classes holding styles the Griffel reset class contained as defaults (for example a Button's
+ *   `secondary`, `medium` and `rounded` styles), ordered like reset classes. Not derivable from the sources, so only
+ *   checked against the stylesheet's classes.
  *
- * @typedef {{ resetClassNames: string[], logicalProperties: string[] }} GriffelBuckets
+ * @typedef {{ resetClassNames: string[], logicalProperties: string[], defaultClassNames?: string[] }} GriffelBuckets
  */
 
 export const DIRECTIVE = '@griffel-buckets';
@@ -41,25 +44,31 @@ export function parseDirective(text) {
     if (rest.length > 0 || list.length === 0) {
       return new Error(`Expected "<field>: <value>, <value>" in "${field.trim()}"`);
     }
-    if (key.trim() === 'reset') {
+    if (key.trim() === 'reset' || key.trim() === 'defaults') {
       const invalid = list.find(value => !/^\.[\w-]+$/.test(value));
       if (invalid) {
-        return new Error(`Expected a class selector such as ".root" in reset, found "${invalid}"`);
+        return new Error(`Expected a class selector such as ".root" in ${key.trim()}, found "${invalid}"`);
       }
-      buckets.resetClassNames.push(...list.map(value => value.slice(1)));
+      const classNames = list.map(value => value.slice(1));
+      if (key.trim() === 'reset') {
+        buckets.resetClassNames.push(...classNames);
+      } else {
+        buckets.defaultClassNames = [...(buckets.defaultClassNames ?? []), ...classNames];
+      }
     } else if (key.trim() === 'logical') {
       buckets.logicalProperties.push(...list);
     } else {
-      return new Error(`Unknown field "${key.trim()}", expected "reset" or "logical"`);
+      return new Error(`Unknown field "${key.trim()}", expected "reset", "defaults" or "logical"`);
     }
   }
   return buckets;
 }
 
 /** @param {GriffelBuckets} buckets */
-export function formatDirective({ resetClassNames, logicalProperties }) {
+export function formatDirective({ resetClassNames, logicalProperties, defaultClassNames = [] }) {
   const fields = [
     resetClassNames.length > 0 && `reset: ${resetClassNames.map(name => `.${name}`).join(', ')}`,
+    defaultClassNames.length > 0 && `defaults: ${defaultClassNames.map(name => `.${name}`).join(', ')}`,
     logicalProperties.length > 0 && `logical: ${logicalProperties.join(', ')}`,
   ].filter(Boolean);
   return `${DIRECTIVE} ${fields.join('; ')}`;
@@ -170,9 +179,18 @@ export function deriveFromGriffelSource(cssFile) {
         resetValues.add(name);
       }
     }
+    // Class lists spread into `mergeClasses()`: `const rootClasses = [rootClassName, ...]`.
+    for (const [, name, items] of griffelHook.matchAll(/const (\w+) = \[([^\]]*)\]/g)) {
+      if (items.split(/[^\w.]+/).some(token => resetValues.has(token))) {
+        resetValues.add(name);
+      }
+    }
     const resetSlots = new Set(
       getSlotClassNameArguments(griffelHook, 'mergeClasses')
-        .filter(([, args]) => args.split(/[^\w.]+/).some(token => resetValues.has(token)))
+        .filter(([, args]) =>
+          // Spread class lists (`...rootClasses`) keep their dots in the token.
+          args.split(/[^\w.]+/).some(token => resetValues.has(token.replace(/^\.{3}/, ''))),
+        )
         .map(([slot]) => slot),
     );
     for (const [slot, args] of getSlotClassNameArguments(cssHook, 'clsx')) {
