@@ -299,9 +299,7 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
           return (
             <div key={id} data-testid={id} style={{ padding: 4 }}>
               <button data-testid={`${id}-start`}>Start</button>
-              <React.Suspense fallback={null}>
-                {wrap ? wrap(element, implementation) : element}
-              </React.Suspense>
+              <React.Suspense fallback={null}>{wrap ? wrap(element, implementation) : element}</React.Suspense>
             </div>
           );
         }),
