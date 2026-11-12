@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "chore(react-text): add an opt-in build-independent dependency lint pilot",
+  "packageName": "@fluentui/react-text",
+  "email": "paulmardling@microsoft.com"
+}
