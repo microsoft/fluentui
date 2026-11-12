@@ -156,6 +156,8 @@ describe(`workspace-plugin`, () => {
       'css/project.json': serializeJson({ tags: ['vNext'] }),
       'css/package.json': serializeJson({ sideEffects: ['**/*.css'] }),
       'css/eslint.config.js': 'module.exports = {}',
+      'css/src/styles.css': '#storybook-docs { display: block; }',
+      'css/src/Test.module.css': '.root { display: block; }',
       'no-css/project.json': serializeJson({ tags: ['vNext'] }),
       'no-css/package.json': serializeJson({ sideEffects: false }),
       'no-css/eslint.config.js': 'module.exports = {}',
@@ -171,7 +173,7 @@ describe(`workspace-plugin`, () => {
     expect(css?.lint).toMatchObject({
       options: {
         cwd: 'css',
-        commands: ['yarn run -T eslint src', 'yarn run -T stylelint "src/**/*.css" --allow-empty-input'],
+        commands: ['yarn run -T eslint src', 'yarn run -T stylelint "src/**/*.module.css" --allow-empty-input'],
         parallel: false,
       },
       inputs: expect.arrayContaining([
@@ -182,6 +184,26 @@ describe(`workspace-plugin`, () => {
     });
     expect(noCss?.lint?.options).toEqual({ cwd: 'no-css', command: 'yarn run -T eslint src' });
     expect(v8Css?.lint?.options).toEqual({ cwd: 'v8-css', command: 'yarn run -T eslint src' });
+  });
+
+  it('should only lint CSS Modules in v9 projects declaring legacy CSS side effects', async () => {
+    await tempFs.createFiles({
+      'legacy-css/project.json': serializeJson({ tags: ['vNext'] }),
+      'legacy-css/package.json': serializeJson({ sideEffects: ['./dist/styles.css'] }),
+      'legacy-css/eslint.config.js': 'module.exports = {}',
+      'legacy-css/src/styles.css': '#storybook-docs { display: block; }',
+    });
+
+    const legacyCss = getTargets(
+      await createNodesFunction(['legacy-css/project.json'], options, context),
+      'legacy-css',
+    );
+
+    expect(legacyCss?.lint?.options).toEqual({
+      cwd: 'legacy-css',
+      commands: ['yarn run -T eslint src', 'yarn run -T stylelint "src/**/*.module.css" --allow-empty-input'],
+      parallel: false,
+    });
   });
 
   it('should add lint,test task only if configuration exists', async () => {
