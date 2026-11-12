@@ -17,38 +17,37 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { mergeCallbacks, slot, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotShorthandValue } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../utils';
-import { mergeProps } from '../../utils/mergeProps';
 import {
   DAYS_IN_WEEK,
+  DEFAULT_WORK_WEEK_DAYS,
   addDays,
   addMonths,
   addYears,
   calendarFormatters,
   compareDatePart,
+  createDate,
   findAvailableDate,
+  findCivilDate,
+  focusCalendarGrid,
+  getAvailableDates,
   getDateRange,
+  getDateRangeTypeToUse,
   getDayFromIndex,
   getDayGrid,
   getDayIndex,
-  getMonthEnd,
-  getMonthStart,
-  getWeekNumber,
-  isRestrictedDate,
-  setMonth,
-} from './utils';
-import { addCivilDays, createDate, matchesCivilDate } from './utils/dateMath';
-import { getAvailableDates } from './utils/dateGrid/dateAvailability';
-import { getDateRangeTypeToUse } from './utils/dateGrid/workWeek';
-import {
-  focusCalendarGrid,
   getEventCell,
   getGridCells,
+  getMonthEnd,
+  getMonthStart,
   getTargetIndex,
+  getWeekNumber,
   isEditable,
   isGridNavigationKey,
   isNestedWidget,
-} from './calendarGrid';
-import type { DayOfWeek, RestrictedDatesOptions } from './utils';
+  isRestrictedDate,
+  setMonth,
+} from './utils';
+import type { RestrictedDatesOptions } from './utils';
 import type {
   CalendarCellData,
   CalendarDayCellData,
@@ -68,32 +67,11 @@ type ButtonSlot = ExtractSlotProps<Slot<'button'>> | SlotShorthandValue | undefi
 type FocusRequest = 'first' | 'month';
 
 const YEAR_COUNT = 12;
-const DEFAULT_WORK_WEEK_DAYS: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 const RANGE_HOVERED = 'data-range-hovered';
 const RANGE_PRESSED = 'data-range-pressed';
 
 const eventType = (event: React.SyntheticEvent | Event): 'click' | 'keydown' =>
   event.type === 'keydown' ? 'keydown' : 'click';
-
-/** Steps by civil days from `date`, skipping dates that do not exist in the local timezone. */
-const findCivilDate = (
-  date: Date,
-  step: number,
-  accept: (candidate: Date) => boolean | undefined,
-  bound?: Date,
-): Date | undefined => {
-  const origin = { year: date.getFullYear(), month: date.getMonth(), day: date.getDate() };
-  for (let offset = step; ; offset += step) {
-    const civil = addCivilDays(origin, offset);
-    const candidate = createDate(civil.year, civil.month, civil.day);
-    if (!Number.isFinite(candidate.getTime()) || (bound && compareDatePart(candidate, bound) * step > 0)) {
-      return undefined;
-    }
-    if (matchesCivilDate(candidate, civil) && accept(candidate)) {
-      return candidate;
-    }
-  }
-};
 
 /**
  * Creates Calendar state. Calendar owns the selected and displayed dates, the view, and the roving focus of every
@@ -114,10 +92,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     firstDayOfWeek = 'sunday',
     firstWeekOfYear = 'firstDay',
     formatters: formatterOverrides,
-    getCellProps,
     getMarkedDays,
-    getRowProps,
-    getWeekdayCellProps,
     layout,
     maxDate,
     minDate,
@@ -125,6 +100,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     onDisplayedDateChange,
     onSelectDate,
     onViewChange,
+    renderCell,
+    renderRow,
+    renderWeekdayCell,
     restrictedDates,
     showWeekNumbers = false,
     today: todayProp,
@@ -139,8 +117,11 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     divider,
     goToTodayButton,
     grid,
+    gridBody,
+    gridHeader,
     header,
     heading,
+    headingLabel,
     liveRegion,
     monthPicker,
     navigation,
@@ -219,7 +200,8 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const rootRef = React.useRef<HTMLDivElement>(null);
   const focusRequest = React.useRef<FocusRequest | undefined>(undefined);
   const focusWithin = React.useRef(false);
-  const focusedPanel = React.useRef<'day' | 'month' | undefined>(undefined);
+  // The view of the panel that holds focus, and whether focus is in its grid.
+  const focused = React.useRef<{ view: CalendarView; inGrid: boolean } | undefined>(undefined);
   const pagingDate = React.useRef<Date | undefined>(undefined);
   // Refs are written only from event handlers, through these stable callbacks.
   const requestFocus = useEventCallback((focus: FocusRequest | undefined) => {
@@ -228,16 +210,22 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const setPagingDate = useEventCallback((date: Date | undefined) => {
     pagingDate.current = date;
   });
-  const renderedPanels = `${showDayPanel ? 'day' : ''} ${showMonthPanel ? 'month' : ''}`;
+  const renderedViews = `${showDayPanel ? 'day' : ''} ${showMonthPanel ? monthPanelView : ''}`;
 
   React.useEffect(() => {
     const root = rootRef.current;
     let request = focusRequest.current;
     focusRequest.current = undefined;
-    if (focusedPanel.current && !renderedPanels.includes(focusedPanel.current)) {
-      // A layout or view change removed the focused panel.
-      focusedPanel.current = undefined;
-      request ??= 'first';
+    const lost = focused.current;
+    if (lost && !renderedViews.includes(lost.view)) {
+      focused.current = undefined;
+      if (lost.view === 'day' || !showMonthPanel) {
+        // A layout or view change removed the focused panel.
+        request ??= 'first';
+      } else if (lost.inGrid) {
+        // The month panel swapped its month and year grids while one of them had focus.
+        request ??= 'month';
+      }
     }
     if (!root || !request) {
       return;
@@ -346,7 +334,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     return {
       ...day,
       type: 'day',
-      isMarked: day.isMarked || (!!date && markedDayKeys.has(day.key)),
+      isMarked: !!date && markedDayKeys.has(day.key),
       label: date ? format({ date, format: 'day' }) : day.date,
       isNavigated: !!date && !!dayFocusTarget && compareDatePart(date, dayFocusTarget) === 0,
     };
@@ -468,96 +456,78 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const activeKeys: Partial<Record<CalendarView, string>> = {};
 
   const resolveCellProps: CalendarState['resolveCellProps'] = cell => {
-    const overrides = getCellProps?.(cell);
     const isTabStop = tabStops[cell.type] === cell.key;
     const isDay = cell.type === 'day';
     const disabled = !cell.isInBounds;
     const date = isDay ? cell.originalDate : undefined;
     const formattedDate = isDay ? (date ? format({ date, format: 'monthDayYear' }) : cell.date) : '';
     return {
-      root: mergeProps<HTMLElement, React.HTMLAttributes<HTMLElement>>(
-        {
-          role: 'gridcell',
-          'aria-current': (isDay ? cell.isToday : cell.isCurrent) ? 'date' : undefined,
-          'aria-disabled': disabled,
-          'aria-label':
-            cell.type === 'month' ? format({ date: setMonth(navigatedDate, cell.index), format: 'month' }) : undefined,
-          'aria-selected': isDay && disabled ? undefined : cell.isSelected,
-          tabIndex: isDay
-            ? isDayFocusable(cell)
-              ? isTabStop
-                ? 0
-                : -1
-              : undefined
-            : isTabStop
-            ? 0
-            : // Keep the last focused cell programmatically focusable if the grid changes while it is focused.
-            allFocusable || !disabled || activeKeys[cell.type] === cell.key
-            ? -1
-            : undefined,
-          ...({
-            [isDay ? 'data-today' : 'data-current']: toDataAttributeValue(isDay ? cell.isToday : cell.isCurrent),
-            'data-selected': toDataAttributeValue(cell.isSelected),
-            'data-outside-bounds': toDataAttributeValue(disabled),
-            'data-marked': toDataAttributeValue(isDay && cell.isMarked),
-            'data-outside-month': toDataAttributeValue(isDay && !cell.isInMonth),
-          } as {}),
-        },
-        overrides?.root,
-      ),
-      button: mergeProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(
-        isDay
-          ? {
-              'aria-label': cell.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
-              disabled,
-              onMouseDown: (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault(),
-              tabIndex: -1,
-              type: 'button',
-            }
-          : { children: cell.label, disabled: disabled && !allFocusable, tabIndex: -1, type: 'button' },
-        overrides?.button,
-      ),
-      label: isDay ? mergeProps({ children: cell.label }, overrides?.label) : undefined,
-      marker: isDay && cell.isMarked ? mergeProps({ 'aria-hidden': true }, overrides?.marker) : undefined,
+      root: {
+        role: 'gridcell',
+        'aria-current': (isDay ? cell.isToday : cell.isCurrent) ? 'date' : undefined,
+        'aria-disabled': disabled,
+        'aria-label':
+          cell.type === 'month' ? format({ date: setMonth(navigatedDate, cell.index), format: 'month' }) : undefined,
+        'aria-selected': isDay && disabled ? undefined : cell.isSelected,
+        tabIndex: isDay
+          ? isDayFocusable(cell)
+            ? isTabStop
+              ? 0
+              : -1
+            : undefined
+          : isTabStop
+          ? 0
+          : // Keep the last focused cell programmatically focusable if the grid changes while it is focused.
+          allFocusable || !disabled || activeKeys[cell.type] === cell.key
+          ? -1
+          : undefined,
+        ...({
+          [isDay ? 'data-today' : 'data-current']: toDataAttributeValue(isDay ? cell.isToday : cell.isCurrent),
+          'data-selected': toDataAttributeValue(cell.isSelected),
+          'data-outside-bounds': toDataAttributeValue(disabled),
+          'data-marked': toDataAttributeValue(isDay && cell.isMarked),
+          'data-outside-month': toDataAttributeValue(isDay && !cell.isInMonth),
+        } as {}),
+      },
+      button: isDay
+        ? {
+            'aria-label': cell.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
+            disabled,
+            onMouseDown: (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault(),
+            tabIndex: -1,
+            type: 'button',
+          }
+        : { children: cell.label, disabled: disabled && !allFocusable, tabIndex: -1, type: 'button' },
+      label: isDay ? { children: cell.label } : undefined,
+      marker: isDay && cell.isMarked ? { 'aria-hidden': true } : undefined,
     };
   };
 
   const resolveRowProps: CalendarState['resolveRowProps'] = row => {
-    const overrides = getRowProps?.(row);
     const weekNumber = row.type === 'week' ? row.weekNumber : undefined;
     const weekNumberLabel = weekNumber === undefined ? '' : formatters.weekNumberLabel({ weekNumber });
     return {
-      root: mergeProps({ role: 'row' }, overrides?.root),
+      root: { role: 'row' },
       weekNumber:
         row.type === 'weekday'
           ? showWeekNumbers
-            ? mergeProps({ role: 'presentation' }, overrides?.weekNumber)
+            ? { role: 'presentation' }
             : undefined
           : weekNumber !== undefined
-          ? mergeProps(
-              {
-                'aria-label': weekNumberLabel,
-                children: <span>{weekNumber}</span>,
-                scope: 'row',
-                title: weekNumberLabel,
-              },
-              overrides?.weekNumber,
-            )
+          ? { 'aria-label': weekNumberLabel, children: weekNumber, scope: 'row', title: weekNumberLabel }
           : undefined,
     };
   };
 
-  const resolveWeekdayCellProps: CalendarState['resolveWeekdayCellProps'] = weekday =>
-    mergeProps(
-      {
-        role: 'columnheader',
-        'aria-label': weekday.accessibleLabel,
-        children: weekday.label,
-        scope: 'col',
-        title: weekday.accessibleLabel,
-      },
-      getWeekdayCellProps?.(weekday).root,
-    );
+  const resolveWeekdayCellProps: CalendarState['resolveWeekdayCellProps'] = weekday => ({
+    root: {
+      role: 'columnheader',
+      'aria-label': weekday.accessibleLabel,
+      children: weekday.label,
+      scope: 'col',
+      title: weekday.accessibleLabel,
+    },
+  });
 
   // Labels
 
@@ -838,11 +808,6 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
             ? formatters.yearRangePickerHeaderLabel({ fromYear, toYear, formattedRange: headingText })
             : formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })
           : undefined,
-        children: (
-          <span aria-live={isYear ? 'assertive' : 'polite'} aria-atomic="true">
-            {headingText}
-          </span>
-        ),
         type: headingView ? 'button' : undefined,
       },
       elementType: headingView ? 'button' : 'div',
@@ -896,20 +861,29 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         root: 'div',
         header: 'div',
         heading: headingView ? 'button' : 'div',
+        headingLabel: 'span',
         navigation: 'div',
         previousButton: 'button',
         nextButton: 'button',
         closeButton: 'button',
         grid: isDay ? ('table' as 'div') : 'div',
+        gridHeader: 'thead',
+        gridBody: 'tbody',
       },
       root,
       header: slot.always(header, { elementType: 'div' }),
       heading: headingSlot,
+      headingLabel: slot.always(headingLabel, {
+        defaultProps: { 'aria-atomic': true, 'aria-live': isYear ? 'assertive' : 'polite', children: headingText },
+        elementType: 'span',
+      }),
       navigation: slot.always(navigation, { elementType: 'div' }),
       previousButton: getNavButton(previousButton, -1),
       nextButton: getNavButton(nextButton, 1),
       closeButton: closeSlot,
       grid: gridSlot,
+      gridHeader: isDay ? slot.optional(gridHeader, { renderByDefault: true, elementType: 'thead' }) : undefined,
+      gridBody: isDay ? slot.optional(gridBody, { renderByDefault: true, elementType: 'tbody' }) : undefined,
     };
   };
 
@@ -977,18 +951,22 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   const onRootFocusCapture = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     focusWithin.current = true;
-    const panel = (event.target as Element).closest('[data-view]');
-    focusedPanel.current = panel ? (panel.getAttribute('data-view') === 'day' ? 'day' : 'month') : undefined;
+    const target = event.target as Element;
+    const focusedView = target.closest('[data-view]')?.getAttribute('data-view') as CalendarView | undefined;
+    focused.current = focusedView && { view: focusedView, inGrid: !!target.closest('[data-fui-calendar-grid]') };
   });
   const onRootBlurCapture = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
       focusWithin.current = false;
-      focusedPanel.current = undefined;
+      focused.current = undefined;
     }
   });
 
   return {
     panels,
+    renderCell,
+    renderRow,
+    renderWeekdayCell,
     resolveCellProps,
     resolveRowProps,
     resolveWeekdayCellProps,

@@ -1,53 +1,103 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
+import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { CalendarPanelSlots, CalendarPanelState, CalendarSlots, CalendarState } from './Calendar.types';
+import type {
+  CalendarCellData,
+  CalendarCellProps,
+  CalendarPanelSlots,
+  CalendarPanelState,
+  CalendarRenderFunction,
+  CalendarRowData,
+  CalendarRowProps,
+  CalendarSlots,
+  CalendarState,
+  CalendarWeekdayCellProps,
+} from './Calendar.types';
 
-const renderPanel = (state: CalendarState, panel: CalendarPanelState) => {
+const renderCell = ({ root, button, label, marker }: CalendarCellProps, cell: CalendarCellData): JSXElement => {
+  const Cell = cell.type === 'day' ? 'td' : 'div';
+  return (
+    <Cell {...(root as {})}>
+      <button {...button}>
+        {button.children === undefined && label ? (
+          <>
+            <span {...label} />
+            {marker && <span {...marker} />}
+          </>
+        ) : (
+          button.children
+        )}
+      </button>
+    </Cell>
+  );
+};
+
+const renderRow = ({ root, weekNumber, children }: CalendarRowProps, row: CalendarRowData): JSXElement => {
+  const Row = row.type === 'month' || row.type === 'year' ? 'div' : 'tr';
+  return (
+    <Row {...(root as {})}>
+      {weekNumber && <th {...weekNumber} />}
+      {children}
+    </Row>
+  );
+};
+
+const renderWeekdayCell = ({ root }: CalendarWeekdayCellProps): JSXElement => <th {...root} />;
+
+/** Renders a repeated element with the consumer's render function, if any, otherwise with the built-in markup. */
+const renderItem = <TProps, TData>(
+  key: React.Key,
+  props: TProps,
+  data: TData,
+  defaultRender: (props: TProps, data: TData) => JSXElement,
+  customRender: CalendarRenderFunction<TProps, TData> | undefined,
+): JSXElement => (
+  <React.Fragment key={key}>
+    {customRender ? customRender(props, data, nextProps => defaultRender(nextProps, data)) : defaultRender(props, data)}
+  </React.Fragment>
+);
+
+const renderPanel = (state: CalendarState, panel: CalendarPanelState): JSXElement => {
   assertSlots<CalendarPanelSlots>(panel);
-  const isDay = panel.view === 'day';
-  const Row = isDay ? 'tr' : 'div';
-  const Cell = isDay ? 'td' : 'div';
 
-  // Rows are resolved only when rendered, so custom grid children skip the cell and row getters.
-  const hasCustomGrid = panel.grid.children !== undefined;
-  const rows = (hasCustomGrid ? [] : panel.rows).map(row => {
-    const rowProps = state.resolveRowProps(row);
-    return (
-      <Row key={row.key} {...rowProps.root}>
-        {rowProps.weekNumber && <th {...rowProps.weekNumber} />}
-        {row.type === 'weekday'
-          ? row.cells.map(cell => <th key={cell.key} {...state.resolveWeekdayCellProps(cell)} />)
-          : row.cells.map(cell => {
-              const cellProps = state.resolveCellProps(cell);
-              return (
-                <Cell key={cell.key} {...(cellProps.root as {})}>
-                  {cellProps.label ? (
-                    <button {...cellProps.button}>
-                      {cellProps.button.children !== undefined ? (
-                        cellProps.button.children
-                      ) : (
-                        <>
-                          <span {...cellProps.label} />
-                          {cellProps.marker && <span {...cellProps.marker} />}
-                        </>
-                      )}
-                    </button>
-                  ) : (
-                    <button {...cellProps.button} />
-                  )}
-                </Cell>
-              );
-            })}
-      </Row>
-    );
-  });
+  // Rows are resolved only when rendered, so custom grid children skip the row and cell resolution.
+  const rows =
+    panel.grid.children === undefined
+      ? panel.rows.map(row =>
+          renderItem(
+            row.key,
+            {
+              ...state.resolveRowProps(row),
+              children:
+                row.type === 'weekday'
+                  ? row.cells.map(weekday =>
+                      renderItem(
+                        weekday.key,
+                        state.resolveWeekdayCellProps(weekday),
+                        weekday,
+                        renderWeekdayCell,
+                        state.renderWeekdayCell,
+                      ),
+                    )
+                  : row.cells.map((cell: CalendarCellData) =>
+                      renderItem(cell.key, state.resolveCellProps(cell), cell, renderCell, state.renderCell),
+                    ),
+            },
+            row,
+            renderRow,
+            state.renderRow,
+          ),
+        )
+      : undefined;
 
   return (
     <panel.root key={panel.view === 'day' ? 'day' : 'month'}>
       <panel.header>
-        <panel.heading />
+        <panel.heading>
+          {panel.heading.children === undefined ? <panel.headingLabel /> : panel.heading.children}
+        </panel.heading>
         <panel.navigation>
           <panel.previousButton />
           <panel.nextButton />
@@ -55,12 +105,12 @@ const renderPanel = (state: CalendarState, panel: CalendarPanelState) => {
         </panel.navigation>
       </panel.header>
       <panel.grid>
-        {hasCustomGrid ? (
+        {!rows ? (
           panel.grid.children
-        ) : isDay ? (
+        ) : panel.gridHeader && panel.gridBody ? (
           <>
-            <thead>{rows[0]}</thead>
-            <tbody>{rows.slice(1)}</tbody>
+            <panel.gridHeader>{rows[0]}</panel.gridHeader>
+            <panel.gridBody>{rows.slice(1)}</panel.gridBody>
           </>
         ) : (
           rows

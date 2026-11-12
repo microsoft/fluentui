@@ -5,6 +5,7 @@ import type {
   DistributiveOmit,
   EventData,
   EventHandler,
+  JSXElement,
   RefAttributes,
   Slot,
 } from '@fluentui/react-utilities';
@@ -44,8 +45,10 @@ export type CalendarPanelSlots = {
   root: NonNullable<Slot<'div'>>;
   /** Holds the heading and the navigation. */
   header: NonNullable<Slot<'div'>>;
-  /** The month, year or year-range label. A `button` when it switches views, otherwise a `div`. */
+  /** Wraps the heading label; its `children` replace the label. A `button` when it switches views, otherwise a `div`. */
   heading: NonNullable<Slot<'button', 'div'>>;
+  /** The month, year or year-range text, announced when it changes. */
+  headingLabel: NonNullable<Slot<'span'>>;
   /** Wraps the previous, next and close buttons. */
   navigation: NonNullable<Slot<'div'>>;
   /** Navigates to the previous month, year or year range. */
@@ -54,8 +57,15 @@ export type CalendarPanelSlots = {
   nextButton: NonNullable<Slot<'button'>>;
   /** The close button, rendered in the first panel only. */
   closeButton?: Slot<'button'>;
-  /** The `role="grid"` element: a `table` for days, a `div` for months and years. Single roving tab stop. */
+  /**
+   * The `role="grid"` element: a `table` for days, a `div` for months and years. Single roving tab stop. Its
+   * `children` replace every row, including the weekday header.
+   */
   grid: NonNullable<Slot<'div'>>;
+  /** The day grid's `thead`, holding the weekday header row. Day panel only. */
+  gridHeader?: Slot<'thead'>;
+  /** The day grid's `tbody`, holding the week rows. Day panel only. */
+  gridBody?: Slot<'tbody'>;
 };
 
 /** A day cell. `originalDate` is `null` for a civil date that does not exist in the local timezone. */
@@ -65,6 +75,8 @@ export type CalendarDayCellData = Day & {
   label: string;
   /** Whether this day is the grid's initial focus target. */
   isNavigated: boolean;
+  /** Whether `getMarkedDays` marked this day. */
+  isMarked: boolean;
 };
 
 /** A month cell. */
@@ -114,29 +126,44 @@ export type CalendarRowData =
   | { type: 'month'; key: number; cells: CalendarMonthCellData[] }
   | { type: 'year'; key: number; cells: CalendarYearCellData[] };
 
-/** Overrides for the elements of a cell. These are prop bags, not slots. */
+/** The props of the elements of a cell. */
 export type CalendarCellProps = {
-  /** The `role="gridcell"` element. Its children remain controlled by the renderer. */
-  root?: Omit<React.HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>, 'children'>;
-  /** The cell button. Set `children` to replace the label and marker. */
-  button?: React.ComponentProps<'button'>;
-  /** The day-number span. Day cells only. */
+  /** The `role="gridcell"` element: a `td` for days, a `div` for months and years. */
+  root: Omit<React.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
+  /** The cell button. Its `children` replace the label and marker when defined. */
+  button: React.ComponentProps<'button'>;
+  /** The day-number `span`. Day cells only. */
   label?: React.ComponentProps<'span'>;
-  /** The marker span, applied only to marked days. */
+  /** The marker `span`. Marked days only. */
   marker?: React.ComponentProps<'span'>;
 };
 
-/** Overrides for a row. */
+/** The props of the elements of a row. */
 export type CalendarRowProps = {
-  root?: Omit<React.HTMLAttributes<HTMLElement>, 'children'>;
+  /** The `role="row"` element: a `tr` for the day grid, a `div` for months and years. */
+  root: Omit<React.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
   /** The week-number `th`, or the weekday row's spacer. Day grid only, when week numbers are shown. */
   weekNumber?: React.ComponentProps<'th'>;
+  /** The rendered cells. */
+  children: React.ReactNode;
 };
 
-/** Overrides for a weekday header cell. */
+/** The props of a weekday header cell. */
 export type CalendarWeekdayCellProps = {
-  root?: React.ComponentProps<'th'>;
+  /** The `role="columnheader"` `th`. */
+  root: React.ComponentProps<'th'>;
 };
+
+/**
+ * Renders an element Calendar repeats. It receives the built-in props and the item's data, and `defaultRender`, which
+ * renders the built-in markup from (possibly changed) props. Keep the grid roles, `tabIndex` and `aria-*` props so
+ * keyboard navigation and assistive technology keep working.
+ */
+export type CalendarRenderFunction<TProps, TData> = (
+  props: TProps,
+  data: TData,
+  defaultRender: (props: TProps) => JSXElement,
+) => React.ReactNode;
 
 /** Event data for a date selection. */
 export type CalendarSelectDateData = CalendarEventData & {
@@ -197,7 +224,7 @@ export type CalendarProps = DistributiveOmit<
   minDate?: Date;
   maxDate?: Date;
   restrictedDates?: Date[];
-  workWeekDays?: DayOfWeek[];
+  workWeekDays?: readonly DayOfWeek[];
   allFocusable?: boolean;
   /** @default 4 */
   calendarMonthColumns?: 3 | 4;
@@ -207,12 +234,15 @@ export type CalendarProps = DistributiveOmit<
   weeksToShow?: number;
   /** Returns the days between the first and last visible dates that should be marked. */
   getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
-  /** Overrides the elements of each cell. Handlers run before the built-in behavior; preventDefault cancels it. */
-  getCellProps?: (cell: CalendarCellData) => CalendarCellProps;
-  /** Overrides each row, including the weekday header row. */
-  getRowProps?: (row: CalendarRowData) => CalendarRowProps;
-  /** Overrides each weekday header cell. */
-  getWeekdayCellProps?: (weekday: CalendarWeekdayCellData) => CalendarWeekdayCellProps;
+  /**
+   * Renders each grid cell. Handlers added to the cell run before the grid's delegated selection and navigation;
+   * `preventDefault` cancels the built-in action.
+   */
+  renderCell?: CalendarRenderFunction<CalendarCellProps, CalendarCellData>;
+  /** Renders each grid row, including the weekday header row. */
+  renderRow?: CalendarRenderFunction<CalendarRowProps, CalendarRowData>;
+  /** Renders each weekday header cell. */
+  renderWeekdayCell?: CalendarRenderFunction<CalendarWeekdayCellProps, CalendarWeekdayCellData>;
 };
 
 /** A visible panel and its rows. */
@@ -223,13 +253,14 @@ export type CalendarPanelState = ComponentState<CalendarPanelSlots> & {
 };
 
 /** State used to render Calendar. */
-export type CalendarState = ComponentState<CalendarSlots> & {
-  /** The visible panels, in render order. */
-  panels: CalendarPanelState[];
-  /** Resolves built-in props and consumer overrides for a cell. */
-  resolveCellProps: (cell: CalendarCellData) => CalendarCellProps & { root: object; button: object };
-  /** Resolves built-in props and consumer overrides for a row. */
-  resolveRowProps: (row: CalendarRowData) => CalendarRowProps & { root: object };
-  /** Resolves built-in props and consumer overrides for a weekday header cell. */
-  resolveWeekdayCellProps: (weekday: CalendarWeekdayCellData) => React.ComponentProps<'th'>;
-};
+export type CalendarState = ComponentState<CalendarSlots> &
+  Pick<CalendarProps, 'renderCell' | 'renderRow' | 'renderWeekdayCell'> & {
+    /** The visible panels, in render order. */
+    panels: CalendarPanelState[];
+    /** Returns the built-in props of a cell. */
+    resolveCellProps: (cell: CalendarCellData) => CalendarCellProps;
+    /** Returns the built-in props of a row, without its cells. */
+    resolveRowProps: (row: CalendarRowData) => Omit<CalendarRowProps, 'children'>;
+    /** Returns the built-in props of a weekday header cell. */
+    resolveWeekdayCellProps: (weekday: CalendarWeekdayCellData) => CalendarWeekdayCellProps;
+  };

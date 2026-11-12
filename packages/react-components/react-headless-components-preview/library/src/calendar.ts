@@ -19,6 +19,7 @@ export type {
   CalendarPanelSlots,
   CalendarPanelState,
   CalendarProps,
+  CalendarRenderFunction,
   CalendarRowData,
   CalendarRowProps,
   CalendarSelectDateData,
@@ -33,5 +34,4 @@ export type {
   DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,
-  MonthOfYear,
 } from './components/Calendar/index';

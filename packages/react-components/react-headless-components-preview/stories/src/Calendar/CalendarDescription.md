@@ -33,8 +33,7 @@ month-navigation control, preferring Next month.
 
 When an arrow crosses the visible day-grid boundary, Calendar requests navigation to the next
 available date without selecting it, within the date bounds. PageUp/PageDown page from the focused
-day. The weekday header is rendered in `<thead>` and week
-rows in `<tbody>`.
+day.
 
 When server rendering, pass `today` explicitly so server and browser output use the same date.
 
@@ -75,8 +74,8 @@ opens the month grid; set `dayHeadingView` to `"month"` or `"year"` to choose wh
 either layout. The year grid shows twelve years starting at the displayed year; its previous/next buttons page
 by twelve years.
 
-Calendar preserves focus when a layout or view change hides the focused panel, without reclaiming focus that has
-already moved outside the calendar.
+Calendar preserves focus when a layout or view change hides the focused panel, or replaces the month or year grid
+that holds focus, without reclaiming focus that has already moved outside the calendar.
 
 The month and year grids each default to four columns. Set `calendarMonthColumns` and
 `calendarYearColumns` independently to `3` or `4`; row grouping and arrow navigation use
@@ -91,59 +90,52 @@ To move focus into a grid, focus its gridcell with `tabindex="0"`.
 
 ### Customizing rows and cells
 
-Calendar supports `getCellProps`, `getRowProps` and `getWeekdayCellProps` for all grids. Getters receive
-data such as dates, labels and state flags, and return prop overrides for existing elements. Cell data is
-discriminated by `type: 'day' | 'month' | 'year'`; row data by `type: 'week' | 'weekday' | 'month' | 'year'`.
-Use a custom renderer for structural changes.
+Single elements are slots: besides the panel and header slots, `headingLabel` holds the heading text, and the day
+grid's `gridHeader` (`thead`) and `gridBody` (`tbody`) hold the weekday header and the week rows. Set `children` on
+`heading` to replace the label, or on `grid` to replace every row.
+
+Repeated elements are rendered by `renderCell`, `renderRow` and `renderWeekdayCell`. Each receives the built-in
+props, the item's data and `defaultRender`, which renders the built-in markup from props you may have changed:
 
 ```tsx
 <Calendar
-  getCellProps={cell => ({
-    root: { title: cell.type === 'day' && cell.isMarked ? 'Appointment' : undefined },
-    label: { children: <strong>{cell.label}</strong> },
-  })}
-  getRowProps={row => ({
-    root: { className: row.type === 'weekday' ? 'weekday-header' : 'row' },
-  })}
-  getWeekdayCellProps={cell => ({
-    root: { title: cell.dayOfWeek },
-  })}
+  renderCell={(props, cell, defaultRender) =>
+    defaultRender(
+      cell.type === 'day' && cell.isMarked ? { ...props, root: { ...props.root, title: 'Appointment' } } : props,
+    )
+  }
+  renderRow={(props, row, defaultRender) =>
+    defaultRender({ ...props, root: { ...props.root, className: row.type === 'weekday' ? 'weekday-header' : 'row' } })
+  }
+  renderWeekdayCell={(props, weekday, defaultRender) =>
+    defaultRender({ root: { ...props.root, title: weekday.dayOfWeek } })
+  }
 />
 ```
 
-Cells expose `root` for the gridcell and `button` for its interactive content; day cells also expose `label`
-and `marker`. Marker overrides apply only to marked days. Use `label.children` to change the day content
-while preserving its marker, or `button.children` to replace both; `null` intentionally removes content. Month
-and year cells render their label as `button` children. Row getters expose `root`; the day row getter
-also exposes `weekNumber` for a week's number or the weekday header's spacer when week numbers are shown.
-Default content is rendered only when `children` is `undefined`; explicit `null`, `false` or an empty
-string suppresses it. This also applies to the `grid` slot: its `children` replace all rows, including the
-weekday header, and the cell and row getters are then not called.
-Every row exposes data-only `cells`; week rows also have an optional numeric `weekNumber`. Weekday data
-exposes `dayOfWeek`, the visible `label` and its full `accessibleLabel`. All cells expose a formatted
-string `label`, including day placeholders; placeholder dates have `originalDate: null`.
-Custom renderers iterate `state.panels` and resolve HTML props through the hook state's `resolveCellProps`,
-`resolveRowProps` and `resolveWeekdayCellProps`. These methods combine defaults with consumer overrides and
-invoke the corresponding getter. Call each method once per rendered item and spread the returned props onto
-its elements:
+Cell props expose `root` for the gridcell and `button` for its interactive content; day cells also expose `label`
+and, when marked, `marker`. Defined `button.children` replace the label and marker. Row props expose `root`, the
+rendered cells as `children` and, in the day grid with week numbers, `weekNumber` for a week's number or the weekday
+header's spacer. Weekday props expose `root`.
 
-```tsx
-const cellProps = state.resolveCellProps(cell);
-// cellProps.root, cellProps.button, and for days cellProps.label and an optional cellProps.marker
-```
+Cell data is discriminated by `type: 'day' | 'month' | 'year'`; row data by `type: 'week' | 'weekday' | 'month' |
+'year'`. Every row exposes data-only `cells`; week rows also have an optional numeric `weekNumber`. Weekday data
+exposes `dayOfWeek`, the visible `label` and its full `accessibleLabel`. All cells expose a formatted string `label`,
+including day placeholders; placeholder dates have `originalDate: null`.
 
-Refs are composed, class names appended with consumer classes last, and styles shallow-merged.
-Defined consumer props override defaults; `undefined` overrides are treated as omitted.
-Preserve accessibility and interaction semantics when overriding roles, focus, disabled or selection
-attributes. Changing DOM attributes does not change date restrictions or selection logic.
-Consumer handlers run before the grid's delegated selection and navigation; `preventDefault`
-cancels the built-in action. Use custom hook/render composition for structural replacement.
+Keep the grid roles, `tabIndex` and `aria-*` props when rendering your own markup, so keyboard navigation and
+assistive technology keep working. Changing DOM attributes does not change date restrictions or selection logic.
+Handlers added to a cell run before the grid's delegated selection and navigation; `preventDefault` cancels the
+built-in action. Render functions run only for rendered rows and cells, so they are skipped when `grid` has
+`children`.
 
 ### Hooks and utilities
 
 For a custom Calendar component, compose `useCalendar` and `renderCalendar` from the public
 `@fluentui/react-headless-components-preview/calendar` subpath. The subpath also exports the cell, row,
 event, layout and view types, plus `calendarFormatters` and `createCalendarDateTimeFormatter` for formatting.
+A custom renderer iterates `state.panels` and gets built-in props from the state's `resolveCellProps`,
+`resolveRowProps` and `resolveWeekdayCellProps`.
 
 Default date formatting uses en-US ordering and the Gregorian calendar. Pass
 `createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` for other locales; override the

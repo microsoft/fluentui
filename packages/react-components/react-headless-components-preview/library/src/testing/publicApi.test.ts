@@ -52,9 +52,6 @@ const ADDITIONAL_EXPORTS: Record<string, string[]> = {
  */
 const KNOWN_VIOLATIONS: Record<string, Partial<Record<Rule, string[]>>> = {
   // Removing these exports is a breaking change.
-  calendar: {
-    unnecessaryExports: ['MonthOfYear'],
-  },
   nav: {
     unnecessaryExports: ['NavCategoryContextValue'],
   },

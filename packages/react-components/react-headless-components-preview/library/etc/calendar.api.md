@@ -23,8 +23,8 @@ export type CalendarCellData = CalendarDayCellData | CalendarMonthCellData | Cal
 
 // @public
 export type CalendarCellProps = {
-    root?: Omit<React_2.HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>, 'children'>;
-    button?: React_2.ComponentProps<'button'>;
+    root: Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
+    button: React_2.ComponentProps<'button'>;
     label?: React_2.ComponentProps<'span'>;
     marker?: React_2.ComponentProps<'span'>;
 };
@@ -43,6 +43,7 @@ export type CalendarDayCellData = Day & {
     type: 'day';
     label: string;
     isNavigated: boolean;
+    isMarked: boolean;
 };
 
 // @public
@@ -101,11 +102,14 @@ export type CalendarPanelSlots = {
     root: NonNullable<Slot<'div'>>;
     header: NonNullable<Slot<'div'>>;
     heading: NonNullable<Slot<'button', 'div'>>;
+    headingLabel: NonNullable<Slot<'span'>>;
     navigation: NonNullable<Slot<'div'>>;
     previousButton: NonNullable<Slot<'button'>>;
     nextButton: NonNullable<Slot<'button'>>;
     closeButton?: Slot<'button'>;
     grid: NonNullable<Slot<'div'>>;
+    gridHeader?: Slot<'thead'>;
+    gridBody?: Slot<'tbody'>;
 };
 
 // @public
@@ -139,16 +143,19 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
     minDate?: Date;
     maxDate?: Date;
     restrictedDates?: Date[];
-    workWeekDays?: DayOfWeek[];
+    workWeekDays?: readonly DayOfWeek[];
     allFocusable?: boolean;
     calendarMonthColumns?: 3 | 4;
     calendarYearColumns?: 3 | 4;
     weeksToShow?: number;
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
-    getCellProps?: (cell: CalendarCellData) => CalendarCellProps;
-    getRowProps?: (row: CalendarRowData) => CalendarRowProps;
-    getWeekdayCellProps?: (weekday: CalendarWeekdayCellData) => CalendarWeekdayCellProps;
+    renderCell?: CalendarRenderFunction<CalendarCellProps, CalendarCellData>;
+    renderRow?: CalendarRenderFunction<CalendarRowProps, CalendarRowData>;
+    renderWeekdayCell?: CalendarRenderFunction<CalendarWeekdayCellProps, CalendarWeekdayCellData>;
 };
+
+// @public
+export type CalendarRenderFunction<TProps, TData> = (props: TProps, data: TData, defaultRender: (props: TProps) => JSXElement) => React_2.ReactNode;
 
 // @public
 export type CalendarRowData = {
@@ -172,8 +179,9 @@ export type CalendarRowData = {
 
 // @public
 export type CalendarRowProps = {
-    root?: Omit<React_2.HTMLAttributes<HTMLElement>, 'children'>;
+    root: Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
     weekNumber?: React_2.ComponentProps<'th'>;
+    children: React_2.ReactNode;
 };
 
 // @public
@@ -193,16 +201,11 @@ export type CalendarSlots = {
 };
 
 // @public
-export type CalendarState = ComponentState<CalendarSlots> & {
+export type CalendarState = ComponentState<CalendarSlots> & Pick<CalendarProps, 'renderCell' | 'renderRow' | 'renderWeekdayCell'> & {
     panels: CalendarPanelState[];
-    resolveCellProps: (cell: CalendarCellData) => CalendarCellProps & {
-        root: object;
-        button: object;
-    };
-    resolveRowProps: (row: CalendarRowData) => CalendarRowProps & {
-        root: object;
-    };
-    resolveWeekdayCellProps: (weekday: CalendarWeekdayCellData) => React_2.ComponentProps<'th'>;
+    resolveCellProps: (cell: CalendarCellData) => CalendarCellProps;
+    resolveRowProps: (row: CalendarRowData) => Omit<CalendarRowProps, 'children'>;
+    resolveWeekdayCellProps: (weekday: CalendarWeekdayCellData) => CalendarWeekdayCellProps;
 };
 
 // @public
@@ -223,7 +226,7 @@ export type CalendarWeekdayCellData = {
 
 // @public
 export type CalendarWeekdayCellProps = {
-    root?: React_2.ComponentProps<'th'>;
+    root: React_2.ComponentProps<'th'>;
 };
 
 // @public
@@ -256,9 +259,6 @@ export type DayOfWeek = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursda
 
 // @public
 export type FirstWeekOfYear = 'firstDay' | 'firstFullWeek' | 'firstFourDayWeek';
-
-// @public
-export type MonthOfYear = 'january' | 'february' | 'march' | 'april' | 'may' | 'june' | 'july' | 'august' | 'september' | 'october' | 'november' | 'december';
 
 // @public
 export const renderCalendar: (state: CalendarState) => JSXElement;

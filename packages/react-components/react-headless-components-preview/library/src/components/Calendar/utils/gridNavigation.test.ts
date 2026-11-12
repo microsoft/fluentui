@@ -1,4 +1,4 @@
-import { focusCalendarGrid, getGridCells, getTargetIndex, isEditable, isNestedWidget } from './calendarGrid';
+import { focusCalendarGrid, getGridCells, getTargetIndex, isEditable, isNestedWidget } from './gridNavigation';
 
 const all = () => true;
 
@@ -97,6 +97,14 @@ describe('calendar grid helpers', () => {
     document.getElementById('stop')!.tabIndex = -1;
     expect(focusCalendarGrid(document.getElementById('day'))).toBe(true);
     expect(document.activeElement?.id).toBe('next');
+
+    // A natively disabled button is skipped even when its bounds are open.
+    (document.getElementById('next') as HTMLButtonElement).disabled = true;
+    expect(focusCalendarGrid(document.getElementById('day'))).toBe(true);
+    expect(document.activeElement?.id).toBe('previous');
+
+    (document.getElementById('previous') as HTMLButtonElement).disabled = true;
+    expect(focusCalendarGrid(document.getElementById('day'))).toBe(false);
 
     expect(focusCalendarGrid(null)).toBe(false);
   });

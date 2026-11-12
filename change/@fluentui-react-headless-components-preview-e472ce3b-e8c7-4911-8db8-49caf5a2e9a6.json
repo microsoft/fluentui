@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "BREAKING CHANGE: rebuild headless Calendar as a single component with one grid engine and shared panel slots, cutting the Calendar bundle from 44.3 kB to 28.0 kB and DatePicker from 61.6 kB to 44.8 kB. CalendarDay, CalendarMonth, CalendarYear, CalendarProvider and the context hooks are removed; dayPicker and monthPicker are panel slots, header and grid slots and the cell, row and weekday getters move to the Calendar root, view accepts 'year', and dayHeadingView chooses what the day heading opens",
+  "comment": "BREAKING CHANGE: rebuild headless Calendar as a single component with one grid engine and shared panel slots, cutting the Calendar bundle from 44.3 kB to 26.8 kB and DatePicker from 61.6 kB to 43.7 kB. CalendarDay, CalendarMonth, CalendarYear, CalendarProvider and the context hooks are removed; dayPicker and monthPicker are panel slots, header and grid slots move to the Calendar root, headingLabel, gridHeader and gridBody slots replace hard-coded elements, renderCell, renderRow and renderWeekdayCell replace the cell, row and weekday getters, view accepts 'year', and dayHeadingView chooses what the day heading opens",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

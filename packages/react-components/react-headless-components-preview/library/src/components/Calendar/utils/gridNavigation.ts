@@ -106,17 +106,17 @@ export const getTargetIndex = (
 };
 
 /**
- * Moves focus to the tab stop of the grid in `container` (a panel, or the first panel inside it), otherwise to its first available
- * previous/next button. Returns whether focus moved.
- * @internal
+ * Moves focus to the tab stop of the grid in `container` (a panel, or the first panel inside it), otherwise to its
+ * last enabled previous/next button. Returns whether focus moved.
  */
 export const focusCalendarGrid = (container: Element | null | undefined): boolean => {
   const panel = container?.matches('[data-view]') ? container : container?.querySelector('[data-view]');
   const grid = panel?.querySelector('[data-fui-calendar-grid]');
   const target =
     (grid && getGridCells(grid).find(cell => cell.tabIndex === 0)) ??
-    // The next button first, as moving forward is the likelier way to reach an available date.
-    Array.from(panel?.querySelectorAll<HTMLElement>('button[aria-disabled="false"]') ?? []).pop();
+    // The next button first, as moving forward is the likelier way to reach an available date. A natively disabled
+    // button cannot take focus, even when its date bounds are open.
+    Array.from(panel?.querySelectorAll<HTMLElement>('button[aria-disabled="false"]:not(:disabled)') ?? []).pop();
   target?.focus({ preventScroll: true });
   return !!target;
 };

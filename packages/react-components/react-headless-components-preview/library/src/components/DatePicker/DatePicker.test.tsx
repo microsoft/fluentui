@@ -289,6 +289,22 @@ describe('DatePicker', () => {
       expect(getDialog()).toBeInTheDocument();
     });
 
+    it('names the day heading after the view it opens', () => {
+      const { getByRole, getDialog } = renderDatePicker({ calendar: { dayHeadingView: 'month' } });
+      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+
+      expect(within(getDialog()).getByRole('button', { name: 'August 2026, change month' })).toBeInTheDocument();
+    });
+
+    it('keeps a consumer day heading formatter', () => {
+      const { getByRole, getDialog } = renderDatePicker({
+        calendar: { formatters: { dayPickerHeaderLabel: data => `${data.formattedDate}, pick` } },
+      });
+      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+
+      expect(within(getDialog()).getByRole('button', { name: 'August 2026, pick' })).toBeInTheDocument();
+    });
+
     it('moves focus to the year-range grid each time the day calendar heading is activated', async () => {
       const { getByRole, getDialog } = renderDatePicker();
       fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));

@@ -20,12 +20,12 @@ import {
   addDays,
   calendarFormatters,
   compareDatePart,
+  focusCalendarGrid,
   getMonthEnd,
   getMonthStart,
   isRestrictedDate,
   setMonth,
 } from '../Calendar/utils';
-import { focusCalendarGrid } from '../Calendar/calendarGrid';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarFormatters } from '../Calendar/utils';
 import { defaultFormatDate, defaultParseDate } from './datePickerFormatting';
@@ -78,7 +78,7 @@ const defaultFormatErrorMessage = ({ error, minDate, maxDate, formatDate }: Date
   return 'Enter a date such as August 12, 2026, 2026-08-12 or 8/12/2026.';
 };
 
-// The day picker heading opens the year-range grid in the month-year picker.
+// Names the default day heading action, which opens the year-range grid.
 const dayPickerHeaderLabel: CalendarFormatters['dayPickerHeaderLabel'] = data => `${data.formattedDate}, change year`;
 
 /**
@@ -512,8 +512,6 @@ export const useDatePicker = (
 
   // Calendar
 
-  const formatters: CalendarFormatters = { ...calendarFormatters, dayPickerHeaderLabel, ...calendarProps.formatters };
-
   const calendar = slot.always<CalendarProps>(props.calendar, {
     defaultProps: {
       calendarMonthColumns: 3,
@@ -521,25 +519,34 @@ export const useDatePicker = (
     },
     elementType: Calendar,
   });
+  // The day heading opens the year-range grid.
+  calendar.dayHeadingView ??= 'year';
   // showGoToToday alone controls visibility, so styling the button through the calendar slot does not show it.
   if (!showGoToToday) {
     calendar.goToTodayButton = null;
   }
 
-  const getCellProps = calendarProps.getCellProps;
-  // The day heading opens the year-range grid.
-  calendar.dayHeadingView ??= 'year';
-  calendar.getCellProps = cell => {
-    const overrides = getCellProps?.(cell);
-    if (cell.type !== 'month') {
-      return overrides ?? {};
-    }
-    // Name months with their year, such as "August 2026", rather than an abbreviation.
-    const date = setMonth(displayedDate, cell.index);
-    return {
-      ...overrides,
-      root: { 'aria-label': formatters.dateTime({ date, format: 'monthYear' }), ...overrides?.root },
-    };
+  // The default day heading label names the view the heading opens; consumer formatters still take precedence.
+  const formatters: CalendarFormatters = {
+    ...calendarFormatters,
+    ...(calendar.dayHeadingView === 'year' && { dayPickerHeaderLabel }),
+    ...calendarProps.formatters,
+  };
+
+  const renderCell = calendarProps.renderCell;
+  calendar.renderCell = (cellProps, cell, defaultRender) => {
+    // Name months with their year, such as "August 2026", rather than the month alone.
+    const resolved =
+      cell.type === 'month'
+        ? {
+            ...cellProps,
+            root: {
+              ...cellProps.root,
+              'aria-label': formatters.dateTime({ date: setMonth(displayedDate, cell.index), format: 'monthYear' }),
+            },
+          }
+        : cellProps;
+    return renderCell ? renderCell(resolved, cell, defaultRender) : defaultRender(resolved);
   };
 
   calendar.formatters = formatters;

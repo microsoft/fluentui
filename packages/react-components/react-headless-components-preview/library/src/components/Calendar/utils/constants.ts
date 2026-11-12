@@ -28,41 +28,6 @@ export const DEFAULT_WORK_WEEK_DAYS = [
 ] as const satisfies readonly DayOfWeek[];
 
 /**
- * The months of the year.
- */
-export type MonthOfYear =
-  | 'january'
-  | 'february'
-  | 'march'
-  | 'april'
-  | 'may'
-  | 'june'
-  | 'july'
-  | 'august'
-  | 'september'
-  | 'october'
-  | 'november'
-  | 'december';
-
-/**
- * The months of the year, ordered so that each index matches `Date.prototype.getMonth()`.
- */
-export const monthsOfYear = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december',
-] as const satisfies readonly MonthOfYear[];
-
-/**
  * Determines which week counts as the first week of the year.
  * - `firstDay` - the week containing January 1st.
  * - `firstFullWeek` - the first week entirely within the new year.

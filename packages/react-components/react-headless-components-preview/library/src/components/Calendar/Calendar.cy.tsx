@@ -385,30 +385,34 @@ describe('Calendar', () => {
           today={today}
           value={today}
           monthPicker={null}
-          getCellProps={cell =>
-            cell.type === 'day' && cell.originalDate?.getTime() === today.getTime()
-              ? {
-                  button: {
-                    children: (
-                      <span
-                        role="toolbar"
-                        onKeyDown={event => {
-                          if (handlesArrow && event.key === 'ArrowRight') {
-                            event.currentTarget.querySelector<HTMLElement>('[data-testid="nested-second"]')?.focus();
-                          }
-                        }}
-                      >
-                        <span tabIndex={0} data-testid="nested-first">
-                          First
+          renderCell={(props, cell, render) =>
+            render(
+              cell.type === 'day' && cell.originalDate?.getTime() === today.getTime()
+                ? {
+                    ...props,
+                    button: {
+                      ...props.button,
+                      children: (
+                        <span
+                          role="toolbar"
+                          onKeyDown={event => {
+                            if (handlesArrow && event.key === 'ArrowRight') {
+                              event.currentTarget.querySelector<HTMLElement>('[data-testid="nested-second"]')?.focus();
+                            }
+                          }}
+                        >
+                          <span tabIndex={0} data-testid="nested-first">
+                            First
+                          </span>
+                          <span tabIndex={0} data-testid="nested-second">
+                            Second
+                          </span>
                         </span>
-                        <span tabIndex={0} data-testid="nested-second">
-                          Second
-                        </span>
-                      </span>
-                    ),
-                  },
-                }
-              : {}
+                      ),
+                    },
+                  }
+                : props,
+            )
           }
         />,
       );
