@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-utilities): repair the heap upwards when remove() moves a smaller entry into the hole",
+  "packageName": "@fluentui/react-utilities",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
