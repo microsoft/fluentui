@@ -292,6 +292,42 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
 
+  for (const interaction of ['focus', 'click'] as const) {
+    test(`should preserve selection when ${interaction}() is called immediately after disabling a tab`, async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${TabTagName} id="tab-1">Tab one</${TabTagName}>
+          <${TabTagName} id="tab-2">Tab two</${TabTagName}>
+        `,
+      });
+
+      await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
+
+      const selection = await element.evaluate((node: Tablist, interaction) => {
+        const secondTab = node.tabs[1];
+        secondTab.disabled = true;
+        secondTab[interaction]();
+
+        return {
+          activeid: node.activeid,
+          activetab: node.activetab.id,
+          selectedTabs: node.tabs.filter(tab => tab.getAttribute('aria-selected') === 'true').map(tab => tab.id),
+        };
+      }, interaction);
+
+      expect(selection).toEqual({
+        activeid: 'tab-1',
+        activetab: 'tab-1',
+        selectedTabs: ['tab-1'],
+      });
+    });
+  }
+
   test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
     const { element } = fastPage;
     const tabs = element.locator(TabTagName);

@@ -74,6 +74,27 @@ describe('MessageBar', () => {
     });
   });
 
+  it.each([['assertive', 'info'] as const, ['polite', 'error'] as const])(
+    'should announce with explicit %s politeness over %s intent',
+    (politeness, intent) => {
+      const announce = jest.fn();
+      render(
+        <AnnounceProvider value={{ announce }}>
+          <MessageBar intent={intent} politeness={politeness}>
+            <MessageBarBody>
+              <MessageBarTitle>Title</MessageBarTitle>Body
+            </MessageBarBody>
+          </MessageBar>
+        </AnnounceProvider>,
+      );
+
+      expect(announce).toHaveBeenCalledWith('TitleBody', {
+        alert: politeness === 'assertive',
+        polite: politeness === 'polite',
+      });
+    },
+  );
+
   it('should announce actions', () => {
     const announce = jest.fn();
     render(

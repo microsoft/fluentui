@@ -103,6 +103,7 @@ export const useNavCategoryItemBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
+        type: 'button',
         'aria-current': validAriaCurrent,
         'aria-expanded': open,
         ...props,

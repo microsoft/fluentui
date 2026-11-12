@@ -113,8 +113,8 @@ JSDOM hook tests only validate the state-to-class mapping.
 
 ### Specification
 
-See [SPEC.md](./src/components/Button/SPEC.md).
+See [SPEC.md](./docs/SPEC.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./src/components/Button/MIGRATION.md) for guidance on updating to the latest component implementations.
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./docs/MIGRATION.md) for guidance on updating to the latest component implementations.
