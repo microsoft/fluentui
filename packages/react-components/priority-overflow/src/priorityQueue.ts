@@ -55,6 +55,22 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     }
   };
 
+  /**
+   * Restores the heap upwards from `i`.
+   *
+   * `heapify` only compares a node with its children, so it cannot repair a node that is smaller
+   * than its parent. Both directions are needed when a node is moved into a hole: the replacement
+   * may be smaller than the parent or larger than the children.
+   */
+  const siftUp = (i: number) => {
+    let p = parent(i);
+    while (i > 0 && compare(arr[p], arr[i]) > 0) {
+      swap(p, i);
+      i = p;
+      p = parent(i);
+    }
+  };
+
   const dequeue = () => {
     if (size === 0) {
       throw new Error('Priority queue empty');
@@ -77,13 +93,7 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
 
   const enqueue = (item: T) => {
     arr[size++] = item;
-    let i = size - 1;
-    let p = parent(i);
-    while (i > 0 && compare(arr[p], arr[i]) > 0) {
-      swap(p, i);
-      i = p;
-      p = parent(i);
-    }
+    siftUp(size - 1);
   };
 
   const contains = (item: T) => {
@@ -99,6 +109,7 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     }
 
     arr[i] = arr[--size];
+    siftUp(i);
     heapify(i);
   };
 
