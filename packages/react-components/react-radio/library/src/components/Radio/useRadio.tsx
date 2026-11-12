@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioBaseProps, RadioBaseState, RadioProps, RadioState } from './Radio.types';
@@ -18,6 +18,11 @@ import type { RadioBaseProps, RadioBaseState, RadioProps, RadioState } from './R
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
   const state = useRadioBase_unstable(props, ref);
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLSpanElement>());
 
   return {
     ...state,
@@ -60,10 +65,7 @@ export const useRadioBase_unstable = (props: RadioBaseProps, ref: React.Ref<HTML
   });
 
   const root = slot.always(props.root, {
-    defaultProps: {
-      ref: useFocusWithin<HTMLSpanElement>(),
-      ...nativeProps.root,
-    },
+    defaultProps: nativeProps.root,
     elementType: 'span',
   });
   const input = slot.always(props.input, {
