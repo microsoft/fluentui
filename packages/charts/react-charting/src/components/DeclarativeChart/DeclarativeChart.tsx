@@ -36,6 +36,7 @@ import {
   DEFAULT_POLAR_SUBPLOT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
+import { getValidFont } from '../../utilities/StyleAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
@@ -513,7 +514,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const titleObj = plotlyInputWithValidData.layout?.title;
   const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
-  const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
+  const titleFont = getValidFont(typeof titleObj === 'object' ? titleObj?.font : undefined);
 
   const { fontFamily, fontSize, fontWeight } = theme.fonts.medium;
   const titleStyle: React.CSSProperties = {

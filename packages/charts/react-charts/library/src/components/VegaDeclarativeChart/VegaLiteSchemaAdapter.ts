@@ -51,6 +51,7 @@ import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
+import { getValidFont, getValidFontWeight, getValidPadding } from '../../utilities/StyleAdapter';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.
@@ -2078,32 +2079,25 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
   if (typeof spec.title === 'object' && spec.title !== null) {
     const titleObj = spec.title as VegaLiteTitleParams;
 
-    // Build titleFont object if any font properties are present
-    const titleFont: TitleStyles['titleFont'] = {};
-    if (titleObj.font) {
-      titleFont.family = titleObj.font;
+    const titleFont = getValidFont({
+      family: titleObj.font,
+      size: titleObj.fontSize,
+      weight: getValidFontWeight(
+        typeof titleObj.fontWeight === 'string' ? titleObj.fontWeight.toLowerCase() : titleObj.fontWeight,
+      ),
+      color: titleObj.color,
+    });
+    if (titleFont && typeof titleFont.weight === 'string') {
+      // Preserve Vega's existing keyword-to-number mappings.
+      const weightMap = {
+        normal: 400,
+        bold: 700,
+        lighter: 300,
+        bolder: 600,
+      };
+      titleFont.weight = weightMap[titleFont.weight];
     }
-    if (titleObj.fontSize) {
-      titleFont.size = titleObj.fontSize;
-    }
-    if (titleObj.fontWeight) {
-      // Convert string weights to numbers (Font interface expects number)
-      const weight = titleObj.fontWeight;
-      if (typeof weight === 'string') {
-        const weightMap: Record<string, number> = {
-          normal: 400,
-          bold: 700,
-          lighter: 300,
-          bolder: 600,
-        };
-        titleFont.weight = weightMap[weight.toLowerCase()] || 400;
-      } else {
-        titleFont.weight = weight;
-      }
-    }
-    if (titleObj.color) {
-      titleFont.color = titleObj.color;
-    }
+    const titlePad = getValidPadding({ t: titleObj.offset, b: titleObj.subtitlePadding }, -Infinity);
 
     // Map Vega-Lite anchor values to TitleStyles anchor values
     const anchorMap: Record<string, TitleStyles['titleXAnchor']> = {
@@ -2113,16 +2107,11 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
     };
 
     titleStyles = {
-      ...(Object.keys(titleFont).length > 0 ? { titleFont } : {}),
-      ...(titleObj.anchor && anchorMap[titleObj.anchor] ? { titleXAnchor: anchorMap[titleObj.anchor] } : {}),
-      ...(titleObj.offset !== undefined || titleObj.subtitlePadding !== undefined
-        ? {
-            titlePad: {
-              t: titleObj.offset,
-              b: titleObj.subtitlePadding,
-            },
-          }
+      ...(titleFont && Object.values(titleFont).some(value => value !== undefined) ? { titleFont } : {}),
+      ...(titleObj.anchor === 'start' || titleObj.anchor === 'middle' || titleObj.anchor === 'end'
+        ? { titleXAnchor: anchorMap[titleObj.anchor] }
         : {}),
+      ...(titlePad && Object.keys(titlePad).length > 0 ? { titlePad } : {}),
     };
 
     // Only include titleStyles if it has properties

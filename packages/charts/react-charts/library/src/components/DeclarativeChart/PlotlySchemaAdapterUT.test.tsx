@@ -14,15 +14,489 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  transformPlotlyJsonToGanttChartProps,
+  transformPlotlyJsonToChartTableProps,
+  transformPlotlyJsonToFunnelChartProps,
+  transformPlotlyJsonToPolarChartProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
+import {
+  getValidColor,
+  getValidFont,
+  getValidFontFamily,
+  getValidFontWeight,
+  getValidPadding,
+  getValidStyleLength,
+  getValidStyleNumber,
+  getValidTextAlign,
+} from '../../utilities/StyleAdapter';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
+
+describe('schema CSS styles', () => {
+  test.each(
+    [
+      'red; --css-injection-sentinel:731',
+      'red;} html{color:red',
+      'url(https://example.invalid)',
+      'var(--untrusted)',
+      '/* comment */',
+      'Arial\\3b color:red',
+      '',
+      null,
+      {},
+      [],
+      Infinity,
+      NaN,
+    ].map(value => ({ value })),
+  )('rejects invalid style value $value', ({ value }) => {
+    expect(getValidColor(value)).toBeUndefined();
+    expect(getValidFontFamily(value)).toBeUndefined();
+    expect(getValidFontWeight(value)).toBeUndefined();
+    expect(getValidStyleLength(value)).toBeUndefined();
+    expect(getValidStyleNumber(value)).toBeUndefined();
+    expect(getValidTextAlign(value)).toBeUndefined();
+  });
+
+  test.each(['rebeccapurple', '#AbC', 'rgb(1, 2, 3)', 'rgba(1, 2, 3, 0.5)', 'hsl(120, 50%, 50%)', 'transparent'])(
+    'preserves valid color %s without normalization',
+    color => expect(getValidColor(color)).toBe(color),
+  );
+
+  test.each([
+    { value: -10, min: -Infinity, max: Infinity, expected: -10 },
+    { value: 0, min: 0, max: Infinity, expected: 0 },
+    { value: 1, min: 1, max: 1000, expected: 1 },
+    { value: 1000, min: 1, max: 1000, expected: 1000 },
+    { value: -1, min: 0, max: Infinity, expected: undefined },
+    { value: 0, min: 1, max: 1000, expected: undefined },
+    { value: 1001, min: 1, max: 1000, expected: undefined },
+  ])('validates number $value between $min and $max', ({ value, min, max, expected }) => {
+    expect(getValidStyleNumber(value, min, max)).toBe(expected);
+  });
+
+  test.each([0, -1, 1001, '600', 'BOLD'])('rejects invalid font weight %s', weight => {
+    expect(getValidFontWeight(weight)).toBeUndefined();
+  });
+
+  test.each(['left', 'center', 'right'])('preserves text alignment %s', alignment => {
+    expect(getValidTextAlign(alignment)).toBe(alignment);
+  });
+
+  test.each(['justify', 'LEFT', 'inherit'])('rejects unsupported text alignment %s', alignment => {
+    expect(getValidTextAlign(alignment)).toBeUndefined();
+  });
+
+  test('omits absent optional font and padding', () => {
+    expect(getValidFont(undefined)).toBeUndefined();
+    expect(getValidPadding(undefined)).toBeUndefined();
+  });
+
+  test('validates font fields independently without retaining unknown fields or mutating input', () => {
+    const font = {
+      family: 'Arial',
+      color: 'red; --css-injection-sentinel:731',
+      size: 24,
+      weight: 'bold' as const,
+      shadow: 'url(https://example.invalid)',
+      extra: 'ignored',
+    };
+    const original = { ...font };
+
+    expect(getValidFont(font)).toEqual({
+      family: 'Arial',
+      color: undefined,
+      size: 24,
+      weight: 'bold',
+      shadow: undefined,
+    });
+    expect(font).toEqual(original);
+  });
+
+  test('keeps only valid supported padding fields without mutating input', () => {
+    const padding = { t: 0, r: 12, b: -1, l: NaN, pad: 2, extra: 99 };
+    const original = { ...padding };
+
+    expect(getValidPadding(padding)).toEqual({ t: 0, r: 12, pad: 2 });
+    expect(padding).toEqual(original);
+  });
+
+  test.each(['Arial, sans-serif', '"Times New Roman", serif', "'Font, Name', monospace", '\u65e5\u672c\u8a9e'])(
+    'preserves font family %s',
+    family => expect(getValidFontFamily(family)).toBe(family),
+  );
+
+  test.each(['0 0 2px red', 'rgba(0, 0, 0, 0.5) -1px 2px 3px', 'none', '1px -2px 3px currentColor', '0 0', '0 0 0'])(
+    'preserves title shadow %s',
+    shadow => {
+      const font = { family: 'Arial', size: 20, weight: 600, color: '#abc', shadow };
+      expect(getValidFont(font)).toEqual(font);
+    },
+  );
+
+  test.each([
+    '0 0 red); --css-injection-sentinel:731',
+    '0 0 url(https://example.invalid)',
+    '0 0 -2px red',
+    '0 red',
+    '0 0 red blue',
+    '0 0 2px 3px red',
+    '0 0 10% red',
+    '1 2 red',
+  ])('rejects invalid title shadow %s', shadow => expect(getValidFont({ shadow })?.shadow).toBeUndefined());
+
+  test.each([
+    { value: 12, expected: '12px' },
+    { value: '1.5rem', expected: '1.5rem' },
+    { value: '80%', expected: '80%' },
+    { value: 0, expected: '0px' },
+    { value: '12', expected: '12px' },
+  ])('preserves valid annotation length $value', ({ value, expected }) => {
+    expect(getValidStyleLength(value)).toBe(expected);
+  });
+
+  test.each([-1, '-1px', 'calc(100% - 1px)', '1qu', '1e309px'])('rejects unsupported annotation length %s', value => {
+    expect(getValidStyleLength(value)).toBeUndefined();
+  });
+
+  test.each([1, 600, 1000, 'normal', 'bold', 'bolder', 'lighter'] as const)('preserves font weight %s', weight => {
+    expect(getValidFontWeight(weight)).toBe(weight);
+    expect(getValidFont({ weight })?.weight).toBe(weight);
+    const schema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1] }],
+      layout: { title: { text: 'Title', font: { weight } } },
+    };
+    const result = transformPlotlyJsonToDonutProps(schema, false, { current: new Map() }, 'default');
+    expect(result.titleStyles?.titleFont?.weight).toBe(weight);
+  });
+
+  test('preserves signed title offsets while keeping layout margins nonnegative', () => {
+    const pad = { t: -10, r: -2, b: -3, l: -4 };
+    const schema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A'], values: [1] }],
+      layout: { title: { text: 'Title', pad }, margin: { ...pad, pad: 2 } },
+    };
+
+    expect(getValidPadding(pad, -Infinity)).toEqual(pad);
+    expect(getValidPadding({ ...pad, pad: 2 })).toEqual({ pad: 2 });
+    expect(
+      transformPlotlyJsonToDonutProps(schema, false, { current: new Map() }, 'default').titleStyles?.titlePad,
+    ).toEqual(pad);
+    expect(
+      transformPlotlyJsonToAnnotationChartProps({ ...schema, data: [] }, false, { current: new Map() }, 'default')
+        .margin,
+    ).toEqual({ pad: 2 });
+    expect(schema.layout?.title).toEqual({ text: 'Title', pad });
+  });
+
+  test('rejects non-finite padding even when signed title offsets are enabled', () => {
+    expect(getValidPadding({ t: Infinity, r: 12, b: NaN, l: -Infinity }, -Infinity)).toEqual({ r: 12 });
+  });
+
+  test.each([
+    { name: 'pie', transform: transformPlotlyJsonToDonutProps, file: 'fluent_pie_test.json' },
+    {
+      name: 'stacked bar',
+      transform: transformPlotlyJsonToVSBCProps,
+      file: 'fluent_verticalstackedbarchart_test.json',
+    },
+    {
+      name: 'grouped bar',
+      transform: transformPlotlyJsonToGVBCProps,
+      file: 'fluent_groupedverticalbarchart_test.json',
+    },
+    { name: 'bar', transform: transformPlotlyJsonToVBCProps, file: 'fluent_verticalbar_test.json' },
+    { name: 'area', transform: transformPlotlyJsonToAreaChartProps, file: 'fluent_area_test.json' },
+    { name: 'line', transform: transformPlotlyJsonToLineChartProps, file: 'fluent_line_test.json' },
+    { name: 'scatter', transform: transformPlotlyJsonToScatterChartProps, file: 'fluent_scatter_test.json' },
+    {
+      name: 'horizontal bar',
+      transform: transformPlotlyJsonToHorizontalBarWithAxisProps,
+      file: 'fluent_horizontalbar_test.json',
+    },
+    { name: 'heatmap', transform: transformPlotlyJsonToHeatmapProps, file: 'fluent_heatmap_test.json' },
+    { name: 'Sankey', transform: transformPlotlyJsonToSankeyProps, file: 'fluent_sankey_test.json' },
+    { name: 'gauge', transform: transformPlotlyJsonToGaugeProps, file: 'fluent_gauge_test.json' },
+  ])('validates $name chart dimensions and preserves signed title offsets', ({ transform, file }) => {
+    const fixture: PlotlySchema = require(`./tests/schema/${file}`);
+    for (const dimension of ['12; --css-injection-sentinel:731', 580]) {
+      const input: PlotlySchema = JSON.parse(
+        JSON.stringify({
+          ...fixture,
+          layout: {
+            ...fixture.layout,
+            width: dimension,
+            height: dimension,
+            font: { size: dimension },
+            title: { text: 'Title', pad: { t: -10, r: -2, b: -3, l: -4 } },
+          },
+        }),
+      );
+      const result = transform(input, false, { current: new Map() }, 'default');
+      expect(result.width).toBe(typeof dimension === 'number' ? dimension : undefined);
+      expect(result).toHaveProperty('titleStyles.titlePad', { t: -10, r: -2, b: -3, l: -4 });
+      expect(JSON.stringify(result)).not.toContain('css-injection-sentinel');
+      if (result.height !== undefined) {
+        expect(Number.isFinite(result.height)).toBe(true);
+      }
+    }
+  });
+
+  test.each([
+    { name: 'annotation', transform: transformPlotlyJsonToAnnotationChartProps, data: [] },
+    {
+      name: 'table',
+      transform: transformPlotlyJsonToChartTableProps,
+      data: [{ type: 'table', header: { values: ['Header'] }, cells: { values: [['Cell']] } }],
+    },
+    {
+      name: 'funnel',
+      transform: transformPlotlyJsonToFunnelChartProps,
+      data: [{ type: 'funnel', x: [2, 1], y: ['A', 'B'] }],
+    },
+    {
+      name: 'polar',
+      transform: transformPlotlyJsonToPolarChartProps,
+      data: [{ type: 'scatterpolar', r: [1, 2], theta: [0, 90] }],
+    },
+    {
+      name: 'Gantt',
+      transform: transformPlotlyJsonToGanttChartProps,
+      data: [{ type: 'scatter', mode: 'none', fill: 'toself', x: [0, 2, 2, 0, null], y: [0, 0, 2, 2, null] }],
+    },
+  ])('validates $name chart dimensions', ({ transform, data }) => {
+    for (const dimension of ['12; --css-injection-sentinel:731', 580]) {
+      const input: PlotlySchema = JSON.parse(JSON.stringify({ data, layout: { width: dimension, height: dimension } }));
+      const result = transform(input, false, { current: new Map() }, 'default');
+      expect(result.width).toBe(typeof dimension === 'number' ? dimension : undefined);
+      expect(JSON.stringify(result)).not.toContain('css-injection-sentinel');
+      if (result.height !== undefined) {
+        expect(Number.isFinite(result.height)).toBe(true);
+      }
+    }
+  });
+
+  test('validates title, layout, and annotation non-color styles without mutating input', () => {
+    const payload = '12; --css-injection-sentinel:731';
+    const input: PlotlySchema = JSON.parse(
+      JSON.stringify({
+        data: [],
+        layout: {
+          title: {
+            text: 'Title',
+            font: { family: payload, size: payload, weight: payload, shadow: payload },
+            pad: { t: payload, r: 12 },
+          },
+          font: { family: payload },
+          width: payload,
+          height: payload,
+          margin: { t: payload, r: 12 },
+          annotations: [
+            {
+              text: 'Annotation',
+              x: 0.5,
+              y: 0.5,
+              xref: 'paper',
+              yref: 'paper',
+              borderpad: payload,
+              font: { size: payload, weight: payload },
+            },
+          ],
+        },
+      }),
+    );
+    const original = JSON.stringify(input);
+    const result = transformPlotlyJsonToAnnotationChartProps(input, false, { current: new Map() }, 'default');
+    expect(result.width).toBeUndefined();
+    expect(result.height).toBeUndefined();
+    expect(result.fontFamily).toBeUndefined();
+    expect(result.margin).toEqual({ r: 12 });
+    expect(result.annotations?.[0].style?.padding).toBeUndefined();
+    expect(result.annotations?.[0].style?.fontSize).toBeUndefined();
+    expect(result.annotations?.[0].style?.fontWeight).toBeUndefined();
+
+    const chart = transformPlotlyJsonToDonutProps(
+      { ...input, data: [{ type: 'pie', labels: ['A'], values: [1] }] },
+      false,
+      { current: new Map() },
+      'default',
+    );
+    expect(chart.titleStyles?.titleFont?.family).toBeUndefined();
+    expect(chart.titleStyles?.titleFont?.size).toBeUndefined();
+    expect(chart.titleStyles?.titleFont?.weight).toBeUndefined();
+    expect(chart.titleStyles?.titleFont?.shadow).toBeUndefined();
+    expect(chart.titleStyles?.titlePad).toEqual({ r: 12 });
+    expect(JSON.stringify(input)).toBe(original);
+  });
+
+  test.each([
+    { align: 'left', expected: 'left' },
+    { align: ['right'], expected: 'right' },
+    { align: [['center']], expected: 'center' },
+    { align: 'left; --css-injection-sentinel:731', expected: undefined },
+    { align: ['left; --css-injection-sentinel:731'], expected: undefined },
+    { align: [['left; --css-injection-sentinel:731']], expected: undefined },
+  ])('validates resolved table alignment $align including template defaults', ({ align, expected }) => {
+    const input: PlotlySchema = JSON.parse(
+      JSON.stringify({
+        data: [{ type: 'table', header: { values: ['Header'] }, cells: { values: [['Cell']] } }],
+        layout: {
+          font: { size: '12; --css-injection-sentinel:731' },
+          template: {
+            data: {
+              table: [
+                {
+                  header: { align, font: { size: '12; --css-injection-sentinel:731' } },
+                  cells: {
+                    align,
+                    font: { size: '12; --css-injection-sentinel:731' },
+                    fill: { color: 'red; --css-injection-sentinel:731' },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      }),
+    );
+    const result = transformPlotlyJsonToChartTableProps(input, false, { current: new Map() }, 'default');
+    expect(result.headers?.[0].style?.textAlign).toBe(expected);
+    expect(result.rows?.[0][0].style?.textAlign).toBe(expected);
+    expect(result.rows?.[0][0].style?.backgroundColor).toBeUndefined();
+    expect(result.headers?.[0].style?.fontSize).toBeUndefined();
+    expect(result.rows?.[0][0].style?.fontSize).toBeUndefined();
+    expect(JSON.stringify(result.styles)).not.toContain('css-injection-sentinel');
+  });
+});
+
+describe('table font colors', () => {
+  test.each([
+    { color: 'red; position:fixed' },
+    { color: ['red; position:fixed', 'rebeccapurple'] },
+    {
+      color: [
+        ['red; position:fixed', '#abc'],
+        ['rebeccapurple', 'transparent'],
+      ],
+    },
+  ])('validates header and cell font colors after resolving %j', ({ color }) => {
+    const schema: PlotlySchema = {
+      data: [
+        {
+          type: 'table',
+          header: { values: ['A', 'B'], font: { color } },
+          cells: {
+            values: [
+              [1, 2],
+              [3, 4],
+            ],
+            font: { color },
+            format: '',
+            prefix: '',
+            suffix: '',
+          },
+        },
+      ],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToChartTableProps(schema, false, { current: new Map() }, 'default');
+
+    expect(result.headers?.[0].style).not.toHaveProperty('color');
+    expect(result.rows?.[0][0].style).not.toHaveProperty('color');
+    if (Array.isArray(color)) {
+      expect(result.headers?.[1].style?.color).toBe('rebeccapurple');
+      expect(result.rows?.[0][1].style?.color).toBe('rebeccapurple');
+      expect(result.rows?.[1][0].style?.color).toBe(Array.isArray(color[0]) ? '#abc' : undefined);
+    }
+  });
+});
+
+describe('schema title and annotation colors', () => {
+  test('falls back to validated annotation text color for an invalid arrow color', () => {
+    const result = transformPlotlyJsonToAnnotationChartProps(
+      {
+        data: [],
+        layout: {
+          annotations: [
+            {
+              text: 'Annotation',
+              x: 0.5,
+              y: 0.5,
+              xref: 'paper',
+              yref: 'paper',
+              font: { color: 'rebeccapurple' },
+              arrowcolor: 'red; position:fixed',
+              showarrow: true,
+            },
+          ],
+        },
+      },
+      false,
+      { current: new Map() },
+      'default',
+    );
+
+    expect(result.annotations?.[0].connector?.strokeColor).toBe('rebeccapurple');
+  });
+
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent', 'red; position:fixed'])(
+    'validates title, layout, and annotation color %s',
+    color => {
+      const input: PlotlySchema = {
+        data: [],
+        layout: {
+          title: { text: 'Title', font: { color, family: 'Arial', size: 20 } },
+          // eslint-disable-next-line @typescript-eslint/naming-convention -- Plotly schema field
+          paper_bgcolor: color,
+          // eslint-disable-next-line @typescript-eslint/naming-convention -- Plotly schema field
+          plot_bgcolor: color,
+          font: { color },
+          annotations: [
+            {
+              text: 'Annotation',
+              x: 0.5,
+              y: 0.5,
+              xref: 'paper',
+              yref: 'paper',
+              bgcolor: color,
+              bordercolor: color,
+              font: { color },
+              arrowcolor: color,
+              showarrow: true,
+            },
+          ],
+        },
+      };
+      const expected = color.includes(';') ? undefined : color;
+      const result = transformPlotlyJsonToAnnotationChartProps(input, false, { current: new Map() }, 'default');
+
+      expect(result.paperBackgroundColor).toBe(expected);
+      expect(result.plotBackgroundColor).toBe(expected);
+      expect(result.fontColor).toBe(expected);
+      expect(result.annotations).toHaveLength(1);
+      expect(result.annotations?.[0].style?.backgroundColor).toBe(expected);
+      expect(result.annotations?.[0].style?.borderColor).toBe(expected);
+      expect(result.annotations?.[0].style?.textColor).toBe(expected);
+      expect(result.annotations?.[0].connector?.strokeColor).toBe(expected);
+
+      const chart = transformPlotlyJsonToDonutProps(
+        { ...input, data: [{ type: 'pie', labels: ['A'], values: [1] }] },
+        false,
+        { current: new Map() },
+        'default',
+      );
+      expect(chart.titleStyles?.titleFont?.color).toBe(expected);
+      expect(chart.titleStyles?.titleFont?.family).toBe('Arial');
+      expect(input.layout?.title).toEqual({ text: 'Title', font: { color, family: 'Arial', size: 20 } });
+    },
+  );
+});
 
 describe('isDate', () => {
   test('Should return true when input array contains Date objects', () => {
@@ -186,6 +660,138 @@ describe('transform Plotly Json To chart Props', () => {
     expect(
       transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test.each([
+    '#FEBFB3',
+    '#abc',
+    'rebeccapurple',
+    'rgb(12, 34, 56)',
+    'rgba(12, 34, 56, 0.5)',
+    'hsl(120, 50%, 50%)',
+    'transparent',
+  ])('transformPlotlyJsonToDonutProps - preserves valid marker color %s after sorting', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.data?.chartData).toEqual([
+      expect.objectContaining({ legend: 'B', color: 'blue' }),
+      expect.objectContaining({ legend: 'A', color }),
+    ]);
+  });
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    'var(--untrusted-color)',
+    '',
+  ])('transformPlotlyJsonToDonutProps - replaces invalid marker color %s with a palette color', color => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'pie', labels: ['A', 'B'], values: [1, 2], marker: { colors: [color, 'blue'] } }],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: new Map() }, 'default');
+    const point = result.data?.chartData?.find(item => item.legend === 'A');
+
+    expect(point?.color).toBe(getColor('Label_0', { current: new Map() }, 'others', undefined, true));
+    expect(result.data?.chartData).toContainEqual(expect.objectContaining({ legend: 'B', color: 'blue' }));
+  });
+
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent'])(
+    'transformPlotlyJsonToLineChartProps - preserves valid rectangle fill color %s',
+    fillcolor => {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+        layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+      };
+
+      const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+      expect(result.colorFillBars).toEqual([{ color: fillcolor, data: [{ startX: 0, endX: 1 }], applyPattern: false }]);
+    },
+  );
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    '',
+    undefined,
+  ])('transformPlotlyJsonToLineChartProps - replaces invalid rectangle fill color %s', fillcolor => {
+    const plotlySchema: PlotlySchema = {
+      data: [{ type: 'scatter', mode: 'lines', x: [0, 1], y: [1, 2] }],
+      layout: { shapes: [{ type: 'rect', x0: 0, x1: 1, fillcolor }] },
+    };
+
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.colorFillBars).toEqual([
+      { color: 'rgba(0,0,0,0)', data: [{ startX: 0, endX: 1 }], applyPattern: false },
+    ]);
+  });
+
+  test.each(['rebeccapurple', '#abc', 'rgba(12, 34, 56, 0.5)', 'transparent'])(
+    'transformPlotlyJsonToGanttChartProps - preserves valid toself fill color %s',
+    fillcolor => {
+      const plotlySchema: PlotlySchema = {
+        data: [
+          {
+            type: 'scatter',
+            mode: 'none',
+            fill: 'toself',
+            name: 'A',
+            x: [0, 2, 2, 0, null],
+            y: [0, 0, 2, 2, null],
+            fillcolor,
+          },
+        ],
+        layout: {},
+      };
+
+      const result = transformPlotlyJsonToGanttChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+      expect(result.data).toEqual([{ x: { start: 0, end: 2 }, y: 1, legend: 'A', color: fillcolor }]);
+    },
+  );
+
+  test.each([
+    'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',
+    'red; position:fixed',
+    'url(css-injection-sentinel)',
+    '',
+    undefined,
+  ])('transformPlotlyJsonToGanttChartProps - replaces invalid toself fill color %s', fillcolor => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'scatter',
+          mode: 'none',
+          fill: 'toself',
+          name: 'A',
+          x: [0, 2, 2, 0, null],
+          y: [0, 0, 2, 2, null],
+          fillcolor,
+        },
+      ],
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToGanttChartProps(plotlySchema, false, { current: new Map() }, 'default');
+
+    expect(result.data).toEqual([
+      {
+        x: { start: 0, end: 2 },
+        y: 1,
+        legend: 'A',
+        color: getColor('A', { current: new Map() }, 'others'),
+      },
+    ]);
   });
 
   test.each(['__proto__', 'constructor', 'prototype'])(
