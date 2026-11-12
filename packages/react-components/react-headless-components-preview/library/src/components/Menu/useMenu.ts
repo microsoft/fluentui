@@ -18,6 +18,7 @@ import type {
 } from '@fluentui/react-positioning';
 
 import { useMenuContext } from './menuContext';
+import { useMenuViewport } from './useMenuViewport';
 import { useHasParentMenuList } from './menuListPresenceContext';
 import { usePositioning, resolvePositioningShorthand } from '../../positioning';
 import { getActiveElement } from '../../hooks/top-layer/utils';
@@ -95,12 +96,14 @@ export const useMenu = (props: MenuProps): MenuState => {
   } as const;
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
+  const parentMenuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
+  const viewportRef = useMenuViewport(open, triggerRef, parentMenuPopoverRef);
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const mergedTriggerRef = useMergedRefs(triggerRef, targetRef) as React.MutableRefObject<HTMLElement | null>;
   // prettier-ignore
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, containerRef) as React.MutableRefObject<HTMLElement | null>;
+  const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, containerRef, viewportRef) as React.MutableRefObject<HTMLElement | null>;
 
   return {
     inline,

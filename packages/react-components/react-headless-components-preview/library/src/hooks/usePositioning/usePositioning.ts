@@ -126,6 +126,11 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       node.style.setProperty('margin', '0');
 
       applyOffset(node, position, mainAxis, crossAxis);
+      node.toggleAttribute('data-cover-target', coverTarget);
+      node.style.setProperty(
+        '--fui-positioning-block-offset',
+        `${position === POSITIONS.above || position === POSITIONS.below ? mainAxis : crossAxis}px`,
+      );
 
       if (matchTargetSize === 'width') {
         node.style.setProperty('width', 'anchor-size(width)');
@@ -182,6 +187,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       mainAxis,
       crossAxis,
       coverAlignment,
+      coverTarget,
       strategy,
       matchTargetSize,
     ],
