@@ -6,6 +6,7 @@ export type {
   DataGridProps,
   DataGridState,
   DataGridFocusMode,
+  DataGridContextValue,
   DataGridContextValues,
 } from './DataGrid.types';
 

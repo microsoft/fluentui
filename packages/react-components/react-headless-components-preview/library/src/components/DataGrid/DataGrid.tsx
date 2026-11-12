@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const DataGrid: ForwardRefComponent<DataGridProps> = /*#__PURE__*/ composeComponent(
   'DataGrid',
   useDataGrid,
-  renderDataGrid,
   useDataGridContextValues,
+  renderDataGrid,
 );

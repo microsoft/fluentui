@@ -7,8 +7,8 @@
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import { renderTable_unstable as renderTable } from '@fluentui/react-table';
 import { renderTableBody_unstable as renderTableBody } from '@fluentui/react-table';
 import { renderTableCell_unstable as renderTableCell } from '@fluentui/react-table';
 import { renderTableCellActions_unstable as renderTableCellActions } from '@fluentui/react-table';
@@ -17,7 +17,6 @@ import { renderTableHeader_unstable as renderTableHeader } from '@fluentui/react
 import { renderTableHeaderCell_unstable as renderTableHeaderCell } from '@fluentui/react-table';
 import { renderTableResizeHandle_unstable as renderTableResizeHandle } from '@fluentui/react-table';
 import { renderTableRow_unstable as renderTableRow } from '@fluentui/react-table';
-import { renderTableSelectionCell_unstable as renderTableSelectionCell } from '@fluentui/react-table';
 import type { TableBaseState } from '@fluentui/react-table';
 import { TableBodyProps } from '@fluentui/react-table';
 import { TableBodySlots } from '@fluentui/react-table';
@@ -33,7 +32,8 @@ import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellBaseState as TableCellState } from '@fluentui/react-table';
 import { TableColumnDefinition } from '@fluentui/react-table';
 import { TableColumnId } from '@fluentui/react-table';
-import { TableContextValues } from '@fluentui/react-table';
+import type { TableContextValue as TableContextValue_2 } from '@fluentui/react-table';
+import { TableFeaturePlugin } from '@fluentui/react-table';
 import { TableFeaturesState } from '@fluentui/react-table';
 import type { TableHeaderCellBaseState } from '@fluentui/react-table';
 import { TableHeaderCellProps } from '@fluentui/react-table';
@@ -65,7 +65,8 @@ export { createTableColumn }
 
 export { CreateTableColumnOptions }
 
-export { renderTable }
+// @public
+export const renderTable: (state: TableState, contextValues: TableContextValues) => JSXElement;
 
 export { renderTableBody }
 
@@ -83,7 +84,8 @@ export { renderTableResizeHandle }
 
 export { renderTableRow }
 
-export { renderTableSelectionCell }
+// @public
+export const renderTableSelectionCell: (state: TableSelectionCellState) => JSXElement;
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
@@ -133,7 +135,15 @@ export { TableColumnDefinition }
 
 export { TableColumnId }
 
-export { TableContextValues }
+// @public
+export type TableContextValue = Omit<TableContextValue_2, 'size'>;
+
+// @public (undocumented)
+export type TableContextValues = {
+    table: TableContextValue;
+};
+
+export { TableFeaturePlugin }
 
 export { TableFeaturesState }
 
@@ -233,6 +243,9 @@ export const useTableCellActions: (props: TableCellActionsProps, ref: React_2.Re
 
 // @public
 export const useTableCellLayout: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
+
+// @public
+export const useTableContext: () => TableContextValue;
 
 // @public
 export const useTableContextValues: (state: TableState) => TableContextValues;

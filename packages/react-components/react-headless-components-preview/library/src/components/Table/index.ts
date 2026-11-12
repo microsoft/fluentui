@@ -1,7 +1,7 @@
 export { Table } from './Table';
 export { renderTable } from './renderTable';
-export { useTable, useTableContextValues } from './useTable';
-export type { TableSlots, TableProps, TableState, TableContextValues } from './Table.types';
+export { useTable, useTableContext, useTableContextValues } from './useTable';
+export type { TableSlots, TableProps, TableState, TableContextValue, TableContextValues } from './Table.types';
 
 export { TableHeader, renderTableHeader, useTableHeader } from './TableHeader';
 export type { TableHeaderSlots, TableHeaderProps, TableHeaderState } from './TableHeader';

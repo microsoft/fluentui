@@ -1,9 +1,13 @@
 'use client';
 
 import type * as React from 'react';
-import { useDataGridBase_unstable, useDataGridContextValues_unstable } from '@fluentui/react-table';
+import {
+  useDataGridBase_unstable,
+  useDataGridContext_unstable,
+  useDataGridContextValues_unstable,
+} from '@fluentui/react-table';
 
-import type { DataGridContextValues, DataGridProps, DataGridState } from './DataGrid.types';
+import type { DataGridContextValue, DataGridContextValues, DataGridProps, DataGridState } from './DataGrid.types';
 import { toDataAttributeValue } from '../../utils';
 
 /**
@@ -33,7 +37,7 @@ export const useDataGrid = (props: DataGridProps, ref: React.Ref<HTMLElement>): 
 /**
  * Returns the context of the data grid, which exposes its items, columns, sort and selection state.
  */
-export { useDataGridContext_unstable as useDataGridContext } from '@fluentui/react-table';
+export const useDataGridContext = useDataGridContext_unstable as <T>(selector: (ctx: DataGridContextValue) => T) => T;
 
 /**
  * Maps the state of the data grid to the values that are passed through context to its children.

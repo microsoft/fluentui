@@ -1,9 +1,13 @@
 'use client';
 
 import type * as React from 'react';
-import { useTableBase_unstable, useTableContextValues_unstable } from '@fluentui/react-table';
+import {
+  useTableBase_unstable,
+  useTableContext as useTableContextBase,
+  useTableContextValues_unstable,
+} from '@fluentui/react-table';
 
-import type { TableProps, TableState, TableContextValues } from './Table.types';
+import type { TableProps, TableState, TableContextValue, TableContextValues } from './Table.types';
 import { toDataAttributeValue } from '../../utils';
 
 /**
@@ -23,3 +27,9 @@ export const useTable = (props: TableProps, ref: React.Ref<HTMLElement>): TableS
  * Maps the state of the Table to the values that are passed through context to its children.
  */
 export const useTableContextValues = useTableContextValues_unstable as (state: TableState) => TableContextValues;
+
+/**
+ * Returns the context of the table, which tells the subcomponents whether the table is sortable and whether it renders
+ * native table elements.
+ */
+export const useTableContext = useTableContextBase as () => TableContextValue;

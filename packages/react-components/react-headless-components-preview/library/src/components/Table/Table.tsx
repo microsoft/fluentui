@@ -12,6 +12,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Table: ForwardRefComponent<TableProps> = /*#__PURE__*/ composeComponent(
   'Table',
   useTable,
-  renderTable,
   useTableContextValues,
+  renderTable,
 );

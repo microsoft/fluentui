@@ -8,6 +8,7 @@ import { CellRenderBaseFunction as CellRenderFunction } from '@fluentui/react-ta
 import type { ComponentState } from '@fluentui/react-utilities';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
+import type { DataGridBaseContextValue } from '@fluentui/react-table';
 import type { DataGridBaseProps } from '@fluentui/react-table';
 import type { DataGridBaseState } from '@fluentui/react-table';
 import { DataGridBodyProps } from '@fluentui/react-table';
@@ -16,7 +17,6 @@ import { DataGridBodyState } from '@fluentui/react-table';
 import type { DataGridCellBaseProps } from '@fluentui/react-table';
 import type { DataGridCellBaseState } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
-import { DataGridContextValues } from '@fluentui/react-table';
 import type { DataGridHeaderCellBaseProps } from '@fluentui/react-table';
 import type { DataGridHeaderCellBaseState } from '@fluentui/react-table';
 import { DataGridHeaderCellSlots } from '@fluentui/react-table';
@@ -33,20 +33,17 @@ import { DataGridSlots } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import { renderDataGrid_unstable as renderDataGrid } from '@fluentui/react-table';
 import { renderDataGridBody_unstable as renderDataGridBody } from '@fluentui/react-table';
 import { renderDataGridCell_unstable as renderDataGridCell } from '@fluentui/react-table';
 import { renderDataGridHeader_unstable as renderDataGridHeader } from '@fluentui/react-table';
 import { renderDataGridHeaderCell_unstable as renderDataGridHeaderCell } from '@fluentui/react-table';
-import { renderDataGridRow_unstable as renderDataGridRow } from '@fluentui/react-table';
-import { renderDataGridSelectionCell_unstable as renderDataGridSelectionCell } from '@fluentui/react-table';
 import { RowRenderFunction } from '@fluentui/react-table';
 import type { Slot } from '@fluentui/react-utilities';
 import { TableColumnDefinition } from '@fluentui/react-table';
 import { TableColumnId } from '@fluentui/react-table';
+import type { TableContextValue as TableContextValue_2 } from '@fluentui/react-table';
 import { TableRowData } from '@fluentui/react-table';
 import { TableRowId } from '@fluentui/react-table';
-import { useDataGridContext_unstable as useDataGridContext } from '@fluentui/react-table';
 
 export { CellRenderFunction }
 
@@ -86,7 +83,15 @@ export type DataGridCellState = DataGridCellBaseState & {
     };
 };
 
-export { DataGridContextValues }
+// @public
+export type DataGridContextValue = Omit<DataGridBaseContextValue, 'focusMode'> & {
+    focusMode: DataGridFocusMode;
+};
+
+// @public (undocumented)
+export type DataGridContextValues = TableContextValues & {
+    dataGrid: DataGridContextValue;
+};
 
 // @public
 export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
@@ -181,7 +186,8 @@ export type DataGridState = Omit<DataGridBaseState, 'focusMode'> & {
     };
 };
 
-export { renderDataGrid }
+// @public
+export const renderDataGrid: (state: DataGridState, contextValues: DataGridContextValues) => JSXElement;
 
 export { renderDataGridBody }
 
@@ -191,9 +197,11 @@ export { renderDataGridHeader }
 
 export { renderDataGridHeaderCell }
 
-export { renderDataGridRow }
+// @public
+export const renderDataGridRow: (state: DataGridRowState) => JSXElement;
 
-export { renderDataGridSelectionCell }
+// @public
+export const renderDataGridSelectionCell: (state: DataGridSelectionCellState) => JSXElement;
 
 export { RowRenderFunction }
 
@@ -214,7 +222,8 @@ export const useDataGridBody: (props: DataGridBodyProps, ref: React_2.Ref<HTMLEl
 // @public
 export const useDataGridCell: (props: DataGridCellProps, ref: React_2.Ref<HTMLElement>) => DataGridCellState;
 
-export { useDataGridContext }
+// @public
+export const useDataGridContext: <T>(selector: (ctx: DataGridContextValue) => T) => T;
 
 // @public
 export const useDataGridContextValues: (state: DataGridState) => DataGridContextValues;

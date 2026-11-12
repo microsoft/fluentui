@@ -1,5 +1,5 @@
-export { Table, renderTable, useTable, useTableContextValues } from './components/Table';
-export type { TableSlots, TableProps, TableState, TableContextValues } from './components/Table';
+export { Table, renderTable, useTable, useTableContext, useTableContextValues } from './components/Table';
+export type { TableSlots, TableProps, TableState, TableContextValue, TableContextValues } from './components/Table';
 
 export { TableHeader, renderTableHeader, useTableHeader } from './components/Table';
 export type { TableHeaderSlots, TableHeaderProps, TableHeaderState } from './components/Table';
@@ -33,6 +33,7 @@ export type {
   CreateTableColumnOptions,
   TableColumnDefinition,
   TableColumnId,
+  TableFeaturePlugin,
   TableFeaturesState,
   TableRowData,
   TableRowId,

@@ -1,6 +1,7 @@
-import type { DataGridBaseProps, DataGridBaseState } from '@fluentui/react-table';
+import type { DataGridBaseContextValue, DataGridBaseProps, DataGridBaseState } from '@fluentui/react-table';
+import type { TableContextValues } from '../Table/Table.types';
 
-export type { DataGridSlots, DataGridContextValues } from '@fluentui/react-table';
+export type { DataGridSlots } from '@fluentui/react-table';
 
 /**
  * Focus modes supported by the headless DataGrid.
@@ -41,4 +42,15 @@ export type DataGridState = Omit<DataGridBaseState, 'focusMode'> & {
      */
     'data-selection-mode'?: 'single' | 'multiselect';
   };
+};
+
+/**
+ * Values of the data grid context: the items, columns, sort and selection state of the grid, and its focus mode.
+ */
+export type DataGridContextValue = Omit<DataGridBaseContextValue, 'focusMode'> & {
+  focusMode: DataGridFocusMode;
+};
+
+export type DataGridContextValues = TableContextValues & {
+  dataGrid: DataGridContextValue;
 };
