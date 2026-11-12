@@ -44,6 +44,7 @@ describe('useAriaLiveAnnouncer', () => {
 
       expect(append).toHaveBeenCalledTimes(1);
       expect(append).toHaveBeenCalledWith(expect.any(HTMLDivElement));
+      expect(document.body.querySelector('[data-tabster-never-hide]')).toBeTruthy();
 
       // Ensure that the same element is not appended again
       rerender();
