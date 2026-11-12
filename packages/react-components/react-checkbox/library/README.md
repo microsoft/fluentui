@@ -30,8 +30,8 @@ Alternatively, run Storybook locally with:
 
 ### Specification
 
-See [Spec.md](./Spec.md).
+See [Spec.md](./docs/Spec.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Checkbox implementation.
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./docs/MIGRATION.md) for guidance on updating to the latest Checkbox implementation.
