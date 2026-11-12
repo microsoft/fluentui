@@ -39,10 +39,21 @@ Dedicated specs:
 - [`AppGlobalStyles.cy.tsx`](./e2e/AppGlobalStyles.cy.tsx): core components under a global reset stylesheet loaded
   first (element and universal selectors, like normalize or Tailwind preflight) and with app `makeResetStyles()`
   classes, alone and merged with `makeStyles()` overrides.
-- [`app-patterns/`](./e2e/app-patterns): styling reduced from real applications, one spec per pattern, run in the
-  `app pattern` scenario (`ComponentSpec.useAppPattern`). A pattern hook returns the app's class name, props and
-  surrounding markup, and can toggle app state (`toggles`, for example a selection), after which every state is sampled
-  again. Keep each pattern close to its source and list the style shapes it covers in its styles file.
+- [`CustomStyleHooks.cy.tsx`](./e2e/CustomStyleHooks.cy.tsx): custom style hooks that prepend their class, pick classes
+  from component state, or come from a nested `FluentProvider` with another theme.
+- [`app-patterns/`](./e2e/app-patterns): app styling run in the `app pattern` scenario (`ComponentSpec.useAppPattern`).
+  A pattern hook returns the app's class name, props and surrounding markup, and can toggle app state (`toggles`, for
+  example a selection), after which every state is sampled again. [`patternMatrix()`](./e2e/app-patterns/matrix.tsx)
+  crosses components with patterns.
+  - `SegmentedToggle`: a toggle reduced from a production app; keep such patterns close to their source.
+  - `Shorthands`: one override per CSS shorthand family (`padding*`, `margin*`, `border*`, `outline`, `gap`, `flex`,
+    `overflow`, `textDecoration`).
+  - `Selectors`: attribute selectors, `:not()`, `:is()`, `:where()`, `:focus`, `:focus-visible`,
+    `[data-fui-focus-visible]`, parent `:hover`, Fluent slot class descendants, `::before`/`::after`.
+  - `AtRules`: overrides inside `@media`, `@supports`, `@container` and `@layer`.
+  - `VariantOverrides`: sizes, shapes, icon-only and checked variants with stateful, slot and every-state overrides.
+  - `DisabledOverrides`: `disabled`/`disabledFocusable` variants with `:disabled`, `[aria-disabled]`, `[disabled]` and
+    class overrides.
 - [`SSR.cy.tsx`](./e2e/SSR.cy.tsx) (Griffel buckets mode only): renders on the server in a Web Worker (no DOM, same
   bundle so class names match), injects the HTML and `renderToStyleElements()` output, compares both implementations
   before and after `hydrateRoot()`, and fails on hydration errors or style changes caused by hydration.
@@ -83,6 +94,9 @@ Tolerated only for values the app declared (and colors inherited from them):
 - An app `makeResetStyles()` class now beats component styles. Griffel puts reset styles in its first bucket, so
   component styles of equal specificity won; CSS Modules component styles are an earlier stylesheet. Layout sizes that
   follow the app's padding and radius are tolerated too.
+- A custom style hook that prepends its class (`mergeClasses(hookClass, state.root.className)`) now wins. In Griffel
+  the component classes merged after it won every conflict; CSS Modules classes aren't atomic, so `mergeClasses()`
+  argument order can't decide between them.
 
 Some specs declare further, component-specific `knownDifferences` (for example, inherited backgrounds in plain CSS
 scenarios), each with an explanation.
@@ -105,7 +119,8 @@ FUI_PARITY_EXTRACTION=1 yarn nx run css-modules-parity:e2e
   bucket win like the last class in `mergeClasses()`. It reads only the stylesheet: what can't be derived from the CSS
   comes from the `@griffel-buckets` directive at its top, for example
   `/* @griffel-buckets reset: .root, .icon; logical: padding-inline-start */`. Classes ported from `makeResetStyles()`
-  go to the reset buckets (`r`/`s`); listed logical longhands get `-0.5`, as Griffel's physical shorthands don't remove
+  go to the reset buckets (`r`/`s`), and so do the variant classes listed in `defaults:` (styles the Griffel reset class
+  contained, such as a Button's `secondary`, `medium` and `rounded` styles); listed logical longhands get `-0.5`, as Griffel's physical shorthands don't remove
   them. The directive ships in the published `.module.css` files unchanged. The `fluentui/griffel-buckets` stylelint
   rule ([`tools/stylelint-rules`](../../tools/stylelint-rules/README.md)) keeps it in sync with the Griffel sources.
 - Runtime: [`griffelBucketsStyleLoader`](./griffel-buckets/griffelBucketsStyleLoader.js) replaces `style-loader`;
@@ -127,11 +142,8 @@ reverses CSS Modules source order; the harness appends rules instead, `@griffel/
 
 Remaining differences (all specs, nothing tolerated):
 
-- App `makeResetStyles()` against Button, ToggleButton and Avatar: Griffel kept their default variant styles (secondary,
-  medium, rounded) in the component's reset class, which the later-inserted app reset class beats. The CSS Modules
-  ports moved them to `.secondary`, `.medium` and `.rounded`, which go to the default bucket. Listing those classes in
-  `@griffel-buckets reset:` restores parity for Button and ToggleButton (checked locally); Avatar's `font-weight`
-  needs the same.
+- Custom style hooks that prepend their class: no bucket or priority reproduces `mergeClasses()` argument order
+  between an app class and component classes.
 - Tab and TabList (extraction only): the Griffel baseline itself differs from runtime Griffel, because extraction keeps
   shared atomic classes at their first occurrence, which reorders `padding` and `paddingBlock` (both priority `-1`).
 

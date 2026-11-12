@@ -23,6 +23,22 @@ export const useParityAppStyles = makeStyles({
   },
   hook: { backgroundColor: tokens.colorPaletteRedBackground2, color: tokens.colorPaletteRedForeground2 },
   hookSlot: { color: tokens.colorPaletteRedForeground2 },
+  hookPrimary: {
+    backgroundColor: tokens.colorPaletteGreenBackground2,
+    ':hover': { color: tokens.colorPaletteGreenForeground2 },
+  },
+  hookChecked: {
+    backgroundColor: tokens.colorPaletteBlueBackground2,
+    ':hover:active': { color: tokens.colorPaletteBlueForeground2 },
+  },
+  hookDisabled: {
+    backgroundColor: tokens.colorPaletteBerryBackground2,
+    ':hover': { color: tokens.colorPaletteBerryForeground2 },
+  },
+  hookNested: {
+    color: tokens.colorPaletteMarigoldForeground2,
+    ':hover': { backgroundColor: tokens.colorPaletteMarigoldBackground2 },
+  },
   caller: { backgroundColor: tokens.colorPaletteGreenBackground2 },
   wrapper: { backgroundColor: tokens.colorPaletteBerryBackground2, fontWeight: tokens.fontWeightRegular },
 });
