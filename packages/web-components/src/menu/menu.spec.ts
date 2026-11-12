@@ -371,3 +371,27 @@ test.describe('Menu', () => {
     await expect(menuButton).toBeFocused();
   });
 });
+
+test.describe('Menu upgrade order', () => {
+  test('should connect a menu list only after it upgrades', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () =>
+      (
+        window as unknown as {
+          runMenuUpgradeOrderTest(): Promise<{
+            menuListAssignedBeforeUpgrade: boolean;
+            menuListAssignedAfterUpgrade: boolean;
+            triggerAssignedBeforeUpgrade: boolean;
+            triggerAssignedAfterUpgrade: boolean;
+          }>;
+        }
+      ).runMenuUpgradeOrderTest(),
+    );
+
+    expect(result.menuListAssignedBeforeUpgrade).toBe(false);
+    expect(result.menuListAssignedAfterUpgrade).toBe(true);
+    expect(result.triggerAssignedBeforeUpgrade).toBe(false);
+    expect(result.triggerAssignedAfterUpgrade).toBe(true);
+  });
+});
