@@ -143,6 +143,53 @@ describe('Menu viewport reconciliation', () => {
     });
   }
 
+  for (const scale of [0.5, 2]) {
+    it(`preserves focused item visibility without unnecessary scrolling at scale ${scale}`, () => {
+      mount(
+        <Menu>
+          <MenuTrigger>
+            <button>Actions</button>
+          </MenuTrigger>
+          <MenuPopover
+            id="scaled-menu"
+            style={{
+              width: '200px',
+              height: '200px',
+              padding: 0,
+              border: 0,
+              overflow: 'auto',
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+            }}
+          >
+            <MenuList>
+              <div style={{ height: '160px' }} />
+              <MenuItem id="scaled-item" style={{ display: 'block', height: '20px' }}>
+                Action
+              </MenuItem>
+              <div style={{ height: '400px' }} />
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+      cy.get('button').focus().realPress('Enter');
+      cy.get('#scaled-item').focus();
+      cy.get('#scaled-menu').should('have.prop', 'scrollTop', 0);
+      cy.get('#scaled-menu').then(([surface]) => {
+        surface.style.height = '100px';
+      });
+      cy.get('#scaled-menu').should(([surface]) => {
+        const bounds = surface.getBoundingClientRect();
+        const item = surface.querySelector<HTMLElement>('#scaled-item')!;
+        const itemBounds = item.getBoundingClientRect();
+        expect(surface.scrollTop).to.equal(80);
+        expect(itemBounds.top).to.be.at.least(bounds.top - 1);
+        expect(itemBounds.bottom).to.be.at.most(bounds.bottom + 1);
+        expect(surface.ownerDocument.activeElement).to.equal(item);
+      });
+    });
+  }
+
   for (const writingMode of ['vertical-rl', 'vertical-lr'] as const) {
     it(`reveals focused items after horizontal shrink in ${writingMode}`, () => {
       mount(

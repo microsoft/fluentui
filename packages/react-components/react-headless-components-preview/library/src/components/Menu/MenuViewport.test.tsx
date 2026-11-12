@@ -281,6 +281,60 @@ describe('Menu viewport', () => {
     },
   );
 
+  it.each([
+    { scaleX: 0.5, scaleY: 2 },
+    { scaleX: 2, scaleY: 0.5 },
+  ])('normalizes scaled bounds, borders, and scroll deltas: %o', ({ scaleX, scaleY }) => {
+    const { get, activeRoot } = setup();
+    const surface = get('outer');
+    const item = get('outer-item');
+    Object.defineProperties(surface, {
+      clientWidth: { configurable: true, value: 200 },
+      clientHeight: { configurable: true, value: 200 },
+      clientLeft: { configurable: true, value: 3 },
+      clientTop: { configurable: true, value: 2 },
+      offsetWidth: { configurable: true, get: () => surface.clientWidth + 6 },
+      offsetHeight: { configurable: true, get: () => surface.clientHeight + 4 },
+    });
+    jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => ({
+      ...rect(10, surface.offsetHeight * scaleY),
+      left: 10,
+      right: 10 + surface.offsetWidth * scaleX,
+      width: surface.offsetWidth * scaleX,
+    }));
+    jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => {
+      const left = 10 + (surface.clientLeft + 160 - surface.scrollLeft) * scaleX;
+      return {
+        ...rect(10 + (surface.clientTop + 160 - surface.scrollTop) * scaleY, 20 * scaleY),
+        left,
+        right: left + 20 * scaleX,
+        width: 20 * scaleX,
+      };
+    });
+    item.focus();
+    flush();
+    expect([surface.scrollLeft, surface.scrollTop]).toEqual([0, 0]);
+    resize(surface);
+
+    Object.defineProperties(surface, {
+      clientWidth: { configurable: true, value: 100 },
+      clientHeight: { configurable: true, value: 100 },
+    });
+    resize(surface);
+    flush();
+    expect([surface.scrollLeft, surface.scrollTop]).toEqual([80, 80]);
+    act(() => window.dispatchEvent(new Event('resize')));
+    flush();
+    expect([surface.scrollLeft, surface.scrollTop]).toEqual([80, 80]);
+
+    surface.scrollLeft = 200;
+    surface.scrollTop = 200;
+    act(() => window.dispatchEvent(new Event('resize')));
+    flush();
+    expect([surface.scrollLeft, surface.scrollTop]).toEqual([160, 160]);
+    expect(activeRoot.activeElement).toBe(item);
+  });
+
   it('reconciles on parent scrolling, but leaves pure height growth alone', () => {
     const { get } = setup();
     const surface = get('inner');

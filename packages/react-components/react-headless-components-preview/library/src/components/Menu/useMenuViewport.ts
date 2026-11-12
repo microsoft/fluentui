@@ -14,23 +14,26 @@ const parents = new WeakMap<HTMLElement, ParentMenu>();
 const revealWithin = (surface: HTMLElement, target: Element) => {
   const bounds = surface.getBoundingClientRect();
   const item = target.getBoundingClientRect();
-  const top = bounds.top + surface.clientTop;
-  const bottom = top + surface.clientHeight;
-  const left = bounds.left + surface.clientLeft;
-  const right = left + surface.clientWidth;
+  // DOM rects include scaling, while client dimensions and scroll offsets use layout pixels.
+  const scaleX = bounds.width > 0 && surface.offsetWidth > 0 ? bounds.width / surface.offsetWidth : 1;
+  const scaleY = bounds.height > 0 && surface.offsetHeight > 0 ? bounds.height / surface.offsetHeight : 1;
+  const top = bounds.top + surface.clientTop * scaleY;
+  const bottom = top + surface.clientHeight * scaleY;
+  const left = bounds.left + surface.clientLeft * scaleX;
+  const right = left + surface.clientWidth * scaleX;
 
   if (item.top < top) {
-    surface.scrollTop += item.top - top;
+    surface.scrollTop += (item.top - top) / scaleY;
   } else if (item.bottom > bottom) {
     // Align oversized items at the start rather than alternating between their two edges.
-    surface.scrollTop += Math.min(item.top - top, item.bottom - bottom);
+    surface.scrollTop += Math.min(item.top - top, item.bottom - bottom) / scaleY;
   }
 
   // Physical deltas also support negative scrollLeft in RTL and vertical writing modes.
   if (item.left < left && item.right < right) {
-    surface.scrollLeft += Math.max(item.left - left, item.right - right);
+    surface.scrollLeft += Math.max(item.left - left, item.right - right) / scaleX;
   } else if (item.right > right && item.left > left) {
-    surface.scrollLeft += Math.min(item.left - left, item.right - right);
+    surface.scrollLeft += Math.min(item.left - left, item.right - right) / scaleX;
   }
 };
 
