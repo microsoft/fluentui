@@ -717,6 +717,7 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
     chartSchema: Schema;
     colorwayType?: ColorwayType;
     componentRef?: React_2.Ref<IDeclarativeChart>;
+    focusRestorePolicy?: FocusRestorePolicy;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -800,6 +801,9 @@ export interface ExtendedSegment extends GaugeChartSegment {
     end: number;
     start: number;
 }
+
+// @public
+export type FocusRestorePolicy = 'preserve' | 'reset' | 'none';
 
 // @public (undocumented)
 export const FunnelChart: React_2.FunctionComponent<FunnelChartProps>;
@@ -917,6 +921,10 @@ export interface GaugeChartProps {
     componentRef?: React.Ref<Chart>;
     culture?: string;
     enableGradient?: boolean;
+    focusOnReset?: {
+        segmentIndex: number;
+    };
+    focusRestorePolicy?: FocusRestorePolicy;
     height?: number;
     hideLegend?: boolean;
     hideMinMax?: boolean;
@@ -1400,6 +1408,11 @@ export interface LineChartProps extends CartesianChartProps {
     data: ChartProps;
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: EventsAnnotationProps;
+    focusOnReset?: {
+        lineIndex: number;
+        pointIndex: number;
+    };
+    focusRestorePolicy?: FocusRestorePolicy;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     isCalloutForStack?: boolean;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
@@ -1860,6 +1873,7 @@ export const VegaDeclarativeChart: React_2.ForwardRefExoticComponent<VegaDeclara
 export interface VegaDeclarativeChartProps {
     chartSchema: VegaSchema;
     className?: string;
+    focusRestorePolicy?: FocusRestorePolicy;
     onSchemaChange?: (newSchema: VegaSchema) => void;
     style?: React_2.CSSProperties;
 }
@@ -1946,6 +1960,10 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     culture?: string;
     data?: VerticalBarChartDataPoint[];
     enableGradient?: boolean;
+    focusOnReset?: {
+        barIndex: number;
+    };
+    focusRestorePolicy?: FocusRestorePolicy;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
