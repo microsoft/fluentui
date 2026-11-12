@@ -141,7 +141,7 @@ export type InlineDrawerState = InlineDrawerBaseState & {
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 
 // @public (undocumented)
-export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<OverlayDrawerProps_2, 'position'> & Pick<DialogProps, 'open' | 'modalType' | 'onOpenChange' | 'unmountOnClose'>;
+export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<OverlayDrawerProps_2, 'position'> & Pick<DialogProps, 'open' | 'modalType' | 'onOpenChange' | 'unmountOnClose' | 'inertTrapFocus'>;
 
 // @public (undocumented)
 export type OverlayDrawerSlots = {
