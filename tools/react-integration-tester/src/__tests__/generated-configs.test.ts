@@ -101,53 +101,72 @@ describe.each([
     expect(resolver.testPathForConsistencyCheck).toBe(path.join(originRoot, 'src', 'example.test.js'));
   });
 
-  it('compiles and loads the Cypress config with exact runtime paths', () => {
-    const baseConfig = {
-      component: { devServer: { webpackConfig: { resolve: { alias: { existing: 'keep' } } } } },
-    };
-    const output = transformSync(render('cypress.config.ts', templateData), {
-      jsc: { parser: { syntax: 'typescript' }, target: 'es2020' },
-      module: { type: 'commonjs' },
-      swcrc: false,
-      configFile: false,
-    });
-    const exports: { default?: unknown } = {};
-    const config = runInNewContext(`${output.code}\nmodule.exports.default;`, {
-      module: { exports },
-      exports,
-      process: { cwd: () => configDir },
-      require: (id: string) => {
-        if (id === 'node:path') {
-          return {
-            ...path,
-            resolve: (...segments: string[]) => path.resolve(configDir, ...segments),
-          };
-        }
-        expect(path.resolve(configDir, id)).toBe(path.join(originRoot, 'cypress.config.ts'));
-        return baseConfig;
-      },
-    });
-    const dependencies = path.join(configDir, usedNodeModulesDirRelative, 'node_modules');
-    expect(config).toEqual({
-      component: {
-        specPattern: [path.resolve(configDir, `${relativePathToProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`)],
-        devServer: {
-          webpackConfig: {
-            resolve: {
-              alias: {
-                existing: 'keep',
-                '@cypress/react': path.join(dependencies, '@cypress/react'),
-                '@types/react': path.join(dependencies, '@types/react'),
-                '@types/react-dom': path.join(dependencies, '@types/react-dom'),
-                react: path.join(dependencies, 'react'),
-                'react-dom': path.join(dependencies, 'react-dom'),
+  it.each([
+    {
+      name: 'default specs',
+      specPattern: undefined,
+      expectedPatterns: ['**/src/**/*.{cy,e2e}.{tsx,ts}'],
+    },
+    {
+      name: 'custom string pattern outside src',
+      specPattern: 'e2e/**/*.cy.tsx',
+      expectedPatterns: ['e2e/**/*.cy.tsx'],
+    },
+    {
+      name: 'multiple relative and absolute patterns',
+      specPattern: ['src/**/*.cy.tsx', 'e2e/**/*.cy.tsx', path.join(root, 'external', '*.cy.tsx')],
+      expectedPatterns: ['src/**/*.cy.tsx', 'e2e/**/*.cy.tsx', path.join(root, 'external', '*.cy.tsx')],
+    },
+  ])(
+    'compiles and loads the Cypress config with $name and exact runtime paths',
+    ({ specPattern, expectedPatterns }) => {
+      const baseConfig = {
+        component: { specPattern, devServer: { webpackConfig: { resolve: { alias: { existing: 'keep' } } } } },
+      };
+      const output = transformSync(render('cypress.config.ts', templateData), {
+        jsc: { parser: { syntax: 'typescript' }, target: 'es2020' },
+        module: { type: 'commonjs' },
+        swcrc: false,
+        configFile: false,
+      });
+      const exports: { default?: unknown } = {};
+      const config = runInNewContext(`${output.code}\nmodule.exports.default;`, {
+        module: { exports },
+        exports,
+        process: { cwd: () => configDir },
+        require: (id: string) => {
+          if (id === 'node:path') {
+            return {
+              ...path,
+              resolve: (...segments: string[]) => path.resolve(configDir, ...segments),
+            };
+          }
+          expect(path.resolve(configDir, id)).toBe(path.join(originRoot, 'cypress.config.ts'));
+          return baseConfig;
+        },
+      });
+      const dependencies = path.join(configDir, usedNodeModulesDirRelative, 'node_modules');
+      expect(config).toEqual({
+        component: {
+          specPattern: expectedPatterns.map(pattern => path.resolve(originRoot, pattern)),
+          devServer: {
+            webpackConfig: {
+              resolve: {
+                alias: {
+                  existing: 'keep',
+                  '@cypress/react': path.join(dependencies, '@cypress/react'),
+                  '@types/react': path.join(dependencies, '@types/react'),
+                  '@types/react-dom': path.join(dependencies, '@types/react-dom'),
+                  react: path.join(dependencies, 'react'),
+                  'react-dom': path.join(dependencies, 'react-dom'),
+                },
               },
             },
           },
         },
-      },
-    });
-  });
+      });
+    },
+  );
 
   it('renders the Cypress tsconfig as valid JSON without changing glob strings', () => {
     expect(JSON.parse(render('tsconfig.cy.json', templateData))).toEqual({
