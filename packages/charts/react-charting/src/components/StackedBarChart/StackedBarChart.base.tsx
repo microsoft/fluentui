@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject, getNextGradient, hasNonZeroData } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { formatToLocaleString, isSafeUrl } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
@@ -234,9 +234,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
   ): [JSXElement[], JSXElement] {
-    const noOfBars =
-      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
-      1;
+    const noOfBars = data.chartData?.filter(hasNonZeroData).length || 1;
     const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
 
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -249,6 +247,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     );
     let prevPosition = 0;
     let value = 0;
+    // Gaps are only drawn between rendered bars, matching `noOfBars` above.
+    let renderedBarsBefore = 0;
 
     let sumOfPercent = 0;
 
@@ -324,7 +324,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         value = value / scalingRatio;
       }
 
-      startingPoint.push(prevPosition);
+      startingPoint.push(prevPosition + this.state.barSpacingInPercent * renderedBarsBefore);
+      if (hasNonZeroData(point)) {
+        renderedBarsBefore++;
+      }
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : startColor;
@@ -365,11 +368,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <rect
             key={index}
             id={getId('_SBC_bar')}
-            x={`${
-              this._isRTL
-                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
-                : startingPoint[index] + this.state.barSpacingInPercent * index
-            }%`}
+            x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
             height={barHeight}
