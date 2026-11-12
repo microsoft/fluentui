@@ -1636,7 +1636,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           // aria-selected should only be applied to checked items, not hovered items
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={item.ariaLabel}
-          disabled={item.disabled}
+          disabled={this.props.disabled || item.disabled}
           title={title}
         >
           {
@@ -1658,7 +1658,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           checked={isChecked}
           indeterminate={isIndeterminate}
           title={title}
-          disabled={item.disabled}
+          disabled={this.props.disabled || item.disabled}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={this._renderCheckboxLabel.bind(this, { ...item, id: id + '-label' })}
           inputProps={{
@@ -1678,7 +1678,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       <ComboBoxOptionWrapper
         key={item.key}
         index={item.index}
-        disabled={item.disabled}
+        disabled={this.props.disabled || item.disabled}
         isSelected={isSelected}
         isChecked={isChecked}
         isIndeterminate={isIndeterminate}
@@ -1892,6 +1892,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { onItemClick } = this.props;
     const { index } = item;
     return (ev: React.MouseEvent<any>): void => {
+      if (this.props.disabled) {
+        return;
+      }
+
       // only close the callout when it's in single-select mode
       if (!this.props.multiSelect) {
         // ensure that focus returns to the input, not the button
