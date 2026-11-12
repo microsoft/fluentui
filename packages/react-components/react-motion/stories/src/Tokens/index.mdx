@@ -23,9 +23,16 @@ const Motion = createMotionComponent({
 });
 ```
 
+Preview playback respects your system's reduced-motion preference.
+
 ## Curves
 
 Motion curves are predefined easing functions that can be used to create smooth animations.
+
+The plots show hollow circles at the Bézier control points and filled dots at the fixed endpoints.
+Dashed lines connect each endpoint to its control point, showing the endpoint tangent directions.
+When a control point coincides with its endpoint, its handle has zero length.
+Use **Show control points** to hide or show these guides independently of the animation.
 
 <MotionCurves />
 
