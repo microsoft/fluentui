@@ -16,5 +16,9 @@ export const useNavItem = (
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = toDataAttributeValue(state.selected);
 
+  if (state.icon) {
+    state.icon['aria-hidden'] ??= true;
+  }
+
   return state;
 };

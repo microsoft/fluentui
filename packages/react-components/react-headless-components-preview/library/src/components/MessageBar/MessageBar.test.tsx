@@ -58,4 +58,9 @@ describe('MessageBar', () => {
     expect(actions).toHaveAttribute('data-layout', 'singleline');
     expect(actions).toHaveAttribute('data-has-actions', '');
   });
+
+  it('defaults its intent icon to decorative', () => {
+    const { getByText } = render(<MessageBar icon="Info icon">Message</MessageBar>);
+    expect(getByText('Info icon')).toHaveAttribute('aria-hidden', 'true');
+  });
 });

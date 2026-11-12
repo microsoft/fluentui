@@ -1,0 +1,5 @@
+{
+  "type": "minor",
+  "comment": "fix!: correct headless behavior, state selectors (including icon-only badges with conditional or empty-array children), and icon accessibility; rename Field selector to data-validation-state.",
+  "packageName": "@fluentui/react-headless-components-preview"
+}

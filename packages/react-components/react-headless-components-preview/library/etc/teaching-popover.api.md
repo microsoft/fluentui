@@ -60,8 +60,6 @@ import { useTeachingPopoverCarouselFooterButtonBase_unstable as useTeachingPopov
 import { useTeachingPopoverCarouselNavBase_unstable as useTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselPageCount_unstable as useTeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverFooterBase_unstable as useTeachingPopoverFooter } from '@fluentui/react-teaching-popover';
-import { useTeachingPopoverHeaderBase_unstable as useTeachingPopoverHeader } from '@fluentui/react-teaching-popover';
-import { useTeachingPopoverTitleBase_unstable as useTeachingPopoverTitle } from '@fluentui/react-teaching-popover';
 
 // @public
 export type NavButtonRenderFunction = TeachingPopoverCarouselNavState['renderNavButton'];
@@ -263,7 +261,7 @@ export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 
     shouldRenderSurface: boolean;
 };
 
-// @public
+// @public (undocumented)
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;
 
 // @public (undocumented)
@@ -339,12 +337,14 @@ export const useTeachingPopoverContextValues: (state: TeachingPopoverState) => T
 
 export { useTeachingPopoverFooter }
 
-export { useTeachingPopoverHeader }
+// @public (undocumented)
+export const useTeachingPopoverHeader: (props: TeachingPopoverHeaderProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverHeaderState;
 
-// @public
+// @public (undocumented)
 export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => TeachingPopoverSurfaceState;
 
-export { useTeachingPopoverTitle }
+// @public (undocumented)
+export const useTeachingPopoverTitle: (props: TeachingPopoverTitleProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverTitleState;
 
 // @public
 export const useTeachingPopoverTrigger: (props: TeachingPopoverTriggerProps) => TeachingPopoverTriggerState;

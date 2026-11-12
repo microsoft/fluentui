@@ -15,5 +15,11 @@ describe('RadioGroup', () => {
 
     expect(radiogroup).toBeInTheDocument();
     expect(getByText('Default RadioGroup')).toBeInTheDocument();
+    expect(radiogroup).not.toHaveAttribute('data-disabled');
+  });
+
+  it('exposes resolved disabled state', () => {
+    const { getByRole } = render(<RadioGroup disabled />);
+    expect(getByRole('radiogroup')).toHaveAttribute('data-disabled');
   });
 });

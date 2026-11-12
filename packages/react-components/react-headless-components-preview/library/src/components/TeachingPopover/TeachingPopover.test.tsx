@@ -64,7 +64,7 @@ describe('TeachingPopover', () => {
     expect(container.querySelector('svg')).toBeNull();
     expect(header.querySelector('[aria-hidden="true"]')).toBeEmptyDOMElement();
     expect(header.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
-    expect(title.querySelector('button')).toBeNull();
+    expect(title.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
   });
 
   it('renders explicitly provided header and title slots', () => {
@@ -102,7 +102,7 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeInTheDocument();
+    expect(getByRole('dialog', { hidden: true }).querySelector('[data-arrow]')).toBeInTheDocument();
   });
 
   it('allows opting out of the arrow with withArrow={false}', () => {
@@ -115,10 +115,10 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeNull();
+    expect(getByRole('dialog', { hidden: true }).querySelector('[data-arrow]')).toBeNull();
   });
 
-  it('does not enable inertTrapFocus by default (surface is role="group", not "dialog")', () => {
+  it('defaults to dialog semantics without requiring inertTrapFocus', () => {
     const { getByRole, queryByRole } = render(
       <TeachingPopover defaultOpen>
         <TeachingPopoverTrigger>
@@ -128,8 +128,63 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
-    expect(queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
+    expect(getByRole('dialog', { hidden: true })).toBeInTheDocument();
+    expect(queryByRole('group', { hidden: true })).not.toBeInTheDocument();
+  });
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
+    'focuses the dismiss button and restores trigger focus on dismissal',
+    async Component => {
+      const { getByRole } = render(
+        <TeachingPopover defaultOpen>
+          <TeachingPopoverTrigger>
+            <button>Trigger</button>
+          </TeachingPopoverTrigger>
+          <TeachingPopoverSurface>
+            <Component>Content</Component>
+          </TeachingPopoverSurface>
+        </TeachingPopover>,
+      );
+      const dismiss = getByRole('button', { name: 'dismiss', hidden: true });
+      expect(dismiss).toHaveFocus();
+      expect(dismiss).toHaveAttribute('type', 'button');
+      expect(dismiss).not.toHaveAttribute('aria-hidden');
+      userEvent.click(dismiss);
+      await waitFor(() => expect(getByRole('button', { name: 'Trigger' })).toHaveFocus());
+    },
+  );
+
+  it('preserves role overrides and allows dismiss-button suppression', () => {
+    const { getByRole, queryByLabelText } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface role="region">
+          <TeachingPopoverHeader dismissButton={null}>Header</TeachingPopoverHeader>
+          <TeachingPopoverTitle dismissButton={null}>Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    expect(getByRole('region', { hidden: true })).toBeInTheDocument();
+    expect(queryByLabelText('dismiss')).toBeNull();
+  });
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])('allows consumers to prevent dismissal', Component => {
+    const onClick = jest.fn((event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault());
+    const { getByRole } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <Component dismissButton={{ onClick, autoFocus: false }}>Content</Component>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    userEvent.click(getByRole('button', { name: 'dismiss', hidden: true }));
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(getByRole('button', { name: 'Trigger' })).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('forwards inertTrapFocus to the surface when explicitly set', () => {

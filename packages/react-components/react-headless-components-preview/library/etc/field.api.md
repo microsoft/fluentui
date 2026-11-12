@@ -29,7 +29,7 @@ export { FieldSlots }
 // @public
 export type FieldState = FieldBaseState & {
     root: {
-        'data-validate-state'?: FieldBaseState['validationState'];
+        'data-validation-state'?: FieldBaseState['validationState'];
     };
 };
 

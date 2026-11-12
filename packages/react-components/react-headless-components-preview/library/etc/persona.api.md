@@ -30,6 +30,7 @@ export type PersonaSlots = Omit<PersonaSlots_2, 'avatar' | 'presence'> & {
 export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'textPosition' | 'numTextLines'> & {
     root: {
         'data-text-position'?: PersonaState_2['textPosition'];
+        'data-text-lines'?: number;
     };
 };
 

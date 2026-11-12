@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { SpinButton } from './SpinButton';
 
@@ -20,6 +20,7 @@ describe('SpinButton', () => {
     expect(spinbutton).toHaveAttribute('aria-valuemax', '10');
     expect(spinbutton).toHaveAttribute('aria-valuenow', '1');
     expect(spinbutton).toHaveValue('1');
+    expect(spinbutton).toHaveAttribute('inputmode', 'decimal');
     expect(getByLabelText('Increment value')).toBeInTheDocument();
     expect(getByLabelText('Decrement value')).toBeInTheDocument();
   });
@@ -30,6 +31,7 @@ describe('SpinButton', () => {
 
     expect(root).toHaveAttribute('data-readonly', '');
     expect(getByRole('spinbutton')).toHaveAttribute('readonly');
+    expect(getByRole('spinbutton')).toHaveAttribute('aria-readonly', 'true');
   });
 
   it('does not render data-readonly when editable', () => {
@@ -51,5 +53,30 @@ describe('SpinButton', () => {
     const root = container.firstElementChild!;
 
     expect(root).toHaveAttribute('data-at-bound', 'max');
+  });
+
+  it.each([
+    ['Increment value', '2'],
+    ['Decrement value', '0'],
+  ])('keeps focus on the input when pressing %s', (label, value) => {
+    const onMouseDown = jest.fn();
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByRole, getByLabelText } = render(
+      <SpinButton ref={ref} defaultValue={1} incrementButton={{ onMouseDown }} decrementButton={{ onMouseDown }} />,
+    );
+    const button = getByLabelText(label);
+    const input = getByRole('spinbutton');
+    expect(fireEvent.mouseDown(button)).toBe(false);
+    expect(input).toHaveFocus();
+    expect(ref.current).toBe(input);
+    expect(input).toHaveValue(value);
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+    fireEvent.mouseUp(button);
+  });
+
+  it('preserves input slot overrides', () => {
+    const { getByRole } = render(<SpinButton readOnly input={{ inputMode: 'numeric', 'aria-readonly': false }} />);
+    expect(getByRole('spinbutton')).toHaveAttribute('inputmode', 'numeric');
+    expect(getByRole('spinbutton')).toHaveAttribute('aria-readonly', 'false');
   });
 });

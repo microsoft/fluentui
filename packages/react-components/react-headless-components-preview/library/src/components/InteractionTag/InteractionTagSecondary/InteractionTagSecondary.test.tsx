@@ -25,5 +25,6 @@ describe('InteractionTagSecondary', () => {
     const result = wrap(<InteractionTagSecondary data-testid="sec" aria-label="dismiss" />);
     const sec = result.getByTestId('sec');
     expect(sec).toBeEmptyDOMElement();
+    expect(sec).toHaveAttribute('data-interaction-tag-secondary');
   });
 });

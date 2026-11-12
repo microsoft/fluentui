@@ -17,5 +17,6 @@ describe('EmptySwatch', () => {
     expect(swatch).toHaveAttribute('aria-checked', 'false');
     expect(swatch).not.toHaveAttribute('data-selected');
     expect(swatch).toHaveAttribute('data-disabled');
+    expect(swatch).toHaveAttribute('type', 'button');
   });
 });

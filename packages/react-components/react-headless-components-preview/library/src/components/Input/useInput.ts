@@ -17,6 +17,8 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): I
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.input.disabled);
   // eslint-disable-next-line react-hooks/immutability
+  state.root['data-readonly'] = toDataAttributeValue(state.input.readOnly);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-invalid'] = toDataAttributeValue(state.input['aria-invalid']);
 
   return state;
