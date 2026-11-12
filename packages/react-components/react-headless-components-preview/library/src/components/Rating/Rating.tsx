@@ -14,6 +14,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Rating: ForwardRefComponent<RatingProps> = /*#__PURE__*/ composeComponent(
   'Rating',
   useRating,
-  renderRating,
   useRatingContextValues,
+  renderRating,
 );

@@ -50,7 +50,7 @@ export interface LeafMatch {
 }
 
 const GET_STATE_MESSAGE =
-  'imperative store snapshot via `.getState()` takes no tracked inputs — memoization caches a stale value across store transitions';
+  'imperative store snapshot via `.getState()` takes no tracked inputs — memoization may cache a stale value across store transitions';
 
 function accessorMessage(calleeName: string): string {
   return `non-reactive store read via \`${calleeName}()\` — memoization may cache a stale snapshot across store transitions`;

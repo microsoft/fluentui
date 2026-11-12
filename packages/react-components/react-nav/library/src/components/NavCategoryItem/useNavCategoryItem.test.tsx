@@ -57,6 +57,23 @@ describe('useNavCategoryItem_unstable', () => {
     expect(result.current.root['aria-expanded']).toBe(true);
   });
 
+  it('renders a non-submitting button by default and allows overriding type', () => {
+    const wrapper = ({ children }: { children?: React.ReactNode }) => (
+      <NavProvider value={createNavContextValue()}>
+        <NavCategoryProvider value={createCategoryContextValue()}>{children}</NavCategoryProvider>
+      </NavProvider>
+    );
+
+    const { result } = renderHook(() => useNavCategoryItem_unstable({}, React.createRef()), { wrapper });
+    expect(result.current.root.type).toBe('button');
+
+    const { result: overridden } = renderHook(
+      () => useNavCategoryItem_unstable({ type: 'submit' }, React.createRef()),
+      { wrapper },
+    );
+    expect(overridden.current.root.type).toBe('submit');
+  });
+
   it('requests category toggle on click', () => {
     const onRequestNavCategoryItemToggle = jest.fn();
     const wrapper = ({ children }: { children?: React.ReactNode }) => (

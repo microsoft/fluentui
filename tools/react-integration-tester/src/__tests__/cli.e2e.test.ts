@@ -1,5 +1,5 @@
 import { TempFs } from './fixtures/temp-fs';
-import { join, resolve } from 'node:path';
+import { join, relative, resolve, sep } from 'node:path';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
@@ -32,6 +32,14 @@ function readJSON(filePath: string): Record<string, string> {
 }
 function readFile(filePath: string): string {
   return readFileSync(filePath, 'utf8');
+}
+
+// Executable renderer tests check path values; these markers keep source snapshots path-independent.
+function templateSourceSnapshot(source: string, paths: Record<string, string>) {
+  return Object.entries(paths).reduce(
+    (result, [name, value]) => result.split(JSON.stringify(value)).join(`<${name}>`),
+    source,
+  );
 }
 
 /**
@@ -99,7 +107,7 @@ describe('rit CLI e2e', () => {
     const [installDeps, runCmd] = log;
 
     expect(installDeps.command).toContain('yarn install');
-    expect(installDeps.cwd.endsWith('tmp/rit/react-18')).toEqual(true);
+    expect(installDeps.cwd).toBe(join(fs.tempDir, 'tmp', 'rit', 'react-18'));
 
     expect(runCmd.command).toContain('jest --passWithNoTests');
     expect(runCmd.cwd).toEqual(expect.stringContaining(join(fs.tempDir, 'tmp/rit/react-18/proj-react-18')));
@@ -135,7 +143,7 @@ describe('rit CLI e2e', () => {
     const log = getLog(cmdLog);
     const yarn = log.find(l => String(l.command).includes('yarn install'));
     expect(yarn).toBeTruthy();
-    expect(yarn?.cwd).toContain('tmp/rit/react-18');
+    expect(yarn?.cwd).toBe(join(fs.tempDir, 'tmp', 'rit', 'react-18'));
 
     expect(readJSON(join(fs.tempDir, 'tmp/rit/react-18/package.json'))).toMatchInlineSnapshot(`
       Object {
@@ -188,87 +196,86 @@ describe('rit CLI e2e', () => {
     const entries = getLog(cmdLog);
     expect(entries.length).toBeGreaterThanOrEqual(1);
     expect(entries.every(e => String(e.command).includes('yarn install'))).toBe(true);
-    expect(entries.every(e => String(e.cwd).includes('tmp/rit/react-18'))).toBe(true);
+    expect(entries.every(e => e.cwd === join(fs.tempDir, 'tmp', 'rit', 'react-18'))).toBe(true);
 
     const ritProjectPath = join(fs.tempDir, 'tmp/rit/react-18/proj-react-18-ci');
     // tsconfig should exist in prepared project
-    expect(readJSON(join(ritProjectPath, 'tsconfig.json'))).toMatchInlineSnapshot(`
-      Object {
-        "compilerOptions": Object {
-          "baseUrl": ".",
-          "isolatedModules": true,
-          "jsx": "react",
-          "lib": Array [
-            "ES2019",
-            "DOM",
-          ],
-          "module": "esnext",
-          "moduleResolution": "node",
-          "noEmit": true,
-          "paths": Object {
-            "react": Array [
-              "../node_modules/@types/react/index.d.ts",
-            ],
-            "react-dom": Array [
-              "../node_modules/@types/react-dom/index.d.ts",
-            ],
-            "react/jsx-runtime": Array [
-              "../node_modules/@types/react/jsx-runtime.d.ts",
-            ],
-          },
-          "pretty": true,
-          "skipLibCheck": true,
-          "strict": true,
-          "target": "ES2019",
-          "typeRoots": Array [
-            "../node_modules/@types",
-          ],
-          "types": Array [],
+    const { extends: tsconfigExtends, ...tsconfig } = JSON.parse(readFile(join(ritProjectPath, 'tsconfig.json')));
+    expect(resolve(ritProjectPath, tsconfigExtends)).toBe(join(projectRoot, 'tsconfig.lib.json'));
+    const projectRelativePath = join('..', '..', '..', '..', 'proj');
+    expect(tsconfig).toEqual({
+      compilerOptions: {
+        baseUrl: '.',
+        isolatedModules: true,
+        jsx: 'react',
+        lib: ['ES2019', 'DOM'],
+        module: 'esnext',
+        moduleResolution: 'node',
+        noEmit: true,
+        paths: {
+          react: ['../node_modules/@types/react/index.d.ts'],
+          'react-dom': ['../node_modules/@types/react-dom/index.d.ts'],
+          'react/jsx-runtime': ['../node_modules/@types/react/jsx-runtime.d.ts'],
         },
-        "exclude": Array [
-          "../../../../proj/**/index.stories.tsx",
-          "../../../../proj/**/index.stories.ts",
-          "../../../../proj/**/*.spec.tsx",
-          "../../../../proj/**/*.test.tsx",
-          "../../../../proj/**/src/testing/**",
-          "../../../../proj/**/*.cy.tsx",
-          "../../../../proj/**/*.cy.tsx",
-        ],
-        "extends": "../../../../proj/tsconfig.lib.json",
-        "files": Array [
-          "../../../../typings/static-assets/index.d.ts",
-        ],
-        "include": Array [
-          "../../../../proj/src/index.ts",
-        ],
-        "references": Array [],
-      }
-    `);
+        pretty: true,
+        skipLibCheck: true,
+        strict: true,
+        target: 'ES2019',
+        typeRoots: ['../node_modules/@types'],
+        types: [],
+      },
+      exclude: [
+        '**/index.stories.tsx',
+        '**/index.stories.ts',
+        '**/*.spec.tsx',
+        '**/*.test.tsx',
+        '**/src/testing/**',
+        '**/*.cy.tsx',
+        '**/*.cy.tsx',
+      ].map(pattern => join(projectRelativePath, pattern)),
+      files: [join('..', '..', '..', '..', 'typings', 'static-assets', 'index.d.ts')],
+      include: [join(projectRelativePath, 'src', 'index.ts')],
+      references: [],
+    });
 
     // and jest config since origin had jest setup
     const jestConfigContent = readFile(join(ritProjectPath, 'jest.config.js'));
-    expect(jestConfigContent).toContain("const workspacePreset = require('../../../../jest.preset')");
-    expect(jestConfigContent).toContain("const baseConfig = require('../../../../proj/jest.config.js')");
+    const relativeWorkspaceRoot = relative(ritProjectPath, fs.tempDir);
+    const relativeProjectRoot = relative(ritProjectPath, projectRoot);
+    expect(jestConfigContent).toContain(
+      `const workspacePreset = require(${JSON.stringify(`${relativeWorkspaceRoot}/jest.preset`)})`,
+    );
+    expect(jestConfigContent).toContain(
+      `const baseConfig = require(${JSON.stringify(`${relativeProjectRoot}/jest.config.js`)})`,
+    );
     expect(jestConfigContent).toContain('module.exports = config');
     // check whole template
-    expect(jestConfigContent).toMatchInlineSnapshot(`
+    expect(
+      templateSourceSnapshot(jestConfigContent, {
+        workspacePresetPath: `${relativeWorkspaceRoot}/jest.preset`,
+        originConfigPath: `${relativeProjectRoot}/jest.config.js`,
+        nodeModulesRelativePath: '..',
+        originRootPath: relativeProjectRoot,
+        workspaceRootPath: relativeWorkspaceRoot,
+      }),
+    ).toMatchInlineSnapshot(`
       "// @ts-check
       /* eslint-disable */
 
       const { join, sep } = require('node:path');
       const { pathsToModuleNameMapper } = require('ts-jest');
 
-      const workspacePreset = require('../../../../jest.preset');
-      const baseConfig = require('../../../../proj/jest.config.js');
+      const workspacePreset = require(<workspacePresetPath>);
+      const baseConfig = require(<originConfigPath>);
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
-      const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
+      const usedNodeModulesPath = join(__dirname, <nodeModulesRelativePath>, 'node_modules');
 
       /**
        * @type {import('@jest/types').Config.InitialOptions}
        */
       const ritConfig = {
-        rootDir: '../../../../proj',
+        rootDir: <originRootPath>,
         preset: null,
         moduleNameMapper: {
           '^react$': join(usedNodeModulesPath, './react'),
@@ -282,6 +289,9 @@ describe('rit CLI e2e', () => {
         setupFilesAfterEnv: [
           join(__dirname, './jest.mock-snapshots.js'),
         ],
+        // Origin \`rootDir\` is shared by concurrent runs for every React version, so keep run artifacts scaffold-local
+        coverageDirectory: join(__dirname, 'coverage'),
+        ...getSnapshotIsolationConfig(),
       }
 
       const repoProjectConfig = createOriginProjectConfig(baseConfig, workspacePreset);
@@ -290,6 +300,24 @@ describe('rit CLI e2e', () => {
       module.exports = config;
 
       // helpers
+
+      /**
+       * While snapshots are mocked (default), keep Jest away from origin \`__snapshots__\` so \`-u\` never deletes them:
+       * - \`snapshotResolver\` stops per-test-file obsolete snapshot removal
+       * - ignoring \`.snap\` modules stops the global obsolete snapshot file cleanup
+       *
+       * @returns {import('@jest/types').Config.InitialOptions}
+       */
+      function getSnapshotIsolationConfig() {
+        if (process.env.RIT_SKIP_SNAPSHOTS === 'false') {
+          return {};
+        }
+
+        return {
+          snapshotResolver: join(__dirname, './jest.snapshot-resolver.js'),
+          modulePathIgnorePatterns: ['\\\\\\\\.snap$'],
+        };
+      }
 
       /**
        * @param {Record<string,any>} obj1
@@ -317,7 +345,7 @@ describe('rit CLI e2e', () => {
 
       function getTsPathAliases(){
         // Compute absolute workspace root from this config file location
-        const workspaceRoot = join(__dirname, '../../../..');
+        const workspaceRoot = join(__dirname, <workspaceRootPath>);
         const tsConfigBase = require(join(workspaceRoot, 'tsconfig.base.json'));
 
         // Ensure prefix ends with a path separator so mapped paths concatenate correctly
@@ -362,22 +390,29 @@ describe('rit CLI e2e', () => {
     expect(existsSync(cypressConfigPath)).toBe(true);
 
     const cyContent = readFile(cypressConfigPath);
-    expect(cyContent).toContain("import baseConfig from '../../../../proj/cypress.config");
+    const cypressImportPath = `${relativeProjectRoot}/cypress.config.ts`.split(sep).join('/');
+    expect(cyContent).toContain(`import baseConfig from ${JSON.stringify(cypressImportPath)}`);
     // check whole template
-    expect(cyContent).toMatchInlineSnapshot(`
+    expect(
+      templateSourceSnapshot(cyContent, {
+        originConfigPath: cypressImportPath,
+        nodeModulesRelativePath: '..',
+        specPattern: `${relativeProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`,
+      }),
+    ).toMatchInlineSnapshot(`
       "import { join, resolve } from 'node:path';
-      import baseConfig from '../../../../proj/cypress.config.ts';
+      import baseConfig from <originConfigPath>;
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI).
       // Cypress executes this config with \`cwd\` set to the prepared project root (where this file lives),
       // so \`process.cwd()\` is equivalent to the config directory and works in both CommonJS and ESM
       // (\`type: module\`) sandboxes — unlike \`__dirname\`, which is undefined under native ESM.
-      const usedNodeModulesPath = join(process.cwd(), '..', 'node_modules');
+      const usedNodeModulesPath = join(process.cwd(), <nodeModulesRelativePath>, 'node_modules');
 
       const config = { ...baseConfig };
 
       const specs = [
-        resolve('../../../../proj/**/src/**/*.{cy,e2e}.{tsx,ts}'),
+        resolve(<specPattern>),
       ];
 
       config.component.specPattern = specs;
@@ -430,8 +465,8 @@ describe('rit CLI e2e', () => {
 
     // Should have run exactly one script command
     expect(log.length).toEqual(1);
-    expect(log[0].command).toEqual('node ../node_modules/.bin/jest --passWithNoTests -u');
+    expect(log[0].command).toEqual(`node ${join('..', 'node_modules', '.bin', 'jest')} --passWithNoTests -u`);
     // The run should target the prepared project path
-    expect(log[0].cwd).toContain('tmp/rit/react-18/proj-react-18-ci');
+    expect(log[0].cwd).toBe(join(fs.tempDir, 'tmp', 'rit', 'react-18', 'proj-react-18-ci'));
   });
 });

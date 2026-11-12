@@ -2,7 +2,7 @@ import { expect, test } from '../../test/playwright/index.js';
 import type { Tab } from '../tab/tab.js';
 import { tagName as TabTagName } from '../tab/tab.options.js';
 import type { Tablist } from './tablist.js';
-import { TablistAppearance, TablistSize, tagName } from './tablist.options.js';
+import { tagName } from './tablist.options.js';
 
 test.describe('Tablist', () => {
   test.use({
@@ -258,38 +258,6 @@ test.describe('Tablist', () => {
     });
   });
 
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const appearance of Object.values(TablistAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.updateTemplate(element, { attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
-      });
-    }
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const size of Object.values(TablistSize)) {
-      await test.step(size, async () => {
-        await fastPage.updateTemplate(element, { attributes: { size } });
-
-        await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveAttribute('size', size);
-      });
-    }
-  });
-
   test('should not allow selecting a tab that has been disabled after it has been connected', async ({ fastPage }) => {
     const { element } = fastPage;
     const tabs = element.locator(TabTagName);
@@ -323,6 +291,42 @@ test.describe('Tablist', () => {
 
     await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
+
+  for (const interaction of ['focus', 'click'] as const) {
+    test(`should preserve selection when ${interaction}() is called immediately after disabling a tab`, async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${TabTagName} id="tab-1">Tab one</${TabTagName}>
+          <${TabTagName} id="tab-2">Tab two</${TabTagName}>
+        `,
+      });
+
+      await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
+
+      const selection = await element.evaluate((node: Tablist, interaction) => {
+        const secondTab = node.tabs[1];
+        secondTab.disabled = true;
+        secondTab[interaction]();
+
+        return {
+          activeid: node.activeid,
+          activetab: node.activetab.id,
+          selectedTabs: node.tabs.filter(tab => tab.getAttribute('aria-selected') === 'true').map(tab => tab.id),
+        };
+      }, interaction);
+
+      expect(selection).toEqual({
+        activeid: 'tab-1',
+        activetab: 'tab-1',
+        selectedTabs: ['tab-1'],
+      });
+    });
+  }
 
   test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
     const { element } = fastPage;

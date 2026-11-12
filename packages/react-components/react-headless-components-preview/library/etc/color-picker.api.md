@@ -12,6 +12,7 @@ import { ColorAreaSlots } from '@fluentui/react-color-picker';
 import { ColorAreaBaseState as ColorAreaState } from '@fluentui/react-color-picker';
 import type { ColorChannel } from '@fluentui/react-color-picker';
 import { ColorPickerContextValue } from '@fluentui/react-color-picker';
+import { ColorPickerContextValues } from '@fluentui/react-color-picker';
 import { ColorPickerBaseProps as ColorPickerProps } from '@fluentui/react-color-picker';
 import { ColorPickerSlots } from '@fluentui/react-color-picker';
 import { ColorPickerBaseState as ColorPickerState } from '@fluentui/react-color-picker';
@@ -58,6 +59,8 @@ export { ColorAreaState }
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 
 export { ColorPickerContextValue }
+
+export { ColorPickerContextValues }
 
 export { ColorPickerProps }
 

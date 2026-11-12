@@ -1,8 +1,11 @@
 import { relative } from 'node:path';
 
 import { memoCacheOutcome } from './memo-cache-outcome';
+import { createAnalysisProfile } from './analysis-profile';
 import type {
   AnalysisDocument,
+  AnnotateMode,
+  AnnotateResult,
   CompilationMode,
   DirectiveAnalysis,
   FunctionAnalysis,
@@ -15,11 +18,12 @@ import type {
 interface DocumentMeta {
   mode: CompilationMode;
   workspaceRoot: string;
+  parserPlugins?: string[];
 }
 
 interface AnalysisDocumentMeta extends DocumentMeta {
   unparseable?: { file: string; error: string }[];
-  annotate?: AnalysisDocument['annotate'];
+  annotate?: AnnotateResult & { mode: AnnotateMode };
 }
 
 function toRelative(filePath: string, workspaceRoot: string): string {
@@ -42,6 +46,16 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
     status: result.status,
     compilerEvent: result.compilerEvent,
     ...(result.reason ? { reason: result.reason } : {}),
+    ...(result.rejectionKind ? { rejectionKind: result.rejectionKind } : {}),
+    ...(result.diagnostics?.length
+      ? {
+          diagnostics: result.diagnostics.map(({ kind, reason, category }) => ({
+            kind,
+            reason,
+            ...(category ? { category } : {}),
+          })),
+        }
+      : {}),
     ...(result.errorLine !== undefined ? { errorLine: result.errorLine } : {}),
     ...(result.errorColumn !== undefined ? { errorColumn: result.errorColumn } : {}),
     ...(result.memoStats !== undefined ? { memoStats: result.memoStats } : {}),
@@ -74,15 +88,28 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
   );
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     tool: 'react-compiler-analyzer',
     command: 'analyze',
     mode: meta.mode,
+    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
+    emittedCaching: 'unverified',
     summary: {
       functions: functions.length,
       compiled: results.filter(result => result.status === 'compiled').length,
-      memoCacheEmitted: results.filter(result => result.status === 'compiled' && memoCacheOutcome(result) === 'emitted')
-        .length,
+      reportedMemoCachePositive: results.filter(
+        result => result.status === 'compiled' && memoCacheOutcome(result) === 'positive',
+      ).length,
+      reportedMemoCacheZero: results.filter(
+        result => result.status === 'compiled' && memoCacheOutcome(result) === 'zero',
+      ).length,
+      reportedMemoCacheUnavailable: results.filter(
+        result => result.status === 'compiled' && memoCacheOutcome(result) === 'unavailable',
+      ).length,
+      suppressionRejected: results.filter(result => result.rejectionKind === 'suppression-related').length,
+      suppressionRejectedWithRisks: results.filter(
+        result => result.rejectionKind === 'suppression-related' && result.risks?.length,
+      ).length,
       skipped: results.filter(result => result.status === 'skipped').length,
       errors: results.filter(result => result.status === 'error').length,
       findings: findings.length,
@@ -103,6 +130,10 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
             filesModified: meta.annotate.filesModified,
             functionsAnnotated: meta.annotate.functionsAnnotated,
             functionsBailedOut: meta.annotate.functionsBailedOut,
+            targets: (meta.annotate.targets ?? []).map(({ filePath, ...target }) => ({
+              ...target,
+              file: toRelative(filePath, meta.workspaceRoot),
+            })),
             ...(meta.annotate.dryRun ? { dryRun: true as const, planned: meta.annotate.planned } : {}),
           },
         }
@@ -126,13 +157,16 @@ export function toLintDocument(
     function: result.functionName,
     ...(result.reason ? { reason: result.reason } : {}),
     ...(result.revalidated ? { justified: true as const, revalidated: true as const } : {}),
+    ...(result.evidence ? { evidence: result.evidence } : {}),
   }));
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     tool: 'react-compiler-analyzer',
     command: 'lint',
     mode: meta.mode,
+    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
+    emittedCaching: 'unverified',
     summary: {
       directives: directives.length,
       active: directives.filter(directive => directive.status === 'active').length,

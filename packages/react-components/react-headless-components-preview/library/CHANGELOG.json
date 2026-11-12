@@ -2,6 +2,138 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:38:08 GMT",
+      "version": "0.4.1",
+      "tag": "@fluentui/react-headless-components-preview_v0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1e3ae874ae7b864cbd0d1c2e6497f625a9536830",
+            "comment": "fix: annotate composed components explicitly with ForwardRefComponent and ComponentWithoutRef; components without a ref now declare a JSXElement | null return type"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "be26343fa59b924a63673078fac018980451c721",
+            "comment": "refactor: move headless overlays onto the internal top-layer hooks. Popover now unmounts a microtask after a native close, and stays closed when kept `open` after a browser dismiss."
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "949da47ceff77d46b1f439b66fc26da5290b99f8",
+            "comment": "fix: notify InfoButton onOpenChange when focus leaves the trigger and information surface"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b18c8ab0ac50c0402526ea4a5b7a893f4f4e8b94",
+            "comment": "fix(Menu): restore focus when closing within a shadow root"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "400ee0c145e863a358eac4debeebc3b03d071060",
+            "comment": "fix: NavCategoryItem renders type=\"button\" so it does not submit an enclosing form"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9c21962f67d6248e3b9f0af2942ee90fb18cda46",
+            "comment": "chore: add internal top-layer hooks for the headless overlays"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2026 18:20:43 GMT",
+      "version": "0.4.0",
+      "tag": "@fluentui/react-headless-components-preview_v0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1d2e3b10bdfc230051dbcc35d0c56d2ba78001cc",
+            "comment": "feat: add headless DatePicker; Calendar grids use a roving tab stop with built-in arrow, Home and End navigation instead of focusgroup, expose aria-current on current month/year cells, and preserve focus when bounds clamp across years"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "de078c7f1b33b4f1008948cd3cca727d5b663107",
+            "comment": "BREAKING CHANGE: rename Popover `trapFocus` to `inertTrapFocus`"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "55b6050afcbe16881d2dfc07c6ed96ad07a9fd43",
+            "comment": "feat: export missing context hooks, context value types, slot types and renderDialogTrigger; add public API conformance tests"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "941ed35fd8973ccd899fafafc1ae7c8f58e5c1f2",
+            "comment": "fix: align headless component composition with overloaded helpers and avoid forwarding unused refs"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "8624467f4776071e21822a4e6c86c9118e7f902c",
+            "comment": "fix: align Popover focus handling with inertTrapFocus"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "e7c987305de2f6b14a3a0737486df613b3577fe8",
+            "comment": "fix: emit data-disabled state attribute on ImageSwatch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "2c30d6c658e47a4f5203ddde45604af387b98ce9",
+            "comment": "feat: add headless Tree, TreeItem and TreeItemLayout"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6d3e9d686434d69ac8fc9ca4c4a93f3afaa3d676",
+            "comment": "feat: add headless Calendar"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9280b0916eccc0e033c54ac6ec7e4a6c1f5d4ca5",
+            "comment": "feat: add RangeSlider"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "4a1fbb23e84728bd44b37a1adf31ddb86208da6a",
+            "comment": "fix: correct Popover trigger popup semantics, expose InfoLabel help as a note without generated ownership, and avoid forwarding conflicting defaultOpen and open props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "cd81f8c1913a7e98991e6c5d33c76dbfa1cc50f4",
+            "comment": "fix: add aria-controls to PopoverTrigger and name the Default story surface"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b29f101ff16f832aa1aaf4514ebdab75b9b70cb2",
+            "comment": "chore: generate Calendar, TagPicker and TeachingPopover bundle-size fixtures through Nx sync"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Oct 2026 09:13:13 GMT",
       "version": "0.3.2",
       "tag": "@fluentui/react-headless-components-preview_v0.3.2",

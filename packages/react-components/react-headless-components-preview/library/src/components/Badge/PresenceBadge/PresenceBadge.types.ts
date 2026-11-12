@@ -1,7 +1,7 @@
 import type { PresenceBadgeBaseState } from '@fluentui/react-badge';
 
 export type {
-  BadgeSlots,
+  BadgeSlots as PresenceBadgeSlots,
   PresenceBadgeBaseProps as PresenceBadgeProps,
   PresenceBadgeStatus,
 } from '@fluentui/react-badge';

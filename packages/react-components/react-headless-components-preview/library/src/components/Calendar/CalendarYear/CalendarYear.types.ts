@@ -65,7 +65,7 @@ export type CalendarYearCellProps = {
   /**
    * Overrides for the `<div role="gridcell">`.
    */
-  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgroupstart?: string };
+  root?: Omit<React.ComponentProps<'div'>, 'children'>;
   /**
    * Overrides for the nested year button. Set `children` to customize the year content.
    */
@@ -77,7 +77,7 @@ export type CalendarYearRowProps = {
   /**
    * Overrides for the row's `<div>`. Its year cells remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgrouprow?: string };
+  root?: Omit<React.ComponentProps<'div'>, 'children'>;
 };
 
 /**
@@ -116,7 +116,7 @@ export type CalendarYearSlots = {
   nextRangeButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The grid holding the year rows. Focusgroup provides arrow navigation.
+   * The grid holding the year rows, with a roving tab stop and arrow, Home and End navigation.
    */
   grid: NonNullable<Slot<'div'>>;
 };

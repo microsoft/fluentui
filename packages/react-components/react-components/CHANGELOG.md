@@ -1,8 +1,69 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.2)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.1..@fluentui/react-components_v9.75.2)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item ([PR #37076](https://github.com/microsoft/fluentui/pull/37076) by paulmardling@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: NavCategoryItem renders type="button" so it does not submit an enclosing form ([PR #37114](https://github.com/microsoft/fluentui/pull/37114) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+  - fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only ([PR #37107](https://github.com/microsoft/fluentui/pull/37107) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+
+## [9.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.1)
+
+Mon, 02 Nov 2026 13:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.0..@fluentui/react-components_v9.75.1)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks ([PR #36932](https://github.com/microsoft/fluentui/pull/36932) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tag-picker`
+  - fix: keep the measured aside width instead of cancelling its update after mount ([PR #36986](https://github.com/microsoft/fluentui/pull/36986) by dmytrokirpa@microsoft.com)
+
+## [9.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.0)
+
+Tue, 27 Oct 2026 16:42:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.11..@fluentui/react-components_v9.75.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat(react-components): export existing Menu base hooks and composition types ([PR #36978](https://github.com/microsoft/fluentui/pull/36978) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode ([PR #36974](https://github.com/microsoft/fluentui/pull/36974) by vgenaev@gmail.com)
+- `@fluentui/react-provider`
+  - fix: escape theme style delimiters instead of omitting valid nested theme values ([PR #36985](https://github.com/microsoft/fluentui/pull/36985) by vgenaev@gmail.com)
 
 ## [9.74.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.11)
 

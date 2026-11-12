@@ -163,11 +163,17 @@ imports were seen, the run warns that those imports are outside the risk report'
 Human reports distinguish:
 
 - **Compiled but Risky:** accepted functions with configured risks; acceptance alone does not mean a memo cache was emitted.
-- **Suppressed by 'use no memo':** risks currently held back by an opt-out.
+- **Suppressed by 'use no memo':** risks in opted-out functions; the guard may be preventive,
+  not proven load-bearing.
 - **Risky but Not Compiled:** risks in functions the compiler skipped or errored on.
 
 JSON uses `compiled` and optional `suppressed: true` to express the same distinctions. See
 [reviewing opt-outs](migration-workflow.md#review-existing-opt-outs) before removing directives.
+Compiler acceptance, reported statistics, configured risk, and actual emitted caching are separate
+observations. Normal RCA analysis does not inspect emitted code. Positive counters do not prove
+that the risky operation was cached, and zero counters do not invalidate preventive opt-outs.
+Suppression-related compiler rejection is reported separately with retained findings: another
+compiler/profile may optimize those functions. They are not automatically annotated.
 
 ## Limits
 

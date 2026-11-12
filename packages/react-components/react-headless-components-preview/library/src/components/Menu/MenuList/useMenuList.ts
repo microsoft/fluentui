@@ -7,8 +7,7 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
 /**
  * Returns the state for a MenuList.
  * Uses the native focusgroup attribute for arrow key navigation. Focus is moved
- * into the list by MenuPopover via the HTML autofocus attribute on the first
- * focusable MenuItem (set imperatively because React skips autoFocus on divs).
+ * into the list by MenuPopover, which focuses the first enabled MenuItem once the popover is shown.
  */
 export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const baseState: MenuListState = useMenuListBase_unstable(props, ref);

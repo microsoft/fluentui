@@ -4,17 +4,17 @@
 const { join, sep } = require('node:path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 
-const workspacePreset = require('<%= relativePathToWorkspaceRoot %>/jest.preset');
-const baseConfig = require('<%= relativePathToProjectRoot %>/<%= jest.pathToProjectConfig %>');
+const workspacePreset = require(<%- JSON.stringify(`${relativePathToWorkspaceRoot}/jest.preset`) %>);
+const baseConfig = require(<%- JSON.stringify(`${relativePathToProjectRoot}/${jest.pathToProjectConfig}`) %>);
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
-const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
+const usedNodeModulesPath = join(__dirname, <%- JSON.stringify(usedNodeModulesDirRelative) %>, 'node_modules');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
 const ritConfig = {
-  rootDir: '<%= relativePathToProjectRoot %>',
+  rootDir: <%- JSON.stringify(relativePathToProjectRoot) %>,
   preset: null,
   moduleNameMapper: {
     '^react$': join(usedNodeModulesPath, './react'),
@@ -39,6 +39,9 @@ const ritConfig = {
   setupFilesAfterEnv: [
     join(__dirname, './jest.mock-snapshots.js'),
   ],
+  // Origin `rootDir` is shared by concurrent runs for every React version, so keep run artifacts scaffold-local
+  coverageDirectory: join(__dirname, 'coverage'),
+  ...getSnapshotIsolationConfig(),
 }
 
 const repoProjectConfig = createOriginProjectConfig(baseConfig, workspacePreset);
@@ -47,6 +50,24 @@ const config = merge(repoProjectConfig, ritConfig);
 module.exports = config;
 
 // helpers
+
+/**
+ * While snapshots are mocked (default), keep Jest away from origin `__snapshots__` so `-u` never deletes them:
+ * - `snapshotResolver` stops per-test-file obsolete snapshot removal
+ * - ignoring `.snap` modules stops the global obsolete snapshot file cleanup
+ *
+ * @returns {import('@jest/types').Config.InitialOptions}
+ */
+function getSnapshotIsolationConfig() {
+  if (process.env.RIT_SKIP_SNAPSHOTS === 'false') {
+    return {};
+  }
+
+  return {
+    snapshotResolver: join(__dirname, './jest.snapshot-resolver.js'),
+    modulePathIgnorePatterns: ['\\.snap$'],
+  };
+}
 
 /**
  * @param {Record<string,any>} obj1
@@ -74,7 +95,7 @@ function merge(obj1, obj2) {
 
 function getTsPathAliases(){
   // Compute absolute workspace root from this config file location
-  const workspaceRoot = join(__dirname, '<%= relativePathToWorkspaceRoot %>');
+  const workspaceRoot = join(__dirname, <%- JSON.stringify(relativePathToWorkspaceRoot) %>);
   const tsConfigBase = require(join(workspaceRoot, 'tsconfig.base.json'));
 
   // Ensure prefix ends with a path separator so mapped paths concatenate correctly

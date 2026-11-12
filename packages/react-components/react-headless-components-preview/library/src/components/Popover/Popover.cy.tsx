@@ -17,7 +17,13 @@ const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
 
 describe('native surface lifecycle', () => {
-  const Example = ({ trapFocus, preventOpening = false }: { trapFocus: boolean; preventOpening?: boolean }) => {
+  const Example = ({
+    inertTrapFocus,
+    preventOpening = false,
+  }: {
+    inertTrapFocus: boolean;
+    preventOpening?: boolean;
+  }) => {
     const [open, setOpen] = React.useState(true);
     const [version, setVersion] = React.useState(0);
     const attachSurface = React.useCallback(
@@ -37,7 +43,7 @@ describe('native surface lifecycle', () => {
         <button data-testid="outside-close" onClick={() => setOpen(false)}>
           Close
         </button>
-        <Popover open={open} trapFocus={trapFocus} onOpenChange={(_, data) => setOpen(data.open)}>
+        <Popover open={open} inertTrapFocus={inertTrapFocus} onOpenChange={(_, data) => setOpen(data.open)}>
           <PopoverTrigger>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -57,9 +63,9 @@ describe('native surface lifecycle', () => {
       </>
     );
   };
-  ([false, true] as const).forEach(trapFocus => {
-    it(`dismisses a replacement surface after reopening (${trapFocus ? 'modal' : 'non-modal'})`, () => {
-      mount(<Example trapFocus={trapFocus} />);
+  ([false, true] as const).forEach(inertTrapFocus => {
+    it(`dismisses a replacement surface after reopening (${inertTrapFocus ? 'modal' : 'non-modal'})`, () => {
+      mount(<Example inertTrapFocus={inertTrapFocus} />);
       cy.get('[data-testid=finish]').focus().realPress('Enter');
       cy.get('[data-testid=surface]').should('not.exist');
       cy.get('[data-testid=trigger]').focus().realPress('Enter');
@@ -69,8 +75,8 @@ describe('native surface lifecycle', () => {
       cy.get('[data-testid=trigger]').should('have.attr', 'aria-expanded', 'false');
     });
 
-    it(`unmounts after prevented native opening (${trapFocus ? 'modal' : 'non-modal'})`, function () {
-      if (trapFocus) {
+    it(`unmounts after prevented native opening (${inertTrapFocus ? 'modal' : 'non-modal'})`, function () {
+      if (inertTrapFocus) {
         cy.document().then(doc => {
           const dialog = doc.createElement('dialog');
           dialog.addEventListener('beforetoggle', event => event.preventDefault());
@@ -86,11 +92,35 @@ describe('native surface lifecycle', () => {
           }
         });
       }
-      mount(<Example trapFocus={trapFocus} preventOpening />);
+      mount(<Example inertTrapFocus={inertTrapFocus} preventOpening />);
       cy.get('[data-testid=surface]').should('not.be.visible');
       cy.get('[data-testid=outside-close]').click();
       cy.get('[data-testid=surface]').should('not.exist');
     });
+  });
+});
+
+describe('React-driven close', () => {
+  it('runs the surface onClose before unmounting a modal surface', () => {
+    const onClose = cy.stub().as('onClose');
+    const Example = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <Popover open={open} inertTrapFocus onOpenChange={(_, data) => setOpen(data.open)}>
+          <PopoverSurface onClose={onClose} data-testid="surface">
+            <button data-testid="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=close]').realClick();
+    cy.get('[data-testid=surface]').should('not.exist');
+    cy.get('@onClose').should('have.been.calledOnce');
   });
 });
 
@@ -115,10 +145,10 @@ describe('nested shadow focus restoration', () => {
       </div>
     );
   };
-  const Example = ({ trapFocus }: { trapFocus: boolean }) => {
+  const Example = ({ inertTrapFocus }: { inertTrapFocus: boolean }) => {
     const [open, setOpen] = React.useState(true);
     return (
-      <Popover trapFocus={trapFocus} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+      <Popover inertTrapFocus={inertTrapFocus} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
         <PopoverTrigger>
           <button data-testid="trigger">Trigger</button>
         </PopoverTrigger>
@@ -128,10 +158,10 @@ describe('nested shadow focus restoration', () => {
       </Popover>
     );
   };
-  ([false, true] as const).forEach(trapFocus => {
+  ([false, true] as const).forEach(inertTrapFocus => {
     (['Enter', 'Escape'] as const).forEach(key => {
-      it(`restores nested shadow focus on ${key} (${trapFocus ? 'modal' : 'non-modal'})`, () => {
-        mount(<Example trapFocus={trapFocus} />);
+      it(`restores nested shadow focus on ${key} (${inertTrapFocus ? 'modal' : 'non-modal'})`, () => {
+        mount(<Example inertTrapFocus={inertTrapFocus} />);
         cy.get('[data-testid=nested-host]').shadow().contains('button', 'Finish').focus().realPress(key);
         cy.get('[data-testid=surface]').should('not.exist');
         cy.get('[data-testid=trigger]').should('have.focus');
@@ -415,11 +445,11 @@ describe('Popover', () => {
 
     describe('native close lifecycle', () => {
       const Example = ({
-        trapFocus,
+        inertTrapFocus,
         initiallyOpen = false,
         redirectFocus = false,
       }: {
-        trapFocus: boolean;
+        inertTrapFocus: boolean;
         initiallyOpen?: boolean;
         redirectFocus?: boolean;
       }) => {
@@ -430,7 +460,7 @@ describe('Popover', () => {
             <button ref={outsideRef} data-testid="outside">
               Outside
             </button>
-            <Popover trapFocus={trapFocus} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+            <Popover inertTrapFocus={inertTrapFocus} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
               <PopoverTrigger>
                 <button data-testid="trigger">Trigger</button>
               </PopoverTrigger>
@@ -453,17 +483,17 @@ describe('Popover', () => {
         );
       };
 
-      ([false, true] as const).forEach(trapFocus => {
-        describe(trapFocus ? 'modal' : 'non-modal', () => {
+      ([false, true] as const).forEach(inertTrapFocus => {
+        describe(inertTrapFocus ? 'modal' : 'non-modal', () => {
           ([false, true] as const).forEach(initiallyOpen => {
             it(`closes natively before unmounting (${initiallyOpen ? 'initially' : 'trigger'} open)`, () => {
-              mount(<Example trapFocus={trapFocus} initiallyOpen={initiallyOpen} />);
+              mount(<Example inertTrapFocus={inertTrapFocus} initiallyOpen={initiallyOpen} />);
               if (!initiallyOpen) {
                 cy.get('[data-testid=trigger]').focus().realPress('Enter');
               }
               cy.get<HTMLDialogElement>('[data-testid=surface]').then($surface => {
                 const surface = $surface[0];
-                const method = trapFocus ? 'close' : 'hidePopover';
+                const method = inertTrapFocus ? 'close' : 'hidePopover';
                 const nativeClose = surface[method].bind(surface);
                 cy.stub(surface, method)
                   .callsFake(() => {
@@ -481,7 +511,7 @@ describe('Popover', () => {
           });
 
           it('restores focus when an initially open surface is dismissed natively', () => {
-            mount(<Example trapFocus={trapFocus} initiallyOpen />);
+            mount(<Example inertTrapFocus={inertTrapFocus} initiallyOpen />);
             cy.get('[data-testid=finish]').should('have.focus').realPress('Escape');
             cy.get('[data-testid=surface]').should('not.exist');
             cy.get('[data-testid=trigger]').should('have.focus');
@@ -490,7 +520,7 @@ describe('Popover', () => {
       });
 
       it('preserves intentional focus movement during programmatic close', () => {
-        mount(<Example trapFocus={false} initiallyOpen redirectFocus />);
+        mount(<Example inertTrapFocus={false} initiallyOpen redirectFocus />);
         cy.get('[data-testid=finish]').focus().realPress('Enter');
         cy.get('[data-testid=surface]').should('not.exist');
         cy.get('[data-testid=outside]').should('have.focus');
@@ -575,10 +605,31 @@ describe('Popover', () => {
   describe('Focus trap', () => {
     const trapSurfaceSelector = 'dialog';
 
+    it('lets the browser close the modal on Escape and reports a close event', () => {
+      const types: string[] = [];
+      mount(
+        <Popover inertTrapFocus onOpenChange={(_, data) => types.push(`${data.type}:${data.open}`)}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button data-testid="inside">Inside</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get('[data-testid=inside]').should('be.focused');
+      cy.realPress('Escape');
+      cy.get(trapSurfaceSelector).should('not.exist');
+      cy.get('[data-testid=trigger]').should('be.focused');
+      cy.then(() => expect(types).to.deep.equal(['click:true', 'close:false']));
+    });
+
     it('keeps the surface open when native Escape cancellation is prevented', () => {
       const onOpenChange = cy.stub().as('onOpenChange');
       mount(
-        <Popover defaultOpen trapFocus onOpenChange={onOpenChange}>
+        <Popover defaultOpen inertTrapFocus onOpenChange={onOpenChange}>
           <PopoverTrigger>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -598,7 +649,7 @@ describe('Popover', () => {
     ([false, true] as const).forEach(withBeforeToggle => {
       it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, () => {
         mount(
-          <Popover defaultOpen trapFocus>
+          <Popover defaultOpen inertTrapFocus>
             <PopoverTrigger>
               <button data-testid="trigger">Trigger</button>
             </PopoverTrigger>
@@ -624,7 +675,7 @@ describe('Popover', () => {
       mount(
         <>
           <button data-testid="outside">Outside</button>
-          <Popover defaultOpen trapFocus>
+          <Popover defaultOpen inertTrapFocus>
             <PopoverTrigger>
               <button data-testid="trigger">Trigger</button>
             </PopoverTrigger>
@@ -667,7 +718,7 @@ describe('Popover', () => {
 
     it('moves focus into the surface on open and walks through focusables', () => {
       mount(
-        <Popover trapFocus>
+        <Popover inertTrapFocus>
           <PopoverTrigger disableButtonEnhancement>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -694,7 +745,7 @@ describe('Popover', () => {
       const setAutofocus = (el: HTMLInputElement | null) => el?.setAttribute('autofocus', '');
 
       mount(
-        <Popover trapFocus>
+        <Popover inertTrapFocus>
           <PopoverTrigger disableButtonEnhancement>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -713,7 +764,7 @@ describe('Popover', () => {
 
     it('restores focus to the trigger on Escape', () => {
       mount(
-        <Popover trapFocus>
+        <Popover inertTrapFocus>
           <PopoverTrigger disableButtonEnhancement>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -738,7 +789,7 @@ describe('Popover', () => {
             <button data-testid="outside" onClick={() => setOutsideClicks(c => c + 1)}>
               Outside ({outsideClicks})
             </button>
-            <Popover trapFocus>
+            <Popover inertTrapFocus>
               <PopoverTrigger disableButtonEnhancement>
                 <button data-testid="trigger">Trigger</button>
               </PopoverTrigger>
@@ -943,4 +994,36 @@ describe('positioning observer', () => {
       });
     });
   }
+});
+
+describe('inertTrapFocus changes while open', () => {
+  it('switches from showPopover() to showModal() (page inert) while open and stays modal until the next open, keeping focus on the switch', () => {
+    const Example = () => {
+      const [inertTrapFocus, setInertTrapFocus] = React.useState(false);
+      return (
+        <Popover open inertTrapFocus={inertTrapFocus}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface aria-label="Surface" data-testid="surface">
+            <button data-testid="switch" onClick={() => setInertTrapFocus(value => !value)}>
+              Switch
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=surface]').should('match', ':popover-open');
+    cy.get('[data-testid=switch]').realClick();
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=switch]').should('be.focused').realClick();
+    cy.get('[data-testid=surface]')
+      .should('match', ':modal')
+      .and('have.attr', 'role', 'dialog')
+      .and('not.have.attr', 'popover');
+    cy.get('[data-testid=trigger]').should('have.attr', 'aria-haspopup', 'dialog');
+    cy.get('[data-testid=switch]').should('be.focused');
+  });
 });
