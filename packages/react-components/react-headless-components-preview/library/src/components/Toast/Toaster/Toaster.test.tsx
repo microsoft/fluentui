@@ -60,6 +60,33 @@ describe('Toaster', () => {
     expect(getByRole('list')).toHaveAttribute('focusgroup', 'toolbar block itemcontrols');
   });
 
+  it('shows a queued toast once a visible toast is dismissed', () => {
+    let controller: ReturnType<typeof useToastController>;
+    const onStatusChange = jest.fn();
+    const toasterId = 'queued-toaster';
+    const Test = () => {
+      controller = useToastController(toasterId);
+      return <Toaster toasterId={toasterId} limit={1} />;
+    };
+    const { queryByText } = render(<Test />);
+
+    act(() => {
+      controller.dispatchToast('first toast', { toastId: 'first', timeout: -1 });
+      controller.dispatchToast('second toast', { toastId: 'second', timeout: -1, onStatusChange });
+    });
+
+    expect(queryByText('second toast')).toBeNull();
+    expect(onStatusChange).not.toHaveBeenCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+
+    act(() => {
+      controller.dismissToast('first');
+    });
+
+    expect(queryByText('first toast')).toBeNull();
+    expect(queryByText('second toast')).not.toBeNull();
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'visible' }));
+  });
+
   it('limits the number of rendered toasts', () => {
     let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
     const toasterId = 'limited-toaster';
