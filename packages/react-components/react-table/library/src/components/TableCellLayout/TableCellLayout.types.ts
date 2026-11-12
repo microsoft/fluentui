@@ -50,6 +50,16 @@ export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSl
   };
 
 /**
+ * TableCellLayout props accepted by `useTableCellLayoutBase_unstable`, without design props.
+ */
+export type TableCellLayoutBaseProps = Omit<TableCellLayoutProps, 'appearance' | 'truncate'>;
+
+/**
+ * State returned by `useTableCellLayoutBase_unstable`.
+ */
+export type TableCellLayoutBaseState = ComponentState<TableCellLayoutSlots>;
+
+/**
  * State used in rendering TableCellLayout
  */
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &

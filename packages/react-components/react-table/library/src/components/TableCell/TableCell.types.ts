@@ -11,6 +11,11 @@ export type TableCellSlots = {
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
 
 /**
+ * State returned by `useTableCellBase_unstable`.
+ */
+export type TableCellBaseState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
+
+/**
  * State used in rendering TableCell
  */
 export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
