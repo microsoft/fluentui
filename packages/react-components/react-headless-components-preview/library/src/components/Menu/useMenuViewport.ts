@@ -16,12 +16,21 @@ const revealWithin = (surface: HTMLElement, target: Element) => {
   const item = target.getBoundingClientRect();
   const top = bounds.top + surface.clientTop;
   const bottom = top + surface.clientHeight;
+  const left = bounds.left + surface.clientLeft;
+  const right = left + surface.clientWidth;
 
   if (item.top < top) {
     surface.scrollTop += item.top - top;
   } else if (item.bottom > bottom) {
     // Align oversized items at the start rather than alternating between their two edges.
     surface.scrollTop += Math.min(item.top - top, item.bottom - bottom);
+  }
+
+  // Physical deltas also support negative scrollLeft in RTL and vertical writing modes.
+  if (item.left < left && item.right < right) {
+    surface.scrollLeft += Math.max(item.left - left, item.right - right);
+  } else if (item.right > right && item.left > left) {
+    surface.scrollLeft += Math.min(item.left - left, item.right - right);
   }
 };
 
@@ -38,8 +47,8 @@ export const useMenuViewport = (
       return;
     }
 
-    const parent = parentRef.current;
     parents.set(surface, { parentRef, triggerRef });
+    const observedAncestors = new Set<HTMLElement>();
     let frame: number | undefined;
     let disposed = false;
     let previousWidth = ownerWindow.innerWidth;
@@ -48,11 +57,6 @@ export const useMenuViewport = (
     const reconcile = () => {
       frame = undefined;
       if (disposed || !surface.isConnected) {
-        return;
-      }
-
-      const active = getActiveElement(surface);
-      if (!active || !surface.contains(active) || active.closest('[popover]') !== surface) {
         return;
       }
 
@@ -68,6 +72,33 @@ export const useMenuViewport = (
         visited.add(ancestor);
         ancestors.unshift({ parent: ancestor, trigger });
         relation = parents.get(ancestor);
+      }
+
+      const currentAncestors = new Set(ancestors.map(ancestor => ancestor.parent));
+      let changed = false;
+      for (const ancestor of observedAncestors) {
+        if (!currentAncestors.has(ancestor)) {
+          observer?.unobserve(ancestor);
+          ancestor.removeEventListener('scroll', schedule);
+          observedAncestors.delete(ancestor);
+          changed = true;
+        }
+      }
+      for (const ancestor of currentAncestors) {
+        if (!observedAncestors.has(ancestor)) {
+          observer?.observe(ancestor);
+          ancestor.addEventListener('scroll', schedule);
+          observedAncestors.add(ancestor);
+          changed = true;
+        }
+      }
+      if (changed) {
+        previousDimensions = dimensions();
+      }
+
+      const active = getActiveElement(surface);
+      if (!active || !surface.contains(active) || active.closest('[popover]') !== surface) {
+        return;
       }
 
       for (const ancestor of ancestors) {
@@ -91,18 +122,14 @@ export const useMenuViewport = (
       }
     };
 
-    const dimensions = () => [
-      surface.clientWidth,
-      surface.clientHeight,
-      parent?.clientWidth ?? 0,
-      parent?.clientHeight ?? 0,
-    ];
+    const dimensions = () =>
+      [surface, ...observedAncestors].flatMap(element => [element.clientWidth, element.clientHeight]);
     let previousDimensions = dimensions();
     const observedResize = () => {
       const current = dimensions();
       const growing =
         current.every((value, index) => value >= previousDimensions[index]) &&
-        (current[1] > previousDimensions[1] || current[3] > previousDimensions[3]);
+        current.some((value, index) => index % 2 === 1 && value > previousDimensions[index]);
       previousDimensions = current;
       if (!growing) {
         schedule();
@@ -111,10 +138,6 @@ export const useMenuViewport = (
 
     const observer = ownerWindow.ResizeObserver ? new ownerWindow.ResizeObserver(observedResize) : undefined;
     observer?.observe(surface);
-    if (parent) {
-      observer?.observe(parent);
-    }
-    parent?.addEventListener('scroll', schedule);
     surface.addEventListener('focusin', schedule);
     ownerWindow.addEventListener('resize', resize);
     ownerWindow.visualViewport?.addEventListener('resize', schedule);
@@ -125,7 +148,9 @@ export const useMenuViewport = (
       disposed = true;
       parents.delete(surface);
       observer?.disconnect();
-      parent?.removeEventListener('scroll', schedule);
+      for (const ancestor of observedAncestors) {
+        ancestor.removeEventListener('scroll', schedule);
+      }
       surface.removeEventListener('focusin', schedule);
       ownerWindow.removeEventListener('resize', resize);
       ownerWindow.visualViewport?.removeEventListener('resize', schedule);

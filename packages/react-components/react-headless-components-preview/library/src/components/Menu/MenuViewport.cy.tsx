@@ -51,6 +51,18 @@ describe('Menu viewport reconciliation', () => {
                                 Nested action {index + 1}
                               </MenuItem>
                             ))}
+                            <Menu>
+                              <MenuTrigger>
+                                <MenuItem id="viewport-inner-invoker" hasSubmenu>
+                                  Additional actions
+                                </MenuItem>
+                              </MenuTrigger>
+                              <MenuPopover id="viewport-inner" style={{ maxHeight: '25vh', overflowY: 'auto' }}>
+                                <MenuList>
+                                  <MenuItem id="viewport-inner-item">Innermost action</MenuItem>
+                                </MenuList>
+                              </MenuPopover>
+                            </Menu>
                           </MenuList>
                         </MenuPopover>
                       </Menu>
@@ -71,7 +83,10 @@ describe('Menu viewport reconciliation', () => {
           const bounds = item.getBoundingClientRect();
           expect(surface.matches(':popover-open')).to.equal(true);
           expect(bounds.top).to.be.at.least(top - 1);
-          expect(bounds.bottom).to.be.at.most(top + surface.clientHeight + 1);
+          expect(
+            bounds.bottom,
+            `${surfaceId}/${itemId}: scrollTop=${surface.scrollTop}, active=${activeRoot.activeElement?.id}`,
+          ).to.be.at.most(top + surface.clientHeight + 1);
         });
 
       cy.viewport(800, 700);
@@ -95,11 +110,72 @@ describe('Menu viewport reconciliation', () => {
       cy.wrap(null).should(() => {
         expect(activeRoot.activeElement).to.equal(root.querySelector('#viewport-child-19'));
       });
-      get('viewport-child-19').realPress('Escape');
+      get('viewport-inner-invoker').focus();
+      visibleWithin('viewport-child', 'viewport-inner-invoker');
+      cy.wrap(null).should(() => {
+        expect(activeRoot.activeElement).to.equal(root.querySelector('#viewport-inner-invoker'));
+      });
+      get('viewport-inner-invoker').realPress('Enter');
+      cy.wrap(null).should(() => {
+        expect(root.querySelector('#viewport-inner')!.matches(':popover-open')).to.equal(true);
+        expect(activeRoot.activeElement).to.equal(root.querySelector('#viewport-inner-item'));
+      });
+      visibleWithin('viewport-parent', 'viewport-invoker');
+      cy.then(() => {
+        root.querySelector<HTMLElement>('#viewport-parent')!.style.maxHeight = '40px';
+      });
+      visibleWithin('viewport-parent', 'viewport-invoker');
+      cy.then(() => {
+        root.querySelector<HTMLElement>('#viewport-parent')!.scrollTop = 0;
+      });
+      visibleWithin('viewport-parent', 'viewport-invoker');
+      visibleWithin('viewport-child', 'viewport-inner-invoker');
+      cy.wrap(null).should(() => {
+        expect(activeRoot.activeElement).to.equal(root.querySelector('#viewport-inner-item'));
+      });
+      get('viewport-inner-item').realPress('Escape');
+      get('viewport-child-19').focus().realPress('Escape');
       cy.wrap(null).should(() => {
         expect(activeRoot.activeElement).to.equal(root.querySelector('#viewport-invoker'));
         expect(root.querySelector('#viewport-child')!.matches(':popover-open')).to.equal(false);
         expect(root.querySelector('#viewport-parent')!.matches(':popover-open')).to.equal(true);
+      });
+    });
+  }
+
+  for (const writingMode of ['vertical-rl', 'vertical-lr'] as const) {
+    it(`reveals focused items after horizontal shrink in ${writingMode}`, () => {
+      mount(
+        <Menu>
+          <MenuTrigger>
+            <button>Actions</button>
+          </MenuTrigger>
+          <MenuPopover id="vertical-menu" style={{ writingMode, width: '200px', height: '80px', overflow: 'auto' }}>
+            <MenuList>
+              {Array.from({ length: 12 }, (_, index) => (
+                <MenuItem key={index} id={`vertical-item-${index}`} style={{ width: '40px', height: '40px' }}>
+                  Action {index + 1}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+      cy.get('button').focus().realPress('Enter');
+      cy.get('#vertical-item-11').focus();
+      cy.get('#vertical-menu').then(([surface]) => {
+        surface.scrollLeft = 0;
+        surface.style.width = '100px';
+      });
+      cy.get('#vertical-menu').should(([surface]) => {
+        const bounds = surface.getBoundingClientRect();
+        const left = bounds.left + surface.clientLeft;
+        const item = surface.querySelector<HTMLElement>('#vertical-item-11')!;
+        const itemBounds = item.getBoundingClientRect();
+        expect(itemBounds.left).to.be.at.least(left - 1);
+        expect(itemBounds.right).to.be.at.most(left + surface.clientWidth + 1);
+        expect(surface.ownerDocument.activeElement).to.equal(item);
+        expect(surface.scrollLeft).to.not.equal(0);
       });
     });
   }

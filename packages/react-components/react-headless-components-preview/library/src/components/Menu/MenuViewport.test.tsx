@@ -7,13 +7,13 @@ import { useMenuViewport } from './useMenuViewport';
 describe('Menu viewport', () => {
   let frames: Map<number, FrameRequestCallback>;
   let nextFrame: number;
-  let resizeCallbacks: ResizeObserverCallback[];
+  let resizeObservers: { callback: ResizeObserverCallback; targets: Set<Element> }[];
   let observe: jest.Mock;
   let disconnect: jest.Mock;
 
   beforeEach(() => {
     frames = new Map();
-    resizeCallbacks = [];
+    resizeObservers = [];
     nextFrame = 0;
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => {
       frames.set(++nextFrame, callback);
@@ -25,8 +25,19 @@ describe('Menu viewport', () => {
     observe = jest.fn();
     disconnect = jest.fn();
     jest.spyOn(window, 'ResizeObserver').mockImplementation(callback => {
-      resizeCallbacks.push(callback);
-      return { observe, unobserve: jest.fn(), disconnect };
+      const targets = new Set<Element>();
+      resizeObservers.push({ callback, targets });
+      return {
+        observe: target => {
+          targets.add(target);
+          observe(target);
+        },
+        unobserve: target => targets.delete(target),
+        disconnect: () => {
+          targets.clear();
+          disconnect();
+        },
+      };
     });
   });
 
@@ -40,6 +51,15 @@ describe('Menu viewport', () => {
       const pending = [...frames.values()];
       frames.clear();
       pending.forEach(callback => callback(0));
+    });
+
+  const resize = (target: Element) =>
+    act(() => {
+      resizeObservers.forEach(observer => {
+        if (observer.targets.has(target)) {
+          observer.callback([], {} as ResizeObserver);
+        }
+      });
     });
 
   const rect = (top: number, height: number) => ({
@@ -174,17 +194,41 @@ describe('Menu viewport', () => {
       expect(surface.scrollTop).toBe(0);
       expect(activeRoot.activeElement).toBe(get('outside'));
     });
+
+    it(`reconciles outer-only scrolling and shrinking with innermost focus in a ${mode} root`, () => {
+      const { get, activeRoot } = setup(mode);
+      const outer = get('outer');
+      const item = get('inner-item');
+      measure(outer, get('middle-trigger'));
+      measure(get('middle'), get('inner-trigger'));
+      measure(get('inner'), item);
+      item.focus();
+      flush();
+      expect(outer.scrollTop).toBe(100);
+
+      outer.scrollTop = 0;
+      act(() => outer.dispatchEvent(new Event('scroll')));
+      flush();
+      expect(outer.scrollTop).toBe(100);
+
+      Object.defineProperty(outer, 'clientHeight', { configurable: true, value: 60 });
+      resize(outer);
+      flush();
+      expect(outer.scrollTop).toBe(140);
+      expect(activeRoot.activeElement).toBe(item);
+    });
   }
 
-  it('coalesces resize and focus events and observes the surface and immediate parent', () => {
+  it('coalesces resize and focus events and observes the full ancestor chain', () => {
     const { get } = setup();
     const surface = get('inner');
     const item = get('inner-item');
     measure(surface, item);
     item.focus();
+    flush();
     expect(observe).toHaveBeenCalledWith(surface);
     expect(observe).toHaveBeenCalledWith(get('middle'));
-    flush();
+    expect(observe).toHaveBeenCalledWith(get('outer'));
     surface.scrollTop = 0;
     act(() => {
       window.dispatchEvent(new Event('resize'));
@@ -197,6 +241,45 @@ describe('Menu viewport', () => {
     expect(read).toHaveBeenCalledTimes(1);
     expect(surface.scrollTop).toBe(100);
   });
+
+  it.each([
+    { writingMode: 'vertical-rl', direction: 'ltr', left: -180, width: 20, expected: -180 },
+    { writingMode: 'vertical-lr', direction: 'ltr', left: 180, width: 20, expected: 100 },
+    { writingMode: 'horizontal-tb', direction: 'rtl', left: -180, width: 20, expected: -180 },
+    { writingMode: 'vertical-rl', direction: 'ltr', left: -240, width: 160, expected: -180 },
+    { writingMode: 'vertical-lr', direction: 'ltr', left: 180, width: 160, expected: 180 },
+    { writingMode: 'vertical-rl', direction: 'ltr', left: -20, width: 160, expected: 0 },
+  ])(
+    'reveals horizontal overflow with stable oversized rows: %o',
+    ({ writingMode, direction, left, width, expected }) => {
+      const { get, activeRoot } = setup();
+      const surface = get('outer');
+      const item = get('outer-item');
+      surface.style.writingMode = writingMode;
+      surface.style.direction = direction;
+      measure(surface, item, 0);
+      Object.defineProperty(surface, 'clientLeft', { configurable: true, value: 2 });
+      jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => ({
+        ...rect(10, 104),
+        left: 10,
+        right: 114,
+        width: 104,
+      }));
+      jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => ({
+        ...rect(12, 20),
+        left: 12 + left - surface.scrollLeft,
+        right: 12 + left + width - surface.scrollLeft,
+        width,
+      }));
+      item.focus();
+      flush();
+      expect(surface.scrollLeft).toBe(expected);
+      act(() => window.dispatchEvent(new Event('resize')));
+      flush();
+      expect(surface.scrollLeft).toBe(expected);
+      expect(activeRoot.activeElement).toBe(item);
+    },
+  );
 
   it('reconciles on parent scrolling, but leaves pure height growth alone', () => {
     const { get } = setup();
@@ -211,11 +294,11 @@ describe('Menu viewport', () => {
     expect(surface.scrollTop).toBe(100);
     surface.scrollTop = 0;
     Object.defineProperty(surface, 'clientHeight', { configurable: true, value: 120 });
-    act(() => resizeCallbacks.forEach(callback => callback([], {} as ResizeObserver)));
+    resize(surface);
     flush();
     expect(surface.scrollTop).toBe(0);
     Object.defineProperty(surface, 'clientHeight', { configurable: true, value: 80 });
-    act(() => resizeCallbacks.forEach(callback => callback([], {} as ResizeObserver)));
+    resize(surface);
     flush();
     expect(surface.scrollTop).toBe(120);
   });
@@ -325,18 +408,57 @@ describe('Menu viewport', () => {
     expect(cancel).toHaveBeenCalledTimes(observerCalls);
   });
 
+  it('updates and cleans up ancestor subscriptions when the live parent changes', () => {
+    const parentRef: React.RefObject<HTMLElement | null> = { current: null };
+    const triggerRef: React.RefObject<HTMLButtonElement | null> = { current: null };
+    const Surface = () => {
+      const ref = useMenuViewport(true, triggerRef, parentRef);
+      return <div ref={ref} data-testid="surface" />;
+    };
+    const view = render(
+      <>
+        <div data-testid="first" />
+        <div data-testid="second" />
+        <button ref={triggerRef}>Invoker</button>
+        <Surface />
+      </>,
+    );
+    const first = view.getByTestId('first');
+    const second = view.getByTestId('second');
+    parentRef.current = first;
+    flush();
+    expect(resizeObservers[0].targets.has(first)).toBe(true);
+
+    parentRef.current = second;
+    act(() => window.dispatchEvent(new Event('resize')));
+    flush();
+    expect(resizeObservers[0].targets.has(first)).toBe(false);
+    expect(resizeObservers[0].targets.has(second)).toBe(true);
+    act(() => first.dispatchEvent(new Event('scroll')));
+    expect(frames.size).toBe(0);
+    act(() => second.dispatchEvent(new Event('scroll')));
+    expect(frames.size).toBe(1);
+    view.unmount();
+    expect(frames.size).toBe(0);
+    expect(resizeObservers[0].targets.size).toBe(0);
+  });
+
   it('cancels pending work and removes observers and listeners on close', () => {
     const { get, update } = setup();
     const surface = get('inner');
     measure(surface, get('inner-item'));
     get('inner-item').focus();
+    flush();
+    act(() => window.dispatchEvent(new Event('resize')));
     const remove = jest.spyOn(surface, 'removeEventListener');
+    const removeAncestor = jest.spyOn(get('outer'), 'removeEventListener');
     expect(frames.size).toBeGreaterThan(0);
     update({ open: false });
     expect(disconnect).toHaveBeenCalled();
     expect(remove).toHaveBeenCalledWith('focusin', expect.any(Function));
+    expect(removeAncestor).toHaveBeenCalledWith('scroll', expect.any(Function));
     expect(frames.size).toBe(0);
     flush();
-    expect(surface.scrollTop).toBe(0);
+    expect(surface.scrollTop).toBe(100);
   });
 });
