@@ -173,9 +173,11 @@ export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = 
 
 /**
  * Regex pattern to remove the story variant suffix from Storybook story IDs.
+ * Story names are kebab-cased in IDs, so the suffix can contain hyphens.
  * @example "button--primary" -> "button"
+ * @example "button--with-icon" -> "button"
  */
-const STORYBOOK_VARIANT_SUFFIX_PATTERN = /--\w+$/g;
+const STORYBOOK_VARIANT_SUFFIX_PATTERN = /--[\w-]+$/;
 
 /**
  * Gets the base URL for fetching markdown content from the Storybook LLM endpoint.
