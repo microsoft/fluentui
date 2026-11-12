@@ -540,7 +540,7 @@ function buildLintTarget(
       cache: true,
       options: {
         cwd: projectRoot,
-        commands: [eslintCommand, `${config.pmc.exec} stylelint "src/**/*.css" --allow-empty-input`],
+        commands: [eslintCommand, `${config.pmc.exec} stylelint "src/**/*.module.css" --allow-empty-input`],
         parallel: false,
       },
       inputs: [

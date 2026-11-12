@@ -397,7 +397,7 @@ describe('rit CLI e2e', () => {
       templateSourceSnapshot(cyContent, {
         originConfigPath: cypressImportPath,
         nodeModulesRelativePath: '..',
-        specPattern: `${relativeProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`,
+        originRootPath: relativeProjectRoot,
       }),
     ).toMatchInlineSnapshot(`
       "import { join, resolve } from 'node:path';
@@ -411,9 +411,10 @@ describe('rit CLI e2e', () => {
 
       const config = { ...baseConfig };
 
-      const specs = [
-        resolve(<specPattern>),
-      ];
+      const specPattern = baseConfig.component.specPattern ?? '**/src/**/*.{cy,e2e}.{tsx,ts}';
+      const specs = (Array.isArray(specPattern) ? specPattern : [specPattern]).map(pattern =>
+        resolve(<originRootPath>, pattern),
+      );
 
       config.component.specPattern = specs;
       config.component.devServer.webpackConfig.resolve ??= {};

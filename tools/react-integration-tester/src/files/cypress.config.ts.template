@@ -9,9 +9,10 @@ const usedNodeModulesPath = join(process.cwd(), <%- JSON.stringify(usedNodeModul
 
 const config = { ...baseConfig };
 
-const specs = [
-  resolve(<%- JSON.stringify(`${relativePathToProjectRoot}/**/src/**/*.{cy,e2e}.{tsx,ts}`) %>),
-];
+const specPattern = baseConfig.component.specPattern ?? '**/src/**/*.{cy,e2e}.{tsx,ts}';
+const specs = (Array.isArray(specPattern) ? specPattern : [specPattern]).map(pattern =>
+  resolve(<%- JSON.stringify(relativePathToProjectRoot) %>, pattern),
+);
 
 config.component.specPattern = specs;
 config.component.devServer.webpackConfig.resolve ??= {};
