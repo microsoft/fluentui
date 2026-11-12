@@ -1,10 +1,23 @@
-import { computePosition } from '@floating-ui/dom';
+import { computePosition } from './engine/computePosition';
+import { getWindow, px } from './engine/platform';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
-import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
+import type {
+  OnPositioningEndEventDetail,
+  PositionManager,
+  PositioningOptions,
+  PositioningPlacement,
+  TargetElement,
+} from './types';
+import { debounce } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
-import { POSITIONING_END_EVENT } from './constants';
+import {
+  DATA_POSITIONING_ESCAPED,
+  DATA_POSITIONING_HIDDEN,
+  DATA_POSITIONING_INTERSECTING,
+  DATA_POSITIONING_PLACEMENT,
+  POSITIONING_END_EVENT,
+} from './constants';
 import { createResizeObserver } from './utils/createResizeObserver';
 
 interface PositionManagerOptions {
@@ -28,69 +41,53 @@ interface PositionManagerOptions {
   /**
    * [Floating UI middleware](https://floating-ui.com/docs/middleware)
    */
-  middleware: Middleware[];
+  middleware?: Middleware[];
+  /** Positioning options resolved by the configuration context */
+  options?: PositioningOptions;
+  isRtl?: boolean;
   /**
    * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
    */
   placement?: Placement;
-  /**
-   * Modifies whether popover is positioned using transform.
-   * @default true
-   */
-  useTransform?: boolean;
-  /**
-   * Disables the resize observer that updates position on target or dimension change
-   */
-  disableUpdateOnResize?: boolean;
-}
-
-function isLayoutViewportUnavailable(container: HTMLElement): boolean {
-  const { clientWidth, clientHeight } = container.ownerDocument.documentElement;
-
-  return clientWidth === 0 && clientHeight === 0;
 }
 
 /**
  * @internal
  * @returns manager that handles positioning out of the react lifecycle
  */
-export function createPositionManager(options: PositionManagerOptions): PositionManager {
+export function createPositionManager(managerOptions: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
-  const {
-    container,
-    target,
-    arrow,
-    strategy,
-    middleware,
-    placement,
-    useTransform = true,
-    disableUpdateOnResize = false,
-  } = options;
-  const targetWindow = container.ownerDocument.defaultView;
-  if (!target || !container || !targetWindow) {
-    return {
-      updatePosition: () => undefined,
-      dispose: () => undefined,
-    };
+  const { container, target, arrow, strategy, options = {} } = managerOptions;
+  // Modifies whether the container is positioned using transform
+  const { useTransform = true, disableUpdateOnResize } = options;
+  const targetWindow = getWindow(container) as (Window & typeof globalThis) | null;
+  // Containers of documents without a window (e.g. `DOMParser`) can't be positioned
+  if (!targetWindow) {
+    const noop = () => undefined;
+    return { updatePosition: noop, dispose: noop };
   }
 
-  // When the dimensions of the target or the container change - trigger a position update
+  // When the dimensions of the target or the container change - trigger a position update,
+  // unless disabled by the `disableUpdateOnResize` option
   const resizeObserver = disableUpdateOnResize
     ? null
     : createResizeObserver(targetWindow, entries => {
         // If content rect dimensions to go 0 -> very likely that `display: none` is being used to hide the element
         // In this case don't update and let users update imperatively
-        const shouldUpdateOnResize = entries.every(entry => {
-          return entry.contentRect.width > 0 && entry.contentRect.height > 0;
-        });
-
-        if (shouldUpdateOnResize) {
+        if (entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0)) {
           updatePosition();
         }
       });
 
   let isFirstUpdate = true;
-  const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
+  // The window and the scroll parents of the container and the target, the target is only observed
+  // when it is an element as virtual elements are not part of the DOM
+  const scrollTargets = new Set<EventTarget>([targetWindow]);
+  const elements = isHTMLElement(target) ? [container, target] : [container];
+  const listenToScroll = (scrollTarget: EventTarget) => {
+    scrollTargets.add(scrollTarget);
+    scrollTarget.addEventListener('scroll', updatePosition, { passive: true });
+  };
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
@@ -104,49 +101,48 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     if (isFirstUpdate) {
-      listScrollParents(container).forEach(scrollParent => scrollParents.add(scrollParent));
-      if (isHTMLElement(target)) {
-        listScrollParents(target).forEach(scrollParent => scrollParents.add(scrollParent));
-      }
-
-      scrollParents.forEach(scrollParent => {
-        scrollParent.addEventListener('scroll', updatePosition, { passive: true });
+      elements.forEach(element => {
+        listScrollParents(element).forEach(listenToScroll);
+        resizeObserver && resizeObserver.observe(element);
       });
-
-      resizeObserver?.observe(container);
-      if (isHTMLElement(target)) {
-        resizeObserver?.observe(target);
-      }
 
       isFirstUpdate = false;
     }
 
-    Object.assign(container.style, { position: strategy });
-    computePosition(target, container, { placement, middleware, strategy })
-      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
+    container.style.position = strategy;
+    computePosition(target, container, managerOptions)
+      .then(({ x, y, placement, arrow: arrowCoordinates, intersecting, escaped, referenceHidden }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
         if (isDestroyed) {
           return;
         }
 
-        const positioningMiddlewareData = isLayoutViewportUnavailable(container)
-          ? {
-              ...middlewareData,
-              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
-            }
-          : middlewareData;
+        if (arrow && arrowCoordinates) {
+          Object.assign(arrow.style, { left: px(arrowCoordinates.x), top: px(arrowCoordinates.y) });
+        }
+        container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
+        container.toggleAttribute(DATA_POSITIONING_INTERSECTING, intersecting);
+        container.toggleAttribute(DATA_POSITIONING_ESCAPED, escaped);
+        container.toggleAttribute(DATA_POSITIONING_HIDDEN, referenceHidden);
 
-        writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
-        writeContainerUpdates({
-          container,
-          middlewareData: positioningMiddlewareData,
-          placement: computedPlacement,
-          coordinates: { x, y },
-          lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
-          strategy,
-          useTransform,
-        });
+        // Round so that the coordinates land on device pixels.
+        // This prevents blurriness in cases where the browser doesn't apply pixel snapping, such as when other
+        // effects like `backdrop-filter: blur()` are applied to the container, and the browser is zoomed in.
+        // See https://github.com/microsoft/fluentui/issues/26764 for more info.
+        const devicePixelRatio = targetWindow.devicePixelRatio || 1;
+        const left = px(Math.round(x * devicePixelRatio) / devicePixelRatio);
+        const top = px(Math.round(y * devicePixelRatio) / devicePixelRatio);
+        Object.assign(
+          container.style,
+          useTransform
+            ? {
+                // Layer acceleration can disable subpixel rendering which causes slightly
+                // blurry text on low PPI displays, so we want to use 2D transforms instead
+                transform: devicePixelRatio <= 1 ? `translate(${left}, ${top})` : `translate3d(${left}, ${top}, 0)`,
+              }
+            : { left, top },
+        );
 
         container.dispatchEvent(
           new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
@@ -154,9 +150,9 @@ export function createPositionManager(options: PositionManagerOptions): Position
               // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
               // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
               // types into the public API surface.
-              placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+              placement: placement satisfies PositioningPlacement,
+              escaped,
+              referenceHidden,
             },
           }),
         );
@@ -176,28 +172,22 @@ export function createPositionManager(options: PositionManagerOptions): Position
       });
   };
 
-  const updatePosition = debounce(() => forceUpdate());
+  const updatePosition = debounce(forceUpdate);
 
   const dispose = () => {
     isDestroyed = true;
 
-    if (targetWindow) {
-      targetWindow.removeEventListener('scroll', updatePosition);
-      targetWindow.removeEventListener('resize', updatePosition);
-    }
-
-    scrollParents.forEach(scrollParent => {
-      scrollParent.removeEventListener('scroll', updatePosition);
+    targetWindow.removeEventListener('resize', updatePosition);
+    scrollTargets.forEach(scrollTarget => {
+      scrollTarget.removeEventListener('scroll', updatePosition);
     });
-    scrollParents.clear();
+    scrollTargets.clear();
 
-    resizeObserver?.disconnect();
+    resizeObserver && resizeObserver.disconnect();
   };
 
-  if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
-    targetWindow.addEventListener('resize', updatePosition);
-  }
+  listenToScroll(targetWindow);
+  targetWindow.addEventListener('resize', updatePosition);
 
   // Update the position on initialization
   updatePosition();
