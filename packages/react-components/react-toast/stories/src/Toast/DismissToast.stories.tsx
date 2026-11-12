@@ -33,7 +33,7 @@ DismissToast.parameters = {
       story: [
         'Toasts can be dismissed imperatively using the `dismissToast` API. In order to imperatively dismiss a ',
         "Toast, it's necessary to dispatch it with a user provided id. You can use the id to dismiss the toast.",
-        "**Don't** use this API to dismiss toats when clicking on an action inside the toast, use the `ToastTrigger`",
+        "**Don't** use this API to dismiss toasts when clicking on an action inside the toast, use the `ToastTrigger`",
         'instead.',
       ].join('\n'),
     },
