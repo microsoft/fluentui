@@ -42,7 +42,7 @@ DismissToastWithAction.parameters = {
   docs: {
     description: {
       story: [
-        "By wrapping a button or link with a  `ToastTrigger`, it's possible to make that actionable",
+        "By wrapping a button or link with a `ToastTrigger`, it's possible to make that actionable",
         'element dismiss the toast with a click.',
       ].join('\n'),
     },
