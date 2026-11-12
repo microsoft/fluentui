@@ -35,6 +35,10 @@ Dedicated specs:
 - [`Lazy.cy.tsx`](./e2e/Lazy.cy.tsx): CSS Modules components load in chunks after the app inserted its Griffel styles
   (the harness avoids the `@fluentui/react-components` barrel for this). The Griffel baseline renders eagerly: Griffel's
   own result depends on insertion order, a lazily rendered Griffel component wins ties against app rules.
+- [`app-patterns/`](./e2e/app-patterns): styling reduced from real applications, one spec per pattern, run in the
+  `app pattern` scenario (`ComponentSpec.useAppPattern`). A pattern hook returns the app's class name, props and
+  surrounding markup, and can toggle app state (`toggles`, for example a selection), after which every state is sampled
+  again. Keep each pattern close to its source and list the style shapes it covers in its styles file.
 - [`SSR.cy.tsx`](./e2e/SSR.cy.tsx) (Griffel buckets mode only): renders on the server in a Web Worker (no DOM, same
   bundle so class names match), injects the HTML and `renderToStyleElements()` output, compares both implementations
   before and after `hydrateRoot()`, and fails on hydration errors or style changes caused by hydration.
@@ -49,6 +53,8 @@ Dedicated specs:
   [Griffel app styles](./e2e/useParityAppStyles.styles.ts)) and sampled at rest, hover, pressed and keyboard focus.
   Components that move focus on mount (modal dialogs, drawers, menus) keep it in the last mounted copy, so at rest and
   hover focus is mirrored into the sampled copy first.
+- Besides computed properties, the layout size (`box width`/`box height`, from `offsetWidth`/`offsetHeight`, so
+  transforms and running animations don't affect it) of the root, its parent and sampled slots is compared, so layout differences such as a wrapper growing with the component's min-content width are reported.
 - Failures name the scenario, slot, property and both values. No numeric tolerances are applied.
 
 Griffel hooks that import a sibling component through an index file still receive its CSS alternative. Specs work
@@ -67,6 +73,9 @@ Tolerated only for values the app declared (and colors inherited from them):
   into state buckets, so a component `:active` rule beat an app `:hover` or `:focus-within` rule of equal specificity
   (for example, Link and Checkbox pressed colors, Input pressed/focused border colors). Apps that restyle `:hover`
   should also declare the pressed and focused values they want.
+- An app rule without a pseudo-class now beats a component state rule of equal specificity, for example
+  `&[data-position="first"]` (one class plus an attribute) against a component `:hover` rule. Griffel put the app rule
+  in its default bucket, before the component's `:hover` bucket ([`SegmentedToggle`](./e2e/app-patterns/SegmentedToggle.cy.tsx)).
 
 Some specs declare further, component-specific `knownDifferences` (for example, inherited backgrounds in plain CSS
 scenarios), each with an explanation.
