@@ -78,6 +78,7 @@ export interface OverflowManager {
 // @public
 export interface OverflowOptions {
     hasHiddenItems?: boolean;
+    measureGap?: boolean;
     minimumVisible?: number;
     onUpdateItemVisibility: OnUpdateItemVisibility;
     onUpdateOverflow: OnUpdateOverflow;

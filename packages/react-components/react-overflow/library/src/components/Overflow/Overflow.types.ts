@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import type { OverflowOptions, OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowContextValue } from '../../overflowContext';
-import type { UseOverflowContainerReturn } from '../../types';
+import type { OverflowImperativeRef, UseOverflowContainerReturn } from '../../types';
 
 export interface OverflowState {
   hasOverflow: boolean;
@@ -12,13 +12,18 @@ export interface OverflowState {
 export interface OnOverflowChangeData extends OverflowState {}
 
 export type OverflowProps = Partial<
-  Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>
+  Pick<
+    OverflowOptions,
+    'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems' | 'measureGap'
+  >
 > & {
   children: React.ReactElement;
 
   // overflow is not caused by DOM event
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onOverflowChange?: (ev: null, data: OverflowState) => void;
+
+  imperativeRef?: React.Ref<OverflowImperativeRef | null | undefined>;
 };
 
 /**

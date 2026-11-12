@@ -1,6 +1,6 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import { getTriggerChild, getReactElementRef, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 
@@ -22,6 +22,8 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     padding,
     onOverflowChange,
     hasHiddenItems,
+    measureGap,
+    imperativeRef,
   } = props;
 
   const update: OnUpdateOverflow = useEventCallback(() => {
@@ -50,10 +52,15 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     padding,
     minimumVisible,
     hasHiddenItems,
+    measureGap,
     onUpdateItemVisibility: updateVisibilityAttribute,
   });
 
   const child = getTriggerChild<HTMLElement>(children);
+
+  React.useImperativeHandle(imperativeRef, () => ({
+    updateOverflow,
+  }));
 
   return {
     containerRef,
