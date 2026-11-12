@@ -112,7 +112,7 @@ Offset.parameters = {
     description: {
       story: [
         'You can declare a static offset for toasts relative to the viewport. This offset can only be set on the',
-        "`Toaster` component, because it wouldn't make sense to have separate toast offsets for a toasts in a",
+        "`Toaster` component, because it wouldn't make sense to have separate toast offsets for a toast in a",
         'single position.',
       ].join('\n'),
     },
