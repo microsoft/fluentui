@@ -77,7 +77,26 @@ export type ComponentSpec = {
   knownDifferences?: KnownDifferences;
   /** Selector awaited inside every container before sampling, for components that render asynchronously (lazy). */
   waitFor?: string;
+  /**
+   * Real app styling for the `app pattern` scenario (see `e2e/app-patterns/`): a hook returning the class name, props
+   * and surrounding markup an app applies. It receives whether the app toggled its state (for example a selection).
+   */
+  useAppPattern?: (toggled: boolean) => AppPattern;
+  /** Samples every variant and state again after the app toggles its state (`useAppPattern(true)`). */
+  toggles?: boolean;
 };
+
+/** App styling reproduced from a real application, applied in the `app pattern` scenario. */
+export type AppPattern = {
+  /** Class name the app passes to the sampled component. */
+  className?: string;
+  /** Props the app passes (data attributes, slots, children). Variant props still take precedence. */
+  props?: AnyProps;
+  /** App markup around the sampled component; replaces `ComponentSpec.wrap`. */
+  wrap?: (element: JSXElement, implementation: Implementation) => JSXElement;
+};
+
+const noAppPattern = (): AppPattern => ({});
 
 export const scenarios = [
   'no app styles',
@@ -90,6 +109,8 @@ export const scenarios = [
   'wrapper component with extra class name',
   'plain CSS class name',
   'plain CSS stateful class name',
+  // Only runs for specs with `useAppPattern`.
+  'app pattern',
 ] as const;
 export type Scenario = (typeof scenarios)[number];
 type KnownDifferences = Partial<Record<Scenario, Record<string, string[]>>>;
@@ -105,11 +126,29 @@ const rootProperties = [
   'border-top-width',
   'border-bottom-width',
   'border-top-left-radius',
+  'border-inline-end-color',
+  'border-inline-start-width',
+  'border-inline-end-width',
+  'border-top-right-radius',
+  'border-bottom-right-radius',
+  'border-bottom-left-radius',
   'padding-top',
+  'padding-bottom',
   'padding-inline-start',
+  'padding-inline-end',
+  'margin-top',
+  'margin-inline-start',
   'min-width',
+  'max-width',
   'width',
   'height',
+  'display',
+  'gap',
+  'flex-grow',
+  'flex-shrink',
+  'justify-content',
+  'align-items',
+  'font-family',
   'font-size',
   'font-weight',
   'line-height',
@@ -151,6 +190,7 @@ const knownDifferences: KnownDifferences = {
     'root border-top-color': ['--colorPaletteBerryBorderActive'],
     'root border-bottom-color': ['--colorPaletteBerryBorderActive'],
     'root border-inline-start-color': ['--colorPaletteBerryBorderActive'],
+    'root border-inline-end-color': ['--colorPaletteBerryBorderActive'],
   },
   'plain CSS class name': {
     'root background-color': ['--colorPaletteBerryBackground2'],
@@ -183,6 +223,17 @@ type ParityAppProps = {
 /** Renders every variant twice — original Griffel and CSS Modules — with identical app styling. */
 const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JSXElement => {
   const classes = useParityAppStyles();
+  const [toggled, setToggled] = React.useState(false);
+  React.useEffect(() => {
+    setAppToggled = setToggled;
+    return () => {
+      setAppToggled = undefined;
+    };
+  }, []);
+  // `spec` never changes during a mount, so the hook order is stable.
+  const useAppPattern = spec.useAppPattern ?? noAppPattern;
+  const pattern = useAppPattern(toggled);
+  const appPattern = scenario === 'app pattern' ? pattern : undefined;
   const customStyleHooks: FluentProviderCustomStyleHooks = scenario.startsWith('custom style hook')
     ? {
         [spec.customStyleHook ?? `use${name}Styles_unstable`]: (state: unknown) => {
@@ -206,6 +257,7 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
     scenario === 'custom style hook with caller override' && classes.caller,
     scenario === 'plain CSS class name' && styles.base,
     scenario === 'plain CSS stateful class name' && styles.stateful,
+    appPattern?.className,
   );
   const wrapperClassName =
     scenario === 'wrapper component with extra class name'
@@ -235,13 +287,20 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
               : {};
           const id = `${implementation}-${index}`;
           const element = (
-            <Component {...props} {...variant} {...slotProps} className={wrapperClassName || undefined} />
+            <Component
+              {...props}
+              {...appPattern?.props}
+              {...variant}
+              {...slotProps}
+              className={wrapperClassName || undefined}
+            />
           );
+          const wrap = appPattern?.wrap ?? spec.wrap;
           return (
             <div key={id} data-testid={id} style={{ padding: 4 }}>
               <button data-testid={`${id}-start`}>Start</button>
               <React.Suspense fallback={null}>
-                {spec.wrap ? spec.wrap(element, implementation) : element}
+                {wrap ? wrap(element, implementation) : element}
               </React.Suspense>
             </div>
           );
@@ -259,13 +318,27 @@ export function readStyles(root: HTMLElement, spec: Pick<ComponentSpec, 'sampled
       result[`${prefix} ${property}`] = style.getPropertyValue(property);
     }
   };
+  // Layout size catches differences no single property shows, for example a flex item growing to a larger min-content
+  // width. The parent is measured too: app wrappers often size themselves from the component. `offsetWidth` ignores
+  // transforms, so running animations (Spinner) don't change it; SVG elements have no layout box and are skipped.
+  const box = (prefix: string, element: Element) => {
+    if (element instanceof view.HTMLElement) {
+      result[`${prefix} box width`] = String(element.offsetWidth);
+      result[`${prefix} box height`] = String(element.offsetHeight);
+    }
+  };
   read('root', view.getComputedStyle(root), rootProperties);
+  box('root', root);
+  if (root.parentElement) {
+    box('parent', root.parentElement);
+  }
   read('root::before', view.getComputedStyle(root, '::before'), pseudoProperties);
   read('root::after', view.getComputedStyle(root, '::after'), pseudoProperties);
   for (const slotClassName of spec.sampledSlots) {
     const slot = root.classList.contains(slotClassName) ? root : root.querySelector<HTMLElement>(`.${slotClassName}`);
     if (slot) {
       read(slotClassName, view.getComputedStyle(slot), slotProperties);
+      box(slotClassName, slot);
     }
   }
   return result;
@@ -288,6 +361,9 @@ const containerId = /^(griffel|css)-(\d+)$/;
 
 /** Shadow root the app of the current test renders into (`FUI_PARITY_SHADOW_DOM=1`). */
 let appShadowRoot: ShadowRoot | undefined;
+
+/** Toggles the app state of the mounted `ParityApp` (see `ComponentSpec.toggles`). */
+let setAppToggled: ((toggled: boolean) => void) | undefined;
 
 /** Root node containing the app: the document, or the shadow root it renders into. */
 const getAppRoot = (doc: Document): Document | ShadowRoot => appShadowRoot ?? doc;
@@ -555,6 +631,9 @@ export function describeParity(
 
     for (const [name, spec] of Object.entries(components)) {
       for (const scenario of options.scenarios ?? scenarios) {
+        if (scenario === 'app pattern' && !spec.useAppPattern) {
+          continue;
+        }
         const declarations = mergeKnownDifferences(spec, scenario);
         const title = declarations ? `${scenario} (known migration difference: app styles now apply)` : scenario;
 
@@ -580,23 +659,35 @@ export function describeParity(
               allowed = resolved;
             });
           }
-          spec.variants.forEach((variant, index) => {
-            for (const state of statesOf(spec, variant)) {
-              enterState(`griffel-${index}`, spec, state);
-              sample(`griffel-${index}`, spec).then(expected => {
-                enterState(`css-${index}`, spec, state);
-                sample(`css-${index}`, spec).then(actual => {
-                  for (const key of Object.keys(expected)) {
-                    if (expected[key] !== actual[key] && !isKnownDifference(allowed, key, actual[key])) {
-                      differences.push(
-                        `${JSON.stringify(variant)} ${state} ${key}: griffel=${expected[key]} css=${actual[key]}`,
-                      );
+          const compare = (label: string) =>
+            spec.variants.forEach((variant, index) => {
+              for (const state of statesOf(spec, variant)) {
+                enterState(`griffel-${index}`, spec, state);
+                sample(`griffel-${index}`, spec).then(expected => {
+                  enterState(`css-${index}`, spec, state);
+                  sample(`css-${index}`, spec).then(actual => {
+                    for (const key of Object.keys(expected)) {
+                      if (expected[key] !== actual[key] && !isKnownDifference(allowed, key, actual[key])) {
+                        differences.push(
+                          `${label}${JSON.stringify(variant)} ${state} ${key}: griffel=${expected[key]} css=${
+                            actual[key]
+                          }`,
+                        );
+                      }
                     }
-                  }
+                  });
                 });
-              });
-            }
-          });
+              }
+            });
+          compare('');
+          if (spec.toggles) {
+            cy.get('body').realMouseUp({ position: restPosition });
+            cy.then(() => {
+              expect(setAppToggled, 'mounted parity app').to.exist;
+              setAppToggled!(true);
+            });
+            compare('toggled ');
+          }
           cy.then(() => {
             expect(differences, `${name} / ${scenario} differences:\n${differences.join('\n')}`).to.deep.equal([]);
           });
