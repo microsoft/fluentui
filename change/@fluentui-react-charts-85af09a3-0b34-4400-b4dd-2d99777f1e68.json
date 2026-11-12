@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): pass the Legends overflow menu checkedValues to Menu instead of MenuList",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
