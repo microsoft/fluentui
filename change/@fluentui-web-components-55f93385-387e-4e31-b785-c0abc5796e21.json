@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: respect anchor button rel and no-referrer policy when opening a new tab",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com"
+}
