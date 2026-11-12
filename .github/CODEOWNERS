@@ -89,6 +89,7 @@ scripts/jest-v0 @microsoft/fluentui-react-build
 scripts/lint-staged @microsoft/fluentui-react-build
 scripts/monorepo @microsoft/fluentui-react-build
 scripts/package-manager @microsoft/fluentui-react-build
+scripts/pr-risk-tier @microsoft/fluentui-react-build @microsoft/cxe-prg
 scripts/prettier @microsoft/fluentui-react-build
 scripts/projects-test @microsoft/fluentui-react-build
 scripts/puppeteer @microsoft/fluentui-react-build

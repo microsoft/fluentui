@@ -1,0 +1,7 @@
+{
+  "name": "scripts-pr-risk-tier",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts/pr-risk-tier/src",
+  "projectType": "library",
+  "tags": ["tools"]
+}

@@ -6482,6 +6482,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/scripts-pr-risk-tier@workspace:scripts/pr-risk-tier":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/scripts-pr-risk-tier@workspace:scripts/pr-risk-tier"
+  dependencies:
+    "@fluentui/eslint-plugin": "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/scripts-prettier@npm:*, @fluentui/scripts-prettier@workspace:scripts/prettier":
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-prettier@workspace:scripts/prettier"
