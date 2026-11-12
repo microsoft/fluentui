@@ -83,10 +83,27 @@ export function createToaster(options: Partial<ToasterOptions>): {
     toastToUpdate.updateId++;
   };
 
+  const discardQueuedToast = (toastId: ToastId) => {
+    const toast = toasts.get(toastId);
+    if (toast) {
+      toasts.delete(toastId);
+      toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
+    }
+  };
+
   /**
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
+    if (queue.contains(toastId)) {
+      // Rebuild the queue rather than using `queue.remove`, which only restores heap order downwards
+      const remaining = queue.all().filter(id => id !== toastId);
+      queue.clear();
+      remaining.forEach(id => queue.enqueue(id));
+      discardQueuedToast(toastId);
+      return;
+    }
+
     visibleToasts.delete(toastId);
   };
 
@@ -95,7 +112,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
    */
   const dismissAllToasts = () => {
     visibleToasts.clear();
+    const queued = queue.all();
     queue.clear();
+    queued.forEach(discardQueuedToast);
   };
 
   /**
