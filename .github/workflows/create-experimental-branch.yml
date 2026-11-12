@@ -15,8 +15,9 @@ jobs:
       contents: write
     steps:
       - name: Validate feature name
+        env:
+          FEATURE_NAME: ${{ github.event.inputs.feature-name }}
         run: |
-          FEATURE_NAME="${{ github.event.inputs.feature-name }}"
           # Regex for kebab-case: lowercase letters, numbers, and dashes. Must not start/end with dash.
           if [[ ! $FEATURE_NAME =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
             echo "::error::Invalid feature name '$FEATURE_NAME'. It must be dash-case (e.g., foo-bar, no spaces, no camelCase)."
@@ -25,7 +26,6 @@ jobs:
 
       - name: Create branch using gh cli
         run: |
-          FEATURE_NAME="${{ github.event.inputs.feature-name }}"
           BRANCH_NAME="experimental/$FEATURE_NAME"
 
           # We use the GitHub API (via gh cli) instead of standard git checkout/push for efficiency.
@@ -50,3 +50,4 @@ jobs:
             -f sha="$MASTER_SHA"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FEATURE_NAME: ${{ github.event.inputs.feature-name }}

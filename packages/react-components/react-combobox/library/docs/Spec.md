@@ -338,29 +338,29 @@ Combobox and Dropdown provide a context that is consumed by options
 
 ### Combobox
 
-See API at [Combobox.types.ts](./src/components/Combobox/Combobox.types.ts).
+See API at [Combobox.types.ts](../src/components/Combobox/Combobox.types.ts).
 
 ### Dropdown
 
-See API at [Dropdown.types.ts](./src/components/Dropdown/Dropdown.types.ts).
+See API at [Dropdown.types.ts](../src/components/Dropdown/Dropdown.types.ts).
 
 ### Listbox
 
 Listbox is an internal component, and should not be used outside of a Combobox or Dropdown. It is the type of the `listbox` slot in both components.
 
-See API at [Listbox.types.ts](./src/components/Listbox/Listbox.types.ts).
+See API at [Listbox.types.ts](../src/components/Listbox/Listbox.types.ts).
 
 ### OptionGroup
 
 OptionGroup is functionally a wrapper for options, with a single `label` slot prop.
 
-See API at [OptionGroup.types.ts](./src/components/OptionGroup/OptionGroup.types.ts).
+See API at [OptionGroup.types.ts](../src/components/OptionGroup/OptionGroup.types.ts).
 
 ### Option
 
 Options have a slot for the `checkIcon`, which uses a checkmark icon when selected and single-select, and a checkbox icon when multiselect.
 
-See API at [Option.types.ts](./src/components/Option/Option.types.ts).
+See API at [Option.types.ts](../src/components/Option/Option.types.ts).
 
 ## Combobox Structure
 

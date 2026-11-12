@@ -18,13 +18,8 @@ export const ToggleButtonShim: React.ForwardRefExoticComponent<
     // eslint-disable-next-line @typescript-eslint/no-restricted-types -- this is expected in order to be compatible with v8, as every v8 interface contains `React.RefAttributes` to accept ref as string
     React.RefAttributes<HTMLButtonElement>
 > = React.forwardRef((props, _ref) => {
-  const variantProps = {
-    ...props,
-    variantClassName: props.primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound',
-  };
-
   const shimProps: ToggleButtonProps = {
-    ...shimButtonProps(variantProps),
+    ...shimButtonProps(props),
     checked: props.checked,
     defaultChecked: props.defaultChecked,
   };

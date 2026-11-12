@@ -19,7 +19,9 @@ const defaultItemLabel = (num: number) => num + '';
  */
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingItemContextValue_unstable();
-  const state = useRatingItemBase_unstable(props, ref);
+  // Focus-within ref drives the styled focus outline; merged with the user ref
+  // before being passed down so the base hook does not depend on react-tabster (keyborg).
+  const state = useRatingItemBase_unstable(props, useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref));
 
   return {
     ...state,
@@ -61,7 +63,7 @@ export const useRatingItemBase_unstable = (
 
   const root = slot.always(
     getIntrinsicElementProps('span', {
-      ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
+      ref,
       ...props,
     }),
     { elementType: 'span' },

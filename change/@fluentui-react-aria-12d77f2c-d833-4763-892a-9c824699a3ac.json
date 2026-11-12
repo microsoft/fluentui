@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: mark the live announcer region as never hidden without depending on react-tabster",
+  "packageName": "@fluentui/react-aria",
+  "email": "dmytrokirpa@microsoft.com"
+}
