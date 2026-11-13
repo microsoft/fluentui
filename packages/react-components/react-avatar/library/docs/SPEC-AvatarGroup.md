@@ -72,7 +72,7 @@ There are three layout variants in AvatarGroup:
 
 ## API
 
-See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts), [AvatarGroupPopover.types.ts](./src/components/AvatarGroupPopover/AvatarGroupPopover.types.ts) and [AvatarGroupItem.types.ts](./src/components/AvatarGroupItem/AvatarGroupItem.types.ts) for more details.
+See [AvatarGroup.types.ts](../src/components/AvatarGroup/AvatarGroup.types.ts), [AvatarGroupPopover.types.ts](../src/components/AvatarGroupPopover/AvatarGroupPopover.types.ts) and [AvatarGroupItem.types.ts](../src/components/AvatarGroupItem/AvatarGroupItem.types.ts) for more details.
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
 - `AvatarGroupPopover`: All Avatars in `AvatarGroupPopover` will have a size of 24 and have a wrapper to apply stylings.

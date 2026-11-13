@@ -69,6 +69,11 @@
   min-width: 180px;
 }
 
+.scrollableSurface {
+  max-height: calc(var(--space-8) * 4);
+  overflow-y: auto;
+}
+
 .list {
   display: flex;
   flex-direction: column;

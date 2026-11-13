@@ -96,12 +96,15 @@ function buildMouseEvent<T = HTMLElement>(overrides: Partial<React.MouseEvent<T>
 
 function buildKeyEvent<T = HTMLElement>(overrides: Partial<React.KeyboardEvent<T>> = {}): React.KeyboardEvent<T> {
   const target = document.createElement('button');
+  let defaultPrevented = false;
   return {
     key: 'a',
     target,
     currentTarget: target,
-    preventDefault: jest.fn(),
-    isDefaultPrevented: () => false,
+    preventDefault: jest.fn(() => {
+      defaultPrevented = true;
+    }),
+    isDefaultPrevented: () => defaultPrevented,
     ...overrides,
   } as unknown as React.KeyboardEvent<T>;
 }
@@ -366,6 +369,132 @@ describe('useMenuTrigger_unstable', () => {
   });
 
   describe('onKeyDown', () => {
+    it.each([false, true])('prevents root ArrowDown scrolling when open is %s', open => {
+      const { wrapper, menuValue } = makeWrapper({ menu: { open } });
+      const { result } = renderHook(() => useMenuTrigger_unstable({ children: <button>trigger</button> }), {
+        wrapper,
+      });
+      const props = getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current);
+      const event = buildKeyEvent({ key: 'ArrowDown' });
+
+      props.onKeyDown(event);
+
+      expect(menuValue.setOpen).toHaveBeenCalledWith(event, expect.objectContaining({ open: true, keyboard: true }));
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it('runs consumer callbacks before preventing the opening key default', () => {
+      const setOpen = jest.fn((event: Parameters<MenuContextValue['setOpen']>[0]) => {
+        expect('isDefaultPrevented' in event ? event.isDefaultPrevented() : event.defaultPrevented).toBe(false);
+      });
+      const onKeyDown = jest.fn((event: React.KeyboardEvent) => {
+        expect(event.isDefaultPrevented()).toBe(false);
+        expect(setOpen).not.toHaveBeenCalled();
+      });
+      const { wrapper } = makeWrapper({ menu: { setOpen } });
+      const { result } = renderHook(
+        () => useMenuTrigger_unstable({ children: <button onKeyDown={onKeyDown}>trigger</button> }),
+        { wrapper },
+      );
+      const event = buildKeyEvent({ key: 'ArrowDown' });
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+      expect(setOpen).toHaveBeenCalledTimes(1);
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it('preserves consumer cancellation of root ArrowDown', () => {
+      const onKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
+      const { wrapper, menuValue } = makeWrapper();
+      const { result } = renderHook(
+        () => useMenuTrigger_unstable({ children: <button onKeyDown={onKeyDown}>trigger</button> }),
+        { wrapper },
+      );
+      const event = buildKeyEvent({ key: 'ArrowDown' });
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+      expect(menuValue.setOpen).not.toHaveBeenCalled();
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([false, true])('handles descendant targets with disableButtonEnhancement=%s', disableButtonEnhancement => {
+      const { wrapper, menuValue } = makeWrapper();
+      const { result } = renderHook(
+        () =>
+          useMenuTrigger_unstable({
+            disableButtonEnhancement,
+            children: (
+              <button>
+                <span>trigger</span>
+              </button>
+            ),
+          }),
+        { wrapper },
+      );
+      const currentTarget = document.createElement('button');
+      const target = currentTarget.appendChild(document.createElement('span'));
+      const event = buildKeyEvent({ key: 'ArrowDown', target, currentTarget });
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(menuValue.setOpen).toHaveBeenCalledTimes(1);
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([
+      ['disabled', 'target'],
+      ['aria-disabled', 'target'],
+      ['disabled', 'currentTarget'],
+      ['aria-disabled', 'currentTarget'],
+    ] as const)('does not open or prevent ArrowDown with %s on %s', (attribute, disabledElement) => {
+      const { wrapper, menuValue } = makeWrapper();
+      const { result } = renderHook(() => useMenuTrigger_unstable({ children: <button>trigger</button> }), {
+        wrapper,
+      });
+      const currentTarget = document.createElement('button');
+      const target = currentTarget.appendChild(document.createElement('span'));
+      const event = buildKeyEvent({ key: 'ArrowDown', target, currentTarget });
+      const disabledTarget = disabledElement === 'target' ? target : currentTarget;
+      disabledTarget.setAttribute(attribute, attribute === 'aria-disabled' ? 'true' : '');
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(menuValue.setOpen).not.toHaveBeenCalled();
+      expect(event.preventDefault).not.toHaveBeenCalled();
+    });
+
+    it('leaves context-trigger ArrowDown to the consumer', () => {
+      const onKeyDown = jest.fn();
+      const { wrapper, menuValue } = makeWrapper({ menu: { openOnContext: true } });
+      const { result } = renderHook(
+        () => useMenuTrigger_unstable({ children: <button onKeyDown={onKeyDown}>trigger</button> }),
+        { wrapper },
+      );
+      const event = buildKeyEvent({ key: 'ArrowDown' });
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(onKeyDown).toHaveBeenCalledWith(event);
+      expect(menuValue.setOpen).not.toHaveBeenCalled();
+      expect(event.preventDefault).not.toHaveBeenCalled();
+    });
+
+    it.each(['ArrowDown', 'ArrowRight', 'ArrowLeft'])('does not newly prevent submenu %s', key => {
+      const { wrapper } = makeWrapper({ menu: { isSubmenu: true } });
+      const { result } = renderHook(() => useMenuTrigger_unstable({ children: <button>trigger</button> }), {
+        wrapper,
+      });
+      const event = buildKeyEvent({ key });
+
+      getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current).onKeyDown(event);
+
+      expect(event.preventDefault).not.toHaveBeenCalled();
+    });
+
     it('calls the original child onKeyDown', () => {
       const onKeyDown = jest.fn();
       const { wrapper } = makeWrapper();
@@ -424,12 +553,14 @@ describe('useMenuTrigger_unstable', () => {
         { wrapper },
       );
       const props = getChildProps<{ onKeyDown: (e: React.KeyboardEvent) => void }>(result.current);
-      props.onKeyDown(buildKeyEvent({ key: 'ArrowLeft' }));
+      const event = buildKeyEvent({ key: 'ArrowLeft' });
+      props.onKeyDown(event);
 
       expect(setOpen).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({ open: true, keyboard: true, type: 'menuTriggerKeyDown' }),
       );
+      expect(event.preventDefault).not.toHaveBeenCalled();
     });
 
     it('does not open a submenu on ArrowRight when shouldOpenOnArrowRight is false', () => {
