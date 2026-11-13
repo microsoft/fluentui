@@ -18,6 +18,7 @@ import { type TsConfig } from '../../types';
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
 import { isCI } from './lib/shared';
+import { getExportSubpathConfigs, resolveDeclarationBase } from './lib/utils';
 
 const fixturesRootDir = join(__dirname, '__fixtures__');
 
@@ -347,6 +348,50 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(cfg.reportTempFilePath).toBe(join(paths.projRoot, 'temp', `${name}.api.md`));
     }
+  });
+
+  it('resolves declaration base correctly when path.resolve returns Windows-style backslashes', () => {
+    const { paths } = prepareExportFixture({ wildcardSubDirs: ['alpha'] });
+    const nodePath = require('node:path');
+
+    const resolveSpy = jest.spyOn(nodePath, 'resolve').mockReturnValue('C:\\project\\dist\\dts\\index.d.ts');
+    const basenameSpy = jest.spyOn(nodePath, 'basename').mockImplementation(nodePath.win32.basename);
+    const dirnameSpy = jest.spyOn(nodePath, 'dirname').mockImplementation(nodePath.win32.dirname);
+
+    try {
+      const result = resolveDeclarationBase(
+        { config: join(paths.projRoot, 'config/api-extractor.json') } as NormalizedOptions,
+        { name: '@proj/proj' },
+      );
+      expect(result).toBe('C:\\project\\dist\\dts');
+    } finally {
+      resolveSpy.mockRestore();
+      basenameSpy.mockRestore();
+      dirnameSpy.mockRestore();
+    }
+  });
+
+  it('throws a descriptive error when primary mainEntryPointFilePath does not end with index.d.ts', async () => {
+    const { paths, context } = prepareExportFixture({ wildcardSubDirs: ['alpha'] });
+
+    writeFileSync(
+      join(paths.projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/custom-entry.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    await expect(executor({ ...options, exportSubpaths: true }, context)).rejects.toThrow(
+      'Primary mainEntryPointFilePath',
+    );
+    await expect(executor({ ...options, exportSubpaths: true }, context)).rejects.toThrow(
+      'does not end with "index.d.ts". Failed to resolve declaration base for export subpaths.',
+    );
   });
 
   it('skips wildcard exports with no types field', async () => {
