@@ -1,11 +1,11 @@
-import { getDayGrid } from './getDayGrid';
-import type { DayGridOptions } from './dateGrid.types';
-import * as dateMath from '../dateMath';
-import { daysOfWeek } from '../constants';
+import { getDayGrid } from './dayGrid';
+import type { DayGridOptions } from './dayGrid';
+import * as dateMath from './dateMath';
+import { daysOfWeek } from './constants';
 
-jest.mock('../dateMath', () => ({
+jest.mock('./dateMath', () => ({
   __esModule: true,
-  ...jest.requireActual<typeof import('../dateMath')>('../dateMath'),
+  ...jest.requireActual<typeof import('./dateMath')>('./dateMath'),
 }));
 
 const defaultOptions: DayGridOptions = {
@@ -35,13 +35,10 @@ describe('getDayGrid', () => {
           key: `${expected.getFullYear()}-${expected.getMonth()}-${expected.getDate()}`,
           date: String(expected.getDate()),
           originalDate: expected,
-          isPlaceholder: false,
           isInMonth: expected.getMonth() === 8,
           isToday: expected.getTime() === defaultOptions.today?.getTime(),
           isSelected: false,
-          isSingleSelected: false,
           isInBounds: true,
-          isMarked: false,
         });
       });
     });
@@ -102,16 +99,16 @@ describe('getDayGrid', () => {
     const days = getDayGrid({
       ...defaultOptions,
       today: new Date(2020, 7, 31, 12),
-      markedDays: [new Date(2020, 8, 18, 23)],
+      selectedDate: new Date(2020, 8, 18, 23),
     }).flat();
     expect(days.find(day => day.key === '2020-7-31')).toMatchObject({ isToday: true, isInMonth: false });
     expect(days.find(day => day.key === '2020-8-18')).toMatchObject({
       isToday: false,
       isInMonth: true,
-      isMarked: true,
+      isSelected: true,
     });
 
-    expect(days.filter(day => day.isMarked)).toHaveLength(1);
+    expect(days.filter(day => day.isSelected)).toHaveLength(1);
   });
 
   it('does not mark the same month in a different year as in-month', () => {
@@ -131,29 +128,9 @@ describe('getDayGrid', () => {
     expect(grid.flat().some(day => day.originalDate?.getFullYear() === 1905)).toBe(false);
   });
 
-  it('defaults today to the current date', () => {
-    jest.useFakeTimers().setSystemTime(new Date(2020, 8, 20, 12));
-    try {
-      expect(
-        getDayGrid({ ...defaultOptions, today: undefined })
-          .flat()
-          .filter(day => day.isToday)
-          .map(day => day.key),
-      ).toEqual(['2020-8-20']);
-    } finally {
-      jest.useRealTimers();
-    }
-  });
-
-  it('falls back to today when a JavaScript caller omits the navigated date', () => {
-    // @ts-expect-error Verify the runtime fallback for an omitted required date.
-    expect(getDayGrid({ ...defaultOptions, navigatedDate: undefined })).toEqual(getDayGrid(defaultOptions));
-  });
-
   it('marks a single selected day', () => {
     const days = getDayGrid({ ...defaultOptions, selectedDate: new Date(2020, 8, 18, 12) }).flat();
     expect(days.filter(day => day.isSelected).map(day => day.key)).toEqual(['2020-8-18']);
-    expect(days.filter(day => day.isSingleSelected).map(day => day.key)).toEqual(['2020-8-18']);
   });
 
   it.each([
@@ -169,7 +146,6 @@ describe('getDayGrid', () => {
       daysToSelectInDayView: 3,
     }).flat();
     expect(days.filter(day => day.isSelected).map(day => day.originalDate!.getDate())).toEqual(expected);
-    expect(days.some(day => day.isSingleSelected)).toBe(false);
   });
 
   it('clips selected ranges to inclusive bounds and excludes restricted days from selection', () => {
@@ -232,11 +208,11 @@ describe('getDayGrid', () => {
         .map(day => day.originalDate!.getDate()),
     ).toEqual(Array.from({ length: 31 }, (_, index) => index + 1));
     if (skippedFriday) {
-      const placeholder = fridayWeeks.flatMap(week => week).find(day => day.isPlaceholder);
-      expect(placeholder).toMatchObject({ key: '2011-11-30', originalDate: null, isPlaceholder: true });
+      const placeholder = fridayWeeks.flatMap(week => week).find(day => !day.originalDate);
+      expect(placeholder).toMatchObject({ key: '2011-11-30', originalDate: null, isInBounds: false });
       fridayWeeks.forEach(week =>
         week.forEach((day, index) => {
-          if (!day.isPlaceholder) {
+          if (day.originalDate) {
             expect(day.originalDate!.getDay()).toBe((5 + index) % 7);
           }
         }),

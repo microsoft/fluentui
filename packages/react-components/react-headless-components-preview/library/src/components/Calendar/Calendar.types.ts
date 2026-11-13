@@ -5,232 +5,262 @@ import type {
   DistributiveOmit,
   EventData,
   EventHandler,
+  JSXElement,
+  RefAttributes,
   Slot,
 } from '@fluentui/react-utilities';
-import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
-import type { CalendarContextValue } from './calendarContext';
-import type { CalendarDay } from './CalendarDay';
-import type { CalendarMonth } from './CalendarMonth';
+import type { CalendarFormatters, Day, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
 
-export type { CalendarContextValue, CalendarContextValues } from './calendarContext';
+/** The grids Calendar can show. The month panel shows either the month grid or the year grid. */
+export type CalendarView = 'day' | 'month' | 'year';
+
+/** Controls how the day and month panels are arranged. */
+export type CalendarLayout = 'sideBySide' | 'overlay';
+
+type CalendarEventData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
 
 /**
- * Slots available to the Calendar component.
+ * Slots rendered once by Calendar.
  */
 export type CalendarSlots = {
-  /**
-   * Root container.
-   */
+  /** Root container. */
   root: NonNullable<Slot<'div'>>;
-
-  /**
-   * Announces the selected date to assistive technology.
-   */
+  /** Announces the selected date to assistive technology. */
   liveRegion: NonNullable<Slot<'div'>>;
-
-  /**
-   * The day picker. Set to `null` to select months without showing the day picker.
-   */
-  dayPicker?: Slot<typeof CalendarDay>;
-
-  /**
-   * Separates the day picker from the month picker when both are visible.
-   */
+  /** The day panel, with `data-view="day"`. Set to `null` to select months without a day grid. */
+  dayPicker?: Slot<'div'>;
+  /** Separates the panels when both are visible. */
   divider: NonNullable<Slot<'div'>>;
-
-  /**
-   * Wraps the month picker.
-   */
-  monthPickerWrapper: NonNullable<Slot<'div'>>;
-
-  /**
-   * The month picker. Set to `null` to show only the day picker.
-   */
-  monthPicker?: Slot<typeof CalendarMonth>;
-
-  /**
-   * The "go to today" button, rendered as the root's last child.
-   * Use CSS to position it below either picker or across the full width. Set to `null` to hide it.
-   */
+  /** The month panel, with `data-view="month"` or `data-view="year"`. Set to `null` to show only the day grid. */
+  monthPicker?: Slot<'div'>;
+  /** The "go to today" button, rendered as the root's last child. Set to `null` to hide it. */
   goToTodayButton?: Slot<'button'>;
 };
 
 /**
- * Event data for a date selection.
+ * Slots rendered once per visible panel. Consumer props apply to every panel; target a panel with its `data-view`.
  */
-export type CalendarSelectDateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+export type CalendarPanelSlots = {
+  /** The panel container: the resolved `dayPicker` or `monthPicker` slot. */
+  root: NonNullable<Slot<'div'>>;
+  /** Holds the heading and the navigation. */
+  header: NonNullable<Slot<'div'>>;
+  /** Wraps the heading label; its `children` replace the label. A `button` when it switches views, otherwise a `div`. */
+  heading: NonNullable<Slot<'button', 'div'>>;
+  /** The month, year or year-range text, announced when it changes. */
+  headingLabel: NonNullable<Slot<'span'>>;
+  /** Wraps the previous, next and close buttons. */
+  navigation: NonNullable<Slot<'div'>>;
+  /** Navigates to the previous month, year or year range. */
+  previousButton: NonNullable<Slot<'button'>>;
+  /** Navigates to the next month, year or year range. */
+  nextButton: NonNullable<Slot<'button'>>;
+  /** The close button, rendered in the first panel only. */
+  closeButton?: Slot<'button'>;
   /**
-   * The date selected by the user.
+   * The `role="grid"` element: a `table` for days, a `div` for months and years. Single roving tab stop. Its
+   * `children` replace every row, including the weekday header.
    */
+  grid: NonNullable<Slot<'div'>>;
+  /** The day grid's `thead`, holding the weekday header row. Day panel only; `null` omits the weekday header. */
+  gridHeader?: Slot<'thead'>;
+  /** The day grid's `tbody`, holding the week rows. Day panel only; `null` omits the week rows. */
+  gridBody?: Slot<'tbody'>;
+};
+
+/** A day cell. `originalDate` is `null` for a civil date that does not exist in the local timezone. */
+export type CalendarDayCellData = Day & {
+  type: 'day';
+  /** The formatted day number, or the civil date label when `originalDate` is `null`. */
+  label: string;
+  /** Whether this day is the grid's initial focus target. */
+  isNavigated: boolean;
+  /** Whether `getMarkedDays` marked this day. */
+  isMarked: boolean;
+};
+
+/** A month cell. */
+export type CalendarMonthCellData = {
+  type: 'month';
+  key: string;
+  /** Zero-based month index. */
+  index: number;
+  label: string;
+  isNavigated: boolean;
+  /** Whether this is the current month. */
+  isCurrent: boolean;
+  isSelected: boolean;
+  isInBounds: boolean;
+};
+
+/** A year cell. */
+export type CalendarYearCellData = {
+  type: 'year';
+  key: string;
+  year: number;
+  label: string;
+  isNavigated: boolean;
+  /** Whether this is the current year. */
+  isCurrent: boolean;
+  isSelected: boolean;
+  isInBounds: boolean;
+};
+
+/** Semantic data of any grid cell. Use `type` to tell them apart. */
+export type CalendarCellData = CalendarDayCellData | CalendarMonthCellData | CalendarYearCellData;
+
+/** Semantic weekday header data. */
+export type CalendarWeekdayCellData = {
+  key: string;
+  dayOfWeek: DayOfWeek;
+  /** The visible short weekday label, or a short month label at a month boundary in single-week view. */
+  label: string;
+  /** The full weekday or month label used as the cell's accessible name and title. */
+  accessibleLabel: string;
+};
+
+/** A visible grid row. */
+export type CalendarRowData =
+  | { type: 'week'; key: number; cells: CalendarDayCellData[]; weekNumber?: number }
+  | { type: 'weekday'; key: number; cells: CalendarWeekdayCellData[] }
+  | { type: 'month'; key: number; cells: CalendarMonthCellData[] }
+  | { type: 'year'; key: number; cells: CalendarYearCellData[] };
+
+/** The props of the elements of a cell. */
+export type CalendarCellProps = {
+  /** The `role="gridcell"` element: a `td` for days, a `div` for months and years. */
+  root: Omit<React.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
+  /** The cell button. Its `children` replace the label and marker when defined. */
+  button: React.ComponentProps<'button'>;
+  /** The day-number `span`. Day cells only. */
+  label?: React.ComponentProps<'span'>;
+  /** The marker `span`. Marked days only. */
+  marker?: React.ComponentProps<'span'>;
+};
+
+/** The props of the elements of a row. */
+export type CalendarRowProps = {
+  /** The `role="row"` element: a `tr` for the day grid, a `div` for months and years. */
+  root: Omit<React.HTMLAttributes<HTMLElement>, 'children'> & RefAttributes<HTMLElement>;
+  /** The week-number `th`, or the weekday row's spacer. Day grid only, when week numbers are shown. */
+  weekNumber?: React.ComponentProps<'th'>;
+  /** The rendered cells. */
+  children: React.ReactNode;
+};
+
+/** The props of a weekday header cell. */
+export type CalendarWeekdayCellProps = {
+  /** The `role="columnheader"` `th`. */
+  root: React.ComponentProps<'th'>;
+};
+
+/**
+ * Renders an element Calendar repeats. It receives the built-in props and the item's data, and `defaultRender`, which
+ * renders the built-in markup from (possibly changed) props. Keep the grid roles, `tabIndex` and `aria-*` props so
+ * keyboard navigation and assistive technology keep working.
+ */
+export type CalendarRenderFunction<TProps, TData> = (
+  props: TProps,
+  data: TData,
+  defaultRender: (props: TProps) => JSXElement,
+) => React.ReactNode;
+
+/** Event data for a date selection. */
+export type CalendarSelectDateData = CalendarEventData & {
   date: Date;
-  /**
-   * Dates selected according to the configured range type.
-   */
+  /** Dates selected according to the configured range type, excluding unavailable dates. */
   selectedDateRange: Date[];
 };
 
 /** Event data reported when the displayed date changes through user interaction. */
-export type CalendarNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
-  /** The date displayed by the calendar. */
-  displayedDate: Date;
-};
+export type CalendarNavigateData = CalendarEventData & { displayedDate: Date };
 
-/** Picker views available when Calendar uses an overlay layout. */
-export type CalendarView = 'day' | 'month';
+/** Event data reported when user interaction changes the view. */
+export type CalendarViewChangeData = CalendarEventData & { view: CalendarView };
 
-/** Event data reported when user interaction changes the active overlay view. */
-export type CalendarViewChangeData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
-  /** The active picker when the calendar uses an overlay layout. */
-  view: CalendarView;
-};
+/** Event data for dismissing the Calendar. */
+export type CalendarDismissData = CalendarEventData;
 
-/** Controls how the day and month pickers are arranged. */
-export type CalendarLayout = 'sideBySide' | 'overlay';
-
-/**
- * Event data for dismissing the Calendar.
- */
-export type CalendarDismissData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
-
-/**
- * Props for the Calendar component.
- */
-export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlots>>, 'defaultValue'> & {
-  /**
-   * Callback for when a date is selected
-   * @param date - The date the user selected
-   * @param selectedDateRange - The resultant list of dates that are selected based on the date range type set
-   * for the component.
-   */
+/** Props for Calendar. */
+export type CalendarProps = DistributiveOmit<
+  ComponentProps<Partial<CalendarSlots & Omit<CalendarPanelSlots, 'root'>>>,
+  'defaultValue'
+> & {
   onSelectDate?: EventHandler<CalendarSelectDateData>;
-
-  /**
-   * Callback for when calendar is closed
-   */
   onDismiss?: EventHandler<CalendarDismissData>;
-
-  /**
-   * The selected date. `null` represents an explicitly empty controlled selection.
-   * A value outside `minDate`/`maxDate` renders as an empty selection and warns in development.
-   */
+  /** The selected date. `null` is an explicitly empty controlled selection. */
   value?: Date | null;
-
-  /** The initial selected date when uncontrolled. `null` starts with no selection. */
   defaultValue?: Date | null;
-
-  /** The displayed date, controlled independently of value. When omitted, external value changes navigate automatically. */
   displayedDate?: Date;
-
-  /** The initial displayed date when uncontrolled. */
   defaultDisplayedDate?: Date;
-
-  /** Called once per user navigation or selection action. External prop changes do not fire this callback. */
   onDisplayedDateChange?: EventHandler<CalendarNavigateData>;
-
-  /** The active picker in an overlay layout. */
+  /**
+   * The active view. In the side-by-side layout the day grid stays visible and `view` only chooses between the month
+   * and year grid.
+   */
   view?: CalendarView;
-
-  /** The initial active picker when uncontrolled. */
   defaultView?: CalendarView;
-
-  /** Called when user interaction changes the active picker. */
   onViewChange?: EventHandler<CalendarViewChangeData>;
-
-  /**
-   * How the day and month pickers are arranged. Consumers control responsive layout changes.
-   * @default 'sideBySide'
-   */
+  /** @default 'sideBySide' */
   layout?: CalendarLayout;
-
   /**
-   * Value of today. If unspecified, the current time on the client machine is used. Pass this explicitly
-   * while server rendering to keep the server and client calendars consistent.
+   * The view the day heading opens. Defaults to `'month'` in the overlay layout; in the side-by-side layout the
+   * heading is static unless this is set. `'year'` falls back to the default when `yearPickerHidden` is set.
    */
+  dayHeadingView?: 'month' | 'year';
+  /** Hides the year grid, so the month heading does not open it. */
+  yearPickerHidden?: boolean;
   today?: Date;
-
-  /**
-   * The date range type indicating how many days should be selected as the user
-   * selects days
-   * @default 'day'
-   */
+  /** @default 'day' */
   dateRangeType?: DateRangeType;
-
-  /**
-   * The first day of the week for your locale.
-   * @default 'sunday'
-   */
+  /** Number of days selected in the `day` range type. */
+  daysToSelectInDayView?: number;
+  /** @default 'sunday' */
   firstDayOfWeek?: DayOfWeek;
-
-  /**
-   * Defines when the first week of the year should start.
-   * @default 'firstDay'
-   */
+  /** @default 'firstDay' */
   firstWeekOfYear?: FirstWeekOfYear;
-
-  /**
-   * Whether the calendar should show the week-of-year number before each week row.
-   * @default false
-   */
   showWeekNumbers?: boolean;
-
-  /**
-   * Overrides date and accessibility label formatters. Omitted formatters use the defaults.
-   */
   formatters?: Partial<CalendarFormatters>;
-
-  /**
-   * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
-   */
   minDate?: Date;
-
-  /**
-   * If set the Calendar will not allow navigation to or selection of a date later than this value.
-   */
   maxDate?: Date;
-
-  /**
-   * If set the Calendar will not allow selection of dates in this array.
-   */
   restrictedDates?: Date[];
-
-  /**
-   * The days that are selectable when `dateRangeType` is `workWeek`.
-   * If `dateRangeType` is not `workWeek` this property does nothing.
-   * @default ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-   */
-  workWeekDays?: DayOfWeek[];
-
-  /**
-   * Allows all dates and buttons to be focused, including disabled ones
-   * @default false
-   */
+  workWeekDays?: readonly DayOfWeek[];
   allFocusable?: boolean;
-
-  /**
-   * Number of columns in the month picker.
-   * @default 4
-   */
+  /** @default 4 */
   calendarMonthColumns?: 3 | 4;
-
-  /**
-   * Number of columns in the year picker.
-   * @default 4
-   */
+  /** @default 4 */
   calendarYearColumns?: 3 | 4;
+  /** How many weeks to show. Defaults to the weeks of the displayed month. */
+  weeksToShow?: number;
+  /** Returns the days between the first and last visible dates that should be marked. */
+  getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+  /**
+   * Renders each grid cell. Handlers added to the cell run before the grid's delegated selection and navigation;
+   * `preventDefault` cancels the built-in action.
+   */
+  renderCell?: CalendarRenderFunction<CalendarCellProps, CalendarCellData>;
+  /** Renders each grid row, including the weekday header row. */
+  renderRow?: CalendarRenderFunction<CalendarRowProps, CalendarRowData>;
+  /** Renders each weekday header cell. */
+  renderWeekdayCell?: CalendarRenderFunction<CalendarWeekdayCellProps, CalendarWeekdayCellData>;
 };
 
-/**
- * State used to render the Calendar component.
- */
-export type CalendarState = ComponentState<CalendarSlots> &
-  CalendarContextValue & {
-    /**
-     * Whether the day picker is rendered.
-     */
-    isDayPickerVisible: boolean;
+/** A visible panel and its rows. */
+export type CalendarPanelState = ComponentState<CalendarPanelSlots> & {
+  view: CalendarView;
+  /** Grid rows. The day grid's first row is the weekday header. */
+  rows: CalendarRowData[];
+};
 
-    /**
-     * Whether the month picker is rendered.
-     */
-    isMonthPickerVisible: boolean;
+/** State used to render Calendar. */
+export type CalendarState = ComponentState<CalendarSlots> &
+  Pick<CalendarProps, 'renderCell' | 'renderRow' | 'renderWeekdayCell'> & {
+    /** The visible panels, in render order. */
+    panels: CalendarPanelState[];
+    /** Returns the built-in props of a cell. */
+    resolveCellProps: (cell: CalendarCellData) => CalendarCellProps;
+    /** Returns the built-in props of a row, without its cells. */
+    resolveRowProps: (row: CalendarRowData) => Omit<CalendarRowProps, 'children'>;
+    /** Returns the built-in props of a weekday header cell. */
+    resolveWeekdayCellProps: (weekday: CalendarWeekdayCellData) => CalendarWeekdayCellProps;
   };

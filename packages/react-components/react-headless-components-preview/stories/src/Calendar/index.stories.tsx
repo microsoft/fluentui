@@ -1,9 +1,4 @@
-import {
-  Calendar,
-  CalendarDay,
-  CalendarMonth,
-  CalendarYear,
-} from '@fluentui/react-headless-components-preview/calendar';
+import { Calendar } from '@fluentui/react-headless-components-preview/calendar';
 import descriptionMd from './CalendarDescription.md';
 
 export { Default } from './CalendarDefault.stories';
@@ -17,7 +12,6 @@ export { WorkWeekSelection } from './CalendarWorkWeekSelection.stories';
 export default {
   title: 'Components/Calendar',
   component: Calendar,
-  subcomponents: { CalendarDay, CalendarMonth, CalendarYear },
   parameters: {
     docs: {
       description: {

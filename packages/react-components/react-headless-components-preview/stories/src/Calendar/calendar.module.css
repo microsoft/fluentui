@@ -23,7 +23,7 @@
   grid-template-columns: auto var(--stroke-thin) auto;
 }
 
-.calendar > [data-fui-calendar-picker='day'],
+.calendar > .dayPicker,
 .calendar > .monthPicker {
   grid-column: 1;
   grid-row: 1;
@@ -107,12 +107,12 @@ button.heading:hover {
 
 /* ------------------------------------------------------------- day grid */
 
-.grid {
+.dayPicker .grid {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-.grid th {
+.dayPicker .grid th {
   width: var(--space-8);
   height: var(--space-8);
   color: var(--text-soft);
@@ -120,7 +120,7 @@ button.heading:hover {
   font-weight: var(--font-weight-semibold);
 }
 
-.grid td {
+.dayPicker .grid td {
   padding: 0;
 }
 
@@ -128,7 +128,7 @@ button.heading:hover {
  * Every day's appearance comes from the data attributes the headless layer emits, so none of this
  * is coupled to a class name the library owns.
  */
-.grid td button {
+.dayPicker .grid td button {
   display: grid;
   place-items: center;
   width: var(--space-8);
@@ -142,39 +142,39 @@ button.heading:hover {
   cursor: pointer;
 }
 
-.grid td button:hover {
+.dayPicker .grid td button:hover {
   background: var(--surface-muted);
 }
 
-.grid td[data-outside-month] button {
+.dayPicker .grid td[data-outside-month] button {
   color: var(--text-faint);
 }
 
-.grid td[data-today] button {
+.dayPicker .grid td[data-today] button {
   border-color: var(--border-stronger);
   font-weight: var(--font-weight-semibold);
 }
 
-.grid td[data-selected] button {
+.dayPicker .grid td[data-selected] button {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg);
 }
 
-.grid td[data-outside-bounds] button {
+.dayPicker .grid td[data-outside-bounds] button {
   color: var(--text-faint);
   cursor: default;
 }
 
-.grid td[data-outside-bounds] button:hover {
+.dayPicker .grid td[data-outside-bounds] button:hover {
   background: none;
 }
 
-.grid td[data-marked] button {
+.dayPicker .grid td[data-marked] button {
   position: relative;
 }
 
-.grid td[data-marked] button [aria-hidden='true'] {
+.dayPicker .grid td[data-marked] button [aria-hidden='true'] {
   position: absolute;
   inset-block-end: var(--space-1);
   inline-size: var(--space-1);
@@ -205,23 +205,24 @@ button.heading:hover {
   align-items: stretch;
 }
 
-.pickerGrid {
+/* The month panel shows the month grid or the year grid; both are div grids. */
+.monthPicker .grid {
   display: grid;
   gap: var(--space-1);
 }
 
-.pickerGrid > [role='row'] {
+.monthPicker .grid > [role='row'] {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
   gap: var(--space-1);
 }
 
-.pickerGrid [role='gridcell'] {
+.monthPicker .grid [role='gridcell'] {
   color: var(--text);
 }
 
-.pickerGrid [role='gridcell'] > button {
+.monthPicker .grid [role='gridcell'] > button {
   width: 100%;
   padding: var(--space-2) var(--space-1);
   border: var(--stroke-thin) solid transparent;
@@ -233,43 +234,43 @@ button.heading:hover {
   cursor: pointer;
 }
 
-.pickerGrid [role='gridcell']:hover > button {
+.monthPicker .grid [role='gridcell']:hover > button {
   background: var(--surface-muted);
 }
 
-.pickerGrid [role='gridcell'][data-current] {
+.monthPicker .grid [role='gridcell'][data-current] {
   border-color: var(--border-stronger);
   font-weight: var(--font-weight-semibold);
 }
 
-.pickerGrid [role='gridcell'][data-current] > button {
+.monthPicker .grid [role='gridcell'][data-current] > button {
   border-color: var(--border-stronger);
   font-weight: var(--font-weight-semibold);
 }
 
-.pickerGrid [role='gridcell'][data-selected],
-.pickerGrid [role='gridcell'][aria-selected='true'] {
+.monthPicker .grid [role='gridcell'][data-selected],
+.monthPicker .grid [role='gridcell'][aria-selected='true'] {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg);
 }
 
-.pickerGrid [role='gridcell'][data-outside-bounds] {
+.monthPicker .grid [role='gridcell'][data-outside-bounds] {
   color: var(--text-faint);
 }
 
-.pickerGrid [role='gridcell'][data-selected] > button,
-.pickerGrid [role='gridcell'][aria-selected='true'] > button {
+.monthPicker .grid [role='gridcell'][data-selected] > button,
+.monthPicker .grid [role='gridcell'][aria-selected='true'] > button {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg);
 }
 
-.pickerGrid [role='gridcell'][data-outside-bounds] > button {
+.monthPicker .grid [role='gridcell'][data-outside-bounds] > button {
   cursor: default;
 }
 
-.pickerGrid [role='gridcell'][data-outside-bounds]:hover > button {
+.monthPicker .grid [role='gridcell'][data-outside-bounds]:hover > button {
   background: none;
 }
 
@@ -317,11 +318,11 @@ button.heading:hover {
 }
 
 /* Day focus belongs to the cell, not its nested button. */
-.grid td:focus-visible,
+.dayPicker .grid td:focus-visible,
 button.heading:focus-visible,
 .navButton:focus-visible,
 .todayButton:focus-visible,
-.pickerGrid [role='gridcell']:focus-visible {
+.monthPicker .grid [role='gridcell']:focus-visible {
   outline: var(--stroke-thick) solid var(--accent);
   outline-offset: var(--stroke-thin);
 }
@@ -334,32 +335,32 @@ button.heading:focus-visible,
 }
 
 @media (forced-colors: active) {
-  .grid td[data-today] button,
-  .pickerGrid [role='gridcell'][data-current] {
+  .dayPicker .grid td[data-today] button,
+  .monthPicker .grid [role='gridcell'][data-current] {
     border-color: CanvasText;
   }
 
-  .grid td[data-selected] button,
-  .pickerGrid [role='gridcell'][data-selected] > button,
-  .pickerGrid [role='gridcell'][aria-selected='true'] > button {
+  .dayPicker .grid td[data-selected] button,
+  .monthPicker .grid [role='gridcell'][data-selected] > button,
+  .monthPicker .grid [role='gridcell'][aria-selected='true'] > button {
     forced-color-adjust: none;
     background: Highlight;
     border-color: Highlight;
     color: HighlightText;
   }
 
-  .grid td[data-outside-bounds] button,
-  .pickerGrid [role='gridcell'][data-outside-bounds],
+  .dayPicker .grid td[data-outside-bounds] button,
+  .monthPicker .grid [role='gridcell'][data-outside-bounds],
   .navButton[aria-disabled='true'],
   .todayButton[aria-disabled='true'] {
     color: GrayText;
   }
 
-  .grid td:focus-visible,
+  .dayPicker .grid td:focus-visible,
   button.heading:focus-visible,
   .navButton:focus-visible,
   .todayButton:focus-visible,
-  .pickerGrid [role='gridcell']:focus-visible {
+  .monthPicker .grid [role='gridcell']:focus-visible {
     outline-color: CanvasText;
   }
 }

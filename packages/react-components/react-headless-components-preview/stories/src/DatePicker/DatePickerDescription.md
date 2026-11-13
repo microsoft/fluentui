@@ -17,8 +17,8 @@ and state attributes.
 - **Popup surface**: a `role="dialog"` named by the visible month and year. It is shown in the top layer with
   `popover="manual"` and anchored below the field, flipping above when there is no room. It does not trap focus.
 - **Calendar**: configure it with the `calendar` slot. DatePicker owns its selection, `today`, `minDate`, `maxDate` and
-  displayed month, and defaults to three-column month and year grids. The day heading opens the year-range grid; with
-  `layout: 'overlay'` it first switches to the month view.
+  displayed month, and defaults to three-column month and year grids. The day heading opens the year grid in both
+  layouts; set `calendar.dayHeadingView` to change that.
   `showGoToToday` alone controls the Go-to-today button.
 - **Error message**: a polite live region after the field, referenced by `aria-describedby` while a typed date is
   rejected. Set `errorMessage={null}` to show errors through a Field instead.

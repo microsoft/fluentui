@@ -2,43 +2,13 @@
 // which no consumer ships, and inflates the measured size.
 import {
   Calendar,
-  CalendarDay,
-  CalendarMonth,
-  CalendarProvider,
-  CalendarYear,
   calendarFormatters,
   createCalendarDateTimeFormatter,
   renderCalendar,
-  renderCalendarDay,
-  renderCalendarMonth,
-  renderCalendarYear,
   useCalendar,
-  useCalendarContext,
-  useCalendarContextValues,
-  useCalendarDay,
-  useCalendarMonth,
-  useCalendarYear,
 } from '@fluentui/react-headless-components-preview/calendar';
 
-console.log(
-  Calendar,
-  CalendarDay,
-  CalendarMonth,
-  CalendarProvider,
-  CalendarYear,
-  calendarFormatters,
-  createCalendarDateTimeFormatter,
-  renderCalendar,
-  renderCalendarDay,
-  renderCalendarMonth,
-  renderCalendarYear,
-  useCalendar,
-  useCalendarContext,
-  useCalendarContextValues,
-  useCalendarDay,
-  useCalendarMonth,
-  useCalendarYear,
-);
+console.log(Calendar, calendarFormatters, createCalendarDateTimeFormatter, renderCalendar, useCalendar);
 
 export default {
   name: 'react-headless-components-preview: Calendar',

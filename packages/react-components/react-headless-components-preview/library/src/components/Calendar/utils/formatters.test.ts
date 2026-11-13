@@ -1,7 +1,6 @@
-import { getMonthIndex } from './dateUtils';
 import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
-const date = new Date(2016, getMonthIndex('april'), 1);
+const date = new Date(2016, 3, 1);
 
 describe('createCalendarDateTimeFormatter', () => {
   it('creates only the ordinary formatters, without a second era-specific set', () => {
