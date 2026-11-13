@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(web-components): use shallow check in accordion waitForConnectedDescendants to allow unregistered item content",
+  "packageName": "@fluentui/web-components",
+  "email": "9031842908.vk@gmail.com",
+  "dependentChangeType": "patch"
+}

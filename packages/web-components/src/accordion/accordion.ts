@@ -109,31 +109,35 @@ export class Accordion extends FASTElement {
    * then rebinds event listeners to each non-disabled item
    */
   private setItems = (): void => {
-    waitForConnectedDescendants(this, () => {
-      if (!this.slottedAccordionItems?.length) {
-        return;
-      }
+    waitForConnectedDescendants(
+      this,
+      () => {
+        if (!this.slottedAccordionItems?.length) {
+          return;
+        }
 
-      // Get all existing children and remove event listeners
-      const children: Element[] = Array.from(this.children);
-      this.removeItemListeners(children);
+        // Get all existing children and remove event listeners
+        const children: Element[] = Array.from(this.children);
+        this.removeItemListeners(children);
 
-      // Resubscribe to the `disabled` attribute of all children
-      children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
+        // Resubscribe to the `disabled` attribute of all children
+        children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
 
-      // Add event listeners to each non-disabled AccordionItem
-      this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
-      this.accordionItems.forEach((item: Element, index: number) => {
-        item.addEventListener('click', this.expandedChangedHandler);
-        // Subscribe to the expanded attribute of the item
-        Observable.getNotifier(item).subscribe(this, 'expanded');
-      });
+        // Add event listeners to each non-disabled AccordionItem
+        this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
+        this.accordionItems.forEach((item: Element, index: number) => {
+          item.addEventListener('click', this.expandedChangedHandler);
+          // Subscribe to the expanded attribute of the item
+          Observable.getNotifier(item).subscribe(this, 'expanded');
+        });
 
-      if (this.isSingleExpandMode()) {
-        const expandedItem = this.findExpandedItem() as BaseAccordionItem;
-        this.setSingleExpandMode(expandedItem);
-      }
-    });
+        if (this.isSingleExpandMode()) {
+          const expandedItem = this.findExpandedItem() as BaseAccordionItem;
+          this.setSingleExpandMode(expandedItem);
+        }
+      },
+      { shallow: true },
+    );
   };
 
   /**
