@@ -1,10 +1,10 @@
 {
-  "extends": "<%= relativePathToProjectRoot %>/<%= tsconfig.pathToProjectConfig %>",
+  "extends": <%- JSON.stringify(`${relativePathToProjectRoot}/${tsconfig.pathToProjectConfig}`) %>,
   "compilerOptions": {
-    "target": "<%= tsconfig.target %>",
+    "target": <%- JSON.stringify(tsconfig.target) %>,
     "module": "esnext",
-    "moduleResolution": "<%= tsconfig.moduleResolution %>",
-    "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
+    "moduleResolution": <%- JSON.stringify(tsconfig.moduleResolution) %>,
+    "lib": <%- JSON.stringify(tsconfig.lib) %>,
     "strict": <%= tsconfig.strictMode %>,
     "pretty": true,
     "noEmit": true,
@@ -12,22 +12,16 @@
     "jsx": "react",
     "skipLibCheck": true,
     "types": [],
-    "typeRoots": ["<%= usedNodeModulesDirRelative %>/node_modules/@types"],
+    "typeRoots": <%- JSON.stringify([`${usedNodeModulesDirRelative}/node_modules/@types`]) %>,
     "baseUrl": ".",
     "paths": {
-      "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
-      "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],
-      "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
+      "react/jsx-runtime": <%- JSON.stringify([`${usedNodeModulesDirRelative}/node_modules/@types/react/jsx-runtime.d.ts`]) %>,
+      "react": <%- JSON.stringify([`${usedNodeModulesDirRelative}/node_modules/@types/react/index.d.ts`]) %>,
+      "react-dom": <%- JSON.stringify([`${usedNodeModulesDirRelative}/node_modules/@types/react-dom/index.d.ts`]) %>
     }
   },
   "references": [],
-  "exclude": [
-    <%- tsconfig.relativeExcludePaths.map(p => `"${p}"`).join(',\n    ') %>
-  ],
-  "include": [
-    <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
-  ],
-  "files": [
-    <%- tsconfig.relativeFilesPaths.map(p => `"${p}"`).join(',\n    ') %>
-  ]
+  "exclude": <%- JSON.stringify(tsconfig.relativeExcludePaths) %>,
+  "include": <%- JSON.stringify(tsconfig.relativeIncludePaths) %>,
+  "files": <%- JSON.stringify(tsconfig.relativeFilesPaths) %>
 }

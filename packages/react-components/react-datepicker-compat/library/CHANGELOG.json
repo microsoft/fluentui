@@ -2,6 +2,20 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "0.6.41",
+      "tag": "@fluentui/react-datepicker-compat_v0.6.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.8.9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "0.6.40",
       "comments": {
