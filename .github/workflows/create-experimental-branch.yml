@@ -19,7 +19,7 @@ jobs:
           FEATURE_NAME: ${{ github.event.inputs.feature-name }}
         run: |
           # Regex for kebab-case: lowercase letters, numbers, and dashes. Must not start/end with dash.
-          if [[ ! $FEATURE_NAME =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+          if [[ ! "$FEATURE_NAME" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
             echo "::error::Invalid feature name '$FEATURE_NAME'. It must be dash-case (e.g., foo-bar, no spaces, no camelCase)."
             exit 1
           fi
@@ -49,5 +49,6 @@ jobs:
             -f ref="refs/heads/$BRANCH_NAME" \
             -f sha="$MASTER_SHA"
         env:
+          FEATURE_NAME: ${{ github.event.inputs.feature-name }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FEATURE_NAME: ${{ github.event.inputs.feature-name }}
