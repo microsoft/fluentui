@@ -78,13 +78,8 @@ export function parameters(options?: FluentParameters): FluentParameters;
 
 // @public
 export type StylingMetadata = {
-    classNames?: {
-        classNames: Readonly<Record<string, string>>;
-    };
-    dataAttributes?: {
-        attributes: Readonly<Record<string, Readonly<Record<string, `data-${string}`>>>>;
-        values?: Readonly<Record<string, Readonly<Record<string, readonly (string | number | boolean)[] | null>>>>;
-    };
+    classNames?: ClassNamesDefinition | ComponentFamily<ClassNamesDefinition>;
+    dataAttributes?: DataAttributesDefinition | ComponentFamily<DataAttributesDefinition>;
 };
 
 // @public (undocumented)

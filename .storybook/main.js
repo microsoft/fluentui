@@ -6,6 +6,7 @@ const remarkGfm = require('remark-gfm').default;
 const {
   loadWorkspaceAddon,
   registerTsPaths,
+  registerStylingMetadataRule,
   registerRules,
   rules,
   processBabelLoaderOptions,
@@ -53,6 +54,15 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
   webpackFinal: config => {
     registerRules({ config, rules: [rules.swcRule] });
     registerTsPaths({ config, configFile: tsConfigPath });
+    registerStylingMetadataRule({
+      config,
+      tsConfigPath,
+      classNames: true,
+      include: [
+        path.resolve(__dirname, '../packages/react-components/react-button/stories/src/Button/index.stories.tsx'),
+        path.resolve(__dirname, '../packages/react-components/react-accordion/stories/src/Accordion/index.stories.tsx'),
+      ],
+    });
 
     if ((process.env.CI || process.env.TF_BUILD) && config.plugins) {
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)

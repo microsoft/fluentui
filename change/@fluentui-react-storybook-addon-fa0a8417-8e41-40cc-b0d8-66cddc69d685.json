@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "docs: add opt-in styling API sections for the v9 and headless Button pilot",
+  "comment": "docs: add source-generated styling API accordions and component-family tabs for Button and Accordion",
   "packageName": "@fluentui/react-storybook-addon",
   "email": "paulmardling@microsoft.com"
 }

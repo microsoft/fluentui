@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-webpack5';
-import { Button, buttonClassNames } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import type { FluentParameters } from '@fluentui/react-storybook-addon';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
@@ -17,11 +17,6 @@ export default {
   title: 'Components/Button/Button',
   component: Button,
   parameters: {
-    reactStorybookAddon: {
-      docs: {
-        classNames: { classNames: buttonClassNames },
-      },
-    },
     docs: {
       description: {
         component: [descriptionMd, bestPracticesMd].join('\n'),

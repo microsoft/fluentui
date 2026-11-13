@@ -6,6 +6,8 @@ import { Channel } from 'storybook/internal/channels';
 
 import type { FluentParameters } from '../hooks';
 import { FluentDocsPage, type FluentDocsPageProps } from './FluentDocsPage';
+import { StylingApiReference } from './StylingApiReference';
+import type { StylingMetadata } from './stylingMetadata';
 
 jest.mock('@storybook/addon-docs/blocks', () => ({
   DocsContext: jest.requireActual<typeof React>('react').createContext({}),
@@ -99,22 +101,20 @@ const stylingParameters: FluentParameters = {
 
 describe.each([false, true])('FluentDocsPage styling reference (configured: %s)', configured => {
   it('groups the API into independent initially collapsed sections with semantic tables', () => {
-    const { container } = renderDocs(stylingParameters, configured);
-    const sections = Array.from(container.querySelectorAll('details'));
-    expect(sections.map(section => section.querySelector('summary')?.textContent)).toEqual([
-      'Props',
-      'Data attributes',
-      'Classes',
-    ]);
-    expect(sections.every(section => !section.open)).toBe(true);
+    renderDocs(stylingParameters, configured);
+    const reference = screen.getByRole('region', { name: 'API Reference' });
+    const headers = within(reference).getAllByRole('button');
+    expect(headers.map(header => header.textContent)).toEqual(['Props', 'Data attributes', 'Classes']);
+    expect(headers.every(header => header.getAttribute('aria-expanded') === 'false')).toBe(true);
+    expect(within(reference).getAllByRole('heading', { level: 3 })).toHaveLength(3);
 
-    fireEvent.click(screen.getByText('Classes', { selector: 'summary' }));
-    expect(sections[2].open).toBe(true);
-    expect(sections[0].open).toBe(false);
+    fireEvent.click(screen.getByRole('button', { name: 'Classes' }));
+    expect(headers[2].getAttribute('aria-expanded')).toBe('true');
+    expect(headers[0].getAttribute('aria-expanded')).toBe('false');
     expect(screen.getByRole('table', { name: 'Classes' }).textContent).toContain('rootfui-Buttoniconfui-Button__icon');
-    fireEvent.click(screen.getByText('Data attributes', { selector: 'summary' }));
-    expect(sections[1].open).toBe(true);
-    expect(sections[2].open).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: 'Data attributes' }));
+    expect(headers[1].getAttribute('aria-expanded')).toBe('true');
+    expect(headers[2].getAttribute('aria-expanded')).toBe('true');
     const table = screen.getByRole('table', { name: 'Data attributes' });
     expect(
       within(table)
@@ -127,7 +127,10 @@ describe.each([false, true])('FluentDocsPage styling reference (configured: %s)'
       'rootdata-customstring',
     ]);
     expect(screen.queryByText('data-unknown')).toBeNull();
+    fireEvent.click(headers[0]);
     expect(screen.getByTestId('arg-types')).toBeTruthy();
+    fireEvent.click(headers[2]);
+    expect(headers[2].getAttribute('aria-expanded')).toBe('false');
   });
 
   it('replaces generated metadata per authored section, preserving the other section', () => {
@@ -141,8 +144,8 @@ describe.each([false, true])('FluentDocsPage styling reference (configured: %s)'
       },
       configured,
     );
-    fireEvent.click(screen.getByText('Classes', { selector: 'summary' }));
-    fireEvent.click(screen.getByText('Data attributes', { selector: 'summary' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Classes' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Data attributes' }));
     expect(screen.getByText('fui-Button')).toBeTruthy();
     expect(screen.queryByText('generated-root')).toBeNull();
     expect(screen.getByText('data-active')).toBeTruthy();
@@ -162,10 +165,92 @@ describe.each([false, true])('FluentDocsPage styling reference (configured: %s)'
       },
     },
   ])('retains the original layout without renderable metadata (%j)', parameters => {
-    const { container } = renderDocs(parameters, configured);
-    expect(container.querySelector('details')).toBeNull();
+    renderDocs(parameters, configured);
+    expect(screen.queryByRole('region', { name: 'API Reference' })).toBeNull();
     expect(screen.queryByRole('heading', { name: 'API Reference' })).toBeNull();
     expect(screen.getByTestId('arg-types')).toBeTruthy();
+  });
+
+  describe('Styling API component families', () => {
+    const metadata: StylingMetadata = {
+      classNames: {
+        components: {
+          Accordion: { classNames: { root: 'fui-Accordion' } },
+          Empty: { classNames: {} },
+          AccordionHeader: { classNames: { root: 'fui-AccordionHeader', button: 'fui-AccordionHeader__button' } },
+        },
+      },
+    };
+
+    it('switches between named component tables with complete tab/panel relationships', () => {
+      render(<StylingApiReference metadata={metadata}>Props</StylingApiReference>);
+      fireEvent.click(screen.getByRole('button', { name: 'Classes' }));
+      const tabs = screen.getAllByRole('tab');
+      expect(tabs).toEqual([
+        screen.getByRole('tab', { name: 'Accordion' }),
+        screen.getByRole('tab', { name: 'AccordionHeader' }),
+      ]);
+      expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+      expect(screen.getByRole('table', { name: 'Accordion classes' })).toBeTruthy();
+
+      fireEvent.click(tabs[1]);
+      expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+      expect(screen.getByRole('table', { name: 'AccordionHeader classes' }).textContent).toContain(
+        'buttonfui-AccordionHeader__button',
+      );
+      expect(screen.queryByRole('table', { name: 'Accordion classes' })).toBeNull();
+      const panels = screen.getAllByRole('tabpanel', { hidden: true });
+      for (const tab of tabs) {
+        const panel = panels.find(candidate => candidate.id === tab.getAttribute('aria-controls'));
+        expect(panel?.getAttribute('role')).toBe('tabpanel');
+        expect(panel?.getAttribute('aria-labelledby')).toBe(tab.id);
+      }
+    });
+
+    it('selects the first remaining family if the selected component is removed', () => {
+      const { rerender } = render(<StylingApiReference metadata={metadata}>Props</StylingApiReference>);
+      fireEvent.click(screen.getByRole('button', { name: 'Classes' }));
+      fireEvent.click(screen.getByRole('tab', { name: 'AccordionHeader' }));
+      rerender(
+        <StylingApiReference
+          metadata={{
+            classNames: {
+              components: {
+                Accordion: { classNames: { root: 'fui-Accordion' } },
+                Panel: { classNames: { root: 'fui-Panel' } },
+              },
+            },
+          }}
+        >
+          Props
+        </StylingApiReference>,
+      );
+      expect(screen.getByRole('tab', { name: 'Accordion' }).getAttribute('aria-selected')).toBe('true');
+      expect(screen.getByRole('table', { name: 'Accordion classes' })).toBeTruthy();
+    });
+
+    it('keeps singleton family identity without a redundant tablist and hides unknown attribute groups', () => {
+      render(
+        <StylingApiReference
+          metadata={{
+            dataAttributes: {
+              components: {
+                Unknown: { attributes: { root: { state: 'data-state' } }, values: { root: { state: null } } },
+                Button: { attributes: { root: { disabled: 'data-disabled' } } },
+              },
+            },
+          }}
+        >
+          Props
+        </StylingApiReference>,
+      );
+      fireEvent.click(screen.getByRole('button', { name: 'Data attributes' }));
+      expect(screen.queryByRole('tablist')).toBeNull();
+      const table = screen.getByRole('table', { name: 'Button data attributes' });
+      expect(table.querySelector('caption')?.textContent).toBe('Button');
+      expect(table.textContent).toContain('data-disabled');
+      expect(screen.queryByText('data-state')).toBeNull();
+    });
   });
 
   it('hides the entire reference with the API table', () => {

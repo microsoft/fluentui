@@ -10,6 +10,7 @@
       "dependsOn": [
         {
           "projects": [
+            "react-accordion",
             "react-aria",
             "react-button",
             "react-label",
@@ -19,6 +20,7 @@
             "react-shared-contexts",
             "react-spinner",
             "react-switch",
+            "react-tabs",
             "react-text",
             "react-theme",
             "react-toast",
