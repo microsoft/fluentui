@@ -34,6 +34,12 @@ export class BaseAnchor extends FASTElement {
   private internalProxyAnchor: HTMLAnchorElement = this.createProxyElement();
 
   /**
+   * Whether the proxy anchor is being activated programmatically by `handleNavigation`.
+   * @internal
+   */
+  private isProxyNavigating = false;
+
+  /**
    * Prompts the user to save the linked URL.
    *
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#download | `download`} attribute
@@ -171,7 +177,11 @@ export class BaseAnchor extends FASTElement {
    */
   public clickHandler(e: PointerEvent): boolean {
     if (e.composedPath()[0] === this.internalProxyAnchor) {
-      e.stopImmediatePropagation();
+      // Clicks dispatched by `handleNavigation` duplicate the click that triggered them, so they must not reach
+      // consumers. Pointer clicks on the proxy are the only click, and the browser handles navigation natively.
+      if (this.isProxyNavigating) {
+        e.stopImmediatePropagation();
+      }
       return true;
     }
 
@@ -208,7 +218,17 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   private handleNavigation(newTab: boolean): void {
-    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
+    if (newTab) {
+      window.open(this.href, '_blank');
+      return;
+    }
+
+    this.isProxyNavigating = true;
+    try {
+      this.internalProxyAnchor.click();
+    } finally {
+      this.isProxyNavigating = false;
+    }
   }
 
   /**
@@ -227,7 +247,11 @@ export class BaseAnchor extends FASTElement {
 
   private createProxyElement(): HTMLAnchorElement {
     const proxy = this.internalProxyAnchor ?? document.createElement('a');
-    proxy.inert = true;
+    // The proxy must stay hit-testable (not `inert`) so the browser treats pointer interaction as a native link:
+    // showing the destination URL on hover and supporting middle-click and the link context menu.
+    proxy.ariaHidden = 'true';
+    proxy.tabIndex = -1;
+    proxy.addEventListener('focus', () => this.focus());
     return proxy;
   }
 }
