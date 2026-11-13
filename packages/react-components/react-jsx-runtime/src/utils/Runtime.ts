@@ -1,7 +1,5 @@
-import * as ReactRuntime from 'react/jsx-runtime';
+import { jsx as reactJsx, jsxs as reactJsxs } from 'react/jsx-runtime';
 import type { JSXRuntime } from './types';
 
-export const Runtime = ReactRuntime as {
-  jsx: JSXRuntime;
-  jsxs: JSXRuntime;
-};
+export const jsx = reactJsx as JSXRuntime;
+export const jsxs = reactJsxs as JSXRuntime;

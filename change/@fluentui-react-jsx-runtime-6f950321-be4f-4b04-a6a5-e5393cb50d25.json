@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "perf: bind React JSX runtime functions directly to reduce bundle size",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "dmytrokirpa@microsoft.com"
+}
