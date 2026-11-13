@@ -473,6 +473,24 @@ describe('usePositioning browser geometry contracts', () => {
     });
   }
 
+  it('flips before the boundary only when flip padding is supplied, including updates', () => {
+    const controls = mountScenario({
+      name: 'flip-boundary-padding',
+      boundary: 'rect',
+      boundaryMode: 'flip',
+      target: { x: 300, y: 165 },
+      options: { position: 'above', overflowBoundaryPadding: 10 },
+    });
+    expectRect(280, 105);
+    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'top');
+    cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 10 }));
+    expectRect(280, 205);
+    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'bottom');
+    cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 0 }));
+    expectRect(280, 105);
+    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'top');
+  });
+
   it('an inline end callback that updates state settles instead of recreating the manager', () => {
     const controls = mountScenario({ name: 'stateful-end', updateStateOnEnd: true });
     expectRect(280, 280);
