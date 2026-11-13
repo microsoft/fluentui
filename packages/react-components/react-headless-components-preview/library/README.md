@@ -11,3 +11,8 @@
 Headless components expose resolved interaction and structural state through `data-*` attributes. Consumers that wrap these components, including visual-system packages, must preserve the attributes on the slot where headless emits them.
 
 Existing attributes retain their current names and value semantics. Visual axes such as appearance, size, and shape are intentionally not part of the headless contract.
+
+## Scrollable menus
+
+Consumers own MenuPopover sizing and scrolling styles. Headless keeps focused items and ancestor
+submenu invokers visible after viewport or scrollport changes, without moving focus.
