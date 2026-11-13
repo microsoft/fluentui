@@ -803,7 +803,10 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       defaultProps: {
         'aria-label': headingView
           ? isDay
-            ? formatters.dayPickerHeaderLabel({ date: navigatedDate, formattedDate: monthYear })
+            ? // A day heading that opens the year grid names the year action, unless the day label is overridden.
+              (headingView === 'year' && !formatterOverrides?.dayPickerHeaderLabel
+                ? formatters.monthPickerHeaderLabel
+                : formatters.dayPickerHeaderLabel)({ date: navigatedDate, formattedDate: monthYear })
             : isYear
             ? formatters.yearRangePickerHeaderLabel({ fromYear, toYear, formattedRange: headingText })
             : formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })

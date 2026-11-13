@@ -27,7 +27,6 @@ import {
   setMonth,
 } from '../Calendar/utils';
 import type { CalendarProps } from '../Calendar/Calendar.types';
-import type { CalendarFormatters } from '../Calendar/utils';
 import { defaultFormatDate, defaultParseDate } from './datePickerFormatting';
 import { useDatePickerDateState } from './useDatePickerDateState';
 import type {
@@ -77,9 +76,6 @@ const defaultFormatErrorMessage = ({ error, minDate, maxDate, formatDate }: Date
 
   return 'Enter a date such as August 12, 2026, 2026-08-12 or 8/12/2026.';
 };
-
-// Names the default day heading action, which opens the year-range grid.
-const dayPickerHeaderLabel: CalendarFormatters['dayPickerHeaderLabel'] = data => `${data.formattedDate}, change year`;
 
 /**
  * Creates DatePicker state: the committed date, pending typed text and validation, the popup lifecycle and its focus
@@ -526,12 +522,7 @@ export const useDatePicker = (
     calendar.goToTodayButton = null;
   }
 
-  // The default day heading label names the view the heading opens; consumer formatters still take precedence.
-  const formatters: CalendarFormatters = {
-    ...calendarFormatters,
-    ...(calendar.dayHeadingView === 'year' && { dayPickerHeaderLabel }),
-    ...calendarProps.formatters,
-  };
+  const formatDateTime = calendarProps.formatters?.dateTime ?? calendarFormatters.dateTime;
 
   const renderCell = calendarProps.renderCell;
   calendar.renderCell = (cellProps, cell, defaultRender) => {
@@ -542,14 +533,13 @@ export const useDatePicker = (
             ...cellProps,
             root: {
               ...cellProps.root,
-              'aria-label': formatters.dateTime({ date: setMonth(displayedDate, cell.index), format: 'monthYear' }),
+              'aria-label': formatDateTime({ date: setMonth(displayedDate, cell.index), format: 'monthYear' }),
             },
           }
         : cellProps;
     return renderCell ? renderCell(resolved, cell, defaultRender) : defaultRender(resolved);
   };
 
-  calendar.formatters = formatters;
   calendar.value = dateState.value;
   calendar.today = today;
   calendar.minDate = minDate;
@@ -563,7 +553,7 @@ export const useDatePicker = (
 
   const popupSurface = slot.always(props.popupSurface, {
     defaultProps: {
-      'aria-label': formatters.dateTime({ date: displayedDate, format: 'monthYear' }),
+      'aria-label': formatDateTime({ date: displayedDate, format: 'monthYear' }),
       role: 'dialog',
       // Pressing a non-focusable part of the surface focuses the surface instead of the body.
       tabIndex: -1,

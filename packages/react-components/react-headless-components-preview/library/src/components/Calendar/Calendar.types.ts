@@ -62,9 +62,9 @@ export type CalendarPanelSlots = {
    * `children` replace every row, including the weekday header.
    */
   grid: NonNullable<Slot<'div'>>;
-  /** The day grid's `thead`, holding the weekday header row. Day panel only. */
+  /** The day grid's `thead`, holding the weekday header row. Day panel only; `null` omits the weekday header. */
   gridHeader?: Slot<'thead'>;
-  /** The day grid's `tbody`, holding the week rows. Day panel only. */
+  /** The day grid's `tbody`, holding the week rows. Day panel only; `null` omits the week rows. */
   gridBody?: Slot<'tbody'>;
 };
 

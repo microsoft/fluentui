@@ -82,6 +82,26 @@ const today = new Date(2020, 8, 18);
 const dayLabel = (date: Date) => calendarFormatters.dateTime({ date, format: 'monthDayYear' });
 
 describe('Calendar rendering and public API', () => {
+  it.each([
+    [undefined, 'September 2020, change month'],
+    ['month', 'September 2020, change month'],
+    ['year', 'September 2020, change year'],
+  ] as const)('names a day heading that opens %s after the view it opens', (dayHeadingView, name) => {
+    const { getByRole } = render(<Calendar today={today} layout="overlay" dayHeadingView={dayHeadingView} />);
+    expect(getByRole('button', { name })).toBeInTheDocument();
+  });
+
+  it('keeps a consumer day heading formatter for a heading that opens the year grid', () => {
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        dayHeadingView="year"
+        formatters={{ dayPickerHeaderLabel: data => `${data.formattedDate}, pick` }}
+      />,
+    );
+    expect(getByRole('button', { name: 'September 2020, pick' })).toBeInTheDocument();
+  });
+
   isConformant({
     Component: Calendar,
     displayName: 'Calendar',
@@ -1027,6 +1047,19 @@ describe('Calendar day grid', () => {
       expect(cell).toMatchObject({ type: 'day' });
       expect(props.root).toMatchObject({ role: 'gridcell' });
       expect(container.querySelectorAll('thead tr')).toHaveLength(1);
+    });
+
+    it.each([
+      ['gridHeader', 'thead', 'tbody'],
+      ['gridBody', 'tbody', 'thead'],
+    ] as const)('omits only the day grid section whose %s slot is null', (slotName, removed, kept) => {
+      const { container } = render(<Calendar today={today} monthPicker={null} {...{ [slotName]: null }} />);
+      const grid = container.querySelector('table')!;
+      expect(grid.querySelector(removed)).toBeNull();
+      expect(grid.querySelector(kept)).not.toBeNull();
+      expect(grid.querySelectorAll(':scope > tr')).toHaveLength(0);
+      expect(grid.querySelectorAll('[role="columnheader"]')).toHaveLength(kept === 'thead' ? 7 : 0);
+      expect(grid.querySelectorAll('[role="gridcell"]').length).toBe(kept === 'tbody' ? 35 : 0);
     });
 
     it('lets render functions replace the markup of repeated elements', () => {

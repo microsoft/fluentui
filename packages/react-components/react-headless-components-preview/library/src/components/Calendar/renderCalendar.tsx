@@ -107,10 +107,11 @@ const renderPanel = (state: CalendarState, panel: CalendarPanelState): JSXElemen
       <panel.grid>
         {!rows ? (
           panel.grid.children
-        ) : panel.gridHeader && panel.gridBody ? (
+        ) : panel.view === 'day' ? (
+          // Each table section is optional; removing one removes its rows.
           <>
-            <panel.gridHeader>{rows[0]}</panel.gridHeader>
-            <panel.gridBody>{rows.slice(1)}</panel.gridBody>
+            {panel.gridHeader && <panel.gridHeader>{rows[0]}</panel.gridHeader>}
+            {panel.gridBody && <panel.gridBody>{rows.slice(1)}</panel.gridBody>}
           </>
         ) : (
           rows

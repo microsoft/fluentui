@@ -87,11 +87,12 @@ export type CalendarFormatters = {
    */
   nextYearRangeLabel: (data: CalendarYearRangeLabelData) => string;
   /**
-   * Formats the label for the month picker header.
+   * Formats the label for a heading that opens the year grid: the month picker header, and the day picker header
+   * when `dayHeadingView` is `'year'` and `dayPickerHeaderLabel` is not overridden.
    */
   monthPickerHeaderLabel: (data: CalendarDateLabelData) => string;
   /**
-   * Formats the label for the day picker header.
+   * Formats the label for the day picker header. When overridden, it also names a day heading that opens the year grid.
    */
   dayPickerHeaderLabel: (data: CalendarDateLabelData) => string;
   /**
