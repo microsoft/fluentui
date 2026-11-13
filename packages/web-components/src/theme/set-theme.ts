@@ -14,20 +14,26 @@ const SUPPORTS_CSS_SCOPE = 'CSSScopeRule' in window;
 // A map from a theme to Custom Property declarations for the theme as a string.
 // Each value should be a list of CSS Custom Property declarations, and should
 // NOT include any selector, `{`, or `}`.
-const themeStyleTextMap = new Map<Theme, string>();
+// Themes are caller-owned objects which are frequently recreated on every call,
+// so a weak key is required to avoid retaining them.
+const themeStyleTextMap = new WeakMap<Theme, string>();
 
-// A map from a theme to a unique string used to identity a theme. The string
-// will be used as the value of the `data-fluent-theme` attribute on a
-// differently themed element.
-const scopedThemeKeyMap = new Map<Theme, string>();
+// A map from a theme's Custom Property declarations to a unique string used to
+// identity a theme. The string will be used as the value of the
+// `data-fluent-theme` attribute on a differently themed element.
+// Keying by content instead of by theme object identity ensures that equivalent
+// themes share a single style sheet and that the style sheets added to
+// `document.adoptedStyleSheets` grow with the number of distinct themes rather
+// than with the number of `setTheme` calls.
+const scopedThemeKeyMap = new Map<string, string>();
 
 // A map from an element with shadow root to a `CSSStyleSheet` object that
 // references its local theme style sheet.
-const shadowAdoptedStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
+const shadowAdoptedStyleSheetMap = new WeakMap<HTMLElement, CSSStyleSheet>();
 
 // A map from an element to its set theme. This is used only when
 // `document.adoptedStyleSheets` or CSS Scope is not supported.
-const elementThemeMap = new Map<HTMLElement, Theme>();
+const elementThemeMap = new WeakMap<HTMLElement, Theme>();
 
 const globalThemeStyleSheet = new CSSStyleSheet();
 
@@ -79,18 +85,18 @@ function sanitizeTokenValue(value: string): string {
 }
 
 function getThemeStyleText(theme: Theme): string {
-  if (!themeStyleTextMap.has(theme)) {
-    themeStyleTextMap.set(
-      theme,
-      Object.keys(theme).reduce((acc, token) => {
-        const tokenName = sanitizeTokenName(token);
-        const tokenValue = sanitizeTokenValue(theme[token].toString());
-        return tokenName && tokenValue ? `${acc}--${tokenName}:${tokenValue};` : acc;
-      }, ''),
-    );
+  let styleText = themeStyleTextMap.get(theme);
+
+  if (styleText === undefined) {
+    styleText = Object.keys(theme).reduce((acc, token) => {
+      const tokenName = sanitizeTokenName(token);
+      const tokenValue = sanitizeTokenValue(theme[token].toString());
+      return tokenName && tokenValue ? `${acc}--${tokenName}:${tokenValue};` : acc;
+    }, '');
+    themeStyleTextMap.set(theme, styleText);
   }
 
-  return themeStyleTextMap.get(theme)!;
+  return styleText;
 }
 
 /**
@@ -143,7 +149,7 @@ function setLocalTheme(theme: Theme | null, element: HTMLElement) {
       }
     `);
   } else {
-    element.dataset.fluentTheme = getScopedThemeKey(theme);
+    element.dataset.fluentTheme = getScopedThemeKey(getThemeStyleText(theme));
     forceRepaint(element);
   }
 }
@@ -158,23 +164,25 @@ function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet {
   return shadowAdoptedStyleSheetMap.get(element)!;
 }
 
-function getScopedThemeKey(theme: Theme): string {
-  if (!scopedThemeKeyMap.has(theme)) {
-    const themeKey = uniqueId('fluent-theme-');
+function getScopedThemeKey(styleText: string): string {
+  let themeKey = scopedThemeKeyMap.get(styleText);
+
+  if (themeKey === undefined) {
+    themeKey = uniqueId('fluent-theme-');
     const scopedThemeStyleSheet = new CSSStyleSheet();
 
-    scopedThemeKeyMap.set(theme, themeKey);
+    scopedThemeKeyMap.set(styleText, themeKey);
     scopedThemeStyleSheet.replaceSync(`
       @scope ([data-fluent-theme="${themeKey}"]) {
         :scope {
-          ${getThemeStyleText(theme)}
+          ${styleText}
         }
       }
     `);
     document.adoptedStyleSheets.push(scopedThemeStyleSheet);
   }
 
-  return scopedThemeKeyMap.get(theme)!;
+  return themeKey;
 }
 
 function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
