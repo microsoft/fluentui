@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "docs: add source-generated styling API accordions and component-family tabs for Button and Accordion",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "paulmardling@microsoft.com"
+}

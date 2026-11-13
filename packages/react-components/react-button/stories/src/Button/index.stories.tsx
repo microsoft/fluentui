@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react-webpack5';
 import { Button } from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
@@ -21,5 +22,5 @@ export default {
         component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
-  },
+  } satisfies FluentParameters,
 } as Meta;

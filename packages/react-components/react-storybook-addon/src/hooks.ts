@@ -3,6 +3,7 @@ import type { Args as StorybookArgs, StoryContext as StorybookContext, Parameter
 
 import type { DIR_ID, STRICT_MODE_ID, THEME_ID, THEMES } from './constants';
 import type { Theme, ThemeIds } from './theme';
+import type { StylingMetadata } from './docs/stylingMetadata';
 
 export interface FluentStoryContext extends StorybookContext {
   globals: FluentGlobals;
@@ -23,6 +24,8 @@ export interface FluentGlobals extends StorybookArgs {
  * Extends the storybook parameters object to include fluent specific properties
  */
 export interface FluentParameters extends Parameters {
+  /** Optional build-time metadata source, overridden per section by authored docs metadata. */
+  __generatedStylingMetadata?: StylingMetadata;
   dir?: 'ltr' | 'rtl';
   fluentTheme?: ThemeIds;
   fluentThemes?: Theme[];
@@ -30,6 +33,14 @@ export interface FluentParameters extends Parameters {
   reactStorybookAddon?: {
     disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
     docs?: FluentDocsConfig;
+    /**
+     * Opt a component docs page into class-name tables. Supply public class-name
+     * objects in display order, for example `{ exportName: 'buttonClassNames', slots: buttonClassNames }`.
+     */
+    slotClassNameGroups?: readonly {
+      exportName: string;
+      slots: Readonly<Record<string, string>>;
+    }[];
   };
 }
 
@@ -38,7 +49,7 @@ export interface FluentParameters extends Parameters {
  */
 type FluentDocsConfig =
   | boolean
-  | {
+  | ({
       tableOfContents?: boolean;
       dirSwitcher?: boolean;
       themePicker?: boolean;
@@ -49,7 +60,7 @@ type FluentDocsConfig =
             slotsApi?: boolean;
             nativePropsApi?: boolean;
           };
-    };
+    } & StylingMetadata);
 
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();

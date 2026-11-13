@@ -20,6 +20,7 @@ import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import type { FluentParameters } from '../hooks';
 import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
@@ -27,6 +28,8 @@ import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
+import { StylingApiReference } from './StylingApiReference';
+import { resolveStylingMetadata } from './stylingMetadata';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -92,6 +95,24 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
     flex: 1,
+  },
+  classNamesHeading: {
+    margin: tokens.spacingVerticalNone,
+    fontSize: 'inherit',
+    fontWeight: tokens.fontWeightBold,
+  },
+  classNamesTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+  },
+  classNamesCaption: {
+    textAlign: 'start',
+    paddingBlock: tokens.spacingVerticalS,
+  },
+  classNamesCell: {
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    textAlign: 'start',
   },
 });
 
@@ -264,9 +285,13 @@ const RenderArgsTable = ({
     nativePropsApi: showNativePropsApi,
   });
   const styles = useStyles();
+  const parameters: FluentParameters = story.parameters;
+  const slotClassNameGroups = parameters.reactStorybookAddon?.slotClassNameGroups?.filter(
+    group => Object.keys(group.slots).length > 0,
+  );
 
   return hideArgsTable ? null : (
-    <>
+    <StylingApiReference metadata={resolveStylingMetadata(parameters)}>
       <div className={styles.additionalInfoWrapper}>
         <ArgTypes of={component} />
         {hasArgAsProp && (
@@ -303,8 +328,51 @@ const RenderArgsTable = ({
             </p>
           </AdditionalApiDocs>
         )}
+        {Boolean(slotClassNameGroups?.length) && (
+          <AdditionalApiDocs>
+            <>
+              <h2 className={`fluent-docs-class-names-heading ${styles.classNamesHeading}`}>
+                Customizing component slot styles with class names
+              </h2>
+              <p>
+                Import these class-name objects from <code>@fluentui/react-components</code> to target component slots
+                in style overrides. They are exported constants, not React hooks. Only slots with an exported class name
+                are listed.
+              </p>
+              {slotClassNameGroups?.map(group => (
+                <table className={styles.classNamesTable} key={group.exportName}>
+                  <caption className={styles.classNamesCaption}>
+                    <code>{group.exportName}</code>
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th className={styles.classNamesCell} scope="col">
+                        Slot
+                      </th>
+                      <th className={styles.classNamesCell} scope="col">
+                        Class name
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(group.slots).map(([slot, className]) => (
+                      <tr key={slot}>
+                        <th className={styles.classNamesCell} scope="row">
+                          <code>{slot}</code>
+                        </th>
+                        <td className={styles.classNamesCell}>
+                          <code>{className}</code>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ))}
+            </>
+          </AdditionalApiDocs>
+        )}
       </div>
-    </>
+    </StylingApiReference>
   );
 };
 

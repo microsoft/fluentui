@@ -20,7 +20,7 @@
   z-index: 99;
 }
 
-#storybook-docs .sbdocs p:not(.sbdocs-preview p) {
+#storybook-docs .sbdocs p:not(.sbdocs-preview p, .docblock-argstable p) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
@@ -51,7 +51,7 @@
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2:not(.sbdocs-preview h2) {
+#storybook-docs .sbdocs h2:not(.sbdocs-preview h2, .fluent-docs-class-names-heading) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -192,7 +192,7 @@
 }
 
 /* Styles for Github-flavored Markdown tables */
-#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) {
+#storybook-docs table:not(.docblock-argstable, .fluent-docs-styling-table, .sbdocs-preview table) {
   margin: 16px 0px;
   font-size: 14px;
   line-height: 24px;
@@ -200,18 +200,18 @@
   border-collapse: collapse;
 }
 
-#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) tr {
+#storybook-docs table:not(.docblock-argstable, .fluent-docs-styling-table, .sbdocs-preview table) tr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) th {
+#storybook-docs table:not(.docblock-argstable, .fluent-docs-styling-table, .sbdocs-preview table) th {
   font-weight: bold;
   color: rgb(51, 51, 51);
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 13px;
 }
 
-#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) td {
+#storybook-docs table:not(.docblock-argstable, .fluent-docs-styling-table, .sbdocs-preview table) td {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 13px;
 }
@@ -278,7 +278,7 @@
   line-height: 21px;
 }
 
-#storybook-docs code:not(.sbdocs-preview code),
+#storybook-docs code:not(.sbdocs-preview code, .fluent-docs-styling-table code),
 #storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
@@ -315,7 +315,7 @@
   white-space: normal;
 }
 
-#storybook-docs code:not(.sbdocs-preview code) {
+#storybook-docs code:not(.sbdocs-preview code, .fluent-docs-styling-table code) {
   padding: 0.1em 0.2em;
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
