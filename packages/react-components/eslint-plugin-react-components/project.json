@@ -4,5 +4,10 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/eslint-plugin-react-components/src",
-  "tags": ["vNext", "platform:node", "tools"]
+  "tags": ["vNext", "platform:node", "tools"],
+  "targets": {
+    "lint": {
+      "dependsOn": ["build"]
+    }
+  }
 }

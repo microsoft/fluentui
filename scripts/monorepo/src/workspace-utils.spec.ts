@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+
 import { workspaceRoot } from '@nx/devkit';
 
 import { getWorkspaceProjects, getWorkspaceProjectsAliases } from './workspace-utils';
@@ -24,7 +26,7 @@ describe(`workspace-utils`, () => {
   });
 
   describe(`#getWorkspaceProjectsAliases`, () => {
-    const projectSourcePathRegex = new RegExp(workspaceRoot + '[a-z_/-]*/src/index$');
+    const reactTextEntry = join(workspaceRoot, 'packages', 'react-components', 'react-text', 'library', 'src', 'index');
 
     it(`should create alias mapping`, () => {
       const actual = getWorkspaceProjectsAliases();
@@ -32,9 +34,8 @@ describe(`workspace-utils`, () => {
       expect(actual['@fluentui/noop']).toEqual(undefined);
 
       const keys = Object.keys(actual);
-      const values = Object.values(actual);
       expect(keys).toEqual(expect.arrayContaining([expect.stringMatching(/@fluentui\/[a-z-]+[a-z]$/)]));
-      expect(values).toEqual(expect.arrayContaining([expect.stringMatching(projectSourcePathRegex)]));
+      expect(actual['@fluentui/react-text']).toBe(reactTextEntry);
     });
 
     it(`should exclude specified projects`, () => {
@@ -48,15 +49,14 @@ describe(`workspace-utils`, () => {
     });
 
     it.each([
-      { type: 'webpack', expected: /@fluentui\/[a-z-]+\$$/ },
-      { type: 'jest', expected: /^\^@fluentui\/[a-z-]+\$$/ },
-    ] as const)(`should create alias mapping for 'type=$type'`, ({ type, expected }) => {
+      { type: 'webpack', expected: /@fluentui\/[a-z-]+\$$/, alias: '@fluentui/react-text$' },
+      { type: 'jest', expected: /^\^@fluentui\/[a-z-]+\$$/, alias: '^@fluentui/react-text$' },
+    ] as const)(`should create alias mapping for 'type=$type'`, ({ type, expected, alias }) => {
       const actual = getWorkspaceProjectsAliases({ type });
 
       const keys = Object.keys(actual);
-      const values = Object.values(actual);
       expect(keys).toEqual(expect.arrayContaining([expect.stringMatching(expected)]));
-      expect(values).toEqual(expect.arrayContaining([expect.stringMatching(projectSourcePathRegex)]));
+      expect(actual[alias]).toBe(reactTextEntry);
     });
   });
 });

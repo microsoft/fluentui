@@ -1,11 +1,11 @@
-import { CreateNodesContextV2 } from '@nx/devkit';
+import { CreateNodesContext } from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
 import { createNodesV2 } from './type-check-plugin';
 
 describe(`type-check-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
-  let context: CreateNodesContextV2;
+  let context: CreateNodesContext;
   let tempFs: TempFs;
   let cwd: string;
 
@@ -31,9 +31,9 @@ describe(`type-check-plugin`, () => {
   });
 
   afterEach(() => {
-    jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
+    jest.resetModules();
   });
 
   it('should create nodes', async () => {
