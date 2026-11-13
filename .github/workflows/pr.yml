@@ -147,7 +147,7 @@ jobs:
           yarn nx affected -t test-rit--17--e2e,test-rit--18--e2e --exclude='react-19-tests-v9,react-charting,react'
 
       - name: Upload E2E failure artifacts if exist
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && steps.e2e.outcome == 'failure'
         with:
           name: cypress-screenshots-react-test-rit
@@ -200,7 +200,7 @@ jobs:
         run: yarn nx affected -t e2e --nxBail --parallel 1
 
       - name: Upload Cypress screenshots if exist
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
           name: cypress-screenshots
