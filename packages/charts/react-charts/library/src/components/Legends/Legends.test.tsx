@@ -302,6 +302,48 @@ describe('Legends - dynamic overflow', () => {
     expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
   });
 
+  it('uses the localized complete label with the current hidden-item count', () => {
+    const overflowText = jest.fn((count: number) => (count === 1 ? 'mais uma legenda' : `mais ${count} legendas`));
+    const result = render(<Legends legends={legends} overflowText={overflowText} />);
+
+    expect(result.getByRole('button', { name: 'mais 14 legendas' }).textContent).toBe('mais 14 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(14);
+
+    result.rerender(<Legends legends={legends.slice(0, 10)} overflowText={overflowText} />);
+    expect(result.getByRole('button', { name: 'mais 7 legendas' }).textContent).toBe('mais 7 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(7);
+
+    result.rerender(<Legends legends={legends.slice(0, 3)} overflowText={overflowText} />);
+    expect(result.container.querySelector('[data-overflow-menu]')).toBeNull();
+  });
+
+  it.each([undefined, '', 'remaining'])('preserves string overflow formatting for %s', overflowText => {
+    const result = render(<Legends legends={legends} overflowText={overflowText} />);
+    const label = `+14 ${overflowText || 'more'}`;
+    expect(result.getByRole('button', { name: label }).textContent).toBe(label);
+  });
+
+  it('updates localized overflow labels when the container is resized', () => {
+    let width = 250;
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, get: () => width });
+    const overflowText = jest.fn((count: number) => `mais ${count}`);
+    const result = render(<Legends legends={legends} overflowText={overflowText} />);
+    expect(result.getByRole('button', { name: 'mais 14' })).toBeTruthy();
+
+    expect(capturedObservers.length).toBeGreaterThan(0);
+    const observer = capturedObservers[0];
+    act(() => {
+      width = 300;
+      observer.callback(
+        [{ target: observer.element } as unknown as ResizeObserverEntry],
+        observer as unknown as ResizeObserver,
+      );
+    });
+
+    expect(result.getByRole('button', { name: 'mais 13' }).textContent).toBe('mais 13');
+    expect(overflowText).toHaveBeenLastCalledWith(13);
+  });
+
   it('maintains trigger element identity and updates count when item count changes while still overflowing', () => {
     const result = render(<Legends legends={legends} overflowText="Overflow Items" />);
 

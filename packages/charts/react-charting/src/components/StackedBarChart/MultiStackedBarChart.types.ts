@@ -79,9 +79,9 @@ export interface IMultiStackedBarChartProps {
   legendsOverflowProps?: Partial<IOverflowSetProps>;
 
   /**
-   * text for overflow legends string
+   * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
    */
-  legendsOverflowText?: string;
+  legendsOverflowText?: ILegendsProps['overflowText'];
 
   /**
    * focus zone props in hover card for legends

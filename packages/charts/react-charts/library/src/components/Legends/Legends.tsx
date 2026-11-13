@@ -129,7 +129,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
                   </OverflowItem>
                 ))}
               </div>
-              <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
+              <OverflowMenu itemIds={itemIds} title={overflowString} items={overflowHoverCardLegends} />
             </div>
           </Overflow>
         </div>

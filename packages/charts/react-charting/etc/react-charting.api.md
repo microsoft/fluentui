@@ -1235,7 +1235,7 @@ export interface ILegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
-    overflowText?: string;
+    overflowText?: string | ((count: number) => string);
     // Warning: (ae-forgotten-export) The symbol "ILegendContainer" needs to be exported by the entry point index.d.ts
     ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
@@ -1481,7 +1481,7 @@ export interface IMultiStackedBarChartProps {
     href?: string;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
+    legendsOverflowText?: ILegendsProps['overflowText'];
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
@@ -1798,7 +1798,7 @@ export interface IStackedBarChartProps {
     ignoreFixStyle?: boolean;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
+    legendsOverflowText?: ILegendsProps['overflowText'];
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;

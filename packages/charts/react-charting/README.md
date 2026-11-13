@@ -15,6 +15,13 @@ This library is also supported for fluent UI [v7](https://github.com/microsoft/f
 
 ## Using the library
 
+### Localized legend overflow labels
+
+Use `overflowText={count => \`mais ${count}\`}`on`Legends`(or through a chart's`legendsOverflowText` prop)
+to format the complete overflow label, including number placement and pluralization.
+The callback receives the hidden legend count and supplies both the visible text and accessible name.
+String values retain the existing count-first formatting.
+
 Examples and code snippets for the charting library are available on the [demo site](https://aka.ms/fluentcharting).
 The code snippets can be used as usage guide for all the props and chart variations. Click on 'Show code' on the demo site to access demo for each variant.
 

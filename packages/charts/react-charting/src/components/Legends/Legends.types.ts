@@ -202,9 +202,10 @@ export interface ILegendsProps {
   focusZonePropsInHoverCard?: IFocusZoneProps;
 
   /**
-   * text for overflow legends string
+   * Text following the overflow count, or a formatter returning the complete overflow label.
+   * The formatter receives the number of hidden legends and supplies both visible text and the accessible name.
    */
-  overflowText?: string;
+  overflowText?: string | ((count: number) => string);
 
   /**
    * prop that decides if legends are focusable
