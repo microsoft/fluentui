@@ -205,7 +205,7 @@ export type CalendarProps = DistributiveOmit<
   layout?: CalendarLayout;
   /**
    * The view the day heading opens. Defaults to `'month'` in the overlay layout; in the side-by-side layout the
-   * heading is static unless this is set.
+   * heading is static unless this is set. `'year'` falls back to the default when `yearPickerHidden` is set.
    */
   dayHeadingView?: 'month' | 'year';
   /** Hides the year grid, so the month heading does not open it. */

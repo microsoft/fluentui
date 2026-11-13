@@ -91,6 +91,33 @@ describe('Calendar rendering and public API', () => {
     expect(getByRole('button', { name })).toBeInTheDocument();
   });
 
+  it('keeps a day heading set to open the hidden year grid static in the side-by-side layout', () => {
+    const onViewChange = jest.fn();
+    const { container } = render(
+      <Calendar today={today} dayHeadingView="year" yearPickerHidden onViewChange={onViewChange} />,
+    );
+    const heading = container.querySelector('[data-view="day"] > div > div')!;
+
+    expect(heading).toHaveTextContent('September 2020');
+    expect(heading.tagName).toBe('DIV');
+    expect(heading).not.toHaveAttribute('aria-label');
+    fireEvent.click(heading);
+    expect(onViewChange).not.toHaveBeenCalled();
+  });
+
+  it('opens the month grid from a day heading set to open the hidden year grid in the overlay layout', () => {
+    const onViewChange = jest.fn();
+    const { container, getByRole } = render(
+      <Calendar today={today} layout="overlay" dayHeadingView="year" yearPickerHidden onViewChange={onViewChange} />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'September 2020, change month' }));
+
+    expect(container.querySelector('[data-view="month"]')).not.toBeNull();
+    expect(onViewChange).toHaveBeenCalledTimes(1);
+    expect(onViewChange.mock.calls[0][1]).toEqual(expect.objectContaining({ view: 'month' }));
+  });
+
   it('keeps a consumer day heading formatter for a heading that opens the year grid', () => {
     const { getByRole } = render(
       <Calendar

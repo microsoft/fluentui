@@ -787,9 +787,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
     // Header
 
+    // A hidden year grid cannot be opened, so a day heading set to open it falls back to the default: the month grid
+    // in the overlay layout, a static heading beside the visible month grid otherwise.
+    const dayView = dayHeadingView === 'year' && yearPickerHidden ? undefined : dayHeadingView;
     const headingView: CalendarView | undefined = isDay
       ? hasMonthPanel
-        ? dayHeadingView ?? (isOverlay ? 'month' : undefined)
+        ? dayView ?? (isOverlay ? 'month' : undefined)
         : undefined
       : isYear
       ? 'month'

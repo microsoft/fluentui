@@ -71,7 +71,7 @@ the day panel stays visible and `view` only chooses between the month and year g
 
 The month heading opens the year grid unless `yearPickerHidden` is set. In the overlay layout the day heading
 opens the month grid; set `dayHeadingView` to `"month"` or `"year"` to choose what the day heading opens in
-either layout. The year grid shows twelve years starting at the displayed year; its previous/next buttons page
+either layout (`"year"` falls back to the default when `yearPickerHidden` is set). The year grid shows twelve years starting at the displayed year; its previous/next buttons page
 by twelve years.
 
 Calendar preserves focus when a layout or view change hides the focused panel, or replaces the month or year grid
