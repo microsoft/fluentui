@@ -367,4 +367,26 @@ test.describe('Accordion', () => {
 
     await expect(item).toHaveAttribute('expanded');
   });
+
+  test('should initialize and expand items when an item contains an unregistered descendant element', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${AccordionItemTagName}>
+          <span slot="heading">Heading 1</span>
+          <demo-unregistered-content>Content with unregistered element</demo-unregistered-content>
+        </${AccordionItemTagName}>
+      `,
+    });
+
+    const item = element.locator(AccordionItemTagName).first();
+    const button = item.locator('button[part="button"]');
+
+    await button.click();
+
+    await expect(item).toHaveAttribute('expanded');
+  });
 });
