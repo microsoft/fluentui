@@ -42,6 +42,7 @@ export interface FluentGlobals extends Args {
 
 // @public
 export interface FluentParameters extends Parameters_2 {
+    __generatedStylingMetadata?: StylingMetadata;
     // (undocumented)
     dir?: 'ltr' | 'rtl';
     // (undocumented)
@@ -74,6 +75,17 @@ export interface FluentStoryContext extends StoryContext {
 
 // @public (undocumented)
 export function parameters(options?: FluentParameters): FluentParameters;
+
+// @public
+export type StylingMetadata = {
+    classNames?: {
+        classNames: Readonly<Record<string, string>>;
+    };
+    dataAttributes?: {
+        attributes: Readonly<Record<string, Readonly<Record<string, `data-${string}`>>>>;
+        values?: Readonly<Record<string, Readonly<Record<string, readonly (string | number | boolean)[] | null>>>>;
+    };
+};
 
 // @public (undocumented)
 export type Theme = (typeof themes)[number];

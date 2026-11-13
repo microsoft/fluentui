@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "docs: add opt-in slot class-name API cards for the Button and Accordion pilot",
+  "type": "minor",
+  "comment": "docs: add opt-in styling API sections for the v9 and headless Button pilot",
   "packageName": "@fluentui/react-storybook-addon",
   "email": "paulmardling@microsoft.com"
 }

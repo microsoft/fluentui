@@ -1,4 +1,5 @@
 export type { FluentGlobals, FluentParameters, FluentStoryContext } from './hooks';
+export type { StylingMetadata } from './docs/stylingMetadata';
 export type { ThemeIds, Theme } from './theme';
 export { themes } from './theme';
 export { DIR_ID, THEME_ID, THEMES } from './constants';

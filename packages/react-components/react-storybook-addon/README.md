@@ -58,6 +58,38 @@ This presets uses [custom docs container and page](https://storybook.js.org/docs
   - `Slot` api rendering
   - native props support
 
+### Styling API reference
+
+Provide single-component styling metadata in `reactStorybookAddon.docs` to opt a docs page into
+collapsed **Props**, **Data attributes**, and **Classes** sections. Sections without entries are omitted.
+Pages without styling metadata retain their existing layout.
+
+```ts
+import { buttonClassNames } from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
+
+const parameters = {
+  reactStorybookAddon: {
+    docs: {
+      classNames: { classNames: buttonClassNames },
+    },
+  },
+} satisfies FluentParameters;
+```
+
+For headless components, supply `dataAttributes.attributes` as a slot-to-property-to-attribute map:
+`{ root: { disabled: 'data-disabled', iconPosition: 'data-icon-position' } }`.
+Optional `dataAttributes.values` uses the same slot/property keys:
+`{ root: { iconPosition: ['before', 'after'] } }`.
+Omitted values mean presence attributes; an empty array means any string; `null` means unknown and hides the row.
+Document only attributes actually exposed by the component, not attributes from a styled or headless counterpart.
+
+Metadata is explicitly authored; this addon does not extract it from source. An external build tool can
+supply the same shape through `parameters.__generatedStylingMetadata`. Authored metadata replaces generated
+metadata per section. Setting story-level `reactStorybookAddon.docs` to `false` disables styling metadata.
+`docs.hideArgsTable` hides the entire API reference, and a custom `renderArgsTable` replaces it.
+Family tabs and automatic source extraction are not supported.
+
 ## Getting Started
 
 ### Installation

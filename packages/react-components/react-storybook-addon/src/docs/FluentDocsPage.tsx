@@ -28,6 +28,8 @@ import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
+import { StylingApiReference } from './StylingApiReference';
+import { resolveStylingMetadata } from './stylingMetadata';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -289,7 +291,7 @@ const RenderArgsTable = ({
   );
 
   return hideArgsTable ? null : (
-    <>
+    <StylingApiReference metadata={resolveStylingMetadata(parameters)}>
       <div className={styles.additionalInfoWrapper}>
         <ArgTypes of={component} />
         {hasArgAsProp && (
@@ -370,7 +372,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-    </>
+    </StylingApiReference>
   );
 };
 

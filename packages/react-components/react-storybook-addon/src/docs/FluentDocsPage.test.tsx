@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { DocsContext, type DocsContextProps } from '@storybook/addon-docs/blocks';
 import type { PreparedStory } from 'storybook/internal/types';
 import { Channel } from 'storybook/internal/channels';
@@ -77,6 +77,109 @@ function renderDocs(parameters: FluentParameters, configured: boolean, props: Fl
     </DocsContext.Provider>,
   );
 }
+
+const stylingParameters: FluentParameters = {
+  reactStorybookAddon: {
+    docs: {
+      classNames: { classNames: buttonClassNames },
+      dataAttributes: {
+        attributes: {
+          root: {
+            disabled: 'data-disabled',
+            iconPosition: 'data-icon-position',
+            custom: 'data-custom',
+            unknown: 'data-unknown',
+          },
+        },
+        values: { root: { iconPosition: ['before', 'after'], custom: [], unknown: null } },
+      },
+    },
+  },
+};
+
+describe.each([false, true])('FluentDocsPage styling reference (configured: %s)', configured => {
+  it('groups the API into independent initially collapsed sections with semantic tables', () => {
+    const { container } = renderDocs(stylingParameters, configured);
+    const sections = Array.from(container.querySelectorAll('details'));
+    expect(sections.map(section => section.querySelector('summary')?.textContent)).toEqual([
+      'Props',
+      'Data attributes',
+      'Classes',
+    ]);
+    expect(sections.every(section => !section.open)).toBe(true);
+
+    fireEvent.click(screen.getByText('Classes', { selector: 'summary' }));
+    expect(sections[2].open).toBe(true);
+    expect(sections[0].open).toBe(false);
+    expect(screen.getByRole('table', { name: 'Classes' }).textContent).toContain('rootfui-Buttoniconfui-Button__icon');
+    fireEvent.click(screen.getByText('Data attributes', { selector: 'summary' }));
+    expect(sections[1].open).toBe(true);
+    expect(sections[2].open).toBe(true);
+    const table = screen.getByRole('table', { name: 'Data attributes' });
+    expect(
+      within(table)
+        .getAllByRole('row')
+        .map(row => row.textContent),
+    ).toEqual([
+      'SlotAttributeValue',
+      'rootdata-disabledpresence',
+      'rootdata-icon-position"before" | "after"',
+      'rootdata-customstring',
+    ]);
+    expect(screen.queryByText('data-unknown')).toBeNull();
+    expect(screen.getByTestId('arg-types')).toBeTruthy();
+  });
+
+  it('replaces generated metadata per authored section, preserving the other section', () => {
+    renderDocs(
+      {
+        __generatedStylingMetadata: {
+          classNames: { classNames: { root: 'generated-root' } },
+          dataAttributes: { attributes: { root: { active: 'data-active' } } },
+        },
+        reactStorybookAddon: { docs: { classNames: { classNames: buttonClassNames } } },
+      },
+      configured,
+    );
+    fireEvent.click(screen.getByText('Classes', { selector: 'summary' }));
+    fireEvent.click(screen.getByText('Data attributes', { selector: 'summary' }));
+    expect(screen.getByText('fui-Button')).toBeTruthy();
+    expect(screen.queryByText('generated-root')).toBeNull();
+    expect(screen.getByText('data-active')).toBeTruthy();
+  });
+
+  it.each<FluentParameters>([
+    {
+      reactStorybookAddon: { docs: false },
+      __generatedStylingMetadata: { classNames: { classNames: buttonClassNames } },
+    },
+    { reactStorybookAddon: { docs: { classNames: { classNames: {} } } } },
+    {
+      reactStorybookAddon: {
+        docs: {
+          dataAttributes: { attributes: { root: { unknown: 'data-unknown' } }, values: { root: { unknown: null } } },
+        },
+      },
+    },
+  ])('retains the original layout without renderable metadata (%j)', parameters => {
+    const { container } = renderDocs(parameters, configured);
+    expect(container.querySelector('details')).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'API Reference' })).toBeNull();
+    expect(screen.getByTestId('arg-types')).toBeTruthy();
+  });
+
+  it('hides the entire reference with the API table', () => {
+    renderDocs({ ...stylingParameters, docs: { hideArgsTable: true } }, configured);
+    expect(screen.queryByRole('heading', { name: 'API Reference' })).toBeNull();
+    expect(screen.queryByTestId('arg-types')).toBeNull();
+  });
+
+  it('lets a custom renderer replace the entire reference', () => {
+    renderDocs(stylingParameters, configured, { renderArgsTable: () => <div>Custom API reference</div> });
+    expect(screen.getByText('Custom API reference')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'API Reference' })).toBeNull();
+  });
+});
 
 describe.each([false, true])('FluentDocsPage class names (configured: %s)', configured => {
   it('renders the supplied class names in a labeled semantic table', () => {
