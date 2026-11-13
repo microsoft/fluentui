@@ -28,7 +28,9 @@ Placeholder.parameters = {
     description: {
       story:
         'An input can have placeholder text. If using the placeholder as a label (which is not ' +
-        'recommended for usability), be sure to provide an `aria-label` for screen reader users.',
+        'recommended for usability), be sure to provide an `aria-label` for screen reader users. ' +
+        'For `filled-lighter` and `filled-darker` inputs without another identifying visual cue, ' +
+        'provide a descriptive placeholder with at least 4.5:1 contrast against the input background.',
     },
   },
 };
