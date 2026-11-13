@@ -62,28 +62,44 @@ describe('Menu viewport', () => {
       });
     });
 
-  const rect = (top: number, height: number) => ({
+  const rect = (top: number, height: number, left = 0, width = 100) => ({
     top,
     bottom: top + height,
-    left: 0,
-    right: 100,
-    x: 0,
+    left,
+    right: left + width,
+    x: left,
     y: top,
-    width: 100,
+    width,
     height,
     toJSON: () => ({}),
   });
 
-  const measure = (surface: HTMLElement, item: HTMLElement, itemTop = 180, itemHeight = 20) => {
+  const measure = (
+    surface: HTMLElement,
+    item: HTMLElement,
+    { top = 180, height = 20, left = 0, width = 100, scaleX = 1, scaleY = 1, size = 100, clientLeft = 0 } = {},
+  ) => {
     Object.defineProperties(surface, {
-      clientHeight: { configurable: true, value: 100 },
-      clientWidth: { configurable: true, value: 100 },
+      clientHeight: { configurable: true, value: size },
+      clientWidth: { configurable: true, value: size },
       clientTop: { configurable: true, value: 2 },
+      clientLeft: { configurable: true, value: clientLeft },
+      offsetHeight: { configurable: true, get: () => surface.clientHeight + 4 },
+      offsetWidth: { configurable: true, get: () => surface.clientWidth + clientLeft * 2 },
     });
-    jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => rect(10, surface.clientHeight + 4));
+    jest
+      .spyOn(surface, 'getBoundingClientRect')
+      .mockImplementation(() => rect(10, surface.offsetHeight * scaleY, 10, surface.offsetWidth * scaleX));
     jest
       .spyOn(item, 'getBoundingClientRect')
-      .mockImplementation(() => rect(12 + itemTop - surface.scrollTop, itemHeight));
+      .mockImplementation(() =>
+        rect(
+          10 + (surface.clientTop + top - surface.scrollTop) * scaleY,
+          height * scaleY,
+          10 + (surface.clientLeft + left - surface.scrollLeft) * scaleX,
+          width * scaleX,
+        ),
+      );
   };
 
   const Example = ({ replacement = false, open = true }: { replacement?: boolean; open?: boolean }) => (
@@ -152,7 +168,7 @@ describe('Menu viewport', () => {
       expect([outer.scrollTop, middle.scrollTop, inner.scrollTop]).toEqual([100, 100, 100]);
 
       update({ replacement: true });
-      measure(outer, get('middle-trigger'), 240);
+      measure(outer, get('middle-trigger'), { top: 240 });
       const order: string[] = [];
       for (const [name, surface] of [
         ['outer', outer],
@@ -257,20 +273,7 @@ describe('Menu viewport', () => {
       const item = get('outer-item');
       surface.style.writingMode = writingMode;
       surface.style.direction = direction;
-      measure(surface, item, 0);
-      Object.defineProperty(surface, 'clientLeft', { configurable: true, value: 2 });
-      jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => ({
-        ...rect(10, 104),
-        left: 10,
-        right: 114,
-        width: 104,
-      }));
-      jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => ({
-        ...rect(12, 20),
-        left: 12 + left - surface.scrollLeft,
-        right: 12 + left + width - surface.scrollLeft,
-        width,
-      }));
+      measure(surface, item, { top: 0, left, width, clientLeft: 2 });
       item.focus();
       flush();
       expect(surface.scrollLeft).toBe(expected);
@@ -288,29 +291,7 @@ describe('Menu viewport', () => {
     const { get, activeRoot } = setup();
     const surface = get('outer');
     const item = get('outer-item');
-    Object.defineProperties(surface, {
-      clientWidth: { configurable: true, value: 200 },
-      clientHeight: { configurable: true, value: 200 },
-      clientLeft: { configurable: true, value: 3 },
-      clientTop: { configurable: true, value: 2 },
-      offsetWidth: { configurable: true, get: () => surface.clientWidth + 6 },
-      offsetHeight: { configurable: true, get: () => surface.clientHeight + 4 },
-    });
-    jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => ({
-      ...rect(10, surface.offsetHeight * scaleY),
-      left: 10,
-      right: 10 + surface.offsetWidth * scaleX,
-      width: surface.offsetWidth * scaleX,
-    }));
-    jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => {
-      const left = 10 + (surface.clientLeft + 160 - surface.scrollLeft) * scaleX;
-      return {
-        ...rect(10 + (surface.clientTop + 160 - surface.scrollTop) * scaleY, 20 * scaleY),
-        left,
-        right: left + 20 * scaleX,
-        width: 20 * scaleX,
-      };
-    });
+    measure(surface, item, { top: 160, left: 160, width: 20, scaleX, scaleY, size: 200, clientLeft: 3 });
     item.focus();
     flush();
     expect([surface.scrollLeft, surface.scrollTop]).toEqual([0, 0]);
@@ -361,7 +342,7 @@ describe('Menu viewport', () => {
     const { get } = setup();
     const surface = get('outer');
     const item = get('outer-item');
-    measure(surface, item, 180, 160);
+    measure(surface, item, { height: 160 });
     item.focus();
     flush();
     expect(surface.scrollTop).toBe(180);
@@ -388,7 +369,7 @@ describe('Menu viewport', () => {
     const { get } = setup();
     const surface = get('outer');
     const item = get('outer-item');
-    measure(surface, item, 40);
+    measure(surface, item, { top: 40 });
     surface.scrollTop = 100;
     item.focus();
     flush();
