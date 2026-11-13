@@ -166,8 +166,7 @@ jobs:
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172
-    # Keep the OS within this repository's Playwright-supported versions.
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
