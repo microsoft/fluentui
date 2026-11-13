@@ -17,7 +17,7 @@ This library is also supported for fluent UI [v7](https://github.com/microsoft/f
 
 ### Localized legend overflow labels
 
-Use `overflowText={count => \`mais ${count}\`}`on`Legends`(or through a chart's`legendsOverflowText` prop)
+Use `` overflowText={count => `mais ${count}`} `` on `Legends` (or through a chart's `legendsOverflowText` prop)
 to format the complete overflow label, including number placement and pluralization.
 The callback receives the hidden legend count and supplies both the visible text and accessible name.
 String values retain the existing count-first formatting.

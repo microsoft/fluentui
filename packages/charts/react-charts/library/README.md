@@ -8,9 +8,9 @@ Fluent charts is a set of modern, accessible, interactive and highly customizabl
 
 ### Localized legend overflow labels
 
-Use `overflowText={count => \`mais ${count}\`}`on`Legends`to format the complete overflow label,
+Use `` overflowText={count => `mais ${count}`} `` on `Legends` to format the complete overflow label,
 including number placement and pluralization. The callback receives the hidden legend count and supplies
-both the visible text and accessible name; no count or`+` prefix is added to its result.
+both the visible text and accessible name; no count or `+` prefix is added to its result.
 String values retain the existing count-first formatting.
 
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
