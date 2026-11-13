@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: support complete localized legend overflow labels through an overflowText callback",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-baambati@microsoft.com"
+}

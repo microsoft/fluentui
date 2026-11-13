@@ -1300,7 +1300,7 @@ export interface LegendsProps {
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
-    overflowText?: string;
+    overflowText?: string | ((count: number) => string);
     selectedLegend?: string;
     selectedLegends?: string[];
     shape?: LegendShape;

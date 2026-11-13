@@ -41,6 +41,7 @@ const legends = [
   { title: 'Legend 16', color: DefaultPalette.redDark },
   { title: 'Legend 17', color: DefaultPalette.white },
 ];
+const overflowLegends = legends.map((legend, index) => ({ ...legend, key: String(index) }));
 
 const styles = {
   rect: {
@@ -87,6 +88,50 @@ describe('Legends snapShot testing', () => {
 describe('Legends - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  it('uses the localized complete overflow label and updates its count', () => {
+    const overflowText = jest.fn((count: number) => (count === 1 ? 'mais uma legenda' : `mais ${count} legendas`));
+    const { getByRole, rerender } = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 3) }}
+        overflowText={overflowText}
+      />,
+    );
+    expect(getByRole('button', { name: 'mais 3 legendas' }).textContent).toBe('mais 3 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(3);
+
+    rerender(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 1) }}
+        overflowText={overflowText}
+      />,
+    );
+    expect(getByRole('button', { name: 'mais uma legenda' }).textContent).toBe('mais uma legenda');
+    expect(overflowText).toHaveBeenLastCalledWith(1);
+
+    overflowText.mockClear();
+    rerender(
+      <Legends legends={legends} enabledWrapLines overflowProps={{ overflowItems: [] }} overflowText={overflowText} />,
+    );
+    expect(overflowText).not.toHaveBeenCalled();
+  });
+
+  it.each([undefined, '', 'remaining'])('preserves string overflow formatting for %s', overflowText => {
+    const { getByRole } = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 3) }}
+        overflowText={overflowText}
+      />,
+    );
+    const label = `3 ${overflowText || 'more'}`;
+    expect(getByRole('button', { name: label }).textContent).toBe(label);
+  });
 
   it('Should not mount legends when empty', () => {
     render(<Legends legends={[]} />);
