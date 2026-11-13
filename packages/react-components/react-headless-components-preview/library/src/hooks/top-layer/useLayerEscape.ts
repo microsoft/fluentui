@@ -32,7 +32,9 @@ const getDocumentLayers = (targetDocument: Document): DocumentLayer[] => {
 
 /**
  * Closes a top-layer element on Escape where the browser doesn't, or reports every Escape with `when: 'always'`.
- * Handled Escapes are prevented and stopped after `onEscape`, so outer layers and the browser leave them alone.
+ * Handled Escapes are prevented after `onEscape`, so outer layers and the browser leave them alone. With `listen: 'layer'`
+ * they are also stopped; a document capture listener only prevents them, as v9 Tooltip does, so it doesn't hide Escape
+ * from the rest of the page.
  */
 export const useLayerEscape = (
   ref: React.RefObject<HTMLElement | null>,
@@ -56,7 +58,9 @@ export const useLayerEscape = (
     // Before `preventDefault()`, so `onEscape` can detect a veto.
     onEscape(event);
     event.preventDefault();
-    event.stopPropagation();
+    if (listen === 'layer') {
+      event.stopPropagation();
+    }
   };
 
   const onKeyDown = useEventCallback((event: React.KeyboardEvent) => {

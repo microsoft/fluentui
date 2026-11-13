@@ -198,7 +198,7 @@ describe('Tooltip', () => {
     ['manual', 'unsupported'],
   ])('takes Escape before an enclosing layer when popover reads back as %s (hint %s)', popover => {
     const onVisibleChange = jest.fn();
-    const onOuterKeyDown = jest.fn();
+    const onOuterKeyDown = jest.fn((event: React.KeyboardEvent) => event.isDefaultPrevented());
     render(
       <div onKeyDown={onOuterKeyDown}>
         <Tooltip content="Description tooltip" relationship="description" visible onVisibleChange={onVisibleChange}>
@@ -212,6 +212,7 @@ describe('Tooltip', () => {
 
     expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
     expect(notCancelled).toBe(false);
-    expect(onOuterKeyDown).not.toHaveBeenCalled();
+    // Prevented, not stopped: the page still sees it, and enclosing layers skip it.
+    expect(onOuterKeyDown).toHaveReturnedWith(true);
   });
 });
