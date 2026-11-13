@@ -1,0 +1,53 @@
+// Named imports only - a namespace import keeps every export name as a string property in the minified output,
+// which no consumer ships, and inflates the measured size.
+import {
+  Toast,
+  ToastBody,
+  ToastContainer,
+  ToastFooter,
+  ToastTitle,
+  Toaster,
+  renderToast,
+  renderToastBody,
+  renderToastContainer,
+  renderToastFooter,
+  renderToastTitle,
+  renderToaster,
+  useToast,
+  useToastBody,
+  useToastContainer,
+  useToastContainerContext,
+  useToastContainerContextValues,
+  useToastController,
+  useToastFooter,
+  useToastTitle,
+  useToaster,
+} from '@fluentui/react-headless-components-preview/toast';
+
+console.log(
+  Toast,
+  ToastBody,
+  ToastContainer,
+  ToastFooter,
+  ToastTitle,
+  Toaster,
+  renderToast,
+  renderToastBody,
+  renderToastContainer,
+  renderToastFooter,
+  renderToastTitle,
+  renderToaster,
+  useToast,
+  useToastBody,
+  useToastContainer,
+  useToastContainerContext,
+  useToastContainerContextValues,
+  useToastController,
+  useToastFooter,
+  useToastTitle,
+  useToaster,
+);
+
+export default {
+  name: '@fluentui/react-headless-components-preview/toast',
+};
