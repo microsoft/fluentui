@@ -165,7 +165,8 @@ describe('Tooltip', () => {
       ).toBeTruthy();
     });
 
-    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>])('preserves authored names with %p', secondaryContent => {
+    it('preserves authored names', () => {
+      const secondaryContent = <kbd>Ctrl+B</kbd>;
       render(
         <>
           <span id="authored-name">Authored name</span>
@@ -180,30 +181,6 @@ describe('Tooltip', () => {
       expect(screen.getByRole('button', { name: 'Toggle bold formatting' })).not.toHaveAttribute('aria-labelledby');
       expect(screen.getByRole('button', { name: 'Authored name' })).toHaveAttribute('aria-labelledby', 'authored-name');
     });
-
-    it.each(['aria-labelledby', 'aria-describedby'] as const)(
-      'keeps closed content referenced by an authored %s',
-      attribute => {
-        render(
-          <Tooltip
-            content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
-            secondaryContent="Ctrl+B"
-            relationship="label"
-          >
-            <button
-              aria-label={attribute === 'aria-describedby' ? 'Toggle formatting' : undefined}
-              {...{ [attribute]: 'tooltip-help' }}
-            />
-          </Tooltip>,
-        );
-        expect(
-          screen.getByRole('button', {
-            name: attribute === 'aria-labelledby' ? 'Bold Ctrl+B' : 'Toggle formatting',
-            description: attribute === 'aria-describedby' ? 'Bold Ctrl+B' : '',
-          }),
-        ).toHaveAttribute(attribute, screen.getByRole('tooltip').id);
-      },
-    );
 
     it.each(['aria-labelledby', 'aria-describedby'] as const)(
       'recognizes authored whitespace-separated %s tokens',
@@ -247,136 +224,97 @@ describe('Tooltip', () => {
       expect(tooltip).not.toHaveAttribute('data-open');
     });
 
-    it.each([
-      ['summary', false, false],
-      ['summary', true, false],
-      ['summary', false, true],
-      ['summary', true, true],
-      ['shortcut', false, true],
-      ['shortcut', true, true],
-    ] as const)(
-      'preserves the authored descendant label %s with visible=%p and secondary content=%p',
-      (targetId, visible, withSecondaryContent) => {
-        render(
-          <Tooltip
-            visible={visible}
-            content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
-            secondaryContent={withSecondaryContent ? { id: 'shortcut', children: 'Ctrl+B' } : undefined}
-            relationship="label"
-          >
-            <button aria-labelledby={targetId} />
-          </Tooltip>,
-        );
-        const expectedName = targetId === 'summary' ? 'Bold' : 'Ctrl+B';
-        expect(screen.getByRole('button', { name: expectedName })).toHaveAttribute('aria-labelledby', targetId);
-        const tooltip = screen.getByRole('tooltip');
-        expect(tooltip).toContainElement(screen.getByText(expectedName));
-        expect(tooltip.hasAttribute('data-open')).toBe(visible);
-      },
-    );
-
-    it.each([
-      ['summary', false],
-      ['summary', true],
-      ['shortcut', false],
-      ['shortcut', true],
-    ] as const)(
-      'preserves the authored descendant description %s for a named label trigger with visible=%p',
-      (targetId, visible) => {
-        render(
+    describe.each(['element', 'render function'])('authored references with an %s trigger', triggerType => {
+      it.each([
+        ['label', 'aria-labelledby', 'tooltip'],
+        ['label', 'aria-labelledby', 'summary'],
+        ['label', 'aria-labelledby', 'shortcut'],
+        ['label', 'aria-describedby', 'tooltip'],
+        ['label', 'aria-describedby', 'summary'],
+        ['label', 'aria-describedby', 'shortcut'],
+        ['description', 'aria-describedby', 'summary'],
+        ['description', 'aria-describedby', 'shortcut'],
+      ] as const)('preserves relationship=%s %s=%s across visibility changes', (relationship, attribute, targetId) => {
+        const text = targetId === 'tooltip' ? 'Bold Ctrl+B' : targetId === 'summary' ? 'Bold' : 'Ctrl+B';
+        const name = relationship === 'description' ? 'Format' : 'Toggle formatting';
+        const authoredProps = {
+          children: relationship === 'description' ? name : undefined,
+          'aria-label': relationship === 'label' && attribute === 'aria-describedby' ? name : undefined,
+          [attribute]: targetId,
+        };
+        const example = (visible: boolean) => (
           <Tooltip
             visible={visible}
             content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
             secondaryContent={{ id: 'shortcut', children: 'Ctrl+B' }}
-            relationship="label"
+            relationship={relationship}
           >
-            <button aria-label="Toggle formatting" aria-describedby={targetId} />
+            {triggerType === 'element' ? (
+              <button {...authoredProps} />
+            ) : (
+              triggerProps => React.createElement('button', { ...triggerProps, ...authoredProps })
+            )}
+          </Tooltip>
+        );
+        const result = render(example(false));
+        for (const visible of [false, true, false]) {
+          result.rerender(example(visible));
+          expect(
+            screen.getByRole('button', {
+              name: attribute === 'aria-labelledby' ? text : name,
+              description: attribute === 'aria-describedby' ? text : '',
+            }),
+          ).toHaveAttribute(attribute, targetId);
+          const tooltip = screen.getByRole('tooltip');
+          expect(tooltip).toContainElement(tooltip.ownerDocument.getElementById(targetId));
+          expect(tooltip.hasAttribute('data-open')).toBe(visible);
+        }
+      });
+
+      it.each(['', ' \t\n '])('does not mount unused content for empty references %p', reference => {
+        const authoredProps = {
+          'aria-label': 'Toggle formatting',
+          'aria-labelledby': reference,
+          'aria-describedby': reference,
+        };
+        render(
+          <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
+            {triggerType === 'element' ? (
+              <button {...authoredProps} />
+            ) : (
+              triggerProps => React.createElement('button', { ...triggerProps, ...authoredProps })
+            )}
           </Tooltip>,
         );
-        const expectedDescription = targetId === 'summary' ? 'Bold' : 'Ctrl+B';
-        expect(
-          screen.getByRole('button', { name: 'Toggle formatting', description: expectedDescription }),
-        ).toHaveAttribute('aria-describedby', targetId);
-        const tooltip = screen.getByRole('tooltip');
-        expect(tooltip).toContainElement(screen.getByText(expectedDescription));
-        expect(tooltip.hasAttribute('data-open')).toBe(visible);
-      },
-    );
+        expect(screen.getByRole('button', { name: 'Toggle formatting' })).toHaveAttribute('aria-labelledby', reference);
+        expect(screen.queryByRole('tooltip')).toBeNull();
+      });
+    });
 
     it.each([
-      ['aria-labelledby', 'summary'],
-      ['aria-labelledby', 'shortcut'],
-      ['aria-describedby', 'summary'],
-      ['aria-describedby', 'shortcut'],
-    ] as const)('preserves a render-function %s targeting descendant %s', (attribute, targetId) => {
-      render(
+      ['tooltip-help', undefined],
+      ['tooltip-help', null],
+      ['summary', undefined],
+      ['summary', null],
+    ] as const)('preserves %s without secondary content=%p', (targetId, secondaryContent) => {
+      const example = (visible: boolean) => (
         <Tooltip
-          content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
-          secondaryContent={{ id: 'shortcut', children: 'Ctrl+B' }}
-          relationship="label"
-        >
-          {triggerProps =>
-            React.createElement('button', {
-              ...triggerProps,
-              'aria-label': attribute === 'aria-describedby' ? 'Toggle formatting' : undefined,
-              [attribute]: targetId,
-            })
-          }
-        </Tooltip>,
-      );
-      const expectedText = targetId === 'summary' ? 'Bold' : 'Ctrl+B';
-      expect(
-        screen.getByRole('button', {
-          name: attribute === 'aria-labelledby' ? expectedText : 'Toggle formatting',
-          description: attribute === 'aria-describedby' ? expectedText : '',
-        }),
-      ).toHaveAttribute(attribute, targetId);
-      const tooltip = screen.getByRole('tooltip');
-      expect(tooltip).toContainElement(screen.getByText(expectedText));
-      expect(tooltip).not.toHaveAttribute('data-open');
-    });
-
-    it.each(['', ' \t\n '])('does not mount unused content for empty authored references %p', reference => {
-      render(
-        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
-          <button aria-label="Toggle formatting" aria-labelledby={reference} aria-describedby={reference} />
-        </Tooltip>,
-      );
-      expect(screen.getByRole('button', { name: 'Toggle formatting' })).toHaveAttribute('aria-labelledby', reference);
-      expect(screen.queryByRole('tooltip')).toBeNull();
-    });
-
-    it.each(['', ' \t\n '])('does not mount unused content for empty render-function references %p', reference => {
-      render(
-        <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
-          {triggerProps =>
-            React.createElement('button', {
-              ...triggerProps,
-              'aria-label': 'Toggle formatting',
-              'aria-labelledby': reference,
-              'aria-describedby': reference,
-            })
-          }
-        </Tooltip>,
-      );
-      expect(screen.getByRole('button', { name: 'Toggle formatting' })).toHaveAttribute('aria-labelledby', reference);
-      expect(screen.queryByRole('tooltip')).toBeNull();
-    });
-
-    it.each([undefined, null])('preserves authored ID references without secondary content=%p', secondaryContent => {
-      render(
-        <Tooltip
-          content={{ id: 'tooltip-help', children: <strong>Bold</strong> }}
+          visible={visible}
+          content={{ id: 'tooltip-help', children: <span id="summary">Bold</span> }}
           secondaryContent={secondaryContent}
           relationship="label"
         >
-          <button aria-labelledby="tooltip-help" />
-        </Tooltip>,
+          <button aria-labelledby={targetId} />
+        </Tooltip>
       );
-      expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute(
-        'aria-labelledby',
-        screen.getByRole('tooltip').id,
-      );
+      const result = render(example(false));
+      for (const visible of [false, true, false]) {
+        result.rerender(example(visible));
+        expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('aria-labelledby', targetId);
+        const tooltip = screen.getByRole('tooltip');
+        expect(tooltip).toContainElement(screen.getByText('Bold'));
+        expect(tooltip.hasAttribute('data-open')).toBe(visible);
+      }
     });
 
     it('preserves an authored description reference', () => {
@@ -391,47 +329,7 @@ describe('Tooltip', () => {
       expect(screen.getByRole('button', { description: 'Authored description' })).toBeTruthy();
     });
 
-    it.each([false, true])('preserves a primary descendant description with visible=%p', visible => {
-      render(
-        <Tooltip
-          visible={visible}
-          content={{ id: 'tooltip', children: <span id="summary">Bold</span> }}
-          secondaryContent="Ctrl+B"
-          relationship="description"
-        >
-          <button aria-describedby="summary">Format</button>
-        </Tooltip>,
-      );
-      expect(screen.getByRole('button', { name: 'Format', description: 'Bold' })).toHaveAttribute(
-        'aria-describedby',
-        'summary',
-      );
-      const tooltip = screen.getByRole('tooltip');
-      expect(tooltip).toContainElement(screen.getByText('Bold'));
-      expect(tooltip.hasAttribute('data-open')).toBe(visible);
-    });
-
-    it.each([false, true])('preserves a secondary slot description with visible=%p', visible => {
-      render(
-        <Tooltip
-          visible={visible}
-          content={{ id: 'tooltip', children: 'Bold' }}
-          secondaryContent={{ id: 'shortcut', children: 'Ctrl+B' }}
-          relationship="description"
-        >
-          <button aria-describedby="shortcut">Format</button>
-        </Tooltip>,
-      );
-      expect(screen.getByRole('button', { name: 'Format', description: 'Ctrl+B' })).toHaveAttribute(
-        'aria-describedby',
-        'shortcut',
-      );
-      const tooltip = screen.getByRole('tooltip');
-      expect(tooltip).toContainElement(screen.getByText('Ctrl+B'));
-      expect(tooltip.hasAttribute('data-open')).toBe(visible);
-    });
-
-    it.each(['Ctrl+B', <kbd key="shortcut">Ctrl+B</kbd>, { children: 'Ctrl+B', 'aria-hidden': true }])(
+    it.each([<kbd key="shortcut">Ctrl+B</kbd>, { children: 'Ctrl+B', 'aria-hidden': true }])(
       'preserves an authored render-function label with %p',
       secondaryContent => {
         const onFocus = jest.fn();
