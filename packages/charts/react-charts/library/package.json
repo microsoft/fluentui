@@ -26,6 +26,7 @@
     "@fluentui/chart-utilities": "^1.1.41",
     "@fluentui/react-button": "^9.11.3",
     "@fluentui/react-jsx-runtime": "^9.4.7",
+    "@fluentui/react-menu": "^9.25.7",
     "@fluentui/react-overflow": "^9.9.5",
     "@fluentui/react-popover": "^9.14.10",
     "@fluentui/react-shared-contexts": "^9.26.4",

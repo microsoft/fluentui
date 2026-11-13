@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { AnnotationOnlyChart } from './AnnotationOnlyChart';
 import type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { ChartAnnotation } from '../../types/ChartAnnotation';
@@ -169,6 +170,33 @@ describe('AnnotationOnlyChart', () => {
       expect(content).toBeInTheDocument();
       expect(content.className).toBeTruthy();
     });
+
+    it('preserves explicit chart styling and the accessible description', () => {
+      const { container } = render(
+        <AnnotationOnlyChart
+          {...defaultProps}
+          chartTitle="Complete Chart"
+          description="A complete chart with all props"
+          paperBackgroundColor="#f5f5f5"
+          plotBackgroundColor="#ffffff"
+          fontColor="#333333"
+          fontFamily="Arial, sans-serif"
+          margin={{ t: 10, r: 15, b: 20, l: 25 }}
+        />,
+      );
+      const root = container.querySelector('[data-chart-annotation-only="true"]')!;
+      expect(root).toHaveAttribute('aria-label', 'A complete chart with all props');
+      expect(root).toHaveStyle({
+        width: '600px',
+        minHeight: '400px',
+        backgroundColor: '#f5f5f5',
+        color: '#333333',
+        fontFamily: 'Arial, sans-serif',
+        padding: '10px 15px 20px 25px',
+      });
+      expect(screen.getByText('Complete Chart')).toHaveAttribute('aria-hidden', 'true');
+      expect(container.querySelector('[role="presentation"]')).toHaveStyle({ backgroundColor: '#ffffff' });
+    });
   });
 
   describe('Margin/Padding', () => {
@@ -221,6 +249,34 @@ describe('AnnotationOnlyChart', () => {
         expect(svg).toBeInTheDocument();
         expect(svg?.getAttribute('viewBox')).toContain('600');
         expect(svg?.getAttribute('viewBox')).toContain('400');
+      });
+    });
+
+    it('retains native note text, centered placement and focus when annotation extensions are omitted', () => {
+      const { container } = render(<AnnotationOnlyChart {...defaultProps} />);
+      const notes = screen.getAllByRole('note');
+      expect(notes).toHaveLength(mockAnnotations.length);
+      notes.forEach((note, index) => {
+        const annotation = mockAnnotations[index];
+        expect(note).toHaveTextContent(annotation.text);
+        expect(note).toHaveAttribute('aria-label', annotation.text);
+        expect(note).toHaveAttribute('tabindex', '0');
+        const foreignObject = note.closest('foreignObject')!;
+        const anchor = index === 0 ? { x: 300, y: 200 } : { x: 180, y: 280 };
+        expect(Number(foreignObject.getAttribute('x')) + Number(foreignObject.getAttribute('width')) / 2).toBe(
+          anchor.x,
+        );
+        expect(Number(foreignObject.getAttribute('y')) + Number(foreignObject.getAttribute('height')) / 2).toBe(
+          anchor.y,
+        );
+        userEvent.tab();
+        expect(note).toHaveFocus();
+      });
+      expect(screen.queryByRole('button')).toBeNull();
+      container.querySelectorAll('[data-chart-annotation-measurement]').forEach(copy => {
+        expect(copy).toHaveAttribute('inert');
+        expect(copy).toHaveAttribute('aria-hidden', 'true');
+        expect(copy).toHaveAttribute('tabindex', '-1');
       });
     });
   });
@@ -311,27 +367,6 @@ describe('AnnotationOnlyChart', () => {
   });
 
   describe('Snapshots', () => {
-    it('matches snapshot with default props', () => {
-      const { container } = render(<AnnotationOnlyChart {...defaultProps} />);
-      expect(container).toMatchSnapshot();
-    });
-
-    it('matches snapshot with all props', () => {
-      const { container } = render(
-        <AnnotationOnlyChart
-          {...defaultProps}
-          chartTitle="Complete Chart"
-          description="A complete chart with all props"
-          paperBackgroundColor="#f5f5f5"
-          plotBackgroundColor="#ffffff"
-          fontColor="#333333"
-          fontFamily="Arial, sans-serif"
-          margin={{ t: 10, r: 15, b: 20, l: 25 }}
-        />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
     it('matches snapshot with empty annotations', () => {
       const { container } = render(<AnnotationOnlyChart annotations={[]} chartTitle="Empty Chart" />);
       expect(container).toMatchSnapshot();
