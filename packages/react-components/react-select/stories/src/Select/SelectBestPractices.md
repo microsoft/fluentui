@@ -3,7 +3,7 @@
 ### Do
 
 - **Consider using `Select` with underline or outline appearances.** These are the preferred appearances.
-- **Make the control visually identifiable.** When a boundary is needed to identify an empty control, use `outline` or `underline` with a visible border that contrasts at least **3:1** against the surrounding background. If selected-option text identifies the control instead, it must contrast at least **4.5:1** against the control background.
+- **Make filled controls visually identifiable.** Without another identifying visual cue, keep a visible selected option with at least **4.5:1** text contrast against the control background.
 - **Use the appropriate surface for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`.
 - **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 

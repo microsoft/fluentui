@@ -116,9 +116,7 @@ Instead, use the [`useTypingAnnounce`](https://storybooks.fluentui.dev/react/?pa
 
 #### Color contrast and appearance variants
 
-A contrasting boundary is required when no other visual cue identifies an empty textarea. Any boundary needed to identify the control must have at least 3:1 contrast against its surroundings ([WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries)).
-
-Visible placeholder or value text can identify the control without a contrasting boundary. Both need at least 4.5:1 contrast against the textarea background ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)), but readability alone does not ensure that users recognize the editable control.
+Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries) permits controls without contrasting boundaries when visible content sufficiently identifies them. Placeholder and value text need at least 4.5:1 contrast against the textarea background ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)), but readability alone does not ensure that users recognize the editable control.
 
 - `outline` (default) — the bottom border specifically uses `colorNeutralStrokeAccessible`, which is darker than the surrounding border tokens to meet the indicator-contrast requirement.
 - `filled-lighter` and `filled-darker` — Fluent design guidance places these on `colorNeutralBackground3` and `colorNeutralBackground1`, respectively. These surface choices are not WCAG requirements. If text is the identifying cue, keep a descriptive placeholder when empty and value text when populated.
@@ -126,7 +124,7 @@ Visible placeholder or value text can identify the control without a contrasting
 
 `Textarea` does not include an `underline` appearance like `Input` does, because the additional visual weight of an underline-only boundary is less useful at the larger sizes of a multi-line field.
 
-The bottom focus border (`::after`) uses `colorCompoundBrandStroke`. Preserve a visible focus indicator with at least 3:1 contrast against adjacent colors when customizing the theme or surrounding surface.
+The bottom focus border (`::after`) uses `colorCompoundBrandStroke`. Preserve a sufficiently contrasting focus indicator when customizing the theme or surrounding surface.
 
 ### Placing Textarea within an arrow-navigation region like Toolbar or Menu
 

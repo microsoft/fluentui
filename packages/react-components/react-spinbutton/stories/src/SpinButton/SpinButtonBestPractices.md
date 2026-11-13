@@ -3,8 +3,7 @@
 ### Do
 
 - **Consider using `SpinButton` with underline or outline appearances.** These are the preferred appearances.
-- **Make the spin button visually identifiable.** When no other cue identifies an empty control, provide a boundary with at least **3:1** contrast against its surroundings.
-- **Use identifying placeholder or value text.** Visible text can identify a control without a contrasting boundary, but readability alone does not ensure identification. Placeholder and value text must have at least **4.5:1** contrast against the input background. Use the native `placeholder` prop to keep a filled spin button identifiable when its value is cleared.
+- **Use identifying placeholder or value text.** Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. Both must have at least **4.5:1** contrast against the input background and help users recognize the editable control. Use the native `placeholder` prop to keep a filled spin button identifiable when its value is cleared.
 - **Follow Fluent surface guidance for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`.
 - **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 

@@ -101,7 +101,7 @@ Appearance.parameters = {
         '`colorNeutralBackground1` for `filled-darker`; these surface choices are not WCAG requirements. ' +
         'Without another identifying visual cue, filled controls need a descriptive placeholder or displayed value ' +
         'that identifies the editable/selectable control, with normal-size text contrast of at least 4.5:1 against its own fill. ' +
-        'A boundary needed to identify an empty control must contrast at least 3:1 against the adjacent background.',
+        'Keep a persistent visible label and a sufficiently contrasting focus indicator.',
     },
   },
 };

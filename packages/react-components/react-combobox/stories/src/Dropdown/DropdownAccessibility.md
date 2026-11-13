@@ -7,7 +7,7 @@
 - **Use multi-select Dropdown when you have 10+ options, otherwise use a Checkbox group.** For simple multiselect use cases with less than 10 options, consider using a group of `Checkbox` components.
 - **Set `inlinePopup={true}` when possible for better VoiceOver support.** The `inlinePopup` prop will cause the listbox popup to be rendered immediately after the button in the DOM. Safari does not support `aria-owns`, so this enables iOS VoiceOver swipe navigation between the button and options.
 - **Review [known accessiblity issues](./?path=/docs/concepts-developer-accessibility-components-dropdown--docs).**
-- **Prefer outline or underline appearances.** A boundary needed to identify an empty control must contrast at least **3:1** against the adjacent background.
+- **Keep filled controls visually identifiable.** Without another identifying cue, provide a descriptive placeholder when empty and displayed value text when populated. Both must contrast at least **4.5:1** against the control's own fill.
 - **Use the recommended surface for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`. These surface-token choices are Fluent guidance, not WCAG requirements.
 - **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 

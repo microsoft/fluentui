@@ -8,8 +8,6 @@
 
 - **Inform the user about the [deletion interaction](https://github.com/microsoft/fluentui/issues/31165) of tags when pressing Backspace:** When `TagPickerInput` is focused, pressing the Backspace key will remove the last tag. This behavior should be communicated to the user to avoid confusion.
 
-- **Consider using `TagPicker` with outline or underline appearances.** These are the preferred appearances. When a boundary is needed to identify an empty control, its visible border must contrast at least **3:1** against the surrounding background.
-
 - **Keep filled controls visually identifiable.** Without another identifying visual cue, provide a descriptive `TagPickerInput` placeholder when there are no selected tags. Placeholder and value text must contrast at least **4.5:1** against their background. Keep a persistent visible label and a sufficiently contrasting focus indicator.
 
 - **Use the appropriate surface for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`.

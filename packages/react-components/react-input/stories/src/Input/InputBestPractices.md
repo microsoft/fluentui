@@ -3,9 +3,7 @@
 ### Do
 
 - **Consider using `Input` with underline or outline appearances.** These are the preferred appearances.
-- **Make the input visually identifiable.** Use either:
-  - **A contrasting border:** Choose `outline` or `underline`, ensuring the visible border contrasts at least **3:1** against the surrounding background. These appearances can be empty, with or without a placeholder.
-  - **Identifying text content:** Provide a placeholder when empty and value text when populated. Both must contrast at least **4.5:1** against the input background and help users recognize the editable control.
+- **Make filled inputs visually identifiable.** Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. Both must contrast at least **4.5:1** against the input background and help users recognize the editable control.
 - **Use the appropriate surface for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`.
 - **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 

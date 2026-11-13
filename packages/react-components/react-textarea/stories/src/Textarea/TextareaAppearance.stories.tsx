@@ -61,8 +61,8 @@ Appearance.parameters = {
         'Fluent design guidance places `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on ' +
         '`colorNeutralBackground1`; these surface choices are not WCAG requirements. ' +
         'Placeholder and value text need at least 4.5:1 contrast against the textarea background. ' +
-        'Visible text can identify a control without a contrasting boundary, but readability alone does not ensure identification. ' +
-        'When no other cue identifies an empty control, provide a boundary with at least 3:1 contrast against its surroundings.',
+        'Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. ' +
+        'Keep a persistent visible label and a sufficiently contrasting focus indicator.',
     },
   },
 };

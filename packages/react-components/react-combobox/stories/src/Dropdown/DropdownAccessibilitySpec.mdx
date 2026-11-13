@@ -123,9 +123,7 @@ However, if the `<Option>` contains JSX, this will not work correctly. If that i
 
 #### Color contrast and appearance variants
 
-`outline` and `underline` are the preferred appearances. A boundary needed to identify an empty control must contrast at least **3:1** against the adjacent background; see [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries).
-
-For filled appearances, Fluent recommends `colorNeutralBackground3` surroundings for `filled-lighter` and `colorNeutralBackground1` for `filled-darker`. These surface-token choices are Fluent design guidance, not WCAG requirements; there is no blanket requirement for a filled control's background to contrast 3:1 with its surroundings.
+For filled appearances, Fluent recommends `colorNeutralBackground3` surroundings for `filled-lighter` and `colorNeutralBackground1` for `filled-darker`. These surface-token choices are Fluent design guidance, not WCAG requirements. [WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries) permits controls without contrasting boundaries when visible content sufficiently identifies them.
 
 Without another identifying visual cue, a filled Dropdown needs a descriptive placeholder when empty or a displayed value when populated. Normal-size placeholder and value text must contrast at least **4.5:1** against the control's own fill; see [WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). The text must actually identify a selectable control, rather than being decorative or ambiguous.
 
