@@ -1,0 +1,226 @@
+@reference '#theme';
+
+/* Block order is the cascade: every selector here is :where()-flat, so source order alone
+   arbitrates. Three orderings are load-bearing:
+   - .disabled precedes the two invalid blocks. Griffel's invalid buckets carry a
+     `:not(:focus-within)` clause that makes them (0,2,0) against the disabled bucket's (0,1,0), so
+     a disabled invalid field paints red on both sides — in forced colors too, since a media query
+     adds no specificity.
+   - .clear-button precedes .icon. Both classes land on the clear button, and they overlap on the
+     margin family: Griffel's clear-button look is a makeResetStyles, which ranks below the
+     makeStyles atoms, so iconStyles[size].marginLeft wins there. windmod has two equal-priority
+     module classes, so only source order can reproduce it.
+   - inside .button the placeholder block precedes the disabled block, because Griffel merges
+     disabledText after placeholder. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-flex min-w-250 rounded-medium align-middle;
+
+    /* The bottom focus border, shared with Input, Select, SpinButton and Combobox. No
+       transition-delay and no timing function: Griffel writes a curve token into transition-delay,
+       which is not a <time> and is dropped at computed-value time, so both sides compute 0s / ease.
+       Reduced motion is suppressed house-wide by the theme, not here. */
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+
+    /* Focus inside the clear button must NOT reveal the field's focus underline. Tailwind has no
+       child-state-to-parent primitive; the module-local reference is rewritten to the built ident
+       inside :has(), which is what makes this reachable at all. Griffel wraps this rule in
+       @supports selector(:has(*)); the browser floor has :has, so the guard is dropped. */
+    &:has(.clear-button:focus)::after {
+      border-bottom-color: initial;
+      transform: scaleX(0);
+    }
+  }
+
+  /* The appearance set is cloned from Combobox rather than shared — see Combobox.module.css for why
+     every block spells its own border and why .underline omits border-solid. Dropdown diverges on
+     .filled-* alone. */
+  .outline {
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .underline {
+    @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
+  }
+
+  /* border-transparent, NOT border-transparent-stroke: Griffel's Dropdown writes the literal
+     keyword where its Combobox, Input and TagPickerControl write the token, and the two resolve
+     differently in teams-high-contrast (#ffffff), which the web-light pixel gate cannot see. */
+  .filled-lighter {
+    @apply border-thin border-solid border-transparent bg-neutral-background-1;
+  }
+
+  .filled-darker {
+    @apply border-thin border-solid border-transparent bg-neutral-background-3;
+  }
+
+  /* Griffel ships no underline or filled interactive bucket on Dropdown, only on Input; the
+     absence is reproduced rather than repaired. */
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active, focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+  }
+
+  .disabled {
+    @apply cursor-not-allowed border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .invalid-underline {
+    @variant not-focus-within {
+      @apply border-b-palette-red-border-2;
+    }
+  }
+
+  .button {
+    @apply grid w-full cursor-pointer grid-cols-[[content]_1fr_[icon]_auto_[end]] items-center justify-between gap-x-horizontal-xxs border-none bg-transparent-background text-start font-base text-neutral-foreground-1;
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant group-placeholder-shown/fui-dropdown {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant group-disabled/fui-dropdown {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+    }
+
+    @variant group-size-small/fui-dropdown {
+      @apply py-3 ps-8 pe-horizontal-s-nudge text-base-200 leading-16/12 font-regular;
+    }
+
+    @variant group-size-medium/fui-dropdown {
+      @apply py-5 ps-12 pe-horizontal-m-nudge text-base-300 leading-20/14 font-regular;
+    }
+
+    @variant group-size-large/fui-dropdown {
+      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m text-base-400 leading-11/8 font-regular;
+    }
+  }
+
+  /* Griffel's clear-button look is a makeResetStyles; the icon bucket lands on the same element and
+     overrides margin-inline-start from its size blocks, which is why .icon follows this block. */
+  .clear-button {
+    @apply relative me-horizontal-m-nudge h-fit cursor-pointer self-center border-none bg-transparent-background;
+
+    /* createFocusOutlineStyle() emits an outline reset for BOTH :focus and :focus-visible; the
+       focus-visible catalog entry is a union with the keyborg attribute and structurally cannot
+       match plain :focus, so the reset is authored twice. */
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-visible {
+      @apply border-transparent;
+
+      @variant after {
+        @apply pointer-events-none absolute -inset-2 z-1 rounded-medium border-thick border-solid border-stroke-focus-2;
+
+        @variant forced-colors {
+          @apply border-[Highlight];
+        }
+      }
+    }
+  }
+
+  /* One bucket for both icon slots, as Griffel shares it. grid-column-* is inert on the clear
+     button, which is a flex child of the root rather than a grid item of the button; Griffel
+     authors it on the shared bucket just the same. Griffel's base font-size is dead — all three
+     size blocks override it. */
+  .icon {
+    @apply col-start-[icon] col-end-[end] block text-neutral-stroke-accessible;
+
+    @variant icon {
+      @apply block;
+    }
+
+    @variant group-size-small/fui-dropdown {
+      @apply ms-horizontal-xxs text-icon-16 leading-100;
+    }
+
+    @variant group-size-medium/fui-dropdown {
+      @apply ms-horizontal-xxs text-icon-20 leading-100;
+    }
+
+    /* The 24px glyph is what makes the large field 40px tall: lineHeightBase400 is 22px, and the
+       icon shares the button's grid row under align-items: center. */
+    @variant group-size-large/fui-dropdown {
+      @apply ms-horizontal-s-nudge text-icon-24 leading-22/24;
+    }
+
+    /* The ratios above divide the TRIGGER's per-size line box, which is what the chevron (a grid
+       item of the button) inherits. The clear slot is a button-element flex child of the ROOT,
+       whose line box is 20px at every size, so its ratios divide 20 instead. */
+    &:is(button) {
+      @variant group-size-small/fui-dropdown {
+        @apply leading-125;
+      }
+
+      @variant group-size-medium/fui-dropdown {
+        @apply leading-100;
+      }
+
+      @variant group-size-large/fui-dropdown {
+        @apply leading-20/24;
+      }
+    }
+
+    @variant group-disabled/fui-dropdown {
+      @apply text-neutral-foreground-disabled;
+    }
+  }
+
+  /* Both icon slots hide the same way, in inverse conditions — Griffel's Dropdown uses display:none
+     for the chevron where its Combobox clips it, so the chevron leaves the accessibility tree. */
+  .icon-hidden {
+    @apply hidden;
+  }
+}
+
+@layer fui.components.l2 {
+  /* Overrides windmod Listbox's own level-1 rules on the same element. */
+  .listbox {
+    @apply max-h-[80vh] rounded-medium shadow-16;
+  }
+}

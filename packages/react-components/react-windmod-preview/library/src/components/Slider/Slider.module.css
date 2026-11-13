@@ -1,0 +1,193 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Root block order is the cascade: every selector is :where()-flat, so source order alone
+     arbitrates. `vertical-flag` must follow both the size blocks (its min-height replaces
+     theirs) and the focus-within-visible block (its ::after inset replaces that one); `disabled`
+     must follow the resting forced-colors block. */
+
+  /* PascalCase custom properties (--fui-Slider--*) are written by the headless hook into the
+     root's inline style and are read only. The kebab-case ones are this file's own. */
+  .root {
+    @apply relative inline-grid min-w-120 touch-none grid-cols-[1fr_calc(100%-var(--fui-slider-thumb-size))_1fr] grid-rows-[1fr_var(--fui-slider-thumb-size)_1fr] items-center justify-items-center;
+
+    --fui-slider-rail-color: var(--color-neutral-stroke-accessible);
+    --fui-slider-progress-color: var(--color-compound-brand-background);
+    --fui-slider-thumb-color: var(--color-compound-brand-background);
+
+    @variant forced-colors {
+      --fui-slider-rail-color: CanvasText;
+      --fui-slider-progress-color: Highlight;
+      --fui-slider-thumb-color: Highlight;
+    }
+
+    @variant enabled {
+      @variant hover {
+        --fui-slider-progress-color: var(--color-compound-brand-background-hover);
+        --fui-slider-thumb-color: var(--color-compound-brand-background-hover);
+      }
+
+      @variant active {
+        --fui-slider-progress-color: var(--color-compound-brand-background-pressed);
+        --fui-slider-thumb-color: var(--color-compound-brand-background-pressed);
+      }
+
+      @variant forced-colors {
+        @variant hover {
+          --fui-slider-progress-color: Highlight;
+          --fui-slider-thumb-color: Highlight;
+        }
+      }
+    }
+
+    @variant disabled {
+      --fui-slider-rail-color: var(--color-neutral-background-disabled);
+      --fui-slider-progress-color: var(--color-neutral-foreground-disabled);
+      --fui-slider-thumb-color: var(--color-neutral-foreground-disabled);
+
+      @variant forced-colors {
+        --fui-slider-rail-color: GrayText;
+        --fui-slider-progress-color: GrayText;
+        --fui-slider-thumb-color: GrayText;
+      }
+    }
+
+    @variant size-small {
+      @apply min-h-24;
+
+      --fui-slider-thumb-size: calc(16px * var(--base-scale));
+      --fui-slider-inner-thumb-radius: calc(5px * var(--base-scale));
+      --fui-slider-rail-size: calc(2px * var(--base-scale));
+    }
+
+    @variant size-medium {
+      @apply min-h-32;
+
+      --fui-slider-thumb-size: calc(20px * var(--base-scale));
+      --fui-slider-inner-thumb-radius: calc(6px * var(--base-scale));
+      --fui-slider-rail-size: calc(4px * var(--base-scale));
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+
+      @variant after {
+        @apply inset-x-2 inset-y-0;
+      }
+    }
+
+    @variant vertical-flag {
+      @apply min-h-120 min-w-auto grid-cols-[1fr_var(--fui-slider-thumb-size)_1fr] grid-rows-[1fr_calc(100%-var(--fui-slider-thumb-size))_1fr];
+
+      @variant focus-within-visible {
+        @variant after {
+          @apply -inset-x-6 inset-y-0;
+        }
+      }
+    }
+  }
+
+  /* The steps gradient resolves to `none` whenever --fui-Slider--steps-percent is absent, which
+     the headless hook does for step <= 0 and for no step at all. */
+  .rail {
+    @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-slider-rail-size) w-full rounded-x-large outline-thin outline-transparent-stroke forced-color-adjust-none outline-solid;
+
+    background-image: linear-gradient(
+      var(--fui-Slider--direction),
+      var(--fui-slider-progress-color) 0%,
+      var(--fui-slider-progress-color) var(--fui-Slider--progress),
+      var(--fui-slider-rail-color) var(--fui-Slider--progress)
+    );
+
+    @variant before {
+      @apply absolute -inset-x-px h-(--fui-slider-rail-size);
+
+      background-image: repeating-linear-gradient(
+        var(--fui-Slider--direction),
+        #0000 0%,
+        #0000 calc(var(--fui-Slider--steps-percent) - 1px),
+        var(--color-neutral-background-1) calc(var(--fui-Slider--steps-percent) - 1px),
+        var(--color-neutral-background-1) var(--fui-Slider--steps-percent)
+      );
+
+      @variant forced-colors {
+        background-image: repeating-linear-gradient(
+          var(--fui-Slider--direction),
+          #0000 0%,
+          #0000 calc(var(--fui-Slider--steps-percent) - 1px),
+          HighlightText calc(var(--fui-Slider--steps-percent) - 1px),
+          HighlightText var(--fui-Slider--steps-percent)
+        );
+      }
+    }
+
+    /* The inset resets are required because the resting look is the horizontal one. */
+    @variant group-vertical-flag/fui-slider {
+      @apply h-full w-(--fui-slider-rail-size);
+
+      @variant before {
+        @apply inset-x-auto -inset-y-px h-auto w-(--fui-slider-rail-size);
+      }
+    }
+  }
+
+  .thumb {
+    @apply pointer-events-none absolute start-(--fui-slider-thumb-position) col-start-2 col-end-2 row-start-2 row-end-2 size-(--fui-slider-thumb-size) -translate-x-1/2 rounded-circular bg-(--fui-slider-thumb-color) forced-color-adjust-none outline-none;
+
+    --fui-slider-thumb-position: clamp(
+      var(--fui-slider-inner-thumb-radius),
+      var(--fui-Slider--progress),
+      calc(100% - var(--fui-slider-inner-thumb-radius))
+    );
+
+    box-shadow: 0 0 0 calc(var(--fui-slider-thumb-size) * 0.2) var(--color-neutral-background-1) inset;
+
+    @variant before {
+      @apply absolute inset-0 rounded-circular;
+
+      border: calc(var(--fui-slider-thumb-size) * 0.05) solid var(--color-neutral-stroke-1);
+    }
+
+    @variant rtl {
+      @apply translate-x-1/2;
+    }
+
+    @variant group-disabled/fui-slider {
+      @variant before {
+        @apply border-neutral-foreground-disabled;
+      }
+    }
+
+    @variant group-vertical-flag/fui-slider {
+      @apply start-auto bottom-(--fui-slider-thumb-position) translate-x-0 translate-y-1/2;
+    }
+  }
+
+  /* The vertical incantation and its root-keyed RTL flip — see ColorSlider.module.css. Support for
+     sideways-lr is the signal that range inputs honour writing-mode at all. */
+  .input {
+    @apply col-start-1 col-end-[-1] row-start-1 row-end-[-1] h-(--fui-slider-thumb-size) w-full cursor-pointer opacity-0;
+
+    @variant group-disabled/fui-slider {
+      @apply cursor-default;
+    }
+
+    @variant group-vertical-flag/fui-slider {
+      @apply h-full w-(--fui-slider-thumb-size);
+
+      @supports (writing-mode: sideways-lr) {
+        writing-mode: vertical-lr;
+
+        direction: rtl;
+
+        @variant group-rtl/fui-slider {
+          direction: ltr;
+        }
+      }
+
+      @supports not (writing-mode: sideways-lr) {
+        -webkit-appearance: slider-vertical;
+      }
+    }
+  }
+}

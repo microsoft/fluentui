@@ -1,0 +1,141 @@
+@reference '#theme';
+
+/* Block order carries the whole cascade. Every catalog variant is `:where()`-flat, so every block
+   inside `.trigger-button` sits at equal specificity and source order alone decides. Griffel does
+   NOT settle these by source order — it settles them by sheet order AND selector specificity, and
+   the two disagree in three places, so the order below is that resolution written out rather than
+   a transcription of Griffel's bucket order:
+
+     - the four border-width classes are authored BEFORE `.trigger-button` so its focus-visible
+       block still wins the width; Griffel's focus indicator is an attribute selector and outranks
+       the plain width bucket.
+     - forced-colors sits ABOVE focus-visible, hover and active and below selected. Griffel's
+       forced-colors sheet is inserted last, which beats the base and selected buckets, but its
+       rule is a bare class and loses to the attribute and pseudo-class selectors of the other
+       three.
+     - `.trigger-button-pie` is a later class and beats every variant inside `.trigger-button`,
+       which is what Griffel gets by omitting the states and selected buckets under pie. It has to
+       re-assert BOTH the forced-colors border and the focus ring: Griffel merges its focus
+       indicator unconditionally, pie included, and that indicator outranks the pie bucket, so a
+       pie trigger without the re-assertion would show no focus ring at all. */
+@layer fui.components.l1 {
+  .content {
+    @apply flex flex-col;
+  }
+
+  .border-thin {
+    @apply border-thin;
+  }
+
+  .border-thick {
+    @apply border-thick;
+  }
+
+  .border-thicker {
+    @apply border-thicker;
+  }
+
+  .border-thickest {
+    @apply border-thickest;
+  }
+
+  .trigger-button {
+    --fui-avatar-group-popover-size: calc(attr(data-size type(<number>), 32) * 1px);
+
+    @apply relative inline-flex size-(--fui-avatar-group-popover-size) shrink-0 items-center justify-center rounded-circular border-solid border-neutral-stroke-1 bg-neutral-background-1 text-neutral-foreground-1;
+
+    @variant selected {
+      @apply border-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+    }
+
+    @variant forced-colors {
+      @apply border-[CanvasText];
+    }
+
+    @variant focus-visible {
+      @apply border-thick border-stroke-focus-2 outline-none;
+    }
+
+    @variant hover {
+      @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+    }
+
+    @variant active {
+      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+    }
+  }
+
+  .trigger-button-pie {
+    @apply border-transparent-stroke bg-transparent-background text-transparent;
+
+    @variant forced-colors {
+      @apply border-[CanvasText];
+    }
+
+    @variant focus-visible {
+      @apply border-thick border-stroke-focus-2 outline-none;
+    }
+  }
+
+  .text-caption-2-strong {
+    @apply font-base text-base-100 leading-140 font-semibold;
+  }
+
+  .text-caption-1-strong {
+    @apply font-base text-base-200 leading-16/12 font-semibold;
+  }
+
+  .text-body-1-strong {
+    @apply font-base text-base-300 leading-20/14 font-semibold;
+  }
+
+  .text-subtitle-2 {
+    @apply font-base text-base-400 leading-11/8 font-semibold;
+  }
+
+  .text-subtitle-1 {
+    @apply font-base text-base-500 leading-140 font-semibold;
+  }
+
+  .text-title-3 {
+    @apply font-base text-base-600 leading-16/12 font-semibold;
+  }
+
+  .icon-12 {
+    @apply text-icon-12;
+  }
+
+  .icon-16 {
+    @apply text-icon-16;
+  }
+
+  .icon-20 {
+    @apply text-icon-20;
+  }
+
+  .icon-24 {
+    @apply text-icon-24;
+  }
+
+  .icon-28 {
+    @apply text-icon-28;
+  }
+
+  .icon-32 {
+    @apply text-icon-32;
+  }
+
+  .icon-48 {
+    @apply text-icon-48;
+  }
+}
+
+@layer fui.components.l2 {
+  /* Overrides the windmod PopoverSurface's own l1 padding and sizing.
+     The three lengths are Griffel's own numbers, authored against the content-box the popover
+     surface computes on both libraries. A box-sizing override here would fold the 8px padding and
+     the 1px border into all three and render the surface 18px narrower and shorter than Griffel's. */
+  .popover-surface {
+    @apply max-h-220 min-h-80 w-220 overflow-x-hidden overflow-y-scroll px-horizontal-s py-vertical-s;
+  }
+}

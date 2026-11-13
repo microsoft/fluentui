@@ -1,0 +1,51 @@
+@reference '#theme';
+
+/* Selection is published twice by the two libraries — aria-selected on every render, data-selected
+   only when on — and the catalog's selected/not-selected pair reads both. The transparent outline is
+   a forced-colors affordance: it gives the dot a shape the high-contrast renderer can honour.
+
+   The resting outline and the focus ring are hoisted out of the two selection blocks the reference
+   repeats them in; the pair is mutually exclusive and exhaustive, so one declaration of each is
+   byte-equivalent. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex size-8 cursor-pointer bg-brand-background outline-thin outline-transparent outline-solid;
+
+    @variant not-selected {
+      @apply rounded-full border-none bg-brand-background/30;
+    }
+
+    @variant selected {
+      @apply w-16 rounded-medium border-none;
+    }
+
+    @variant focus-visible {
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2;
+    }
+  }
+
+  .brand {
+    @variant selected {
+      @apply bg-neutral-foreground-on-brand;
+    }
+
+    @variant not-selected {
+      @apply bg-neutral-foreground-on-brand/30;
+    }
+  }
+
+  /* The forced-colors affordance is emitted last, after every class that paints this element's
+     background. Griffel orders its buckets so that every @media rule follows every base rule, so
+     its high-contrast background cannot be outranked by a look class; a CSS module emits in source
+     order, so the same guarantee has to be authored. Nested inside `.root`'s selected block it was
+     overtaken by `.brand`'s equal-specificity selected background below it, and the selected brand
+     dot lost the system colour. */
+  .root {
+    @variant selected {
+      @variant forced-colors {
+        @apply bg-[CanvasText];
+      }
+    }
+  }
+}

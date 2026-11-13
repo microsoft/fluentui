@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "Make provider SSR and stress tests compatible with Prettier 3 and Windows.",
+  "packageName": "@fluentui/react-provider",
+  "email": "array.knight+github@gmail.com"
+}

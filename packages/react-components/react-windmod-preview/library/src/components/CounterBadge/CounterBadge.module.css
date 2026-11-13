@@ -1,0 +1,13 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @variant dot {
+      @apply size-6 min-w-auto p-0;
+    }
+
+    @variant hidden {
+      @apply hidden;
+    }
+  }
+}

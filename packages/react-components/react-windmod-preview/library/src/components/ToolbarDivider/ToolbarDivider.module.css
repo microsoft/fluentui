@@ -1,0 +1,14 @@
+@reference '#theme';
+
+/* The orientation is inverted against the toolbar's by the headless hook, and this module
+   selects on the divider's own resolved orientation. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply max-w-1 px-12;
+
+    @variant horizontal {
+      @apply max-w-none;
+    }
+  }
+}

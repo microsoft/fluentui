@@ -1,0 +1,122 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Block order is the cascade: every selector is :where()-flat, so source order alone
+     arbitrates.
+
+     Griffel names the grid lines the text slots start on, so the row template and the four
+     row-start values are one unit — renaming either half silently unplaces every text line. */
+  .root {
+    @apply inline-grid grid-flow-col auto-rows-max grid-cols-[max-content_[middle]_auto] justify-items-start;
+
+    @variant text-position-before {
+      @apply grid-cols-[auto_[middle]_max-content] justify-items-end;
+    }
+
+    @variant text-position-below {
+      @apply grid-cols-[unset] justify-items-center;
+
+      grid-auto-flow: unset;
+    }
+
+    @variant text-alignment-center {
+      @variant text-position-after, text-position-before {
+        @apply grid-rows-[1fr_[primary]_max-content_[secondary]_max-content_[tertiary]_max-content_[quaternary]_max-content_1fr];
+      }
+    }
+  }
+
+  .primary-text {
+    @apply block font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
+
+    @variant group-size-extra-large/fui-persona, group-size-huge/fui-persona {
+      @apply text-base-400 leading-11/8 font-semibold;
+    }
+
+    @variant group-text-alignment-center/fui-persona {
+      @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {
+        @apply row-start-[primary];
+      }
+    }
+  }
+
+  .optional-text {
+    @apply block font-base text-base-200 leading-16/12 font-regular text-neutral-foreground-2;
+
+    @variant group-size-huge/fui-persona {
+      @apply text-base-300 leading-20/14;
+    }
+  }
+
+  .secondary-text {
+    @apply -mt-2;
+
+    @variant group-text-alignment-center/fui-persona {
+      @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {
+        @apply row-start-[secondary];
+      }
+    }
+  }
+
+  .tertiary-text {
+    @variant group-text-alignment-center/fui-persona {
+      @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {
+        @apply row-start-[tertiary];
+      }
+    }
+  }
+
+  .quaternary-text {
+    @variant group-text-alignment-center/fui-persona {
+      @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {
+        @apply row-start-[quaternary];
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* The avatar slot renders a windmod Avatar; this block overrides Avatar's own level-1 styles.
+     The two group-text-alignment-center blocks must stay separate: the nested `span 6` override
+     sorts after the position blocks that set `span 5`, and merging it into the earlier
+     self-center block moves it above them, where `span 5` wins. */
+  .avatar {
+    --fui-persona-avatar-spacing: var(--spacing-horizontal-s);
+
+    @apply self-start;
+
+    @variant group-size-extra-small/fui-persona {
+      --fui-persona-avatar-spacing: var(--spacing-horizontal-s-nudge);
+    }
+
+    @variant group-size-large/fui-persona, group-size-extra-large/fui-persona {
+      --fui-persona-avatar-spacing: var(--spacing-horizontal-m-nudge);
+    }
+
+    @variant group-size-huge/fui-persona {
+      --fui-persona-avatar-spacing: var(--spacing-horizontal-m);
+    }
+
+    @variant group-text-alignment-center/fui-persona {
+      @apply self-center;
+    }
+
+    @variant group-text-position-after/fui-persona {
+      @apply row-start-[span_5] me-(--fui-persona-avatar-spacing);
+    }
+
+    @variant group-text-position-before/fui-persona {
+      @apply row-start-[span_5] ms-(--fui-persona-avatar-spacing);
+    }
+
+    @variant group-text-position-below/fui-persona {
+      @apply mb-(--fui-persona-avatar-spacing);
+    }
+
+    @variant group-text-alignment-center/fui-persona {
+      @variant group-text-position-after/fui-persona, group-text-position-before/fui-persona {
+        @apply row-start-[span_6];
+      }
+    }
+  }
+}

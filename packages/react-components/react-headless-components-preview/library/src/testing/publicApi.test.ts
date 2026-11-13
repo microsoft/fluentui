@@ -483,7 +483,8 @@ function getComposition(component: ts.Symbol): { parts: ts.Symbol[]; contextValu
 
   if (
     !declaration ||
-    !declaration.getSourceFile().fileName.startsWith(srcRoot) ||
+    // TypeScript uses forward slashes even when node:path returns Windows separators.
+    !path.resolve(declaration.getSourceFile().fileName).startsWith(srcRoot + path.sep) ||
     !ts.isVariableDeclaration(declaration)
   ) {
     return { parts, contextValuesHooks };
@@ -573,8 +574,8 @@ function collectReferencedTypes(
     const typeName = ts.isTypeReferenceNode(node)
       ? node.typeName
       : ts.isExpressionWithTypeArguments(node)
-      ? node.expression
-      : undefined;
+        ? node.expression
+        : undefined;
     const symbol = typeName && checker.getSymbolAtLocation(typeName);
 
     if (symbol && isTypeDeclaration(resolveAlias(symbol)) && !result.has(resolveAlias(symbol))) {

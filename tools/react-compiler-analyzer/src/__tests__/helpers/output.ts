@@ -15,7 +15,7 @@ export function normalizeCompilerVersions(text: string): string {
   );
 }
 
-export function captureConsole(method: 'log' | 'warn' | 'error', output: string[]) {
+export function captureConsole(method: 'log' | 'warn' | 'error', output: string[]): jest.Spied<typeof console.log> {
   return jest.spyOn(console, method).mockImplementation((...args: unknown[]) => {
     output.push(args.map(String).join(' '));
   });

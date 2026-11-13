@@ -1,0 +1,31 @@
+{
+  "name": "react-windmod-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-windmod-preview/library/src",
+  "tags": ["platform:web", "vNext", "react-windmod"],
+  "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/*.ts"],
+      "staticSubpaths": ["./base.css", "./css/*", "./styles.css", "./variants.css", "./theme.css"]
+    }
+  },
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    },
+    "test-integration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/css-modules/verify-consumers.cjs"
+      },
+      "dependsOn": ["build"],
+      "inputs": ["default", "^production", "{workspaceRoot}/scripts/css-modules/verify-consumers.cjs"],
+      "cache": false
+    }
+  }
+}
