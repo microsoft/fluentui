@@ -2,6 +2,21 @@
   "name": "@fluentui/react-nav",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "9.4.10",
+      "tag": "@fluentui/react-nav_v9.4.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "400ee0c145e863a358eac4debeebc3b03d071060",
+            "comment": "fix: NavCategoryItem renders type=\"button\" so it does not submit an enclosing form"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.4.9",
       "tag": "@fluentui/react-nav_v9.4.9",
