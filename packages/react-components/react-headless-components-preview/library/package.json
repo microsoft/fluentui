@@ -62,6 +62,7 @@
     "@fluentui/react-spinner": "^9.8.7",
     "@fluentui/react-swatch-picker": "^9.6.3",
     "@fluentui/react-switch": "^9.7.7",
+    "@fluentui/react-table": "^9.19.23",
     "@fluentui/react-tabs": "^9.12.6",
     "@fluentui/react-tabster": "^9.26.19",
     "@fluentui/react-tag-picker": "^9.10.8",
@@ -213,6 +214,16 @@
       "require": {
         "types": "./dist/compound-button.d.cts",
         "default": "./lib-commonjs/compound-button.cjs"
+      }
+    },
+    "./data-grid": {
+      "import": {
+        "types": "./dist/data-grid.d.ts",
+        "default": "./lib/data-grid.js"
+      },
+      "require": {
+        "types": "./dist/data-grid.d.cts",
+        "default": "./lib-commonjs/data-grid.cjs"
       }
     },
     "./date-picker": {
@@ -583,6 +594,16 @@
       "require": {
         "types": "./dist/tab-list.d.cts",
         "default": "./lib-commonjs/tab-list.cjs"
+      }
+    },
+    "./table": {
+      "import": {
+        "types": "./dist/table.d.ts",
+        "default": "./lib/table.js"
+      },
+      "require": {
+        "types": "./dist/table.d.cts",
+        "default": "./lib-commonjs/table.cjs"
       }
     },
     "./tag": {

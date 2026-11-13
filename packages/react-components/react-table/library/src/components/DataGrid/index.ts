@@ -1,5 +1,8 @@
 export { DataGrid } from './DataGrid';
 export type {
+  DataGridBaseContextValue,
+  DataGridBaseProps,
+  DataGridBaseState,
   DataGridContextValue,
   DataGridContextValues,
   DataGridFocusMode,
@@ -8,6 +11,6 @@ export type {
   DataGridState,
 } from './DataGrid.types';
 export { renderDataGrid_unstable } from './renderDataGrid';
-export { useDataGrid_unstable } from './useDataGrid';
+export { useDataGrid_unstable, useDataGridBase_unstable } from './useDataGrid';
 export { dataGridClassNames, useDataGridStyles_unstable } from './useDataGridStyles.styles';
 export { useDataGridContextValues_unstable } from './useDataGridContextValues';

@@ -4493,6 +4493,7 @@ __metadata:
     "@fluentui/react-spinner": "npm:^9.8.7"
     "@fluentui/react-swatch-picker": "npm:^9.6.3"
     "@fluentui/react-switch": "npm:^9.7.7"
+    "@fluentui/react-table": "npm:^9.19.23"
     "@fluentui/react-tabs": "npm:^9.12.6"
     "@fluentui/react-tabster": "npm:^9.26.19"
     "@fluentui/react-tag-picker": "npm:^9.10.8"
@@ -5835,7 +5836,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-table@npm:*, @fluentui/react-table@npm:^9.19.24, @fluentui/react-table@workspace:packages/react-components/react-table/library":
+"@fluentui/react-table@npm:*, @fluentui/react-table@npm:^9.19.23, @fluentui/react-table@npm:^9.19.24, @fluentui/react-table@workspace:packages/react-components/react-table/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-table@workspace:packages/react-components/react-table/library"
   dependencies:

@@ -2,7 +2,12 @@
 
 import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
+import type {
+  TableCellLayoutBaseProps,
+  TableCellLayoutBaseState,
+  TableCellLayoutProps,
+  TableCellLayoutState,
+} from './TableCellLayout.types';
 import { useTableContext } from '../../contexts/tableContext';
 
 const tableAvatarSizeMap = {
@@ -27,6 +32,26 @@ export const useTableCellLayout_unstable = (
   const { size } = useTableContext();
 
   return {
+    ...useTableCellLayoutBase_unstable(props, ref),
+    appearance: props.appearance,
+    truncate: props.truncate,
+    avatarSize: tableAvatarSizeMap[size],
+    size,
+  };
+};
+
+/**
+ * Base state hook for TableCellLayout, without the design state
+ * (`appearance`, `truncate`, `size` and the avatar size).
+ *
+ * @param props - props from this instance of TableCellLayout
+ * @param ref - reference to root HTMLElement of TableCellLayout
+ */
+export const useTableCellLayoutBase_unstable = (
+  props: TableCellLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+): TableCellLayoutBaseState => {
+  return {
     components: {
       root: 'div',
       main: 'span',
@@ -49,8 +74,6 @@ export const useTableCellLayout_unstable = (
       ),
       { elementType: 'div' },
     ),
-    appearance: props.appearance,
-    truncate: props.truncate,
     main: slot.optional(props.main, { renderByDefault: true, elementType: 'span' }),
     media: slot.optional(props.media, { elementType: 'span' }),
     description: slot.optional(props.description, { elementType: 'span' }),
@@ -58,7 +81,5 @@ export const useTableCellLayout_unstable = (
       renderByDefault: !!props.description || !!props.children,
       elementType: 'div',
     }),
-    avatarSize: tableAvatarSizeMap[size],
-    size,
   };
 };

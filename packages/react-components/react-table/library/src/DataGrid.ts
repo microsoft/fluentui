@@ -1,4 +1,7 @@
 export type {
+  DataGridBaseContextValue,
+  DataGridBaseProps,
+  DataGridBaseState,
   DataGridContextValue,
   DataGridContextValues,
   DataGridFocusMode,
@@ -10,6 +13,7 @@ export {
   DataGrid,
   dataGridClassNames,
   renderDataGrid_unstable,
+  useDataGridBase_unstable,
   useDataGridContextValues_unstable,
   useDataGridStyles_unstable,
   useDataGrid_unstable,
