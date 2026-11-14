@@ -14,12 +14,14 @@ const NO_SUBSCRIPTION: Subscription = { element: null, types: null, abort: () =>
 /**
  * Keeps `listener` attached to `ref.current` for the event types `getTypes` returns. Checks after every commit, since a
  * ref does not say when its element changes, but only resubscribes when the element or the types change. `listener`
- * must be stable, e.g. from `useEventCallback`, and `getTypes` must return the same array for the same types.
+ * must be stable, e.g. from `useEventCallback`, and `getTypes` must return the same array for the same types. With
+ * `capture`, `listener` runs before the element's own bubble listeners.
  */
 export const useElementListeners = (
   ref: React.RefObject<HTMLElement | null>,
   listener: (event: Event) => void,
   getTypes: (element: HTMLElement) => string[],
+  capture = false,
 ): void => {
   const subscription = React.useRef(NO_SUBSCRIPTION);
 
@@ -38,7 +40,7 @@ export const useElementListeners = (
     }
 
     const controller = new AbortController();
-    types.forEach(type => element.addEventListener(type, listener, { signal: controller.signal }));
+    types.forEach(type => element.addEventListener(type, listener, { capture, signal: controller.signal }));
     subscription.current = { element, types, abort: () => controller.abort() };
   });
 

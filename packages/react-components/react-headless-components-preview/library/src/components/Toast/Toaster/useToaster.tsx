@@ -77,7 +77,8 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     },
   );
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === Escape) {
+    // Leave Escape that a popover or dialog inside a toast already handled.
+    if (e.key === Escape && !e.isDefaultPrevented()) {
       e.preventDefault();
       closeAllToasts();
     }

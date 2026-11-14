@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLayerOpenState } from '../../hooks/top-layer';
+import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -90,8 +90,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
-  // never closes an open `auto` popover.
+  // Rendered while hidden, so `aria-labelledby` / `aria-describedby` resolve.
+  const alwaysRendered =
+    relationship === 'description' || (relationship === 'label' && typeof state.content.children !== 'string');
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible, unmountOnClose: !alwaysRendered });
+  state.shouldRenderTooltip = shouldRender;
+
+  // Without `hint` support it acts as `manual`, so it never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
     open: visible,
     mode: 'hint',
@@ -100,6 +105,14 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         setVisible(undefined, { visible: false });
       }
     },
+  });
+
+  // The content never takes focus: listen on the document, ahead of an enclosing DialogSurface.
+  useLayerEscape(contentRef, {
+    open: visible,
+    listen: 'document',
+    when: 'always',
+    onEscape: () => setVisible(undefined, { visible: false }),
   });
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
@@ -209,15 +222,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       triggerAriaProps['aria-label'] = state.content.children;
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-      // eslint-disable-next-line react-hooks/immutability
-      state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     triggerAriaProps['aria-describedby'] = state.content.id;
-    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = true;
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors

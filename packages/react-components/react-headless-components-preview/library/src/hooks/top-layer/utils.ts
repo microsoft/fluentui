@@ -1,3 +1,5 @@
+import { elementContains } from '@fluentui/react-utilities';
+
 export const log = (level: 'warn' | 'error', message: string): void => {
   // eslint-disable-next-line no-console
   console[level](`@fluentui/react-headless-components-preview [top layer]: ${message}`);
@@ -52,6 +54,19 @@ export const isModal = (element: HTMLDialogElement): boolean => {
   } catch {
     return element.open;
   }
+};
+
+const isLayerElement = (node: EventTarget): boolean => !!(node as Element).matches?.('[popover], dialog');
+
+/**
+ * Whether the Escape `event` is for `layer`: not when it comes from a popover or dialog nested inside it, including one
+ * inside a shadow root. Content portaled out of `layer`, to the page or into a layer that encloses it (also across a
+ * shadow root), still counts.
+ * Call it while the event is dispatched.
+ */
+export const isEscapeForLayer = (layer: Element, event: Event): boolean => {
+  const targetLayer = event.composedPath().find(isLayerElement) as Element | undefined;
+  return !targetLayer || elementContains(targetLayer, layer);
 };
 
 /**
