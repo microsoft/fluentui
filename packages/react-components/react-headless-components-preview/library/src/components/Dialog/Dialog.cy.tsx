@@ -72,6 +72,44 @@ const BasicDialog: React.FC<BasicDialogProps> = ({ withoutActions, closeButtonRe
   </Dialog>
 );
 
+/**
+ * A modal dialog whose actions hold a nested modal dialog, so the inner surface is the outer one's last content.
+ */
+const NestedDialogs = () => (
+  <Dialog>
+    <DialogTrigger>
+      <Button id="open-first-dialog-btn">Open nested dialog</Button>
+    </DialogTrigger>
+    <DialogSurface id="first-dialog">
+      <DialogBody>
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogActions>
+          <DialogTrigger>
+            <Button id="close-first-dialog-btn">Close</Button>
+          </DialogTrigger>
+          <Dialog>
+            <DialogTrigger>
+              <Button id="open-second-dialog-btn">Open inner dialog</Button>
+            </DialogTrigger>
+            <DialogSurface id="second-dialog">
+              <DialogBody>
+                <DialogTitle>Inner dialog title</DialogTitle>
+                <div>⛔️ just because you can doesn't mean you should have nested dialogs ⛔️</div>
+                <DialogActions>
+                  <Button id="inner-action-btn">Inner action</Button>
+                  <DialogTrigger>
+                    <Button id="close-second-dialog-btn">Close</Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+        </DialogActions>
+      </DialogBody>
+    </DialogSurface>
+  </Dialog>
+);
+
 describe('Dialog', () => {
   it('should be closed by default', () => {
     mount(<BasicDialog />);
@@ -236,23 +274,25 @@ describe('Dialog', () => {
           });
       });
 
-      // Focus trap tests apply to modal/alert only — non-modal is intentionally not trapped.
+      // Cypress mounts components in an iframe, where modal surfaces wrap Tab (the top level keeps native behavior).
       if (modalType !== 'non-modal') {
-        // TODO: re-enable skipped test after introducing focus trap implementation
-        it.skip('should focus trap by default', () => {
-          mount(<BasicDialog modalType={modalType} />);
-          cy.get(dialogTriggerOpenSelector).realClick();
-          cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
-          cy.get(dialogPrimaryButtonSelector).should('be.focused').realPress('Tab');
-          cy.get(dialogTriggerCloseSelector).should('be.focused');
+        [false, true].forEach(inertTrapFocus => {
+          it(`should wrap Tab and Shift+Tab inside the dialog in a frame (inertTrapFocus=${inertTrapFocus})`, () => {
+            cy.window().then(win => expect(win.top, 'mounted in a frame').not.to.equal(win));
+            mount(<BasicDialog modalType={modalType} inertTrapFocus={inertTrapFocus} />);
+            cy.get(dialogTriggerOpenSelector).realClick();
+            cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+            cy.get(dialogPrimaryButtonSelector).should('be.focused').realPress('Tab');
+            cy.get(dialogTriggerCloseSelector).should('be.focused').realPress(['Shift', 'Tab']);
+            cy.get(dialogPrimaryButtonSelector).should('be.focused');
+          });
         });
 
-        it.skip('should keep focus trapped when inertTrapFocus=true', () => {
-          mount(<BasicDialog inertTrapFocus modalType={modalType} />);
+        it('should keep focus on the surface when it has no tabbable elements', () => {
+          mount(<BasicDialog modalType={modalType} withoutActions />);
           cy.get(dialogTriggerOpenSelector).realClick();
-          cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
-          cy.get(dialogPrimaryButtonSelector).should('be.focused').realPress('Tab');
-          cy.get(dialogTriggerCloseSelector).should('be.focused');
+          cy.get(dialogSurfaceSelector).should('be.focused').realPress('Tab');
+          cy.get(dialogSurfaceSelector).should('be.focused');
         });
       }
     });
@@ -358,40 +398,7 @@ describe('Dialog', () => {
   });
 
   it('should allow nested dialogs', () => {
-    // Nested structure is intentionally bespoke — kept inline for clarity.
-    mount(
-      <Dialog>
-        <DialogTrigger>
-          <Button id="open-first-dialog-btn">Open nested dialog</Button>
-        </DialogTrigger>
-        <DialogSurface id="first-dialog">
-          <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogActions>
-              <DialogTrigger>
-                <Button id="close-first-dialog-btn">Close</Button>
-              </DialogTrigger>
-              <Dialog>
-                <DialogTrigger>
-                  <Button id="open-second-dialog-btn">Open inner dialog</Button>
-                </DialogTrigger>
-                <DialogSurface id="second-dialog">
-                  <DialogBody>
-                    <DialogTitle>Inner dialog title</DialogTitle>
-                    <div>⛔️ just because you can doesn't mean you should have nested dialogs ⛔️</div>
-                    <DialogActions>
-                      <DialogTrigger>
-                        <Button id="close-second-dialog-btn">Close</Button>
-                      </DialogTrigger>
-                    </DialogActions>
-                  </DialogBody>
-                </DialogSurface>
-              </Dialog>
-            </DialogActions>
-          </DialogBody>
-        </DialogSurface>
-      </Dialog>,
-    );
+    mount(<NestedDialogs />);
     cy.get('#open-first-dialog-btn').realClick();
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#open-second-dialog-btn').should('exist').realClick();
@@ -400,6 +407,91 @@ describe('Dialog', () => {
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
+  });
+
+  it('should wrap Tab inside the innermost nested dialog when rendered in a frame', () => {
+    mount(<NestedDialogs />);
+    cy.get('#open-first-dialog-btn').realClick();
+    cy.get('#close-first-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#open-second-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#close-first-dialog-btn').should('be.focused');
+
+    cy.get('#open-second-dialog-btn').realClick();
+    cy.get('#inner-action-btn').should('be.focused').realPress('Tab');
+    cy.get('#close-second-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#inner-action-btn').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#close-second-dialog-btn').should('be.focused');
+  });
+
+  describe('Tab in a frame follows the browser tab order', () => {
+    const FrameDialog = ({ children }: { children: React.ReactNode }) => (
+      <Dialog>
+        <DialogTrigger>
+          <Button id="open">Open</Button>
+        </DialogTrigger>
+        <DialogSurface aria-label="Dialog">
+          <input id="first" aria-label="First" />
+          {children}
+        </DialogSurface>
+      </Dialog>
+    );
+
+    it('should wrap from a last radio group with no checked radio', () => {
+      mount(
+        <FrameDialog>
+          <input id="r1" type="radio" name="g" aria-label="One" />
+          <input id="r2" type="radio" name="g" aria-label="Two" />
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress('Tab');
+      cy.get('#r1').should('be.focused').realPress('Tab');
+      cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#r2').should('be.focused');
+    });
+
+    it('should wrap around a positive tabindex', () => {
+      mount(
+        <FrameDialog>
+          {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- the case under test */}
+          <input id="positive" tabIndex={1} aria-label="Positive" />
+          <input id="last" aria-label="Last" />
+        </FrameDialog>,
+      );
+      // Tab order: #positive, #first, #last. `showModal()` focuses #first, the first in document order.
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#positive').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#last').should('be.focused').realPress('Tab');
+      cy.get('#positive').should('be.focused');
+    });
+
+    it('should keep Tab and Shift+Tab inside when the surface itself is focused', () => {
+      mount(
+        <FrameDialog>
+          <input id="last" aria-label="Last" />
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get(dialogSurfaceSelector).focus().realPress('Tab');
+      cy.get('#first').should('be.focused');
+      cy.get(dialogSurfaceSelector).focus().realPress(['Shift', 'Tab']);
+      cy.get('#last').should('be.focused');
+    });
+
+    it('should wrap even when a handler stops propagation of Tab', () => {
+      mount(
+        <FrameDialog>
+          <span onKeyDown={event => event.stopPropagation()}>
+            <input id="last" aria-label="Last" />
+          </span>
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress('Tab');
+      cy.get('#last').should('be.focused').realPress('Tab');
+      cy.get('#first').should('be.focused');
+    });
   });
 
   it('should render nested non-modal dialog in modal dialog accessibly', () => {

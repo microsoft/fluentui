@@ -6,6 +6,7 @@ import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import type { PopoverProps } from './Popover.types';
 import { Tooltip } from '../Tooltip';
+import { Dialog, DialogSurface, DialogTrigger } from '../Dialog';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
@@ -1025,5 +1026,74 @@ describe('inertTrapFocus changes while open', () => {
       .and('not.have.attr', 'popover');
     cy.get('[data-testid=trigger]').should('have.attr', 'aria-haspopup', 'dialog');
     cy.get('[data-testid=switch]').should('be.focused');
+  });
+});
+
+// Cypress mounts components in an iframe, where `showModal()` leaves the host page interactive.
+describe('Tab in a frame', () => {
+  const FramePopover = ({ inertTrapFocus }: { inertTrapFocus: boolean }) => (
+    <>
+      <Popover inertTrapFocus={inertTrapFocus}>
+        <PopoverTrigger>
+          <button id="trigger">Open</button>
+        </PopoverTrigger>
+        <PopoverSurface aria-label="Popover">
+          <button id="first">First</button>
+          <button id="last">Last</button>
+        </PopoverSurface>
+      </Popover>
+      <button id="after">After</button>
+    </>
+  );
+
+  it('wraps Tab and Shift+Tab inside a modal popover', () => {
+    cy.window().then(win => expect(win.top, 'mounted in a frame').not.to.equal(win));
+    mount(<FramePopover inertTrapFocus />);
+    cy.get('#trigger').realClick();
+    cy.get('#first').should('be.focused').realPress('Tab');
+    cy.get('#last').should('be.focused').realPress('Tab');
+    cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#last').should('be.focused');
+  });
+
+  it('lets Tab leave a non-modal popover', () => {
+    mount(<FramePopover inertTrapFocus={false} />);
+    cy.get('#trigger').realClick();
+    cy.get('#first').focus().realPress('Tab');
+    cy.get('#last').should('be.focused').realPress('Tab');
+    cy.get('#last').should('not.be.focused');
+    cy.get('#first').should('not.be.focused');
+  });
+
+  it('keeps Tab inside a modal popover nested in a modal dialog', () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <button id="open-dialog">Open dialog</button>
+        </DialogTrigger>
+        <DialogSurface aria-label="Dialog">
+          <button id="dialog-first">Dialog first</button>
+          <Popover inertTrapFocus>
+            <PopoverTrigger>
+              <button id="trigger">Open popover</button>
+            </PopoverTrigger>
+            <PopoverSurface aria-label="Popover">
+              <button id="first">First</button>
+              <button id="last">Last</button>
+            </PopoverSurface>
+          </Popover>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-dialog').realClick();
+    cy.get('#dialog-first').should('be.focused').realPress('Tab');
+    cy.get('#trigger').should('be.focused').realPress('Tab');
+    cy.get('#dialog-first').should('be.focused');
+
+    cy.get('#trigger').realClick();
+    cy.get('#first').should('be.focused').realPress('Tab');
+    cy.get('#last').should('be.focused').realPress('Tab');
+    cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#last').should('be.focused');
   });
 });
