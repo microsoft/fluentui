@@ -12,6 +12,7 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
+import { isInFrame, wrapFrameDialogTab } from '../utils/frameFocusTrap';
 import { useDialogLayerOpenState } from '../../../hooks/top-layer';
 import { waitForAnimations } from '../../../hooks/top-layer/utils';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
@@ -83,6 +84,21 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       requestOpenChange({ type: 'escapeKeyDown', open: false, event });
       // Stop propagation to avoid closing parent dialogs simultaneously.
       event.stopPropagation();
+      return;
+    }
+
+    // In a frame, `showModal()` leaves the host page interactive, so keep Tab inside the modal dialog.
+    if (
+      !isNonModal &&
+      event.key === 'Tab' &&
+      !event.altKey &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.isDefaultPrevented() &&
+      isInFrame(targetDocument) &&
+      wrapFrameDialogTab(event.currentTarget, event.target as Element, event.shiftKey)
+    ) {
+      event.preventDefault();
       return;
     }
 

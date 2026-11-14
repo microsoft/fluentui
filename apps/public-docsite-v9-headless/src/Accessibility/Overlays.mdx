@@ -58,13 +58,15 @@ Give every dialog a name. `DialogTitle` labels the surface through `aria-labelle
 
 ### Tab in modal overlays
 
-Dialog, OverlayDrawer and overlay NavDrawer with `modalType` `modal` (the default) or `alert`, and Popover or TeachingPopover with `inertTrapFocus`, open a native `<dialog>` with `showModal()`, and Tab order inside it is the browser's. The page behind is inert, so focus never reaches it.
+Dialog, OverlayDrawer and overlay NavDrawer with `modalType` `modal` (the default) or `alert`, and Popover or TeachingPopover with `inertTrapFocus`, open a native `<dialog>` with `showModal()`, and Tab order inside it is the browser's. The page behind is inert, so focus never reaches it (see below for iframes).
 
 With `modalType="non-modal"`, Dialog and the drawers open with `showPopover()` (or `show()` without the Popover API) instead. The page behind stays interactive, and Tab moves out of the surface into the page like any other content. The rest of this section applies only to modal surfaces.
 
 Chrome and Edge move Tab from the last element in the dialog to the browser UI (address bar, tabs), and the next Tab comes back to the first element. Shift+Tab works the same way in reverse. This is not a focus leak: being able to reach the browser UI means a modal is not a keyboard trap ([WCAG 2.1.2](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap)). The styled Dialog behaves the same way with `inertTrapFocus`.
 
-Headless components don't wrap Tab inside the dialog. If your product needs wrapping, add it in your own component.
+Headless components don't wrap Tab inside the dialog at the top level. If your product needs wrapping there, add it in your own component.
+
+Inside an iframe, `showModal()` only makes the iframe's own document inert, so Tab past the last element would move into the host page, which stays interactive behind the modal. There, Dialog, OverlayDrawer and overlay NavDrawer wrap Tab and Shift+Tab inside the surface. Popover and TeachingPopover with `inertTrapFocus` don't wrap yet. Wrapping only covers the keyboard: the host page still takes mouse clicks and screen reader browsing, and only the host can make its own content inert.
 
 ### Focus on open
 

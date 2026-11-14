@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep Tab inside modal Dialog, OverlayDrawer and NavDrawer when rendered in an iframe",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

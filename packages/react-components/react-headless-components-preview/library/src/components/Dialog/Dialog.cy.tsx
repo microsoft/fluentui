@@ -236,10 +236,15 @@ describe('Dialog', () => {
           });
       });
 
-      // Focus trap tests apply to modal/alert only — non-modal is intentionally not trapped.
+      // Cypress mounts components inside an iframe. There, `showModal()` leaves the host page interactive, so
+      // DialogSurface keeps Tab inside the dialog. At the top level, Tab may reach the browser UI (native behavior).
+      // Non-modal is intentionally not trapped.
       if (modalType !== 'non-modal') {
-        // TODO: re-enable skipped test after introducing focus trap implementation
-        it.skip('should focus trap by default', () => {
+        it('should run inside a frame', () => {
+          cy.window().then(win => expect(win.top).not.to.equal(win));
+        });
+
+        it('should wrap Tab inside the dialog when rendered in a frame', () => {
           mount(<BasicDialog modalType={modalType} />);
           cy.get(dialogTriggerOpenSelector).realClick();
           cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
@@ -247,7 +252,22 @@ describe('Dialog', () => {
           cy.get(dialogTriggerCloseSelector).should('be.focused');
         });
 
-        it.skip('should keep focus trapped when inertTrapFocus=true', () => {
+        it('should wrap Shift+Tab inside the dialog when rendered in a frame', () => {
+          mount(<BasicDialog modalType={modalType} />);
+          cy.get(dialogTriggerOpenSelector).realClick();
+          cy.get(dialogTriggerCloseSelector).should('be.focused').realPress(['Shift', 'Tab']);
+          cy.get(dialogPrimaryButtonSelector).should('be.focused').realPress(['Shift', 'Tab']);
+          cy.get(dialogTriggerCloseSelector).should('be.focused');
+        });
+
+        it('should keep focus on the surface when it has no tabbable elements', () => {
+          mount(<BasicDialog modalType={modalType} withoutActions />);
+          cy.get(dialogTriggerOpenSelector).realClick();
+          cy.get(dialogSurfaceSelector).should('be.focused').realPress('Tab');
+          cy.get(dialogSurfaceSelector).should('be.focused');
+        });
+
+        it('should keep focus trapped when inertTrapFocus=true', () => {
           mount(<BasicDialog inertTrapFocus modalType={modalType} />);
           cy.get(dialogTriggerOpenSelector).realClick();
           cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
@@ -400,6 +420,52 @@ describe('Dialog', () => {
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
+  });
+
+  it('should wrap Tab inside the innermost nested dialog when rendered in a frame', () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <Button id="open-first-dialog-btn">Open nested dialog</Button>
+        </DialogTrigger>
+        <DialogSurface id="first-dialog">
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id="close-first-dialog-btn">Close</Button>
+              </DialogTrigger>
+              <Dialog>
+                <DialogTrigger>
+                  <Button id="open-second-dialog-btn">Open inner dialog</Button>
+                </DialogTrigger>
+                <DialogSurface id="second-dialog">
+                  <DialogBody>
+                    <DialogTitle>Inner dialog title</DialogTitle>
+                    <DialogActions>
+                      <Button id="inner-action-btn">Inner action</Button>
+                      <DialogTrigger>
+                        <Button id="close-second-dialog-btn">Close</Button>
+                      </DialogTrigger>
+                    </DialogActions>
+                  </DialogBody>
+                </DialogSurface>
+              </Dialog>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-first-dialog-btn').realClick();
+    cy.get('#close-first-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#open-second-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#close-first-dialog-btn').should('be.focused');
+
+    cy.get('#open-second-dialog-btn').realClick();
+    cy.get('#inner-action-btn').should('be.focused').realPress('Tab');
+    cy.get('#close-second-dialog-btn').should('be.focused').realPress('Tab');
+    cy.get('#inner-action-btn').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#close-second-dialog-btn').should('be.focused');
   });
 
   it('should render nested non-modal dialog in modal dialog accessibly', () => {
