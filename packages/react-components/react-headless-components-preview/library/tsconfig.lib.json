@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "lib": ["ES2020", "dom"],
+    "lib": ["ES2019", "dom"],
     "declaration": true,
     "declarationDir": "../../../../dist/out-tsc/types",
     "outDir": "../../../../dist/out-tsc",
