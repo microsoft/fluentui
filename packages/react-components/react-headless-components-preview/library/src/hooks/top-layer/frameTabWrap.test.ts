@@ -1,4 +1,4 @@
-import { isInFrame, wrapFrameDialogTab } from './frameFocusTrap';
+import { isInFrame, wrapModalTabInFrame } from './frameTabWrap';
 
 const render = (html: string): HTMLDialogElement => {
   document.body.innerHTML = html;
@@ -6,6 +6,8 @@ const render = (html: string): HTMLDialogElement => {
 };
 
 const byId = (id: string) => document.getElementById(id)!;
+
+const TWO_BUTTONS = `<dialog id="dialog" open tabindex="-1"><button id="a"></button><button id="b"></button></dialog>`;
 
 describe('isInFrame', () => {
   it('is false for a top-level document', () => {
@@ -23,7 +25,7 @@ describe('isInFrame', () => {
   });
 });
 
-describe('wrapFrameDialogTab', () => {
+describe('wrapModalTabInFrame', () => {
   afterEach(() => {
     document.body.innerHTML = '';
   });
@@ -35,30 +37,26 @@ describe('wrapFrameDialogTab', () => {
     `);
     byId('b').focus();
 
-    expect(wrapFrameDialogTab(dialog, byId('b'), false)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('b'), false)).toBe(true);
     expect(document.activeElement).toBe(byId('a'));
   });
 
   it('wraps Shift+Tab from the first tab stop, or the surface itself, to the last', () => {
-    const dialog = render(
-      `<dialog id="dialog" open tabindex="-1"><button id="a"></button><button id="b"></button></dialog>`,
-    );
+    const dialog = render(TWO_BUTTONS);
 
-    expect(wrapFrameDialogTab(dialog, byId('a'), true)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('a'), true)).toBe(true);
     expect(document.activeElement).toBe(byId('b'));
 
-    expect(wrapFrameDialogTab(dialog, dialog, true)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, dialog, true)).toBe(true);
     expect(document.activeElement).toBe(byId('b'));
   });
 
   it('leaves Tab to the browser when a later tab stop exists in the dialog', () => {
-    const dialog = render(
-      `<dialog id="dialog" open tabindex="-1"><button id="a"></button><button id="b"></button></dialog>`,
-    );
+    const dialog = render(TWO_BUTTONS);
 
-    expect(wrapFrameDialogTab(dialog, byId('a'), false)).toBe(false);
-    expect(wrapFrameDialogTab(dialog, byId('b'), true)).toBe(false);
-    expect(wrapFrameDialogTab(dialog, dialog, false)).toBe(false);
+    expect(wrapModalTabInFrame(dialog, byId('a'), false)).toBe(false);
+    expect(wrapModalTabInFrame(dialog, byId('b'), true)).toBe(false);
+    expect(wrapModalTabInFrame(dialog, dialog, false)).toBe(false);
   });
 
   it('wraps from an element that is focusable but not a tab stop', () => {
@@ -66,7 +64,7 @@ describe('wrapFrameDialogTab', () => {
       <dialog id="dialog" open tabindex="-1"><button id="a"></button><div id="last" tabindex="-1"></div></dialog>
     `);
 
-    expect(wrapFrameDialogTab(dialog, byId('last'), false)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('last'), false)).toBe(true);
     expect(document.activeElement).toBe(byId('a'));
   });
 
@@ -82,17 +80,17 @@ describe('wrapFrameDialogTab', () => {
       </dialog>
     `);
 
-    expect(wrapFrameDialogTab(dialog, byId('r1'), false)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('r1'), false)).toBe(true);
     expect(document.activeElement).toBe(byId('a'));
 
-    expect(wrapFrameDialogTab(dialog, byId('a'), true)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('a'), true)).toBe(true);
     expect(document.activeElement).toBe(byId('r1'));
   });
 
   it('focuses the surface when the dialog has no tab stops', () => {
     const dialog = render(`<dialog id="dialog" open tabindex="-1"><p>Text</p></dialog>`);
 
-    expect(wrapFrameDialogTab(dialog, dialog, false)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, dialog, false)).toBe(true);
     expect(document.activeElement).toBe(dialog);
   });
 
@@ -105,12 +103,12 @@ describe('wrapFrameDialogTab', () => {
     `);
     const inner = byId('inner') as HTMLDialogElement;
 
-    expect(wrapFrameDialogTab(dialog, byId('inner-a'), false)).toBe(false);
+    expect(wrapModalTabInFrame(dialog, byId('inner-a'), false)).toBe(false);
 
-    expect(wrapFrameDialogTab(inner, byId('inner-a'), false)).toBe(true);
+    expect(wrapModalTabInFrame(inner, byId('inner-a'), false)).toBe(true);
     expect(document.activeElement).toBe(byId('inner-a'));
 
-    expect(wrapFrameDialogTab(dialog, byId('a'), false)).toBe(true);
+    expect(wrapModalTabInFrame(dialog, byId('a'), false)).toBe(true);
     expect(document.activeElement).toBe(byId('a'));
   });
 });

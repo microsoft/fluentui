@@ -124,6 +124,29 @@ describe('useDialogLayerOpenState', () => {
     cy.get('#reason').should('have.text', 'escape');
   });
 
+  // Cypress mounts components in an iframe, where `showModal()` leaves the host page interactive.
+  it('wraps Tab inside a modal layer in a frame, unless a handler prevented it', () => {
+    cy.window().then(win => expect(win.top, 'mounted in a frame').not.to.equal(win));
+    mount(
+      <Example mode="modal" role="dialog">
+        <span
+          onKeyDown={event => {
+            if (event.key === 'Tab') {
+              event.preventDefault();
+            }
+          }}
+        >
+          <button id="vetoed">Vetoed</button>
+        </span>
+      </Example>,
+    );
+
+    cy.get('#open').realClick();
+    cy.get('#inside').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#vetoed').should('be.focused').realPress('Tab');
+    cy.get('#vetoed').should('be.focused');
+  });
+
   it('keeps a nested auto layer from closing its parent', () => {
     const Nested = () => {
       const [outer, setOuter] = React.useState(false);

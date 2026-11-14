@@ -8,16 +8,10 @@ import {
   useEventCallback,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
+import { FOCUSABLE_CANDIDATE_SELECTOR, NATURALLY_FOCUSABLE_SELECTOR, getTabIndex } from '../../utils/focusable';
 import type { ListNavigationMode } from './List.types';
 
 const authorTabIndices = new WeakMap<HTMLElement, { attribute: string | null; tabIndex: number }>();
-const editableOrMediaSelector =
-  '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], audio[controls], video[controls]';
-const naturallyFocusableSelector = `a[href], area[href], button, input, select, textarea, iframe, object, embed, summary, ${editableOrMediaSelector}`;
-
-const getAuthorTabIndex = (element: HTMLElement): number =>
-  !element.hasAttribute('tabindex') && element.matches(editableOrMediaSelector) ? 0 : element.tabIndex;
-
 const updateAuthorTabIndices = (root: HTMLElement, records: MutationRecord[]): void => {
   for (const record of records) {
     if (
@@ -28,12 +22,12 @@ const updateAuthorTabIndices = (root: HTMLElement, records: MutationRecord[]): v
       if (record.attributeName === 'tabindex') {
         authorTabIndices.set(record.target, {
           attribute: record.target.getAttribute('tabindex'),
-          tabIndex: getAuthorTabIndex(record.target),
+          tabIndex: getTabIndex(record.target),
         });
       } else if (['contenteditable', 'controls', 'href', 'type'].includes(record.attributeName ?? '')) {
         const original = authorTabIndices.get(record.target);
         if (original?.attribute === null) {
-          original.tabIndex = record.target.matches(naturallyFocusableSelector) ? 0 : -1;
+          original.tabIndex = record.target.matches(NATURALLY_FOCUSABLE_SELECTOR) ? 0 : -1;
         }
       }
     }
@@ -58,9 +52,8 @@ const isAvailable = (element: HTMLElement, boundary: HTMLElement): boolean => {
 };
 
 export const getListFocusableElements = (root: HTMLElement): HTMLElement[] =>
-  Array.from(root.querySelectorAll<HTMLElement>(`[tabindex], ${naturallyFocusableSelector}`)).filter(
-    element =>
-      (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 && isAvailable(element, root),
+  Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE_CANDIDATE_SELECTOR)).filter(
+    element => (authorTabIndices.get(element)?.tabIndex ?? getTabIndex(element)) >= 0 && isAvailable(element, root),
   );
 
 /**
@@ -89,7 +82,7 @@ export const useCompositeListNavigation = (
     const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-navigable]')).filter(
       element =>
         element.closest('[data-list]') === root &&
-        (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 &&
+        (authorTabIndices.get(element)?.tabIndex ?? getTabIndex(element)) >= 0 &&
         isAvailable(element, root),
     );
     const elements = rows.flatMap(row => [
@@ -119,7 +112,7 @@ export const useCompositeListNavigation = (
       if (!authorTabIndices.has(element)) {
         authorTabIndices.set(element, {
           attribute: element.getAttribute('tabindex'),
-          tabIndex: getAuthorTabIndex(element),
+          tabIndex: getTabIndex(element),
         });
       }
       const tabIndex = element === current.current ? 0 : -1;
