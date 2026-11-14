@@ -423,6 +423,77 @@ describe('Dialog', () => {
     cy.get('#close-second-dialog-btn').should('be.focused');
   });
 
+  describe('Tab in a frame follows the browser tab order', () => {
+    const FrameDialog = ({ children }: { children: React.ReactNode }) => (
+      <Dialog>
+        <DialogTrigger>
+          <Button id="open">Open</Button>
+        </DialogTrigger>
+        <DialogSurface aria-label="Dialog">
+          <input id="first" aria-label="First" />
+          {children}
+        </DialogSurface>
+      </Dialog>
+    );
+
+    it('should wrap from a last radio group with no checked radio', () => {
+      mount(
+        <FrameDialog>
+          <input id="r1" type="radio" name="g" aria-label="One" />
+          <input id="r2" type="radio" name="g" aria-label="Two" />
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress('Tab');
+      cy.get('#r1').should('be.focused').realPress('Tab');
+      cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#r2').should('be.focused');
+    });
+
+    it('should wrap around a positive tabindex', () => {
+      mount(
+        <FrameDialog>
+          {/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- the case under test */}
+          <input id="positive" tabIndex={1} aria-label="Positive" />
+          <input id="last" aria-label="Last" />
+        </FrameDialog>,
+      );
+      // Tab order: #positive, #first, #last. `showModal()` focuses #first, the first in document order.
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#positive').should('be.focused').realPress(['Shift', 'Tab']);
+      cy.get('#last').should('be.focused').realPress('Tab');
+      cy.get('#positive').should('be.focused');
+    });
+
+    it('should keep Tab and Shift+Tab inside when the surface itself is focused', () => {
+      mount(
+        <FrameDialog>
+          <input id="last" aria-label="Last" />
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get(dialogSurfaceSelector).focus().realPress('Tab');
+      cy.get('#first').should('be.focused');
+      cy.get(dialogSurfaceSelector).focus().realPress(['Shift', 'Tab']);
+      cy.get('#last').should('be.focused');
+    });
+
+    it('should wrap even when a handler stops propagation of Tab', () => {
+      mount(
+        <FrameDialog>
+          <span onKeyDown={event => event.stopPropagation()}>
+            <input id="last" aria-label="Last" />
+          </span>
+        </FrameDialog>,
+      );
+      cy.get('#open').realClick();
+      cy.get('#first').should('be.focused').realPress('Tab');
+      cy.get('#last').should('be.focused').realPress('Tab');
+      cy.get('#first').should('be.focused');
+    });
+  });
+
   it('should render nested non-modal dialog in modal dialog accessibly', () => {
     mount(
       <Dialog modalType="modal">

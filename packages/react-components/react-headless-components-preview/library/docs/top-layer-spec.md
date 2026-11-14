@@ -217,7 +217,7 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 
 Focus on open and Tab order are the browser's:
 
-- `showModal()` focuses `[autofocus]` or the dialog, and `close()` returns focus. Tab can leave a modal through the browser UI. Inside a frame, `showModal()` only inerts the frame's document, so Tab would reach the host page instead: `useDialogLayerOpenState` wraps Tab inside an open `modal` layer there (`useLayerFrameTabWrap` in `frameTabWrap.ts`), listening on the document after React's handlers, so a handled Tab (`preventDefault()`) is left alone.
+- `showModal()` focuses `[autofocus]` or the dialog, and `close()` returns focus. Tab can leave a modal through the browser UI. Inside a frame, `showModal()` only inerts the frame's document, so Tab would reach the host page instead: `useDialogLayerOpenState` keeps Tab inside an open `modal` layer there (`useLayerFrameTabWrap` in `frameTabWrap.ts`): focusable sentinels at both ends of the `<dialog>` let the browser's own tab order decide when Tab reaches an edge, and a focused sentinel moves focus to the other end. A handled Tab (`preventDefault()`) never reaches a sentinel.
 - `showPopover()` focuses an `[autofocus]` element and otherwise leaves focus alone. React's `autoFocus` prop runs on mount, before the popover is shown, so it doesn't help.
 
 ## Consumers
