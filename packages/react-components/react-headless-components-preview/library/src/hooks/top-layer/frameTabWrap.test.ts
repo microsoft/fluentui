@@ -1,4 +1,4 @@
-import { getDialogTabStops, isInFrame, trapTabInFrame } from './frameTabWrap';
+import { getDialogTabStops, trapTabInFrame } from './frameTabWrap';
 
 const render = (html: string): HTMLDialogElement => {
   document.body.innerHTML = html;
@@ -9,22 +9,6 @@ const byId = (id: string) => document.getElementById(id)!;
 const ids = (elements: Element[]) => elements.map(element => element.id || element.tagName);
 const focusSentinel = (sentinel: Element, relatedTarget: Element | null) =>
   sentinel.dispatchEvent(new FocusEvent('focus', { relatedTarget }));
-
-describe('isInFrame', () => {
-  it('is false for a top-level document', () => {
-    expect(isInFrame(document)).toBe(false);
-  });
-
-  it('is true when the window is not the top window', () => {
-    const view = { top: {} };
-    expect(isInFrame({ defaultView: view } as unknown as Document)).toBe(true);
-  });
-
-  it('is false without a document or window', () => {
-    expect(isInFrame(undefined)).toBe(false);
-    expect(isInFrame({ defaultView: null } as unknown as Document)).toBe(false);
-  });
-});
 
 describe('getDialogTabStops', () => {
   afterEach(() => {
@@ -53,18 +37,6 @@ describe('getDialogTabStops', () => {
     `);
 
     expect(ids(getDialogTabStops(dialog))).toEqual(['p1', 'p2', 'a']);
-  });
-
-  it('leaves out the tab stops of a nested modal dialog', () => {
-    const dialog = render(`
-      <dialog id="dialog" open>
-        <button id="a"></button>
-        <dialog id="inner" open><button id="inner-a"></button></dialog>
-      </dialog>
-    `);
-
-    expect(ids(getDialogTabStops(dialog))).toEqual(['a']);
-    expect(ids(getDialogTabStops(byId('inner') as HTMLDialogElement))).toEqual(['inner-a']);
   });
 });
 

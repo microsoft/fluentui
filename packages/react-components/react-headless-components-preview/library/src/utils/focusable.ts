@@ -12,8 +12,7 @@ export const NATURALLY_FOCUSABLE_SELECTOR = `a[href], area[href], button, input,
 export const FOCUSABLE_CANDIDATE_SELECTOR = `[tabindex], ${NATURALLY_FOCUSABLE_SELECTOR}`;
 
 /**
- * The element's `tabIndex`, counting editable and media elements without a `tabindex` attribute as tab stops, since
- * some browsers report `-1` for them.
+ * `tabIndex`, but `0` for editable and media elements without `tabindex`: some browsers report `-1` for them.
  */
 export const getTabIndex = (element: HTMLElement): number =>
   !element.hasAttribute('tabindex') && element.matches(EDITABLE_OR_MEDIA_SELECTOR) ? 0 : element.tabIndex;

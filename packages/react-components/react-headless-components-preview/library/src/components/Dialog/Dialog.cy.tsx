@@ -492,6 +492,27 @@ describe('Dialog', () => {
       cy.get('#last').should('be.focused').realPress('Tab');
       cy.get('#first').should('be.focused');
     });
+
+    it('should keep wrapping after switching to non-modal while open, since the dialog stays modal', () => {
+      const Example = () => {
+        const [modalType, setModalType] = React.useState<DialogProps['modalType']>('modal');
+        return (
+          <Dialog open modalType={modalType}>
+            <DialogSurface aria-label="Dialog">
+              <button id="first" onClick={() => setModalType('non-modal')}>
+                Switch
+              </button>
+              <input id="last" aria-label="Last" />
+            </DialogSurface>
+          </Dialog>
+        );
+      };
+      mount(<Example />);
+      cy.get('#first').realClick();
+      cy.get(dialogSurfaceSelector).should('match', ':modal');
+      cy.get('#last').focus().realPress('Tab');
+      cy.get('#first').should('be.focused');
+    });
   });
 
   it('should render nested non-modal dialog in modal dialog accessibly', () => {

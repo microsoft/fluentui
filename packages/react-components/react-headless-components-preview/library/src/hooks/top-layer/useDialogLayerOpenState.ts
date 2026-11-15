@@ -11,9 +11,9 @@ const NO_FOCUS_RETURN = { when: false } as const;
 
 /**
  * `useLayerOpenState` for layers that can open as a modal `<dialog>`: also accepts `mode="modal"`, and returns focus on
- * close with `returnFocus`. A modal layer rendered in a frame keeps Tab inside, since `showModal()` leaves the host page
- * interactive. Use it only where the layer can be a dialog, so other components don't bundle the dialog and
- * focus code. Switching from `modal` to a popover mode applies on the next open.
+ * close with `returnFocus`. Wraps Tab for modal layers in a frame. Use it only where the layer can be a dialog, so
+ * other components don't bundle the dialog and focus code. Switching from `modal` to a popover mode applies on the
+ * next open.
  */
 export const useDialogLayerOpenState = (
   ref: React.RefObject<HTMLElement | null>,
@@ -22,5 +22,5 @@ export const useDialogLayerOpenState = (
   const { returnFocus = NO_FOCUS_RETURN, ...openStateOptions } = options;
   const focusReturn = useLayerFocusReturn(ref, returnFocus);
   useLayerOpenStateWith(ref, openStateOptions, dialogAdapter, focusReturn);
-  useLayerFrameTabWrap(ref, options.open && options.mode === 'modal');
+  useLayerFrameTabWrap(ref, options.open, options.mode);
 };
