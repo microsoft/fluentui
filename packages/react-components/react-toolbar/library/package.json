@@ -16,7 +16,6 @@
     "@fluentui/react-context-selector": "^9.2.21",
     "@fluentui/react-divider": "^9.7.6",
     "@fluentui/react-jsx-runtime": "^9.4.7",
-    "@fluentui/react-radio": "^9.6.7",
     "@fluentui/react-shared-contexts": "^9.26.4",
     "@fluentui/react-tabster": "^9.26.19",
     "@fluentui/react-theme": "^9.2.2",
