@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore(react-breadcrumb): remove unused dependency on @fluentui/react-link",
+  "comment": "chore: remove unused dependency on @fluentui/react-link",
   "packageName": "@fluentui/react-breadcrumb",
   "email": "vgenaev@gmail.com"
 }

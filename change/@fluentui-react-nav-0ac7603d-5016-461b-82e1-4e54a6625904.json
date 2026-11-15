@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore(react-nav): remove unused dependency on @fluentui/react-context-selector",
+  "comment": "chore: remove unused dependency on @fluentui/react-context-selector",
   "packageName": "@fluentui/react-nav",
   "email": "vgenaev@gmail.com"
 }
