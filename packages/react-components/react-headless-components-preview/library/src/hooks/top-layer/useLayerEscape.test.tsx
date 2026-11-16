@@ -1,0 +1,253 @@
+import * as React from 'react';
+import { createPortal } from 'react-dom';
+import { fireEvent, render } from '@testing-library/react';
+import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useLayerEscape } from './useLayerEscape';
+import { isPopoverOpen } from './utils';
+import type { UseLayerEscapeOptions } from './types';
+
+type ExampleProps = Partial<UseLayerEscapeOptions> & {
+  popover?: 'auto' | 'manual';
+  onEscape: jest.Mock;
+  /** Whether a `listen: 'document'` layer is in the top layer; `false` while open is a browser close. */
+  shown?: boolean;
+};
+
+const Example = ({ open = true, popover = 'manual', onEscape, when, listen, shown = open }: ExampleProps) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { onKeyDown } = useLayerEscape(ref, { open, onEscape, when, listen });
+  useIsomorphicLayoutEffect(() => {
+    const element = ref.current!;
+    if (listen === 'document' && shown !== isPopoverOpen(element)) {
+      element.togglePopover(shown);
+    }
+  });
+  return (
+    <>
+      <button>Outside</button>
+      <div ref={ref} popover={popover} onKeyDown={onKeyDown} data-testid="layer">
+        <button>Inside</button>
+      </div>
+    </>
+  );
+};
+
+describe('useLayerEscape', () => {
+  it('handles Escape on a manual layer and stops it', () => {
+    const onEscape = jest.fn();
+    const onOuterKeyDown = jest.fn();
+    const { getByText } = render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Example onEscape={onEscape} />
+      </div>,
+    );
+
+    const notCancelled = fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+
+    expect(onEscape).toHaveBeenCalledTimes(1);
+    expect(notCancelled).toBe(false);
+    expect(onOuterKeyDown).not.toHaveBeenCalled();
+  });
+
+  it('reports Escape before preventing it, so onEscape can tell a veto apart', () => {
+    const onEscape = jest.fn((event: KeyboardEvent | React.KeyboardEvent) => event.defaultPrevented);
+    const { getByText } = render(<Example onEscape={onEscape} />);
+
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+
+    expect(onEscape).toHaveReturnedWith(false);
+  });
+
+  it('ignores other keys and closed layers', () => {
+    const onEscape = jest.fn();
+    const { getByText, rerender } = render(<Example onEscape={onEscape} />);
+
+    fireEvent.keyDown(getByText('Inside'), { key: 'Enter' });
+    rerender(<Example onEscape={onEscape} open={false} />);
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+
+    expect(onEscape).not.toHaveBeenCalled();
+  });
+
+  it("leaves Escape to the browser on an auto popover, unless when is 'always'", () => {
+    const onEscape = jest.fn();
+    const { getByText, rerender } = render(<Example onEscape={onEscape} popover="auto" />);
+
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+    expect(onEscape).not.toHaveBeenCalled();
+
+    rerender(<Example onEscape={onEscape} popover="auto" when="always" />);
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+    expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it('ignores Escape that was already prevented', () => {
+    const onEscape = jest.fn();
+    const { getByText } = render(<Example onEscape={onEscape} />);
+    const inside = getByText('Inside');
+    inside.addEventListener('keydown', event => event.preventDefault());
+
+    fireEvent.keyDown(inside, { key: 'Escape' });
+
+    expect(onEscape).not.toHaveBeenCalled();
+  });
+
+  it("listens on the document while open with listen: 'document'", () => {
+    const onEscape = jest.fn();
+    const { getByText, rerender } = render(<Example onEscape={onEscape} listen="document" />);
+
+    fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+    expect(onEscape).toHaveBeenCalledTimes(1);
+
+    rerender(<Example onEscape={onEscape} listen="document" open={false} />);
+    fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+    expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it("only lets the newest open layer with listen: 'document' handle Escape", () => {
+    const onFirst = jest.fn();
+    const onSecond = jest.fn();
+    const { getAllByText, rerender } = render(
+      <>
+        <Example onEscape={onFirst} listen="document" />
+        <Example onEscape={onSecond} listen="document" open={false} />
+      </>,
+    );
+    rerender(
+      <>
+        <Example onEscape={onFirst} listen="document" />
+        <Example onEscape={onSecond} listen="document" />
+      </>,
+    );
+
+    fireEvent.keyDown(getAllByText('Outside')[0], { key: 'Escape' });
+    expect(onSecond).toHaveBeenCalledTimes(1);
+    expect(onFirst).not.toHaveBeenCalled();
+
+    rerender(
+      <>
+        <Example onEscape={onFirst} listen="document" />
+        <Example onEscape={onSecond} listen="document" open={false} />
+      </>,
+    );
+    fireEvent.keyDown(getAllByText('Outside')[0], { key: 'Escape' });
+    expect(onFirst).toHaveBeenCalledTimes(1);
+  });
+
+  it("tracks the newest layer with listen: 'document' per document", () => {
+    const iframe = document.createElement('iframe');
+    document.body.append(iframe);
+    const frameDocument = iframe.contentDocument!;
+    const onMain = jest.fn();
+    const onFrame = jest.fn();
+    const FrameLayer = () => {
+      const ref = React.useRef<HTMLDivElement>(null);
+      // No popover polyfill in the frame.
+      useLayerEscape(ref, { open: true, onEscape: onFrame, listen: 'document', when: 'always' });
+      return createPortal(
+        // Marked open the way the polyfill does.
+        <div ref={ref} popover="manual" className=":popover-open" />,
+        frameDocument.body,
+      );
+    };
+    const { getByText, unmount } = render(
+      <>
+        <Example onEscape={onMain} listen="document" />
+        <Provider value={{ dir: 'ltr', targetDocument: frameDocument }}>
+          <FrameLayer />
+        </Provider>
+      </>,
+    );
+
+    fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+    expect(onMain).toHaveBeenCalledTimes(1);
+    expect(onFrame).not.toHaveBeenCalled();
+
+    fireEvent.keyDown(frameDocument.body, { key: 'Escape' });
+    expect(onFrame).toHaveBeenCalledTimes(1);
+
+    unmount();
+    iframe.remove();
+  });
+
+  it('handles Escape from content an inner layer portals into its enclosing layer', () => {
+    const onInner = jest.fn();
+    const onOuter = jest.fn();
+    const Nested = () => {
+      const outerRef = React.useRef<HTMLDivElement>(null);
+      const innerRef = React.useRef<HTMLDivElement>(null);
+      const [outer, setOuter] = React.useState<HTMLDivElement | null>(null);
+      const { onKeyDown: onOuterKeyDown } = useLayerEscape(outerRef, { open: true, onEscape: onOuter });
+      const { onKeyDown: onInnerKeyDown } = useLayerEscape(innerRef, { open: true, onEscape: onInner });
+      return (
+        <div
+          ref={element => {
+            outerRef.current = element;
+            setOuter(element);
+          }}
+          popover="manual"
+          onKeyDown={onOuterKeyDown}
+        >
+          <div ref={innerRef} popover="manual" onKeyDown={onInnerKeyDown}>
+            {outer && createPortal(<input aria-label="Portaled into outer" />, outer)}
+          </div>
+        </div>
+      );
+    };
+    const { getByLabelText } = render(<Nested />);
+
+    fireEvent.keyDown(getByLabelText('Portaled into outer'), { key: 'Escape' });
+
+    expect(onInner).toHaveBeenCalledTimes(1);
+    expect(onOuter).not.toHaveBeenCalled();
+  });
+
+  it("handles Escape for an element that mounts after open with listen: 'document'", () => {
+    const onEscape = jest.fn();
+    const LateLayer = ({ mounted }: { mounted: boolean }) => {
+      const ref = React.useRef<HTMLDivElement>(null);
+      useLayerEscape(ref, { open: true, onEscape, listen: 'document' });
+      return mounted ? <div ref={ref} popover="manual" className=":popover-open" /> : null;
+    };
+    const { rerender } = render(<LateLayer mounted={false} />);
+    rerender(<LateLayer mounted />);
+
+    fireEvent.keyDown(document.body, { key: 'Escape' });
+
+    expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it("skips a layer with listen: 'document' that the browser closed while it stays open", () => {
+    const onFirst = jest.fn();
+    const onSecond = jest.fn();
+    const { getAllByText } = render(
+      <>
+        <Example onEscape={onFirst} listen="document" />
+        <Example onEscape={onSecond} listen="document" shown={false} />
+      </>,
+    );
+
+    const notCancelled = fireEvent.keyDown(getAllByText('Outside')[0], { key: 'Escape' });
+
+    expect(onSecond).not.toHaveBeenCalled();
+    expect(onFirst).toHaveBeenCalledTimes(1);
+    expect(notCancelled).toBe(false);
+  });
+
+  it("leaves Escape alone when no layer with listen: 'document' is shown", () => {
+    const onEscape = jest.fn();
+    const onOuterKeyDown = jest.fn();
+    const { getByText } = render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Example onEscape={onEscape} listen="document" shown={false} />
+      </div>,
+    );
+
+    const notCancelled = fireEvent.keyDown(getByText('Outside'), { key: 'Escape' });
+
+    expect(onEscape).not.toHaveBeenCalled();
+    expect(notCancelled).toBe(true);
+    expect(onOuterKeyDown).toHaveBeenCalledTimes(1);
+  });
+});
