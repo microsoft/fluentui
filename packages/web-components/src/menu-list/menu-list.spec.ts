@@ -219,10 +219,20 @@ test.describe('MenuList', () => {
   for (const role of Object.values(MenuItemRole)) {
     test(`should accept elements as focusable child with "${role}" role`, async ({ fastPage, page }) => {
       await fastPage.setTemplate({
-        innerHTML: /* html */ ` <div role="${role}">Menu item</div> `,
+        innerHTML: /* html */ `
+          <div role="${role}">First item</div>
+          <div role="${role}">Second item</div>
+        `,
       });
 
-      await expect(page.getByRole(role)).toHaveAttribute('tabindex', '0');
+      const items = page.getByRole(role);
+      await expect(items.first()).toHaveAttribute('tabindex', '0');
+      await fastPage.element.evaluate(node => node.focus());
+      await expect(items.first()).toBeFocused();
+      await page.keyboard.press('ArrowDown');
+      await expect(items.nth(1)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(items.first()).toBeFocused();
     });
   }
 
@@ -242,23 +252,23 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
 
@@ -266,17 +276,14 @@ test.describe('MenuList', () => {
       node.removeAttribute('hidden');
     });
 
-    await element.evaluate(node => {
-      node.focus();
-    });
-
+    await expect(menuItems.nth(2)).toBeVisible();
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
   });
@@ -413,15 +420,15 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.first()).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
   });
@@ -449,11 +456,12 @@ test.describe('MenuList', () => {
       node.focus();
     });
 
-    await element.first().press('ArrowRight');
+    await expect(menuItems.first()).toBeFocused();
+    await fastPage.page.keyboard.press('ArrowRight');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.first().press('Escape');
+    await fastPage.page.keyboard.press('Escape');
 
     await expect(menuItems.first()).toBeFocused();
   });
@@ -477,19 +485,19 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
   });
@@ -513,7 +521,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
@@ -527,7 +535,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
   });

@@ -399,6 +399,29 @@ test.describe('Tablist', () => {
     await expect(tabs.nth(2)).toBeFocused();
   });
 
+  test('should remove a disabled tab from navigation when activeid changes', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator(TabTagName);
+    await fastPage.setTemplate();
+
+    await tabs.nth(1).focus();
+    await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true');
+    await tabs.nth(1).evaluate((node: Tab) => {
+      node.disabled = true;
+    });
+    await expect(tabs.nth(1)).toHaveAttribute('tabindex', '0');
+
+    await element.evaluate((node: Tablist) => {
+      node.activeid = node.tabs[2].id;
+    });
+    await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(tabs.nth(1)).toHaveAttribute('tabindex', '-1');
+
+    await tabs.nth(2).focus();
+    await element.press('ArrowLeft');
+    await expect(tabs.first()).toBeFocused();
+  });
+
   test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
     const { element } = fastPage;
     const tabs = element.locator(TabTagName);
