@@ -35,6 +35,26 @@ describe('useTeachingPopoverTitleBase_unstable', () => {
     expect(result.current.dismissButton?.children).toBeUndefined();
   });
 
+  it('exposes the dismiss button to assistive technology', () => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    const { result } = renderHook(() => useTeachingPopoverTitleBase_unstable({ dismissButton: {} }, ref), {
+      wrapper: makeWrapper(),
+    });
+
+    expect(result.current.dismissButton?.['aria-label']).toBe('dismiss');
+    expect(result.current.dismissButton).not.toHaveProperty('aria-hidden');
+  });
+
+  it('lets callers set aria-hidden explicitly', () => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    const { result } = renderHook(
+      () => useTeachingPopoverTitleBase_unstable({ dismissButton: { 'aria-hidden': true } }, ref),
+      { wrapper: makeWrapper() },
+    );
+
+    expect(result.current.dismissButton?.['aria-hidden']).toBe(true);
+  });
+
   it('dismisses the popover and restores focus', () => {
     const ref = React.createRef<HTMLHeadingElement>();
     const setOpen = jest.fn();

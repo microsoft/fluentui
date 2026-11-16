@@ -49,7 +49,7 @@ describe('useTeachingPopoverTitle_unstable', () => {
     });
     expect(result.current.dismissButton).toBeDefined();
     expect(result.current.dismissButton?.['aria-label']).toBe('dismiss');
-    expect(result.current.dismissButton?.['aria-hidden']).toBe(true);
+    expect(result.current.dismissButton).not.toHaveProperty('aria-hidden');
     expect(typeof result.current.dismissButton?.onClick).toBe('function');
     expect(result.current.dismissButton?.children).toBeDefined();
   });

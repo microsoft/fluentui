@@ -47,7 +47,6 @@ export const useTeachingPopoverTitleBase_unstable = (
       defaultProps: {
         onClick: onDismissButtonClick,
         'aria-label': 'dismiss',
-        'aria-hidden': true,
       },
       elementType: 'button',
     }),

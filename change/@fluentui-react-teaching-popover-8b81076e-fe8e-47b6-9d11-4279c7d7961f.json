@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-teaching-popover): expose TeachingPopoverTitle dismiss button to assistive technology",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
