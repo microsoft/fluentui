@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-utilities): support a public build-time namespace for generated Fluent IDs",
+  "packageName": "@fluentui/react-utilities",
+  "email": "martinhochel@microsoft.com"
+}
