@@ -48,6 +48,7 @@ This skill reuses the triage rules. **Must read before Step 2:**
 - **Never create labels.** Use only labels from the allow-list. Check the handoff label exists before using it.
 - **Security reports:** no labels, comments, pings, or handoff. Flag for a maintainer (MSRC route).
 - **Comment only when it carries information.** "Still valid, no change" is never posted.
+- **Link issues and PRs in full in your own output** (plans, tables, summaries, tracking files): `[microsoft/fluentui#123](https://github.com/microsoft/fluentui/issues/123)`. A bare `#123` resolves against the local checkout, which is often a fork. Bare `#123` is fine inside comments posted on microsoft/fluentui.
 - **Space writes about one second apart.** On HTTP 403 or "secondary rate limit", stop and report.
 
 ## Arguments
