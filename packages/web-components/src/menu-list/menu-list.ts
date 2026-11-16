@@ -26,12 +26,6 @@ export class MenuList extends BaseMenuList {
   override setItems(): void {
     super.setItems();
 
-    for (const item of this.menuItems ?? []) {
-      if (!item.hasAttribute('tabindex')) {
-        item.tabIndex = 0;
-      }
-    }
-
     this.fgItems ??= new ArrayItemCollection<MenuItem>(() => this.menuItems?.filter(i => !i.hidden) ?? []);
     if (!this.fg) {
       this.fg = new FocusGroup(this, this.fgItems, {

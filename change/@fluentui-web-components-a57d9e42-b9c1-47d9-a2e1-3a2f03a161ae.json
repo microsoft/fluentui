@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: preserve keyboard navigation with native focusgroup support",
-  "packageName": "@fluentui/web-components",
-  "email": "paulmardling@microsoft.com"
-}

@@ -191,9 +191,6 @@ export class BaseTablist extends FASTElement {
 
     if (prevTab) {
       prevTab.setAttribute('aria-selected', 'false');
-      if (isTab(prevTab) && prevTab.disabled) {
-        prevTab.tabIndex = -1;
-      }
       const prevPanel = this.tabPanelMap.get(prevTab);
       if (prevPanel) {
         prevPanel.hidden = true;

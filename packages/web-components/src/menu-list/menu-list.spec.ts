@@ -219,20 +219,10 @@ test.describe('MenuList', () => {
   for (const role of Object.values(MenuItemRole)) {
     test(`should accept elements as focusable child with "${role}" role`, async ({ fastPage, page }) => {
       await fastPage.setTemplate({
-        innerHTML: /* html */ `
-          <div role="${role}">First item</div>
-          <div role="${role}">Second item</div>
-        `,
+        innerHTML: /* html */ ` <div role="${role}">Menu item</div> `,
       });
 
-      const items = page.getByRole(role);
-      await expect(items.first()).toHaveAttribute('tabindex', '0');
-      await fastPage.element.evaluate(node => node.focus());
-      await expect(items.first()).toBeFocused();
-      await page.keyboard.press('ArrowDown');
-      await expect(items.nth(1)).toBeFocused();
-      await page.keyboard.press('ArrowUp');
-      await expect(items.first()).toBeFocused();
+      await expect(page.getByRole(role)).toHaveAttribute('tabindex', '0');
     });
   }
 
