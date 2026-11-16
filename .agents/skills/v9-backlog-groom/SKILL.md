@@ -92,7 +92,7 @@ Re-evaluation windows (skip an issue if its latest ledger entry is younger than 
 
 Next to the ledger, keep two human-readable files the user checks between runs. Update them in Step 5 after applying:
 
-- `followups.md` — one row per issue waiting on a person (every `ping`, plus anything the user chose to hold): issue, who it waits on, what was asked, where (issue or PR), re-check date (ping date + 14 days), status. Mark rows `done` when a later run sees a reply.
+- `followups.md` — one row per issue waiting on a person (every `ping`, plus anything the user chose to hold): issue, who it waits on, what was asked, where (issue or PR), re-check date (ping date + 14 days), status. Mark rows `done` when a later run sees a reply. A `## Watch list` section at the end tracks issues with active work that need no action now (for example an open PR updated recently): issue, what's being watched, last activity, re-check date.
 - `agent-candidates.md` — one row per agent-ready issue (or one the user names as a candidate): issue, component, one-line summary, blockers before handoff (assignee to remove, repro to validate, missing spec), and whether the task spec is posted. When grooming is finished, the user bulk-labels from this file.
 
 Multiple maintainers may groom in parallel. Comments this skill posts carry a hidden marker `<!-- v9-backlog-groom v1 outcome=<x> -->`. Count a marker only when its author's `authorAssociation` is `OWNER`, `MEMBER`, or `COLLABORATOR` — anyone can type the HTML. A trusted marker newer than the window above counts like a ledger entry, so two maintainers don't ping the same person twice.
