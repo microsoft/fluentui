@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: end ColorArea drag on pointercancel, released buttons and unmount",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "vgenaev@gmail.com"
+}
