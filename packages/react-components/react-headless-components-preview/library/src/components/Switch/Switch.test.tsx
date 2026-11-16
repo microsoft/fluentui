@@ -71,6 +71,21 @@ describe('Switch', () => {
     expect(root).toHaveAttribute('data-checked');
   });
 
+  it('follows checked passed through the input slot', () => {
+    const { container } = render(<Switch input={{ checked: true, onChange: jest.fn() }} label="x" />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-checked');
+  });
+
+  it('lets the input slot checked override the checked prop', () => {
+    const { container, getByRole } = render(
+      <Switch checked input={{ checked: false, onChange: jest.fn() }} label="x" />,
+    );
+
+    expect(getByRole('switch')).not.toBeChecked();
+    expect(container.firstElementChild!).not.toHaveAttribute('data-checked');
+  });
+
   it('calls onChange with the new checked value when uncontrolled', () => {
     const onChange = jest.fn();
     const { getByRole } = render(<Switch onChange={onChange} label="x" />);

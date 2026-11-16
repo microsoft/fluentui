@@ -14,11 +14,9 @@ import { toDataAttributeValue } from '../../utils';
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
   const state: SwitchState = useSwitchBase_unstable(props, ref);
 
-  // The base hook passes checked/defaultChecked straight to the native input and keeps no state,
-  // so track it here to keep data-checked correct in uncontrolled mode.
   const [checked, setChecked] = useControllableState({
-    state: props.checked,
-    defaultState: props.defaultChecked,
+    state: state.input.checked,
+    defaultState: state.input.defaultChecked,
     initialState: false,
   });
 
