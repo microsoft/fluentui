@@ -35,9 +35,16 @@ after landing. This check is not a trusted merge gate: any workflow with
 ## Optional risk model
 
 For tiers 0-2, the model receives the complete diff, trusted tier criteria, and
-deterministic result. It answers one native `type: "choice"` question with a tier,
-probabilities, and uncalibrated confidence. This is **not a chat-completions API**.
-The response is validated; tier 3 skips the model.
+deterministic result. Select the backend with `RISK_MODEL_API`:
+
+| Backend              | Output and limits                                                                                                                               |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `decision` (default) | Native `type: "choice"` API: tier, probabilities, and uncalibrated confidence. 48 KiB request limit; 30-second deadline.                        |
+| `responses`          | Azure OpenAI Responses API: strict JSON containing only a tier. No invented confidence/probabilities. 1 MiB request limit; 120-second deadline. |
+
+Both use the same risk policy, validate the response and token usage, never
+truncate the diff, and skip the model for tier 3. Their different input limits
+affect coverage; compare unassessed cases as well as accuracy.
 
 | Configuration          | Final label                                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,12 +53,11 @@ The response is validated; tier 3 skips the model.
 | `raise`                | Maximum of the deterministic and model tiers. Unavailable, unauthorized, failed, or oversized assessments mean at least tier 2. |
 
 Model calls require repository write access or a maintainer-applied `ai-review`
-label. A failed permission lookup uses a reported association fallback. Requests
-have a 48 KiB serialized limit and a 30-second deadline; diffs are never truncated.
+label. A failed permission lookup uses a reported association fallback.
 
 To enable the model, repository administrators configure:
 
-- Variables `RISK_MODEL_ENDPOINT`, `RISK_MODEL_DEPLOYMENT`, `RISK_MODEL_ID`,
+- Variables `RISK_MODEL_API`, `RISK_MODEL_ENDPOINT`, `RISK_MODEL_DEPLOYMENT`, `RISK_MODEL_ID`,
   `RISK_MODEL_AZURE_CLIENT_ID`, and optionally `RISK_MODEL_MODE`.
 - Secret `AZURE_TENANT_ID` and an Entra application with least-privilege model access.
 - GitHub OIDC federation restricted to this trusted workflow. Use
@@ -97,13 +103,24 @@ reads a Git diff without checkout, external diff drivers, or text conversion.
 It verifies the changed-file set. The scorer still preserves the production
 API-unavailable fallback rather than pretending the workflow could fetch that diff.
 
-**2. Run both classifier modes.** Set `RISK_MODEL_ENDPOINT`,
-`RISK_MODEL_DEPLOYMENT`, and `RISK_MODEL_ID` for the native risk-model endpoint.
+**2. Run the classifiers.** Set `RISK_MODEL_ENDPOINT`, `RISK_MODEL_DEPLOYMENT`,
+and `RISK_MODEL_ID`. Leave `RISK_MODEL_API=decision` for the native endpoint, or
+set it to `responses` with an Azure OpenAI Responses endpoint and an LLM deployment.
 
 ```sh
 yarn nx run scripts-github:risk-eval-score \
   --args=".cache/pr-risk-eval/labels.json .cache/pr-risk-eval/results.json"
 ```
+
+Use a different results filename for each backend/model. Each run reports Code
+only alongside the selected AI backend, so the same frozen inputs support a
+Code-only / decision-model / LLM comparison without another script.
+
+For constructed paired cases, use local case IDs and pass a frozen labels JSON with a top-level `pairId`
+on each row and policy-expected reference tiers verified by executable checks.
+The scorer checks matching paths/tiers and exactly two cases per pair before
+inference, then reports whether both cases were correct. Keep these diagnostic
+results separate from real PRs; no sampling confidence interval is assigned.
 
 Code only makes no inference calls and uses **zero tokens**. Code + AI uses the
 production raise/failure policy, authorizing all sample PRs for this offline

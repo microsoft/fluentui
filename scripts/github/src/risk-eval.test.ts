@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 import { completeDiff, expertReference, expertRequest, labelPulls, price, readUsage } from './risk-eval-label';
-import { metrics, scorePulls } from './risk-eval-score';
+import { metrics, pairGroups, pairedMetrics, scorePulls } from './risk-eval-score';
 
 jest.mock('node:child_process', () => ({ execFileSync: jest.fn(() => 'test-only-token') }));
 
@@ -84,6 +84,47 @@ describe('local risk evaluation', () => {
     expect(metrics([{ reference: 1, predicted: 3 }]).meanTierDifference).toBe(2);
     expect(() => metrics([])).toThrow('empty');
     expect(() => metrics([{ reference: 4, predicted: 2 }])).toThrow('Invalid tier');
+  });
+
+  test('validates matched pairs and requires both members correct instead of rewarding always-high predictions', () => {
+    const sourcePull = {
+      ...pull,
+      files: [{ ...pull.files[0], filename: 'packages/react-components/react-button/library/src/helper.ts' }],
+    };
+    const rows = [
+      { pairId: 'pair-1', pull: sourcePull, reference: { tier: 1, contentRisk: 'low', reason: 'Preserved contract.' } },
+      {
+        pairId: 'pair-1',
+        pull: { ...sourcePull, number: 124 },
+        reference: { tier: 3, contentRisk: 'high', reason: 'Changed trust boundary.' },
+      },
+    ];
+    const groups = pairGroups(rows);
+    const results = [
+      { number: 123, reference: 1, codeOnly: 1, withAi: 3, summary: '', sent: false },
+      { number: 124, reference: 3, codeOnly: 1, withAi: 3, summary: '', sent: false },
+    ];
+    expect(pairedMetrics(results, groups, 'codeOnly')).toEqual({
+      pairs: 1,
+      bothCorrect: 0,
+      baselineMatched: 1,
+      higherRiskMatched: 0,
+    });
+    expect(pairedMetrics(results, groups, 'withAi')).toEqual({
+      pairs: 1,
+      bothCorrect: 0,
+      baselineMatched: 0,
+      higherRiskMatched: 1,
+    });
+    expect(pairedMetrics([{ ...results[0], withAi: 1 }, results[1]], groups, 'withAi').bothCorrect).toBe(1);
+    expect(() => pairGroups(rows.slice(0, 1))).toThrow('exactly two');
+    expect(() => pairGroups([rows[0], { ...rows[1], reference: rows[0].reference }])).toThrow('require escalation');
+    expect(() =>
+      pairGroups([
+        rows[0],
+        { ...rows[1], pull: { ...sourcePull, files: [{ ...sourcePull.files[0], filename: '.github/test.yml' }] } },
+      ]),
+    ).toThrow('same sub-3');
   });
 
   test('accounts for cached input once, and never invents prices or double-counts reasoning tokens', () => {

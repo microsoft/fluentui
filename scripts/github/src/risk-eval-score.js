@@ -5,7 +5,7 @@ const { existsSync, readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
 const { hash, save, azureEndpoint, azureToken, totalUsage, price } = require('./risk-eval-label');
-const { askRiskModel } = require('./risk-model');
+const { askRiskModel, riskModelApi } = require('./risk-model');
 const { classifyRisk } = require('./risk-tiers');
 const { escalate } = require('./risk-tiers-workflow');
 
@@ -37,6 +37,63 @@ function metrics(pairs) {
   };
 }
 
+/** @param {import('./risk-eval-label').LabelRow[]} rows */
+function pairGroups(rows) {
+  if (!rows.some(row => row.pairId !== undefined)) {
+    return [];
+  }
+  /** @type {Map<string, import('./risk-eval-label').LabelRow[]>} */
+  const groups = new Map();
+  for (const row of rows) {
+    const id = row.pairId;
+    assert.ok(typeof id === 'string' && id.trim(), 'Every paired case needs a pairId.');
+    groups.set(id, [...(groups.get(id) || []), row]);
+  }
+  for (const group of groups.values()) {
+    assert.equal(group.length, 2, 'Each pair must contain exactly two cases.');
+    const floors = group.map(row => classifyRisk(row.pull.files, { changedFiles: row.pull.changedFiles }).tier);
+    assert.ok(floors[0] < 3 && floors[0] === floors[1], 'Pair members must have the same sub-3 deterministic tier.');
+    const paths = group.map(row =>
+      row.pull.files
+        .flatMap(file => (file.previous_filename ? [file.filename, file.previous_filename] : [file.filename]))
+        .sort(),
+    );
+    assert.deepEqual(paths[0], paths[1], 'Pair members must change the same paths.');
+    const expected = group.map(row => {
+      assert.ok(row.reference && [0, 1, 2, 3].includes(row.reference.tier), 'Pair reference tier is invalid.');
+      return row.reference.tier;
+    });
+    assert.ok(
+      expected.includes(floors[0]) && expected.some(tier => tier > floors[0]),
+      'A pair must preserve the baseline tier in one case and require escalation in the other.',
+    );
+  }
+  return [...groups.values()];
+}
+
+/** @param {Result[]} rows @param {ReturnType<typeof pairGroups>} groups @param {'codeOnly' | 'withAi'} key */
+function pairedMetrics(rows, groups, key) {
+  const byNumber = new Map(rows.map(row => [row.number, row]));
+  let baselineMatched = 0;
+  let higherRiskMatched = 0;
+  let bothCorrect = 0;
+  for (const group of groups) {
+    const results = group
+      .map(row => {
+        const result = byNumber.get(row.pull.number);
+        assert.ok(result, 'Missing paired result.');
+        return result;
+      })
+      .sort((a, b) => a.reference - b.reference);
+    const baseline = results[0][key] === results[0].reference;
+    const higherRisk = results[1][key] === results[1].reference;
+    baselineMatched += Number(baseline);
+    higherRiskMatched += Number(higherRisk);
+    bothCorrect += Number(baseline && higherRisk);
+  }
+  return { pairs: groups.length, bothCorrect, baselineMatched, higherRiskMatched };
+}
+
 /** @param {string} labelsFile @param {string} outputFile */
 async function scorePulls(labelsFile, outputFile) {
   const labelsText = readFileSync(labelsFile, 'utf8');
@@ -47,16 +104,30 @@ async function scorePulls(labelsFile, outputFile) {
     'Finish expert labeling first.',
   );
   assert.equal(new Set(labels.rows.map(row => row.pull.number)).size, labels.numbers.length);
+  assert.deepEqual(
+    labels.rows.map(row => row.pull.number).sort((a, b) => a - b),
+    [...labels.numbers].sort((a, b) => a - b),
+    'Reference sample IDs do not match.',
+  );
+  const pairs = pairGroups(labels.rows);
   const endpoint = azureEndpoint(process.env.RISK_MODEL_ENDPOINT);
   const deployment = process.env.RISK_MODEL_DEPLOYMENT;
   const model = process.env.RISK_MODEL_ID;
+  const api = riskModelApi(process.env.RISK_MODEL_API);
   assert.ok(deployment && model, 'Set RISK_MODEL_DEPLOYMENT and RISK_MODEL_ID.');
   const classifierHash = hash(
     ['risk-tiers.js', 'risk-model.js', 'risk-tiers-workflow.js']
       .map(name => readFileSync(join(__dirname, name), 'utf8'))
       .join('\n') + readFileSync(join(__dirname, '../../../.github/risk-tiers.json'), 'utf8'),
   );
-  const config = { datasetHash: hash(labelsText), classifierHash, deployment, model, endpointHash: hash(endpoint) };
+  const config = {
+    datasetHash: hash(labelsText),
+    classifierHash,
+    deployment,
+    model,
+    api,
+    endpointHash: hash(endpoint),
+  };
   /** @type {{ config: typeof config; rows: Result[]; calls: import('./risk-eval-label').Call[]; report?: unknown }} */
   const output = existsSync(outputFile)
     ? JSON.parse(readFileSync(outputFile, 'utf8'))
@@ -100,6 +171,7 @@ async function scorePulls(labelsFile, outputFile) {
           endpoint,
           deployment,
           model,
+          api,
           getToken: async () => azureToken(),
           fetcher: (...args) => {
             result.sent = true;
@@ -125,7 +197,9 @@ async function scorePulls(labelsFile, outputFile) {
     output.rows.push(result);
     save(outputFile, output);
     console.log(
-      `Scored #${result.number}: code ${result.codeOnly}, code + AI ${result.withAi}, reference ${result.reference}.`,
+      `Scored ${pairs.length ? 'case ' : '#'}${result.number}: code ${result.codeOnly}, code + AI ${
+        result.withAi
+      }, reference ${result.reference}.`,
     );
   }
   assert.equal(new Set(output.rows.map(row => row.number)).size, labels.numbers.length, 'Result sample mismatch.');
@@ -144,11 +218,14 @@ async function scorePulls(labelsFile, outputFile) {
     },
     codeOnly: {
       ...metrics(output.rows.map(row => ({ reference: row.reference, predicted: row.codeOnly }))),
+      ...(pairs.length ? { wilson95: undefined, paired: pairedMetrics(output.rows, pairs, 'codeOnly') } : {}),
       usage: { inputTokens: 0, cachedInputTokens: 0, outputTokens: 0 },
       estimatedUsd: 0,
     },
     codePlusAi: {
+      api,
       ...metrics(output.rows.map(row => ({ reference: row.reference, predicted: row.withAi }))),
+      ...(pairs.length ? { wilson95: undefined, paired: pairedMetrics(output.rows, pairs, 'withAi') } : {}),
       usage: riskUsage,
       calls: output.calls.filter(call => call.sent).length,
       callsWithUnknownUsage: riskUnknown,
@@ -156,13 +233,17 @@ async function scorePulls(labelsFile, outputFile) {
       pricing: riskPrice,
       estimatedUsd: riskUnknown ? null : riskPrice.estimatedUsd,
     },
-    note: 'Offline classifier replay; all sample PRs are authorized for the model. No GitHub writes. Expert cost is separate. Unknown prices are null, not zero.',
+    note:
+      'Offline classifier replay; all sample PRs are authorized for the model. No GitHub writes. Expert cost is separate. Unknown prices are null, not zero.' +
+      (pairs.length
+        ? ' Constructed pairs use local case IDs, not GitHub PRs. They are not independent population samples; no sampling confidence interval is reported.'
+        : ''),
   };
   save(outputFile, output);
   console.log(JSON.stringify(output.report, null, 2));
 }
 
-module.exports = { metrics, scorePulls };
+module.exports = { metrics, pairGroups, pairedMetrics, scorePulls };
 
 if (require.main === module) {
   const [labelsFile, outputFile] = process.argv.slice(2);
