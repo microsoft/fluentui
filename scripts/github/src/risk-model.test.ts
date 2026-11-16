@@ -120,6 +120,7 @@ describe('risk model assessment', () => {
     ).resolves.toMatchObject({
       tier: 2,
     });
+
     expect(fetcher).toHaveBeenCalledTimes(1);
     expect(fetcher).toHaveBeenCalledWith(
       endpoint,
@@ -130,6 +131,30 @@ describe('risk model assessment', () => {
         headers: expect.objectContaining({ Authorization: 'Bearer test-only-token' }),
       }),
     );
+  });
+
+  test('preserves reported cached input tokens and rejects invalid cache usage', () => {
+    const answer = payload();
+    expect(
+      validateRiskModelAnswer(
+        {
+          ...answer,
+          usage: { ...answer.usage, input_tokens_details: { cached_tokens: 40 } },
+        },
+        transport.model,
+      ).cachedInputTokens,
+    ).toBe(40);
+    for (const cachedTokens of [-1, 101, 0.5, '40']) {
+      expect(() =>
+        validateRiskModelAnswer(
+          {
+            ...answer,
+            usage: { ...answer.usage, input_tokens_details: { cached_tokens: cachedTokens } },
+          },
+          transport.model,
+        ),
+      ).toThrow('invalid');
+    }
   });
 
   test('provider HTTP errors, malformed JSON, oversized responses and timeouts remain explicit failures', async () => {

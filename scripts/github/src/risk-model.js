@@ -42,6 +42,8 @@ function validateRiskModelAnswer(payload, expectedModel) {
   const answer = payload.answers.risk_tier;
   const distribution = answer.probabilities;
   const usage = payload.usage;
+  const inputDetails = usage.input_tokens_details;
+  const cachedInputTokens = isRecord(inputDetails) ? inputDetails.cached_tokens ?? 0 : 0;
   if (
     answer.type !== 'choice' ||
     typeof answer.choice !== 'string' ||
@@ -58,6 +60,10 @@ function validateRiskModelAnswer(payload, expectedModel) {
     Number(distribution[answer.choice]) + 1e-5 < Math.max(...Object.values(distribution).map(Number)) ||
     !Number.isSafeInteger(usage.input_tokens) ||
     !Number.isSafeInteger(usage.output_tokens) ||
+    (inputDetails !== undefined && !isRecord(inputDetails)) ||
+    !Number.isSafeInteger(cachedInputTokens) ||
+    Number(cachedInputTokens) < 0 ||
+    Number(cachedInputTokens) > Number(usage.input_tokens) ||
     Number(usage.input_tokens) < 0 ||
     Number(usage.output_tokens) < 0
   ) {
@@ -68,6 +74,7 @@ function validateRiskModelAnswer(payload, expectedModel) {
     confidence: answer.confidence,
     model: payload.model,
     inputTokens: Number(usage.input_tokens),
+    cachedInputTokens: Number(cachedInputTokens),
     outputTokens: Number(usage.output_tokens),
   };
 }

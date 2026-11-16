@@ -259,3 +259,5 @@ module.exports = async ({
     throw error;
   }
 };
+
+module.exports.escalate = escalate;
