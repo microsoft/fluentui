@@ -88,7 +88,7 @@ export const AreaChartSecondaryYAxis = (): JSXElement => {
   const chart2Points: LineChartDataPoint[] = chart1Points.map((point, index) => {
     return {
       x: point.x,
-      y: point.y + Math.floor(Math.random() * 10000),
+      y: point.y + (index + 1) * 500,
     };
   });
 
