@@ -17,6 +17,8 @@ import {
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
+  normalizeObjectArrayForGVBC,
+  getGridProperties,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
@@ -180,6 +182,146 @@ describe('getColor', () => {
   });
 });
 
+describe('normalizeObjectArrayForGVBC', () => {
+  test('preserves numeric properties with prototype-related names', () => {
+    const data = [JSON.parse('{"__proto__":7,"constructor":8,"prototype":9,"toString":10}') as Record<string, unknown>];
+
+    const result = normalizeObjectArrayForGVBC(data);
+
+    expect(result).toEqual({
+      x: ['Item 1'],
+      traces: [
+        { type: 'bar', name: '__proto__', x: ['Item 1'], y: [7] },
+        { type: 'bar', name: 'constructor', x: ['Item 1'], y: [8] },
+        { type: 'bar', name: 'prototype', x: ['Item 1'], y: [9] },
+        { type: 'bar', name: 'toString', x: ['Item 1'], y: [10] },
+      ],
+    });
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
+  });
+});
+
+/* eslint-disable no-extend-native -- Regression tests simulate inherited properties and restore them in finally. */
+describe('getGridProperties', () => {
+  test('maps horizontal and vertical annotations to the subplot', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [],
+      layout: {
+        xaxis: { domain: [0, 1] },
+        yaxis: { domain: [0, 1] },
+        annotations: [
+          { x: 0.5, y: 0.5, text: 'Horizontal annotation' },
+          { x: 0.5, y: 0.5, text: 'Vertical annotation', textangle: 90 },
+        ],
+      },
+    };
+
+    const result = getGridProperties(plotlySchema, true, []);
+
+    expect(result.templateRows).toBe('repeat(1, 1fr)');
+    expect(result.templateColumns).toBe('repeat(1, 1fr)');
+    expect(result.layout.x).toEqual(
+      expect.objectContaining({
+        row: 1,
+        column: 1,
+        xAnnotation: 'Horizontal annotation',
+        yAnnotation: 'Vertical annotation',
+      }),
+    );
+  });
+
+  test('does not read or mutate inherited subplot annotations', () => {
+    const originalDescriptor = Object.getOwnPropertyDescriptor(Object.prototype, '0');
+    const inheritedAnnotations = { xAnnotation: 'Inherited horizontal', yAnnotation: 'Inherited vertical' };
+    Object.defineProperty(Object.prototype, '0', {
+      configurable: true,
+      writable: true,
+      value: inheritedAnnotations,
+    });
+
+    try {
+      const plotlySchema: PlotlySchema = {
+        data: [],
+        layout: {
+          xaxis: { domain: [0, 1] },
+          yaxis: { domain: [0, 1] },
+          annotations: [{ x: 0.5, y: 0.5, text: 'Own vertical', textangle: 90 }],
+        },
+      };
+
+      const result = getGridProperties(plotlySchema, true, []);
+
+      expect(result.layout.x.xAnnotation).toBeUndefined();
+      expect(result.layout.x.yAnnotation).toBe('Own vertical');
+      expect(inheritedAnnotations).toEqual({
+        xAnnotation: 'Inherited horizontal',
+        yAnnotation: 'Inherited vertical',
+      });
+    } finally {
+      if (originalDescriptor) {
+        Object.defineProperty(Object.prototype, '0', originalDescriptor);
+      } else {
+        Reflect.deleteProperty(Object.prototype, '0');
+      }
+    }
+  });
+});
+
+describe('getAxisObjects through line chart conversion', () => {
+  test('preserves primary and secondary axis scale settings', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        { type: 'scatter', name: 'Primary', x: [1, 2], y: [3, 4] },
+        { type: 'scatter', name: 'Secondary', x: [1, 2], y: [5, 6], yaxis: 'y2' },
+      ],
+      layout: {
+        xaxis: { type: 'log' },
+        yaxis: { type: 'linear' },
+        yaxis2: { type: 'log' },
+      },
+    };
+
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+    expect(result.xScaleType).toBe('log');
+    expect(result.yScaleType).toBeUndefined();
+    expect(result.secondaryYScaleType).toBe('log');
+  });
+
+  test('does not inherit a secondary axis when only a primary axis is present', () => {
+    const originalDescriptor = Object.getOwnPropertyDescriptor(Object.prototype, 'y2');
+    Object.defineProperty(Object.prototype, 'y2', {
+      configurable: true,
+      writable: true,
+      value: { type: 'log' },
+    });
+
+    try {
+      const plotlySchema: PlotlySchema = {
+        data: [{ type: 'scatter', name: 'Primary', x: [1, 2], y: [3, 4] }],
+        layout: {
+          xaxis: { type: 'log' },
+          yaxis: { type: 'log' },
+        },
+      };
+
+      const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+      expect(result.xScaleType).toBe('log');
+      expect(result.yScaleType).toBe('log');
+      expect(result.secondaryYScaleType).toBeUndefined();
+    } finally {
+      if (originalDescriptor) {
+        Object.defineProperty(Object.prototype, 'y2', originalDescriptor);
+      } else {
+        Reflect.deleteProperty(Object.prototype, 'y2');
+      }
+    }
+  });
+});
+
+/* eslint-enable no-extend-native */
+
 describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_donut_test.json');
@@ -192,13 +334,13 @@ describe('transform Plotly Json To chart Props', () => {
     'transformPlotlyJsonToDonutProps - handles a "%s" label without polluting Object.prototype',
     label => {
       const plotlySchema: PlotlySchema = {
-        data: [{ type: 'pie', labels: [label], values: [7], hole: 0.5 }],
+        data: [{ type: 'pie', labels: [label, label], values: [7, 3], hole: 0.5 }],
         layout: { width: 440, height: 220 },
       };
 
       const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true);
 
-      expect(result.data?.chartData).toEqual([expect.objectContaining({ legend: label, data: 7 })]);
+      expect(result.data?.chartData).toEqual([expect.objectContaining({ legend: label, data: 10 })]);
       expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
     },
   );
