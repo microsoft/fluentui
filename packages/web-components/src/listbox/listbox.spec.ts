@@ -95,7 +95,7 @@ test.describe('Listbox', () => {
 
     await fastPage.setTemplate();
 
-    await expect.poll(() => element.evaluate((node: Listbox) => node.options?.length)).toBe(8);
+    await expect(element).toHaveJSProperty('options.length', 8);
   });
 
   test('should set the `ariaPosInSet` and `ariaSetSize` properties on the options', async ({ fastPage }) => {

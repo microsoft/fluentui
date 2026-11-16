@@ -6,8 +6,10 @@ import { tagName } from './rating-display.options.js';
 const require = createRequire(import.meta.url);
 const { webLightTheme } = require('@fluentui/tokens');
 
-function normalizeMaskImage(value: string) {
-  return value.replace(/\\([.%])/g, '$1');
+function encodedSvg(str: string, browserName: string) {
+  return encodeURIComponent(str)
+    .replaceAll('.', browserName === 'webkit' ? '\\.' : '.')
+    .replaceAll('%', browserName === 'webkit' ? '\\%' : '%');
 }
 
 test.describe('Rating Display', () => {
@@ -174,7 +176,7 @@ test.describe('Rating Display', () => {
     await expect(value).toHaveCSS('margin-inline-start', '6px');
   });
 
-  test('should use custom icons when provided', async ({ fastPage }) => {
+  test('should use custom icons when provided', async ({ fastPage, browserName }) => {
     const { element } = fastPage;
     const display = element.locator('.display');
     const customIconPath =
@@ -186,21 +188,17 @@ test.describe('Rating Display', () => {
       innerHTML: customIcon,
     });
 
-    const maskImageFilled = normalizeMaskImage(
-      await display.evaluate(node => {
-        return getComputedStyle(node).getPropertyValue('--_mask-image-filled');
-      }),
-    );
-    const maskImageOutlined = normalizeMaskImage(
-      await display.evaluate(node => {
-        return getComputedStyle(node).getPropertyValue('--_mask-image-outlined');
-      }),
-    );
+    const maskImageFilled = await display.evaluate(node => {
+      return getComputedStyle(node).getPropertyValue('--_mask-image-filled');
+    });
+    const maskImageOutlined = await display.evaluate(node => {
+      return getComputedStyle(node).getPropertyValue('--_mask-image-outlined');
+    });
 
-    expect(maskImageFilled).toContain(encodeURIComponent(customIconPath));
-    expect(maskImageOutlined).toContain(encodeURIComponent(customIconPath));
-    expect(maskImageOutlined).toContain(encodeURIComponent('stroke="black"'));
-    expect(maskImageOutlined).toContain(encodeURIComponent('stroke-width="2"'));
-    expect(maskImageOutlined).toContain(encodeURIComponent('fill="none"'));
+    expect(maskImageFilled).toContain(encodedSvg(customIconPath, browserName));
+    expect(maskImageOutlined).toContain(encodedSvg(customIconPath, browserName));
+    expect(maskImageOutlined).toContain(encodedSvg('stroke="black"', browserName));
+    expect(maskImageOutlined).toContain(encodedSvg('stroke-width="2"', browserName));
+    expect(maskImageOutlined).toContain(encodedSvg('fill="none"', browserName));
   });
 });

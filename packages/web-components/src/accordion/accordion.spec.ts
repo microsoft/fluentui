@@ -243,7 +243,7 @@ test.describe('Accordion', () => {
 
     await expect(secondItem).not.toHaveAttribute('expanded');
 
-    await secondItem.evaluate(node => node.setAttribute('expanded', ''));
+    await secondItem.evaluate<void>(node => node.setAttribute('expanded', ''));
 
     await expect(firstItem).not.toHaveAttribute('expanded');
 

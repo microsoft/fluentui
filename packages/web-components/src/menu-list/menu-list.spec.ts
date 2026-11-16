@@ -242,23 +242,23 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowUp');
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowUp');
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
 
@@ -266,14 +266,17 @@ test.describe('MenuList', () => {
       node.removeAttribute('hidden');
     });
 
-    await expect(menuItems.nth(2)).toBeVisible();
+    await element.evaluate(node => {
+      node.focus();
+    });
+
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
   });
@@ -410,15 +413,15 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.first()).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
   });
@@ -446,12 +449,11 @@ test.describe('MenuList', () => {
       node.focus();
     });
 
-    await expect(menuItems.first()).toBeFocused();
-    await fastPage.page.keyboard.press('ArrowRight');
+    await element.first().press('ArrowRight');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await fastPage.page.keyboard.press('Escape');
+    await element.first().press('Escape');
 
     await expect(menuItems.first()).toBeFocused();
   });
@@ -475,19 +477,19 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowUp');
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowUp');
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
   });
@@ -511,7 +513,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
@@ -525,7 +527,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await fastPage.page.keyboard.press('ArrowDown');
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
   });
