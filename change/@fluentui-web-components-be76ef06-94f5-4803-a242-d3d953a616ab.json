@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: defer fallback custom-state attributes until after construction",
+  "packageName": "@fluentui/web-components",
+  "email": "16242628+sylvesterkaczmarek@users.noreply.github.com"
+}
