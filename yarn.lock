@@ -2876,7 +2876,7 @@ __metadata:
     "@microsoft/esrp-npm-release": "npm:^0.1.3"
     "@microsoft/fast-build": "npm:0.9.0"
     "@microsoft/fast-element": "npm:3.0.0"
-    "@microsoft/fast-test-harness": "npm:0.4.0"
+    "@microsoft/fast-test-harness": "patch:@microsoft/fast-test-harness@npm%3A0.4.0#~/.yarn/patches/@microsoft-fast-test-harness-npm-0.4.0-46a946fad4.patch"
     "@microsoft/focusgroup-polyfill": "npm:1.5.0"
     "@microsoft/load-themed-styles": "npm:1.10.26"
     "@microsoft/loader-load-themed-styles": "npm:2.0.17"
@@ -8018,6 +8018,27 @@ __metadata:
   bin:
     fast-test-harness: start.mjs
   checksum: 10c0/820ffd55541796459a69d205fde57778d885644543c8850d9c95d34ea654bdc7b8edbb1bccee20a986a73d3d425a8f467ce6543e61fdd6b8a781d670fbfa3a60
+  languageName: node
+  linkType: hard
+
+"@microsoft/fast-test-harness@patch:@microsoft/fast-test-harness@npm%3A0.4.0#~/.yarn/patches/@microsoft-fast-test-harness-npm-0.4.0-46a946fad4.patch":
+  version: 0.4.0
+  resolution: "@microsoft/fast-test-harness@patch:@microsoft/fast-test-harness@npm%3A0.4.0#~/.yarn/patches/@microsoft-fast-test-harness-npm-0.4.0-46a946fad4.patch::version=0.4.0&hash=92739f"
+  dependencies:
+    cheerio: "npm:1.2.0"
+  peerDependencies:
+    "@microsoft/fast-build": ^0.9.0
+    "@microsoft/fast-element": ^3.0.0
+    "@playwright/test": ">=1.40.0"
+    vite: ">=7.0.0"
+  peerDependenciesMeta:
+    "@microsoft/fast-build":
+      optional: true
+    "@microsoft/fast-element":
+      optional: true
+  bin:
+    fast-test-harness: start.mjs
+  checksum: 10c0/125fbf92ebade7538fcb395410b50bc7dfd7f899e5e1394b8f55bb76171d6d260f46cdde4cbfe984137c0ea4225152decf611eb589b3f39cd3bc358b3736ab22
   languageName: node
   linkType: hard
 
