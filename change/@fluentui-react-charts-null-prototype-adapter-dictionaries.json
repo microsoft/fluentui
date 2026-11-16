@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Preserve prototype-related numeric property names when normalizing chart data and align adapter dictionaries with react-charting hardening.",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com",
+  "dependentChangeType": "patch"
+}
