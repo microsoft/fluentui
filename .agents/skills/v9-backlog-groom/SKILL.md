@@ -193,7 +193,7 @@ Never ask an external contributor "OK to unassign?" in public. Never hand off an
 
 1. Counts by outcome.
 2. Call-outs: security flags first, then closures, breaking changes, clusters, and handoff candidates (including "label missing — spec only").
-3. Table: `#`, `type`, `still valid`, `merit / risk / breaking`, `in progress`, `outcome`, `labels`, `notes`.
+3. Table: `#`, `created` (date), `age` (months), `type`, `still valid`, `merit / risk / breaking`, `in progress`, `outcome`, `labels`, `notes`.
 4. Below the table, keyed by issue number: comment drafts, ping drafts (with target issue/PR), and task specs **verbatim**.
 5. Closures grouped by package with the CODEOWNERS owner.
 6. A proposed validation set (same rules as triage-issues Step 3), for bugs whose still-valid result depends on a repro.
