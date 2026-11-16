@@ -29,7 +29,6 @@ export const useColorAreaBase_unstable = (
   const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
-  const focusWithinRef = useFocusWithin();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
 
@@ -199,7 +198,6 @@ export const useColorAreaBase_unstable = (
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
-  state.thumb.ref = useMergedRefs(state.thumb.ref, focusWithinRef);
   state.inputX.ref = useMergedRefs(state.inputX.ref, xRef);
   state.inputY.ref = useMergedRefs(state.inputY.ref, yRef);
 
@@ -237,6 +235,10 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     ...useColorAreaBase_unstable(rest, ref),
     shape,
   };
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  state.thumb.ref = useMergedRefs(state.thumb.ref, useFocusWithin());
 
   return state;
 };

@@ -3,17 +3,18 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/github/src",
   "projectType": "library",
-  "tags": ["tools"],
   "targets": {
     "test": {
       "inputs": [
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/.github/workflows/create-experimental-branch.yml",
         "{workspaceRoot}/.github/risk-tiers.json",
         "{workspaceRoot}/.github/workflows/pr-housekeeping.yml",
         { "env": "FLUENT_RISK_LIVE_TEST" }
       ]
     }
-  }
+  },
+  "tags": ["tools"]
 }

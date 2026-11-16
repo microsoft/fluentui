@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "9.25.9",
+      "tag": "@fluentui/react-menu_v9.25.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9cffb6b4534ffc5a1c1ed35ab2516b3a3a53e8b0",
+            "comment": "fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Oct 2026 16:42:57 GMT",
       "version": "9.25.8",
       "tag": "@fluentui/react-menu_v9.25.8",
