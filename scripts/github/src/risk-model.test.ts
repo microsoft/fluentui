@@ -7,9 +7,11 @@ import {
   buildRiskModelRequest,
   getRiskModelConfig,
   getRiskModelToken,
+  validateRiskLlmAnswer,
   validateRiskModelAnswer,
 } from './risk-model';
 import { tiers } from './risk-tiers';
+import { escalate } from './risk-tiers-workflow';
 
 const input = {
   deterministic: { tier: 0, reason: 'Allowlisted package-local documentation.' },
@@ -19,6 +21,7 @@ const endpoint = 'https://example.services.ai.azure.com/v1/decide';
 const transport = { endpoint, deployment: 'example-deployment', model: 'example-model-1' };
 const config = {
   ...transport,
+  api: 'decision' as const,
   clientId: '11111111-1111-1111-1111-111111111111',
   tenantId: '22222222-2222-2222-2222-222222222222',
 };
@@ -33,6 +36,20 @@ const payload = () => ({
     },
   },
   usage: { input_tokens: 100, output_tokens: 1 },
+});
+const llmPayload = () => ({
+  model: transport.model,
+  status: 'completed',
+  output: [
+    { type: 'reasoning', summary: [] },
+    { type: 'message', content: [{ type: 'output_text', text: '{"tier":2}' }] },
+  ],
+  usage: {
+    input_tokens: 100,
+    input_tokens_details: { cached_tokens: 40 },
+    output_tokens: 25,
+    output_tokens_details: { reasoning_tokens: 20 },
+  },
 });
 
 describe('risk model assessment', () => {
@@ -78,6 +95,94 @@ describe('risk model assessment', () => {
     expect(getToken).not.toHaveBeenCalled();
     expect(fetcher).not.toHaveBeenCalled();
     expect(() => buildRiskModelRequest({ ...input, diff: '' }, transport.deployment)).toThrow('nonempty');
+  });
+
+  test('uses the same risk policy with strict tier-only Responses output and complete input', () => {
+    const request = JSON.parse(buildRiskModelRequest(input, transport.deployment, 'responses'));
+    const native = JSON.parse(buildRiskModelRequest(input, transport.deployment));
+    const state = JSON.parse(request.input);
+    expect(request.instructions).toContain(native.questions.risk_tier.instructions);
+    expect(state).toEqual({ ...JSON.parse(native.state), criteria: native.questions.risk_tier.criteria });
+    expect(request.text.format).toMatchObject({
+      type: 'json_schema',
+      strict: true,
+      schema: { required: ['tier'], additionalProperties: false, properties: { tier: { enum: [0, 1, 2, 3] } } },
+    });
+    expect(request.store).toBe(false);
+    expect(request.truncation).toBe('disabled');
+    const larger = { ...input, diff: input.diff + 'x'.repeat(64 * 1024) };
+    expect(() => buildRiskModelRequest(larger, transport.deployment)).toThrow('48 KiB');
+    expect(JSON.parse(JSON.parse(buildRiskModelRequest(larger, transport.deployment, 'responses')).input).diff).toBe(
+      larger.diff,
+    );
+  });
+
+  test('rejects oversized LLM requests before fetching credentials or invoking the provider', async () => {
+    const getToken = jest.fn();
+    const fetcher = jest.fn();
+    await expect(
+      askRiskModel(
+        { ...input, diff: '界'.repeat((1024 * 1024) / 3 + 1) },
+        { ...transport, api: 'responses', getToken, fetcher },
+      ),
+    ).rejects.toThrow('1 MiB');
+    expect(getToken).not.toHaveBeenCalled();
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+
+  test('validates completed LLM answers and usage without inventing confidence', async () => {
+    const answer = validateRiskLlmAnswer(llmPayload(), transport.model);
+    expect(answer).toMatchObject({ tier: 2, inputTokens: 100, cachedInputTokens: 40, outputTokens: 25 });
+    expect(answer.confidence).toBeUndefined();
+    const fetcher = jest.fn().mockResolvedValue(new Response(JSON.stringify(llmPayload())));
+    await expect(
+      askRiskModel(input, { ...transport, api: 'responses', getToken: async () => 'token', fetcher }),
+    ).resolves.toEqual(answer);
+    expect(JSON.parse(fetcher.mock.calls[0][1].body).text.format.type).toBe('json_schema');
+    for (const payloadValue of [
+      { ...llmPayload(), status: 'incomplete' },
+      { ...llmPayload(), model: 'other-model' },
+      { ...llmPayload(), output: [{ content: [{ type: 'refusal', refusal: 'No' }] }] },
+      { ...llmPayload(), usage: { input_tokens: 100, output_tokens: -1 } },
+    ]) {
+      expect(() => validateRiskLlmAnswer(payloadValue, transport.model)).toThrow();
+    }
+    for (const text of ['{"tier":"2"}', '{"tier":4}', '{"tier":2,"confidence":1}', 'not JSON']) {
+      expect(() =>
+        validateRiskLlmAnswer(
+          {
+            ...llmPayload(),
+            output: [{ content: [{ type: 'output_text', text }] }],
+          },
+          transport.model,
+        ),
+      ).toThrow();
+    }
+  });
+
+  test('applies the same floor and shadow behavior to an LLM without a confidence value', async () => {
+    const args = {
+      pull: { labels: [{ name: 'ai-review' }] },
+      deterministic: { tier: 0 as const, reason: 'Docs only.' },
+      getTrust: async () => ({ trusted: true }),
+      getDiff: async () => input.diff,
+      assessRisk: async () => validateRiskLlmAnswer(llmPayload(), transport.model),
+    };
+    const raised = await escalate({ ...args, raise: true });
+    expect(raised.tier).toBe(2);
+    expect(raised.summary).toContain('confidence not supplied');
+    expect(raised.summary).not.toContain('undefined');
+    expect((await escalate({ ...args, raise: false })).tier).toBe(0);
+    expect(
+      (
+        await escalate({
+          ...args,
+          deterministic: { tier: 2, reason: 'Standard.' },
+          raise: true,
+          assessRisk: async () => ({ ...validateRiskLlmAnswer(llmPayload(), transport.model), tier: 0 }),
+        })
+      ).tier,
+    ).toBe(2);
   });
 
   test('validates Choice identity, binding, distribution, confidence and usage', () => {
@@ -206,6 +311,8 @@ describe('risk model assessment', () => {
       RISK_MODEL_AZURE_TENANT_ID: config.tenantId,
     };
     expect(getRiskModelConfig(env)).toEqual(config);
+    expect(getRiskModelConfig({ ...env, RISK_MODEL_API: 'responses' })).toEqual({ ...config, api: 'responses' });
+    expect(() => getRiskModelConfig({ ...env, RISK_MODEL_API: 'unsupported' })).toThrow('RISK_MODEL_API');
     expect(getRiskModelConfig({})).toBeUndefined();
     // The tenant secret is shared with other workflows, so it alone does not configure the model.
     expect(getRiskModelConfig({ RISK_MODEL_AZURE_TENANT_ID: config.tenantId })).toBeUndefined();

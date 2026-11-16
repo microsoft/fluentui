@@ -77,6 +77,7 @@ function configuredModel(core, env) {
         endpoint: config.endpoint,
         deployment: config.deployment,
         model: config.model,
+        api: config.api,
         getToken: () => getRiskModelToken(core, config),
       }))
   );
@@ -131,9 +132,11 @@ async function escalate({ pull, deterministic, getTrust, getDiff, assessRisk, ra
     }
     const answer = await assessRisk({ diff, deterministic });
     const suggested = Math.max(floor, answer.tier);
+    const confidence =
+      answer.confidence === undefined ? 'confidence not supplied' : `confidence ${answer.confidence} (uncalibrated)`;
     const details =
-      `${note}Model suggested tier ${answer.tier}. Model ${answer.model}, confidence ${answer.confidence} ` +
-      `(uncalibrated), tokens ${answer.inputTokens} input / ${answer.outputTokens} output.`;
+      `${note}Model suggested tier ${answer.tier}. Model ${answer.model}, ${confidence}, ` +
+      `tokens ${answer.inputTokens} input / ${answer.outputTokens} output.`;
     const measured = { modelTier: answer.tier, confidence: answer.confidence };
     return raise
       ? { tier: suggested, summary: details, ...measured }

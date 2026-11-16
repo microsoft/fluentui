@@ -44,7 +44,7 @@ describe('trusted risk workflow setup', () => {
   });
 
   test('the model configuration comes from repository settings only', () => {
-    for (const name of ['ENDPOINT', 'DEPLOYMENT', 'ID', 'AZURE_CLIENT_ID']) {
+    for (const name of ['API', 'ENDPOINT', 'DEPLOYMENT', 'ID', 'AZURE_CLIENT_ID']) {
       expect(workflow).toContain(`RISK_MODEL_${name}: \${{ vars.RISK_MODEL_${name} }}`);
     }
   });

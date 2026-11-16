@@ -85,6 +85,7 @@ jobs:
           RISK_CHECK_ID: ${{ steps.start.outputs.check-id }}
           RISK_HEAD_SHA: ${{ steps.start.outputs.head-sha }}
           RISK_MODEL_MODE: ${{ vars.RISK_MODEL_MODE }}
+          RISK_MODEL_API: ${{ vars.RISK_MODEL_API }}
           RISK_MODEL_ENDPOINT: ${{ vars.RISK_MODEL_ENDPOINT }}
           RISK_MODEL_DEPLOYMENT: ${{ vars.RISK_MODEL_DEPLOYMENT }}
           RISK_MODEL_ID: ${{ vars.RISK_MODEL_ID }}
