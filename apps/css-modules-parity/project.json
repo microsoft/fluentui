@@ -83,7 +83,9 @@
       "inputs": [
         "{projectRoot}/checks/**/*",
         "{projectRoot}/e2e/**/*",
-        "{workspaceRoot}/packages/react-components/*/library/src/**/*.styles.css.ts"
+        "{workspaceRoot}/packages/react-components/*/library/src/**/*.styles.css.ts",
+        "{workspaceRoot}/packages/react-components/*/library/src/**/*.module.css",
+        "{workspaceRoot}/packages/react-components/*/library/src/**/*.styles.css.test.ts"
       ],
       "options": { "command": "node --test 'apps/css-modules-parity/checks/**/*.test.mjs'" }
     },

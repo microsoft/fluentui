@@ -16,7 +16,6 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
     menuButtonClassNames.root,
-    styles.root,
     styles[state.appearance],
     styles[state.size],
     state.root['aria-expanded'] && styles.expanded,
