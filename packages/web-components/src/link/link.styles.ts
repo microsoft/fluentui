@@ -13,6 +13,7 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { stateSelector } from '../utils/element-internals.js';
 
 export const styles = css`
   ${display('inline')}
@@ -61,15 +62,19 @@ export const styles = css`
     color: ${colorNeutralForeground2Link};
   }
 
-  :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)),
+  @supports (selector(:host-context(*))) {
+    :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)) {
+      font: inherit;
+      text-decoration: underline;
+    }
+  }
+
   :host([inline]) {
     font: inherit;
     text-decoration: underline;
   }
 
-  :host(:focus-visible),
-  :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)):focus-visible,
-  :host([inline]:focus-visible) {
+  :host(:is(:not(:defined):focus-within, ${stateSelector('focus-visible')})) {
     outline-style: none;
     text-decoration-line: underline;
     text-decoration-style: double;
@@ -81,9 +86,10 @@ export const styles = css`
     text-decoration: none;
   }
 
-  ::slotted(a) {
-    position: absolute;
-    inset: 0;
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    outline-style: none;
   }
 
   @media (forced-colors: active) {
