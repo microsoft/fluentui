@@ -83,6 +83,12 @@ export type ComponentSpec = {
    * the app declared; never to mask a component styling difference.
    */
   knownDifferences?: KnownDifferences;
+  /**
+   * Forced colors axis only: differences where the Griffel value is one the app declared inside an at-rule. Griffel
+   * ordered app and component at-rules by insertion, so the app's rule won; a component's forced colors rule now
+   * wins (see the forced colors note in the README). Never for a component styling difference.
+   */
+  forcedColorsKnownDifferences?: KnownDifferences;
   /** Selector awaited inside every container before sampling, for components that render asynchronously (lazy). */
   waitFor?: string;
   /**
@@ -604,12 +610,17 @@ function resolveDeclarations(declarations: Record<string, string[]>) {
     const resolved: Record<string, string[]> = {};
     for (const [key, values] of Object.entries(declarations)) {
       const property = key.split(' ').pop()!;
-      resolved[key] = values.map(value => {
+      // In forced colors, a value is recolored unless the element opts out (`forced-color-adjust: none`, for example
+      // Button primary), so both computed values are accepted.
+      resolved[key] = values.flatMap(value => {
         if (value === '*') {
-          return value;
+          return [value];
         }
         probe.style.setProperty(property, value.startsWith('--') ? `var(${value})` : value);
-        return view.getComputedStyle(probe).getPropertyValue(property);
+        return ['auto', 'none'].map(adjust => {
+          probe.style.setProperty('forced-color-adjust', adjust);
+          return view.getComputedStyle(probe).getPropertyValue(property);
+        });
       });
     }
     probe.remove();
@@ -792,11 +803,18 @@ export function describeParity(
           continue;
         }
         const declarations = mergeKnownDifferences(spec, scenario);
-        const title = declarations ? `${scenario} (known migration difference: app styles now apply)` : scenario;
+        const forcedColorsDeclarations =
+          forcedColors && !griffelBuckets ? spec.forcedColorsKnownDifferences?.[scenario] : undefined;
+        const title = forcedColorsDeclarations
+          ? `${scenario} (known forced colors difference: component forced colors rules now win)`
+          : declarations
+          ? `${scenario} (known migration difference: app styles now apply)`
+          : scenario;
 
         it(`${name}: ${title}`, () => {
           const differences: string[] = [];
           let allowed: Record<string, string[]> = {};
+          let allowedGriffel: Record<string, string[]> = {};
           cy.document().then(targetDocument =>
             mount(
               renderApp(
@@ -816,6 +834,11 @@ export function describeParity(
               allowed = resolved;
             });
           }
+          if (forcedColorsDeclarations) {
+            resolveDeclarations(forcedColorsDeclarations).then(resolved => {
+              allowedGriffel = resolved;
+            });
+          }
           const compare = (label: string) =>
             spec.variants.forEach((variant, index) => {
               for (const state of statesOf(spec, variant)) {
@@ -824,7 +847,11 @@ export function describeParity(
                   enterState(`css-${index}`, spec, state);
                   sample(`css-${index}`, spec).then(actual => {
                     for (const key of Object.keys(expected)) {
-                      if (expected[key] !== actual[key] && !isKnownDifference(allowed, key, actual[key])) {
+                      if (
+                        expected[key] !== actual[key] &&
+                        !isKnownDifference(allowed, key, actual[key]) &&
+                        !isKnownDifference(allowedGriffel, key, expected[key])
+                      ) {
                         differences.push(
                           `${label}${JSON.stringify(variant)} ${state} ${key}: griffel=${expected[key]} css=${
                             actual[key]

@@ -47,6 +47,17 @@ export function tolerate(pattern: PatternFactory, values: Record<string, string[
   };
 }
 
+/**
+ * Forced colors axis only: tolerates Griffel values the app declared inside an at-rule, which a component's forced
+ * colors rule now beats (see `forcedColorsKnownDifferences` in the harness).
+ */
+export function overriddenInForcedColors(pattern: PatternFactory, values: Record<string, string[]>): PatternFactory {
+  return (componentName, spec) => {
+    const overrides = pattern(componentName, spec);
+    return overrides && { ...overrides, forcedColorsKnownDifferences: { 'app pattern': values } };
+  };
+}
+
 /** A pattern passing one class of a `makeStyles()` hook as the component's `className`. */
 export function withClass<K extends string>(
   useStyles: () => Record<K, string>,
