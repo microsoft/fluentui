@@ -420,25 +420,30 @@ export class BaseAccordionItem extends FASTElement {
 // @public
 export class BaseAnchor extends FASTElement {
     constructor();
+    click(): void;
     // @internal
-    clickHandler(e: PointerEvent): boolean;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
+    control: HTMLAnchorElement & {
+        ariaLabelledByElements?: HTMLElement[] | null;
+        ariaDescribedByElements?: HTMLElement[] | null;
+    };
+    // @internal
+    protected controlChanged(prev: HTMLAnchorElement | undefined, next: HTMLAnchorElement | undefined): void;
     download?: string;
     // @internal
     elementInternals: ElementInternals;
     // @internal
-    handleChange(source: any, propertyName: string): void;
+    focusHandler(e: Event): boolean;
+    // @internal
+    protected handleAttributeChange(attribute: string): void;
     href?: string;
     hreflang?: string;
-    keydownHandler(e: KeyboardEvent): boolean | void;
     ping?: string;
     referrerpolicy?: string;
     rel: string;
     target?: AnchorTarget;
     type?: string;
+    // @internal
+    protected updateFocusVisibleState(showFocus?: boolean): void;
 }
 
 // @public
