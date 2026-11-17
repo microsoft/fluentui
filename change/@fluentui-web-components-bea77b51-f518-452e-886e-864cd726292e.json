@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "fix(web-components): preserve native navigation, focus, and ARIA attributes for anchor buttons and links",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com"
+}
