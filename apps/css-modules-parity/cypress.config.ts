@@ -106,6 +106,8 @@ export default defineConfig({
   // Parity samples must be deterministic: a pass on retry hides a real difference or a sampling race.
   retries: { runMode: 0, openMode: 0 },
   env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer },
+  // Large specs (Navigation, Overlays) otherwise run the renderer out of memory in forced colors mode.
+  experimentalMemoryManagement: true,
   component: {
     ...baseConfig.component,
     // Queries reach into the shadow root the app renders into.
@@ -137,6 +139,12 @@ export default defineConfig({
               resolve: {
                 extensionAlias: { '.styles': ['.styles.ts'], '.styles.js': ['.styles.js'] },
               },
+            },
+            {
+              test: /\.styles\.tsx?$/,
+              exclude: /\.styles\.css\.tsx?$/,
+              enforce: 'pre',
+              use: path.resolve(appRoot, 'griffel-baseline/griffelStyleImportsLoader.js'),
             },
             ...extractionRules,
             { test: /\.css$/, sideEffects: true, oneOf: cssRules },

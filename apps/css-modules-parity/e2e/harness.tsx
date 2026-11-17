@@ -13,6 +13,7 @@ import { RendererProvider, TextDirectionProvider, createDOMRenderer, mergeClasse
 import { createShadowDOMRenderer } from '@griffel/shadow-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import type { AnyComponent, AnyProps } from './compose';
+import { GriffelBaseStyles } from './GriffelBaseStyles';
 import styles from './ParityApp.module.css';
 import { useParityAppResetStyles, useParityAppStyles } from './useParityAppStyles.styles';
 
@@ -146,6 +147,9 @@ a { color: inherit; text-decoration: inherit; }
 img, svg { display: block; vertical-align: middle; }
 `;
 type KnownDifferences = Partial<Record<Scenario, Record<string, string[]>>>;
+
+/** Differences listed in a failure message; the rest are counted. */
+const maxReportedDifferences = 40;
 
 export const icon = <span aria-hidden="true">+</span>;
 
@@ -402,6 +406,7 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
       theme={webLightTheme}
       customStyleHooks_unstable={customStyleHooks}
     >
+      <GriffelBaseStyles />
       {nestedProvider(
         spec.variants.map((variant, index) =>
           (['griffel', 'css'] as const).map(implementation => {
@@ -828,7 +833,14 @@ export function describeParity(
             compare('toggled ');
           }
           cy.then(() => {
-            expect(differences, `${name} / ${scenario} differences:\n${differences.join('\n')}`).to.deep.equal([]);
+            // Asserts the count with the list in the message: a `deep.equal` diff of hundreds of long strings stays in
+            // Cypress's command log and is re-rendered on every later command, which slows down every later test.
+            const shown = differences.slice(0, maxReportedDifferences);
+            const more = differences.length - shown.length;
+            expect(
+              differences.length,
+              `${name} / ${scenario} differences:\n${shown.join('\n')}${more > 0 ? `\n… and ${more} more` : ''}`,
+            ).to.equal(0);
           });
         });
       }

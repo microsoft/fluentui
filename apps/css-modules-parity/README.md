@@ -78,7 +78,10 @@ Dedicated specs:
   transforms and running animations don't affect it) of the root, its parent and sampled slots is compared, so layout differences such as a wrapper growing with the component's min-content width are reported.
 - Failures name the scenario, slot, property and both values. No numeric tolerances are applied.
 
-Griffel hooks that import a sibling component through an index file still receive its CSS alternative. Specs work
+A Griffel hook that composes another package's style hook (`useToggleButtonStyles_unstable` from
+`@fluentui/react-button`) would receive its CSS alternative through the package index;
+[`griffelStyleImportsLoader`](./griffel-baseline/griffelStyleImportsLoader.js) redirects those imports to the Griffel
+hooks. Components that render a sibling component through an index file still receive its CSS alternative. Specs work
 around this locally: they swap in Griffel child components, rebuild presets or shims from source, or (in
 `FeedbackAndCompat`) re-instantiate webpack modules with Griffel hooks. Transitions that ignore reduced motion are
 disabled where they would make sampling nondeterministic.

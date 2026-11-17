@@ -11,7 +11,7 @@
       "cache": true,
       "options": {
         "cwd": "apps/css-modules-parity",
-        "command": "yarn run -T cypress run --component"
+        "command": "yarn run -T cypress run --component --config numTestsKeptInMemory=0"
       },
       "configurations": {
         "local": {
@@ -74,7 +74,7 @@
       "cache": true,
       "options": {
         "cwd": "apps/css-modules-parity",
-        "command": "yarn run -T eslint e2e griffel-buckets cypress.config.ts"
+        "command": "yarn run -T eslint e2e griffel-baseline griffel-buckets cypress.config.ts"
       }
     },
     "type-check": {
