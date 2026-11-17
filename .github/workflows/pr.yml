@@ -255,6 +255,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Environment axes that pass in full; see apps/css-modules-parity/README.md for the others.
+        axis:
+          - name: ltr
+            env: FUI_PARITY_DIR=ltr
+          - name: rtl
+            env: FUI_PARITY_DIR=rtl
         shard:
           - name: data-lazy
             specs: e2e/Data.cy.tsx,e2e/Lazy.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx
@@ -280,13 +286,13 @@ jobs:
       - name: Verify Cypress install
         run: yarn cypress verify
 
-      - name: Cypress parity tests (${{ matrix.shard.name }})
-        run: yarn nx run css-modules-parity:e2e --spec='${{ matrix.shard.specs }}'
+      - name: Cypress parity tests (${{ matrix.axis.name }}, ${{ matrix.shard.name }})
+        run: env ${{ matrix.axis.env }} yarn nx run css-modules-parity:e2e --spec='${{ matrix.shard.specs }}'
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: failure()
         with:
-          name: css-modules-parity-${{ matrix.shard.name }}-screenshots
+          name: css-modules-parity-${{ matrix.axis.name }}-${{ matrix.shard.name }}-screenshots
           path: apps/css-modules-parity/cypress/screenshots/**/*.png
           retention-days: 1
