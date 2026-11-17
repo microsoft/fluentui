@@ -88,7 +88,7 @@ The ordered (not clamped) cross-axis limiter bounds are compared against Floatin
 that inverts them, and an auto-sized surface that removes the scrollbar of its scroll container
 checks that clipping is measured again with the rectangles.
 
-## Engine parity, size and performance validation
+## Engine parity and size validation
 
 The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
 best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
@@ -99,8 +99,6 @@ the state it reads is assembled from the result as the engine has no middleware.
 ```sh
 yarn nx run react-positioning:bundle-size --skip-nx-cache
 yarn nx run react-positioning:test-bundle-size
-yarn nx run react-positioning:test-raster
-yarn nx run react-positioning:benchmark
 yarn nx run react-positioning:test-webkit
 ```
 
@@ -120,44 +118,3 @@ the viewport metrics are emulated, so these checks do not replace native pinch-z
 The package is compiled to ES2019, so the engine avoids optional chaining and nullish coalescing
 in hot paths (they are lowered to verbose helpers), prefers expression-bodied helpers, and keeps
 DOM traversal in one place (`src/engine/platform.ts`) that the scroll-parent listing reuses.
-
-The raster target extracts the unchanged lower-PR source from
-`788e3b739fe79246a2f8850d1c575cf4018fd744` into a temporary directory, then runs the same
-contracts against that implementation and the replacement in Electron. A paint-only wrapper
-makes otherwise transparent fixtures visible without changing their layout. It compares every
-decoded RGBA pixel, including antialiasing, and writes its report to
-`dist/positioning-raster/comparison.json`. It does not update the pinned geometry expectations.
-This is bounded fixture coverage on the same browser and host display, not a guarantee of all
-option combinations, fonts, browsers, iframe/shadow-root targets, or mobile visual viewports.
-
-The performance target mounts 24 concurrent positioning instances per engine in the same Electron
-browser and compares against the unchanged Floating UI implementation from upstream lower PR
-`fca219991ed9e907b01274bd89ac1431e51c573a`.
-It mounts only one engine at a time, warms up both engines, randomizes workload order, and randomizes
-which engine runs first in every pair, including initialization. The inactive engine is unmounted
-and its listeners are disposed before timing, so global events cannot contaminate the other
-engine's samples. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
-autosizing. It measures completion through the actual `usePositioning` end-event path; setup is
-excluded from update timings, while initialization intentionally includes mount-to-all-positioned.
-The benchmark bundle is built with `NODE_ENV=production`: a development build adds the devtools
-reporting (once per middleware pass in the Floating UI implementation) and React's development
-checks to every sample, which does not reflect what ships.
-
-Every workload runs in two layouts:
-
-- `flat`: targets are fixed children of the body, the cheapest case for ancestor traversal.
-- `nested`: targets are 12 levels deep inside a scroll container and surfaces are portaled to the
-  end of the document, the common application shape. It exercises clipping, containing-block and
-  scroll-parent traversal, and its `scroll` workload dispatches element scroll events that reach
-  the managers through their scroll-parent listeners rather than the window listener.
-
-Each layout records paired initialization, imperative, scroll, and window-resize completion
-times. The script reports per-workload median, p95, p10/p90 and coefficient of variation for both
-engines, and the paired replacement/oracle ratios as a geometric mean with a seeded bootstrap 95%
-confidence interval (an interval entirely below 1 means the replacement is faster on that host).
-It enforces complete, finite, nonzero samples but intentionally has no machine-dependent
-performance pass/fail threshold. Run it on the same host/browser for meaningful comparisons.
-Set `POSITIONING_BENCH_SEED` to reproduce or vary the randomized order. The full samples,
-statistics and browser/machine metadata (including whether the engine had uncommitted changes)
-are written to `dist/positioning-perf/benchmark.json`, and a Markdown table for pull request
-descriptions to `dist/positioning-perf/summary.md`.

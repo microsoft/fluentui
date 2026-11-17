@@ -10,7 +10,9 @@
         "^production",
         "{workspaceRoot}/monosize.config.mjs",
         "{projectRoot}/bundle-size/**",
-        { "externalDependencies": ["monosize", "monosize-bundler-webpack"] }
+        {
+          "externalDependencies": ["monosize", "monosize-bundler-webpack"]
+        }
       ],
       "options": {
         "command": "yarn run -T monosize measure && node bundle-size/check-budget.mjs"
@@ -27,24 +29,6 @@
     "test-webkit": {
       "cache": false,
       "command": "node --test packages/react-components/react-positioning/library/scripts/positioning-webkit.mjs"
-    },
-    "test-raster": {
-      "cache": false,
-      "dependsOn": ["build", { "target": "build", "projects": "scripts-cypress" }],
-      "options": {
-        "cwd": "packages/react-components/react-positioning/library",
-        "command": "node scripts/positioning-raster.mjs"
-      },
-      "executor": "nx:run-commands"
-    },
-    "benchmark": {
-      "cache": false,
-      "dependsOn": ["build", { "target": "build", "projects": "scripts-cypress" }],
-      "options": {
-        "cwd": "packages/react-components/react-positioning/library",
-        "command": "node scripts/positioning-benchmark.mjs"
-      },
-      "executor": "nx:run-commands"
     },
     "e2e": {
       "inputs": ["default", "^production", "{projectRoot}/cypress.config.ts"]
