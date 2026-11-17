@@ -198,7 +198,7 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e --nxBail --parallel 1
+        run: yarn nx affected -t e2e --nxBail --parallel 1 --exclude=css-modules-parity
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -209,4 +209,84 @@ jobs:
             apps/*/cypress/screenshots/**/*.png
             packages/**/cypress/screenshots/**/*.png
             apps/vr-tests-react-components/dist/e2e-results/**
+          retention-days: 1
+
+  css-modules-parity-affected:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    outputs:
+      run: ${{ steps.affected.outputs.run }}
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5.1.0
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --immutable
+
+      - name: Check if css-modules-parity is affected
+        id: affected
+        run: |
+          if yarn nx show projects --affected --withTarget e2e | grep -qx 'css-modules-parity'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  # Every `*.cy.tsx` under apps/css-modules-parity/e2e must be listed in exactly one shard.
+  css-modules-parity:
+    needs: css-modules-parity-affected
+    if: ${{ github.repository_owner == 'microsoft' && needs.css-modules-parity-affected.outputs.run == 'true' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          - name: data-lazy
+            specs: e2e/Data.cy.tsx,e2e/Lazy.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx
+          - name: navigation-forms
+            specs: e2e/Navigation.cy.tsx,e2e/Forms.cy.tsx,e2e/app-patterns/SegmentedToggle.cy.tsx
+          - name: overlays-buttons-core
+            specs: e2e/Overlays.cy.tsx,e2e/ButtonsAndDisplay.cy.tsx,e2e/Core.cy.tsx
+          - name: rest
+            specs: e2e/FeedbackAndCompat.cy.tsx,e2e/Migration.cy.tsx,e2e/CustomStyleHooks.cy.tsx,e2e/SSR.cy.tsx,e2e/app-patterns/AtRules.cy.tsx,e2e/app-patterns/Selectors.cy.tsx,e2e/app-patterns/Shorthands.cy.tsx,e2e/app-patterns/VariantOverrides.cy.tsx
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --immutable
+
+      - name: Verify Cypress install
+        run: yarn cypress verify
+
+      - name: Cypress parity tests (${{ matrix.shard.name }})
+        run: yarn nx run css-modules-parity:e2e --spec='${{ matrix.shard.specs }}'
+
+      - name: Upload Cypress screenshots if exist
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: failure()
+        with:
+          name: css-modules-parity-${{ matrix.shard.name }}-screenshots
+          path: apps/css-modules-parity/cypress/screenshots/**/*.png
           retention-days: 1
