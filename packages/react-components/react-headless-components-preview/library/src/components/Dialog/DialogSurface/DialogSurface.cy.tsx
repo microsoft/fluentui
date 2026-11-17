@@ -8,6 +8,7 @@ import type { DialogProps } from '..';
 import { Drawer } from '../../Drawer';
 import { NavDrawer } from '../../Nav/NavDrawer';
 import { Provider } from '../../Provider';
+import { Tooltip } from '../../Tooltip';
 
 const surfaceSelector = '#animated-surface';
 const exitDuration = `calc(${webLightTheme.durationUltraSlow} * 20)`;
@@ -360,6 +361,26 @@ describe('DialogSurface Escape', () => {
     );
   };
 
+  (['non-modal', 'modal'] as const).forEach(modalType => {
+    it(`closes only a Tooltip open inside a ${modalType} surface`, () => {
+      mountBase(
+        <ControlledDialog modalType={modalType}>
+          <button data-testid="before">Before</button>
+          <Tooltip content="Tip" relationship="description" showDelay={0}>
+            <button>Has tooltip</button>
+          </Tooltip>
+        </ControlledDialog>,
+      );
+
+      cy.get('[data-testid=before]').realClick();
+      cy.realPress('Tab');
+      cy.get('[role=tooltip]').should('match', ':popover-open');
+      cy.realPress('Escape');
+      cy.get('[role=tooltip]').should('not.match', ':popover-open');
+      cy.get('[data-testid=surface]').should('have.attr', 'data-open');
+    });
+  });
+
   it('closes a non-modal surface on Escape from content portaled out of it', () => {
     mountBase(
       <ControlledDialog modalType="non-modal">
@@ -373,7 +394,7 @@ describe('DialogSurface Escape', () => {
     cy.get('[data-testid=surface]').should('not.exist');
   });
 
-  it('reports the browser closing a modal on a repeated Escape the consumer vetoed', () => {
+  it('keeps a modal open on a repeated Escape the consumer vetoes', () => {
     const calls: string[] = [];
     mountBase(
       <Dialog open onOpenChange={(_, data) => calls.push(`${data.type}:${data.open}`)}>
@@ -386,12 +407,10 @@ describe('DialogSurface Escape', () => {
     cy.get('[data-testid=inside]').focus();
     cy.realPress('Escape');
     cy.realPress('Escape');
+    // Chromium closes a modal without `cancel` on a repeated Escape, unless the keydown is prevented.
     cy.get<HTMLDialogElement>('[data-testid=surface]').should(([surface]) => {
-      expect(calls[0]).to.equal('escapeKeyDown:false');
-      // Chromium closes a modal without `cancel` when Escape repeats without user activation in between.
-      if (!surface.open) {
-        expect(calls).to.include('surfaceToggle:false');
-      }
+      expect(surface.open).to.equal(true);
+      expect(calls).to.deep.equal(['escapeKeyDown:false', 'escapeKeyDown:false']);
     });
   });
 });
