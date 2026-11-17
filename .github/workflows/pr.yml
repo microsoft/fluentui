@@ -290,6 +290,8 @@ jobs:
 
       - name: Cypress parity tests (${{ matrix.axis.name }}, ${{ matrix.shard.name }})
         run: env ${{ matrix.axis.env }} yarn nx run css-modules-parity:e2e --spec='${{ matrix.shard.specs }}'
+        env:
+          FUI_PARITY_PROFILE: 1
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -298,3 +300,12 @@ jobs:
           name: css-modules-parity-${{ matrix.axis.name }}-${{ matrix.shard.name }}-screenshots
           path: apps/css-modules-parity/cypress/screenshots/**/*.png
           retention-days: 1
+
+      - name: Upload parity profile
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: css-modules-parity-${{ matrix.axis.name }}-${{ matrix.shard.name }}-profile
+          path: apps/css-modules-parity/cypress/profile/*.ndjson
+          retention-days: 7
+          if-no-files-found: ignore
