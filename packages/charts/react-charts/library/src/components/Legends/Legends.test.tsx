@@ -119,6 +119,11 @@ describe('Legends snapShot testing', () => {
 });
 
 describe('Legends - basic props', () => {
+  it.each([false, true])('keeps the default name for an empty ariaLabel with enabledWrapLines=%s', enabledWrapLines => {
+    const { getByRole } = render(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="" />);
+    expect(getByRole('listbox', { name: 'Legends' })).toBeTruthy();
+  });
+
   it.each([false, true])('updates the accessible name with enabledWrapLines=%s', enabledWrapLines => {
     const { getByRole, queryByRole, rerender } = render(
       <Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legendas" />,
@@ -303,13 +308,13 @@ describe('Legends - dynamic overflow', () => {
     }
   });
 
-  it.each([undefined, 'Legendas'])('names the legend list and overflow menu using ariaLabel=%s', ariaLabel => {
+  it.each([undefined, '', 'Legendas'])('names the legend list and overflow menu using ariaLabel=%s', ariaLabel => {
     const result = render(<Legends legends={legends} ariaLabel={ariaLabel} />);
-    const label = ariaLabel ?? 'Legends';
+    const label = ariaLabel || 'Legends';
     expect(result.getByRole('listbox', { name: label })).toBeTruthy();
 
     fireEvent.click(result.getByRole('button', { name: '+14 more' }));
-    expect(result.getByRole('menu', { name: ariaLabel ?? '+14 more' })).toBeTruthy();
+    expect(result.getByRole('menu', { name: ariaLabel || '+14 more' })).toBeTruthy();
 
     result.rerender(<Legends legends={legends} ariaLabel="Legenden" />);
     expect(result.getByRole('listbox', { name: 'Legenden' })).toBeTruthy();

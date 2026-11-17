@@ -103,7 +103,14 @@ describe('Legends - basic props', () => {
     });
   });
 
-  it.each([undefined, 'Legendas'])('names the overflow list using ariaLabel=%s', async ariaLabel => {
+  it.each([false, true])('keeps the default name for an empty ariaLabel with enabledWrapLines=%s', enabledWrapLines => {
+    const { getAllByRole } = render(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="" />);
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legends');
+    });
+  });
+
+  it.each([undefined, '', 'Legendas'])('names the overflow list using ariaLabel=%s', async ariaLabel => {
     const result = render(
       <Legends
         legends={legends}
@@ -118,7 +125,7 @@ describe('Legends - basic props', () => {
       const listboxes = result.getAllByRole('listbox', { hidden: true });
       expect(listboxes.length).toBe(2);
       listboxes.forEach(listbox => {
-        expect(listbox.getAttribute('aria-label')).toBe(ariaLabel ?? 'Legends');
+        expect(listbox.getAttribute('aria-label')).toBe(ariaLabel || 'Legends');
       });
     });
   });

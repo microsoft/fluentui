@@ -166,7 +166,7 @@ export interface LegendsProps {
 
   /**
    * Accessible name for the legend list and overflow menu.
-   * When omitted, the list is named 'Legends' and the menu is named by its overflow trigger.
+   * When omitted or empty, the list is named 'Legends' and the menu is named by its overflow trigger.
    */
   ariaLabel?: string;
 

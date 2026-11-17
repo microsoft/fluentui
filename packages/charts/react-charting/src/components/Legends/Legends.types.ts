@@ -182,6 +182,7 @@ export interface ILegendsProps {
 
   /**
    * Accessible name for the legend list and overflow list.
+   * Empty strings use the default name.
    * @default 'Legends'
    */
   ariaLabel?: string;

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: support complete localized legend overflow labels through an overflowText callback with a shared formatter interface, expose ariaLabel for the legend list and overflow menu, and consistently forward chart-level overflow labels, including area and heat map charts",
+  "comment": "feat: support complete localized legend overflow labels through an overflowText callback with a shared formatter interface, expose ariaLabel for the legend list and overflow menu with defaults for empty labels, and consistently forward chart-level overflow labels, including area and heat map charts",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

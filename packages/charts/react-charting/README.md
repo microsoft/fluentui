@@ -27,7 +27,7 @@ Cartesian charts, donut charts, and stacked bar charts. Alternatively, pass the 
 `legendProps.overflowText`; this takes precedence over the chart-level prop.
 Area, grouped vertical bar, and heat map charts also support `legendsOverflowText`.
 Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,
-to localize the accessible name of the legend list and overflow list. The default name is `Legends`;
+to localize the accessible name of the legend list and overflow list. An omitted or empty label uses `Legends`;
 `focusZonePropsInHoverCard` can still override the overflow list's accessible name.
 The formatter should be pure and synchronous and return a nonempty label. It controls number formatting
 as well as wording, so use your application's localization library to format the count when needed.

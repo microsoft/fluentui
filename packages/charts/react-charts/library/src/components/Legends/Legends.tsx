@@ -95,12 +95,8 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
-    const {
-      overflowStyles,
-      allowFocusOnLegends = true,
-      canSelectMultipleLegends = false,
-      ariaLabel = 'Legends',
-    } = props;
+    const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    const ariaLabel = props.ariaLabel || 'Legends';
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
     dataToRender.map((legend, index) => {

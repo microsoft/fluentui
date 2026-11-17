@@ -73,8 +73,8 @@ export const OverflowMenu: React.FC<{
 
       <MenuPopover>
         <MenuList
-          aria-label={ariaLabel ?? 'Legends'}
-          {...(ariaLabel !== undefined && { 'aria-labelledby': undefined })}
+          aria-label={ariaLabel || 'Legends'}
+          {...(!!ariaLabel && { 'aria-labelledby': undefined })}
           checkedValues={{ legends: checkedLegends }}
         >
           {menuList}

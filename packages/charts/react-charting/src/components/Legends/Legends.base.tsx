@@ -180,12 +180,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSXElement => {
-    const {
-      overflowProps,
-      allowFocusOnLegends = true,
-      canSelectMultipleLegends = false,
-      ariaLabel = 'Legends',
-    } = this.props;
+    const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
+    const ariaLabel = this.props.ariaLabel || 'Legends';
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
@@ -273,14 +269,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSXElement => {
-    const {
-      allowFocusOnLegends = true,
-      className,
-      styles,
-      theme,
-      canSelectMultipleLegends = false,
-      ariaLabel = 'Legends',
-    } = this.props;
+    const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
+    const ariaLabel = this.props.ariaLabel || 'Legends';
 
     const overflowHoverCardLegends: JSXElement[] = [];
     const classNames = getClassNames(styles!, {
