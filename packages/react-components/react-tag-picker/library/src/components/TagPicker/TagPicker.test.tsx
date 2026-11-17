@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import { isConformant } from '../../testing/isConformant';
 import { TagPicker } from './TagPicker';
 import { TagPickerControl } from '../TagPickerControl/TagPickerControl';
 import { TagPickerInput } from '../TagPickerInput/TagPickerInput';
 import { TagPickerList } from '../TagPickerList/TagPickerList';
+import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 
 describe('TagPicker', () => {
   isConformant({
@@ -30,6 +32,38 @@ describe('TagPicker', () => {
       </TagPicker>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('honors imperative keyboard navigation after pointer interaction before focusing the input', () => {
+    let setKeyboardNavigation: (isKeyboard: boolean) => void;
+    const Example = () => {
+      setKeyboardNavigation = useSetKeyboardNavigation();
+      return (
+        <TagPicker open>
+          <TagPickerControl>
+            <TagPickerInput />
+          </TagPickerControl>
+          <TagPickerList>
+            <TagPickerOption value="red">Red</TagPickerOption>
+          </TagPickerList>
+        </TagPicker>
+      );
+    };
+    const result = render(<Example />);
+    const input = result.getByRole('combobox');
+    const option = result.getByRole('option');
+
+    expect(option.hasAttribute('data-activedescendant')).toBe(true);
+    fireEvent.mouseDown(input, { buttons: 1, clientX: 1, clientY: 1, screenX: 1, screenY: 1 });
+    act(() => {
+      setKeyboardNavigation(true);
+      input.focus();
+    });
+
+    expect(input.ownerDocument.activeElement).toBe(input);
+    expect(option.hasAttribute('data-activedescendant-focusvisible')).toBe(true);
+    act(() => setKeyboardNavigation(false));
+    expect(option.hasAttribute('data-activedescendant-focusvisible')).toBe(false);
   });
 
   it('does not change expand label if label exists', () => {

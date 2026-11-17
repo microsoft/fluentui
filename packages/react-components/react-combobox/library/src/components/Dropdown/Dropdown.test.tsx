@@ -8,6 +8,7 @@ import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { dropdownClassNames } from './useDropdownStyles.styles';
 import type { DropdownProps } from '@fluentui/react-combobox';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -79,6 +80,33 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('honors imperative keyboard navigation after pointer interaction before focusing the button', () => {
+    let setKeyboardNavigation: (isKeyboard: boolean) => void;
+    const Example = () => {
+      setKeyboardNavigation = useSetKeyboardNavigation();
+      return (
+        <Dropdown open inlinePopup>
+          <Option>Red</Option>
+        </Dropdown>
+      );
+    };
+    const result = render(<Example />);
+    const button = result.getByRole('combobox');
+    const option = result.getByRole('option');
+
+    expect(option).toHaveAttribute('data-activedescendant');
+    fireEvent.mouseDown(button, { buttons: 1, clientX: 1, clientY: 1, screenX: 1, screenY: 1 });
+    act(() => {
+      setKeyboardNavigation(true);
+      button.focus();
+    });
+
+    expect(button).toHaveFocus();
+    expect(option).toHaveAttribute('data-activedescendant-focusvisible');
+    act(() => setKeyboardNavigation(false));
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
   });
 
   it('renders the popup under document.body by default', () => {

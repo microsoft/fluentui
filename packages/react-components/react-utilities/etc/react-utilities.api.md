@@ -273,6 +273,9 @@ type SelectionMode_2 = 'single' | 'multiselect';
 export { SelectionMode_2 as SelectionMode }
 
 // @internal
+export function setKeyboardModality(targetDocument: Document | undefined, isKeyboard: boolean): void;
+
+// @internal
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public

@@ -9,6 +9,7 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 import { getTabsterAttribute } from 'tabster';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -62,6 +63,46 @@ describe('Combobox', () => {
       </Combobox>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('honors imperative keyboard navigation after pointer interaction before focusing the input', () => {
+    let setKeyboardNavigation: (isKeyboard: boolean) => void;
+    const Example = () => {
+      setKeyboardNavigation = useSetKeyboardNavigation();
+      return (
+        <Combobox open inlinePopup>
+          <Option>Red</Option>
+          <Option>Green</Option>
+        </Combobox>
+      );
+    };
+    const result = render(<Example />);
+    const input = result.getByRole('combobox');
+    const option = result.getAllByRole('option')[0];
+
+    expect(option).toHaveAttribute('data-activedescendant');
+    fireEvent.mouseDown(input, { buttons: 1, clientX: 1, clientY: 1, screenX: 1, screenY: 1 });
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
+
+    act(() => {
+      setKeyboardNavigation(true);
+      input.focus();
+    });
+
+    expect(input).toHaveFocus();
+    expect(option).toHaveAttribute('data-activedescendant-focusvisible');
+
+    act(() => setKeyboardNavigation(false));
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
+    act(() => setKeyboardNavigation(true));
+    expect(option).toHaveAttribute('data-activedescendant-focusvisible');
+
+    fireEvent.mouseDown(input, { buttons: 0 });
+    expect(option).toHaveAttribute('data-activedescendant-focusvisible');
+    fireEvent.mouseDown(input, { buttons: 1, clientX: 1, clientY: 1, screenX: 1, screenY: 1 });
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    expect(result.getAllByRole('option')[1]).toHaveAttribute('data-activedescendant-focusvisible');
   });
 
   it('renders a hidden listbox when trigger is focused', () => {

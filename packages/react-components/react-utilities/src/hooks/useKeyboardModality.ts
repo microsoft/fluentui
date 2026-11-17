@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from './useEventCallback';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 type KeyboardModalityListener = (isKeyboard: boolean) => void;
 
@@ -23,6 +24,20 @@ const trackers = new WeakMap<Document, KeyboardModalityTracker>();
 const isVirtualClick = (event: MouseEvent) =>
   event.buttons === 0 || (event.clientX === 0 && event.clientY === 0 && event.screenX === 0 && event.screenY === 0);
 
+/**
+ * Synchronizes an imperative modality change with existing subscribers without creating a tracker.
+ * @internal
+ */
+export function setKeyboardModality(targetDocument: Document | undefined, isKeyboard: boolean): void {
+  const tracker = targetDocument && trackers.get(targetDocument);
+  if (!tracker || tracker.isKeyboard === isKeyboard) {
+    return;
+  }
+
+  tracker.isKeyboard = isKeyboard;
+  tracker.listeners.forEach(listener => listener(isKeyboard));
+}
+
 function createTracker(targetDocument: Document): KeyboardModalityTracker {
   const tracker: KeyboardModalityTracker = {
     isKeyboard: undefined,
@@ -34,22 +49,13 @@ function createTracker(targetDocument: Document): KeyboardModalityTracker {
     },
   };
 
-  const setIsKeyboard = (isKeyboard: boolean) => {
-    if (tracker.isKeyboard === isKeyboard) {
-      return;
-    }
-
-    tracker.isKeyboard = isKeyboard;
-    tracker.listeners.forEach(listener => listener(isKeyboard));
-  };
-
-  const onKeyDown = () => setIsKeyboard(true);
+  const onKeyDown = () => setKeyboardModality(targetDocument, true);
   const onMouseDown = (event: MouseEvent) => {
     if (!isVirtualClick(event)) {
-      setIsKeyboard(false);
+      setKeyboardModality(targetDocument, false);
     }
   };
-  const onTouchStart = () => setIsKeyboard(false);
+  const onTouchStart = () => setKeyboardModality(targetDocument, false);
 
   targetDocument.addEventListener('keydown', onKeyDown, true);
   targetDocument.addEventListener('mousedown', onMouseDown, true);
@@ -70,8 +76,12 @@ function createTracker(targetDocument: Document): KeyboardModalityTracker {
  */
 export function useKeyboardModality(onChange?: (isKeyboard: boolean) => void): () => boolean | undefined {
   const { targetDocument } = useFluent();
-  const trackerRef = React.useRef<KeyboardModalityTracker | undefined>(undefined);
+  const targetDocumentRef = React.useRef(targetDocument);
   const listener = useEventCallback((isKeyboard: boolean) => onChange?.(isKeyboard));
+
+  useIsomorphicLayoutEffect(() => {
+    targetDocumentRef.current = targetDocument;
+  }, [targetDocument]);
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -85,11 +95,9 @@ export function useKeyboardModality(onChange?: (isKeyboard: boolean) => void): (
     }
 
     tracker.listeners.add(listener);
-    trackerRef.current = tracker;
 
     return () => {
       tracker.listeners.delete(listener);
-      trackerRef.current = undefined;
 
       if (tracker.listeners.size === 0) {
         tracker.dispose();
@@ -98,5 +106,9 @@ export function useKeyboardModality(onChange?: (isKeyboard: boolean) => void): (
     };
   }, [targetDocument, listener]);
 
-  return React.useCallback(() => trackerRef.current?.isKeyboard, []);
+  // An existing tracker can already know the modality when focus happens before this hook's passive effect.
+  return React.useCallback(() => {
+    const currentDocument = targetDocumentRef.current;
+    return currentDocument ? trackers.get(currentDocument)?.isKeyboard : undefined;
+  }, []);
 }

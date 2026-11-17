@@ -43,6 +43,7 @@ export type {
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  setKeyboardModality,
   useAnimationFrame,
   useApplyScrollbarWidth,
   useControllableState,

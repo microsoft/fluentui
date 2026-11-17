@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import { Listbox } from './Listbox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
@@ -35,6 +36,31 @@ describe('Listbox', () => {
       </Listbox>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('honors imperative keyboard navigation without revealing focus attributes before focus', () => {
+    let setKeyboardNavigation: (isKeyboard: boolean) => void;
+    const Example = () => {
+      setKeyboardNavigation = useSetKeyboardNavigation();
+      return (
+        <Listbox>
+          <Option>Red</Option>
+        </Listbox>
+      );
+    };
+    const result = render(<Example />);
+    const listbox = result.getByRole('listbox');
+    const option = result.getByRole('option');
+
+    expect(option).toHaveAttribute('data-activedescendant');
+    fireEvent.mouseDown(listbox, { buttons: 1, clientX: 1, clientY: 1, screenX: 1, screenY: 1 });
+    act(() => setKeyboardNavigation(true));
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
+
+    act(() => listbox.focus());
+    expect(option).toHaveAttribute('data-activedescendant-focusvisible');
+    act(() => setKeyboardNavigation(false));
+    expect(option).not.toHaveAttribute('data-activedescendant-focusvisible');
   });
 
   it('uses lisbox/option semantics for single-select', () => {

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: add internal useKeyboardModality and isFocusVisible to track keyboard vs. pointer interaction without keyborg",
+  "comment": "feat: add internal useKeyboardModality and isFocusVisible to track keyboard vs. pointer interaction without keyborg, including known modality before passive effects and imperative modality synchronization",
   "packageName": "@fluentui/react-utilities",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

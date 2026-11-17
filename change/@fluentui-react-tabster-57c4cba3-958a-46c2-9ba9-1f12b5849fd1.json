@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: synchronize useSetKeyboardNavigation with native modality tracking so active descendants honor imperative focus visibility changes",
+  "packageName": "@fluentui/react-tabster",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

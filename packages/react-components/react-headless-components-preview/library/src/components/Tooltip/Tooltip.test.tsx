@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, useIsomorphicLayoutEffect, useKeyboardModality } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { Tooltip } from './Tooltip';
@@ -90,6 +90,50 @@ describe('Tooltip', () => {
         screenY: 1,
       });
       fireEvent.focus(trigger);
+      act(() => {
+        jest.advanceTimersByTime(1);
+      });
+
+      expect(screen.queryByRole('tooltip')).toBeNull();
+    } finally {
+      jest.useRealTimers();
+      jest.restoreAllMocks();
+    }
+  });
+
+  it('does not show a tooltip when a mouse mounts a text input focused before passive effects', () => {
+    jest.useFakeTimers();
+
+    try {
+      const Tracker = () => {
+        useKeyboardModality();
+        return null;
+      };
+      const FocusedTooltip = () => {
+        const inputRef = React.useRef<HTMLInputElement>(null);
+        useIsomorphicLayoutEffect(() => {
+          inputRef.current?.focus();
+        }, []);
+
+        return (
+          <Tooltip content="Input tooltip" relationship="label" showDelay={1}>
+            <input ref={inputRef} aria-label="trigger" />
+          </Tooltip>
+        );
+      };
+
+      render(<Tracker />);
+      fireEvent.mouseDown(document.body, {
+        buttons: 1,
+        clientX: 1,
+        clientY: 1,
+        screenX: 1,
+        screenY: 1,
+      });
+      jest.spyOn(HTMLInputElement.prototype, 'matches').mockReturnValue(true);
+
+      render(<FocusedTooltip />);
+      expect(screen.getByLabelText('trigger')).toHaveFocus();
       act(() => {
         jest.advanceTimersByTime(1);
       });
