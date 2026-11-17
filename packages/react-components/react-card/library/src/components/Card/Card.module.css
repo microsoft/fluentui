@@ -210,36 +210,6 @@
 }
 
 /* ---- Forced colors ---- */
-@media (forced-colors: active) {
-  .selected {
-    forced-color-adjust: none;
-    background-color: Highlight;
-    color: HighlightText;
-  }
-  .selected :global(.fui-CardPreview),
-  .selected :global(.fui-CardFooter) {
-    forced-color-adjust: auto;
-  }
-  .selected::after {
-    border-color: Highlight;
-  }
-
-  .interactive:hover,
-  .interactive:active {
-    forced-color-adjust: none;
-    background-color: Highlight;
-    color: HighlightText;
-  }
-  .interactive:hover :global(.fui-CardPreview),
-  .interactive:hover :global(.fui-CardFooter),
-  .interactive:active :global(.fui-CardPreview),
-  .interactive:active :global(.fui-CardFooter) {
-    forced-color-adjust: auto;
-  }
-  .interactive::after {
-    border-color: Highlight;
-  }
-}
 
 /* ---- Focus outline (replaces createFocusOutlineStyle) ---- */
 .focused:focus,
@@ -258,11 +228,6 @@
   border-radius: var(--fui-Card--border-radius);
   inset: 0;
 }
-@media (forced-colors: active) {
-  .focused[data-fui-focus-visible]::after {
-    border-color: Highlight;
-  }
-}
 
 .selectableFocused:focus,
 .selectableFocused:focus-visible {
@@ -279,11 +244,6 @@
   border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
   border-radius: var(--fui-Card--border-radius);
   inset: 0;
-}
-@media (forced-colors: active) {
-  .selectableFocused[data-fui-focus-within]:focus-within::after {
-    border-color: Highlight;
-  }
 }
 
 /* ---- Floating action slot ---- */
@@ -342,4 +302,41 @@
 }
 .disabled:where(.outline)::after {
   border-color: var(--colorNeutralStrokeDisabled);
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .selected:not(html) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .selected:not(html) :global(.fui-CardPreview),
+  .selected:not(html) :global(.fui-CardFooter) {
+    forced-color-adjust: auto;
+  }
+  .selected:not(html)::after {
+    border-color: Highlight;
+  }
+  .interactive:not(html):hover,
+  .interactive:not(html):active {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .interactive:not(html):hover :global(.fui-CardPreview),
+  .interactive:not(html):hover :global(.fui-CardFooter),
+  .interactive:not(html):active :global(.fui-CardPreview),
+  .interactive:not(html):active :global(.fui-CardFooter) {
+    forced-color-adjust: auto;
+  }
+  .interactive:not(html)::after {
+    border-color: Highlight;
+  }
+  .focused:not(html)[data-fui-focus-visible]::after {
+    border-color: Highlight;
+  }
+  .selectableFocused:not(html)[data-fui-focus-within]:focus-within::after {
+    border-color: Highlight;
+  }
 }

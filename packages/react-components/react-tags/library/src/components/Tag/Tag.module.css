@@ -15,17 +15,6 @@
     border-radius: var(--borderRadiusMedium);
     outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
   }
-  @media (forced-colors: active) {
-    position: relative;
-    &::before {
-      content: '';
-      border-top: var(--strokeWidthThin) solid;
-      position: absolute;
-      inset: calc(var(--strokeWidthThin) * -1);
-      border-start-start-radius: var(--borderRadiusMedium);
-      border-start-end-radius: var(--borderRadiusMedium);
-    }
-  }
 }
 .root:where(.circular) {
   font-family: inherit;
@@ -42,18 +31,6 @@
   &[data-fui-focus-visible] {
     border-radius: var(--borderRadiusCircular);
     outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
-  }
-  @media (forced-colors: active) {
-    position: relative;
-    &::before {
-      content: '';
-      border-top: var(--strokeWidthThin) solid;
-      border-inline-start: var(--strokeWidthThin) solid;
-      border-inline-end: var(--strokeWidthThin) solid;
-      position: absolute;
-      inset: calc(var(--strokeWidthThin) * -1);
-      border-radius: var(--borderRadiusCircular);
-    }
   }
 }
 .filled:where(:not(.disabled)) {
@@ -79,11 +56,6 @@
   border-inline-end-color: var(--colorBrandStroke1);
   border-bottom-color: var(--colorBrandStroke1);
   border-inline-start-color: var(--colorBrandStroke1);
-  @media (forced-colors: active) {
-    forced-color-adjust: none;
-    background-color: Highlight;
-    color: HighlightText;
-  }
 }
 .medium {
   height: var(--spacingHorizontalXXXL);
@@ -160,14 +132,6 @@
 .dismissIcon {
   grid-area: dismissIcon;
   display: flex;
-  @media (forced-colors: active) {
-    &:hover {
-      color: Highlight;
-    }
-    &:active {
-      color: Highlight;
-    }
-  }
 }
 :where(.medium) > .dismissIcon {
   padding-inline-start: var(--spacingHorizontalXS);
@@ -217,5 +181,43 @@
   }
   &:active {
     color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .root:not(html):where(.rounded) {
+    position: relative;
+  }
+  .root:not(html):where(.rounded)::before {
+    content: '';
+    border-top: var(--strokeWidthThin) solid;
+    position: absolute;
+    inset: calc(var(--strokeWidthThin) * -1);
+    border-start-start-radius: var(--borderRadiusMedium);
+    border-start-end-radius: var(--borderRadiusMedium);
+  }
+  .root:not(html):where(.circular) {
+    position: relative;
+  }
+  .root:not(html):where(.circular)::before {
+    content: '';
+    border-top: var(--strokeWidthThin) solid;
+    border-inline-start: var(--strokeWidthThin) solid;
+    border-inline-end: var(--strokeWidthThin) solid;
+    position: absolute;
+    inset: calc(var(--strokeWidthThin) * -1);
+    border-radius: var(--borderRadiusCircular);
+  }
+  .selected:not(html):where(:not(.disabled)) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .dismissIcon:not(html):hover {
+    color: Highlight;
+  }
+  .dismissIcon:not(html):active {
+    color: Highlight;
   }
 }

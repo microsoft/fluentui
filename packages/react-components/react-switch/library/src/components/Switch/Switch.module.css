@@ -207,30 +207,9 @@
   padding-inline-end: var(--spacingHorizontalXS);
 }
 
-@media (forced-colors: active) {
-  .root[data-fui-focus-within]:focus-within::after {
-    border-top-color: Highlight;
-    border-inline-end-color: Highlight;
-    border-bottom-color: Highlight;
-    border-inline-start-color: Highlight;
-  }
-}
-
 @media screen and (prefers-reduced-motion: reduce) {
   .indicator {
     transition-duration: 0.01ms;
-  }
-}
-
-@media (forced-colors: active) {
-  .indicator > i {
-    forced-color-adjust: none;
-  }
-}
-
-@media (forced-colors: active) {
-  .indicator {
-    color: CanvasText;
   }
 }
 
@@ -240,49 +219,46 @@
   }
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .input:disabled ~ :global(.fui-Switch__indicator),
-  .input[aria-disabled='true'] ~ :global(.fui-Switch__indicator) {
+  .root:not(html)[data-fui-focus-within]:focus-within::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+  .indicator:not(html) > i {
+    forced-color-adjust: none;
+  }
+  .indicator:not(html) {
+    color: CanvasText;
+  }
+  .input:not(html):disabled ~ :global(.fui-Switch__indicator),
+  .input:not(html)[aria-disabled='true'] ~ :global(.fui-Switch__indicator) {
     color: GrayText;
     border-color: GrayText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:disabled ~ :global(.fui-Switch__label),
-  .input[aria-disabled='true'] ~ :global(.fui-Switch__label) {
+  .input:not(html):disabled ~ :global(.fui-Switch__label),
+  .input:not(html)[aria-disabled='true'] ~ :global(.fui-Switch__label) {
     color: GrayText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:hover {
+  .input:not(html):hover {
     color: CanvasText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:hover:active {
+  .input:not(html):hover:active {
     color: CanvasText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:checked:not([aria-disabled='true']):hover ~ :global(.fui-Switch__indicator) {
+  .input:not(html):enabled:checked:not([aria-disabled='true']):hover ~ :global(.fui-Switch__indicator) {
     background-color: Highlight;
     color: Canvas;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:checked:not([aria-disabled='true']):hover:active ~ :global(.fui-Switch__indicator) {
+  .input:not(html):enabled:checked:not([aria-disabled='true']):hover:active ~ :global(.fui-Switch__indicator) {
     background-color: Highlight;
     color: Canvas;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:checked:not([aria-disabled='true']) ~ :global(.fui-Switch__indicator) {
+  .input:not(html):enabled:checked:not([aria-disabled='true']) ~ :global(.fui-Switch__indicator) {
     background-color: Highlight;
     color: Canvas;
   }

@@ -111,27 +111,30 @@
   font-size: var(--fontSizeBase300);
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .root:hover :global(.fui-CompoundButton__secondaryContent),
-  .root:hover:active :global(.fui-CompoundButton__secondaryContent),
-  .root:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  .root:not(html):hover :global(.fui-CompoundButton__secondaryContent),
+  .root:not(html):hover:active :global(.fui-CompoundButton__secondaryContent),
+  .root:not(html):active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
     color: Highlight;
   }
 
-  .primary :global(.fui-CompoundButton__secondaryContent) {
+  .primary:not(html) :global(.fui-CompoundButton__secondaryContent) {
     color: HighlightText;
   }
 
-  .subtle:hover :global(.fui-CompoundButton__secondaryContent),
-  .subtle:hover:active :global(.fui-CompoundButton__secondaryContent),
-  .subtle:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  .subtle:not(html):hover :global(.fui-CompoundButton__secondaryContent),
+  .subtle:not(html):hover:active :global(.fui-CompoundButton__secondaryContent),
+  .subtle:not(html):active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
     color: Canvas;
   }
 
-  .disabled :global(.fui-CompoundButton__secondaryContent),
-  .disabled:hover :global(.fui-CompoundButton__secondaryContent),
-  .disabled:hover:active :global(.fui-CompoundButton__secondaryContent),
-  .disabled:active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
+  .disabled:not(html) :global(.fui-CompoundButton__secondaryContent),
+  .disabled:not(html):hover :global(.fui-CompoundButton__secondaryContent),
+  .disabled:not(html):hover:active :global(.fui-CompoundButton__secondaryContent),
+  .disabled:not(html):active:focus-visible :global(.fui-CompoundButton__secondaryContent) {
     color: GrayText;
   }
 }

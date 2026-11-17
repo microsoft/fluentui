@@ -187,12 +187,6 @@
   }
 }
 
-@media screen and (forced-colors: active) {
-  .wave::after {
-    background-color: WindowText;
-  }
-}
-
 @keyframes animation1 {
   to {
     transform: translate(100%);
@@ -214,5 +208,14 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .wave:not(html)::after {
+    background-color: WindowText;
   }
 }

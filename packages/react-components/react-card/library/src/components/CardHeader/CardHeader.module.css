@@ -14,17 +14,6 @@
 }
 .action {
   margin-inline-start: var(--fui-CardHeader--gap);
-  @media (forced-colors: active) {
-    & :global(.fui-Button),
-    & :global(.fui-Link) {
-      border-top-color: currentColor;
-      border-inline-end-color: currentColor;
-      border-bottom-color: currentColor;
-      border-inline-start-color: currentColor;
-      color: currentColor;
-      outline-color: currentColor;
-    }
-  }
 }
 .grid {
   display: grid;
@@ -51,4 +40,17 @@
 }
 :where(.flex) > .header {
   flex-grow: 1;
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .action:not(html) :global(.fui-Button),
+  .action:not(html) :global(.fui-Link) {
+    border-top-color: currentColor;
+    border-inline-end-color: currentColor;
+    border-bottom-color: currentColor;
+    border-inline-start-color: currentColor;
+    color: currentColor;
+    outline-color: currentColor;
+  }
 }

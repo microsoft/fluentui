@@ -25,10 +25,6 @@
   border-style: solid;
   padding: 0;
   border-width: var(--fui-AvatarGroupPopover-border);
-
-  @media (forced-colors: active) {
-    border-color: CanvasText;
-  }
 }
 .pie {
   background-color: var(--colorTransparentBackground);
@@ -151,4 +147,11 @@
 .size120,
 .size128 {
   --fui-AvatarGroupPopover-iconSize: calc(2 * var(--fontSizeBase600));
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .triggerButton:not(html) {
+    border-color: CanvasText;
+  }
 }

@@ -165,48 +165,33 @@
   text-align: center;
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .root[data-fui-focus-within]:focus-within::after {
+  .root:not(html)[data-fui-focus-within]:focus-within::after {
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
     border-bottom-color: Highlight;
     border-inline-start-color: Highlight;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:not(:checked) ~ :global(.fui-Radio__indicator) {
+  .input:not(html):enabled:not(:checked) ~ :global(.fui-Radio__indicator) {
     border-color: ButtonBorder;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:checked ~ :global(.fui-Radio__indicator)::after {
+  .input:not(html):enabled:checked ~ :global(.fui-Radio__indicator)::after {
     background-color: Highlight;
   }
-}
-
-@media (forced-colors: active) {
-  .input:enabled:checked ~ :global(.fui-Radio__indicator) {
+  .input:not(html):enabled:checked ~ :global(.fui-Radio__indicator) {
     border-color: Highlight;
     color: Highlight;
   }
-}
-
-@media (forced-colors: active) {
-  .input:disabled ~ :global(.fui-Radio__label) {
+  .input:not(html):disabled ~ :global(.fui-Radio__label) {
     color: GrayText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:disabled ~ :global(.fui-Radio__indicator)::after {
+  .input:not(html):disabled ~ :global(.fui-Radio__indicator)::after {
     background-color: GrayText;
   }
-}
-
-@media (forced-colors: active) {
-  .input:disabled ~ :global(.fui-Radio__indicator) {
+  .input:not(html):disabled ~ :global(.fui-Radio__indicator) {
     border-color: GrayText;
     color: GrayText;
   }

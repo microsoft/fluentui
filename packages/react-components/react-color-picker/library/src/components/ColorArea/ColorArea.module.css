@@ -67,14 +67,6 @@
       bottom: calc(var(--strokeWidthThick) * -1);
       inset-inline-start: calc(var(--strokeWidthThick) * -1);
     }
-    @media (forced-colors: active) {
-      &::after {
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-      }
-    }
   }
 }
 .input {
@@ -99,4 +91,14 @@
   /* stylelint-disable-next-line color-no-hex -- Fixed black/white saturation-value gradient, independent of theme. */
   background: linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
     var(--fui-Area--main-color);
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .thumb:not(html)[data-fui-focus-within]:focus-within::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
 }

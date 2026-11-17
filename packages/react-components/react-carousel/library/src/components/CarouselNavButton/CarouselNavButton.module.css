@@ -108,8 +108,12 @@
 
 /* Top level and last: native nesting can't represent pseudo-elements, so a rule nested inside `&::after` never
    matches; equal-specificity appearance rules above must not override it, as Griffel sorted @media rules last. */
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .root::after {
+  .root:not(html)::after {
     forced-color-adjust: none;
     /* Keep the inverted marker visible when forced colors suppress its normal fill. */
     background-color: var(--colorNeutralForegroundStaticInverted);

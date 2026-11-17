@@ -10,10 +10,6 @@
 
 .disabled {
   color: var(--colorNeutralForegroundDisabled);
-
-  @media (forced-colors: active) {
-    color: GrayText;
-  }
 }
 
 .small {
@@ -34,4 +30,13 @@
 
 .semibold {
   font-weight: var(--fontWeightSemibold);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .disabled:not(html) {
+    color: GrayText;
+  }
 }

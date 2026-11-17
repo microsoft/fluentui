@@ -56,19 +56,21 @@
 .neutral:active {
   background-color: var(--colorSubtleBackgroundSelected);
 }
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
 @media (forced-colors: active) {
-  .interactive:hover {
+  .interactive:not(html):hover {
     color: Highlight;
     border-color: Highlight;
   }
-  .brand,
-  .neutral {
+  .brand:not(html),
+  .neutral:not(html) {
     border: var(--strokeWidthThick) solid transparent;
     border-radius: var(--borderRadiusMedium);
     box-sizing: border-box;
   }
-  .brand:focus-visible,
-  .neutral:focus-visible {
+  .brand:not(html):focus-visible,
+  .neutral:not(html):focus-visible {
     outline-offset: calc(-2 * var(--strokeWidthThick));
   }
 }

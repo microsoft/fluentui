@@ -354,8 +354,11 @@
   }
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .disabled::before {
+  .disabled:not(html)::before {
     border-top-color: GrayText;
     border-inline-end-color: GrayText;
     border-bottom-color: GrayText;

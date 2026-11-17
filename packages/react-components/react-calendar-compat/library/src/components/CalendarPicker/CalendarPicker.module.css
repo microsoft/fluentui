@@ -169,46 +169,49 @@
 /* Forced colors rules come last, after the state rules they override: Griffel sorted @media rules after all
    other rules, so they won over equal-specificity :hover/:active rules. */
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .itemButton:hover {
+  .itemButton:not(html):hover {
     background-color: Window;
     color: WindowText;
     forced-color-adjust: none;
     outline: var(--strokeWidthThin) solid Highlight;
   }
 
-  .itemButton:hover:active {
+  .itemButton:not(html):hover:active {
     background-color: Window;
     color: Highlight;
     forced-color-adjust: none;
   }
 
-  .currentHighlightCurrent {
+  .currentHighlightCurrent:not(html) {
     background-color: WindowText;
     color: Window;
     forced-color-adjust: none;
   }
 
-  .currentHighlightCurrent:hover,
-  .currentHighlightCurrent:hover:active {
+  .currentHighlightCurrent:not(html):hover,
+  .currentHighlightCurrent:not(html):hover:active {
     background-color: WindowText;
     color: Window;
     forced-color-adjust: none;
   }
 
-  .selectedHighlightSelected {
+  .selectedHighlightSelected:not(html) {
     background-color: Highlight;
     color: Window;
     forced-color-adjust: none;
   }
 
-  .selectedHighlightSelected:hover {
+  .selectedHighlightSelected:not(html):hover {
     background-color: Highlight;
     color: Window;
     forced-color-adjust: none;
   }
 
-  .disabled {
+  .disabled:not(html) {
     color: GrayText;
     forced-color-adjust: none;
   }

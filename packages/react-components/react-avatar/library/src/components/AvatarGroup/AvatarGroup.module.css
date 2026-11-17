@@ -6,9 +6,6 @@
 .pie {
   clip-path: circle(50%);
   background-color: var(--colorTransparentStroke);
-  @media (forced-colors: active) {
-    background-color: CanvasText;
-  }
 }
 
 /* Shared dimensions and layout metrics for group items and the overflow trigger. */
@@ -138,4 +135,11 @@
 .size120,
 .size128 {
   --fui-AvatarGroup-spreadSpacing: var(--spacingHorizontalXL);
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .pie:not(html) {
+    background-color: CanvasText;
+  }
 }

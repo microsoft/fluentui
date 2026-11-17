@@ -319,28 +319,31 @@
 /* Forced colors rules come last, after the state rules they override: Griffel sorted @media rules after all
    other rules, so they won over equal-specificity :hover/:active rules. */
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .disabledStyle,
-  .disabledStyle:disabled,
-  .disabledStyle button {
+  .disabledStyle:not(html),
+  .disabledStyle:not(html):disabled,
+  .disabledStyle:not(html) button {
     color: GrayText;
   }
 
-  .cellBase {
+  .cellBase:not(html) {
     background-color: Window;
     color: WindowText;
   }
 
-  .cellBase[data-range-hovered] {
+  .cellBase:not(html)[data-range-hovered] {
     outline: var(--strokeWidthThin) solid Highlight;
     z-index: 3;
   }
 
-  .cellBase[data-range-hovered][data-today] :global(.fui-CalendarDayGridCell__dayLabel) {
+  .cellBase:not(html)[data-range-hovered][data-today] :global(.fui-CalendarDayGridCell__dayLabel) {
     background-color: Highlight;
   }
 
-  .cellBase[data-range-pressed] {
+  .cellBase:not(html)[data-range-pressed] {
     background-color: Window;
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
@@ -349,14 +352,14 @@
     color: Highlight;
   }
 
-  .cellBaseFocusIndicator[data-fui-focus-visible]::after {
+  .cellBaseFocusIndicator:not(html)[data-fui-focus-visible]::after {
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
     border-bottom-color: Highlight;
     border-inline-start-color: Highlight;
   }
 
-  .selected {
+  .selected:not(html) {
     background-color: Highlight;
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
@@ -366,22 +369,22 @@
     forced-color-adjust: none;
   }
 
-  .selected:hover,
-  .selected[data-range-hovered],
-  .selected[data-range-pressed] {
+  .selected:not(html):hover,
+  .selected:not(html)[data-range-hovered],
+  .selected:not(html)[data-range-pressed] {
     background-color: Highlight;
     color: HighlightText;
   }
 
-  .selected > :global(.fui-CalendarDayGridCell__marker) {
+  .selected:not(html) > :global(.fui-CalendarDayGridCell__marker) {
     background-color: Window;
   }
 
-  .singleSelected > :global(.fui-CalendarDayGridCell__marker) {
+  .singleSelected:not(html) > :global(.fui-CalendarDayGridCell__marker) {
     background-color: Window;
   }
 
-  .singleSelected > :global(.fui-CalendarDayGridCell__button) {
+  .singleSelected:not(html) > :global(.fui-CalendarDayGridCell__button) {
     background-color: Highlight;
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
@@ -391,19 +394,19 @@
     forced-color-adjust: none;
   }
 
-  .outsideBounds {
+  .outsideBounds:not(html) {
     color: GrayText;
   }
 
-  .outsideNavigatedMonthLightenDaysOutsideNavigatedMonth {
+  .outsideNavigatedMonthLightenDaysOutsideNavigatedMonth:not(html) {
     color: GrayText;
   }
 
-  .today > :global(.fui-CalendarDayGridCell__marker) {
+  .today:not(html) > :global(.fui-CalendarDayGridCell__marker) {
     background-color: Window;
   }
 
-  .todayMarker {
+  .todayMarker:not(html) {
     background-color: WindowText;
     border-top-color: WindowText;
     border-inline-end-color: WindowText;
@@ -413,7 +416,7 @@
     forced-color-adjust: none;
   }
 
-  .marker {
+  .marker:not(html) {
     background-color: WindowText;
     forced-color-adjust: none;
   }

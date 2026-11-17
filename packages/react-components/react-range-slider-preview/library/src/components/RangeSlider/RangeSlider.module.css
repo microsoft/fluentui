@@ -350,31 +350,54 @@
   cursor: default;
 }
 
-@media (forced-colors: active) {
-  .enabled:hover {
-    --fui-RangeSlider__thumb--color: Highlight;
-    --fui-RangeSlider__progress--color: Highlight;
+@supports (writing-mode: sideways-lr) {
+  :where(.vertical) > :where(.startThumb) > .startInput {
+    writing-mode: vertical-lr;
+    direction: rtl /* @noflip */;
   }
 }
 
+@supports not (writing-mode: sideways-lr) {
+  :where(.vertical) > :where(.startThumb) > .startInput {
+    -webkit-appearance: slider-vertical;
+  }
+}
+
+@supports (writing-mode: sideways-lr) {
+  :where(.vertical) > :where(.endThumb) > .endInput {
+    writing-mode: vertical-lr;
+    direction: rtl /* @noflip */;
+  }
+}
+
+@supports not (writing-mode: sideways-lr) {
+  :where(.vertical) > :where(.endThumb) > .endInput {
+    -webkit-appearance: slider-vertical;
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .enabled {
+  .enabled:not(html):hover {
+    --fui-RangeSlider__thumb--color: Highlight;
+    --fui-RangeSlider__progress--color: Highlight;
+  }
+
+  .enabled:not(html) {
     --fui-RangeSlider__rail--color: CanvasText;
     --fui-RangeSlider__thumb--color: Highlight;
     --fui-RangeSlider__progress--color: Highlight;
   }
-}
 
-@media (forced-colors: active) {
-  .root:where(.disabled) {
+  .root:not(html):where(.disabled) {
     --fui-RangeSlider__rail--color: GrayText;
     --fui-RangeSlider__thumb--color: GrayText;
     --fui-RangeSlider__progress--color: GrayText;
   }
-}
 
-@media (forced-colors: active) {
-  .rail::before {
+  .rail:not(html)::before {
     background-image: repeating-linear-gradient(
       var(--fui-RangeSlider--direction),
       transparent 0%,
@@ -383,60 +406,26 @@
       HighlightText var(--fui-RangeSlider--steps-percent)
     );
   }
-}
 
-@media (forced-colors: active) {
-  .startThumb[data-fui-focus-within]:focus-within::after {
+  .startThumb:not(html)[data-fui-focus-within]:focus-within::after {
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
     border-bottom-color: Highlight;
     border-inline-start-color: Highlight;
   }
-}
 
-@media (forced-colors: active) {
-  .startThumb:where(.disabled) {
+  .startThumb:not(html):where(.disabled) {
     --fui-RangeSlider__thumb--color: GrayText;
   }
-}
 
-@media (forced-colors: active) {
-  .endThumb[data-fui-focus-within]:focus-within::after {
+  .endThumb:not(html)[data-fui-focus-within]:focus-within::after {
     border-top-color: Highlight;
     border-inline-end-color: Highlight;
     border-bottom-color: Highlight;
     border-inline-start-color: Highlight;
   }
-}
 
-@media (forced-colors: active) {
-  .endThumb:where(.disabled) {
+  .endThumb:not(html):where(.disabled) {
     --fui-RangeSlider__thumb--color: GrayText;
-  }
-}
-
-@supports (writing-mode: sideways-lr) {
-  :where(.vertical) > :where(.startThumb) > .startInput {
-    writing-mode: vertical-lr;
-    direction: rtl /* @noflip */;
-  }
-}
-
-@supports not (writing-mode: sideways-lr) {
-  :where(.vertical) > :where(.startThumb) > .startInput {
-    -webkit-appearance: slider-vertical;
-  }
-}
-
-@supports (writing-mode: sideways-lr) {
-  :where(.vertical) > :where(.endThumb) > .endInput {
-    writing-mode: vertical-lr;
-    direction: rtl /* @noflip */;
-  }
-}
-
-@supports not (writing-mode: sideways-lr) {
-  :where(.vertical) > :where(.endThumb) > .endInput {
-    -webkit-appearance: slider-vertical;
   }
 }

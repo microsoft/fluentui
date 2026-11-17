@@ -41,11 +41,6 @@
   color: var(--colorNeutralForegroundDisabled);
   cursor: default;
 }
-@media (forced-colors: active) {
-  .disabled {
-    color: GrayText;
-  }
-}
 .checkIcon {
   flex-shrink: 0;
   font-size: var(--fontSizeBase400);
@@ -81,11 +76,16 @@
 :where(.disabled) > .checkIcon {
   color: var(--colorNeutralForegroundDisabled);
 }
-@media (forced-colors: active) {
-  :where(.disabled) > .checkIcon {
-    color: GrayText;
-  }
-}
 :where(.disabled.multiselect) > .checkIcon {
   border-color: var(--colorNeutralForegroundDisabled);
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .disabled:not(html) {
+    color: GrayText;
+  }
+  :where(.disabled) > .checkIcon:not(html) {
+    color: GrayText;
+  }
 }

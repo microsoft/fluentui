@@ -240,59 +240,6 @@
   cursor: default;
 }
 
-@media (forced-colors: active) {
-  .horizontal[data-fui-focus-within]:focus-within::after {
-    border-top-color: Highlight;
-    border-inline-end-color: Highlight;
-    border-bottom-color: Highlight;
-    border-inline-start-color: Highlight;
-  }
-}
-
-@media (forced-colors: active) {
-  .vertical[data-fui-focus-within]:focus-within::after {
-    border-top-color: Highlight;
-    border-inline-end-color: Highlight;
-    border-bottom-color: Highlight;
-    border-inline-start-color: Highlight;
-  }
-}
-
-@media (forced-colors: active) {
-  .enabled:hover {
-    --fui-Slider__thumb--color: Highlight;
-    --fui-Slider__progress--color: Highlight;
-  }
-}
-
-@media (forced-colors: active) {
-  .enabled {
-    --fui-Slider__rail--color: CanvasText;
-    --fui-Slider__thumb--color: Highlight;
-    --fui-Slider__progress--color: Highlight;
-  }
-}
-
-@media (forced-colors: active) {
-  .disabled {
-    --fui-Slider__rail--color: GrayText;
-    --fui-Slider__thumb--color: GrayText;
-    --fui-Slider__progress--color: GrayText;
-  }
-}
-
-@media (forced-colors: active) {
-  .rail::before {
-    background-image: repeating-linear-gradient(
-      var(--fui-Slider--direction),
-      transparent 0%,
-      transparent calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
-      HighlightText calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
-      HighlightText var(--fui-Slider--steps-percent)
-    );
-  }
-}
-
 @supports (writing-mode: sideways-lr) {
   :where(.vertical) > .input {
     writing-mode: vertical-lr;
@@ -309,5 +256,51 @@
 @supports not (writing-mode: sideways-lr) {
   :where(.vertical) > .input {
     -webkit-appearance: slider-vertical;
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .horizontal:not(html)[data-fui-focus-within]:focus-within::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+
+  .vertical:not(html)[data-fui-focus-within]:focus-within::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+
+  .enabled:not(html):hover {
+    --fui-Slider__thumb--color: Highlight;
+    --fui-Slider__progress--color: Highlight;
+  }
+
+  .enabled:not(html) {
+    --fui-Slider__rail--color: CanvasText;
+    --fui-Slider__thumb--color: Highlight;
+    --fui-Slider__progress--color: Highlight;
+  }
+
+  .disabled:not(html) {
+    --fui-Slider__rail--color: GrayText;
+    --fui-Slider__thumb--color: GrayText;
+    --fui-Slider__progress--color: GrayText;
+  }
+
+  .rail:not(html)::before {
+    background-image: repeating-linear-gradient(
+      var(--fui-Slider--direction),
+      transparent 0%,
+      transparent calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+      HighlightText calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+      HighlightText var(--fui-Slider--steps-percent)
+    );
   }
 }

@@ -68,20 +68,21 @@
   background-color: var(--colorPaletteGreenBackground3);
 }
 
-@media screen and (forced-colors: active) {
-  .root {
-    background-color: CanvasText;
-  }
-}
-
-@media screen and (forced-colors: active) {
-  .bar {
-    background-color: Highlight;
-  }
-}
-
 @media screen and (prefers-reduced-motion: reduce) {
   .indeterminate {
     max-width: 100%;
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html) {
+    background-color: CanvasText;
+  }
+
+  .bar:not(html) {
+    background-color: Highlight;
   }
 }

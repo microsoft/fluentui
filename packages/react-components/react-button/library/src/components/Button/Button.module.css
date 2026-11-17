@@ -333,68 +333,63 @@
   margin-inline-start: var(--fui-Button__icon--spacing);
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .root:focus {
+  .root:not(html):focus {
     border-color: ButtonText;
   }
-
-  .root:hover,
-  .root:hover:active,
-  .root:active:focus-visible {
+  .root:not(html):hover,
+  .root:not(html):hover:active,
+  .root:not(html):active:focus-visible {
     background-color: HighlightText;
     border-color: Highlight;
     color: Highlight;
     forced-color-adjust: none;
   }
-
-  .primary {
+  .primary:not(html) {
     background-color: Highlight;
     border-color: HighlightText;
     color: HighlightText;
     forced-color-adjust: none;
   }
-
-  .primary:hover,
-  .primary:hover:active,
-  .primary:active:focus-visible {
+  .primary:not(html):hover,
+  .primary:not(html):hover:active,
+  .primary:not(html):active:focus-visible {
     background-color: HighlightText;
     border-color: Highlight;
     color: Highlight;
   }
-
-  .subtle:hover,
-  .subtle:hover:active,
-  .subtle:active:focus-visible,
-  .subtle:hover :global(.fui-Button__icon),
-  .subtle:hover:active :global(.fui-Button__icon),
-  .subtle:active:focus-visible :global(.fui-Button__icon) {
+  .subtle:not(html):hover,
+  .subtle:not(html):hover:active,
+  .subtle:not(html):active:focus-visible,
+  .subtle:not(html):hover :global(.fui-Button__icon),
+  .subtle:not(html):hover:active :global(.fui-Button__icon),
+  .subtle:not(html):active:focus-visible :global(.fui-Button__icon) {
     color: Highlight;
   }
-
-  .transparent:hover,
-  .transparent:hover:active,
-  .transparent:active:focus-visible {
+  .transparent:not(html):hover,
+  .transparent:not(html):hover:active,
+  .transparent:not(html):active:focus-visible {
     background-color: var(--colorTransparentBackground);
     color: Highlight;
   }
-
-  .disabled,
-  .disabled:hover,
-  .disabled:hover:active,
-  .disabled:active:focus-visible {
+  .disabled:not(html),
+  .disabled:not(html):hover,
+  .disabled:not(html):hover:active,
+  .disabled:not(html):active:focus-visible {
     background-color: ButtonFace;
     border-color: GrayText;
     color: GrayText;
   }
-
-  .disabled:focus {
+  .disabled:not(html):focus {
     border-color: GrayText;
   }
-
-  .disabled :global(.fui-Button__icon),
-  .disabled:hover :global(.fui-Button__icon),
-  .disabled:hover:active :global(.fui-Button__icon),
-  .disabled:active:focus-visible :global(.fui-Button__icon) {
+  .disabled:not(html) :global(.fui-Button__icon),
+  .disabled:not(html):hover :global(.fui-Button__icon),
+  .disabled:not(html):hover:active :global(.fui-Button__icon),
+  .disabled:not(html):active:focus-visible :global(.fui-Button__icon) {
     color: GrayText;
   }
 }

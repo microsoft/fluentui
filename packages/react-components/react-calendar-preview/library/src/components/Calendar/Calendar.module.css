@@ -61,12 +61,6 @@
     background-color: var(--colorTransparentBackground);
     color: var(--colorBrandForeground1);
     cursor: pointer;
-    @media (forced-colors: active) {
-      & {
-        outline: var(--strokeWidthThin);
-        border-radius: var(--borderRadiusSmall);
-      }
-    }
   }
   &:hover:active {
     color: var(--colorBrandForeground2);
@@ -86,4 +80,14 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .goTodayButton:not(html):hover {
+    outline: var(--strokeWidthThin);
+    border-radius: var(--borderRadiusSmall);
+  }
 }

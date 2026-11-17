@@ -105,10 +105,16 @@
   & button {
     color: var(--colorNeutralForegroundDisabled);
     pointer-events: none;
-    @media (forced-colors: active) {
-      & {
-        color: GrayText;
-      }
-    }
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .disabledStyle:not(html),
+  .disabledStyle:not(html):disabled,
+  .disabledStyle:not(html) button {
+    color: GrayText;
   }
 }

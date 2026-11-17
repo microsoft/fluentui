@@ -187,59 +187,60 @@
     }
   }
 }
-
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
 @media (forced-colors: active) {
-  .primary {
+  .primary:not(html) {
     background-color: ButtonFace;
     border-color: ButtonBorder;
     color: ButtonText;
     forced-color-adjust: auto;
   }
 
-  .disabled:where(.primary) {
+  .disabled:not(html):where(.primary) {
     border-color: GrayText;
     color: GrayText;
-
-    &:focus {
-      border-color: GrayText;
-    }
   }
 
-  .checked {
+  .disabled:not(html):where(.primary):focus {
+    border-color: GrayText;
+  }
+
+  .checked:not(html) {
     background-color: Highlight;
     border-color: Highlight;
     color: HighlightText;
     forced-color-adjust: none;
-
-    &:focus {
-      border: var(--strokeWidthThin) solid HighlightText;
-      outline-color: Highlight;
-    }
-
-    &:hover {
-      background-color: HighlightText;
-      border-color: Highlight;
-      color: Highlight;
-    }
-
-    &:hover:active,
-    &:active:focus-visible {
-      background-color: HighlightText;
-      border-color: Highlight;
-      color: Highlight;
-    }
   }
 
-  .icon {
+  .checked:not(html):focus {
+    border: var(--strokeWidthThin) solid HighlightText;
+    outline-color: Highlight;
+  }
+
+  .checked:not(html):hover {
+    background-color: HighlightText;
+    border-color: Highlight;
+    color: Highlight;
+  }
+
+  .checked:not(html):hover:active,
+  .checked:not(html):active:focus-visible {
+    background-color: HighlightText;
+    border-color: Highlight;
+    color: Highlight;
+  }
+
+  .icon:not(html) {
     forced-color-adjust: auto;
   }
 
-  :where(.checked:not(.disabled)) .icon {
+  :where(.checked:not(.disabled)) .icon:not(html) {
     color: inherit;
     forced-color-adjust: inherit;
+  }
 
-    svg {
-      forced-color-adjust: inherit;
-    }
+  :where(.checked:not(.disabled)) .icon:not(html) svg {
+    forced-color-adjust: inherit;
   }
 }

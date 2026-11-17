@@ -215,17 +215,18 @@
   }
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  :where(.disabled) > .select {
+  :where(.disabled) > .select:not(html) {
     border-top-color: GrayText;
     border-inline-end-color: GrayText;
     border-bottom-color: GrayText;
     border-inline-start-color: GrayText;
   }
-}
 
-@media (forced-colors: active) {
-  :where(.disabled) > .icon {
+  :where(.disabled) > .icon:not(html) {
     color: GrayText;
   }
 }

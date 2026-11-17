@@ -31,16 +31,6 @@
     background-color: var(--colorNeutralBackground3Pressed);
     color: var(--colorNeutralForeground2BrandPressed);
   }
-  @media (forced-colors: active) {
-    border-top-width: var(--strokeWidthThin);
-    border-bottom-width: var(--strokeWidthThin);
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
-  }
 }
 .outline:where(:not(.disabled)) {
   background-color: var(--colorSubtleBackground);
@@ -58,14 +48,6 @@
     background-color: var(--colorSubtleBackgroundPressed);
     color: var(--colorNeutralForeground2BrandPressed);
   }
-  @media (forced-colors: active) {
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
-  }
 }
 .brand:where(:not(.disabled)) {
   background-color: var(--colorBrandBackground2);
@@ -82,16 +64,6 @@
     background-color: var(--colorBrandBackground2Pressed);
     color: var(--colorCompoundBrandForeground1Pressed);
   }
-  @media (forced-colors: active) {
-    border-top-width: var(--strokeWidthThin);
-    border-bottom-width: var(--strokeWidthThin);
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
-  }
 }
 .selected:where(:not(.disabled)) {
   background: var(--colorBrandBackground);
@@ -100,26 +72,13 @@
   border-inline-end-color: var(--colorBrandStroke1);
   border-bottom-color: var(--colorBrandStroke1);
   border-inline-start-color: var(--colorNeutralStrokeOnBrand2);
-  @media (forced-colors: active) {
-    forced-color-adjust: none;
-    background-color: Highlight;
-    color: HighlightText;
-  }
   &:hover {
     background-color: var(--colorBrandBackgroundHover);
     color: var(--colorNeutralForegroundOnBrand);
-    @media (forced-colors: active) {
-      background-color: Highlight;
-      color: HighlightText;
-    }
   }
   &:active {
     background-color: var(--colorBrandBackgroundPressed);
     color: var(--colorNeutralForegroundOnBrand);
-    @media (forced-colors: active) {
-      background-color: Highlight;
-      color: HighlightText;
-    }
   }
 }
 .rounded {
@@ -189,4 +148,47 @@
   border-inline-end-color: var(--colorTransparentStrokeDisabled);
   border-bottom-color: var(--colorTransparentStrokeDisabled);
   border-inline-start-color: var(--colorNeutralStrokeDisabled);
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .filled:not(html):where(:not(.disabled)) {
+    border-top-width: var(--strokeWidthThin);
+    border-bottom-width: var(--strokeWidthThin);
+  }
+  .filled:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+  .filled:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+  .outline:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+  .outline:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+  .brand:not(html):where(:not(.disabled)) {
+    border-top-width: var(--strokeWidthThin);
+    border-bottom-width: var(--strokeWidthThin);
+  }
+  .brand:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+  .brand:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+  .selected:not(html):where(:not(.disabled)) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .selected:not(html):where(:not(.disabled)):hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .selected:not(html):where(:not(.disabled)):active {
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }

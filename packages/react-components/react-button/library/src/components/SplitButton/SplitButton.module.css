@@ -50,21 +50,24 @@
   border-inline-end-color: var(--colorNeutralStrokeDisabled);
 }
 
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
 @media (forced-colors: active) {
-  .primary :global(.fui-SplitButton__primaryActionButton) {
+  .primary:not(html) :global(.fui-SplitButton__primaryActionButton) {
     border-inline-end-color: HighlightText;
   }
 
-  .primary:hover :global(.fui-SplitButton__primaryActionButton),
-  .primary:hover:active :global(.fui-SplitButton__primaryActionButton),
-  .primary:active:focus-visible :global(.fui-SplitButton__primaryActionButton) {
+  .primary:not(html):hover :global(.fui-SplitButton__primaryActionButton),
+  .primary:not(html):hover:active :global(.fui-SplitButton__primaryActionButton),
+  .primary:not(html):active:focus-visible :global(.fui-SplitButton__primaryActionButton) {
     border-inline-end-color: Highlight;
   }
 
-  .disabled :global(.fui-SplitButton__primaryActionButton),
-  .disabled:hover :global(.fui-SplitButton__primaryActionButton),
-  .disabled:hover:active :global(.fui-SplitButton__primaryActionButton),
-  .disabled:active:focus-visible :global(.fui-SplitButton__primaryActionButton) {
+  .disabled:not(html) :global(.fui-SplitButton__primaryActionButton),
+  .disabled:not(html):hover :global(.fui-SplitButton__primaryActionButton),
+  .disabled:not(html):hover:active :global(.fui-SplitButton__primaryActionButton),
+  .disabled:not(html):active:focus-visible :global(.fui-SplitButton__primaryActionButton) {
     border-inline-end-color: GrayText;
   }
 }

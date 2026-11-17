@@ -44,18 +44,6 @@
   }
 }
 
-.root {
-  @media (forced-colors: active) {
-    color: CanvasText;
-    &:hover,
-    &:hover:active {
-      forced-color-adjust: none;
-      background-color: Highlight;
-      color: Canvas;
-    }
-  }
-}
-
 .root:where(.open) {
   background-color: var(--colorTransparentBackgroundSelected);
   color: var(--colorNeutralForeground2BrandSelected);
@@ -65,11 +53,6 @@
 
   & :global(.fui-Icon-regular) {
     display: none;
-  }
-
-  @media (forced-colors: active) {
-    background-color: Highlight;
-    color: Canvas;
   }
 }
 
@@ -103,15 +86,6 @@
       bottom: calc(var(--strokeWidthThick) * -1);
       inset-inline-start: calc(var(--strokeWidthThick) * -1);
     }
-
-    @media (forced-colors: active) {
-      &::after {
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-      }
-    }
   }
 }
 
@@ -131,4 +105,32 @@
   font-size: var(--fontSizeBase300);
   font-weight: var(--fontWeightRegular);
   line-height: var(--lineHeightBase300);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html) {
+    color: CanvasText;
+  }
+
+  .root:not(html):hover,
+  .root:not(html):hover:active {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: Canvas;
+  }
+
+  .root:not(html):where(.open) {
+    background-color: Highlight;
+    color: Canvas;
+  }
+
+  .root:not(html)[data-fui-focus-visible]::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
 }

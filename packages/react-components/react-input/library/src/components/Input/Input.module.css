@@ -180,13 +180,6 @@
   &:focus-within {
     outline-style: none;
   }
-
-  @media (forced-colors: active) {
-    border-top-color: GrayText;
-    border-inline-end-color: GrayText;
-    border-bottom-color: GrayText;
-    border-inline-start-color: GrayText;
-  }
 }
 
 .root:where(.small.withContentBefore) {
@@ -305,5 +298,17 @@
   & > svg,
   & > :global(.fui-Icon-font) {
     font-size: var(--fontSizeBase600);
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html):where(.disabled) {
+    border-top-color: GrayText;
+    border-inline-end-color: GrayText;
+    border-bottom-color: GrayText;
+    border-inline-start-color: GrayText;
   }
 }

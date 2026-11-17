@@ -135,14 +135,17 @@
       bottom: calc(var(--strokeWidthThick) * -1);
       inset-inline-start: calc(var(--strokeWidthThick) * -1);
     }
+  }
+}
 
-    @media (forced-colors: active) {
-      &::after {
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-      }
-    }
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .button:not(html)[data-fui-focus-visible]::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
   }
 }

@@ -18,17 +18,6 @@
     z-index: 1;
   }
   border-radius: var(--borderRadiusMedium);
-  @media (forced-colors: active) {
-    position: relative;
-    &::before {
-      content: '';
-      border-top: var(--strokeWidthThin) solid;
-      position: absolute;
-      inset: calc(var(--strokeWidthThin) * -1);
-      border-start-start-radius: var(--borderRadiusMedium);
-      border-start-end-radius: var(--borderRadiusMedium);
-    }
-  }
 }
 
 .root:where(.circular) {
@@ -48,18 +37,6 @@
     z-index: 1;
   }
   border-radius: var(--borderRadiusCircular);
-  @media (forced-colors: active) {
-    position: relative;
-    &::before {
-      content: '';
-      border-top: var(--strokeWidthThin) solid;
-      border-inline-start: var(--strokeWidthThin) solid;
-      position: absolute;
-      inset: calc(var(--strokeWidthThin) * -1);
-      border-start-start-radius: var(--borderRadiusCircular);
-      border-end-start-radius: var(--borderRadiusCircular);
-    }
-  }
 }
 
 .filled:where(:not(.disabled)) {
@@ -73,14 +50,6 @@
   &:active {
     background-color: var(--colorNeutralBackground3Pressed);
     color: var(--colorNeutralForeground2Pressed);
-  }
-  @media (forced-colors: active) {
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
   }
 }
 
@@ -114,14 +83,6 @@
       display: none;
     }
   }
-  @media (forced-colors: active) {
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
-  }
 }
 
 .brand:where(:not(.disabled)) {
@@ -136,14 +97,6 @@
     background-color: var(--colorBrandBackground2Pressed);
     color: var(--colorCompoundBrandForeground1Pressed);
   }
-  @media (forced-colors: active) {
-    &:hover {
-      background-color: HighlightText;
-    }
-    &:active {
-      background-color: HighlightText;
-    }
-  }
 }
 
 .selected:where(:not(.disabled)) {
@@ -153,20 +106,11 @@
   border-inline-end-color: var(--colorBrandStroke1);
   border-bottom-color: var(--colorBrandStroke1);
   border-inline-start-color: var(--colorBrandStroke1);
-  @media (forced-colors: active) {
-    forced-color-adjust: none;
-    background-color: Highlight;
-    color: HighlightText;
-  }
   &:hover {
     background-color: var(--colorBrandBackgroundHover);
     color: var(--colorNeutralForegroundOnBrand);
     & :global(.fui-Icon-filled) {
       color: var(--colorNeutralForegroundOnBrand);
-    }
-    @media (forced-colors: active) {
-      background-color: Highlight;
-      color: HighlightText;
     }
   }
   &:active {
@@ -174,10 +118,6 @@
     color: var(--colorNeutralForegroundOnBrand);
     & :global(.fui-Icon-filled) {
       color: var(--colorNeutralForegroundOnBrand);
-    }
-    @media (forced-colors: active) {
-      background-color: Highlight;
-      color: HighlightText;
     }
   }
 }
@@ -254,17 +194,6 @@
   padding-inline-start: calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin));
 }
 
-.circular:where(:not(.hasSecondaryAction)) {
-  @media (forced-colors: active) {
-    position: relative;
-    &::before {
-      border-inline-end: var(--strokeWidthThin) solid transparent;
-      border-start-end-radius: var(--borderRadiusCircular);
-      border-end-end-radius: var(--borderRadiusCircular);
-    }
-  }
-}
-
 .hasSecondaryAction {
   border-start-end-radius: var(--borderRadiusNone);
   border-end-end-radius: var(--borderRadiusNone);
@@ -272,11 +201,6 @@
   &[data-fui-focus-visible] {
     border-start-end-radius: var(--borderRadiusNone);
     border-end-end-radius: var(--borderRadiusNone);
-  }
-  @media (forced-colors: active) {
-    &::before {
-      border-start-end-radius: 0;
-    }
   }
 }
 
@@ -290,4 +214,90 @@
 
 .hasSecondaryAction:where(.extra-small) {
   padding-inline-end: var(--spacingHorizontalSNudge);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html):where(.rounded) {
+    position: relative;
+  }
+
+  .root:not(html):where(.rounded)::before {
+    content: '';
+    border-top: var(--strokeWidthThin) solid;
+    position: absolute;
+    inset: calc(var(--strokeWidthThin) * -1);
+    border-start-start-radius: var(--borderRadiusMedium);
+    border-start-end-radius: var(--borderRadiusMedium);
+  }
+
+  .root:not(html):where(.circular) {
+    position: relative;
+  }
+
+  .root:not(html):where(.circular)::before {
+    content: '';
+    border-top: var(--strokeWidthThin) solid;
+    border-inline-start: var(--strokeWidthThin) solid;
+    position: absolute;
+    inset: calc(var(--strokeWidthThin) * -1);
+    border-start-start-radius: var(--borderRadiusCircular);
+    border-end-start-radius: var(--borderRadiusCircular);
+  }
+
+  .filled:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+
+  .filled:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+
+  .outline:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+
+  .outline:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+
+  .brand:not(html):where(:not(.disabled)):hover {
+    background-color: HighlightText;
+  }
+
+  .brand:not(html):where(:not(.disabled)):active {
+    background-color: HighlightText;
+  }
+
+  .selected:not(html):where(:not(.disabled)) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .selected:not(html):where(:not(.disabled)):hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .selected:not(html):where(:not(.disabled)):active {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .circular:not(html):where(:not(.hasSecondaryAction)) {
+    position: relative;
+  }
+
+  .circular:not(html):where(:not(.hasSecondaryAction))::before {
+    border-inline-end: var(--strokeWidthThin) solid transparent;
+    border-start-end-radius: var(--borderRadiusCircular);
+    border-end-end-radius: var(--borderRadiusCircular);
+  }
+
+  .hasSecondaryAction:not(html)::before {
+    border-start-end-radius: 0;
+  }
 }

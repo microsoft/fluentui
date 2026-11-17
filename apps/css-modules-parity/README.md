@@ -24,9 +24,9 @@ Do not run the suite while editing CSS without `FUI_CYPRESS_NO_WATCH=1`; watch r
 
 Retries are disabled (`retries.runMode: 0`), because a parity sample must be deterministic. The one exception is
 `Lazy.cy.tsx` (`runModeRetries`): the first lazily loaded test of each component only passes on a retry, see the TODO
-there. CI runs the suite as the
-sharded `css-modules-parity` job in [`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), so a new spec file
-must be added to a shard.
+there. CI runs the suite as the sharded `css-modules-parity` job in
+[`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), once per environment axis that passes in full (default,
+`FUI_PARITY_DIR=rtl`, `FUI_PARITY_SHADOW_DOM=1`), so a new spec file must be added to a shard.
 
 Environment axes, combinable with every mode below:
 
@@ -81,7 +81,10 @@ Dedicated specs:
 A Griffel hook that composes another package's style hook (`useToggleButtonStyles_unstable` from
 `@fluentui/react-button`) would receive its CSS alternative through the package index;
 [`griffelStyleImportsLoader`](./griffel-baseline/griffelStyleImportsLoader.js) redirects those imports to the Griffel
-hooks. Components that render a sibling component through an index file still receive its CSS alternative. Specs work
+hooks. [`GriffelBaseStyles`](./e2e/GriffelBaseStyles.tsx) inserts the Griffel Button and ToggleButton styles before
+anything else renders: Griffel orders rules with different selectors and equal specificity by insertion, and in an app
+(and in the CSS Modules import order) these base components come first. Components that render a sibling component
+through an index file still receive its CSS alternative. Specs work
 around this locally: they swap in Griffel child components, rebuild presets or shims from source, or (in
 `FeedbackAndCompat`) re-instantiate webpack modules with Griffel hooks. Transitions that ignore reduced motion are
 disabled where they would make sampling nondeterministic.
@@ -106,6 +109,20 @@ Tolerated only for values the app declared (and colors inherited from them):
 - A custom style hook that prepends its class (`mergeClasses(hookClass, state.root.className)`) now wins. In Griffel
   the component classes merged after it won every conflict; CSS Modules classes aren't atomic, so `mergeClasses()`
   argument order can't decide between them.
+
+Composed components follow production Griffel, even where its result looks unintended: Griffel merges Button's
+atomic appearance, disabled and checked classes after a wrapper's own styles, so a Hamburger, CarouselButton or
+TeachingPopoverCarouselFooterButton keeps Button's colors for every appearance that sets them, and the CSS Modules ports
+only apply the wrapper's colors where Griffel does.
+
+Forced colors: Griffel sorted `@media` rules after all other rules, so a component's `@media (forced-colors: active)`
+rule beat an app override of equal specificity without the media query. CSS Modules component rules are an earlier
+stylesheet, so every component forced colors rule comes last in its stylesheet with one more type selector
+(`.root:not(html):hover`). That wins ties, as Griffel's order did, but still loses to the component's own state rules
+with one more class (`.root:hover:active`), as in Griffel; a doubled class would beat them. In forced colors, an
+app override of a component inside any at-rule (`@media (forced-colors: active)`, `@media (min-width)`, `@container`:
+Griffel ordered all of them by insertion, so the app's rule won) now needs more specificity, for example Griffel's
+`&&`.
 
 Some specs declare further, component-specific `knownDifferences` (for example, inherited backgrounds in plain CSS
 scenarios), each with an explanation.

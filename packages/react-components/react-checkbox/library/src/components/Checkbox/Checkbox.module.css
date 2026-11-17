@@ -31,15 +31,6 @@
       bottom: calc(var(--strokeWidthThick) * -1);
       inset-inline-start: calc(var(--strokeWidthThick) * -1);
     }
-
-    @media (forced-colors: active) {
-      &::after {
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-      }
-    }
   }
 }
 
@@ -91,10 +82,6 @@
   color: var(--colorNeutralForegroundDisabled);
   --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeDisabled);
   --fui-Checkbox__indicator--color: var(--colorNeutralForegroundDisabled);
-  @media (forced-colors: active) {
-    color: GrayText;
-    --fui-Checkbox__indicator--color: GrayText;
-  }
 }
 
 .input {
@@ -175,4 +162,20 @@
 :where(.large) > .label {
   margin-top: calc((var(--spacingHorizontalXL) - var(--lineHeightBase300)) / 2);
   margin-bottom: calc((var(--spacingHorizontalXL) - var(--lineHeightBase300)) / 2);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html)[data-fui-focus-within]:focus-within::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+  .root:not(html):where(.disabled) {
+    color: GrayText;
+    --fui-Checkbox__indicator--color: GrayText;
+  }
 }

@@ -172,23 +172,9 @@
   background-color: var(--colorNeutralStroke1Pressed);
 }
 
-@media (forced-colors: active) {
-  .pendingBase:hover::before,
-  .pendingBase:active::before {
-    background-color: Highlight;
-  }
-}
-
 .pendingDisabled:hover::before,
 .pendingDisabled:active::before {
   background-color: var(--colorTransparentStroke);
-}
-
-@media (forced-colors: active) {
-  .pendingDisabled:hover::before,
-  .pendingDisabled:active::before {
-    background-color: transparent;
-  }
 }
 
 /* ---- Active indicator (::after) ---- */
@@ -206,14 +192,6 @@
 }
 .activeSelected:enabled:active::after {
   background-color: var(--colorCompoundBrandStrokePressed);
-}
-
-@media (forced-colors: active) {
-  .activeSelected::after,
-  .activeSelected:enabled:hover::after,
-  .activeSelected:enabled:active::after {
-    background-color: ButtonText;
-  }
 }
 
 .activeDisabled::after {
@@ -369,42 +347,6 @@
 }
 
 /* Forced-colors rules last: Griffel inserts @media rules after all non-media rules. */
-@media (forced-colors: active) {
-  .subtleCircular {
-    border: solid var(--strokeWidthThin) Canvas;
-  }
-}
-
-@media (forced-colors: active) {
-  .subtleCircular:where(.selected) {
-    border: solid var(--strokeWidthThin) Highlight;
-  }
-}
-
-@media (forced-colors: active) {
-  .filledCircular:enabled:hover {
-    background-color: Highlight;
-    forced-color-adjust: none;
-  }
-  .filledCircular:enabled:hover :global(.fui-Tab__content),
-  .filledCircular:enabled:hover :global(.fui-Icon-filled),
-  .filledCircular:enabled:hover :global(.fui-Icon-regular) {
-    color: HighlightText;
-  }
-}
-
-@media (forced-colors: active) {
-  .filledCircular:where(.selected):enabled {
-    background-color: ButtonText;
-  }
-  .filledCircular:where(.selected):enabled :global(.fui-Tab__content) {
-    color: ButtonFace;
-    forced-color-adjust: none;
-  }
-  .filledCircular:where(.selected):enabled :global(.fui-Tab__icon) {
-    color: ButtonFace;
-  }
-}
 
 /* ---- Icon slot ---- */
 .icon {
@@ -474,4 +416,48 @@
 .contentPlaceholder {
   visibility: hidden;
   font-weight: var(--fontWeightSemibold);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .pendingBase:not(html):hover::before,
+  .pendingBase:not(html):active::before {
+    background-color: Highlight;
+  }
+  .pendingDisabled:not(html):hover::before,
+  .pendingDisabled:not(html):active::before {
+    background-color: transparent;
+  }
+  .activeSelected:not(html)::after,
+  .activeSelected:not(html):enabled:hover::after,
+  .activeSelected:not(html):enabled:active::after {
+    background-color: ButtonText;
+  }
+  .subtleCircular:not(html) {
+    border: solid var(--strokeWidthThin) Canvas;
+  }
+  .subtleCircular:not(html):where(.selected) {
+    border: solid var(--strokeWidthThin) Highlight;
+  }
+  .filledCircular:not(html):enabled:hover {
+    background-color: Highlight;
+    forced-color-adjust: none;
+  }
+  .filledCircular:not(html):enabled:hover :global(.fui-Tab__content),
+  .filledCircular:not(html):enabled:hover :global(.fui-Icon-filled),
+  .filledCircular:not(html):enabled:hover :global(.fui-Icon-regular) {
+    color: HighlightText;
+  }
+  .filledCircular:not(html):where(.selected):enabled {
+    background-color: ButtonText;
+  }
+  .filledCircular:not(html):where(.selected):enabled :global(.fui-Tab__content) {
+    color: ButtonFace;
+    forced-color-adjust: none;
+  }
+  .filledCircular:not(html):where(.selected):enabled :global(.fui-Tab__icon) {
+    color: ButtonFace;
+  }
 }

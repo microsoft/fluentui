@@ -121,11 +121,6 @@
   background-color: var(--colorTransparentBackground);
   border-color: var(--colorNeutralStrokeDisabled);
 }
-@media (forced-colors: active) {
-  .disabled {
-    border-color: GrayText;
-  }
-}
 .input {
   align-self: stretch;
   background-color: var(--colorTransparentBackground);
@@ -229,4 +224,11 @@
   padding: 0px;
   width: 1px;
   position: absolute;
+}
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+@media (forced-colors: active) {
+  .disabled:not(html) {
+    border-color: GrayText;
+  }
 }
