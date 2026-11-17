@@ -27,24 +27,9 @@
     color: var(--colorNeutralForeground1Static);
     cursor: pointer;
     outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-        color: WindowText;
-        forced-color-adjust: none;
-        outline: var(--strokeWidthThin) solid Highlight;
-      }
-    }
   }
   &:hover:active {
     background-color: var(--colorBrandBackgroundInvertedPressed);
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-        color: Highlight;
-        forced-color-adjust: none;
-      }
-    }
   }
 }
 
@@ -52,24 +37,10 @@
   background-color: var(--colorBrandBackground);
   color: var(--colorNeutralForegroundOnBrand);
   font-weight: var(--fontWeightSemibold);
-  @media (forced-colors: active) {
-    & {
-      background-color: WindowText;
-      color: Window;
-      forced-color-adjust: none;
-    }
-  }
   &:hover,
   &:hover:active {
     background-color: var(--colorBrandBackground);
     color: var(--colorNeutralForegroundOnBrand);
-    @media (forced-colors: active) {
-      & {
-        background-color: WindowText;
-        color: Window;
-        forced-color-adjust: none;
-      }
-    }
   }
 }
 
@@ -77,23 +48,9 @@
   background-color: var(--colorBrandBackgroundInvertedSelected);
   color: var(--colorNeutralForeground1Static);
   font-weight: var(--fontWeightSemibold);
-  @media (forced-colors: active) {
-    & {
-      background-color: Highlight;
-      color: Window;
-      forced-color-adjust: none;
-    }
-  }
   &:hover {
     background-color: var(--colorBrandBackgroundInvertedSelected);
     color: var(--colorNeutralForeground1Static);
-    @media (forced-colors: active) {
-      & {
-        background-color: Highlight;
-        color: Window;
-        forced-color-adjust: none;
-      }
-    }
   }
   &:hover:active {
     background-color: var(--colorBrandBackgroundInvertedPressed);
@@ -107,10 +64,46 @@
     color: var(--colorNeutralForegroundDisabled);
     pointer-events: none;
   }
-  @media (forced-colors: active) {
-    & {
-      color: GrayText;
-      forced-color-adjust: none;
-    }
+}
+
+/* Forced colors rules come last, after the state rules they override: Griffel sorted @media rules after all
+   other rules, so they won over equal-specificity :hover/:active rules. */
+
+@media (forced-colors: active) {
+  .itemButton:hover {
+    background-color: Window;
+    color: WindowText;
+    forced-color-adjust: none;
+    outline: var(--strokeWidthThin) solid Highlight;
+  }
+  .itemButton:hover:active {
+    background-color: Window;
+    color: Highlight;
+    forced-color-adjust: none;
+  }
+  .highlightCurrent {
+    background-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightCurrent:hover,
+  .highlightCurrent:hover:active {
+    background-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightSelected {
+    background-color: Highlight;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .highlightSelected:hover {
+    background-color: Highlight;
+    color: Window;
+    forced-color-adjust: none;
+  }
+  .disabled {
+    color: GrayText;
+    forced-color-adjust: none;
   }
 }

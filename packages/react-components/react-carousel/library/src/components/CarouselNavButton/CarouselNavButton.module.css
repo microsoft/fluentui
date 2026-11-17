@@ -20,14 +20,6 @@
     width: var(--spacingHorizontalS);
     background-color: var(--colorNeutralForeground1);
     color: var(--colorNeutralForeground1);
-    @media (forced-colors: active) {
-      & {
-        forced-color-adjust: none;
-        /* Keep the inverted marker visible when forced colors suppress its normal fill. */
-        background-color: var(--colorNeutralForegroundStaticInverted);
-        mix-blend-mode: difference;
-      }
-    }
   }
 }
 
@@ -111,5 +103,16 @@
     &::after {
       opacity: 1;
     }
+  }
+}
+
+/* Top level and last: native nesting can't represent pseudo-elements, so a rule nested inside `&::after` never
+   matches; equal-specificity appearance rules above must not override it, as Griffel sorted @media rules last. */
+@media (forced-colors: active) {
+  .root::after {
+    forced-color-adjust: none;
+    /* Keep the inverted marker visible when forced colors suppress its normal fill. */
+    background-color: var(--colorNeutralForegroundStaticInverted);
+    mix-blend-mode: difference;
   }
 }

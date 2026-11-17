@@ -32,10 +32,6 @@
     transition-property: transform;
     transition-duration: var(--durationUltraFast);
     transition-delay: var(--curveAccelerateMid);
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition-duration: 0.01ms;
-      transition-delay: 0.01ms;
-    }
   }
 
   &:focus-within::after {
@@ -43,10 +39,6 @@
     transition-property: transform;
     transition-duration: var(--durationNormal);
     transition-delay: var(--curveDecelerateMid);
-    @media screen and (prefers-reduced-motion: reduce) {
-      transition-duration: 0.01ms;
-      transition-delay: 0.01ms;
-    }
   }
 
   &:focus-within:active::after {
@@ -55,6 +47,16 @@
 
   &:focus-within {
     outline: var(--strokeWidthThick) solid transparent;
+  }
+}
+
+/* Outside the pseudo-element rules above: native nesting can't represent pseudo-elements, so a group rule nested
+   inside `&::after` never matches. */
+@media screen and (prefers-reduced-motion: reduce) {
+  .root::after,
+  .root:focus-within::after {
+    transition-duration: 0.01ms;
+    transition-delay: 0.01ms;
   }
 }
 

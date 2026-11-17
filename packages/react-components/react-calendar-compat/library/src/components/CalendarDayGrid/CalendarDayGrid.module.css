@@ -29,38 +29,13 @@
   margin: 0;
   padding: var(--spacingHorizontalXXS);
   position: relative;
-  @media (forced-colors: active) {
-    & {
-      background-color: Window;
-      color: WindowText;
-    }
-  }
   &:global(.fui-CalendarDayGrid__hoverStyle) {
     color: var(--colorNeutralForeground1Static);
     background-color: var(--colorBrandBackgroundInvertedHover);
-    @media (forced-colors: active) {
-      & {
-        outline: var(--strokeWidthThin) solid Highlight;
-        z-index: 3;
-        & :global(.fui-CalendarDayGrid__dayTodayMarker) {
-          background-color: Highlight;
-        }
-      }
-    }
   }
   &:global(.fui-CalendarDayGrid__pressedStyle) {
     color: var(--colorNeutralForeground1Static);
     background-color: var(--colorBrandBackgroundInvertedPressed);
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-        color: Highlight;
-      }
-    }
   }
 }
 
@@ -76,16 +51,6 @@
     border-inline-end-color: transparent;
     border-bottom-color: transparent;
     border-inline-start-color: transparent;
-    @media (forced-colors: active) {
-      & {
-        &::after {
-          border-top-color: Highlight;
-          border-inline-end-color: Highlight;
-          border-bottom-color: Highlight;
-          border-inline-start-color: Highlight;
-        }
-      }
-    }
     &::after {
       content: '';
       position: absolute;
@@ -104,62 +69,20 @@
 .daySelected {
   background-color: var(--colorBrandBackgroundInvertedSelected);
   color: var(--colorNeutralForeground1Static);
-  @media (forced-colors: active) {
-    & {
-      background-color: Highlight;
-      border-top-color: Highlight;
-      border-inline-end-color: Highlight;
-      border-bottom-color: Highlight;
-      border-inline-start-color: Highlight;
-      color: HighlightText;
-      forced-color-adjust: none;
-    }
-  }
   &:hover,
   &:global(.fui-CalendarDayGrid__hoverStyle),
   &:global(.fui-CalendarDayGrid__pressedStyle) {
     color: var(--colorNeutralForeground1Static);
     background-color: var(--colorBrandBackgroundInvertedSelected);
-    @media (forced-colors: active) {
-      & {
-        background-color: Highlight;
-        color: HighlightText;
-      }
-    }
-  }
-  & > :global(.fui-CalendarDayGrid__dayMarker) {
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-      }
-    }
   }
 }
 
 .daySingleSelected {
   color: var(--colorNeutralForeground1Static);
-  & > :global(.fui-CalendarDayGrid__dayMarker) {
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-      }
-    }
-  }
   & > :global(.fui-CalendarDayGrid__dayButton) {
     background-color: var(--colorBrandBackgroundInvertedSelected);
     border-radius: var(--borderRadiusMedium);
     border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
-    @media (forced-colors: active) {
-      & {
-        background-color: Highlight;
-        border-top-color: Highlight;
-        border-inline-end-color: Highlight;
-        border-bottom-color: Highlight;
-        border-inline-start-color: Highlight;
-        color: HighlightText;
-        forced-color-adjust: none;
-      }
-    }
   }
 }
 
@@ -197,21 +120,11 @@
     color: var(--colorNeutralForegroundDisabled);
     pointer-events: none;
   }
-  @media (forced-colors: active) {
-    & {
-      color: GrayText;
-    }
-  }
 }
 
 .dayOutsideNavigatedMonthLightenDaysOutsideNavigatedMonth {
   color: var(--colorNeutralForeground4);
   font-weight: var(--fontWeightRegular);
-  @media (forced-colors: active) {
-    & {
-      color: GrayText;
-    }
-  }
 }
 
 .dayButton {
@@ -247,11 +160,6 @@
   font-weight: var(--fontWeightSemibold);
   & > :global(.fui-CalendarDayGrid__dayMarker) {
     background-color: var(--colorNeutralForegroundOnBrand);
-    @media (forced-colors: active) {
-      & {
-        background-color: Window;
-      }
-    }
   }
 }
 
@@ -264,17 +172,6 @@
   width: var(--spacingHorizontalXL);
   height: var(--spacingHorizontalXL);
   line-height: var(--spacingHorizontalXL);
-  @media (forced-colors: active) {
-    & {
-      background-color: WindowText;
-      border-top-color: WindowText;
-      border-inline-end-color: WindowText;
-      border-bottom-color: WindowText;
-      border-inline-start-color: WindowText;
-      color: Window;
-      forced-color-adjust: none;
-    }
-  }
 }
 
 .firstTransitionWeek {
@@ -302,12 +199,6 @@
   position: absolute;
   inset-inline-end: 0;
   width: var(--spacingHorizontalXS);
-  @media (forced-colors: active) {
-    & {
-      background-color: WindowText;
-      forced-color-adjust: none;
-    }
-  }
 }
 
 .cornerBorderAndRadiusCorners {
@@ -322,5 +213,102 @@
   }
   &:global(.fui-CalendarDayGrid__bottomLeftCornerDate) {
     border-end-start-radius: var(--borderRadiusMedium);
+  }
+}
+
+/* Forced colors rules come last, after the state rules they override: Griffel sorted @media rules after all
+   other rules, so they won over equal-specificity :hover/:active rules. */
+
+@media (forced-colors: active) {
+  .dayCell {
+    background-color: Window;
+    color: WindowText;
+  }
+
+  .dayCell:global(.fui-CalendarDayGrid__hoverStyle) {
+    outline: var(--strokeWidthThin) solid Highlight;
+    z-index: 3;
+  }
+
+  .dayCell:global(.fui-CalendarDayGrid__hoverStyle) :global(.fui-CalendarDayGrid__dayTodayMarker) {
+    background-color: Highlight;
+  }
+
+  .dayCell:global(.fui-CalendarDayGrid__pressedStyle) {
+    background-color: Window;
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+    color: Highlight;
+  }
+
+  .dayCellFocusIndicator[data-fui-focus-visible]::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+
+  .daySelected {
+    background-color: Highlight;
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .daySelected:hover,
+  .daySelected:global(.fui-CalendarDayGrid__hoverStyle),
+  .daySelected:global(.fui-CalendarDayGrid__pressedStyle) {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .daySelected > :global(.fui-CalendarDayGrid__dayMarker) {
+    background-color: Window;
+  }
+
+  .daySingleSelected > :global(.fui-CalendarDayGrid__dayMarker) {
+    background-color: Window;
+  }
+
+  .daySingleSelected > :global(.fui-CalendarDayGrid__dayButton) {
+    background-color: Highlight;
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .dayOutsideBounds {
+    color: GrayText;
+  }
+
+  .dayOutsideNavigatedMonthLightenDaysOutsideNavigatedMonth {
+    color: GrayText;
+  }
+
+  .dayIsToday > :global(.fui-CalendarDayGrid__dayMarker) {
+    background-color: Window;
+  }
+
+  .dayTodayMarker {
+    background-color: WindowText;
+    border-top-color: WindowText;
+    border-inline-end-color: WindowText;
+    border-bottom-color: WindowText;
+    border-inline-start-color: WindowText;
+    color: Window;
+    forced-color-adjust: none;
+  }
+
+  .dayMarker {
+    background-color: WindowText;
+    forced-color-adjust: none;
   }
 }
