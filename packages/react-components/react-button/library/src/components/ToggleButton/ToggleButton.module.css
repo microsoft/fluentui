@@ -148,39 +148,42 @@
   }
 }
 
-/* After the checked styles: a disabled toggle shows disabled colors whether or not it's checked. */
-.disabled {
-  &,
-  &:hover,
-  &:hover:active,
-  &:active:focus-visible {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    border-color: var(--colorNeutralStrokeDisabled);
-    color: var(--colorNeutralForegroundDisabled);
-  }
-
-  &:where(.primary) {
+/* After the checked styles: a disabled toggle shows disabled colors whether or not it's checked. In forced colors,
+   Button's disabled colors win for every state, as Griffel sorted them after these. */
+@media (forced-colors: none) {
+  .disabled {
     &,
     &:hover,
     &:hover:active,
     &:active:focus-visible {
-      border-color: transparent;
-    }
-  }
-
-  &:where(.subtle, .transparent) {
-    background-color: var(--colorTransparentBackground);
-    border-color: transparent;
-
-    &:hover {
-      background-color: var(--colorTransparentBackgroundHover);
-      border-color: transparent;
+      background-color: var(--colorNeutralBackgroundDisabled);
+      border-color: var(--colorNeutralStrokeDisabled);
+      color: var(--colorNeutralForegroundDisabled);
     }
 
-    &:hover:active,
-    &:active:focus-visible {
-      background-color: var(--colorTransparentBackgroundPressed);
+    &:where(.primary) {
+      &,
+      &:hover,
+      &:hover:active,
+      &:active:focus-visible {
+        border-color: transparent;
+      }
+    }
+
+    &:where(.subtle, .transparent) {
+      background-color: var(--colorTransparentBackground);
       border-color: transparent;
+
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+        border-color: transparent;
+      }
+
+      &:hover:active,
+      &:active:focus-visible {
+        background-color: var(--colorTransparentBackgroundPressed);
+        border-color: transparent;
+      }
     }
   }
 }

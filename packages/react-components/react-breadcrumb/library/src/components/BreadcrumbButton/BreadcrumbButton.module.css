@@ -30,16 +30,18 @@
   padding: var(--spacingHorizontalS);
 }
 
-.current:hover {
-  background-color: var(--colorTransparentBackground);
-  color: var(--colorNeutralForeground2);
+.current:hover,
+.current:hover:active {
   cursor: auto;
 }
 
-.current:hover:active {
-  background-color: var(--colorTransparentBackground);
-  color: var(--colorNeutralForeground2);
-  cursor: auto;
+/* In forced colors, Button's hover and pressed colors win, as Griffel sorted them after these. */
+@media (forced-colors: none) {
+  .current:hover,
+  .current:hover:active {
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+  }
 }
 
 .current:disabled {

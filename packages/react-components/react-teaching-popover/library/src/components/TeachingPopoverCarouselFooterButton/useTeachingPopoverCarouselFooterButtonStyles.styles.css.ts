@@ -29,11 +29,17 @@ export const useTeachingPopoverCarouselFooterButtonStyles_unstable = (
     ...useButtonStyles_unstable(state),
   };
 
+  // Griffel merges Button's atomic appearance classes after these styles, so Button's rest and hover colors win for
+  // every appearance that sets them: the background is overridden by every appearance but secondary, the text and
+  // border colors by every appearance but secondary and outline.
+  const { appearance } = state;
   state.root.className = clsx(
     teachingPopoverCarouselFooterButtonClassNames.root,
     styles.root,
     navType === 'prev' && popoverAppearance === 'brand' && styles.brandPrevious,
     navType === 'next' && popoverAppearance === 'brand' && styles.brandNext,
+    appearance === 'secondary' && styles.background,
+    (appearance === 'secondary' || appearance === 'outline') && styles.colors,
     state.root.className,
   );
 

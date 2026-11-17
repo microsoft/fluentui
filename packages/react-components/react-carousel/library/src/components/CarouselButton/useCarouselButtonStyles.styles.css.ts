@@ -13,7 +13,17 @@ export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots> = {
 
 export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): CarouselButtonState => {
   const styledState = { ...state, ...useButtonStyles_unstable(state) };
-  styledState.root.className = clsx(carouselButtonClassNames.root, styles.root, styledState.root.className);
+  // Griffel merges Button's atomic appearance classes after these styles, so Button's colors win for every
+  // appearance that sets them: the background is overridden by every appearance but secondary, the text and border
+  // colors by every appearance but secondary and outline.
+  const { appearance } = styledState;
+  styledState.root.className = clsx(
+    carouselButtonClassNames.root,
+    styles.root,
+    appearance === 'secondary' && styles.background,
+    (appearance === 'secondary' || appearance === 'outline') && styles.color,
+    styledState.root.className,
+  );
   if (styledState.icon) {
     styledState.icon.className = clsx(carouselButtonClassNames.icon, styledState.icon.className);
   }

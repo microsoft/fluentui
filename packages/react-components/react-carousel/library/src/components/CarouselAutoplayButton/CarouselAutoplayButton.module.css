@@ -7,16 +7,20 @@
 }
 
 /* Griffel applies these colors in forced colors too; Button's forced colors rules still win for the excluded states. */
-.root:where(:not(:disabled, [aria-disabled='true'], [aria-pressed='true'])) {
+.root:where(.colors):where(:not(:disabled, [aria-disabled='true'])) {
   color: var(--colorNeutralForeground2);
-  background-color: var(--colorNeutralBackgroundAlpha);
   border-color: var(--colorTransparentStroke);
+}
+.root:where(.background):where(:not(:disabled, [aria-disabled='true'])) {
+  background-color: var(--colorNeutralBackgroundAlpha);
 }
 
 @media (forced-colors: none) {
-  .root {
+  .root:where(.colors) {
     color: var(--colorNeutralForeground2);
-    background-color: var(--colorNeutralBackgroundAlpha);
     border-color: var(--colorTransparentStroke);
+  }
+  .root:where(.background) {
+    background-color: var(--colorNeutralBackgroundAlpha);
   }
 }
