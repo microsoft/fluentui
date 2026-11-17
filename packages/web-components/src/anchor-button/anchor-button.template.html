@@ -1,10 +1,24 @@
-<f-template name="fluent-anchor-button" shadowrootmode="open">
-  <template tabindex="0" @click="{clickHandler($e)}" @keydown="{keydownHandler($e)}">
+<f-template name="fluent-anchor-button" shadowrootmode="open" shadowrootdelegatesfocus>
+  <template @focusin="{focusHandler($e)}" @focusout="{focusHandler($e)}" @pointerdown="{focusHandler($e)}">
     {{styles}}
-    <slot name="start" f-ref="{start}"></slot>
-    <span class="content" part="content">
-      <slot></slot>
-    </span>
-    <slot name="end" f-ref="{end}"></slot>
+    <a
+      download="{{download}}"
+      href="{{href}}"
+      hreflang="{{hreflang}}"
+      part="control"
+      ping="{{ping}}"
+      referrerpolicy="{{referrerpolicy}}"
+      rel="{{rel}}"
+      tabindex="0"
+      target="{{target}}"
+      type="{{type}}"
+      f-ref="{control}"
+    >
+      <slot name="start" f-ref="{start}"></slot>
+      <span class="content" part="content">
+        <slot></slot>
+      </span>
+      <slot name="end" f-ref="{end}"></slot>
+    </a>
   </template>
 </f-template>

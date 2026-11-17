@@ -1,5 +1,6 @@
-import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { AnchorAttributes, type AnchorTarget } from './anchor-button.options.js';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
+import { type AnchorTarget } from './anchor-button.options.js';
 
 /**
  * An Anchor Custom HTML Element.
@@ -15,10 +16,34 @@ import { AnchorAttributes, type AnchorTarget } from './anchor-button.options.js'
  */
 export class BaseAnchor extends FASTElement {
   /**
-   * Holds a reference to the platform to manage ctrl+click on Windows and cmd+click on Mac
+   * A reference to the internal anchor element.
+   *
    * @internal
    */
-  private readonly isMac = navigator.userAgent.includes('Mac');
+  @observable
+  public control!: HTMLAnchorElement & {
+    ariaLabelledByElements?: HTMLElement[] | null;
+    ariaDescribedByElements?: HTMLElement[] | null;
+  };
+
+  /**
+   * Updates the focus visible state when the control changes.
+   *
+   * @param prev - previous control
+   * @param next - new control
+   * @internal
+   */
+  protected controlChanged(prev: HTMLAnchorElement | undefined, next: HTMLAnchorElement | undefined) {
+    if (next) {
+      this.updateFocusVisibleState();
+    }
+  }
+
+  /**
+   * The mutation observer for attribute changes.
+   * @internal
+   */
+  private attributeObserver?: MutationObserver;
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -26,12 +51,6 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The proxy anchor element
-   * @internal
-   */
-  private internalProxyAnchor: HTMLAnchorElement = this.createProxyElement();
 
   /**
    * Prompts the user to save the linked URL.
@@ -122,112 +141,92 @@ export class BaseAnchor extends FASTElement {
   @attr
   public type?: string;
 
+  /**
+   * Forwards programmatic activation to the native anchor when available.
+   * @public
+   */
+  public override click(): void {
+    if (this.control) {
+      this.control.click();
+      return;
+    }
+
+    super.click();
+  }
+
   constructor() {
     super();
 
-    this.elementInternals.role = 'link';
-  }
-
-  public connectedCallback() {
-    super.connectedCallback();
-
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-
-    Observable.getNotifier(this).subscribe(this);
-
-    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
-      this.handleChange(this, key);
+    this.attributeObserver ??= new MutationObserver(records => {
+      records.forEach(({ attributeName }) => {
+        if (attributeName) {
+          this.handleAttributeChange(attributeName);
+        }
+      });
     });
+    this.attributeObserver.observe(this, { attributes: true });
 
-    this.append(this.internalProxyAnchor);
-  }
-
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    Observable.getNotifier(this).unsubscribe(this);
-  }
-
-  /**
-   * Handles changes to observable properties
-   * @internal
-   * @param source - the source of the change
-   * @param propertyName - the property name being changed
-   */
-  public handleChange(source: any, propertyName: string) {
-    if (propertyName in AnchorAttributes) {
-      const attribute = this.$fastController.definition.attributeLookup[propertyName]?.attribute;
-      if (attribute) {
-        this.handleProxyAttributeChange(attribute, this[propertyName as AnchorAttributes]);
+    Updates.enqueue(() => {
+      for (const attribute of this.getAttributeNames()) {
+        this.handleAttributeChange(attribute);
       }
-    }
+    });
   }
 
   /**
-   * Handles the anchor click event.
-   *
-   * @param e - The event object
+   * Mirrors the native anchor's visible focus on the host.
    * @internal
    */
-  public clickHandler(e: PointerEvent): boolean {
-    if (e.composedPath()[0] === this.internalProxyAnchor) {
-      e.stopImmediatePropagation();
-      return true;
-    }
-
-    if (this.href) {
-      const newTab = e.ctrlKey || e.metaKey;
-      this.handleNavigation(newTab);
-    }
-
+  public focusHandler(e: Event): boolean {
+    this.updateFocusVisibleState(e.type !== 'focusout' && e.type !== 'pointerdown');
     return true;
   }
 
   /**
-   * Handles keydown events for the anchor.
-   *
-   * @param e - the keyboard event
-   * @returns - the return value of the click handler
-   * @public
-   */
-  public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (this.href) {
-      if (e.key === 'Enter') {
-        const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
-        this.handleNavigation(newTab);
-        return;
-      }
-    }
-
-    return true;
-  }
-
-  /**
-   * Handles navigation based on input
-   * If a modified activation requests a new tab, opens the href in a new window.
-   * @internal
-   */
-  private handleNavigation(newTab: boolean): void {
-    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
-  }
-
-  /**
-   * A method for updating proxy attributes when attributes have changed
-   * @internal
+   * Forwards anchor and ARIA attributes to the native anchor.
    * @param attribute - an attribute to set/remove
-   * @param value - the value of the attribute
+   * @internal
    */
-  private handleProxyAttributeChange(attribute: string, value: string | undefined): void {
-    if (value) {
-      this.internalProxyAnchor.setAttribute(attribute, value);
+  protected handleAttributeChange(attribute: string): void {
+    if (!attribute.startsWith('aria-')) {
+      return;
+    }
+
+    const value = this.getAttribute(attribute);
+    if (value === null) {
+      this.control.removeAttribute(attribute);
     } else {
-      this.internalProxyAnchor.removeAttribute(attribute);
+      this.control.setAttribute(attribute, value);
+    }
+
+    // Convert ARIA ID lists to element references
+    if (attribute === 'aria-labelledby' || attribute === 'aria-describedby') {
+      const root = this.getRootNode();
+      const elements =
+        value
+          ?.trim()
+          .split(/\s+/)
+          .map(id => (root instanceof ShadowRoot ? root.getElementById(id) : this.ownerDocument.getElementById(id)))
+          .filter((element): element is HTMLElement => element !== null) ?? null;
+
+      if (attribute === 'aria-labelledby') {
+        this.control.ariaLabelledByElements = elements;
+      } else {
+        this.control.ariaDescribedByElements = elements;
+      }
     }
   }
 
-  private createProxyElement(): HTMLAnchorElement {
-    const proxy = this.internalProxyAnchor ?? document.createElement('a');
-    proxy.inert = true;
-    return proxy;
+  /**
+   * Updates the custom `focus-visible` state.
+   *
+   * @param showFocus - whether to show focus-visible state
+   * @internal
+   * @internalRemarks
+   * A state is used instead of `:focus-visible` itself because the host can't otherwise be conditionally styled based
+   * on the internal anchor's `:focus-visible` state. See https://github.com/w3c/csswg-drafts/issues/3080
+   */
+  protected updateFocusVisibleState(showFocus = true): void {
+    toggleState(this.elementInternals, 'focus-visible', showFocus && this.control.matches(':focus-visible'));
   }
 }

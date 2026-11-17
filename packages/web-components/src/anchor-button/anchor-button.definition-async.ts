@@ -13,5 +13,8 @@ import { tagName } from './anchor-button.options.js';
 export const declarativeDefinition: PartialFASTElementDefinition = {
   name: tagName,
   registry: FluentDesignSystem.registry,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
   template: declarativeTemplate(),
 };
