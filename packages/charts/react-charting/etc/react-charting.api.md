@@ -424,8 +424,7 @@ export interface ICartesianChartProps {
     // (undocumented)
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    // (undocumented)
-    legendsOverflowText?: any;
+    legendsOverflowText?: LegendOverflowText;
     margins?: IMargins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
@@ -1235,7 +1234,7 @@ export interface ILegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
-    overflowText?: string | ((count: number) => string);
+    overflowText?: LegendOverflowText;
     // Warning: (ae-forgotten-export) The symbol "ILegendContainer" needs to be exported by the entry point index.d.ts
     ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
@@ -1481,7 +1480,7 @@ export interface IMultiStackedBarChartProps {
     href?: string;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: ILegendsProps['overflowText'];
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
@@ -1798,7 +1797,7 @@ export interface IStackedBarChartProps {
     ignoreFixStyle?: boolean;
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: ILegendsProps['overflowText'];
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
@@ -2065,6 +2064,9 @@ export interface IYValueHover {
         [id: string]: number;
     };
 }
+
+// @public
+export type LegendOverflowText = string | ((count: number) => string);
 
 // @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;

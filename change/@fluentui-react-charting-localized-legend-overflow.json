@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: support complete localized legend overflow labels through an overflowText callback",
+  "comment": "feat: support complete localized legend overflow labels through an overflowText callback and consistently forward chart-level overflow labels, including area, grouped vertical bar, and heat map charts",
   "packageName": "@fluentui/react-charting",
   "email": "v-baambati@microsoft.com"
 }

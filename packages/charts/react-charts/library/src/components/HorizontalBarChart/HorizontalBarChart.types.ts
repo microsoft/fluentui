@@ -2,7 +2,7 @@ import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { ChartDataPoint, ChartProps } from './index';
-import type { LegendsProps } from '../Legends/index';
+import type { LegendsProps, LegendOverflowText } from '../Legends/index';
 
 /**
  * Horizontal Bar Chart properties
@@ -99,8 +99,10 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
    */
   showTriangle?: boolean;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  legendsOverflowText?: any;
+  /**
+   * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
+   */
+  legendsOverflowText?: LegendOverflowText;
 
   /*
    * props for the legends in the chart

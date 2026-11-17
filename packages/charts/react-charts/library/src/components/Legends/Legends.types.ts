@@ -2,6 +2,12 @@ import type * as React from 'react';
 import type { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
+ * Overflow suffix or a formatter returning the complete label for the hidden legend count.
+ * {@docCategory Legends}
+ */
+export type LegendOverflowText = string | ((count: number) => string);
+
+/**
  * Legends styles
  * {@docCategory Legends}
  *
@@ -179,7 +185,7 @@ export interface LegendsProps {
    * Text following the overflow count, or a formatter returning the complete overflow label.
    * The formatter receives the number of hidden legends and supplies both visible text and the accessible name.
    */
-  overflowText?: string | ((count: number) => string);
+  overflowText?: LegendOverflowText;
 
   /**
    * prop that decides if legends are focusable

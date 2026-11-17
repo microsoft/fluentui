@@ -314,7 +314,39 @@ describe('Legends - dynamic overflow', () => {
     expect(overflowText).toHaveBeenLastCalledWith(7);
 
     result.rerender(<Legends legends={legends.slice(0, 3)} overflowText={overflowText} />);
-    expect(result.container.querySelector('[data-overflow-menu]')).toBeNull();
+    expect(result.queryByRole('button', { name: /^mais / })).toBeNull();
+    expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
+
+    overflowText.mockClear();
+    result.rerender(<Legends legends={legends.slice(0, 3)} overflowText={overflowText} />);
+    expect(overflowText).not.toHaveBeenCalled();
+  });
+
+  it('uses the singular localized label when exactly one legend is hidden', () => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+      configurable: true,
+      get(this: HTMLElement) {
+        return this.isConnected ? (this.getAttribute('aria-posinset') === '4' ? 120 : 50) : 0;
+      },
+    });
+    const overflowText = jest.fn((count: number) => (count === 1 ? 'mais uma legenda' : `mais ${count} legendas`));
+    const result = render(<Legends legends={legends.slice(0, 4)} overflowText={overflowText} />);
+
+    expect(result.getByRole('button', { name: 'mais uma legenda' }).textContent).toBe('mais uma legenda');
+    expect(overflowText).toHaveBeenLastCalledWith(1);
+    expect(result.container.querySelectorAll('button[role="option"][data-overflowing]').length).toBe(1);
+  });
+
+  it('updates both overflow labels when the locale changes without changing the count', () => {
+    const portugueseLabel = (count: number) => `mais ${count} legendas`;
+    const germanLabel = (count: number) => `${count} weitere Legenden`;
+    const result = render(<Legends legends={legends} overflowText={portugueseLabel} />);
+    expect(result.getByRole('button', { name: 'mais 14 legendas' }).textContent).toBe('mais 14 legendas');
+
+    result.rerender(<Legends legends={legends} overflowText={germanLabel} />);
+
+    expect(result.getByRole('button', { name: '14 weitere Legenden' }).textContent).toBe('14 weitere Legenden');
+    expect(result.queryByRole('button', { name: 'mais 14 legendas' })).toBeNull();
   });
 
   it.each([undefined, '', 'remaining'])('preserves string overflow formatting for %s', overflowText => {

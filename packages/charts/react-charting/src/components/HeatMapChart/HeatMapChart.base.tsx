@@ -551,7 +551,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       };
       legends.push(legend);
     });
-    return <Legends {...legendProps} legends={legends} ref={this._legendsRef} />;
+    return (
+      <Legends
+        overflowText={this.props.legendsOverflowText}
+        {...legendProps}
+        legends={legends}
+        ref={this._legendsRef}
+      />
+    );
   };
 
   private _getColorScale = () => {

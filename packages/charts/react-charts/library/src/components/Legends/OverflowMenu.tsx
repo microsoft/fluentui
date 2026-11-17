@@ -5,11 +5,11 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemCheckbox } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { useOverflowMenu, useOverflowVisibility } from '@fluentui/react-overflow';
-import type { LegendsProps } from './Legends.types';
+import type { LegendOverflowText } from './Legends.types';
 
 export const OverflowMenu: React.FC<{
   itemIds: string[];
-  title: NonNullable<LegendsProps['overflowText']>;
+  title: LegendOverflowText;
   items: JSXElement[];
 }> = ({ itemIds, title, items }) => {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();

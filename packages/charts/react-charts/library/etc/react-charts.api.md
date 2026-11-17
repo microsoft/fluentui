@@ -215,8 +215,7 @@ export interface CartesianChartProps {
     href?: string;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
-    legendsOverflowText?: any;
+    legendsOverflowText?: LegendOverflowText;
     margins?: Margins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
@@ -739,8 +738,7 @@ export interface DonutChartProps extends CartesianChartProps {
     innerRadius?: number;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
-    legendsOverflowText?: any;
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     order?: 'default' | 'sorted';
     parentRef?: HTMLElement | null;
@@ -1140,8 +1138,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     hideTooltip?: boolean;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    // (undocumented)
-    legendsOverflowText?: any;
+    legendsOverflowText?: LegendOverflowText;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
     showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;
@@ -1281,6 +1278,9 @@ export interface LegendDataItem {
     legendText: string | number;
 }
 
+// @public
+export type LegendOverflowText = string | ((count: number) => string);
+
 // @public (undocumented)
 export const Legends: React_2.FunctionComponent<LegendsProps>;
 
@@ -1300,7 +1300,7 @@ export interface LegendsProps {
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
-    overflowText?: string | ((count: number) => string);
+    overflowText?: LegendOverflowText;
     selectedLegend?: string;
     selectedLegends?: string[];
     shape?: LegendShape;

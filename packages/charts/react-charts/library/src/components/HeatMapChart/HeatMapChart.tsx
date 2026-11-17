@@ -345,7 +345,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         };
         legends.push(legend);
       });
-      return <Legends {...legendProps} legends={legends} legendRef={_legendsRef} />;
+      return (
+        <Legends overflowText={props.legendsOverflowText} {...legendProps} legends={legends} legendRef={_legendsRef} />
+      );
     };
 
     const _getColorScale = () => {

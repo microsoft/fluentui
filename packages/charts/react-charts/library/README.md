@@ -12,6 +12,13 @@ Use `` overflowText={count => `mais ${count}`} `` on `Legends` to format the com
 including number placement and pluralization. The callback receives the hidden legend count and supplies
 both the visible text and accessible name; no count or `+` prefix is added to its result.
 String values retain the existing count-first formatting.
+Charts exposing `legendsOverflowText` share the named `LegendOverflowText` type with `Legends`, including
+Cartesian charts, donut charts, and horizontal bar charts. Alternatively, pass the formatter through
+`legendProps.overflowText`; this takes precedence over the chart-level prop.
+Area and heat map charts now honor `legendsOverflowText` as well; previously these charts ignored
+that prop and required `legendProps.overflowText`.
+The formatter should be pure and synchronous and return a nonempty label. It controls number formatting
+as well as wording, so use your application's localization library to format the count when needed.
 
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
 The code snippets can be used as usage guide for all the props and chart variations.

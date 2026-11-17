@@ -4,7 +4,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { ILegendsProps } from '../Legends/index';
+import { ILegendsProps, LegendOverflowText } from '../Legends/index';
 
 /**
  * Multi Stacked Bar Chart properties
@@ -81,7 +81,7 @@ export interface IMultiStackedBarChartProps {
   /**
    * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
    */
-  legendsOverflowText?: ILegendsProps['overflowText'];
+  legendsOverflowText?: LegendOverflowText;
 
   /**
    * focus zone props in hover card for legends

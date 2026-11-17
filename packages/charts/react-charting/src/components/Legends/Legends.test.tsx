@@ -120,6 +120,23 @@ describe('Legends - basic props', () => {
     expect(overflowText).not.toHaveBeenCalled();
   });
 
+  it('updates both overflow labels when the locale changes without changing the count', () => {
+    const props = {
+      legends,
+      enabledWrapLines: true,
+      overflowProps: { overflowItems: overflowLegends.slice(0, 3) },
+    };
+    const { getByRole, queryByRole, rerender } = render(
+      <Legends {...props} overflowText={count => `mais ${count} legendas`} />,
+    );
+    expect(getByRole('button', { name: 'mais 3 legendas' }).textContent).toBe('mais 3 legendas');
+
+    rerender(<Legends {...props} overflowText={count => `${count} weitere Legenden`} />);
+
+    expect(getByRole('button', { name: '3 weitere Legenden' }).textContent).toBe('3 weitere Legenden');
+    expect(queryByRole('button', { name: 'mais 3 legendas' })).toBeNull();
+  });
+
   it.each([undefined, '', 'remaining'])('preserves string overflow formatting for %s', overflowText => {
     const { getByRole } = render(
       <Legends

@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { LegendsProps } from '../Legends/index';
+import type { LegendsProps, LegendOverflowText } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import type {
   AccessibilityProps,
@@ -336,8 +336,10 @@ export interface CartesianChartProps {
    */
   href?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  legendsOverflowText?: any;
+  /**
+   * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
+   */
+  legendsOverflowText?: LegendOverflowText;
 
   /**
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
