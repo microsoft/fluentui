@@ -568,13 +568,17 @@ function enterState(id: string, spec: ComponentSpec, state: State) {
       expect(active?.closest(`[data-testid="${id}"]`), 'focus inside the sampled component').to.exist;
     });
   }
-  // Let reduced-motion transitions (0.01ms) settle: a fixed wait can be shorter than a frame on a busy machine.
+  // Let reduced-motion transitions (0.01ms) and motion components' enter animations (Web Animations, e.g. Drawer and
+  // Dialog backdrop opacity) settle: a fixed wait can be shorter than a frame on a busy machine. Infinite animations
+  // (Spinner, Skeleton) never finish and are left running.
   cy.wait(16);
   cy.document().should(doc => {
     const running = [...doc.getAnimations(), ...(appShadowRoot?.getAnimations() ?? [])].filter(
-      animation => animation instanceof CSSTransition && animation.playState === 'running',
+      animation =>
+        (animation.pending || animation.playState === 'running') &&
+        animation.effect?.getComputedTiming().endTime !== Infinity,
     );
-    expect(running, 'running transitions').to.have.length(0);
+    expect(running, 'running finite animations').to.have.length(0);
   });
 }
 
