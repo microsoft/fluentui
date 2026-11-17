@@ -74,8 +74,18 @@
       "cache": true,
       "options": {
         "cwd": "apps/css-modules-parity",
-        "command": "yarn run -T eslint e2e griffel-baseline griffel-buckets cypress.config.ts"
+        "command": "yarn run -T eslint e2e griffel-baseline griffel-buckets checks cypress.config.ts"
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/checks/**/*",
+        "{projectRoot}/e2e/**/*",
+        "{workspaceRoot}/packages/react-components/*/library/src/**/*.styles.css.ts"
+      ],
+      "options": { "command": "node --test 'apps/css-modules-parity/checks/**/*.test.mjs'" }
     },
     "type-check": {
       "executor": "@fluentui/workspace-plugin:type-check",

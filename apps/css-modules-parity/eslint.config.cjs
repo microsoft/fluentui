@@ -13,4 +13,11 @@ module.exports = defineConfig([
       '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
+  {
+    // Node-run repository checks (`node --test`), not bundled into the Cypress app.
+    files: ['checks/**'],
+    rules: {
+      'import/no-extraneous-dependencies': 'off',
+    },
+  },
 ]);

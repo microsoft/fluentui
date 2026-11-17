@@ -171,3 +171,9 @@ The axis is expected to fail; it isn't a mode the components should pass.
 
 Published-package asset copying, production builds, SSR with streaming or a real server, iframes, CSP enforcement and
 browsers other than the Cypress default.
+
+## Coverage
+
+`yarn nx run css-modules-parity:test` fails when a `*.styles.css.ts` hook has neither a parity spec importing its
+`.styles.ts` baseline nor an entry in `checks/parity-exemptions.json`. Entries prefixed `GAP:` are known missing specs;
+remove the entry when its spec lands (a stale entry fails the check).
