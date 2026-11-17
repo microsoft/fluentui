@@ -3,9 +3,6 @@ import type { SplitNavItemState } from './SplitNavItem.types';
 import { useSplitNavItemStyles_unstable } from './useSplitNavItemStyles.styles.css';
 
 jest.mock('./SplitNavItem.module.css', () => ({
-  'fui-SplitNavItem__actionButton': 'css-SplitNavItem-fui-SplitNavItem__actionButton',
-  'fui-SplitNavItem__menuButton': 'css-SplitNavItem-fui-SplitNavItem__menuButton',
-  'fui-SplitNavItem__toggleButton': 'css-SplitNavItem-fui-SplitNavItem__toggleButton',
   medium: 'css-SplitNavItem-medium',
   navItem: 'css-SplitNavItem-navItem',
   root: 'css-SplitNavItem-root',

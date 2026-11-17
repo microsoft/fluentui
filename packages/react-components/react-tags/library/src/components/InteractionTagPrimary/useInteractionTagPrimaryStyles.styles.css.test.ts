@@ -10,8 +10,6 @@ jest.mock('./InteractionTagPrimary.module.css', () => ({
   disabled: 'css-disabled',
   'extra-small': 'css-extra-small',
   filled: 'css-filled',
-  'fui-Icon-filled': 'css-fui-Icon-filled',
-  'fui-Icon-regular': 'css-fui-Icon-regular',
   hasSecondaryAction: 'css-hasSecondaryAction',
   medium: 'css-medium',
   outline: 'css-outline',

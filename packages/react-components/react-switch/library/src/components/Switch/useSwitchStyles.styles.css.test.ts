@@ -10,8 +10,6 @@ jest.mock('./Switch.module.css', () => ({
   withLabel: 'css-withLabel',
   small: 'css-small',
   input: 'css-input',
-  'fui-Switch__indicator': 'css-fui-Switch__indicator',
-  'fui-Switch__label': 'css-fui-Switch__label',
   before: 'css-before',
   after: 'css-after',
   label: 'css-label',

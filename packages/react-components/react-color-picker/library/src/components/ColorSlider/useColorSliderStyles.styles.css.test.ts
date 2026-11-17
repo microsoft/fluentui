@@ -2,7 +2,6 @@ import type { ColorSliderState } from './ColorSlider.types';
 import { colorSliderClassNames, useColorSliderStyles_unstable } from './useColorSliderStyles.styles.css';
 
 jest.mock('./ColorSlider.module.css', () => ({
-  'fui-ColorSlider__thumb': 'css-fui-ColorSlider__thumb',
   horizontal: 'css-horizontal',
   hue: 'css-hue',
   input: 'css-input',

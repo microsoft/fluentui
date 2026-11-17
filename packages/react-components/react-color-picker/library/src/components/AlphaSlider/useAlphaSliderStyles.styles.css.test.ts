@@ -2,10 +2,7 @@ import type { AlphaSliderState } from './AlphaSlider.types';
 import { alphaSliderClassNames, useAlphaSliderStyles_unstable } from './useAlphaSliderStyles.styles.css';
 
 jest.mock('./AlphaSlider.module.css', () => ({
-  azureedge: 'css-azureedge',
   horizontal: 'css-horizontal',
-  net: 'css-net',
-  png: 'css-png',
   rail: 'css-rail',
   thumb: 'css-thumb',
   vertical: 'css-vertical',
@@ -46,7 +43,6 @@ describe('useAlphaSliderStyles_unstable (CSS Modules)', () => {
 });
 
 jest.mock('../ColorSlider/ColorSlider.module.css', () => ({
-  'fui-ColorSlider__thumb': 'base-fui-ColorSlider__thumb',
   horizontal: 'base-horizontal',
   hue: 'base-hue',
   input: 'base-input',

@@ -3,7 +3,6 @@ import { useInfoButton_unstable } from './useInfoButton';
 import { useInfoButtonStyles_unstable as applyStyles } from './useInfoButtonStyles.styles.css';
 
 jest.mock('./InfoButton.module.css', () => ({
-  css: 'css-css',
   info: 'css-info',
   large: 'css-large',
   medium: 'css-medium',

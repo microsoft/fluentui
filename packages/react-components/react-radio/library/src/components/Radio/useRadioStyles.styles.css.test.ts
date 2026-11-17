@@ -7,8 +7,6 @@ jest.mock('./Radio.module.css', () => ({
   root: 'css-root',
   below: 'css-below',
   input: 'css-input',
-  'fui-Radio__label': 'css-fui-Radio__label',
-  'fui-Radio__indicator': 'css-fui-Radio__indicator',
   defaultIndicator: 'css-defaultIndicator',
   customIndicator: 'css-customIndicator',
   indicator: 'css-indicator',

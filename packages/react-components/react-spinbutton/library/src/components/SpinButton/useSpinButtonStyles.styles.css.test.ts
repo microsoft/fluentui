@@ -17,7 +17,6 @@ jest.mock('./SpinButton.module.css', () => ({
   input: 'css-input',
   incrementButton: 'css-incrementButton',
   decrementButton: 'css-decrementButton',
-  'fui-SpinButton__button_active': 'css-fui-SpinButton__button_active',
 }));
 
 const renderStyles = (props: SpinButtonProps = {}) =>

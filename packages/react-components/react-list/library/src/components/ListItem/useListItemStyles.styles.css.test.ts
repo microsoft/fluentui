@@ -4,7 +4,6 @@ import { listItemClassNames, useListItemStyles_unstable } from './useListItemSty
 jest.mock('./ListItem.module.css', () => ({
   checkmark: 'css-checkmark',
   disabled: 'css-disabled',
-  'fui-Checkbox__indicator': 'css-fui-Checkbox__indicator',
   interactive: 'css-interactive',
   root: 'css-root',
 }));

@@ -6,7 +6,6 @@ jest.mock('./OverlayDrawerSurface.module.css', () => ({
   backdrop: 'css-backdrop',
   nested: 'css-nested',
   hidden: 'css-hidden',
-  root: 'css-root',
 }));
 
 describe('useOverlayDrawerSurfaceStyles_unstable (CSS Modules)', () => {

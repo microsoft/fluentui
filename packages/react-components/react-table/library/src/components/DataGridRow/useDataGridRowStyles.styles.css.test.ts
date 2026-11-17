@@ -4,15 +4,12 @@ import { useDataGridRowStyles_unstable } from './useDataGridRowStyles.styles.css
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 
 jest.mock('./DataGridRow.module.css', () => ({
-  'fui-TableSelectionCell': 'css-DataGridRow-fui-TableSelectionCell',
   subtleSelection: 'css-DataGridRow-subtleSelection',
 }));
 jest.mock('../TableRow/TableRow.module.css', () => ({
   brand: 'css-TableRow-brand',
   'extra-small': 'css-TableRow-extra-small',
   flex: 'css-TableRow-flex',
-  'fui-TableCellActions': 'css-TableRow-fui-TableCellActions',
-  'fui-TableSelectionCell': 'css-TableRow-fui-TableSelectionCell',
   interactive: 'css-TableRow-interactive',
   medium: 'css-TableRow-medium',
   neutral: 'css-TableRow-neutral',

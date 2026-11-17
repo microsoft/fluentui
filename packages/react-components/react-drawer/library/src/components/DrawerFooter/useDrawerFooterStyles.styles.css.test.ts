@@ -4,7 +4,6 @@ import { useDrawerFooterStyles_unstable } from './useDrawerFooterStyles.styles.c
 
 jest.mock('./DrawerFooter.module.css', () => ({
   root: 'css-root',
-  bottom: 'css-bottom',
   none: 'css-none',
   middle: 'css-middle',
   top: 'css-top',
@@ -22,9 +21,15 @@ describe('useDrawerFooterStyles_unstable (CSS Modules)', () => {
 });
 
 describe('DrawerFooter state classes', () => {
-  it.each(['none', 'top', 'middle', 'bottom'] as const)('maps %s scroll state on the separator owner', scrollState => {
+  it.each([
+    ['none', 'fui-DrawerFooter css-root css-none caller'],
+    ['top', 'fui-DrawerFooter css-root css-top caller'],
+    ['middle', 'fui-DrawerFooter css-root css-middle caller'],
+    // DrawerFooter.module.css defines no `bottom` class, so this state adds no scroll-state class.
+    ['bottom', 'fui-DrawerFooter css-root caller'],
+  ] as const)('maps %s scroll state on the separator owner', (scrollState, expected) => {
     const state = { root: { className: 'caller' }, scrollState } as DrawerFooterState;
     renderHook(() => useDrawerFooterStyles_unstable(state));
-    expect(state.root.className).toBe(`fui-DrawerFooter css-root css-${scrollState} caller`);
+    expect(state.root.className).toBe(expected);
   });
 });
