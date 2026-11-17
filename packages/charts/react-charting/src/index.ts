@@ -17,6 +17,7 @@ export type {
   IShapeProps,
   LegendShape,
   LegendOverflowText,
+  ILegendOverflowTextFormatter,
 } from './Legends';
 export { Legends, Shape } from './Legends';
 export type {

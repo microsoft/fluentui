@@ -18,7 +18,7 @@ import {
   VerticalBarChart,
   VerticalStackedBarChart,
 } from '../../index';
-import { ILegendsProps, LegendOverflowText } from '../../index';
+import { ILegendsProps, LegendOverflowText, ILegendOverflowTextFormatter } from '../../index';
 
 type OverflowProps = {
   legendsOverflowText?: LegendOverflowText;
@@ -183,7 +183,7 @@ describe('chart legend overflow labels', () => {
 
   describe.each(charts)('$name', chart => {
     it.each(['string', 'formatter'] as const)('supports a %s through legendProps', kind => {
-      const formatter = jest.fn((count: number) => `mais ${count} legendas`);
+      const formatter: ILegendOverflowTextFormatter = jest.fn((count: number) => `mais ${count} legendas`);
       const overflowText = kind === 'string' ? 'remaining' : formatter;
       const result = render(chart.render({ legendProps: { ...wrappedOverflow, overflowText } }));
       const label = kind === 'string' ? '2 remaining' : 'mais 2 legendas';
@@ -195,7 +195,7 @@ describe('chart legend overflow labels', () => {
 
     if (chart.chartLevel) {
       it.each(['string', 'formatter'] as const)('supports a %s through legendsOverflowText', kind => {
-        const formatter = jest.fn((count: number) => `mais ${count} legendas`);
+        const formatter: ILegendOverflowTextFormatter = jest.fn((count: number) => `mais ${count} legendas`);
         const legendsOverflowText = kind === 'string' ? 'remaining' : formatter;
         const result = render(chart.render({ legendsOverflowText, legendProps: wrappedOverflow }));
         const label = kind === 'string' ? '2 remaining' : 'mais 2 legendas';

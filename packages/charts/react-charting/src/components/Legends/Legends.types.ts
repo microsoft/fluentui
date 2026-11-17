@@ -7,10 +7,18 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
+ * Formats the complete overflow label for the hidden legend count.
+ * {@docCategory Legends}
+ */
+export interface ILegendOverflowTextFormatter {
+  (count: number): string;
+}
+
+/**
  * Overflow suffix or a formatter returning the complete label for the hidden legend count.
  * {@docCategory Legends}
  */
-export type LegendOverflowText = string | ((count: number) => string);
+export type LegendOverflowText = string | ILegendOverflowTextFormatter;
 
 export interface ILegendOverflowData {
   primary: ILegend[];

@@ -1279,7 +1279,13 @@ export interface LegendDataItem {
 }
 
 // @public
-export type LegendOverflowText = string | ((count: number) => string);
+export type LegendOverflowText = string | LegendOverflowTextFormatter;
+
+// @public
+export interface LegendOverflowTextFormatter {
+    // (undocumented)
+    (count: number): string;
+}
 
 // @public (undocumented)
 export const Legends: React_2.FunctionComponent<LegendsProps>;

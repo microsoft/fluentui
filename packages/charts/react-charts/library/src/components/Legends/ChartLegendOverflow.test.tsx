@@ -17,7 +17,7 @@ import {
   VerticalBarChart,
   VerticalStackedBarChart,
 } from '../../index';
-import type { LegendsProps, LegendOverflowText } from '../../index';
+import type { LegendsProps, LegendOverflowText, LegendOverflowTextFormatter } from '../../index';
 
 type OverflowProps = {
   width?: number;
@@ -231,7 +231,7 @@ describe('chart legend overflow labels', () => {
     const renderChart = (props: OverflowProps) => render(chart.render({ width: 650, height: 350, ...props }));
 
     it.each(['string', 'formatter'] as const)('supports a %s through legendProps', kind => {
-      const formatter = jest.fn((count: number) => `mais ${count} legendas`);
+      const formatter: LegendOverflowTextFormatter = jest.fn((count: number) => `mais ${count} legendas`);
       const overflowText = kind === 'string' ? 'remaining' : formatter;
       const result = renderChart({ legendProps: { overflowText } });
       const count = result.container.querySelectorAll('button[role="option"][data-overflowing]').length;
@@ -245,7 +245,7 @@ describe('chart legend overflow labels', () => {
 
     if (chart.chartLevel) {
       it.each(['string', 'formatter'] as const)('supports a %s through legendsOverflowText', kind => {
-        const formatter = jest.fn((count: number) => `mais ${count} legendas`);
+        const formatter: LegendOverflowTextFormatter = jest.fn((count: number) => `mais ${count} legendas`);
         const legendsOverflowText = kind === 'string' ? 'remaining' : formatter;
         const result = renderChart({ legendsOverflowText });
         const count = result.container.querySelectorAll('button[role="option"][data-overflowing]').length;

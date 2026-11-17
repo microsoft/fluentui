@@ -1221,6 +1221,12 @@ export interface ILegendOverflowData {
 }
 
 // @public
+export interface ILegendOverflowTextFormatter {
+    // (undocumented)
+    (count: number): string;
+}
+
+// @public
 export interface ILegendsProps {
     allowFocusOnLegends?: boolean;
     canSelectMultipleLegends?: boolean;
@@ -2066,7 +2072,7 @@ export interface IYValueHover {
 }
 
 // @public
-export type LegendOverflowText = string | ((count: number) => string);
+export type LegendOverflowText = string | ILegendOverflowTextFormatter;
 
 // @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;

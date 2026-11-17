@@ -2,10 +2,18 @@ import type * as React from 'react';
 import type { CustomPoints, Points } from '../../utilities/utilities';
 
 /**
+ * Formats the complete overflow label for the hidden legend count.
+ * {@docCategory Legends}
+ */
+export interface LegendOverflowTextFormatter {
+  (count: number): string;
+}
+
+/**
  * Overflow suffix or a formatter returning the complete label for the hidden legend count.
  * {@docCategory Legends}
  */
-export type LegendOverflowText = string | ((count: number) => string);
+export type LegendOverflowText = string | LegendOverflowTextFormatter;
 
 /**
  * Legends styles

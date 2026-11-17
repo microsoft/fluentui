@@ -12,6 +12,7 @@ Use `` overflowText={count => `mais ${count}`} `` on `Legends` to format the com
 including number placement and pluralization. The callback receives the hidden legend count and supplies
 both the visible text and accessible name; no count or `+` prefix is added to its result.
 String values retain the existing count-first formatting.
+The exported `LegendOverflowTextFormatter` interface defines the callback signature.
 Charts exposing `legendsOverflowText` share the named `LegendOverflowText` type with `Legends`, including
 Cartesian charts, donut charts, and horizontal bar charts. Alternatively, pass the formatter through
 `legendProps.overflowText`; this takes precedence over the chart-level prop.
