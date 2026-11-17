@@ -29,6 +29,11 @@ const griffelBuckets = Cypress.env('griffelBuckets') === true;
 const dir: 'ltr' | 'rtl' = Cypress.env('dir') === 'rtl' ? 'rtl' : 'ltr';
 const forcedColors = Cypress.env('forcedColors') === true;
 const shadowDOM = Cypress.env('shadowDOM') === true;
+/**
+ * `FUI_PARITY_PROFILE=1`: sums the time each test spends per phase and writes it to `cypress/profile/<spec>.ndjson`.
+ * Off by default, and then adds no command to the queue.
+ */
+const profile = Cypress.env('profile') === true;
 /** Mouse position outside the sampled components, mirrored in RTL like the start/end positioned overlays. */
 const restPosition = dir === 'rtl' ? 'bottomLeft' : 'bottomRight';
 
@@ -548,57 +553,153 @@ function mirrorFocus(id: string) {
   });
 }
 
-function enterState(id: string, spec: ComponentSpec, state: State) {
-  cy.get('body').realMouseUp({ position: restPosition });
-  cy.get('body').realHover({ position: restPosition });
-  if (state === 'rest' || state === 'hover') {
-    mirrorFocus(id);
+/** Settle waits slower than this record the animations they waited for. */
+const slowSettleMs = 500;
+const maxProfiledAnimations = 10;
+
+type ProfiledAnimation = { type: string; playState: string; pending: boolean; target: string };
+type TestProfile = {
+  phases: Record<string, number>;
+  counts: Record<string, number>;
+  animations: { ms: number; runs: number; first: ProfiledAnimation[]; last: ProfiledAnimation[] }[];
+};
+
+/** Profile of the running test (`FUI_PARITY_PROFILE=1` only). */
+let testProfile: TestProfile = { phases: {}, counts: {}, animations: [] };
+
+function addPhase(phase: string, ms: number) {
+  testProfile.phases[phase] = (testProfile.phases[phase] ?? 0) + ms;
+  testProfile.counts[phase] = (testProfile.counts[phase] ?? 0) + 1;
+}
+
+/** Runs `enqueue` and, with `FUI_PARITY_PROFILE=1` only, adds the time its commands take to `phase`. */
+function timed(phase: string, enqueue: () => void) {
+  if (!profile) {
+    enqueue();
+    return;
   }
-  if (state === 'hover' || state === 'pressed') {
-    getRoot(id, spec).realHover();
-  }
-  if (state === 'pressed') {
-    getRoot(id, spec).realMouseDown();
-  }
-  if (state === 'focus-visible') {
-    cy.get(`[data-testid="${id}-start"]`).focus();
-    cy.realPress('Tab');
-    // Tabster's keyboard navigation doesn't always reach into shadow roots (for example menu items): the Tab keypress
-    // still enters keyboard mode, so focusing the first focusable element after the start button is equivalent.
-    cy.document().then(doc => {
-      if (
-        getActiveElement(doc)?.closest(`[data-testid="${id}"]`) &&
-        getActiveElement(doc)?.dataset.testid !== `${id}-start`
-      ) {
-        return;
-      }
-      const container = getAppRoot(doc).querySelector<HTMLElement>(`[data-testid="${id}"]`);
-      Array.from(container?.querySelectorAll<HTMLElement>('a[href], button, input, select, textarea, [tabindex]') ?? [])
-        .find(element => element.dataset.testid !== `${id}-start`)
-        ?.focus();
+  let start = 0;
+  cy.then(() => {
+    start = performance.now();
+  });
+  enqueue();
+  cy.then(() => addPhase(phase, performance.now() - start));
+}
+
+function describeAnimations(animations: Animation[]): ProfiledAnimation[] {
+  return animations.slice(0, maxProfiledAnimations).map(animation => {
+    const target = animation.effect instanceof KeyframeEffect ? animation.effect.target : null;
+    return {
+      type: animation.constructor.name,
+      playState: animation.playState,
+      pending: animation.pending,
+      target: `${target?.tagName.toLowerCase() ?? ''}.${target?.getAttribute('class') ?? ''}`.slice(0, 80),
+    };
+  });
+}
+
+/** Waits until no finite animation runs; with `FUI_PARITY_PROFILE=1`, also records how long and what it waited for. */
+function settle() {
+  let start = 0;
+  let runs = 0;
+  let first: ProfiledAnimation[] = [];
+  let last: ProfiledAnimation[] = [];
+  if (profile) {
+    cy.then(() => {
+      start = performance.now();
     });
-    cy.document().should(doc => {
-      const active = getActiveElement(doc);
-      expect(active?.dataset.testid, 'focus moved past the start button').not.to.equal(`${id}-start`);
-      expect(active?.closest(`[data-testid="${id}"]`), 'focus inside the sampled component').to.exist;
-    });
   }
-  // Let reduced-motion transitions (0.01ms) and motion components' enter animations (Web Animations, e.g. Drawer and
-  // Dialog backdrop opacity) settle: a fixed wait can be shorter than a frame on a busy machine. Infinite animations
-  // (Spinner, Skeleton) never finish and are left running.
-  cy.wait(16);
   cy.document().should(doc => {
     const running = [...doc.getAnimations(), ...(appShadowRoot?.getAnimations() ?? [])].filter(
       animation =>
         (animation.pending || animation.playState === 'running') &&
         animation.effect?.getComputedTiming().endTime !== Infinity,
     );
+    if (profile) {
+      runs++;
+      if (running.length > 0) {
+        last = describeAnimations(running);
+        if (runs === 1) {
+          first = last;
+        }
+      }
+    }
     expect(running, 'running finite animations').to.have.length(0);
   });
+  if (profile) {
+    cy.then(() => {
+      const ms = performance.now() - start;
+      addPhase('enterState:settle', ms);
+      testProfile.counts['settle:runs'] = (testProfile.counts['settle:runs'] ?? 0) + runs;
+      if (ms > slowSettleMs) {
+        testProfile.animations.push({ ms, runs, first, last });
+      }
+    });
+  }
+}
+
+function enterState(id: string, spec: ComponentSpec, state: State) {
+  timed('enterState:mouse', () => {
+    cy.get('body').realMouseUp({ position: restPosition });
+    cy.get('body').realHover({ position: restPosition });
+  });
+  if (state === 'rest' || state === 'hover') {
+    timed('enterState:mirrorFocus', () => mirrorFocus(id));
+  }
+  if (state === 'hover' || state === 'pressed') {
+    timed('enterState:hover', () => getRoot(id, spec).realHover());
+  }
+  if (state === 'pressed') {
+    timed('enterState:mouseDown', () => getRoot(id, spec).realMouseDown());
+  }
+  if (state === 'focus-visible') {
+    timed('enterState:focusVisible', () => {
+      cy.get(`[data-testid="${id}-start"]`).focus();
+      cy.realPress('Tab');
+      // Tabster's keyboard navigation doesn't always reach into shadow roots (for example menu items): the Tab keypress
+      // still enters keyboard mode, so focusing the first focusable element after the start button is equivalent.
+      cy.document().then(doc => {
+        if (
+          getActiveElement(doc)?.closest(`[data-testid="${id}"]`) &&
+          getActiveElement(doc)?.dataset.testid !== `${id}-start`
+        ) {
+          return;
+        }
+        const container = getAppRoot(doc).querySelector<HTMLElement>(`[data-testid="${id}"]`);
+        Array.from(
+          container?.querySelectorAll<HTMLElement>('a[href], button, input, select, textarea, [tabindex]') ?? [],
+        )
+          .find(element => element.dataset.testid !== `${id}-start`)
+          ?.focus();
+      });
+      cy.document().should(doc => {
+        const active = getActiveElement(doc);
+        expect(active?.dataset.testid, 'focus moved past the start button').not.to.equal(`${id}-start`);
+        expect(active?.closest(`[data-testid="${id}"]`), 'focus inside the sampled component').to.exist;
+      });
+    });
+  }
+  // Let reduced-motion transitions (0.01ms) and motion components' enter animations (Web Animations, e.g. Drawer and
+  // Dialog backdrop opacity) settle: a fixed wait can be shorter than a frame on a busy machine. Infinite animations
+  // (Spinner, Skeleton) never finish and are left running.
+  timed('enterState:wait16', () => cy.wait(16));
+  settle();
 }
 
 function sample(id: string, spec: ComponentSpec) {
-  return getRoot(id, spec).then($root => readStyles($root[0], spec));
+  if (!profile) {
+    return getRoot(id, spec).then($root => readStyles($root[0], spec));
+  }
+  let start = 0;
+  cy.then(() => {
+    start = performance.now();
+  });
+  return getRoot(id, spec)
+    .then($root => readStyles($root[0], spec))
+    .then(sampled => {
+      addPhase('sample', performance.now() - start);
+      return sampled;
+    });
 }
 
 /** Resolves declared app values (theme variables or keywords) to computed values inside the provider. */
@@ -787,6 +888,25 @@ export function describeParity(
       });
     });
 
+    if (profile) {
+      beforeEach(() => {
+        testProfile = { phases: {}, counts: {}, animations: [] };
+      });
+      afterEach(() => {
+        cy.then(() =>
+          cy.writeFile(
+            `cypress/profile/${Cypress.spec.name.replace(/\//g, '_')}.ndjson`,
+            JSON.stringify({
+              test: Cypress.currentTest.titlePath.join(' > '),
+              attempt: Cypress.currentRetry,
+              ...testProfile,
+            }) + '\n',
+            { flag: 'a+' },
+          ),
+        );
+      });
+    }
+
     afterEach(() => {
       cy.get('body').realMouseUp({ position: restPosition });
       cy.then(() =>
@@ -815,19 +935,25 @@ export function describeParity(
           const differences: string[] = [];
           let allowed: Record<string, string[]> = {};
           let allowedGriffel: Record<string, string[]> = {};
-          cy.document().then(targetDocument =>
-            mount(
-              renderApp(
-                targetDocument,
-                <ParityApp targetDocument={targetDocument} name={name} spec={spec} scenario={scenario} />,
+          timed('mount', () =>
+            cy
+              .document()
+              .then(targetDocument =>
+                mount(
+                  renderApp(
+                    targetDocument,
+                    <ParityApp targetDocument={targetDocument} name={name} spec={spec} scenario={scenario} />,
+                  ),
+                ),
               ),
-            ),
           );
           if (spec.waitFor) {
-            spec.variants.forEach((_, index) => {
-              cy.get(`[data-testid="griffel-${index}"] ${spec.waitFor}`);
-              cy.get(`[data-testid="css-${index}"] ${spec.waitFor}`);
-            });
+            timed('waitFor', () =>
+              spec.variants.forEach((_, index) => {
+                cy.get(`[data-testid="griffel-${index}"] ${spec.waitFor}`);
+                cy.get(`[data-testid="css-${index}"] ${spec.waitFor}`);
+              }),
+            );
           }
           if (declarations) {
             resolveDeclarations(declarations).then(resolved => {

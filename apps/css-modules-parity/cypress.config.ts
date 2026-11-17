@@ -26,6 +26,8 @@ const griffelBuckets = extraction || process.env.FUI_PARITY_GRIFFEL_BUCKETS === 
 const dir = process.env.FUI_PARITY_DIR === 'rtl' ? 'rtl' : 'ltr';
 const forcedColors = process.env.FUI_PARITY_FORCED_COLORS === '1';
 const shadowDOM = process.env.FUI_PARITY_SHADOW_DOM === '1';
+/** `FUI_PARITY_PROFILE=1`: writes per-phase timings of every parity test to `cypress/profile/<spec>.ndjson`. */
+const profile = process.env.FUI_PARITY_PROFILE === '1';
 /**
  * `FUI_PARITY_LAYER=1`: wraps every Fluent CSS Modules stylesheet in `@layer fluent { ... }`, like the experimental
  * layered packages. Unlayered app styles (Griffel's included) then beat component styles regardless of specificity.
@@ -105,7 +107,7 @@ export default defineConfig({
   ...baseConfig,
   // Parity samples must be deterministic: a pass on retry hides a real difference or a sampling race.
   retries: { runMode: 0, openMode: 0 },
-  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer },
+  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer, profile },
   // Large specs (Navigation, Overlays) otherwise run the renderer out of memory in forced colors mode.
   experimentalMemoryManagement: true,
   component: {
