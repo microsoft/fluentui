@@ -103,6 +103,8 @@ const extractionPlugins: WebpackPluginInstance[] = extraction
 
 export default defineConfig({
   ...baseConfig,
+  // Parity samples must be deterministic: a pass on retry hides a real difference or a sampling race.
+  retries: { runMode: 0, openMode: 0 },
   env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer },
   component: {
     ...baseConfig.component,

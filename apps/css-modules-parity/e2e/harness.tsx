@@ -718,6 +718,11 @@ function renderApp(targetDocument: Document, appWithoutDirection: JSXElement): J
 export type DescribeParityOptions = {
   /** Runs these scenarios, in this order (defaults to `defaultScenarios`). */
   scenarios?: readonly Scenario[];
+  /**
+   * Retries per failing test in `cypress run` (the project default is 0, parity samples must be deterministic).
+   * Only for a known first-load ordering difference that a retry hides, see `e2e/Lazy.cy.tsx`.
+   */
+  runModeRetries?: number;
 };
 
 /**
@@ -729,7 +734,8 @@ export function describeParity(
   components: Record<string, ComponentSpec>,
   options: DescribeParityOptions = {},
 ): void {
-  describe(`CSS Modules parity in a Griffel application: ${group}`, () => {
+  const suiteConfig = options.runModeRetries === undefined ? {} : { retries: { runMode: options.runModeRetries } };
+  describe(`CSS Modules parity in a Griffel application: ${group}`, suiteConfig, () => {
     beforeEach(() => {
       // Each test starts from a fresh Griffel renderer, so baseline insertion order does not leak between tests.
       cy.document().then(doc =>

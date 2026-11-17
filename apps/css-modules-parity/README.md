@@ -22,6 +22,12 @@ FUI_CYPRESS_NO_WATCH=1 WEBPACK_DEV_SERVER_PORT=24001 yarn run -T cypress run --c
 
 Do not run the suite while editing CSS without `FUI_CYPRESS_NO_WATCH=1`; watch rebuilds stall the run.
 
+Retries are disabled (`retries.runMode: 0`), because a parity sample must be deterministic. The one exception is
+`Lazy.cy.tsx` (`runModeRetries`): the first lazily loaded test of each component only passes on a retry, see the TODO
+there. CI runs the suite as the
+sharded `css-modules-parity` job in [`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), so a new spec file
+must be added to a shard.
+
 Environment axes, combinable with every mode below:
 
 | Variable                     | Effect                                                                                       |
