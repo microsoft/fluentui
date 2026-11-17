@@ -16,7 +16,7 @@ import { useLinkStyles_unstable as useGriffelLinkStyles } from '../../../package
 import { useSwitch_unstable } from '../../../packages/react-components/react-switch/library/src/components/Switch/useSwitch.tsx';
 import { renderSwitch_unstable } from '../../../packages/react-components/react-switch/library/src/components/Switch/renderSwitch.tsx';
 import { useSwitchStyles_unstable as useGriffelSwitchStyles } from '../../../packages/react-components/react-switch/library/src/components/Switch/useSwitchStyles.styles.ts';
-import { defaultScenarios, describeParity, griffel, icon } from './harness';
+import { defaultScenarios, describeParity, griffel, hasAppGriffelStyles, icon } from './harness';
 import type { AnyComponent, Scenario } from './harness';
 
 type LazyModule = { css: AnyComponent };
@@ -28,8 +28,7 @@ const registeredStylesheets = () =>
     .length ?? 0;
 
 /**
- * Stylesheets registered by each lazily loaded chunk, and whether app Griffel styles were in the page when it loaded
- * (document stylesheets: run this spec without `FUI_PARITY_SHADOW_DOM`).
+ * Stylesheets registered by each lazily loaded chunk, and whether app Griffel styles were in the page when it loaded.
  */
 const registrations: Registration[] = [];
 
@@ -46,7 +45,7 @@ function lazyComponent(name: string, load: () => Promise<LazyModule>): AnyCompon
       registrations.push({
         name,
         registeredStylesheets: registeredStylesheets() - before,
-        appStylesInserted: document.querySelector('style[data-make-styles-bucket]') !== null,
+        appStylesInserted: hasAppGriffelStyles(document),
       });
       return { default: module.css };
     });

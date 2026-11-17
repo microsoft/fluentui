@@ -503,6 +503,15 @@ let setAppToggled: ((toggled: boolean) => void) | undefined;
 /** Root node containing the app: the document, or the shadow root it renders into. */
 const getAppRoot = (doc: Document): Document | ShadowRoot => appShadowRoot ?? doc;
 
+/**
+ * Whether Griffel has inserted rules where the app renders: `<style>` buckets in the document, or the adopted
+ * stylesheets of Griffel's Shadow DOM renderer with `FUI_PARITY_SHADOW_DOM=1`.
+ */
+export const hasAppGriffelStyles = (doc: Document): boolean =>
+  appShadowRoot
+    ? appShadowRoot.adoptedStyleSheets.some(sheet => sheet.cssRules.length > 0)
+    : doc.querySelector('style[data-make-styles-bucket]') !== null;
+
 /** The focused element, inside shadow roots as well. */
 function getActiveElement(doc: Document): HTMLElement | null {
   let active = doc.activeElement as HTMLElement | null;

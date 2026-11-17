@@ -261,6 +261,8 @@ jobs:
             env: FUI_PARITY_DIR=ltr
           - name: rtl
             env: FUI_PARITY_DIR=rtl
+          - name: shadow-dom
+            env: FUI_PARITY_SHADOW_DOM=1
         shard:
           - name: data-lazy
             specs: e2e/Data.cy.tsx,e2e/Lazy.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx
