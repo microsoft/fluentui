@@ -95,7 +95,12 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
-    const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    const {
+      overflowStyles,
+      allowFocusOnLegends = true,
+      canSelectMultipleLegends = false,
+      ariaLabel = 'Legends',
+    } = props;
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
     dataToRender.map((legend, index) => {
@@ -118,7 +123,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
               <div
                 {...(allowFocusOnLegends && {
                   role: 'listbox',
-                  'aria-label': 'Legends',
+                  'aria-label': ariaLabel,
                   'aria-multiselectable': canSelectMultipleLegends,
                 })}
                 style={{ display: 'contents' }}
@@ -129,7 +134,12 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
                   </OverflowItem>
                 ))}
               </div>
-              <OverflowMenu itemIds={itemIds} title={overflowString} items={overflowHoverCardLegends} />
+              <OverflowMenu
+                itemIds={itemIds}
+                title={overflowString}
+                items={overflowHoverCardLegends}
+                ariaLabel={props.ariaLabel}
+              />
             </div>
           </Overflow>
         </div>
@@ -143,7 +153,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           {...arrowAttributes}
           {...(allowFocusOnLegends && {
             role: 'listbox',
-            'aria-label': 'Legends',
+            'aria-label': ariaLabel,
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}

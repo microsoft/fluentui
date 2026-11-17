@@ -180,7 +180,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSXElement => {
-    const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
+    const {
+      overflowProps,
+      allowFocusOnLegends = true,
+      canSelectMultipleLegends = false,
+      ariaLabel = 'Legends',
+    } = this.props;
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
@@ -191,7 +196,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <FocusZone
         {...(allowFocusOnLegends && {
           role: 'listbox',
-          'aria-label': 'Legends',
+          'aria-label': ariaLabel,
           'aria-multiselectable': canSelectMultipleLegends,
         })}
       >
@@ -268,7 +273,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSXElement => {
-    const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
+    const {
+      allowFocusOnLegends = true,
+      className,
+      styles,
+      theme,
+      canSelectMultipleLegends = false,
+      ariaLabel = 'Legends',
+    } = this.props;
 
     const overflowHoverCardLegends: JSXElement[] = [];
     const classNames = getClassNames(styles!, {
@@ -283,7 +295,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <FocusZone
         {...(allowFocusOnLegends && {
           role: 'listbox',
-          'aria-label': 'Legends',
+          'aria-label': ariaLabel,
           'aria-multiselectable': canSelectMultipleLegends,
         })}
         direction={FocusZoneDirection.vertical}

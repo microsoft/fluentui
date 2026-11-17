@@ -16,8 +16,10 @@ The exported `LegendOverflowTextFormatter` interface defines the callback signat
 Charts exposing `legendsOverflowText` share the named `LegendOverflowText` type with `Legends`, including
 Cartesian charts, donut charts, and horizontal bar charts. Alternatively, pass the formatter through
 `legendProps.overflowText`; this takes precedence over the chart-level prop.
-Area and heat map charts now honor `legendsOverflowText` as well; previously these charts ignored
-that prop and required `legendProps.overflowText`.
+Area and heat map charts also support `legendsOverflowText`.
+Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,
+to localize the accessible name of the legend list and overflow menu. By default, the list is named
+`Legends` and the menu uses its overflow trigger's label.
 The formatter should be pure and synchronous and return a nonempty label. It controls number formatting
 as well as wording, so use your application's localization library to format the count when needed.
 

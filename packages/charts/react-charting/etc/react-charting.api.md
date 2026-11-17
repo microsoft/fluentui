@@ -1229,6 +1229,7 @@ export interface ILegendOverflowTextFormatter {
 // @public
 export interface ILegendsProps {
     allowFocusOnLegends?: boolean;
+    ariaLabel?: string;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;

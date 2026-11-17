@@ -233,7 +233,8 @@ describe('chart legend overflow labels', () => {
     it.each(['string', 'formatter'] as const)('supports a %s through legendProps', kind => {
       const formatter: LegendOverflowTextFormatter = jest.fn((count: number) => `mais ${count} legendas`);
       const overflowText = kind === 'string' ? 'remaining' : formatter;
-      const result = renderChart({ legendProps: { overflowText } });
+      const result = renderChart({ legendProps: { overflowText, ariaLabel: 'Legendas' } });
+      expect(result.getByRole('listbox', { name: 'Legendas' })).toBeTruthy();
       const count = result.container.querySelectorAll('button[role="option"][data-overflowing]').length;
       expect(count).toBeGreaterThan(0);
       const label = kind === 'string' ? `+${count} remaining` : `mais ${count} legendas`;

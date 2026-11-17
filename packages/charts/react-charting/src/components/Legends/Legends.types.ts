@@ -181,6 +181,12 @@ export interface ILegendsProps {
   legends: ILegend[];
 
   /**
+   * Accessible name for the legend list and overflow list.
+   * @default 'Legends'
+   */
+  ariaLabel?: string;
+
+  /**
    * Additional CSS class(es) to apply to the legneds component.
    */
   className?: string;

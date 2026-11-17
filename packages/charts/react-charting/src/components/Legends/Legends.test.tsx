@@ -2,7 +2,7 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { Legends } from './index';
 import { LegendsBase } from './Legends.base';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -88,6 +88,55 @@ describe('Legends snapShot testing', () => {
 describe('Legends - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  it.each([false, true])('updates the accessible name with enabledWrapLines=%s', enabledWrapLines => {
+    const { getAllByRole, rerender } = render(
+      <Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legendas" />,
+    );
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legendas');
+    });
+
+    rerender(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legenden" />);
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legenden');
+    });
+  });
+
+  it.each([undefined, 'Legendas'])('names the overflow list using ariaLabel=%s', async ariaLabel => {
+    const result = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        ariaLabel={ariaLabel}
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 2) }}
+      />,
+    );
+    fireEvent.click(result.getByRole('button', { name: '2 more' }));
+
+    await waitFor(() => {
+      const listboxes = result.getAllByRole('listbox', { hidden: true });
+      expect(listboxes.length).toBe(2);
+      listboxes.forEach(listbox => {
+        expect(listbox.getAttribute('aria-label')).toBe(ariaLabel ?? 'Legends');
+      });
+    });
+  });
+
+  it('preserves the overflow focus zone accessible name override', async () => {
+    const result = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        ariaLabel="Legendas"
+        focusZonePropsInHoverCard={{ 'aria-label': 'Legendas adicionais' }}
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 2) }}
+      />,
+    );
+    fireEvent.click(result.getByRole('button', { name: '2 more' }));
+
+    expect(await result.findByRole('listbox', { name: 'Legendas adicionais' })).toBeTruthy();
+  });
 
   it('uses the localized complete overflow label and updates its count', () => {
     const overflowText = jest.fn((count: number) => (count === 1 ? 'mais uma legenda' : `mais ${count} legendas`));

@@ -119,6 +119,17 @@ describe('Legends snapShot testing', () => {
 });
 
 describe('Legends - basic props', () => {
+  it.each([false, true])('updates the accessible name with enabledWrapLines=%s', enabledWrapLines => {
+    const { getByRole, queryByRole, rerender } = render(
+      <Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legendas" />,
+    );
+    expect(getByRole('listbox', { name: 'Legendas' })).toBeTruthy();
+
+    rerender(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legenden" />);
+    expect(getByRole('listbox', { name: 'Legenden' })).toBeTruthy();
+    expect(queryByRole('listbox', { name: 'Legendas' })).toBeNull();
+  });
+
   it('Should not mount legends when empty', () => {
     const wrapper = render(<Legends legends={[]} />);
     const legend = wrapper.container.querySelectorAll('[class^="legendContainer"]');
@@ -290,6 +301,19 @@ describe('Legends - dynamic overflow', () => {
     } else {
       Reflect.deleteProperty(HTMLElement.prototype, 'offsetWidth');
     }
+  });
+
+  it.each([undefined, 'Legendas'])('names the legend list and overflow menu using ariaLabel=%s', ariaLabel => {
+    const result = render(<Legends legends={legends} ariaLabel={ariaLabel} />);
+    const label = ariaLabel ?? 'Legends';
+    expect(result.getByRole('listbox', { name: label })).toBeTruthy();
+
+    fireEvent.click(result.getByRole('button', { name: '+14 more' }));
+    expect(result.getByRole('menu', { name: ariaLabel ?? '+14 more' })).toBeTruthy();
+
+    result.rerender(<Legends legends={legends} ariaLabel="Legenden" />);
+    expect(result.getByRole('listbox', { name: 'Legenden' })).toBeTruthy();
+    expect(result.getByRole('menu', { name: 'Legenden' })).toBeTruthy();
   });
 
   it('does not throw when legends shrink while overflow is being reconciled', () => {

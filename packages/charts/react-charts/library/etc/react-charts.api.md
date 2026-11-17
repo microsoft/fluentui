@@ -1296,6 +1296,7 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 // @public
 export interface LegendsProps {
     allowFocusOnLegends?: boolean;
+    ariaLabel?: string;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;

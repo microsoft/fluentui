@@ -165,6 +165,12 @@ export interface LegendsProps {
   legends: Legend[];
 
   /**
+   * Accessible name for the legend list and overflow menu.
+   * When omitted, the list is named 'Legends' and the menu is named by its overflow trigger.
+   */
+  ariaLabel?: string;
+
+  /**
    * Additional CSS class(es) to apply to the legneds component.
    */
   className?: string;

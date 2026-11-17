@@ -11,7 +11,8 @@ export const OverflowMenu: React.FC<{
   itemIds: string[];
   title: LegendOverflowText;
   items: JSXElement[];
-}> = ({ itemIds, title, items }) => {
+  ariaLabel?: string;
+}> = ({ itemIds, title, items, ariaLabel }) => {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
   const { itemVisibility } = useOverflowVisibility();
 
@@ -71,7 +72,11 @@ export const OverflowMenu: React.FC<{
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList aria-label="Legends" checkedValues={{ legends: checkedLegends }}>
+        <MenuList
+          aria-label={ariaLabel ?? 'Legends'}
+          {...(ariaLabel !== undefined && { 'aria-labelledby': undefined })}
+          checkedValues={{ legends: checkedLegends }}
+        >
           {menuList}
         </MenuList>
       </MenuPopover>
