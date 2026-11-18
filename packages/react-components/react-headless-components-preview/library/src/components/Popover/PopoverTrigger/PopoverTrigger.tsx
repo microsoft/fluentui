@@ -1,11 +1,11 @@
 'use client';
 
-import type * as React from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
-import type { PopoverTriggerProps } from './PopoverTrigger.types';
 import { usePopoverTrigger } from './usePopoverTrigger';
 import { renderPopoverTrigger } from './renderPopoverTrigger';
 import { composeComponentWithoutRef } from '../../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../../utils/composeComponent';
+import type { PopoverTriggerProps } from './PopoverTrigger.types';
 
 /**
  * Headless PopoverTrigger component.
@@ -13,7 +13,7 @@ import { composeComponentWithoutRef } from '../../../utils/composeComponent';
  * Wraps a trigger element, applying event handlers and ARIA attributes
  * for popover interaction.
  */
-export const PopoverTrigger: React.FC<PopoverTriggerProps> = /*#__PURE__*/ composeComponentWithoutRef(
+export const PopoverTrigger: ComponentWithoutRef<PopoverTriggerProps> = /*#__PURE__*/ composeComponentWithoutRef(
   'PopoverTrigger',
   usePopoverTrigger,
   renderPopoverTrigger,

@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-combobox
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.9)
+
+Tue, 10 Nov 2026 16:50:23 GMT
+
+### Patches
+
+- fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
 
 ## [9.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.8)
 

@@ -620,6 +620,18 @@ import {
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { Textarea, renderTextarea, useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import {
+  TimePicker,
+  createTimeFormat,
+  formatDateToTimeString,
+  getDateEndAnchor,
+  getDateFromTimeString,
+  getDateStartAnchor,
+  getTimesBetween,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
+} from '@fluentui/react-headless-components-preview/time-picker';
+import {
   Toast,
   ToastBody,
   ToastContainer,
@@ -673,6 +685,22 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 import { Tooltip, renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
+} from '@fluentui/react-headless-components-preview/tree';
 import { toDataAttributeValue } from '@fluentui/react-headless-components-preview/utils';
 
 console.log(
@@ -1248,6 +1276,16 @@ console.log(
   Textarea,
   renderTextarea,
   useTextarea,
+  TimePicker,
+  createTimeFormat,
+  formatDateToTimeString,
+  getDateEndAnchor,
+  getDateFromTimeString,
+  getDateStartAnchor,
+  getTimesBetween,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
   Toast,
   ToastBody,
   ToastContainer,
@@ -1298,6 +1336,20 @@ console.log(
   Tooltip,
   renderTooltip,
   useTooltip,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
   toDataAttributeValue,
 );
 

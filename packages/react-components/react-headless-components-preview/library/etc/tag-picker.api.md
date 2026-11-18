@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
@@ -68,10 +68,7 @@ export { renderTagPickerOption }
 export { renderTagPickerOptionGroup }
 
 // @public
-export const TagPicker: {
-    (props: TagPickerProps): JSXElement;
-    displayName: string;
-};
+export const TagPicker: ComponentWithoutRef<TagPickerProps>;
 
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;

@@ -10,7 +10,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
@@ -105,10 +105,7 @@ export const renderTeachingPopoverTitle: (state: TeachingPopoverTitleState) => J
 export const renderTeachingPopoverTrigger: (state: TeachingPopoverTriggerState) => JSXElement | null;
 
 // @public
-export const TeachingPopover: {
-    (props: TeachingPopoverProps): JSXElement;
-    displayName: string;
-};
+export const TeachingPopover: ComponentWithoutRef<TeachingPopoverProps>;
 
 // @public
 export type TeachingPopoverBaseBridgedContextValue = Pick<PopoverContextValue_2, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow'>;
@@ -297,7 +294,7 @@ export { TeachingPopoverTitleSlots }
 export { TeachingPopoverTitleState }
 
 // @public
-export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
+export const TeachingPopoverTrigger: ComponentWithoutRef<TeachingPopoverTriggerProps>;
 
 // @public
 export type TeachingPopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType> = PopoverTriggerChildProps<Type, HeadlessPopoverTriggerChildExtras>;

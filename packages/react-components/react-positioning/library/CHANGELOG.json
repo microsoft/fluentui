@@ -2,6 +2,20 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.23.4",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a65a06652e8c5af3400b6818be896c647dbb446e",
+            "comment": "test(react-positioning): pin portable browser geometry and lifecycle contracts with exact engine output"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.23.4",
       "comments": {

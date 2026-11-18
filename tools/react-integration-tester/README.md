@@ -137,6 +137,9 @@ export interface Config {
 
 If you omit a property, the builtin default is used (both for the command and the config file name). You can override only one of them.
 
+Generated Cypress imports use forward-slash separators on Windows so native ESM can resolve the referenced config.
+This normalization applies only to the import specifier, not other generated filesystem paths or literal backslashes in POSIX filenames.
+
 ### Builtin defaults (per runner)
 
 | Runner     | Default command (simplified)                     | Default config file written into scaffold |
@@ -243,6 +246,10 @@ rit --react 18 --prepare-only --no-install --project-id ci
 rit --react 18 --project-id ci --run test
 rit --react 18 --project-id ci --run type-check
 ```
+
+## Concurrency & isolation
+
+Parallel runs for different React majors share the same origin project. For how snapshots, coverage, and dependency installation are isolated, and which flags are unsafe to run concurrently, see [docs/concurrency-and-isolation.md](./docs/concurrency-and-isolation.md).
 
 ## Multiple runners
 

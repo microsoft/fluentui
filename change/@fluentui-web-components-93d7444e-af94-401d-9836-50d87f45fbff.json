@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: connect dropdown labels to the inserted combobox control",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

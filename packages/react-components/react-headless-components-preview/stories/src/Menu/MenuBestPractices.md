@@ -3,3 +3,5 @@
 **Open paths flow through React; close paths defer to the browser**: opening fires through `onOpenChange`. Closing happens via React (item click, controlled prop, Escape via the `useMenuPopoverBase_unstable` handler) or via the browser's native `popover="auto"` light dismiss; both converge on the same `setOpen`.
 
 **No tabster / no Portal**: the headless package does not pull in `@fluentui/react-tabster` for arrow-key trapping or `@fluentui/react-portal` for top-layer rendering. If you need arrow-key navigation, layer it on top of the exposed `setFocusByFirstCharacter`. If you need a portal-style mount node for legacy reasons, the consumer can always wrap `MenuPopover` in their own portal.
+
+**Focus after closing**: menus return focus to their trigger unless focus was deliberately moved elsewhere. This also applies within shadow roots.

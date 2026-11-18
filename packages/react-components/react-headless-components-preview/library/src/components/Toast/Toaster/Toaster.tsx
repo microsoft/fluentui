@@ -3,6 +3,8 @@
 import { useToaster } from './useToaster';
 import { renderToaster } from './renderToaster';
 import { composeComponentWithoutRef } from '../../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../../utils/composeComponent';
+import type { ToasterProps } from './Toaster.types';
 
 /**
  * Toaster — subscribes to the event-driven toast state machine and renders
@@ -11,4 +13,8 @@ import { composeComponentWithoutRef } from '../../../utils/composeComponent';
  *
  * Pair with useToastController from @fluentui/react-toast to dispatch and dismiss toasts imperatively.
  */
-export const Toaster = /*#__PURE__*/ composeComponentWithoutRef('Toaster', useToaster, renderToaster);
+export const Toaster: ComponentWithoutRef<ToasterProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Toaster',
+  useToaster,
+  renderToaster,
+);

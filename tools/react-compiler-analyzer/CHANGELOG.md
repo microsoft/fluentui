@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compiler-analyzer
 
-<!-- This log was last generated on Thu, 22 Oct 2026 15:40:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 03 Nov 2026 12:25:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-compiler-analyzer_v0.0.4)
+
+Tue, 03 Nov 2026 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compiler-analyzer_v0.0.3..@fluentui/react-compiler-analyzer_v0.0.4)
+
+### Patches
+
+- fix: clarify compiler evidence and preventive annotation rationale, identify suppression-related rejection, and report profile-specific revalidation. JSON consumers must migrate to schema v3: reported-statistics counters replace memoCacheEmitted. ([PR #37001](https://github.com/microsoft/fluentui/pull/37001) by martinhochel@microsoft.com)
 
 ## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-compiler-analyzer_v0.0.3)
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
@@ -191,5 +191,28 @@ describe('Tooltip', () => {
     const target = screen.getByRole('button');
     expect(target).not.toHaveAttribute('aria-description');
     expect(target).toHaveAttribute('aria-describedby', 'test-describedby');
+  });
+
+  it.each([
+    ['hint', 'supported'],
+    ['manual', 'unsupported'],
+  ])('takes Escape before an enclosing layer when popover reads back as %s (hint %s)', popover => {
+    const onVisibleChange = jest.fn();
+    const onOuterKeyDown = jest.fn((event: React.KeyboardEvent) => event.isDefaultPrevented());
+    render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Tooltip content="Description tooltip" relationship="description" visible onVisibleChange={onVisibleChange}>
+          <button>Trigger</button>
+        </Tooltip>
+      </div>,
+    );
+    Object.defineProperty(screen.getByRole('tooltip'), 'popover', { value: popover });
+
+    const notCancelled = fireEvent.keyDown(screen.getByRole('button'), { key: 'Escape' });
+
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
+    expect(notCancelled).toBe(false);
+    // Prevented, not stopped: the page still sees it, and enclosing layers skip it.
+    expect(onOuterKeyDown).toHaveReturnedWith(true);
   });
 });

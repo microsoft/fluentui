@@ -2,7 +2,7 @@
 
 For developers who want more freedom when changing the value of props, transforms come to the rescue!
 
-Check out [../src/codemods/utilities/transforms.ts](../src/codemods/utilities/transforms.ts) to see local documentation and more transform examples!
+Check out [../src/codemods/utilities/transforms.ts](../src/codeMods/utilities/transforms.ts) to see local documentation and more transform examples!
 
 ## Using Transforms
 

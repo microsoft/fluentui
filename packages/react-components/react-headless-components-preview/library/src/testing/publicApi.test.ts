@@ -42,6 +42,14 @@ const ADDITIONAL_EXPORTS: Record<string, string[]> = {
   ],
   positioning: ['usePositioning', 'POSITIONS', 'ALIGNMENTS', 'getPlacementString', 'resolvePositioningShorthand'],
   'tag-picker': ['useTagPickerFilter'],
+  'time-picker': [
+    'createTimeFormat',
+    'formatDateToTimeString',
+    'getDateEndAnchor',
+    'getDateFromTimeString',
+    'getDateStartAnchor',
+    'getTimesBetween',
+  ],
   toast: ['useToastController'],
   utils: ['toDataAttributeValue'],
 };
@@ -88,6 +96,9 @@ const KNOWN_VIOLATIONS: Record<string, Partial<Record<Rule, string[]>>> = {
       'useTeachingPopoverContextValues().basePopover',
       'useTeachingPopoverCarouselContextValues().carousel',
     ],
+  },
+  'time-picker': {
+    contextHooks: ['useTimePickerContextValues().combobox'],
   },
   // `OverflowItem`, `OverflowDivider` and `OverflowReorderObserver` are re-exported from `@fluentui/react-overflow`,
   // which doesn't split them into hooks and render functions.
