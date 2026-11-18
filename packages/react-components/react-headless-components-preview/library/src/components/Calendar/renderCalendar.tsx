@@ -62,33 +62,38 @@ const renderItem = <TProps, TData>(
 const renderPanel = (state: CalendarState, panel: CalendarPanelState): JSXElement => {
   assertSlots<CalendarPanelSlots>(panel);
 
-  // Rows are resolved only when rendered, so custom grid children skip the row and cell resolution.
+  // Rows are resolved only when rendered, so custom grid children and omitted day grid sections skip the row and cell
+  // resolution. An omitted row stays as `null`, keeping the weekday row first.
+  const isRendered = (row: CalendarRowData) =>
+    panel.view !== 'day' || !!(row.type === 'weekday' ? panel.gridHeader : panel.gridBody);
   const rows =
     panel.grid.children === undefined
       ? panel.rows.map(row =>
-          renderItem(
-            row.key,
-            {
-              ...state.resolveRowProps(row),
-              children:
-                row.type === 'weekday'
-                  ? row.cells.map(weekday =>
-                      renderItem(
-                        weekday.key,
-                        state.resolveWeekdayCellProps(weekday),
-                        weekday,
-                        renderWeekdayCell,
-                        state.renderWeekdayCell,
-                      ),
-                    )
-                  : row.cells.map((cell: CalendarCellData) =>
-                      renderItem(cell.key, state.resolveCellProps(cell), cell, renderCell, state.renderCell),
-                    ),
-            },
-            row,
-            renderRow,
-            state.renderRow,
-          ),
+          !isRendered(row)
+            ? null
+            : renderItem(
+                row.key,
+                {
+                  ...state.resolveRowProps(row),
+                  children:
+                    row.type === 'weekday'
+                      ? row.cells.map(weekday =>
+                          renderItem(
+                            weekday.key,
+                            state.resolveWeekdayCellProps(weekday),
+                            weekday,
+                            renderWeekdayCell,
+                            state.renderWeekdayCell,
+                          ),
+                        )
+                      : row.cells.map((cell: CalendarCellData) =>
+                          renderItem(cell.key, state.resolveCellProps(cell), cell, renderCell, state.renderCell),
+                        ),
+                },
+                row,
+                renderRow,
+                state.renderRow,
+              ),
         )
       : undefined;
 

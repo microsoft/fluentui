@@ -1080,6 +1080,32 @@ describe('Calendar day grid', () => {
       ['gridHeader', 'thead', 'tbody'],
       ['gridBody', 'tbody', 'thead'],
     ] as const)('omits only the day grid section whose %s slot is null', (slotName, removed, kept) => {
+      const renderCell = jest.fn<
+        React.ReactNode,
+        Parameters<CalendarRenderFunction<CalendarCellProps, CalendarCellData>>
+      >((props, _cell, defaultRender) => defaultRender(props));
+      const renderWeekdayCell = jest.fn<
+        React.ReactNode,
+        Parameters<CalendarRenderFunction<CalendarWeekdayCellProps, CalendarWeekdayCellData>>
+      >((props, _weekday, defaultRender) => defaultRender(props));
+      render(
+        <Calendar
+          today={today}
+          monthPicker={null}
+          renderCell={renderCell}
+          renderWeekdayCell={renderWeekdayCell}
+          {...{ [slotName]: null }}
+        />,
+      );
+      // Omitted sections skip their render functions.
+      expect(renderWeekdayCell).toHaveBeenCalledTimes(kept === 'thead' ? 7 : 0);
+      expect(renderCell).toHaveBeenCalledTimes(kept === 'tbody' ? 35 : 0);
+    });
+
+    it.each([
+      ['gridHeader', 'thead', 'tbody'],
+      ['gridBody', 'tbody', 'thead'],
+    ] as const)('renders only the day grid section kept when %s is null', (slotName, removed, kept) => {
       const { container } = render(<Calendar today={today} monthPicker={null} {...{ [slotName]: null }} />);
       const grid = container.querySelector('table')!;
       expect(grid.querySelector(removed)).toBeNull();
@@ -1087,6 +1113,36 @@ describe('Calendar day grid', () => {
       expect(grid.querySelectorAll(':scope > tr')).toHaveLength(0);
       expect(grid.querySelectorAll('[role="columnheader"]')).toHaveLength(kept === 'thead' ? 7 : 0);
       expect(grid.querySelectorAll('[role="gridcell"]').length).toBe(kept === 'tbody' ? 35 : 0);
+    });
+
+    it('matches cells to their data by key when a renderer omits cells', () => {
+      const onSelectDate = jest.fn();
+      const { getByRole, container } = render(
+        <Calendar
+          today={today}
+          monthPicker={null}
+          dateRangeType="week"
+          onSelectDate={onSelectDate}
+          renderCell={(props, cell, defaultRender) =>
+            cell.type === 'day' && !cell.isInMonth ? null : defaultRender(props)
+          }
+        />,
+      );
+      const firstOfMonth = getByRole('button', { name: dayLabel(new Date(2020, 8, 1)) });
+
+      fireEvent.click(firstOfMonth);
+      expect(onSelectDate.mock.calls[0][1].date).toEqual(new Date(2020, 8, 1));
+
+      // The hovered week is marked on its own days, not on cells shifted by the omitted ones.
+      fireEvent.mouseOver(firstOfMonth);
+      const marked = Array.from(container.querySelectorAll('[data-range-hovered]'), cell => cell.textContent);
+      expect(marked).toEqual(['1', '2', '3', '4', '5']);
+
+      // Arrow keys skip omitted cells: Home from September 2 reaches September 1, not an August day.
+      const second = getByRole('button', { name: dayLabel(new Date(2020, 8, 2)) }).closest('td')!;
+      act(() => second.focus());
+      fireEvent.keyDown(second, { key: 'Home' });
+      expect(firstOfMonth.closest('td')).toHaveFocus();
     });
 
     it('lets render functions replace the markup of repeated elements', () => {

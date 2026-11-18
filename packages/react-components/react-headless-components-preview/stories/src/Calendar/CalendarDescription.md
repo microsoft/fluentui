@@ -123,11 +123,13 @@ Cell data is discriminated by `type: 'day' | 'month' | 'year'`; row data by `typ
 exposes `dayOfWeek`, the visible `label` and its full `accessibleLabel`. All cells expose a formatted string `label`,
 including day placeholders; placeholder dates have `originalDate: null`.
 
-Keep the grid roles, `tabIndex` and `aria-*` props when rendering your own markup, so keyboard navigation and
-assistive technology keep working. Changing DOM attributes does not change date restrictions or selection logic.
+Keep the grid roles, `tabIndex`, `aria-*` props and the cell root's `data-fui-calendar-cell` key when rendering your
+own markup, so keyboard navigation and assistive technology keep working: Calendar matches each rendered cell to its
+data by that key. A render function may return `null` to omit an element; omitted cells are skipped by keyboard
+navigation. Changing DOM attributes does not change date restrictions or selection logic.
 Handlers added to a cell run before the grid's delegated selection and navigation; `preventDefault` cancels the
 built-in action. Render functions run only for rendered rows and cells, so they are skipped when `grid` has
-`children`.
+`children`, and for the rows of a day grid section whose `gridHeader` or `gridBody` slot is `null`.
 
 ### Hooks and utilities
 

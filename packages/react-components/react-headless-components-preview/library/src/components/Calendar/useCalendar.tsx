@@ -69,6 +69,12 @@ type FocusRequest = 'first' | 'month';
 const YEAR_COUNT = 12;
 const RANGE_HOVERED = 'data-range-hovered';
 const RANGE_PRESSED = 'data-range-pressed';
+/** Identifies a cell's data, so renderers can omit or reorder cells without misattributing events. */
+const CELL_KEY = 'data-fui-calendar-cell';
+
+/** The rendered cell elements of a grid, by cell key. */
+const getCellElements = (grid: Element): Map<string | null, HTMLElement> =>
+  new Map(getGridCells(grid).map(element => [element.getAttribute(CELL_KEY), element]));
 
 const eventType = (event: React.SyntheticEvent | Event): 'click' | 'keydown' =>
   event.type === 'keydown' ? 'keydown' : 'click';
@@ -482,6 +488,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
           ? -1
           : undefined,
         ...({
+          [CELL_KEY]: cell.key,
           [isDay ? 'data-today' : 'data-current']: toDataAttributeValue(isDay ? cell.isToday : cell.isCurrent),
           'data-selected': toDataAttributeValue(cell.isSelected),
           'data-outside-bounds': toDataAttributeValue(disabled),
@@ -599,7 +606,8 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
     const getCell = (event: CalendarEvent): [HTMLElement, CalendarCellData] | undefined => {
       const element = getEventCell(event);
-      const cell = element && cells[getGridCells(event.currentTarget).indexOf(element)];
+      const key = element?.getAttribute(CELL_KEY);
+      const cell = cells.find(candidate => candidate.key === key);
       return element && cell && (cell.type !== 'day' || cell.originalDate) ? [element, cell] : undefined;
     };
 
@@ -654,11 +662,11 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         workWeekDays,
         daysToSelectInDayView,
       );
-      const elements = getGridCells(gridElement);
-      cells.forEach((candidate, index) => {
+      const elements = getCellElements(gridElement);
+      cells.forEach(candidate => {
         const date = candidate.type === 'day' && candidate.originalDate;
         if (date && range.some(rangeDate => compareDatePart(rangeDate, date) === 0)) {
-          elements[index]?.toggleAttribute(attribute, on);
+          elements.get(candidate.key)?.toggleAttribute(attribute, on);
         }
       });
     };
@@ -716,20 +724,22 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
           event.preventDefault();
         }
       } else if (isGridNavigationKey(event)) {
+        // Cells a renderer omitted cannot take focus.
+        const elements = getCellElements(event.currentTarget);
         const targetIndex = getTargetIndex(
           event.key,
           rtl,
           index,
           cells.length,
           columns,
-          i => isFocusable(cells[i]),
+          i => isFocusable(cells[i]) && elements.has(cells[i].key),
           isDay,
         );
         const target = targetIndex === undefined ? undefined : cells[targetIndex];
         if (target) {
           event.preventDefault();
           setActiveCell(panelView, resetKey, target.key);
-          getGridCells(event.currentTarget)[targetIndex!]?.focus();
+          elements.get(target.key)?.focus();
           if (target.type === 'day' && !target.isInMonth && target.isInBounds) {
             navigate(event, target.originalDate!, 'first');
           }

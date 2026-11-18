@@ -156,8 +156,9 @@ export type CalendarWeekdayCellProps = {
 
 /**
  * Renders an element Calendar repeats. It receives the built-in props and the item's data, and `defaultRender`, which
- * renders the built-in markup from (possibly changed) props. Keep the grid roles, `tabIndex` and `aria-*` props so
- * keyboard navigation and assistive technology keep working.
+ * renders the built-in markup from (possibly changed) props. Keep the grid roles, `tabIndex`, `aria-*` props and a cell
+ * root's `data-fui-calendar-cell` key so keyboard navigation and assistive technology keep working. Returning `null`
+ * omits the element; omitted cells are skipped by keyboard navigation.
  */
 export type CalendarRenderFunction<TProps, TData> = (
   props: TProps,
