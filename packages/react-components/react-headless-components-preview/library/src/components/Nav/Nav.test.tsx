@@ -121,6 +121,27 @@ describe('Nav', () => {
     expect(result.queryByText('Sub Item 1')).not.toBeInTheDocument();
   });
 
+  it('does not submit an enclosing form when NavCategoryItem is clicked', () => {
+    const onSubmit = jest.fn((e: React.FormEvent) => e.preventDefault());
+    const result = render(
+      <form onSubmit={onSubmit}>
+        <Nav>
+          <NavCategory value="cat1">
+            <NavCategoryItem>Category 1</NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem value="sub1">Sub Item 1</NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+        </Nav>
+      </form>,
+    );
+
+    const categoryItem = result.getByText('Category 1');
+    expect(categoryItem).toHaveAttribute('type', 'button');
+    fireEvent.click(categoryItem);
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
   it('supports multiple={false} to close other categories', () => {
     const result = render(
       <Nav multiple={false} defaultOpenCategories={['cat1']}>
