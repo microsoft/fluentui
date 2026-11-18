@@ -979,7 +979,13 @@ const nav: Record<string, ComponentSpec> = {
     knownDifferences: {
       // Griffel sorts shorthand rules before longhand rules, so the sub item's `paddingInlineStart` beat the app's
       // `padding` shorthand. In CSS the app's later, equal-specificity shorthand applies: its value is app-declared.
-      'layout makeStyles override': { 'root padding-inline-start': ['--spacingHorizontalXXL'] },
+      // The selected indicator (`::after`) is absolutely positioned without insets: its static position follows that
+      // padding.
+      'layout makeStyles override': {
+        'root padding-inline-start': ['--spacingHorizontalXXL'],
+        'root::after left': ['*'],
+        'root::after right': ['*'],
+      },
     },
     variants: [{}, { value: 'selected' }, { navDensity: 'small' }],
     wrap: (element, implementation) => categoryWrap(element, implementation, 'subItem'),
