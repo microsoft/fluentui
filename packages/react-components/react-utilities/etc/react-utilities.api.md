@@ -389,6 +389,9 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
+export const useMenuScrollIntoView_unstable: (open: boolean, triggerRef: React_2.RefObject<HTMLElement | null>, parentRef: React_2.RefObject<HTMLElement | null>, getOwnedActive: (surface: HTMLElement) => Element | null) => React_2.RefCallback<HTMLElement>;
+
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)

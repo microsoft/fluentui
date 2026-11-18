@@ -52,6 +52,7 @@ export {
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  useMenuScrollIntoView_unstable,
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,

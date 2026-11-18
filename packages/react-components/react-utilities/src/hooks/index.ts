@@ -9,6 +9,7 @@ export { IdPrefixProvider, resetIdsForTests, useId } from './useId';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export type { RefObjectFunction } from './useMergedRefs';
 export { useMergedRefs } from './useMergedRefs';
+export { useMenuScrollIntoView_unstable } from './useMenuScrollIntoView';
 export type { UseOnClickOrScrollOutsideOptions } from './useOnClickOutside';
 export { useOnClickOutside } from './useOnClickOutside';
 export { useOnScrollOutside } from './useOnScrollOutside';

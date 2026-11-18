@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add a shared native menu focus-visibility hook",
+  "packageName": "@fluentui/react-utilities",
+  "email": "paulmardling@microsoft.com"
+}

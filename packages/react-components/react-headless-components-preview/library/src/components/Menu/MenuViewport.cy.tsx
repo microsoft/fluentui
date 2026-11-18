@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from './';
 
 describe('Menu viewport reconciliation', () => {
-  it('reveals a focused row within the viewport when the menu extends below it', () => {
+  it('reveals a focused row when its scrollport shrinks', () => {
     cy.viewport(800, 600);
     mount(
       <Menu open>
@@ -27,18 +27,19 @@ describe('Menu viewport reconciliation', () => {
       surface.style.setProperty('position-area', 'none');
       surface.style.setProperty('position-anchor', 'auto');
       surface.style.inset = 'auto';
-      surface.style.top = '550px';
+      surface.style.top = '20px';
       surface.style.left = '20px';
       surface.querySelector<HTMLElement>('#clipped-item')!.focus({ preventScroll: true });
+      surface.style.height = '50px';
     });
     cy.window().trigger('resize');
     cy.get('#clipped-menu').should(([surface]) => {
       const bounds = surface.getBoundingClientRect();
       const item = surface.querySelector<HTMLElement>('#clipped-item')!;
       const itemBounds = item.getBoundingClientRect();
-      expect(bounds.bottom).to.be.greaterThan(600);
+      expect(bounds.bottom).to.be.lessThan(600);
       expect(itemBounds.top).to.be.at.least(bounds.top - 1);
-      expect(itemBounds.bottom).to.be.at.most(601);
+      expect(itemBounds.bottom).to.be.at.most(bounds.bottom + 1);
       expect(surface.scrollTop).to.equal(40);
       expect(surface.ownerDocument.activeElement).to.equal(item);
     });
