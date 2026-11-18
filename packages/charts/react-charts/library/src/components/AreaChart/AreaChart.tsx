@@ -1154,8 +1154,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           children={(props: ChildProps) => {
             _xAxisRectScale = props.xScale;
             const ticks = _xAxisRectScale.ticks();
-            const width1 = _xAxisRectScale(ticks[ticks.length - 1]);
-            const rectHeight = props.containerHeight! - _margins.top!;
+            const width1 = Math.max(0, _xAxisRectScale(ticks[ticks.length - 1]));
+            const rectHeight = Math.max(0, props.containerHeight! - _margins.top!);
             return (
               <>
                 <g>

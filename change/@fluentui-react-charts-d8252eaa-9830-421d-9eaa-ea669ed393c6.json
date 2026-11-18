@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: avoid a negative size on the AreaChart hover rect before the container is measured",
+  "packageName": "@fluentui/react-charts",
+  "email": "tadej.korosak@mail.com"
+}

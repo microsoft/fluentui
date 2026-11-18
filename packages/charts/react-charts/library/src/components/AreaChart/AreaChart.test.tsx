@@ -1003,3 +1003,15 @@ describe('Area chart rendering with duplicate values', () => {
     },
   );
 });
+
+describe('Area chart rendering before the container is measured', () => {
+  testWithoutWait(
+    'Should not render the hover rect with a negative width',
+    AreaChart,
+    { data: chartData },
+    container => {
+      const rect = getById(container, /rectangle/i)[0];
+      expect(Number(rect.getAttribute('width'))).toBeGreaterThanOrEqual(0);
+    },
+  );
+});
