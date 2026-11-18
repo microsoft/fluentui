@@ -44,9 +44,9 @@ function isProbability(value) {
 }
 
 /** @param {unknown} value */
-function validateUsage(value) {
+function reportedUsage(value) {
   if (!isRecord(value)) {
-    throw new Error('The risk model returned an invalid token usage record.');
+    return undefined;
   }
   const details = value.input_tokens_details;
   const cached = isRecord(details) ? details.cached_tokens ?? 0 : 0;
@@ -57,13 +57,22 @@ function validateUsage(value) {
     ) ||
     Number(cached) > Number(value.input_tokens)
   ) {
-    throw new Error('The risk model returned an invalid token usage record.');
+    return undefined;
   }
   return {
     inputTokens: Number(value.input_tokens),
     cachedInputTokens: Number(cached),
     outputTokens: Number(value.output_tokens),
   };
+}
+
+/** @param {unknown} value */
+function validateUsage(value) {
+  const usage = reportedUsage(value);
+  if (!usage) {
+    throw new Error('The risk model returned an invalid token usage record.');
+  }
+  return usage;
 }
 
 /**
@@ -274,9 +283,13 @@ async function requestJson(url, options, fetcher, limit, service) {
  *   api?: 'decision' | 'responses';
  *   getToken: () => Promise<string>;
  *   fetcher?: typeof fetch;
+ *   onUsage?: (usage: ReturnType<typeof validateUsage>, verifiedModel: string | undefined) => void;
  * }} transport
  */
-async function askRiskModel(input, { endpoint, deployment, model, api = 'decision', getToken, fetcher = fetch }) {
+async function askRiskModel(
+  input,
+  { endpoint, deployment, model, api = 'decision', getToken, fetcher = fetch, onUsage },
+) {
   const body = buildRiskModelRequest(input, deployment, api);
   let token;
   try {
@@ -303,6 +316,15 @@ async function askRiskModel(input, { endpoint, deployment, model, api = 'decisio
     maxResponseBytes,
     'Risk model',
   );
+  // Rejected answers can still have billable usage; accounting never authorizes their tier.
+  const usage = reportedUsage(isRecord(payload) ? payload.usage : undefined);
+  if (usage && onUsage) {
+    const verifiedModel =
+      isRecord(payload) && typeof payload.model === 'string' && payload.model.toLowerCase() === model.toLowerCase()
+        ? model
+        : undefined;
+    onUsage(usage, verifiedModel);
+  }
   return api === 'responses' ? validateRiskLlmAnswer(payload, model) : validateRiskModelAnswer(payload, model);
 }
 
@@ -391,6 +413,7 @@ async function getRiskModelToken(core, { clientId, tenantId }, fetcher = fetch) 
 }
 
 module.exports = {
+  ratingInstructions,
   askRiskModel,
   buildRiskModelRequest,
   getRiskModelConfig,

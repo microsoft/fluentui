@@ -193,6 +193,20 @@ describe('risk classification', () => {
     expect(tier([file(changeFile, 7)])).toBe(2);
   });
 
+  test.each(['Button.test.tsx', 'Button.spec.ts', 'Button.cy.tsx'])(
+    'unavailable test code is not exempt from the missing-diff fallback: %s',
+    name => {
+      const path = `packages/react-components/react-button/library/src/${name}`;
+      expect(tier([{ ...file(path), patch: undefined }])).toBe(2);
+      expect(tier([{ ...file(path), patch: '' }])).toBe(2);
+      expect(tier([file(path)])).toBe(1);
+      const snapshot = 'packages/react-components/react-button/library/src/__snapshots__/Button.snap';
+      expect(tier([{ ...file(snapshot, 0, 0, path), patch: undefined }])).toBe(2);
+      expect(tier([{ ...file(path, 0, 0, snapshot), patch: undefined }])).toBe(2);
+      expect(tier([{ ...file(snapshot, 0), patch: undefined }])).toBe(1);
+    },
+  );
+
   test('a change file keeps docs and stories out of tier 0', () => {
     expect(tier([file(story), file(changeFile)])).toBe(2);
   });

@@ -185,6 +185,54 @@ describe('risk model assessment', () => {
     ).toBe(2);
   });
 
+  test('retains valid usage on rejected answers without accepting their tiers', async () => {
+    for (const [api, body] of [
+      ['responses', { ...llmPayload(), status: 'incomplete' }],
+      ['responses', { ...llmPayload(), output: [{ content: [{ type: 'refusal', refusal: 'No' }] }] }],
+      ['responses', { ...llmPayload(), output: [{ content: [{ type: 'output_text', text: 'not JSON' }] }] }],
+      ['decision', { ...payload(), answers: {}, usage: llmPayload().usage }],
+    ] as const) {
+      const onUsage = jest.fn();
+      await expect(
+        askRiskModel(input, {
+          ...transport,
+          api,
+          onUsage,
+          getToken: async () => 'token',
+          fetcher: jest.fn().mockResolvedValue(new Response(JSON.stringify(body))),
+        }),
+      ).rejects.toThrow();
+      expect(onUsage).toHaveBeenCalledWith(
+        { inputTokens: 100, cachedInputTokens: 40, outputTokens: 25 },
+        transport.model,
+      );
+    }
+  });
+
+  test('does not attribute unverified model usage or report invalid usage as known', async () => {
+    for (const body of [
+      { ...llmPayload(), model: 'other-model' },
+      { ...llmPayload(), usage: undefined },
+      { ...llmPayload(), usage: { input_tokens: 100, output_tokens: -1 } },
+    ]) {
+      const onUsage = jest.fn();
+      await expect(
+        askRiskModel(input, {
+          ...transport,
+          api: 'responses',
+          onUsage,
+          getToken: async () => 'token',
+          fetcher: jest.fn().mockResolvedValue(new Response(JSON.stringify(body))),
+        }),
+      ).rejects.toThrow();
+      if (body.model === 'other-model') {
+        expect(onUsage).toHaveBeenCalledWith({ inputTokens: 100, cachedInputTokens: 40, outputTokens: 25 }, undefined);
+      } else {
+        expect(onUsage).not.toHaveBeenCalled();
+      }
+    }
+  });
+
   test('validates Choice identity, binding, distribution, confidence and usage', () => {
     expect(validateRiskModelAnswer(payload(), transport.model)).toMatchObject({
       tier: 2,

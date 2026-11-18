@@ -100,12 +100,15 @@ function pathsOf(file) {
 }
 
 /** @param {string} path */
-function isTestOrSnapshot(path) {
+function isSnapshot(path) {
   return (
-    /\.(?:test|spec|cy)\.[cm]?[jt]sx?$/.test(path) ||
-    path.endsWith('.snap') ||
-    (path.split('/').includes('__snapshots__') && /\.(?:png|jpe?g|gif|webp)$/.test(path))
+    path.endsWith('.snap') || (path.split('/').includes('__snapshots__') && /\.(?:png|jpe?g|gif|webp)$/.test(path))
   );
+}
+
+/** @param {string} path */
+function isTestOrSnapshot(path) {
+  return /\.(?:test|spec|cy)\.[cm]?[jt]sx?$/.test(path) || isSnapshot(path);
 }
 
 /**
@@ -200,7 +203,7 @@ function classifyRisk(files, { changedFiles }) {
     return { tier: 2, reason: 'The changed-file list is empty or incomplete, so the change cannot be judged.' };
   }
   // Without a text diff, neither a reviewer skimming the fast lane nor the line count sees the change.
-  const unseen = files.filter(file => !hasTextPatch(file) && !pathsOf(file).every(isTestOrSnapshot));
+  const unseen = files.filter(file => !hasTextPatch(file) && !pathsOf(file).every(isSnapshot));
   if (unseen.length > 0) {
     return { tier: 2, reason: `No text diff for: ${listPaths(unseen.map(file => file.filename))}.` };
   }
