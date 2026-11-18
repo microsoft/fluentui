@@ -3445,7 +3445,7 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.9"
     "@fluentui/react-jsx-runtime": "npm:^9.4.7"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
-    "@fluentui/react-tabster": "npm:^9.26.19"
+    "@fluentui/react-tabster": "npm:*"
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -5888,7 +5888,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tabster@npm:^9.26.19, @fluentui/react-tabster@workspace:packages/react-components/react-tabster":
+"@fluentui/react-tabster@npm:*, @fluentui/react-tabster@npm:^9.26.19, @fluentui/react-tabster@workspace:packages/react-components/react-tabster":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tabster@workspace:packages/react-components/react-tabster"
   dependencies:

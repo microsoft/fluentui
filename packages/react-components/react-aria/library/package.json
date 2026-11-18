@@ -19,7 +19,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "devDependencies": {
-    "@fluentui/react-tabster": "^9.26.19"
+    "@fluentui/react-tabster": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
