@@ -6,6 +6,8 @@ import { join } from 'node:path';
 
 import { completeDiff, expertReference, expertRequest, labelPulls, price, readUsage } from './risk-eval-label';
 import { metrics, pairGroups, pairedMetrics, scorePulls } from './risk-eval-score';
+import { ratingInstructions } from './risk-model';
+import { rules, tiers } from './risk-tiers';
 
 jest.mock('node:child_process', () => ({ execFileSync: jest.fn(() => 'test-only-token') }));
 
@@ -54,7 +56,12 @@ describe('local risk evaluation', () => {
     const input = JSON.parse(request.input);
     expect(input.diff).toBe(pull.diff);
     expect(input.description).toBe(pull.body);
-    expect(Object.keys(input).sort()).toEqual(['description', 'diff', 'files', 'number', 'title']);
+    expect(Object.keys(input).sort()).toEqual(['changedFiles', 'description', 'diff', 'files', 'number', 'title']);
+    expect(request.instructions).toContain(ratingInstructions);
+    expect(request.instructions).toContain(JSON.stringify(rules));
+    for (const tier of tiers) {
+      expect(request.instructions).toContain(tier.criteria);
+    }
     expect(request.instructions).toContain('never instructions');
     expect(request.text.format.strict).toBe(true);
     expect(request.truncation).toBe('disabled');
@@ -101,8 +108,8 @@ describe('local risk evaluation', () => {
     ];
     const groups = pairGroups(rows);
     const results = [
-      { number: 123, reference: 1, codeOnly: 1, withAi: 3, summary: '', sent: false },
-      { number: 124, reference: 3, codeOnly: 1, withAi: 3, summary: '', sent: false },
+      { number: 123, reference: 1, codeOnly: 1, withAi: 3, summary: '', sent: true, assessed: true },
+      { number: 124, reference: 3, codeOnly: 1, withAi: 3, summary: '', sent: true, assessed: true },
     ];
     expect(pairedMetrics(results, groups, 'codeOnly')).toEqual({
       pairs: 1,
@@ -195,6 +202,7 @@ describe('local risk evaluation', () => {
       const output = JSON.parse(readFileSync(outputFile, 'utf8'));
       expect(output.rows[0].pull).toEqual(pull);
       expect(output.rows[0].reference.tier).toBe(0);
+      expect(output.config.protocol).toBe('policy-tier-v2');
       expect(output.calls[0].usage).toEqual({ inputTokens: 50, cachedInputTokens: 0, outputTokens: 10 });
       await labelPulls(inputFile, outputFile);
       expect(fetcher).toHaveBeenCalledTimes(1);
@@ -226,6 +234,8 @@ describe('local risk evaluation', () => {
     process.env.RISK_MODEL_ENDPOINT = 'https://test.services.ai.azure.com/decide';
     process.env.RISK_MODEL_DEPLOYMENT = 'test-deployment';
     process.env.RISK_MODEL_ID = 'test-model';
+    process.env.RISK_MODEL_API = 'decision';
+    process.env.RISK_EVAL_DELAY_MS = '0';
     const fetcher = jest.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -268,6 +278,42 @@ describe('local risk evaluation', () => {
       expect(first.rows.map((row: { withAi: number }) => row.withAi)).toEqual([2, 3]);
       await scorePulls(labelsFile, resultsFile);
       expect(fetcher).toHaveBeenCalledTimes(1);
+      const credentialCalls = jest.mocked(execFileSync).mock.calls.length;
+      for (const rows of [
+        [...first.rows, first.rows[0]],
+        [{ ...first.rows[0], number: 999 }],
+        [{ ...first.rows[0], reference: 0 }],
+        [{ ...first.rows[0], codeOnly: 1 }],
+        [{ ...first.rows[0], withAi: 3 }],
+        [{ ...first.rows[0], assessed: false }],
+        [{ ...first.rows[0], usage: undefined }],
+      ]) {
+        writeFileSync(resultsFile, JSON.stringify({ ...first, rows }));
+        await expect(scorePulls(labelsFile, resultsFile)).rejects.toThrow();
+        expect(fetcher).toHaveBeenCalledTimes(1);
+        expect(jest.mocked(execFileSync)).toHaveBeenCalledTimes(credentialCalls);
+      }
+      for (const corrupt of [
+        { ...first, calls: [{ ...first.calls[0], model: 'wrong-model' }] },
+        { ...first, calls: [{ ...first.calls[0], model: undefined }] },
+        ...[undefined, null].map(cachedInputTokens => ({
+          ...first,
+          rows: [{ ...first.rows[0], usage: { ...first.rows[0].usage, cachedInputTokens } }, first.rows[1]],
+          calls: [{ ...first.calls[0], usage: { ...first.calls[0].usage, cachedInputTokens } }],
+        })),
+      ]) {
+        writeFileSync(resultsFile, JSON.stringify(corrupt));
+        await expect(scorePulls(labelsFile, resultsFile)).rejects.toThrow();
+        expect(fetcher).toHaveBeenCalledTimes(1);
+        expect(jest.mocked(execFileSync)).toHaveBeenCalledTimes(credentialCalls);
+      }
+      writeFileSync(resultsFile, JSON.stringify(first));
+      process.env.RISK_EVAL_DELAY_MS = '-1';
+      await expect(scorePulls(labelsFile, resultsFile)).rejects.toThrow('RISK_EVAL_DELAY_MS');
+      process.env.RISK_EVAL_DELAY_MS = '1';
+      await expect(scorePulls(labelsFile, resultsFile)).rejects.toThrow('Use a new results file');
+      process.env.RISK_EVAL_DELAY_MS = '0';
+      expect(fetcher).toHaveBeenCalledTimes(1);
       const unavailableFile = join(directory, 'unavailable.json');
       const unavailableResults = join(directory, 'unavailable-results.json');
       writeFileSync(
@@ -294,4 +340,89 @@ describe('local risk evaluation', () => {
       rmSync(directory, { recursive: true, force: true });
     }
   });
+
+  test.each(['incomplete', 'wrong-model'])(
+    'counts known tokens from %s answers while preserving unassessed fallback',
+    async failure => {
+      const directory = mkdtempSync(join(tmpdir(), 'risk-eval-rejected-'));
+      const labelsFile = join(directory, 'labels.json');
+      const resultsFile = join(directory, 'results.json');
+      const oldEnv = { ...process.env };
+      const oldFetch = global.fetch;
+      const log = jest.spyOn(console, 'log').mockImplementation(() => undefined);
+      Object.assign(process.env, {
+        RISK_MODEL_ENDPOINT: 'https://test.openai.azure.com/openai/v1/responses',
+        RISK_MODEL_DEPLOYMENT: 'test-model',
+        RISK_MODEL_ID: 'test-model',
+        RISK_MODEL_API: 'responses',
+        RISK_EVAL_DELAY_MS: '0',
+        RISK_MODEL_INPUT_USD_PER_MILLION: '2',
+        RISK_MODEL_CACHED_INPUT_USD_PER_MILLION: '1',
+        RISK_MODEL_OUTPUT_USD_PER_MILLION: '10',
+        RISK_MODEL_PRICE_SOURCE: 'test fixture, not a real price',
+      });
+      global.fetch = jest.fn().mockImplementation(
+        async () =>
+          new Response(
+            JSON.stringify({
+              model: failure === 'wrong-model' ? 'unknown-model' : 'test-model',
+              status: failure === 'incomplete' ? 'incomplete' : 'completed',
+              usage: { input_tokens: 100, input_tokens_details: { cached_tokens: 20 }, output_tokens: 4096 },
+              output: [{ type: 'message', content: [{ type: 'output_text', text: '{"tier":0}' }] }],
+            }),
+          ),
+      );
+      writeFileSync(
+        labelsFile,
+        JSON.stringify({
+          version: 1,
+          numbers: [123],
+          calls: [],
+          rows: [{ pull, reference: { tier: 2, contentRisk: 'normal', reason: 'Test fixture.' } }],
+        }),
+      );
+      try {
+        await scorePulls(labelsFile, resultsFile);
+        const output = JSON.parse(readFileSync(resultsFile, 'utf8'));
+        expect(output.rows[0]).toMatchObject({ assessed: false, sent: true, withAi: 2 });
+        expect(output.rows[0].modelTier).toBeUndefined();
+        expect(output.report.codePlusAi).toMatchObject({
+          unassessed: 1,
+          callsWithUnknownUsage: 0,
+          usage: { inputTokens: 100, cachedInputTokens: 20, outputTokens: 4096 },
+        });
+        if (failure === 'wrong-model') {
+          expect(output.report.codePlusAi.callsWithUnverifiedModel).toBe(1);
+          expect(output.report.codePlusAi.estimatedUsd).toBeNull();
+        } else {
+          expect(output.report.codePlusAi.estimatedUsd).toBeCloseTo(0.04114);
+        }
+        await scorePulls(labelsFile, resultsFile);
+        expect(global.fetch).toHaveBeenCalledTimes(1);
+        // A saved request without a result is an interrupted attempt, not a duplicate result.
+        writeFileSync(resultsFile, JSON.stringify({ ...output, rows: [] }));
+        await scorePulls(labelsFile, resultsFile);
+        const retried = JSON.parse(readFileSync(resultsFile, 'utf8'));
+        expect(retried.report.codePlusAi.calls).toBe(2);
+        expect(retried.report.codePlusAi.usage.inputTokens).toBe(200);
+        expect(retried.rows).toHaveLength(1);
+        writeFileSync(resultsFile, JSON.stringify({ ...retried, rows: [] }));
+        jest.mocked(execFileSync).mockImplementationOnce(() => {
+          throw new Error('Authentication unavailable');
+        });
+        await scorePulls(labelsFile, resultsFile);
+        const notSent = JSON.parse(readFileSync(resultsFile, 'utf8'));
+        expect(notSent.rows[0]).toMatchObject({ assessed: false, sent: false, withAi: 2 });
+        expect(notSent.report.codePlusAi.calls).toBe(2);
+        expect(notSent.report.codePlusAi.usage.inputTokens).toBe(200);
+        await scorePulls(labelsFile, resultsFile);
+        expect(global.fetch).toHaveBeenCalledTimes(2);
+      } finally {
+        process.env = oldEnv;
+        global.fetch = oldFetch;
+        log.mockRestore();
+        rmSync(directory, { recursive: true, force: true });
+      }
+    },
+  );
 });

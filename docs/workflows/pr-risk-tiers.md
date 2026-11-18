@@ -91,12 +91,14 @@ yarn nx run scripts-github:risk-eval-label \
   --args=".cache/pr-risk-eval/prs.json .cache/pr-risk-eval/labels.json"
 ```
 
-The expert sees full diffs and an inline rubric, not classifier predictions or
-other experts' labels. Structured output is validated. The local JSON records
+The expert sees full diffs and the shared policy, not classifier predictions or
+other experts' labels. Its target is the **final policy tier**, including semantic
+escalation, not content risk alone. Structured output is validated. The local JSON records
 PR revisions, inputs, rubric hash, returned model IDs, labels, and token usage.
 Progress is saved after each PR; rerun the same command to resume. To label the
 same snapshots with another expert, use the existing labels JSON as the first
-argument and a new output file.
+argument and a new output file. Compare only matching reference protocols and
+input coverage; older partial-diff or content-risk rubrics are legacy diagnostics.
 
 For PRs over GitHub's full-diff API limit, the labeler fetches commit objects and
 reads a Git diff without checkout, external diff drivers, or text conversion.
@@ -116,6 +118,9 @@ Use a different results filename for each backend/model. Each run reports Code
 only alongside the selected AI backend, so the same frozen inputs support a
 Code-only / decision-model / LLM comparison without another script.
 
+For quota-limited deployments, set `RISK_EVAL_DELAY_MS` to pace local model calls
+(0 by default, up to 60000). The delay is recorded and adds no production retries.
+
 For constructed paired cases, use local case IDs and pass a frozen labels JSON with a top-level `pairId`
 on each row and policy-expected reference tiers verified by executable checks.
 The scorer checks matching paths/tiers and exactly two cases per pair before
@@ -131,7 +136,9 @@ Opposing errors can cancel, so inspect mismatches as well as averages.
 
 Expert-labeling usage is reported separately from pipeline usage. Input, cached
 input, and output tokens come from API responses; output already includes
-reasoning tokens. Missing usage is explicit. USD estimates are `null` unless you
+reasoning tokens. Rejected answers still count valid reported usage; they remain
+unassessed. Missing usage or unverified model identity makes total cost unknown.
+USD estimates are `null` unless you
 supply verified `INPUT_USD_PER_MILLION`, `OUTPUT_USD_PER_MILLION`, and `PRICE_SOURCE`
 variables prefixed with `RISK_EXPERT_` or `RISK_MODEL_`. Also supply
 `CACHED_INPUT_USD_PER_MILLION` when cached input is billed separately. These are
