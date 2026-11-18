@@ -27,8 +27,13 @@ Retries are disabled (`retries.runMode: 0`), because a parity sample must be det
 there. CI runs the suite as the sharded `css-modules-parity` job in
 [`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), once per environment axis (default, `FUI_PARITY_DIR=rtl`,
 `FUI_PARITY_SHADOW_DOM=1`, `FUI_PARITY_FORCED_COLORS=1` with `FUI_PARITY_THEME=teamsHighContrast`, and
-`FUI_PARITY_THEME=webDark`), so a new spec file must be added to a shard. `Lazy.cy.tsx` has its own shard: in CI its
-settle waits on CSS transitions that stay pending for seconds (about 30 minutes for the spec; locally under a minute).
+`FUI_PARITY_THEME=webDark`), so a new spec file must be added to a shard. `Lazy.cy.tsx` also skips failure
+screenshots: in CI (Electron on Linux), the screenshot of a failed attempt left the renderer at about one frame per
+second, so every later real mouse event and CSS transition in the spec waited ~1s (30 minutes instead of under 2).
+
+`FUI_PARITY_PROFILE=1` writes per-phase timings of every parity test (mount, waitFor, each `enterState` step, settle,
+sample) and the animations behind settles over 500ms to `cypress/profile/<spec>.ndjson`. CI sets it and uploads the
+files as the `css-modules-parity-<axis>-<shard>-profile` artifact; start there when a shard gets slow.
 
 Environment axes, combinable with every mode below:
 

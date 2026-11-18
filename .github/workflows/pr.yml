@@ -271,7 +271,6 @@ jobs:
         shard:
           - name: data
             specs: e2e/Data.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx,e2e/app-patterns/ComponentVariables.cy.tsx,e2e/app-patterns/ExternalTokenTheme.cy.tsx
-          # Lazy alone takes ~30 min in CI (settle waits on pending CSS transitions); keep it off the other shards.
           - name: lazy-positioning
             specs: e2e/Lazy.cy.tsx,e2e/Positioning.cy.tsx,e2e/app-patterns/SurfaceOverrides.cy.tsx
           - name: navigation-forms
