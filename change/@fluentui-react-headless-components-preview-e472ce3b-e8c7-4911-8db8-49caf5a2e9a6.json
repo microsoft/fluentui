@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "BREAKING CHANGE: rebuild headless Calendar as a single component; CalendarDay, CalendarMonth, CalendarYear and CalendarProvider are removed and cell, row and weekday getters become render functions",
+  "comment": "BREAKING CHANGE: rebuild headless Calendar as a single component",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

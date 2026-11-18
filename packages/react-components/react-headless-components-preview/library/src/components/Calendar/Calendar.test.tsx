@@ -934,6 +934,24 @@ describe('Calendar interaction sequences', () => {
       expect(document.body).toHaveFocus();
     });
 
+    it('does not reclaim focus lost with a cell a renderer removed when a controlled view later changes', () => {
+      const hideToday: CalendarProps['renderCell'] = (props, cell, defaultRender) =>
+        cell.type === 'day' && cell.key === '2020-8-18' ? null : defaultRender(props);
+      const { getByRole, rerender } = render(<Calendar today={today} layout="overlay" view="day" />);
+      act(() =>
+        getByRole('button', { name: dayLabel(today) })
+          .closest('td')!
+          .focus(),
+      );
+
+      // The focused cell is removed without a view change, so focus falls back to the body.
+      rerender(<Calendar today={today} layout="overlay" view="day" renderCell={hideToday} />);
+      expect(document.body).toHaveFocus();
+
+      rerender(<Calendar today={today} layout="overlay" view="month" renderCell={hideToday} />);
+      expect(document.body).toHaveFocus();
+    });
+
     it('does not reclaim outside focus when a controlled view replaces the month grid', () => {
       const { getByRole, rerender } = render(
         <>

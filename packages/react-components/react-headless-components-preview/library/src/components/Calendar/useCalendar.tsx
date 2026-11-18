@@ -240,14 +240,20 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         request ??= 'month';
       }
     }
-    if (!root || !request) {
+    if (!root) {
       return;
     }
     const active = (root.getRootNode() as Document | ShadowRoot).activeElement;
+    const isInside = !!active && root.contains(active);
     // Focus moves only when it is in the calendar, was in it, or was lost with a removed element.
-    if (!active || active === targetDocument?.body || focusWithin.current || root.contains(active)) {
+    if (request && (!active || active === targetDocument?.body || focusWithin.current || isInside)) {
       const panels = root.querySelectorAll('[data-view]');
       focusCalendarGrid(request === 'month' ? panels[panels.length - 1] : panels[0]);
+    } else if (!isInside) {
+      // Focus is outside, including focus lost with an element removed for another reason, such as a renderer
+      // omitting the focused cell. Stop tracking it, so a later view change does not pull focus back.
+      focusWithin.current = false;
+      focused.current = undefined;
     }
   });
 
