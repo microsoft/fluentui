@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Replace @import with @forward",
+  "comment": "refactor: Replace @import with @forward",
   "packageName": "@fluentui/react-theme-sass",
   "email": "email not defined",
   "dependentChangeType": "patch"
