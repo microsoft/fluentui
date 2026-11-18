@@ -13,6 +13,13 @@ It wraps the base hooks exported by `@fluentui/react-tag-picker` (`useTagPickerB
 `useTagPickerButtonBase_unstable`) and ships **no styles** — bring your own via `className` and the
 `data-*` attributes the hooks expose.
 
+### Accessibility defaults
+
+`TagPickerList` exposes a multiselect listbox, and each `TagPickerOption` exposes its current
+selection through `aria-selected`. Explicit consumer ARIA props override these defaults.
+`TagPickerButton` is disabled when either it or its parent `TagPicker` is disabled; setting
+`disabled={false}` on the button does not re-enable a disabled picker.
+
 ### Positioning
 
 The headless TagPicker renders its native popover in DOM order and positions it with the package's

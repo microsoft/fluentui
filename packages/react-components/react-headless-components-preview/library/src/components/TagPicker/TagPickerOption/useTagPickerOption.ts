@@ -34,7 +34,12 @@ export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<H
     // Force role="option": useOption / useOptionBase_unstable may emit role="menuitemcheckbox" in
     // multiselect mode, but TagPickerList is a listbox whose items must be role="option".
     root: slot.always(
-      { ...optionState.root, role: 'option', 'aria-checked': props['aria-checked'] },
+      {
+        ...optionState.root,
+        role: 'option',
+        'aria-selected': props['aria-selected'] ?? optionState.selected,
+        'aria-checked': props['aria-checked'],
+      },
       { elementType: 'div' },
     ),
   };
