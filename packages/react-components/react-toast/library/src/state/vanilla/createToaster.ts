@@ -105,13 +105,23 @@ export function createToaster(options: Partial<ToasterOptions>): {
   const buildToast = (toastOptions: Partial<ToastOptions> & { toastId: ToastId }, onUpdate: () => void) => {
     const { toastId, content, toasterId } = toastOptions;
 
-    if (toasts.has(toastId)) {
-      return;
+    const existingToast = toasts.get(toastId);
+    if (existingToast) {
+      if (visibleToasts.has(toastId) || queue.contains(toastId)) {
+        return;
+      }
+
+      // The existing toast was dismissed and only stays in the map until its exit motion finishes.
+      // Finish removing it now, so that the new toast can use its id.
+      existingToast.remove();
     }
+
+    const order = counter++;
 
     const close = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      // An id can be reused once its toast is dismissed. Only act on the toast this callback was created for.
+      if (!toast || toast.order !== order) {
         return;
       }
 
@@ -122,7 +132,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
     const remove = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      if (!toast || toast.order !== order) {
         return;
       }
 
@@ -148,7 +158,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
       content,
       updateId: 0,
       toasterId,
-      order: counter++,
+      order,
       data: {},
       imperativeRef: React.createRef<ToastImperativeRef>(),
     };

@@ -336,6 +336,66 @@ describe('Toast', () => {
       .should('have.text', 'unmounted');
   });
 
+  it('should show a toast that reuses the id of a toast that is being dismissed', () => {
+    const Example = () => {
+      const toastId = 'foo';
+      const { dispatchToast, dismissToast } = useToastController();
+      const [log, setLog] = React.useState<string[]>([]);
+      const makeToast = (title: string) => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>{title}</ToastTitle>
+          </Toast>,
+          { toastId, timeout: -1, onStatusChange: (_, data) => setLog(s => [...s, `${title} ${data.status}`]) },
+        );
+      };
+
+      const replaceToast = () => {
+        dismissToast(toastId);
+        makeToast('third');
+      };
+
+      return (
+        <>
+          <button id="make-first" onClick={() => makeToast('first')}>
+            Make first toast
+          </button>
+          <button id="dismiss" onClick={() => dismissToast(toastId)}>
+            Dismiss toast
+          </button>
+          <button id="make-second" onClick={() => makeToast('second')}>
+            Make second toast
+          </button>
+          <button id="replace" onClick={replaceToast}>
+            Replace toast
+          </button>
+          <ul>
+            {log.map(msg => (
+              <li key={msg}>{msg}</li>
+            ))}
+          </ul>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make-first').click();
+    cy.contains('li', 'first visible').should('exist');
+
+    // The first toast is still running its exit motion when its id is used again
+    cy.get('#dismiss').click().wait(200).get('#make-second').click();
+    cy.contains('li', 'first unmounted').should('exist');
+    cy.contains('li', 'second visible').should('exist');
+    cy.get(`.${toastClassNames.root}`).should('have.length', 1).and('have.text', 'second');
+
+    // The id is used again in the same tick as the dismissal
+    cy.get('#replace').click();
+    cy.contains('li', 'second unmounted').should('exist');
+    cy.contains('li', 'third visible').should('exist');
+    cy.get(`.${toastClassNames.root}`).should('have.length', 1).and('have.text', 'third');
+  });
+
   it('should focus most recent toast with shortcut', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
