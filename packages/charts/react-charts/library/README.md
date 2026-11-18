@@ -9,6 +9,14 @@ Fluent charts is a set of modern, accessible, interactive and highly customizabl
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
 The code snippets can be used as usage guide for all the props and chart variations.
 
+### Vega-Lite expressions
+
+`VegaDeclarativeChart` evaluates logical (`&&`, `||`) and ternary (`?:`) expressions
+with short-circuit semantics. Skipped branches are parsed but not evaluated.
+If a filter expression throws for a row, that row is excluded and a warning is logged.
+Filters control chart display only; validate input data separately rather than relying
+on chart filters for authorization.
+
 ## Available charts across fluent platforms
 
 <table>

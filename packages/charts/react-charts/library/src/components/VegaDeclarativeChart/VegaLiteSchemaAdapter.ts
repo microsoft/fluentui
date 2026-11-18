@@ -240,8 +240,10 @@ function applyTransforms(
         result = result.filter(row => {
           try {
             return safeEvaluateExpression(filterExpr, row);
-          } catch {
-            return true;
+          } catch (error) {
+            // eslint-disable-next-line no-console -- Report excluded rows instead of silently hiding evaluation errors.
+            console.warn('Vega-Lite filter evaluation failed; excluding row.', error);
+            return false;
           }
         });
       }

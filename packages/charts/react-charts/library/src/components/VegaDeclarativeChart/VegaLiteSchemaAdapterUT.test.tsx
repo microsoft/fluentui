@@ -103,6 +103,51 @@ describe('VegaLiteSchemaAdapter', () => {
       return transformVegaLiteToLineChartProps(spec, { current: colorMap }, false).data.lineChartData![0].data;
     }
 
+    it('excludes rows whose filter evaluation throws and reports the failure', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const points = transformData(
+          [
+            { x: 1, y: 10, a: false, b: 5 },
+            { x: 2, y: 20, a: false, b: { toString: 0 } },
+            { x: 3, y: 30, a: true, b: { toString: 0 } },
+            { x: 4, y: 40, a: true, b: 5 },
+          ],
+          [{ filter: 'datum.a && +datum.b' }],
+        );
+
+        expect(points).toEqual([expect.objectContaining({ x: 4, y: 40 })]);
+        expect(warn).toHaveBeenCalledTimes(1);
+        expect(warn).toHaveBeenCalledWith('Vega-Lite filter evaluation failed; excluding row.', expect.any(TypeError));
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it.each([
+      { filter: 'true || +datum.b' },
+      { filter: 'true ? true : +datum.b' },
+      { filter: 'false ? +datum.b : true' },
+    ])('short-circuits expressions in the transform pipeline: %o', transform => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const points = transformData([{ x: 1, y: 42, b: { toString: 0 } }], [transform]);
+
+        expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
+        expect(warn).not.toHaveBeenCalled();
+      } finally {
+        warn.mockRestore();
+      }
+    });
+
+    it('uses the selected calculate branch rather than falling back to the original row', () => {
+      const points = transformData(
+        [{ x: 1, y: 10, b: { toString: 0 } }],
+        [{ calculate: 'true ? 42 : +datum.b', as: 'y' }],
+      );
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
+    });
+
     it.each(['constructor', 'toString', '__proto__'])('does not fold the inherited %s property', field => {
       const points = transformData(
         [{ x: 1, y: 10 }],

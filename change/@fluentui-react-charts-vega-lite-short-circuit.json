@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Restore short-circuit semantics in Vega-Lite expressions and exclude rows when filter evaluation fails.",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1303,7 +1303,7 @@ describe('VegaDeclarativeChart - Security', () => {
     expect((globalThis as Record<string, unknown>).__msrcFluentUiPoc).toBeUndefined();
   });
 
-  it('blocks malicious filter expression', () => {
+  it('excludes all rows for a malicious filter expression', () => {
     const maliciousSpec: VegaLiteSpec = {
       mark: 'bar',
       data: {
@@ -1323,7 +1323,9 @@ describe('VegaDeclarativeChart - Security', () => {
       },
     };
 
-    render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+    expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />)).toThrow(
+      'VegaLiteSchemaAdapter: Empty data array for VerticalBarChart',
+    );
 
     expect((globalThis as Record<string, unknown>).__msrcFilterPoc).toBeUndefined();
   });
