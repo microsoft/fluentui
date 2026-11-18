@@ -99,10 +99,15 @@ export const useTagPickerControlBase_unstable = (
     aside.ref = mergedAsideRefs;
   }
 
+  const handleMouseDownCapture = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onMouseDownCapture?.(event);
+  });
+
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     pendingOpen.current = undefined;
     props.onMouseDown?.(event);
-    if (event.isDefaultPrevented() || (toggleOn === 'click' && event.button !== 0)) {
+    if (event.isDefaultPrevented() || (toggleOn === 'click' && (disabled || event.button !== 0))) {
       return;
     }
     if (
@@ -126,7 +131,7 @@ export const useTagPickerControlBase_unstable = (
     const nextOpen = pendingOpen.current;
     pendingOpen.current = undefined;
     props.onClick?.(event);
-    if (nextOpen !== undefined && !event.isDefaultPrevented()) {
+    if (!disabled && nextOpen !== undefined && !event.isDefaultPrevented()) {
       setOpen(event, nextOpen);
     }
   });
@@ -162,6 +167,7 @@ export const useTagPickerControlBase_unstable = (
         ...props,
         onMouseDown: handleMouseDown,
         ...(toggleOn === 'click' && {
+          onMouseDownCapture: handleMouseDownCapture,
           onClick: handleClick,
           onBlur: handleBlur,
           onMouseLeave: handleMouseLeave,

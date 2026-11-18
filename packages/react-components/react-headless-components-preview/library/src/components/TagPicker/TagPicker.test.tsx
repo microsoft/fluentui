@@ -133,20 +133,64 @@ describe('TagPicker', () => {
 });
 
 describe('TagPicker control gestures', () => {
-  const renderControl = (props: TagPickerControlProps = {}) =>
-    render(
-      <TagPicker selectedOptions={['Cat']}>
-        <TagPickerControl data-testid="control" expandIcon={<span data-testid="expand">Expand</span>} {...props}>
-          <TagPickerGroup aria-label="Selected animals">
-            <Tag value="Cat">Cat</Tag>
-          </TagPickerGroup>
-          <TagPickerInput aria-label="Select animals" />
-        </TagPickerControl>
-        <TagPickerList>
-          <TagPickerOption value="dog">Dog</TagPickerOption>
-        </TagPickerList>
-      </TagPicker>,
-    );
+  const ControlFixture = ({ disabled = false, ...props }: TagPickerControlProps & { disabled?: boolean }) => (
+    <TagPicker disabled={disabled} selectedOptions={['Cat']}>
+      <TagPickerControl data-testid="control" expandIcon={<span data-testid="expand">Expand</span>} {...props}>
+        <TagPickerGroup aria-label="Selected animals">
+          <Tag value="Cat">Cat</Tag>
+        </TagPickerGroup>
+        <TagPickerInput aria-label="Select animals" />
+      </TagPickerControl>
+      <TagPickerList>
+        <TagPickerOption value="dog">Dog</TagPickerOption>
+      </TagPickerList>
+    </TagPicker>
+  );
+  const renderControl = (props: TagPickerControlProps = {}) => render(<ControlFixture {...props} />);
+
+  it('clears stale intent before a consumer capture handler stops the next mousedown', () => {
+    let cancel = false;
+    const onMouseDownCapture = jest.fn((event: React.MouseEvent) => {
+      if (cancel) {
+        event.stopPropagation();
+      }
+    });
+    const { getByTestId, getByRole } = renderControl({ onMouseDownCapture });
+    const control = getByTestId('control');
+
+    fireEvent.mouseDown(control);
+    cancel = true;
+    fireEvent.mouseDown(control);
+    fireEvent.click(control);
+
+    expect(onMouseDownCapture).toHaveBeenCalledTimes(2);
+    expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('does not focus or open when the parent picker is disabled', () => {
+    const { getByTestId, getByRole } = render(<ControlFixture disabled />);
+    const input = getByRole('combobox');
+    const focus = jest.spyOn(input, 'focus');
+
+    fireEvent.mouseDown(getByTestId('control'));
+    fireEvent.click(getByTestId('control'));
+
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+    expect(focus).not.toHaveBeenCalled();
+  });
+
+  it('discards pending opening when disabled between mousedown and click', () => {
+    const { getByTestId, getByRole, rerender } = render(<ControlFixture />);
+    fireEvent.mouseDown(getByTestId('control'));
+    rerender(<ControlFixture disabled />);
+    const focus = jest.spyOn(getByRole('combobox'), 'focus');
+    fireEvent.click(getByTestId('control'));
+    expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+    expect(focus).not.toHaveBeenCalled();
+    rerender(<ControlFixture />);
+    fireEvent.click(getByTestId('control'));
+    expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+  });
 
   it.each(['control', 'expand', 'group', 'aside'])('opens on click, not mousedown, on the %s', target => {
     const { getByTestId, getByRole } = renderControl();
