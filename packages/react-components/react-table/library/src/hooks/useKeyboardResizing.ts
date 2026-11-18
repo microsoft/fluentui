@@ -39,7 +39,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
   const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement | null>>());
 
   const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
-    if (!columnId) {
+    if (columnId === undefined) {
       return;
     }
 
@@ -94,7 +94,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
   );
 
   const disableInteractiveMode = React.useCallback(() => {
-    if (!columnId) {
+    if (columnId === undefined) {
       return;
     }
     // Notify the onChange listener that we are disabling interactive mode.
@@ -111,9 +111,9 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
 
   const toggleInteractiveMode = (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => {
     onChangeRef.current = onChange;
-    if (!columnId) {
+    if (columnId === undefined) {
       enableInteractiveMode(colId);
-    } else if (colId && columnId !== colId) {
+    } else if (columnId !== colId) {
       enableInteractiveMode(colId);
       setColumnId(colId);
     } else {
