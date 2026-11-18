@@ -365,6 +365,132 @@ describe('Menu viewport', () => {
     expect(surface.scrollTop).toBe(0);
   });
 
+  it.each([false, true])('checks shadow focus ownership before revealing its host (nested popover: %s)', nested => {
+    const { get } = setup();
+    const surface = get('outer');
+    const host = surface.ownerDocument.createElement('div');
+    surface.appendChild(host);
+    const root = host.attachShadow({ mode: 'open' });
+    const content = surface.ownerDocument.createElement('div');
+    if (nested) {
+      content.setAttribute('popover', 'manual');
+    }
+    const item = surface.ownerDocument.createElement('button');
+    content.appendChild(item);
+    root.appendChild(content);
+    measure(surface, host);
+    item.focus();
+    flush();
+    expect(surface.scrollTop).toBe(nested ? 0 : 100);
+    expect(root.activeElement).toBe(item);
+  });
+
+  it.each([
+    { offsetTop: 0, offsetLeft: 0, height: 41, width: 40, expected: [120, 120] },
+    { offsetTop: 61, offsetLeft: 60, height: 100, width: 100, expected: [60, 60] },
+  ])('reveals within the visual viewport intersection: %o', ({ expected, ...bounds }) => {
+    const viewport = Object.assign(new EventTarget(), { offsetTop: 0, offsetLeft: 0, height: 100, width: 100 });
+    const previous = Object.getOwnPropertyDescriptor(window, 'visualViewport');
+    Object.defineProperty(window, 'visualViewport', { configurable: true, value: viewport });
+    try {
+      const { get } = setup();
+      const surface = get('outer');
+      const item = get('outer-item');
+      measure(surface, item, { top: 160, left: 160, width: 20, size: 200, scaleX: 0.5, scaleY: 0.5 });
+      surface.scrollTop = 80;
+      surface.scrollLeft = 80;
+      item.focus();
+      flush();
+      // Start with the item inside the full viewport, then clip its end or start.
+      Object.assign(viewport, bounds);
+      act(() => viewport.dispatchEvent(new Event('resize')));
+      flush();
+      expect([surface.scrollLeft, surface.scrollTop]).toEqual(expected);
+      expect(surface.ownerDocument.activeElement).toBe(item);
+    } finally {
+      if (previous) {
+        Object.defineProperty(window, 'visualViewport', previous);
+      } else {
+        Reflect.deleteProperty(window, 'visualViewport');
+      }
+    }
+  });
+
+  it('does not scroll a surface with no visible viewport intersection', () => {
+    const { get } = setup();
+    const surface = get('outer');
+    const item = get('outer-item');
+    measure(surface, item);
+    jest.spyOn(surface, 'getBoundingClientRect').mockImplementation(() => rect(window.innerHeight + 20, 104));
+    jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => rect(window.innerHeight + 202, 20, 10));
+    item.focus();
+    flush();
+    expect(surface.scrollTop).toBe(0);
+  });
+
+  it('observes and reveals higher ancestors through a triggerless menu', () => {
+    const empty = { current: null };
+    const outer = React.createRef<HTMLDivElement>();
+    const middle = React.createRef<HTMLDivElement>();
+    const gap = React.createRef<HTMLDivElement>();
+    const outerTrigger = React.createRef<HTMLButtonElement>();
+    const innerTrigger = React.createRef<HTMLButtonElement>();
+    const Surface = ({
+      elementRef,
+      parentRef,
+      triggerRef,
+      children,
+    }: {
+      elementRef?: React.RefObject<HTMLDivElement | null>;
+      parentRef: React.RefObject<HTMLElement | null>;
+      triggerRef: React.RefObject<HTMLElement | null>;
+      children?: React.ReactNode;
+    }) => {
+      const ref = useMenuViewport(true, triggerRef, parentRef);
+      return (
+        <div
+          popover="manual"
+          ref={element => {
+            if (elementRef) {
+              elementRef.current = element;
+            }
+            ref(element);
+          }}
+        >
+          {children}
+        </div>
+      );
+    };
+    const view = render(
+      <>
+        <Surface elementRef={outer} parentRef={empty} triggerRef={empty}>
+          <button ref={outerTrigger}>Outer invoker</button>
+        </Surface>
+        <Surface elementRef={middle} parentRef={outer} triggerRef={outerTrigger} />
+        <Surface elementRef={gap} parentRef={middle} triggerRef={empty}>
+          <button ref={innerTrigger}>Inner invoker</button>
+        </Surface>
+        <Surface parentRef={gap} triggerRef={innerTrigger}>
+          <button data-testid="focused">Action</button>
+        </Surface>
+      </>,
+    );
+    measure(outer.current!, outerTrigger.current!, { top: 40 });
+    const item = view.getByTestId('focused');
+    item.focus();
+    flush();
+    expect(resizeObservers.some(observer => observer.targets.has(outer.current!))).toBe(true);
+    Object.defineProperty(outer.current, 'clientHeight', { configurable: true, value: 40 });
+    resize(outer.current!);
+    flush();
+    expect(outer.current!.scrollTop).toBe(20);
+    outer.current!.scrollTop = 0;
+    act(() => outer.current!.dispatchEvent(new Event('scroll')));
+    flush();
+    expect(outer.current!.scrollTop).toBe(20);
+    expect(item.ownerDocument.activeElement).toBe(item);
+  });
+
   it('reveals an item above the scrollport with only the required delta', () => {
     const { get } = setup();
     const surface = get('outer');

@@ -5,6 +5,165 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from './';
 
 describe('Menu viewport reconciliation', () => {
+  it('reveals a focused row within the viewport when the menu extends below it', () => {
+    cy.viewport(800, 600);
+    mount(
+      <Menu open>
+        <MenuTrigger>
+          <button>Actions</button>
+        </MenuTrigger>
+        <MenuPopover id="clipped-menu" style={{ height: '100px', padding: 0, border: 0, overflow: 'auto' }}>
+          <MenuList>
+            <div style={{ height: '70px' }} />
+            <MenuItem id="clipped-item" style={{ display: 'block', height: '20px' }}>
+              Action
+            </MenuItem>
+            <div style={{ height: '400px' }} />
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+    cy.get('#clipped-menu').then(([surface]) => {
+      surface.style.setProperty('position-area', 'none');
+      surface.style.setProperty('position-anchor', 'auto');
+      surface.style.inset = 'auto';
+      surface.style.top = '550px';
+      surface.style.left = '20px';
+      surface.querySelector<HTMLElement>('#clipped-item')!.focus({ preventScroll: true });
+    });
+    cy.window().trigger('resize');
+    cy.get('#clipped-menu').should(([surface]) => {
+      const bounds = surface.getBoundingClientRect();
+      const item = surface.querySelector<HTMLElement>('#clipped-item')!;
+      const itemBounds = item.getBoundingClientRect();
+      expect(bounds.bottom).to.be.greaterThan(600);
+      expect(itemBounds.top).to.be.at.least(bounds.top - 1);
+      expect(itemBounds.bottom).to.be.at.most(601);
+      expect(surface.scrollTop).to.equal(40);
+      expect(surface.ownerDocument.activeElement).to.equal(item);
+    });
+  });
+
+  it('reconciles higher invokers across a triggerless positioned menu', () => {
+    const scrollingSurface = { width: '200px', height: '200px', padding: 0, border: 0, overflow: 'auto' };
+    const Example = () => {
+      const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
+      const [positionedOpen, setPositionedOpen] = React.useState(false);
+      return (
+        <Menu>
+          <MenuTrigger>
+            <button id="triggerless-root-trigger">Actions</button>
+          </MenuTrigger>
+          <MenuPopover id="triggerless-outer" style={scrollingSurface}>
+            <MenuList>
+              <div style={{ height: '160px' }} />
+              <Menu>
+                <MenuTrigger>
+                  <MenuItem id="triggerless-outer-invoker" style={{ display: 'block', height: '20px' }}>
+                    More actions
+                  </MenuItem>
+                </MenuTrigger>
+                <MenuPopover style={scrollingSurface}>
+                  <MenuList>
+                    <button id="open-positioned" ref={setTarget} onClick={() => setPositionedOpen(true)}>
+                      Open positioned menu
+                    </button>
+                    <Menu open={positionedOpen} positioning={{ target }}>
+                      <MenuPopover style={scrollingSurface}>
+                        <MenuList>
+                          <Menu>
+                            <MenuTrigger>
+                              <MenuItem id="triggerless-inner-invoker">Additional actions</MenuItem>
+                            </MenuTrigger>
+                            <MenuPopover>
+                              <MenuList>
+                                <MenuItem id="triggerless-focused">Last action</MenuItem>
+                              </MenuList>
+                            </MenuPopover>
+                          </Menu>
+                        </MenuList>
+                      </MenuPopover>
+                    </Menu>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+              <div style={{ height: '400px' }} />
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      );
+    };
+    cy.viewport(1000, 800);
+    mount(<Example />);
+    cy.get('#triggerless-root-trigger').focus().realPress('Enter');
+    cy.get('#triggerless-outer-invoker').focus().realPress('Enter');
+    cy.get('#open-positioned').click();
+    cy.get('#triggerless-inner-invoker').focus().realPress('Enter');
+    cy.get('#triggerless-focused').focus();
+    cy.get('#triggerless-outer').then(([surface]) => {
+      surface.scrollTop = 0;
+      surface.style.height = '100px';
+    });
+    const checkInvoker = () =>
+      cy.get('#triggerless-outer').should(([surface]) => {
+        const bounds = surface.getBoundingClientRect();
+        const item = surface.ownerDocument.querySelector<HTMLElement>('#triggerless-outer-invoker')!;
+        const itemBounds = item.getBoundingClientRect();
+        expect(itemBounds.top).to.be.at.least(bounds.top - 1);
+        expect(itemBounds.bottom).to.be.at.most(bounds.bottom + 1);
+        expect(surface.scrollTop).to.be.greaterThan(0);
+        expect(surface.ownerDocument.activeElement?.id).to.equal('triggerless-focused');
+      });
+    checkInvoker();
+    cy.get('#triggerless-outer').then(([surface]) => {
+      surface.scrollTop = 0;
+    });
+    checkInvoker();
+  });
+
+  it('does not scroll the menu for focus inside an independent shadow-root popover', () => {
+    let root: ShadowRoot;
+    mount(
+      <Menu open>
+        <MenuTrigger>
+          <button>Actions</button>
+        </MenuTrigger>
+        <MenuPopover id="shadow-menu" style={{ height: '200px', padding: 0, border: 0, overflow: 'auto' }}>
+          <MenuList>
+            <div style={{ height: '160px' }} />
+            <div id="nested-shadow-host" style={{ height: '20px' }} />
+            <div style={{ height: '400px' }} />
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+    cy.get('#nested-shadow-host').then(([host]) => {
+      root = host.attachShadow({ mode: 'open' });
+      const popup = host.ownerDocument.createElement('div');
+      popup.setAttribute('popover', 'manual');
+      const button = host.ownerDocument.createElement('button');
+      button.textContent = 'Independent action';
+      popup.appendChild(button);
+      root.appendChild(popup);
+      popup.showPopover();
+      button.focus({ preventScroll: true });
+    });
+    cy.get('#shadow-menu').then(([surface]) => {
+      surface.style.height = '100px';
+    });
+    cy.window().then(
+      ownerWindow =>
+        new Cypress.Promise<void>(resolve => {
+          ownerWindow.requestAnimationFrame(() => ownerWindow.requestAnimationFrame(() => resolve()));
+        }),
+    );
+    cy.get('#shadow-menu').should(([surface]) => {
+      expect(surface.clientHeight).to.equal(100);
+      expect(surface.scrollTop).to.equal(0);
+      expect(root.activeElement?.textContent).to.equal('Independent action');
+    });
+  });
+
   for (const mode of ['document', 'open', 'closed'] as const) {
     it(`keeps nested invokers and focused items visible after resize in a ${mode} root`, () => {
       let root: HTMLElement | ShadowRoot;

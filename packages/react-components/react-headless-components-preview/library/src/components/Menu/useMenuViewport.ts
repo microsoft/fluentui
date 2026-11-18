@@ -17,11 +17,26 @@ const revealWithin = (surface: HTMLElement, target: Element) => {
   // DOM rects include scaling, while client dimensions and scroll offsets use layout pixels.
   const scaleX = bounds.width > 0 && surface.offsetWidth > 0 ? bounds.width / surface.offsetWidth : 1;
   const scaleY = bounds.height > 0 && surface.offsetHeight > 0 ? bounds.height / surface.offsetHeight : 1;
-  const top = bounds.top + surface.clientTop * scaleY;
-  const bottom = top + surface.clientHeight * scaleY;
-  const left = bounds.left + surface.clientLeft * scaleX;
-  const right = left + surface.clientWidth * scaleX;
+  const ownerWindow = surface.ownerDocument.defaultView;
+  const viewport = ownerWindow?.visualViewport;
+  const viewportTop = viewport?.offsetTop ?? 0;
+  const viewportLeft = viewport?.offsetLeft ?? 0;
+  const scrollportTop = bounds.top + surface.clientTop * scaleY;
+  const scrollportLeft = bounds.left + surface.clientLeft * scaleX;
+  const top = Math.max(scrollportTop, viewportTop);
+  const bottom = Math.min(
+    scrollportTop + surface.clientHeight * scaleY,
+    viewportTop + (viewport?.height ?? ownerWindow?.innerHeight ?? 0),
+  );
+  const left = Math.max(scrollportLeft, viewportLeft);
+  const right = Math.min(
+    scrollportLeft + surface.clientWidth * scaleX,
+    viewportLeft + (viewport?.width ?? ownerWindow?.innerWidth ?? 0),
+  );
 
+  if (bottom <= top || right <= left) {
+    return;
+  }
   if (item.top < top) {
     surface.scrollTop += (item.top - top) / scaleY;
   } else if (item.bottom > bottom) {
@@ -63,17 +78,17 @@ export const useMenuViewport = (
         return;
       }
 
-      const ancestors: { parent: HTMLElement; trigger: HTMLElement }[] = [];
+      const ancestors: { parent: HTMLElement; trigger: HTMLElement | null }[] = [];
       const visited = new Set([surface]);
       let relation = parents.get(surface);
       while (relation) {
         const ancestor = relation.parentRef.current;
         const trigger = relation.triggerRef.current;
-        if (!ancestor?.isConnected || !trigger?.isConnected || visited.has(ancestor)) {
+        if (!ancestor?.isConnected || visited.has(ancestor)) {
           break;
         }
         visited.add(ancestor);
-        ancestors.unshift({ parent: ancestor, trigger });
+        ancestors.unshift({ parent: ancestor, trigger: trigger?.isConnected ? trigger : null });
         relation = parents.get(ancestor);
       }
 
@@ -103,9 +118,19 @@ export const useMenuViewport = (
       if (!active || !surface.contains(active) || active.closest('[popover]') !== surface) {
         return;
       }
+      let shadowActive = active.shadowRoot?.activeElement;
+      while (shadowActive) {
+        // Shadow descendants without their own popover still belong to the surface.
+        if (shadowActive.closest('[popover]')) {
+          return;
+        }
+        shadowActive = shadowActive.shadowRoot?.activeElement;
+      }
 
       for (const ancestor of ancestors) {
-        revealWithin(ancestor.parent, ancestor.trigger);
+        if (ancestor.trigger) {
+          revealWithin(ancestor.parent, ancestor.trigger);
+        }
       }
       revealWithin(surface, active);
     };

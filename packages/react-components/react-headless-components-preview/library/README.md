@@ -16,3 +16,5 @@ Existing attributes retain their current names and value semantics. Visual axes 
 
 Consumers own MenuPopover sizing and scrolling styles. Headless keeps focused items and ancestor
 submenu invokers visible after viewport or scrollport changes, without moving focus.
+For partially offscreen menus, scrolling uses the visible intersection with the viewport.
+Sizing and positioning must still leave enough visible space for the focused item.
