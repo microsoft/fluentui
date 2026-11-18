@@ -3,6 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 
 import { TimePicker } from '.';
 import type { TimePickerProps } from '.';
+import { formatDateToTimeString as formatTime } from './utils/timeMath';
 
 // ---- Selectors ----
 // The TimePicker `id` prop maps to the trigger <input> element.
@@ -15,6 +16,8 @@ const clearIcon = '#clear-icon';
 // ---- Fixtures ----
 
 const dateAnchor = new Date(2023, 9, 1);
+const firstSuggestion = formatTime(new Date(2023, 9, 1, 9), { locale: 'en-GB', hourCycle: 'h23' });
+const secondSuggestion = formatTime(new Date(2023, 9, 1, 9, 30), { locale: 'en-GB', hourCycle: 'h23' });
 
 const BasicTimePicker = (props: Partial<TimePickerProps>) => {
   const [value, setValue] = React.useState<string>('');
@@ -28,6 +31,7 @@ const BasicTimePicker = (props: Partial<TimePickerProps>) => {
         startHour={9}
         endHour={12}
         hourCycle="h23"
+        locale="en-GB"
         onChange={(_ev, data) => {
           setValue(`${data.displayValue ?? ''}|${data.errorType ?? ''}`);
         }}
@@ -47,7 +51,7 @@ describe('TimePicker', () => {
     cy.get(listbox).should('not.exist');
     cy.get(trigger).realClick();
     cy.get(listbox).should('exist');
-    cy.get(option).should('have.length', 6).first().should('have.text', '09:00');
+    cy.get(option).should('have.length', 6).first().should('have.text', firstSuggestion);
   });
 
   it('selects an option with ArrowDown and Enter', () => {
@@ -55,8 +59,8 @@ describe('TimePicker', () => {
     cy.get(trigger).focus().realPress('ArrowDown');
     cy.get(trigger).realPress('ArrowDown');
     cy.get(trigger).realPress('Enter');
-    cy.get(trigger).should('have.value', '09:30');
-    cy.get(selectedTime).should('have.text', '09:30|');
+    cy.get(trigger).should('have.value', secondSuggestion);
+    cy.get(selectedTime).should('have.text', `${secondSuggestion}|`);
   });
 
   it('closes on Escape without selecting', () => {
@@ -91,12 +95,41 @@ describe('TimePicker', () => {
     cy.get(selectedTime).should('have.text', '11:00|');
   });
 
-  it('selects the first option on Enter when no option matches the typed prefix', () => {
+  it('retains invalid text instead of selecting an unrelated suggestion', () => {
     mount(<BasicTimePicker />);
     cy.get(trigger).realClick().realType('a');
     cy.get(trigger).realPress('Enter');
-    cy.get(trigger).should('have.value', '09:00');
-    cy.get(selectedTime).should('have.text', '09:00|');
+    cy.get(trigger).should('have.value', 'a').and('have.attr', 'aria-invalid', 'true');
+    cy.get(selectedTime).should('have.text', 'a|invalid-input');
+  });
+
+  it('filters suggestions and commits an off-step custom time by default', () => {
+    mount(<BasicTimePicker />);
+    cy.get(trigger).realClick().realType('10:');
+    cy.get(option).should('have.length', 2);
+    cy.get(trigger).realType('17').realPress('Enter');
+    cy.get(trigger).should('have.value', '10:17').and('be.focused');
+    cy.get(selectedTime).should('have.text', '10:17|');
+    cy.get(listbox).should('not.exist');
+  });
+
+  it('validates on Tab out without committing the active suggestion or reclaiming focus', () => {
+    mount(<BasicTimePicker />);
+    cy.get(trigger).realClick().realType('10:').realPress('ArrowDown');
+    cy.get(trigger).realPress('Tab');
+    cy.get('#outside').should('be.focused');
+    cy.get(trigger).should('have.value', '10:').and('have.attr', 'aria-invalid', 'true');
+    cy.get(selectedTime).should('have.text', '10:|invalid-input');
+  });
+
+  it('tabs to the native Clear button without validating and returns focus after clearing', () => {
+    mount(<BasicTimePicker clearable clearIcon={{ id: 'clear-icon', children: 'x' }} />);
+    cy.get(trigger).realClick().realType('10:17').realPress('Tab');
+    cy.get(clearIcon).should('be.focused').and('match', 'button');
+    cy.get(selectedTime).should('have.text', '');
+    cy.get(clearIcon).realPress('Space');
+    cy.get(trigger).should('be.focused').and('have.value', '');
+    cy.get(clearIcon).should('not.exist');
   });
 
   it('in freeform mode, selects the option matching the typed prefix on Enter', () => {
@@ -123,7 +156,7 @@ describe('TimePicker', () => {
     mount(<BasicTimePicker clearable clearIcon={{ id: 'clear-icon', children: 'x' }} />);
     cy.get(trigger).realClick();
     cy.get(trigger).realPress('Enter');
-    cy.get(trigger).should('have.value', '09:00');
+    cy.get(trigger).should('have.value', firstSuggestion);
     cy.get(clearIcon).realClick();
     cy.get(trigger).should('have.value', '');
     cy.get(selectedTime).should('have.text', '|');

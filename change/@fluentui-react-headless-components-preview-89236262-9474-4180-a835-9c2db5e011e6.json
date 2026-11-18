@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(TimePicker): accept and filter custom times by default, share locale-aware formatting and compact HHmm parsing, preserve accepted values on validation errors, and align keyboard/focus behavior. Preview compatibility: freeform defaults to true (set false for restricted suggestions) and clearIcon is now a native button slot.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}

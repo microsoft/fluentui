@@ -2,7 +2,9 @@
 
 ## Background
 
-`TimePicker` lets a user pick a time of day from a list of predefined options, or, in its freeform variant, type a custom time. It is built on top of the headless `Combobox`, so it shares Combobox's structure, keyboard interaction and accessibility semantics, and like every headless component it ships no styles, design props or default icons.
+`TimePicker` lets a user select a generated suggestion or type a valid custom time. It is built on the headless
+`Combobox`, with time-specific keyboard and validation behavior. Like every headless component it ships no visual
+styles, design props or default icons.
 
 It is exported from `@fluentui/react-headless-components-preview/time-picker`. The package is a preview: its API can change and it must not be used in production.
 
@@ -109,8 +111,10 @@ const [error, setError] = React.useState<string>();
 
 ## Variants
 
-- **Basic**: the user selects one of the generated options. Typing moves the active option to the first match (Combobox behavior).
-- **Freeform** (`freeform`): the user can type any time. The typed text is parsed with `parseTimeStringToDate` and committed when it has changed and the user presses <kbd>Enter</kbd> (with no active option) or focus leaves the TimePicker. This mirrors the native `change` event of `<input>`.
+- **Freeform** (`freeform`, default `true`): the user can type any in-range time, independently of the suggestion step.
+  Typing filters suggestions and activates the first match. Changed text is parsed with `parseTimeStringToDate`
+  on Enter without an active option, or when focus leaves the component.
+- **Restricted** (`freeform={false}`): the user selects one of the generated options.
 - **Clearable** (`clearable`): renders a clear button that clears the value.
 
 There are no visual variants. The root carries the headless Combobox data attributes (`data-open`, `data-disabled`, `data-placeholder`, `data-invalid`, `data-clearable`) and `data-freeform`, for styling.
@@ -135,13 +139,14 @@ The event part is a discriminated union, as in TagPicker and Tree, so checking `
 | Commit, valid                    | `'keydown'`, `'blur'`  | parsed time           | formatted value    | `undefined` |
 | Commit, failed                   | `'keydown'`, `'blur'`  | see "Commit outcomes" | typed text         | set         |
 | Commit, empty, not `required`    | `'keydown'`, `'blur'`  | `null`                | typed text (empty) | `undefined` |
-| Clear                            | `'click'`              | `null`                | `undefined`        | `undefined` |
+| Clear                            | `'click'`              | `null`                | empty              | `undefined` |
 
 `errorType` set means a failed commit, `value === null` without `errorType` means the value is now empty, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit. An empty value comes either from the clear button (`type: 'click'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check `type`.
 
 ### Slots
 
-Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
+`root`, `input`, `expandIcon`, `clearIcon`, `listbox`. Unlike Combobox, `clearIcon` is a native button.
+Clear and the chevron are mutually exclusive. Clear is the only extra tab stop; the chevron has `tabIndex=-1`.
 
 ### Utilities
 
@@ -155,7 +160,9 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 #### Formatting and parsing
 
-Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
+Formatting and the default parser share `locale` (the runtime locale when omitted) and the resolved hour cycle:
+`hourCycle` when set, otherwise that locale's hour cycle. Custom formatting callbacks receive the same
+`TimeFormatOptions`.
 
 The default parser (`getDateFromTimeString`) builds its pattern from the parts of the default formatter (`Intl.DateTimeFormat.formatToParts()`), so it accepts the runtime locale's field order, separators, day period and digits. After trimming leading and trailing whitespace, removing bidi marks and mapping localized digits to ASCII (through `Intl.NumberFormat` with the resolved numbering system), it accepts:
 
@@ -163,6 +170,7 @@ The default parser (`getDateFromTimeString`) builds its pattern from the parts o
 - between two fields, the locale's separator or `:` (`14.30` and `14:30` in `fi-FI`, `14 h 30` and `14:30` in `fr-CA`);
 - a unit label before the first or after the last field (the trailing ` s` of `fr-CA` with `showSeconds`) as optional, so `14:30:45` and `14 h 30 min 45 s` both parse;
 - in a 12-hour cycle, the locale's day period or `AM`/`PM`, case-insensitive, with U+00A0 and U+202F treated as a space.
+- compact `HHmm` with hours `00`–`23`, independently of the display hour cycle.
 
 | Resolved hour cycle | Hour range | Notes                                                                |
 | ------------------- | ---------- | -------------------------------------------------------------------- |
@@ -171,7 +179,9 @@ The default parser (`getDateFromTimeString`) builds its pattern from the parts o
 | `h12`               | `1`–`12`   | Day period required.                                                 |
 | `h11`               | `0`–`11`   | Day period required.                                                 |
 
-With `showSeconds`, seconds are required; without it, seconds are rejected. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
+With `showSeconds`, separated input requires seconds; compact `HHmm` implies zero seconds. Without it, seconds are
+rejected. Other separators, digits outside the cycle's range, or a missing day period in separated 12-hour input
+produce `invalid-input`.
 
 **Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options in the runtime locale, including locales with localized digits (`ar-EG`, `fa-IR`, `ff-Adlm`), localized day periods (`ja-JP`, `ko-KR`, `es-US`) and unit labels (`fr-CA`).
 
@@ -188,8 +198,8 @@ Internally `useTimePicker` resolves the time props into options, the value, the 
 ```html
 <div data-freeform="">
   <input role="combobox" aria-expanded="true" aria-controls="listbox-id" />
-  <span aria-hidden="true"><!-- clearIcon, consumer provided --></span>
-  <span role="button" aria-label="Open"><!-- expandIcon, consumer provided --></span>
+  <button type="button" aria-label="Clear"><!-- clearIcon, consumer provided --></button>
+  <!-- when Clear is absent, expandIcon is rendered instead with tabindex="-1" -->
   <!-- rendered while open -->
   <div role="listbox" id="listbox-id">
     <div role="option" aria-selected="false">9:00 AM</div>
@@ -228,6 +238,11 @@ See the [compat migration guide](../../../react-timepicker-compat/library/docs/M
 - **Select**: click an option, or <kbd>Enter</kbd> on the active option. `onChange` fires with the option's time.
 - **Commit**: when the typed text changed since the last commit, <kbd>Enter</kbd> without an active option or focus leaving the TimePicker parses the text and fires `onChange`, including `errorType` when parsing or range validation fails. While the typed text does not prefix-match the active option, the active option is cleared so <kbd>Enter</kbd> commits the typed text.
 - **Clear**: the clear button fires `onChange` with `value: null`. It is not validated.
+- **Arrows**: open at the selected, first or last suggestion, then navigate without wrapping. Alt+Down opens without
+  activating an option; Alt+Up closes and preserves pending text.
+- **Tab**: follows the input and optional Clear button. Leaving the component validates changed text, never the active
+  suggestion. Home/End retain native caret behavior.
+- **Escape**: closes and cancels pending edits, restoring the last accepted value without undoing an accepted commit.
 
 ### Display text
 
@@ -256,15 +271,16 @@ For ranges that cross midnight (`endHour < startHour`), a value on the following
 
 ### Commit outcomes
 
-A commit parses the typed text with `parseTimeStringToDate` and always replaces the value with the parsed result.
+A commit parses the typed text with `parseTimeStringToDate`. Only a successful commit replaces the accepted value.
+Failed commits retain the pending text and expose the error through input `aria-invalid` and root `data-invalid`.
 
-| Result                        | `value` in data             | Value after commit | Display text    | Selected option |
-| ----------------------------- | --------------------------- | ------------------ | --------------- | --------------- |
-| Valid, equals an option       | parsed time                 | parsed time        | formatted value | that option     |
-| Valid, between options        | parsed time                 | parsed time        | formatted value | none            |
-| `invalid-input`               | `null`                      | `null`             | typed text      | none            |
-| `out-of-bounds`               | parsed time (outside range) | parsed time        | typed text      | none            |
-| `required-input` (empty text) | `null`                      | `null`             | empty           | none            |
+| Result                        | `value` in data             | Value after commit | Display text    | Selected option      |
+| ----------------------------- | --------------------------- | ------------------ | --------------- | -------------------- |
+| Valid, equals an option       | parsed time                 | parsed time        | formatted value | that option          |
+| Valid, between options        | parsed time                 | parsed time        | formatted value | none                 |
+| `invalid-input`               | `null`                      | previous value     | typed text      | previous, if visible |
+| `out-of-bounds`               | parsed time (outside range) | previous value     | typed text      | previous, if visible |
+| `required-input` (empty text) | `null`                      | previous value     | empty           | previous, if visible |
 
 - `required-input` is reported only when `required` is set on the TimePicker or on the wrapping `Field`, as DatePicker does. Otherwise an empty commit reports `value: null` with no error.
 - The clear button bypasses parsing and validation. It fires once with the cleared payload; when focus then leaves the still-empty input, no additional `required-input` is reported.

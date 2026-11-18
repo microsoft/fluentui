@@ -6,7 +6,9 @@
 
 import type { BaseComboboxProps } from '@fluentui/react-combobox';
 import type { BaseComboboxState } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -14,11 +16,11 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 import { ComboboxContextValues as TimePickerContextValues } from '@fluentui/react-combobox';
-import { ComboboxSlots as TimePickerSlots } from '@fluentui/react-combobox';
 
 // @public
-export function createTimeFormat({ hourCycle, showSeconds }?: TimeFormatOptions): TimeFormat;
+export function createTimeFormat({ hourCycle, showSeconds, locale }?: TimeFormatOptions): TimeFormat;
 
 // @public
 export function formatDateToTimeString(date: Date, timeFormatOptions?: TimeFormatOptions): string;
@@ -50,6 +52,7 @@ export type TimeFormat = {
 
 // @public
 export type TimeFormatOptions = {
+    locale?: string;
     hourCycle?: HourCycle | undefined;
     showSeconds?: boolean;
 };
@@ -70,12 +73,15 @@ export type TimePickerOnChangeData = {
 } & (EventData<'click', React_2.MouseEvent<HTMLElement>> | EventData<'keydown', React_2.KeyboardEvent<HTMLElement>> | EventData<'blur', React_2.FocusEvent<HTMLElement>>);
 
 // @public
-export type TimePickerProps = Omit<ComponentProps<Partial<TimePickerSlots>, 'input'>, 'children' | 'size' | 'value' | 'defaultValue' | 'onChange'> & Pick<ComboboxProps, 'clearable' | 'defaultOpen' | 'freeform' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'> & TimePickerTimeProps;
-
-export { TimePickerSlots }
+export type TimePickerProps = Omit<ComponentProps<Partial<TimePickerSlots>, 'input'>, 'children' | 'size' | 'value' | 'defaultValue' | 'onChange'> & Pick<ComboboxProps, 'clearable' | 'defaultOpen' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'> & TimePickerTimeProps;
 
 // @public
-export type TimePickerState = ComboboxState & TimePickerTimeState & {
+export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'> & {
+    clearIcon?: Slot<'button'>;
+};
+
+// @public
+export type TimePickerState = Omit<ComboboxState, 'components' | 'clearIcon'> & ComponentState<TimePickerSlots> & TimePickerTimeState & {
     root: {
         'data-freeform'?: string;
     };
@@ -83,6 +89,7 @@ export type TimePickerState = ComboboxState & TimePickerTimeState & {
 
 // @public
 export type TimePickerTimeProps = TimeFormatOptions & {
+    freeform?: boolean;
     startHour?: number;
     endHour?: number;
     increment?: number;

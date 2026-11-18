@@ -44,6 +44,22 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
     expect((getByTestId('layer') as HTMLDialogElement).open).toBe(true);
   });
 
+  it('preserves the natural focus destination when closing after focus leaves', () => {
+    const Example = ({ open }: { open: boolean }) => (
+      <>
+        <button>Invoker</button>
+        <Layer open={open} />
+        <button>Next</button>
+      </>
+    );
+    const { getByRole, rerender } = render(<Example open={false} />);
+    getByRole('button', { name: 'Invoker' }).focus();
+    rerender(<Example open />);
+    getByRole('button', { name: 'Next' }).focus();
+    rerender(<Example open={false} />);
+    expect(getByRole('button', { name: 'Next' })).toHaveFocus();
+  });
+
   it('reports a light dismiss', async () => {
     const warn = jest.spyOn(console, 'warn').mockImplementation();
     const onOpenChange = jest.fn();

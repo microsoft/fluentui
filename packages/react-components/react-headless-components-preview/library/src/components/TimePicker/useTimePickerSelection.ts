@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ComboboxProps } from '../Combobox/Combobox.types';
+import { resolvePositioningShorthand } from '../../hooks';
 import type { TimePickerOption } from './utils/types';
 import {
   createTimeFormat,
@@ -34,11 +35,6 @@ export type TimePickerSelection = TimePickerTimeState & {
   options: TimePickerOption[];
 
   /**
-   * Ref to be merged into the Combobox `clearIcon` slot. It tells clearing apart from a freeform commit.
-   */
-  clearIconRef: React.RefObject<HTMLSpanElement | null>;
-
-  /**
    * Updates `value` and the display text, then invokes `onChange`.
    */
   commitValue: (event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => void;
@@ -47,6 +43,10 @@ export type TimePickerSelection = TimePickerTimeState & {
    * Records the typed text. Merged into the resolved input slot, so an `onChange` on the input slot does not replace it.
    */
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Cancels pending edits without changing the last accepted value. */
+  cancelPendingText: () => void;
+  /** Whether opening or typing should activate a suggestion. */
+  shouldAutoFocus: boolean;
 };
 
 /**
@@ -68,6 +68,7 @@ type LastCommit = {
   text: string;
   valueKey: string;
   committedValueKey: string;
+  errorType: NonNullable<TimePickerCommitData['errorType']>;
 };
 
 const belongsTo = (text: { valueKey: string; committedValueKey: string }, valueKey: string) =>
@@ -85,15 +86,17 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     endHour = 24,
     formatDateToTimeString: formatDateToTimeStringInProps,
     hourCycle,
+    locale,
     increment = 30,
     onChange,
     value: valueInProps,
     showSeconds = false,
     startHour = 0,
     parseTimeStringToDate: parseTimeStringToDateInProps,
+    clearIcon: _clearIcon,
     ...rest
   } = props;
-  const { freeform = false, clearable } = rest;
+  const { freeform = true } = rest;
 
   const [value, setValue] = useControllableState<Date | null>({
     state: valueInProps,
@@ -126,13 +129,16 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     }
   }, [dateAnchorInProps, endHour, startHour]);
 
-  const timeFormat = React.useMemo(() => createTimeFormat({ hourCycle, showSeconds }), [hourCycle, showSeconds]);
+  const timeFormat = React.useMemo(
+    () => createTimeFormat({ hourCycle, showSeconds, locale }),
+    [hourCycle, showSeconds, locale],
+  );
   const formatTime = React.useCallback(
     (date: Date) =>
       formatDateToTimeStringInProps
-        ? formatDateToTimeStringInProps(date, { showSeconds, hourCycle })
+        ? formatDateToTimeStringInProps(date, { showSeconds, hourCycle, locale })
         : timeFormat.format(date),
-    [formatDateToTimeStringInProps, hourCycle, showSeconds, timeFormat],
+    [formatDateToTimeStringInProps, hourCycle, showSeconds, locale, timeFormat],
   );
 
   const options: TimePickerOption[] = React.useMemo(
@@ -180,9 +186,15 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
         ? formatTime(data.value)
         : '';
 
-    setValue(data.value);
+    if (!data.errorType) {
+      setValue(data.value);
+    }
     // After a successful change the input shows the formatted value, so only a failed commit needs its own baseline.
-    setLastCommit(keepsTypedText ? { text: data.displayValue!, valueKey, committedValueKey: nextValueKey } : undefined);
+    setLastCommit(
+      keepsTypedText
+        ? { text: data.displayValue!, valueKey, committedValueKey: nextValueKey, errorType: data.errorType! }
+        : undefined,
+    );
     setTypedText(keepsTypedText ? { text: data.displayValue!, valueKey, committedValueKey: nextValueKey } : undefined);
     onChange?.(event, {
       event,
@@ -195,12 +207,8 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
   // The key is kept even when no option matches, so a value between options still shows the clear icon.
   const selectedOptions = React.useMemo(() => (value && valueKey !== 'invalid' ? [valueKey] : []), [value, valueKey]);
 
-  const clearIconRef = React.useRef<HTMLSpanElement>(null);
   const onOptionSelect: NonNullable<ComboboxProps['onOptionSelect']> = useEventCallback((event, data) => {
-    if (
-      data.optionValue === undefined &&
-      !(clearable && event.type === 'click' && event.currentTarget === clearIconRef.current)
-    ) {
+    if (data.optionValue === undefined) {
       return;
     }
     if (data.optionValue === valueKey && activeTypedText === undefined) {
@@ -222,6 +230,10 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     if (!freeform) {
       setTypedText(undefined);
     }
+  });
+  const cancelPendingText = useEventCallback(() => {
+    setTypedText(undefined);
+    setLastCommit(undefined);
   });
   const onOpenChange: NonNullable<ComboboxProps['onOpenChange']> = useEventCallback((event, data) => {
     if (!data.open) {
@@ -246,7 +258,9 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
   const comboboxProps: ComboboxProps = {
     autoComplete: 'off',
     ...rest,
-    disableAutoFocus: matchesNoOption,
+    positioning: { position: 'below', align: 'start', ...resolvePositioningShorthand(rest.positioning) },
+    freeform,
+    disableAutoFocus: true,
     value: displayValue,
     onBlur: mergeCallbacks(rest.onBlur, discardTypedText),
     onOpenChange: mergeCallbacks(rest.onOpenChange, onOpenChange),
@@ -256,13 +270,18 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
 
   return {
     comboboxProps,
-    options,
-    clearIconRef,
+    options:
+      freeform && activeTypedText !== undefined && searchText
+        ? options.filter(option => option.text.toLowerCase().startsWith(searchText))
+        : options,
     commitValue,
     onInputChange,
     freeform,
     parseTimeStringToDate: parseTimeStringToDateInProps ?? defaultParseTimeStringToDate,
     committedText,
+    cancelPendingText,
+    errorType: lastCommit && belongsTo(lastCommit, valueKey) ? lastCommit.errorType : undefined,
+    shouldAutoFocus: !matchesNoOption,
   };
 };
 

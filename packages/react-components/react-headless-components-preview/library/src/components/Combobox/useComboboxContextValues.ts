@@ -4,5 +4,5 @@ import { useComboboxContextValues as useComboboxContextValuesBase } from '@fluen
 import type { ComboboxState, ComboboxContextValues } from './Combobox.types';
 
 export const useComboboxContextValues = useComboboxContextValuesBase as unknown as (
-  state: ComboboxState,
+  state: Omit<ComboboxState, 'components' | 'clearIcon'>,
 ) => ComboboxContextValues;

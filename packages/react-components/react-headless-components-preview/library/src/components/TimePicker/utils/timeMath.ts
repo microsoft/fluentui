@@ -52,8 +52,8 @@ export type TimeFormat = {
 /**
  * Creates the formatter and parser for a configuration. The parser accepts the formatter's own output in any locale.
  */
-export function createTimeFormat({ hourCycle, showSeconds }: TimeFormatOptions = {}): TimeFormat {
-  const formatter = new Intl.DateTimeFormat(undefined, {
+export function createTimeFormat({ hourCycle, showSeconds, locale }: TimeFormatOptions = {}): TimeFormat {
+  const formatter = new Intl.DateTimeFormat(locale, {
     hour: 'numeric',
     hourCycle,
     minute: '2-digit',
@@ -232,11 +232,14 @@ function parseTime(
     return { date: null, errorType: 'required-input' };
   }
 
-  const fields = regex.exec(normalizedTime)?.groups;
+  const compact = /^(\d{2})(\d{2})$/.exec(normalizedTime);
+  const fields = compact
+    ? { hour: compact[1], minute: compact[2], second: '0', dayPeriod: '' }
+    : regex.exec(normalizedTime)?.groups;
   const hours = Number(fields?.hour);
   const minutes = Number(fields?.minute);
   const seconds = Number(fields?.second ?? 0);
-  if (!fields || hours < minHour || hours > maxHour || minutes > 59 || seconds > 59) {
+  if (!fields || hours < (compact ? 0 : minHour) || hours > (compact ? 23 : maxHour) || minutes > 59 || seconds > 59) {
     return { date: null, errorType: 'invalid-input' };
   }
 

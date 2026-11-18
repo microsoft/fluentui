@@ -167,6 +167,26 @@ describe('Time Utilities', () => {
     const dateStartAnchor = new Date('November 25, 2023 12:00:00');
     const dateEndAnchor = new Date('November 26, 2023 12:00:00');
 
+    it.each(['h11', 'h12', 'h23', 'h24'] as const)(
+      'accepts compact 24-hour times independently of %s display',
+      hourCycle => {
+        const format = createTimeFormat({ locale: 'en-US', hourCycle });
+        const start = new Date(2026, 7, 24);
+        const end = new Date(2026, 7, 25);
+        expect(format.parse('1030', start, end)).toEqual({ date: new Date(2026, 7, 24, 10, 30) });
+        expect(format.parse('0030', start, end)).toEqual({ date: new Date(2026, 7, 24, 0, 30) });
+        expect(format.parse('2360', start, end).errorType).toBe('invalid-input');
+        expect(format.parse('2500', start, end).errorType).toBe('invalid-input');
+        expect(format.parse('123', start, end).errorType).toBe('invalid-input');
+      },
+    );
+
+    it.each(['ar-EG', 'ja-JP', 'zh-CN', 'ko-KR'])('round-trips an explicit %s locale with day periods', locale => {
+      const format = createTimeFormat({ locale, hourCycle: 'h12' });
+      const date = new Date(2026, 7, 24, 10, 30);
+      expect(format.parse(format.format(date), new Date(2026, 7, 24), new Date(2026, 7, 25))).toEqual({ date });
+    });
+
     it('returns a valid date when given a valid time string', () => {
       const result = getDateFromTimeString('2:30 PM', dateStartAnchor, dateEndAnchor, {
         hourCycle: 'h11',

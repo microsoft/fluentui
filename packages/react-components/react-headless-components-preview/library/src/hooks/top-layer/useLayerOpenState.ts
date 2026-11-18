@@ -212,7 +212,20 @@ export const useLayerOpenStateWith = (
       }
 
       if (isPopoverOpen(element)) {
+        const root = element.getRootNode() as Document | ShadowRoot;
+        const activeElement = root.activeElement;
         element.hidePopover();
+        const HTMLElementConstructor = element.ownerDocument.defaultView?.HTMLElement;
+        // Some Popover API polyfills restore the invoker even after focus has already left the layer.
+        if (
+          HTMLElementConstructor &&
+          activeElement instanceof HTMLElementConstructor &&
+          activeElement !== element.ownerDocument.body &&
+          !element.contains(activeElement) &&
+          root.activeElement !== activeElement
+        ) {
+          activeElement.focus({ preventScroll: true });
+        }
       } else {
         dialog?.hide(element);
       }

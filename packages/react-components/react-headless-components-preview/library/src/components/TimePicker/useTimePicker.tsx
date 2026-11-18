@@ -27,7 +27,7 @@ export const useTimePicker = (props: TimePickerProps, ref: React.Ref<HTMLInputEl
   };
 
   const comboboxState = useCombobox(comboboxProps, ref);
-  const state = useTimePickerComboboxState(comboboxState, selection);
+  const state = useTimePickerComboboxState(comboboxState, selection, props);
 
   return {
     ...state,

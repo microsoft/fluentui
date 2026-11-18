@@ -1,12 +1,16 @@
 import type * as React from 'react';
-import type { ComponentProps, EventData, EventHandler } from '@fluentui/react-utilities';
-import type { ComboboxProps, ComboboxSlots as TimePickerSlots, ComboboxState } from '../Combobox/Combobox.types';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import type { ComboboxProps, ComboboxSlots, ComboboxState } from '../Combobox/Combobox.types';
 import type { TimeFormatOptions, TimePickerErrorType, TimeStringValidationResult } from './utils/types';
 
-export type {
-  ComboboxContextValues as TimePickerContextValues,
-  ComboboxSlots as TimePickerSlots,
-} from '../Combobox/Combobox.types';
+export type { ComboboxContextValues as TimePickerContextValues } from '../Combobox/Combobox.types';
+
+/**
+ * TimePicker slots. Clear is a native button and is the only additional tab stop after the input.
+ */
+export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'> & {
+  clearIcon?: Slot<'button'>;
+};
 
 /**
  * Data passed to the `onChange` callback.
@@ -44,6 +48,12 @@ export type TimePickerCommitData = Pick<TimePickerOnChangeData, 'value' | 'displ
  * TimePicker specific props.
  */
 export type TimePickerTimeProps = TimeFormatOptions & {
+  /**
+   * Accepts valid custom times between suggestions. Set to false to restrict selection to generated options.
+   * @default true
+   */
+  freeform?: boolean;
+
   /**
    * Start hour (inclusive) for the time range, 0-24.
    * @default 0
@@ -105,16 +115,18 @@ export type TimePickerProps = Omit<
   ComponentProps<Partial<TimePickerSlots>, 'input'>,
   'children' | 'size' | 'value' | 'defaultValue' | 'onChange'
 > &
-  Pick<
-    ComboboxProps,
-    'clearable' | 'defaultOpen' | 'freeform' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'
-  > &
+  Pick<ComboboxProps, 'clearable' | 'defaultOpen' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'> &
   TimePickerTimeProps;
 
 /**
  * TimePicker specific state.
  */
 export type TimePickerTimeState = Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
+  /**
+   * The last validation error, cleared on an accepted value or Escape.
+   */
+  errorType: TimePickerErrorType | undefined;
+
   /**
    * Display text after the last change. A commit happens only when the typed text differs from it.
    */
@@ -124,7 +136,8 @@ export type TimePickerTimeState = Required<Pick<TimePickerProps, 'freeform' | 'p
 /**
  * State used in rendering TimePicker
  */
-export type TimePickerState = ComboboxState &
+export type TimePickerState = Omit<ComboboxState, 'components' | 'clearIcon'> &
+  ComponentState<TimePickerSlots> &
   TimePickerTimeState & {
     root: {
       /**

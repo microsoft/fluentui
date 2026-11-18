@@ -112,7 +112,7 @@ export { useActiveDescendantContext }
 export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public (undocumented)
-export const useComboboxContextValues: (state: ComboboxState) => ComboboxContextValues;
+export const useComboboxContextValues: (state: Omit<ComboboxState, "components" | "clearIcon">) => ComboboxContextValues;
 
 // @public
 export function useComboboxFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseComboboxFilterConfig): JSXElement[];
