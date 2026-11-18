@@ -58,6 +58,11 @@ const lazyScenarios: Scenario[] = [
   ...defaultScenarios.filter(scenario => scenario !== 'stateful makeStyles override'),
 ];
 
+// TODO: remove with `runModeRetries` below. In CI (Electron on Linux), the screenshot taken when the first attempt
+// fails leaves the renderer at about one frame per second, so every later real mouse event and transition in this
+// spec waits ~1s (~30 min per run). Parity failures are reported as text, so the screenshots add little.
+Cypress.Screenshot.defaults({ screenshotOnRunFailure: false });
+
 describeParity(
   'lazily loaded components',
   {
