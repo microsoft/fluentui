@@ -132,7 +132,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         // want to show the tooltip when a dialog is closed with the mouse and focus is restored to the trigger.
         // Text inputs match `:focus-visible` even after a mouse click, so the tracked modality takes precedence.
         // See https://github.com/microsoft/fluentui/issues/27576
-        const isKeyboardFocus = getKeyboardModality() ?? isFocusVisible(ev.target as Element) ?? true;
+        const target = ev.target as HTMLElement;
+        const keyboardModality = getKeyboardModality();
+        const focusVisible = isFocusVisible(target);
+        const isTextEntry = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT';
+        const isKeyboardFocus =
+          keyboardModality === true ||
+          (keyboardModality === false ? !isTextEntry && focusVisible === true : focusVisible ?? true);
         if (ignoreFocus || !isKeyboardFocus) {
           return;
         }

@@ -29,8 +29,16 @@ const isVirtualClick = (event: MouseEvent) =>
  * @internal
  */
 export function setKeyboardModality(targetDocument: Document | undefined, isKeyboard: boolean): void {
-  const tracker = targetDocument && trackers.get(targetDocument);
-  if (!tracker || tracker.isKeyboard === isKeyboard) {
+  if (!targetDocument) {
+    return;
+  }
+
+  let tracker = trackers.get(targetDocument);
+  if (!tracker) {
+    tracker = createTracker(targetDocument);
+    trackers.set(targetDocument, tracker);
+  }
+  if (tracker.isKeyboard === isKeyboard) {
     return;
   }
 

@@ -69,6 +69,38 @@ describe('Tooltip', () => {
     expect(screen.getByRole('button')).toHaveAttribute('aria-label', tooltipText);
   });
 
+  it('shows a tooltip for assistive focus after pointer interaction', () => {
+    jest.useFakeTimers();
+
+    try {
+      render(
+        <Tooltip content="Button tooltip" relationship="label" showDelay={1}>
+          <button aria-label="trigger">Trigger</button>
+        </Tooltip>,
+      );
+
+      const trigger = screen.getByRole('button');
+      jest.spyOn(trigger, 'matches').mockReturnValue(true);
+
+      fireEvent.mouseDown(document.body, {
+        buttons: 1,
+        clientX: 1,
+        clientY: 1,
+        screenX: 1,
+        screenY: 1,
+      });
+      fireEvent.focus(trigger);
+      act(() => {
+        jest.advanceTimersByTime(1);
+      });
+
+      expect(screen.getByRole('tooltip')).toBeInTheDocument();
+    } finally {
+      jest.useRealTimers();
+      jest.restoreAllMocks();
+    }
+  });
+
   it('does not show a tooltip when a mouse restores focus to a text input', () => {
     jest.useFakeTimers();
 

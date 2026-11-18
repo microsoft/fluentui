@@ -187,20 +187,26 @@ describe('useKeyboardModality', () => {
     expect(second.result.current()).toBe(false);
   });
 
-  it('does not create a tracker for imperative changes without subscribers or a document', () => {
+  it('preserves imperative changes until the first consumer mounts', () => {
     const addEventListener = jest.spyOn(document, 'addEventListener');
     try {
       setKeyboardModality(undefined, true);
-      setKeyboardModality(document, true);
       expect(addEventListener).not.toHaveBeenCalled();
 
-      const { result, unmount } = renderHook(() => useKeyboardModality());
-      expect(result.current()).toBeUndefined();
-      unmount();
-      setKeyboardModality(document, false);
+      setKeyboardModality(document, true);
+      expect(addEventListener).toHaveBeenCalledTimes(3);
 
-      const next = renderHook(() => useKeyboardModality());
-      expect(next.result.current()).toBeUndefined();
+      const onLayout = jest.fn();
+      const next = renderHook(() => {
+        const getModality = useKeyboardModality();
+        useIsomorphicLayoutEffect(() => {
+          onLayout(getModality());
+        }, [getModality]);
+        return getModality;
+      });
+
+      expect(onLayout).toHaveBeenCalledWith(true);
+      expect(next.result.current()).toBe(true);
     } finally {
       addEventListener.mockRestore();
     }
