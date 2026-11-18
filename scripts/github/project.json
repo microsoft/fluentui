@@ -4,20 +4,6 @@
   "sourceRoot": "scripts/github/src",
   "projectType": "library",
   "targets": {
-    "risk-eval-label": {
-      "executor": "nx:run-commands",
-      "cache": false,
-      "options": {
-        "command": "node scripts/github/src/risk-eval-label.js"
-      }
-    },
-    "risk-eval-score": {
-      "executor": "nx:run-commands",
-      "cache": false,
-      "options": {
-        "command": "node scripts/github/src/risk-eval-score.js"
-      }
-    },
     "test": {
       "inputs": [
         "default",

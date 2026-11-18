@@ -72,85 +72,18 @@ Provisioning Azure resources and federation is outside this PR.
 
 ## Local experimental validation
 
-Two small development scripts fetch real PRs, generate blind expert labels, and
-replay the actual classifier and escalation helper. They **do not write GitHub
-labels/checks**. Run from the repository root with Node 22, Yarn, authenticated
-`gh`, and `az login` with model access.
+The development-only labeling and scoring scripts live separately in
+[v9_review_evals](https://github.com/a-adambednar_microsoft/v9_review_evals/tree/main/evals/risk_tier_evals)
+(repository access may be required). Their README contains the commands.
+Set `FLUENTUI_CHECKOUT` to the local checkout to exercise its actual classifier,
+model transport, and escalation helper. **The workflow has no dependency on that
+repository**, and experiments do not write GitHub labels or checks.
 
-Keep all PR snapshots, labels, and reports under ignored `.cache/`; commit only
-the scripts/tests/docs. Freeze a sample before labeling or tuning rules:
-
-```sh
-mkdir -p .cache/pr-risk-eval
-gh pr list --repo microsoft/fluentui --state merged --limit 100 \
-  --json number --jq 'map(.number)' > .cache/pr-risk-eval/prs.json
-```
-
-**1. Fetch and label.** Set `RISK_EXPERT_ENDPOINT` to an Azure OpenAI Responses URL
-ending in `/openai/v1/responses`, and `RISK_EXPERT_DEPLOYMENT` to your expert model.
-
-```sh
-yarn nx run scripts-github:risk-eval-label \
-  --args=".cache/pr-risk-eval/prs.json .cache/pr-risk-eval/labels.json"
-```
-
-The expert sees full diffs and the shared policy, not classifier predictions or
-other experts' labels. Its target is the **final policy tier**, including semantic
-escalation, not content risk alone. Structured output is validated. The local JSON records
-PR revisions, inputs, rubric hash, returned model IDs, labels, and token usage.
-Progress is saved after each PR; rerun the same command to resume. To label the
-same snapshots with another expert, use the existing labels JSON as the first
-argument and a new output file. Compare only matching reference protocols and
-input coverage; older partial-diff or content-risk rubrics are legacy diagnostics.
-
-For PRs over GitHub's full-diff API limit, the labeler fetches commit objects and
-reads a Git diff without checkout, external diff drivers, or text conversion.
-It verifies the changed-file set. The scorer still preserves the production
-API-unavailable fallback rather than pretending the workflow could fetch that diff.
-
-**2. Run the classifiers.** Set `RISK_MODEL_ENDPOINT`, `RISK_MODEL_DEPLOYMENT`,
-and `RISK_MODEL_ID`. Leave `RISK_MODEL_API=decision` for the native endpoint, or
-set it to `responses` with an Azure OpenAI Responses endpoint and an LLM deployment.
-
-```sh
-yarn nx run scripts-github:risk-eval-score \
-  --args=".cache/pr-risk-eval/labels.json .cache/pr-risk-eval/results.json"
-```
-
-Use a different results filename for each backend/model. Each run reports Code
-only alongside the selected AI backend, so the same frozen inputs support a
-Code-only / decision-model / LLM comparison without another script.
-
-For quota-limited deployments, set `RISK_EVAL_DELAY_MS` to pace local model calls
-(0 by default, up to 60000). The delay is recorded and adds no production retries.
-
-For constructed paired cases, use local case IDs and pass a frozen labels JSON with a top-level `pairId`
-on each row and policy-expected reference tiers verified by executable checks.
-The scorer checks matching paths/tiers and exactly two cases per pair before
-inference, then reports whether both cases were correct. Keep these diagnostic
-results separate from real PRs; no sampling confidence interval is assigned.
-
-Code only makes no inference calls and uses **zero tokens**. Code + AI uses the
-production raise/failure policy, authorizing all sample PRs for this offline
-comparison. This does not test Actions authentication or authorization.
-Results include exact tier agreement, Wilson 95% intervals, and mean tier
-difference (`classifier - expert`); positive means higher tiers on average.
-Opposing errors can cancel, so inspect mismatches as well as averages.
-
-Expert-labeling usage is reported separately from pipeline usage. Input, cached
-input, and output tokens come from API responses; output already includes
-reasoning tokens. Rejected answers still count valid reported usage; they remain
-unassessed. Missing usage or unverified model identity makes total cost unknown.
-USD estimates are `null` unless you
-supply verified `INPUT_USD_PER_MILLION`, `OUTPUT_USD_PER_MILLION`, and `PRICE_SOURCE`
-variables prefixed with `RISK_EXPERT_` or `RISK_MODEL_`. Also supply
-`CACHED_INPUT_USD_PER_MILLION` when cached input is billed separately. These are
-estimates, not billing statements.
-
-Use a small smoke sample first, then the frozen full-diff sample. Reuse identical
-inputs across experts and run a new results file after code/model changes.
-AI reference labels are not human ground truth; review disagreements with
-maintainers before enabling raise mode.
+Start with a small smoke sample, then compare code-only, Decision, and LLM results
+on identical frozen PR inputs. Keep experimental data outside this repository. Use blinded reference
+labels with the same policy, and test behavior-preserving/riskier pairs separately
+from real PRs. Inspect missed risks, unnecessary raises, coverage, and uncached
+cost per assessed PR; AI references are not human ground truth.
 
 ## Checks and rollout
 
