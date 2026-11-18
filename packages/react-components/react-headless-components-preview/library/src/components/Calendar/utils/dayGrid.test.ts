@@ -173,7 +173,7 @@ describe('getDayGrid', () => {
 
   it('rejects invalid and unrepresentable grid dates', () => {
     expect(() => getDayGrid({ ...defaultOptions, navigatedDate: new Date(NaN) })).toThrow(
-      new RangeError('navigatedDate must be valid.'),
+      new RangeError('Cannot align an invalid or out-of-range date.'),
     );
     expect(() => getDayGrid({ ...defaultOptions, navigatedDate: new Date(-8640000000000000) })).toThrow(
       new RangeError('Cannot align an invalid or out-of-range date.'),

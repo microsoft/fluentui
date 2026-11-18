@@ -40,17 +40,11 @@ export const getAvailableDates = (dates: Date[], options: RestrictedDatesOptions
 
 /**
  * Returns the closest available date to `targetDate` in `direction`, or `undefined` when the search reaches the
- * initial date or a bound first.
- * @throws RangeError if the direction is not 1 or -1, or the search dates cannot be represented.
+ * initial date or a bound first. Both dates must be valid.
+ * @throws RangeError if the search passes the representable date range.
  */
 export const findAvailableDate = (options: AvailableDateOptions): Date | undefined => {
   const { targetDate, initialDate, direction, ...restrictions } = options;
-  if (direction !== 1 && direction !== -1) {
-    throw new RangeError('direction must be 1 or -1.');
-  }
-  if (!Number.isFinite(targetDate.getTime()) || !Number.isFinite(initialDate.getTime())) {
-    throw new RangeError('targetDate and initialDate must be valid.');
-  }
   if (!isRestrictedDate(targetDate, restrictions)) {
     return targetDate;
   }

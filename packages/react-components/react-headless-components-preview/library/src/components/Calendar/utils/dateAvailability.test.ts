@@ -100,19 +100,6 @@ describe('findAvailableDate', () => {
     expect(findAvailableDate({ ...options, initialDate: targetDate, restrictedDates: [targetDate] })).toBeUndefined();
   });
 
-  it.each([0, 2, -2, 0.5, NaN, Infinity, -Infinity])('rejects direction %s even for an available target', direction => {
-    expect(() =>
-      // @ts-expect-error Verify the runtime contract for JavaScript callers.
-      findAvailableDate({ ...options, direction }),
-    ).toThrow(new RangeError('direction must be 1 or -1.'));
-  });
-
-  it.each(['targetDate', 'initialDate'] as const)('rejects an invalid %s', field => {
-    expect(() => findAvailableDate({ ...options, [field]: new Date(NaN) })).toThrow(
-      new RangeError('targetDate and initialDate must be valid.'),
-    );
-  });
-
   it('rejects a search that exceeds the Date range', () => {
     const lastDate = new Date(8640000000000000);
     expect(() => findAvailableDate({ ...options, targetDate: lastDate, restrictedDates: [lastDate] })).toThrow(

@@ -50,9 +50,6 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   if (weeksToShow !== undefined && !(Number.isInteger(weeksToShow) && weeksToShow > 0)) {
     throw new RangeError('weeksToShow must be a positive finite integer.');
   }
-  if (!Number.isFinite(navigatedDate.getTime())) {
-    throw new RangeError('navigatedDate must be valid.');
-  }
 
   const year = navigatedDate.getFullYear();
   const month = navigatedDate.getMonth();

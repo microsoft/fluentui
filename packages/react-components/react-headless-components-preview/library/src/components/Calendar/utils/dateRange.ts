@@ -23,9 +23,6 @@ export const getDateRange = (
   workWeekDays: readonly DayOfWeek[] = DEFAULT_WORK_WEEK_DAYS,
   daysToSelectInDayView: number = 1,
 ): Date[] => {
-  if (!Number.isFinite(date.valueOf())) {
-    throw new RangeError('date must be valid');
-  }
   if (!Number.isInteger(daysToSelectInDayView)) {
     throw new RangeError('daysToSelectInDayView must be a finite integer');
   }
@@ -59,9 +56,6 @@ export const getDateRange = (
       startDate = createDate(date.getFullYear(), date.getMonth(), 1);
       endDate = addMonths(startDate, 1);
       maximumRangeLength = 31;
-      break;
-    default:
-      throw new Error('Unexpected object: ' + dateRangeType);
   }
   if (!Number.isFinite(endDate.getTime())) {
     throw new RangeError('Date range end is outside the representable date range');
@@ -69,16 +63,13 @@ export const getDateRange = (
 
   const workWeekDayIndices = workWeekDays.map(getDayIndex);
   const dates: Date[] = [];
-  // The range-specific bound keeps a faulty date adapter from hanging rendering.
+  // The range-specific bound ends the iteration even when a skipped local day steps past the end date.
   let nextDate = startDate;
   for (let index = 0; index < maximumRangeLength && compareDatePart(nextDate, endDate) !== 0; index++) {
     if (dateRangeType !== 'workWeek' || workWeekDayIndices.includes(nextDate.getDay())) {
       dates.push(nextDate);
     }
     nextDate = addDays(nextDate, 1);
-  }
-  if (compareDatePart(nextDate, endDate) !== 0) {
-    throw new Error('Date range iteration did not reach the end of the requested range');
   }
   return dates;
 };

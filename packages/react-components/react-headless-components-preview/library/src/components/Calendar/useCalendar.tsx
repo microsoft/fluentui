@@ -165,15 +165,19 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     initialState: null,
   });
   const selectedDate = valueState && compareDatePart(valueState, clamp(valueState)) ? null : valueState;
-  const isValueOutOfRange = !!value && compareDatePart(value, clamp(value)) !== 0;
-  const warnedRef = React.useRef(false);
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production' && isValueOutOfRange && !warnedRef.current) {
-      warnedRef.current = true;
-      // eslint-disable-next-line no-console
-      console.warn('Calendar: value is outside minDate/maxDate and is rendered as an empty selection.');
-    }
-  }, [isValueOutOfRange]);
+  if (process.env.NODE_ENV !== 'production') {
+    const isValueOutOfRange = !!value && compareDatePart(value, clamp(value)) !== 0;
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
+    const warnedRef = React.useRef(false);
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
+    React.useEffect(() => {
+      if (isValueOutOfRange && !warnedRef.current) {
+        warnedRef.current = true;
+        // eslint-disable-next-line no-console
+        console.warn('Calendar: value is outside minDate/maxDate and is rendered as an empty selection.');
+      }
+    }, [isValueOutOfRange]);
+  }
 
   const initialDisplayedDate = clamp(defaultDisplayedDate ?? selectedDate ?? today);
   const [displayedState = initialDisplayedDate, setDisplayed] = useControllableState({
@@ -943,14 +947,17 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       if ([...elements.values()].some(element => element.getAttribute('tabindex') === '0')) {
         continue;
       }
-      const isCandidate = (cell: CalendarCellData | undefined) => !!cell && isFocusable(cell) && elements.has(cell.key);
       const from = cells.findIndex(cell => cell.key === tabStops[gridView]);
       let fallback: CalendarCellData | undefined;
-      for (let distance = from < 0 ? 0 : 1; !fallback && distance < cells.length; distance++) {
-        const start = Math.max(from, 0);
-        // Later cells first, as moving forward is the likelier way to reach an available date.
-        fallback = [cells[start + distance], cells[start - distance]].find(isCandidate);
-      }
+      let closest = Infinity;
+      cells.forEach((cell, index) => {
+        // At equal distance the later cell wins, as moving forward is the likelier way to reach an available date.
+        const distance = 2 * Math.abs(index - from) - (index > from ? 1 : 0);
+        if (distance < closest && isFocusable(cell) && elements.has(cell.key)) {
+          closest = distance;
+          fallback = cell;
+        }
+      });
       if (fallback) {
         elements.get(fallback.key)!.tabIndex = 0;
         if (activeCells[gridView] !== `${resetKey}|${fallback.key}`) {

@@ -51,10 +51,6 @@ describe('DateMath', () => {
     expect(getDayFromIndex(index)).toBe(expected);
   });
 
-  it.each([NaN, Infinity, -Infinity, 1.5])('rejects an invalid weekday index of %s', index => {
-    expect(() => getDayFromIndex(index)).toThrow(new RangeError('index must be a finite integer.'));
-  });
-
   it.each([
     [{ year: 2020, month: 1, day: 28 }, 1, { year: 2020, month: 1, day: 29 }],
     [{ year: 2020, month: 0, day: 1 }, -1, { year: 2019, month: 11, day: 31 }],

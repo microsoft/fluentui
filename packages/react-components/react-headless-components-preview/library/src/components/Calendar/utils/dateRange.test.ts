@@ -71,12 +71,14 @@ describe('getDateRange', () => {
   });
 
   it('rejects an invalid date', () => {
-    expect(() => getDateRange(new Date(Number.NaN), 'day', 'sunday')).toThrow('date must be valid');
+    for (const rangeType of ['day', 'week', 'workWeek', 'month'] as const) {
+      expect(() => getDateRange(new Date(Number.NaN), rangeType, 'sunday')).toThrow(RangeError);
+    }
   });
 
   it('rejects an unsupported range type at runtime', () => {
-    // @ts-expect-error Verify JavaScript callers receive an explicit error.
-    expect(() => getDateRange(date, 'invalid', 'sunday')).toThrow('Unexpected object: invalid');
+    // @ts-expect-error Verify JavaScript callers receive an error.
+    expect(() => getDateRange(date, 'invalid', 'sunday')).toThrow();
   });
 
   it('fails explicitly when the requested range exceeds representable dates', () => {

@@ -10,15 +10,10 @@ export type CivilDate = { year: number; month: number; day: number };
 export const getDayIndex = (day: DayOfWeek): number => daysOfWeek.indexOf(day);
 
 /**
- * Converts an index used by `Date.prototype.getDay()` to a day of the week, wrapping out-of-range values.
- * @throws RangeError if the index is not a finite integer.
+ * Converts an integer index used by `Date.prototype.getDay()` to a day of the week, wrapping out-of-range values.
  */
-export const getDayFromIndex = (index: number): DayOfWeek => {
-  if (!Number.isInteger(index)) {
-    throw new RangeError('index must be a finite integer.');
-  }
-  return daysOfWeek[((index % DAYS_IN_WEEK) + DAYS_IN_WEEK) % DAYS_IN_WEEK];
-};
+export const getDayFromIndex = (index: number): DayOfWeek =>
+  daysOfWeek[((index % DAYS_IN_WEEK) + DAYS_IN_WEEK) % DAYS_IN_WEEK];
 
 /**
  * Creates a local date at midnight. Unlike the `Date` constructor, years 0-99 are not mapped to 1900-1999.
@@ -126,12 +121,13 @@ export const compareDatePart = (date1: Date, date2: Date): number =>
   date1.getFullYear() - date2.getFullYear() || date1.getMonth() - date2.getMonth() || date1.getDate() - date2.getDate();
 
 /**
- * Returns the first day of the week that contains `date`.
- * @throws RangeError if no representable week start lies within two weeks.
+ * Returns the first day of the week that contains `date`. Any eight consecutive civil days contain every weekday, even
+ * when the local timezone skips one, so the search always ends.
+ * @throws RangeError if the date, or a day before it, cannot be represented.
  */
 export const getStartDateOfWeek = (date: Date, firstDayOfWeek: DayOfWeek): Date => {
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
+  for (let daysBack = 0; ; daysBack++) {
     const candidate = createDate(date.getFullYear(), date.getMonth(), date.getDate() - daysBack);
     if (!Number.isFinite(candidate.getTime())) {
       throw new RangeError('Cannot align an invalid or out-of-range date.');
@@ -140,7 +136,6 @@ export const getStartDateOfWeek = (date: Date, firstDayOfWeek: DayOfWeek): Date 
       return candidate;
     }
   }
-  throw new RangeError('Could not find a representable week start within two weeks.');
 };
 
 /**
