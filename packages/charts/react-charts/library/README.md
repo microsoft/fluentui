@@ -14,6 +14,20 @@ The code snippets can be used as usage guide for all the props and chart variati
 `VegaDeclarativeChart` evaluates logical (`&&`, `||`) and ternary (`?:`) expressions
 with short-circuit semantics. Skipped branches are parsed but not evaluated.
 If a filter expression throws for a row, that row is excluded and a warning is logged.
+
+Excluding every row, whether because the filter returns a falsy value or evaluation
+fails, leaves the existing mark-specific empty-data behavior unchanged. For example,
+a nonaggregate bar chart throws on empty data, while a scatter chart supports a
+no-data display. With short-circuit evaluation and exclusion of failed rows, a spec
+that previously rendered can now throw synchronously during `VegaDeclarativeChart`
+rendering rather than only log a warning.
+
+An error in a child of an `hconcat` or `vconcat` spec can abort the entire containing
+chart render; the component does not isolate child failures. Callers needing error
+containment must handle render errors externally, for example with a React error
+boundary around the chart for client-side rendering. No uniform no-data fallback
+or per-child error boundary is provided.
+
 Filters control chart display only; validate input data separately rather than relying
 on chart filters for authorization.
 
