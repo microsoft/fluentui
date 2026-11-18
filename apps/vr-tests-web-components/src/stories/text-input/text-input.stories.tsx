@@ -118,10 +118,10 @@ export const AppearanceUnderlineDarkMode = getStoryVariant(AppearanceUnderline, 
 
 export const AppearanceFilledLighter = () =>
   parse(`
-<div style="padding: ${tokens.spacingVerticalXXL}; border: ${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}; border-radius: ${tokens.borderRadiusMedium}; background: ${tokens.colorNeutralBackground3}">
-  <fluent-text-input appearance="filled-lighter" placeholder="Enter text">
+<div style="padding: 10px; background: ${tokens.colorNeutralBackgroundInverted}">
+  <fluent-text-input appearance="filled-lighter">
     <span slot="start">${Person20Regular}</span>
-    <fluent-label>Filled Lighter Input</fluent-label>
+    <fluent-label style="color: ${tokens.colorNeutralForegroundInverted2}">Filled Lighter Input</fluent-label>
   </fluent-text-input>
 </div>
 `);
@@ -130,10 +130,10 @@ export const AppearanceFilledLighterDarkMode = getStoryVariant(AppearanceFilledL
 
 export const AppearanceFilledDarker = () =>
   parse(`
-<div style="padding: ${tokens.spacingVerticalXXL}; border: ${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}; border-radius: ${tokens.borderRadiusMedium}; background: ${tokens.colorNeutralBackground1}">
-  <fluent-text-input appearance="filled-darker" placeholder="Enter text">
+<div style="padding: 10px; background: ${tokens.colorNeutralBackgroundInverted}">
+  <fluent-text-input appearance="filled-darker">
     <span slot="start">${Person20Regular}</span>
-    <fluent-label>Filled Darker Input</fluent-label>
+    <fluent-label style="color: ${tokens.colorNeutralForegroundInverted2}">Filled Darker Input</fluent-label>
   </fluent-text-input>
 </div>
 `);
