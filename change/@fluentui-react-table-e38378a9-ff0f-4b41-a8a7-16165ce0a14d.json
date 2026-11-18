@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-table): honor explicit Table and TableBody roots before non-native defaults",
+  "packageName": "@fluentui/react-table",
+  "email": "3682072+machineloop@users.noreply.github.com"
+}
