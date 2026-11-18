@@ -11,6 +11,8 @@ Calendar is unstyled. Use cell data attributes to style date state:
 | `data-marked`         | `getMarkedDays` marked the day                     |
 
 Month and year cells expose `data-selected`, `data-outside-bounds` and `data-current`.
+`data-current` and `aria-current="true"` identify the displayed picker period, not the actual current date.
+Month cells have full month-and-year accessible names; day cells reserve `aria-current="date"` for today.
 Day cells also expose `data-range-hovered` and `data-range-pressed`. Highlighting, range corners
 and outside-month emphasis are consumer styling decisions.
 
@@ -72,7 +74,12 @@ the day panel stays visible and `view` only chooses between the month and year g
 The month heading opens the year grid unless `yearPickerHidden` is set. In the overlay layout the day heading
 opens the month grid; set `dayHeadingView` to `"month"` or `"year"` to choose what the day heading opens in
 either layout (`"year"` falls back to the default when `yearPickerHidden` is set). The year grid shows twelve years starting at the displayed year; its previous/next buttons page
-by twelve years.
+by twelve years. Browsing picker years, including choosing a year, leaves the day grid unchanged until a month is
+chosen. Calendars without a day panel retain month-selection navigation.
+
+Escape in an overlay picker returns to the day grid and focuses its heading. In a beside year picker, Escape
+returns to the month choices and focuses the picker heading. Otherwise Escape invokes `onDismiss`, allowing an
+enclosing DatePicker to close.
 
 Calendar preserves focus when a layout or view change hides the focused panel, or replaces the month or year grid
 that holds focus, without reclaiming focus that has already moved outside the calendar.

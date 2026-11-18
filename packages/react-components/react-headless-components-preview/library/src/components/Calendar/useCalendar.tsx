@@ -71,7 +71,7 @@ import type {
 type CalendarEvent = React.SyntheticEvent<HTMLElement>;
 type ButtonSlot = ExtractSlotProps<Slot<'button'>> | SlotShorthandValue | undefined;
 /** Which panel to focus after the next render: the first visible panel, or the month panel. */
-type FocusRequest = 'first' | 'month';
+type FocusRequest = 'first' | 'month' | 'dayHeading' | 'monthHeading';
 
 const YEAR_COUNT = 12;
 const RANGE_HOVERED = 'data-range-hovered';
@@ -211,6 +211,13 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const showDayPanel = hasDayPanel && (!isOverlay || view === 'day');
   const showMonthPanel = hasMonthPanel && (!isOverlay || view !== 'day');
   const monthPanelView: CalendarView = view === 'year' && !yearPickerHidden ? 'year' : 'month';
+  const [pickerYear, setPickerYear] = React.useState(navigatedYear);
+  const [previousNavigatedTime, setPreviousNavigatedTime] = React.useState(navigatedTime);
+  if (previousNavigatedTime !== navigatedTime) {
+    setPreviousNavigatedTime(navigatedTime);
+    setPickerYear(navigatedYear);
+  }
+  const pickerDate = addYears(navigatedDate, pickerYear - navigatedYear);
 
   // Focus
 
@@ -252,7 +259,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     // Focus moves only when it is in the calendar, was in it, or was lost with a removed element.
     if (request && (!active || active === targetDocument?.body || focusWithin.current || isInside)) {
       const panels = root.querySelectorAll('[data-view]');
-      focusCalendarGrid(request === 'month' ? panels[panels.length - 1] : panels[0]);
+      if (request === 'dayHeading' || request === 'monthHeading') {
+        const panel = request === 'dayHeading' ? panels[0] : panels[panels.length - 1];
+        panel?.querySelector<HTMLElement>('[data-fui-calendar-heading]')?.focus();
+      } else {
+        focusCalendarGrid(request === 'month' ? panels[panels.length - 1] : panels[0]);
+      }
     } else if (!isInside) {
       // Focus is outside, including focus lost with an element removed for another reason, such as a renderer
       // omitting the focused cell. Stop tracking it, so a later view change does not pull focus back.
@@ -293,7 +305,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   const changeView = (event: CalendarEvent, nextView: CalendarView, focus: FocusRequest) => {
     if (nextView === 'year') {
-      setYearRange({ anchor: navigatedYear, from: navigatedYear });
+      setYearRange({ anchor: pickerYear, from: pickerYear });
     }
     setView(nextView);
     onViewChange?.(event, { event, type: eventType(event), view: nextView });
@@ -409,16 +421,16 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const isMonthOnly = !hasDayPanel;
   const monthSelection = isMonthOnly ? selectedDate : navigatedDate;
   const months: CalendarMonthCellData[] = Array.from({ length: 12 }, (_, index) => {
-    const date = setMonth(navigatedDate, index);
+    const date = setMonth(pickerDate, index);
     return {
       type: 'month',
       key: `${index}`,
       index,
       label: format({ date, format: 'shortMonth' }),
       isNavigated: false,
-      isCurrent: today.getFullYear() === navigatedYear && today.getMonth() === index,
+      isCurrent: navigatedYear === pickerYear && navigatedDate.getMonth() === index,
       isSelected:
-        !!monthSelection && monthSelection.getMonth() === index && monthSelection.getFullYear() === navigatedYear,
+        !!monthSelection && monthSelection.getMonth() === index && monthSelection.getFullYear() === pickerYear,
       isInBounds:
         (!minDate || compareDatePart(minDate, getMonthEnd(date)) < 1) &&
         (!maxDate || compareDatePart(getMonthStart(date), maxDate) < 1) &&
@@ -434,17 +446,17 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   // Year cells
 
-  const [yearRange, setYearRange] = React.useState({ anchor: navigatedYear, from: navigatedYear });
-  if (yearRange.anchor !== navigatedYear) {
-    setYearRange({ anchor: navigatedYear, from: navigatedYear });
+  const [yearRange, setYearRange] = React.useState({ anchor: pickerYear, from: pickerYear });
+  if (yearRange.anchor !== pickerYear) {
+    setYearRange({ anchor: pickerYear, from: pickerYear });
   }
-  const fromYear = yearRange.anchor === navigatedYear ? yearRange.from : navigatedYear;
+  const fromYear = yearRange.anchor === pickerYear ? yearRange.from : pickerYear;
   const toYear = fromYear + YEAR_COUNT - 1;
   const minYear = minDate?.getFullYear();
   const maxYear = maxDate?.getFullYear();
   const focusYear = Math.min(
     allFocusable ? toYear : Math.min(toYear, maxYear ?? toYear),
-    Math.max(allFocusable ? fromYear : Math.max(fromYear, minYear ?? fromYear), navigatedYear),
+    Math.max(allFocusable ? fromYear : Math.max(fromYear, minYear ?? fromYear), pickerYear),
   );
   const formatYear = (year: number) => format({ date: createDate(year, 0, 1), format: 'year' });
   const formatRange = (from: number) => `${formatYear(from)} - ${formatYear(from + YEAR_COUNT - 1)}`;
@@ -456,7 +468,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       year,
       label: formatYear(year),
       isNavigated: year === focusYear,
-      isCurrent: year === today.getFullYear(),
+      isCurrent: year === pickerYear,
       isSelected: year === selectedDate?.getFullYear(),
       isInBounds: !((minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear)),
     };
@@ -494,10 +506,10 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     return {
       root: {
         role: 'gridcell',
-        'aria-current': (isDay ? cell.isToday : cell.isCurrent) ? 'date' : undefined,
+        'aria-current': isDay ? (cell.isToday ? 'date' : undefined) : cell.isCurrent ? 'true' : undefined,
         'aria-disabled': disabled,
         'aria-label':
-          cell.type === 'month' ? format({ date: setMonth(navigatedDate, cell.index), format: 'month' }) : undefined,
+          cell.type === 'month' ? format({ date: setMonth(pickerDate, cell.index), format: 'monthYear' }) : undefined,
         'aria-selected': isDay && disabled ? undefined : cell.isSelected,
         tabIndex: isDay
           ? isDayFocusable(cell)
@@ -564,7 +576,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   const formatDay = (date: Date) => format({ date, format: 'monthDayYear' });
   const monthYear = format({ date: navigatedDate, format: 'monthYear' });
-  const yearString = format({ date: navigatedDate, format: 'year' });
+  const yearString = format({ date: pickerDate, format: 'year' });
   const selectedDateString = selectedDate
     ? formatters.selectedDateLabel({ date: selectedDate, formattedDate: formatDay(selectedDate) })
     : '';
@@ -617,7 +629,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     const columns = isDay ? DAYS_IN_WEEK : isYear ? calendarYearColumns : calendarMonthColumns;
     const rows = isDay ? dayRows : toRows(isYear ? years : months, columns);
     const cells = rows.flatMap(row => (row.type === 'weekday' ? [] : (row.cells as CalendarCellData[])));
-    const resetKey = isDay ? dayResetKey : `${isYear ? fromYear : navigatedYear}:${columns}`;
+    const resetKey = isDay ? dayResetKey : `${isYear ? fromYear : pickerYear}:${columns}`;
     const isFocusable = (cell: CalendarCellData | undefined) =>
       !!cell && (cell.type === 'day' ? isDayFocusable(cell) : allFocusable || cell.isInBounds);
     const activeKey = isDay ? activeDayKey : getActiveKey(panelView, resetKey);
@@ -641,7 +653,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         selectDate(event, cell.originalDate!);
         navigate(event, cell.originalDate!, 'first');
       } else if (cell.type === 'month') {
-        let date = setMonth(navigatedDate, cell.index);
+        let date = setMonth(pickerDate, cell.index);
         if (isMonthOnly) {
           const available = getAvailableDates(getDateRange(date, 'month', firstDayOfWeek), bounds);
           if (!available.length) {
@@ -655,9 +667,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         }
         navigate(event, date, 'first');
       } else {
-        if (cell.year !== navigatedYear) {
+        if (cell.year !== pickerYear) {
           // Keep the displayed month within the bounds of the new year.
-          let date = addYears(navigatedDate, cell.year - navigatedYear);
+          let date = addYears(pickerDate, cell.year - pickerYear);
           const bound =
             maxDate && compareDatePart(date, maxDate) > 0
               ? maxDate
@@ -668,10 +680,13 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
             date = setMonth(date, bound.getMonth());
             date = compareDatePart(date, bound) * (bound === maxDate ? 1 : -1) > 0 ? bound : date;
           }
-          navigate(event, date);
+          if (hasDayPanel) {
+            setPickerYear(date.getFullYear());
+          } else {
+            navigate(event, date);
+          }
         }
-        // A new year moves focus to the first panel, as navigation does; otherwise it returns to the month grid.
-        changeView(event, 'month', cell.year !== navigatedYear ? 'first' : 'month');
+        changeView(event, 'month', 'month');
       }
     };
 
@@ -853,15 +868,16 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       },
       elementType: headingView ? 'button' : 'div',
     });
+    Object.assign(headingSlot, { 'data-fui-calendar-heading': '' });
     onActivate(headingSlot, !!headingView, event =>
       changeView(event, headingView!, headingView === 'day' ? 'first' : 'month'),
     );
 
     const unit = isDay ? 'Month' : isYear ? 'YearRange' : 'Year';
-    const periodStart = isDay ? getMonthStart(navigatedDate) : createDate(isYear ? fromYear : navigatedYear, 0, 1);
-    const periodEnd = isDay ? getMonthEnd(navigatedDate) : createDate((isYear ? toYear : navigatedYear) + 1, 0, 0);
+    const periodStart = isDay ? getMonthStart(navigatedDate) : createDate(isYear ? fromYear : pickerYear, 0, 1);
+    const periodEnd = isDay ? getMonthEnd(navigatedDate) : createDate((isYear ? toYear : pickerYear) + 1, 0, 0);
     const getNavButton = (button: ButtonSlot, direction: 1 | -1) => {
-      const date = isDay ? addMonths(navigatedDate, direction) : addYears(navigatedDate, direction);
+      const date = isDay ? addMonths(navigatedDate, direction) : addYears(pickerDate, direction);
       const from = fromYear + direction * YEAR_COUNT;
       // Whether any of the previous or next period lies within the bounds.
       const inBounds =
@@ -879,9 +895,15 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
             date,
             formattedDate: format({ date, format: isDay ? 'month' : 'year' }),
           });
-      return navButton(button, inBounds, label, event =>
-        isYear ? setYearRange({ anchor: navigatedYear, from }) : navigate(event, date),
-      );
+      return navButton(button, inBounds, label, event => {
+        if (isYear) {
+          setYearRange({ anchor: pickerYear, from });
+        } else if (!isDay && hasDayPanel) {
+          setPickerYear(date.getFullYear());
+        } else {
+          navigate(event, date);
+        }
+      });
     };
 
     const closeSlot = isFirst
@@ -1005,7 +1027,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     if (event.isDefaultPrevented()) {
       return;
     }
-    if (event.key === Escape && onDismiss) {
+    const inYearPicker = (event.target as Element).closest('[data-view]')?.getAttribute('data-view') === 'year';
+    if (event.key === Escape && ((isOverlay && view !== 'day') || (inYearPicker && monthPanelView === 'year'))) {
+      event.preventDefault();
+      event.stopPropagation();
+      changeView(event, isOverlay ? 'day' : 'month', isOverlay ? 'dayHeading' : 'monthHeading');
+    } else if (event.key === Escape && onDismiss) {
       event.stopPropagation();
       onDismiss(event, { event, type: 'keydown' });
     } else if (

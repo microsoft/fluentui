@@ -1,4 +1,4 @@
-import { createLocalDate, defaultFormatDate, defaultParseDate } from './datePickerFormatting';
+import { createDatePickerFormat, createLocalDate, defaultFormatDate, defaultParseDate } from './datePickerFormatting';
 
 const expectDate = (text: string, year: number, monthIndex: number, day: number) => {
   const date = defaultParseDate(text);
@@ -7,6 +7,35 @@ const expectDate = (text: string, year: number, monthIndex: number, day: number)
 };
 
 describe('DatePicker formatting', () => {
+  it.each(['en-GB', 'de-DE', 'fr-FR', 'pl-PL', 'ar-EG', 'ja-JP'])(
+    'parses localized long, short and numeric Gregorian dates in %s',
+    locale => {
+      const { parseDate, formatDate } = createDatePickerFormat(locale);
+      const date = new Date(2026, 7, 24);
+      for (const month of ['long', 'short', 'numeric'] as const) {
+        const text = new Intl.DateTimeFormat(locale, {
+          calendar: 'gregory',
+          year: 'numeric',
+          month,
+          day: 'numeric',
+        }).format(date);
+        expect(parseDate(text)).toEqual(date);
+      }
+      expect(parseDate(formatDate(date))).toEqual(date);
+      expect(parseDate('2026-08-24')).toEqual(date);
+      expect(parseDate('August 24, 2026')).toEqual(date);
+    },
+  );
+
+  it('uses localized numeric order before the English fallback and rejects impossible localized dates', () => {
+    const { parseDate } = createDatePickerFormat('en-GB');
+    expect(parseDate('8/12/2026')).toEqual(new Date(2026, 11, 8));
+    expect(parseDate('12/31/2026')).toEqual(new Date(2026, 11, 31));
+    expect(parseDate('31/2/2026')).toBeNull();
+    expect(parseDate('30 February 2026')).toBeNull();
+    expect(parseDate('29 February 2028')).toEqual(new Date(2028, 1, 29));
+  });
+
   it('formats dates as English long dates', () => {
     expect(defaultFormatDate(new Date(2026, 7, 12))).toBe('August 12, 2026');
   });

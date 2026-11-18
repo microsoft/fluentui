@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, Enter, Escape, Space } from '@fluentui/keyboard-keys';
+import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -16,18 +16,9 @@ import {
 import { resolvePositioningShorthand, usePositioning } from '../../hooks';
 import { toDataAttributeValue } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
-import {
-  addDays,
-  calendarFormatters,
-  compareDatePart,
-  focusCalendarGrid,
-  getMonthEnd,
-  getMonthStart,
-  isRestrictedDate,
-  setMonth,
-} from '../Calendar/utils';
+import { compareDatePart, focusCalendarGrid, isRestrictedDate } from '../Calendar/utils';
 import type { CalendarProps } from '../Calendar/Calendar.types';
-import { defaultFormatDate, defaultParseDate } from './datePickerFormatting';
+import { createDatePickerFormat } from './datePickerFormatting';
 import { useDatePickerDateState } from './useDatePickerDateState';
 import type {
   DatePickerCalendarProps,
@@ -90,18 +81,22 @@ export const useDatePicker = (
   const {
     allowTextInput = false,
     disabled = false,
-    formatDate = defaultFormatDate,
+    locale = 'en-US',
+    formatDate: formatDateProp,
     formatErrorMessage = defaultFormatErrorMessage,
     maxDate,
     minDate,
     onOpenChange,
-    parseDate = defaultParseDate,
+    parseDate: parseDateProp,
     placeholder = 'Select a date',
     positioning,
     showGoToToday = false,
     today: todayProp,
   } = props;
 
+  const localeFormat = React.useMemo(() => createDatePickerFormat(locale), [locale]);
+  const formatDate = formatDateProp ?? localeFormat.formatDate;
+  const parseDate = parseDateProp ?? localeFormat.parseDate;
   const { targetDocument } = useFluent();
   const today = React.useMemo(() => todayProp ?? new Date(), [todayProp]);
 
@@ -123,6 +118,7 @@ export const useDatePicker = (
     formatErrorMessage: _formatErrorMessage,
     icon: _icon,
     input: _input,
+    locale: _locale,
     maxDate: _maxDate,
     minDate: _minDate,
     onDateChange: _onDateChange,
@@ -167,11 +163,10 @@ export const useDatePicker = (
   const { error } = dateState;
 
   /**
-   * Opening shows the selected day, otherwise today, otherwise the first available day of today's month. Calendar
-   * falls back to an adjacent-month day or the Next month button when the shown month has no available day.
+   * Unavailable dates remain inspectable, so opening does not substitute a different available date for today.
    */
   const getInitialDisplayedDate = (): Date => {
-    if (dateState.value && !isDateUnavailable(dateState.value)) {
+    if (dateState.value) {
       return dateState.value;
     }
 
@@ -180,16 +175,6 @@ export const useDatePicker = (
       date = minDate;
     } else if (maxDate && compareDatePart(date, maxDate) > 0) {
       date = maxDate;
-    }
-    if (!isDateUnavailable(date)) {
-      return date;
-    }
-
-    const monthEnd = getMonthEnd(date);
-    for (let day = getMonthStart(date); compareDatePart(day, monthEnd) <= 0; day = addDays(day, 1)) {
-      if (!isDateUnavailable(day)) {
-        return day;
-      }
     }
     return date;
   };
@@ -318,6 +303,7 @@ export const useDatePicker = (
       .join(' ') || undefined;
 
   const controlAriaProps = {
+    role: 'combobox',
     'aria-controls': open ? surfaceId : undefined,
     'aria-describedby': describedBy,
     'aria-expanded': open,
@@ -343,7 +329,12 @@ export const useDatePicker = (
       event.preventDefault();
       event.stopPropagation();
       requestOpen(event, false, 'keyboard');
-    } else if (event.key === Enter && allowTextInput && !event.nativeEvent.isComposing) {
+    } else if (
+      event.key === Enter &&
+      allowTextInput &&
+      event.currentTarget === controlRef.current &&
+      !event.nativeEvent.isComposing
+    ) {
       dateState.validate(event);
     }
   });
@@ -396,17 +387,13 @@ export const useDatePicker = (
   control.onBlur = mergeCallbacks(control.onBlur, onControlBlur);
 
   if (input) {
-    // aria-expanded is not supported on text inputs, and the popup is not a listbox, so the field is not a combobox.
-    // The calendar icon exposes the expanded state instead.
-    delete input['aria-expanded'];
+    input['aria-autocomplete'] = 'none';
     input.placeholder = placeholder;
     input.value = dateState.text;
     input.onChange = mergeCallbacks(input.onChange, event => {
       dateState.setText(event.target.value);
     });
   } else if (trigger) {
-    // aria-required is not supported on buttons; a surrounding Field conveys that a date is required.
-    delete trigger['aria-required'];
     // The accessible name combines the field's purpose with the displayed date or placeholder.
     const labelledBy = trigger['aria-labelledby'] ?? (trigger['aria-label'] ? controlId : undefined);
     trigger['aria-labelledby'] = labelledBy ? `${labelledBy} ${displayValue.id}` : undefined;
@@ -423,38 +410,28 @@ export const useDatePicker = (
     });
   }
 
-  const icon = slot.optional(props.icon, { renderByDefault: true, elementType: 'span' });
+  const icon = slot.optional(props.icon, {
+    renderByDefault: true,
+    defaultProps: { type: 'button', 'aria-label': 'Open calendar' },
+    elementType: 'button',
+  });
   if (icon) {
-    if (allowTextInput) {
-      // Not a tab stop: keyboard users open the calendar with Alt + Arrow Down from the input. It is still focusable
-      // and activatable with Enter or Space, so assistive technology that focuses the button can operate it.
-      icon.role ??= 'button';
-      icon.tabIndex ??= -1;
-      icon['aria-label'] ??= 'Choose date';
-      icon['aria-controls'] = open ? surfaceId : undefined;
-      icon['aria-disabled'] = disabled || undefined;
-      icon['aria-expanded'] = open;
-      icon.onMouseDown = mergeCallbacks(icon.onMouseDown, event => {
-        // Keep focus where it is, so pressing the icon neither validates pending text nor dismisses the calendar.
-        event.preventDefault();
-      });
-      icon.onClick = mergeCallbacks(icon.onClick, event => {
-        if (!event.isDefaultPrevented() && !disabled) {
-          requestOpen(event, !open, 'icon');
-        }
-      });
-      icon.onKeyDown = mergeCallbacks(icon.onKeyDown, event => {
-        if (event.isDefaultPrevented() || disabled || (event.key !== Enter && event.key !== Space)) {
-          return;
-        }
-        // Space would otherwise scroll the page.
-        event.preventDefault();
+    icon.tabIndex = allowTextInput && !disabled ? 0 : -1;
+    icon.disabled = disabled;
+    icon['aria-controls'] = open ? surfaceId : undefined;
+    icon['aria-disabled'] = disabled || undefined;
+    icon['aria-expanded'] = open;
+    icon.onMouseDown = mergeCallbacks(icon.onMouseDown, event => {
+      // Keep focus where it is, so pressing the icon neither validates pending text nor dismisses the calendar.
+      event.preventDefault();
+    });
+    icon.onClick = mergeCallbacks(icon.onClick, event => {
+      if (!event.isDefaultPrevented() && !disabled) {
         requestOpen(event, !open, 'icon');
-      });
-      icon.onBlur = mergeCallbacks(icon.onBlur, onControlBlur);
-    } else {
-      icon['aria-hidden'] = true;
-    }
+      }
+    });
+    icon.onBlur = mergeCallbacks(icon.onBlur, onControlBlur);
+    icon.onKeyDown = mergeCallbacks(icon.onKeyDown, onControlKeyDown);
   }
 
   const errorMessage = errorMessageSlot;
@@ -512,6 +489,7 @@ export const useDatePicker = (
     defaultProps: {
       calendarMonthColumns: 3,
       calendarYearColumns: 3,
+      allFocusable: true,
     },
     elementType: Calendar,
   });
@@ -522,23 +500,8 @@ export const useDatePicker = (
     calendar.goToTodayButton = null;
   }
 
-  const formatDateTime = calendarProps.formatters?.dateTime ?? calendarFormatters.dateTime;
-
-  const renderCell = calendarProps.renderCell;
-  calendar.renderCell = (cellProps, cell, defaultRender) => {
-    // Name months with their year, such as "August 2026", rather than the month alone.
-    const resolved =
-      cell.type === 'month'
-        ? {
-            ...cellProps,
-            root: {
-              ...cellProps.root,
-              'aria-label': formatDateTime({ date: setMonth(displayedDate, cell.index), format: 'monthYear' }),
-            },
-          }
-        : cellProps;
-    return renderCell ? renderCell(resolved, cell, defaultRender) : defaultRender(resolved);
-  };
+  const formatDateTime = calendarProps.formatters?.dateTime ?? localeFormat.dateTime;
+  calendar.formatters = { ...calendarProps.formatters, dateTime: formatDateTime };
 
   calendar.value = dateState.value;
   calendar.today = today;
@@ -600,7 +563,7 @@ export const useDatePicker = (
       input: 'input',
       trigger: 'button',
       displayValue: 'span',
-      icon: 'span',
+      icon: 'button',
       errorMessage: 'div',
       popupSurface: 'div',
       calendar: Calendar,
