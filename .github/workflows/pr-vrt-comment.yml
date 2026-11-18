@@ -6,7 +6,7 @@ on:
       - completed
 
 env:
-  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 

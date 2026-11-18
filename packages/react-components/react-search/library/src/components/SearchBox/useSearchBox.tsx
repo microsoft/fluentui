@@ -87,17 +87,6 @@ export const useSearchBoxBase_unstable = (
 
   const rootProps = slot.resolveShorthand(root);
 
-  const handleDismissClick = useEventCallback((event: React.MouseEvent<HTMLSpanElement>) => {
-    if (isResolvedShorthand(dismiss)) {
-      dismiss.onClick?.(event);
-    }
-    const newValue = '';
-    setInternalValue(newValue);
-    props.onChange?.(event, { value: newValue });
-
-    searchBoxRef.current?.focus();
-  });
-
   const inputState = useInput_unstable(
     {
       type: 'search',
@@ -133,6 +122,24 @@ export const useSearchBoxBase_unstable = (
     useMergedRefs(searchBoxRef, ref),
   );
 
+  // The value can't be cleared when the input is disabled or read-only, matching native input behavior.
+  const canClear = !inputState.input.disabled && !inputState.input.readOnly;
+
+  const handleDismissClick = useEventCallback((event: React.MouseEvent<HTMLSpanElement>) => {
+    if (!canClear) {
+      return;
+    }
+
+    if (isResolvedShorthand(dismiss)) {
+      dismiss.onClick?.(event);
+    }
+    const newValue = '';
+    setInternalValue(newValue);
+    props.onChange?.(event, { value: newValue });
+
+    searchBoxRef.current?.focus();
+  });
+
   const state: SearchBoxBaseState = {
     ...inputState,
     components: {
@@ -145,6 +152,7 @@ export const useSearchBoxBase_unstable = (
         role: 'button',
         'aria-label': 'clear',
         tabIndex: -1,
+        ...(!canClear && { 'aria-disabled': true }),
       },
       renderByDefault: true,
       elementType: 'span',
