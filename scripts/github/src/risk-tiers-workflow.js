@@ -8,9 +8,6 @@ const { classifyRisk, hasReviewFocus, tierLabels } = require('./risk-tiers');
 const aiReviewLabel = 'ai-review';
 // The legacy permission field maps `maintain` to `write` and `triage` to `read`.
 const trustedPermissions = ['admin', 'write'];
-// Used only when the permission lookup fails: `author_association` is unreliable (private org members may show as
-// CONTRIBUTOR) and `MEMBER` means any member of the organization.
-const trustedAssociations = ['OWNER', 'MEMBER', 'COLLABORATOR'];
 
 /** @typedef {import('./risk-tiers').Tier} Tier */
 /** @typedef {(input: Parameters<typeof askRiskModel>[0]) => ReturnType<typeof askRiskModel>} AssessRisk */
@@ -33,7 +30,7 @@ function revisionKey(pull) {
  *
  * @param {ReturnType<typeof import('@actions/github').getOctokit>} github
  * @param {{ owner: string; repo: string }} repository
- * @param {{ user: { login: string } | null; author_association: string }} pull
+ * @param {{ user: { login: string } | null }} pull
  * @returns {Promise<AuthorTrust>}
  */
 async function authorTrust(github, repository, pull) {
@@ -51,8 +48,8 @@ async function authorTrust(github, repository, pull) {
       return { trusted: false };
     }
     return {
-      trusted: trustedAssociations.includes(pull.author_association),
-      note: 'Author permission could not be verified, so the author association was used.',
+      trusted: false,
+      note: 'Author permission could not be verified; the author association does not establish write access.',
     };
   }
 }
@@ -121,7 +118,7 @@ async function escalate({ pull, deterministic, getTrust, getDiff, assessRisk, ra
   const note = trust.note ? `${trust.note} ` : '';
   if (!trust.trusted) {
     return unassessed(
-      `${note}Model not called: the author has no write access. A maintainer can add the \`${aiReviewLabel}\` ` +
+      `${note}Model not called: repository write access is not established. A maintainer can add the \`${aiReviewLabel}\` ` +
         'label and rerun.',
     );
   }
@@ -196,7 +193,8 @@ module.exports = async ({
       raise,
     });
     const tier = model.tier;
-    const focusPresent = tier < 2 || hasReviewFocus(pull.body);
+    const focusPresent = hasReviewFocus(pull.body);
+    const needsFocus = tier >= 2 && !focusPresent;
 
     const { data: current } = await github.rest.pulls.get(params);
     if (revisionKey(current) !== identity) {
@@ -218,7 +216,7 @@ module.exports = async ({
       model.summary,
       'Pilot: human approval remains required for every tier. Labels never authorize a merge or skip CI.',
       tier === 3 ? 'AI may comment but must not approve tier 3 changes.' : '',
-      focusPresent ? '' : 'Reminder: add a nonempty `Review focus: ...` line to the PR description for tier 2 or 3.',
+      needsFocus ? 'Reminder: add a nonempty `Review focus: ...` line to the PR description for tier 2 or 3.' : '',
     ]
       .filter(Boolean)
       .join('\n\n');
@@ -230,7 +228,7 @@ module.exports = async ({
       // Label-only pilot: a missing Review focus line is a reminder, never a failure.
       conclusion: 'success',
       output: {
-        title: `Tier ${tier}: ${focusPresent ? 'policy satisfied' : 'add a review focus line'}`,
+        title: `Tier ${tier}: ${needsFocus ? 'add a review focus line' : 'policy satisfied'}`,
         summary,
         // One machine-readable record per assessment, for measuring the pilot from the Checks API.
         text: JSON.stringify({

@@ -26,6 +26,8 @@ For tiers 2-3, add a factual `Review focus: ...` line to the PR description. Mis
 text produces a reminder, not a policy failure. Operational failures fail the
 assessment. The check is tied to the classified head SHA and includes JSON results
 for measurement; the existing area labeler runs independently.
+Review-focus telemetry records actual text presence at every tier; only tiers
+2-3 receive a reminder when it is absent.
 
 The privileged `pull_request_target` workflow executes **base-branch code only**.
 It never executes PR-head code, and refuses stale results. Changes take effect
@@ -52,8 +54,9 @@ affect coverage; compare unassessed cases as well as accuracy.
 | `shadow` (default)     | Deterministic tier; model suggestion is reported only.                                                                          |
 | `raise`                | Maximum of the deterministic and model tiers. Unavailable, unauthorized, failed, or oversized assessments mean at least tier 2. |
 
-Model calls require repository write access or a maintainer-applied `ai-review`
-label. A failed permission lookup uses a reported association fallback.
+Model calls require verified repository write access or a maintainer-applied
+`ai-review` label. A failed permission lookup leaves the author untrusted and
+reports the failure; organization membership or author association is not enough.
 
 To enable the model, repository administrators configure:
 

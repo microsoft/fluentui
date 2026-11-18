@@ -198,6 +198,7 @@ describe('risk classification', () => {
     name => {
       const path = `packages/react-components/react-button/library/src/${name}`;
       expect(tier([{ ...file(path), patch: undefined }])).toBe(2);
+      expect(tier([{ ...file(path, 2000), patch: undefined }])).toBe(2);
       expect(tier([{ ...file(path), patch: '' }])).toBe(2);
       expect(tier([file(path)])).toBe(1);
       const snapshot = 'packages/react-components/react-button/library/src/__snapshots__/Button.snap';
@@ -360,6 +361,8 @@ describe('risk workflow', () => {
       expect(conclusion(args)).toBe('success');
       expect(args.core.setFailed).not.toHaveBeenCalled();
       expect(checkOutput(args).summary.includes('Reminder: add a nonempty `Review focus')).toBe(reminder);
+      expect(JSON.parse(checkOutput(args).text).reviewFocus).toBe(false);
+      expect(checkOutput(args).title).toContain(reminder ? 'add a review focus line' : 'policy satisfied');
       // The check is complete, so the workflow finalizer must not overwrite it.
       expect(args.core.setOutput).toHaveBeenCalledWith('check-completed', 'true');
     }
@@ -552,7 +555,7 @@ describe('risk workflow', () => {
       await runWorkflow({ ...args, env });
       expect(args.assessRisk).not.toHaveBeenCalled();
       expect(labelsAdded(args)).toEqual([expected]);
-      expect(summary(args)).toContain('the author has no write access');
+      expect(summary(args)).toContain('repository write access is not established');
     }
 
     const labeled = workflowFixture([file(story)]);
@@ -582,28 +585,38 @@ describe('risk workflow', () => {
     expect(args.assessRisk).toHaveBeenCalledTimes(trusted ? 1 : 0);
   });
 
-  test('an unknown author is untrusted; an unverifiable one falls back to the author association', async () => {
+  test('an unknown author is untrusted', async () => {
     const missing = workflowFixture([file(story)]);
     missing.github.rest.repos.getCollaboratorPermissionLevel.mockRejectedValue(
       Object.assign(new Error(), { status: 404 }),
     );
     await runWorkflow(missing);
     expect(missing.assessRisk).not.toHaveBeenCalled();
-
-    for (const [association, trusted] of [
-      ['MEMBER', true],
-      ['CONTRIBUTOR', false],
-    ] as const) {
-      const args = workflowFixture([file(story)]);
-      args.data.author_association = association;
-      args.github.rest.repos.getCollaboratorPermissionLevel.mockRejectedValue(
-        Object.assign(new Error('forbidden'), { status: 403 }),
-      );
-      await runWorkflow(args);
-      expect(args.assessRisk).toHaveBeenCalledTimes(trusted ? 1 : 0);
-      expect(summary(args)).toContain('Author permission could not be verified');
-    }
   });
+
+  test.each(['OWNER', 'MEMBER', 'COLLABORATOR', 'CONTRIBUTOR'])(
+    'permission lookup failures never authorize the %s association',
+    async association => {
+      for (const status of [403, 500]) {
+        for (const mode of ['shadow', 'raise']) {
+          const args = workflowFixture([file(story)]);
+          args.data.author_association = association;
+          args.env.RISK_MODEL_MODE = mode;
+          args.github.rest.repos.getCollaboratorPermissionLevel.mockRejectedValue(
+            Object.assign(new Error('Permission lookup unavailable'), { status }),
+          );
+          await runWorkflow(args);
+          expect(args.assessRisk).not.toHaveBeenCalled();
+          expect(labelsAdded(args)).toEqual([mode === 'raise' ? 'Risk: standard' : 'Risk: trivial']);
+          expect(summary(args)).toContain('Author permission could not be verified');
+          expect(summary(args)).toContain('maintainer can add the `ai-review` label');
+          args.data.labels.push({ name: 'ai-review' });
+          await runWorkflow(args);
+          expect(args.assessRisk).toHaveBeenCalledTimes(1);
+        }
+      }
+    },
+  );
 
   test('a tier 3 change never looks up the author', async () => {
     const args = workflowFixture([file('AGENTS.md')]);
