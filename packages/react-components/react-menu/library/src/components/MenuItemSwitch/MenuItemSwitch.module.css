@@ -64,6 +64,7 @@
 :where(.multiline) > .switchIndicator {
   align-self: center;
 }
-:global([dir='rtl']) :where(.checked) > .switchIndicator :global(.fui-MenuItemSwitch__switchIndicator__circleFilled) {
+/* `:dir()` follows the nearest `dir` (each FluentProvider sets one), like Griffel's direction from context. */
+:where(.checked):dir(rtl) > .switchIndicator :global(.fui-MenuItemSwitch__switchIndicator__circleFilled) {
   transform: translateX(calc(-1 * var(--spacingHorizontalXL)));
 }

@@ -251,7 +251,7 @@
   position: absolute;
   top: 4px;
   inset-inline-end: 4px;
-  z-index: var(--zIndexContent);
+  z-index: var(--zIndexContent, 1);
 }
 
 /* ---- Hidden checkbox ---- */
@@ -282,7 +282,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  z-index: calc(var(--zIndexContent) + 1);
+  z-index: calc(var(--zIndexContent, 1) + 1);
 }
 .disabled::after,
 .disabled:hover::after,
