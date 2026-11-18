@@ -15,6 +15,7 @@ import {
   Listbox,
   Option,
   OptionGroup,
+  RadioGroup,
   Rating,
   RatingDisplay,
   RatingItem,
@@ -38,6 +39,7 @@ import {
   renderListbox_unstable,
   renderOptionGroup_unstable,
   renderOption_unstable,
+  renderRadioGroup_unstable,
   renderRatingDisplay_unstable,
   renderRatingItem_unstable,
   renderRating_unstable,
@@ -65,6 +67,8 @@ import {
   useListbox_unstable,
   useOptionGroup_unstable,
   useOption_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
   useRatingContextValues,
   useRatingDisplayContextValues,
   useRatingDisplay_unstable,
@@ -86,6 +90,7 @@ import { useDropdownStyles_unstable as useGriffelDropdownStyles } from '../../..
 import { useListboxStyles_unstable as useGriffelListboxStyles } from '../../../packages/react-components/react-combobox/library/src/components/Listbox/useListboxStyles.styles.ts';
 import { useOptionStyles_unstable as useGriffelOptionStyles } from '../../../packages/react-components/react-combobox/library/src/components/Option/useOptionStyles.styles.ts';
 import { useOptionGroupStyles_unstable as useGriffelOptionGroupStyles } from '../../../packages/react-components/react-combobox/library/src/components/OptionGroup/useOptionGroupStyles.styles.ts';
+import { useRadioGroupStyles_unstable as useGriffelRadioGroupStyles } from '../../../packages/react-components/react-radio/library/src/components/RadioGroup/useRadioGroupStyles.styles.ts';
 import { useSearchBoxStyles_unstable as useGriffelSearchBoxStyles } from '../../../packages/react-components/react-search/library/src/components/SearchBox/useSearchBoxStyles.styles.ts';
 import { useSpinButtonStyles_unstable as useGriffelSpinButtonStyles } from '../../../packages/react-components/react-spinbutton/library/src/components/SpinButton/useSpinButtonStyles.styles.ts';
 import { useSliderStyles_unstable as useGriffelSliderStyles } from '../../../packages/react-components/react-slider/library/src/components/Slider/useSliderStyles.styles.ts';
@@ -103,6 +108,7 @@ import { useColorPickerStyles_unstable as useGriffelColorPickerStyles } from '..
 import { useColorSliderStyles_unstable as useGriffelColorSliderStyles } from '../../../packages/react-components/react-color-picker/library/src/components/ColorSlider/useColorSliderStyles.styles.ts';
 import { useAlphaSliderStyles_unstable as useGriffelAlphaSliderStyles } from '../../../packages/react-components/react-color-picker/library/src/components/AlphaSlider/useAlphaSliderStyles.styles.ts';
 import { useColorAreaStyles_unstable as useGriffelColorAreaStyles } from '../../../packages/react-components/react-color-picker/library/src/components/ColorArea/useColorAreaStyles.styles.ts';
+import { coreComponents } from './components/core';
 import { describeParity, griffel, icon } from './harness';
 import type { AnyComponent, Implementation } from './harness';
 
@@ -140,6 +146,13 @@ const GriffelOptionGroup = griffel(
   useOptionGroup_unstable,
   useGriffelOptionGroupStyles,
   renderOptionGroup_unstable,
+);
+const GriffelRadioGroup = griffel(
+  'RadioGroup',
+  useRadioGroup_unstable,
+  useGriffelRadioGroupStyles,
+  renderRadioGroup_unstable,
+  useRadioGroupContextValues,
 );
 const GriffelSearchBox = griffel(
   'SearchBox',
@@ -245,6 +258,7 @@ const GriffelColorArea = griffel(
 
 const implementations = {
   griffel: {
+    Radio: coreComponents.Radio.griffel,
     Listbox: GriffelListbox,
     Option: GriffelOption,
     Rating: GriffelRating,
@@ -257,6 +271,7 @@ const implementations = {
     ColorArea: GriffelColorArea,
   },
   css: {
+    Radio: coreComponents.Radio.css,
     Listbox: Listbox as AnyComponent,
     Option: Option as unknown as AnyComponent,
     Rating: Rating as AnyComponent,
@@ -335,6 +350,9 @@ describeParity('forms', {
       { size: 'small' },
       { size: 'large', appearance: 'filled-lighter' },
       { disabled: true },
+      { 'aria-invalid': true },
+      { appearance: 'underline', 'aria-invalid': true },
+      { readOnly: true },
     ],
   },
   Dropdown: {
@@ -351,6 +369,8 @@ describeParity('forms', {
       { size: 'small' },
       { size: 'large', appearance: 'filled-lighter' },
       { disabled: true },
+      { 'aria-invalid': true },
+      { appearance: 'underline', 'aria-invalid': true },
     ],
   },
   Listbox: {
@@ -397,6 +417,21 @@ describeParity('forms', {
     },
     findRoot: findFirst('fui-OptionGroup'),
   },
+  RadioGroup: {
+    css: RadioGroup as AnyComponent,
+    griffel: GriffelRadioGroup,
+    sampledSlots: ['fui-Radio', 'fui-Radio__indicator', 'fui-Radio__label'],
+    interactive: false,
+    props: (implementation: Implementation) => {
+      const { Radio: RadioImpl } = implementations[implementation];
+      return {
+        'aria-label': 'Options',
+        defaultValue: 'a',
+        children: [<RadioImpl key="a" value="a" label="A" />, <RadioImpl key="b" value="b" label="B" />],
+      };
+    },
+    variants: [{}, { layout: 'horizontal' }, { layout: 'horizontal-stacked' }, { disabled: true }, { required: true }],
+  },
   SearchBox: {
     css: SearchBox as AnyComponent,
     griffel: GriffelSearchBox,
@@ -426,6 +461,8 @@ describeParity('forms', {
       { appearance: 'filled-darker' },
       { size: 'small' },
       { disabled: true },
+      { 'aria-invalid': true },
+      { readOnly: true },
     ],
   },
   Slider: {

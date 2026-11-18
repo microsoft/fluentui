@@ -162,6 +162,7 @@ import {
 } from '@fluentui/react-teaching-popover';
 import { ToastContainerContextProvider } from '@fluentui/react-toast';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
 import { useMenuSplitGroupContextValues } from '../../../packages/react-components/react-menu/library/src/components/MenuSplitGroup/useMenuSplitGroupContextValues';
 import { useToastContextValues_unstable } from '../../../packages/react-components/react-toast/library/src/components/Toast/useToastContextValues';
 // Explicit `.ts` imports bypass the CSS Modules resolution, giving the original Griffel implementations.
@@ -177,6 +178,7 @@ import { useDrawerHeaderStyles_unstable as useGriffelDrawerHeaderStyles } from '
 import { useDrawerHeaderNavigationStyles_unstable as useGriffelDrawerHeaderNavigationStyles } from '../../../packages/react-components/react-drawer/library/src/components/DrawerHeaderNavigation/useDrawerHeaderNavigationStyles.styles.ts';
 import { useDrawerHeaderTitleStyles_unstable as useGriffelDrawerHeaderTitleStyles } from '../../../packages/react-components/react-drawer/library/src/components/DrawerHeaderTitle/useDrawerHeaderTitleStyles.styles.ts';
 import { useInlineDrawerStyles_unstable as useGriffelInlineDrawerStyles } from '../../../packages/react-components/react-drawer/library/src/components/InlineDrawer/useInlineDrawerStyles.styles.ts';
+import { useOverlayDrawerSurfaceStyles_unstable as useGriffelOverlayDrawerSurfaceStyles } from '../../../packages/react-components/react-drawer/library/src/components/OverlayDrawer/OverlayDrawerSurface/useOverlayDrawerSurfaceStyles.styles.ts';
 import { useOverlayDrawerStyles_unstable as useGriffelOverlayDrawerStyles } from '../../../packages/react-components/react-drawer/library/src/components/OverlayDrawer/useOverlayDrawerStyles.styles.ts';
 import { useMenuDividerStyles_unstable as useGriffelMenuDividerStyles } from '../../../packages/react-components/react-menu/library/src/components/MenuDivider/useMenuDividerStyles.styles.ts';
 import { useMenuGroupStyles_unstable as useGriffelMenuGroupStyles } from '../../../packages/react-components/react-menu/library/src/components/MenuGroup/useMenuGroupStyles.styles.ts';
@@ -252,6 +254,24 @@ const arrowKnownDifferences = {
 };
 
 const query = (selector: string) => (container: HTMLElement) => container.querySelector<HTMLElement>(selector)!;
+
+/**
+ * OverlayDrawer renders its root through OverlayDrawerSurface, which imports its CSS Modules style hook. The Griffel
+ * baseline swaps in a surface recomposed like `OverlayDrawerSurface.tsx` with the Griffel hook (it styles the backdrop).
+ */
+const GriffelOverlayDrawerSurface = griffel(
+  'OverlayDrawerSurface',
+  (props: AnyProps, ref: never) => useDialogSurface_unstable({ ...props, as: 'div' } as never, ref),
+  useGriffelOverlayDrawerSurfaceStyles,
+  renderDialogSurface_unstable,
+  useDialogSurfaceContextValues_unstable,
+);
+const useOverlayDrawerWithGriffelSurface = (props: never, ref: never) => {
+  const state = useOverlayDrawer_unstable(props, ref);
+  (state as unknown as { components: AnyProps }).components.root = GriffelOverlayDrawerSurface;
+  (state.root as unknown as Record<symbol, unknown>)[SLOT_ELEMENT_TYPE_SYMBOL] = GriffelOverlayDrawerSurface;
+  return state;
+};
 
 // --- Dialog -----------------------------------------------------------------------------------------------------
 
@@ -386,7 +406,7 @@ const C = {
     OverlayDrawer,
     griffel(
       'OverlayDrawer',
-      useOverlayDrawer_unstable,
+      useOverlayDrawerWithGriffelSurface,
       useGriffelOverlayDrawerStyles,
       renderOverlayDrawer_unstable,
       useDrawerContextValue,
@@ -653,8 +673,9 @@ const dialogSurface = (element: JSXElement): JSXElement => {
 
 const popover = (element: JSXElement): JSXElement => {
   const [surface, popoverProps] = split(element, ['appearance', 'size', 'withArrow']);
+  // Pinned: the copies sit at different page heights, and a flip in one of them rotates and moves its arrow.
   return (
-    <Popover open inline {...popoverProps}>
+    <Popover open inline positioning={{ pinned: true }} {...popoverProps}>
       <PopoverTrigger disableButtonEnhancement>
         <button>Trigger</button>
       </PopoverTrigger>
@@ -880,7 +901,8 @@ const components: Record<string, ComponentSpec> = {
     knownDifferences: arrowKnownDifferences,
     sampledSlots: [],
     interactive: false,
-    props: { withArrow: true },
+    // Pinned: the copies sit at different page heights, and a flip in one of them rotates and moves its arrow.
+    props: { withArrow: true, positioning: { pinned: true } },
     variants: [{}, { appearance: 'inverted' }],
   },
 
@@ -911,6 +933,8 @@ const components: Record<string, ComponentSpec> = {
     variants: [{}, { subText: 'Sub text' }, { hasSubmenu: true }, { disabled: true }],
     wrap: (element, implementation) => menuList(element, implementation),
   },
+  // The checkmark slot is styled by `react-menu/library/src/selectable/useCheckmarkStyles.styles`, imported through
+  // `selectable/index`; griffelStyleImportsLoader gives the Griffel baselines its Griffel version.
   MenuItemCheckbox: {
     ...C.MenuItemCheckbox,
     findRoot: query('.fui-MenuItemCheckbox'),

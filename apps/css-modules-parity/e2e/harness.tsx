@@ -5,7 +5,14 @@ import { clsx } from 'clsx';
 // which the lazy loading spec must avoid.
 import { FluentProvider } from '@fluentui/react-provider';
 import type { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { webDarkTheme, webLightTheme } from '@fluentui/react-theme';
+import {
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+  teamsLightTheme,
+  webDarkTheme,
+  webLightTheme,
+} from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -29,6 +36,18 @@ const griffelBuckets = Cypress.env('griffelBuckets') === true;
 const dir: 'ltr' | 'rtl' = Cypress.env('dir') === 'rtl' ? 'rtl' : 'ltr';
 const forcedColors = Cypress.env('forcedColors') === true;
 const shadowDOM = Cypress.env('shadowDOM') === true;
+const themes: Record<string, Theme> = {
+  webLight: webLightTheme,
+  webDark: webDarkTheme,
+  teamsLight: teamsLightTheme,
+  teamsDark: teamsDarkTheme,
+  teamsHighContrast: teamsHighContrastTheme,
+};
+/** Theme of the app's FluentProvider (`FUI_PARITY_THEME`, see README). */
+export const parityTheme: Theme = themes[Cypress.env('theme')] ?? webLightTheme;
+/** A theme different from the app's, for nested providers: dark inside a light app, light inside a dark one. */
+export const nestedParityTheme: Theme =
+  parityTheme === webLightTheme || parityTheme === teamsLightTheme ? webDarkTheme : webLightTheme;
 /**
  * `FUI_PARITY_PROFILE=1`: sums the time each test spends per phase and writes it to `cypress/profile/<spec>.ndjson`.
  * Off by default, and then adds no command to the queue.
@@ -103,6 +122,21 @@ export type ComponentSpec = {
   useAppPattern?: (toggled: boolean) => AppPattern;
   /** Samples every variant and state again after the app toggles its state (`useAppPattern(true)`). */
   toggles?: boolean;
+  /**
+   * Positioned surfaces: finds the trigger, the positioned surface and its arrow inside the variant's container (render
+   * them `inline` or into a `mountNode` inside it). The surface's position and size relative to the trigger, its
+   * arrow's offset and `data-popper-placement` are compared besides the styles.
+   */
+  geometry?: (container: HTMLElement) => PositionedElements | undefined;
+};
+
+/** Elements whose geometry `ComponentSpec.geometry` compares. */
+export type PositionedElements = {
+  trigger: Element;
+  surface: HTMLElement;
+  arrow?: Element | null;
+  /** `false` for elements Floating UI doesn't place (drawers): no `data-popper-placement` is awaited or compared. */
+  positioned?: boolean;
 };
 
 /** App styling reproduced from a real application, applied in the `app pattern` scenario. */
@@ -211,6 +245,22 @@ const rootProperties = [
   'box-shadow',
   'cursor',
   'opacity',
+  // Properties that RTL and forced colors rules change.
+  'text-align',
+  'transform',
+  'transform-origin',
+  'background-image',
+  'background-position',
+  'animation-name',
+  'position',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'z-index',
+  'outline-offset',
+  'forced-color-adjust',
+  'visibility',
 ] as const;
 const slotProperties = [
   'background-color',
@@ -223,8 +273,56 @@ const slotProperties = [
   'display',
   'opacity',
   'cursor',
+  'border-bottom-color',
+  'border-inline-start-color',
+  'padding-inline-start',
+  'padding-inline-end',
+  'margin-inline-start',
+  'text-align',
+  'transform',
+  'background-image',
+  'background-position',
+  'animation-name',
+  'position',
+  'right',
+  'left',
+  'z-index',
+  'forced-color-adjust',
+  'visibility',
+  'stroke',
+  'fill',
 ] as const;
-const pseudoProperties = ['content', 'background-color', 'border-bottom-color', 'transform', 'box-shadow'] as const;
+const pseudoProperties = [
+  'content',
+  'background-color',
+  'border-top-color',
+  'border-bottom-color',
+  'border-inline-start-color',
+  'border-top-width',
+  'border-bottom-width',
+  'border-top-left-radius',
+  'transform',
+  'transform-origin',
+  'margin-inline-start',
+  'margin-inline-end',
+  'box-shadow',
+  'opacity',
+  'position',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'width',
+  'height',
+  'z-index',
+  'forced-color-adjust',
+] as const;
+/**
+ * Properties that long-running animations (Spinner, Skeleton, a toast's timer) change on every frame. The harness only waits for short
+ * animations, so these are skipped on an element with a running infinite animation.
+ */
+const insetProperties = new Set(['top', 'right', 'bottom', 'left']);
+const animatedProperties = new Set(['transform', 'opacity', 'background-position']);
 
 /**
  * Differences tolerated between the implementations, only when the CSS value is one the app declared (or a value
@@ -247,7 +345,12 @@ const appResetStyleValues: Record<string, string[]> = {
   'root border-inline-start-color': ['--colorPaletteBerryBorderActive'],
   'root border-inline-end-color': ['--colorPaletteBerryBorderActive'],
   // Badge outlines its `::after` with the root's border color.
+  'root::after border-top-color': ['--colorPaletteBerryBorderActive'],
   'root::after border-bottom-color': ['--colorPaletteBerryBorderActive'],
+  'root::after border-inline-start-color': ['--colorPaletteBerryBorderActive'],
+  // Avatar's ring and shadow inherit the root's radius.
+  'root::before border-top-left-radius': ['--borderRadiusCircular'],
+  'root::after border-top-left-radius': ['--borderRadiusCircular'],
   'root padding-top': ['--spacingVerticalXS'],
   'root padding-bottom': ['--spacingVerticalXS'],
   'root padding-inline-start': ['--spacingHorizontalXXL'],
@@ -263,6 +366,11 @@ const appResetStyleValues: Record<string, string[]> = {
   'root box height': ['*'],
   'parent box width': ['*'],
   'parent box height': ['*'],
+  // Follow the root's size: the default transform origin and Textarea's `::after` underline.
+  'root transform-origin': ['*'],
+  'root::after transform-origin': ['*'],
+  'root::after width': ['*'],
+  'root::after top': ['*'],
 };
 
 const knownDifferences: KnownDifferences = {
@@ -303,8 +411,8 @@ function isKnownDifference(allowed: Record<string, string[]>, key: string, actua
   if (allowed[key]?.includes(actual) || allowed[key]?.includes('*')) {
     return true;
   }
-  // `currentColor` borders and inheriting slots follow the app's root color.
-  return key !== 'root color' && key.endsWith('color') && (allowed['root color'] ?? []).includes(actual);
+  // `currentColor` borders, icon fills and inheriting slots follow the app's root color.
+  return key !== 'root color' && /(color|fill|stroke)$/.test(key) && (allowed['root color'] ?? []).includes(actual);
 }
 
 type ParityAppProps = {
@@ -380,7 +488,7 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
       <FluentProvider
         targetDocument={targetDocument}
         dir={dir}
-        theme={webDarkTheme}
+        theme={nestedParityTheme}
         customStyleHooks_unstable={{ [customStyleHookName]: createCustomStyleHook(() => classes.hookNested) }}
       >
         {children}
@@ -414,7 +522,7 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
     <FluentProvider
       targetDocument={targetDocument}
       dir={dir}
-      theme={webLightTheme}
+      theme={parityTheme}
       customStyleHooks_unstable={customStyleHooks}
     >
       <GriffelBaseStyles />
@@ -456,12 +564,71 @@ const ParityApp = ({ targetDocument, name, spec, scenario }: ParityAppProps): JS
   );
 };
 
+/**
+ * Makes equivalent computed values comparable: Griffel writes physical `text-align` values (flipped in RTL) where
+ * CSS Modules use logical ones, and keyframes names are generated per implementation.
+ */
+function normalize(property: string, value: string, direction: string) {
+  if (property === 'text-align' && (value === 'start' || value === 'end')) {
+    return (value === 'start') === (direction === 'rtl') ? 'right' : 'left';
+  }
+  if (property === 'animation-name') {
+    return value
+      .split(',')
+      .map(name => (name.trim() === 'none' ? 'none' : 'keyframes'))
+      .join(', ');
+  }
+  return value;
+}
+
 export function readStyles(root: HTMLElement, spec: Pick<ComponentSpec, 'sampledSlots'>): Styles {
   const view = root.ownerDocument.defaultView!;
   const result: Styles = {};
-  const read = (prefix: string, style: CSSStyleDeclaration, properties: readonly string[]) => {
+  // Pseudo-element animations are listed by the element's `getAnimations({ subtree: true })`.
+  const hasInfiniteAnimation = (element: Element, pseudoElement?: string) =>
+    element
+      .getAnimations({ subtree: Boolean(pseudoElement) })
+      .some(
+        animation =>
+          (animation.effect as KeyframeEffect | null)?.pseudoElement === (pseudoElement ?? null) &&
+          isLongRunning(animation),
+      );
+  const container = root.closest<HTMLElement>('[data-testid]');
+  const isPositioned = (element: Element) => view.getComputedStyle(element).position !== 'static';
+  // Insets of an absolutely or fixed positioned box resolve against its containing block: outside the variant's
+  // container, they depend on where the container sits on the page.
+  const insetsOutsideContainer = (element: Element, style: CSSStyleDeclaration, pseudoElement?: string) => {
+    if (style.position !== 'absolute' && style.position !== 'fixed') {
+      return false;
+    }
+    if (pseudoElement && isPositioned(element)) {
+      return !container?.contains(element);
+    }
+    const containingBlock = style.position === 'fixed' ? null : (element as HTMLElement).offsetParent;
+    return !containingBlock || !container?.contains(containingBlock);
+  };
+  const read = (prefix: string, element: Element, properties: readonly string[], pseudoElement?: string) => {
+    const style = view.getComputedStyle(element, pseudoElement);
+    // A pseudo-element without content isn't rendered: only whether it renders is compared.
+    if (pseudoElement && ['none', 'normal'].includes(style.content)) {
+      result[`${prefix} content`] = style.content;
+      return;
+    }
+    const animated = hasInfiniteAnimation(element, pseudoElement);
+    const skipInsets = insetsOutsideContainer(element, style, pseudoElement);
     for (const property of properties) {
-      result[`${prefix} ${property}`] = style.getPropertyValue(property);
+      if (animated && animatedProperties.has(property)) {
+        continue;
+      }
+      if (skipInsets && insetProperties.has(property)) {
+        continue;
+      }
+      // Inline styles come from component code, the same in both implementations; Floating UI's (`transform`, `top`,
+      // `left`, `position`) also depend on the container's page position.
+      if (!pseudoElement && (element as HTMLElement).style?.getPropertyValue(property)) {
+        continue;
+      }
+      result[`${prefix} ${property}`] = normalize(property, style.getPropertyValue(property), style.direction);
     }
   };
   // Layout size catches differences no single property shows, for example a flex item growing to a larger min-content
@@ -473,18 +640,23 @@ export function readStyles(root: HTMLElement, spec: Pick<ComponentSpec, 'sampled
       result[`${prefix} box height`] = String(element.offsetHeight);
     }
   };
-  read('root', view.getComputedStyle(root), rootProperties);
+  read('root', root, rootProperties);
   box('root', root);
   if (root.parentElement) {
     box('parent', root.parentElement);
   }
-  read('root::before', view.getComputedStyle(root, '::before'), pseudoProperties);
-  read('root::after', view.getComputedStyle(root, '::after'), pseudoProperties);
+  read('root::before', root, pseudoProperties, '::before');
+  read('root::after', root, pseudoProperties, '::after');
   for (const slotClassName of spec.sampledSlots) {
     const slot = root.classList.contains(slotClassName) ? root : root.querySelector<HTMLElement>(`.${slotClassName}`);
     if (slot) {
-      read(slotClassName, view.getComputedStyle(slot), slotProperties);
+      read(slotClassName, slot, slotProperties);
       box(slotClassName, slot);
+      // Forced colors focus outlines, checked indicators and RTL arrows are often drawn on a slot's pseudo-elements.
+      if (slot !== root) {
+        read(`${slotClassName}::before`, slot, pseudoProperties, '::before');
+        read(`${slotClassName}::after`, slot, pseudoProperties, '::after');
+      }
     }
   }
   return result;
@@ -553,6 +725,17 @@ function mirrorFocus(id: string) {
   });
 }
 
+/**
+ * Infinite animations (Spinner, Skeleton) and long finite ones (a toast's timer, as long as its `timeout`) are never
+ * waited for, and their animated properties aren't sampled. Reduced-motion transitions and motion components' enter
+ * animations finish in milliseconds.
+ */
+const longAnimationMs = 2000;
+function isLongRunning(animation: Animation): boolean {
+  const endTime = Number(animation.effect?.getComputedTiming().endTime ?? 0);
+  return endTime > longAnimationMs;
+}
+
 /** Settle waits slower than this record the animations they waited for. */
 const slowSettleMs = 500;
 const maxProfiledAnimations = 10;
@@ -611,9 +794,7 @@ function settle() {
   }
   cy.document().should(doc => {
     const running = [...doc.getAnimations(), ...(appShadowRoot?.getAnimations() ?? [])].filter(
-      animation =>
-        (animation.pending || animation.playState === 'running') &&
-        animation.effect?.getComputedTiming().endTime !== Infinity,
+      animation => (animation.pending || animation.playState === 'running') && !isLongRunning(animation),
     );
     if (profile) {
       runs++;
@@ -686,48 +867,107 @@ function enterState(id: string, spec: ComponentSpec, state: State) {
   settle();
 }
 
+/** Rounds to 1/100 px: layout positions are fractional, and both implementations share the same layout engine. */
+const px = (value: number) => String(Math.round(value * 100) / 100);
+
+/** Position and size of a positioned surface relative to its trigger, and its arrow's offset (`ComponentSpec.geometry`). */
+export function readGeometry({ trigger, surface, arrow }: PositionedElements): Styles {
+  const triggerRect = trigger.getBoundingClientRect();
+  const surfaceRect = surface.getBoundingClientRect();
+  const result: Styles = {
+    'geometry placement': surface.getAttribute('data-popper-placement') ?? '',
+    'geometry dx': px(surfaceRect.left - triggerRect.left),
+    'geometry dy': px(surfaceRect.top - triggerRect.top),
+    'geometry width': px(surfaceRect.width),
+    'geometry height': px(surfaceRect.height),
+  };
+  if (arrow) {
+    const arrowRect = arrow.getBoundingClientRect();
+    result['geometry arrow x'] = px(arrowRect.left - surfaceRect.left);
+    result['geometry arrow y'] = px(arrowRect.top - surfaceRect.top);
+  }
+  return result;
+}
+
+/** Waits until Floating UI has placed the surface (it sets `data-popper-placement` after computing a position). */
+function waitForPosition(id: string, spec: ComponentSpec) {
+  cy.get<HTMLElement>(`[data-testid="${id}"]`).should($container => {
+    const elements = spec.geometry!($container[0]);
+    expect(elements?.surface, 'positioned surface').to.exist;
+    if (elements!.positioned !== false) {
+      expect(elements!.surface.getAttribute('data-popper-placement'), 'surface placement').to.be.a('string');
+    }
+  });
+  // Floating UI may update once more after the first placement (for example when `autoSize` changes the size).
+  cy.window().then(
+    win => new Cypress.Promise(resolve => win.requestAnimationFrame(() => win.requestAnimationFrame(resolve))),
+  );
+}
+
+function readSample(id: string, spec: ComponentSpec) {
+  if (spec.geometry) {
+    waitForPosition(id, spec);
+  }
+  return getRoot(id, spec).then($root => {
+    const sampled = readStyles($root[0], spec);
+    if (!spec.geometry) {
+      return sampled;
+    }
+    const container = $root[0].closest<HTMLElement>(`[data-testid="${id}"]`)!;
+    return { ...sampled, ...readGeometry(spec.geometry(container)!) };
+  });
+}
+
 function sample(id: string, spec: ComponentSpec) {
   if (!profile) {
-    return getRoot(id, spec).then($root => readStyles($root[0], spec));
+    return readSample(id, spec);
   }
   let start = 0;
   cy.then(() => {
     start = performance.now();
   });
-  return getRoot(id, spec)
-    .then($root => readStyles($root[0], spec))
-    .then(sampled => {
-      addPhase('sample', performance.now() - start);
-      return sampled;
-    });
+  return readSample(id, spec).then(sampled => {
+    addPhase('sample', performance.now() - start);
+    return sampled;
+  });
 }
 
 /** Resolves declared app values (theme variables or keywords) to computed values inside the provider. */
 function resolveDeclarations(declarations: Record<string, string[]>) {
-  return cy.get('.fui-FluentProvider').then($provider => {
-    const probe = $provider[0].ownerDocument.createElement('div');
-    $provider[0].appendChild(probe);
-    const view = probe.ownerDocument.defaultView!;
+  // Every provider: a nested provider (another theme) resolves the same theme variables to other values.
+  return cy.get('.fui-FluentProvider').then($providers => {
     const resolved: Record<string, string[]> = {};
-    for (const [key, values] of Object.entries(declarations)) {
-      const property = key.split(' ').pop()!;
-      // In forced colors, a value is recolored unless the element opts out (`forced-color-adjust: none`, for example
-      // Button primary), so both computed values are accepted.
-      resolved[key] = values.flatMap(value => {
-        if (value === '*') {
-          return [value];
-        }
-        probe.style.setProperty(property, value.startsWith('--') ? `var(${value})` : value);
-        return ['auto', 'none'].map(adjust => {
-          probe.style.setProperty('forced-color-adjust', adjust);
-          return view.getComputedStyle(probe).getPropertyValue(property);
+    for (const provider of Array.from($providers)) {
+      const probe = provider.ownerDocument.createElement('div');
+      provider.appendChild(probe);
+      const view = probe.ownerDocument.defaultView!;
+      for (const [key, values] of Object.entries(declarations)) {
+        const property = key.split(' ').pop()!;
+        // In forced colors, a value is recolored unless the element opts out (`forced-color-adjust: none`, for
+        // example Button primary), so both computed values are accepted.
+        const computed = values.flatMap(value => {
+          if (value === '*') {
+            return [value];
+          }
+          probe.style.setProperty(property, value.startsWith('--') ? `var(${value})` : value);
+          return ['auto', 'none'].map(adjust => {
+            probe.style.setProperty('forced-color-adjust', adjust);
+            return view.getComputedStyle(probe).getPropertyValue(property);
+          });
         });
-      });
+        resolved[key] = [...(resolved[key] ?? []), ...computed];
+      }
+      probe.remove();
     }
-    probe.remove();
     return resolved;
   });
 }
+
+/** The variant's props for failure messages; objects with many keys (themes) are abbreviated. */
+const variantLabel = (variant: ParityVariant) =>
+  JSON.stringify(variant, (key, value) =>
+    key && value && typeof value === 'object' && Object.keys(value).length > 12 ? '{…}' : value,
+  );
 
 function statesOf(spec: ComponentSpec, variant: { disabled?: boolean }): State[] {
   if (!spec.interactive) {
@@ -838,7 +1078,7 @@ function renderApp(targetDocument: Document, appWithoutDirection: JSXElement): J
   }
   return (
     <RendererProvider renderer={createDOMRenderer(targetDocument)} targetDocument={targetDocument}>
-      <FluentProvider targetDocument={targetDocument} dir={dir} theme={webLightTheme}>
+      <FluentProvider targetDocument={targetDocument} dir={dir} theme={parityTheme}>
         <ShadowHost>{app}</ShadowHost>
       </FluentProvider>
     </RendererProvider>
@@ -979,7 +1219,7 @@ export function describeParity(
                         !isKnownDifference(allowedGriffel, key, expected[key])
                       ) {
                         differences.push(
-                          `${label}${JSON.stringify(variant)} ${state} ${key}: griffel=${expected[key]} css=${
+                          `${label}${variantLabel(variant)} ${state} ${key}: griffel=${expected[key]} css=${
                             actual[key]
                           }`,
                         );

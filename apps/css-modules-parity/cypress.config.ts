@@ -26,6 +26,15 @@ const griffelBuckets = extraction || process.env.FUI_PARITY_GRIFFEL_BUCKETS === 
 const dir = process.env.FUI_PARITY_DIR === 'rtl' ? 'rtl' : 'ltr';
 const forcedColors = process.env.FUI_PARITY_FORCED_COLORS === '1';
 const shadowDOM = process.env.FUI_PARITY_SHADOW_DOM === '1';
+/**
+ * `FUI_PARITY_THEME`: theme of the app's FluentProvider, `webLight` (default), `webDark`, `teamsLight`, `teamsDark` or
+ * `teamsHighContrast` (pair it with `FUI_PARITY_FORCED_COLORS=1`, as Teams does).
+ */
+const parityThemes = ['webLight', 'webDark', 'teamsLight', 'teamsDark', 'teamsHighContrast'];
+const theme = process.env.FUI_PARITY_THEME || 'webLight';
+if (!parityThemes.includes(theme)) {
+  throw new Error(`FUI_PARITY_THEME must be one of ${parityThemes.join(', ')}; got "${theme}".`);
+}
 /** `FUI_PARITY_PROFILE=1`: writes per-phase timings of every parity test to `cypress/profile/<spec>.ndjson`. */
 const profile = process.env.FUI_PARITY_PROFILE === '1';
 /**
@@ -107,7 +116,7 @@ export default defineConfig({
   ...baseConfig,
   // Parity samples must be deterministic: a pass on retry hides a real difference or a sampling race.
   retries: { runMode: 0, openMode: 0 },
-  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer, profile },
+  env: { ...baseConfig.env, griffelBuckets, extraction, dir, forcedColors, shadowDOM, fluentLayer, profile, theme },
   // Large specs (Navigation, Overlays) otherwise run the renderer out of memory in forced colors mode.
   experimentalMemoryManagement: true,
   component: {

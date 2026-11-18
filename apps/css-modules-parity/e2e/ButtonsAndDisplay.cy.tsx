@@ -20,6 +20,7 @@ import {
   CounterBadge,
   Display,
   Divider,
+  FluentProvider,
   Image,
   Label,
   LargeTitle,
@@ -47,6 +48,7 @@ import {
   renderCard_unstable,
   renderCompoundButton_unstable,
   renderDivider_unstable,
+  renderFluentProvider_unstable,
   renderImage_unstable,
   renderLabel_unstable,
   renderMenuButton_unstable,
@@ -67,6 +69,8 @@ import {
   useCompoundButton_unstable,
   useCounterBadge_unstable,
   useDivider_unstable,
+  useFluentProviderContextValues_unstable,
+  useFluentProvider_unstable,
   useImage_unstable,
   useLabel_unstable,
   useMenuButton_unstable,
@@ -75,7 +79,7 @@ import {
   useSplitButton_unstable,
   useText_unstable,
 } from '@fluentui/react-components';
-import type { TextPresetProps } from '@fluentui/react-components';
+import type { FluentProviderProps, TextPresetProps } from '@fluentui/react-components';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
 import type { JSXElement, RefAttributes } from '@fluentui/react-utilities';
 import { useCardContextValue } from '../../../packages/react-components/react-card/library/src/components/Card/useCardContextValue';
@@ -115,8 +119,9 @@ import { useTitle1Styles } from '../../../packages/react-components/react-text/l
 import { useTitle2Styles } from '../../../packages/react-components/react-text/library/src/components/presets/Title2/useTitle2Styles.styles.ts';
 import { useTitle3Styles } from '../../../packages/react-components/react-text/library/src/components/presets/Title3/useTitle3Styles.styles.ts';
 import { useLabelStyles_unstable as useGriffelLabelStyles } from '../../../packages/react-components/react-label/library/src/components/Label/useLabelStyles.styles.ts';
+import { useFluentProviderStyles_unstable as useGriffelFluentProviderStyles } from '../../../packages/react-components/react-provider/library/src/components/FluentProvider/useFluentProviderStyles.styles.ts';
 import { useDividerStyles_unstable as useGriffelDividerStyles } from '../../../packages/react-components/react-divider/library/src/components/Divider/useDividerStyles.styles.ts';
-import { describeParity, griffel, icon } from './harness';
+import { describeParity, griffel, icon, nestedParityTheme } from './harness';
 import type { AnyComponent, Implementation } from './harness';
 
 type AnyProps = Record<string, unknown>;
@@ -318,6 +323,15 @@ const inCard = (element: JSXElement, implementation: Implementation) => {
   const CardImplementation = implementation === 'css' ? (Card as AnyComponent) : GriffelCard;
   return <CardImplementation>{element}</CardImplementation>;
 };
+
+/** Recomposed like `FluentProvider.tsx`, which calls no custom style hook, with the original Griffel style hook. */
+const GriffelFluentProvider = React.forwardRef<HTMLElement, FluentProviderProps>((props, ref) => {
+  const state = useFluentProvider_unstable(props, ref);
+  useGriffelFluentProviderStyles(state);
+  const contextValues = useFluentProviderContextValues_unstable(state);
+  return renderFluentProvider_unstable(state, contextValues);
+});
+GriffelFluentProvider.displayName = 'GriffelFluentProvider';
 
 describeParity('buttons and display', {
   CompoundButton: {
@@ -647,5 +661,30 @@ describeParity('buttons and display', {
       { vertical: true, style: { height: 60 } },
       { children: undefined },
     ],
+  },
+  // A nested provider inside the app's FluentProvider (which the harness renders with the CSS Modules hook).
+  FluentProvider: {
+    css: FluentProvider as AnyComponent,
+    griffel: GriffelFluentProvider as unknown as AnyComponent,
+    sampledSlots: [],
+    interactive: false,
+    props: { children: 'Provider content' },
+    variants: [{}, { theme: nestedParityTheme }, { dir: 'rtl' }, { dir: 'ltr' }],
+    // A provider whose `dir` differs from the app's: Griffel's `mergeClasses()` can't mix the app's classes (generated
+    // in the app's direction) with the provider's, and the provider's direction-specific `text-align` is lost. CSS
+    // Modules resolve `text-align: start` in the provider's own direction.
+    knownDifferences: Object.fromEntries(
+      (
+        [
+          'base-only makeStyles override',
+          'stateful makeStyles override',
+          'layout makeStyles override',
+          'custom style hook with caller override',
+          'wrapper component with extra class name',
+          'plain CSS class name',
+          'plain CSS stateful class name',
+        ] as const
+      ).map(scenario => [scenario, { 'root text-align': ['left', 'right'] }]),
+    ),
   },
 });

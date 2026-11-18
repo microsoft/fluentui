@@ -128,7 +128,16 @@ import {
   useToolbarToggleButton_unstable,
   useToolbar_unstable,
 } from '@fluentui/react-components';
-import type { JSXElement } from '@fluentui/react-utilities';
+import {
+  Overflow,
+  OverflowItem,
+  renderOverflow_unstable,
+  useOverflowContextValues_unstable,
+  useOverflowMenu,
+  useOverflow_unstable,
+} from '@fluentui/react-overflow';
+import type { OverflowProps } from '@fluentui/react-overflow';
+import type { JSXElement, RefAttributes } from '@fluentui/react-utilities';
 // Context value hooks that are not re-exported by `@fluentui/react-components`.
 import { useBreadcrumbContextValues_unstable } from '../../../packages/react-components/react-breadcrumb/library/src/components/Breadcrumb/useBreadcrumbContextValue';
 import { useCarouselContextValues_unstable } from '../../../packages/react-components/react-carousel/library/src/components/Carousel/useCarouselContextValues';
@@ -169,6 +178,7 @@ import { useNavSectionHeaderStyles_unstable as useGriffelNavSectionHeaderStyles 
 import { useNavSubItemStyles_unstable as useGriffelNavSubItemStyles } from '../../../packages/react-components/react-nav/library/src/components/NavSubItem/useNavSubItemStyles.styles.ts';
 import { useNavSubItemGroupStyles_unstable as useGriffelNavSubItemGroupStyles } from '../../../packages/react-components/react-nav/library/src/components/NavSubItemGroup/useNavSubItemGroupStyles.styles.ts';
 import { useSplitNavItemStyles_unstable as useGriffelSplitNavItemStyles } from '../../../packages/react-components/react-nav/library/src/components/SplitNavItem/useSplitNavItemStyles.styles.ts';
+import { useOverflowStyles_unstable as useGriffelOverflowStyles } from '../../../packages/react-components/react-overflow/library/src/components/Overflow/useOverflowStyles.styles.ts';
 import { useTabStyles_unstable as useGriffelTabStyles } from '../../../packages/react-components/react-tabs/library/src/components/Tab/useTabStyles.styles.ts';
 import { useTabListStyles_unstable as useGriffelTabListStyles } from '../../../packages/react-components/react-tabs/library/src/components/TabList/useTabListStyles.styles.ts';
 import { useToolbarStyles_unstable as useGriffelToolbarStyles } from '../../../packages/react-components/react-toolbar/library/src/components/Toolbar/useToolbarStyles.styles.ts';
@@ -524,6 +534,97 @@ const tabs: Record<string, ComponentSpec> = {
       };
     },
     variants: [{}, { vertical: true }, { size: 'small' }, { appearance: 'filled-circular', disabled: true }],
+  },
+};
+
+/**
+ * The selection indicator slides from the previously selected tab: the Griffel `useTabStyles.styles.ts` calls the
+ * Griffel `react-tabs/library/src/components/Tab/useTabAnimatedIndicator.styles`. The app selects the sampled tab
+ * when it toggles, so the indicator moves from the tab after it.
+ */
+const tabAnimatedIndicator: Record<string, ComponentSpec> = {
+  'Tab animated indicator': {
+    css: cssParts.Tab,
+    griffel: griffelParts.Tab,
+    sampledSlots: ['fui-Tab__content'],
+    interactive: false,
+    props: { icon, value: 'tab', children: 'Tab' },
+    variants: [{}, { listVertical: true }, { listSize: 'large', listAppearance: 'subtle-circular' }],
+    findRoot: first('fui-Tab'),
+    toggles: true,
+    useAppPattern: toggled => ({
+      wrap: (element, implementation) => {
+        const P = parts(implementation);
+        return (
+          <P.TabList
+            selectedValue={toggled ? 'tab' : 'other'}
+            size={parentProp(element, 'listSize')}
+            vertical={parentProp(element, 'listVertical')}
+            appearance={parentProp(element, 'listAppearance')}
+          >
+            {element}
+            <P.Tab value="other">Other selected tab</P.Tab>
+          </P.TabList>
+        );
+      },
+    }),
+  },
+};
+
+// ---- Overflow ----
+
+/** Recomposed like `Overflow.tsx`, which calls no custom style hook, with the original Griffel style hook. */
+const GriffelOverflow = React.forwardRef<HTMLElement, OverflowProps>((props, ref) => {
+  const state = useOverflow_unstable(props, ref);
+  const contextValues = useOverflowContextValues_unstable(state);
+  useGriffelOverflowStyles(state);
+  return renderOverflow_unstable(state, contextValues);
+});
+GriffelOverflow.displayName = 'GriffelOverflow';
+
+const OverflowMenuButton = () => {
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+  return isOverflowing ? (
+    <button ref={ref} className="parity-OverflowMenu">
+      +{overflowCount}
+    </button>
+  ) : null;
+};
+
+/**
+ * An Overflow whose container is too narrow for its items: the overflowing ones get `data-overflowing` and are hidden
+ * by the Overflow styles. The app's class name goes to the container, like apps style it.
+ */
+function overflowList(implementation: Implementation): AnyComponent {
+  const OverflowImplementation = (implementation === 'css' ? Overflow : GriffelOverflow) as React.ComponentType<
+    OverflowProps & RefAttributes<HTMLElement>
+  >;
+  const items = ['a', 'b', 'c', 'd', 'e'];
+  const Component = React.forwardRef<HTMLElement, Record<string, unknown>>(({ className, ...props }, ref) => (
+    <OverflowImplementation ref={ref} {...(props as Partial<OverflowProps>)}>
+      <div className={className as string | undefined} style={{ display: 'flex', overflow: 'hidden', width: 160 }}>
+        {items.map(id => (
+          <OverflowItem key={id} id={id}>
+            <button className={`parity-OverflowItem-${id}`}>Item {id}</button>
+          </OverflowItem>
+        ))}
+        <OverflowMenuButton />
+      </div>
+    </OverflowImplementation>
+  ));
+  Component.displayName = `${implementation}OverflowList`;
+  return Component as unknown as AnyComponent;
+}
+
+const overflow: Record<string, ComponentSpec> = {
+  Overflow: {
+    css: overflowList('css'),
+    griffel: overflowList('griffel'),
+    sampledSlots: ['parity-OverflowItem-a', 'parity-OverflowItem-e', 'parity-OverflowMenu'],
+    interactive: false,
+    props: {},
+    variants: [{}, { overflowDirection: 'start' }],
+    waitFor: '[data-overflowing]',
   },
 };
 
@@ -1225,9 +1326,12 @@ const carouselSpecs: Record<string, ComponentSpec> = {
 
 describeParity('navigation components', {
   ...tabs,
+  ...overflow,
   ...accordion,
   ...breadcrumb,
   ...nav,
   ...toolbar,
   ...carouselSpecs,
 });
+
+describeParity('navigation components: tab animated indicator', tabAnimatedIndicator, { scenarios: ['app pattern'] });

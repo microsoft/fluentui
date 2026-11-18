@@ -25,17 +25,20 @@ Do not run the suite while editing CSS without `FUI_CYPRESS_NO_WATCH=1`; watch r
 Retries are disabled (`retries.runMode: 0`), because a parity sample must be deterministic. The one exception is
 `Lazy.cy.tsx` (`runModeRetries`): the first lazily loaded test of each component only passes on a retry, see the TODO
 there. CI runs the suite as the sharded `css-modules-parity` job in
-[`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), once per environment axis that passes in full (default,
-`FUI_PARITY_DIR=rtl`, `FUI_PARITY_SHADOW_DOM=1`), so a new spec file must be added to a shard.
+[`.github/workflows/pr.yml`](../../.github/workflows/pr.yml), once per environment axis (default, `FUI_PARITY_DIR=rtl`,
+`FUI_PARITY_SHADOW_DOM=1`, `FUI_PARITY_FORCED_COLORS=1` with `FUI_PARITY_THEME=teamsHighContrast`, and
+`FUI_PARITY_THEME=webDark`), so a new spec file must be added to a shard. `Lazy.cy.tsx` has its own shard: in CI its
+settle waits on CSS transitions that stay pending for seconds (about 30 minutes for the spec; locally under a minute).
 
 Environment axes, combinable with every mode below:
 
-| Variable                     | Effect                                                                                       |
-| ---------------------------- | -------------------------------------------------------------------------------------------- |
-| `FUI_PARITY_DIR=rtl`         | Renders the app right-to-left; app styles resolve in the same direction.                     |
-| `FUI_PARITY_FORCED_COLORS=1` | Emulates `forced-colors: active` (asserted before every test).                               |
-| `FUI_PARITY_SHADOW_DOM=1`    | Renders the app in a shadow root with Griffel's Shadow DOM renderer; plain CSS is copied in. |
-| `FUI_PARITY_LAYER=1`         | Wraps every Fluent CSS Modules stylesheet in `@layer fluent` (default mode only), see below. |
+| Variable                     | Effect                                                                                        |
+| ---------------------------- | --------------------------------------------------------------------------------------------- |
+| `FUI_PARITY_DIR=rtl`         | Renders the app right-to-left; app styles resolve in the same direction.                      |
+| `FUI_PARITY_FORCED_COLORS=1` | Emulates `forced-colors: active` (asserted before every test).                                |
+| `FUI_PARITY_SHADOW_DOM=1`    | Renders the app in a shadow root with Griffel's Shadow DOM renderer; plain CSS is copied in.  |
+| `FUI_PARITY_LAYER=1`         | Wraps every Fluent CSS Modules stylesheet in `@layer fluent` (default mode only), see below.  |
+| `FUI_PARITY_THEME=<name>`    | App theme: `webLight` (default), `webDark`, `teamsLight`, `teamsDark` or `teamsHighContrast`. |
 
 Dedicated specs:
 
@@ -60,6 +63,27 @@ Dedicated specs:
   - `VariantOverrides`: sizes, shapes, icon-only and checked variants with stateful, slot and every-state overrides.
   - `DisabledOverrides`: `disabled`/`disabledFocusable` variants with `:disabled`, `[aria-disabled]`, `[disabled]` and
     class overrides.
+  - `HeadlessIcons`: `bundleIcon` and headless icons with app rules showing/hiding the filled and regular icons and
+    rotating a `flipInRtl` icon.
+  - `GlobalClassSelectors`: an app CSS Module targeting `:global(.fui-*)` classes, inserted after and before Fluent's
+    CSS, with and without `!important`.
+  - `ForcedColorsOverrides`: app forced colors overrides of equal specificity (now beaten by component forced colors
+    rules) and with `&&&` (still win; `&&` compiles to a single class).
+  - `PhysicalOverridesRtl`: physical padding, margin and border overrides, `[dir="rtl"] &` rules, portals into mount
+    nodes without `dir`, and nested providers in the other direction.
+  - `SpecificityBoosters`: `&&` (a single class in Griffel) and `&&&` (a doubled class) boosters combined with a custom
+    style hook and an app class name.
+  - `ExternalTokenTheme`: a provider without a theme, tokens from an external stylesheet switched at runtime, local token
+    overrides and a nested light region in a dark one.
+  - `SurfaceOverrides`: app sizes, `overflow` and `z-index` on Popover, Menu and Tooltip surfaces with positioning
+    options (`fallbackPositions`, `coverTarget`, `autoSize`, `mountNode`).
+  - `ComponentVariables`: app-set component CSS variables (`--fui-Slider__*`, `--fui-Checkbox__indicator--*`,
+    `--fui-Button__icon--spacing`, `--fui-Card--*`) against component state rules redefining them.
+  - Component specs use the same mechanism for state changes: `Tab animated indicator` (`Navigation.cy.tsx`) selects
+    the sampled tab when the app toggles, so the selection indicator slides from the previous tab.
+- [`Positioning.cy.tsx`](./e2e/Positioning.cy.tsx): Popover, Menu, Tooltip, Combobox and Dropdown listboxes, InfoLabel
+  and TeachingPopover across positions and alignments and positioning options, and drawers, each in a fixed-size stage
+  that bounds Floating UI, so positions don't depend on the page.
 - [`SSR.cy.tsx`](./e2e/SSR.cy.tsx) (Griffel buckets mode only): renders on the server in a Web Worker (no DOM, same
   bundle so class names match), injects the HTML and `renderToStyleElements()` output, compares both implementations
   before and after `hydrateRoot()`, and fails on hydration errors or style changes caused by hydration.
@@ -76,12 +100,18 @@ Dedicated specs:
   hover focus is mirrored into the sampled copy first.
 - Besides computed properties, the layout size (`box width`/`box height`, from `offsetWidth`/`offsetHeight`, so
   transforms and running animations don't affect it) of the root, its parent and sampled slots is compared, so layout differences such as a wrapper growing with the component's min-content width are reported.
+- Specs with `geometry` also compare a positioned surface's placement (`data-popper-placement`), position and size
+  relative to its trigger and its arrow's offset (rounded to 1/100 px); `positioned: false` covers CSS-laid-out
+  surfaces such as drawers.
+- Computed values that are equivalent but spelled differently are normalized: `text-align: start`/`end` by direction,
+  generated keyframes names. Pseudo-elements without `content` compare only `content`, infinite animations skip the
+  properties they animate, and properties set inline by component code (Floating UI) are skipped.
 - Failures name the scenario, slot, property and both values. No numeric tolerances are applied.
 
 A Griffel hook that composes another package's style hook (`useToggleButtonStyles_unstable` from
-`@fluentui/react-button`) would receive its CSS alternative through the package index;
-[`griffelStyleImportsLoader`](./griffel-baseline/griffelStyleImportsLoader.js) redirects those imports to the Griffel
-hooks. [`GriffelBaseStyles`](./e2e/GriffelBaseStyles.tsx) inserts the Griffel Button and ToggleButton styles before
+`@fluentui/react-button`) would receive its CSS alternative through the package index, and so would a hook imported
+through a relative index module (`useCheckmarkStyles_unstable` from `../../selectable/index`);
+[`griffelStyleImportsLoader`](./griffel-baseline/griffelStyleImportsLoader.js) redirects both to the Griffel hooks. [`GriffelBaseStyles`](./e2e/GriffelBaseStyles.tsx) inserts the Griffel Button and ToggleButton styles before
 anything else renders: Griffel orders rules with different selectors and equal specificity by insertion, and in an app
 (and in the CSS Modules import order) these base components come first. Components that render a sibling component
 through an index file still receive its CSS alternative. Specs work
@@ -121,8 +151,15 @@ stylesheet, so every component forced colors rule comes last in its stylesheet w
 (`.root:not(html):hover`). That wins ties, as Griffel's order did, but still loses to the component's own state rules
 with one more class (`.root:hover:active`), as in Griffel; a doubled class would beat them. In forced colors, an
 app override of a component inside any at-rule (`@media (forced-colors: active)`, `@media (min-width)`, `@container`:
-Griffel ordered all of them by insertion, so the app's rule won) now needs more specificity, for example Griffel's
-`&&`.
+Griffel ordered all of them by insertion, so the app's rule won) now needs more specificity for each state it
+overrides, for example Griffel's `&&&` (`'&&&'`, `'&&&:hover'`, …). Griffel compiles `&&` to a single class, so `&&`
+adds no specificity.
+
+Direction: Griffel resolves direction from React context (`TextDirectionProvider`, set by `FluentProvider`), CSS from
+the DOM (`:dir()`, logical properties). They differ only where the DOM direction differs from the context, for example
+a Portal `mountNode` with its own `dir` other than the provider's; such content now follows its DOM direction. Component
+direction rules use `:dir(rtl)`, which follows the nearest `dir` (each `FluentProvider` sets one), not `[dir='rtl']`
+ancestors, which would also match above a nested provider in the other direction.
 
 Some specs declare further, component-specific `knownDifferences` (for example, inherited backgrounds in plain CSS
 scenarios), each with an explanation.
@@ -188,6 +225,16 @@ The axis is expected to fail; it isn't a mode the components should pass.
 
 Published-package asset copying, production builds, SSR with streaming or a real server, iframes, CSP enforcement and
 browsers other than the Cypress default.
+
+Component states not compared:
+
+- `SafeZoneArea` and the Portal mount node class (`usePortalMountNodeStyles`): see their `GAP:` entries in
+  [`parity-exemptions.json`](./checks/parity-exemptions.json).
+- Combobox and Dropdown `open`: their trigger styles don't depend on it; the open listbox is compared in
+  `Positioning.cy.tsx` and through `TimePickerListbox` (`FeedbackAndCompat.cy.tsx`).
+- `readOnly` is compared for Input, Textarea, SpinButton, Combobox and TimePicker, but no style hook reads it (native
+  Select and Dropdown's button have no read-only state).
+- OverlayDrawer backdrops nested in a Dialog (`treatBackdropAsNested`) or kept mounted while closed.
 
 ## Coverage
 

@@ -6,6 +6,10 @@ const componentsRoot = path.resolve(__dirname, '../../../packages/react-componen
 
 /** Matches `import { a, b as c } from '@fluentui/react-x';` (also multi-line, also `import type`). */
 const importPattern = /import\s+(type\s+)?\{([^}]*)\}\s*from\s*['"](@fluentui\/react-[a-z0-9-]+)['"];?/g;
+/** Matches relative imports that are not style modules themselves, for example `from '../../selectable/index'`. */
+const relativeImportPattern = /import\s+(type\s+)?\{([^}]*)\}\s*from\s*['"](\.{1,2}\/[^'"]*)['"];?/g;
+/** Matches `export { a, b as c } from './x.styles';` in an index module. */
+const styleReexportPattern = /export\s+\{([^}]*)\}\s*from\s*['"](\.{1,2}\/[^'"]*\.styles)['"]/g;
 const styleHookPattern = /^use\w*Styles(_unstable)?$/;
 
 /** @type {Map<string, Map<string, string>>} package name → (style hook name → Griffel module path) */
@@ -45,6 +49,67 @@ function griffelHooksOf(packageName) {
 }
 
 /**
+ * Lists the Griffel style hooks an index module re-exports directly from style modules that have a CSS Modules
+ * alternative.
+ *
+ * @param {string} indexPath
+ * @returns {Map<string, string>} exported name → Griffel module path
+ */
+function reexportedGriffelHooksOf(indexPath) {
+  const hooks = new Map();
+  for (const [, specifiers, request] of fs.readFileSync(indexPath, 'utf8').matchAll(styleReexportPattern)) {
+    const modulePath = path.resolve(path.dirname(indexPath), `${request}.ts`);
+    if (!fs.existsSync(modulePath) || !fs.existsSync(modulePath.replace(/\.styles\.ts$/, '.styles.css.ts'))) {
+      continue;
+    }
+    for (const specifier of specifiers.split(',').map((/** @type {string} */ s) => s.trim())) {
+      const [imported, exported = imported] = specifier.split(/\s+as\s+/);
+      if (imported && styleHookPattern.test(exported)) {
+        hooks.set(exported, modulePath);
+      }
+    }
+  }
+  return hooks;
+}
+
+/**
+ * Resolves a relative, non-style import request to its index module.
+ *
+ * @param {string} fromFile
+ * @param {string} request
+ */
+function resolveIndex(fromFile, request) {
+  const base = path.resolve(path.dirname(fromFile), request);
+  return [`${base}.ts`, `${base}.tsx`, path.join(base, 'index.ts')].find(candidate => fs.existsSync(candidate));
+}
+
+/**
+ * Splits named import specifiers into the kept ones and redirects for the style hooks found in `hooks`.
+ *
+ * @param {string} specifiers
+ * @param {Map<string, string>} hooks
+ * @param {(modulePath: string) => void} addDependency
+ */
+function redirectSpecifiers(specifiers, hooks, addDependency) {
+  const kept = [];
+  const redirected = [];
+  for (const specifier of specifiers.split(',').map((/** @type {string} */ s) => s.trim())) {
+    if (!specifier) {
+      continue;
+    }
+    const [imported, local = imported] = specifier.replace(/^type\s+/, '').split(/\s+as\s+/);
+    const modulePath = !specifier.startsWith('type ') && styleHookPattern.test(imported) && hooks.get(imported);
+    if (modulePath) {
+      addDependency(modulePath);
+      redirected.push(`import { ${imported} as ${local} } from ${JSON.stringify(modulePath)};`);
+    } else {
+      kept.push(specifier);
+    }
+  }
+  return { kept, redirected };
+}
+
+/**
  * Runs on the original Griffel style hooks (the parity baseline). A Griffel hook that composes another package's
  * style hook (`useToggleButtonStyles_unstable` from `@fluentui/react-button`) imports it through the package index,
  * which resolves to the CSS Modules alternative. This redirects such imports to the other package's Griffel hook, so
@@ -54,29 +119,32 @@ function griffelHooksOf(packageName) {
  * @param {string} source
  */
 module.exports = function griffelStyleImportsLoader(source) {
-  return source.replace(importPattern, (statement, typeOnly, specifiers, packageName) => {
+  const addDependency = (/** @type {string} */ modulePath) => this.addDependency(modulePath);
+  const fromPackages = source.replace(importPattern, (statement, typeOnly, specifiers, packageName) => {
     if (typeOnly) {
       return statement;
     }
-    const hooks = griffelHooksOf(packageName);
-    const kept = [];
-    const redirected = [];
-    for (const specifier of specifiers.split(',').map((/** @type {string} */ s) => s.trim())) {
-      if (!specifier) {
-        continue;
-      }
-      const [imported, local = imported] = specifier.replace(/^type\s+/, '').split(/\s+as\s+/);
-      const modulePath = !specifier.startsWith('type ') && styleHookPattern.test(imported) && hooks.get(imported);
-      if (modulePath) {
-        this.addDependency(modulePath);
-        redirected.push(`import { ${imported} as ${local} } from ${JSON.stringify(modulePath)};`);
-      } else {
-        kept.push(specifier);
-      }
-    }
+    const { kept, redirected } = redirectSpecifiers(specifiers, griffelHooksOf(packageName), addDependency);
     if (!redirected.length) {
       return statement;
     }
     return [kept.length ? `import { ${kept.join(', ')} } from '${packageName}';` : '', ...redirected].join('\n');
+  });
+  // A style hook imported through a relative index module (`useCheckmarkStyles_unstable` from
+  // '../../selectable/index') also resolves to its CSS Modules alternative there.
+  return fromPackages.replace(relativeImportPattern, (statement, typeOnly, specifiers, request) => {
+    if (typeOnly || /\.styles(\.js)?$/.test(request)) {
+      return statement;
+    }
+    const indexPath = resolveIndex(this.resourcePath, request);
+    if (!indexPath) {
+      return statement;
+    }
+    this.addDependency(indexPath);
+    const { kept, redirected } = redirectSpecifiers(specifiers, reexportedGriffelHooksOf(indexPath), addDependency);
+    if (!redirected.length) {
+      return statement;
+    }
+    return [kept.length ? `import { ${kept.join(', ')} } from '${request}';` : '', ...redirected].join('\n');
   });
 };

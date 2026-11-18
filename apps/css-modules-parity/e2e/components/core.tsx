@@ -4,6 +4,7 @@ import {
   Badge,
   Button,
   Checkbox,
+  Field,
   Input,
   Link,
   Radio,
@@ -34,6 +35,7 @@ import {
   useTextarea_unstable,
   useToggleButton_unstable,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 // Explicit `.ts` imports bypass the CSS Modules resolution, giving the original Griffel implementations.
 import { useAvatarStyles_unstable as useGriffelAvatarStyles } from '../../../../packages/react-components/react-avatar/library/src/components/Avatar/useAvatarStyles.styles.ts';
 import { useBadgeStyles_unstable as useGriffelBadgeStyles } from '../../../../packages/react-components/react-badge/library/src/components/Badge/useBadgeStyles.styles.ts';
@@ -48,6 +50,21 @@ import { useSwitchStyles_unstable as useGriffelSwitchStyles } from '../../../../
 import { useTextareaStyles_unstable as useGriffelTextareaStyles } from '../../../../packages/react-components/react-textarea/library/src/components/Textarea/useTextareaStyles.styles.ts';
 import { griffel, icon } from '../harness';
 import type { AnyComponent, ComponentSpec } from '../harness';
+
+/** Wraps variants requesting `data-field-validation` in a Field, which sets `aria-invalid` on its control. */
+const wrapInField = (element: JSXElement): JSXElement => {
+  const { 'data-field-validation': validationState, ...props } = element.props as Record<string, unknown>;
+  if (!validationState) {
+    return element;
+  }
+  return (
+    <Field validationState={validationState as 'error'} validationMessage="Error">
+      {React.createElement(element.type as React.ElementType, props)}
+    </Field>
+  );
+};
+
+const findInput = (container: HTMLElement): HTMLElement => container.querySelector<HTMLElement>('.fui-Input')!;
 
 /** Core components, shared by `Core.cy.tsx` and the app-level scenario specs. */
 export const coreComponents: Record<string, ComponentSpec> = {
@@ -116,7 +133,7 @@ export const coreComponents: Record<string, ComponentSpec> = {
     sampledSlots: ['fui-Switch__indicator'],
     interactive: true,
     props: {},
-    variants: [{}, { checked: true }, { checked: true, disabled: true }],
+    variants: [{}, { checked: true }, { checked: true, disabled: true }, { disabled: true }],
   },
   Radio: {
     css: Radio as AnyComponent,
@@ -125,7 +142,7 @@ export const coreComponents: Record<string, ComponentSpec> = {
     sampledSlots: ['fui-Radio__indicator'],
     interactive: true,
     props: {},
-    variants: [{}, { checked: true }, { disabled: true }],
+    variants: [{}, { checked: true }, { disabled: true }, { checked: true, disabled: true }],
   },
   Input: {
     css: Input as AnyComponent,
@@ -140,7 +157,14 @@ export const coreComponents: Record<string, ComponentSpec> = {
       { appearance: 'filled-darker' },
       { size: 'small' },
       { disabled: true },
+      { 'aria-invalid': true },
+      { appearance: 'underline', 'aria-invalid': true },
+      // Invalid through a parent Field, which sets `aria-invalid` on the input (see `wrapInField`).
+      { 'data-field-validation': 'error' },
+      { readOnly: true, defaultValue: 'Read only' },
     ],
+    wrap: wrapInField,
+    findRoot: findInput,
   },
   Textarea: {
     css: Textarea as AnyComponent,
@@ -149,7 +173,13 @@ export const coreComponents: Record<string, ComponentSpec> = {
     sampledSlots: ['fui-Textarea__textarea'],
     interactive: true,
     props: { placeholder: 'Type here' },
-    variants: [{ appearance: 'outline' }, { appearance: 'filled-darker' }, { disabled: true }],
+    variants: [
+      { appearance: 'outline' },
+      { appearance: 'filled-darker' },
+      { disabled: true },
+      { 'aria-invalid': true },
+      { readOnly: true, defaultValue: 'Read only' },
+    ],
   },
   Select: {
     css: Select as AnyComponent,
@@ -158,7 +188,13 @@ export const coreComponents: Record<string, ComponentSpec> = {
     sampledSlots: ['fui-Select__select', 'fui-Select__icon'],
     interactive: true,
     props: { children: <option>Option</option> },
-    variants: [{ appearance: 'outline' }, { appearance: 'underline' }, { disabled: true }],
+    variants: [
+      { appearance: 'outline' },
+      { appearance: 'underline' },
+      { disabled: true },
+      { 'aria-invalid': true },
+      { appearance: 'underline', 'aria-invalid': true },
+    ],
   },
   Badge: {
     css: Badge as AnyComponent,

@@ -17,6 +17,8 @@ import * as CalendarPreview from '@fluentui/react-calendar-preview';
 import * as DatePickerCompat from '@fluentui/react-datepicker-compat';
 import * as TimePickerCompat from '@fluentui/react-timepicker-compat';
 import * as MenuGridPreview from '@fluentui/react-menu-grid-preview';
+import * as ToastPackage from '@fluentui/react-toast';
+import { useId } from '@fluentui/react-utilities';
 import { RangeSlider, renderRangeSlider_unstable, useRangeSlider_unstable } from '@fluentui/react-range-slider-preview';
 // Explicit `.ts` imports bypass the CSS Modules resolution, giving the original Griffel implementations.
 import { useProgressBarStyles_unstable as useGriffelProgressBarStyles } from '../../../packages/react-components/react-progress/library/src/components/ProgressBar/useProgressBarStyles.styles.ts';
@@ -48,6 +50,14 @@ import * as griffelMenuGridGroup from '../../../packages/react-components/react-
 import * as griffelMenuGridGroupHeader from '../../../packages/react-components/react-menu-grid-preview/library/src/components/MenuGridGroupHeader/useMenuGridGroupHeaderStyles.styles.ts';
 import * as griffelMenuGridItem from '../../../packages/react-components/react-menu-grid-preview/library/src/components/MenuGridItem/useMenuGridItemStyles.styles.ts';
 import * as griffelMenuGridRow from '../../../packages/react-components/react-menu-grid-preview/library/src/components/MenuGridRow/useMenuGridRowStyles.styles.ts';
+import * as griffelToast from '../../../packages/react-components/react-toast/library/src/components/Toast/useToastStyles.styles.ts';
+import * as griffelToastTitle from '../../../packages/react-components/react-toast/library/src/components/ToastTitle/useToastTitleStyles.styles.ts';
+import * as griffelToastBody from '../../../packages/react-components/react-toast/library/src/components/ToastBody/useToastBodyStyles.styles.ts';
+import * as griffelToastFooter from '../../../packages/react-components/react-toast/library/src/components/ToastFooter/useToastFooterStyles.styles.ts';
+import * as griffelToastContainer from '../../../packages/react-components/react-toast/library/src/components/ToastContainer/useToastContainerStyles.styles.ts';
+import * as griffelToaster from '../../../packages/react-components/react-toast/library/src/components/Toaster/useToasterStyles.styles.ts';
+import * as griffelTimer from '../../../packages/react-components/react-toast/library/src/components/Timer/useTimerStyles.styles.ts';
+import * as griffelAriaLive from '../../../packages/react-components/react-toast/library/src/components/AriaLive/useAriaLiveStyles.styles.ts';
 import { describeParity, griffel } from './harness';
 import type { AnyComponent, ComponentSpec, Implementation } from './harness';
 
@@ -79,6 +89,14 @@ const griffelStyleModules = [
   griffelMenuGridGroupHeader,
   griffelMenuGridItem,
   griffelMenuGridRow,
+  griffelToast,
+  griffelToastTitle,
+  griffelToastBody,
+  griffelToastFooter,
+  griffelToastContainer,
+  griffelToaster,
+  griffelTimer,
+  griffelAriaLive,
 ];
 
 type WebpackFactory = (module: { exports: unknown }, exports: unknown, require: unknown) => void;
@@ -156,12 +174,19 @@ const GriffelSkeleton = griffelPackages<{
   useSkeletonItemStyles_unstable: unknown;
 }>('react-skeleton', ['react-skeleton']);
 
+// Toaster renders ToastContainer, Timer and AriaLive internally, each importing its own style hook.
+const GriffelToastPackage = griffelPackages<typeof ToastPackage>('react-toast', ['react-toast']);
+
 const calendar = { css: CalendarCompat, griffel: GriffelCalendarCompat };
 const calendarPreview = { css: CalendarPreview, griffel: GriffelCalendarPreview };
 const datePicker = { css: DatePickerCompat, griffel: GriffelDatePickerCompat };
 const timePicker = { css: TimePickerCompat, griffel: GriffelTimePickerCompat };
 const menuGrid = { css: MenuGridPreview, griffel: GriffelMenuGridPreview };
 const skeleton = { css: { Skeleton, SkeletonItem }, griffel: GriffelSkeleton };
+
+type AnyProps = Record<string, unknown>;
+
+const toastPackages = { css: ToastPackage, griffel: GriffelToastPackage };
 
 const as = (component: unknown) => component as AnyComponent;
 const query = (selector: string) => (container: HTMLElement) => {
@@ -212,7 +237,86 @@ const inMenuGrid = (element: JSXElement, implementation: Implementation) => {
   return <MenuGrid>{element}</MenuGrid>;
 };
 
+/**
+ * A real Toaster of one implementation with a toast dispatched on mount. It renders inline in a positioned box, so each
+ * variant stays in its container. The long timeout renders the Timer without dismissing the toast during the test.
+ * The app's class name goes to the Toaster, or with `toToastContainer` to the toast's ToastContainer root.
+ */
+function toaster(implementation: Implementation, toToastContainer = false): AnyComponent {
+  const { Toaster, Toast, ToastTitle, ToastBody, useToastController } = toastPackages[implementation];
+  const Component = React.forwardRef<HTMLDivElement, AnyProps>(({ className, toastPosition, ...props }, ref) => {
+    const toasterId = useId('parity-toaster');
+    const { dispatchToast } = useToastController(toasterId);
+    React.useEffect(() => {
+      dispatchToast(
+        <Toast>
+          <ToastTitle>Title</ToastTitle>
+          <ToastBody>Body</ToastBody>
+        </Toast>,
+        {
+          toastId: 'parity',
+          position: (toastPosition as ToastPackage.ToastPosition | undefined) ?? 'bottom-end',
+          timeout: 10 * 60 * 1000,
+          data: toToastContainer ? { root: { className } } : {},
+        },
+      );
+    }, [dispatchToast, className, toastPosition]);
+    return (
+      <div ref={ref} style={{ position: 'relative', height: 160 }}>
+        <Toaster
+          {...(props as ToastPackage.ToasterProps)}
+          toasterId={toasterId}
+          inline
+          className={toToastContainer ? undefined : (className as string | undefined)}
+        />
+      </div>
+    );
+  });
+  Component.displayName = `${implementation}Toaster`;
+  return Component as unknown as AnyComponent;
+}
+
+/** Waits until the toast finished entering (its Timer runs only then), so no motion is sampled mid-way. */
+const toastEntered = '.fui-ToastContainer [data-timer-status="running"]';
+
+const toasterSpec = (
+  toToastContainer: boolean,
+  spec: Omit<ComponentSpec, 'css' | 'griffel' | 'interactive' | 'props' | 'waitFor'>,
+): ComponentSpec => ({
+  css: toaster('css', toToastContainer),
+  griffel: toaster('griffel', toToastContainer),
+  // Hovering a toast pauses its Timer; toasts are compared at rest.
+  interactive: false,
+  props: {},
+  waitFor: toastEntered,
+  ...spec,
+});
+
 describeParity('feedback and compat components', {
+  Toaster: toasterSpec(false, {
+    sampledSlots: ['fui-ToastContainer', 'fui-Toast', 'fui-ToastTitle', 'fui-ToastBody'],
+    variants: [{}, { toastPosition: 'top-start' }, { toastPosition: 'bottom' }],
+    findRoot: query('.fui-Toaster'),
+  }),
+  'Toaster aria live': toasterSpec(false, {
+    customStyleHook: 'useToasterStyles_unstable',
+    // The visually hidden live region is a sibling of the toasts; app styles go to the Toaster.
+    sampledSlots: [],
+    variants: [{}],
+    findRoot: query('.fui-AriaLive__polite'),
+  }),
+  ToastContainer: toasterSpec(true, {
+    sampledSlots: ['fui-Toast'],
+    variants: [{}, { toastPosition: 'top-end' }],
+    findRoot: query('.fui-ToastContainer'),
+  }),
+  'ToastContainer timer': toasterSpec(true, {
+    customStyleHook: 'useToastContainerStyles_unstable',
+    // Timer has no class name or custom style hook; app styles go to its ToastContainer.
+    sampledSlots: [],
+    variants: [{}],
+    findRoot: query('.fui-ToastContainer [data-timer-status]'),
+  }),
   ProgressBar: {
     css: ProgressBar as AnyComponent,
     griffel: griffel('ProgressBar', useProgressBar_unstable, useGriffelProgressBarStyles, renderProgressBar_unstable),
@@ -316,6 +420,9 @@ describeParity('feedback and compat components', {
       { appearance: 'filled-darker' },
       { size: 'small' },
       { disabled: true },
+      { 'aria-invalid': true },
+      { appearance: 'underline', 'aria-invalid': true },
+      { readOnly: true },
     ],
   },
   TimePickerListbox: {
@@ -634,6 +741,12 @@ describe('CSS Modules parity in a Griffel application: feedback and compat Griff
         GriffelMenuGridPreview.useMenuGridItemStyles_unstable,
         griffelMenuGridItem.useMenuGridItemStyles_unstable,
         MenuGridPreview.useMenuGridItemStyles_unstable,
+      ],
+      [
+        'react-toast',
+        GriffelToastPackage.useToasterStyles_unstable,
+        griffelToaster.useToasterStyles_unstable,
+        ToastPackage.useToasterStyles_unstable,
       ],
       [
         'react-skeleton',
