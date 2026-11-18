@@ -160,6 +160,7 @@ const focusCellAt = (row: HTMLElement, columnIndex: number): boolean => {
  * `Home` and `End` are also handled by `focusgroup`, which moves to the first/last item of the whole grid. They have
  * to be handled in the capture phase, before `focusgroup` does, with `phase: 'capture'`. The other keys are handled
  * in the bubble phase, so that interactive content of the cells can handle them first.
+ * Capture-phase navigation only handles events targeting a cell or row itself, leaving nested controls their keys.
  *
  * @returns `true` if focus moved, in which case default behavior has been prevented
  */
@@ -179,6 +180,10 @@ export const handleDataGridKeyDown = (
 
   const isRowEdgeKey = !event.ctrlKey && (event.key === 'Home' || event.key === 'End');
   if (options.phase === 'capture' ? !isRowEdgeKey : isRowEdgeKey) {
+    return false;
+  }
+
+  if (options.phase === 'capture' && !target.matches(CELL_SELECTOR) && !target.matches(ROW_SELECTOR)) {
     return false;
   }
 

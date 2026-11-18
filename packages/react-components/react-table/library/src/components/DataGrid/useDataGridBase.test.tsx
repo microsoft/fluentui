@@ -308,6 +308,55 @@ describe('DataGrid base keyboard navigation', () => {
     expect(document.activeElement).toBe(headers[0]);
   });
 
+  it.each(['Home', 'End'])('leaves %s to nested controls before they handle the event', key => {
+    const defaultPrevented: boolean[] = [];
+    const onKeyDown = jest.fn((event: React.KeyboardEvent) => {
+      defaultPrevented.push(event.defaultPrevented);
+      event.preventDefault();
+    });
+    const { getByRole } = render(
+      <DataGrid aria-label="People">
+        <Row>
+          {({ columnId }) => (
+            <Cell key={columnId}>
+              {columnId === 'name' ? (
+                <>
+                  <button aria-expanded="true" aria-haspopup="listbox" onKeyDown={onKeyDown}>
+                    Open dropdown
+                  </button>
+                  <div role="slider" aria-label="Value" tabIndex={0} onKeyDown={onKeyDown} />
+                </>
+              ) : (
+                <>
+                  <div role="tablist">
+                    <button role="tab" onKeyDown={onKeyDown}>
+                      Tab
+                    </button>
+                  </div>
+                  <div role="menu">
+                    <button role="menuitem" onKeyDown={onKeyDown}>
+                      Menu item
+                    </button>
+                  </div>
+                </>
+              )}
+            </Cell>
+          )}
+        </Row>
+      </DataGrid>,
+    );
+    const controls = [getByRole('button'), getByRole('slider'), getByRole('tab'), getByRole('menuitem')];
+
+    controls.forEach(control => {
+      control.focus();
+      fireEvent.keyDown(control, { key });
+      expect(control.ownerDocument.activeElement).toBe(control);
+    });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(controls.length);
+    expect(defaultPrevented).toEqual(controls.map(() => false));
+  });
+
   it('skips rows and cells that are not rendered', () => {
     const { getAllByRole } = renderGrid();
     const rows = getAllByRole('row');

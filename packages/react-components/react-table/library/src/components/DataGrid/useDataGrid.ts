@@ -89,8 +89,8 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
  *
  * Focus management is left to the caller, for example with the `focusgroup` attribute. The hook handles the keyboard
  * interactions that such an attribute does not cover with plain DOM queries: the up and down arrow keys move to the
- * cell in the same column of the adjacent row, `Home` and `End` move to the first and last cell of the row and
- * `Ctrl+Home` and `Ctrl+End` move to the first and last focusable element of the grid.
+ * cell in the same column of the adjacent row, `Home` and `End` move to the first and last cell of the row when
+ * focus is on a cell itself, and `Ctrl+Home` and `Ctrl+End` move to the first and last focusable element of the grid.
  *
  * @param props - props from this instance of DataGrid
  * @param ref - reference to root HTMLElement of DataGrid
