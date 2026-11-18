@@ -19,6 +19,8 @@ const popoverContextDefaultValue: PopoverContextValue = {
   openOnHover: false,
   withArrow: false,
   inertTrapFocus: false,
+  titleId: '',
+  setTitleId: () => null,
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

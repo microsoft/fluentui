@@ -28,6 +28,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
+  const [titleId, setTitleId] = React.useState('');
 
   const onOpenChange = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
@@ -136,6 +137,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setContextTarget,
     positioning,
     surfaceId,
+    titleId,
+    setTitleId,
     shouldRenderSurface,
   };
 };
@@ -154,6 +157,8 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
     inertTrapFocus,
     positioning,
     surfaceId,
+    titleId,
+    setTitleId,
   } = state;
 
   return {
@@ -173,6 +178,8 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
         containerRef: positioning.containerRef,
       },
       surfaceId,
+      titleId,
+      setTitleId,
     },
   };
 };

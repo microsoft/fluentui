@@ -63,8 +63,8 @@ describe('TeachingPopover', () => {
 
     expect(container.querySelector('svg')).toBeNull();
     expect(header.querySelector('[aria-hidden="true"]')).toBeEmptyDOMElement();
-    expect(header.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
-    expect(title.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
+    expect(header.querySelector('button[aria-label="dismiss"]')).toBeNull();
+    expect(title.querySelector('button[aria-label="dismiss"]')).toBeNull();
   });
 
   it('renders explicitly provided header and title slots', () => {
@@ -132,6 +132,36 @@ describe('TeachingPopover', () => {
     expect(queryByRole('group', { hidden: true })).not.toBeInTheDocument();
   });
 
+  it('names the dialog from the title while preserving explicit labels', () => {
+    const { getByRole, rerender } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    const dialog = getByRole('dialog', { hidden: true });
+    const title = getByRole('heading', { name: 'Teaching Bubble Title', hidden: true });
+    expect(dialog).toHaveAttribute('aria-labelledby', title.id);
+
+    rerender(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface aria-label="Custom label">
+          <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    expect(getByRole('dialog', { hidden: true })).toHaveAttribute('aria-label', 'Custom label');
+  });
+
   it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
     'focuses the dismiss button and restores trigger focus on dismissal',
     async Component => {
@@ -141,7 +171,7 @@ describe('TeachingPopover', () => {
             <button>Trigger</button>
           </TeachingPopoverTrigger>
           <TeachingPopoverSurface>
-            <Component>Content</Component>
+            <Component dismissButton={{ autoFocus: true }}>Content</Component>
           </TeachingPopoverSurface>
         </TeachingPopover>,
       );

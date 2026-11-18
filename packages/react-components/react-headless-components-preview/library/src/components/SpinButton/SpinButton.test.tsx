@@ -20,7 +20,7 @@ describe('SpinButton', () => {
     expect(spinbutton).toHaveAttribute('aria-valuemax', '10');
     expect(spinbutton).toHaveAttribute('aria-valuenow', '1');
     expect(spinbutton).toHaveValue('1');
-    expect(spinbutton).toHaveAttribute('inputmode', 'decimal');
+    expect(spinbutton).not.toHaveAttribute('inputmode');
     expect(getByLabelText('Increment value')).toBeInTheDocument();
     expect(getByLabelText('Decrement value')).toBeInTheDocument();
   });

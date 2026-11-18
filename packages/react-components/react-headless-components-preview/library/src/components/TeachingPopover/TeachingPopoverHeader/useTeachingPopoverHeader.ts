@@ -15,8 +15,8 @@ export const useTeachingPopoverHeader = (
 
   // The base hook closes through @fluentui/react-popover's context; headless dismisses through its own Popover.
   const dismissButton = slot.optional(props.dismissButton, {
-    renderByDefault: true,
-    defaultProps: { 'aria-label': 'dismiss', type: 'button', autoFocus: true },
+    renderByDefault: false,
+    defaultProps: { 'aria-label': 'dismiss', type: 'button' },
     elementType: 'button',
   });
   const onDismissButtonClick = dismissButton?.onClick;
