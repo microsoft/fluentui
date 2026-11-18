@@ -170,7 +170,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     /**
      * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
      * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-     * @default FirstWeekOfYear.FirstFullWeek
+     * @default FirstWeekOfYear.FirstDay
      */
     firstWeekOfYear?: FirstWeekOfYear;
 
