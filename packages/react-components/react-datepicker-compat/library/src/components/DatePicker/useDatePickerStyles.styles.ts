@@ -65,8 +65,8 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     state.popupSurface.className = mergeClasses(
       datePickerClassNames.popupSurface,
       popupSurfaceClassName,
-      state.popupSurface.className,
       inlinePopup && styles.inline,
+      state.popupSurface.className,
     );
   }
 
