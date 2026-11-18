@@ -78,6 +78,21 @@ describe('DatePicker', () => {
       await waitFor(() => expect(selected).toHaveFocus());
     });
 
+    it('focuses the nearest rendered day when a renderer omits the selected day', async () => {
+      const saturday = new Date(2026, 7, 15);
+      const { getByRole, getDialog } = renderDatePicker({
+        defaultValue: saturday,
+        calendar: {
+          renderCell: (props, cell, defaultRender) =>
+            cell.type === 'day' && [0, 6].includes(cell.originalDate?.getDay() ?? -1) ? null : defaultRender(props),
+        },
+      });
+
+      fireEvent.click(getByRole('button', { name: 'Due date August 15, 2026' }));
+
+      await waitFor(() => expect(getDayCell(getDialog(), 'August 14, 2026')).toHaveFocus());
+    });
+
     it('focuses the first available day of the month when today is unavailable', async () => {
       const { getByRole, getDialog } = renderDatePicker({
         calendar: { restrictedDates: [new Date(2026, 7, 1), new Date(2026, 7, 2), today] },

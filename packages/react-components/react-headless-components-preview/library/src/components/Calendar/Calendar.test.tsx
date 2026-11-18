@@ -1145,6 +1145,40 @@ describe('Calendar day grid', () => {
       expect(firstOfMonth.closest('td')).toHaveFocus();
     });
 
+    it('moves the tab stop to the nearest rendered day when a renderer omits it', () => {
+      const saturday = new Date(2020, 8, 19);
+      const isWeekend = (cell: CalendarCellData) =>
+        cell.type === 'day' && (cell.originalDate?.getDay() === 0 || cell.originalDate?.getDay() === 6);
+      const { container, getByRole } = render(
+        <Calendar
+          today={saturday}
+          value={saturday}
+          monthPicker={null}
+          renderCell={(props, cell, defaultRender) => (isWeekend(cell) ? null : defaultRender(props))}
+        />,
+      );
+      const tabStops = container.querySelectorAll('[role="gridcell"][tabindex="0"]');
+      expect(tabStops).toHaveLength(1);
+      expect(tabStops[0]).toBe(getByRole('button', { name: dayLabel(new Date(2020, 8, 18)) }).closest('td'));
+    });
+
+    it('moves the tab stop to another week when a renderer omits its row', () => {
+      const { container, getByRole } = render(
+        <Calendar
+          today={today}
+          value={today}
+          monthPicker={null}
+          renderRow={(props, row, defaultRender) =>
+            row.type === 'week' && row.cells.some(cell => cell.key === '2020-8-18') ? null : defaultRender(props)
+          }
+        />,
+      );
+      const tabStops = container.querySelectorAll('[role="gridcell"][tabindex="0"]');
+      expect(tabStops).toHaveLength(1);
+      // The nearest later rendered day.
+      expect(tabStops[0]).toBe(getByRole('button', { name: dayLabel(new Date(2020, 8, 20)) }).closest('td'));
+    });
+
     it('lets render functions replace the markup of repeated elements', () => {
       const { container } = render(
         <Calendar

@@ -14,7 +14,14 @@ import {
   Space,
 } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { mergeCallbacks, slot, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  mergeCallbacks,
+  slot,
+  useControllableState,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotShorthandValue } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../utils';
 import {
@@ -459,6 +466,13 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   // Shared cell, row and weekday props
 
   const tabStops: Partial<Record<CalendarView, string>> = {};
+  /** Each visible grid's cells, so the tab stop can move to a rendered cell when a renderer omits it. */
+  const grids: {
+    view: CalendarView;
+    resetKey: string;
+    cells: CalendarCellData[];
+    isFocusable: (cell: CalendarCellData) => boolean;
+  }[] = [];
   const activeKeys: Partial<Record<CalendarView, string>> = {};
 
   const resolveCellProps: CalendarState['resolveCellProps'] = cell => {
@@ -603,6 +617,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     tabStops[panelView] = isDay
       ? dayTabStop?.key
       : activeKey ?? (isFocusable(navigatedCell) ? navigatedCell!.key : undefined);
+    grids.push({ view: panelView, resetKey, cells, isFocusable });
 
     const getCell = (event: CalendarEvent): [HTMLElement, CalendarCellData] | undefined => {
       const element = getEventCell(event);
@@ -912,6 +927,32 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   if (showMonthPanel && monthPickerSlot) {
     panels.push(createPanel(monthPanelView, monthPickerSlot, !panels.length));
   }
+
+  // A renderer may omit the tab-stop cell, or its whole row. Move the tab stop to the nearest rendered, focusable cell,
+  // before paint and before focus requests run, so Tab and programmatic focus still reach the grid.
+  useIsomorphicLayoutEffect(() => {
+    for (const { view: gridView, resetKey, cells, isFocusable } of grids) {
+      const gridElement = rootRef.current?.querySelector(`[data-view="${gridView}"] [data-fui-calendar-grid]`);
+      const elements = gridElement ? getCellElements(gridElement) : new Map<string | null, HTMLElement>();
+      if ([...elements.values()].some(element => element.getAttribute('tabindex') === '0')) {
+        continue;
+      }
+      const isCandidate = (cell: CalendarCellData | undefined) => !!cell && isFocusable(cell) && elements.has(cell.key);
+      const from = cells.findIndex(cell => cell.key === tabStops[gridView]);
+      let fallback: CalendarCellData | undefined;
+      for (let distance = from < 0 ? 0 : 1; !fallback && distance < cells.length; distance++) {
+        const start = Math.max(from, 0);
+        // Later cells first, as moving forward is the likelier way to reach an available date.
+        fallback = [cells[start + distance], cells[start - distance]].find(isCandidate);
+      }
+      if (fallback) {
+        elements.get(fallback.key)!.tabIndex = 0;
+        if (activeCells[gridView] !== `${resetKey}|${fallback.key}`) {
+          setActiveCell(gridView, resetKey, fallback.key);
+        }
+      }
+    }
+  });
 
   // Go to today
 
