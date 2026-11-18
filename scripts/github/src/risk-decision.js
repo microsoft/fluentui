@@ -45,6 +45,7 @@ function validateDecision(payload) {
     !['0', '1', '2', '3'].includes(answer.choice) ||
     !isProbability(answer.confidence) ||
     !isRecord(distribution) ||
+    Object.keys(distribution).length !== 4 ||
     Object.keys(distribution).sort().join() !== '0,1,2,3' ||
     !Object.values(distribution).every(isProbability) ||
     Math.abs(

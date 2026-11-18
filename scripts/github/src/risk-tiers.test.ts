@@ -57,6 +57,7 @@ describe('risk classification', () => {
     '.github/workflows/pr.yml',
     '.devops/release.yml',
     'scripts/github/risk-tiers.js',
+    'scripts/.internal/build.js',
     'tools/workspace-plugin/index.ts',
     'yarn.lock',
     'nx.json',
@@ -72,6 +73,7 @@ describe('risk classification', () => {
     'packages/react-components/react-button/stories/AGENTS.md',
     'packages/react-components/react-button/library/docs/CLAUDE.md',
     'packages/react-components/react-button/stories/.agents/rules.md',
+    'packages/react-components/react-button/stories/.hidden/.agents/rules.md',
     'packages/react-components/react-button/stories/.hidden/AGENTS.md',
     'packages/react-components/react-button/library/src/.hidden/package.json',
     'packages/react-components/react-utilities/.swcrc',
@@ -99,6 +101,8 @@ describe('risk classification', () => {
     'packages/react-components/react-button/library/src/Button.test.tsx',
     'packages/react-components/react-button/library/src/Button.spec.ts',
     'packages/react-components/react-button/stories/Button.test.tsx',
+    'packages/react-components/react-drawer/library/src/components/Drawer/Drawer.cy.tsx',
+    'packages/react-components/react-button/stories/Button.cy.tsx',
     'packages/react-components/react-button/stories/__snapshots__/Button.snap',
     'packages/react-components/react-button/library/docs/example.snap',
     'packages/react-components/react-button/stories/__snapshots__/Button.png',
@@ -143,6 +147,9 @@ describe('risk classification', () => {
     expect(hasReviewFocus('<!-- Review focus: placeholder -->')).toBe(false);
     expect(hasReviewFocus('```\nReview focus: example\n```')).toBe(false);
     expect(hasReviewFocus('Review focus:  ')).toBe(false);
+    expect(hasReviewFocus('**Review focus:**')).toBe(false);
+    expect(hasReviewFocus('**Review focus:**  ')).toBe(false);
+    expect(hasReviewFocus('**Review focus:**\n\n## Related issues')).toBe(false);
     expect(hasReviewFocus('Review focus:\n\n## Related issues')).toBe(false);
     expect(hasReviewFocus(null)).toBe(false);
   });

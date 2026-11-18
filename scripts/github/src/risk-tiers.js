@@ -41,7 +41,7 @@ function isSnapshot(path) {
 
 /** @param {string} path */
 function isTest(path) {
-  return /\.(test|spec)\.[cm]?[jt]sx?$/.test(path);
+  return /\.(test|spec|cy)\.[cm]?[jt]sx?$/.test(path);
 }
 
 /**
@@ -95,7 +95,7 @@ function classifyRisk(files, pull) {
 /** @param {string | null} body */
 function hasReviewFocus(body) {
   const visibleBody = (body || '').replace(/<!--[\s\S]*?-->/g, '').replace(/```[\s\S]*?```|~~~[\s\S]*?~~~/g, '');
-  return /^(?:\*\*)?Review focus:(?:\*\*)?[ \t]*\S[^\r\n]*$/im.test(visibleBody);
+  return /^(?:\*\*Review focus:\*\*|Review focus:)[ \t]*\S[^\r\n]*$/im.test(visibleBody);
 }
 
 module.exports = { classifyRisk, hasReviewFocus, tierLabels };

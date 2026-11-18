@@ -76,6 +76,8 @@ describe('Decision tier assessment', () => {
       { probabilities: { '0': 0, '1': 0, '2': 0.9 } },
       { probabilities: { '0': 0, '1': 0, '2': 0.9, '3': 0 } },
       { probabilities: { '0': 0, '1': 0, '2': true, '3': 0 } },
+      { choice: '0', probabilities: { '0,1': 0.95, '2': 0.03, '3': 0.02 } },
+      { choice: '2', probabilities: { '0': 0.05, '1': 0.05, '2,3': 0.9 } },
     ]) {
       invalid.push({ ...payload(), answers: { risk_tier: { ...payload().answers.risk_tier, ...change } } });
     }

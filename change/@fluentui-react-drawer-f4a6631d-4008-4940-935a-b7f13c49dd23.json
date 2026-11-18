@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: compare DrawerBody scroll positions with a tolerance so the footer divider is hidden when scrolled to the bottom at fractional browser zoom",
+  "packageName": "@fluentui/react-drawer",
+  "email": "fnambeh@gsumail.gram.edu",
+  "dependentChangeType": "patch"
+}

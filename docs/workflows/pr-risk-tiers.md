@@ -20,6 +20,8 @@ A change file is not a tier 0 path.
 Mixed source/change-file PRs conservatively default to tier 2. Tests and snapshots
 can accept regressions and never qualify as trivial. Dependabot never takes the
 fast lane, even for an otherwise trivial diff; continue using `/dependabot-rollup`.
+Test detection includes `.test`, `.spec`, and Cypress `.cy` JavaScript/TypeScript
+filenames, including tests placed under otherwise allowlisted story directories.
 
 ## Deterministic enforcement
 

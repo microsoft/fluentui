@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.2)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.1..@fluentui/react-components_v9.75.2)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item ([PR #37076](https://github.com/microsoft/fluentui/pull/37076) by paulmardling@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: NavCategoryItem renders type="button" so it does not submit an enclosing form ([PR #37114](https://github.com/microsoft/fluentui/pull/37114) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+  - fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only ([PR #37107](https://github.com/microsoft/fluentui/pull/37107) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
 
 ## [9.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.1)
 
