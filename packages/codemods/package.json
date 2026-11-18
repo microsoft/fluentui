@@ -23,7 +23,7 @@
     "update-snapshots": "yarn run -T just-scripts jest -u"
   },
   "dependencies": {
-    "glob": "^7.1.2",
+    "glob": "^14.0.2",
     "ts-morph": "^23.0.0",
     "tslib": "^2.1.0",
     "yargs": "^13.3.2"
