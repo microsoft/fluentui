@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLayerOpenState } from '../../hooks/top-layer';
+import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -103,8 +103,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
-  // never closes an open `auto` popover.
+  // Without `hint` support it acts as `manual`, so it never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
     open: renderedVisible,
     mode: 'hint',
@@ -113,6 +112,14 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         setVisible(undefined, { visible: false });
       }
     },
+  });
+
+  // The content never takes focus: listen on the document, ahead of an enclosing DialogSurface.
+  useLayerEscape(contentRef, {
+    open: visible,
+    listen: 'document',
+    when: 'always',
+    onEscape: () => setVisible(undefined, { visible: false }),
   });
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
@@ -224,22 +231,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       (child?.props?.['aria-label'] === undefined && child?.props?.['aria-labelledby'] === undefined)
     ) {
       triggerAriaProps['aria-labelledby'] = accessibleContentId;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-      // eslint-disable-next-line react-hooks/immutability
-      state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     triggerAriaProps['aria-describedby'] = accessibleContentId;
-    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = true;
-  }
-
-  // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Preserve existing popup rendering without the secondary slot.
-  if (isServerSideRender || (isPopupExpanded && !state.secondaryContent)) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = false;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
@@ -279,15 +273,18 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     }
   }
 
-  // Descriptions can reference descendants, so preserve their always-mounted subtree.
-  if (state.secondaryContent && relationship !== 'description') {
-    const resolvedChild = getTriggerChild<TooltipTriggerProps>(state.children);
-    // Any ID reference may target a descendant, so conservatively keep the subtree mounted.
-    const hasAriaReference = [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(
-      reference => Boolean(reference?.trim()),
-    );
-    state.shouldRenderTooltip = !isServerSideRender && (state.visible || hasAriaReference);
-  }
+  const resolvedChild = getTriggerChild<TooltipTriggerProps>(state.children);
+  // Any ID reference may target a descendant, so conservatively keep the subtree mounted.
+  const hasAriaReference = [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(
+    reference => Boolean(reference?.trim()),
+  );
+  const alwaysRendered =
+    relationship === 'description' ||
+    (state.secondaryContent
+      ? hasAriaReference
+      : relationship === 'label' && typeof state.content.children !== 'string');
+  const { shouldRender } = useLayerPresence(contentRef, { open: renderedVisible, unmountOnClose: !alwaysRendered });
+  state.shouldRenderTooltip = !isServerSideRender && !(isPopupExpanded && !state.secondaryContent) && shouldRender;
 
   return state;
 };
