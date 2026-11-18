@@ -1013,7 +1013,10 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     focused.current = focusedView && { view: focusedView, inGrid: !!target.closest('[data-fui-calendar-grid]') };
   });
   const onRootBlurCapture = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+    const { currentTarget, relatedTarget, target } = event;
+    // Focus left the calendar: for another element, or for the page or window (no related target) while the blurred
+    // element stays in the document. An element removed while focused does not count, so its focus can be restored.
+    if (relatedTarget ? !currentTarget.contains(relatedTarget) : (target as Node).isConnected) {
       focusWithin.current = false;
       focused.current = undefined;
     }

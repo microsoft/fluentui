@@ -918,6 +918,22 @@ describe('Calendar interaction sequences', () => {
       expect(getByRole('button', { name: '2020 - 2031, change year' })).toHaveFocus();
     });
 
+    it('does not reclaim focus that moved to the page when a controlled view hides the focused panel', () => {
+      const { getByRole, rerender } = render(<Calendar today={today} layout="overlay" view="day" />);
+      act(() =>
+        getByRole('button', { name: dayLabel(today) })
+          .closest('td')!
+          .focus(),
+      );
+      // Clicking empty page space moves focus to the body without a related target.
+      act(() => (document.activeElement as HTMLElement).blur());
+      expect(document.body).toHaveFocus();
+
+      rerender(<Calendar today={today} layout="overlay" view="month" />);
+
+      expect(document.body).toHaveFocus();
+    });
+
     it('does not reclaim outside focus when a controlled view replaces the month grid', () => {
       const { getByRole, rerender } = render(
         <>
