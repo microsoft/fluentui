@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-charts): add opt-in keyed line-chart scales, current-frame rendering, controlled inspection, reusable interval annotation coverage and native action composition, and series motion while preserving legacy defaults",
+  "packageName": "@fluentui/react-charts",
+  "email": "jankozhang@microsoft.com"
+}

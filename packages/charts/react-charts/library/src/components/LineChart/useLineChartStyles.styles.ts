@@ -53,8 +53,8 @@ const useStyles = makeStyles({
 export const useLineChartStyles = (props: LineChartProps): LineChartStyles => {
   const baseStyles = useStyles();
   return {
-    tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
-    lineBorder: mergeClasses(linechartClassNames.lineBorder, baseStyles.lineBorder /*props.styles?.lineBorder*/),
-    markerLabel: mergeClasses(linechartClassNames.markerLabel, baseStyles.markerLabel /*props.styles?.markerLabel*/),
+    tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip, props.styles?.tooltip),
+    lineBorder: mergeClasses(linechartClassNames.lineBorder, baseStyles.lineBorder, props.styles?.lineBorder),
+    markerLabel: mergeClasses(linechartClassNames.markerLabel, baseStyles.markerLabel, props.styles?.markerLabel),
   };
 };
