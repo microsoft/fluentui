@@ -263,15 +263,23 @@ jobs:
             env: FUI_PARITY_DIR=rtl
           - name: shadow-dom
             env: FUI_PARITY_SHADOW_DOM=1
+          # Teams runs its high contrast theme with the OS forced colors mode.
+          - name: forced-colors
+            env: FUI_PARITY_FORCED_COLORS=1 FUI_PARITY_THEME=teamsHighContrast
+          - name: web-dark
+            env: FUI_PARITY_THEME=webDark
         shard:
-          - name: data-lazy
-            specs: e2e/Data.cy.tsx,e2e/Lazy.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx
+          - name: data
+            specs: e2e/Data.cy.tsx,e2e/AppGlobalStyles.cy.tsx,e2e/app-patterns/DisabledOverrides.cy.tsx,e2e/app-patterns/ComponentVariables.cy.tsx,e2e/app-patterns/ExternalTokenTheme.cy.tsx
+          # Lazy alone takes ~30 min in CI (settle waits on pending CSS transitions); keep it off the other shards.
+          - name: lazy-positioning
+            specs: e2e/Lazy.cy.tsx,e2e/Positioning.cy.tsx,e2e/app-patterns/SurfaceOverrides.cy.tsx
           - name: navigation-forms
-            specs: e2e/Navigation.cy.tsx,e2e/Forms.cy.tsx,e2e/app-patterns/SegmentedToggle.cy.tsx
+            specs: e2e/Navigation.cy.tsx,e2e/Forms.cy.tsx,e2e/app-patterns/SegmentedToggle.cy.tsx,e2e/app-patterns/HeadlessIcons.cy.tsx
           - name: overlays-buttons-core
             specs: e2e/Overlays.cy.tsx,e2e/ButtonsAndDisplay.cy.tsx,e2e/Core.cy.tsx
           - name: rest
-            specs: e2e/FeedbackAndCompat.cy.tsx,e2e/Migration.cy.tsx,e2e/CustomStyleHooks.cy.tsx,e2e/SSR.cy.tsx,e2e/app-patterns/AtRules.cy.tsx,e2e/app-patterns/Selectors.cy.tsx,e2e/app-patterns/Shorthands.cy.tsx,e2e/app-patterns/VariantOverrides.cy.tsx
+            specs: e2e/FeedbackAndCompat.cy.tsx,e2e/Migration.cy.tsx,e2e/CustomStyleHooks.cy.tsx,e2e/SSR.cy.tsx,e2e/app-patterns/AtRules.cy.tsx,e2e/app-patterns/Selectors.cy.tsx,e2e/app-patterns/Shorthands.cy.tsx,e2e/app-patterns/VariantOverrides.cy.tsx,e2e/app-patterns/GlobalClassSelectors.cy.tsx,e2e/app-patterns/ForcedColorsOverrides.cy.tsx,e2e/app-patterns/PhysicalOverridesRtl.cy.tsx,e2e/app-patterns/SpecificityBoosters.cy.tsx
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
