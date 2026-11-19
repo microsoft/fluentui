@@ -32,6 +32,24 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `const Dialog = React.lazy(async () => { const m = await import('@fluentui/react-components'); return { default: m.Dialog }; });`,
     },
+    {
+      code: `import('@fluentui/react').then(m => items.map(m => m.Button));`,
+    },
+    {
+      code: `const Button = 'ThemeProvider'; import('@fluentui/react').then(m => m[Button]);`,
+    },
+    {
+      code: `const m = await import('@fluentui/react'); export const value = m[Button];`,
+    },
+    {
+      code: `const { ['ThemeProvider']: ThemeProvider } = await import('@fluentui/react'); export { ThemeProvider };`,
+    },
+    {
+      code: `import('@fluentui/react').then(m => m.constructor);`,
+    },
+    {
+      code: `import('@fluentui/react').then(m => { m = {}; return m.Button; });`,
+    },
   ],
   invalid: [
     {
@@ -102,6 +120,50 @@ ruleTester.run(RULE_NAME, rule, {
         {
           messageId: 'replaceFluent8With9',
           data: { fluent8: 'Calendar', fluent9: 'Calendar', package: '@fluentui/react-calendar-compat' },
+        },
+      ],
+    },
+    {
+      code: `import('@fluentui/react').then(({ Icon }) => Icon);`,
+      errors: [{ messageId: 'replaceIconWithJsx' }],
+    },
+    {
+      code: `import('@fluentui/react').then(m => m.Icon);`,
+      errors: [{ messageId: 'replaceIconWithJsx' }],
+    },
+    {
+      code: `import('@fluentui/react').then(m => m['Button']);`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Button', fluent9: 'Button', package: '@fluentui/react-components' },
+        },
+      ],
+    },
+    {
+      code: `const m = await import('@fluentui/react'); export const Button = m.Button;`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Button', fluent9: 'Button', package: '@fluentui/react-components' },
+        },
+      ],
+    },
+    {
+      code: `const m = await import('@fluentui/react'); export const Button = m['Button'];`,
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Button', fluent9: 'Button', package: '@fluentui/react-components' },
+        },
+      ],
+    },
+    {
+      code: "import('@fluentui/react').then(m => m[`Button`]);",
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'Button', fluent9: 'Button', package: '@fluentui/react-components' },
         },
       ],
     },
