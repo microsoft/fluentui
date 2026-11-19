@@ -18,10 +18,9 @@ export const renderDatePicker = (state: DatePickerState): JSXElement => {
         {state.trigger && (
           <state.trigger>
             <state.displayValue />
-            {state.icon && <state.icon />}
           </state.trigger>
         )}
-        {state.input && state.icon && <state.icon />}
+        {state.icon && <state.icon />}
       </state.root>
       {state.errorMessage && <state.errorMessage />}
       {state.open && (

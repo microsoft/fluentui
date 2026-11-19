@@ -22,6 +22,7 @@ export const DatePicker: DatePickerComponent;
 
 // @public
 export type DatePickerBaseProps = {
+    locale?: string;
     calendar?: NonNullable<Slot<DatePickerCalendarProps>>;
     value?: Date | null;
     defaultValue?: Date | null;
@@ -90,7 +91,7 @@ export type DatePickerSlots = {
     input?: NonNullable<Slot<'input'>>;
     trigger?: NonNullable<Slot<'button'>>;
     displayValue: NonNullable<Slot<'span'>>;
-    icon?: Slot<'span'>;
+    icon?: Slot<'button'>;
     errorMessage?: Slot<'div'>;
     popupSurface: NonNullable<Slot<'div'>>;
     calendar: NonNullable<Slot<typeof Calendar>>;
