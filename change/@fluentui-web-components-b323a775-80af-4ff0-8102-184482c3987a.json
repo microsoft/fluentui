@@ -2,5 +2,5 @@
   "type": "patch",
   "comment": "refactor: move default attributes from template into connectedCallback while preserving consumer overrides",
   "packageName": "@fluentui/web-components",
-  "email": "223556219+Copilot@users.noreply.github.com"
+  "email": "machi@microsoft.com"
 }
