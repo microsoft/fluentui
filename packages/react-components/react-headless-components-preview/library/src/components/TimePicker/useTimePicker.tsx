@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { slot } from '@fluentui/react-utilities';
 import type { ComboboxProps } from '../Combobox/Combobox.types';
 import { useCombobox } from '../Combobox/useCombobox';
 import { Option } from '../Dropdown/Option';
@@ -27,7 +28,9 @@ export const useTimePicker = (props: TimePickerProps, ref: React.Ref<HTMLInputEl
   };
 
   const comboboxState = useCombobox(comboboxProps, ref);
-  const state = useTimePickerComboboxState(comboboxState, selection);
+  // The consumer's own key handler, still called for the keys the TimePicker handles instead of the Combobox.
+  const onUserKeyDown = slot.resolveShorthand(props.input)?.onKeyDown ?? props.onKeyDown;
+  const state = useTimePickerComboboxState(comboboxState, selection, onUserKeyDown);
 
   return {
     ...state,

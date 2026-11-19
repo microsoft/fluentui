@@ -67,7 +67,7 @@ describe('DatePicker', () => {
 
   (['Enter', 'Space'] as const).forEach(key => {
     it(`closes from the Calendar close button with ${key}`, () => {
-      mount(<Example calendar={{ dayPicker: { closeButton: { children: 'Close calendar' } } }} />);
+      mount(<Example calendar={{ closeButton: { children: 'Close calendar' } }} />);
 
       cy.get('button[aria-haspopup="dialog"]').click();
       cy.contains('button', 'Close calendar').focus().realPress(key);
@@ -112,7 +112,7 @@ describe('DatePicker', () => {
     mount(<Example allowTextInput onValidationResult={onValidationResult} />);
 
     cy.get('input').type('not a date');
-    cy.get('[role="button"][aria-label="Choose date"]').realClick();
+    cy.get('button[aria-label="Open calendar"]').realClick();
     cy.get('[role="dialog"]').should('exist');
     cy.get('body').realClick({ x: 5, y: 5 });
     cy.get('[role="dialog"]').should('not.exist');
@@ -135,7 +135,7 @@ describe('DatePicker', () => {
     cy.get('button[aria-haspopup="dialog"]').click();
     cy.contains('button', 'August 2026').click();
     cy.get('[role="dialog"] [role="grid"]').eq(1).find('[role="gridcell"]').should('have.length', 12);
-    cy.get('[role="dialog"] [role="grid"]').eq(1).find('[aria-current="date"]').should('contain.text', '2026');
+    cy.get('[role="dialog"] [role="grid"]').eq(1).find('[aria-current="true"]').should('contain.text', '2026');
   });
 
   it('closes on Escape without dismissing a surrounding modal dialog', () => {
