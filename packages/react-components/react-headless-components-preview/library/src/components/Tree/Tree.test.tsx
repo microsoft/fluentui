@@ -7,29 +7,31 @@ import { Tree } from './Tree';
 import { TreeItem } from './TreeItem/TreeItem';
 import { TreeItemLayout } from './TreeItemLayout/TreeItemLayout';
 import type { TreeProps } from './Tree.types';
-import { useSubtreeContext, useTreeContext } from './useTree';
 import { useTreeItemContext } from './TreeItem/useTreeItem';
+import type { TreeItemContextValues } from './TreeItem/TreeItem.types';
 
 const getItem = (text: string) => screen.getByText(text).closest<HTMLElement>('[role="treeitem"]')!;
 
-const NestedTree = React.forwardRef<HTMLDivElement, Partial<TreeProps>>((props, ref) => (
-  <Tree ref={ref} aria-label="Files" {...props}>
-    <TreeItem itemType="branch" value="docs">
-      <TreeItemLayout>Docs</TreeItemLayout>
-      <Tree>
-        <TreeItem itemType="leaf" value="readme">
-          <TreeItemLayout>README</TreeItemLayout>
-        </TreeItem>
-      </Tree>
-    </TreeItem>
-    <TreeItem itemType="leaf" value="license">
-      <TreeItemLayout>LICENSE</TreeItemLayout>
-    </TreeItem>
-    <TreeItem itemType="leaf" value="package">
-      <TreeItemLayout>package.json</TreeItemLayout>
-    </TreeItem>
-  </Tree>
-));
+const NestedTree = React.forwardRef<HTMLDivElement, Partial<TreeProps> & { disabled?: boolean }>(
+  ({ disabled, ...props }, ref) => (
+    <Tree ref={ref} aria-label="Files" {...props}>
+      <TreeItem disabled={disabled} itemType="branch" value="docs">
+        <TreeItemLayout>Docs</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf" value="readme">
+            <TreeItemLayout>README</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem disabled={disabled} itemType="leaf" value="license">
+        <TreeItemLayout>LICENSE</TreeItemLayout>
+      </TreeItem>
+      <TreeItem disabled={disabled} itemType="leaf" value="package">
+        <TreeItemLayout>package.json</TreeItemLayout>
+      </TreeItem>
+    </Tree>
+  ),
+);
 
 /**
  * Checked items are controlled only, this harness keeps them in sync with `onCheckedChange`.
@@ -71,12 +73,10 @@ describe('Tree', () => {
       },
     );
 
-    it('inherits through items, layouts and subtrees and updates when re-enabled', () => {
+    it('inherits through items and layouts across subtrees and updates when re-enabled', () => {
       const { rerender } = render(<NestedTree disabled defaultOpenItems={['docs']} selectionMode="multiselect" />);
       const expectDisabled = (disabled: boolean) => {
         for (const element of [
-          screen.getByRole('tree'),
-          screen.getByRole('group'),
           ...screen.getAllByRole('treeitem'),
           screen.getByText('Docs').parentElement!,
           screen.getByText('README').parentElement!,
@@ -89,22 +89,13 @@ describe('Tree', () => {
         for (const selector of screen.getAllByRole('checkbox')) {
           expect((selector as HTMLInputElement).disabled).toBe(disabled);
         }
+        expect(screen.getByRole('tree')).not.toHaveAttribute('data-disabled');
+        expect(screen.getByRole('group')).not.toHaveAttribute('data-disabled');
       };
 
       expectDisabled(true);
       rerender(<NestedTree disabled={false} defaultOpenItems={['docs']} selectionMode="multiselect" />);
       expectDisabled(false);
-    });
-
-    it.each([true, 'true'] as const)('supports aria-disabled=%s', ariaDisabled => {
-      const onOpenChange = jest.fn();
-      render(<NestedTree aria-disabled={ariaDisabled} onOpenChange={onOpenChange} />);
-
-      fireEvent.click(getItem('Docs'));
-
-      expect(screen.getByRole('tree')).toHaveAttribute('data-disabled', '');
-      expect(getItem('Docs')).toHaveAttribute('data-disabled', '');
-      expect(onOpenChange).not.toHaveBeenCalled();
     });
 
     it.each(['single', 'multiselect'] as const)('blocks disclosure and %s selection', selectionMode => {
@@ -159,23 +150,16 @@ describe('Tree', () => {
       render(
         <Tree
           aria-label="Files"
-          disabled
           selectionMode="multiselect"
           defaultOpenItems={['branch']}
           {...{ 'data-disabled': undefined }}
         >
-          <TreeItem
-            itemType="branch"
-            value="branch"
-            disabled={false}
-            aria-disabled={false}
-            {...{ 'data-disabled': undefined }}
-          >
+          <TreeItem itemType="branch" value="branch" disabled aria-disabled={false} {...{ 'data-disabled': undefined }}>
             <TreeItemLayout selector={{ disabled: false }} {...{ 'data-disabled': undefined }}>
               Branch
             </TreeItemLayout>
-            <Tree disabled={false} aria-disabled={false}>
-              <TreeItem itemType="leaf" disabled={false}>
+            <Tree aria-disabled={false}>
+              <TreeItem itemType="leaf" disabled={false} aria-disabled={false} {...{ 'data-disabled': undefined }}>
                 <TreeItemLayout>Leaf</TreeItemLayout>
               </TreeItem>
             </Tree>
@@ -184,8 +168,6 @@ describe('Tree', () => {
       );
 
       for (const element of [
-        screen.getByRole('tree'),
-        screen.getByRole('group'),
         ...screen.getAllByRole('treeitem'),
         screen.getByText('Branch').parentElement!,
         screen.getByText('Leaf').parentElement!,
@@ -195,37 +177,48 @@ describe('Tree', () => {
       expect(screen.getByRole('checkbox', { name: 'Branch' })).toBeDisabled();
     });
 
-    it('scopes subtree disabling and exposes resolved state through the context hooks', () => {
-      const ReadState = () => {
-        const treeDisabled = useTreeContext(context => context.disabled);
-        const itemDisabled = useTreeItemContext(context => context.disabled);
-        const { disabled: subtreeDisabled } = useSubtreeContext();
-        return <span>{JSON.stringify({ treeDisabled, itemDisabled, subtreeDisabled })}</span>;
-      };
-      render(
-        <Tree aria-label="Files" defaultOpenItems={['branch']}>
-          <TreeItem itemType="branch" value="branch">
-            <TreeItemLayout>Branch</TreeItemLayout>
-            <Tree disabled>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>
-                  <ReadState />
-                </TreeItemLayout>
-              </TreeItem>
-            </Tree>
-          </TreeItem>
-          <TreeItem itemType="leaf">
-            <TreeItemLayout>Enabled</TreeItemLayout>
-          </TreeItem>
-        </Tree>,
-      );
+    it.each([false, true])(
+      'keeps item context scoped to the same parent before and inside a child (parent disabled=%s)',
+      parentDisabled => {
+        const observed: Record<string, TreeItemContextValues['treeItem']> = {};
+        const ReadState = ({ id }: { id: string }) => {
+          observed[id] = useTreeItemContext(context => context);
+          return null;
+        };
+        render(
+          <Tree aria-label="Files" defaultOpenItems={['branch']}>
+            <TreeItem itemType="branch" value="branch" disabled={parentDisabled}>
+              <TreeItemLayout>
+                Branch
+                <ReadState id="parent" />
+              </TreeItemLayout>
+              <Tree aria-disabled>
+                <ReadState id="before-child" />
+                <TreeItem itemType="leaf" value="child" disabled={!parentDisabled}>
+                  <TreeItemLayout>
+                    Child
+                    <ReadState id="child" />
+                  </TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>Enabled</TreeItemLayout>
+            </TreeItem>
+          </Tree>,
+        );
 
-      expect(screen.getByRole('tree')).not.toHaveAttribute('data-disabled');
-      expect(getItem('Branch')).not.toHaveAttribute('data-disabled');
-      expect(getItem('Enabled')).not.toHaveAttribute('data-disabled');
-      expect(screen.getByRole('group')).toHaveAttribute('data-disabled', '');
-      expect(screen.getByText('{"treeDisabled":false,"itemDisabled":true,"subtreeDisabled":true}')).toBeInTheDocument();
-    });
+        expect(screen.getByRole('tree')).not.toHaveAttribute('data-disabled');
+        expect(getItem('Branch').hasAttribute('data-disabled')).toBe(parentDisabled);
+        expect(getItem('Enabled')).not.toHaveAttribute('data-disabled');
+        expect(observed['before-child']).toBe(observed.parent);
+        expect(observed['before-child']).toMatchObject({ value: 'branch', open: true, disabled: parentDisabled });
+        expect(observed['before-child'].treeItemRef?.current).toBe(getItem('Branch'));
+        expect(observed.child).toMatchObject({ value: 'child', open: false, disabled: true });
+        expect(observed.child.treeItemRef?.current).toBe(getItem('Child'));
+        expect(getItem('Child')).toHaveAttribute('data-disabled', '');
+      },
+    );
 
     it('continues to accept consumer-controlled open and checked state', () => {
       const { rerender } = render(<NestedTree disabled openItems={[]} selectionMode="multiselect" checkedItems={[]} />);

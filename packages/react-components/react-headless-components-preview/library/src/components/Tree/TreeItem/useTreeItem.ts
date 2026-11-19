@@ -12,22 +12,15 @@ import { useEventCallback, useTimeout } from '@fluentui/react-utilities';
 
 import type { TreeItemContextValues, TreeItemProps, TreeItemState } from './TreeItem.types';
 import { toDataAttributeValue } from '../../../utils';
-import { TreeDisabledContext, TreeItemDisabledContext } from '../treeDisabledContext';
 
 /**
  * Returns the state for a TreeItem component, given its props and ref.
  * The returned state can be modified with hooks before being passed to `renderTreeItem`.
  */
 export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
-  const treeDisabled = React.useContext(TreeDisabledContext);
-  const itemDisabled = React.useContext(TreeItemDisabledContext);
+  const itemDisabled = useTreeItemContext(context => context.disabled);
   const { disabled: disabledProp = false, ...baseProps } = props;
-  const disabled =
-    treeDisabled ||
-    itemDisabled ||
-    disabledProp ||
-    props['aria-disabled'] === true ||
-    props['aria-disabled'] === 'true';
+  const disabled = itemDisabled || disabledProp || props['aria-disabled'] === true || props['aria-disabled'] === 'true';
   const state: TreeItemState = { ...useTreeItem_unstable(baseProps, ref), disabled };
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
@@ -139,8 +132,12 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
  * Returns a value from the context of the closest tree item, such as its value, open or checked state.
  */
 export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues['treeItem']) => T): T => {
-  const disabled = React.useContext(TreeItemDisabledContext) ?? false;
-  return useTreeItemContext_unstable(context => selector({ ...context, disabled }));
+  return useTreeItemContext_unstable(context => {
+    if ('disabled' in context && typeof context.disabled === 'boolean') {
+      return selector(context as TreeItemContextValues['treeItem']);
+    }
+    return selector({ ...context, disabled: false });
+  });
 };
 
 /**
@@ -148,5 +145,7 @@ export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues[
  */
 export const useTreeItemContextValues = (state: TreeItemState): TreeItemContextValues => {
   const { treeItem } = useTreeItemContextValues_unstable(state);
-  return { treeItem: { ...treeItem, disabled: state.disabled } };
+  const { disabled } = state;
+  const value = React.useMemo(() => ({ ...treeItem, disabled }), [treeItem, disabled]);
+  return { treeItem: value };
 };

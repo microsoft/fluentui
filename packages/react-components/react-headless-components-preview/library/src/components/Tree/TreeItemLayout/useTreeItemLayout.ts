@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import {
   useTreeContext_unstable,
   useTreeItemContext_unstable,
@@ -9,7 +9,7 @@ import {
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
-import { TreeItemDisabledContext } from '../treeDisabledContext';
+import { useTreeItemContext } from '../TreeItem/useTreeItem';
 import { toDataAttributeValue } from '../../../utils';
 
 /**
@@ -17,7 +17,7 @@ import { toDataAttributeValue } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderTreeItemLayout`.
  */
 export const useTreeItemLayout = (props: TreeItemLayoutProps, ref: React.Ref<HTMLElement>): TreeItemLayoutState => {
-  const disabled = React.useContext(TreeItemDisabledContext) ?? false;
+  const disabled = useTreeItemContext(context => context.disabled);
   const state: TreeItemLayoutState = { ...useTreeItemLayoutBase_unstable(props, ref), disabled };
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
