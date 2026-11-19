@@ -66,6 +66,11 @@ export type TimePickerSelection = TimePickerTimeState & {
   setSuppressAutoActivate: (suppress: boolean) => void;
 };
 
+type SearchableOption = TimePickerOption & {
+  /** Option text normalized for matching typed text. */
+  searchText: string;
+};
+
 /**
  * Text kept by the last failed commit, and the error it reported.
  */
@@ -114,8 +119,6 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     setTypedText(undefined);
     setFailedCommit(undefined);
   }
-  const activeTypedText = valueChanged ? undefined : typedText;
-  const activeFailedCommit = valueChanged ? undefined : failedCommit;
 
   const [suppressAutoActivate, setSuppressAutoActivate] = React.useState(false);
   // Typing filters the options until the listbox closes. Reopening it shows all options, so a failed commit can be
@@ -152,30 +155,30 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     [formatDateToTimeStringInProps, hourCycle, locale, showSeconds, timeFormat],
   );
 
-  const allOptions: TimePickerOption[] = React.useMemo(
-    () =>
-      getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => ({
-        date: time,
-        key: dateToKey(time),
-        text: formatTime(time),
-      })),
-    [dateEndAnchor, dateStartAnchor, formatTime, increment],
-  );
-
   const toSearchText = React.useCallback(
     (text: string) => timeFormat.normalize(text).trim().toLowerCase(),
     [timeFormat],
   );
   const matchesText = React.useCallback(
-    (optionText: string, text: string) => toSearchText(optionText).indexOf(toSearchText(text)) === 0,
+    (optionText: string, text: string) => toSearchText(optionText).startsWith(toSearchText(text)),
     [toSearchText],
   );
 
+  const allOptions: SearchableOption[] = React.useMemo(
+    () =>
+      getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => {
+        const text = formatTime(time);
+        return { date: time, key: dateToKey(time), text, searchText: toSearchText(text) };
+      }),
+    [dateEndAnchor, dateStartAnchor, formatTime, increment, toSearchText],
+  );
+
   // With nothing typed (or only whitespace), all options are shown.
-  const filterText = isFiltering && activeTypedText?.trim() ? activeTypedText : undefined;
+  const filterText = isFiltering && typedText?.trim() ? toSearchText(typedText) : undefined;
   const options = React.useMemo(
-    () => (filterText === undefined ? allOptions : allOptions.filter(option => matchesText(option.text, filterText))),
-    [allOptions, filterText, matchesText],
+    () =>
+      filterText === undefined ? allOptions : allOptions.filter(option => option.searchText.startsWith(filterText)),
+    [allOptions, filterText],
   );
 
   const formattedValue = React.useMemo(
@@ -183,9 +186,12 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `valueKey` stands for `value`
     [formatTime, valueKey],
   );
-  const displayValue = activeTypedText ?? formattedValue;
-  const committedText = activeFailedCommit?.text ?? formattedValue;
-  const errorType = activeFailedCommit?.errorType;
+  const displayValue = typedText ?? formattedValue;
+  const committedText = failedCommit?.text ?? formattedValue;
+  const errorType = failedCommit?.errorType;
+
+  const reportChange = (event: TimePickerOnChangeData['event'], data: TimePickerCommitData) =>
+    onChange?.(event, { event, type: event.type, ...data } as TimePickerOnChangeData);
 
   const commitValue = useEventCallback((event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => {
     if (data.errorType) {
@@ -193,13 +199,7 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
       const text = data.displayValue ?? displayValue;
       setTypedText(text);
       setFailedCommit({ text, errorType: data.errorType });
-      onChange?.(event, {
-        event,
-        type: event.type,
-        value,
-        displayValue: text,
-        errorType: data.errorType,
-      } as TimePickerOnChangeData);
+      reportChange(event, { value, displayValue: text, errorType: data.errorType });
       return;
     }
 
@@ -214,16 +214,11 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     setValue(data.value);
     setTypedText(undefined);
     setFailedCommit(undefined);
-    onChange?.(event, {
-      event,
-      type: event.type,
-      ...data,
-      displayValue: nextDisplayValue,
-    } as TimePickerOnChangeData);
+    reportChange(event, { ...data, displayValue: nextDisplayValue });
   });
 
   const restoreCommittedText = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
-    const hasPendingText = activeTypedText !== undefined && activeTypedText !== formattedValue;
+    const hasPendingText = typedText !== undefined && typedText !== formattedValue;
     if (!hasPendingText && !errorType) {
       return false;
     }
@@ -231,13 +226,7 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     setTypedText(undefined);
     setFailedCommit(undefined);
     if (errorType) {
-      onChange?.(event, {
-        event,
-        type: 'keydown',
-        value,
-        displayValue: formattedValue,
-        errorType: undefined,
-      } as TimePickerOnChangeData);
+      reportChange(event, { value, displayValue: formattedValue, errorType: undefined });
     }
     return true;
   });
@@ -252,7 +241,7 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     if (data.optionValue === undefined && !isClear) {
       return;
     }
-    if (data.optionValue === valueKey && activeTypedText === undefined && !errorType) {
+    if (data.optionValue === valueKey && typedText === undefined && !errorType) {
       return;
     }
 
@@ -289,10 +278,14 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
 
   // Freeform text that no option starts with, or typed text that was deleted, keeps the Combobox from activating the
   // first option, so Enter or Tab cannot replace the text with an unrelated time. Arrow keys still activate options.
-  const searchText = displayValue.trim();
+  // While filtering, `options` already holds the options that match the typed text.
   const matchesNoOption =
     freeform &&
-    (searchText ? !allOptions.some(option => matchesText(option.text, searchText)) : activeTypedText !== undefined);
+    (!displayValue.trim()
+      ? typedText !== undefined
+      : filterText !== undefined
+      ? options.length === 0
+      : !allOptions.some(option => option.searchText.startsWith(toSearchText(displayValue))));
 
   const comboboxProps: ComboboxProps = {
     autoComplete: 'off',

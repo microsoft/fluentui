@@ -138,27 +138,23 @@ export const useTimePickerComboboxState = (
     }
   });
 
-  const onInputKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
-    // Keys that confirm an IME composition must not reach the Combobox, which would select the active option.
-    if (event.nativeEvent.isComposing) {
-      onUserKeyDown?.(event);
-      return;
-    }
-
+  /**
+   * Handles the keys the TimePicker owns. Returns false for keys left to the Combobox.
+   */
+  const handleTimePickerKey = (event: React.KeyboardEvent<HTMLInputElement>): boolean => {
     const { key, altKey } = event;
 
+    // Keys that confirm an IME composition must not reach the Combobox, which would select the active option.
     // Home and End keep their text-editing behavior and move the caret.
-    if (key === Home || key === End) {
-      onUserKeyDown?.(event);
-      return;
+    if (event.nativeEvent.isComposing || key === Home || key === End) {
+      return true;
     }
 
     // Escape cancels the pending edit. While open, the Combobox also closes the listbox and stops propagation.
     // While closed, Escape stops here only when it restored something, so it still closes a surrounding Dialog.
     if (key === Escape && restoreCommittedText(event) && !open) {
       event.stopPropagation();
-      onUserKeyDown?.(event);
-      return;
+      return true;
     }
 
     if (altKey && key === ArrowDown && !open) {
@@ -166,8 +162,7 @@ export const useTimePickerComboboxState = (
       openActivationRef.current = 'none';
       setSuppressAutoActivate(true);
       setOpen(event, true);
-      onUserKeyDown?.(event);
-      return;
+      return true;
     }
 
     if (altKey && key === ArrowUp) {
@@ -175,11 +170,19 @@ export const useTimePickerComboboxState = (
       if (open) {
         setOpen(event, false);
       }
+      return true;
+    }
+
+    return false;
+  };
+
+  const onInputKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (handleTimePickerKey(event)) {
       onUserKeyDown?.(event);
       return;
     }
 
-    if (key === ArrowUp && !open) {
+    if (event.key === ArrowUp && !open) {
       openActivationRef.current = 'last';
     }
 

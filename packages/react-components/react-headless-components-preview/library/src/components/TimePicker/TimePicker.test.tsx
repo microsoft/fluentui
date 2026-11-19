@@ -8,6 +8,35 @@ import type { TimePickerProps } from './TimePicker.types';
 
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 
+const nine = new Date('November 25, 2021 09:00:00');
+const ten = new Date('November 25, 2021 10:00:00');
+
+/**
+ * Renders a TimePicker followed by a focusable button, with an `onChange` mock.
+ */
+const renderTimePicker = (
+  props: Partial<TimePickerProps> = {},
+  wrapperProps?: React.HTMLAttributes<HTMLDivElement>,
+) => {
+  const onChange = jest.fn();
+  const ui = (extra: Partial<TimePickerProps> = {}) => {
+    const content = (
+      <>
+        <TimePicker aria-label="Time" dateAnchor={dateAnchor} onChange={onChange} {...props} {...extra} />
+        <button>Next</button>
+      </>
+    );
+    return wrapperProps ? <div {...wrapperProps}>{content}</div> : content;
+  };
+  const result = render(ui());
+  return {
+    ...result,
+    onChange,
+    input: result.getByRole('combobox'),
+    rerenderWith: (extra: Partial<TimePickerProps>) => result.rerender(ui(extra)),
+  };
+};
+
 /**
  * Moves focus out of the TimePicker. The clear icon is in the tab order when shown, so a second Tab may be needed.
  */
@@ -671,25 +700,6 @@ describe('TimePicker', () => {
   });
 
   describe('typed and committed text', () => {
-    const nine = new Date('November 25, 2021 09:00:00');
-    const ten = new Date('November 25, 2021 10:00:00');
-    const renderTimePicker = (props: Partial<TimePickerProps> = {}) => {
-      const onChange = jest.fn();
-      const ui = (extra: Partial<TimePickerProps> = {}) => (
-        <>
-          <TimePicker aria-label="Time" freeform dateAnchor={dateAnchor} onChange={onChange} {...props} {...extra} />
-          <button>Next</button>
-        </>
-      );
-      const result = render(ui());
-      return {
-        ...result,
-        onChange,
-        input: result.getByRole('combobox'),
-        rerenderWith: (extra: Partial<TimePickerProps>) => result.rerender(ui(extra)),
-      };
-    };
-
     it('does not select an option for committed unmatched text after reopening the listbox', () => {
       const { input, onChange } = renderTimePicker();
       userEvent.type(input, '1x1{enter}');
@@ -869,21 +879,6 @@ describe('TimePicker', () => {
     });
   });
   describe('spec alignment', () => {
-    const nine = new Date('November 25, 2021 09:00:00');
-    const ten = new Date('November 25, 2021 10:00:00');
-    const renderTimePicker = (
-      props: Partial<TimePickerProps> = {},
-      wrapperProps: React.HTMLAttributes<HTMLDivElement> = {},
-    ) => {
-      const onChange = jest.fn();
-      const result = render(
-        <div {...wrapperProps}>
-          <TimePicker aria-label="Time" dateAnchor={dateAnchor} onChange={onChange} {...props} />
-          <button>Next</button>
-        </div>,
-      );
-      return { ...result, onChange, input: result.getByRole('combobox') };
-    };
     const activeOptionText = (input: HTMLElement) => {
       const id = input.getAttribute('aria-activedescendant');
       return id ? document.getElementById(id)?.textContent : undefined;
