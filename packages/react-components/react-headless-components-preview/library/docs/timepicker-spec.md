@@ -125,7 +125,7 @@ Field sets `aria-invalid` on the input and links the message through `aria-descr
 - **Options only** (`freeform={false}`): the user selects one of the generated options. Typed text filters the options and is discarded when the listbox closes.
 - **Clearable** (`clearable`): renders a clear button that clears the value. It replaces the expand icon while there is a value.
 
-There are no visual variants. The root carries the headless Combobox data attributes (`data-open`, `data-disabled`, `data-placeholder`, `data-clearable`) and `data-freeform`, plus `data-invalid` while a failed commit is shown or the input is marked invalid (for example by a `Field`). The listbox carries `data-empty` when no option matches the typed text.
+There are no visual variants. The root carries the headless Combobox data attributes (`data-open`, `data-disabled`, `data-placeholder`, `data-clearable`) and `data-freeform`, plus `data-invalid` while a failed commit is shown or the input is marked invalid (for example by a `Field`). The listbox carries `data-empty` when no option matches the typed text; the input then reports `aria-expanded="false"`, so hide the empty listbox (for example `[data-empty] { display: none }`).
 
 ## API
 
@@ -141,16 +141,17 @@ The callback follows the v9 `EventHandler<Data>` signature: the data carries `va
 
 The event part is a discriminated union, as in TagPicker and Tree, so checking `data.type` narrows `data.event` to the matching React event. `type` says which gesture caused the change; the outcome is read from the payload. <kbd>Enter</kbd> is a `keydown` both for a select and for a commit, so `type` alone does not tell the two apart.
 
-| Change                            | `type`                 | `value`         | `displayValue`     | `errorType` |
-| --------------------------------- | ---------------------- | --------------- | ------------------ | ----------- |
-| Select (click, <kbd>Enter</kbd>)  | `'click'`, `'keydown'` | option time     | option text        | `undefined` |
-| Commit, valid                     | `'keydown'`, `'blur'`  | parsed time     | formatted value    | `undefined` |
-| Commit, failed                    | `'keydown'`, `'blur'`  | unchanged value | typed text         | set         |
-| Commit, empty, not `required`     | `'keydown'`, `'blur'`  | `null`          | typed text (empty) | `undefined` |
-| <kbd>Escape</kbd> after a failure | `'keydown'`            | unchanged value | formatted value    | `undefined` |
-| Clear                             | `'click'`, `'keydown'` | `null`          | `undefined`        | `undefined` |
+| Change                            | `type`                 | `value`         | `displayValue`     | `errorType`        |
+| --------------------------------- | ---------------------- | --------------- | ------------------ | ------------------ |
+| Select (click, <kbd>Enter</kbd>)  | `'click'`, `'keydown'` | option time     | option text        | `undefined`        |
+| Commit, valid                     | `'keydown'`, `'blur'`  | parsed time     | formatted value    | `undefined`        |
+| Commit, failed                    | `'keydown'`, `'blur'`  | unchanged value | typed text         | set                |
+| Commit, empty, not `required`     | `'keydown'`, `'blur'`  | `null`          | typed text (empty) | `undefined`        |
+| Commit, empty, `required`         | `'keydown'`, `'blur'`  | `null`          | typed text (empty) | `'required-input'` |
+| <kbd>Escape</kbd> after a failure | `'keydown'`            | unchanged value | formatted value    | `undefined`        |
+| Clear                             | `'click'`, `'keydown'` | `null`          | `undefined`        | `undefined`        |
 
-`errorType` set means a failed commit and `value` is the current, unchanged value. Without `errorType`, `value === null` means the value is now empty, and a `Date` is the current value, whether it came from a select, a commit, or <kbd>Escape</kbd> clearing an error. Consumers can therefore always call `setValue(data.value)` and set the Field validation state from `errorType`. An empty value comes either from the clear button (`type: 'click'` or `'keydown'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check whether `event.target` is the input.
+`errorType` set means a failed commit and `value` is the current, unchanged value, except for `required-input`: emptying the input is deliberate, so it clears the value as the clear button does. Without `errorType`, `value === null` means the value is now empty, and a `Date` is the current value, whether it came from a select, a commit, or <kbd>Escape</kbd> clearing an error. Consumers can therefore always call `setValue(data.value)` and set the Field validation state from `errorType`. An empty value comes either from the clear button (`type: 'click'` or `'keydown'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check whether `event.target` is the input.
 
 ### Slots
 
@@ -207,7 +208,7 @@ Internally `useTimePicker` resolves the time props into options, the value, the 
     aria-autocomplete="list"
     aria-haspopup="listbox"
   />
-  <span role="button" tabindex="0" aria-label="Clear" hidden><!-- clearIcon, consumer provided --></span>
+  <span role="button" aria-label="Clear" aria-hidden="true" hidden><!-- clearIcon, consumer provided --></span>
   <span role="button" tabindex="-1" aria-label="Open"><!-- expandIcon, consumer provided --></span>
   <!-- rendered while open -->
   <div role="listbox" id="listbox-id">
@@ -256,17 +257,17 @@ See the [compat migration guide](../../../react-timepicker-compat/library/docs/M
 
 DOM focus stays on the input; the active option is tracked with `aria-activedescendant`.
 
-| Key                                   | Behavior                                                                                                                    |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Typing                                | Edits the typed text, opens the listbox, filters the options and activates the first match.                                 |
-| <kbd>ArrowDown</kbd>                  | Closed: opens on the selected option, otherwise the first. Open: next option, without wrapping.                             |
-| <kbd>ArrowUp</kbd>                    | Closed: opens on the selected option, otherwise the last. Open: previous option, without wrapping.                          |
-| <kbd>Alt</kbd>+<kbd>ArrowDown</kbd>   | Opens without activating an option.                                                                                         |
-| <kbd>Alt</kbd>+<kbd>ArrowUp</kbd>     | Closes without selecting; the typed text stays.                                                                             |
-| <kbd>Home</kbd> / <kbd>End</kbd>      | Move the caret (native input behavior).                                                                                     |
-| <kbd>Enter</kbd>                      | Selects the active option, otherwise commits the typed text.                                                                |
-| <kbd>Escape</kbd>                     | Closes and cancels the typed text. While closed with nothing to cancel, it propagates, so a surrounding Dialog can close.   |
-| <kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> | Commits and moves focus. The clear button, when shown, is the only other tab stop; the expand icon is not in the tab order. |
+| Key                                   | Behavior                                                                                                                                                          |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Typing                                | Edits the typed text, opens the listbox, filters the options and activates the first match.                                                                       |
+| <kbd>ArrowDown</kbd>                  | Closed: opens on the selected option, otherwise the first. Open: next option, without wrapping.                                                                   |
+| <kbd>ArrowUp</kbd>                    | Closed: opens on the selected option, otherwise the last. Open: previous option, without wrapping.                                                                |
+| <kbd>Alt</kbd>+<kbd>ArrowDown</kbd>   | Opens without activating an option.                                                                                                                               |
+| <kbd>Alt</kbd>+<kbd>ArrowUp</kbd>     | Closes without selecting; the typed text stays.                                                                                                                   |
+| <kbd>Home</kbd> / <kbd>End</kbd>      | Move the caret (native input behavior).                                                                                                                           |
+| <kbd>Enter</kbd>                      | Selects the active option, otherwise commits the typed text. While closed, commits pending text without opening. Never submits an enclosing form, as in Combobox. |
+| <kbd>Escape</kbd>                     | Closes and cancels the typed text. While closed with nothing to cancel, it propagates, so a surrounding Dialog can close.                                         |
+| <kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> | Commits and moves focus. The clear button, when shown, is the only other tab stop; the expand icon is not in the tab order.                                       |
 
 ### Display text
 
@@ -295,7 +296,7 @@ For ranges that cross midnight (`endHour < startHour`), a value on the following
 
 ### Commit outcomes
 
-A commit parses the typed text with `parseTimeStringToDate`. Only a valid result replaces the value; a failed commit keeps it, so invalid text is never committed.
+A commit parses the typed text with `parseTimeStringToDate`. Only a valid result replaces the value; a failed commit of non-empty text keeps it, so invalid text is never committed. Empty text always clears the value.
 
 | Result                        | `value` in data | Value after commit | Display text    | Selected option |
 | ----------------------------- | --------------- | ------------------ | --------------- | --------------- |
@@ -303,7 +304,7 @@ A commit parses the typed text with `parseTimeStringToDate`. Only a valid result
 | Valid, between options        | parsed time     | parsed time        | formatted value | none            |
 | `invalid-input`               | unchanged value | unchanged          | typed text      | unchanged       |
 | `out-of-bounds`               | unchanged value | unchanged          | typed text      | unchanged       |
-| `required-input` (empty text) | unchanged value | unchanged          | empty           | unchanged       |
+| `required-input` (empty text) | `null`          | `null`             | empty           | none            |
 
 The default parser accepts the formatted text in the configured locale, `:` as a separator, and compact 24-hour digits such as `1030` (or `103045` with `showSeconds`) in every hour cycle. A valid commit normalizes the text, so `1030` shows `10:30 AM` in `h12`.
 
@@ -314,7 +315,8 @@ The default parser accepts the formatted text in the configured locale, `:` as a
 
 ## Accessibility
 
-- Follows the ARIA combobox pattern implemented by Combobox (`role="combobox"` input with `aria-activedescendant` pointing into a `role="listbox"` popup), with `aria-autocomplete="list"` and `aria-haspopup="listbox"`. `aria-controls` references the listbox while it is mounted.
+- Follows the ARIA combobox pattern implemented by Combobox (`role="combobox"` input with `aria-activedescendant` pointing into a `role="listbox"` popup), with `aria-autocomplete="list"` and `aria-haspopup="listbox"`. `aria-controls` references the listbox while it is mounted. While no option matches, `aria-expanded` is `false`.
+- Hidden icons carry the `hidden` attribute. Consumer styles that set `display` on the icons must keep `[hidden] { display: none }`; a hidden icon is also `aria-hidden`, and a hidden clear button leaves the tab order.
 - The clear button is a focusable `role="button"` named "Clear" by default. Localize the name through the `clearIcon` slot (`clearIcon={{ 'aria-label': … }}`), and show the same text in a Tooltip for sighted users. The expand icon is a pointer-only affordance (`tabindex="-1"`); the keyboard opens the listbox from the input.
 - Error state: `aria-invalid` and the error message association come from `Field`. Set its `validationState` from `onChange`'s `errorType`, and describe the expected format or range in the message.
 - Result counts: the state exposes `optionCount`. Announce changes through a polite live region when that helps, for example debounced "5 times available".

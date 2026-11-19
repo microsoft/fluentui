@@ -591,7 +591,6 @@ describe('TimePicker', () => {
   });
 
   describe('required', () => {
-    const tenTen = new Date('November 25, 2021 10:10:00');
     const commitEmpty = (props: Partial<TimePickerProps>, wrapInRequiredField = false) => {
       const onChange = jest.fn();
       const timePicker = <TimePicker freeform hourCycle="h23" dateAnchor={dateAnchor} onChange={onChange} {...props} />;
@@ -627,15 +626,28 @@ describe('TimePicker', () => {
       const onChange = commitEmpty({ required: true });
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
+        expect.objectContaining({ value: null, displayValue: '', errorType: 'required-input' }),
       );
+    });
+
+    it('clears the value and hides the clear icon when a required input is emptied', () => {
+      const onChange = jest.fn();
+      const { input, getByRole } = renderTimePicker({ clearable: true, required: true, defaultValue: nine, onChange });
+      userEvent.clear(input);
+      userEvent.click(getByRole('button', { name: 'Next' }));
+      expect(onChange).toHaveBeenLastCalledWith(
+        expect.anything(),
+        expect.objectContaining({ type: 'blur', value: null, errorType: 'required-input' }),
+      );
+      expect(input).toHaveValue('');
+      expect(document.querySelector('[aria-label="Clear"]')).toHaveAttribute('hidden');
     });
 
     it('reports required-input for an empty commit when the Field is required', () => {
       const onChange = commitEmpty({}, true);
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
+        expect.objectContaining({ value: null, displayValue: '', errorType: 'required-input' }),
       );
     });
 
@@ -655,7 +667,7 @@ describe('TimePicker', () => {
       leaveTimePicker();
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
+        expect.objectContaining({ value: null, displayValue: '', errorType: 'required-input' }),
       );
     });
   });
@@ -716,7 +728,8 @@ describe('TimePicker', () => {
     it('renders no options after typing unmatched text', () => {
       const { input, queryAllByRole, getByRole } = renderTimePicker();
       userEvent.type(input, 'abc');
-      expect(input).toHaveAttribute('aria-expanded', 'true');
+      // The empty listbox has nothing to navigate, so it is reported as collapsed.
+      expect(input).toHaveAttribute('aria-expanded', 'false');
       expect(queryAllByRole('option')).toHaveLength(0);
       expect(getByRole('listbox', { hidden: true })).toHaveAttribute('data-empty', '');
 
@@ -886,13 +899,13 @@ describe('TimePicker', () => {
 
     describe('Escape', () => {
       it('restores the committed text while open, without a change', () => {
-        const { input, onChange } = renderTimePicker({ defaultValue: ten });
+        const { container, input, onChange } = renderTimePicker({ defaultValue: ten });
         userEvent.clear(input);
         userEvent.type(input, '9:1');
-        expect(input).toHaveAttribute('aria-expanded', 'true');
+        expect(container.firstElementChild).toHaveAttribute('data-open', '');
 
         userEvent.keyboard('{esc}');
-        expect(input).toHaveAttribute('aria-expanded', 'false');
+        expect(container.firstElementChild).not.toHaveAttribute('data-open');
         expect(input).toHaveValue('10:00 AM');
         leaveTimePicker();
         expect(onChange).not.toHaveBeenCalled();
@@ -1098,6 +1111,19 @@ describe('TimePicker', () => {
         userEvent.type(input, '10:00 AM{enter}');
         expect(expandIcon).not.toBeVisible();
         expect(getByRole('button', { name: 'Clear' })).toBeVisible();
+      });
+
+      it('removes hidden icons from the tab order and the accessibility tree', () => {
+        const { container, input } = renderTimePicker({ clearable: true });
+        const clearIcon = container.querySelector('[aria-label="Clear"]');
+        expect(clearIcon).toHaveAttribute('hidden');
+        expect(clearIcon).toHaveAttribute('aria-hidden', 'true');
+        expect(clearIcon).not.toHaveAttribute('tabindex');
+
+        userEvent.type(input, '10:00 AM{enter}');
+        expect(clearIcon).toHaveAttribute('tabindex', '0');
+        expect(clearIcon).not.toHaveAttribute('aria-hidden');
+        expect(container.querySelector('[aria-label="Open Time"]')).toHaveAttribute('aria-hidden', 'true');
       });
 
       it('keeps the expand icon when the clear icon is removed', () => {

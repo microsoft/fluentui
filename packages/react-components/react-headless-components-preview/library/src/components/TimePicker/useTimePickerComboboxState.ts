@@ -257,6 +257,9 @@ export const useTimePickerComboboxState = (
   const inputMergedRef = useMergedRefs(comboboxState.input.ref, inputRef);
   const clearIconMergedRef = useMergedRefs(comboboxState.clearIcon?.ref, clearIconRef);
   const expandIconFieldLabelProps = useExpandIconFieldLabelProps(comboboxState.expandIcon, fieldContext?.labelId);
+  const clearIconHidden = !showClearIcon || !!comboboxState.clearIcon?.hidden;
+  // The clear icon replaces the expand icon while it is shown.
+  const expandIconHidden = (showClearIcon && !!comboboxState.clearIcon) || !!comboboxState.expandIcon?.hidden;
 
   return {
     ...comboboxState,
@@ -271,6 +274,8 @@ export const useTimePickerComboboxState = (
       ref: inputMergedRef,
       'aria-autocomplete': comboboxState.input['aria-autocomplete'] ?? 'list',
       'aria-haspopup': comboboxState.input['aria-haspopup'] ?? 'listbox',
+      // A listbox with no options has nothing to navigate, so it is reported as collapsed.
+      'aria-expanded': optionCount === 0 ? false : comboboxState.input['aria-expanded'],
       // Reference the listbox for as long as it is mounted, including its exit animation.
       'aria-controls':
         comboboxState.input['aria-controls'] ??
@@ -287,8 +292,10 @@ export const useTimePickerComboboxState = (
           ...comboboxState.expandIcon,
           // A pointer-only affordance: the input is the tab stop, and the keyboard opens the listbox from it.
           tabIndex: -1,
-          // The clear icon replaces the expand icon while it is shown.
-          hidden: (showClearIcon && !!comboboxState.clearIcon) || comboboxState.expandIcon.hidden,
+          hidden: expandIconHidden,
+          // Consumer styles can override `[hidden]`, so a hidden icon is also removed from the accessibility tree.
+          'aria-hidden': expandIconHidden || comboboxState.expandIcon['aria-hidden'],
+          'aria-expanded': optionCount === 0 ? false : comboboxState.expandIcon['aria-expanded'],
           onMouseDown: onExpandIconMouseDown,
           onBlur: mergeCallbacks(onBlur, comboboxState.expandIcon.onBlur),
           ...expandIconFieldLabelProps,
@@ -298,7 +305,11 @@ export const useTimePickerComboboxState = (
       ? {
           ...comboboxState.clearIcon,
           ref: clearIconMergedRef,
-          hidden: !showClearIcon || comboboxState.clearIcon.hidden,
+          hidden: clearIconHidden,
+          // Consumer styles can override `[hidden]`, so a hidden button also leaves the tab order and the
+          // accessibility tree.
+          tabIndex: clearIconHidden ? undefined : comboboxState.clearIcon.tabIndex,
+          'aria-hidden': clearIconHidden || comboboxState.clearIcon['aria-hidden'],
           onKeyDown: mergeCallbacks(comboboxState.clearIcon.onKeyDown, onClearIconKeyDown),
           onBlur: mergeCallbacks(onBlur, comboboxState.clearIcon.onBlur),
         }

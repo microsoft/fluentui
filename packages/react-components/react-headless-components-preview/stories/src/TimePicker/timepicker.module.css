@@ -114,9 +114,19 @@
   color: var(--text-soft);
 }
 
-/* no option matches the typed text: hide the empty popup; a valid typed time can still be committed */
+/* no option matches the typed text: the input reports the listbox as collapsed, so hide it; a valid typed time can still be committed */
 .listbox[data-empty] {
   display: none;
+}
+
+/* visually hidden region for the result count announcement */
+.liveRegion {
+  position: absolute;
+  width: var(--stroke-thin);
+  height: var(--stroke-thin);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* clear icon, only shown while a time is selected */

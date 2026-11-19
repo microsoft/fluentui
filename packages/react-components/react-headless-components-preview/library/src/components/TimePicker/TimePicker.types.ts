@@ -17,7 +17,8 @@ export type {
 export type TimePickerOnChangeData = {
   /**
    * The new value: the selected option's time, the time parsed from the typed text, or null.
-   * When `errorType` is set, the commit failed and this is the current, unchanged value.
+   * When `errorType` is set, the commit failed and this is the current, unchanged value, except after emptying a
+   * required input (`required-input`), where it is null.
    */
   value: Date | null;
 

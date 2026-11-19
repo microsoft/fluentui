@@ -41,6 +41,7 @@ export type TimePickerSelection = TimePickerTimeState & {
   /**
    * Commits a value: updates `value` and the display text and invokes `onChange`.
    * A commit with an `errorType` keeps `value` and the typed text, and reports the error through `onChange`.
+   * An empty commit with an `errorType` (`required-input`) clears `value`.
    */
   commitValue: (event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => void;
 
@@ -201,10 +202,15 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
   const commitValue = useEventCallback((event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => {
     if (data.errorType) {
       // A failed commit keeps `value` and the typed text, so the text can be corrected.
+      // Emptying the input is deliberate, so it still clears the value and reports the error.
       const text = data.displayValue ?? displayValue;
+      const nextValue = text.trim() ? value : null;
+      if (nextValue !== value) {
+        setValue(nextValue);
+      }
       setTypedText(text);
       setFailedCommit({ text, errorType: data.errorType });
-      reportChange(event, { value, displayValue: text, errorType: data.errorType });
+      reportChange(event, { value: nextValue, displayValue: text, errorType: data.errorType });
       return;
     }
 

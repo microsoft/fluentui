@@ -7,7 +7,6 @@ import {
 import type { TimePickerProps } from '@fluentui/react-headless-components-preview/time-picker';
 import { ClockRegular } from '@fluentui/react-icons';
 import styles from './timepicker.module.css';
-import calendarStyles from '../Calendar/calendar.module.css';
 
 /**
  * A TimePicker composed from its hooks, with a polite status message for the number of suggested times.
@@ -33,7 +32,7 @@ const TimePickerWithResultCount = React.forwardRef<HTMLInputElement, TimePickerP
   return (
     <>
       {renderTimePicker(state, contextValues)}
-      <span role="status" className={calendarStyles.liveRegion}>
+      <span role="status" className={styles.liveRegion}>
         {message}
       </span>
     </>
