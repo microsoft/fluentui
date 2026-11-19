@@ -15,11 +15,17 @@ The code snippets can be used as usage guide for all the props and chart variati
 with short-circuit semantics. Skipped branches are parsed but not evaluated.
 If a filter expression throws for a row, that row is excluded and a warning is logged.
 
-For nonaggregate vertical bar charts, successfully filtering populated, valid encoded
-data down to zero rows renders the native no-data display. This also preserves healthy
+For nonaggregate vertical bar charts without `timeUnit` on either encoded axis,
+successfully filtering populated, valid encoded data down to zero rows renders the native no-data display. This also preserves healthy
 sibling charts in an `hconcat` or `vconcat` spec. Encoded fields are validated against
 the rows entering the exhausting filter, including fields produced by earlier transforms.
 Fields produced only by later transforms cannot establish validity for this empty view.
+Empty-view validation is read-only: discarded rows do not change the declared field
+types or subsequent chart routing. Views requiring temporal or aggregate normalization
+remain outside this filter-exhaustion exception and retain their existing empty-data validation.
+
+Stacked bar and line-overlay transforms run once per rendered data series. Conditional
+color and temporal preparation apply to the rows supplying that series, not a discarded metadata pass.
 
 Empty source data, invalid encoded fields, and all-excluded results involving filter
 evaluation errors still follow the existing validation/error path. Other chart types

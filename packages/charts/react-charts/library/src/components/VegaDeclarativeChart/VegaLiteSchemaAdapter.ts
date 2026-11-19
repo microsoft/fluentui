@@ -1195,13 +1195,22 @@ function initializeTransformContext(spec: VegaLiteSpec) {
     throw new Error('VegaLiteSchemaAdapter: No valid unit specs found in specification');
   }
 
-  const primarySpec = unitSpecs[0];
+  return {
+    unitSpecs,
+    ...initializeUnitTransformContext(spec, unitSpecs[0]),
+  };
+}
+
+function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLiteUnitSpec) {
+  const encoding = primarySpec.encoding || {};
+  // Saved filter rows cannot be validated against later temporal output types or consumed aggregates.
+  const canValidateEmptyFilterInput =
+    !encoding.x?.timeUnit && !encoding.y?.timeUnit && !encoding.x?.aggregate && !encoding.y?.aggregate;
   const rawDataValues = extractDataValues(primarySpec.data);
   const filterState: FilterState = { hasEvaluationError: false };
   // Apply any transforms from both top-level spec and primary unit spec
   let dataValues = applyTransforms(rawDataValues, spec.transform, filterState);
   dataValues = applyTransforms(dataValues, primarySpec.transform, filterState);
-  const encoding = primarySpec.encoding || {};
 
   // Handle conditional color encoding — evaluate test expressions and materialize color values
   const colorEnc = encoding.color as Record<string, unknown> | undefined;
@@ -1290,10 +1299,10 @@ function initializeTransformContext(spec: VegaLiteSpec) {
   const markProps = getMarkProperties(primarySpec.mark);
 
   return {
-    unitSpecs,
     primarySpec,
     dataValues,
     filterState,
+    canValidateEmptyFilterInput,
     encoding,
     markProps,
   };
@@ -2176,7 +2185,8 @@ export function transformVegaLiteToVerticalBarChartProps(
   isDarkTheme?: boolean,
 ): VerticalBarChartProps {
   // Initialize transformation context
-  const { dataValues, filterState, encoding, markProps } = initializeTransformContext(spec);
+  const { dataValues, filterState, canValidateEmptyFilterInput, encoding, markProps } =
+    initializeTransformContext(spec);
 
   // Extract field names and aggregates
   const { xField, yField, colorField, yAggregate } = extractEncodingFields(encoding);
@@ -2199,7 +2209,7 @@ export function transformVegaLiteToVerticalBarChartProps(
   if (!isAggregate && xField && yField) {
     // Validate the populated filter input before accepting a successful no-match as an empty view.
     const validationData =
-      dataValues.length === 0 && !filterState.hasEvaluationError
+      dataValues.length === 0 && canValidateEmptyFilterInput && !filterState.hasEvaluationError
         ? filterState.inputBeforeEmptyFilter ?? dataValues
         : dataValues;
     validateXYEncodings(
@@ -2209,7 +2219,7 @@ export function transformVegaLiteToVerticalBarChartProps(
       encoding.x?.type,
       encoding.y?.type,
       'VerticalBarChart',
-      encoding,
+      dataValues.length > 0 ? encoding : undefined,
     );
   }
 
@@ -2396,8 +2406,18 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
 ): VerticalStackedBarChartProps {
-  // Initialize transformation context (skip warnings as we handle layered spec differently)
-  const { unitSpecs } = initializeTransformContext(spec);
+  // Temporal preparation is local to each series, even when layers inherit the same axis objects.
+  const unitSpecs = normalizeSpec(spec).map(unitSpec => ({
+    ...unitSpec,
+    encoding: {
+      ...unitSpec.encoding,
+      x: unitSpec.encoding?.x ? { ...unitSpec.encoding.x } : undefined,
+      y: unitSpec.encoding?.y ? { ...unitSpec.encoding.y } : undefined,
+    },
+  }));
+  if (unitSpecs.length === 0) {
+    throw new Error('VegaLiteSchemaAdapter: No valid unit specs found in specification');
+  }
 
   // Separate bar, line, and rule specs from layered specifications
   const barSpecs = unitSpecs.filter(s => getMarkType(s.mark) === 'bar');
@@ -2411,12 +2431,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Use bar specs if available, otherwise fall back to first unit spec
   const primarySpec = barSpecs.length > 0 ? barSpecs[0] : unitSpecs[0];
-  const rawDataValues = extractDataValues(primarySpec.data);
-  // Apply transforms from both top-level spec and primary spec
-  let dataValues = applyTransforms(rawDataValues, spec.transform);
-  dataValues = applyTransforms(dataValues, primarySpec.transform);
-  const encoding = primarySpec.encoding || {};
-  const markProps = getMarkProperties(primarySpec.mark);
+  const { dataValues, encoding, markProps } = initializeUnitTransformContext(spec, primarySpec);
 
   // Extract field names and aggregates
   const { xField, yField, colorField, yAggregate } = extractEncodingFields(encoding);
@@ -2443,8 +2458,10 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Group data by x value, then by color (stack)
   // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
-  const colorIndex = new Map<string, number>();
-  let currentColorIndex = 0;
+  const colorIndex = new Map<string, number>(
+    encoding.color?.scale?.domain?.map<[string, number]>((value, index) => [String(value), index]),
+  );
+  let currentColorIndex = colorIndex.size;
 
   if (aggregatedData) {
     // Use aggregated data
@@ -2570,12 +2587,11 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Process line data from additional layers (if any)
   lineSpecs.forEach((lineSpec, lineIndex) => {
-    let lineDataValues = extractDataValues(lineSpec.data);
-    // Apply transforms from both top-level spec and line spec
-    lineDataValues = applyTransforms(lineDataValues, spec.transform);
-    lineDataValues = applyTransforms(lineDataValues, lineSpec.transform);
-    const lineEncoding = lineSpec.encoding || {};
-    const lineMarkProps = getMarkProperties(lineSpec.mark);
+    const {
+      dataValues: lineDataValues,
+      encoding: lineEncoding,
+      markProps: lineMarkProps,
+    } = initializeUnitTransformContext(spec, lineSpec);
 
     const lineXField = lineEncoding.x?.field;
     const lineYField = lineEncoding.y?.field;
