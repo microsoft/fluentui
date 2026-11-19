@@ -15,7 +15,6 @@ import type {
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useFluentProviderCSSModules } from './useFluentProviderCSSModules';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
@@ -66,7 +65,6 @@ export const useFluentProvider_unstable = (
   ) as CustomStyleHooksContextValue;
 
   const renderer = useRenderer_unstable();
-  useFluentProviderCSSModules(renderer);
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
