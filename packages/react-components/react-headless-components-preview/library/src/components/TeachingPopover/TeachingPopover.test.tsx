@@ -222,6 +222,44 @@ describe('TeachingPopover', () => {
   );
 
   it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
+    'autofocuses on parent-controlled open transitions, including a late dismiss-button mount',
+    async Component => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(false);
+        const [showDismiss, setShowDismiss] = React.useState(false);
+
+        return (
+          <>
+            <button onClick={() => setOpen(true)}>Open externally</button>
+            <button onClick={() => setOpen(false)}>Close externally</button>
+            <TeachingPopover open={open}>
+              <TeachingPopoverTrigger>
+                <button>Trigger</button>
+              </TeachingPopoverTrigger>
+              <TeachingPopoverSurface as="div">
+                {showDismiss ? (
+                  <Component dismissButton={{}}>Content</Component>
+                ) : (
+                  <button onClick={() => setShowDismiss(true)}>Mount dismiss</button>
+                )}
+              </TeachingPopoverSurface>
+            </TeachingPopover>
+          </>
+        );
+      };
+
+      const { getByRole, getByText } = render(<Example />);
+      userEvent.click(getByText('Open externally'));
+      userEvent.click(getByText('Mount dismiss'));
+      await waitFor(() => expect(getByRole('button', { name: 'dismiss', hidden: true })).toHaveFocus());
+
+      userEvent.click(getByText('Close externally'));
+      userEvent.click(getByText('Open externally'));
+      await waitFor(() => expect(getByRole('button', { name: 'dismiss', hidden: true })).toHaveFocus());
+    },
+  );
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
     'preserves explicit dismiss-button autofocus and restores trigger focus on dismissal',
     async Component => {
       const { getByRole } = render(

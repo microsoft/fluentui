@@ -11,7 +11,7 @@ describe('SpinButton', () => {
     requiredProps: { 'aria-label': 'Value' },
   });
 
-  it('renders a default state', () => {
+  it('renders a default state without forcing a mobile input mode', () => {
     const { getByRole, getByLabelText } = render(<SpinButton defaultValue={1} min={0} max={10} />);
     const spinbutton = getByRole('spinbutton');
 

@@ -30,6 +30,14 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
   const [titleId, setTitleId] = React.useState('');
   const [dismissButtonAutoFocus, setDismissButtonAutoFocus] = React.useState(open);
+  const [previousOpen, setPreviousOpen] = React.useState(open);
+
+  if (previousOpen !== open) {
+    setPreviousOpen(open);
+    if (dismissButtonAutoFocus !== open) {
+      setDismissButtonAutoFocus(open);
+    }
+  }
 
   const onOpenChange = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });

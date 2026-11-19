@@ -15,23 +15,27 @@ export const useTeachingPopoverHeader = (
   const dismissButtonAutoFocus = usePopoverContext(context => context.dismissButtonAutoFocus);
   const setDismissButtonAutoFocus = usePopoverContext(context => context.setDismissButtonAutoFocus);
   const setOpen = usePopoverContext(context => context.setOpen);
-  const autoFocus = open && dismissButtonAutoFocus;
+  const dismissButtonElementRef = React.useRef<HTMLButtonElement>(null);
 
   // The base hook closes through @fluentui/react-popover's context; headless dismisses through its own Popover.
   const dismissButton = slot.optional(props.dismissButton, {
     renderByDefault: true,
-    defaultProps: { 'aria-label': 'dismiss', autoFocus, type: 'button' },
+    defaultProps: { 'aria-label': 'dismiss', type: 'button' },
     elementType: 'button',
   });
-  const markDismissButtonMounted = React.useCallback(
-    (element: HTMLButtonElement | null) => {
-      if (element && autoFocus) {
+  const shouldAutoFocus = open && (dismissButton?.autoFocus ?? dismissButtonAutoFocus);
+  const dismissButtonRef = useMergedRefs(dismissButton?.ref, dismissButtonElementRef);
+
+  React.useEffect(() => {
+    const element = dismissButtonElementRef.current;
+    if (shouldAutoFocus && element && !element.disabled) {
+      element.focus();
+      if (dismissButtonAutoFocus) {
         setDismissButtonAutoFocus(false);
       }
-    },
-    [autoFocus, setDismissButtonAutoFocus],
-  );
-  const dismissButtonRef = useMergedRefs(dismissButton?.ref, markDismissButtonMounted);
+    }
+  }, [dismissButtonAutoFocus, setDismissButtonAutoFocus, shouldAutoFocus]);
+
   const onDismissButtonClick = dismissButton?.onClick;
   const handleDismissButtonClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     onDismissButtonClick?.(event);
