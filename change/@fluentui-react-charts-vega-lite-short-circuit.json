@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Restore short-circuit semantics in Vega-Lite expressions and warn and exclude rows when filter evaluation fails. Removing all rows retains mark-specific empty-data behavior: nonaggregate bar charts throw synchronously during rendering, while scatter charts support a no-data display. Previously rendered specs can now throw, including an entire concatenated chart when a child fails. Callers needing containment must handle render errors externally. Filters remain display-only, not authorization controls.",
+  "comment": "fix: Restore short-circuit semantics in Vega-Lite expressions and warn and exclude rows when filter evaluation fails. Nonaggregate vertical bar charts now render the native no-data display when successful filtering exhausts populated data whose encoded fields validate before the exhausting filter, preserving healthy concat siblings. Empty source data, invalid encoded fields, and filter-error depletion retain strict validation and can throw during rendering. Callers needing containment of invalid child specs must handle render errors externally. Other marks retain their existing empty-data behavior. Filters remain display-only, not authorization controls.",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com",
   "dependentChangeType": "patch"

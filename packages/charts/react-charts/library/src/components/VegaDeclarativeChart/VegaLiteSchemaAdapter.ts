@@ -207,17 +207,24 @@ function applyFoldTransform(
   return result;
 }
 
+interface FilterState {
+  hasEvaluationError: boolean;
+  inputBeforeEmptyFilter?: Array<Record<string, unknown>>;
+}
+
 /**
  * Applies transforms from a Vega-Lite spec to data
  * Currently supports: fold transform
  *
  * @param data - Array of data records
  * @param transforms - Array of Vega-Lite transform specifications
+ * @param filterState - Optional filter provenance for mark-specific empty-data validation
  * @returns Transformed data array
  */
 function applyTransforms(
   data: Array<Record<string, unknown>>,
   transforms: Array<Record<string, unknown>> | undefined,
+  filterState?: FilterState,
 ): Array<Record<string, unknown>> {
   if (!transforms || transforms.length === 0) {
     return data;
@@ -237,15 +244,22 @@ function applyTransforms(
     if ('filter' in transform) {
       const filterExpr = transform.filter;
       if (typeof filterExpr === 'string') {
+        const filterInput = result;
         result = result.filter(row => {
           try {
             return safeEvaluateExpression(filterExpr, row);
           } catch (error) {
+            if (filterState) {
+              filterState.hasEvaluationError = true;
+            }
             // eslint-disable-next-line no-console -- Report excluded rows instead of silently hiding evaluation errors.
             console.warn('Vega-Lite filter evaluation failed; excluding row.', error);
             return false;
           }
         });
+        if (filterState && !filterState.hasEvaluationError && filterInput.length > 0 && result.length === 0) {
+          filterState.inputBeforeEmptyFilter = filterInput;
+        }
       }
     }
 
@@ -571,6 +585,9 @@ function applyTransforms(
           return row;
         });
       }
+    }
+    if (filterState && result.length > 0) {
+      filterState.inputBeforeEmptyFilter = undefined;
     }
   }
 
@@ -1180,9 +1197,10 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
   const primarySpec = unitSpecs[0];
   const rawDataValues = extractDataValues(primarySpec.data);
+  const filterState: FilterState = { hasEvaluationError: false };
   // Apply any transforms from both top-level spec and primary unit spec
-  let dataValues = applyTransforms(rawDataValues, spec.transform);
-  dataValues = applyTransforms(dataValues, primarySpec.transform);
+  let dataValues = applyTransforms(rawDataValues, spec.transform, filterState);
+  dataValues = applyTransforms(dataValues, primarySpec.transform, filterState);
   const encoding = primarySpec.encoding || {};
 
   // Handle conditional color encoding — evaluate test expressions and materialize color values
@@ -1275,6 +1293,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
     unitSpecs,
     primarySpec,
     dataValues,
+    filterState,
     encoding,
     markProps,
   };
@@ -2157,7 +2176,7 @@ export function transformVegaLiteToVerticalBarChartProps(
   isDarkTheme?: boolean,
 ): VerticalBarChartProps {
   // Initialize transformation context
-  const { dataValues, encoding, markProps } = initializeTransformContext(spec);
+  const { dataValues, filterState, encoding, markProps } = initializeTransformContext(spec);
 
   // Extract field names and aggregates
   const { xField, yField, colorField, yAggregate } = extractEncodingFields(encoding);
@@ -2178,7 +2197,20 @@ export function transformVegaLiteToVerticalBarChartProps(
 
   // Validate data and encodings (skip for aggregate charts)
   if (!isAggregate && xField && yField) {
-    validateXYEncodings(dataValues, xField, yField, encoding.x?.type, encoding.y?.type, 'VerticalBarChart', encoding);
+    // Validate the populated filter input before accepting a successful no-match as an empty view.
+    const validationData =
+      dataValues.length === 0 && !filterState.hasEvaluationError
+        ? filterState.inputBeforeEmptyFilter ?? dataValues
+        : dataValues;
+    validateXYEncodings(
+      validationData,
+      xField,
+      yField,
+      encoding.x?.type,
+      encoding.y?.type,
+      'VerticalBarChart',
+      encoding,
+    );
   }
 
   // Extract color configuration

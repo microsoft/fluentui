@@ -15,18 +15,20 @@ The code snippets can be used as usage guide for all the props and chart variati
 with short-circuit semantics. Skipped branches are parsed but not evaluated.
 If a filter expression throws for a row, that row is excluded and a warning is logged.
 
-Excluding every row, whether because the filter returns a falsy value or evaluation
-fails, leaves the existing mark-specific empty-data behavior unchanged. For example,
-a nonaggregate bar chart throws on empty data, while a scatter chart supports a
-no-data display. With short-circuit evaluation and exclusion of failed rows, a spec
-that previously rendered can now throw synchronously during `VegaDeclarativeChart`
-rendering rather than only log a warning.
+For nonaggregate vertical bar charts, successfully filtering populated, valid encoded
+data down to zero rows renders the native no-data display. This also preserves healthy
+sibling charts in an `hconcat` or `vconcat` spec. Encoded fields are validated against
+the rows entering the exhausting filter, including fields produced by earlier transforms.
+Fields produced only by later transforms cannot establish validity for this empty view.
 
-An error in a child of an `hconcat` or `vconcat` spec can abort the entire containing
-chart render; the component does not isolate child failures. Callers needing error
+Empty source data, invalid encoded fields, and all-excluded results involving filter
+evaluation errors still follow the existing validation/error path. Other chart types
+retain their mark-specific empty-data behavior; for example, scatter supports a no-data
+display. An error in a child of an `hconcat` or `vconcat` spec can still abort the entire
+containing chart render; the component does not isolate invalid child specs. Callers needing error
 containment must handle render errors externally, for example with a React error
-boundary around the chart for client-side rendering. No uniform no-data fallback
-or per-child error boundary is provided.
+boundary around the chart for client-side rendering. No uniform no-data fallback for
+invalid input or per-child error boundary is provided.
 
 Filters control chart display only; validate input data separately rather than relying
 on chart filters for authorization.

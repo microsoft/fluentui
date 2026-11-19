@@ -811,6 +811,110 @@ describe('VegaLiteSchemaAdapter', () => {
     });
   });
 
+  describe('filter-exhausted vertical bar data', () => {
+    function filteredBarSpec(
+      values: Array<Record<string, unknown>>,
+      transform: VegaLiteSpec['transform'],
+    ): VegaLiteSpec {
+      return {
+        mark: 'bar',
+        data: { values },
+        transform,
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+    }
+
+    it.each(['false', 'datum.approved && +datum.invalid', 'datum.approved ? +datum.invalid : false'])(
+      'returns empty props for successful no-match filtering: %s',
+      filter => {
+        const spec = filteredBarSpec(
+          [{ category: 'A', value: 10, approved: false, invalid: { toString: 0 } }],
+          [{ filter }],
+        );
+
+        expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+      },
+    );
+
+    it('validates fields calculated before the exhausting filter', () => {
+      const spec = filteredBarSpec(
+        [{ category: 'A', amount: 5 }],
+        [{ calculate: 'datum.amount * 2', as: 'value' }, { filter: 'false' }],
+      );
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it('tracks a successful filter exhaustion in a layer after shared transforms', () => {
+      const spec: VegaLiteSpec = {
+        data: { values: [{ category: 'A', amount: 5 }] },
+        transform: [{ calculate: 'datum.amount * 2', as: 'value' }],
+        layer: [
+          {
+            mark: 'bar',
+            transform: [{ filter: 'false' }],
+            encoding: {
+              x: { field: 'category', type: 'nominal' },
+              y: { field: 'value', type: 'quantitative' },
+            },
+          },
+        ],
+      };
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it('does not assume fields calculated only after the exhausting filter are valid', () => {
+      const spec = filteredBarSpec(
+        [{ category: 'A', amount: 5 }],
+        [{ filter: 'false' }, { calculate: 'datum.amount * 2', as: 'value' }],
+      );
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        "No valid values found for field 'value' in VerticalBarChart",
+      );
+    });
+
+    it('preserves validation for nested encoded values before filtering', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: [10] }], [{ filter: 'false' }]);
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        "Nested arrays not supported for field 'value'",
+      );
+    });
+
+    it('does not classify a later empty fold as successful filter exhaustion', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: 10 }], [{ filter: 'true' }, { fold: ['missing'] }]);
+
+      expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+        'Empty data array for VerticalBarChart',
+      );
+    });
+
+    it('does not hide earlier filter evaluation failures behind a later no-match filter', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const spec = filteredBarSpec(
+          [
+            { category: 'A', value: 10, operand: { toString: 0 } },
+            { category: 'B', value: 20, operand: 1 },
+          ],
+          [{ filter: '+datum.operand' }, { filter: 'false' }],
+        );
+
+        expect(() => transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap })).toThrow(
+          'Empty data array for VerticalBarChart',
+        );
+        expect(warn).toHaveBeenCalledTimes(1);
+      } finally {
+        warn.mockRestore();
+      }
+    });
+  });
+
   describe('Data Validation', () => {
     describe('Empty Data Validation', () => {
       test('Should throw error for empty data array in LineChart', () => {
