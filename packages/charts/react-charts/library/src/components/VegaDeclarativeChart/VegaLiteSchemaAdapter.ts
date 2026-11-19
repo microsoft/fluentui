@@ -47,7 +47,15 @@ import type { TitleStyles } from '../../utilities/Common.styles';
 import { getVegaColorFromMap, getVegaColor, getSequentialSchemeColors } from './VegaLiteColorAdapter';
 import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import type { ColorMapRef } from './VegaLiteColorAdapter';
-import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
+import {
+  bin as d3Bin,
+  extent as d3Extent,
+  sum as d3Sum,
+  min as d3Min,
+  max as d3Max,
+  mean as d3Mean,
+  median as d3Median,
+} from 'd3-array';
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
@@ -322,6 +330,9 @@ function applyTransforms(
             case 'mean':
             case 'average':
               baseRow[spec.as] = d3Mean(values) ?? 0;
+              break;
+            case 'median':
+              baseRow[spec.as] = d3Median(values) ?? 0;
               break;
             case 'min':
               baseRow[spec.as] = d3Min(values) ?? 0;
@@ -1234,8 +1245,8 @@ function initializeTransformContext(spec: VegaLiteSpec) {
   };
 }
 
-function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLiteUnitSpec) {
-  const encoding = primarySpec.encoding || {};
+function prepareUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLiteUnitSpec) {
+  const encoding = { ...primarySpec.encoding };
   const rawDataValues = extractDataValues(primarySpec.data);
   const filterState = createFilterState(encoding);
   // Apply any transforms from both top-level spec and primary unit spec
@@ -1249,17 +1260,19 @@ function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLit
     const elseValue = (colorEnc.value as string) || '#999';
     const colorField = '__conditional_color__';
 
-    dataValues.forEach(row => {
+    dataValues = dataValues.map(row => {
+      const colorRow = { ...row };
       try {
         const testResult = safeEvaluateExpression(condition.test, row);
-        row[colorField] = testResult ? condition.value : elseValue;
+        colorRow[colorField] = testResult ? condition.value : elseValue;
       } catch {
-        row[colorField] = elseValue;
+        colorRow[colorField] = elseValue;
       }
+      return colorRow;
     });
 
     // Replace conditional color with a field-based color encoding using the materialized values
-    (encoding as Record<string, unknown>).color = {
+    encoding.color = {
       field: colorField,
       type: 'nominal',
       scale: { domain: [condition.value, elseValue], range: [condition.value, elseValue] },
@@ -1267,73 +1280,87 @@ function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLit
     };
   }
 
-  // Handle timeUnit on x/y encodings — aggregate data by time unit
-  if (encoding.x?.timeUnit && encoding.x?.field) {
-    const field = encoding.x.field;
-    const unit = encoding.x.timeUnit as string;
-    const yField = encoding.y?.field;
-    const yAgg = encoding.y?.aggregate || (yField ? 'mean' : 'count');
-
-    const groups = new Map<string, Array<Record<string, unknown>>>();
-    dataValues.forEach(row => {
-      const dateVal = new Date(getOwnDataValue(row, field) as string | number);
-      if (isNaN(dateVal.getTime())) {
-        return;
-      }
-      let key: string;
-      switch (unit) {
-        case 'year':
-          key = String(dateVal.getFullYear());
-          break;
-        case 'quarter':
-          key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`;
-          break;
-        case 'month':
-          key = dateVal.toLocaleString('en', { month: 'short' });
-          break;
-        case 'day':
-          key = String(dateVal.getDate());
-          break;
-        case 'hours':
-          key = String(dateVal.getHours());
-          break;
-        default:
-          key = String(dateVal);
-      }
-      if (!groups.has(key)) {
-        groups.set(key, []);
-      }
-      groups.get(key)!.push(row);
-    });
-
-    dataValues = Array.from(groups.entries()).map(([key, rows]) => {
-      const result: Record<string, unknown> = Object.create(null);
-      result[field] = key;
-      if (yField && yAgg !== 'count') {
-        const vals = rows.map(r => Number(getOwnDataValue(r, yField))).filter(v => !isNaN(v));
-        result[yField] = yAgg === 'sum' ? d3Sum(vals) : d3Mean(vals) ?? 0;
-      } else {
-        result[yField || '__count'] = rows.length;
-      }
-      return { ...result };
-    });
-
-    // Switch x from temporal to ordinal since we've aggregated
-    encoding.x.type = 'ordinal';
-    delete encoding.x.timeUnit;
-    if (encoding.y?.aggregate) {
-      delete encoding.y.aggregate;
-    }
-  }
-
-  const markProps = getMarkProperties(primarySpec.mark);
-
   return {
     primarySpec,
     dataValues,
     filterState,
     encoding,
-    markProps,
+    markProps: getMarkProperties(primarySpec.mark),
+  };
+}
+
+function projectTimeUnitData(
+  dataValues: Array<Record<string, unknown>>,
+  field: string,
+  unit: string,
+): Array<Record<string, unknown>> {
+  const result: Array<Record<string, unknown>> = [];
+  dataValues.forEach(row => {
+    const dateVal = new Date(getOwnDataValue(row, field) as string | number);
+    if (isNaN(dateVal.getTime())) {
+      return;
+    }
+    let key: string;
+    switch (unit) {
+      case 'year':
+        key = String(dateVal.getFullYear());
+        break;
+      case 'quarter':
+        key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`;
+        break;
+      case 'month':
+        key = dateVal.toLocaleString('en', { month: 'short' });
+        break;
+      case 'day':
+        key = String(dateVal.getDate());
+        break;
+      case 'hours':
+        key = String(dateVal.getHours());
+        break;
+      default:
+        key = String(dateVal);
+    }
+    result.push({ ...row, [field]: key });
+  });
+  return result;
+}
+
+function validateEncodingAggregate(aggregate: string, chartType: string): void {
+  if (!['count', 'sum', 'mean', 'average', 'median', 'min', 'max'].includes(aggregate)) {
+    throw new Error(`VegaLiteSchemaAdapter: Unsupported ${chartType} aggregate: ${aggregate}`);
+  }
+}
+
+function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLiteUnitSpec) {
+  const context = prepareUnitTransformContext(spec, primarySpec);
+  const { encoding } = context;
+  let dataValues = context.dataValues;
+
+  if (encoding.x?.timeUnit && encoding.x?.field) {
+    const field = encoding.x.field;
+    const yField = encoding.y?.field;
+    const yAgg = encoding.y?.aggregate || (yField ? 'mean' : 'count');
+    validateEncodingAggregate(yAgg, 'temporal chart');
+
+    dataValues = applyTransforms(projectTimeUnitData(dataValues, field, encoding.x.timeUnit), [
+      {
+        aggregate: [{ op: yAgg, field: yAgg === 'count' ? undefined : yField, as: yField || '__count' }],
+        groupby: [field],
+      },
+    ]);
+
+    // Only scratch axes consume temporal/aggregate declarations; caller-owned axes remain reusable.
+    encoding.x = { ...encoding.x, type: 'ordinal' };
+    delete encoding.x.timeUnit;
+    if (encoding.y?.aggregate) {
+      encoding.y = { ...encoding.y };
+      delete encoding.y.aggregate;
+    }
+  }
+
+  return {
+    ...context,
+    dataValues,
   };
 }
 
@@ -2422,15 +2449,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
 ): VerticalStackedBarChartProps {
-  // Temporal preparation is local to each series, even when layers inherit the same axis objects.
-  const unitSpecs = normalizeSpec(spec).map(unitSpec => ({
-    ...unitSpec,
-    encoding: {
-      ...unitSpec.encoding,
-      x: unitSpec.encoding?.x ? { ...unitSpec.encoding.x } : undefined,
-      y: unitSpec.encoding?.y ? { ...unitSpec.encoding.y } : undefined,
-    },
-  }));
+  const unitSpecs = normalizeSpec(spec);
   if (unitSpecs.length === 0) {
     throw new Error('VegaLiteSchemaAdapter: No valid unit specs found in specification');
   }
@@ -2474,10 +2493,12 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Group data by x value, then by color (stack)
   // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
-  const colorIndex = new Map<string, number>(
-    encoding.color?.scale?.domain?.map<[string, number]>((value, index) => [String(value), index]),
+  const colorIndex = new Map<string, number>();
+  let currentColorIndex = 0;
+  const barColorDomain = encoding.color?.scale?.domain;
+  const barColorIndex = new Map<string, number>(
+    Array.isArray(barColorDomain) ? barColorDomain.map((value, index) => [String(value), index]) : undefined,
   );
-  let currentColorIndex = colorIndex.size;
 
   if (aggregatedData) {
     // Use aggregated data
@@ -2496,10 +2517,13 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       if (!colorIndex.has(legend)) {
         colorIndex.set(legend, currentColorIndex++);
       }
+      if (!barColorIndex.has(legend)) {
+        barColorIndex.set(legend, barColorIndex.size);
+      }
 
       const color = resolveColor(
         legend,
-        colorIndex.get(legend)!,
+        barColorIndex.get(legend)!,
         colorValue as string | undefined,
         markProps.color,
         colorMap,
@@ -2533,9 +2557,12 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
           if (!colorIndex.has(legend)) {
             colorIndex.set(legend, currentColorIndex++);
           }
+          if (!barColorIndex.has(legend)) {
+            barColorIndex.set(legend, barColorIndex.size);
+          }
           const color = resolveColor(
             legend,
-            colorIndex.get(legend)!,
+            barColorIndex.get(legend)!,
             colorValue as string | undefined,
             markProps.color,
             colorMap,
@@ -2577,11 +2604,14 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         if (!colorIndex.has(legend)) {
           colorIndex.set(legend, currentColorIndex++);
         }
+        if (!barColorIndex.has(legend)) {
+          barColorIndex.set(legend, barColorIndex.size);
+        }
 
         // Use static color if provided, otherwise use color scheme/scale
         const color = resolveColor(
           legend,
-          colorIndex.get(legend)!,
+          barColorIndex.get(legend)!,
           colorValue as string | undefined,
           markProps.color,
           colorMap,
@@ -2604,10 +2634,10 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   // Process line data from additional layers (if any)
   lineSpecs.forEach((lineSpec, lineIndex) => {
     const {
-      dataValues: lineDataValues,
+      dataValues: transformedLineData,
       encoding: lineEncoding,
       markProps: lineMarkProps,
-    } = initializeUnitTransformContext(spec, lineSpec);
+    } = prepareUnitTransformContext(spec, lineSpec);
 
     const lineXField = lineEncoding.x?.field;
     const lineYField = lineEncoding.y?.field;
@@ -2617,6 +2647,26 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       return; // Skip if required fields are missing
     }
 
+    let lineDataValues = transformedLineData;
+    if (lineEncoding.x?.timeUnit) {
+      lineDataValues = projectTimeUnitData(lineDataValues, lineXField, lineEncoding.x.timeUnit);
+    }
+    const lineAggregate = lineEncoding.y?.aggregate;
+    if (lineAggregate) {
+      validateEncodingAggregate(lineAggregate, 'line overlay');
+      lineDataValues = applyTransforms(lineDataValues, [
+        {
+          aggregate: [{ op: lineAggregate, field: lineAggregate === 'count' ? undefined : lineYField, as: lineYField }],
+          groupby: lineColorField ? [lineXField, lineColorField] : [lineXField],
+        },
+      ]);
+    }
+
+    const { colorScheme: lineColorScheme, colorRange: lineColorRange } = extractColorConfig(lineEncoding);
+    const lineColorDomain = lineEncoding.color?.scale?.domain;
+    const lineColorIndex = Array.isArray(lineColorDomain)
+      ? new Map(lineColorDomain.map((value, index) => [String(value), index]))
+      : undefined;
     const lineLegendBase = lineColorField ? 'Line' : `Line ${lineIndex + 1}`;
 
     lineDataValues.forEach(row => {
@@ -2644,22 +2694,19 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       if (!colorIndex.has(lineLegend)) {
         colorIndex.set(lineLegend, currentColorIndex++);
       }
-      let lineColor: string;
-      if (lineMarkProps.color) {
-        lineColor = lineMarkProps.color;
-      } else {
-        // Use lineLegend for consistent color assignment
-        lineColor = resolveColor(
-          lineLegend,
-          colorIndex.get(lineLegend)!,
-          undefined,
-          undefined,
-          colorMap,
-          undefined,
-          undefined,
-          isDarkTheme,
-        );
+      if (lineColorIndex && !lineColorIndex.has(lineLegend)) {
+        lineColorIndex.set(lineLegend, lineColorIndex.size);
       }
+      const lineColor = resolveColor(
+        lineLegend,
+        lineColorIndex?.get(lineLegend) ?? colorIndex.get(lineLegend)!,
+        lineEncoding.color?.value,
+        lineMarkProps.color,
+        colorMap,
+        lineColorScheme,
+        lineColorRange,
+        isDarkTheme,
+      );
 
       // Determine if this line should use secondary Y-axis
       // Check if spec has independent Y scales AND line uses different Y field than bars

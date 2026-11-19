@@ -26,6 +26,18 @@ remain outside this filter-exhaustion exception and retain their existing empty-
 
 Stacked bar and line-overlay transforms run once per rendered data series. Conditional
 color and temporal preparation apply to the rows supplying that series, not a discarded metadata pass.
+Temporal normalization consumes only per-render copies of axis declarations, so successful
+or failed preparation does not remove caller-owned `timeUnit` or `aggregate` settings on reuse.
+
+For line/point overlays, `timeUnit` projects x coordinates without implicitly reducing y
+observations. Only an explicit `y.aggregate` reduces observations, grouped by x and color series.
+Supported reducers are `count`, `sum`, `mean`, `average`, `median`, `min`, and `max`;
+temporal bar preparation uses the same declared operations while retaining its default
+mean/count policy when no aggregate is declared. Unsupported temporal or overlay reducers
+throw rather than silently selecting another operation.
+Explicit array color domains reserve positions within their own scale and pair with
+range colors by domain position. Unused bar-domain entries do not reserve line fallback
+palette slots. Other domain forms retain the adapter's existing color fallback behavior.
 
 Empty source data, invalid encoded fields, and all-excluded results involving filter
 evaluation errors still follow the existing validation/error path. Other adapters use
