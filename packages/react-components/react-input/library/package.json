@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-input",
-  "version": "9.8.8",
+  "version": "9.8.9",
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",

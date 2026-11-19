@@ -131,6 +131,10 @@ export const useMenuTriggerBase_unstable = (props: MenuTriggerBaseProps): MenuTr
       ((isSubmenu && shouldOpenOnArrowRight && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))
     ) {
       setOpen(event, { open: true, keyboard: true, type: 'menuTriggerKeyDown', event });
+      if (!isSubmenu) {
+        // The opening key must not scroll the newly focused menu item.
+        event.preventDefault();
+      }
     }
 
     if (key === Escape && !isSubmenu) {
@@ -199,7 +203,6 @@ export const useMenuTriggerBase_unstable = (props: MenuTriggerBaseProps): MenuTr
     ...contextMenuProps,
     // eslint-disable-next-line react-hooks/refs
     onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
-    // eslint-disable-next-line react-hooks/refs
     onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
   } as const;
 

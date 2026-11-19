@@ -20,6 +20,7 @@ import bestPracticesMd from './MenuBestPractices.md';
 import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
 
 export { Default } from './MenuDefault.stories';
+export { Scrollable } from './MenuScrollable.stories';
 export { Controlled } from './MenuControlled.stories';
 export { ShadowRootFocus } from './MenuShadowRootFocus.stories';
 export { WithDivider } from './MenuWithDivider.stories';

@@ -19,48 +19,7 @@ export const daysOfWeek = [
 /**
  * Default working days used by work-week ranges.
  */
-export const DEFAULT_WORK_WEEK_DAYS = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-] as const satisfies readonly DayOfWeek[];
-
-/**
- * The months of the year.
- */
-export type MonthOfYear =
-  | 'january'
-  | 'february'
-  | 'march'
-  | 'april'
-  | 'may'
-  | 'june'
-  | 'july'
-  | 'august'
-  | 'september'
-  | 'october'
-  | 'november'
-  | 'december';
-
-/**
- * The months of the year, ordered so that each index matches `Date.prototype.getMonth()`.
- */
-export const monthsOfYear = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december',
-] as const satisfies readonly MonthOfYear[];
+export const DEFAULT_WORK_WEEK_DAYS: readonly DayOfWeek[] = /*#__PURE__*/ daysOfWeek.slice(1, 6);
 
 /**
  * Determines which week counts as the first week of the year.

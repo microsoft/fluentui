@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: remove unused dependency on @fluentui/react-dialog",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
