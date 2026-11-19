@@ -120,6 +120,10 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'
     surfaceId: string;
     titleId: string;
     setTitleId: (titleId: string) => void;
+    /** @internal */
+    dismissButtonAutoFocus: boolean;
+    /** @internal */
+    setDismissButtonAutoFocus: (autoFocus: boolean) => void;
     /** Determines whether the surface is present in the DOM. */
     shouldRenderSurface: boolean;
   };
@@ -143,6 +147,10 @@ export type PopoverContextValue = Pick<
 > & {
   titleId: string;
   setTitleId: (titleId: string) => void;
+  /** @internal */
+  dismissButtonAutoFocus: boolean;
+  /** @internal */
+  setDismissButtonAutoFocus: (autoFocus: boolean) => void;
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;
     containerRef: React.RefCallback<HTMLElement>;

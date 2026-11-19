@@ -21,6 +21,8 @@ const popoverContextDefaultValue: PopoverContextValue = {
   inertTrapFocus: false,
   titleId: '',
   setTitleId: () => null,
+  dismissButtonAutoFocus: false,
+  setDismissButtonAutoFocus: () => null,
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

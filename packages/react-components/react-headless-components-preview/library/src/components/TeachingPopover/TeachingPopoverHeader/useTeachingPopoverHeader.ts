@@ -1,8 +1,8 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { useTeachingPopoverHeaderBase_unstable } from '@fluentui/react-teaching-popover';
-import { slot, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../../Popover/popoverContext';
 import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
 
@@ -11,14 +11,27 @@ export const useTeachingPopoverHeader = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverHeaderState => {
   const state = useTeachingPopoverHeaderBase_unstable(props, ref);
+  const open = usePopoverContext(context => context.open);
+  const dismissButtonAutoFocus = usePopoverContext(context => context.dismissButtonAutoFocus);
+  const setDismissButtonAutoFocus = usePopoverContext(context => context.setDismissButtonAutoFocus);
   const setOpen = usePopoverContext(context => context.setOpen);
+  const autoFocus = open && dismissButtonAutoFocus;
 
   // The base hook closes through @fluentui/react-popover's context; headless dismisses through its own Popover.
   const dismissButton = slot.optional(props.dismissButton, {
-    renderByDefault: false,
-    defaultProps: { 'aria-label': 'dismiss', type: 'button' },
+    renderByDefault: true,
+    defaultProps: { 'aria-label': 'dismiss', autoFocus, type: 'button' },
     elementType: 'button',
   });
+  const markDismissButtonMounted = React.useCallback(
+    (element: HTMLButtonElement | null) => {
+      if (element && autoFocus) {
+        setDismissButtonAutoFocus(false);
+      }
+    },
+    [autoFocus, setDismissButtonAutoFocus],
+  );
+  const dismissButtonRef = useMergedRefs(dismissButton?.ref, markDismissButtonMounted);
   const onDismissButtonClick = dismissButton?.onClick;
   const handleDismissButtonClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     onDismissButtonClick?.(event);
@@ -29,6 +42,10 @@ export const useTeachingPopoverHeader = (
 
   return {
     ...state,
-    dismissButton: dismissButton && { ...dismissButton, onClick: handleDismissButtonClick },
+    dismissButton: dismissButton && {
+      ...dismissButton,
+      ref: dismissButtonRef,
+      onClick: handleDismissButtonClick,
+    },
   };
 };

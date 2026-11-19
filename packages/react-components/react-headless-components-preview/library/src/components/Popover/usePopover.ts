@@ -29,6 +29,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
   const [titleId, setTitleId] = React.useState('');
+  const [dismissButtonAutoFocus, setDismissButtonAutoFocus] = React.useState(open);
 
   const onOpenChange = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
@@ -51,10 +52,16 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     if (e.type === 'mouseleave') {
       setOpenTimeout(() => {
         setOpenState(shouldOpen);
+        if (open !== shouldOpen) {
+          setDismissButtonAutoFocus(shouldOpen);
+        }
         onOpenChange(e, shouldOpen);
       }, mouseLeaveDelay);
     } else {
       setOpenState(shouldOpen);
+      if (open !== shouldOpen) {
+        setDismissButtonAutoFocus(shouldOpen);
+      }
       onOpenChange(e, shouldOpen);
     }
   });
@@ -139,6 +146,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     surfaceId,
     titleId,
     setTitleId,
+    dismissButtonAutoFocus,
+    setDismissButtonAutoFocus,
     shouldRenderSurface,
   };
 };
@@ -159,6 +168,8 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
     surfaceId,
     titleId,
     setTitleId,
+    dismissButtonAutoFocus,
+    setDismissButtonAutoFocus,
   } = state;
 
   return {
@@ -180,6 +191,8 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
       surfaceId,
       titleId,
       setTitleId,
+      dismissButtonAutoFocus,
+      setDismissButtonAutoFocus,
     },
   };
 };
