@@ -50,6 +50,9 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `import('@fluentui/react').then(m => { m = {}; return m.Button; });`,
     },
+    {
+      code: `async function load() { let m = await import('@fluentui/react'); m = {}; const { Button } = m; return Button; }`,
+    },
   ],
   invalid: [
     {

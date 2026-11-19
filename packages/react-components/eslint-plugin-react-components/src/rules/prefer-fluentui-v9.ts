@@ -226,7 +226,7 @@ function isBindingIdentifier(
 function isBindingReassignedBefore(
   sourceCode: TSESLint.SourceCode,
   bindingIdentifier: TSESTree.Identifier,
-  usage: TSESTree.MemberExpression,
+  usage: TSESTree.Node,
 ): boolean {
   const bindingVariable = findVariable(sourceCode, bindingIdentifier);
   if (!bindingVariable) {
@@ -429,7 +429,8 @@ function findComponentUsagesInScope(
       node.type === AST_NODE_TYPES.VariableDeclarator &&
       node.id.type === AST_NODE_TYPES.ObjectPattern &&
       node.init?.type === AST_NODE_TYPES.Identifier &&
-      isBindingIdentifier(sourceCode, node.init, namespaceIdentifier)
+      isBindingIdentifier(sourceCode, node.init, namespaceIdentifier) &&
+      !isBindingReassignedBefore(sourceCode, namespaceIdentifier, node)
     ) {
       for (const prop of node.id.properties) {
         if (prop.type === AST_NODE_TYPES.Property) {
