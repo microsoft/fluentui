@@ -50,8 +50,9 @@ const CurvePreview = createMotionComponent<{ easing: string }>(({ easing }) => {
   return {
     keyframes: [
       { transform: markerAtBottom, opacity: 1, offset: 0, easing },
-      // The marker reaches the top, then fades out over the rest of the loop.
-      { transform: markerAtTop, opacity: 1, offset: CURVE_REST_OFFSET },
+      // The marker reaches the top, then fades out over the rest of the loop. It shares the incoming
+      // marker's easing, so the two opacities always add up to 1.
+      { transform: markerAtTop, opacity: 1, offset: CURVE_REST_OFFSET, easing: curves.curveAccelerateMin },
       { transform: markerAtTop, opacity: 0, offset: 1 },
     ],
     duration: CURVE_PREVIEW_DURATION,
