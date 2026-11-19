@@ -7,5 +7,8 @@
   "executors": "./executors.json",
   "dependencies": {
     "@nx/devkit": "22.7.9"
+  },
+  "devDependencies": {
+    "@fluentui/postcss-tailwind-css-modules": "*"
   }
 }

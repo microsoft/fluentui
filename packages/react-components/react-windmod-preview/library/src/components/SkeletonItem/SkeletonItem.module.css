@@ -1,0 +1,107 @@
+@reference '#theme';
+
+/* The sweep offset must be written on `transform`, not on the individual `translate` property:
+   the wave keyframes declare only a `to` step, so the implicit `from` is the element's own
+   `transform`. Routing the offset elsewhere would start the sweep from `none` and halve it. */
+
+/* Block order carries the cascade: the forced-colors block is first, inside the resting
+   `::after`, so the pulse block's background-color beats it. */
+
+@keyframes wave {
+  to {
+    transform: translate(100%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /* rounded-medium (Griffel authors the literal 4px): radii ride the base-scale ramp
+       (operator ruling 2026-09-02), so the token is the responsive spelling — computed-identical
+       at the default root, and it scales with the rest of the control everywhere else. */
+    @apply relative h-(--fui-skeleton-item-size) w-full overflow-hidden rounded-medium bg-neutral-stencil-1;
+
+    --fui-skeleton-item-size: calc(attr(data-size type(<number>), 16) * 1px);
+
+    @variant after {
+      @apply absolute inset-0 block;
+      transform: translate(-100%);
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-name: wave;
+      animation-timing-function: ease-in-out;
+
+      background-image: linear-gradient(
+        to right,
+        var(--color-neutral-stencil-1) 0%,
+        var(--color-neutral-stencil-2) 50%,
+        var(--color-neutral-stencil-1) 100%
+      );
+
+      @variant forced-colors {
+        @apply bg-[WindowText];
+      }
+
+      @variant rtl {
+        @apply -scale-x-100;
+      }
+    }
+
+    @variant animation-pulse {
+      @apply bg-transparent;
+
+      @variant after {
+        @apply transform-none bg-neutral-stencil-1 bg-none;
+        animation-duration: 1s;
+        animation-name: pulse;
+      }
+    }
+
+    @variant shape-square {
+      @apply size-(--fui-skeleton-item-size) rounded-none;
+    }
+
+    @variant shape-circle {
+      @apply size-(--fui-skeleton-item-size) rounded-full;
+    }
+  }
+
+  /* Appearance is a look prop — it rides a module class; see Tooltip.module.css. */
+  .translucent {
+    @apply bg-neutral-stencil-1-alpha;
+
+    @variant after {
+      background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--color-neutral-stencil-1-alpha) 50%,
+        transparent 100%
+      );
+    }
+
+    @variant animation-pulse {
+      @apply bg-transparent;
+
+      @variant after {
+        @apply bg-neutral-stencil-1-alpha;
+      }
+    }
+  }
+
+  .block {
+    @apply block;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "fix(chart-web-components): keep Storybook source formatting compatible with Prettier",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "array.knight+github@gmail.com"
+}

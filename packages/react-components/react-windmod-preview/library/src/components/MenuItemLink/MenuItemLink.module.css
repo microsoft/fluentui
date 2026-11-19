@@ -1,0 +1,10 @@
+@reference '#theme';
+
+/* Griffel spells three of these four as `initial`; the keywords below are what `initial` resolves
+   to for each longhand. The level is conventional: MenuItem's l1 module sets no text-decoration,
+   so nothing here is contested. */
+@layer fui.components.l2 {
+  .root {
+    @apply no-underline decoration-current decoration-solid decoration-auto;
+  }
+}

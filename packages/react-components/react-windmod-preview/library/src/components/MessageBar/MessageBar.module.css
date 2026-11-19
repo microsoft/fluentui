@@ -1,0 +1,57 @@
+@reference '#theme';
+
+/* Block order is the cascade, mirroring Griffel's own root merge order: reset, layout, shape,
+   intent. Every selector is :where()-flat, so source order alone arbitrates.
+
+   The four grid areas are named by the parent here and claimed by the three child components'
+   own modules; no descendant selector crosses a component boundary in this family. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply grid min-h-36 grid-cols-[auto_1fr_auto_auto] grid-rows-[1fr] items-center rounded-medium border-thin border-solid border-neutral-stroke-1 bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
+    grid-template-areas: 'icon body secondaryActions actions';
+
+    @variant layout-multiline {
+      @apply grid-cols-[auto_1fr_auto] items-start pt-vertical-m-nudge whitespace-normal;
+      grid-template-areas: 'icon body actions' 'secondaryActions secondaryActions secondaryActions';
+    }
+
+    @variant shape-square {
+      @apply rounded-none;
+    }
+
+    @variant intent-error {
+      @apply border-status-danger-border-1 bg-status-danger-background-1;
+    }
+
+    @variant intent-warning {
+      @apply border-status-warning-border-1 bg-status-warning-background-1;
+    }
+
+    @variant intent-success {
+      @apply border-status-success-border-1 bg-status-success-background-1;
+    }
+  }
+
+  .icon {
+    @apply me-horizontal-s flex items-center text-base-500 leading-100 text-neutral-foreground-3;
+    grid-area: icon;
+
+    @variant group-intent-error/fui-message-bar {
+      @apply text-status-danger-foreground-1;
+    }
+
+    @variant group-intent-warning/fui-message-bar {
+      @apply text-status-warning-foreground-3;
+    }
+
+    @variant group-intent-success/fui-message-bar {
+      @apply text-status-success-foreground-1;
+    }
+  }
+
+  .bottom-reflow-spacer {
+    @apply mb-vertical-s;
+    grid-area: secondaryActions;
+  }
+}

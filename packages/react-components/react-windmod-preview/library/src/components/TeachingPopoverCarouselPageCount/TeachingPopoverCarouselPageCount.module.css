@@ -1,0 +1,7 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-center justify-center;
+  }
+}

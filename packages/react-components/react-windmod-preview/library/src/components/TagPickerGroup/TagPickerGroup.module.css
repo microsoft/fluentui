@@ -1,0 +1,32 @@
+@reference '#theme';
+
+/* `data-size` on this element carries the PICKER scale — medium / large / extra-large — because the
+   three variants below select this group's own padding and gaps, which are picker-scale steps. The
+   TAG scale reaches the Tags below through the windmod TagGroupContext, a React context and not an
+   attribute, so the two scales never meet on one element. An attribute holding the tag scale would
+   match no variant here at two of three sizes and the group would lose its wrap gap and its whole
+   vertical padding.
+
+   The gap pair is asymmetric at extra-large — column 8px, row 6px. Griffel lands two authorings on
+   this element: its own size bucket writes the `gap` shorthand and zeroes both longhand keys, while
+   the TagGroup bucket it composes writes `column-gap` and is last in mergeClasses. The
+   TagPickerGroup style file alone gives 6/6; the TagGroup one alone gives 8px column-gap and no
+   row-gap at all. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex cursor-text flex-wrap;
+
+    @variant size-medium {
+      @apply gap-x-horizontal-xs gap-y-horizontal-xs py-vertical-s-nudge;
+    }
+
+    @variant size-large {
+      @apply gap-x-horizontal-s-nudge gap-y-horizontal-s-nudge py-vertical-s;
+    }
+
+    @variant size-extra-large {
+      @apply gap-x-horizontal-s gap-y-horizontal-s-nudge py-vertical-s;
+    }
+  }
+}

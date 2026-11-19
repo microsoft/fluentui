@@ -71,7 +71,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
 
   const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
-  const selectedDate = props.selectedDate !== undefined ? props.selectedDate : value ?? null;
+  const selectedDate = props.selectedDate !== undefined ? props.selectedDate : (value ?? null);
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
   const yearPickerRef = React.useRef<CalendarYearHandle>(null);

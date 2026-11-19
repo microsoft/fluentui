@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "test: annotate the console spy helper for portable declaration output",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "array.knight+github@gmail.com"
+}

@@ -1,0 +1,70 @@
+@reference '#theme';
+
+/* Every catalog variant is :where()-flat, so source order alone arbitrates between equally
+   specific rules. The media block's order is therefore load-bearing and mirrors Griffel's own
+   merge order exactly: reset, then the plain inverted colour, then the four intent colours, then
+   the four inverted intent colours. Reordering the last two groups hands an inverted toast its
+   non-inverted intent colour.
+
+   `wrap-anywhere` reproduces Griffel's deprecated `word-break: break-word` on both wrapping and
+   min-content sizing, where `break-words` does not. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply col-end-3 flex wrap-anywhere text-neutral-foreground-1;
+
+    @variant group-appearance-inverted/fui-toast {
+      @apply text-neutral-foreground-inverted-2;
+    }
+  }
+
+  .media {
+    @apply col-end-2 flex pe-horizontal-s pt-vertical-xxs text-icon-16 leading-125 text-neutral-foreground-1;
+
+    @variant group-appearance-inverted/fui-toast {
+      @apply text-neutral-foreground-inverted;
+    }
+
+    @variant group-intent-info/fui-toast {
+      @apply text-neutral-foreground-2;
+    }
+
+    @variant group-intent-success/fui-toast {
+      @apply text-status-success-foreground-1;
+    }
+
+    @variant group-intent-warning/fui-toast {
+      @apply text-status-warning-foreground-1;
+    }
+
+    @variant group-intent-error/fui-toast {
+      @apply text-status-danger-foreground-1;
+    }
+
+    @variant group-appearance-inverted/fui-toast {
+      @variant group-intent-info/fui-toast {
+        @apply text-neutral-foreground-inverted-2;
+      }
+
+      @variant group-intent-success/fui-toast {
+        @apply text-status-success-foreground-inverted;
+      }
+
+      @variant group-intent-warning/fui-toast {
+        @apply text-status-warning-foreground-inverted;
+      }
+
+      @variant group-intent-error/fui-toast {
+        @apply text-status-danger-foreground-inverted;
+      }
+    }
+  }
+
+  .action {
+    @apply col-end-[-1] flex items-start ps-horizontal-m text-brand-foreground-1;
+
+    @variant group-appearance-inverted/fui-toast {
+      @apply text-brand-foreground-inverted;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    /*
+     * The repo's type-check executor re-roots --baseUrl at the package, which breaks the
+     * repo-relative `paths` mappings — and this package imports SUBPATH exports
+     * (`@fluentui/react-headless-components-preview/button`, `.../theme-class-names`)
+     * that only resolve through package.json `exports` maps. `bundler` resolution honors
+     * those maps against the BUILT dependencies (the type-check/build targets depend on
+     * `^build`, so dist typings exist).
+     */
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "preserveConstEnums": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

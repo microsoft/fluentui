@@ -177,8 +177,8 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
       keepsTypedText || data.displayValue === undefined
         ? data.displayValue
         : data.value && nextValueKey !== 'invalid'
-        ? formatTime(data.value)
-        : '';
+          ? formatTime(data.value)
+          : '';
 
     setValue(data.value);
     // After a successful change the input shows the formatted value, so only a failed commit needs its own baseline.

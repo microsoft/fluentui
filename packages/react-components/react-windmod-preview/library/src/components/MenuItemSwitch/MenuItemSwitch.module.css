@@ -1,0 +1,54 @@
+@reference '#theme';
+
+/* The row is MenuItem's in full; only the switch indicator is this component's own. It carries no
+   high-contrast ladder because Griffel's MenuItemSwitch carries none, and no motion-preference block
+   because the theme's unlayered global floor already pins every transition-duration. Both absences
+   are byte-asserted in MenuItemSwitch.test.tsx, so neither name is spelled anywhere in this file. */
+@layer fui.components.l1 {
+  .switch-indicator {
+    --fui-menu-item-switch-thumb-offset: 0px;
+
+    @apply me-horizontal-xs h-20 w-40 shrink-0 rounded-circular border-thin border-solid border-neutral-stroke-accessible fill-current text-18 leading-0 text-neutral-stroke-accessible duration-normal ease-easy-ease;
+
+    transition-property: background, border, color;
+
+    & > * {
+      @apply transition-[transform] duration-normal ease-easy-ease;
+      transform: translateX(var(--fui-menu-item-switch-thumb-offset));
+
+      /* translateX is physical, so the offset needs an explicit RTL negation. */
+      @variant rtl {
+        transform: translateX(calc(var(--fui-menu-item-switch-thumb-offset) * -1));
+      }
+    }
+
+    @variant hover {
+      @apply border-neutral-stroke-accessible-hover text-neutral-stroke-accessible-hover;
+    }
+
+    @variant hover-active {
+      @apply border-neutral-stroke-accessible-pressed text-neutral-stroke-accessible-pressed;
+    }
+
+    /* Authored after the two above so it wins at equal specificity — every catalog variant is
+       :where()-flat, so source order decides. The offset is scale-coupled like the track it
+       traverses. */
+    @variant group-checked/fui-menu-item-switch {
+      --fui-menu-item-switch-thumb-offset: calc(20px * var(--base-scale));
+
+      @apply border-transparent-stroke bg-compound-brand-background text-neutral-foreground-inverted;
+
+      @variant hover {
+        @apply border-transparent-stroke-interactive bg-compound-brand-background-hover text-neutral-foreground-inverted;
+      }
+
+      @variant hover-active {
+        @apply border-transparent-stroke-interactive bg-compound-brand-background-pressed text-neutral-foreground-inverted;
+      }
+    }
+
+    @variant group-multiline/fui-menu-item-switch {
+      @apply self-center;
+    }
+  }
+}

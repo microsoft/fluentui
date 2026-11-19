@@ -41,10 +41,13 @@ export function modifyImportsPlugin(
       parserOptions.plugins.push('typescript');
     },
     pre() {
-      this.imports = Object.keys(importMappings).reduce((acc, cur) => {
-        acc[importMappings[cur].replace] = [];
-        return acc;
-      }, {} as PluginState['imports']);
+      this.imports = Object.keys(importMappings).reduce(
+        (acc, cur) => {
+          acc[importMappings[cur].replace] = [];
+          return acc;
+        },
+        {} as PluginState['imports'],
+      );
     },
     visitor: {
       Program: {

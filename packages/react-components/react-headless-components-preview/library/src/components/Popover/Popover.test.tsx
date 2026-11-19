@@ -45,12 +45,12 @@ describe('Popover', () => {
       const { getByRole, getByText, rerender } = render(<Example open inertTrapFocus />);
       const surface = getByRole('dialog', { hidden: true });
       const nativeClose = HTMLDialogElement.prototype.close;
-      const close = jest
-        .spyOn(HTMLDialogElement.prototype, 'close')
-        .mockImplementation(function (this: HTMLDialogElement) {
-          expect(this.isConnected).toBe(true);
-          nativeClose.call(this);
-        });
+      const close = jest.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(function (
+        this: HTMLDialogElement,
+      ) {
+        expect(this.isConnected).toBe(true);
+        nativeClose.call(this);
+      });
       try {
         rerender(<Example open={false} inertTrapFocus />);
         expect(close).toHaveBeenCalledTimes(1);
@@ -88,11 +88,11 @@ describe('Popover', () => {
       );
       const { getByRole, rerender } = render(<ControlledExample open />);
       const surface = getByRole('dialog', { hidden: true });
-      const close = jest
-        .spyOn(HTMLDialogElement.prototype, 'close')
-        .mockImplementation(function (this: HTMLDialogElement) {
-          this.removeAttribute('open');
-        });
+      const close = jest.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(function (
+        this: HTMLDialogElement,
+      ) {
+        this.removeAttribute('open');
+      });
       try {
         rerender(<ControlledExample open={false} />);
         expect(surface.isConnected).toBe(true);
@@ -109,11 +109,11 @@ describe('Popover', () => {
     it('ignores a queued close event after the dialog has reopened', () => {
       const { getByRole, rerender } = render(<Example open inertTrapFocus />);
       const surface = getByRole('dialog', { hidden: true });
-      const close = jest
-        .spyOn(HTMLDialogElement.prototype, 'close')
-        .mockImplementation(function (this: HTMLDialogElement) {
-          this.removeAttribute('open');
-        });
+      const close = jest.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(function (
+        this: HTMLDialogElement,
+      ) {
+        this.removeAttribute('open');
+      });
       try {
         rerender(<Example open={false} inertTrapFocus />);
         rerender(<Example open inertTrapFocus />);

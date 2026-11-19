@@ -120,12 +120,11 @@ export const parameters = {
 
         src = src.replace(FAST_EXPRESSION_COMMENTS, ''); // remove comments
         src = src.replace(/=""/g, ''); // remove values for boolean attributes
-        src = prettier.format(src, {
+        return prettier.format(src, {
           htmlWhitespaceSensitivity: 'ignore',
           parser: 'html',
           plugins: [prettierPluginHTML],
         });
-        return src;
       },
     },
     theme: webcomponentsTheme, // override the default Storybook theme with a custom fluent theme

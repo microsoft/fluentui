@@ -1,0 +1,26 @@
+{
+  "name": "postcss-tailwind-css-modules",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/postcss-tailwind-css-modules/src",
+  "tags": ["vNext", "platform:node", "tools"],
+  "targets": {
+    "type-check": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn run -T tsc -p tsconfig.type-tests.json"
+      }
+    },
+    "build": {
+      "executor": "nx:noop",
+      "cache": true
+    },
+    "generate-api": {
+      "executor": "nx:noop",
+      "cache": true
+    }
+  }
+}

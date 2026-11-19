@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "chore(web-components): align Storybook source transform types with asynchronous formatting",
+  "packageName": "@fluentui/web-components",
+  "email": "array.knight+github@gmail.com"
+}

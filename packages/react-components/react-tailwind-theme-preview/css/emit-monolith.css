@@ -1,0 +1,19 @@
+/*
+ * Build entry for dist/styles.css — the batteries-included artifact: the base sheet plus
+ * all seven shipped themes in one file.
+ *
+ * Kept as the all-seven monolith for zero-config parity with the windmod package, whose
+ * `./styles.css` is likewise the self-contained alternative to `./base.css` + per-component
+ * chunks. Additive precedent, nothing breaks: a consumer already importing `./styles.css`
+ * keeps a working import.
+ *
+ * IT STILL BAKES NO DEFAULT. Importing this file makes all seven theme CLASSES available;
+ * it does not theme anything on its own. A theme class still has to be applied — which is
+ * the whole contract, and the same thing Griffel asks for when it makes you pass a theme
+ * object to FluentProvider.
+ *
+ * Prefer `./base.css` + the specific `./themes/<name>.css` files an application ships: this
+ * file costs every theme, and six of the seven are usually dead weight.
+ */
+@import './emit.css';
+@import './themes.css';

@@ -1,0 +1,11 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-row gap-x-4;
+
+    @variant spacing-small {
+      @apply gap-x-2;
+    }
+  }
+}

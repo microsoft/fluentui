@@ -1,0 +1,23 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex gap-x-horizontal-m pe-horizontal-m;
+    grid-area: secondaryActions;
+
+    /* Griffel pads this edge with a VERTICAL token in multiline only; the authored token follows
+       it rather than the horizontal one the base block uses. */
+    @variant layout-multiline {
+      @apply mt-vertical-m-nudge mb-vertical-s justify-end pe-vertical-m;
+    }
+
+    @variant not-has-actions {
+      @apply hidden;
+    }
+  }
+
+  .container-action {
+    @apply pe-horizontal-m;
+    grid-area: actions;
+  }
+}

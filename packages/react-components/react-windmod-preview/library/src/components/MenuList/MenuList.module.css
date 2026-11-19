@@ -1,0 +1,12 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-col gap-2;
+  }
+
+  /* A list rendered inside a Menu fills the surface; a standalone MenuList sizes to content. */
+  .in-menu {
+    @apply h-full;
+  }
+}

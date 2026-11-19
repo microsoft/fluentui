@@ -1,0 +1,156 @@
+/**
+ * example-override.css
+ *
+ * A consumer stylesheet overriding windmod components. Demonstrates the correct patterns:
+ * - unlayered rules, so they beat every fui.* layer with no !important
+ * - targeting the public identity class and published data-* attributes
+ * - moving a token rather than overriding a rule, where a token exists
+ * - motion that survives the reduced-motion floor by intent
+ *
+ * Loaded AFTER '@fluentui/react-tailwind-theme-preview/styles.css'.
+ */
+
+/* ---------------------------------------------------------------------------
+ * 1. A custom theme is a class that redeclares token custom properties.
+ *    Applied via <FluentProvider theme="my-brand-theme">, or to any element.
+ * ------------------------------------------------------------------------- */
+
+.my-brand-theme {
+  --color-brand-background: #6b21a8;
+  --color-brand-background-hover: #7e22ce;
+  --color-brand-background-pressed: #581c87;
+  --color-compound-brand-background: #6b21a8;
+  --color-compound-brand-background-hover: #7e22ce;
+}
+
+/* ---------------------------------------------------------------------------
+ * 2. Override by class. Unlayered, single class, no !important.
+ * ------------------------------------------------------------------------- */
+
+.cta-button {
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-inverted);
+  border-radius: var(--radius-circular);
+}
+
+.cta-button:hover {
+  background-color: var(--color-brand-background-hover);
+}
+
+/* ---------------------------------------------------------------------------
+ * 3. Select on the identity class and published state attributes.
+ *    Presence attributes select bare; enumerated ones select on their value.
+ * ------------------------------------------------------------------------- */
+
+.fui-message-bar[data-intent='error'] {
+  border-inline-start-width: 4px;
+  border-inline-start-style: solid;
+  border-inline-start-color: var(--color-status-danger-border-1);
+}
+
+.fui-button[data-size='small'] {
+  letter-spacing: 0.02em;
+}
+
+.fui-popover-surface[data-open] {
+  box-shadow: var(--shadow-28);
+}
+
+/* ---------------------------------------------------------------------------
+ * 4. Scope to a subtree with a wrapper class.
+ * ------------------------------------------------------------------------- */
+
+.marketing-surface .fui-button {
+  border-radius: var(--radius-circular);
+}
+
+/* ---------------------------------------------------------------------------
+ * 5. Essential motion. The reduced-motion floor is unlayered but SELECTOR-LESS,
+ *    so a rule with a class in it already outranks it.
+ * ------------------------------------------------------------------------- */
+
+.loading-pulse {
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+
+/* ---------------------------------------------------------------------------
+ * 6. App-global defaults that should still lose to your own page-level CSS.
+ *    l4 and l5 are unclaimed by the library; l1-l3 are in use.
+ * ------------------------------------------------------------------------- */
+
+@layer fui.components.l4 {
+  .fui-card {
+    border-radius: var(--radius-large);
+  }
+}
+
+/**
+ * ANTI-PATTERNS TO AVOID
+ *
+ * ❌ Wrong — wrapping an override in a layer forfeits the contest you win by default:
+ * @layer app {
+ *   .cta-button { background-color: var(--color-brand-background); }
+ * }
+ *
+ * ✅ Correct — unlayered:
+ * .cta-button { background-color: var(--color-brand-background); }
+ *
+ *
+ * ❌ Wrong — !important. There is nothing to beat, and it outranks the reduced-motion floor:
+ * .cta-button { background-color: rebeccapurple !important; }
+ *
+ * ✅ Correct — a plain declaration already wins:
+ * .cta-button { background-color: rebeccapurple; }
+ *
+ *
+ * ❌ Wrong — hashed idents are regenerated whenever the source changes:
+ * .fuicm-button-icon-a1b2c3 { color: red; }
+ *
+ * ✅ Correct — the slot's own className prop, or a group variant from a child:
+ * <Button icon={{ className: 'my-icon' }} />
+ *
+ *
+ * ❌ Wrong — Griffel class names. windmod's are lower-case and there are no slot classes:
+ * .fui-Button { }
+ * .fui-Button__icon { }
+ *
+ * ✅ Correct:
+ * .fui-button { }
+ *
+ *
+ * ❌ Wrong — structural selectors; slot order is an implementation detail:
+ * .fui-button > span:nth-child(2) { margin-inline-start: 4px; }
+ *
+ * ✅ Correct — the published attribute:
+ * .fui-button[data-icon-position='after'] { }
+ *
+ *
+ * ❌ Wrong — value-matching a presence attribute:
+ * .fui-popover-surface[data-open='true'] { }
+ *
+ * ✅ Correct — presence attributes select bare:
+ * .fui-popover-surface[data-open] { }
+ *
+ *
+ * ❌ Wrong — hardcoded palette values do not theme:
+ * .cta-button { background-color: #0f6cbd; }
+ *
+ * ✅ Correct — a token moves with the theme class:
+ * .cta-button { background-color: var(--color-brand-background); }
+ *
+ *
+ * ❌ Wrong — manual theme branching:
+ * .dark .cta-button { background-color: #115ea3; }
+ *
+ * ✅ Correct — apply a theme class and let the tokens move:
+ * <FluentProvider theme={webDarkThemeClassName}>
+ *
+ *
+ * ❌ Wrong — a spacing token redeclared at runtime moves nothing (inlined at build time):
+ * .dense { --spacingHorizontalM: 8px; }
+ *
+ * ✅ Correct — the density knob, at the DOCUMENT ROOT, or the property directly:
+ * html { font-size: 14px; }
+ * .dense .fui-button { padding-inline: 8px; }
+ */

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: tie the aside-width animation frame to the observer ref lifecycle so width updates are applied and pending frames are canceled when observation ends.",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

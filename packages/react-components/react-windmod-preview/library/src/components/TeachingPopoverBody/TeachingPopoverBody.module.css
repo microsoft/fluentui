@@ -1,0 +1,45 @@
+@reference '#theme';
+
+/* `grid-area: media` is inert here — the root is a flex column, so the named area resolves to
+   nothing. It is reproduced for computed-value parity.
+
+   The `@supports not (aspect-ratio)` blocks are NOT dead code: the bare property name is not a
+   valid declaration test, and Chrome evaluates the negation as true, so the fallback heights render
+   on every load — Griffel authors the same guard, so parity depends on them (measured: removing
+   them shifts the teaching-popover media scene by 14,135 strict pixels). */
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-col pb-12;
+  }
+
+  .media {
+    @apply mb-12 flex w-auto justify-center overflow-hidden align-middle;
+
+    grid-area: media;
+  }
+
+  .short {
+    @apply aspect-288/117;
+
+    @supports not (aspect-ratio) {
+      @apply h-117;
+    }
+  }
+
+  .medium {
+    @apply aspect-288/176;
+
+    @supports not (aspect-ratio) {
+      @apply h-176;
+    }
+  }
+
+  .tall {
+    @apply aspect-square;
+
+    @supports not (aspect-ratio) {
+      @apply h-288;
+    }
+  }
+}

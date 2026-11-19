@@ -1,0 +1,16 @@
+@reference '#theme';
+
+/* The root is a div the browser promotes with showPopover(). A shown [popover] gets overflow:
+   auto on both axes from the user agent; Griffel's own surface computes overflow-y: auto too,
+   because `visible` on one axis computes to `auto` when the other is `hidden` — so overflow-x is
+   the only axis this file authors and no neutralisation is owed. usePositioning writes position,
+   inset and margin inline, which outrank the user agent.
+
+   overflow-x is `hidden`, never `clip`. `clip` leaves overflow-y `visible`, which stops the
+   surface being a scroll container at all and loses Griffel's scroll-on-tall-menu behaviour. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply w-max max-w-300 min-w-138 overflow-x-hidden rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 p-4 font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1 shadow-16;
+  }
+}

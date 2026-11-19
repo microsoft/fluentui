@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: format through @prettier/sync and declare it as a dependency, so the preset works under prettier 3",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

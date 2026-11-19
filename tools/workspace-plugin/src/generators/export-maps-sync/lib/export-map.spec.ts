@@ -9,16 +9,17 @@ describe('readExportMapConfig', () => {
     expect(readExportMapConfig({ root: 'packages/react-button' })).toEqual({
       root: true,
       subpathEntryPoints: [],
+      staticSubpaths: [],
     });
   });
 
   it('reads the declaration from project metadata', () => {
     const config = readExportMapConfig({
       root: 'packages/react-headless',
-      metadata: { exportMap: { root: false, subpathEntryPoints: ['src/*.ts'] } },
+      metadata: { exportMap: { root: false, subpathEntryPoints: ['src/*.ts'], staticSubpaths: ['./styles.css'] } },
     });
 
-    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'], staticSubpaths: ['./styles.css'] });
   });
 
   it('fills in defaults for a partial declaration', () => {
@@ -27,7 +28,7 @@ describe('readExportMapConfig', () => {
       metadata: { exportMap: { subpathEntryPoints: ['src/*.ts'] } },
     });
 
-    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'], staticSubpaths: [] });
   });
 });
 
@@ -205,6 +206,74 @@ describe('buildExportMap', () => {
         },
         './package.json': './package.json',
       });
+    });
+  });
+
+  describe('static subpaths', () => {
+    const assetPackage: PackageJson = {
+      ...esmPackage,
+      exports: {
+        './styles.css': './dist/styles.css',
+        './variants.css': './src/variants.css',
+      },
+    };
+
+    it('preserves a declared entry verbatim from the current package.json', () => {
+      const exports = buildExportMap(assetPackage, [rootEntry], ['./styles.css']);
+
+      expect(exports).toEqual({
+        '.': {
+          import: { types: './dist/index.d.ts', default: './lib/index.js' },
+          require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+        },
+        './styles.css': './dist/styles.css',
+        './package.json': './package.json',
+      });
+    });
+
+    it('sorts static subpaths in with the generated ones', () => {
+      const exports = buildExportMap(
+        assetPackage,
+        [rootEntry, { key: './tooltip', name: 'tooltip', outputPath: 'tooltip' }],
+        ['./variants.css', './styles.css'],
+      );
+
+      expect(Object.keys(exports!)).toEqual(['.', './styles.css', './tooltip', './variants.css', './package.json']);
+    });
+
+    it('keeps preserving the entry on a package with no generated subpaths', () => {
+      const exports = buildExportMap({ ...assetPackage, type: undefined }, [rootEntry], ['./styles.css']);
+
+      expect(exports!['./styles.css']).toBe('./dist/styles.css');
+    });
+
+    it('preserves a conditional entry, not just a string one', () => {
+      const themeClassNames = { types: './theme-class-names.d.mts', default: './theme-class-names.mjs' };
+      const exports = buildExportMap(
+        { ...assetPackage, exports: { './theme-class-names': themeClassNames } },
+        [rootEntry],
+        ['./theme-class-names'],
+      );
+
+      expect(exports!['./theme-class-names']).toEqual(themeClassNames);
+    });
+
+    it('throws when a declared key has no entry to preserve', () => {
+      expect(() => buildExportMap(assetPackage, [rootEntry], ['./missing.css'])).toThrow(
+        /declares "\.\/missing\.css", but package.json has no exports\["\.\/missing\.css"\] entry/,
+      );
+    });
+
+    it('throws when a declared key collides with a generated subpath', () => {
+      expect(() =>
+        buildExportMap(assetPackage, [rootEntry, { key: './badge', name: 'badge', outputPath: 'badge' }], ['./badge']),
+      ).toThrow(/declares "\.\/badge", which the generator already derives from source/);
+    });
+
+    it('throws when a declaration tries to take over the package.json subpath', () => {
+      expect(() => buildExportMap(assetPackage, [rootEntry], ['./package.json'])).toThrow(
+        /declares "\.\/package\.json", which the generator already derives from source/,
+      );
     });
   });
 

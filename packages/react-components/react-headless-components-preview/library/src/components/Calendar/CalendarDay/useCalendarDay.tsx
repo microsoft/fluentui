@@ -278,13 +278,11 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   const tabStopKey = activeDayKey ?? focusTargetKey;
 
   const weeks: CalendarDayState['weeks'] = dayGrid.map((week, weekIndex) => {
-    const days = week.map(
-      (day): CalendarDayCellData => ({
-        ...day,
-        label: day.originalDate ? formatters.dateTime({ date: day.originalDate, format: 'day' }) : day.date,
-        isNavigated: !!day.originalDate && day.key === focusTargetKey,
-      }),
-    );
+    const days = week.map((day): CalendarDayCellData => ({
+      ...day,
+      label: day.originalDate ? formatters.dateTime({ date: day.originalDate, format: 'day' }) : day.date,
+      isNavigated: !!day.originalDate && day.key === focusTargetKey,
+    }));
     const lastDate = week
       .slice()
       .reverse()
@@ -355,16 +353,16 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
             ? mergeProps({ role: 'presentation' }, overrides?.weekNumber)
             : undefined
           : weekNumber !== undefined
-          ? mergeProps(
-              {
-                'aria-label': weekNumberLabel,
-                children: <span>{weekNumber}</span>,
-                scope: 'row',
-                title: weekNumberLabel,
-              },
-              overrides?.weekNumber,
-            )
-          : undefined,
+            ? mergeProps(
+                {
+                  'aria-label': weekNumberLabel,
+                  children: <span>{weekNumber}</span>,
+                  scope: 'row',
+                  title: weekNumberLabel,
+                },
+                overrides?.weekNumber,
+              )
+            : undefined,
     };
   };
 

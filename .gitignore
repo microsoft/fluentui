@@ -161,3 +161,11 @@ gulp-cache
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 .playwright-cli
+
+# session scratch space (never committed)
+.scratch/
+
+# knowledge-graph tool output (never committed) — lands at the repo root and, because it is
+# written relative to the invocation directory, sometimes under packages/ where nx and beachball
+# then scan it. 2,177 cache files at last count, all regenerable.
+graphify-out/

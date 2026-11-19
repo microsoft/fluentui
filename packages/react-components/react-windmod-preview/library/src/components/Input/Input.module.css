@@ -1,0 +1,219 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Root-modifier block order is the cascade: every selector below is :where()-flat, so source
+     order alone arbitrates. .filled before .filledInteractive, .invalid after every appearance
+     block, .disabled last. */
+  .root {
+    @apply relative inline-flex min-h-32 flex-nowrap items-center gap-horizontal-xxs rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1 align-middle font-base text-base-300 leading-20/14 font-regular;
+
+    /* The underline box is as tall as the radius so its bottom corners can round, and the clip keeps
+       only the bottom stroke width in paint: a border-bottom on a box that short would flare into two
+       horns at the ends. max() keeps the underline visible when the radius token is 0. */
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant size-small {
+      @apply min-h-24 text-base-200 leading-16/12;
+
+      @variant content-before {
+        @apply ps-horizontal-s-nudge;
+      }
+
+      @variant content-after {
+        @apply pe-horizontal-s-nudge;
+      }
+    }
+
+    @variant size-medium {
+      @variant content-before {
+        @apply ps-horizontal-m-nudge;
+      }
+
+      @variant content-after {
+        @apply pe-horizontal-m-nudge;
+      }
+    }
+
+    @variant size-large {
+      @apply min-h-40 gap-horizontal-s-nudge text-base-400 leading-11/8;
+
+      @variant content-before {
+        @apply ps-horizontal-m;
+      }
+
+      @variant content-after {
+        @apply pe-horizontal-m;
+      }
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  .underline {
+    @apply rounded-none border-x-0 border-t-0 bg-transparent-background;
+
+    @variant after {
+      @apply inset-x-0;
+    }
+  }
+
+  .filled-darker {
+    @apply bg-neutral-background-3;
+  }
+
+  .filled-lighter {
+    @apply bg-neutral-background-1;
+  }
+
+  .filled {
+    @apply border-transparent-stroke;
+  }
+
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active, focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+  }
+
+  .underline-interactive {
+    @variant after {
+      @apply rounded-none;
+    }
+
+    @variant hover {
+      @apply border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active, focus-within {
+      @apply border-b-neutral-stroke-accessible-pressed;
+    }
+  }
+
+  .filled-interactive {
+    @variant hover, focus-within {
+      @apply border-transparent-stroke-interactive;
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .disabled {
+    @apply cursor-not-allowed border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+
+    @variant after {
+      content: unset;
+    }
+
+    @variant focus-within {
+      @apply outline-none;
+    }
+  }
+
+  .input {
+    @apply min-w-0 grow self-stretch border-none px-horizontal-m text-neutral-foreground-1 outline-none;
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant group-size-small/fui-input {
+      @apply px-horizontal-s;
+
+      @variant group-content-before/fui-input {
+        @apply ps-horizontal-xxs;
+      }
+
+      @variant group-content-after/fui-input {
+        @apply pe-horizontal-xxs;
+      }
+    }
+
+    @variant group-size-medium/fui-input {
+      @variant group-content-before/fui-input {
+        @apply ps-horizontal-xxs;
+      }
+
+      @variant group-content-after/fui-input {
+        @apply pe-horizontal-xxs;
+      }
+    }
+
+    @variant group-size-large/fui-input {
+      @apply px-18;
+
+      @variant group-content-before/fui-input {
+        @apply ps-horizontal-s-nudge;
+      }
+
+      @variant group-content-after/fui-input {
+        @apply pe-horizontal-s-nudge;
+      }
+    }
+
+    @variant group-disabled/fui-input {
+      @apply cursor-not-allowed bg-transparent-background text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+
+  .content {
+    @apply flex text-neutral-foreground-3;
+
+    @variant icon {
+      @apply text-icon-20;
+    }
+
+    @variant group-disabled/fui-input {
+      @apply text-neutral-foreground-disabled;
+    }
+
+    @variant group-size-small/fui-input {
+      @variant icon {
+        @apply text-icon-16;
+      }
+    }
+
+    @variant group-size-large/fui-input {
+      @variant icon {
+        @apply text-icon-24;
+      }
+    }
+  }
+}
