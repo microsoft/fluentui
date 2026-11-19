@@ -15,10 +15,260 @@
         "kind": "entryPoints",
         "name": "react-headless-components-preview: entire library"
       },
+      "Accordion.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./accordion",
+        "name": "@fluentui/react-headless-components-preview/accordion"
+      },
+      "Avatar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./avatar",
+        "name": "@fluentui/react-headless-components-preview/avatar"
+      },
+      "AvatarGroup.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./avatar-group",
+        "name": "@fluentui/react-headless-components-preview/avatar-group"
+      },
+      "Badge.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./badge",
+        "name": "@fluentui/react-headless-components-preview/badge"
+      },
+      "Breadcrumb.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./breadcrumb",
+        "name": "@fluentui/react-headless-components-preview/breadcrumb"
+      },
+      "Button.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./button",
+        "name": "@fluentui/react-headless-components-preview/button"
+      },
       "Calendar.fixture.js": {
         "kind": "entryPoint",
         "entryPoint": "./calendar",
         "name": "react-headless-components-preview: Calendar"
+      },
+      "Card.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./card",
+        "name": "@fluentui/react-headless-components-preview/card"
+      },
+      "Checkbox.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./checkbox",
+        "name": "@fluentui/react-headless-components-preview/checkbox"
+      },
+      "ColorPicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./color-picker",
+        "name": "@fluentui/react-headless-components-preview/color-picker"
+      },
+      "Combobox.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./combobox",
+        "name": "@fluentui/react-headless-components-preview/combobox"
+      },
+      "CompoundButton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./compound-button",
+        "name": "@fluentui/react-headless-components-preview/compound-button"
+      },
+      "DatePicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./date-picker",
+        "name": "react-headless-components-preview: DatePicker"
+      },
+      "Dialog.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./dialog",
+        "name": "@fluentui/react-headless-components-preview/dialog"
+      },
+      "Divider.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./divider",
+        "name": "@fluentui/react-headless-components-preview/divider"
+      },
+      "Drawer.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./drawer",
+        "name": "@fluentui/react-headless-components-preview/drawer"
+      },
+      "Dropdown.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./dropdown",
+        "name": "@fluentui/react-headless-components-preview/dropdown"
+      },
+      "Field.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./field",
+        "name": "@fluentui/react-headless-components-preview/field"
+      },
+      "Image.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./image",
+        "name": "@fluentui/react-headless-components-preview/image"
+      },
+      "InfoLabel.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./info-label",
+        "name": "@fluentui/react-headless-components-preview/info-label"
+      },
+      "Input.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./input",
+        "name": "@fluentui/react-headless-components-preview/input"
+      },
+      "InteractionTag.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./interaction-tag",
+        "name": "@fluentui/react-headless-components-preview/interaction-tag"
+      },
+      "Label.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./label",
+        "name": "@fluentui/react-headless-components-preview/label"
+      },
+      "Link.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./link",
+        "name": "@fluentui/react-headless-components-preview/link"
+      },
+      "List.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./list",
+        "name": "@fluentui/react-headless-components-preview/list"
+      },
+      "Menu.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./menu",
+        "name": "@fluentui/react-headless-components-preview/menu"
+      },
+      "MenuButton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./menu-button",
+        "name": "@fluentui/react-headless-components-preview/menu-button"
+      },
+      "MessageBar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./message-bar",
+        "name": "@fluentui/react-headless-components-preview/message-bar"
+      },
+      "Nav.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./nav",
+        "name": "@fluentui/react-headless-components-preview/nav"
+      },
+      "Overflow.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./overflow",
+        "name": "@fluentui/react-headless-components-preview/overflow"
+      },
+      "Persona.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./persona",
+        "name": "@fluentui/react-headless-components-preview/persona"
+      },
+      "Popover.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./popover",
+        "name": "@fluentui/react-headless-components-preview/popover"
+      },
+      "Positioning.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./positioning",
+        "name": "@fluentui/react-headless-components-preview/positioning"
+      },
+      "ProgressBar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./progress-bar",
+        "name": "@fluentui/react-headless-components-preview/progress-bar"
+      },
+      "Provider.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./provider",
+        "name": "@fluentui/react-headless-components-preview/provider"
+      },
+      "RadioGroup.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./radio-group",
+        "name": "@fluentui/react-headless-components-preview/radio-group"
+      },
+      "RangeSlider.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./range-slider",
+        "name": "@fluentui/react-headless-components-preview/range-slider"
+      },
+      "Rating.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./rating",
+        "name": "@fluentui/react-headless-components-preview/rating"
+      },
+      "RatingDisplay.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./rating-display",
+        "name": "@fluentui/react-headless-components-preview/rating-display"
+      },
+      "SearchBox.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./search-box",
+        "name": "@fluentui/react-headless-components-preview/search-box"
+      },
+      "Select.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./select",
+        "name": "@fluentui/react-headless-components-preview/select"
+      },
+      "Skeleton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./skeleton",
+        "name": "@fluentui/react-headless-components-preview/skeleton"
+      },
+      "Slider.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./slider",
+        "name": "@fluentui/react-headless-components-preview/slider"
+      },
+      "SpinButton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./spin-button",
+        "name": "@fluentui/react-headless-components-preview/spin-button"
+      },
+      "Spinner.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./spinner",
+        "name": "@fluentui/react-headless-components-preview/spinner"
+      },
+      "SplitButton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./split-button",
+        "name": "@fluentui/react-headless-components-preview/split-button"
+      },
+      "SwatchPicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./swatch-picker",
+        "name": "@fluentui/react-headless-components-preview/swatch-picker"
+      },
+      "Switch.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./switch",
+        "name": "@fluentui/react-headless-components-preview/switch"
+      },
+      "TabList.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tab-list",
+        "name": "@fluentui/react-headless-components-preview/tab-list"
+      },
+      "Tag.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tag",
+        "name": "@fluentui/react-headless-components-preview/tag"
+      },
+      "TagGroup.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tag-group",
+        "name": "@fluentui/react-headless-components-preview/tag-group"
       },
       "TagPicker.fixture.js": {
         "kind": "entryPoint",
@@ -29,6 +279,41 @@
         "kind": "entryPoint",
         "entryPoint": "./teaching-popover",
         "name": "@fluentui/react-headless-components-preview/teaching-popover"
+      },
+      "Textarea.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./textarea",
+        "name": "@fluentui/react-headless-components-preview/textarea"
+      },
+      "Toast.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./toast",
+        "name": "@fluentui/react-headless-components-preview/toast"
+      },
+      "ToggleButton.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./toggle-button",
+        "name": "@fluentui/react-headless-components-preview/toggle-button"
+      },
+      "Toolbar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./toolbar",
+        "name": "@fluentui/react-headless-components-preview/toolbar"
+      },
+      "Tooltip.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tooltip",
+        "name": "@fluentui/react-headless-components-preview/tooltip"
+      },
+      "Tree.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tree",
+        "name": "@fluentui/react-headless-components-preview/tree"
+      },
+      "Utils.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./utils",
+        "name": "@fluentui/react-headless-components-preview/utils"
       }
     }
   },
