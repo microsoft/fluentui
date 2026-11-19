@@ -39,7 +39,7 @@ export type CalendarDateLabelData = {
 export type CalendarDateTimeFormat = 'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'monthYear' | 'weekday' | 'shortWeekday';
 
 // @public
-export type CalendarDayCellData = Day & {
+export type CalendarDayCellData = CalendarDayData & {
     type: 'day';
     label: string;
     isNavigated: boolean;
@@ -47,7 +47,21 @@ export type CalendarDayCellData = Day & {
 };
 
 // @public
+export type CalendarDayData = {
+    key: string;
+    date: string;
+    originalDate: Date | null;
+    isInMonth: boolean;
+    isToday: boolean;
+    isSelected: boolean;
+    isInBounds: boolean;
+};
+
+// @public
 export type CalendarDismissData = CalendarEventData;
+
+// @public
+export type CalendarEventData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>>;
 
 // @public
 export type CalendarFormatters = {

@@ -130,7 +130,9 @@ export const getStartDateOfWeek = (date: Date, firstDayOfWeek: DayOfWeek): Date 
   for (let daysBack = 0; ; daysBack++) {
     const candidate = createDate(date.getFullYear(), date.getMonth(), date.getDate() - daysBack);
     if (!Number.isFinite(candidate.getTime())) {
-      throw new RangeError('Cannot align an invalid or out-of-range date.');
+      throw new RangeError(
+        process.env.NODE_ENV !== 'production' ? 'Cannot align an invalid or out-of-range date.' : undefined,
+      );
     }
     if (candidate.getDay() === firstDayOfWeekIndex) {
       return candidate;

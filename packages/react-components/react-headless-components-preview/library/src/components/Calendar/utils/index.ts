@@ -18,7 +18,7 @@ export { getDateRange, getDateRangeTypeToUse } from './dateRange';
 export { findAvailableDate, getAvailableDates, isRestrictedDate } from './dateAvailability';
 export type { RestrictedDatesOptions } from './dateAvailability';
 export { getDayGrid } from './dayGrid';
-export type { Day } from './dayGrid';
+export type { CalendarDayData } from './dayGrid';
 export { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 export type {
   CalendarDateLabelData,

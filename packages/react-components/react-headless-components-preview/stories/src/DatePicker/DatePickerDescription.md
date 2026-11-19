@@ -74,3 +74,9 @@ Calendar cells keep their own state attributes, such as `data-selected`, `data-t
 viewport clamping/auto-sizing are not implemented by these behavioral changes. They should be resolved in shared
 Calendar/positioning infrastructure, not duplicated in modern DatePicker. See the library's
 [positioning strategy RFC](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-headless-components-preview/library/docs/rfc-positioning-strategy.md).
+
+### Migrating from 0.4
+
+The embedded Calendar moved to the single-component API (see the Calendar docs). For DatePicker this means
+`calendar.closeButton` replaces the day panel's close button, `calendar.renderCell`/`renderRow`/`renderWeekdayCell`
+replace the prop getters, and the day heading opens the year grid (`dayHeadingView="year"`) by default.

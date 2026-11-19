@@ -6,6 +6,7 @@ export type {
   CalendarCellProps,
   CalendarDayCellData,
   CalendarDismissData,
+  CalendarEventData,
   CalendarLayout,
   CalendarMonthCellData,
   CalendarNavigateData,
@@ -28,6 +29,7 @@ export { calendarFormatters, createCalendarDateTimeFormatter } from './utils';
 export type {
   CalendarDateLabelData,
   CalendarDateTimeFormat,
+  CalendarDayData,
   CalendarFormatters,
   CalendarYearRangeLabelData,
   DateRangeType,

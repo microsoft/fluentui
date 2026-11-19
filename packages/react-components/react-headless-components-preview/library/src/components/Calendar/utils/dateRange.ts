@@ -24,7 +24,9 @@ export const getDateRange = (
   daysToSelectInDayView: number = 1,
 ): Date[] => {
   if (!Number.isInteger(daysToSelectInDayView)) {
-    throw new RangeError('daysToSelectInDayView must be a finite integer');
+    throw new RangeError(
+      process.env.NODE_ENV !== 'production' ? 'daysToSelectInDayView must be a finite integer' : undefined,
+    );
   }
   if (dateRangeType === 'day' && daysToSelectInDayView === 0) {
     return [];
@@ -58,7 +60,9 @@ export const getDateRange = (
       maximumRangeLength = 31;
   }
   if (!Number.isFinite(endDate.getTime())) {
-    throw new RangeError('Date range end is outside the representable date range');
+    throw new RangeError(
+      process.env.NODE_ENV !== 'production' ? 'Date range end is outside the representable date range' : undefined,
+    );
   }
 
   const workWeekDayIndices = workWeekDays.map(getDayIndex);

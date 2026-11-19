@@ -78,20 +78,40 @@ export const useDatePicker = (
   props: DatePickerProps,
   ref: React.Ref<HTMLInputElement | HTMLButtonElement>,
 ): DatePickerState => {
+  // DatePicker's own props and slots stay out of the DOM; className and style go to the root, everything else to the
+  // field control.
   const {
     allowTextInput = false,
+    calendar: calendarProp,
+    className,
+    defaultOpen,
+    defaultValue,
     disabled = false,
-    locale = 'en-US',
+    displayValue: displayValueProp,
+    errorMessage: errorMessageProp,
     formatDate: formatDateProp,
     formatErrorMessage = defaultFormatErrorMessage,
+    icon: iconProp,
+    input: inputProp,
+    locale = 'en-US',
     maxDate,
     minDate,
+    onDateChange,
     onOpenChange,
+    onValidationResult,
+    open: openProp,
     parseDate: parseDateProp,
     placeholder = 'Select a date',
+    popupSurface: popupSurfaceProp,
     positioning,
+    required: requiredProp,
+    root: rootProp,
     showGoToToday = false,
+    style,
     today: todayProp,
+    trigger: triggerProp,
+    value,
+    ...nativeProps
   } = props;
 
   const localeFormat = React.useMemo(() => createDatePickerFormat(locale), [locale]);
@@ -102,63 +122,28 @@ export const useDatePicker = (
 
   // A Field label's htmlFor would name the trigger button by the label alone, so the button uses aria-labelledby and
   // appends the displayed date.
-  const fieldControlProps = useFieldControlProps_unstable(props, { supportsLabelFor: allowTextInput });
-  // DatePicker's own props and slots stay out of the DOM; className and style go to the root, everything else to the
-  // field control.
-  const {
-    allowTextInput: _allowTextInput,
-    calendar: _calendar,
-    className,
-    defaultOpen: _defaultOpen,
-    defaultValue: _defaultValue,
-    disabled: _disabled,
-    displayValue: _displayValue,
-    errorMessage: _errorMessage,
-    formatDate: _formatDate,
-    formatErrorMessage: _formatErrorMessage,
-    icon: _icon,
-    input: _input,
-    locale: _locale,
-    maxDate: _maxDate,
-    minDate: _minDate,
-    onDateChange: _onDateChange,
-    onOpenChange: _onOpenChange,
-    onValidationResult: _onValidationResult,
-    open: _open,
-    parseDate: _parseDate,
-    placeholder: _placeholder,
-    popupSurface: _popupSurface,
-    positioning: _positioning,
-    required: _required,
-    root: _root,
-    showGoToToday: _showGoToToday,
-    style,
-    today: _today,
-    trigger: _trigger,
-    value: _value,
-    ...controlProps
-  } = fieldControlProps as DatePickerProps & Record<string, unknown>;
+  const controlProps: Record<string, unknown> & typeof nativeProps = useFieldControlProps_unstable(nativeProps, {
+    supportsLabelFor: allowTextInput,
+  });
   const required =
-    props.required === true ||
-    fieldControlProps['aria-required'] === true ||
-    fieldControlProps['aria-required'] === 'true';
-  const controlId = useId('datepicker-', fieldControlProps.id);
+    requiredProp === true || controlProps['aria-required'] === true || controlProps['aria-required'] === 'true';
+  const controlId = useId('datepicker-', controlProps.id);
 
-  const calendarProps: DatePickerCalendarProps = slot.resolveShorthand(props.calendar) ?? {};
+  const calendarProps: DatePickerCalendarProps = slot.resolveShorthand(calendarProp) ?? {};
   const restrictedDates = calendarProps.restrictedDates;
   const isDateUnavailable = (date: Date) => isRestrictedDate(date, { minDate, maxDate, restrictedDates });
 
   const dateState = useDatePickerDateState({
     allowTextInput,
-    defaultValue: props.defaultValue,
+    defaultValue,
     disabled,
     formatDate,
     isDateUnavailable,
-    onDateChange: props.onDateChange,
-    onValidationResult: props.onValidationResult,
+    onDateChange,
+    onValidationResult,
     parseDate,
     required,
-    value: props.value,
+    value,
   });
   const { error } = dateState;
 
@@ -182,8 +167,8 @@ export const useDatePicker = (
   const [displayedDate, setDisplayedDate] = React.useState(getInitialDisplayedDate);
 
   const [openState, setOpenState] = useControllableState({
-    state: props.open,
-    defaultState: props.defaultOpen,
+    state: openProp,
+    defaultState: defaultOpen,
     initialState: false,
   });
   const open = openState && !disabled;
@@ -294,11 +279,11 @@ export const useDatePicker = (
   // Field control
 
   const valueId = useId('datepicker-value-');
-  const surfaceId = useId('datepicker-popup-', slot.resolveShorthand(props.popupSurface)?.id);
-  const errorMessageSlot = slot.optional(props.errorMessage, { renderByDefault: true, elementType: 'div' });
+  const surfaceId = useId('datepicker-popup-', slot.resolveShorthand(popupSurfaceProp)?.id);
+  const errorMessageSlot = slot.optional(errorMessageProp, { renderByDefault: true, elementType: 'div' });
   const errorMessageId = useId('datepicker-error-', errorMessageSlot?.id);
   const describedBy =
-    [fieldControlProps['aria-describedby'], error && errorMessageSlot ? errorMessageId : undefined]
+    [controlProps['aria-describedby'], error && errorMessageSlot ? errorMessageId : undefined]
       .filter(Boolean)
       .join(' ') || undefined;
 
@@ -308,7 +293,7 @@ export const useDatePicker = (
     'aria-describedby': describedBy,
     'aria-expanded': open,
     'aria-haspopup': 'dialog' as const,
-    'aria-invalid': error ? true : fieldControlProps['aria-invalid'],
+    'aria-invalid': error ? true : controlProps['aria-invalid'],
     'aria-required': required || undefined,
   };
 
@@ -349,7 +334,7 @@ export const useDatePicker = (
   const formattedValue = dateState.value ? formatDate(dateState.value) : '';
 
   const input = allowTextInput
-    ? slot.always(props.input, {
+    ? slot.always(inputProp, {
         defaultProps: {
           ...(controlProps as Omit<React.ComponentProps<'input'>, 'children'>),
           autoComplete: 'off',
@@ -358,7 +343,7 @@ export const useDatePicker = (
         elementType: 'input',
       })
     : undefined;
-  const displayValue = slot.always(props.displayValue, {
+  const displayValue = slot.always(displayValueProp, {
     defaultProps: { children: formattedValue || placeholder },
     elementType: 'span',
   });
@@ -366,7 +351,7 @@ export const useDatePicker = (
 
   const trigger = allowTextInput
     ? undefined
-    : slot.always(props.trigger, {
+    : slot.always(triggerProp, {
         // Native props target the field control, which is a button when the field is not editable.
         defaultProps: { ...(controlProps as React.ComponentProps<'button'>), type: 'button' },
         elementType: 'button',
@@ -379,7 +364,7 @@ export const useDatePicker = (
   const controlInvalid = control['aria-invalid'];
   Object.assign(control, controlAriaProps);
   control['aria-describedby'] = mergeAriaDescribedBy(describedBy, controlDescribedBy);
-  control['aria-invalid'] = error ? true : controlInvalid ?? fieldControlProps['aria-invalid'];
+  control['aria-invalid'] = error ? true : controlInvalid ?? controlProps['aria-invalid'];
   control.id = controlId;
   control.disabled = disabled;
   control.ref = useMergedRefs(control.ref, ref as React.Ref<HTMLInputElement & HTMLButtonElement>, controlRef);
@@ -410,7 +395,7 @@ export const useDatePicker = (
     });
   }
 
-  const icon = slot.optional(props.icon, {
+  const icon = slot.optional(iconProp, {
     renderByDefault: true,
     defaultProps: { type: 'button', 'aria-label': 'Open calendar' },
     elementType: 'button',
@@ -485,7 +470,7 @@ export const useDatePicker = (
 
   // Calendar
 
-  const calendar = slot.always<CalendarProps>(props.calendar, {
+  const calendar = slot.always<CalendarProps>(calendarProp, {
     defaultProps: {
       calendarMonthColumns: 3,
       calendarYearColumns: 3,
@@ -514,7 +499,7 @@ export const useDatePicker = (
 
   // Popup surface
 
-  const popupSurface = slot.always(props.popupSurface, {
+  const popupSurface = slot.always(popupSurfaceProp, {
     defaultProps: {
       'aria-label': formatDateTime({ date: displayedDate, format: 'monthYear' }),
       role: 'dialog',
@@ -540,7 +525,7 @@ export const useDatePicker = (
 
   // Root
 
-  const root = slot.always(props.root, { defaultProps: { className, style }, elementType: 'div' });
+  const root = slot.always(rootProp, { defaultProps: { className, style }, elementType: 'div' });
   root.ref = useMergedRefs(root.ref, rootRef, targetRef);
   // Applied after consumer props so reserved state cannot be misrepresented.
   Object.assign(root, {

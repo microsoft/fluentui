@@ -9,7 +9,7 @@ import type {
   RefAttributes,
   Slot,
 } from '@fluentui/react-utilities';
-import type { CalendarFormatters, Day, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
+import type { CalendarFormatters, CalendarDayData, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
 
 /** The grids Calendar can show. The month panel shows either the month grid or the year grid. */
 export type CalendarView = 'day' | 'month' | 'year';
@@ -17,7 +17,8 @@ export type CalendarView = 'day' | 'month' | 'year';
 /** Controls how the day and month panels are arranged. */
 export type CalendarLayout = 'sideBySide' | 'overlay';
 
-type CalendarEventData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
+/** Event data shared by Calendar callbacks. */
+export type CalendarEventData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
 
 /**
  * Slots rendered once by Calendar.
@@ -69,7 +70,7 @@ export type CalendarPanelSlots = {
 };
 
 /** A day cell. `originalDate` is `null` for a civil date that does not exist in the local timezone. */
-export type CalendarDayCellData = Day & {
+export type CalendarDayCellData = CalendarDayData & {
   type: 'day';
   /** The formatted day number, or the civil date label when `originalDate` is `null`. */
   label: string;

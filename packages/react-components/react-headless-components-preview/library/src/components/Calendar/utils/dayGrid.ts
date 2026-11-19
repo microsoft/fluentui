@@ -6,7 +6,7 @@ import { getAvailableDates, isRestrictedDate } from './dateAvailability';
 import type { RestrictedDatesOptions } from './dateAvailability';
 
 /** A day of the day grid. */
-export type Day = {
+export type CalendarDayData = {
   /** Local year, zero-based month and day joined with hyphens (`year-month-day`). */
   key: string;
   /** The day of the month. */
@@ -44,11 +44,13 @@ export type DayGridOptions = RestrictedDatesOptions & {
  * Returns the visible weeks of the day grid, including the outside-month days that complete each week.
  * @throws RangeError if the week count is invalid or grid dates cannot be represented.
  */
-export const getDayGrid = (options: DayGridOptions): Day[][] => {
+export const getDayGrid = (options: DayGridOptions): CalendarDayData[][] => {
   const { selectedDate, dateRangeType, firstDayOfWeek, today, weeksToShow, workWeekDays, navigatedDate } = options;
 
   if (weeksToShow !== undefined && !(Number.isInteger(weeksToShow) && weeksToShow > 0)) {
-    throw new RangeError('weeksToShow must be a positive finite integer.');
+    throw new RangeError(
+      process.env.NODE_ENV !== 'production' ? 'weeksToShow must be a positive finite integer.' : undefined,
+    );
   }
 
   const year = navigatedDate.getFullYear();
@@ -70,7 +72,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     : [];
 
   let civilDate = { year: start.getFullYear(), month: start.getMonth(), day: start.getDate() };
-  const weeks: Day[][] = [];
+  const weeks: CalendarDayData[][] = [];
   while (
     weeksToShow !== undefined
       ? weeks.length < weeksToShow
@@ -78,11 +80,13 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         civilDate.year < year ||
         (civilDate.year === year && civilDate.month <= month)
   ) {
-    const week: Day[] = [];
+    const week: CalendarDayData[] = [];
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
       const date = createDate(civilDate.year, civilDate.month, civilDate.day);
       if (!Number.isFinite(date.getTime())) {
-        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
+        throw new RangeError(
+          process.env.NODE_ENV !== 'production' ? 'Cannot generate a grid containing an out-of-range date.' : undefined,
+        );
       }
       const originalDate = matchesCivilDate(date, civilDate) ? date : null;
       week.push({

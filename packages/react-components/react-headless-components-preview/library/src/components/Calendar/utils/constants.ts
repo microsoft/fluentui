@@ -19,13 +19,7 @@ export const daysOfWeek = [
 /**
  * Default working days used by work-week ranges.
  */
-export const DEFAULT_WORK_WEEK_DAYS = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-] as const satisfies readonly DayOfWeek[];
+export const DEFAULT_WORK_WEEK_DAYS: readonly DayOfWeek[] = /*#__PURE__*/ daysOfWeek.slice(1, 6);
 
 /**
  * Determines which week counts as the first week of the year.

@@ -61,7 +61,9 @@ export const findAvailableDate = (options: AvailableDateOptions): Date | undefin
     daysOffset += direction;
     availableDate = addDays(targetDate, daysOffset);
     if (!Number.isFinite(availableDate.getTime())) {
-      throw new RangeError('Cannot search for an out-of-range date.');
+      throw new RangeError(
+        process.env.NODE_ENV !== 'production' ? 'Cannot search for an out-of-range date.' : undefined,
+      );
     }
   }
   return compareDatePart(initialDate, availableDate) !== 0 && !isRestrictedDate(availableDate, restrictions)

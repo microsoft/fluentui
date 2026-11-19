@@ -83,6 +83,8 @@ const CELL_KEY = 'data-fui-calendar-cell';
 const getCellElements = (grid: Element): Map<string | null, HTMLElement> =>
   new Map(getGridCells(grid).map(element => [element.getAttribute(CELL_KEY), element]));
 
+const isPrevented = (event: React.SyntheticEvent): boolean => event.isDefaultPrevented();
+
 const eventType = (event: React.SyntheticEvent | Event): 'click' | 'keydown' =>
   event.type === 'keydown' ? 'keydown' : 'click';
 
@@ -485,7 +487,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   const toRows = (cells: (CalendarMonthCellData | CalendarYearCellData)[], columns: number) => {
     if (columns !== 3 && columns !== 4) {
-      throw new RangeError('Calendar picker columns must be 3 or 4.');
+      throw new RangeError(
+        process.env.NODE_ENV !== 'production' ? 'Calendar picker columns must be 3 or 4.' : undefined,
+      );
     }
     return Array.from({ length: YEAR_COUNT / columns }, (_, key) => ({
       type: cells[0].type,
@@ -597,16 +601,14 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const onActivate = <T,>(buttonSlot: T, enabled: boolean, activate: (event: CalendarEvent) => void): T => {
     const typed = buttonSlot as React.ButtonHTMLAttributes<HTMLElement>;
     typed.onClick = mergeCallbacks(typed.onClick, event => {
-      if (enabled && !event.isDefaultPrevented()) {
+      if (enabled && !isPrevented(event)) {
         activate(event);
       }
     });
     typed.onKeyDown = mergeCallbacks(typed.onKeyDown, event => {
-      if (enabled && !event.isDefaultPrevented() && event.key === Enter) {
+      if (enabled && !isPrevented(event) && event.key === Enter) {
         activate(event);
-        if (!event.isDefaultPrevented()) {
-          event.preventDefault();
-        }
+        event.preventDefault();
       }
     });
     return buttonSlot;
@@ -759,7 +761,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       const found = getCell(event);
       // Keys from content inside a month or year cell, including its button, keep their native behavior. Day cells
       // own keys from their content; Enter and Space are cancelled, so the day button does not also click.
-      if (!found || event.isDefaultPrevented() || (!isDay && event.target !== found[0])) {
+      if (!found || isPrevented(event) || (!isDay && event.target !== found[0])) {
         return;
       }
       const [, cell] = found;
@@ -769,9 +771,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         setPagingDate(event, cell.type === 'day' ? cell.originalDate! : undefined);
       } else if ((event.key === Enter || event.key === Space) && cell.isInBounds) {
         activateCell(event, cell);
-        if (!event.isDefaultPrevented()) {
-          event.preventDefault();
-        }
+        event.preventDefault();
       } else if (isGridNavigationKey(event)) {
         // Cells a renderer omitted cannot take focus.
         const elements = getCellElements(event.currentTarget);
@@ -798,14 +798,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
           navigateBeyond(event, cell.originalDate!);
         }
         // Boundary keys are owned too, so the page does not scroll when focus cannot move further.
-        if (!event.isDefaultPrevented()) {
-          event.preventDefault();
-        }
+        event.preventDefault();
       }
     });
     gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (event: React.MouseEvent<HTMLElement>) => {
       const found = getCell(event);
-      if (found && !event.isDefaultPrevented()) {
+      if (found && !isPrevented(event)) {
         found[0].focus();
         if (found[1].isInBounds) {
           activateCell(event, found[1]);
@@ -1018,7 +1016,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   });
   if (goToTodaySlot) {
     goToTodaySlot.onClick = mergeCallbacks(goToTodaySlot.onClick, event => {
-      if (!event.isDefaultPrevented() && goToTodayEnabled) {
+      if (!isPrevented(event) && goToTodayEnabled) {
         setPickerYear(resolvedToday.getFullYear());
         const keepsFocus = navigate(event, resolvedToday, 'first');
         if (isOverlay && view !== 'day') {
@@ -1036,7 +1034,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     pagingDate.current = undefined;
     const date = paging?.event === event.nativeEvent ? paging.date : navigatedDate;
     rootProps.onKeyDown?.(event);
-    if (event.isDefaultPrevented()) {
+    if (isPrevented(event)) {
       return;
     }
     const inYearPicker = (event.target as Element).closest('[data-view]')?.getAttribute('data-view') === 'year';

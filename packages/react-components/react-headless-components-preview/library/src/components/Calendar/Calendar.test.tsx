@@ -91,6 +91,43 @@ describe('Calendar rendering and public API', () => {
     expect(getByRole('button', { name })).toBeInTheDocument();
   });
 
+  it('renders the close button once, in the first panel, and reports a click dismissal', () => {
+    const onDismiss = jest.fn();
+    const { getAllByRole, container } = render(<Calendar today={today} closeButton={{}} onDismiss={onDismiss} />);
+    const closeButtons = getAllByRole('button', { name: calendarFormatters.closeLabel() });
+    expect(closeButtons).toHaveLength(1);
+    expect(closeButtons[0].closest('[data-view]')).toBe(container.querySelector('[data-view="day"]'));
+
+    fireEvent.click(closeButtons[0]);
+
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+    expect(onDismiss.mock.calls[0][1]).toMatchObject({ type: 'click' });
+  });
+
+  it('reports an Enter dismissal from the close button', () => {
+    const onDismiss = jest.fn();
+    const { getByRole } = render(<Calendar today={today} closeButton={{}} onDismiss={onDismiss} />);
+
+    fireEvent.keyDown(getByRole('button', { name: calendarFormatters.closeLabel() }), { key: 'Enter' });
+
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+    expect(onDismiss.mock.calls[0][1]).toMatchObject({ type: 'keydown' });
+  });
+
+  it('renders no close button by default and keeps one inert without onDismiss', () => {
+    const { queryByRole, rerender } = render(<Calendar today={today} />);
+    expect(queryByRole('button', { name: calendarFormatters.closeLabel() })).toBeNull();
+
+    rerender(<Calendar today={today} closeButton={{}} />);
+    expect(() => fireEvent.click(queryByRole('button', { name: calendarFormatters.closeLabel() })!)).not.toThrow();
+  });
+
+  it.each(['month', 'year'] as const)('starts an uncontrolled overlay Calendar in the %s view', defaultView => {
+    const { container } = render(<Calendar today={today} layout="overlay" defaultView={defaultView} />);
+    expect(container.querySelector(`[data-view="${defaultView}"]`)).not.toBeNull();
+    expect(container.querySelector('[data-view="day"]')).toBeNull();
+  });
+
   it('keeps a day heading set to open the hidden year grid static in the side-by-side layout', () => {
     const onViewChange = jest.fn();
     const { container } = render(

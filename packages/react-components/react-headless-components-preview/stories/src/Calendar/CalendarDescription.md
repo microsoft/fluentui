@@ -151,3 +151,26 @@ A custom renderer iterates `state.panels` and gets built-in props from the state
 Default date formatting uses en-US ordering and the Gregorian calendar. Pass
 `createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` for other locales; override the
 label formatter functions as well when their assistive-technology text needs localization.
+
+### Migrating from 0.4
+
+Calendar is now a single component. If you used the earlier sub-components or prop getters:
+
+| Before                                                                                | Now                                                                                    |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `CalendarDay`                                                                         | `<Calendar monthPicker={null} />`                                                      |
+| `CalendarMonth`                                                                       | `<Calendar dayPicker={null} />`                                                        |
+| `CalendarYear`                                                                        | `<Calendar dayPicker={null} view="year" />` (or `defaultView="year"`)                  |
+| `CalendarProvider` and the context hooks                                              | Removed; `useCalendar` returns all state                                               |
+| `getCellProps`, `getRowProps`, `getWeekdayCellProps`                                  | `renderCell`, `renderRow`, `renderWeekdayCell` — spread overrides into `defaultRender` |
+| Six previous/next button slots                                                        | `previousButton` and `nextButton`, applied to every panel                              |
+| `weeksToShow`, `getMarkedDays`, `daysToSelectInDayView`, `yearPickerHidden` on panels | Root props                                                                             |
+| `monthPickerWrapper`, the day `body` slot                                             | Removed; `grid.children` replaces every row, including the weekday header              |
+| `closeButton` on the day panel                                                        | Root `closeButton`, rendered in the first panel                                        |
+| Week row `days`                                                                       | Week row `cells`                                                                       |
+| `Day.isPlaceholder`                                                                   | `originalDate === null`                                                                |
+| `Day.isSingleSelected`, `MonthOfYear`                                                 | Removed                                                                                |
+
+A controlled `view` must also accept `'year'`, and `dayHeadingView` chooses what the day heading opens. The year grid
+always starts at the displayed year. Selection callbacks receive the grid's event, so `event.currentTarget` is the
+grid, not the cell button.
