@@ -14,7 +14,6 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.17.16",
     "@fluentui/react-button": "^9.11.3",
-    "@fluentui/react-context-selector": "^9.2.21",
     "@fluentui/react-divider": "^9.7.6",
     "@fluentui/react-drawer": "^9.13.5",
     "@fluentui/react-icons": "^2.0.245",

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: remove unused dependency on @fluentui/react-theme",
+  "packageName": "@fluentui/react-overflow",
+  "email": "vgenaev@gmail.com"
+}
