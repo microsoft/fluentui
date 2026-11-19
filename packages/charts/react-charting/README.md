@@ -22,8 +22,9 @@ to format the complete overflow label, including number placement and pluralizat
 The callback receives the hidden legend count and supplies both the visible text and accessible name.
 String values retain the existing count-first formatting.
 The exported `ILegendOverflowTextFormatter` interface defines the callback signature.
-Chart-level `legendsOverflowText` props share the named `LegendOverflowText` type with `Legends`, including
-Cartesian charts, donut charts, and stacked bar charts. Alternatively, pass the formatter through
+`Legends.overflowText` and stacked bar chart overflow props use the named `LegendOverflowText` type.
+Existing permissive chart-level `legendsOverflowText` props retain their legacy input compatibility,
+including numeric suffixes. For typed labels and contextually typed formatter parameters, use
 `legendProps.overflowText`; this takes precedence over the chart-level prop.
 Area, grouped vertical bar, and heat map charts also support `legendsOverflowText`.
 Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,

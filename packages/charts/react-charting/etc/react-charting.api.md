@@ -424,7 +424,7 @@ export interface ICartesianChartProps {
     // (undocumented)
     legendProps?: Partial<ILegendsProps>;
     legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: LegendOverflowText;
+    legendsOverflowText?: any;
     margins?: IMargins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;

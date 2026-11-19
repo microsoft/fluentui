@@ -17,7 +17,14 @@ import {
   VerticalBarChart,
   VerticalStackedBarChart,
 } from '../../index';
-import type { LegendsProps, LegendOverflowText, LegendOverflowTextFormatter } from '../../index';
+import type {
+  CartesianChartProps,
+  DonutChartProps,
+  HorizontalBarChartProps,
+  LegendsProps,
+  LegendOverflowText,
+  LegendOverflowTextFormatter,
+} from '../../index';
 
 type OverflowProps = {
   width?: number;
@@ -225,6 +232,27 @@ describe('chart legend overflow labels', () => {
         Reflect.deleteProperty(HTMLElement.prototype, property);
       }
     }
+  });
+
+  it('preserves legacy public chart inputs alongside typed complete-label formatters', () => {
+    const cartesianProps: Pick<CartesianChartProps, 'legendsOverflowText'> = { legendsOverflowText: 42 };
+    const donutProps: Pick<DonutChartProps, 'legendsOverflowText'> = { legendsOverflowText: 42 };
+    const horizontalBarProps: Pick<HorizontalBarChartProps, 'legendsOverflowText'> = { legendsOverflowText: 42 };
+    const localizedLegends: Pick<LegendsProps, 'overflowText'> = {
+      overflowText: count => `mais ${count.toFixed(0)} legendas`,
+    };
+
+    expect(cartesianProps.legendsOverflowText).toBe(42);
+    expect(horizontalBarProps.legendsOverflowText).toBe(42);
+    const result = render(<DonutChart data={chartData} width={650} height={350} {...donutProps} />);
+    const count = result.container.querySelectorAll('button[role="option"][data-overflowing]').length;
+    expect(count).toBeGreaterThan(0);
+    expect(result.getByRole('button', { name: `+${count} 42` }).textContent).toBe(`+${count} 42`);
+
+    result.rerender(
+      <DonutChart data={chartData} width={650} height={350} {...donutProps} legendProps={localizedLegends} />,
+    );
+    expect(result.getByRole('button', { name: `mais ${count} legendas` }).textContent).toBe(`mais ${count} legendas`);
   });
 
   describe.each(charts)('$name', chart => {

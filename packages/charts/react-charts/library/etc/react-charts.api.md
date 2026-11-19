@@ -215,7 +215,7 @@ export interface CartesianChartProps {
     href?: string;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    legendsOverflowText?: LegendOverflowText;
+    legendsOverflowText?: any;
     margins?: Margins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
@@ -738,7 +738,7 @@ export interface DonutChartProps extends CartesianChartProps {
     innerRadius?: number;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    legendsOverflowText?: LegendOverflowText;
+    legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     order?: 'default' | 'sorted';
     parentRef?: HTMLElement | null;
@@ -1138,7 +1138,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     hideTooltip?: boolean;
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
-    legendsOverflowText?: LegendOverflowText;
+    legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
     showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;

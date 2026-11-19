@@ -4,7 +4,7 @@ import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { ILegendsProps, LegendOverflowText } from '../Legends/index';
+import { ILegendsProps } from '../Legends/index';
 import { ITitleStyles } from '../../utilities/Common.styles';
 import {
   AxisCategoryOrder,
@@ -387,8 +387,10 @@ export interface ICartesianChartProps {
 
   /**
    * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
+   * Retains legacy permissive typing for compatibility. Use legendProps.overflowText for typed labels.
    */
-  legendsOverflowText?: LegendOverflowText;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  legendsOverflowText?: any;
 
   /**
    * focus zone props in hover card for legends

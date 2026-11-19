@@ -13,9 +13,10 @@ including number placement and pluralization. The callback receives the hidden l
 both the visible text and accessible name; no count or `+` prefix is added to its result.
 String values retain the existing count-first formatting.
 The exported `LegendOverflowTextFormatter` interface defines the callback signature.
-Charts exposing `legendsOverflowText` share the named `LegendOverflowText` type with `Legends`, including
-Cartesian charts, donut charts, and horizontal bar charts. Alternatively, pass the formatter through
-`legendProps.overflowText`; this takes precedence over the chart-level prop.
+`Legends.overflowText` uses the named `LegendOverflowText` type. Existing permissive chart-level
+`legendsOverflowText` props retain their legacy input compatibility, including numeric suffixes on
+Cartesian, donut, and horizontal bar charts. For typed labels and contextually typed formatter parameters,
+use `legendProps.overflowText`; this takes precedence over the chart-level prop.
 Area and heat map charts also support `legendsOverflowText`.
 Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,
 to localize the accessible name of the legend list and overflow menu. When the label is omitted or empty, the list is named

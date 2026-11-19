@@ -18,7 +18,13 @@ import {
   VerticalBarChart,
   VerticalStackedBarChart,
 } from '../../index';
-import { ILegendsProps, LegendOverflowText, ILegendOverflowTextFormatter } from '../../index';
+import {
+  ICartesianChartProps,
+  IDonutChartProps,
+  ILegendsProps,
+  LegendOverflowText,
+  ILegendOverflowTextFormatter,
+} from '../../index';
 
 type OverflowProps = {
   legendsOverflowText?: LegendOverflowText;
@@ -179,6 +185,23 @@ describe('chart legend overflow labels', () => {
     } else {
       Reflect.deleteProperty(SVGElement.prototype, 'getComputedTextLength');
     }
+  });
+
+  it('preserves legacy public chart inputs alongside typed complete-label formatters', () => {
+    const cartesianProps: Pick<ICartesianChartProps, 'legendsOverflowText'> = { legendsOverflowText: 42 };
+    const donutProps: Pick<IDonutChartProps, 'legendsOverflowText'> = { legendsOverflowText: 42 };
+    const localizedLegends: Pick<ILegendsProps, 'overflowText'> = {
+      overflowText: count => `mais ${count.toFixed(0)} legendas`,
+    };
+
+    expect(cartesianProps.legendsOverflowText).toBe(42);
+    const result = render(<DonutChart data={chartData} {...donutProps} legendProps={wrappedOverflow} />);
+    expect(result.getByRole('button', { name: '2 42' }).textContent).toBe('2 42');
+
+    result.rerender(
+      <DonutChart data={chartData} {...donutProps} legendProps={{ ...wrappedOverflow, ...localizedLegends }} />,
+    );
+    expect(result.getByRole('button', { name: 'mais 2 legendas' }).textContent).toBe('mais 2 legendas');
   });
 
   describe.each(charts)('$name', chart => {
