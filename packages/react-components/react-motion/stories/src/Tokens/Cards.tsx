@@ -37,6 +37,10 @@ function getEasingParameters(value: string) {
     .join(', ');
 }
 
+const CURVE_PREVIEW_DURATION = 2000;
+// The marker rises until this fraction of the loop, then rests at the top.
+const CURVE_REST_OFFSET = 0.6;
+
 const CurvePreview = createMotionComponent<{ easing: string }>(({ easing }) => {
   // The marker box is as tall as the plot and draws its tick at its bottom edge,
   // so translating by its own height moves the tick from progress 0 to progress 1.
@@ -45,16 +49,41 @@ const CurvePreview = createMotionComponent<{ easing: string }>(({ easing }) => {
 
   return {
     keyframes: [
-      { transform: markerAtBottom, offset: 0, easing },
-      { transform: markerAtTop, offset: 0.6 },
-      { transform: markerAtTop, offset: 1 },
+      { transform: markerAtBottom, opacity: 1, offset: 0, easing },
+      // The marker reaches the top, then fades out over the rest of the loop.
+      { transform: markerAtTop, opacity: 1, offset: CURVE_REST_OFFSET },
+      { transform: markerAtTop, opacity: 0, offset: 1 },
     ],
-    duration: 2000,
+    duration: CURVE_PREVIEW_DURATION,
     iterations: Infinity,
     reducedMotion: {
+      // Play once and stay visible at the top.
+      keyframes: [
+        { transform: markerAtBottom, offset: 0, easing },
+        { transform: markerAtTop, offset: CURVE_REST_OFFSET },
+        { transform: markerAtTop, offset: 1 },
+      ],
       iterations: 1,
     },
   };
+});
+
+/**
+ * Fades a second marker in at progress 0 while the first one rests and fades out at the top,
+ * so the next loop starts from a marker that is already visible.
+ */
+const IncomingMarkerPreview = createMotionComponent({
+  keyframes: [
+    { opacity: 0, offset: 0 },
+    { opacity: 0, offset: CURVE_REST_OFFSET, easing: curves.curveAccelerateMin },
+    { opacity: 1, offset: 1 },
+  ],
+  duration: CURVE_PREVIEW_DURATION,
+  iterations: Infinity,
+  reducedMotion: {
+    keyframes: [{ opacity: 0 }, { opacity: 0 }],
+    iterations: 1,
+  },
 });
 
 const MotionCurveCard: React.FC<{
@@ -68,6 +97,7 @@ const MotionCurveCard: React.FC<{
   const classes = useCardClasses();
   const { x1, y1, x2, y2 } = getPointsFromEasing(tokenValue);
   const motionRef = React.useRef<MotionImperativeRef>(null);
+  const incomingMotionRef = React.useRef<MotionImperativeRef>(null);
 
   // Each time previews start again, a new run id remounts the progress line so it restarts from the bottom.
   const [runId, setRunId] = React.useState(0);
@@ -81,7 +111,9 @@ const MotionCurveCard: React.FC<{
 
   // A layout effect pauses the animation before the first paint, so a disabled preview never shows a moving frame.
   useIsomorphicLayoutEffect(() => {
-    motionRef.current?.setPlayState(animationEnabled ? 'running' : 'paused');
+    const playState = animationEnabled ? 'running' : 'paused';
+    motionRef.current?.setPlayState(playState);
+    incomingMotionRef.current?.setPlayState(playState);
   }, [animationEnabled]);
 
   return (
@@ -101,9 +133,12 @@ const MotionCurveCard: React.FC<{
         {/* Fade in quickly when previews start and fade out more gently when they stop. */}
         <Fade visible={animationEnabled} duration={durations.durationFast} exitDuration={durations.durationGentle}>
           <div className={classes.markerLayer}>
-            <CurvePreview key={runId} imperativeRef={motionRef} easing={tokenValue}>
+            <CurvePreview key={`curve-${runId}`} imperativeRef={motionRef} easing={tokenValue}>
               <div className={classes.marker} />
             </CurvePreview>
+            <IncomingMarkerPreview key={`incoming-${runId}`} imperativeRef={incomingMotionRef}>
+              <div className={classes.marker} />
+            </IncomingMarkerPreview>
           </div>
         </Fade>
         <svg className={classes.overlay} viewBox="0 0 100 100" aria-hidden="true">
