@@ -118,7 +118,9 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    /** @internal */
     titleId: string;
+    /** @internal */
     setTitleId: (titleId: string) => void;
     /** @internal */
     dismissButtonAutoFocus: boolean;
@@ -145,7 +147,9 @@ export type PopoverContextValue = Pick<
   | 'surfaceId'
   | 'inertTrapFocus'
 > & {
+  /** @internal */
   titleId: string;
+  /** @internal */
   setTitleId: (titleId: string) => void;
   /** @internal */
   dismissButtonAutoFocus: boolean;
