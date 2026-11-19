@@ -6,10 +6,7 @@
   "tags": ["vNext", "platform:web", "react-headless"],
   "implicitDependencies": [],
   "metadata": {
-    "exportMap": {
-      "root": true,
-      "subpathEntryPoints": ["src/*.ts"]
-    },
+    "exportMap": { "root": true, "subpathEntryPoints": ["src/*.ts"] },
     "bundleSizeFixtures": {
       "AllComponents.fixture.js": {
         "kind": "entryPoints",
@@ -314,14 +311,13 @@
         "kind": "entryPoint",
         "entryPoint": "./utils",
         "name": "@fluentui/react-headless-components-preview/utils"
+      },
+      "TimePicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./time-picker",
+        "name": "@fluentui/react-headless-components-preview/time-picker"
       }
     }
   },
-  "targets": {
-    "generate-api": {
-      "options": {
-        "exportSubpaths": true
-      }
-    }
-  }
+  "targets": { "generate-api": { "options": { "exportSubpaths": true } } }
 }

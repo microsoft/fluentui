@@ -17,7 +17,8 @@
   background: var(--bg-elev);
   padding-inline: var(--space-3);
   box-shadow: var(--shadow-1);
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
