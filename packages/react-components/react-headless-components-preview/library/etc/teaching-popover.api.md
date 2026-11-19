@@ -15,7 +15,7 @@ import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/rea
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable as renderTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
@@ -258,6 +258,10 @@ export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    titleId: string;
+    setTitleId: (titleId: string) => void;
+    dismissButtonAutoFocus: boolean;
+    setDismissButtonAutoFocus: (autoFocus: boolean) => void;
     shouldRenderSurface: boolean;
 };
 
