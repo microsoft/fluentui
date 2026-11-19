@@ -100,6 +100,11 @@ export const useCardClasses = makeStyles({
     // Forced colors removes the background, and paints the transparent border so tiles stay separate.
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
+  markerLayer: {
+    position: 'absolute',
+    inset: 0,
+    pointerEvents: 'none',
+  },
   marker: {
     '--tick-thickness': '2px',
     position: 'absolute',

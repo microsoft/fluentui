@@ -69,6 +69,16 @@ const MotionCurveCard: React.FC<{
   const { x1, y1, x2, y2 } = getPointsFromEasing(tokenValue);
   const motionRef = React.useRef<MotionImperativeRef>(null);
 
+  // Each time previews start again, a new run id remounts the progress line so it restarts from the bottom.
+  const [runId, setRunId] = React.useState(0);
+  const [wasAnimationEnabled, setWasAnimationEnabled] = React.useState(animationEnabled);
+  if (wasAnimationEnabled !== animationEnabled) {
+    setWasAnimationEnabled(animationEnabled);
+    if (animationEnabled) {
+      setRunId(id => id + 1);
+    }
+  }
+
   // A layout effect pauses the animation before the first paint, so a disabled preview never shows a moving frame.
   useIsomorphicLayoutEffect(() => {
     motionRef.current?.setPlayState(animationEnabled ? 'running' : 'paused');
@@ -88,9 +98,14 @@ const MotionCurveCard: React.FC<{
           <line className={classes.referenceLine} x1="0" y1="50" x2="100" y2="50" />
         </svg>
         {/* The progress line sits between the reference grid and the curve layer, so the curve and handles stay on top. */}
-        <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
-          <div className={classes.marker} />
-        </CurvePreview>
+        {/* Fade in quickly when previews start and fade out more gently when they stop. */}
+        <Fade visible={animationEnabled} duration={durations.durationFast} exitDuration={durations.durationGentle}>
+          <div className={classes.markerLayer}>
+            <CurvePreview key={runId} imperativeRef={motionRef} easing={tokenValue}>
+              <div className={classes.marker} />
+            </CurvePreview>
+          </div>
+        </Fade>
         <svg className={classes.overlay} viewBox="0 0 100 100" aria-hidden="true">
           <Fade visible={controlPointsVisible}>
             <g className={classes.handle}>
