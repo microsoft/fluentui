@@ -1,9 +1,21 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
+import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
 import { Overflow, OverflowItem, useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from './';
 
+polyfillBodyAndObserve();
+
 describe('Menu scrolling during keyboard navigation', () => {
+  before(function () {
+    cy.window().then(win => {
+      // Viewport geometry depends on native CSS anchor positioning.
+      if (!win.CSS.supports('position-area', 'block-end')) {
+        this.skip();
+      }
+    });
+  });
+
   const ids = Array.from({ length: 20 }, (_, index) => index);
   const Item = ({ index }: { index: number }) => <MenuItem id={`scroll-item-${index}`}>Action {index + 1}</MenuItem>;
   const OverflowMenuItem = ({ index }: { index: number }) =>
@@ -17,7 +29,7 @@ describe('Menu scrolling during keyboard navigation', () => {
             More actions
           </button>
         </MenuTrigger>
-        <MenuPopover id="scroll-surface" style={{ maxBlockSize: '100%', overflowY: 'auto' }}>
+        <MenuPopover id="scroll-surface" style={{ boxSizing: 'border-box', maxBlockSize: '100%', overflowY: 'auto' }}>
           <MenuList>
             {ids.map(index => (
               <OverflowMenuItem key={index} index={index} />
@@ -44,7 +56,7 @@ describe('Menu scrolling during keyboard navigation', () => {
       <MenuTrigger>
         <button id="scroll-trigger">Actions</button>
       </MenuTrigger>
-      <MenuPopover id="scroll-surface" style={{ maxBlockSize: '100%', overflowY: 'auto' }}>
+      <MenuPopover id="scroll-surface" style={{ boxSizing: 'border-box', maxBlockSize: '100%', overflowY: 'auto' }}>
         <MenuList>
           {ids.map(index => (
             <Item key={index} index={index} />
