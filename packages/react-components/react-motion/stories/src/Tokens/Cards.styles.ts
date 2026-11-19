@@ -101,23 +101,20 @@ export const useCardClasses = makeStyles({
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   marker: {
-    '--tick-length': '12px',
-    '--tick-thickness': '3px',
+    '--tick-thickness': '2px',
     position: 'absolute',
-    top: 0,
-    // Sit fully outside the plot square, starting at its right edge.
-    right: 'calc(var(--tick-length) * -1)',
-    width: 'var(--tick-length)',
-    height: '100%',
+    // Span the plot square and keep the line inside it at progress 0 and 1.
+    top: 'var(--tick-thickness)',
+    insetInline: 0,
+    height: 'calc(100% - var(--tick-thickness))',
     pointerEvents: 'none',
 
     '::after': {
       content: '""',
       position: 'absolute',
       insetInline: 0,
-      bottom: 'calc(var(--tick-thickness) / -2)',
+      bottom: 0,
       height: 'var(--tick-thickness)',
-      borderRadius: tokens.borderRadiusSmall,
       backgroundColor: tokens.colorBrandBackground,
     },
 
@@ -142,6 +139,14 @@ export const useCardClasses = makeStyles({
     '@media (forced-colors: active)': {
       outline: `${tokens.strokeWidthThin} solid CanvasText`,
     },
+  },
+  overlay: {
+    position: 'absolute',
+    inset: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'visible',
+    pointerEvents: 'none',
   },
   referenceLine: {
     stroke: tokens.colorNeutralStroke1,

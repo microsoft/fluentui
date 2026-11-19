@@ -86,6 +86,12 @@ const MotionCurveCard: React.FC<{
           <line className={classes.referenceLine} x1="0" y1="100" x2="100" y2="0" />
           <line className={classes.referenceLine} x1="50" y1="0" x2="50" y2="100" />
           <line className={classes.referenceLine} x1="0" y1="50" x2="100" y2="50" />
+        </svg>
+        {/* The progress line sits between the reference grid and the curve layer, so the curve and handles stay on top. */}
+        <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
+          <div className={classes.marker} />
+        </CurvePreview>
+        <svg className={classes.overlay} viewBox="0 0 100 100" aria-hidden="true">
           <Fade visible={controlPointsVisible}>
             <g className={classes.handle}>
               <line x1="0" y1="100" x2={x1} y2={y1} />
@@ -103,9 +109,6 @@ const MotionCurveCard: React.FC<{
           <circle className={classes.endpoint} cx="0" cy="100" r="1.2" />
           <circle className={classes.endpoint} cx="100" cy="0" r="1.2" />
         </svg>
-        <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
-          <div className={classes.marker} />
-        </CurvePreview>
       </div>
     </div>
   );
