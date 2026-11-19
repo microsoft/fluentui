@@ -1100,6 +1100,11 @@ describe('TimePicker', () => {
         expect(getByRole('button', { name: 'Clear' })).toBeVisible();
       });
 
+      it('keeps the expand icon when the clear icon is removed', () => {
+        const { getByRole } = renderTimePicker({ clearable: true, clearIcon: null, defaultValue: ten });
+        expect(getByRole('button', { name: 'Open Time' })).toBeVisible();
+      });
+
       it('makes the clear icon a keyboard-operable button that returns focus to the input', () => {
         const { getByRole, input, onChange } = renderTimePicker({ clearable: true, defaultValue: nine });
         act(() => input.focus());
@@ -1130,6 +1135,77 @@ describe('TimePicker', () => {
           clearIcon: { 'aria-label': 'Effacer' },
         });
         expect(getByRole('button', { name: 'Effacer' })).toBeTruthy();
+      });
+    });
+
+    describe('commit keys', () => {
+      it('commits typed text on Tab instead of the option that typing activated', () => {
+        const { input, onChange } = renderTimePicker();
+        userEvent.type(input, '1');
+        expect(activeOptionText(input)).toBe('12:00 AM');
+
+        userEvent.tab();
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ type: 'blur', value: null, displayValue: '1', errorType: 'invalid-input' }),
+        );
+        expect(input).toHaveValue('1');
+      });
+
+      it('selects an option reached with the arrow keys on Tab', () => {
+        const { input, onChange } = renderTimePicker();
+        userEvent.type(input, '1');
+        userEvent.keyboard('{arrowdown}');
+        expect(activeOptionText(input)).toBe('12:30 AM');
+
+        userEvent.tab();
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ displayValue: '12:30 AM', errorType: undefined }),
+        );
+      });
+
+      it('commits pending text on Enter while closed and leaves the listbox closed', () => {
+        const { input, onChange } = renderTimePicker({ defaultValue: ten });
+        act(() => input.focus());
+        fireEvent.change(input, { target: { value: '1115' } });
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+
+        fireEvent.keyDown(input, { key: 'Enter' });
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(input).toHaveValue('11:15 AM');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+      });
+
+      it('applies an open request only to the open it asked for', () => {
+        let allowOpen = false;
+        const ControlledOpen = () => {
+          const [open, setOpen] = React.useState(false);
+          return (
+            <TimePicker
+              aria-label="Time"
+              dateAnchor={dateAnchor}
+              startHour={8}
+              endHour={10}
+              open={open}
+              onOpenChange={(_event, data) => allowOpen && setOpen(data.open)}
+            />
+          );
+        };
+        const { getByRole } = render(<ControlledOpen />);
+        const input = getByRole('combobox');
+        act(() => input.focus());
+
+        userEvent.keyboard('{arrowup}');
+        userEvent.keyboard('{alt}{arrowdown}{/alt}');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+
+        allowOpen = true;
+        userEvent.keyboard('{arrowdown}');
+        expect(input).toHaveAttribute('aria-expanded', 'true');
+        expect(activeOptionText(input)).toBe('8:00 AM');
       });
     });
 

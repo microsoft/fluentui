@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { elementContains, mergeCallbacks, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { ArrowDown, ArrowUp, End, Enter, Escape, Home, Space } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowUp, End, Enter, Escape, Home, PageDown, PageUp, Space, Tab } from '@fluentui/keyboard-keys';
 import { useFieldContext } from '../Field';
 import type { ComboboxState } from '../Combobox/Combobox.types';
 import { toDataAttributeValue } from '../../utils';
@@ -72,9 +72,21 @@ export const useTimePickerComboboxState = (
 
   // Runs after the Combobox has activated an option for the new open state, and overrides it.
   const openActivationRef = React.useRef<OpenActivation | undefined>(undefined);
+  // A request that did not open the listbox (a controlled `open` can refuse it) must not apply to a later open.
+  const clearPendingOpenActivation = useEventCallback(() => {
+    if (openActivationRef.current === 'none') {
+      setSuppressAutoActivate(false);
+    }
+    openActivationRef.current = undefined;
+  });
+  // Whether the active option was reached with the arrow keys since the text last changed.
+  const navigatedRef = React.useRef(false);
   React.useEffect(() => {
     const openActivation = openActivationRef.current;
     openActivationRef.current = undefined;
+    if (!open) {
+      navigatedRef.current = false;
+    }
     if (!open || !openActivation) {
       return;
     }
@@ -143,6 +155,7 @@ export const useTimePickerComboboxState = (
    */
   const handleTimePickerKey = (event: React.KeyboardEvent<HTMLInputElement>): boolean => {
     const { key, altKey } = event;
+    const hasPendingText = freeform && (committedText ?? '') !== (value ?? '');
 
     // Keys that confirm an IME composition must not reach the Combobox, which would select the active option.
     // Home and End keep their text-editing behavior and move the caret.
@@ -155,6 +168,19 @@ export const useTimePickerComboboxState = (
     if (key === Escape && restoreCommittedText(event) && !open) {
       event.stopPropagation();
       return true;
+    }
+
+    // Enter commits pending text from the root handler and leaves the listbox closed.
+    if (key === Enter && !open && hasPendingText) {
+      event.preventDefault();
+      return true;
+    }
+
+    // Tab commits typed text as typed, through blur. The Combobox would select the option that typing activated,
+    // turning partial text into a time. An option reached with the arrow keys is still selected.
+    if (key === Tab && hasPendingText && !navigatedRef.current) {
+      activeDescendantController.blur();
+      return false;
     }
 
     if (altKey && key === ArrowDown && !open) {
@@ -177,13 +203,19 @@ export const useTimePickerComboboxState = (
   };
 
   const onInputKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    clearPendingOpenActivation();
+
     if (handleTimePickerKey(event)) {
       onUserKeyDown?.(event);
       return;
     }
 
-    if (event.key === ArrowUp && !open) {
+    const { key } = event;
+    if (key === ArrowUp && !open) {
       openActivationRef.current = 'last';
+    }
+    if (open && (key === ArrowDown || key === ArrowUp || key === PageDown || key === PageUp)) {
+      navigatedRef.current = true;
     }
 
     comboboxState.input.onKeyDown?.(event);
@@ -195,6 +227,15 @@ export const useTimePickerComboboxState = (
       comboboxState.clearSelection(event);
       inputRef.current?.focus();
     }
+  });
+
+  const onInputChangeWithReset = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    navigatedRef.current = false;
+    onInputChange(event);
+  });
+  const onExpandIconMouseDown = useEventCallback((event: React.MouseEvent<HTMLSpanElement>) => {
+    clearPendingOpenActivation();
+    comboboxState.expandIcon?.onMouseDown?.(event);
   });
 
   const rootMergedRef = useMergedRefs(comboboxState.root.ref, rootRef);
@@ -219,7 +260,7 @@ export const useTimePickerComboboxState = (
       'aria-controls':
         comboboxState.input['aria-controls'] ??
         (comboboxState.shouldRenderListbox ? comboboxState.listbox?.id : undefined),
-      onChange: mergeCallbacks(comboboxState.input.onChange, onInputChange),
+      onChange: mergeCallbacks(comboboxState.input.onChange, onInputChangeWithReset),
       onKeyDown: onInputKeyDown,
       onBlur: mergeCallbacks(onBlur, comboboxState.input.onBlur),
     },
@@ -232,7 +273,8 @@ export const useTimePickerComboboxState = (
           // A pointer-only affordance: the input is the tab stop, and the keyboard opens the listbox from it.
           tabIndex: -1,
           // The clear icon replaces the expand icon while it is shown.
-          hidden: showClearIcon || comboboxState.expandIcon.hidden,
+          hidden: (showClearIcon && !!comboboxState.clearIcon) || comboboxState.expandIcon.hidden,
+          onMouseDown: onExpandIconMouseDown,
           onBlur: mergeCallbacks(onBlur, comboboxState.expandIcon.onBlur),
           ...expandIconFieldLabelProps,
         }
