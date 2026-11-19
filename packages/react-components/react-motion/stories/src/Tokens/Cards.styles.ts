@@ -106,7 +106,7 @@ export const useCardClasses = makeStyles({
     pointerEvents: 'none',
   },
   marker: {
-    '--tick-thickness': '2px',
+    '--tick-thickness': tokens.strokeWidthThick,
     position: 'absolute',
     // Span the plot square and keep the line inside it at progress 0 and 1.
     top: 'var(--tick-thickness)',
@@ -267,7 +267,7 @@ export const useCardClasses = makeStyles({
   title: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2px',
+    gap: tokens.spacingVerticalXXS,
     overflowWrap: 'anywhere',
 
     fontFamily: tokens.fontFamilyMonospace,
