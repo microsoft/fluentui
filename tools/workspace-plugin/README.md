@@ -21,7 +21,7 @@ changed: the hooks are swapped at build time.
 
 ### Authoring
 
-Next to a Griffel style hook, add its CSS Modules twin. Both export the same names (`use*Styles_unstable`,
+Every Griffel style hook has a CSS Modules style hook next to it. Both export the same names (`use*Styles_unstable`,
 `*ClassNames`):
 
 ```
@@ -34,6 +34,13 @@ components/Button/
 
 The package must declare `"sideEffects": ["**/*.css"]`. The build executor then copies `src/**/*.css` into `lib` and
 `lib-commonjs`.
+
+Keep the two hooks in sync: a PR changing `X.styles.ts` must also change `X.styles.css.ts` or a stylesheet it imports.
+The `CSS Modules co-change` workflow (`scripts/github/src/css-modules-co-change.js`) checks this. Add the
+`CSS Modules: no change needed` label when the change doesn't affect styles.
+
+The check doesn't see style changes made outside `*.styles.ts`, for example in shared Griffel helpers
+(`createFocusOutlineStyle`, `typographyStyles`) or tokens. Mirror those in the CSS Modules stylesheets by hand.
 
 ### Export map (`export-maps-sync` generator)
 
@@ -55,18 +62,21 @@ The package must declare `"sideEffects": ["**/*.css"]`. The build executor then 
 For a package whose `package.json` declares `./css-modules`, after the regular compilation
 (`executors/build/lib/css-modules-entry.ts`):
 
-1. Reads the ESM output (`lib/**/*.js`) and builds its import graph. Named imports are resolved through barrel
+1. Reads the ESM output (`lib/**/*.js`) and checks that every Griffel style hook (`X.styles.js`) has a CSS Modules
+   style hook (`X.styles.css.js`) exporting the same names, and that every CSS Modules style hook has a Griffel one.
+   The build fails otherwise.
+2. Builds the import graph of the ESM output. Named imports are resolved through barrel
    re-exports to the modules defining them.
-2. Marks as _style dependent_ every module that uses a Griffel hook with a CSS Modules twin (`X.styles.js` +
-   `X.styles.css.js`) or imports a dependency that ships `./css-modules`. Then everything that depends on those modules
+3. Marks as _style dependent_ every module that uses a Griffel style hook or imports a dependency that ships
+   `./css-modules`. Then everything that depends on those modules
    gets marked too.
-3. Writes a copy of each style dependent module to `lib/css-modules/<same path>` and rewrites its imports:
+4. Writes a copy of each style dependent module to `lib/css-modules/<same path>` and rewrites its imports:
    - `./X.styles.js` becomes the CSS Modules hook `X.styles.css.js`;
    - style dependent modules are imported from within `css-modules/`;
    - every other module is imported from the main output, so it is shared with the root entry;
    - `@fluentui/react-x` becomes `@fluentui/react-x/css-modules` when that package ships the entry.
-4. Applies the same rewrite to the CommonJS output (`lib-commonjs/css-modules`, same modules).
-5. Writes `dist/css-modules.d.ts` / `.d.cts`, which re-export the root declarations.
+5. Applies the same rewrite to the CommonJS output (`lib-commonjs/css-modules`, same modules).
+6. Writes `dist/css-modules.d.ts` / `.d.cts`, which re-export the root declarations.
 
 ```js
 // lib/components/Button/Button.js (root entry, Griffel)

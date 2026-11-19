@@ -11,6 +11,7 @@ import { type PackageJson } from '../../../types';
 import { type NormalizedOptions } from './shared';
 
 const GRIFFEL_HOOK = /\.styles\.js$/;
+const CSS_HOOK = /\.styles\.css\.js$/;
 const RAW_STYLES = /\.styles\.raw\.(css\.)?js$/;
 const CJS_REQUIRE = /(\brequire\(\s*)(["'])([^"'\n]+)\2(\s*\))/g;
 const CREATE_CONTEXT = /\bcreateContext\b/;
@@ -32,7 +33,7 @@ interface ModuleInfo {
 }
 
 export interface CssModulesGraph {
-  /** Griffel style hooks that have a CSS Modules twin (`X.styles.js` + `X.styles.css.js`). */
+  /** Griffel style hooks (`X.styles.js`), each replaced by its CSS Modules style hook (`X.styles.css.js`). */
   griffelHooks: Set<string>;
   /** Modules re-emitted into the css-modules tree. Every other module is shared with the main entry. */
   reEmitted: Set<string>;
@@ -65,6 +66,18 @@ export async function emitCssModulesEntry(options: NormalizedOptions): Promise<b
 
   const esmRoot = join(options.absoluteProjectRoot, esmOutput.outputPath);
   const modules = await readEsmModules(esmRoot);
+
+  const styleHookErrors = validateStyleHooks(modules);
+  if (styleHookErrors.length > 0) {
+    logger.error(
+      [
+        `"${CSS_MODULES_SUBPATH}" entry requires every Griffel style hook (X.styles.ts) to have a CSS Modules style hook (X.styles.css.ts) exporting the same names:`,
+        ...styleHookErrors.map(error => `  - ${error}`),
+      ].join('\n'),
+    );
+    return false;
+  }
+
   const isCssModulesPackage = createCssModulesPackageResolver(options.absoluteProjectRoot);
   const graph = buildCssModulesGraph(modules, isCssModulesPackage);
 
@@ -143,8 +156,37 @@ export async function emitCssModulesTypes(options: NormalizedOptions): Promise<b
 // ===========
 
 /**
- * A module is style dependent when it pulls (directly, or through other style dependent modules) a Griffel style hook
- * that has a CSS Modules twin, or anything from a dependency shipping `./css-modules`. Named imports are resolved
+ * Checks the contract the hook swap relies on: every Griffel style hook (`X.styles.js`) has a CSS Modules style hook
+ * (`X.styles.css.js`) exporting at least the same names, and every CSS Modules style hook has a Griffel one.
+ *
+ * @returns problems found, empty when the contract holds
+ */
+export function validateStyleHooks(modules: Map<string, ModuleInfo>): string[] {
+  const errors: string[] = [];
+
+  for (const file of modules.keys()) {
+    if (GRIFFEL_HOOK.test(file)) {
+      const cssHook = toCssHook(file);
+      if (!modules.has(cssHook)) {
+        errors.push(`${file}: missing CSS Modules style hook ${cssHook}`);
+        continue;
+      }
+
+      const missing = exportNames(modules.get(file)!).filter(name => !exportsName(modules, cssHook, name));
+      if (missing.length > 0) {
+        errors.push(`${cssHook}: missing exports ${missing.join(', ')} of ${file}`);
+      }
+    } else if (CSS_HOOK.test(file) && !modules.has(file.replace(CSS_HOOK, '.styles.js'))) {
+      errors.push(`${file}: no Griffel style hook ${file.replace(CSS_HOOK, '.styles.js')}`);
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * A module is style dependent when it pulls (directly, or through other style dependent modules) a Griffel style hook,
+ * or anything from a dependency shipping `./css-modules`. Named imports are resolved
  * through barrel re-exports to the module defining them, so importing a hook from a barrel that also re-exports a
  * styled component doesn't make the importer (eg. a context) style dependent.
  */
@@ -152,9 +194,7 @@ export function buildCssModulesGraph(
   modules: Map<string, ModuleInfo>,
   isCssModulesPackage: (specifier: string) => boolean,
 ): CssModulesGraph {
-  const griffelHooks = new Set(
-    [...modules.keys()].filter(file => GRIFFEL_HOOK.test(file) && modules.has(toCssHook(file))),
-  );
+  const griffelHooks = new Set([...modules.keys()].filter(file => GRIFFEL_HOOK.test(file)));
 
   const importedBy = new Map<string, Set<string>>();
   const styleDependent = new Set<string>(griffelHooks);
@@ -246,6 +286,10 @@ function resolveDefinitions(
   }
 
   return [file];
+}
+
+function exportNames(info: ModuleInfo): string[] {
+  return [...info.localExports, ...info.reExports.keys()];
 }
 
 function exportsName(modules: Map<string, ModuleInfo>, file: string, name: string, seen = new Set<string>()): boolean {

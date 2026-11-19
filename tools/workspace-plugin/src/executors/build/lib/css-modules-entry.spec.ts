@@ -16,16 +16,16 @@ const cssModulesExport = {
 
 /**
  * Compiled output shaped like SWC's (ESM `lib`, `.cjs` CommonJS `lib-commonjs`) of a package where:
- * - `Card` uses its own style hook (CSS twin exists),
+ * - `Card` uses its own style hook (with a CSS Modules style hook),
  * - `Toolbar` uses a style hook of a dependency shipping `./css-modules`,
- * - `Legacy` has no CSS twin (stays on Griffel),
+ * - `Plain` has no style hook (shared with the root entry),
  * - `contexts`/`useCard` don't depend on styles (shared with the root entry).
  */
 const esmFiles: Record<string, string> = {
   'index.js': [
     `export { Card, useCardStyles_unstable } from "./components/Card/index.js";`,
     `export { Toolbar } from "./components/Toolbar.js";`,
-    `export { Legacy } from "./components/Legacy.js";`,
+    `export { Plain } from "./components/Plain.js";`,
     `export { CardContext } from "./contexts/cardContext.js";`,
   ].join('\n'),
   'components/Card/index.js': [
@@ -45,8 +45,7 @@ const esmFiles: Record<string, string> = {
   'components/Card/useCardStyles.styles.css.js': `import styles from "./Card.module.css";\nexport const useCardStyles_unstable = s => s;`,
   'components/Card/useCardStyles.styles.raw.js': `export const raw = 1;`,
   'components/Toolbar.js': `import { useButtonStyles_unstable } from "@fluentui/dep";\nimport { jsx } from "@fluentui/dep/jsx-runtime";\nexport const Toolbar = () => null;`,
-  'components/Legacy.js': `import { useLegacyStyles } from "./Legacy.styles.js";\nexport const Legacy = () => null;`,
-  'components/Legacy.styles.js': `export const useLegacyStyles = () => null;`,
+  'components/Plain.js': `export const Plain = () => null;`,
   'contexts/cardContext.js': `import * as React from "react";\nexport const CardContext = React.createContext(undefined);`,
 };
 
@@ -158,9 +157,8 @@ describe('css-modules entry', () => {
     expect(emitted('contexts/cardContext.js')).toBe(false);
     expect(emitted('components/Card/useCardStyles.styles.js')).toBe(false);
     expect(emitted('components/Card/useCardStyles.styles.raw.js')).toBe(false);
-    // no CSS twin: shared with the root entry, still Griffel
-    expect(emitted('components/Legacy.js')).toBe(false);
-    expect(read('lib/css-modules/index.js')).toContain(`from "../components/Legacy.js"`);
+    expect(emitted('components/Plain.js')).toBe(false);
+    expect(read('lib/css-modules/index.js')).toContain(`from "../components/Plain.js"`);
   });
 
   it('applies the same rewrite to CommonJS output', async () => {
@@ -225,6 +223,39 @@ describe('css-modules entry', () => {
 
     expect(await emitCssModulesEntry(options)).toBe(false);
     expect(logger.error).toHaveBeenCalledWith(expect.stringContaining('contexts/cardContext.js'));
+  });
+
+  it('fails when a Griffel style hook has no CSS Modules style hook', async () => {
+    rmSync(join(projectRoot, 'lib/components/Card/useCardStyles.styles.css.js'));
+
+    expect(await emitCssModulesEntry(options)).toBe(false);
+    expect(logger.error).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'components/Card/useCardStyles.styles.js: missing CSS Modules style hook components/Card/useCardStyles.styles.css.js',
+      ),
+    );
+    expect(existsSync(join(projectRoot, 'lib/css-modules'))).toBe(false);
+  });
+
+  it('fails when a CSS Modules style hook misses exports of the Griffel one', async () => {
+    write(
+      join(projectRoot, 'lib/components/Card/useCardStyles.styles.js'),
+      `export const cardClassNames = { root: "fui-Card" };\nexport const useCardStyles_unstable = s => s;`,
+    );
+
+    expect(await emitCssModulesEntry(options)).toBe(false);
+    expect(logger.error).toHaveBeenCalledWith(
+      expect.stringContaining('components/Card/useCardStyles.styles.css.js: missing exports cardClassNames'),
+    );
+  });
+
+  it('fails when a CSS Modules style hook has no Griffel style hook', async () => {
+    write(join(projectRoot, 'lib/components/Orphan.styles.css.js'), `export const useOrphanStyles = s => s;`);
+
+    expect(await emitCssModulesEntry(options)).toBe(false);
+    expect(logger.error).toHaveBeenCalledWith(
+      expect.stringContaining('components/Orphan.styles.css.js: no Griffel style hook components/Orphan.styles.js'),
+    );
   });
 
   it('emits declarations re-exporting the root entry', async () => {
