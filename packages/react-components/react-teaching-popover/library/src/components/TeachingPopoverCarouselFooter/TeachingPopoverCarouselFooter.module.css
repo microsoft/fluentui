@@ -6,11 +6,11 @@
 
 .centered {
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--spacingHorizontalS);
 }
 
 .rightAligned {
-  gap: 8px;
+  gap: var(--spacingHorizontalS);
 }
 
 .rightAligned :first-child {

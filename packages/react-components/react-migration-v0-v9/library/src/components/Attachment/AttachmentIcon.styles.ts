@@ -1,6 +1,6 @@
 'use client';
 
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const iconSize = '32px';
 
@@ -8,7 +8,7 @@ export const useAttachmentIconStyles = makeStyles({
   root: {
     height: iconSize,
     width: iconSize,
-    marginRight: '12px',
+    marginRight: tokens.spacingHorizontalM,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -17,7 +17,7 @@ export const useAttachmentIconStyles = makeStyles({
       width: '100%',
     },
     '& .fui-Icon-font': {
-      fontSize: `${iconSize} !important`,
+      fontSize: `${tokens.fontSizeHero800} !important`,
     },
   },
 });

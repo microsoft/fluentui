@@ -1,7 +1,7 @@
 .root {
   height: 32px;
   width: 32px;
-  margin-inline-end: 12px;
+  margin-inline-end: var(--spacingHorizontalM);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -16,5 +16,5 @@
   height: 100%;
   width: 100%;
   /* stylelint-disable-next-line declaration-no-important -- mirrors the Griffel source, which forces the icon font size */
-  font-size: 32px !important;
+  font-size: var(--fontSizeHero800) !important;
 }

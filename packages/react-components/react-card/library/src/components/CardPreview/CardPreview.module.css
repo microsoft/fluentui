@@ -10,8 +10,8 @@
 
 .logo {
   position: absolute;
-  bottom: 12px;
-  inset-inline-start: 12px;
+  bottom: var(--spacingVerticalM);
+  inset-inline-start: var(--spacingHorizontalM);
   width: 32px;
   height: 32px;
 }
