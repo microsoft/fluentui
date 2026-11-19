@@ -71,6 +71,8 @@ or finite values. Invalid tooling configuration still fails the build.
 - Attributes written by infrastructure outside the component walk (`data-activedescendant*` from react-aria,
   `data-fui-focus-within` from tabster) are not listed.
 - Attributes on non-slot elements are kept in the metadata (`elements`) but not rendered.
+- Sequential writes on overlapping conditional paths have unknown value domains and emit `unresolved-domain`;
+  only mutually exclusive branches are combined into a finite union. An unconditional replacement still takes precedence.
 
 ## Tests
 

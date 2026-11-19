@@ -331,6 +331,24 @@ describe.each([false, true])('FluentDocsPage class names (configured: %s)', conf
     expect(screen.queryByTestId('arg-types')).toBeNull();
   });
 
+  it('honors the docs opt-out for legacy groups as well as generated styling metadata', () => {
+    renderDocs(
+      {
+        __generatedStylingMetadata: { classNames: { classNames: buttonClassNames } },
+        reactStorybookAddon: {
+          ...buttonParameters.reactStorybookAddon,
+          docs: false,
+        },
+      },
+      configured,
+    );
+
+    expect(screen.queryByRole('table')).toBeNull();
+    expect(screen.queryByRole('region', { name: 'API Reference' })).toBeNull();
+    expect(screen.queryByText('Customizing component slot styles with class names')).toBeNull();
+    expect(screen.getByTestId('arg-types')).toBeTruthy();
+  });
+
   it('preserves a custom renderer as a replacement for the complete API section', () => {
     const renderArgsTable = jest.fn(() => <div>Custom API section</div>);
     renderDocs(buttonParameters, configured, { renderArgsTable });

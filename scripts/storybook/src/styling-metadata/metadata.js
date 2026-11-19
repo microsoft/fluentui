@@ -272,7 +272,20 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
       paths.push({ branches: pathInfo.branches, domain });
       alternatives.set(id, { scope: pathInfo.scope, paths });
       if (paths.length > 1) {
-        if (paths.every(entry => entry.domain.kind === 'literal')) {
+        // Union only mutually exclusive paths. Overlapping writes may be
+        // overwritten collectively; proving their final values requires control-flow analysis.
+        const overlapping = paths.some((entry, index) =>
+          paths
+            .slice(index + 1)
+            .some(other =>
+              [...entry.branches].every(
+                ([branch, arm]) => !other.branches.has(branch) || other.branches.get(branch) === arm,
+              ),
+            ),
+        );
+        if (overlapping) {
+          domain = { kind: 'unresolved' };
+        } else if (paths.every(entry => entry.domain.kind === 'literal')) {
           domain = literalUnion(...paths.map(entry => (entry.domain.kind === 'literal' ? entry.domain.values : [])));
         } else if (paths.every(entry => entry.domain.kind === 'presence')) {
           domain = { kind: 'presence' };

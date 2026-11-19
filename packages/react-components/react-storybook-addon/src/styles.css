@@ -20,7 +20,7 @@
   z-index: 99;
 }
 
-#storybook-docs .sbdocs p:not(.sbdocs-preview p, .docblock-argstable p) {
+#storybook-docs .sbdocs p:not(.sbdocs-preview p) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;

@@ -286,9 +286,10 @@ const RenderArgsTable = ({
   });
   const styles = useStyles();
   const parameters: FluentParameters = story.parameters;
-  const slotClassNameGroups = parameters.reactStorybookAddon?.slotClassNameGroups?.filter(
-    group => Object.keys(group.slots).length > 0,
-  );
+  const slotClassNameGroups =
+    parameters.reactStorybookAddon?.docs === false
+      ? undefined
+      : parameters.reactStorybookAddon?.slotClassNameGroups?.filter(group => Object.keys(group.slots).length > 0);
 
   return hideArgsTable ? null : (
     <StylingApiReference metadata={resolveStylingMetadata(parameters)}>

@@ -259,6 +259,24 @@ describe('styling metadata', () => {
       expect(extractor.extractComponent('missing-module', fixtureStory, 'Card')).toBeUndefined();
       expect(extractor.getDiagnostics()).toEqual([]);
     });
+
+    it('does not document potentially overwritten values as a finite branch domain', () => {
+      const extractor = createStylingMetadataExtractor({ tsConfigPath: fixtureTsConfig, dataAttributes: true });
+      const result = extractor.extractComponent('fixture-components', fixtureStory, 'Branching');
+
+      expect(result?.dataAttributes?.values?.root).toEqual({
+        exhaustive: null,
+        alternatives: ['open', 'closed'],
+        partial: null,
+        overwritten: ['final'],
+        earlyReturn: null,
+      });
+      expect(extractor.getDiagnostics().filter(diagnostic => diagnostic.code === 'unresolved-domain')).toEqual([
+        expect.objectContaining({ attribute: 'data-exhaustive' }),
+        expect.objectContaining({ attribute: 'data-partial' }),
+        expect.objectContaining({ attribute: 'data-early-return' }),
+      ]);
+    });
   });
 
   // Guards the conventions of real sources the docsites document.
