@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import { isConformant } from '../../testing/isConformant';
 import { Tree } from './Tree';
 import { TreeItem } from './TreeItem/TreeItem';
 import { TreeItemLayout } from './TreeItemLayout/TreeItemLayout';
 import type { TreeProps } from './Tree.types';
+import { useSubtreeContext, useTreeContext } from './useTree';
+import { useTreeItemContext } from './TreeItem/useTreeItem';
 
 const getItem = (text: string) => screen.getByText(text).closest<HTMLElement>('[role="treeitem"]')!;
 
@@ -52,6 +55,187 @@ describe('Tree', () => {
     displayName: 'Tree',
     requiredProps: { 'aria-label': 'Tree' },
     disabledTests: ['consistent-callback-args'],
+  });
+
+  describe('disabled', () => {
+    it.each(['single', 'multiselect'] as const)(
+      'has no accessibility violations in disabled %s mode',
+      async selectionMode => {
+        const { container } = render(
+          <main>
+            <NestedTree disabled defaultOpenItems={['docs']} selectionMode={selectionMode} />
+          </main>,
+        );
+
+        expect(await axe(container)).toHaveNoViolations();
+      },
+    );
+
+    it('inherits through items, layouts and subtrees and updates when re-enabled', () => {
+      const { rerender } = render(<NestedTree disabled defaultOpenItems={['docs']} selectionMode="multiselect" />);
+      const expectDisabled = (disabled: boolean) => {
+        for (const element of [
+          screen.getByRole('tree'),
+          screen.getByRole('group'),
+          ...screen.getAllByRole('treeitem'),
+          screen.getByText('Docs').parentElement!,
+          screen.getByText('README').parentElement!,
+        ]) {
+          expect(element.hasAttribute('data-disabled')).toBe(disabled);
+        }
+        for (const item of screen.getAllByRole('treeitem')) {
+          expect(item.getAttribute('aria-disabled') === 'true').toBe(disabled);
+        }
+        for (const selector of screen.getAllByRole('checkbox')) {
+          expect((selector as HTMLInputElement).disabled).toBe(disabled);
+        }
+      };
+
+      expectDisabled(true);
+      rerender(<NestedTree disabled={false} defaultOpenItems={['docs']} selectionMode="multiselect" />);
+      expectDisabled(false);
+    });
+
+    it.each([true, 'true'] as const)('supports aria-disabled=%s', ariaDisabled => {
+      const onOpenChange = jest.fn();
+      render(<NestedTree aria-disabled={ariaDisabled} onOpenChange={onOpenChange} />);
+
+      fireEvent.click(getItem('Docs'));
+
+      expect(screen.getByRole('tree')).toHaveAttribute('data-disabled', '');
+      expect(getItem('Docs')).toHaveAttribute('data-disabled', '');
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
+    it.each(['single', 'multiselect'] as const)('blocks disclosure and %s selection', selectionMode => {
+      const onOpenChange = jest.fn();
+      const onCheckedChange = jest.fn();
+      render(
+        <NestedTree
+          disabled
+          selectionMode={selectionMode}
+          onOpenChange={onOpenChange}
+          onCheckedChange={onCheckedChange}
+        />,
+      );
+
+      fireEvent.click(getItem('Docs'));
+      fireEvent.click(getItem('Docs').querySelector('[aria-hidden="true"]')!);
+      for (const key of ['Enter', ' ', 'ArrowRight', 'ArrowLeft']) {
+        fireEvent.keyDown(getItem('Docs'), { key });
+      }
+      userEvent.click(screen.getAllByRole(selectionMode === 'single' ? 'radio' : 'checkbox')[0]);
+      fireEvent.change(getItem('Docs'));
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+      expect(onCheckedChange).not.toHaveBeenCalled();
+      expect(getItem('Docs')).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('keeps disabled items in roving navigation and explores open branches without closing them', () => {
+      render(<NestedTree disabled defaultOpenItems={['docs']} />);
+
+      getItem('Docs').focus();
+      expect(getItem('Docs')).toHaveAttribute('tabindex', '0');
+      fireEvent.keyDown(getItem('Docs'), { key: 'ArrowRight' });
+      expect(getItem('README')).toHaveFocus();
+      fireEvent.keyDown(getItem('README'), { key: 'ArrowLeft' });
+      expect(getItem('Docs')).toHaveFocus();
+      fireEvent.keyDown(getItem('Docs'), { key: 'ArrowLeft' });
+      expect(getItem('Docs')).toHaveAttribute('aria-expanded', 'true');
+      fireEvent.keyDown(getItem('Docs'), { key: 'ArrowDown' });
+      expect(getItem('README')).toHaveFocus();
+      fireEvent.keyDown(getItem('README'), { key: 'End' });
+      expect(getItem('package.json')).toHaveFocus();
+      fireEvent.keyDown(getItem('package.json'), { key: 'ArrowUp' });
+      expect(getItem('LICENSE')).toHaveFocus();
+      fireEvent.keyDown(getItem('LICENSE'), { key: 'Home' });
+      expect(getItem('Docs')).toHaveFocus();
+      fireEvent.keyDown(getItem('Docs'), { key: 'p' });
+      expect(getItem('package.json')).toHaveFocus();
+    });
+
+    it('does not allow descendants or state attributes to override inherited disabled state', () => {
+      render(
+        <Tree
+          aria-label="Files"
+          disabled
+          selectionMode="multiselect"
+          defaultOpenItems={['branch']}
+          {...{ 'data-disabled': undefined }}
+        >
+          <TreeItem
+            itemType="branch"
+            value="branch"
+            disabled={false}
+            aria-disabled={false}
+            {...{ 'data-disabled': undefined }}
+          >
+            <TreeItemLayout selector={{ disabled: false }} {...{ 'data-disabled': undefined }}>
+              Branch
+            </TreeItemLayout>
+            <Tree disabled={false} aria-disabled={false}>
+              <TreeItem itemType="leaf" disabled={false}>
+                <TreeItemLayout>Leaf</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>,
+      );
+
+      for (const element of [
+        screen.getByRole('tree'),
+        screen.getByRole('group'),
+        ...screen.getAllByRole('treeitem'),
+        screen.getByText('Branch').parentElement!,
+        screen.getByText('Leaf').parentElement!,
+      ]) {
+        expect(element).toHaveAttribute('data-disabled', '');
+      }
+      expect(screen.getByRole('checkbox', { name: 'Branch' })).toBeDisabled();
+    });
+
+    it('scopes subtree disabling and exposes resolved state through the context hooks', () => {
+      const ReadState = () => {
+        const treeDisabled = useTreeContext(context => context.disabled);
+        const itemDisabled = useTreeItemContext(context => context.disabled);
+        const { disabled: subtreeDisabled } = useSubtreeContext();
+        return <span>{JSON.stringify({ treeDisabled, itemDisabled, subtreeDisabled })}</span>;
+      };
+      render(
+        <Tree aria-label="Files" defaultOpenItems={['branch']}>
+          <TreeItem itemType="branch" value="branch">
+            <TreeItemLayout>Branch</TreeItemLayout>
+            <Tree disabled>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>
+                  <ReadState />
+                </TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>Enabled</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+
+      expect(screen.getByRole('tree')).not.toHaveAttribute('data-disabled');
+      expect(getItem('Branch')).not.toHaveAttribute('data-disabled');
+      expect(getItem('Enabled')).not.toHaveAttribute('data-disabled');
+      expect(screen.getByRole('group')).toHaveAttribute('data-disabled', '');
+      expect(screen.getByText('{"treeDisabled":false,"itemDisabled":true,"subtreeDisabled":true}')).toBeInTheDocument();
+    });
+
+    it('continues to accept consumer-controlled open and checked state', () => {
+      const { rerender } = render(<NestedTree disabled openItems={[]} selectionMode="multiselect" checkedItems={[]} />);
+      rerender(<NestedTree disabled openItems={['docs']} selectionMode="multiselect" checkedItems={['readme']} />);
+
+      expect(getItem('Docs')).toHaveAttribute('aria-expanded', 'true');
+      expect(getItem('README')).toHaveAttribute('aria-checked', 'true');
+      expect(screen.getByRole('checkbox', { name: 'README' })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: 'README' })).toBeDisabled();
+    });
   });
 
   it('renders the tree semantics without Fluent class names', () => {

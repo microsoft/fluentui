@@ -78,6 +78,38 @@ describe('TreeItemLayout', () => {
       expect(screen.queryByRole('radio')).toBeNull();
     });
 
+    it.each([undefined, 'single', 'multiselect'] as const)(
+      'exposes resolved layout selection mode %s',
+      selectionMode => {
+        renderInTree(
+          <TreeItemLayout {...{ 'data-selection-mode': 'incorrect', 'data-disabled': '' }}>Item</TreeItemLayout>,
+          {
+            selectionMode,
+          },
+        );
+
+        const layout = screen.getByText('Item').parentElement!;
+        if (selectionMode) {
+          expect(layout).toHaveAttribute('data-selection-mode', selectionMode);
+        } else {
+          expect(layout).not.toHaveAttribute('data-selection-mode');
+        }
+        expect(layout).not.toHaveAttribute('data-disabled');
+      },
+    );
+
+    it('does not allow a selector override to re-enable a disabled item', () => {
+      render(
+        <Tree aria-label="Tree" selectionMode="single">
+          <TreeItem disabled itemType="leaf">
+            <TreeItemLayout selector={{ disabled: false }}>Item</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+      expect(screen.getByRole('radio')).toBeDisabled();
+      expect(screen.getByText('Item').parentElement).toHaveAttribute('data-disabled', '');
+    });
+
     it.each([
       ['multiselect', 'checkbox'],
       ['single', 'radio'],

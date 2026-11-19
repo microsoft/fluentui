@@ -6,22 +6,22 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
-import { SubtreeContextValue } from '@fluentui/react-tree';
+import * as React_2 from 'react';
+import type { SubtreeContextValue as SubtreeContextValue_2 } from '@fluentui/react-tree';
+import type { TreeBaseProps } from '@fluentui/react-tree';
 import type { TreeBaseState } from '@fluentui/react-tree';
 import { TreeCheckedChangeData } from '@fluentui/react-tree';
 import { TreeCheckedChangeEvent } from '@fluentui/react-tree';
-import { TreeContextValue } from '@fluentui/react-tree';
-import { TreeContextValues } from '@fluentui/react-tree';
-import { TreeItemContextValues } from '@fluentui/react-tree';
+import type { TreeContextValue as TreeContextValue_2 } from '@fluentui/react-tree';
+import type { TreeItemContextValues as TreeItemContextValues_2 } from '@fluentui/react-tree';
 import { TreeItemLayoutActionSlotProps } from '@fluentui/react-tree';
 import { TreeItemLayoutActionVisibilityChangeData } from '@fluentui/react-tree';
+import type { TreeItemLayoutBaseState } from '@fluentui/react-tree';
 import { TreeItemLayoutBaseProps as TreeItemLayoutProps } from '@fluentui/react-tree';
 import { TreeItemLayoutBaseSlots as TreeItemLayoutSlots } from '@fluentui/react-tree';
-import { TreeItemLayoutBaseState as TreeItemLayoutState } from '@fluentui/react-tree';
 import { TreeItemOpenChangeData } from '@fluentui/react-tree';
 import { TreeItemOpenChangeEvent } from '@fluentui/react-tree';
-import { TreeItemProps } from '@fluentui/react-tree';
+import type { TreeItemProps as TreeItemProps_2 } from '@fluentui/react-tree';
 import { TreeItemSlots } from '@fluentui/react-tree';
 import type { TreeItemState as TreeItemState_2 } from '@fluentui/react-tree';
 import { TreeItemType } from '@fluentui/react-tree';
@@ -32,12 +32,8 @@ import { TreeNavigationEvent_unstable as TreeNavigationEvent } from '@fluentui/r
 import { TreeNavigationMode } from '@fluentui/react-tree';
 import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
-import { TreeBaseProps as TreeProps } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeBaseSlots as TreeSlots } from '@fluentui/react-tree';
-import { useSubtreeContext_unstable as useSubtreeContext } from '@fluentui/react-tree';
-import { useTreeContext_unstable as useTreeContext } from '@fluentui/react-tree';
-import { useTreeItemContext_unstable as useTreeItemContext } from '@fluentui/react-tree';
 
 // @public
 export const renderTree: (state: TreeState, contextValues: TreeContextValues) => JSXElement;
@@ -48,7 +44,10 @@ export const renderTreeItem: (state: TreeItemState, contextValues: TreeItemConte
 // @public
 export const renderTreeItemLayout: (state: TreeItemLayoutState) => JSXElement;
 
-export { SubtreeContextValue }
+// @public (undocumented)
+export type SubtreeContextValue = SubtreeContextValue_2 & {
+    disabled: boolean;
+};
 
 // @public
 export const Tree: ForwardRefComponent<TreeProps>;
@@ -57,14 +56,25 @@ export { TreeCheckedChangeData }
 
 export { TreeCheckedChangeEvent }
 
-export { TreeContextValue }
+// @public (undocumented)
+export type TreeContextValue = TreeContextValue_2 & {
+    disabled: boolean;
+};
 
-export { TreeContextValues }
+// @public (undocumented)
+export type TreeContextValues = {
+    tree: TreeContextValue | SubtreeContextValue;
+};
 
 // @public
 export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
-export { TreeItemContextValues }
+// @public (undocumented)
+export type TreeItemContextValues = {
+    treeItem: TreeItemContextValues_2['treeItem'] & {
+        disabled: boolean;
+    };
+};
 
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
@@ -77,19 +87,31 @@ export { TreeItemLayoutProps }
 
 export { TreeItemLayoutSlots }
 
-export { TreeItemLayoutState }
+// @public (undocumented)
+export type TreeItemLayoutState = TreeItemLayoutBaseState & {
+    disabled: boolean;
+    root: {
+        'data-disabled'?: string;
+        'data-selection-mode'?: 'single' | 'multiselect';
+    };
+};
 
 export { TreeItemOpenChangeData }
 
 export { TreeItemOpenChangeEvent }
 
-export { TreeItemProps }
+// @public (undocumented)
+export type TreeItemProps = TreeItemProps_2 & {
+    disabled?: boolean;
+};
 
 export { TreeItemSlots }
 
 // @public (undocumented)
 export type TreeItemState = TreeItemState_2 & {
+    disabled: boolean;
     root: {
+        'data-disabled'?: string;
         'data-item-type'?: TreeItemType;
         'data-open'?: string;
         'data-checked'?: string;
@@ -112,7 +134,10 @@ export { TreeOpenChangeData }
 
 export { TreeOpenChangeEvent }
 
-export { TreeProps }
+// @public (undocumented)
+export type TreeProps = TreeBaseProps & {
+    disabled?: boolean;
+};
 
 export { TreeSelectionValue }
 
@@ -120,18 +145,22 @@ export { TreeSlots }
 
 // @public (undocumented)
 export type TreeState = TreeBaseState & {
+    disabled: boolean;
     root: {
+        'data-disabled'?: string;
         'data-navigation-mode'?: TreeNavigationMode;
         'data-selection-mode'?: 'single' | 'multiselect';
     };
 };
 
-export { useSubtreeContext }
+// @public
+export const useSubtreeContext: () => SubtreeContextValue;
 
 // @public
 export const useTree: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
 
-export { useTreeContext }
+// @public
+export const useTreeContext: <T>(selector: (context: TreeContextValue) => T) => T;
 
 // @public
 export const useTreeContextValues: (state: TreeState) => TreeContextValues;
@@ -139,7 +168,8 @@ export const useTreeContextValues: (state: TreeState) => TreeContextValues;
 // @public
 export const useTreeItem: (props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>) => TreeItemState;
 
-export { useTreeItemContext }
+// @public
+export const useTreeItemContext: <T>(selector: (context: TreeItemContextValues["treeItem"]) => T) => T;
 
 // @public
 export const useTreeItemContextValues: (state: TreeItemState) => TreeItemContextValues;
