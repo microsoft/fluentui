@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: remove unused dependency on @fluentui/react-aria",
+  "packageName": "@fluentui/react-tags",
+  "email": "vgenaev@gmail.com"
+}
