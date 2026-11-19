@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.media {
+  grid-area: media;
+  overflow: hidden;
+  width: auto;
+  margin-bottom: 12px;
+  vertical-align: middle;
+  justify-content: center;
+  display: flex;
+}
+
+.short {
+  aspect-ratio: 288 / 117;
+}
+
+.medium {
+  aspect-ratio: 288 / 176;
+}
+
+.tall {
+  aspect-ratio: 1;
+}
+
+/* Mirrors the Griffel condition: `(aspect-ratio)` is not a valid feature query, so browsers apply this block. */
+@supports not (aspect-ratio) {
+  .short {
+    height: 117px;
+  }
+
+  .medium {
+    height: 176px;
+  }
+
+  .tall {
+    height: 288px;
+  }
+}

@@ -1,0 +1,4 @@
+/* @griffel-buckets reset: .root */
+.root {
+  margin: calc(var(--spacingVerticalS) * -1) calc(var(--spacingHorizontalL) * -1);
+}

@@ -1,0 +1,22 @@
+/* @griffel-buckets logical: margin-inline-start, margin-inline-end, padding-inline-start */
+.root {
+  margin-inline-start: calc(-1 * var(--spacingHorizontalSNudge));
+  margin-inline-end: 0;
+  width: revert;
+  align-items: center;
+  gap: var(--spacingHorizontalMNudge);
+  padding-block: var(--spacingVerticalS);
+  padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase400);
+}
+.small {
+  padding-block: var(--spacingVerticalS);
+  padding-inline: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS)) var(--spacingHorizontalS);
+  gap: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+}
+.absentIconRootAdjustment {
+  padding-inline-start: var(--spacingHorizontalL);
+}

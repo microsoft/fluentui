@@ -4,6 +4,7 @@ import { type ProjectConfiguration, type Tree, globAsync, joinPathFragments } fr
 
 import type { PackageJson } from '../../../types';
 import type { ExportMapConfig } from '../types';
+import { CSS_MODULES_DIR, CSS_MODULES_SUBPATH, hasCssSideEffects } from '../../../css-modules';
 
 export interface EntryPoint {
   /** Export map key, eg. `.` or `./color-picker` */
@@ -14,7 +15,7 @@ export interface EntryPoint {
   outputPath: string;
 }
 
-const DEFAULT_CONFIG: ExportMapConfig = { root: true, subpathEntryPoints: [] };
+const DEFAULT_CONFIG: ExportMapConfig = { root: true, subpathEntryPoints: [], cssModules: false };
 
 export function readExportMapConfig(projectConfig: ProjectConfiguration): ExportMapConfig {
   const metadata = projectConfig.metadata as { exportMap?: Partial<ExportMapConfig> } | undefined;
@@ -61,6 +62,35 @@ export async function resolveEntryPoints(
 }
 
 /**
+ * Adds the build-generated `./css-modules` entry point (see `emitCssModulesEntry`), which has no source file.
+ */
+export function withCssModulesEntryPoint(
+  entryPoints: EntryPoint[],
+  packageJson: PackageJson,
+  config: ExportMapConfig,
+): EntryPoint[] {
+  const hasRoot = entryPoints.some(entryPoint => entryPoint.key === '.');
+
+  if (!hasRoot || !(config.cssModules || hasCssSideEffects(packageJson))) {
+    return entryPoints;
+  }
+
+  const [root, ...subpaths] = entryPoints;
+  const cssModules: EntryPoint = {
+    key: CSS_MODULES_SUBPATH,
+    name: CSS_MODULES_DIR,
+    outputPath: `${CSS_MODULES_DIR}/index`,
+  };
+
+  return [
+    root,
+    ...[...subpaths.filter(entryPoint => entryPoint.key !== CSS_MODULES_SUBPATH), cssModules].sort((a, b) =>
+      a.name.localeCompare(b.name),
+    ),
+  ];
+}
+
+/**
  * @returns `null` for files that can never be an entry point
  */
 function toOutputPath(sourcePathFromSrc: string): string | null {
@@ -80,6 +110,14 @@ function toOutputPath(sourcePathFromSrc: string): string | null {
 export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): PackageJson['exports'] {
   const style = json.style ? normalizeEntryPointPath(json.style) : null;
   const exports: NonNullable<PackageJson['exports']> = {};
+  const cssExports = Object.fromEntries(
+    Object.entries(json.exports ?? {})
+      .filter(
+        ([key, target]) =>
+          key.startsWith('./') && key.endsWith('.css') && typeof target === 'string' && target.endsWith('.css'),
+      )
+      .sort(([a], [b]) => a.localeCompare(b)),
+  );
 
   // Opt-in: a package becomes ESM-first by declaring `"type": "module"` in its package.json.
   if (json.type === 'module') {
@@ -94,6 +132,7 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
       };
     }
 
+    Object.assign(exports, cssExports);
     exports['./package.json'] = './package.json';
 
     return exports;
@@ -114,6 +153,7 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
     };
   }
 
+  Object.assign(exports, cssExports);
   exports['./package.json'] = './package.json';
 
   return exports;

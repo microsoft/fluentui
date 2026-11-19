@@ -1,0 +1,18 @@
+.root {
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  cursor: text;
+}
+
+/* Row gap only: Griffel sorted TagGroup's `column-gap` after this hook's `gap` shorthand, so TagGroup's column gap
+   wins at every size. */
+.medium {
+  padding: var(--spacingVerticalSNudge) 0;
+  row-gap: var(--spacingHorizontalXS);
+}
+
+.large,
+.extra-large {
+  padding: var(--spacingVerticalS) 0;
+  row-gap: var(--spacingHorizontalSNudge);
+}
