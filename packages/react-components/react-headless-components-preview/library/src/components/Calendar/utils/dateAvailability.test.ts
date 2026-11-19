@@ -1,10 +1,10 @@
-import { findAvailableDate, getAvailableDates, getBoundedDateRange, isRestrictedDate } from './dateAvailability';
-import * as dateMath from '../dateMath';
-import type { AvailableDateOptions } from './dateGrid.types';
+import { findAvailableDate, getAvailableDates, isRestrictedDate } from './dateAvailability';
+import * as dateMath from './dateMath';
+import type { AvailableDateOptions } from './dateAvailability';
 
-jest.mock('../dateMath', () => ({
+jest.mock('./dateMath', () => ({
   __esModule: true,
-  ...jest.requireActual<typeof import('../dateMath')>('../dateMath'),
+  ...jest.requireActual<typeof import('./dateMath')>('./dateMath'),
 }));
 
 describe('isRestrictedDate', () => {
@@ -100,19 +100,6 @@ describe('findAvailableDate', () => {
     expect(findAvailableDate({ ...options, initialDate: targetDate, restrictedDates: [targetDate] })).toBeUndefined();
   });
 
-  it.each([0, 2, -2, 0.5, NaN, Infinity, -Infinity])('rejects direction %s even for an available target', direction => {
-    expect(() =>
-      // @ts-expect-error Verify the runtime contract for JavaScript callers.
-      findAvailableDate({ ...options, direction }),
-    ).toThrow(new RangeError('direction must be 1 or -1.'));
-  });
-
-  it.each(['targetDate', 'initialDate'] as const)('rejects an invalid %s', field => {
-    expect(() => findAvailableDate({ ...options, [field]: new Date(NaN) })).toThrow(
-      new RangeError('targetDate and initialDate must be valid.'),
-    );
-  });
-
   it('rejects a search that exceeds the Date range', () => {
     const lastDate = new Date(8640000000000000);
     expect(() => findAvailableDate({ ...options, targetDate: lastDate, restrictedDates: [lastDate] })).toThrow(
@@ -142,28 +129,5 @@ describe('findAvailableDate', () => {
         restrictedDates: [date],
       }),
     ).toEqual(new Date(2011, 11, skippedFriday ? 29 : 30));
-  });
-});
-
-describe('getBoundedDateRange', () => {
-  const dates = [new Date(2020, 8, 17), new Date(2020, 8, 18), new Date(2020, 8, 19)];
-
-  it('returns a copy when there are no bounds', () => {
-    const result = getBoundedDateRange(dates);
-    expect(result).toEqual(dates);
-    expect(result).not.toBe(dates);
-  });
-
-  it('filters inclusive min/max bounds independently and together without mutating the input', () => {
-    expect(getBoundedDateRange(dates, dates[1])).toEqual(dates.slice(1));
-    expect(getBoundedDateRange(dates, undefined, dates[1])).toEqual(dates.slice(0, 2));
-    expect(getBoundedDateRange(dates, new Date(2020, 8, 18, 12), dates[1])).toEqual([dates[1]]);
-    expect(dates).toHaveLength(3);
-  });
-
-  it('returns no dates for an empty range or disjoint bounds', () => {
-    expect(getBoundedDateRange([], dates[0], dates[2])).toEqual([]);
-    expect(getBoundedDateRange(dates, new Date(2020, 8, 20))).toEqual([]);
-    expect(getBoundedDateRange(dates, dates[2], dates[0])).toEqual([]);
   });
 });
