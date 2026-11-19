@@ -7,8 +7,13 @@ import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import type { MenuItemProps } from './MenuItem.types';
+import { makeStyles } from '@griffel/react';
 
 jest.mock('../../contexts/menuContext');
+
+// Test-only styles; they do not need static extraction.
+// eslint-disable-next-line @griffel/styles-file
+const useUserStyles = makeStyles({ row: { flexDirection: 'row' } });
 
 describe('MenuItem', () => {
   isConformant<MenuItemProps>({
@@ -240,5 +245,22 @@ describe('MenuItem', () => {
 
     // Assert
     expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('lets a user content className override multiline styles', () => {
+    let userClasses = '';
+    const Probe = () => {
+      userClasses = useUserStyles().row;
+      return (
+        <MenuItem subText="Sub text" content={{ className: userClasses }}>
+          Item
+        </MenuItem>
+      );
+    };
+    const { container } = render(<Probe />);
+    const content = container.querySelector('.fui-MenuItem__content')!;
+    // The last token of a makeStyles class string is the atomic class for `flexDirection: row`.
+    const userAtomic = userClasses.trim().split(/\s+/).pop()!;
+    expect(content.className.split(/\s+/)).toContain(userAtomic);
   });
 });

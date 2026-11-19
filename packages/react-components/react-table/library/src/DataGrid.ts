@@ -4,6 +4,7 @@ export type {
   DataGridBaseState,
   DataGridContextValue,
   DataGridContextValues,
+  DataGridBaseFocusMode,
   DataGridFocusMode,
   DataGridProps,
   DataGridSlots,

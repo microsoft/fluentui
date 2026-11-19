@@ -58,7 +58,11 @@ export type DataGridBaseContextValue = TableFeaturesState<any> & {
 };
 
 // @public
-export type DataGridBaseProps = TableBaseProps & Pick<DataGridBaseContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridBaseContextValue>, 'focusMode' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+export type DataGridBaseFocusMode = Exclude<DataGridFocusMode, 'composite'>;
+
+// @public
+export type DataGridBaseProps = TableBaseProps & Pick<DataGridBaseContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridBaseContextValue>, 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+    focusMode?: DataGridBaseFocusMode;
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
@@ -182,7 +186,7 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridBaseProps, 'items' | 'columns' | 'getRowId' | 'focusMode' | 'resizableColumns' | 'sortState' | 'defaultSortState' | 'defaultSelectedItems' | 'selectedItems' | 'onSortChange' | 'onSelectionChange' | 'selectionMode' | 'columnSizingOptions' | 'onColumnResize' | 'containerWidthOffset' | 'resizableColumnsOptions'> & Pick<Partial<DataGridContextValue>, 'subtleSelection' | 'selectionAppearance'>;
+export type DataGridProps = TableProps & Pick<DataGridBaseProps, 'items' | 'columns' | 'getRowId' | 'resizableColumns' | 'sortState' | 'defaultSortState' | 'defaultSelectedItems' | 'selectedItems' | 'onSortChange' | 'onSelectionChange' | 'selectionMode' | 'columnSizingOptions' | 'onColumnResize' | 'containerWidthOffset' | 'resizableColumnsOptions'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'>;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);

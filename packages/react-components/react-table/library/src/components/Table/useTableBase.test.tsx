@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useTableBase_unstable } from './useTable';
 import { useTableRowBase_unstable } from '../TableRow/useTableRow';
 import { useTableCellBase_unstable } from '../TableCell/useTableCell';

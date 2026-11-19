@@ -15,6 +15,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Dropdown: ['popover', 'anchor-positioning'],
   Combobox: ['popover', 'anchor-positioning'],
   DatePicker: ['popover', 'anchor-positioning'],
+  TimePicker: ['popover', 'anchor-positioning'],
   TagPicker: ['popover', 'anchor-positioning', 'focusgroup'],
   Dialog: ['dialog', 'popover'],
   Drawer: ['dialog', 'popover'],

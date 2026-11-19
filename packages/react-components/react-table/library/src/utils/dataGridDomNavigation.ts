@@ -61,8 +61,21 @@ const isFocusable = (element: HTMLElement): boolean => {
   return isRendered(element);
 };
 
-const getFocusableElements = (container: HTMLElement): HTMLElement[] =>
-  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(isFocusable);
+/**
+ * The grid that owns an element. The root of a nested grid belongs to the outer grid, its content to the nested grid.
+ */
+const getOwnerGrid = (element: HTMLElement): HTMLElement | null =>
+  element.parentElement?.closest<HTMLElement>(GRID_SELECTOR) ?? null;
+
+/**
+ * The focusable elements inside a container, without the content of grids nested in it.
+ */
+const getFocusableElements = (container: HTMLElement): HTMLElement[] => {
+  const containerGrid = container.closest<HTMLElement>(GRID_SELECTOR);
+  return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
+    element => getOwnerGrid(element) === containerGrid && isFocusable(element),
+  );
+};
 
 /**
  * Focuses the element and reports whether it actually received focus.
@@ -135,11 +148,17 @@ const getCellFocusables = (cell: HTMLElement): HTMLElement[] =>
   cell.hasAttribute('tabindex') && isFocusable(cell) ? [cell] : getFocusableElements(cell);
 
 /**
- * Focuses the cell (or its first focusable child) at the given column of a row, or the closest one before it.
+ * Focuses the cell (or its first focusable child) at the given column of a row. When it cannot receive focus, the
+ * closest cell before it is tried, or the closest cell after it when `direction` is `'forward'`.
  */
-const focusCellAt = (row: HTMLElement, columnIndex: number): boolean => {
+const focusCellAt = (
+  row: HTMLElement,
+  columnIndex: number,
+  direction: 'backward' | 'forward' = 'backward',
+): boolean => {
   const cells = getCells(row);
-  for (let index = Math.min(columnIndex, cells.length - 1); index >= 0; index--) {
+  const step = direction === 'forward' ? 1 : -1;
+  for (let index = Math.min(columnIndex, cells.length - 1); index >= 0 && index < cells.length; index += step) {
     if (focusFirstOf(getCellFocusables(cells[index]))) {
       return true;
     }
@@ -160,6 +179,7 @@ const focusCellAt = (row: HTMLElement, columnIndex: number): boolean => {
  * `Home` and `End` are also handled by `focusgroup`, which moves to the first/last item of the whole grid. They have
  * to be handled in the capture phase, before `focusgroup` does, with `phase: 'capture'`. The other keys are handled
  * in the bubble phase, so that interactive content of the cells can handle them first.
+ * Capture-phase navigation only handles events targeting a cell or row itself, leaving nested controls their keys.
  *
  * @returns `true` if focus moved, in which case default behavior has been prevented
  */
@@ -179,6 +199,10 @@ export const handleDataGridKeyDown = (
 
   const isRowEdgeKey = !event.ctrlKey && (event.key === 'Home' || event.key === 'End');
   if (options.phase === 'capture' ? !isRowEdgeKey : isRowEdgeKey) {
+    return false;
+  }
+
+  if (options.phase === 'capture' && !target.matches(CELL_SELECTOR) && !target.matches(ROW_SELECTOR)) {
     return false;
   }
 
@@ -222,7 +246,7 @@ export const handleDataGridKeyDown = (
         break;
       }
       case 'Home':
-        handled = focusCellAt(currentRow, 0);
+        handled = focusCellAt(currentRow, 0, 'forward');
         break;
       case 'End':
         handled = focusCellAt(currentRow, cells.length - 1);
