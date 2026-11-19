@@ -21,15 +21,13 @@ export const useClasses = makeStyles({
     width: 'fit-content',
   },
   card: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground2,
     borderRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: 0,
-    padding: '26px',
+    padding: tokens.spacingHorizontalM,
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(181px, 1fr))',
-    // Rows sit much further apart than a title sits from its own plot, so each title reads as part of the plot below it.
-    gap: '32px 20px',
-    placeItems: 'center',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(205px, 1fr))',
+    gap: tokens.spacingHorizontalS,
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
   durationTableContainer: {
@@ -80,6 +78,13 @@ export const useCardClasses = makeStyles({
         "view point" auto / min-content var(--point-size)
     `,
     gap: '8px 6px',
+    justifyContent: 'center',
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalM}`,
+    backgroundColor: tokens.colorNeutralBackground1,
+    borderRadius: tokens.borderRadiusLarge,
+    boxShadow: tokens.shadow4,
+    // Forced colors removes the background, and paints the transparent border so tiles stay separate.
+    border: `${tokens.strokeWidthThin} solid transparent`,
 
     '--container-size': '141px',
     '--point-size': '12px',
