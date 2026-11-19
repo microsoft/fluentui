@@ -18,7 +18,7 @@ import { ComboboxContextValues as TimePickerContextValues } from '@fluentui/reac
 import { ComboboxSlots as TimePickerSlots } from '@fluentui/react-combobox';
 
 // @public
-export function createTimeFormat({ hourCycle, showSeconds }?: TimeFormatOptions): TimeFormat;
+export function createTimeFormat({ hourCycle, locale, showSeconds }?: TimeFormatOptions): TimeFormat;
 
 // @public
 export function formatDateToTimeString(date: Date, timeFormatOptions?: TimeFormatOptions): string;
@@ -46,10 +46,12 @@ export type TimeFormat = {
     hourCycle: HourCycle;
     format: (date: Date) => string;
     parse: (time: string | undefined, dateStartAnchor: Date, dateEndAnchor: Date) => TimeStringValidationResult;
+    normalize: (text: string) => string;
 };
 
 // @public
 export type TimeFormatOptions = {
+    locale?: string | undefined;
     hourCycle?: HourCycle | undefined;
     showSeconds?: boolean;
 };
@@ -70,7 +72,7 @@ export type TimePickerOnChangeData = {
 } & (EventData<'click', React_2.MouseEvent<HTMLElement>> | EventData<'keydown', React_2.KeyboardEvent<HTMLElement>> | EventData<'blur', React_2.FocusEvent<HTMLElement>>);
 
 // @public
-export type TimePickerProps = Omit<ComponentProps<Partial<TimePickerSlots>, 'input'>, 'children' | 'size' | 'value' | 'defaultValue' | 'onChange'> & Pick<ComboboxProps, 'clearable' | 'defaultOpen' | 'freeform' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'> & TimePickerTimeProps;
+export type TimePickerProps = Omit<ComponentProps<Partial<TimePickerSlots>, 'input'>, 'children' | 'size' | 'value' | 'defaultValue' | 'onChange'> & Pick<ComboboxProps, 'clearable' | 'defaultOpen' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning'> & TimePickerTimeProps;
 
 export { TimePickerSlots }
 
@@ -79,10 +81,14 @@ export type TimePickerState = ComboboxState & TimePickerTimeState & {
     root: {
         'data-freeform'?: string;
     };
+    listbox?: {
+        'data-empty'?: string;
+    };
 };
 
 // @public
 export type TimePickerTimeProps = TimeFormatOptions & {
+    freeform?: boolean;
     startHour?: number;
     endHour?: number;
     increment?: number;

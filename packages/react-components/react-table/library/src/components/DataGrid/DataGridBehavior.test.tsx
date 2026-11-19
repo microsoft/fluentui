@@ -56,12 +56,10 @@ const renderGrid = (props: Partial<DataGridProps> = {}) =>
     </DataGrid>,
   );
 
-const bodyRowNames = (container: HTMLElement) => {
-  const bodyRowGroup = container.querySelectorAll('[role="rowgroup"]')[1];
-  return Array.from(bodyRowGroup.querySelectorAll('[role="row"]')).map(
+const bodyRowNames = (container: HTMLElement) =>
+  Array.from(container.querySelectorAll('[role="rowgroup"]:last-of-type [role="row"]')).map(
     row => row.querySelector('[role="gridcell"]')?.textContent,
   );
-};
 
 describe('DataGrid behavior', () => {
   describe('structure', () => {
