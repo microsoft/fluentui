@@ -219,6 +219,7 @@ export type {
   DataGridState,
   DataGridContextValues,
   DataGridContextValue,
+  DataGridBaseFocusMode,
   DataGridFocusMode,
 } from './DataGrid';
 export { DataGridContextProvider, useDataGridContext_unstable } from './contexts/dataGridContext';

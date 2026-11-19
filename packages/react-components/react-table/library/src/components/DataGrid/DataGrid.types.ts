@@ -23,6 +23,12 @@ export type DataGridSlots = TableSlots;
 
 export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
+/**
+ * Focus modes supported by `useDataGridBase_unstable`. The `composite` mode relies on Tabster and is only available on
+ * the styled DataGrid.
+ */
+export type DataGridBaseFocusMode = Exclude<DataGridFocusMode, 'composite'>;
+
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
 };
@@ -73,9 +79,15 @@ export type DataGridContextValue = DataGridBaseContextValue & {
  */
 export type DataGridBaseProps = TableBaseProps &
   Pick<DataGridBaseContextValue, 'items' | 'columns' | 'getRowId'> &
-  Pick<Partial<DataGridBaseContextValue>, 'focusMode' | 'resizableColumns'> &
+  Pick<Partial<DataGridBaseContextValue>, 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+    /**
+     * How focus navigation will work in the datagrid
+     * @default cell
+     */
+    focusMode?: DataGridBaseFocusMode;
+
     /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
@@ -134,7 +146,6 @@ export type DataGridProps = TableProps &
     | 'items'
     | 'columns'
     | 'getRowId'
-    | 'focusMode'
     | 'resizableColumns'
     | 'sortState'
     | 'defaultSortState'
@@ -148,7 +159,7 @@ export type DataGridProps = TableProps &
     | 'containerWidthOffset'
     | 'resizableColumnsOptions'
   > &
-  Pick<Partial<DataGridContextValue>, 'subtleSelection' | 'selectionAppearance'>;
+  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'>;
 
 /**
  * State used in rendering DataGrid

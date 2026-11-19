@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { act, fireEvent, render, renderHook } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useDataGridBase_unstable } from './useDataGrid';
 import { useDataGridRowBase_unstable } from '../DataGridRow/useDataGridRow';
 import { useDataGridCellBase_unstable } from '../DataGridCell/useDataGridCell';
@@ -109,6 +110,18 @@ describe('useDataGridBase_unstable', () => {
     expect(result.current.dataGrid.subtleSelection).toBe(false);
     expect(result.current.dataGrid.selectionAppearance).toBe('brand');
     expect(result.current.table.size).toBe('medium');
+  });
+});
+
+describe('useDataGridBase_unstable focus mode', () => {
+  it('does not accept the composite focus mode', () => {
+    const props: DataGridBaseProps = {
+      items,
+      columns,
+      // @ts-expect-error -- the composite focus mode relies on Tabster and is only supported by the styled DataGrid
+      focusMode: 'composite',
+    };
+    expect(props).toBeTruthy();
   });
 });
 
@@ -377,6 +390,70 @@ describe('DataGrid base keyboard navigation', () => {
     rows[3].style.display = 'none';
     press(cells[2], 'End', { ctrlKey: true });
     expect(document.activeElement).toBe(cells[2]);
+  });
+
+  it('moves to the first rendered cell with Home when the first cell is not rendered', () => {
+    const { getAllByRole } = renderGrid({
+      columns: [...columns, createTableColumn<Item>({ columnId: 'extra' })],
+    });
+    const cells = getAllByRole('gridcell');
+
+    // First body row: cells[0..2]
+    cells[0].style.display = 'none';
+    cells[2].focus();
+    // Default prevented: the key has been handled
+    expect(fireEvent.keyDown(cells[2], { key: 'Home' })).toBe(false);
+    expect(document.activeElement).toBe(cells[1]);
+  });
+
+  it('does not move into a nested grid with Ctrl+End', () => {
+    const { getAllByRole, getByText } = render(
+      <DataGrid aria-label="People">
+        <Header>
+          <Row>{({ columnId }) => <HeaderCell key={columnId}>{columnId}</HeaderCell>}</Row>
+        </Header>
+        <Row>
+          {({ columnId }) => (
+            <Cell key={columnId}>
+              {columnId === 'age' ? (
+                <div role="grid" aria-label="Nested">
+                  <div role="row">
+                    <div role="gridcell" tabIndex={0}>
+                      nested
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                String(columnId)
+              )}
+            </Cell>
+          )}
+        </Row>
+      </DataGrid>,
+    );
+    const nestedCell = getByText('nested');
+    const outerCells = getAllByRole('gridcell').filter(cell => cell !== nestedCell);
+
+    outerCells[0].focus();
+    press(outerCells[0], 'End', { ctrlKey: true });
+    expect(document.activeElement).toBe(outerCells[1]);
+  });
+
+  it('keeps navigating when the consumer provides key handlers and columns are resizable', () => {
+    const onKeyDown = jest.fn();
+    const onKeyDownCapture = jest.fn();
+    const { getAllByRole } = renderGrid({ resizableColumns: true, onKeyDown, onKeyDownCapture });
+    const cells = getAllByRole('gridcell');
+
+    cells[0].focus();
+    press(cells[0], 'ArrowDown');
+    expect(document.activeElement).toBe(cells[2]);
+
+    press(cells[2], 'End');
+    expect(document.activeElement).toBe(cells[3]);
+
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
+    expect(onKeyDownCapture).toHaveBeenCalledTimes(2);
   });
 
   it('does not handle the key when the target does not receive focus', () => {

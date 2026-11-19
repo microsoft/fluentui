@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useTableSelectionCellBase_unstable } from './useTableSelectionCell';
 import { renderTableSelectionCell_unstable } from './renderTableSelectionCell';
 
