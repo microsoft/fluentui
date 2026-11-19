@@ -183,6 +183,61 @@ describe('DataGrid family', () => {
       expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(true);
       expect(document.activeElement).toBe(cells[0]);
     });
+
+    it('stops the horizontal arrow keys at the edges of a row, so that the focusgroup does not leave it', () => {
+      const { getAllByRole } = renderGrid();
+      const cells = getAllByRole('gridcell');
+
+      // last cell of the first row and first cell of the second row
+      expect(fireEvent.keyDown(cells[1], { key: 'ArrowRight' })).toBe(false);
+      expect(fireEvent.keyDown(cells[2], { key: 'ArrowLeft' })).toBe(false);
+    });
+
+    it('adds no keyboard navigation in the none focus mode, and still calls the consumer key handler', () => {
+      const onKeyDown = jest.fn();
+      const { getAllByRole } = render(
+        <DataGrid items={items} columns={columns} aria-label="People" focusMode="none" onKeyDown={onKeyDown}>
+          <DataGridBody<Item>>
+            {({ item, rowId }) => (
+              <DataGridRow<Item> key={rowId}>
+                {({ renderCell }) => (
+                  <DataGridCell>
+                    <button>{renderCell(item)}</button>
+                  </DataGridCell>
+                )}
+              </DataGridRow>
+            )}
+          </DataGridBody>
+        </DataGrid>,
+      );
+      const [first, , , , , last] = getAllByRole('button');
+
+      first.focus();
+      expect(fireEvent.keyDown(first, { key: 'End', ctrlKey: true })).toBe(true);
+      expect(fireEvent.keyDown(first, { key: 'ArrowDown' })).toBe(true);
+      expect(fireEvent.keyDown(last, { key: 'ArrowRight' })).toBe(true);
+      expect(document.activeElement).toBe(first);
+      expect(onKeyDown).toHaveBeenCalledTimes(3);
+    });
+  });
+
+  it('forwards refs to the generic body and rows', () => {
+    const bodyRef = React.createRef<HTMLDivElement>();
+    const rowRef = React.createRef<HTMLDivElement>();
+    render(
+      <DataGrid items={items.slice(0, 1)} columns={columns} aria-label="People">
+        <DataGridBody<Item> ref={bodyRef}>
+          {({ item, rowId }) => (
+            <DataGridRow<Item> key={rowId} ref={rowRef}>
+              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>,
+    );
+
+    expect(bodyRef.current).toHaveAttribute('role', 'rowgroup');
+    expect(rowRef.current).toHaveAttribute('role', 'row');
   });
 
   describe('sorting', () => {

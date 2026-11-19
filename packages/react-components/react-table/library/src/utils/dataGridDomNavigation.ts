@@ -168,11 +168,46 @@ const focusCellAt = (
 };
 
 /**
+ * An element takes part in the `focusgroup` navigation: it is not inside a subtree that opted out with
+ * `focusgroup="none"`.
+ */
+const isFocusgroupItem = (element: HTMLElement): boolean =>
+  !/(^|\s)none(\s|$)/.test(element.closest('[focusgroup]')?.getAttribute('focusgroup') ?? '');
+
+/**
+ * Prevents a horizontal arrow key from leaving the row of the target. A linear `focusgroup` treats all the items of
+ * the grid as one sequence, so without this the arrow key on the last item of a row moves to the next row.
+ */
+const stopAtRowEdge = (event: React.KeyboardEvent<HTMLElement>, target: HTMLElement): boolean => {
+  const row = target.closest<HTMLElement>(ROW_SELECTOR);
+  if (!row) {
+    return false;
+  }
+
+  const rowItems = getRowFocusables(row).filter(isFocusgroupItem);
+  const index = rowItems.indexOf(target);
+  if (index === -1) {
+    return false;
+  }
+
+  const isRtl = target.ownerDocument.defaultView?.getComputedStyle(target).direction === 'rtl';
+  const forward = (event.key === 'ArrowRight') !== isRtl;
+  if (forward ? index !== rowItems.length - 1 : index !== 0) {
+    return false;
+  }
+
+  event.preventDefault();
+  return true;
+};
+
+/**
  * Handles the grid keyboard interactions that the `focusgroup` attribute does not cover with plain DOM queries:
  *
  * - `ArrowUp`/`ArrowDown` move to the cell in the same column of the previous/next row
  * - `Home`/`End` move to the first/last cell of the current row
  * - `Ctrl+Home`/`Ctrl+End` move to the first/last focusable element of the grid
+ * - `ArrowLeft`/`ArrowRight` are stopped at the first/last item of the row when `cellNavigation` is enabled, the
+ *   moves within the row are left to `focusgroup`
  *
  * Elements that are not rendered are skipped. Events coming from a nested grid are left to that grid.
  *
@@ -180,8 +215,9 @@ const focusCellAt = (
  * to be handled in the capture phase, before `focusgroup` does, with `phase: 'capture'`. The other keys are handled
  * in the bubble phase, so that interactive content of the cells can handle them first.
  * Capture-phase navigation only handles events targeting a cell or row itself, leaving nested controls their keys.
+ * `ArrowLeft` and `ArrowRight` are also handled in the capture phase, for any item of the row.
  *
- * @returns `true` if focus moved, in which case default behavior has been prevented
+ * @returns `true` if the event was handled, in which case default behavior has been prevented
  */
 export const handleDataGridKeyDown = (
   event: React.KeyboardEvent<HTMLElement>,
@@ -198,8 +234,18 @@ export const handleDataGridKeyDown = (
   }
 
   const isRowEdgeKey = !event.ctrlKey && (event.key === 'Home' || event.key === 'End');
-  if (options.phase === 'capture' ? !isRowEdgeKey : isRowEdgeKey) {
+  const isHorizontalKey = !event.ctrlKey && (event.key === 'ArrowLeft' || event.key === 'ArrowRight');
+  if (options.phase === 'capture' ? !isRowEdgeKey && !isHorizontalKey : isRowEdgeKey) {
     return false;
+  }
+
+  if (isHorizontalKey) {
+    return (
+      options.phase === 'capture' &&
+      options.cellNavigation &&
+      !event.shiftKey &&
+      stopAtRowEdge(event, target as HTMLElement)
+    );
   }
 
   if (options.phase === 'capture' && !target.matches(CELL_SELECTOR) && !target.matches(ROW_SELECTOR)) {

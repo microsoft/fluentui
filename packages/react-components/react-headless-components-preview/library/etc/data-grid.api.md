@@ -31,8 +31,10 @@ import { DataGridSelectionCellBaseProps as DataGridSelectionCellProps } from '@f
 import { DataGridSelectionCellBaseSlots as DataGridSelectionCellSlots } from '@fluentui/react-table';
 import { DataGridSlots } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InferredElementRefType } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import { renderDataGridBody_unstable as renderDataGridBody } from '@fluentui/react-table';
 import { renderDataGridCell_unstable as renderDataGridCell } from '@fluentui/react-table';
 import { renderDataGridHeader_unstable as renderDataGridHeader } from '@fluentui/react-table';
@@ -55,7 +57,7 @@ export { CreateTableColumnOptions }
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSXElement);
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem> & RefAttributes<InferredElementRefType<DataGridBodyProps<TItem>>>) => JSXElement);
 
 export { DataGridBodyProps }
 
@@ -133,7 +135,7 @@ export type DataGridProps = Omit<DataGridBaseProps, 'focusMode'> & {
 };
 
 // @public
-export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);
+export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem> & RefAttributes<InferredElementRefType<DataGridRowProps<TItem>>>) => JSXElement);
 
 // @public (undocumented)
 export type DataGridRowProps<TItem = unknown> = Omit<DataGridRowBaseProps<TItem>, 'selectionCell'> & {

@@ -93,6 +93,8 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
  * interactions that such an attribute does not cover with plain DOM queries: the up and down arrow keys move to the
  * cell in the same column of the adjacent row, `Home` and `End` move to the first and last cell of the row when
  * focus is on a cell itself, and `Ctrl+Home` and `Ctrl+End` move to the first and last focusable element of the grid.
+ * In the `cell` focus mode, `ArrowLeft` and `ArrowRight` are stopped at the edges of the row, so that a linear
+ * `focusgroup` does not move focus to the adjacent row. No keyboard navigation is added in the `none` focus mode.
  *
  * Unlike the styled DataGrid, the base rows do not render a selection cell, so no width is reserved for it when
  * columns are resizable. Callers that render one should pass its width as `containerWidthOffset` (as a negative value).
@@ -104,6 +106,8 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
   const { focusMode = 'cell' } = props;
 
   const cellNavigation = focusMode === 'cell';
+  // No keyboard navigation is added in the `none` focus mode, the consumer key handlers are still called
+  const navigation = focusMode !== 'none';
 
   return useDataGridState(
     props,
@@ -112,12 +116,12 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
     {},
     0,
     (e, grid) => {
-      if (grid) {
+      if (grid && navigation) {
         handleDataGridKeyDown(e, grid, { cellNavigation, phase: 'bubble' });
       }
     },
     (e, grid) => {
-      if (grid) {
+      if (grid && navigation) {
         handleDataGridKeyDown(e, grid, { cellNavigation, phase: 'capture' });
       }
     },

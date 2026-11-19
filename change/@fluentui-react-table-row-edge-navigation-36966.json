@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: stop horizontal arrow keys at row edges and skip keyboard navigation in the none focus mode of the base DataGrid",
+  "packageName": "@fluentui/react-table",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -74,11 +74,11 @@
   color: var(--text);
 }
 
-.headerCell[data-sort-direction='ascending'] button::after {
+.headerCell[data-sort-direction='ascending'] .sortButton::after {
   content: ' \2191';
 }
 
-.headerCell[data-sort-direction='descending'] button::after {
+.headerCell[data-sort-direction='descending'] .sortButton::after {
   content: ' \2193';
 }
 

@@ -280,6 +280,48 @@ describe('DataGrid base keyboard navigation', () => {
     expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(true);
   });
 
+  it('stops ArrowLeft and ArrowRight at the edges of the row, before listeners of the grid element', () => {
+    const { getAllByRole, getByRole } = renderGrid();
+    const cells = getAllByRole('gridcell');
+    const defaultPreventedOnGrid: boolean[] = [];
+    getByRole('grid').addEventListener('keydown', e => defaultPreventedOnGrid.push(e.defaultPrevented));
+
+    // first row: cells[0] and cells[1], second row: cells[2] and cells[3]
+    expect(fireEvent.keyDown(cells[1], { key: 'ArrowRight' })).toBe(false);
+    expect(fireEvent.keyDown(cells[2], { key: 'ArrowLeft' })).toBe(false);
+    expect(defaultPreventedOnGrid).toEqual([true, true]);
+
+    // moves within the row are left to the focusgroup
+    expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(true);
+    expect(fireEvent.keyDown(cells[1], { key: 'ArrowLeft' })).toBe(true);
+  });
+
+  it('does not stop the horizontal arrow keys in the row focus mode', () => {
+    const { getAllByRole } = renderGrid({ focusMode: 'row_unstable' });
+    const cells = getAllByRole('gridcell');
+
+    expect(fireEvent.keyDown(cells[1], { key: 'ArrowRight' })).toBe(true);
+  });
+
+  it('adds no keyboard navigation in the none focus mode, and still calls the consumer key handlers', () => {
+    const onKeyDown = jest.fn();
+    const onKeyDownCapture = jest.fn();
+    const { getAllByRole } = renderGrid({ focusMode: 'none', onKeyDown, onKeyDownCapture });
+    const cells = getAllByRole('gridcell');
+    const button = document.createElement('button');
+    cells[0].appendChild(button);
+    const lastButton = document.createElement('button');
+    cells[5].appendChild(lastButton);
+
+    button.focus();
+    expect(fireEvent.keyDown(button, { key: 'End', ctrlKey: true })).toBe(true);
+    expect(fireEvent.keyDown(button, { key: 'ArrowDown' })).toBe(true);
+    expect(fireEvent.keyDown(lastButton, { key: 'ArrowRight' })).toBe(true);
+    expect(document.activeElement).toBe(button);
+    expect(onKeyDown).toHaveBeenCalledTimes(3);
+    expect(onKeyDownCapture).toHaveBeenCalledTimes(3);
+  });
+
   it('moves to the first and last cell of the row with Home and End', () => {
     const { getAllByRole } = renderGrid();
     const cells = getAllByRole('gridcell');
