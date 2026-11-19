@@ -260,12 +260,15 @@ export const MotionCurves = (): JSXElement => {
     <div className={classes.container}>
       <div className={classes.header}>
         <div className={classes.legend}>
-          <span>Plots: progress (↑) over time (→)</span>
+          <span>
+            {/* The arrows only illustrate the axes; screen readers would announce them as "upwards arrow". */}
+            Plots: progress <span aria-hidden="true">(↑)</span> over time <span aria-hidden="true">(→)</span>
+          </span>
           <span>Values: cubic-bezier(x1, y1, x2, y2)</span>
         </div>
         <div className={classes.controls}>
           <Switch label="Show control points" checked={controlPointsVisible} onChange={handleControlPointsChange} />
-          <Switch label="Play previews" checked={animationEnabled} onChange={handleChange} />
+          <Switch label="Play curve previews" checked={animationEnabled} onChange={handleChange} />
         </div>
       </div>
       <div className={classes.card}>
@@ -296,7 +299,7 @@ export const MotionDuration = (): JSXElement => {
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Switch label="Play previews" checked={animationEnabled} onChange={handleChange} />
+        <Switch label="Play duration previews" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.durationTableContainer}>
         {/* ARIA table roles keep table semantics without inheriting Storybook's Markdown table styles. */}
