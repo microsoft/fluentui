@@ -122,6 +122,34 @@ describe('React-driven close', () => {
     cy.get('[data-testid=surface]').should('not.exist');
     cy.get('@onClose').should('have.been.calledOnce');
   });
+
+  it('runs the surface onClose for a surface switched to modal while open', () => {
+    const onClose = cy.stub().as('onClose');
+    const Example = () => {
+      const [open, setOpen] = React.useState(true);
+      const [inertTrapFocus, setInertTrapFocus] = React.useState(false);
+      return (
+        <Popover open={open} inertTrapFocus={inertTrapFocus} onOpenChange={(_, data) => setOpen(data.open)}>
+          <PopoverSurface onClose={onClose} data-testid="surface">
+            <button data-testid="switch" onClick={() => setInertTrapFocus(true)}>
+              Switch
+            </button>
+            <button data-testid="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=surface]').should('match', ':popover-open');
+    cy.get('[data-testid=switch]').realClick();
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=close]').realClick();
+    cy.get('[data-testid=surface]').should('not.exist');
+    cy.get('@onClose').should('have.been.calledOnce');
+  });
 });
 
 describe('nested shadow focus restoration', () => {
