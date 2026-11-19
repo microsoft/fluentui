@@ -189,10 +189,6 @@ function isMigration(name: string): name is keyof typeof MIGRATIONS {
   return Object.prototype.hasOwnProperty.call(MIGRATIONS, name);
 }
 
-function isDynamicMigration(name: string): boolean {
-  return name === 'Icon' || name === 'Stack' || name === 'FocusTrapZone' || name === 'FocusZone' || isMigration(name);
-}
-
 function getStaticPropertyName(
   property: TSESTree.Expression | TSESTree.PrivateIdentifier,
   computed: boolean,
@@ -214,53 +210,17 @@ function getStaticPropertyName(
   return undefined;
 }
 
-function isBindingIdentifier(
-  sourceCode: TSESLint.SourceCode,
-  identifier: TSESTree.Identifier,
-  bindingIdentifier: TSESTree.Identifier,
-): boolean {
-  const bindingVariable = findVariable(sourceCode, bindingIdentifier);
-  return bindingVariable !== undefined && findVariable(sourceCode, identifier) === bindingVariable;
-}
-
-function isBindingReassignedBefore(
-  sourceCode: TSESLint.SourceCode,
-  bindingIdentifier: TSESTree.Identifier,
-  usage: TSESTree.Node,
-): boolean {
-  const bindingVariable = findVariable(sourceCode, bindingIdentifier);
-  if (!bindingVariable) {
-    return false;
-  }
-
-  for (const reference of bindingVariable.references) {
-    if (
-      reference.isWrite() &&
-      reference.identifier.range[0] !== bindingIdentifier.range[0] &&
-      reference.identifier.range[0] < usage.range[0]
-    ) {
-      return true;
+function extractPropertyNames(pattern: TSESTree.ObjectPattern): string[] {
+  const names: string[] = [];
+  for (const property of pattern.properties) {
+    if (property.type === AST_NODE_TYPES.Property) {
+      const name = getStaticPropertyName(property.key, property.computed);
+      if (name !== undefined) {
+        names.push(name);
+      }
     }
   }
-
-  return false;
-}
-
-function findVariable(
-  sourceCode: TSESLint.SourceCode,
-  identifier: TSESTree.Identifier,
-): TSESLint.Scope.Variable | undefined {
-  let scope: TSESLint.Scope.Scope | null = sourceCode.getScope(identifier);
-
-  while (scope) {
-    const variable = scope.set.get(identifier.name);
-    if (variable) {
-      return variable;
-    }
-    scope = scope.upper;
-  }
-
-  return undefined;
+  return names;
 }
 
 /**
@@ -285,8 +245,7 @@ function extractComponentsFromImport(importNode: TSESTree.ImportExpression, sour
     parent.parent?.type === AST_NODE_TYPES.VariableDeclarator &&
     parent.parent.id.type === AST_NODE_TYPES.Identifier
   ) {
-    const foundComponents = findComponentUsagesInScope(sourceCode, parent.parent);
-    return foundComponents;
+    return findComponentUsages(sourceCode, parent.parent, parent.parent.id);
   }
 
   // Handle: const { Button } = await import('@fluentui/react')
@@ -295,15 +254,7 @@ function extractComponentsFromImport(importNode: TSESTree.ImportExpression, sour
     parent.parent?.type === AST_NODE_TYPES.VariableDeclarator &&
     parent.parent.id.type === AST_NODE_TYPES.ObjectPattern
   ) {
-    for (const prop of parent.parent.id.properties) {
-      if (
-        prop.type === AST_NODE_TYPES.Property &&
-        isDynamicMigration(getStaticPropertyName(prop.key, prop.computed) ?? '')
-      ) {
-        components.push(getStaticPropertyName(prop.key, prop.computed)!);
-      }
-    }
-    return components;
+    return extractPropertyNames(parent.parent.id);
   }
 
   // Handle: import('@fluentui/react').then(...)
@@ -324,19 +275,11 @@ function extractComponentsFromImport(importNode: TSESTree.ImportExpression, sour
 
       // Handle: .then(({ Button }) => ...)
       if (param && param.type === AST_NODE_TYPES.ObjectPattern) {
-        for (const prop of param.properties) {
-          if (
-            prop.type === AST_NODE_TYPES.Property &&
-            isDynamicMigration(getStaticPropertyName(prop.key, prop.computed) ?? '')
-          ) {
-            components.push(getStaticPropertyName(prop.key, prop.computed)!);
-          }
-        }
+        return extractPropertyNames(param);
       }
       // Handle: .then(m => ...)
       else if (param && param.type === AST_NODE_TYPES.Identifier) {
-        const foundComponents = findComponentUsagesInFunction(sourceCode, thenArg, param);
-        components.push(...foundComponents);
+        return findComponentUsages(sourceCode, thenArg, param);
       }
     }
   }
@@ -345,131 +288,49 @@ function extractComponentsFromImport(importNode: TSESTree.ImportExpression, sour
 }
 
 /**
- * Finds component usages within a function body by looking for member access patterns like `m.Button`.
+ * Finds member access and destructuring through references to the imported namespace binding.
  */
-function findComponentUsagesInFunction(
+function findComponentUsages(
   sourceCode: TSESLint.SourceCode,
-  fn: TSESTree.ArrowFunctionExpression | TSESTree.FunctionExpression,
-  namespaceParam: TSESTree.Identifier,
+  declaration: TSESTree.VariableDeclarator | TSESTree.ArrowFunctionExpression | TSESTree.FunctionExpression,
+  bindingIdentifier: TSESTree.Identifier,
 ): string[] {
   const components: string[] = [];
-
-  function traverse(node: TSESTree.Node | null | undefined): void {
-    if (!node) {
-      return;
-    }
-
-    // Look for m.Component patterns
-    if (
-      node.type === AST_NODE_TYPES.MemberExpression &&
-      node.object.type === AST_NODE_TYPES.Identifier &&
-      isBindingIdentifier(sourceCode, node.object, namespaceParam) &&
-      !isBindingReassignedBefore(sourceCode, namespaceParam, node) &&
-      isDynamicMigration(getStaticPropertyName(node.property, node.computed) ?? '')
-    ) {
-      components.push(getStaticPropertyName(node.property, node.computed)!);
-    }
-
-    // Recursively traverse child nodes (skip 'parent' to avoid circular references)
-    for (const key in node) {
-      if (key === 'parent') {
-        continue;
-      }
-      const value = (node as unknown as Record<string, unknown>)[key];
-      if (value && typeof value === 'object') {
-        if (Array.isArray(value)) {
-          value.forEach(traverse);
-        } else if ('type' in value) {
-          traverse(value as TSESTree.Node);
-        }
-      }
-    }
-  }
-
-  traverse(fn.body);
-  return components;
-}
-
-/**
- * Finds component usages in the scope after a variable declaration.
- * Used for async/await patterns like: const m = await import(...); return { default: m.Button };
- */
-function findComponentUsagesInScope(
-  sourceCode: TSESLint.SourceCode,
-  declarator: TSESTree.VariableDeclarator,
-): string[] {
-  const components: string[] = [];
-  let currentNode: TSESTree.Node | undefined = declarator.parent;
-
-  // Find the containing traversal root.
-  while (
-    currentNode &&
-    currentNode.type !== AST_NODE_TYPES.BlockStatement &&
-    currentNode.type !== AST_NODE_TYPES.Program
-  ) {
-    currentNode = currentNode.parent;
-  }
-
-  if (!currentNode) {
+  const variable = sourceCode
+    .getDeclaredVariables(declaration)
+    .find(candidate => candidate.identifiers.includes(bindingIdentifier));
+  if (!variable) {
     return components;
   }
 
-  if (declarator.id.type !== AST_NODE_TYPES.Identifier) {
-    return components;
-  }
-  const namespaceIdentifier = declarator.id;
+  const firstReassignment = Math.min(
+    ...variable.references
+      .filter(reference => reference.isWrite() && reference.identifier !== bindingIdentifier)
+      .map(reference => reference.identifier.range[0]),
+  );
 
-  // Traverse the block statement to find usages
-  function traverse(node: TSESTree.Node | null | undefined): void {
-    if (!node) {
-      return;
+  for (const reference of variable.references) {
+    if (!reference.isRead() || reference.identifier.range[0] > firstReassignment) {
+      continue;
     }
 
+    const node = reference.identifier.parent;
     if (
       node.type === AST_NODE_TYPES.VariableDeclarator &&
       node.id.type === AST_NODE_TYPES.ObjectPattern &&
-      node.init?.type === AST_NODE_TYPES.Identifier &&
-      isBindingIdentifier(sourceCode, node.init, namespaceIdentifier) &&
-      !isBindingReassignedBefore(sourceCode, namespaceIdentifier, node)
+      node.init === reference.identifier
     ) {
-      for (const prop of node.id.properties) {
-        if (prop.type === AST_NODE_TYPES.Property) {
-          const componentName = getStaticPropertyName(prop.key, prop.computed);
-          if (componentName && isDynamicMigration(componentName)) {
-            components.push(componentName);
-          }
-        }
-      }
+      components.push(...extractPropertyNames(node.id));
     }
 
-    // Look for m.Component patterns
-    if (
-      node.type === AST_NODE_TYPES.MemberExpression &&
-      node.object.type === AST_NODE_TYPES.Identifier &&
-      isBindingIdentifier(sourceCode, node.object, namespaceIdentifier) &&
-      !isBindingReassignedBefore(sourceCode, namespaceIdentifier, node) &&
-      isDynamicMigration(getStaticPropertyName(node.property, node.computed) ?? '')
-    ) {
-      components.push(getStaticPropertyName(node.property, node.computed)!);
-    }
-
-    // Recursively traverse child nodes (skip 'parent' to avoid circular references)
-    for (const key in node) {
-      if (key === 'parent') {
-        continue;
-      }
-      const value = (node as unknown as Record<string, unknown>)[key];
-      if (value && typeof value === 'object') {
-        if (Array.isArray(value)) {
-          value.forEach(traverse);
-        } else if ('type' in value) {
-          traverse(value as TSESTree.Node);
-        }
+    if (node.type === AST_NODE_TYPES.MemberExpression && node.object === reference.identifier) {
+      const name = getStaticPropertyName(node.property, node.computed);
+      if (name !== undefined) {
+        components.push(name);
       }
     }
   }
 
-  traverse(currentNode);
   return components;
 }
 
