@@ -68,7 +68,7 @@ export const useCardClasses = makeStyles({
 
     '--container-size': '250px',
     '--point-size': '20px',
-    '--axis-label-width': '12px',
+    '--axis-label-width': tokens.lineHeightBase200,
     '--axis-label-gap': '6px',
   },
   point: {
@@ -100,14 +100,20 @@ export const useCardClasses = makeStyles({
   },
   graphP: {
     gridArea: 'graphP',
-    color: tokens.colorNeutralStroke1,
-    fontFamily: tokens.fontFamilyMonospace,
+    alignSelf: 'center',
+    // Vertical text reads bottom to top, along the direction progress grows.
+    writingMode: 'vertical-rl',
+    transform: 'rotate(180deg)',
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralForeground3,
   },
   graphT: {
     gridArea: 'graphT',
-    justifySelf: 'end',
-    color: tokens.colorNeutralStroke1,
-    fontFamily: tokens.fontFamilyMonospace,
+    justifySelf: 'center',
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralForeground3,
   },
   svg: {
     gridArea: 'svg',
@@ -120,20 +126,20 @@ export const useCardClasses = makeStyles({
     width: 'var(--container-size)',
   },
   referenceLine: {
-    stroke: tokens.colorNeutralForeground1,
+    stroke: tokens.colorNeutralStroke2,
     strokeWidth: tokens.strokeWidthThin,
-    opacity: 0.2,
     vectorEffect: 'non-scaling-stroke',
 
     '@media (forced-colors: active)': {
-      stroke: 'CanvasText',
-      opacity: 1,
+      stroke: 'GrayText',
     },
   },
   path: {
     fill: 'none',
-    stroke: tokens.colorNeutralStrokeAccessible,
-    strokeWidth: '2',
+    stroke: tokens.colorNeutralForeground1,
+    strokeWidth: tokens.strokeWidthThicker,
+    strokeLinecap: 'round',
+    vectorEffect: 'non-scaling-stroke',
 
     '@media (forced-colors: active)': {
       stroke: 'CanvasText',
@@ -141,7 +147,7 @@ export const useCardClasses = makeStyles({
   },
 
   handle: {
-    stroke: tokens.colorNeutralStrokeAccessible,
+    stroke: tokens.colorNeutralForeground3,
     strokeWidth: tokens.strokeWidthThin,
     strokeDasharray: '4 3',
 
@@ -189,7 +195,7 @@ export const useCardClasses = makeStyles({
   },
   title: {
     gridArea: 'title',
-    // Start the text at the plot's vertical axis, past the "p" axis label column.
+    // Start the text at the plot's vertical axis, past the "progress" axis label column.
     paddingLeft: 'calc(var(--axis-label-width) + var(--axis-label-gap))',
 
     display: 'flex',

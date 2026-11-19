@@ -87,18 +87,15 @@ const MotionCurveCard: React.FC<{
             <g>
               <circle className={classes.controlPoint} cx={x1} cy={y1} r="1.6" />
               <circle className={classes.controlPoint} cx={x2} cy={y2} r="1.6" />
-              <circle className={classes.endpoint} cx="0" cy="100" r="0.8" />
-              <circle className={classes.endpoint} cx="100" cy="0" r="0.8" />
             </g>
           </Fade>
+          {/* Endpoints draw last so they stay visible inside a control point that coincides with them. */}
+          <circle className={classes.endpoint} cx="0" cy="100" r="1.2" />
+          <circle className={classes.endpoint} cx="100" cy="0" r="1.2" />
         </svg>
 
-        <div className={classes.graphP} title="Progress">
-          p
-        </div>
-        <div className={classes.graphT} title="Time">
-          t
-        </div>
+        <div className={classes.graphP}>progress</div>
+        <div className={classes.graphT}>time</div>
       </div>
       <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
         <div className={classes.point} />
