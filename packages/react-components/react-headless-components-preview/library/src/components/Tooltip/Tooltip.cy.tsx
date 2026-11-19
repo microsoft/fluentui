@@ -159,6 +159,24 @@ describe('Tooltip', () => {
       cy.get(tooltipSelector).should('not.be.visible');
     });
 
+    it('should leave Escape to the page after the browser hides it while visible stays true', () => {
+      const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
+      mount(
+        <div onKeyDown={onOuterKeyDown}>
+          <Example visible />
+          <button id="outside">Outside</button>
+        </div>,
+      );
+      cy.get(tooltipSelector).should('be.visible');
+      cy.get(tooltipSelector).then($tooltip => {
+        ($tooltip[0] as HTMLElement).hidePopover();
+      });
+      cy.get(tooltipSelector).should('not.be.visible');
+
+      cy.get('#outside').focus().type('{esc}');
+      cy.get('@onOuterKeyDown').should('have.been.calledWithMatch', { key: 'Escape' });
+    });
+
     it('should call onVisibleChange with visible=true when shown', () => {
       const onVisibleChange = cy.stub().as('onVisibleChange');
       mount(<Example onVisibleChange={onVisibleChange} />);

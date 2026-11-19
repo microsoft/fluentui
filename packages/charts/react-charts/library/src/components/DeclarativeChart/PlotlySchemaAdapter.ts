@@ -1188,7 +1188,7 @@ export const normalizeObjectArrayForGVBC = (
     if (typeof item === 'object' && item !== null) {
       const flattened = flattenObject(item);
       // Only keep keys where the value is numeric (number or numeric string) and not a style key
-      const filtered: Record<string, unknown> = {};
+      const filtered: Record<string, unknown> = Object.create(null);
       Object.keys(flattened).forEach(key => {
         const value = flattened[key];
         if (!shouldIgnoreKey(key) && (typeof value === 'number' || (typeof value === 'string' && isNumber(value)))) {
@@ -3657,7 +3657,7 @@ export const getGridProperties = (
     xAnnotation?: string;
     yAnnotation?: string;
   };
-  const annotations: Record<number, AnnotationProps> = {};
+  const annotations: Record<number, AnnotationProps> = Object.create(null);
   let templateRows = '1fr';
   let templateColumns = '1fr';
   const gridLayout: GridAxisProperties = {};
@@ -4128,7 +4128,7 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
 
-  const axisObjects: Record<string, AxisObject> = {};
+  const axisObjects: Record<string, AxisObject> = Object.create(null);
 
   if (typeof xAxisId === 'number') {
     axisObjects.x = makeAxisObject('x', xAxisId);

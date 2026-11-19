@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Switch data-checked follows uncontrolled state",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
