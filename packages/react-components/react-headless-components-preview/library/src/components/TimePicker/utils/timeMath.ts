@@ -8,9 +8,11 @@ const NO_BREAK_SPACES = /[\u00A0\u202F]/g;
 
 type TimeParser = {
   regex: RegExp;
+  compactRegex: RegExp;
   normalize: (text: string) => string;
   pmTexts: string[];
   hourRange: [number, number];
+  maxCompactHour: number;
 };
 
 function isValidDate(date: Date): boolean {
@@ -47,13 +49,19 @@ export type TimeFormat = {
 
   /** Parses a time string into a date between the anchors, see `getDateFromTimeString`. */
   parse: (time: string | undefined, dateStartAnchor: Date, dateEndAnchor: Date) => TimeStringValidationResult;
+
+  /**
+   * Normalizes text the way the parser does before matching: removes bidi marks, replaces no-break spaces and converts
+   * the locale's digits to ASCII digits. Use it to compare typed text with formatted times.
+   */
+  normalize: (text: string) => string;
 };
 
 /**
  * Creates the formatter and parser for a configuration. The parser accepts the formatter's own output in any locale.
  */
-export function createTimeFormat({ hourCycle, showSeconds }: TimeFormatOptions = {}): TimeFormat {
-  const formatter = new Intl.DateTimeFormat(undefined, {
+export function createTimeFormat({ hourCycle, locale, showSeconds }: TimeFormatOptions = {}): TimeFormat {
+  const formatter = new Intl.DateTimeFormat(locale, {
     hour: 'numeric',
     hourCycle,
     minute: '2-digit',
@@ -62,14 +70,13 @@ export function createTimeFormat({ hourCycle, showSeconds }: TimeFormatOptions =
   const resolvedOptions = formatter.resolvedOptions() as Intl.ResolvedDateTimeFormatOptions & { hourCycle?: string };
   const resolvedHourCycle = toHourCycle(resolvedOptions.hourCycle);
   let parser: TimeParser | undefined;
+  const getParser = () => (parser ??= createTimeParser(formatter, resolvedOptions, resolvedHourCycle, !!showSeconds));
 
   return {
     hourCycle: resolvedHourCycle,
     format: date => (isValidDate(date) ? formatter.format(date) : ''),
-    parse: (time, dateStartAnchor, dateEndAnchor) => {
-      parser ??= createTimeParser(formatter, resolvedOptions, resolvedHourCycle);
-      return parseTime(parser, time, dateStartAnchor, dateEndAnchor);
-    },
+    parse: (time, dateStartAnchor, dateEndAnchor) => parseTime(getParser(), time, dateStartAnchor, dateEndAnchor),
+    normalize: text => getParser().normalize(text),
   };
 }
 
@@ -88,8 +95,9 @@ export function formatDateToTimeString(date: Date, timeFormatOptions?: TimeForma
 
 /**
  * Parses a time string (e.g. "2:30 PM", "15:45:20") into a date between the anchors.
- * It accepts the output of `formatDateToTimeString` with the same options in the runtime locale, and `:` as a
- * separator. A time before `dateStartAnchor` is moved to the next day. Use `createTimeFormat` to parse many strings.
+ * It accepts the output of `formatDateToTimeString` with the same options and locale, and `:` as a separator. It also
+ * accepts compact 24-hour digits such as "1030" (or "103045" with `showSeconds`), whatever the hour cycle.
+ * A time before `dateStartAnchor` is moved to the next day. Use `createTimeFormat` to parse many strings.
  *
  * @returns the parsed date, and an `errorType` when the string is empty, invalid or out of bounds
  */
@@ -167,6 +175,7 @@ function createTimeParser(
   formatter: Intl.DateTimeFormat,
   { locale, numberingSystem }: Intl.ResolvedDateTimeFormatOptions,
   hourCycle: HourCycle,
+  showSeconds: boolean,
 ): TimeParser {
   const localDigits = new Intl.NumberFormat(locale, { numberingSystem, useGrouping: false });
   const digits = new Map<string, string>();
@@ -215,14 +224,19 @@ function createTimeParser(
 
   return {
     regex: new RegExp(`^${pattern}$`, 'i'),
+    // Compact military-style input: "930", "1030", or "103045" with seconds. Always read as a 24-hour time.
+    compactRegex: showSeconds
+      ? /^(?<hour>\d{1,2})(?<minute>\d{2})(?<second>\d{2})$/
+      : /^(?<hour>\d{1,2})(?<minute>\d{2})$/,
     normalize,
     pmTexts: pmTexts.map(text => text.toLowerCase()),
     hourRange: HOUR_RANGES[hourCycle],
+    maxCompactHour: hourCycle === 'h24' ? 24 : 23,
   };
 }
 
 function parseTime(
-  { regex, normalize, pmTexts, hourRange: [minHour, maxHour] }: TimeParser,
+  { regex, compactRegex, normalize, pmTexts, hourRange, maxCompactHour }: TimeParser,
   time: string | undefined,
   dateStartAnchor: Date,
   dateEndAnchor: Date,
@@ -232,7 +246,9 @@ function parseTime(
     return { date: null, errorType: 'required-input' };
   }
 
-  const fields = regex.exec(normalizedTime)?.groups;
+  const formattedFields = regex.exec(normalizedTime)?.groups;
+  const fields = formattedFields ?? compactRegex.exec(normalizedTime)?.groups;
+  const [minHour, maxHour] = formattedFields ? hourRange : [0, maxCompactHour];
   const hours = Number(fields?.hour);
   const minutes = Number(fields?.minute);
   const seconds = Number(fields?.second ?? 0);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { act, render, fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field';
@@ -9,7 +9,7 @@ import type { TimePickerProps } from './TimePicker.types';
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 
 /**
- * Moves focus out of the TimePicker. The expand icon is in the tab order, so a second Tab may be needed.
+ * Moves focus out of the TimePicker. The clear icon is in the tab order when shown, so a second Tab may be needed.
  */
 const leaveTimePicker = () => {
   userEvent.tab();
@@ -102,7 +102,7 @@ describe('TimePicker', () => {
       <TimePicker aria-label="Time" freeform dateAnchor={dateAnchor} startHour={10} onChange={onChange} />,
     );
 
-    userEvent.type(getByRole('combobox'), '111{enter}');
+    userEvent.type(getByRole('combobox'), '1x1{enter}');
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(
@@ -110,10 +110,11 @@ describe('TimePicker', () => {
       expect.objectContaining({
         type: 'keydown',
         value: null,
-        displayValue: '111',
+        displayValue: '1x1',
         errorType: 'invalid-input',
       }),
     );
+    expect(getByRole('combobox')).toHaveValue('1x1');
 
     // Pressing Enter again without changing the value does not commit it again
     fireEvent.keyDown(getByRole('combobox'), { key: 'Enter' });
@@ -130,9 +131,8 @@ describe('TimePicker', () => {
     );
 
     userEvent.type(getByRole('combobox'), '9:15');
-    // The expand icon is in the tab order; moving focus to it does not commit.
-    userEvent.tab();
     expect(onChange).not.toHaveBeenCalled();
+    // The expand icon is not in the tab order, so one Tab leaves the TimePicker.
     userEvent.tab();
 
     expect(onChange).toHaveBeenCalledWith(
@@ -334,7 +334,7 @@ describe('TimePicker', () => {
     `('$name - when input value is not prefix of any option, commit the typed text on Enter', ({ Component }) => {
       const { getByRole } = render(<Component />);
       const input = getByRole('combobox');
-      userEvent.type(input, '111{enter}');
+      userEvent.type(input, '1x1{enter}');
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
@@ -342,7 +342,7 @@ describe('TimePicker', () => {
           type: 'keydown',
           event: expect.anything(),
           value: null,
-          displayValue: '111',
+          displayValue: '1x1',
           errorType: 'invalid-input',
         }),
       );
@@ -384,11 +384,11 @@ describe('TimePicker', () => {
       fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-      userEvent.type(input, '111{enter}');
+      userEvent.type(input, '1x1{enter}');
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ displayValue: '10:30 AM111', errorType: 'invalid-input' }),
+        expect.objectContaining({ displayValue: '10:30 AM1x1', errorType: 'invalid-input' }),
       );
     });
 
@@ -402,14 +402,14 @@ describe('TimePicker', () => {
       const input = getByRole('combobox');
       const expandIcon = getByRole('button');
 
-      userEvent.type(input, '111');
+      userEvent.type(input, '1x1');
       userEvent.click(expandIcon);
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
       leaveTimePicker();
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ type: 'blur', displayValue: '111' }),
+        expect.objectContaining({ type: 'blur', displayValue: '1x1' }),
       );
     });
   });
@@ -475,15 +475,16 @@ describe('TimePicker', () => {
 
     it('commits when focus leaves the TimePicker, not when it moves to the expand icon', () => {
       const { input, onChange, getByRole } = renderFreeform();
-      userEvent.type(input, '111');
-      userEvent.tab();
-      expect(getByRole('button', { name: 'Open' })).toHaveFocus();
+      userEvent.type(input, '1x1');
+      const expandIcon = getByRole('button', { name: 'Open' });
+      act(() => expandIcon.focus());
+      expect(expandIcon).toHaveFocus();
       expect(onChange).not.toHaveBeenCalled();
 
-      userEvent.tab();
+      act(() => expandIcon.blur());
       expect(onChange).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ type: 'blur', displayValue: '111', errorType: 'invalid-input' }),
+        expect.objectContaining({ type: 'blur', displayValue: '1x1', errorType: 'invalid-input' }),
       );
     });
 
@@ -513,7 +514,6 @@ describe('TimePicker', () => {
     it('commits the empty text when the initial value is deleted', () => {
       const { input, onChange } = renderFreeform({ defaultValue });
       userEvent.clear(input);
-      userEvent.type(input, '{esc}');
       leaveTimePicker();
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
@@ -562,6 +562,7 @@ describe('TimePicker', () => {
   });
 
   describe('required', () => {
+    const tenTen = new Date('November 25, 2021 10:10:00');
     const commitEmpty = (props: Partial<TimePickerProps>, wrapInRequiredField = false) => {
       const onChange = jest.fn();
       const timePicker = <TimePicker freeform hourCycle="h23" dateAnchor={dateAnchor} onChange={onChange} {...props} />;
@@ -580,7 +581,6 @@ describe('TimePicker', () => {
       const input = getByRole('combobox');
       userEvent.type(input, '10:10{enter}');
       userEvent.clear(input);
-      userEvent.type(input, '{esc}');
       leaveTimePicker();
       return onChange;
     };
@@ -598,7 +598,7 @@ describe('TimePicker', () => {
       const onChange = commitEmpty({ required: true });
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: null, errorType: 'required-input' }),
+        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
       );
     });
 
@@ -606,7 +606,7 @@ describe('TimePicker', () => {
       const onChange = commitEmpty({}, true);
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: null, errorType: 'required-input' }),
+        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
       );
     });
 
@@ -623,11 +623,10 @@ describe('TimePicker', () => {
       const input = getByRole('combobox');
       userEvent.type(input, '10:10{enter}');
       userEvent.clear(input);
-      userEvent.type(input, '{esc}');
       leaveTimePicker();
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: null, errorType: 'required-input' }),
+        expect.objectContaining({ value: tenTen, displayValue: '', errorType: 'required-input' }),
       );
     });
   });
@@ -651,17 +650,21 @@ describe('TimePicker', () => {
   describe('data attributes', () => {
     const getRoot = (container: HTMLElement) => container.firstElementChild as HTMLElement;
 
-    it('sets data-freeform only in freeform mode', () => {
+    it('sets data-freeform only in freeform mode, which is the default', () => {
       const { container, rerender } = render(<TimePicker aria-label="Time" />);
-      expect(getRoot(container)).not.toHaveAttribute('data-freeform');
-
-      rerender(<TimePicker aria-label="Time" freeform />);
       expect(getRoot(container)).toHaveAttribute('data-freeform', '');
+
+      rerender(<TimePicker aria-label="Time" freeform={false} />);
+      expect(getRoot(container)).not.toHaveAttribute('data-freeform');
     });
 
     it('does not let consumers override state attributes', () => {
       const { container } = render(
-        <TimePicker aria-label="Time" root={{ 'data-freeform': 'custom' } as React.HTMLAttributes<HTMLDivElement>} />,
+        <TimePicker
+          aria-label="Time"
+          freeform={false}
+          root={{ 'data-freeform': 'custom' } as React.HTMLAttributes<HTMLDivElement>}
+        />,
       );
       expect(getRoot(container)).not.toHaveAttribute('data-freeform');
     });
@@ -689,7 +692,7 @@ describe('TimePicker', () => {
 
     it('does not select an option for committed unmatched text after reopening the listbox', () => {
       const { input, onChange } = renderTimePicker();
-      userEvent.type(input, '111{enter}');
+      userEvent.type(input, '1x1{enter}');
       expect(onChange).toHaveBeenCalledTimes(1);
 
       userEvent.click(input);
@@ -697,15 +700,23 @@ describe('TimePicker', () => {
       expect(input).not.toHaveAttribute('aria-activedescendant');
       leaveTimePicker();
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(input).toHaveValue('111');
+      expect(input).toHaveValue('1x1');
     });
 
-    it('lets arrow keys activate an option after typing unmatched text', () => {
-      const { input } = renderTimePicker();
+    it('renders no options after typing unmatched text', () => {
+      const { input, queryAllByRole, getByRole } = renderTimePicker();
       userEvent.type(input, 'abc');
       expect(input).toHaveAttribute('aria-expanded', 'true');
-      expect(input).not.toHaveAttribute('aria-activedescendant');
+      expect(queryAllByRole('option')).toHaveLength(0);
+      expect(getByRole('listbox', { hidden: true })).toHaveAttribute('data-empty', '');
 
+      userEvent.keyboard('{arrowdown}');
+      expect(input).not.toHaveAttribute('aria-activedescendant');
+    });
+
+    it('lets arrow keys activate an option after typing a partial time', () => {
+      const { input } = renderTimePicker();
+      userEvent.type(input, '1');
       userEvent.keyboard('{arrowdown}');
       const activeId = input.getAttribute('aria-activedescendant');
       expect(activeId).toBeTruthy();
@@ -730,7 +741,7 @@ describe('TimePicker', () => {
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
-        expect.objectContaining({ value: null, displayValue: 'abc', errorType: 'invalid-input' }),
+        expect.objectContaining({ value: nine, displayValue: 'abc', errorType: 'invalid-input' }),
       );
 
       userEvent.click(input);
@@ -738,17 +749,18 @@ describe('TimePicker', () => {
       expect(onChange).toHaveBeenCalledTimes(1);
     });
 
-    it('shows the controlled value again after an accepted failed commit is reset', () => {
-      const { input, onChange, rerenderWith } = renderTimePicker({ value: nine });
+    it('discards the failed text and its error when the controlled value changes', () => {
+      const { input, onChange, rerenderWith, container } = renderTimePicker({ value: nine });
       userEvent.clear(input);
       userEvent.type(input, 'abc');
       leaveTimePicker();
-      expect(onChange).toHaveBeenLastCalledWith(expect.anything(), expect.objectContaining({ value: null }));
-
-      rerenderWith({ value: null });
+      expect(onChange).toHaveBeenLastCalledWith(expect.anything(), expect.objectContaining({ value: nine }));
       expect(input).toHaveValue('abc');
-      rerenderWith({ value: nine });
-      expect(input).toHaveValue('9:00 AM');
+      expect(container.firstElementChild).toHaveAttribute('data-invalid', '');
+
+      rerenderWith({ value: ten });
+      expect(input).toHaveValue('10:00 AM');
+      expect(container.firstElementChild).not.toHaveAttribute('data-invalid');
     });
 
     it('does not report a change again when the controlled parent rejects it', () => {
@@ -793,7 +805,7 @@ describe('TimePicker', () => {
       const { input, onChange } = renderTimePicker({ defaultValue: nine });
       userEvent.click(input);
       userEvent.clear(input);
-      userEvent.keyboard('{esc}');
+      userEvent.keyboard('{alt}{arrowup}{/alt}');
       expect(input).toHaveAttribute('aria-expanded', 'false');
 
       userEvent.click(input);
@@ -854,6 +866,294 @@ describe('TimePicker', () => {
     it('shows the clear icon for a value that is not an option', () => {
       const { container } = renderTimePicker({ clearable: true, defaultValue: new Date('November 25, 2021 09:15:00') });
       expect(container.firstElementChild).toHaveAttribute('data-clearable', '');
+    });
+  });
+  describe('spec alignment', () => {
+    const nine = new Date('November 25, 2021 09:00:00');
+    const ten = new Date('November 25, 2021 10:00:00');
+    const renderTimePicker = (
+      props: Partial<TimePickerProps> = {},
+      wrapperProps: React.HTMLAttributes<HTMLDivElement> = {},
+    ) => {
+      const onChange = jest.fn();
+      const result = render(
+        <div {...wrapperProps}>
+          <TimePicker aria-label="Time" dateAnchor={dateAnchor} onChange={onChange} {...props} />
+          <button>Next</button>
+        </div>,
+      );
+      return { ...result, onChange, input: result.getByRole('combobox') };
+    };
+    const activeOptionText = (input: HTMLElement) => {
+      const id = input.getAttribute('aria-activedescendant');
+      return id ? document.getElementById(id)?.textContent : undefined;
+    };
+
+    describe('Escape', () => {
+      it('restores the committed text while open, without a change', () => {
+        const { input, onChange } = renderTimePicker({ defaultValue: ten });
+        userEvent.clear(input);
+        userEvent.type(input, '9:1');
+        expect(input).toHaveAttribute('aria-expanded', 'true');
+
+        userEvent.keyboard('{esc}');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+        expect(input).toHaveValue('10:00 AM');
+        leaveTimePicker();
+        expect(onChange).not.toHaveBeenCalled();
+      });
+
+      it('restores the committed text while closed and does not let the event reach a parent', () => {
+        const onParentKeyDown = jest.fn();
+        const { input, onChange } = renderTimePicker({ defaultValue: ten }, { onKeyDown: onParentKeyDown });
+        userEvent.clear(input);
+        userEvent.type(input, '9:1');
+        userEvent.keyboard('{alt}{arrowup}{/alt}');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+        onParentKeyDown.mockClear();
+
+        userEvent.keyboard('{esc}');
+        expect(input).toHaveValue('10:00 AM');
+        expect(onParentKeyDown).not.toHaveBeenCalled();
+        expect(onChange).not.toHaveBeenCalled();
+      });
+
+      it('reaches a parent when closed and there is nothing to restore', () => {
+        const onParentKeyDown = jest.fn();
+        const { input } = renderTimePicker({ defaultValue: ten }, { onKeyDown: onParentKeyDown });
+        act(() => input.focus());
+        fireEvent.keyDown(input, { key: 'Escape' });
+        expect(onParentKeyDown).toHaveBeenCalledWith(expect.objectContaining({ key: 'Escape' }));
+      });
+    });
+
+    describe('failed commits', () => {
+      it('keep the value, report the error once and clear it on the next successful commit', () => {
+        const { input, onChange, container } = renderTimePicker({ defaultValue: ten, hourCycle: 'h23' });
+        userEvent.clear(input);
+        userEvent.type(input, '25:00{enter}');
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ value: ten, displayValue: '25:00', errorType: 'invalid-input' }),
+        );
+        expect(input).toHaveValue('25:00');
+        expect(container.querySelector('[data-invalid]')).toBeTruthy();
+        expect(input).not.toHaveAttribute('aria-invalid');
+
+        fireEvent.keyDown(input, { key: 'Enter' });
+        expect(onChange).toHaveBeenCalledTimes(1);
+
+        userEvent.clear(input);
+        userEvent.type(input, '9:15{enter}');
+        expect(onChange).toHaveBeenCalledTimes(2);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ value: new Date('November 25, 2021 09:15:00'), errorType: undefined }),
+        );
+        expect(container.querySelector('[data-invalid]')).toBeNull();
+      });
+
+      it('report out-of-bounds times without changing the value', () => {
+        const { input, onChange } = renderTimePicker({
+          defaultValue: ten,
+          hourCycle: 'h23',
+          startHour: 9,
+          endHour: 17,
+        });
+        userEvent.clear(input);
+        userEvent.type(input, '18:00{enter}');
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ value: ten, errorType: 'out-of-bounds' }),
+        );
+      });
+
+      it('are cleared by Escape, which reports the cleared error once', () => {
+        const { input, onChange, container } = renderTimePicker({ defaultValue: ten });
+        userEvent.clear(input);
+        userEvent.type(input, 'abc{enter}');
+        expect(onChange).toHaveBeenCalledTimes(1);
+
+        userEvent.keyboard('{esc}');
+        expect(input).toHaveValue('10:00 AM');
+        expect(onChange).toHaveBeenCalledTimes(2);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ type: 'keydown', value: ten, displayValue: '10:00 AM', errorType: undefined }),
+        );
+        expect(container.querySelector('[data-invalid]')).toBeNull();
+
+        userEvent.keyboard('{esc}');
+        expect(onChange).toHaveBeenCalledTimes(2);
+      });
+
+      it('get aria-invalid and the message association from a Field', () => {
+        const { getByRole } = render(
+          <Field label="Time" validationState="error" validationMessage="Enter a time like 9:30 AM">
+            <TimePicker dateAnchor={dateAnchor} />
+          </Field>,
+        );
+        const input = getByRole('combobox');
+        expect(input).toHaveAttribute('aria-invalid', 'true');
+        const description = (input.getAttribute('aria-describedby') ?? '')
+          .split(' ')
+          .map(id => document.getElementById(id)?.textContent)
+          .join(' ');
+        expect(description).toContain('Enter a time like 9:30 AM');
+      });
+    });
+
+    describe('typed text', () => {
+      it.each`
+        hourCycle | expected
+        ${'h12'}  | ${'10:30 AM'}
+        ${'h23'}  | ${'10:30'}
+      `('commits compact input as $expected in $hourCycle', ({ hourCycle, expected }) => {
+        const { input, onChange } = renderTimePicker({ hourCycle });
+        userEvent.type(input, '1030{enter}');
+        expect(input).toHaveValue(expected);
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ value: new Date('November 25, 2021 10:30:00'), errorType: undefined }),
+        );
+      });
+
+      it('filters the options while typing and shows all options again after reopening', () => {
+        const { input, getAllByRole } = renderTimePicker({ startHour: 8, endHour: 12 });
+        userEvent.type(input, '1');
+        const filtered = getAllByRole('option').map(option => option.textContent);
+        expect(filtered).toEqual(['10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM']);
+
+        userEvent.keyboard('{enter}');
+        expect(input).toHaveValue('10:00 AM');
+        userEvent.click(input);
+        expect(getAllByRole('option')).toHaveLength(8);
+      });
+
+      it('uses the locale prop for options', () => {
+        const { getAllByRole, input } = renderTimePicker({ locale: 'de-DE', startHour: 13, endHour: 14 });
+        userEvent.click(input);
+        expect(getAllByRole('option').map(option => option.textContent)).toEqual(['13:00', '13:30']);
+      });
+    });
+
+    describe('keyboard', () => {
+      it('leaves Home and End to the input and still calls the consumer handler', () => {
+        const onKeyDown = jest.fn();
+        const { input } = renderTimePicker({ onKeyDown });
+        userEvent.type(input, '1');
+        userEvent.keyboard('{arrowdown}');
+        const active = input.getAttribute('aria-activedescendant');
+        expect(active).toBeTruthy();
+
+        expect(fireEvent.keyDown(input, { key: 'Home' })).toBe(true);
+        expect(fireEvent.keyDown(input, { key: 'End' })).toBe(true);
+        expect(input).toHaveAttribute('aria-activedescendant', active!);
+        expect(onKeyDown).toHaveBeenCalledWith(expect.objectContaining({ key: 'Home' }));
+        expect(onKeyDown).toHaveBeenCalledWith(expect.objectContaining({ key: 'End' }));
+      });
+
+      it('opens on the last option with Arrow Up when nothing is selected', () => {
+        const { input } = renderTimePicker({ startHour: 8, endHour: 10 });
+        act(() => input.focus());
+        userEvent.keyboard('{arrowup}');
+        expect(input).toHaveAttribute('aria-expanded', 'true');
+        expect(activeOptionText(input)).toBe('9:30 AM');
+      });
+
+      it('opens on the selected option with Arrow Up and Arrow Down', () => {
+        const { input } = renderTimePicker({ startHour: 8, endHour: 12, defaultValue: nine });
+        act(() => input.focus());
+        userEvent.keyboard('{arrowup}');
+        expect(activeOptionText(input)).toBe('9:00 AM');
+        userEvent.keyboard('{esc}{arrowdown}');
+        expect(activeOptionText(input)).toBe('9:00 AM');
+      });
+
+      it('opens without an active option with Alt+Arrow Down', () => {
+        const { input } = renderTimePicker({ defaultValue: nine });
+        act(() => input.focus());
+        userEvent.keyboard('{alt}{arrowdown}{/alt}');
+        expect(input).toHaveAttribute('aria-expanded', 'true');
+        expect(input).not.toHaveAttribute('aria-activedescendant');
+
+        userEvent.keyboard('{arrowdown}');
+        expect(input).toHaveAttribute('aria-activedescendant');
+      });
+
+      it('closes without selecting and keeps the typed text with Alt+Arrow Up', () => {
+        const { input, onChange } = renderTimePicker();
+        userEvent.type(input, '10');
+        expect(input).toHaveAttribute('aria-activedescendant');
+
+        userEvent.keyboard('{alt}{arrowup}{/alt}');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+        expect(input).toHaveValue('10');
+        expect(onChange).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('trailing affordance', () => {
+      it('keeps the expand icon out of the tab order and hides it while the clear icon shows', () => {
+        const { getByRole, input } = renderTimePicker({ clearable: true });
+        const expandIcon = getByRole('button', { name: 'Open Time' });
+        expect(expandIcon).toHaveAttribute('tabindex', '-1');
+
+        userEvent.type(input, '10:00 AM{enter}');
+        expect(expandIcon).not.toBeVisible();
+        expect(getByRole('button', { name: 'Clear' })).toBeVisible();
+      });
+
+      it('makes the clear icon a keyboard-operable button that returns focus to the input', () => {
+        const { getByRole, input, onChange } = renderTimePicker({ clearable: true, defaultValue: nine });
+        act(() => input.focus());
+        userEvent.tab();
+        const clearButton = getByRole('button', { name: 'Clear' });
+        expect(clearButton).toHaveFocus();
+        expect(onChange).not.toHaveBeenCalled();
+
+        userEvent.keyboard('{enter}');
+        expect(input).toHaveValue('');
+        expect(input).toHaveFocus();
+        expect(onChange).toHaveBeenCalledWith(
+          expect.anything(),
+          expect.objectContaining({ type: 'keydown', value: null }),
+        );
+      });
+
+      it('clears with Space', () => {
+        const { getByRole, input } = renderTimePicker({ clearable: true, defaultValue: nine });
+        fireEvent.keyDown(getByRole('button', { name: 'Clear' }), { key: ' ' });
+        expect(input).toHaveValue('');
+      });
+
+      it('lets the consumer localize the clear label', () => {
+        const { getByRole } = renderTimePicker({
+          clearable: true,
+          defaultValue: nine,
+          clearIcon: { 'aria-label': 'Effacer' },
+        });
+        expect(getByRole('button', { name: 'Effacer' })).toBeTruthy();
+      });
+    });
+
+    describe('ARIA', () => {
+      it('sets combobox defaults and references the listbox only while it is mounted', () => {
+        const { input, getByRole } = renderTimePicker();
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+        expect(input).toHaveAttribute('aria-autocomplete', 'list');
+        expect(input).toHaveAttribute('aria-haspopup', 'listbox');
+        expect(input).not.toHaveAttribute('aria-controls');
+
+        userEvent.click(input);
+        expect(input).toHaveAttribute('aria-controls', getByRole('listbox').id);
+      });
+
+      it('lets the consumer override the ARIA defaults', () => {
+        const { input } = renderTimePicker({ input: { 'aria-autocomplete': 'both' } });
+        expect(input).toHaveAttribute('aria-autocomplete', 'both');
+      });
     });
   });
 });
