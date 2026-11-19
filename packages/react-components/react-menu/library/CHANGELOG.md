@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.25.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.9)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.25.8..@fluentui/react-menu_v9.25.9)
+
+### Patches
+
+- fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item ([PR #37076](https://github.com/microsoft/fluentui/pull/37076) by paulmardling@microsoft.com)
 
 ## [9.25.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.8)
 
