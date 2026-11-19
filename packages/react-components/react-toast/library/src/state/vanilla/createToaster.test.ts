@@ -153,6 +153,61 @@ describe('createToaster', () => {
     expect(toaster.visibleToasts.has('queued')).toBe(true);
   });
 
+  it('preserves a toast dispatched by a dismissed handler during bulk dismissal', () => {
+    const toaster = createToaster({ limit: 1 });
+    const onStatusChange = jest.fn();
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast(
+      {
+        toastId: 'queued',
+        onStatusChange: (_, { status }) => {
+          if (status === 'dismissed') {
+            toaster.buildToast({ toastId: 'new', onStatusChange }, () => null);
+          }
+        },
+      },
+      () => null,
+    );
+    toaster.buildToast({ toastId: 'other' }, () => null);
+
+    toaster.dismissAllToasts();
+    toaster.toasts.get('visible')!.remove();
+
+    expect(Array.from(toaster.visibleToasts)).toEqual(['new']);
+    expect(toaster.toasts.has('new')).toBe(true);
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(toaster.toasts.has('other')).toBe(false);
+    expect(onStatusChange).toHaveBeenCalledTimes(1);
+    expect(onStatusChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ status: 'queued' }));
+  });
+
+  it('clears all queued entries even if a dismissed handler throws', () => {
+    const toaster = createToaster({ limit: 1 });
+    const error = new Error('Dismissed handler failed');
+    toaster.buildToast({ toastId: 'visible' }, () => null);
+    toaster.buildToast(
+      {
+        toastId: 'queued',
+        onStatusChange: (_, { status }) => {
+          if (status === 'dismissed') {
+            throw error;
+          }
+        },
+      },
+      () => null,
+    );
+    toaster.buildToast({ toastId: 'other' }, () => null);
+
+    expect(() => toaster.dismissAllToasts()).toThrow(error);
+    expect(toaster.visibleToasts.size).toBe(0);
+    expect(toaster.toasts.has('queued')).toBe(false);
+    expect(toaster.toasts.has('other')).toBe(false);
+
+    toaster.toasts.get('visible')!.remove();
+    toaster.buildToast({ toastId: 'other' }, () => null);
+    expect(Array.from(toaster.visibleToasts)).toEqual(['other']);
+  });
+
   it('should update a toasts', () => {
     const toaster = createToaster({});
 

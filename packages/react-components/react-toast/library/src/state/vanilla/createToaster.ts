@@ -83,10 +83,8 @@ export function createToaster(options: Partial<ToasterOptions>): {
     toastToUpdate.updateId++;
   };
 
-  const discardQueuedToast = (toastId: ToastId) => {
-    const toast = toasts.get(toastId);
+  const notifyToastDismissed = (toast: Toast | undefined) => {
     if (toast) {
-      toasts.delete(toastId);
       toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
     }
   };
@@ -100,7 +98,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
       const remaining = queue.all().filter(id => id !== toastId);
       queue.clear();
       remaining.forEach(id => queue.enqueue(id));
-      discardQueuedToast(toastId);
+      const toast = toasts.get(toastId);
+      toasts.delete(toastId);
+      notifyToastDismissed(toast);
       return;
     }
 
@@ -112,9 +112,14 @@ export function createToaster(options: Partial<ToasterOptions>): {
    */
   const dismissAllToasts = () => {
     visibleToasts.clear();
-    const queued = queue.all();
+    // Remove all queued entries before invoking consumer callbacks, which can throw or dispatch new toasts.
+    const queued = queue.all().map(toastId => {
+      const toast = toasts.get(toastId);
+      toasts.delete(toastId);
+      return toast;
+    });
     queue.clear();
-    queued.forEach(discardQueuedToast);
+    queued.forEach(notifyToastDismissed);
   };
 
   /**
