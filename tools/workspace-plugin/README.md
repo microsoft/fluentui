@@ -79,10 +79,3 @@ import { useButton_unstable } from '../../../components/Button/useButton.js'; //
 The build fails if a style dependent module defines a React context (`createContext`), because the context would get
 a second instance in `css-modules/`. To fix it, move whatever the context needs from styled modules into a module
 without styles. For example, `react-table` keeps `defaultColumnSizingState` in its own file.
-
-### Bundle size
-
-`monosize.config.mjs` extracts `*.css` imports (`css-loader` + `mini-css-extract-plugin`) next to each fixture's JS and
-measures both (`assetTypes: ['js', 'css']`). Fixtures for the entry import from `<package>/css-modules` and use a
-`css-modules:` name prefix. Examples are `react-button/library/bundle-size/CssModulesButton.fixture.js` and
-`react-components/bundle-size/CssModules*.fixture.js`.
