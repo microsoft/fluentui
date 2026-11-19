@@ -72,7 +72,8 @@ or finite values. Invalid tooling configuration still fails the build.
   `data-fui-focus-within` from tabster) are not listed.
 - Attributes on non-slot elements are kept in the metadata (`elements`) but not rendered.
 - Sequential writes on overlapping conditional paths have unknown value domains and emit `unresolved-domain`;
-  only mutually exclusive branches are combined into a finite union. An unconditional replacement still takes precedence.
+  lower-priority declared slot types do not override this uncertainty. Only mutually exclusive branches are combined
+  into a finite union. An unconditional replacement still takes precedence.
 
 ## Tests
 

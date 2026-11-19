@@ -269,9 +269,12 @@ describe('styling metadata', () => {
         alternatives: ['open', 'closed'],
         partial: null,
         overwritten: ['final'],
+        typedExhaustive: null,
+        typedOverwritten: ['final'],
         earlyReturn: null,
       });
       expect(extractor.getDiagnostics().filter(diagnostic => diagnostic.code === 'unresolved-domain')).toEqual([
+        expect.objectContaining({ attribute: 'data-typed-exhaustive' }),
         expect.objectContaining({ attribute: 'data-exhaustive' }),
         expect.objectContaining({ attribute: 'data-partial' }),
         expect.objectContaining({ attribute: 'data-early-return' }),

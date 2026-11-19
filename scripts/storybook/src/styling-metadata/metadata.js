@@ -294,11 +294,12 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
         }
       }
 
-      // Replacing an aggregate must not retain the narrower value previously
-      // accumulated from just one branch. Preserve upstream/type precedence.
+      const priority = (local ? PRIORITY.local : 0) + PRIORITY[domain.kind];
+      // An unknown runtime aggregate must invalidate lower-priority type evidence,
+      // not restore a declared union that may include overwritten values.
       if (previous?.scope === pathInfo.scope) {
         const baseline = writeBaseline.get(id);
-        if (baseline) {
+        if (baseline && (domain.kind !== 'unresolved' || baseline.priority >= priority)) {
           domains.set(id, baseline);
         } else {
           domains.delete(id);
@@ -306,8 +307,6 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
       } else if (previous) {
         writeBaseline.set(id, domains.get(id));
       }
-      const priority = (local ? PRIORITY.local : 0) + PRIORITY[domain.kind];
-
       add(
         write.slot === 'children' ? undefined : write.slot,
         camelKey(write.name),
