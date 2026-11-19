@@ -225,7 +225,7 @@ describe('Switch', () => {
     });
   });
 
-  it('leaves the headless data attributes alone, including the controlled-only data-checked', () => {
+  it('leaves the headless data attributes alone, including data-checked', () => {
     const plain = renderSwitch();
 
     expect(plain.root.hasAttribute('data-checked')).toBe(false);
@@ -253,19 +253,21 @@ describe('Switch', () => {
     });
   });
 
-  it('carries no data-checked in uncontrolled mode, before or after a toggle', () => {
-    // Canary: the headless hook stamps data-checked from the `checked` prop, so an uncontrolled
-    // Switch is genuinely checked with no attribute to show for it. The peer marker exists because
-    // of this; if upstream fixes the stamp, this test goes red.
-    const { root, input } = renderSwitch({ defaultChecked: true });
+  it.each([false, true])('tracks uncontrolled data-checked with defaultChecked=%s', defaultChecked => {
+    const { root, input } = renderSwitch({ defaultChecked });
 
-    expect(input.checked).toBe(true);
-    expect(root.hasAttribute('data-checked')).toBe(false);
+    expect(input.checked).toBe(defaultChecked);
+    expect(root.hasAttribute('data-checked')).toBe(defaultChecked);
 
     fireEvent.click(input);
 
-    expect(input.checked).toBe(false);
-    expect(root.hasAttribute('data-checked')).toBe(false);
+    expect(input.checked).toBe(!defaultChecked);
+    expect(root.hasAttribute('data-checked')).toBe(!defaultChecked);
+
+    fireEvent.click(input);
+
+    expect(input.checked).toBe(defaultChecked);
+    expect(root.hasAttribute('data-checked')).toBe(defaultChecked);
   });
 
   it('passes the controlled machinery through untouched', () => {

@@ -32,8 +32,7 @@ const noop = () => undefined;
 /**
  * `required` is deliberately absent: the headless label slot renders no asterisk, a known
  * divergence from Griffel that a zero-tolerance pixel gate must not be asked to arbitrate.
- * `defaultChecked` drives the checked cells because an uncontrolled Switch carries no
- * `data-checked` on its root — the crossing that proves the checked look reads the input.
+ * Both uncontrolled defaults and controlled values are represented.
  */
 export const SwitchVrScene = ({ Switch }: { Switch: SwitchLike }): React.ReactNode => {
   const labelled = (key: string, state: { disabled?: boolean; disabledFocusable?: boolean }) =>

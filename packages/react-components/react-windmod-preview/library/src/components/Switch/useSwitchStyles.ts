@@ -15,11 +15,8 @@ type SwitchRootDataAttributes = {
   'data-size'?: SwitchState['size'];
 };
 
-/** Applies the visual contract, returning new state. The headless hook already stamps
- * data-checked/-disabled/-disabled-focusable/-label-position — data-label-position on every Switch
- * whether or not a label slot is present, so it is never a label-presence test, and data-checked
- * only in controlled mode, so it is never a checked test either: the indicator and label read the
- * input's own :checked through the peer marker. `data-size` is style-only. */
+/** Headless stamps data-label-position even without a label slot, so it cannot test label presence.
+ * The indicator and label read the native input's :checked through the peer marker. */
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const { label, labelPosition, size } = state;
 
