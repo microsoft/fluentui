@@ -86,6 +86,23 @@ const IncomingMarkerPreview = createMotionComponent({
   },
 });
 
+/**
+ * Returns a run id that increases each time previews are turned back on.
+ * Using it as a key remounts the motion components, which restarts them from their first keyframe.
+ */
+function usePreviewRunId(animationEnabled: boolean) {
+  const [runId, setRunId] = React.useState(0);
+  const [wasAnimationEnabled, setWasAnimationEnabled] = React.useState(animationEnabled);
+  if (wasAnimationEnabled !== animationEnabled) {
+    setWasAnimationEnabled(animationEnabled);
+    if (animationEnabled) {
+      setRunId(id => id + 1);
+    }
+  }
+
+  return runId;
+}
+
 const MotionCurveCard: React.FC<{
   animationEnabled: boolean;
   controlPointsVisible: boolean;
@@ -99,15 +116,7 @@ const MotionCurveCard: React.FC<{
   const motionRef = React.useRef<MotionImperativeRef>(null);
   const incomingMotionRef = React.useRef<MotionImperativeRef>(null);
 
-  // Each time previews start again, a new run id remounts the progress line so it restarts from the bottom.
-  const [runId, setRunId] = React.useState(0);
-  const [wasAnimationEnabled, setWasAnimationEnabled] = React.useState(animationEnabled);
-  if (wasAnimationEnabled !== animationEnabled) {
-    setWasAnimationEnabled(animationEnabled);
-    if (animationEnabled) {
-      setRunId(id => id + 1);
-    }
-  }
+  const runId = usePreviewRunId(animationEnabled);
 
   // A layout effect pauses the animation before the first paint, so a disabled preview never shows a moving frame.
   useIsomorphicLayoutEffect(() => {
@@ -203,6 +212,7 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
   const { animationEnabled, tokenName, tokenValue } = props;
   const classes = useCardClasses();
   const motionRef = React.useRef<MotionImperativeRef>(null);
+  const runId = usePreviewRunId(animationEnabled);
 
   useIsomorphicLayoutEffect(() => {
     motionRef.current?.setPlayState(animationEnabled ? 'running' : 'paused');
@@ -222,9 +232,13 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
       </div>
       <div role="cell">
         <div className={classes.view}>
-          <DurationPreview imperativeRef={motionRef} duration={tokenValue}>
-            <div className={classes.duration} />
-          </DurationPreview>
+          <Fade visible={animationEnabled} duration={durations.durationFast} exitDuration={durations.durationGentle}>
+            <div className={classes.markerLayer}>
+              <DurationPreview key={runId} imperativeRef={motionRef} duration={tokenValue}>
+                <div className={classes.duration} />
+              </DurationPreview>
+            </div>
+          </Fade>
         </div>
       </div>
     </div>
