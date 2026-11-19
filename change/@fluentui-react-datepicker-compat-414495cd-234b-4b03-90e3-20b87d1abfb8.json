@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: remove unused dependency on @fluentui/react-popover",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "vgenaev@gmail.com"
+}

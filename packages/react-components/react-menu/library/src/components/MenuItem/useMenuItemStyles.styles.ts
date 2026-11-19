@@ -294,8 +294,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     state.content.className = mergeClasses(
       menuItemClassNames.content,
       contentBaseStyles,
-      state.content.className,
       multiline && multilineStyles.content,
+      state.content.className,
     );
   }
 
@@ -310,8 +310,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.secondaryContent,
       secondaryContentBaseStyles,
       state.disabled && styles.disabled,
-      state.secondaryContent.className,
       multiline && multilineStyles.secondaryContent,
+      state.secondaryContent.className,
     );
   }
 
@@ -325,8 +325,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     state.submenuIndicator.className = mergeClasses(
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
-      state.submenuIndicator.className,
       multiline && multilineStyles.submenuIndicator,
+      state.submenuIndicator.className,
     );
   }
 
@@ -334,9 +334,9 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(
       menuItemClassNames.subText,
+      subtextBaseStyles,
       state.disabled && subTextStyles.disabled,
       state.subText.className,
-      subtextBaseStyles,
     );
   }
 
