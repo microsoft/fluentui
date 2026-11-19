@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: remove unused dependency on @fluentui/keyboard-keys",
+  "packageName": "@fluentui/react-button",
+  "email": "vgenaev@gmail.com"
+}
