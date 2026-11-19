@@ -1179,6 +1179,35 @@ describe('TimePicker', () => {
         expect(input).toHaveAttribute('aria-expanded', 'false');
       });
 
+      it('opens on the last option with Arrow Up after a failed commit with no value', () => {
+        const { input, onChange } = renderTimePicker({ startHour: 8, endHour: 10 });
+        userEvent.type(input, 'abc{enter}');
+        expect(input).toHaveAttribute('aria-expanded', 'false');
+        onChange.mockClear();
+
+        userEvent.keyboard('{arrowup}');
+        expect(activeOptionText(input)).toBe('9:30 AM');
+        userEvent.keyboard('{enter}');
+        expect(onChange).toHaveBeenLastCalledWith(
+          expect.anything(),
+          expect.objectContaining({ displayValue: '9:30 AM', errorType: undefined }),
+        );
+      });
+
+      it('shows all options again when a controlled listbox is closed and reopened', () => {
+        const { input, getAllByRole, rerenderWith } = renderTimePicker({
+          startHour: 8,
+          endHour: 10,
+          open: true,
+        });
+        userEvent.type(input, '9');
+        expect(getAllByRole('option').map(option => option.textContent)).toEqual(['9:00 AM', '9:30 AM']);
+
+        rerenderWith({ open: false });
+        rerenderWith({ open: true });
+        expect(getAllByRole('option')).toHaveLength(4);
+      });
+
       it('applies an open request only to the open it asked for', () => {
         let allowOpen = false;
         const ControlledOpen = () => {

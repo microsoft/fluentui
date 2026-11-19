@@ -40,6 +40,7 @@ export const useTimePickerComboboxState = (
     | 'committedText'
     | 'onInputChange'
     | 'restoreCommittedText'
+    | 'onListboxClose'
     | 'matchesText'
     | 'setSuppressAutoActivate'
     | 'errorType'
@@ -55,6 +56,7 @@ export const useTimePickerComboboxState = (
     committedText,
     onInputChange,
     restoreCommittedText,
+    onListboxClose,
     matchesText,
     setSuppressAutoActivate,
     errorType,
@@ -93,13 +95,26 @@ export const useTimePickerComboboxState = (
 
     if (openActivation === 'none') {
       activeDescendantController.blur();
-    } else if (getActiveOption()?.value !== selectedOptions[0]) {
+      return;
+    }
+
+    // Arrow Up opens on the selected option, otherwise on the last one. The option it activates counts as chosen
+    // with the keyboard, so the text-matching effect below keeps it.
+    const selectedOption = selectedOptions[0];
+    if (selectedOption === undefined || getActiveOption()?.value !== selectedOption) {
       activeDescendantController.last();
     }
+    navigatedRef.current = true;
   }, [open, activeDescendantController, getActiveOption, selectedOptions]);
 
   React.useEffect(() => {
-    const activeOption = freeform ? getActiveOption() : null;
+    if (!open) {
+      onListboxClose();
+    }
+  }, [open, onListboxClose]);
+
+  React.useEffect(() => {
+    const activeOption = freeform && !navigatedRef.current ? getActiveOption() : null;
 
     if (!activeOption) {
       return;

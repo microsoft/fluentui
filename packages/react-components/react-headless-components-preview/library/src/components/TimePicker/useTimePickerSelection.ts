@@ -56,6 +56,11 @@ export type TimePickerSelection = TimePickerTimeState & {
   restoreCommittedText: (event: React.KeyboardEvent<HTMLElement>) => boolean;
 
   /**
+   * Resets typing state when the listbox closes: filtering, and in non-freeform mode the typed text.
+   */
+  onListboxClose: () => void;
+
+  /**
    * Whether an option text starts with the given text, ignoring case, bidi marks and the locale's digits.
    */
   matchesText: (optionText: string, text: string) => boolean;
@@ -263,12 +268,11 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
       setTypedText(undefined);
     }
   });
-  const onOpenChange: NonNullable<ComboboxProps['onOpenChange']> = useEventCallback((event, data) => {
-    if (!data.open) {
-      discardTypedText();
-      setIsFiltering(false);
-      setSuppressAutoActivate(false);
-    }
+  // Called whenever the listbox is closed, including by a controlled `open` prop.
+  const onListboxClose = useEventCallback(() => {
+    discardTypedText();
+    setIsFiltering(false);
+    setSuppressAutoActivate(false);
   });
 
   const defaultParseTimeStringToDate = React.useCallback(
@@ -305,7 +309,6 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     disableAutoFocus: matchesNoOption || suppressAutoActivate,
     value: displayValue,
     onBlur: mergeCallbacks(rest.onBlur, discardTypedText),
-    onOpenChange: mergeCallbacks(rest.onOpenChange, onOpenChange),
     selectedOptions,
     onOptionSelect,
   };
@@ -317,6 +320,7 @@ export const useTimePickerSelection = (props: TimePickerProps): TimePickerSelect
     commitValue,
     onInputChange,
     restoreCommittedText,
+    onListboxClose,
     matchesText,
     setSuppressAutoActivate,
     freeform,
