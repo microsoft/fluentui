@@ -1,5 +1,6 @@
 import {
   transformVegaLiteToLineChartProps,
+  transformVegaLiteToAreaChartProps,
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
@@ -936,6 +937,31 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
     });
 
+    it('retains exhaustion evidence when a later filter sees no rows', () => {
+      const spec = filteredBarSpec([{ category: 'A', value: 10 }], [{ filter: 'false' }, { filter: 'true' }]);
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
+    it('retains exhaustion evidence across shared and layer filters', () => {
+      const spec: VegaLiteSpec = {
+        data: { values: [{ category: 'A', value: 10 }] },
+        transform: [{ filter: 'datum.value > 100' }],
+        layer: [
+          {
+            mark: 'bar',
+            transform: [{ filter: "datum.category == 'A'" }],
+            encoding: {
+              x: { field: 'category', type: 'nominal' },
+              y: { field: 'value', type: 'quantitative' },
+            },
+          },
+        ],
+      };
+
+      expect(transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }).data).toEqual([]);
+    });
+
     it('does not assume fields calculated only after the exhausting filter are valid', () => {
       const spec = filteredBarSpec(
         [{ category: 'A', amount: 5 }],
@@ -978,6 +1004,101 @@ describe('VegaLiteSchemaAdapter', () => {
           'Empty data array for VerticalBarChart',
         );
         expect(warn).toHaveBeenCalledTimes(1);
+      } finally {
+        warn.mockRestore();
+      }
+    });
+  });
+
+  describe.each([
+    { mark: 'line', transform: transformVegaLiteToLineChartProps },
+    { mark: 'area', transform: transformVegaLiteToAreaChartProps },
+  ] as const)('filter-exhausted $mark data', ({ mark, transform }) => {
+    function filteredSpec(filter: string): VegaLiteSpec {
+      return {
+        mark,
+        data: { values: [{ x: 1, y: 10, approved: false, invalid: { toString: 0 } }] },
+        transform: [{ filter }],
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      };
+    }
+
+    it.each(['false', 'datum.approved && +datum.invalid', 'datum.approved ? +datum.invalid : false'])(
+      'returns native empty props for a successful no-match: %s',
+      filter => {
+        expect(transform(filteredSpec(filter), { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+      },
+    );
+
+    it('retains the populated witness across successive filters', () => {
+      const spec = filteredSpec('false');
+      spec.transform?.push({ filter: 'true' });
+
+      expect(transform(spec, { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+    });
+
+    it('validates preceding calculations without rewriting discarded field types', () => {
+      const spec = filteredSpec('false');
+      spec.transform?.unshift({ calculate: "'discarded label'", as: 'y' });
+
+      expect(transform(spec, { current: colorMap }).data).toMatchObject({ lineChartData: [] });
+      expect(spec.encoding?.y?.type).toBe('quantitative');
+    });
+
+    it.each(['true && +datum.invalid', 'false && (1 + )'])(
+      'keeps strict validation for evaluation failures: %s',
+      filter => {
+        const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+        try {
+          expect(() => transform(filteredSpec(filter), { current: colorMap })).toThrow(
+            'Empty data array for LineChart',
+          );
+          expect(warn).toHaveBeenCalledTimes(1);
+        } finally {
+          warn.mockRestore();
+        }
+      },
+    );
+
+    it.each(['timeUnit', 'aggregate'] as const)('does not broaden empty eligibility to %s contracts', kind => {
+      const spec = filteredSpec('false');
+      spec.encoding = {
+        x: { field: 'x', type: 'quantitative', ...(kind === 'timeUnit' && { timeUnit: 'month' }) },
+        y: { field: 'y', type: 'quantitative', ...(kind === 'aggregate' && { aggregate: 'sum' }) },
+      };
+
+      expect(() => transform(spec, { current: colorMap })).toThrow('Empty data array for LineChart');
+    });
+  });
+
+  describe.each([
+    {
+      name: 'Histogram',
+      mark: 'bar',
+      transform: transformVegaLiteToHistogramProps,
+      encoding: { x: { field: 'x', bin: true }, y: { aggregate: 'count' } },
+    },
+    {
+      name: 'PolarChart',
+      mark: 'line',
+      transform: transformVegaLiteToPolarChartProps,
+      encoding: { theta: { field: 'x', type: 'quantitative' }, radius: { field: 'y', type: 'quantitative' } },
+    },
+  ] as const)('strict empty $name data', ({ name, mark, transform, encoding }) => {
+    it('keeps mark-specific empty validation for a successful guarded no-match', () => {
+      const spec: VegaLiteSpec = {
+        mark,
+        encoding,
+        data: { values: [{ x: 1, y: 10, approved: false, invalid: { toString: 0 } }] },
+        transform: [{ filter: 'datum.approved && +datum.invalid' }],
+      };
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        expect(() => transform(spec, { current: colorMap })).toThrow(`Empty data array for ${name}`);
+        expect(warn).not.toHaveBeenCalled();
       } finally {
         warn.mockRestore();
       }

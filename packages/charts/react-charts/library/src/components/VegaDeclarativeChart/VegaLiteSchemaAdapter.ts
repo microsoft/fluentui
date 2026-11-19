@@ -209,7 +209,17 @@ function applyFoldTransform(
 
 interface FilterState {
   hasEvaluationError: boolean;
+  canValidateEmptyFilterInput: boolean;
   inputBeforeEmptyFilter?: Array<Record<string, unknown>>;
+}
+
+function createFilterState(encoding: VegaLiteEncoding): FilterState {
+  // Capture eligibility before temporal normalization rewrites types or consumes aggregates.
+  return {
+    hasEvaluationError: false,
+    canValidateEmptyFilterInput:
+      !encoding.x?.timeUnit && !encoding.y?.timeUnit && !encoding.x?.aggregate && !encoding.y?.aggregate,
+  };
 }
 
 /**
@@ -1053,6 +1063,29 @@ function validateXYEncodings(
   validateEncodingType(data, yField, yType, encoding, 'y');
 }
 
+function validateFilteredXYEncodings(
+  data: Array<Record<string, unknown>>,
+  filterState: FilterState,
+  encoding: VegaLiteEncoding,
+  xField: string,
+  yField: string,
+  chartType: string,
+): void {
+  const validationData =
+    data.length === 0 && filterState.canValidateEmptyFilterInput && !filterState.hasEvaluationError
+      ? filterState.inputBeforeEmptyFilter ?? data
+      : data;
+  validateXYEncodings(
+    validationData,
+    xField,
+    yField,
+    encoding.x?.type,
+    encoding.y?.type,
+    chartType,
+    data.length > 0 ? encoding : undefined,
+  );
+}
+
 /**
  * Extracts Y-axis scale type from encoding
  * Returns 'log' if logarithmic scale is specified, undefined otherwise
@@ -1203,11 +1236,8 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
 function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLiteUnitSpec) {
   const encoding = primarySpec.encoding || {};
-  // Saved filter rows cannot be validated against later temporal output types or consumed aggregates.
-  const canValidateEmptyFilterInput =
-    !encoding.x?.timeUnit && !encoding.y?.timeUnit && !encoding.x?.aggregate && !encoding.y?.aggregate;
   const rawDataValues = extractDataValues(primarySpec.data);
-  const filterState: FilterState = { hasEvaluationError: false };
+  const filterState = createFilterState(encoding);
   // Apply any transforms from both top-level spec and primary unit spec
   let dataValues = applyTransforms(rawDataValues, spec.transform, filterState);
   dataValues = applyTransforms(dataValues, primarySpec.transform, filterState);
@@ -1302,7 +1332,6 @@ function initializeUnitTransformContext(spec: VegaLiteSpec, primarySpec: VegaLit
     primarySpec,
     dataValues,
     filterState,
-    canValidateEmptyFilterInput,
     encoding,
     markProps,
   };
@@ -1812,10 +1841,11 @@ export function transformVegaLiteToLineChartProps(
   const hasLineLayer = unitSpecs.some(unitSpec => getMarkType(unitSpec.mark) === 'line');
   const shouldShowPoints = hasPointLayer && hasLineLayer;
 
+  const encoding = primarySpec.encoding || {};
+  const filterState = createFilterState(encoding);
   const rawDataValues = extractDataValues(primarySpec.data);
   // Apply any transforms (fold, etc.) from the spec
-  const dataValues = applyTransforms(rawDataValues, spec.transform);
-  const encoding = primarySpec.encoding || {};
+  const dataValues = applyTransforms(rawDataValues, spec.transform, filterState);
   const markProps = getMarkProperties(primarySpec.mark);
 
   // Extract field names
@@ -1840,7 +1870,7 @@ export function transformVegaLiteToLineChartProps(
     throw new Error('VegaLiteSchemaAdapter: Line chart requires both x and y encodings with field names');
   }
 
-  validateXYEncodings(dataValues, xField, yField, encoding.x?.type, encoding.y?.type, 'LineChart', encoding);
+  validateFilteredXYEncodings(dataValues, filterState, encoding, xField, yField, 'LineChart');
 
   const isXTemporal = encoding.x?.type === 'temporal';
   const isYTemporal = encoding.y?.type === 'temporal';
@@ -2185,8 +2215,7 @@ export function transformVegaLiteToVerticalBarChartProps(
   isDarkTheme?: boolean,
 ): VerticalBarChartProps {
   // Initialize transformation context
-  const { dataValues, filterState, canValidateEmptyFilterInput, encoding, markProps } =
-    initializeTransformContext(spec);
+  const { dataValues, filterState, encoding, markProps } = initializeTransformContext(spec);
 
   // Extract field names and aggregates
   const { xField, yField, colorField, yAggregate } = extractEncodingFields(encoding);
@@ -2207,20 +2236,7 @@ export function transformVegaLiteToVerticalBarChartProps(
 
   // Validate data and encodings (skip for aggregate charts)
   if (!isAggregate && xField && yField) {
-    // Validate the populated filter input before accepting a successful no-match as an empty view.
-    const validationData =
-      dataValues.length === 0 && canValidateEmptyFilterInput && !filterState.hasEvaluationError
-        ? filterState.inputBeforeEmptyFilter ?? dataValues
-        : dataValues;
-    validateXYEncodings(
-      validationData,
-      xField,
-      yField,
-      encoding.x?.type,
-      encoding.y?.type,
-      'VerticalBarChart',
-      dataValues.length > 0 ? encoding : undefined,
-    );
+    validateFilteredXYEncodings(dataValues, filterState, encoding, xField, yField, 'VerticalBarChart');
   }
 
   // Extract color configuration

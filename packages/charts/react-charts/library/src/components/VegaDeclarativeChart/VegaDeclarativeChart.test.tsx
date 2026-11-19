@@ -1248,10 +1248,12 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 });
 
-describe('VegaDeclarativeChart - Filtered bar views', () => {
-  function barSpec(values: Array<Record<string, unknown>>, transform?: VegaLiteSpec['transform']): VegaLiteSpec {
+describe.each(['bar', 'line', 'area'] as const)('VegaDeclarativeChart - Filtered %s views', mark => {
+  const chartType = mark === 'bar' ? 'VerticalBarChart' : 'LineChart';
+
+  function chartSpec(values: Array<Record<string, unknown>>, transform?: VegaLiteSpec['transform']): VegaLiteSpec {
     return {
-      mark: 'bar',
+      mark,
       data: { values },
       transform,
       encoding: {
@@ -1262,7 +1264,7 @@ describe('VegaDeclarativeChart - Filtered bar views', () => {
   }
 
   it('renders the native no-data alert for a valid guarded no-match without evaluating the skipped operand', () => {
-    const spec = barSpec(
+    const spec = chartSpec(
       [{ category: 'A', value: 10, approved: false, invalid: { toString: 0 } }],
       [{ filter: 'datum.approved && +datum.invalid' }],
     );
@@ -1275,14 +1277,14 @@ describe('VegaDeclarativeChart - Filtered bar views', () => {
     expect(warn).not.toHaveBeenCalled();
   });
 
-  it.each(['hconcat', 'vconcat'] as const)('preserves a healthy %s sibling beside a valid empty bar view', layout => {
+  it.each(['hconcat', 'vconcat'] as const)('preserves a healthy %s sibling beside a valid empty view', layout => {
     const spec: VegaLiteSpec = {
       [layout]: [
-        barSpec(
+        chartSpec(
           [{ category: 'Filtered', value: 10, approved: false, invalid: { toString: 0 } }],
           [{ filter: 'datum.approved && +datum.invalid' }],
         ),
-        barSpec([{ category: 'Healthy', value: 25 }]),
+        { ...chartSpec([{ category: 'Healthy', value: 25 }]), mark: 'bar' },
       ],
     };
     const warn = jest.mocked(console.warn);
@@ -1297,32 +1299,32 @@ describe('VegaDeclarativeChart - Filtered bar views', () => {
   });
 
   it.each(['true && +datum.invalid', 'false && (1 + )'])(
-    'still rejects an empty bar view caused by an evaluation error: %s',
+    'still rejects an empty view caused by an evaluation error: %s',
     filter => {
-      const spec = barSpec([{ category: 'A', value: 10, invalid: { toString: 0 } }], [{ filter }]);
+      const spec = chartSpec([{ category: 'A', value: 10, invalid: { toString: 0 } }], [{ filter }]);
       const warn = jest.mocked(console.warn);
       warn.mockClear();
 
       expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
-        'VegaLiteSchemaAdapter: Empty data array for VerticalBarChart',
+        `VegaLiteSchemaAdapter: Empty data array for ${chartType}`,
       );
       expect(warn).toHaveBeenCalledWith('Vega-Lite filter evaluation failed; excluding row.', expect.any(Error));
     },
   );
 
   it('still rejects empty source data even when a filter is provided', () => {
-    const spec = barSpec([], [{ filter: 'false' }]);
+    const spec = chartSpec([], [{ filter: 'false' }]);
 
     expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
-      'VegaLiteSchemaAdapter: Empty data array for VerticalBarChart',
+      `VegaLiteSchemaAdapter: Empty data array for ${chartType}`,
     );
   });
 
   it('does not hide invalid encoded fields behind a nonmatching filter', () => {
-    const spec = barSpec([{ category: 'A' }], [{ filter: 'false' }]);
+    const spec = chartSpec([{ category: 'A' }], [{ filter: 'false' }]);
 
     expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
-      "No valid values found for field 'value' in VerticalBarChart",
+      `No valid values found for field 'value' in ${chartType}`,
     );
   });
 });

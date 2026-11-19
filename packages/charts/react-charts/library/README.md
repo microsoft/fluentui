@@ -15,7 +15,7 @@ The code snippets can be used as usage guide for all the props and chart variati
 with short-circuit semantics. Skipped branches are parsed but not evaluated.
 If a filter expression throws for a row, that row is excluded and a warning is logged.
 
-For nonaggregate vertical bar charts without `timeUnit` on either encoded axis,
+For nonaggregate vertical bar, line, and area charts without `timeUnit` on either encoded axis,
 successfully filtering populated, valid encoded data down to zero rows renders the native no-data display. This also preserves healthy
 sibling charts in an `hconcat` or `vconcat` spec. Encoded fields are validated against
 the rows entering the exhausting filter, including fields produced by earlier transforms.
@@ -28,9 +28,10 @@ Stacked bar and line-overlay transforms run once per rendered data series. Condi
 color and temporal preparation apply to the rows supplying that series, not a discarded metadata pass.
 
 Empty source data, invalid encoded fields, and all-excluded results involving filter
-evaluation errors still follow the existing validation/error path. Other chart types
-retain their mark-specific empty-data behavior; for example, scatter supports a no-data
-display. An error in a child of an `hconcat` or `vconcat` spec can still abort the entire
+evaluation errors still follow the existing validation/error path. Other adapters use
+mark-specific empty-data handling: scatter supports a no-data display, while histogram
+and polar validate empty results and can throw even for a successful guarded no-match.
+No uniform empty-view contract is provided across marks. An error in a child of an `hconcat` or `vconcat` spec can still abort the entire
 containing chart render; the component does not isolate invalid child specs. Callers needing error
 containment must handle render errors externally, for example with a React error
 boundary around the chart for client-side rendering. No uniform no-data fallback for
