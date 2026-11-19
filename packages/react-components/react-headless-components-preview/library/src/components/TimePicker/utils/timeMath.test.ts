@@ -413,3 +413,90 @@ describe('Time Utilities', () => {
     });
   });
 });
+
+describe('compact input', () => {
+  const day = new Date('January 1, 2023 00:00:00');
+  const nextDay = new Date('January 2, 2023 00:00:00');
+  const parse = (time: string, hourCycle?: 'h11' | 'h12' | 'h23' | 'h24', showSeconds = false) =>
+    getDateFromTimeString(time, day, nextDay, { hourCycle, locale: 'en-US', showSeconds });
+
+  it.each`
+    time        | hourCycle | hours | minutes | seconds
+    ${'1030'}   | ${'h12'}  | ${10} | ${30}   | ${0}
+    ${'1030'}   | ${'h23'}  | ${10} | ${30}   | ${0}
+    ${'2230'}   | ${'h12'}  | ${22} | ${30}   | ${0}
+    ${'0930'}   | ${'h11'}  | ${9}  | ${30}   | ${0}
+    ${'930'}    | ${'h23'}  | ${9}  | ${30}   | ${0}
+    ${'0000'}   | ${'h23'}  | ${0}  | ${0}    | ${0}
+    ${'2430'}   | ${'h24'}  | ${0}  | ${30}   | ${0}
+    ${' 1030 '} | ${'h23'}  | ${10} | ${30}   | ${0}
+  `('accepts $time as a 24-hour time in $hourCycle', ({ time, hourCycle, hours, minutes, seconds }) => {
+    const result = parse(time, hourCycle);
+    expect(result.errorType).toBeUndefined();
+    expect([result.date?.getHours(), result.date?.getMinutes(), result.date?.getSeconds()]).toEqual([
+      hours,
+      minutes,
+      seconds,
+    ]);
+  });
+
+  it.each`
+    time       | hourCycle
+    ${'2430'}  | ${'h23'}
+    ${'2460'}  | ${'h23'}
+    ${'1060'}  | ${'h12'}
+    ${'30'}    | ${'h23'}
+    ${'10300'} | ${'h23'}
+    ${'1x30'}  | ${'h23'}
+  `('rejects $time in $hourCycle', ({ time, hourCycle }) => {
+    expect(parse(time, hourCycle)).toEqual({ date: null, errorType: 'invalid-input' });
+  });
+
+  it('requires seconds only with showSeconds', () => {
+    expect(parse('103045', 'h23', true).date?.getSeconds()).toBe(45);
+    expect(parse('1030', 'h23', true).errorType).toBe('invalid-input');
+    expect(parse('103045', 'h23').errorType).toBe('invalid-input');
+  });
+
+  it('checks the range', () => {
+    const start = new Date('January 1, 2023 09:00:00');
+    const end = new Date('January 1, 2023 17:00:00');
+    expect(getDateFromTimeString('1730', start, end, { hourCycle: 'h23' }).errorType).toBe('out-of-bounds');
+    expect(getDateFromTimeString('1630', start, end, { hourCycle: 'h23' }).errorType).toBeUndefined();
+  });
+
+  it('accepts localized digits', () => {
+    const result = getDateFromTimeString('١٠٣٠', day, nextDay, { locale: 'ar-EG' });
+    expect([result.date?.getHours(), result.date?.getMinutes()]).toEqual([10, 30]);
+  });
+});
+
+describe('locale option', () => {
+  const day = new Date('January 1, 2023 00:00:00');
+  const nextDay = new Date('January 2, 2023 00:00:00');
+
+  it('formats with the given locale instead of the runtime locale', () => {
+    const date = new Date('January 1, 2023 14:05:00');
+    expect(createTimeFormat({ locale: 'de-DE' }).format(date)).toBe('14:05');
+    expect(createTimeFormat({ locale: 'en-US' }).hourCycle).toBe('h12');
+    expect(createTimeFormat({ locale: 'de-DE' }).hourCycle).toBe('h23');
+  });
+
+  it.each(['ar-EG', 'ja-JP', 'ko-KR', 'zh-CN', 'de-DE', 'en-US'])(
+    'parses every generated option back to its time in %s',
+    locale => {
+      const timeFormat = createTimeFormat({ locale });
+      for (const time of getTimesBetween(day, nextDay, 30)) {
+        const result = timeFormat.parse(timeFormat.format(time), day, nextDay);
+        expect(result.errorType).toBeUndefined();
+        expect(result.date?.getTime()).toBe(time.getTime());
+      }
+    },
+  );
+
+  it('normalizes localized digits and bidi marks for matching', () => {
+    const timeFormat = createTimeFormat({ locale: 'ar-EG' });
+    const option = timeFormat.format(new Date('January 1, 2023 10:30:00'));
+    expect(timeFormat.normalize(option).indexOf('10:30')).toBe(0);
+  });
+});
