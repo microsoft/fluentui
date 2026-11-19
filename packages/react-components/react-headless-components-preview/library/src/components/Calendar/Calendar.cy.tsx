@@ -8,7 +8,7 @@ import { Calendar } from './Calendar';
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 const today = new Date(2020, 8, 18);
 const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${label}"])`;
-const month = (label: string) => `[role="gridcell"][aria-label="${label}"]`;
+const month = (label: string) => `[role="gridcell"][aria-label^="${label} "]`;
 
 const BoundsChangingCalendar = () => {
   const [minDate, setMinDate] = React.useState(new Date(2020, 0, 1));

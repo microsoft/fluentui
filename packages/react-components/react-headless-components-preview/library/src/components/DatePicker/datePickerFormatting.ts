@@ -1,4 +1,4 @@
-import { calendarFormatters } from '../Calendar/utils';
+import { calendarFormatters, createCalendarDateTimeFormatter } from '../Calendar/utils';
 
 const MONTH_NAMES = [
   'january',
@@ -69,4 +69,93 @@ export const defaultParseDate = (text: string): Date | null => {
   }
 
   return null;
+};
+
+const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+type DatePickerFormat = {
+  dateTime: ReturnType<typeof createCalendarDateTimeFormatter>;
+  formatDate: (date: Date) => string;
+  parseDate: (text: string) => Date | null;
+};
+
+const localeFormats = new Map<string, DatePickerFormat>();
+
+/**
+ * Shares a Gregorian locale between Calendar labels, field formatting and strict date parsing.
+ */
+export const createDatePickerFormat = (locale: string): DatePickerFormat => {
+  const cached = localeFormats.get(locale);
+  if (cached) {
+    return cached;
+  }
+  const dateTime = createCalendarDateTimeFormatter(locale);
+  const numberFormat = new Intl.NumberFormat(locale, { useGrouping: false });
+  const digits = Array.from({ length: 10 }, (_, digit) => numberFormat.format(digit));
+  const normalize = (text: string) =>
+    Array.from(text.replace(/[\u200e\u200f\u061c]/g, ''), char => {
+      const digit = digits.indexOf(char);
+      return digit < 0 ? char : String(digit);
+    }).join('');
+
+  const parsers = (['numeric', 'long', 'short'] as const).map(month => {
+    const options: Intl.DateTimeFormatOptions & { calendar: string } = {
+      calendar: 'gregory',
+      year: 'numeric',
+      month,
+      day: 'numeric',
+    };
+    const formatter = new Intl.DateTimeFormat(locale, options);
+    const months = Array.from(
+      { length: 12 },
+      (_, index) => formatter.formatToParts(new Date(2006, index, 23)).find(part => part.type === 'month')!.value,
+    );
+    const pattern = formatter
+      .formatToParts(new Date(2006, 10, 23))
+      .map(part => {
+        switch (part.type) {
+          case 'year':
+            return '(?<year>\\d{4})';
+          case 'day':
+            return '(?<day>\\d{1,2})';
+          case 'month':
+            return month === 'numeric'
+              ? '(?<month>\\d{1,2})'
+              : `(?<month>${months.map(name => escapeRegExp(normalize(name))).join('|')})`;
+          default:
+            return escapeRegExp(normalize(part.value)).replace(/\s+/g, '\\s*');
+        }
+      })
+      .join('');
+    return { regex: new RegExp(`^${pattern}$`, 'iu'), months, numeric: month === 'numeric' };
+  });
+
+  const localeFormat: DatePickerFormat = {
+    dateTime,
+    formatDate: (date: Date) => dateTime({ date, format: 'monthDayYear' }),
+    parseDate: (text: string): Date | null => {
+      const normalized = normalize(text.trim());
+      // ISO is unambiguous. Other numeric dates must match the locale's ordering and separators.
+      if (ISO_DATE.test(normalized)) {
+        return defaultParseDate(normalized);
+      }
+      for (const { regex, months, numeric } of parsers) {
+        const parts = regex.exec(normalized)?.groups;
+        if (parts) {
+          const monthIndex = numeric
+            ? Number(parts.month) - 1
+            : months.findIndex(
+                name => normalize(name).toLocaleLowerCase(locale) === parts.month.toLocaleLowerCase(locale),
+              );
+          const date = createLocalDate(Number(parts.year), monthIndex, Number(parts.day));
+          if (date) {
+            return date;
+          }
+        }
+      }
+      return NUMERIC_DATE.test(normalized) ? null : defaultParseDate(normalized);
+    },
+  };
+  localeFormats.set(locale, localeFormat);
+  return localeFormat;
 };

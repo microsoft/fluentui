@@ -328,13 +328,13 @@ describe('Calendar rendering and public API', () => {
       </>
     );
     const { getByRole, getAllByRole, rerender } = render(calendar(3));
-    act(() => getByRole('gridcell', { name: 'December' }).focus());
+    act(() => getByRole('gridcell', { name: /^December / }).focus());
     act(() => getByRole('button', { name: 'Outside' }).focus());
 
     rerender(calendar(4));
 
     expect(getAllByRole('row')).toHaveLength(3);
-    expect(getByRole('gridcell', { name: 'September' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: /^September / })).toHaveAttribute('tabindex', '0');
     expect(getByRole('button', { name: 'Outside' })).toHaveFocus();
   });
 
@@ -434,14 +434,14 @@ describe('Calendar rendering and public API', () => {
       />,
     );
 
-    fireEvent.click(getByRole('gridcell', { name: 'October' }));
+    fireEvent.click(getByRole('gridcell', { name: /^October / }));
 
     expect(onSelectDate).toHaveBeenCalledTimes(1);
     expect(onSelectDate.mock.calls[0][1].date).toEqual(new Date(2020, 9, 18));
     expect(onViewChange).not.toHaveBeenCalled();
     expect(container.querySelector('table[role="grid"]')).toBeNull();
     expect(getAllByRole('grid')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('aria-selected', 'true');
+    expect(getByRole('gridcell', { name: /^October / })).toHaveAttribute('aria-selected', 'true');
   });
 
   it('renders only the day grid when the month picker is null', () => {
@@ -450,7 +450,7 @@ describe('Calendar rendering and public API', () => {
     );
 
     expect(getAllByRole('grid')).toHaveLength(1);
-    expect(queryByRole('gridcell', { name: 'September' })).toBeNull();
+    expect(queryByRole('gridcell', { name: /^September / })).toBeNull();
     expect(queryByRole('button', { name: /change month/ })).toBeNull();
   });
 
@@ -478,8 +478,8 @@ describe('Calendar rendering and public API', () => {
 
     fireEvent.click(getByRole('button', { name: /September 2020, change month/ }));
 
-    expect(monthRootRef.current).toContainElement(getByRole('gridcell', { name: 'September' }));
-    await waitFor(() => expect(getByRole('gridcell', { name: 'September' })).toHaveFocus());
+    expect(monthRootRef.current).toContainElement(getByRole('gridcell', { name: /^September / }));
+    await waitFor(() => expect(getByRole('gridcell', { name: /^September / })).toHaveFocus());
   });
 
   it('restores focus across Go to today and the year grid', async () => {
@@ -494,17 +494,17 @@ describe('Calendar rendering and public API', () => {
     await waitFor(() => expect(getByRole('gridcell', { name: '2020' })).toHaveFocus());
 
     fireEvent.click(getByRole('button', { name: '2020 - 2031, change year' }));
-    await waitFor(() => expect(getByRole('gridcell', { name: 'September' })).toHaveFocus());
+    await waitFor(() => expect(getByRole('gridcell', { name: /^September / })).toHaveFocus());
   });
 
   it('defaults to side-by-side and restores focus when a layout change hides the focused month picker', async () => {
     const { getByRole, queryByRole, rerender } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     expect(getByRole('button', { name: 'September 18, 2020' })).toBeInTheDocument();
-    act(() => getByRole('gridcell', { name: 'March' }).focus());
+    act(() => getByRole('gridcell', { name: /^March / }).focus());
     rerender(<Calendar value={new Date(2020, 8, 18)} layout="overlay" />);
 
-    expect(queryByRole('gridcell', { name: 'March' })).toBeNull();
+    expect(queryByRole('gridcell', { name: /^March / })).toBeNull();
     await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
   });
 });
@@ -699,6 +699,49 @@ describe('Calendar interaction sequences', () => {
       />,
     );
     expect(fireEvent.keyDown(getByRole('button', { name: 'Custom action' }), { key: 'Enter' })).toBe(true);
+  });
+
+  it('keeps formatter date metadata in sync with the browsed picker year', () => {
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        formatters={{
+          monthPickerHeaderLabel: ({ date, formattedDate }) => `${date.getFullYear()}: ${formattedDate}`,
+        }}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+
+    expect(getByRole('button', { name: '2021: 2021' })).toBeInTheDocument();
+    expect(getByRole('gridcell', { name: 'September 2021' })).toBeInTheDocument();
+    expect(getByRole('button', { name: dayLabel(today) })).toBeInTheDocument();
+  });
+
+  it.each([false, true])('restores a browsed picker year with Go to today (allFocusable=%s)', allFocusable => {
+    const { getByRole } = render(<Calendar today={today} allFocusable={allFocusable} />);
+    const button = getByRole('button', { name: 'Go to today' });
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+
+    expect(button).not.toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'false');
+    fireEvent.click(button);
+    expect(getByRole('gridcell', { name: 'September 2020' })).toBeInTheDocument();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('resets picker-year browsing after external navigation, including a return to the original date', () => {
+    const { getByRole, rerender } = render(<Calendar today={today} displayedDate={today} />);
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+    expect(getByRole('gridcell', { name: 'September 2021' })).toBeInTheDocument();
+
+    rerender(<Calendar today={today} displayedDate={new Date(2022, 8, 18)} />);
+    expect(getByRole('gridcell', { name: 'September 2022' })).toBeInTheDocument();
+
+    rerender(<Calendar today={today} displayedDate={today} />);
+    expect(getByRole('gridcell', { name: 'September 2020' })).toBeInTheDocument();
   });
 
   it('keeps an unavailable go-to-today action focusable but inactive with allFocusable', () => {
@@ -900,7 +943,7 @@ describe('Calendar interaction sequences', () => {
       const pickerCell =
         view === 'day'
           ? getByRole('button', { name: dayLabel(today) }).closest('td')!
-          : getByRole('gridcell', { name: 'September' });
+          : getByRole('gridcell', { name: /^September / });
       act(() => pickerCell.focus());
       const outside = getByRole('button', { name: 'Outside action' });
       outside.focus();
@@ -928,7 +971,7 @@ describe('Calendar interaction sequences', () => {
           <button type="button">Outside action</button>
         </>,
       );
-      act(() => getByRole('gridcell', { name: 'September' }).focus());
+      act(() => getByRole('gridcell', { name: /^September / }).focus());
       const outside = getByRole('button', { name: 'Outside action' });
       outside.focus();
       rerender(
@@ -938,7 +981,7 @@ describe('Calendar interaction sequences', () => {
         </>,
       );
       act(() => jest.advanceTimersToNextFrame());
-      expect(queryByRole('gridcell', { name: 'September' })).toBeNull();
+      expect(queryByRole('gridcell', { name: /^September / })).toBeNull();
       expect(outside).toHaveFocus();
     });
 
@@ -946,7 +989,7 @@ describe('Calendar interaction sequences', () => {
       'moves focus to the year grid when a controlled view replaces the focused month grid in %s',
       layout => {
         const { getByRole, rerender } = render(<Calendar today={today} layout={layout} view="month" />);
-        act(() => getByRole('gridcell', { name: 'September' }).focus());
+        act(() => getByRole('gridcell', { name: /^September / }).focus());
 
         rerender(<Calendar today={today} layout={layout} view="year" />);
 
@@ -1004,7 +1047,7 @@ describe('Calendar interaction sequences', () => {
           <button type="button">Outside action</button>
         </>,
       );
-      act(() => getByRole('gridcell', { name: 'September' }).focus());
+      act(() => getByRole('gridcell', { name: /^September / }).focus());
       const outside = getByRole('button', { name: 'Outside action' });
       outside.focus();
 
@@ -1998,7 +2041,7 @@ describe('Calendar month grid', () => {
       const cellProps = state.resolveCellProps(month);
       expect(cellProps.root).toMatchObject({
         role: 'gridcell',
-        'aria-label': 'September',
+        'aria-label': 'September 2020',
         tabIndex: 0,
       });
       expect(cellProps.button).toMatchObject({ type: 'button', children: month.label, tabIndex: -1 });
@@ -2011,7 +2054,7 @@ describe('Calendar month grid', () => {
       const grid = container.querySelector('[role="grid"]')!;
 
       expect(grid).not.toHaveAttribute('focusgroup');
-      expect(grid.querySelector('[tabindex="0"]')).toHaveAttribute('aria-label', 'September');
+      expect(grid.querySelector('[tabindex="0"]')).toHaveAttribute('aria-label', 'September 2020');
       expect(grid.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
       expect(grid.querySelectorAll('[role="row"]')).toHaveLength(3);
       expect(grid.childNodes).toHaveLength(3);
@@ -2036,8 +2079,8 @@ describe('Calendar month grid', () => {
       act(() => {
         focusCalendarGrid(container.firstElementChild);
       });
-      expect(getByRole('gridcell', { name: 'September' })).toHaveFocus();
-      fireEvent.click(getByRole('gridcell', { name: 'May' }));
+      expect(getByRole('gridcell', { name: /^September / })).toHaveFocus();
+      fireEvent.click(getByRole('gridcell', { name: /^May / }));
       expect(onSelectDate.mock.calls[0][1].date).toEqual(new Date(2020, 4, 18));
 
       fireEvent.click(getByRole('button', { name: '2020, change year' }));
@@ -2048,31 +2091,31 @@ describe('Calendar month grid', () => {
 
     it('preserves the roving tab stop without stealing focus when the displayed month changes', () => {
       const { container, getByRole, rerender } = render(<MonthPicker displayedDate={today} />);
-      act(() => getByRole('gridcell', { name: 'October' }).focus());
+      act(() => getByRole('gridcell', { name: /^October / }).focus());
 
       rerender(<MonthPicker displayedDate={new Date(2020, 10, 18)} />);
 
-      expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
+      expect(getByRole('gridcell', { name: /^October / })).toHaveFocus();
       expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-      expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('tabindex', '0');
-      expect(getByRole('gridcell', { name: 'November' })).not.toHaveAttribute('tabindex', '0');
+      expect(getByRole('gridcell', { name: /^October / })).toHaveAttribute('tabindex', '0');
+      expect(getByRole('gridcell', { name: /^November / })).not.toHaveAttribute('tabindex', '0');
     });
 
     it('keeps focus and the tab stop on a month that becomes disabled', () => {
       const { container, getByRole, rerender } = render(<MonthPicker displayedDate={today} />);
-      act(() => getByRole('gridcell', { name: 'October' }).focus());
+      act(() => getByRole('gridcell', { name: /^October / }).focus());
 
       rerender(<MonthPicker displayedDate={today} minDate={new Date(2020, 10, 1)} />);
 
-      expect(getByRole('gridcell', { name: 'October' }).querySelector('button')).toBeDisabled();
+      expect(getByRole('gridcell', { name: /^October / }).querySelector('button')).toBeDisabled();
       expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-      expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
-      expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('tabindex', '0');
+      expect(getByRole('gridcell', { name: /^October / })).toHaveFocus();
+      expect(getByRole('gridcell', { name: /^October / })).toHaveAttribute('tabindex', '0');
     });
 
     it('keeps the active month focused when a maximum bound clamps the displayed month', () => {
       const { container, getByRole, rerender } = render(<MonthPicker displayedDate={today} />);
-      const september = getByRole('gridcell', { name: 'September' });
+      const september = getByRole('gridcell', { name: /^September / });
       act(() => september.focus());
 
       rerender(<MonthPicker displayedDate={new Date(2020, 6, 31)} maxDate={new Date(2020, 6, 31)} />);
@@ -2082,13 +2125,13 @@ describe('Calendar month grid', () => {
       expect(september).toHaveAttribute('tabindex', '0');
       expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
       fireEvent.keyDown(september, { key: 'End' });
-      expect(getByRole('gridcell', { name: 'July' })).toHaveFocus();
+      expect(getByRole('gridcell', { name: /^July / })).toHaveFocus();
     });
 
     it('keeps the active month focusable when a maximum bound clamps the displayed year', () => {
       const start = new Date(2026, 8, 18);
       const { container, getByRole, rerender } = render(<MonthPicker today={start} displayedDate={start} />);
-      const september = getByRole('gridcell', { name: 'September' });
+      const september = getByRole('gridcell', { name: /^September / });
       act(() => september.focus());
 
       rerender(<MonthPicker today={start} displayedDate={new Date(2025, 6, 31)} maxDate={new Date(2025, 6, 31)} />);
@@ -2096,10 +2139,10 @@ describe('Calendar month grid', () => {
       expect(september).toHaveFocus();
       expect(september).toHaveAttribute('aria-disabled', 'true');
       expect(september).toHaveAttribute('tabindex', '-1');
-      expect(getByRole('gridcell', { name: 'July' })).toHaveAttribute('tabindex', '0');
+      expect(getByRole('gridcell', { name: /^July / })).toHaveAttribute('tabindex', '0');
       expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
       fireEvent.keyDown(september, { key: 'End' });
-      expect(getByRole('gridcell', { name: 'July' })).toHaveFocus();
+      expect(getByRole('gridcell', { name: /^July / })).toHaveFocus();
     });
 
     it('swaps in the year grid from its heading', () => {
@@ -2111,14 +2154,14 @@ describe('Calendar month grid', () => {
       expect(container.textContent).toContain('2020 - 2031');
     });
 
-    it.each([2020, 2021])('exposes factual current and selected month state in %s without styling flags', year => {
+    it.each([2020, 2021])('marks the displayed period rather than today in %s', year => {
       const { getByRole, container } = render(
         <MonthPicker displayedDate={new Date(year, 8, 18)} value={new Date(2020, 2, 18)} />,
       );
 
-      expect(getByRole('gridcell', { name: 'September' }).hasAttribute('data-current')).toBe(year === 2020);
-      expect(getByRole('gridcell', { name: 'March' }).hasAttribute('data-selected')).toBe(year === 2020);
-      expect(container.querySelectorAll('[data-current]')).toHaveLength(year === 2020 ? 1 : 0);
+      expect(getByRole('gridcell', { name: /^September / })).toHaveAttribute('aria-current', 'true');
+      expect(getByRole('gridcell', { name: /^March / }).hasAttribute('data-selected')).toBe(year === 2020);
+      expect(container.querySelectorAll('[data-current]')).toHaveLength(1);
       expect(container.querySelectorAll('[data-selected]')).toHaveLength(year === 2020 ? 1 : 0);
     });
 
@@ -2149,7 +2192,7 @@ describe('Calendar month grid', () => {
           })}
         />,
       );
-      const september = getByRole('gridcell', { name: 'September' });
+      const september = getByRole('gridcell', { name: /^September / });
       expect(pickerRef.current).toHaveAttribute('data-view', 'month');
       expect(getCellProps).toHaveBeenCalledTimes(12);
       expect(cellRef.current).toBe(september);
@@ -2186,11 +2229,11 @@ describe('Calendar month grid', () => {
           renderRow={withRowProps(() => ({ root: { role: 'presentation' } }))}
         />,
       );
-      expect(getByRole('link', { name: 'August' })).toBeEnabled();
-      expect(getByRole('link', { name: 'August' })).toHaveAttribute('aria-disabled', 'false');
-      expect(getByRole('link', { name: 'September' })).toHaveAttribute('tabindex', '-1');
-      expect(getByRole('link', { name: 'September' })).toHaveAttribute('aria-selected', 'false');
-      expect(getByRole('link', { name: 'September' })).toHaveAttribute('data-selected', 'custom');
+      expect(getByRole('link', { name: /^August / })).toBeEnabled();
+      expect(getByRole('link', { name: /^August / })).toHaveAttribute('aria-disabled', 'false');
+      expect(getByRole('link', { name: /^September / })).toHaveAttribute('tabindex', '-1');
+      expect(getByRole('link', { name: /^September / })).toHaveAttribute('aria-selected', 'false');
+      expect(getByRole('link', { name: /^September / })).toHaveAttribute('data-selected', 'custom');
       expect(queryByRole('gridcell')).toBeNull();
       expect(container.querySelectorAll('[role="presentation"]')).toHaveLength(3);
       expect(queryByRole('row')).toBeNull();
@@ -2198,7 +2241,7 @@ describe('Calendar month grid', () => {
 
     it.each([undefined, null, ''])('preserves month content override semantics for %p', children => {
       const { getByRole } = render(<MonthPicker renderCell={withCellProps(() => ({ button: { children } }))} />);
-      expect(getByRole('gridcell', { name: 'September' }).textContent).toBe(children === undefined ? 'Sep' : '');
+      expect(getByRole('gridcell', { name: /^September / }).textContent).toBe(children === undefined ? 'Sep' : '');
     });
 
     it('moves focus into the year grid with a consumer panel ref', async () => {

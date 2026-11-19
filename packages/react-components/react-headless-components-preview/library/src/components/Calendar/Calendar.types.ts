@@ -87,7 +87,7 @@ export type CalendarMonthCellData = {
   index: number;
   label: string;
   isNavigated: boolean;
-  /** Whether this is the current month. */
+  /** Whether this is the displayed month. */
   isCurrent: boolean;
   isSelected: boolean;
   isInBounds: boolean;
@@ -100,7 +100,7 @@ export type CalendarYearCellData = {
   year: number;
   label: string;
   isNavigated: boolean;
-  /** Whether this is the current year. */
+  /** Whether this is the picker year. */
   isCurrent: boolean;
   isSelected: boolean;
   isInBounds: boolean;

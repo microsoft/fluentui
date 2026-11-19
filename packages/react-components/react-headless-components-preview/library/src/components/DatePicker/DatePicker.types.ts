@@ -36,10 +36,10 @@ export type DatePickerSlots = {
   displayValue: NonNullable<Slot<'span'>>;
 
   /**
-   * The trailing calendar icon. It is decorative inside the trigger. With `allowTextInput`, it is a button that toggles
-   * the calendar on click, Enter or Space without adding a tab stop. Provide the icon as its children.
+   * The trailing calendar button. It is the next tab stop in editable mode and otherwise has `tabIndex=-1`.
+   * Provide the icon as its children and use `aria-labelledby` to associate an "Open calendar" labeling Tooltip.
    */
-  icon?: Slot<'span'>;
+  icon?: Slot<'button'>;
 
   /**
    * Correction text for a rejected typed date. It is a polite live region rendered after the field and referenced by
@@ -162,6 +162,12 @@ type DatePickerOmittedNativeProps =
  */
 export type DatePickerBaseProps = {
   /**
+   * Locale shared by the default field formatter, parser and Calendar date labels.
+   * @default 'en-US'
+   */
+  locale?: string;
+
+  /**
    * Calendar configuration. Selection, boundaries and today are owned by DatePicker.
    */
   calendar?: NonNullable<Slot<DatePickerCalendarProps>>;
@@ -238,13 +244,14 @@ export type DatePickerBaseProps = {
 
   /**
    * Formats the committed date for display.
-   * @default English long date, such as "August 12, 2026"
+   * @default The locale's long date, such as "August 12, 2026"
    */
   formatDate?: (date: Date) => string;
 
   /**
    * Parses typed text into a local date, returning `null` when the text is not a valid date.
-   * The default accepts `YYYY-MM-DD`, an English month name followed by day and four-digit year, and `M/D/YYYY`.
+   * The default accepts `YYYY-MM-DD`, localized long, abbreviated and numeric dates, and English month names.
+   * Numeric dates must match the locale's order and separators; month punctuation and date suffixes are required.
    */
   parseDate?: (text: string) => Date | null;
 
