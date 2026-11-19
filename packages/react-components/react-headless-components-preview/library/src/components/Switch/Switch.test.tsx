@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Switch } from './Switch';
 
@@ -40,5 +40,57 @@ describe('Switch', () => {
     const root = container.firstElementChild!;
 
     expect(root).toHaveAttribute('data-checked');
+  });
+
+  it('renders data-checked when uncontrolled with defaultChecked', () => {
+    const { container } = render(<Switch defaultChecked label="x" />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-checked');
+  });
+
+  it('toggles data-checked when an uncontrolled switch is clicked', () => {
+    const { container, getByRole } = render(<Switch label="x" />);
+    const root = container.firstElementChild!;
+    const input = getByRole('switch');
+
+    expect(root).not.toHaveAttribute('data-checked');
+    fireEvent.click(input);
+    expect(root).toHaveAttribute('data-checked');
+    fireEvent.click(input);
+    expect(root).not.toHaveAttribute('data-checked');
+  });
+
+  it('keeps data-checked in sync with a controlled checked prop', () => {
+    const { container, getByRole, rerender } = render(<Switch checked={false} label="x" />);
+    const root = container.firstElementChild!;
+
+    fireEvent.click(getByRole('switch'));
+    expect(root).not.toHaveAttribute('data-checked');
+
+    rerender(<Switch checked label="x" />);
+    expect(root).toHaveAttribute('data-checked');
+  });
+
+  it('follows checked passed through the input slot', () => {
+    const { container } = render(<Switch input={{ checked: true, onChange: jest.fn() }} label="x" />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-checked');
+  });
+
+  it('lets the input slot checked override the checked prop', () => {
+    const { container, getByRole } = render(
+      <Switch checked input={{ checked: false, onChange: jest.fn() }} label="x" />,
+    );
+
+    expect(getByRole('switch')).not.toBeChecked();
+    expect(container.firstElementChild!).not.toHaveAttribute('data-checked');
+  });
+
+  it('calls onChange with the new checked value when uncontrolled', () => {
+    const onChange = jest.fn();
+    const { getByRole } = render(<Switch onChange={onChange} label="x" />);
+
+    fireEvent.click(getByRole('switch'));
+    expect(onChange).toHaveBeenCalledWith(expect.anything(), { checked: true });
   });
 });

@@ -1,7 +1,14 @@
 import type * as React from 'react';
 import type { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
-import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
+import type {
+  TableBaseProps,
+  TableBaseState,
+  TableContextValues,
+  TableProps,
+  TableSlots,
+  TableState,
+} from '../Table/Table.types';
 import type {
   SortState,
   TableFeaturesState,
@@ -16,14 +23,23 @@ export type DataGridSlots = TableSlots;
 
 export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
+/**
+ * Focus modes supported by `useDataGridBase_unstable`. The `composite` mode relies on Tabster and is only available on
+ * the styled DataGrid.
+ */
+export type DataGridBaseFocusMode = Exclude<DataGridFocusMode, 'composite'>;
+
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
 };
 
 // Use any here since we can't know the user types
 // The user is responsible for narrowing the type downstream
+/**
+ * DataGrid context value without the design state and the Tabster attributes.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type DataGridContextValue = TableFeaturesState<any> & {
+export type DataGridBaseContextValue = TableFeaturesState<any> & {
   /**
    * How focus navigation will work in the datagrid
    * @default cell
@@ -37,6 +53,13 @@ export type DataGridContextValue = TableFeaturesState<any> & {
   selectableRows: boolean;
 
   /**
+   * Enables column resizing
+   */
+  resizableColumns?: boolean;
+};
+
+export type DataGridContextValue = DataGridBaseContextValue & {
+  /**
    * Enables subtle selection style
    * @default false
    */
@@ -48,22 +71,23 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    */
   selectionAppearance: TableRowProps['appearance'];
 
-  /**
-   * Enables column resizing
-   */
-  resizableColumns?: boolean;
-
   compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
 /**
- * DataGrid Props
+ * DataGrid props that do not depend on the design or on Tabster.
  */
-export type DataGridProps = TableProps &
-  Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> &
-  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
+export type DataGridBaseProps = TableBaseProps &
+  Pick<DataGridBaseContextValue, 'items' | 'columns' | 'getRowId'> &
+  Pick<Partial<DataGridBaseContextValue>, 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+    /**
+     * How focus navigation will work in the datagrid
+     * @default cell
+     */
+    focusMode?: DataGridBaseFocusMode;
+
     /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
@@ -104,6 +128,38 @@ export type DataGridProps = TableProps &
       autoFitColumns?: boolean;
     };
   };
+
+/**
+ * State returned by `useDataGridBase_unstable`.
+ */
+export type DataGridBaseState = TableBaseState & { tableState: TableFeaturesState<unknown> } & Pick<
+    DataGridBaseContextValue,
+    'focusMode' | 'selectableRows' | 'getRowId' | 'resizableColumns'
+  >;
+
+/**
+ * DataGrid Props
+ */
+export type DataGridProps = TableProps &
+  Pick<
+    DataGridBaseProps,
+    | 'items'
+    | 'columns'
+    | 'getRowId'
+    | 'resizableColumns'
+    | 'sortState'
+    | 'defaultSortState'
+    | 'defaultSelectedItems'
+    | 'selectedItems'
+    | 'onSortChange'
+    | 'onSelectionChange'
+    | 'selectionMode'
+    | 'columnSizingOptions'
+    | 'onColumnResize'
+    | 'containerWidthOffset'
+    | 'resizableColumnsOptions'
+  > &
+  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'>;
 
 /**
  * State used in rendering DataGrid

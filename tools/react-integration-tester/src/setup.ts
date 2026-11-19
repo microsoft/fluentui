@@ -1,6 +1,6 @@
 /* eslint-disable dot-notation */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { execSync } from 'node:child_process';
 
 import * as ejs from 'ejs';
@@ -467,6 +467,7 @@ export async function setup(
       },
       cypress: {
         pathToProjectConfig: templatePrepared.configs['e2e'],
+        pathSeparator: sep,
       },
     },
   };

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING: rewrite headless Calendar as a single component with one roving-focus grid engine; remove CalendarDay, CalendarMonth, CalendarYear and CalendarProvider, replace getCellProps/getRowProps/getWeekdayCellProps with render functions, and reduce Calendar and DatePicker bundle size",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
