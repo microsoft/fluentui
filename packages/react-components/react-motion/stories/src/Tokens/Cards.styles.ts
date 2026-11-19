@@ -27,7 +27,8 @@ export const useClasses = makeStyles({
     padding: '30px',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-    gap: '30px 50px',
+    // Rows sit much further apart than a title sits from its own plot, so each title reads as part of the plot below it.
+    gap: '56px 50px',
     placeItems: 'center',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
@@ -60,13 +61,15 @@ export const useCardClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `
-        "view point"
-        "title ." auto / min-content var(--point-size)
+        "title ."
+        "view point" auto / min-content var(--point-size)
     `,
-    gap: '10px',
+    gap: '12px 10px',
 
     '--container-size': '250px',
     '--point-size': '20px',
+    '--axis-label-width': '12px',
+    '--axis-label-gap': '6px',
   },
   point: {
     gridArea: 'point',
@@ -87,9 +90,9 @@ export const useCardClasses = makeStyles({
     display: 'grid',
     gridTemplate: `
       "graphP svg"
-      ".      graphT" / min-content 1fr
+      ".      graphT" / var(--axis-label-width) 1fr
     `,
-    gap: '6px',
+    gap: 'var(--axis-label-gap)',
 
     '@media (forced-colors: active)': {
       backgroundColor: 'Canvas',
@@ -186,26 +189,25 @@ export const useCardClasses = makeStyles({
   },
   title: {
     gridArea: 'title',
-    justifySelf: 'center',
-    margin: '0 20px',
+    // Start the text at the plot's vertical axis, past the "p" axis label column.
+    paddingLeft: 'calc(var(--axis-label-width) + var(--axis-label-gap))',
 
     display: 'flex',
     flexDirection: 'column',
-    gap: '5px',
+    gap: '2px',
 
     fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase400,
-    padding: '5px 10px',
-    backgroundColor: tokens.colorNeutralBackground3,
-    borderRadius: tokens.borderRadiusMedium,
   },
   name: {
-    textAlign: 'center',
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground1,
   },
   value: {
     fontSize: tokens.fontSizeBase200,
-    fontStyle: 'italic',
+    lineHeight: tokens.lineHeightBase200,
     whiteSpace: 'nowrap',
-    textAlign: 'center',
+    color: tokens.colorNeutralForeground3,
   },
 });
