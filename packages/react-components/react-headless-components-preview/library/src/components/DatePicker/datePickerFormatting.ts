@@ -73,16 +73,22 @@ export const defaultParseDate = (text: string): Date | null => {
 
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-/**
- * Shares a Gregorian locale between Calendar labels, field formatting and strict date parsing.
- */
-export const createDatePickerFormat = (
-  locale: string,
-): {
+type DatePickerFormat = {
   dateTime: ReturnType<typeof createCalendarDateTimeFormatter>;
   formatDate: (date: Date) => string;
   parseDate: (text: string) => Date | null;
-} => {
+};
+
+const localeFormats = new Map<string, DatePickerFormat>();
+
+/**
+ * Shares a Gregorian locale between Calendar labels, field formatting and strict date parsing.
+ */
+export const createDatePickerFormat = (locale: string): DatePickerFormat => {
+  const cached = localeFormats.get(locale);
+  if (cached) {
+    return cached;
+  }
   const dateTime = createCalendarDateTimeFormatter(locale);
   const numberFormat = new Intl.NumberFormat(locale, { useGrouping: false });
   const digits = Array.from({ length: 10 }, (_, digit) => numberFormat.format(digit));
@@ -124,12 +130,12 @@ export const createDatePickerFormat = (
     return { regex: new RegExp(`^${pattern}$`, 'iu'), months, numeric: month === 'numeric' };
   });
 
-  return {
+  const localeFormat: DatePickerFormat = {
     dateTime,
     formatDate: (date: Date) => dateTime({ date, format: 'monthDayYear' }),
     parseDate: (text: string): Date | null => {
       const normalized = normalize(text.trim());
-      // ISO is unambiguous. Localized numeric order takes precedence over the English fallback.
+      // ISO is unambiguous. Other numeric dates must match the locale's ordering and separators.
       if (ISO_DATE.test(normalized)) {
         return defaultParseDate(normalized);
       }
@@ -147,7 +153,9 @@ export const createDatePickerFormat = (
           }
         }
       }
-      return defaultParseDate(normalized);
+      return NUMERIC_DATE.test(normalized) ? null : defaultParseDate(normalized);
     },
   };
+  localeFormats.set(locale, localeFormat);
+  return localeFormat;
 };

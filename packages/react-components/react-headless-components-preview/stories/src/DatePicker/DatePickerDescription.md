@@ -47,8 +47,12 @@ validation error sets `aria-invalid="true"`. The popup is a calendar dialog, not
 - Typed text is validated on Enter and when focus leaves the date picker. Moving between the field, icon and
   calendar does not validate it. `locale` (default `en-US`) is shared by field formatting, parsing and Calendar
   labels. The parser accepts localized long/short month dates and numeric date order, including localized digits,
-  plus `YYYY-MM-DD`, English month-first names and `M/D/YYYY`. Impossible dates such as February 30 are rejected.
+  plus `YYYY-MM-DD` and English month-first names. Numeric input must match the locale's order and separators:
+  `3/4/2026` means March 4 in `en-US`, April 3 in `en-GB`, and is rejected in `de-DE` (use `3.4.2026`).
+  Localized month punctuation and date suffixes are required, such as `19 nov. 2026` in French and the trailing
+  year suffix in Russian. Use `parseDate` to accept more permissive input. Impossible dates such as February 30 are rejected.
   `formatDate`, `parseDate` and `formatErrorMessage` support custom formats and localized correction messages.
+  Default Intl formatters and parsers are shared across instances with the same locale.
 - Rejected text restores the previous date and shows an error until an accepted date, a calendar selection, or
   clearing an optional field. Repeated blur does not re-announce it.
 

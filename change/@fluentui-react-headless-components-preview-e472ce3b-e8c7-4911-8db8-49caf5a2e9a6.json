@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "BREAKING CHANGE: rebuild headless Calendar as a single component; align DatePicker combobox semantics, native calendar button and locale support, independent Calendar picker-year browsing, current-period ARIA, unavailable-day inspection and staged Escape.",
+  "comment": "BREAKING CHANGE: rebuild Calendar; month/year isCurrent now tracks the displayed picker period, not today. Align DatePicker locale, accessibility and navigation.",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

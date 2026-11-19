@@ -250,7 +250,8 @@ export type DatePickerBaseProps = {
 
   /**
    * Parses typed text into a local date, returning `null` when the text is not a valid date.
-   * The default accepts `YYYY-MM-DD`, localized long, abbreviated and numeric dates, English month names and `M/D/YYYY`.
+   * The default accepts `YYYY-MM-DD`, localized long, abbreviated and numeric dates, and English month names.
+   * Numeric dates must match the locale's order and separators; month punctuation and date suffixes are required.
    */
   parseDate?: (text: string) => Date | null;
 

@@ -416,17 +416,17 @@ export const useDatePicker = (
     elementType: 'button',
   });
   if (icon) {
-    icon.tabIndex = allowTextInput && !disabled ? 0 : -1;
-    icon.disabled = disabled;
+    icon.disabled = disabled || icon.disabled;
+    icon.tabIndex = allowTextInput && !icon.disabled ? 0 : -1;
     icon['aria-controls'] = open ? surfaceId : undefined;
-    icon['aria-disabled'] = disabled || undefined;
+    icon['aria-disabled'] = icon.disabled || undefined;
     icon['aria-expanded'] = open;
     icon.onMouseDown = mergeCallbacks(icon.onMouseDown, event => {
       // Keep focus where it is, so pressing the icon neither validates pending text nor dismisses the calendar.
       event.preventDefault();
     });
     icon.onClick = mergeCallbacks(icon.onClick, event => {
-      if (!event.isDefaultPrevented() && !disabled) {
+      if (!event.isDefaultPrevented() && !icon.disabled) {
         requestOpen(event, !open, 'icon');
       }
     });

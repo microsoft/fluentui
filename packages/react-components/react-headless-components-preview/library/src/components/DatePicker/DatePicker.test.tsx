@@ -509,6 +509,18 @@ describe('DatePicker', () => {
       );
     });
 
+    it('preserves a consumer-disabled icon while leaving the editable field enabled', () => {
+      const { input, getByRole, queryByRole } = renderEditable({ icon: { disabled: true } });
+      const icon = getByRole('button', { name: 'Open calendar' });
+
+      expect(input).not.toBeDisabled();
+      expect(icon).toBeDisabled();
+      expect(icon).toHaveAttribute('tabindex', '-1');
+      expect(icon).toHaveAttribute('aria-disabled', 'true');
+      fireEvent.click(icon);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
     it('does not open from the icon keyboard while disabled', () => {
       const { getByTestId, queryByRole } = renderEditable({
         disabled: true,

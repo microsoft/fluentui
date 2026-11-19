@@ -672,6 +672,49 @@ describe('Calendar interaction sequences', () => {
     expect(fireEvent.keyDown(getByRole('button', { name: 'Custom action' }), { key: 'Enter' })).toBe(true);
   });
 
+  it('keeps formatter date metadata in sync with the browsed picker year', () => {
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        formatters={{
+          monthPickerHeaderLabel: ({ date, formattedDate }) => `${date.getFullYear()}: ${formattedDate}`,
+        }}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+
+    expect(getByRole('button', { name: '2021: 2021' })).toBeInTheDocument();
+    expect(getByRole('gridcell', { name: 'September 2021' })).toBeInTheDocument();
+    expect(getByRole('button', { name: dayLabel(today) })).toBeInTheDocument();
+  });
+
+  it.each([false, true])('restores a browsed picker year with Go to today (allFocusable=%s)', allFocusable => {
+    const { getByRole } = render(<Calendar today={today} allFocusable={allFocusable} />);
+    const button = getByRole('button', { name: 'Go to today' });
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+
+    expect(button).not.toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'false');
+    fireEvent.click(button);
+    expect(getByRole('gridcell', { name: 'September 2020' })).toBeInTheDocument();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('resets picker-year browsing after external navigation, including a return to the original date', () => {
+    const { getByRole, rerender } = render(<Calendar today={today} displayedDate={today} />);
+    fireEvent.click(getByRole('button', { name: 'Next year 2021' }));
+    expect(getByRole('gridcell', { name: 'September 2021' })).toBeInTheDocument();
+
+    rerender(<Calendar today={today} displayedDate={new Date(2022, 8, 18)} />);
+    expect(getByRole('gridcell', { name: 'September 2022' })).toBeInTheDocument();
+
+    rerender(<Calendar today={today} displayedDate={today} />);
+    expect(getByRole('gridcell', { name: 'September 2020' })).toBeInTheDocument();
+  });
+
   it('keeps an unavailable go-to-today action focusable but inactive with allFocusable', () => {
     const onDisplayedDateChange = jest.fn();
     const onViewChange = jest.fn();

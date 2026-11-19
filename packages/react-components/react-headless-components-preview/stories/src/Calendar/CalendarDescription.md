@@ -11,6 +11,8 @@ Calendar is unstyled. Use cell data attributes to style date state:
 | `data-marked`         | `getMarkedDays` marked the day                     |
 
 Month and year cells expose `data-selected`, `data-outside-bounds` and `data-current`.
+**Breaking change:** month/year cell `isCurrent` no longer identifies today's month/year. It identifies the
+displayed month or browsed picker year; custom renderers should not use it as a today indicator.
 `data-current` and `aria-current="true"` identify the displayed picker period, not the actual current date.
 Month cells have full month-and-year accessible names; day cells reserve `aria-current="date"` for today.
 Day cells also expose `data-range-hovered` and `data-range-pressed`. Highlighting, range corners

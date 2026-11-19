@@ -211,11 +211,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const showDayPanel = hasDayPanel && (!isOverlay || view === 'day');
   const showMonthPanel = hasMonthPanel && (!isOverlay || view !== 'day');
   const monthPanelView: CalendarView = view === 'year' && !yearPickerHidden ? 'year' : 'month';
-  const [pickerYear, setPickerYear] = React.useState(navigatedYear);
-  const [previousNavigatedTime, setPreviousNavigatedTime] = React.useState(navigatedTime);
-  if (previousNavigatedTime !== navigatedTime) {
-    setPreviousNavigatedTime(navigatedTime);
-    setPickerYear(navigatedYear);
+  const [pickerNavigation, setPickerNavigation] = React.useState({ time: navigatedTime, year: navigatedYear });
+  const pickerYear = pickerNavigation.time === navigatedTime ? pickerNavigation.year : navigatedYear;
+  const setPickerYear = (year: number) => setPickerNavigation({ time: navigatedTime, year });
+  // Reset only when the displayed date changes, before children receive a stale picker year.
+  if (pickerNavigation.time !== navigatedTime) {
+    setPickerNavigation({ time: navigatedTime, year: navigatedYear });
   }
   const pickerDate = addYears(navigatedDate, pickerYear - navigatedYear);
 
@@ -862,7 +863,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
                 : formatters.dayPickerHeaderLabel)({ date: navigatedDate, formattedDate: monthYear })
             : isYear
             ? formatters.yearRangePickerHeaderLabel({ fromYear, toYear, formattedRange: headingText })
-            : formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })
+            : formatters.monthPickerHeaderLabel({ date: pickerDate, formattedDate: yearString })
           : undefined,
         type: headingView ? 'button' : undefined,
       },
@@ -994,6 +995,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const resolvedToday = clamp(today);
   const goToTodayEnabled =
     navigatedYear !== resolvedToday.getFullYear() ||
+    (hasMonthPanel && pickerYear !== resolvedToday.getFullYear()) ||
     navigatedDate.getMonth() !== resolvedToday.getMonth() ||
     (weeksToShow !== undefined && weeksToShow <= 5 && compareDatePart(navigatedDate, resolvedToday) !== 0);
   const goToTodaySlot = slot.optional(goToTodayButton, {
@@ -1009,6 +1011,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   if (goToTodaySlot) {
     goToTodaySlot.onClick = mergeCallbacks(goToTodaySlot.onClick, event => {
       if (!event.isDefaultPrevented() && goToTodayEnabled) {
+        setPickerYear(resolvedToday.getFullYear());
         navigate(event, resolvedToday, 'first');
         if (isOverlay && view !== 'day') {
           changeView(event, 'day', 'first');
