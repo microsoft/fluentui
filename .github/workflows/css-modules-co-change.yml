@@ -1,0 +1,32 @@
+name: CSS Modules co-change
+on:
+  pull_request:
+    # re-run when the opt-out label is added or removed
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    paths:
+      - 'packages/react-components/**/library/src/**/*.styles.ts'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: "${{ github.repository_owner == 'microsoft' && !contains(github.event.pull_request.labels.*.name, 'CSS Modules: no change needed') }}"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '22'
+
+      - name: Griffel style hooks change together with their CSS Modules version
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: node scripts/github/src/css-modules-co-change.js "origin/$BASE_REF"
