@@ -219,13 +219,19 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const focusWithin = React.useRef(false);
   // The view of the panel that holds focus, and whether focus is in its grid.
   const focused = React.useRef<{ view: CalendarView; inGrid: boolean } | undefined>(undefined);
-  const pagingDate = React.useRef<Date | undefined>(undefined);
+  // The day a grid pages from, kept only for the keydown that set it.
+  const pagingDate = React.useRef<{ event: Event; date: Date } | undefined>(undefined);
   // Refs are written only from event handlers, through these stable callbacks.
-  const requestFocus = useEventCallback((focus: FocusRequest | undefined) => {
-    focusRequest.current = focus;
+  const setPagingDate = useEventCallback((event: React.KeyboardEvent, date: Date | undefined) => {
+    pagingDate.current = date && { event: event.nativeEvent, date };
   });
-  const setPagingDate = useEventCallback((date: Date | undefined) => {
-    pagingDate.current = date;
+  // Runs a change callback, then requests focus unless the callback moved focus out of the calendar.
+  const notifyChange = useEventCallback((notify: () => void, focus: FocusRequest | undefined) => {
+    const hadFocus = focusWithin.current;
+    notify();
+    const exited = hadFocus && !focusWithin.current;
+    focusRequest.current = exited ? undefined : focus;
+    return !exited;
   });
   const renderedViews = `${showDayPanel ? 'day' : ''} ${showMonthPanel ? monthPanelView : ''}`;
 
@@ -283,21 +289,23 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   const navigate = (event: React.SyntheticEvent | Event, date: Date, focus?: FocusRequest) => {
     const displayed = clamp(date);
     setDisplayed(displayed);
-    onDisplayedDateChange?.(event, {
-      event: event as CalendarEvent,
-      type: eventType(event),
-      displayedDate: displayed,
-    });
-    requestFocus(focus);
+    return notifyChange(
+      () =>
+        onDisplayedDateChange?.(event, {
+          event: event as CalendarEvent,
+          type: eventType(event),
+          displayedDate: displayed,
+        }),
+      focus,
+    );
   };
 
-  const changeView = (event: CalendarEvent, nextView: CalendarView, focus: FocusRequest) => {
+  const changeView = (event: CalendarEvent, nextView: CalendarView, focus?: FocusRequest) => {
     if (nextView === 'year') {
       setYearRange({ anchor: navigatedYear, from: navigatedYear });
     }
     setView(nextView);
-    onViewChange?.(event, { event, type: eventType(event), view: nextView });
-    requestFocus(focus);
+    notifyChange(() => onViewChange?.(event, { event, type: eventType(event), view: nextView }), focus);
   };
 
   const selectDate = (event: CalendarEvent, date: Date, rangeType = dateRangeType, days = daysToSelectInDayView) => {
@@ -742,7 +750,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       const index = cells.indexOf(cell);
       if (event.key === PageUp || event.key === PageDown) {
         // Calendar pages from the focused day.
-        setPagingDate(cell.type === 'day' ? cell.originalDate! : undefined);
+        setPagingDate(event, cell.type === 'day' ? cell.originalDate! : undefined);
       } else if ((event.key === Enter || event.key === Space) && cell.isInBounds) {
         activateCell(event, cell);
         if (!event.isDefaultPrevented()) {
@@ -987,9 +995,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
   if (goToTodaySlot) {
     goToTodaySlot.onClick = mergeCallbacks(goToTodaySlot.onClick, event => {
       if (!event.isDefaultPrevented() && goToTodayEnabled) {
-        navigate(event, resolvedToday, 'first');
+        const keepsFocus = navigate(event, resolvedToday, 'first');
         if (isOverlay && view !== 'day') {
-          changeView(event, 'day', 'first');
+          changeView(event, 'day', keepsFocus ? 'first' : undefined);
         }
       }
     });
@@ -999,8 +1007,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
   const mergedRootRef = useMergedRefs(ref, rootRef);
   const onRootKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    const date = pagingDate.current ?? navigatedDate;
+    const paging = pagingDate.current;
     pagingDate.current = undefined;
+    const date = paging?.event === event.nativeEvent ? paging.date : navigatedDate;
     rootProps.onKeyDown?.(event);
     if (event.isDefaultPrevented()) {
       return;

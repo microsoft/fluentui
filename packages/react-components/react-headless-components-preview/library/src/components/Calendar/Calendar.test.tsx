@@ -587,6 +587,35 @@ describe('Calendar interaction sequences', () => {
     expect(focusedDay).toHaveFocus();
   });
 
+  it('does not page from a focused day whose PageDown never reached the root', () => {
+    const onDisplayedDateChange = jest.fn();
+    const { getByRole, getByTitle } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        dayPicker={{
+          // A grid-level handler that keeps day-cell PageDown from reaching the root.
+          onKeyDown: (event: React.KeyboardEvent) => {
+            if (event.key === 'PageDown' && (event.target as HTMLElement).closest('td')) {
+              event.stopPropagation();
+            }
+          },
+        }}
+        onDisplayedDateChange={onDisplayedDateChange}
+      />,
+    );
+    const focusedDay = getByRole('button', { name: 'September 25, 2020' }).closest('td')!;
+    act(() => focusedDay.focus());
+    fireEvent.keyDown(focusedDay, { key: 'PageDown' });
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+
+    fireEvent.click(getByTitle('Next month October'));
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 18));
+
+    fireEvent.keyDown(getByTitle('Next month November'), { key: 'PageDown' });
+    expect(onDisplayedDateChange.mock.calls[1][1].displayedDate).toEqual(new Date(2020, 10, 18));
+  });
+
   it.each([false, true])('only owns Escape when onDismiss is provided: %s', ownsDismissal => {
     const onDismiss = jest.fn();
     const onParentKeyDown = jest.fn();
@@ -842,6 +871,22 @@ describe('Calendar interaction sequences', () => {
       act(() => jest.advanceTimersToNextFrame());
 
       expect(outsideRef.current).toHaveFocus();
+    });
+
+    it('keeps focus on the page when a navigation callback blurs the newly focused cell', () => {
+      const onDisplayedDateChange = jest.fn(() => (document.activeElement as HTMLElement).blur());
+      const { getByRole } = render(
+        <Calendar defaultValue={today} today={today} onDisplayedDateChange={onDisplayedDateChange} />,
+      );
+      const day = getByRole('button', { name: 'September 30, 2020' }).closest('td')!;
+      act(() => day.focus());
+      fireEvent.keyDown(day, { key: 'ArrowRight' });
+      expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+      expect(document.body).toHaveFocus();
+
+      act(() => jest.advanceTimersToNextFrame());
+
+      expect(document.body).toHaveFocus();
     });
 
     it.each(['day', 'month'] as const)('does not reclaim outside focus when controlled view hides %s', view => {
