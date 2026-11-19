@@ -24,11 +24,11 @@ export const useClasses = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: 0,
-    padding: '30px',
+    padding: '26px',
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(181px, 1fr))',
     // Rows sit much further apart than a title sits from its own plot, so each title reads as part of the plot below it.
-    gap: '56px 50px',
+    gap: '32px 20px',
     placeItems: 'center',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
@@ -61,13 +61,13 @@ export const useCardClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `
-        "title ."
+        "title title"
         "view point" auto / min-content var(--point-size)
     `,
-    gap: '12px 10px',
+    gap: '8px 6px',
 
-    '--container-size': '250px',
-    '--point-size': '20px',
+    '--container-size': '141px',
+    '--point-size': '12px',
     '--axis-label-width': tokens.lineHeightBase200,
     '--axis-label-gap': '6px',
   },
@@ -201,12 +201,14 @@ export const useCardClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '2px',
+    // Long values are wider than the plot; keep them from widening the card and pushing the marker away.
+    contain: 'inline-size',
 
     fontFamily: tokens.fontFamilyMonospace,
   },
   name: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground1,
   },
