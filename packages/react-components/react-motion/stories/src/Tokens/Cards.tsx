@@ -104,8 +104,10 @@ const MotionCurveCard: React.FC<{
   );
 };
 
+const MAX_DURATION = Math.max(...Object.values(durations));
+
 // At least 1500 ms, and never shorter than the slowest token, so every trip fits inside its interval.
-const DURATION_INTERVAL = Math.max(1500, ...Object.values(durations));
+const DURATION_INTERVAL = Math.max(1500, MAX_DURATION);
 
 /**
  * Compares duration tokens by sliding a vertical line back and forth with linear easing.
@@ -147,17 +149,25 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
   }, [animationEnabled]);
 
   return (
-    <tr>
-      <th scope="row">{tokenName}</th>
-      <td>{tokenValue}ms</td>
-      <td>
+    <div role="row">
+      <div role="rowheader">{tokenName}</div>
+      <div role="cell">
+        <div className={classes.durationValue}>
+          <span>{tokenValue}ms</span>
+          <span
+            className={classes.durationBar}
+            style={{ '--duration-fraction': tokenValue / MAX_DURATION } as React.CSSProperties}
+          />
+        </div>
+      </div>
+      <div role="cell">
         <div className={classes.view}>
           <DurationPreview imperativeRef={motionRef} duration={tokenValue}>
             <div className={classes.duration} />
           </DurationPreview>
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 
@@ -223,15 +233,16 @@ export const MotionDuration = (): JSXElement => {
         <Switch label="Play previews" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.durationTableContainer}>
-        <table className={classes.durationTable} aria-label="Motion duration tokens">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Duration</th>
-              <th scope="col">Animation</th>
-            </tr>
-          </thead>
-          <tbody>
+        {/* ARIA table roles keep table semantics without inheriting Storybook's Markdown table styles. */}
+        <div role="table" className={classes.durationTable} aria-label="Motion duration tokens">
+          <div role="rowgroup">
+            <div role="row">
+              <div role="columnheader">Name</div>
+              <div role="columnheader">Duration</div>
+              <div role="columnheader">Animation</div>
+            </div>
+          </div>
+          <div role="rowgroup">
             {Object.entries(durations).map(([tokenName, tokenValue]) => (
               <MotionDurationCard
                 animationEnabled={animationEnabled}
@@ -240,8 +251,8 @@ export const MotionDuration = (): JSXElement => {
                 tokenValue={tokenValue}
               />
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   );

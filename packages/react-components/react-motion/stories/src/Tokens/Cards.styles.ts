@@ -40,19 +40,34 @@ export const useClasses = makeStyles({
     borderTopRightRadius: 0,
   },
   durationTable: {
-    width: '100%',
-    borderCollapse: 'collapse',
+    display: 'grid',
+    gridTemplateColumns: 'max-content max-content 1fr',
+    minWidth: 'max-content',
     fontFamily: tokens.fontFamilyMonospace,
     fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
 
-    '& th, & td': {
-      padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-      textAlign: 'left',
-      whiteSpace: 'nowrap',
-      borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    '& [role="rowgroup"], & [role="row"]': {
+      display: 'grid',
+      gridTemplateColumns: 'subgrid',
+      gridColumn: '1 / -1',
     },
-    '& tbody th': {
-      fontWeight: tokens.fontWeightRegular,
+    '& [role="columnheader"], & [role="rowheader"], & [role="cell"]': {
+      display: 'flex',
+      alignItems: 'center',
+      padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalL}`,
+      whiteSpace: 'nowrap',
+      borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+    },
+    '& [role="columnheader"]': {
+      fontFamily: tokens.fontFamilyBase,
+      fontSize: tokens.fontSizeBase200,
+      fontWeight: tokens.fontWeightSemibold,
+      color: tokens.colorNeutralForeground2,
+      borderBottomColor: tokens.colorNeutralStroke1,
+    },
+    '& [role="rowgroup"] > [role="row"]:last-child:not(:only-child) > *': {
+      borderBottom: 'none',
     },
   },
 });
@@ -181,6 +196,29 @@ export const useCardClasses = makeStyles({
   duration: {
     width: tokens.strokeWidthThicker,
     height: '100%',
+    backgroundColor: tokens.colorBrandBackground,
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'LinkText',
+    },
+  },
+
+  durationValue: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: tokens.spacingHorizontalM,
+
+    '& > :first-child': {
+      minWidth: '5ch',
+      textAlign: 'end',
+    },
+  },
+  // Static bar whose length is proportional to the duration, readable while previews are paused.
+  durationBar: {
+    '--duration-bar-max': '96px',
+    width: 'calc(var(--duration-bar-max) * var(--duration-fraction))',
+    height: tokens.spacingVerticalS,
+    borderRadius: tokens.borderRadiusSmall,
     backgroundColor: tokens.colorNeutralForeground3,
 
     '@media (forced-colors: active)': {
@@ -190,8 +228,28 @@ export const useCardClasses = makeStyles({
 
   view: {
     '--duration-track-size': '128px',
+    position: 'relative',
     width: 'var(--duration-track-size)',
     height: tokens.spacingVerticalXXL,
+    // Short stops at each end of the track, joined by a centred rail.
+    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+
+    '::before': {
+      content: '""',
+      position: 'absolute',
+      insetInline: 0,
+      top: '50%',
+      borderTop: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+    },
+
+    '@media (forced-colors: active)': {
+      borderLeftColor: 'GrayText',
+      borderRightColor: 'GrayText',
+      '::before': {
+        borderTopColor: 'GrayText',
+      },
+    },
   },
   title: {
     gridArea: 'title',
