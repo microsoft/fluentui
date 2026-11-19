@@ -36,7 +36,6 @@ import type {
   MenuState,
 } from './Menu.types';
 import { MenuSurfaceMotion } from './MenuSurfaceMotion';
-import { useMenuViewport } from './useMenuViewport';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -204,10 +203,6 @@ export const useMenuBase_unstable = (
     openOnContext,
   });
 
-  const parentMenuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
-  const viewportRef = useMenuViewport(open, triggerRef, parentMenuPopoverRef);
-  const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, viewportRef);
-
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
     checkedValues: props.checkedValues,
     defaultCheckedValues,
@@ -229,7 +224,7 @@ export const useMenuBase_unstable = (
     menuPopover,
     mountNode,
     triggerRef,
-    menuPopoverRef: mergedMenuPopoverRef,
+    menuPopoverRef,
     openOnContext,
     open,
     setOpen,

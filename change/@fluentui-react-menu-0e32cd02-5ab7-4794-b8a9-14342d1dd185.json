@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: reveal focused menu items and submenu invokers with native scrolling",
-  "packageName": "@fluentui/react-menu",
-  "email": "paulmardling@microsoft.com"
-}

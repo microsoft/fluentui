@@ -11,11 +11,3 @@
 Headless components expose resolved interaction and structural state through `data-*` attributes. Consumers that wrap these components, including visual-system packages, must preserve the attributes on the slot where headless emits them.
 
 Existing attributes retain their current names and value semantics. Visual axes such as appearance, size, and shape are intentionally not part of the headless contract.
-
-## Scrollable menus
-
-Consumers own MenuPopover sizing and scrolling styles. Headless uses `scrollIntoView()` to reveal
-focused items and ancestor submenu invokers after viewport or scrollport changes, without moving focus.
-Sizing and positioning must keep the menu surface within the viewport: native scrolling does not
-correct an offscreen surface. Browsers without support for `container: 'nearest'` may also scroll
-enclosing containers.
