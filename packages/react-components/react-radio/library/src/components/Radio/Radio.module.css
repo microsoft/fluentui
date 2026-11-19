@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root, .input, .indicator */
 .root:focus {
   outline-style: none;
 }

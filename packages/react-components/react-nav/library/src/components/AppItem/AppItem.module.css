@@ -1,4 +1,3 @@
-/* @griffel-buckets logical: margin-inline-start, margin-inline-end, padding-inline-start */
 .root {
   margin-inline-start: calc(-1 * var(--spacingHorizontalSNudge));
   margin-inline-end: 0;

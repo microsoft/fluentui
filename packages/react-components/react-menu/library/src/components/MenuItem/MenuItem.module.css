@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root, .content, .secondaryContent, .icon, .submenuIndicator, .subText */
 @import url('@fluentui/react-icons/headless/styles.css') layer(fluent);
 
 .root {

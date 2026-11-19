@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root */
 .root:where(.rounded) {
   font-family: inherit;
   padding: 0px;

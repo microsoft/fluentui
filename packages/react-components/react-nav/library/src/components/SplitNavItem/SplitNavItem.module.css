@@ -1,4 +1,3 @@
-/* @griffel-buckets logical: padding-inline-end, padding-inline-start, padding-block-start */
 .root {
   display: flex;
   gap: unset;

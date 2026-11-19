@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .input, .indicator */
 .root {
   position: relative;
   &:focus {

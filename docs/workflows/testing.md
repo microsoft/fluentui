@@ -11,6 +11,9 @@
 | Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
 
+Component stylesheets (`*.module.css`) are linted with Stylelint as part of each v9 package's `lint` target (selector
+specificity, logical properties, design tokens); see [tools/stylelint-rules](../../tools/stylelint-rules/README.md).
+
 ## V9 Icon Regression Coverage
 
 The v9 VRT project shares SVG/font icon examples between StoryWright screenshot

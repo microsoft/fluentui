@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root */
 .root {
   padding: var(--strokeWidthThick);
   margin: calc(var(--strokeWidthThick) * -1);

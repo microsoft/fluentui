@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root */
 @import url('@fluentui/react-icons/headless/styles.css') layer(fluent);
 
 .root:where(.rounded) {

@@ -1,4 +1,3 @@
-/* @griffel-buckets reset: .root */
 .root {
   padding-top: var(--spacingVerticalL);
   grid-column: 2 / 3;

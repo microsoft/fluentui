@@ -1,4 +1,3 @@
-/* @griffel-buckets logical: margin-inline-start, margin-block */
 .root {
   margin-inline-start: var(--spacingHorizontalMNudge);
   margin-block: var(--spacingVerticalS);

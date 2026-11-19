@@ -1,4 +1,3 @@
-/* @griffel-buckets logical: padding-inline-start, margin-inline-start */
 .root {
   padding-inline-start: calc(
     var(--spacingHorizontalXXXL) + var(--spacingHorizontalMNudge) + var(--spacingHorizontalXS)
