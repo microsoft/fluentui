@@ -28,10 +28,20 @@ function getPointsFromEasing(value: string) {
   throw new Error('Only cubic-bezier() easing is supported');
 }
 
+/** Formats a cubic-bezier() easing as its four comma-separated numbers. */
+function getEasingParameters(value: string) {
+  return value
+    .slice(value.indexOf('(') + 1, -1)
+    .split(',')
+    .map(v => v.trim())
+    .join(', ');
+}
+
 const CurvePreview = createMotionComponent<{ easing: string }>(({ easing }) => {
-  // Subtract half the marker height to center it on each plot endpoint.
-  const markerAtBottom = 'translateY(calc(var(--container-size) - var(--point-size) / 2))';
-  const markerAtTop = 'translateY(calc(var(--point-size) / -2))';
+  // The marker box is as tall as the plot and draws its tick at its bottom edge,
+  // so translating by its own height moves the tick from progress 0 to progress 1.
+  const markerAtBottom = 'translateY(0)';
+  const markerAtTop = 'translateY(-100%)';
 
   return {
     keyframes: [
@@ -68,10 +78,10 @@ const MotionCurveCard: React.FC<{
     <div className={classes.container}>
       <div className={classes.title}>
         <div className={classes.name}>{tokenName}</div>
-        <div className={classes.value}>{tokenValue}</div>
+        <div className={classes.value}>{getEasingParameters(tokenValue)}</div>
       </div>
 
-      <div className={classes.graph} role="presentation">
+      <div className={classes.plot}>
         <svg className={classes.svg} viewBox="0 0 100 100" aria-hidden="true">
           <line className={classes.referenceLine} x1="0" y1="100" x2="100" y2="0" />
           <line className={classes.referenceLine} x1="50" y1="0" x2="50" y2="100" />
@@ -93,13 +103,10 @@ const MotionCurveCard: React.FC<{
           <circle className={classes.endpoint} cx="0" cy="100" r="1.2" />
           <circle className={classes.endpoint} cx="100" cy="0" r="1.2" />
         </svg>
-
-        <div className={classes.graphP}>progress</div>
-        <div className={classes.graphT}>time</div>
+        <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
+          <div className={classes.marker} />
+        </CurvePreview>
       </div>
-      <CurvePreview imperativeRef={motionRef} easing={tokenValue}>
-        <div className={classes.point} />
-      </CurvePreview>
     </div>
   );
 };
@@ -198,9 +205,15 @@ export const MotionCurves = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
-        <Switch label="Show control points" checked={controlPointsVisible} onChange={handleControlPointsChange} />
-        <Switch label="Play previews" checked={animationEnabled} onChange={handleChange} />
+      <div className={classes.header}>
+        <div className={classes.legend}>
+          <span>Plots: progress (↑) over time (→)</span>
+          <span>Values: cubic-bezier(x1, y1, x2, y2)</span>
+        </div>
+        <div className={classes.controls}>
+          <Switch label="Show control points" checked={controlPointsVisible} onChange={handleControlPointsChange} />
+          <Switch label="Play previews" checked={animationEnabled} onChange={handleChange} />
+        </div>
       </div>
       <div className={classes.card}>
         {Object.entries(curves)

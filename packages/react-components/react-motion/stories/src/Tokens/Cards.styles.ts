@@ -7,7 +7,25 @@ export const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  header: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    columnGap: tokens.spacingHorizontalL,
+  },
+  legend: {
+    // Let the key wrap its own text before it pushes the controls onto another line.
+    flex: '1 1 12em',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBlock: tokens.spacingVerticalS,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralForeground3,
+  },
   controls: {
+    marginLeft: 'auto',
     display: 'flex',
     flexWrap: 'wrap',
     alignSelf: 'end',
@@ -26,7 +44,7 @@ export const useClasses = makeStyles({
     borderTopRightRadius: 0,
     padding: tokens.spacingHorizontalM,
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(205px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
     gap: tokens.spacingHorizontalS,
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
@@ -72,81 +90,61 @@ export const useClasses = makeStyles({
 
 export const useCardClasses = makeStyles({
   container: {
-    display: 'grid',
-    gridTemplate: `
-        "title title"
-        "view point" auto / min-content var(--point-size)
-    `,
-    gap: '8px 6px',
-    justifyContent: 'center',
-    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalM}`,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalL,
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalXXL}`,
     backgroundColor: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusLarge,
     boxShadow: tokens.shadow4,
     // Forced colors removes the background, and paints the transparent border so tiles stay separate.
     border: `${tokens.strokeWidthThin} solid transparent`,
-
-    '--container-size': '141px',
-    '--point-size': '12px',
-    '--axis-label-width': tokens.lineHeightBase200,
-    '--axis-label-gap': '6px',
   },
-  point: {
-    gridArea: 'point',
+  marker: {
+    '--tick-length': '12px',
+    '--tick-thickness': '3px',
+    position: 'absolute',
+    top: 0,
+    // Sit fully outside the plot square, starting at its right edge.
+    right: 'calc(var(--tick-length) * -1)',
+    width: 'var(--tick-length)',
+    height: '100%',
+    pointerEvents: 'none',
 
-    width: 'var(--point-size)',
-    height: 'var(--point-size)',
-
-    backgroundColor: tokens.colorBrandBackground,
-    clipPath: 'polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%)',
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      insetInline: 0,
+      bottom: 'calc(var(--tick-thickness) / -2)',
+      height: 'var(--tick-thickness)',
+      borderRadius: tokens.borderRadiusSmall,
+      backgroundColor: tokens.colorBrandBackground,
+    },
 
     '@media (forced-colors: active)': {
-      backgroundColor: 'LinkText',
+      '::after': {
+        backgroundColor: 'LinkText',
+      },
     },
   },
-
-  graph: {
-    gridArea: 'view',
-    display: 'grid',
-    gridTemplate: `
-      "graphP svg"
-      ".      graphT" / var(--axis-label-width) 1fr
-    `,
-    gap: 'var(--axis-label-gap)',
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Canvas',
-    },
-  },
-  graphP: {
-    gridArea: 'graphP',
-    alignSelf: 'center',
-    // Vertical text reads bottom to top, along the direction progress grows.
-    writingMode: 'vertical-rl',
-    transform: 'rotate(180deg)',
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    color: tokens.colorNeutralForeground3,
-  },
-  graphT: {
-    gridArea: 'graphT',
-    justifySelf: 'center',
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    color: tokens.colorNeutralForeground3,
+  plot: {
+    position: 'relative',
   },
   svg: {
-    gridArea: 'svg',
-    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
-
+    display: 'block',
+    width: '100%',
+    height: 'auto',
+    aspectRatio: '1',
     overflow: 'visible',
+    // The filled square marks the 0 to 1 range of both time and progress.
+    backgroundColor: tokens.colorNeutralBackground3,
 
-    height: 'var(--container-size)',
-    width: 'var(--container-size)',
+    '@media (forced-colors: active)': {
+      outline: `${tokens.strokeWidthThin} solid CanvasText`,
+    },
   },
   referenceLine: {
-    stroke: tokens.colorNeutralStroke2,
+    stroke: tokens.colorNeutralStroke1,
     strokeWidth: tokens.strokeWidthThin,
     vectorEffect: 'non-scaling-stroke',
 
@@ -180,7 +178,7 @@ export const useCardClasses = makeStyles({
     },
   },
   controlPoint: {
-    fill: tokens.colorNeutralBackground1,
+    fill: tokens.colorNeutralBackground3,
     stroke: tokens.colorBrandForeground1,
     strokeWidth: tokens.strokeWidthThick,
     vectorEffect: 'non-scaling-stroke',
@@ -257,15 +255,10 @@ export const useCardClasses = makeStyles({
     },
   },
   title: {
-    gridArea: 'title',
-    // Start the text at the plot's vertical axis, past the "progress" axis label column.
-    paddingLeft: 'calc(var(--axis-label-width) + var(--axis-label-gap))',
-
     display: 'flex',
     flexDirection: 'column',
     gap: '2px',
-    // Long values are wider than the plot; keep them from widening the card and pushing the marker away.
-    contain: 'inline-size',
+    overflowWrap: 'anywhere',
 
     fontFamily: tokens.fontFamilyMonospace,
   },
