@@ -246,6 +246,33 @@ describe('TextField basic props', () => {
     userEvent.click(reveal);
     expect(input.type).toEqual('password');
   });
+  it('renders reveal password button in Edge (Edg UA)', () => {
+    const originalUAProp = Object.getOwnPropertyDescriptor(window.navigator, 'userAgent');
+    Object.defineProperty(window.navigator, 'userAgent', {
+      value:
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+        'Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0',
+      configurable: true,
+    });
+    // Reuse the already-loaded React inside the isolated module registry so hooks in the
+    // freshly-loaded component tree use the same dispatcher as the outer `render`
+    jest.doMock('react', () => React);
+    try {
+      jest.isolateModules(() => {
+        // Fresh module instance so the cached __browserNeedsRevealButton is recomputed
+        const { TextField: IsolatedTextField } = require('./TextField');
+        const { container } = render(<IsolatedTextField type="password" canRevealPassword />);
+        expect(container.querySelectorAll('.ms-TextField-reveal')).toHaveLength(1);
+      });
+    } finally {
+      jest.dontMock('react');
+      if (originalUAProp) {
+        Object.defineProperty(window.navigator, 'userAgent', originalUAProp);
+      } else {
+        delete (window.navigator as any).userAgent;
+      }
+    }
+  });
   it('should not give an aria-labelledby if no label is provided', () => {
     const { getByRole } = render(<TextField />);
     const input = getByRole('textbox') as HTMLInputElement;
