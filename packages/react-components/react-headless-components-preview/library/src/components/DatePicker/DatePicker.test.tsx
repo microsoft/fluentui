@@ -52,14 +52,26 @@ describe('DatePicker', () => {
     fireEvent.click(getByRole('button', { name: 'August 2026, change year' }));
     fireEvent.keyDown(getByRole('gridcell', { name: '2026' }), { key: 'Escape' });
     expect(getDialog()).toBeInTheDocument();
-    const heading =
-      layout === 'overlay'
-        ? getByRole('button', { name: 'August 2026, change year' })
-        : getByRole('button', { name: '2026, change year' });
-    await waitFor(() => expect(heading).toHaveFocus());
+    // Escape steps back one level: from the year grid to the month choices first.
+    const monthHeading = getByRole('button', { name: '2026, change year' });
+    await waitFor(() => expect(monthHeading).toHaveFocus());
+    let heading = monthHeading;
+    if (layout === 'overlay') {
+      fireEvent.keyDown(monthHeading, { key: 'Escape' });
+      expect(getDialog()).toBeInTheDocument();
+      heading = getByRole('button', { name: 'August 2026, change year' });
+      await waitFor(() => expect(heading).toHaveFocus());
+    }
     fireEvent.keyDown(heading, { key: 'Escape' });
     expect(queryByRole('dialog')).not.toBeInTheDocument();
     expect(getByRole('combobox')).toHaveFocus();
+  });
+
+  it('shows the month of a controlled value that changes while the calendar is open', () => {
+    const { getDialog, rerender } = renderDatePicker({ defaultOpen: true, value: today });
+    rerender(<DatePicker aria-label="Due date" today={today} defaultOpen value={new Date(2026, 10, 24)} />);
+    expect(getDialog()).toHaveAttribute('aria-label', 'November 2026');
+    expect(getDayCell(getDialog(), 'November 24, 2026')).toHaveAttribute('aria-selected', 'true');
   });
 
   it('keeps the day grid unchanged while choosing a picker year, until a month is chosen', () => {

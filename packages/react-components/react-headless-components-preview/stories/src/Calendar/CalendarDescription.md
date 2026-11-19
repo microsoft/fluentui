@@ -37,7 +37,8 @@ month-navigation control, preferring Next month.
 
 When an arrow crosses the visible day-grid boundary, Calendar requests navigation to the next
 available date without selecting it, within the date bounds. PageUp/PageDown page from the focused
-day.
+day. In the month and year grids, PageUp/PageDown show the previous/next year or twelve-year range, like the
+grid's previous/next buttons, and keep focus on the same cell position.
 
 When server rendering, pass `today` explicitly so server and browser output use the same date.
 
@@ -79,8 +80,8 @@ either layout (`"year"` falls back to the default when `yearPickerHidden` is set
 by twelve years. Browsing picker years, including choosing a year, leaves the day grid unchanged until a month is
 chosen. Calendars without a day panel retain month-selection navigation.
 
-Escape in an overlay picker returns to the day grid and focuses its heading. In a beside year picker, Escape
-returns to the month choices and focuses the picker heading. Otherwise Escape invokes `onDismiss`, allowing an
+Escape steps back one level. In the year grid it returns to the month choices and focuses the picker heading, in
+either layout. In an overlay month grid it returns to the day grid and focuses its heading. Otherwise Escape invokes `onDismiss`, allowing an
 enclosing DatePicker to close.
 
 Calendar preserves focus when a layout or view change hides the focused panel, or replaces the month or year grid

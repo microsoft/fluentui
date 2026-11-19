@@ -182,6 +182,16 @@ export const useDatePicker = (
     }
   }
 
+  // A value that changes while the calendar is open, such as a controlled update, shows its month.
+  const valueTime = dateState.value?.getTime();
+  const [previousValueTime, setPreviousValueTime] = React.useState(valueTime);
+  if (!Object.is(previousValueTime, valueTime)) {
+    setPreviousValueTime(valueTime);
+    if (dateState.value) {
+      setDisplayedDate(dateState.value);
+    }
+  }
+
   const rootRef = React.useRef<HTMLDivElement>(null);
   const controlRef = React.useRef<HTMLInputElement & HTMLButtonElement>(null);
   const surfaceRef = React.useRef<HTMLDivElement>(null);

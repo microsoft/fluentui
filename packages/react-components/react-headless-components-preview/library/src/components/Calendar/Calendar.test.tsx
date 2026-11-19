@@ -666,6 +666,74 @@ describe('Calendar interaction sequences', () => {
     expect(onParentKeyDown).toHaveBeenCalledTimes(ownsDismissal ? 0 : 1);
   });
 
+  it('steps Escape back one level in the overlay layout: year, month, then day', async () => {
+    const onViewChange = jest.fn();
+    const { container, getByRole } = render(
+      <Calendar today={today} layout="overlay" defaultView="year" onViewChange={onViewChange} />,
+    );
+    const yearCell = container.querySelector<HTMLElement>('[data-view="year"] [role="gridcell"][tabindex="0"]')!;
+    act(() => yearCell.focus());
+
+    fireEvent.keyDown(yearCell, { key: 'Escape' });
+    expect(onViewChange.mock.calls.map(call => call[1].view)).toEqual(['month']);
+    const monthHeading = getByRole('button', { name: '2020, change year' });
+    await waitFor(() => expect(monthHeading).toHaveFocus());
+
+    fireEvent.keyDown(monthHeading, { key: 'Escape' });
+    expect(onViewChange.mock.calls.map(call => call[1].view)).toEqual(['month', 'day']);
+    expect(container.querySelector('[data-view="day"]')).not.toBeNull();
+  });
+
+  it.each([
+    ['month', 'PageDown', '2021, change year', 'September 2021'],
+    ['month', 'PageUp', '2019, change year', 'September 2019'],
+    ['year', 'PageDown', '2032 - 2043, change year', '2032'],
+    ['year', 'PageUp', '2008 - 2019, change year', '2008'],
+  ] as const)('pages the %s grid with %s and keeps the focused cell position', (view, key, heading, focused) => {
+    const onDisplayedDateChange = jest.fn();
+    const { container, getByRole } = render(
+      <Calendar today={today} layout="overlay" defaultView={view} onDisplayedDateChange={onDisplayedDateChange} />,
+    );
+    const cell = container.querySelector<HTMLElement>(`[data-view="${view}"] [role="gridcell"][tabindex="0"]`)!;
+    act(() => cell.focus());
+
+    fireEvent.keyDown(cell, { key });
+
+    expect(getByRole('button', { name: heading })).toBeInTheDocument();
+    expect(getByRole('gridcell', { name: focused })).toHaveFocus();
+    expect(document.activeElement).toHaveAttribute('tabindex', '0');
+    // Browsing picker periods leaves the day grid's displayed date unchanged.
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+  });
+
+  it('pages the displayed year of a Calendar without a day panel', () => {
+    const onDisplayedDateChange = jest.fn();
+    const { container, getByRole } = render(
+      <Calendar today={today} dayPicker={null} onDisplayedDateChange={onDisplayedDateChange} />,
+    );
+    const cell = container.querySelector<HTMLElement>('[data-view="month"] [role="gridcell"][tabindex="0"]')!;
+    act(() => cell.focus());
+
+    fireEvent.keyDown(cell, { key: 'PageDown' });
+
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate.getFullYear()).toBe(2021);
+    expect(getByRole('button', { name: '2021, change year' })).toBeInTheDocument();
+    expect(getByRole('gridcell', { name: 'September 2021' })).toHaveFocus();
+  });
+
+  it('does not page a month grid past its bounds', () => {
+    const { container, getByRole } = render(
+      <Calendar today={today} layout="overlay" defaultView="month" maxDate={new Date(2020, 11, 31)} />,
+    );
+    const cell = container.querySelector<HTMLElement>('[data-view="month"] [role="gridcell"][tabindex="0"]')!;
+    act(() => cell.focus());
+
+    fireEvent.keyDown(cell, { key: 'PageDown' });
+
+    expect(getByRole('button', { name: '2020, change year' })).toBeInTheDocument();
+    expect(cell).toHaveFocus();
+  });
+
   it.each(['Backspace', 'Enter', 'PageUp', 'PageDown'])('preserves %s in editable header content', key => {
     const onDisplayedDateChange = jest.fn();
     const { getByRole } = render(

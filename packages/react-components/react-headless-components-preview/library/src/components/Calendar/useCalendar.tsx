@@ -659,6 +659,25 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       return element && cell && (cell.type !== 'day' || cell.originalDate) ? [element, cell] : undefined;
     };
 
+    const periodStart = isDay ? getMonthStart(navigatedDate) : createDate(isYear ? fromYear : pickerYear, 0, 1);
+    const periodEnd = isDay ? getMonthEnd(navigatedDate) : createDate((isYear ? toYear : pickerYear) + 1, 0, 0);
+    /** Whether any of the previous or next period lies within the bounds. */
+    const canPage = (direction: 1 | -1) =>
+      direction < 0
+        ? !minDate || compareDatePart(minDate, periodStart) < 0
+        : !maxDate || compareDatePart(periodEnd, maxDate) < 0;
+    /** Shows the previous or next period: a month, a picker year or a year range. */
+    const page = (event: CalendarEvent, direction: 1 | -1, focus?: FocusRequest) => {
+      if (isYear) {
+        setYearRange({ anchor: pickerYear, from: fromYear + direction * YEAR_COUNT });
+      } else if (!isDay && hasDayPanel) {
+        setPickerYear(pickerYear + direction);
+      } else {
+        return navigate(event, isDay ? addMonths(navigatedDate, direction) : addYears(pickerDate, direction), focus);
+      }
+      return notifyChange(() => undefined, focus);
+    };
+
     const activateCell = (event: CalendarEvent, cell: CalendarCellData) => {
       if (cell.type === 'day') {
         selectDate(event, cell.originalDate!);
@@ -766,9 +785,30 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       }
       const [, cell] = found;
       const index = cells.indexOf(cell);
-      if (event.key === PageUp || event.key === PageDown) {
+      if ((event.key === PageUp || event.key === PageDown) && cell.type === 'day') {
         // Calendar pages from the focused day.
-        setPagingDate(event, cell.type === 'day' ? cell.originalDate! : undefined);
+        setPagingDate(event, cell.originalDate!);
+      } else if (event.key === PageUp || event.key === PageDown) {
+        // Month and year grids page like their previous and next buttons, keeping focus on the same cell position.
+        const direction = event.key === PageUp ? -1 : 1;
+        event.preventDefault();
+        if (canPage(direction)) {
+          const target = cell.type === 'year' ? cell.year + direction * YEAR_COUNT : pickerYear + direction;
+          const start = createDate(target, cell.type === 'month' ? cell.index : 0, 1);
+          const end = cell.type === 'month' ? getMonthEnd(start) : createDate(target, 11, 31);
+          // An unavailable target leaves the tab stop to the new grid's navigated or nearest available cell.
+          if (
+            allFocusable ||
+            ((!minDate || compareDatePart(minDate, end) < 1) && (!maxDate || compareDatePart(start, maxDate) < 1))
+          ) {
+            setActiveCell(
+              panelView,
+              `${isYear ? fromYear + direction * YEAR_COUNT : target}:${columns}`,
+              cell.type === 'year' ? `${target}` : cell.key,
+            );
+          }
+          page(event, direction, 'month');
+        }
       } else if ((event.key === Enter || event.key === Space) && cell.isInBounds) {
         activateCell(event, cell);
         event.preventDefault();
@@ -881,16 +921,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     );
 
     const unit = isDay ? 'Month' : isYear ? 'YearRange' : 'Year';
-    const periodStart = isDay ? getMonthStart(navigatedDate) : createDate(isYear ? fromYear : pickerYear, 0, 1);
-    const periodEnd = isDay ? getMonthEnd(navigatedDate) : createDate((isYear ? toYear : pickerYear) + 1, 0, 0);
     const getNavButton = (button: ButtonSlot, direction: 1 | -1) => {
       const date = isDay ? addMonths(navigatedDate, direction) : addYears(pickerDate, direction);
       const from = fromYear + direction * YEAR_COUNT;
-      // Whether any of the previous or next period lies within the bounds.
-      const inBounds =
-        direction < 0
-          ? !minDate || compareDatePart(minDate, periodStart) < 0
-          : !maxDate || compareDatePart(periodEnd, maxDate) < 0;
       const labelKey = `${direction < 0 ? 'previous' : 'next'}${unit}Label` as const;
       const label = isYear
         ? formatters[labelKey as 'nextYearRangeLabel']({
@@ -902,15 +935,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
             date,
             formattedDate: format({ date, format: isDay ? 'month' : 'year' }),
           });
-      return navButton(button, inBounds, label, event => {
-        if (isYear) {
-          setYearRange({ anchor: pickerYear, from });
-        } else if (!isDay && hasDayPanel) {
-          setPickerYear(date.getFullYear());
-        } else {
-          navigate(event, date);
-        }
-      });
+      return navButton(button, canPage(direction), label, event => page(event, direction));
     };
 
     const closeSlot = isFirst
@@ -1041,7 +1066,9 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     if (event.key === Escape && ((isOverlay && view !== 'day') || (inYearPicker && monthPanelView === 'year'))) {
       event.preventDefault();
       event.stopPropagation();
-      changeView(event, isOverlay ? 'day' : 'month', isOverlay ? 'dayHeading' : 'monthHeading');
+      // Escape steps back one level: from the year grid to the month grid, then from an overlay month grid to days.
+      const toDay = isOverlay && monthPanelView === 'month';
+      changeView(event, toDay ? 'day' : 'month', toDay ? 'dayHeading' : 'monthHeading');
     } else if (event.key === Escape && onDismiss) {
       event.stopPropagation();
       onDismiss(event, { event, type: 'keydown' });
