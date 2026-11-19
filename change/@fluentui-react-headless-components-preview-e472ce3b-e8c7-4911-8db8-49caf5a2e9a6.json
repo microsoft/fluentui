@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: rebuild Calendar; month/year isCurrent now tracks the displayed picker period, not today. Align DatePicker locale, accessibility and navigation.",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
