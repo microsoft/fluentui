@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { findGitRoot } from '@fluentui/scripts-monorepo';
 
-// @ts-expect-error - storybook/internal/core-server is an ECMAScript module
 import { build as storybook } from 'storybook/internal/core-server';
 
 // Option types are documented here but not included in package for some reason

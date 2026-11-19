@@ -83,6 +83,7 @@ export class EventGroup {
     const theDoc = doc ?? getDocument()!;
 
     if (EventGroup._isElement(target)) {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve legacy event creation and its fallback.
       if (typeof theDoc !== 'undefined' && theDoc.createEvent) {
         let ev = theDoc.createEvent('HTMLEvents');
 

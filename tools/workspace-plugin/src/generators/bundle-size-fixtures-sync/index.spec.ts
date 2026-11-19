@@ -11,7 +11,7 @@ describe('bundle-size-fixtures-sync generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     jest.spyOn(console, 'warn').mockImplementation(() => undefined);
   });
 

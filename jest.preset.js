@@ -6,7 +6,7 @@ const { pathsToModuleNameMapper } = require('ts-jest');
 const tsConfig = require('./tsconfig.base.json');
 
 const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
-  prefix: `<rootDir>/${path.relative(process.cwd(), __dirname)}/`,
+  prefix: `${__dirname}/`,
 });
 
 /**

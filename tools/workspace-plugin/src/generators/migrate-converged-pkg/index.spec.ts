@@ -58,7 +58,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',
@@ -1202,7 +1202,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        extends: '../../.babelrc-v9.json',
+        extends: path.join('..', '..', '.babelrc-v9.json'),
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1212,7 +1212,7 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        extends: '../../.babelrc-v9.json',
+        extends: path.join('..', '..', '.babelrc-v9.json'),
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });

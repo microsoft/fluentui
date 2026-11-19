@@ -17,6 +17,10 @@ const recommendedRules = {
   // Add rules to the recommended config here in the future
 };
 
+const flatPlugins: { [x: string]: ESLint.Plugin } = {
+  [name]: {},
+};
+
 export const configs = {
   recommended: {
     plugins: [name],
@@ -25,7 +29,7 @@ export const configs = {
   'flat/recommended': {
     // Define plugins as an object to satisfy ESLint v9 flat config format
     // the actual plugin will be assigned later to avoid circular dependencies
-    plugins: { [name]: {} as ESLint.Plugin },
+    plugins: flatPlugins,
     rules: recommendedRules,
   },
 };

@@ -1,65 +1,18 @@
 {
   "migrations": [
     {
-      "version": "22.0.0-beta.1",
-      "description": "Updates release version config based on the breaking changes in Nx v22",
-      "implementation": "./dist/src/migrations/update-22-0-0/release-version-config-changes",
+      "version": "23.0.0-beta.18",
+      "description": "Adds .nx/migrate-runs to .gitignore",
+      "implementation": "./dist/src/migrations/update-23-0-0/add-migrate-runs-to-git-ignore",
       "package": "nx",
-      "name": "22-0-0-release-version-config-changes"
+      "name": "23-0-0-add-migrate-runs-to-git-ignore"
     },
     {
-      "version": "22.0.0-beta.2",
-      "description": "Consolidates releaseTag* options into nested releaseTag object structure",
-      "implementation": "./dist/src/migrations/update-22-0-0/consolidate-release-tag-config",
-      "package": "nx",
-      "name": "22-0-0-consolidate-release-tag-config"
-    },
-    {
-      "cli": "nx",
-      "version": "22.1.0-beta.5",
-      "description": "Updates the nx wrapper.",
-      "implementation": "./dist/src/migrations/update-22-1-0/update-nx-wrapper",
-      "package": "nx",
-      "name": "22-1-0-update-nx-wrapper"
-    },
-    {
-      "cli": "nx",
-      "version": "22.6.0-rc.0",
-      "description": "Adds .claude/settings.local.json to .gitignore",
-      "implementation": "./dist/src/migrations/update-17-3-0/update-nxw",
-      "package": "nx",
-      "name": "22-6-0-add-claude-settings-local-to-git-ignore"
-    },
-    {
-      "version": "22.0.0-beta.0",
-      "description": "Remove the deprecated `external` and `externalBuildTargets` options from the `@nx/js:swc` and `@nx/js:tsc` executors.",
-      "factory": "./src/migrations/update-22-0-0/remove-external-options-from-js-executors",
-      "package": "@nx/js",
-      "name": "remove-external-options-from-js-executors"
-    },
-    {
-      "version": "22.1.0-rc.1",
-      "description": "Removes redundant TypeScript project references from project's tsconfig.json files when runtime tsconfig files (e.g., tsconfig.lib.json, tsconfig.app.json) exist.",
-      "factory": "./src/migrations/update-22-1-0/remove-redundant-ts-project-references",
-      "package": "@nx/js",
-      "name": "remove-redundant-ts-project-references"
-    },
-    {
-      "version": "22.7.0-beta.12",
-      "description": "Add missing inputs to @nx/eslint:lint executor target defaults",
-      "implementation": "./src/migrations/update-21-6-0/update-executor-lint-inputs",
-      "package": "@nx/eslint",
-      "name": "update-executor-lint-inputs"
-    },
-    {
-      "version": "22.3.2-beta.0",
-      "requires": {
-        "jest": ">=30.0.0"
-      },
-      "description": "Replace removed matcher aliases in Jest v30 with their corresponding matcher",
-      "implementation": "./src/migrations/update-21-3-0/replace-removed-matcher-aliases",
-      "package": "@nx/jest",
-      "name": "replace-removed-matcher-aliases-v22-3"
+      "version": "23.0.0-beta.24",
+      "description": "Rename deprecated CreateNodes V2 type imports from @nx/devkit to their canonical names.",
+      "implementation": "./dist/src/migrations/update-23-0-0/rename-create-nodes-v2-types",
+      "package": "@nx/devkit",
+      "name": "update-23-0-0-rename-create-nodes-v2-types"
     }
   ]
 }

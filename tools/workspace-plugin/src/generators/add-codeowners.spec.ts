@@ -8,7 +8,7 @@ describe(`#addCodeowner`, () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
     addProjectConfiguration(tree, '@proj/react-one', {
       root: '/packages/react-one',

@@ -17,7 +17,7 @@ describe('bundle-size-configuration generator', () => {
   const options: BundleSizeConfigurationGeneratorSchema = { project: 'react-continental' };
 
   beforeEach(async () => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
 
     createLibrary(tree, 'react-continental');
   });

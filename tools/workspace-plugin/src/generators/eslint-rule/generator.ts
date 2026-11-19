@@ -1,10 +1,25 @@
-import { formatFiles, Tree, joinPathFragments, readProjectConfiguration, ProjectConfiguration } from '@nx/devkit';
+import {
+  formatFiles,
+  Tree,
+  joinPathFragments,
+  readProjectConfiguration,
+  ProjectConfiguration,
+  getProjects,
+  workspaceRoot,
+} from '@nx/devkit';
 import { EslintRuleGeneratorSchema } from './schema';
-import { lintWorkspaceRuleGenerator } from '@nx/eslint/src/generators/workspace-rule/workspace-rule';
+import { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
 import * as tsquery from '@phenomnomnominal/tsquery';
 
 export async function eslintRuleGenerator(tree: Tree, schema: EslintRuleGeneratorSchema) {
   const options = normalizeSchema(schema);
+  const { implementationFactory } = getGeneratorInformation(
+    '@nx/eslint',
+    'workspace-rule',
+    workspaceRoot,
+    Object.fromEntries(getProjects(tree)),
+  );
+  const lintWorkspaceRuleGenerator = implementationFactory();
   await lintWorkspaceRuleGenerator(tree, options);
 
   const project = readProjectConfiguration(tree, 'eslint-rules');

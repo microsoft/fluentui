@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Preserve legacy event creation compatibility when linting with TypeScript 5.8.",
+  "packageName": "@fluentui/utilities",
+  "email": "paulmardling@microsoft.com"
+}
