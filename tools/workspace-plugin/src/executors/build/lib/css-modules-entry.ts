@@ -398,14 +398,18 @@ export function parseModule(file: string, code: string): ModuleInfo {
 
 /** `a, b as c, type d` -> `[{ orig: 'a', local: 'a' }, { orig: 'b', local: 'c' }]` */
 function parseBindings(clause: string) {
-  return clause
-    .split(',')
-    .map(part => part.trim())
-    .filter(part => part.length > 0 && !part.startsWith('type '))
-    .map(part => {
-      const [orig, local = orig] = part.split(/\s+as\s+/).map(name => name.trim());
-      return { orig, local };
-    });
+  return (
+    clause
+      // SWC keeps comments (eg. `/** @deprecated */ name`) inside export clauses
+      .replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, '')
+      .split(',')
+      .map(part => part.trim())
+      .filter(part => part.length > 0 && !part.startsWith('type '))
+      .map(part => {
+        const [orig, local = orig] = part.split(/\s+as\s+/).map(name => name.trim());
+        return { orig, local };
+      })
+  );
 }
 
 /**

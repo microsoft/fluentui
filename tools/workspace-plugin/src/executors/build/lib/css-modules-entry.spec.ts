@@ -196,6 +196,27 @@ describe('css-modules entry', () => {
     expect(existsSync(join(projectRoot, 'lib/css-modules/contexts/cardContext.js'))).toBe(false);
   });
 
+  it('ignores comments inside export clauses', async () => {
+    write(
+      join(projectRoot, 'lib/components/Card/index.js'),
+      [
+        `export { Card } from "./Card.js";`,
+        `export { /** @deprecated */ useCardStyles_unstable } from "./useCardStyles.styles.js";`,
+        `export { useCard_unstable as useCardBase } from "./useCard.js";`,
+      ].join('\n'),
+    );
+    write(
+      join(projectRoot, 'lib/contexts/cardContext.js'),
+      `import * as React from "react";\nimport { /* base */ useCardBase } from "../components/Card/index.js";\nexport const CardContext = React.createContext(useCardBase);`,
+    );
+
+    expect(await emitCssModulesEntry(options)).toBe(true);
+    expect(read('lib/css-modules/components/Card/index.js')).toContain(
+      `export { /** @deprecated */ useCardStyles_unstable } from "../../../components/Card/useCardStyles.styles.css.js";`,
+    );
+    expect(existsSync(join(projectRoot, 'lib/css-modules/contexts/cardContext.js'))).toBe(false);
+  });
+
   it('fails instead of duplicating a React context', async () => {
     write(
       join(projectRoot, 'lib/contexts/cardContext.js'),
