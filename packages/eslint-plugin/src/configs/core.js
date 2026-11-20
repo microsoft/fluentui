@@ -2,7 +2,7 @@
 const tseslint = require('typescript-eslint');
 const globals = require('globals');
 const configHelpers = require('../utils/configHelpers');
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('../utils/importPlugin');
 const rnxPlugin = require('@rnx-kit/eslint-plugin');
 const jestPlugin = require('eslint-plugin-jest');
 const jsDocPlugin = require('eslint-plugin-jsdoc');
@@ -200,7 +200,7 @@ const typeAwareRules = {
 module.exports = defineConfig(
   globalIgnores(IGNORES),
   ...airbnbConfig.configs.base.legacy,
-  importPlugin.flatConfigs.typescript,
+  { ...importPlugin.flatConfigs.typescript, plugins: { import: importPlugin } },
   prettierConfig,
   {
     plugins: {

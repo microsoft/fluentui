@@ -14,6 +14,17 @@ Usage: in your [ESLint config file](https://eslint.org/docs/user-guide/configuri
 
 Helpers for customizing configuration are exported under a `configHelpers` object.
 
+### Workspace dependency declarations
+
+Shared source-lint configurations check workspace imports with `import/no-extraneous-dependencies` using source
+`package.json` files discovered from the repository's `workspaces` patterns. Workspace entry points and
+`node_modules` links do not need to exist first. External packages continue to use the configured import resolvers.
+This applies to ordinary source lint in both v8 and v9, with the same rule options, type-import behavior,
+development-file exemptions, and inline disable comments.
+
+The manifest resolver is scoped to this dependency rule. It does not validate subpath exports or unresolved imports;
+retain normal type checking for those checks. No component build or Nx graph cache is required.
+
 ## Rules
 
 ### `ban-context-export`
