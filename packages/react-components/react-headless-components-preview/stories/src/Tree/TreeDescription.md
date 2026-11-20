@@ -8,14 +8,28 @@ When `selectionMode` is set, the `selector` slot of `TreeItemLayout` renders a n
 
 Label the root tree with `aria-label` or `aria-labelledby`.
 
+Set `disabled` on `TreeItem` to disable activation, selection and expansion
+for it and its descendants. An inherited disabled state cannot be overridden with `disabled={false}` or
+`aria-disabled={false}`. The `disabled` prop and ancestor item state control the emitted `aria-disabled`
+attribute; supplying `aria-disabled` alone does not disable an item.
+Disabled items remain in the roving tab order and arrow-key navigation so users can discover them and
+explore already-open branches, but cannot open or close branches or toggle their native selectors.
+Controlled open and checked state can still be updated by the consumer.
+`TreeItemLayout` derives its disabled state from its item and disables the native selector.
+Custom interactive children, such as action buttons or links, remain the consumer's responsibility:
+disable those controls separately when appropriate.
+There is no tree-level disabled API; to disable an entire tree, disable each top-level `TreeItem`.
+
 The components expose the following state attributes for styling:
 
-| Element    | Attribute              | Values                                               |
-| ---------- | ---------------------- | ---------------------------------------------------- |
-| Root tree  | `data-navigation-mode` | `tree` or `treegrid`                                 |
-| Root tree  | `data-selection-mode`  | `single` or `multiselect`, absent without selection  |
-| `TreeItem` | `data-item-type`       | `leaf` or `branch`                                   |
-| `TreeItem` | `data-open`            | present while a branch is open                       |
-| `TreeItem` | `data-checked`         | present when checked, `mixed` when partially checked |
+| Element                      | Attribute              | Values                                                |
+| ---------------------------- | ---------------------- | ----------------------------------------------------- |
+| Root tree                    | `data-navigation-mode` | `tree` or `treegrid`                                  |
+| Root tree                    | `data-selection-mode`  | `single` or `multiselect`, absent without selection   |
+| `TreeItem`                   | `data-item-type`       | `leaf` or `branch`                                    |
+| `TreeItem`                   | `data-open`            | present while a branch is open                        |
+| `TreeItem`                   | `data-checked`         | present when checked, `mixed` when partially checked  |
+| `TreeItem`, `TreeItemLayout` | `data-disabled`        | present when the resolved inherited state is disabled |
+| `TreeItemLayout`             | `data-selection-mode`  | `single` or `multiselect`, absent without selection   |
 
 Nesting depth is exposed by the native `aria-level` attribute of each `TreeItem`.
