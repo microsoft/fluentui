@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { NavSectionHeaderProps, NavSectionHeaderState } from './NavSectionHeader.types';
 
 /**
@@ -20,10 +20,10 @@ export const useNavSectionHeader_unstable = (
       root: 'h3',
     },
     root: slot.always(
-      getIntrinsicElementProps('h3', {
+      {
         ref,
         ...props,
-      }),
+      },
       { elementType: 'h3' },
     ),
   };

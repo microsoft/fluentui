@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { useId, slot, useMergedRefs, mergeCallbacks } from '@fluentui/react-utilities';
 import type { ColorAreaBaseProps, ColorAreaBaseState, ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import type { HsvColor } from '../../types/color';
 import { colorAreaCSSVars } from './ColorArea.constants';
@@ -39,11 +39,12 @@ export const useColorAreaBase_unstable = (
     inputY,
     thumb,
     color,
+    defaultColor,
     ...rest
   } = props;
 
   const [hsvColor, setColor] = useControllableState<HsvColor>({
-    defaultState: props.defaultColor,
+    defaultState: defaultColor,
     state: color || colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
@@ -194,10 +195,10 @@ export const useColorAreaBase_unstable = (
       thumb: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         ...rest,
-      }),
+      },
       { elementType: 'div' },
     ),
     inputX: slot.always(inputX, {

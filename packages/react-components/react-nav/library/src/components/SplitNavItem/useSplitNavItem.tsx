@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
@@ -33,6 +33,7 @@ export const useSplitNavItem_unstable = (
     toggleButtonTooltip,
     menuButtonTooltip,
     children,
+    ...rest
   } = props;
 
   const { density = 'medium' } = useNavContext_unstable();
@@ -102,13 +103,13 @@ export const useSplitNavItem_unstable = (
       menuButtonTooltip: Tooltip,
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
+        ...rest,
         // because we're passing in children to the NavItem,
         // We can be explicit about the children prop here
         children: null,
-      }),
+      },
       { elementType: 'div' },
     ),
     navItem: navItemShorthand,

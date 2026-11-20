@@ -119,3 +119,40 @@ describe('useTagBase_unstable', () => {
     expect(root.type).toBe('button');
   });
 });
+
+describe('useTagBase_unstable root props', () => {
+  it('does not forward component props to the root slot', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { result } = renderHook(
+      () =>
+        useTagBase_unstable(
+          {
+            disabled: true,
+            dismissible: true,
+            dismissIcon: 'd',
+            icon: 'i',
+            media: 'm',
+            primaryText: 'p',
+            secondaryText: 's',
+            selected: true,
+            value: 'tag-value',
+            'data-custom': 'kept',
+          } as React.ComponentProps<'button'> & Parameters<typeof useTagBase_unstable>[0],
+          ref,
+        ),
+      { wrapper: wrap() },
+    );
+
+    expect(Object.keys(result.current.root).sort()).toEqual([
+      'aria-pressed',
+      'data-custom',
+      'disabled',
+      'id',
+      'onClick',
+      'onKeyDown',
+      'ref',
+      'role',
+      'type',
+    ]);
+  });
+});

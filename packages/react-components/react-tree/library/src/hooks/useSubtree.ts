@@ -4,7 +4,7 @@ import type * as React from 'react';
 import type { TreeBaseProps, TreeBaseState } from '../components/Tree/Tree.types';
 import type { SubtreeContextValue } from '../contexts/index';
 import { useSubtreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render a sub-level tree.
@@ -22,6 +22,19 @@ export function useSubtree(
 
   const open = useTreeItemContext_unstable(ctx => ctx.open);
 
+  // Tree level props are owned by the root tree, they must not reach the subtree root
+  const {
+    navigationMode: _navigationMode,
+    selectionMode: _selectionMode,
+    openItems: _openItems,
+    defaultOpenItems: _defaultOpenItems,
+    onOpenChange: _onOpenChange,
+    onNavigation: _onNavigation,
+    checkedItems: _checkedItems,
+    onCheckedChange: _onCheckedChange,
+    ...rest
+  } = props;
+
   return {
     contextType: 'subtree',
     open,
@@ -30,14 +43,14 @@ export function useSubtree(
     },
     level: parentLevel + 1,
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, subtreeRef) as React.Ref<HTMLDivElement>,
         role: 'group',
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

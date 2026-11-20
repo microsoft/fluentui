@@ -814,3 +814,56 @@ describe('List', () => {
     expect(getByRole('option')).toBeDefined();
   });
 });
+
+describe('List DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container, getByTestId } = render(
+      <List navigationMode="items" onSelectionChange={jest.fn()} selectedItems={['a']} selectionMode="multiselect">
+        <ListItem
+          checkmark={{ 'aria-label': 'select' }}
+          data-testid="item"
+          disabledSelection
+          onAction={jest.fn()}
+          value="a"
+        >
+          a
+        </ListItem>
+      </List>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-multiselectable',
+      'class',
+      'data-tabster',
+      'role',
+    ]);
+    expect(getByTestId('item').getAttributeNames().sort()).toEqual([
+      'aria-selected',
+      'class',
+      'data-tabster',
+      'data-testid',
+      'id',
+      'role',
+      'tabindex',
+    ]);
+  });
+
+  it('does not forward component props from the base hook to the root slot', () => {
+    const { result } = renderHook(() =>
+      useListBase_unstable(
+        {
+          defaultSelectedItems: ['a'],
+          navigationMode: 'items',
+          onSelectionChange: jest.fn(),
+          selectionMode: 'single',
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(Object.keys(result.current.root).sort()).toEqual(['aria-multiselectable', 'ref', 'role']);
+  });
+});

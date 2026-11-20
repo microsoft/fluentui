@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   SwatchPickerRowBaseProps,
   SwatchPickerRowBaseState,
@@ -27,11 +27,11 @@ export const useSwatchPickerRowBase_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         role: 'row',
         ...props,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

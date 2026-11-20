@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: drop native props allow-list from SwatchPicker hooks",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -57,3 +57,29 @@ describe('TagGroup', () => {
     expect(getByRole('button')).toBeDisabled();
   });
 });
+
+describe('TagGroup DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TagGroup
+        appearance="brand"
+        disabled
+        dismissible
+        onDismiss={jest.fn()}
+        onTagSelect={jest.fn()}
+        selectedValues={['a']}
+        size="small"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'data-tabster',
+      'role',
+    ]);
+  });
+});
