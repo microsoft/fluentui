@@ -14,6 +14,7 @@ export type {
   TagPickerState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
+  TagPickerSelectionMode,
   TagPickerSize,
 } from './TagPicker';
 export {

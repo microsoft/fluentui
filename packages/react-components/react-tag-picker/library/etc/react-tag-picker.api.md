@@ -108,6 +108,8 @@ export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 
     // (undocumented)
     secondaryActionRef: React_2.RefObject<HTMLSpanElement | null>;
     // (undocumented)
+    selectionMode?: TagPickerSelectionMode;
+    // (undocumented)
     size: TagPickerSize;
     // (undocumented)
     tagPickerGroupRef: React_2.RefObject<HTMLDivElement | null>;
@@ -275,12 +277,16 @@ export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<O
 
 // @public
 export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'disableAutoFocus'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    selectionMode?: TagPickerSelectionMode;
     noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSXElement, JSXElement | undefined | false] | JSXElement;
     inline?: boolean;
 };
+
+// @public
+export type TagPickerSelectionMode = 'single' | 'multiselect';
 
 // @public (undocumented)
 export type TagPickerSize = 'medium' | 'large' | 'extra-large';
@@ -293,6 +299,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
+    selectionMode?: TagPickerSelectionMode;
 };
 
 // @public
