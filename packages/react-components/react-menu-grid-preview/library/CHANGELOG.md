@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 10 Nov 2026 16:50:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.11)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.5.10..@fluentui/react-menu-grid-preview_v0.5.11)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.25.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-table to v9.19.24 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [0.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.10)
+
+Tue, 27 Oct 2026 16:42:57 GMT
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.25.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [0.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.9)
 

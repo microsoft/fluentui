@@ -19,6 +19,8 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   subText: 'fui-MenuItem__subText',
 };
 
+const slotsSelector = `& .${menuItemClassNames.icon}, & .${menuItemClassNames.checkmark}, & .${menuItemClassNames.subText}, & .${menuItemClassNames.secondaryContent}`;
+
 const useRootBaseStyles = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium,
   position: 'relative',
@@ -69,9 +71,13 @@ const useRootBaseStyles = makeResetStyles({
   // High contrast styles
   '@media (forced-colors: active)': {
     ':hover': {
-      backgroundColor: 'Canvas',
-      borderColor: 'Highlight',
-      color: 'Highlight',
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+
+      [slotsSelector]: {
+        color: 'HighlightText',
+      },
     },
     ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
   },
@@ -166,8 +172,13 @@ const useStyles = makeStyles({
     },
 
     '@media (forced-colors: active)': {
-      backgroundColor: 'Canvas',
-      color: 'Highlight',
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+
+      [slotsSelector]: {
+        color: 'HighlightText',
+      },
     },
   },
   disabled: {
@@ -206,13 +217,14 @@ const useStyles = makeStyles({
     '@media (forced-colors: active)': {
       color: 'GrayText',
       ':hover': {
+        forcedColorAdjust: 'auto',
         color: 'GrayText',
         backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
           backgroundColor: 'Canvas',
         },
-        [`& .${menuItemClassNames.subText}`]: {
+        [slotsSelector]: {
           color: 'GrayText',
         },
       },
@@ -282,8 +294,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     state.content.className = mergeClasses(
       menuItemClassNames.content,
       contentBaseStyles,
-      state.content.className,
       multiline && multilineStyles.content,
+      state.content.className,
     );
   }
 
@@ -298,8 +310,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.secondaryContent,
       secondaryContentBaseStyles,
       state.disabled && styles.disabled,
-      state.secondaryContent.className,
       multiline && multilineStyles.secondaryContent,
+      state.secondaryContent.className,
     );
   }
 
@@ -313,8 +325,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     state.submenuIndicator.className = mergeClasses(
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
-      state.submenuIndicator.className,
       multiline && multilineStyles.submenuIndicator,
+      state.submenuIndicator.className,
     );
   }
 
@@ -322,9 +334,9 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(
       menuItemClassNames.subText,
+      subtextBaseStyles,
       state.disabled && subTextStyles.disabled,
       state.subText.className,
-      subtextBaseStyles,
     );
   }
 

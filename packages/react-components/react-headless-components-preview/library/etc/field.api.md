@@ -5,6 +5,7 @@
 ```ts
 
 import type { FieldBaseState } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
 import { FieldBaseProps as FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
@@ -16,6 +17,10 @@ import { useFieldControlProps_unstable as useFieldControlProps } from '@fluentui
 
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
+
+export { FieldContextValue }
+
+export { FieldContextValues }
 
 export { FieldProps }
 

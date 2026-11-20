@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "Node",
-    "target": "ES2019",
+    "target": "ES2020",
     "jsx": "react",
     "skipLibCheck": true,
     "pretty": true

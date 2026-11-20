@@ -2,6 +2,141 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "9.75.2",
+      "tag": "@fluentui/react-components_v9.75.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9cffb6b4534ffc5a1c1ed35ab2516b3a3a53e8b0",
+            "comment": "fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "400ee0c145e863a358eac4debeebc3b03d071060",
+            "comment": "fix: NavCategoryItem renders type=\"button\" so it does not submit an enclosing form"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "4846275a92419b2dd0440a432df755dcdcd427c3",
+            "comment": "fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "6d02793e21251c1aecc33429ae2f9a8ed0e6469b",
+            "comment": "fix: apply icon sizing and layout styles to font glyphs as well as SVG icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.75.1",
+      "tag": "@fluentui/react-components_v9.75.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a65a06652e8c5af3400b6818be896c647dbb446e",
+            "comment": "test(react-positioning): pin portable browser geometry and lifecycle contracts with exact engine output"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "df06e284f1da766da7c120b8ceb727b9c64488d1",
+            "comment": "fix: keep the measured aside width instead of cancelling its update after mount"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a22af26f14588c5af093871bbf6150641250610e",
+            "comment": "feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "9.75.0",
+      "tag": "@fluentui/react-components_v9.75.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7b9ad65802f010e7d928f21afaac803afef02e71",
+            "comment": "feat(react-components): export existing Menu base hooks and composition types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "744cfdae7f460f164bfa3aa0295ef0d826102af5",
+            "comment": "fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dcc1820bbb25612f65b5938c7831a0b7f830d411",
+            "comment": "fix: escape theme style delimiters instead of omitting valid nested theme values"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.74.11",
       "tag": "@fluentui/react-components_v9.74.11",

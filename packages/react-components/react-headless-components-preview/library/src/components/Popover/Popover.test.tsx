@@ -5,12 +5,33 @@ import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { usePopoverContext } from './popoverContext';
 import { usePopover } from './usePopover';
 
 describe('Popover', () => {
+  it('ignores the removed trapFocus prop and opens non-modally', () => {
+    const showModal = jest.spyOn(HTMLDialogElement.prototype, 'showModal');
+    try {
+      const { getByRole } = render(
+        // @ts-expect-error -- trapFocus was removed in favor of inertTrapFocus
+        <Popover open trapFocus>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>Content</PopoverSurface>
+        </Popover>,
+      );
+      const surface = getByRole('group', { hidden: true });
+      expect(surface).toHaveAttribute('popover', 'auto');
+      expect(showModal).not.toHaveBeenCalled();
+    } finally {
+      showModal.mockRestore();
+    }
+  });
+
   describe('close lifecycle', () => {
-    const Example = ({ open, trapFocus = false }: { open: boolean; trapFocus?: boolean }) => (
-      <Popover open={open} trapFocus={trapFocus}>
+    const Example = ({ open, inertTrapFocus = false }: { open: boolean; inertTrapFocus?: boolean }) => (
+      <Popover open={open} inertTrapFocus={inertTrapFocus}>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -21,7 +42,7 @@ describe('Popover', () => {
     );
 
     it('calls native dialog close while the surface is connected', async () => {
-      const { getByRole, getByText, rerender } = render(<Example open trapFocus />);
+      const { getByRole, getByText, rerender } = render(<Example open inertTrapFocus />);
       const surface = getByRole('dialog', { hidden: true });
       const nativeClose = HTMLDialogElement.prototype.close;
       const close = jest
@@ -31,7 +52,7 @@ describe('Popover', () => {
           nativeClose.call(this);
         });
       try {
-        rerender(<Example open={false} trapFocus />);
+        rerender(<Example open={false} inertTrapFocus />);
         expect(close).toHaveBeenCalledTimes(1);
         expect(surface.isConnected).toBe(true);
         await waitFor(() => expect(surface.isConnected).toBe(false));
@@ -58,10 +79,10 @@ describe('Popover', () => {
       expect(outside).toHaveFocus();
     });
 
-    it('keeps the surface mounted until native close completes without repeating onOpenChange', () => {
+    it('keeps the surface mounted until native close completes without repeating onOpenChange', async () => {
       const onOpenChange = jest.fn();
       const ControlledExample = ({ open }: { open: boolean }) => (
-        <Popover open={open} trapFocus onOpenChange={onOpenChange}>
+        <Popover open={open} inertTrapFocus onOpenChange={onOpenChange}>
           <PopoverSurface>Surface</PopoverSurface>
         </Popover>
       );
@@ -78,7 +99,7 @@ describe('Popover', () => {
         fireEvent(surface, new Event('cancel', { cancelable: true }));
         expect(surface.isConnected).toBe(true);
         fireEvent(surface, new Event('close'));
-        expect(surface.isConnected).toBe(false);
+        await waitFor(() => expect(surface.isConnected).toBe(false));
         expect(onOpenChange).not.toHaveBeenCalled();
       } finally {
         close.mockRestore();
@@ -86,7 +107,7 @@ describe('Popover', () => {
     });
 
     it('ignores a queued close event after the dialog has reopened', () => {
-      const { getByRole, rerender } = render(<Example open trapFocus />);
+      const { getByRole, rerender } = render(<Example open inertTrapFocus />);
       const surface = getByRole('dialog', { hidden: true });
       const close = jest
         .spyOn(HTMLDialogElement.prototype, 'close')
@@ -94,8 +115,8 @@ describe('Popover', () => {
           this.removeAttribute('open');
         });
       try {
-        rerender(<Example open={false} trapFocus />);
-        rerender(<Example open trapFocus />);
+        rerender(<Example open={false} inertTrapFocus />);
+        rerender(<Example open inertTrapFocus />);
         fireEvent(surface, new Event('close'));
         expect(surface.isConnected).toBe(true);
         expect(surface).toHaveAttribute('open');
@@ -104,27 +125,26 @@ describe('Popover', () => {
       }
     });
 
-    it('reopens when a controlled parent keeps open after native dismissal', () => {
+    it('stays closed when a controlled parent keeps open after native dismissal', () => {
       const onOpenChange = jest.fn();
       const { getByRole } = render(
-        <Popover open trapFocus onOpenChange={onOpenChange}>
+        <Popover open inertTrapFocus onOpenChange={onOpenChange}>
           <PopoverSurface>Surface</PopoverSurface>
         </Popover>,
       );
       const surface = getByRole('dialog', { hidden: true });
       surface.removeAttribute('open');
       fireEvent(surface, new Event('close'));
-      expect(surface.isConnected).toBe(true);
-      expect(surface).toHaveAttribute('open');
+      expect(surface).not.toHaveAttribute('open');
       expect(onOpenChange).toHaveBeenCalledTimes(1);
       expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
     });
 
-    ([false, true] as const).forEach(trapFocus => {
-      it(`follows a replaced surface after close and reopen (${trapFocus ? 'modal' : 'non-modal'})`, async () => {
+    ([false, true] as const).forEach(inertTrapFocus => {
+      it(`follows a replaced surface after close and reopen (${inertTrapFocus ? 'modal' : 'non-modal'})`, async () => {
         const onOpenChange = jest.fn();
         const KeyedExample = ({ open, version }: { open: boolean; version: number }) => (
-          <Popover open={open} trapFocus={trapFocus} onOpenChange={onOpenChange}>
+          <Popover open={open} inertTrapFocus={inertTrapFocus} onOpenChange={onOpenChange}>
             <PopoverSurface key={version}>Surface</PopoverSurface>
           </Popover>
         );
@@ -135,7 +155,7 @@ describe('Popover', () => {
         expect(oldSurface.isConnected).toBe(false);
         rerender(<KeyedExample open version={1} />);
         const surface = getByText('Surface');
-        if (trapFocus) {
+        if (inertTrapFocus) {
           surface.removeAttribute('open');
           fireEvent(surface, new Event('close'));
         } else {
@@ -145,17 +165,17 @@ describe('Popover', () => {
         expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
       });
 
-      it(`unmounts a surface that never opened (${trapFocus ? 'modal' : 'non-modal'})`, async () => {
+      it(`unmounts a surface that never opened (${inertTrapFocus ? 'modal' : 'non-modal'})`, async () => {
         const preventOpening = (surface: HTMLDialogElement | HTMLDivElement | null) => {
           if (surface) {
-            Object.defineProperty(surface, trapFocus ? 'showModal' : 'showPopover', {
+            Object.defineProperty(surface, inertTrapFocus ? 'showModal' : 'showPopover', {
               configurable: true,
               value: () => undefined,
             });
           }
         };
         const PreventedExample = ({ open }: { open: boolean }) => (
-          <Popover open={open} trapFocus={trapFocus}>
+          <Popover open={open} inertTrapFocus={inertTrapFocus}>
             <PopoverSurface ref={preventOpening}>Surface</PopoverSurface>
           </Popover>
         );
@@ -189,7 +209,7 @@ describe('Popover', () => {
     const NativeCloseExample = () => (
       <>
         <button>Outside</button>
-        <Popover defaultOpen trapFocus>
+        <Popover defaultOpen inertTrapFocus>
           <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
@@ -201,7 +221,7 @@ describe('Popover', () => {
     );
 
     ([false, true] as const).forEach(withBeforeToggle => {
-      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, () => {
+      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, async () => {
         const { getByRole, getByText, queryByRole } = render(<NativeCloseExample />);
         const surface = getByRole('dialog', { hidden: true });
         expect(getByText('Inside')).toHaveFocus();
@@ -211,7 +231,7 @@ describe('Popover', () => {
         surface.removeAttribute('open');
         getByText('Inside').blur();
         fireEvent(surface, new Event('close'));
-        expect(queryByRole('dialog', { hidden: true })).toBeNull();
+        await waitFor(() => expect(queryByRole('dialog', { hidden: true })).toBeNull());
         expect(getByText('Trigger')).toHaveFocus();
       });
     });
@@ -311,7 +331,10 @@ describe('Popover', () => {
     const onRender = jest.fn();
     const MeasuredPopover = () => {
       const state = usePopover({ children: <div /> });
-      onRender();
+      // Count commits: `setSurfaceShown` during render re-runs the body but doesn't commit twice.
+      React.useEffect(() => {
+        onRender();
+      });
       return (
         <>
           <button aria-expanded={state.open} onClick={event => state.setOpen(event, true)}>
@@ -527,5 +550,25 @@ describe('Popover', () => {
     );
 
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
+  });
+
+  it('mounts a custom surface only while open', () => {
+    const CustomSurface = () => {
+      const open = usePopoverContext(context => context.open);
+      return <div data-testid="custom">{open ? 'open' : 'closed'}</div>;
+    };
+    const Example = ({ open }: { open: boolean }) => (
+      <Popover open={open}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <CustomSurface />
+      </Popover>
+    );
+    const { queryByTestId, rerender } = render(<Example open />);
+    expect(queryByTestId('custom')).toBeInTheDocument();
+
+    rerender(<Example open={false} />);
+    expect(queryByTestId('custom')).not.toBeInTheDocument();
   });
 });

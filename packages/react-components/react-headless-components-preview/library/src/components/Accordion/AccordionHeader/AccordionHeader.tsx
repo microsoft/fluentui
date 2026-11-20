@@ -12,6 +12,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = /*#__PURE__*/ composeComponent(
   'AccordionHeader',
   useAccordionHeader,
-  renderAccordionHeader,
   useAccordionHeaderContextValues,
+  renderAccordionHeader,
 );

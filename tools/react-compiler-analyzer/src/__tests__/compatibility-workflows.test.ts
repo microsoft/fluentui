@@ -38,6 +38,7 @@ describe('syntax compatibility and opt-in workflows', () => {
   afterEach(() => {
     jest.restoreAllMocks();
     jest.dontMock('babel-plugin-react-compiler/package.json');
+    jest.resetModules();
     rmSync(root, { recursive: true, force: true });
   });
 
@@ -114,7 +115,8 @@ export function useValue(initial = 0) {
         expect(readFileSync(filePath, 'utf-8')).toBe(original);
         expect(preview).toMatchObject({ filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0, dryRun: true });
         const written = await applyAnnotations(results, mode, { quote });
-        expect(written).toEqual(preview.planned);
+        expect(written).toMatchObject(preview.planned!);
+        expect(written.targets).toEqual(preview.targets);
         expect(preview.targets).toHaveLength(1);
         expect(readFileSync(filePath, 'utf-8')).toContain(quote === 'single' ? "'use " : '"use ');
         writeFileSync(filePath, original);
@@ -138,7 +140,7 @@ export function useValue(initial = 0) {
     writeFileSync(filePath, original);
     const preview = await json<AnalysisDocument>(() => runAnalyze({ ...argv(), annotate: 'all', 'dry-run': true }));
     expect(preview.code).toBe(0);
-    expect(preview.document.annotate).toEqual({
+    expect(preview.document.annotate).toMatchObject({
       mode: 'all',
       filesModified: 0,
       functionsAnnotated: 0,
@@ -151,7 +153,8 @@ export function useValue(initial = 0) {
     const validate = new Ajv().compile(schema);
     expect(validate(preview.document)).toBe(true);
     const actual = await json<AnalysisDocument>(() => runAnalyze({ ...argv(), annotate: 'all' }));
-    expect(actual.document.annotate).toEqual({ mode: 'all', ...preview.document.annotate?.planned });
+    expect(actual.document.annotate).toMatchObject({ mode: 'all', ...preview.document.annotate?.planned });
+    expect(actual.document.annotate?.targets).toEqual(preview.document.annotate?.targets);
     expect(actual.document).not.toHaveProperty('compiler');
   });
 
@@ -291,7 +294,8 @@ export function useValue(initial = 0) {
     jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
     await runAnalyze({ ...argv(), format: 'cli', annotate: 'all', 'dry-run': true });
     const target = lines.find(line => line.includes(": insert 'use memo'"));
-    expect(target).toBe(`${toWorkspacePath(process.cwd(), filePath)}:4 useValue: insert 'use memo'`);
+    expect(target).toContain(`${toWorkspacePath(process.cwd(), filePath)}:4 useValue: insert 'use memo'`);
+    expect(target).toContain('compiler-accepted-opt-in');
     expect(readFileSync(filePath, 'utf-8')).toBe(original);
   });
 
@@ -405,11 +409,9 @@ export function useValue(initial = 0) {
     await expect(runAnalyze({ ...argv(), format: 'cli', verbose: true })).rejects.toThrow('actual compiler failure');
   });
 
-  it('does not read informational compiler metadata for verbose JSON', async () => {
+  it('includes resolved compiler metadata in verbose JSON without contaminating stdout', async () => {
     writeFileSync(filePath, source());
-    const metadata = jest.fn(() => {
-      throw new Error('should not read metadata');
-    });
+    const metadata = jest.fn(() => ({ version: '1.0.0' }));
     jest.doMock('babel-plugin-react-compiler/package.json', metadata);
     const {
       code,
@@ -418,7 +420,8 @@ export function useValue(initial = 0) {
     } = await captureJson<AnalysisDocument>(() => runAnalyze({ ...argv(), verbose: true }));
     expect(code).toBe(0);
     expect(document).not.toHaveProperty('compiler');
-    expect(metadata).not.toHaveBeenCalled();
+    expect(metadata).toHaveBeenCalled();
+    expect(document.profile.compilerVersion).toBe('1.0.0');
     expect(stderr.join('\n')).toContain('Analyzing:');
   });
 
@@ -438,7 +441,7 @@ export function useValue(initial = 0) {
     expect(validate({ ...document, annotate: withoutDryRun })).toBe(false);
   });
 
-  it.each(['cli', 'md', 'html'] as const)('shows compiler identity once only in verbose %s output', async format => {
+  it.each(['cli', 'md', 'html'] as const)('shows compiler identity in verbose and compact %s output', async format => {
     writeFileSync(filePath, source());
     const lines: string[] = [];
     jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
@@ -446,9 +449,9 @@ export function useValue(initial = 0) {
     const output = lines.join('\n');
     expect(output.match(/Backend: Babel /g)).toHaveLength(1);
     expect(output).toMatch(/React Compiler \d/);
-    expect(output).toContain('syntax-only TypeScript parsing');
+    expect(output).toContain('Syntax-only TypeScript parsing');
     lines.length = 0;
     await runAnalyze({ ...argv(), format, verbose: false });
-    expect(lines.join('\n')).not.toContain('Backend:');
+    expect(lines.join('\n')).toContain('Backend:');
   });
 });

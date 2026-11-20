@@ -13,7 +13,6 @@ import {
   IWithPlatformProps,
   TopBanner,
   TopNav,
-  ScrollBars,
   INavPage,
   PlatformPicker,
   PlatformBar,
@@ -31,6 +30,7 @@ import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 import { cdnUrl } from '../../utilities/cdn';
+import { SiteNav } from './SiteNav';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -64,6 +64,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   private _disposables: Function[];
   private _jumpInterval: number | undefined;
   private _isStrict: boolean;
+  private _content = React.createRef<HTMLDivElement>();
 
   constructor(props: ISiteProps<TPlatforms>) {
     super(props);
@@ -158,7 +159,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       React.cloneElement(child, { platform }),
     );
 
-    const SiteContent = () => (
+    const siteContent = (
       <div key="site" className={styles.siteRoot}>
         {this._renderTopNav()}
         {this._renderTopBanner()}
@@ -166,6 +167,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
           <div
+            ref={this._content}
             className={styles.siteContent}
             data-is-scrollable="true"
             data-app-content-div="true"
@@ -182,13 +184,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const app = (
       <PlatformContext.Provider value={platform}>
         <AppThemesContext.Provider value={AppThemes}>
-          {theme ? (
-            <ThemeProvider theme={theme}>
-              <SiteContent />
-            </ThemeProvider>
-          ) : (
-            <SiteContent />
-          )}
+          {theme ? <ThemeProvider theme={theme}>{siteContent}</ThemeProvider> : siteContent}
         </AppThemesContext.Provider>
       </PlatformContext.Provider>
     );
@@ -280,25 +276,36 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   private _renderPageNav(): React.ReactElement | null {
     const { activePages, searchablePageTitle, isContentFullBleed } = this.state;
 
-    if (!isContentFullBleed && activePages) {
+    if (!isContentFullBleed && activePages && activePages.length > 0) {
       return (
-        <div className={styles.siteNavScrollWrapper}>
-          <ScrollBars>
+        <SiteNav pagePath={this.state.pagePath} onNavigate={this._onSectionNavigate}>
+          {isSmallScreen => (
             <div className={styles.siteNavWrapper}>
               <div className={styles.siteNavHeader}>{this._renderPlatformPicker()}</div>
               <Nav
+                key={this.state.pagePath}
                 pages={activePages}
                 searchablePageTitle={searchablePageTitle}
                 onLinkClick={this._onLeftNavLinkClick}
                 onSearchBoxClick={this._onLeftNavSearchBoxClick}
+                isSmallScreen={isSmallScreen}
+                navigationLabel={`${getSiteArea(this.props.siteDefinition.pages)} section navigation`}
               />
             </div>
-          </ScrollBars>
-        </div>
+          )}
+        </SiteNav>
       );
     }
     return null;
   }
+
+  private _onSectionNavigate = (hash: string): void => {
+    this._content.current?.focus();
+    const anchor = extractAnchorLink(hash);
+    if (anchor) {
+      this._jumpToAnchor(anchor);
+    }
+  };
 
   /**
    * Determines the current page's platform.

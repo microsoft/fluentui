@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: separate platform button labels and icons and allow room for longer platform names",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "paulmardling@microsoft.com"
+}
