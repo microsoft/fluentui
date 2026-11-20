@@ -1,5 +1,5 @@
 // @ts-check
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('../utils/importPlugin');
 const { defineConfig } = require('eslint/config');
 
 /** @type { import("eslint").Linter.Config } */

@@ -22,6 +22,11 @@ Shared source-lint configurations check workspace imports with `import/no-extran
 This applies to ordinary source lint in both v8 and v9, with the same rule options, type-import behavior,
 development-file exemptions, and inline disable comments.
 
+Workspace discovery is lazy and reused across files. Changes to the root manifest or a requested workspace's
+manifest refresh the index; unknown workspace names are rediscovered rather than cached as unresolved.
+Ordinary Nx lint inputs include the shared rule implementation and workspace manifests so cached results cannot
+hide changes to dependency validation.
+
 The manifest resolver is scoped to this dependency rule. It does not validate subpath exports or unresolved imports;
 retain normal type checking for those checks. No component build or Nx graph cache is required.
 

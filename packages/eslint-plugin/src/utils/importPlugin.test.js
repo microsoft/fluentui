@@ -47,6 +47,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  jest.restoreAllMocks();
   fs.rmSync(root, { recursive: true, force: true });
 });
 
@@ -190,12 +191,16 @@ test('does not keep stale workspace names between linted files', () => {
 
 test('fails explicitly when workspace manifests are malformed', () => {
   fs.writeFileSync(path.join(dependency, 'package.json'), '{');
-  expect(() => verify("import '@fixture/dependency';")).toThrow();
+  const messages = verify("import '@fixture/dependency';");
+  expect(messages).toHaveLength(1);
+  expect(messages[0].message).toContain('Resolve error:');
 });
 
 test('fails explicitly when workspace package names are duplicated', () => {
   writeJson(path.join(root, 'packages/duplicate/library/package.json'), { name: '@fixture/dependency' });
-  expect(() => verify("import '@fixture/dependency';")).toThrow('Duplicate workspace package');
+  const messages = verify("import '@fixture/dependency';");
+  expect(messages).toHaveLength(1);
+  expect(messages[0].message).toContain("Duplicate workspace package '@fixture/dependency'");
 });
 
 test('discovers negative globs and workspaces.packages independent of cwd', () => {
@@ -229,4 +234,66 @@ test('shared core configuration installs the wrapper and keeps development-file 
   expect(lint(path.join(consumer, 'src/testing/index.js'))).toEqual([]);
   expect(lint(path.join(root, 'config/index.js'))).toEqual([]);
   expect(lint(path.join(consumer, 'src/index.stories.ts'))).toEqual([]);
+});
+
+test('core and import-sorting configurations share the canonical plugin identity', () => {
+  const core = require('../configs/core');
+  const imports = require('../configs/imports');
+  const corePlugins = core.filter(config => config.plugins?.import).map(config => config.plugins.import);
+  expect(corePlugins.every(importPlugin => importPlugin === plugin)).toBe(true);
+  expect(imports.every(config => config.plugins?.import === plugin)).toBe(true);
+  expect(() => new Linter({ cwd: root }).verify('', [...core, ...imports])).not.toThrow();
+});
+
+test('import-free files do not discover workspace packages', () => {
+  const glob = jest.spyOn(fs, 'globSync');
+  for (let i = 0; i < 100; i++) {
+    expect(verify('const value = 1;')).toEqual([]);
+  }
+  expect(glob).not.toHaveBeenCalled();
+});
+
+test('workspace discovery is reused across files without rereading unrelated manifests', () => {
+  const unrelatedManifest = path.join(root, 'packages/unrelated/library/package.json');
+  writeJson(unrelatedManifest, { name: '@fixture/unrelated' });
+  const glob = jest.spyOn(fs, 'globSync');
+  const read = jest.spyOn(fs, 'readFileSync');
+  for (let i = 0; i < 100; i++) {
+    expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  }
+  expect(glob).toHaveBeenCalledTimes(1);
+  expect(read.mock.calls.filter(([filename]) => filename === unrelatedManifest)).toHaveLength(1);
+});
+
+test('the cached index refreshes after workspace patterns change', () => {
+  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  writeJson(path.join(root, 'package.json'), { workspaces: ['packages/consumer/library'] });
+  expect(verify("import '@fixture/dependency';")).toEqual([]);
+});
+
+test('new and removed workspace imports are discovered in a long-lived process', () => {
+  expect(verify("import '@fixture/added';")).toEqual([]);
+  const addedManifest = path.join(root, 'packages/added/library/package.json');
+  writeJson(addedManifest, { name: '@fixture/added' });
+  expect(verify("import '@fixture/added';")).toHaveLength(1);
+  fs.unlinkSync(addedManifest);
+  expect(verify("import '@fixture/added';")).toEqual([]);
+});
+
+test('known workspace names are refreshed when their manifest changes', () => {
+  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  writeJson(path.join(dependency, 'package.json'), { name: '@fixture/renamed' });
+  expect(verify("import '@fixture/dependency';")).toEqual([]);
+  expect(verify("import '@fixture/renamed';")).toHaveLength(1);
+});
+
+test('installed external imports do not repeatedly rebuild the workspace index', () => {
+  const external = path.join(root, 'node_modules/external-dependency');
+  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
+  fs.writeFileSync(path.join(external, 'index.js'), '');
+  const glob = jest.spyOn(fs, 'globSync');
+  for (let i = 0; i < 5; i++) {
+    expect(verify("import 'external-dependency';")).toHaveLength(1);
+  }
+  expect(glob).toHaveBeenCalledTimes(1);
 });
