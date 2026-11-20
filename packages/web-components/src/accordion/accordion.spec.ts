@@ -367,4 +367,66 @@ test.describe('Accordion', () => {
 
     await expect(item).toHaveAttribute('expanded');
   });
+
+  test('should initialize and expand items when an item contains an unregistered descendant element', async ({
+    page,
+    fastPage,
+  }) => {
+    await page.evaluate(() => {
+      const win = window as Window & {
+        __originalRequestIdleCallback?: typeof window.requestIdleCallback;
+        __originalCancelIdleCallback?: typeof window.cancelIdleCallback;
+      };
+      win.__originalRequestIdleCallback = window.requestIdleCallback;
+      win.__originalCancelIdleCallback = window.cancelIdleCallback;
+
+      window.requestIdleCallback = (callback: IdleRequestCallback, options?: IdleRequestOptions): number => {
+        return window.setTimeout(() => {
+          callback({
+            didTimeout: false,
+            timeRemaining: () => 50,
+          });
+        }, options?.timeout ?? 1) as unknown as number;
+      };
+
+      window.cancelIdleCallback = (id: number) => {
+        clearTimeout(id);
+      };
+    });
+
+    try {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${AccordionItemTagName}>
+            <span slot="heading">Heading 1</span>
+            <demo-unregistered-content>Content with unregistered element</demo-unregistered-content>
+          </${AccordionItemTagName}>
+        `,
+      });
+
+      const item = element.locator(AccordionItemTagName).first();
+      const button = item.locator('button[part="button"]');
+
+      await button.click();
+
+      await expect(item).toHaveAttribute('expanded');
+    } finally {
+      await page.evaluate(() => {
+        const win = window as Window & {
+          __originalRequestIdleCallback?: typeof window.requestIdleCallback;
+          __originalCancelIdleCallback?: typeof window.cancelIdleCallback;
+        };
+        if (win.__originalRequestIdleCallback) {
+          window.requestIdleCallback = win.__originalRequestIdleCallback;
+          delete win.__originalRequestIdleCallback;
+        }
+        if (win.__originalCancelIdleCallback) {
+          window.cancelIdleCallback = win.__originalCancelIdleCallback;
+          delete win.__originalCancelIdleCallback;
+        }
+      });
+    }
+  });
 });
