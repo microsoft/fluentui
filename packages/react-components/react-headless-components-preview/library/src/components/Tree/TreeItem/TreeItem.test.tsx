@@ -4,6 +4,8 @@ import { isConformant } from '../../../testing/isConformant';
 import { Tree } from '../Tree';
 import { TreeItem } from './TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
+import { useTreeItemContext } from './useTreeItem';
+import type { TreeItemContextValues } from './TreeItem.types';
 
 const TreeWrapper = ({ children }: { children?: React.ReactNode }) => <Tree aria-label="Tree">{children}</Tree>;
 
@@ -34,6 +36,38 @@ describe('TreeItem', () => {
   });
 
   describe('disabled', () => {
+    it('preserves whole-context selection outside an item provider across effect and parent updates', () => {
+      const onSnapshot = jest.fn();
+      const Probe = () => {
+        const context = useTreeItemContext(value => value);
+        const [snapshot, setSnapshot] = React.useState<TreeItemContextValues['treeItem']>();
+        const updates = React.useRef(0);
+        React.useEffect(() => {
+          if (++updates.current > 4) {
+            throw new Error('Item context identity did not stabilize');
+          }
+          onSnapshot(context);
+          setSnapshot(context);
+        }, [context]);
+        return <span>{snapshot?.disabled === false ? 'Enabled context' : 'Pending context'}</span>;
+      };
+      const fixture = () => (
+        <Tree aria-label="Tree">
+          <Probe />
+          <TreeItem itemType="leaf" value="item">
+            <TreeItemLayout>Item</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      );
+      const { rerender } = render(fixture());
+      expect(screen.getByText('Enabled context')).toBeInTheDocument();
+      expect(onSnapshot).toHaveBeenCalledTimes(1);
+      const context = onSnapshot.mock.calls[0][0];
+      rerender(fixture());
+      expect(onSnapshot).toHaveBeenCalledTimes(1);
+      expect(onSnapshot.mock.calls[0][0]).toBe(context);
+    });
+
     it('disables the item and descendants without disabling siblings', () => {
       const onOpenChange = jest.fn();
       const onClick = jest.fn();
@@ -64,7 +98,7 @@ describe('TreeItem', () => {
       expect(onOpenChange).toHaveBeenCalledTimes(1);
     });
 
-    it.each([true, 'true'] as const)('supports aria-disabled=%s without the disabled prop', ariaDisabled => {
+    it.each([true, 'true'] as const)('does not disable an item from aria-disabled=%s alone', ariaDisabled => {
       const onClick = jest.fn();
       render(
         <TreeItem itemType="leaf" aria-disabled={ariaDisabled} onClick={onClick}>
@@ -73,8 +107,22 @@ describe('TreeItem', () => {
         { wrapper: TreeWrapper },
       );
       fireEvent.click(screen.getByRole('treeitem'));
-      expect(screen.getByRole('treeitem')).toHaveAttribute('data-disabled', '');
-      expect(screen.getByText('Item').parentElement).toHaveAttribute('data-disabled', '');
+      expect(screen.getByRole('treeitem')).not.toHaveAttribute('data-disabled');
+      expect(screen.getByRole('treeitem')).not.toHaveAttribute('aria-disabled');
+      expect(screen.getByText('Item').parentElement).not.toHaveAttribute('data-disabled');
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([false, 'false'] as const)('does not allow aria-disabled=%s to override disabled', ariaDisabled => {
+      const onClick = jest.fn();
+      render(
+        <TreeItem disabled itemType="leaf" aria-disabled={ariaDisabled} onClick={onClick}>
+          <TreeItemLayout>Item</TreeItemLayout>
+        </TreeItem>,
+        { wrapper: TreeWrapper },
+      );
+      fireEvent.click(screen.getByRole('treeitem'));
+      expect(screen.getByRole('treeitem')).toHaveAttribute('aria-disabled', 'true');
       expect(onClick).not.toHaveBeenCalled();
     });
 

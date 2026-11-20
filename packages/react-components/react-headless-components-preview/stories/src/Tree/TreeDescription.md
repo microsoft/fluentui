@@ -10,7 +10,8 @@ Label the root tree with `aria-label` or `aria-labelledby`.
 
 Set `disabled` on `TreeItem` to disable activation, selection and expansion
 for it and its descendants. An inherited disabled state cannot be overridden with `disabled={false}` or
-`aria-disabled={false}`. `aria-disabled={true}` and `aria-disabled="true"` also disable an item.
+`aria-disabled={false}`. The `disabled` prop and ancestor item state control the emitted `aria-disabled`
+attribute; supplying `aria-disabled` alone does not disable an item.
 Disabled items remain in the roving tab order and arrow-key navigation so users can discover them and
 explore already-open branches, but cannot open or close branches or toggle their native selectors.
 Controlled open and checked state can still be updated by the consumer.

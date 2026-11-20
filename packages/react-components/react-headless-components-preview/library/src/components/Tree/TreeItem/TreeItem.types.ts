@@ -18,14 +18,14 @@ export type TreeItemProps = TreeItemBaseProps & {
    * Disables activation, selection and expansion of this item and its descendants.
    * Disabled items remain focusable through tree navigation. An inherited disabled state cannot be overridden.
    * Custom interactive children, such as action buttons, must be disabled separately.
-   * `aria-disabled={true}` or `"true"` also disables the item.
+   * The resolved state controls `aria-disabled`; setting the ARIA attribute alone does not disable the item.
    * @default false
    */
   disabled?: boolean;
 };
 
-export type TreeItemContextValues = {
-  treeItem: TreeItemBaseContextValues['treeItem'] & { disabled: boolean };
+export type TreeItemContextValues = TreeItemBaseContextValues & {
+  treeItem: { disabled: boolean };
 };
 
 export type TreeItemState = TreeItemBaseState & {

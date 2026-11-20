@@ -7,6 +7,7 @@ import {
   useTreeItem_unstable,
   useTreeItemContext_unstable,
   useTreeItemContextValues_unstable,
+  type TreeItemContextValues as TreeItemBaseContextValues,
 } from '@fluentui/react-tree';
 import { useEventCallback, useTimeout } from '@fluentui/react-utilities';
 
@@ -20,7 +21,7 @@ import { toDataAttributeValue } from '../../../utils';
 export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
   const itemDisabled = useTreeItemContext(context => context.disabled);
   const { disabled: disabledProp = false, ...baseProps } = props;
-  const disabled = itemDisabled || disabledProp || props['aria-disabled'] === true || props['aria-disabled'] === 'true';
+  const disabled = itemDisabled || disabledProp;
   const state: TreeItemState = { ...useTreeItem_unstable(baseProps, ref), disabled };
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
@@ -28,7 +29,7 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
   const [setActionsNavigationTimeout] = useTimeout();
 
   state.root['data-disabled'] = toDataAttributeValue(disabled);
-  state.root['aria-disabled'] = disabled || props['aria-disabled'];
+  state.root['aria-disabled'] = disabled || undefined;
 
   const { onClick: handleClick, onChange: handleChange } = state.root;
   state.root.onClick = useEventCallback(event => {
@@ -38,9 +39,10 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
     handleClick?.(event);
   });
   state.root.onChange = useEventCallback(event => {
-    if (!disabled) {
-      handleChange?.(event);
+    if (disabled) {
+      return;
     }
+    handleChange?.(event);
   });
 
   // Set data attributes for the item type, open and checked states to simplify styling of these states.
@@ -131,14 +133,22 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
 /**
  * Returns a value from the context of the closest tree item, such as its value, open or checked state.
  */
-export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues['treeItem']) => T): T => {
-  return useTreeItemContext_unstable(context => {
-    if ('disabled' in context && typeof context.disabled === 'boolean') {
-      return selector(context as TreeItemContextValues['treeItem']);
+export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues['treeItem']) => T): T =>
+  useTreeItemContext_unstable(context => {
+    const headlessContext = context as TreeItemBaseContextValues['treeItem'] & { disabled?: boolean };
+    if (headlessContext.disabled !== undefined) {
+      return selector(headlessContext as TreeItemContextValues['treeItem']);
     }
-    return selector({ ...context, disabled: false });
+    let fallback = fallbackContexts.get(context);
+    if (!fallback) {
+      fallback = { ...context, disabled: false };
+      fallbackContexts.set(context, fallback);
+    }
+    return selector(fallback);
   });
-};
+
+// Preserve whole-context selector identity for the default context and non-headless item providers.
+const fallbackContexts = new WeakMap<TreeItemBaseContextValues['treeItem'], TreeItemContextValues['treeItem']>();
 
 /**
  * Maps the state of the tree item to the values that are passed through context to its layout and subtree.
