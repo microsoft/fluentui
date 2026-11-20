@@ -1,11 +1,12 @@
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import { isConformant } from '../../testing/isConformant';
+import { useFluentProvider_unstable } from './useFluentProvider';
 
 jest.mock('@fluentui/react-utilities', () => ({
   ...jest.requireActual('@fluentui/react-utilities'),
@@ -102,5 +103,52 @@ describe('FluentProvider', () => {
       expect(element).toHaveAttribute('dir', 'rtl');
       expect(element).toHaveStyle({ textAlign: 'right' });
     });
+  });
+});
+
+describe('FluentProvider DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <FluentProvider
+        applyStylesToPortals={false}
+        customStyleHooks_unstable={{}}
+        dir="rtl"
+        overrides_unstable={{}}
+        targetDocument={document}
+        theme={teamsLightTheme}
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'dir']);
+  });
+});
+
+describe('useFluentProvider_unstable', () => {
+  it('does not forward provider props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useFluentProvider_unstable(
+        {
+          applyStylesToPortals: false,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          customStyleHooks_unstable: {},
+          dir: 'rtl',
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          overrides_unstable: {},
+          targetDocument: document,
+          theme: teamsLightTheme,
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('applyStylesToPortals');
+    expect(result.current.root).not.toHaveProperty('customStyleHooks_unstable');
+    expect(result.current.root).not.toHaveProperty('overrides_unstable');
+    expect(result.current.root).not.toHaveProperty('targetDocument');
+    expect(result.current.root).not.toHaveProperty('theme');
+    expect(result.current.root.dir).toBe('rtl');
   });
 });

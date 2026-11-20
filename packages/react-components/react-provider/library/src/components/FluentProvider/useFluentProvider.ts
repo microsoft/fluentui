@@ -12,7 +12,7 @@ import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
@@ -54,6 +54,7 @@ export const useFluentProvider_unstable = (
     targetDocument = parentContext.targetDocument,
     theme,
     overrides_unstable: overrides = {},
+    ...rest
   } = props;
 
   const mergedTheme = shallowMerge(parentTheme, theme);
@@ -103,14 +104,14 @@ export const useFluentProvider_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ...props,
+      {
+        ...rest,
         dir,
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })) as React.Ref<HTMLDivElement>,
-      }),
+      },
       { elementType: 'div' },
     ),
 
