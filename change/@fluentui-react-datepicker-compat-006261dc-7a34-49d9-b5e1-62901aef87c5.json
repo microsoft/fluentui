@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: fix the documented default of firstWeekOfYear (FirstWeekOfYear.FirstDay)",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "farisbashatm@gmail.com",
+  "dependentChangeType": "patch"
+}
