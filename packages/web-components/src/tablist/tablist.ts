@@ -1,34 +1,20 @@
-import { attr } from '@microsoft/fast-element';
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Tab } from '../tab/tab.js';
 import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { BaseTablist } from './tablist.base.js';
-import { TablistAppearance, type TablistSize } from './tablist.options.js';
+import type { TablistAppearance, TablistSize } from './tablist.options.js';
 
 /**
  * A Tablist component.
  *
  * @tag fluent-tablist
  * @fires { Event } change - Fired when the active tab changes.
+ * @presentational {TablistAppearance | undefined} [appearance=transparent] - There are two modes of appearance: transparent and subtle.
+ * @presentational {TablistSize | undefined} size - Defaults to medium. Used to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.
  *
  * @public
  */
 export class Tablist extends BaseTablist {
-  /**
-   * appearance
-   * There are two modes of appearance: transparent and subtle.
-   */
-  @attr
-  public appearance?: TablistAppearance = TablistAppearance.transparent;
-
-  /**
-   * size
-   * defaults to medium.
-   * Used to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.
-   */
-  @attr
-  public size?: TablistSize;
-
   private fg?: FocusGroup;
 
   private fgItems?: ArrayItemCollection<Tab>;

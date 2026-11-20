@@ -189,6 +189,8 @@ describe('setup()', () => {
     const expectedFiles = [
       'tsconfig.json',
       'jest.config.js',
+      'jest.mock-snapshots.js',
+      'jest.snapshot-resolver.js',
       '.swcrc',
       'cypress.config.ts',
       'tsconfig.cy.json',
@@ -202,13 +204,13 @@ describe('setup()', () => {
     const generatedPkg = JSON.parse(require('fs').readFileSync(join(project.projectPath, 'package.json'), 'utf-8'));
     for (const val of Object.values(generatedPkg.scripts ?? {})) {
       expect(String(val).startsWith('node ')).toBe(true);
-      expect(String(val)).toContain('node_modules/.bin');
+      expect(String(val)).toContain(join('node_modules', '.bin'));
     }
 
     expect(runCmdMock).toHaveBeenCalled();
     expect(runCmdMock).toHaveBeenCalledWith(
       expect.stringContaining('yarn install'),
-      expect.objectContaining({ cwd: expect.stringContaining('tmp/rit/react-18') }),
+      expect.objectContaining({ cwd: join(fs.tempDir, 'tmp', 'rit', 'react-18') }),
     );
   });
 
@@ -243,7 +245,7 @@ describe('setup()', () => {
     const project = await setup(args, logger);
     expect(runCmdMock).toHaveBeenCalledWith(
       expect.stringContaining('yarn install'),
-      expect.objectContaining({ cwd: expect.stringContaining('tmp/rit/react-18') }),
+      expect.objectContaining({ cwd: join(fs.tempDir, 'tmp', 'rit', 'react-18') }),
     );
     expect(require('fs').existsSync(join(project.projectPath, 'tsconfig.json'))).toBe(true);
   });
@@ -386,14 +388,14 @@ describe('setup()', () => {
 
     // Generated tsconfig should reference the resolved final tsconfig (tsconfig.json), not tsconfig.lib.json
     const generated = JSON.parse(readFileSync(join(project.projectPath, 'tsconfig.json'), 'utf-8'));
-    expect(String(generated.extends)).toContain('../../../../tsconfig.lib.json');
+    expect(resolve(project.projectPath, generated.extends)).toBe(join(fs.tempDir, 'tsconfig.lib.json'));
 
     // Compiler options should come from final resolved tsconfig
     expect(generated.compilerOptions.target).toBe('ES2021');
     expect(generated.compilerOptions.strict).toBe(false);
     expect(generated.compilerOptions.lib).toEqual(expect.arrayContaining(['ES2021', 'DOM']));
-    expect(generated.include).toEqual(['../../../../src/index.ts']);
-    expect(generated.exclude).toEqual(['../../../../src/custom-override/**']);
+    expect(generated.include).toEqual([join('..', '..', '..', '..', 'src', 'index.ts')]);
+    expect(generated.exclude).toEqual([join('..', '..', '..', '..', 'src', 'custom-override', '**')]);
 
     // Ensure we attempted installation under react root
     expect(runCmdMock).toHaveBeenCalled();

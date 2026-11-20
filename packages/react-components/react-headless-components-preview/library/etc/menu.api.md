@@ -73,7 +73,7 @@ import { useMenuListContext_unstable as useMenuListContext } from '@fluentui/rea
 import { useMenuListContextValues_unstable as useMenuListContextValues } from '@fluentui/react-menu';
 
 // @public
-export const Menu: React_2.FC<MenuProps>;
+export const Menu: ComponentWithoutRef<MenuProps>;
 
 export { MenuContextValue }
 
@@ -226,7 +226,7 @@ export { MenuSplitGroupState }
 export { MenuState }
 
 // @public
-export const MenuTrigger: React_2.FC<MenuTriggerProps>;
+export const MenuTrigger: ComponentWithoutRef<MenuTriggerProps>;
 
 export { MenuTriggerChildProps }
 

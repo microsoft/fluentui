@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: align headless TimePicker with the Fluent TimePicker spec",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

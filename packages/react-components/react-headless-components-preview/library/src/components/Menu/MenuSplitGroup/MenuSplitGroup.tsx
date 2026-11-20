@@ -10,6 +10,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = /*#__PURE__*/ composeComponent(
   'MenuSplitGroup',
   useMenuSplitGroup,
-  renderMenuSplitGroup,
   useMenuSplitGroupContextValues,
+  renderMenuSplitGroup,
 );

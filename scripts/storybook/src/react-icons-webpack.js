@@ -77,6 +77,10 @@ function configureReactIcons(options) {
     config.module.rules.push({
       test: /\.(ttf|woff2?)$/,
       type: 'asset',
+      generator: {
+        // Storybook's default [path] can traverse outside static/media for workspace dependencies.
+        filename: 'static/media/[name].[contenthash][ext]',
+      },
     });
     config.plugins ??= [];
     config.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());

@@ -79,22 +79,10 @@ import {
 } from '@fluentui/react-headless-components-preview/button';
 import {
   Calendar,
-  CalendarDay,
-  CalendarMonth,
-  CalendarProvider,
-  CalendarYear,
   calendarFormatters,
   createCalendarDateTimeFormatter,
   renderCalendar,
-  renderCalendarDay,
-  renderCalendarMonth,
-  renderCalendarYear,
   useCalendar,
-  useCalendarContext,
-  useCalendarContextValues,
-  useCalendarDay,
-  useCalendarMonth,
-  useCalendarYear,
 } from '@fluentui/react-headless-components-preview/calendar';
 import {
   Card,
@@ -153,6 +141,13 @@ import {
   renderCompoundButton,
   useCompoundButton,
 } from '@fluentui/react-headless-components-preview/compound-button';
+import {
+  DatePicker,
+  defaultFormatDate,
+  defaultParseDate,
+  renderDatePicker,
+  useDatePicker,
+} from '@fluentui/react-headless-components-preview/date-picker';
 import {
   Dialog,
   DialogActions,
@@ -613,6 +608,18 @@ import {
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { Textarea, renderTextarea, useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import {
+  TimePicker,
+  createTimeFormat,
+  formatDateToTimeString,
+  getDateEndAnchor,
+  getDateFromTimeString,
+  getDateStartAnchor,
+  getTimesBetween,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
+} from '@fluentui/react-headless-components-preview/time-picker';
+import {
   Toast,
   ToastBody,
   ToastContainer,
@@ -666,6 +673,22 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 import { Tooltip, renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
+} from '@fluentui/react-headless-components-preview/tree';
 import { toDataAttributeValue } from '@fluentui/react-headless-components-preview/utils';
 
 console.log(
@@ -735,22 +758,10 @@ console.log(
   useButton,
   useButtonContext,
   Calendar,
-  CalendarDay,
-  CalendarMonth,
-  CalendarProvider,
-  CalendarYear,
   calendarFormatters,
   createCalendarDateTimeFormatter,
   renderCalendar,
-  renderCalendarDay,
-  renderCalendarMonth,
-  renderCalendarYear,
   useCalendar,
-  useCalendarContext,
-  useCalendarContextValues,
-  useCalendarDay,
-  useCalendarMonth,
-  useCalendarYear,
   Card,
   CardFooter,
   CardHeader,
@@ -802,6 +813,11 @@ console.log(
   CompoundButton,
   renderCompoundButton,
   useCompoundButton,
+  DatePicker,
+  defaultFormatDate,
+  defaultParseDate,
+  renderDatePicker,
+  useDatePicker,
   Dialog,
   DialogActions,
   DialogBody,
@@ -1236,6 +1252,16 @@ console.log(
   Textarea,
   renderTextarea,
   useTextarea,
+  TimePicker,
+  createTimeFormat,
+  formatDateToTimeString,
+  getDateEndAnchor,
+  getDateFromTimeString,
+  getDateStartAnchor,
+  getTimesBetween,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
   Toast,
   ToastBody,
   ToastContainer,
@@ -1286,6 +1312,20 @@ console.log(
   Tooltip,
   renderTooltip,
   useTooltip,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  renderTree,
+  renderTreeItem,
+  renderTreeItemLayout,
+  useSubtreeContext,
+  useTree,
+  useTreeContext,
+  useTreeContextValues,
+  useTreeItem,
+  useTreeItemContext,
+  useTreeItemContextValues,
+  useTreeItemLayout,
   toDataAttributeValue,
 );
 

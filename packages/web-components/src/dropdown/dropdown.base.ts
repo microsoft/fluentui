@@ -81,7 +81,7 @@ export class BaseDropdown extends FASTElement {
       const optionIndex = this.matches(':has(:focus-visible)') ? next : -1;
 
       this.enabledOptions.forEach((option, index) => {
-        option.active = index === optionIndex;
+        option.toggleAttribute('active', index === optionIndex);
       });
 
       if (this.open) {

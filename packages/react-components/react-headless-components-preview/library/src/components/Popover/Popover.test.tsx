@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { usePopoverContext } from './popoverContext';
 import { usePopover } from './usePopover';
 
 describe('Popover', () => {
@@ -78,7 +79,7 @@ describe('Popover', () => {
       expect(outside).toHaveFocus();
     });
 
-    it('keeps the surface mounted until native close completes without repeating onOpenChange', () => {
+    it('keeps the surface mounted until native close completes without repeating onOpenChange', async () => {
       const onOpenChange = jest.fn();
       const ControlledExample = ({ open }: { open: boolean }) => (
         <Popover open={open} inertTrapFocus onOpenChange={onOpenChange}>
@@ -98,7 +99,7 @@ describe('Popover', () => {
         fireEvent(surface, new Event('cancel', { cancelable: true }));
         expect(surface.isConnected).toBe(true);
         fireEvent(surface, new Event('close'));
-        expect(surface.isConnected).toBe(false);
+        await waitFor(() => expect(surface.isConnected).toBe(false));
         expect(onOpenChange).not.toHaveBeenCalled();
       } finally {
         close.mockRestore();
@@ -124,7 +125,7 @@ describe('Popover', () => {
       }
     });
 
-    it('reopens when a controlled parent keeps open after native dismissal', () => {
+    it('stays closed when a controlled parent keeps open after native dismissal', () => {
       const onOpenChange = jest.fn();
       const { getByRole } = render(
         <Popover open inertTrapFocus onOpenChange={onOpenChange}>
@@ -134,8 +135,7 @@ describe('Popover', () => {
       const surface = getByRole('dialog', { hidden: true });
       surface.removeAttribute('open');
       fireEvent(surface, new Event('close'));
-      expect(surface.isConnected).toBe(true);
-      expect(surface).toHaveAttribute('open');
+      expect(surface).not.toHaveAttribute('open');
       expect(onOpenChange).toHaveBeenCalledTimes(1);
       expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
     });
@@ -221,7 +221,7 @@ describe('Popover', () => {
     );
 
     ([false, true] as const).forEach(withBeforeToggle => {
-      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, () => {
+      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, async () => {
         const { getByRole, getByText, queryByRole } = render(<NativeCloseExample />);
         const surface = getByRole('dialog', { hidden: true });
         expect(getByText('Inside')).toHaveFocus();
@@ -231,7 +231,7 @@ describe('Popover', () => {
         surface.removeAttribute('open');
         getByText('Inside').blur();
         fireEvent(surface, new Event('close'));
-        expect(queryByRole('dialog', { hidden: true })).toBeNull();
+        await waitFor(() => expect(queryByRole('dialog', { hidden: true })).toBeNull());
         expect(getByText('Trigger')).toHaveFocus();
       });
     });
@@ -331,7 +331,10 @@ describe('Popover', () => {
     const onRender = jest.fn();
     const MeasuredPopover = () => {
       const state = usePopover({ children: <div /> });
-      onRender();
+      // Count commits: `setSurfaceShown` during render re-runs the body but doesn't commit twice.
+      React.useEffect(() => {
+        onRender();
+      });
       return (
         <>
           <button aria-expanded={state.open} onClick={event => state.setOpen(event, true)}>
@@ -547,5 +550,25 @@ describe('Popover', () => {
     );
 
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
+  });
+
+  it('mounts a custom surface only while open', () => {
+    const CustomSurface = () => {
+      const open = usePopoverContext(context => context.open);
+      return <div data-testid="custom">{open ? 'open' : 'closed'}</div>;
+    };
+    const Example = ({ open }: { open: boolean }) => (
+      <Popover open={open}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <CustomSurface />
+      </Popover>
+    );
+    const { queryByTestId, rerender } = render(<Example open />);
+    expect(queryByTestId('custom')).toBeInTheDocument();
+
+    rerender(<Example open={false} />);
+    expect(queryByTestId('custom')).not.toBeInTheDocument();
   });
 });

@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const ColorPicker: ForwardRefComponent<ColorPickerProps> = /*#__PURE__*/ composeComponent(
   'ColorPicker',
   useColorPicker,
-  renderColorPicker,
   useColorPickerContextValues,
+  renderColorPicker,
 );
