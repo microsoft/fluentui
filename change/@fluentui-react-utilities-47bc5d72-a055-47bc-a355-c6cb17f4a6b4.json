@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-utilities): keep the internal priority queue in order after remove()",
+  "packageName": "@fluentui/react-utilities",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
