@@ -438,6 +438,38 @@ describe('positioning engine browser regressions', () => {
     });
   }
 
+  for (const containerType of ['inline-size', 'size']) {
+    it(`does not treat a container-type: ${containerType} query container as a containing block`, () => {
+      cy.document().then(async doc => {
+        // Away from the viewport origin, so a wrongly adopted coordinate space displaces the surface
+        const container = element(
+          doc,
+          'div',
+          { position: 'absolute', left: '70px', top: '60px', width: '200px', height: '200px', containerType },
+          root,
+        );
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, container);
+        const result = await computePosition(target, floating, {
+          placement: 'bottom',
+          strategy: 'fixed',
+          options: { pinned: true },
+        });
+        floating.style.left = `${result.x}px`;
+        floating.style.top = `${result.y}px`;
+        const targetRect = target.getBoundingClientRect();
+        const floatingRect = floating.getBoundingClientRect();
+        expect(floatingRect.x, 'x').to.equal(targetRect.x + (targetRect.width - floatingRect.width) / 2);
+        expect(floatingRect.y, 'y').to.equal(targetRect.bottom);
+      });
+    });
+  }
+
   it('crosses a shadow root to find a transformed containing block', () => {
     cy.document().then(async doc => {
       const host = element(

@@ -54,7 +54,7 @@ export const isContainingBlock = (element: Element, style: CSSStyleDeclaration, 
   // WebKit ignores filters
   ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
   /auto|hidden/.test(style.contentVisibility) ||
-  (!!style.containerType && style.containerType !== 'normal') ||
+  // `container-type` alone doesn't form a containing block in Chromium and WebKit
   /filter/.test(style.willChange) ||
   /paint|layout|strict|content/.test(style.contain);
 
