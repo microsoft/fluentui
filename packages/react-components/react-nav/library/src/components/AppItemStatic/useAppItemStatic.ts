@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   AppItemStaticBaseProps,
   AppItemStaticBaseState,
@@ -36,7 +36,7 @@ export const useAppItemStaticBase_unstable = (
   props: AppItemStaticBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): AppItemStaticBaseState => {
-  const { icon } = props;
+  const { icon, ...rest } = props;
 
   return {
     components: {
@@ -44,10 +44,10 @@ export const useAppItemStaticBase_unstable = (
       icon: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     icon: slot.optional(icon, {

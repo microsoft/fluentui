@@ -2,13 +2,7 @@
 
 import * as React from 'react';
 import type { EventHandler } from '@fluentui/react-utilities';
-import {
-  useControllableState,
-  useEventCallback,
-  useMergedRefs,
-  slot,
-  getIntrinsicElementProps,
-} from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 
 import type { NavBaseProps, NavBaseState, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
@@ -57,9 +51,9 @@ const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemVal
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { density = 'medium' } = props;
+  const { density = 'medium', ...baseProps } = props;
 
-  const state = useNavBase_unstable(props, ref);
+  const state = useNavBase_unstable(baseProps, ref);
 
   return {
     ...state,
@@ -79,6 +73,7 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
     defaultOpenCategories,
     defaultSelectedValue,
     defaultSelectedCategoryValue,
+    ...rest
   } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
@@ -168,10 +163,10 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     openCategories,
