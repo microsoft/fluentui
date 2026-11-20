@@ -23,6 +23,7 @@ const popoverContextDefaultValue: PopoverContextValue = {
   setTitleId: () => null,
   dismissButtonAutoFocus: false,
   setDismissButtonAutoFocus: () => null,
+  surfaceShown: false,
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

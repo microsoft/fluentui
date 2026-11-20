@@ -30,10 +30,14 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
   const [titleId, setTitleId] = React.useState('');
   const [dismissButtonAutoFocus, setDismissButtonAutoFocus] = React.useState(open);
+  const [surfaceShown, setSurfaceShown] = React.useState(false);
   const [previousOpen, setPreviousOpen] = React.useState(open);
 
   if (previousOpen !== open) {
     setPreviousOpen(open);
+    if (surfaceShown) {
+      setSurfaceShown(false);
+    }
     if (dismissButtonAutoFocus !== open) {
       setDismissButtonAutoFocus(open);
     }
@@ -105,6 +109,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     open,
     mode: modal ? 'modal' : 'auto',
     onOpenChange: (nextOpen, { event }) => setOpen(event, nextOpen),
+    onShow: () => setSurfaceShown(true),
     // Back to the trigger when focus was inside as the surface started closing.
     returnFocus: { target: triggerRef },
   });
@@ -156,6 +161,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setTitleId,
     dismissButtonAutoFocus,
     setDismissButtonAutoFocus,
+    surfaceShown,
     shouldRenderSurface,
   };
 };
@@ -178,6 +184,7 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
     setTitleId,
     dismissButtonAutoFocus,
     setDismissButtonAutoFocus,
+    surfaceShown,
   } = state;
 
   return {
@@ -201,6 +208,7 @@ export const usePopoverContextValues = (state: PopoverState): PopoverContextValu
       setTitleId,
       dismissButtonAutoFocus,
       setDismissButtonAutoFocus,
+      surfaceShown,
     },
   };
 };

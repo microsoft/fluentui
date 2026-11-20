@@ -12,6 +12,7 @@ export const useTeachingPopoverHeader = (
 ): TeachingPopoverHeaderState => {
   const state = useTeachingPopoverHeaderBase_unstable(props, ref);
   const open = usePopoverContext(context => context.open);
+  const surfaceShown = usePopoverContext(context => context.surfaceShown);
   const dismissButtonAutoFocus = usePopoverContext(context => context.dismissButtonAutoFocus);
   const setDismissButtonAutoFocus = usePopoverContext(context => context.setDismissButtonAutoFocus);
   const setOpen = usePopoverContext(context => context.setOpen);
@@ -23,7 +24,7 @@ export const useTeachingPopoverHeader = (
     defaultProps: { 'aria-label': 'dismiss', type: 'button' },
     elementType: 'button',
   });
-  const shouldAutoFocus = open && (dismissButton?.autoFocus ?? dismissButtonAutoFocus);
+  const shouldAutoFocus = open && surfaceShown && (dismissButton?.autoFocus ?? dismissButtonAutoFocus);
   const dismissButtonRef = useMergedRefs(dismissButton?.ref, dismissButtonElementRef);
 
   React.useEffect(() => {

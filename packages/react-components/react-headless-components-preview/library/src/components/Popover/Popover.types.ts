@@ -126,6 +126,8 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'
     dismissButtonAutoFocus: boolean;
     /** @internal */
     setDismissButtonAutoFocus: (autoFocus: boolean) => void;
+    /** @internal */
+    surfaceShown: boolean;
     /** Determines whether the surface is present in the DOM. */
     shouldRenderSurface: boolean;
   };
