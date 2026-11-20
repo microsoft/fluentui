@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-slider): preserve upward vertical values in RTL layouts",
+  "comment": "fix: preserve upward vertical values in RTL layouts",
   "packageName": "@fluentui/react-slider",
   "email": "paulmardling@microsoft.com"
 }
