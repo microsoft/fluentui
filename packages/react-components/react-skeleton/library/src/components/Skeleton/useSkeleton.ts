@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { SkeletonBaseProps, SkeletonBaseState, SkeletonProps, SkeletonState } from './Skeleton.types';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
 
@@ -46,12 +46,12 @@ export const useSkeletonBase_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): SkeletonBaseState => {
   const root = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       ref,
       role: 'progressbar',
       'aria-busy': true,
       ...props,
-    }),
+    },
     { elementType: 'div' },
   );
   return { components: { root: 'div' }, root };

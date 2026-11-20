@@ -94,7 +94,7 @@ export const usePresenceBadgeBase_unstable = (
   props: PresenceBadgeBaseProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeBaseState => {
-  const { status = 'available', outOfOffice = false } = props;
+  const { status = 'available', outOfOffice = false, ...badgeProps } = props;
 
   const statusText = DEFAULT_STRINGS[status];
   const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
@@ -104,7 +104,7 @@ export const usePresenceBadgeBase_unstable = (
       {
         'aria-label': statusText + oofText,
         role: 'img',
-        ...props,
+        ...badgeProps,
         icon: slot.optional(props.icon, {
           renderByDefault: true,
           elementType: 'span',
