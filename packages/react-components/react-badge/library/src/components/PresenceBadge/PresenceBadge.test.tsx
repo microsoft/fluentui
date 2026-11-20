@@ -20,4 +20,11 @@ describe('PresenceBadge', () => {
     const { getByLabelText } = render(<PresenceBadge status={status} />);
     expect(getByLabelText(STATUS_LABELS[status])).toBeTruthy();
   });
+
+  it('includes the out of office state in the aria label', () => {
+    const { container } = render(<PresenceBadge status="busy" outOfOffice />);
+    expect(container.firstElementChild?.getAttribute('aria-label')).toBe(
+      `${STATUS_LABELS.busy} ${STATUS_LABELS['out-of-office']}`,
+    );
+  });
 });

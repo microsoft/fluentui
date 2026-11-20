@@ -61,8 +61,10 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const { size = 'medium', outOfOffice = false, ...baseProps } = props;
+  // `outOfOffice` stays in the base props, as the base hook uses it for the accessible label.
+  const { size = 'medium', ...baseProps } = props;
   const status = props.status ?? 'available';
+  const outOfOffice = props.outOfOffice ?? false;
 
   const IconElement = iconMap(status, outOfOffice, size);
 

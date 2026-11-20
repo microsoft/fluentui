@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: include out of office state in PresenceBadge aria-label",
+  "packageName": "@fluentui/react-badge",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
