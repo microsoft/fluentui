@@ -5,6 +5,7 @@ const {
   loadWorkspaceAddon,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  registerStylingMetadataRule,
 } = require('@fluentui/scripts-storybook');
 const { registerCssModuleRules } = require('./css-modules-webpack');
 const headlessPackageJson = require('../../library/package.json');
@@ -81,6 +82,12 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
     const localConfig = /** @type {any} */ ({ ...rootMain.webpackFinal(config, options) });
 
     registerCssModuleRules({ config: localConfig });
+    registerStylingMetadataRule({
+      config: localConfig,
+      tsConfigPath,
+      dataAttributes: true,
+      include: path.resolve(__dirname, '../src/Button/index.stories.tsx'),
+    });
 
     return localConfig;
   },

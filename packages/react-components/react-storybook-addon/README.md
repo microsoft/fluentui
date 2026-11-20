@@ -58,6 +58,30 @@ This presets uses [custom docs container and page](https://storybook.js.org/docs
   - `Slot` api rendering
   - native props support
 
+### Styling API reference
+
+The monorepo's Storybook config generates styling metadata from source for Button and Accordion class names
+and headless Button data attributes. Only populated sections appear alongside **Props**; other pages keep their layout.
+
+Use `reactStorybookAddon.docs` to override a generated section or supply metadata where extraction is not enabled:
+
+```ts
+import { buttonClassNames } from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
+
+const parameters = {
+  reactStorybookAddon: {
+    docs: {
+      classNames: { classNames: buttonClassNames },
+    },
+  },
+} satisfies FluentParameters;
+```
+
+For component families, wrap each component's metadata in a named `components` map to show component tabs.
+An authored section replaces its generated counterpart; an empty map suppresses it, and `docs: false` disables styling
+sections. Source extraction is build-time only; see [the tooling guide](../../../../scripts/storybook/src/styling-metadata/README.md).
+
 ## Getting Started
 
 ### Installation
