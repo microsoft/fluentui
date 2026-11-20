@@ -26,6 +26,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   HorizontalBarChartProps
 >((props, forwardedRef) => {
   const legendContainer = React.useRef<HTMLDivElement | null>(null);
+  const _rootRef = React.useRef<HTMLDivElement | null>(null);
   const _uniqLineText: string = useId('_HorizontalLine_');
   const _refArray: RefArrayData[] = [];
   const _isRTL: boolean = useRtl();
@@ -88,8 +89,15 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     }
   }
 
-  function _hoverOff(): void {
-    /*ToDo. To fix*/
+  function _hoverOff(event: React.FocusEvent<SVGRectElement> | React.MouseEvent<SVGRectElement>): void {
+    const relatedTarget = event.relatedTarget as Node | null;
+    // Keep the popover open while focus (or the pointer) stays inside the chart, e.g. when
+    // tabbing between bars. This also covers the inline ChartPopover, which renders within
+    // the chart root. Dismiss only when focus leaves the chart.
+    if (relatedTarget && _rootRef.current?.contains(relatedTarget)) {
+      return;
+    }
+    _handleChartMouseLeave();
   }
 
   const _handleChartMouseLeave = () => {
@@ -390,7 +398,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
   let datapoint: number | undefined = 0;
   return !_isChartEmpty() ? (
-    <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
+    <div className={classes.root} onMouseLeave={_handleChartMouseLeave} ref={_rootRef}>
       {data!.map((points: ChartProps, index: number) => {
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
