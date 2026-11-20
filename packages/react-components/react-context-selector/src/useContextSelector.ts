@@ -3,6 +3,7 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { removeListener } from './listeners';
 import type { Context, ContextSelector, ContextValue } from './types';
 
 /**
@@ -58,11 +59,7 @@ export const useContextSelector = <Value, SelectedValue>(
     listener(valueRef.current);
 
     return () => {
-      const index = listeners.indexOf(listener);
-
-      if (index !== -1) {
-        listeners.splice(index, 1);
-      }
+      removeListener(listeners, listener);
     };
   }, [listeners, valueRef]);
 
