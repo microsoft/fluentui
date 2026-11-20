@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from '@testing-library/react';
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';
@@ -46,5 +48,24 @@ describe('InfoButton', () => {
     // InfoButton is not to be exported by the package nor added to react-components, therefore these tests
     // need to be disabled.
     disabledTests: ['component-has-static-classnames-object', 'exported-top-level'],
+  });
+});
+
+describe('InfoButton DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <InfoButton info="Information" inline={false} popover={{ open: false }} size="large" />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-expanded',
+      'aria-label',
+      'class',
+      'data-tabster',
+      'type',
+    ]);
   });
 });
