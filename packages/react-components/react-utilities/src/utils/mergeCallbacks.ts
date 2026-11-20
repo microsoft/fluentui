@@ -26,7 +26,13 @@ export function mergeCallbacks<Args extends unknown[]>(
   callback2: ((...args: Args) => void) | undefined,
 ): (...args: Args) => void {
   return (...args: Args) => {
-    callback1?.(...args);
-    callback2?.(...args);
+    // Avoid `callback?.(...args)`: optional calls with spread arguments hit a V8 8.0–9.0 bug
+    // (https://crbug.com/v8/11558) that affects Chromium-based browsers in our support matrix (Chrome/Edge 84–90).
+    if (callback1) {
+      callback1(...args);
+    }
+    if (callback2) {
+      callback2(...args);
+    }
   };
 }
