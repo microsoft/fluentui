@@ -85,6 +85,17 @@ describe('Dropdown', () => {
       expect(groups[1].childElementCount).toEqual(3);
     });
 
+    it('does not change selection when disabled while open', () => {
+      const onChange = jest.fn();
+      const { getByRole, rerender } = render(
+        <Dropdown options={DEFAULT_OPTIONS} defaultSelectedKey="1" onChange={onChange} />,
+      );
+      fireEvent.click(getByRole('combobox'));
+      rerender(<Dropdown options={DEFAULT_OPTIONS} defaultSelectedKey="1" onChange={onChange} disabled />);
+      fireEvent.click(getByRole('option', { name: 'test' }));
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
     it('Can flip between enabled and disabled.', () => {
       const { getByRole, rerender } = render(<Dropdown options={DEFAULT_OPTIONS} />);
       const dropdownRoot = getByRole('combobox');
