@@ -1,5 +1,5 @@
-A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
-user action or a application timeout. Toasts are typically used in the following situations:
+A Toast displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
+user action or an application timeout. Toasts are typically used in the following situations:
 
 - Update the user on the status of a task
 - Display the progress of a task
@@ -13,7 +13,7 @@ is simply a layout component.
 
 > ⚠️ In order for notifications that use toast to be fully accessible, developers should make the notifications
 > available on a permanent surface too. One of the ways to do this in an application is to implement a notification
-> centre.
+> center.
 
 For live region debugging help, check our [Debugging Notifications](./?path=/docs/concepts-developer-accessibility-notification-debugging--docs) docs page.
 
@@ -23,7 +23,7 @@ For live region debugging help, check our [Debugging Notifications](./?path=/doc
 
 - Configure defaults on the Toaster
 - Use the toast for non-critical messages
-- Let the user view the toast content in the application after the toast dismissed
+- Let the user view the toast content in the application after the toast is dismissed
 - Create a keyboard shortcut to move focus to actionable toasts
 - Use `politeness` setting to differentiate urgent and non-urgent messages
 
