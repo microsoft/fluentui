@@ -209,6 +209,85 @@ describe('Toast (headless)', () => {
     cy.get('#make').click().get(TOAST_CONTAINER).trigger('mouseenter').wait(700).get(TOAST_CONTAINER).should('exist');
   });
 
+  it('should not run the timeout of a queued toast until it becomes visible', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToasts = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>Visible toast</ToastTitle>
+          </Toast>,
+          { toastId: 'visible', timeout: -1 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>Queued toast</ToastTitle>
+          </Toast>,
+          { toastId: 'queued', timeout: 500 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToasts}>
+            Make toasts
+          </button>
+          <button id="dismiss" onClick={() => dismissToast('visible')}>
+            Dismiss visible toast
+          </button>
+          <Toaster limit={1} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().wait(700);
+    cy.get('#dismiss').click();
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('exist');
+    cy.wait(700);
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('not.exist');
+  });
+
+  it('should pause a promoted queued toast while focus is in the toaster', () => {
+    const Example = () => {
+      const { dispatchToast, dismissToast } = useToastController();
+      const makeToasts = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>Visible toast</ToastTitle>
+          </Toast>,
+          { toastId: 'visible', timeout: -1 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>Queued toast</ToastTitle>
+          </Toast>,
+          { toastId: 'queued', timeout: 500 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToasts}>
+            Make toasts
+          </button>
+          <button id="dismiss" onClick={() => dismissToast('visible')}>
+            Dismiss visible toast
+          </button>
+          <Toaster limit={1} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get('#dismiss').click();
+    cy.contains(TOAST_CONTAINER, 'Queued toast').focus().wait(700);
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('exist');
+    cy.get('#make').focus().wait(700);
+    cy.contains(TOAST_CONTAINER, 'Queued toast').should('not.exist');
+  });
+
   it('should pause all toasts while focus is in the toaster', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
