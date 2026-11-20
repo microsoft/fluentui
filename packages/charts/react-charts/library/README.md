@@ -6,6 +6,24 @@ Fluent charts is a set of modern, accessible, interactive and highly customizabl
 
 ## Using the library
 
+### Localized legend overflow labels
+
+Use `` overflowText={count => `mais ${count}`} `` on `Legends` to format the complete overflow label,
+including number placement and pluralization. The callback receives the hidden legend count and supplies
+both the visible text and accessible name; no count or `+` prefix is added to its result.
+String values retain the existing count-first formatting.
+The exported `LegendOverflowTextFormatter` interface defines the callback signature.
+`Legends.overflowText` uses the named `LegendOverflowText` type. Existing permissive chart-level
+`legendsOverflowText` props retain their legacy input compatibility, including numeric suffixes on
+Cartesian, donut, and horizontal bar charts. For typed labels and contextually typed formatter parameters,
+use `legendProps.overflowText`; this takes precedence over the chart-level prop.
+Area and heat map charts also support `legendsOverflowText`.
+Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,
+to localize the accessible name of the legend list and overflow menu. When the label is omitted or empty, the list is named
+`Legends` and the menu uses its overflow trigger's label.
+The formatter should be pure and synchronous and return a nonempty label. It controls number formatting
+as well as wording, so use your application's localization library to format the count when needed.
+
 Examples and code snippets for the chart components are available on the [doc site](https://aka.ms/FluentChartsV9).
 The code snippets can be used as usage guide for all the props and chart variations.
 

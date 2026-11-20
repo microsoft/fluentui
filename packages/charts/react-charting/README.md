@@ -15,6 +15,24 @@ This library is also supported for fluent UI [v7](https://github.com/microsoft/f
 
 ## Using the library
 
+### Localized legend overflow labels
+
+Use `` overflowText={count => `mais ${count}`} `` on `Legends` (or through a chart's `legendsOverflowText` prop)
+to format the complete overflow label, including number placement and pluralization.
+The callback receives the hidden legend count and supplies both the visible text and accessible name.
+String values retain the existing count-first formatting.
+The exported `ILegendOverflowTextFormatter` interface defines the callback signature.
+`Legends.overflowText` and stacked bar chart overflow props use the named `LegendOverflowText` type.
+Existing permissive chart-level `legendsOverflowText` props retain their legacy input compatibility,
+including numeric suffixes. For typed labels and contextually typed formatter parameters, use
+`legendProps.overflowText`; this takes precedence over the chart-level prop.
+Area, grouped vertical bar, and heat map charts also support `legendsOverflowText`.
+Use `ariaLabel="Legendas"` on `Legends`, or `legendProps={{ ariaLabel: 'Legendas' }}` on a chart,
+to localize the accessible name of the legend list and overflow list. An omitted or empty label uses `Legends`;
+`focusZonePropsInHoverCard` can still override the overflow list's accessible name.
+The formatter should be pure and synchronous and return a nonempty label. It controls number formatting
+as well as wording, so use your application's localization library to format the count when needed.
+
 Examples and code snippets for the charting library are available on the [demo site](https://aka.ms/fluentcharting).
 The code snippets can be used as usage guide for all the props and chart variations. Click on 'Show code' on the demo site to access demo for each variant.
 

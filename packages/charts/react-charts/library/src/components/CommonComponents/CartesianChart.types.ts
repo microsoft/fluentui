@@ -336,6 +336,10 @@ export interface CartesianChartProps {
    */
   href?: string;
 
+  /**
+   * Overflow suffix or a formatter returning the complete localized label for the hidden legend count.
+   * Retains legacy permissive typing for compatibility. Use legendProps.overflowText for typed labels.
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
 

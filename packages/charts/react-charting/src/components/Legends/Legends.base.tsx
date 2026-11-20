@@ -181,6 +181,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSXElement => {
     const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
+    const ariaLabel = this.props.ariaLabel || 'Legends';
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
@@ -191,7 +192,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <FocusZone
         {...(allowFocusOnLegends && {
           role: 'listbox',
-          'aria-label': 'Legends',
+          'aria-label': ariaLabel,
           'aria-multiselectable': canSelectMultipleLegends,
         })}
       >
@@ -269,6 +270,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSXElement => {
     const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
+    const ariaLabel = this.props.ariaLabel || 'Legends';
 
     const overflowHoverCardLegends: JSXElement[] = [];
     const classNames = getClassNames(styles!, {
@@ -283,7 +285,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <FocusZone
         {...(allowFocusOnLegends && {
           role: 'listbox',
-          'aria-label': 'Legends',
+          'aria-label': ariaLabel,
           'aria-multiselectable': canSelectMultipleLegends,
         })}
         direction={FocusZoneDirection.vertical}
@@ -315,7 +317,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       renderData: renderOverflowData,
     };
 
-    const overflowString = overflowText ? overflowText : 'more';
+    const overflowLabel =
+      typeof overflowText === 'function' ? overflowText(items.length) : `${items.length} ${overflowText || 'more'}`;
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       this.setState({ isHoverCardVisible: false });
@@ -352,11 +355,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
             {...(allowFocusOnLegends && {
               role: 'button',
               'aria-expanded': this.state.isHoverCardVisible,
-              'aria-label': `${items.length} ${overflowString}`,
+              'aria-label': overflowLabel,
             })}
             data-is-focusable={allowFocusOnLegends}
           >
-            {items.length} {overflowString}
+            {overflowLabel}
           </div>
         </div>
       </HoverCard>

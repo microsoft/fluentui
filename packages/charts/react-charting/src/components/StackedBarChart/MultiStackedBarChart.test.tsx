@@ -81,6 +81,26 @@ describe('MultiStackedBarChart snapShot testing', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('forwards the complete localized overflow label to visible text and the accessible name', () => {
+    const overflowText = jest.fn((count: number) => `mais ${count} legendas`);
+    const overflowItems = firstChartPoints.map((point, index) => ({
+      key: String(index),
+      title: point.legend!,
+      color: point.color!,
+    }));
+    render(
+      <MultiStackedBarChart
+        data={chartPoints}
+        legendsOverflowText={overflowText}
+        legendsOverflowProps={{ overflowItems }}
+        legendProps={{ enabledWrapLines: true }}
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: 'mais 2 legendas' }).textContent).toBe('mais 2 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(2);
+  });
+
   it('renders hideLegend correctly', () => {
     const { container } = render(<MultiStackedBarChart data={chartPoints} hideLegend={true} />);
     expect(container).toMatchSnapshot();

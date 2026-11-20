@@ -6,6 +6,20 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { CustomPoints, Points } from '../../utilities/utilities';
 
+/**
+ * Formats the complete overflow label for the hidden legend count.
+ * {@docCategory Legends}
+ */
+export interface ILegendOverflowTextFormatter {
+  (count: number): string;
+}
+
+/**
+ * Overflow suffix or a formatter returning the complete label for the hidden legend count.
+ * {@docCategory Legends}
+ */
+export type LegendOverflowText = string | ILegendOverflowTextFormatter;
+
 export interface ILegendOverflowData {
   primary: ILegend[];
 
@@ -167,6 +181,13 @@ export interface ILegendsProps {
   legends: ILegend[];
 
   /**
+   * Accessible name for the legend list and overflow list.
+   * Empty strings use the default name.
+   * @default 'Legends'
+   */
+  ariaLabel?: string;
+
+  /**
    * Additional CSS class(es) to apply to the legneds component.
    */
   className?: string;
@@ -202,9 +223,10 @@ export interface ILegendsProps {
   focusZonePropsInHoverCard?: IFocusZoneProps;
 
   /**
-   * text for overflow legends string
+   * Text following the overflow count, or a formatter returning the complete overflow label.
+   * The formatter receives the number of hidden legends and supplies both visible text and the accessible name.
    */
-  overflowText?: string;
+  overflowText?: LegendOverflowText;
 
   /**
    * prop that decides if legends are focusable

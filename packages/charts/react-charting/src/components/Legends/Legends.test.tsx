@@ -2,7 +2,7 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { Legends } from './index';
 import { LegendsBase } from './Legends.base';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,6 +41,7 @@ const legends = [
   { title: 'Legend 16', color: DefaultPalette.redDark },
   { title: 'Legend 17', color: DefaultPalette.white },
 ];
+const overflowLegends = legends.map((legend, index) => ({ ...legend, key: String(index) }));
 
 const styles = {
   rect: {
@@ -87,6 +88,123 @@ describe('Legends snapShot testing', () => {
 describe('Legends - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
+
+  it.each([false, true])('updates the accessible name with enabledWrapLines=%s', enabledWrapLines => {
+    const { getAllByRole, rerender } = render(
+      <Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legendas" />,
+    );
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legendas');
+    });
+
+    rerender(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="Legenden" />);
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legenden');
+    });
+  });
+
+  it.each([false, true])('keeps the default name for an empty ariaLabel with enabledWrapLines=%s', enabledWrapLines => {
+    const { getAllByRole } = render(<Legends legends={legends} enabledWrapLines={enabledWrapLines} ariaLabel="" />);
+    getAllByRole('listbox', { hidden: true }).forEach(listbox => {
+      expect(listbox.getAttribute('aria-label')).toBe('Legends');
+    });
+  });
+
+  it.each([undefined, '', 'Legendas'])('names the overflow list using ariaLabel=%s', async ariaLabel => {
+    const result = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        ariaLabel={ariaLabel}
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 2) }}
+      />,
+    );
+    fireEvent.click(result.getByRole('button', { name: '2 more' }));
+
+    await waitFor(() => {
+      const listboxes = result.getAllByRole('listbox', { hidden: true });
+      expect(listboxes.length).toBe(2);
+      listboxes.forEach(listbox => {
+        expect(listbox.getAttribute('aria-label')).toBe(ariaLabel || 'Legends');
+      });
+    });
+  });
+
+  it('preserves the overflow focus zone accessible name override', async () => {
+    const result = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        ariaLabel="Legendas"
+        focusZonePropsInHoverCard={{ 'aria-label': 'Legendas adicionais' }}
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 2) }}
+      />,
+    );
+    fireEvent.click(result.getByRole('button', { name: '2 more' }));
+
+    expect(await result.findByRole('listbox', { name: 'Legendas adicionais' })).toBeTruthy();
+  });
+
+  it('uses the localized complete overflow label and updates its count', () => {
+    const overflowText = jest.fn((count: number) => (count === 1 ? 'mais uma legenda' : `mais ${count} legendas`));
+    const { getByRole, rerender } = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 3) }}
+        overflowText={overflowText}
+      />,
+    );
+    expect(getByRole('button', { name: 'mais 3 legendas' }).textContent).toBe('mais 3 legendas');
+    expect(overflowText).toHaveBeenLastCalledWith(3);
+
+    rerender(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 1) }}
+        overflowText={overflowText}
+      />,
+    );
+    expect(getByRole('button', { name: 'mais uma legenda' }).textContent).toBe('mais uma legenda');
+    expect(overflowText).toHaveBeenLastCalledWith(1);
+
+    overflowText.mockClear();
+    rerender(
+      <Legends legends={legends} enabledWrapLines overflowProps={{ overflowItems: [] }} overflowText={overflowText} />,
+    );
+    expect(overflowText).not.toHaveBeenCalled();
+  });
+
+  it('updates both overflow labels when the locale changes without changing the count', () => {
+    const props = {
+      legends,
+      enabledWrapLines: true,
+      overflowProps: { overflowItems: overflowLegends.slice(0, 3) },
+    };
+    const { getByRole, queryByRole, rerender } = render(
+      <Legends {...props} overflowText={count => `mais ${count} legendas`} />,
+    );
+    expect(getByRole('button', { name: 'mais 3 legendas' }).textContent).toBe('mais 3 legendas');
+
+    rerender(<Legends {...props} overflowText={count => `${count} weitere Legenden`} />);
+
+    expect(getByRole('button', { name: '3 weitere Legenden' }).textContent).toBe('3 weitere Legenden');
+    expect(queryByRole('button', { name: 'mais 3 legendas' })).toBeNull();
+  });
+
+  it.each([undefined, '', 'remaining'])('preserves string overflow formatting for %s', overflowText => {
+    const { getByRole } = render(
+      <Legends
+        legends={legends}
+        enabledWrapLines
+        overflowProps={{ overflowItems: overflowLegends.slice(0, 3) }}
+        overflowText={overflowText}
+      />,
+    );
+    const label = `3 ${overflowText || 'more'}`;
+    expect(getByRole('button', { name: label }).textContent).toBe(label);
+  });
 
   it('Should not mount legends when empty', () => {
     render(<Legends legends={[]} />);
