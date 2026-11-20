@@ -1,5 +1,5 @@
 import type { LegendsProps } from '../Legends/index';
-import type { AccessibilityProps, Chart } from '../../types/index';
+import type { AccessibilityProps, Chart, FocusRestorePolicy } from '../../types/index';
 import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { YValueHover } from '../CommonComponents/CartesianChart.types';
 import type { TitleStyles } from '../../utilities/Common.styles';
@@ -235,6 +235,25 @@ export interface GaugeChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Focus policy for segment/color/value content changes. Defaults to 'preserve', which leaves
+   * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
+   * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   * An open callout resolves its selected segment position against the current segments and
+   * rendered arc. Under 'preserve', custom callout inputs retain focus and component state
+   * while the selected legend, values, colors, and anchor update, with stable content types/keys.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
+  /**
+   * Segment to focus on a segment/color/value content change when focusRestorePolicy is 'reset'.
+   * When omitted, resets use the previously focused segment or needle. 'preserve' retains that target.
+   * Callback-only changes do not restore focus.
+   * Targets that are not currently tabbable are skipped, leaving focus unchanged.
+   * Simultaneous data and controlled legend updates use the updated legend selection.
+   */
+  focusOnReset?: { segmentIndex: number };
 
   /**
    * Optional callback to access the Chart interface. Use this instead of ref for accessing

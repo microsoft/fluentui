@@ -31,7 +31,8 @@ import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { PolarChart } from '../PolarChart/index';
 import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
-import type { Chart } from '../../types/index';
+import type { Chart, FocusRestorePolicy } from '../../types/index';
+import { useCompositeChartFocusRestore } from '../CommonComponents/useCompositeChartFocusRestore';
 
 // Re-export the typed VegaLiteSpec for public API
 export type { VegaLiteSpec } from './VegaLiteTypes';
@@ -78,6 +79,17 @@ export interface VegaSchema {
  * Props for VegaDeclarativeChart component
  */
 export interface VegaDeclarativeChartProps {
+  /**
+   * Focus policy for line and vertical bar data/color content changes.
+   * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
+   * chart target even from outside; 'none' disables automatic restoration.
+   * For hconcat/vconcat, only the last-focused child index receives 'reset'; other children use 'preserve'.
+   * If that child or its remembered target is unavailable, no other child is selected instead.
+   * Changing the policy alone does not move focus.
+   * Simultaneous schema data and legend-selection updates use the incoming selection before restoring focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
   /**
    * Vega-Lite chart schema
    */
@@ -222,7 +234,11 @@ function renderSingleChart(
   spec: VegaLiteSpec,
   colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme: boolean,
-  interactiveCommonProps: { componentRef: React.RefObject<Chart | null>; legendProps: MultiSelectLegendProps },
+  interactiveCommonProps: {
+    componentRef: React.RefObject<Chart | null>;
+    legendProps: MultiSelectLegendProps;
+    focusRestorePolicy?: FocusRestorePolicy;
+  },
 ): React.ReactElement {
   const chartType = getChartType(spec);
   const chartConfig = vegaChartMap[chartType.type];
@@ -400,18 +416,26 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     const colorMap = useColorMapping();
     const isDarkTheme = useIsDarkTheme();
     const chartRef = React.useRef<Chart>(null);
+    const { onSubplotFocus, getSubplotFocusRestorePolicy } = useCompositeChartFocusRestore(props.focusRestorePolicy);
 
-    const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
+    const [legendState, setLegendState] = React.useState<{ selectedLegends?: string[]; activeLegends: string[] }>({
+      selectedLegends: props.chartSchema.selectedLegends,
+      activeLegends: selectedLegends,
+    });
+    // Use incoming selection until the effect synchronizes local legend state.
+    const activeLegends =
+      legendState.selectedLegends === props.chartSchema.selectedLegends ? legendState.activeLegends : selectedLegends;
 
     const onActiveLegendsChange = (keys: string[]) => {
-      setActiveLegends(keys);
+      setLegendState({ selectedLegends: props.chartSchema.selectedLegends, activeLegends: keys });
       if (props.onSchemaChange) {
         props.onSchemaChange({ vegaLiteSpec, selectedLegends: keys });
       }
     };
 
     React.useEffect(() => {
-      setActiveLegends(props.chartSchema.selectedLegends ?? []);
+      const nextSelectedLegends = props.chartSchema.selectedLegends;
+      setLegendState({ selectedLegends: nextSelectedLegends, activeLegends: nextSelectedLegends ?? [] });
     }, [props.chartSchema.selectedLegends]);
 
     const multiSelectLegendProps = {
@@ -478,6 +502,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                 return (
                   <div
                     key={`chart_${index}`}
+                    onFocusCapture={() => onSubplotFocus(`chart_${index}`)}
                     style={{
                       gridRowStart: cellRow,
                       gridRowEnd: cellRow + 1,
@@ -486,7 +511,10 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                       minWidth: 0,
                     }}
                   >
-                    {renderSingleChart(mergedSpec, colorMap, isDarkTheme, interactiveCommonProps)}
+                    {renderSingleChart(mergedSpec, colorMap, isDarkTheme, {
+                      ...interactiveCommonProps,
+                      focusRestorePolicy: getSubplotFocusRestorePolicy(`chart_${index}`),
+                    })}
                   </div>
                 );
               })}
@@ -512,10 +540,18 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       }
 
       // Render single chart
-      const chartComponent = renderSingleChart(vegaLiteSpec, colorMap, isDarkTheme, interactiveCommonProps);
+      const chartComponent = renderSingleChart(vegaLiteSpec, colorMap, isDarkTheme, {
+        ...interactiveCommonProps,
+        focusRestorePolicy: getSubplotFocusRestorePolicy('chart_0'),
+      });
 
       return (
-        <div ref={forwardedRef} className={props.className} style={props.style}>
+        <div
+          ref={forwardedRef}
+          className={props.className}
+          style={props.style}
+          onFocusCapture={() => onSubplotFocus('chart_0')}
+        >
           {chartComponent}
         </div>
       );

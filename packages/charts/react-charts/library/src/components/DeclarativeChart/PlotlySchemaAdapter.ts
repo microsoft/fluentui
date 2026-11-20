@@ -80,7 +80,7 @@ import {
   getAxisKey,
   isScatterAreaChart,
 } from '@fluentui/chart-utilities';
-import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { createCardinalCurve } from '../../utilities/curveFactory';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
@@ -3343,7 +3343,7 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
   switch (line.shape) {
     case 'spline':
       const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
-      lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
+      lineOptions.curve = createCardinalCurve(1 - smoothing / 1.3);
       break;
     case 'hv':
       lineOptions.curve = 'stepAfter';
