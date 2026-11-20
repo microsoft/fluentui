@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { slot, useEventCallback, getIntrinsicElementProps, mergeCallbacks } from '@fluentui/react-utilities';
+import { slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import type {
   ColorSwatchBaseProps,
   ColorSwatchBaseState,
@@ -63,7 +63,7 @@ export const useColorSwatchBase_unstable = (
       disabledIcon: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         role,
         ...ariaSelected,
@@ -75,7 +75,7 @@ export const useColorSwatchBase_unstable = (
           ...rootVariables,
           ...style,
         },
-      }),
+      },
       { elementType: 'button' },
     ),
     icon: iconShorthand,

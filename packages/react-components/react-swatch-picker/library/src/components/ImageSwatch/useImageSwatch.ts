@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import { slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import type {
   ImageSwatchBaseProps,
   ImageSwatchBaseState,
@@ -49,7 +49,7 @@ export const useImageSwatchBase_unstable = (
       root: 'button',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         role,
         ...ariaSelected,
@@ -60,7 +60,7 @@ export const useImageSwatchBase_unstable = (
           backgroundImage: `url(${src})`,
           ...style,
         },
-      }),
+      },
       { elementType: 'button' },
     ),
     value,
