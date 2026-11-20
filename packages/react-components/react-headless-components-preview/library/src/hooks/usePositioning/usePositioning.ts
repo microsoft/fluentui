@@ -12,13 +12,7 @@ import type {
 import type { PositioningReturn, PositioningTarget, UsePositioningOptions } from './types';
 import { ABOVE, BEFORE, BELOW, CENTER, END, START } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
-import {
-  applyOffset,
-  getPositionArea,
-  resolveOffset,
-  shorthandToPositionArea,
-  updatePlacementAttribute,
-} from './utils';
+import { getPositionArea, shorthandToPositionArea, updatePlacementAttribute } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
@@ -26,6 +20,9 @@ export type TargetElement = HTMLElement | PositioningVirtualElement;
 type PositioningEndEvent = Parameters<NonNullable<UsePositioningOptions['onPositioningEnd']>>[0];
 
 const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
+
+/** The `position-try-fallbacks` used when no `fallbackPositions` are passed */
+const DEFAULT_FLIP = 'flip-block, flip-inline, flip-block flip-inline';
 
 /** Written for CSS anchor positioning, removed when `@fluentui/react-positioning` positions the container */
 const ANCHOR_STYLES = [
@@ -88,7 +85,9 @@ export function usePositioning(options: UsePositioningOptions): PositioningRetur
 
   const align = normalizeAlign(alignInput);
 
-  const [mainAxis, crossAxis] = resolveOffset(offset);
+  // The function form can't be expressed with CSS, `@fluentui/react-positioning` handles it
+  const mainAxis = typeof offset === 'number' ? offset : (typeof offset === 'object' && offset?.mainAxis) || 0;
+  const crossAxis = (typeof offset === 'object' && offset?.crossAxis) || 0;
   const blockPosition = position === ABOVE || position === BELOW;
 
   const { targetDocument } = useFluent();
@@ -111,6 +110,10 @@ export function usePositioning(options: UsePositioningOptions): PositioningRetur
   const [anchorName] = React.useState(() => `--popover-anchor-${++nextAnchorId}`);
   const positionArea = getPositionArea(position, align);
   const placement = getPlacementString(position, align);
+  const fallbackAreas = React.useMemo(
+    () => (fallbackPositions.length > 0 ? fallbackPositions.map(shorthandToPositionArea).join(', ') : DEFAULT_FLIP),
+    [fallbackPositions],
+  );
 
   // Whether `@fluentui/react-positioning` wrote its styles since CSS anchor positioning was used
   const floatingStylesRef = React.useRef(false);
@@ -184,65 +187,60 @@ export function usePositioning(options: UsePositioningOptions): PositioningRetur
       return;
     }
 
+    const set = (property: string, value: string | null) =>
+      value === null ? node.style.removeProperty(property) : node.style.setProperty(property, value);
+    const setAxisMargin = (axis: 'block' | 'inline', px: number) => {
+      if (px) {
+        set(`margin-${axis}-start`, `${px}px`);
+        set(`margin-${axis}-end`, `${px}px`);
+      }
+    };
+
     node.setAttribute('data-placement', placement);
 
     if (jsMode) {
       // Positioned by `@fluentui/react-positioning`, it writes the position and the offsets
-      ANCHOR_STYLES.forEach(property => node.style.removeProperty(property));
+      ANCHOR_STYLES.forEach(property => set(property, null));
       return;
     }
 
     if (floatingStylesRef.current) {
       floatingStylesRef.current = false;
-      FLOATING_STYLES.forEach(property => node.style.removeProperty(property));
+      FLOATING_STYLES.forEach(property => set(property, null));
       FLOATING_ATTRIBUTES.forEach(attribute => node.removeAttribute(attribute));
     }
 
     Object.assign(node.style, { position: strategy, inset: 'auto', margin: '0' });
-    applyOffset(node, position, mainAxis, crossAxis);
-
-    if (matchTargetSize === 'width') {
-      node.style.setProperty('width', 'anchor-size(width)');
-    } else {
-      node.style.removeProperty('width');
-    }
-
-    node.style.setProperty('position-anchor', anchorName);
+    setAxisMargin(blockPosition ? 'block' : 'inline', mainAxis);
+    setAxisMargin(blockPosition ? 'inline' : 'block', crossAxis);
+    set('width', matchTargetSize === 'width' ? 'anchor-size(width)' : null);
+    set('position-anchor', anchorName);
 
     if (coverTarget) {
-      node.style.setProperty('position-area', 'center');
-      node.style.setProperty('align-self', blockPosition ? (position === ABOVE ? END : START) : align);
-      node.style.setProperty('justify-self', blockPosition ? align : position === BEFORE ? END : START);
-      node.style.removeProperty('position-try-fallbacks');
+      set('position-area', 'center');
+      set('align-self', blockPosition ? (position === ABOVE ? END : START) : align);
+      set('justify-self', blockPosition ? align : position === BEFORE ? END : START);
+      set('position-try-fallbacks', null);
       return;
     }
 
-    node.style.setProperty('position-area', positionArea);
+    set('position-area', positionArea);
 
     /*
      * Workaround for https://crbug.com/438334710: Chromium (<=130-ish) doesn't
-       apply the implicit `anchor-center` self-alignment that the spec defines
-       for single-keyword `position-area` values (`block-start`, `block-end`,
-    `    inline-start`, `inline-end`) or `span-all`.
-    */
+     * apply the implicit `anchor-center` self-alignment that the spec defines
+     * for single-keyword `position-area` values (`block-start`, `block-end`,
+     * `inline-start`, `inline-end`) or `span-all`.
+     */
     if (align === CENTER) {
-      node.style.setProperty('place-self', 'anchor-center');
+      set('place-self', 'anchor-center');
     } else {
-      node.style.removeProperty('place-self');
-      node.style.removeProperty('align-self');
-      node.style.removeProperty('justify-self');
+      set('place-self', null);
+      set('align-self', null);
+      set('justify-self', null);
     }
 
-    if (pinned) {
-      node.style.removeProperty('position-try-fallbacks');
-      return;
-    }
-
-    if (fallbackPositions.length > 0) {
-      node.style.setProperty('position-try-fallbacks', fallbackPositions.map(shorthandToPositionArea).join(', '));
-    } else {
-      node.style.setProperty('position-try-fallbacks', 'flip-block, flip-inline, flip-block flip-inline');
-    }
+    set('position-try-fallbacks', pinned ? null : fallbackAreas);
   }, [
     containerEl,
     enabled,
@@ -250,7 +248,7 @@ export function usePositioning(options: UsePositioningOptions): PositioningRetur
     anchorName,
     positionArea,
     placement,
-    fallbackPositions,
+    fallbackAreas,
     pinned,
     position,
     align,

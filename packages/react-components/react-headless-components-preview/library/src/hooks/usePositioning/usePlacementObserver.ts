@@ -2,7 +2,7 @@
 
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { UsePositioningOptions } from './types';
-import { applyVisibility, debounce, updatePlacementAttribute } from './utils';
+import { applyVisibility, updatePlacementAttribute } from './utils';
 
 type PlacementObserverOptions = Pick<
   UsePositioningOptions,
@@ -44,7 +44,17 @@ export function usePlacementObserver(
       return;
     }
 
-    const debouncedUpdate = debounce(update);
+    // Coalesces the calls made within a task into one update, run in a microtask before the next paint
+    let pending = false;
+    const debouncedUpdate = () => {
+      if (!pending) {
+        pending = true;
+        Promise.resolve().then(() => {
+          pending = false;
+          update();
+        });
+      }
+    };
     const resizeObserver =
       disableUpdateOnResize || !win.ResizeObserver
         ? null

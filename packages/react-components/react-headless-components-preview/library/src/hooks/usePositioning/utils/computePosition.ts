@@ -3,9 +3,8 @@ import type { LogicalAlignment } from '../types';
 import { ABOVE, AFTER, BEFORE, BELOW, CENTER, END, START } from '../constants';
 import { getPlacementString } from './placement';
 
-export interface ComputePositionConfig {
-  tolerance?: number;
-}
+/** Absorbs subpixel mismatches between the rects */
+const TOLERANCE = 2;
 
 export interface ComputePositionReturn {
   position: Position;
@@ -22,39 +21,33 @@ export interface Measurable {
  * Detects the placement of the floating element from the rects. The result is physical: `before` is on the left of the
  * reference, and `start` is the left (or top) edge.
  */
-export function computePosition(
-  reference: Measurable,
-  floating: Measurable,
-  config?: ComputePositionConfig,
-): ComputePositionReturn | null {
-  const tolerance = config?.tolerance ?? 2;
-  const referenceRect = reference.getBoundingClientRect();
-  const floatingRect = floating.getBoundingClientRect();
+export function computePosition(reference: Measurable, floating: Measurable): ComputePositionReturn | null {
+  const r = reference.getBoundingClientRect();
+  const f = floating.getBoundingClientRect();
   const position: Position | null =
-    floatingRect.bottom <= referenceRect.top + tolerance
+    f.bottom <= r.top + TOLERANCE
       ? ABOVE
-      : floatingRect.top >= referenceRect.bottom - tolerance
+      : f.top >= r.bottom - TOLERANCE
       ? BELOW
-      : floatingRect.right <= referenceRect.left + tolerance
+      : f.right <= r.left + TOLERANCE
       ? BEFORE
-      : floatingRect.left >= referenceRect.right - tolerance
+      : f.left >= r.right - TOLERANCE
       ? AFTER
       : null;
+
   if (!position) {
     return null;
   }
 
   const block = position === ABOVE || position === BELOW;
-  const start = Math.abs(
-    (block ? floatingRect.left : floatingRect.top) - (block ? referenceRect.left : referenceRect.top),
-  );
-  const end = Math.abs(
-    (block ? floatingRect.right : floatingRect.bottom) - (block ? referenceRect.right : referenceRect.bottom),
-  );
-  const align: LogicalAlignment = start <= tolerance ? START : end <= tolerance ? END : CENTER;
-  const placement = getPlacementString(position, align);
+  const align: LogicalAlignment =
+    Math.abs(block ? f.left - r.left : f.top - r.top) <= TOLERANCE
+      ? START
+      : Math.abs(block ? f.right - r.right : f.bottom - r.bottom) <= TOLERANCE
+      ? END
+      : CENTER;
 
-  return { position, align, placement };
+  return { position, align, placement: getPlacementString(position, align) };
 }
 
 /** Mirrors the placement of the floating element into its `data-placement` attribute */
