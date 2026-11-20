@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs(react-toast): clarify priority ordering where lower numeric values take precedence",
+  "packageName": "@fluentui/react-toast",
+  "email": "9031842908.vk@gmail.com",
+  "dependentChangeType": "patch"
+}

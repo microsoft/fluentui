@@ -62,6 +62,7 @@ export function createToaster(options: Partial<ToasterOptions>): {
       return a.order - b.order;
     }
 
+    // Min-heap: lower numeric priority values take precedence (served first)
     return a.priority - b.priority;
   });
 
