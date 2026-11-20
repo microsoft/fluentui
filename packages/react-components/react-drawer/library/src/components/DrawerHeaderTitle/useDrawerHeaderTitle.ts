@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useDialogContext_unstable } from '@fluentui/react-dialog';
 
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
@@ -19,7 +19,7 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const { children, heading } = props;
+  const { children, heading, action, ...rest } = props;
   const headingId = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
   return {
@@ -30,10 +30,10 @@ export const useDrawerHeaderTitle_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     heading: slot.optional(heading, {
@@ -44,7 +44,7 @@ export const useDrawerHeaderTitle_unstable = (
       renderByDefault: true,
       elementType: 'h2',
     }),
-    action: slot.optional(props.action, {
+    action: slot.optional(action, {
       elementType: 'div',
     }),
   };

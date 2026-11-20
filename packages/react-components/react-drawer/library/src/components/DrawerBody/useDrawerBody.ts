@@ -7,7 +7,6 @@ import {
   useAnimationFrame,
   useMergedRefs,
   useIsomorphicLayoutEffect,
-  getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 
 import { useDrawerContext_unstable } from '../../contexts/drawerContext';
@@ -113,12 +112,12 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
     },
 
     root: slot.always(
-      getIntrinsicElementProps<DrawerBodyProps>('div', {
+      {
         ref: mergedRef,
         ...props,
         // eslint-disable-next-line react-hooks/refs
         onScroll: mergeCallbacks(props.onScroll, onScroll),
-      }),
+      },
       { elementType: 'div' },
     ),
   };
