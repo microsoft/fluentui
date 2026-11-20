@@ -10,14 +10,16 @@ import {
   Tree,
   TreeItem,
   TreeItemLayout,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const ItemWithControlledMenu = ({ children }: { children: string }): JSXElement => {
   const [open, setOpen] = React.useState(false);
+  const focusTargetAttribute = useRestoreFocusTarget();
 
   return (
-    <TreeItem itemType="leaf" aria-description="has actions">
+    <TreeItem itemType="leaf" aria-description="has actions" {...focusTargetAttribute}>
       <TreeItemLayout
         actions={{
           onVisibilityChange: (_, data) => {
@@ -67,6 +69,7 @@ Reset \`open\` to \`false\` when \`data.visible\` is \`false\`; leave it unchang
 Hidden actions are unmounted. Unmounting a menu does not reset controlled state stored in the tree item or notify \`onOpenChange\` that the menu has closed.
 Without this reset, a menu whose state is still \`open\` remounts open when the actions become visible again.
 Keep separate menu state for each tree item, outside the actions subtree.
+Apply \`useRestoreFocusTarget\` to the persistent \`TreeItem\` so focus can return to it if hiding the actions removes the focused menu and its trigger.
 
 Open an item's menu, move to the other item so the first item's actions disappear, then return.
 The first item's actions should reappear with its menu closed, until you open it again.
