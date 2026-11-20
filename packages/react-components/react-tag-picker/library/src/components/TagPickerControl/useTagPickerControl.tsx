@@ -41,7 +41,9 @@ export const useTagPickerControlBase_unstable = (
   const invalid = useFieldContext_unstable()?.validationState === 'error';
   const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
 
+  const { targetDocument } = useFluent_unstable();
   const tagPickerId = useId('tagPicker-');
+  const rafIdRef = React.useRef<number | null>(null);
 
   const innerRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLSpanElement>(null);
@@ -69,9 +71,21 @@ export const useTagPickerControlBase_unstable = (
     expandIcon.ref = expandIconMergeRef;
   }
 
+  const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
+    const targetWindow = targetDocument?.defaultView;
+
+    if (targetWindow) {
+      rafIdRef.current = targetWindow.requestAnimationFrame(() => {
+        innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+      });
+    }
+  });
   const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
     elementType: 'span',
     renderByDefault: Boolean(secondaryAction || expandIcon),
+    defaultProps: {
+      ref: observerRef,
+    },
   });
   const mergedAsideRefs = useMergedRefs(asideRef, aside?.ref);
   if (aside) {
@@ -127,6 +141,16 @@ export const useTagPickerControlBase_unstable = (
     state.expandIcon.ref = expandIconLabelMergeRef;
   }
 
+  React.useEffect(() => {
+    const targetWindow = targetDocument?.defaultView;
+
+    return () => {
+      if (rafIdRef.current && targetWindow) {
+        targetWindow.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
+  }, [targetDocument]);
+
   return state;
 };
 
@@ -151,51 +175,13 @@ export const useTagPickerControl_unstable = (
           expandIcon: <ChevronDownRegular />,
         }
       : props;
-  const rootRef = React.useRef<HTMLDivElement>(null);
-  const baseState = useTagPickerControlBase_unstable(baseProps, useMergedRefs(ref, rootRef));
+  const baseState = useTagPickerControlBase_unstable(baseProps, ref);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
-  const asideRef = useTagPickerControlAsideWidth(rootRef, baseState.aside?.ref);
 
   return {
     ...baseState,
-    aside: baseState.aside && { ...baseState.aside, ref: asideRef },
     size,
     appearance,
   };
 };
-
-/**
- * Measures the aside and exposes its width as a CSS variable on the root, so that the styles can reserve space for it.
- * This is a styling concern, so it is not part of the base hook.
- */
-function useTagPickerControlAsideWidth(
-  rootRef: React.RefObject<HTMLDivElement | null>,
-  asideRef: React.Ref<HTMLSpanElement> | undefined,
-): React.Ref<HTMLSpanElement> {
-  const { targetDocument } = useFluent_unstable();
-  const rafIdRef = React.useRef<number | null>(null);
-
-  const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
-    const targetWindow = targetDocument?.defaultView;
-
-    if (targetWindow) {
-      rafIdRef.current = targetWindow.requestAnimationFrame(() => {
-        rootRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
-      });
-    }
-  });
-  const mergedAsideRef = useMergedRefs(observerRef, asideRef);
-
-  React.useEffect(() => {
-    const targetWindow = targetDocument?.defaultView;
-
-    return () => {
-      if (rafIdRef.current && targetWindow) {
-        targetWindow.cancelAnimationFrame(rafIdRef.current);
-      }
-    };
-  }, [targetDocument]);
-
-  return mergedAsideRef;
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: move aside width and input stretch measurements from base hooks to styled hooks",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

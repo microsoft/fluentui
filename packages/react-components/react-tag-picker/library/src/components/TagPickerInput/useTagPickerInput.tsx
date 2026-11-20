@@ -56,6 +56,24 @@ export const useTagPickerInputBase_unstable = (
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const contextValue = useTagPickerContext_unstable(ctx => ctx.value);
 
+  useIsomorphicLayoutEffect(() => {
+    if (!triggerRef.current) {
+      return;
+    }
+    setTagPickerInputStretchStyle(triggerRef.current);
+  }, [selectedOptions, triggerRef]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (triggerRef.current) {
+      const input = triggerRef.current;
+      const cb = () => setTagPickerInputStretchStyle(input);
+      input.addEventListener('input', cb);
+      return () => {
+        input.removeEventListener('input', cb);
+      };
+    }
+  }, [triggerRef]);
+
   const { value = contextValue, disabled = contextDisabled } = fieldProps;
 
   const isTypingRef = React.useRef(false);
@@ -146,27 +164,6 @@ export const useTagPickerInput_unstable = (
   const baseState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef as React.RefObject<HTMLInputElement>);
-  const selectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions);
-
-  // Stretching the input while typing is a styling concern, so it lives here rather than in the base hook.
-  useIsomorphicLayoutEffect(() => {
-    if (!triggerRef.current) {
-      return;
-    }
-    setTagPickerInputStretchStyle(triggerRef.current);
-  }, [selectedOptions, triggerRef]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (triggerRef.current) {
-      const input = triggerRef.current;
-      const cb = () => setTagPickerInputStretchStyle(input);
-      input.addEventListener('input', cb);
-      return () => {
-        input.removeEventListener('input', cb);
-      };
-    }
-  }, [triggerRef]);
 
   return {
     ...baseState,
