@@ -76,7 +76,7 @@ Intent.parameters = {
         '- warning',
         '- error',
         '',
-        'Each intent affects the default icon in the title and its colour. These icon slots can be overriden',
+        'Each intent affects the default icon in the title and its colour. These icon slots can be overridden',
         'to render other content such as progress spinners or avatars.',
         '',
         '>intent determines the urgency of the screen reader aria-live narration.',
