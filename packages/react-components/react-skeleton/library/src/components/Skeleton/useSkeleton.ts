@@ -45,12 +45,15 @@ export const useSkeletonBase_unstable = (
   props: SkeletonBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): SkeletonBaseState => {
+  // `size` and `shape` are design props and `width` is deprecated, none of them are DOM attributes.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const { width, size, shape, ...rest } = props;
   const root = slot.always(
     {
       ref,
       role: 'progressbar',
       'aria-busy': true,
-      ...props,
+      ...rest,
     },
     { elementType: 'div' },
   );

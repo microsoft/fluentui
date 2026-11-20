@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Skeleton } from './Skeleton';
+import { useSkeletonBase_unstable } from './useSkeleton';
 import { useSkeletonItem_unstable } from '../SkeletonItem/useSkeletonItem';
 import { SkeletonContextProvider } from '../../contexts/SkeletonContext';
 import { isConformant } from '../../testing/isConformant';
@@ -59,7 +60,10 @@ describe('Skeleton', () => {
 describe('Skeleton DOM attributes', () => {
   it('does not render component props as DOM attributes', () => {
     const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    const { container } = render(<Skeleton animation="pulse" appearance="translucent" />);
+    const { container } = render(
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      <Skeleton animation="pulse" appearance="translucent" shape="circle" size={32} width="50%" />,
+    );
 
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
@@ -68,5 +72,16 @@ describe('Skeleton DOM attributes', () => {
       'class',
       'role',
     ]);
+  });
+
+  it('does not forward design props from the base hook to the root slot', () => {
+    const { result } = renderHook(() =>
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      useSkeletonBase_unstable({ shape: 'circle', size: 32, width: '50%' }, React.createRef()),
+    );
+
+    expect(result.current.root).not.toHaveProperty('shape');
+    expect(result.current.root).not.toHaveProperty('size');
+    expect(result.current.root).not.toHaveProperty('width');
   });
 });
