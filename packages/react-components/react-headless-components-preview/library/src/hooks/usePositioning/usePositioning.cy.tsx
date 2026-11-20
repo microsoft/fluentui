@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRoot } from 'react-dom/client';
+import { mount } from '@fluentui/scripts-cypress';
 import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import type { Alignment, Position } from '@fluentui/react-positioning';
 import { usePositioning } from './usePositioning';
@@ -65,65 +65,71 @@ const toRect = (element: Element): Rect => {
   return { left, top, width, height };
 };
 
-async function render(scenario: Scenario, withoutAnchors: boolean): Promise<Result> {
+/**
+ * Mounts the scenario with `mount()` from `@fluentui/scripts-cypress`, it works with every React version the package
+ * is tested with. `withoutAnchors` makes `CSS.supports()` report no support for CSS anchor positioning.
+ */
+function render(scenario: Scenario, withoutAnchors: boolean): Cypress.Chainable<Result> {
   const originalSupports = window.CSS.supports;
+  const dir = scenario.dir ?? 'ltr';
 
-  if (withoutAnchors) {
-    window.CSS.supports = () => false;
-  }
+  return cy
+    .then(() => {
+      if (withoutAnchors) {
+        window.CSS.supports = () => false;
+      }
+      document.documentElement.dir = dir;
+    })
+    .then(() =>
+      mount(
+        <Provider value={{ dir, targetDocument: document }}>
+          <Content {...scenario} />
+        </Provider>,
+      ),
+    )
+    .then(async () => {
+      try {
+        // Rendering, layout effects and position updates
+        await nextFrame();
+        await nextFrame();
+        await nextFrame();
 
-  const host = document.createElement('div');
-  document.body.appendChild(host);
-  document.documentElement.dir = scenario.dir ?? 'ltr';
-  const root = createRoot(host);
+        const popup = document.querySelector('[data-testid="popup"]') as HTMLElement;
+        const anchor = document.querySelector('[data-testid="anchor"]') as HTMLElement;
+        const arrow = document.querySelector('[data-testid="arrow"]');
 
-  try {
-    root.render(
-      <Provider value={{ dir: scenario.dir ?? 'ltr', targetDocument: document }}>
-        <Content {...scenario} />
-      </Provider>,
-    );
-    // Rendering, layout effects and position updates
-    await nextFrame();
-    await nextFrame();
-    await nextFrame();
-
-    const popup = host.querySelector('[data-testid="popup"]') as HTMLElement;
-    const anchor = host.querySelector('[data-testid="anchor"]') as HTMLElement;
-    const arrow = host.querySelector('[data-testid="arrow"]');
-
-    return {
-      rect: toRect(popup),
-      anchorName: anchor.style.getPropertyValue('anchor-name'),
-      arrow: arrow && toRect(arrow),
-      maxHeight: popup.style.maxHeight,
-    };
-  } finally {
-    root.unmount();
-    host.remove();
-    document.documentElement.removeAttribute('dir');
-    window.CSS.supports = originalSupports;
-  }
+        return {
+          rect: toRect(popup),
+          anchorName: anchor.style.getPropertyValue('anchor-name'),
+          arrow: arrow && toRect(arrow),
+          maxHeight: popup.style.maxHeight,
+        };
+      } finally {
+        document.documentElement.removeAttribute('dir');
+        window.CSS.supports = originalSupports;
+      }
+    });
 }
 
-async function compare(scenarios: Array<[string, Scenario]>) {
+function compare(scenarios: Array<[string, Scenario]>): Cypress.Chainable<string[]> {
   const mismatches: string[] = [];
+  const keys: Array<keyof Rect> = ['left', 'top', 'width', 'height'];
 
-  for (const [name, scenario] of scenarios) {
-    const css = await render(scenario, false);
-    const js = await render(scenario, true);
+  scenarios.forEach(([name, scenario]) => {
+    render(scenario, false).then(css =>
+      render(scenario, true).then(js => {
+        if (!css.anchorName || js.anchorName) {
+          mismatches.push(`${name}: anchor-name is "${css.anchorName}" with CSS and "${js.anchorName}" without`);
+        }
 
-    if (!css.anchorName || js.anchorName) {
-      mismatches.push(`${name}: anchor-name is "${css.anchorName}" with CSS and "${js.anchorName}" without`);
-    }
+        if (keys.some(key => Math.abs(css.rect[key] - js.rect[key]) > 1)) {
+          mismatches.push(`${name}\n  css: ${JSON.stringify(css.rect)}\n  js:  ${JSON.stringify(js.rect)}`);
+        }
+      }),
+    );
+  });
 
-    const keys: Array<keyof Rect> = ['left', 'top', 'width', 'height'];
-    if (keys.some(key => Math.abs(css.rect[key] - js.rect[key]) > 1)) {
-      mismatches.push(`${name}\n  css: ${JSON.stringify(css.rect)}\n  js:  ${JSON.stringify(js.rect)}`);
-    }
-  }
-
-  return mismatches;
+  return cy.wrap(mismatches);
 }
 
 /**
@@ -151,7 +157,12 @@ describe('usePositioning', () => {
     document.body.style.margin = '0';
   });
 
-  it('puts the container at the same place with CSS anchor positioning and @fluentui/react-positioning', () => {
+  it('puts the container at the same place with CSS anchor positioning and @fluentui/react-positioning', function () {
+    // Older browsers (the Electron of Cypress 13) don't support CSS anchor positioning, there is nothing to compare
+    if (!window.CSS.supports('(anchor-name: --a) and (position-area: top)')) {
+      this.skip();
+    }
+
     const scenarios: Array<[string, Scenario]> = [];
     const alignments = supportsSafeAnchorCenter() ? ALIGNMENTS : ALIGNMENTS.filter(align => align !== 'center');
 
@@ -171,34 +182,26 @@ describe('usePositioning', () => {
       { options: { position: 'before', align: 'end', fallbackPositions: ['after-top'] } },
     ]);
 
-    return cy.wrap(compare(scenarios), { timeout: 20000 }).should('deep.equal', []);
+    compare(scenarios).should('deep.equal', []);
   });
 
   it('positions in JavaScript when there is an arrow', () => {
-    return cy
-      .wrap(render({ options: { position: 'below' }, arrow: true }, false), { timeout: 10000 })
-      .should(subject => {
-        const result = subject as Result;
-        expect(result.anchorName).to.equal('');
-        // Below the target, centered
-        expect(result.rect).to.deep.equal({ left: 400, top: 340, width: 200, height: 100 });
-        // The arrow points to the center of the target
-        expect(result.arrow!.left + result.arrow!.width / 2).to.be.closeTo(ANCHOR.left + ANCHOR.width / 2, 1);
-      });
+    render({ options: { position: 'below' }, arrow: true }, false).then(result => {
+      expect(result.anchorName).to.equal('');
+      // Below the target, centered
+      expect(result.rect).to.deep.equal({ left: 400, top: 340, width: 200, height: 100 });
+      // The arrow points to the center of the target
+      expect(result.arrow!.left + result.arrow!.width / 2).to.be.closeTo(ANCHOR.left + ANCHOR.width / 2, 1);
+    });
   });
 
   it('positions in JavaScript with autoSize', () => {
     // There are 360px below the target
-    return cy
-      .wrap(render({ options: { position: 'below', autoSize: true, pinned: true }, height: 500 }, false), {
-        timeout: 10000,
-      })
-      .should(subject => {
-        const result = subject as Result;
-        expect(result.anchorName).to.equal('');
-        expect(result.maxHeight).to.equal('360px');
-        expect(result.rect.top).to.equal(340);
-        expect(result.rect.height).to.equal(360);
-      });
+    render({ options: { position: 'below', autoSize: true, pinned: true }, height: 500 }, false).then(result => {
+      expect(result.anchorName).to.equal('');
+      expect(result.maxHeight).to.equal('360px');
+      expect(result.rect.top).to.equal(340);
+      expect(result.rect.height).to.equal(360);
+    });
   });
 });
