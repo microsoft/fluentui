@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add click-trigger timing to the TagPickerControl base hook for native popover composition.",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}
