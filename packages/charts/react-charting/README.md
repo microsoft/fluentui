@@ -30,6 +30,39 @@ To import charting components:
 import { ComponentName } from '@fluentui/react-charting/lib/ComponentName';
 ```
 
+### Declarative chart colors
+
+Pie and donut `marker.colors` values and Gantt scatter `fillcolor` values for `fill: 'toself'` traces are validated
+using D3's color parser.
+Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and `hsl()`/`hsla()`.
+Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
+included in chart or legend styles. This validation also applies during server-side rendering.
+
+Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars are validated with the same parser.
+Valid colors are preserved, including transparency; invalid or missing fill colors use Plotly's transparent default,
+`rgba(0,0,0,0)`.
+
+Table header and cell `font.color` values are validated after resolving scalar, column, or per-cell colors.
+Valid colors are preserved; invalid colors are omitted so the table's default text styling applies.
+
+Title `font.color`, annotation-only layout `paper_bgcolor`, `plot_bgcolor`, and `font.color`, and annotation
+`bgcolor`, `bordercolor`, `font.color`, and `arrowcolor` use the same validation. Invalid colors are omitted to
+retain default styling; invalid arrow colors fall back to the validated annotation text color.
+
+### Declarative chart styles
+
+The internal [StyleAdapter](src/utilities/StyleAdapter.ts) provides shared schema style validation.
+Schema-driven styles are validated before reaching CSS, including titles on multi-plot charts.
+Font families accept comma-separated CSS font names (including quoted names), but not CSS escapes or declarations.
+Title shadows accept a single shadow with two offsets, an optional nonnegative blur radius, and an optional parsed color.
+Font sizes, chart dimensions, and layout margins must be finite numbers in their supported ranges.
+Plotly title padding accepts finite signed offsets; layout margins remain nonnegative.
+Annotation sizes and padding also accept simple CSS lengths. Title and annotation font weights accept numbers from 1 to 1000
+or the keywords `normal`, `bold`, `bolder`, and `lighter`.
+Table alignment is limited to Plotly's `left`, `center`, and `right`, including scalar, column, per-cell, and template values.
+Invalid style values are omitted or use the existing chart defaults; arbitrary CSS functions, rules, and declarations
+are not supported in these schema style fields. Direct component styling props are not schema validation boundaries.
+
 ## Contact
 
 The charting project is actively funded by a small feature team. The team responds within 1-2 business days for any queries or doubts.

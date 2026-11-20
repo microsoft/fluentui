@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: include supported font-weight keywords in the Plotly font schema type",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "v-baambati@microsoft.com"
+}

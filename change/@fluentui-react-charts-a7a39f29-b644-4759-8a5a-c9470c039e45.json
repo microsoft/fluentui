@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: validate declarative chart colors and schema-driven styles with shared Plotly/Vega validators, preserving supported font-weight mappings and signed title offsets",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
