@@ -202,3 +202,36 @@ describe('Switch', () => {
     expect(input.required).toBe(true);
   });
 });
+
+describe('Switch DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Switch
+        checked
+        className="custom"
+        disabledFocusable
+        label="Label"
+        labelPosition="before"
+        onChange={() => undefined}
+        size="small"
+        style={{ color: 'red' }}
+        title="Title"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(root.querySelector('input')!.getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'checked',
+      'class',
+      'id',
+      'role',
+      'title',
+      'type',
+    ]);
+  });
+});
