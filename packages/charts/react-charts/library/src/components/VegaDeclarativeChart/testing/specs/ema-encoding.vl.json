@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Parameterized retention EMA with nulls and unequal group counts.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "group": "A", "amount": 2 },
+      { "group": "A", "amount": null },
+      { "group": "A", "amount": 6 },
+      { "group": "A", "amount": 10 },
+      { "group": "B", "amount": 4 },
+      { "group": "B", "amount": 8 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "group", "type": "nominal" },
+    "y": { "field": "amount", "aggregate": { "exponential": 0.25 }, "type": "quantitative" },
+    "tooltip": [
+      {
+        "field": "amount",
+        "aggregate": { "exponential": 0.25 },
+        "type": "quantitative",
+        "title": "EMA",
+        "format": ".3f"
+      },
+      { "aggregate": "count", "type": "quantitative", "title": "Rows" },
+      { "field": "amount", "aggregate": "valid", "type": "quantitative", "title": "Valid" }
+    ]
+  }
+}

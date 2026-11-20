@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Typed repeat references bind independently in every cell of a 2-by-2 matrix.",
+  "data": {
+    "values": [
+      { "a": 1, "b": 10 },
+      { "a": 2, "b": 20 }
+    ]
+  },
+  "repeat": { "row": ["a", "b"], "column": ["a", "b"] },
+  "spec": {
+    "width": 640,
+    "height": 400,
+    "mark": "point",
+    "encoding": {
+      "x": { "field": { "repeat": "column" }, "type": "quantitative" },
+      "y": { "field": { "repeat": "row" }, "type": "quantitative" }
+    }
+  }
+}

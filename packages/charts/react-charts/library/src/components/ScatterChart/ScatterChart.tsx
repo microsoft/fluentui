@@ -34,7 +34,6 @@ import type {
   ChildProps,
   CustomizedCalloutData,
   Margins,
-  RefArrayData,
   ScatterChartDataPoint,
   ScatterChartPoints,
   YValueHover,
@@ -68,7 +67,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   ScatterChartProps
 >((props, forwardedRef) => {
   const _circleId: string = useId('circle');
-  const _seriesId: string = useId('seriesID');
+  // Preserve the existing generated ID sequence for chart markup.
+  useId('seriesID');
   const _verticalLine: string = useId('verticalLine');
   const _firstRenderOptimization = true;
   const _emptyChartId: string = useId('_ScatterChart_empty');
@@ -78,7 +78,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _yAxisScale: any = '';
   let _uniqueCallOutID: string | null = '';
-  const _refArray: RefArrayData[] = [];
   let margins: Margins;
   let renderSeries: JSXElement[];
   let _xAxisLabels: string[] = [];
@@ -96,6 +95,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
+  const [pointCalloutProps, setPointCalloutProps] = React.useState<ScatterChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -414,7 +414,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         if (!isPlottable(xPoint, yPoint)) {
           continue;
         }
-        const seriesId = `${_seriesId}_${i}_${j}`;
         const circleId = `${_circleId}_${i}_${j}`;
         const pointMarkerSize = (_points[i].data[j] as ScatterChartDataPoint).markerSize;
         const circleRadius = calculateMarkerRadius({
@@ -451,6 +450,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                     circleId,
                     xAxisCalloutAccessibilityData,
                     event,
+                    _points[i].data[j],
                   )
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -462,11 +462,12 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                     circleId,
                     xAxisCalloutAccessibilityData,
                     event,
+                    _points[i].data[j],
                   )
                 }
                 onMouseOut={_handleMouseOut}
                 onFocus={event =>
-                  _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                  _handleFocus(event, x, xAxisCalloutData, circleId, _points[i].data[j], xAxisCalloutAccessibilityData)
                 }
                 onBlur={_handleMouseOut}
                 {..._getClickHandler(_points[i].data[j].onDataPointClick)}
@@ -518,10 +519,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   function _handleFocus(
     event: React.FocusEvent<SVGCircleElement, Element>,
-    seriesId: string,
     x: number | Date | string,
     xAxisCalloutData: string | undefined,
     circleId: string,
+    point: ScatterChartDataPoint,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
     let cx = 0;
@@ -540,16 +541,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       d3Select(`#${_verticalLine}`)
         .attr('transform', () => `translate(${_xAxisScale(x) + _xBandwidth}, 0)`)
         .attr('visibility', 'visibility');
-      _refArray.forEach((obj: RefArrayData) => {
-        if (obj.index === seriesId) {
-          setPopoverOpen(true);
-          xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
-          setYValueHover(found.values);
-          setStackCalloutProps(found!);
-          setDataPointCalloutProps(found!);
-          setActivePoint(circleId);
-        }
-      });
+      setPopoverOpen(true);
+      xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
+      _setCalloutData(found, point);
+      setActivePoint(circleId);
     } else {
       setActivePoint(circleId);
     }
@@ -563,6 +558,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     circleId: string,
     xAxisCalloutAccessibilityData: AccessibilityProps | undefined,
     mouseEvent: React.MouseEvent<SVGElement>,
+    point: ScatterChartDataPoint,
   ) {
     mouseEvent?.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
@@ -578,15 +574,21 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       if (_uniqueCallOutID !== circleId) {
         _uniqueCallOutID = circleId;
         updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+        setPopoverOpen(true);
         xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
-        setYValueHover(found.values);
-        setStackCalloutProps(found!);
-        setDataPointCalloutProps(found!);
+        _setCalloutData(found, point);
         setActivePoint(circleId);
       }
     } else {
       setActivePoint(circleId);
     }
+  }
+
+  function _setCalloutData(found: CustomizedCalloutData, point: ScatterChartDataPoint) {
+    setYValueHover(found.values);
+    setStackCalloutProps(found);
+    setDataPointCalloutProps(found);
+    setPointCalloutProps(point);
   }
 
   /**
@@ -616,7 +618,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _getCustomizedCallout() {
-    return props.onRenderCalloutPerStack
+    return props.onRenderCalloutPerPoint
+      ? props.onRenderCalloutPerPoint(pointCalloutProps)
+      : props.onRenderCalloutPerStack
       ? props.onRenderCalloutPerStack(stackCalloutProps)
       : props.onRenderCalloutPerDataPoint
       ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
@@ -680,6 +684,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   if (!props.hideLegend && !_isTextMode.current) {
     legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
   }
+  const customizedCallout = isPopoverOpen && !props.hideTooltip ? _getCustomizedCallout() : undefined;
   const calloutProps = {
     YValueHover: yValueHover,
     hoverXValue,
@@ -691,12 +696,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     xAxisCalloutAccessibilityData,
     ...props.calloutProps,
     clickPosition,
-    isPopoverOpen,
+    // Only the dedicated point hook opts into null suppression. Legacy callbacks
+    // retain their all-values payload and null-to-default fallback.
+    isPopoverOpen: isPopoverOpen && !(props.onRenderCalloutPerPoint && customizedCallout === null),
     isCalloutForStack: true,
     culture: props.culture,
     isCartesian: true,
     customCallout: {
-      customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+      customizedCallout: customizedCallout ?? undefined,
       customCalloutProps: props.calloutPropsPerDataPoint
         ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
         : undefined,

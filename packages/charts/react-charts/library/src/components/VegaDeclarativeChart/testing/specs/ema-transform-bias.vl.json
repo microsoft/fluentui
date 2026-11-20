@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Transform EMA and exponentialb must not become counts or share aliases.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "group": "A", "amount": 2 },
+      { "group": "A", "amount": null },
+      { "group": "A", "amount": 6 },
+      { "group": "A", "amount": 10 },
+      { "group": "B", "amount": 4 },
+      { "group": "B", "amount": 8 }
+    ]
+  },
+  "transform": [
+    {
+      "aggregate": [
+        { "op": { "exponential": 0.25 }, "field": "amount", "as": "ema" },
+        { "op": { "exponentialb": 0.25 }, "field": "amount", "as": "biased" },
+        { "op": "count", "as": "rows" },
+        { "op": "valid", "field": "amount", "as": "valid" },
+        { "op": "missing", "field": "amount", "as": "missing" }
+      ],
+      "groupby": ["group"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "group", "type": "nominal" },
+    "y": { "field": "biased", "type": "quantitative" },
+    "tooltip": [
+      { "field": "ema", "type": "quantitative", "format": ".3f" },
+      { "field": "biased", "type": "quantitative", "format": ".3f" },
+      { "field": "rows", "type": "quantitative" }
+    ]
+  }
+}
