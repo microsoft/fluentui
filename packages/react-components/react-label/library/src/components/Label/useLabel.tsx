@@ -31,14 +31,15 @@ export const useLabel_unstable = (props: LabelProps, ref: React.Ref<HTMLElement>
  * @param ref - reference to root HTMLElement of Label
  */
 export const useLabelBase_unstable = (props: LabelBaseProps, ref: React.Ref<HTMLLabelElement>): LabelBaseState => {
-  const { disabled = false, required = false, ...rest } = props;
+  const { disabled = false, required = false, icon, ...rest } = props;
   return {
     disabled,
     required: slot.optional(required === true ? '*' : required || undefined, {
       defaultProps: { 'aria-hidden': 'true' },
       elementType: 'span',
     }),
-    components: { root: 'label', required: 'span' },
+    icon: slot.optional(icon, { elementType: 'span' }),
+    components: { root: 'label', required: 'span', icon: 'span' },
     root: slot.always(
       getIntrinsicElementProps('label', {
         ref: ref as React.Ref<HTMLLabelElement>,

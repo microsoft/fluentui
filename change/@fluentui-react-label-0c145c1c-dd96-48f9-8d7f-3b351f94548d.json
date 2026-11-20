@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add optional `icon` slot to Label, rendered before the label content",
+  "packageName": "@fluentui/react-label",
+  "email": "egianoglio@microsoft.com",
+  "dependentChangeType": "patch"
+}
