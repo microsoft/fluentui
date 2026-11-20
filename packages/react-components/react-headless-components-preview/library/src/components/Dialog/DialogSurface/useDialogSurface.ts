@@ -10,6 +10,7 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
+import { useModalAttributes } from '../../../hooks/focus';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
 import { useDialogLayerOpenState, useLayerEscape, useLayerPresence } from '../../../hooks/top-layer';
@@ -23,8 +24,12 @@ import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.typ
  * @param ref - reference to root HTMLDialogElement of DialogSurface
  */
 export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>): DialogSurfaceState => {
-  const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId } = useDialogContext();
+  const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId, inertTrapFocus } = useDialogContext();
   const { targetDocument } = useFluent();
+  const { modalAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
+  });
 
   const dialogRef = React.useRef<HTMLDialogElement>(null);
   const mergedRef = useMergedRefs(ref, dialogRef);
@@ -126,6 +131,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         role: modalType === 'alert' ? 'alertdialog' : undefined,
         'aria-modal': modalType !== 'non-modal' ? true : undefined,
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleId || undefined,
+        ...modalAttributes,
         ...props,
         tabIndex: -1,
         ref: mergedRef,

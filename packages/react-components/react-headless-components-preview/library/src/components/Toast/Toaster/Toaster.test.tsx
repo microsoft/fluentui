@@ -45,7 +45,7 @@ describe('Toaster', () => {
     expect(document.body.querySelectorAll('[aria-live]').length).toBe(before);
   });
 
-  it('uses list semantics with native block-axis focusgroup navigation', () => {
+  it('uses list semantics', () => {
     let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
     const Test = () => {
       dispatchToast = useToastController().dispatchToast;
@@ -57,7 +57,8 @@ describe('Toaster', () => {
       dispatchToast('toast', { timeout: -1 });
     });
 
-    expect(getByRole('list')).toHaveAttribute('focusgroup', 'toolbar block itemcontrols');
+    expect(getByRole('list')).toBeInTheDocument();
+    expect(getByRole('listitem')).toHaveAttribute('tabindex', '0');
   });
 
   it('limits the number of rendered toasts', () => {

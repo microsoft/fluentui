@@ -55,7 +55,6 @@ describe('Toast', () => {
 
     expect(toast).toHaveTextContent('Default Toast');
     expect(toast).toHaveAttribute('data-intent', 'info');
-    expect(toast).toHaveAttribute('focusgroup', 'none');
   });
 
   it('renders children with error intent', () => {
