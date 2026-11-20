@@ -411,6 +411,45 @@ describe('Legends - dynamic overflow', () => {
     expect(result.getByText('+14 Overflow Items')).toBeTruthy();
     expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
   });
+
+  it('opens the overflow menu without the duplicate Menu and MenuList props warning', () => {
+    // Observe warnings rather than suppress them, so an unrelated warning is still reported.
+    const warnSpy = jest.spyOn(console, 'warn');
+    try {
+      const result = render(
+        <Legends legends={legends} overflowText="Overflow Items" selectedLegend={legends[4].title} />,
+      );
+
+      fireEvent.click(result.getByText('+14 Overflow Items'));
+
+      expect(document.querySelector('div[role="menu"]')).not.toBeNull();
+
+      // The popover must still render every overflowed legend with its aria metadata intact,
+      // so this guards the prop move itself and not only the absence of the warning.
+      const checkboxItems = document.querySelectorAll('div[role="menuitemcheckbox"]');
+      expect(checkboxItems.length).toBe(14);
+      checkboxItems.forEach(item => {
+        expect(item.getAttribute('aria-setsize')).toBe('17');
+        expect(item.getAttribute('aria-posinset')).not.toBeNull();
+      });
+
+      // checkedValues now reaches MenuList through MenuContext, so assert the selection actually
+      // arrives: the warning can disappear while selection silently stops propagating.
+      // Overflow starts at index 3, so posinset 4 is unselected and posinset 5 is the selected legend.
+      const unselectedItem = document.querySelector('div[role="menuitemcheckbox"][aria-posinset="4"]');
+      expect(unselectedItem?.getAttribute('aria-checked')).toBe('false');
+
+      const selectedItem = document.querySelector('div[role="menuitemcheckbox"][aria-posinset="5"]');
+      expect(selectedItem?.getAttribute('aria-checked')).toBe('true');
+
+      const duplicatePropsWarnings = warnSpy.mock.calls.filter(call =>
+        /MenuList and Menu props/i.test(String(call[0])),
+      );
+      expect(duplicatePropsWarnings).toHaveLength(0);
+    } finally {
+      warnSpy.mockRestore();
+    }
+  });
 });
 
 describe('Legends - axe-core', () => {
