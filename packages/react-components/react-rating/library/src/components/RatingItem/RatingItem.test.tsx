@@ -110,3 +110,27 @@ describe('RatingItem', () => {
     expect(checkedInputs[0].value).toEqual(contextValues.value?.toString());
   });
 });
+
+describe('RatingItem DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const contextValues: RatingItemContextValue = {
+      value: 3,
+      interactive: true,
+      iconFilled: StarFilled,
+      iconOutline: StarRegular,
+      color: 'neutral',
+      step: 0.5,
+      size: 'medium',
+    };
+    const { container } = render(
+      <RatingItemProvider value={contextValues}>
+        <RatingItem value={2} selectedIcon={{}} unselectedIcon={{}} halfValueInput={{}} fullValueInput={{}} />
+      </RatingItemProvider>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
