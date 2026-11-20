@@ -63,4 +63,28 @@ describe('useToaster', () => {
     expect(toaster.dismissAllToasts).toHaveBeenCalledTimes(0);
     expect(toaster.dismissToast).toHaveBeenCalledTimes(0);
   });
+
+  it('should close a toast once when its dismissed handler dispatches a toast with the same id', () => {
+    const actual: { createToaster: typeof createToaster } = jest.requireActual('./vanilla/createToaster');
+    (createToaster as jest.Mock).mockImplementation(actual.createToaster);
+    const { result } = renderHook(() => useToaster());
+
+    const statuses: string[] = [];
+    const show = (content: string) => {
+      const onStatusChange = (_: null, data: { status: string }) => {
+        statuses.push(`${content} ${data.status}`);
+        if (content === 'first' && data.status === 'dismissed') {
+          show('second');
+        }
+      };
+      const detail = { toasterId: undefined, toastId: 'foo', content, onStatusChange };
+      document.dispatchEvent(new CustomEvent(EVENTS.show, { detail }));
+    };
+
+    act(() => show('first'));
+    act(() => result.current.closeAllToasts());
+
+    expect(statuses).toEqual(['first queued', 'first dismissed', 'second queued']);
+    expect(result.current.isToastVisible('foo')).toBe(true);
+  });
 });

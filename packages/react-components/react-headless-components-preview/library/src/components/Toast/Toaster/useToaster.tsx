@@ -93,7 +93,8 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             tryRestoreFocus={tryRestoreFocus}
             intent={toast.intent}
             announce={announceToast}
-            key={toast.toastId}
+            // `order` is unique for every dispatched toast, while a `toastId` can be reused once its toast is dismissed
+            key={toast.order}
             visible={isToastVisible(toast.toastId)}
           >
             {toast.content as React.ReactNode}
