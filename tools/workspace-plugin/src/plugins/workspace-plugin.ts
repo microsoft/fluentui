@@ -530,6 +530,17 @@ function buildLintTarget(
     return null;
   }
 
+  const rootManifest = join(context.workspaceRoot, 'package.json');
+  const { workspaces } = existsSync(rootManifest)
+    ? readJsonFile<{ workspaces?: string[] | { packages: string[] } }>(rootManifest)
+    : {};
+  const workspacePatterns = Array.isArray(workspaces) ? workspaces : workspaces?.packages ?? [];
+  const workspaceManifestInputs = workspacePatterns.map(pattern =>
+    pattern.startsWith('!')
+      ? `!{workspaceRoot}/${pattern.slice(1)}/package.json`
+      : `{workspaceRoot}/${pattern}/package.json`,
+  );
+
   return {
     executor: 'nx:run-commands',
     cache: true,
@@ -538,7 +549,10 @@ function buildLintTarget(
       'default',
       '{projectRoot}/eslint.{js,cjs,mjs}',
       '{workspaceRoot}/eslint.config.{js,cjs,mjs}',
-      { externalDependencies: ['eslint'] },
+      '{workspaceRoot}/packages/eslint-plugin/src/**/*.js',
+      '{workspaceRoot}/package.json',
+      ...workspaceManifestInputs,
+      { externalDependencies: ['eslint', 'eslint-plugin-import', 'minimatch'] },
     ],
     outputs: ['{options.outputFile}'],
     metadata: {
