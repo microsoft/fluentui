@@ -23,3 +23,16 @@ describe('CardHeader', () => {
     expect(result.container).toMatchSnapshot();
   });
 });
+
+describe('CardHeader DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <CardHeader action={<button />} description="Description" header="Header" image={<img alt="" />} />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

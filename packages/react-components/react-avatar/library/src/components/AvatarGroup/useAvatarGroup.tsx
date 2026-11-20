@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   AvatarGroupBaseProps,
   AvatarGroupBaseState,
@@ -38,14 +38,14 @@ export const useAvatarGroupBase_unstable = (
   props: AvatarGroupBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): AvatarGroupBaseState => {
-  const { layout = 'spread' } = props;
+  const { layout = 'spread', ...rest } = props;
 
   const root = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       role: 'group',
-      ...props,
+      ...rest,
       ref,
-    }),
+    },
     { elementType: 'div' },
   );
   return { layout, components: { root: 'div' }, root };

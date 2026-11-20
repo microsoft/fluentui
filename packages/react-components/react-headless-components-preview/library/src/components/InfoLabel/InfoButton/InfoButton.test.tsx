@@ -252,3 +252,19 @@ describe('InfoButton', () => {
     });
   });
 });
+
+describe('InfoButton DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(<InfoButton info="Information" popover={{ open: false }} />);
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-expanded',
+      'aria-label',
+      'style',
+      'type',
+    ]);
+  });
+});

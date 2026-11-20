@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { CardFooterBaseProps, CardFooterBaseState, CardFooterProps, CardFooterState } from './CardFooter.types';
 
 /**
@@ -28,7 +28,7 @@ export const useCardFooterBase_unstable = (
   props: CardFooterBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardFooterBaseState => {
-  const { action } = props;
+  const { action, ...rest } = props;
 
   return {
     components: {
@@ -37,13 +37,13 @@ export const useCardFooterBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     action: slot.optional(action, { elementType: 'div' }),

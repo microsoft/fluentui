@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {
-  getIntrinsicElementProps,
   mergeCallbacks,
   useControllableState,
   slot,
@@ -53,13 +52,13 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
     root: slot.always(
       // eslint-disable-next-line react-hooks/refs
-      getIntrinsicElementProps('button', {
+      {
         children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
         ...rest,
         ref: rootRef,
-      }),
+      },
       { elementType: 'button' },
     ),
     popover: slot.always(popover, {

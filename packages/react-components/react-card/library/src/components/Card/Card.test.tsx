@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, renderHook } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../testing/isConformant';
@@ -8,6 +8,7 @@ import { isConformant } from '../../testing/isConformant';
 import { Card } from './Card';
 import type { CardProps } from './Card.types';
 import { cardClassNames } from './useCardStyles.styles';
+import { useCardBase_unstable } from './useCard';
 
 describe('Card', () => {
   isConformant<CardProps>({
@@ -147,5 +148,53 @@ describe('Card', () => {
     );
 
     expect(getByTestId('card').getAttribute('tabindex')).toBeNull();
+  });
+});
+
+describe('Card DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Card
+        appearance="outline"
+        defaultSelected
+        focusMode="off"
+        onSelectionChange={jest.fn()}
+        orientation="horizontal"
+        size="large"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'role']);
+  });
+});
+
+describe('useCardBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useCardBase_unstable(
+        {
+          checkbox: {},
+          defaultSelected: true,
+          disabled: false,
+          floatingAction: {},
+          focusMode: 'off',
+          onSelectionChange: jest.fn(),
+          shouldRestrictTriggerAction: () => false,
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('checkbox');
+    expect(result.current.root).not.toHaveProperty('defaultSelected');
+    expect(result.current.root).not.toHaveProperty('disabled');
+    expect(result.current.root).not.toHaveProperty('floatingAction');
+    expect(result.current.root).not.toHaveProperty('focusMode');
+    expect(result.current.root).not.toHaveProperty('onSelectionChange');
+    expect(result.current.root).not.toHaveProperty('selected');
+    expect(result.current.root).not.toHaveProperty('shouldRestrictTriggerAction');
   });
 });

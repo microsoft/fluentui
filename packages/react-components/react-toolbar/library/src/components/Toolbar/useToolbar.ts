@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { useEventCallback, useControllableState, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useEventCallback, useControllableState, slot } from '@fluentui/react-utilities';
 import type {
   ToggableHandler,
   ToolbarBaseProps,
@@ -23,8 +23,8 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Toolbar
  */
 export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
-  const { size = 'medium' } = props;
-  const state = useToolbarBase_unstable(props, ref);
+  const { size = 'medium', ...baseProps } = props;
+  const state = useToolbarBase_unstable(baseProps, ref);
   const arrowNavigationProps = useToolbarArrowNavigationProps_unstable();
 
   return {
@@ -46,7 +46,13 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
  * @param ref - Ref to the root HTMLElement.
  */
 export const useToolbarBase_unstable = (props: ToolbarBaseProps, ref: React.Ref<HTMLElement>): ToolbarBaseState => {
-  const { vertical = false } = props;
+  const {
+    vertical = false,
+    checkedValues: checkedValuesProp,
+    defaultCheckedValues,
+    onCheckedValueChange: onCheckedValueChangeProp,
+    ...rest
+  } = props;
 
   const initialState: UninitializedToolbarState = {
     vertical,
@@ -58,20 +64,20 @@ export const useToolbarBase_unstable = (props: ToolbarBaseProps, ref: React.Ref<
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         role: 'toolbar',
         ref: ref as React.Ref<HTMLDivElement>,
         ...(vertical && ({ 'aria-orientation': 'vertical' } as const)),
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };
 
   const [checkedValues, onCheckedValueChange] = useToolbarSelectableState({
-    checkedValues: props.checkedValues,
-    defaultCheckedValues: props.defaultCheckedValues,
-    onCheckedValueChange: props.onCheckedValueChange,
+    checkedValues: checkedValuesProp,
+    defaultCheckedValues,
+    onCheckedValueChange: onCheckedValueChangeProp,
   });
 
   const handleToggleButton: ToggableHandler = useEventCallback(

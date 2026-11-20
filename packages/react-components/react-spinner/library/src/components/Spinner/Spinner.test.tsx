@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { Spinner } from './Spinner';
 import { isConformant } from '../../testing/isConformant';
+import { useSpinnerBase_unstable } from './useSpinner';
 
 describe('Spinner', () => {
   isConformant({
@@ -49,5 +50,39 @@ describe('Spinner', () => {
   it('renders span as a root slot tag', () => {
     const result = render(<Spinner as="span" />);
     expect(result.getByRole('progressbar').tagName).toBe('SPAN');
+  });
+});
+
+describe('Spinner DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Spinner appearance="inverted" delay={0} label="Loading" labelPosition="below" size="large" />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-labelledby',
+      'class',
+      'role',
+    ]);
+  });
+});
+
+describe('useSpinnerBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useSpinnerBase_unstable(
+        { delay: 10, label: 'Loading', labelPosition: 'below', spinner: {}, spinnerTail: {} },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('delay');
+    expect(result.current.root).not.toHaveProperty('label');
+    expect(result.current.root).not.toHaveProperty('labelPosition');
+    expect(result.current.root).not.toHaveProperty('spinner');
+    expect(result.current.root).not.toHaveProperty('spinnerTail');
   });
 });

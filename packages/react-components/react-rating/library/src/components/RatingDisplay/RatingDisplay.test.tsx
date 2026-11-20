@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
+import { StarFilled } from '@fluentui/react-icons';
 import { RatingDisplay } from './RatingDisplay';
+import { useRatingDisplayBase_unstable } from './useRatingDisplay';
 
 describe('RatingDisplay', () => {
   isConformant({
@@ -37,5 +39,41 @@ describe('RatingDisplay', () => {
     const { getByRole } = render(<RatingDisplay compact />);
     const items = getByRole('img');
     expect(items.getElementsByClassName('fui-RatingItem').length).toEqual(1);
+  });
+});
+
+describe('RatingDisplay DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <RatingDisplay color="brand" compact count={10} icon={StarFilled} max={3} size="large" value={2} />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-labelledby',
+      'class',
+      'role',
+    ]);
+  });
+});
+
+describe('useRatingDisplayBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useRatingDisplayBase_unstable(
+        { compact: true, count: 10, countText: {}, icon: StarFilled, max: 3, value: 2, valueText: {} },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root).not.toHaveProperty('compact');
+    expect(result.current.root).not.toHaveProperty('count');
+    expect(result.current.root).not.toHaveProperty('countText');
+    expect(result.current.root).not.toHaveProperty('icon');
+    expect(result.current.root).not.toHaveProperty('max');
+    expect(result.current.root).not.toHaveProperty('value');
+    expect(result.current.root).not.toHaveProperty('valueText');
   });
 });

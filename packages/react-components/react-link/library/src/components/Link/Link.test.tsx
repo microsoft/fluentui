@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
 import type { LinkProps } from './Link.types';
 import { Enter } from '@fluentui/keyboard-keys';
+import { useLinkBase_unstable } from './useLink';
 
 describe('Link', () => {
   isConformant<LinkProps>({
@@ -199,5 +200,50 @@ describe('Link', () => {
         expect(onKeyDown).toHaveBeenCalledTimes(1);
       });
     });
+  });
+});
+
+describe('Link DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Link appearance="subtle" disabledFocusable href="https://www.bing.com" inline>
+        Link
+      </Link>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'href',
+      'role',
+      'tabindex',
+    ]);
+  });
+
+  it('does not render disabled on an anchor', () => {
+    const { container } = render(
+      <Link disabled href="https://www.bing.com">
+        Link
+      </Link>,
+    );
+
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'role',
+    ]);
+  });
+});
+
+describe('useLinkBase_unstable base hook', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useLinkBase_unstable({ disabledFocusable: true, href: 'https://www.bing.com' }, React.createRef()),
+    );
+
+    expect(result.current.root).not.toHaveProperty('disabledFocusable');
   });
 });
