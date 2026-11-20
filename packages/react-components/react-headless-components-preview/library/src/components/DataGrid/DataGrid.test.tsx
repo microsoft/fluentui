@@ -185,18 +185,69 @@ describe('DataGrid family', () => {
     });
 
     it('stops the horizontal arrow keys at the edges of a row, so that the focusgroup does not leave it', () => {
-      const { getAllByRole } = renderGrid();
+      const onKeyDown = jest.fn();
+      const onKeyDownCapture = jest.fn();
+      const { getAllByRole, getByRole } = renderGrid({ onKeyDown, onKeyDownCapture });
       const cells = getAllByRole('gridcell');
+      const defaultPreventedOnGrid: boolean[] = [];
+      getByRole('grid').addEventListener('keydown', event => defaultPreventedOnGrid.push(event.defaultPrevented));
 
       // last cell of the first row and first cell of the second row
       expect(fireEvent.keyDown(cells[1], { key: 'ArrowRight' })).toBe(false);
       expect(fireEvent.keyDown(cells[2], { key: 'ArrowLeft' })).toBe(false);
+      expect(defaultPreventedOnGrid).toEqual([true, true]);
+      expect(onKeyDown).toHaveBeenCalledTimes(2);
+      expect(onKeyDownCapture).toHaveBeenCalledTimes(2);
     });
 
-    it('adds no keyboard navigation in the none focus mode, and still calls the consumer key handler', () => {
+    it('uses the visual row edges in right-to-left layouts', () => {
+      const { getAllByRole } = renderGrid();
+      const cells = getAllByRole('gridcell');
+      cells[0].style.direction = 'rtl';
+      cells[1].style.direction = 'rtl';
+
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+      expect(fireEvent.keyDown(cells[1], { key: 'ArrowLeft' })).toBe(false);
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowLeft' })).toBe(true);
+    });
+
+    it('ignores hidden and focusgroup-excluded items when finding a row edge', () => {
+      const { getAllByRole } = renderGrid();
+      const cells = getAllByRole('gridcell');
+
+      cells[1].hidden = true;
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+      cells[1].hidden = false;
+      cells[1].setAttribute('focusgroup', 'none');
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+    });
+
+    it('leaves horizontal keys to text inputs and does not intercept them in row focus mode', () => {
+      const { getAllByRole, unmount } = renderGrid();
+      const cells = getAllByRole('gridcell');
+      const input = cells[1].ownerDocument.createElement('input');
+      cells[1].appendChild(input);
+
+      expect(fireEvent.keyDown(input, { key: 'ArrowRight' })).toBe(true);
+      expect(fireEvent.keyDown(cells[1], { key: 'ArrowRight', shiftKey: true })).toBe(true);
+      unmount();
+
+      const rowGrid = renderGrid({ focusMode: 'row_unstable' });
+      expect(fireEvent.keyDown(rowGrid.getAllByRole('gridcell')[1], { key: 'ArrowRight' })).toBe(true);
+    });
+
+    it('adds no keyboard navigation in the none focus mode, and still calls the consumer key handlers', () => {
       const onKeyDown = jest.fn();
+      const onKeyDownCapture = jest.fn();
       const { getAllByRole } = render(
-        <DataGrid items={items} columns={columns} aria-label="People" focusMode="none" onKeyDown={onKeyDown}>
+        <DataGrid
+          items={items}
+          columns={columns}
+          aria-label="People"
+          focusMode="none"
+          onKeyDown={onKeyDown}
+          onKeyDownCapture={onKeyDownCapture}
+        >
           <DataGridBody<Item>>
             {({ item, rowId }) => (
               <DataGridRow<Item> key={rowId}>
@@ -218,6 +269,7 @@ describe('DataGrid family', () => {
       expect(fireEvent.keyDown(last, { key: 'ArrowRight' })).toBe(true);
       expect(document.activeElement).toBe(first);
       expect(onKeyDown).toHaveBeenCalledTimes(3);
+      expect(onKeyDownCapture).toHaveBeenCalledTimes(3);
     });
   });
 
