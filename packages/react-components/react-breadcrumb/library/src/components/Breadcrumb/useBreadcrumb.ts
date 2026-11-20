@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { BreadcrumbBaseProps, BreadcrumbBaseState, BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -50,11 +50,11 @@ export const useBreadcrumbBase_unstable = (
       list: 'ol',
     },
     root: slot.always(
-      getIntrinsicElementProps('nav', {
+      {
         ref,
         'aria-label': props['aria-label'] ?? 'breadcrumb',
         ...rest,
-      }),
+      },
       { elementType: 'nav' },
     ),
     list: slot.optional(list, { renderByDefault: true, defaultProps: { role: 'list' }, elementType: 'ol' }),

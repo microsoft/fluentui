@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   BreadcrumbItemBaseProps,
   BreadcrumbItemBaseState,
@@ -24,7 +24,9 @@ export const useBreadcrumbItem_unstable = (
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbItemState => {
   const { size } = useBreadcrumbContext_unstable();
-  const state = useBreadcrumbItemBase_unstable(props, ref);
+  // `size` comes from the Breadcrumb context, the prop is not a DOM attribute.
+  const { size: _size, ...baseProps } = props;
+  const state = useBreadcrumbItemBase_unstable(baseProps, ref);
 
   return {
     ...state,
@@ -46,10 +48,10 @@ export const useBreadcrumbItemBase_unstable = (
   return {
     components: { root: 'li' },
     root: slot.always(
-      getIntrinsicElementProps('li', {
+      {
         ref,
         ...props,
-      }),
+      },
       { elementType: 'li' },
     ),
   };
