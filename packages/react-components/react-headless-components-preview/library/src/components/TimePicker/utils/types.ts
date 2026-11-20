@@ -35,6 +35,12 @@ export type HourCycle = 'h11' | 'h12' | 'h23' | 'h24';
  */
 export type TimeFormatOptions = {
   /**
+   * BCP 47 locale used to format and parse times, for example `'de-DE'` or `'ar-EG'`.
+   * Defaults to the runtime locale.
+   */
+  locale?: string | undefined;
+
+  /**
    * 12-hour (`h11`: 0–11, `h12`: 1–12) or 24-hour (`h23`: 0–23, `h24`: 1–24) format.
    * Defaults to the locale's format, see `createTimeFormat`.
    */
