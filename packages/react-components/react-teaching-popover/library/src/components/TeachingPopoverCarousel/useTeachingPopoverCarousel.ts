@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselBaseProps,
   TeachingPopoverCarouselBaseState,
@@ -21,17 +21,18 @@ export const useTeachingPopoverCarouselBase_unstable = (
   props: TeachingPopoverCarouselBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselBaseState => {
+  const { announcement, defaultValue, value, onValueChange, onFinish, ...rest } = props;
   const toggleOpen = usePopoverContext_unstable(c => c.toggleOpen);
   const handleFinish: TeachingPopoverCarouselProps['onFinish'] = useEventCallback((event, data) => {
-    props.onFinish?.(event, data);
+    onFinish?.(event, data);
     toggleOpen(event as React.MouseEvent<HTMLElement>);
   });
 
   const { carousel, carouselRef } = useCarousel_unstable({
-    announcement: props.announcement,
-    defaultValue: props.defaultValue,
-    value: props.value,
-    onValueChange: props.onValueChange,
+    announcement,
+    defaultValue,
+    value,
+    onValueChange,
     onFinish: handleFinish,
   });
 
@@ -40,10 +41,10 @@ export const useTeachingPopoverCarouselBase_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, carouselRef),
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     ...carousel,

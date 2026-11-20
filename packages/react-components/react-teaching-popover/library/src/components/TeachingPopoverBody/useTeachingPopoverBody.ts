@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverBodyProps, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
 /**
  * Returns the props and state required to render the component
@@ -10,7 +10,7 @@ export const useTeachingPopoverBody_unstable = (
   props: TeachingPopoverBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverBodyState => {
-  const { mediaLength } = props;
+  const { mediaLength, media, ...rest } = props;
 
   return {
     components: {
@@ -18,13 +18,13 @@ export const useTeachingPopoverBody_unstable = (
       media: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-    media: slot.optional(props.media, { elementType: 'span' }),
+    media: slot.optional(media, { elementType: 'span' }),
     mediaLength: mediaLength ?? 'short',
   };
 };

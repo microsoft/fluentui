@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselFooterButtonBaseProps,
   TeachingPopoverCarouselFooterButtonBaseState,
@@ -26,7 +26,21 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
   props: TeachingPopoverCarouselFooterButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): TeachingPopoverCarouselFooterButtonBaseState => {
-  const { navType, altText } = props;
+  // `appearance`, `disabledFocusable`, `icon`, `iconPosition`, `shape` and `size` are Button props handled by the
+  // styled hook through `useButton_unstable`, they are not DOM attributes.
+  const {
+    navType,
+    altText,
+    appearance,
+    disabledFocusable,
+    icon,
+    iconPosition,
+    shape,
+    size,
+    onClick,
+    children,
+    ...rest
+  } = props;
 
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(snapshot => snapshot);
@@ -40,7 +54,7 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
     selectPageByDirection(event, navType);
   };
 
-  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
+  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, onClick));
 
   const isTrailing = React.useMemo(() => {
     if (!activeValue) {
@@ -55,7 +69,7 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
   }, [navType, activeValue, values]);
 
   /* Handle altText on trailing step */
-  let buttonChild = props.children;
+  let buttonChild = children;
   if (isTrailing) {
     buttonChild = altText;
   }
@@ -67,12 +81,12 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
       root: 'button',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
-        ref,
-        ...props,
+      {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        ...rest,
         onClick: handleButtonClick,
         children: buttonChild,
-      }),
+      },
       { elementType: 'button' },
     ),
   };

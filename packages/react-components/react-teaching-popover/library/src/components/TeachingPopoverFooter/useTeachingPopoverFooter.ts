@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverFooterBaseProps,
   TeachingPopoverFooterBaseState,
@@ -23,6 +23,7 @@ export const useTeachingPopoverFooterBase_unstable = (
   props: TeachingPopoverFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterBaseState => {
+  const { footerLayout = 'horizontal', ...rest } = props;
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const handleButtonClick = useEventCallback(
@@ -36,16 +37,16 @@ export const useTeachingPopoverFooterBase_unstable = (
   );
 
   return {
-    footerLayout: props.footerLayout ?? 'horizontal',
+    footerLayout,
     handleButtonClick,
     components: {
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };
@@ -60,18 +61,19 @@ export const useTeachingPopoverFooter_unstable = (
   props: TeachingPopoverFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterState => {
-  const baseState = useTeachingPopoverFooterBase_unstable(props, ref);
+  const { primary: primaryProp, secondary: secondaryProp, ...baseProps } = props;
+  const baseState = useTeachingPopoverFooterBase_unstable(baseProps, ref);
   const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const isBrand = appearance === 'brand';
   const primaryDefaultAppearance = isBrand ? undefined : 'primary';
   const secondaryDefaultAppearance = isBrand ? 'primary' : undefined;
 
-  const secondary = slot.optional(props.secondary, {
+  const secondary = slot.optional(secondaryProp, {
     defaultProps: {
       appearance: secondaryDefaultAppearance,
     },
-    renderByDefault: props.secondary !== undefined,
+    renderByDefault: secondaryProp !== undefined,
     elementType: Button,
   });
 
@@ -79,7 +81,7 @@ export const useTeachingPopoverFooter_unstable = (
     secondary.onClick = mergeCallbacks(baseState.handleButtonClick, secondary?.onClick);
   }
 
-  const primary = slot.always(props.primary, {
+  const primary = slot.always(primaryProp, {
     defaultProps: {
       appearance: primaryDefaultAppearance,
     },

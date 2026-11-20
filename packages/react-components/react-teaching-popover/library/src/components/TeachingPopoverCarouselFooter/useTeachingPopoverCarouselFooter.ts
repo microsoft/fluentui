@@ -1,4 +1,4 @@
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type * as React from 'react';
 
 import type {
@@ -11,9 +11,16 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterState => {
-  const { layout = 'centered', initialStepText, finalStepText } = props;
+  const {
+    layout = 'centered',
+    initialStepText,
+    finalStepText,
+    previous: previousProp,
+    next: nextProp,
+    ...rest
+  } = props;
 
-  const previous = slot.optional(props.previous, {
+  const previous = slot.optional(previousProp, {
     defaultProps: {
       navType: 'prev',
       altText: initialStepText,
@@ -22,7 +29,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
     elementType: TeachingPopoverCarouselFooterButton,
   });
 
-  const next = slot.always(props.next, {
+  const next = slot.always(nextProp, {
     defaultProps: {
       navType: 'next',
       altText: finalStepText,
@@ -38,10 +45,10 @@ export const useTeachingPopoverCarouselFooter_unstable = (
       previous: TeachingPopoverCarouselFooterButton,
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     previous,

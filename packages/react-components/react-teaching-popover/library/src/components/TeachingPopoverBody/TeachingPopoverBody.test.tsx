@@ -17,3 +17,18 @@ describe('TeachingPopoverBody', () => {
     expect(result.container).toMatchSnapshot();
   });
 });
+
+describe('TeachingPopoverBody DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TeachingPopoverBody mediaLength="tall" media={<img alt="" />}>
+        Body
+      </TeachingPopoverBody>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});
