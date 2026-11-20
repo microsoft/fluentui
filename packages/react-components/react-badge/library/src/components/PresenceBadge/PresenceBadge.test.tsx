@@ -28,3 +28,18 @@ describe('PresenceBadge', () => {
     );
   });
 });
+
+describe('PresenceBadge DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(<PresenceBadge outOfOffice size="large" status="busy" />);
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-label',
+      'class',
+      'role',
+    ]);
+  });
+});
