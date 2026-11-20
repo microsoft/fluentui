@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(tooltip): add optional secondary content with accessible labels, descriptions, and wrapping; exclude aria-hidden secondary content while preserving authored content labels and existing ID allocation",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "paulmardling@microsoft.com"
+}

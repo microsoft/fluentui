@@ -16,6 +16,9 @@ export { Positioning } from './TooltipPositioning.stories';
 export { Target } from './TooltipTarget.stories';
 export { Icon } from './TooltipIcon.stories';
 export { OverflowHidden } from './TooltipOverflowHidden.stories';
+export { SecondaryContent } from './TooltipSecondaryContent.stories';
+export { SecondaryContentAccessibility } from './TooltipSecondaryContentAccessibility.stories';
+export { SecondaryContentWrapping } from './TooltipSecondaryContentWrapping.stories';
 
 export default {
   title: 'Components/Tooltip',

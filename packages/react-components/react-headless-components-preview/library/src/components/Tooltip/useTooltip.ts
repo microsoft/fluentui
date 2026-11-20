@@ -37,6 +37,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const {
     children,
     content,
+    secondaryContent,
     positioning = 'above',
     withArrow = false,
     onVisibleChange,
@@ -45,17 +46,25 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     hideDelay = 250,
   } = props;
 
+  const child = getTriggerChild(children);
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  const secondaryContentSlot = slot.optional(secondaryContent, { elementType: 'span' });
+  const renderedVisible = visible && !(secondaryContentSlot && isPopupExpanded);
+
   const state: TooltipState = {
     positioning,
     showDelay,
     hideDelay,
     relationship,
-    visible,
-    shouldRenderTooltip: visible,
+    visible: renderedVisible,
+    shouldRenderTooltip: renderedVisible,
     withArrow,
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
@@ -64,12 +73,16 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       },
       elementType: 'div',
     }),
+    secondaryContent: secondaryContentSlot,
   };
 
   const positioningOptions = resolvePositioningShorthand(positioning);
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
+  const secondaryHidden =
+    state.secondaryContent?.['aria-hidden'] === true || state.secondaryContent?.['aria-hidden'] === 'true';
+  state.primaryContentId = secondaryHidden ? `${state.content.id}--fui-tooltip-primary` : undefined;
   state.content['data-open'] = toDataAttributeValue(state.visible);
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
@@ -90,15 +103,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  // Rendered while hidden, so `aria-labelledby` / `aria-describedby` resolve.
-  const alwaysRendered =
-    relationship === 'description' || (relationship === 'label' && typeof state.content.children !== 'string');
-  const { shouldRender } = useLayerPresence(contentRef, { open: visible, unmountOnClose: !alwaysRendered });
-  state.shouldRenderTooltip = shouldRender;
-
   // Without `hint` support it acts as `manual`, so it never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
-    open: visible,
+    open: renderedVisible,
     mode: 'hint',
     onOpenChange: nextOpen => {
       if (!nextOpen) {
@@ -121,7 +128,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
         ignoreNextFocusEventRef.current = false;
@@ -130,11 +136,11 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
       setDelayTimeout(() => {
         setVisible(ev, { visible: true });
-      }, state.showDelay);
+      }, showDelay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay],
+    [setDelayTimeout, setVisible, showDelay],
   );
 
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
@@ -164,9 +170,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      let delay = state.hideDelay;
+      let delay = hideDelay;
 
       if (ev.type === 'blur') {
         // Hide immediately when losing focus
@@ -186,7 +191,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
+    [setDelayTimeout, setVisible, hideDelay, targetDocument],
   );
 
   const onPointerUpTrigger = React.useCallback(
@@ -209,29 +214,26 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // eslint-disable-next-line react-hooks/immutability
   state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
-  const child = getTriggerChild(children);
-
   const triggerAriaProps: Pick<TooltipTriggerProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isPopupExpanded =
-    child?.props?.['aria-haspopup'] &&
-    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  // Referencing the hidden tooltip root would include even its aria-hidden secondary content.
+  const accessibleContentId = state.primaryContentId ?? state.content.id;
 
   if (relationship === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerAriaProps['aria-label'] = state.content.children;
-    } else {
-      triggerAriaProps['aria-labelledby'] = state.content.id;
+    // Use rendered secondary content for native naming semantics, with a string fallback during SSR.
+    if (typeof state.content.children === 'string' && (!state.secondaryContent || isServerSideRender)) {
+      const secondaryText = state.secondaryContent?.children;
+      triggerAriaProps['aria-label'] =
+        typeof secondaryText === 'string' && !secondaryHidden
+          ? `${state.content.children} ${secondaryText}`
+          : state.content.children;
+    } else if (
+      !state.secondaryContent ||
+      (child?.props?.['aria-label'] === undefined && child?.props?.['aria-labelledby'] === undefined)
+    ) {
+      triggerAriaProps['aria-labelledby'] = accessibleContentId;
     }
   } else if (relationship === 'description') {
-    triggerAriaProps['aria-describedby'] = state.content.id;
-  }
-
-  // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
-  if (isServerSideRender || isPopupExpanded) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = false;
+    triggerAriaProps['aria-describedby'] = accessibleContentId;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
@@ -255,6 +257,34 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
     onPointerUp: useEventCallback(mergeCallbacks(child?.props?.onPointerUp, onPointerUpTrigger)),
   });
+
+  // Render functions can author a label only after receiving the default trigger props.
+  if (typeof children === 'function' && state.secondaryContent && relationship === 'label') {
+    const resolvedChild = getTriggerChild<TooltipTriggerProps>(state.children);
+    if (
+      triggerAriaProps['aria-labelledby'] !== undefined &&
+      resolvedChild?.props['aria-label'] !== undefined &&
+      resolvedChild.props['aria-labelledby'] === triggerAriaProps['aria-labelledby']
+    ) {
+      state.children = applyTriggerPropsToChildren(state.children, {
+        ...resolvedChild.props,
+        'aria-labelledby': undefined,
+      });
+    }
+  }
+
+  const resolvedChild = getTriggerChild<TooltipTriggerProps>(state.children);
+  // Any ID reference may target a descendant, so conservatively keep the subtree mounted.
+  const hasAriaReference = [resolvedChild?.props['aria-labelledby'], resolvedChild?.props['aria-describedby']].some(
+    reference => Boolean(reference?.trim()),
+  );
+  const alwaysRendered =
+    relationship === 'description' ||
+    (state.secondaryContent
+      ? hasAriaReference
+      : relationship === 'label' && typeof state.content.children !== 'string');
+  const { shouldRender } = useLayerPresence(contentRef, { open: renderedVisible, unmountOnClose: !alwaysRendered });
+  state.shouldRenderTooltip = !isServerSideRender && !(isPopupExpanded && !state.secondaryContent) && shouldRender;
 
   return state;
 };
