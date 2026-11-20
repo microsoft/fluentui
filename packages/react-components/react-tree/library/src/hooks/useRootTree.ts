@@ -1,6 +1,6 @@
 'use client';
 
-import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TreeBaseProps, TreeBaseState, TreeCheckedChangeData } from '../components/Tree/Tree.types';
 import * as React from 'react';
 import type { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
@@ -22,7 +22,18 @@ export function useRootTree(
 ): Omit<TreeBaseState & Omit<TreeContextValue, 'appearance' | 'size'>, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
-  const { selectionMode = 'none' } = props;
+  const {
+    selectionMode = 'none',
+    // Handled through `props` below, they must not reach the root
+    navigationMode: _navigationMode,
+    openItems: _openItems,
+    defaultOpenItems: _defaultOpenItems,
+    onOpenChange: _onOpenChange,
+    onNavigation: _onNavigation,
+    checkedItems: _checkedItems,
+    onCheckedChange: _onCheckedChange,
+    ...rest
+  } = props;
 
   const openItems = React.useMemo(() => ImmutableSet.from(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
@@ -93,15 +104,15 @@ export function useRootTree(
       // noop
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
         role: 'tree',
         'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

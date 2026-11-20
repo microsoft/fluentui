@@ -24,11 +24,11 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLEle
 };
 
 function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
-  const { appearance = 'subtle', size = 'medium' } = props;
+  const { appearance = 'subtle', size = 'medium', collapseMotion: _collapseMotion, ...baseProps } = props;
   const navigation = useFlatTreeNavigation(props.navigationMode);
   const state = useRootTree(
     {
-      ...props,
+      ...baseProps,
       onNavigation: useEventCallback((event, data) => {
         props.onNavigation?.(event, data);
         if (!event.isDefaultPrevented()) {
@@ -58,12 +58,13 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
       You cannot use a <FlatTree> component inside of another <FlatTree> nor a <Tree> component!
     `);
   }
-  const state = useSubtree(props, ref);
+  const { appearance: _appearance, size: _size, collapseMotion, ...baseProps } = props;
+  const state = useSubtree(baseProps, ref);
   return {
     ...state,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     components: { ...state.components, collapseMotion: Collapse },
-    collapseMotion: presenceMotionSlot(props.collapseMotion, {
+    collapseMotion: presenceMotionSlot(collapseMotion, {
       elementType: Collapse,
       defaultProps: {
         visible: state.open,
