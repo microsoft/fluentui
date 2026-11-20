@@ -2,6 +2,8 @@ import { CalendarDayGrid } from './CalendarDayGrid';
 import { defaultCalendarStrings } from '../Calendar/index';
 import { DateRangeType, DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { isConformant } from '../../common/isConformant';
+import { getTheme } from '../../Styling';
+import { styles } from './CalendarDayGrid.styles';
 
 describe('CalendarDayGrid', () => {
   isConformant({
@@ -30,5 +32,23 @@ describe('CalendarDayGrid', () => {
       'component-handles-ref',
       'component-has-root-ref',
     ],
+  });
+
+  it('keeps day cells from expanding under external table cell padding', () => {
+    const calendarStyles = styles({
+      theme: getTheme(),
+      dateRangeType: DateRangeType.Day,
+    });
+
+    expect(calendarStyles.dayCell).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          boxSizing: 'border-box',
+          selectors: expect.objectContaining({
+            '&&': { padding: 0 },
+          }),
+        }),
+      ]),
+    );
   });
 });
