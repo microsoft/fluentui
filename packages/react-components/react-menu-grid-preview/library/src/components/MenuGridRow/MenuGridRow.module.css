@@ -1,0 +1,111 @@
+/* @griffel-buckets reset: .root */
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluent);
+
+.root {
+  border-radius: var(--borderRadiusMedium);
+  position: relative;
+  color: var(--colorNeutralForeground2);
+  background-color: var(--colorNeutralBackground1);
+  padding: var(--spacingVerticalXS) var(--spacingVerticalSNudge);
+  box-sizing: border-box;
+  max-width: calc(9 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalXXS));
+  min-height: var(--spacingHorizontalXXXL);
+  flex-shrink: 0;
+  display: flex;
+  align-items: start;
+  font-size: var(--fontSizeBase300);
+  cursor: pointer;
+  gap: var(--spacingHorizontalXS);
+  user-select: none;
+  &:focus {
+    outline-style: none;
+  }
+  &:focus-visible {
+    outline-style: none;
+  }
+  &[data-fui-focus-visible] {
+    border-top-color: var(--colorTransparentBackground);
+    border-inline-end-color: var(--colorTransparentBackground);
+    border-bottom-color: var(--colorTransparentBackground);
+    border-inline-start-color: var(--colorTransparentBackground);
+    &::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+      top: calc(-1 * var(--strokeWidthThick));
+      inset-inline-end: calc(-1 * var(--strokeWidthThick));
+      bottom: calc(-1 * var(--strokeWidthThick));
+      inset-inline-start: calc(-1 * var(--strokeWidthThick));
+    }
+  }
+  &:hover {
+    background-color: var(--colorNeutralBackground1Hover);
+    color: var(--colorNeutralForeground2Hover);
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+  &:hover:active {
+    background-color: var(--colorNeutralBackground1Pressed);
+    color: var(--colorNeutralForeground2Pressed);
+  }
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .root:not(html)[data-fui-focus-visible]::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+
+  .root:not(html):hover {
+    background-color: Canvas;
+    border-color: Highlight;
+    color: Highlight;
+  }
+
+  .root:not(html):focus {
+    outline-style: none;
+  }
+
+  .root:not(html):focus-visible {
+    outline-style: none;
+  }
+
+  .root:not(html)[data-fui-focus-visible] {
+    border-top-color: var(--colorTransparentBackground);
+    border-inline-end-color: var(--colorTransparentBackground);
+    border-bottom-color: var(--colorTransparentBackground);
+    border-inline-start-color: var(--colorTransparentBackground);
+  }
+
+  .root:not(html)[data-fui-focus-visible]::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: var(--strokeWidthThick) solid Highlight;
+    border-radius: var(--borderRadiusMedium);
+    top: calc(-1 * var(--strokeWidthThick));
+    inset-inline-end: calc(-1 * var(--strokeWidthThick));
+    bottom: calc(-1 * var(--strokeWidthThick));
+    inset-inline-start: calc(-1 * var(--strokeWidthThick));
+  }
+
+  .root:not(html)[data-fui-focus-visible]::after {
+    border-top-color: Highlight;
+    border-inline-end-color: Highlight;
+    border-bottom-color: Highlight;
+    border-inline-start-color: Highlight;
+  }
+}

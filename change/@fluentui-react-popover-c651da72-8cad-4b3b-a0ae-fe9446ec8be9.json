@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add opt-in CSS Modules styles for PopoverSurface",
+  "packageName": "@fluentui/react-popover",
+  "email": "dmytrokirpa@microsoft.com"
+}

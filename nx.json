@@ -212,5 +212,6 @@
       ]
     }
   ],
-  "useLegacyCache": true
+  "useLegacyCache": true,
+  "analytics": false
 }

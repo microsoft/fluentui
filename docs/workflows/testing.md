@@ -5,11 +5,49 @@
 | Type              | Tool                         | Command                                         | Purpose                          |
 | ----------------- | ---------------------------- | ----------------------------------------------- | -------------------------------- |
 | Unit              | Jest + React Testing Library | `yarn nx run <project>:test`                    | Component behavior, hooks, utils |
-| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)       |
+| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot capture               |
 | E2E               | Cypress                      | `yarn nx run react-components:e2e`              | Integration flows                |
 | SSR               | Custom                       | `yarn nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety     |
 | Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
 | Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
+
+## Capturing v9 Visual Regression Screenshots Locally
+
+With Playwright's Chromium installed, run `yarn nx run vr-tests-react-components:test-vr` to build the VR Storybook and capture screenshots in
+`apps/vr-tests-react-components/dist/screenshots`. The VR Storybook prefers experimental CSS Module style hooks
+where available, falls back to Griffel hooks otherwise, and uses headless Fluent icons.
+
+This target captures screenshots only; a successful run does not assert visual parity against a baseline.
+
+CSS Modules styles do not cross shadow boundaries. The Shadow DOM fixtures explicitly install
+the static component styles inside each shadow root, alongside the shadow-specific Griffel renderer.
+Consumers using CSS Modules in a shadow root must likewise install their static styles there.
+
+To check CSS Modules components inside an existing Griffel application (app `makeStyles` overrides, custom style
+hooks, wrappers and plain CSS class names), run the [css-modules-parity](../../apps/css-modules-parity/README.md)
+Cypress suite, which compares the Griffel and CSS Modules versions of each component in every interaction state:
+
+```bash
+yarn nx run css-modules-parity:e2e
+```
+
+`yarn nx run react-components:e2e` covers app-level interop (overrides, custom style hooks, providers, portals).
+
+Component stylesheets are linted with Stylelint as part of each v9 package's `lint` target (selector specificity,
+logical properties, design tokens); see [tools/stylelint-rules](../../tools/stylelint-rules/README.md).
+
+For an opt-in browser regression check, serve identical Storybook builds using Griffel and CSS Modules
+on separate URLs, then run:
+
+```bash
+NX_TASK_TARGET_PROJECT=vr-tests-react-components yarn nx exec -- node scripts/check-v9-css-modules.js http://localhost:6006 http://localhost:6007
+```
+
+This compares computed styles for the migrated RTL, badge, typography, icon, custom-hook, and shadow-root
+fixtures. It is not part of the default VRT target and does not replace screenshot comparisons.
+Combobox checks also exercise overlapping hover, focus, and active states with normal and reduced motion,
+comparing border colors and focus-indicator transitions after 250ms and 1000ms without disabling animations.
+Both builds use the same local avatar image in place of the external image CDN for deterministic, offline checks.
 
 ## V9 Icon Regression Coverage
 

@@ -1,0 +1,49 @@
+/*
+ * An app's CSS Modules stylesheet targeting Fluent's static class names under an app container class. style-loader
+ * inserts it when `GlobalClassSelectors.cy.tsx` is evaluated: after the Fluent CSS Modules stylesheets (imported
+ * earlier through the components) and before Griffel's runtime styles.
+ */
+
+/* (0,2,0) */
+.scoped :global(.fui-Button),
+.scoped :global(.fui-MenuItem) {
+  background-color: var(--colorPaletteBerryBackground2);
+  color: var(--colorPaletteBerryForeground2);
+}
+.scoped :global(.fui-Button__icon) {
+  color: var(--colorPaletteBlueForeground2);
+}
+.scoped :global(.fui-Checkbox__indicator) {
+  background-color: var(--colorPaletteBerryBackground2);
+  color: var(--colorPaletteBerryForeground2);
+}
+
+/* (0,1,0): `:where()` keeps the container out of the specificity. */
+:where(.whereScoped) :global(.fui-Button),
+:where(.whereScoped) :global(.fui-MenuItem) {
+  background-color: var(--colorPaletteBerryBackground2);
+  color: var(--colorPaletteBerryForeground2);
+}
+:where(.whereScoped) :global(.fui-Button__icon) {
+  color: var(--colorPaletteBlueForeground2);
+}
+:where(.whereScoped) :global(.fui-Checkbox__indicator) {
+  background-color: var(--colorPaletteBerryBackground2);
+  color: var(--colorPaletteBerryForeground2);
+}
+
+/* (0,1,0) with `!important`: wins in every state, whatever the order. */
+/* stylelint-disable declaration-no-important -- apps override Fluent this way; that is what this case covers. */
+:where(.important) :global(.fui-Button),
+:where(.important) :global(.fui-MenuItem) {
+  background-color: var(--colorPaletteBerryBackground2) !important;
+  color: var(--colorPaletteBerryForeground2) !important;
+}
+:where(.important) :global(.fui-Button__icon) {
+  color: var(--colorPaletteBlueForeground2) !important;
+}
+:where(.important) :global(.fui-Checkbox__indicator) {
+  background-color: var(--colorPaletteBerryBackground2) !important;
+  color: var(--colorPaletteBerryForeground2) !important;
+}
+/* stylelint-enable declaration-no-important */

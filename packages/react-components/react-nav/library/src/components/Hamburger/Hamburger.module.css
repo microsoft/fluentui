@@ -1,0 +1,25 @@
+.root {
+  text-decoration-line: none;
+  border-style: none;
+}
+
+/* Griffel's `border: none` resets the border color too, where Button's appearance and disabled styles don't set one. */
+.root:where(.borderColor):where(:not(:disabled, [aria-disabled='true'])) {
+  border-color: currentColor;
+}
+
+/* Griffel applies these colors in forced colors too; Button's forced colors rules still win for the excluded states. */
+.root:where(.background):where(:not(:disabled, [aria-disabled='true'])) {
+  background-color: var(--colorNeutralBackground4);
+}
+@media (forced-colors: none) {
+  .root:where(.background) {
+    background-color: var(--colorNeutralBackground4);
+  }
+  .root:where(.background):hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+  .root:where(.background):active {
+    background-color: var(--colorNeutralBackground4Pressed);
+  }
+}

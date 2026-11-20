@@ -1,0 +1,17 @@
+.root {
+  position: relative;
+
+  > :not(:global(.fui-CardPreview__logo)) {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.logo {
+  position: absolute;
+  bottom: 12px;
+  inset-inline-start: 12px;
+  width: 32px;
+  height: 32px;
+}

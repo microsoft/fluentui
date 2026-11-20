@@ -4,8 +4,8 @@ const FluentUIReactIconsFontSubsettingPlugin = require('@fluentui/react-icons-fo
 
 const FONT_ICON_VARIANT = 'fonts';
 const iconLoader = require.resolve('@fluentui/react-icons-atomic-webpack-loader');
-const headlessBaseStyles = require.resolve('@fluentui/react-icons/headless/styles.css');
-const headlessFontStyles = require.resolve('@fluentui/react-icons/headless/fonts/styles.css');
+const headlessBaseStyles = require.resolve('./react-icons-headless.css');
+const headlessFontStyles = require.resolve('./react-icons-headless-fonts.css');
 const fontIconStyles = require.resolve('./react-icons-font.css');
 
 /** @typedef {string | string[] | import('webpack').EntryObject} ResolvedEntry */

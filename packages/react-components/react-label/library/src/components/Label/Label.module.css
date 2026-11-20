@@ -1,0 +1,42 @@
+.root {
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+}
+
+.required {
+  color: var(--colorPaletteRedForeground3);
+  padding-inline-start: var(--spacingHorizontalXS);
+}
+
+.disabled {
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+.small {
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+}
+
+.medium {
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+.large {
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase400);
+}
+
+.semibold {
+  font-weight: var(--fontWeightSemibold);
+}
+
+/* Forced colors rules: last and with one more type selector, so they win over rules and app overrides of equal
+   specificity but lose to state rules with one more class, like Griffel, which sorted @media rules after all other rules. */
+
+@media (forced-colors: active) {
+  .disabled:not(html) {
+    color: GrayText;
+  }
+}

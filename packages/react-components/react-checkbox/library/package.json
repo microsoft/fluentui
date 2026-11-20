@@ -5,7 +5,9 @@
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -21,7 +23,8 @@
     "@fluentui/react-theme": "^9.2.2",
     "@fluentui/react-utilities": "^9.27.0",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

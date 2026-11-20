@@ -1,0 +1,24 @@
+.root {
+  margin-block: auto;
+  pointer-events: all;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/* Griffel applies these colors in forced colors too; Button's forced colors rules still win for the excluded states. */
+.root:where(.color):where(:not(:disabled, [aria-disabled='true'])) {
+  color: var(--colorNeutralForeground2);
+}
+.root:where(.background):where(:not(:disabled, [aria-disabled='true'])) {
+  background-color: var(--colorNeutralBackgroundAlpha);
+}
+
+@media (forced-colors: none) {
+  .root:where(.color) {
+    color: var(--colorNeutralForeground2);
+  }
+  .root:where(.background) {
+    background-color: var(--colorNeutralBackgroundAlpha);
+  }
+}

@@ -1,0 +1,11 @@
+.root {
+  background-color: var(--colorNeutralBackground1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  overflow-y: auto;
+  outline: 1px solid var(--colorTransparentStroke);
+  padding: var(--spacingHorizontalXS);
+  row-gap: var(--spacingHorizontalXXS);
+}

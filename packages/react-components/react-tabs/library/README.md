@@ -68,3 +68,11 @@ See [SPEC.md](./docs/Spec.md).
 ### Migration Guide
 
 If you're upgrading to Fluent UI v9 see [MIGRATION.md](./docs/MIGRATION.md) for guidance on updating to the latest Link implementation.
+
+## Opt-in CSS Modules styles
+
+Tab animated indicators have CSS Modules alternatives beside their Griffel style hooks.
+Resolve the relevant `.styles.js` imports to `.styles.css.js` (and source `.styles`
+imports to `.styles.css.ts`) only in an explicitly opted-in bundler configuration.
+Keep CSS assets; the headless icon defaults are imported into the low-priority `fluent` layer.
+The default component imports and Griffel implementations are unchanged.

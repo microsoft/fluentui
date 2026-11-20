@@ -64,6 +64,8 @@ coverage
 dist
 dist-storybook
 screenshots
+# css-modules-parity FUI_PARITY_PROFILE=1 output
+apps/css-modules-parity/cypress/profile/
 !tools/**/lib
 tools/**/__fixtures__/**/lib
 tools/**/__fixtures__/**/lib-commonjs
