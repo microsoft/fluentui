@@ -140,7 +140,7 @@ test('collects workspace, archived transitive and declaration-only types in an i
       runtime = value;
     });
     vm.runInNewContext(fs.readFileSync(path.join(root, 'out/playground-runtime.js'), 'utf8'), context);
-    await expect(runtime!.moduleLoaders['pnp-ui']()).resolves.toMatchObject({ value: 'pnp' });
+    expect(await runtime!.moduleLoaders['pnp-ui']()).toMatchObject({ value: 'pnp' });
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
