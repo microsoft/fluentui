@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import type { MessageBarBaseProps, MessageBarBaseState, MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
@@ -19,7 +19,7 @@ export const useMessageBarBase_unstable = (
   props: MessageBarBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarBaseState => {
-  const { layout = 'auto', intent = 'info', politeness } = props;
+  const { layout = 'auto', intent = 'info', politeness, icon, bottomReflowSpacer, ...rest } = props;
   const computedPoliteness = politeness ?? (intent === 'info' ? 'polite' : 'assertive');
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
@@ -48,19 +48,19 @@ export const useMessageBarBase_unstable = (
       bottomReflowSpacer: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, reflowRef, nodeRef),
         role: 'group',
         'aria-labelledby': titleId,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-    icon: slot.optional(props.icon, {
+    icon: slot.optional(icon, {
       renderByDefault: true,
       elementType: 'div',
     }),
-    bottomReflowSpacer: slot.optional(props.bottomReflowSpacer, {
+    bottomReflowSpacer: slot.optional(bottomReflowSpacer, {
       renderByDefault: computedLayout === 'multiline',
       elementType: 'div',
     }),

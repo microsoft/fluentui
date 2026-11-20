@@ -229,3 +229,22 @@ describe('MessageBar', () => {
     });
   });
 });
+
+describe('MessageBar DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <MessageBar intent="warning" layout="multiline" politeness="polite" shape="square" icon={<span />}>
+        Message
+      </MessageBar>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-labelledby',
+      'class',
+      'role',
+    ]);
+  });
+});
