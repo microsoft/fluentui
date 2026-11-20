@@ -260,7 +260,9 @@ const useInputStyles = makeStyles({
     // that vertical controls should also support `writing-mode: vertical-lr`.
     '@supports (writing-mode: sideways-lr)': {
       writingMode: 'vertical-lr',
-      direction: 'rtl',
+      // Keep values increasing upwards in RTL too; Griffel would flip this to ltr.
+      // The cast is needed because the Direction type has no room for the @noflip comment.
+      direction: 'rtl /* @noflip */' as 'rtl',
     },
     // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
     '@supports not (writing-mode: sideways-lr)': {
