@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import type { OnSelectionChangeData } from '@fluentui/react-utilities';
-import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
@@ -79,7 +79,7 @@ export const useListBase_unstable = (
   props: ListProps,
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
 ): ListState => {
-  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
+  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange, ...rest } = props;
 
   const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
@@ -124,14 +124,14 @@ export const useListBase_unstable = (
       root: as,
     },
     root: slot.always(
-      getIntrinsicElementProps(as, {
-        ref,
+      {
+        ref: ref as React.Ref<HTMLDivElement & HTMLUListElement & HTMLOListElement>,
         ...(selectionMode && {
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
-        ...props,
+        ...rest,
         role: listRole,
-      }),
+      },
       { elementType: as },
     ),
     listItemRole,
