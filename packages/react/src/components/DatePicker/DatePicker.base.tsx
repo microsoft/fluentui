@@ -68,15 +68,22 @@ function useFocusLogic() {
   return [textFieldRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
 }
 
-function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePickerProps, focus: () => void) {
-  const [isCalendarShown, setIsCalendarShown] = React.useState(false);
+function useCalendarVisibility({ allowTextInput, disabled, onAfterMenuDismiss }: IDatePickerProps, focus: () => void) {
+  const [calendarShown, setIsCalendarShown] = React.useState(false);
+  const isCalendarShown = calendarShown && !disabled;
   const isMounted = React.useRef(false);
   const async = useAsync();
 
   React.useEffect(() => {
+    if (disabled) {
+      setIsCalendarShown(false);
+    }
+  }, [disabled]);
+
+  React.useEffect(() => {
     if (isMounted.current && !isCalendarShown) {
       // In browsers like IE, textfield gets unfocused when datepicker is collapsed
-      if (allowTextInput) {
+      if (allowTextInput && !disabled) {
         async.requestAnimationFrame(focus);
       }
 
@@ -270,11 +277,11 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   );
 
   const showDatePickerPopup = React.useCallback((): void => {
-    if (!isCalendarShown) {
+    if (!isCalendarShown && !disabled) {
       preventNextFocusOpeningPicker();
       setIsCalendarShown(true);
     }
-  }, [isCalendarShown, preventNextFocusOpeningPicker, setIsCalendarShown]);
+  }, [disabled, isCalendarShown, preventNextFocusOpeningPicker, setIsCalendarShown]);
 
   React.useImperativeHandle(
     props.componentRef,
