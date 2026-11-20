@@ -49,6 +49,12 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   const focusAttributes = useArrowNavigationGroup({ circular: true });
 
   const baseState = useMenuListBase_unstable(props, ref);
+  if (process.env.NODE_ENV !== 'production') {
+    // Development-only check that relies on the `fui-*` classnames of the styled components.
+    // It's okay to disable the ESLint rule because we are checking env variable statically (not at runtime)
+    // eslint-disable-next-line react-hooks/rules-of-hooks, react-hooks/immutability -- decorates the base state
+    baseState.root.ref = useMergedRefs(baseState.root.ref, useValidateNesting('MenuList')) as React.Ref<HTMLDivElement>;
+  }
   // recreate root non-mutatively: merge wrapperRef so the effect below can
   // observe the rendered DOM element, and add Tabster arrow-nav attributes
   const mergedRootRef = useMergedRefs(baseState.root.ref, wrapperRef) as React.Ref<HTMLDivElement>;
@@ -120,7 +126,6 @@ export const useMenuListBase_unstable = (props: MenuListProps, ref: React.Ref<HT
   const hasMenuContext = useHasParentContext(MenuContext);
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const validateNestingRef = useValidateNesting('MenuList');
 
   const setFocusByFirstCharacter = React.useCallback((e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
     if (!innerRef.current) {
@@ -169,7 +174,7 @@ export const useMenuListBase_unstable = (props: MenuListProps, ref: React.Ref<HT
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'menu',
         'aria-labelledby': triggerId,
         ...props,
