@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   useControllableState,
   useEventCallback,
+  useIsomorphicLayoutEffect,
   useOnClickOutside,
   useOnScrollOutside,
   elementContains,
@@ -17,6 +18,7 @@ import {
   usePositioningMouseTarget,
   usePositioningSlideDirection,
 } from '@fluentui/react-positioning';
+import type { PositioningImperativeRef, PositioningProps } from '@fluentui/react-positioning';
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
@@ -277,15 +279,54 @@ function usePopoverRefs(
     state.withArrow = false;
   }
 
-  if (state.withArrow) {
-    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeights[state.size]);
+  const arrowHeight = state.withArrow ? arrowHeights[state.size] : undefined;
+  const arrowOffset = useArrowOffset(positioningOptions.offset, arrowHeight);
+  const arrowPositioningRef = React.useRef<PositioningImperativeRef>(null);
+  const userPositioningRef = positioningOptions.positioningRef;
+
+  if (arrowOffset !== undefined) {
+    positioningOptions.offset = arrowOffset;
+    positioningOptions.positioningRef = arrowPositioningRef;
   }
 
+  // Attaches the user positioningRef of a popover with an arrow the same way usePositioning() attaches it without an
+  // arrow, so that React still calls the cleanup returned by a callback ref. The handle forwards to the handle that
+  // usePositioning() attaches to arrowPositioningRef.
+  React.useImperativeHandle(
+    arrowOffset === undefined ? undefined : userPositioningRef,
+    (): PositioningImperativeRef => ({
+      updatePosition: () => arrowPositioningRef.current?.updatePosition(),
+      setTarget: target => arrowPositioningRef.current?.setTarget(target),
+    }),
+    [],
+  );
+
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);
+
+  // A new merged offset on every render used to recreate, and therefore reposition, the position manager of an open
+  // popover with an arrow. Keep repositioning after every render, without the recreation, so the popover still
+  // follows a target that moved without being resized. The ref is only attached to popovers with an arrow.
+  useIsomorphicLayoutEffect(() => {
+    arrowPositioningRef.current?.updatePosition();
+  });
 
   return {
     triggerRef,
     contentRef,
     arrowRef,
   } as const;
+}
+
+/**
+ * mergeArrowOffset() returns a new offset on every call, and a new offset recreates the position manager.
+ * Keeps the merged offset while the user offset and arrow height are unchanged.
+ */
+function useArrowOffset(
+  userOffset: PositioningProps['offset'],
+  arrowHeight: number | undefined,
+): PositioningProps['offset'] {
+  return React.useMemo(
+    () => (arrowHeight === undefined ? undefined : mergeArrowOffset(userOffset, arrowHeight)),
+    [userOffset, arrowHeight],
+  );
 }
