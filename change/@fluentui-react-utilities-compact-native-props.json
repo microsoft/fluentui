@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: store native element prop allow-lists as compact strings to reduce bundle size",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
