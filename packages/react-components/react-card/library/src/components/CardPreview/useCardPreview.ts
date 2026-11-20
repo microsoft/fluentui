@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import type {
   CardPreviewBaseProps,
   CardPreviewBaseState,
@@ -35,7 +35,7 @@ export const useCardPreviewBase_unstable = (
   props: CardPreviewBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardPreviewBaseState => {
-  const { logo } = props;
+  const { logo, ...rest } = props;
 
   const {
     selectableA11yProps: { referenceLabel, referenceId, setReferenceLabel, setReferenceId },
@@ -76,10 +76,10 @@ export const useCardPreviewBase_unstable = (
 
     root: slot.always(
       // eslint-disable-next-line react-hooks/refs
-      getIntrinsicElementProps('div', {
+      {
         ref: previewRef,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     logo: slot.optional(logo, { elementType: 'div' }),

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusableGroup, useFocusFinders, useFocusWithin } from '@fluentui/react-tabster';
 
 import type { CardBaseProps, CardBaseState, CardOnSelectionChangeEvent, CardProps, CardState } from './Card.types';
@@ -119,7 +119,17 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
  * @param options - optional behavior overrides such as a focus-aware restriction predicate
  */
 export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDivElement>): CardBaseState => {
-  const { disabled = false, ...restProps } = props;
+  const {
+    disabled = false,
+    focusMode,
+    selected: selectedProp,
+    defaultSelected,
+    onSelectionChange,
+    shouldRestrictTriggerAction,
+    floatingAction,
+    checkbox,
+    ...restProps
+  } = props;
 
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
@@ -162,11 +172,11 @@ export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDi
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         role: 'group',
         ...cardRootProps,
-      }),
+      },
       { elementType: 'div' },
     ),
 
