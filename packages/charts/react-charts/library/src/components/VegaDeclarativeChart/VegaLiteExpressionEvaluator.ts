@@ -245,7 +245,7 @@ class ExpressionParser {
   }
 
   public parse(): unknown {
-    const result = this._parseExpression();
+    const result = this._parseExpression(true);
     if (this._peek().type !== 'eof') {
       throw new Error(
         `Safe expression evaluator: unexpected token '${this._peek().type}' at position ${this._peek().start}`,
@@ -274,47 +274,51 @@ class ExpressionParser {
     return this._advance();
   }
 
-  private _parseExpression(): unknown {
-    return this._parseTernary();
+  // Skipped branches still consume and validate syntax, but must not access data or evaluate values.
+  private _parseExpression(evaluate: boolean): unknown {
+    return this._parseTernary(evaluate);
   }
 
-  private _parseTernary(): unknown {
-    const condition = this._parseOr();
+  private _parseTernary(evaluate: boolean): unknown {
+    const condition = this._parseOr(evaluate);
     if (this._peek().type === '?') {
       this._advance();
-      const trueVal = this._parseExpression();
+      const trueVal = this._parseExpression(evaluate && !!condition);
       this._expect(':');
-      const falseVal = this._parseExpression();
+      const falseVal = this._parseExpression(evaluate && !condition);
       return condition ? trueVal : falseVal;
     }
     return condition;
   }
 
-  private _parseOr(): unknown {
-    let left = this._parseAnd();
+  private _parseOr(evaluate: boolean): unknown {
+    let left = this._parseAnd(evaluate);
     while (this._peek().type === '||') {
       this._advance();
-      const right = this._parseAnd();
+      const right = this._parseAnd(evaluate && !left);
       left = left || right;
     }
     return left;
   }
 
-  private _parseAnd(): unknown {
-    let left = this._parseEquality();
+  private _parseAnd(evaluate: boolean): unknown {
+    let left = this._parseEquality(evaluate);
     while (this._peek().type === '&&') {
       this._advance();
-      const right = this._parseEquality();
+      const right = this._parseEquality(evaluate && !!left);
       left = left && right;
     }
     return left;
   }
 
-  private _parseEquality(): unknown {
-    let left = this._parseComparison();
+  private _parseEquality(evaluate: boolean): unknown {
+    let left = this._parseComparison(evaluate);
     while (['==', '===', '!=', '!=='].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseComparison();
+      const right = this._parseComparison(evaluate);
+      if (!evaluate) {
+        continue;
+      }
       switch (op) {
         case '==':
           // eslint-disable-next-line eqeqeq
@@ -335,11 +339,14 @@ class ExpressionParser {
     return left;
   }
 
-  private _parseComparison(): unknown {
-    let left = this._parseAdditive();
+  private _parseComparison(evaluate: boolean): unknown {
+    let left = this._parseAdditive(evaluate);
     while (['<', '>', '<=', '>='].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseAdditive();
+      const right = this._parseAdditive(evaluate);
+      if (!evaluate) {
+        continue;
+      }
       switch (op) {
         case '<':
           left = (left as number) < (right as number);
@@ -358,11 +365,14 @@ class ExpressionParser {
     return left;
   }
 
-  private _parseAdditive(): unknown {
-    let left = this._parseMultiplicative();
+  private _parseAdditive(evaluate: boolean): unknown {
+    let left = this._parseMultiplicative(evaluate);
     while (['+', '-'].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseMultiplicative();
+      const right = this._parseMultiplicative(evaluate);
+      if (!evaluate) {
+        continue;
+      }
       if (op === '+') {
         left =
           typeof left === 'string' || typeof right === 'string'
@@ -375,11 +385,14 @@ class ExpressionParser {
     return left;
   }
 
-  private _parseMultiplicative(): unknown {
-    let left = this._parseUnary();
+  private _parseMultiplicative(evaluate: boolean): unknown {
+    let left = this._parseUnary(evaluate);
     while (['*', '/', '%'].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseUnary();
+      const right = this._parseUnary(evaluate);
+      if (!evaluate) {
+        continue;
+      }
       switch (op) {
         case '*':
           left = (left as number) * (right as number);
@@ -395,24 +408,27 @@ class ExpressionParser {
     return left;
   }
 
-  private _parseUnary(): unknown {
+  private _parseUnary(evaluate: boolean): unknown {
     if (this._peek().type === '!') {
       this._advance();
-      return !this._parseUnary();
+      const value = this._parseUnary(evaluate);
+      return evaluate ? !value : undefined;
     }
     if (this._peek().type === '-') {
       this._advance();
-      return -(this._parseUnary() as number);
+      const value = this._parseUnary(evaluate);
+      return evaluate ? -(value as number) : undefined;
     }
     if (this._peek().type === '+') {
       this._advance();
-      return +(this._parseUnary() as number);
+      const value = this._parseUnary(evaluate);
+      return evaluate ? +(value as number) : undefined;
     }
-    return this._parsePostfix();
+    return this._parsePostfix(evaluate);
   }
 
-  private _parsePostfix(): unknown {
-    let value = this._parsePrimary();
+  private _parsePostfix(evaluate: boolean): unknown {
+    let value = this._parsePrimary(evaluate);
 
     while (true) {
       if (this._peek().type === '.') {
@@ -421,7 +437,7 @@ class ExpressionParser {
         const prop = this._expect('ident');
         const propName = prop.value as string;
 
-        if (hasOwn(value, propName)) {
+        if (evaluate && hasOwn(value, propName)) {
           value = (value as Record<string, unknown>)[propName];
         } else {
           value = undefined;
@@ -429,9 +445,12 @@ class ExpressionParser {
       } else if (this._peek().type === '[') {
         // Bracket access: obj['prop'] or obj[expr] — only own properties allowed
         this._advance();
-        const index = this._parseExpression();
+        const index = this._parseExpression(evaluate);
         this._expect(']');
 
+        if (!evaluate) {
+          continue;
+        }
         const key = String(index);
         if (hasOwn(value, key)) {
           value = (value as Record<string, unknown>)[key];
@@ -440,20 +459,20 @@ class ExpressionParser {
         }
       } else if (this._peek().type === '(') {
         // Function call — only safe built-in functions are callable
-        if (typeof value !== 'function' || !SAFE_FUNCTION_VALUES.has(value)) {
+        if (evaluate && (typeof value !== 'function' || !SAFE_FUNCTION_VALUES.has(value))) {
           throw new Error('Safe expression evaluator: function calls are only allowed for built-in functions');
         }
         this._advance();
         const args: unknown[] = [];
         if (this._peek().type !== ')') {
-          args.push(this._parseExpression());
+          args.push(this._parseExpression(evaluate));
           while (this._peek().type === ',') {
             this._advance();
-            args.push(this._parseExpression());
+            args.push(this._parseExpression(evaluate));
           }
         }
         this._expect(')');
-        value = (value as (...a: unknown[]) => unknown)(...args);
+        value = evaluate ? (value as (...a: unknown[]) => unknown)(...args) : undefined;
       } else {
         break;
       }
@@ -462,7 +481,7 @@ class ExpressionParser {
     return value;
   }
 
-  private _parsePrimary(): unknown {
+  private _parsePrimary(evaluate: boolean): unknown {
     const token = this._peek();
 
     switch (token.type) {
@@ -471,7 +490,7 @@ class ExpressionParser {
       case 'boolean':
       case 'null':
         this._advance();
-        return token.value;
+        return evaluate ? token.value : undefined;
 
       case 'ident': {
         const name = token.value as string;
@@ -479,6 +498,9 @@ class ExpressionParser {
           throw new Error(`Safe expression evaluator: unknown identifier '${name}'`);
         }
         this._advance();
+        if (!evaluate) {
+          return undefined;
+        }
         if (name === 'datum') {
           return this.context.datum;
         }
@@ -493,7 +515,7 @@ class ExpressionParser {
 
       case '(': {
         this._advance();
-        const result = this._parseExpression();
+        const result = this._parseExpression(evaluate);
         this._expect(')');
         return result;
       }
@@ -514,6 +536,8 @@ class ExpressionParser {
  * Only allows property access, arithmetic, comparison, logical operators,
  * ternary expressions, literals, and a whitelist of built-in functions.
  * Rejects assignment, arbitrary function calls, and global object access.
+ * Logical and ternary operators short-circuit evaluation; skipped branches
+ * are still parsed to validate syntax and allowed identifiers.
  *
  * @param expr - The Vega-Lite expression string to evaluate
  * @param datum - The data row object (accessible as `datum` in the expression)

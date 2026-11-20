@@ -1248,6 +1248,87 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 });
 
+describe.each(['bar', 'line', 'area'] as const)('VegaDeclarativeChart - Filtered %s views', mark => {
+  const chartType = mark === 'bar' ? 'VerticalBarChart' : 'LineChart';
+
+  function chartSpec(values: Array<Record<string, unknown>>, transform?: VegaLiteSpec['transform']): VegaLiteSpec {
+    return {
+      mark,
+      data: { values },
+      transform,
+      encoding: {
+        x: { field: 'category', type: 'nominal' },
+        y: { field: 'value', type: 'quantitative' },
+      },
+    };
+  }
+
+  it('renders the native no-data alert for a valid guarded no-match without evaluating the skipped operand', () => {
+    const spec = chartSpec(
+      [{ category: 'A', value: 10, approved: false, invalid: { toString: 0 } }],
+      [{ filter: 'datum.approved && +datum.invalid' }],
+    );
+    const warn = jest.mocked(console.warn);
+    warn.mockClear();
+
+    const { getByRole } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
+    expect(getByRole('alert', { name: 'Graph has no data to display' })).toBeInTheDocument();
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it.each(['hconcat', 'vconcat'] as const)('preserves a healthy %s sibling beside a valid empty view', layout => {
+    const spec: VegaLiteSpec = {
+      [layout]: [
+        chartSpec(
+          [{ category: 'Filtered', value: 10, approved: false, invalid: { toString: 0 } }],
+          [{ filter: 'datum.approved && +datum.invalid' }],
+        ),
+        { ...chartSpec([{ category: 'Healthy', value: 25 }]), mark: 'bar' },
+      ],
+    };
+    const warn = jest.mocked(console.warn);
+    warn.mockClear();
+
+    const { container, getByRole } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
+    expect(getByRole('alert', { name: 'Graph has no data to display' })).toBeInTheDocument();
+    expect(container.querySelectorAll('rect').length).toBeGreaterThan(0);
+    expect(container.textContent).toContain('Healthy');
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it.each(['true && +datum.invalid', 'false && (1 + )'])(
+    'still rejects an empty view caused by an evaluation error: %s',
+    filter => {
+      const spec = chartSpec([{ category: 'A', value: 10, invalid: { toString: 0 } }], [{ filter }]);
+      const warn = jest.mocked(console.warn);
+      warn.mockClear();
+
+      expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
+        `VegaLiteSchemaAdapter: Empty data array for ${chartType}`,
+      );
+      expect(warn).toHaveBeenCalledWith('Vega-Lite filter evaluation failed; excluding row.', expect.any(Error));
+    },
+  );
+
+  it('still rejects empty source data even when a filter is provided', () => {
+    const spec = chartSpec([], [{ filter: 'false' }]);
+
+    expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
+      `VegaLiteSchemaAdapter: Empty data array for ${chartType}`,
+    );
+  });
+
+  it('does not hide invalid encoded fields behind a nonmatching filter', () => {
+    const spec = chartSpec([{ category: 'A' }], [{ filter: 'false' }]);
+
+    expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />)).toThrow(
+      `No valid values found for field 'value' in ${chartType}`,
+    );
+  });
+});
+
 describe('VegaDeclarativeChart - Security', () => {
   it.each(['client', 'server'])('rejects folding inherited fields in a JSON-only spec during %s rendering', mode => {
     const spec: VegaLiteSpec = JSON.parse(
@@ -1303,7 +1384,7 @@ describe('VegaDeclarativeChart - Security', () => {
     expect((globalThis as Record<string, unknown>).__msrcFluentUiPoc).toBeUndefined();
   });
 
-  it('blocks malicious filter expression', () => {
+  it('excludes all rows for a malicious filter expression', () => {
     const maliciousSpec: VegaLiteSpec = {
       mark: 'bar',
       data: {
@@ -1323,7 +1404,9 @@ describe('VegaDeclarativeChart - Security', () => {
       },
     };
 
-    render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+    expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />)).toThrow(
+      'VegaLiteSchemaAdapter: Empty data array for VerticalBarChart',
+    );
 
     expect((globalThis as Record<string, unknown>).__msrcFilterPoc).toBeUndefined();
   });
