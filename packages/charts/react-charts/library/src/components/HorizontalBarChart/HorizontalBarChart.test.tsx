@@ -545,3 +545,110 @@ describe('Render empty chart aria label div when chart is empty', () => {
     expect(renderedDOM!.length).toBe(1);
   });
 });
+
+describe('Horizontal bar chart - spacing between bars', () => {
+  const MARGIN_WIDTH_IN_PX = 3;
+  const getBars = (container: Element) =>
+    Array.from(container.querySelectorAll('rect'))
+      .map(rect => ({ x: parseFloat(rect.getAttribute('x')!), width: parseFloat(rect.getAttribute('width')!) }))
+      .filter(bar => bar.width > 0)
+      .sort((a, b) => a.x - b.x);
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  describe.each(['ltr', 'rtl'] as const)('dir: %s', dir => {
+    test.each([
+      [300, 25],
+      [1200, 25],
+      [300, 0],
+      [300, 100],
+    ])('svg width %ipx, value %i of 100: equal gaps and bars fill the track', (svgWidth, x) => {
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: svgWidth } as DOMRect);
+
+      const { container } = render(
+        <FluentProvider dir={dir}>
+          <HorizontalBarChart
+            data={[{ chartTitle: 'one', chartData: [{ legend: 'one', horizontalBarChartdata: { x, total: 100 } }] }]}
+          />
+        </FluentProvider>,
+      );
+
+      const bars = getBars(container);
+      const expectedGap = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+
+      expect(bars).toHaveLength(x > 0 && x < 100 ? 2 : 1);
+      expect(bars[0].x).toBeCloseTo(0);
+      expect(bars[bars.length - 1].x + bars[bars.length - 1].width).toBeCloseTo(100);
+      for (let i = 1; i < bars.length; i++) {
+        expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(expectedGap);
+      }
+    });
+
+    // Segments carry only horizontalBarChartdata.x (no point.data); zero and negative entries
+    // render with no width, so they must not reserve a gap either.
+    const rows: [string, number[], number][] = [
+      ['zeros in the middle', [30, 0, 20, 0, 25, 25], 4],
+      ['zeros at the beginning and end', [0, 0, 40, 60, 0], 2],
+      ['negative values', [-10, 30, -5, 20, 50, -15], 3],
+      ['negative total', [-30, -20, 10], 2],
+    ];
+    const toChartProps = ([chartTitle, values]: [string, number[], number]): ChartProps => ({
+      chartTitle,
+      chartData: values.map((x, i) => ({ legend: `${chartTitle} ${i}`, horizontalBarChartdata: { x } })),
+    });
+    const expectEvenlySpacedBars = (svg: Element, expectedBarCount: number) => {
+      const bars = getBars(svg);
+      expect(bars).toHaveLength(expectedBarCount);
+      expect(bars[0].x).toBeCloseTo(0);
+      expect(bars[bars.length - 1].x + bars[bars.length - 1].width).toBeCloseTo(100);
+      for (let i = 1; i < bars.length; i++) {
+        // 3px gap on a 300px track
+        expect(bars[i].x - (bars[i - 1].x + bars[i - 1].width)).toBeCloseTo(1);
+      }
+    };
+
+    test.each(rows)('%s: gaps are reserved only between rendered segments', (...row) => {
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+      const { container } = render(
+        <FluentProvider dir={dir}>
+          <HorizontalBarChart data={[toChartProps(row)]} />
+        </FluentProvider>,
+      );
+
+      expectEvenlySpacedBars(container.querySelector(`svg[aria-label="${row[0]}"]`)!, row[2]);
+    });
+
+    test('multiple rows: each row reserves gaps only between its rendered segments', () => {
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+      const { container } = render(
+        <FluentProvider dir={dir}>
+          <HorizontalBarChart data={rows.map(toChartProps)} />
+        </FluentProvider>,
+      );
+
+      rows.forEach(([chartTitle, , expectedBarCount]) => {
+        expectEvenlySpacedBars(container.querySelector(`svg[aria-label="${chartTitle}"]`)!, expectedBarCount);
+      });
+    });
+  });
+
+  test('absolute-scale variant places the value label right after the bar', () => {
+    jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ width: 300 } as DOMRect);
+
+    const { container } = render(
+      <HorizontalBarChart
+        variant={HorizontalBarChartVariant.AbsoluteScale}
+        data={[{ chartTitle: 'one', chartData: [{ legend: 'one', horizontalBarChartdata: { x: 25, total: 100 } }] }]}
+      />,
+    );
+
+    const [bar] = getBars(container);
+    const label = container.querySelector('svg text')!;
+    expect(bar.x).toBeCloseTo(0);
+    expect(parseFloat(label.getAttribute('x')!)).toBeCloseTo(bar.x + bar.width);
+  });
+});

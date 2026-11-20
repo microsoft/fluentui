@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: HorizontalBarChart segments no longer overflow the track or leave an empty notch, and reserve space for the gap between segments",
+  "packageName": "@fluentui/react-charts",
+  "email": "wuyuqi827@gmail.com"
+}
