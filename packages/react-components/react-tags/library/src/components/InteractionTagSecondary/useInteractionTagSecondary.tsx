@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
+import { useEventCallback, slot, useId } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { DismissRegular } from '@fluentui/react-icons';
 import type {
@@ -48,7 +48,7 @@ export const useInteractionTagSecondaryBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         type: 'button',
         disabled,
         ref,
@@ -57,7 +57,7 @@ export const useInteractionTagSecondaryBase_unstable = (
         id,
         onClick,
         onKeyDown,
-      }),
+      },
       { elementType: 'button' },
     ),
   };

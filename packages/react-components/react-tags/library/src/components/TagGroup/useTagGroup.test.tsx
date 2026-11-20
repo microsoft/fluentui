@@ -73,3 +73,23 @@ describe('useTagGroupBase_unstable', () => {
     expect(withSelect.result.current.handleTagSelect).toEqual(expect.any(Function));
   });
 });
+
+describe('useTagGroupBase_unstable root props', () => {
+  it('does not forward component props to the root slot', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { result } = renderHook(() =>
+      useTagGroupBase_unstable(
+        {
+          defaultSelectedValues: ['a'],
+          disabled: true,
+          dismissible: true,
+          onDismiss: jest.fn(),
+          onTagSelect: jest.fn(),
+        },
+        ref,
+      ),
+    );
+
+    expect(Object.keys(result.current.root).sort()).toEqual(['aria-disabled', 'ref', 'role']);
+  });
+});

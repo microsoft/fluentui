@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
+import { useId, slot } from '@fluentui/react-utilities';
 import type {
   InteractionTagBaseProps,
   InteractionTagBaseState,
@@ -31,7 +31,7 @@ export const useInteractionTagBase_unstable = (
 
   const interactionTagPrimaryId = useId('fui-InteractionTagPrimary-');
 
-  const { disabled = false, selected = false, value = id } = props;
+  const { disabled = false, selected = false, value = id, ...rest } = props;
 
   return {
     disabled: contextDisabled ? true : disabled,
@@ -47,12 +47,11 @@ export const useInteractionTagBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-        disabled: contextDisabled ? true : disabled,
+        ...rest,
         id,
-      }),
+      },
       { elementType: 'div' },
     ),
   };
@@ -73,10 +72,10 @@ export const useInteractionTag_unstable = (
 ): InteractionTagState => {
   const { size: contextSize, appearance: contextAppearance } = useTagGroupContext_unstable();
 
-  const { appearance = contextAppearance ?? 'filled', shape = 'rounded', size = contextSize } = props;
+  const { appearance = contextAppearance ?? 'filled', shape = 'rounded', size = contextSize, ...baseProps } = props;
 
   return {
-    ...useInteractionTagBase_unstable(props, ref),
+    ...useInteractionTagBase_unstable(baseProps, ref),
     appearance,
     shape,
     size,

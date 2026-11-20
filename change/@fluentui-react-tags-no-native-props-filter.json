@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: drop native props allow-list from Tag, TagGroup and InteractionTag hooks",
+  "packageName": "@fluentui/react-tags",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

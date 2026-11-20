@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type {
   InteractionTagPrimaryBaseProps,
   InteractionTagPrimaryBaseState,
@@ -39,7 +39,7 @@ export const useInteractionTagPrimaryBase_unstable = (
     selectedValues,
     value,
   } = useInteractionTagContext_unstable();
-  const { hasSecondaryAction = false } = props;
+  const { hasSecondaryAction = false, media, icon, primaryText, secondaryText, ...rest } = props;
 
   const onClick = useEventCallback(
     mergeCallbacks(props?.onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -61,27 +61,27 @@ export const useInteractionTagPrimaryBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         disabled,
         id: interactionTagPrimaryId,
         ...(handleTagSelect !== undefined && { 'aria-pressed': contextSelected }),
         onClick,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'button' },
     ),
 
-    media: slot.optional(props.media, { elementType: 'span' }),
-    icon: slot.optional(props.icon, { elementType: 'span' }),
-    primaryText: slot.optional(props.primaryText, {
+    media: slot.optional(media, { elementType: 'span' }),
+    icon: slot.optional(icon, { elementType: 'span' }),
+    primaryText: slot.optional(primaryText, {
       renderByDefault: true,
       defaultProps: {
         children: props.children,
       },
       elementType: 'span',
     }),
-    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
+    secondaryText: slot.optional(secondaryText, { elementType: 'span' }),
   };
 };
 
