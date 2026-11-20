@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { Dismiss20Regular } from '@fluentui/react-icons';
@@ -18,7 +18,7 @@ import { useDialogTitleInternalStyles } from './useDialogTitleStyles.styles';
  * @param ref - reference to root HTMLElement of DialogTitle
  */
 export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLDivElement>): DialogTitleState => {
-  const { action } = props;
+  const { action, ...rest } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const internalStyles = useDialogTitleInternalStyles();
 
@@ -28,11 +28,11 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       action: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('h2', {
+      {
         ref,
         id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'h2' },
     ),
     action: slot.optional(action, {
