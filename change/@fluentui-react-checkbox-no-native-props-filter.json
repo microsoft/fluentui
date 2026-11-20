@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: drop native props allow-list from Checkbox hooks",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
