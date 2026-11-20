@@ -26,6 +26,17 @@ function kebabCase(str: string): string {
     .toLowerCase();
 }
 
+/**
+ * Returns the expression without its `as`/`satisfies` type assertions and parentheses.
+ */
+function unwrapTypeAssertions(expression: ts.Expression): ts.Expression {
+  let current = expression;
+  while (ts.isAsExpression(current) || ts.isSatisfiesExpression(current) || ts.isParenthesizedExpression(current)) {
+    current = current.expression;
+  }
+  return current;
+}
+
 export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<TProps>): void {
   const { axeRenderOptions, ...baseTestInfo } = testInfo;
   const name = kebabCase(testInfo.displayName);
@@ -60,7 +71,8 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
             .filter(ts.isVariableStatement)
             .flatMap(statement => [...statement.declarationList.declarations])
             .find(candidate => candidate.name.getText(sourceFile) === displayName);
-          const initializer = declaration?.initializer;
+          // Generic components (for example `DataGridRow`) cast the composed component to add a generic call signature
+          const initializer = declaration?.initializer && unwrapTypeAssertions(declaration.initializer);
           const call = initializer && ts.isCallExpression(initializer) ? initializer : undefined;
           const composedCall =
             call?.expression.getText(sourceFile) === 'React.memo' &&

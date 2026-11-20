@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add Table and DataGrid",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "noreply@anthropic.com"
+}
