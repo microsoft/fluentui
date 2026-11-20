@@ -60,7 +60,7 @@ import {
 /**
  * @internal
  */
-export const baseButtonStyles = css`
+export const createBaseButtonStyles = (focusVisible = ':focus-visible') => css`
   ${display('inline-flex')}
 
   :host {
@@ -110,7 +110,7 @@ export const baseButtonStyles = css`
     outline-style: none;
   }
 
-  :host(:focus-visible) {
+  :host(${focusVisible}) {
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
@@ -179,11 +179,11 @@ export const baseButtonStyles = css`
     width: 24px;
   }
 
-  :host(:is([shape='circular'], [shape='circular']:focus-visible)) {
+  :host(:is([shape='circular'], [shape='circular']${focusVisible})) {
     border-radius: ${borderRadiusCircular};
   }
 
-  :host(:is([shape='square'], [shape='square']:focus-visible)) {
+  :host(:is([shape='square'], [shape='square']${focusVisible})) {
     border-radius: ${borderRadiusNone};
   }
 
@@ -197,7 +197,7 @@ export const baseButtonStyles = css`
     background-color: ${colorBrandBackgroundHover};
   }
 
-  :host([appearance='primary']:is(:hover, :hover:active):not(:focus-visible)) {
+  :host([appearance='primary']:is(:hover, :hover:active):not(${focusVisible})) {
     border-color: transparent;
   }
 
@@ -209,7 +209,7 @@ export const baseButtonStyles = css`
     background-color: ${colorBrandBackgroundPressed};
   }
 
-  :host([appearance='primary']:focus-visible) {
+  :host([appearance='primary']${focusVisible}) {
     border-color: ${colorNeutralForegroundOnBrand};
     box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
   }
@@ -271,6 +271,11 @@ export const baseButtonStyles = css`
     border-color: transparent;
   }
 `;
+
+/**
+ * @internal
+ */
+export const baseButtonStyles = createBaseButtonStyles();
 
 /**
  * The styles for the Button component.

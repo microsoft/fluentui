@@ -12,6 +12,9 @@ import { template } from './link.template.js';
 export const definition: PartialFASTElementDefinition = {
   name: tagName,
   registry: FluentDesignSystem.registry,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
   styles,
   template,
 };

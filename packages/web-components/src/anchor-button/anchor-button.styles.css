@@ -52,7 +52,7 @@
   outline-style: none;
 }
 
-:host(:focus-visible) {
+:host(:is(:not(:defined):focus-within, :state(focus-visible))) {
   border-color: var(--colorTransparentStroke);
   outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
   box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
@@ -121,11 +121,11 @@
   width: 24px;
 }
 
-:host(:is([shape='circular'], [shape='circular']:focus-visible)) {
+:host(:is([shape='circular'], [shape='circular']:is(:not(:defined):focus-within, :state(focus-visible)))) {
   border-radius: var(--borderRadiusCircular);
 }
 
-:host(:is([shape='square'], [shape='square']:focus-visible)) {
+:host(:is([shape='square'], [shape='square']:is(:not(:defined):focus-within, :state(focus-visible)))) {
   border-radius: var(--borderRadiusNone);
 }
 
@@ -139,7 +139,7 @@
   background-color: var(--colorBrandBackgroundHover);
 }
 
-:host([appearance='primary']:is(:hover, :hover:active):not(:focus-visible)) {
+:host([appearance='primary']:is(:hover, :hover:active):not(:is(:not(:defined):focus-within, :state(focus-visible)))) {
   border-color: transparent;
 }
 
@@ -151,7 +151,7 @@
   background-color: var(--colorBrandBackgroundPressed);
 }
 
-:host([appearance='primary']:focus-visible) {
+:host([appearance='primary']:is(:not(:defined):focus-within, :state(focus-visible))) {
   border-color: var(--colorNeutralForegroundOnBrand);
   box-shadow: var(--shadow2), 0 0 0 2px var(--colorStrokeFocus2);
 }
@@ -213,9 +213,19 @@
   border-color: transparent;
 }
 
-::slotted(a) {
-  position: absolute;
+a {
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  outline-style: none;
+}
+
+a::after {
+  content: '';
   inset: 0;
+  position: absolute;
 }
 
 @media (forced-colors: active) {
