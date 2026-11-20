@@ -17,9 +17,10 @@ import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 const ItemWithControlledMenu = ({ children }: { children: string }): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const focusTargetAttribute = useRestoreFocusTarget();
+  const treeItemRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <TreeItem itemType="leaf" aria-description="has actions" {...focusTargetAttribute}>
+    <TreeItem ref={treeItemRef} itemType="leaf" aria-description="has actions" {...focusTargetAttribute}>
       <TreeItemLayout
         actions={{
           onVisibilityChange: (_, data) => {
@@ -34,6 +35,7 @@ const ItemWithControlledMenu = ({ children }: { children: string }): JSXElement 
                   aria-label={`More options for ${children}`}
                   appearance="subtle"
                   icon={<MoreHorizontal20Regular />}
+                  onPointerDownCapture={() => treeItemRef.current?.focus({ preventScroll: true })}
                 />
               </MenuTrigger>
               <MenuPopover>
@@ -70,6 +72,7 @@ Hidden actions are unmounted. Unmounting a menu does not reset controlled state 
 Without this reset, a menu whose state is still \`open\` remounts open when the actions become visible again.
 Keep separate menu state for each tree item, outside the actions subtree.
 Apply \`useRestoreFocusTarget\` to the persistent \`TreeItem\` so focus can return to it if hiding the actions removes the focused menu and its trigger.
+Focus that item before pointer activation of the menu button so it is recorded as the restoration target, even when the user has not navigated to the row first.
 
 Open an item's menu, move to the other item so the first item's actions disappear, then return.
 The first item's actions should reappear with its menu closed, until you open it again.
