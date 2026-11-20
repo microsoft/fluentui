@@ -103,6 +103,7 @@ state.root.className = mergeClasses(
 | `visual-test`        | `/visual-test Name`                | Visually verify a component via Storybook + playwright-cli                |
 | `review-pr`          | `/review-pr #123`                  | Review a PR with confidence scoring and category checks                   |
 | `triage-issues`      | `/triage-issues`                   | Walk the Needs-Triage queue and recommend labels/assignee                 |
+| `v9-backlog-groom`   | `/v9-backlog-groom`                | Groom open v9 issues: close stale, ping in-progress, hand off to agents   |
 | `dependabot-rollup`  | `/dependabot-rollup`               | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs      |
 | `assign-prs`         | `/assign-prs`                      | Assign reviewers to the team review queues by area and current load       |
 | `release-recovery`   | `/release-recovery [pipeline-url]` | Diagnose and repair a release that published to npm but failed to push    |
