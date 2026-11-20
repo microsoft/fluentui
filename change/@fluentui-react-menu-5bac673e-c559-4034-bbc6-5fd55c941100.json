@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "refactor: move MenuSplitGroup multiline notification and dev-only nesting validation out of MenuItem and MenuList base hooks",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com"
+}

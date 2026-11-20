@@ -10,6 +10,7 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import { useMenuItemBase_unstable } from './useMenuItemBase';
+import { useMenuItemStyledBehaviors } from './useMenuItemStyledBehaviors';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 
@@ -22,6 +23,7 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
   const { dir } = useFluent();
   const state = useMenuItemBase_unstable(props, ref);
+  useMenuItemStyledBehaviors(props, state);
 
   // Set default chevron icon
   if (state.submenuIndicator) {
