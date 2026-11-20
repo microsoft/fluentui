@@ -87,15 +87,16 @@ export function createToaster(options: Partial<ToasterOptions>): {
    * Dismisses a toast with a specific id
    */
   const dismissToast = (toastId: ToastId) => {
-    visibleToasts.delete(toastId);
+    toasts.get(toastId)?.close();
   };
 
   /**
    * Dismisses all toasts and clears the queue
    */
   const dismissAllToasts = () => {
-    visibleToasts.clear();
+    const toastIds = Array.from(visibleToasts);
     queue.clear();
+    toastIds.forEach(dismissToast);
   };
 
   /**
@@ -111,11 +112,10 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
     const close = () => {
       const toast = toasts.get(toastId);
-      if (!toast) {
+      if (!toast || !visibleToasts.delete(toastId)) {
         return;
       }
 
-      visibleToasts.delete(toastId);
       onUpdate();
       toast.onStatusChange?.(null, { status: 'dismissed', ...toast });
     };
