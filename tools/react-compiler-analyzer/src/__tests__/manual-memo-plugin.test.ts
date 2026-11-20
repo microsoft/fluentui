@@ -1,10 +1,10 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { transformAsync } from '@babel/core';
-
-import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from '../manual-memo-plugin';
-import { SourceFunctionIndex } from '../source-functions';
+import { analyzeManualMemo, type ManualMemoEntry } from '../manual-memo-plugin';
+import { parseSource } from '../ast/parse';
+import { ScopeResolver } from '../ast/scope';
+import { populateSourceFunctions, SourceFunctionIndex } from '../source-functions';
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'manual-memo');
 
@@ -20,21 +20,14 @@ async function runSource(source: string, filePath = join(FIXTURES_DIR, 'wrapped.
   const results = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
   const sourceFunctions = new SourceFunctionIndex(source, { filePath, packageName: 'fixture' }, FIXTURES_DIR);
-
-  await transformAsync(source, {
-    filename: filePath,
-    ast: false,
-    code: false,
-    babelrc: false,
-    configFile: false,
-    presets: [[require.resolve('@babel/preset-typescript'), { isTSX: true, allExtensions: true }]],
-    plugins: [[manualMemoPlugin, { results, bodyInsertionLines, sourceFunctions } as ManualMemoPluginOptions]],
-  });
-
-  return { results, bodyInsertionLines, sourceFunctions };
+  const parsed = parseSource(source, filePath);
+  const scopes = new ScopeResolver(parsed.program);
+  populateSourceFunctions(parsed, sourceFunctions);
+  const analysis = analyzeManualMemo(parsed, { results, bodyInsertionLines, sourceFunctions, scopes });
+  return { ...analysis, sourceFunctions };
 }
 
-describe('manualMemoPlugin', () => {
+describe('manual memo analysis', () => {
   describe('memo and forwardRef wrappers', () => {
     it.each([
       ["import React from 'react';", 'React.memo', 'React.forwardRef'],

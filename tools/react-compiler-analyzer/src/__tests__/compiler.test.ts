@@ -26,7 +26,7 @@ describe('compileSource — TypeScript parsing per extension', () => {
       'declare function identity<T>(value: T): T; const value = identity<number>;',
       'value(n)',
     ],
-  ])('analyzes a real hook alongside %s without lowering', async (_name, declaration, expression) => {
+  ])('analyzes a real hook alongside native %s syntax', async (_name, declaration, expression) => {
     const source = `import { useState } from 'react';
 ${declaration}
 export function useValue() {
@@ -118,9 +118,7 @@ export = useValue;`;
   });
 });
 
-describe('compileSource — extra parser plugins', () => {
-  // A build whose loader enables `decorators-legacy` compiles these; the analyzer must be able to
-  // match that parser configuration or its analyzed scope silently excludes them.
+describe('compileSource — native syntax support', () => {
   const DECORATED = [
     "import * as React from 'react';",
     'declare function customizable(name: string): ClassDecorator;',
@@ -133,22 +131,13 @@ describe('compileSource — extra parser plugins', () => {
     '}',
   ].join('\n');
 
-  it('rejects decorators by default', async () => {
+  it('accepts decorators without parser overrides', async () => {
     const { error } = await compileSource(DECORATED, '/virtual/Widget.tsx');
-
-    expect(error).toBeDefined();
-    expect(String(error?.message)).toContain('decorators');
-  });
-
-  it('accepts them when the plugin is supplied', async () => {
-    const { error } = await compileSource(DECORATED, '/virtual/Widget.tsx', {
-      parserPlugins: ['decorators-legacy'],
-    });
 
     expect(error).toBeUndefined();
   });
 
-  it('still parses ordinary files with extra plugins enabled', async () => {
+  it('uses the same native parser for ordinary TSX files', async () => {
     const source = [
       "import { useState } from 'react';",
       'export function C({ label }: { label: string }) {',
@@ -157,9 +146,7 @@ describe('compileSource — extra parser plugins', () => {
       '}',
     ].join('\n');
 
-    const { error, events } = await compileSource(source, '/virtual/C.tsx', {
-      parserPlugins: ['decorators-legacy'],
-    });
+    const { error, events } = await compileSource(source, '/virtual/C.tsx');
 
     expect(error).toBeUndefined();
     expect(events.some(e => e.kind === 'CompileSuccess')).toBe(true);

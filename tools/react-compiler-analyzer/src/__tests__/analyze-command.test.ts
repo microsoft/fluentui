@@ -1,17 +1,18 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
+import { testRoot as tmpdir } from './helpers/test-root';
 
 import { compileFile, compileFiles } from '../compiler';
 import * as compiler from '../compiler';
 import { createAnalyzeCommand, runAnalyze } from '../commands/analyze';
-import { CliError, DEFAULT_EXCLUDE } from '../commands/shared';
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
-import type { FileEntry, FunctionAnalysis } from '../types';
+import { createResolverStats } from '../module-resolver';
+import type { AnalysisDocument, FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
+import { captureJson, normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -19,6 +20,50 @@ jest.mock('../compiler', () => {
 });
 
 const analyzeCommand = createAnalyzeCommand({});
+
+describe('visible resolver limitations', () => {
+  it.each(['tsconfig-fallback', 'unsupported-target', 'error'] as const)(
+    'reports %s outside verbose mode without contaminating JSON',
+    async kind => {
+      const pkg = createTempPackage('resolver-reporting');
+      writeComponent(pkg, 'Example.tsx', COMPILABLE_COMPONENT);
+      const stats = createResolverStats();
+      stats.diagnostics.push({
+        kind,
+        specifier: '@app/store',
+        fromFile: join(pkg.srcDir, 'Example.tsx'),
+        message: 'explicit resolver limitation',
+      });
+      const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      jest.mocked(compiler.compileFilesStreaming).mockImplementationOnce(async (_files, options) => {
+        options.onResolverStats?.(stats);
+      });
+      try {
+        const { code, doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze({
+            paths: [pkg.srcDir],
+            verbose: false,
+            mode: 'infer',
+            concurrency: 1,
+            exclude: [],
+            format: 'json',
+            'strict-paths': true,
+            annotate: undefined,
+            quote: 'single',
+            riskConfig: { detectGetStateReads: true },
+          }),
+        );
+        expect(code).toBe(0);
+        expect(doc.schemaVersion).toBe(5);
+        expect(warning).toHaveBeenCalledWith(
+          expect.stringContaining(`wrapper resolution ${kind}: explicit resolver limitation`),
+        );
+      } finally {
+        warning.mockRestore();
+      }
+    },
+  );
+});
 
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);
@@ -215,14 +260,53 @@ describe('analyze command — file-level failures', () => {
       mode: 'infer',
       format: 'json',
       'strict-paths': false,
-      'parser-plugin': [],
       annotate: undefined,
       quote: 'single',
       ...overrides,
     } as never;
   }
 
-  it('fails instead of emitting a clean JSON report for an unattributed pipeline error', async () => {
+  it('keeps JSON diagnostic evidence identical with and without verbose code frames', async () => {
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, false);
+      const fn = result.sourceFunctions.values()[0];
+      const fnLoc = {
+        start: { line: fn.declarationSpan.start.line, column: fn.declarationSpan.start.column },
+        end: { line: fn.declarationSpan.end.line, column: fn.declarationSpan.end.column },
+      };
+      const detail = (reason: string, codeframe: string) => ({ category: 'Other', reason, codeframe });
+      await onResult({
+        ...result,
+        events: [
+          { kind: 'CompileError', fnLoc, detail: detail('first rejection', 'first rendering') },
+          { kind: 'CompileError', fnLoc, detail: detail('second rejection', 'second rendering') },
+          { kind: 'CompileError', fnLoc, detail: detail('first rejection', 'different rendering') },
+          { kind: 'CompileError', fnLoc: null, detail: detail('unresolved rejection', 'unresolved rendering') },
+          { kind: 'CompileError', fnLoc: null, detail: detail('unresolved rejection', 'other unresolved rendering') },
+        ],
+      });
+    });
+
+    try {
+      const normal = await captureJson<AnalysisDocument>(() => runAnalyze(argv()));
+      const verbose = await captureJson<AnalysisDocument>(() => runAnalyze(argv({ verbose: true })));
+
+      expect(normal.code).toBe(1);
+      expect(verbose.code).toBe(normal.code);
+      expect(verbose.doc).toEqual(normal.doc);
+      expect(normal.doc.functions[0].diagnostics).toEqual([
+        { kind: 'CompileError', category: 'Other', reason: 'first rejection', count: 2 },
+        { kind: 'CompileError', category: 'Other', reason: 'second rejection', count: 1 },
+      ]);
+      expect(normal.doc.fileDiagnostics).toEqual([
+        expect.objectContaining({ message: 'unresolved rejection', count: 2 }),
+      ]);
+    } finally {
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('preserves verified rows and emits a partial JSON report for an unattributed pipeline error', async () => {
     const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
       const result = await compileFile(files[0], options.compilationMode, options.verbose);
       await onResult({
@@ -230,32 +314,118 @@ describe('analyze command — file-level failures', () => {
         events: [...result.events, { kind: 'PipelineError', fnLoc: null, data: 'pipeline crashed' }],
       });
     });
-    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
 
     try {
-      await expect(runAnalyze(argv({ annotate: 'all' }))).rejects.toThrow(
-        new CliError(`Compiler failed for 1 file(s):\n  ${filePath}: PipelineError: pipeline crashed`),
-      );
-      expect(output).not.toHaveBeenCalled();
+      const { code, doc } = await captureJson<AnalysisDocument>(() => runAnalyze(argv()));
+      expect(code).toBe(1);
+      expect(doc.functions).toHaveLength(1);
+      expect(doc.functions[0]).toMatchObject({ status: 'compiled', compilerEvent: 'CompileSuccess' });
+      expect(doc.completeness).toBe('incomplete');
+      expect(doc.coverage).toEqual({
+        discoveredFiles: 1,
+        processedFiles: 0,
+        failedFiles: 0,
+        incompleteFiles: 1,
+      });
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({
+          stage: 'backend',
+          category: 'pipeline',
+          attribution: 'unresolved',
+          message: 'pipeline crashed',
+        }),
+      ]);
       expect(readFileSync(filePath, 'utf-8')).not.toContain('use memo');
     } finally {
-      output.mockRestore();
       stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
     }
   });
 
-  it('fails on a transform error rather than labeling it unparseable', async () => {
+  it('reports generated-output parse failures as backend diagnostics, not input parse failures', async () => {
     const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
       const result = await compileFile(files[0], options.compilationMode, options.verbose);
-      await onResult({ ...result, error: new Error('plugin crashed') });
+      await onResult({
+        ...result,
+        error: Object.assign(new Error('generated output could not be parsed'), { code: 'RCA_OUTPUT_PARSE_ERROR' }),
+      });
     });
-    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
 
     try {
-      await expect(runAnalyze(argv())).rejects.toThrow(`Compiler failed for 1 file(s):\n  ${filePath}: plugin crashed`);
-      expect(output).not.toHaveBeenCalled();
+      const { code, doc } = await captureJson<AnalysisDocument>(() => runAnalyze(argv()));
+      expect(code).toBe(1);
+      expect(doc.functions).toHaveLength(1);
+      expect(doc.completeness).toBe('incomplete');
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({
+          stage: 'backend',
+          category: 'output-parse',
+          attribution: 'file',
+          code: 'RCA_OUTPUT_PARSE_ERROR',
+        }),
+      ]);
+      expect(doc.unparseable).toEqual([]);
+      expect(doc.summary.unparseableFiles).toBe(0);
     } finally {
-      output.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('keeps ordinary function outcomes beside an unresolved suppression rejection', async () => {
+    writeFileSync(
+      filePath,
+      `export function Ordinary() { return <div />; }
+export function Accepted() { return <span />; }
+`,
+    );
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      const ordinary = result.sourceFunctions.values().find(fn => fn.name === 'Ordinary')!;
+      const fnLoc = {
+        start: { line: ordinary.declarationSpan.start.line, column: ordinary.declarationSpan.start.column },
+        end: { line: ordinary.declarationSpan.end.line, column: ordinary.declarationSpan.end.column },
+      };
+      await onResult({
+        ...result,
+        events: [
+          ...result.events,
+          {
+            kind: 'CompileError',
+            fnLoc,
+            detail: { category: 'Other', reason: 'ordinary compiler rejection' },
+          },
+          {
+            kind: 'CompileError',
+            fnLoc: null,
+            detail: {
+              category: 'Suppression',
+              reason: 'suppressed rejection has no function identity',
+              loc: { start: { line: 1, column: 0 } },
+            },
+          },
+        ],
+      });
+    });
+
+    try {
+      const { code, doc } = await captureJson<AnalysisDocument>(() => runAnalyze(argv()));
+      expect(code).toBe(1);
+      expect(doc.functions).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ function: 'Ordinary', status: 'error', reason: 'ordinary compiler rejection' }),
+          expect.objectContaining({ function: 'Accepted', status: 'compiled' }),
+        ]),
+      );
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({
+          stage: 'compiler',
+          category: 'suppression',
+          attribution: 'unresolved',
+          message: expect.stringContaining('suppressed rejection has no function identity'),
+        }),
+      ]);
+      expect(doc.summary).toMatchObject({ errors: 1, compiled: 1, fileDiagnostics: 1 });
+      expect(doc.coverage).toMatchObject({ discoveredFiles: 1, processedFiles: 0, incompleteFiles: 1 });
+    } finally {
       stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
     }
   });
@@ -272,8 +442,18 @@ describe('analyze command — file-level failures', () => {
       expect(await runAnalyze(argv())).toBe(1);
       const doc = JSON.parse(output.join(''));
       expect(doc.summary.unparseableFiles).toBe(1);
-      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringContaining('Unexpected') }]);
+      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringMatching(/\S/) }]);
       expect(doc.functions).toEqual([]);
+      expect(doc.completeness).toBe('incomplete');
+      expect(doc.coverage).toEqual({
+        discoveredFiles: 1,
+        processedFiles: 0,
+        failedFiles: 1,
+        incompleteFiles: 0,
+      });
+      expect(doc.fileDiagnostics).toEqual([
+        expect.objectContaining({ stage: 'input', category: 'parse', attribution: 'file' }),
+      ]);
     } finally {
       write.mockRestore();
     }
@@ -689,7 +869,7 @@ describe('analyze command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Analysis ━━
 
-      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Backend: Oxc <VERSION>; parser <VERSION>; mode=infer; jsx=preserve; outputMode=client; noEmit=false (in-memory only); panicThreshold=none; target=19; suppression rules=compiler-default; synthetic gating=__rca_gate__/__rcaGate.
       Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
 
       📋 Scan & compile log
@@ -721,9 +901,9 @@ describe('analyze command — scan log wrapping', () => {
 
       ▸ Compiler accepted (positive reported memo slots) (1)
 
-      Location     Function  Memo Slots  Memo Blocks  Memo Values
-      ───────────  ────────  ──────────  ───────────  ───────────
-      src/A.tsx:1  A         1           1            1
+      Location     Function  Memo Slots
+      ───────────  ────────  ──────────
+      src/A.tsx:1  A         1
 
       Summary
       ───────

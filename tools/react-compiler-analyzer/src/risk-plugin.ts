@@ -1,193 +1,173 @@
-import type { PluginObj, NodePath } from '@babel/core';
-import type { Function as BabelFunction } from '@babel/types';
+import type { Node } from 'oxc-parser';
 
-import { locationKey } from './identity';
+import { walkAst } from './ast/traverse';
+import type { ParsedSource } from './ast/parse';
+import { ScopeResolver } from './ast/scope';
 import {
   buildLeafConfig,
   hasAnyLeafRule,
-  isAnyMember,
   isSnapshotRead,
   matchAccessorInit,
   matchRiskyCall,
-  type AnyCall,
-  type AnyMember,
+  type LeafMatch,
   type LeafRiskConfig,
 } from './risk-patterns';
-import type { SourceFunctionIndex } from './source-functions';
+import { SourceFunctionIndex } from './source-functions';
 import type { RiskConfig, RiskFinding } from './types';
 
-export interface RiskPluginOptions extends RiskConfig {
-  /** Canonical source-function inventory shared by every metadata producer. */
-  sourceFunctions?: SourceFunctionIndex;
-  /**
-   * Shared map of findings keyed by `line:column` of the *enclosing* function's start,
-   * matching the keys used by {@link manualMemoPlugin} and the compiler events so the
-   * coverage analyzer can merge them onto `CompileSuccess` rows.
-   */
+export interface RiskAnalysis {
   results: Map<string, RiskFinding[]>;
-  /**
-   * Maps a function's *body* start key to its declaration key. `CompileSkip` events locate a
-   * function at its body, so the coverage merge needs this to find risks for opted-out functions.
-   */
-  keyAliases?: Map<string, string>;
 }
 
-/** Per-file plugin state; the resolved config is built once instead of per visited node. */
-interface RiskPluginState {
-  opts: RiskPluginOptions;
-  leafConfig?: LeafRiskConfig;
+export interface RiskAnalysisOptions extends RiskConfig {
+  sourceFunctions: SourceFunctionIndex;
+  scopes?: ScopeResolver;
+  results?: Map<string, RiskFinding[]>;
 }
 
-/** Find the nearest enclosing function for risk attribution. */
-function enclosingFunction(path: NodePath): NodePath<BabelFunction> | null {
-  const fnPath = path.findParent(
-    p => p.isFunctionDeclaration() || p.isFunctionExpression() || p.isArrowFunctionExpression(),
-  ) as NodePath<BabelFunction> | null;
-  return fnPath && fnPath.node.loc ? fnPath : null;
-}
-
-const SYNC_EXTERNAL_STORE = 'useSyncExternalStore';
-
-/**
- * True when `path` sits anywhere inside a `useSyncExternalStore(…)` call.
- *
- * That API *is* the reactive subscription — React drives `subscribe` and re-invokes `getSnapshot`
- * on every store transition — so nothing within it can be a non-reactive read, whether it is an
- * accessor passed by reference or a read inside the `getSnapshot` callback.
- */
-function insideSyncExternalStore(path: NodePath): boolean {
+function functionNode(node: Node): boolean {
   return (
-    path.findParent(p => {
-      if (!p.isCallExpression() && !p.isOptionalCallExpression()) {
-        return false;
-      }
-      const callee = (p.node as AnyCall).callee;
-      if (callee.type === 'Identifier') {
-        return callee.name === SYNC_EXTERNAL_STORE;
-      }
-      return isAnyMember(callee) && memberNameOf(callee) === SYNC_EXTERNAL_STORE;
-    }) !== null
+    node.type === 'FunctionDeclaration' || node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression'
   );
 }
 
-/** Static property name of a member access, for matching `React.useSyncExternalStore`. */
-function memberNameOf(node: AnyMember): string | null {
-  if (!node.computed && node.property.type === 'Identifier') {
-    return node.property.name;
+function calleeName(node: Node): string | null {
+  if (node.type === 'Identifier') {
+    return (node as Node & { name: string }).name;
+  }
+  if (node.type === 'MemberExpression') {
+    const member = node as Node & { object: Node; property: Node; computed: boolean };
+    if (!member.computed && member.property.type === 'Identifier') {
+      return (member.property as Node & { name: string }).name;
+    }
   }
   return null;
 }
 
-/**
- * Babel plugin that flags configured patterns that can interact poorly with memoization.
- * It does not establish that those operations were cached. All rules are OFF unless explicitly
- * configured — their conventions are app-specific, not universal. Leaf detection is shared
- * with the cross-file call-graph analyzer via {@link matchRiskyCall}.
- *
- * - **`nonreactive-store-read`** — an imperative snapshot read with no tracked inputs
- *   (`store.getState()`, `getXStore().field`, `const { x } = getXStore()`). If retained in a
- *   compute-once cache slot, it can freeze the value across store transitions.
- *   Enabled by `detectGetStateReads` (for
- *   `.getState()`) and `storeAccessorPattern` (a regex, for `getXStore()`). Also follows one step
- *   of local dataflow — `const s = getXStore(); … s.field` — via Babel scope bindings.
- * - **`hidden-selector-hook`** — a selector accessed via property chain (`store.use.field()`)
- *   that calls a real hook (`useStore`) internally but isn't `useXxx()`-named at the call site.
- *   Neither the compiler nor the `react-hooks` lint recognizes it as a hook, so the compiler may
- *   memoize around it — moving the hidden hook into a cache branch and causing a hook-order crash
- *   (`areHookInputsEqual`). Enabled by listing the marker property names in `selectorHookProperties`
- *   (e.g. `["use"]`).
- *
- * Findings attach to canonical source functions independently of acceptance, so rejected
- * or skipped functions can retain their risks in the report.
- */
-export function riskPlugin(): PluginObj {
-  return {
-    name: 'react-compiler-risk-detection',
-    visitor: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      Program(_path, state) {
-        const s = state as unknown as RiskPluginState;
-        s.leafConfig = buildLeafConfig(s.opts);
-      },
-      'CallExpression|OptionalCallExpression'(path: NodePath, state: unknown) {
-        const { opts, leafConfig } = state as RiskPluginState;
-        if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
+function insideSyncExternalStore(node: Node, parsed: ParsedSource): boolean {
+  let current: Node | null = node;
+  while (current) {
+    if (current.type === 'CallExpression') {
+      const callee = (current as Node & { callee: Node }).callee;
+      if (calleeName(callee) === 'useSyncExternalStore') {
+        return true;
+      }
+    }
+    current = parsed.parents.get(current);
+  }
+  return false;
+}
+
+function enclosingFunction(node: Node, parsed: ParsedSource): Node | null {
+  let current = parsed.parents.get(node);
+  while (current) {
+    if (functionNode(current)) {
+      const owner = parsed.parents.get(current);
+      if (owner?.type === 'MethodDefinition' && (owner as Node & { value: Node }).value === current) {
+        return null;
+      }
+      return current;
+    }
+    current = parsed.parents.get(current);
+  }
+  return null;
+}
+
+function collectRisks(
+  parsed: ParsedSource,
+  sourceFunctions: SourceFunctionIndex,
+  scopes: ScopeResolver,
+  config: RiskConfig,
+  results: Map<string, RiskFinding[]>,
+): Map<string, RiskFinding[]> {
+  const leafConfig = buildLeafConfig(config);
+  if (!hasAnyLeafRule(leafConfig)) {
+    return results;
+  }
+
+  const record = (node: Node, match: LeafMatch): void => {
+    if (insideSyncExternalStore(node, parsed)) {
+      return;
+    }
+    const owner = enclosingFunction(node, parsed);
+    if (!owner) {
+      return;
+    }
+    const sourceFunction = sourceFunctions.findByNode(owner);
+    if (!sourceFunction) {
+      return;
+    }
+    const position = parsed.locations.positionAt(node.start);
+    const finding: RiskFinding = {
+      ...match,
+      line: position.line,
+      column: position.column,
+    };
+    const list = results.get(sourceFunction.id) ?? [];
+    if (
+      !list.some(
+        existing =>
+          existing.ruleId === finding.ruleId &&
+          existing.line === finding.line &&
+          existing.column === finding.column &&
+          existing.symbol === finding.symbol &&
+          existing.message === finding.message,
+      )
+    ) {
+      list.push(finding);
+      results.set(sourceFunction.id, list);
+      sourceFunctions.recordFinding(sourceFunction.id, finding);
+    }
+  };
+
+  walkAst(
+    parsed.program,
+    {
+      enter(node, parent) {
+        if (node.type === 'CallExpression') {
+          const match = matchRiskyCall(node, parent, leafConfig);
+          if (match) {
+            record(node, match);
+          }
           return;
         }
-
-        const callPath = path as NodePath<AnyCall>;
-        const match = matchRiskyCall(callPath.node, callPath.parent, leafConfig);
-        if (match) {
-          record(callPath, opts, match);
-        }
-      },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      VariableDeclarator(path, state) {
-        const { opts, leafConfig } = state as unknown as RiskPluginState;
-        if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
+        if (node.type !== 'VariableDeclarator') {
           return;
         }
-
-        const { id, init } = path.node;
-        if (!init || id.type !== 'Identifier') {
+        const declaration = node as Node & { id: Node; init: Node | null };
+        if (!declaration.init || declaration.id.type !== 'Identifier') {
           return;
         }
-
-        const match = matchAccessorInit(init, leafConfig, id.name);
+        const name = (declaration.id as Node & { name: string }).name;
+        const match = matchAccessorInit(declaration.init, leafConfig, name);
         if (!match) {
           return;
         }
-
-        // Scope bindings resolve shadowing for free — a same-named inner binding is a
-        // different `Binding` and its references never appear here.
-        const binding = path.scope.getBinding(id.name);
-        for (const ref of binding?.referencePaths ?? []) {
-          if (isSnapshotRead(ref.node, ref.parent)) {
-            record(ref, opts, match);
+        const binding = scopes.bindingOf(declaration.id) ?? scopes.resolve(name, declaration.id);
+        for (const reference of binding ? scopes.readsOf(binding) : []) {
+          if (isSnapshotRead(reference, parsed.parents.get(reference))) {
+            record(reference, match);
           }
         }
       },
     },
-  };
+    parsed.parents,
+  );
+
+  for (const findings of results.values()) {
+    findings.sort((a, b) => a.line - b.line || a.column - b.column || a.ruleId.localeCompare(b.ruleId));
+  }
+  return results;
 }
 
-/** Record a finding against the enclosing function, with the offending expression's own location. */
-function record(path: NodePath, opts: RiskPluginOptions, finding: Omit<RiskFinding, 'line' | 'column'>): void {
-  if (insideSyncExternalStore(path)) {
-    return;
-  }
-  const fnPath = enclosingFunction(path);
-  if (!fnPath || !fnPath.node.loc) {
-    return;
-  }
-  const callLoc = path.node.loc?.start ?? fnPath.node.loc.start;
-  const sourceFunction = opts.sourceFunctions?.findByNode(fnPath.node);
-  const key = sourceFunction?.id ?? locationKey(fnPath.node.loc.start);
-  const list = opts.results.get(key) ?? [];
-  const recorded: RiskFinding = {
-    ...finding,
-    line: callLoc.line,
-    column: callLoc.column,
-  };
-  if (
-    !list.some(
-      current =>
-        current.ruleId === recorded.ruleId &&
-        current.line === recorded.line &&
-        current.column === recorded.column &&
-        current.symbol === recorded.symbol &&
-        current.message === recorded.message,
-    )
-  ) {
-    list.push(recorded);
-  }
-  opts.results.set(key, list);
-  if (sourceFunction) {
-    opts.sourceFunctions?.recordFinding(sourceFunction.id, recorded);
-  }
-
-  const bodyLoc = fnPath.node.body.loc;
-  if (!sourceFunction && bodyLoc) {
-    opts.keyAliases?.set(locationKey(bodyLoc.start), key);
-  }
+export function analyzeRisks(parsed: ParsedSource, options: RiskAnalysisOptions): Map<string, RiskFinding[]> {
+  return collectRisks(
+    parsed,
+    options.sourceFunctions,
+    options.scopes ?? new ScopeResolver(parsed.program),
+    options,
+    options.results ?? new Map<string, RiskFinding[]>(),
+  );
 }
+
+export type RiskPluginOptions = RiskAnalysisOptions;

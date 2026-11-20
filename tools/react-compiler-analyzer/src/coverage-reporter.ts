@@ -3,7 +3,13 @@ import type { Cell, Formatter, StatusKind } from './formatter';
 import { memoCacheOutcome } from './memo-cache-outcome';
 import { compareRiskFindings, compareText } from './ordering';
 import { toWorkspacePath } from './path-utils';
-import type { CandidateAction, CandidateReadiness, FunctionAnalysis } from './types';
+import type {
+  CandidateAction,
+  CandidateReadiness,
+  FileDiagnostic,
+  FunctionAnalysis,
+  SuppressionProtectionReport,
+} from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
 
@@ -189,15 +195,9 @@ function printFunctionTable(
       const relPath = toWorkspacePath(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const stats = r.memoStats;
-      return [
-        `${relPath}:${r.line}`,
-        fn,
-        stats?.memoSlots ?? 'unknown',
-        stats?.memoBlocks ?? 'unknown',
-        stats?.memoValues ?? 'unknown',
-      ];
+      return [`${relPath}:${r.line}`, fn, stats?.memoSlots ?? 'unknown'];
     });
-    f.table(['Location', 'Function', 'Memo Slots', 'Memo Blocks', 'Memo Values'], rows);
+    f.table(['Location', 'Function', 'Memo Slots'], rows);
   } else {
     const rows = results.map(r => {
       const relPath = toWorkspacePath(workspaceRoot, r.filePath);
@@ -236,7 +236,7 @@ function printErrorGroups(f: Formatter, errored: FunctionAnalysis[], workspaceRo
     const relPath = toWorkspacePath(workspaceRoot, first.filePath);
     const fn = first.functionName ?? '(anonymous)';
     const diagnostics = group.flatMap(result => result.diagnostics ?? []);
-    const count = diagnostics.length || group.length;
+    const count = diagnostics.reduce((total, diagnostic) => total + diagnostic.count, 0) || group.length;
 
     f.heading(4, `${relPath}:${first.line} — ${fn} (${count} ${count === 1 ? 'error' : 'errors'})`, 'error');
     f.blank();
@@ -246,13 +246,14 @@ function printErrorGroups(f: Formatter, errored: FunctionAnalysis[], workspaceRo
         ? diagnostics.map(diagnostic => [
             diagnostic.span ? `${diagnostic.span.start.line}:${diagnostic.span.start.column}` : '',
             diagnostic.kind,
+            diagnostic.count,
             truncate(diagnostic.reason, TABLE_REASON_MAX_LEN),
           ])
         : group.map(r => {
             const at = r.errorLine !== undefined ? `${r.errorLine}:${r.errorColumn ?? 0}` : '';
-            return [at, r.compilerEvent, r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : ''];
+            return [at, r.compilerEvent, 1, r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : ''];
           });
-    f.table(['Line', 'Compiler Event', 'Reason'], rows);
+    f.table(['Line', 'Compiler Event', 'Count', 'Reason'], rows);
     f.blank();
 
     const fullDiagnostics =
@@ -511,23 +512,73 @@ export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], wo
   if (files.length === 0) {
     return;
   }
-
   f.foldableSection({ title: 'Not Analyzed', status: 'warning', count: files.length }, () => {
     f.line(
       'These files could not be parsed, so they contributed **no functions** to the counts above. ' +
-        'This is a limitation of the analyzed Babel parsing profile, not proof that another build cannot process them.',
+        'This is a limitation of the analyzed Oxc parsing profile, not proof that another build cannot process them.',
     );
     f.blank();
 
     const rows: Cell[][] = files.map(u => [
       toWorkspacePath(workspaceRoot, u.file),
-      // Babel prefixes the absolute path onto the message; the location suffix is the useful part.
+      // Remove a source path prefix when supplied by the backend.
       u.error.split('\n')[0].replace(/^.*?:\s*/, ''),
     ]);
 
     f.table(['File', 'Reason'], rows);
     f.blank();
   });
+}
+
+export function printFileDiagnostics(f: Formatter, diagnostics: FileDiagnostic[], workspaceRoot: string): void {
+  if (diagnostics.length === 0) {
+    return;
+  }
+  f.foldableSection(
+    { title: 'File diagnostics (incomplete analysis)', status: 'error', count: diagnostics.length },
+    () => {
+      const rows = diagnostics.map(diagnostic => [
+        `${toWorkspacePath(workspaceRoot, diagnostic.file)}${
+          diagnostic.line ? `:${diagnostic.line}${diagnostic.column !== undefined ? `:${diagnostic.column}` : ''}` : ''
+        }`,
+        diagnostic.stage,
+        diagnostic.category,
+        diagnostic.attribution,
+        diagnostic.count,
+        truncate(diagnostic.message, TABLE_REASON_MAX_LEN),
+      ]);
+      f.table(['Location', 'Stage', 'Category', 'Attribution', 'Count', 'Message'], rows);
+      f.blank();
+      f.line('File diagnostics mark analysis or attribution gaps; they do not prove native-build behavior.');
+    },
+  );
+}
+
+export function printSuppressionProtection(
+  f: Formatter,
+  report: SuppressionProtectionReport,
+  workspaceRoot: string,
+): void {
+  f.blank();
+  f.heading(2, 'Cross-backend suppression protection');
+  f.line(
+    `${report.dryRun ? 'Would plan' : 'Planned'} ${report.filesPlanned} module-level guard(s); ` +
+      `${report.filesModified} file(s) modified.`,
+  );
+  f.blank();
+  for (const result of report.results) {
+    f.line(`${toWorkspacePath(workspaceRoot, result.file)}: ${result.status} — ${result.reason}`);
+    if (result.suppressions.length > 0) {
+      f.line(
+        `  Source suppressions: ${result.suppressions
+          .map(item => `${item.kind} at ${item.commentSpan.start.line}:${item.commentSpan.start.column + 1}`)
+          .join(', ')}`,
+      );
+    }
+    if (result.preview) {
+      f.code(result.preview);
+    }
+  }
 }
 
 /** Order risk findings high → medium so the most dangerous appear first. */
@@ -567,7 +618,7 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
     printRiskTable(f, pending, workspaceRoot, {
       title: 'Risky but Not Compiled',
       intro:
-        'These functions contain configured risk patterns but Babel errored or skipped them. ' +
+        'These functions contain configured risk patterns but Oxc errored or skipped them. ' +
         'The findings remain relevant: another compiler/profile may optimize them. ' +
         'Actual emitted caching and application safety are unverified.',
       subject: 'non-compiled function(s)',

@@ -3,7 +3,7 @@ import type { CompilerEvidence, FunctionAnalysis, RevalidationEvidence } from '.
 function snapshot(analysis: FunctionAnalysis | undefined): CompilerEvidence {
   return {
     outcome: analysis?.status ?? 'unavailable',
-    memoStats: analysis?.memoStats ?? null,
+    memoStats: analysis?.memoStats ? { memoSlots: analysis.memoStats.memoSlots } : null,
   };
 }
 
@@ -13,14 +13,7 @@ export function compareCompilerEvidence(
 ): RevalidationEvidence {
   const left = snapshot(before);
   const right = snapshot(after);
-  const keys = ['memoSlots', 'memoBlocks', 'memoValues', 'prunedMemoBlocks', 'prunedMemoValues'] as const;
-  const comparable = keys.filter(
-    key => typeof left.memoStats?.[key] === 'number' && typeof right.memoStats?.[key] === 'number',
-  );
-  const changed = comparable.some(key => left.memoStats?.[key] !== right.memoStats?.[key]);
-  const complete = keys.every(
-    key => (typeof left.memoStats?.[key] === 'number') === (typeof right.memoStats?.[key] === 'number'),
-  );
+  const comparable = typeof left.memoStats?.memoSlots === 'number' && typeof right.memoStats?.memoSlots === 'number';
   return {
     before: left,
     after: right,
@@ -30,7 +23,11 @@ export function compareCompilerEvidence(
         : (left.outcome === 'compiled') !== (right.outcome === 'compiled')
         ? 'changed'
         : 'unchanged',
-    statisticsEffect: changed ? 'changed' : comparable.length > 0 && complete ? 'unchanged' : 'unavailable',
+    statisticsEffect: comparable
+      ? left.memoStats!.memoSlots === right.memoStats!.memoSlots
+        ? 'unchanged'
+        : 'changed'
+      : 'unavailable',
     emittedOptimization: 'not-measured',
   };
 }

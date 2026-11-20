@@ -7,23 +7,28 @@ import type {
   AnnotateMode,
   AnnotateResult,
   CompilationMode,
+  CoverageAccounting,
   DirectiveAnalysis,
+  FileDiagnostic,
   FunctionAnalysis,
   JsonDirective,
   JsonFinding,
   JsonFunction,
   LintDocument,
+  SuppressionProtectionReport,
 } from './types';
 
 interface DocumentMeta {
   mode: CompilationMode;
   workspaceRoot: string;
-  parserPlugins?: string[];
+  coverage?: CoverageAccounting;
+  fileDiagnostics?: FileDiagnostic[];
 }
 
 interface AnalysisDocumentMeta extends DocumentMeta {
   unparseable?: { file: string; error: string }[];
   annotate?: AnnotateResult & { mode: AnnotateMode };
+  suppressionProtection?: SuppressionProtectionReport;
 }
 
 function toRelative(filePath: string, workspaceRoot: string): string {
@@ -33,6 +38,50 @@ function toRelative(filePath: string, workspaceRoot: string): string {
 function diagnosticMessage(filePath: string, message: string): string {
   const prefix = `${filePath}:`;
   return message.startsWith(prefix) ? message.slice(prefix.length).trimStart() : message;
+}
+
+function defaultCoverage(
+  filePaths: string[],
+  unparseable: { file: string }[] = [],
+  fileDiagnostics: FileDiagnostic[] = [],
+): CoverageAccounting {
+  const discovered = new Set([
+    ...filePaths,
+    ...unparseable.map(item => item.file),
+    ...fileDiagnostics.map(item => item.file),
+  ]);
+  const failed = new Set([
+    ...unparseable.map(item => item.file),
+    ...fileDiagnostics.filter(item => item.stage === 'input').map(item => item.file),
+  ]);
+  const incomplete = new Set(fileDiagnostics.map(item => item.file).filter(file => !failed.has(file)));
+  const discoveredFiles = discovered.size;
+  const failedFiles = failed.size;
+  const incompleteFiles = incomplete.size;
+  return {
+    discoveredFiles,
+    processedFiles: Math.max(0, discoveredFiles - failedFiles - incompleteFiles),
+    failedFiles,
+    incompleteFiles,
+  };
+}
+
+function documentEnvelope(meta: DocumentMeta, filePaths: string[], unparseable: { file: string }[] = []) {
+  const coverage = meta.coverage ?? defaultCoverage(filePaths, unparseable, meta.fileDiagnostics);
+  return {
+    schemaVersion: 5 as const,
+    tool: 'react-compiler-analyzer' as const,
+    mode: meta.mode,
+    profile: createAnalysisProfile(meta.mode),
+    emittedCaching: 'unverified' as const,
+    completeness:
+      coverage.failedFiles + coverage.incompleteFiles === 0 ? ('complete' as const) : ('incomplete' as const),
+    coverage,
+    fileDiagnostics: (meta.fileDiagnostics ?? []).map(item => ({
+      ...item,
+      file: toRelative(item.file, meta.workspaceRoot),
+    })),
+  };
 }
 
 /** Convert analysis results into the compact JSON contract. */
@@ -49,16 +98,19 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
     ...(result.rejectionKind ? { rejectionKind: result.rejectionKind } : {}),
     ...(result.diagnostics?.length
       ? {
-          diagnostics: result.diagnostics.map(({ kind, reason, category }) => ({
+          diagnostics: result.diagnostics.map(({ kind, reason, category, count }) => ({
             kind,
             reason,
             ...(category ? { category } : {}),
+            count,
           })),
         }
       : {}),
     ...(result.errorLine !== undefined ? { errorLine: result.errorLine } : {}),
     ...(result.errorColumn !== undefined ? { errorColumn: result.errorColumn } : {}),
-    ...(result.memoStats !== undefined ? { memoStats: result.memoStats } : {}),
+    ...(result.memoStats !== undefined
+      ? { memoStats: result.memoStats ? { memoSlots: result.memoStats.memoSlots } : null }
+      : {}),
     ...(result.manualMemo
       ? {
           manualMemo: {
@@ -88,12 +140,12 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
   );
 
   return {
-    schemaVersion: 3,
-    tool: 'react-compiler-analyzer',
+    ...documentEnvelope(
+      meta,
+      results.map(result => result.filePath),
+      meta.unparseable,
+    ),
     command: 'analyze',
-    mode: meta.mode,
-    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
-    emittedCaching: 'unverified',
     summary: {
       functions: functions.length,
       compiled: results.filter(result => result.status === 'compiled').length,
@@ -115,6 +167,7 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
       findings: findings.length,
       findingsOnCompiled: findings.filter(finding => finding.compiled && !finding.suppressed).length,
       findingsSuppressed: findings.filter(finding => finding.suppressed).length,
+      fileDiagnostics: meta.fileDiagnostics?.length ?? 0,
       unparseableFiles: meta.unparseable?.length ?? 0,
     },
     functions,
@@ -135,6 +188,17 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
               file: toRelative(filePath, meta.workspaceRoot),
             })),
             ...(meta.annotate.dryRun ? { dryRun: true as const, planned: meta.annotate.planned } : {}),
+          },
+        }
+      : {}),
+    ...(meta.suppressionProtection
+      ? {
+          suppressionProtection: {
+            ...meta.suppressionProtection,
+            results: meta.suppressionProtection.results.map(({ file, ...result }) => ({
+              ...result,
+              file: toRelative(file, meta.workspaceRoot),
+            })),
           },
         }
       : {}),
@@ -161,12 +225,12 @@ export function toLintDocument(
   }));
 
   return {
-    schemaVersion: 3,
-    tool: 'react-compiler-analyzer',
+    ...documentEnvelope(
+      meta,
+      results.map(result => result.filePath),
+      meta.unparseable,
+    ),
     command: 'lint',
-    mode: meta.mode,
-    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
-    emittedCaching: 'unverified',
     summary: {
       directives: directives.length,
       active: directives.filter(directive => directive.status === 'active').length,
@@ -174,6 +238,7 @@ export function toLintDocument(
       broken: directives.filter(directive => directive.status === 'broken').length,
       conflicting: directives.filter(directive => directive.status === 'conflicting').length,
       skipped: directives.filter(directive => directive.status === 'skipped').length,
+      fileDiagnostics: meta.fileDiagnostics?.length ?? 0,
       unparseableFiles: meta.unparseable?.length ?? 0,
     },
     directives,

@@ -11,6 +11,15 @@ const schema = JSON.parse(readFileSync(join(__dirname, '..', '..', 'rca.analyze.
 describe('analyze JSON schema', () => {
   const validate = new Ajv({ allErrors: true }).compile(schema);
 
+  it('compiles analyze and lint schemas with strict Ajv settings', () => {
+    const lintSchema = JSON.parse(readFileSync(join(__dirname, '..', '..', 'rca.lint.schema.json'), 'utf-8')) as object;
+    const strictAjv = new Ajv({ strict: true, allErrors: true });
+
+    strictAjv.addSchema(schema);
+    expect(() => strictAjv.compile(schema)).not.toThrow();
+    expect(() => strictAjv.compile(lintSchema)).not.toThrow();
+  });
+
   it('accepts the compact analyze document', () => {
     const results: FunctionAnalysis[] = [
       {
@@ -23,10 +32,6 @@ describe('analyze JSON schema', () => {
         compilerEvent: 'CompileSuccess',
         memoStats: {
           memoSlots: 0,
-          memoBlocks: null,
-          memoValues: 1,
-          prunedMemoBlocks: null,
-          prunedMemoValues: 0,
         },
         manualMemo: {
           useMemo: 1,
@@ -74,6 +79,16 @@ describe('analyze JSON schema', () => {
     expect(validate.errors).toEqual(
       expect.arrayContaining([expect.objectContaining({ keyword: 'additionalProperties' })]),
     );
+  });
+
+  it('rejects the previous schema version', () => {
+    const document = {
+      ...toAnalysisDocument([], { mode: 'infer', workspaceRoot: '/workspace' }),
+      schemaVersion: 4,
+    };
+
+    expect(validate(document)).toBe(false);
+    expect(validate.errors).toEqual(expect.arrayContaining([expect.objectContaining({ keyword: 'const' })]));
   });
 
   it('requires the reported memo-statistics summary counter', () => {

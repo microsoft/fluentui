@@ -1,47 +1,36 @@
-import type {
-  CallExpression,
-  MemberExpression,
-  Node,
-  OptionalCallExpression,
-  OptionalMemberExpression,
-} from '@babel/types';
+import type { Node } from 'oxc-parser';
 
 import type { RiskConfig, RiskFinding, RiskRuleId, RiskSeverity } from './types';
 
-/**
- * A call, optionally chained. `store?.use.field()` parses as `OptionalCallExpression`, a distinct
- * node type from `CallExpression`, so every rule has to accept both or `?.` silently escapes it.
- */
-export type AnyCall = CallExpression | OptionalCallExpression;
+export type AnyCall = Node;
+export type AnyMember = Node;
 
-/** A member access, optionally chained. */
-export type AnyMember = MemberExpression | OptionalMemberExpression;
-
-export function isAnyCall(node: Node | null | undefined): node is AnyCall {
-  return node?.type === 'CallExpression' || node?.type === 'OptionalCallExpression';
+function unwrapChain(node: Node | null | undefined): Node | null {
+  let current = node ?? null;
+  while (current?.type === 'ChainExpression') {
+    current = (current as Node & { expression: Node }).expression;
+  }
+  return current;
 }
 
-export function isAnyMember(node: Node | null | undefined): node is AnyMember {
-  return node?.type === 'MemberExpression' || node?.type === 'OptionalMemberExpression';
+export function isAnyCall(node: Node | null | undefined): node is Node {
+  return unwrapChain(node)?.type === 'CallExpression';
 }
 
-/**
- * A `useXxx`-named callee, which the React Compiler recognizes as a hook.
- *
- * Shared with the call-graph so both halves agree on what a hook is.
- */
+export function isAnyMember(node: Node | null | undefined): node is Node {
+  return unwrapChain(node)?.type === 'MemberExpression';
+}
+
 export function isHookName(name: string): boolean {
   return /^use[A-Z0-9]/.test(name);
 }
 
-/** Resolved, ready-to-use form of the leaf-detection knobs from {@link RiskConfig}. */
 export interface LeafRiskConfig {
   detectGetState: boolean;
   storeAccessorRe: RegExp | null;
   hiddenHookProps: Set<string>;
 }
 
-/** The risk-relevant fields of a finding, before a location is attached. */
 export interface LeafMatch {
   ruleId: RiskRuleId;
   severity: RiskSeverity;
@@ -56,23 +45,39 @@ function accessorMessage(calleeName: string): string {
   return `non-reactive store read via \`${calleeName}()\` — memoization may cache a stale snapshot across store transitions`;
 }
 
-/**
- * Render a receiver expression as a readable symbol prefix so findings stay traceable to source
- * when the receiver is not a plain identifier (`useFooStore(x).use.bar()` → `useFooStore()`).
- */
-function describeReceiver(node: Node): string {
+function memberName(node: AnyMember): string | null {
+  const member = unwrapChain(node);
+  if (!member || member.type !== 'MemberExpression') {
+    return null;
+  }
+  const value = member as Node & { computed: boolean; property: Node };
+  if (!value.computed && value.property.type === 'Identifier') {
+    return (value.property as Node & { name: string }).name;
+  }
+  if (value.computed && value.property.type === 'Literal') {
+    const literal = value.property as Node & { value?: unknown };
+    return typeof literal.value === 'string' ? literal.value : null;
+  }
+  return null;
+}
+
+function describeReceiver(input: Node): string {
+  const node = unwrapChain(input) ?? input;
   switch (node.type) {
     case 'Identifier':
-      return node.name;
+      return (node as Node & { name: string }).name;
     case 'ThisExpression':
       return 'this';
-    case 'CallExpression':
-    case 'OptionalCallExpression':
-      return node.callee.type === 'Identifier' ? `${node.callee.name}()` : `${describeReceiver(node.callee)}()`;
-    case 'MemberExpression':
-    case 'OptionalMemberExpression': {
+    case 'CallExpression': {
+      const call = node as Node & { callee: Node };
+      return call.callee.type === 'Identifier'
+        ? `${(call.callee as Node & { name: string }).name}()`
+        : `${describeReceiver(call.callee)}()`;
+    }
+    case 'MemberExpression': {
+      const member = node as Node & { object: Node };
       const property = memberName(node);
-      const object = describeReceiver(node.object);
+      const object = describeReceiver(member.object);
       return property === null ? object : `${object}.${property}`;
     }
     default:
@@ -80,18 +85,6 @@ function describeReceiver(node: Node): string {
   }
 }
 
-/** Static property name of a member access, covering both `a.b` and `a['b']`. */
-function memberName(node: AnyMember): string | null {
-  if (!node.computed && node.property.type === 'Identifier') {
-    return node.property.name;
-  }
-  if (node.computed && node.property.type === 'StringLiteral') {
-    return node.property.value;
-  }
-  return null;
-}
-
-/** Build the resolved leaf-detection config once from raw {@link RiskConfig}. */
 export function buildLeafConfig(opts: RiskConfig): LeafRiskConfig {
   return {
     detectGetState: opts.detectGetStateReads === true,
@@ -100,30 +93,28 @@ export function buildLeafConfig(opts: RiskConfig): LeafRiskConfig {
   };
 }
 
-/** True when any leaf rule is enabled — lets callers skip work entirely. */
 export function hasAnyLeafRule(cfg: LeafRiskConfig): boolean {
   return cfg.detectGetState || cfg.storeAccessorRe !== null || cfg.hiddenHookProps.size > 0;
 }
 
-/**
- * Match a single call expression against the leaf risk rules. Pure and parser-agnostic:
- * works on raw `@babel/types` nodes, so both the in-file Babel plugin and the cross-file
- * call-graph analyzer share one detection source of truth.
- *
- * `parent` is the call's parent node — required to distinguish a store accessor that is
- * actually read (`getXStore().field` / `const { x } = getXStore()`) from a bare call.
- */
 export function matchRiskyCall(call: AnyCall, parent: Node | null, cfg: LeafRiskConfig): LeafMatch | null {
-  const callee = call.callee;
+  const normalizedCall = unwrapChain(call);
+  if (!normalizedCall || normalizedCall.type !== 'CallExpression') {
+    return null;
+  }
+  const callee = (normalizedCall as Node & { callee: Node }).callee;
 
-  // ── Hidden selector hook via property chain, e.g. `store.use.field()` ──
-  // The receiver is deliberately unconstrained: `useFooStore(x).use.bar()` and `a.b.use.bar()`
-  // resolve to the same hidden hook at runtime as the plain-identifier form.
-  if (cfg.hiddenHookProps.size > 0 && isAnyMember(callee) && isAnyMember(callee.object)) {
+  if (
+    cfg.hiddenHookProps.size > 0 &&
+    isAnyMember(callee) &&
+    isAnyMember((unwrapChain(callee) as Node & { object: Node }).object)
+  ) {
     const fieldName = memberName(callee);
-    const propName = memberName(callee.object);
+    const objectMember = (unwrapChain(callee) as Node & { object: Node }).object;
+    const propName = memberName(objectMember);
     if (fieldName !== null && propName !== null && cfg.hiddenHookProps.has(propName)) {
-      const baseName = describeReceiver(callee.object.object);
+      const member = unwrapChain(objectMember) as Node & { object: Node };
+      const baseName = describeReceiver(member.object);
       return {
         ruleId: 'hidden-selector-hook',
         severity: 'high',
@@ -133,28 +124,26 @@ export function matchRiskyCall(call: AnyCall, parent: Node | null, cfg: LeafRisk
     }
   }
 
-  // ── `.getState()` imperative snapshot read ──
   if (cfg.detectGetState && isAnyMember(callee) && memberName(callee) === 'getState') {
+    const member = unwrapChain(callee) as Node & { object: Node };
     return {
       ruleId: 'nonreactive-store-read',
       severity: 'high',
-      symbol: `${describeReceiver(callee.object)}.getState`,
+      symbol: `${describeReceiver(member.object)}.getState`,
       message: GET_STATE_MESSAGE,
     };
   }
 
-  // ── `getXStore().field` / `const { field } = getXStore()` accessor read ──
-  // A `useXxx`-named callee is excluded: the compiler never hoists a hook call into a
-  // compute-once cache slot (that would break the Rules of Hooks), so its result is re-read
-  // every render and cannot go stale. `Store$` matches `useStore` too, hence the guard.
   if (
     cfg.storeAccessorRe &&
     callee.type === 'Identifier' &&
-    !isHookName(callee.name) &&
-    cfg.storeAccessorRe.test(callee.name)
+    !isHookName((callee as Node & { name: string }).name) &&
+    cfg.storeAccessorRe.test((callee as Node & { name: string }).name)
   ) {
-    const calleeName = callee.name;
-    if (isSnapshotRead(call, parent)) {
+    const callParent =
+      parent?.type === 'ChainExpression' ? (parent as Node & { parent?: Node }).parent ?? null : parent;
+    if (isSnapshotRead(normalizedCall, callParent)) {
+      const calleeName = (callee as Node & { name: string }).name;
       return {
         ruleId: 'nonreactive-store-read',
         severity: 'medium',
@@ -167,55 +156,50 @@ export function matchRiskyCall(call: AnyCall, parent: Node | null, cfg: LeafRisk
   return null;
 }
 
-/**
- * Match a `VariableDeclarator` initializer that produces a store snapshot, so callers can treat
- * later reads of that binding as accessor reads (`const s = getChatStore(); … s.field`).
- *
- * One step of local dataflow past {@link matchRiskyCall}, which only ever sees the call site.
- * `bindingName` is woven into the message so the report points at the variable to inspect.
- */
 export function matchAccessorInit(init: Node, cfg: LeafRiskConfig, bindingName: string): LeafMatch | null {
-  if (!isAnyCall(init)) {
+  const normalized = unwrapChain(init);
+  if (!normalized || normalized.type !== 'CallExpression') {
     return null;
   }
-  const callee = init.callee;
+  const callee = (normalized as Node & { callee: Node }).callee;
   const via = `(read through local binding \`${bindingName}\`)`;
-
   if (cfg.detectGetState && isAnyMember(callee) && memberName(callee) === 'getState') {
+    const member = unwrapChain(callee) as Node & { object: Node };
     return {
       ruleId: 'nonreactive-store-read',
       severity: 'high',
-      symbol: `${describeReceiver(callee.object)}.getState`,
+      symbol: `${describeReceiver(member.object)}.getState`,
       message: `${GET_STATE_MESSAGE} ${via}`,
     };
   }
-
-  // Same hook exclusion as {@link matchRiskyCall}: a hook's return value is recomputed every
-  // render, so binding it to a local does not make it a stale snapshot.
   if (
     cfg.storeAccessorRe &&
     callee.type === 'Identifier' &&
-    !isHookName(callee.name) &&
-    cfg.storeAccessorRe.test(callee.name)
+    !isHookName((callee as Node & { name: string }).name) &&
+    cfg.storeAccessorRe.test((callee as Node & { name: string }).name)
   ) {
+    const calleeName = (callee as Node & { name: string }).name;
     return {
       ruleId: 'nonreactive-store-read',
       severity: 'medium',
-      symbol: callee.name,
-      message: `${accessorMessage(callee.name)} ${via}`,
+      symbol: calleeName,
+      message: `${accessorMessage(calleeName)} ${via}`,
     };
   }
-
   return null;
 }
 
-/**
- * True when `parent` reads a value off `node` in a way that surfaces store state — a static member
- * access or an object-destructuring bind. `.getState()` is excluded: {@link matchRiskyCall} owns it.
- */
 export function isSnapshotRead(node: Node, parent: Node | null): boolean {
-  if (isAnyMember(parent) && parent.object === node) {
-    return memberName(parent) !== 'getState';
+  let current = parent;
+  while (current?.type === 'ChainExpression') {
+    current = (current as Node & { parent?: Node }).parent ?? null;
   }
-  return parent?.type === 'VariableDeclarator' && parent.init === node && parent.id.type === 'ObjectPattern';
+  if (isAnyMember(current) && (unwrapChain(current) as Node & { object: Node }).object === node) {
+    return memberName(current) !== 'getState';
+  }
+  return (
+    current?.type === 'VariableDeclarator' &&
+    (current as Node & { init: Node | null }).init === node &&
+    (current as Node & { id: Node }).id.type === 'ObjectPattern'
+  );
 }
