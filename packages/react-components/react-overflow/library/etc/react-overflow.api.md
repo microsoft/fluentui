@@ -35,9 +35,10 @@ export { OnUpdateItemVisibility }
 export { OnUpdateOverflow }
 
 // @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "overflowAxis" | "overflowDirection" | "padding" | "minimumVisible" | "hasHiddenItems">> & {
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "overflowAxis" | "overflowDirection" | "padding" | "minimumVisible" | "hasHiddenItems" | "measureGap">> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
+    imperativeRef?: React_2.Ref<OverflowImperativeRef | null | undefined>;
 } & React_2.RefAttributes<unknown>>;
 
 // @public
@@ -89,6 +90,11 @@ export type OverflowDividerProps = {
 
 export { OverflowEventPayload }
 
+// @public (undocumented)
+export interface OverflowImperativeRef {
+    updateOverflow: () => void;
+}
+
 // @public
 export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
 
@@ -106,9 +112,10 @@ export type OverflowItemProps = {
 });
 
 // @public (undocumented)
-export type OverflowProps = Partial<Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
+export type OverflowProps = Partial<Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems' | 'measureGap'>> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
+    imperativeRef?: React_2.Ref<OverflowImperativeRef | null | undefined>;
 };
 
 // @public

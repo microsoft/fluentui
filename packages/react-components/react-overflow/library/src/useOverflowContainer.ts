@@ -34,6 +34,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     padding = 10,
     minimumVisible = 0,
     onUpdateItemVisibility = noop,
+    measureGap = false,
     hasHiddenItems = false,
   } = options;
 
@@ -45,11 +46,21 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       overflowDirection,
       padding,
       minimumVisible,
+      measureGap,
       onUpdateItemVisibility: onUpdateItemVisibilityCallback,
       onUpdateOverflow: update,
       hasHiddenItems,
     }),
-    [minimumVisible, onUpdateItemVisibilityCallback, overflowAxis, overflowDirection, padding, update, hasHiddenItems],
+    [
+      minimumVisible,
+      onUpdateItemVisibilityCallback,
+      overflowAxis,
+      overflowDirection,
+      padding,
+      update,
+      hasHiddenItems,
+      measureGap,
+    ],
   );
 
   const containerRef = React.useRef<TElement>(null);
