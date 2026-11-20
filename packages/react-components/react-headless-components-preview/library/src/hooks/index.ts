@@ -1,11 +1,21 @@
 export { usePositioning } from './usePositioning';
 export type {
-  Position,
   Alignment,
-  PositioningProps,
-  PositioningReturn,
+  AutoSize,
+  Offset,
+  OffsetFunction,
+  OffsetFunctionParam,
+  OffsetObject,
+  OffsetShorthand,
+  Position,
+  PositioningBoundary,
   PositioningImperativeRef,
+  PositioningProps,
+  PositioningRect,
+  PositioningReturn,
   PositioningShorthand,
   PositioningShorthandValue,
+  PositioningVirtualElement,
+  UsePositioningOptions,
 } from './usePositioning';
 export { POSITIONS, ALIGNMENTS, getPlacementString, resolvePositioningShorthand } from './usePositioning';

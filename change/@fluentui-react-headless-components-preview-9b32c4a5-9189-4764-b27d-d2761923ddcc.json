@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): fall back to usePositioning() from @fluentui/react-positioning when CSS anchor positioning is not supported or an option needs JavaScript (autoSize, boundaries, function offsets, arrows, virtual targets), and return arrowRef. Also trims the CSS anchor positioning code path without changing its behaviour",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

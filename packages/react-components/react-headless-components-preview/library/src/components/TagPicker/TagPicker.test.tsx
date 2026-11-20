@@ -35,6 +35,15 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
   );
 };
 
+// jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
+beforeAll(() => {
+  Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
+});
+
+afterAll(() => {
+  Reflect.deleteProperty(globalThis, 'CSS');
+});
+
 describe('TagPicker', () => {
   it('renders the input trigger and the options list when open', () => {
     const { getByRole, getAllByRole } = renderTagPicker();

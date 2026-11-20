@@ -1,62 +1,10 @@
 import type { Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
-import { ALIGNMENTS, POSITIONS } from '../constants';
+import { ABOVE, AFTER, BEFORE, BELOW, CENTER, END, START } from '../constants';
 import { getPlacementString } from './placement';
 
-const DEFAULT_TOLERANCE = 2;
-
-const closeTo = (a: number, b: number, tolerance: number): boolean => Math.abs(a - b) <= tolerance;
-
-function detectPosition(floatingRect: DOMRect, referenceRect: DOMRect, tolerance: number): Position | null {
-  if (floatingRect.bottom <= referenceRect.top + tolerance) {
-    return POSITIONS.above;
-  }
-
-  if (floatingRect.top >= referenceRect.bottom - tolerance) {
-    return POSITIONS.below;
-  }
-
-  if (floatingRect.right <= referenceRect.left + tolerance) {
-    return POSITIONS.before;
-  }
-
-  if (floatingRect.left >= referenceRect.right - tolerance) {
-    return POSITIONS.after;
-  }
-
-  return null;
-}
-
-function detectAlign(
-  position: Position,
-  floatingRect: DOMRect,
-  referenceRect: DOMRect,
-  tolerance: number,
-): LogicalAlignment {
-  const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
-
-  const startAligned = isBlockMain
-    ? closeTo(floatingRect.left, referenceRect.left, tolerance)
-    : closeTo(floatingRect.top, referenceRect.top, tolerance);
-
-  if (startAligned) {
-    return ALIGNMENTS.start;
-  }
-
-  const endAligned = isBlockMain
-    ? closeTo(floatingRect.right, referenceRect.right, tolerance)
-    : closeTo(floatingRect.bottom, referenceRect.bottom, tolerance);
-
-  if (endAligned) {
-    return ALIGNMENTS.end;
-  }
-
-  return ALIGNMENTS.center;
-}
-
-export interface ComputePositionConfig {
-  tolerance?: number;
-}
+/** Absorbs subpixel mismatches between the rects */
+const TOLERANCE = 2;
 
 export interface ComputePositionReturn {
   position: Position;
@@ -64,22 +12,51 @@ export interface ComputePositionReturn {
   placement: PositioningShorthandValue;
 }
 
-export function computePosition(
-  reference: HTMLElement,
-  floating: HTMLElement,
-  config?: ComputePositionConfig,
-): ComputePositionReturn | null {
-  const tolerance = config?.tolerance ?? DEFAULT_TOLERANCE;
-  const referenceRect = reference.getBoundingClientRect();
-  const floatingRect = floating.getBoundingClientRect();
+/** An element, or a virtual element */
+export interface Measurable {
+  getBoundingClientRect(): { top: number; right: number; bottom: number; left: number };
+}
 
-  const position = detectPosition(floatingRect, referenceRect, tolerance);
+/**
+ * Detects the placement of the floating element from the rects. The result is physical: `before` is on the left of the
+ * reference, and `start` is the left (or top) edge.
+ */
+export function computePosition(reference: Measurable, floating: Measurable): ComputePositionReturn | null {
+  const r = reference.getBoundingClientRect();
+  const f = floating.getBoundingClientRect();
+  const position: Position | null =
+    f.bottom <= r.top + TOLERANCE
+      ? ABOVE
+      : f.top >= r.bottom - TOLERANCE
+      ? BELOW
+      : f.right <= r.left + TOLERANCE
+      ? BEFORE
+      : f.left >= r.right - TOLERANCE
+      ? AFTER
+      : null;
+
   if (!position) {
     return null;
   }
 
-  const align = detectAlign(position, floatingRect, referenceRect, tolerance);
-  const placement = getPlacementString(position, align);
+  const block = position === ABOVE || position === BELOW;
+  const align: LogicalAlignment =
+    Math.abs(block ? f.left - r.left : f.top - r.top) <= TOLERANCE
+      ? START
+      : Math.abs(block ? f.right - r.right : f.bottom - r.bottom) <= TOLERANCE
+      ? END
+      : CENTER;
 
-  return { position, align, placement };
+  return { position, align, placement: getPlacementString(position, align) };
+}
+
+/** Mirrors the placement of the floating element into its `data-placement` attribute */
+export function updatePlacementAttribute(reference: Measurable, floating: HTMLElement): ComputePositionReturn | null {
+  const result = computePosition(reference, floating);
+
+  if (result && floating.getAttribute('data-placement') !== result.placement) {
+    floating.setAttribute('data-placement', result.placement);
+  }
+
+  return result;
 }
