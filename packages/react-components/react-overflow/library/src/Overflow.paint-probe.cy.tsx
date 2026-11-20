@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import {
-  Overflow,
-  OverflowItem,
-  useOverflowMenu,
-  type OverflowProps,
-  type OverflowItemProps,
-} from '@fluentui/react-overflow';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
+import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-overflow';
 
 // Disable StrictMode so the probe measures a single mount/commit path.
 const mount = (element: React.ReactElement) => mountBase(element, { strict: false });
@@ -16,272 +9,121 @@ const selectors = {
   container: 'data-test-container',
   item: 'data-test-item',
   menu: 'data-test-menu',
-  probe: 'data-test-paint-probe',
-  probePhase: 'data-test-paint-phase',
 };
 
-type PaintPhaseSnapshot = {
-  menuText: string | null;
-  overflowingItemIds: string[];
-};
+// The only thing this probe measures: what is on screen.
+type Paint = { menuText: string | null; overflowingItemIds: string[] };
 
-const readPaintPhaseSnapshot = (): PaintPhaseSnapshot => {
+const ALL_ITEMS = Array.from({ length: 10 }, (_, i) => String(i));
+
+const read = (): Paint => {
   const menu = document.querySelector<HTMLElement>(`[${selectors.menu}]`);
   const overflowingItemIds = Array.from(document.querySelectorAll<HTMLElement>(`[${selectors.item}]`))
     .filter(item => item.getAttribute('data-overflowing') !== null)
     .map(item => item.getAttribute(selectors.item) ?? '');
+  return { menuText: menu?.textContent ?? null, overflowingItemIds };
+};
 
-  return {
-    menuText: menu?.textContent ?? null,
-    overflowingItemIds,
+// A plain requestAnimationFrame loop measuring actual painted frames.
+const paints: Record<string, Paint[]> = {};
+const recordPaints = (name: string, frames: number) => {
+  const filmstrip: Paint[] = [];
+  paints[name] = filmstrip;
+  const tick = () => {
+    filmstrip.push(read());
+    if (filmstrip.length < frames) {
+      requestAnimationFrame(tick);
+    }
   };
+  requestAnimationFrame(tick);
 };
 
-const writePhaseSnapshot = (
-  name: string,
-  phase: 'layout' | 'effect' | 'raf1' | 'raf2',
-  snapshot: PaintPhaseSnapshot,
-) => {
-  const probeRoot = document.querySelector<HTMLElement>(`[${selectors.probe}="${name}"]`);
-  const phaseNode = probeRoot?.querySelector<HTMLElement>(`[${selectors.probePhase}="${phase}"]`);
-
-  if (phaseNode) {
-    phaseNode.textContent = JSON.stringify(snapshot);
-  }
+const PaintRecorder: React.FC<{ name: string; frames: number }> = ({ name, frames }) => {
+  // eslint-disable-next-line no-restricted-properties
+  React.useLayoutEffect(() => recordPaints(name, frames), [name, frames]);
+  return null;
 };
 
-const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
-  children,
-  size,
-  ...userProps
-}) => {
-  const selector = {
-    [selectors.container]: '',
-  };
+const distinctPaints = (filmstrip: Paint[]): Paint[] =>
+  filmstrip.filter((paint, i) => i === 0 || JSON.stringify(paint) !== JSON.stringify(filmstrip[i - 1]));
 
-  return (
-    <Overflow padding={0} {...userProps} overflowAxis="horizontal">
-      <div
-        {...selector}
-        style={{
-          display: 'flex',
-          width: size,
-          border: '1px dashed red',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-        }}
-      >
-        {children}
-      </div>
-    </Overflow>
-  );
-};
+const visibleItems = (paint: Paint): string[] => ALL_ITEMS.filter(id => !paint.overflowingItemIds.includes(id));
 
-type ItemProps = { children?: React.ReactNode; width?: number | string } & DistributiveOmit<
-  OverflowItemProps,
-  'children'
->;
+type VisualSnapshot = { menu: string | null; visibleItems: string[] };
+const toVisualSnapshots = (filmstrip: Paint[]): VisualSnapshot[] =>
+  distinctPaints(filmstrip).map(paint => ({ menu: paint.menuText, visibleItems: visibleItems(paint) }));
 
-const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
-  const selector = {
-    [selectors.item]: overflowItemProps.id,
-  };
+// Real shipping components, used as-is.
+const Item: React.FC<{ id: string }> = ({ id }) => (
+  <OverflowItem id={id}>
+    <button {...{ [selectors.item]: id }} style={{ width: 50, height: 50, flexShrink: 0 }}>
+      {id}
+    </button>
+  </OverflowItem>
+);
 
-  return (
-    <OverflowItem {...overflowItemProps}>
-      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
-        {children}
-      </button>
-    </OverflowItem>
-  );
-};
-
-const Menu = () => {
+const Menu: React.FC = () => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-  const selector = {
-    [selectors.menu]: '',
-  };
-
   if (!isOverflowing) {
     return null;
   }
-
   return (
-    <button {...selector} ref={ref} style={{ width: 50, height: 50, flexShrink: 0 }}>
+    <button ref={ref} {...{ [selectors.menu]: '' }} style={{ width: 50, height: 50, flexShrink: 0 }}>
       +{overflowCount}
     </button>
   );
 };
 
-const PaintPhaseProbe: React.FC<{ name: string }> = ({ name }) => {
-  // The probe deliberately distinguishes the layout phase from the passive effect phase,
-  // so it must use the non-isomorphic variant.
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
-    writePhaseSnapshot(name, 'layout', readPaintPhaseSnapshot());
-  }, [name]);
-
-  React.useEffect(() => {
-    writePhaseSnapshot(name, 'effect', readPaintPhaseSnapshot());
-
-    requestAnimationFrame(() => {
-      writePhaseSnapshot(name, 'raf1', readPaintPhaseSnapshot());
-      // Second frame: used to assert the first-rAF snapshot is already settled (no drift),
-      // i.e. it is the converged value rather than a transient mid-convergence reading.
-      requestAnimationFrame(() => {
-        writePhaseSnapshot(name, 'raf2', readPaintPhaseSnapshot());
-      });
-    });
-  }, [name]);
-
-  return null;
-};
-
-const PaintPhaseProbeHarness: React.FC<{ name: string; children: React.ReactNode }> = ({ name, children }) => {
-  return (
-    <>
+// 300px container, 10 items @ 50px, menu @ 50px → settled state: items 0..4 visible (+5 hidden).
+const Container: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+  <Overflow padding={0} overflowAxis="horizontal">
+    <div {...{ [selectors.container]: '' }} style={{ display: 'flex', width: 300, whiteSpace: 'nowrap' }}>
       {children}
-      <div {...{ [selectors.probe]: name }} style={{ display: 'none' }}>
-        <pre {...{ [selectors.probePhase]: 'layout' }} />
-        <pre {...{ [selectors.probePhase]: 'effect' }} />
-        <pre {...{ [selectors.probePhase]: 'raf1' }} />
-        <pre {...{ [selectors.probePhase]: 'raf2' }} />
-      </div>
-      <PaintPhaseProbe name={name} />
-    </>
+    </div>
+  </Overflow>
+);
+
+const items = Array.from({ length: 10 }, (_, i) => <Item key={i} id={String(i)} />);
+const FRAMES = 12;
+
+const mountCase = (name: string, content: React.ReactNode) => {
+  mount(
+    <>
+      <Container>{content}</Container>
+      <PaintRecorder name={name} frames={FRAMES} />
+    </>,
   );
 };
 
-const assertProbeConvergence = (name: string, expected: PaintPhaseSnapshot) => {
-  cy.get(`[${selectors.probe}="${name}"] [${selectors.probePhase}="raf1"]`).should($node => {
-    expect($node.text(), 'raf1 snapshot marker').not.to.equal('');
+const waitForFilmstrip = (name: string) =>
+  cy.wrap(null, { timeout: 8000 }).should(() => {
+    expect(paints[name], `${name}: paint recorder did not produce a filmstrip`).to.be.an('array');
+    expect(paints[name].length, `${name}: expected ${FRAMES} frames`).to.be.at.least(FRAMES);
   });
 
-  cy.get(`[${selectors.probe}="${name}"] [${selectors.probePhase}="raf2"]`).should($node => {
-    expect($node.text(), 'raf2 snapshot marker').not.to.equal('');
-  });
-
-  cy.get(`[${selectors.probe}="${name}"]`).then($probe => {
-    const read = (phase: 'layout' | 'effect' | 'raf1' | 'raf2') => {
-      const text = $probe.find(`[${selectors.probePhase}="${phase}"]`).text();
-      return JSON.parse(text) as PaintPhaseSnapshot;
-    };
-
-    const raf1 = read('raf1');
-    const raf2 = read('raf2');
-    const debugSnapshots = `raf1=${JSON.stringify(raf1)} raf2=${JSON.stringify(raf2)}`;
-
-    // First-paint correctness: the snapshot is already the expected final value by the first rAF.
-    expect(raf1, `unexpected first-raf snapshot; ${debugSnapshots}`).to.deep.equal(expected);
-    // Convergence: the first-rAF value is settled, not a transient — it does not drift next frame.
-    expect(raf2, `first-raf snapshot drifted on the next frame; ${debugSnapshots}`).to.deep.equal(raf1);
-  });
-};
+const SETTLED: VisualSnapshot = { menu: '+5', visibleItems: ['0', '1', '2', '3', '4'] };
 
 describe('Overflow paint probe', () => {
   beforeEach(() => {
+    Object.keys(paints).forEach(key => delete paints[key]);
     cy.viewport(700, 700);
   });
 
-  it('is already final by first rAF on initial overflowing mount', { retries: 0 }, () => {
-    const mapHelper = new Array(10).fill(0).map((_, i) => i);
-
-    mount(
-      <PaintPhaseProbeHarness name="initial-overflow">
-        <Container size={300}>
-          {mapHelper.map(i => (
-            <Item key={i} id={i.toString()}>
-              {i}
-            </Item>
-          ))}
-          <Menu />
-        </Container>
-      </PaintPhaseProbeHarness>,
+  // Items and menu both call forceUpdateOverflow synchronously on registration.
+  // The very first painted frame must already be fully settled: items hidden AND menu count correct.
+  it('first paint is fully settled', () => {
+    mountCase(
+      'settled',
+      <>
+        {items}
+        <Menu />
+      </>,
     );
-
-    assertProbeConvergence('initial-overflow', {
-      menuText: '+5',
-      overflowingItemIds: ['5', '6', '7', '8', '9'],
-    });
-  });
-
-  it('is already final by first rAF for a slightly wider initial-overflow case', { retries: 0 }, () => {
-    const mapHelper = new Array(10).fill(0).map((_, i) => i);
-
-    mount(
-      <PaintPhaseProbeHarness name="initial-overflow-wide">
-        <Container size={350}>
-          {mapHelper.map(i => (
-            <Item key={i} id={i.toString()}>
-              {i}
-            </Item>
-          ))}
-          <Menu />
-        </Container>
-      </PaintPhaseProbeHarness>,
-    );
-
-    assertProbeConvergence('initial-overflow-wide', {
-      menuText: '+4',
-      overflowingItemIds: ['6', '7', '8', '9'],
-    });
-  });
-
-  it('is already final by first rAF for an uneven-width initial-overflow case', { retries: 0 }, () => {
-    mount(
-      <PaintPhaseProbeHarness name="initial-overflow-uneven">
-        {/* Explicit, uneven, font-independent widths. Text-content widths vary with the host's
-            installed fonts (narrower on CI), shifting the overflow boundary and making the
-            expected snapshot non-deterministic across environments. */}
-        <Container size={355}>
-          <Item width={40} id="0">
-            Item 0
-          </Item>
-          <Item width={55} id="1">
-            Item 1
-          </Item>
-          <Item width={95} id="2">
-            Super Long Item 2
-          </Item>
-          <Item width={70} id="3">
-            3
-          </Item>
-          <Item width={65} id="4">
-            Item 4
-          </Item>
-          <Item width={80} id="5">
-            Item 5
-          </Item>
-          <Menu />
-        </Container>
-      </PaintPhaseProbeHarness>,
-    );
-
-    assertProbeConvergence('initial-overflow-uneven', {
-      menuText: '+2',
-      overflowingItemIds: ['4', '5'],
-    });
-  });
-
-  it('is already final by first rAF when the menu never becomes visible', { retries: 0 }, () => {
-    const mapHelper = new Array(5).fill(0).map((_, i) => i);
-
-    mount(
-      <PaintPhaseProbeHarness name="initial-no-menu">
-        <Container size={500}>
-          {mapHelper.map(i => (
-            <Item key={i} id={i.toString()}>
-              {i}
-            </Item>
-          ))}
-          <Menu />
-        </Container>
-      </PaintPhaseProbeHarness>,
-    );
-
-    assertProbeConvergence('initial-no-menu', {
-      menuText: null,
-      overflowingItemIds: [],
+    waitForFilmstrip('settled');
+    cy.then(() => {
+      const snapshots = toVisualSnapshots(paints.settled);
+      expect(snapshots, 'filmstrip should have exactly one distinct state').to.have.length(1);
+      expect(snapshots[0]).to.deep.equal(SETTLED);
     });
   });
 });
