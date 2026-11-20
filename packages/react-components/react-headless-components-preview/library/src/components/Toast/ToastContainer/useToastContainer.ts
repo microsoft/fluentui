@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   isHTMLElement,
   slot,
   useEventCallback,
@@ -44,6 +43,11 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     tryRestoreFocus,
     announce,
     content: _content,
+    toastId: _toastId,
+    toasterId: _toasterId,
+    position: _position,
+    priority: _priority,
+    order: _order,
     ...rest
   } = props;
 
@@ -230,7 +234,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, toastRef),
         children,
         tabIndex: 0,
@@ -242,7 +246,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
         onMouseEnter,
         onMouseLeave,
         onKeyDown,
-      }),
+      },
       { elementType: 'div' },
     ),
     running,
