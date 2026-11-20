@@ -103,9 +103,9 @@ describe('Priority queue', () => {
   });
 
   it('remove should preserve order for every permutation of seven entries', () => {
-    // Exhaustive: 5040 permutations x 7 removal targets. Smaller queues cannot fail, because the
-    // only positions whose replacement can violate the invariant upward are deeper than a
-    // seven entry heap has. 1008 of these 35280 cases fail without the upward pass.
+    // Exhaustive: 5040 permutations x 7 removal targets. Seven entries is the smallest queue where
+    // one remove followed by a full drain comes out of order. 1008 of these 35280 cases fail
+    // without the upward pass, and the failures are collected so that a regression lists them all.
     const values = [1, 2, 3, 4, 5, 6, 7];
 
     const permutations = (items: number[]): number[][] => {
@@ -117,6 +117,7 @@ describe('Priority queue', () => {
       );
     };
 
+    const failures: string[] = [];
     for (const permutation of permutations(values)) {
       for (const target of permutation) {
         const priorityQueue = createPriorityQueue<number>((a, b) => a - b);
@@ -129,9 +130,31 @@ describe('Priority queue', () => {
           actual.push(priorityQueue.dequeue());
         }
 
-        expect(actual).toEqual(permutation.filter(value => value !== target).sort((a, b) => a - b));
+        const expected = permutation.filter(value => value !== target).sort((a, b) => a - b);
+        if (actual.join() !== expected.join()) {
+          failures.push(`enqueue ${permutation.join()}, remove ${target}: dequeued ${actual.join()}`);
+        }
       }
     }
+
+    expect(failures).toEqual([]);
+  });
+
+  it('remove should drop the last entry even when its order changed after it was enqueued', () => {
+    // A comparator can depend on state outside the queue: `overflowManager` breaks priority ties by
+    // DOM position, which changes when items are reordered. The entry in the last slot has to leave
+    // the queue even when it would now sort before its parent.
+    const rank: Record<string, number> = { a: 1, b: 2, c: 3 };
+    const priorityQueue = createPriorityQueue<string>((x, y) => rank[x] - rank[y]);
+    ['a', 'b', 'c'].forEach(value => priorityQueue.enqueue(value));
+    rank.c = 0;
+
+    priorityQueue.remove('c');
+
+    expect(priorityQueue.size()).toBe(2);
+    expect(priorityQueue.contains('c')).toBe(false);
+    expect(priorityQueue.contains('a')).toBe(true);
+    expect(priorityQueue.contains('b')).toBe(true);
   });
 
   it('contains should return true if element is in the queue', () => {

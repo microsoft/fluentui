@@ -104,9 +104,14 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
       return;
     }
 
-    arr[i] = arr[--size];
-    siftUp(i);
-    heapify(i);
+    size--;
+    // When the removed entry was in the last slot, that slot is now outside the heap and there is
+    // nothing to move into it. Repairing from it would compare against the removed entry.
+    if (i < size) {
+      arr[i] = arr[size];
+      siftUp(i);
+      heapify(i);
+    }
   };
 
   const clear = () => {
