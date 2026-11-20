@@ -44,12 +44,19 @@ function useFocusLogic() {
 }
 
 function usePopupVisibility(props: DatePickerProps) {
-  const [open, setOpen] = useControllableState({
+  const [openState, setOpen] = useControllableState({
     initialState: false,
     defaultState: props.defaultOpen,
     state: props.open,
   });
+  const open = openState && !props.disabled;
   const isMounted = React.useRef(false);
+
+  React.useEffect(() => {
+    if (props.disabled && openState) {
+      setOpen(false);
+    }
+  }, [props.disabled, openState, setOpen]);
 
   React.useEffect(
     () => {
@@ -235,11 +242,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   );
 
   const showDatePickerPopup = React.useCallback((): void => {
-    if (!open) {
+    if (!open && !props.disabled) {
       preventNextFocusOpeningPicker();
       setOpen(true);
     }
-  }, [open, preventNextFocusOpeningPicker, setOpen]);
+  }, [open, preventNextFocusOpeningPicker, props.disabled, setOpen]);
 
   /**
    * Callback for closing the calendar callout
