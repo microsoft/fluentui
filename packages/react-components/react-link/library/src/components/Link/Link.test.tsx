@@ -201,3 +201,38 @@ describe('Link', () => {
     });
   });
 });
+
+describe('Link DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Link appearance="subtle" disabledFocusable href="https://www.bing.com" inline>
+        Link
+      </Link>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'href',
+      'role',
+      'tabindex',
+    ]);
+  });
+
+  it('does not render disabled on an anchor', () => {
+    const { container } = render(
+      <Link disabled href="https://www.bing.com">
+        Link
+      </Link>,
+    );
+
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'class',
+      'role',
+    ]);
+  });
+});
