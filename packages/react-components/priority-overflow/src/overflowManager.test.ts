@@ -106,6 +106,83 @@ describe('overflowManager', () => {
     manager.disconnect();
   });
 
+  it('preserves group and divider transitions through resize, removal and re-registration', () => {
+    const manager = createOverflowManager(createObserveOptions({ padding: 0 }));
+    const container = createContainer(400);
+    const divider = createElementWithSize('div', 10);
+    const otherDivider = createElementWithSize('div', 10);
+    const itemA = { element: createElementWithSize('button', 90), id: 'a', groupId: 'group', priority: 2 };
+    const itemB = { element: createElementWithSize('button', 90), id: 'b', groupId: 'group', priority: 1 };
+    const itemC = { element: createElementWithSize('button', 90), id: 'c', groupId: 'other', priority: 0 };
+
+    manager.addItem(itemA);
+    manager.addItem(itemB);
+    manager.addItem(itemC);
+    manager.addDivider({ element: divider, groupId: 'group' });
+    manager.addDivider({ element: otherDivider, groupId: 'other' });
+    manager.addOverflowMenu(createElementWithSize('button', 20));
+    manager.observe(container);
+
+    const resize = (width: number) => {
+      Object.defineProperty(container, 'clientWidth', { configurable: true, value: width });
+      manager.forceUpdate();
+    };
+
+    resize(400);
+    expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'visible', other: 'visible' });
+    resize(250);
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+    expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'visible', other: 'hidden' });
+    expect(otherDivider.hasAttribute('data-overflowing')).toBe(true);
+    resize(160);
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'overflow', other: 'hidden' });
+    expect(divider.hasAttribute('data-overflowing')).toBe(false);
+    resize(80);
+    expect(getVisibleIds(manager)).toEqual([]);
+    expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'hidden', other: 'hidden' });
+    expect(divider.hasAttribute('data-overflowing')).toBe(true);
+    resize(160);
+    expect(manager.getSnapshot().groupVisibility.group).toBe('overflow');
+    expect(divider.hasAttribute('data-overflowing')).toBe(false);
+
+    manager.removeItem('b');
+    expect(manager.getSnapshot().groupVisibility.group).toBe('visible');
+    manager.removeItem('a');
+    expect(manager.getSnapshot().groupVisibility.group).toBe('hidden');
+    manager.addItem(itemA);
+    expect(manager.getSnapshot().groupVisibility.group).toBe('visible');
+    resize(400);
+    expect(getVisibleIds(manager)).toEqual(['a', 'c']);
+    expect(manager.getSnapshot().groupVisibility).toEqual({ group: 'visible', other: 'visible' });
+    expect(otherDivider.hasAttribute('data-overflowing')).toBe(false);
+    manager.disconnect();
+
+    manager.addItem(itemB);
+    manager.observe(container, { forceUpdate: true });
+    expect(getVisibleIds(manager)).toEqual(['b']);
+    expect(manager.getSnapshot().groupVisibility.group).toBe('visible');
+    manager.disconnect();
+  });
+
+  it('caches zero-sized items for one update without measuring gaps by default', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const item = createElementWithSize('button', 0);
+    const getWidth = jest.fn(() => 0);
+    Object.defineProperty(item, 'offsetWidth', { configurable: true, get: getWidth });
+    const getRect = jest.spyOn(item, 'getBoundingClientRect');
+    manager.addItem({ element: item, id: 'zero', priority: 0 });
+    manager.observe(createContainer(100));
+
+    manager.forceUpdate();
+    expect(getWidth).toHaveBeenCalledTimes(1);
+    manager.forceUpdate();
+    expect(getWidth).toHaveBeenCalledTimes(2);
+    expect(getRect).not.toHaveBeenCalled();
+    expect(getVisibleIds(manager)).toEqual(['zero']);
+    manager.disconnect();
+  });
+
   it('should update snapshot and notify subscribers when options change', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

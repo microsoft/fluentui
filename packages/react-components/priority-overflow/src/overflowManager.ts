@@ -102,8 +102,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     vertical: 'clientHeight' | 'offsetHeight',
     el: HTMLElement,
   ): number {
-    if (sizeCache.has(el)) {
-      return sizeCache.get(el)!;
+    const cachedSize = sizeCache.get(el);
+    if (cachedSize !== undefined) {
+      return cachedSize;
     }
 
     const requested = options.overflowAxis === 'horizontal' ? horizontal : vertical;
@@ -142,10 +143,12 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const end = vertical ? 'bottom' : 'right';
 
     // The menu may still be mounted while testing whether the last hidden item fits without it.
-    const style = !hasOverflowItems() ? overflowMenu?.style : undefined;
-    const cssText = style?.cssText ?? '';
+    const style = !hasOverflowItems() && overflowMenu ? overflowMenu.style : undefined;
+    const cssText = style ? style.cssText : '';
     try {
-      style?.setProperty('display', 'none', 'important');
+      if (style) {
+        style.setProperty('display', 'none', 'important');
+      }
       return elements
         .map(element => element.getBoundingClientRect())
         .sort((a, b) => a[start] - b[start])
@@ -174,29 +177,22 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
 
-  const showItem = () => {
-    const item = getNextItem(invisibleItemQueue, visibleItemQueue);
-    options.onUpdateItemVisibility({ item, visible: true });
+  const setItemVisibility = (visible: boolean) => {
+    const item = visible
+      ? getNextItem(invisibleItemQueue, visibleItemQueue)
+      : getNextItem(visibleItemQueue, invisibleItemQueue);
+    options.onUpdateItemVisibility({ item, visible });
 
     if (item.groupId) {
-      groupManager.showItem(item.id, item.groupId);
-
-      if (groupManager.isSingleItemVisible(item.id, item.groupId)) {
-        overflowDividers[item.groupId]?.element.removeAttribute(DATA_OVERFLOWING);
+      const visibleCount = groupManager.setItemVisibility(item.id, item.groupId, visible);
+      const divider = overflowDividers[item.groupId];
+      if (divider && visibleCount === (visible ? 1 : 0)) {
+        if (visible) {
+          divider.element.removeAttribute(DATA_OVERFLOWING);
+        } else {
+          divider.element.setAttribute(DATA_OVERFLOWING, '');
+        }
       }
-    }
-  };
-
-  const hideItem = () => {
-    const item = getNextItem(visibleItemQueue, invisibleItemQueue);
-    options.onUpdateItemVisibility({ item, visible: false });
-
-    if (item.groupId) {
-      if (groupManager.isSingleItemVisible(item.id, item.groupId)) {
-        overflowDividers[item.groupId]?.element.setAttribute(DATA_OVERFLOWING, '');
-      }
-
-      groupManager.hideItem(item.id, item.groupId);
     }
   };
 
@@ -252,7 +248,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const invisibleTop = invisibleItemQueue.peek();
 
     while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
-      hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
+      setItemVisibility(false); // hide elements whose priority become smaller than the highest priority of the hidden one
     }
 
     // Run the show/hide step twice - the first step might not be correct if
@@ -263,7 +259,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
         (occupiedSize() < getAvailableSize() && invisibleItemQueue.size() > 0) ||
         invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
       ) {
-        showItem();
+        setItemVisibility(true);
       }
 
       // Remove items until there's no more overflow
@@ -275,7 +271,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
           break;
         }
 
-        hideItem();
+        setItemVisibility(false);
       }
     }
 
@@ -378,7 +374,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     }
 
     if (items.groupId) {
-      groupManager.addItem(items.id, items.groupId);
+      groupManager.setItemVisibility(items.id, items.groupId, true);
       items.element.setAttribute(DATA_OVERFLOW_GROUP, items.groupId);
     }
   };
@@ -450,7 +446,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     invisibleItemQueue.remove(itemId);
 
     if (item.groupId) {
-      groupManager.removeItem(item.id, item.groupId);
+      groupManager.setItemVisibility(item.id, item.groupId);
       item.element.removeAttribute(DATA_OVERFLOW_GROUP);
     }
 
@@ -488,52 +484,21 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
 const createGroupManager = () => {
   const groupVisibility: Record<string, OverflowGroupState> = {};
-  const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
-  function updateGroupVisibility(groupId: string) {
-    const group = groups[groupId];
-    if (group.invisibleItemIds.size && group.visibleItemIds.size) {
-      groupVisibility[groupId] = 'overflow';
-    } else if (group.visibleItemIds.size === 0) {
-      groupVisibility[groupId] = 'hidden';
-    } else {
-      groupVisibility[groupId] = 'visible';
-    }
-  }
-  function isGroupVisible(groupId: string) {
-    return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
-  }
+  const groups: Record<string, [hidden: Set<string>, visible: Set<string>]> = {};
+
   return {
     groupVisibility: () => groupVisibility,
-    isSingleItemVisible(itemId: string, groupId: string) {
-      return (
-        isGroupVisible(groupId) &&
-        groups[groupId].visibleItemIds.has(itemId) &&
-        groups[groupId].visibleItemIds.size === 1
-      );
-    },
-    addItem(itemId: string, groupId: string) {
-      groups[groupId] ??= {
-        visibleItemIds: new Set<string>(),
-        invisibleItemIds: new Set<string>(),
-      };
-
-      groups[groupId].visibleItemIds.add(itemId);
-      updateGroupVisibility(groupId);
-    },
-    removeItem(itemId: string, groupId: string) {
-      groups[groupId].invisibleItemIds.delete(itemId);
-      groups[groupId].visibleItemIds.delete(itemId);
-      updateGroupVisibility(groupId);
-    },
-    showItem(itemId: string, groupId: string) {
-      groups[groupId].invisibleItemIds.delete(itemId);
-      groups[groupId].visibleItemIds.add(itemId);
-      updateGroupVisibility(groupId);
-    },
-    hideItem(itemId: string, groupId: string) {
-      groups[groupId].invisibleItemIds.add(itemId);
-      groups[groupId].visibleItemIds.delete(itemId);
-      updateGroupVisibility(groupId);
+    setItemVisibility(itemId: string, groupId: string, visible?: boolean) {
+      const group = (groups[groupId] ??= [new Set<string>(), new Set<string>()]);
+      // Both transitions and removal clear the previous membership; undefined means removal.
+      group[0].delete(itemId);
+      group[1].delete(itemId);
+      if (visible !== undefined) {
+        group[visible ? 1 : 0].add(itemId);
+      }
+      const visibleCount = group[1].size;
+      groupVisibility[groupId] = visibleCount ? (group[0].size ? 'overflow' : 'visible') : 'hidden';
+      return visibleCount;
     },
   };
 };
