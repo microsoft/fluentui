@@ -75,6 +75,37 @@ describe('overflowManager', () => {
     expect(manager.getSnapshot().groupVisibility).toEqual({});
   });
 
+  it.each([false, true])('should restore menu styles after candidate measurement (throws: %s)', throws => {
+    const manager = createOverflowManager(createObserveOptions({ measureGap: true }));
+    const container = createContainer(100);
+    const item = createElementWithSize('button', 40);
+    const menu = createElementWithSize('button', 20);
+    menu.style.cssText = 'display: inline-flex !important; margin-left: 10px;';
+    const cssText = menu.style.cssText;
+    const measurementError = new Error('Measurement failed');
+
+    jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => {
+      expect(menu.style.display).toBe('none');
+      expect(menu.style.getPropertyPriority('display')).toBe('important');
+      if (throws) {
+        throw measurementError;
+      }
+      return new DOMRect(0, 0, 40, 40);
+    });
+    manager.addItem({ element: item, id: 'a', priority: 1 });
+    manager.addOverflowMenu(menu);
+    manager.observe(container);
+
+    if (throws) {
+      expect(() => manager.forceUpdate()).toThrow(measurementError);
+    } else {
+      manager.forceUpdate();
+      expect(getVisibleIds(manager)).toEqual(['a']);
+    }
+    expect(menu.style.cssText).toBe(cssText);
+    manager.disconnect();
+  });
+
   it('should update snapshot and notify subscribers when options change', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

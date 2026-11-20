@@ -110,7 +110,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const measurement = el[requested];
 
     sizeCache.set(el, measurement);
-    return sizeCache.get(el)!;
+    return measurement;
   }
 
   const getOffsetSize = getElementAxisSize.bind(null, 'offsetWidth', 'offsetHeight');
@@ -141,18 +141,20 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const start = vertical ? 'top' : 'left';
     const end = vertical ? 'bottom' : 'right';
 
-    return elements
-      .map(element => element.getBoundingClientRect())
-      .sort((a, b) => a[start] - b[start])
-      .reduce((totalGapSize, rect, i, rects) => {
-        if (i === 0) {
-          // We deliberately don't measure the spacing between first and last elements and the container
-          // Space at the ends of a container can be either be container padding or collapsed empty space
-          return totalGapSize;
-        }
-
-        return totalGapSize + (rect[start] - rects[i - 1][end]);
-      }, 0);
+    // The menu may still be mounted while testing whether the last hidden item fits without it.
+    const style = !hasOverflowItems() ? overflowMenu?.style : undefined;
+    const cssText = style?.cssText ?? '';
+    try {
+      style?.setProperty('display', 'none', 'important');
+      return elements
+        .map(element => element.getBoundingClientRect())
+        .sort((a, b) => a[start] - b[start])
+        .reduce((total, rect, i, rects) => total + (i ? rect[start] - rects[i - 1][end] : 0), 0);
+    } finally {
+      if (style) {
+        style.cssText = cssText;
+      }
+    }
   }
 
   function occupiedSize(): number {
