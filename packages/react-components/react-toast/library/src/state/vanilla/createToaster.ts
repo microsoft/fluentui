@@ -65,6 +65,9 @@ export function createToaster(options: Partial<ToasterOptions>): {
     return a.priority - b.priority;
   });
 
+  // Toasts that are in the map while their `queued` status is reported, before they are visible or queued
+  const pendingToasts = new Set<ToastId>();
+
   const isToastVisible = (toastId: ToastId) => {
     return visibleToasts.has(toastId);
   };
@@ -107,12 +110,12 @@ export function createToaster(options: Partial<ToasterOptions>): {
 
     const existingToast = toasts.get(toastId);
     if (existingToast) {
-      if (visibleToasts.has(toastId) || queue.contains(toastId)) {
+      if (visibleToasts.has(toastId) || queue.contains(toastId) || pendingToasts.has(toastId)) {
         return;
       }
 
-      // The existing toast was dismissed and only stays in the map until its exit motion finishes.
-      // Finish removing it now, so that the new toast can use its id.
+      // The existing toast is neither visible nor queued. It was dismissed and is waiting for its exit motion,
+      // or `dismissAllToasts` dropped it from the queue. Remove it now, so that the new toast can use its id.
       existingToast.remove();
     }
 
@@ -167,7 +170,14 @@ export function createToaster(options: Partial<ToasterOptions>): {
     assignDefined(toast, toastOptions);
 
     toasts.set(toastId, toast);
-    toast.onStatusChange?.(null, { status: 'queued', ...toast });
+    // A dispatch with the same id from the `queued` handler must not replace the toast that is being built
+    pendingToasts.add(toastId);
+    try {
+      toast.onStatusChange?.(null, { status: 'queued', ...toast });
+    } finally {
+      pendingToasts.delete(toastId);
+    }
+
     if (visibleToasts.size >= limit) {
       queue.enqueue(toastId);
     } else {
