@@ -51,6 +51,12 @@ export async function compileSwc(
     const compiledFilePath = join(absoluteOutputPath, jsFileName);
 
     const result = await transformFile(srcFilePath, {
+      jsc: {
+        transform: {
+          ...swcConfig.jsc?.transform,
+          reactCompiler: normalizedOptions.reactCompiler ? swcConfig.jsc?.transform?.reactCompiler || true : false,
+        },
+      },
       module: { type: module, resolveFully: Boolean(swcConfig.jsc?.baseUrl) },
       // SWC resolves source-map sources relative to the emitted file, not the output directory.
       outputPath: compiledFilePath,

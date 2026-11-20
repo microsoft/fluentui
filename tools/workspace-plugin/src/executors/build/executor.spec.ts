@@ -4,6 +4,7 @@ import { BuildExecutorSchema } from './schema';
 import executor from './executor';
 import { join } from 'node:path';
 import { existsSync, readFileSync, readdirSync, appendFileSync, writeFileSync } from 'node:fs';
+import { type Config } from '@swc/core';
 
 // ===== mocks start =====
 import { rm } from 'node:fs/promises';
@@ -332,34 +333,34 @@ describe('Build Executor', () => {
       // assert raw styles content matches the original SWC-compiled styles (before Griffel transformation)
       // =====================
       expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js'), 'utf-8')).toMatchInlineSnapshot(`
-      "import { makeStyles } from '@griffel/react';
-      export const useStyles = makeStyles({
-          root: {
-              color: 'red'
-          }
-      });
-      "
-    `);
+              "import { makeStyles } from '@griffel/react';
+              export const useStyles = makeStyles({
+                  root: {
+                      color: 'red'
+                  }
+              });
+              "
+          `);
       expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'), 'utf-8'))
         .toMatchInlineSnapshot(`
-      "\\"use strict\\";
-      Object.defineProperty(exports, \\"__esModule\\", {
-          value: true
-      });
-      Object.defineProperty(exports, \\"useStyles\\", {
-          enumerable: true,
-          get: function() {
-              return useStyles;
-          }
-      });
-      const _react = require(\\"@griffel/react\\");
-      const useStyles = (0, _react.makeStyles)({
-          root: {
-              color: 'red'
-          }
-      });
-      "
-    `);
+              "\\"use strict\\";
+              Object.defineProperty(exports, \\"__esModule\\", {
+                  value: true
+              });
+              Object.defineProperty(exports, \\"useStyles\\", {
+                  enumerable: true,
+                  get: function() {
+                      return useStyles;
+                  }
+              });
+              const _react = require(\\"@griffel/react\\");
+              const useStyles = (0, _react.makeStyles)({
+                  root: {
+                      color: 'red'
+                  }
+              });
+              "
+          `);
 
       // =====================
       // showcase that babel transformation creates invalid source map - which differs with raw styles source maps produced by SWC-compiled source maps (before Griffel transformation)
@@ -489,6 +490,21 @@ describe('Build Executor', () => {
   });
 
   describe(`#reactCompiler`, () => {
+    const compilerProjectRoot = join(workspaceRoot, 'libs/react-compiler-proj');
+    const compilerConfigPath = join(compilerProjectRoot, '.swcrc');
+    const originalCompilerConfig = readFileSync(compilerConfigPath, 'utf-8');
+    const reactCompilerOptions: BuildExecutorSchema = {
+      sourceRoot: 'src',
+      outputPathRoot: 'libs/react-compiler-proj/dist',
+      moduleOutput: [
+        { module: 'es6', outputPath: 'lib' },
+        { module: 'commonjs', outputPath: 'lib-commonjs' },
+      ],
+      assets: [],
+      generateApi: false,
+      clean: true,
+      reactCompiler: true,
+    };
     const reactCompilerContext: ExecutorContext = {
       root: workspaceRoot,
       cwd: process.cwd(),
@@ -507,26 +523,17 @@ describe('Build Executor', () => {
       projectGraph: { nodes: {}, dependencies: {} },
     };
 
-    it('applies react-compiler transforms to ESM output (without styles)', async () => {
+    afterEach(() => {
+      writeFileSync(compilerConfigPath, originalCompilerConfig);
+    });
+
+    it('applies react-compiler transforms when the executor flag is enabled (without styles)', async () => {
       jest.spyOn(logger, 'log').mockImplementation(() => {
         return;
       });
       jest.spyOn(logger, 'verbose').mockImplementation(() => {
         return;
       });
-
-      const reactCompilerOptions: BuildExecutorSchema = {
-        sourceRoot: 'src',
-        outputPathRoot: 'libs/react-compiler-proj/dist',
-        moduleOutput: [
-          { module: 'es6', outputPath: 'lib' },
-          { module: 'commonjs', outputPath: 'lib-commonjs' },
-        ],
-        assets: [],
-        generateApi: false,
-        clean: true,
-        reactCompiler: true,
-      };
 
       const output = await executor(reactCompilerOptions, reactCompilerContext);
       expect(output.success).toBe(true);
@@ -535,7 +542,7 @@ describe('Build Executor', () => {
       expect(readFileSync(join(workspaceRoot, 'libs/react-compiler-proj/lib/Counter.js'), 'utf-8'))
         .toMatchInlineSnapshot(`
         "import { c as _c } from \\"react/compiler-runtime\\";
-        import * as React from 'react';
+        import * as React from \\"react\\";
         export function Counter(t0) {
             const $ = _c(2);
             const { initialCount: t1 } = t0;
@@ -556,9 +563,259 @@ describe('Build Executor', () => {
         "
       `);
 
-      // assert intermediate directory is cleaned up
+      const commonjs = readFileSync(join(compilerProjectRoot, 'lib-commonjs/Counter.js'), 'utf-8');
+      expect(commonjs).toMatchInlineSnapshot(`
+        "\\"use strict\\";
+        Object.defineProperty(exports, \\"__esModule\\", {
+            value: true
+        });
+        Object.defineProperty(exports, \\"Counter\\", {
+            enumerable: true,
+            get: function() {
+                return Counter;
+            }
+        });
+        const _interop_require_wildcard = require(\\"@swc/helpers/_/_interop_require_wildcard\\");
+        const _compilerruntime = require(\\"react/compiler-runtime\\");
+        const _react = /*#__PURE__*/ _interop_require_wildcard._(require(\\"react\\"));
+        function Counter(t0) {
+            const $ = (0, _compilerruntime.c)(2);
+            const { initialCount: t1 } = t0;
+            const initialCount = t1 === undefined ? 0 : t1;
+            const [count, setCount] = _react.useState(initialCount);
+            let t2;
+            if ($[0] !== count) {
+                t2 = /*#__PURE__*/ _react.createElement(\\"div\\", null, /*#__PURE__*/ _react.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ _react.createElement(\\"button\\", {
+                    onClick: ()=>setCount(count + 1)
+                }, \\"Increment\\"));
+                $[0] = count;
+                $[1] = t2;
+            } else {
+                t2 = $[1];
+            }
+            return t2;
+        }
+        "
+      `);
+      const sourceMap = JSON.parse(readFileSync(join(compilerProjectRoot, 'lib/Counter.js.map'), 'utf-8'));
+      expect(sourceMap.sources).toEqual(['../src/Counter.tsx']);
       expect(existsSync(join(workspaceRoot, 'libs/react-compiler-proj/temp/react-compiler-intermediate'))).toBe(false);
     }, 60000);
+
+    it('keeps compiler disabled by default and for an explicit false flag even when .swcrc enables it', async () => {
+      const config: Config = JSON.parse(originalCompilerConfig);
+      config.jsc!.transform!.reactCompiler = true;
+      writeFileSync(compilerConfigPath, JSON.stringify(config));
+
+      const outputs: { esm: string; commonjs: string }[] = [];
+      for (const reactCompiler of [undefined, false]) {
+        expect((await executor({ ...reactCompilerOptions, reactCompiler }, reactCompilerContext)).success).toBe(true);
+        outputs.push({
+          esm: readFileSync(join(compilerProjectRoot, 'lib/Counter.js'), 'utf-8'),
+          commonjs: readFileSync(join(compilerProjectRoot, 'lib-commonjs/Counter.js'), 'utf-8'),
+        });
+      }
+      expect(outputs[0]).toEqual(outputs[1]);
+      expect(outputs[0]).toMatchInlineSnapshot(`
+        Object {
+          "commonjs": "\\"use strict\\";
+        Object.defineProperty(exports, \\"__esModule\\", {
+            value: true
+        });
+        Object.defineProperty(exports, \\"Counter\\", {
+            enumerable: true,
+            get: function() {
+                return Counter;
+            }
+        });
+        const _interop_require_wildcard = require(\\"@swc/helpers/_/_interop_require_wildcard\\");
+        const _react = /*#__PURE__*/ _interop_require_wildcard._(require(\\"react\\"));
+        function Counter({ initialCount = 0 }) {
+            const [count, setCount] = _react.useState(initialCount);
+            return /*#__PURE__*/ _react.createElement(\\"div\\", null, /*#__PURE__*/ _react.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ _react.createElement(\\"button\\", {
+                onClick: ()=>setCount(count + 1)
+            }, \\"Increment\\"));
+        }
+        ",
+          "esm": "import * as React from 'react';
+        export function Counter({ initialCount = 0 }) {
+            const [count, setCount] = React.useState(initialCount);
+            return /*#__PURE__*/ React.createElement(\\"div\\", null, /*#__PURE__*/ React.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ React.createElement(\\"button\\", {
+                onClick: ()=>setCount(count + 1)
+            }, \\"Increment\\"));
+        }
+        ",
+        }
+      `);
+    });
+
+    it('preserves project compiler options when enabled', async () => {
+      const config: Config = JSON.parse(originalCompilerConfig);
+      config.jsc!.transform!.reactCompiler = { compilationMode: 'annotation' };
+      writeFileSync(compilerConfigPath, JSON.stringify(config));
+
+      expect((await executor(reactCompilerOptions, reactCompilerContext)).success).toBe(true);
+      expect(readFileSync(join(compilerProjectRoot, 'lib/Counter.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "import * as React from 'react';
+        export function Counter({ initialCount = 0 }) {
+            const [count, setCount] = React.useState(initialCount);
+            return /*#__PURE__*/ React.createElement(\\"div\\", null, /*#__PURE__*/ React.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ React.createElement(\\"button\\", {
+                onClick: ()=>setCount(count + 1)
+            }, \\"Increment\\"));
+        }
+        "
+      `);
+    });
+
+    it('compiles CommonJS-only output', async () => {
+      const output = await executor(
+        { ...reactCompilerOptions, moduleOutput: [{ module: 'commonjs', outputPath: 'lib-commonjs' }] },
+        reactCompilerContext,
+      );
+      expect(output.success).toBe(true);
+      expect(readFileSync(join(compilerProjectRoot, 'lib-commonjs/Counter.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "\\"use strict\\";
+        Object.defineProperty(exports, \\"__esModule\\", {
+            value: true
+        });
+        Object.defineProperty(exports, \\"Counter\\", {
+            enumerable: true,
+            get: function() {
+                return Counter;
+            }
+        });
+        const _interop_require_wildcard = require(\\"@swc/helpers/_/_interop_require_wildcard\\");
+        const _compilerruntime = require(\\"react/compiler-runtime\\");
+        const _react = /*#__PURE__*/ _interop_require_wildcard._(require(\\"react\\"));
+        function Counter(t0) {
+            const $ = (0, _compilerruntime.c)(2);
+            const { initialCount: t1 } = t0;
+            const initialCount = t1 === undefined ? 0 : t1;
+            const [count, setCount] = _react.useState(initialCount);
+            let t2;
+            if ($[0] !== count) {
+                t2 = /*#__PURE__*/ _react.createElement(\\"div\\", null, /*#__PURE__*/ _react.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ _react.createElement(\\"button\\", {
+                    onClick: ()=>setCount(count + 1)
+                }, \\"Increment\\"));
+                $[0] = count;
+                $[1] = t2;
+            } else {
+                t2 = $[1];
+            }
+            return t2;
+        }
+        "
+      `);
+    });
+
+    it('preserves JavaScript, TypeScript assertions and file exclusions', async () => {
+      expect((await executor(reactCompilerOptions, reactCompilerContext)).success).toBe(true);
+      expect(readFileSync(join(compilerProjectRoot, 'lib/value.js'), 'utf-8')).toContain('value * 2');
+      expect(readFileSync(join(compilerProjectRoot, 'lib/assertion.js'), 'utf-8')).toContain('export const value = 1');
+      expect(existsSync(join(compilerProjectRoot, 'lib/Counter.spec.js'))).toBe(false);
+    });
+
+    it('reports compilation failures', async () => {
+      const invalidSource = join(compilerProjectRoot, 'src/invalid.ts');
+      const errorSpy = jest.spyOn(logger, 'error').mockImplementation(() => undefined);
+      writeFileSync(invalidSource, 'export const = ;');
+      try {
+        expect((await executor(reactCompilerOptions, reactCompilerContext)).success).toBe(false);
+        expect(errorSpy).toHaveBeenCalled();
+      } finally {
+        await rm(invalidSource);
+      }
+    });
+
+    it('compiles styled packages once while preserving raw styles and ESM-first CommonJS output', async () => {
+      const projectRoot = join(workspaceRoot, 'libs/proj');
+      const source = join(projectRoot, 'src/Counter.tsx');
+      const configPath = join(projectRoot, '.swcrc');
+      const originalConfig = readFileSync(configPath, 'utf-8');
+      const config: Config = JSON.parse(originalConfig);
+      config.jsc!.baseUrl = '.';
+      writeFileSync(configPath, JSON.stringify(config));
+      writeFileSync(source, readFileSync(join(compilerProjectRoot, 'src/Counter.tsx')));
+      try {
+        expect(
+          (
+            await executor(
+              {
+                ...options,
+                assets: [],
+                generateApi: false,
+                reactCompiler: true,
+                enableGriffelRawStyles: true,
+                __esmFirst: true,
+              },
+              context,
+            )
+          ).success,
+        ).toBe(true);
+        const esm = readFileSync(join(projectRoot, 'lib/Counter.js'), 'utf-8');
+        const commonjs = readFileSync(join(projectRoot, 'lib-commonjs/Counter.cjs'), 'utf-8');
+        expect({ esm, commonjs }).toMatchInlineSnapshot(`
+          Object {
+            "commonjs": "\\"use strict\\";
+          Object.defineProperty(exports, \\"__esModule\\", {
+              value: true
+          });
+          Object.defineProperty(exports, \\"Counter\\", {
+              enumerable: true,
+              get: function() {
+                  return Counter;
+              }
+          });
+          const _interop_require_wildcard = require(\\"@swc/helpers/_/_interop_require_wildcard\\");
+          const _compilerruntime = require(\\"react/compiler-runtime\\");
+          const _react = /*#__PURE__*/ _interop_require_wildcard._(require(\\"react\\"));
+          function Counter(t0) {
+              const $ = (0, _compilerruntime.c)(2);
+              const { initialCount: t1 } = t0;
+              const initialCount = t1 === undefined ? 0 : t1;
+              const [count, setCount] = _react.useState(initialCount);
+              let t2;
+              if ($[0] !== count) {
+                  t2 = /*#__PURE__*/ _react.createElement(\\"div\\", null, /*#__PURE__*/ _react.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ _react.createElement(\\"button\\", {
+                      onClick: ()=>setCount(count + 1)
+                  }, \\"Increment\\"));
+                  $[0] = count;
+                  $[1] = t2;
+              } else {
+                  t2 = $[1];
+              }
+              return t2;
+          }
+          ",
+            "esm": "import { c as _c } from \\"react/compiler-runtime\\";
+          import * as React from \\"react\\";
+          export function Counter(t0) {
+              const $ = _c(2);
+              const { initialCount: t1 } = t0;
+              const initialCount = t1 === undefined ? 0 : t1;
+              const [count, setCount] = React.useState(initialCount);
+              let t2;
+              if ($[0] !== count) {
+                  t2 = /*#__PURE__*/ React.createElement(\\"div\\", null, /*#__PURE__*/ React.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ React.createElement(\\"button\\", {
+                      onClick: ()=>setCount(count + 1)
+                  }, \\"Increment\\"));
+                  $[0] = count;
+                  $[1] = t2;
+              } else {
+                  t2 = $[1];
+              }
+              return t2;
+          }
+          ",
+          }
+        `);
+        expect(readFileSync(join(projectRoot, 'lib/greeter.styles.raw.js'), 'utf-8')).toContain('makeStyles');
+        expect(readFileSync(join(projectRoot, 'lib/greeter.styles.js'), 'utf-8')).toContain('__styles');
+      } finally {
+        writeFileSync(configPath, originalConfig);
+        await rm(source);
+      }
+    });
 
     it('applies react-compiler before griffel AOT (with styles)', async () => {
       jest.spyOn(logger, 'log').mockImplementation(() => {
@@ -576,7 +833,7 @@ describe('Build Executor', () => {
       const output = await executor(optionsWithReactCompiler, context);
       expect(output.success).toBe(true);
 
-      // assert greeter.js ESM output is valid (react-compiler ran on TS source, SWC compiled from intermediate)
+      // Griffel AOT still follows source compilation.
       expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
         "import { useStyles } from './greeter.styles';
         export function greeter(greeting, user) {
