@@ -1,19 +1,119 @@
 name: Pull request housekeeping 🧹
 on:
-  - pull_request_target
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
 
-permissions:
-  contents: read
-  pull-requests: write
-  issues: write
+concurrency:
+  # Serialize risk-label writes across heads; obsolete reruns must not cancel an active writer.
+  group: pr-housekeeping-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+# Every job declares only the permissions it needs.
+permissions: {}
 
 jobs:
   label:
+    name: Label areas
+    # Area labels depend on the changed files only, as before the risk pilot; a pilot failure cannot affect them.
+    # Runs on every event: the shared concurrency group may replace a pending push run with a later edit run.
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     steps:
       - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
           configuration-path: .github/labeler.yml
+
+  assess:
+    name: Assess review risk
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      checks: write
+      # Exchanged for a short-lived Entra token for the optional risk model; there is no stored model key.
+      id-token: write
+    steps:
+      # First, before any fallible setup: a new in-progress check replaces the previous result on this head, so a
+      # failed setup can never leave an outdated tier showing.
+      - name: Start the risk check
+        id: start
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { data: pull } = await github.rest.pulls.get({
+              ...context.repo, pull_number: context.issue.number,
+            });
+            if (pull.head.sha !== context.payload.pull_request.head.sha) {
+              core.notice('Superseded PR head; the run for the newer head assesses it.');
+              return;
+            }
+            const { data: check } = await github.rest.checks.create({
+              ...context.repo,
+              name: 'PR risk assessment',
+              head_sha: pull.head.sha,
+              status: 'in_progress',
+            });
+            core.setOutput('check-id', String(check.id));
+            core.setOutput('head-sha', pull.head.sha);
+            core.setOutput('base-sha', pull.base.sha);
+
+      # Never check out or execute PR-head code in pull_request_target.
+      - if: ${{ steps.start.outputs.check-id != '' }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ steps.start.outputs.base-sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            .github/risk-tiers.json
+            scripts/github
+          sparse-checkout-cone-mode: false
+
+      - name: Classify review risk
+        id: classify
+        if: ${{ steps.start.outputs.check-id != '' }}
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          RISK_CHECK_ID: ${{ steps.start.outputs.check-id }}
+          RISK_HEAD_SHA: ${{ steps.start.outputs.head-sha }}
+          RISK_MODEL_MODE: ${{ vars.RISK_MODEL_MODE }}
+          RISK_MODEL_API: ${{ vars.RISK_MODEL_API }}
+          RISK_MODEL_ENDPOINT: ${{ vars.RISK_MODEL_ENDPOINT }}
+          RISK_MODEL_DEPLOYMENT: ${{ vars.RISK_MODEL_DEPLOYMENT }}
+          RISK_MODEL_ID: ${{ vars.RISK_MODEL_ID }}
+          RISK_MODEL_AZURE_CLIENT_ID: ${{ vars.RISK_MODEL_AZURE_CLIENT_ID }}
+          RISK_MODEL_AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        with:
+          script: |
+            const run = require(`${process.env.GITHUB_WORKSPACE}/scripts/github/src/risk-tiers-workflow.js`);
+            await run({
+              github, context, core,
+              checkRun: { id: Number(process.env.RISK_CHECK_ID), headSha: process.env.RISK_HEAD_SHA },
+            });
+
+      # The classify step completes the check itself, also when it fails; this covers setup failures and cancellation.
+      - name: Fail the risk check if setup or classification did not finish
+        if: ${{ always() && steps.start.outputs.check-id != '' && steps.classify.outputs.check-completed != 'true' }}
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          RISK_CHECK_ID: ${{ steps.start.outputs.check-id }}
+        with:
+          script: |
+            await github.rest.checks.update({
+              ...context.repo,
+              check_run_id: Number(process.env.RISK_CHECK_ID),
+              status: 'completed',
+              conclusion: 'failure',
+              output: {
+                title: 'Risk classification did not finish',
+                summary: 'Setup, classification, or cancellation prevented a result. No new tier is assigned.',
+              },
+            });
