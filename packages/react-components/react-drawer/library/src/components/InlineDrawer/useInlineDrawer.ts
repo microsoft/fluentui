@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { PresenceDirection } from '@fluentui/react-motion';
 import { presenceMotionSlot } from '@fluentui/react-motion';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { type DrawerMotionParams, InlineDrawerMotion } from '../../shared/drawerMotions';
@@ -34,7 +34,8 @@ const STATIC_MOTION = {
  */
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
   const { size, position, open, unmountOnClose } = useDrawerDefaultProps(props);
-  const { separator = false, surfaceMotion, ...baseProps } = props;
+  // `size` is a design prop handled here, it is not part of the base props.
+  const { separator = false, surfaceMotion, size: _size, ...baseProps } = props;
   const { dir } = useFluent();
   const [animationDirection, setAnimationDirection] = React.useState<PresenceDirection>(open ? 'enter' : 'exit');
 
@@ -81,6 +82,7 @@ export const useInlineDrawerBase_unstable = (
   ref: React.Ref<HTMLElement>,
 ): InlineDrawerBaseState => {
   const { position, open, unmountOnClose } = useDrawerDefaultProps(props);
+  const { position: _position, open: _open, unmountOnClose: _unmountOnClose, ...rest } = props;
 
   return {
     components: {
@@ -88,11 +90,12 @@ export const useInlineDrawerBase_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ...props,
-        ref,
+      {
+        ...rest,
+        // `ref` is typed as `HTMLElement` for backwards compatibility, the root is always a `div`
+        ref: ref as React.Ref<HTMLDivElement>,
         'aria-hidden': !unmountOnClose && !open ? true : undefined,
-      }),
+      },
       { elementType: 'div' },
     ),
 

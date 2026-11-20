@@ -1,7 +1,7 @@
 'use client';
 
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type * as React from 'react';
 
 import type {
@@ -31,13 +31,13 @@ export const useTeachingPopoverCarouselNavBase_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         role: 'tablist',
         tabIndex: 0,
         ...props,
         children: null,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

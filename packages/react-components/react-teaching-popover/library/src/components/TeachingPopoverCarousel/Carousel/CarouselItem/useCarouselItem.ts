@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { CarouselItemProps, CarouselItemState } from './CarouselItem.types';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
@@ -10,7 +10,7 @@ export const useCarouselItem_unstable = (
   props: CarouselItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselItemState => {
-  const { value } = props;
+  const { value, ...rest } = props;
 
   const visible = useCarouselContext_unstable(c => c.value === value);
   const state: CarouselItemState = {
@@ -20,13 +20,13 @@ export const useCarouselItem_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
         hidden: !visible,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
   };

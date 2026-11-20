@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { DialogSurface } from './DialogSurface';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
@@ -33,5 +33,25 @@ describe('DialogSurface', () => {
     mockUseDialogContext({ open: true });
     const result = render(<DialogSurface>Default DialogSurface</DialogSurface>);
     expect(result.container).toMatchSnapshot();
+  });
+});
+
+describe('DialogSurface DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    render(
+      <DialogSurface backdrop={{ appearance: 'dimmed' }} backdropMotion={null} mountNode={null}>
+        Surface
+      </DialogSurface>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((screen.getByRole('dialog') as HTMLElement).getAttributeNames().sort()).toEqual([
+      'aria-modal',
+      'class',
+      'role',
+      'tabindex',
+    ]);
   });
 });

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { useEventCallback, slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverHeaderBaseProps,
   TeachingPopoverHeaderBaseState,
@@ -22,7 +22,7 @@ export const useTeachingPopoverHeaderBase_unstable = (
   props: TeachingPopoverHeaderBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverHeaderBaseState => {
-  const { dismissButton, icon } = props;
+  const { dismissButton, icon, ...rest } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -44,10 +44,10 @@ export const useTeachingPopoverHeaderBase_unstable = (
       icon: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     icon: slot.optional(icon, {

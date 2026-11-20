@@ -25,3 +25,22 @@ describe('TeachingPopoverCarouselFooter', () => {
     expect(result.container).toMatchSnapshot();
   });
 });
+
+describe('TeachingPopoverCarouselFooter DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TeachingPopoverCarouselFooter
+        layout="offset"
+        next="Next"
+        previous="Previous"
+        initialStepText="Close"
+        finalStepText="Finish"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

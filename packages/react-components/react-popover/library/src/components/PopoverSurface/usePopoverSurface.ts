@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -49,7 +49,7 @@ export const usePopoverSurface_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME:
         // `contentRef` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
@@ -58,7 +58,7 @@ export const usePopoverSurface_unstable = (
         'aria-modal': trapFocus ? true : undefined,
         ...modalAttributes,
         ...props,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

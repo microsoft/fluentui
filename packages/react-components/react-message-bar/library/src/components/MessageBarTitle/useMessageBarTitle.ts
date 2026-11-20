@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { MessageBarTitleProps, MessageBarTitleState } from './MessageBarTitle.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';
 
@@ -25,11 +25,11 @@ export const useMessageBarTitle_unstable = (
       root: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('span', {
+      {
         ref,
         id: titleId,
         ...props,
-      }),
+      },
       { elementType: 'span' },
     ),
   };

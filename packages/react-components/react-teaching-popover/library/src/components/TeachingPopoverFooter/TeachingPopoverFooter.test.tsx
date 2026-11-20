@@ -25,3 +25,16 @@ describe('TeachingPopoverFooter', () => {
     expect(result.container).toMatchSnapshot();
   });
 });
+
+describe('TeachingPopoverFooter DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <TeachingPopoverFooter footerLayout="vertical" primary="Primary" secondary="Secondary" />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

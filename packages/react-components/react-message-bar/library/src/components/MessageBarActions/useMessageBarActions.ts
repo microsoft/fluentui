@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MessageBarActionsProps, MessageBarActionsState } from './MessageBarActions.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';
 
@@ -18,18 +18,19 @@ export const useMessageBarActions_unstable = (
   props: MessageBarActionsProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarActionsState => {
+  const { containerAction, ...rest } = props;
   const { layout = 'singleline', actionsRef } = useMessageBarContext();
   return {
     components: {
       root: 'div',
       containerAction: 'div',
     },
-    containerAction: slot.optional(props.containerAction, { renderByDefault: false, elementType: 'div' }),
+    containerAction: slot.optional(containerAction, { renderByDefault: false, elementType: 'div' }),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, actionsRef),
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     layout,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MessageBarGroupProps, MessageBarGroupState } from './MessageBarGroup.types';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render MessageBarGroup.
@@ -25,6 +25,8 @@ export const useMessageBarGroup_unstable = (
     });
   }
 
+  const { animate = 'exit-only', ...rest } = props;
+
   const children = React.Children.map(props.children ?? [], c =>
     React.isValidElement(c) && c.type !== React.Fragment ? c : null,
   ).filter(Boolean);
@@ -35,14 +37,14 @@ export const useMessageBarGroup_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
     children,
-    animate: props.animate ?? 'exit-only',
+    animate,
     enterStyles: '',
     exitStyles: '',
   };
