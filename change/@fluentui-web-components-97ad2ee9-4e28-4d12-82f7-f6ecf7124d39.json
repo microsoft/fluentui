@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(web-components): re-enable button when its parent fieldset is re-enabled",
+  "packageName": "@fluentui/web-components",
+  "email": "abdurrahmanmorsy@gmail.com"
+}
+
