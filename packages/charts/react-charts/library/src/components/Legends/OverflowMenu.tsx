@@ -34,9 +34,8 @@ export const OverflowMenu: React.FC<{
         key={itemId}
         name="legends"
         value={value}
-        // Position within this menu, which is the set the menu actually renders. Reporting the
-        // full-list position made a seven-item menu announce "4 of 10", pointing at entries the
-        // menu cannot reach. The listbox keeps full-list counts because it renders every option.
+        // No aria-setsize or aria-posinset: every row of this menu is in the DOM, so browsers compute the
+        // position within the menu.
         // Hide the checkmark so the row matches the listbox legend; selection is conveyed via aria-checked.
         checkmark={null}
         onClick={e => buttonElement.props.onClick?.(e)}

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): Legends overflow menu items report their position within the menu instead of the full legend list",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

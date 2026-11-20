@@ -342,7 +342,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-selected': !!selectedLegends[legend.title],
             role: 'option',
             'aria-label': `${legend.title}`,
-            // Full-list position so counts match the overflow menu.
+            // Full-list position: the overflowed options are hidden, so the listbox exposes only part of the set.
             'aria-setsize': props.legends.length,
             'aria-posinset': (index ?? 0) + 1,
           })}

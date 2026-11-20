@@ -319,7 +319,7 @@ describe('Legends - dynamic overflow', () => {
     expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
   });
 
-  it('renders exact remaining items in menu popover without removed legends and preserves aria metadata', () => {
+  it('renders exact remaining items in menu popover without removed legends and without explicit positions', () => {
     const result = render(
       <Legends legends={legends} overflowText="Overflow Items" selectedLegend={legends[4].title} />,
     );
@@ -339,9 +339,7 @@ describe('Legends - dynamic overflow', () => {
     expect(checkboxItems.length).toBe(7);
 
     checkboxItems.forEach((item, itemIndex) => {
-      // The menu is its own set, so the counts describe its seven rows rather than the ten
-      // legends in the listbox. Reporting the full-list position made the first row announce
-      // "4 of 10", referring to entries that are not in this menu.
+      // The rows carry no explicit position. Browsers compute it within the menu, which jsdom does not do.
       expect(item.getAttribute('aria-setsize')).toBeNull();
       expect(item.getAttribute('aria-posinset')).toBeNull();
       expect(item.querySelector(`[data-title="Legend ${itemIndex + 4}"]`)).not.toBeNull();
@@ -351,6 +349,7 @@ describe('Legends - dynamic overflow', () => {
       expect(document.querySelector(`div[role="menuitemcheckbox"] [data-title="Legend ${index}"]`)).toBeNull();
     }
 
+    // The second row is Legend 5, which is the selected legend
     const selectedItem = document.querySelectorAll('div[role="menuitemcheckbox"]')[1];
     expect(selectedItem?.getAttribute('aria-checked')).toBe('true');
   });
