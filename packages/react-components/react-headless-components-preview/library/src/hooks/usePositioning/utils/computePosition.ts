@@ -7,6 +7,12 @@ const DEFAULT_TOLERANCE = 2;
 
 const closeTo = (a: number, b: number, tolerance: number): boolean => Math.abs(a - b) <= tolerance;
 
+/**
+ * An element has no box (e.g. `display: none`) only when both dimensions are 0;
+ * a 0px-tall or 0px-wide element is still laid out.
+ */
+export const hasNoBox = ({ width, height }: { width: number; height: number }): boolean => width === 0 && height === 0;
+
 function detectPosition(floatingRect: DOMRect, referenceRect: DOMRect, tolerance: number): Position | null {
   if (floatingRect.bottom <= referenceRect.top + tolerance) {
     return POSITIONS.above;
@@ -72,6 +78,10 @@ export function computePosition(
   const tolerance = config?.tolerance ?? DEFAULT_TOLERANCE;
   const referenceRect = reference.getBoundingClientRect();
   const floatingRect = floating.getBoundingClientRect();
+
+  if (hasNoBox(floatingRect) || reference.getClientRects().length === 0) {
+    return null;
+  }
 
   const position = detectPosition(floatingRect, referenceRect, tolerance);
   if (!position) {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce } from './utils';
+import { computePosition, debounce, hasNoBox } from './utils';
 
 /**
  * Mirrors the placement that the browser actually resolves for an
@@ -10,6 +10,11 @@ import { computePosition, debounce } from './utils';
  * or content reflow — consumers can style the surface (arrows, animations)
  * via `[data-placement^="above"]` and friends and stay in sync.
  *
+ * The surface counts as hidden only when it has no box (a 0×0 border box, e.g.
+ * `display: none` on a closed popover); `visibility: hidden`, `opacity: 0` or
+ * `scale(0)` still count as laid out. While hidden only a ResizeObserver stays
+ * attached; window listeners attach when the surface is laid out. Without
+ * ResizeObserver (test DOMs such as jsdom) the observer does nothing.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
@@ -38,34 +43,60 @@ export function usePlacementObserver(
     }
 
     const win = targetDocument?.defaultView;
-    if (!win) {
+    const ResizeObserverCtor = win?.ResizeObserver;
+    if (!win || !ResizeObserverCtor) {
       return;
     }
 
     const debouncedUpdate = debounce(update);
 
-    const ResizeObserverCtor = win.ResizeObserver;
-    const resizeObserver = ResizeObserverCtor
-      ? new ResizeObserverCtor(entries => {
-          const allLaidOut = entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0);
-          if (allLaidOut) {
-            debouncedUpdate();
-          }
-        })
-      : null;
+    let containerLaidOut = false;
+    let listening = false;
 
-    resizeObserver?.observe(containerEl);
-    resizeObserver?.observe(targetEl);
+    const startListening = () => {
+      if (listening) {
+        return;
+      }
+      listening = true;
+      win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
+      win.addEventListener('resize', debouncedUpdate);
+    };
 
-    win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
-    win.addEventListener('resize', debouncedUpdate);
-
-    debouncedUpdate();
-
-    return () => {
-      resizeObserver?.disconnect();
+    const stopListening = () => {
+      if (!listening) {
+        return;
+      }
+      listening = false;
       win.removeEventListener('scroll', debouncedUpdate, { capture: true });
       win.removeEventListener('resize', debouncedUpdate);
+    };
+
+    const resizeObserver = new ResizeObserverCtor(entries => {
+      for (const entry of entries) {
+        if (entry.target === containerEl) {
+          const borderBox = entry.borderBoxSize?.[0];
+          containerLaidOut = !hasNoBox(
+            borderBox
+              ? { width: borderBox.inlineSize, height: borderBox.blockSize }
+              : containerEl.getBoundingClientRect(),
+          );
+        }
+      }
+
+      if (containerLaidOut) {
+        startListening();
+        debouncedUpdate();
+      } else {
+        stopListening();
+      }
+    });
+
+    resizeObserver.observe(containerEl, { box: 'border-box' });
+    resizeObserver.observe(targetEl);
+
+    return () => {
+      resizeObserver.disconnect();
+      stopListening();
     };
   }, [containerEl, targetEl, targetDocument, disabled, update]);
 
