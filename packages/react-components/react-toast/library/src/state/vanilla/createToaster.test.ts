@@ -175,4 +175,163 @@ describe('createToaster', () => {
 
     expect(toaster.visibleToasts.has('two')).toBe(true);
   });
+
+  it('should ignore a toast that uses the id of a visible toast', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'foo' }, () => null);
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toaster.toasts.size).toBe(1);
+    expect(toast.content).toBe('foo');
+  });
+
+  it('should ignore a toast that uses the id of a queued toast', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+    toaster.buildToast({ content: 'baz', toastId: 'bar' }, () => null);
+
+    const toast = toaster.toasts.get('bar');
+    assertToast(toast);
+    expect(toaster.toasts.size).toBe(2);
+    expect(toast.content).toBe('bar');
+  });
+
+  it('should show a toast that uses the id of a dismissed toast that is not removed yet', () => {
+    const toaster = createToaster({});
+    const onStatusChange = jest.fn();
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.dismissToast('foo');
+    toaster.buildToast({ content: 'bar', toastId: 'foo', onStatusChange }, () => null);
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toaster.toasts.size).toBe(1);
+    expect(toast.content).toBe('bar');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+    expect(onStatusChange).toHaveBeenCalledTimes(1);
+    expect(onStatusChange).toHaveBeenCalledWith(null, expect.objectContaining({ status: 'queued' }));
+  });
+
+  it('should show a toast that uses the id of a closed toast that is not removed yet', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    const closed = toaster.toasts.get('foo');
+    assertToast(closed);
+    closed.close();
+    toaster.buildToast({ content: 'bar', toastId: 'foo' }, () => null);
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toast.content).toBe('bar');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
+
+  it('should let a queued toast take the free slot before a toast that reuses a dismissed id', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+    toaster.dismissToast('foo');
+    toaster.buildToast({ content: 'baz', toastId: 'foo' }, () => null);
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toast.content).toBe('baz');
+    expect(toaster.visibleToasts.has('bar')).toBe(true);
+    expect(toaster.visibleToasts.has('foo')).toBe(false);
+
+    // The toast that reuses the id waits in the queue and is shown once the slot is free again
+    const bar = toaster.toasts.get('bar');
+    assertToast(bar);
+    bar.close();
+    bar.remove();
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
+
+  it('should not let the callbacks of a replaced toast affect the toast that reuses its id', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    const replaced = toaster.toasts.get('foo');
+    assertToast(replaced);
+    toaster.dismissToast('foo');
+    toaster.buildToast({ content: 'bar', toastId: 'foo' }, () => null);
+
+    replaced.close();
+    replaced.remove();
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toast.content).toBe('bar');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
+
+  it('should show a toast that uses the id of a queued toast that dismissAllToasts dropped', () => {
+    const toaster = createToaster({ limit: 1 });
+
+    toaster.buildToast({ content: 'foo', toastId: 'foo' }, () => null);
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+    toaster.dismissAllToasts();
+    toaster.buildToast({ content: 'baz', toastId: 'bar' }, () => null);
+
+    const toast = toaster.toasts.get('bar');
+    assertToast(toast);
+    expect(toast.content).toBe('baz');
+    expect(toaster.visibleToasts.has('bar')).toBe(true);
+  });
+
+  it('should show a toast that is dispatched with the same id from the dismissed handler', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast(
+      {
+        content: 'foo',
+        toastId: 'foo',
+        onStatusChange: (_, { status }) => {
+          if (status === 'dismissed') {
+            toaster.buildToast({ content: 'bar', toastId: 'foo' }, () => null);
+          }
+        },
+      },
+      () => null,
+    );
+    const dismissed = toaster.toasts.get('foo');
+    assertToast(dismissed);
+    dismissed.close();
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toast.content).toBe('bar');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
+
+  it('should ignore a toast that is dispatched with the same id from the queued handler', () => {
+    const toaster = createToaster({});
+
+    toaster.buildToast(
+      {
+        content: 'foo',
+        toastId: 'foo',
+        onStatusChange: (_, { status }) => {
+          if (status === 'queued') {
+            toaster.buildToast({ content: 'bar', toastId: 'foo' }, () => null);
+          }
+        },
+      },
+      () => null,
+    );
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(toaster.toasts.size).toBe(1);
+    expect(toast.content).toBe('foo');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+  });
 });

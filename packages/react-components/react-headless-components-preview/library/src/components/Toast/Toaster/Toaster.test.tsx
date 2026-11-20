@@ -114,4 +114,29 @@ describe('Toaster', () => {
     );
     expect(onStatusChange.mock.calls[0][1]).not.toHaveProperty('offset');
   });
+
+  it('gives a toast that reuses the id of a dismissed toast its own lifecycle', () => {
+    let controller: ReturnType<typeof useToastController>;
+    const toasterId = 'reuse-toaster';
+    const onFirstStatusChange = jest.fn();
+    const onSecondStatusChange = jest.fn();
+    const Test = () => {
+      controller = useToastController(toasterId);
+      return <Toaster toasterId={toasterId} />;
+    };
+    const { queryByText } = render(<Test />);
+
+    act(() => {
+      controller.dispatchToast('first toast', { toastId: 'foo', timeout: -1, onStatusChange: onFirstStatusChange });
+    });
+    act(() => {
+      controller.dismissToast('foo');
+      controller.dispatchToast('second toast', { toastId: 'foo', timeout: -1, onStatusChange: onSecondStatusChange });
+    });
+
+    expect(queryByText('first toast')).toBeNull();
+    expect(queryByText('second toast')).not.toBeNull();
+    expect(onFirstStatusChange).toHaveBeenCalledWith(null, expect.objectContaining({ status: 'unmounted' }));
+    expect(onSecondStatusChange).toHaveBeenCalledWith(null, expect.objectContaining({ status: 'visible' }));
+  });
 });

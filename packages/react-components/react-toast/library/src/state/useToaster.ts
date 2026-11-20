@@ -88,7 +88,9 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
   }, [getMostRecentVisibleToast]);
 
   const closeAllToasts = React.useCallback(() => {
-    toaster.visibleToasts.forEach(toastId => {
+    // Iterate over a copy. A `dismissed` handler can dispatch a toast that reuses the id, which adds the id back
+    // to the set, and a set visits a value again when it is deleted and added back during the iteration.
+    Array.from(toaster.visibleToasts).forEach(toastId => {
       const toast = toaster.toasts.get(toastId);
       toast?.close();
     });

@@ -336,6 +336,90 @@ describe('Toast', () => {
       .should('have.text', 'unmounted');
   });
 
+  describe('a toast that reuses the id of a dismissed toast', () => {
+    const setReducedMotionPreference = (value?: 'no-preference' | 'reduce') =>
+      cy.then(() =>
+        Cypress.automation('remote:debugger:protocol', {
+          command: 'Emulation.setEmulatedMedia',
+          params: { features: value ? [{ name: 'prefers-reduced-motion', value }] : [] },
+        }),
+      );
+
+    // The first case needs the exit motion, so it must not depend on the motion preference of the machine
+    beforeEach(() => setReducedMotionPreference('no-preference'));
+    afterEach(() => setReducedMotionPreference());
+
+    const Example = () => {
+      const toastId = 'foo';
+      const { dispatchToast, dismissToast } = useToastController();
+      const [log, setLog] = React.useState<string[]>([]);
+      const makeToast = (title: string) => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>{title}</ToastTitle>
+          </Toast>,
+          { toastId, timeout: -1, onStatusChange: (_, data) => setLog(s => [...s, `${title} ${data.status}`]) },
+        );
+      };
+
+      const replaceToast = () => {
+        dismissToast(toastId);
+        makeToast('second');
+      };
+
+      return (
+        <>
+          <button onClick={() => makeToast('first')}>Make first toast</button>
+          <button onClick={() => dismissToast(toastId)}>Dismiss toast</button>
+          <button onClick={() => makeToast('second')}>Make second toast</button>
+          <button onClick={replaceToast}>Replace toast</button>
+          <ul>
+            {log.map(msg => (
+              <li key={msg}>{msg}</li>
+            ))}
+          </ul>
+          <Toaster />
+        </>
+      );
+    };
+
+    it('should be shown while the dismissed toast is still running its exit motion', () => {
+      mount(<Example />);
+      cy.contains('button', 'Make first toast').click();
+      cy.contains('li', 'first visible').should('exist');
+
+      cy.contains('button', 'Dismiss toast').click();
+      // Hold the exit motion, so that the first toast is certain to be still rendered when its id is used again
+      cy.get(`.${toastContainerClassNames.root}`)
+        .should($container => {
+          const animations = $container[0].getAnimations({ subtree: true });
+          expect(
+            animations.filter(animation => animation.playState === 'running'),
+            'running exit animations',
+          ).to.have.length.greaterThan(0);
+        })
+        .then($container => {
+          $container[0].getAnimations({ subtree: true }).forEach(animation => animation.pause());
+        });
+
+      cy.contains('button', 'Make second toast').click();
+      cy.contains('li', 'first unmounted').should('exist');
+      cy.contains('li', 'second visible').should('exist');
+      cy.get(`.${toastClassNames.root}`).should('have.length', 1).and('have.text', 'second');
+    });
+
+    it('should be shown when it is dispatched in the same tick as the dismissal', () => {
+      mount(<Example />);
+      cy.contains('button', 'Make first toast').click();
+      cy.contains('li', 'first visible').should('exist');
+
+      cy.contains('button', 'Replace toast').click();
+      cy.contains('li', 'first unmounted').should('exist');
+      cy.contains('li', 'second visible').should('exist');
+      cy.get(`.${toastClassNames.root}`).should('have.length', 1).and('have.text', 'second');
+    });
+  });
+
   it('should focus most recent toast with shortcut', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
