@@ -48,8 +48,9 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     position: _position,
     priority: _priority,
     order: _order,
+    root: _root,
     ...rest
-  } = props;
+  } = props as ToastContainerProps & { root?: unknown };
 
   const titleId = useId('toast-title');
   const bodyId = useId('toast-body');
