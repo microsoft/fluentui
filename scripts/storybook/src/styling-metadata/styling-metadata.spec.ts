@@ -253,6 +253,26 @@ describe('styling metadata', () => {
       });
     });
 
+    it('requires component state evidence before attributing data attributes to a slot', () => {
+      const extractor = createStylingMetadataExtractor({ tsConfigPath: fixtureTsConfig, dataAttributes: true });
+
+      expect(extractor.extractComponent('fixture-components', fixtureStory, 'Ownership')).toEqual({
+        dataAttributes: {
+          attributes: { root: { owned: 'data-owned' }, header: { header: 'data-header' } },
+          values: { root: { owned: [''] }, header: { header: [''] } },
+        },
+      });
+      expect(
+        extractor
+          .getDiagnosticsFor('fixture-components', fixtureStory, 'Ownership')
+          .map(({ code, component, attribute }) => ({ code, component, attribute })),
+      ).toEqual([
+        { code: 'unresolved-slot', component: 'Ownership', attribute: 'data-selected' },
+        { code: 'unresolved-slot', component: 'Ownership', attribute: 'data-default' },
+        { code: 'unresolved-slot', component: 'Ownership', attribute: 'data-assigned' },
+      ]);
+    });
+
     it('skips modules that do not resolve', () => {
       const extractor = createStylingMetadataExtractor({ tsConfigPath: fixtureTsConfig, classNames: true });
 
@@ -320,23 +340,6 @@ describe('styling metadata', () => {
         values: { root: { expandIconPosition: ['start', 'end'] } },
       });
       expect(accordion.classNames).toBeUndefined();
-
-      const calendar = extractor.extractComponent(
-        '@fluentui/react-headless-components-preview/calendar',
-        path.join(headlessStories, 'Calendar/index.stories.tsx'),
-        'CalendarYear',
-      );
-      expect(calendar?.dataAttributes?.attributes ?? {}).not.toHaveProperty('defaultProps');
-      expect(calendar?.dataAttributes?.attributes.root ?? {}).not.toHaveProperty('selected');
-      expect(
-        extractor.getDiagnosticsFor(
-          '@fluentui/react-headless-components-preview/calendar',
-          path.join(headlessStories, 'Calendar/index.stories.tsx'),
-          'CalendarYear',
-        ),
-      ).toEqual(
-        expect.arrayContaining([expect.objectContaining({ code: 'unresolved-slot', component: 'CalendarYear' })]),
-      );
 
       const rating = extractor.extractComponent(
         '@fluentui/react-headless-components-preview/rating-display',
