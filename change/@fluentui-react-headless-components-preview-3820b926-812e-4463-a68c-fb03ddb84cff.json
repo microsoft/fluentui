@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "email": "dmytrokirpa@microsoft.com",
+  "comment": "fix!: correct headless behavior, state selectors, and icon accessibility",
+  "packageName": "@fluentui/react-headless-components-preview"
+}

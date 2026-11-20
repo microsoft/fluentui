@@ -32,6 +32,10 @@ export const Popover: ComponentWithoutRef<PopoverProps>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'inertTrapFocus'> & {
+    titleId: string;
+    setTitleId: (titleId: string) => void;
+    dismissButtonAutoFocus: boolean;
+    setDismissButtonAutoFocus: (autoFocus: boolean) => void;
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
@@ -77,6 +81,10 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    titleId: string;
+    setTitleId: (titleId: string) => void;
+    dismissButtonAutoFocus: boolean;
+    setDismissButtonAutoFocus: (autoFocus: boolean) => void;
     shouldRenderSurface: boolean;
 };
 

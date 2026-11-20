@@ -9,6 +9,7 @@ import {
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
   TeachingPopoverCarouselPageCount,
+  TeachingPopoverHeader,
   TeachingPopoverSurface,
   TeachingPopoverTitle,
   TeachingPopoverTrigger,
@@ -19,7 +20,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => mountBase(element);
 
 const triggerSelector = '[aria-expanded]';
-const surfaceSelector = '[role="group"]';
+const surfaceSelector = '[role="dialog"]';
 
 describe('TeachingPopover', () => {
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
@@ -87,6 +88,51 @@ describe('TeachingPopover', () => {
         cy.realPress('Escape');
         cy.get(surfaceSelector).should('not.exist');
         cy.get(triggerSelector).should('have.focus');
+      });
+    });
+  });
+
+  describe('autofocus after native surface show', () => {
+    const Example = ({ component }: { component: 'header' | 'title' }) => {
+      const [open, setOpen] = React.useState(false);
+      const [showDismiss, setShowDismiss] = React.useState(false);
+      const dismissContent =
+        component === 'header' ? (
+          <TeachingPopoverHeader>Header</TeachingPopoverHeader>
+        ) : (
+          <TeachingPopoverTitle dismissButton={{}}>Title</TeachingPopoverTitle>
+        );
+
+      return (
+        <>
+          <button onClick={() => setOpen(true)}>Open externally</button>
+          <button onClick={() => setOpen(false)}>Close externally</button>
+          <TeachingPopover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+            <TeachingPopoverTrigger>
+              <button>Trigger</button>
+            </TeachingPopoverTrigger>
+            <TeachingPopoverSurface as="div" aria-label="Feature tour">
+              {showDismiss ? dismissContent : <button onClick={() => setShowDismiss(true)}>Mount dismiss</button>}
+            </TeachingPopoverSurface>
+          </TeachingPopover>
+        </>
+      );
+    };
+
+    (['header', 'title'] as const).forEach(component => {
+      it(`focuses the ${component} dismiss button after show, late mount, and reopen`, () => {
+        mount(<Example component={component} />);
+        cy.get(triggerSelector).realClick();
+        cy.get(triggerSelector).should('have.attr', 'aria-expanded', 'true');
+        cy.get('[data-popover-surface]').should('be.visible').and('have.attr', 'role', 'dialog');
+        cy.contains('button', 'Mount dismiss').realClick();
+        cy.get('[aria-label="dismiss"]').should('have.focus');
+
+        cy.contains('button', 'Close externally').realClick();
+        cy.get('[data-popover-surface]').should('not.exist');
+        cy.get(triggerSelector).realClick();
+        cy.get('[data-popover-surface]').should('be.visible');
+        cy.get('[aria-label="dismiss"]').should('have.focus');
       });
     });
   });

@@ -46,7 +46,7 @@ describe('TeachingPopover', () => {
     expect(getByText('Surface content')).toBeInTheDocument();
   });
 
-  it('does not render default header or title icons', () => {
+  it('preserves the default header dismiss button and keeps the title dismiss button opt-in', () => {
     const { container, getByTestId } = render(
       <TeachingPopover defaultOpen>
         <TeachingPopoverTrigger>
@@ -64,7 +64,7 @@ describe('TeachingPopover', () => {
     expect(container.querySelector('svg')).toBeNull();
     expect(header.querySelector('[aria-hidden="true"]')).toBeEmptyDOMElement();
     expect(header.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
-    expect(title.querySelector('button')).toBeNull();
+    expect(title.querySelector('button[aria-label="dismiss"]')).toBeNull();
   });
 
   it('renders explicitly provided header and title slots', () => {
@@ -102,7 +102,7 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeInTheDocument();
+    expect(getByRole('dialog', { hidden: true }).querySelector('[data-arrow]')).toBeInTheDocument();
   });
 
   it('allows opting out of the arrow with withArrow={false}', () => {
@@ -115,10 +115,10 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeNull();
+    expect(getByRole('dialog', { hidden: true }).querySelector('[data-arrow]')).toBeNull();
   });
 
-  it('does not enable inertTrapFocus by default (surface is role="group", not "dialog")', () => {
+  it('defaults to dialog semantics without requiring inertTrapFocus', () => {
     const { getByRole, queryByRole } = render(
       <TeachingPopover defaultOpen>
         <TeachingPopoverTrigger>
@@ -128,8 +128,192 @@ describe('TeachingPopover', () => {
       </TeachingPopover>,
     );
 
-    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
-    expect(queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
+    expect(getByRole('dialog', { hidden: true })).toBeInTheDocument();
+    expect(queryByRole('group', { hidden: true })).not.toBeInTheDocument();
+  });
+
+  it('names the dialog from the title while preserving explicit labels', () => {
+    const { getByRole, rerender } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface as="div">
+          <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    const dialog = getByRole('dialog', { name: 'Teaching Bubble Title', hidden: true });
+    const title = getByRole('heading', { name: 'Teaching Bubble Title', hidden: true });
+    expect(dialog).toHaveAttribute('aria-labelledby', title.id);
+
+    rerender(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface as="div" aria-label="Custom label">
+          <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    expect(getByRole('dialog', { name: 'Custom label', hidden: true })).toHaveAttribute('aria-label', 'Custom label');
+
+    rerender(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface as="div" aria-labelledby="custom-label">
+          <span id="custom-label">Custom labelled-by value</span>
+          <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    expect(getByRole('dialog', { name: 'Custom labelled-by value', hidden: true })).toHaveAttribute(
+      'aria-labelledby',
+      'custom-label',
+    );
+  });
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
+    'autofocuses the dismiss button on opening and not after carousel content remounts',
+    Component => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        const [page, setPage] = React.useState(0);
+
+        return (
+          <TeachingPopover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+            <TeachingPopoverTrigger>
+              <button>Trigger</button>
+            </TeachingPopoverTrigger>
+            <TeachingPopoverSurface>
+              <Component key={page} dismissButton={{}}>
+                Page {page + 1}
+              </Component>
+              <button onClick={() => (page === 2 ? setOpen(false) : setPage(page + 1))}>
+                {page === 2 ? 'Done' : 'Next'}
+              </button>
+            </TeachingPopoverSurface>
+          </TeachingPopover>
+        );
+      };
+
+      const { getByRole, getByText } = render(<Example />);
+      expect(getByRole('button', { name: 'dismiss', hidden: true })).toHaveFocus();
+
+      const next = getByRole('button', { name: 'Next', hidden: true });
+      next.focus();
+      userEvent.keyboard('{Enter}');
+      expect(getByText('Page 2')).toBeInTheDocument();
+      expect(next).toHaveFocus();
+
+      userEvent.keyboard('{Enter}');
+      expect(getByText('Page 3')).toBeInTheDocument();
+      expect(getByRole('button', { name: 'Done', hidden: true })).toHaveFocus();
+
+      userEvent.keyboard('{Enter}');
+      expect(getByRole('button', { name: 'Trigger' })).toHaveAttribute('aria-expanded', 'false');
+    },
+  );
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
+    'autofocuses on parent-controlled open transitions, including a late dismiss-button mount',
+    async Component => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(false);
+        const [showDismiss, setShowDismiss] = React.useState(false);
+
+        return (
+          <>
+            <button onClick={() => setOpen(true)}>Open externally</button>
+            <button onClick={() => setOpen(false)}>Close externally</button>
+            <TeachingPopover open={open}>
+              <TeachingPopoverTrigger>
+                <button>Trigger</button>
+              </TeachingPopoverTrigger>
+              <TeachingPopoverSurface as="div">
+                {showDismiss ? (
+                  <Component dismissButton={{}}>Content</Component>
+                ) : (
+                  <button onClick={() => setShowDismiss(true)}>Mount dismiss</button>
+                )}
+              </TeachingPopoverSurface>
+            </TeachingPopover>
+          </>
+        );
+      };
+
+      const { getByRole, getByText } = render(<Example />);
+      userEvent.click(getByText('Open externally'));
+      userEvent.click(getByText('Mount dismiss'));
+      await waitFor(() => expect(getByRole('button', { name: 'dismiss', hidden: true })).toHaveFocus());
+
+      userEvent.click(getByText('Close externally'));
+      userEvent.click(getByText('Open externally'));
+      await waitFor(() => expect(getByRole('button', { name: 'dismiss', hidden: true })).toHaveFocus());
+    },
+  );
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])(
+    'preserves explicit dismiss-button autofocus and restores trigger focus on dismissal',
+    async Component => {
+      const { getByRole } = render(
+        <TeachingPopover defaultOpen>
+          <TeachingPopoverTrigger>
+            <button>Trigger</button>
+          </TeachingPopoverTrigger>
+          <TeachingPopoverSurface>
+            <Component dismissButton={{ autoFocus: true }}>Content</Component>
+          </TeachingPopoverSurface>
+        </TeachingPopover>,
+      );
+      const dismiss = getByRole('button', { name: 'dismiss', hidden: true });
+      expect(dismiss).toHaveFocus();
+      expect(dismiss).toHaveAttribute('type', 'button');
+      expect(dismiss).not.toHaveAttribute('aria-hidden');
+      userEvent.click(dismiss);
+      await waitFor(() => expect(getByRole('button', { name: 'Trigger' })).toHaveFocus());
+    },
+  );
+
+  it('preserves role overrides and allows dismiss-button suppression', () => {
+    const { getByRole, queryByLabelText } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface role="region">
+          <TeachingPopoverHeader dismissButton={null}>Header</TeachingPopoverHeader>
+          <TeachingPopoverTitle dismissButton={null}>Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    expect(getByRole('region', { hidden: true })).toBeInTheDocument();
+    expect(queryByLabelText('dismiss')).toBeNull();
+  });
+
+  it.each([TeachingPopoverHeader, TeachingPopoverTitle])('allows consumers to prevent dismissal', Component => {
+    const onClick = jest.fn((event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault());
+    const { getByRole } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface as="div">
+          <Component dismissButton={{ onClick, autoFocus: false }}>Content</Component>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    const dismiss = getByRole('button', { name: 'dismiss', hidden: true });
+    expect(dismiss).toHaveProperty('autofocus', false);
+    userEvent.click(dismiss);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(getByRole('button', { name: 'Trigger' })).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('forwards inertTrapFocus to the surface when explicitly set', () => {

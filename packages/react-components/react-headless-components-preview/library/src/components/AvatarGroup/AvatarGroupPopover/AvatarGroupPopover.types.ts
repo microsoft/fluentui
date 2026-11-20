@@ -73,6 +73,12 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
   Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
+    triggerButton: {
+      /**
+       * Data attribute set on the trigger button while the overflow popover is open.
+       */
+      'data-open'?: string;
+    };
     layout: AvatarGroupProps['layout'];
 
     /**

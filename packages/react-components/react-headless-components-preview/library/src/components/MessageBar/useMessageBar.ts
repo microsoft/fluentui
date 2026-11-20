@@ -18,6 +18,10 @@ export const useMessageBar = (props: MessageBarProps, ref: React.Ref<HTMLDivElem
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = toDataAttributeValue(state.intent);
 
+  if (state.icon) {
+    state.icon['aria-hidden'] ??= true;
+  }
+
   return state;
 };
 

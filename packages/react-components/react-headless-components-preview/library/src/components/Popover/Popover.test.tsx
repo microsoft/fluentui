@@ -331,7 +331,6 @@ describe('Popover', () => {
     const onRender = jest.fn();
     const MeasuredPopover = () => {
       const state = usePopover({ children: <div /> });
-      // Count commits: `setSurfaceShown` during render re-runs the body but doesn't commit twice.
       React.useEffect(() => {
         onRender();
       });
@@ -355,7 +354,7 @@ describe('Popover', () => {
 
     expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'true');
     expect(getByText('Surface').matches(':popover-open')).toBe(true);
-    expect(onRender).toHaveBeenCalledTimes(1);
+    expect(onRender).toHaveBeenCalledTimes(2);
   });
 
   it('does not mount a surface when a controlled opening request is rejected', () => {
