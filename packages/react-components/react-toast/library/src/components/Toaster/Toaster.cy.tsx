@@ -3,7 +3,7 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { Toaster, ToastTitle, Toast, useToastController, toasterClassNames } from '../..';
+import { Toaster, ToastTitle, Toast, useToastController, toastClassNames, toasterClassNames } from '../..';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { ToastOffset, ToastPosition } from '../../state';
 
@@ -13,7 +13,12 @@ const mount = (element: JSXElement) => {
   });
 };
 
-const Example = ({ offset, position }: { offset?: ToastOffset; position?: ToastPosition }) => {
+// Narrower than the 292px Toaster
+const VIEWPORT_WIDTH = 280;
+// The default horizontal offset, which is also the space the Toaster keeps free at the far edge
+const GUTTER = 20;
+
+const Example = ({ offset, position }: { offset?: ToastOffset; position: ToastPosition }) => {
   const { dispatchToast } = useToastController();
 
   return (
@@ -35,49 +40,72 @@ const Example = ({ offset, position }: { offset?: ToastOffset; position?: ToastP
   );
 };
 
-const expectInsideViewport = () => {
-  cy.get(`.${toasterClassNames.root}`).should($root => {
-    const root = $root[0];
-    const { left, right } = root.getBoundingClientRect();
-    // The application viewport, not the Cypress runner window. `cy.viewport` resizes the AUT
-    // iframe, so `window.innerWidth` here would be the runner's width and could hide an overflow.
-    const viewportWidth = root.ownerDocument.defaultView!.innerWidth;
+const mountInNarrowViewport = (position: ToastPosition, offset?: ToastOffset) => {
+  cy.viewport(VIEWPORT_WIDTH, 400);
+  mount(<Example offset={offset} position={position} />);
+  cy.contains('button', 'Make toast').click();
+};
 
-    expect(left, 'the toaster does not start before the left edge').to.be.at.least(0);
-    expect(right, 'the toaster does not end after the right edge').to.be.at.most(viewportWidth);
-  });
+/**
+ * Space between the element and the left and right edges of the viewport. `clientWidth` of the root element is
+ * the width that a fixed element is laid out in, so it leaves out a scrollbar.
+ */
+const getGutters = (element: HTMLElement) => {
+  const { left, right } = element.getBoundingClientRect();
+
+  return { left, right: element.ownerDocument.documentElement.clientWidth - right };
 };
 
 describe('Toaster', () => {
-  it('fits inside a viewport narrower than the toast', () => {
-    mount(<Example />);
+  (
+    [
+      ['bottom-end', undefined],
+      ['bottom-end', 60],
+      ['bottom-start', undefined],
+      ['bottom-start', 0],
+      ['top-end', 32],
+      ['top-start', 60],
+      ['bottom', undefined],
+      ['bottom', 32],
+      ['top', -32],
+    ] as const
+  ).forEach(([position, horizontal]) => {
+    const offset = horizontal === undefined ? undefined : { horizontal };
+    const withOffset = horizontal === undefined ? 'the default offset' : `a horizontal offset of ${horizontal}`;
 
-    // A viewport narrower than the 292px toast width.
-    cy.viewport(280, 400);
-    cy.get('button').click();
+    it(`should keep a ${position} toast inside a narrow viewport with ${withOffset}`, () => {
+      mountInNarrowViewport(position, offset);
 
-    expectInsideViewport();
+      [toasterClassNames.root, toastClassNames.root].forEach(className => {
+        cy.get(`.${className}`).should($element => {
+          const gutters = getGutters($element[0]);
+          // The Toaster keeps its offset at its own edge and the default gutter at the far edge.
+          // A centered Toaster keeps the default gutter at both edges.
+          const expected = {
+            left: position.endsWith('start') ? horizontal ?? GUTTER : GUTTER,
+            right: position.endsWith('end') ? horizontal ?? GUTTER : GUTTER,
+          };
+
+          expect(gutters.left, `${className} left gutter`).to.be.at.least(expected.left);
+          expect(gutters.right, `${className} right gutter`).to.be.at.least(expected.right);
+        });
+      });
+    });
   });
 
-  it('fits inside a narrow viewport with a horizontal offset wider than the default gutter', () => {
-    // The default offset is 20px, so a cap derived from it is 40px. At 60px the old hardcoded
-    // 40px cap put the left edge 20px outside the viewport.
-    mount(<Example offset={{ horizontal: 60 }} />);
+  it('should leave the gutter of a narrow viewport free for pointer events', () => {
+    mountInNarrowViewport('bottom-end');
 
-    cy.viewport(280, 400);
-    cy.get('button').click();
+    cy.get(`.${toastClassNames.root}`).should($toast => {
+      const toast = $toast[0];
+      const { top, bottom } = toast.getBoundingClientRect();
+      const y = (top + bottom) / 2;
+      const elementInToast = toast.ownerDocument.elementFromPoint(GUTTER * 2, y);
+      const elementInGutter = toast.ownerDocument.elementFromPoint(GUTTER / 2, y);
 
-    expectInsideViewport();
-  });
-
-  it('fits inside a narrow viewport for a centered toast with a horizontal offset', () => {
-    // A centered toast is shifted by the offset and keeps its own width, so it overflows on one
-    // side. At 32px the old hardcoded 40px cap put the right edge 12px outside the viewport.
-    mount(<Example offset={{ horizontal: 32 }} position="bottom" />);
-
-    cy.viewport(280, 400);
-    cy.get('button').click();
-
-    expectInsideViewport();
+      // The first check proves that the toast can be hit at this height, so the second one cannot pass too early
+      expect(toast.contains(elementInToast), 'the toast is hit inside its bounds').to.equal(true);
+      expect(toast.contains(elementInGutter), 'the toast covers the gutter').to.equal(false);
+    });
   });
 });

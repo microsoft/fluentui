@@ -9,16 +9,25 @@ interface PositionStyles {
 }
 
 /**
- * The toast has a fixed width, so on a viewport narrower than that width it would run past the
- * edge. Cap it at the space the offset leaves on both sides.
- *
- * A start or end toast sits `horizontal` away from its edge, so a symmetric gutter of
- * `horizontal` on each side needs `2 * horizontal`. A centered toast is shifted by
- * `horizontal`, and both edges have to stay inside the viewport, which works out to the same
- * `2 * abs(horizontal)`. The floor keeps the default 20px gutter when the offset is smaller.
+ * Horizontal offset of the start and end positions when none is configured. The width cap keeps the same space
+ * free at the edge of the container.
  */
-const getMaxWidth = (horizontal: number): string => {
-  return `calc(100% - ${Math.max(2 * Math.abs(horizontal), 40)}px)`;
+const DEFAULT_HORIZONTAL_OFFSET = 20;
+
+/**
+ * The Toaster has a fixed width, so a container that is narrower than that width plus the offset would cut it
+ * off. The cap is the width of the container minus the space that has to stay free.
+ *
+ * A start or end Toaster sits `horizontal` away from its own edge and keeps the default gutter free at the other
+ * edge. A centered Toaster is moved by `horizontal`, which moves both of its edges, so it keeps the gutter and the
+ * distance it moved free on both sides.
+ */
+const getMaxWidth = (horizontal: number, centered: boolean): string => {
+  const reserved = centered
+    ? 2 * (Math.abs(horizontal) + DEFAULT_HORIZONTAL_OFFSET)
+    : Math.max(horizontal, 0) + DEFAULT_HORIZONTAL_OFFSET;
+
+  return `calc(100% - ${reserved}px)`;
 };
 
 export const getPositionStyles = (
@@ -32,7 +41,8 @@ export const getPositionStyles = (
 
   const centered = position === 'top' || position === 'bottom';
 
-  const { horizontal = centered ? 0 : 20, vertical = 16 } = offsetStyles;
+  const { horizontal = centered ? 0 : DEFAULT_HORIZONTAL_OFFSET, vertical = 16 } = offsetStyles;
+  const maxWidth = getMaxWidth(horizontal, centered);
   const start = dir === 'ltr' ? 'left' : 'right';
   const end = dir === 'ltr' ? 'right' : 'left';
 
@@ -42,7 +52,7 @@ export const getPositionStyles = (
         top: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
 
@@ -51,7 +61,7 @@ export const getPositionStyles = (
         bottom: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
 
@@ -59,28 +69,28 @@ export const getPositionStyles = (
       Object.assign(positionStyles, {
         top: vertical,
         [start]: horizontal,
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
     case 'top-end':
       Object.assign(positionStyles, {
         top: vertical,
         [end]: horizontal,
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
     case 'bottom-start':
       Object.assign(positionStyles, {
         bottom: vertical,
         [start]: horizontal,
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
     case 'bottom-end':
       Object.assign(positionStyles, {
         bottom: vertical,
         [end]: horizontal,
-        maxWidth: getMaxWidth(horizontal),
+        maxWidth,
       });
       break;
   }
