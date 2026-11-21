@@ -6,6 +6,7 @@ import { TagPickerControl } from './TagPickerControl';
 import { TagPickerGroup } from './TagPickerGroup';
 import { useTagPickerGroupContextValues } from './TagPickerGroup';
 import { TagPickerInput } from './TagPickerInput';
+import { TagPickerButton } from './TagPickerButton';
 import { TagPickerList } from './TagPickerList';
 import { TagPickerOption } from './TagPickerOption';
 import { Tag } from '../Tag';
@@ -36,6 +37,97 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
 };
 
 describe('TagPicker', () => {
+  it('exposes the multiselect listbox default', () => {
+    const { getByRole } = renderTagPicker();
+
+    expect(getByRole('listbox')).toHaveAttribute('aria-multiselectable', 'true');
+  });
+
+  it('exposes multiselection and updates option selection semantics', () => {
+    const picker = (selectedOptions: string[]) => (
+      <TagPicker open selectedOptions={selectedOptions}>
+        <TagPickerInput aria-label="Select animals" />
+        <TagPickerList>
+          <TagPickerOption value="cat">Cat</TagPickerOption>
+          <TagPickerOption value="dog">Dog</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>
+    );
+    const { getByRole, getAllByRole, rerender } = render(picker(['cat']));
+
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-selected', 'true');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'false');
+    getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-checked'));
+
+    rerender(picker(['dog']));
+
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-selected', 'false');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('preserves consumer ARIA props, refs and option click handlers', () => {
+    const listRef = React.createRef<HTMLDivElement>();
+    const optionRef = React.createRef<HTMLDivElement>();
+    const onClick = jest.fn();
+    const onOptionSelect = jest.fn();
+    const { getByRole } = render(
+      <TagPicker open selectedOptions={['cat']} onOptionSelect={onOptionSelect}>
+        <TagPickerInput aria-label="Select animals" />
+        <TagPickerList ref={listRef} aria-multiselectable={false} aria-label="Animals">
+          <TagPickerOption ref={optionRef} value="cat" aria-selected={false} onClick={onClick}>
+            Cat
+          </TagPickerOption>
+          <TagPickerOption value="dog" aria-selected>
+            Dog
+          </TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+
+    expect(listRef.current).toBe(getByRole('listbox', { name: 'Animals' }));
+    expect(listRef.current).toHaveAttribute('aria-multiselectable', 'false');
+    expect(optionRef.current).toBe(getByRole('option', { name: 'Cat' }));
+    expect(optionRef.current).toHaveAttribute('aria-selected', 'false');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.click(optionRef.current!);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    [true, undefined, true],
+    [true, false, true],
+    [false, true, true],
+    [false, false, false],
+  ])('inherits button disabled state (picker=%s, button=%s)', (pickerDisabled, buttonDisabled, expected) => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const onClick = jest.fn();
+    const { getByRole } = render(
+      <TagPicker disabled={pickerDisabled}>
+        <TagPickerButton ref={ref} disabled={buttonDisabled} onClick={onClick}>
+          Select animals
+        </TagPickerButton>
+        <TagPickerList>
+          <TagPickerOption value="cat">Cat</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+    const button = getByRole('combobox');
+
+    expect(ref.current).toBe(button);
+    if (expected) {
+      expect(button).toBeDisabled();
+      expect(button).toHaveAttribute('data-disabled');
+    } else {
+      expect(button).not.toBeDisabled();
+      expect(button).not.toHaveAttribute('data-disabled');
+    }
+    fireEvent.click(button);
+    expect(onClick).toHaveBeenCalledTimes(expected ? 0 : 1);
+  });
+
   it('renders the input trigger and the options list when open', () => {
     const { getByRole, getAllByRole } = renderTagPicker();
 

@@ -32,10 +32,12 @@ export const useTagPickerButtonBase_unstable = (
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
+  const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const buttonProps = { ...props, disabled: contextDisabled || props.disabled };
 
   // casting is required here as triggerRef can either be button or input,
   // but in this case we can assure it's a button
-  const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
+  const root = useButtonTriggerSlot(buttonProps, triggerRef as React.RefObject<HTMLButtonElement>, {
     activeDescendantController,
     defaultProps: {
       type: 'button',
