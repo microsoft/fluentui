@@ -1053,7 +1053,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         props.mode,
       );
       _domainMargin += _barWidth / 2;
-      _domainMargin += _barWidth / 2;
+      if (props.mode !== 'histogram') {
+        _domainMargin += _barWidth / 2;
+      }
     }
 
     return {

@@ -306,6 +306,13 @@ const simpleDatePoints = [
 
 const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
+const histogramBinCenterPoints: VerticalBarChartDataPoint[] = [
+  { x: 1550, y: 5, legend: 'Frequency', xAxisCalloutData: '1500-1599' },
+  { x: 1650, y: 19, legend: 'Frequency', xAxisCalloutData: '1600-1699' },
+  { x: 1750, y: 6, legend: 'Frequency', xAxisCalloutData: '1700-1799' },
+  { x: 1850, y: 3, legend: 'Frequency', xAxisCalloutData: '1800-1899' },
+];
+
 describe('Vertical bar chart rendering', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -1076,4 +1083,33 @@ describe('Render empty chart calling with respective to props', () => {
     const htmlAfter = container.innerHTML;
     expect(htmlAfter).not.toBe(htmlBefore);
   });
+});
+
+describe('VerticalBarChart - histogram mode', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  testWithWait(
+    'Should not overlap numeric histogram bars',
+    VerticalBarChart,
+    {
+      data: histogramBinCenterPoints,
+      mode: 'histogram',
+      barWidth: 'auto',
+      hideLegend: true,
+      hideLabels: true,
+    },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(histogramBinCenterPoints.length);
+
+      for (let index = 1; index < bars.length; index++) {
+        const previousX = Number.parseFloat(bars[index - 1].getAttribute('x') || '0');
+        const previousWidth = Number.parseFloat(bars[index - 1].getAttribute('width') || '0');
+        const currentX = Number.parseFloat(bars[index].getAttribute('x') || '0');
+
+        expect(previousX + previousWidth).toBeLessThanOrEqual(currentX);
+      }
+    },
+  );
 });
