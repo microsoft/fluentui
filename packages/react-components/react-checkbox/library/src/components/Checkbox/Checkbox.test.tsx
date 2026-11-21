@@ -253,6 +253,18 @@ describe('Checkbox DOM attributes', () => {
     expect(root.querySelector('input')!.getAttributeNames().sort()).toEqual(['class', 'id', 'title', 'type']);
   });
 
+  it('forwards native capture events to the input', () => {
+    const onPointerDownCapture = jest.fn((event: React.PointerEvent<HTMLInputElement>) => {
+      expect(event.currentTarget.tagName).toBe('INPUT');
+    });
+    const { container } = render(<Checkbox onPointerDownCapture={onPointerDownCapture} />);
+    const renderedInput = container.querySelector('input')!;
+
+    fireEvent.pointerDown(renderedInput);
+
+    expect(onPointerDownCapture).toHaveBeenCalledTimes(1);
+  });
+
   it('does not forward component props from the base hook to the root and input slots', () => {
     const { result } = renderHook(() =>
       useCheckboxBase_unstable(
