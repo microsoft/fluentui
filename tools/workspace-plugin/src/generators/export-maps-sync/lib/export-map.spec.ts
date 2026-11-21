@@ -2,13 +2,20 @@ import { type Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 
 import type { PackageJson } from '../../../types';
-import { buildEntryPointFields, buildExportMap, readExportMapConfig, resolveEntryPoints } from './export-map';
+import {
+  buildEntryPointFields,
+  buildExportMap,
+  readExportMapConfig,
+  resolveEntryPoints,
+  withCssModulesEntryPoint,
+} from './export-map';
 
 describe('readExportMapConfig', () => {
   it('defaults to a single root entry point', () => {
     expect(readExportMapConfig({ root: 'packages/react-button' })).toEqual({
       root: true,
       subpathEntryPoints: [],
+      cssModules: false,
     });
   });
 
@@ -18,7 +25,7 @@ describe('readExportMapConfig', () => {
       metadata: { exportMap: { root: false, subpathEntryPoints: ['src/*.ts'] } },
     });
 
-    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: false, subpathEntryPoints: ['src/*.ts'], cssModules: false });
   });
 
   it('fills in defaults for a partial declaration', () => {
@@ -27,7 +34,7 @@ describe('readExportMapConfig', () => {
       metadata: { exportMap: { subpathEntryPoints: ['src/*.ts'] } },
     });
 
-    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'] });
+    expect(config).toEqual({ root: true, subpathEntryPoints: ['src/*.ts'], cssModules: false });
   });
 });
 
@@ -122,6 +129,34 @@ describe('resolveEntryPoints', () => {
   });
 });
 
+describe('withCssModulesEntryPoint', () => {
+  const root = { key: '.', name: 'index', outputPath: 'index' };
+  const unstable = { key: './unstable', name: 'unstable', outputPath: 'unstable/index' };
+  const cssModules = { key: './css-modules', name: 'css-modules', outputPath: 'css-modules/index' };
+  const config = { root: true, subpathEntryPoints: [], cssModules: false };
+  const pkg = { name: '@proj/react-button', main: 'lib-commonjs/index.cjs' } as PackageJson;
+
+  it('adds the entry for packages shipping CSS', () => {
+    expect(withCssModulesEntryPoint([root], { ...pkg, sideEffects: ['**/*.css'] }, config)).toEqual([root, cssModules]);
+  });
+
+  it('adds the entry for packages opting in, sorted among subpaths', () => {
+    expect(withCssModulesEntryPoint([root, unstable], pkg, { ...config, cssModules: true })).toEqual([
+      root,
+      cssModules,
+      unstable,
+    ]);
+  });
+
+  it('skips packages without CSS that do not opt in', () => {
+    expect(withCssModulesEntryPoint([root], { ...pkg, sideEffects: false }, config)).toEqual([root]);
+  });
+
+  it('skips packages without a root entry', () => {
+    expect(withCssModulesEntryPoint([unstable], { ...pkg, sideEffects: true }, config)).toEqual([unstable]);
+  });
+});
+
 describe('buildExportMap', () => {
   const esmPackage: PackageJson = {
     name: '@proj/react-button',
@@ -132,6 +167,26 @@ describe('buildExportMap', () => {
     typings: './dist/index.d.ts',
   };
   const rootEntry = { key: '.', name: 'index', outputPath: 'index' };
+
+  it.each(['module', 'commonjs'] as const)('preserves explicit CSS asset subpaths for %s packages', type => {
+    const exports = buildExportMap(
+      {
+        ...esmPackage,
+        type,
+        exports: {
+          './styles.css': './lib/styles.css',
+          './arrow.module.css': './lib/Arrow.module.css',
+          './stale': './lib/stale.js',
+        },
+      },
+      [rootEntry],
+    );
+
+    expect(exports!['./arrow.module.css']).toBe('./lib/Arrow.module.css');
+    expect(exports!['./styles.css']).toBe('./lib/styles.css');
+    expect(exports!).not.toHaveProperty('./stale');
+    expect(Object.keys(exports!)).toEqual(['.', './arrow.module.css', './styles.css', './package.json']);
+  });
 
   describe('esm first packages', () => {
     it('builds the conditional import/require shape with no node condition', () => {

@@ -17,4 +17,11 @@ export interface ExportMapConfig {
    * @default []
    */
   subpathEntryPoints: string[];
+  /**
+   * Whether the package exposes the generated `./css-modules` entry (same API as the root entry, components wired to
+   * their CSS Modules style hooks). Packages shipping CSS (`sideEffects` includes `*.css`) always expose it; set this
+   * for packages without CSS of their own that re-export ones that do, eg. the `@fluentui/react-components` suite.
+   * @default false
+   */
+  cssModules?: boolean;
 }

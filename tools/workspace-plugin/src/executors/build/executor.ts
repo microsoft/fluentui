@@ -5,6 +5,7 @@ import { compileWithGriffelStylesAOT, compileWithReactCompiler, hasStylesFilesTo
 import { assetGlobsToFiles, copyAssets } from './lib/assets';
 import { cleanOutput } from './lib/clean';
 import { cjsRenameTransforms, copyCjsTypes } from './lib/cjs-extension';
+import { emitCssModulesEntry, emitCssModulesTypes } from './lib/css-modules-entry';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue, runInParallel, runSerially } from './lib/shared';
 
 import { measureEnd, measureStart } from '../../utils';
@@ -33,8 +34,10 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
           return generateApiExecutor(generateApiSchema, context).then(res => res.success);
         },
       ),
+    () => emitCssModulesEntry(options),
     () => copyAssets(assetFiles),
     () => copyCjsTypes(options),
+    () => emitCssModulesTypes(options),
   );
 
   measureEnd('BuildExecutor');

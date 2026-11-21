@@ -1,0 +1,9 @@
+.root {
+  cursor: default;
+}
+.root:hover {
+  background-color: unset;
+}
+.root:active {
+  background-color: unset;
+}

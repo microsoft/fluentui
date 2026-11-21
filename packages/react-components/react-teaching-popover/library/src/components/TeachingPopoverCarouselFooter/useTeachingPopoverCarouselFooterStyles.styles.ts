@@ -1,6 +1,7 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type {
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
@@ -21,10 +22,10 @@ const useStyles = makeStyles({
   },
   rootCentered: {
     justifyContent: 'space-between',
-    gap: '8px',
+    gap: tokens.spacingHorizontalS,
   },
   rootRightAligned: {
-    gap: '8px',
+    gap: tokens.spacingHorizontalS,
     '& :first-child': {
       marginInlineEnd: 'auto',
     },

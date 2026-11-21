@@ -9,7 +9,8 @@
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
-        "{workspaceRoot}/.github/workflows/create-experimental-branch.yml"
+        "{workspaceRoot}/.github/workflows/create-experimental-branch.yml",
+        "{workspaceRoot}/.github/workflows/css-modules-co-change.yml"
       ]
     }
   },

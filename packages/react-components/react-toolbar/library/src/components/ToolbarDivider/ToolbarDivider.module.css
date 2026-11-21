@@ -1,0 +1,10 @@
+.root {
+  display: inline-flex;
+  max-width: 1px;
+  padding-block: 0;
+  padding-inline: var(--spacingHorizontalM);
+}
+
+.horizontal {
+  max-width: initial;
+}

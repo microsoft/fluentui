@@ -19,6 +19,7 @@ import { type Config as JestConfig } from '@jest/types';
 import { type PackageJson } from '../types';
 import { type BuildExecutorSchema } from '../executors/build/schema';
 
+import { hasCssSideEffects } from '../css-modules';
 import { assertProjectExists, projectConfigGlob } from './shared';
 import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
@@ -530,10 +531,47 @@ function buildLintTarget(
     return null;
   }
 
+  const eslintCommand = `${config.pmc.exec} eslint src`;
+
+  // v9 packages shipping CSS Modules alternatives (see the build executor's CSS assets) also lint their stylesheets.
+  const lintsCss = config.tags.includes('vNext') && hasCssSideEffects(config.packageJSON);
+  if (lintsCss) {
+    return {
+      executor: 'nx:run-commands',
+      cache: true,
+      options: {
+        cwd: projectRoot,
+        commands: [eslintCommand, `${config.pmc.exec} stylelint "src/**/*.module.css" --allow-empty-input`],
+        parallel: false,
+      },
+      inputs: [
+        'default',
+        '{projectRoot}/eslint.{js,cjs,mjs}',
+        '{workspaceRoot}/eslint.config.{js,cjs,mjs}',
+        '{workspaceRoot}/stylelint.config.mjs',
+        '{workspaceRoot}/tools/stylelint-rules/**/*',
+        { externalDependencies: ['eslint', 'stylelint'] },
+      ],
+      outputs: ['{options.outputFile}'],
+      metadata: {
+        description: 'Runs ESLint and Stylelint on project',
+        technologies: ['eslint', 'stylelint'],
+        help: {
+          command: `${config.pmc.exec} eslint --help`,
+          example: {
+            options: {
+              'max-warnings': 0,
+            },
+          },
+        },
+      },
+    };
+  }
+
   return {
     executor: 'nx:run-commands',
     cache: true,
-    options: { cwd: projectRoot, command: `${config.pmc.exec} eslint src` },
+    options: { cwd: projectRoot, command: eslintCommand },
     inputs: [
       'default',
       '{projectRoot}/eslint.{js,cjs,mjs}',
