@@ -142,6 +142,28 @@ describe('Input', () => {
 
     expect(getInput().getAttribute('autocorrect')).toEqual('on');
   });
+
+  it('forwards transition events to the input', () => {
+    const currentTargets: HTMLElement[] = [];
+    const onTransitionEnd = jest.fn((event: React.TransitionEvent<HTMLInputElement>) => {
+      currentTargets.push(event.currentTarget);
+    });
+
+    renderedComponent = render(<Input onTransitionEnd={onTransitionEnd} />);
+    const input = getInput();
+    fireEvent.transitionEnd(input);
+
+    expect(onTransitionEnd).toHaveBeenCalledTimes(1);
+    expect(currentTargets).toEqual([input]);
+  });
+
+  it('forwards unknown lowercase attributes to the input rather than the root', () => {
+    const customProps = { customattribute: 'custom-value', placeholder: 'example' };
+    renderedComponent = render(<Input {...customProps} />);
+
+    expect(getInput().getAttribute('customattribute')).toBe('custom-value');
+    expect(renderedComponent.container.firstElementChild?.getAttribute('customattribute')).toBeNull();
+  });
 });
 
 describe('Input DOM attributes', () => {
