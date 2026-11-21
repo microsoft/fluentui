@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
+import { useId, slot } from '@fluentui/react-utilities';
 import type { FieldBaseProps, FieldBaseState } from './Field.types';
 
 /**
@@ -11,27 +11,34 @@ import type { FieldBaseProps, FieldBaseState } from './Field.types';
  * @param ref - Ref to the root
  */
 export const useFieldBase_unstable = (props: FieldBaseProps, ref: React.Ref<HTMLDivElement>): FieldBaseState => {
-  const { children, required = false, validationState = props.validationMessage ? 'error' : 'none' } = props;
+  const {
+    children,
+    label: labelShorthand,
+    hint: hintShorthand,
+    validationMessage: validationMessageShorthand,
+    validationMessageIcon: validationMessageIconShorthand,
+    required = false,
+    validationState = validationMessageShorthand ? 'error' : 'none',
+    ...rootProps
+  } = props;
 
   const baseId = useId('field-');
   const generatedControlId = baseId + '__control';
 
-  const root = slot.always(getIntrinsicElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']), {
-    elementType: 'div',
-  });
-  const label = slot.optional(props.label, {
+  const root = slot.always({ ...rootProps, ref }, { elementType: 'div' });
+  const label = slot.optional(labelShorthand, {
     defaultProps: { htmlFor: generatedControlId, id: baseId + '__label', required },
     elementType: 'label',
   });
-  const validationMessage = slot.optional(props.validationMessage, {
+  const validationMessage = slot.optional(validationMessageShorthand, {
     defaultProps: {
       id: baseId + '__validationMessage',
       role: validationState === 'error' || validationState === 'warning' ? 'alert' : undefined,
     },
     elementType: 'div',
   });
-  const hint = slot.optional(props.hint, { defaultProps: { id: baseId + '__hint' }, elementType: 'div' });
-  const validationMessageIcon = slot.optional(props.validationMessageIcon, {
+  const hint = slot.optional(hintShorthand, { defaultProps: { id: baseId + '__hint' }, elementType: 'div' });
+  const validationMessageIcon = slot.optional(validationMessageIconShorthand, {
     renderByDefault: false,
     elementType: 'span',
   });
