@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Synchronize Checkbox and Switch initial form values",
+  "packageName": "@fluentui/web-components",
+  "email": "lhi25wy@163.com"
+}

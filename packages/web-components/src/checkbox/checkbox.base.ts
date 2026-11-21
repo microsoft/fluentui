@@ -131,6 +131,7 @@ export class BaseCheckbox extends FASTElement {
    */
   protected initialValueChanged(prev: string, next: string): void {
     this._value = next;
+    this.setFormValue(this.checked ? next : null);
   }
 
   /**
