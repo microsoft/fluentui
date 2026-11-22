@@ -1,4 +1,4 @@
-import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
+import { inspectVegaLiteSpec, validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import type { VegaLiteDiagnostic } from './VegaLiteDiagnostics';
 import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import { applyVegaTransforms, prepareVegaLiteSpec } from './VegaLiteDataTransforms';
@@ -26,6 +26,20 @@ const unit = (properties: Record<string, unknown> = {}): VegaLiteSpec =>
 const raw = (value: unknown): VegaLiteSpec => value as VegaLiteSpec;
 const paths = (diagnostics: VegaLiteDiagnostic[], code: string): string[] =>
   diagnostics.filter(item => item.code === code).map(item => item.path);
+
+it('tracks the legacy enumerable JSON depth independently of strict diagnostics', () => {
+  for (const depth of [15, 16]) {
+    let next: unknown = 0;
+    for (let level = 4; level < depth; level++) {
+      next = { next };
+    }
+    const spec = unit({ data: { values: [{ x: 1, y: 2, next }] } });
+    expect(inspectVegaLiteSpec(spec, { mode: 'legacy' }).exceedsLegacyDepth).toBe(depth === 16);
+    expect(inspectVegaLiteSpec(spec, { mode: 'strict' })).toEqual({ diagnostics: [], exceedsLegacyDepth: false });
+    const hidden = Object.defineProperty({ x: 1, y: 2 }, 'next', { value: next });
+    expect(inspectVegaLiteSpec(unit({ data: { values: [hidden] } }), {}).exceedsLegacyDepth).toBe(false);
+  }
+});
 
 describe('continuous field color geometry capability', () => {
   const continuousColors = [

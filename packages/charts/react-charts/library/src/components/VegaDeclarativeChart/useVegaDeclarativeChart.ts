@@ -5,7 +5,7 @@ import { slot, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { VegaDeclarativeChartProps, VegaDeclarativeChartState } from './VegaDeclarativeChart.types';
 import type { VegaLiteSpec, VegaLiteSemanticMode } from './VegaLiteTypes';
-import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
+import { inspectVegaLiteSpec, validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import type { VegaLiteDiagnostic } from './VegaLiteDiagnostics';
 import { resolveVegaLiteResources } from './VegaLiteResourceLoader';
 import type { VegaDataResolver } from './VegaLiteResourceLoader';
@@ -14,7 +14,6 @@ import { planVegaDeclarativeChartViews } from './VegaDeclarativeChartView';
 import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
 import { readVegaOwnData as own } from './VegaLiteField';
 
-const MAX_DEPTH = 15;
 const safetyCodes = new Set(['unsafe-object', 'unsafe-accessor', 'unsafe-value', 'cycle', 'depth-limit', 'work-limit']);
 const ownArray = (value: unknown): unknown[] =>
   Array.isArray(value)
@@ -22,16 +21,6 @@ const ownArray = (value: unknown): unknown[] =>
         .filter(key => /^(0|[1-9]\d*)$/.test(key))
         .map(key => own(value, key))
     : [];
-
-/** Preserve the legacy bounded depth guard after safe preflight. Never invoke accessors. */
-function validateJsonDepth(value: unknown, depth = 0): void {
-  if (depth > MAX_DEPTH) {
-    throw new Error('VegaDeclarativeChart: Maximum JSON depth exceeded');
-  }
-  if (value !== null && typeof value === 'object') {
-    Object.keys(value).forEach(key => validateJsonDepth(own(value, key), depth + 1));
-  }
-}
 
 function diagnosticError(diagnostics: VegaLiteDiagnostic[]): Error {
   return new Error(
@@ -124,7 +113,7 @@ export function useVegaDeclarativeChart(
         error: new Error('VegaDeclarativeChart: vegaLiteSpec is required in chartSchema'),
       };
     }
-    const diagnostics = validateVegaLiteSpec(request.spec, {
+    const { diagnostics, exceedsLegacyDepth } = inspectVegaLiteSpec(request.spec, {
       mode: request.mode,
       allowExternalData: request.resolverAvailable,
     });
@@ -137,12 +126,8 @@ export function useVegaDeclarativeChart(
     if (declaredViewCount(request.spec) > 10000) {
       return { diagnostics, error: new Error('VegaDeclarativeChart: declared view expansion budget exceeds 10000') };
     }
-    if (request.mode === 'legacy') {
-      try {
-        validateJsonDepth(request.spec);
-      } catch (error) {
-        return { diagnostics, error: error as Error };
-      }
+    if (exceedsLegacyDepth) {
+      return { diagnostics, error: new Error('VegaDeclarativeChart: Maximum JSON depth exceeded') };
     }
     return { diagnostics, error: undefined };
   }, [request, vegaLiteSpec]);

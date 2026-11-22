@@ -1,4 +1,4 @@
-import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData } from './VegaLiteField';
+import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData, writeVegaOwnData } from './VegaLiteField';
 import { readVegaField as engineReadVegaField } from './VegaLiteDataTransforms';
 import type { VegaDataRow as EngineDataRow, VegaSemanticOptions as EngineOptions } from './VegaLiteDataTransforms';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
@@ -108,6 +108,19 @@ describe('canonical own-data readers', () => {
       ).fields,
     ).toEqual([{ title: 'present', value: 'undefined' }]);
     expect(hook).not.toHaveBeenCalled();
+  });
+});
+
+describe('canonical own-data writer', () => {
+  it('creates an enumerable own field without calling a prototype setter', () => {
+    const setter = jest.fn();
+    const prototype = Object.defineProperty({}, 'value', { set: setter });
+    const row = Object.create(prototype);
+    writeVegaOwnData(row, 'value', 7);
+    expect(Object.getPrototypeOf(row)).toBe(prototype);
+    expect(Object.keys(row)).toEqual(['value']);
+    expect(readVegaOwnData(row, 'value')).toBe(7);
+    expect(setter).not.toHaveBeenCalled();
   });
 });
 

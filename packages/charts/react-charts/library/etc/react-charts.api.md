@@ -1024,8 +1024,8 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
-    onRenderCalloutPerDataPoint?: (props?: GVBarChartSeriesPoint, defaultRender?: (props?: GVBarChartSeriesPoint) => JSXElement | null) => JSXElement | null | undefined;
-    onRenderCalloutPerStack?: (props?: GroupedVerticalBarChartData, defaultRender?: (props?: GroupedVerticalBarChartData) => JSXElement | null) => JSXElement | null | undefined;
+    onRenderCalloutPerDataPoint?: RenderFunction<GVBarChartSeriesPoint, JSXElement | null | undefined>;
+    onRenderCalloutPerStack?: RenderFunction<GroupedVerticalBarChartData, JSXElement | null | undefined>;
     roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
@@ -1106,7 +1106,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
     culture?: string;
     data: HeatMapChartData[];
     domainValuesForColorScale: number[];
-    onRenderCalloutPerDataPoint?: (props?: HeatMapChartDataPoint, defaultRender?: (props?: HeatMapChartDataPoint) => JSXElement | null) => JSXElement | null | undefined;
+    onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint, JSXElement | null | undefined>;
     rangeValuesForColorScale: string[];
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;

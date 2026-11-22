@@ -4,5 +4,23 @@
   "projectType": "library",
   "sourceRoot": "packages/charts/react-charts/library/src",
   "tags": ["platform:web", "vNext", "charting"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "test-browser:line-pointer": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node scripts/browser/LineChart.pointerTargets.browser.ts"
+      }
+    },
+    "test-browser:vega-shell": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node scripts/browser/VegaLiteChartShell.visibility.browser.ts"
+      }
+    }
+  }
 }

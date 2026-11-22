@@ -13,6 +13,11 @@ export function getVegaOwnDataDescriptor(value: unknown, key: string): PropertyD
   return descriptor && Object.prototype.hasOwnProperty.call(descriptor, 'value') ? descriptor : undefined;
 }
 
+/** Store an authored key as data, without invoking a setter on the destination's prototype. */
+export function writeVegaOwnData(target: object, key: string, value: unknown): void {
+  Object.defineProperty(target, key, { value, enumerable: true, configurable: true, writable: true });
+}
+
 /** Read own data without accessors, inherited properties or callable values; preserve other value identities. */
 export function readVegaOwnData(value: unknown, key: string): unknown {
   const descriptor = getVegaOwnDataDescriptor(value, key);

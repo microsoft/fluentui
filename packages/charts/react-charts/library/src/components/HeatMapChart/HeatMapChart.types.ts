@@ -1,6 +1,7 @@
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { CartesianChartProps, CartesianChartStyles } from '../CommonComponents/CartesianChart.types';
 import type { HeatMapChartData, HeatMapChartDataPoint } from '../../types/DataPoint';
+import type { RenderFunction } from '../../utilities';
 
 /**
  * Heat Map Chart properties
@@ -21,10 +22,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
    * Returning null hides the callout; undefined uses the native default content.
    * No defaultRender function is supplied.
    */
-  onRenderCalloutPerDataPoint?: (
-    props?: HeatMapChartDataPoint,
-    defaultRender?: (props?: HeatMapChartDataPoint) => JSXElement | null,
-  ) => JSXElement | null | undefined;
+  onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint, JSXElement | null | undefined>;
 
   /**
    * The domain value for the color scale,

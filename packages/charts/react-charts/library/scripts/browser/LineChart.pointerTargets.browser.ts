@@ -1,50 +1,55 @@
 /* Focused real-browser regression, not the shared visual harness.
- * Run via react-charts:format --command=node --args=<absolute path to this file>.
+ * Run with Node 22.18+ via yarn nx run react-charts:test-browser:line-pointer.
+ * Requires Storybook on port 6317.
  * Set LINE_POINTER_OUTPUT to a fresh absolute TEMP directory. Uses private Edge only.
  */
-'use strict';
-
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 // eslint-disable-next-line import/no-extraneous-dependencies -- Existing workspace browser test dependency.
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
+import type { Locator } from 'playwright';
+import { errorDetails, outputDirectory, settled as settlePage } from './browserTestUtils.ts';
 
-const output = process.env.LINE_POINTER_OUTPUT;
-assert(output && path.isAbsolute(output), 'Set an absolute LINE_POINTER_OUTPUT directory');
+type Case = {
+  name: string;
+  passed?: boolean;
+  facts?: unknown;
+  text?: string;
+  fields?: string[];
+  values?: string[];
+};
+
+const output = outputDirectory('LINE_POINTER_OUTPUT');
 fs.mkdirSync(output, { recursive: false });
-const report = { cases: [], failures: [], pageErrors: [], consoleErrors: [] };
+const report = {
+  browser: '',
+  cases: [] as Case[],
+  failures: [] as { name: string; message: string }[],
+  pageErrors: [] as string[],
+  consoleErrors: [] as string[],
+};
 const storyId = 'charts-vegadeclarativechart--filtered-multiline-tooltips';
 const label = 'Day: 5; Requests: 24; Operational note: Traffic recovered\nNo intervention needed';
 
-async function settled(page) {
-  await page.evaluate(async () => {
-    await document.fonts.ready;
-    await new Promise(resolve => {
-      requestAnimationFrame(() => requestAnimationFrame(resolve));
-    });
-  });
-  await page.waitForFunction(() => document.getAnimations().every(animation => animation.playState !== 'running'));
-}
-
-async function check(name, run) {
-  const entry = { name };
+async function check(name: string, run: (entry: Case) => Promise<void>) {
+  const entry: Case = { name };
   report.cases.push(entry);
   try {
     await run(entry);
     entry.passed = true;
   } catch (error) {
     entry.passed = false;
-    report.failures.push({ name, message: error.stack });
+    report.failures.push({ name, message: errorDetails(error) });
   }
 }
 
-async function hitFacts(mark) {
+async function hitFacts(mark: Locator) {
   return mark.evaluate(element => {
     const bounds = element.getBoundingClientRect();
     const x = bounds.x + bounds.width / 2;
     const y = bounds.y + bounds.height / 2;
-    const describe = node =>
+    const describe = (node: Element | null) =>
       node && {
         tag: node.tagName,
         id: node.id,
@@ -72,7 +77,8 @@ async function main() {
     timezoneId: 'UTC',
   });
   const page = await context.newPage();
-  page.on('pageerror', error => report.pageErrors.push(error.stack));
+  const settled = () => settlePage(page, true);
+  page.on('pageerror', error => report.pageErrors.push(errorDetails(error)));
   page.on('console', message => {
     if (message.type() === 'error') {
       report.consoleErrors.push(message.text());
@@ -89,20 +95,21 @@ async function main() {
       const mark = chart.locator('circle[role="option"][id$="L"]');
       await mark.waitFor();
       await mark.scrollIntoViewIfNeeded();
-      await settled(page);
+      await settled();
       await check(`${mode}: visible final marker owns center hit`, async entry => {
         assert.equal(await chart.locator('circle[role="option"]').count(), 4);
         assert.equal(await mark.getAttribute('aria-label'), label);
-        entry.facts = await hitFacts(mark);
+        const facts = (entry.facts = await hitFacts(mark));
         await chart.screenshot({ path: path.join(output, `${mode}-before-interaction.png`) });
-        assert.equal(entry.facts.marker.opacity, '1');
-        assert.equal(entry.facts.top.id, entry.facts.marker.id);
+        assert(facts.marker && facts.top);
+        assert.equal(facts.marker.opacity, '1');
+        assert.equal(facts.top.id, facts.marker.id);
       });
       for (const interaction of ['hover', 'focus']) {
         await check(`${mode}: final marker actual ${interaction}`, async entry => {
           await page.mouse.move(0, 0);
           await page.keyboard.press('Tab');
-          await settled(page);
+          await settled();
           if (interaction === 'hover') {
             // Deliberately use the real actionability check. No force or synthetic mouse events.
             await mark.hover({ timeout: 3500 });
@@ -111,7 +118,7 @@ async function main() {
           }
           const tooltip = page.locator('.fui-PopoverSurface [role="tooltip"]');
           await tooltip.waitFor({ timeout: 5000 });
-          await settled(page);
+          await settled();
           entry.text = await tooltip.innerText();
           entry.fields = await tooltip.locator('dt').allTextContents();
           entry.values = await tooltip.locator('dd').allTextContents();
@@ -122,9 +129,9 @@ async function main() {
           }
           await page.screenshot({ path: path.join(output, `${mode}-${interaction}-last-point.png`), fullPage: true });
         });
-        await settled(page);
+        await settled();
         await page.keyboard.press('Escape');
-        await settled(page);
+        await settled();
       }
     }
 
@@ -133,39 +140,40 @@ async function main() {
     const latch = page.locator('circle[id$="D"]').first();
     await lineOnlyMark.waitFor();
     await lineOnlyMark.scrollIntoViewIfNeeded();
-    await settled(page);
+    await settled();
     await check('line only: radius-8 magnetic area still receives real mouse', async entry => {
       assert.equal(await latch.getAttribute('r'), '8');
       assert.equal(await latch.getAttribute('opacity'), '0');
       assert.notEqual(await latch.evaluate(element => getComputedStyle(element).pointerEvents), 'none');
       // Outside the tiny inactive path and its stroke; still within the radius-8 latch.
-      entry.facts = await latch.evaluate(element => {
+      const facts = await latch.evaluate(element => {
         const bounds = element.getBoundingClientRect();
         const x = bounds.x + bounds.width / 2;
         const y = bounds.y + bounds.height / 2 + 6;
         return { x, y, id: element.id, hitId: document.elementFromPoint(x, y)?.id };
       });
-      assert.equal(entry.facts.hitId, entry.facts.id);
-      await page.mouse.move(entry.facts.x, entry.facts.y);
+      entry.facts = facts;
+      assert.equal(facts.hitId, facts.id);
+      await page.mouse.move(facts.x, facts.y);
       const surface = page.locator('.fui-PopoverSurface');
       await surface.waitFor();
-      await settled(page);
+      await settled();
       entry.text = await surface.innerText();
       assert.match(entry.text, /218[,.]?000/);
       assert.match(entry.text, /298[,.]?000/);
       await page.screenshot({ path: path.join(output, 'line-only-enlarged-hover.png'), fullPage: true });
     });
-    await settled(page);
+    await settled();
     await page.keyboard.press('Escape');
-    await settled(page);
+    await settled();
     await check('line only: final path keeps keyboard focus and callout', async entry => {
       await page.mouse.move(0, 0);
       await page.keyboard.press('Tab');
-      await settled(page);
+      await settled();
       await lineOnlyMark.focus();
       const surface = page.locator('.fui-PopoverSurface');
       await surface.waitFor();
-      await settled(page);
+      await settled();
       entry.text = await surface.innerText();
       assert.match(entry.text, /218[,.]?000/);
       assert.match(entry.text, /298[,.]?000/);
@@ -183,6 +191,6 @@ async function main() {
 }
 
 main().catch(error => {
-  process.stderr.write(`${error.stack}\n`);
+  process.stderr.write(`${errorDetails(error)}\n`);
   process.exitCode = 1;
 });

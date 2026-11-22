@@ -5,7 +5,7 @@ import { hasVegaContinuousFieldColor } from './VegaLiteRangedGeometry';
 import { vegaSemanticMarkChannels } from './VegaLiteCapabilities';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import { SemanticError } from './VegaLiteSemanticError';
-import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData as own, writeVegaOwnData } from './VegaLiteField';
 import { VEGA_MAX_DATA_ROWS, VEGA_MAX_DATA_WORK, VEGA_MAX_SPECIFICATION_WORK } from './VegaLiteBudgets';
 import { format as numberFormat } from 'd3-format';
 
@@ -218,7 +218,12 @@ const rangedUnitIntent = (mark: unknown, encoding: Dictionary): boolean => {
  * All strict-mode diagnostics have error severity; malformed/unsafe input is an error in either mode.
  */
 export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticOptions = {}): VegaLiteDiagnostic[] {
+  return inspectVegaLiteSpec(spec, options).diagnostics;
+}
+
+export function inspectVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticOptions) {
   const diagnostics: VegaLiteDiagnostic[] = [];
+  const inspection = { diagnostics, exceedsLegacyDepth: false };
   const reported = new Set<string>();
   const strict = own(options, 'mode') === 'strict';
   const externalData = own(options, 'allowExternalData') === true;
@@ -302,7 +307,13 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     return 'grammar';
   };
   const ancestors = new Set<object>();
-  const snapshot = (value: unknown, path: string, depth: number, context: SnapshotContext = 'spec'): unknown => {
+  const snapshot = (
+    value: unknown,
+    path: string,
+    depth: number,
+    context: SnapshotContext = 'spec',
+    enumerablePath = true,
+  ): unknown => {
     const rowData = context === 'rows' || context === 'row';
     if (!spend(1 + (rowData && typeof value === 'string' ? value.length : 0), path, rowData)) {
       return undefined;
@@ -311,6 +322,10 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       invalid('depth-limit', path, 'Specification nesting exceeds 64 levels.', 'Reduce nested views or data objects.');
       stopped = true;
       return undefined;
+    }
+    // The legacy guard counted only paths through enumerable own properties, including leaves.
+    if (!strict && enumerablePath && depth > 15) {
+      inspection.exceedsLegacyDepth = true;
     }
     if (typeof value === 'function' || typeof value === 'symbol' || typeof value === 'bigint') {
       invalid('unsafe-value', path, 'Specifications must contain data, not callable or non-JSON values.');
@@ -385,8 +400,8 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
         if (!spend(rowData && !array ? key.length : 1, target, rowData)) {
           break;
         }
-        const descriptor = Object.getOwnPropertyDescriptor(value, key);
-        if (!descriptor || !('value' in descriptor)) {
+        const descriptor = getVegaOwnDataDescriptor(value, key);
+        if (!descriptor) {
           invalid(
             'unsafe-accessor',
             target,
@@ -404,12 +419,17 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           );
           continue;
         }
-        Object.defineProperty(result, key, {
-          value: snapshot(descriptor.value, target, depth + 1, childContext(context, key)),
-          enumerable: true,
-          configurable: true,
-          writable: true,
-        });
+        writeVegaOwnData(
+          result,
+          key,
+          snapshot(
+            descriptor.value,
+            target,
+            depth + 1,
+            childContext(context, key),
+            enumerablePath && !!descriptor.enumerable,
+          ),
+        );
       }
     } catch {
       invalid(
@@ -425,11 +445,11 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
   };
   const input = snapshot(spec, '$', 0);
   if (stopped) {
-    return diagnostics;
+    return inspection;
   }
   if (!isRecord(input)) {
     invalid('invalid-spec', '$', 'A Vega-Lite specification must be an object.');
-    return diagnostics;
+    return inspection;
   }
   const schema = own(input, '$schema');
   if ((typeof schema === 'string' && /\/vega\//i.test(schema)) || has(input, 'marks') || has(input, 'signals')) {
@@ -439,7 +459,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       'Raw Vega specifications are not supported by the Vega-Lite adapter.',
       'Convert the specification to Vega-Lite or use a Vega runtime.',
     );
-    return diagnostics;
+    return inspection;
   }
 
   const properties = (value: Dictionary, path: string, allowed: readonly string[]): void => {
@@ -2486,5 +2506,5 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     centeredAreaLayer: false,
     geometryLayer: false,
   });
-  return diagnostics;
+  return inspection;
 }

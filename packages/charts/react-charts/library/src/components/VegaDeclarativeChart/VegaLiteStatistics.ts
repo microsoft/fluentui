@@ -1,6 +1,6 @@
 import { deviation, median, quantileSorted } from 'd3-array';
 import type { VegaDataRow } from './VegaLiteData.types';
-import { readVegaOwnData as own } from './VegaLiteField';
+import { readVegaOwnData as own, writeVegaOwnData as put } from './VegaLiteField';
 import { SemanticError } from './VegaLiteSemanticError';
 
 type Point = [number, number];
@@ -14,9 +14,6 @@ export interface VegaStatisticsContext {
   spend: (amount: number) => void;
 }
 
-const put = (row: VegaDataRow, field: string, value: unknown): void => {
-  Object.defineProperty(row, field, { value, enumerable: true, configurable: true, writable: true });
-};
 const invalid = (name: string): never => {
   throw new Error(`Vega semantics: invalid ${name}`);
 };
@@ -159,6 +156,7 @@ function loess(points: Point[], bandwidth: number, spend: (amount: number) => vo
   return result;
 }
 
+/** Vega-Lite LoessTransform: https://vega.github.io/vega-lite/docs/loess.html */
 export function loessVegaRows(rows: VegaDataRow[], transform: VegaDataRow, ctx: VegaStatisticsContext): VegaDataRow[] {
   const x = own(transform, 'on');
   const y = own(transform, 'loess');
@@ -297,6 +295,7 @@ function stepsParameter(transform: VegaDataRow, key: string, fallback: number): 
   return value;
 }
 
+/** Vega-Lite DensityTransform: https://vega.github.io/vega-lite/docs/density.html */
 export function densityVegaRows(
   rows: VegaDataRow[],
   transform: VegaDataRow,
@@ -389,7 +388,11 @@ export function densityVegaRows(
   return out;
 }
 
-/** Scalar AggregateOps use raw validity counts even when a valid string coerces to NaN. */
+/**
+ * Scalar AggregateOps use raw validity counts even when a valid string coerces to NaN.
+ * Shared by https://vega.github.io/vega-lite/docs/aggregate.html#ops and
+ * https://vega.github.io/vega-lite/docs/window.html.
+ */
 export function aggregateVegaStatistic(values: unknown[], name: string, retention?: number): number | undefined {
   const good = values.filter(v => v != null && v !== '' && !(typeof v === 'number' && Number.isNaN(v)));
   const n = good.length;

@@ -59,7 +59,7 @@ import {
   aggregateVegaValues,
   evaluateVegaPredicate,
 } from './VegaLiteDataTransforms';
-import { readVegaField, readVegaOwnData as ownValue } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as ownValue, writeVegaOwnData } from './VegaLiteField';
 import type { VegaSemanticOptions, VegaDataRow } from './VegaLiteData.types';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
@@ -287,12 +287,7 @@ function prepareAdapterSpec(spec: VegaLiteSpec, options?: VegaSemanticOptions, k
         field += '_';
       }
       rows.forEach(row => {
-        Object.defineProperty(row, field, {
-          value: evaluateVegaPredicate(condition.test, row, policy) ? condition.value : fallback,
-          enumerable: true,
-          configurable: true,
-          writable: true,
-        });
+        writeVegaOwnData(row, field, evaluateVegaPredicate(condition.test, row, policy) ? condition.value : fallback);
       });
       encoding!.color = {
         field,
@@ -4147,12 +4142,7 @@ function renderHistogramProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkT
           const name = typeof op === 'string' ? op : isRecord(op) ? Object.keys(op)[0] : undefined;
           const field = typeof definition.field === 'string' ? definition.field : undefined;
           const alias = name === 'count' ? '__count' : `${name}_${field}`;
-          Object.defineProperty(row, alias, {
-            value: aggregateVegaValues(bin, field, op, { mode: 'strict' }),
-            enumerable: true,
-            writable: true,
-            configurable: true,
-          });
+          writeVegaOwnData(row, alias, aggregateVegaValues(bin, field, op, { mode: 'strict' }));
         }
         materialize(definition.condition);
       }

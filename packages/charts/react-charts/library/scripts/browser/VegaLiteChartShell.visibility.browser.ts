@@ -1,23 +1,36 @@
 /* Real Storybook regression; read-only fixtures, no screenshot baselines or harness changes.
- * Run through react-charts:format with --command=node --args=<absolute path to this file>.
+ * Run with Node 22.18+ and Edge via yarn nx run react-charts:test-browser:vega-shell.
  * VEGA_SHELL_OUTPUT selects a fresh evidence directory; requires Storybook on port 6317.
  */
-'use strict';
-
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 // eslint-disable-next-line import/no-extraneous-dependencies -- Browser-only regression uses the existing workspace dev dependency, not a shipping chart dependency.
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
+import { errorDetails, outputDirectory, settled } from './browserTestUtils.ts';
 
-const output = process.env.VEGA_SHELL_OUTPUT;
-assert(output && path.isAbsolute(output), 'Set an absolute VEGA_SHELL_OUTPUT evidence directory');
+type Measurement = {
+  story: string;
+  interaction?: string;
+  marks?: unknown;
+  svgHeight?: string | null;
+  svg?: { width: number };
+  label?: string | null;
+  text?: string;
+};
+
+const output = outputDirectory('VEGA_SHELL_OUTPUT');
 fs.mkdirSync(output, { recursive: true });
 const before = process.env.VEGA_SHELL_BEFORE
-  ? JSON.parse(fs.readFileSync(process.env.VEGA_SHELL_BEFORE, 'utf8'))
+  ? (JSON.parse(fs.readFileSync(process.env.VEGA_SHELL_BEFORE, 'utf8')) as { cases: Measurement[] })
   : undefined;
-const report = { cases: [], failures: [], pageErrors: [] };
-const stories = [
+const report = {
+  browser: '',
+  cases: [] as Measurement[],
+  failures: [] as { name: string; message: string }[],
+  pageErrors: [] as { story: string; message: string; interaction?: string; name?: string; stack?: string }[],
+};
+const stories: [string, string[]][] = [
   ['ranged-grouped-bars', ['Platform', 'Product']],
   ['centered-area', ['Search', 'Storage']],
   ['corpus-xoffset-not-color', ['Warm', 'Cool']],
@@ -25,20 +38,11 @@ const stories = [
   ['corpus-center-bars', ['First', 'Second']],
 ];
 
-async function settled(page) {
-  await page.evaluate(async () => {
-    await document.fonts.ready;
-    await new Promise(resolve => {
-      requestAnimationFrame(() => requestAnimationFrame(resolve));
-    });
-  });
-}
-
-async function check(name, run) {
+async function check(name: string, run: () => Promise<void>) {
   try {
     await run();
   } catch (error) {
-    report.failures.push({ name, message: error.stack });
+    report.failures.push({ name, message: errorDetails(error) });
   }
 }
 
@@ -54,7 +58,7 @@ async function main() {
     for (const [story, expected] of stories) {
       await check(story, async () => {
         const page = await context.newPage();
-        page.on('pageerror', error => report.pageErrors.push({ story, message: error.stack }));
+        page.on('pageerror', error => report.pageErrors.push({ story, message: errorDetails(error) }));
         try {
           await page.goto(`http://localhost:6317/iframe.html?id=charts-vegadeclarativechart--${story}&viewMode=story`);
           const svg = page
@@ -64,13 +68,16 @@ async function main() {
           await svg.waitFor();
           await settled(page);
           const facts = await svg.evaluate(element => {
-            const rect = node => {
+            const rect = (node: Element) => {
               const { x, y, width, height, bottom, right } = node.getBoundingClientRect();
               return { x, y, width, height, bottom, right };
             };
             const shell = element.closest('[role="presentation"]');
+            if (!shell) {
+              throw new Error('Chart shell not found');
+            }
             const ancestors = [];
-            for (let node = shell; node && node !== document.body; node = node.parentElement) {
+            for (let node: Element | null = shell; node && node !== document.body; node = node.parentElement) {
               const css = getComputedStyle(node);
               ancestors.push({
                 tag: node.tagName,
@@ -87,12 +94,12 @@ async function main() {
               shellStyle: shell.getAttribute('style'),
               ancestors,
               legends: [...shell.querySelectorAll('[role="option"]')].map(node => {
-                const text = [...node.querySelectorAll('span')].find(span => span.textContent.trim());
+                const text = [...node.querySelectorAll('span')].find(span => span.textContent?.trim());
                 const range = document.createRange();
                 range.selectNodeContents(text || node);
                 const { top, bottom, left, right, width, height } = range.getBoundingClientRect();
                 return {
-                  text: node.textContent.trim(),
+                  text: node.textContent?.trim() ?? '',
                   bounds: rect(node),
                   textBounds: { top, bottom, left, right, width, height },
                 };
@@ -108,7 +115,7 @@ async function main() {
           report.cases.push({ story, ...facts });
           if (before) {
             const previous = before.cases.find(entry => entry.story === story && !entry.interaction);
-            assert(previous, `${story}: missing independent before measurements`);
+            assert(previous?.svg, `${story}: missing independent before measurements`);
             assert.deepEqual(
               facts.marks,
               previous.marks,
@@ -186,13 +193,10 @@ async function main() {
             }
             const surface = page.locator('.fui-PopoverSurface').filter({ has: page.locator('[role="tooltip"]') });
             await surface.waitFor();
-            await settled(page);
             // Measure the final surface, not a transient enter-animation transform.
-            await page.waitForFunction(() =>
-              document.getAnimations().every(animation => animation.playState !== 'running'),
-            );
+            await settled(page, true);
             const facts = await surface.evaluate(element => {
-              const rect = node => {
+              const rect = (node: Element) => {
                 const { top, bottom, left, right, width, height } = node.getBoundingClientRect();
                 return { top, bottom, left, right, width, height };
               };
@@ -210,7 +214,7 @@ async function main() {
               }
               return {
                 bounds: rect(element),
-                text: element.innerText,
+                text: (element as HTMLElement).innerText,
                 filter: getComputedStyle(element).filter,
                 ancestors,
                 portal: !!element.closest('[data-portal-node]'),
@@ -220,6 +224,7 @@ async function main() {
             report.cases.push({ story, interaction, label, ...facts });
             if (before) {
               const previous = before.cases.find(entry => entry.story === story && entry.interaction === interaction);
+              assert(previous, `${story}-${interaction}: missing independent before measurements`);
               assert.equal(label, previous.label, `${story}: original point label must remain unchanged`);
               assert.equal(
                 facts.text,
@@ -270,6 +275,6 @@ async function main() {
 }
 
 main().catch(error => {
-  process.stderr.write(`${error.stack || error}\n`);
+  process.stderr.write(`${errorDetails(error)}\n`);
   process.exitCode = 1;
 });

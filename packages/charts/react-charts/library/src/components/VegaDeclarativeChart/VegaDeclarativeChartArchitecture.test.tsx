@@ -552,12 +552,14 @@ describe('VegaDeclarativeChart architecture', () => {
   it.each(['legacy', 'strict'] as const)(
     'rejects uninspectable objects by diagnostic code, not message wording, in %s mode',
     semanticMode => {
-      const validate = diagnostics.validateVegaLiteSpec;
-      jest
-        .spyOn(diagnostics, 'validateVegaLiteSpec')
-        .mockImplementation((...args) =>
-          validate(...args).map(item => ({ ...item, message: 'Host object rejected.' })),
-        );
+      const inspect = diagnostics.inspectVegaLiteSpec;
+      jest.spyOn(diagnostics, 'inspectVegaLiteSpec').mockImplementation((...args) => {
+        const inspection = inspect(...args);
+        return {
+          ...inspection,
+          diagnostics: inspection.diagnostics.map(item => ({ ...item, message: 'Host object rejected.' })),
+        };
+      });
       for (const trap of ['getPrototypeOf', 'ownKeys', 'getOwnPropertyDescriptor'] as const) {
         for (const nested of [false, true]) {
           const exotic = new Proxy<VegaLiteSpec>(

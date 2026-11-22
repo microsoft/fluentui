@@ -1,6 +1,11 @@
 import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import { aggregateVegaValues, applyVegaTransforms, prepareVegaLiteSpec } from './VegaLiteDataTransforms';
-import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import {
+  getVegaOwnDataDescriptor,
+  readVegaField,
+  readVegaOwnData as own,
+  writeVegaOwnData as set,
+} from './VegaLiteField';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import type { VegaDataParseOptions } from './VegaLiteResourceLoader';
 import { VEGA_MAX_DATA_ROWS, VEGA_MAX_PIPELINE_WORK, VEGA_MAX_TEXT_LENGTH } from './VegaLiteBudgets';
@@ -72,10 +77,6 @@ function record(value: unknown): RecordValue {
   return value && typeof value === 'object' && !Array.isArray(value) ? (value as RecordValue) : {};
 }
 
-function set(value: RecordValue, key: string, item: unknown): void {
-  Object.defineProperty(value, key, { value: item, enumerable: true, configurable: true, writable: true });
-}
-
 function clone<T>(
   value: T,
   charge: (work: number) => void = (() => {
@@ -116,8 +117,8 @@ function clone<T>(
     charge(value.length);
     const copy: unknown[] = [];
     for (let index = 0; index < value.length; index++) {
-      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
-      if (descriptor && 'value' in descriptor) {
+      const descriptor = getVegaOwnDataDescriptor(value, String(index));
+      if (descriptor) {
         copy.push(clone(descriptor.value, charge, ancestors, depth + 1, maxTextLength, maxRows));
       }
     }
@@ -125,13 +126,8 @@ function clone<T>(
   } else {
     const copy: RecordValue = {};
     for (const key of Object.keys(value)) {
-      const descriptor = Object.getOwnPropertyDescriptor(value, key);
-      if (
-        descriptor &&
-        'value' in descriptor &&
-        typeof descriptor.value !== 'function' &&
-        typeof descriptor.value !== 'symbol'
-      ) {
+      const descriptor = getVegaOwnDataDescriptor(value, key);
+      if (descriptor && typeof descriptor.value !== 'function' && typeof descriptor.value !== 'symbol') {
         if (key === 'values' && Array.isArray(descriptor.value) && descriptor.value.length > maxRows) {
           throw new Error('Vega view row limit exceeded');
         }

@@ -4,7 +4,12 @@ import { aggregateVegaStatistic, densityVegaRows, loessVegaRows } from './VegaLi
 import { SemanticError, toSemanticError } from './VegaLiteSemanticError';
 import { extent as dataExtent } from 'd3-array';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
-import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import {
+  getVegaOwnDataDescriptor,
+  readVegaField,
+  readVegaOwnData as own,
+  writeVegaOwnData as put,
+} from './VegaLiteField';
 import {
   VEGA_MAX_CLONE_NODES,
   VEGA_MAX_DATA_ROWS,
@@ -34,9 +39,6 @@ const spend = (options: VegaSemanticOptions | undefined, amount: number): void =
 };
 const record = (value: unknown): value is VegaDataRow =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
-const put = (row: VegaDataRow, key: string, value: unknown): void => {
-  Object.defineProperty(row, key, { value, enumerable: true, configurable: true, writable: true });
-};
 const text = (value: unknown): string | undefined => (typeof value === 'string' ? value : undefined);
 const list = (value: unknown): unknown[] => (Array.isArray(value) ? value : []);
 const fields = (value: unknown): string[] => list(value).filter((v): v is string => typeof v === 'string');
@@ -92,10 +94,10 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions, o
       : {};
     seen.set(value, result);
     for (const key of Object.keys(value)) {
-      const descriptor = Object.getOwnPropertyDescriptor(value, key);
-      if (descriptor && 'value' in descriptor && typeof descriptor.value !== 'function') {
+      const descriptor = getVegaOwnDataDescriptor(value, key);
+      if (descriptor && typeof descriptor.value !== 'function') {
         charge(key.length);
-        put(result as VegaDataRow, key, visit(descriptor.value, depth + 1));
+        put(result, key, visit(descriptor.value, depth + 1));
       }
     }
     return result;

@@ -2,7 +2,7 @@
  * Audit an ALREADY RUNNING real Storybook; never starts/builds a server or updates goldens.
  * Nx: yarn nx run-many --projects=react-charts-stories --targets=test-browser:vega
  * Forward --mode=stories, --mode=docs or --mode=all (default). --self-test is browser/network-free.
- * --filter=substring selects IDs/export names for iteration; discovery always verifies all 32 stories.
+ * --filter=substring selects IDs/export names for iteration; discovery always verifies the full inventory.
  * VEGA_STORYBOOK_URL defaults to http://localhost:6317.
  * VEGA_VISUAL_OUTPUT defaults to <stories>/test-results/vega-visual (gitignored).
  * Relative output overrides resolve against <stories>. Use a fresh output directory for each run.
@@ -30,6 +30,13 @@ const maxEventSamples = 20;
 const maxConsoleText = 8000;
 const viewport = { width: 1440, height: 1100 };
 const pointSelector = '[role="option"][aria-label], [data-ranged-mark], [data-centered-point]';
+const expectedStoryCount = 36;
+const focusedMarkers = {
+  HistogramCounts: ['Records: 1', 'Records: 2', 'Records: 3'],
+  TickStrip: ['Latency (ms): 3', 'Latency (ms): 7', 'Latency (ms): 13', 'Latency (ms): 16'],
+  LoessSmoothing: 8,
+  DensityEstimate: 7,
+};
 const omissions = [
   'Screenshots require human visual analysis; targeted source-derived colors/geometry/order are regression contracts, NOT pixel goldens or an upstream Vega runtime oracle.',
   'Only values projected into real point ARIA are asserted. Unexposed columns are listed per view; expected tables in story chrome are NEVER actual results.',
@@ -119,6 +126,7 @@ function metadata() {
   const entries = [
     { exportName: 'Default', kind: 'default' },
     ...Object.keys(semanticControls).map(exportName => ({ exportName, kind: 'semantic' })),
+    ...Object.keys(focusedMarkers).map(exportName => ({ exportName, kind: 'focused' })),
     ...normative.map(entry => ({
       exportName: `Corpus${entry.file
         .replace(/\.vl\.json$/, '')
@@ -129,7 +137,8 @@ function metadata() {
       expected: entry,
     })),
   ].map(entry => ({ ...entry, id: toId(title, storyNameFromExport(entry.exportName)) }));
-  assert.equal(new Set(entries.map(entry => entry.id)).size, 32);
+  assert.equal(entries.length, expectedStoryCount);
+  assert.equal(new Set(entries.map(entry => entry.id)).size, expectedStoryCount);
   return entries;
 }
 
@@ -714,6 +723,18 @@ function assertCategoryCenters(facts, expected, field) {
 function assertVisibleOutcomes(facts, entry, state = 'initial') {
   const marks = dataMarks(facts);
   const name = entry.exportName;
+  const focused = Object.prototype.hasOwnProperty.call(focusedMarkers, name) ? focusedMarkers[name] : undefined;
+  if (focused !== undefined) {
+    assert.equal(facts.plotCount, 1, 'Focused example must render exactly one plot');
+    assert.equal(marks.length, typeof focused === 'number' ? focused : focused.length);
+    assert(
+      marks.every(mark => mark.visible),
+      'Focused example must paint its marks',
+    );
+    if (Array.isArray(focused)) {
+      assert.deepEqual(marks.map(mark => mark.label).sort(), [...focused].sort());
+    }
+  }
   if (entry.expected?.file === 'bin-transform.vl.json') {
     const bars = marks.filter(mark => 'data-ranged-mark' in mark.attributes);
     assert.equal(bars.length, 3, 'Exactly three real binned bars, not a strip or phantom bins');
@@ -1593,7 +1614,7 @@ async function auditDocs(context, base, docsId, entries, output) {
         const anchor = page.locator(`[id="anchor--${entry.id}"], [id="anchor--primary--${entry.id}"]`);
         report.inventory.selectedPreviews.push({ id: entry.id, count: await anchor.locator('.docs-story').count() });
       }
-      assert.equal(report.inventory.mountedPreviews, 32, 'Docs must mount all 32 previews');
+      assert.equal(report.inventory.mountedPreviews, expectedStoryCount, 'Docs must mount every preview');
       for (const preview of report.inventory.selectedPreviews) {
         assert.equal(preview.count, 1, `Docs must mount exactly one preview for ${preview.id}`);
       }
@@ -1649,10 +1670,10 @@ function fullCoverage(summary) {
   return (
     summary.mode === 'all' &&
     summary.filter === undefined &&
-    summary.indexVerifiedStories === 32 &&
-    summary.stories.length === 32 &&
+    summary.indexVerifiedStories === expectedStoryCount &&
+    summary.stories.length === expectedStoryCount &&
     summary.stories.every(story => !story.abortedAt) &&
-    summary.docs?.previews === 32
+    summary.docs?.previews === expectedStoryCount
   );
 }
 
@@ -2054,7 +2075,7 @@ async function selfTestDocs(entries, output, defaultFacts) {
         if (selector === '.docs-story') {
           return {
             async count() {
-              return 32;
+              return expectedStoryCount;
             },
           };
         }
@@ -2098,7 +2119,7 @@ async function selfTestDocs(entries, output, defaultFacts) {
   );
   assert(overflow.failures[0].message.includes('Horizontal scrolling/clipping'));
   assert.equal(overflow.previews.filter(item => item.source && item.addons.length).length, selected.length);
-  assert.equal(overflow.inventory.mountedPreviews, 32);
+  assert.equal(overflow.inventory.mountedPreviews, expectedStoryCount);
   const missingSource = await run({ missingSource: 1 });
   assert.deepEqual(
     missingSource.failures.map(failure => failure.check),
@@ -2190,7 +2211,12 @@ async function selfTest(entries) {
   const incompleteIndex = { entries: { ...index.entries } };
   delete incompleteIndex.entries[entries[0].id];
   assert.throws(() => verifyIndex(incompleteIndex, entries), 'Filtering must not weaken full index discovery');
-  const coverage = { mode: 'all', indexVerifiedStories: 32, stories: entries, docs: { previews: 32 } };
+  const coverage = {
+    mode: 'all',
+    indexVerifiedStories: expectedStoryCount,
+    stories: entries,
+    docs: { previews: expectedStoryCount },
+  };
   assert(fullCoverage(coverage));
   assert(!fullCoverage({ ...coverage, filter: 'corpus' }));
   assert(!fullCoverage({ ...coverage, mode: 'stories' }));
@@ -2361,7 +2387,7 @@ async function selfTest(entries) {
   );
   await selfTestDocs(entries, output, defaultFacts);
   console.log(
-    `PASS browser-free harness checks: metadata/index32, native x/y, exact scatter colors/endpoints, binned zero-baseline/strip negatives, point:true visibility, numeric month centers/stack fractions/domain legends, text-range overflow on both axes/all ancestors, tooltip shadow/viewport, console classification/count caps, filter coverage, root-missing fail-fast/evidence, visible-only errors, independent Docs chart/source/inventory/painted-color checks. Self-test artifacts: ${output}`,
+    `PASS browser-free harness checks: metadata/index (${expectedStoryCount} stories), native x/y, exact scatter colors/endpoints, binned zero-baseline/strip negatives, point:true visibility, numeric month centers/stack fractions/domain legends, text-range overflow on both axes/all ancestors, tooltip shadow/viewport, console classification/count caps, filter coverage, root-missing fail-fast/evidence, visible-only errors, independent Docs chart/source/inventory/painted-color checks. Self-test artifacts: ${output}`,
   );
 }
 
@@ -2457,7 +2483,7 @@ async function main() {
       console.log(
         `INCOMPLETE full-audit coverage: mode=${mode}, filter=${JSON.stringify(filter) || '(none)'}, selected=${
           selected.length
-        }/32. Scoped pass is NOT a complete audit.`,
+        }/${expectedStoryCount}. Scoped pass is NOT a complete audit.`,
       );
     }
     if (!summary.passed) {

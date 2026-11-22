@@ -9,6 +9,7 @@ export {
   RepeatMatrix,
   ManagedDataResource,
 } from './VegaDeclarativeChartSemantics.stories';
+export { HistogramCounts, TickStrip, LoessSmoothing, DensityEstimate } from './VegaDeclarativeChartFocused.stories';
 export {
   CorpusEmaEncoding,
   CorpusEmaTransformBias,
