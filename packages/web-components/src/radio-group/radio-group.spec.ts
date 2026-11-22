@@ -441,6 +441,12 @@ test.describe('RadioGroup', () => {
 
     await expect(element).toHaveJSProperty('value', 'bar');
 
+    await element.evaluate((node: RadioGroup) => node.focus());
+
+    await expect(radios.nth(1)).toBeFocused();
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
+
     await element.evaluate((node: RadioGroup) => {
       node.value = 'baz';
       node.disabled = true;
