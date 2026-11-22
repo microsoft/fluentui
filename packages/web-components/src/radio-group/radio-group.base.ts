@@ -61,10 +61,10 @@ export class BaseRadioGroup extends FASTElement {
    */
   protected disabledChanged(prev?: boolean, next?: boolean): void {
     if (this.radios) {
-      this.checkedIndex = -1;
-      this.radios?.forEach(radio => {
+      this.radios.forEach(radio => {
         radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
+      this.checkedIndex = this.enabledRadios.findIndex(x => x.checked);
     }
   }
 
@@ -324,8 +324,13 @@ export class BaseRadioGroup extends FASTElement {
   }
 
   public set value(next: string | null) {
-    const index = this.enabledRadios.findIndex(x => x.value === next);
-    this.checkedIndex = index;
+    const checkedRadio = this.radios?.find(x => x.value === next);
+    this.checkedIndex = checkedRadio ? this.enabledRadios.indexOf(checkedRadio) : -1;
+
+    // Disabled radios are not part of `enabledRadios`, so sync the checked state of every radio.
+    this.radios?.forEach(radio => {
+      radio.checked = radio === checkedRadio;
+    });
 
     if (this.$fastController.isConnected) {
       this.setFormValue(next);

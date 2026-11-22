@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(radio-group): apply value changes while the group or target radio is disabled",
+  "packageName": "@fluentui/web-components",
+  "email": "25burak25@gmail.com",
+  "dependentChangeType": "patch"
+}

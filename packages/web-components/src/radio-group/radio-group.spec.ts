@@ -351,6 +351,117 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(2)).toHaveJSProperty('checked', false);
   });
 
+  test('should set a child radio with a matching `value` to `checked` when value changes while the radio group is disabled', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator(RadioTagName);
+
+    await fastPage.setTemplate({
+      attributes: { value: 'foo' },
+      innerHTML: /* html */ `
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
+      `,
+    });
+
+    await element.evaluate((node: RadioGroup) => {
+      node.disabled = true;
+      node.value = 'bar';
+    });
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
+
+    await expect(radios.nth(2)).toHaveJSProperty('checked', false);
+  });
+
+  test('should set a disabled child radio with a matching `value` to `checked` when value changes', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator(RadioTagName);
+
+    await fastPage.setTemplate({
+      attributes: { value: 'foo' },
+      innerHTML: /* html */ `
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar" disabled></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
+      `,
+    });
+
+    await element.evaluate((node: RadioGroup) => {
+      node.value = 'bar';
+    });
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
+
+    await expect(radios.nth(2)).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: RadioGroup) => {
+      node.value = 'baz';
+    });
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', false);
+
+    await expect(radios.nth(2)).toHaveJSProperty('checked', true);
+  });
+
+  test('should keep the checked radio in sync with `value` when `disabled` and `value` change together', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator(RadioTagName);
+
+    await fastPage.setTemplate({
+      attributes: { value: 'foo' },
+      innerHTML: /* html */ `
+        <${RadioTagName} value="foo"></${RadioTagName}>
+        <${RadioTagName} value="bar"></${RadioTagName}>
+        <${RadioTagName} value="baz"></${RadioTagName}>
+      `,
+    });
+
+    await element.evaluate((node: RadioGroup) => {
+      node.disabled = true;
+      node.value = 'bar';
+      node.disabled = false;
+    });
+
+    expect(await radios.evaluateAll((radios: Radio[]) => radios.filter(radio => radio.checked).length)).toBe(1);
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
+
+    await expect(element).toHaveJSProperty('value', 'bar');
+
+    await element.evaluate((node: RadioGroup) => {
+      node.value = 'baz';
+      node.disabled = true;
+    });
+
+    expect(await radios.evaluateAll((radios: Radio[]) => radios.filter(radio => radio.checked).length)).toBe(1);
+
+    await expect(radios.nth(2)).toHaveJSProperty('checked', true);
+
+    await element.evaluate((node: RadioGroup) => {
+      node.value = 'foo';
+      node.disabled = false;
+    });
+
+    expect(await radios.evaluateAll((radios: Radio[]) => radios.filter(radio => radio.checked).length)).toBe(1);
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', true);
+
+    await expect(element).toHaveJSProperty('value', 'foo');
+  });
+
   test('should mark only the last radio defaulted to checked as checked', async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator(RadioTagName);
