@@ -66,7 +66,7 @@ describe('collapse atoms', () => {
       });
     });
 
-    it('handles custom outSize values', () => {
+    it('handles custom from size values', () => {
       const atom = sizeEnterAtom({
         orientation: 'vertical',
         duration: 200,
@@ -168,7 +168,7 @@ describe('collapse atoms', () => {
       });
     });
 
-    it('handles custom outSize values', () => {
+    it('handles custom to size values', () => {
       const atom = sizeExitAtom({
         orientation: 'vertical',
         duration: 200,

@@ -205,7 +205,7 @@ describe('collapsePresenceFn', () => {
       const motion = collapsePresenceFn({
         element: createMockElement(width, height),
         orientation,
-        outSize: '8px',
+        fromSize: '8px',
         animateOpacity: false,
       });
 
@@ -290,15 +290,27 @@ describe('collapsePresenceFn', () => {
       expect(motion.enter[2]).toMatchObject({ duration: 0, delay: 0 });
     });
 
-    it('handles custom outSize values', () => {
+    it('handles custom fromSize values and mirrors them to toSize by default', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
-        outSize: '10px',
+        fromSize: '10px',
       });
 
-      // Size atoms should use the custom outSize
+      // Size atoms should use the custom fromSize on enter and mirror it on exit
       expect(motion.enter[0].keyframes[0]).toMatchObject({ maxHeight: '10px' });
       expect(motion.exit[1].keyframes[1]).toMatchObject({ maxHeight: '10px' });
+    });
+
+    it('supports independent fromSize and toSize values', () => {
+      const motion = collapsePresenceFn({
+        element: mockElement,
+        fromSize: '10px',
+        toSize: '24px',
+        animateOpacity: false,
+      });
+
+      expect(motion.enter[0].keyframes[0]).toMatchObject({ maxHeight: '10px' });
+      expect(motion.exit[0].keyframes[1]).toMatchObject({ maxHeight: '24px' });
     });
   });
 
