@@ -61,8 +61,10 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
-  const { size = 'medium', outOfOffice = false, ...baseProps } = props;
+  // `outOfOffice` stays in the base props, as the base hook uses it for the accessible label.
+  const { size = 'medium', ...baseProps } = props;
   const status = props.status ?? 'available';
+  const outOfOffice = props.outOfOffice ?? false;
 
   const IconElement = iconMap(status, outOfOffice, size);
 
@@ -94,7 +96,7 @@ export const usePresenceBadgeBase_unstable = (
   props: PresenceBadgeBaseProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeBaseState => {
-  const { status = 'available', outOfOffice = false } = props;
+  const { status = 'available', outOfOffice = false, ...badgeProps } = props;
 
   const statusText = DEFAULT_STRINGS[status];
   const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
@@ -104,7 +106,7 @@ export const usePresenceBadgeBase_unstable = (
       {
         'aria-label': statusText + oofText,
         role: 'img',
-        ...props,
+        ...badgeProps,
         icon: slot.optional(props.icon, {
           renderByDefault: true,
           elementType: 'span',
