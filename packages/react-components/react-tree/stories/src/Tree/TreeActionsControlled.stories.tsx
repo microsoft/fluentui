@@ -69,22 +69,15 @@ ActionsControlled.parameters = {
   docs: {
     description: {
       story: `
-When a \`Menu\` in the \`actions\` slot is controlled, update its \`open\` state from both the menu's \`onOpenChange\` and the slot's \`onVisibilityChange\`.
-Reset \`open\` to \`false\` when \`data.visible\` is \`false\`; leave it unchanged when the actions become visible.
+Hidden actions are unmounted without notifying the menu's \`onOpenChange\`. Controlled state held outside the slot survives, so the menu can reopen when actions return.
+Keep separate state for each item: update it from \`onOpenChange\` and reset \`open\` when \`actions.onVisibilityChange\` reports \`data.visible === false\`.
 
-Hidden actions are unmounted. Unmounting a menu does not reset controlled state stored in the tree item or notify \`onOpenChange\` that the menu has closed.
-Without this reset, a menu whose state is still \`open\` remounts open when the actions become visible again.
-Keep separate menu state for each tree item, outside the actions subtree.
-Apply \`useRestoreFocusTarget\` to the persistent \`TreeItem\` so focus can return to it if hiding the actions removes the focused menu and its trigger.
-When opening the menu with a pointer, focus that item before activating the menu button so it is recorded as the restoration target, even when the user has not navigated to the row first.
-Skip this focus handoff when the menu is already open so clicking the button can close it without first resetting its state.
+Mark the persistent \`TreeItem\` with \`useRestoreFocusTarget\` and focus it before pointer-opening a closed menu to establish the restoration target.
+Skip this handoff when the menu is open so clicking its trigger can dismiss it.
 
-Open an item's menu, move to the other item so the first item's actions disappear, then return.
-The first item's actions should reappear with its menu closed, until you open it again.
-The same reset applies when focus leaves the actions.
+Try opening an item's menu, hovering the other item, then returning. The actions should reappear with the menu closed.
 
-This example focuses on controlled state. As with the [Actions example](?path=/story/components-tree--actions),
-provide a context menu with the same commands so actions are also available through the standard tree interaction pattern.
+As in the [Actions example](?path=/story/components-tree--actions), also provide a context menu with the same commands for standard tree interaction.
 `,
     },
   },

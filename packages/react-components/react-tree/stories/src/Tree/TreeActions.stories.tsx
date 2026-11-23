@@ -113,7 +113,7 @@ In addition to \`aside\` slot, both tree item layouts support \`actions\` slot t
 
 The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navigation with the keyboard by using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default).
 
-For a controlled menu in \`actions\`, reset its \`open\` state when the slot's \`onVisibilityChange\` reports \`data.visible === false\`. Hidden actions are unmounted, but controlled state held outside the slot is preserved. See [Actions Controlled](?path=/story/components-tree--actions-controlled) for an example.
+See [Actions Controlled](?path=/story/components-tree--actions-controlled) for managing menu state when actions are hidden.
 
 > ⚠️ Although \`actions\` are easy to navigate, they're not an expected pattern according to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).providing a context menu with the same functionalities as the actions is recommended to ensure your tree item is accessible.
 
