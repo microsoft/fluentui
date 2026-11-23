@@ -12,7 +12,6 @@ import {
   mergeClasses,
   Overflow,
   OverflowItem,
-  type OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
   Checkbox,
@@ -31,10 +30,6 @@ const useStyles = makeStyles({
 
   gap: {
     gap: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-
-  margin: {
-    margin: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 
   resizableArea: {
@@ -60,13 +55,13 @@ const useStyles = makeStyles({
   },
 });
 
+const itemIds = Array.from({ length: 8 }, (_, i) => i.toString());
+
 export const MarginAndGapSupport = (): JSXElement => {
   const styles = useStyles();
   const [useGap, setUseGap] = React.useState(true);
   const [useMargin, setUseMargin] = React.useState(false);
   const imperativeRef = React.useRef<OverflowImperativeRef | null>(null);
-
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
 
   const onChange =
     (setter: React.Dispatch<React.SetStateAction<boolean>>): CheckboxProps['onChange'] =>
@@ -94,26 +89,24 @@ export const MarginAndGapSupport = (): JSXElement => {
               </Button>
             </OverflowItem>
           ))}
-          <OverflowMenu useMargin={useMargin} itemIds={itemIds} />
+          <OverflowMenu useMargin={useMargin} />
         </div>
       </Overflow>
     </>
   );
 };
 
-const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
-  const { id } = props;
+const OverflowMenuItem = ({ id }: { id: string }): JSXElement | null => {
   const isVisible = useIsOverflowItemVisible(id);
 
   if (isVisible) {
     return null;
   }
 
-  // As an union between button props and div props may be conflicting, casting is required
   return <MenuItem>Item {id}</MenuItem>;
 };
 
-const OverflowMenu: React.FC<{ itemIds: string[]; useMargin: boolean }> = ({ itemIds, useMargin }) => {
+const OverflowMenu = ({ useMargin }: { useMargin: boolean }): JSXElement | null => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -133,9 +126,9 @@ const OverflowMenu: React.FC<{ itemIds: string[]; useMargin: boolean }> = ({ ite
 
       <MenuPopover>
         <MenuList>
-          {itemIds.map(i => {
-            return <OverflowMenuItem key={i} id={i} />;
-          })}
+          {itemIds.map(id => (
+            <OverflowMenuItem key={id} id={id} />
+          ))}
         </MenuList>
       </MenuPopover>
     </Menu>

@@ -489,15 +489,15 @@ const createGroupManager = () => {
   return {
     groupVisibility: () => groupVisibility,
     setItemVisibility(itemId: string, groupId: string, visible?: boolean) {
-      const group = (groups[groupId] ??= [new Set<string>(), new Set<string>()]);
+      const [hiddenItems, visibleItems] = (groups[groupId] ??= [new Set<string>(), new Set<string>()]);
       // Both transitions and removal clear the previous membership; undefined means removal.
-      group[0].delete(itemId);
-      group[1].delete(itemId);
+      hiddenItems.delete(itemId);
+      visibleItems.delete(itemId);
       if (visible !== undefined) {
-        group[visible ? 1 : 0].add(itemId);
+        (visible ? visibleItems : hiddenItems).add(itemId);
       }
-      const visibleCount = group[1].size;
-      groupVisibility[groupId] = visibleCount ? (group[0].size ? 'overflow' : 'visible') : 'hidden';
+      const visibleCount = visibleItems.size;
+      groupVisibility[groupId] = visibleCount ? (hiddenItems.size ? 'overflow' : 'visible') : 'hidden';
       return visibleCount;
     },
   };
