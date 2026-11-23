@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { BadgeBaseProps, BadgeBaseState, BadgeProps, BadgeState } from './Badge.types';
 
 /**
@@ -28,7 +28,7 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
  * @param ref - User provided ref to be passed to the Badge component.
  */
 export const useBadgeBase_unstable = (props: BadgeBaseProps, ref: React.Ref<HTMLDivElement>): BadgeBaseState => {
-  const { iconPosition = 'before' } = props;
+  const { iconPosition = 'before', icon, ...rest } = props;
 
   return {
     iconPosition,
@@ -37,12 +37,12 @@ export const useBadgeBase_unstable = (props: BadgeBaseProps, ref: React.Ref<HTML
       icon: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref,
-        ...props,
-      }),
+        ...rest,
+      },
       { elementType: 'div' },
     ),
-    icon: slot.optional(props.icon, { elementType: 'span' }),
+    icon: slot.optional(icon, { elementType: 'span' }),
   };
 };

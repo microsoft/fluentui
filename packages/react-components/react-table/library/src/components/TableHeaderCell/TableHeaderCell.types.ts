@@ -33,6 +33,13 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
 };
 
 /**
+ * State returned by `useTableHeaderCellBase_unstable`.
+ */
+export type TableHeaderCellBaseState = ComponentState<TableHeaderCellSlots> &
+  Pick<TableContextValue, 'noNativeElements'> &
+  Pick<TableHeaderCellProps, 'sortable' | 'sortDirection'>;
+
+/**
  * State used in rendering TableHeaderCell
  */
 export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> &
