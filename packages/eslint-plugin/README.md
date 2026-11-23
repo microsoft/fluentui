@@ -22,8 +22,10 @@ Shared source-lint configurations check workspace imports with `import/no-extran
 This applies to ordinary source lint in both v8 and v9, with the same rule options, type-import behavior,
 development-file exemptions, and inline disable comments.
 
-Workspace discovery is lazy and reused across files. Changes to the root manifest or a requested workspace's
-manifest refresh the index; unknown workspace names are rediscovered rather than cached as unresolved.
+Workspace discovery is lazy and reused across files. On the first package import in each linted file, metadata
+checks detect changes to the root manifest, workspace manifests, and discovery directories. Discovery only reruns
+when those inputs change, including when a workspace is added or renamed. Relinting the same file checks freshness
+again; imports within one file share a snapshot. Installed external packages cannot hide new workspace names.
 Ordinary Nx lint inputs include the shared rule implementation and workspace manifests so cached results cannot
 hide changes to dependency validation.
 

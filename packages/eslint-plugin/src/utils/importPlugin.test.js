@@ -34,7 +34,7 @@ function verify(code, options = { devDependencies: false }, extraConfig = {}, se
 }
 
 beforeEach(() => {
-  root = fs.mkdtempSync(path.join(os.tmpdir(), 'workspace-dependency-lint-'));
+  root = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'workspace-dependency-lint-'));
   consumer = path.join(root, 'packages/consumer/library');
   dependency = path.join(root, 'packages/dependency/library');
   writeJson(path.join(root, 'package.json'), {
@@ -265,6 +265,15 @@ test('workspace discovery is reused across files without rereading unrelated man
   expect(read.mock.calls.filter(([filename]) => filename === unrelatedManifest)).toHaveLength(1);
 });
 
+test('workspace metadata is validated once per file, not once per import', () => {
+  const unrelatedManifest = path.join(root, 'packages/unrelated/library/package.json');
+  writeJson(unrelatedManifest, { name: '@fixture/unrelated' });
+  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  const stat = jest.spyOn(fs, 'statSync');
+  expect(verify("import '@fixture/dependency';".repeat(10))).toHaveLength(10);
+  expect(stat.mock.calls.filter(([filename]) => filename === unrelatedManifest)).toHaveLength(1);
+});
+
 test('the cached index refreshes after workspace patterns change', () => {
   expect(verify("import '@fixture/dependency';")).toHaveLength(1);
   writeJson(path.join(root, 'package.json'), { workspaces: ['packages/consumer/library'] });
@@ -296,4 +305,76 @@ test('installed external imports do not repeatedly rebuild the workspace index',
     expect(verify("import 'external-dependency';")).toHaveLength(1);
   }
   expect(glob).toHaveBeenCalledTimes(1);
+});
+
+test.each([false, true])('a new workspace is not hidden by an installed package (declared: %s)', declared => {
+  const store = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'workspace-dependency-store-'));
+  try {
+    if (declared) {
+      writeJson(path.join(consumer, 'package.json'), {
+        name: '@fixture/consumer',
+        dependencies: { 'external-dependency': '*' },
+      });
+    }
+    writeJson(path.join(store, 'package.json'), { name: 'external-dependency', main: 'index.js' });
+    fs.writeFileSync(path.join(store, 'index.js'), '');
+    fs.mkdirSync(path.join(root, 'node_modules'));
+    fs.symlinkSync(store, path.join(root, 'node_modules/external-dependency'), 'junction');
+    expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+    expect(verify("import 'external-dependency/new-workspace-subpath';")).toEqual([]);
+
+    writeJson(path.join(root, 'packages/added/library/package.json'), {
+      name: 'external-dependency',
+      main: 'lib/index.js',
+    });
+    const messages = verify("import 'external-dependency/new-workspace-subpath';");
+    if (declared) {
+      expect(messages).toEqual([]);
+    } else {
+      expect(messages).toHaveLength(1);
+      expect(messages[0].message).toContain("'external-dependency' should be listed");
+    }
+  } finally {
+    fs.rmSync(store, { recursive: true, force: true });
+  }
+});
+
+test('a renamed consumer keeps self imports internal when an installed package shares its name', () => {
+  const external = path.join(root, 'node_modules/external-dependency');
+  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
+  fs.writeFileSync(path.join(external, 'index.js'), '');
+  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  writeJson(path.join(consumer, 'package.json'), { name: 'external-dependency' });
+  expect(verify("import 'external-dependency';")).toEqual([]);
+});
+
+test.each(['packages/empty', 'packages/empty/library'])(
+  'discovers manifests added beneath an existing empty directory: %s',
+  directory => {
+    fs.mkdirSync(path.join(root, directory), { recursive: true });
+    expect(verify("import '@fixture/added';")).toEqual([]);
+    writeJson(path.join(root, 'packages/empty/library/package.json'), { name: '@fixture/added' });
+    expect(verify("import '@fixture/added';")).toHaveLength(1);
+  },
+);
+
+test('refreshes unrelated workspace renames even when the new name is installed', () => {
+  const external = path.join(root, 'node_modules/external-dependency');
+  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
+  fs.writeFileSync(path.join(external, 'index.js'), '');
+  expect(verify("import 'external-dependency';")).toHaveLength(1);
+  writeJson(path.join(dependency, 'package.json'), { name: 'external-dependency', main: 'lib/index.js' });
+  const glob = jest.spyOn(fs, 'globSync');
+  expect(verify("import 'external-dependency/new-workspace-subpath';")).toHaveLength(1);
+  expect(glob).toHaveBeenCalledTimes(1);
+});
+
+test('directory freshness covers brace expansions and recursive workspace patterns', () => {
+  writeJson(path.join(root, 'package.json'), {
+    workspaces: ['packages/{consumer,dependency}/library', 'extra/**/library'],
+  });
+  fs.mkdirSync(path.join(root, 'extra/empty'), { recursive: true });
+  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
+  writeJson(path.join(root, 'extra/empty/nested/library/package.json'), { name: '@fixture/added' });
+  expect(verify("import '@fixture/added';")).toHaveLength(1);
 });
