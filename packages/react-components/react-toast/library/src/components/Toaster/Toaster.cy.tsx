@@ -55,6 +55,36 @@ const Example = ({ offset, position, narrow, style }: ExampleProps) => {
   );
 };
 
+type TwoPositionsProps = {
+  offset: ToastOffset;
+  style: React.CSSProperties;
+};
+
+const TwoPositions = ({ offset, style }: TwoPositionsProps) => {
+  const { dispatchToast } = useToastController();
+  const makeToast = (position: ToastPosition) =>
+    dispatchToast(
+      <Toast>
+        <ToastTitle>A toast title that is longer than the narrow viewport</ToastTitle>
+      </Toast>,
+      { timeout: -1, position },
+    );
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          makeToast('bottom-start');
+          makeToast('bottom-end');
+        }}
+      >
+        Make toasts
+      </button>
+      <Toaster offset={offset} style={style} />
+    </>
+  );
+};
+
 const mountInViewport = (width: number, props: ExampleProps) => {
   cy.viewport(width, 400);
   mount(<Example {...props} />);
@@ -161,6 +191,30 @@ describe('Toaster', () => {
     cy.get(`.${toasterClassNames.root}`).should($toaster => {
       expect($toaster[0].getBoundingClientRect().width).to.equal(200);
       expect(getGutters($toaster[0]).right, 'right gutter').to.equal(GUTTER);
+    });
+  });
+
+  it('should position and cap each position on its own when the Toaster has a style prop', () => {
+    cy.viewport(VIEWPORT_WIDTH, 400);
+    mount(
+      <TwoPositions
+        offset={{ 'bottom-start': { horizontal: 60 }, 'bottom-end': { horizontal: 20 } }}
+        style={{ maxWidth: 270 }}
+      />,
+    );
+    cy.contains('button', 'Make toasts').click();
+
+    cy.get('[data-toaster-position="bottom-start"]').should($toaster => {
+      const gutters = getGutters($toaster[0]);
+
+      expect(gutters.left, 'left gutter of bottom-start').to.equal(60);
+      expect(gutters.right, 'right gutter of bottom-start').to.equal(GUTTER);
+    });
+    cy.get('[data-toaster-position="bottom-end"]').should($toaster => {
+      const gutters = getGutters($toaster[0]);
+
+      expect(gutters.left, 'left gutter of bottom-end').to.equal(GUTTER);
+      expect(gutters.right, 'right gutter of bottom-end').to.equal(GUTTER);
     });
   });
 });
