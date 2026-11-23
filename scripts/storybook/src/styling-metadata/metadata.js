@@ -84,6 +84,8 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
   const attributes = {};
   /** @type {Map<string, { domain: Domain; node: import('typescript').Node | undefined; priority: number }>} */
   const domains = new Map();
+  /** @type {Set<string>} */
+  const mixedScopes = new Set();
   /** @type {Map<string, { target: string; attribute: string; domain: Domain }>} */
   const elements = new Map();
 
@@ -124,6 +126,11 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
       return;
     }
 
+    const id = `${slot}\0${name}`;
+    if (priority === PRIORITY.inherited && mixedScopes.has(id)) {
+      return;
+    }
+
     const entries = (attributes[slot] ??= {});
 
     // Retain map keys even if an upstream write supplied a DOM-derived key first.
@@ -133,7 +140,6 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
     }
     entries[key] = name;
 
-    const id = `${slot}\0${name}`;
     const previous = domains.get(id);
 
     if (
@@ -263,6 +269,9 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
         writeBaseline.set(id, domains.get(id));
       }
       const previous = alternatives.get(id);
+      if (previous && previous.scope !== pathInfo.scope) {
+        mixedScopes.add(id);
+      }
       let paths = previous?.scope === pathInfo.scope ? previous.paths : [];
       // A later write replaces earlier writes on paths it always covers. Writes
       // on alternative branches remain possible and contribute a value union.
@@ -294,10 +303,17 @@ function assembleMetadata(evidence, analysis, report, inherit, isLocal) {
         }
       }
 
+      // The walk does not prove execution order or shared state across functions.
+      // Keep that uncertainty instead of retaining a higher-priority base-hook value.
+      if (mixedScopes.has(id)) {
+        domain = { kind: 'unresolved' };
+        domains.delete(id);
+      }
+
       const priority = (local ? PRIORITY.local : 0) + PRIORITY[domain.kind];
       // An unknown runtime aggregate must invalidate lower-priority type evidence,
       // not restore a declared union that may include overwritten values.
-      if (previous?.scope === pathInfo.scope) {
+      if (!mixedScopes.has(id) && previous?.scope === pathInfo.scope) {
         const baseline = writeBaseline.get(id);
         if (baseline && (domain.kind !== 'unresolved' || baseline.priority >= priority)) {
           domains.set(id, baseline);

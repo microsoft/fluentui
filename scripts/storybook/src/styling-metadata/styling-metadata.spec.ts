@@ -280,6 +280,28 @@ describe('styling metadata', () => {
       expect(extractor.getDiagnostics()).toEqual([]);
     });
 
+    it.each(['CrossScope', 'ComposedCrossScope'])(
+      'does not retain stale domains when a caller overwrites base-hook attributes (%s)',
+      component => {
+        const extractor = createStylingMetadataExtractor({ tsConfigPath: fixtureTsConfig, dataAttributes: true });
+
+        expect(extractor.extractComponent('fixture-components', fixtureStory, component)).toEqual({
+          dataAttributes: {
+            attributes: { root: { presence: 'data-presence', literal: 'data-literal' } },
+            values: { root: { presence: null, literal: null } },
+          },
+        });
+        expect(
+          extractor
+            .getDiagnosticsFor('fixture-components', fixtureStory, component)
+            .map(({ code, attribute }) => ({ code, attribute })),
+        ).toEqual([
+          { code: 'unresolved-domain', attribute: 'data-presence' },
+          { code: 'unresolved-domain', attribute: 'data-literal' },
+        ]);
+      },
+    );
+
     it('does not document potentially overwritten values as a finite branch domain', () => {
       const extractor = createStylingMetadataExtractor({ tsConfigPath: fixtureTsConfig, dataAttributes: true });
       const result = extractor.extractComponent('fixture-components', fixtureStory, 'Branching');

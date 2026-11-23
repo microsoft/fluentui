@@ -73,7 +73,9 @@ or finite values. Invalid tooling configuration still fails the build.
 - Attributes on non-slot elements are kept in the metadata (`elements`) but not rendered.
 - Sequential writes on overlapping conditional paths have unknown value domains and emit `unresolved-domain`;
   lower-priority declared slot types do not override this uncertainty. Only mutually exclusive branches are combined
-  into a finite union. An unconditional replacement still takes precedence.
+  into a finite union. Within one function, an unconditional replacement still takes precedence.
+- Attributes written in multiple functions have unknown value domains because the walk cannot prove their execution
+  order or shared state. Earlier base-hook values are not retained as if they were final.
 
 ## Tests
 

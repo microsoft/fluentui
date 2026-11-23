@@ -24,11 +24,6 @@ jest.mock('./CopyAsMarkdownButton', () => ({ CopyAsMarkdownButton: jest.fn(() =>
 jest.mock('./Toc', () => ({ Toc: jest.fn(() => null) }));
 
 const buttonClassNames = { root: 'fui-Button', icon: 'fui-Button__icon' };
-const buttonParameters: FluentParameters = {
-  reactStorybookAddon: {
-    slotClassNameGroups: [{ exportName: 'buttonClassNames', slots: buttonClassNames }],
-  },
-};
 
 function renderDocs(parameters: FluentParameters, configured: boolean, props: FluentDocsPageProps = {}) {
   const story: PreparedStory = {
@@ -263,99 +258,5 @@ describe.each([false, true])('FluentDocsPage styling reference (configured: %s)'
     renderDocs(stylingParameters, configured, { renderArgsTable: () => <div>Custom API reference</div> });
     expect(screen.getByText('Custom API reference')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'API Reference' })).toBeNull();
-  });
-});
-
-describe.each([false, true])('FluentDocsPage class names (configured: %s)', configured => {
-  it('renders the supplied class names in a labeled semantic table', () => {
-    renderDocs(buttonParameters, configured);
-
-    expect(
-      screen.getByRole('heading', { name: 'Customizing component slot styles with class names', level: 2 }),
-    ).toBeTruthy();
-    const table = screen.getByRole('table', { name: 'buttonClassNames' });
-    expect(
-      within(table)
-        .getAllByRole('columnheader')
-        .map(cell => cell.textContent),
-    ).toEqual(['Slot', 'Class name']);
-    expect(
-      within(table)
-        .getAllByRole('row')
-        .map(row => row.textContent),
-    ).toEqual(['SlotClass name', 'rootfui-Button', 'iconfui-Button__icon']);
-    expect(screen.getByTestId('arg-types')).toBeTruthy();
-  });
-
-  it('preserves group order and supports components with only a root class name', () => {
-    renderDocs(
-      {
-        reactStorybookAddon: {
-          slotClassNameGroups: [
-            { exportName: 'rootOnlyClassNames', slots: { root: 'fui-RootOnly' } },
-            { exportName: 'buttonClassNames', slots: buttonClassNames },
-          ],
-        },
-      },
-      configured,
-    );
-
-    const tables = screen.getAllByRole('table');
-    expect(tables.map(table => table.querySelector('caption')?.textContent)).toEqual([
-      'rootOnlyClassNames',
-      'buttonClassNames',
-    ]);
-    expect(
-      within(tables[0])
-        .getAllByRole('row')
-        .map(row => row.textContent),
-    ).toEqual(['SlotClass name', 'rootfui-RootOnly']);
-  });
-
-  it.each([
-    {},
-    { reactStorybookAddon: { slotClassNameGroups: [] } },
-    { reactStorybookAddon: { slotClassNameGroups: [{ exportName: 'emptyClassNames', slots: {} }] } },
-  ])('does not render a class-name card without exported entries (%j)', parameters => {
-    renderDocs(parameters, configured);
-
-    expect(screen.queryByRole('table')).toBeNull();
-    expect(screen.queryByText('Customizing component slot styles with class names')).toBeNull();
-    expect(screen.getByTestId('arg-types')).toBeTruthy();
-  });
-
-  it('hides the class-name card with the API table', () => {
-    renderDocs({ ...buttonParameters, docs: { hideArgsTable: true } }, configured);
-
-    expect(screen.queryByRole('table')).toBeNull();
-    expect(screen.queryByTestId('arg-types')).toBeNull();
-  });
-
-  it('honors the docs opt-out for legacy groups as well as generated styling metadata', () => {
-    renderDocs(
-      {
-        __generatedStylingMetadata: { classNames: { classNames: buttonClassNames } },
-        reactStorybookAddon: {
-          ...buttonParameters.reactStorybookAddon,
-          docs: false,
-        },
-      },
-      configured,
-    );
-
-    expect(screen.queryByRole('table')).toBeNull();
-    expect(screen.queryByRole('region', { name: 'API Reference' })).toBeNull();
-    expect(screen.queryByText('Customizing component slot styles with class names')).toBeNull();
-    expect(screen.getByTestId('arg-types')).toBeTruthy();
-  });
-
-  it('preserves a custom renderer as a replacement for the complete API section', () => {
-    const renderArgsTable = jest.fn(() => <div>Custom API section</div>);
-    renderDocs(buttonParameters, configured, { renderArgsTable });
-
-    expect(renderArgsTable).toHaveBeenCalled();
-    expect(screen.getByText('Custom API section')).toBeTruthy();
-    expect(screen.queryByRole('table')).toBeNull();
-    expect(screen.queryByTestId('arg-types')).toBeNull();
   });
 });
