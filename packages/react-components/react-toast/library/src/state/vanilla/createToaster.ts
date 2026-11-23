@@ -65,7 +65,8 @@ export function createToaster(options: Partial<ToasterOptions>): {
     return a.priority - b.priority;
   });
 
-  // Toasts that are in the map while their `queued` status is reported, before they are visible or queued
+  // Ids that are reserved while their toast is replaced or reports its `queued` status. A dispatch with a reserved
+  // id is ignored.
   const pendingToasts = new Set<ToastId>();
 
   const isToastVisible = (toastId: ToastId) => {
@@ -108,15 +109,26 @@ export function createToaster(options: Partial<ToasterOptions>): {
   const buildToast = (toastOptions: Partial<ToastOptions> & { toastId: ToastId }, onUpdate: () => void) => {
     const { toastId, content, toasterId } = toastOptions;
 
+    if (pendingToasts.has(toastId)) {
+      return;
+    }
+
     const existingToast = toasts.get(toastId);
     if (existingToast) {
-      if (visibleToasts.has(toastId) || queue.contains(toastId) || pendingToasts.has(toastId)) {
+      if (visibleToasts.has(toastId) || queue.contains(toastId)) {
         return;
       }
 
       // The existing toast is neither visible nor queued. It was dismissed and is waiting for its exit motion,
       // or `dismissAllToasts` dropped it from the queue. Remove it now, so that the new toast can use its id.
-      existingToast.remove();
+      // `remove` calls the update callback of that toast. The id stays reserved, so that a dispatch from that
+      // callback cannot take it first.
+      pendingToasts.add(toastId);
+      try {
+        existingToast.remove();
+      } finally {
+        pendingToasts.delete(toastId);
+      }
     }
 
     const order = counter++;

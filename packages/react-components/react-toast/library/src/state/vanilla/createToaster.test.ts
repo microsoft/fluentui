@@ -334,4 +334,44 @@ describe('createToaster', () => {
     expect(toast.content).toBe('foo');
     expect(toaster.visibleToasts.has('foo')).toBe(true);
   });
+
+  it('should ignore a toast that is dispatched with the same id while the dismissed toast is removed', () => {
+    const toaster = createToaster({ limit: 1 });
+    const statuses: string[] = [];
+    const build = (content: string, onUpdate: () => void) =>
+      toaster.buildToast(
+        {
+          content,
+          toastId: 'foo',
+          onStatusChange: (_, { status }) => {
+            statuses.push(`${content} ${status}`);
+          },
+        },
+        onUpdate,
+      );
+    let replacing = false;
+
+    // The update callback of the first toast dispatches the id again while that toast is removed
+    build('first', () => {
+      if (replacing) {
+        replacing = false;
+        build('nested', () => null);
+      }
+    });
+    toaster.dismissToast('foo');
+    replacing = true;
+    build('second', () => null);
+
+    const toast = toaster.toasts.get('foo');
+    assertToast(toast);
+    expect(statuses.filter(status => status.endsWith('queued'))).toEqual(['first queued', 'second queued']);
+    expect(toast.content).toBe('second');
+    expect(toaster.visibleToasts.has('foo')).toBe(true);
+
+    // The id must not wait in the queue as well, where it would hold back the next toast
+    toaster.buildToast({ content: 'bar', toastId: 'bar' }, () => null);
+    toaster.dismissToast('foo');
+    toast.remove();
+    expect(toaster.visibleToasts.has('bar')).toBe(true);
+  });
 });
