@@ -8,6 +8,9 @@ export const decorators = [...rootPreview.decorators];
 export const parameters = {
   ...rootPreview.parameters,
   fluentThemes: themes.filter(theme => theme.id === 'web-light' || theme.id === 'web-dark'),
+  reactStorybookAddon: {
+    docs: true,
+  },
 };
 
 export const tags = ['autodocs'];

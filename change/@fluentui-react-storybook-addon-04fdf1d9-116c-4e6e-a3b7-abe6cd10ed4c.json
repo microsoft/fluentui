@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: name Docs direction controls and improve documentation text contrast",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "paulmardling@microsoft.com"
+}

@@ -3,7 +3,7 @@ import { addons } from 'storybook/preview-api';
 
 import { Label } from '@fluentui/react-label';
 import { Switch, type SwitchProps } from '@fluentui/react-switch';
-import { useId } from '@fluentui/react-utilities';
+import { useId, type ForwardRefComponent } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
 import { makeStyles } from '@griffel/react';
 
@@ -23,12 +23,12 @@ const useStyles = makeStyles({
 /**
  * Dir switch used in the react-components docs header
  */
-export const DirSwitch: React.FC<{ dir?: 'ltr' | 'rtl' }> = ({ dir }) => {
+export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.forwardRef(({ dir }, ref) => {
   const switchId = useId('dir-switch');
 
   const styles = useStyles();
 
-  const [currentDir, setCurrentDir] = React.useState(dir);
+  const [currentDir, setCurrentDir] = React.useState(dir ?? 'ltr');
   const checked = currentDir === 'rtl';
 
   const setGlobalDir = (newDir: 'ltr' | 'rtl'): void => {
@@ -42,14 +42,16 @@ export const DirSwitch: React.FC<{ dir?: 'ltr' | 'rtl' }> = ({ dir }) => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <Label className={styles.label} htmlFor={currentDir === 'ltr' ? undefined : switchId}>
+    <div className={styles.container} ref={ref}>
+      <Label className={styles.label} htmlFor={switchId}>
         LTR
       </Label>
-      <Switch checked={checked} id={switchId} onChange={onChange} />
-      <Label className={styles.label} htmlFor={currentDir === 'rtl' ? switchId : undefined}>
+      <Switch checked={checked} id={switchId} onChange={onChange} aria-label="Right-to-left layout (LTR / RTL)" />
+      <Label className={styles.label} htmlFor={switchId}>
         RTL
       </Label>
     </div>
   );
-};
+});
+
+DirSwitch.displayName = 'DirSwitch';
