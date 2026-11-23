@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: bound multiline MessageBar text to the design measure",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "paulmardling@microsoft.com"
+}

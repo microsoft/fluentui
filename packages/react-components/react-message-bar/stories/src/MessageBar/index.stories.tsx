@@ -17,6 +17,7 @@ export { Dismiss } from './Dismiss.stories';
 export { Animation } from './Animation.stories';
 export { Reflow } from './Reflow.stories';
 export { ManualLayout } from './ManualLayout.stories';
+export { Issue29419 } from './Issue29419.stories';
 
 export default {
   title: 'Components/MessageBar',
