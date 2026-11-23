@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
 import { getMetadataFromSlotComponent } from '../utils/getMetadataFromSlotComponent';
-import { Runtime } from '../utils/Runtime';
+import { jsx, jsxs } from '../utils/Runtime';
 
 export const jsxsSlot = <Props extends UnknownSlotProps>(
   type: SlotComponentType<Props>,
@@ -18,16 +18,16 @@ export const jsxsSlot = <Props extends UnknownSlotProps>(
      * We should wrap children by a static fragment
      * as there's no way to know if renderFunction will render statically or dynamically
      */
-    return Runtime.jsx(
+    return jsx(
       React.Fragment,
       {
         children: renderFunction(elementType, {
           ...props,
-          children: Runtime.jsxs(React.Fragment, { children: props.children }, undefined),
+          children: jsxs(React.Fragment, { children: props.children }, undefined),
         }),
       },
       key,
     ) as React.ReactElement<Props>;
   }
-  return Runtime.jsxs(elementType, props, key);
+  return jsxs(elementType, props, key);
 };
