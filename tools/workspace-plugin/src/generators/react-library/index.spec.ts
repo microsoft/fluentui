@@ -125,7 +125,7 @@ describe('react-library generator', () => {
           "declarationDir": "../../../../dist/out-tsc/types",
           "inlineSources": true,
           "lib": Array [
-            "ES2019",
+            "ES2020",
             "dom",
           ],
           "noEmit": false,

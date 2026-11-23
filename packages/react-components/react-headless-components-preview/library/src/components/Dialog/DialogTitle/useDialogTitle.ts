@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
 
@@ -20,12 +20,12 @@ export const useDialogTitle = (props: DialogTitleProps, ref: React.Ref<HTMLHeadi
   return {
     components: { root: 'h2' },
     root: slot.always(
-      getIntrinsicElementProps('h2', {
+      {
         ref,
         ...props,
         // Must match aria-labelledby in DialogSurface for accessible naming
         id: dialogTitleId,
-      }),
+      },
       { elementType: 'h2' },
     ),
   };

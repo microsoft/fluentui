@@ -869,3 +869,31 @@ describe('RangeSlider', () => {
     });
   });
 });
+
+describe('RangeSlider DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <RangeSlider
+        aria-describedby="description"
+        defaultValue={{ start: 20, end: 80 }}
+        disabled
+        form="form"
+        max={90}
+        min={10}
+        name="range"
+        onChange={() => undefined}
+        required
+        size="small"
+        step={5}
+        title="Title"
+        vertical
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.getAttributeNames().sort()).toEqual(['class', 'role', 'style', 'title']);
+  });
+});
