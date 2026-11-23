@@ -68,7 +68,7 @@ describe('MessageBar', () => {
     );
 
     expect(announce).toHaveBeenCalledTimes(1);
-    expect(announce).toHaveBeenCalledWith('TitleBody', {
+    expect(announce).toHaveBeenCalledWith('Title Body', {
       alert: politeness === 'assertive',
       polite: politeness === 'polite',
     });
@@ -88,7 +88,7 @@ describe('MessageBar', () => {
         </AnnounceProvider>,
       );
 
-      expect(announce).toHaveBeenCalledWith('TitleBody', {
+      expect(announce).toHaveBeenCalledWith('Title Body', {
         alert: politeness === 'assertive',
         polite: politeness === 'polite',
       });
@@ -112,7 +112,99 @@ describe('MessageBar', () => {
     );
 
     expect(announce).toHaveBeenCalledTimes(1);
-    expect(announce).toHaveBeenCalledWith('TitleBody,Action 1Action 2', expect.anything());
+    expect(announce).toHaveBeenCalledWith('Title Body,Action 1,Action 2', expect.anything());
+  });
+
+  it('should announce text between the actions', () => {
+    const announce = jest.fn();
+    render(
+      <AnnounceProvider value={{ announce }}>
+        <MessageBar>
+          <MessageBarBody>Body</MessageBarBody>
+          <MessageBarActions>
+            <button>Action 1</button>
+            or
+            <button>Action 2</button>
+          </MessageBarActions>
+        </MessageBar>
+      </AnnounceProvider>,
+    );
+
+    expect(announce).toHaveBeenCalledTimes(1);
+    expect(announce).toHaveBeenCalledWith('Body,Action 1,or,Action 2', expect.anything());
+  });
+
+  it.each([
+    [
+      'a title and a body',
+      () => (
+        <MessageBarBody>
+          <MessageBarTitle>Title</MessageBarTitle>Body
+        </MessageBarBody>
+      ),
+      'Title Body',
+    ],
+    [
+      'a title that is followed by a space',
+      () => (
+        <MessageBarBody>
+          <MessageBarTitle>Title</MessageBarTitle> Body
+        </MessageBarBody>
+      ),
+      'Title Body',
+    ],
+    [
+      'a title that is followed by an element',
+      () => (
+        <MessageBarBody>
+          <MessageBarTitle>Title</MessageBarTitle>
+          <a href="#">Link</a>
+        </MessageBarBody>
+      ),
+      'Title Link',
+    ],
+    [
+      'a title inside another element',
+      () => (
+        <MessageBarBody>
+          <div>
+            <MessageBarTitle>Title</MessageBarTitle>
+          </div>
+          Body
+        </MessageBarBody>
+      ),
+      'Title Body',
+    ],
+    [
+      'an empty title',
+      () => (
+        <MessageBarBody>
+          <MessageBarTitle />
+          Body
+        </MessageBarBody>
+      ),
+      'Body',
+    ],
+    [
+      'only a title',
+      () => (
+        <MessageBarBody>
+          <MessageBarTitle>Title</MessageBarTitle>
+        </MessageBarBody>
+      ),
+      'Title',
+    ],
+    ['only a body', () => <MessageBarBody>Body</MessageBarBody>, 'Body'],
+  ])('should announce %s', (_, renderBody, message) => {
+    const announce = jest.fn();
+    render(
+      <AnnounceProvider value={{ announce }}>
+        <MessageBar>{renderBody()}</MessageBar>
+      </AnnounceProvider>,
+    );
+
+    expect(announce).toHaveBeenCalledTimes(1);
+    expect(announce).toHaveBeenCalledWith(message, expect.anything());
   });
 
   describe('should not flicker during reflow', () => {
