@@ -1,5 +1,6 @@
 export { TagPickerControl } from './TagPickerControl';
 export type {
+  TagPickerControlBaseProps,
   TagPickerControlBaseState,
   TagPickerControlCSSProperties,
   TagPickerControlInternalSlots,

@@ -781,6 +781,8 @@ export class BaseRadioGroup extends FASTElement {
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // @internal
     protected disabledChanged(prev?: boolean, next?: boolean): void;
@@ -1067,6 +1069,8 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
