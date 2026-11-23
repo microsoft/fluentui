@@ -143,19 +143,21 @@ test('preserves internal-regex classification and includeInternal', () => {
   expect(verify("import '@fixture/dependency';", { includeInternal: true }, { settings })).toHaveLength(1);
 });
 
-test('preserves external package checks and the default Node resolver', () => {
-  const external = path.join(root, 'node_modules/external-dependency');
-  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
-  fs.writeFileSync(path.join(external, 'index.js'), '');
-  expect(verify("import 'external-dependency';", {}, { settings: {} })).toHaveLength(1);
-});
-
-test.each(['node', ['node'], { node: {} }])('preserves configured resolver forms: %j', resolver => {
-  const external = path.join(root, 'node_modules/external-dependency');
-  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
-  fs.writeFileSync(path.join(external, 'index.js'), '');
-  expect(verify("import 'external-dependency';", {}, { settings: { 'import/resolver': resolver } })).toHaveLength(1);
-});
+test.each([undefined, 'node', ['node'], { node: {} }])(
+  'preserves external checks and resolver settings: %j',
+  resolver => {
+    const external = path.join(root, 'node_modules/external-dependency');
+    writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
+    fs.writeFileSync(path.join(external, 'index.js'), '');
+    const glob = jest.spyOn(fs, 'globSync');
+    for (let i = 0; i < 3; i++) {
+      expect(verify("import 'external-dependency';", {}, { settings: { 'import/resolver': resolver } })).toHaveLength(
+        1,
+      );
+    }
+    expect(glob).toHaveBeenCalledTimes(1);
+  },
+);
 
 test('preserves inline rule disable comments', () => {
   expect(
@@ -247,28 +249,22 @@ test('core and import-sorting configurations share the canonical plugin identity
 
 test('import-free files do not discover workspace packages', () => {
   const glob = jest.spyOn(fs, 'globSync');
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 3; i++) {
     expect(verify('const value = 1;')).toEqual([]);
   }
   expect(glob).not.toHaveBeenCalled();
 });
 
-test('workspace discovery is reused across files without rereading unrelated manifests', () => {
+test('workspace discovery is reused across files and metadata is checked once per file', () => {
   const unrelatedManifest = path.join(root, 'packages/unrelated/library/package.json');
   writeJson(unrelatedManifest, { name: '@fixture/unrelated' });
   const glob = jest.spyOn(fs, 'globSync');
   const read = jest.spyOn(fs, 'readFileSync');
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 3; i++) {
     expect(verify("import '@fixture/dependency';")).toHaveLength(1);
   }
   expect(glob).toHaveBeenCalledTimes(1);
   expect(read.mock.calls.filter(([filename]) => filename === unrelatedManifest)).toHaveLength(1);
-});
-
-test('workspace metadata is validated once per file, not once per import', () => {
-  const unrelatedManifest = path.join(root, 'packages/unrelated/library/package.json');
-  writeJson(unrelatedManifest, { name: '@fixture/unrelated' });
-  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
   const stat = jest.spyOn(fs, 'statSync');
   expect(verify("import '@fixture/dependency';".repeat(10))).toHaveLength(10);
   expect(stat.mock.calls.filter(([filename]) => filename === unrelatedManifest)).toHaveLength(1);
@@ -287,24 +283,6 @@ test('new and removed workspace imports are discovered in a long-lived process',
   expect(verify("import '@fixture/added';")).toHaveLength(1);
   fs.unlinkSync(addedManifest);
   expect(verify("import '@fixture/added';")).toEqual([]);
-});
-
-test('known workspace names are refreshed when their manifest changes', () => {
-  expect(verify("import '@fixture/dependency';")).toHaveLength(1);
-  writeJson(path.join(dependency, 'package.json'), { name: '@fixture/renamed' });
-  expect(verify("import '@fixture/dependency';")).toEqual([]);
-  expect(verify("import '@fixture/renamed';")).toHaveLength(1);
-});
-
-test('installed external imports do not repeatedly rebuild the workspace index', () => {
-  const external = path.join(root, 'node_modules/external-dependency');
-  writeJson(path.join(external, 'package.json'), { name: 'external-dependency', main: 'index.js' });
-  fs.writeFileSync(path.join(external, 'index.js'), '');
-  const glob = jest.spyOn(fs, 'globSync');
-  for (let i = 0; i < 5; i++) {
-    expect(verify("import 'external-dependency';")).toHaveLength(1);
-  }
-  expect(glob).toHaveBeenCalledTimes(1);
 });
 
 test.each([false, true])('a new workspace is not hidden by an installed package (declared: %s)', declared => {

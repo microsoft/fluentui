@@ -16,21 +16,13 @@ Helpers for customizing configuration are exported under a `configHelpers` objec
 
 ### Workspace dependency declarations
 
-Shared source-lint configurations check workspace imports with `import/no-extraneous-dependencies` using source
-`package.json` files discovered from the repository's `workspaces` patterns. Workspace entry points and
-`node_modules` links do not need to exist first. External packages continue to use the configured import resolvers.
-This applies to ordinary source lint in both v8 and v9, with the same rule options, type-import behavior,
-development-file exemptions, and inline disable comments.
+Shared v8/v9 source lint checks workspace imports with `import/no-extraneous-dependencies` using source `package.json`
+files from the repository's `workspaces` patterns. No builds, workspace links or Nx graph cache are required.
+Existing rule options, type-import behavior, development-file exemptions and inline disables are preserved.
 
-Workspace discovery is lazy and reused across files. On the first package import in each linted file, metadata
-checks detect changes to the root manifest, workspace manifests, and discovery directories. Discovery only reruns
-when those inputs change, including when a workspace is added or renamed. Relinting the same file checks freshness
-again; imports within one file share a snapshot. Installed external packages cannot hide new workspace names.
-Ordinary Nx lint inputs include the shared rule implementation and workspace manifests so cached results cannot
-hide changes to dependency validation.
-
-The manifest resolver is scoped to this dependency rule. It does not validate subpath exports or unresolved imports;
-retain normal type checking for those checks. No component build or Nx graph cache is required.
+Discovery is cached and checked for workspace changes on each linted file's first package import. Nx lint inputs
+track the implementation and workspace manifests. External packages and other import rules retain their configured
+resolvers; this dependency check does not validate unresolved imports or subpath exports.
 
 ## Rules
 

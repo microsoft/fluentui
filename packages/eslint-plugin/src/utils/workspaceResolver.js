@@ -7,7 +7,7 @@ const minimatch = require('minimatch');
 const braceExpand = minimatch.braceExpand;
 const { isBuiltin } = require('node:module');
 
-/** @type {{root: string, signature: string, packages: Record<string, string>, signatures: Map<string, string>} | undefined} */
+/** @type {{root: string, packages: Record<string, string>, signatures: Map<string, string>} | undefined} */
 let workspaceCache;
 /** @type {WeakMap<object, Record<string, string>>} */
 const filePackages = new WeakMap();
@@ -21,17 +21,14 @@ function signature(filename) {
 /**
  * Find workspace manifests from the source file, not the process working directory.
  * @param {string} filename
- * @param {boolean} [refresh]
  * @returns {Record<string, string>}
  */
-function getWorkspacePackages(filename, refresh = false) {
+function getWorkspacePackages(filename) {
   let directory = path.dirname(filename);
   while (true) {
     const manifest = path.join(directory, 'package.json');
     if (
       workspaceCache?.root === directory &&
-      !refresh &&
-      workspaceCache.signature === signature(manifest) &&
       [...workspaceCache.signatures].every(([input, previous]) => signature(input) === previous)
     ) {
       return workspaceCache.packages;
@@ -56,7 +53,10 @@ function getWorkspacePackages(filename, refresh = false) {
         );
         /** @type {Record<string, string>} */
         const packages = Object.create(null);
-        const signatures = new Map([[directory, signature(directory)]]);
+        const signatures = new Map([
+          [manifest, signature(manifest)],
+          [directory, signature(directory)],
+        ]);
         for (const entry of entries) {
           const workspaceManifest = path.join(entry.parentPath, entry.name);
           const relativeManifest = path.relative(directory, workspaceManifest).split(path.sep).join('/');
@@ -80,7 +80,7 @@ function getWorkspacePackages(filename, refresh = false) {
             packages[workspace.name] = workspaceManifest;
           }
         }
-        workspaceCache = { root: directory, signature: signature(manifest), packages, signatures };
+        workspaceCache = { root: directory, packages, signatures };
         return packages;
       }
     }
