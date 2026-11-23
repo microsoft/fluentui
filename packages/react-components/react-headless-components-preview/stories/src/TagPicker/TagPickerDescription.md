@@ -13,6 +13,13 @@ It wraps the base hooks exported by `@fluentui/react-tag-picker` (`useTagPickerB
 `useTagPickerButtonBase_unstable`) and ships **no styles** — bring your own via `className` and the
 `data-*` attributes the hooks expose.
 
+### Option styling
+
+`TagPickerOption` exposes `data-selected` when its value is selected by the picker.
+Explicit ARIA overrides do not change this selection state. `data-checked` reflects a
+consumer-supplied `aria-checked`: it is present with an empty value for `true` or `"true"`,
+omitted for `false`, `"false"` or `undefined`, and set to `"mixed"` for a mixed state.
+
 ### Accessibility defaults
 
 `TagPickerList` exposes a multiselect listbox, and each `TagPickerOption` exposes its current

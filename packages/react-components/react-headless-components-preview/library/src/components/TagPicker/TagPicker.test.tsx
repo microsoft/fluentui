@@ -57,12 +57,17 @@ describe('TagPicker', () => {
 
     expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-selected', 'true');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'false');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('data-selected', '');
+    expect(getByRole('option', { name: 'Dog' })).not.toHaveAttribute('data-selected');
     getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-checked'));
+    getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('data-checked'));
 
     rerender(picker(['dog']));
 
     expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-selected', 'false');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
+    expect(getByRole('option', { name: 'Cat' })).not.toHaveAttribute('data-selected');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('data-selected', '');
   });
 
   it('preserves checked-only selection for selected and unselected options', () => {
@@ -83,12 +88,20 @@ describe('TagPicker', () => {
 
     expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'true');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'false');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('data-checked', '');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('data-selected', '');
+    expect(getByRole('option', { name: 'Dog' })).not.toHaveAttribute('data-checked');
+    expect(getByRole('option', { name: 'Dog' })).not.toHaveAttribute('data-selected');
     getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-selected'));
 
     rerender(picker(['dog']));
 
     expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'false');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'true');
+    expect(getByRole('option', { name: 'Cat' })).not.toHaveAttribute('data-checked');
+    expect(getByRole('option', { name: 'Cat' })).not.toHaveAttribute('data-selected');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('data-checked', '');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('data-selected', '');
     getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-selected'));
   });
 
@@ -111,6 +124,33 @@ describe('TagPicker', () => {
     expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'true');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'false');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('data-selected', '');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('data-checked', '');
+    expect(getByRole('option', { name: 'Dog' })).not.toHaveAttribute('data-selected');
+    expect(getByRole('option', { name: 'Dog' })).not.toHaveAttribute('data-checked');
+  });
+
+  it.each(['true', 'false', 'mixed'] as const)('exposes aria-checked="%s" for styling', checked => {
+    const { getByRole } = render(
+      <TagPicker open>
+        <TagPickerInput aria-label="Select animals" />
+        <TagPickerList>
+          <TagPickerOption value="cat" aria-checked={checked}>
+            Cat
+          </TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+    const option = getByRole('option', { name: 'Cat' });
+
+    expect(option).toHaveAttribute('aria-checked', checked);
+    expect(option).not.toHaveAttribute('aria-selected');
+    expect(option).not.toHaveAttribute('data-selected');
+    if (checked === 'false') {
+      expect(option).not.toHaveAttribute('data-checked');
+    } else {
+      expect(option).toHaveAttribute('data-checked', checked === 'mixed' ? 'mixed' : '');
+    }
   });
 
   it('preserves consumer ARIA props, refs and option click handlers', () => {
