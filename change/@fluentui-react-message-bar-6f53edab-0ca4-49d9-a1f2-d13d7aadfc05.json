@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: bound multiline MessageBar text to the design measure",
+  "comment": "fix: bound multiline MessageBar text to the design measure and preserve automatic reflow in StrictMode without resize observer loop errors",
   "packageName": "@fluentui/react-message-bar",
   "email": "paulmardling@microsoft.com"
 }

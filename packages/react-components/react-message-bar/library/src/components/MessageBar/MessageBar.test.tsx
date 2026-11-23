@@ -149,8 +149,13 @@ describe('MessageBar', () => {
     });
 
     beforeEach(() => {
+      jest.useFakeTimers();
       resizeCallback = undefined;
       observedElement = undefined;
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
     });
 
     const renderMessageBar = () =>
@@ -167,7 +172,7 @@ describe('MessageBar', () => {
       container.querySelector(`.${messageBarClassNames.bottomReflowSpacer}`) !== null;
 
     // Simulate the container being resized (e.g. dragging the window / page) to a given width.
-    const resizeTo = (inlineSize: number) =>
+    const notifyResize = (inlineSize: number) =>
       act(() => {
         resizeCallback?.(
           [
@@ -179,6 +184,35 @@ describe('MessageBar', () => {
           {} as ResizeObserver,
         );
       });
+
+    const resizeTo = (inlineSize: number) => {
+      notifyResize(inlineSize);
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+    };
+
+    it('defers layout changes until after resize observer delivery', () => {
+      const { container } = renderMessageBar();
+
+      notifyResize(observedElement!.scrollWidth - 100);
+      expect(isReflowing(container)).toBe(false);
+
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+      expect(isReflowing(container)).toBe(true);
+    });
+
+    it('cancels a queued layout update when the message bar unmounts', () => {
+      const { unmount } = renderMessageBar();
+
+      notifyResize(observedElement!.scrollWidth - 100);
+      expect(jest.getTimerCount()).toBeGreaterThan(0);
+      unmount();
+
+      expect(jest.getTimerCount()).toBe(0);
+    });
 
     it('reflows to multiline when the container is narrower than the content', () => {
       const { container } = renderMessageBar();
