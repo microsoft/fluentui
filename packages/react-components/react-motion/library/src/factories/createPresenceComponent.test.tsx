@@ -166,8 +166,8 @@ describe('createPresenceComponent', () => {
       });
       const Mixed = createPresenceComponent(mixedMotion, {
         poseProps: [
-          { from: 'from', in: 'present', to: 'to', neutral: 0 },
-          { from: 'fromText', in: 'presentText', to: 'toText', neutral: '0px' },
+          { from: 'from', in: 'present', to: 'to' },
+          [{ from: 'fromText', in: 'presentText', to: 'toText', neutral: '0px' }],
         ],
       });
       // @ts-expect-error all mapped present props are excluded from directional components
@@ -188,24 +188,40 @@ describe('createPresenceComponent', () => {
           { from: 'from', in: 'present', to: 'toText' },
           // @ts-expect-error a boolean source cannot map to a numeric present prop
           { from: 'enabled', in: 'present', to: 'to' },
-          // @ts-expect-error a numeric mapping requires a numeric neutral value
-          { from: 'from', in: 'present', to: 'to', neutral: '0px' },
-          // @ts-expect-error a string mapping requires a string neutral value
-          { from: 'fromText', in: 'presentText', to: 'toText', neutral: 0 },
+          // @ts-expect-error the present prop cannot be mapped as its own source
+          { from: 'present', in: 'present', to: 'to' },
+          // @ts-expect-error the present prop cannot be mapped as its own destination
+          { from: 'from', in: 'present', to: 'present' },
+          // @ts-expect-error neutral only applies to coupled multi-axis groups
+          { from: 'from', in: 'present', to: 'to', neutral: 0 },
+          [
+            // @ts-expect-error a numeric mapping requires a numeric neutral value
+            { from: 'from', in: 'present', to: 'to', neutral: '0px' },
+            // @ts-expect-error a string mapping requires a string neutral value
+            { from: 'fromText', in: 'presentText', to: 'toText', neutral: 0 },
+          ],
         ],
       });
     });
 
-    it('excludes presence-only props from directional components and rejects unknown variant params', () => {
+    it('excludes presence-only props and exit timing props from directional components and rejects unknown variant params', () => {
       const child = <div />;
       <TestPresence present={0.7}>{child}</TestPresence>;
       // @ts-expect-error the present pose belongs to the presence component
       <TestPresence.In present={0.7}>{child}</TestPresence.In>;
       // @ts-expect-error the present pose belongs to the presence component
       <TestPresence.Out present={0.7}>{child}</TestPresence.Out>;
+      // @ts-expect-error exit timing props do not apply to .In
+      <TestPresence.In exitDuration={150}>{child}</TestPresence.In>;
+      // @ts-expect-error exit timing props do not apply to .In
+      <TestPresence.In exitEasing="ease-in">{child}</TestPresence.In>;
+      // @ts-expect-error exit timing props do not apply to .In
+      <TestPresence.In exitDelay={25}>{child}</TestPresence.In>;
       const Variant = createPresenceComponentVariant(TestPresence, { present: 0.7 });
       // @ts-expect-error variants retain the directional prop contract
       <Variant.In present={0.7}>{child}</Variant.In>;
+      // @ts-expect-error variants reject exit timing props on .In
+      <Variant.In exitDuration={150}>{child}</Variant.In>;
       // @ts-expect-error variant parameters must be declared by the original definition
       createPresenceComponentVariant(TestPresence, { unknown: 1 });
     });
@@ -285,22 +301,50 @@ describe('createPresenceComponent', () => {
       );
     });
 
-    it('fills omitted axes of authored poses with neutral values before variant defaults', () => {
+    it('fills omitted axes within a coupled pose group without affecting independent poses', () => {
       const axisMotion: PresenceMotionFn<{
+        fromScale?: number;
+        inScale?: number;
+        toScale?: number;
         fromX?: string;
         fromY?: string;
         inX?: string;
         inY?: string;
         toX?: string;
         toY?: string;
-      }> = ({ fromX = '0px', fromY = '0px', inX = '0px', inY = '0px', toX = fromX, toY = fromY }) => ({
-        enter: { ...options, keyframes: [{ translate: `${fromX} ${fromY}` }, { translate: `${inX} ${inY}` }] },
-        exit: { ...options, keyframes: [{ translate: `${inX} ${inY}` }, { translate: `${toX} ${toY}` }] },
+      }> = ({
+        fromScale = 0.9,
+        inScale = 1,
+        toScale = fromScale,
+        fromX = '0px',
+        fromY = '0px',
+        inX = '0px',
+        inY = '0px',
+        toX = fromX,
+        toY = fromY,
+      }) => ({
+        enter: {
+          ...options,
+          keyframes: [
+            { scale: fromScale, translate: `${fromX} ${fromY}` },
+            { scale: inScale, translate: `${inX} ${inY}` },
+          ],
+        },
+        exit: {
+          ...options,
+          keyframes: [
+            { scale: inScale, translate: `${inX} ${inY}` },
+            { scale: toScale, translate: `${toX} ${toY}` },
+          ],
+        },
       });
       const Axis = createPresenceComponent(axisMotion, {
         poseProps: [
-          { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
-          { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+          { from: 'fromScale', in: 'inScale', to: 'toScale' },
+          [
+            { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+            { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+          ],
         ],
       });
       const Variant = createPresenceComponentVariant(Axis, { fromY: '-8px', inY: '7px', toY: '16px' });
@@ -310,21 +354,39 @@ describe('createPresenceComponent', () => {
           <ElementMock />
         </Variant.In>,
       );
-      expect(animateMock).toHaveBeenLastCalledWith([{ translate: '24px 0px' }, { translate: '4px 0px' }], options);
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 0.9, translate: '24px 0px' },
+          { scale: 1, translate: '4px 0px' },
+        ],
+        options,
+      );
       unmount();
       const { unmount: unmountOut } = render(
         <Variant.Out fromX="4px" toY="-12px">
           <ElementMock />
         </Variant.Out>,
       );
-      expect(animateMock).toHaveBeenLastCalledWith([{ translate: '4px 0px' }, { translate: '0px -12px' }], options);
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 1, translate: '4px 0px' },
+          { scale: 0.9, translate: '0px -12px' },
+        ],
+        options,
+      );
       unmountOut();
       render(
         <Variant toX="24px" visible={false}>
           <ElementMock />
         </Variant>,
       );
-      expect(animateMock).toHaveBeenLastCalledWith([{ translate: '0px 7px' }, { translate: '24px 0px' }], options);
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 1, translate: '0px 7px' },
+          { scale: 0.9, translate: '24px 0px' },
+        ],
+        options,
+      );
     });
   });
 

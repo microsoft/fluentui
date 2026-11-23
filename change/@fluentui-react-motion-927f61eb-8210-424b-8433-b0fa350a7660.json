@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-motion): normalize temporal endpoints for directional presence components",
+  "comment": "feat(react-motion): add grouped poseProps normalization, directional timing normalization, and shared presence timing types",
   "packageName": "@fluentui/react-motion",
   "email": "robert@robertpenner.com"
 }

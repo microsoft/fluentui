@@ -137,29 +137,19 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
     [PRESENCE_COMPONENT_OPTIONS]?: {
-        poseProps: readonly {
-            from: PropertyKey;
-            in: PropertyKey;
-            to: PropertyKey;
-            neutral?: MotionParam;
-        }[];
+        poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
     };
-    In: MotionComponent<Omit<MotionParams, PresentKeys>>;
+    In: MotionComponent<Omit<MotionParams, PresentKeys | 'exitDuration' | 'exitEasing' | 'exitDelay'>>;
     Out: MotionComponent<Omit<MotionParams, PresentKeys>>;
 };
 
 // @public
 export type PresenceComponentOptions<MotionParams extends Record<string, MotionParam>, PresentKeys extends keyof MotionParams = never> = {
-    poseProps: readonly ({
+    poseProps: readonly (({
         in: PresentKeys;
-    } & {
-        [Present in keyof MotionParams]-?: {
-            from: CompatiblePoseKeys<MotionParams, Present>;
-            in: Present;
-            to: CompatiblePoseKeys<MotionParams, Present>;
-            neutral?: MotionParams[Present];
-        };
-    }[keyof MotionParams])[];
+    } & PosePropMapping<MotionParams, false>) | readonly ({
+        in: PresentKeys;
+    } & PosePropMapping<MotionParams, true>)[])[];
 };
 
 // @public (undocumented)
