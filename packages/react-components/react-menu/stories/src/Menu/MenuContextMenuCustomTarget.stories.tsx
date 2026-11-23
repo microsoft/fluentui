@@ -65,13 +65,11 @@ ContextMenuCustomTarget.parameters = {
   docs: {
     description: {
       story: [
-        'Right-click the trigger to position the context menu at the pointer. On Windows, focus the trigger',
-        'and press Shift+F10 (or the context-menu key) to anchor it to the separate Keyboard anchor button instead.',
-        'The menu should remain at that anchor after rendering. Press Escape to close it and return focus',
-        'to the trigger, then right-click again to verify pointer positioning is restored.',
-        'This example records those keyboard invocations on the trigger and overrides the target synchronously',
-        'in onOpenChange, after Menu has set its default context target. No effect-based workaround is needed.',
-        'For a fixed declarative anchor, use positioning.target instead; do not combine it with imperative setTarget.',
+        'Right-click to anchor at the pointer. On Windows, focus the trigger and press Shift+F10',
+        '(or the context-menu key) to anchor below Keyboard anchor via setTarget in onOpenChange.',
+        'The anchor should persist after rendering. Press Escape to close and restore trigger focus,',
+        'then right-click to verify pointer positioning returns.',
+        'For a fixed anchor, use positioning.target instead of imperative setTarget.',
       ].join(' '),
     },
   },

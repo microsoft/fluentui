@@ -1064,6 +1064,16 @@ describe(`Nested Menus`, () => {
 
 describe('Context menu', () => {
   const contextPopoverSelector = `.${menuPopoverClassNames.root}`;
+  const expectPopoverAtTarget = (targetId: string) =>
+    cy.get(contextPopoverSelector).should(([menu]) => {
+      const target = menu.ownerDocument.getElementById(targetId);
+      expect(target, 'positioning target').not.to.equal(null);
+      const bounds = target!.getBoundingClientRect();
+      const menuBounds = menu.getBoundingClientRect();
+      expect(menuBounds.left).to.be.closeTo(bounds.left, 1);
+      expect(menuBounds.top).to.be.closeTo(bounds.bottom, 1);
+    });
+
   const CustomTargetExample = ({
     controlled = false,
     override = true,
@@ -1124,21 +1134,11 @@ describe('Context menu', () => {
       cy.get(menuTriggerSelector)
         .focus()
         .trigger('contextmenu', { eventConstructor: 'MouseEvent', clientX: 0, clientY: 0 });
-      cy.get(contextPopoverSelector).should(([menu]) => {
-        const target = menu.ownerDocument.getElementById('custom-context-target');
-        expect(target).not.to.equal(null);
-        const bounds = target!.getBoundingClientRect();
-        const menuBounds = menu.getBoundingClientRect();
-        expect(menuBounds.left).to.be.closeTo(bounds.left, 1);
-        expect(menuBounds.top).to.be.closeTo(bounds.bottom, 1);
-      });
+      expectPopoverAtTarget('custom-context-target');
 
       cy.get(menuItemSelector).type('{esc}');
       cy.get(menuTriggerSelector).rightclick();
-      cy.get(contextPopoverSelector).should(([menu]) => {
-        const target = menu.ownerDocument.getElementById('custom-context-target');
-        expect(menu.getBoundingClientRect().left).to.be.closeTo(target!.getBoundingClientRect().left, 1);
-      });
+      expectPopoverAtTarget('custom-context-target');
     });
 
     (['disabled', 'undefined', 'null', 'element'] as const).forEach(departure => {
@@ -1166,14 +1166,7 @@ describe('Context menu', () => {
           } else {
             cy.get(menuTriggerSelector).rightclick();
           }
-          cy.get(contextPopoverSelector).should(([menu]) => {
-            const target = menu.ownerDocument.getElementById(
-              departure === 'element' ? 'custom-context-target' : menuTriggerId,
-            );
-            const bounds = target!.getBoundingClientRect();
-            expect(menu.getBoundingClientRect().left).to.be.closeTo(bounds.left, 1);
-            expect(menu.getBoundingClientRect().top).to.be.closeTo(bounds.bottom, 1);
-          });
+          expectPopoverAtTarget(departure === 'element' ? 'custom-context-target' : menuTriggerId);
         });
       });
     });
@@ -1183,11 +1176,7 @@ describe('Context menu', () => {
     mount(<CustomTargetExample targetOption="element" />);
 
     cy.get(menuTriggerSelector).rightclick();
-    cy.get(contextPopoverSelector).should(([menu]) => {
-      const target = menu.ownerDocument.getElementById('custom-context-target');
-      expect(menu.getBoundingClientRect().left).to.be.closeTo(target!.getBoundingClientRect().left, 1);
-      expect(menu.getBoundingClientRect().top).to.be.closeTo(target!.getBoundingClientRect().bottom, 1);
-    });
+    expectPopoverAtTarget('custom-context-target');
   });
 
   (['undefined', 'null'] as const).forEach(targetOption => {
@@ -1199,12 +1188,7 @@ describe('Context menu', () => {
         clientX: 300,
         clientY: 200,
       });
-      cy.get(contextPopoverSelector).should(([menu]) => {
-        const trigger = menu.ownerDocument.getElementById(menuTriggerId);
-        const bounds = trigger!.getBoundingClientRect();
-        expect(menu.getBoundingClientRect().left).to.be.closeTo(bounds.left, 1);
-        expect(menu.getBoundingClientRect().top).to.be.closeTo(bounds.bottom, 1);
-      });
+      expectPopoverAtTarget(menuTriggerId);
     });
   });
 
