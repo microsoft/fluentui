@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: expose missing disabled, invalid, readonly and required state attributes",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

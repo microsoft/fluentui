@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
-  getPartitionedNativeProps,
   useControllableState,
   mergeCallbacks,
   useId,
@@ -93,22 +92,31 @@ export const useCheckboxBase_unstable = (
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { disabled = false, required, labelPosition = 'after', onChange } = props;
+  const {
+    checked: checkedProp,
+    defaultChecked,
+    labelPosition = 'after',
+    onChange,
+    // Slots
+    root,
+    input,
+    label,
+    indicator,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
+  } = props;
+  const { disabled = false, required } = props;
 
   const [checked, setChecked] = useControllableState({
-    defaultState: props.defaultChecked,
-    state: props.checked,
+    defaultState: defaultChecked,
+    state: checkedProp,
     initialState: false,
   });
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
-  });
-
   const mixed = checked === 'mixed';
-  const id = useId('checkbox-', nativeProps.primary.id);
+  const id = useId('checkbox-', inputProps.id);
 
   const state: CheckboxBaseState = {
     checked,
@@ -120,21 +128,21 @@ export const useCheckboxBase_unstable = (
       indicator: 'div',
       label: 'label',
     },
-    root: slot.always(props.root, {
-      defaultProps: nativeProps.root,
+    root: slot.always(root, {
+      defaultProps: { className, style },
       elementType: 'span',
     }),
-    input: slot.always(props.input, {
+    input: slot.always(input, {
       defaultProps: {
         type: 'checkbox',
         id,
         ref,
         checked: checked === true,
-        ...nativeProps.primary,
+        ...inputProps,
       },
       elementType: 'input',
     }),
-    label: slot.optional(props.label, {
+    label: slot.optional(label, {
       defaultProps: {
         htmlFor: id,
         disabled,
@@ -142,7 +150,7 @@ export const useCheckboxBase_unstable = (
       },
       elementType: 'label',
     }),
-    indicator: slot.optional(props.indicator, {
+    indicator: slot.optional(indicator, {
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,

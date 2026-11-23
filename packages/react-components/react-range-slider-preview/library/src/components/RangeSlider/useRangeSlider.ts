@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useRangeSliderState_unstable } from './useRangeSliderState';
 import type {
@@ -12,12 +12,6 @@ import type {
   RangeSliderSlots,
   RangeSliderState,
 } from './RangeSlider.types';
-
-/**
- * Props that describe the value of a single thumb, so they only make sense on each input individually.
- * They are not forwarded from the RangeSlider props; set them on the `startInput` and `endInput` slots.
- */
-const perThumbPropNames = ['aria-valuetext', 'aria-valuenow', 'aria-valuemin', 'aria-valuemax'] as const;
 
 /**
  * Props that are forwarded from the RangeSlider props to both inputs, instead of the root.
@@ -34,7 +28,12 @@ const inputPropNames = [
 
 type InputSlotProps = RangeSliderProps['startInput'];
 
-type RootNativeProps = React.HTMLAttributes<HTMLDivElement> & { as?: 'div'; name?: string };
+/**
+ * Props that describe the value of a single thumb, so they only make sense on each input individually.
+ * They are not part of the RangeSlider props type and are not forwarded from the RangeSlider props at runtime;
+ * set them on the `startInput` and `endInput` slots.
+ */
+type PerThumbProps = Pick<React.AriaAttributes, 'aria-valuetext' | 'aria-valuenow' | 'aria-valuemin' | 'aria-valuemax'>;
 
 /**
  * Create the state required to render RangeSlider.
@@ -78,20 +77,39 @@ export const useRangeSliderBase_unstable = (
   // eslint-disable-next-line react-hooks/immutability
   props = useFieldControlProps_unstable(props, { supportsLabelFor: false });
 
-  const { disabled, vertical = false, rail, startThumb, endThumb, startInput, endInput } = props;
-
-  // Native props that aren't input-specific go to the root, so event handlers such as onPointerDown work
-  // (the inputs don't receive pointer events) and `id` stays unique.
-  // `form` and `required` aren't valid on a div, so getIntrinsicElementProps drops them already.
-  const rootNativeProps = getIntrinsicElementProps('div', props as RootNativeProps, [
-    'onChange',
-    'name',
-    'aria-describedby',
-    'aria-errormessage',
-    'aria-invalid',
-    'aria-required',
-    ...perThumbPropNames,
-  ]);
+  const {
+    disabled,
+    vertical = false,
+    // Slots
+    rail,
+    startThumb,
+    endThumb,
+    startInput,
+    endInput,
+    // Value props, handled by useRangeSliderState_unstable
+    value,
+    defaultValue,
+    min,
+    max,
+    step,
+    onChange,
+    // Forwarded to both inputs instead of the root, see `inputPropNames`
+    name,
+    form,
+    required,
+    'aria-describedby': ariaDescribedBy,
+    'aria-errormessage': ariaErrorMessage,
+    'aria-invalid': ariaInvalid,
+    'aria-required': ariaRequired,
+    // Single-thumb props are dropped, see `PerThumbProps`
+    'aria-valuetext': ariaValueText,
+    'aria-valuenow': ariaValueNow,
+    'aria-valuemin': ariaValueMin,
+    'aria-valuemax': ariaValueMax,
+    // The remaining native props go to the root, so event handlers such as onPointerDown work
+    // (the inputs don't receive pointer events) and `id` stays unique.
+    ...rootNativeProps
+  } = props as RangeSliderBaseProps & PerThumbProps;
 
   const sharedInputProps: Record<string, unknown> = {};
   for (const propName of inputPropNames) {
