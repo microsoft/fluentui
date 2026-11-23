@@ -1,7 +1,9 @@
-import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
+import { Provider_unstable as Provider, useAnnounce } from '@fluentui/react-shared-contexts';
+import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
+import { AriaLiveAnnouncer } from './AriaLiveAnnouncer';
 import { useAriaLiveAnnouncer_unstable as useAriaLiveAnnouncer } from './useAriaLiveAnnouncer';
 
 const ANNOUNCE_TIMEOUT = 500;
@@ -115,6 +117,28 @@ describe('useAriaLiveAnnouncer', () => {
       const { result } = renderHook(() => useAriaLiveAnnouncer({}), { wrapper: ContextWrapper });
 
       result.current.announce('message loaded');
+      jest.advanceTimersByTime(0);
+      expect(innerNode?.innerText).toBe('message loaded' + ANNOUNCE_SUFFIX);
+    });
+
+    it('should announce a message from a child that is mounted together with the announcer', () => {
+      const AnnounceOnMount = () => {
+        const { announce } = useAnnounce();
+
+        React.useEffect(() => {
+          announce('message loaded');
+        }, [announce]);
+
+        return null;
+      };
+
+      render(
+        <AriaLiveAnnouncer>
+          <AnnounceOnMount />
+        </AriaLiveAnnouncer>,
+        { wrapper: ContextWrapper },
+      );
+
       jest.advanceTimersByTime(0);
       expect(innerNode?.innerText).toBe('message loaded' + ANNOUNCE_SUFFIX);
     });

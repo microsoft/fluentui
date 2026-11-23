@@ -29,7 +29,7 @@ const AlertExample = () =><Alert intent="success">This is a success alert</Alert
 
 ## API
 
-See [Alert.types.ts](./src/components/Alert/Alert.types.ts)
+See [Alert.types.ts](../src/components/Alert/Alert.types.ts)
 
 ## Structure
 
