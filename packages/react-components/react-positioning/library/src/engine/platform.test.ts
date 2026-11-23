@@ -1,4 +1,36 @@
-import { isContainingBlock } from './platform';
+import { getReferenceRect, isContainingBlock } from './platform';
+
+describe('getReferenceRect', () => {
+  it.each([
+    {
+      name: 'left/top instead of inconsistent x/y',
+      bounds: { x: 0, y: 0, left: 320, top: 210, width: 20, height: 40 },
+      expected: { x: 150, y: 50, width: 10, height: 10 },
+    },
+    {
+      name: 'zero left/top instead of nonzero x/y',
+      bounds: { x: 320, y: 210, left: 0, top: 0, width: 20, height: 40 },
+      expected: { x: -10, y: -2.5, width: 10, height: 10 },
+    },
+    {
+      name: 'x/y-only rects',
+      bounds: { x: 320, y: 210, width: 20, height: 40 },
+      expected: { x: 150, y: 50, width: 10, height: 10 },
+    },
+  ])('normalizes $name before applying the containing-block scale', ({ bounds, expected }) => {
+    const floating = document.createElement('div');
+
+    expect(
+      getReferenceRect(
+        { getBoundingClientRect: () => bounds },
+        floating,
+        floating,
+        { x: 20, y: 10, scale: { x: 2, y: 4 } },
+        'absolute',
+      ),
+    ).toEqual(expected);
+  });
+});
 
 describe('isContainingBlock', () => {
   afterEach(() => {

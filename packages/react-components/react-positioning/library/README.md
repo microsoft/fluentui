@@ -87,6 +87,9 @@ cases instead assert physical target/surface alignment and clipping.
 The ordered (not clamped) cross-axis limiter bounds are compared against Floating UI with an offset
 that inverts them, and an auto-sized surface that removes the scrollbar of its scroll container
 checks that clipping is measured again with the rectangles.
+Virtual-reference regressions preserve `left/top` over inconsistent `x/y`, including references
+in bordered, padded, scaled iframes. A public-hook caret fixture asserts the exact four-pixel
+tooltip gap, placement, and visible reference state in a 408-by-268 viewport.
 
 ## Engine parity and size validation
 

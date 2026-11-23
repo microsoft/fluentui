@@ -1,7 +1,11 @@
+import * as React from 'react';
+import { mount } from '@fluentui/scripts-cypress';
+import { FluentProvider } from '@fluentui/react-provider';
 import { computePosition as computeOracle, hide, shift, offset, limitShift } from '@floating-ui/dom';
 import { computePosition } from './engine/computePosition';
 import { getClippingRect } from './engine/platform';
-import type { TargetElement } from './types';
+import { usePositioning } from './usePositioning';
+import type { OnPositioningEndEventDetail, TargetElement } from './types';
 
 // These dimensions are geometry inputs, not product styling.
 function element(doc: Document, tag: string, css: Partial<CSSStyleDeclaration>, parent: Node): HTMLElement {
@@ -40,6 +44,61 @@ describe('positioning engine browser regressions', () => {
     });
   });
   afterEach(() => root.remove());
+
+  it('keeps a caret tooltip above a virtual rect with inconsistent x/y', () => {
+    cy.viewport(408, 268);
+    const caret = {
+      getBoundingClientRect: () => ({
+        left: 320,
+        top: 210,
+        x: 0,
+        y: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0,
+      }),
+    };
+    const events: OnPositioningEndEventDetail[] = [];
+    const CaretSuggestion = () => {
+      const [hidden, setHidden] = React.useState(false);
+      const { containerRef } = usePositioning({
+        target: caret,
+        position: 'above',
+        align: 'center',
+        offset: 4,
+        onPositioningEnd: event => {
+          events.push(event.detail);
+          setHidden(event.detail.referenceHidden);
+        },
+      });
+      return (
+        <div
+          ref={containerRef}
+          role="tooltip"
+          style={{ width: 136, height: 32, visibility: hidden ? 'hidden' : 'visible' }}
+        >
+          Spelling correction
+        </div>
+      );
+    };
+    mount(
+      <FluentProvider>
+        <CaretSuggestion />
+      </FluentProvider>,
+    );
+    cy.get('[role="tooltip"]').should($tooltip => {
+      expect($tooltip).to.have.attr('data-popper-placement', 'top');
+      expect($tooltip).not.to.have.attr('data-popper-reference-hidden');
+      expect($tooltip).to.be.visible;
+      expect(events, 'positioning end events').not.to.be.empty;
+      expect(events[events.length - 1]).to.include({ placement: 'top', referenceHidden: false });
+      const bounds = $tooltip[0].getBoundingClientRect();
+      expect(bounds.x, 'tooltip x').to.equal(252);
+      expect(bounds.y, 'tooltip y').to.equal(174);
+      expect(caret.getBoundingClientRect().top - bounds.bottom, 'caret gap').to.equal(4);
+    });
+  });
 
   it('ignores positioned display: contents ancestors in a scrolled document', () => {
     cy.document().then(async doc => {
@@ -607,7 +666,7 @@ describe('positioning engine browser regressions', () => {
   });
 
   for (const scale of [1, 1.5]) {
-    it(`normalizes a bordered, padded iframe reference at scale ${scale}`, () => {
+    it(`normalizes real and virtual bordered, padded iframe references at scale ${scale}`, () => {
       cy.document().then(async doc => {
         const frame = doc.createElement('iframe');
         Object.assign(frame.style, {
@@ -632,6 +691,16 @@ describe('positioning engine browser regressions', () => {
         );
         const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
         await expectParity(target, floating);
+        await expectParity(
+          {
+            contextElement: target,
+            getBoundingClientRect: () => {
+              const { left, top, width, height } = target.getBoundingClientRect();
+              return { left, top, width, height, x: 0, y: 0, right: 0, bottom: 0 };
+            },
+          },
+          floating,
+        );
         expect(getClippingRect(target, 'clippingAncestors', doc.defaultView!).x).to.equal(200 + 12 * scale);
       });
     });

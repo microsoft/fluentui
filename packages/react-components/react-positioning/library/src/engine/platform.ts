@@ -253,7 +253,13 @@ export const getReferenceRect = (
 ): Rect => {
   const floatingWindow = getWindow(floating);
   const referenceWindow = getWindow(context);
-  const bounds = convertWindowRect(getBounds(reference), referenceWindow, floatingWindow);
+  const clientRect = reference.getBoundingClientRect();
+  // Virtual rects can have inconsistent x/y; preserve the DOM left/top precedence before converting windows.
+  const bounds = convertWindowRect(
+    'left' in clientRect ? rect(clientRect.left, clientRect.top, clientRect.width, clientRect.height) : clientRect,
+    referenceWindow,
+    floatingWindow,
+  );
   const visual =
     strategy === 'fixed' && referenceWindow === floatingWindow && !space.parent
       ? getVisualOffsets(floating)
