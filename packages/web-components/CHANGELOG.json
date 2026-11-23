@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 23 Nov 2026 04:10:36 GMT",
+      "version": "3.2.2",
+      "tag": "@fluentui/web-components_v3.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f47ce10d3350bbe7c70c323b0009c3f53bbfcc64",
+            "comment": "refactor: move default attributes from template into connectedCallback while preserving consumer overrides"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 04:11:16 GMT",
       "version": "3.2.1",
       "tag": "@fluentui/web-components_v3.2.1",

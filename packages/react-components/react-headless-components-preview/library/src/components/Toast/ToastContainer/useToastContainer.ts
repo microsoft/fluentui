@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  getIntrinsicElementProps,
   isHTMLElement,
   slot,
   useEventCallback,
@@ -12,7 +11,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete } from '@fluentui/keyboard-keys';
-import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
+import type { ToastPoliteness, ToastStatus, ToasterOptions } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
 
@@ -44,8 +43,16 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     tryRestoreFocus,
     announce,
     content: _content,
+    toastId: _toastId,
+    toasterId: _toasterId,
+    position: _position,
+    priority: _priority,
+    order: _order,
+    root: _root,
+    limit: _limit,
+    shortcuts: _shortcuts,
     ...rest
-  } = props;
+  } = props as ToastContainerProps & Pick<ToasterOptions, 'limit' | 'shortcuts'> & { root?: unknown };
 
   const titleId = useId('toast-title');
   const bodyId = useId('toast-body');
@@ -230,7 +237,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, toastRef),
         children,
         tabIndex: 0,
@@ -242,7 +249,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
         onMouseEnter,
         onMouseLeave,
         onKeyDown,
-      }),
+      },
       { elementType: 'div' },
     ),
     running,

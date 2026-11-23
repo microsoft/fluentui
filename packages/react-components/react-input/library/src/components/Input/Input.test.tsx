@@ -2,7 +2,9 @@ import * as React from 'react';
 import type { RenderResult } from '@testing-library/react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Field } from '@fluentui/react-field';
+import { renderHook } from '@testing-library/react-hooks';
 import { Input } from './Input';
+import { useInputBase_unstable } from './useInput';
 import { isConformant } from '../../testing/isConformant';
 
 function getInput(): HTMLInputElement {
@@ -139,5 +141,73 @@ describe('Input', () => {
     });
 
     expect(getInput().getAttribute('autocorrect')).toEqual('on');
+  });
+
+  it('forwards transition events to the input', () => {
+    const currentTargets: HTMLElement[] = [];
+    const onTransitionEnd = jest.fn((event: React.TransitionEvent<HTMLInputElement>) => {
+      currentTargets.push(event.currentTarget);
+    });
+
+    renderedComponent = render(<Input onTransitionEnd={onTransitionEnd} />);
+    const input = getInput();
+    fireEvent.transitionEnd(input);
+
+    expect(onTransitionEnd).toHaveBeenCalledTimes(1);
+    expect(currentTargets).toEqual([input]);
+  });
+
+  it('forwards unknown lowercase attributes to the input rather than the root', () => {
+    const customProps = { customattribute: 'custom-value', placeholder: 'example' };
+    renderedComponent = render(<Input {...customProps} />);
+
+    expect(getInput().getAttribute('customattribute')).toBe('custom-value');
+    expect(renderedComponent.container.firstElementChild?.getAttribute('customattribute')).toBeNull();
+  });
+});
+
+describe('Input DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Input
+        appearance="underline"
+        className="custom"
+        contentAfter="after"
+        contentBefore="before"
+        defaultValue="value"
+        onChange={jest.fn()}
+        placeholder="placeholder"
+        size="large"
+        style={{ color: 'red' }}
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(getInput().getAttributeNames().sort()).toEqual(['class', 'placeholder', 'type', 'value']);
+  });
+
+  it('does not forward slot or state props from the base hook to the input slot', () => {
+    const { result } = renderHook(() =>
+      useInputBase_unstable(
+        {
+          className: 'custom',
+          contentAfter: 'after',
+          contentBefore: 'before',
+          defaultValue: 'value',
+          placeholder: 'p',
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root.className).toBe('custom');
+    expect(result.current.input.placeholder).toBe('p');
+    expect(result.current.input).not.toHaveProperty('className');
+    expect(result.current.input).not.toHaveProperty('contentAfter');
+    expect(result.current.input).not.toHaveProperty('contentBefore');
+    expect(result.current.input).not.toHaveProperty('defaultValue');
   });
 });

@@ -132,6 +132,14 @@ export class BaseRadioGroup extends FASTElement {
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }
 
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.hasAttribute('focusgroup')) {
+      this.setAttribute('focusgroup', 'radiogroup wrap');
+    }
+  }
+
   /**
    * The collection of all child radios.
    *

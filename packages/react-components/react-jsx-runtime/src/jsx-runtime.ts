@@ -1,9 +1,9 @@
 import { createJSX } from './jsx/createJSX';
 import { jsxSlot } from './jsx/jsxSlot';
 import { jsxsSlot } from './jsx/jsxsSlot';
-import { Runtime } from './utils/Runtime';
+import { jsx as reactJsx, jsxs as reactJsxs } from './utils/Runtime';
 
 export { Fragment } from 'react';
 
-export const jsx = createJSX(Runtime.jsx, jsxSlot);
-export const jsxs = createJSX(Runtime.jsxs, jsxsSlot);
+export const jsx = createJSX(reactJsx, jsxSlot);
+export const jsxs = createJSX(reactJsxs, jsxsSlot);

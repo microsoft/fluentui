@@ -7,6 +7,18 @@ test.describe('Anchor Button', () => {
     tagName,
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '0');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { tabindex: '-1' } });
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '-1');
+  });
+
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
 
