@@ -32,7 +32,7 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   state.root.className = mergeClasses(
     counterBadgeClassNames.root,
     state.dot && styles.dot,
-    !state.root.children && !state.dot && styles.hide,
+    state.isEmpty && !state.dot && styles.hide,
     state.root.className,
   );
 
