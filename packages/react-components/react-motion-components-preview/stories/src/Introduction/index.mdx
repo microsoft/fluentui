@@ -216,7 +216,7 @@ Scale, Slide, Rotate, and Blur include directional fades by default: `.In` fades
 
 #### Timing, Variants, and Replay
 
-For Fade, Scale, Slide, Rotate, and Blur, use `duration`, `easing`, and `delay` to customize a one-way motion, including `.Out`. Explicit `.Out` timing overrides variant defaults. `.In` omits `exitDuration`, `exitEasing`, and `exitDelay`; on `.Out`, those exit-prefixed aliases remain supported and take precedence over their ordinary counterparts when both are supplied.
+For Fade, Scale, Slide, Rotate, and Blur, use `duration`, `easing`, and `delay` to customize a one-way motion, including `.Out`. Explicit `.Out` timing overrides variant defaults. The `exitDuration`, `exitEasing`, and `exitDelay` aliases remain supported on `.Out` and take precedence over their ordinary counterparts when both are supplied.
 
 Snappy, Relaxed, and custom variants retain `.In` and `.Out`. For example:
 

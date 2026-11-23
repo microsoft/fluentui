@@ -180,6 +180,11 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
+type DirectionalMotionParams<
+  MotionParams extends Record<string, MotionParam>,
+  PresentKeys extends keyof MotionParams,
+> = [PresentKeys] extends [never] ? MotionParams : Omit<MotionParams, PresentKeys>;
+
 export type PresenceComponent<
   MotionParams extends Record<string, MotionParam> = {},
   PresentKeys extends keyof MotionParams = never,
@@ -190,9 +195,8 @@ export type PresenceComponent<
     poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
   };
   // Present-pose props belong to the visibility-controlled root, not the one-way components.
-  // Exit timing props have no effect on .In playback.
-  In: MotionComponent<Omit<MotionParams, PresentKeys | 'exitDuration' | 'exitEasing' | 'exitDelay'>>;
-  Out: MotionComponent<Omit<MotionParams, PresentKeys>>;
+  In: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
+  Out: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
@@ -257,9 +261,9 @@ export function createPresenceComponent<
         ? params => value({ ...completePoses(params), element: params.element })
         : value
       : () => value;
-  const directionalMotion = <OmittedKeys extends PropertyKey>(direction: PresenceDirection) =>
+  const directionalMotion = (direction: PresenceDirection) =>
     typeof value === 'function'
-      ? (params: { element: HTMLElement } & Omit<MotionParams, OmittedKeys>) => {
+      ? (params: { element: HTMLElement } & DirectionalMotionParams<MotionParams, PresentKeys>) => {
           const normalized = completePoses(params as { element: HTMLElement } & MotionParams);
           // Presence definitions enter from -> in and exit in -> to. One-way components always play from -> to,
           // so .In maps its destination to in, while .Out maps its source to in before selecting the definition.
@@ -460,17 +464,17 @@ export function createPresenceComponent<
     },
     {
       // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
-      In: createMotionComponent<Omit<MotionParams, PresentKeys | 'exitDuration' | 'exitEasing' | 'exitDelay'>>(
+      In: createMotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>(
         // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
         // Otherwise, pass the `enter` motion object directly.
-        directionalMotion<PresentKeys | 'exitDuration' | 'exitEasing' | 'exitDelay'>('enter'),
+        directionalMotion('enter'),
       ),
 
       // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
-      Out: createMotionComponent<Omit<MotionParams, PresentKeys>>(
+      Out: createMotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>(
         // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
         // Otherwise, pass the `exit` motion object directly.
-        directionalMotion<PresentKeys>('exit'),
+        directionalMotion('exit'),
       ),
     },
   );

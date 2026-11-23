@@ -60,7 +60,7 @@ For custom motion functions, `createPresenceComponent`'s optional `poseProps` ma
 
 ## Timing and Replay
 
-Function-based directional components accept their motion function's timing props, including `duration`, `easing`, and `delay` for preview Fade, Scale, Slide, Rotate, and Blur. `.In` omits `exitDuration`, `exitEasing`, and `exitDelay` because exit timing does not apply to enter playback. On `.Out`, explicit ordinary timing is copied to its exit-prefixed counterpart before variant defaults are merged, whether or not `poseProps` is supplied. An explicit `exitDuration`, `exitEasing`, or `exitDelay` takes precedence over its ordinary counterpart on `.Out`. Variants created with `createPresenceComponentVariant` retain the pose mapping and directional components.
+Function-based directional components accept their motion function's timing props, including `duration`, `easing`, and `delay` for preview Fade, Scale, Slide, Rotate, and Blur. On `.Out`, explicit ordinary timing is copied to its exit-prefixed counterpart before variant defaults are merged, whether or not `poseProps` is supplied. An explicit `exitDuration`, `exitEasing`, or `exitDelay` takes precedence over its ordinary counterpart on `.Out`. Variants created with `createPresenceComponentVariant` retain the pose mapping and directional components.
 
 Change `replayKey` to replay a one-way motion without remounting the child:
 

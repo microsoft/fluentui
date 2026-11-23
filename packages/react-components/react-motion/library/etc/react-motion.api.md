@@ -139,8 +139,8 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
     [PRESENCE_COMPONENT_OPTIONS]?: {
         poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
     };
-    In: MotionComponent<Omit<MotionParams, PresentKeys | 'exitDuration' | 'exitEasing' | 'exitDelay'>>;
-    Out: MotionComponent<Omit<MotionParams, PresentKeys>>;
+    In: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
+    Out: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
 };
 
 // @public

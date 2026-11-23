@@ -1,10 +1,12 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
 
-import type { PresenceMotion, PresenceMotionFn } from '../types';
+import type { MotionParam, PresenceMotion, PresenceMotionFn } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
+import type { PresenceComponent } from './createPresenceComponent';
 import { createPresenceComponentVariant } from './createPresenceComponentVariant';
 import { MOTION_DEFINITION } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
@@ -204,26 +206,29 @@ describe('createPresenceComponent', () => {
       });
     });
 
-    it('excludes presence-only props and exit timing props from directional components and rejects unknown variant params', () => {
+    it('excludes presence-only props from directional components and preserves generic assignability without poseProps', () => {
       const child = <div />;
       <TestPresence present={0.7}>{child}</TestPresence>;
       // @ts-expect-error the present pose belongs to the presence component
       <TestPresence.In present={0.7}>{child}</TestPresence.In>;
       // @ts-expect-error the present pose belongs to the presence component
       <TestPresence.Out present={0.7}>{child}</TestPresence.Out>;
-      // @ts-expect-error exit timing props do not apply to .In
-      <TestPresence.In exitDuration={150}>{child}</TestPresence.In>;
-      // @ts-expect-error exit timing props do not apply to .In
-      <TestPresence.In exitEasing="ease-in">{child}</TestPresence.In>;
-      // @ts-expect-error exit timing props do not apply to .In
-      <TestPresence.In exitDelay={25}>{child}</TestPresence.In>;
       const Variant = createPresenceComponentVariant(TestPresence, { present: 0.7 });
       // @ts-expect-error variants retain the directional prop contract
       <Variant.In present={0.7}>{child}</Variant.In>;
-      // @ts-expect-error variants reject exit timing props on .In
-      <Variant.In exitDuration={150}>{child}</Variant.In>;
       // @ts-expect-error variant parameters must be declared by the original definition
       createPresenceComponentVariant(TestPresence, { unknown: 1 });
+
+      // Existing 1-type-arg generic code and components without poseProps keep MotionComponent<MotionParams>.
+      const getDirectional = <P extends Record<string, MotionParam>>(
+        component: PresenceComponent<P>,
+      ): { In: MotionComponent<P>; Out: MotionComponent<P> } => ({
+        In: component.In,
+        Out: component.Out,
+      });
+      const Plain = createPresenceComponent(posedMotion);
+      expect(getDirectional(Plain)).toEqual({ In: Plain.In, Out: Plain.Out });
+      <Plain.In exitDuration={150}>{child}</Plain.In>;
     });
 
     it('uses from and to as playback endpoints on both directional components', () => {
