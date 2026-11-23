@@ -40,6 +40,7 @@ export { TabListSlots }
 // @public
 export type TabListState = TabListBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
     };
 };
