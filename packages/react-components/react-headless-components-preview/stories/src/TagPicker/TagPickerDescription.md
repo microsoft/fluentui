@@ -17,6 +17,8 @@ It wraps the base hooks exported by `@fluentui/react-tag-picker` (`useTagPickerB
 
 `TagPickerList` exposes a multiselect listbox, and each `TagPickerOption` exposes its current
 selection through `aria-selected`. Explicit consumer ARIA props override these defaults.
+Supplying `aria-checked` suppresses the default `aria-selected`; consumers can explicitly
+provide both attributes when they represent distinct states.
 `TagPickerButton` is disabled when either it or its parent `TagPicker` is disabled; setting
 `disabled={false}` on the button does not re-enable a disabled picker.
 

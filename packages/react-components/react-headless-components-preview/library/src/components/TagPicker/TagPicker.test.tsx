@@ -65,6 +65,54 @@ describe('TagPicker', () => {
     expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
   });
 
+  it('preserves checked-only selection for selected and unselected options', () => {
+    const picker = (selectedOptions: string[]) => (
+      <TagPicker open selectedOptions={selectedOptions}>
+        <TagPickerInput aria-label="Select animals" />
+        <TagPickerList>
+          <TagPickerOption value="cat" aria-checked={selectedOptions.includes('cat')}>
+            Cat
+          </TagPickerOption>
+          <TagPickerOption value="dog" aria-checked={selectedOptions.includes('dog')}>
+            Dog
+          </TagPickerOption>
+        </TagPickerList>
+      </TagPicker>
+    );
+    const { getByRole, getAllByRole, rerender } = render(picker(['cat']));
+
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'true');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'false');
+    getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-selected'));
+
+    rerender(picker(['dog']));
+
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'false');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'true');
+    getAllByRole('option').forEach(option => expect(option).not.toHaveAttribute('aria-selected'));
+  });
+
+  it('preserves explicitly supplied selected and checked states', () => {
+    const { getByRole } = render(
+      <TagPicker open selectedOptions={['cat']}>
+        <TagPickerInput aria-label="Select animals" />
+        <TagPickerList>
+          <TagPickerOption value="cat" aria-selected={false} aria-checked>
+            Cat
+          </TagPickerOption>
+          <TagPickerOption value="dog" aria-selected aria-checked={false}>
+            Dog
+          </TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-selected', 'false');
+    expect(getByRole('option', { name: 'Cat' })).toHaveAttribute('aria-checked', 'true');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-selected', 'true');
+    expect(getByRole('option', { name: 'Dog' })).toHaveAttribute('aria-checked', 'false');
+  });
+
   it('preserves consumer ARIA props, refs and option click handlers', () => {
     const listRef = React.createRef<HTMLDivElement>();
     const optionRef = React.createRef<HTMLDivElement>();

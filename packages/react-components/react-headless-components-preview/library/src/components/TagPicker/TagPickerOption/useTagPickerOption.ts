@@ -37,7 +37,8 @@ export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<H
       {
         ...optionState.root,
         role: 'option',
-        'aria-selected': props['aria-selected'] ?? optionState.selected,
+        'aria-selected':
+          props['aria-selected'] ?? (props['aria-checked'] === undefined ? optionState.selected : undefined),
         'aria-checked': props['aria-checked'],
       },
       { elementType: 'div' },
