@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render, renderHook, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../../testing/isConformant';
 import { Tree } from '../Tree';
 import { TreeItem } from './TreeItem';
