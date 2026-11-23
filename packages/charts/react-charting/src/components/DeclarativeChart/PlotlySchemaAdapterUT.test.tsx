@@ -72,10 +72,29 @@ describe('schema CSS styles', () => {
     expect(getValidTextAlign(value)).toBeUndefined();
   });
 
-  test.each(['rebeccapurple', '#AbC', 'rgb(1, 2, 3)', 'rgba(1, 2, 3, 0.5)', 'hsl(120, 50%, 50%)', 'transparent'])(
-    'preserves valid color %s without normalization',
-    color => expect(getValidColor(color)).toBe(color),
-  );
+  test.each([
+    'rebeccapurple',
+    '#AbC',
+    'rgb(1, 2, 3)',
+    'rgba(1, 2, 3, 0.5)',
+    'hsl(120, 50%, 50%)',
+    'transparent',
+    'rgb(255, 255, 127.5)',
+    'rgb(255, 215.5, 0)',
+    'rgb(127.5, 0, 127.5)',
+    'rgba(127.5, 0, 127.5, 0.5)',
+    ' RGB( +1.5e2, .5, 127.5 ) ',
+  ])('preserves valid color %s without normalization', color => expect(getValidColor(color)).toBe(color));
+
+  test.each([
+    'rgb(1.5, 2, 3); color:red',
+    'rgba(1.5, 2, 3, 0.5)} html{color:red',
+    'rgb(1e999, 2, 3)',
+    'rgba(1.5, 2, 3, 1e999)',
+    'rgb(NaN, 2, 3)',
+    'rgb(1.5, 2)',
+    'rgba(1.5, 2, 3, 0.5, 4)',
+  ])('rejects malformed or nonfinite RGB color %s', color => expect(getValidColor(color)).toBeUndefined());
 
   test.each([
     { value: -10, min: -Infinity, max: Infinity, expected: -10 },
@@ -743,6 +762,39 @@ describe('transform Plotly Json To chart Props', () => {
       expect(result.data).toEqual([{ x: { start: 0, end: 2 }, y: 1, legend: 'A', color: fillcolor }]);
     },
   );
+
+  test.each([false, true])('preserves fractional RGB Gantt colors and geometry with dark theme %s', isDarkTheme => {
+    const fillcolors = ['rgb(255, 255, 127.5)', 'rgb(255, 215.5, 0)', 'rgba(127.5, 0, 127.5, 0.5)'];
+    const plotlySchema: PlotlySchema = {
+      data: fillcolors.map((fillcolor, index) => ({
+        type: 'scatter',
+        mode: 'none',
+        fill: 'toself',
+        name: `Task ${index}`,
+        x: [0, 2, 2, 0, null],
+        y: [index, index, index + 2, index + 2, null],
+        fillcolor,
+      })),
+      layout: {},
+    };
+
+    const result = transformPlotlyJsonToGanttChartProps(
+      plotlySchema,
+      false,
+      { current: new Map() },
+      'default',
+      isDarkTheme,
+    );
+
+    expect(result.data).toEqual(
+      fillcolors.map((color, index) => ({
+        x: { start: 0, end: 2 },
+        y: index + 1,
+        legend: `Task ${index}`,
+        color,
+      })),
+    );
+  });
 
   test.each([
     'red;} .css-injection-sentinel { --injected: 731; } .resume { color:red',

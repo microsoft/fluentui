@@ -33,12 +33,13 @@ import { ComponentName } from '@fluentui/react-charting/lib/ComponentName';
 ### Declarative chart colors
 
 Pie and donut `marker.colors` values and Gantt scatter `fillcolor` values for `fill: 'toself'` traces are validated
-using D3's color parser.
-Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()`, and `hsl()`/`hsla()`.
+using D3's color parser with additional validation for fractional numeric RGB channels.
+Supported values include named colors, hexadecimal colors, `rgb()`/`rgba()` (including fractional channels), and
+`hsl()`/`hsla()`. Valid colors are preserved without rounding or normalization.
 Invalid values, including CSS declarations or rules, use the existing schema/palette color fallback instead of being
 included in chart or legend styles. This validation also applies during server-side rendering.
 
-Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars are validated with the same parser.
+Rectangle `layout.shapes[].fillcolor` values used for line-chart color-fill bars use the same validation.
 Valid colors are preserved, including transparency; invalid or missing fill colors use Plotly's transparent default,
 `rgba(0,0,0,0)`.
 

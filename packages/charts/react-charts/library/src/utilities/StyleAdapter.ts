@@ -1,8 +1,22 @@
 import type { Font, Margin } from '@fluentui/chart-utilities';
 import { color as d3Color } from 'd3-color';
 
-export const getValidColor = (value: unknown): string | undefined =>
-  typeof value === 'string' && d3Color(value) ? value : undefined;
+const colorNumber = '[+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?';
+const rgbChannels = `\\s*(${colorNumber})\\s*,\\s*(${colorNumber})\\s*,\\s*(${colorNumber})\\s*`;
+const rgbPattern = new RegExp(`^rgb\\(${rgbChannels}\\)$`, 'i');
+const rgbaPattern = new RegExp(`^rgba\\(${rgbChannels},\\s*(${colorNumber})\\s*\\)$`, 'i');
+
+export const getValidColor = (value: unknown): string | undefined => {
+  if (typeof value !== 'string') {
+    return undefined;
+  }
+  if (d3Color(value)) {
+    return value;
+  }
+  // D3 rejects fractional numeric RGB channels that CSS accepts.
+  const match = rgbPattern.exec(value.trim()) ?? rgbaPattern.exec(value.trim());
+  return match && match.slice(1).every(channel => Number.isFinite(Number(channel))) ? value : undefined;
+};
 
 export const getValidStyleNumber = (value: unknown, min = 0, max = Infinity): number | undefined =>
   typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max ? value : undefined;
