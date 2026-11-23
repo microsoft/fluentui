@@ -144,4 +144,54 @@ describe('Slide', () => {
       animateSpy.mockRestore();
     }
   });
+
+  it('preserves directional defaults and explicit zero exit timing', () => {
+    const animateSpy = jest.spyOn(HTMLElement.prototype, 'animate').mockImplementation(mockAnimation);
+    const children = React.createElement('div');
+    try {
+      const { unmount } = render(React.createElement(Slide.In, { animateOpacity: false, children }));
+      expect(animateSpy).toHaveBeenLastCalledWith(
+        [{ translate: '0px 0px' }, { translate: '0px 0px' }],
+        expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+      );
+      unmount();
+      const { unmount: unmountOut } = render(React.createElement(Slide.Out, { animateOpacity: false, children }));
+      expect(animateSpy).toHaveBeenLastCalledWith(
+        [{ translate: '0px 0px' }, { translate: '0px 0px' }],
+        expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMid }),
+      );
+      unmountOut();
+      render(
+        React.createElement(Slide.Out, {
+          duration: 123,
+          easing: 'linear',
+          delay: 25,
+          exitDuration: 0,
+          exitEasing: 'ease-in',
+          exitDelay: 0,
+          animateOpacity: false,
+          children,
+        }),
+      );
+      expect(animateSpy).toHaveBeenLastCalledWith(
+        [{ translate: '0px 0px' }, { translate: '0px 0px' }],
+        expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+      );
+    } finally {
+      animateSpy.mockRestore();
+    }
+  });
+
+  it('keeps present-pose props on the root and rejects removed props', () => {
+    const children = React.createElement('div');
+    React.createElement(Slide, { inX: '4px', inY: '8px', children });
+    // @ts-expect-error present-pose props are root-only
+    React.createElement(Slide.In, { inX: '4px', children });
+    // @ts-expect-error variants retain the root-only present-pose contract
+    React.createElement(SlideRelaxed.Out, { inY: '8px', children });
+    // @ts-expect-error fromX replaces outX
+    React.createElement(Slide, { outX: '10px', children });
+    // @ts-expect-error fromY replaces outY
+    React.createElement(Slide, { outY: '10px', children });
+  });
 });

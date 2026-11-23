@@ -31,7 +31,7 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   inAngle = 0,
   toAngle = fromAngle,
   animateOpacity = true,
-}: RotateParams) => {
+}) => {
   const enterAtoms: AtomMotion[] = [
     rotate({
       from: fromAngle,

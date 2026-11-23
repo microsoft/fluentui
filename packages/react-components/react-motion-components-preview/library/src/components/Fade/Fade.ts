@@ -16,7 +16,7 @@ import type { FadeParams } from './fade-types';
  * @param inOpacity - Opacity for the in pose. Defaults to 1.
  * @param toOpacity - Opacity after exiting. Defaults to `fromOpacity`.
  */
-export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
+const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,
   delay = 0,

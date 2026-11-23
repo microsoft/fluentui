@@ -117,6 +117,40 @@ describe('Fade motion component', () => {
     },
   );
 
+  it('preserves directional defaults and explicit zero exit timing', () => {
+    const { unmount } = render(<Fade.In>{testElement}</Fade.In>);
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0 }, { opacity: 1 }],
+      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEase }),
+    );
+    unmount();
+    const { unmount: unmountOut } = render(<Fade.Out>{testElement}</Fade.Out>);
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 1 }, { opacity: 0 }],
+      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEase }),
+    );
+    unmountOut();
+    render(
+      <Fade.Out duration={123} easing="linear" delay={25} exitDuration={0} exitEasing="ease-in" exitDelay={0}>
+        {testElement}
+      </Fade.Out>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 1 }, { opacity: 0 }],
+      expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+    );
+  });
+
+  it('keeps present-pose props on the root and rejects removed props', () => {
+    <Fade inOpacity={0.8}>{testElement}</Fade>;
+    // @ts-expect-error present-pose props are root-only
+    <Fade.In inOpacity={0.8}>{testElement}</Fade.In>;
+    // @ts-expect-error variants retain the root-only present-pose contract
+    <FadeSnappy.Out inOpacity={0.8}>{testElement}</FadeSnappy.Out>;
+    // @ts-expect-error fromOpacity replaces outOpacity
+    <Fade outOpacity={0.2}>{testElement}</Fade>;
+  });
+
   it('should render Snappy variant of Fade component with correct opacity keyframes, duration and easing', () => {
     const { rerender } = render(<FadeSnappy visible={false}>{testElement}</FadeSnappy>);
 

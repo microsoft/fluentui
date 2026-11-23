@@ -116,4 +116,47 @@ describe('Scale', () => {
       }
     });
   });
+
+  it('preserves directional defaults and explicit zero exit timing', () => {
+    const { unmount } = render(React.createElement(Scale.In, { animateOpacity: false, children: testElement }));
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ scale: 0.9 }, { scale: 1 }],
+      expect.objectContaining({ duration: motionTokens.durationGentle, easing: motionTokens.curveDecelerateMax }),
+    );
+    unmount();
+    const { unmount: unmountOut } = render(
+      React.createElement(Scale.Out, { animateOpacity: false, children: testElement }),
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ scale: 1 }, { scale: 0.9 }],
+      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMax }),
+    );
+    unmountOut();
+    render(
+      React.createElement(Scale.Out, {
+        duration: 123,
+        easing: 'linear',
+        delay: 25,
+        exitDuration: 0,
+        exitEasing: 'ease-in',
+        exitDelay: 0,
+        animateOpacity: false,
+        children: testElement,
+      }),
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ scale: 1 }, { scale: 0.9 }],
+      expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+    );
+  });
+
+  it('keeps present-pose props on the root and rejects removed props', () => {
+    React.createElement(Scale, { inScale: 1.1, children: testElement });
+    // @ts-expect-error present-pose props are root-only
+    React.createElement(Scale.In, { inScale: 1.1, children: testElement });
+    // @ts-expect-error variants retain the root-only present-pose contract
+    React.createElement(ScaleSnappy.Out, { inScale: 1.1, children: testElement });
+    // @ts-expect-error fromScale replaces outScale
+    React.createElement(Scale, { outScale: 0.8, children: testElement });
+  });
 });

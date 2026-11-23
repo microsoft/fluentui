@@ -8,10 +8,10 @@ export type SlideParams = BasePresenceParams &
     /** Y translate before entering, or the playback source on `.In`/`.Out`. Defaults to `'0px'`. */
     fromY?: string;
 
-    /** X translate while present. Defaults to `'0px'`. Only used by the presence component. */
+    /** X translate while present. Defaults to `'0px'`. Only used by the root presence component. */
     inX?: string;
 
-    /** Y translate while present. Defaults to `'0px'`. Only used by the presence component. */
+    /** Y translate while present. Defaults to `'0px'`. Only used by the root presence component. */
     inY?: string;
 
     /** X translate after exiting, or the playback destination on `.In`/`.Out`. Presence mirrors `fromX` if neither destination axis is authored; otherwise defaults to `'0px'`. Directional playback defaults to `'0px'`. */
