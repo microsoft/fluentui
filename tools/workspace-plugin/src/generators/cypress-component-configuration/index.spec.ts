@@ -53,7 +53,7 @@ describe(`cypress-component-configuration`, () => {
         "compilerOptions": Object {
           "isolatedModules": false,
           "lib": Array [
-            "ES2019",
+            "ES2020",
             "dom",
           ],
           "typeRoots": Array [

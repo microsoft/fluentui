@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { SkeletonBaseProps, SkeletonBaseState, SkeletonProps, SkeletonState } from './Skeleton.types';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
 
@@ -45,13 +45,16 @@ export const useSkeletonBase_unstable = (
   props: SkeletonBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): SkeletonBaseState => {
+  // `size` and `shape` are design props and `width` is deprecated, none of them are DOM attributes.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const { width, size, shape, ...rest } = props;
   const root = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       ref,
       role: 'progressbar',
       'aria-busy': true,
-      ...props,
-    }),
+      ...rest,
+    },
     { elementType: 'div' },
   );
   return { components: { root: 'div' }, root };

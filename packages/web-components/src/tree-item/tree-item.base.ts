@@ -1,6 +1,6 @@
-import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
 /**
@@ -120,6 +120,7 @@ export class BaseTreeItem extends FASTElement {
       toggleState(this.elementInternals, 'selected', next);
       this.elementInternals.ariaSelected = next ? 'true' : 'false';
     }
+    this.toggleAttribute('focusgroupstart', this.selected);
   }
 
   /**
