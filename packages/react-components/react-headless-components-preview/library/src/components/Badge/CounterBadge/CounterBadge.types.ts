@@ -1,6 +1,9 @@
 import type { CounterBadgeBaseState } from '@fluentui/react-badge';
 
-export type { BadgeSlots, CounterBadgeBaseProps as CounterBadgeProps } from '@fluentui/react-badge';
+export type {
+  BadgeSlots as CounterBadgeSlots,
+  CounterBadgeBaseProps as CounterBadgeProps,
+} from '@fluentui/react-badge';
 
 /**
  * CounterBadge component state.

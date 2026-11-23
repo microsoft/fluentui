@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   PopoverProvider as BasePopoverProvider,
   type PopoverContextValue as BasePopoverContextValue,
@@ -17,11 +18,11 @@ import type { TeachingPopoverContextValues, TeachingPopoverState } from './Teach
 export const renderTeachingPopover = (
   state: TeachingPopoverState,
   contextValues: TeachingPopoverContextValues,
-): React.ReactElement => (
+): JSXElement => (
   <PopoverProvider value={contextValues.popover}>
     <BasePopoverProvider value={contextValues.basePopover as BasePopoverContextValue}>
       {state.popoverTrigger}
-      {state.open ? state.popoverSurface : null}
+      {state.shouldRenderSurface ? state.popoverSurface : null}
     </BasePopoverProvider>
   </PopoverProvider>
 );

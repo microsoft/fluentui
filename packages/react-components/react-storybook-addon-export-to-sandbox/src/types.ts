@@ -8,6 +8,9 @@ export interface CssModuleEntry {
 
 /** Parameters injected per-story at build time by the babel plugin. Not user-configurable. */
 interface InjectedParameters {
+  /** False when the extracted source is incomplete and must only be used for source display. */
+  fullSourceIsRunnable?: boolean;
+  fullSourceUnsupportedImports?: string[];
   cssModuleSources?: { cssModules?: CssModuleEntry[]; tokensSource?: string };
 }
 

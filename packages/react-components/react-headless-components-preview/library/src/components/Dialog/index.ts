@@ -20,7 +20,7 @@ export { renderDialogSurface, useDialogSurface } from './DialogSurface';
 
 export { DialogTrigger } from './DialogTrigger';
 export type { DialogTriggerAction, DialogTriggerProps, DialogTriggerState } from './DialogTrigger';
-export { useDialogTrigger } from './DialogTrigger';
+export { renderDialogTrigger, useDialogTrigger } from './DialogTrigger';
 
 export { DialogTitle } from './DialogTitle';
 export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './DialogTitle';

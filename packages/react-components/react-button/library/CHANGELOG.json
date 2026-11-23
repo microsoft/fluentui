@@ -2,6 +2,58 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.11.3",
+      "tag": "@fluentui/react-button_v9.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "bec1bf2cb8212a3a987814eedd81f56f4e9bab5a",
+            "comment": "fix: preserve selected toggle button icon contrast in forced-colors mode, including toolbar radio and toggle buttons"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:01 GMT",
+      "version": "9.11.2",
+      "tag": "@fluentui/react-button_v9.11.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.17.16"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.11.1",
       "comments": {

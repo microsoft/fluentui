@@ -8,6 +8,7 @@ export {
   DialogActions,
   renderDialog,
   renderDialogSurface,
+  renderDialogTrigger,
   renderDialogTitle,
   renderDialogHeader,
   renderDialogBody,

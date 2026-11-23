@@ -2,6 +2,7 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles } from '@griffel/react';
+import { calendarGridWidth } from '../utils/calendarDimensions';
 
 /**
  * Chrome shared by the month and year pickers, which render the same header, navigation and grid
@@ -12,7 +13,7 @@ export const useCalendarPickerStyles = makeStyles({
     boxSizing: 'content-box',
     overflow: 'hidden',
     padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
-    width: '196px',
+    width: calendarGridWidth,
   },
   normalize: {
     boxShadow: 'none',

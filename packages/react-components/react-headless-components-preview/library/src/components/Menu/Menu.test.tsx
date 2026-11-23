@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import { createPortal } from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
 import { MenuTrigger } from './MenuTrigger/MenuTrigger';
@@ -16,6 +17,76 @@ import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
 import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 
 describe('Menu', () => {
+  describe('close focus restoration', () => {
+    const Example = ({ open }: { open: boolean }) => (
+      <>
+        <button data-testid="outside">Outside</button>
+        <Menu open={open}>
+          <MenuTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem data-testid="item">Action</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </>
+    );
+
+    for (const mode of ['document', 'open', 'closed'] as const) {
+      const setup = (open: boolean) => {
+        const { container } = render(<div />);
+        const host = container.firstElementChild!;
+        const root = mode === 'document' ? host : host.attachShadow({ mode });
+        const activeRoot = mode === 'document' ? host.ownerDocument : (root as ShadowRoot);
+        const view = render(createPortal(<Example open={open} />, root));
+        const trigger = root.querySelector<HTMLElement>('[data-testid="trigger"]')!;
+        const item = root.querySelector<HTMLElement>('[data-testid="item"]')!;
+        const outside = root.querySelector<HTMLElement>('[data-testid="outside"]')!;
+        return {
+          activeRoot,
+          trigger,
+          item,
+          outside,
+          document: host.ownerDocument,
+          close: () => view.rerender(createPortal(<Example open={false} />, root)),
+        };
+      };
+
+      it(`restores focus on controlled close in a ${mode} root`, async () => {
+        const { activeRoot, trigger, item, close } = setup(true);
+        item.focus();
+        expect(activeRoot.activeElement).toBe(item);
+        close();
+        await waitFor(() => expect(activeRoot.activeElement).toBe(trigger));
+      });
+
+      it(`preserves focus outside the menu in a ${mode} root`, async () => {
+        const { activeRoot, outside, close } = setup(true);
+        outside.focus();
+        close();
+        await waitFor(() => expect(activeRoot.activeElement).toBe(outside));
+      });
+
+      it(`does not focus the trigger on initial closed mount in a ${mode} root`, () => {
+        const { activeRoot, trigger } = setup(false);
+        expect(activeRoot.activeElement).not.toBe(trigger);
+      });
+
+      if (mode !== 'document') {
+        it(`preserves focus in the document outside a ${mode} shadow root`, async () => {
+          const { document: ownerDocument, close } = setup(true);
+          const { getByRole } = render(<button>Document outside</button>);
+          const outside = getByRole('button', { name: 'Document outside' });
+          outside.focus();
+          close();
+          await waitFor(() => expect(ownerDocument.activeElement).toBe(outside));
+        });
+      }
+    }
+  });
+
   it('renders trigger and surface children when open', () => {
     const { getByText } = render(
       <Menu defaultOpen>

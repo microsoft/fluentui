@@ -52,13 +52,10 @@ export { AvatarGroupItemSlots }
 export { AvatarGroupItemState }
 
 // @public
-export const AvatarGroupPopover: {
-    (props: AvatarGroupPopoverProps): JSXElement;
-    displayName: string;
-};
+export const AvatarGroupPopover: ComponentWithoutRef<AvatarGroupPopoverProps>;
 
 // @public
-export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'trapFocus'>;
+export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'inertTrapFocus'>;
 
 // @public
 export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & {

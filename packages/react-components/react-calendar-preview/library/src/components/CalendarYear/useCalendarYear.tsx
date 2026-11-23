@@ -1,13 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { Enter, Space } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Space } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { createDate } from '../../utils/dateMath';
-import { CalendarYearGridRow } from '../CalendarYearGridRow/CalendarYearGridRow';
+import { getCalendarEventType, getCalendarNavigationButtonProps } from '../../utils/calendarHeader';
+import { getCalendarPickerRows, useCalendarPickerGrid } from '../../hooks/useCalendarPickerGrid';
+import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
+import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import type {
   CalendarYearBaseProps,
   CalendarYearBaseState,
@@ -15,11 +18,13 @@ import type {
   CalendarYearHandle,
   CalendarYearProps,
   CalendarYearRange,
+  CalendarYearRow,
   CalendarYearState,
 } from './CalendarYear.types';
 
 const CELL_COUNT = 12;
-const CELLS_PER_ROW = 4;
+
+type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 
 function useYearRangeState({
   selectedYear,
@@ -37,24 +42,10 @@ function useYearRangeState({
 
   const [fromYear, setFromYear] = React.useState<number>(rangeYear);
 
-  const onNavNext = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => {
-    const newFromYear = fromYear + CELL_COUNT;
+  const onNavigate = (ev: ButtonEvent, offset: number) => {
+    const newFromYear = fromYear + offset;
     setFromYear(newFromYear);
-    onNavigateDate?.(ev, {
-      event: ev,
-      type: ev.type === 'keydown' ? 'keydown' : 'click',
-      year: newFromYear,
-    });
-  };
-
-  const onNavPrevious = (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => {
-    const newFromYear = fromYear - CELL_COUNT;
-    setFromYear(newFromYear);
-    onNavigateDate?.(ev, {
-      event: ev,
-      type: ev.type === 'keydown' ? 'keydown' : 'click',
-      year: newFromYear,
-    });
+    onNavigateDate?.(ev, { event: ev, type: getCalendarEventType(ev), year: newFromYear });
   };
 
   React.useEffect(() => {
@@ -62,25 +53,26 @@ function useYearRangeState({
     setFromYear(rangeYear);
   }, [rangeYear]);
 
-  return [fromYear, fromYear + CELL_COUNT - 1, onNavNext, onNavPrevious] as const;
+  return [fromYear, fromYear + CELL_COUNT - 1, onNavigate] as const;
 }
 
 /**
  * Create the base state required to render an unstyled CalendarYear.
- * Free of Tabster so the headless layer can supply its own roving focus; the styled
- * `useCalendarYear_unstable` adds arrow key navigation on top.
+ * The grid owns arrow navigation and its roving tab stop, so the base state is complete without a focus runtime.
  */
 export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearBaseState => {
-  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const contextToday = useCalendarContext_unstable(ctx => ctx.today);
-  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
-  const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
-  const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
-  const value = useCalendarContext_unstable(ctx => ctx.value);
-
+  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
+  const {
+    allFocusable,
+    today: contextToday,
+    formatters,
+    maxDate,
+    minDate,
+    value,
+  } = useCalendarContext_unstable(ctx => ctx);
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
@@ -89,29 +81,7 @@ export const useCalendarYearBase_unstable = (
   const selectedYear = props.selectedYear !== undefined ? props.selectedYear : value?.getFullYear();
   const minYear = minDate ? minDate.getFullYear() : undefined;
   const maxYear = maxDate ? maxDate.getFullYear() : undefined;
-  const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState({
-    ...props,
-    currentYear,
-    selectedYear,
-  });
-
-  const currentYearRef = React.useRef<HTMLButtonElement>(null);
-  const selectedYearRef = React.useRef<HTMLButtonElement>(null);
-  const navigatedYearRef = React.useRef<HTMLButtonElement>(null);
-
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      focus() {
-        [navigatedYearRef.current, selectedYearRef.current, currentYearRef.current]
-          .find(element => element && !element.disabled)
-          ?.focus();
-      },
-    }),
-    [],
-  );
-
-  const formatYear = (year: number) => formatters.dateTime({ date: createDate(year, 0, 1), format: 'year' });
+  const [fromYear, toYear, onNavigate] = useYearRangeState({ ...props, currentYear, selectedYear });
 
   const firstFocusableYear = allFocusable ? fromYear : Math.max(fromYear, minYear ?? fromYear);
   const lastFocusableYear = allFocusable ? toYear : Math.min(toYear, maxYear ?? toYear);
@@ -119,33 +89,38 @@ export const useCalendarYearBase_unstable = (
     lastFocusableYear,
     Math.max(firstFocusableYear, props.navigatedYear ?? selectedYear ?? currentYear),
   );
-  const yearRows: CalendarYearCell[][] = [];
-  for (let row = 0; row < CELL_COUNT / CELLS_PER_ROW; row++) {
-    const cells: CalendarYearCell[] = [];
-    for (let column = 0; column < CELLS_PER_ROW; column++) {
-      const year = fromYear + row * CELLS_PER_ROW + column;
-      cells.push({
-        year,
-        content: props.renderYear ? props.renderYear(year) : formatYear(year),
-        isCurrent: year === currentYear,
-        isSelected: year === selectedYear,
-        isNavigated: year === focusYear,
-        isDisabled: (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear),
-      });
-    }
-    yearRows.push(cells);
-  }
+
+  const formatYear = (year: number) => formatters.dateTime({ date: createDate(year, 0, 1), format: 'year' });
+  const isYearDisabled = (year: number) =>
+    (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
+
+  const yearCells: CalendarYearCell[] = Array.from({ length: CELL_COUNT }, (_, index) => {
+    const year = fromYear + index;
+    return {
+      year,
+      content: props.renderYear ? props.renderYear(year) : formatYear(year),
+      isCurrent: year === currentYear,
+      isSelected: year === selectedYear,
+      isNavigated: year === focusYear,
+      isDisabled: isYearDisabled(year),
+      props: {},
+    };
+  });
+  const yearRows: CalendarYearRow[] = getCalendarPickerRows(yearCells, allFocusable, cell => [
+    cell.isDisabled,
+    cell.isSelected,
+    cell.isCurrent,
+    cell.isNavigated,
+  ]);
 
   const prevDisabled = minYear !== undefined && fromYear <= minYear;
   const nextDisabled = maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
 
+  const formatRange = (range: CalendarYearRange) => `${formatYear(range.fromYear)} - ${formatYear(range.toYear)}`;
   const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
   const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
-
-  const formatRange = (range: CalendarYearRange) => `${formatYear(range.fromYear)} - ${formatYear(range.toYear)}`;
   const range = { fromYear, toYear };
   const rangeLabel = formatRange(range);
-  const titleAriaLabel = formatters.yearRangePickerHeaderLabel({ ...range, formattedRange: rangeLabel });
 
   const titleElementType = onHeaderSelect ? 'button' : 'div';
   const titleContent = (
@@ -154,12 +129,26 @@ export const useCalendarYearBase_unstable = (
     </>
   );
 
+  const [gridSlot, getCell] = useCalendarPickerGrid(
+    grid,
+    rangeLabel,
+    allFocusable,
+    focusYear - fromYear,
+    index => !isYearDisabled(fromYear + index),
+    (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
+  );
+
+  React.useImperativeHandle(ref, () => ({
+    focus(options?: FocusOptions) {
+      [focusYear, selectedYear, currentYear]
+        .map(year => (typeof year === 'number' ? getCell(year - fromYear) : undefined))
+        .find(cell => cell && !cell.matches(':disabled'))
+        ?.focus(options);
+    },
+  }));
+
   return {
-    currentYearRef,
     fromYear,
-    onSelectYear,
-    selectedYearRef,
-    navigatedYearRef,
     yearRows,
     components: {
       root: 'div',
@@ -175,7 +164,9 @@ export const useCalendarYearBase_unstable = (
     heading: slot.always(heading, {
       defaultProps: {
         as: titleElementType,
-        'aria-label': onHeaderSelect ? titleAriaLabel : undefined,
+        'aria-label': onHeaderSelect
+          ? formatters.yearRangePickerHeaderLabel({ ...range, formattedRange: rangeLabel })
+          : undefined,
         children: onHeaderSelect ? (
           <span aria-live="assertive" aria-atomic="true">
             {titleContent}
@@ -200,47 +191,29 @@ export const useCalendarYearBase_unstable = (
     }),
     navigation: slot.always(navigation, { elementType: 'div' }),
     previousRangeButton: slot.always(previousRangeButton, {
-      defaultProps: {
-        'aria-disabled': prevDisabled,
-        onClick: prevDisabled ? undefined : onNavPrevious,
-        onKeyDown: prevDisabled ? undefined : onNavigationKeyDown(onNavPrevious),
-        tabIndex: prevDisabled ? (allFocusable ? 0 : -1) : undefined,
-        title: formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
-        type: 'button',
-      },
+      defaultProps: getCalendarNavigationButtonProps(
+        !prevDisabled,
+        allFocusable,
+        formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
+        ev => onNavigate(ev, -CELL_COUNT),
+      ),
       elementType: 'button',
     }),
     nextRangeButton: slot.always(nextRangeButton, {
-      defaultProps: {
-        'aria-disabled': nextDisabled,
-        onClick: nextDisabled ? undefined : onNavNext,
-        onKeyDown: nextDisabled ? undefined : onNavigationKeyDown(onNavNext),
-        tabIndex: nextDisabled ? (allFocusable ? 0 : -1) : undefined,
-        title: formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
-        type: 'button',
-      },
+      defaultProps: getCalendarNavigationButtonProps(
+        !nextDisabled,
+        allFocusable,
+        formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
+        ev => onNavigate(ev, CELL_COUNT),
+      ),
       elementType: 'button',
     }),
-    grid: slot.always(grid, {
-      defaultProps: {
-        'aria-label': rangeLabel,
-        role: 'grid',
-      },
-      elementType: 'div',
-    }),
+    grid: gridSlot,
     hasHeaderClickCallback: !!onHeaderSelect,
     prevDisabled,
     nextDisabled,
   };
 };
-
-const onNavigationKeyDown =
-  (callback: (ev: React.KeyboardEvent<HTMLButtonElement>) => void) => (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (ev.key === Enter) {
-      ev.preventDefault();
-      callback(ev);
-    }
-  };
 
 /**
  * Create the state required to render CalendarYear.
@@ -249,34 +222,28 @@ export const useCalendarYear_unstable = (
   props: CalendarYearProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearState => {
-  const baseState = useCalendarYearBase_unstable(props, ref);
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const state = useCalendarYearBase_unstable(props, ref);
+  // The grid owns its arrow keys; the Tabster group only keeps an enclosing Tabster mover from handling them.
+  const arrowNavigationAttributes = useArrowNavigationGroup({
+    axis: 'grid',
+    ignoreDefaultKeydown: { [ArrowDown]: true, [ArrowLeft]: true, [ArrowRight]: true, [ArrowUp]: true },
+  });
+  const animateBackwards = useAnimateBackwards(state.fromYear);
 
-  return {
-    ...baseState,
-    grid: slot.always(props.grid, {
-      defaultProps: {
-        ...baseState.grid,
-        ...arrowNavigationAttributes,
-        children: baseState.yearRows.map((_, rowIndex: number) => (
-          <CalendarYearGridRow key={rowIndex} rowIndex={rowIndex} />
-        )),
-      },
-      elementType: 'div',
-    }),
-    previousRangeButton: slot.always(props.previousRangeButton, {
-      defaultProps: {
-        ...baseState.previousRangeButton,
-        children: <ArrowUpRegular />,
-      },
-      elementType: 'button',
-    }),
-    nextRangeButton: slot.always(props.nextRangeButton, {
-      defaultProps: {
-        ...baseState.nextRangeButton,
-        children: <ArrowDownRegular />,
-      },
-      elementType: 'button',
-    }),
-  };
+  Object.assign(state.grid, arrowNavigationAttributes);
+  /* eslint-disable react-hooks/immutability */
+  if (state.previousRangeButton.children === undefined) {
+    state.previousRangeButton.children = <ArrowUpRegular />;
+  }
+  if (state.nextRangeButton.children === undefined) {
+    state.nextRangeButton.children = <ArrowDownRegular />;
+  }
+  state.wrapRow = row => (
+    <DirectionalSlideIn animationDirection="vertical" animateBackwards={animateBackwards} replayKey={state.fromYear}>
+      {row}
+    </DirectionalSlideIn>
+  );
+  /* eslint-enable react-hooks/immutability */
+
+  return state;
 };

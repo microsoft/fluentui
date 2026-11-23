@@ -28,7 +28,7 @@ export const useSwatchPickerBase_unstable = (
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props);
 
-  const { layout, onSelectionChange, style, ...rest } = props;
+  const { layout, onSelectionChange, ...rest } = props;
 
   const isGrid = layout === 'grid';
 

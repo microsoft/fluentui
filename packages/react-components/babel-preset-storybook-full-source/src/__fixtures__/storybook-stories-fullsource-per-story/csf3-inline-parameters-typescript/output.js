@@ -32,6 +32,9 @@ export const As = {
     },
   },
 };
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource = 'export const Default = () => <div>Example</div>;\n';
+Satisfies.parameters.fullSourceIsRunnable = true;
 Satisfies.parameters.fullSource = 'export const Satisfies = () => <div>Example</div>;\n';
+As.parameters.fullSourceIsRunnable = true;
 As.parameters.fullSource = 'export const As = () => <div>Example</div>;\n';

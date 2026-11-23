@@ -7,24 +7,23 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '400px',
+    gap: tokens.spacingVerticalMNudge,
   },
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
+    paddingBlock: tokens.spacingVerticalMNudge,
+  },
+  filledFields: {
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
   },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 
@@ -49,13 +48,13 @@ export const Appearance = (): JSXElement => {
         <Label htmlFor={inputIds.underline}>Underline appearance</Label>
         <Input appearance="underline" id={inputIds.underline} />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance</Label>
-        <Input appearance="filled-lighter" id={inputIds.filledLighter} />
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledLighter)}>
+        <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance (on Background 3)</Label>
+        <Input appearance="filled-lighter" id={inputIds.filledLighter} placeholder="Accessible Placeholder" />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={inputIds.filledDarker}>Filled darker appearance</Label>
-        <Input appearance="filled-darker" id={inputIds.filledDarker} />
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledDarker)}>
+        <Label htmlFor={inputIds.filledDarker}>Filled darker appearance (on Background 1)</Label>
+        <Input appearance="filled-darker" id={inputIds.filledDarker} placeholder="Accessible Placeholder" />
       </div>
     </div>
   );
@@ -66,9 +65,9 @@ Appearance.parameters = {
     description: {
       story:
         'An input can have different appearances.\n' +
-        `The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
-      filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
-      surrounding color to pass accessibility requirements.`,
+        'The colors adjacent to the input should have a sufficient contrast. ' +
+        'For `filled-lighter` and `filled-darker` inputs without another identifying visual cue, ' +
+        'provide a descriptive placeholder with at least 4.5:1 contrast against the input background.',
     },
   },
 };

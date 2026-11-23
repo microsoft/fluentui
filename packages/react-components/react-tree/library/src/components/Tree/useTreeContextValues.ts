@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import type { TreeContextValue } from '../../contexts';
-import type { TreeContextValues, TreeState } from './Tree.types';
+import type { TreeBaseState, TreeContextValues, TreeState } from './Tree.types';
 
-export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
+export function useTreeContextValues_unstable(state: TreeState | TreeBaseState): TreeContextValues {
   if (state.contextType === 'root') {
     const {
       openItems,
@@ -14,11 +14,12 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       checkedItems,
       selectionMode,
       navigationMode,
-      appearance,
-      size,
       requestTreeResponse,
       forceUpdateRovingTabIndex,
     } = state;
+    // Base state carries no design props, the context falls back to the default design values.
+    const appearance = 'appearance' in state ? state.appearance : 'subtle';
+    const size = 'size' in state ? state.size : 'medium';
     // contextType is statically determined by the context
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const tree = React.useMemo<TreeContextValue>(

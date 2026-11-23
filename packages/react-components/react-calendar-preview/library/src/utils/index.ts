@@ -28,4 +28,9 @@ export {
   isDateInRange,
   setMonth,
 } from './dateMath';
-export { focusAsync } from './focus';
+export type {
+  CalendarDataAttributes,
+  CalendarElementProps,
+  CalendarGridRow,
+  CalendarRowWrapper,
+} from './calendarGrid.types';

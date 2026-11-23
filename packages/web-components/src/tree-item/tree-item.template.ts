@@ -10,7 +10,7 @@ const chevronIcon = html`
 `;
 
 export const template = html<TreeItem>`
-  <template tabindex="0" ?focusgroupstart="${x => x.selected}">
+  <template>
     <div class="positioning-region" part="positioning-region">
       <div class="content" part="content">
         <span class="chevron" part="chevron" aria-hidden="true">

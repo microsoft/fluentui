@@ -75,3 +75,22 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
   buttonContextValue: ButtonContextValue;
 };
+
+/**
+ * TreeItemLayout slots without any design dependency, used by `useTreeItemLayoutBase_unstable`.
+ *
+ * The selector renders as a native `input`, of type `checkbox` or `radio` depending on the tree selection mode.
+ */
+export type TreeItemLayoutBaseSlots = Omit<TreeItemLayoutSlots, 'selector'> & {
+  selector?: Slot<'input'>;
+};
+
+/**
+ * TreeItemLayout props accepted by `useTreeItemLayoutBase_unstable`.
+ */
+export type TreeItemLayoutBaseProps = ComponentProps<Partial<TreeItemLayoutBaseSlots>>;
+
+/**
+ * State returned by `useTreeItemLayoutBase_unstable`.
+ */
+export type TreeItemLayoutBaseState = ComponentState<TreeItemLayoutBaseSlots>;

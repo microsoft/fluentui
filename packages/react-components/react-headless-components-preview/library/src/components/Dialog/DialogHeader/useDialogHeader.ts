@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { DialogHeaderProps, DialogHeaderState } from './DialogHeader.types';
 
 /**
@@ -11,6 +11,6 @@ import type { DialogHeaderProps, DialogHeaderState } from './DialogHeader.types'
 export const useDialogHeader = (props: DialogHeaderProps, ref: React.Ref<HTMLElement>): DialogHeaderState => {
   return {
     components: { root: 'header' },
-    root: slot.always(getIntrinsicElementProps('header', { ref, ...props }), { elementType: 'header' }),
+    root: slot.always({ ref, ...props }, { elementType: 'header' }),
   };
 };

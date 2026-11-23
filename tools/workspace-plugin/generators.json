@@ -45,6 +45,11 @@
       "schema": "./src/generators/export-maps-sync/schema.json",
       "description": "Keep package.json entry point fields and export maps in sync with declared entry points"
     },
+    "bundle-size-fixtures-sync": {
+      "implementation": "./src/generators/bundle-size-fixtures-sync/index.ts",
+      "schema": "./src/generators/bundle-size-fixtures-sync/schema.json",
+      "description": "Keep generated bundle-size fixtures in sync with export maps and base hook exports"
+    },
     "workspace-generator": {
       "implementation": "./src/generators/workspace-generator/index.ts",
       "schema": "./src/generators/workspace-generator/schema.json",

@@ -133,8 +133,8 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
       menuItemSwitchClassNames.switchIndicator,
       switchIndicatorBaseStyles,
       checked && switchIndicatorStyles.checked,
-      state.switchIndicator.className,
       multiline && multilineStyles.switch,
+      state.switchIndicator.className,
     );
   }
 

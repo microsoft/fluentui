@@ -26,6 +26,12 @@ export type SlottableInput = HTMLElement &
     readOnly: boolean;
     checked?: boolean;
     value?: string;
+
+    // Dropdown
+    control?: HTMLButtonElement | HTMLInputElement;
+    constructor: {
+      elementIdentity?: string;
+    };
   };
 
 /**

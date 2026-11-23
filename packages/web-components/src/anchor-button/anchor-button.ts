@@ -1,9 +1,7 @@
-import { attr } from '@microsoft/fast-element';
 import { StartEnd, type StartEndOptions } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { swapStates, toggleState } from '../utils/element-internals.js';
 import { BaseAnchor } from './anchor-button.base.js';
-import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
+import type { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
 
 /**
  * Anchor configuration options
@@ -18,85 +16,14 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  *
  * @tag fluent-anchor-button
  *
+ * @presentational {AnchorButtonAppearance | undefined} appearance - The appearance the anchor button should have.
+ * @presentational {AnchorButtonShape | undefined} shape - The shape the anchor button should have.
+ * @presentational {AnchorButtonSize | undefined} size - The size the anchor button should have.
+ * @presentational {boolean} icon-only - The anchor button has an icon only, no text content.
+ *
  * @public
  */
-export class AnchorButton extends BaseAnchor {
-  /**
-   * The appearance the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: AnchorButtonAppearance | undefined;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
-    swapStates(this.elementInternals, prev, next, AnchorButtonAppearance);
-  }
-
-  /**
-   * The shape the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: AnchorButtonShape | undefined;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
-    swapStates(this.elementInternals, prev, next, AnchorButtonShape);
-  }
-
-  /**
-   * The size the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: AnchorButtonSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
-    swapStates(this.elementInternals, prev, next, AnchorButtonSize);
-  }
-
-  /**
-   * The anchor button has an icon only, no text content
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `icon-only`
-   */
-  @attr({ attribute: 'icon-only', mode: 'boolean' })
-  public iconOnly: boolean = false;
-
-  /**
-   * Handles changes to icon only custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public iconOnlyChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'icon', !!next);
-  }
-}
+export class AnchorButton extends BaseAnchor {}
 
 /**
  * Mark internal because exporting class and interface of the same name

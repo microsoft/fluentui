@@ -29,7 +29,6 @@ export const useColorAreaBase_unstable = (
   const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
-  const focusWithinRef = useFocusWithin();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
 
@@ -73,16 +72,12 @@ export const useColorAreaBase_unstable = (
     });
   });
 
-  const handleDocumentPointerMove = React.useCallback(
-    (event: PointerEvent) => {
-      requestColorChange(event);
-    },
-    [requestColorChange],
-  );
-
-  const handleDocumentPointerUp = useEventCallback(() => {
-    targetDocument?.removeEventListener('pointermove', handleDocumentPointerMove);
-  });
+  // Detaches the document listeners of the drag in progress, if any.
+  const stopDraggingRef = React.useRef<(() => void) | null>(null);
+  const stopDragging = React.useCallback(() => {
+    stopDraggingRef.current?.();
+    stopDraggingRef.current = null;
+  }, []);
 
   const handleRootOnPointerDown: React.PointerEventHandler<HTMLDivElement> = useEventCallback(event => {
     event.stopPropagation();
@@ -90,9 +85,36 @@ export const useColorAreaBase_unstable = (
 
     requestColorChange(event.nativeEvent);
 
-    targetDocument?.addEventListener('pointermove', handleDocumentPointerMove);
-    targetDocument?.addEventListener('pointerup', handleDocumentPointerUp, { once: true });
+    // A previous drag may still be attached if its end event never arrived.
+    stopDragging();
+
+    if (!targetDocument) {
+      return;
+    }
+
+    const doc = targetDocument;
+    const handlePointerMove = (moveEvent: PointerEvent) => {
+      // No buttons pressed: the pointer was released where we could not observe it (e.g. outside the window).
+      if (moveEvent.buttons === 0) {
+        stopDragging();
+        return;
+      }
+      requestColorChange(moveEvent);
+    };
+
+    doc.addEventListener('pointermove', handlePointerMove);
+    doc.addEventListener('pointerup', stopDragging);
+    doc.addEventListener('pointercancel', stopDragging);
+
+    stopDraggingRef.current = () => {
+      doc.removeEventListener('pointermove', handlePointerMove);
+      doc.removeEventListener('pointerup', stopDragging);
+      doc.removeEventListener('pointercancel', stopDragging);
+    };
   });
+
+  // Never leave document listeners behind after unmount.
+  React.useEffect(() => stopDragging, [stopDragging]);
 
   const handleInputOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const targetValue = Number(event.target.value) / 100;
@@ -190,6 +212,7 @@ export const useColorAreaBase_unstable = (
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
+        'aria-orientation': 'vertical',
         tabIndex: activeAxis && activeAxis === 'y' ? 0 : -1,
       },
       elementType: 'input',
@@ -198,7 +221,6 @@ export const useColorAreaBase_unstable = (
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
-  state.thumb.ref = useMergedRefs(state.thumb.ref, focusWithinRef);
   state.inputX.ref = useMergedRefs(state.inputX.ref, xRef);
   state.inputY.ref = useMergedRefs(state.inputY.ref, yRef);
 
@@ -236,6 +258,10 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     ...useColorAreaBase_unstable(rest, ref),
     shape,
   };
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  state.thumb.ref = useMergedRefs(state.thumb.ref, useFocusWithin());
 
   return state;
 };

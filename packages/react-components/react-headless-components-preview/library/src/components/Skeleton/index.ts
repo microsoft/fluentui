@@ -4,4 +4,6 @@ export type { SkeletonItemSlots, SkeletonItemProps, SkeletonItemState } from './
 export { Skeleton } from './Skeleton';
 export { renderSkeleton } from './renderSkeleton';
 export { useSkeleton, useSkeletonContextValues } from './useSkeleton';
-export type { SkeletonSlots, SkeletonProps, SkeletonState } from './Skeleton.types';
+export { useSkeletonContext } from './skeletonContext';
+export type { SkeletonContextValue } from './skeletonContext';
+export type { SkeletonSlots, SkeletonProps, SkeletonState, SkeletonContextValues } from './Skeleton.types';

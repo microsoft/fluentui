@@ -1,6 +1,10 @@
+import * as React from 'react';
 import { getPlacementSlideDirections, usePositioningSlideDirection } from './usePositioningSlideDirection';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import type { OnPositioningEndEvent } from './types';
+
+const createMockDocument = (registerProperty = jest.fn()) =>
+  ({ defaultView: { CSS: { registerProperty } } } as unknown as Document);
 
 describe('getPlacementSlideDirections', () => {
   it('returns { x: 0, y: 1 } for "top" placement (slides down from top)', () => {
@@ -154,5 +158,132 @@ describe('usePositioningSlideDirection', () => {
         }),
       );
     }).not.toThrow();
+  });
+
+  it('registers each property once across mounts, rerenders, and remounts', () => {
+    const registerProperty = jest.fn();
+    const targetDocument = createMockDocument(registerProperty);
+    const first = renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    first.rerender();
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    first.unmount();
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(2);
+  });
+
+  it('registers each property once when StrictMode replays mount effects', () => {
+    const registerProperty = jest.fn();
+    const targetDocument = createMockDocument(registerProperty);
+    let effectRuns = 0;
+    renderHook(
+      () => {
+        React.useEffect(() => {
+          effectRuns += 1;
+        }, []);
+        return usePositioningSlideDirection({ targetDocument });
+      },
+      { reactStrictMode: true },
+    );
+    expect(effectRuns).toBe(2);
+    expect(registerProperty).toHaveBeenCalledTimes(2);
+  });
+
+  it('registers independently in separate windows', () => {
+    const firstRegister = jest.fn();
+    const secondRegister = jest.fn();
+    renderHook(() => usePositioningSlideDirection({ targetDocument: createMockDocument(firstRegister) }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument: createMockDocument(secondRegister) }));
+    expect(firstRegister).toHaveBeenCalledTimes(2);
+    expect(secondRegister).toHaveBeenCalledTimes(2);
+  });
+
+  it('registers independently for documents sharing a window proxy', () => {
+    const registerProperty = jest.fn();
+    const firstDocument = createMockDocument(registerProperty);
+    const secondDocument = { defaultView: firstDocument.defaultView } as Document;
+    renderHook(() => usePositioningSlideDirection({ targetDocument: firstDocument }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument: secondDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(4);
+  });
+
+  it('registers in the new document when targetDocument changes', () => {
+    const firstRegister = jest.fn();
+    const secondRegister = jest.fn();
+    const firstDocument = createMockDocument(firstRegister);
+    const secondDocument = createMockDocument(secondRegister);
+    const { rerender } = renderHook(({ targetDocument }) => usePositioningSlideDirection({ targetDocument }), {
+      initialProps: { targetDocument: firstDocument },
+    });
+    rerender({ targetDocument: secondDocument });
+    rerender({ targetDocument: firstDocument });
+    expect(firstRegister).toHaveBeenCalledTimes(2);
+    expect(secondRegister).toHaveBeenCalledTimes(2);
+  });
+
+  it('attempts Y even when X is already registered externally', () => {
+    const registerProperty = jest.fn().mockImplementationOnce(() => {
+      throw new DOMException('Already registered', 'InvalidModificationError');
+    });
+    const targetDocument = createMockDocument(registerProperty);
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(2);
+    expect(registerProperty).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        name: '--fui-positioning-slide-direction-y',
+      }),
+    );
+  });
+
+  it('does not repeatedly retry externally registered properties', () => {
+    const registerProperty = jest.fn(() => {
+      throw new DOMException('Already registered', 'InvalidModificationError');
+    });
+    const targetDocument = createMockDocument(registerProperty);
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(2);
+  });
+
+  it('retries unexpected failures without retrying a successfully registered property', () => {
+    const registerProperty = jest.fn().mockImplementationOnce(() => {
+      throw new Error('Temporary registration failure');
+    });
+    const targetDocument = createMockDocument(registerProperty);
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(3);
+    expect(registerProperty).toHaveBeenNthCalledWith(
+      3,
+      expect.objectContaining({
+        name: '--fui-positioning-slide-direction-x',
+      }),
+    );
+  });
+
+  it('handles an absent document or window', () => {
+    expect(() => renderHook(() => usePositioningSlideDirection({ targetDocument: undefined }))).not.toThrow();
+    expect(() => renderHook(() => usePositioningSlideDirection({ targetDocument: {} as Document }))).not.toThrow();
+  });
+
+  it('does not cache an unsupported API and registers when it becomes available', () => {
+    const targetDocument = { defaultView: { CSS: {} } } as unknown as Document;
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    const registerProperty = jest.fn();
+    targetDocument.defaultView!.CSS.registerProperty = registerProperty;
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(2);
+  });
+
+  it('preserves the CSS API receiver', () => {
+    const targetDocument = createMockDocument();
+    const registerProperty = jest.fn(function (this: unknown) {
+      expect(this).toBe(targetDocument.defaultView!.CSS);
+    });
+    targetDocument.defaultView!.CSS.registerProperty = registerProperty;
+    renderHook(() => usePositioningSlideDirection({ targetDocument }));
+    expect(registerProperty).toHaveBeenCalledTimes(2);
   });
 });

@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useTabListBase_unstable } from '@fluentui/react-tabs';
 
 import type { TabListProps, TabListState } from './TabList.types';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a TabList component, given its props and ref.
@@ -16,6 +17,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   state.root.focusgroup = `tablist ${state.vertical ? 'block' : 'inline'} wrap nomemory`;
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
 
   return state;
 };

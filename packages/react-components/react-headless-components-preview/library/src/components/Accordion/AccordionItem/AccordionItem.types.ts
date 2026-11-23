@@ -3,7 +3,8 @@ import type { AccordionItemState as AccordionItemBaseState } from '@fluentui/rea
 export type {
   AccordionItemProps,
   AccordionItemSlots,
-  AccordionItemContextValues as AccordionItemContextValues,
+  AccordionItemContextValue,
+  AccordionItemContextValues,
 } from '@fluentui/react-accordion';
 
 export type AccordionItemState = AccordionItemBaseState & {
