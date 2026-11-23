@@ -56,6 +56,27 @@ describe('TagGroup', () => {
 
     expect(getByRole('button')).toBeDisabled();
   });
+
+  it('if disabled, should disable button root overrides', () => {
+    const { getByRole } = render(
+      <TagGroup disabled>
+        <Tag value={'1'} as="button" />
+      </TagGroup>,
+    );
+
+    expect(getByRole('button')).toBeDisabled();
+  });
+
+  it('if disabled, should not disable span root overrides', () => {
+    const { getByTestId } = render(
+      <TagGroup disabled>
+        <Tag value={'1'} as="span" dismissible data-testid="tag" />
+      </TagGroup>,
+    );
+
+    expect(getByTestId('tag').tagName).toBe('SPAN');
+    expect(getByTestId('tag').hasAttribute('disabled')).toBe(false);
+  });
 });
 
 describe('TagGroup DOM attributes', () => {

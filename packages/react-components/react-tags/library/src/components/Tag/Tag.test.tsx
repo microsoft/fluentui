@@ -68,4 +68,17 @@ describe('Tag DOM attributes', () => {
       'type',
     ]);
   });
+
+  it('renders disabled on a button root override', () => {
+    const { getByRole } = render(<Tag as="button" disabled />);
+
+    expect((getByRole('button') as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it('does not render disabled on a span root override', () => {
+    const { getByTestId } = render(<Tag as="span" dismissible disabled data-testid="tag" />);
+
+    expect(getByTestId('tag').tagName).toBe('SPAN');
+    expect(getByTestId('tag').hasAttribute('disabled')).toBe(false);
+  });
 });

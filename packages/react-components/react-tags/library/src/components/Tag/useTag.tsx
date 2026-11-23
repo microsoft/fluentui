@@ -64,7 +64,8 @@ export const useTagBase_unstable = (
     }
   });
 
-  const elementType = dismissible ? 'button' : 'span';
+  const defaultElementType = dismissible ? 'button' : 'span';
+  const elementType = rest.as ?? defaultElementType;
   const selectedProp = tagGroupRole === 'listbox' ? 'aria-selected' : 'aria-pressed';
   const selectable = typeof selected === 'boolean' || tagGroupRole === 'listbox';
 
