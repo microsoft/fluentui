@@ -105,8 +105,6 @@ const blurMotion = blur({
 | `rotate` | 3D rotation          | `rotate`         | `0` degrees   | `axis`, `from`, `to` |
 | `blur`   | Blur filter          | `filter: blur()` | `'0px'`       | `from`, `to`         |
 
-The legacy `*Atom` helpers (`fadeAtom`, `scaleAtom`, `slideAtom`, `rotateAtom`, `blurAtom`) are deprecated compatibility APIs that retain their original `direction` and out/in parameters. New code should use the temporal `from`/`to` helpers or their `*In`/`*Out` counterparts.
-
 <AtomsDemo />
 
 ## Atom API Reference
@@ -124,8 +122,6 @@ All atoms accept these base parameters:
 General atoms (`fade`, `scale`, `slide`, `rotate`, `blur`) animate between explicit `from` and `to` endpoints — both endpoints are required (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). Fade helpers set `fill: 'both'` so delayed fades stay hidden; the other atoms do not add a fade or set `fill`.
 
 Directional `*In` and `*Out` helpers encode the neutral-value boundary (opacity `1`, scale `1`, zero translation `0px`, `0` degrees on axis `'z'`, or blur `'0px'`): `*In` arrives at neutral (`to` is forbidden), and `*Out` departs from neutral (`from` is forbidden). `fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that defaults to `0`. `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut` require their outer endpoint because they have no universal displaced value. Neutral atom defaults differ from the presence components' Fluent entrance defaults. Use the general helper when authoring explicit `from` and `to` endpoints.
-
-Legacy `*Atom` helpers additionally require `direction: 'enter' | 'exit'`, which selects out-to-in or in-to-out keyframe order.
 
 ### Per-Atom Parameters
 

@@ -18,8 +18,6 @@ export {
   blur,
   blurIn,
   blurOut,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-  blurAtom,
   type BlurPose,
   type BlurOptions,
   type BlurInOptions,
@@ -29,8 +27,6 @@ export {
   fade,
   fadeIn,
   fadeOut,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-  fadeAtom,
   type FadeInOptions,
   type FadeOptions,
   type FadeOutOptions,
@@ -40,8 +36,6 @@ export {
   rotate,
   rotateIn,
   rotateOut,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-  rotateAtom,
   type RotateAxis,
   type RotatePose,
   type RotateOptions,
@@ -52,8 +46,6 @@ export {
   scale,
   scaleIn,
   scaleOut,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-  scaleAtom,
   type ScaleInOptions,
   type ScaleOptions,
   type ScaleOutOptions,
@@ -63,8 +55,6 @@ export {
   slide,
   slideIn,
   slideOut,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-  slideAtom,
   type SlidePose,
   type SlideOptions,
   type SlideInOptions,

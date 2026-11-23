@@ -8,7 +8,6 @@ import type { AtomMotion } from '@fluentui/react-motion';
 import { BasePresenceParams } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceComponentProps } from '@fluentui/react-motion';
-import type { PresenceDirection } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 
 // @public
@@ -17,9 +16,6 @@ export const Blur: PresenceComponent<BlurParams, "inRadius">;
 // @public
 const blur_2: ({ from, to, duration, easing, delay, }: BlurOptions) => AtomMotion;
 export { blur_2 as blur }
-
-// @public @deprecated
-export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
 
 // @public
 export const blurIn: ({ from, duration, easing, delay }: BlurInOptions) => AtomMotion;
@@ -90,9 +86,6 @@ export const Fade: PresenceComponent<FadeParams, "inOpacity">;
 // @public
 export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => AtomMotion;
 
-// @public @deprecated
-export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
-
 // @public
 export const fadeIn: ({ from, duration, easing, delay }: FadeInOptions) => AtomMotion;
 
@@ -134,16 +127,17 @@ export const FadeRelaxed: PresenceComponent<FadeParams, "inOpacity">;
 export const FadeSnappy: PresenceComponent<FadeParams, "inOpacity">;
 
 // @public
-export type MotionTiming = Omit<BaseAtomParams, 'direction'>;
+export type MotionTiming = {
+    duration: number;
+    easing?: EffectTiming['easing'];
+    delay?: EffectTiming['delay'];
+};
 
 // @public
 export const Rotate: PresenceComponent<RotateParams, "inAngle">;
 
 // @public
 export const rotate: ({ from, to, axis, duration, easing, delay, }: RotateOptions) => AtomMotion;
-
-// @public @deprecated
-export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
 
 // @public
 export type RotateAxis = 'x' | 'y' | 'z';
@@ -192,9 +186,6 @@ export const Scale: PresenceComponent<ScaleParams, "inScale">;
 // @public
 export const scale: ({ from, to, duration, easing, delay, }: ScaleOptions) => AtomMotion;
 
-// @public @deprecated
-export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
-
 // @public
 export const scaleIn: ({ from, duration, easing, delay }: ScaleInOptions) => AtomMotion;
 
@@ -240,9 +231,6 @@ export const Slide: PresenceComponent<SlideParams, "inX" | "inY">;
 
 // @public
 export const slide: ({ from, to, duration, easing, delay, }: SlideOptions) => AtomMotion;
-
-// @public @deprecated
-export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
 
 // @public
 export const slideIn: ({ from, duration, easing, delay }: SlideInOptions) => AtomMotion;

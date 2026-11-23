@@ -1,6 +1,6 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming } from '../types';
+import type { MotionTiming } from '../types';
 
 /** An opacity value used as a fade pose. */
 export type FadePose = number;
@@ -49,42 +49,3 @@ export const fadeIn = ({ from = 0, duration, easing, delay }: FadeInOptions): At
 /** Creates an absolute opacity motion departing from `1` to `to` (default `0`). */
 export const fadeOut = ({ to = 0, duration, easing, delay }: FadeOutOptions): AtomMotion =>
   fade({ from: 1, to, duration, easing, delay });
-
-interface FadeAtomParams extends BaseAtomParams {
-  /** Defines how values are applied before and after execution. Defaults to 'both'. */
-  fill?: FillMode;
-
-  /** Opacity for the out pose. Defaults to 0. */
-  outOpacity?: FadePose;
-
-  /** Opacity for the in pose. Defaults to 1. */
-  inOpacity?: FadePose;
-}
-
-/**
- * Generates a motion atom object for a fade-in or fade-out.
- * @param direction - The functional direction of the motion: 'enter' or 'exit'.
- * @param duration - The duration of the motion in milliseconds.
- * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param delay - The delay before the motion starts. Defaults to 0.
- * @param outOpacity - Opacity for the out pose. Defaults to 0.
- * @param inOpacity - Opacity for the in pose. Defaults to 1.
- * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
- * @deprecated Use `fade` with explicit `from` and `to` poses, or `fadeIn`/`fadeOut` for a 0-to-1 or 1-to-0 fade.
- */
-export const fadeAtom = ({
-  direction,
-  duration,
-  easing = motionTokens.curveLinear,
-  delay = 0,
-  outOpacity = 0,
-  inOpacity = 1,
-}: FadeAtomParams): AtomMotion => {
-  return fade({
-    from: direction === 'enter' ? outOpacity : inOpacity,
-    to: direction === 'enter' ? inOpacity : outOpacity,
-    duration,
-    easing,
-    delay,
-  });
-};

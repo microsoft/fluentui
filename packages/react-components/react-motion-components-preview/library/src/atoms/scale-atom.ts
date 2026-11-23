@@ -1,6 +1,6 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming } from '../types';
+import type { MotionTiming } from '../types';
 
 /** A numeric scale value used as a scale pose. */
 export type ScalePose = number;
@@ -48,38 +48,3 @@ export const scaleIn = ({ from = 0, duration, easing, delay }: ScaleInOptions): 
 /** Creates an absolute scale motion departing from `1` to `to` (default `0`). */
 export const scaleOut = ({ to = 0, duration, easing, delay }: ScaleOutOptions): AtomMotion =>
   scale({ from: 1, to, duration, easing, delay });
-
-interface ScaleAtomParams extends BaseAtomParams {
-  /** Scale for the out pose. Defaults to 0.9. */
-  outScale?: ScalePose;
-  /** Scale for the in pose. Defaults to 1. */
-  inScale?: ScalePose;
-}
-
-/**
- * Generates a motion atom object for a scale in or scale out.
- * @param direction - The functional direction of the motion: 'enter' or 'exit'.
- * @param duration - The duration of the motion in milliseconds.
- * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param outScale - Scale for the out pose. Defaults to 0.9.
- * @param inScale - Scale for the in pose. Defaults to 1.
- * @param delay - Time (ms) to delay the animation. Defaults to 0.
- * @returns A motion atom object with scale keyframes and the supplied duration and easing.
- * @deprecated Use `scale` with explicit `from` and `to` poses, or `scaleIn`/`scaleOut` when one pose is `1`.
- */
-export const scaleAtom = ({
-  direction,
-  duration,
-  easing = motionTokens.curveLinear,
-  delay = 0,
-  outScale = 0.9,
-  inScale = 1,
-}: ScaleAtomParams): AtomMotion => {
-  return scale({
-    from: direction === 'enter' ? outScale : inScale,
-    to: direction === 'enter' ? inScale : outScale,
-    duration,
-    easing,
-    delay,
-  });
-};

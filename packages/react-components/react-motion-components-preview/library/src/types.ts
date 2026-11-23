@@ -1,4 +1,4 @@
-import type { MotionParam, PresenceMotion, PresenceMotionFn, PresenceDirection } from '@fluentui/react-motion';
+import type { MotionParam, PresenceMotion, PresenceMotionFn } from '@fluentui/react-motion';
 
 export type { PresenceDuration, PresenceEasing, PresenceDelay, BasePresenceParams } from '@fluentui/react-motion';
 
@@ -38,12 +38,8 @@ export type AnimateOpacity = {
   animateOpacity?: boolean;
 };
 
-/**
- * Common parameters shared by all atom functions.
- */
-export type BaseAtomParams = {
-  /** The functional direction of the motion: 'enter' or 'exit'. */
-  direction: PresenceDirection;
+/** Timing shared by pose-based motion helpers. */
+export type MotionTiming = {
   /** The duration of the motion in milliseconds. */
   duration: number;
   /** The easing curve for the motion. */
@@ -51,6 +47,3 @@ export type BaseAtomParams = {
   /** Time (ms) to delay the animation. */
   delay?: EffectTiming['delay'];
 };
-
-/** Timing shared by pose-based motion helpers. */
-export type MotionTiming = Omit<BaseAtomParams, 'direction'>;

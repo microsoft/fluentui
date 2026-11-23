@@ -132,10 +132,9 @@ forbidden, and `*Out` helpers depart from that neutral value with `from` forbidd
 defaults to `0`; `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut`
 require an authored outer endpoint because they have no universal displaced value.
 
-The `fadeAtom`, `scaleAtom`, `slideAtom`, `rotateAtom`, and `blurAtom` exports are
-deprecated but remain available for compatibility. The pre-built `Fade`, `Scale`, `Slide`,
-`Rotate`, and `Blur` presence components use `from*`, `in*`, and `to*` pose props while
-retaining their Fluent timing and variant defaults.
+The pre-built `Fade`, `Scale`, `Slide`, `Rotate`, `Blur`, and `Collapse` presence
+components use temporal `from*`/`in*`/`to*` pose props while retaining their Fluent
+timing and variant defaults.
 
 ## Documentation
 
