@@ -23,10 +23,23 @@ export const useNavDrawer = (
   const divRef = ref as React.Ref<HTMLDivElement>;
   const navState = useNav(props, divRef);
 
+  const {
+    defaultSelectedValue: _defaultSelectedValue,
+    defaultSelectedCategoryValue: _defaultSelectedCategoryValue,
+    defaultOpenCategories: _defaultOpenCategories,
+    openCategories: _openCategories,
+    onNavItemSelect: _onNavItemSelect,
+    selectedValue: _selectedValue,
+    selectedCategoryValue: _selectedCategoryValue,
+    multiple: _multiple,
+    onNavCategoryItemToggle: _onNavCategoryItemToggle,
+    ...drawerProps
+  } = props;
+
   const type = props.type ?? 'overlay';
 
   const root: NavDrawerState['root'] = slot.always(
-    { ref: divRef, ...props },
+    { ref: divRef, ...drawerProps },
     {
       elementType: Drawer,
     },

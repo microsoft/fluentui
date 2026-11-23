@@ -2,7 +2,9 @@ import * as React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
+import { renderHook } from '@testing-library/react-hooks';
 import { SpinButton } from './SpinButton';
+import { useSpinButtonBase_unstable } from './useSpinButton';
 import { isConformant } from '../../testing/isConformant';
 import { ArrowUp, ArrowDown, End, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 
@@ -945,5 +947,59 @@ describe('SpinButton', () => {
     expect(spinbutton.getAttribute('aria-describedby')).toEqual(message.id);
     expect(spinbutton.getAttribute('aria-invalid')).toEqual('true');
     expect(spinbutton.required).toBe(true);
+  });
+});
+
+describe('SpinButton DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <SpinButton
+        appearance="underline"
+        className="custom"
+        defaultValue={2}
+        displayValue="2 items"
+        max={10}
+        min={0}
+        onChange={jest.fn()}
+        precision={1}
+        size="small"
+        step={2}
+        stepPage={5}
+        style={{ color: 'red' }}
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(screen.getByRole('spinbutton').getAttributeNames().sort()).toEqual([
+      'aria-valuemax',
+      'aria-valuemin',
+      'aria-valuenow',
+      'autocomplete',
+      'class',
+      'role',
+      'step',
+      'type',
+      'value',
+    ]);
+  });
+
+  it('does not forward slot or state props from the base hook to the input slot', () => {
+    const { result } = renderHook(() =>
+      useSpinButtonBase_unstable(
+        { className: 'custom', displayValue: '2 items', max: 10, min: 0, precision: 1, stepPage: 5 },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root.className).toBe('custom');
+    expect(result.current.input).not.toHaveProperty('className');
+    expect(result.current.input).not.toHaveProperty('displayValue');
+    expect(result.current.input).not.toHaveProperty('max');
+    expect(result.current.input).not.toHaveProperty('min');
+    expect(result.current.input).not.toHaveProperty('precision');
+    expect(result.current.input).not.toHaveProperty('stepPage');
   });
 });

@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useNavCategoryContext_unstable } from '@fluentui/react-nav';
 
 import type { NavSubItemGroupProps, NavSubItemGroupState } from './NavSubItemGroup.types';
@@ -26,11 +26,11 @@ export const useNavSubItemGroup = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         role: 'group',
         ...props,
         ref,
-      }),
+      },
       { elementType: 'div' },
     ),
   };
