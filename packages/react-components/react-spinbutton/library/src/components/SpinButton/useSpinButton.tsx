@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import {
-  getPartitionedNativeProps,
-  mergeCallbacks,
-  useControllableState,
-  useTimeout,
-  slot,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, useControllableState, useTimeout, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import type {
   SpinButtonBaseProps,
@@ -58,19 +51,15 @@ export const useSpinButtonBase_unstable = (
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'value'],
-  });
-
+  // `className` and `style` go to the root slot, all other native props go to the primary `input` slot.
   const {
+    className,
+    style,
     value,
     displayValue,
     defaultValue,
     min,
     max,
-    step = 1,
     stepPage = 1,
     precision: precisionFromProps,
     onChange,
@@ -78,7 +67,10 @@ export const useSpinButtonBase_unstable = (
     input,
     incrementButton,
     decrementButton,
+    ...inputProps
   } = props;
+  // `step` is also a native input attribute, so it keeps reaching the `input` slot.
+  const step = props.step ?? 1;
 
   const precision = React.useMemo(() => {
     return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
@@ -298,7 +290,7 @@ export const useSpinButtonBase_unstable = (
       decrementButton: 'button',
     },
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: { className, style },
       elementType: 'span',
     }),
     input: slot.always(input, {
@@ -306,7 +298,7 @@ export const useSpinButtonBase_unstable = (
         autoComplete: 'off',
         role: 'spinbutton',
         type: 'text',
-        ...nativeProps.primary,
+        ...inputProps,
       },
       elementType: 'input',
     }),
@@ -314,8 +306,8 @@ export const useSpinButtonBase_unstable = (
       defaultProps: {
         tabIndex: -1,
         disabled:
-          nativeProps.primary.readOnly ||
-          nativeProps.primary.disabled ||
+          inputProps.readOnly ||
+          inputProps.disabled ||
           // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'max' ||
           // eslint-disable-next-line react-hooks/refs
@@ -329,8 +321,8 @@ export const useSpinButtonBase_unstable = (
       defaultProps: {
         tabIndex: -1,
         disabled:
-          nativeProps.primary.readOnly ||
-          nativeProps.primary.disabled ||
+          inputProps.readOnly ||
+          inputProps.disabled ||
           // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'min' ||
           // eslint-disable-next-line react-hooks/refs
