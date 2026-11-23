@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix",
+  "packageName": "@fluentui/react-alert",
+  "email": "dmytrokirpa@microsoft.com"
+}

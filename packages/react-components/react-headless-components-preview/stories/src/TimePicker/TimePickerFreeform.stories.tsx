@@ -5,7 +5,7 @@ import { ClockRegular } from '@fluentui/react-icons';
 import styles from './timepicker.module.css';
 
 const errorMessages: Record<NonNullable<TimePickerOnChangeData['errorType']>, string> = {
-  'invalid-input': 'Enter a time in the HH:MM format.',
+  'invalid-input': 'Enter a time in the HH:MM format, for example 14:30 or 1430.',
   'out-of-bounds': 'Pick a time between 10:00 and 20:00.',
   'required-input': 'A time is required.',
 };
@@ -29,7 +29,6 @@ export const Freeform = (): React.ReactNode => {
         listbox={{ className: styles.listbox }}
         aria-invalid={!!error}
         aria-describedby="timepicker-freeform-message"
-        freeform
         hourCycle="h23"
         startHour={10}
         endHour={20}
@@ -37,8 +36,8 @@ export const Freeform = (): React.ReactNode => {
         onChange={onChange}
         expandIcon={{ className: styles.expandIcon, children: <ClockRegular /> }}
       />
-      <span id="timepicker-freeform-message" className={error ? styles.error : styles.hint}>
-        {error ?? 'Press Enter or move focus away to confirm a typed time.'}
+      <span id="timepicker-freeform-message" className={error ? styles.error : styles.hint} role="status">
+        {error ?? 'Press Enter or move focus away to confirm a typed time. Escape restores the last time.'}
       </span>
     </div>
   );
@@ -48,8 +47,10 @@ Freeform.parameters = {
   docs: {
     description: {
       story:
-        'With `freeform`, any typed time is committed when it changes and the user presses Enter or focus leaves the ' +
-        'TimePicker. `onChange` reports an `errorType` when the text cannot be parsed or is out of range.',
+        'TimePicker accepts typed times by default (`freeform`). A typed time is committed when it changes and the ' +
+        'user presses Enter or focus leaves the TimePicker; compact input such as `1430` works in every hour cycle. ' +
+        'A time that cannot be parsed or is out of range is not committed: the value is kept, the text stays for ' +
+        'correction, and `onChange` reports an `errorType`. Pass `freeform={false}` to accept only the listed times.',
     },
   },
 };

@@ -25,3 +25,16 @@ describe('Badge', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
+
+describe('Badge DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Badge appearance="tint" color="danger" icon={<span />} iconPosition="after" shape="rounded" size="large" />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

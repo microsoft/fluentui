@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
@@ -19,7 +19,7 @@ export const useNavCategoryItem = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
-  const { onClick, expandIcon, icon } = props;
+  const { onClick, expandIcon, icon, ...rest } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
@@ -40,14 +40,14 @@ export const useNavCategoryItem = (
     value,
     selected,
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      {
         ref,
         type: 'button',
-        ...props,
+        ...rest,
         'aria-current': validAriaCurrent,
         'aria-expanded': open,
         onClick: onNavCategoryItemClick,
-      }),
+      },
       { elementType: 'button' },
     ),
     icon: slot.optional(icon, {
