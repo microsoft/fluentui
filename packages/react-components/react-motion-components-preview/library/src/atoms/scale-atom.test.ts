@@ -44,10 +44,16 @@ describe('scale', () => {
   });
 
   it('creates directional scales using the general helper', () => {
-    expect(scaleIn({ from: 0.9, duration: 300 })).toEqual(scale({ from: 0.9, duration: 300 }));
+    expect(scaleIn({ duration: 300 })).toEqual(scale({ from: 0, to: 1, duration: 300 }));
+    expect(scaleIn({ from: 0.9, duration: 300 })).toEqual(scale({ from: 0.9, to: 1, duration: 300 }));
+    expect(scaleOut({ duration: 300 })).toEqual(scale({ from: 1, to: 0, duration: 300 }));
     expect(scaleOut({ to: 0.9, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
-      scale({ to: 0.9, duration: 300, easing: 'ease-in', delay: 50 }),
+      scale({ from: 1, to: 0.9, duration: 300, easing: 'ease-in', delay: 50 }),
     );
+    // @ts-expect-error scaleIn owns the neutral destination
+    scaleIn({ to: 0.9, duration: 300 });
+    // @ts-expect-error scaleOut owns the neutral source
+    scaleOut({ from: 0.9, duration: 300 });
   });
 });
 

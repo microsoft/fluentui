@@ -39,9 +39,17 @@ describe('fade', () => {
 
   it('creates directional fades using the general helper', () => {
     expect(fadeIn({ duration: 300 })).toEqual(fade({ from: 0, to: 1, duration: 300 }));
+    expect(fadeIn({ from: 0.2, duration: 300, easing: 'ease-out', delay: 25 })).toEqual(
+      fade({ from: 0.2, to: 1, duration: 300, easing: 'ease-out', delay: 25 }),
+    );
     expect(fadeOut({ duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
       fade({ from: 1, to: 0, duration: 300, easing: 'ease-in', delay: 50 }),
     );
+    expect(fadeOut({ to: 0.4, duration: 300 })).toEqual(fade({ from: 1, to: 0.4, duration: 300 }));
+    // @ts-expect-error fadeIn owns the neutral destination
+    fadeIn({ to: 0.5, duration: 300 });
+    // @ts-expect-error fadeOut owns the neutral source
+    fadeOut({ from: 0.5, duration: 300 });
   });
 });
 

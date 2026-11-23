@@ -90,13 +90,25 @@ export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => Atom
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
 
 // @public
-export const fadeIn: (timing: MotionTiming) => AtomMotion;
+export const fadeIn: ({ from, duration, easing, delay }: FadeInOptions) => AtomMotion;
+
+// @public
+export type FadeInOptions = MotionTiming & {
+    from?: FadePose;
+    to?: never;
+};
 
 // @public
 export type FadeOptions = MotionTiming & PoseEndpoints<FadePose>;
 
 // @public
-export const fadeOut: (timing: MotionTiming) => AtomMotion;
+export const fadeOut: ({ to, duration, easing, delay }: FadeOutOptions) => AtomMotion;
+
+// @public
+export type FadeOutOptions = MotionTiming & {
+    from?: never;
+    to?: FadePose;
+};
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
@@ -179,7 +191,7 @@ export const scaleIn: ({ from, duration, easing, delay }: ScaleInOptions) => Ato
 
 // @public
 export type ScaleInOptions = MotionTiming & {
-    from: ScalePose;
+    from?: ScalePose;
     to?: never;
 };
 
@@ -192,7 +204,7 @@ export const scaleOut: ({ to, duration, easing, delay }: ScaleOutOptions) => Ato
 // @public
 export type ScaleOutOptions = MotionTiming & {
     from?: never;
-    to: ScalePose;
+    to?: ScalePose;
 };
 
 // @public (undocumented)

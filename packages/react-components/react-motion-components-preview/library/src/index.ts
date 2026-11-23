@@ -25,8 +25,17 @@ export {
   type BlurInOptions,
   type BlurOutOptions,
 } from './atoms/blur-atom';
-// eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
-export { fade, fadeIn, fadeOut, fadeAtom, type FadeOptions, type FadePose } from './atoms/fade-atom';
+export {
+  fade,
+  fadeIn,
+  fadeOut,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
+  fadeAtom,
+  type FadeInOptions,
+  type FadeOptions,
+  type FadeOutOptions,
+  type FadePose,
+} from './atoms/fade-atom';
 export {
   rotate,
   rotateIn,

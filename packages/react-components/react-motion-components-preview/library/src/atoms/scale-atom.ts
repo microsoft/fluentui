@@ -23,11 +23,11 @@ export type ScalePose = number;
  */
 export type ScaleOptions = MotionTiming & PoseEndpoints<ScalePose>;
 
-/** Options for entering from an authored scale to the neutral scale of `1`. */
-export type ScaleInOptions = MotionTiming & { from: ScalePose; to?: never };
+/** Options for entering from an outer scale (default `0`) to the neutral scale of `1`. */
+export type ScaleInOptions = MotionTiming & { from?: ScalePose; to?: never };
 
-/** Options for exiting from the neutral scale of `1` to an authored scale. */
-export type ScaleOutOptions = MotionTiming & { from?: never; to: ScalePose };
+/** Options for exiting from the neutral scale of `1` to an outer scale (default `0`). */
+export type ScaleOutOptions = MotionTiming & { from?: never; to?: ScalePose };
 
 /** Creates an absolute scale motion between authored numeric poses. */
 export const scale = ({
@@ -43,13 +43,13 @@ export const scale = ({
   delay,
 });
 
-/** Creates an absolute scale motion from an authored scale to `1`. */
-export const scaleIn = ({ from, duration, easing, delay }: ScaleInOptions): AtomMotion =>
-  scale({ from, duration, easing, delay });
+/** Creates an absolute scale motion arriving at `1` from `from` (default `0`). */
+export const scaleIn = ({ from = 0, duration, easing, delay }: ScaleInOptions): AtomMotion =>
+  scale({ from, to: 1, duration, easing, delay });
 
-/** Creates an absolute scale motion from `1` to an authored scale. */
-export const scaleOut = ({ to, duration, easing, delay }: ScaleOutOptions): AtomMotion =>
-  scale({ to, duration, easing, delay });
+/** Creates an absolute scale motion departing from `1` to `to` (default `0`). */
+export const scaleOut = ({ to = 0, duration, easing, delay }: ScaleOutOptions): AtomMotion =>
+  scale({ from: 1, to, duration, easing, delay });
 
 interface ScaleAtomParams extends BaseAtomParams {
   /** Scale for the out pose. Defaults to 0.9. */

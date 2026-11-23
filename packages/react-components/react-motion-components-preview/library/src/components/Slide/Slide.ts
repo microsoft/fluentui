@@ -71,8 +71,10 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
  */
 export const Slide = createPresenceComponent(slidePresenceFn, {
   poseProps: [
-    { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
-    { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+    [
+      { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+      { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+    ],
   ],
 });
 

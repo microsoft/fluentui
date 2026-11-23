@@ -23,6 +23,12 @@ export type FadePose = number;
  */
 export type FadeOptions = MotionTiming & PoseEndpoints<FadePose>;
 
+/** Options for entering from an outer opacity (default `0`) to neutral opacity `1`. */
+export type FadeInOptions = MotionTiming & { from?: FadePose; to?: never };
+
+/** Options for exiting from neutral opacity `1` to an outer opacity (default `0`). */
+export type FadeOutOptions = MotionTiming & { from?: never; to?: FadePose };
+
 /** Creates an absolute opacity motion between authored poses. */
 export const fade = ({
   from = 1,
@@ -38,13 +44,13 @@ export const fade = ({
   fill: 'both',
 });
 
-fade({ from: 0.2, duration: 300 });
+/** Creates an absolute opacity motion arriving at `1` from `from` (default `0`). */
+export const fadeIn = ({ from = 0, duration, easing, delay }: FadeInOptions): AtomMotion =>
+  fade({ from, to: 1, duration, easing, delay });
 
-/** Creates an absolute opacity motion from 0 to 1. */
-export const fadeIn = (timing: MotionTiming): AtomMotion => fade({ ...timing, from: 0, to: 1 });
-
-/** Creates an absolute opacity motion from 1 to 0. */
-export const fadeOut = (timing: MotionTiming): AtomMotion => fade({ ...timing, from: 1, to: 0 });
+/** Creates an absolute opacity motion departing from `1` to `to` (default `0`). */
+export const fadeOut = ({ to = 0, duration, easing, delay }: FadeOutOptions): AtomMotion =>
+  fade({ from: 1, to, duration, easing, delay });
 
 interface FadeAtomParams extends BaseAtomParams {
   /** Defines how values are applied before and after execution. Defaults to 'both'. */
