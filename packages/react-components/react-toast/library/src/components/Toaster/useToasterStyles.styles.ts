@@ -3,7 +3,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TOAST_POSITIONS, getPositionStyles } from '../../state/index';
+import { TOAST_POSITIONS, getPositionStyles, toasterMaxWidthVar } from '../../state/index';
 
 export const toasterClassNames: SlotClassNames<ToasterSlots> = {
   root: 'fui-Toaster',
@@ -14,7 +14,8 @@ export const toasterClassNames: SlotClassNames<ToasterSlots> = {
  */
 const useRootBaseClassName = makeResetStyles({
   position: 'fixed',
-  width: '292px',
+  // The position styles set the cap. It is on `width`, so that a `max-width` from the caller still applies.
+  width: `min(292px, var(${toasterMaxWidthVar}, 100%))`,
   pointerEvents: 'none',
 });
 

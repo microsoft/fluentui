@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
+import { makeStyles } from '@griffel/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Toaster, ToastTitle, Toast, useToastController, toastClassNames, toasterClassNames } from '../..';
@@ -18,8 +19,22 @@ const VIEWPORT_WIDTH = 280;
 // The default horizontal offset, which is also the space the Toaster keeps free at the far edge
 const GUTTER = 20;
 
-const Example = ({ offset, position }: { offset?: ToastOffset; position: ToastPosition }) => {
+// eslint-disable-next-line @griffel/styles-file
+const useStyles = makeStyles({
+  narrow: { maxWidth: '200px' },
+});
+
+type ExampleProps = {
+  offset?: ToastOffset;
+  position: ToastPosition;
+  /** Limits the Toaster to 200px through `className` */
+  narrow?: boolean;
+  style?: React.CSSProperties;
+};
+
+const Example = ({ offset, position, narrow, style }: ExampleProps) => {
   const { dispatchToast } = useToastController();
+  const styles = useStyles();
 
   return (
     <>
@@ -35,15 +50,19 @@ const Example = ({ offset, position }: { offset?: ToastOffset; position: ToastPo
       >
         Make toast
       </button>
-      <Toaster offset={offset} />
+      <Toaster offset={offset} className={narrow ? styles.narrow : undefined} style={style} />
     </>
   );
 };
 
-const mountInNarrowViewport = (position: ToastPosition, offset?: ToastOffset) => {
-  cy.viewport(VIEWPORT_WIDTH, 400);
-  mount(<Example offset={offset} position={position} />);
+const mountInViewport = (width: number, props: ExampleProps) => {
+  cy.viewport(width, 400);
+  mount(<Example {...props} />);
   cy.contains('button', 'Make toast').click();
+};
+
+const mountInNarrowViewport = (position: ToastPosition, offset?: ToastOffset) => {
+  mountInViewport(VIEWPORT_WIDTH, { offset, position });
 };
 
 /**
@@ -106,6 +125,42 @@ describe('Toaster', () => {
       // The first check proves that the toast can be hit at this height, so the second one cannot pass too early
       expect(toast.contains(elementInToast), 'the toast is hit inside its bounds').to.equal(true);
       expect(toast.contains(elementInGutter), 'the toast covers the gutter').to.equal(false);
+    });
+  });
+
+  it('should keep a maxWidth from the style prop in a wide viewport', () => {
+    mountInViewport(600, { position: 'bottom-end', style: { maxWidth: 200 } });
+
+    cy.get(`.${toasterClassNames.root}`).should($toaster => {
+      expect($toaster[0].getBoundingClientRect().width).to.equal(200);
+    });
+  });
+
+  it('should keep a maxWidth from className in a wide viewport', () => {
+    mountInViewport(600, { position: 'bottom-end', narrow: true });
+
+    cy.get(`.${toasterClassNames.root}`).should($toaster => {
+      expect($toaster[0].getBoundingClientRect().width).to.equal(200);
+    });
+  });
+
+  it('should apply the cap when it is stricter than a maxWidth from the style prop', () => {
+    mountInViewport(VIEWPORT_WIDTH, { position: 'bottom-end', style: { maxWidth: 270 } });
+
+    cy.get(`.${toasterClassNames.root}`).should($toaster => {
+      const gutters = getGutters($toaster[0]);
+
+      expect(gutters.left, 'left gutter').to.equal(GUTTER);
+      expect(gutters.right, 'right gutter').to.equal(GUTTER);
+    });
+  });
+
+  it('should apply the stricter maxWidth from className in a narrow viewport', () => {
+    mountInViewport(VIEWPORT_WIDTH, { position: 'bottom-end', narrow: true });
+
+    cy.get(`.${toasterClassNames.root}`).should($toaster => {
+      expect($toaster[0].getBoundingClientRect().width).to.equal(200);
+      expect(getGutters($toaster[0]).right, 'right gutter').to.equal(GUTTER);
     });
   });
 });

@@ -5,4 +5,4 @@ export { updateToast } from './updateToast';
 export { pauseToast } from './pauseToast';
 export { playToast } from './playToast';
 export { createToaster } from './createToaster';
-export { getPositionStyles } from './getPositionStyles';
+export { getPositionStyles, toasterMaxWidthVar } from './getPositionStyles';

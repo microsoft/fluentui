@@ -1,11 +1,16 @@
 import type { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
 
+/**
+ * Custom property that carries the width cap to the styles of the Toaster.
+ */
+export const toasterMaxWidthVar = '--fui-Toaster--max-width';
+
 interface PositionStyles {
   top?: number;
   left?: number;
   right?: number;
   bottom?: number;
-  maxWidth?: string;
+  [toasterMaxWidthVar]?: string;
 }
 
 /**
@@ -21,6 +26,9 @@ const DEFAULT_HORIZONTAL_OFFSET = 20;
  * A start or end Toaster sits `horizontal` away from its own edge and keeps the default gutter free at the other
  * edge. A centered Toaster is moved by `horizontal`, which moves both of its edges, so it keeps the gutter and the
  * distance it moved free on both sides.
+ *
+ * The cap is applied to `width` through a custom property and not as `max-width`, so that a `max-width` that the
+ * caller sets through `style` or `className` still applies.
  */
 const getMaxWidth = (horizontal: number, centered: boolean): string => {
   const reserved = centered
@@ -52,7 +60,7 @@ export const getPositionStyles = (
         top: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
 
@@ -61,7 +69,7 @@ export const getPositionStyles = (
         bottom: vertical,
         left: `calc(50% + ${horizontal}px)`,
         transform: 'translateX(-50%)',
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
 
@@ -69,28 +77,28 @@ export const getPositionStyles = (
       Object.assign(positionStyles, {
         top: vertical,
         [start]: horizontal,
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
     case 'top-end':
       Object.assign(positionStyles, {
         top: vertical,
         [end]: horizontal,
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
     case 'bottom-start':
       Object.assign(positionStyles, {
         bottom: vertical,
         [start]: horizontal,
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
     case 'bottom-end':
       Object.assign(positionStyles, {
         bottom: vertical,
         [end]: horizontal,
-        maxWidth,
+        [toasterMaxWidthVar]: maxWidth,
       });
       break;
   }
