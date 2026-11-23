@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, renderHook, screen } from '@testing-library/react';
 import { isConformant } from '../../../testing/isConformant';
 import { Tree } from '../Tree';
 import { TreeItem } from './TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
-import { useTreeItemContext } from './useTreeItem';
-import type { TreeItemContextValues } from './TreeItem.types';
+import { useTreeItem, useTreeItemContext, useTreeItemContextValues } from './useTreeItem';
+import type { TreeItemContextValues, TreeItemProps } from './TreeItem.types';
 
 const TreeWrapper = ({ children }: { children?: React.ReactNode }) => <Tree aria-label="Tree">{children}</Tree>;
 
@@ -36,6 +36,41 @@ describe('TreeItem', () => {
   });
 
   describe('disabled', () => {
+    it('updates context-value effects only when item context changes', () => {
+      const onSnapshot = jest.fn();
+      const useSnapshot = (props: TreeItemProps) => {
+        const state = useTreeItem(props, React.useRef<HTMLDivElement>(null));
+        const contextValues = useTreeItemContextValues(state);
+        React.useEffect(() => onSnapshot(contextValues), [contextValues]);
+        return contextValues;
+      };
+      const { result, rerender } = renderHook(useSnapshot, {
+        initialProps: { itemType: 'branch', value: 'item', disabled: false, open: false },
+        wrapper: TreeWrapper,
+      });
+      const initialContext = result.current;
+      const initialSnapshots = onSnapshot.mock.calls.length;
+
+      rerender({ itemType: 'branch', value: 'item', disabled: false, open: false });
+      expect(result.current).toBe(initialContext);
+      expect(onSnapshot).toHaveBeenCalledTimes(initialSnapshots);
+
+      rerender({ itemType: 'branch', value: 'item', disabled: true, open: false });
+      const disabledContext = result.current;
+      expect(disabledContext).not.toBe(initialContext);
+      expect(disabledContext.treeItem).toMatchObject({ value: 'item', disabled: true, open: false });
+      expect(disabledContext.treeItem.treeItemRef).toBe(initialContext.treeItem.treeItemRef);
+      expect(onSnapshot).toHaveBeenCalledTimes(initialSnapshots + 1);
+
+      rerender({ itemType: 'branch', value: 'item', disabled: true, open: true });
+      expect(result.current).not.toBe(disabledContext);
+      expect(result.current.treeItem).toMatchObject({ value: 'item', disabled: true, open: true });
+      expect(onSnapshot).toHaveBeenCalledTimes(initialSnapshots + 2);
+
+      rerender({ itemType: 'branch', value: 'item', disabled: true, open: true });
+      expect(onSnapshot).toHaveBeenCalledTimes(initialSnapshots + 2);
+    });
+
     it('preserves whole-context selection outside an item provider across effect and parent updates', () => {
       const onSnapshot = jest.fn();
       const Probe = () => {

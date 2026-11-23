@@ -132,6 +132,7 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
 
 /**
  * Returns a value from the context of the closest tree item, such as its value, open or checked state.
+ * Defaults disabled to false for the shared default context and non-headless item providers.
  */
 export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues['treeItem']) => T): T =>
   useTreeItemContext_unstable(context => {
@@ -156,6 +157,5 @@ const fallbackContexts = new WeakMap<TreeItemBaseContextValues['treeItem'], Tree
 export const useTreeItemContextValues = (state: TreeItemState): TreeItemContextValues => {
   const { treeItem } = useTreeItemContextValues_unstable(state);
   const { disabled } = state;
-  const value = React.useMemo(() => ({ ...treeItem, disabled }), [treeItem, disabled]);
-  return { treeItem: value };
+  return React.useMemo(() => ({ treeItem: { ...treeItem, disabled } }), [treeItem, disabled]);
 };
