@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, fireEvent, renderHook } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../testing/isConformant';

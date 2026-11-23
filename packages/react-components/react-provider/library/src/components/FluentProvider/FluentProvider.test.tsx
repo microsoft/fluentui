@@ -1,6 +1,7 @@
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';

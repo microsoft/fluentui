@@ -3,7 +3,8 @@ import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../testing/isConformant';
 import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
-import { render, screen, renderHook } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useAvatarGroupBase_unstable } from './useAvatarGroup';
 
 describe('AvatarGroup', () => {

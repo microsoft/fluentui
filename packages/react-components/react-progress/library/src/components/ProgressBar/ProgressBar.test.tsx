@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { Field } from '@fluentui/react-field';
 import { ProgressBar } from './ProgressBar';
 import { isConformant } from '../../testing/isConformant';
