@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { LabelBaseProps, LabelBaseState, LabelProps, LabelState } from './Label.types';
 
 /**
@@ -40,10 +40,10 @@ export const useLabelBase_unstable = (props: LabelBaseProps, ref: React.Ref<HTML
     }),
     components: { root: 'label', required: 'span' },
     root: slot.always(
-      getIntrinsicElementProps('label', {
+      {
         ref: ref as React.Ref<HTMLLabelElement>,
         ...rest,
-      }),
+      },
       { elementType: 'label' },
     ),
   };

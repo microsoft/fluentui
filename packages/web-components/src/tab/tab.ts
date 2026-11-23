@@ -52,6 +52,7 @@ export class Tab extends FASTElement {
     super.connectedCallback();
 
     this.slot ||= 'tab';
+    this.role ??= 'tab';
 
     this.setDisabledSideEffect(this.disabled);
 
