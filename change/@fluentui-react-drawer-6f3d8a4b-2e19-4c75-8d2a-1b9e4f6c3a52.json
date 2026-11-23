@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal backdrop motion from deprecated fadeAtom to fadeIn/fadeOut.",
+  "packageName": "@fluentui/react-drawer",
+  "email": "robert@robertpenner.com"
+}

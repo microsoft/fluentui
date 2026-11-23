@@ -1,7 +1,7 @@
 'use client';
 
 import { motionTokens, createMotionComponent } from '@fluentui/react-motion';
-import { Slide, fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
+import { Slide, fadeOut, slideOut } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 import { AnimationDirection } from '../Calendar';
@@ -75,13 +75,13 @@ DirectionalSlideIn.displayName = 'DirectionalSlideIn';
 // One-way "out" motion for the day grid's transition (filler) rows. It fades and slides the row
 // out in the navigation direction (the top row slides up, the bottom row slides down). The row is
 // `position: absolute` and `opacity: 0` at rest, so the motion's forwards fill leaves it back at its
-// hidden resting state once it finishes. Composed from Fluent's `fadeAtom` + `slideAtom` so it stays
+// hidden resting state once it finishes. Composed from Fluent's `fadeOut` + `slideOut` so it stays
 // consistent with the rest of the motion system; there is no size animation, because the row is
 // overlaid out of flow and hidden via opacity (not by collapsing its box).
-const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => {
+const TransitionRowSlideOut = createMotionComponent(({ toY }: { toY: string }) => {
   const duration = motionTokens.durationSlower;
   const easing = motionTokens.curveDecelerateMax;
-  return [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outY })];
+  return [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { y: toY } })];
 });
 
 export type DirectionalSlideOutProps = {
@@ -118,10 +118,10 @@ export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlid
   }
 
   // First (top) row slides up and out; last (bottom) row slides down and out.
-  const outY = edge === 'first' ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
+  const toY = edge === 'first' ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
 
   return (
-    <TransitionRowSlideOut outY={outY} replayKey={replayKey}>
+    <TransitionRowSlideOut toY={toY} replayKey={replayKey}>
       {childWithRef}
     </TransitionRowSlideOut>
   );

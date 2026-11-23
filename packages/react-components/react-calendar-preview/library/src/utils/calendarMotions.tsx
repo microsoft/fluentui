@@ -114,7 +114,7 @@ DirectionalSlideIn.displayName = 'DirectionalSlideIn';
  * One-way "out" motion for the day grid's transition (filler) rows. It fades and slides the row
  * out in the navigation direction (the top row slides up, the bottom row slides down). The row is
  * `position: absolute` and `opacity: 0` at rest, so the motion's forwards fill leaves it back at its
- * hidden resting state once it finishes. Composed from Fluent's `fadeAtom` + `slideAtom` so it stays
+ * hidden resting state once it finishes. Composed from Fluent's `fadeOut` + `slideOut` so it stays
  * consistent with the rest of the motion system; there is no size animation, because the row is
  * overlaid out of flow and hidden via opacity (not by collapsing its box).
  */

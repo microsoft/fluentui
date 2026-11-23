@@ -4,7 +4,7 @@ import type { ProviderContextValue_unstable as FluentProviderContextValue } from
 
 import type { DrawerBaseProps } from './DrawerBase.types';
 import { drawerCSSVars } from './useDrawerBaseStyles.styles';
-import { fadeAtom } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut } from '@fluentui/react-motion-components-preview';
 
 export type DrawerMotionParams = Required<
   Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
@@ -123,7 +123,7 @@ export const OverlaySurfaceBackdropMotion = createPresenceComponent(({ size }: O
   const easing = motionTokens.curveLinear;
 
   return {
-    enter: fadeAtom({ direction: 'enter', duration, easing }),
-    exit: fadeAtom({ direction: 'exit', duration, easing }),
+    enter: fadeIn({ duration, easing }),
+    exit: fadeOut({ duration, easing }),
   };
 });

@@ -84,7 +84,7 @@ Inspired by [atomic design](https://bradfrost.com/blog/post/atomic-web-design/),
 
 | Layer         | What it is                                                                                         | Example                        |
 | ------------- | -------------------------------------------------------------------------------------------------- | ------------------------------ |
-| **Atoms**     | A single one-way animation — keyframes changing one property over time                             | `fadeAtom()`, `scaleAtom()`    |
+| **Atoms**     | A single one-way animation — keyframes changing one property over time                             | `fadeIn()`, `scaleIn()`        |
 | **Molecules** | Combinations of atoms, e.g. pairing an enter atom with an exit atom to create a presence animation | `<Fade>`, `<Scale>`, `<Slide>` |
 | **Organisms** | Higher-order choreography that coordinates multiple molecules                                      | `<Stagger>`, `<PresenceGroup>` |
 
@@ -231,8 +231,8 @@ For most use cases, you don't need the factories — use the <a href="?path=/doc
     <CardHeader header={<h3>⚛️ Motion Atoms</h3>} />
     <div>
       Build custom animations by composing{' '}
-      <a href="?path=/docs/motion-components-preview-atoms--docs">low-level atoms</a> like <code>fadeAtom</code> and{' '}
-      <code>scaleAtom</code>.
+      <a href="?path=/docs/motion-components-preview-atoms--docs">low-level atoms</a> like <code>fadeIn</code> and{' '}
+      <code>scaleIn</code>.
     </div>
   </Card>
 </div>

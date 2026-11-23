@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal surface motion from deprecated fadeAtom/slideAtom to fadeIn/slideIn.",
+  "packageName": "@fluentui/react-popover",
+  "email": "robert@robertpenner.com"
+}
