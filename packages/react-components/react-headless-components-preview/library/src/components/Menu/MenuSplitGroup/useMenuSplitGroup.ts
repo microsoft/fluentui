@@ -3,14 +3,7 @@
 import * as React from 'react';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import {
-  getIntrinsicElementProps,
-  getRTLSafeKey,
-  isHTMLElement,
-  slot,
-  useEventCallback,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getRTLSafeKey, isHTMLElement, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from '@fluentui/react-menu';
 import { findNextFocusable, findPrevFocusable } from '../../../hooks/focus';
 
@@ -57,14 +50,14 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
     },
     setMultiline: NOOP_SET_MULTILINE,
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME: `ref` is wrongly typed as `Ref<HTMLElement>` instead of
         // `Ref<HTMLDivElement>` upstream; casting to keep behaviour aligned.
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
         ...rest,
         onKeyDown,
-      }),
+      },
       { elementType: 'div' },
     ),
   };

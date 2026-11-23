@@ -23,7 +23,6 @@ export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLD
   const root = slot.always(
     {
       ...rootProps,
-      unmountOnClose,
       'data-open': toDataAttributeValue(open),
       'data-position': position,
       ref,

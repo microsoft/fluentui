@@ -6,7 +6,6 @@ import type { ToastAnnounce, ToastPosition } from '@fluentui/react-toast';
 import type { ToasterProps, ToasterState } from './Toaster.types';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import {
-  getIntrinsicElementProps,
   isHTMLElement,
   slot,
   useEventCallback,
@@ -71,12 +70,9 @@ export const useToaster = (props: ToasterProps): ToasterState => {
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
-  const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always(
-    getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest),
-    {
-      elementType: 'div',
-    },
-  );
+  const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always<ExtractSlotProps<Slot<'div'>>>(rest, {
+    elementType: 'div',
+  });
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     // Leave Escape that a popover or dialog inside a toast already handled.
     if (e.key === Escape && !e.isDefaultPrevented()) {

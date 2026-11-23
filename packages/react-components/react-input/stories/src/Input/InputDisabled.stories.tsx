@@ -7,24 +7,23 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '400px',
+    gap: tokens.spacingVerticalMNudge,
   },
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
+    paddingBlock: tokens.spacingVerticalMNudge,
+  },
+  filledFields: {
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
   },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground1,
   },
   toggle: {
     marginTop: tokens.spacingVerticalXL,
@@ -53,22 +52,24 @@ export const Disabled = (): JSXElement => {
         <Label htmlFor={inputIds.underline}>Disabled (underline appearance)</Label>
         <Input appearance="underline" disabled={disabled} id={inputIds.underline} defaultValue="disabled value" />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={inputIds.filledLighter}>Disabled (filled lighter appearance)</Label>
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledLighter)}>
+        <Label htmlFor={inputIds.filledLighter}>Disabled (filled lighter appearance on Background 3)</Label>
         <Input
           appearance="filled-lighter"
           disabled={disabled}
           id={inputIds.filledLighter}
           defaultValue="disabled value"
+          placeholder="Enter text"
         />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={inputIds.filledDarker}>Disabled (filled darker appearance)</Label>
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledDarker)}>
+        <Label htmlFor={inputIds.filledDarker}>Disabled (filled darker appearance on Background 1)</Label>
         <Input
           appearance="filled-darker"
           disabled={disabled}
           id={inputIds.filledDarker}
           defaultValue="disabled value"
+          placeholder="Enter text"
         />
       </div>
       <Switch

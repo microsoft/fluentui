@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Tue, 10 Nov 2026 04:11:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 23 Nov 2026 04:10:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.2)
+
+Mon, 23 Nov 2026 04:10:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.1..@fluentui/web-components_v3.2.2)
+
+### Patches
+
+- refactor: move default attributes from template into connectedCallback while preserving consumer overrides ([PR #37181](https://github.com/microsoft/fluentui/pull/37181) by machi@microsoft.com)
 
 ## [3.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.1)
 
