@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';
 
 /**
@@ -11,6 +11,6 @@ import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';
 export const useDialogBody = (props: DialogBodyProps, ref: React.Ref<HTMLDivElement>): DialogBodyState => {
   return {
     components: { root: 'div' },
-    root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
+    root: slot.always({ ref, ...props }, { elementType: 'div' }),
   };
 };

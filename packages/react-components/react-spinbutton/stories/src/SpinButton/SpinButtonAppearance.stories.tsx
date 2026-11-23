@@ -6,27 +6,26 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '500px',
+    maxWidth: '400px',
+    gap: tokens.spacingVerticalMNudge,
   },
 
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
+    paddingBlock: tokens.spacingVerticalMNudge,
   },
 
+  filledFields: {
+    padding: tokens.spacingVerticalXXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke3}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 
@@ -50,14 +49,14 @@ export const Appearance = (): JSXElement => {
         <SpinButton appearance="underline" id={underlineId} />
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled Lighter</Label>
-        <SpinButton appearance="filled-lighter" id={filledLighterId} />
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledLighter)}>
+        <Label htmlFor={filledLighterId}>Filled Lighter (on Background 3)</Label>
+        <SpinButton appearance="filled-lighter" id={filledLighterId} placeholder="Enter a number" />
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled Darker</Label>
-        <SpinButton appearance="filled-darker" id={filledDarkerId} />
+      <div className={mergeClasses(styles.field, styles.filledFields, styles.filledDarker)}>
+        <Label htmlFor={filledDarkerId}>Filled Darker (on Background 1)</Label>
+        <SpinButton appearance="filled-darker" id={filledDarkerId} placeholder="Enter a number" />
       </div>
     </div>
   );
@@ -67,10 +66,13 @@ Appearance.parameters = {
   docs: {
     description: {
       story:
-        `SpinButton can have different appearances.\n` +
-        `The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
-      filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
-      surrounding color to pass accessibility requirements.`,
+        'SpinButton can have different appearances.\n' +
+        'Fluent design guidance places `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on ' +
+        '`colorNeutralBackground1`; these surface choices are not WCAG requirements. ' +
+        'Placeholder and value text need at least 4.5:1 contrast against the input background. ' +
+        'The filled examples show a placeholder when cleared. ' +
+        'Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. ' +
+        'Keep a persistent visible label and a sufficiently contrasting focus indicator.',
     },
   },
 };
