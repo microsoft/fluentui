@@ -30,4 +30,16 @@ describe('Field', () => {
 
     expect(root).toHaveAttribute('data-validate-state', 'success');
   });
+
+  it('renders with data-required when required', () => {
+    const { container } = render(<Field required>Required Field</Field>);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-required');
+  });
+
+  it('does not render data-required by default', () => {
+    const { container } = render(<Field>Default Field</Field>);
+
+    expect(container.firstElementChild!).not.toHaveAttribute('data-required');
+  });
 });

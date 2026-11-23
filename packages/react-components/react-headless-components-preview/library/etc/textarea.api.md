@@ -25,6 +25,7 @@ export type TextareaState = TextareaBaseState & {
     root: {
         'data-disabled'?: string;
         'data-invalid'?: string;
+        'data-readonly'?: string;
         'data-resize'?: TextareaBaseState['resize'];
     };
 };

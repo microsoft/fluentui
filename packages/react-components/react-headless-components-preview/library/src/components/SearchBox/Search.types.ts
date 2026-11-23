@@ -13,6 +13,11 @@ export type SearchBoxState = SearchBoxBaseState & {
     'data-disabled'?: string;
 
     /**
+     * Data attribute set when the search box is invalid.
+     */
+    'data-invalid'?: string;
+
+    /**
      * Data attribute set when the search box has focus within.
      */
     'data-focused'?: string;
