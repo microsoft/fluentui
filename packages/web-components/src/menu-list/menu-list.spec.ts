@@ -220,8 +220,8 @@ test.describe('MenuList', () => {
     test(`should accept elements as focusable child with "${role}" role`, async ({ fastPage, page }) => {
       await fastPage.setTemplate({
         innerHTML: /* html */ `
-          <div role="${role}">First item</div>
-          <div role="${role}">Second item</div>
+          <div role="${role}" tabindex="0">First item</div>
+          <div role="${role}" tabindex="0">Second item</div>
         `,
       });
 

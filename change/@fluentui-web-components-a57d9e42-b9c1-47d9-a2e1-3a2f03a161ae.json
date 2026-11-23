@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: preserve keyboard navigation with native focusgroup support",
+  "comment": "fix: remove disabled tabs from native focusgroup navigation when deselected",
   "packageName": "@fluentui/web-components",
   "email": "paulmardling@microsoft.com"
 }
