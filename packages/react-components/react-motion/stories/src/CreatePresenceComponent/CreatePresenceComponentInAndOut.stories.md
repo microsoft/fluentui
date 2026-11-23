@@ -54,13 +54,13 @@ import { Fade, Scale, Slide } from '@fluentui/react-motion-components-preview';
 </Slide.Out>
 ```
 
-The Slide example moves from `(4px, 0px)` to `(0px, -8px)`. Omitted axes in an authored endpoint default to `0px`. Scale, Slide, Rotate, and Blur include a fade-in on `.In` or a fade-out on `.Out` unless `animateOpacity={false}`.
+The Slide example moves from `(4px, 0px)` to `(0px, -8px)`. Omitted axes in an authored endpoint default to `0px`, replacing that pose as a whole rather than merging with a variant's omitted axis defaults. Scale, Slide, Rotate, and Blur include a fade-in on `.In` or a fade-out on `.Out` unless `animateOpacity={false}`.
 
-For custom motion functions, `createPresenceComponent`'s optional `poseProps` mapping enables this endpoint normalization. Each entry names the `from`, `in`, and `to` properties for one pose value. Those properties must share a value type, and an optional `neutral` value must have that type. Without a mapping, `.In` and `.Out` forward endpoint parameters unchanged and select the function's enter or exit definition. A fixed definition such as `MyFade` above has no configurable motion parameters.
+For custom motion functions, `createPresenceComponent`'s optional `poseProps` mapping enables this endpoint normalization. Each entry in `poseProps` is either a single mapping object `{ from, in, to }` for a scalar pose or a nested array of mappings for coupled axes of one multi-axis pose (where an optional `neutral` value fills omitted sibling axes within that group only, without affecting independent poses). A pose's `from`, `in`, and `to` properties must share a value type, and `from`/`to` cannot alias `in`. Without a mapping, `.In` and `.Out` forward endpoint parameters unchanged and select the function's enter or exit definition. A fixed definition such as `MyFade` above has no configurable motion parameters.
 
 ## Timing and Replay
 
-Function-based directional components accept their motion function's timing props, including `duration`, `easing`, and `delay` for preview Fade, Scale, Slide, Rotate, and Blur. On `.Out`, explicit ordinary timing is copied to its exit-prefixed counterpart before variant defaults are merged, whether or not `poseProps` is supplied. An explicit `exitDuration`, `exitEasing`, or `exitDelay` takes precedence over its ordinary counterpart. Variants created with `createPresenceComponentVariant` retain the pose mapping and directional components.
+Function-based directional components accept their motion function's timing props, including `duration`, `easing`, and `delay` for preview Fade, Scale, Slide, Rotate, and Blur. `.In` omits `exitDuration`, `exitEasing`, and `exitDelay` because exit timing does not apply to enter playback. On `.Out`, explicit ordinary timing is copied to its exit-prefixed counterpart before variant defaults are merged, whether or not `poseProps` is supplied. An explicit `exitDuration`, `exitEasing`, or `exitDelay` takes precedence over its ordinary counterpart on `.Out`. Variants created with `createPresenceComponentVariant` retain the pose mapping and directional components.
 
 Change `replayKey` to replay a one-way motion without remounting the child:
 

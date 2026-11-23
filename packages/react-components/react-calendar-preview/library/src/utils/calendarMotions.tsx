@@ -1,7 +1,7 @@
 'use client';
 
 import { motionTokens, createMotionComponent } from '@fluentui/react-motion';
-import { Slide, fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
+import { Slide, fadeOut, slideOut } from '@fluentui/react-motion-components-preview';
 import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
@@ -98,8 +98,8 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
       key={directionKey}
       duration={duration}
       easing={easing}
-      outX={outX}
-      outY={outY}
+      fromX={outX}
+      fromY={outY}
       replayKey={replayKey}
       {...motionProps}
     >
@@ -121,7 +121,7 @@ DirectionalSlideIn.displayName = 'DirectionalSlideIn';
 const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => {
   const duration = motionTokens.durationSlower;
   const easing = motionTokens.curveDecelerateMax;
-  return [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outY })];
+  return [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { y: outY } })];
 });
 
 export type DirectionalSlideOutProps = MotionComponentProps & {

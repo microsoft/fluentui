@@ -5,7 +5,7 @@ import { Button } from '@fluentui/react-components';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { OpenRegular } from '@fluentui/react-icons';
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { rotate, blur, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { rotate, blur, scale } from '@fluentui/react-motion-components-preview';
 import { useClasses } from './ComposingAtomsDemo.styles';
 
 const duration = 1000;
@@ -17,7 +17,7 @@ const SpinBlur = createPresenceComponent({
   enter: [
     rotate({ duration, easing, axis: 'z', from: -20, to: 0 }),
     blur({ duration, easing, from: '8px', to: '0px' }),
-    scaleAtom({ direction: 'enter', duration, easing, outScale: 2 }),
+    scale({ duration, easing, from: 2, to: 1 }),
   ],
   exit: [
     rotate({
@@ -33,7 +33,7 @@ const SpinBlur = createPresenceComponent({
       from: '0px',
       to: '8px',
     }),
-    scaleAtom({ direction: 'exit', duration: exitDuration, easing: motionTokens.curveLinear, outScale: 0 }),
+    scale({ duration: exitDuration, easing: motionTokens.curveLinear, from: 1, to: 0 }),
   ],
 });
 
@@ -41,12 +41,12 @@ const codeSnippet = `const SpinBlur = createPresenceComponent({
   enter: [
     rotate({ duration: 800, axis: 'z', from: -20, to: 0 }),
     blur({ duration: 800, from: '8px', to: '0px' }),
-    scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
+    scale({ duration: 800, from: 0.8, to: 1 }),
   ],
   exit: [
     rotate({ duration: 600, axis: 'z', from: 0, to: -20 }),
     blur({ duration: 600, from: '0px', to: '8px' }),
-    scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
+    scale({ duration: 600, from: 1, to: 0.8 }),
   ],
 });
 
@@ -58,7 +58,7 @@ const codeSnippet = `const SpinBlur = createPresenceComponent({
 const stackblitzExampleCode = `import * as React from 'react';
 import { makeStyles, tokens, Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { createPresenceComponent } from '@fluentui/react-motion';
-import { rotate, blur, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { rotate, blur, scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -83,12 +83,12 @@ const SpinBlur = createPresenceComponent({
   enter: [
     rotate({ duration: 800, axis: 'z', from: -20, to: 0 }),
     blur({ duration: 800, from: '8px', to: '0px' }),
-    scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
+    scale({ duration: 800, from: 0.8, to: 1 }),
   ],
   exit: [
     rotate({ duration: 600, axis: 'z', from: 0, to: -20 }),
     blur({ duration: 600, from: '0px', to: '8px' }),
-    scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
+    scale({ duration: 600, from: 1, to: 0.8 }),
   ],
 });
 
@@ -201,7 +201,7 @@ function openInStackBlitz(doc: Document) {
 
   addField('project[template]', 'node');
   addField('project[title]', 'SpinBlur — Composing Motion Atoms');
-  addField('project[description]', '# Custom presence component composed from rotate + blur + scaleAtom');
+  addField('project[description]', '# Custom presence component composed from rotate + blur + scale');
 
   Object.entries(stackblitzFiles).forEach(([path, content]) => {
     addField(`project[files][${path}]`, content);
