@@ -1,12 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import {
-  FOCUSABLE_GROUP_ATTRIBUTE,
-  FOCUSABLE_GROUP_IGNORE_ATTRIBUTE,
-  handleGroupEscape,
-  useFocusManager,
-} from './focusManager';
+import { FOCUSABLE_GROUP_ATTRIBUTE, useFocusHandlers } from './focusCore';
+import { FOCUSABLE_GROUP_IGNORE_ATTRIBUTE, groupHandlers, handleGroupEscape } from './focusGroup';
 
 export interface UseFocusableGroupOptions {
   /**
@@ -47,7 +43,7 @@ export type FocusableGroupAttributes = {
  */
 export const useFocusableGroup = (options: UseFocusableGroupOptions = {}): FocusableGroupAttributes => {
   const { tabBehavior = 'unlimited', ignoreDefaultKeydown } = options;
-  useFocusManager();
+  useFocusHandlers(groupHandlers);
 
   const ignoredKeys = ignoreDefaultKeydown
     ? (['Tab', 'Enter', 'Escape'] as const).filter(key => ignoreDefaultKeydown[key]).join(' ')

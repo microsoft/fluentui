@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { FOCUS_TRAP_ATTRIBUTE, useFocusManager } from './focusManager';
+import { FOCUS_TRAP_ATTRIBUTE, useFocusHandlers } from './focusCore';
+import { trapHandlers } from './focusTrap';
 
 export interface UseModalAttributesOptions {
   /**
@@ -31,7 +32,7 @@ export type ModalAttributes = {
 export const useModalAttributes = (options: UseModalAttributesOptions = {}): { modalAttributes: ModalAttributes } => {
   const { trapFocus = false, legacyTrapFocus = false } = options;
   const cycleFocus = trapFocus && legacyTrapFocus;
-  useFocusManager();
+  useFocusHandlers(trapHandlers);
 
   return React.useMemo(
     () => ({ modalAttributes: cycleFocus ? { [FOCUS_TRAP_ATTRIBUTE]: '' as const } : {} }),
