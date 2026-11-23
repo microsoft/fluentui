@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Field } from '@fluentui/react-field';
+import { renderHook } from '@testing-library/react-hooks';
 import { Select } from './Select';
+import { useSelectBase_unstable } from './useSelect';
 import { isConformant } from '../../testing/isConformant';
 
 describe('Select', () => {
@@ -123,5 +125,42 @@ describe('Select', () => {
     expect(select.getAttribute('aria-describedby')).toEqual(message.id);
     expect(select.getAttribute('aria-invalid')).toEqual('true');
     expect(select.required).toBe(true);
+  });
+});
+
+describe('Select DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container, getByRole } = render(
+      <Select
+        appearance="underline"
+        className="custom"
+        defaultValue="b"
+        icon={<span />}
+        name="select"
+        onChange={jest.fn()}
+        size="large"
+        style={{ color: 'red' }}
+      >
+        <option value="a">A</option>
+        <option value="b">B</option>
+      </Select>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(getByRole('combobox').getAttributeNames().sort()).toEqual(['class', 'name']);
+  });
+
+  it('does not forward slot or state props from the base hook to the select slot', () => {
+    const { result } = renderHook(() =>
+      useSelectBase_unstable({ className: 'custom', icon: 'icon', name: 'select' }, React.createRef()),
+    );
+
+    expect(result.current.root.className).toBe('custom');
+    expect(result.current.select.name).toBe('select');
+    expect(result.current.select).not.toHaveProperty('className');
+    expect(result.current.select).not.toHaveProperty('icon');
   });
 });

@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioBaseProps, RadioBaseState, RadioProps, RadioState } from './Radio.types';
@@ -56,39 +56,42 @@ export const useRadioBase_unstable = (props: RadioBaseProps, ref: React.Ref<HTML
     required = group.required,
     'aria-describedby': ariaDescribedBy = group['aria-describedby'],
     onChange,
+    // Slots
+    root: rootSlot,
+    input: inputSlot,
+    label: labelSlot,
+    indicator: indicatorSlot,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
   } = props;
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
-  });
-
-  const root = slot.always(props.root, {
-    defaultProps: nativeProps.root,
+  const root = slot.always(rootSlot, {
+    defaultProps: { className, style },
     elementType: 'span',
   });
-  const input = slot.always(props.input, {
+  const input = slot.always(inputSlot, {
     defaultProps: {
       ref,
       type: 'radio',
-      id: useId('radio-', nativeProps.primary.id),
+      id: useId('radio-', inputProps.id),
       name,
       checked,
       defaultChecked,
       disabled,
       required,
       'aria-describedby': ariaDescribedBy,
-      ...nativeProps.primary,
+      ...inputProps,
     },
     elementType: 'input',
   });
   input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
-  const label = slot.optional(props.label, {
+  const label = slot.optional(labelSlot, {
     defaultProps: { htmlFor: input.id, disabled: input.disabled },
     elementType: 'label',
   });
-  const indicator = slot.always(props.indicator, {
+  const indicator = slot.always(indicatorSlot, {
     defaultProps: { 'aria-hidden': true },
     elementType: 'div',
   });
