@@ -91,12 +91,13 @@ describe('TimePicker', () => {
     cy.get(selectedTime).should('have.text', '11:00|');
   });
 
-  it('selects the first option on Enter when no option matches the typed prefix', () => {
-    mount(<BasicTimePicker />);
+  it('without freeform, filters out every option for unmatched text and discards it on Enter', () => {
+    mount(<BasicTimePicker freeform={false} />);
     cy.get(trigger).realClick().realType('a');
+    cy.get(option).should('not.exist');
     cy.get(trigger).realPress('Enter');
-    cy.get(trigger).should('have.value', '09:00');
-    cy.get(selectedTime).should('have.text', '09:00|');
+    cy.get(trigger).should('have.value', '');
+    cy.get(selectedTime).should('have.text', '');
   });
 
   it('in freeform mode, selects the option matching the typed prefix on Enter', () => {
@@ -126,6 +127,66 @@ describe('TimePicker', () => {
     cy.get(trigger).should('have.value', '09:00');
     cy.get(clearIcon).realClick();
     cy.get(trigger).should('have.value', '');
+    cy.get(selectedTime).should('have.text', '|');
+  });
+});
+
+describe('TimePicker keyboard', () => {
+  const activeDescendant = () => cy.get(trigger).invoke('attr', 'aria-activedescendant');
+
+  it('moves the caret with Home and End instead of the active option', () => {
+    mount(<BasicTimePicker />);
+    cy.get(trigger).realClick().realType('10');
+    activeDescendant().should('exist');
+    activeDescendant().then(active => {
+      cy.get(trigger).realPress('Home');
+      cy.get(trigger).should('have.prop', 'selectionStart', 0);
+      cy.get(trigger).realPress('End');
+      cy.get(trigger).should('have.prop', 'selectionStart', 2);
+      cy.get(trigger).should('have.attr', 'aria-activedescendant', active);
+    });
+  });
+
+  it('opens without an active option with Alt+ArrowDown and closes keeping the text with Alt+ArrowUp', () => {
+    mount(<BasicTimePicker />);
+    cy.get(trigger).focus().realPress(['Alt', 'ArrowDown']);
+    cy.get(listbox).should('exist');
+    cy.get(trigger).should('not.have.attr', 'aria-activedescendant');
+
+    cy.get(trigger).realType('10');
+    cy.get(trigger).realPress(['Alt', 'ArrowUp']);
+    cy.get(listbox).should('not.exist');
+    cy.get(trigger).should('have.value', '10');
+    cy.get(selectedTime).should('have.text', '');
+  });
+
+  it('opens on the last option with ArrowUp', () => {
+    mount(<BasicTimePicker />);
+    cy.get(trigger).focus().realPress('ArrowUp');
+    activeDescendant().then(id => cy.get(`#${id}`).should('have.text', '11:30'));
+  });
+
+  it('restores the committed value with Escape', () => {
+    mount(<BasicTimePicker defaultValue={new Date(2023, 9, 1, 10, 0)} />);
+    cy.get(trigger).should('have.value', '10:00').realClick().realPress('Backspace').realType('5');
+    cy.get(trigger).should('have.value', '10:05');
+    cy.get(trigger).realPress('Escape');
+    cy.get(trigger).should('have.value', '10:00');
+    cy.get('#outside').realClick();
+    cy.get(selectedTime).should('have.text', '');
+  });
+
+  it('clears with the keyboard and returns focus to the input', () => {
+    mount(
+      <BasicTimePicker
+        clearable
+        clearIcon={{ id: 'clear-icon', children: 'x' }}
+        defaultValue={new Date(2023, 9, 1, 10, 0)}
+      />,
+    );
+    cy.get(trigger).focus().realPress('Tab');
+    cy.get(clearIcon).should('be.focused').realPress('Enter');
+    cy.get(trigger).should('have.value', '').should('be.focused');
     cy.get(selectedTime).should('have.text', '|');
   });
 });

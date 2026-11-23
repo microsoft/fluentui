@@ -10,6 +10,22 @@ test.describe('RadioGroup', () => {
     waitFor: [RadioTagName],
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('focusgroup', 'radiogroup wrap');
+  });
+
+  for (const focusgroup of ['none', '']) {
+    test(`should preserve authored host attributes when connected with focusgroup="${focusgroup}"`, async ({
+      fastPage,
+    }) => {
+      await fastPage.setTemplate({ attributes: { focusgroup } });
+
+      await expect(fastPage.element).toHaveAttribute('focusgroup', focusgroup);
+    });
+  }
+
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
 

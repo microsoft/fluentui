@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: expand bundle-size fixtures to all public subpaths",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

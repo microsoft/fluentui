@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: render information button for numeric zero content",
+  "packageName": "@fluentui/react-infolabel",
+  "email": "paulmardling@microsoft.com"
+}
