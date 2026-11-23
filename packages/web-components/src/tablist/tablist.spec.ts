@@ -15,6 +15,24 @@ test.describe('Tablist', () => {
     waitFor: [TabTagName],
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('role', 'tablist');
+    await expect(fastPage.element).toHaveAttribute('focusgroup', 'tablist inline block');
+  });
+
+  for (const focusgroup of ['none', '']) {
+    test(`should preserve authored host attributes when connected with focusgroup="${focusgroup}"`, async ({
+      fastPage,
+    }) => {
+      await fastPage.setTemplate({ attributes: { role: 'group', focusgroup } });
+
+      await expect(fastPage.element).toHaveAttribute('role', 'group');
+      await expect(fastPage.element).toHaveAttribute('focusgroup', focusgroup);
+    });
+  }
+
   test('should create with document.createElement()', async ({ page, fastPage, innerHTML }) => {
     await fastPage.setTemplate();
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: pass native props through without the native props allow-list to reduce bundle size",
+  "packageName": "@fluentui/react-field",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

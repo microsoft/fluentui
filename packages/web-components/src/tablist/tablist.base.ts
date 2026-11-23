@@ -224,6 +224,11 @@ export class BaseTablist extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    this.role ??= 'tablist';
+    if (!this.hasAttribute('focusgroup')) {
+      this.setAttribute('focusgroup', 'tablist inline block');
+    }
+
     waitForConnectedDescendants(
       this,
       () => {

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from '@fluentui/react-menu';
 
 /**
@@ -17,13 +17,13 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
     },
     setMultiline: NOOP_SET_MULTILINE,
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         // FIXME: `ref` is wrongly typed as `Ref<HTMLElement>` instead of
         // `Ref<HTMLDivElement>` upstream; casting to keep behaviour aligned.
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
         ...props,
-      }),
+      },
       { elementType: 'div' },
     ),
   };
