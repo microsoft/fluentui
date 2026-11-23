@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: expose TagPicker multiselection and option selection to assistive technology while preserving consumer checked-only selection and exposing data-selected/data-checked styling attributes",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}
