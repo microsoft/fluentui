@@ -1,6 +1,6 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming, PoseEndpoints } from '../types';
+import type { BaseAtomParams, MotionTiming } from '../types';
 
 /** The axis of an absolute rotation. */
 export type RotateAxis = 'x' | 'y' | 'z';
@@ -8,8 +8,15 @@ export type RotateAxis = 'x' | 'y' | 'z';
 /** A rotation angle in degrees. */
 export type RotatePose = number;
 
-/** Rotation endpoints; an omitted endpoint defaults to 0 degrees. At least one endpoint is required. */
-export type RotateOptions = MotionTiming & PoseEndpoints<RotatePose> & { axis?: RotateAxis };
+/**
+ * Explicit rotation endpoints in degrees. Both `from` and `to` are required;
+ * use `rotateIn` or `rotateOut` when arriving at or departing from `0` degrees.
+ */
+export type RotateOptions = MotionTiming & {
+  axis?: RotateAxis;
+  from: RotatePose;
+  to: RotatePose;
+};
 
 /** Options for rotating from an authored angle to 0 degrees. */
 export type RotateInOptions = MotionTiming & { axis?: RotateAxis; from: RotatePose; to?: never };
@@ -18,8 +25,8 @@ export type RotateInOptions = MotionTiming & { axis?: RotateAxis; from: RotatePo
 export type RotateOutOptions = MotionTiming & { axis?: RotateAxis; from?: never; to: RotatePose };
 
 /**
- * Creates an absolute rotation between authored angles around a single axis, without adding opacity or fill.
- * At least one endpoint is required; an omitted endpoint is 0 degrees. The default axis is `'z'`.
+ * Creates an absolute rotation between explicit `from` and `to` angles around a single axis,
+ * without adding opacity or fill. The default axis is `'z'`.
  *
  * @example
  * ```ts
@@ -29,8 +36,8 @@ export type RotateOutOptions = MotionTiming & { axis?: RotateAxis; from?: never;
  * ```
  */
 export const rotate = ({
-  from = 0,
-  to = 0,
+  from,
+  to,
   axis = 'z',
   duration,
   easing = motionTokens.curveLinear,
@@ -44,11 +51,11 @@ export const rotate = ({
 
 /** Creates an absolute rotation from an authored angle to 0 degrees. */
 export const rotateIn = ({ from, axis, duration, easing, delay }: RotateInOptions): AtomMotion =>
-  rotate({ from, axis, duration, easing, delay });
+  rotate({ from, to: 0, axis, duration, easing, delay });
 
 /** Creates an absolute rotation from 0 degrees to an authored angle. */
 export const rotateOut = ({ to, axis, duration, easing, delay }: RotateOutOptions): AtomMotion =>
-  rotate({ to, axis, duration, easing, delay });
+  rotate({ from: 0, to, axis, duration, easing, delay });
 
 interface RotateAtomParams extends BaseAtomParams {
   axis?: RotateAxis;

@@ -3,14 +3,16 @@ import { motionTokens } from '@fluentui/react-motion';
 import { blur, blurIn, blurOut, blurAtom } from './blur-atom';
 
 describe('blur', () => {
-  it('uses neutral omitted endpoints and directional helpers', () => {
+  it('requires explicit endpoints on blur and uses neutral boundaries on directional helpers', () => {
     const enter = [{ filter: 'blur(1rem)' }, { filter: 'blur(0px)' }];
     const exit = [{ filter: 'blur(0px)' }, { filter: 'blur(2px)' }];
-    expect(blur({ from: '1rem', duration: 123 }).keyframes).toEqual(enter);
-    expect(blur({ to: '2px', duration: 123 }).keyframes).toEqual(exit);
     expect(blurIn({ from: '1rem', duration: 123 }).keyframes).toEqual(enter);
     expect(blurOut({ to: '2px', duration: 123 }).keyframes).toEqual(exit);
-    // @ts-expect-error at least one endpoint is required
+    // @ts-expect-error both from and to are required
+    blur({ from: '1rem', duration: 123 });
+    // @ts-expect-error both from and to are required
+    blur({ to: '2px', duration: 123 });
+    // @ts-expect-error both from and to are required
     blur({ duration: 123 });
     // @ts-expect-error entering uses only an authored source and a neutral destination
     blurIn({ from: '1rem', to: '2px', duration: 123 });

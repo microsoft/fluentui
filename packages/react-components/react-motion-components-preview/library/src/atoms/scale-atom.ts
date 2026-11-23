@@ -1,27 +1,25 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming, PoseEndpoints } from '../types';
+import type { BaseAtomParams, MotionTiming } from '../types';
 
 /** A numeric scale value used as a scale pose. */
 export type ScalePose = number;
 
 /**
- * Scale poses for a motion. `from` is the starting scale and `to` is the ending scale; an omitted endpoint defaults
- * to `1` (the element's unscaled size).
- *
- * At least one endpoint must be authored. The union permits `from`, `to`, or both, while rejecting an options object
- * with neither endpoint:
+ * Explicit scale endpoints for a scale motion. Both `from` and `to` are required;
+ * use `scaleIn` or `scaleOut` when arriving at or departing from neutral scale `1`.
  *
  * @example
  * ```ts
- * const scaleFrom: ScaleOptions = { from: 0.9, duration: 200 }; // to defaults to 1
- * const scaleTo: ScaleOptions = { to: 0.9, duration: 200 }; // from defaults to 1
  * const scaleBetween: ScaleOptions = { from: 0.8, to: 1.2, duration: 200 };
- * // @ts-expect-error At least one scale endpoint is required.
- * const noEndpoints: ScaleOptions = { duration: 200 };
+ * // @ts-expect-error Both from and to endpoints are required.
+ * const missingTo: ScaleOptions = { from: 0.9, duration: 200 };
  * ```
  */
-export type ScaleOptions = MotionTiming & PoseEndpoints<ScalePose>;
+export type ScaleOptions = MotionTiming & {
+  from: ScalePose;
+  to: ScalePose;
+};
 
 /** Options for entering from an outer scale (default `0`) to the neutral scale of `1`. */
 export type ScaleInOptions = MotionTiming & { from?: ScalePose; to?: never };
@@ -29,10 +27,10 @@ export type ScaleInOptions = MotionTiming & { from?: ScalePose; to?: never };
 /** Options for exiting from the neutral scale of `1` to an outer scale (default `0`). */
 export type ScaleOutOptions = MotionTiming & { from?: never; to?: ScalePose };
 
-/** Creates an absolute scale motion between authored numeric poses. */
+/** Creates an absolute scale motion between explicit `from` and `to` numeric poses. */
 export const scale = ({
-  from = 1,
-  to = 1,
+  from,
+  to,
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,

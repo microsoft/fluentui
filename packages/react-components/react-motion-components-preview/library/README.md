@@ -119,18 +119,18 @@ const CustomBlur = createPresenceComponent({
 });
 ```
 
-General `fade`, `scale`, `slide`, `rotate`, and `blur` accept `from`, `to`, or both
-to describe their starting and ending poses. An omitted endpoint defaults to the
-property's neutral value: opacity `1`, scale `1`, zero translation (`0px`), `0` degrees
-(default axis `'z'`), or blur `'0px'`. All helpers require `duration`; `easing` defaults
-to linear and `delay` to `0`. Fade helpers use `fill: 'both'` so delayed entrances remain
-hidden; the other atoms do not add opacity or fill.
+General `fade`, `scale`, `slide`, `rotate`, and `blur` require explicit `from` and `to`
+endpoints (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). All
+helpers require `duration`; `easing` defaults to linear and `delay` to `0`. Fade helpers
+use `fill: 'both'` so delayed entrances remain hidden; the other atoms do not add opacity
+or fill.
 
-Directional `*In` helpers arrive at the property's neutral value (`to` is forbidden),
-and `*Out` helpers depart from it (`from` is forbidden). `fadeIn`/`fadeOut` and
-`scaleIn`/`scaleOut` accept an optional outer endpoint that defaults to `0`;
-`slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut` require an
-authored outer endpoint because they have no universal displaced value.
+Directional `*In` helpers arrive at the property's neutral value (opacity `1`, scale `1`,
+zero translation `0px`, `0` degrees around axis `'z'`, or blur `'0px'`) with `to`
+forbidden, and `*Out` helpers depart from that neutral value with `from` forbidden.
+`fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that
+defaults to `0`; `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut`
+require an authored outer endpoint because they have no universal displaced value.
 
 The `fadeAtom`, `scaleAtom`, `slideAtom`, `rotateAtom`, and `blurAtom` exports are
 deprecated but remain available for compatibility. The pre-built `Fade`, `Scale`, `Slide`,

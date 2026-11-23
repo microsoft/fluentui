@@ -26,15 +26,20 @@ function expectSlideAtom(
 }
 
 describe('slide', () => {
-  it('resolves omitted poses and axes to neutral translation', () => {
-    expect(slide({ from: { y: '24px' }, duration: 300 }).keyframes).toEqual([
+  it('requires both from and to endpoints and fills omitted axes with 0px', () => {
+    expect(slide({ from: { y: '24px' }, to: { x: '100%' }, duration: 300 }).keyframes).toEqual([
       { translate: '0px 24px' },
-      { translate: '0px 0px' },
-    ]);
-    expect(slide({ to: { x: '100%' }, duration: 300 }).keyframes).toEqual([
-      { translate: '0px 0px' },
       { translate: '100% 0px' },
     ]);
+    const checkInvalidCalls = () => {
+      // @ts-expect-error both from and to are required
+      slide({ from: { y: '24px' }, duration: 300 });
+      // @ts-expect-error both from and to are required
+      slide({ to: { x: '100%' }, duration: 300 });
+      // @ts-expect-error both from and to are required
+      slide({ duration: 300 });
+    };
+    expect(checkInvalidCalls).toBeDefined();
   });
 
   it('preserves custom CSS poses and timing without adding opacity or fill', () => {
@@ -61,10 +66,16 @@ describe('slide', () => {
   });
 
   it('creates directional slides using the general helper', () => {
-    expect(slideIn({ from: { y: '24px' }, duration: 300 })).toEqual(slide({ from: { y: '24px' }, duration: 300 }));
-    expect(slideOut({ to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
-      slide({ to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 }),
+    expect(slideIn({ from: { y: '24px' }, duration: 300 })).toEqual(
+      slide({ from: { y: '24px' }, to: { x: '0px', y: '0px' }, duration: 300 }),
     );
+    expect(slideOut({ to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      slide({ from: { x: '0px', y: '0px' }, to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+    // @ts-expect-error slideIn owns the neutral destination
+    slideIn({ from: { y: '24px' }, to: { y: '0px' }, duration: 300 });
+    // @ts-expect-error slideOut owns the neutral source
+    slideOut({ from: { x: '0px' }, to: { x: '100%' }, duration: 300 });
   });
 });
 

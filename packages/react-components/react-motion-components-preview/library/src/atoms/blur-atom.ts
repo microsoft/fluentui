@@ -1,12 +1,18 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming, PoseEndpoints } from '../types';
+import type { BaseAtomParams, MotionTiming } from '../types';
 
 /** A CSS length used as a blur-radius pose. */
 export type BlurPose = string;
 
-/** Blur endpoints; an omitted endpoint defaults to `'0px'`. At least one endpoint is required. */
-export type BlurOptions = MotionTiming & PoseEndpoints<BlurPose>;
+/**
+ * Explicit blur-radius endpoints (CSS lengths including units). Both `from` and `to` are required;
+ * use `blurIn` or `blurOut` when arriving at or departing from `'0px'`.
+ */
+export type BlurOptions = MotionTiming & {
+  from: BlurPose;
+  to: BlurPose;
+};
 
 /** Options for blurring from an authored radius to `'0px'`. */
 export type BlurInOptions = MotionTiming & { from: BlurPose; to?: never };
@@ -15,8 +21,8 @@ export type BlurInOptions = MotionTiming & { from: BlurPose; to?: never };
 export type BlurOutOptions = MotionTiming & { from?: never; to: BlurPose };
 
 /**
- * Creates an absolute blur motion between authored radii, without adding opacity or fill.
- * At least one endpoint is required; an omitted endpoint is `'0px'`. Radii are CSS lengths including units.
+ * Creates an absolute blur motion between explicit `from` and `to` radii, without adding opacity or fill.
+ * Radii are CSS lengths including units.
  *
  * @example
  * ```ts
@@ -26,8 +32,8 @@ export type BlurOutOptions = MotionTiming & { from?: never; to: BlurPose };
  * ```
  */
 export const blur = ({
-  from = '0px',
-  to = '0px',
+  from,
+  to,
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
@@ -40,11 +46,11 @@ export const blur = ({
 
 /** Creates an absolute blur motion from an authored radius to `'0px'`. */
 export const blurIn = ({ from, duration, easing, delay }: BlurInOptions): AtomMotion =>
-  blur({ from, duration, easing, delay });
+  blur({ from, to: '0px', duration, easing, delay });
 
 /** Creates an absolute blur motion from `'0px'` to an authored radius. */
 export const blurOut = ({ to, duration, easing, delay }: BlurOutOptions): AtomMotion =>
-  blur({ to, duration, easing, delay });
+  blur({ from: '0px', to, duration, easing, delay });
 
 interface BlurAtomParams extends BaseAtomParams {
   /** Blur radius for the out state (exited). Defaults to '10px'. */

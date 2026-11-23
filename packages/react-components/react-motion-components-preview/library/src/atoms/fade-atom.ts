@@ -1,27 +1,25 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams, MotionTiming, PoseEndpoints } from '../types';
+import type { BaseAtomParams, MotionTiming } from '../types';
 
 /** An opacity value used as a fade pose. */
 export type FadePose = number;
 
 /**
- * Opacity poses for a fade motion. `from` is the starting opacity and `to` is the ending opacity; each describes the
- * opacity value at that point in the motion. If one is omitted, that endpoint defaults to `1` (fully opaque).
- *
- * At least one endpoint must be authored. The union permits `from`, `to`, or both, while rejecting an options object
- * with neither endpoint:
+ * Explicit opacity endpoints for a fade motion. Both `from` and `to` are required;
+ * use `fadeIn` or `fadeOut` when arriving at or departing from neutral opacity `1`.
  *
  * @example
  * ```ts
- * const fadeFrom: FadeOptions = { from: 0.2, duration: 200 }; // to defaults to 1
- * const fadeTo: FadeOptions = { to: 0.2, duration: 200 }; // from defaults to 1
  * const fadeBetween: FadeOptions = { from: 0.2, to: 0.7, duration: 200 };
- * // @ts-expect-error At least one opacity endpoint is required.
- * const noEndpoints: FadeOptions = { duration: 200 };
+ * // @ts-expect-error Both from and to endpoints are required.
+ * const missingTo: FadeOptions = { from: 0.2, duration: 200 };
  * ```
  */
-export type FadeOptions = MotionTiming & PoseEndpoints<FadePose>;
+export type FadeOptions = MotionTiming & {
+  from: FadePose;
+  to: FadePose;
+};
 
 /** Options for entering from an outer opacity (default `0`) to neutral opacity `1`. */
 export type FadeInOptions = MotionTiming & { from?: FadePose; to?: never };
@@ -29,10 +27,10 @@ export type FadeInOptions = MotionTiming & { from?: FadePose; to?: never };
 /** Options for exiting from neutral opacity `1` to an outer opacity (default `0`). */
 export type FadeOutOptions = MotionTiming & { from?: never; to?: FadePose };
 
-/** Creates an absolute opacity motion between authored poses. */
+/** Creates an absolute opacity motion between explicit `from` and `to` poses. */
 export const fade = ({
-  from = 1,
-  to = 1,
+  from,
+  to,
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,

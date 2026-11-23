@@ -121,9 +121,9 @@ All atoms accept these base parameters:
 | `easing`   | `string` | `curveLinear` | CSS easing function                    |
 | `delay`    | `number` | `0`           | Delay before animation starts          |
 
-General atoms (`fade`, `scale`, `slide`, `rotate`, `blur`) animate `from` to `to`, with at least one endpoint required. An omitted endpoint defaults to the property's neutral value: opacity `1`, scale `1`, zero translation (`0px`), `0` degrees (axis `'z'`), or blur `'0px'`. Fade helpers set `fill: 'both'` so delayed fades stay hidden; the other atoms do not add a fade or set `fill`. Neutral atom defaults differ from the presence components' Fluent entrance defaults.
+General atoms (`fade`, `scale`, `slide`, `rotate`, `blur`) animate between explicit `from` and `to` endpoints — both endpoints are required (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). Fade helpers set `fill: 'both'` so delayed fades stay hidden; the other atoms do not add a fade or set `fill`.
 
-Directional `*In` and `*Out` helpers encode the neutral-value boundary: `*In` arrives at neutral (`to` is forbidden), and `*Out` departs from neutral (`from` is forbidden). `fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that defaults to `0`. `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut` require their outer endpoint because they have no universal displaced value. Use the general helper when authoring two non-neutral endpoints.
+Directional `*In` and `*Out` helpers encode the neutral-value boundary (opacity `1`, scale `1`, zero translation `0px`, `0` degrees on axis `'z'`, or blur `'0px'`): `*In` arrives at neutral (`to` is forbidden), and `*Out` departs from neutral (`from` is forbidden). `fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that defaults to `0`. `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut` require their outer endpoint because they have no universal displaced value. Neutral atom defaults differ from the presence components' Fluent entrance defaults. Use the general helper when authoring explicit `from` and `to` endpoints.
 
 Legacy `*Atom` helpers additionally require `direction: 'enter' | 'exit'`, which selects out-to-in or in-to-out keyframe order.
 

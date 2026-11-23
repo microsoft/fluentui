@@ -26,9 +26,15 @@ function expectFadeAtom(
 }
 
 describe('fade', () => {
-  it('resolves omitted poses to neutral opacity', () => {
-    expect(fade({ from: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 0.3 }, { opacity: 1 }]);
-    expect(fade({ to: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 1 }, { opacity: 0.3 }]);
+  it('requires both from and to endpoints on the general helper', () => {
+    expect(fade({ from: 0.3, to: 1, duration: 300 }).keyframes).toEqual([{ opacity: 0.3 }, { opacity: 1 }]);
+    expect(fade({ from: 1, to: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 1 }, { opacity: 0.3 }]);
+    // @ts-expect-error both from and to are required
+    fade({ from: 0.3, duration: 300 });
+    // @ts-expect-error both from and to are required
+    fade({ to: 0.3, duration: 300 });
+    // @ts-expect-error both from and to are required
+    fade({ duration: 300 });
   });
 
   it('preserves custom poses and timing with backwards fill', () => {

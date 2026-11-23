@@ -26,9 +26,15 @@ function expectScaleAtom(
 }
 
 describe('scale', () => {
-  it('resolves an omitted endpoint to neutral scale', () => {
-    expect(scale({ from: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
-    expect(scale({ to: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
+  it('requires both from and to endpoints on the general helper', () => {
+    expect(scale({ from: 0.9, to: 1, duration: 300 }).keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
+    expect(scale({ from: 1, to: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
+    // @ts-expect-error both from and to are required
+    scale({ from: 0.9, duration: 300 });
+    // @ts-expect-error both from and to are required
+    scale({ to: 0.9, duration: 300 });
+    // @ts-expect-error both from and to are required
+    scale({ duration: 300 });
   });
 
   it('preserves custom poses and timing', () => {

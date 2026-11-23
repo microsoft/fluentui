@@ -3,14 +3,16 @@ import { motionTokens } from '@fluentui/react-motion';
 import { rotate, rotateIn, rotateOut, rotateAtom } from './rotate-atom';
 
 describe('rotate', () => {
-  it('uses neutral omitted endpoints and directional helpers', () => {
+  it('requires explicit endpoints on rotate and uses neutral boundaries on directional helpers', () => {
     const enter = [{ rotate: 'z -45deg' }, { rotate: 'z 0deg' }];
     const exit = [{ rotate: 'y 0deg' }, { rotate: 'y 30deg' }];
-    expect(rotate({ from: -45, duration: 123 }).keyframes).toEqual(enter);
-    expect(rotate({ to: 30, axis: 'y', duration: 123 }).keyframes).toEqual(exit);
     expect(rotateIn({ from: -45, duration: 123 }).keyframes).toEqual(enter);
     expect(rotateOut({ to: 30, axis: 'y', duration: 123 }).keyframes).toEqual(exit);
-    // @ts-expect-error at least one endpoint is required
+    // @ts-expect-error both from and to are required
+    rotate({ from: -45, duration: 123 });
+    // @ts-expect-error both from and to are required
+    rotate({ to: 30, axis: 'y', duration: 123 });
+    // @ts-expect-error both from and to are required
     rotate({ duration: 123 });
     // @ts-expect-error entering uses only an authored source and a neutral destination
     rotateIn({ from: -45, to: 30, duration: 123 });

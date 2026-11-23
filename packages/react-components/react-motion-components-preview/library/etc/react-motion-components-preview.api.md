@@ -31,7 +31,10 @@ export type BlurInOptions = MotionTiming & {
 };
 
 // @public
-export type BlurOptions = MotionTiming & PoseEndpoints<BlurPose>;
+export type BlurOptions = MotionTiming & {
+    from: BlurPose;
+    to: BlurPose;
+};
 
 // @public
 export const blurOut: ({ to, duration, easing, delay }: BlurOutOptions) => AtomMotion;
@@ -99,7 +102,10 @@ export type FadeInOptions = MotionTiming & {
 };
 
 // @public
-export type FadeOptions = MotionTiming & PoseEndpoints<FadePose>;
+export type FadeOptions = MotionTiming & {
+    from: FadePose;
+    to: FadePose;
+};
 
 // @public
 export const fadeOut: ({ to, duration, easing, delay }: FadeOutOptions) => AtomMotion;
@@ -152,8 +158,10 @@ export type RotateInOptions = MotionTiming & {
 };
 
 // @public
-export type RotateOptions = MotionTiming & PoseEndpoints<RotatePose> & {
+export type RotateOptions = MotionTiming & {
     axis?: RotateAxis;
+    from: RotatePose;
+    to: RotatePose;
 };
 
 // @public
@@ -196,7 +204,10 @@ export type ScaleInOptions = MotionTiming & {
 };
 
 // @public
-export type ScaleOptions = MotionTiming & PoseEndpoints<ScalePose>;
+export type ScaleOptions = MotionTiming & {
+    from: ScalePose;
+    to: ScalePose;
+};
 
 // @public
 export const scaleOut: ({ to, duration, easing, delay }: ScaleOutOptions) => AtomMotion;
@@ -242,7 +253,10 @@ export type SlideInOptions = MotionTiming & {
 };
 
 // @public
-export type SlideOptions = MotionTiming & PoseEndpoints<SlidePose>;
+export type SlideOptions = MotionTiming & {
+    from: SlidePose;
+    to: SlidePose;
+};
 
 // @public
 export const slideOut: ({ to, duration, easing, delay }: SlideOutOptions) => AtomMotion;
