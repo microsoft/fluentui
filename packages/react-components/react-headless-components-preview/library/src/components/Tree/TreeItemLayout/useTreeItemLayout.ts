@@ -17,7 +17,7 @@ import { toDataAttributeValue } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderTreeItemLayout`.
  */
 export const useTreeItemLayout = (props: TreeItemLayoutProps, ref: React.Ref<HTMLElement>): TreeItemLayoutState => {
-  const disabled = useTreeItemContext(context => context.disabled);
+  const disabled = useTreeItemContext(context => context.disabled ?? false);
   const state: TreeItemLayoutState = { ...useTreeItemLayoutBase_unstable(props, ref), disabled };
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);

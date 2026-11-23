@@ -7,7 +7,6 @@ import {
   useTreeItem_unstable,
   useTreeItemContext_unstable,
   useTreeItemContextValues_unstable,
-  type TreeItemContextValues as TreeItemBaseContextValues,
 } from '@fluentui/react-tree';
 import { useEventCallback, useTimeout } from '@fluentui/react-utilities';
 
@@ -19,7 +18,7 @@ import { toDataAttributeValue } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderTreeItem`.
  */
 export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
-  const itemDisabled = useTreeItemContext(context => context.disabled);
+  const itemDisabled = useTreeItemContext(context => context.disabled ?? false);
   const { disabled: disabledProp = false, ...baseProps } = props;
   const disabled = itemDisabled || disabledProp;
   const state: TreeItemState = { ...useTreeItem_unstable(baseProps, ref), disabled };
@@ -132,24 +131,11 @@ export const useTreeItem = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>
 
 /**
  * Returns a value from the context of the closest tree item, such as its value, open or checked state.
- * Defaults disabled to false for the shared default context and non-headless item providers.
+ * The default context outside an item provider has no disabled field.
  */
-export const useTreeItemContext = <T>(selector: (context: TreeItemContextValues['treeItem']) => T): T =>
-  useTreeItemContext_unstable(context => {
-    const headlessContext = context as TreeItemBaseContextValues['treeItem'] & { disabled?: boolean };
-    if (headlessContext.disabled !== undefined) {
-      return selector(headlessContext as TreeItemContextValues['treeItem']);
-    }
-    let fallback = fallbackContexts.get(context);
-    if (!fallback) {
-      fallback = { ...context, disabled: false };
-      fallbackContexts.set(context, fallback);
-    }
-    return selector(fallback);
-  });
-
-// Preserve whole-context selector identity for the default context and non-headless item providers.
-const fallbackContexts = new WeakMap<TreeItemBaseContextValues['treeItem'], TreeItemContextValues['treeItem']>();
+export const useTreeItemContext = useTreeItemContext_unstable as <T>(
+  selector: (context: TreeItemContextValues['treeItem']) => T,
+) => T;
 
 /**
  * Maps the state of the tree item to the values that are passed through context to its layout and subtree.

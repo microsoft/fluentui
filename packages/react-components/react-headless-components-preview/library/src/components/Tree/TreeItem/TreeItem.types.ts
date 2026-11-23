@@ -25,7 +25,10 @@ export type TreeItemProps = TreeItemBaseProps & {
 };
 
 export type TreeItemContextValues = TreeItemBaseContextValues & {
-  treeItem: { disabled: boolean };
+  treeItem: {
+    /** Resolved by headless item providers; absent from the shared default context. */
+    disabled?: boolean;
+  };
 };
 
 export type TreeItemState = TreeItemBaseState & {

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
+import { useTreeItemContext_unstable } from '@fluentui/react-tree';
 import { isConformant } from '../../../testing/isConformant';
 import { Tree } from '../Tree';
 import { TreeItem } from './TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
 import { useTreeItem, useTreeItemContext, useTreeItemContextValues } from './useTreeItem';
-import type { TreeItemContextValues, TreeItemProps } from './TreeItem.types';
+import type { TreeItemProps } from './TreeItem.types';
 
 const TreeWrapper = ({ children }: { children?: React.ReactNode }) => <Tree aria-label="Tree">{children}</Tree>;
 
@@ -46,11 +47,12 @@ describe('TreeItem', () => {
         return contextValues;
       };
       const { result, rerender } = renderHook(useSnapshot, {
-        initialProps: { itemType: 'branch', value: 'item', disabled: false, open: false },
+        initialProps: { itemType: 'branch', value: 'item', open: false },
         wrapper: TreeWrapper,
       });
       const initialContext = result.current;
       const initialSnapshots = onSnapshot.mock.calls.length;
+      expect(initialContext.treeItem.disabled).toBe(false);
 
       rerender({ itemType: 'branch', value: 'item', disabled: false, open: false });
       expect(result.current).toBe(initialContext);
@@ -76,16 +78,17 @@ describe('TreeItem', () => {
       const onSnapshot = jest.fn();
       const Probe = () => {
         const context = useTreeItemContext(value => value);
-        const [snapshot, setSnapshot] = React.useState<TreeItemContextValues['treeItem']>();
+        const baseContext = useTreeItemContext_unstable(value => value);
+        const [snapshot, setSnapshot] = React.useState<{ disabled?: boolean }>();
         const updates = React.useRef(0);
         React.useEffect(() => {
           if (++updates.current > 4) {
             throw new Error('Item context identity did not stabilize');
           }
-          onSnapshot(context);
+          onSnapshot(context, baseContext);
           setSnapshot(context);
-        }, [context]);
-        return <span>{snapshot?.disabled === false ? 'Enabled context' : 'Pending context'}</span>;
+        }, [context, baseContext]);
+        return <span>{snapshot ? 'Context ready' : 'Pending context'}</span>;
       };
       const fixture = () => (
         <Tree aria-label="Tree">
@@ -96,9 +99,11 @@ describe('TreeItem', () => {
         </Tree>
       );
       const { rerender } = render(fixture());
-      expect(screen.getByText('Enabled context')).toBeInTheDocument();
+      expect(screen.getByText('Context ready')).toBeInTheDocument();
       expect(onSnapshot).toHaveBeenCalledTimes(1);
-      const context = onSnapshot.mock.calls[0][0];
+      const [context, baseContext] = onSnapshot.mock.calls[0];
+      expect(context).toBe(baseContext);
+      expect(context.disabled).toBeUndefined();
       rerender(fixture());
       expect(onSnapshot).toHaveBeenCalledTimes(1);
       expect(onSnapshot.mock.calls[0][0]).toBe(context);

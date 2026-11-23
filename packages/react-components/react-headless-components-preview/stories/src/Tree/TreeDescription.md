@@ -20,6 +20,10 @@ Custom interactive children, such as action buttons or links, remain the consume
 disable those controls separately when appropriate.
 There is no tree-level disabled API; to disable an entire tree, disable each top-level `TreeItem`.
 
+`useTreeItemContext` selects the nearest item's context without changing its identity.
+Inside a `TreeItem`, `disabled` is the resolved boolean state. Outside an item provider,
+the shared default context has no `disabled` field; use `context.disabled ?? false` when selecting it.
+
 The components expose the following state attributes for styling:
 
 | Element                      | Attribute              | Values                                                |

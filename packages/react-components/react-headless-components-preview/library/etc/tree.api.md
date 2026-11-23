@@ -66,7 +66,7 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 // @public (undocumented)
 export type TreeItemContextValues = TreeItemContextValues_2 & {
     treeItem: {
-        disabled: boolean;
+        disabled?: boolean;
     };
 };
 
