@@ -1338,6 +1338,30 @@ describe('Overflow', () => {
   ];
 
   spacingLayouts.forEach(({ name, axis, style }) => {
+    it(`should ignore CSS-hidden items when measuring spacing in ${name} layouts`, () => {
+      mount(
+        <Container
+          size={170}
+          overflowAxis={axis}
+          style={{ gap: 10, marginLeft: 400, marginTop: 400, ...style }}
+          measureGap
+        >
+          {Array.from({ length: 4 }, (_, i) => (
+            <Item key={i} id={i.toString()} style={i === 1 ? { display: 'none' } : undefined}>
+              {i}
+            </Item>
+          ))}
+          <Menu />
+        </Container>,
+      );
+
+      [0, 2, 3].forEach(i => {
+        cy.get(`[${selectors.item}="${i}"]`).should('be.visible');
+      });
+      cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+      cy.get(`[${selectors.menu}]`).should('not.exist');
+    });
+
     it(`should restore all items with an interior menu in ${name} layouts`, () => {
       mount(
         <Container size={350} overflowAxis={axis} style={{ gap: 10, ...style }} measureGap>
@@ -1388,6 +1412,24 @@ describe('Overflow', () => {
         }
       });
     });
+  });
+
+  it('should include zero-width layout boxes when measuring spacing', () => {
+    mount(
+      <Container size={120} style={{ gap: 10, marginLeft: 400 }} measureGap>
+        <Item id="0" />
+        <Item id="1" />
+        <Item id="2" width={0} style={{ padding: 0, border: 0 }} />
+        <Menu />
+      </Container>,
+    );
+
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    setContainerWidth(110);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+    setContainerWidth(120);
+    cy.get(`[${selectors.item}][data-overflowing]`).should('not.exist');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
   it(`should overflow items with gap and dividers`, () => {

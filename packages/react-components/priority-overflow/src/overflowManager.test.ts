@@ -83,14 +83,16 @@ describe('overflowManager', () => {
     menu.style.cssText = 'display: inline-flex !important; margin-left: 10px;';
     const cssText = menu.style.cssText;
     const measurementError = new Error('Measurement failed');
+    const rect = new DOMRect(0, 0, 40, 40);
 
+    jest.spyOn(item, 'getClientRects').mockReturnValue(Object.assign([rect], { item: () => rect }));
     jest.spyOn(item, 'getBoundingClientRect').mockImplementation(() => {
       expect(menu.style.display).toBe('none');
       expect(menu.style.getPropertyPriority('display')).toBe('important');
       if (throws) {
         throw measurementError;
       }
-      return new DOMRect(0, 0, 40, 40);
+      return rect;
     });
     manager.addItem({ element: item, id: 'a', priority: 1 });
     manager.addOverflowMenu(menu);

@@ -150,6 +150,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
         style.setProperty('display', 'none', 'important');
       }
       return elements
+        .filter(element => element.getClientRects().length > 0)
         .map(element => element.getBoundingClientRect())
         .sort((a, b) => a[start] - b[start])
         .reduce((total, rect, i, rects) => total + (i ? rect[start] - rects[i - 1][end] : 0), 0);

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Add opt-in measurement of fixed gaps and ordinary margins in single-line layouts, including RTL and reversed overflow axes; exclude an interior menu when testing whether all items fit without it",
+  "comment": "feat: Add opt-in measurement of fixed gaps and ordinary margins in single-line layouts, including RTL and reversed overflow axes; ignore participants without layout boxes and exclude an interior menu when testing whether all items fit without it",
   "packageName": "@fluentui/priority-overflow",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
