@@ -3,7 +3,7 @@ import type { MenuList } from './menu-list.js';
 
 export function menuTemplate<T extends MenuList>(): ElementViewTemplate<T> {
   return html<T>`
-    <template focusgroup="menu">
+    <template>
       <slot ${slotted('items')}></slot>
     </template>
   `;
