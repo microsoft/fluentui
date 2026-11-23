@@ -20,6 +20,7 @@ import type {
 import { useMenuContext } from './menuContext';
 import { useHasParentMenuList } from './menuListPresenceContext';
 import { usePositioning, resolvePositioningShorthand } from '../../positioning';
+import { getActiveElement } from '../../hooks/top-layer/utils';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 
 export const useMenu = (props: MenuProps): MenuState => {
@@ -267,10 +268,10 @@ const useMenuOpenState = (
       return;
     }
 
-    if (
-      targetDocument?.activeElement === targetDocument?.body ||
-      state.menuPopoverRef.current?.contains(targetDocument?.activeElement ?? null)
-    ) {
+    const surface = state.menuPopoverRef.current;
+    const activeElement = surface ? getActiveElement(surface) : targetDocument?.activeElement;
+
+    if (targetDocument?.activeElement === targetDocument?.body || surface?.contains(activeElement ?? null)) {
       state.triggerRef.current?.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

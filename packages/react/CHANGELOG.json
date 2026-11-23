@@ -2,6 +2,69 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 29 Oct 2026 01:04:37 GMT",
+      "version": "8.125.10",
+      "tag": "@fluentui/react_v8.125.10",
+      "comments": {
+        "patch": [
+          {
+            "package": "@fluentui/react",
+            "commit": "ba2bc211d80ba4cb17e21f945e46e49479ba71ac",
+            "comment": "fix: Support plain right Alt keytip activation and isolate activation behavior behind its opt-in prop."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.125.9",
+      "tag": "@fluentui/react_v8.125.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.76"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.6.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.6.16"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.10.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.10.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.15.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.7.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.17.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:32 GMT",
       "version": "8.125.8",
       "tag": "@fluentui/react_v8.125.8",

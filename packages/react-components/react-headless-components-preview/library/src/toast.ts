@@ -30,11 +30,13 @@ export type {
   ToastFooterSlots,
   ToastFooterState,
   ToasterProps,
+  ToasterSlots,
   ToasterState,
   ToastContainerProps,
   ToastContainerSlots,
   ToastContainerState,
   ToastContainerContextValue,
+  ToastContainerContextValues,
 } from './components/Toast';
 
 // ─── Re-exported from @fluentui/react-toast ──────────────────────────────────

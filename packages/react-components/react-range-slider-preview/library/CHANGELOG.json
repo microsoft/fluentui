@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-range-slider-preview",
+  "entries": [
+    {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "0.1.0",
+      "tag": "@fluentui/react-range-slider-preview_v0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-range-slider-preview",
+            "commit": "db852788335ab162d77516248f22575a22aa8e73",
+            "comment": "chore: initial release"
+          }
+        ]
+      }
+    }
+  ]
+}

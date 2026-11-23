@@ -39,10 +39,10 @@ export const isRestrictedDate = (date: Date, options: RestrictedDatesOptions): b
 export const findAvailableDate = (options: AvailableDateOptions): Date | undefined => {
   const { targetDate, initialDate, direction, ...restrictionOptions } = options;
   if (direction !== 1 && direction !== -1) {
-    throw new RangeError('direction must be 1 or -1.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'direction must be 1 or -1.' : '');
   }
   if (!Number.isFinite(targetDate.getTime()) || !Number.isFinite(initialDate.getTime())) {
-    throw new RangeError('targetDate and initialDate must be valid.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'targetDate and initialDate must be valid.' : '');
   }
 
   let availableDate = targetDate;
@@ -62,7 +62,7 @@ export const findAvailableDate = (options: AvailableDateOptions): Date | undefin
     daysOffset += direction;
     availableDate = addDays(targetDate, daysOffset);
     if (!Number.isFinite(availableDate.getTime())) {
-      throw new RangeError('Cannot search for an out-of-range date.');
+      throw new RangeError(process.env.NODE_ENV !== 'production' ? 'Cannot search for an out-of-range date.' : '');
     }
   }
 

@@ -25,5 +25,6 @@ describe('ColorArea', () => {
 
     expect(screen.getByRole('slider', { name: 'Saturation' })).toHaveValue('40');
     expect(screen.getByRole('slider', { name: 'Value' })).toHaveValue('80');
+    expect(screen.getByRole('slider', { name: 'Value' })).toHaveAttribute('aria-orientation', 'vertical');
   });
 });

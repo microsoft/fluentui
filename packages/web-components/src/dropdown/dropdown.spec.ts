@@ -46,6 +46,14 @@ test.describe('Dropdown', () => {
     await expect(element).toHaveCount(1);
   });
 
+  test('should have element identity', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveJSProperty('constructor.elementIdentity', 'dropdown');
+  });
+
   test('should render a dropdown with options', async ({ fastPage }) => {
     const { element } = fastPage;
     const options = element.locator(OptionTagName);
@@ -153,6 +161,24 @@ test.describe('Dropdown', () => {
     await button.press('a');
 
     await expect(listbox).toBeVisible();
+  });
+
+  test('should update the active option attribute during keyboard navigation', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const options = element.locator(OptionTagName);
+
+    await fastPage.setTemplate();
+
+    await element.click();
+    await element.press('ArrowDown');
+
+    await expect(options.nth(0)).toHaveAttribute('active');
+    await expect(options.nth(1)).not.toHaveAttribute('active');
+
+    await element.press('ArrowDown');
+
+    await expect(options.nth(0)).not.toHaveAttribute('active');
+    await expect(options.nth(1)).toHaveAttribute('active');
   });
 
   test('should not open the dropdown when a character is pressed with Meta, Alt, or Ctrl', async ({ fastPage }) => {

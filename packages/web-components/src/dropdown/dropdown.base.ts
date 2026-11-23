@@ -40,6 +40,14 @@ export class BaseDropdown extends FASTElement {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
+   * The element identity. This static property should NOT be overridden by subclasses. It’s designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'dropdown';
+
+  /**
    * The ID of the current active descendant.
    *
    * @public
@@ -73,7 +81,7 @@ export class BaseDropdown extends FASTElement {
       const optionIndex = this.matches(':has(:focus-visible)') ? next : -1;
 
       this.enabledOptions.forEach((option, index) => {
-        option.active = index === optionIndex;
+        option.toggleAttribute('active', index === optionIndex);
       });
 
       if (this.open) {
@@ -377,17 +385,6 @@ export class BaseDropdown extends FASTElement {
       this.insertControl();
     }
   }
-
-  /**
-   * The initial value of the control. When the control is a combobox, this value is used to set the value of the
-   * control when the dropdown is initialized.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `value`
-   */
-  @attr({ attribute: 'value' })
-  public valueAttribute: string = '';
 
   /**
    * The slot element for the control.

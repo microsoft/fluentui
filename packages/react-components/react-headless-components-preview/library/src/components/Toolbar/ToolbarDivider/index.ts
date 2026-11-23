@@ -1,4 +1,4 @@
 export { ToolbarDivider } from './ToolbarDivider';
 export { renderToolbarDivider } from './renderToolbarDivider';
 export { useToolbarDivider } from './useToolbarDivider';
-export type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider.types';
+export type { ToolbarDividerProps, ToolbarDividerSlots, ToolbarDividerState } from './ToolbarDivider.types';

@@ -2,6 +2,40 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.26.19",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:01 GMT",
+      "version": "9.26.19",
+      "tag": "@fluentui/react-tabster_v9.26.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "334954345c37e7d1a63afea77ef45e51a1042920",
+            "comment": "chore: Bump keyborg to 3.498.0 and tabster to 8.8.1."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.26.18",
       "comments": {

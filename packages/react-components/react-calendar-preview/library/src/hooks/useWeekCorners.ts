@@ -2,8 +2,7 @@
 
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { compareDatePart, getDateRange } from '../utils/index';
-import type { DayGridOptions } from '../utils';
-import type { DayInfo } from './useWeeks';
+import type { Day, DayGridOptions } from '../utils';
 
 /**
  * Which corners of a day cell sit on the outer edge of its range.
@@ -25,7 +24,7 @@ export interface WeekCorners {
 export function useWeekCorners(
   props: DayGridOptions,
 ): readonly [
-  (initialWeeks: DayInfo[][]) => WeekCorners,
+  (initialWeeks: Day[][]) => WeekCorners,
   (above: boolean, below: boolean, left: boolean, right: boolean) => DayCorners,
 ] {
   const { dir } = useFluent_unstable();
@@ -36,7 +35,7 @@ export function useWeekCorners(
    * If we just round all of the corners, there isn't a good overlap and we get gaps between contiguous day boxes
    * in Edge browser.
    */
-  const getWeekCorners = (initialWeeks: DayInfo[][]): WeekCorners => {
+  const getWeekCorners = (initialWeeks: Day[][]): WeekCorners => {
     const weekCorners: WeekCorners = {};
     /*
      * need to handle setting all of the corners on arbitrarily shaped blobs
@@ -57,8 +56,8 @@ export function useWeekCorners(
     const weeks = initialWeeks.slice(1, initialWeeks.length - 1);
 
     // if there's an item above, lose both top corners. Item below, lose both bottom corners, etc.
-    weeks.forEach((week: DayInfo[], weekIndex: number) => {
-      week.forEach((day: DayInfo, dayIndex: number) => {
+    weeks.forEach((week: Day[], weekIndex: number) => {
+      week.forEach((day: Day, dayIndex: number) => {
         const above =
           weeks[weekIndex - 1] &&
           weeks[weekIndex - 1][dayIndex] &&
@@ -92,7 +91,7 @@ export function useWeekCorners(
     };
   };
 
-  const isInSameHoverRange = (day1: DayInfo, day2: DayInfo): boolean => {
+  const isInSameHoverRange = (day1: Day, day2: Day): boolean => {
     const { originalDate: date1, isSelected: date1Selected } = day1;
     const { originalDate: date2, isSelected: date2Selected } = day2;
     if (!date1 || !date2) {

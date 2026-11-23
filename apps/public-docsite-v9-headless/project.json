@@ -9,12 +9,19 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "react-storybook-addon-playground",
+            "storybook-llms-extractor"
+          ],
           "target": "build"
         }
       ]
@@ -22,13 +29,20 @@
     "build-storybook:docsite": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "projects": [
+            "react-headless-components-preview",
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "react-storybook-addon-playground",
+            "storybook-llms-extractor"
+          ],
           "target": "build"
         }
       ],
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ]

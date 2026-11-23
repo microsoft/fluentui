@@ -19,5 +19,7 @@ describe('return valid icon name', () => {
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
     expect(FileIconType.fabricOntology).toBe(31);
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.fabricOntology)).toBe('fabricontology');
+    expect(FileIconType.wikiPage).toBe(32);
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.wikiPage)).toBe('wikipage');
   });
 });

@@ -24,17 +24,23 @@
   }
 }
 
-// Nav is hidden off screen by default
 .siteNavScrollWrapper {
-  -webkit-overflow-scrolling: touch; // Improves scrolling performance
-  width: $Nav-width-sm;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  padding: $contentPadding-sm;
 }
 
-@supports (position: sticky) {
-  .siteNavScrollWrapper {
-    position: sticky;
-    top: 0;
-    max-height: calc(100vh - #{$TopNav-height});
+.siteNavToggle {
+  &:not([hidden]) + div {
+    padding-top: $contentPadding-sm;
+  }
+
+  button {
+    max-width: 100%;
+    height: auto;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -77,14 +83,26 @@
   .siteWrapper:not(.fullWidth) .siteContent {
     @include contentPadding($App-padding-sm, 50px);
   }
-
-  .siteNavScrollWrapper {
-    display: none;
-  }
 }
 
 // Show the nav at all times, to the left of the content
 @media screen and (min-width: $uhf-screen-min-mobile) {
+  .siteNavScrollWrapper {
+    -webkit-overflow-scrolling: touch;
+    width: $Nav-width-sm;
+    align-self: flex-start;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  @supports (position: sticky) {
+    .siteNavScrollWrapper {
+      position: sticky;
+      top: 0;
+      max-height: calc(100vh - #{$TopNav-height});
+    }
+  }
+
   .siteWrapper {
     max-width: $App-maximumWidth-lg;
     flex-direction: row;

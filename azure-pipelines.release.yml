@@ -122,7 +122,7 @@ extends:
                     # failure doesn't need to block anything else
                     - script: |
                         node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --apply --debug
-                      condition: not(${{ parameters.dryRun }})
+                      condition: and(succeeded(), not(${{ parameters.dryRun }}))
                       displayName: 'Update github release notes'
                       env:
                         TOKEN: $(createToken.GITHUB_APP_TOKEN)

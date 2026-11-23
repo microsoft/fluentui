@@ -54,6 +54,27 @@ describe('removeAnchorLink', () => {
     );
   });
 
+  it.each([
+    ['#/styles/web/icons%23available-icons', '#/styles/web/icons'],
+    [
+      'https://developer.microsoft.com/en-us/fluentui#/styles/web/icons%23available-icons',
+      'https://developer.microsoft.com/en-us/fluentui#/styles/web/icons',
+    ],
+    ['#/styles/web/icons%23available-icons?min=1', '#/styles/web/icons'],
+    ['https://example.com/?min=1#/styles/web/icons%23available-icons', 'https://example.com/?min=1#/styles/web/icons'],
+  ])('removes the encoded anchor from %s', (url, expected) => {
+    expect(removeAnchorLink(url)).toBe(expected);
+  });
+
+  it.each([
+    'https://example.com/icons%23available-icons',
+    '#/styles/web/icons?next=%23available-icons',
+    '#/styles/web/icons%2523available-icons',
+    '#/styles/web/icons%20and%2Fsymbols%ZZ',
+  ])('preserves encoded URL data: %s', url => {
+    expect(removeAnchorLink(url)).toBe(url);
+  });
+
   it('removes query string after hash', () => {
     // This is mainly intended to document the current behavior. If the function is updated to preserve
     // the query string, various places that depend on it removing the query string must be updated.

@@ -27,6 +27,35 @@ describe('CalendarMonth', () => {
     expect(() => render(<CalendarMonth {...defaultProps} />)).not.toThrow();
   });
 
+  it.each([null, undefined])('preserves navigation children=%s', children => {
+    const { container } = render(
+      <CalendarMonth {...defaultProps} previousYearButton={{ children }} nextYearButton={{ children }} />,
+    );
+    const buttons = Array.from(container.querySelectorAll('button[title]'));
+    expect(buttons).toHaveLength(2);
+    for (const button of buttons) {
+      if (children === undefined) {
+        expect(button.querySelector('svg')).not.toBeNull();
+      } else {
+        expect(button).toBeEmptyDOMElement();
+      }
+    }
+  });
+
+  it.each([false, true])('forwards focus options with year picker open=%s', yearPickerOpen => {
+    const ref = React.createRef<CalendarMonthHandle>();
+    const { getByRole } = render(<CalendarMonth {...defaultProps} ref={ref} />);
+    if (yearPickerOpen) {
+      fireEvent.click(getByRole('button', { name: '2025, change year' }));
+    }
+    const cell = getByRole('gridcell', { name: yearPickerOpen ? '2025' : 'January' });
+    const focus = jest.spyOn(cell, 'focus');
+    ref.current!.focus({ preventScroll: true });
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(cell).toHaveFocus();
+    focus.mockRestore();
+  });
+
   it('preserves an explicitly empty selection when opening the year picker', () => {
     const { getByRole, getAllByRole } = render(<CalendarMonth {...defaultProps} selectedDate={null} />);
 

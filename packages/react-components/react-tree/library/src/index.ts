@@ -2,6 +2,7 @@ export {
   Tree,
   treeClassNames,
   useTree_unstable,
+  useTreeBase_unstable,
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
   renderTree_unstable,
@@ -11,6 +12,9 @@ export type {
   TreeSlots,
   TreeProps,
   TreeState,
+  TreeBaseSlots,
+  TreeBaseProps,
+  TreeBaseState,
   TreeContextValues,
   TreeOpenChangeData,
   TreeSelectionValue,
@@ -63,6 +67,7 @@ export {
   useTreeItem_unstable,
 } from './TreeItem';
 export type {
+  TreeItemContextValues,
   TreeItemProps,
   TreeItemState,
   TreeItemSlots,
@@ -80,10 +85,20 @@ export {
   TreeItemLayout,
   treeItemLayoutClassNames,
   renderTreeItemLayout_unstable,
+  useTreeItemLayoutBase_unstable,
   useTreeItemLayoutStyles_unstable,
   useTreeItemLayout_unstable,
 } from './TreeItemLayout';
-export type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout';
+export type {
+  TreeItemLayoutActionSlotProps,
+  TreeItemLayoutActionVisibilityChangeData,
+  TreeItemLayoutBaseProps,
+  TreeItemLayoutBaseSlots,
+  TreeItemLayoutBaseState,
+  TreeItemLayoutProps,
+  TreeItemLayoutSlots,
+  TreeItemLayoutState,
+} from './TreeItemLayout';
 
 export {
   TreeItemPersonaLayout,

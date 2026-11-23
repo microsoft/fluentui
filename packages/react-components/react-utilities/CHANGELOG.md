@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-utilities
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.27.0)
+
+Mon, 19 Oct 2026 16:49:00 GMT
+
+### Minor changes
+
+- feat: add getPercentInRange helper ([PR #36889](https://github.com/microsoft/fluentui/pull/36889) by vgenaev@gmail.com)
+
+### Patches
+
+- fix: handle special property names when filtering native props ([PR #36806](https://github.com/microsoft/fluentui/pull/36806) by paliprandi@microsoft.com)
 
 ## [9.26.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.7)
 

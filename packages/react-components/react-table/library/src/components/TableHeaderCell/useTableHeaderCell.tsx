@@ -6,7 +6,7 @@ import { useFocusWithin } from '@fluentui/react-tabster';
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { useARIAButtonProps } from '@fluentui/react-aria';
-import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
+import type { TableHeaderCellBaseState, TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
 const sortIcons = {
@@ -27,6 +27,29 @@ export const useTableHeaderCell_unstable = (
   props: TableHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableHeaderCellState => {
+  const baseState = useTableHeaderCellBase_unstable(props, useMergedRefs(ref, useFocusWithin()));
+
+  return {
+    ...baseState,
+    sortIcon: slot.optional(props.sortIcon, {
+      renderByDefault: !!props.sortDirection,
+      defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
+      elementType: 'span',
+    }),
+  };
+};
+
+/**
+ * Base state hook for TableHeaderCell, free of focus runtime. The sort icon is only rendered
+ * when the consumer provides one.
+ *
+ * @param props - props from this instance of TableHeaderCell
+ * @param ref - reference to root HTMLElement of TableHeaderCell
+ */
+export const useTableHeaderCellBase_unstable = (
+  props: TableHeaderCellProps,
+  ref: React.Ref<HTMLElement>,
+): TableHeaderCellBaseState => {
   const { noNativeElements, sortable: contextSortable } = useTableContext();
   const { sortable = contextSortable } = props;
 
@@ -53,7 +76,7 @@ export const useTableHeaderCell_unstable = (
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, useFocusWithin()) as React.Ref<HTMLDivElement>,
+        ref: ref as React.Ref<HTMLDivElement>,
         role: rootComponent === 'div' ? 'columnheader' : undefined,
         'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
         ...props,
@@ -61,13 +84,10 @@ export const useTableHeaderCell_unstable = (
       { elementType: rootComponent },
     ),
     aside: slot.optional(props.aside, { elementType: 'span' }),
-    sortIcon: slot.optional(props.sortIcon, {
-      renderByDefault: !!props.sortDirection,
-      defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
-      elementType: 'span',
-    }),
+    sortIcon: slot.optional(props.sortIcon, { elementType: 'span' }),
     button: sortable ? ariaButtonProps : buttonSlot,
     sortable,
+    sortDirection: props.sortDirection,
     noNativeElements,
   };
 };

@@ -15,6 +15,8 @@ import { renderRatingDisplay_unstable as renderRatingDisplay } from '@fluentui/r
 // @public
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
 
+export { RatingDisplayContextValues }
+
 export { RatingDisplayProps }
 
 export { RatingDisplaySlots }

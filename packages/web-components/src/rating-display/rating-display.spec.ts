@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module';
 import { expect, test } from '../../test/playwright/index.js';
-import type { RatingDisplay } from './rating-display.js';
-import { RatingDisplaySize, tagName } from './rating-display.options.js';
+import { tagName } from './rating-display.options.js';
 
 // Note: We need to use `createRequire` to import from `@fluentui/tokens` since it is a CommonJS module
 const require = createRequire(import.meta.url);
@@ -44,9 +43,6 @@ test.describe('Rating Display', () => {
       await expect(element).not.toHaveAttribute(attribute);
     }
     await expect(element.locator('.count-label')).toBeHidden();
-
-    await expect(element).toHaveJSProperty('color', undefined);
-    await expect(element).toHaveJSProperty('size', undefined);
   });
 
   test('should set the correct accessibility attributes', async ({ fastPage }) => {
@@ -78,7 +74,6 @@ test.describe('Rating Display', () => {
   test('should use the right icon color based on the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate({ attributes: { value: '4' } });
-    await expect(element).toHaveJSProperty('color', undefined);
 
     expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
       webLightTheme.colorPaletteMarigoldBorderActive,
@@ -88,11 +83,10 @@ test.describe('Rating Display', () => {
       webLightTheme.colorPaletteMarigoldBackground2,
     );
 
-    await element.evaluate((node: RatingDisplay) => {
-      node.color = 'brand';
+    await element.evaluate(node => {
+      node.setAttribute('color', 'brand');
     });
 
-    await expect(element).toHaveJSProperty('color', 'brand');
     await expect(element).toHaveAttribute('color', 'brand');
     expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
       webLightTheme.colorBrandForeground1,
@@ -102,11 +96,10 @@ test.describe('Rating Display', () => {
       webLightTheme.colorBrandBackground2,
     );
 
-    await element.evaluate((node: RatingDisplay) => {
-      node.color = 'neutral';
+    await element.evaluate(node => {
+      node.setAttribute('color', 'neutral');
     });
 
-    await expect(element).toHaveJSProperty('color', 'neutral');
     await expect(element).toHaveAttribute('color', 'neutral');
     expect(await element.evaluate(el => getComputedStyle(el).getPropertyValue('--_icon-color-value'))).toContain(
       webLightTheme.colorNeutralForeground1,
@@ -149,8 +142,6 @@ test.describe('Rating Display', () => {
 
     await fastPage.setTemplate({ attributes: { value: '1.3' } });
 
-    await expect(element).toHaveJSProperty('size', undefined);
-
     await expect(element).toHaveCSS('--_icon-size', '16px');
     await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '16px');
@@ -158,13 +149,12 @@ test.describe('Rating Display', () => {
     await expect(value).toHaveCSS('line-height', '16px');
     await expect(value).toHaveCSS('margin-inline-start', '4px');
 
-    await element.evaluate((node: RatingDisplay) => {
-      node.size = 'small';
+    await element.evaluate(node => {
+      node.setAttribute('size', 'small');
     });
 
     await expect(element).toHaveAttribute('size', 'small');
 
-    await expect(element).toHaveJSProperty('size', RatingDisplaySize.small);
     await expect(element).toHaveCSS('--_icon-size', '12px');
     await expect(display).toHaveCSS('inline-size', `${5 * (12 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '12px');
@@ -172,13 +162,12 @@ test.describe('Rating Display', () => {
     await expect(value).toHaveCSS('line-height', '16px');
     await expect(value).toHaveCSS('margin-inline-start', '2px');
 
-    await element.evaluate((node: RatingDisplay) => {
-      node.size = 'large';
+    await element.evaluate(node => {
+      node.setAttribute('size', 'large');
     });
 
     await expect(element).toHaveAttribute('size', 'large');
 
-    await expect(element).toHaveJSProperty('size', RatingDisplaySize.large);
     await expect(element).toHaveCSS('--_icon-size', '20px');
     await expect(display).toHaveCSS('inline-size', `${5 * (20 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '20px');
