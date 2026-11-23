@@ -18,7 +18,7 @@ export type SwitchState = SwitchBaseState & {
     'data-disabled-focusable'?: string;
 
     /**
-     * Data attribute set when the switch is checked (controlled mode only).
+     * Data attribute set when the switch is checked (controlled or uncontrolled).
      */
     'data-checked'?: string;
 

@@ -486,4 +486,40 @@ describe('Toast (headless)', () => {
     cy.get(TOAST_CONTAINER).should('not.exist');
     cy.get('#make').should('be.focused');
   });
+
+  it('should keep toasts on an Escape that toast content already handled', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+            {/* Handles Escape without stopping it, like a nested popover or combobox. */}
+            <input
+              className="handles-escape"
+              aria-label="Handles Escape"
+              onKeyDown={e => e.key === 'Escape' && e.preventDefault()}
+            />
+          </Toast>,
+          { timeout: -1 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().click();
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
+    cy.get('.handles-escape').first().focus();
+    cy.realPress('Escape');
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
+  });
 });

@@ -22,7 +22,7 @@ export const renderDropdown = (state: DropdownState, contextValues: DropdownCont
             {state.expandIcon && <state.expandIcon />}
           </state.button>
           {state.clearButton && <state.clearButton />}
-          {state.open && state.listbox && <state.listbox />}
+          {state.shouldRenderListbox && state.listbox && <state.listbox />}
         </ListboxProvider>
       </ActiveDescendantContextProvider>
     </state.root>
