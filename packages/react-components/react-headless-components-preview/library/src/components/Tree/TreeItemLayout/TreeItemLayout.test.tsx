@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import type { SelectionMode } from '@fluentui/react-utilities';
 import { isConformant } from '../../../testing/isConformant';
 import { Tree } from '../Tree';
 import type { TreeNavigationMode } from '../Tree.types';
 import { TreeItem } from '../TreeItem/TreeItem';
 import { TreeItemLayout } from './TreeItemLayout';
+import { useTreeItemLayout } from './useTreeItemLayout';
 
 const renderInTree = (
   layout: React.ReactElement,
@@ -71,11 +73,50 @@ describe('TreeItemLayout', () => {
   });
 
   describe('selector', () => {
+    it('resolves disabled to false outside an item provider', () => {
+      const { result } = renderHook(() => useTreeItemLayout({}, React.useRef<HTMLElement>(null)));
+
+      expect(result.current.disabled).toBe(false);
+      expect(result.current.root['data-disabled']).toBeUndefined();
+    });
+
     it('is not rendered without selection', () => {
       renderInTree(<TreeItemLayout>Item</TreeItemLayout>);
 
       expect(screen.queryByRole('checkbox')).toBeNull();
       expect(screen.queryByRole('radio')).toBeNull();
+    });
+
+    it.each([undefined, 'single', 'multiselect'] as const)(
+      'exposes resolved layout selection mode %s',
+      selectionMode => {
+        renderInTree(
+          <TreeItemLayout {...{ 'data-selection-mode': 'incorrect', 'data-disabled': '' }}>Item</TreeItemLayout>,
+          {
+            selectionMode,
+          },
+        );
+
+        const layout = screen.getByText('Item').parentElement!;
+        if (selectionMode) {
+          expect(layout).toHaveAttribute('data-selection-mode', selectionMode);
+        } else {
+          expect(layout).not.toHaveAttribute('data-selection-mode');
+        }
+        expect(layout).not.toHaveAttribute('data-disabled');
+      },
+    );
+
+    it('does not allow a selector override to re-enable a disabled item', () => {
+      render(
+        <Tree aria-label="Tree" selectionMode="single">
+          <TreeItem disabled itemType="leaf">
+            <TreeItemLayout selector={{ disabled: false }}>Item</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+      expect(screen.getByRole('radio')).toBeDisabled();
+      expect(screen.getByText('Item').parentElement).toHaveAttribute('data-disabled', '');
     });
 
     it.each([

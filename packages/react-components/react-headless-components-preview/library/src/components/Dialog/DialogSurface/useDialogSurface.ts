@@ -2,13 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import {
-  getIntrinsicElementProps,
-  slot,
-  useMergedRefs,
-  useEventCallback,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { slot, useMergedRefs, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
@@ -122,7 +116,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     modalType,
     shouldRender,
     root: slot.always(
-      getIntrinsicElementProps('dialog', {
+      {
         role: modalType === 'alert' ? 'alertdialog' : undefined,
         'aria-modal': modalType !== 'non-modal' ? true : undefined,
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleId || undefined,
@@ -134,7 +128,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         popover: modalType === 'non-modal' ? ('manual' as const) : undefined,
         'data-open': toDataAttributeValue(open),
         'data-modal-type': modalType,
-      }),
+      },
       { elementType: 'dialog' },
     ),
   };

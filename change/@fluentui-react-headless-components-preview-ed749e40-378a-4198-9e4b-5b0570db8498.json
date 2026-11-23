@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: support inherited disabled state in TreeItem",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}

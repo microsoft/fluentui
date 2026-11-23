@@ -37,4 +37,16 @@ describe('Input', () => {
 
     expect(root).toHaveAttribute('data-disabled');
   });
+
+  it('renders with data-readonly when read-only', () => {
+    const { container } = render(<Input readOnly />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-readonly');
+  });
+
+  it('does not render data-readonly by default', () => {
+    const { container } = render(<Input />);
+
+    expect(container.firstElementChild!).not.toHaveAttribute('data-readonly');
+  });
 });
