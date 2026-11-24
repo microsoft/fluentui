@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: apply user slot className after conditional styles",
+  "packageName": "@fluentui/react-menu",
+  "email": "vgenaev@gmail.com"
+}

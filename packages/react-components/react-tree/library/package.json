@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.9",
-    "@fluentui/react-aria": "^9.17.16",
     "@fluentui/react-avatar": "^9.11.10",
     "@fluentui/react-button": "^9.11.3",
     "@fluentui/react-checkbox": "^9.6.6",

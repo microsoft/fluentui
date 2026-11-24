@@ -16,5 +16,10 @@ export type InputState = InputBaseState & {
      * Data attribute set when the input is invalid.
      */
     'data-invalid'?: string;
+
+    /**
+     * Data attribute set when the input is read-only.
+     */
+    'data-readonly'?: string;
   };
 };

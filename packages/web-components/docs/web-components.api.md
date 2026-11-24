@@ -781,11 +781,15 @@ export class BaseRadioGroup extends FASTElement {
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // @internal
     protected disabledChanged(prev?: boolean, next?: boolean): void;
     // (undocumented)
     disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    static readonly elementIdentity = "radio-group";
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -1067,6 +1071,8 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
@@ -3446,6 +3452,8 @@ export class Radio extends BaseCheckbox {
     constructor();
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    static readonly elementIdentity = "radio";
     // @internal @override
     protected requiredChanged(): void;
     // @internal @override

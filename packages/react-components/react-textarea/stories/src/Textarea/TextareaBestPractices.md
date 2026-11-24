@@ -2,10 +2,16 @@
 
 ### Do
 
-- **Consider using `Textarea` with outline appearance.** When the contrast ratio against the immediate surrounding color is less than 3:1, consider using outline styles which has a bottom border stroke. But please ensure the color of bottom border stroke has a sufficient contrast which is greater than 3 to 1 against the immediate surrounding.
+- **Consider using `Textarea` with outline appearance.** This is the preferred appearance.
+- **Use identifying placeholder or value text.** Without another identifying visual cue, provide a descriptive placeholder when empty and value text when populated. Both must have at least **4.5:1** contrast against the textarea background and help users recognize the editable control.
+- **Follow Fluent surface guidance for filled appearances:** Place `filled-lighter` on `colorNeutralBackground3` and `filled-darker` on `colorNeutralBackground1`.
+- **Keep a persistent visible label and a sufficiently contrasting focus indicator.**
 - Prefer using `<Field>` instead of `<Label>` to handle accessibility automatically.
 - **When changing height related styles, apply them directly to the textarea slot like this: `<Textarea textarea={{ className: yourClassName }} />`.** This is needed due to the structure of the Textarea being a span wrapping the textarea native element and resizing based on the textarea element. It is also important to note that we add a default `maxHeight` so when typing text, a scrollbar will appear when the text becomes too long for the size of the Textarea. To remove this constraint, resetting the `maxHeight` prevents this issue as well as letting the textarea wrapper fully resize based on the textarea's size.
 
 ### Don't
 
-- **Don’t place `Textarea` on a surface which doesn't have a sufficient contrast.** The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.
+- **Don't leave a filled textarea without an identifying visual cue.** If text identifies the control instead of a contrasting boundary, provide a descriptive placeholder while empty and value text when populated.
+- **Don't treat a placeholder as a replacement for a label or persistent instructions.**
+
+The surface-token choices are Fluent design guidance, not WCAG requirements. See [WCAG 1.4.11 on boundaries](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html#boundaries) and [WCAG 1.4.3 on text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
