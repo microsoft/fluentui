@@ -5,6 +5,7 @@ import { slot } from '@fluentui/react-utilities';
 import { optionClassNames } from '@fluentui/react-combobox';
 
 import { useOption } from '../../Dropdown/Option';
+import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOption.types';
 
 /**
@@ -34,7 +35,14 @@ export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<H
     // Force role="option": useOption / useOptionBase_unstable may emit role="menuitemcheckbox" in
     // multiselect mode, but TagPickerList is a listbox whose items must be role="option".
     root: slot.always(
-      { ...optionState.root, role: 'option', 'aria-checked': props['aria-checked'] },
+      {
+        ...optionState.root,
+        role: 'option',
+        'aria-selected':
+          props['aria-selected'] ?? (props['aria-checked'] === undefined ? optionState.selected : undefined),
+        'aria-checked': props['aria-checked'],
+        'data-checked': toDataAttributeValue(props['aria-checked']),
+      },
       { elementType: 'div' },
     ),
   };
