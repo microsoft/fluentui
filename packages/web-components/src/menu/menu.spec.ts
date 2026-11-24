@@ -315,11 +315,12 @@ test.describe('Menu', () => {
 
     await expect(menuItems.first()).toBeFocused();
 
-    await element.press('ArrowRight');
+    await fastPage.page.keyboard.press('ArrowRight');
 
     await expect(submenuList).toBeVisible();
+    await expect(submenuList.locator(MenuItemTagName).first()).toBeFocused();
 
-    await element.press('ArrowLeft');
+    await fastPage.page.keyboard.press('ArrowLeft');
 
     await expect(submenuList).toBeHidden();
 

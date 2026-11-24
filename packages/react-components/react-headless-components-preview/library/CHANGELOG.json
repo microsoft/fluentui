@@ -2,6 +2,89 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:45:49 GMT",
+      "version": "0.5.0",
+      "tag": "@fluentui/react-headless-components-preview_v0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "ea6849737a2e1001c137ef3d0fcacfe26a9f8ac1",
+            "comment": "feat: align headless TimePicker with the Fluent TimePicker spec"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "010d9b34b34f4c3f3f205a75455551a40376b673",
+            "comment": "chore: expand bundle-size fixtures to all public subpaths"
+          },
+          {
+            "author": "43711362+paolo-aliprandi@users.noreply.github.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f401032885b6ef41fd18720ad3c1c2225c310387",
+            "comment": "fix: expose TagPicker multiselection and option selection to assistive technology while preserving consumer checked-only selection and exposing data-selected/data-checked styling attributes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "feab6ba63b55703d803f17092eab54c9dc82430b",
+            "comment": "fix: Switch data-checked follows uncontrolled state"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "74823d727f40fd26b90f474c23476760a6aa2e44",
+            "comment": "fix: expose missing disabled, invalid, readonly and required state attributes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "394c56181799d3ac9ecd747bc137c87603d0fe2f",
+            "comment": "chore: remove unused dependency on @fluentui/react-dialog"
+          },
+          {
+            "author": "43711362+paolo-aliprandi@users.noreply.github.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "41c06a31611d4a0f6cf7153d71898957e6c497e3",
+            "comment": "Keep TagPicker native popovers open after control clicks, preserve capture-phase gesture cancellation, and ignore disabled control gestures."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "92cf495705103d05a83d0477845fa0e02dabca80",
+            "comment": "refactor: drop getIntrinsicElementProps and explicitly destructure custom props so they are not forwarded to native elements"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "8522f09fa0ea1128e7020f494116ca457538646b",
+            "comment": "fix: keep Escape to the nested overlay, close only the Tooltip on Escape, also inside a Dialog, and keep overlays mounted while they animate out"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "ec3ece9d31d177ef2ec14eed37a4afe89ecdfe66",
+            "comment": "feat: add headless TimePicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "ed1f38bba782d38785a32c95ee65b706b565e63b",
+            "comment": "BREAKING: rewrite headless Calendar as a single component with one roving-focus grid engine; remove CalendarDay, CalendarMonth, CalendarYear and CalendarProvider, replace getCellProps/getRowProps/getWeekdayCellProps with render functions, and reduce Calendar and DatePicker bundle size"
+          },
+          {
+            "author": "43711362+paolo-aliprandi@users.noreply.github.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6ef29a0e75b7542e2eaae22891882b73f5a03734",
+            "comment": "feat: support inherited disabled state in TreeItem"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 16:38:08 GMT",
       "version": "0.4.1",
       "tag": "@fluentui/react-headless-components-preview_v0.4.1",
