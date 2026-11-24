@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: return the styled MenuItemRadio state from useMenuItemRadioStyles_unstable.",
+  "packageName": "@fluentui/react-menu",
+  "email": "paulmardling@microsoft.com"
+}

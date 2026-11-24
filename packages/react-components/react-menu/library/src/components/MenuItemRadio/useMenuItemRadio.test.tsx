@@ -2,6 +2,7 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuItemRadio_unstable } from './useMenuItemRadio';
+import { useMenuItemRadioStyles_unstable } from './useMenuItemRadioStyles.styles';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { MenuProvider } from '../../contexts/menuContext';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
@@ -58,6 +59,31 @@ function makeWrapper(
 }
 
 describe('useMenuItemRadio_unstable', () => {
+  it('returns the styled state while preserving user slot classes', () => {
+    const ref = React.createRef<ARIAButtonElement<'div'>>();
+    const { result } = renderHook(
+      () => {
+        const state = useMenuItemRadio_unstable(
+          {
+            name: 'radio',
+            value: '1',
+            className: 'custom-root',
+            icon: { className: 'custom-icon' },
+            checkmark: { className: 'custom-checkmark' },
+          },
+          ref,
+        );
+        return { state, styled: useMenuItemRadioStyles_unstable(state) };
+      },
+      { wrapper: makeWrapper() },
+    );
+
+    expect(result.current.styled).toBe(result.current.state);
+    expect(result.current.state.root.className).toContain('custom-root');
+    expect(result.current.state.icon?.className).toContain('custom-icon');
+    expect(result.current.state.checkmark?.className).toContain('custom-checkmark');
+  });
+
   describe('components and slots', () => {
     it('returns components shape with all MenuItem slots', () => {
       const ref = React.createRef<ARIAButtonElement<'div'>>();

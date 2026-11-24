@@ -28,6 +28,16 @@ const __internal = {
   plugins: shouldRegister ? { '@nx': nxPlugin } : {},
   // extend this object with your rule overrides
   overrides: {
+    reactComponentStyles: shouldRegister
+      ? {
+          files: ['**/packages/react-components/**/src/components/**/*.{ts,tsx}'],
+          ignores: ['**/*.{test,spec,cy,stories}.{ts,tsx}'],
+          /** @type {import('eslint').Linter.RulesRecord} */
+          rules: {
+            '@nx/workspace-style-hook-signature': 'error',
+          },
+        }
+      : {},
     react: shouldRegister
       ? {
           files: ['**/src/**/*.{ts,tsx}'],

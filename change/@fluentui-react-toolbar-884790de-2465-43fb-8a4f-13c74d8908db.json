@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: return the styled ToolbarButton state from useToolbarButtonStyles_unstable.",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "paulmardling@microsoft.com"
+}

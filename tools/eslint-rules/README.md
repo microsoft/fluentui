@@ -36,3 +36,25 @@ module.exports = [
 ```sh
 npx nx g @fluentui/workspace-plugin:eslint-rule
 ```
+
+## Component style-hook signatures
+
+The internal v9 React config enables `@nx/workspace-style-hook-signature` for exported
+`use<Component>Styles` and `use<Component>Styles_unstable` hooks in that component's
+`src/components/` directory, including nested components and export aliases.
+Every public call signature must accept required component state and return a
+bidirectionally assignable state type. TypeScript aliases and constrained,
+state-preserving generics are supported; `any`, `unknown`, `never` and `void` are not.
+Additional parameters are allowed.
+
+The state check uses the current `ComponentState` element-to-slot map (including
+rootless components). Slotless states must match the sibling
+`render<Component>_unstable` state parameter. The check must be updated when the
+deprecated `components` field is removed. Matching is structural, not nominal,
+and does not prove that the hook returns the same runtime object. The rule requires
+TypeScript parser services and does not rewrite hook bodies.
+
+Griffel `makeStyles`/`makeResetStyles` hooks, shared helpers, provider custom-style
+callbacks, tests, stories and v8 are outside this contract. The six calendar-compat
+`useCalendar{,Day,DayGrid,Month,Picker,Year}Styles_unstable` hooks are explicitly
+excluded because they generate class maps from style props, not component state.

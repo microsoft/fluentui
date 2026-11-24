@@ -125,4 +125,5 @@ module.exports = defineConfig(
     },
   },
   __internal.overrides.react,
+  __internal.overrides.reactComponentStyles,
 );
