@@ -198,7 +198,7 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e test-webkit --nxBail --parallel 1
+        run: yarn nx affected -t e2e --nxBail --parallel 1
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
