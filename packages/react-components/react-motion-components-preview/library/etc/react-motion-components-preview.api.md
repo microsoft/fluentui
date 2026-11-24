@@ -5,12 +5,13 @@
 ```ts
 
 import type { AtomMotion } from '@fluentui/react-motion';
+import { BasePresenceParams } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceComponentProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 
 // @public
-export const Blur: PresenceComponent<BlurParams, never, never>;
+export const Blur: PresenceComponent<BlurParams, "exitDuration" | "exitEasing" | "exitDelay" | "inRadius" | "toRadius", "fromRadius" | "inRadius">;
 
 // @public
 const blur_2: ({ from, to, duration, easing, delay, }: BlurOptions) => AtomMotion;
@@ -42,18 +43,19 @@ export type BlurOutOptions = MotionTiming & {
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
-    outRadius?: string;
-    inRadius?: string;
+    fromRadius?: BlurPose;
+    inRadius?: BlurPose;
+    toRadius?: BlurPose;
 };
 
 // @public
 export type BlurPose = string;
 
 // @public
-export const Collapse: PresenceComponent<CollapseParams, never, never>;
+export const Collapse: PresenceComponent<CollapseParams, "exitDuration" | "exitEasing" | "exitDelay" | "toSize", "fromSize">;
 
 // @public
-export const CollapseDelayed: PresenceComponent<CollapseParams, never, never>;
+export const CollapseDelayed: PresenceComponent<CollapseParams, "exitDuration" | "exitEasing" | "exitDelay" | "toSize", "fromSize">;
 
 // @public
 export type CollapseDurations = {
@@ -66,19 +68,20 @@ export type CollapseDurations = {
 // @public (undocumented)
 export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurations & {
     orientation?: CollapseOrientation;
-    outSize?: string;
+    fromSize?: string;
+    toSize?: string;
     staggerDelay?: number;
     exitStaggerDelay?: number;
 };
 
 // @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseParams, never, never>;
+export const CollapseRelaxed: PresenceComponent<CollapseParams, "exitDuration" | "exitEasing" | "exitDelay" | "toSize", "fromSize">;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseParams, never, never>;
+export const CollapseSnappy: PresenceComponent<CollapseParams, "exitDuration" | "exitEasing" | "exitDelay" | "toSize", "fromSize">;
 
 // @public
-export const Fade: PresenceComponent<FadeParams, never, never>;
+export const Fade: PresenceComponent<FadeParams, "exitDuration" | "exitEasing" | "exitDelay" | "inOpacity" | "toOpacity", "fromOpacity" | "inOpacity">;
 
 // @public
 export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => AtomMotion;
@@ -109,18 +112,19 @@ export type FadeOutOptions = MotionTiming & {
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
-    outOpacity?: number;
-    inOpacity?: number;
+    fromOpacity?: FadePose;
+    inOpacity?: FadePose;
+    toOpacity?: FadePose;
 };
 
 // @public
 export type FadePose = number;
 
-// @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeParams, never, never>;
+// @public
+export const FadeRelaxed: PresenceComponent<FadeParams, "exitDuration" | "exitEasing" | "exitDelay" | "inOpacity" | "toOpacity", "fromOpacity" | "inOpacity">;
 
-// @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeParams, never, never>;
+// @public
+export const FadeSnappy: PresenceComponent<FadeParams, "exitDuration" | "exitEasing" | "exitDelay" | "inOpacity" | "toOpacity", "fromOpacity" | "inOpacity">;
 
 // @public
 export type MotionTiming = {
@@ -129,8 +133,8 @@ export type MotionTiming = {
     delay?: EffectTiming['delay'];
 };
 
-// @public (undocumented)
-export const Rotate: PresenceComponent<RotateParams, never, never>;
+// @public
+export const Rotate: PresenceComponent<RotateParams, "exitDuration" | "exitEasing" | "exitDelay" | "inAngle" | "toAngle", "fromAngle" | "inAngle">;
 
 // @public
 export const rotate: ({ from, to, axis, duration, easing, delay, }: RotateOptions) => AtomMotion;
@@ -167,16 +171,17 @@ export type RotateOutOptions = MotionTiming & {
 
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
-    axis?: Axis3D;
-    outAngle?: number;
-    inAngle?: number;
+    axis?: RotateAxis;
+    fromAngle?: RotatePose;
+    inAngle?: RotatePose;
+    toAngle?: RotatePose;
 };
 
 // @public
 export type RotatePose = number;
 
 // @public
-export const Scale: PresenceComponent<ScaleParams, never, never>;
+export const Scale: PresenceComponent<ScaleParams, "exitDuration" | "exitEasing" | "exitDelay" | "inScale" | "toScale", "fromScale" | "inScale">;
 
 // @public
 export const scale: ({ from, to, duration, easing, delay, }: ScaleOptions) => AtomMotion;
@@ -207,21 +212,22 @@ export type ScaleOutOptions = MotionTiming & {
 
 // @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
-    outScale?: number;
-    inScale?: number;
+    fromScale?: ScalePose;
+    inScale?: ScalePose;
+    toScale?: ScalePose;
 };
 
 // @public
 export type ScalePose = number;
 
-// @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleParams, never, never>;
-
-// @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleParams, never, never>;
+// @public
+export const ScaleRelaxed: PresenceComponent<ScaleParams, "exitDuration" | "exitEasing" | "exitDelay" | "inScale" | "toScale", "fromScale" | "inScale">;
 
 // @public
-export const Slide: PresenceComponent<SlideParams, never, never>;
+export const ScaleSnappy: PresenceComponent<ScaleParams, "exitDuration" | "exitEasing" | "exitDelay" | "inScale" | "toScale", "fromScale" | "inScale">;
+
+// @public
+export const Slide: PresenceComponent<SlideParams, "exitDuration" | "exitEasing" | "exitDelay" | "inX" | "inY" | "toX" | "toY", "fromX" | "fromY" | "inX" | "inY">;
 
 // @public
 export const slide: ({ from, to, duration, easing, delay, }: SlideOptions) => AtomMotion;
@@ -252,10 +258,12 @@ export type SlideOutOptions = MotionTiming & {
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {
-    outX?: string;
-    outY?: string;
+    fromX?: string;
+    fromY?: string;
     inX?: string;
     inY?: string;
+    toX?: string;
+    toY?: string;
 };
 
 // @public
@@ -267,11 +275,11 @@ export type SlidePose = {
     y: string;
 };
 
-// @public (undocumented)
-export const SlideRelaxed: PresenceComponent<SlideParams, never, never>;
+// @public
+export const SlideRelaxed: PresenceComponent<SlideParams, "exitDuration" | "exitEasing" | "exitDelay" | "inX" | "inY" | "toX" | "toY", "fromX" | "fromY" | "inX" | "inY">;
 
-// @public (undocumented)
-export const SlideSnappy: PresenceComponent<SlideParams, never, never>;
+// @public
+export const SlideSnappy: PresenceComponent<SlideParams, "exitDuration" | "exitEasing" | "exitDelay" | "inX" | "inY" | "toX" | "toY", "fromX" | "fromY" | "inX" | "inY">;
 
 // @public
 export const Stagger: React_2.FC<StaggerProps> & {

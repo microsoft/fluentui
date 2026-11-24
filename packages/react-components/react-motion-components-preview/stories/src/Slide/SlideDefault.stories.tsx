@@ -53,7 +53,7 @@ export const Default = (): JSXElement => {
         </Field>
       </div>
 
-      <Slide visible={visible} outY="20px">
+      <Slide visible={visible} fromY="20px">
         <Card className={classes.card}>
           <CardHeader
             header={

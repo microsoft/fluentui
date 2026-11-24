@@ -109,7 +109,7 @@ export const DirectParams = (): JSXElement => {
         <Field label={`Duration: ${duration}ms (shared)`}>
           <Slider min={100} max={2000} step={50} value={duration} onChange={(_, data) => setDuration(data.value)} />
         </Field>
-        <Field label={`Dialog outScale: ${outScale.toFixed(2)}`}>
+        <Field label={`Dialog fromScale: ${outScale.toFixed(2)}`}>
           <Slider min={0} max={1} step={0.05} value={outScale} onChange={(_, data) => setOutScale(data.value)} />
         </Field>
       </div>
@@ -124,7 +124,7 @@ export const DirectParams = (): JSXElement => {
             <Dialog
               surfaceMotion={{
                 duration,
-                outScale,
+                fromScale: outScale,
               }}
             >
               <DialogTrigger disableButtonEnhancement>
@@ -134,7 +134,7 @@ export const DirectParams = (): JSXElement => {
                 <DialogBody>
                   <DialogTitle>Direct param override</DialogTitle>
                   <DialogContent>
-                    The <code>duration</code> and <code>outScale</code> props are passed directly on the{' '}
+                    The <code>duration</code> and <code>fromScale</code> props are passed directly on the{' '}
                     <code>surfaceMotion</code> slot object.
                   </DialogContent>
                   <DialogActions>
@@ -149,7 +149,7 @@ export const DirectParams = (): JSXElement => {
               {`<Dialog
   surfaceMotion={{
     duration: ${duration},
-    outScale: ${outScale.toFixed(2)},
+    fromScale: ${outScale.toFixed(2)},
   }}
 >`}
             </div>
@@ -160,7 +160,7 @@ export const DirectParams = (): JSXElement => {
             <Dialog
               surfaceMotion={{
                 children: (Motion, props) => (
-                  <Motion {...props} duration={duration} outScale={outScale}>
+                  <Motion {...props} duration={duration} fromScale={outScale}>
                     {props.children}
                   </Motion>
                 ),
@@ -191,7 +191,7 @@ export const DirectParams = (): JSXElement => {
       <Motion
         {...props}
         duration={${duration}}
-        outScale={${outScale.toFixed(2)}}
+        fromScale={${outScale.toFixed(2)}}
       >
         {props.children}
       </Motion>

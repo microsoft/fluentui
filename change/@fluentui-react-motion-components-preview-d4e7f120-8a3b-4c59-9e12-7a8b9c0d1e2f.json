@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motion-components-preview): migrate presence components to temporal from/in/to props with Prism-strict .In/.Out endpoints and add spec/ADR",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

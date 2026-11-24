@@ -24,7 +24,7 @@ import * as React from 'react';
 
 import description from './PresenceMotionSlotCustomize.stories.md';
 
-// A params-typed fade slot: consumers can pass `{ duration, easing, outOpacity, ... }`
+// A params-typed fade slot: consumers can pass `{ duration, easing, fromOpacity, ... }`
 // directly on `surfaceMotion`.
 type InfoPanelSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -160,13 +160,13 @@ export const PresenceMotionSlotCustomize = (): JSXElement => {
 
       <div className={classes.card}>
         {/* Tune the default fade by passing params directly on the slot */}
-        <InfoPanel open={open} surfaceMotion={{ duration: 1000, outOpacity: 0.2 }}>
+        <InfoPanel open={open} surfaceMotion={{ duration: 1000, fromOpacity: 0.2 }}>
           <div className={classes.panel}>Slow fade with residual opacity</div>
         </InfoPanel>
         <span className={classes.label}>
           Direct params
           <br />
-          <code>{'{ duration: 1000, outOpacity: 0.2 }'}</code>
+          <code>{'{ duration: 1000, fromOpacity: 0.2 }'}</code>
         </span>
       </div>
 

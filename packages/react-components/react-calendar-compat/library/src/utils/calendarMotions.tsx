@@ -64,7 +64,7 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
   const directionKey = animateBackwards ? 'back' : 'fwd';
 
   return (
-    <Slide.In key={directionKey} duration={duration} easing={easing} outX={outX} outY={outY} replayKey={replayKey}>
+    <Slide.In key={directionKey} duration={duration} easing={easing} fromX={outX} fromY={outY} replayKey={replayKey}>
       {childWithRef}
     </Slide.In>
   );

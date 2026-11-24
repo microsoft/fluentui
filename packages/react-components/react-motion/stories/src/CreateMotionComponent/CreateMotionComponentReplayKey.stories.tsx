@@ -71,12 +71,12 @@ export const CreateMotionComponentReplayKey = (): JSXElement => {
       </Text>
 
       <Card className={classes.card} style={{ gridArea: 'cardBefore' }}>
-        <Scale.In duration={2000} outScale={1.5} animateOpacity={false}>
+        <Scale.In duration={2000} fromScale={1.5} animateOpacity={false}>
           <span className={classes.counter}>{count}</span>
         </Scale.In>
       </Card>
       <Card className={classes.card} style={{ gridArea: 'cardAfter' }}>
-        <Scale.In duration={2000} outScale={1.5} animateOpacity={false} replayKey={count}>
+        <Scale.In duration={2000} fromScale={1.5} animateOpacity={false} replayKey={count}>
           <span className={classes.counter}>{count}</span>
         </Scale.In>
       </Card>

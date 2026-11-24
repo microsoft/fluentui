@@ -98,8 +98,8 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
       key={directionKey}
       duration={duration}
       easing={easing}
-      outX={outX}
-      outY={outY}
+      fromX={outX}
+      fromY={outY}
       replayKey={replayKey}
       {...motionProps}
     >
@@ -118,10 +118,10 @@ DirectionalSlideIn.displayName = 'DirectionalSlideIn';
  * consistent with the rest of the motion system; there is no size animation, because the row is
  * overlaid out of flow and hidden via opacity (not by collapsing its box).
  */
-const TransitionRowSlideOut = createMotionComponent(({ toY }: { toY: string }) => {
+const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => {
   const duration = motionTokens.durationSlower;
   const easing = motionTokens.curveDecelerateMax;
-  return [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { y: toY } })];
+  return [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { y: outY } })];
 });
 
 export type DirectionalSlideOutProps = MotionComponentProps & {
@@ -171,10 +171,10 @@ export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlid
   }
 
   // First (top) row slides up and out; last (bottom) row slides down and out.
-  const toY = edge === 'first' ? `calc(-1 * ${SLIDE_DISTANCE})` : SLIDE_DISTANCE;
+  const outY = edge === 'first' ? `calc(-1 * ${SLIDE_DISTANCE})` : SLIDE_DISTANCE;
 
   return (
-    <TransitionRowSlideOut toY={toY} replayKey={replayKey} {...motionProps}>
+    <TransitionRowSlideOut outY={outY} replayKey={replayKey} {...motionProps}>
       {childWithRef}
     </TransitionRowSlideOut>
   );

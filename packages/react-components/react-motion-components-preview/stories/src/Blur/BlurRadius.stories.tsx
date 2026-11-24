@@ -45,12 +45,10 @@ const useClasses = makeStyles({
 });
 
 const blurRadiusCombinations = [
-  // Top row: outRadius 5px, inRadius 0px (default)
-  { outRadius: '5px', inRadius: '0px' },
-  { outRadius: '10px', inRadius: '0px' },
-  // Bottom row: outRadius 20px, with inRadius values
-  { outRadius: '10px', inRadius: '1px' },
-  { outRadius: '10px', inRadius: '2px' },
+  { fromRadius: '5px', inRadius: '0px' },
+  { fromRadius: '10px', inRadius: '0px' },
+  { fromRadius: '10px', inRadius: '1px' },
+  { fromRadius: '10px', inRadius: '2px' },
 ];
 
 export const Radius = (): JSXElement => {
@@ -75,14 +73,14 @@ export const Radius = (): JSXElement => {
               <Table size="small" noNativeElements aria-label="Blur radius values">
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell>outRadius</TableHeaderCell>
+                    <TableHeaderCell>fromRadius</TableHeaderCell>
                     <TableHeaderCell>inRadius</TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className={isVisible ? classes.cellNormal : classes.cellBold}>
-                      {option.outRadius}
+                      {option.fromRadius}
                     </TableCell>
                     <TableCell className={isVisible ? classes.cellBold : classes.cellNormal}>
                       {option.inRadius}
@@ -90,7 +88,12 @@ export const Radius = (): JSXElement => {
                   </TableRow>
                 </TableBody>
               </Table>
-              <Blur visible={isVisible} outRadius={option.outRadius} inRadius={option.inRadius} animateOpacity={false}>
+              <Blur
+                visible={isVisible}
+                fromRadius={option.fromRadius}
+                inRadius={option.inRadius}
+                animateOpacity={false}
+              >
                 <div>Lorem ipsum dolor sit amet</div>
               </Blur>
               <CardFooter>

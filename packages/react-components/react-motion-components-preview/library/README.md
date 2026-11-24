@@ -45,7 +45,7 @@ function Tooltip({ visible, children }) {
 // Slide from the right
 function Drawer({ open, children }) {
   return (
-    <Slide visible={open} outX="20px">
+    <Slide visible={open} fromX="20px">
       {children}
     </Slide>
   );
@@ -60,16 +60,18 @@ import { FadeSnappy, ScaleRelaxed } from '@fluentui/react-motion-components-prev
 
 ### The `.In` and `.Out` Pattern
 
-Every presence component includes one-way sub-components:
+Every presence component includes one-way sub-components with directional prop contracts:
+`.In` accepts `from*` pose props and enter timing (omitting `in*`, `to*`, and `exit*` timing),
+and `.Out` accepts `to*` pose props and ordinary or `exit*` timing (omitting `in*` and `from*`).
 
 ```tsx
-// One-way enter animation (plays on mount)
-<Fade.In>
+// One-way enter animation (plays on mount from fromOpacity to 1)
+<Fade.In fromOpacity={0}>
   <div>Fades in once</div>
 </Fade.In>
 
-// One-way exit animation (plays on mount)
-<Fade.Out>
+// One-way exit animation (plays on mount from 1 to toOpacity)
+<Fade.Out toOpacity={0}>
   <div>Fades out once</div>
 </Fade.Out>
 ```

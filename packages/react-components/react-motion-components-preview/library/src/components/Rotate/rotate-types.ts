@@ -1,6 +1,5 @@
 import type { BasePresenceParams, AnimateOpacity } from '../../types';
-
-type Axis3D = 'x' | 'y' | 'z';
+import type { RotateAxis, RotatePose } from '../../atoms/rotate-atom';
 
 export type RotateParams = BasePresenceParams &
   AnimateOpacity & {
@@ -8,17 +7,14 @@ export type RotateParams = BasePresenceParams &
      * The axis of rotation: 'x', 'y', or 'z'.
      * Defaults to 'z'.
      */
-    axis?: Axis3D;
+    axis?: RotateAxis;
 
-    /**
-     * Rotation angle for the out state (exited) in degrees.
-     * Defaults to -90.
-     */
-    outAngle?: number;
+    /** Rotation before entering, or the playback source on `.In`/`.Out`, in degrees. Defaults to -90 on the root and `.In`, or 0 on `.Out`. */
+    fromAngle?: RotatePose;
 
-    /**
-     * Rotation angle for the in state (entered) in degrees.
-     * Defaults to 0.
-     */
-    inAngle?: number;
+    /** Rotation while present, in degrees. Defaults to 0. Only used by the root presence component. */
+    inAngle?: RotatePose;
+
+    /** Rotation after exiting, or the playback destination on `.In`/`.Out`, in degrees. Defaults to `fromAngle` on the root, 0 on `.In`, or -90 on `.Out`. */
+    toAngle?: RotatePose;
   };
