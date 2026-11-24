@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "perf: drop native props allow-list from RangeSlider hooks",
-  "packageName": "@fluentui/react-range-slider-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
