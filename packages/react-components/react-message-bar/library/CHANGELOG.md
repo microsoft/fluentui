@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-message-bar
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.10)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.7.9..@fluentui/react-message-bar_v9.7.10)
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- fix: MessageBar respects an explicit politeness prop instead of always announcing politely ([PR #37113](https://github.com/microsoft/fluentui/pull/37113) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-link to v9.8.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.11 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.9)
 
