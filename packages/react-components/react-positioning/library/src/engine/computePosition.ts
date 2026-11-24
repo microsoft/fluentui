@@ -88,6 +88,12 @@ export async function computePosition(
     setStyle(`max-${dimension}`);
     setStyle(dimension);
   }
+  // Load-bearing: like Floating UI (awaits of the reset middleware, the floating dimensions and the offset parent),
+  // reads the target three microtasks after the reset, so observers of these writes and of the manager's position
+  // write, and updates they queue at most two microtasks later (e.g. React commits of updates made during a resize
+  // event), move it first ("measures an auto-sized list after observers..." regressions). A run started within the
+  // wait measures the auto-size styles of the previous one, like Floating UI. Later measurements are synchronous.
+  await await await 0;
   const rtl = getStyle(container).direction === 'rtl';
   const referenceElement = 'nodeType' in target ? target : target.contextElement || getRoot(container);
   const clip = (element: Element, boundary?: PositioningBoundary | null) =>

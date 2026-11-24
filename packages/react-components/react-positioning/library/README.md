@@ -90,6 +90,8 @@ checks that clipping is measured again with the rectangles.
 Virtual-reference regressions preserve `left/top` over inconsistent `x/y`, including references
 in bordered, padded, scaled iframes. A public-hook caret fixture asserts the exact four-pixel
 tooltip gap, placement, and visible reference state in a 408-by-268 viewport.
+A public-hook auto-sized list asserts that the update a resize triggers is aligned with a target that
+mutation observers of its style writes move, synchronously or two microtasks later.
 Size query containers (`container-type: size | inline-size`) form containing blocks only in engines
 that apply layout containment to them (Chromium before 129, the Electron 118 bundled with Cypress 13
 in React 17 compatibility tests). The engine measures this once, when such a container is
@@ -99,6 +101,9 @@ encountered, and the regressions assert physical alignment under both behaviors.
 
 The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
 best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
+Like Floating UI, it reads the target three microtasks after clearing the auto-size styles, so
+observers of those writes and updates they queue within two further microtasks (such as React commits
+of updates made during a resize event) apply first; later re-measurements within an update are synchronous.
 Positioning callbacks and imperative refs do not recreate the manager on callback-only rerenders.
 Outside of production builds every result is still reported to the Floating UI devtools extension;
 the state it reads is assembled from the result as the engine has no middleware.

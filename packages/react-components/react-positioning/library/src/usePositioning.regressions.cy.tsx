@@ -100,6 +100,102 @@ describe('positioning engine browser regressions', () => {
     });
   });
 
+  for (const [when, react] of [
+    ['synchronously', (win: Window, move: () => void) => move()],
+    // The latest move Floating UI measured; covers e.g. a React commit, one microtask later, queued by a state update
+    // of the observer
+    ['two microtasks later', (win: Window, move: () => void) => win.queueMicrotask(() => win.queueMicrotask(move))],
+  ] as const) {
+    it(`measures an auto-sized list after observers of its style writes move the target ${when}`, () => {
+      cy.document().then(doc => {
+        element(doc, 'style', {}, root).textContent = [
+          '.fui-test-layout { position: fixed; inset: 0; padding: 100px 0 0 100px }',
+          // Like a media query, moves the target to where the list no longer fits below it
+          '.fui-test-layout.narrow { padding-top: 420px }',
+          '.fui-test-layout.compact { padding: 380px 0 0 60px }',
+          '.fui-test-field { width: 200px; height: 32px }',
+          '.fui-test-list { width: 200px; height: 200px; overflow: auto }',
+        ].join('\n');
+      });
+      const box = ({ x, y, width, height }: DOMRect) => ({ x, y, width, height });
+      // The placement and the boxes of the list and the field when each update ends
+      const updates: { placement: string; list: ReturnType<typeof box>; field: ReturnType<typeof box> }[] = [];
+      const DateFormat = () => {
+        const { targetRef, containerRef } = usePositioning({
+          position: 'below',
+          align: 'start',
+          offset: 2,
+          fallbackPositions: ['above'],
+          autoSize: true,
+          onPositioningEnd: event => {
+            const list = event.target as HTMLElement;
+            updates.push({
+              placement: event.detail.placement,
+              list: box(list.getBoundingClientRect()),
+              field: box(list.previousElementSibling!.getBoundingClientRect()),
+            });
+          },
+        });
+        return (
+          <main className="fui-test-layout">
+            <div className="fui-test-field" ref={targetRef}>
+              <button>Date format</button>
+            </div>
+            <div className="fui-test-list" ref={containerRef} role="listbox" aria-label="Date format">
+              <div role="option" aria-selected="true">
+                M/d/yyyy
+              </div>
+            </div>
+          </main>
+        );
+      };
+      mount(
+        <FluentProvider>
+          <DateFormat />
+        </FluentProvider>,
+      );
+      cy.get('[role="listbox"]').should($list => {
+        expect($list).to.have.attr('data-popper-placement', 'bottom-start');
+        expect(box($list[0].getBoundingClientRect())).to.deep.equal({ x: 100, y: 134, width: 200, height: 200 });
+      });
+
+      let count = 0;
+      let observer: MutationObserver | undefined;
+      cy.get('.fui-test-layout').then($layout => {
+        const layout = $layout[0];
+        const win = layout.ownerDocument.defaultView!;
+        // Like a layout that adapts to the auto-sized list, the target moves without being resized in reaction to
+        // the style writes of the update
+        observer = new win.MutationObserver(() =>
+          react(win, () => layout.classList.toggle('compact', layout.classList.contains('narrow'))),
+        );
+        observer.observe(layout.querySelector('[role="listbox"]')!, { attributes: true, attributeFilter: ['style'] });
+        count = updates.length;
+        layout.classList.add('narrow');
+        win.dispatchEvent(new win.Event('resize'));
+      });
+      cy.wrap(updates).should(items => {
+        expect(items.length, 'updates after the resize').to.be.greaterThan(count);
+        // The update that the resize triggered, a later update must not be needed
+        expect(items[count]).to.deep.equal({
+          placement: 'top',
+          field: { x: 60, y: 380, width: 200, height: 32 },
+          // Start edges aligned, two pixels above the field and not resized
+          list: { x: 60, y: 178, width: 200, height: 200 },
+        });
+      });
+      cy.get('[role="listbox"]').should($list => {
+        expect(box($list[0].getBoundingClientRect()), 'open list').to.deep.equal({
+          x: 60,
+          y: 178,
+          width: 200,
+          height: 200,
+        });
+      });
+      cy.then(() => observer?.disconnect());
+    });
+  }
+
   it('ignores positioned display: contents ancestors in a scrolled document', () => {
     cy.document().then(async doc => {
       const win = doc.defaultView!;
