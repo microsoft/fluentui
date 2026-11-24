@@ -86,6 +86,7 @@ export class Tooltip extends FASTElement {
     super.connectedCallback();
 
     this.popover ??= 'auto';
+    this.ariaHidden ??= 'true';
 
     // If the anchor element is not found, tooltip will not be shown
     if (!this.anchorElement) {

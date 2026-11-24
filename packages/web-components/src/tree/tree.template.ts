@@ -3,7 +3,6 @@ import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
   <template
-    focusgroup="menu inline block nowrap nomemory"
     @click="${(x, c) => x.clickHandler(c.event)}"
     @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     @change="${(x, c) => x.changeHandler(c.event)}"

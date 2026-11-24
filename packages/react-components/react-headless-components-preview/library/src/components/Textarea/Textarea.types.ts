@@ -9,6 +9,11 @@ export type TextareaState = TextareaBaseState & {
   root: {
     'data-disabled'?: string;
     'data-invalid'?: string;
+
+    /**
+     * Data attribute set when the textarea is read-only.
+     */
+    'data-readonly'?: string;
     'data-resize'?: TextareaBaseState['resize'];
   };
 };

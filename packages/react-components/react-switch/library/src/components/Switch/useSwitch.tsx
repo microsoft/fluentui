@@ -5,7 +5,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { getPartitionedNativeProps, mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState, SwitchBaseProps, SwitchBaseState } from './Switch.types';
 
 /**
@@ -57,30 +57,32 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   const {
     checked,
     defaultChecked,
-    disabled,
     disabledFocusable = false,
     labelPosition = 'after',
     onChange,
-    required,
+    // Slots
+    root: rootSlot,
+    indicator: indicatorSlot,
+    input: inputSlot,
+    label: labelSlot,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
   } = props;
+  const { disabled, required } = props;
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange', 'disabledFocusable'],
-  });
+  const id = useId('switch-', inputProps.id);
 
-  const id = useId('switch-', nativeProps.primary.id);
-
-  const root = slot.always(props.root, {
-    defaultProps: nativeProps.root,
+  const root = slot.always(rootSlot, {
+    defaultProps: { className, style },
     elementType: 'div',
   });
-  const indicator = slot.always(props.indicator, {
+  const indicator = slot.always(indicatorSlot, {
     defaultProps: { 'aria-hidden': true },
     elementType: 'div',
   });
-  const input = slot.always(props.input, {
+  const input = slot.always(inputSlot, {
     defaultProps: {
       checked,
       defaultChecked,
@@ -88,7 +90,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
       ref,
       role: 'switch',
       type: 'checkbox',
-      ...nativeProps.primary,
+      ...inputProps,
       disabled: disabled && !disabledFocusable,
       ...(disabledFocusable && { 'aria-disabled': true }),
     },
@@ -105,7 +107,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
       ev.preventDefault();
     }
   });
-  const label = slot.optional(props.label, {
+  const label = slot.optional(labelSlot, {
     defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required },
     elementType: 'label',
   });

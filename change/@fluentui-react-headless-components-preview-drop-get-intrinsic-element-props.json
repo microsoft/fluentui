@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: drop getIntrinsicElementProps and explicitly destructure custom props so they are not forwarded to native elements",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
