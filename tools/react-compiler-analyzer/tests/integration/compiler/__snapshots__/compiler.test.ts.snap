@@ -2,18 +2,6 @@
 
 exports[`compiler integration (bounded behavior, not parity) computed-member-control: computed-member-control 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -53,23 +41,45 @@ Object {
     ],
     "targetCacheEvidence": "positive",
   },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-control: oxc-analyzer-computed-member-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-control: oxc-computed-member-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
 }
 `;
 
 exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: computed-member-mutation-control 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -109,23 +119,45 @@ Object {
     ],
     "targetCacheEvidence": "positive",
   },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: oxc-analyzer-computed-member-mutation-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: oxc-computed-member-mutation-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        4,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
 }
 `;
 
 exports[`compiler integration (bounded behavior, not parity) computed-template-key: computed-template-key 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -165,23 +197,45 @@ Object {
     ],
     "targetCacheEvidence": "positive",
   },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-key: oxc-analyzer-computed-template-key 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-key: oxc-computed-template-key 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
 }
 `;
 
 exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: computed-template-mutation 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -221,23 +275,45 @@ Object {
     ],
     "targetCacheEvidence": "positive",
   },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: oxc-analyzer-computed-template-mutation 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: oxc-computed-template-mutation 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        4,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
 }
 `;
 
 exports[`compiler integration (bounded behavior, not parity) declare-field: declare-field 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -280,20 +356,42 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) declare-field: oxc-analyzer-declare-field 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) declare-field: oxc-declare-field 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        3,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) export-assignment: export-assignment 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "useSample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -336,20 +434,42 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) export-assignment: oxc-analyzer-export-assignment 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "useSample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) export-assignment: oxc-export-assignment 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "useSample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) exported-overload: exported-overload 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "useSample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -533,20 +653,113 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) exported-overload: oxc-analyzer-exported-overload 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "useSample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) exported-overload: oxc-exported-overload 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "useSample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [
+    Object {
+      "backend": "oxc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "oxc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+  ],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: exported-overload-gated 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "useSample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -730,22 +943,119 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: oxc-analyzer-exported-overload-gated 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "useSample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: oxc-exported-overload-gated 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "useSample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": "useSample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [
+    Object {
+      "backend": "oxc",
+      "cacheCalls": Array [],
+      "callable": true,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [
+        false,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "oxc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [
+        true,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+  ],
+  "targetCacheEvidence": "unknown",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) hidden-selector: hidden-selector 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [
-      "hidden-selector-hook",
-    ],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -798,20 +1108,49 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) hidden-selector: oxc-analyzer-hidden-selector 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [
+    "hidden-selector-hook",
+  ],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) hidden-selector: oxc-hidden-selector 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        1,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [
+        Object {
+          "cacheGuarded": true,
+          "name": "store.use.selected",
+        },
+      ],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) import-assignment: import-assignment 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -854,25 +1193,42 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) import-assignment: oxc-analyzer-import-assignment 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) import-assignment: oxc-import-assignment 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) invalid-hooks: invalid-hooks 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [
-      Object {
-        "kind": "CompileError",
-        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
-      },
-    ],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileError",
-        "name": null,
-        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [
       Object {
@@ -916,20 +1272,50 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) invalid-hooks: oxc-analyzer-invalid-hooks 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "kind": "CompileError",
+      "reason": "Hooks must always be called in a consistent order and may not be called conditionally [This Hook is called conditionally] (5:4)",
+    },
+  ],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileError",
+      "name": "Sample",
+      "reason": "Hooks must always be called in a consistent order and may not be called conditionally [This Hook is called conditionally] (5:4)",
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) invalid-hooks: oxc-invalid-hooks 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "message": "Hooks must always be called in a consistent order and may not be called conditionally",
+      "severity": "Error",
+    },
+  ],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "zero",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) malformed-suppression: malformed-suppression 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -982,25 +1368,47 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) malformed-suppression: oxc-analyzer-malformed-suppression 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) malformed-suppression: oxc-malformed-suppression 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        5,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: misplaced-suppression 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [
-      Object {
-        "kind": "CompileError",
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
-      },
-    ],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileError",
-        "name": null,
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [
       Object {
@@ -1056,20 +1464,55 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: oxc-analyzer-misplaced-suppression 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "kind": "CompileError",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:2)",
+    },
+  ],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileError",
+      "name": "Sample",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:2)",
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: oxc-misplaced-suppression 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "message": "React rule suppression prevents optimization",
+      "severity": "Error",
+    },
+  ],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "zero",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) module-opt-out: module-opt-out 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -1108,20 +1551,34 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) module-opt-out: oxc-analyzer-module-opt-out 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) module-opt-out: oxc-module-opt-out 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "zero",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) namespace: namespace 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -1169,20 +1626,336 @@ Object {
 }
 `;
 
-exports[`compiler integration (bounded behavior, not parity) positive: positive 1`] = `
+exports[`compiler integration (bounded behavior, not parity) namespace: oxc-analyzer-namespace 1`] = `
 Object {
-  "analyzer": Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) namespace: oxc-namespace 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "message": "Namespaces exporting non-const are not supported by Oxc. Change to const or see: https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support",
+      "severity": "Warning",
+    },
+  ],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure: outlined-closure 1`] = `
+Object {
+  "babel": Object {
     "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileSuccess",
-        "name": "Sample",
+        "name": null,
         "reason": null,
       },
     ],
-    "risks": Array [],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "createLazy",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Cached",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "_temp",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
   },
+  "hookValidity": "valid",
+  "runtime": Array [
+    Object {
+      "backend": "babel",
+      "error": "ReferenceError: factory is not defined",
+      "returnedElement": null,
+    },
+    Object {
+      "backend": "swc",
+      "error": "ReferenceError: factory is not defined",
+      "returnedElement": null,
+    },
+  ],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "createLazy",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Cached",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "_temp",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure: oxc-analyzer-outlined-closure 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Cached",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure: oxc-outlined-closure 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "createLazy",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Cached",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": "_temp",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [
+    Object {
+      "backend": "oxc",
+      "error": "ReferenceError: factory is not defined",
+      "returnedElement": null,
+    },
+  ],
+  "targetCacheEvidence": "zero",
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure-declaration-control: outlined-closure-declaration-control 1`] = `
+Object {
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Cached",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "createLazy",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Cached",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "_temp",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [
+    Object {
+      "backend": "babel",
+      "error": null,
+      "returnedElement": null,
+    },
+    Object {
+      "backend": "swc",
+      "error": null,
+      "returnedElement": null,
+    },
+  ],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "createLazy",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Cached",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "_temp",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure-declaration-control: oxc-analyzer-outlined-closure-declaration-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Cached",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) outlined-closure-declaration-control: oxc-outlined-closure-declaration-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "createLazy",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Cached",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": "_temp",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [
+    Object {
+      "backend": "oxc",
+      "error": null,
+      "returnedElement": null,
+    },
+  ],
+  "targetCacheEvidence": "zero",
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) positive: oxc-analyzer-positive 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) positive: oxc-positive 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) positive: positive 1`] = `
+Object {
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -1225,20 +1998,47 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: oxc-analyzer-recognized-selector-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: oxc-recognized-selector-control 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        2,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [
+        Object {
+          "cacheGuarded": false,
+          "name": "useSelected",
+        },
+      ],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: recognized-selector-control 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -1291,25 +2091,50 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: oxc-analyzer-suppressed-invalid-hooks 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "kind": "CompileError",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:4)",
+    },
+  ],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileError",
+      "name": "Sample",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:4)",
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: oxc-suppressed-invalid-hooks 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "message": "React rule suppression prevents optimization",
+      "severity": "Error",
+    },
+  ],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "zero",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: suppressed-invalid-hooks 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [
-      Object {
-        "kind": "CompileError",
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
-      },
-    ],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileError",
-        "name": null,
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [
       Object {
@@ -1353,20 +2178,47 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: oxc-analyzer-unknown-rule-suppression 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: oxc-unknown-rule-suppression 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        5,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: unknown-rule-suppression 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,
@@ -1419,25 +2271,55 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: oxc-analyzer-unnecessary-suppression 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "kind": "CompileError",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:2)",
+    },
+  ],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileError",
+      "name": "Sample",
+      "reason": "React rule suppression prevents optimization [Found React rule suppression] (4:2)",
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: oxc-unnecessary-suppression 1`] = `
+Object {
+  "diagnostics": Array [
+    Object {
+      "message": "React rule suppression prevents optimization",
+      "severity": "Error",
+    },
+  ],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "zero",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: unnecessary-suppression 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [
-      Object {
-        "kind": "CompileError",
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
-      },
-    ],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileError",
-        "name": null,
-        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [
       Object {
@@ -1493,20 +2375,47 @@ Object {
 }
 `;
 
+exports[`compiler integration (bounded behavior, not parity) valid-hooks: oxc-analyzer-valid-hooks 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "events": Array [
+    Object {
+      "kind": "CompileSuccess",
+      "name": "Sample",
+      "reason": null,
+    },
+  ],
+  "risks": Array [],
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) valid-hooks: oxc-valid-hooks 1`] = `
+Object {
+  "diagnostics": Array [],
+  "error": null,
+  "fatal": false,
+  "outputFunctions": Array [
+    Object {
+      "cacheSlots": Array [
+        5,
+      ],
+      "name": "Sample",
+      "selectorCalls": Array [],
+    },
+    Object {
+      "cacheSlots": Array [],
+      "name": null,
+      "selectorCalls": Array [],
+    },
+  ],
+  "runtime": Array [],
+  "targetCacheEvidence": "positive",
+}
+`;
+
 exports[`compiler integration (bounded behavior, not parity) valid-hooks: valid-hooks 1`] = `
 Object {
-  "analyzer": Object {
-    "diagnostics": Array [],
-    "error": null,
-    "events": Array [
-      Object {
-        "kind": "CompileSuccess",
-        "name": "Sample",
-        "reason": null,
-      },
-    ],
-    "risks": Array [],
-  },
   "babel": Object {
     "diagnostics": Array [],
     "error": null,

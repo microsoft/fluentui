@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 
 describe('packaged CLI integration', () => {
-  it('validates analyze/lint contracts, previews without writes, and works without SWC', () => {
+  it('validates analyze/lint contracts, previews without writes, and blocks Babel/SWC runtime loads', () => {
     const result = spawnSync(process.execPath, [join(__dirname, 'runner.cjs')], {
       encoding: 'utf8',
       timeout: 90000,

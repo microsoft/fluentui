@@ -23,11 +23,13 @@ framework integration for explicit compilation-mode evidence.
 - If build evidence conflicts across scan roots, ask the user or use separate configs/runs rather
   than guessing.
 
-## Parser plugins
+## Syntax support
 
-Start without `parserPlugins`. Add a plugin only when the build uses that syntax and RCA reports a
-parse failure that the plugin addresses. Match the exact Babel parser plugin name; RCA rejects
-unknown names.
+RCA parses with Oxc and has no Babel parser-plugin option. JSX is enabled by `.tsx`; `.ts` keeps
+angle-bracket assertions. Decorators, auto-accessors, import attributes, and explicit resource
+management use native parser support. Flow and unsupported proposal syntax are reported as
+unparseable. Compare the analyzed input set with the consumer build when it accepts additional
+syntax; do not add `parserPlugins` or `--parser-plugin`.
 
 ## Risk rules
 
@@ -43,75 +45,43 @@ Search source paths before enabling a rule:
 
 Do not enable a broad rule merely because a state-management library is installed.
 
-## Dependency aliases for wrapper resolution
+## Resolver policy for wrapper analysis
 
-`pathAliases` must cover first-party TypeScript dependencies that wrapper resolution may enter, not
-only application-local shorthand imports. External dependencies whose implementation is only in
-`node_modules` remain package boundaries and must not be mapped to declarations or built output.
+When any leaf risk rule is configured, first-party wrapper resolution defaults to enabled.
+`resolveWrappers: false` is an explicit opt-out. The resolver discovers the nearest tsconfig for
+each importer, follows `extends` and `paths`, and uses package `exports`/`imports` and workspace
+symlinks. `node_modules`, CommonJS, declaration files, and missing unbuilt `dist` targets remain
+boundaries. There is no `pathAliases` map and no outDir-to-rootDir source redirect.
 
-Prefer tsconfig metadata over traversing every source file:
-
-1. Identify the tsconfig that applies to the requested scan paths.
-2. Follow its `extends` chain and determine the effective `compilerOptions.baseUrl` and
-   `compilerOptions.paths`.
-3. Read the owning `package.json` and identify declared dependencies that are first-party workspace
-   packages. Treat these as the dependency-alias candidate set; do not map external packages.
-4. Traverse the applicable config's `references` recursively, resolving directory references to
-   their tsconfig and deduplicating configs to avoid cycles.
-5. Reconcile the first-party dependency candidates with effective `paths` entries and referenced
-   projects. A declared first-party dependency absent from both sources requires focused import and
-   package inspection before it can be omitted or mapped.
-6. For every referenced first-party project, read the nearest `package.json` for its package name
-   and resolve its analyzable source root from explicit metadata: an existing `paths` mapping,
-   `compilerOptions.rootDir`, or an unambiguous source entry/include. Do not infer a source layout
-   from the package name alone.
-7. Add an exact package alias for a verified source entry and a wildcard alias when verified source
-   subpaths exist. For example, a referenced package named `@scope/state` with source root
-   `../state/src` may contribute `"@scope/state": ["../state/src/index.ts"]` and
-   `"@scope/state/*": ["../state/src/*"]`.
-8. Resolve the effective base URL to an absolute directory. If `paths` is configured without
-   `baseUrl`, use the directory containing the tsconfig that defines the effective paths. Normalize
-   project-reference targets so every target is relative to this one base URL.
-9. Write `analyze.risks.pathAliases.baseUrl` relative to the directory containing
-   `rca.config.json`, and write all targets relative to that base URL.
-10. Include application aliases and verified referenced-project aliases needed by the intended scan
-    roots. Do not copy unrelated monorepo aliases or map third-party package dependencies.
-
-If tsconfig `paths` and project references do not describe a first-party bare import reported by
-wrapper resolution, inspect that import and its owning package directly as a fallback. A focused
-scan of unresolved bare import specifiers is sufficient; do not traverse the entire repository
-unless the package metadata is genuinely incomplete.
-
-Example:
+The default conditional-export activation set is `import`, `node`, and `default`. Never opt into
+`types` or `require` for runtime-risk traversal. Add a custom condition only when package metadata
+proves that the source branch is the intended code to inspect:
 
 ```json
 {
   "analyze": {
     "risks": {
       "detectGetStateReads": true,
-      "resolveWrappers": true,
-      "pathAliases": {
-        "baseUrl": ".",
-        "paths": {
-          "@app/*": ["src/app/*"]
-        }
+      "resolver": {
+        "additionalConditionNames": ["source"]
       }
     }
   }
 }
 ```
 
-If different scan roots use incompatible tsconfig alias maps, do not merge them into one invented
-mapping. Use a common root config when valid, or separate RCA configs/runs.
+Additional condition names do not reorder keys in a package's `exports` object. The first matching
+key in package order wins, so inspect the actual resolved target in verbose output. A `source`
+condition may deliberately select code different from the consumer build.
+
+`resolver.mainFields` is an ordered replacement for the default `["module", "main"]` entry fields.
+Use it only when the package has no applicable exports/imports target. Package export restrictions
+take precedence; custom fields must not bypass an unexported subpath. Only executable string paths
+are supported. Never follow `.d.ts`, `.d.mts`, or `.d.cts` as implementations.
 
 ## Validation
 
-Run JSON analysis and inspect stderr diagnostics from wrapper resolution.
-
-- Every generated target must exist and resolve to `.ts` or `.tsx` source.
-- At least one configured alias should match imports when aliased wrappers exist. Remove aliases
-  for referenced projects that are not reachable from the intended scan roots.
-- Dead alias targets and zero-hit aliases for imports that are present in the scan must be fixed.
-- Bare first-party imports stopping at package boundaries mean dependency wrappers were not
-  analyzed. Add a verified alias or report the unresolved dependency explicitly.
-- A zero-risk result is trustworthy only after the relevant imports resolve.
+Run JSON analysis and inspect stderr diagnostics from wrapper resolution. Unresolved first-party
+specifiers are always reported and must not be interpreted as a zero-risk result. Confirm that the
+resolver selected the intended ESM implementation, especially when using custom conditions or
+entry fields. A zero-risk result is trustworthy only within the set of imports actually followed.

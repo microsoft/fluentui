@@ -1,11 +1,13 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { transformAsync } from '@babel/core';
-
 import { compileFile } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
-import { riskPlugin, type RiskPluginOptions } from '../risk-plugin';
+import { locationKey } from '../identity';
+import { parseSource } from '../ast/parse';
+import { ScopeResolver } from '../ast/scope';
+import { analyzeRisks } from '../risk-plugin';
+import { SourceFunctionIndex } from '../source-functions';
 import type { FileEntry, RiskConfig, RiskFinding } from '../types';
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'risk');
@@ -14,18 +16,15 @@ async function runPluginKeyed(fixtureName: string, config: RiskConfig = {}): Pro
   const filePath = join(FIXTURES_DIR, fixtureName);
   const source = readFileSync(filePath, 'utf-8');
   const results = new Map<string, RiskFinding[]>();
-
-  await transformAsync(source, {
-    filename: filePath,
-    ast: false,
-    code: false,
-    babelrc: false,
-    configFile: false,
-    presets: [[require.resolve('@babel/preset-typescript'), { isTSX: true, allExtensions: true }]],
-    plugins: [[riskPlugin, { ...config, results } as RiskPluginOptions]],
-  });
-
-  return results;
+  const parsed = parseSource(source, filePath);
+  const entry: FileEntry = { filePath, packageName: 'fixture' };
+  const sourceFunctions = new SourceFunctionIndex(source, entry, FIXTURES_DIR);
+  const scopes = new ScopeResolver(parsed.program);
+  sourceFunctions.addProgram(parsed, scopes);
+  analyzeRisks(parsed, { ...config, sourceFunctions, scopes, results });
+  return new Map(
+    [...results].map(([id, findings]) => [locationKey(sourceFunctions.get(id)!.declarationSpan.start), findings]),
+  );
 }
 
 async function runPlugin(fixtureName: string, config: RiskConfig = {}): Promise<RiskFinding[]> {
@@ -42,7 +41,7 @@ function lineOf(fixtureName: string, needle: string): number {
   return index + 1;
 }
 
-describe('riskPlugin', () => {
+describe('risk analysis', () => {
   describe('nonreactive-store-read', () => {
     it('is OFF by default — no store config means no findings', async () => {
       const findings = await runPlugin('nonreactive-store-read.tsx');

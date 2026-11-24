@@ -26,14 +26,18 @@
   ],
   "bin": "./bin/react-compiler-analyzer.js",
   "dependencies": {
-    "@babel/core": "^7.28.5",
+    "@jridgewell/trace-mapping": "0.3.31",
     "ajv": "^8.13.0",
-    "babel-plugin-react-compiler": "^1.0.0",
     "enquirer": "^2.3.6",
+    "oxc-parser": "0.156.0",
+    "oxc-resolver": "11.24.2",
+    "oxc-transform-react": "0.156.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@babel/core": "7.29.7",
     "@babel/types": "7.29.0",
-    "@types/yargs": "^17.0.33"
+    "@types/yargs": "^17.0.33",
+    "babel-plugin-react-compiler": "1.0.0"
   }
 }

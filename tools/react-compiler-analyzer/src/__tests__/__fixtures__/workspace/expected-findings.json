@@ -1,0 +1,54 @@
+{
+  "baseline": {
+    "backend": "babel",
+    "babelVersion": "7.29.7",
+    "compilerVersion": "1.0.0",
+    "command": "analyze ../app ../feature --format json --exclude **/node_modules/**",
+    "pathAliases": {
+      "baseUrl": "<workspace>",
+      "paths": {
+        "@ws/store": [
+          "packages/store/src/index.ts"
+        ]
+      }
+    }
+  },
+  "findings": [
+    {
+      "file": "../app/src/index.tsx",
+      "package": "@ws/app",
+      "line": 12,
+      "column": 45,
+      "function": "PathsWidget",
+      "ruleId": "nonreactive-store-read",
+      "severity": "high",
+      "symbol": "store.getState",
+      "message": "reached via `readStore`: imperative store snapshot via `.getState()` takes no tracked inputs — memoization may cache a stale value across store transitions",
+      "compiled": true
+    },
+    {
+      "file": "../app/src/index.tsx",
+      "package": "@ws/app",
+      "line": 13,
+      "column": 46,
+      "function": "BarrelWidget",
+      "ruleId": "nonreactive-store-read",
+      "severity": "high",
+      "symbol": "store.getState",
+      "message": "reached via `readBarrel`: imperative store snapshot via `.getState()` takes no tracked inputs — memoization may cache a stale value across store transitions",
+      "compiled": true
+    },
+    {
+      "file": "../app/src/index.tsx",
+      "package": "@ws/app",
+      "line": 14,
+      "column": 48,
+      "function": "RelativeWidget",
+      "ruleId": "nonreactive-store-read",
+      "severity": "high",
+      "symbol": "store.getState",
+      "message": "reached via `readRelative`: imperative store snapshot via `.getState()` takes no tracked inputs — memoization may cache a stale value across store transitions",
+      "compiled": true
+    }
+  ]
+}
