@@ -29,6 +29,72 @@ before(async () => {
 
 after(async () => browser?.close());
 
+for (const css of [
+  'html > div { transform: translateZ(0); }',
+  'html > div > div { transform: translateX(20px); margin-left: 10px; }',
+  'html > div { transform: translateZ(0); } html > div > div { display: none; }',
+]) {
+  test(`WebKit isolates the size-container probe from ${css}`, async () => {
+    // Both the document and the engine module are fresh: no earlier feature check can mask contamination.
+    const page = await browser.newPage({ viewport: { width: 800, height: 600 } });
+    try {
+      await page.setContent(`<!doctype html><style>${css}</style><body style="margin:0"></body>`);
+      await page.addScriptTag({ content: source });
+      const result = await page.evaluate(async () => {
+        const { computePosition } = globalThis.positioningTest;
+        const panel = document.createElement('section');
+        panel.style.cssText =
+          'position:absolute;left:160px;top:100px;width:400px;height:300px;container-type:inline-size';
+        document.body.append(panel);
+        const target = panel.appendChild(document.createElement('button'));
+        target.style.cssText = 'position:absolute;left:40px;top:30px;width:80px;height:40px';
+        target.textContent = 'Options';
+        const menu = panel.appendChild(document.createElement('div'));
+        menu.style.cssText = 'position:fixed;width:120px;height:60px';
+        menu.setAttribute('role', 'menu');
+        const probes = [];
+        const observer = new MutationObserver(records => {
+          for (const record of records) {
+            probes.push(...record.addedNodes);
+          }
+        });
+        observer.observe(document.documentElement, { childList: true });
+        const rectangles = [];
+        try {
+          for (let pass = 0; pass < 2; pass++) {
+            const actual = await computePosition(target, menu, {
+              strategy: 'fixed',
+              placement: 'bottom-start',
+              options: { pinned: true },
+            });
+            Object.assign(menu.style, { left: `${actual.x}px`, top: `${actual.y}px` });
+            const { x, y } = menu.getBoundingClientRect();
+            rectangles.push({ x, y });
+            document.querySelector('style')?.remove();
+          }
+          return {
+            rectangles,
+            probes: probes.length,
+            cleanedUp: probes.every(node => !node.isConnected),
+            nativeContains: menu.offsetParent === panel,
+          };
+        } finally {
+          observer.disconnect();
+        }
+      });
+      assert.equal(result.nativeContains, false, 'Modern WebKit must not contain fixed descendants');
+      assert.equal(result.probes, 1, 'Must exercise an uncached probe, then reuse the result');
+      assert.equal(result.cleanedUp, true);
+      assert.deepEqual(result.rectangles, [
+        { x: 200, y: 170 },
+        { x: 200, y: 170 },
+      ]);
+    } finally {
+      await page.close();
+    }
+  });
+}
+
 for (const scenario of ['filter', 'backdropFilter', 'popover', 'dialog', 'containedPopover']) {
   test(`WebKit preserves fixed geometry for ${scenario}`, async () => {
     const page = await browser.newPage({ viewport: { width: 800, height: 600 } });

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { computePosition as computeOracle, hide, shift, offset, limitShift } from '@floating-ui/dom';
@@ -37,13 +38,111 @@ async function expectParity(target: TargetElement, floating: HTMLElement) {
 
 describe('positioning engine browser regressions', () => {
   let root: HTMLElement;
+  let probeObserver: MutationObserver | undefined;
   beforeEach(() => {
     cy.viewport(800, 600);
     cy.document().then(doc => {
       root = element(doc, 'div', { position: 'fixed', inset: '0' }, doc.body);
     });
   });
-  afterEach(() => root.remove());
+  afterEach(() => {
+    probeObserver?.disconnect();
+    root.remove();
+  });
+
+  // Must run before any other size-query fixture: the feature result is cached for the module, not the document.
+  it('isolates the first size-container probe from page CSS and keeps a fixed menu aligned on reopening', () => {
+    let frameDoc: Document;
+    let pageStyle: HTMLElement;
+    const probes: Node[] = [];
+    cy.document().then(doc => {
+      const frame = doc.createElement('iframe');
+      Object.assign(frame.style, { width: '800px', height: '600px', border: '0' });
+      root.appendChild(frame);
+      frameDoc = frame.contentDocument!;
+      pageStyle = element(frameDoc, 'style', {}, frameDoc.head);
+      pageStyle.textContent = [
+        'html > div { transform: translateZ(0); padding: 9px; }',
+        'html > div > div { transform: translateX(7px); margin-left: 11px; }',
+      ].join('\n');
+      // Observe the real probe, without replacing any geometry or DOM API. A prewarmed cache must fail this test.
+      probeObserver = new frameDoc.defaultView!.MutationObserver(records => {
+        for (const record of records) {
+          probes.push(
+            ...Array.from(record.addedNodes).filter(node => (node as HTMLElement).style?.containerType === 'size'),
+          );
+        }
+      });
+      probeObserver.observe(frameDoc.documentElement, { childList: true });
+
+      const OptionsMenu = () => {
+        const [open, setOpen] = React.useState(false);
+        const { targetRef, containerRef } = usePositioning({ position: 'below', align: 'start', strategy: 'fixed' });
+        return (
+          <section
+            style={{
+              position: 'absolute',
+              left: 160,
+              top: 100,
+              width: 400,
+              height: 300,
+              containerType: 'inline-size',
+            }}
+          >
+            <button
+              ref={targetRef}
+              onClick={() => setOpen(value => !value)}
+              style={{ position: 'absolute', left: 40, top: 30, width: 80, height: 40 }}
+            >
+              Options
+            </button>
+            {open && (
+              <div ref={containerRef} role="menu" style={{ width: 120, height: 60 }}>
+                <div role="menuitem">Edit</div>
+              </div>
+            )}
+          </section>
+        );
+      };
+      return mount(
+        createPortal(
+          <FluentProvider targetDocument={frameDoc}>
+            <OptionsMenu />
+          </FluentProvider>,
+          frameDoc.body,
+        ),
+      );
+    });
+    const checkMenu = () =>
+      cy
+        .then(() => cy.wrap(frameDoc.body).find('[role="menu"]'))
+        .should($menu => {
+          const target = frameDoc.querySelector('button')!.getBoundingClientRect();
+          const menu = $menu[0].getBoundingClientRect();
+          expect({ x: target.x, y: target.y, bottom: target.bottom }, 'button').to.deep.equal({
+            x: 200,
+            y: 130,
+            bottom: 170,
+          });
+          expect({ x: menu.x, y: menu.y }, 'menu below Options').to.deep.equal({ x: 200, y: 170 });
+          expect($menu[0].style.position).to.equal('fixed');
+          expect($menu).to.have.attr('data-popper-placement', 'bottom-start');
+          expect(probes, 'one uncached feature probe').to.have.length(1);
+          expect(probes[0].isConnected, 'probe removed').to.equal(false);
+          expect(frameDoc.documentElement.querySelector(':scope > div'), 'no probe left behind').to.equal(null);
+        });
+    cy.then(() => {
+      expect(pageStyle.isConnected, 'page CSS installed before the probe').to.equal(true);
+      return cy.wrap(frameDoc.body).find('button').click();
+    });
+    checkMenu();
+    cy.then(() => cy.wrap(frameDoc.body).find('button').click());
+    cy.then(() => {
+      pageStyle.remove();
+      return cy.wrap(frameDoc.body).find('button').click();
+    });
+    checkMenu();
+  });
 
   it('keeps a caret tooltip above a virtual rect with inconsistent x/y', () => {
     cy.viewport(408, 268);

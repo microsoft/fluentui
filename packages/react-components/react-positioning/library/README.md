@@ -94,8 +94,14 @@ A public-hook auto-sized list asserts that the update a resize triggers is align
 mutation observers of its style writes move, synchronously or two microtasks later.
 Size query containers (`container-type: size | inline-size`) form containing blocks only in engines
 that apply layout containment to them (Chromium before 129, the Electron 118 bundled with Cypress 13
-in React 17 compatibility tests). The engine measures this once, when such a container is
-encountered, and the regressions assert physical alignment under both behaviors.
+in React 17 compatibility tests). The engine measures this once per module, when such a container is
+encountered, comparing a fixed child's bounds with its container's. Native `offsetParent` is insufficient:
+Chromium 118 returns `null` even when the child is contained. Both temporary elements reset page styles
+before measurement and are removed afterward; inline styles are cloned to preserve CSP compatibility.
+The first regression uses a fresh iframe and verifies that the probe actually ran (a new document alone
+does not clear the module cache). Page CSS targets both probe elements, while a public-hook fixed menu
+must align below its button on opening and after removing the CSS and reopening. The regressions assert
+physical alignment under both modern and legacy containing-block behaviors.
 
 ## Engine parity and size validation
 
@@ -119,7 +125,9 @@ The bundle gate runs the repository's monosize/webpack measurement for the exist
 minified output larger than **12,000 bytes**. This is an absolute, uncompressed limit; gzip
 is reported separately. Gate tests cover the inclusive limit and invalid or stale measurements.
 
-The WebKit target runs focused real-browser checks for filtered ancestors and nested
+The WebKit target also checks parent-only and child-only probe style contamination in fresh pages with
+fresh engine modules, including alignment after the page CSS is removed and probe cleanup/cache reuse.
+It runs focused real-browser checks for filtered ancestors and nested
 top-layer surfaces. Filter cases preserve the pinned Floating UI WebKit exception; nested
 top-layer cases assert physical layout, including containment by the top-layer ancestor itself.
 It requires the workspace's Playwright WebKit browser installation.

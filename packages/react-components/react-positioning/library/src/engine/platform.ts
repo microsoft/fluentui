@@ -38,14 +38,14 @@ let sizeContainerContains: boolean | undefined;
 
 /**
  * Engines applying layout containment to size query containers (Chromium < 129) offset the fixed child by the
- * container. Without layout (e.g. jsdom) both overlap.
+ * container. Reset both elements so page CSS cannot contaminate the cached result. Use geometry: Chromium 118
+ * returns a null offsetParent even when the child is contained. Without layout (e.g. jsdom) both overlap.
  */
 const probeSizeContainer = (element: Element): boolean => {
   const container = getRoot(element).appendChild(getDocument(element).createElement('div'));
-  container.style.cssText = 'position:fixed;left:1px;container-type:size';
+  container.style.cssText = 'all:initial;position:fixed;left:1px;container-type:size';
   // Cloned inline styles skip the CSP check of parsed style attributes
-  const child = container.appendChild(container.cloneNode());
-  const contains = getBounds(child as Element).x > getBounds(container).x;
+  const contains = getBounds(container.appendChild(container.cloneNode()) as Element).x > getBounds(container).x;
   container.remove();
   return contains;
 };
