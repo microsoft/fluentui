@@ -429,6 +429,7 @@ export interface ICartesianChartProps {
     margins?: IMargins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
+    rotateXAxisLabels?: boolean;
     rotateXAxisLables?: boolean;
     roundedTicks?: boolean;
     secondaryYAxistitle?: string;
@@ -437,7 +438,10 @@ export interface ICartesianChartProps {
         yMaxValue?: number;
     };
     secondaryYScaleType?: AxisScaleType;
+    showXAxisLabelsTooltip?: boolean;
     showXAxisLablesTooltip?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     strokeWidth?: number;
@@ -453,6 +457,7 @@ export interface ICartesianChartProps {
     titleStyles?: ITitleStyles;
     useUTC?: boolean;
     width?: number;
+    wrapXAxisLabels?: boolean;
     wrapXAxisLables?: boolean;
     xAxis?: AxisProps & {
         tickLayout?: 'default' | 'auto';
@@ -1446,6 +1451,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     points: any;
     ref?: IRefObject<IChart>;
     showRoundOffXTickValues?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];

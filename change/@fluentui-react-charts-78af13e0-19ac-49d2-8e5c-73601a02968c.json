@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add correctly spelled axis label chart props",
+  "packageName": "@fluentui/react-charts",
+  "email": "mariamsulakian@gmail.com",
+  "dependentChangeType": "patch"
+}
