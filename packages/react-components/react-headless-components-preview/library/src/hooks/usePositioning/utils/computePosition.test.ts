@@ -81,11 +81,18 @@ describe('computePosition', () => {
     expect(computePosition(reference, floating)?.position).toBe('above');
   });
 
-  it('returns null when the floating element has no box', () => {
+  it('returns null when the floating element is not rendered', () => {
     const reference = makeElement({ top: 200, left: 100, right: 200, bottom: 240, width: 100, height: 40 });
-    const floating = makeElement({});
+    const floating = makeElement({}, { rendered: false });
 
     expect(computePosition(reference, floating)).toBeNull();
+  });
+
+  it('measures a rendered floating element scaled to a point', () => {
+    const reference = makeElement({ top: 100, left: 100, width: 100, height: 40 });
+    const floating = makeElement({ top: 165, left: 150, right: 150, bottom: 165, width: 0, height: 0 });
+
+    expect(computePosition(reference, floating)?.position).toBe('below');
   });
 
   it('returns null when the reference element is not rendered', () => {

@@ -1,4 +1,4 @@
-export { computePosition, hasNoBox } from './computePosition';
+export { computePosition, isRendered } from './computePosition';
 export type { ComputePositionConfig, ComputePositionReturn } from './computePosition';
 export { debounce } from './debounce';
 export { applyOffset, resolveOffset } from './offset';

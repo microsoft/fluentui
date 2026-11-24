@@ -1,7 +1,7 @@
 'use client';
 
 import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce, hasNoBox } from './utils';
+import { computePosition, debounce, isRendered } from './utils';
 
 /**
  * Mirrors the placement that the browser actually resolves for an
@@ -10,7 +10,7 @@ import { computePosition, debounce, hasNoBox } from './utils';
  * or content reflow — consumers can style the surface (arrows, animations)
  * via `[data-placement^="above"]` and friends and stay in sync.
  *
- * The surface counts as hidden only when it has no box (a 0×0 border box, e.g.
+ * The surface counts as hidden only when it is not rendered (no client rects, e.g.
  * `display: none` on a closed popover); `visibility: hidden`, `opacity: 0` or
  * `scale(0)` still count as laid out. While hidden only a ResizeObserver stays
  * attached; window listeners attach when the surface is laid out. Without
@@ -50,7 +50,6 @@ export function usePlacementObserver(
 
     const debouncedUpdate = debounce(update);
 
-    let containerLaidOut = false;
     let listening = false;
 
     const startListening = () => {
@@ -71,19 +70,8 @@ export function usePlacementObserver(
       win.removeEventListener('resize', debouncedUpdate);
     };
 
-    const resizeObserver = new ResizeObserverCtor(entries => {
-      for (const entry of entries) {
-        if (entry.target === containerEl) {
-          const borderBox = entry.borderBoxSize?.[0];
-          containerLaidOut = !hasNoBox(
-            borderBox
-              ? { width: borderBox.inlineSize, height: borderBox.blockSize }
-              : containerEl.getBoundingClientRect(),
-          );
-        }
-      }
-
-      if (containerLaidOut) {
+    const resizeObserver = new ResizeObserverCtor(() => {
+      if (isRendered(containerEl)) {
         startListening();
         debouncedUpdate();
       } else {

@@ -1,14 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { usePlacementObserver } from './usePlacementObserver';
 
-type Entry = {
-  target: Element;
-  width: number;
-  height: number;
-  /** Border box size; defaults to width/height. `null` omits `borderBoxSize` from the entry. */
-  borderBox?: { inlineSize: number; blockSize: number } | null;
-};
-
 let instances: FakeRO[] = [];
 
 class FakeRO {
@@ -21,18 +13,8 @@ class FakeRO {
   }
 }
 
-function emit(entries: Entry[]) {
-  const ro = instances[instances.length - 1];
-  ro.callback(
-    entries.map(({ target, width, height, borderBox }) => {
-      const resolved = borderBox === undefined ? { inlineSize: width, blockSize: height } : borderBox;
-      return {
-        target,
-        contentRect: { width, height },
-        ...(resolved ? { borderBoxSize: [resolved] } : {}),
-      };
-    }),
-  );
+function notify(...targets: Element[]) {
+  instances[instances.length - 1].callback(targets.map(target => ({ target })));
 }
 
 function makeRect(rect: Partial<DOMRect>): DOMRect {
@@ -48,6 +30,11 @@ function makeRect(rect: Partial<DOMRect>): DOMRect {
     bottom: top + height,
     toJSON: () => ({}),
   } as DOMRect;
+}
+
+// jsdom has no layout and returns no client rects; mock whether an element is rendered.
+function setRendered(el: HTMLElement, rendered: boolean) {
+  el.getClientRects = () => (rendered ? [el.getBoundingClientRect()] : []) as unknown as DOMRectList;
 }
 
 describe('usePlacementObserver', () => {
@@ -66,8 +53,8 @@ describe('usePlacementObserver', () => {
     removeSpy = jest.spyOn(window, 'removeEventListener');
     container = document.createElement('div');
     target = document.createElement('div');
-    // jsdom has no layout and returns no client rects; treat the anchor as rendered.
-    target.getClientRects = () => [target.getBoundingClientRect()] as unknown as DOMRectList;
+    setRendered(container, true);
+    setRendered(target, true);
   });
 
   afterEach(() => {
@@ -82,19 +69,22 @@ describe('usePlacementObserver', () => {
   };
 
   it('attaches no window listeners while hidden', () => {
+    setRendered(container, false);
     renderHook(() => usePlacementObserver(container, target, document));
-    emit([{ target: container, width: 0, height: 0 }]);
+    notify(container);
 
     expect(calledWith(addSpy, 'scroll')).toBe(false);
     expect(calledWith(addSpy, 'resize')).toBe(false);
   });
 
   it('attaches listeners and updates placement when shown', async () => {
+    setRendered(container, false);
     renderHook(() => usePlacementObserver(container, target, document));
-    emit([{ target: container, width: 0, height: 0 }]);
+    notify(container);
 
     showBelow();
-    emit([{ target: container, width: 100, height: 50 }]);
+    setRendered(container, true);
+    notify(container);
     await Promise.resolve();
 
     expect(addSpy).toHaveBeenCalledWith('scroll', expect.any(Function), expect.objectContaining({ capture: true }));
@@ -105,10 +95,11 @@ describe('usePlacementObserver', () => {
   it('removes listeners when hidden again', () => {
     renderHook(() => usePlacementObserver(container, target, document));
     showBelow();
-    emit([{ target: container, width: 100, height: 50 }]);
+    notify(container);
     expect(calledWith(removeSpy, 'scroll')).toBe(false);
 
-    emit([{ target: container, width: 0, height: 0 }]);
+    setRendered(container, false);
+    notify(container);
 
     expect(calledWith(removeSpy, 'scroll')).toBe(true);
     expect(calledWith(removeSpy, 'resize')).toBe(true);
@@ -117,51 +108,30 @@ describe('usePlacementObserver', () => {
   it('never overwrites a correct placement while hidden', async () => {
     renderHook(() => usePlacementObserver(container, target, document));
     container.setAttribute('data-placement', 'below-start');
-    container.getBoundingClientRect = () => makeRect({});
-    target.getBoundingClientRect = () => makeRect({});
+    setRendered(container, false);
 
-    emit([{ target: container, width: 0, height: 0 }]);
+    notify(container);
     await Promise.resolve();
 
     expect(container.getAttribute('data-placement')).toBe('below-start');
   });
 
-  // The content box is 0x0 in every row: only the border box decides.
-  it.each([
-    [100, 20],
-    [100, 0],
-    [0, 20],
-  ])('treats a %ix%i border box as laid out', async (inlineSize, blockSize) => {
+  it('keeps listening on a scale(0) surface and updates once the transform is restored', async () => {
     renderHook(() => usePlacementObserver(container, target, document));
     showBelow();
-    emit([{ target: container, width: 0, height: 0, borderBox: { inlineSize, blockSize } }]);
+    // a rendered surface whose transformed rect collapses to a point
+    container.getBoundingClientRect = () => makeRect({ top: 165, left: 150 });
+    notify(container);
+    await Promise.resolve();
+    expect(calledWith(addSpy, 'scroll')).toBe(true);
+
+    // the transform is restored: no ResizeObserver notification, only a later scroll
+    showBelow();
+    container.removeAttribute('data-placement');
+    window.dispatchEvent(new Event('scroll'));
     await Promise.resolve();
 
-    expect(calledWith(addSpy, 'scroll')).toBe(true);
-    expect(calledWith(addSpy, 'resize')).toBe(true);
-    expect(container.getAttribute('data-placement')).toMatch(/^below/);
-  });
-
-  it('treats a 0x0 border box as hidden and detaches listeners', () => {
-    renderHook(() => usePlacementObserver(container, target, document));
-    emit([{ target: container, width: 100, height: 50 }]);
-    expect(calledWith(addSpy, 'scroll')).toBe(true);
-
-    emit([{ target: container, width: 10, height: 10, borderBox: { inlineSize: 0, blockSize: 0 } }]);
-
-    expect(calledWith(removeSpy, 'scroll')).toBe(true);
-    expect(calledWith(removeSpy, 'resize')).toBe(true);
-  });
-
-  it('falls back to getBoundingClientRect without borderBoxSize', () => {
-    renderHook(() => usePlacementObserver(container, target, document));
-    container.getBoundingClientRect = () => makeRect({ width: 100, height: 20 });
-    emit([{ target: container, width: 0, height: 0, borderBox: null }]);
-    expect(calledWith(addSpy, 'scroll')).toBe(true);
-
-    container.getBoundingClientRect = () => makeRect({});
-    emit([{ target: container, width: 50, height: 50, borderBox: null }]);
-    expect(calledWith(removeSpy, 'scroll')).toBe(true);
+    expect(container.getAttribute('data-placement')).toBe('below-start');
   });
 
   it('observes the container with the border-box option', () => {
@@ -176,13 +146,12 @@ describe('usePlacementObserver', () => {
     target.getBoundingClientRect = () => makeRect({ top: 200, left: 100, width: 100, height: 40 });
     container.getBoundingClientRect = () => makeRect({ top: 150, left: 100, width: 100, height: 40 });
     container.setAttribute('data-placement', 'above-start');
-    emit([{ target: container, width: 100, height: 40 }]);
+    notify(container);
     await Promise.resolve();
     expect(container.getAttribute('data-placement')).toBe('above-start');
 
-    target.getBoundingClientRect = () => makeRect({});
-    target.getClientRects = () => [] as unknown as DOMRectList;
-    emit([{ target, width: 0, height: 0 }]);
+    setRendered(target, false);
+    notify(target);
     await Promise.resolve();
 
     expect(container.getAttribute('data-placement')).toBe('above-start');
@@ -193,7 +162,7 @@ describe('usePlacementObserver', () => {
     target.getBoundingClientRect = () => makeRect({ top: 100, left: 150, width: 0, height: 0 });
     container.getBoundingClientRect = () => makeRect({ top: 100, left: 100, width: 100, height: 50 });
 
-    emit([{ target: container, width: 100, height: 50 }]);
+    notify(container);
     await Promise.resolve();
 
     expect(container.getAttribute('data-placement')).toMatch(/^below/);
@@ -214,7 +183,7 @@ describe('usePlacementObserver', () => {
   it('removes everything on unmount', () => {
     const { unmount } = renderHook(() => usePlacementObserver(container, target, document));
     showBelow();
-    emit([{ target: container, width: 100, height: 50 }]);
+    notify(container);
 
     unmount();
 
