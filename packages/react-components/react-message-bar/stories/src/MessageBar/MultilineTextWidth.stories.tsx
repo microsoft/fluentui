@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Issue29419 = (): JSXElement => {
+export const MultilineTextWidth = (): JSXElement => {
   const styles = useStyles();
   const [reported, setReported] = React.useState(false);
   const [automatic, setAutomatic] = React.useState(false);
@@ -39,7 +39,7 @@ export const Issue29419 = (): JSXElement => {
         onChange={(_, { checked }) => setReported(checked)}
       />
       <Switch label="Use automatic layout" checked={automatic} onChange={(_, { checked }) => setAutomatic(checked)} />
-      <div data-testid="issue-29419-container">
+      <div data-testid="multiline-text-width-container">
         <MessageBar layout={automatic ? 'auto' : 'multiline'}>
           <MessageBarBody>
             <MessageBarTitle>Descriptive title</MessageBarTitle>
@@ -57,11 +57,11 @@ export const Issue29419 = (): JSXElement => {
   );
 };
 
-Issue29419.parameters = {
+MultilineTextWidth.parameters = {
   docs: {
     description: {
       story:
-        'Local reproduction using the copy visible in issue #29419. The accessibility wording is transcribed from the design screenshot, not asserted as a standard.',
+        'Multiline text wraps within a bounded area and shrinks with the container. Enable automatic layout to see the bound removed when the content fits on one line. The example copy comes from the design screenshot in issue #29419; its accessibility wording is not asserted as a standard.',
     },
   },
 };
