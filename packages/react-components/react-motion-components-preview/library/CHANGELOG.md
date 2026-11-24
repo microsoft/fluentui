@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.15.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.15.11)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
 
 ## [0.15.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.15.9)
 

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:28 GMT",
+      "version": "9.9.6",
+      "tag": "@fluentui/react-overflow_v9.9.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "394c56181799d3ac9ecd747bc137c87603d0fe2f",
+            "comment": "chore: remove unused dependency on @fluentui/react-theme"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.4.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.9.5",
       "comments": {
