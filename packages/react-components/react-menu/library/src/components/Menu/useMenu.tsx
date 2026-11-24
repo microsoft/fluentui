@@ -142,7 +142,8 @@ export const useMenuBase_unstable = (
     menuPopover = children[0];
   }
 
-  const triggerId = useId('menu', getTriggerChild<{ id?: string }>(menuTrigger?.props.children)?.props.id);
+  const triggerChild = getTriggerChild<{ id?: string }>(menuTrigger?.props.children);
+  const triggerId = useId('menu', triggerChild?.props.id);
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
