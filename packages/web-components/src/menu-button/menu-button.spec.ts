@@ -657,16 +657,13 @@ test.describe('MenuButton', () => {
 
     await input.fill('foo');
 
-    const wasNotSubmitted = input.evaluate(
-      node =>
-        new Promise(resolve => {
-          node.addEventListener('invalid', () => resolve(true));
-        }),
-    );
+    await input.evaluate(node => {
+      node.addEventListener('invalid', () => node.setAttribute('data-invalid', 'true'), { once: true });
+    });
 
     await button.click();
 
-    await expect(wasNotSubmitted).resolves.toBeTruthy();
+    await expect(input).toHaveAttribute('data-invalid', 'true');
   });
 
   test('should NOT submit the referenced form when form validation errors are present and the `formnovalidate` attribute is NOT present and the `form` attribute is present', async ({
@@ -686,15 +683,12 @@ test.describe('MenuButton', () => {
 
     await input.fill('foo');
 
-    const wasInvalid = input.evaluate(
-      node =>
-        new Promise(resolve => {
-          node.addEventListener('invalid', () => resolve(true));
-        }),
-    );
+    await input.evaluate(node => {
+      node.addEventListener('invalid', () => node.setAttribute('data-invalid', 'true'), { once: true });
+    });
 
     await button.click();
 
-    await expect(wasInvalid).resolves.toBeTruthy();
+    await expect(input).toHaveAttribute('data-invalid', 'true');
   });
 });
