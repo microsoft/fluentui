@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Replace Floating UI with a smaller positioning engine while preserving the public API and placement behavior.",
+  "comment": "refactor: replace floating-ui with custom positioning engine",
   "packageName": "@fluentui/react-positioning",
   "email": "dmytrokirpa@microsoft.com"
 }
