@@ -3,11 +3,12 @@ import * as fs from 'node:fs';
 import { isBuiltin } from 'node:module';
 import * as path from 'node:path';
 
-import { createProjectGraphAsync, workspaceRoot } from '@nx/devkit';
+import { getDependencies } from '@fluentui/scripts-monorepo';
 import { sync as globSync } from 'glob';
 import * as ts from 'typescript';
 
-import { generateFiles, prepareTempDirs } from '../../scripts/projects-test/src/utils';
+import { createPackageResolutions } from './packPackages';
+import { generateFiles, prepareTempDirs, workspaceRoot } from './utils';
 
 interface Manifest {
   name: string;
@@ -15,18 +16,12 @@ interface Manifest {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   optionalDependencies?: Record<string, string>;
-  peerDependencies?: Record<string, string>;
   resolutions?: Record<string, string>;
   main?: string;
   module?: string;
   types?: string;
   typings?: string;
   exports?: string | null | { [condition: string]: Manifest['exports'] };
-}
-
-interface LocalPackage {
-  root: string;
-  manifest: Manifest;
 }
 
 function readManifest(root: string): Manifest {
@@ -45,41 +40,11 @@ export function verifyDeclaredImports(root: string, manifest: Manifest): void {
         .split('/')
         .slice(0, specifier.startsWith('@') ? 2 : 1)
         .join('/');
-      if (!Object.hasOwn(declared, name)) {
+      if (!Object.prototype.hasOwnProperty.call(declared, name)) {
         throw new Error(`${file}: ${name} is imported but not declared by the starter`);
       }
     }
   }
-}
-
-export function collectLocalPackages(manifest: Manifest, packages: Map<string, LocalPackage>): LocalPackage[] {
-  const collected = new Map<string, LocalPackage>();
-  const visit = (dependencies: Record<string, string> = {}) => {
-    for (const name of Object.keys(dependencies)) {
-      const local = packages.get(name);
-      if (!local || collected.has(name)) {
-        continue;
-      }
-      collected.set(name, local);
-      visit(local.manifest.dependencies);
-      visit(local.manifest.optionalDependencies);
-      visit(local.manifest.peerDependencies);
-    }
-  };
-  visit(manifest.dependencies);
-  visit(manifest.devDependencies);
-  visit(manifest.optionalDependencies);
-  return [...collected.values()];
-}
-
-export function addLocalResolutions(manifest: Manifest, archives: Record<string, string>): Manifest {
-  return {
-    ...manifest,
-    resolutions: {
-      ...manifest.resolutions,
-      ...Object.fromEntries(Object.entries(archives).map(([name, archive]) => [name, `file:${archive}`])),
-    },
-  };
 }
 
 export function verifyPackageOutputs(root: string, manifest: Manifest): void {
@@ -124,32 +89,50 @@ export async function withTemporaryApp(run: (app: string, root: string) => Promi
 }
 
 export async function testIntegration(): Promise<void> {
-  const graph = await createProjectGraphAsync();
-  const packages = new Map<string, LocalPackage>();
-  for (const project of Object.values(graph.nodes)) {
-    const root = path.join(workspaceRoot, project.data.root);
-    if (fs.existsSync(path.join(root, 'package.json'))) {
-      const manifest = readManifest(root);
-      packages.set(manifest.name, { root, manifest });
-    }
-  }
+  const { dependencies, projectGraph, getProjectPackageJsonInfo } = await getDependencies('react-components');
+  const localPackages = [...new Set(['react-components', ...dependencies.map(dependency => dependency.name)])].map(
+    project => getProjectPackageJsonInfo(project, projectGraph),
+  );
 
   await withTemporaryApp(async (app, root) => {
     generateFiles(path.join(workspaceRoot, 'starter-templates/src/react-components-vite'), app);
     const manifest = readManifest(app);
     // Hoisted transitive packages must not conceal a missing starter dependency.
     verifyDeclaredImports(app, manifest);
-    const localPackages = collectLocalPackages(manifest, packages);
+    for (const name of Object.keys({
+      ...manifest.dependencies,
+      ...manifest.devDependencies,
+      ...manifest.optionalDependencies,
+    })) {
+      const project = name.replace('@fluentui/', '');
+      if (
+        projectGraph.nodes[project] &&
+        getProjectPackageJsonInfo(project, projectGraph).name === name &&
+        !localPackages.some(pkg => pkg.name === name)
+      ) {
+        throw new Error(`${name}: add this local starter dependency to the integration package selection and Nx graph`);
+      }
+    }
     const archives: Record<string, string> = {};
     for (const local of localPackages) {
-      verifyPackageOutputs(local.root, local.manifest);
+      verifyPackageOutputs(local.absoluteRootPath, local);
       // Sequential packing ensures no subprocess is still writing when cleanup starts.
       const result: { filename: string }[] = JSON.parse(
-        execFileSync('npm', ['pack', '--json', '--ignore-scripts', local.root], { cwd: root, encoding: 'utf8' }),
+        execFileSync('npm', ['pack', '--json', '--ignore-scripts', local.absoluteRootPath], {
+          cwd: root,
+          encoding: 'utf8',
+        }),
       );
-      archives[local.manifest.name] = path.join(root, result[0].filename);
+      archives[local.name] = path.join(root, result[0].filename);
     }
-    fs.writeFileSync(path.join(app, 'package.json'), JSON.stringify(addLocalResolutions(manifest, archives), null, 2));
+    fs.writeFileSync(
+      path.join(app, 'package.json'),
+      JSON.stringify(
+        { ...manifest, resolutions: { ...manifest.resolutions, ...createPackageResolutions(archives) } },
+        null,
+        2,
+      ),
+    );
 
     const { packageManager } = readManifest(workspaceRoot) as Manifest & { packageManager: string };
     const yarn = path.join(workspaceRoot, `.yarn/releases/yarn-${packageManager.replace('yarn@', '')}.cjs`);
@@ -173,7 +156,7 @@ export async function testIntegration(): Promise<void> {
 
     const lockfile = fs.readFileSync(path.join(app, 'yarn.lock'), 'utf8');
     for (const local of localPackages) {
-      const name = local.manifest.name;
+      const name = local.name;
       const installedRoot = fs.realpathSync(path.join(app, 'node_modules', name));
       if (!installedRoot.startsWith(`${fs.realpathSync(app)}${path.sep}`)) {
         throw new Error(`${name}: installed package escaped the isolated consumer: ${installedRoot}`);

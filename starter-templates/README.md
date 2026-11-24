@@ -34,27 +34,26 @@ build `react-components` and its dependency graph before testing. The existing
 affected CI `test-integration` invocation selects this check when the starter,
 the shared project-test helpers, or those Fluent packages change.
 
-The check copies the actual Vite starter to an OS temporary directory, packs its
-declared in-repository dependency closure, and adds local tarball resolutions
-without adding dependencies to the starter manifest. A source-import check rejects
-undeclared dependencies even if they could be hoisted from a transitive package.
-React icons and other external dependencies remain registry dependencies.
-It uses the repository-pinned
-Yarn with an isolated cache and node_modules, verifies installed package outputs
-and tarball resolution, then runs the starter's `build` script (`tsc -b && vite build`)
-and checks its production assets. Temporary files are removed on success and failure.
-Results are not cached because external dependency ranges are resolved on each run.
+The runner in `scripts/projects-test/src/vite.ts` copies the actual starter to an
+OS temporary directory. Shared repository helpers discover the `react-components`
+runtime dependencies and resolve them to local tarballs without adding starter
+dependencies; icons and other external packages remain registry dependencies.
+It checks declared imports, installed package outputs and tarball isolation, then
+runs the unchanged `build` script (`tsc -b && vite build`) and verifies production assets.
+The repository-pinned Yarn uses an isolated cache and node_modules. Temporary files
+are removed on success and failure. Results are uncached because external dependency
+ranges are resolved on each run.
 
-Runner regression tests and type checking:
+Runner regression tests, type checking and lint use the existing shared tooling:
 
 ```bash
-yarn nx run stater-templates:test
-yarn nx run stater-templates:type-check
+yarn nx run-many -p scripts-projects-test -t test type-check lint
 ```
 
 This is a TypeScript and production-bundler check, not Vitest/jsdom or browser
 coverage. When adding another in-repository starter dependency, keep the Nx
-`implicitDependencies` in sync so its build and affected selection are included.
+`implicitDependencies` and the runner's package selection in sync so its outputs
+are built and installed locally rather than fetched from the registry.
 
 We welcome contributions! You can help by:
 

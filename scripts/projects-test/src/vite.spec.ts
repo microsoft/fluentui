@@ -2,54 +2,9 @@ import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
 
-import {
-  addLocalResolutions,
-  collectLocalPackages,
-  verifyDeclaredImports,
-  verifyPackageOutputs,
-  withTemporaryApp,
-} from './test-integration';
+import { verifyDeclaredImports, verifyPackageOutputs, withTemporaryApp } from './vite';
 
 describe('isolated starter consumer', () => {
-  it('substitutes the local runtime closure without adding undeclared dependencies or local dev tools', () => {
-    const manifest = {
-      name: 'starter',
-      version: '1.0.0',
-      dependencies: { '@fluentui/react-components': '^9', '@fluentui/react-icons': '^2' },
-    };
-    const packages = new Map(
-      [
-        {
-          name: '@fluentui/react-components',
-          version: '9.0.0',
-          dependencies: { '@fluentui/react-button': '^9' },
-          devDependencies: { '@fluentui/test-tool': '*' },
-        },
-        {
-          name: '@fluentui/react-button',
-          version: '9.0.0',
-          optionalDependencies: { '@fluentui/optional': '*' },
-          peerDependencies: { '@fluentui/peer': '*' },
-        },
-        { name: '@fluentui/optional', version: '1.0.0' },
-        { name: '@fluentui/peer', version: '1.0.0' },
-        { name: '@fluentui/test-tool', version: '1.0.0' },
-      ].map(pkg => [pkg.name, { root: '/unused', manifest: pkg }]),
-    );
-    const closure = collectLocalPackages(manifest, packages).map(pkg => pkg.manifest.name);
-    expect(closure).toEqual([
-      '@fluentui/react-components',
-      '@fluentui/react-button',
-      '@fluentui/optional',
-      '@fluentui/peer',
-    ]);
-    expect(collectLocalPackages({ ...manifest, dependencies: {} }, packages)).toEqual([]);
-    const resolved = addLocalResolutions(manifest, { '@fluentui/react-components': '/tmp/components.tgz' });
-    expect(resolved.dependencies).toEqual(manifest.dependencies);
-    expect(resolved.resolutions).toEqual({ '@fluentui/react-components': 'file:/tmp/components.tgz' });
-    expect(manifest).not.toHaveProperty('resolutions');
-  });
-
   it('rejects missing ESM and declaration outputs even when CommonJS exists', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-output-'));
     try {
