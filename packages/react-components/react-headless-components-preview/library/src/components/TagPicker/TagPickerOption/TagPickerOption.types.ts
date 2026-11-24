@@ -56,4 +56,12 @@ export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
  * OptionState is retained (rather than the narrower upstream state) so that
  * disabled/selected/checkIcon rendering from useOption is available at render time.
  */
-export type TagPickerOptionState = OptionState & ComponentState<TagPickerOptionSlots>;
+export type TagPickerOptionState = OptionState &
+  ComponentState<TagPickerOptionSlots> & {
+    root: {
+      /**
+       * Whether the option is checked, or `mixed` when partially checked.
+       */
+      'data-checked'?: string;
+    };
+  };

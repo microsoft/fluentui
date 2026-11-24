@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Mon, 23 Nov 2026 04:10:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 04:08:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.3)
+
+Tue, 24 Nov 2026 04:08:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.2..@fluentui/web-components_v3.2.3)
+
+### Patches
+
+- Recognize radio subclasses by element identity regardless of tag name and deprecate the tag-name-based isRadio helper. ([PR #37208](https://github.com/microsoft/fluentui/pull/37208) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.2)
 
