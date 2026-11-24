@@ -3,7 +3,7 @@ import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs/bloc
 import { webLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { create, Global, type ThemeVars } from 'storybook/theming';
+import { create, ThemeProvider, type StorybookTheme, type ThemeVars } from 'storybook/theming';
 
 import { isDocsEnabled } from './utils';
 
@@ -21,11 +21,15 @@ const docsTheme = create({
   barHoverColor: webLightTheme.colorNeutralForeground2Hover,
 });
 
-const sourceStyles = {
-  '#storybook-docs .docblock-source .token.attr-name': {
-    color: webLightTheme.colorPaletteRedForeground1,
+const withAccessibleSourceTokens = (theme: StorybookTheme): StorybookTheme => ({
+  ...theme,
+  code: {
+    ...theme.code,
+    'token.attr-name': {
+      color: webLightTheme.colorPaletteRedForeground1,
+    },
   },
-};
+});
 
 /**
  * A container that wraps storybook's native docs container to add extra components to the docs experience
@@ -33,12 +37,9 @@ const sourceStyles = {
 export const FluentDocsContainer: ForwardRefComponent<FluentDocsContainerProps> = React.forwardRef(
   ({ children, context, theme }, ref) => {
     const docs = (
-      <>
-        {!theme && <Global styles={sourceStyles} />}
-        <DocsContainer context={context} theme={theme ?? docsTheme}>
-          {children}
-        </DocsContainer>
-      </>
+      <DocsContainer context={context} theme={theme ?? docsTheme}>
+        {theme ? children : <ThemeProvider theme={withAccessibleSourceTokens}>{children}</ThemeProvider>}
+      </DocsContainer>
     );
 
     if (isDocsEnabled(context)) {
