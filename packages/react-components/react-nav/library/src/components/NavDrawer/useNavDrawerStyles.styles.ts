@@ -4,7 +4,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
-import { navItemTokens } from '../sharedNavStyles.styles';
+import { navItemTokens } from '../sharedNavItemTokens';
 
 export const navDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>> = {
   root: 'fui-NavDrawer',
