@@ -1,8 +1,6 @@
-import type { ClippingBoundary } from '../engine/types';
-
-import { getRoot } from '../engine/platform';
+import type { ClippingBoundary, PositioningBoundary } from '../types';
+import { getRoot } from './domGeometry';
 import { listScrollParents } from './listScrollParents';
-import type { PositioningBoundary } from '../types';
 
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.

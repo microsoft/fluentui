@@ -1,8 +1,14 @@
-import { computePosition } from './engine/computePosition';
-import { getWindow, px } from './engine/platform';
-import type { Placement, Strategy } from './engine/types';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { OnPositioningEndEventDetail, PositionManager, PositioningOptions, TargetElement } from './types';
+import type {
+  OnPositioningEndEventDetail,
+  PositionManager,
+  PositioningOptions,
+  PositioningPlacement,
+  Strategy,
+  TargetElement,
+} from './types';
+import { computePosition } from './utils/computePosition';
+import { getWindow, px } from './utils/domGeometry';
 import { debounce } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
 import {
@@ -38,7 +44,7 @@ interface PositionManagerOptions {
   /**
    * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
    */
-  placement?: Placement;
+  placement?: PositioningPlacement;
 }
 
 /**

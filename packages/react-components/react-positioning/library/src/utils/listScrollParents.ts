@@ -1,4 +1,4 @@
-import { findAncestor, getDocument } from '../engine/platform';
+import { findAncestor, getDocument } from './domGeometry';
 
 /** Lists the scroll parents of the node, the closest first, up to and including the body of its document */
 export const listScrollParents = (node: HTMLElement): HTMLElement[] => {

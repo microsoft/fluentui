@@ -3,7 +3,7 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import type { PositioningOptions, PositioningPlacement } from './types';
-import { toFloatingUIPlacement } from './utils';
+import { toPhysicalPlacement } from './utils';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
 /**
@@ -40,7 +40,7 @@ export function usePositioningOptions(options: PositioningOptions): (
         options: Object.fromEntries(OPTION_KEYS.map((key, index) => [key, values[index]])),
       });
       return {
-        placement: toFloatingUIPlacement(resolved.align, resolved.position, isRtl),
+        placement: toPhysicalPlacement(resolved.align, resolved.position, isRtl),
         options: resolved,
         isRtl,
         // Preserve the baseline precedence: an explicit absolute strategy also resolves to fixed.

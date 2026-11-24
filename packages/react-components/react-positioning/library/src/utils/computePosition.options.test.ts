@@ -1,7 +1,7 @@
 import { computePosition } from './computePosition';
 import type { OffsetFunctionParam, PositioningOptions, PositioningPlacement } from '../types';
 
-// Supply layout measurements (which jsdom lacks), not a mock of the engine or its platform.
+// Supply layout measurements (which jsdom lacks), not a mock of the positioning or geometry helpers.
 function setup() {
   const container = document.createElement('div');
   const targetRect = { x: 100, y: 100, width: 40, height: 30 };

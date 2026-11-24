@@ -1,4 +1,4 @@
-import { getReferenceRect, isContainingBlock } from './platform';
+import { getReferenceRect, isContainingBlock } from './domGeometry';
 
 describe('getReferenceRect', () => {
   it.each([

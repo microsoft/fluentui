@@ -1,10 +1,9 @@
-import { computePosition } from './engine/computePosition';
-import type { Placement } from './engine/types';
+import { computePosition } from './utils/computePosition';
 import { createPositionManager } from './createPositionManager';
 import { POSITIONING_END_EVENT } from './constants';
-import type { OnPositioningEndEvent } from './types';
+import type { OnPositioningEndEvent, PositioningPlacement } from './types';
 
-jest.mock('./engine/computePosition', () => ({
+jest.mock('./utils/computePosition', () => ({
   computePosition: jest.fn(),
 }));
 
@@ -94,7 +93,7 @@ describe('createPositionManager', () => {
     expect(computePositionMock).not.toHaveBeenCalled();
   });
 
-  it.each([
+  it.each<PositioningPlacement>([
     'top',
     'top-start',
     'top-end',
@@ -107,7 +106,7 @@ describe('createPositionManager', () => {
     'left',
     'left-start',
     'left-end',
-  ] as Placement[])('dispatches POSITIONING_END_EVENT with placement "%s"', async (placement: Placement) => {
+  ])('dispatches POSITIONING_END_EVENT with placement "%s"', async placement => {
     computePositionMock.mockResolvedValue({
       x: 10,
       y: 20,

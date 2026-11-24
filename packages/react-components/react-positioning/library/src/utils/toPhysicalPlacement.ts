@@ -1,11 +1,11 @@
-import type { Placement, Side } from '../engine/types';
-import type { Alignment, Position } from '../types';
+import type { Alignment, Position, PositioningPlacement, Side } from '../types';
 
-/**
- * Maps internal positioning values to Floating UI placement
- * @see positioningHelper.test.ts for expected placement values
- */
-export const toFloatingUIPlacement = (align?: Alignment, position?: Position, rtl?: boolean): Placement | undefined => {
+/** Resolves a Fluent position and alignment to a physical placement, e.g. `before` to `right` in RTL. */
+export const toPhysicalPlacement = (
+  align?: Alignment,
+  position?: Position,
+  rtl?: boolean,
+): PositioningPlacement | undefined => {
   if (!position) {
     return undefined;
   }

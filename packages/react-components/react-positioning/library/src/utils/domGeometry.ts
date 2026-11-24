@@ -1,5 +1,5 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { ClippingBoundary, Rect, Strategy } from './types';
+import type { ClippingBoundary, PositioningRect, Strategy } from '../types';
 
 type Scale = { x: number; y: number };
 type CoordinateSpace = Scale & { scale: Scale; parent?: HTMLElement | null };
@@ -29,9 +29,10 @@ const getVisualOffsets = (element: Element): Scale => {
   return isWebKit(element) && viewport ? { x: viewport.offsetLeft, y: viewport.offsetTop } : NO_OFFSET;
 };
 
-const getBounds = (target: { getBoundingClientRect(): DOMRect | Rect }) => target.getBoundingClientRect() as DOMRect;
+const getBounds = (target: { getBoundingClientRect(): DOMRect | PositioningRect }) =>
+  target.getBoundingClientRect() as DOMRect;
 
-export const rect = (x: number, y: number, width: number, height: number): Rect => ({ x, y, width, height });
+export const rect = (x: number, y: number, width: number, height: number): PositioningRect => ({ x, y, width, height });
 
 /** Whether size query containers form containing blocks, measured once by `probeSizeContainer` */
 let sizeContainerContains: boolean | undefined;
@@ -50,7 +51,7 @@ const probeSizeContainer = (element: Element): boolean => {
   return contains;
 };
 
-export const intersect = (a: Rect, b: Rect): Rect => {
+export const intersect = (a: PositioningRect, b: PositioningRect): PositioningRect => {
   const x = Math.max(a.x, b.x);
   const y = Math.max(a.y, b.y);
 
@@ -171,7 +172,7 @@ export const getScale = (element: HTMLElement): Scale => {
 };
 
 /** The viewport rect of the element's padding box, in CSS pixels of its own window */
-const getClientRect = (element: HTMLElement): Rect & { scale: Scale } => {
+const getClientRect = (element: HTMLElement): PositioningRect & { scale: Scale } => {
   const bounds = getBounds(element);
   const scale = getScale(element);
   return {
@@ -201,7 +202,7 @@ const getWindowSpace = (win: Window): CoordinateSpace => {
 };
 
 /** Converts a viewport rect of one window to a viewport rect of another (same-origin) window */
-const convertWindowRect = (value: Rect, from: Window, to: Window): Rect => {
+const convertWindowRect = (value: PositioningRect, from: Window, to: Window): PositioningRect => {
   if (from === to) {
     return value;
   }
@@ -261,12 +262,12 @@ export const getCoordinateSpace = (element: HTMLElement, strategy: Strategy): Co
  * that a virtual reference is relative to (the floating element's root element by default).
  */
 export const getReferenceRect = (
-  reference: { getBoundingClientRect(): DOMRect | Rect },
+  reference: { getBoundingClientRect(): DOMRect | PositioningRect },
   context: Element,
   floating: HTMLElement,
   space: CoordinateSpace,
   strategy: Strategy,
-): Rect => {
+): PositioningRect => {
   const floatingWindow = getWindow(floating);
   const referenceWindow = getWindow(context);
   const clientRect = reference.getBoundingClientRect();
@@ -295,7 +296,7 @@ export const getClippingRect = (
   boundary: ClippingBoundary,
   floatingWindow = getWindow(element),
   strategy?: Strategy,
-): Rect => {
+): PositioningRect => {
   const win = getWindow(element);
   const root = getRoot(element);
   const viewport = win.visualViewport;
@@ -308,7 +309,7 @@ export const getClippingRect = (
     : rect(0, 0, root.clientWidth, root.clientHeight);
   for (const item of clippingAncestors ? getScrollAncestors(element) : ([] as unknown[]).concat(boundary)) {
     if (item && typeof item === 'object') {
-      const { x, y, width, height } = item as Rect;
+      const { x, y, width, height } = item as PositioningRect;
       clip = intersect(
         clip,
         'nodeType' in item

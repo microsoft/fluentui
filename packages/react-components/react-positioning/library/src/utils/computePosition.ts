@@ -1,8 +1,19 @@
-import type { Placement, Rect, Side, SideObject, Strategy } from './types';
-import type { Alignment, Position, PositioningBoundary, PositioningOptions, TargetElement } from '../types';
-import { getBoundary, toFloatingUIPlacement } from '../utils';
-import { toPositioningValues } from '../utils/fromFloatingUIPlacement';
-import { getAutoSizeDimensions } from '../utils/normalizeAutoSize';
+import type {
+  Alignment,
+  Position,
+  PositioningBoundary,
+  PositioningOptions,
+  PositioningPlacement,
+  PositioningRect,
+  Side,
+  SideObject,
+  Strategy,
+  TargetElement,
+} from '../types';
+import { getBoundary } from './getBoundary';
+import { toPhysicalPlacement } from './toPhysicalPlacement';
+import { fromPhysicalPlacement } from './fromPhysicalPlacement';
+import { getAutoSizeDimensions } from './normalizeAutoSize';
 import {
   getClippingRect,
   getCoordinateSpace,
@@ -15,10 +26,10 @@ import {
   NO_OFFSET,
   px,
   rect,
-} from './platform';
+} from './domGeometry';
 
 type Options = {
-  placement?: Placement;
+  placement?: PositioningPlacement;
   strategy: Strategy;
   options?: PositioningOptions;
   isRtl?: boolean;
@@ -27,7 +38,7 @@ type Options = {
 type Axis = 'x' | 'y';
 type Coords = Record<Axis, number>;
 export type ComputePositionResult = Coords & {
-  placement: Placement;
+  placement: PositioningPlacement;
   /** Arrow offset along the alignment axis, `undefined` without an arrow */
   arrow?: Partial<Coords>;
   /** The floating element is outside of the clipping boundary of the target, `false` without a layout viewport */
@@ -49,13 +60,18 @@ const lengthOf = (axis: Axis) => (axis === 'x' ? 'width' : 'height');
 const startOf = (axis: Axis) => (axis === 'x' ? LEFT : TOP);
 const endOf = (axis: Axis) => (axis === 'x' ? RIGHT : BOTTOM);
 const sides = (top: number, right: number, bottom: number, left: number): SideObject => ({ top, right, bottom, left });
-const splitPlacement = (placement: Placement) => placement.split('-') as [Side, (typeof START | typeof END)?];
+const splitPlacement = (placement: PositioningPlacement) =>
+  placement.split('-') as [Side, (typeof START | typeof END)?];
 const alignmentAxis = (side: Side): Axis => (side === TOP || side === BOTTOM ? 'x' : 'y');
 
-type FlipAttempt = [placement: Placement, fitsSide: boolean, score: number];
+type FlipAttempt = [placement: PositioningPlacement, fitsSide: boolean, score: number];
 
 /** Prefer the least alignment overflow among side fits, otherwise the least total overflow. The first tie wins. */
-const bestFit = (previous: FlipAttempt | undefined, placement: Placement, overflows: number[]): FlipAttempt => {
+const bestFit = (
+  previous: FlipAttempt | undefined,
+  placement: PositioningPlacement,
+  overflows: number[],
+): FlipAttempt => {
   const fitsSide = overflows[0] <= 0;
   const score = fitsSide ? overflows[1] : overflows.reduce((sum, value) => sum + Math.max(0, value), 0);
   return !previous || (fitsSide !== previous[1] ? fitsSide : score < previous[2])
@@ -124,9 +140,9 @@ export async function computePosition(
   // An explicit boundary clips the target, otherwise the clipping ancestors of the container are used
   const boundaryClip = (boundary?: PositioningBoundary | null) =>
     clip(boundary ? referenceElement : container, boundary);
-  let flipClip!: Rect;
-  let shiftClip!: Rect;
-  let visibilityClip!: Rect;
+  let flipClip!: PositioningRect;
+  let shiftClip!: PositioningRect;
+  let visibilityClip!: PositioningRect;
   const padding =
     typeof rawPadding === 'number'
       ? sides(rawPadding, rawPadding, rawPadding, rawPadding)
@@ -137,7 +153,7 @@ export async function computePosition(
           rawPadding[isRtl ? END : START] || 0,
         );
   /** How far the box (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
-  const overflow = (box: Rect, bounds: Rect, inset = sides(0, 0, 0, 0)) => {
+  const overflow = (box: PositioningRect, bounds: PositioningRect, inset = sides(0, 0, 0, 0)) => {
     const result = {} as SideObject;
     for (const axis of ['x', 'y'] as const) {
       const length = lengthOf(axis);
@@ -157,19 +173,19 @@ export async function computePosition(
         initial,
         ...fallbackPositions.map(shorthand => {
           const [position, align] = shorthand.split('-') as [Position, Alignment?];
-          return toFloatingUIPlacement(align, position, isRtl)!;
+          return toPhysicalPlacement(align, position, isRtl)!;
         }),
       ]
     : ([initialSide, SIDES[(SIDES.indexOf(initialSide) + 2) % 4]].flatMap(side =>
         initialAlign ? [`${side}-${initialAlign}`, `${side}-${initialAlign === START ? END : START}`] : [side],
-      ) as Placement[]);
+      ) as PositioningPlacement[]);
   let space: ReturnType<typeof getCoordinateSpace>;
   /**
    * The reference and floating rects in the container's coordinate space. Resizing the container can move its
    * containing block and change the scrollbars of its ancestors, so the coordinate space and the clipping
    * rects are measured together with the rects.
    */
-  const measure = (): [Rect, Rect] => {
+  const measure = (): [PositioningRect, PositioningRect] => {
     flipClip = boundaryClip(flipBoundary);
     // Without explicit boundaries flipping and shifting share one measurement
     shiftClip = flipBoundary || overflowBoundary ? boundaryClip(overflowBoundary) : flipClip;
@@ -229,7 +245,7 @@ export async function computePosition(
     if (offset) {
       const raw =
         typeof offset === 'function'
-          ? offset({ positionedRect: f, targetRect: r, ...toPositioningValues(side, align) })
+          ? offset({ positionedRect: f, targetRect: r, ...fromPhysicalPlacement(side, align) })
           : offset;
       const value = typeof raw === 'number' ? { mainAxis: raw } : raw;
       // Only an arrow adjustment can restart the pipeline after arrowData has been set.
@@ -335,7 +351,7 @@ export async function computePosition(
     : intersectionOverflow;
   const { clientWidth, clientHeight } = getRoot(container);
   // Visibility can't be determined without a layout viewport (e.g. in jsdom)
-  const isHidden = (values: SideObject, box: Rect) =>
+  const isHidden = (values: SideObject, box: PositioningRect) =>
     !!(clientWidth || clientHeight) && SIDES.some((side, index) => values[side] >= box[index % 2 ? 'width' : 'height']);
   return {
     ...coords,

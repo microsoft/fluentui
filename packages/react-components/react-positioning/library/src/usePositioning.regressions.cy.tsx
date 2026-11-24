@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { computePosition as computeOracle, hide, shift, offset, limitShift } from '@floating-ui/dom';
-import { computePosition } from './engine/computePosition';
-import { getClippingRect } from './engine/platform';
+import { computePosition } from './utils/computePosition';
+import { getClippingRect } from './utils/domGeometry';
 import { usePositioning } from './usePositioning';
 import type { OnPositioningEndEventDetail, TargetElement } from './types';
 
