@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies -- Shared story helper uses development dependencies.
 import {
   Carousel,
   CarouselNext,

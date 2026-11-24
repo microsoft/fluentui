@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './carousel.module.css';
-import { CarouselExample } from './carouselExample.stories';
+import { CarouselExample } from './carouselExample';
 
 export const Controlled = (): React.ReactNode => {
   const [index, setIndex] = React.useState(0);

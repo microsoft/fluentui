@@ -17,15 +17,16 @@ const transition: CarouselTransition = ({ incoming, outgoing }) => [
 describe('Carousel browser behavior', () => {
   let styles: string;
   before(() => {
-    cy.readFile('../stories/.storybook/tokens.css').then(tokens => {
-      cy.readFile('../stories/src/Carousel/carousel.module.css').then(css => {
+    const storiesRoot = Cypress.spec.absolute.replace(/[/\\]library[/\\]src[/\\].*$/, '/stories');
+    cy.readFile(`${storiesRoot}/.storybook/tokens.css`).then(tokens => {
+      cy.readFile(`${storiesRoot}/src/Carousel/carousel.module.css`).then(css => {
         styles = `${tokens}\n${css}`;
       });
     });
   });
   const renderCarousel = ({ autoplay = false, ...props }: Partial<CarouselProps> & { autoplay?: boolean } = {}) =>
     mount(
-      <>
+      <div className="example">
         <style>{styles}</style>
         <button>Before</button>
         <Carousel
@@ -49,7 +50,7 @@ describe('Carousel browser behavior', () => {
           <CarouselNav />
         </Carousel>
         <button>After</button>
-      </>,
+      </div>,
     );
 
   it('keeps inactive actions out of Tab order and recovers boundary focus after motion', () => {
