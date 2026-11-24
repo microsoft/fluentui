@@ -11,7 +11,7 @@ import type { PresenceDirection } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 
 // @public
-export const Blur: PresenceComponent<BlurParams>;
+export const Blur: PresenceComponent<BlurParams, never, never>;
 
 // @public
 export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
@@ -23,10 +23,10 @@ export type BlurParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public
-export const Collapse: PresenceComponent<CollapseParams>;
+export const Collapse: PresenceComponent<CollapseParams, never, never>;
 
 // @public
-export const CollapseDelayed: PresenceComponent<CollapseParams>;
+export const CollapseDelayed: PresenceComponent<CollapseParams, never, never>;
 
 // @public
 export type CollapseDurations = {
@@ -45,13 +45,13 @@ export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurat
 };
 
 // @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseParams>;
+export const CollapseRelaxed: PresenceComponent<CollapseParams, never, never>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseParams>;
+export const CollapseSnappy: PresenceComponent<CollapseParams, never, never>;
 
 // @public
-export const Fade: PresenceComponent<FadeParams>;
+export const Fade: PresenceComponent<FadeParams, never, never>;
 
 // @public
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
@@ -63,13 +63,13 @@ export type FadeParams = BasePresenceParams & {
 };
 
 // @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeParams>;
+export const FadeRelaxed: PresenceComponent<FadeParams, never, never>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeParams>;
+export const FadeSnappy: PresenceComponent<FadeParams, never, never>;
 
 // @public (undocumented)
-export const Rotate: PresenceComponent<RotateParams>;
+export const Rotate: PresenceComponent<RotateParams, never, never>;
 
 // @public
 export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
@@ -82,7 +82,7 @@ export type RotateParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public
-export const Scale: PresenceComponent<ScaleParams>;
+export const Scale: PresenceComponent<ScaleParams, never, never>;
 
 // @public
 export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
@@ -94,13 +94,13 @@ export type ScaleParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleParams>;
+export const ScaleRelaxed: PresenceComponent<ScaleParams, never, never>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleParams>;
+export const ScaleSnappy: PresenceComponent<ScaleParams, never, never>;
 
 // @public
-export const Slide: PresenceComponent<SlideParams>;
+export const Slide: PresenceComponent<SlideParams, never, never>;
 
 // @public
 export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
@@ -114,10 +114,10 @@ export type SlideParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public (undocumented)
-export const SlideRelaxed: PresenceComponent<SlideParams>;
+export const SlideRelaxed: PresenceComponent<SlideParams, never, never>;
 
 // @public (undocumented)
-export const SlideSnappy: PresenceComponent<SlideParams>;
+export const SlideSnappy: PresenceComponent<SlideParams, never, never>;
 
 // @public
 export const Stagger: React_2.FC<StaggerProps> & {

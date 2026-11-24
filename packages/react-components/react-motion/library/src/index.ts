@@ -10,6 +10,7 @@ export {
   createPresenceComponent,
   type PresenceComponentProps,
   type PresenceComponent,
+  type PresenceComponentOptions,
 } from './factories/createPresenceComponent';
 export { createPresenceComponentVariant } from './factories/createPresenceComponentVariant';
 
@@ -28,9 +29,13 @@ export {
 export type {
   AtomMotion,
   AtomMotionFn,
+  BasePresenceParams,
   PresenceMotion,
   PresenceMotionFn,
   PresenceDirection,
+  PresenceDuration,
+  PresenceEasing,
+  PresenceDelay,
   MotionImperativeRef,
   MotionParam,
 } from './types';

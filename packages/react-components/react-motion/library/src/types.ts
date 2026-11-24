@@ -2,6 +2,12 @@ type AtomCore = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
 export type AtomMotion = AtomCore & {
   /**
+   * Optional target element to animate instead of the motion component's root element.
+   * When omitted, the motion animates the root element wrapped by the motion component.
+   */
+  target?: Element;
+
+  /**
    * Allows to specify a reduced motion version of the animation. If provided, the settings will be used when the
    * user has enabled the reduced motion setting in the operating system (i.e `prefers-reduced-motion` media query is
    * active). If not provided, the duration of the animation will be overridden to be 1ms.
@@ -14,6 +20,44 @@ export type AtomMotion = AtomCore & {
 export type PresenceDirection = 'enter' | 'exit';
 
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
+
+/**
+ * Common duration parameters for presence motion components.
+ */
+export type PresenceDuration = {
+  /** Time (ms) for the enter transition, or for playback on `.In`/`.Out`. */
+  duration?: number;
+
+  /** Time (ms) for the exit transition. The motion definition determines the default. */
+  exitDuration?: number;
+};
+
+/**
+ * Common easing parameters for presence motion components.
+ */
+export type PresenceEasing = {
+  /** Easing curve for the enter transition, or for playback on `.In`/`.Out`. */
+  easing?: string;
+
+  /** Easing curve for the exit transition. The motion definition determines the default. */
+  exitEasing?: string;
+};
+
+/**
+ * Common delay parameters for presence motion components.
+ */
+export type PresenceDelay = {
+  /** Time (ms) to delay the enter transition, or playback on `.In`/`.Out`. */
+  delay?: EffectTiming['delay'];
+
+  /** Time (ms) to delay the exit transition. The motion definition determines the default. */
+  exitDelay?: EffectTiming['delay'];
+};
+
+/**
+ * Base presence parameters combining duration, easing, and delay for motion components.
+ */
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
 
 /**
  * A motion param should be a primitive value that can be serialized to JSON and could be potentially used a plain
