@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: update Menu aria-labelledby relationships when a trigger element has a custom id",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com"
+}
