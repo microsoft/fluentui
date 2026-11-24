@@ -498,7 +498,7 @@ describe('positioning engine browser regressions', () => {
   }
 
   for (const containerType of ['inline-size', 'size']) {
-    it(`does not treat a container-type: ${containerType} query container as a containing block`, () => {
+    it(`follows the browser containing block of a container-type: ${containerType} query container`, () => {
       cy.document().then(async doc => {
         // Away from the viewport origin, so a wrongly adopted coordinate space displaces the surface
         const container = element(

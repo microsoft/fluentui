@@ -4,10 +4,11 @@ import type { Boundary, Rect, Strategy } from '@floating-ui/dom';
 type Scale = { x: number; y: number };
 type CoordinateSpace = Scale & { scale: Scale; parent?: HTMLElement | null };
 
-// Expression-bodied helpers and plain property access keep the ES2019 output compact.
+// Expression-bodied helpers keep the minified output compact.
 
-export const getWindow = (node: Node): Window => node.ownerDocument!.defaultView!;
-export const getRoot = (node: Node): HTMLElement => node.ownerDocument!.documentElement;
+export const getDocument = (node: Node): Document => node.ownerDocument!;
+export const getWindow = (node: Node): Window => getDocument(node).defaultView!;
+export const getRoot = (node: Node): HTMLElement => getDocument(node).documentElement;
 export const getStyle = (element: Element): CSSStyleDeclaration => getWindow(element).getComputedStyle(element);
 
 /** A CSS pixel value, an empty string removes the inline style */
@@ -17,10 +18,8 @@ export const px = (value: number | undefined): string => (value === undefined ? 
 const isSet = (value: string | undefined): boolean => !!value && value !== 'none';
 
 /** Uses `CSS.supports()` of the element's window, which is unavailable in some environments (e.g. jsdom) */
-const isWebKit = (element: Element): boolean => {
-  const css = (getWindow(element) as Window & typeof globalThis).CSS;
-  return !!css && !!css.supports && css.supports('-webkit-backdrop-filter', 'none');
-};
+const isWebKit = (element: Element): boolean =>
+  !!(getWindow(element) as Window & typeof globalThis).CSS?.supports?.('-webkit-backdrop-filter', 'none');
 
 /** Shared and never mutated */
 export const NO_OFFSET: Scale = { x: 0, y: 0 };
@@ -33,6 +32,23 @@ const getVisualOffsets = (element: Element): Scale => {
 const getBounds = (target: { getBoundingClientRect(): DOMRect | Rect }) => target.getBoundingClientRect() as DOMRect;
 
 export const rect = (x: number, y: number, width: number, height: number): Rect => ({ x, y, width, height });
+
+/** Whether size query containers form containing blocks, measured once by `probeSizeContainer` */
+let sizeContainerContains: boolean | undefined;
+
+/**
+ * Engines applying layout containment to size query containers (Chromium < 129) offset the fixed child by the
+ * container. Without layout (e.g. jsdom) both overlap.
+ */
+const probeSizeContainer = (element: Element): boolean => {
+  const container = getRoot(element).appendChild(getDocument(element).createElement('div'));
+  container.style.cssText = 'position:fixed;left:1px;container-type:size';
+  // Cloned inline styles skip the CSP check of parsed style attributes
+  const child = container.appendChild(container.cloneNode());
+  const contains = getBounds(child as Element).x > getBounds(container).x;
+  container.remove();
+  return contains;
+};
 
 export const intersect = (a: Rect, b: Rect): Rect => {
   const x = Math.max(a.x, b.x);
@@ -54,7 +70,7 @@ export const isContainingBlock = (element: Element, style: CSSStyleDeclaration, 
   // WebKit ignores filters
   ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
   /auto|hidden/.test(style.contentVisibility) ||
-  // `container-type` alone doesn't form a containing block in Chromium and WebKit
+  (/size/.test(style.containerType) && (sizeContainerContains ??= probeSizeContainer(element))) ||
   /filter/.test(style.willChange) ||
   /paint|layout|strict|content/.test(style.contain);
 
@@ -115,7 +131,7 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
     // The overflow of the body propagates to the viewport, which is always part of the clipping rect
     if (
       !strategy &&
-      node !== element.ownerDocument.body &&
+      node !== getDocument(element).body &&
       isHTMLElement(node) &&
       style.display !== 'inline' &&
       /auto|scroll|overlay|hidden|clip/.test(style.overflow + style.overflowX + style.overflowY)
@@ -212,7 +228,7 @@ export const getOffsetParent = (element: HTMLElement): HTMLElement | null => {
     parent = parent.offsetParent;
   }
   // Firefox returns a positioned root element, which is normalized to the body like in other browsers
-  const { body } = element.ownerDocument;
+  const { body } = getDocument(element);
   if (parent === getRoot(element)) {
     parent = body;
   }

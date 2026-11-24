@@ -90,6 +90,10 @@ checks that clipping is measured again with the rectangles.
 Virtual-reference regressions preserve `left/top` over inconsistent `x/y`, including references
 in bordered, padded, scaled iframes. A public-hook caret fixture asserts the exact four-pixel
 tooltip gap, placement, and visible reference state in a 408-by-268 viewport.
+Size query containers (`container-type: size | inline-size`) form containing blocks only in engines
+that apply layout containment to them (Chromium before 129, the Electron 118 bundled with Cypress 13
+in React 17 compatibility tests). The engine measures this once, when such a container is
+encountered, and the regressions assert physical alignment under both behaviors.
 
 ## Engine parity and size validation
 
@@ -118,6 +122,6 @@ It also compares fixed/absolute positioning, containing blocks, and rectangular 
 against Floating UI with controlled visual-viewport offsets. Element geometry remains real;
 the viewport metrics are emulated, so these checks do not replace native pinch-zoom/pan testing.
 
-The package is compiled to ES2019, so the engine avoids optional chaining and nullish coalescing
-in hot paths (they are lowered to verbose helpers), prefers expression-bodied helpers, and keeps
+The package is compiled to ES2020, which keeps optional chaining and nullish coalescing native
+(logical assignments such as `??=` are lowered). The engine prefers expression-bodied helpers and keeps
 DOM traversal in one place (`src/engine/platform.ts`) that the scroll-parent listing reuses.
