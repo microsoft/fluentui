@@ -373,6 +373,15 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
+    if (e.key === 'Enter') {
+      const submitButton = (this.elementInternals.form?.elements ?? []).find(
+        element => 'type' in element && element.type === 'submit',
+      );
+
+      (submitButton as HTMLElement | undefined)?.click();
+      return true;
+    }
+
     if (e.key !== ' ') {
       return true;
     }
