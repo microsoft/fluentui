@@ -3087,7 +3087,7 @@ __metadata:
     replace-in-file: "npm:6.1.0"
     resolve: "npm:1.22.8"
     riceburn: "npm:1.3.1"
-    rollup: "npm:2.79.2"
+    rollup: "npm:2.80.0"
     rollup-plugin-commonjs: "npm:10.1.0"
     rollup-plugin-esbuild: "npm:6.1.1"
     rollup-plugin-node-resolve: "npm:5.2.0"
@@ -28993,9 +28993,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.79.2":
-  version: 2.79.2
-  resolution: "rollup@npm:2.79.2"
+"rollup@npm:2.80.0":
+  version: 2.80.0
+  resolution: "rollup@npm:2.80.0"
   dependencies:
     fsevents: "npm:~2.3.2"
   dependenciesMeta:
@@ -29003,7 +29003,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 10c0/bc3746c988d903c2211266ddc539379d53d92689b9cc5c2b4e3ae161689de9af491957a567c629b6cc81f48d0928a7591fc4c383fba68a48d2966c9fb8a2bce9
+  checksum: 10c0/48ad7b79a4ef9332cf90692d28c05f904132820964f012941372ec4f31c18635e1b7909823058964fb2b216154713bfbe82ec00920d71b15f3fe13bb9df3eac8
   languageName: node
   linkType: hard
 
