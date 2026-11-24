@@ -1,7 +1,7 @@
 import type { AtomMotion, PresenceMotionFn } from '@fluentui/react-motion';
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
-import { rotateAtom } from '../../atoms/rotate-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
+import { rotate } from '../../atoms/rotate-atom';
 import type { RotateParams } from './rotate-types';
 
 /**
@@ -31,32 +31,30 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
-    rotateAtom({
-      direction: 'enter',
+    rotate({
       duration,
       easing,
       delay,
       axis,
-      outAngle,
-      inAngle,
+      from: outAngle,
+      to: inAngle,
     }),
   ];
 
   const exitAtoms: AtomMotion[] = [
-    rotateAtom({
-      direction: 'exit',
+    rotate({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
       axis,
-      outAngle,
-      inAngle,
+      from: inAngle,
+      to: outAngle,
     }),
   ];
 
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
+    enterAtoms.push(fadeIn({ duration, easing, delay }));
+    exitAtoms.push(fadeOut({ duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {

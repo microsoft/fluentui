@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motion-components-preview): replace legacy *Atom helpers with pose-based fade/scale/slide/rotate/blur and directional *In/*Out atoms",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

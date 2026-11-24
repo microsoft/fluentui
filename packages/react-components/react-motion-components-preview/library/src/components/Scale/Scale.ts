@@ -1,7 +1,7 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
-import { scaleAtom } from '../../atoms/scale-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
+import { scale } from '../../atoms/scale-atom';
 import type { ScaleParams } from './scale-types';
 
 /**
@@ -28,22 +28,21 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   inScale = 1,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, delay, outScale, inScale })];
+  const enterAtoms = [scale({ duration, easing, delay, from: outScale, to: inScale })];
   const exitAtoms = [
-    scaleAtom({
-      direction: 'exit',
+    scale({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outScale,
-      inScale,
+      from: inScale,
+      to: outScale,
     }),
   ];
 
   // Only add fade atoms if animateOpacity is true.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
+    enterAtoms.push(fadeIn({ duration, easing, delay }));
+    exitAtoms.push(fadeOut({ duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {

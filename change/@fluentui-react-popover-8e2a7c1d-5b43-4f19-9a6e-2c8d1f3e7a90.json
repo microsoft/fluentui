@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal surface motion from fadeAtom/slideAtom to fadeIn/slideIn.",
+  "packageName": "@fluentui/react-popover",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

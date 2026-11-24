@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal transition-row exit motion from fadeAtom/slideAtom to fadeOut/slideOut.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}
