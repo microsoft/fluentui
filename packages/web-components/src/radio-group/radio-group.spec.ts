@@ -1,3 +1,4 @@
+import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { expect, test } from '../../test/playwright/index.js';
 import type { Radio } from '../radio/index.js';
 import { tagName as RadioTagName } from '../radio/radio.options.js';
@@ -48,6 +49,58 @@ test.describe('RadioGroup', () => {
     await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'radiogroup');
+  });
+
+  test('should support radio and radio group subclasses with unrelated tag names', async ({ fastPage, page }) => {
+    await fastPage.setTemplate();
+
+    await fastPage.element.evaluate(async (node: RadioGroup, radioTagName) => {
+      const radio = node.ownerDocument.createElement(radioTagName) as Radio;
+      const RadioClass = radio.constructor as typeof Radio;
+      const RadioGroupClass = node.constructor as typeof RadioGroup;
+
+      class Swatch extends RadioClass {}
+      class SwatchGroup extends RadioGroupClass {}
+
+      await Swatch.define({
+        name: 'test-swatch',
+        template: radio.$fastController.definition.template as ElementViewTemplate<Radio>,
+        styles: radio.$fastController.definition.styles,
+      });
+      await SwatchGroup.define({
+        name: 'test-swatch-group',
+        template: node.$fastController.definition.template as ElementViewTemplate<RadioGroup>,
+        styles: node.$fastController.definition.styles,
+      });
+
+      const group = node.ownerDocument.createElement('test-swatch-group');
+      group.innerHTML = `
+        <test-swatch value="first" checked>First</test-swatch>
+        <test-swatch value="second">Second</test-swatch>
+        <unrelated-radio></unrelated-radio>
+        <input type="radio">
+      `;
+      node.replaceWith(group);
+    }, RadioTagName);
+
+    const group = page.locator('test-swatch-group');
+    const swatches = group.locator('test-swatch');
+
+    await expect(group).toHaveJSProperty('constructor.elementIdentity', 'radio-group');
+    await expect(swatches.first()).toHaveJSProperty('constructor.elementIdentity', 'radio');
+    await expect.poll(() => group.evaluate((node: RadioGroup) => node.radios?.length)).toBe(2);
+    await expect(group).toHaveJSProperty('value', 'first');
+
+    await swatches.nth(1).click();
+
+    await expect(group).toHaveJSProperty('value', 'second');
+    await expect(swatches.first()).toHaveJSProperty('checked', false);
+    await expect(swatches.nth(1)).toHaveJSProperty('checked', true);
+
+    await group.evaluate(node => node.setAttribute('disabled', ''));
+
+    await expect(swatches.first()).toHaveJSProperty('disabled', true);
+    await expect(swatches.nth(1)).toHaveJSProperty('disabled', true);
   });
 
   test('should set a default `aria-orientation` value when `orientation` is not defined', async ({ fastPage }) => {
