@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add headless Carousel with compound parts named after react-carousel",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
