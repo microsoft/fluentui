@@ -133,20 +133,16 @@ export const useMenuBase_unstable = (
     }
   }
 
-  let menuTrigger: React.ReactElement | undefined = undefined;
+  let menuTrigger: React.ReactElement<{ children?: React.ReactElement }> | undefined = undefined;
   let menuPopover: React.ReactElement | undefined = undefined;
   if (children.length === 2) {
-    menuTrigger = children[0];
+    menuTrigger = children[0] as React.ReactElement<{ children?: React.ReactElement }>;
     menuPopover = children[1];
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
 
-  const triggerId = useId(
-    'menu',
-    getTriggerChild<{ id?: string }>((menuTrigger?.props as { children?: React.ReactElement } | undefined)?.children)
-      ?.props.id,
-  );
+  const triggerId = useId('menu', getTriggerChild<{ id?: string }>(menuTrigger?.props.children)?.props.id);
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
