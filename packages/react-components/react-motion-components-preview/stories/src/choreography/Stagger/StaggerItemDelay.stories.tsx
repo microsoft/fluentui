@@ -1,8 +1,14 @@
 import * as React from 'react';
 import StaggerItemDelayDescription from './StaggerItemDelay.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Button, Label, Slider } from '@fluentui/react-components';
-import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
+import { Field, makeStyles, motionTokens, tokens, Button, Label, Slider } from '@fluentui/react-components';
+import {
+  createStaggerPresenceComponent,
+  fadeIn,
+  fadeOut,
+  slideIn,
+  slideOut,
+} from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -47,10 +53,21 @@ const useClasses = makeStyles({
   },
 });
 
+const StaggeredSlide = createStaggerPresenceComponent({
+  enter: [
+    fadeIn({ duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+    slideIn({ from: { y: '20px' }, duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+  ],
+  exit: [
+    fadeOut({ duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMid }),
+    slideOut({ to: { y: '20px' }, duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMid }),
+  ],
+});
+
 export const ItemDelay = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const [itemDelay, setItemDelay] = React.useState<number>(25);
+  const [startInterval, setStartInterval] = React.useState<number>(25);
 
   return (
     <div className={classes.container}>
@@ -62,26 +79,28 @@ export const ItemDelay = (): JSXElement => {
         </Field>
 
         <div className={classes.sliderField}>
-          <Label weight="semibold">Item Delay: {itemDelay}ms</Label>
-          <Slider min={0} max={200} step={25} value={itemDelay} onChange={(_, data) => setItemDelay(data.value)} />
+          <Label weight="semibold">Start Interval: {startInterval}ms</Label>
+          <Slider
+            min={0}
+            max={200}
+            step={25}
+            value={startInterval}
+            onChange={(_, data) => setStartInterval(data.value)}
+          />
         </div>
       </div>
 
-      <div className={classes.items}>
-        <Stagger visible={visible} itemDelay={itemDelay}>
-          {/* Create a list of items, each wrapped with a presence transition */}
+      <StaggeredSlide visible={visible} startInterval={startInterval}>
+        <div className={classes.items}>
           {Array.from({ length: 8 }, (_, i) => (
-            <Slide key={`stagger-item-${i}`} outY="20px">
-              {/* Outer div protects the inner div from Slide's opacity animation */}
-              <div>
-                <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>
-                  {i + 1}
-                </div>
+            <div key={`stagger-item-${i}`}>
+              <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>
+                {i + 1}
               </div>
-            </Slide>
+            </div>
           ))}
-        </Stagger>
-      </div>
+        </div>
+      </StaggeredSlide>
     </div>
   );
 };

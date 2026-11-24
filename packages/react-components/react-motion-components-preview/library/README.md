@@ -16,7 +16,6 @@ Ready-to-use presence components for common UI animation patterns, built on top 
 | **Slide**    | Directional movement for drawers, panels, carousels        |
 | **Blur**     | Focus/defocus effects for backgrounds, depth               |
 | **Rotate**   | 3D rotation for card flips, reveals                        |
-| **Stagger**  | Choreography for sequential list animations                |
 
 Each component (except Blur and Rotate) comes with **Snappy** (150ms) and **Relaxed** (250ms) timing variants.
 
@@ -131,6 +130,71 @@ forbidden, and `*Out` helpers depart from that neutral value with `from` forbidd
 `fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that
 defaults to `0`; `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut`
 require an authored outer endpoint because they have no universal displaced value.
+
+## Choreography, Sequence & Stagger
+
+Multi-target stagger, serial sequences, and holds are defined as plain motion POJOs rather than nested
+React motion components:
+
+- `layer(target, motion, options?)` binds a choreography motion to a DOM element or CSS selector with an optional additive `delay`.
+- `cloneMotionToTargets(targets, motion, options?)` creates one `MotionLayer` per target in input order without mutating `motion`.
+- `hold(duration)` inserts an explicit pause in milliseconds within a sequence while preserving prior animated state.
+- `sequence(children, { gap? })` plays ordered children serially on a shared cursor (positive `gap` pauses, negative `gap` overlaps), automatically normalizing WAAPI `fill` on repeated `(target, property)` steps.
+- `stagger(members, { startInterval, order? })` preserves ordered layer participants and adds `index * startInterval` to each member's existing delay.
+- `resolveChoreography(motion, rootOrOptions?)` lowers choreography POJOs into target-bound `AtomMotion[]` for WAAPI playback.
+- `createChoreographyComponent` / `createChoreographyPresenceComponent` turn choreography POJOs into motion or presence components controlled by one `AnimationHandle`.
+- `createSequenceComponent` creates a persistent-target sequenced motion component from ordered steps with an optional `gap` prop.
+- `createStaggerComponent` / `createStaggerPresenceComponent` create homogeneous staggered components over matched targets (default `':scope > *'`).
+
+```tsx
+import { motionTokens } from '@fluentui/react-motion';
+import {
+  createChoreographyPresenceComponent,
+  createStaggerPresenceComponent,
+  fadeIn,
+  fadeOut,
+  layer,
+  scaleIn,
+  scaleOut,
+  slideIn,
+  slideOut,
+  stagger,
+} from '@fluentui/react-motion-components-preview';
+
+// Homogeneous staggered list (one component, plain children)
+const StaggeredSlide = createStaggerPresenceComponent({
+  enter: [
+    fadeIn({ duration: motionTokens.durationNormal }),
+    slideIn({ from: { y: '20px' }, duration: motionTokens.durationNormal }),
+  ],
+  exit: [
+    fadeOut({ duration: motionTokens.durationNormal }),
+    slideOut({ to: { y: '20px' }, duration: motionTokens.durationNormal }),
+  ],
+});
+
+// Heterogeneous non-sibling choreography with additive layer delays
+const CardChoreography = createChoreographyPresenceComponent({
+  enter: stagger(
+    [
+      layer('[data-part="media"]', scaleIn({ from: 0.94, duration: motionTokens.durationSlow })),
+      layer('[data-part="title"]', fadeIn({ duration: motionTokens.durationNormal })),
+      layer('[data-part="actions"]', slideIn({ from: { y: '12px' }, duration: motionTokens.durationNormal }), {
+        delay: 40,
+      }),
+    ],
+    { startInterval: 60 },
+  ),
+  exit: stagger(
+    [
+      layer('[data-part="media"]', scaleOut({ to: 0.94, duration: motionTokens.durationFast })),
+      layer('[data-part="title"]', fadeOut({ duration: motionTokens.durationFast })),
+      layer('[data-part="actions"]', slideOut({ to: { y: '12px' }, duration: motionTokens.durationFast })),
+    ],
+    { startInterval: 40, order: 'reverse' },
+  ),
+});
+```
 
 ## Documentation
 

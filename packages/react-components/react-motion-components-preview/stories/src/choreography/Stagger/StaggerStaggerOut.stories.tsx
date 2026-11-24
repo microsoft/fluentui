@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { PresenceBadgeStatus, JSXElement } from '@fluentui/react-components';
 import { Avatar, Button, Card, CardHeader, Text, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
-import { Stagger, Collapse } from '@fluentui/react-motion-components-preview';
+import { createStaggerComponent, fadeOut } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import StaggerStaggerOutDescription from './StaggerStaggerOut.stories.md';
 
@@ -23,6 +23,11 @@ const useClasses = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow8,
   },
+  cards: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalM,
+  },
   userCard: {
     width: '100%',
     marginBottom: '4px',
@@ -36,6 +41,25 @@ const useClasses = makeStyles({
   ctaButton: {
     minWidth: '120px',
   },
+});
+
+const StaggeredCollapseOut = createStaggerComponent(({ element }) => {
+  const duration = motionTokens.durationUltraSlow;
+  const easing = motionTokens.curveDecelerateMin;
+  const fullHeight = `${element.scrollHeight}px`;
+
+  return [
+    fadeOut({ duration, easing }),
+    {
+      keyframes: [
+        { maxHeight: fullHeight, overflowY: 'hidden' },
+        { maxHeight: '0px', overflowY: 'hidden' },
+      ],
+      duration,
+      easing,
+      fill: 'both',
+    },
+  ];
 });
 
 // Reuse sample users from the In story file by duplicating data here to keep stories self-contained.
@@ -70,28 +94,28 @@ const users = [
   },
 ];
 
-// Basic Out: items animate out when removed from the list
+// Basic Out: items animate out in reverse order
 export const StaggerOut = (): JSXElement => {
   const classes = useClasses();
-  const [items] = React.useState(users);
-  const [animationKey, setAnimationKey] = React.useState<number>(0);
-
-  const replayAnimation = () => {
-    setAnimationKey(prev => prev + 1);
-  };
+  const [replayKey, setReplayKey] = React.useState<number>(0);
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button className={classes.ctaButton} appearance="primary" size="large" onClick={replayAnimation}>
+        <Button
+          className={classes.ctaButton}
+          appearance="primary"
+          size="large"
+          onClick={() => setReplayKey(prev => prev + 1)}
+        >
           Replay Animation
         </Button>
       </div>
 
-      <Stagger.Out key={animationKey} itemDelay={motionTokens.durationFast} reversed>
-        {items.map((user, index) => (
-          <Collapse.Out key={index} duration={motionTokens.durationUltraSlow} easing={motionTokens.curveDecelerateMin}>
-            <Card className={classes.userCard}>
+      <StaggeredCollapseOut startInterval={motionTokens.durationFast} order="reverse" replayKey={replayKey}>
+        <div className={classes.cards}>
+          {users.map((user, index) => (
+            <Card key={index} className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
                 image={
@@ -119,9 +143,9 @@ export const StaggerOut = (): JSXElement => {
                 <Text>{user.post}</Text>
               </div>
             </Card>
-          </Collapse.Out>
-        ))}
-      </Stagger.Out>
+          ))}
+        </div>
+      </StaggeredCollapseOut>
     </div>
   );
 };

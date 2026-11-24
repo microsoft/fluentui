@@ -1,11 +1,1 @@
-Use `Stagger.In` to animate a one-way enter transition.
-
-```tsx
-import { Stagger, Collapse } from '@fluentui/react-motion-components-preview';
-
-<Stagger.In>
-  <Collapse.In>{/* item 1 */}</Collapse.In>
-  <Collapse.In>{/* item 2 */}</Collapse.In>
-  // etc.
-</Stagger.In>;
-```
+Use `createStaggerComponent` with a per-item motion callback (`({ element }) => ...`) to measure each card's height and stagger a one-way entrance with `replayKey`.

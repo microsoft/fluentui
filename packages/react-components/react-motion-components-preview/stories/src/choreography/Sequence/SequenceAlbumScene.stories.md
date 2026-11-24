@@ -1,0 +1,1 @@
+Composes `layer`, `sequence`, `hold`, and `stagger` in a single POJO on one shared clock: the album title enters, holds, and exits in parallel with staggered photo cards that each run their own enter → hold → exit sequence.

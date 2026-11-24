@@ -1,12 +1,11 @@
-The `reversed` prop animates the stagger from the last item to the first.
+Set `order="reverse"` (or `exitOrder="reverse"`) to assign stagger offsets from the last matched target to the first.
 
 ```tsx
-import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
-
-<Stagger visible={isVisible} reversed>
-  <Slide>{/* item 1 */}</Slide>
-  <Slide>{/* item 2 */}</Slide>
-  <Slide>{/* item 3 */}</Slide>
-  // etc.
-</Stagger>;
+<StaggeredSlide visible={isVisible} order="reverse">
+  <div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+</StaggeredSlide>
 ```

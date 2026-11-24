@@ -1,13 +1,24 @@
-When `Stagger` wraps presence motion components, it triggers their animations in sequence.
-It has a `visible` prop to toggle between enter and exit transitions, so `Stagger` behaves like a presence component itself.
+Use `createStaggerPresenceComponent` to stagger enter and exit motion atoms across a container's children under a single presence component and `AnimationHandle` — no per-item wrapper components required.
 
 ```tsx
-import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
+import {
+  createStaggerPresenceComponent,
+  fadeIn,
+  fadeOut,
+  slideIn,
+  slideOut,
+} from '@fluentui/react-motion-components-preview';
 
-<Stagger visible={isVisible}>
-  <Slide>{/* item 1 */}</Slide>
-  <Slide>{/* item 2 */}</Slide>
-  <Slide>{/* item 3 */}</Slide>
-  // etc.
-</Stagger>;
+const StaggeredSlide = createStaggerPresenceComponent({
+  enter: [fadeIn({ duration: 200 }), slideIn({ from: { y: '20px' }, duration: 200 })],
+  exit: [fadeOut({ duration: 200 }), slideOut({ to: { y: '20px' }, duration: 200 })],
+});
+
+<StaggeredSlide visible={isVisible}>
+  <div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+</StaggeredSlide>;
 ```
