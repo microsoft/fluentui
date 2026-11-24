@@ -1,8 +1,11 @@
-import type { MiddlewareState } from '@floating-ui/dom';
+import type { devtools } from '@floating-ui/devtools';
 import type { PositioningOptions, Position, Alignment } from '../types';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './listScrollParents';
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
+
+/** Match the installed extension adapter's input without maintaining a second middleware contract. */
+export type MiddlewareState = Parameters<ReturnType<typeof devtools>['fn']>[0];
 
 export const devtoolsCallback =
   (options: Pick<PositioningOptions, 'flipBoundary' | 'overflowBoundary'>) =>

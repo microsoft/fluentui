@@ -1,5 +1,5 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { Boundary, Rect, Strategy } from '@floating-ui/dom';
+import type { ClippingBoundary, Rect, Strategy } from './types';
 
 type Scale = { x: number; y: number };
 type CoordinateSpace = Scale & { scale: Scale; parent?: HTMLElement | null };
@@ -292,7 +292,7 @@ export const getReferenceRect = (
 /** The visible area of the element within the boundary, in viewport pixels of `floatingWindow` */
 export const getClippingRect = (
   element: Element,
-  boundary: Boundary,
+  boundary: ClippingBoundary,
   floatingWindow = getWindow(element),
   strategy?: Strategy,
 ): Rect => {

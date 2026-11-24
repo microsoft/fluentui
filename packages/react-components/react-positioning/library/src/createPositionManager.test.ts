@@ -44,6 +44,56 @@ describe('createPositionManager', () => {
     document.body.innerHTML = '';
   });
 
+  it('listens to ancestor scrolls once and detaches when disposed', async () => {
+    computePositionMock.mockResolvedValue({ x: 0, y: 0, placement: 'bottom', ...mockVisibility });
+    const { container, target } = createTestElements();
+    const positioned = jest.fn();
+    container.addEventListener(POSITIONING_END_EVENT, positioned);
+    const scroller = document.body.appendChild(document.createElement('div'));
+    scroller.style.overflowY = 'auto';
+    scroller.appendChild(target);
+    const add = jest.spyOn(scroller, 'addEventListener');
+    const remove = jest.spyOn(scroller, 'removeEventListener');
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'fixed',
+      options: { disableUpdateOnResize: true },
+    });
+    await flushMicrotasks();
+
+    scroller.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    document.body.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    expect(positioned).toHaveBeenCalledTimes(3);
+    expect(add).toHaveBeenCalledTimes(1);
+    expect(add).toHaveBeenCalledWith('scroll', manager.updatePosition, { passive: true });
+
+    manager.dispose();
+    expect(remove).toHaveBeenCalledWith('scroll', manager.updatePosition);
+    scroller.dispatchEvent(new Event('scroll'));
+    document.body.dispatchEvent(new Event('scroll'));
+    await flushMicrotasks();
+    expect(positioned).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not try to observe elements in documents without a window', async () => {
+    const doc = document.implementation.createHTMLDocument();
+    expect(doc.defaultView).toBeNull();
+    const manager = createPositionManager({
+      container: doc.createElement('div'),
+      target: doc.createElement('button'),
+      arrow: null,
+      strategy: 'absolute',
+    });
+    manager.updatePosition();
+    await flushMicrotasks();
+    manager.dispose();
+    expect(computePositionMock).not.toHaveBeenCalled();
+  });
+
   it.each([
     'top',
     'top-start',
@@ -74,7 +124,6 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement,
       options: { disableUpdateOnResize: true },
     });
@@ -108,7 +157,6 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'top',
       options: { disableUpdateOnResize: true },
     });
@@ -155,7 +203,6 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'bottom',
       options: { disableUpdateOnResize: true },
     });
@@ -186,7 +233,6 @@ describe('createPositionManager', () => {
       target,
       arrow: null,
       strategy: 'absolute',
-      middleware: [],
       placement: 'bottom',
       options: { disableUpdateOnResize: true },
     });

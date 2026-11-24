@@ -1,4 +1,4 @@
-import type { Placement, Side } from '@floating-ui/dom';
+import type { Placement, Side } from '../engine/types';
 import type { Alignment, Position } from '../types';
 
 const POSITIONS: Record<Side, Position> = { top: 'above', bottom: 'below', left: 'before', right: 'after' };

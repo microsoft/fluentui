@@ -1,14 +1,8 @@
 import { computePosition } from './engine/computePosition';
 import { getWindow, px } from './engine/platform';
-import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import type { Placement, Strategy } from './engine/types';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type {
-  OnPositioningEndEventDetail,
-  PositionManager,
-  PositioningOptions,
-  PositioningPlacement,
-  TargetElement,
-} from './types';
+import type { OnPositioningEndEventDetail, PositionManager, PositioningOptions, TargetElement } from './types';
 import { debounce } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
 import {
@@ -38,10 +32,6 @@ interface PositionManagerOptions {
    * @default absolute
    */
   strategy: Strategy;
-  /**
-   * [Floating UI middleware](https://floating-ui.com/docs/middleware)
-   */
-  middleware?: Middleware[];
   /** Positioning options resolved by the configuration context */
   options?: PositioningOptions;
   isRtl?: boolean;
@@ -147,10 +137,7 @@ export function createPositionManager(managerOptions: PositionManagerOptions): P
         container.dispatchEvent(
           new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
             detail: {
-              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
-              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
-              // types into the public API surface.
-              placement: placement satisfies PositioningPlacement,
+              placement,
               escaped,
               referenceHidden,
             },

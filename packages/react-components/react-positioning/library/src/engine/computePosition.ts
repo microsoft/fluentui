@@ -1,8 +1,9 @@
 import { devtools } from '@floating-ui/devtools';
-import type { MiddlewareState, Placement, Rect, Side, SideObject, Strategy } from '@floating-ui/dom';
+import type { Placement, Rect, Side, SideObject, Strategy } from './types';
 import type { Alignment, Position, PositioningBoundary, PositioningOptions, TargetElement } from '../types';
 import { getBoundary, toFloatingUIPlacement } from '../utils';
 import { devtoolsCallback } from '../utils/devtools';
+import type { MiddlewareState } from '../utils/devtools';
 import { toPositioningValues } from '../utils/fromFloatingUIPlacement';
 import { getAutoSizeDimensions } from '../utils/normalizeAutoSize';
 import {
@@ -40,11 +41,31 @@ export type ComputePositionResult = Coords & {
   intersecting: boolean;
 };
 
-const SIDES: Side[] = ['top', 'right', 'bottom', 'left'];
+const TOP = 'top';
+const RIGHT = 'right';
+const BOTTOM = 'bottom';
+const LEFT = 'left';
+const START = 'start';
+const END = 'end';
+const SIDES: Side[] = [TOP, RIGHT, BOTTOM, LEFT];
 const lengthOf = (axis: Axis) => (axis === 'x' ? 'width' : 'height');
-const startOf = (axis: Axis) => (axis === 'x' ? 'left' : 'top');
-const endOf = (axis: Axis) => (axis === 'x' ? 'right' : 'bottom');
+const startOf = (axis: Axis) => (axis === 'x' ? LEFT : TOP);
+const endOf = (axis: Axis) => (axis === 'x' ? RIGHT : BOTTOM);
 const sides = (top: number, right: number, bottom: number, left: number): SideObject => ({ top, right, bottom, left });
+const splitPlacement = (placement: Placement) => placement.split('-') as [Side, (typeof START | typeof END)?];
+const alignmentAxis = (side: Side): Axis => (side === TOP || side === BOTTOM ? 'x' : 'y');
+
+type FlipAttempt = [placement: Placement, fitsSide: boolean, score: number];
+
+/** Prefer the least alignment overflow among side fits, otherwise the least total overflow. The first tie wins. */
+const bestFit = (previous: FlipAttempt | undefined, placement: Placement, overflows: number[]): FlipAttempt => {
+  const fitsSide = overflows[0] <= 0;
+  const score = fitsSide ? overflows[1] : overflows.reduce((sum, value) => sum + Math.max(0, value), 0);
+  return !previous || (fitsSide !== previous[1] ? fitsSide : score < previous[2])
+    ? [placement, fitsSide, score]
+    : previous;
+};
+
 const clamp = (min: number, value: number, max: number) => Math.max(min, Math.min(value, max));
 /**
  * Ordered bounds checks: unlike `clamp`, inverted bounds (e.g. an offset that pushes the floating element past the
@@ -63,7 +84,7 @@ const shiftOverflow = (coords: Coords, axis: Axis, overflow: SideObject) =>
 export async function computePosition(
   target: TargetElement,
   container: HTMLElement,
-  { placement: initial = 'bottom', strategy, options = {}, isRtl, arrow }: Options,
+  { placement: initial = BOTTOM, strategy, options = {}, isRtl, arrow }: Options,
 ): Promise<ComputePositionResult> {
   const {
     autoSize: rawAutoSize,
@@ -114,9 +135,9 @@ export async function computePosition(
       ? sides(rawPadding, rawPadding, rawPadding, rawPadding)
       : sides(
           rawPadding.top || 0,
-          rawPadding[isRtl ? 'start' : 'end'] || 0,
+          rawPadding[isRtl ? START : END] || 0,
           rawPadding.bottom || 0,
-          rawPadding[isRtl ? 'end' : 'start'] || 0,
+          rawPadding[isRtl ? END : START] || 0,
         );
   /** How far the box (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
   const overflow = (box: Rect, bounds: Rect, inset = sides(0, 0, 0, 0)) => {
@@ -132,7 +153,7 @@ export async function computePosition(
     }
     return result;
   };
-  const [initialSide, initialAlign] = initial.split('-') as [Side, string?];
+  const [initialSide, initialAlign] = splitPlacement(initial);
   // Without fallbacks: the initial placement, the opposite alignment, the opposite side and both opposites
   const candidates = fallbackPositions.length
     ? [
@@ -143,9 +164,8 @@ export async function computePosition(
         }),
       ]
     : ([initialSide, SIDES[(SIDES.indexOf(initialSide) + 2) % 4]].flatMap(side =>
-        initialAlign ? [`${side}-${initialAlign}`, `${side}-${initialAlign === 'start' ? 'end' : 'start'}`] : [side],
+        initialAlign ? [`${side}-${initialAlign}`, `${side}-${initialAlign === START ? END : START}`] : [side],
       ) as Placement[]);
-  const attempts: [placement: Placement, overflows: number[]][] = [];
   let space: ReturnType<typeof getCoordinateSpace>;
   /**
    * The reference and floating rects in the container's coordinate space. Resizing the container can move its
@@ -163,43 +183,50 @@ export async function computePosition(
   };
   let rects = measure();
   let candidateIndex = 0;
+  let previousBest: FlipAttempt | undefined;
   let placement = initial;
-  let matchAttempt = false;
-  let arrowAdjusted = false;
+  let matchWidth = matchTargetSize;
   let preserveCoordinates = false;
   let arrowData: Partial<Coords> | undefined;
-  let coords!: Coords;
+  let intersectionOverflow!: SideObject;
+  const coords = { x: 0, y: 0 };
   let delta: Coords = NO_OFFSET;
 
-  for (let attempt = 0; attempt <= 50; attempt++) {
+  // Size changes restart with fresh measurements; flips restart with a new candidate; only an arrow reset keeps coords.
+  // Core accepts 51 resets (including the initial auto-size style reset), then runs one pass without restarting.
+  for (let resetsLeft = autoSize.length ? 50 : 51; resetsLeft >= 0; resetsLeft--) {
     const [r, f] = rects;
-    const [side, align] = placement.split('-') as [Side, string?];
-    const isVertical = side === 'top' || side === 'bottom';
-    const isStart = side === 'top' || side === 'left';
-    // `main` is the alignment axis, `cross` is the axis that leads away from the target
-    const main: Axis = isVertical ? 'x' : 'y';
-    const cross: Axis = isVertical ? 'y' : 'x';
+    const [side, align] = splitPlacement(placement);
+    // `main` is the alignment axis, `cross` is the axis that leads away from the target.
+    const main = alignmentAxis(side);
+    const cross = main === 'x' ? 'y' : 'x';
+    const isStart = side === startOf(cross);
+    const rtlAlignment = rtl && main === 'x';
+    const alignsToStart = align === (rtlAlignment ? END : START);
     const mainLength = lengthOf(main);
     const crossLength = lengthOf(cross);
     const floatingRect = () => ({ ...f, ...coords });
     if (!preserveCoordinates) {
-      coords = { x: r.x + r.width / 2 - f.width / 2, y: r.y + r.height / 2 - f.height / 2 };
-      coords[cross] = isStart ? r[cross] - f[crossLength] : r[cross] + r[crossLength];
+      const referenceHalf = r[mainLength] / 2;
+      const floatingHalf = f[mainLength] / 2;
+      coords[main] = r[main] + referenceHalf - floatingHalf;
+      coords[cross] = r[cross] + (isStart ? -f[crossLength] : r[crossLength]);
       if (align) {
-        coords[main] +=
-          (r[mainLength] / 2 - f[mainLength] / 2) * (rtl && isVertical ? -1 : 1) * (align === 'start' ? -1 : 1);
+        coords[main] += (referenceHalf - floatingHalf) * (alignsToStart ? -1 : 1);
       }
     }
     preserveCoordinates = false;
-    if (matchTargetSize && r.width !== f.width && !matchAttempt) {
+    if (matchWidth && r.width !== f.width) {
       const property = '--fui-match-target-size';
       setStyle(property, px(r.width));
       if (!css.width) {
         css.width = `var(${property})`;
       }
-      matchAttempt = true;
-      rects = measure();
-      continue;
+      matchWidth = undefined;
+      if (resetsLeft) {
+        rects = measure();
+        continue;
+      }
     }
 
     if (offset) {
@@ -208,10 +235,11 @@ export async function computePosition(
           ? offset({ positionedRect: f, targetRect: r, ...toPositioningValues(side, align) })
           : offset;
       const value = typeof raw === 'number' ? { mainAxis: raw } : raw;
-      if (!arrowAdjusted) {
+      // Only an arrow adjustment can restart the pipeline after arrowData has been set.
+      if (!arrowData) {
         delta = {
           [cross]: (value.mainAxis || 0) * (isStart ? -1 : 1),
-          [main]: (value.crossAxis || 0) * (rtl && isVertical ? -1 : 1),
+          [main]: (value.crossAxis || 0) * (rtlAlignment ? -1 : 1),
         } as Coords;
         coords.x += delta.x;
         coords.y += delta.y;
@@ -220,28 +248,26 @@ export async function computePosition(
     if (coverTarget) {
       coords[cross] += (isStart ? 1 : -1) * r[crossLength];
     }
-    if (!pinned && !arrowAdjusted) {
+    if (resetsLeft && !pinned && !arrowData) {
       const values = overflow(floatingRect(), flipClip);
       // The edge on the alignment axis that overflows first: the end edge for start alignment (logical in RTL),
       // the opposite one when the target is larger than the floating element
-      const alignEnd = (align === (rtl && isVertical ? 'end' : 'start')) !== r[mainLength] > f[mainLength];
+      const alignEnd = alignsToStart !== r[mainLength] > f[mainLength];
       const overflows = [
         values[side],
         values[(alignEnd ? endOf : startOf)(main)],
         values[(alignEnd ? startOf : endOf)(main)],
       ];
-      attempts.push([placement, overflows]);
       if (overflows.some(value => value > 0)) {
-        const next = candidates[++candidateIndex];
+        const best = bestFit(previousBest, placement, overflows);
+        const next = candidates[candidateIndex + 1];
+        // Only advancing to another candidate persists this attempt across subsequent resets.
         if (next) {
-          placement = next;
-          continue;
+          previousBest = best;
+          candidateIndex++;
         }
-        const score = (scores: number[]) => scores.reduce((sum, value) => sum + Math.max(0, value), 0);
-        const best = (attempts.filter(item => item[1][0] <= 0).sort((a, b) => a[1][1] - b[1][1])[0] ||
-          attempts.slice().sort((a, b) => score(a[1]) - score(b[1]))[0])[0];
-        if (best !== placement) {
-          placement = best;
+        if (next || best[0] !== placement) {
+          placement = next || best[0];
           continue;
         }
       }
@@ -278,11 +304,12 @@ export async function computePosition(
         }
       }
       const dimensions = getDimensions(container);
-      if (f.width !== dimensions.width || f.height !== dimensions.height) {
+      if (resetsLeft && (f.width !== dimensions.width || f.height !== dimensions.height)) {
         rects = measure();
         continue;
       }
     }
+    intersectionOverflow = overflow(floatingRect(), visibilityClip);
     if (arrow) {
       const client = main === 'x' ? 'clientWidth' : 'clientHeight';
       const arrowLength = getDimensions(arrow)[mainLength];
@@ -293,17 +320,22 @@ export async function computePosition(
       const endDiff = r[mainLength] + r[main] - coords[main] - f[mainLength];
       const center = clientSize / 2 - arrowLength / 2 + endDiff / 2 - startDiff / 2;
       const arrowOffset = clamp(inset, center, clientSize - arrowLength - inset);
+      const adjust = !arrowData && align && center !== arrowOffset && r[mainLength] / 2 - inset - arrowLength / 2 < 0;
       arrowData = { [main]: arrowOffset };
-      if (!arrowAdjusted && align && center !== arrowOffset && r[mainLength] / 2 - inset - arrowLength / 2 < 0) {
+      if (adjust) {
         coords[main] += center - arrowOffset;
-        arrowAdjusted = preserveCoordinates = true;
-        continue;
+        preserveCoordinates = true;
       }
     }
-    break;
+    if (!preserveCoordinates) {
+      break;
+    }
   }
   const [reference, floating] = rects;
-  const floatingOverflow = overflow({ ...floating, ...coords }, visibilityClip);
+  // Only an arrow adjustment on the last permitted pass changes the coordinates between intersection and hide.
+  const hideOverflow = preserveCoordinates
+    ? overflow({ ...floating, ...coords }, visibilityClip)
+    : intersectionOverflow;
   const { clientWidth, clientHeight } = getRoot(container);
   // Visibility can't be determined without a layout viewport (e.g. in jsdom)
   const isHidden = (values: SideObject, box: Rect) =>
@@ -313,8 +345,10 @@ export async function computePosition(
     placement,
     arrow: arrowData,
     referenceHidden: isHidden(overflow(reference, visibilityClip), reference),
-    escaped: isHidden(floatingOverflow, floating),
-    intersecting: [floatingOverflow.top, floatingOverflow.bottom].some(value => value > 0 && value < floating.height),
+    escaped: isHidden(hideOverflow, floating),
+    intersecting: [intersectionOverflow.top, intersectionOverflow.bottom].some(
+      value => value > 0 && value < floating.height,
+    ),
   };
   if (process.env.NODE_ENV !== 'production') {
     // Keeps the Floating UI devtools extension working. The engine has no middleware, so the state that the

@@ -112,7 +112,8 @@ observers of those writes and updates they queue within two further microtasks (
 of updates made during a resize event) apply first; later re-measurements within an update are synchronous.
 Positioning callbacks and imperative refs do not recreate the manager on callback-only rerenders.
 Outside of production builds every result is still reported to the Floating UI devtools extension;
-the state it reads is assembled from the result as the engine has no middleware.
+the state it reads is assembled from the result as the engine has no middleware. `@floating-ui/dom`
+remains a package dependency to satisfy the devtools adapter's required peer, not to compute positions.
 
 ```sh
 yarn nx run react-positioning:bundle-size --skip-nx-cache
@@ -130,7 +131,8 @@ fresh engine modules, including alignment after the page CSS is removed and prob
 It runs focused real-browser checks for filtered ancestors and nested
 top-layer surfaces. Filter cases preserve the pinned Floating UI WebKit exception; nested
 top-layer cases assert physical layout, including containment by the top-layer ancestor itself.
-It requires the workspace's Playwright WebKit browser installation.
+It requires the workspace's Playwright WebKit browser installation. PR CI runs `test-webkit`
+in the browser E2E job when Nx marks `react-positioning` as affected.
 It also compares fixed/absolute positioning, containing blocks, and rectangular boundaries
 against Floating UI with controlled visual-viewport offsets. Element geometry remains real;
 the viewport metrics are emulated, so these checks do not replace native pinch-zoom/pan testing.

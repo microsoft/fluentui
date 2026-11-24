@@ -1,4 +1,4 @@
-import type { Boundary as FloatingUIBoundary } from '@floating-ui/dom';
+import type { ClippingBoundary } from '../engine/types';
 
 import { getRoot } from '../engine/platform';
 import { listScrollParents } from './listScrollParents';
@@ -10,7 +10,7 @@ import type { PositioningBoundary } from '../types';
 export const getBoundary = (
   element: HTMLElement | null,
   boundary?: PositioningBoundary,
-): FloatingUIBoundary | undefined => {
+): ClippingBoundary | undefined => {
   const root = element ? getRoot(element) : undefined;
   // The closest scroll parent, the root when it's the body
   const scrollParent = boundary === 'scrollParent' && element && listScrollParents(element)[0];
