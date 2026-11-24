@@ -229,16 +229,13 @@ export type PresenceComponent<
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
 
-const exitTimingProps = {
-  duration: 'exitDuration',
-  easing: 'exitEasing',
-  delay: 'exitDelay',
-} satisfies {
-  [Key in keyof BasePresenceParams as Key extends `exit${string}` ? never : Key]-?: Extract<
-    keyof BasePresenceParams,
-    `exit${Capitalize<Key>}`
-  >;
-};
+type ExitTimingSuffix = {
+  [Key in keyof BasePresenceParams]-?: Key extends `exit${infer Suffix}`
+    ? Lowercase<Suffix> extends keyof BasePresenceParams
+      ? Suffix
+      : never
+    : never;
+}[keyof BasePresenceParams];
 
 export function createPresenceComponent<
   MotionParams extends Record<string, MotionParam> = {},
@@ -259,65 +256,30 @@ export function createPresenceComponent<
     to: keyof MotionParams;
     neutral?: MotionParams[keyof MotionParams];
   };
-  const poseGroups: readonly (readonly PoseEntry[])[] =
-    options?.poseProps.map(entry => (Array.isArray(entry) ? (entry as readonly PoseEntry[]) : [entry as PoseEntry])) ??
-    [];
-  // Within each multi-axis pose group, an authored endpoint uses neutral values for omitted sibling axes.
-  // For example, fromX alone implies fromY = '0px' without affecting unrelated poses in other groups.
-  // Leave wholly omitted endpoints untouched so the motion function or variant can supply its defaults.
-  const completePoses = (params: MotionParams): MotionParams => {
-    // Normalize a copy: completing poses and copying exit timing must not mutate the caller's parameters.
-    const normalized = { ...params };
-    if (poseGroups.length === 0) {
-      return normalized;
-    }
-    for (const group of poseGroups) {
-      if (group.length <= 1) {
-        continue;
-      }
-      for (const endpoint of ['from', 'in', 'to'] as const) {
-        if (
-          group.some(pose => {
-            const key = pose[endpoint];
-            return key !== undefined && normalized[key] !== undefined;
-          })
-        ) {
-          for (const pose of group) {
-            const key = pose[endpoint];
-            if (key !== undefined && normalized[key] === undefined && pose.neutral !== undefined) {
-              normalized[key] = pose.neutral;
-            }
-          }
-        }
-      }
-    }
-    return normalized;
-  };
-  // Apply the same axis completion to presence and directional playback, while retaining the animated element.
+  const coupledGroups = options?.poseProps.filter(Array.isArray) as readonly (readonly PoseEntry[])[] | undefined;
+  // Within each multi-axis pose group, an authored endpoint uses neutral values for omitted sibling axes
+  // (e.g. fromX alone implies fromY = '0px') without affecting other groups or wholly omitted endpoints.
   const presenceFn: PresenceMotionFn<MotionParams> =
     typeof value === 'function'
-      ? options
-        ? params => value({ ...completePoses(params), element: params.element })
-        : value
-      : () => value;
-  const directionalMotion = <OmitKeys extends keyof MotionParams>(direction: PresenceDirection) =>
-    typeof value === 'function'
-      ? (params: { element: HTMLElement } & DirectionalMotionParams<MotionParams, OmitKeys>) => {
-          const normalized = completePoses(params as { element: HTMLElement } & MotionParams);
-          // Let .Out use ordinary timing props. Copy explicit values to exit* before variant defaults are merged,
-          // preserving an explicit exit-prefixed value when both forms are supplied.
-          if (direction === 'exit') {
-            for (const [ordinary, exit] of Object.entries(exitTimingProps)) {
-              const source = ordinary as keyof MotionParams;
-              const destination = exit as keyof MotionParams;
-              if (normalized[destination] === undefined && normalized[source] !== undefined) {
-                normalized[destination] = normalized[source];
+      ? coupledGroups?.length
+        ? params => {
+            const next: Record<PropertyKey, unknown> = { ...params };
+            for (const group of coupledGroups) {
+              for (const ep of ['from', 'in', 'to'] as const) {
+                if (group.some(p => p[ep] !== undefined && next[p[ep]!] !== undefined)) {
+                  for (const p of group) {
+                    const k = p[ep];
+                    if (k !== undefined && next[k] === undefined && p.neutral !== undefined) {
+                      next[k] = p.neutral;
+                    }
+                  }
+                }
               }
             }
+            return value(next as { element: HTMLElement } & MotionParams);
           }
-          return presenceFn({ ...normalized, element: params.element })[direction];
-        }
-      : value[direction];
+        : value
+      : () => value;
 
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
@@ -495,16 +457,30 @@ export function createPresenceComponent<
       >(
         // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
         // Otherwise, pass the `enter` motion object directly.
-        directionalMotion<PresenceInOmit<MotionParams, FromKeys, ToKeys, InKeys>>('enter'),
+        typeof value === 'function'
+          ? params => presenceFn(params as { element: HTMLElement } & MotionParams).enter
+          : value.enter,
       ),
 
       // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
       Out: createMotionComponent<
         DirectionalMotionParams<MotionParams, PresenceOutOmit<MotionParams, FromKeys, InKeys>>
       >(
-        // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
-        // Otherwise, pass the `exit` motion object directly.
-        directionalMotion<PresenceOutOmit<MotionParams, FromKeys, InKeys>>('exit'),
+        // If we have a motion function, forward explicit ordinary timing props to `exit*` before variant defaults
+        // are merged (preserving any explicit `exit*` value) and pick `exit`.
+        typeof value === 'function'
+          ? params => {
+              const next = { ...params } as Record<string, MotionParam>;
+              for (const key of ['Duration', 'Easing', 'Delay'] as readonly ExitTimingSuffix[]) {
+                const src = key.toLowerCase();
+                const dst = `exit${key}`;
+                if (next[dst] === undefined && next[src] !== undefined) {
+                  next[dst] = next[src];
+                }
+              }
+              return presenceFn(next as { element: HTMLElement } & MotionParams).exit;
+            }
+          : value.exit,
       ),
     },
   );
