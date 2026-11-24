@@ -2,7 +2,7 @@ import * as React from 'react';
 import StaggerPlainElementsDescription from './StaggerPlainElements.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles, tokens, Button } from '@fluentui/react-components';
-import { Stagger } from '@fluentui/react-motion-components-preview';
+import { createStaggerPresenceComponent } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -41,6 +41,19 @@ const useClasses = makeStyles({
   },
 });
 
+const StaggeredVisibility = createStaggerPresenceComponent({
+  enter: {
+    keyframes: [{ visibility: 'hidden' }, { visibility: 'visible' }],
+    duration: 1,
+    easing: 'step-end',
+  },
+  exit: {
+    keyframes: [{ visibility: 'visible' }, { visibility: 'hidden' }],
+    duration: 1,
+    easing: 'step-end',
+  },
+});
+
 export const PlainElements = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
@@ -55,16 +68,15 @@ export const PlainElements = (): JSXElement => {
         </Field>
       </div>
 
-      <div className={classes.items}>
-        <Stagger visible={visible}>
-          {/* Create a list of plain divs */}
+      <StaggeredVisibility visible={visible}>
+        <div className={classes.items}>
           {Array.from({ length: 8 }, (_, i) => (
             <div className={classes.item} style={{ opacity: 1 - 0.1 * i }} key={`stagger-item-${i}`}>
               {i + 1}
             </div>
           ))}
-        </Stagger>
-      </div>
+        </div>
+      </StaggeredVisibility>
     </div>
   );
 };

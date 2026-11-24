@@ -11,7 +11,39 @@ export { Scale, ScaleSnappy, ScaleRelaxed, type ScaleParams } from './components
 export { Slide, SlideSnappy, SlideRelaxed, type SlideParams } from './components/Slide';
 export { Blur, type BlurParams } from './components/Blur';
 export { Rotate, type RotateParams } from './components/Rotate';
-export { Stagger, type StaggerProps } from './choreography/Stagger';
+
+// Choreography & Stagger
+export {
+  layer,
+  cloneMotionToTargets,
+  stagger,
+  resolveChoreography,
+  createChoreographyComponent,
+  createChoreographyPresenceComponent,
+  createStaggerComponent,
+  createStaggerPresenceComponent,
+  type MotionTarget,
+  type MotionLayer,
+  type MotionLayerOptions,
+  type StaggerOrder,
+  type StaggerOptions,
+  type StaggerMotion,
+  type ChoreographyItem,
+  type ChoreographyMotion,
+  type PresenceChoreographyMotion,
+  type TargetResolver,
+  type ResolveChoreographyOptions,
+  type ChoreographyMotionFn,
+  type PresenceChoreographyMotionFn,
+  type CreateChoreographyOptions,
+  type CreateChoreographyPresenceOptions,
+  type StaggerParams,
+  type StaggerPresenceParams,
+  type StaggerItemMotionFn,
+  type StaggerItemPresenceMotionFn,
+  type CreateStaggerOptions,
+  type CreateStaggerPresenceOptions,
+} from './choreography';
 
 // Motion Atoms
 export {

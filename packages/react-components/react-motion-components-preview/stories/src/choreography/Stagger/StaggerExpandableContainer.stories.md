@@ -1,1 +1,1 @@
-A list expands and collapses with a Stagger as the container height changes.
+A single `createChoreographyPresenceComponent` coordinates both the container's height animation and the staggered entrance/exit of its `[data-stagger-item]` descendants with additive delays.

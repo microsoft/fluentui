@@ -2,7 +2,13 @@ import * as React from 'react';
 import StaggerTextDescription from './StaggerText.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
-import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
+import {
+  createStaggerPresenceComponent,
+  fadeIn,
+  fadeOut,
+  scaleIn,
+  scaleOut,
+} from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -49,10 +55,23 @@ const useClasses = makeStyles({
   },
 });
 
+const StaggeredTextScale = createStaggerPresenceComponent(
+  {
+    enter: [
+      fadeIn({ duration: 1200, easing: motionTokens.curveDecelerateMax }),
+      scaleIn({ from: 3, duration: 1200, easing: motionTokens.curveDecelerateMax }),
+    ],
+    exit: [
+      fadeOut({ duration: 1200, easing: motionTokens.curveAccelerateMid }),
+      scaleOut({ to: 0, duration: 1200, easing: motionTokens.curveAccelerateMid }),
+    ],
+  },
+  { defaultStartInterval: 100 },
+);
+
 export const Text = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const outScale = visible ? 3 : 0;
 
   return (
     <div className={classes.container}>
@@ -64,25 +83,15 @@ export const Text = (): JSXElement => {
         </Field>
       </div>
 
-      <div className={classes.items}>
-        <Stagger visible={visible} itemDelay={100}>
-          {/* Create a list of items, each wrapped with a presence transition */}
+      <StaggeredTextScale visible={visible} unmountOnExit appear>
+        <div className={classes.items}>
           {Array.from({ length: 4 }, (_, i) => (
-            <Scale
-              fromScale={outScale}
-              duration={1200}
-              exitDuration={1200}
-              easing={motionTokens.curveDecelerateMax}
-              exitEasing={motionTokens.curveAccelerateMid}
-              key={`stagger-item-${i}`}
-              unmountOnExit
-              appear
-            >
-              <div className={classes.item}>STAGGER</div>
-            </Scale>
+            <div key={`stagger-item-${i}`} className={classes.item}>
+              STAGGER
+            </div>
           ))}
-        </Stagger>
-      </div>
+        </div>
+      </StaggeredTextScale>
     </div>
   );
 };
