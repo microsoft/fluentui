@@ -30,7 +30,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 // @public
 export function createMotionComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: MotionComponent<MotionParams>, variantParams: Partial<MotionParams>): MotionComponent<MotionParams>;
 
-// @public (undocumented)
+// @public
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}, FromKeys extends keyof MotionParams = never, ToKeys extends keyof MotionParams = never, InKeys extends keyof MotionParams = never>(value: PresenceMotion | PresenceMotionFn<MotionParams>, options?: PresenceComponentOptions<NoInfer<MotionParams>, FromKeys, ToKeys, InKeys>): PresenceComponent<MotionParams, PresenceInOmit<MotionParams, FromKeys, ToKeys, InKeys>, PresenceOutOmit<MotionParams, FromKeys, InKeys>>;
 
 // @public

@@ -38,7 +38,16 @@ export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 export const PRESENCE_COMPONENT_OPTIONS = Symbol('PRESENCE_COMPONENT_OPTIONS');
 
 /**
- * Selects props (other than the anchor prop itself) whose defined value types are assignable
+ * Selects optional keys of `MotionParams` (props that callers may omit).
+ * Directional `.In` and `.Out` components omit opposite and `in` pose props at runtime,
+ * so only optional props can safely be mapped in `poseProps` or stripped from directional props.
+ */
+type OptionalMotionParamKeys<MotionParams> = {
+  [Key in keyof MotionParams]-?: {} extends Pick<MotionParams, Key> ? Key : never;
+}[keyof MotionParams];
+
+/**
+ * Selects optional props (other than the anchor prop itself) whose defined value types are assignable
  * in both directions with the anchor prop.
  * Each prop maps to its key or never; the final indexed access collects the compatible keys into a union.
  *
@@ -56,22 +65,23 @@ export const PRESENCE_COMPONENT_OPTIONS = Symbol('PRESENCE_COMPONENT_OPTIONS');
  * // fromScale is excluded; fromX has a different value type; limitedScale cannot accept every number.
  * ```
  */
-type CompatiblePoseKeys<MotionParams, Anchor extends keyof MotionParams> = Exclude<
+type CompatiblePoseKeys<MotionParams, Anchor extends OptionalMotionParamKeys<MotionParams>> = Exclude<
   {
-    // -? prevents optional props from adding undefined to the resulting key union.
     // NonNullable ignores absent values; tuple wrappers compare whole types, including union-valued props.
-    [Key in keyof MotionParams]-?: [NonNullable<MotionParams[Key]>] extends [NonNullable<MotionParams[Anchor]>]
+    [Key in OptionalMotionParamKeys<MotionParams>]: [NonNullable<MotionParams[Key]>] extends [
+      NonNullable<MotionParams[Anchor]>,
+    ]
       ? // Check the reverse assignment too: a narrower type such as 0 | 1 must not match number.
         [NonNullable<MotionParams[Anchor]>] extends [NonNullable<MotionParams[Key]>]
         ? Key
         : never
       : never;
-  }[keyof MotionParams],
+  }[OptionalMotionParamKeys<MotionParams>],
   Anchor
 >;
 
 type PosePropMapping<MotionParams extends Record<string, MotionParam>, AllowNeutral extends boolean> = {
-  [From in keyof MotionParams]-?: {
+  [From in OptionalMotionParamKeys<MotionParams>]: {
     [To in CompatiblePoseKeys<MotionParams, From>]: {
       from: From;
       in?: Exclude<CompatiblePoseKeys<MotionParams, From>, To>;
@@ -83,7 +93,7 @@ type PosePropMapping<MotionParams extends Record<string, MotionParam>, AllowNeut
         }
       : { neutral?: never });
   }[CompatiblePoseKeys<MotionParams, From>];
-}[keyof MotionParams];
+}[OptionalMotionParamKeys<MotionParams>];
 
 type StoredPoseProp = { from: PropertyKey; in?: PropertyKey; to: PropertyKey; neutral?: MotionParam };
 
@@ -147,13 +157,15 @@ type PresenceInOmit<
   FromKeys extends keyof MotionParams,
   ToKeys extends keyof MotionParams,
   InKeys extends keyof MotionParams,
-> = [FromKeys | ToKeys | InKeys] extends [never] ? never : InKeys | ToKeys | Extract<keyof MotionParams, ExitTimingKey>;
+> = [FromKeys | ToKeys | InKeys] extends [never]
+  ? never
+  : Extract<InKeys | ToKeys | ExitTimingKey, OptionalMotionParamKeys<MotionParams>>;
 
 type PresenceOutOmit<
   MotionParams extends Record<string, MotionParam>,
   FromKeys extends keyof MotionParams,
   InKeys extends keyof MotionParams,
-> = InKeys | FromKeys;
+> = Extract<InKeys | FromKeys, OptionalMotionParamKeys<MotionParams>>;
 
 export type PresenceComponentProps = {
   /**
@@ -237,6 +249,14 @@ type ExitTimingSuffix = {
     : never;
 }[keyof BasePresenceParams];
 
+/**
+ * Creates a presence component with directional `.In` and `.Out` motion components.
+ *
+ * When passing `options.poseProps`, annotate `MotionParams` on `value` (for example with `PresenceMotionFn<Params>`
+ * or an inline parameter type) instead of supplying a single explicit `<Params>` type argument, so TypeScript can
+ * infer `FromKeys`, `ToKeys`, and `InKeys` from `options.poseProps`. Mapped pose props must be optional on
+ * `MotionParams` because `.In` and `.Out` omit opposite and `in` endpoints at runtime.
+ */
 export function createPresenceComponent<
   MotionParams extends Record<string, MotionParam> = {},
   FromKeys extends keyof MotionParams = never,

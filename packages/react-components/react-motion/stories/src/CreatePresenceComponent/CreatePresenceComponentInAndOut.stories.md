@@ -55,7 +55,19 @@ When `poseProps` is provided, `.In` and `.Out` expose directional prop contracts
 - `.Out` accepts `to*` pose props and timing (`duration`/`exitDuration`, `easing`/`exitEasing`, `delay`/`exitDelay`), and omits `in*` and `from*`.
 - The root presence component accepts all declared `from*`, `in*`, and `to*` props.
 
-Each entry in `poseProps` is either a single mapping object `{ from, in?, to }` for a scalar pose (omitting `in` when the settled pose is measured from the DOM) or a nested array of mappings for coupled axes of one multi-axis pose. Inside a multi-axis group, an optional `neutral` value fills omitted sibling axes whenever any axis in that group is authored, without affecting independent poses in other groups. A pose's `from`, `in`, and `to` keys must be distinct and share a value type. Without `poseProps`, `.In` and `.Out` keep the full motion parameter surface. A fixed definition such as `MyFade` above has no configurable motion parameters.
+Each entry in `poseProps` is either a single mapping object `{ from, in?, to }` for a scalar pose (omitting `in` when the settled pose is measured from the DOM) or a nested array of mappings for coupled axes of one multi-axis pose. Inside a multi-axis group, an optional `neutral` value fills omitted sibling axes whenever any axis in that group is authored, without affecting independent poses in other groups. A pose's `from`, `in`, and `to` keys must be distinct, optional on the motion parameters type, and share a value type. Without `poseProps`, `.In` and `.Out` keep the full motion parameter surface. A fixed definition such as `MyFade` above has no configurable motion parameters.
+
+When typing custom motion parameters alongside `poseProps`, annotate the motion function (for example with `PresenceMotionFn<Params>` or an inline parameter type) instead of passing a single explicit `<Params>` type argument to `createPresenceComponent`, so TypeScript can infer the mapped keys for `.In` and `.Out`:
+
+```tsx
+const slideMotion: PresenceMotionFn<SlideParams> = ({ fromX = '0px', inX = '0px', toX = fromX }) => ({
+  // ...
+});
+
+const Slide = createPresenceComponent(slideMotion, {
+  poseProps: [{ from: 'fromX', in: 'inX', to: 'toX' }],
+});
+```
 
 ## Timing and Replay
 

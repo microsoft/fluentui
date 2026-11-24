@@ -208,6 +208,103 @@ describe('createPresenceComponent', () => {
       });
     });
 
+    it('rejects required pose parameters and preserves required exit timing on directional components', () => {
+      const requiredPresentMotion: PresenceMotionFn<{
+        from?: string;
+        present: string;
+        to?: string;
+      }> = ({ from = '0px', present, to = from }) => ({
+        enter: { ...options, keyframes: [{ transform: from }, { transform: present.trim() }] },
+        exit: { ...options, keyframes: [{ transform: present.trim() }, { transform: to }] },
+      });
+      createPresenceComponent(requiredPresentMotion, {
+        poseProps: [
+          // @ts-expect-error required present prop cannot be omitted by poseProps
+          { from: 'from', in: 'present', to: 'to' },
+        ],
+      });
+
+      const requiredFromMotion: PresenceMotionFn<{
+        from: string;
+        present?: string;
+        to?: string;
+      }> = ({ from, present = '0px', to = from }) => ({
+        enter: { ...options, keyframes: [{ transform: from.trim() }, { transform: present }] },
+        exit: { ...options, keyframes: [{ transform: present }, { transform: to }] },
+      });
+      createPresenceComponent(requiredFromMotion, {
+        poseProps: [
+          // @ts-expect-error required from prop cannot be omitted by poseProps
+          { from: 'from', in: 'present', to: 'to' },
+        ],
+      });
+
+      const requiredToMotion: PresenceMotionFn<{
+        from?: string;
+        present?: string;
+        to: string;
+      }> = ({ from = '0px', present = '0px', to }) => ({
+        enter: { ...options, keyframes: [{ transform: from }, { transform: present }] },
+        exit: { ...options, keyframes: [{ transform: present }, { transform: to.trim() }] },
+      });
+      createPresenceComponent(requiredToMotion, {
+        poseProps: [
+          // @ts-expect-error required to prop cannot be omitted by poseProps
+          { from: 'from', in: 'present', to: 'to' },
+        ],
+      });
+
+      const requiredExitDurationMotion: PresenceMotionFn<{
+        from?: number;
+        present?: number;
+        to?: number;
+        exitDuration: number;
+        exitEasing?: string;
+      }> = ({ from = 0, present = 1, to = from, exitDuration, exitEasing = 'linear' }) => ({
+        enter: { ...options, keyframes: [{ opacity: from }, { opacity: present }] },
+        exit: {
+          ...options,
+          keyframes: [{ opacity: present }, { opacity: to }],
+          duration: exitDuration,
+          easing: exitEasing,
+        },
+      });
+      const RequiredExitTiming = createPresenceComponent(requiredExitDurationMotion, {
+        poseProps: [{ from: 'from', in: 'present', to: 'to' }],
+      });
+      const child = <div />;
+      // @ts-expect-error required exitDuration stays required on .In
+      <RequiredExitTiming.In from={0.2}>{child}</RequiredExitTiming.In>;
+      <RequiredExitTiming.In from={0.2} exitDuration={150}>
+        {child}
+      </RequiredExitTiming.In>;
+      // @ts-expect-error optional exitEasing is still omitted on .In
+      <RequiredExitTiming.In from={0.2} exitDuration={150} exitEasing="linear">
+        {child}
+      </RequiredExitTiming.In>;
+    });
+
+    it('infers poseProps keys when motion parameters are annotated on the motion function', () => {
+      type CustomParams = {
+        fromOpacity?: number;
+        inOpacity?: number;
+        toOpacity?: number;
+      };
+      const InlineTyped = createPresenceComponent(
+        ({ fromOpacity = 0, inOpacity = 1, toOpacity = fromOpacity }: { element: HTMLElement } & CustomParams) => ({
+          enter: { ...options, keyframes: [{ opacity: fromOpacity }, { opacity: inOpacity }] },
+          exit: { ...options, keyframes: [{ opacity: inOpacity }, { opacity: toOpacity }] },
+        }),
+        { poseProps: [{ from: 'fromOpacity', in: 'inOpacity', to: 'toOpacity' }] },
+      );
+      const child = <div />;
+      <InlineTyped.In fromOpacity={0.2}>{child}</InlineTyped.In>;
+      // @ts-expect-error .In omits mapped toOpacity inferred from poseProps
+      <InlineTyped.In toOpacity={0.4}>{child}</InlineTyped.In>;
+      // @ts-expect-error .Out omits mapped inOpacity inferred from poseProps
+      <InlineTyped.Out inOpacity={0.8}>{child}</InlineTyped.Out>;
+    });
+
     it('enforces Prism-strict directional prop contracts and preserves generic assignability without poseProps', () => {
       const child = <div />;
       <TestPresence from={0.2} present={0.7} to={0.4}>
