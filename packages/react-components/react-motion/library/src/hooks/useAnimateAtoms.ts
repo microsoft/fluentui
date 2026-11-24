@@ -108,7 +108,8 @@ function useAnimateAtomsInSupportedEnvironment() {
       const animations = atoms
         .map(motion => {
           // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
-          const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
+          const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, target, ...params } = motion;
+          const targetElement = target ?? element;
           // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
           const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
 
@@ -124,15 +125,15 @@ function useAnimateAtomsInSupportedEnvironment() {
           try {
             // Firefox can throw an error when calling `element.animate()`.
             // See: https://github.com/microsoft/fluentui/issues/33902
-            const animation = element.animate(animationKeyframes, animationParams);
+            const animation = targetElement.animate(animationKeyframes, animationParams);
 
             if (SUPPORTS_PERSIST) {
               // Chromium browsers can return null when calling `element.animate()`.
               // See: https://github.com/microsoft/fluentui/issues/33902
               animation?.persist();
-            } else {
+            } else if ('style' in targetElement) {
               const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
-              Object.assign(element.style ?? {}, resultKeyframe);
+              Object.assign((targetElement as HTMLElement).style ?? {}, resultKeyframe);
             }
 
             return animation;
@@ -174,7 +175,9 @@ function useAnimateAtomsInTestEnvironment() {
         isReducedMotion: boolean;
       },
     ): AnimationHandle => {
-      const ELEMENT_SUPPORTS_WEB_ANIMATIONS = typeof element.animate === 'function';
+      const atoms = Array.isArray(value) ? value : [value];
+      const ELEMENT_SUPPORTS_WEB_ANIMATIONS =
+        typeof element.animate === 'function' || atoms.some(atom => typeof atom.target?.animate === 'function');
 
       // Heads up!
       // If the environment supports Web Animations API, we can use the native implementation.

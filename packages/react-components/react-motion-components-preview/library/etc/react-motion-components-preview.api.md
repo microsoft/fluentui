@@ -4,17 +4,45 @@
 
 ```ts
 
-import type { AtomMotion } from '@fluentui/react-motion';
+import { AtomMotion } from '@fluentui/react-motion';
+import { BasePresenceParams as BasePresenceParams_2 } from '@fluentui/react-motion';
+import { MotionComponent } from '@fluentui/react-motion';
+import { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import type { PresenceComponentProps } from '@fluentui/react-motion';
+import type { PresenceComponentOptions } from '@fluentui/react-motion';
 import type { PresenceDirection } from '@fluentui/react-motion';
-import * as React_2 from 'react';
+import { PresenceMotion } from '@fluentui/react-motion';
 
 // @public
-export const Blur: PresenceComponent<BlurParams>;
+export const Blur: PresenceComponent<BlurParams, never, never>;
 
 // @public
-export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
+const blur_2: ({ from, to, duration, easing, delay, }: BlurOptions) => AtomMotion;
+export { blur_2 as blur }
+
+// @public
+export const blurIn: ({ from, duration, easing, delay }: BlurInOptions) => AtomMotion;
+
+// @public
+export type BlurInOptions = MotionTiming & {
+    from: BlurPose;
+    to?: never;
+};
+
+// @public
+export type BlurOptions = MotionTiming & {
+    from: BlurPose;
+    to: BlurPose;
+};
+
+// @public
+export const blurOut: ({ to, duration, easing, delay }: BlurOutOptions) => AtomMotion;
+
+// @public
+export type BlurOutOptions = MotionTiming & {
+    from?: never;
+    to: BlurPose;
+};
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
@@ -23,10 +51,27 @@ export type BlurParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public
-export const Collapse: PresenceComponent<CollapseParams>;
+export type BlurPose = string;
 
 // @public
-export const CollapseDelayed: PresenceComponent<CollapseParams>;
+export type ChoreographyItem = AtomMotion | HoldMotion | MotionLayer | SequenceMotion | StaggerMotion;
+
+// @public
+export type ChoreographyMotion = ChoreographyItem | readonly ChoreographyMotion[];
+
+// @public
+export type ChoreographyMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+} & MotionParams) => ChoreographyMotion;
+
+// @public
+export function cloneMotionToTargets(targets: readonly MotionTarget[], motion: ChoreographyMotion, options?: MotionLayerOptions): MotionLayer[];
+
+// @public
+export const Collapse: PresenceComponent<CollapseParams, never, never>;
+
+// @public
+export const CollapseDelayed: PresenceComponent<CollapseParams, never, never>;
 
 // @public
 export type CollapseDurations = {
@@ -45,16 +90,85 @@ export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurat
 };
 
 // @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseParams>;
+export const CollapseRelaxed: PresenceComponent<CollapseParams, never, never>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseParams>;
+export const CollapseSnappy: PresenceComponent<CollapseParams, never, never>;
 
 // @public
-export const Fade: PresenceComponent<FadeParams>;
+export function createChoreographyComponent<MotionParams extends Record<string, MotionParam> = {}>(value: ChoreographyMotion | ChoreographyMotionFn<MotionParams>, options?: CreateChoreographyOptions): MotionComponent<MotionParams>;
 
 // @public
-export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
+export type CreateChoreographyOptions = {
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public
+export function createChoreographyPresenceComponent<MotionParams extends Record<string, MotionParam> = {}, FromKeys extends keyof MotionParams = never, ToKeys extends keyof MotionParams = never, InKeys extends keyof MotionParams = never>(value: PresenceChoreographyMotion | PresenceChoreographyMotionFn<MotionParams>, options?: CreateChoreographyPresenceOptions<MotionParams, FromKeys, ToKeys, InKeys>): PresenceComponent<MotionParams, ChoreographyPresenceInOmit<MotionParams, FromKeys, ToKeys, InKeys>, ChoreographyPresenceOutOmit<MotionParams, FromKeys, InKeys>>;
+
+// @public
+export type CreateChoreographyPresenceOptions<MotionParams extends Record<string, MotionParam> = {}, FromKeys extends keyof MotionParams = never, ToKeys extends keyof MotionParams = never, InKeys extends keyof MotionParams = never> = Partial<PresenceComponentOptions<NoInfer<MotionParams>, FromKeys, ToKeys, InKeys>> & {
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public
+export function createSequenceComponent<MotionParams extends Record<string, MotionParam> = {}>(steps: readonly ChoreographyMotion[] | SequenceMotionFn<MotionParams>, options?: CreateSequenceOptions): MotionComponent<SequenceParams & MotionParams>;
+
+// @public
+export type CreateSequenceOptions = {
+    readonly defaultGap?: number;
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public
+export function createStaggerComponent<MotionParams extends Record<string, MotionParam> = {}>(itemMotion: AtomMotion | readonly AtomMotion[] | StaggerItemMotionFn<MotionParams>, options?: CreateStaggerOptions): MotionComponent<StaggerParams & MotionParams>;
+
+// @public
+export type CreateStaggerOptions = {
+    readonly defaultStartInterval?: number;
+    readonly defaultOrder?: StaggerOrder;
+    readonly defaultTarget?: string;
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public
+export function createStaggerPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(itemMotion: PresenceMotion | StaggerItemPresenceMotionFn<MotionParams>, options?: CreateStaggerPresenceOptions): PresenceComponent<StaggerPresenceParams & MotionParams>;
+
+// @public
+export type CreateStaggerPresenceOptions = CreateStaggerOptions & {
+    readonly defaultExitStartInterval?: number;
+    readonly defaultExitOrder?: StaggerOrder;
+};
+
+// @public
+export const Fade: PresenceComponent<FadeParams, never, never>;
+
+// @public
+export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => AtomMotion;
+
+// @public
+export const fadeIn: ({ from, duration, easing, delay }: FadeInOptions) => AtomMotion;
+
+// @public
+export type FadeInOptions = MotionTiming & {
+    from?: FadePose;
+    to?: never;
+};
+
+// @public
+export type FadeOptions = MotionTiming & {
+    from: FadePose;
+    to: FadePose;
+};
+
+// @public
+export const fadeOut: ({ to, duration, easing, delay }: FadeOutOptions) => AtomMotion;
+
+// @public
+export type FadeOutOptions = MotionTiming & {
+    from?: never;
+    to?: FadePose;
+};
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
@@ -62,17 +176,102 @@ export type FadeParams = BasePresenceParams & {
     inOpacity?: number;
 };
 
-// @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeParams>;
+// @public
+export type FadePose = number;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeParams>;
+export const FadeRelaxed: PresenceComponent<FadeParams, never, never>;
 
 // @public (undocumented)
-export const Rotate: PresenceComponent<RotateParams>;
+export const FadeSnappy: PresenceComponent<FadeParams, never, never>;
 
 // @public
-export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
+export function hold(duration: number): HoldMotion;
+
+// @public
+export type HoldMotion = {
+    readonly kind: 'hold';
+    readonly duration: number;
+};
+
+// @public
+export function layer(target: MotionTarget, motion: ChoreographyMotion, options?: MotionLayerOptions): MotionLayer;
+
+// @public
+export type MotionLayer = {
+    readonly kind: 'layer';
+    readonly target: MotionTarget;
+    readonly motion: ChoreographyMotion;
+    readonly delay?: number;
+};
+
+// @public
+export type MotionLayerOptions = {
+    readonly delay?: number;
+};
+
+// @public
+export type MotionTarget = Element | string;
+
+// @public
+export type MotionTiming = {
+    duration: number;
+    easing?: EffectTiming['easing'];
+    delay?: EffectTiming['delay'];
+};
+
+// @public
+export type PresenceChoreographyMotion = Record<PresenceDirection, ChoreographyMotion>;
+
+// @public
+export type PresenceChoreographyMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+} & MotionParams) => PresenceChoreographyMotion;
+
+// @public
+export function resolveChoreography(motion: ChoreographyMotion, rootOrOptions?: Element | ResolveChoreographyOptions): AtomMotion[];
+
+// @public
+export type ResolveChoreographyOptions = {
+    readonly rootElement?: Element;
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public (undocumented)
+export const Rotate: PresenceComponent<RotateParams, never, never>;
+
+// @public
+export const rotate: ({ from, to, axis, duration, easing, delay, }: RotateOptions) => AtomMotion;
+
+// @public
+export type RotateAxis = 'x' | 'y' | 'z';
+
+// @public
+export const rotateIn: ({ from, axis, duration, easing, delay }: RotateInOptions) => AtomMotion;
+
+// @public
+export type RotateInOptions = MotionTiming & {
+    axis?: RotateAxis;
+    from: RotatePose;
+    to?: never;
+};
+
+// @public
+export type RotateOptions = MotionTiming & {
+    axis?: RotateAxis;
+    from: RotatePose;
+    to: RotatePose;
+};
+
+// @public
+export const rotateOut: ({ to, axis, duration, easing, delay }: RotateOutOptions) => AtomMotion;
+
+// @public
+export type RotateOutOptions = MotionTiming & {
+    axis?: RotateAxis;
+    from?: never;
+    to: RotatePose;
+};
 
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
@@ -82,10 +281,37 @@ export type RotateParams = BasePresenceParams & AnimateOpacity & {
 };
 
 // @public
-export const Scale: PresenceComponent<ScaleParams>;
+export type RotatePose = number;
 
 // @public
-export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
+export const Scale: PresenceComponent<ScaleParams, never, never>;
+
+// @public
+export const scale: ({ from, to, duration, easing, delay, }: ScaleOptions) => AtomMotion;
+
+// @public
+export const scaleIn: ({ from, duration, easing, delay }: ScaleInOptions) => AtomMotion;
+
+// @public
+export type ScaleInOptions = MotionTiming & {
+    from?: ScalePose;
+    to?: never;
+};
+
+// @public
+export type ScaleOptions = MotionTiming & {
+    from: ScalePose;
+    to: ScalePose;
+};
+
+// @public
+export const scaleOut: ({ to, duration, easing, delay }: ScaleOutOptions) => AtomMotion;
+
+// @public
+export type ScaleOutOptions = MotionTiming & {
+    from?: never;
+    to?: ScalePose;
+};
 
 // @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
@@ -93,17 +319,69 @@ export type ScaleParams = BasePresenceParams & AnimateOpacity & {
     inScale?: number;
 };
 
-// @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleParams>;
+// @public
+export type ScalePose = number;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleParams>;
+export const ScaleRelaxed: PresenceComponent<ScaleParams, never, never>;
+
+// @public (undocumented)
+export const ScaleSnappy: PresenceComponent<ScaleParams, never, never>;
 
 // @public
-export const Slide: PresenceComponent<SlideParams>;
+export function sequence(children: readonly ChoreographyMotion[], options?: SequenceOptions): SequenceMotion;
 
 // @public
-export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
+export type SequenceMotion = {
+    readonly kind: 'sequence';
+    readonly children: readonly ChoreographyMotion[];
+    readonly gap?: number;
+};
+
+// @public
+export type SequenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+} & MotionParams) => readonly ChoreographyMotion[];
+
+// @public
+export type SequenceOptions = {
+    readonly gap?: number;
+};
+
+// @public
+export type SequenceParams = {
+    gap?: number;
+};
+
+// @public
+export const Slide: PresenceComponent<SlideParams, never, never>;
+
+// @public
+export const slide: ({ from, to, duration, easing, delay, }: SlideOptions) => AtomMotion;
+
+// @public
+export const slideIn: ({ from, duration, easing, delay }: SlideInOptions) => AtomMotion;
+
+// @public
+export type SlideInOptions = MotionTiming & {
+    from: SlidePose;
+    to?: never;
+};
+
+// @public
+export type SlideOptions = MotionTiming & {
+    from: SlidePose;
+    to: SlidePose;
+};
+
+// @public
+export const slideOut: ({ to, duration, easing, delay }: SlideOutOptions) => AtomMotion;
+
+// @public
+export type SlideOutOptions = MotionTiming & {
+    from?: never;
+    to: SlidePose;
+};
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {
@@ -113,29 +391,70 @@ export type SlideParams = BasePresenceParams & AnimateOpacity & {
     inY?: string;
 };
 
-// @public (undocumented)
-export const SlideRelaxed: PresenceComponent<SlideParams>;
+// @public
+export type SlidePose = {
+    x: string;
+    y?: string;
+} | {
+    x?: string;
+    y: string;
+};
 
 // @public (undocumented)
-export const SlideSnappy: PresenceComponent<SlideParams>;
+export const SlideRelaxed: PresenceComponent<SlideParams, never, never>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideParams, never, never>;
 
 // @public
-export const Stagger: React_2.FC<StaggerProps> & {
-    In: React_2.FC<Omit<StaggerProps, "visible">>;
-    Out: React_2.FC<Omit<StaggerProps, "visible">>;
+export function stagger(members: readonly MotionLayer[], options: StaggerOptions): StaggerMotion;
+
+// @public
+export type StaggerItemMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+    index: number;
+    count: number;
+} & MotionParams) => AtomMotion | readonly AtomMotion[];
+
+// @public
+export type StaggerItemPresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+    index: number;
+    count: number;
+} & MotionParams) => PresenceMotion;
+
+// @public
+export type StaggerMotion = {
+    readonly kind: 'stagger';
+    readonly startInterval: number;
+    readonly order?: StaggerOrder;
+    readonly members: readonly MotionLayer[];
 };
 
 // @public
-export interface StaggerProps {
-    children: React_2.ReactNode;
-    delayMode?: StaggerDelayMode;
-    hideMode?: StaggerHideMode;
-    itemDelay?: number;
-    itemDuration?: number;
-    onMotionFinish?: () => void;
-    reversed?: boolean;
-    visible?: PresenceComponentProps['visible'];
-}
+export type StaggerOptions = {
+    readonly startInterval: number;
+    readonly order?: StaggerOrder;
+};
+
+// @public
+export type StaggerOrder = 'forward' | 'reverse';
+
+// @public
+export type StaggerParams = {
+    startInterval?: number;
+    order?: StaggerOrder;
+    target?: string;
+};
+
+// @public
+export type StaggerPresenceParams = StaggerParams & {
+    exitStartInterval?: number;
+    exitOrder?: StaggerOrder;
+};
+
+// @public
+export type TargetResolver = (target: string, rootElement?: Element) => Element | Iterable<Element> | null | undefined;
 
 // (No @packageDocumentation comment for this package)
 

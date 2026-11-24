@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "chore(react-motion-components-preview): update api report for PresenceComponent optional directional omit type parameters",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com"
+}

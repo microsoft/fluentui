@@ -1,8 +1,14 @@
 import * as React from 'react';
 import StaggerPresenceDescription from './StaggerPresence.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Button } from '@fluentui/react-components';
-import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
+import { Field, makeStyles, motionTokens, tokens, Button } from '@fluentui/react-components';
+import {
+  createStaggerPresenceComponent,
+  fadeIn,
+  fadeOut,
+  slideIn,
+  slideOut,
+} from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -41,6 +47,17 @@ const useClasses = makeStyles({
   },
 });
 
+const StaggeredSlide = createStaggerPresenceComponent({
+  enter: [
+    fadeIn({ duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+    slideIn({ from: { y: '20px' }, duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+  ],
+  exit: [
+    fadeOut({ duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMid }),
+    slideOut({ to: { y: '20px' }, duration: motionTokens.durationNormal, easing: motionTokens.curveAccelerateMid }),
+  ],
+});
+
 export const Presence = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
@@ -55,21 +72,18 @@ export const Presence = (): JSXElement => {
         </Field>
       </div>
 
-      <div className={classes.items}>
-        <Stagger visible={visible}>
-          {/* Create a list of items, each wrapped with a presence transition */}
+      <StaggeredSlide visible={visible}>
+        <div className={classes.items}>
           {Array.from({ length: 8 }, (_, i) => (
-            <Slide key={`stagger-item-${i}`} outY="20px">
-              {/* Outer div protects the inner div from Slide's opacity animation */}
-              <div>
-                <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>
-                  {i + 1}
-                </div>
+            <div key={`stagger-item-${i}`}>
+              {/* Outer div protects the inner div's static opacity from the staggered opacity animation */}
+              <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>
+                {i + 1}
               </div>
-            </Slide>
+            </div>
           ))}
-        </Stagger>
-      </div>
+        </div>
+      </StaggeredSlide>
     </div>
   );
 };

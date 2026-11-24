@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motion): add Prism-strict poseProps directional narrowing, shared presence timing types, and optional AtomMotion.target support",
+  "packageName": "@fluentui/react-motion",
+  "email": "robert@robertpenner.com"
+}

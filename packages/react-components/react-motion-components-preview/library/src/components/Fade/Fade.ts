@@ -1,6 +1,6 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
+import { fade } from '../../atoms/fade-atom';
 import type { FadeParams } from './fade-types';
 
 /**
@@ -26,14 +26,13 @@ export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   inOpacity = 1,
 }) => {
   return {
-    enter: fadeAtom({ direction: 'enter', duration, easing, delay, outOpacity, inOpacity }),
-    exit: fadeAtom({
-      direction: 'exit',
+    enter: fade({ duration, easing, delay, from: outOpacity, to: inOpacity }),
+    exit: fade({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outOpacity,
-      inOpacity,
+      from: inOpacity,
+      to: outOpacity,
     }),
   };
 };

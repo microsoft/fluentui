@@ -2,7 +2,7 @@ import type { PresenceMotionFn, AtomMotion } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import type { CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
-import { fadeAtom } from '../../atoms/fade-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
 
 /**
  * Define a presence motion for collapse/expand
@@ -59,7 +59,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration: opacityDuration, easing, delay: delay + staggerDelay }));
+    enterAtoms.push(fadeIn({ duration: opacityDuration, easing, delay: delay + staggerDelay }));
   }
 
   // ----- EXIT -----
@@ -68,9 +68,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   const exitAtoms: AtomMotion[] = [];
   // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    exitAtoms.push(
-      fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing, delay: exitDelay }),
-    );
+    exitAtoms.push(fadeOut({ duration: exitOpacityDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   exitAtoms.push(
