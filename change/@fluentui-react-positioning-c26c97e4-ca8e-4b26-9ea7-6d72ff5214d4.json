@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "refactor: replace floating-ui with custom positioning engine",
+  "comment": "refactor: replace floating-ui with custom positioning engine and remove @floating-ui/dom and @floating-ui/devtools dependencies",
   "packageName": "@fluentui/react-positioning",
   "email": "dmytrokirpa@microsoft.com"
 }

@@ -1,9 +1,6 @@
-import { devtools } from '@floating-ui/devtools';
 import type { Placement, Rect, Side, SideObject, Strategy } from './types';
 import type { Alignment, Position, PositioningBoundary, PositioningOptions, TargetElement } from '../types';
 import { getBoundary, toFloatingUIPlacement } from '../utils';
-import { devtoolsCallback } from '../utils/devtools';
-import type { MiddlewareState } from '../utils/devtools';
 import { toPositioningValues } from '../utils/fromFloatingUIPlacement';
 import { getAutoSizeDimensions } from '../utils/normalizeAutoSize';
 import {
@@ -340,7 +337,7 @@ export async function computePosition(
   // Visibility can't be determined without a layout viewport (e.g. in jsdom)
   const isHidden = (values: SideObject, box: Rect) =>
     !!(clientWidth || clientHeight) && SIDES.some((side, index) => values[side] >= box[index % 2 ? 'width' : 'height']);
-  const result = {
+  return {
     ...coords,
     placement,
     arrow: arrowData,
@@ -350,24 +347,4 @@ export async function computePosition(
       value => value > 0 && value < floating.height,
     ),
   };
-  if (process.env.NODE_ENV !== 'production') {
-    // Keeps the Floating UI devtools extension working. The engine has no middleware, so the state that the
-    // extension reads is assembled from the result.
-    devtools(container.ownerDocument, devtoolsCallback(options)).fn({
-      ...coords,
-      initialPlacement: initial,
-      placement,
-      strategy,
-      rects: { reference, floating },
-      elements: { reference: target, floating: container },
-      middlewareData: {
-        arrow: arrowData as MiddlewareState['middlewareData']['arrow'],
-        offset: { ...delta, placement },
-        hide: { referenceHidden: result.referenceHidden, escaped: result.escaped },
-        intersectionObserver: { intersecting: result.intersecting },
-      },
-      platform: {} as MiddlewareState['platform'],
-    });
-  }
-  return result;
 }

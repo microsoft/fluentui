@@ -1,5 +1,5 @@
 import { computePosition } from './engine/computePosition';
-import type { Placement } from '@floating-ui/dom';
+import type { Placement } from './engine/types';
 import { createPositionManager } from './createPositionManager';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';

@@ -190,34 +190,6 @@ describe('computePosition', () => {
       referenceHidden: y === -16,
     });
   });
-
-  it('reports the result to the Floating UI devtools outside of production', async () => {
-    const target = document.createElement('button');
-    const container = document.createElement('div');
-    const boundary = document.createElement('div');
-    document.body.append(target, container, boundary);
-
-    await computePosition(target, container, {
-      placement: 'top-start',
-      strategy: 'fixed',
-      options: { flipBoundary: boundary },
-    });
-
-    const metadata = (container as unknown as Record<string, { serializedData: Record<string, unknown>[] }>)
-      .__FUIDT_ELEMENT_METADATA__;
-    expect(metadata.serializedData).toHaveLength(1);
-    expect(metadata.serializedData[0]).toMatchObject({
-      type: 'FluentUIMiddleware',
-      initialPlacement: { position: 'above', alignment: 'start' },
-      placement: { position: 'above', alignment: 'start' },
-      middlewareState: {
-        strategy: 'fixed',
-        rects: { floating: { x: 0, y: 0, width: 0, height: 0 } },
-        middlewareData: { hide: { escaped: false, referenceHidden: false }, intersectionObserver: {} },
-      },
-    });
-    expect(metadata.serializedData[0].flipBoundaries).toHaveLength(1);
-  });
 });
 
 describe('limit', () => {
