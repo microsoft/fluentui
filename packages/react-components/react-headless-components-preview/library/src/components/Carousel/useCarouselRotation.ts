@@ -56,6 +56,8 @@ export function useCarouselRotation(
   interval: number,
   index: number,
   busy: boolean,
+  /** The selection is the last group of a non-circular collection. */
+  atEnd: boolean,
   advance: () => boolean,
   environment: Environment,
 ): {
@@ -69,19 +71,32 @@ export function useCarouselRotation(
   const { visible, documentVisible, reducedMotion } = environment;
   const [playing, setPlaying] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
+  // Counts fired timers so the next one is armed even when a controlled owner declines the request.
+  const [tick, setTick] = React.useState(0);
   const stop = useEventCallback(() => setPlaying(false));
   useIsomorphicLayoutEffect(() => {
     if (!enabled || reducedMotion) {
       stop();
     }
   }, [enabled, reducedMotion, stop]);
+  // Stop when the selection arrives at the last group (not when it is merely requested, which an owner may decline).
+  // Leaving it, as Play does by restarting from the first group, never stops playback.
+  const wasAtEnd = React.useRef(atEnd);
+  useIsomorphicLayoutEffect(() => {
+    if (atEnd && !wasAtEnd.current) {
+      stop();
+    }
+    wasAtEnd.current = atEnd;
+  }, [atEnd, stop]);
   React.useEffect(() => {
     const win = targetDocument?.defaultView;
     if (!win || !enabled || !playing || busy || hovered || !visible || !documentVisible || reducedMotion) {
       return;
     }
     const timer = win.setTimeout(() => {
-      if (!advance()) {
+      if (advance()) {
+        setTick(current => current + 1);
+      } else {
         stop();
       }
     }, interval);
@@ -96,6 +111,7 @@ export function useCarouselRotation(
     reducedMotion,
     interval,
     index,
+    tick,
     advance,
     targetDocument,
     stop,

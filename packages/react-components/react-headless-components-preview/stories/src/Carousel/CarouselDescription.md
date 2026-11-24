@@ -24,12 +24,18 @@ Rendering a part enables it. Parts register with `Carousel`, so:
 
 - Omit `CarouselPrevious`/`CarouselNext` to hide the Previous/Next buttons, or `CarouselNav` to hide the page
   tabs.
-- With neither rendered, or with fewer than two groups, every slide stays visible as a static collection,
-  and the server render matches it before parts register.
+- Paging needs controls that reach every group: `CarouselNav`, both `CarouselPrevious` and `CarouselNext`, or
+  one arrow in a `circular` collection. Otherwise (a lone non-circular arrow, no controls, or fewer than two
+  groups) every slide stays visible as a static collection, and the server render matches it before parts
+  register.
 - `CarouselAutoplayButton` enables user-started autoplay. Render it first so it is the first focus stop.
 
 Each direct child of `CarouselViewport` is one slide; wrap content in `CarouselCard`, which is a focus stop
 labeled "Slide 1 of 5". Embedded actions stay directly tabbable.
+
+Slides are grouped by position. Changing `groupSize`, or adding, removing or reordering slides, can move a
+slide into a different group, which remounts it, so keep slide state (form values, playback position) outside
+the slide. Keep `groupSize` fixed and stack cards at narrow widths with CSS rather than regrouping.
 
 `CarouselNav` renders one item per group, defaulting to `<CarouselNavButton />`. Pass a template element, or a
 render function like `{index => <CarouselNavButton />}` as in `@fluentui/react-carousel`.
@@ -43,13 +49,17 @@ with `tooltip="Précédent"`. Supply your own chevron icons and mirror them in R
 `groupSize` defaults to 1. `activeIndex` and `defaultActiveIndex` are zero-based **group** indices;
 `onActiveIndexChange(event, data)` reports `index` and the `reason` (`previous`, `next`, `nav` or
 `autoplay`) for a requested change.
-Controlled owners must accept a request to change the selection.
+In controlled mode a request only changes the selection once the owner passes the new `activeIndex`. If the
+owner declines a request, the selection stays where it is; nav keys still move focus from the focused tab, so
+the next key continues from there, and autoplay keeps requesting the next group at each interval.
 
 Previous and Next navigate sequentially. Tabs jump to groups and support RTL-aware Left/Right,
-Home and End with automatic activation and roving tabindex. Embedded controls keep their native
-keyboard behavior. Boundary arrows hide only after the transition settles, then move focus to the
-first visible slide; otherwise focus stays on the activating control. `circular` defaults to false
-and enables directional wrapping with both arrows always available.
+Home and End with automatic activation and roving tabindex. Left/Right follow `dir` on `Carousel`,
+else the carousel's computed direction. The headless `Provider` doesn't write `dir` to the DOM, so set
+it on an ancestor element for RTL. Embedded controls keep their native keyboard behavior. Boundary arrows
+hide only after the transition settles, then move focus to the first visible slide (or the group's first
+tabbable element, or the group itself, for slides without `CarouselCard`); otherwise focus stays on the activating
+control. `circular` defaults to false and enables directional wrapping with both arrows always available.
 
 ## Autoplay and motion
 
@@ -57,7 +67,7 @@ and enables directional wrapping with both arrows always available.
 non-integers or values outside 1000–2147483647 throw. Pause, manual navigation, or interaction outside
 playback stops rotation. Hover temporarily suspends it; document visibility and viewport intersection
 suspend its timer. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
-at the final group; Play there restarts from the first group. Localize `playLabel`, `pauseLabel` and
+once the selection reaches the final group; Play there restarts from the first group. Localize `playLabel`, `pauseLabel` and
 `reducedMotionLabel` on `CarouselAutoplayButton`, and `getPageLabel`/`getSlideLabel` on `Carousel`.
 
 Reduced motion settles animation immediately and disables playback without removing its focus stop.

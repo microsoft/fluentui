@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { renderToString } from 'react-dom/server';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Carousel } from './Carousel';
@@ -12,6 +13,7 @@ import type { CarouselNextProps } from './CarouselNext';
 import { CarouselNav } from './CarouselNav';
 import { CarouselNavButton } from './CarouselNavButton';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
+import { Provider } from '../Provider';
 
 const items = ['A', 'B', 'C', 'D', 'E'];
 const selected = () => screen.getByRole('tab', { selected: true });
@@ -430,6 +432,209 @@ describe('Carousel', () => {
     expect(selected()).toHaveAttribute('aria-label', 'Page 3 of 3');
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
     expect(transition).not.toHaveBeenCalled();
+  });
+
+  it('labels slides with the full total in the server render', () => {
+    const html = renderToString(example({ groupSize: 1 }));
+    items.forEach((_, i) => expect(html).toContain(`aria-label="Slide ${i + 1} of 5"`));
+  });
+
+  it('calls consumer focus, blur and pointer callbacks on the arrow buttons once', () => {
+    const button = { onFocus: jest.fn(), onBlur: jest.fn(), onPointerEnter: jest.fn(), onPointerLeave: jest.fn() };
+    render(example({ next: { button } }));
+    const next = screen.getByRole('button', { name: 'Next' });
+    fireEvent.pointerEnter(next);
+    fireEvent.pointerLeave(next);
+    act(() => next.focus());
+    act(() => next.blur());
+    Object.values(button).forEach(callback => expect(callback).toHaveBeenCalledTimes(1));
+  });
+
+  it.each(['previous', 'next'] as const)('keeps the collection static with only a non-circular %s arrow', kind => {
+    const arrow = kind === 'previous' ? <CarouselPrevious /> : <CarouselNext />;
+    const carousel = (circular: boolean) => (
+      <Carousel aria-label="Notes" groupSize={2} circular={circular}>
+        {kind === 'previous' && arrow}
+        <CarouselViewport>
+          {items.map(item => (
+            <CarouselCard key={item}>{item}</CarouselCard>
+          ))}
+        </CarouselViewport>
+        {kind === 'next' && arrow}
+      </Carousel>
+    );
+    const { rerender } = render(carousel(false));
+    expect(screen.getByRole('region')).not.toHaveAttribute('data-paged');
+    expect(screen.queryByRole('button')).toBeNull();
+    screen.getAllByRole('group', { name: /^Slide/ }).forEach(slide => expect(slide).toBeVisible());
+    // Wrapping lets one arrow reach every group.
+    rerender(carousel(true));
+    expect(screen.getByRole('region')).toHaveAttribute('data-paged');
+    const button = screen.getByRole('button', { name: kind === 'previous' ? 'Previous' : 'Next' });
+    fireEvent.click(button);
+    expect(screen.getByRole('group', { name: kind === 'previous' ? 'Page 3 of 3' : 'Page 2 of 3' })).toBeVisible();
+  });
+
+  it('moves nav keys from the focused tab when a controlled owner ignores changes', () => {
+    const onActiveIndexChange = jest.fn();
+    render(example({ activeIndex: 0, onActiveIndexChange }));
+    const tabs = screen.getAllByRole('tab');
+    act(() => tabs[0].focus());
+    fireEvent.keyDown(tabs[0], { key: 'ArrowRight' });
+    expect(tabs[1]).toHaveFocus();
+    fireEvent.keyDown(tabs[1], { key: 'ArrowRight' });
+    expect(tabs[2]).toHaveFocus();
+    expect(onActiveIndexChange.mock.calls.map(([, data]) => data.index)).toEqual([1, 2]);
+    expect(selected()).toBe(tabs[0]);
+  });
+
+  it('keeps autoplay requesting when a controlled owner declines a change', () => {
+    jest.useFakeTimers();
+    const onActiveIndexChange = jest.fn();
+    render(example({ autoplay: true, circular: true, autoplayInterval: 1000, activeIndex: 0, onActiveIndexChange }));
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    act(() => jest.advanceTimersByTime(1000));
+    expect(onActiveIndexChange).toHaveBeenCalledTimes(1);
+    act(() => jest.advanceTimersByTime(1000));
+    expect(onActiveIndexChange).toHaveBeenCalledTimes(2);
+    expect(onActiveIndexChange.mock.calls.every(([, data]) => data.index === 1 && data.reason === 'autoplay')).toBe(
+      true,
+    );
+    expect(screen.getByRole('button', { name: 'Pause' })).toBeVisible();
+    expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+  });
+
+  it('recovers boundary-arrow focus inside a shadow root', () => {
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const container = document.createElement('div');
+    shadowRoot.appendChild(container);
+    const { unmount } = render(example(), { container });
+    // Accessible names via aria-labelledby don't resolve inside a shadow root in jsdom; query by attribute.
+    const next = container.querySelector<HTMLElement>('[data-carousel-action="next"]')!;
+    act(() => next.focus());
+    fireEvent.click(next);
+    expect(shadowRoot.activeElement).toBe(next);
+    fireEvent.click(next);
+    expect(shadowRoot.activeElement).toBe(container.querySelector('[aria-label="Slide 5 of 5"]'));
+    unmount();
+    host.remove();
+  });
+
+  it('ignores focus in another carousel when recovering boundary focus', () => {
+    jest.useFakeTimers();
+    render(
+      <>
+        {example({ autoplay: true, autoplayInterval: 1000 })}
+        {example({ 'aria-label': 'Other' })}
+      </>,
+    );
+    const [, otherRegion] = screen.getAllByRole('region');
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    const otherNext = within(otherRegion).getByRole('button', { name: 'Next' });
+    act(() => otherNext.focus());
+    act(() => jest.advanceTimersByTime(1000));
+    act(() => jest.advanceTimersByTime(1000));
+    expect(screen.getAllByRole('tab', { selected: true })[0]).toHaveAttribute('aria-label', 'Page 3 of 3');
+    expect(otherNext).toHaveFocus();
+  });
+
+  it('uses the computed direction instead of writing one, mirroring nav keys and transitions', () => {
+    // jsdom doesn't inherit `direction`; Carousel.cy.tsx covers an inherited `dir="rtl"` in a real browser.
+    const transition = jest.fn(() => []);
+    render(example({ transition, style: { direction: 'rtl' } }));
+    expect(screen.getByRole('region')).not.toHaveAttribute('dir');
+    act(() => selected().focus());
+    fireEvent.keyDown(selected(), { key: 'ArrowLeft' });
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    fireEvent.keyDown(selected(), { key: 'ArrowRight' });
+    expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+    expect(transition).toHaveBeenLastCalledWith(expect.objectContaining({ dir: 'rtl' }));
+  });
+
+  it('keeps a running transition when an inline adapter is re-created', async () => {
+    let resolve = () => undefined as void;
+    const cancel = jest.fn();
+    const calls = jest.fn();
+    const view = (label: string) =>
+      example({
+        'aria-label': label,
+        transition: () => {
+          calls();
+          const finished = new Promise<void>(done => {
+            resolve = done;
+          });
+          return [{ finished, cancel } as unknown as Animation];
+        },
+      });
+    const { rerender } = render(view('Notes'));
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    rerender(view('Notes again'));
+    expect(calls).toHaveBeenCalledTimes(1);
+    expect(cancel).not.toHaveBeenCalled();
+    await act(async () => resolve());
+    expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-busy', 'false');
+  });
+
+  it('does not announce a static collection', () => {
+    const { rerender } = render(example({ buttons: false, nav: false }));
+    const viewport = screen.getByRole('region').firstElementChild!;
+    expect(viewport).toHaveAttribute('aria-live', 'off');
+    expect(viewport).not.toHaveAttribute('aria-atomic');
+    rerender(example());
+    expect(viewport).toHaveAttribute('aria-live', 'polite');
+    expect(viewport).toHaveAttribute('aria-atomic', 'true');
+  });
+
+  it.each([true, false])('recovers boundary focus into plain slides (tabbable content: %s)', tabbable => {
+    render(
+      <Carousel aria-label="Notes" groupSize={2}>
+        <CarouselPrevious />
+        <CarouselViewport>
+          {items.map(item => (
+            <div key={item}>{tabbable ? <button>Open {item}</button> : item}</div>
+          ))}
+        </CarouselViewport>
+        <CarouselNext />
+      </Carousel>,
+    );
+    const next = screen.getByRole('button', { name: 'Next' });
+    act(() => next.focus());
+    fireEvent.click(next);
+    fireEvent.click(next);
+    if (tabbable) {
+      expect(screen.getByRole('button', { name: 'Open E' })).toHaveFocus();
+    } else {
+      const page = screen.getByRole('group', { name: 'Page 3 of 3' });
+      expect(page).toHaveFocus();
+      expect(page).toHaveAttribute('tabindex', '-1');
+      act(() => screen.getByRole('button', { name: 'Previous' }).focus());
+      expect(page).not.toHaveAttribute('tabindex');
+    }
+  });
+
+  it('prefers the computed direction over a Provider direction the DOM does not reflect', () => {
+    const transition = jest.fn(() => []);
+    render(<Provider dir="rtl">{example({ transition, style: { direction: 'ltr' } })}</Provider>);
+    act(() => selected().focus());
+    fireEvent.keyDown(selected(), { key: 'ArrowRight' });
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    expect(transition).toHaveBeenLastCalledWith(expect.objectContaining({ dir: 'ltr' }));
+  });
+
+  it('keeps non-circular playback requesting while an owner declines the last group', () => {
+    jest.useFakeTimers();
+    const onActiveIndexChange = jest.fn();
+    render(example({ autoplay: true, autoplayInterval: 1000, activeIndex: 1, onActiveIndexChange }));
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    act(() => jest.advanceTimersByTime(1000));
+    expect(onActiveIndexChange).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('button', { name: 'Pause' })).toBeVisible();
+    act(() => jest.advanceTimersByTime(1000));
+    expect(onActiveIndexChange).toHaveBeenCalledTimes(2);
+    expect(onActiveIndexChange.mock.calls.every(([, data]) => data.index === 2)).toBe(true);
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
   });
 
   it.each([0, 999, 1000.5, NaN, Infinity, 2147483648])('rejects invalid autoplay interval %s', autoplayInterval => {

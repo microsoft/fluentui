@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 /** Compound parts whose presence changes how the collection behaves. */
-export type CarouselPart = 'buttons' | 'nav' | 'autoplay';
+export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
 
 export type CarouselContextValue = {
   idPrefix: string;
@@ -19,7 +19,10 @@ export type CarouselContextValue = {
   outgoingIndex: number | undefined;
   /** True while a group transition is unsettled. */
   busy: boolean;
-  /** More than one group, with Previous/Next buttons or a `CarouselNav` rendered. Otherwise static. */
+  /**
+   * More than one group, with controls that reach every group: a `CarouselNav`, both Previous and Next, or one of
+   * them in a circular collection. Otherwise static.
+   */
   paged: boolean;
   /** Paged, with `CarouselPrevious`/`CarouselNext` rendered. */
   buttons: boolean;
@@ -43,7 +46,8 @@ export type CarouselContextValue = {
   previous: (event: React.MouseEvent<HTMLElement>) => void;
   next: (event: React.MouseEvent<HTMLElement>) => void;
   toggleAutoplay: (event: React.MouseEvent<HTMLElement>) => void;
-  onNavKeyDown: React.KeyboardEventHandler<HTMLElement>;
+  /** Handles arrow, Home and End keys on the tab at zero-based `index`. */
+  onNavKeyDown: (event: React.KeyboardEvent<HTMLElement>, index: number) => void;
 };
 
 const noop = () => undefined;
@@ -89,6 +93,12 @@ export const useCarouselContext = (): CarouselContextValue =>
 export const CarouselItemIndexContext = React.createContext<number | undefined>(undefined);
 
 export const useCarouselItemIndex = (): number => React.useContext(CarouselItemIndexContext) ?? 0;
+
+/**
+ * Number of slides, provided by `CarouselViewport` while it renders. Unlike the root's `slideCount`, which the
+ * viewport reports in a layout effect, it is known during the server render.
+ */
+export const CarouselSlideCountContext = React.createContext<number | undefined>(undefined);
 
 /** Registers a compound part for as long as it is mounted. */
 export const useCarouselPart = (part: CarouselPart): void => {

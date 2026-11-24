@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useControllableState, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { getActiveElement } from '../../hooks/top-layer/utils';
 import type { CarouselProps, CarouselIndexChangeData } from './Carousel.types';
 
 type SelectionOptions = Pick<
@@ -12,11 +13,35 @@ type SelectionOptions = Pick<
   groupSize: number;
   paged: boolean;
   circular: boolean;
-  dir: 'ltr' | 'rtl';
+  /** Resolved when a transition starts, not during render. */
+  getDir: () => 'ltr' | 'rtl';
   targetDocument: Document | undefined;
+  rootRef: React.RefObject<HTMLDivElement | null>;
   reducedMotion: boolean;
   documentVisible: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const TABBABLE =
+  'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), ' +
+  'textarea:not([disabled]), [contenteditable="true"], [tabindex]:not([tabindex="-1"])';
+
+/**
+ * Recovers focus into a newly selected group: its first `CarouselCard`, else its first tabbable element, else the
+ * group itself. The group gets a temporary `tabindex="-1"` that is removed once focus leaves it.
+ */
+const focusPage = (page: HTMLElement) => {
+  const target =
+    page.querySelector<HTMLElement>('[aria-roledescription="slide"]') ?? page.querySelector<HTMLElement>(TABBABLE);
+  if (target) {
+    target.focus({ preventScroll: true });
+    return;
+  }
+  if (!page.hasAttribute('tabindex')) {
+    page.setAttribute('tabindex', '-1');
+    page.addEventListener('blur', () => page.removeAttribute('tabindex'), { once: true });
+  }
+  page.focus({ preventScroll: true });
 };
 
 /** Selection never reads geometry or runs a JavaScript animation loop. */
@@ -36,7 +61,13 @@ export function useCarouselSelection(options: SelectionOptions): {
   ) => void;
   settle: (restoreFocus?: boolean) => void;
 } {
-  const { pageCount, paged, dir, targetDocument, reducedMotion, viewportRef, transition, groupSize } = options;
+  const { pageCount, paged, getDir, targetDocument, reducedMotion, viewportRef, rootRef, transition, groupSize } =
+    options;
+  // A latest ref: an inline adapter re-created by a parent re-render must not restart a running transition.
+  const transitionRef = React.useRef(transition);
+  useIsomorphicLayoutEffect(() => {
+    transitionRef.current = transition;
+  }, [transition]);
   const [requested, setRequested] = useControllableState({
     state: options.activeIndex,
     defaultState: options.defaultActiveIndex,
@@ -65,9 +96,13 @@ export function useCarouselSelection(options: SelectionOptions): {
     cancel();
     const anchor = recovery.current;
     recovery.current = null;
-    if (restoreFocus && anchor && anchor === targetDocument?.activeElement) {
-      const page = viewportRef.current?.children[view.index];
-      page?.querySelector<HTMLElement>('[aria-roledescription="slide"]')?.focus({ preventScroll: true });
+    const viewport = viewportRef.current;
+    // Root-aware: inside a shadow root the document's active element is only the host.
+    if (restoreFocus && anchor && viewport && anchor === getActiveElement(viewport)) {
+      const page = viewport.children[view.index] as HTMLElement | undefined;
+      if (page) {
+        focusPage(page);
+      }
     }
     setView(current => (current.busy ? { ...current, busy: false, outgoing: undefined, anchor: undefined } : current));
   });
@@ -88,8 +123,11 @@ export function useCarouselSelection(options: SelectionOptions): {
       setView({ index, outgoing: undefined, busy: false, direction: 1, anchor: undefined });
       return;
     }
-    const focused = targetDocument?.activeElement ?? null;
-    const oldPage = viewportRef.current?.children[view.index];
+    const viewport = viewportRef.current;
+    const active = viewport ? getActiveElement(viewport) : null;
+    // Focus in another carousel (or elsewhere on the page) is neither an anchor nor content of this one.
+    const focused = active && rootRef.current?.contains(active) ? active : null;
+    const oldPage = viewport?.children[view.index];
     const inContent = !!focused && !!oldPage?.contains(focused);
     const anchor = focused?.getAttribute('data-carousel-action');
     const boundary =
@@ -113,8 +151,8 @@ export function useCarouselSelection(options: SelectionOptions): {
     view.index,
     pageCount,
     paged,
-    targetDocument,
     viewportRef,
+    rootRef,
     cancel,
     setRequested,
   ]);
@@ -128,21 +166,14 @@ export function useCarouselSelection(options: SelectionOptions): {
       view.outgoing === undefined
         ? undefined
         : (viewportRef.current?.children[view.outgoing] as HTMLElement | undefined);
+    const adapter = transitionRef.current;
     let disposed = false;
-    if (
-      !transition ||
-      !incoming ||
-      !outgoing ||
-      reducedMotion ||
-      targetDocument?.hidden ||
-      skipMotion.current ||
-      !paged
-    ) {
+    if (!adapter || !incoming || !outgoing || reducedMotion || targetDocument?.hidden || skipMotion.current || !paged) {
       settle();
       return;
     }
     try {
-      const running = transition({ incoming, outgoing, direction: view.direction, dir });
+      const running = adapter({ incoming, outgoing, direction: view.direction, dir: getDir() });
       animations.current = running;
       if (!running.length) {
         settle();
@@ -166,8 +197,7 @@ export function useCarouselSelection(options: SelectionOptions): {
     view.index,
     view.outgoing,
     view.direction,
-    transition,
-    dir,
+    getDir,
     reducedMotion,
     options.documentVisible,
     targetDocument,

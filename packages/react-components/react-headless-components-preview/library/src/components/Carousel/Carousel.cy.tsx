@@ -88,6 +88,32 @@ describe('Carousel browser behavior', () => {
     });
   });
 
+  it('inherits an ancestor RTL direction for nav keys and the transition adapter', () => {
+    const dirs: string[] = [];
+    const record: CarouselTransition = data => {
+      dirs.push(data.dir);
+      return [];
+    };
+    mount(
+      <div dir="rtl">
+        <Carousel aria-label="Lessons" groupSize={2} transition={record}>
+          <CarouselPrevious />
+          <CarouselViewport>
+            {[1, 2, 3, 4, 5].map(index => (
+              <CarouselCard key={index}>{index}</CarouselCard>
+            ))}
+          </CarouselViewport>
+          <CarouselNext />
+          <CarouselNav />
+        </Carousel>
+      </div>,
+    );
+    cy.get('[role="region"]').should('not.have.attr', 'dir');
+    cy.get('[aria-selected="true"]').focus().realPress('ArrowLeft');
+    cy.get('[role="tab"]').eq(1).should('be.focused').and('have.attr', 'aria-selected', 'true');
+    cy.wrap(dirs).should('deep.equal', ['rtl']);
+  });
+
   it('shows tooltips immediately on focus and dismisses Escape without moving focus', () => {
     renderCarousel();
     cy.get('[data-carousel-action="next"]').focus();

@@ -9,6 +9,7 @@ import {
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { getActiveElement } from '../../../hooks/top-layer/utils';
 import { Tooltip } from '../../Tooltip';
 import type { OnVisibleChangeData, TooltipProps } from '../../Tooltip';
 
@@ -18,10 +19,6 @@ export const CarouselDirectionTooltip = (props: {
   content: TooltipProps['content'];
   position: 'before' | 'after';
   unavailable: boolean;
-  onFocus?: React.FocusEventHandler<HTMLButtonElement>;
-  onBlur?: React.FocusEventHandler<HTMLButtonElement>;
-  onPointerEnter?: React.PointerEventHandler<HTMLButtonElement>;
-  onPointerLeave?: React.PointerEventHandler<HTMLButtonElement>;
 }): React.ReactElement => {
   const { targetDocument } = useFluent_unstable();
   const [visible, setVisible] = React.useState(false);
@@ -30,21 +27,16 @@ export const CarouselDirectionTooltip = (props: {
   const hovered = React.useRef(false);
   const content = slot.always(props.content, { elementType: 'div' });
   const contentRef = useMergedRefs(content.ref, tooltip);
-  const onFocus = useEventCallback((event: React.FocusEvent<HTMLButtonElement>) => {
-    props.onFocus?.(event);
+  // The child's own (consumer) handlers are merged below; they must not be invoked here as well.
+  const onFocus = useEventCallback((event: React.FocusEvent<HTMLElement>) => {
     trigger.current = event.currentTarget;
     setVisible(true);
   });
-  const onBlur = useEventCallback((event: React.FocusEvent<HTMLButtonElement>) => {
-    props.onBlur?.(event);
-  });
-  const onPointerEnter = useEventCallback((event: React.PointerEvent<HTMLButtonElement>) => {
-    props.onPointerEnter?.(event);
+  const onPointerEnter = useEventCallback((event: React.PointerEvent<HTMLElement>) => {
     trigger.current = event.currentTarget;
     hovered.current = true;
   });
-  const onPointerLeave = useEventCallback((event: React.PointerEvent<HTMLButtonElement>) => {
-    props.onPointerLeave?.(event);
+  const onPointerLeave = useEventCallback(() => {
     hovered.current = false;
   });
   const onTooltipPointerEnter = useEventCallback(() => {
@@ -55,7 +47,11 @@ export const CarouselDirectionTooltip = (props: {
   });
   const onVisibleChange = useEventCallback(
     (event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
-      if (!data.visible && event && (hovered.current || trigger.current === targetDocument?.activeElement)) {
+      if (
+        !data.visible &&
+        event &&
+        (hovered.current || (trigger.current && trigger.current === getActiveElement(trigger.current)))
+      ) {
         return;
       }
       setVisible(data.visible);
@@ -134,7 +130,6 @@ export const CarouselDirectionTooltip = (props: {
         onPointerEnter: mergeCallbacks(props.children.props.onPointerEnter, onPointerEnter),
         onPointerLeave: mergeCallbacks(props.children.props.onPointerLeave, onPointerLeave),
         onFocus: mergeCallbacks(props.children.props.onFocus, onFocus),
-        onBlur: mergeCallbacks(props.children.props.onBlur, onBlur),
       })}
     </Tooltip>
   );

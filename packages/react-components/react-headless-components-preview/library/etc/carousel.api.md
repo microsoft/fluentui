@@ -82,7 +82,7 @@ export type CarouselContextValue = {
     previous: (event: React_2.MouseEvent<HTMLElement>) => void;
     next: (event: React_2.MouseEvent<HTMLElement>) => void;
     toggleAutoplay: (event: React_2.MouseEvent<HTMLElement>) => void;
-    onNavKeyDown: React_2.KeyboardEventHandler<HTMLElement>;
+    onNavKeyDown: (event: React_2.KeyboardEvent<HTMLElement>, index: number) => void;
 };
 
 // @public (undocumented)
@@ -165,7 +165,7 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
 export const CarouselNext: ForwardRefComponent<CarouselDirectionButtonProps>;
 
 // @public
-export type CarouselPart = 'buttons' | 'nav' | 'autoplay';
+export type CarouselPart = 'previous' | 'next' | 'nav' | 'autoplay';
 
 // @public
 export const CarouselPrevious: ForwardRefComponent<CarouselDirectionButtonProps>;

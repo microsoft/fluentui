@@ -36,7 +36,7 @@ export const useCarouselNavButton = (
           }),
           onKeyDown: mergeCallbacks(rest.onKeyDown, (event: React.KeyboardEvent<HTMLButtonElement>) => {
             if (!event.defaultPrevented) {
-              onNavKeyDown(event);
+              onNavKeyDown(event, index);
             }
           }),
         }),

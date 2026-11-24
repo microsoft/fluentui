@@ -1,8 +1,6 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-'use client';
-
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { CarouselDirectionTooltip } from './CarouselDirectionTooltip';
@@ -22,10 +20,6 @@ export const renderCarouselDirectionButton = (state: CarouselDirectionButtonStat
           content={{ ...state.tooltip, children: <span>{state.tooltip.children}</span> }}
           position={state.kind === 'previous' ? 'before' : 'after'}
           unavailable={state.unavailable}
-          onFocus={state.button.onFocus}
-          onBlur={state.button.onBlur}
-          onPointerEnter={state.button.onPointerEnter}
-          onPointerLeave={state.button.onPointerLeave}
         >
           <state.button />
         </CarouselDirectionTooltip>

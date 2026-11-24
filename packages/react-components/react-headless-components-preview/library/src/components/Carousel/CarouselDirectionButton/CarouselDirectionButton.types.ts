@@ -17,7 +17,10 @@ export type CarouselDirectionButtonProps = ComponentProps<Partial<CarouselDirect
 
 export type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots> & {
   kind: 'previous' | 'next';
-  /** False when the collection has fewer than two groups, which omits both arrow slots. */
+  /**
+   * False whenever the collection isn't paged (fewer than two groups, or controls that can't reach every group, such
+   * as a lone non-circular arrow), which omits the arrow slot.
+   */
   rendered: boolean;
   /** Boundary reached and the transition settled. */
   hidden: boolean;

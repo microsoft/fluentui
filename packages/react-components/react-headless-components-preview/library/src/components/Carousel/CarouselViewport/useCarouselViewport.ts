@@ -39,8 +39,9 @@ export const useCarouselViewport = (
           ...rest,
           ref: viewportRef,
           id: context.viewportId,
-          'aria-live': context.playing ? ('off' as const) : ('polite' as const),
-          'aria-atomic': true,
+          // A static collection has nothing to announce; a paged one announces settled groups unless playing.
+          'aria-live': context.paged && !context.playing ? ('polite' as const) : ('off' as const),
+          'aria-atomic': context.paged || undefined,
           'aria-busy': context.busy,
         }),
         { elementType: 'div' },

@@ -16,7 +16,7 @@ export const useCarouselDirectionButton = (
   ref: React.Ref<HTMLDivElement>,
   kind: 'previous' | 'next',
 ): CarouselDirectionButtonState => {
-  useCarouselPart('buttons');
+  useCarouselPart(kind);
   const context = useCarouselContext();
   const { button, tooltip, ...rest } = props;
   const unavailable = kind === 'previous' ? context.previousUnavailable : context.nextUnavailable;

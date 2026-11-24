@@ -24,7 +24,8 @@ const slideLabel = (position: number, total: number) => `Slide ${position} of ${
  *
  * The root owns group selection, playback and transitions. Compound parts (`CarouselViewport`,
  * `CarouselPrevious`, `CarouselNext`, `CarouselNav`, `CarouselAutoplayButton`) register themselves, so
- * rendering a part is what enables it. Without Previous/Next buttons or a `CarouselNav` every slide stays visible.
+ * rendering a part is what enables it. Unless a `CarouselNav`, both Previous and Next, or one arrow in a circular
+ * collection is rendered, every slide stays visible.
  */
 export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   const {
@@ -51,8 +52,20 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     }
   }
   const fluent = useFluent_unstable();
-  const dir = rootProps.dir === 'rtl' || rootProps.dir === 'ltr' ? rootProps.dir : fluent.dir;
   const rootRef = React.useRef<HTMLDivElement>(null);
+  // Resolved lazily, so the root doesn't override an inherited direction: the explicit prop, then the root's computed
+  // direction (the actual layout; the headless Provider writes no `dir` to the DOM), then the Provider's direction.
+  const getDir = useEventCallback((): 'ltr' | 'rtl' => {
+    if (rootProps.dir === 'rtl' || rootProps.dir === 'ltr') {
+      return rootProps.dir;
+    }
+    const root = rootRef.current;
+    const computed = root && fluent.targetDocument?.defaultView?.getComputedStyle(root).direction;
+    if (computed === 'rtl' || computed === 'ltr') {
+      return computed;
+    }
+    return fluent.dir === 'rtl' ? 'rtl' : 'ltr';
+  });
   const viewportRef = React.useRef<HTMLDivElement>(null);
   const rootMergedRef = useMergedRefs(ref, rootRef);
   const idPrefix = useId('carousel-', props.id);
@@ -60,7 +73,8 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
 
   const [slideCount, setSlideCount] = React.useState(0);
   const [parts, setParts] = React.useState<Record<CarouselPart, number>>({
-    buttons: 0,
+    previous: 0,
+    next: 0,
     nav: 0,
     autoplay: 0,
   });
@@ -70,8 +84,12 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
   }, []);
 
   const pageCount = Math.ceil(slideCount / groupSize);
-  const paged = pageCount > 1 && (parts.buttons > 0 || parts.nav > 0);
-  const buttons = paged && parts.buttons > 0;
+  const anyButton = parts.previous > 0 || parts.next > 0;
+  // Page only when the rendered controls reach every group in both directions; a lone non-circular arrow
+  // would strand the collection at a boundary, so it stays static instead.
+  const reachable = parts.nav > 0 || (parts.previous > 0 && parts.next > 0) || (circular && anyButton);
+  const paged = pageCount > 1 && reachable;
+  const buttons = paged && anyButton;
   const nav = paged && parts.nav > 0;
   const autoplay = paged && parts.autoplay > 0;
 
@@ -85,20 +103,23 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     groupSize,
     paged,
     circular,
-    dir,
+    getDir,
     targetDocument: fluent.targetDocument,
+    rootRef,
     reducedMotion: environment.reducedMotion,
     documentVisible: environment.documentVisible,
     viewportRef,
   });
   const { view } = selection;
+  const lastGroup = !circular && view.index === pageCount - 1;
+  // Request the next group and keep playing; non-circular playback stops once the selection actually reaches the
+  // last group (see `atEnd` in the rotation), so a declined request keeps playback requesting at each interval.
   const advance = useEventCallback(() => {
-    if (!circular && view.index === pageCount - 1) {
+    if (lastGroup) {
       return false;
     }
-    const nextIndex = (view.index + 1) % pageCount;
-    selection.request(nextIndex, 'autoplay', undefined, 1);
-    return circular || nextIndex < pageCount - 1;
+    selection.request((view.index + 1) % pageCount, 'autoplay', undefined, 1);
+    return true;
   });
   const rotation = useCarouselRotation(
     fluent.targetDocument,
@@ -106,6 +127,7 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
     autoplayInterval,
     view.index,
     view.busy,
+    lastGroup,
     advance,
     environment,
   );
@@ -118,8 +140,10 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
       selection.request(index, 'nav', event);
     },
   );
-  const onNavKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
-    let index = view.index;
+  const onNavKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>, tabIndex: number) => {
+    // Move from the focused tab, not the selected group: a controlled owner may decline or delay a selection.
+    const dir = getDir();
+    let index = tabIndex;
     switch (event.key) {
       case 'ArrowRight':
         index += dir === 'rtl' ? -1 : 1;
@@ -182,7 +206,6 @@ export function useCarousel(props: CarouselProps, ref: React.Ref<HTMLDivElement>
           role: 'region',
           'aria-roledescription': 'carousel',
           ...rootProps,
-          dir,
           ref: rootMergedRef,
           onPointerOver: mergeCallbacks(rootProps.onPointerOver, rotation.onPointerOver),
           onPointerLeave: mergeCallbacks(rootProps.onPointerLeave, rotation.onPointerLeave),

@@ -1,8 +1,8 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { useCarouselContext, useCarouselItemIndex } from '../carouselContext';
+import { CarouselSlideCountContext, useCarouselContext, useCarouselItemIndex } from '../carouselContext';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 
 /**
@@ -13,11 +13,13 @@ import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types'
 export const useCarouselCard = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
   const { getSlideLabel, slideCount } = useCarouselContext();
   const index = useCarouselItemIndex();
+  // The viewport's render-time count is correct on the server, before the root learns it in a layout effect.
+  const total = React.useContext(CarouselSlideCountContext) ?? slideCount;
   return {
     components: { root: 'div' },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        'aria-label': getSlideLabel(index + 1, Math.max(slideCount, index + 1)),
+        'aria-label': getSlideLabel(index + 1, Math.max(total, index + 1)),
         tabIndex: 0,
         ...props,
         ref,
