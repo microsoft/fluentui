@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Keep TagPicker native popovers open after control clicks, preserve capture-phase gesture cancellation, and ignore disabled control gestures.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}

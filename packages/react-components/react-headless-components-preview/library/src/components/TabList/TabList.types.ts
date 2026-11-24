@@ -13,6 +13,11 @@ export type {
 export type TabListState = TabListBaseState & {
   root: {
     /**
+     * Data attribute set when the tab list is disabled.
+     */
+    'data-disabled'?: string;
+
+    /**
      * Data attribute set to reflect the orientation of the tab list. Value is 'vertical' or 'horizontal'.
      */
     'data-orientation'?: 'vertical' | 'horizontal';
