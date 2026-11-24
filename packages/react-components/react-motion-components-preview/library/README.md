@@ -74,6 +74,64 @@ Every presence component includes one-way sub-components:
 </Fade.Out>
 ```
 
+## Pose-Based Helpers
+
+`fade`, `scale`, `slide`, `rotate`, and `blur` — along with their neutral-boundary
+directional helpers (`fadeIn`/`fadeOut`, `scaleIn`/`scaleOut`, `slideIn`/`slideOut`,
+`rotateIn`/`rotateOut`, and `blurIn`/`blurOut`) — return ordinary motion atoms accepted
+by `createPresenceComponent` and `createMotionComponent`.
+
+```ts
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import {
+  fadeIn,
+  fadeOut,
+  scaleIn,
+  scaleOut,
+  slideIn,
+  slideOut,
+  rotateIn,
+  rotateOut,
+  blurIn,
+  blurOut,
+} from '@fluentui/react-motion-components-preview';
+
+const duration = motionTokens.durationNormal;
+const CustomFade = createPresenceComponent({
+  enter: fadeIn({ duration }),
+  exit: fadeOut({ duration }),
+});
+const CustomScale = createPresenceComponent({
+  enter: scaleIn({ from: 0.9, duration }),
+  exit: scaleOut({ to: 0.9, duration }),
+});
+const CustomSlide = createPresenceComponent({
+  enter: slideIn({ from: { y: '24px' }, duration }),
+  exit: slideOut({ to: { y: '-12px' }, duration }),
+});
+const CustomRotate = createPresenceComponent({
+  enter: rotateIn({ from: -90, duration }),
+  exit: rotateOut({ to: 90, duration }),
+});
+const CustomBlur = createPresenceComponent({
+  enter: blurIn({ from: '10px', duration }),
+  exit: blurOut({ to: '10px', duration }),
+});
+```
+
+General `fade`, `scale`, `slide`, `rotate`, and `blur` require explicit `from` and `to`
+endpoints (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). All
+helpers require `duration`; `easing` defaults to linear and `delay` to `0`. Fade helpers
+use `fill: 'both'` so delayed entrances remain hidden; the other atoms do not add opacity
+or fill.
+
+Directional `*In` helpers arrive at the property's neutral value (opacity `1`, scale `1`,
+zero translation `0px`, `0` degrees around axis `'z'`, or blur `'0px'`) with `to`
+forbidden, and `*Out` helpers depart from that neutral value with `from` forbidden.
+`fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that
+defaults to `0`; `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut`
+require an authored outer endpoint because they have no universal displaced value.
+
 ## Documentation
 
 📚 **[Full documentation](https://react.fluentui.dev/?path=/docs/motion-components-preview-introduction--docs)**

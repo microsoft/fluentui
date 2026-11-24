@@ -49,7 +49,7 @@ describe('collapsePresenceFn', () => {
       expect(motion.enter[1]).toMatchObject({ duration: 300 }); // whitespaceAtom
 
       // Opacity atom should use opacityDuration (defaults to sizeDuration)
-      expect(motion.enter[2]).toMatchObject({ duration: 300 }); // fadeAtom
+      expect(motion.enter[2]).toMatchObject({ duration: 300 }); // fadeIn
     });
 
     it('cascades granular duration defaults correctly', () => {

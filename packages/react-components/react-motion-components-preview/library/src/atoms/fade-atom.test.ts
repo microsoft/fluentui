@@ -1,134 +1,58 @@
-import { fadeAtom } from './fade-atom';
-import {
-  expectValidAtomMotion,
-  expectReversedKeyframes,
-  expectCustomParameters,
-  expectKeyframeProperty,
-} from '../testing/atomTestUtils';
+import { motionTokens } from '@fluentui/react-motion';
+import { fade, fadeIn, fadeOut } from './fade-atom';
+import { expectValidAtomMotion, expectReversedKeyframes, expectCustomParameters } from '../testing/atomTestUtils';
 
-/**
- * Test utility for validating fade-specific atom properties.
- */
-function expectFadeAtom(
-  atom: import('@fluentui/react-motion').AtomMotion,
-  direction: 'enter' | 'exit',
-  outOpacity: number = 0,
-  inOpacity: number = 1,
-) {
-  expectValidAtomMotion(atom);
-
-  if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'opacity', [outOpacity, inOpacity]);
-  } else {
-    expectKeyframeProperty(atom, 'opacity', [inOpacity, outOpacity]);
-  }
-}
-
-describe('fadeAtom', () => {
-  it('creates proper keyframes for enter and exit directions', () => {
-    const enterAtom = fadeAtom({
-      direction: 'enter',
-      duration: 300,
-    });
-
-    const exitAtom = fadeAtom({
-      direction: 'exit',
-      duration: 300,
-    });
-
-    expect(enterAtom.keyframes).toEqual([{ opacity: 0 }, { opacity: 1 }]);
-    expect(exitAtom.keyframes).toEqual([{ opacity: 1 }, { opacity: 0 }]);
+describe('fade', () => {
+  it('requires both from and to endpoints on the general helper', () => {
+    expect(fade({ from: 0.3, to: 1, duration: 300 }).keyframes).toEqual([{ opacity: 0.3 }, { opacity: 1 }]);
+    expect(fade({ from: 1, to: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 1 }, { opacity: 0.3 }]);
+    // @ts-expect-error both from and to are required
+    fade({ from: 0.3, duration: 300 });
+    // @ts-expect-error both from and to are required
+    fade({ to: 0.3, duration: 300 });
+    // @ts-expect-error both from and to are required
+    fade({ duration: 300 });
   });
 
-  it('applies custom opacity values', () => {
-    const atom = fadeAtom({
-      direction: 'enter',
+  it('preserves custom poses and timing with fill "both" and default linear easing', () => {
+    const atom = fade({ from: 0.2, to: 0.7, duration: 300, easing: 'ease-out', delay: 50 });
+    expectValidAtomMotion(atom);
+    expect(atom).toEqual({
+      keyframes: [{ opacity: 0.2 }, { opacity: 0.7 }],
       duration: 300,
-      outOpacity: 0.5,
-      inOpacity: 0.8,
-    });
-
-    expect(atom.keyframes).toEqual([{ opacity: 0.5 }, { opacity: 0.8 }]);
-  });
-
-  it('has fill mode "both" by default to prevent opacity flickering during delays', () => {
-    const enterAtom = fadeAtom({
-      direction: 'enter',
-      duration: 300,
-      delay: 100,
-    });
-
-    const exitAtom = fadeAtom({
-      direction: 'exit',
-      duration: 300,
+      easing: 'ease-out',
       delay: 50,
+      fill: 'both',
     });
+    expectCustomParameters(atom, { duration: 300, easing: 'ease-out', delay: 50 });
 
-    expect(enterAtom.fill).toBe('both');
-    expect(exitAtom.fill).toBe('both');
-  });
-
-  it('includes all expected properties in the returned atom', () => {
-    const atom = fadeAtom({
-      direction: 'enter',
-      duration: 250,
-      delay: 100,
-      easing: 'ease-out',
-    });
-
-    expect(atom).toMatchObject({
+    expect(fade({ from: 0, to: 1, duration: 200 })).toEqual({
       keyframes: [{ opacity: 0 }, { opacity: 1 }],
-      duration: 250,
-      easing: 'ease-out',
-      delay: 100,
+      duration: 200,
+      easing: motionTokens.curveLinear,
+      delay: 0,
       fill: 'both',
     });
   });
 
-  // Enhanced tests using test utilities
-  it('creates valid atom motion objects for both directions', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300 });
+  it('creates directional fades using the general helper', () => {
+    const enterAtom = fadeIn({ duration: 300 });
+    const exitAtom = fadeOut({ duration: 300 });
 
-    expectValidAtomMotion(enterAtom);
-    expectValidAtomMotion(exitAtom);
-  });
-
-  it('creates properly reversed keyframes for enter and exit', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300 });
-
+    expect(enterAtom).toEqual(fade({ from: 0, to: 1, duration: 300 }));
+    expect(exitAtom).toEqual(fade({ from: 1, to: 0, duration: 300 }));
     expectReversedKeyframes(enterAtom, exitAtom);
-  });
 
-  it('validates fade-specific behavior with test utility', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300 });
-
-    expectFadeAtom(enterAtom, 'enter');
-    expectFadeAtom(exitAtom, 'exit');
-  });
-
-  it('validates custom opacity values with test utility', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300, outOpacity: 0.2, inOpacity: 0.7 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300, outOpacity: 0.3, inOpacity: 0.8 });
-
-    expectFadeAtom(enterAtom, 'enter', 0.2, 0.7);
-    expectFadeAtom(exitAtom, 'exit', 0.3, 0.8);
-  });
-
-  it('validates custom timing parameters with test utility', () => {
-    const atom = fadeAtom({
-      direction: 'enter',
-      duration: 500,
-      delay: 200,
-      easing: 'ease-in-out',
-    });
-
-    expectCustomParameters(atom, {
-      duration: 500,
-      delay: 200,
-      easing: 'ease-in-out',
-    });
+    expect(fadeIn({ from: 0.2, duration: 300, easing: 'ease-out', delay: 25 })).toEqual(
+      fade({ from: 0.2, to: 1, duration: 300, easing: 'ease-out', delay: 25 }),
+    );
+    expect(fadeOut({ duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      fade({ from: 1, to: 0, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+    expect(fadeOut({ to: 0.4, duration: 300 })).toEqual(fade({ from: 1, to: 0.4, duration: 300 }));
+    // @ts-expect-error fadeIn owns the neutral destination
+    fadeIn({ to: 0.5, duration: 300 });
+    // @ts-expect-error fadeOut owns the neutral source
+    fadeOut({ from: 0.5, duration: 300 });
   });
 });

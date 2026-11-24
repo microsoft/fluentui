@@ -19,7 +19,7 @@ import {
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
-import { fadeAtom, Scale, slideAtom } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut, Scale, slideIn, slideOut } from '@fluentui/react-motion-components-preview';
 
 const useStyles = makeStyles({
   toolbar: {
@@ -57,14 +57,11 @@ const useStyles = makeStyles({
 const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level }) => {
   const duration = motionTokens.durationNormal;
   const easing = motionTokens.curveEasyEase;
-  const outX = level === 1 ? '-100%' : '100%';
+  const offsetX = level === 1 ? '-100%' : '100%';
 
   return {
-    enter: [
-      fadeAtom({ direction: 'enter', duration, easing }),
-      slideAtom({ direction: 'enter', duration, easing, outX }),
-    ],
-    exit: [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outX })],
+    enter: [fadeIn({ duration, easing }), slideIn({ duration, easing, from: { x: offsetX } })],
+    exit: [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { x: offsetX } })],
   };
 });
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Migrate internal message bar motion from fadeAtom/slideAtom to fadeIn/fadeOut/slideIn.",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

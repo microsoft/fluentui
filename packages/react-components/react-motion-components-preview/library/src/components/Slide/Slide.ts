@@ -1,7 +1,7 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
-import { slideAtom } from '../../atoms/slide-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
+import { slide } from '../../atoms/slide-atom';
 import type { SlideParams } from './slide-types';
 
 /**
@@ -32,24 +32,21 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   inY = '0px',
   animateOpacity = true,
 }: SlideParams) => {
-  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, delay, outX, outY, inX, inY })];
+  const enterAtoms = [slide({ duration, easing, delay, from: { x: outX, y: outY }, to: { x: inX, y: inY } })];
   const exitAtoms = [
-    slideAtom({
-      direction: 'exit',
+    slide({
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outX,
-      outY,
-      inX,
-      inY,
+      from: { x: inX, y: inY },
+      to: { x: outX, y: outY },
     }),
   ];
 
   // Only add fade atoms if animateOpacity is true.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
+    enterAtoms.push(fadeIn({ duration, easing, delay }));
+    exitAtoms.push(fadeOut({ duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {
