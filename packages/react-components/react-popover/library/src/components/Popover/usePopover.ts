@@ -143,9 +143,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
       return;
     }
 
-    const isInside = elementContains(contentElement, target) || elementContains(triggerElement, target);
-
-    if (isInside) {
+    if (elementContains(contentElement, target) || elementContains(triggerElement, target)) {
       focusWasInsideRef.current = true;
       return;
     }
@@ -162,12 +160,31 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
       return;
     }
 
-    focusWasInsideRef.current = false;
+    // Seed the guard from the element that currently holds focus. On mouse-driven opens the
+    // popover often focuses its content synchronously during commit - before this passive
+    // listener registers - so the inside `focusin` is never observed. Reading `activeElement`
+    // here recovers that state so a later programmatic focus-out still dismisses the popover,
+    // while a popover whose focus was intentionally kept outside (e.g. `unstable_disableAutoFocus`)
+    // stays open.
+    const activeElement = (targetDocument?.activeElement as HTMLElement) ?? null;
+    const contentElement = positioningRefs.contentRef.current;
+    const triggerElement = positioningRefs.triggerRef.current ?? null;
+    focusWasInsideRef.current =
+      elementContains(contentElement, activeElement) || elementContains(triggerElement, activeElement);
+
     targetDocument?.addEventListener('focusin', closeOnFocusOutCallback, true);
     return () => {
       targetDocument?.removeEventListener('focusin', closeOnFocusOutCallback, true);
     };
-  }, [open, props.trapFocus, closeOnFocusOutside, targetDocument, closeOnFocusOutCallback]);
+  }, [
+    open,
+    props.trapFocus,
+    closeOnFocusOutside,
+    targetDocument,
+    closeOnFocusOutCallback,
+    positioningRefs.contentRef,
+    positioningRefs.triggerRef,
+  ]);
 
   const { findFirstFocusable } = useFocusFinders();
   const activateModal = useActivateModal();
