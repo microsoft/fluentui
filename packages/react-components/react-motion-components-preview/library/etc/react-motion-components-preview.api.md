@@ -55,10 +55,10 @@ export type BlurParams = BasePresenceParams & AnimateOpacity & {
 export type BlurPose = string;
 
 // @public
-export type ChoreographyItem = AtomMotion | MotionLayer | StaggerMotion;
+export type ChoreographyItem = AtomMotion | HoldMotion | MotionLayer | SequenceMotion | StaggerMotion;
 
 // @public
-export type ChoreographyMotion = ChoreographyItem | readonly ChoreographyItem[];
+export type ChoreographyMotion = ChoreographyItem | readonly ChoreographyMotion[];
 
 // @public
 export type ChoreographyMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
@@ -66,7 +66,7 @@ export type ChoreographyMotionFn<MotionParams extends Record<string, MotionParam
 } & MotionParams) => ChoreographyMotion;
 
 // @public
-export function cloneMotionToTargets(targets: readonly MotionTarget[], motion: AtomMotion | readonly AtomMotion[], options?: MotionLayerOptions): MotionLayer[];
+export function cloneMotionToTargets(targets: readonly MotionTarget[], motion: ChoreographyMotion, options?: MotionLayerOptions): MotionLayer[];
 
 // @public
 export const Collapse: PresenceComponent<CollapseParams, never>;
@@ -110,6 +110,15 @@ export function createChoreographyPresenceComponent<MotionParams extends Record<
 
 // @public
 export type CreateChoreographyPresenceOptions<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never> = Partial<PresenceComponentOptions<NoInfer<MotionParams>, PresentKeys>> & {
+    readonly resolveTarget?: TargetResolver;
+};
+
+// @public
+export function createSequenceComponent<MotionParams extends Record<string, MotionParam> = {}>(steps: readonly ChoreographyMotion[] | SequenceMotionFn<MotionParams>, options?: CreateSequenceOptions): MotionComponent<SequenceParams & MotionParams>;
+
+// @public
+export type CreateSequenceOptions = {
+    readonly defaultGap?: number;
     readonly resolveTarget?: TargetResolver;
 };
 
@@ -180,13 +189,22 @@ export const FadeRelaxed: PresenceComponent<FadeParams, "inOpacity">;
 export const FadeSnappy: PresenceComponent<FadeParams, "inOpacity">;
 
 // @public
-export function layer(target: MotionTarget, motion: AtomMotion | readonly AtomMotion[], options?: MotionLayerOptions): MotionLayer;
+export function hold(duration: number): HoldMotion;
+
+// @public
+export type HoldMotion = {
+    readonly kind: 'hold';
+    readonly duration: number;
+};
+
+// @public
+export function layer(target: MotionTarget, motion: ChoreographyMotion, options?: MotionLayerOptions): MotionLayer;
 
 // @public
 export type MotionLayer = {
     readonly kind: 'layer';
     readonly target: MotionTarget;
-    readonly motion: AtomMotion | readonly AtomMotion[];
+    readonly motion: ChoreographyMotion;
     readonly delay?: number;
 };
 
@@ -314,6 +332,31 @@ export const ScaleRelaxed: PresenceComponent<ScaleParams, "inScale">;
 
 // @public
 export const ScaleSnappy: PresenceComponent<ScaleParams, "inScale">;
+
+// @public
+export function sequence(children: readonly ChoreographyMotion[], options?: SequenceOptions): SequenceMotion;
+
+// @public
+export type SequenceMotion = {
+    readonly kind: 'sequence';
+    readonly children: readonly ChoreographyMotion[];
+    readonly gap?: number;
+};
+
+// @public
+export type SequenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
+    element: HTMLElement;
+} & MotionParams) => readonly ChoreographyMotion[];
+
+// @public
+export type SequenceOptions = {
+    readonly gap?: number;
+};
+
+// @public
+export type SequenceParams = {
+    gap?: number;
+};
 
 // @public
 export const Slide: PresenceComponent<SlideParams, "inX" | "inY">;

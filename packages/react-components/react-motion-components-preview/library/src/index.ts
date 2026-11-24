@@ -12,19 +12,25 @@ export { Slide, SlideSnappy, SlideRelaxed, type SlideParams } from './components
 export { Blur, type BlurParams } from './components/Blur';
 export { Rotate, type RotateParams } from './components/Rotate';
 
-// Choreography & Stagger
+// Choreography, Sequence & Stagger
 export {
+  hold,
+  sequence,
   layer,
   cloneMotionToTargets,
   stagger,
   resolveChoreography,
   createChoreographyComponent,
   createChoreographyPresenceComponent,
+  createSequenceComponent,
   createStaggerComponent,
   createStaggerPresenceComponent,
   type MotionTarget,
   type MotionLayer,
   type MotionLayerOptions,
+  type HoldMotion,
+  type SequenceOptions,
+  type SequenceMotion,
   type StaggerOrder,
   type StaggerOptions,
   type StaggerMotion,
@@ -37,6 +43,9 @@ export {
   type PresenceChoreographyMotionFn,
   type CreateChoreographyOptions,
   type CreateChoreographyPresenceOptions,
+  type SequenceParams,
+  type SequenceMotionFn,
+  type CreateSequenceOptions,
   type StaggerParams,
   type StaggerPresenceParams,
   type StaggerItemMotionFn,

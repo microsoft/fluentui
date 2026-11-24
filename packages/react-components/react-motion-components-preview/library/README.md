@@ -135,16 +135,19 @@ The pre-built `Fade`, `Scale`, `Slide`, `Rotate`, `Blur`, and `Collapse` presenc
 components use temporal `from*`/`in*`/`to*` pose props while retaining their Fluent
 timing and variant defaults.
 
-## Choreography & Stagger
+## Choreography, Sequence & Stagger
 
-Multi-target stagger and choreography are defined as plain motion POJOs rather than nested
+Multi-target stagger, serial sequences, and holds are defined as plain motion POJOs rather than nested
 React motion components:
 
-- `layer(target, motion, options?)` binds one or more atoms to a DOM element or CSS selector with an optional additive `delay`.
+- `layer(target, motion, options?)` binds a choreography motion to a DOM element or CSS selector with an optional additive `delay`.
 - `cloneMotionToTargets(targets, motion, options?)` creates one `MotionLayer` per target in input order without mutating `motion`.
+- `hold(duration)` inserts an explicit pause in milliseconds within a sequence while preserving prior animated state.
+- `sequence(children, { gap? })` plays ordered children serially on a shared cursor (positive `gap` pauses, negative `gap` overlaps), automatically normalizing WAAPI `fill` on repeated `(target, property)` steps.
 - `stagger(members, { startInterval, order? })` preserves ordered layer participants and adds `index * startInterval` to each member's existing delay.
 - `resolveChoreography(motion, rootOrOptions?)` lowers choreography POJOs into target-bound `AtomMotion[]` for WAAPI playback.
 - `createChoreographyComponent` / `createChoreographyPresenceComponent` turn choreography POJOs into motion or presence components controlled by one `AnimationHandle`.
+- `createSequenceComponent` creates a persistent-target sequenced motion component from ordered steps with an optional `gap` prop.
 - `createStaggerComponent` / `createStaggerPresenceComponent` create homogeneous staggered components over matched targets (default `':scope > *'`).
 
 ```tsx

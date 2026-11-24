@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-motion-components-preview): add pose-based motion atoms, temporal from/in/to presence endpoints, and POJO-based stagger/choreography APIs",
+  "comment": "feat(react-motion-components-preview): add pose-based motion atoms, temporal from/in/to presence endpoints, and POJO-based sequence, stagger, and choreography APIs",
   "packageName": "@fluentui/react-motion-components-preview",
   "email": "robert@robertpenner.com"
 }

@@ -12,12 +12,13 @@ import type {
 export type MotionTarget = Element | string;
 
 /**
- * Associates a motion target with one or more motion atoms and an optional additive base delay.
+ * Associates a motion target with a choreography motion (one or more atoms, a sequence, a hold, or a stagger)
+ * and an optional additive base delay.
  */
 export type MotionLayer = {
   readonly kind: 'layer';
   readonly target: MotionTarget;
-  readonly motion: AtomMotion | readonly AtomMotion[];
+  readonly motion: ChoreographyMotion;
   readonly delay?: number;
 };
 
@@ -25,8 +26,37 @@ export type MotionLayer = {
  * Options for constructing a `MotionLayer`.
  */
 export type MotionLayerOptions = {
-  /** Base delay in milliseconds added to each atom in this layer (and before any stagger offset). */
+  /** Base delay in milliseconds added to all motions in this layer (and before any stagger offset). */
   readonly delay?: number;
+};
+
+/**
+ * Explicit pause/dwell in milliseconds within a sequence, preserving prior animated state.
+ */
+export type HoldMotion = {
+  readonly kind: 'hold';
+  /** Duration in milliseconds to hold. Must be finite and nonnegative. */
+  readonly duration: number;
+};
+
+/**
+ * Options for constructing a `SequenceMotion` POJO.
+ */
+export type SequenceOptions = {
+  /**
+   * Optional gap in milliseconds between adjacent children.
+   * Positive values insert a pause; negative values overlap adjacent children. Defaults to `0`.
+   */
+  readonly gap?: number;
+};
+
+/**
+ * Canonical sequence POJO playing ordered children one after another on a shared cursor.
+ */
+export type SequenceMotion = {
+  readonly kind: 'sequence';
+  readonly children: readonly ChoreographyMotion[];
+  readonly gap?: number;
 };
 
 /**
@@ -58,16 +88,18 @@ export type StaggerMotion = {
 
 /**
  * A single unit in a choreography definition:
- * - `AtomMotion`: animates the component's root element directly.
- * - `MotionLayer`: binds one or more atoms to a target element or selector with an optional base delay.
+ * - `AtomMotion`: animates the component's root element (or inherited layer target) directly.
+ * - `HoldMotion`: advances the sequence cursor without writing CSS properties.
+ * - `MotionLayer`: binds a choreography motion to a target element or selector with an optional base delay.
+ * - `SequenceMotion`: plays ordered children serially with an optional signed `gap`.
  * - `StaggerMotion`: staggers ordered `MotionLayer` participants by an additive `startInterval`.
  */
-export type ChoreographyItem = AtomMotion | MotionLayer | StaggerMotion;
+export type ChoreographyItem = AtomMotion | HoldMotion | MotionLayer | SequenceMotion | StaggerMotion;
 
 /**
  * A one-way choreography definition (a single item or a parallel array of items).
  */
-export type ChoreographyMotion = ChoreographyItem | readonly ChoreographyItem[];
+export type ChoreographyMotion = ChoreographyItem | readonly ChoreographyMotion[];
 
 /**
  * A bidirectional presence choreography definition with `enter` and `exit` edges.
@@ -180,4 +212,29 @@ export type CreateStaggerPresenceOptions = CreateStaggerOptions & {
   readonly defaultExitStartInterval?: number;
   /** Default exit order when omitted as a prop. Defaults to the resolved enter `order`. */
   readonly defaultExitOrder?: StaggerOrder;
+};
+
+/**
+ * Primitive runtime parameters accepted by components created with `createSequenceComponent`.
+ */
+export type SequenceParams = {
+  /** Optional gap in milliseconds between adjacent sequence children; negative values overlap them. */
+  gap?: number;
+};
+
+/**
+ * Dynamic sequence function returning ordered choreography steps for `createSequenceComponent`.
+ */
+export type SequenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
+  params: { element: HTMLElement } & MotionParams,
+) => readonly ChoreographyMotion[];
+
+/**
+ * Options for `createSequenceComponent`.
+ */
+export type CreateSequenceOptions = {
+  /** Default `gap` (ms) between adjacent steps when omitted as a prop. Defaults to `0`. */
+  readonly defaultGap?: number;
+  /** Custom target binder used when resolving string targets inside sequence steps. */
+  readonly resolveTarget?: TargetResolver;
 };

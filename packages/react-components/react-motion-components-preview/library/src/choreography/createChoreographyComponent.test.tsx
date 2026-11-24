@@ -2,11 +2,12 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { motionTokens } from '@fluentui/react-motion';
 import { fadeIn, fadeOut } from '../atoms/fade-atom';
-import { scaleIn } from '../atoms/scale-atom';
+import { scaleIn, scaleOut } from '../atoms/scale-atom';
 import { slideIn, slideOut } from '../atoms/slide-atom';
+import { hold, layer, sequence, stagger } from './choreography';
 import { createChoreographyComponent, createChoreographyPresenceComponent } from './createChoreographyComponent';
+import { createSequenceComponent } from './createSequenceComponent';
 import { createStaggerComponent, createStaggerPresenceComponent } from './createStaggerComponent';
-import { layer, stagger } from './stagger';
 
 type MockAnimation = {
   persist: jest.Mock;
@@ -295,6 +296,86 @@ describe('choreography and stagger component factories', () => {
       expect(mockAnimate.animateSpy.mock.calls.map(call => [call[1].duration, call[1].delay])).toEqual([
         [150, 0],
         [150, 80],
+      ]);
+    });
+  });
+
+  describe('createSequenceComponent', () => {
+    it('sequences enter -> hold -> exit on a single persistent DOM node with normalized fills', async () => {
+      const TitleSequence = createSequenceComponent([
+        [fadeIn({ duration: 400 }), slideIn({ from: { y: '-100px' }, duration: 400 })],
+        hold(1200),
+        [fadeOut({ duration: 400 }), slideOut({ to: { y: '100px' }, duration: 400 })],
+      ]);
+
+      const onMotionFinish = jest.fn();
+      const { getByTestId, rerender } = render(
+        <TitleSequence onMotionFinish={onMotionFinish} replayKey={0}>
+          <div data-testid="title">Album A</div>
+        </TitleSequence>,
+      );
+
+      const titleNode = getByTestId('title');
+      expect(mockAnimate.animateSpy).toHaveBeenCalledTimes(4);
+      expect(mockAnimate.animateSpy.mock.instances).toEqual([titleNode, titleNode, titleNode, titleNode]);
+      expect(mockAnimate.animateSpy.mock.calls.map(call => [call[1].delay, call[1].duration, call[1].fill])).toEqual([
+        [0, 400, 'both'],
+        [0, 400, 'both'],
+        [1600, 400, 'forwards'],
+        [1600, 400, 'forwards'],
+      ]);
+
+      mockAnimate.animations.forEach(anim => anim.onfinish?.());
+      await flushMicrotasks();
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
+
+      // Replaying preserves exact DOM node identity
+      rerender(
+        <TitleSequence onMotionFinish={onMotionFinish} replayKey={1}>
+          <div data-testid="title">Album A</div>
+        </TitleSequence>,
+      );
+      expect(getByTestId('title')).toBe(titleNode);
+    });
+
+    it('supports gap prop and composing nested layers and staggers in one scene', () => {
+      const AlbumScene = createChoreographyComponent([
+        layer('[data-part="title"]', sequence([fadeIn({ duration: 400 }), hold(1200), fadeOut({ duration: 400 })])),
+        stagger(
+          [
+            layer(
+              '[data-part="photo"]',
+              sequence([scaleIn({ from: 0.5, duration: 200 }), hold(1600), scaleOut({ to: 0.5, duration: 200 })]),
+            ),
+          ],
+          { startInterval: 100 },
+        ),
+      ]);
+
+      const { container } = render(
+        <AlbumScene>
+          <div>
+            <h2 data-part="title">Album</h2>
+            <div>
+              <div data-part="photo">1</div>
+              <div data-part="photo">2</div>
+            </div>
+          </div>
+        </AlbumScene>,
+      );
+
+      const title = container.querySelector('[data-part="title"]');
+      const photos = Array.from(container.querySelectorAll('[data-part="photo"]'));
+
+      expect(mockAnimate.animateSpy).toHaveBeenCalledTimes(6);
+      expect(mockAnimate.animateSpy.mock.instances).toEqual([title, title, photos[0], photos[0], photos[1], photos[1]]);
+      expect(mockAnimate.animateSpy.mock.calls.map(call => [call[1].delay, call[1].fill])).toEqual([
+        [0, 'both'],
+        [1600, 'forwards'],
+        [0, 'both'],
+        [1800, 'forwards'],
+        [100, 'both'],
+        [1900, 'forwards'],
       ]);
     });
   });

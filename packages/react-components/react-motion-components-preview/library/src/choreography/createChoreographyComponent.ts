@@ -6,7 +6,7 @@ import {
   type PresenceComponent,
   type PresenceComponentOptions,
 } from '@fluentui/react-motion';
-import { resolveChoreography } from './stagger';
+import { resolveChoreography } from './choreography';
 import type {
   ChoreographyMotion,
   ChoreographyMotionFn,
