@@ -41,48 +41,48 @@ const cardData = [
     title: 'Welcome',
     content: 'Getting started',
     color: tokens.colorPaletteBlueBackground2,
-    outX: '-50px',
-    outY: '0px',
+    fromX: '-50px',
+    fromY: '0px',
   },
   {
     id: 2,
     title: 'Features',
     content: 'Explore the capabilities',
     color: tokens.colorPaletteGreenBackground2,
-    outX: '0px',
-    outY: '-50px',
+    fromX: '0px',
+    fromY: '-50px',
   },
   {
     id: 3,
     title: 'Customize',
     content: 'Make it your own',
     color: tokens.colorPalettePurpleBackground2,
-    outX: '50px',
-    outY: '0px',
+    fromX: '50px',
+    fromY: '0px',
   },
   {
     id: 4,
     title: 'Advanced',
     content: 'Pro techniques',
     color: tokens.colorPaletteRedBackground2,
-    outX: '-30px',
-    outY: '30px',
+    fromX: '-30px',
+    fromY: '30px',
   },
   {
     id: 5,
     title: 'Examples',
     content: 'Real-world usage',
     color: tokens.colorPalettePeachBackground2,
-    outX: '0px',
-    outY: '50px',
+    fromX: '0px',
+    fromY: '50px',
   },
   {
     id: 6,
     title: 'Resources',
     content: 'Documentation & help',
     color: tokens.colorPaletteLightTealBackground2,
-    outX: '30px',
-    outY: '30px',
+    fromX: '30px',
+    fromY: '30px',
   },
 ];
 
@@ -135,8 +135,8 @@ export const CardsDemo = (): JSXElement => {
           <Slide
             key={card.id}
             visible={visibleCards.has(card.id)}
-            outX={card.outX}
-            outY={card.outY}
+            fromX={card.fromX}
+            fromY={card.fromY}
             duration={500}
             exitDuration={500}
             easing={curveSpringEnter}

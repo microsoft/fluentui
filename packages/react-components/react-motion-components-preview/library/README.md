@@ -45,7 +45,7 @@ function Tooltip({ visible, children }) {
 // Slide from the right
 function Drawer({ open, children }) {
   return (
-    <Slide visible={open} outX="20px">
+    <Slide visible={open} fromX="20px">
       {children}
     </Slide>
   );
@@ -60,19 +60,79 @@ import { FadeSnappy, ScaleRelaxed } from '@fluentui/react-motion-components-prev
 
 ### The `.In` and `.Out` Pattern
 
-Every presence component includes one-way sub-components:
+Every presence component includes one-way sub-components with directional prop contracts:
+`.In` accepts `from*` pose props and enter timing (omitting `in*`, `to*`, and `exit*` timing),
+and `.Out` accepts `to*` pose props and ordinary or `exit*` timing (omitting `in*` and `from*`).
 
 ```tsx
-// One-way enter animation (plays on mount)
-<Fade.In>
+// One-way enter animation (plays on mount from fromOpacity to 1)
+<Fade.In fromOpacity={0}>
   <div>Fades in once</div>
 </Fade.In>
 
-// One-way exit animation (plays on mount)
-<Fade.Out>
+// One-way exit animation (plays on mount from 1 to toOpacity)
+<Fade.Out toOpacity={0}>
   <div>Fades out once</div>
 </Fade.Out>
 ```
+
+## Pose-Based Helpers
+
+`fade`, `scale`, `slide`, `rotate`, and `blur` — along with their neutral-boundary
+directional helpers (`fadeIn`/`fadeOut`, `scaleIn`/`scaleOut`, `slideIn`/`slideOut`,
+`rotateIn`/`rotateOut`, and `blurIn`/`blurOut`) — return ordinary motion atoms accepted
+by `createPresenceComponent` and `createMotionComponent`.
+
+```ts
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import {
+  fadeIn,
+  fadeOut,
+  scaleIn,
+  scaleOut,
+  slideIn,
+  slideOut,
+  rotateIn,
+  rotateOut,
+  blurIn,
+  blurOut,
+} from '@fluentui/react-motion-components-preview';
+
+const duration = motionTokens.durationNormal;
+const CustomFade = createPresenceComponent({
+  enter: fadeIn({ duration }),
+  exit: fadeOut({ duration }),
+});
+const CustomScale = createPresenceComponent({
+  enter: scaleIn({ from: 0.9, duration }),
+  exit: scaleOut({ to: 0.9, duration }),
+});
+const CustomSlide = createPresenceComponent({
+  enter: slideIn({ from: { y: '24px' }, duration }),
+  exit: slideOut({ to: { y: '-12px' }, duration }),
+});
+const CustomRotate = createPresenceComponent({
+  enter: rotateIn({ from: -90, duration }),
+  exit: rotateOut({ to: 90, duration }),
+});
+const CustomBlur = createPresenceComponent({
+  enter: blurIn({ from: '10px', duration }),
+  exit: blurOut({ to: '10px', duration }),
+});
+```
+
+General `fade`, `scale`, `slide`, `rotate`, and `blur` require explicit `from` and `to`
+endpoints (within a `slide` pose, an omitted `x` or `y` axis defaults to `'0px'`). All
+helpers require `duration`; `easing` defaults to linear and `delay` to `0`. Fade helpers
+use `fill: 'both'` so delayed entrances remain hidden; the other atoms do not add opacity
+or fill.
+
+Directional `*In` helpers arrive at the property's neutral value (opacity `1`, scale `1`,
+zero translation `0px`, `0` degrees around axis `'z'`, or blur `'0px'`) with `to`
+forbidden, and `*Out` helpers depart from that neutral value with `from` forbidden.
+`fadeIn`/`fadeOut` and `scaleIn`/`scaleOut` accept an optional outer endpoint that
+defaults to `0`; `slideIn`/`slideOut`, `rotateIn`/`rotateOut`, and `blurIn`/`blurOut`
+require an authored outer endpoint because they have no universal displaced value.
 
 ## Documentation
 

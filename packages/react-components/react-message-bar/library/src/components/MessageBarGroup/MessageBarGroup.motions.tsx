@@ -1,5 +1,5 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
-import { fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut, slideIn } from '@fluentui/react-motion-components-preview';
 import type { MessageBarGroupProps } from './MessageBarGroup.types';
 
 /**
@@ -16,11 +16,11 @@ export const MessageBarMotion = createPresenceComponent<{ animate?: MessageBarGr
       enter:
         animate === 'both'
           ? // enter with slide and fade
-            [fadeAtom({ direction: 'enter', duration }), slideAtom({ direction: 'enter', outY: '-100%', duration })]
+            [fadeIn({ duration }), slideIn({ from: { y: '-100%' }, duration })]
           : [], // no enter motion
 
       // Always exit with a fade
-      exit: fadeAtom({ direction: 'exit', duration }),
+      exit: fadeOut({ duration }),
     };
   },
 );

@@ -181,7 +181,7 @@ export const ExpandableContainer = (): JSXElement => {
         visible={expanded}
         duration={COLLAPSE_DURATION}
         easing={motionTokens.curveEasyEase}
-        outSize={COLLAPSED_HEIGHT}
+        fromSize={COLLAPSED_HEIGHT}
         animateOpacity={false}
         exitDelay={STAGGER_EXIT_DELAY}
       >
@@ -211,7 +211,7 @@ export const ExpandableContainer = (): JSXElement => {
               reversed={!staggerVisible}
             >
               {staggerItems.map(item => (
-                <Slide key={item.id} delay={COLLAPSE_EXPAND_DELAY} outY="20px">
+                <Slide key={item.id} delay={COLLAPSE_EXPAND_DELAY} fromY="20px">
                   <div className={classes.item}>
                     <Persona
                       name={item.name}

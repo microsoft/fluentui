@@ -52,7 +52,6 @@ const useClasses = makeStyles({
 export const Text = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const outScale = visible ? 3 : 0;
 
   return (
     <div className={classes.container}>
@@ -69,7 +68,8 @@ export const Text = (): JSXElement => {
           {/* Create a list of items, each wrapped with a presence transition */}
           {Array.from({ length: 4 }, (_, i) => (
             <Scale
-              outScale={outScale}
+              fromScale={3}
+              toScale={0}
               duration={1200}
               exitDuration={1200}
               easing={motionTokens.curveDecelerateMax}

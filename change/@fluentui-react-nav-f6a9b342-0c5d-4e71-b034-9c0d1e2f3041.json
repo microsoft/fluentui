@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-nav): update NavCategoryItem chevron rotation to use temporal fromAngle prop",
+  "packageName": "@fluentui/react-nav",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

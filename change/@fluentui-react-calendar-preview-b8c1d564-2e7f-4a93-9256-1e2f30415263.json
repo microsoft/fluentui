@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-calendar-preview): update calendar motions to use temporal from/to presence props",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}

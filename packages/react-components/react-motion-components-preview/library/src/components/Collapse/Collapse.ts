@@ -2,7 +2,7 @@ import type { PresenceMotionFn, AtomMotion } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import type { CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
-import { fadeAtom } from '../../atoms/fade-atom';
+import { fadeIn, fadeOut } from '../../atoms/fade-atom';
 
 /**
  * Define a presence motion for collapse/expand
@@ -22,7 +22,8 @@ import { fadeAtom } from '../../atoms/fade-atom';
  * @param exitOpacityDuration - Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
  * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
- * @param outSize - Size for the out state (collapsed). Defaults to `'0px'`
+ * @param fromSize - Size before entering (collapsed). Defaults to `'0px'`
+ * @param toSize - Size after exiting (collapsed). Defaults to `fromSize`
  */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
@@ -47,19 +48,21 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   // Animation controls
   animateOpacity = true,
   orientation = 'vertical',
-  outSize = '0px',
+  fromSize = '0px',
+  toSize = fromSize,
 }) => {
+  const inSize = `${orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight}px`;
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   // For enter: size expands first, then opacity fades in after staggerDelay
   const enterAtoms: AtomMotion[] = [
     // Apply global delay to size atom - size expansion starts first
-    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, outSize, delay }),
+    sizeEnterAtom({ orientation, from: fromSize, to: inSize, duration: sizeDuration, easing, delay }),
     whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing, delay }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration: opacityDuration, easing, delay: delay + staggerDelay }));
+    enterAtoms.push(fadeIn({ duration: opacityDuration, easing, delay: delay + staggerDelay }));
   }
 
   // ----- EXIT -----
@@ -68,9 +71,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   const exitAtoms: AtomMotion[] = [];
   // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    exitAtoms.push(
-      fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing, delay: exitDelay }),
-    );
+    exitAtoms.push(fadeOut({ duration: exitOpacityDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   exitAtoms.push(
@@ -78,9 +79,9 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
       orientation,
       duration: exitSizeDuration,
       easing: exitEasing,
-      element,
+      from: inSize,
+      to: toSize,
       delay: exitDelay + exitStaggerDelay,
-      outSize,
     }),
     whitespaceAtom({
       direction: 'exit',
@@ -97,8 +98,14 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   };
 };
 
-/** A React component that applies collapse/expand transitions to its children. */
-export const Collapse = createPresenceComponent(collapsePresenceFn);
+/**
+ * A React component that applies collapse/expand transitions to its children.
+ * `Collapse.In` expands once on mount from `fromSize` to the element's measured size;
+ * `Collapse.Out` collapses once from the element's measured size to `toSize`.
+ */
+export const Collapse = createPresenceComponent(collapsePresenceFn, {
+  poseProps: [{ from: 'fromSize', to: 'toSize' }],
+});
 
 export const CollapseSnappy = createPresenceComponentVariant(Collapse, {
   duration: motionTokens.durationFast,

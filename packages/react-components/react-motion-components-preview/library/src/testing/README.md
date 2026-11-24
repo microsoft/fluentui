@@ -45,17 +45,11 @@ it('creates valid presence motion', () => {
 
 ```typescript
 import { expectValidAtomMotion } from '../testing';
-import { fadeAtom } from './fade-atom';
-
-// Atom-specific validators are defined within each test file
-function expectFadeAtom(atom, direction, fromOpacity = 0, toOpacity = 1) {
-  // Implementation specific to fade atom testing
-}
+import { fadeIn } from './fade-atom';
 
 it('creates valid fade atom', () => {
-  const atom = fadeAtom({ direction: 'enter', duration: 300 });
+  const atom = fadeIn({ duration: 300 });
   expectValidAtomMotion(atom);
-  expectFadeAtom(atom, 'enter');
 });
 ```
 
@@ -65,8 +59,7 @@ it('creates valid fade atom', () => {
 import { expectCustomParameters } from '../testing';
 
 it('applies custom timing', () => {
-  const atom = fadeAtom({
-    direction: 'enter',
+  const atom = fadeIn({
     duration: 500,
     delay: 100,
     easing: 'ease-out',
@@ -86,8 +79,8 @@ it('applies custom timing', () => {
 import { expectReversedKeyframes } from '../testing';
 
 it('has properly reversed enter/exit keyframes', () => {
-  const enterAtom = scaleAtom({ direction: 'enter', duration: 300 });
-  const exitAtom = scaleAtom({ direction: 'exit', duration: 300 });
+  const enterAtom = scaleIn({ duration: 300 });
+  const exitAtom = scaleOut({ duration: 300 });
 
   expectReversedKeyframes(enterAtom, exitAtom);
 });

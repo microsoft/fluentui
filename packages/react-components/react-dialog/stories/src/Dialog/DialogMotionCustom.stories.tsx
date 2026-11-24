@@ -45,7 +45,7 @@ export const MotionCustom = (): JSXElement => {
         <Field label={`Surface duration: ${duration}ms`}>
           <Slider min={100} max={2000} step={50} value={duration} onChange={(_, data) => setDuration(data.value)} />
         </Field>
-        <Field label={`Surface outScale: ${outScale.toFixed(2)}`}>
+        <Field label={`Surface fromScale: ${outScale.toFixed(2)}`}>
           <Slider min={0} max={1} step={0.05} value={outScale} onChange={(_, data) => setOutScale(data.value)} />
         </Field>
         <Field label={`Backdrop duration: ${backdropDuration}ms`}>
@@ -64,7 +64,7 @@ export const MotionCustom = (): JSXElement => {
         />
       </div>
 
-      <Dialog surfaceMotion={{ duration, outScale, easing, animateOpacity }}>
+      <Dialog surfaceMotion={{ duration, fromScale: outScale, easing, animateOpacity }}>
         <DialogTrigger disableButtonEnhancement>
           <Button>Open Dialog</Button>
         </DialogTrigger>
@@ -73,7 +73,7 @@ export const MotionCustom = (): JSXElement => {
             <DialogTitle>Dialog with custom motion params</DialogTitle>
             <DialogContent>
               This dialog's surface animation is driven by direct <code>surfaceMotion</code> params (`duration`,
-              `outScale`, `easing`, `animateOpacity`). Its backdrop fade is tuned independently via{' '}
+              `fromScale`, `easing`, `animateOpacity`). Its backdrop fade is tuned independently via{' '}
               <code>backdropMotion</code> (`duration`).
             </DialogContent>
             <DialogActions>
