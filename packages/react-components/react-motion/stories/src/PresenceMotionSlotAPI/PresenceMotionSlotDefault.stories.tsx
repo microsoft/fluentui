@@ -16,7 +16,7 @@ import description from './PresenceMotionSlotDefault.stories.md';
 
 // 1. Pick a presence motion. Here we reuse `Fade` from react-motion-components-preview,
 //    which is built with createPresenceComponent and accepts FadeParams (duration,
-//    easing, outOpacity, inOpacity, ...).
+//    easing, fromOpacity, inOpacity, toOpacity, ...).
 
 // 2. Define the component's slot types. Declaring the slot with `FadeParams`
 //    surfaces those params as direct props on `surfaceMotion`.

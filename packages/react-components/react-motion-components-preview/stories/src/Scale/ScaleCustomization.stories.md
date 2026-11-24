@@ -3,6 +3,7 @@
 
 ```tsx
 import { motionTokens, createPresenceComponentVariant } from '@fluentui/react-components';
+import { Scale } from '@fluentui/react-motion-components-preview';
 
 // Overshoots the end point, then settles back to it.
 const curveOvershootFirmOut = 'linear(0, 0.806 16.2%, 1.05 25%, 1.194 34.4%, 1.244 42.4%, 1.242 51.6%, 1.038 84.8%, 1)';
@@ -15,6 +16,6 @@ const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
   easing: curveOvershootFirmOut,
   exitEasing: curveOvershootFirmInOut,
-  outScale: 0.5, // increase the range of the scale transition
+  fromScale: 0.5, // increase the range of the scale transition
 });
 ```

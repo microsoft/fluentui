@@ -134,4 +134,80 @@ describe('useAnimateAtoms', () => {
       expect(handle).toBeDefined();
     });
   });
+
+  describe('target', () => {
+    it('animates motion.target instead of the root element and omits target from WAAPI options', () => {
+      const { result } = renderHook(() => useAnimateAtoms());
+
+      const [rootElement, rootAnimateMock] = createElementMock();
+      const [targetElement, targetAnimateMock] = createElementMock();
+      const motion: AtomMotion = {
+        target: targetElement,
+        keyframes: DEFAULT_KEYFRAMES,
+        duration: 200,
+        delay: 50,
+      };
+
+      result.current(rootElement, motion, { isReducedMotion: false });
+
+      expect(rootAnimateMock).not.toHaveBeenCalled();
+      expect(targetAnimateMock).toHaveBeenCalledTimes(1);
+      expect(targetAnimateMock).toHaveBeenCalledWith(DEFAULT_KEYFRAMES, {
+        ...DEFAULT_ANIMATION_OPTIONS,
+        duration: 200,
+        delay: 50,
+      });
+    });
+
+    it('controls mixed root and targeted atoms through one AnimationHandle', async () => {
+      const { result } = renderHook(() => useAnimateAtoms());
+
+      const rootAnimation = {
+        persist: jest.fn(),
+        cancel: jest.fn(),
+        finish: jest.fn(),
+        onfinish: null as null | (() => void),
+        oncancel: null as null | (() => void),
+      };
+      const targetAnimation = {
+        persist: jest.fn(),
+        cancel: jest.fn(),
+        finish: jest.fn(),
+        onfinish: null as null | (() => void),
+        oncancel: null as null | (() => void),
+      };
+      const rootElement = { animate: jest.fn().mockReturnValue(rootAnimation) } as unknown as HTMLElement;
+      const targetElement = { animate: jest.fn().mockReturnValue(targetAnimation) } as unknown as HTMLElement;
+
+      const handle = result.current(
+        rootElement,
+        [
+          { keyframes: DEFAULT_KEYFRAMES, duration: 200 },
+          { target: targetElement, keyframes: REDUCED_MOTION_KEYFRAMES, duration: 150, delay: 60 },
+        ],
+        { isReducedMotion: false },
+      );
+
+      const onFinish = jest.fn();
+      const onCancel = jest.fn();
+      handle.setMotionEndCallbacks(onFinish, onCancel);
+
+      rootAnimation.onfinish?.();
+      await new Promise<void>(resolve => {
+        setTimeout(resolve, 0);
+      });
+      expect(onFinish).not.toHaveBeenCalled();
+
+      targetAnimation.onfinish?.();
+      await new Promise<void>(resolve => {
+        setTimeout(resolve, 0);
+      });
+      expect(onFinish).toHaveBeenCalledTimes(1);
+      expect(onCancel).not.toHaveBeenCalled();
+
+      handle.cancel();
+      expect(rootAnimation.cancel).toHaveBeenCalledTimes(1);
+      expect(targetAnimation.cancel).toHaveBeenCalledTimes(1);
+    });
+  });
 });

@@ -1,7 +1,7 @@
 'use client';
 
 import { motionTokens, createMotionComponent } from '@fluentui/react-motion';
-import { Slide, fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
+import { Slide, fadeOut, slideOut } from '@fluentui/react-motion-components-preview';
 import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
@@ -98,8 +98,8 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
       key={directionKey}
       duration={duration}
       easing={easing}
-      outX={outX}
-      outY={outY}
+      fromX={outX}
+      fromY={outY}
       replayKey={replayKey}
       {...motionProps}
     >
@@ -114,14 +114,14 @@ DirectionalSlideIn.displayName = 'DirectionalSlideIn';
  * One-way "out" motion for the day grid's transition (filler) rows. It fades and slides the row
  * out in the navigation direction (the top row slides up, the bottom row slides down). The row is
  * `position: absolute` and `opacity: 0` at rest, so the motion's forwards fill leaves it back at its
- * hidden resting state once it finishes. Composed from Fluent's `fadeAtom` + `slideAtom` so it stays
+ * hidden resting state once it finishes. Composed from Fluent's `fadeOut` + `slideOut` so it stays
  * consistent with the rest of the motion system; there is no size animation, because the row is
  * overlaid out of flow and hidden via opacity (not by collapsing its box).
  */
 const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => {
   const duration = motionTokens.durationSlower;
   const easing = motionTokens.curveDecelerateMax;
-  return [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outY })];
+  return [fadeOut({ duration, easing }), slideOut({ duration, easing, to: { y: outY } })];
 });
 
 export type DirectionalSlideOutProps = MotionComponentProps & {

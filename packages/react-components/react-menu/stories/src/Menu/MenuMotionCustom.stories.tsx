@@ -10,14 +10,11 @@ import {
   MenuTrigger,
   motionTokens,
 } from '@fluentui/react-components';
-import { fadeAtom, blurAtom } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut, blurOut } from '@fluentui/react-motion-components-preview';
 
 const FadeInBlurOut = createPresenceComponent({
-  enter: fadeAtom({ direction: 'enter', duration: 500 }),
-  exit: [
-    fadeAtom({ direction: 'exit', duration: 500 }),
-    blurAtom({ direction: 'exit', duration: 500, easing: motionTokens.curveEasyEase }),
-  ],
+  enter: fadeIn({ duration: 500 }),
+  exit: [fadeOut({ duration: 500 }), blurOut({ to: '10px', duration: 500, easing: motionTokens.curveEasyEase })],
 });
 
 export const MotionCustom = (): JSXElement => (

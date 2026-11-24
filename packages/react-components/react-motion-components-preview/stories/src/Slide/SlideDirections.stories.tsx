@@ -146,11 +146,11 @@ export const Directions = (): JSXElement => {
       </div>
 
       <div className={classes.demo}>
-        <Slide visible={visible} outX={slideParams.outX} outY={slideParams.outY}>
+        <Slide visible={visible} fromX={slideParams.outX} fromY={slideParams.outY}>
           <div className={classes.card}>
             <p>Slide from {selectedDirection}</p>
-            <p>outX = {slideParams.outX}</p>
-            <p>outY = {slideParams.outY}</p>
+            <p>fromX = {slideParams.outX}</p>
+            <p>fromY = {slideParams.outY}</p>
           </div>
         </Slide>
       </div>

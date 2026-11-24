@@ -1,47 +1,51 @@
 import type { AtomMotion } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
-import type { BaseAtomParams } from '../types';
+import type { MotionTiming } from '../types';
 
-interface FadeAtomParams extends BaseAtomParams {
-  /** Defines how values are applied before and after execution. Defaults to 'both'. */
-  fill?: FillMode;
-
-  /** Opacity for the out state (exited). Defaults to 0. */
-  outOpacity?: number;
-
-  /** Opacity for the in state (entered). Defaults to 1. */
-  inOpacity?: number;
-}
+/** An opacity value used as a fade pose. */
+export type FadePose = number;
 
 /**
- * Generates a motion atom object for a fade-in or fade-out.
- * @param direction - The functional direction of the motion: 'enter' or 'exit'.
- * @param duration - The duration of the motion in milliseconds.
- * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param delay - The delay before the motion starts. Defaults to 0.
- * @param outOpacity - Opacity for the out state (exited). Defaults to 0.
- * @param inOpacity - Opacity for the in state (entered). Defaults to 1.
- * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
+ * Explicit opacity endpoints for a fade motion. Both `from` and `to` are required;
+ * use `fadeIn` or `fadeOut` when arriving at or departing from neutral opacity `1`.
+ *
+ * @example
+ * ```ts
+ * const fadeBetween: FadeOptions = { from: 0.2, to: 0.7, duration: 200 };
+ * // @ts-expect-error Both from and to endpoints are required.
+ * const missingTo: FadeOptions = { from: 0.2, duration: 200 };
+ * ```
  */
-export const fadeAtom = ({
-  direction,
+export type FadeOptions = MotionTiming & {
+  from: FadePose;
+  to: FadePose;
+};
+
+/** Options for entering from an outer opacity (default `0`) to neutral opacity `1`. */
+export type FadeInOptions = MotionTiming & { from?: FadePose; to?: never };
+
+/** Options for exiting from neutral opacity `1` to an outer opacity (default `0`). */
+export type FadeOutOptions = MotionTiming & { from?: never; to?: FadePose };
+
+/** Creates an absolute opacity motion between explicit `from` and `to` poses. */
+export const fade = ({
+  from,
+  to,
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
-  outOpacity = 0,
-  inOpacity = 1,
-}: FadeAtomParams): AtomMotion => {
-  const keyframes = [{ opacity: outOpacity }, { opacity: inOpacity }];
-  if (direction === 'exit') {
-    keyframes.reverse();
-  }
-  return {
-    keyframes,
-    duration,
-    easing,
-    delay,
-    // Applying opacity backwards and forwards in time is important
-    // to avoid a bug where a delayed animation is not hidden when it should be.
-    fill: 'both',
-  };
-};
+}: FadeOptions): AtomMotion => ({
+  keyframes: [{ opacity: from }, { opacity: to }],
+  duration,
+  easing,
+  delay,
+  fill: 'both',
+});
+
+/** Creates an absolute opacity motion arriving at `1` from `from` (default `0`). */
+export const fadeIn = ({ from = 0, duration, easing, delay }: FadeInOptions): AtomMotion =>
+  fade({ from, to: 1, duration, easing, delay });
+
+/** Creates an absolute opacity motion departing from `1` to `to` (default `0`). */
+export const fadeOut = ({ to = 0, duration, easing, delay }: FadeOutOptions): AtomMotion =>
+  fade({ from: 1, to, duration, easing, delay });

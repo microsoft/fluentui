@@ -11,16 +11,20 @@ import {
   Label,
   type PersonaProps,
 } from '@fluentui/react-components';
-import { Stagger, Slide, Collapse } from '@fluentui/react-motion-components-preview';
+import {
+  createChoreographyPresenceComponent,
+  fadeIn,
+  fadeOut,
+  layer,
+  sequence,
+  slideIn,
+  slideOut,
+  stagger,
+} from '@fluentui/react-motion-components-preview';
 
-// Timing constants for coordinated Collapse + Stagger choreography:
-// Time to wait for container expansion before stagger items appear
+// Timing constants for coordinated container expansion + staggered items choreography:
 const COLLAPSE_EXPAND_DELAY = 200;
-// Time to wait for stagger items to exit before container collapses
-const STAGGER_EXIT_DELAY = 250;
-// Time between each staggered item animation
 const STAGGER_ITEM_DELAY = 100;
-
 const VISIBLE_ITEMS_COUNT = 3;
 const COLLAPSE_DURATION = 600;
 const COLLAPSED_HEIGHT = '175px';
@@ -108,12 +112,73 @@ const useClasses = makeStyles({
   },
 });
 
+const ExpandableListChoreography = createChoreographyPresenceComponent<{ startInterval?: number }>(
+  ({ element, startInterval = STAGGER_ITEM_DELAY }) => {
+    const fullHeight = `${element.scrollHeight}px`;
+
+    return {
+      enter: [
+        {
+          keyframes: [
+            { maxHeight: COLLAPSED_HEIGHT, overflowY: 'hidden' },
+            { maxHeight: fullHeight, offset: 0.9999, overflowY: 'hidden' },
+            { maxHeight: 'unset', overflowY: 'unset' },
+          ],
+          duration: COLLAPSE_DURATION,
+          easing: motionTokens.curveEasyEase,
+          fill: 'both',
+        },
+        stagger(
+          [
+            layer(
+              '[data-stagger-item]',
+              [
+                fadeIn({ duration: motionTokens.durationNormal, easing: motionTokens.curveDecelerateMid }),
+                slideIn({
+                  from: { y: '20px' },
+                  duration: motionTokens.durationNormal,
+                  easing: motionTokens.curveDecelerateMid,
+                }),
+              ],
+              { delay: COLLAPSE_EXPAND_DELAY },
+            ),
+          ],
+          { startInterval },
+        ),
+      ],
+      exit: sequence([
+        stagger(
+          [
+            layer('[data-stagger-item]', [
+              fadeOut({ duration: motionTokens.durationFast, easing: motionTokens.curveAccelerateMid }),
+              slideOut({
+                to: { y: '20px' },
+                duration: motionTokens.durationFast,
+                easing: motionTokens.curveAccelerateMid,
+              }),
+            ]),
+          ],
+          { startInterval, order: 'reverse' },
+        ),
+        {
+          keyframes: [
+            { maxHeight: fullHeight, overflowY: 'hidden' },
+            { maxHeight: COLLAPSED_HEIGHT, overflowY: 'hidden' },
+          ],
+          duration: COLLAPSE_DURATION,
+          easing: motionTokens.curveEasyEase,
+          fill: 'both',
+          reducedMotion: { duration: 1, delay: 0 },
+        },
+      ]),
+    };
+  },
+);
+
 export const ExpandableContainer = (): JSXElement => {
   const classes = useClasses();
   const [expanded, setExpanded] = React.useState(false);
-  const [staggerVisible, setStaggerVisible] = React.useState(false);
   const [totalItems, setTotalItems] = React.useState(8);
-  const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
 
   const itemData = React.useMemo(
     () =>
@@ -136,22 +201,6 @@ export const ExpandableContainer = (): JSXElement => {
         }
       : { color: 'colorful' };
 
-  const handleToggle = () => {
-    if (!expanded) {
-      // "See more": Expand container via Collapse, with delayed stagger items
-      // The Collapse container will expand immediately, then after COLLAPSE_EXPAND_DELAY (200ms),
-      // the Stagger items will animate in with staggered timing
-      setExpanded(true);
-      setStaggerVisible(true);
-    } else {
-      // "See less": Hide extra items via Stagger (reversed), then contract container via Collapse
-      // The Stagger items will animate out immediately, then after STAGGER_EXIT_DELAY (250ms),
-      // the Collapse container will contract
-      setStaggerVisible(false);
-      setExpanded(false);
-    }
-  };
-
   return (
     <div className={classes.container}>
       <div className={classes.sliderContainer}>
@@ -166,28 +215,13 @@ export const ExpandableContainer = (): JSXElement => {
           step={1}
           value={totalItems}
           onChange={(_, data) => setTotalItems(data.value)}
-          onPointerDown={() => setIsDraggingSlider(true)}
-          onPointerUp={() => setIsDraggingSlider(false)}
-          onPointerCancel={() => setIsDraggingSlider(false)}
         />
       </div>
 
-      {/*
-        Collapse handles the container size animation with coordinated timing:
-        - On expand: size increases immediately, no opacity animation (animateOpacity={false})
-        - On collapse: waits STAGGER_EXIT_DELAY (250ms) for stagger items to exit, then contracts
-      */}
-      <Collapse
-        visible={expanded}
-        duration={COLLAPSE_DURATION}
-        easing={motionTokens.curveEasyEase}
-        outSize={COLLAPSED_HEIGHT}
-        animateOpacity={false}
-        exitDelay={STAGGER_EXIT_DELAY}
-      >
+      {/* One choreography presence component coordinates both container height and staggered extra items */}
+      <ExpandableListChoreography visible={expanded} startInterval={STAGGER_ITEM_DELAY}>
         <div className={classes.listContainer}>
           <div className={classes.list}>
-            {/* Always visible items */}
             {staticItems.map(item => (
               <div key={item.id} className={classes.item}>
                 <Persona
@@ -199,36 +233,22 @@ export const ExpandableContainer = (): JSXElement => {
               </div>
             ))}
 
-            {/*
-              Stagger manages the choreographed animation of additional items:
-              - Each Slide has delay={COLLAPSE_EXPAND_DELAY} to wait for container expansion
-              - Items stagger in/out with STAGGER_ITEM_DELAY (100ms) between each
-              - On exit, items animate out immediately (no delay on exit)
-            */}
-            <Stagger
-              visible={staggerVisible}
-              itemDelay={isDraggingSlider ? 0 : STAGGER_ITEM_DELAY}
-              reversed={!staggerVisible}
-            >
-              {staggerItems.map(item => (
-                <Slide key={item.id} delay={COLLAPSE_EXPAND_DELAY} outY="20px">
-                  <div className={classes.item}>
-                    <Persona
-                      name={item.name}
-                      secondaryText={item.secondaryText}
-                      presence={{ status: item.status }}
-                      avatar={avatarFor(item.useImage, item.image)}
-                    />
-                  </div>
-                </Slide>
-              ))}
-            </Stagger>
+            {staggerItems.map(item => (
+              <div key={item.id} className={classes.item} data-stagger-item="">
+                <Persona
+                  name={item.name}
+                  secondaryText={item.secondaryText}
+                  presence={{ status: item.status }}
+                  avatar={avatarFor(item.useImage, item.image)}
+                />
+              </div>
+            ))}
           </div>
         </div>
-      </Collapse>
+      </ExpandableListChoreography>
 
       <div className={classes.controls}>
-        <Button onClick={handleToggle} appearance="primary">
+        <Button onClick={() => setExpanded(v => !v)} appearance="primary">
           {expanded ? 'See less' : 'See more'}
         </Button>
       </div>

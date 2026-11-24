@@ -135,8 +135,8 @@ export const CardsDemo = (): JSXElement => {
           <Slide
             key={card.id}
             visible={visibleCards.has(card.id)}
-            outX={card.outX}
-            outY={card.outY}
+            fromX={card.outX}
+            fromY={card.outY}
             duration={500}
             exitDuration={500}
             easing={curveSpringEnter}

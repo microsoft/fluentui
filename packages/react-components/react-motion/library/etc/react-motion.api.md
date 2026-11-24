@@ -12,6 +12,7 @@ import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type AtomMotion = AtomCore & {
+    target?: Element;
     reducedMotion?: Partial<AtomCore>;
 };
 
@@ -21,16 +22,19 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 } & MotionParams) => AtomMotion | AtomMotion[];
 
 // @public
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
+
+// @public
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): MotionComponent<MotionParams>;
 
 // @public
 export function createMotionComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: MotionComponent<MotionParams>, variantParams: Partial<MotionParams>): MotionComponent<MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never>(value: PresenceMotion | PresenceMotionFn<MotionParams>, options?: PresenceComponentOptions<NoInfer<MotionParams>, PresentKeys>): PresenceComponent<MotionParams, PresentKeys>;
 
 // @public
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never>(component: PresenceComponent<MotionParams, PresentKeys>, variantParams: Partial<NoInfer<MotionParams>>): PresenceComponent<MotionParams, PresentKeys>;
 
 // @public (undocumented)
 export const curves: {
@@ -130,11 +134,23 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never> = React_2.FC<PresenceComponentProps & MotionParams> & {
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-    In: MotionComponent<MotionParams>;
-    Out: MotionComponent<MotionParams>;
+    [PRESENCE_COMPONENT_OPTIONS]?: {
+        poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
+    };
+    In: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
+    Out: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
+};
+
+// @public
+export type PresenceComponentOptions<MotionParams extends Record<string, MotionParam>, PresentKeys extends keyof MotionParams = never> = {
+    poseProps: readonly (({
+        in: PresentKeys;
+    } & PosePropMapping<MotionParams, false>) | readonly ({
+        in: PresentKeys;
+    } & PosePropMapping<MotionParams, true>)[])[];
 };
 
 // @public (undocumented)
@@ -155,8 +171,26 @@ export type PresenceComponentProps = {
     unmountOnExit?: boolean;
 };
 
+// @public
+export type PresenceDelay = {
+    delay?: EffectTiming['delay'];
+    exitDelay?: EffectTiming['delay'];
+};
+
 // @public (undocumented)
 export type PresenceDirection = 'enter' | 'exit';
+
+// @public
+export type PresenceDuration = {
+    duration?: number;
+    exitDuration?: number;
+};
+
+// @public
+export type PresenceEasing = {
+    easing?: string;
+    exitEasing?: string;
+};
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {

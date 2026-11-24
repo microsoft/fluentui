@@ -1,8 +1,12 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
 
-import type { PresenceMotion } from '../types';
+import type { MotionParam, PresenceMotion, PresenceMotionFn } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
+import type { PresenceComponent } from './createPresenceComponent';
+import { createPresenceComponentVariant } from './createPresenceComponentVariant';
+import { MOTION_DEFINITION } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
@@ -67,6 +71,328 @@ describe('createPresenceComponent', () => {
       // @ts-expect-error mock
       delete global.Animation;
     }
+  });
+
+  describe('directional pose parameters', () => {
+    const posedMotion: PresenceMotionFn<{
+      from?: number;
+      present?: number;
+      to?: number;
+      duration?: number;
+      easing?: string;
+      delay?: number;
+      exitDuration?: number;
+      exitEasing?: string;
+      exitDelay?: number;
+    }> = ({
+      from = 0,
+      present = 1,
+      to = from,
+      duration = 500,
+      easing = 'linear',
+      delay = 0,
+      exitDuration = duration,
+      exitEasing = easing,
+      exitDelay = delay,
+    }) => ({
+      enter: { ...options, keyframes: [{ opacity: from }, { opacity: present }], duration, easing, delay },
+      exit: {
+        ...options,
+        keyframes: [{ opacity: present }, { opacity: to }],
+        duration: exitDuration,
+        easing: exitEasing,
+        delay: exitDelay,
+      },
+    });
+    const TestPresence = createPresenceComponent(posedMotion, {
+      poseProps: [{ from: 'from', in: 'present', to: 'to' }],
+    });
+
+    it.each([undefined, { poseProps: [] }])('normalizes exit timing independently of pose mappings', configuration => {
+      const Plain = createPresenceComponent(posedMotion, configuration);
+      const Variant = createPresenceComponentVariant(Plain, {
+        exitDuration: 150,
+        exitEasing: 'ease-out',
+        exitDelay: 7,
+      });
+      const { animateMock, ElementMock } = createElementMock();
+      render(
+        <Variant.Out duration={123} easing="linear" delay={25}>
+          <ElementMock />
+        </Variant.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        exitKeyframes,
+        expect.objectContaining({ duration: 123, easing: 'linear', delay: 25 }),
+      );
+    });
+
+    it('preserves explicit exit timing without pose mappings', () => {
+      const Plain = createPresenceComponent(posedMotion);
+      const { animateMock, ElementMock } = createElementMock();
+      render(
+        <Plain.Out duration={123} easing="linear" delay={25} exitDuration={0} exitEasing="ease-in" exitDelay={0}>
+          <ElementMock />
+        </Plain.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        exitKeyframes,
+        expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+      );
+    });
+
+    it('does not mutate timing parameters without pose mappings', () => {
+      const Plain = createPresenceComponent(posedMotion);
+      const { container } = render(<div />);
+      const params = Object.freeze({ element: container, duration: 123, easing: 'linear', delay: 25 });
+      expect(Plain.Out[MOTION_DEFINITION](params)).toEqual(
+        expect.objectContaining({ duration: 123, easing: 'linear', delay: 25 }),
+      );
+      expect(params).not.toHaveProperty('exitDuration');
+      expect(params).not.toHaveProperty('exitEasing');
+      expect(params).not.toHaveProperty('exitDelay');
+    });
+
+    it('rejects incompatible pose property values', () => {
+      const mixedMotion: PresenceMotionFn<{
+        from?: number;
+        present?: number;
+        to?: number;
+        fromText?: string;
+        presentText?: string;
+        toText?: string;
+        enabled?: boolean;
+      }> = () => ({
+        enter: { ...options, keyframes: enterKeyframes },
+        exit: { ...options, keyframes: exitKeyframes },
+      });
+      const Mixed = createPresenceComponent(mixedMotion, {
+        poseProps: [
+          { from: 'from', in: 'present', to: 'to' },
+          [{ from: 'fromText', in: 'presentText', to: 'toText', neutral: '0px' }],
+        ],
+      });
+      // @ts-expect-error all mapped present props are excluded from directional components
+      <Mixed.In present={1}>
+        <div />
+      </Mixed.In>;
+      // @ts-expect-error all mapped present props are excluded from directional components
+      <Mixed.Out presentText="0px">
+        <div />
+      </Mixed.Out>;
+      createPresenceComponent(mixedMotion, {
+        poseProps: [
+          // @ts-expect-error a string source cannot map to a numeric present prop
+          { from: 'fromText', in: 'present', to: 'to' },
+          // @ts-expect-error numeric endpoints cannot map to a string present prop
+          { from: 'from', in: 'presentText', to: 'to' },
+          // @ts-expect-error a string destination cannot map to a numeric present prop
+          { from: 'from', in: 'present', to: 'toText' },
+          // @ts-expect-error a boolean source cannot map to a numeric present prop
+          { from: 'enabled', in: 'present', to: 'to' },
+          // @ts-expect-error the present prop cannot be mapped as its own source
+          { from: 'present', in: 'present', to: 'to' },
+          // @ts-expect-error the present prop cannot be mapped as its own destination
+          { from: 'from', in: 'present', to: 'present' },
+          // @ts-expect-error neutral only applies to coupled multi-axis groups
+          { from: 'from', in: 'present', to: 'to', neutral: 0 },
+          [
+            // @ts-expect-error a numeric mapping requires a numeric neutral value
+            { from: 'from', in: 'present', to: 'to', neutral: '0px' },
+            // @ts-expect-error a string mapping requires a string neutral value
+            { from: 'fromText', in: 'presentText', to: 'toText', neutral: 0 },
+          ],
+        ],
+      });
+    });
+
+    it('excludes presence-only props from directional components and preserves generic assignability without poseProps', () => {
+      const child = <div />;
+      <TestPresence present={0.7}>{child}</TestPresence>;
+      // @ts-expect-error the present pose belongs to the presence component
+      <TestPresence.In present={0.7}>{child}</TestPresence.In>;
+      // @ts-expect-error the present pose belongs to the presence component
+      <TestPresence.Out present={0.7}>{child}</TestPresence.Out>;
+      const Variant = createPresenceComponentVariant(TestPresence, { present: 0.7 });
+      // @ts-expect-error variants retain the directional prop contract
+      <Variant.In present={0.7}>{child}</Variant.In>;
+      // @ts-expect-error variant parameters must be declared by the original definition
+      createPresenceComponentVariant(TestPresence, { unknown: 1 });
+
+      // Existing 1-type-arg generic code and components without poseProps keep MotionComponent<MotionParams>.
+      const getDirectional = <P extends Record<string, MotionParam>>(
+        component: PresenceComponent<P>,
+      ): { In: MotionComponent<P>; Out: MotionComponent<P> } => ({
+        In: component.In,
+        Out: component.Out,
+      });
+      const Plain = createPresenceComponent(posedMotion);
+      expect(getDirectional(Plain)).toEqual({ In: Plain.In, Out: Plain.Out });
+      <Plain.In exitDuration={150}>{child}</Plain.In>;
+    });
+
+    it('uses from and to as playback endpoints on both directional components', () => {
+      const { animateMock, ElementMock } = createElementMock();
+      const { unmount } = render(
+        <TestPresence.In from={0.2} to={0.7}>
+          <ElementMock />
+        </TestPresence.In>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith([{ opacity: 0.2 }, { opacity: 0.7 }], expect.any(Object));
+      unmount();
+      render(
+        <TestPresence.Out from={0.7} to={0.2} duration={123} easing="ease-in" delay={25}>
+          <ElementMock />
+        </TestPresence.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [{ opacity: 0.7 }, { opacity: 0.2 }],
+        expect.objectContaining({ duration: 123, easing: 'ease-in', delay: 25 }),
+      );
+    });
+
+    it('keeps the main component presence-only with independent enter and exit endpoints', () => {
+      const { animateMock, ElementMock } = createElementMock();
+      const onMotionStart = jest.fn();
+      const { rerender } = render(
+        <TestPresence from={0.2} present={0.7} to={0.4} visible={false} onMotionStart={onMotionStart}>
+          <ElementMock />
+        </TestPresence>,
+      );
+      expect(onMotionStart).not.toHaveBeenCalled();
+      rerender(
+        <TestPresence from={0.2} present={0.7} to={0.4} visible onMotionStart={onMotionStart}>
+          <ElementMock />
+        </TestPresence>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith([{ opacity: 0.2 }, { opacity: 0.7 }], expect.any(Object));
+      rerender(
+        <TestPresence from={0.2} present={0.7} to={0.4} visible={false} onMotionStart={onMotionStart}>
+          <ElementMock />
+        </TestPresence>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith([{ opacity: 0.7 }, { opacity: 0.4 }], expect.any(Object));
+      expect(onMotionStart).toHaveBeenLastCalledWith(null, { direction: 'exit' });
+    });
+
+    it('normalizes runtime endpoints before nested variant defaults', () => {
+      const Variant = createPresenceComponentVariant(TestPresence, {
+        from: 0.2,
+        present: 0.7,
+        to: 0.4,
+        duration: 250,
+        exitDuration: 150,
+      });
+      const Nested = createPresenceComponentVariant(Variant, { easing: 'ease-out' });
+      const { animateMock, ElementMock } = createElementMock();
+      const { unmount } = render(
+        <Nested.In from={0.3} to={0.8}>
+          <ElementMock />
+        </Nested.In>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [{ opacity: 0.3 }, { opacity: 0.8 }],
+        expect.objectContaining({ duration: 250, easing: 'ease-out' }),
+      );
+      unmount();
+      render(
+        <Nested.Out to={0} duration={123}>
+          <ElementMock />
+        </Nested.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [{ opacity: 0.7 }, { opacity: 0 }],
+        expect.objectContaining({ duration: 123 }),
+      );
+    });
+
+    it('fills omitted axes within a coupled pose group without affecting independent poses', () => {
+      const axisMotion: PresenceMotionFn<{
+        fromScale?: number;
+        inScale?: number;
+        toScale?: number;
+        fromX?: string;
+        fromY?: string;
+        inX?: string;
+        inY?: string;
+        toX?: string;
+        toY?: string;
+      }> = ({
+        fromScale = 0.9,
+        inScale = 1,
+        toScale = fromScale,
+        fromX = '0px',
+        fromY = '0px',
+        inX = '0px',
+        inY = '0px',
+        toX = fromX,
+        toY = fromY,
+      }) => ({
+        enter: {
+          ...options,
+          keyframes: [
+            { scale: fromScale, translate: `${fromX} ${fromY}` },
+            { scale: inScale, translate: `${inX} ${inY}` },
+          ],
+        },
+        exit: {
+          ...options,
+          keyframes: [
+            { scale: inScale, translate: `${inX} ${inY}` },
+            { scale: toScale, translate: `${toX} ${toY}` },
+          ],
+        },
+      });
+      const Axis = createPresenceComponent(axisMotion, {
+        poseProps: [
+          { from: 'fromScale', in: 'inScale', to: 'toScale' },
+          [
+            { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+            { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+          ],
+        ],
+      });
+      const Variant = createPresenceComponentVariant(Axis, { fromY: '-8px', inY: '7px', toY: '16px' });
+      const { animateMock, ElementMock } = createElementMock();
+      const { unmount } = render(
+        <Variant.In fromX="24px" toX="4px">
+          <ElementMock />
+        </Variant.In>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 0.9, translate: '24px 0px' },
+          { scale: 1, translate: '4px 0px' },
+        ],
+        options,
+      );
+      unmount();
+      const { unmount: unmountOut } = render(
+        <Variant.Out fromX="4px" toY="-12px">
+          <ElementMock />
+        </Variant.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 1, translate: '4px 0px' },
+          { scale: 0.9, translate: '0px -12px' },
+        ],
+        options,
+      );
+      unmountOut();
+      render(
+        <Variant toX="24px" visible={false}>
+          <ElementMock />
+        </Variant>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        [
+          { scale: 1, translate: '0px 7px' },
+          { scale: 0.9, translate: '24px 0px' },
+        ],
+        options,
+      );
+    });
   });
 
   describe('appear', () => {

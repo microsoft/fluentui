@@ -1,185 +1,55 @@
-import { scaleAtom } from './scale-atom';
-import {
-  expectValidAtomMotion,
-  expectReversedKeyframes,
-  expectCustomParameters,
-  expectKeyframeProperty,
-} from '../testing/atomTestUtils';
+import { motionTokens } from '@fluentui/react-motion';
+import { scale, scaleIn, scaleOut } from './scale-atom';
+import { expectValidAtomMotion, expectReversedKeyframes, expectCustomParameters } from '../testing/atomTestUtils';
 
-/**
- * Test utility for validating scale-specific atom properties.
- */
-function expectScaleAtom(
-  atom: import('@fluentui/react-motion').AtomMotion,
-  direction: 'enter' | 'exit',
-  outScale: number = 0.9,
-  inScale: number = 1,
-) {
-  expectValidAtomMotion(atom);
-
-  if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'scale', [outScale, inScale]);
-  } else {
-    expectKeyframeProperty(atom, 'scale', [inScale, outScale]);
-  }
-}
-
-describe('scaleAtom', () => {
-  it('creates proper keyframes for enter and exit directions', () => {
-    const enterAtom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-    });
-
-    const exitAtom = scaleAtom({
-      direction: 'exit',
-      duration: 300,
-    });
-
-    expect(enterAtom.keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
-    expect(exitAtom.keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
+describe('scale', () => {
+  it('requires both from and to endpoints on the general helper', () => {
+    expect(scale({ from: 0.9, to: 1, duration: 300 }).keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
+    expect(scale({ from: 1, to: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
+    // @ts-expect-error both from and to are required
+    scale({ from: 0.9, duration: 300 });
+    // @ts-expect-error both from and to are required
+    scale({ to: 0.9, duration: 300 });
+    // @ts-expect-error both from and to are required
+    scale({ duration: 300 });
   });
 
-  it('applies custom outScale and inScale values', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
+  it('preserves custom poses and timing without setting fill', () => {
+    const motion = scale({ from: 0.5, to: 1.2, duration: 300, easing: 'ease-out', delay: 50 });
+
+    expectValidAtomMotion(motion);
+    expect(motion).toEqual({
+      keyframes: [{ scale: 0.5 }, { scale: 1.2 }],
       duration: 300,
-      outScale: 0.5,
-      inScale: 1.2,
-    });
-
-    expect(atom.keyframes).toEqual([{ scale: 0.5 }, { scale: 1.2 }]);
-  });
-
-  it('uses default scale values when not provided', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-    });
-
-    expect(atom.keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
-  });
-
-  it('handles zero scale values correctly', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-      outScale: 0,
-      inScale: 1,
-    });
-
-    expect(atom.keyframes).toEqual([{ scale: 0 }, { scale: 1 }]);
-  });
-
-  it('handles scale values greater than 1', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-      outScale: 1.5,
-      inScale: 2.0,
-    });
-
-    expect(atom.keyframes).toEqual([{ scale: 1.5 }, { scale: 2.0 }]);
-  });
-
-  it('applies custom easing and delay', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 250,
       easing: 'ease-out',
-      delay: 100,
+      delay: 50,
     });
+    expectCustomParameters(motion, { duration: 300, easing: 'ease-out', delay: 50 });
+    expect(motion.fill).toBeUndefined();
 
-    expect(atom).toMatchObject({
-      duration: 250,
-      easing: 'ease-out',
-      delay: 100,
-    });
-  });
-
-  it('includes all expected properties in the returned atom', () => {
-    const atom = scaleAtom({
-      direction: 'exit',
-      duration: 400,
-      delay: 75,
-      easing: 'ease-in-out',
-      outScale: 0.8,
-      inScale: 1.1,
-    });
-
-    expect(atom).toMatchObject({
-      keyframes: [{ scale: 1.1 }, { scale: 0.8 }], // Note: reversed for exit
-      duration: 400,
-      easing: 'ease-in-out',
-      delay: 75,
+    expect(scale({ from: 0, to: 2, duration: 200 })).toEqual({
+      keyframes: [{ scale: 0 }, { scale: 2 }],
+      duration: 200,
+      easing: motionTokens.curveLinear,
+      delay: 0,
     });
   });
 
-  it('handles fractional scale values', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-      outScale: 0.95,
-      inScale: 1.05,
-    });
+  it('creates directional scales using the general helper', () => {
+    const enterAtom = scaleIn({ duration: 300 });
+    const exitAtom = scaleOut({ duration: 300 });
 
-    expect(atom.keyframes).toEqual([{ scale: 0.95 }, { scale: 1.05 }]);
-  });
-
-  // Enhanced tests using test utilities
-  it('creates valid atom motion objects for both directions', () => {
-    const enterAtom = scaleAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = scaleAtom({ direction: 'exit', duration: 300 });
-
-    expectValidAtomMotion(enterAtom);
-    expectValidAtomMotion(exitAtom);
-  });
-
-  it('creates properly reversed keyframes for enter and exit', () => {
-    const enterAtom = scaleAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = scaleAtom({ direction: 'exit', duration: 300 });
-
+    expect(enterAtom).toEqual(scale({ from: 0, to: 1, duration: 300 }));
+    expect(exitAtom).toEqual(scale({ from: 1, to: 0, duration: 300 }));
     expectReversedKeyframes(enterAtom, exitAtom);
-  });
 
-  it('validates scale-specific behavior with test utility', () => {
-    const enterAtom = scaleAtom({ direction: 'enter', duration: 300 });
-    const exitAtom = scaleAtom({ direction: 'exit', duration: 300 });
-
-    expectScaleAtom(enterAtom, 'enter');
-    expectScaleAtom(exitAtom, 'exit');
-  });
-
-  it('validates custom scale values with test utility', () => {
-    const enterAtom = scaleAtom({
-      direction: 'enter',
-      duration: 300,
-      outScale: 0.5,
-      inScale: 1.2,
-    });
-    const exitAtom = scaleAtom({
-      direction: 'exit',
-      duration: 300,
-      outScale: 0.5,
-      inScale: 1.2,
-    });
-
-    expectScaleAtom(enterAtom, 'enter', 0.5, 1.2);
-    expectScaleAtom(exitAtom, 'exit', 0.5, 1.2);
-  });
-
-  it('validates custom timing parameters with test utility', () => {
-    const atom = scaleAtom({
-      direction: 'enter',
-      duration: 350,
-      delay: 75,
-      easing: 'ease-out',
-    });
-
-    expectCustomParameters(atom, {
-      duration: 350,
-      delay: 75,
-      easing: 'ease-out',
-    });
+    expect(scaleIn({ from: 0.9, duration: 300 })).toEqual(scale({ from: 0.9, to: 1, duration: 300 }));
+    expect(scaleOut({ to: 0.9, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      scale({ from: 1, to: 0.9, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+    // @ts-expect-error scaleIn owns the neutral destination
+    scaleIn({ to: 0.9, duration: 300 });
+    // @ts-expect-error scaleOut owns the neutral source
+    scaleOut({ from: 0.9, duration: 300 });
   });
 });

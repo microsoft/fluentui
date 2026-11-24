@@ -13,6 +13,7 @@ import { useChildElement } from '../utils/useChildElement';
 import type {
   MotionParam,
   PresenceMotion,
+  BasePresenceParams,
   MotionImperativeRef,
   PresenceMotionFn,
   PresenceDirection,
@@ -28,6 +29,104 @@ import { createMotionComponent } from './createMotionComponent';
  * @internal
  */
 export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
+
+/**
+ * Retains pose mappings on the component so variants can reuse directional normalization.
+ *
+ * @internal
+ */
+export const PRESENCE_COMPONENT_OPTIONS = Symbol('PRESENCE_COMPONENT_OPTIONS');
+
+/**
+ * Selects props (other than the present-pose prop itself) whose defined value types are assignable
+ * in both directions with the present-pose prop.
+ * Each prop maps to its key or never; the final indexed access collects the compatible keys into a union.
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromScale?: number;
+ *   inScale?: number;
+ *   toScale?: number;
+ *   fromX?: string;
+ *   limitedScale?: 0 | 1;
+ * };
+ * type ScaleKeys = CompatiblePoseKeys<Params, 'inScale'>;
+ * // 'fromScale' | 'toScale'
+ * // inScale is excluded; fromX has a different value type; limitedScale cannot accept every number.
+ * ```
+ */
+type CompatiblePoseKeys<MotionParams, Present extends keyof MotionParams> = Exclude<
+  {
+    // -? prevents optional props from adding undefined to the resulting key union.
+    // NonNullable ignores absent values; tuple wrappers compare whole types, including union-valued props.
+    [Key in keyof MotionParams]-?: [NonNullable<MotionParams[Key]>] extends [NonNullable<MotionParams[Present]>]
+      ? // Check the reverse assignment too: a narrower type such as 0 | 1 must not match number.
+        [NonNullable<MotionParams[Present]>] extends [NonNullable<MotionParams[Key]>]
+        ? Key
+        : never
+      : never;
+  }[keyof MotionParams],
+  Present
+>;
+
+type PosePropMapping<MotionParams extends Record<string, MotionParam>, AllowNeutral extends boolean> = {
+  [Present in keyof MotionParams]-?: {
+    from: CompatiblePoseKeys<MotionParams, Present>;
+    in: Present;
+    to: CompatiblePoseKeys<MotionParams, Present>;
+  } & (AllowNeutral extends true
+    ? {
+        /** Value for omitted sibling axes when any axis in this pose group is authored. */
+        neutral?: MotionParams[Present];
+      }
+    : { neutral?: never });
+}[keyof MotionParams];
+
+type StoredPoseProp = { from: PropertyKey; in: PropertyKey; to: PropertyKey; neutral?: MotionParam };
+
+/**
+ * Maps temporal endpoint props to the present pose used by directional components.
+ *
+ * Use a single mapping object for a scalar pose (such as opacity or scale), or a nested array of
+ * mappings for coupled axes of one multi-axis pose (such as X and Y translation) where `neutral`
+ * fills omitted sibling axes within that group only.
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromScale?: number;
+ *   inScale?: number;
+ *   toScale?: number;
+ *   fromX?: string;
+ *   inX?: string;
+ *   toX?: string;
+ *   fromY?: string;
+ *   inY?: string;
+ *   toY?: string;
+ * };
+ * const options: PresenceComponentOptions<Params, 'inScale' | 'inX' | 'inY'> = {
+ *   poseProps: [
+ *     { from: 'fromScale', in: 'inScale', to: 'toScale' },
+ *     [
+ *       { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+ *       { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+ *     ],
+ *   ],
+ * };
+ * // Authoring fromX without fromY fills fromY = '0px' without affecting fromScale.
+ * ```
+ */
+export type PresenceComponentOptions<
+  MotionParams extends Record<string, MotionParam>,
+  PresentKeys extends keyof MotionParams = never,
+> = {
+  /** One entry per independent pose: a scalar mapping or a coupled multi-axis group. */
+  poseProps: readonly (
+    | ({ in: PresentKeys } & PosePropMapping<MotionParams, false>)
+    | readonly ({ in: PresentKeys } & PosePropMapping<MotionParams, true>)[]
+  )[];
+};
 
 export type PresenceComponentProps = {
   /**
@@ -81,20 +180,119 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
-  PresenceComponentProps & MotionParams
-> & {
+type DirectionalMotionParams<
+  MotionParams extends Record<string, MotionParam>,
+  PresentKeys extends keyof MotionParams,
+> = [PresentKeys] extends [never] ? MotionParams : Omit<MotionParams, PresentKeys>;
+
+export type PresenceComponent<
+  MotionParams extends Record<string, MotionParam> = {},
+  PresentKeys extends keyof MotionParams = never,
+> = React.FC<PresenceComponentProps & MotionParams> & {
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-  In: MotionComponent<MotionParams>;
-  Out: MotionComponent<MotionParams>;
+  [PRESENCE_COMPONENT_OPTIONS]?: {
+    poseProps: readonly (StoredPoseProp | readonly StoredPoseProp[])[];
+  };
+  // Present-pose props belong to the visibility-controlled root, not the one-way components.
+  In: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
+  Out: MotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
 
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
+const exitTimingProps = {
+  duration: 'exitDuration',
+  easing: 'exitEasing',
+  delay: 'exitDelay',
+} satisfies {
+  [Key in keyof BasePresenceParams as Key extends `exit${string}` ? never : Key]-?: Extract<
+    keyof BasePresenceParams,
+    `exit${Capitalize<Key>}`
+  >;
+};
+
+export function createPresenceComponent<
+  MotionParams extends Record<string, MotionParam> = {},
+  PresentKeys extends keyof MotionParams = never,
+>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
-): PresenceComponent<MotionParams> {
+  options?: PresenceComponentOptions<NoInfer<MotionParams>, PresentKeys>,
+): PresenceComponent<MotionParams, PresentKeys> {
+  type PoseEntry = {
+    from: keyof MotionParams;
+    in: keyof MotionParams;
+    to: keyof MotionParams;
+    neutral?: MotionParams[keyof MotionParams];
+  };
+  const poseGroups: readonly (readonly PoseEntry[])[] =
+    options?.poseProps.map(entry => (Array.isArray(entry) ? (entry as readonly PoseEntry[]) : [entry as PoseEntry])) ??
+    [];
+  // Within each multi-axis pose group, an authored endpoint uses neutral values for omitted sibling axes.
+  // For example, fromX alone implies fromY = '0px' without affecting unrelated poses in other groups.
+  // Leave wholly omitted endpoints untouched so the motion function or variant can supply its defaults.
+  const completePoses = (params: MotionParams): MotionParams => {
+    // Normalize a copy: completing poses and remapping directional props must not mutate the caller's parameters.
+    const normalized = { ...params };
+    if (poseGroups.length === 0) {
+      return normalized;
+    }
+    for (const group of poseGroups) {
+      if (group.length <= 1) {
+        continue;
+      }
+      for (const endpoint of ['from', 'in', 'to'] as const) {
+        if (group.some(pose => normalized[pose[endpoint]] !== undefined)) {
+          for (const pose of group) {
+            const key = pose[endpoint];
+            if (normalized[key] === undefined && pose.neutral !== undefined) {
+              normalized[key] = pose.neutral;
+            }
+          }
+        }
+      }
+    }
+    return normalized;
+  };
+  // Apply the same axis completion to presence and directional playback, while retaining the animated element.
+  const presenceFn: PresenceMotionFn<MotionParams> =
+    typeof value === 'function'
+      ? options
+        ? params => value({ ...completePoses(params), element: params.element })
+        : value
+      : () => value;
+  const directionalMotion = (direction: PresenceDirection) =>
+    typeof value === 'function'
+      ? (params: { element: HTMLElement } & DirectionalMotionParams<MotionParams, PresentKeys>) => {
+          const normalized = completePoses(params as { element: HTMLElement } & MotionParams);
+          // Presence definitions enter from -> in and exit in -> to. One-way components always play from -> to,
+          // so .In maps its destination to in, while .Out maps its source to in before selecting the definition.
+          for (const group of poseGroups) {
+            for (const pose of group) {
+              const endpoint = direction === 'enter' ? pose.to : pose.from;
+              const present = pose.in;
+              if (normalized[endpoint] !== undefined) {
+                normalized[present] = normalized[endpoint];
+                // Remove the consumed prop so it cannot override defaults for the opposite presence endpoint.
+                delete normalized[endpoint];
+              }
+            }
+          }
+          // Let .Out use ordinary timing props. Translate explicit values before variant defaults are merged,
+          // preserving an explicit exit-prefixed value when both forms are supplied.
+          if (direction === 'exit') {
+            for (const [ordinary, exit] of Object.entries(exitTimingProps)) {
+              const source = ordinary as keyof MotionParams;
+              const destination = exit as keyof MotionParams;
+              if (normalized[destination] === undefined && normalized[source] !== undefined) {
+                normalized[destination] = normalized[source];
+              }
+            }
+          }
+          return presenceFn({ ...normalized, element: params.element })[direction];
+        }
+      : value[direction];
+
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
       const itemContext = React.useContext(PresenceGroupChildContext);
@@ -147,7 +345,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       useIsomorphicLayoutEffect(() => {
         // Heads up!
-        // We store the params in a ref to avoid re-rendering the component when the params change.
+        // Read the latest params when visibility changes without restarting the animation on every parameter update.
         optionsRef.current = { appear, params, skipMotions };
       });
 
@@ -178,8 +376,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             handleRef.current = undefined;
           }
 
-          const presenceMotion =
-            typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
+          const presenceMotion = presenceFn({ element, ...optionsRef.current.params });
           const IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION = (
             presenceMotion as PresenceMotion & { [INTERRUPTABLE_MOTION_SYMBOL]?: boolean }
           )[INTERRUPTABLE_MOTION_SYMBOL];
@@ -262,21 +459,22 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     {
       // Heads up!
       // Always normalize it to a function to simplify types
-      [PRESENCE_MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+      [PRESENCE_MOTION_DEFINITION]: presenceFn,
+      [PRESENCE_COMPONENT_OPTIONS]: options,
     },
     {
       // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
-      In: createMotionComponent(
+      In: createMotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>(
         // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
         // Otherwise, pass the `enter` motion object directly.
-        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).enter : value.enter,
+        directionalMotion('enter'),
       ),
 
       // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
-      Out: createMotionComponent(
+      Out: createMotionComponent<DirectionalMotionParams<MotionParams, PresentKeys>>(
         // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
         // Otherwise, pass the `exit` motion object directly.
-        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).exit : value.exit,
+        directionalMotion('exit'),
       ),
     },
   );

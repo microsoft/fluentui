@@ -19,7 +19,7 @@ const ExpandIconMotion = createPresenceComponentVariant(Rotate, {
   duration: motionTokens.durationFast,
   easing: motionTokens.curveEasyEase,
   animateOpacity: false, // Don't fade out the icon
-  outAngle: 0,
+  fromAngle: 0,
   inAngle: 180,
 });
 

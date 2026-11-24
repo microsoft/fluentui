@@ -49,7 +49,7 @@ describe('collapsePresenceFn', () => {
       expect(motion.enter[1]).toMatchObject({ duration: 300 }); // whitespaceAtom
 
       // Opacity atom should use opacityDuration (defaults to sizeDuration)
-      expect(motion.enter[2]).toMatchObject({ duration: 300 }); // fadeAtom
+      expect(motion.enter[2]).toMatchObject({ duration: 300 }); // fadeIn
     });
 
     it('cascades granular duration defaults correctly', () => {
@@ -197,6 +197,39 @@ describe('collapsePresenceFn', () => {
   });
 
   describe('orientation handling', () => {
+    it.each<[string, string, string, number, number, string]>([
+      ['vertical', 'maxHeight', 'overflowY', 200, 100, '100px'],
+      ['horizontal', 'maxWidth', 'overflowX', 200, 100, '200px'],
+      ['vertical', 'maxHeight', 'overflowY', 0, 0, '0px'],
+    ])('resolves %s size poses from the element (%s)', (orientation, sizeName, overflowName, width, height, inSize) => {
+      const motion = collapsePresenceFn({
+        element: createMockElement(width, height),
+        orientation,
+        fromSize: '8px',
+        animateOpacity: false,
+      });
+
+      expect(motion.enter[0].keyframes).toEqual([
+        { [sizeName]: '8px', [overflowName]: 'hidden' },
+        { [sizeName]: inSize, offset: 0.9999, [overflowName]: 'hidden' },
+        { [sizeName]: 'unset', [overflowName]: 'unset' },
+      ]);
+      expect(motion.exit[0].keyframes).toEqual([
+        { [sizeName]: inSize, [overflowName]: 'hidden' },
+        { [sizeName]: '8px', [overflowName]: 'hidden' },
+      ]);
+    });
+
+    it('remeasures the expanded pose when the presence function is invoked again', () => {
+      const first = collapsePresenceFn({ element: mockElement });
+      Object.defineProperty(mockElement, 'scrollHeight', { value: 240, configurable: true });
+      const second = collapsePresenceFn({ element: mockElement });
+
+      expect(first.enter[0].keyframes[1]).toHaveProperty('maxHeight', '100px');
+      expect(second.enter[0].keyframes[1]).toHaveProperty('maxHeight', '240px');
+      expect(second.exit[1].keyframes[0]).toHaveProperty('maxHeight', '240px');
+    });
+
     it('applies vertical orientation by default', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
@@ -257,15 +290,27 @@ describe('collapsePresenceFn', () => {
       expect(motion.enter[2]).toMatchObject({ duration: 0, delay: 0 });
     });
 
-    it('handles custom outSize values', () => {
+    it('handles custom fromSize values and mirrors them to toSize by default', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
-        outSize: '10px',
+        fromSize: '10px',
       });
 
-      // Size atoms should use the custom outSize
+      // Size atoms should use the custom fromSize on enter and mirror it on exit
       expect(motion.enter[0].keyframes[0]).toMatchObject({ maxHeight: '10px' });
       expect(motion.exit[1].keyframes[1]).toMatchObject({ maxHeight: '10px' });
+    });
+
+    it('supports independent fromSize and toSize values', () => {
+      const motion = collapsePresenceFn({
+        element: mockElement,
+        fromSize: '10px',
+        toSize: '24px',
+        animateOpacity: false,
+      });
+
+      expect(motion.enter[0].keyframes[0]).toMatchObject({ maxHeight: '10px' });
+      expect(motion.exit[0].keyframes[1]).toMatchObject({ maxHeight: '24px' });
     });
   });
 

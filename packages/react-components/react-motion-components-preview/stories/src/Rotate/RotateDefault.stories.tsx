@@ -109,11 +109,11 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('z');
-  const [outAngle, setOutAngle] = React.useState<number>(-90);
+  const [fromAngle, setFromAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const outAngleSliderId = useId();
+  const fromAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -146,18 +146,18 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
 
           <Field className={classes.sliderField}>
             <div className={classes.sliderHeader}>
-              <Label htmlFor={outAngleSliderId} className={classes.sliderLabel}>
-                Out Angle
+              <Label htmlFor={fromAngleSliderId} className={classes.sliderLabel}>
+                From Angle
               </Label>
-              <span className={classes.valueDisplay}>{outAngle}°</span>
+              <span className={classes.valueDisplay}>{fromAngle}°</span>
             </div>
             <Slider
               min={angleMin}
               max={angleMax}
-              defaultValue={outAngle}
-              id={outAngleSliderId}
+              defaultValue={fromAngle}
+              id={fromAngleSliderId}
               onChange={(_, data) => {
-                setOutAngle(data.value);
+                setFromAngle(data.value);
               }}
             />
           </Field>
@@ -203,7 +203,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         </div>
       </div>
 
-      <Rotate visible={visible} axis={axis} outAngle={outAngle} duration={duration}>
+      <Rotate visible={visible} axis={axis} fromAngle={fromAngle} duration={duration}>
         <Card className={classes.card}>
           <CardHeader
             header={

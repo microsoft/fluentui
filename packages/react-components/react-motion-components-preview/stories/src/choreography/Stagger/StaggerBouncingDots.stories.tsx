@@ -1,8 +1,8 @@
 import * as React from 'react';
 import StaggerBouncingDotsDescription from './StaggerBouncingDots.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, motionTokens, createMotionComponent, Slider, Label } from '@fluentui/react-components';
-import { Stagger } from '@fluentui/react-motion-components-preview';
+import { makeStyles, tokens, motionTokens, Slider, Label } from '@fluentui/react-components';
+import { createStaggerComponent } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -69,7 +69,7 @@ const useClasses = makeStyles({
   },
 });
 
-const BounceMotion = createMotionComponent<{ delay?: number; duration?: number }>(({ delay = 0, duration = 2000 }) => ({
+const StaggeredBounce = createStaggerComponent<{ duration?: number }>(({ duration = 2000 }) => ({
   keyframes: [
     { transform: 'translateY(0px)', easing: motionTokens.curveEasyEase },
     { offset: 0.1, transform: 'translateY(10px)', easing: motionTokens.curveEasyEaseMax },
@@ -82,22 +82,15 @@ const BounceMotion = createMotionComponent<{ delay?: number; duration?: number }
     { transform: 'translateY(0px)' },
   ],
   duration,
-  delay,
   iterations: Infinity,
 }));
 
 export const BouncingDots = (): JSXElement => {
   const classes = useClasses();
-  const [animationKey, setAnimationKey] = React.useState<number>(0);
 
   // Bouncing Dots controls
   const [bounceDuration, setBounceDuration] = React.useState<number>(2000);
-  const [bounceItemDelay, setBounceItemDelay] = React.useState<number>(100);
-
-  // Automatically restart animation when slider values change
-  React.useEffect(() => {
-    setAnimationKey(prev => prev + 1);
-  }, [bounceDuration, bounceItemDelay]);
+  const [startInterval, setStartInterval] = React.useState<number>(100);
 
   return (
     <div className={classes.container}>
@@ -115,13 +108,13 @@ export const BouncingDots = (): JSXElement => {
           </div>
 
           <div className={classes.controlGroup}>
-            <Label>Item Delay: {bounceItemDelay}ms</Label>
+            <Label>Start Interval: {startInterval}ms</Label>
             <Slider
               min={10}
               max={200}
               step={10}
-              value={bounceItemDelay}
-              onChange={(_ev, data) => setBounceItemDelay(data.value)}
+              value={startInterval}
+              onChange={(_ev, data) => setStartInterval(data.value)}
             />
           </div>
         </div>
@@ -131,15 +124,17 @@ export const BouncingDots = (): JSXElement => {
       <div className={classes.spinnerSection}>
         <h3 className={classes.spinnerTitle}>Bouncing Dots Spinner</h3>
         <div className={classes.spinnerContainer}>
-          <div className={classes.bouncingDotsSpinner}>
-            <Stagger.In itemDelay={bounceItemDelay} key={`bounce-${animationKey}`}>
+          <StaggeredBounce
+            key={`${bounceDuration}-${startInterval}`}
+            startInterval={startInterval}
+            duration={bounceDuration}
+          >
+            <div className={classes.bouncingDotsSpinner}>
               {Array.from({ length: 5 }, (_, i) => (
-                <BounceMotion key={i} duration={bounceDuration}>
-                  <div className={classes.bouncingDot} />
-                </BounceMotion>
+                <div key={i} className={classes.bouncingDot} />
               ))}
-            </Stagger.In>
-          </div>
+            </div>
+          </StaggeredBounce>
         </div>
       </div>
     </div>

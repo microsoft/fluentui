@@ -45,6 +45,112 @@ describe('Fade motion component', () => {
     );
   });
 
+  it('preserves custom opacity poses and independent exit timing', () => {
+    const params = {
+      fromOpacity: 0.2,
+      inOpacity: 0.7,
+      duration: 300,
+      easing: 'ease-out',
+      delay: 50,
+      exitDuration: 150,
+      exitEasing: 'ease-in',
+      exitDelay: 25,
+    };
+    const { rerender } = render(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    rerender(
+      <Fade {...params} visible>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0.2 }, { opacity: 0.7 }],
+      expect.objectContaining({ duration: 300, easing: 'ease-out', delay: 50, fill: 'both' }),
+    );
+    rerender(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0.7 }, { opacity: 0.2 }],
+      expect.objectContaining({ duration: 150, easing: 'ease-in', delay: 25, fill: 'both' }),
+    );
+  });
+
+  it('enters from the source pose and exits toward an independent destination', () => {
+    const params = { fromOpacity: 0.2, inOpacity: 0.7, toOpacity: 0.4 };
+    const { rerender } = render(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    rerender(
+      <Fade {...params} visible>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith([{ opacity: 0.2 }, { opacity: 0.7 }], expect.any(Object));
+    rerender(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith([{ opacity: 0.7 }, { opacity: 0.4 }], expect.any(Object));
+  });
+
+  it.each([Fade.In, Fade.Out, FadeSnappy.In, FadeRelaxed.Out])(
+    'plays both authored endpoints with ordinary timing on directional components',
+    Motion => {
+      render(
+        <Motion fromOpacity={0.7} toOpacity={0} duration={123} easing="ease-in" delay={25}>
+          {testElement}
+        </Motion>,
+      );
+      expect(animateSpy).toHaveBeenLastCalledWith(
+        [{ opacity: 0.7 }, { opacity: 0 }],
+        expect.objectContaining({ duration: 123, easing: 'ease-in', delay: 25 }),
+      );
+    },
+  );
+
+  it('preserves directional defaults and explicit zero exit timing', () => {
+    const { unmount } = render(<Fade.In>{testElement}</Fade.In>);
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0 }, { opacity: 1 }],
+      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEase }),
+    );
+    unmount();
+    const { unmount: unmountOut } = render(<Fade.Out>{testElement}</Fade.Out>);
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 1 }, { opacity: 0 }],
+      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEase }),
+    );
+    unmountOut();
+    render(
+      <Fade.Out duration={123} easing="linear" delay={25} exitDuration={0} exitEasing="ease-in" exitDelay={0}>
+        {testElement}
+      </Fade.Out>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 1 }, { opacity: 0 }],
+      expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+    );
+  });
+
+  it('keeps present-pose props on the root and rejects removed props', () => {
+    <Fade inOpacity={0.8}>{testElement}</Fade>;
+    // @ts-expect-error present-pose props are root-only
+    <Fade.In inOpacity={0.8}>{testElement}</Fade.In>;
+    // @ts-expect-error variants retain the root-only present-pose contract
+    <FadeSnappy.Out inOpacity={0.8}>{testElement}</FadeSnappy.Out>;
+    // @ts-expect-error fromOpacity replaces outOpacity
+    <Fade outOpacity={0.2}>{testElement}</Fade>;
+  });
+
   it('should render Snappy variant of Fade component with correct opacity keyframes, duration and easing', () => {
     const { rerender } = render(<FadeSnappy visible={false}>{testElement}</FadeSnappy>);
 
