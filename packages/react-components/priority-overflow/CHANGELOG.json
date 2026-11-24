@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "9.4.4",
+      "tag": "@fluentui/priority-overflow_v9.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2026 11:25:39 GMT",
       "version": "9.4.3",
       "comments": {
