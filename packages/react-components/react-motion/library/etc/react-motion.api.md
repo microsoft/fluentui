@@ -12,6 +12,7 @@ import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type AtomMotion = AtomCore & {
+    target?: Element;
     reducedMotion?: Partial<AtomCore>;
 };
 

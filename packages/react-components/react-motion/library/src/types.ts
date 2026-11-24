@@ -2,6 +2,12 @@ type AtomCore = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
 export type AtomMotion = AtomCore & {
   /**
+   * Optional target element to animate instead of the motion component's root element.
+   * When omitted, the motion animates the root element wrapped by the motion component.
+   */
+  target?: Element;
+
+  /**
    * Allows to specify a reduced motion version of the animation. If provided, the settings will be used when the
    * user has enabled the reduced motion setting in the operating system (i.e `prefers-reduced-motion` media query is
    * active). If not provided, the duration of the animation will be overridden to be 1ms.
