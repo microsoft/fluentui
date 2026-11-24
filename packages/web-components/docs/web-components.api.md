@@ -789,6 +789,8 @@ export class BaseRadioGroup extends FASTElement {
     // (undocumented)
     disabledRadioHandler(e: CustomEvent): void;
     // @internal
+    static readonly elementIdentity = "radio-group";
+    // @internal
     elementInternals: ElementInternals;
     // @internal
     get enabledRadios(): Radio[];
@@ -3450,6 +3452,8 @@ export class Radio extends BaseCheckbox {
     constructor();
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    static readonly elementIdentity = "radio";
     // @internal @override
     protected requiredChanged(): void;
     // @internal @override
