@@ -23,12 +23,12 @@ const useStyles = makeStyles({
 /**
  * Dir switch used in the react-components docs header
  */
-export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.forwardRef(({ dir }, ref) => {
+export const DirSwitch: ForwardRefComponent<{ dir?: 'ltr' | 'rtl' }> = React.forwardRef(({ dir = 'ltr' }, ref) => {
   const switchId = useId('dir-switch');
 
   const styles = useStyles();
 
-  const [currentDir, setCurrentDir] = React.useState(dir ?? 'ltr');
+  const [currentDir, setCurrentDir] = React.useState(dir);
   const checked = currentDir === 'rtl';
 
   const setGlobalDir = (newDir: 'ltr' | 'rtl'): void => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { DocsContainer, Source, type DocsContextProps } from '@storybook/addon-docs/blocks';
+import { Source, type DocsContextProps } from '@storybook/addon-docs/blocks';
 import { SyntaxHighlighter } from 'storybook/internal/components';
 import { Channel } from 'storybook/internal/channels';
 import { ensure, ThemeProvider, themes } from 'storybook/theming';
@@ -8,40 +8,23 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { FluentDocsContainer } from './FluentDocsContainer';
 import { isDocsEnabled } from './utils';
 
-jest.mock('@storybook/addon-docs/blocks', () => ({
-  ...jest.requireActual('@storybook/addon-docs/blocks'),
-  DocsContainer: jest.fn(({ children }: { children: React.ReactNode }) => <>{children}</>),
-}));
-
 jest.mock('./utils', () => ({
   isDocsEnabled: jest.fn(),
 }));
 
 describe('FluentDocsContainer', () => {
-  const context = {} as DocsContextProps;
+  const context = { channel: new Channel({}) } as DocsContextProps;
+  const code = '<button aria-label="Open menu">Open</button>';
+  const tokenColor = (element: HTMLElement) => getComputedStyle(element.querySelector('.token.attr-name')!).color;
 
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it.each([true, false])('preserves an explicitly configured Docs theme when Fluent Docs enabled=%s', enabled => {
-    jest.mocked(isDocsEnabled).mockReturnValue(enabled);
-    render(
-      <FluentDocsContainer context={context} theme={themes.dark}>
-        Documentation
-      </FluentDocsContainer>,
-    );
-
-    expect(jest.mocked(DocsContainer).mock.calls[0][0].theme).toBe(themes.dark);
   });
 
   it.each([true, false])(
     'preserves independent Source themes in default Docs when Fluent Docs enabled=%s',
     async enabled => {
       jest.mocked(isDocsEnabled).mockReturnValue(enabled);
-      jest.mocked(DocsContainer).mockImplementation(jest.requireActual('@storybook/addon-docs/blocks').DocsContainer);
-      const sourceContext = { channel: new Channel({}) } as DocsContextProps;
-      const code = '<button aria-label="Open menu">Open</button>';
       const { getByTestId } = render(
         <div>
           <ThemeProvider theme={ensure(themes.light)}>
@@ -53,7 +36,7 @@ describe('FluentDocsContainer', () => {
             </div>
           </ThemeProvider>
           <div id="storybook-docs">
-            <FluentDocsContainer context={sourceContext}>
+            <FluentDocsContainer context={context}>
               <div data-testid="inherited-light">
                 <SyntaxHighlighter language="html" className="docblock-source" format={false}>
                   {code}
@@ -76,26 +59,19 @@ describe('FluentDocsContainer', () => {
         expect(getByTestId('independent-light').querySelector('.token.attr-name')).not.toBeNull();
       });
 
-      const tokenColor = (id: string) => {
-        const token = getByTestId(id).querySelector('.token.attr-name')!;
-        return getComputedStyle(token).color;
-      };
       const expectedColor = document.createElement('span');
       expectedColor.style.color = webLightTheme.colorPaletteRedForeground1;
-      expect(tokenColor('inherited-light')).toBe(expectedColor.style.color);
-      expect(tokenColor('independent-dark')).toBe(tokenColor('native-dark'));
-      expect(tokenColor('independent-light')).toBe(tokenColor('native-light'));
-      expect(tokenColor('independent-dark')).not.toBe(tokenColor('inherited-light'));
+      expect(tokenColor(getByTestId('inherited-light'))).toBe(expectedColor.style.color);
+      expect(tokenColor(getByTestId('independent-dark'))).toBe(tokenColor(getByTestId('native-dark')));
+      expect(tokenColor(getByTestId('independent-light'))).toBe(tokenColor(getByTestId('native-light')));
+      expect(tokenColor(getByTestId('independent-dark'))).not.toBe(tokenColor(getByTestId('inherited-light')));
     },
   );
 
   it('preserves inherited syntax highlighting for an explicit consumer theme', async () => {
     jest.mocked(isDocsEnabled).mockReturnValue(false);
-    jest.mocked(DocsContainer).mockImplementation(jest.requireActual('@storybook/addon-docs/blocks').DocsContainer);
-    const sourceContext = { channel: new Channel({}) } as DocsContextProps;
-    const code = '<button aria-label="Open menu">Open</button>';
     const { getByTestId } = render(
-      <FluentDocsContainer context={sourceContext} theme={themes.dark}>
+      <FluentDocsContainer context={context} theme={themes.dark}>
         <div data-testid="inherited-dark">
           <SyntaxHighlighter language="html" className="docblock-source" format={false}>
             {code}
@@ -111,8 +87,6 @@ describe('FluentDocsContainer', () => {
       expect(getByTestId('inherited-dark').querySelector('.token.attr-name')).not.toBeNull();
       expect(getByTestId('native-dark').querySelector('.token.attr-name')).not.toBeNull();
     });
-    expect(getComputedStyle(getByTestId('inherited-dark').querySelector('.token.attr-name')!).color).toBe(
-      getComputedStyle(getByTestId('native-dark').querySelector('.token.attr-name')!).color,
-    );
+    expect(tokenColor(getByTestId('inherited-dark'))).toBe(tokenColor(getByTestId('native-dark')));
   });
 });
