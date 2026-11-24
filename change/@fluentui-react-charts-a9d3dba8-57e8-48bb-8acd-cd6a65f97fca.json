@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add regression tests: bar labels render plain decimals for values < 1 (no SI milli suffix)",
+  "packageName": "@fluentui/react-charts",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
