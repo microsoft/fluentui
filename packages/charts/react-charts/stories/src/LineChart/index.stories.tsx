@@ -16,6 +16,10 @@ export { LineChartAllNegative } from './LineChartAllNegative.stories';
 export { LineChartSecondaryYAxis } from './LineChartSecondaryYAxis.stories';
 export { LineChartLogAxisExample } from './LineChartLogAxis.stories';
 export { LineChartAnnotationsExample } from './LineChartAnnotations.stories';
+export { LineChartKeyedScales } from './LineChartKeyedScales.stories';
+export { LineChartControlledInspection } from './LineChartControlledInspection.stories';
+export { LineChartMotion } from './LineChartMotion.stories';
+export { LineChartIntervalAnnotations } from './LineChartIntervalAnnotations.stories';
 
 export default {
   title: 'Charts/LineChart',
