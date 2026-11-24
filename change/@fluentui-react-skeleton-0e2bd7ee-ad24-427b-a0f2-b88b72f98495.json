@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove unused dependency on @fluentui/react-field",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "vgenaev@gmail.com"
-}

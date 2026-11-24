@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove unused dependency on @fluentui/react-context-selector",
-  "packageName": "@fluentui/react-field",
-  "email": "vgenaev@gmail.com"
-}

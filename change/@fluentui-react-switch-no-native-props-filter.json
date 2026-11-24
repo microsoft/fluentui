@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "perf: drop native props allow-list from Switch hooks",
-  "packageName": "@fluentui/react-switch",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

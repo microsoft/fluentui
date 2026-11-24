@@ -2,6 +2,66 @@
   "name": "@fluentui/react-calendar-preview",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "0.2.1",
+      "tag": "@fluentui/react-calendar-preview_v0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.22"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-motion to v9.16.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.11"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.26.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "0.2.0",
       "tag": "@fluentui/react-calendar-preview_v0.2.0",
