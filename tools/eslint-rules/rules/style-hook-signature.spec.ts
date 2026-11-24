@@ -43,6 +43,22 @@ tester.run(RULE_NAME, rule, {
       export const useExampleStyles = griffel.makeResetStyles({});`,
     `import { makeStyles } from '@fluentui/react-components';
       export const useExampleStyles = makeStyles({});`,
+    `import { makeStyles } from '@griffel/react';
+      export const useExampleStyles = (makeStyles({}));`,
+    `import { makeStyles } from '@griffel/react';
+      const styles = makeStyles({});
+      const alias = styles;
+      export const useExampleStyles = alias;`,
+    `import { makeResetStyles as factory } from '@griffel/react';
+      const first = factory;
+      const second = first;
+      export const useExampleStyles = (second)({});`,
+    `import * as griffel from '@griffel/react';
+      const namespace = griffel;
+      const factory = namespace.makeStyles;
+      export const useExampleStyles = factory({});`,
+    `import { makeStyles } from '@griffel/react';
+      export const useExampleStyles = ((makeStyles({}) satisfies Function) as (() => unknown))!;`,
     `type RootlessState = { components: { content: 'div' }; content: { className?: string } };
       export const useExampleStyles_unstable = (state: RootlessState): RootlessState => state;`,
     `type State = { components: { root: 'div'; icon: 'span' }; root: {}; icon?: {} };
@@ -61,6 +77,14 @@ tester.run(RULE_NAME, rule, {
         <E extends 'div' | 'span'>(state: State<E>): State<E> => state;`,
     `import type { ComponentState, Slot } from '@fluentui/react-utilities';
       type State = ComponentState<{ content?: Slot<'div'> }>;
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `import type { ComponentState, Slot } from '@fluentui/react-utilities';
+      type State = ComponentState<{ foo?: Slot<'div'> }> | ComponentState<{ bar?: Slot<'span'> }>;
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { root: 'div'; foo: 'span' }; root: {}; foo: {} }
+        | { components: { root: 'span'; bar: 'div' }; root: {}; bar: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { content: 'div' } | { media: 'span' }; content?: {}; media?: {} };
       export const useExampleStyles_unstable = (state: State): State => state;`,
     `type State<R extends {}> = { components: { content: 'div' }; content?: R };
       export const useExampleStyles_unstable = <R extends {}>(state: State<R>): State<R> => state;`,
@@ -112,6 +136,17 @@ tester.run(RULE_NAME, rule, {
     `export const useExampleStyles_unstable = 42;`,
     `export const useExampleStyles = (state: unknown): void => {};`,
     `const makeStyles = () => () => 'classes'; export const useExampleStyles = makeStyles();`,
+    `const makeStyles = () => () => 'classes'; const factory = makeStyles;
+      export const useExampleStyles = factory();`,
+    `import { makeStyles } from '@griffel/react';
+      const styles = makeStyles({}); export const useExampleStyles = styles();`,
+    `import { makeStyles } from '@griffel/react';
+      export const useExampleStyles = makeStyles.bind(null, {});`,
+    `import { makeStyles } from '@griffel/react';
+      const wrapper = () => makeStyles({}); export const useExampleStyles = wrapper();`,
+    `import { makeStyles } from '@griffel/react';
+      let styles = makeStyles({}); export const useExampleStyles = styles;`,
+    `const first = second; const second = first; export const useExampleStyles = first;`,
     `export * from '../../shared/styles';`,
     ...['123', "'not-an-intrinsic-element'", "'div' | 123", '() => { unrelated: string }'].map(
       element => `type State = { components: { root: ${element} }; root: {} };
@@ -131,6 +166,16 @@ tester.run(RULE_NAME, rule, {
       export const useExampleStyles_unstable = (state: State): State => state;`,
     `type State = { components: { content: 'div' }; content?: undefined };
       export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { root: 'div'; extra: 123 }; root: {}; extra: {} }
+        | { components: { root: 'div'; other: 'span' }; root: {}; other: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { root: 'div'; extra: 'span' }; root: {}; extra: 123 }
+        | { components: { root: 'div'; other: 'span' }; root: {}; other: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    ...['{ extra: 123 }', "{ root?: 'div' }", "{ root: 'div' }"].map(
+      invalidMap => `type State = { components: { content: 'span' } | ${invalidMap}; content?: {} };
+        export const useExampleStyles_unstable = (state: State): State => state;`,
+    ),
   ].map(code => ({ code, filename, errors })),
 });
 
@@ -157,6 +202,9 @@ tester.run(`${RULE_NAME} slotless state`, rule, {
     `export const useSlotlessStyles_unstable = (state: { unrelated: string }) => state;`,
     `import type { SlotlessState } from './state';
       export const useSlotlessStyles_unstable = (state: SlotlessState): void => {};`,
+    `import type { SlotlessState } from './state';
+      export const useSlotlessStyles_unstable =
+        (state: Extract<SlotlessState, { empty: true }>) => state;`,
     `export const useSlotlessStyles_unstable = (state: any): any => state;`,
     `import type { SlotlessState } from './state';
       export const useSlotlessStyles_unstable =

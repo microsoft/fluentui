@@ -158,6 +158,9 @@ function isComponentState(
   if (!isObject(type, checker)) {
     return false;
   }
+  if (type.isUnion() && type.types.some(part => checker.getPropertyOfType(part, 'components'))) {
+    return type.types.every(part => isComponentState(part, checker, node, renderState));
+  }
   if (!checker.getPropertyOfType(type, 'components')) {
     // Components such as Overflow clone children instead of exposing slots.
     return (
@@ -168,8 +171,16 @@ function isComponentState(
     );
   }
   const components = requiredProperty(type, 'components', checker, node);
-  if (!components || !isObject(components, checker)) {
+  return !!components && isComponentsMap(type, components, checker, node);
+}
+
+function isComponentsMap(state: ts.Type, components: ts.Type, checker: ts.TypeChecker, node: ts.Node): boolean {
+  components = checker.getBaseConstraintOfType(components) ?? components;
+  if (!isObject(components, checker)) {
     return false;
+  }
+  if (components.isUnion()) {
+    return components.types.every(part => isComponentsMap(state, part, checker, node));
   }
   const elementType = getReactElementType(checker);
   let hasSlot = false;
@@ -179,9 +190,9 @@ function isComponentState(
     if (!element || !elementType || !checker.isTypeAssignableTo(element, elementType)) {
       return false;
     }
-    const property = checker.getPropertyOfType(type, name);
+    const property = checker.getPropertyOfType(state, name);
     if (name === 'root') {
-      const root = requiredProperty(type, name, checker, node);
+      const root = requiredProperty(state, name, checker, node);
       if (!root || !isObject(root, checker)) {
         return false;
       }
@@ -271,14 +282,18 @@ function isGriffelClassHook(symbol: ts.Symbol, checker: ts.TypeChecker): boolean
   if (!declaration || !ts.isVariableDeclaration(declaration) || !declaration.initializer) {
     return false;
   }
-  const initializer = declaration.initializer;
-  if (!ts.isCallExpression(initializer)) {
+  const initializer = resolveConstExpression(declaration.initializer, checker);
+  if (!initializer || !ts.isCallExpression(initializer)) {
     return false;
   }
-  const callee = initializer.expression;
-  const binding = checker.getSymbolAtLocation(ts.isPropertyAccessExpression(callee) ? callee.expression : callee);
+  const callee = resolveConstExpression(initializer.expression, checker);
+  if (!callee) {
+    return false;
+  }
+  const imported = ts.isPropertyAccessExpression(callee) ? resolveConstExpression(callee.expression, checker) : callee;
+  const binding = imported && checker.getSymbolAtLocation(imported);
   return !!binding?.declarations?.some(item => {
-    const specifier = ts.isImportSpecifier(item) ? item : undefined;
+    const specifier = ts.isImportSpecifier(item) && ts.isIdentifier(callee) ? item : undefined;
     const namespace = ts.isNamespaceImport(item) && ts.isPropertyAccessExpression(callee) ? item : undefined;
     const importedName = specifier
       ? (specifier.propertyName ?? specifier.name).text
@@ -294,4 +309,39 @@ function isGriffelClassHook(symbol: ts.Symbol, checker: ts.TypeChecker): boolean
       (importedName === 'makeStyles' || importedName === 'makeResetStyles')
     );
   });
+}
+
+function resolveConstExpression(
+  expression: ts.Expression,
+  checker: ts.TypeChecker,
+  seen = new Set<ts.Symbol>(),
+): ts.Expression | undefined {
+  while (
+    ts.isParenthesizedExpression(expression) ||
+    ts.isAsExpression(expression) ||
+    ts.isTypeAssertionExpression(expression) ||
+    ts.isSatisfiesExpression(expression) ||
+    ts.isNonNullExpression(expression)
+  ) {
+    expression = expression.expression;
+  }
+  if (!ts.isIdentifier(expression)) {
+    return expression;
+  }
+  const symbol = checker.getSymbolAtLocation(expression);
+  const declaration = symbol?.valueDeclaration;
+  if (!symbol || !declaration || !ts.isVariableDeclaration(declaration)) {
+    return expression;
+  }
+  if (
+    seen.has(symbol) ||
+    !ts.isIdentifier(declaration.name) ||
+    !declaration.initializer ||
+    !ts.isVariableDeclarationList(declaration.parent) ||
+    !(declaration.parent.flags & ts.NodeFlags.Const)
+  ) {
+    return undefined;
+  }
+  seen.add(symbol);
+  return resolveConstExpression(declaration.initializer, checker, seen);
 }
