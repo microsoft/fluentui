@@ -1,0 +1,1 @@
+Combines `sequence` (with negative `gap` overlap) and `stagger` inside `createChoreographyPresenceComponent`: on enter, the panel scales in and rows stagger in slightly overlapping; on exit, rows stagger out in reverse before the panel closes.

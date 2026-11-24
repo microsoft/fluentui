@@ -16,6 +16,7 @@ import {
   fadeIn,
   fadeOut,
   layer,
+  sequence,
   slideIn,
   slideOut,
   stagger,
@@ -114,8 +115,6 @@ const useClasses = makeStyles({
 const ExpandableListChoreography = createChoreographyPresenceComponent<{ startInterval?: number }>(
   ({ element, startInterval = STAGGER_ITEM_DELAY }) => {
     const fullHeight = `${element.scrollHeight}px`;
-    const extraCount = element.querySelectorAll('[data-stagger-item]').length;
-    const exitCollapseDelay = Math.max(0, extraCount - 1) * startInterval + motionTokens.durationFast;
 
     return {
       enter: [
@@ -147,7 +146,7 @@ const ExpandableListChoreography = createChoreographyPresenceComponent<{ startIn
           { startInterval },
         ),
       ],
-      exit: [
+      exit: sequence([
         stagger(
           [
             layer('[data-stagger-item]', [
@@ -168,11 +167,10 @@ const ExpandableListChoreography = createChoreographyPresenceComponent<{ startIn
           ],
           duration: COLLAPSE_DURATION,
           easing: motionTokens.curveEasyEase,
-          delay: exitCollapseDelay,
           fill: 'both',
           reducedMotion: { duration: 1, delay: 0 },
         },
-      ],
+      ]),
     };
   },
 );
