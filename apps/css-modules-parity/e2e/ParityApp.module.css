@@ -1,0 +1,17 @@
+/* Plain app CSS, as commonly shipped next to Griffel styles in existing applications. */
+.base {
+  background-color: var(--colorPaletteBerryBackground2);
+  color: var(--colorPaletteBerryForeground2);
+}
+
+.stateful {
+  background-color: var(--colorPaletteBerryBackground2);
+}
+
+.stateful:hover {
+  background-color: var(--colorPaletteBlueBackground2);
+}
+
+.extra {
+  text-decoration-line: underline;
+}

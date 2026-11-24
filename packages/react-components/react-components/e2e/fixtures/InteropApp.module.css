@@ -1,0 +1,32 @@
+/* App-level class names applied on top of components, as an existing Griffel app would add them. */
+
+/* Repeated to outrank the app's own unlayered Griffel rules where both apply. */
+.override.override {
+  color: var(--colorPaletteBerryForeground2);
+  background-color: var(--colorPaletteBerryBackground2);
+
+  &:hover {
+    background-color: var(--colorPaletteBlueBackground2);
+  }
+
+  &:hover:active {
+    background-color: var(--colorPaletteGreenBackground2);
+  }
+
+  &[data-fui-focus-visible] {
+    border-color: var(--colorBrandStroke1);
+  }
+}
+
+.icon.icon {
+  font-size: var(--fontSizeBase600);
+  margin-inline-start: var(--spacingHorizontalL);
+}
+
+.plainCaller {
+  background-color: var(--colorPaletteGreenBackground2);
+}
+
+.emphasis {
+  font-weight: var(--fontWeightBold);
+}

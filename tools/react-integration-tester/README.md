@@ -139,6 +139,8 @@ If you omit a property, the builtin default is used (both for the command and th
 
 Generated Cypress imports use forward-slash separators on Windows so native ESM can resolve the referenced config.
 This normalization applies only to the import specifier, not other generated filesystem paths or literal backslashes in POSIX filenames.
+Cypress component spec patterns are preserved from the origin config, with relative patterns resolved from the origin project root.
+When no pattern is configured, RIT falls back to `**/src/**/*.{cy,e2e}.{tsx,ts}`.
 
 ### Builtin defaults (per runner)
 

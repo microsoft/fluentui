@@ -18,6 +18,23 @@
     }
   },
   "targets": {
+    "e2e": {
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/e2e/**/*",
+        "{projectRoot}/cypress.config.ts",
+        "{projectRoot}/tsconfig.cy.json",
+        {
+          "externalDependencies": ["cypress", "@cypress/react", "css-loader", "style-loader"]
+        }
+      ]
+    },
+    "lint": {
+      "options": {
+        "command": "yarn run -T eslint src e2e cypress.config.ts"
+      }
+    },
     "build": {
       "options": {
         "assets": [

@@ -1,0 +1,10 @@
+/* @griffel-buckets reset: .root */
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalXXS);
+}
+
+.subtree {
+  padding-top: var(--spacingVerticalXXS);
+}

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Add CSS Modules interoperability test infrastructure.",
+  "packageName": "@fluentui/react-components",
+  "email": "198982749+Copilot@users.noreply.github.com"
+}

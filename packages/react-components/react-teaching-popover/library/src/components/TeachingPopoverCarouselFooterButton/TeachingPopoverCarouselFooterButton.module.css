@@ -1,0 +1,53 @@
+.root {
+  min-width: 96px;
+}
+
+.brandNext:where(.colors) {
+  color: var(--colorBrandForeground1);
+  border-color: var(--colorTransparentBackground);
+}
+
+.brandNext:where(.background) {
+  background-color: var(--colorNeutralForegroundOnBrand);
+}
+
+.brandPrevious:where(.colors) {
+  color: var(--colorNeutralForegroundOnBrand);
+  border-color: var(--colorNeutralForegroundOnBrand);
+}
+
+.brandPrevious:where(.background) {
+  background-color: var(--colorBrandBackground);
+}
+
+/* In forced colors, Button's hover and pressed colors win, as Griffel sorted them after these. Pressed colors apply for
+   every appearance: Button's pressed rules use a different selector, inserted earlier. */
+@media (forced-colors: none) {
+  .brandNext:where(.colors):hover {
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+
+  .brandNext:where(.background):hover {
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandNext:hover:active {
+    color: var(--colorCompoundBrandForeground1Pressed);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrevious:where(.colors):hover {
+    color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrevious:where(.background):hover {
+    background-color: var(--colorBrandBackgroundHover);
+  }
+
+  .brandPrevious:hover:active {
+    color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackgroundPressed);
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@fluentui/css-modules-parity",
+  "version": "0.0.0",
+  "description": "Browser parity tests: CSS Modules v9 components versus their Griffel originals inside a Griffel application",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@fluentui/react": "*",
+    "@fluentui/react-aria": "*",
+    "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-calendar-preview": "*",
+    "@fluentui/react-color-picker": "*",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-list": "*",
+    "@fluentui/react-menu-grid-preview": "*",
+    "@fluentui/react-message-bar": "*",
+    "@fluentui/react-migration-v0-v9": "*",
+    "@fluentui/react-range-slider-preview": "*",
+    "@fluentui/react-shared-contexts": "*",
+    "@fluentui/react-table": "*",
+    "@fluentui/react-tag-picker": "*",
+    "@fluentui/react-tags": "*",
+    "@fluentui/react-teaching-popover": "*",
+    "@fluentui/react-timepicker-compat": "*",
+    "@fluentui/react-toast": "*",
+    "@fluentui/react-tree": "*",
+    "@fluentui/react-utilities": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/utilities": "*",
+    "clsx": "^2.1.1"
+  }
+}

@@ -32,7 +32,15 @@ module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookCo
   webpackFinal(config) {
     registerTsPaths({ config, configFile: tsConfigPath });
     registerRules({ config, rules: [rules.swcRule, rules.griffelRule] });
-    configureReactIcons({ config });
+    configureReactIcons({ config, headless: true });
+
+    config.resolve = config.resolve ?? {};
+    // Workspace imports resolve to TypeScript source; built packages use explicit .styles.js imports.
+    config.resolve.extensions = ['.css.ts', '.styles.css.js', ...(config.resolve.extensions ?? [])];
+    config.resolve.extensionAlias = {
+      ...config.resolve.extensionAlias,
+      '.styles.js': ['.styles.css.js', '.styles.js'],
+    };
 
     isolateIconBuildCache(config);
 
