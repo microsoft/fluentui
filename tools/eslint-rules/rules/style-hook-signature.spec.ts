@@ -51,6 +51,23 @@ tester.run(RULE_NAME, rule, {
       export const useExampleStyles_unstable = (state: State): State => state;`,
     `type State = { components: { root: 'div'; omitted: 'span' }; root: {} };
       export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State<R extends { className?: string }> = { components: { root: 'div' }; root: R };
+      export const useExampleStyles_unstable =
+        <R extends { className?: string }>(state: State<R>): State<R> => state;`,
+    `type State<C extends { root: 'div' }> = { components: C; root: {} };
+      export const useExampleStyles_unstable = <C extends { root: 'div' }>(state: State<C>): State<C> => state;`,
+    `type State<E extends 'div' | 'span'> = { components: { root: E }; root: {} };
+      export const useExampleStyles_unstable =
+        <E extends 'div' | 'span'>(state: State<E>): State<E> => state;`,
+    `import type { ComponentState, Slot } from '@fluentui/react-utilities';
+      type State = ComponentState<{ content?: Slot<'div'> }>;
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State<R extends {}> = { components: { content: 'div' }; content?: R };
+      export const useExampleStyles_unstable = <R extends {}>(state: State<R>): State<R> => state;`,
+    `import type { ComponentClass, FunctionComponent } from 'react';
+      type State = { components: { root: FunctionComponent<{ value: string }> | ComponentClass<{ value: string }> }; root: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `export * from './state';`,
   ].map(code => ({ code, filename })),
   invalid: [
     `${imports} export const useExampleStyles_unstable = (state: ExampleState): void => {};`,
@@ -95,6 +112,25 @@ tester.run(RULE_NAME, rule, {
     `export const useExampleStyles_unstable = 42;`,
     `export const useExampleStyles = (state: unknown): void => {};`,
     `const makeStyles = () => () => 'classes'; export const useExampleStyles = makeStyles();`,
+    `export * from '../../shared/styles';`,
+    ...['123', "'not-an-intrinsic-element'", "'div' | 123", '() => { unrelated: string }'].map(
+      element => `type State = { components: { root: ${element} }; root: {} };
+        export const useExampleStyles_unstable = (state: State): State => state;`,
+    ),
+    `type State<R extends string> = { components: { root: 'div' }; root: R };
+      export const useExampleStyles_unstable = <R extends string>(state: State<R>): State<R> => state;`,
+    `type State<R extends {} | null> = { components: { root: 'div' }; root: R };
+      export const useExampleStyles_unstable = <R extends {} | null>(state: State<R>): State<R> => state;`,
+    `type State<E extends 'div' | 123> = { components: { root: E }; root: {} };
+      export const useExampleStyles_unstable = <E extends 'div' | 123>(state: State<E>): State<E> => state;`,
+    `type State = { components: { root: 'div'; content: 'span' }; root?: {}; content: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { root: 'div'; content: 'span' }; content: {} };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { content: 'div' }; content?: {} | null };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
+    `type State = { components: { content: 'div' }; content?: undefined };
+      export const useExampleStyles_unstable = (state: State): State => state;`,
   ].map(code => ({ code, filename, errors })),
 });
 

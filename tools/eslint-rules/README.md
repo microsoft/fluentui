@@ -47,12 +47,16 @@ bidirectionally assignable state type. TypeScript aliases and constrained,
 state-preserving generics are supported; `any`, `unknown`, `never` and `void` are not.
 Additional parameters are allowed.
 
-The state check uses the current `ComponentState` element-to-slot map (including
-rootless components). Slotless states must match the sibling
+The state check uses the current `ComponentState` element-to-slot map, validating
+its entries against `React.ElementType` and supporting rootless components with
+optional slots. Nested generic constraints are respected. Slotless states must match the sibling
 `render<Component>_unstable` state parameter. The check must be updated when the
 deprecated `components` field is removed. Matching is structural, not nominal,
 and does not prove that the hook returns the same runtime object. The rule requires
 TypeScript parser services and does not rewrite hook bodies.
+
+The internal config works from both the repository root and individual project
+directories. Export-all component barrels are checked alongside named exports.
 
 Griffel `makeStyles`/`makeResetStyles` hooks, shared helpers, provider custom-style
 callbacks, tests, stories and v8 are outside this contract. The six calendar-compat

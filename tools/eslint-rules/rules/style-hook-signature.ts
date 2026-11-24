@@ -14,6 +14,8 @@ const calendarClassMapHooks = new Set([
   'CalendarYear',
 ]);
 
+const reactElementTypes = new WeakMap<ts.TypeChecker, ts.Type | undefined>();
+
 export const rule = ESLintUtils.RuleCreator(() => __filename)<[], 'invalidSignature'>({
   name: RULE_NAME,
   meta: {
@@ -44,7 +46,10 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<[], 'invalidSignat
     if (filename.includes('/react-calendar-compat/library/src/components/') && calendarClassMapHooks.has(component)) {
       hookNames.delete(`use${component}Styles_unstable`);
     }
-    if (![...hookNames].some(name => new RegExp(`\\b${name}\\b`).test(context.sourceCode.text))) {
+    if (
+      ![...hookNames].some(name => new RegExp(`\\b${name}\\b`).test(context.sourceCode.text)) &&
+      !context.sourceCode.ast.body.some(node => node.type === 'ExportAllDeclaration')
+    ) {
       return {};
     }
     return {
@@ -116,7 +121,8 @@ function isStatePreserving(
   );
 }
 
-function isConcrete(type: ts.Type): boolean {
+function isConcrete(type: ts.Type, checker: ts.TypeChecker): boolean {
+  type = checker.getBaseConstraintOfType(type) ?? type;
   return (
     !(
       type.flags &
@@ -125,16 +131,20 @@ function isConcrete(type: ts.Type): boolean {
         ts.TypeFlags.Never |
         ts.TypeFlags.Void |
         ts.TypeFlags.Null |
-        ts.TypeFlags.Undefined)
+        ts.TypeFlags.Undefined |
+        ts.TypeFlags.TypeParameter)
     ) &&
-    (!type.isUnion() || type.types.every(isConcrete))
+    (!type.isUnion() || type.types.every(part => isConcrete(part, checker)))
   );
 }
 
-function isObject(type: ts.Type): boolean {
+function isObject(type: ts.Type, checker: ts.TypeChecker): boolean {
+  type = checker.getBaseConstraintOfType(type) ?? type;
   return (
-    isConcrete(type) &&
-    (type.isUnion() ? type.types.every(isObject) : !!(type.flags & (ts.TypeFlags.Object | ts.TypeFlags.Intersection)))
+    isConcrete(type, checker) &&
+    (type.isUnion()
+      ? type.types.every(part => isObject(part, checker))
+      : !!(type.flags & (ts.TypeFlags.Object | ts.TypeFlags.Intersection)))
   );
 }
 
@@ -144,52 +154,83 @@ function isComponentState(
   node: ts.Node,
   renderState: ts.Type | undefined,
 ): boolean {
-  if (type.flags & ts.TypeFlags.TypeParameter) {
-    const constraint = checker.getBaseConstraintOfType(type);
-    return !!constraint && isComponentState(constraint, checker, node, renderState);
-  }
-  if (!isObject(type)) {
+  type = checker.getBaseConstraintOfType(type) ?? type;
+  if (!isObject(type, checker)) {
     return false;
   }
   if (!checker.getPropertyOfType(type, 'components')) {
     // Components such as Overflow clone children instead of exposing slots.
     return (
       !!renderState &&
-      isObject(renderState) &&
+      isObject(renderState, checker) &&
       checker.isTypeAssignableTo(type, renderState) &&
       checker.isTypeAssignableTo(renderState, type)
     );
   }
   const components = requiredProperty(type, 'components', checker, node);
-  if (!components || !isObject(components)) {
+  if (!components || !isObject(components, checker)) {
     return false;
   }
-  // ComponentState maps element types to slots; not every component has a root slot.
-  const slots = checker.getPropertiesOfType(components);
-  return (
-    slots.some(slot => {
-      const property = requiredProperty(type, slot.getName(), checker, node);
-      return property && isObject(property);
-    }) &&
-    slots.every(slot => {
-      const element = requiredProperty(components, slot.getName(), checker, node);
-      const property = checker.getPropertyOfType(type, slot.getName());
-      if (!element) {
+  const elementType = getReactElementType(checker);
+  let hasSlot = false;
+  for (const slot of checker.getPropertiesOfType(components)) {
+    const name = slot.getName();
+    const element = requiredProperty(components, name, checker, node);
+    if (!element || !elementType || !checker.isTypeAssignableTo(element, elementType)) {
+      return false;
+    }
+    const property = checker.getPropertyOfType(type, name);
+    if (name === 'root') {
+      const root = requiredProperty(type, name, checker, node);
+      if (!root || !isObject(root, checker)) {
         return false;
       }
+    } else {
       // Composed states can retain element-map entries for slots they omit.
       if (!property) {
-        return true;
+        continue;
       }
-      const slotType = checker.getTypeOfSymbolAtLocation(property, node);
-      return (
-        isObject(slotType) ||
-        (slotType.isUnion() &&
-          slotType.types.some(isObject) &&
-          slotType.types.every(part => !!(part.flags & ts.TypeFlags.Undefined) || isObject(part)))
+      const value = checker.getTypeOfSymbolAtLocation(property, node);
+      const slotType = checker.getBaseConstraintOfType(value) ?? value;
+      const parts = (slotType.isUnion() ? slotType.types : [slotType]).filter(
+        part => !(part.flags & ts.TypeFlags.Undefined),
       );
-    })
-  );
+      if (!parts.length || !parts.every(part => isObject(part, checker))) {
+        return false;
+      }
+    }
+    hasSlot = true;
+  }
+  return hasSlot;
+}
+
+function getReactElementType(checker: ts.TypeChecker): ts.Type | undefined {
+  if (!reactElementTypes.has(checker)) {
+    const global = checker.resolveName('React', undefined, ts.SymbolFlags.Namespace, false);
+    const react = global && (global.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(global) : global);
+    const element = react && checker.getExportsOfModule(react).find(symbol => symbol.getName() === 'ElementType');
+    let type: ts.Type | undefined;
+    function visit(node: ts.Node): void {
+      if (type) {
+        return;
+      }
+      if (
+        ts.isTypeReferenceNode(node) &&
+        !node.typeArguments &&
+        checker.getSymbolAtLocation(node.typeName) === element
+      ) {
+        // A real reference instantiates ElementType's defaults; its declaration retains free type parameters.
+        type = checker.getTypeFromTypeNode(node);
+      } else {
+        ts.forEachChild(node, visit);
+      }
+    }
+    for (const declaration of element?.declarations ?? []) {
+      visit(declaration.getSourceFile());
+    }
+    reactElementTypes.set(checker, type);
+  }
+  return reactElementTypes.get(checker);
 }
 
 function getRenderState(
@@ -222,7 +263,7 @@ function requiredProperty(type: ts.Type, name: string, checker: ts.TypeChecker, 
     return undefined;
   }
   const value = checker.getTypeOfSymbolAtLocation(property, node);
-  return isConcrete(value) ? value : undefined;
+  return isConcrete(value, checker) ? value : undefined;
 }
 
 function isGriffelClassHook(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
