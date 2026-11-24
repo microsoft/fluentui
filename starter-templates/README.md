@@ -21,6 +21,41 @@ starter-templates/
 
 ## Contributing
 
+### Integration coverage
+
+Run the Vite starter against this checkout's built package outputs:
+
+```bash
+yarn nx run stater-templates:test-integration
+```
+
+The Nx project is currently named `stater-templates`. Its explicit dependencies
+build `react-components` and its dependency graph before testing. The existing
+affected CI `test-integration` invocation selects this check when the starter,
+the shared project-test helpers, or those Fluent packages change.
+
+The check copies the actual Vite starter to an OS temporary directory, packs its
+declared in-repository dependency closure, and adds local tarball resolutions
+without adding dependencies to the starter manifest. A source-import check rejects
+undeclared dependencies even if they could be hoisted from a transitive package.
+React icons and other external dependencies remain registry dependencies.
+It uses the repository-pinned
+Yarn with an isolated cache and node_modules, verifies installed package outputs
+and tarball resolution, then runs the starter's `build` script (`tsc -b && vite build`)
+and checks its production assets. Temporary files are removed on success and failure.
+Results are not cached because external dependency ranges are resolved on each run.
+
+Runner regression tests and type checking:
+
+```bash
+yarn nx run stater-templates:test
+yarn nx run stater-templates:type-check
+```
+
+This is a TypeScript and production-bundler check, not Vitest/jsdom or browser
+coverage. When adding another in-repository starter dependency, keep the Nx
+`implicitDependencies` in sync so its build and affected selection are included.
+
 We welcome contributions! You can help by:
 
 - Improving existing templates

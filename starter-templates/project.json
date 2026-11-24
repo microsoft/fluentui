@@ -2,5 +2,37 @@
   "name": "stater-templates",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "tags": ["vNext", "tools"]
+  "tags": ["vNext", "tools"],
+  "implicitDependencies": ["react-components", "scripts-projects-test"],
+  "targets": {
+    "test-integration": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["^build"],
+      "options": {
+        "command": "node -r ./scripts/ts-node/src/register starter-templates/scripts/test-integration.ts"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest --config starter-templates/jest.config.js"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "dependsOn": [],
+      "options": {
+        "command": "tsc -p starter-templates/tsconfig.json"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "dependsOn": [],
+      "options": {
+        "cwd": "starter-templates",
+        "command": "eslint scripts"
+      }
+    }
+  }
 }
