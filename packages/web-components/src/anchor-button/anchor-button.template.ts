@@ -10,6 +10,7 @@ export function anchorTemplate<T extends AnchorButton>(options: AnchorOptions = 
   return html<T>`
     <template
       @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
+      @auxclick="${(x, c) => x.auxclickHandler(c.event as PointerEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
       ${startSlotTemplate(options)}
