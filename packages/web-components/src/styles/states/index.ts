@@ -76,6 +76,12 @@ export const hasMessageState = stateSelector('has-message');
 export const indeterminateState = stateSelector('indeterminate');
 
 /**
+ * Selector for the dirty indeterminate state.
+ * @internal
+ */
+export const dirtyIndeterminateState = stateSelector('dirty-indeterminate');
+
+/**
  * Selector for the `multiselect` state.
  * @public
  */
