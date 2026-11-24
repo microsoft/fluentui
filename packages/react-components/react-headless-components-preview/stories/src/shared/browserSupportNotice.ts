@@ -26,6 +26,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   SwatchPicker: ['focusgroup'],
   Tree: ['focusgroup'],
   List: ['focusgroup'],
+  DataGrid: ['focusgroup'],
 };
 
 const BROWSER_SUPPORT_DOCS_PATH = '?path=/docs/overview-browser-support--docs';
