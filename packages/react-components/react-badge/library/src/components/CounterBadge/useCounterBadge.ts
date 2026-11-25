@@ -37,16 +37,19 @@ export const useCounterBadgeBase_unstable = (
   ref: React.Ref<HTMLElement>,
 ): CounterBadgeBaseState => {
   const { showZero = false, overflowCount = 99, count = 0, dot = false, ...badgeProps } = props;
+  const badgeState = useBadgeBase_unstable(badgeProps, ref as React.Ref<HTMLDivElement>);
 
   const state: CounterBadgeBaseState = {
-    ...useBadgeBase_unstable(badgeProps, ref as React.Ref<HTMLDivElement>),
+    ...badgeState,
     showZero,
     count,
     dot,
+    isEmpty: !badgeState.root.children && badgeState.root.children !== 0,
   };
 
-  if ((count !== 0 || showZero) && !dot && !state.root.children) {
+  if ((count !== 0 || showZero) && !dot && state.isEmpty) {
     state.root.children = count > overflowCount ? `${overflowCount}+` : `${count}`;
+    state.isEmpty = false;
   }
 
   return state;

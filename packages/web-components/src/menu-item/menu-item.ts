@@ -159,6 +159,10 @@ export class MenuItem extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    if (!this.hasAttribute('tabindex')) {
+      this.tabIndex = 0;
+    }
+
     this.elementInternals.role = this.role ?? MenuItemRole.menuitem;
     this.elementInternals.ariaChecked = this.role !== MenuItemRole.menuitem ? `${!!this.checked}` : null;
 

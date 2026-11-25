@@ -15,6 +15,24 @@ test.describe('Tablist', () => {
     waitFor: [TabTagName],
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('role', 'tablist');
+    await expect(fastPage.element).toHaveAttribute('focusgroup', 'tablist inline block');
+  });
+
+  for (const focusgroup of ['none', '']) {
+    test(`should preserve authored host attributes when connected with focusgroup="${focusgroup}"`, async ({
+      fastPage,
+    }) => {
+      await fastPage.setTemplate({ attributes: { role: 'group', focusgroup } });
+
+      await expect(fastPage.element).toHaveAttribute('role', 'group');
+      await expect(fastPage.element).toHaveAttribute('focusgroup', focusgroup);
+    });
+  }
+
   test('should create with document.createElement()', async ({ page, fastPage, innerHTML }) => {
     await fastPage.setTemplate();
 
@@ -397,6 +415,29 @@ test.describe('Tablist', () => {
     await page.keyboard.press('ArrowRight');
 
     await expect(tabs.nth(2)).toBeFocused();
+  });
+
+  test('should remove a disabled tab from navigation when activeid changes', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator(TabTagName);
+    await fastPage.setTemplate();
+
+    await tabs.nth(1).focus();
+    await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true');
+    await tabs.nth(1).evaluate((node: Tab) => {
+      node.disabled = true;
+    });
+    await expect(tabs.nth(1)).toHaveAttribute('tabindex', '0');
+
+    await element.evaluate((node: Tablist) => {
+      node.activeid = node.tabs[2].id;
+    });
+    await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'false');
+    await expect(tabs.nth(1)).toHaveAttribute('tabindex', '-1');
+
+    await tabs.nth(2).focus();
+    await element.press('ArrowLeft');
+    await expect(tabs.first()).toBeFocused();
   });
 
   test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {

@@ -78,6 +78,30 @@ describe('Toaster', () => {
     expect(queryByText('second toast')).toBeNull();
   });
 
+  it('does not forward toaster options to toast container elements', () => {
+    let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
+    const toasterId = 'options-toaster';
+    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    try {
+      const Test = () => {
+        dispatchToast = useToastController(toasterId).dispatchToast;
+        return <Toaster toasterId={toasterId} limit={1} shortcuts={{ focus: () => false }} />;
+      };
+      const { getByRole } = render(<Test />);
+
+      act(() => {
+        dispatchToast('toast', { toastId: 'options-toast', timeout: -1 });
+      });
+
+      const toast = getByRole('listitem');
+      expect(toast).not.toHaveAttribute('limit');
+      expect(toast).not.toHaveAttribute('shortcuts');
+      expect(error).not.toHaveBeenCalled();
+    } finally {
+      error.mockRestore();
+    }
+  });
+
   it('forwards default toast options to toast state', () => {
     let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
     const onStatusChange = jest.fn();

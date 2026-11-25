@@ -9,7 +9,6 @@ import type { AnchorButton, AnchorOptions } from './anchor-button.js';
 export function anchorTemplate<T extends AnchorButton>(options: AnchorOptions = {}): ViewTemplate<T> {
   return html<T>`
     <template
-      tabindex="0"
       @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
