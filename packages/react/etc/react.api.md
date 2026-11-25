@@ -5644,6 +5644,7 @@ export interface IDropdownOption<T = any> extends ISelectableOption<T> {
 
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+    collapsedStateAnnouncement?: string;
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number | 'auto';
     // @deprecated (undocumented)

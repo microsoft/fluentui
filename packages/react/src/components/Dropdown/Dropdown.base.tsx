@@ -29,6 +29,7 @@ import { Icon } from '../../Icon';
 import { Label } from '../../Label';
 import { Panel } from '../../Panel';
 import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
+import { Announced } from '../../Announced';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
@@ -74,10 +75,12 @@ interface IDropdownState {
   /** Used to track whether focus is already within the Dropdown, for openOnFocus handling. */
   hasFocus: boolean;
   calloutRenderEdge?: RectangleEdge;
+  collapseAnnouncementId: number;
 }
 
 const DEFAULT_PROPS: Partial<IDropdownProps> = {
   options: [],
+  collapsedStateAnnouncement: 'Collapsed',
 };
 
 function useSelectedItemsState({
@@ -275,6 +278,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       isOpen: false,
       hasFocus: false,
       calloutRenderEdge: undefined,
+      collapseAnnouncementId: 0,
     };
   }
 
@@ -298,6 +302,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
       this._hasBeenPositioned = false;
+      this.setState(({ collapseAnnouncementId }) => ({ collapseAnnouncementId: collapseAnnouncementId + 1 }));
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -320,6 +325,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       theme,
       panelProps,
       calloutProps,
+      collapsedStateAnnouncement,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -328,7 +334,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       hoisted: { selectedIndices },
       responsiveMode,
     } = props;
-    const { isOpen, calloutRenderEdge, hasFocus } = this.state;
+    const { isOpen, calloutRenderEdge, hasFocus, collapseAnnouncementId } = this.state;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
@@ -418,6 +424,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             },
             this._onRenderContainer,
           )}
+        {!isOpen && collapseAnnouncementId > 0 && collapsedStateAnnouncement && (
+          <Announced key={collapseAnnouncementId} message={collapsedStateAnnouncement} />
+        )}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}

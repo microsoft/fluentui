@@ -224,6 +224,79 @@ describe('Dropdown', () => {
       expect(onDismissSpy).toHaveBeenCalledTimes(1);
     });
 
+    describe('collapsed state announcement', () => {
+      it('announces after a synchronous parent rerender and on repeated open and close cycles', () => {
+        jest.useFakeTimers();
+
+        const Parent = () => {
+          const [, setDismissCount] = React.useState(0);
+
+          return (
+            <Dropdown options={DEFAULT_OPTIONS} onDismiss={() => setDismissCount(dismissCount => dismissCount + 1)} />
+          );
+        };
+
+        const { getByRole, queryByRole } = render(<Parent />);
+        const dropdownRoot = getByRole('combobox');
+
+        expect(queryByRole('status')).toBeNull();
+
+        fireEvent.click(dropdownRoot);
+        fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+
+        const firstAnnouncement = getByRole('status');
+        expect(firstAnnouncement).toHaveTextContent('Collapsed');
+
+        fireEvent.click(dropdownRoot);
+        expect(queryByRole('status')).toBeNull();
+        fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+
+        const secondAnnouncement = getByRole('status');
+        expect(secondAnnouncement).toHaveTextContent('Collapsed');
+        expect(secondAnnouncement).not.toBe(firstAnnouncement);
+      });
+
+      it('supports a custom localized announcement', () => {
+        jest.useFakeTimers();
+
+        const { getByRole } = render(
+          <Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Lista contraida" />,
+        );
+
+        fireEvent.click(getByRole('combobox'));
+        fireEvent.keyDown(getByRole('combobox'), { which: KeyCodes.escape });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+
+        expect(getByRole('status')).toHaveTextContent('Lista contraida');
+      });
+
+      it('can disable the announcement', () => {
+        jest.useFakeTimers();
+
+        const { getByRole, queryByRole } = render(<Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="" />);
+
+        fireEvent.click(getByRole('combobox'));
+        fireEvent.keyDown(getByRole('combobox'), { which: KeyCodes.escape });
+
+        act(() => {
+          jest.runOnlyPendingTimers();
+        });
+
+        expect(queryByRole('status')).toBeNull();
+      });
+    });
+
     it('sets the selected item even when key is number 0', () => {
       const options = [
         { key: 0, text: 'item1' },
