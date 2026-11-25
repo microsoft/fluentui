@@ -158,7 +158,7 @@ const useInputBaseClassName = makeResetStyles({
   ':enabled:checked:not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
+      color: tokens.colorNeutralForegroundOnBrand,
       borderColor: tokens.colorTransparentStroke,
     },
 

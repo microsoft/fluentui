@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Use colorNeutralForegroundOnBrand for checked indicators on brand backgrounds.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "dmytrokirpa@microsoft.com"
+}

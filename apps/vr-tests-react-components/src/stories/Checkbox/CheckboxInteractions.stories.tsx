@@ -3,6 +3,8 @@ import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import type { Meta } from '@storybook/react-webpack5';
 import { Checkbox } from '@fluentui/react-checkbox';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {
@@ -29,6 +31,20 @@ export const UncheckedRTL = getStoryVariant(Unchecked, RTL);
 
 export const Checked = () => <Checkbox checked label="Checked" />;
 Checked.storyName = 'checked';
+
+export const CheckedWithCustomBrand = () => (
+  <FluentProvider
+    theme={{
+      colorCompoundBrandBackground: webLightTheme.colorPaletteYellowBackground3,
+      colorCompoundBrandBackgroundHover: webLightTheme.colorPaletteYellowBackground3,
+      colorCompoundBrandBackgroundPressed: webLightTheme.colorPaletteYellowBackground3,
+      colorNeutralForegroundOnBrand: webLightTheme.colorNeutralForeground1,
+      colorNeutralForegroundInverted: webLightTheme.colorNeutralForegroundInverted,
+    }}
+  >
+    <Checkbox checked label="Checked with custom brand" />
+  </FluentProvider>
+);
 
 export const Mixed = () => <Checkbox checked="mixed" label="Mixed" />;
 Mixed.storyName = 'mixed';
