@@ -25,6 +25,16 @@ export function getPlacementString(position: Position, align: Alignment): Positi
 
 export { Position }
 
+// @public
+export type PositioningEngine = (options: PositioningProps_2) => PositioningEngineReturn;
+
+// @public
+export type PositioningEngineReturn = {
+    targetRef: React_2.Ref<HTMLElement>;
+    containerRef: React_2.Ref<HTMLElement>;
+    arrowRef?: React_2.Ref<HTMLElement>;
+};
+
 export { PositioningImperativeRef }
 
 // @public (undocumented)
@@ -36,8 +46,12 @@ export type PositioningReturn = {
     containerRef: React_2.RefCallback<HTMLElement>;
 };
 
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+// @public
+export type PositioningShorthand = PositioningShorthandValue | (PositioningProps & {
+    engine?: 'default';
+}) | (PositioningProps_2 & {
+    engine: PositioningEngine;
+});
 
 export { PositioningShorthandValue }
 
@@ -52,8 +66,10 @@ export const POSITIONS: {
 // @public (undocumented)
 export const resolvePositioningShorthand: ResolvePositioningShorthand;
 
-// @public (undocumented)
-export function usePositioning(options: PositioningProps): PositioningReturn;
+// @public
+export function usePositioning(options: PositioningProps & {
+    engine?: 'default' | PositioningEngine;
+}): PositioningReturn;
 
 // (No @packageDocumentation comment for this package)
 

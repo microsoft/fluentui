@@ -1,6 +1,10 @@
-Headless Fluent components that make use of positioning can all be configured in the same way. In this preview package, positioning currently applies to:
+Headless Fluent components that make use of positioning can all be configured in the same way. In this preview package, positioning applies to:
 
-- Popover
+- Popover (and the components built on it, such as InfoLabel, TeachingPopover and AvatarGroupPopover)
+- Menu
+- Tooltip
+- Dropdown and Combobox
+- TagPicker
 
 Components that have slots which are positioned will always expose a `positioning` prop where the positioning of the slot can be configured.
 

@@ -2,9 +2,12 @@ import * as React from 'react';
 import type { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
 
 /**
- * Subset of `PositioningProps` that the headless preview's `usePositioning` actually consumes.
- * Props not destructured by the hook (e.g. `autoSize`, `flipBoundary`, `useTransform`) are excluded
- * so Storybook's auto-generated args table only advertises what is supported.
+ * Options the default CSS anchor engine honours.
+ *
+ * The remaining canonical options (`autoSize`, `flipBoundary`, `overflowBoundary`, `useTransform`
+ * and friends) require a JavaScript engine — see the Engine example — and are excluded here so the
+ * auto-generated args table describes the default configuration rather than every option that could
+ * ever be legal.
  */
 type SupportedPositioningProps = Omit<
   PositioningProps,

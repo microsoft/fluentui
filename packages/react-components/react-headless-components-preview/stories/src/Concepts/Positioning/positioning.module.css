@@ -338,3 +338,35 @@
   font-size: 11px;
   color: var(--text-muted);
 }
+
+/* ===== Engine ===== */
+
+/*
+ * A scrolling region used as a `flipBoundary`. Sized so a surface opening below the trigger
+ * still fits in the viewport but not inside this box, which is what makes the difference between
+ * viewport-relative and boundary-relative collision detection visible.
+ */
+.boundary {
+  position: relative;
+  height: 220px;
+  overflow: auto;
+  border: var(--stroke-thin) dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  padding: var(--space-4);
+}
+
+.boundaryFiller {
+  height: 150px;
+}
+
+.surfaceEngine {
+  display: block;
+  width: 220px;
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-2);
+  padding: var(--space-3);
+  font-size: 13px;
+}
