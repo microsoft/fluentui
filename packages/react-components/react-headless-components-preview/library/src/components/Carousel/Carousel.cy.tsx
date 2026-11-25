@@ -14,8 +14,19 @@ const transition: CarouselTransition = ({ incoming, outgoing }) => [
   outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100 }),
 ];
 
+const setReducedMotionPreference = (value?: 'no-preference' | 'reduce') =>
+  cy.then(() =>
+    Cypress.automation('remote:debugger:protocol', {
+      command: 'Emulation.setEmulatedMedia',
+      params: { features: value ? [{ name: 'prefers-reduced-motion', value }] : [] },
+    }),
+  );
+
 describe('Carousel browser behavior', () => {
   let styles: string;
+  beforeEach(() => setReducedMotionPreference('no-preference'));
+  afterEach(() => setReducedMotionPreference());
+
   before(() => {
     const storiesRoot = Cypress.spec.absolute.replace(/[/\\]library[/\\]src[/\\].*$/, '/stories');
     cy.readFile(`${storiesRoot}/.storybook/tokens.css`).then(tokens => {
@@ -63,7 +74,7 @@ describe('Carousel browser behavior', () => {
     cy.get('[data-carousel-action="next"]').should('be.focused').realPress('Enter');
     cy.get('[aria-busy="false"]').should('exist');
     cy.get('[data-carousel-action="next"]').should('be.focused').realPress('Enter');
-    cy.get('[data-carousel-action="next"]').should('have.attr', 'aria-disabled', 'true');
+    cy.get('[data-carousel-button="next"]').should('have.attr', 'hidden').and('have.attr', 'inert');
     cy.get('[aria-label="Slide 5 of 5"]').should('be.focused').realPress('Tab');
     cy.contains('button', 'Action 5').should('be.focused').realPress('Tab');
     cy.get('[aria-selected="true"]').should('be.focused').realPress('Home');
