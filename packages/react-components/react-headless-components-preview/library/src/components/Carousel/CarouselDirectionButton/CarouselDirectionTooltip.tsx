@@ -58,23 +58,6 @@ export const CarouselDirectionTooltip = (props: {
     },
   );
   useIsomorphicLayoutEffect(() => {
-    if (!targetDocument || !visible || props.unavailable) {
-      return;
-    }
-    const dismiss = (event: KeyboardEvent) => {
-      const element = tooltip.current;
-      if (event.key === 'Escape' && !event.defaultPrevented && element?.matches(':popover-open')) {
-        event.preventDefault();
-        event.stopPropagation();
-        // Unsupported hint popovers behave as manual, without native Escape dismissal.
-        // Let Tooltip's native-close handler also cancel its pending hover timer.
-        element.hidePopover();
-      }
-    };
-    targetDocument.addEventListener('keydown', dismiss, true);
-    return () => targetDocument.removeEventListener('keydown', dismiss, true);
-  }, [targetDocument, visible, props.unavailable]);
-  useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
     const element = tooltip.current;
     const button = trigger.current;

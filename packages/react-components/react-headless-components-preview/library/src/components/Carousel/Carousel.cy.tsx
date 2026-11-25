@@ -8,6 +8,8 @@ import { CarouselPrevious } from './CarouselPrevious';
 import { CarouselNext } from './CarouselNext';
 import { CarouselNav } from './CarouselNav';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
+import { CarouselDirectionTooltip } from './CarouselDirectionButton/CarouselDirectionTooltip';
+import { Tooltip } from '../Tooltip';
 
 const transition: CarouselTransition = ({ incoming, outgoing }) => [
   incoming.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200 }),
@@ -137,6 +139,94 @@ describe('Carousel browser behavior', () => {
     cy.get('[data-carousel-action="next"]').should('have.attr', 'aria-labelledby', 'lessons-next-label');
     cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-label');
     cy.get('[data-carousel-action="next"]').should('not.have.attr', 'aria-describedby');
+  });
+
+  it('dismisses the newest tooltip before the focused carousel tooltip', () => {
+    let showNewer: () => void;
+    const Tooltips = () => {
+      const [visible, setVisible] = React.useState(false);
+      showNewer = () => setVisible(true);
+      return (
+        <>
+          <CarouselDirectionTooltip
+            content={{ children: 'Older', popover: 'manual' }}
+            position="after"
+            unavailable={false}
+          >
+            <button>Arrow</button>
+          </CarouselDirectionTooltip>
+          <Tooltip
+            relationship="description"
+            content={{ children: 'Newer', popover: 'manual' }}
+            visible={visible}
+            onVisibleChange={(_, data) => setVisible(data.visible)}
+          >
+            <button>Other</button>
+          </Tooltip>
+        </>
+      );
+    };
+    mount(<Tooltips />);
+    cy.contains('button', 'Arrow').focus();
+    cy.contains('[role="tooltip"]', 'Older').should('be.visible');
+    cy.then(() => showNewer());
+    cy.contains('[role="tooltip"]', 'Newer').should('be.visible');
+    cy.contains('button', 'Arrow').realPress('Escape');
+    cy.contains('[role="tooltip"]', 'Newer').should('not.be.visible');
+    cy.contains('[role="tooltip"]', 'Older').should('be.visible');
+    cy.contains('button', 'Arrow').realPress('Escape');
+    cy.contains('[role="tooltip"]', 'Older').should('not.exist');
+    cy.contains('button', 'Arrow').should('be.focused');
+  });
+
+  [
+    {
+      name: 'a hidden card',
+      slides: [
+        <CarouselCard key="hidden" hidden>
+          Hidden
+        </CarouselCard>,
+        <CarouselCard key="visible">Visible</CarouselCard>,
+      ],
+      expected: '[aria-label="Slide 4 of 4"]',
+    },
+    {
+      name: 'a hidden button',
+      slides: [
+        <div key="buttons">
+          <button hidden>Hidden</button>
+          <button>Available</button>
+        </div>,
+        <div key="last">Last</div>,
+      ],
+      expected: 'button:contains("Available")',
+    },
+    {
+      name: 'all hidden candidates',
+      slides: [
+        <div key="buttons">
+          <button hidden>Hidden</button>
+        </div>,
+        <div key="last">Last</div>,
+      ],
+      expected: '[aria-label="Page 2 of 2"]',
+    },
+  ].forEach(({ name, slides, expected }) => {
+    it(`recovers boundary focus past ${name}`, () => {
+      mount(
+        <Carousel aria-label="Focus recovery" groupSize={2}>
+          <CarouselPrevious />
+          <CarouselViewport>
+            <div>First</div>
+            <div>Second</div>
+            {slides}
+          </CarouselViewport>
+          <CarouselNext />
+        </Carousel>,
+      );
+      cy.get('[data-carousel-action="next"]').focus().realPress('Enter');
+      cy.get(expected).should('be.focused');
+    });
   });
 
   it('keeps playback first, starts paused, and stops when focus enters content', () => {

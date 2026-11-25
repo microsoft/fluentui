@@ -31,11 +31,15 @@ const TABBABLE =
  * group itself. The group gets a temporary `tabindex="-1"` that is removed once focus leaves it.
  */
 const focusPage = (page: HTMLElement) => {
-  const target =
-    page.querySelector<HTMLElement>('[aria-roledescription="slide"]') ?? page.querySelector<HTMLElement>(TABBABLE);
-  if (target) {
+  const candidates = [
+    ...Array.from(page.querySelectorAll<HTMLElement>('[aria-roledescription="slide"]')),
+    ...Array.from(page.querySelectorAll<HTMLElement>(TABBABLE)),
+  ];
+  for (const target of candidates) {
     target.focus({ preventScroll: true });
-    return;
+    if (getActiveElement(target) === target) {
+      return;
+    }
   }
   if (!page.hasAttribute('tabindex')) {
     page.setAttribute('tabindex', '-1');
