@@ -10,7 +10,8 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
-import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { TableProps, TableRowProps, TableColumnDefinition } from '@fluentui/react-table';
 import {
   Table,
   TableHeader,
@@ -21,11 +22,8 @@ import {
   TableCellLayout,
   TableSelectionCell,
   TableCellActions,
-  TableProps,
-  TableRowProps,
   useTableColumnSizing_unstable,
   useTableFeatures,
-  TableColumnDefinition,
   createTableColumn,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
@@ -602,6 +600,29 @@ export const SortableHeaders: React.FC<SharedVrTestArgs> = ({ noNativeElements }
         </TableRow>
       ))}
     </TableBody>
+  </Table>
+);
+
+/**
+ * Sortable header cells with `justifyContent` set on the cell.
+ * The header button follows the cell's justification.
+ */
+export const SortableHeadersJustifyContent = ({ noNativeElements }: SharedVrTestArgs): JSXElement => (
+  <Table noNativeElements={noNativeElements} sortable>
+    <TableHeader>
+      <TableRow>
+        <TableHeaderCell sortDirection="ascending">Default</TableHeaderCell>
+        <TableHeaderCell sortDirection="ascending" style={{ justifyContent: 'center' }}>
+          Center
+        </TableHeaderCell>
+        <TableHeaderCell sortDirection="ascending" style={{ justifyContent: 'space-between' }}>
+          Space between
+        </TableHeaderCell>
+        <TableHeaderCell sortDirection="ascending" style={{ justifyContent: 'flex-end' }}>
+          End
+        </TableHeaderCell>
+      </TableRow>
+    </TableHeader>
   </Table>
 );
 
