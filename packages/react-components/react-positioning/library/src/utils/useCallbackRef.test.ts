@@ -44,18 +44,4 @@ describe('useCallbackRef', () => {
     // Assert
     expect(callback).toHaveBeenCalledTimes(0);
   });
-
-  it('should skip initial resolve if `skipInitialResolve` is true', () => {
-    // Arrange
-    const callback = jest.fn();
-
-    // Act
-    renderHook(() => {
-      const ref = useCallbackRef<object>(null, callback, true);
-      ref.current = {};
-    });
-
-    // Assert
-    expect(callback).toHaveBeenCalledTimes(0);
-  });
 });

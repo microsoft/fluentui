@@ -2,6 +2,100 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "9.11.0",
+      "tag": "@fluentui/react-tag-picker_v9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "43711362+paolo-aliprandi@users.noreply.github.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "f401032885b6ef41fd18720ad3c1c2225c310387",
+            "comment": "fix: inherit TagPicker disabled state in the shared button trigger"
+          }
+        ],
+        "minor": [
+          {
+            "author": "43711362+paolo-aliprandi@users.noreply.github.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "41c06a31611d4a0f6cf7153d71898957e6c497e3",
+            "comment": "Add click-trigger timing to the TagPickerControl base hook for native popover composition."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.17.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.22"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.5.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.23.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.9.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 16:50:23 GMT",
       "version": "9.10.8",
       "tag": "@fluentui/react-tag-picker_v9.10.8",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-<!-- This log was last generated on Tue, 24 Nov 2026 04:08:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 25 Nov 2026 04:08:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [3.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.4)
+
+Wed, 25 Nov 2026 04:08:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.2.3..@fluentui/web-components_v3.2.4)
+
+### Patches
+
+- fix: remove disabled tabs from native focusgroup navigation when deselected ([PR #37169](https://github.com/microsoft/fluentui/pull/37169) by paulmardling@microsoft.com)
 
 ## [3.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.2.3)
 
