@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-<!-- This log was last generated on Tue, 10 Nov 2026 16:38:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:45:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.5.0)
+
+Tue, 24 Nov 2026 12:45:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.4.1..@fluentui/react-headless-components-preview_v0.5.0)
+
+### Minor changes
+
+- BREAKING: rewrite headless Calendar as a single component with one roving-focus grid engine; remove CalendarDay, CalendarMonth, CalendarYear and CalendarProvider, replace getCellProps/getRowProps/getWeekdayCellProps with render functions, and reduce Calendar and DatePicker bundle size ([PR #37131](https://github.com/microsoft/fluentui/pull/37131) by dmytrokirpa@microsoft.com)
+- feat: support inherited disabled state in TreeItem ([PR #37184](https://github.com/microsoft/fluentui/pull/37184) by 43711362+paolo-aliprandi@users.noreply.github.com)
+
+### Patches
+
+- feat: align headless TimePicker with the Fluent TimePicker spec ([PR #37182](https://github.com/microsoft/fluentui/pull/37182) by vgenaev@gmail.com)
+- chore: expand bundle-size fixtures to all public subpaths ([PR #37156](https://github.com/microsoft/fluentui/pull/37156) by dmytrokirpa@microsoft.com)
+- fix: expose TagPicker multiselection and option selection to assistive technology while preserving consumer checked-only selection and exposing data-selected/data-checked styling attributes ([PR #37179](https://github.com/microsoft/fluentui/pull/37179) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- fix: Switch data-checked follows uncontrolled state ([PR #37162](https://github.com/microsoft/fluentui/pull/37162) by vgenaev@gmail.com)
+- fix: expose missing disabled, invalid, readonly and required state attributes ([PR #37203](https://github.com/microsoft/fluentui/pull/37203) by vgenaev@gmail.com)
+- chore: remove unused dependency on @fluentui/react-dialog ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- Keep TagPicker native popovers open after control clicks, preserve capture-phase gesture cancellation, and ignore disabled control gestures. ([PR #37178](https://github.com/microsoft/fluentui/pull/37178) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- refactor: drop getIntrinsicElementProps and explicitly destructure custom props so they are not forwarded to native elements ([PR #37197](https://github.com/microsoft/fluentui/pull/37197) by dmytrokirpa@microsoft.com)
+- fix: keep Escape to the nested overlay, close only the Tooltip on Escape, also inside a Dialog, and keep overlays mounted while they animate out ([PR #37018](https://github.com/microsoft/fluentui/pull/37018) by vgenaev@gmail.com)
+- feat: add headless TimePicker ([PR #36814](https://github.com/microsoft/fluentui/pull/36814) by vgenaev@gmail.com)
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.4.1)
 

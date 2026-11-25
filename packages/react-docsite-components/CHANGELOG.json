@@ -2,6 +2,31 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 01:39:29 GMT",
+      "version": "8.16.11",
+      "tag": "@fluentui/react-docsite-components_v8.16.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "6220acfb029227ae0ef35adc5338b4d160e44d81",
+            "comment": "fix: separate platform button labels and icons and allow room for longer platform names"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.125.11"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.8.15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2026 01:04:37 GMT",
       "version": "8.16.10",
       "tag": "@fluentui/react-docsite-components_v8.16.10",
