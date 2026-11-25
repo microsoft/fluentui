@@ -1,4 +1,4 @@
-import { TableColumnDefinition, ColumnWidthState, TableColumnId, TableColumnSizingOptions } from '../hooks';
+import type { TableColumnDefinition, ColumnWidthState, TableColumnId, TableColumnSizingOptions } from '../hooks';
 
 const DEFAULT_WIDTH = 150;
 const DEFAULT_MIN_WIDTH = 100;

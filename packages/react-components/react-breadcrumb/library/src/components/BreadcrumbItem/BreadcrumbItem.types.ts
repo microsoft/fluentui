@@ -14,3 +14,13 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<Bre
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size'>>;
+
+/**
+ * BreadcrumbItem base props (same as BreadcrumbItemProps since size is passed through context, not as a design prop)
+ */
+export type BreadcrumbItemBaseProps = Omit<BreadcrumbItemProps, 'size'>;
+
+/**
+ * BreadcrumbItem base state (excludes size, which is a design prop injected from context)
+ */
+export type BreadcrumbItemBaseState = Omit<BreadcrumbItemState, 'size'>;

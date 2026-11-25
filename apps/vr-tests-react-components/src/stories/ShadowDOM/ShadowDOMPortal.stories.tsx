@@ -1,7 +1,7 @@
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 import * as React from 'react';
-import type { StoryFn } from '@storybook/react';
+import type { StoryFn } from '@storybook/react-webpack5';
 
 import { ShadowRoot } from './utils';
 import { Steps } from 'storywright';

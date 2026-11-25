@@ -4,7 +4,12 @@ import {
   RULE_NAME as consistentCallbackTypeName,
   rule as consistentCallbackType,
 } from './rules/consistent-callback-type';
-import { RULE_NAME as enforceUseClientName, rule as enforceUseClient } from './rules/enforce-use-client';
+import { RULE_NAME as baseHookSignatureName, rule as baseHookSignature } from './rules/base-hook-signature';
+import {
+  RULE_NAME as baseHookNoForbiddenRuntimeName,
+  rule as baseHookNoForbiddenRuntime,
+} from './rules/base-hook-no-forbidden-runtime';
+import { RULE_NAME as preferDirectReexportName, rule as preferDirectReexport } from './rules/prefer-direct-reexport';
 
 /**
  * Import your custom workspace rules at the top of this file.
@@ -33,8 +38,10 @@ module.exports = {
    */
   rules: {
     [consistentCallbackTypeName]: consistentCallbackType,
+    [baseHookSignatureName]: baseHookSignature,
+    [baseHookNoForbiddenRuntimeName]: baseHookNoForbiddenRuntime,
+    [preferDirectReexportName]: preferDirectReexport,
     [noRestrictedGlobalsName]: noRestrictedGlobals,
     [noMissingJsxPragmaName]: noMissingJsxPragma,
-    [enforceUseClientName]: enforceUseClient,
   },
 };

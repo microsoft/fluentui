@@ -1,0 +1,10 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: block;
+}
+
+:host {
+  outline: none;
+}

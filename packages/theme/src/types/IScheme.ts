@@ -6,11 +6,12 @@ import type { ISpacing } from './ISpacing';
 import type { IEffects } from './IEffects';
 
 /**
- * @internal
  * Predefined scheme identifiers.
  * Schemes are is still in an experimental phase.
  * This interface's naming and values are not finalized and are subject to change.
  * {@docCategory IScheme}
+ *
+ * @internal
  */
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
@@ -35,10 +36,11 @@ export interface IScheme {
   disableGlobalClassNames: boolean;
 
   /**
-   * @internal
    * The spacing property is still in an experimental phase. The intent is to have it
    * be used for padding and margin sizes in a future release, but it is still undergoing review.
    * Avoid using it until it is finalized.
+   *
+   * @internal
    */
   spacing: ISpacing;
 

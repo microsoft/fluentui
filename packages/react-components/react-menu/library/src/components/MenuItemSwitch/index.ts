@@ -1,7 +1,7 @@
 export { MenuItemSwitch } from './MenuItemSwitch';
 export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
 export { renderMenuItemSwitch_unstable } from './renderMenuItemSwitch';
-export { useMenuItemSwitch_unstable } from './useMenuItemSwitch';
+export { useMenuItemSwitch_unstable, useMenuItemSwitchBase_unstable } from './useMenuItemSwitch';
 export {
   circleFilledClassName,
   menuItemSwitchClassNames,

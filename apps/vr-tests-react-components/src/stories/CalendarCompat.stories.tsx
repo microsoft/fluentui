@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
@@ -7,10 +7,10 @@ import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@flue
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
-const Calendar = (props: CalendarProps) => {
-  const today = new Date('3/15/2023');
+const referenceDate = new Date(2023, 2, 15);
 
-  return <CalendarBase today={today} {...props} />;
+const Calendar = (props: CalendarProps) => {
+  return <CalendarBase today={referenceDate} value={referenceDate} {...props} />;
 };
 
 export default {

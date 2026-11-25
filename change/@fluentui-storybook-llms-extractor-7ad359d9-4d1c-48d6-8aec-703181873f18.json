@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to eslint flat config",
-  "packageName": "@fluentui/storybook-llms-extractor",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

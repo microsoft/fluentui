@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { CompoundButton as FluentCompoundButton } from './compound-button.js';
 import { CompoundButtonAppearance, CompoundButtonShape, CompoundButtonSize } from './compound-button.options.js';
 
 type Story = StoryObj<FluentCompoundButton>;
+const { argTypes } = getStorybookHelpers<FluentCompoundButton>('fluent-compound-button');
 
 const storyTemplate = html<StoryArgs<FluentCompoundButton>>`
   <fluent-compound-button
@@ -28,73 +30,7 @@ export default {
     slottedContent: () => 'Button',
     descriptionSlottedContent: () => html`<span slot="description">Secondary content</span>`,
   },
-  argTypes: {
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the button.',
-      options: ['', ...Object.values(CompoundButtonAppearance)],
-      mapping: { '': null, ...CompoundButtonAppearance },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonAppearance).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'The shape of the button.',
-      options: ['', ...Object.values(CompoundButtonShape)],
-      mapping: { '': null, ...CompoundButtonShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonShape).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button.',
-      options: ['', ...Object.values(CompoundButtonSize)],
-      mapping: { '': null, ...CompoundButtonSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonSize).join('|') },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: "Sets the button's disabled state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabledFocusable: {
-      control: 'boolean',
-      description: 'Indicates the button is focusable while disabled.',
-      name: 'disabled-focusable',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    descriptionSlottedContent: {
-      control: false,
-      description: 'The description slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentCompoundButton>;
 
 export const Appearance: Story = {

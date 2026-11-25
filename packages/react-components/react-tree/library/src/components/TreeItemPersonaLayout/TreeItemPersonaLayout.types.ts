@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AvatarContextValue, AvatarSize } from '@fluentui/react-avatar';
-import { ButtonContextValue } from '@fluentui/react-button';
-import { TreeItemLayoutSlots } from '../TreeItemLayout/TreeItemLayout.types';
+import type { ButtonContextValue } from '@fluentui/react-button';
+import type { TreeItemLayoutSlots } from '../TreeItemLayout/TreeItemLayout.types';
 
 export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;

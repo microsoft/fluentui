@@ -1,8 +1,133 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.6)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.5)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.4)
+
+Tue, 22 Sep 2026 11:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.3..@fluentui/react-motion_v9.16.4)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.2..@fluentui/react-motion_v9.16.3)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+
+## [9.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.2)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.1..@fluentui/react-motion_v9.16.2)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.1)
+
+Wed, 24 Jun 2026 11:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.16.0..@fluentui/react-motion_v9.16.1)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.0)
+
+Tue, 26 May 2026 09:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.15.0..@fluentui/react-motion_v9.16.0)
+
+### Minor changes
+
+- feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.15.0)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.14.0..@fluentui/react-motion_v9.15.0)
+
+### Minor changes
+
+- feat: expose motion params as direct props on motion slot types ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- fix(react-motion): apply MotionComponent type to presence definition ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.14.0)
+
+Mon, 30 Mar 2026 14:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.13.0..@fluentui/react-motion_v9.14.0)
+
+### Minor changes
+
+- feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35888](https://github.com/microsoft/fluentui/pull/35888) by robertpenner@microsoft.com)
+- feat: add motionSlot() as parallel to presenceMotionSlot() ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.13.0)
+
+Tue, 03 Mar 2026 09:43:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.12.0..@fluentui/react-motion_v9.13.0)
+
+### Minor changes
+
+- fix: make children optional in MotionRefForwarder to resolve type issue ([PR #35763](https://github.com/microsoft/fluentui/pull/35763) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix: add MotionRefForwarderReset to prevent context leaking to descendants ([PR #35807](https://github.com/microsoft/fluentui/pull/35807) by olfedias@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.12.0)
+
+Wed, 25 Feb 2026 13:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.11.6..@fluentui/react-motion_v9.12.0)
+
+### Minor changes
+
+- feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding ([PR #35774](https://github.com/microsoft/fluentui/pull/35774) by robertpenner@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.6)
+
+Thu, 22 Jan 2026 17:06:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.11.5..@fluentui/react-motion_v9.11.6)
+
+### Patches
+
+- fix: cleanup animation handle on unmounted component ([PR #35617](https://github.com/microsoft/fluentui/pull/35617) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.5)
 

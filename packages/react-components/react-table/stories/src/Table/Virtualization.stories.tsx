@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+import type { ListChildComponentProps } from 'react-window';
+import { FixedSizeList as List } from 'react-window';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableRowData as RowStateBase } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -12,7 +13,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   useApplyScrollbarWidth,
   TableBody,
@@ -26,7 +26,6 @@ import {
   createTableColumn,
   useTableFeatures,
   useTableSelection,
-  TableRowData as RowStateBase,
 } from '@fluentui/react-components';
 
 type Item = {

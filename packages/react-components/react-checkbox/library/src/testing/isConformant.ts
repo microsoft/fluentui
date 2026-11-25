@@ -1,4 +1,5 @@
-import { isConformant as baseIsConformant, IsConformantOptions, TestObject } from '@fluentui/react-conformance';
+import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import griffelTests from '@fluentui/react-conformance-griffel';
 
 export function isConformant<TProps = {}>(

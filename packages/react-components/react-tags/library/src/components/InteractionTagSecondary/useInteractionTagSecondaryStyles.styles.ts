@@ -212,14 +212,13 @@ const useRootDisabledStyles = makeStyles({
 export const useInteractionTagSecondaryStyles_unstable = (
   state: InteractionTagSecondaryState,
 ): InteractionTagSecondaryState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
   const { disabled, selected, shape, size, appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
     rootBaseClassName,

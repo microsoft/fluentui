@@ -1,11 +1,14 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
+import dedent from 'dedent';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from '../dropdown/dropdown.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 
 type Story = StoryObj<FluentDropdown>;
+const { argTypes } = getStorybookHelpers<FluentDropdown>('fluent-dropdown');
 
 const optionTemplate = html<StoryArgs<FluentDropdownOption>>` <fluent-option
   ?disabled="${story => story.disabled}"
@@ -20,6 +23,7 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-dropdown
     appearance="${story => story.appearance}"
     ?disabled="${story => story.disabled}"
+    ?required="${story => story.required}"
     ?multiple="${story => story.multiple}"
     size="${story => story.size}"
     id="${story => story.id}"
@@ -38,13 +42,19 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
   >
 `;
 
+// The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
+// To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+
 export default {
   title: 'Components/Combobox',
   parameters: {
     docs: {
       description: {
-        component: `The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
-        To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.`,
+        component: dedent`
+          The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
+
+          To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.
+        `,
       },
     },
   },
@@ -53,30 +63,7 @@ export default {
     type: DropdownType.combobox,
   },
   argTypes: {
-    appearance: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownAppearance)],
-      table: { category: 'attributes' },
-    },
-    type: {
-      control: 'radio',
-      options: Object.values(DropdownType),
-      table: { category: 'attributes' },
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    multiple: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    size: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownSize)],
-      table: { category: 'attributes' },
-    },
-    slottedContent: { table: { disable: true } },
+    ...argTypes,
     slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;
@@ -373,6 +360,28 @@ export const ManyOptions: Story = {
       { slottedContent: () => 'Zambia' },
       { slottedContent: () => 'Zimbabwe' },
     ],
+  },
+};
+
+export const Required: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.dropdown.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+    >
+      ${storyTemplate}
+      <br />
+      <div>
+        <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}>Reset</fluent-button>
+      </div>
+      <span id="success-message" hidden ${ref('successMessage')}>Form submitted successfully!</span>
+    </form>
+  `),
+  args: {
+    ...Default.args,
+    name: 'fruit',
+    required: true,
   },
 };
 

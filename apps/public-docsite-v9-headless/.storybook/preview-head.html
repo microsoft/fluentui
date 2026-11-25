@@ -1,0 +1,24 @@
+<!--
+  Story canvas head.
+
+  Design tokens ({@link ../../../packages/react-components/react-headless-components-preview/stories/.storybook/tokens.css}) are imported from `preview.js` so they
+  reach the iframe via webpack. This file holds raw <link> / <style> tags that
+  must be present in the iframe document head before any story renders.
+-->
+
+<!--
+  Segoe UI from Microsoft's static font CDN — same set as `manager-head.html`.
+  Story canvases declare `font-family: 'Segoe UI', system-ui` via the design
+  tokens, so loading the webfont here makes them render Segoe on every OS.
+-->
+<link rel="preconnect" href="https://c.s-microsoft.com" crossorigin />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.css" />
+
+<style>
+  :root {
+    interpolate-size: allow-keywords;
+  }
+</style>

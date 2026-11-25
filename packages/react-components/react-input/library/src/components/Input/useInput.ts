@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { InputProps, InputState } from './Input.types';
+import type * as React from 'react';
+import { useFieldControlProps_unstable, useFieldContext_unstable } from '@fluentui/react-field';
+import { useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+import type { InputBaseProps, InputBaseState, InputProps, InputState } from './Input.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
@@ -16,11 +16,14 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const overrides = useOverrides();
+  const fieldContext = useFieldContext_unstable();
 
-  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
+  const {
+    size = fieldContext?.size ?? 'medium',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    ...baseProps
+  } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -33,39 +36,67 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     );
   }
 
+  const state = useInputBase_unstable(baseProps, ref);
+
+  return {
+    size,
+    appearance,
+    ...state,
+  };
+};
+
+/**
+ * Base hook for Input component, which manages state related to controlled/uncontrolled value,
+ * slot structure, and onChange handling. This hook excludes design-specific props (appearance, size).
+ *
+ * @param props - User provided props to the Input component.
+ * @param ref - User provided ref to be passed to the Input component.
+ */
+export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTMLInputElement>): InputBaseState => {
+  const fieldControlProps = useFieldControlProps_unstable(props, {
+    supportsLabelFor: true,
+    supportsRequired: true,
+  });
+
+  // `className` and `style` go to the root slot, all other native props go to the primary `input` slot.
+  const {
+    className,
+    style,
+    root,
+    input,
+    contentBefore,
+    contentAfter,
+    value: valueFromProps,
+    defaultValue,
+    onChange,
+    ...inputProps
+  } = fieldControlProps;
+
   const [value, setValue] = useControllableState({
-    state: props.value,
-    defaultState: props.defaultValue,
+    state: valueFromProps,
+    defaultState: defaultValue,
     initialState: '',
   });
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['size', 'onChange', 'value', 'defaultValue'],
-  });
-
-  const state: InputState = {
-    size,
-    appearance,
+  const state: InputBaseState = {
     components: {
       root: 'span',
       input: 'input',
       contentBefore: 'span',
       contentAfter: 'span',
     },
-    input: slot.always(props.input, {
+    input: slot.always(input, {
       defaultProps: {
         type: 'text',
         ref,
-        ...nativeProps.primary,
+        ...inputProps,
       },
       elementType: 'input',
     }),
-    contentAfter: slot.optional(props.contentAfter, { elementType: 'span' }),
-    contentBefore: slot.optional(props.contentBefore, { elementType: 'span' }),
-    root: slot.always(props.root, {
-      defaultProps: nativeProps.root,
+    contentAfter: slot.optional(contentAfter, { elementType: 'span' }),
+    contentBefore: slot.optional(contentBefore, { elementType: 'span' }),
+    root: slot.always(root, {
+      defaultProps: { className, style },
       elementType: 'span',
     }),
   };

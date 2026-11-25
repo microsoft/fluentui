@@ -2,7 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import type * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
-import {
+import type {
   VirtualizerScrollViewDynamicSlots,
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';

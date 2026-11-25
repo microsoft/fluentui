@@ -1,6 +1,6 @@
-import { Label } from '@fluentui/react-label';
+import type { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InfoButton } from '../InfoButton';
+import type { InfoButton } from '../InfoButton';
 import type { InfoButtonProps } from '../InfoButton';
 
 export type InfoLabelSlots = {

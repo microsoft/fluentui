@@ -90,14 +90,27 @@ const useStyles = makeStyles({
       textDecorationLine: 'none',
       color: tokens.colorNeutralForegroundDisabled,
     },
+
+    // There is no native disabled state for links, so we need to explicitly style the disabled state for high contrast mode.
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+
+      ':hover': {
+        color: 'GrayText',
+      },
+
+      ':active': {
+        color: 'GrayText',
+      },
+    },
   },
   inverted: {
-    color: tokens.colorNeutralForegroundInverted2,
+    color: tokens.colorBrandForegroundInverted,
     ':hover': {
-      color: tokens.colorNeutralForegroundInverted2,
+      color: tokens.colorBrandForegroundInverted,
     },
     ':active': {
-      color: tokens.colorNeutralForegroundInverted2,
+      color: tokens.colorBrandForegroundInverted,
     },
   },
   brand: {
@@ -112,11 +125,10 @@ const useStyles = makeStyles({
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
-  'use no memo';
-
   const styles = useStyles();
   const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     linkClassNames.root,
     styles.root,

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { LAB_to_sRGB, LCH_to_Lab, Lab_to_LCH, sRGB_to_LCH, snap_into_gamut } from './csswg';
 import { getPointsOnCurvePath } from './geometry';
-import { CurvedHelixPath, Palette, Vec3 } from './types';
+import type { CurvedHelixPath, Palette, Vec3 } from './types';
 import { hueToSnappingPointsMap, hexToHue } from './hueMap';
 // This file contains functions that combine geometry and color math to create
 // and work with palette curves.

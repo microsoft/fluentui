@@ -15,6 +15,6 @@ const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
   easing: curveOvershootFirmOut,
   exitEasing: curveOvershootFirmInOut,
-  fromScale: 0.5, // increase the range of the scale transition
+  outScale: 0.5, // increase the range of the scale transition
 });
 ```

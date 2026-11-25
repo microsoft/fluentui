@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, InfoLabelProps } from '@fluentui/react-components';
 
-import { InfoLabel, InfoLabelProps, Link } from '@fluentui/react-components';
+import { InfoLabel, Link } from '@fluentui/react-components';
 
 export const Default = (props: Partial<InfoLabelProps>): JSXElement => (
   <InfoLabel

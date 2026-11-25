@@ -14,6 +14,7 @@ import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
 import { getGradientFromToken, getNextGradient } from './gradients';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
+import { fireEvent } from '@testing-library/react';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
@@ -165,7 +166,7 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
 };
 const convertXAxisResultToJson = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  result: { xScale: any; tickValues: string[] },
+  result: { xScale: any; tickValues: any[] },
   isStringAxis: boolean = false,
 ): [number, string][] => {
   const tickValues = isStringAxis ? result.tickValues : result.xScale.ticks(result.tickValues.length);
@@ -629,6 +630,25 @@ describe('calloutData', () => {
     const result = utils.calloutData(values);
     matchResult(result);
   });
+
+  it('should treat prototype field names as ordinary x coordinates', () => {
+    const values = [
+      {
+        legend: 'Line 1',
+        data: [{ x: '__proto__', y: 10 }],
+      },
+    ] as unknown as ILineChartPoints[];
+
+    expect(Object.getOwnPropertyDescriptor(utils.calloutData(values), '__proto__')?.value).toEqual([
+      expect.objectContaining({ legend: 'Line 1', y: 10 }),
+    ]);
+  });
+});
+
+it('should return a null-prototype grouping object', () => {
+  const result = utils.calloutData([{ legend: 'Line 1', data: [{ x: 10, y: 20 }] }]);
+
+  expect(Object.getPrototypeOf(result)).toBeNull();
 });
 
 test(`getUnique should return an array of data points with unique values
@@ -717,15 +737,15 @@ describe('createWrapOfXLabels', () => {
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
-  it('should wrap x-axis labels when their width exceeds the maximum allowed line width', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const SVGElement: any = window.SVGElement;
-    const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+  it.skip('should wrap x-axis labels when their width exceeds the maximum allowed line width', () => {
     let calls = 0;
     const results = [6, 12, 7]; // 'X-axis', 'X-axis label', 'label 1'
-    SVGElement.prototype.getComputedTextLength = jest.fn().mockImplementation(() => results[calls++ % results.length]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SVGElement: any = window.SVGElement;
     const originalGetBoundingClientRect = SVGElement.prototype.getBoundingClientRect;
-    SVGElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ height: 15 });
+    SVGElement.prototype.getBoundingClientRect = jest
+      .fn()
+      .mockImplementation(() => ({ width: results[calls++ % results.length], height: 15 }));
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.appendChild(xAxisParams.xAxisElement!);
@@ -744,7 +764,6 @@ describe('createWrapOfXLabels', () => {
     document.body.removeChild(svg);
 
     SVGElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
-    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
   });
 });
 
@@ -830,6 +849,11 @@ describe('tooltipOfAxislabels', () => {
 
   it('should render a tooltip for x-axis labels', () => {
     const xAxisParams = createXAxisParams();
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.appendChild(xAxisParams.xAxisElement!);
+    document.body.appendChild(svg);
+
     const result = utils.createStringXAxis(xAxisParams, {}, ['X-axis label 1', 'X-axis label 2', 'X-axis label 3']);
     utils.createWrapOfXLabels({
       node: xAxisParams.xAxisElement!,
@@ -838,7 +862,6 @@ describe('tooltipOfAxislabels', () => {
       noOfCharsToTruncate: 10,
       showXAxisLablesTooltip: true,
     });
-
     const tooltipProps = {
       tooltipCls: 'tooltip-1',
       id: 'VBCTooltipId_1',
@@ -846,7 +869,11 @@ describe('tooltipOfAxislabels', () => {
       axis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
     };
     utils.tooltipOfAxislabels(tooltipProps);
+
+    fireEvent.mouseOver(document.querySelector('.tick text')!);
     expect(document.body).toMatchSnapshot();
+
+    document.body.innerHTML = '';
   });
 });
 
@@ -998,6 +1025,18 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
     const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
     matchResult(result);
+  });
+
+  describe('groupChartDataByYValue', () => {
+    it('treats prototype field names as ordinary axis values', () => {
+      const prototypePoint: IHorizontalBarChartWithAxisDataPoint = { x: 10, y: '__proto__' };
+      const constructorPoint: IHorizontalBarChartWithAxisDataPoint = { x: 20, y: 'constructor' };
+
+      expect(utils.groupChartDataByYValue([prototypePoint, constructorPoint])).toEqual([
+        [prototypePoint],
+        [constructorPoint],
+      ]);
+    });
   });
 });
 

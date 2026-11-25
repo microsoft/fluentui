@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { ChartDataPoint, ChartProps } from './index';
-import { LegendsProps } from '../Legends/index';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { ChartDataPoint, ChartProps } from './index';
+import type { LegendsProps } from '../Legends/index';
 
 /**
  * Horizontal Bar Chart properties

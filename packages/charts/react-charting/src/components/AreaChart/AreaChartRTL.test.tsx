@@ -700,10 +700,10 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, showXAxisLablesTooltip: true },
     container => {
-      const xAxisLabels = getById(container, /showDots/i);
+      const xAxisLabels = container.querySelectorAll('tspan');
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
+      expect(xAxisLabels[0].textContent).toEqual('Jan ...');
     },
     undefined,
     undefined,

@@ -1,8 +1,10 @@
+import type { InitialTemplateAttributes } from '@microsoft/fast-test-harness/fixtures/csr-fixture.js';
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName } from './button.options.js';
 
 test.describe('Button', () => {
   test.use({
-    tagName: 'fluent-button',
+    tagName,
     innerHTML: 'Button',
   });
 
@@ -15,9 +17,9 @@ test.describe('Button', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-button');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -27,7 +29,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button>Button</fluent-button>
+        <${tagName}>Button</${tagName}>
       </form>
     `);
 
@@ -44,7 +46,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button type="button">Button</fluent-button>
+        <${tagName} type="button">Button</${tagName}>
       </form>
     `);
 
@@ -61,7 +63,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button type="reset">Button</fluent-button>
+        <${tagName} type="reset">Button</${tagName}>
       </form>
     `);
 
@@ -75,7 +77,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="test-form" action="foo">
-        <fluent-button type="submit" name="bar" value="baz">Button</fluent-button>
+        <${tagName} type="submit" name="bar" value="baz">Button</${tagName}>
       </form>
     `);
 
@@ -92,7 +94,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="test-form" action="foo">
-        <fluent-button type="submit" value="baz">Button</fluent-button>
+        <${tagName} type="submit" value="baz">Button</${tagName}>
       </form>
     `);
 
@@ -103,6 +105,8 @@ test.describe('Button', () => {
 
   test('should be focusable by default', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.focus();
 
@@ -241,12 +245,13 @@ test.describe('Button', () => {
   }
 
   test('should NOT receive focus when the `tabindex` is manually set to -1', async ({ fastPage, page }) => {
-    const element = page.locator('fluent-button', { hasText: 'Not Focusable' });
-    const focusable = page.locator('fluent-button', { hasText: 'Recieves Focus' });
+    const { element } = fastPage;
+    const focusable = element.nth(0);
+    const notFocusable = element.nth(1);
 
     await fastPage.setTemplate(/* html */ `
-      <fluent-button>Recieves Focus</fluent-button>
-      <fluent-button tabindex="-1">Not Focusable</fluent-button>
+      <${tagName}>Recieves Focus</${tagName}>
+      <${tagName} tabindex="-1">Not Focusable</${tagName}>
     `);
 
     await focusable.focus();
@@ -255,13 +260,20 @@ test.describe('Button', () => {
 
     await focusable.press('Tab');
 
-    await expect(element).not.toBeFocused();
+    await expect(notFocusable).not.toBeFocused();
   });
 
-  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage, ssr }) => {
     const { element } = fastPage;
 
-    await fastPage.setTemplate({ attributes: { autofocus: true } });
+    const attributes: InitialTemplateAttributes = { autofocus: true };
+
+    if (ssr) {
+      // the host element needs to be focusable for autofocus to work on the server, so we need to set tabindex="0"
+      attributes.tabindex = '0';
+    }
+
+    await fastPage.setTemplate({ attributes });
 
     await expect(element).toBeFocused();
   });
@@ -271,7 +283,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button type="submit">Submit Button</fluent-button>
+        <${tagName} type="submit">Submit Button</${tagName}>
       </form>
     `);
 
@@ -290,7 +302,7 @@ test.describe('Button', () => {
     await fastPage.setTemplate(/* html */ `
       <form>
         <input type="text" id="text-input">
-        <fluent-button type="reset">Reset Button</fluent-button>
+        <${tagName} type="reset">Reset Button</${tagName}>
       </form>
     `);
 
@@ -315,7 +327,7 @@ test.describe('Button', () => {
     await fastPage.setTemplate(/* html */ `
       <form>
         <input type="text" id="text-input">
-        <fluent-button type="reset" disabled>Reset Button</fluent-button>
+        <${tagName} type="reset" disabled>Reset Button</${tagName}>
       </form>
     `);
 
@@ -334,7 +346,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">Unrelated Form</form>
-      <fluent-button type="submit">Submit Button</fluent-button>
+      <${tagName} type="submit">Submit Button</${tagName}>
     `);
 
     await element.click();
@@ -354,7 +366,7 @@ test.describe('Button', () => {
         Unrelated Form
         <input type="text" id="text-input">
       </form>
-      <fluent-button type="reset">Submit Button</fluent-button>
+      <${tagName} type="reset">Submit Button</${tagName}>
     `);
 
     await expect(input).toHaveValue('');
@@ -375,7 +387,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button type="submit" disabled>Submit Button</fluent-button>
+        <${tagName} type="submit" disabled>Submit Button</${tagName}>
       </form>
     `);
 
@@ -395,7 +407,7 @@ test.describe('Button', () => {
         <input type="text" name="testinput" value="bar">
       </form>
 
-      <fluent-button type="submit" form="testform">Submit Button</fluent-button>
+      <${tagName} type="submit" form="testform">Submit Button</${tagName}>
     `);
 
     await expect(page).not.toHaveURL(/foo/);
@@ -410,7 +422,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-button type="submit" formaction="bar">Submit Button</fluent-button>
+        <${tagName} type="submit" formaction="bar">Submit Button</${tagName}>
       </form>
     `);
 
@@ -431,7 +443,7 @@ test.describe('Button', () => {
       <form id="testform" action="foo">
         <input type="text" name="testinput" value="baz">
       </form>
-      <fluent-button type="submit" form="testform" formaction="bar">Submit Button</fluent-button>
+      <${tagName} type="submit" form="testform" formaction="bar">Submit Button</${tagName}>
     `);
 
     await element.click();
@@ -446,7 +458,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo" formmethod="get">
-        <fluent-button type="submit" formmethod="post">Submit Button</fluent-button>
+        <${tagName} type="submit" formmethod="post">Submit Button</${tagName}>
       </form>
     `);
 
@@ -472,7 +484,7 @@ test.describe('Button', () => {
         <input type="text" name="testinput" value="bar">
       </form>
 
-      <fluent-button type="submit" form="testform" formmethod="post">Submit Button</fluent-button>
+      <${tagName} type="submit" form="testform" formmethod="post">Submit Button</${tagName}>
     `);
 
     await expect(page).not.toHaveURL(/foo/);
@@ -492,7 +504,7 @@ test.describe('Button', () => {
     await fastPage.setTemplate(/* html */ `
       <form action="foo" enctype="application/x-www-form-urlencoded">
         <input type="text" name="testinput" value="hello world">
-        <fluent-button type="submit" formenctype="plain/text">Submit Button</fluent-button>
+        <${tagName} type="submit" formenctype="plain/text">Submit Button</${tagName}>
       </form>
     `);
 
@@ -514,7 +526,7 @@ test.describe('Button', () => {
         <input type="text" name="testinput" value="hello world">
       </form>
 
-      <fluent-button type="submit" form="testform" formenctype="plain/text">Submit Button</fluent-button>
+      <${tagName} type="submit" form="testform" formenctype="plain/text">Submit Button</${tagName}>
     `);
 
     await expect(page).not.toHaveURL(/foo/);
@@ -529,7 +541,7 @@ test.describe('Button', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo" target="_blank">
-        <fluent-button type="submit" formtarget="_self">Submit Button</fluent-button>
+        <${tagName} type="submit" formtarget="_self">Submit Button</${tagName}>
       </form>
     `);
 
@@ -551,7 +563,7 @@ test.describe('Button', () => {
         <input type="text" name="testinput" value="hello world">
       </form>
 
-      <fluent-button type="submit" form="testform" formtarget="_self">Submit Button</fluent-button>
+      <${tagName} type="submit" form="testform" formtarget="_self">Submit Button</${tagName}>
     `);
 
     await expect(page).not.toHaveURL(/foo/);
@@ -572,7 +584,7 @@ test.describe('Button', () => {
     await fastPage.setTemplate(/* html */ `
       <form id="test-form" action="foo">
         <input id="text-input" name="input-field" type="email">
-        <fluent-button type="submit" formnovalidate>Button</fluent-button>
+        <${tagName} type="submit" formnovalidate>Button</${tagName}>
       </form>
     `);
 
@@ -602,7 +614,7 @@ test.describe('Button', () => {
         <input id="text-input" name="input-field" type="email">
       </form>
 
-      <fluent-button type="submit" form="test-form" formnovalidate>Button</fluent-button>
+      <${tagName} type="submit" form="test-form" formnovalidate>Button</${tagName}>
     `);
 
     await input.fill('foo');
@@ -620,13 +632,13 @@ test.describe('Button', () => {
     fastPage,
     page,
   }) => {
-    const button = page.locator('fluent-button');
+    const button = page.locator(tagName);
     const input = page.locator('#text-input');
 
     await fastPage.setTemplate(/* html */ `
       <form id="test-form" action="#">
         <input id="text-input" name="input-field" type="email">
-        <fluent-button type="submit">Button</fluent-button>
+        <${tagName} type="submit">Button</${tagName}>
       </form>
     `);
 
@@ -648,7 +660,7 @@ test.describe('Button', () => {
     fastPage,
     page,
   }) => {
-    const button = page.locator('fluent-button');
+    const button = page.locator(tagName);
     const input = page.locator('#text-input');
 
     await fastPage.setTemplate(/* html */ `
@@ -656,7 +668,7 @@ test.describe('Button', () => {
         <input id="text-input" name="input-field" type="email">
       </form>
 
-      <fluent-button type="submit" form="test-form">Button</fluent-button>
+      <${tagName} type="submit" form="test-form">Button</${tagName}>
     `);
 
     await input.fill('foo');

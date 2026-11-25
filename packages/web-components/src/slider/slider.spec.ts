@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Slider } from './slider.js';
-import { SliderSize } from './slider.options.js';
+import { tagName } from './slider.options.js';
 
 interface BoundingBox {
   x: number;
@@ -11,10 +11,8 @@ interface BoundingBox {
 
 test.describe('Slider', () => {
   test.use({
-    tagName: 'fluent-slider',
+    tagName,
   });
-
-  // Foundation tests
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -25,15 +23,17 @@ test.describe('Slider', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-slider');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should have a default role of `slider`', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
@@ -42,6 +42,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('min', '');
 
@@ -55,7 +57,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <label for="slider">Label 1</label>
-      <fluent-slider id="slider"></fluent-slider>
+      <${tagName} id="slider"></${tagName}>
       <label for="slider">Label 2</label>
     `);
 
@@ -69,6 +71,8 @@ test.describe('Slider', () => {
   test('should set a `tabindex` of 0', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
@@ -77,11 +81,15 @@ test.describe('Slider', () => {
   }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('value', '50');
   });
@@ -90,6 +98,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
@@ -104,6 +114,8 @@ test.describe('Slider', () => {
 
   test('should set the `elementInternals.ariaDisabled` when `disabled` property is true', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
 
@@ -129,7 +141,7 @@ test.describe('Slider', () => {
     await fastPage.setTemplate(/* html */ `
       <form>
         <fieldset>
-          <fluent-slider></fluent-slider>
+          <${tagName}></${tagName}>
         </fieldset>
       </form>
     `);
@@ -177,18 +189,6 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
-  for (const size of Object.values(SliderSize)) {
-    test(`should set the \`size\` property to \`${size}\` when the \`size\` attribute is set to \`${size}\``, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
-
   test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -219,6 +219,8 @@ test.describe('Slider', () => {
     test('should allow setting value with number', async ({ fastPage }) => {
       const { element } = fastPage;
 
+      await fastPage.setTemplate();
+
       await element.evaluate((node: Slider) => {
         node.valueAsNumber = 8;
       });
@@ -239,6 +241,8 @@ test.describe('Slider', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Slider) => {
       node.valueTextFormatter = () => 'Seventy Five Years';
@@ -317,7 +321,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-slider min="0" max="100"></fluent-slider>
+        <${tagName} min="0" max="100"></${tagName}>
       </form>
     `);
 
@@ -343,7 +347,7 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-slider min="0" max="100"></fluent-slider>
+        <${tagName} min="0" max="100"></${tagName}>
       </form>
     `);
 
@@ -393,10 +397,10 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate({ attributes: { min: '0', max: '100', step: '20' } });
 
-    await element.evaluate<void, any>(node => {
-      node.min = 20;
-      node.max = 110;
-      node.step = 10;
+    await element.evaluate((node: Slider) => {
+      Reflect.set(node, 'min', 20);
+      Reflect.set(node, 'max', 110);
+      Reflect.set(node, 'step', 10);
     });
 
     await expect(element).toHaveJSProperty('min', '20');
@@ -409,9 +413,9 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate({ attributes: { min: '10', max: '200', step: '20' } });
 
-    await element.evaluate<void, any>(node => {
-      node.min = undefined;
-      node.max = null;
+    await element.evaluate((node: Slider) => {
+      Reflect.set(node, 'min', undefined);
+      Reflect.set(node, 'max', null);
       node.step = 'not a number';
     });
 
@@ -437,13 +441,13 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate('');
 
-    await page.evaluate(() => {
-      const slider = document.createElement('fluent-slider') as Slider;
+    await page.evaluate(tagName => {
+      const slider = document.createElement(tagName) as Slider;
 
       slider.value = '3';
 
       document.body.appendChild(slider);
-    });
+    }, tagName);
 
     await expect(element).toHaveJSProperty('value', '3');
     await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
@@ -451,6 +455,8 @@ test.describe('Slider', () => {
 
   test('should initialize to the provided value attribute when set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Slider) => {
       node.setAttribute('value', '3');
@@ -488,7 +494,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider></fluent-slider>
+          <${tagName}></${tagName}>
         </form>
       `);
 
@@ -500,7 +506,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '3');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
@@ -515,7 +521,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider min="0" max="100"></fluent-slider>
+          <${tagName} min="0" max="100"></${tagName}>
         </form>
       `);
 
@@ -532,7 +538,7 @@ test.describe('Slider', () => {
       await expect(element).toHaveAttribute('value', '7');
       await expect(element).toHaveJSProperty('value', '8');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
@@ -548,7 +554,7 @@ test.describe('Slider', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-slider min="0" max="100"></fluent-slider>
+          <${tagName} min="0" max="100"></${tagName}>
         </form>
       `);
 
@@ -562,7 +568,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '8');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
@@ -580,6 +586,8 @@ test.describe('Slider', () => {
     test('should emit `change` event when `value` property changed', async ({ fastPage }) => {
       const { element } = fastPage;
 
+      await fastPage.setTemplate();
+
       const wasChanged = element.evaluate(
         node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
       );
@@ -593,6 +601,8 @@ test.describe('Slider', () => {
 
     test('should emit `change` event if the `value` attribute changed', async ({ fastPage }) => {
       const { element } = fastPage;
+
+      await fastPage.setTemplate();
 
       const wasChanged = element.evaluate(
         node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
@@ -661,6 +671,8 @@ test.describe('Slider', () => {
       browserName,
     }) => {
       const { element } = fastPage;
+
+      await fastPage.setTemplate();
 
       const track = element.locator('.track');
       const thumb = element.locator('.thumb-container');
@@ -809,11 +821,45 @@ test.describe('Slider', () => {
         expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
       }
     });
+
+    test('should not change value when dragging inside a disabled fieldset', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fieldset disabled>
+            <${tagName}></${tagName}>
+          </fieldset>
+        </form>
+      `);
+
+      const thumb = element.locator('.thumb-container');
+      const track = element.locator('.track');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      const thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      expect(thumbBox).not.toBeNull();
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
+
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbMoveToX, thumbCenterY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 50);
+    });
   });
 
   test('should allow keyboard interactions after clicking on the thumb', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const thumb = element.locator('.thumb-container');
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('valueAsNumber', 50);
 

@@ -41,5 +41,16 @@ export type ImageProps = ComponentProps<ImageSlots> & {
   shape?: 'square' | 'circular' | 'rounded';
 };
 
+/**
+ * Image props without design-specific props (shape, shadow, bordered, fit).
+ * Use this when building a base image that is unstyled or uses a custom design system.
+ */
+export type ImageBaseProps = ComponentProps<ImageSlots>;
+
 export type ImageState = ComponentState<ImageSlots> &
   Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
+
+/**
+ * Image state without design-specific state (shape, shadow, bordered, fit).
+ */
+export type ImageBaseState = ComponentState<ImageSlots>;

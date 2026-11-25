@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ToastPosition } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -8,7 +8,6 @@ import {
   RadioGroup,
   Radio,
   makeStyles,
-  ToastPosition,
   Toaster,
   useToastController,
   ToastTitle,

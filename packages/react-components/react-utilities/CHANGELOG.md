@@ -1,8 +1,100 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 17 Dec 2025 18:10:10 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.27.1)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- perf: store native element prop allow-lists as compact strings to reduce bundle size ([PR #37186](https://github.com/microsoft/fluentui/pull/37186) by dmytrokirpa@microsoft.com)
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.27.0)
+
+Mon, 19 Oct 2026 16:49:00 GMT
+
+### Minor changes
+
+- feat: add getPercentInRange helper ([PR #36889](https://github.com/microsoft/fluentui/pull/36889) by vgenaev@gmail.com)
+
+### Patches
+
+- fix: handle special property names when filtering native props ([PR #36806](https://github.com/microsoft/fluentui/pull/36806) by paliprandi@microsoft.com)
+
+## [9.26.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.7)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.6..@fluentui/react-utilities_v9.26.7)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- fix: Add loading to img element property whitelist ([PR #36639](https://github.com/microsoft/fluentui/pull/36639) by 84954628+lukiod@users.noreply.github.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.26.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.6)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.5..@fluentui/react-utilities_v9.26.6)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.26.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.5)
+
+Wed, 24 Jun 2026 11:10:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.4..@fluentui/react-utilities_v9.26.5)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+
+## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.4)
+
+Tue, 26 May 2026 09:39:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.3..@fluentui/react-utilities_v9.26.4)
+
+### Patches
+
+- style: replace deprecated assertion syntax that causes issues to babel tsx ([PR #36185](https://github.com/microsoft/fluentui/pull/36185) by martinhochel@microsoft.com)
+
+## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.3)
+
+Thu, 23 Apr 2026 14:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.2..@fluentui/react-utilities_v9.26.3)
+
+### Patches
+
+- fix: add focusgroupstart property to baseElementProperties ([PR #36020](https://github.com/microsoft/fluentui/pull/36020) by dmytrokirpa@microsoft.com)
+
+## [9.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.2)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.1..@fluentui/react-utilities_v9.26.2)
+
+### Patches
+
+- fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.1)
+
+Thu, 22 Jan 2026 17:06:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.0..@fluentui/react-utilities_v9.26.1)
+
+### Patches
+
+- feat: add focusgroup attribute to baseElementProperties ([PR #35674](https://github.com/microsoft/fluentui/pull/35674) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.0)
 

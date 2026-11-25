@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SpinnerProps } from '../components/Spinner/Spinner.types';
+import type { SpinnerProps } from '../components/Spinner/Spinner.types';
 
 const SpinnerContext = React.createContext<SpinnerContextValue | undefined>(undefined);
 

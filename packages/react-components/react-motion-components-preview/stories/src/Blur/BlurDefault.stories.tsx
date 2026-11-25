@@ -1,39 +1,35 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
-    gridTemplateAreas: '"controls content"',
-    gap: '20px',
-    padding: '20px',
-  },
-  content: {
-    gridArea: 'content',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
-    padding: '20px',
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    maxWidth: '400px',
+    gridArea: 'card',
+    padding: tokens.spacingVerticalXL,
+    maxHeight: '300px',
+    overflow: 'hidden',
   },
   controls: {
-    gridArea: 'controls',
     display: 'flex',
     flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '20px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
 });
 
@@ -57,13 +53,18 @@ export const Default = (): JSXElement => {
         </Field>
       </div>
 
-      <div className={classes.content}>
-        <Blur visible={visible}>
-          <div className={classes.card}>
-            <LoremIpsum />
-          </div>
-        </Blur>
-      </div>
+      <Blur visible={visible}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
+          <LoremIpsum />
+        </Card>
+      </Blur>
     </div>
   );
 };

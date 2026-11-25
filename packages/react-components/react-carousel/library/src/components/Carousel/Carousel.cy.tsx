@@ -11,7 +11,7 @@ import { CarouselSlider } from '../CarouselSlider/CarouselSlider';
 import { CarouselViewport } from '../CarouselViewport/CarouselViewport';
 import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
-import { CarouselIndexChangeData } from '../CarouselContext.types';
+import type { CarouselIndexChangeData } from '../CarouselContext.types';
 import type { EventHandler, JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {

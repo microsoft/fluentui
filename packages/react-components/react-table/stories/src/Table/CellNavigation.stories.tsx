@@ -17,12 +17,11 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-  PresenceBadgeStatus,
   Avatar,
   Button,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 
 const items = [
   {

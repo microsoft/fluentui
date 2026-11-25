@@ -1,7 +1,4 @@
-import { FluentDesignSystem } from '@fluentui/web-components';
-import { definition } from './horizontal-bar-chart.definition.js';
-
-definition.define(FluentDesignSystem.registry);
+import './define.js';
 
 const itemRenderer = () => {
   const horizontalbarchart = document.createElement('fluent-horizontal-bar-chart');

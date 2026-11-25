@@ -19,6 +19,8 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   subText: 'fui-MenuItem__subText',
 };
 
+const slotsSelector = `& .${menuItemClassNames.icon}, & .${menuItemClassNames.checkmark}, & .${menuItemClassNames.subText}, & .${menuItemClassNames.secondaryContent}`;
+
 const useRootBaseStyles = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium,
   position: 'relative',
@@ -69,9 +71,13 @@ const useRootBaseStyles = makeResetStyles({
   // High contrast styles
   '@media (forced-colors: active)': {
     ':hover': {
-      backgroundColor: 'Canvas',
-      borderColor: 'Highlight',
-      color: 'Highlight',
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+
+      [slotsSelector]: {
+        color: 'HighlightText',
+      },
     },
     ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
   },
@@ -147,6 +153,34 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralStroke1,
     },
   },
+  submenuOpen: {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    color: tokens.colorNeutralForeground2Hover,
+
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+    [`& .${menuItemClassNames.icon}`]: {
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Hover,
+    },
+
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+
+      [slotsSelector]: {
+        color: 'HighlightText',
+      },
+    },
+  },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
@@ -183,13 +217,14 @@ const useStyles = makeStyles({
     '@media (forced-colors: active)': {
       color: 'GrayText',
       ':hover': {
+        forcedColorAdjust: 'auto',
         color: 'GrayText',
         backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
           backgroundColor: 'Canvas',
         },
-        [`& .${menuItemClassNames.subText}`]: {
+        [slotsSelector]: {
           color: 'GrayText',
         },
       },
@@ -235,8 +270,6 @@ const useMultilineStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
-  'use no memo';
-
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -247,55 +280,63 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const subtextBaseStyles = useSubtextBaseStyles();
   const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
+    state.submenuOpen && styles.submenuOpen,
     state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(
       menuItemClassNames.content,
       contentBaseStyles,
-      state.content.className,
       multiline && multilineStyles.content,
+      state.content.className,
     );
   }
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       menuItemClassNames.secondaryContent,
       secondaryContentBaseStyles,
       state.disabled && styles.disabled,
-      state.secondaryContent.className,
       multiline && multilineStyles.secondaryContent,
+      state.secondaryContent.className,
     );
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
   }
 
   if (state.submenuIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.submenuIndicator.className = mergeClasses(
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
-      state.submenuIndicator.className,
       multiline && multilineStyles.submenuIndicator,
+      state.submenuIndicator.className,
     );
   }
 
   if (state.subText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(
       menuItemClassNames.subText,
+      subtextBaseStyles,
       state.disabled && subTextStyles.disabled,
       state.subText.className,
-      subtextBaseStyles,
     );
   }
 

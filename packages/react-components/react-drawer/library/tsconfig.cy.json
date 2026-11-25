@@ -4,7 +4,7 @@
     "isolatedModules": false,
     "types": ["node", "cypress", "cypress-real-events"],
     "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
-    "lib": ["ES2019", "dom"]
+    "lib": ["ES2020", "dom"]
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx", "./src/e2e/*.tsx"]
 }

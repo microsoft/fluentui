@@ -1,11 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  HorizontalBarChartWithAxis,
-  HorizontalBarChartWithAxisDataPoint,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { HorizontalBarChartWithAxis, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const HorizontalBarWithAxisStringAxisTooltip = (): JSXElement => {

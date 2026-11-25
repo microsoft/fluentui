@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Segment Migration" />
 
@@ -30,16 +30,16 @@ export const Component = () => {
 
 ## How to migrate props:
 
-| `Segment` props           | migrate guide                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------- |
-| as, className             | keep it as is                                                                                            |
-| content                   | move `content` to JSX children.                                                                          |
-| variables, styles, design | see [Migrate style overrides](#migrate-style-overrides) in this document                                 |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
-| ref, key                  | keep it as is                                                                                            |
-| color                     | REMOVED: use styles and color tokens to style it properly                                                |
-| disabled                  | REMOVED: use styles and color tokens to style it properly                                                |
-| inverted                  | REMOVED: use styles and color tokens to style it properly                                                |
+| \`Segment\` props         | migrate guide                                                                                              |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                              |
+| content                   | move \`content\` to JSX children.                                                                          |
+| variables, styles, design | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                 |
+| accessibility             | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| ref, key                  | keep it as is                                                                                              |
+| color                     | REMOVED: use styles and color tokens to style it properly                                                  |
+| disabled                  | REMOVED: use styles and color tokens to style it properly                                                  |
+| inverted                  | REMOVED: use styles and color tokens to style it properly                                                  |
 
 ---
 

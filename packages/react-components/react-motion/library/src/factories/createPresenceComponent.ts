@@ -19,10 +19,13 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
-import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
+import type { MotionComponent } from './createMotionComponent';
+import { createMotionComponent } from './createMotionComponent';
 
 /**
- * @internal A private symbol to store the motion definition on the component for variants.
+ * A private symbol to store the motion definition on the component for variants.
+ *
+ * @internal
  */
 export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 
@@ -83,8 +86,8 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
 > & {
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-  In: React.FC<MotionComponentProps & MotionParams>;
-  Out: React.FC<MotionComponentProps & MotionParams>;
+  In: MotionComponent<MotionParams>;
+  Out: MotionComponent<MotionParams>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
@@ -94,8 +97,6 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 ): PresenceComponent<MotionParams> {
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
-      'use no memo';
-
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
       const skipMotions = useMotionBehaviourContext() === 'skip';
@@ -240,6 +241,17 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           visible,
         ],
       );
+
+      React.useEffect(() => {
+        // Heads up!
+        //
+        // Dispose the handle when unmounting the component to clean up retained references. Doing it in a separate
+        // effect to ensure that the component is unmounted.
+
+        if (unmountOnExit && !mounted) {
+          handleRef.current?.dispose();
+        }
+      }, [handleRef, unmountOnExit, mounted]);
 
       if (mounted) {
         return child;

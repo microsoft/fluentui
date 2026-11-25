@@ -1,11 +1,14 @@
 export type {
   AvatarNamedColor,
+  AvatarBaseProps,
   AvatarProps,
   AvatarShape,
   AvatarSize,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
+  AvatarBaseSlots,
   AvatarSlots,
+  AvatarBaseState,
   AvatarState,
 } from './components/Avatar/index';
 export {
@@ -15,5 +18,6 @@ export {
   renderAvatar_unstable,
   useAvatarStyles_unstable,
   useAvatar_unstable,
+  useAvatarBase_unstable,
   useSizeStyles,
 } from './components/Avatar/index';

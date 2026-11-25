@@ -1,7 +1,7 @@
-import { SVGProps } from 'react';
-import { LegendShape } from '../components/Legends/Legends.types';
-import { CurveFactory } from 'd3-shape';
-import { SankeyLink, SankeyNode } from 'd3-sankey';
+import type { SVGProps } from 'react';
+import type { LegendShape } from '../components/Legends/Legends.types';
+import type { CurveFactory } from 'd3-shape';
+import type { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface Basestate {
   _width?: number;
@@ -785,6 +785,13 @@ export interface GroupedVerticalBarChartData {
   stackCallOutAccessibilityData?: AccessibilityProps;
 }
 
+/**
+ * Legacy grouped-chart dataset entry, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped bar series data, use GVBarChartSeriesPoint.
+ * It is not a drop-in replacement for this legacy dictionary shape.
+ */
 export interface GVDataPoint {
   /**
    * This interface used for - While forming datapoints from given prop "data" in code
@@ -793,11 +800,19 @@ export interface GVDataPoint {
   [key: string]: number | string;
 }
 
+/**
+ * Legacy grouped-chart dataset dictionary, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped chart input, use GroupedVerticalBarChartData.
+ * It is not a drop-in replacement for this legacy dictionary shape.
+ */
 export interface GVSingleDataPoint {
   /**
    * While forming datapoints from given prop "data" in code.
    * These datapoints are used for to draw graph easily.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the legacy public type until removal.
   [key: string]: GVDataPoint;
 }
 
@@ -1271,4 +1286,109 @@ export interface LineSeries<X extends string | number | Date, Y extends string |
    * Callback invoked when the line itself is clicked.
    */
   onLineClick?: () => void;
+}
+
+/**
+ * Represents a single data point in a polar series.
+ */
+export interface PolarDataPoint {
+  /**
+   * Radial value of the data point.
+   */
+  r: string | number | Date;
+
+  /**
+   * Angular value of the data point, specified as a category or in degrees.
+   */
+  theta: string | number;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the radial axis value.
+   */
+  radialAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the angular axis value.
+   */
+  angularAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Represents a scatterpolar series.
+ */
+export interface ScatterPolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'scatterpolar' for this series.
+   */
+  type: 'scatterpolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+}
+
+/**
+ * Represents a linepolar series.
+ */
+export interface LinePolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'linepolar' for this series.
+   */
+  type: 'linepolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
+}
+
+/**
+ * Represents a areapolar series.
+ */
+export interface AreaPolarSeries extends DataSeries {
+  /**
+   * Type discriminator: always 'areapolar' for this series.
+   */
+  type: 'areapolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: PolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: LineChartLineOptions;
 }

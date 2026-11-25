@@ -1,4 +1,4 @@
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 
 const getCSSTemplateValue = (template: string | number): string => {
   const templateAsNumber = Number(template);

@@ -52,6 +52,7 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
 
   React.useEffect(() => {
     if (typeof width === 'number' && width > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMeasuredWidth(width);
       return;
     }
@@ -191,7 +192,9 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
               </span>
             )}
             <div className={classes.content} style={contentStyle} role="presentation">
-              {hasAnnotations ? <ChartAnnotationLayer annotations={resolvedAnnotations} context={context} /> : null}
+              {hasAnnotations ? (
+                <ChartAnnotationLayer annotations={resolvedAnnotations} context={context} hideDefaultStyles={true} />
+              ) : null}
             </div>
           </div>
         </foreignObject>

@@ -6,7 +6,7 @@ import { useCarouselViewport_unstable } from './useCarouselViewport';
 import { renderCarouselViewport_unstable } from './renderCarouselViewport';
 import { useCarouselViewportStyles_unstable } from './useCarouselViewportStyles.styles';
 import type { CarouselViewportProps } from './CarouselViewport.types';
-import { useCarouselSliderContextValues_unstable } from '../CarouselSlider/CarouselSliderContext';
+import { useCarouselSliderContextValues_unstable } from '../CarouselSlider/useCarouselSliderContextValues';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**

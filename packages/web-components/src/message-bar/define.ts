@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './message-bar.definition.js';
+import { MessageBar } from './message-bar.js';
 
-definition.define(FluentDesignSystem.registry);
+MessageBar.define(definition);

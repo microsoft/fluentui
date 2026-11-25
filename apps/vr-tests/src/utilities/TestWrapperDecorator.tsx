@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Decorator } from '@storybook/react';
+import type { Decorator } from '@storybook/react-webpack5';
 
 export const TestWrapperDecorator: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>

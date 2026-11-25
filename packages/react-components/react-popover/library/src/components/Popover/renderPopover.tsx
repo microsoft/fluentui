@@ -1,53 +1,31 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-utilities';
-import { PopoverContext } from '../../popoverContext';
-import type { PopoverState } from './Popover.types';
+import { assertSlots, type JSXElement } from '@fluentui/react-utilities';
+import { MotionRefForwarder } from '@fluentui/react-motion';
+import { PopoverContext, popoverContextDefaultValue } from '../../popoverContext';
+import type { InternalPopoverSlots, PopoverState } from './Popover.types';
+import type { PopoverContextValues } from './usePopoverContextValues';
 
 /**
  * Render the final JSX of Popover
  */
-
-export const renderPopover_unstable = (state: PopoverState): JSXElement => {
-  const {
-    appearance,
-    arrowRef,
-    contentRef,
-    inline,
-    mountNode,
-    open,
-    openOnContext,
-    openOnHover,
-    setOpen,
-    size,
-    toggleOpen,
-    trapFocus,
-    triggerRef,
-    withArrow,
-    inertTrapFocus,
-  } = state;
+export const renderPopover_unstable = (state: PopoverState, contextValues?: PopoverContextValues): JSXElement => {
+  assertSlots<InternalPopoverSlots>(state);
 
   return (
-    <PopoverContext.Provider
-      value={{
-        appearance,
-        arrowRef,
-        contentRef,
-        inline,
-        mountNode,
-        open,
-        openOnContext,
-        openOnHover,
-        setOpen,
-        toggleOpen,
-        triggerRef,
-        size,
-        trapFocus,
-        inertTrapFocus,
-        withArrow,
-      }}
-    >
+    <PopoverContext.Provider value={contextValues?.popover ?? popoverContextDefaultValue}>
       {state.popoverTrigger}
-      {state.open && state.popoverSurface}
+      {state.popoverSurface && (
+        <state.surfaceMotion>
+          <MotionRefForwarder>
+            {/* Casting here as content should be equivalent to <PopoverSurface /> */}
+            {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
+            {state.popoverSurface as React.ReactElement}
+          </MotionRefForwarder>
+        </state.surfaceMotion>
+      )}
     </PopoverContext.Provider>
   );
 };

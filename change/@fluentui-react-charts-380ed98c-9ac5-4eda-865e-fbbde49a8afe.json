@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix barlabel issue for stacked bars",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

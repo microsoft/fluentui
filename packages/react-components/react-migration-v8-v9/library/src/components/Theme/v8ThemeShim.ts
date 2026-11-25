@@ -2,7 +2,7 @@ import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects, The
 import { createTheme, DefaultPalette } from '@fluentui/react';
 import { fluent2ComponentStyles } from '@fluentui/fluent2-theme';
 
-import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
+import type { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 

@@ -19,6 +19,7 @@ import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../typ
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import {
   ISankeyChartAccessibilityProps,
   ISankeyChartData,
@@ -193,7 +194,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  */
 // This is exported for unit tests.
 export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
-  const nodesInColumn: NodesInColumns = {};
+  const nodesInColumn: NodesInColumns = Object.create(null);
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
@@ -330,7 +331,7 @@ function duplicateData(data: ISankeyChartData): ISankeyChartData {
 }
 
 function valuesOfNodes(nodes: SNode[]): NodeValues {
-  const result: NodeValues = {};
+  const result: NodeValues = Object.create(null);
   nodes.forEach((node: SNode) => {
     result[node.nodeId as NodeId] = node.value!;
   });
@@ -338,12 +339,12 @@ function valuesOfNodes(nodes: SNode[]): NodeValues {
 }
 
 function valuesOfLinks(links: SLink[]): LinkValues {
-  const result: LinkValues = {};
+  const result: LinkValues = Object.create(null);
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
@@ -494,12 +495,12 @@ function computeLinkAttributes(
   linkFrom: (node: SNode) => string,
   linkAriaLabel: (link: SLink) => string,
 ): LinkItemValues<RenderedLinkAttributes> {
-  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  const result: LinkItemValues<RenderedLinkAttributes> = Object.create(null);
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
@@ -646,7 +647,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._chartId = getId('sankeyChart');
     this._emptyChartId = getId('_SankeyChart_empty');
     this._labelTooltipId = getId('tooltip');
-    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
+    const titleHeight = props.data?.chartTitle
+      ? Math.max(
+          (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+            CHART_TITLE_PADDING,
+          36,
+        )
+      : 36;
+    this._margins = { top: titleHeight, right: 48, bottom: 32, left: 48 };
     // We memo-ize creation so that we only create a new object when any of the fields change.
     this._computeClassNamesProps = memoizeFunction(
       (
@@ -856,6 +864,16 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
             <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
+              {!this.props.hideLegend && this.props.data.chartTitle && (
+                <ChartTitle
+                  title={this.props.data.chartTitle}
+                  x={width / 2}
+                  maxWidth={width - 20}
+                  className={classNames.chartTitle}
+                  titleStyles={this.props.titleStyles}
+                  tooltipClassName={classNames.svgTooltip}
+                />
+              )}
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (
@@ -910,7 +928,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     nodes: SNode[],
     nodeAriaLabel: (node: SNode, weight: number) => string,
   ): ItemValues<RenderedNodeAttributes> {
-    const result: ItemValues<RenderedNodeAttributes> = {};
+    const result: ItemValues<RenderedNodeAttributes> = Object.create(null);
     const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
     const nameSpan = select('.nodeName')
       .append('text')
@@ -1355,7 +1373,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       //Fixing tooltip position by attaching it to the element rather than page
       div.style('opacity', 0.9).style('color', this.props.theme!.palette.neutralPrimary);
       div
-        .html(text)
+        .text(text)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px');
     }

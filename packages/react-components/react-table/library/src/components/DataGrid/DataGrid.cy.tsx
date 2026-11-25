@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { TableColumnDefinition } from '@fluentui/react-table';
 import {
-  TableColumnDefinition,
   DataGrid,
   DataGridHeader,
   DataGridRow,

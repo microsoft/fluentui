@@ -1,4 +1,4 @@
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 import { slider } from './Slider.mixins';
 
 const testMixin = (mixin: GriffelStyle | undefined, expectedStyle: GriffelStyle | undefined) => {

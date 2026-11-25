@@ -1,5 +1,10 @@
-import { RenderFunction } from '../../utilities/index';
-import { CartesianChartProps, CartesianChartStyleProps, CartesianChartStyles, GanttChartDataPoint } from '../../index';
+import type { RenderFunction } from '../../utilities/index';
+import type {
+  CartesianChartProps,
+  CartesianChartStyleProps,
+  CartesianChartStyles,
+  GanttChartDataPoint,
+} from '../../index';
 
 /**
  * Gantt Chart properties

@@ -5,7 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
+export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>> = {
   root: 'fui-ProgressBar',
   bar: 'fui-ProgressBar__bar',
 };
@@ -17,27 +17,6 @@ const ZERO_THRESHOLD = 0.01;
 const barThicknessValues = {
   medium: '2px',
   large: '4px',
-};
-
-const indeterminateProgressBar = {
-  '0%': {
-    left: '-33%', // matches indeterminate bar width
-  },
-  '100%': {
-    left: '100%',
-  },
-};
-
-const indeterminateProgressBarReducedMotion = {
-  '0%': {
-    opacity: '.2',
-  },
-  '50%': {
-    opacity: '1',
-  },
-  '100%': {
-    opacity: '.2',
-  },
 };
 
 /**
@@ -93,15 +72,9 @@ const useBarStyles = makeStyles({
       ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
-    animationName: indeterminateProgressBar,
-    animationDuration: '3s',
-    animationTimingFunction: 'linear',
-    animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
+      // Reduced motion: bar is sized here, and the opacity is pulsed by ProgressBarIndeterminateMotion
       maxWidth: '100%',
-      animationIterationCount: 'infinite',
-      animationDuration: '3s',
-      animationName: indeterminateProgressBarReducedMotion,
     },
   },
 
@@ -124,12 +97,11 @@ const useBarStyles = makeStyles({
  * Apply styling to the ProgressBar slots based on the state
  */
 export const useProgressBarStyles_unstable = (state: ProgressBarState): ProgressBarState => {
-  'use no memo';
-
   const { color, max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     progressBarClassNames.root,
     rootStyles.root,
@@ -139,6 +111,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   );
 
   if (state.bar) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bar.className = mergeClasses(
       progressBarClassNames.bar,
       barStyles.base,
@@ -151,6 +124,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   }
 
   if (state.bar && value !== undefined) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bar.style = {
       width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
       ...state.bar.style,

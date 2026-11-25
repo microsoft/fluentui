@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { FunnelChartDataPoint } from './FunnelChart.types';
+import type * as React from 'react';
+import type { FunnelChartDataPoint } from './FunnelChart.types';
 
 export interface FunnelSegmentGeometry {
   pathD: string;

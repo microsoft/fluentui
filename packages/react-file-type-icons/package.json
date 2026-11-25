@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-file-type-icons",
-  "version": "8.15.3",
+  "version": "8.18.4",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,17 +14,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/style-utilities": "^8.13.6",
+    "@fluentui/style-utilities": "^8.15.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

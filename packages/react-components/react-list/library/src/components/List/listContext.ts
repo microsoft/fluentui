@@ -2,7 +2,7 @@
 
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { ListSynchronousContextValue, ListContextValue } from './List.types';
+import type { ListSynchronousContextValue, ListContextValue } from './List.types';
 import * as React from 'react';
 
 export const listContextDefaultValue: ListContextValue = {

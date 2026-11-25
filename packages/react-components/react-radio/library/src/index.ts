@@ -4,6 +4,7 @@ export {
   renderRadioGroup_unstable,
   useRadioGroupStyles_unstable,
   useRadioGroup_unstable,
+  useRadioGroupBase_unstable,
 } from './RadioGroup';
 export type {
   RadioGroupContextValue,
@@ -12,9 +13,18 @@ export type {
   RadioGroupProps,
   RadioGroupSlots,
   RadioGroupState,
+  RadioGroupBaseProps,
+  RadioGroupBaseState,
 } from './RadioGroup';
-export { Radio, radioClassNames, renderRadio_unstable, useRadioStyles_unstable, useRadio_unstable } from './Radio';
-export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
+export {
+  Radio,
+  radioClassNames,
+  renderRadio_unstable,
+  useRadioStyles_unstable,
+  useRadio_unstable,
+  useRadioBase_unstable,
+} from './Radio';
+export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData, RadioBaseProps, RadioBaseState } from './Radio';
 export {
   RadioGroupProvider,
   useRadioGroupContextValues,

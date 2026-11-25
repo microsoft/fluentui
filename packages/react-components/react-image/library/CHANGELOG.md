@@ -1,8 +1,127 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.7)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- perf: pass root props through without the native props allow-list to reduce bundle size ([PR #37188](https://github.com/microsoft/fluentui/pull/37188) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.6)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.5)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.4.4..@fluentui/react-image_v9.4.5)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.4)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.4.3..@fluentui/react-image_v9.4.4)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.3)
+
+Wed, 24 Jun 2026 11:09:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.4.2..@fluentui/react-image_v9.4.3)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.2)
+
+Tue, 26 May 2026 09:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.4.1..@fluentui/react-image_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.1)
+
+Thu, 23 Apr 2026 14:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.4.0..@fluentui/react-image_v9.4.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.4.0)
+
+Thu, 26 Mar 2026 08:12:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.3.15..@fluentui/react-image_v9.4.0)
+
+### Minor changes
+
+- feat: add base hooks for Image ([PR #35808](https://github.com/microsoft/fluentui/pull/35808) by dmytrokirpa@microsoft.com)
+
+## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.3.15)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.3.14..@fluentui/react-image_v9.3.15)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.3.14)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.3.13..@fluentui/react-image_v9.3.14)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.3.13)
+
+Thu, 22 Jan 2026 17:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.3.12..@fluentui/react-image_v9.3.13)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.3.12)
 

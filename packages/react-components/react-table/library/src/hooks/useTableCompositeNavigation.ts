@@ -3,11 +3,11 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowDown, ArrowRight, ArrowUp, ArrowLeft } from '@fluentui/keyboard-keys';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import {
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
-  TabsterDOMAttribute,
   useFocusFinders,
   GroupperMoveFocusEvent,
   MoverMoveFocusEvent,

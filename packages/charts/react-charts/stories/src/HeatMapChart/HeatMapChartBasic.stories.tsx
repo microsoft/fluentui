@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { HeatMapChart, HeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { HeatMapChartProps } from '@fluentui/react-charts';
+import { HeatMapChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(450);
@@ -56,17 +57,17 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => 
         {
           x: xPoint[1],
           y: yPoint[0],
-          value: 250,
-          rectText: 250,
-          ratio: [250, 2043],
+          value: 310,
+          rectText: 310,
+          ratio: [310, 2043],
           descriptionMessage: 'a sudden rise of 150 units in Ohio today',
         },
         {
           x: xPoint[2],
           y: yPoint[0],
-          value: 235,
-          rectText: 235,
-          ratio: [235, 2043],
+          value: 320,
+          rectText: 320,
+          ratio: [320, 2043],
           descriptionMessage: 'air quality seems to have decreased by only 15 units from yesterday',
         },
         {
@@ -307,7 +308,8 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => 
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth_Example"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Example">Change Height:</label>
         <input
@@ -333,10 +335,10 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => 
           height={height}
           domainValuesForColorScale={[0, 200, 400, 600]}
           rangeValuesForColorScale={[
-            getColorFromToken(DataVizPalette.success),
-            getColorFromToken(DataVizPalette.warning),
-            getColorFromToken(DataVizPalette.error),
-            getColorFromToken(DataVizPalette.highError),
+            getColorFromToken(DataVizPalette.color5),
+            getColorFromToken(DataVizPalette.color6),
+            getColorFromToken(DataVizPalette.color3),
+            getColorFromToken(DataVizPalette.color10),
           ]}
           reflowProps={{ mode: 'min-width' }}
         />

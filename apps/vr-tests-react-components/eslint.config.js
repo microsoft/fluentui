@@ -15,7 +15,7 @@ module.exports = [
       'import/no-extraneous-dependencies': ['error', { packageDir: ['.', '../..'] }],
       '@nx/workspace-no-restricted-globals': 'off',
       '@typescript-eslint/no-deprecated': 'off',
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 ];

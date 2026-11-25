@@ -1,17 +1,22 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Radio } from './radio.js';
+import { tagName } from './radio.options.js';
 
 test.describe('Radio', () => {
-  test.use({ tagName: 'fluent-radio' });
+  test.use({
+    tagName,
+  });
 
   test('should have a role of `radio`', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'radio');
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
-    await fastPage.setTemplate();
+    await fastPage.setTemplate('');
 
     let hasError = false;
 
@@ -19,15 +24,17 @@ test.describe('Radio', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-radio');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should set ARIA attributes to match the state', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await test.step('ariaChecked', async () => {
       await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
@@ -57,6 +64,8 @@ test.describe('Radio', () => {
   test('should set a `tabindex` of 0 on the element', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
@@ -71,6 +80,8 @@ test.describe('Radio', () => {
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('value', 'on');
 
     await expect(element).toHaveJSProperty('initialValue', 'on');
@@ -79,18 +90,20 @@ test.describe('Radio', () => {
   test('should initialize to the provided value attribute if set pre-connection', async ({ fastPage, page }) => {
     await fastPage.setTemplate('');
 
-    const value = await page.evaluate(() => {
-      const radio = document.createElement('fluent-radio') as Radio;
+    const value = await page.evaluate(tagName => {
+      const radio = document.createElement(tagName) as Radio;
       radio.setAttribute('value', 'foo');
 
       return radio.value;
-    });
+    }, tagName);
 
     expect(value).toBe('foo');
   });
 
   test('should initialize to the provided value attribute if set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Radio) => node.setAttribute('value', 'foo'));
 
@@ -108,6 +121,8 @@ test.describe('Radio', () => {
   test('should fire an event when spacebar is pressed', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     const wasPressed = element.evaluate(
       node => new Promise(resolve => node.addEventListener('keydown', () => resolve(true))),
     );
@@ -121,6 +136,8 @@ test.describe('Radio', () => {
 
   test('should NOT fire events when clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     const wasNotClicked = await page.evaluate(el => {
       const event = new KeyboardEvent('click', {
@@ -143,7 +160,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio>Radio</fluent-radio>
+          <${tagName}>Radio</${tagName}>
         </form>
       `);
 
@@ -166,7 +183,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio checked></fluent-radio>
+          <${tagName} checked></${tagName}>
         </form>
       `);
 
@@ -198,7 +215,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio>Radio</fluent-radio>
+          <${tagName}>Radio</${tagName}>
         </form>
       `);
 
@@ -228,7 +245,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio></fluent-radio>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -253,7 +270,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio></fluent-radio>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -281,7 +298,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio required></fluent-radio>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -311,7 +328,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio name="radio" value="foo"></fluent-radio>
+        <${tagName} name="radio" value="foo"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);

@@ -14,6 +14,7 @@ export { GroupingItems } from './MenuGridGroupingItems.stories';
 export { Asymmetric } from './MenuGridAsymmetric.stories';
 export { WithSubmenu } from './MenuGridWithSubmenu.stories';
 export { MoreComplexMenus } from './MenuGridMoreComplexMenus.stories';
+export { NonCircularNavigation } from './MenuGridNonCircularNavigation.stories';
 
 export default {
   title: 'Preview Components/Menu/MenuGrid',

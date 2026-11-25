@@ -1,5 +1,5 @@
 import { EVENTS } from '../constants';
-import { DismissToastEventDetail, ToastId, ToasterId } from '../types';
+import type { DismissToastEventDetail, ToastId, ToasterId } from '../types';
 
 export function dismissToast(
   toastId: ToastId,

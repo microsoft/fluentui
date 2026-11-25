@@ -4,7 +4,6 @@
   "projectType": "library",
   "sourceRoot": "packages/foundation-legacy/src",
   "tags": ["v8", "ships-bundle"],
-  "implicitDependencies": [],
   "targets": {
     "test": {
       "dependsOn": ["^build"]

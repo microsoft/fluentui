@@ -1,15 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
-import {
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
@@ -179,7 +171,8 @@ export const AreaChartNegative = (): JSXElement => {
           max={1000}
           id="changeWidth_Basic"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -189,7 +182,8 @@ export const AreaChartNegative = (): JSXElement => {
           max={1000}
           id="changeHeight_Basic"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">

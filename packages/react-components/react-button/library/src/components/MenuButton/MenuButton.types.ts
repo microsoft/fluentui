@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonBaseProps, ButtonBaseState, ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type MenuButtonSlots = ButtonSlots & {
   /**
@@ -13,3 +13,15 @@ export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
 
 export type MenuButtonState = ComponentState<MenuButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+
+/**
+ * MenuButton Props without the `appearance`/`size`/`shape` styling props, for headless usage.
+ */
+export type MenuButtonBaseProps = ComponentProps<MenuButtonSlots> &
+  Pick<ButtonBaseProps, 'disabled' | 'disabledFocusable'>;
+
+/**
+ * MenuButton State without the `appearance`/`size`/`shape` styling props, for headless usage.
+ */
+export type MenuButtonBaseState = ComponentState<MenuButtonSlots> &
+  Omit<ButtonBaseState, keyof ButtonSlots | 'components' | 'iconPosition'>;

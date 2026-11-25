@@ -1,5 +1,5 @@
 import { createHsvColor } from './createHsvColor';
-import { HsvColor } from '../types/color';
+import type { HsvColor } from '../types/color';
 
 describe('createHsvColor', () => {
   it('should create an HSV color with default values', () => {

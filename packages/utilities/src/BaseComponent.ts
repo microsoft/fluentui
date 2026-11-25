@@ -14,9 +14,11 @@ import type { JSXElement } from './jsx';
 /**
  * BaseComponent class, which provides basic helpers for all components.
  *
- * @public
+ * BaseComponent class, which provides basic helpers for all components.
+ *
  * {@docCategory BaseComponent}
  *
+ * @public
  * @deprecated Do not use. We are moving away from class component.
  */
 export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {}> extends React.Component<

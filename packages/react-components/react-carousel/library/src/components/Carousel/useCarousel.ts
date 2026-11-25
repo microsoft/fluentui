@@ -25,7 +25,7 @@ import { useAnnounce } from '@fluentui/react-shared-contexts';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCarousel_unstable — manual opt-out to preserve runtime behavior
 
   const {
     align = 'center',

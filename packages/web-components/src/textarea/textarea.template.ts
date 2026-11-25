@@ -12,7 +12,7 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
       <label ${ref('labelEl')} for="control" part="label">
         <slot name="label" ${slotted('labelSlottedNodes')}></slot>
       </label>
-      <div class="root" part="root">
+      <div class="root" part="root" ${ref('rootEl')}>
         <textarea
           ${ref('controlEl')}
           id="control"
@@ -21,7 +21,7 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
           ?required="${x => x.required}"
           ?disabled="${x => x.disabled}"
           ?readonly="${x => x.readOnly}"
-          ?spellcheck="${x => x.spellcheck}"
+          spellcheck="${x => x.spellcheck}"
           autocomplete="${x => x.autocomplete}"
           maxlength="${x => x.maxLength}"
           minlength="${x => x.minLength}"

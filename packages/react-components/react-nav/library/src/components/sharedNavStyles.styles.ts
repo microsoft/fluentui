@@ -1,3 +1,5 @@
+'use client';
+
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles } from '@griffel/react';

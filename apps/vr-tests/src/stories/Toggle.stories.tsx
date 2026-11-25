@@ -3,7 +3,7 @@ import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { IToggleProps, Toggle } from '@fluentui/react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 const baseProps: IToggleProps = {
   label: 'Toggle label',

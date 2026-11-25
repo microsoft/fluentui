@@ -19,8 +19,15 @@ export {
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,
+  useInlineDrawerBase_unstable,
 } from './InlineDrawer';
-export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './InlineDrawer';
+export type {
+  InlineDrawerBaseProps,
+  InlineDrawerBaseState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+} from './InlineDrawer';
 
 export {
   DrawerBody,

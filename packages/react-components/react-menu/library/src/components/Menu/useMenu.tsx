@@ -6,8 +6,10 @@ import {
   usePositioningMouseTarget,
   usePositioning,
   useSafeZoneArea,
+  usePositioningSlideDirection,
   type PositioningShorthandValue,
 } from '@fluentui/react-positioning';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
   useControllableState,
   useId,
@@ -25,7 +27,15 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
-import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import type {
+  MenuBaseProps,
+  MenuBaseState,
+  MenuOpenChangeData,
+  MenuOpenEvent,
+  MenuProps,
+  MenuState,
+} from './Menu.types';
+import { MenuSurfaceMotion } from './MenuSurfaceMotion';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -47,6 +57,34 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
+  const { surfaceMotion, ...baseProps } = props;
+  const baseState = useMenuBase_unstable(baseProps);
+
+  return {
+    ...baseState,
+    components: {
+      surfaceMotion: MenuSurfaceMotion,
+    },
+    surfaceMotion: presenceMotionSlot(surfaceMotion, {
+      elementType: MenuSurfaceMotion,
+      defaultProps: {
+        visible: baseState.open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
+  };
+};
+
+/**
+ * Base hook for Menu component, produces state required to render the component.
+ * It doesn't set any design-related slots specific to Menu such as `surfaceMotion`.
+ *
+ * @param props - props from this instance of Menu
+ */
+export const useMenuBase_unstable = (
+  props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } },
+): MenuBaseState => {
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -66,12 +104,19 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
+  const resolvedPositioning = resolvePositioningShorthand(props.positioning);
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetDocument,
+    onPositioningEnd: resolvedPositioning.onPositioningEnd,
+  });
+
   const positioningOptions = {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
-    ...resolvePositioningShorthand(props.positioning),
+    ...resolvedPositioning,
+    onPositioningEnd: handlePositionEnd,
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -180,7 +225,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     mountNode,
     triggerRef,
     menuPopoverRef,
-    components: {},
     openOnContext,
     open,
     setOpen,
@@ -228,8 +272,6 @@ const useMenuOpenState = (
   > &
     Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
@@ -333,8 +375,19 @@ const useMenuOpenState = (
     if (open) {
       focusFirst();
     } else {
+      // Skip the initial render — focus should only be restored when the menu
+      // transitions from open → closed, not on mount.
       if (!firstMount) {
-        if (targetDocument?.activeElement === targetDocument?.body) {
+        if (
+          // Focus landed on <body> after the popover was removed from the DOM,
+          // meaning the user's focus has nowhere meaningful to go.
+          targetDocument?.activeElement === targetDocument?.body ||
+          // The surfaceMotion presence component delays unmounting the popover
+          // (e.g. during an exit animation), so focus may still be inside the
+          // popover even though `open` is already false. Proactively move it
+          // to the trigger before the DOM element is eventually removed.
+          state.menuPopoverRef.current?.contains(targetDocument?.activeElement ?? null)
+        ) {
           // We know that React effects are sync so we focus the trigger here
           // after any event handler (event handlers will update state and re-render).
           // Since the browser only performs the default behaviour for the Tab key once

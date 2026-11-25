@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { validateBehavior, ComponentTestFacade, toggleButtonBehaviorDefinition } from '@fluentui/a11y-testing';
 import { isConformant } from '../../testing/isConformant';
 import { ToggleButton } from './ToggleButton';
-import { ToggleButtonProps } from './ToggleButton.types';
+import type { ToggleButtonProps } from './ToggleButton.types';
 
 describe('ToggleButton', () => {
   beforeAll(() => {

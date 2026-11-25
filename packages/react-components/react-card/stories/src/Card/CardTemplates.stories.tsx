@@ -29,7 +29,8 @@ const useStyles = makeStyles({
   },
 
   card: {
-    width: '280px',
+    maxWidth: '280px',
+    width: '100%',
     height: 'fit-content',
   },
 
@@ -57,6 +58,7 @@ const useStyles = makeStyles({
     gap: '16px',
     display: 'flex',
     flexDirection: 'column',
+    width: '100%',
   },
 });
 

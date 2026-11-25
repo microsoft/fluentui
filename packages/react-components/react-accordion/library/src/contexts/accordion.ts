@@ -1,9 +1,9 @@
 'use client';
 
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
-import { AccordionItemValue } from '../AccordionItem';
-import { AccordionToggleData, AccordionToggleEvent } from '../Accordion';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
+import type { AccordionItemValue } from '../AccordionItem';
+import type { AccordionToggleData, AccordionToggleEvent } from '../Accordion';
 
 export type AccordionRequestToggleData<Value = AccordionItemValue> = { event: AccordionToggleEvent } & Pick<
   AccordionToggleData<Value>,

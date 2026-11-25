@@ -1,10 +1,10 @@
 const internalSetSymbol = Symbol('#internalSet');
 
 /**
- * @public
- *
  * Small immutable wrapper around the native Set implementation.
  * Every operation that would modify the set returns a new copy instance.
+ *
+ * @public
  */
 export class ImmutableSet<T> implements Iterable<T> {
   public static empty: ImmutableSet<never> = new ImmutableSet(new Set());

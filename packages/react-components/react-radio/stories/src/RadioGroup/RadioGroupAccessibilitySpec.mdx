@@ -1,0 +1,163 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/RadioGroup" />
+
+# Radio and RadioGroup Accessibility Spec
+
+`RadioGroup` and `Radio` together implement the standard radio-button selection pattern: a group of mutually exclusive options where exactly one can be selected at a time. `RadioGroup` provides the `role="radiogroup"` container that aggregates the individual `Radio` items into a single labelled control, and propagates `name`, `value`, `disabled`, and `required` to its children via context.
+
+Each `Radio` renders a real `<input type="radio">` element with a custom visual indicator. As with `Checkbox`, the native input handles all ARIA semantics, focus, and keyboard interaction; the visible circle is `aria-hidden` and purely presentational.
+
+## Usage
+
+### When to choose Radio / RadioGroup
+
+#### Radio vs. Dropdown / Select
+
+Use `RadioGroup` when there are a small number of mutually exclusive options (roughly 2–6) and seeing all options at once helps the user decide. Use `Dropdown` or `Select` when the option list is long, when the options take a lot of vertical space, or when the selected value is more important than the alternatives.
+
+#### Radio vs. Checkbox or Switch
+
+Use `Radio` when exactly one option must be selected and the options are mutually exclusive. Use `Checkbox` or `Switch` for independent on/off toggles, or when multiple selections from a set are allowed.
+
+### Radio/RadioGroup within other controls
+
+RadioGroup and Radio should not be used within other composite controls like Menu, Tree, or Listbox. All of these have their own specific ways of exposing single-selection, and do not support nesting interactive controls like Radio within them. Instead of using the Radio control within these composite widgets, use the styles for the indicator directly as a visual-only indication of selection combined with the component-specific selection semantics for the control in question.
+
+Radio and RadioGroup also should not be used directly within Toolbar, since Radios change selection as you arrow between them. If used within a Toolbar, this means the user would not be able to arrow past a RadioGroup without altering their selection. Instead of using RadioGroup and Radio, use the ToolbarRadioGroup and ToolbarRadioButton made for this purpose, which do not alter selection on focus.
+
+## Implementing Radio and RadioGroup
+
+### Always use RadioGroup
+
+Individual `Radio` components must always be rendered inside a `RadioGroup`. `RadioGroup` provides:
+
+- `role="radiogroup"` on the wrapper `<div>`, which tells assistive technologies to treat the contained radios as a single composite control.
+- A shared `name` attribute on every child `Radio`'s `<input>`, which is what the browser uses to enforce mutual exclusivity and to expose the group via the platform accessibility API. If `name` is not provided, `RadioGroup` generates one.
+- Propagation of `value` / `defaultValue` so the selected `Radio` is determined by comparing each `Radio`'s `value` against the group's `value`.
+- Propagation of `disabled`, `required`, and `aria-describedby` to all child radios.
+
+A stand-alone `Radio` outside of `RadioGroup` does not have a group container, is not announced as part of a set, and does not share a `name` with sibling radios — which means the browser will not enforce mutual exclusivity. Always wrap radios in `RadioGroup`.
+
+### RadioGroup label
+
+`RadioGroup` requires a label that names the _group_ as a whole — for example, "Favorite fruit", not the individual options. The recommended pattern is `Field`:
+
+```tsx
+<Field label="Favorite fruit">
+  <RadioGroup>
+    <Radio value="apple" label="Apple" />
+    <Radio value="banana" label="Banana" />
+  </RadioGroup>
+</Field>
+```
+
+`Field` sets `aria-labelledby` on the `RadioGroup` to point at the field's label text. Without `Field`, use `aria-labelledby` or `aria-label` directly on the `RadioGroup`:
+
+```tsx
+<Label id="fruit-label">Favorite fruit</Label>
+<RadioGroup aria-labelledby="fruit-label">
+  ...
+</RadioGroup>
+```
+
+### Radio labels
+
+Each individual `Radio` also needs its own label, which is what the `Radio`'s `label` prop provides. The `Radio`'s label is rendered as an associated `<label>` element so clicking the label text selects the radio. Avoid using `aria-label` or `aria-labelledby` on `Radio` controls unless it is an edge case such as rendering them in the first column of a Table or DataGrid.
+
+### Visual labels
+
+Per [WCAG 3.3.2 — Labels or Instructions](https://w3c.github.io/wcag/understanding/labels-or-instructions.html), the group needs a visible label and also each radio needs a visible label.
+
+For radios, the visible label is rendered from the `label` prop. The label slot may contain inline content (text, a `Text` component) or images. It is generally best practice to not include interactive elements in the label — focusable content inside a `<label>` causes the click-to-select behavior to misroute.
+
+For sublabels or extra descriptive text per radio, render the additional text outside the `label` slot and wire it to the radio via `aria-describedby`. The [RadioGroupLabelSubtext](?path=/story/components-radiogroup--label-subtext) story demonstrates this pattern.
+
+### Field integration
+
+When `RadioGroup` is rendered inside `Field`, `useFieldControlProps_unstable` automatically applies:
+
+- `aria-labelledby` — points at the field's label.
+- `aria-describedby` — points at the field's validation message and hint, merged with any consumer-provided value. This is also propagated through context to each child `Radio`'s `<input>`.
+- `required` — propagated to each child `Radio` via context, applied as the native `required` attribute on each `<input>`.
+
+`RadioGroup` does **not** automatically set `aria-invalid` from `Field`'s `validationState`. There is no error visual on the radios themselves; the validation message text is what communicates the error.
+
+### onChange behavior
+
+The `onChange` callback fires on **selection**, not deselection. When the user picks a new radio in the group, only the newly-selected `Radio`'s `onChange` fires, with the new `value` as data. The previously-selected radio does not fire `onChange` for its deselection.
+
+For most cases, prefer `RadioGroup`'s `onChange`, which fires on any selection change in the group and provides the newly-selected `value` regardless of which radio was selected.
+
+### Disabled
+
+`disabled` on `RadioGroup` propagates to every child `Radio` via context, applied as the native `disabled` attribute. Setting `disabled` on an individual `Radio` only disables that radio while leaving the others interactive — useful for showing an unavailable option in an otherwise-enabled group.
+
+There is no `disabledFocusable` analog. A disabled `Radio` is removed from the tab order, but the group's overall tab stop remains on the next non-disabled radio.
+
+### Layout
+
+`RadioGroup`'s `layout` prop controls how radios are arranged visually:
+
+- `vertical` (default) — one radio per line. Best for option lists where each label may be long.
+- `horizontal` — radios on a single line with the label after each indicator.
+- `horizontal-stacked` — radios on a single line with the label _below_ each indicator. Each `Radio`'s `labelPosition` defaults to `"below"` in this layout.
+
+Layout is purely visual; it does not change the DOM order of radios or the keyboard behavior.
+
+## Semantics
+
+### RadioGroup
+
+| Slot | Role       | States and properties                                                                              |
+| ---- | ---------- | -------------------------------------------------------------------------------------------------- |
+| root | radiogroup | `aria-labelledby` or `aria-label` (required); `aria-describedby` (optional); no native `required`. |
+
+`RadioGroup` is a `<div>` with `role="radiogroup"`. The `required` and `disabled` props are not exposed as ARIA properties on the group itself — they are propagated to each child `Radio`'s `<input>` as native attributes.
+
+### Radio
+
+| Slot      | Role           | States and properties                                                                                                                             |
+| --------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| root      | none           | A plain `<span>` with no role; used for layout and focus-within outline.                                                                          |
+| input     | radio (native) | `type="radio"`, shared `name` from group context, `checked` from value comparison, `disabled`, `required`, `aria-describedby` from group context. |
+| indicator | none           | A `<div>` with `aria-hidden="true"`; the visible circle. Purely presentational.                                                                   |
+| label     | label (native) | A `<label htmlFor={input.id}>` from `@fluentui/react-label`. Clicking it selects the radio.                                                       |
+
+Focus lives on each radio's `<input>` element. The visible focus indicator is drawn on the radio's root via `:focus-within` from `createFocusOutlineStyle` in `@fluentui/react-tabster`, because the actual `<input>` is `opacity: 0`.
+
+The indicator is `aria-hidden` — screen readers announce the radio using the native input's role and `checked` state, with the label text as its accessible name and the group's label as the surrounding group name.
+
+## Keyboard interaction
+
+`RadioGroup` participates in the standard radio-button keyboard pattern, which the browser implements natively:
+
+| Key                                            | Result                                                                                                                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| <kbd>Tab</kbd>                                 | Moves focus into the group. If a radio is selected, focus lands on the selected radio. If none is selected, focus lands on the first radio. |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd>              | Reverses the order above.                                                                                                                   |
+| <kbd>Down</kbd> arrow / <kbd>Right</kbd> arrow | Moves focus to the next radio in the group and selects it. Wraps to the first after the last.                                               |
+| <kbd>Up</kbd> arrow / <kbd>Left</kbd> arrow    | Moves focus to the previous radio in the group and selects it. Wraps to the last before the first.                                          |
+| <kbd>Space</kbd>                               | Selects the focused radio (no-op if already selected).                                                                                      |
+
+Critically, the entire group is a **single tab stop**, not one tab stop per radio. <kbd>Tab</kbd> moves _past_ the group, not between its radios; arrow keys move between radios. This is the standard browser-implemented behavior for `<input type="radio">` elements that share a `name` and are inside a `radiogroup`. All arrow keys move focus between radios, regardless of the visual layout.
+
+Selection follows focus when navigating with arrow keys — moving focus to a radio with arrow keys also selects it. This matches both the native browser behavior and the ARIA radiogroup pattern.
+
+Disabled radios are skipped during arrow-key navigation.
+
+## Windows contrast themes (high contrast mode)
+
+`Radio` includes explicit forced-colors handling in `useRadioStyles.styles.ts`:
+
+- **Unchecked:** the indicator border uses `ButtonBorder` so the outline of each option is visible against the system background.
+- **Checked:** the indicator border, the filled inner circle (`::after`), and the checkmark color all map to `Highlight`, matching the platform's selected-control color.
+- **Disabled:** the indicator border, fill, and label text map to `GrayText`, matching the platform's disabled-control color.
+
+`RadioGroup` has no forced-colors handling of its own — it is a layout `<div>` and inherits the page's forced-colors background.
+
+The focus indicator (`createFocusOutlineStyle` on each Radio's root) uses tokens that resolve to the user-selected outline color in forced colors.
+
+## Motion and animation
+
+Neither `Radio` nor `RadioGroup` has any animation. Selection changes are immediate. There is no `prefers-reduced-motion` handling to apply.

@@ -1,6 +1,7 @@
 'use client';
 
-import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import type { Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft } from 'd3-axis';
 import {
   max as d3Max,
   min as d3Min,
@@ -10,26 +11,29 @@ import {
   mean as d3Mean,
   median as d3Median,
 } from 'd3-array';
+import type { NumberValue } from 'd3-scale';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
   scaleLog as d3ScaleLog,
-  NumberValue,
   type ScaleContinuousNumeric,
   type ScaleLinear,
   type ScaleBand,
   type ScaleTime,
 } from 'd3-scale';
-import { select as d3Select, selectAll as d3SelectAll, Selection } from 'd3-selection';
+import type { Selection } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
+import type {
   TimeLocaleObject as d3TimeLocaleObject,
+  TimeLocaleDefinition as d3TimeLocaleDefinition,
+} from 'd3-time-format';
+import {
   timeFormat as d3TimeFormat,
   timeFormatLocale as d3TimeFormatLocale,
-  TimeLocaleDefinition as d3TimeLocaleDefinition,
   utcFormat as d3UtcFormat,
 } from 'd3-time-format';
 import {
@@ -48,16 +52,16 @@ import {
   utcWeek as d3UtcWeek,
   utcYear as d3UtcYear,
 } from 'd3-time';
+import type { CurveFactory } from 'd3-shape';
 import {
-  CurveFactory,
   curveLinear as d3CurveLinear,
   curveNatural as d3CurveNatural,
   curveStep as d3CurveStep,
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { AxisProps, AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
-import {
+import type { AxisProps, AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
+import type {
   AccessibilityProps,
   EventsAnnotationProps,
   LineChartPoints,
@@ -184,7 +188,7 @@ export interface IXAxisParams extends AxisProps {
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
-  tickFormat?: string;
+  tickFormat?: string | ((value: number | Date) => string);
 }
 
 export interface IYAxisParams extends AxisProps {
@@ -284,7 +288,9 @@ export function createNumericXAxis(
       return tickText[_index];
     }
     if (tickParams.tickFormat) {
-      return d3Format(tickParams.tickFormat)(domainValue);
+      return typeof tickParams.tickFormat === 'function'
+        ? tickParams.tickFormat(typeof domainValue === 'number' ? domainValue : domainValue.valueOf())
+        : d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
@@ -494,6 +500,9 @@ export function createDateXAxis(
     if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
     }
+    if (typeof tickParams.tickFormat === 'function') {
+      return tickParams.tickFormat(domainValue);
+    }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
@@ -514,7 +523,7 @@ export function createDateXAxis(
   if (hideTickOverlap) {
     const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
     const [start, end] = xAxisScale.range();
-    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+    tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -930,7 +939,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     return domainValue;
   };
   const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
 
   axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
 
@@ -984,7 +993,7 @@ export const createStringYAxis = (
   if (chartType === ChartTypes.VerticalStackedBarChart) {
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   }
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
 
   axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
 
@@ -998,7 +1007,7 @@ export const createStringYAxis = (
  */
 
 // changing the type to any as it is used by multiple charts with different data types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function calloutData(
   values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[],
 ): Record<string, YValueHover[]> {
@@ -1036,7 +1045,8 @@ export function calloutData(
       callOutAccessibilityData?: AccessibilityProps;
       index?: number;
     }[];
-  } = {};
+    // Null-prototype object so data-derived x keys (e.g. "__proto__") cannot pollute Object.prototype.
+  } = Object.create(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
@@ -1188,7 +1198,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
 /**
  * This method used for wrapping of y axis labels (tick values).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function createYAxisLabels(
   node: SVGElement | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1276,7 +1286,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * when prop 'showXAxisLablesTooltip' enables to the respected chart.
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function tooltipOfAxislabels(axistooltipProps: {
   tooltipCls: string;
   axis: Selection<SVGSVGElement, unknown, null, undefined> | null;
@@ -1382,7 +1392,8 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
 export function groupChartDataByYValue(
   chartData: HorizontalBarChartWithAxisDataPoint[],
 ): HorizontalBarChartWithAxisDataPoint[][] {
-  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
+  // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
+  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = Object.create(null);
   chartData.forEach(dataPoint => {
     const key = dataPoint.y;
     if (!map[key]) {
@@ -1946,7 +1957,7 @@ export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean
  * @param cb - Callback which returns true on matches
  */
 export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
-  let index = findIndex(array, cb);
+  const index = findIndex(array, cb);
 
   if (index < 0) {
     return undefined;
@@ -2295,6 +2306,66 @@ export const getScatterXDomainExtent = (
   return [xMin, xMax];
 };
 
+/**
+ * Calculates the radius for a marker/circle in scatter and line charts.
+ * Handles both continuous (numeric/date) and categorical (string) axes.
+ *
+ * @param pointMarkerSize - The marker size value for the current data point
+ * @param minMarkerSize - The minimum marker size across all data points
+ * @param maxMarkerSize - The maximum marker size across all data points
+ * @param extraMaxPixels - The maximum available pixels for markers (from getRangeForScatterMarkerSize)
+ * @param isContinuousXY - Whether both X and Y axes are continuous (not string-based)
+ * @param isActive - Whether the current point is active/hovered
+ * @param defaultRadius - Default radius when no marker size is specified (default: 3.5)
+ * @param activeRadius - Radius when the point is active (default: 5.5)
+ * @param minRadius - Minimum radius to ensure markers are visible (default: 4)
+ * @returns The calculated radius in pixels
+ */
+export const calculateMarkerRadius = ({
+  pointMarkerSize,
+  minMarkerSize,
+  maxMarkerSize,
+  extraMaxPixels,
+  isContinuousXY,
+  isActive = false,
+  defaultRadius = 3.5,
+  activeRadius = 5.5,
+  minRadius = 4,
+}: {
+  pointMarkerSize?: number;
+  minMarkerSize: number;
+  maxMarkerSize: number;
+  extraMaxPixels: number;
+  isContinuousXY: boolean;
+  isActive?: boolean;
+  defaultRadius?: number;
+  activeRadius?: number;
+  minRadius?: number;
+}): number => {
+  const minPixel = 4;
+  const maxPixel = 16;
+
+  // If no marker size is specified, use default or active radius
+  if (!pointMarkerSize) {
+    return isActive ? activeRadius : defaultRadius;
+  }
+
+  let radius: number;
+  if (isContinuousXY && maxMarkerSize !== 0) {
+    // For continuous axes: scale markers based on available space
+    radius = maxMarkerSize < extraMaxPixels ? pointMarkerSize : (pointMarkerSize / maxMarkerSize) * extraMaxPixels;
+  } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
+    // For categorical axes: normalize to pixel range [minPixel, maxPixel]
+    radius = minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
+  } else {
+    // Fallback to default/active radius
+    return isActive ? activeRadius : defaultRadius;
+  }
+
+  // Ensure minimum radius for visibility
+  return Math.max(radius, minRadius);
+};
+
 export const getRangeForScatterMarkerSize = ({
   data,
   xScale,
@@ -2398,12 +2469,12 @@ export const generateMonthlyTicks = (
   return ticks;
 };
 
-const generateNumericTicks = (
+export const generateNumericTicks = (
   scaleType: AxisScaleType | undefined,
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: number[],
-) => {
+): number[] | undefined => {
   const refTick = typeof tick0 === 'number' ? tick0 : 0;
 
   if (scaleType === 'log') {
@@ -2431,12 +2502,12 @@ const generateNumericTicks = (
   }
 };
 
-const generateDateTicks = (
+export const generateDateTicks = (
   tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],
   useUTC?: boolean,
-) => {
+): Date[] | undefined => {
   const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
 
   if (typeof tickStep === 'number' && tickStep > 0) {

@@ -1,1 +1,1 @@
-`Slide` supports directions using `fromX` and `fromY` props in `px`, `%`, etc.
+`Slide` supports directions using `outX` and `outY` props in `px`, `%`, etc.

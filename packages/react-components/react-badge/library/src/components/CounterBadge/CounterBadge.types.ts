@@ -48,4 +48,13 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 };
 
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> &
-  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+  Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>> & {
+    /**
+     * Whether the badge has no content after count formatting.
+     */
+    isEmpty: boolean;
+  };
+
+export type CounterBadgeBaseProps = Omit<CounterBadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+
+export type CounterBadgeBaseState = Omit<CounterBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SelectionHookParams, SelectionItemId, SelectionMethods } from './types';
+import type { SelectionHookParams, SelectionItemId, SelectionMethods } from './types';
 import { useControllableState } from '../hooks/useControllableState';
 import { createSetFromIterable } from '../utils/createSetFromIterable';
 
@@ -82,8 +82,6 @@ function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>
 }
 
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods] {
-  'use no memo';
-
   if (params.selectionMode === 'multiselect') {
     // selectionMode is a static value, so we can safely ignore rules-of-hooks
     // eslint-disable-next-line react-hooks/rules-of-hooks

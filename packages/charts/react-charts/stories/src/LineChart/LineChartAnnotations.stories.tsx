@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  ChartProps,
-  LineChartProps,
-  LineChart,
-  DataVizPalette,
-  getColorFromToken,
-  ChartAnnotation,
-} from '@fluentui/react-charts';
-import { JSXElement, makeStyles, tokens } from '@fluentui/react-components';
+import type { ChartProps, LineChartProps, ChartAnnotation } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
@@ -159,7 +154,8 @@ export const LineChartAnnotationsExample = (props: LineChartProps): JSXElement =
           max={1500}
           id="changeWidth_Styled"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1500`}
         />
         <span>{width}</span>
         <label htmlFor="changeHeight_Styled">Change Height:</label>
@@ -170,7 +166,8 @@ export const LineChartAnnotationsExample = (props: LineChartProps): JSXElement =
           max={1500}
           id="changeHeight_Styled"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1500`}
         />
         <span>{height}</span>
       </div>

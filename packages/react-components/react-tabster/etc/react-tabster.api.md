@@ -13,7 +13,7 @@ import { GroupperMoveFocusEvent } from 'tabster';
 import { GroupperMoveFocusEventName } from 'tabster';
 import { KEYBORG_FOCUSIN } from 'keyborg';
 import { KeyborgFocusInEvent } from 'keyborg';
-import { makeResetStyles } from '@griffel/react';
+import type { makeResetStyles } from '@griffel/react';
 import { MoverKeys } from 'tabster';
 import { MoverMemorizedElementEvent } from 'tabster';
 import { MoverMemorizedElementEventName } from 'tabster';

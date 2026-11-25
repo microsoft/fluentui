@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 import type { StoryParameters } from 'storywright';
 import { Steps } from 'storywright';

@@ -2,7 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { MenuGridGroupContextValues, MenuGridGroupSlots, MenuGridGroupState } from './MenuGridGroup.types';
+import type { MenuGridGroupContextValues, MenuGridGroupSlots, MenuGridGroupState } from './MenuGridGroup.types';
 import { MenuGridGroupContextProvider } from '../../contexts/menuGridGroupContext';
 
 /**

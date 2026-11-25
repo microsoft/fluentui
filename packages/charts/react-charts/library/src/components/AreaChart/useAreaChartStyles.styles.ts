@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { AreaChartProps, AreaChartStyles } from './index';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { AreaChartProps, AreaChartStyles } from './index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getTooltipStyle } from '../../utilities/index';
 
 export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {

@@ -1,4 +1,4 @@
-import { AvailableDateOptions } from './dateGrid.types';
+import type { AvailableDateOptions } from './dateGrid.types';
 
 import { isRestrictedDate } from './isRestrictedDate';
 

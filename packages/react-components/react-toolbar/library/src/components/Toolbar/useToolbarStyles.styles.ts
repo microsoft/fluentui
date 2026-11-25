@@ -1,6 +1,6 @@
 'use client';
 
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarSlots, ToolbarState } from './Toolbar.types';
 
@@ -30,10 +30,9 @@ const useStyles = makeStyles({
  * Apply styling to the Toolbar slots based on the state
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
-  'use no memo';
-
   const styles = useStyles();
   const { vertical, size } = state;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toolbarClassNames.root,
     styles.root,

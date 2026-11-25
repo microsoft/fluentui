@@ -1,6 +1,6 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
-import { PopoverSurfaceState } from '@fluentui/react-popover';
-import { PopoverSurfaceSlots } from '@fluentui/react-popover';
+import type { PopoverSurfaceState } from '@fluentui/react-popover';
+import type { PopoverSurfaceSlots } from '@fluentui/react-popover';
 
 /**
  * TeachingPopoverSurface Props

@@ -32,10 +32,9 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselNavStyles_unstable = (
   state: TeachingPopoverCarouselNavState,
 ): TeachingPopoverCarouselNavState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverCarouselNavClassNames.root, styles.root, state.root.className);
 
   return state;

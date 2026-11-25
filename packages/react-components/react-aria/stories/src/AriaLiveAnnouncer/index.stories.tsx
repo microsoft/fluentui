@@ -1,5 +1,5 @@
 import { AriaLiveAnnouncer } from '@fluentui/react-components';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import descriptionMd from './AriaLiveAnnouncerDescription.md';
 

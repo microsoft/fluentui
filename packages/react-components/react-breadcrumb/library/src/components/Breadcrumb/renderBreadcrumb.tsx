@@ -5,12 +5,12 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { BreadcrumbProvider } from './BreadcrumbContext';
-import type { BreadcrumbState, BreadcrumbSlots, BreadcrumbContextValues } from './Breadcrumb.types';
+import type { BreadcrumbBaseState, BreadcrumbSlots, BreadcrumbContextValues } from './Breadcrumb.types';
 /**
  * Render the final JSX of Breadcrumb
  */
 export const renderBreadcrumb_unstable = (
-  state: BreadcrumbState,
+  state: BreadcrumbBaseState,
   contextValues: BreadcrumbContextValues,
 ): JSXElement => {
   assertSlots<BreadcrumbSlots>(state);

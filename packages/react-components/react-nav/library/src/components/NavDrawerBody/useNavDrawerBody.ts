@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 

@@ -1,0 +1,68 @@
+.infoLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.required {
+  color: var(--danger);
+}
+
+.infoButton {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.infoButton:hover {
+  color: var(--accent);
+}
+
+.infoButton:focus-visible {
+  outline: var(--stroke-thin) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.infoButton[disabled],
+.infoButton[data-disabled],
+.infoButton[aria-disabled='true'] {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-2);
+  min-width: min-content;
+  max-width: 320px;
+}
+
+.popover:focus-visible {
+  outline: var(--stroke-thin) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.popover a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.popover a:hover {
+  text-decoration: underline;
+}

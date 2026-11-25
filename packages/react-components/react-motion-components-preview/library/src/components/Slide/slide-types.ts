@@ -2,15 +2,15 @@ import type { BasePresenceParams, AnimateOpacity } from '../../types';
 
 export type SlideParams = BasePresenceParams &
   AnimateOpacity & {
-    /** The X translate value with units to animate from. Defaults to `'0px'`. */
-    fromX?: string;
+    /** X translate for the out state (exited). Defaults to `'0px'`. */
+    outX?: string;
 
-    /** The Y translate value with units to animate from. Defaults to `'20px'`. */
-    fromY?: string;
+    /** Y translate for the out state (exited). Defaults to `'0px'`. */
+    outY?: string;
 
-    /** The X translate value with units to animate to. Defaults to `'0px'`. */
-    toX?: string;
+    /** X translate for the in state (entered). Defaults to `'0px'`. */
+    inX?: string;
 
-    /** The Y translate value with units to animate to. Defaults to `'0px'`. */
-    toY?: string;
+    /** Y translate for the in state (entered). Defaults to `'0px'`. */
+    inY?: string;
   };

@@ -1,10 +1,11 @@
-import {
+import type {
+  TableHeaderCellBaseState,
   TableHeaderCellProps,
   TableHeaderCellSlots,
   TableHeaderCellState,
 } from '../TableHeaderCell/TableHeaderCell.types';
 
-import { DataGridCellProps } from '../DataGridCell/DataGridCell.types';
+import type { DataGridCellProps } from '../DataGridCell/DataGridCell.types';
 
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
 
@@ -17,3 +18,14 @@ export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'> & P
  * State used in rendering DataGridHeaderCell
  */
 export type DataGridHeaderCellState = TableHeaderCellState;
+
+/**
+ * DataGridHeaderCell props accepted by `useDataGridHeaderCellBase_unstable`.
+ * The `group` focus mode relies on Tabster and is handled like `cell` by the base hook.
+ */
+export type DataGridHeaderCellBaseProps = DataGridHeaderCellProps;
+
+/**
+ * State returned by `useDataGridHeaderCellBase_unstable`.
+ */
+export type DataGridHeaderCellBaseState = TableHeaderCellBaseState;

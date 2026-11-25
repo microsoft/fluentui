@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles } from './useArcStyles.styles';
-import { ChartDataPoint } from '../index';
-import { ArcProps } from './index';
+import type { ChartDataPoint } from '../index';
+import type { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
 
@@ -114,7 +114,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
     return (
-      <g ref={currentRef}>
+      <g ref={currentRef} role="presentation">
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
@@ -150,7 +150,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           opacity={opacity}
           onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
-          role="img"
+          role="option"
         />
         {_renderArcLabel(classes.arcLabel)}
       </g>

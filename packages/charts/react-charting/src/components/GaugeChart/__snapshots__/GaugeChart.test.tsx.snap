@@ -4047,17 +4047,41 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
         <g
           transform="translate(0, -40)"
         >
+          <rect
+            class=
+
+                {
+                  fill: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
+                }
+            height="3"
+            width="6"
+            x="-3"
+            y="66"
+          />
           <text
             aria-hidden="true"
             class=
 
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-anchor: middle;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
+            data-is-focusable="false"
+            dominant-baseline="auto"
+            id="tooltip-host4"
+            tabindex="-1"
             text-anchor="middle"
             x="0"
             y="72"
@@ -4189,7 +4213,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     fill: CanvasText;
                   }
               data-is-focusable="true"
-              id="tooltip-host4"
+              id="tooltip-host5"
               tabindex="-1"
               text-anchor="middle"
               x="0"
@@ -4237,7 +4261,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

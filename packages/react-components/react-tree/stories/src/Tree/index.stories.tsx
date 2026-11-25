@@ -38,6 +38,7 @@ export { LazyLoading } from './TreeLazyLoading.stories';
 export { InfiniteScrolling } from './TreeInfiniteScrolling.stories';
 export { Virtualization } from './Virtualization.stories';
 export { DragAndDrop } from './TreeDragAndDrop.stories';
+export { MotionCustom } from './TreeMotionCustom.stories';
 
 export default {
   title: 'Components/Tree',

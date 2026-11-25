@@ -36,18 +36,18 @@ const useStyles = makeStyles({
  * Apply styling to the DataGridRow slots based on the state
  */
 export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGridRowState => {
-  'use no memo';
-
   const isSubtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
   const styles = useStyles();
 
   useTableRowStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dataGridRowClassNames.root,
     state.root.className,
     isSubtle && styles.subtleSelection,
   );
   if (state.selectionCell) {
+    // eslint-disable-next-line react-hooks/immutability
     state.selectionCell.className = mergeClasses(dataGridRowClassNames.selectionCell, state.selectionCell.className);
   }
 

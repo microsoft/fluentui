@@ -26,6 +26,16 @@ const PLANNER = 'planner';
 const PORTFOLIO = 'portfolio';
 const ALBUM = 'album';
 const LIST_FORM = 'listform';
+const CAMPAIGN = 'spocampaign';
+const SHORTCUTS_DEFAULT_FOLDER = 'companyfolder';
+const PBI_APP = 'pbiapp';
+const PBI_DASHBOARD = 'pbidashboard';
+const PBI_PAGINATED_REPORT = 'pbipagereport';
+const PBI_SCORECARD = 'pbiscorecard';
+const PBI_SEMANTIC_MODEL = 'pbisemmodel';
+const PBI_REPORT = 'powerbi';
+const FABRIC_ONTOLOGY = 'fabricontology';
+const WIKI_PAGE = 'wikipage';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -166,6 +176,36 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.listForm:
         iconBaseName = LIST_FORM;
+        break;
+      case FileIconType.campaign:
+        iconBaseName = CAMPAIGN;
+        break;
+      case FileIconType.shortcutsdefaultfolder:
+        iconBaseName = SHORTCUTS_DEFAULT_FOLDER;
+        break;
+      case FileIconType.pbiApp:
+        iconBaseName = PBI_APP;
+        break;
+      case FileIconType.pbiDashboard:
+        iconBaseName = PBI_DASHBOARD;
+        break;
+      case FileIconType.pbiPaginatedReport:
+        iconBaseName = PBI_PAGINATED_REPORT;
+        break;
+      case FileIconType.pbiScorecard:
+        iconBaseName = PBI_SCORECARD;
+        break;
+      case FileIconType.pbiSemanticModel:
+        iconBaseName = PBI_SEMANTIC_MODEL;
+        break;
+      case FileIconType.pbiReport:
+        iconBaseName = PBI_REPORT;
+        break;
+      case FileIconType.fabricOntology:
+        iconBaseName = FABRIC_ONTOLOGY;
+        break;
+      case FileIconType.wikiPage:
+        iconBaseName = WIKI_PAGE;
         break;
     }
   }

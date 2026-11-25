@@ -11,7 +11,8 @@ import {
 } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
-import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
+import type { ComboboxProps } from '@fluentui/react-combobox';
+import { useCombobox_unstable, Option } from '@fluentui/react-combobox';
 import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import {
   dateToKey,
@@ -216,16 +217,20 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
       selectTimeFromValue(e);
     }
   });
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onKeyDown = mergeCallbacks(handleKeyDown, state.root.onKeyDown);
 
   const rootRef = React.useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   if (state.listbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.listbox.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
   }
 
@@ -235,6 +240,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
       selectTimeFromValue(e);
     }
   });
+  // eslint-disable-next-line react-hooks/immutability
   state.input.onBlur = mergeCallbacks(handleInputBlur, state.input.onBlur);
 };
 
@@ -248,6 +254,7 @@ const useDefaultChevronIconLabel = (state: TimePickerState) => {
 
   if (fieldContext?.labelId && state.expandIcon?.['aria-label'] === defaultLabelFromCombobox) {
     const chevronId = state.expandIcon.id ?? chevronDefaultId;
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon['aria-labelledby'] = `${chevronId} ${fieldContext.labelId}`;
   }
 };

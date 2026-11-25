@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 04 Nov 2025 14:47:00 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 21 Sep 2026 15:07:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.2)
+
+Mon, 21 Sep 2026 15:07:55 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.7.1..@fluentui/react-storybook-addon_v0.7.2)
+
+### Patches
+
+- fix: render the primary story only once on docs pages ([PR #36658](https://github.com/microsoft/fluentui/pull/36658) by dmytrokirpa@microsoft.com)
+- Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.1)
+
+Tue, 30 Jun 2026 10:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.7.0..@fluentui/react-storybook-addon_v0.7.1)
+
+### Patches
+
+- feat: allow theme picker options configuration ([PR #36358](https://github.com/microsoft/fluentui/pull/36358) by dmytrokirpa@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.0)
+
+Tue, 16 Jun 2026 18:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.6.0..@fluentui/react-storybook-addon_v0.7.0)
+
+### Minor changes
+
+- feat: Allow consumers to replace primary-story / args-table / stories sections of FluentDocsPage ([PR #36115](https://github.com/microsoft/fluentui/pull/36115) by dmytrokirpa@microsoft.com)
+- feat: add shared SB preview styles ([PR #35949](https://github.com/microsoft/fluentui/pull/35949) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: resolve container preventing Canvas Toolbar interactions ([PR #36223](https://github.com/microsoft/fluentui/pull/36223) by martinhochel@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.6.0)
+
+Tue, 03 Mar 2026 13:16:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.5.1..@fluentui/react-storybook-addon_v0.6.0)
+
+### Minor changes
+
+- feat: upgrade to storybook 9 ([PR #35459](https://github.com/microsoft/fluentui/pull/35459) by dmytrokirpa@microsoft.com)
+- BREAKING: upgrade storybook to v8 ([PR #35279](https://github.com/microsoft/fluentui/pull/35279) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- chore: bump storybook to mitigate CVE ([PR #35748](https://github.com/microsoft/fluentui/pull/35748) by martinhochel@microsoft.com)
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.5.1)
 

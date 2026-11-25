@@ -1,7 +1,7 @@
 import { Button, CarouselSlider, Image, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import type { CarouselAnnouncerFunction } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,

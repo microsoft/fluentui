@@ -1,21 +1,21 @@
 import * as utils from './utilities';
 import * as colors from './colors';
-import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
+import type { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
-import {
+import type {
   DataPoint,
   HorizontalBarChartWithAxisDataPoint,
   LineChartPoints,
   VerticalBarChartDataPoint,
 } from '../types/DataPoint';
-import { ScaleBand } from 'd3-scale';
+import type { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { fireEvent } from '@testing-library/react';
 const { Timezone } = require('../../scripts/constants');
-const env = require('../../config/tests');
+const env = require('../../config/tests.cjs');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 const X_ORIGIN = 0;
@@ -212,6 +212,16 @@ describe('createNumericXAxis', () => {
     utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.HorizontalBarChartWithAxis);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
+
+  it('should format value-axis ticks with a function tickFormat (e.g. a literal %)', () => {
+    const xAxisParams = createXAxisParams();
+    const result = utils.createNumericXAxis(
+      xAxisParams,
+      { tickFormat: (value: number | Date) => `${value as number}%` },
+      utils.ChartTypes.HorizontalBarChartWithAxis,
+    );
+    expect(result.tickLabels.every((label: string) => label.endsWith('%'))).toBe(true);
+  });
 });
 
 conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXAxis', () => {
@@ -273,6 +283,14 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
       tickFormat: '%a, %d %b %Y',
     });
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
+  });
+
+  it('should format date-axis ticks with a function tickFormat', () => {
+    const xAxisParams = createXAxisParams({ domainNRangeValues });
+    const result = utils.createDateXAxis(xAxisParams, {
+      tickFormat: (value: number | Date) => `Y${(value as Date).getFullYear()}`,
+    });
+    expect(result.tickLabels.every((label: string) => label.startsWith('Y'))).toBe(true);
   });
 });
 

@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TagPickerButtonState, TagPickerButtonSlots } from './TagPickerButton.types';
+import type { TagPickerButtonBaseState, TagPickerButtonSlots } from './TagPickerButton.types';
 
 /**
  * Render the final JSX of PickerButton
  */
-export const renderTagPickerButton_unstable = (state: TagPickerButtonState): JSXElement => {
+export const renderTagPickerButton_unstable = (state: TagPickerButtonBaseState): JSXElement => {
   assertSlots<TagPickerButtonSlots>(state);
 
   return <state.root />;

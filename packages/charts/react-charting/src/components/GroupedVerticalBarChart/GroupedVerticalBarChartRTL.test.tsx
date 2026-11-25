@@ -663,8 +663,9 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
     { data: chartPoints, showXAxisLablesTooltip: true, noOfCharsToTruncate: 3 },
     container => {
       // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(3);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Met...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(3);
+      expect(tickLabels[0].textContent).toEqual('Met...');
     },
   );
 
@@ -687,8 +688,9 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
       expect(bars).toHaveLength(6);
       fireEvent.mouseOver(bars[0]);
       // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(3);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Meta...');
+      const tickLabels = container.querySelectorAll('tspan');
+      expect(tickLabels).toHaveLength(3);
+      expect(tickLabels[0].textContent).toEqual('Meta...');
     },
   );
 

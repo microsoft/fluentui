@@ -8,8 +8,10 @@ export type {
   AccordionToggleData,
   AccordionToggleEvent,
   AccordionToggleEventHandler,
+  AccordionBaseState,
+  AccordionBaseProps,
 } from './Accordion.types';
 export { renderAccordion_unstable } from './renderAccordion';
-export { useAccordion_unstable } from './useAccordion';
+export { useAccordion_unstable, useAccordionBase_unstable } from './useAccordion';
 export { accordionClassNames, useAccordionStyles_unstable } from './useAccordionStyles.styles';
 export { useAccordionContextValues_unstable } from './useAccordionContextValues';

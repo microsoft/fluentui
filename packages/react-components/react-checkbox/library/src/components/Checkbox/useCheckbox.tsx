@@ -3,15 +3,14 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
-  getPartitionedNativeProps,
   useControllableState,
-  useEventCallback,
+  mergeCallbacks,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import { CheckboxProps, CheckboxState } from './Checkbox.types';
+import type { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
 import {
   Checkmark12Filled,
   Checkmark16Filled,
@@ -32,28 +31,17 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  'use no memo';
+  const { shape = 'square', size = 'medium', ...checkboxProps } = props;
 
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+  const state = useCheckboxBase_unstable(checkboxProps, ref);
 
-  const { disabled = false, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLSpanElement>());
 
-  const [checked, setChecked] = useControllableState({
-    defaultState: props.defaultChecked,
-    state: props.checked,
-    initialState: false,
-  });
-
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'size', 'onChange'],
-  });
-
-  const mixed = checked === 'mixed';
-  const id = useId('checkbox-', nativeProps.primary.id);
-
+  // Override indicator children with size+shape-appropriate icon
+  const mixed = state.checked === 'mixed';
   let checkmarkIcon;
   if (mixed) {
     if (shape === 'circular') {
@@ -61,59 +49,117 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     } else {
       checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
     }
-  } else if (checked) {
+  } else if (state.checked) {
     checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
   }
 
-  const state: CheckboxState = {
+  if (state.indicator) {
+    state.indicator.children ??= checkmarkIcon;
+  }
+
+  return {
     shape,
+    size,
+    ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      label: Label,
+    },
+    label: slot.optional(props.label, {
+      defaultProps: {
+        ...state.label,
+        size: 'medium',
+      },
+      elementType: Label,
+    }),
+  };
+};
+
+/**
+ * Base hook for Checkbox component, which manages state related to checked state, ARIA attributes,
+ * and slot structure without design props or focus management.
+ *
+ * @param props - props from this instance of Checkbox
+ * @param ref - reference to `<input>` element of Checkbox
+ */
+export const useCheckboxBase_unstable = (
+  props: CheckboxBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): CheckboxBaseState => {
+  'use no memo'; // justified: compiler would optimize useCheckboxBase_unstable — manual opt-out to preserve runtime behavior
+
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
+  const {
+    checked: checkedProp,
+    defaultChecked,
+    labelPosition = 'after',
+    onChange,
+    // Slots
+    root,
+    input,
+    label,
+    indicator,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
+  } = props;
+  const { disabled = false, required } = props;
+
+  const [checked, setChecked] = useControllableState({
+    defaultState: defaultChecked,
+    state: checkedProp,
+    initialState: false,
+  });
+
+  const mixed = checked === 'mixed';
+  const id = useId('checkbox-', inputProps.id);
+
+  const state: CheckboxBaseState = {
     checked,
     disabled,
-    size,
     labelPosition,
     components: {
       root: 'span',
       input: 'input',
       indicator: 'div',
-      label: Label,
+      label: 'label',
     },
-    root: slot.always(props.root, {
-      defaultProps: {
-        ref: useFocusWithin<HTMLSpanElement>(),
-        ...nativeProps.root,
-      },
+    root: slot.always(root, {
+      defaultProps: { className, style },
       elementType: 'span',
     }),
-    input: slot.always(props.input, {
+    input: slot.always(input, {
       defaultProps: {
         type: 'checkbox',
         id,
         ref,
         checked: checked === true,
-        ...nativeProps.primary,
+        ...inputProps,
       },
       elementType: 'input',
     }),
-    label: slot.optional(props.label, {
+    label: slot.optional(label, {
       defaultProps: {
         htmlFor: id,
         disabled,
         required,
-        size: 'medium', // Even if the checkbox itself is large
       },
-      elementType: Label,
+      elementType: 'label',
     }),
-    indicator: slot.optional(props.indicator, {
+    indicator: slot.optional(indicator, {
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
-        children: checkmarkIcon,
       },
       elementType: 'div',
     }),
   };
 
-  state.input.onChange = useEventCallback(ev => {
+  state.input.onChange = mergeCallbacks(state.input.onChange, ev => {
     const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
     onChange?.(ev, { checked: val });
     setChecked(val);

@@ -1,14 +1,6 @@
-import {
-  createPresenceComponent,
-  Field,
-  makeStyles,
-  motionTokens,
-  tokens,
-  Switch,
-  PresenceComponentProps,
-} from '@fluentui/react-components';
+import { createPresenceComponent, Field, makeStyles, motionTokens, tokens, Switch } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceComponentProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {

@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { Theme } from '@fluentui/react-theme';
 import {
-  Theme,
   teamsDarkTheme,
   teamsDarkV21Theme,
   teamsHighContrastTheme,
@@ -12,9 +12,10 @@ import {
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
-import { defaultTheme, ThemeIds } from '../theme';
+import type { ThemeIds } from '../theme';
+import { defaultTheme } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
-import { FluentStoryContext } from '../hooks';
+import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 const themes: Record<ThemeIds, Theme> = {

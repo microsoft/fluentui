@@ -58,12 +58,7 @@ module.exports = (plop: NodePlopAPI) => {
         type: 'list',
         name: 'codeowner',
         message: 'Provide team that owns this package',
-        choices: [
-          '@microsoft/fluentui-react-build',
-          '@microsoft/teams-prg',
-          '@microsoft/cxe-red',
-          '@microsoft/cxe-prg',
-        ],
+        choices: ['@microsoft/fluentui-react-build', '@microsoft/teams-prg', '@microsoft/cxe-prg'],
       },
       {
         type: 'confirm',
@@ -155,7 +150,11 @@ module.exports = (plop: NodePlopAPI) => {
         },
         () => {
           console.log('\nPackage files created! Running yarn to link...\n');
-          const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
+          const yarnResult = spawnSync('yarn', ['install', '--mode=skip-builds'], {
+            cwd: root,
+            stdio: 'inherit',
+            shell: true,
+          });
           if (yarnResult.status !== 0) {
             throw new Error('Something went wrong with running yarn. Please check previous logs for details');
           }

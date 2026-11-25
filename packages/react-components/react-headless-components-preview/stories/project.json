@@ -1,0 +1,26 @@
+{
+  "name": "react-headless-components-preview-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-headless-components-preview/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories", "react-headless"],
+  "implicitDependencies": [],
+  "targets": {
+    "storybook": {
+      "dependsOn": [
+        {
+          "projects": ["react-headless-components-preview", "react-storybook-addon-playground"],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook": {
+      "dependsOn": [
+        {
+          "projects": ["react-headless-components-preview", "react-storybook-addon-playground"],
+          "target": "build"
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ScaleLinear } from 'd3-scale';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 /**
  * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series

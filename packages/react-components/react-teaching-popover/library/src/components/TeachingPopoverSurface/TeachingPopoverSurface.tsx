@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { TeachingPopoverSurfaceProps } from './TeachingPopoverSurface.types';
+import type { TeachingPopoverSurfaceProps } from './TeachingPopoverSurface.types';
 import { useTeachingPopoverSurface_unstable } from './useTeachingPopoverSurface';
 import { useTeachingPopoverSurfaceStyles_unstable } from './useTeachingPopoverSurfaceStyles.styles';
 import { renderTeachingPopoverSurface_unstable } from './renderTeachingPopoverSurface';

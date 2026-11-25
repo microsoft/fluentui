@@ -1,8 +1,8 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { HorizontalBarChartWithAxisProps, HorizontalBarChartWithAxisStyles } from './index';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { HorizontalBarChartWithAxisProps, HorizontalBarChartWithAxisStyles } from './index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/index';
 

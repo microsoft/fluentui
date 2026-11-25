@@ -7,7 +7,7 @@ import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { dropdownClassNames } from './useDropdownStyles.styles';
-import { DropdownProps } from '@fluentui/react-combobox';
+import type { DropdownProps } from '@fluentui/react-combobox';
 
 describe('Dropdown', () => {
   beforeEach(() => {

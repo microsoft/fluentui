@@ -32,5 +32,5 @@ export function getSliderDirection(dir: 'ltr' | 'rtl', vertical: boolean, transp
   if (vertical) {
     return transparency ? '180deg' : '0deg';
   }
-  return dir === 'ltr' && !transparency ? '90deg' : '-90deg';
+  return (dir === 'ltr') !== transparency ? '90deg' : '-90deg';
 }

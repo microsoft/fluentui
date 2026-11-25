@@ -1,4 +1,4 @@
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 // class names from v0 - not imported as we do not want to keep depending on v0.

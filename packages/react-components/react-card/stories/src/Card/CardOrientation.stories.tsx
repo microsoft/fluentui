@@ -20,13 +20,13 @@ const useStyles = makeStyles({
   },
 
   card: {
-    width: '360px',
-    maxWidth: '100%',
+    width: '100%',
     height: 'fit-content',
   },
 
   section: {
-    width: 'fit-content',
+    maxWidth: '360px',
+    width: '100%',
   },
 
   title: { margin: '0 0 12px' },

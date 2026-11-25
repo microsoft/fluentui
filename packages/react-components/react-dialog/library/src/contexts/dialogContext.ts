@@ -1,11 +1,11 @@
 'use client';
 
-import * as React from 'react';
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import { DialogSurfaceElement } from '../DialogSurface';
-import type { Context } from '@fluentui/react-context-selector';
+import type * as React from 'react';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { DialogSurfaceElement } from '../DialogSurface';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
-import { useModalAttributes } from '@fluentui/react-tabster';
+import type { useModalAttributes } from '@fluentui/react-tabster';
 
 export type DialogContextValue = {
   open: boolean;

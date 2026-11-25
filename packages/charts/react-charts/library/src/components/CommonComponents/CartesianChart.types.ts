@@ -1,7 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { LegendsProps } from '../Legends/index';
-import {
+import type { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
+import type {
   AccessibilityProps,
   Chart,
   Margins,
@@ -19,10 +20,17 @@ import {
   AxisProps,
   AxisScaleType,
 } from '../../types/index';
-import { TimeLocaleDefinition } from 'd3-time-format';
-import { ChartPopoverProps } from './ChartPopover.types';
-import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
-import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { TimeLocaleDefinition } from 'd3-time-format';
+import type { ChartPopoverProps } from './ChartPopover.types';
+import type {
+  ChartTypes,
+  IAxisData,
+  IDomainNRange,
+  IYAxisParams,
+  XAxisTypes,
+  YAxisType,
+} from '../../utilities/utilities';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -177,6 +185,11 @@ export interface CartesianChartStyles {
  */
 export interface CartesianChartProps {
   /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
+  /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
    * These values decide wheather chart re render or not. Please check examples for reference
@@ -226,11 +239,16 @@ export interface CartesianChartProps {
   tickValues?: number[] | Date[] | string[] | undefined;
 
   /**
-   * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
-   * Please look at https://github.com/d3/d3-time-format for all the formats supported for date axis
-   * Only applicable for date axis. For y-axis format use yAxisTickFormat prop.
+   * Format for x-axis tick labels. Accepts either a d3-format string or a `(value) => string` function.
+   *
+   * String: a d3-time-format specifier for date axes (e.g. `'%m/%d'`) or a d3-format specifier for
+   * numeric axes. See https://github.com/d3/d3-time-format and https://github.com/d3/d3-format.
+   *
+   * Function: formats the tick value directly — useful when a d3-format string is insufficient,
+   * e.g. appending a literal `%` to an already-0–100 axis (d3's `%` type multiplies by 100),
+   * or routing ticks through an app/i18n formatter. For y-axis format use `yAxisTickFormat`.
    */
-  tickFormat?: string;
+  tickFormat?: string | ((value: number | Date) => string);
 
   /**
    * Width of line stroke
@@ -631,7 +649,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    */
   tickParams?: {
     tickValues?: number[] | Date[] | string[];
-    tickFormat?: string;
+    tickFormat?: string | ((value: number | Date) => string);
   };
 
   /**
@@ -683,6 +701,11 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Callback method used when mouse leaves the chart boundary.
    */
   onChartMouseLeave?: () => void;
+
+  /**
+   * Callback method used when focus leaves the chart boundary.
+   */
+  onChartBlur?: () => void;
 
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;

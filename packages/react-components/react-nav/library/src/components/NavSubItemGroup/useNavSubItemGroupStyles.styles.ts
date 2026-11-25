@@ -13,6 +13,7 @@ export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots
  */
 const useStyles = makeStyles({
   root: {
+    flexShrink: 0,
     transform: 'translateZ(0)',
     overflow: 'hidden',
   },
@@ -22,10 +23,9 @@ const useStyles = makeStyles({
  * Apply styling to the NavSubItemGroup slots based on the state
  */
 export const useNavSubItemGroupStyles_unstable = (state: NavSubItemGroupState): NavSubItemGroupState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navSubItemGroupClassNames.root, styles.root, state.root.className);
 
   return state;

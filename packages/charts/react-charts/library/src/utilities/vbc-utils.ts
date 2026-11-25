@@ -1,4 +1,4 @@
-import { Margins } from '../index';
+import type { Margins } from '../index';
 
 export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, number] | undefined => {
   if (data.length < 2) {

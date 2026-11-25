@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
 import { isConformant } from '../../testing/isConformant';
-import { TextProps } from './Text.types';
+import type { TextProps } from './Text.types';
 
 describe('Text', () => {
   isConformant<TextProps>({

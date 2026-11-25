@@ -4,7 +4,8 @@ import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import type { UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { useTriggerSlot } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UseButtonTriggerSlotOptions = {
@@ -14,18 +15,17 @@ type UseButtonTriggerSlotOptions = {
 };
 
 /**
- * @internal
  * useButtonTriggerSlot returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
+ *
+ * @internal
  */
 export function useButtonTriggerSlot(
   triggerFromProps: NonNullable<Slot<'button'>>,
   ref: React.Ref<HTMLButtonElement>,
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
-  'use no memo';
-
   const {
     state: { open, setOpen, getOptionById },
     defaultProps,
@@ -123,6 +123,7 @@ export function useButtonTriggerSlot(
     elementType: 'button',
     activeDescendantController,
   });
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

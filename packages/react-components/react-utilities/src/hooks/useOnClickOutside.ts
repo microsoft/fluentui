@@ -45,8 +45,9 @@ export type UseOnClickOrScrollOutsideOptions = {
 const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, child) => !!parent?.contains(child);
 
 /**
- * @internal
  * Utility to perform checks where a click/touch event was made outside a component
+ *
+ * @internal
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { targetDocument } = useFluent();

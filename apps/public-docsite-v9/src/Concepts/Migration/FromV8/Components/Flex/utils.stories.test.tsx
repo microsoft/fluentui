@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { render } from '@testing-library/react';
-
 import { CodeExample } from './utils.stories';
 
 // Mock the Source component to verify it receives correct props
@@ -13,7 +12,7 @@ const mockSource = jest.fn(({ code, language }: { code: string; language: string
 ));
 
 // `Source` wont be available in the test environment, so we need to mock it to test the code output
-jest.mock('@storybook/addon-docs', () => ({
+jest.mock('@storybook/addon-docs/blocks', () => ({
   Source: (props: { code: string; language: string }) => mockSource(props),
 }));
 

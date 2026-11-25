@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOption.types';
@@ -33,7 +33,12 @@ export const useTagPickerOption_unstable = (
       elementType: 'span',
     }),
     root: slot.always(
-      { ...optionState.root, role: 'option', 'aria-checked': props['aria-checked'] },
+      {
+        ...optionState.root,
+        role: 'option',
+        'aria-selected': props['aria-selected'] ?? optionState.selected,
+        'aria-checked': props['aria-checked'],
+      },
       {
         elementType: 'div',
       },

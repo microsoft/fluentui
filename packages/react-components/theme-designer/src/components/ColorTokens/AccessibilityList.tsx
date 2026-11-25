@@ -1,13 +1,12 @@
 import * as React from 'react';
+import type { BrandVariants, Theme } from '@fluentui/react-components';
 import {
   Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
   Badge,
-  BrandVariants,
   makeStyles,
-  Theme,
   tokens,
 } from '@fluentui/react-components';
 import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
@@ -15,8 +14,8 @@ import { TokenIssueList } from './TokenIssueList';
 import { TokenList } from './TokenList';
 import { sortOverrideableColorTokens } from '../../utils/getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, ErrorCircleRegular, WarningRegular } from '@fluentui/react-icons';
-import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
-import { Brands } from '@fluentui/react-theme';
+import type { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
+import type { Brands } from '@fluentui/react-theme';
 
 export interface AccessibilityListProps {
   brand: BrandVariants;

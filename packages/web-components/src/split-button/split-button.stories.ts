@@ -2,8 +2,10 @@ import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 import type { Menu as FluentMenu } from '../menu/menu.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 
 type Story = StoryObj<FluentMenu>;
+const { argTypes } = getStorybookHelpers<FluentMenu>('fluent-menu');
 
 const defaultSlottedContent = html`
   <fluent-menu-list>
@@ -63,49 +65,7 @@ export default {
     },
   },
   render: renderComponent(storyTemplate),
-  argTypes: {
-    split: {
-      control: false,
-      description: 'Sets the split visual state. Used in Cordination with the `primary-action` slot.',
-      name: 'split',
-      table: {
-        category: 'attributes',
-        readonly: true,
-        defaultValue: { summary: 'true' },
-        type: { summary: 'boolean' },
-      },
-    },
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the button.',
-      options: ['', ...Object.values(ButtonAppearance)],
-      mapping: { '': null, ...ButtonAppearance },
-      table: {
-        category: 'button attributes',
-        type: { summary: Object.values(ButtonAppearance).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button.',
-      options: ['', ...Object.values(ButtonSize)],
-      mapping: { '': null, ...ButtonSize },
-      table: {
-        category: 'button attributes',
-        type: { summary: Object.values(ButtonSize).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'The shape of the button.',
-      options: ['', ...Object.values(ButtonShape)],
-      mapping: { '': null, ...ButtonShape },
-      table: {
-        category: 'button attributes',
-        type: { summary: Object.values(ButtonShape).join('|') },
-      },
-    },
-  },
+  argTypes,
 } as Meta<FluentMenu>;
 
 export const Default: Story = {};

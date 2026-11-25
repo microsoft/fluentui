@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 
 import { withFluentProvider } from '../decorators/withFluentProvider';
 import { withReactStrictMode } from '../decorators/withReactStrictMode';

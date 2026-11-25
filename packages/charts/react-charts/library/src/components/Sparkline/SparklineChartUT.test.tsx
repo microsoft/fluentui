@@ -1,11 +1,11 @@
 import { getByClass, testWithWait } from '../../utilities/TestUtility.test';
 import { Sparkline } from './Sparkline';
-import { ChartProps } from './index';
+import type { ChartProps } from './index';
 import { emptySparklinePoints } from './Sparkline.test';
 import { getByRole, queryAllByAttribute, render } from '@testing-library/react';
 import * as React from 'react';
 
-const env = require('../../../config/tests.js');
+const env = require('../../../config/tests.cjs');
 const runTest = env === 'TEST' ? describe : describe;
 
 const sparkline1Points: ChartProps = {

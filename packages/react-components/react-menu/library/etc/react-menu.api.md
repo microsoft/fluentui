@@ -4,9 +4,9 @@
 
 ```ts
 
-import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -14,9 +14,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
-import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
+import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -30,6 +31,12 @@ export const Menu: React_2.FC<MenuProps>;
 
 // @public
 export const MENU_ENTER_EVENT = "fuimenuenter";
+
+// @public (undocumented)
+export type MenuBaseProps = Omit<MenuProps, 'surfaceMotion'>;
+
+// @public (undocumented)
+export type MenuBaseState = Omit<MenuState, 'surfaceMotion' | 'components'>;
 
 // @public (undocumented)
 export type MenuCheckedValueChangeData = {
@@ -166,6 +173,12 @@ export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'conten
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
 
+// @public
+export type MenuItemRadioBaseProps = MenuItemRadioProps;
+
+// @public
+export type MenuItemRadioBaseState = MenuItemRadioState;
+
 // @public (undocumented)
 export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
 
@@ -198,7 +211,9 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    submenuOpen: boolean;
+};
 
 // @public (undocumented)
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
@@ -229,6 +244,8 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
     toggleCheckbox?: SelectableHandler;
     selectRadio?: SelectableHandler;
     onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+    shouldOpenOnArrowRight?: boolean;
+    shouldCloseOnArrowLeft?: boolean;
 };
 
 // @public (undocumented)
@@ -337,7 +354,7 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalPro
 };
 
 // @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+export type MenuProps = ComponentProps<Partial<MenuSlots>> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
     children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;
@@ -355,7 +372,9 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
 export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
-export type MenuSlots = {};
+export type MenuSlots = {
+    surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
 
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -375,7 +394,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -394,6 +413,11 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
 
 // @public
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
+
+// @public (undocumented)
+export type MenuTriggerBaseProps = MenuTriggerProps & {
+    focusFirst?: () => void;
+};
 
 // @public
 export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
@@ -477,6 +501,13 @@ export const useMenu_unstable: (props: MenuProps & {
     };
 }) => MenuState;
 
+// @public
+export const useMenuBase_unstable: (props: MenuBaseProps & {
+    safeZone?: boolean | {
+        timeout?: number;
+    };
+}) => MenuBaseState;
+
 // @public (undocumented)
 export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
 
@@ -511,7 +542,13 @@ export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupSt
 export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
 
 // @public
+export const useMenuItemBase_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
+
+// @public
 export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
+
+// @public
+export const useMenuItemCheckboxBase_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
 
 // @public (undocumented)
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
@@ -520,10 +557,16 @@ export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) 
 export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
 
 // @public
+export const useMenuItemLinkBase_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
+
+// @public
 export const useMenuItemLinkStyles_unstable: (state: MenuItemLinkState) => MenuItemLinkState;
 
 // @public
 export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioState;
+
+// @public
+export const useMenuItemRadioBase_unstable: (props: MenuItemRadioBaseProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioBaseState;
 
 // @public (undocumented)
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
@@ -535,10 +578,16 @@ export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState
 export const useMenuItemSwitch_unstable: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
 
 // @public
+export const useMenuItemSwitchBase_unstable: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
+
+// @public
 export const useMenuItemSwitchStyles_unstable: (state: MenuItemSwitchState) => MenuItemSwitchState;
 
 // @public
 export const useMenuList_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
+
+// @public
+export const useMenuListBase_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
 
 // @public (undocumented)
 export const useMenuListContext_unstable: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
@@ -553,6 +602,9 @@ export const useMenuListStyles_unstable: (state: MenuListState) => MenuListState
 export const useMenuPopover_unstable: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
 // @public
+export const useMenuPopoverBase_unstable: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
+
+// @public
 export const useMenuPopoverStyles_unstable: (state: MenuPopoverState) => MenuPopoverState;
 
 // @public
@@ -563,6 +615,9 @@ export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => M
 
 // @public
 export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
+
+// @public
+export const useMenuTriggerBase_unstable: (props: MenuTriggerBaseProps) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;

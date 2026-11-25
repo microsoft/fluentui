@@ -13,6 +13,10 @@ const items = [
 ];
 
 export const Asymmetric = (): JSXElement => {
+  const showAlert = (name: string) => {
+    alert(`Item ${name} activated`);
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -43,6 +47,7 @@ export const Asymmetric = (): JSXElement => {
                   aria-label={`Profile card for ${item.name}`}
                 />
               }
+              onClick={() => showAlert(item.name)}
               aria-label={item.name}
             >
               {item.name}

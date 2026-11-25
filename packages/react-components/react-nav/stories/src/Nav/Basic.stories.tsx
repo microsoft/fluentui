@@ -14,7 +14,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-components';
-import { DrawerProps } from '@fluentui/react-drawer';
+import type { DrawerProps } from '@fluentui/react-drawer';
 import {
   Label,
   Radio,
@@ -155,10 +155,10 @@ export const Basic = (): JSXElement => {
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href={linkDestination} value="7">
-                Openings
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
               </NavSubItem>
               <NavSubItem href={linkDestination} value="8">
-                Submissions
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>

@@ -1,0 +1,31 @@
+# Run the given steps after a GitHub App token is created and before it's revoked.
+# The token is available as $(createToken.GITHUB_APP_TOKEN)
+parameters:
+  - name: steps
+    type: stepList
+
+steps:
+  - task: AzureCLI@2
+    name: createToken
+    displayName: Create GitHub App token
+    inputs:
+      azureSubscription: 'Azure - fabricweb storage - NEW'
+      scriptType: bash
+      scriptLocation: inlineScript
+      # office-ogx-auth-helper GitHub App
+      inlineScript: |
+        yarn beachball-auth-helper create-github-app-token \
+          --app-client-id Iv23ligBoU5jc9SIFnGR \
+          --key-id https://fluentui-oss-release-kv.vault.azure.net/keys/office-ogx-auth-helper-key \
+          --repository '$(Build.Repository.Name)' \
+          --permissions contents:write,pull_requests:read \
+          --ci-output-name GITHUB_APP_TOKEN
+
+  - ${{ each step in parameters.steps }}:
+      - ${{ step }}
+
+  - script: yarn beachball-auth-helper revoke-github-app-token
+    displayName: Revoke GitHub App token
+    condition: and(always(), ne(variables['createToken.GITHUB_APP_TOKEN'], ''))
+    env:
+      TOKEN: $(createToken.GITHUB_APP_TOKEN)

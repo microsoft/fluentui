@@ -3,7 +3,7 @@ import { Steps, type StoryParameters } from 'storywright';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 import { propValues, useStyles } from './utils';

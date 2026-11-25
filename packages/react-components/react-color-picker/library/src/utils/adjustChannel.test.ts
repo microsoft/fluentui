@@ -1,4 +1,5 @@
-import { clampValue, adjustChannel, ChannelActions } from './adjustChannel';
+import type { ChannelActions } from './adjustChannel';
+import { clampValue, adjustChannel } from './adjustChannel';
 import { MIN, HUE_MAX, MAX as COLOR_MAX } from './constants';
 
 describe('clampValue', () => {
@@ -36,5 +37,19 @@ describe('adjustChannel', () => {
     expect(adjustChannel('hue', actions)).toBe('hueAction');
     expect(adjustChannel('saturation', actions)).toBe('saturationAction');
     expect(adjustChannel('value', actions)).toBe('valueAction');
+  });
+
+  // Regression test for https://github.com/microsoft/fluentui/issues/36646 — the previous `||`
+  // fallback treated falsy channel values (e.g. 0) as missing and returned the hue action instead.
+  it('should return falsy channel values instead of falling back to the hue action', () => {
+    const numericActions: ChannelActions<number> = {
+      hue: 120,
+      saturation: 0,
+      value: 0,
+    };
+
+    expect(adjustChannel('saturation', numericActions)).toBe(0);
+    expect(adjustChannel('value', numericActions)).toBe(0);
+    expect(adjustChannel('hue', numericActions)).toBe(120);
   });
 });

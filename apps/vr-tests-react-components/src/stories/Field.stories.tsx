@@ -11,7 +11,7 @@ import { Slider } from '@fluentui/react-slider';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
-import type { Meta, Decorator } from '@storybook/react';
+import type { Meta, Decorator } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 
 import type { StoryParameters } from 'storywright';

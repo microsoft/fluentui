@@ -74,6 +74,8 @@ describe(`utils`, () => {
       const presetTemplate =
         options.presetContent ??
         stripIndents`
+          const preset = require('./lib-commonjs/preset/preset');
+
           function config(entry = []) {
             return [...entry, require.resolve('./lib/preset/preview')];
           }
@@ -82,7 +84,7 @@ describe(`utils`, () => {
             return [...entry, require.resolve('./lib/preset/manager')];
           }
 
-          module.exports = { managerEntries, config };
+          module.exports = { managerEntries, config, ...preset };
       `;
 
       fs.writeFileSync(paths.preset, presetTemplate, 'utf-8');
@@ -146,6 +148,8 @@ describe(`utils`, () => {
         return config;
         }
 
+        const preset = require('../src/preset/preset');
+
         function config(entry = []) {
         return [...entry, require.resolve('../src/preset/preview.ts')];
         }
@@ -154,7 +158,7 @@ describe(`utils`, () => {
         return [...entry, require.resolve('../src/preset/manager.ts')];
         }
 
-        module.exports = { managerWebpack, managerEntries, config };"
+        module.exports = { managerWebpack, managerEntries, config, ...preset };"
       `);
     });
 

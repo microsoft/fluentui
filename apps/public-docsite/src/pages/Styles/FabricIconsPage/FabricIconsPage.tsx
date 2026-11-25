@@ -39,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           jumpLinks: [
             { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
+            { text: enDash + ' Icon subsets', url: 'icon-subsets' },
           ],
         },
 

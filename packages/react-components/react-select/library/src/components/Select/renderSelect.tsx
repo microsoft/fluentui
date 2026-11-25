@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { SelectSlots, SelectState } from './Select.types';
+import type { SelectBaseState, SelectSlots } from './Select.types';
 
 /**
  * Render the final JSX of Select
  */
-export const renderSelect_unstable = (state: SelectState): JSXElement => {
+export const renderSelect_unstable = (state: SelectBaseState): JSXElement => {
   assertSlots<SelectSlots>(state);
   return (
     <state.root>

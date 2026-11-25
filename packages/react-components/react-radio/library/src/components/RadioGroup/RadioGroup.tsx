@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { RadioGroupProps } from './RadioGroup.types';
+import type { RadioGroupProps } from './RadioGroup.types';
 import { renderRadioGroup_unstable } from './renderRadioGroup';
 import { useRadioGroup_unstable } from './useRadioGroup';
 import { useRadioGroupStyles_unstable } from './useRadioGroupStyles.styles';

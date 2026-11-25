@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { VSChartDataPoint, VerticalStackedChartProps } from '../../index';
+import type { VSChartDataPoint, VerticalStackedChartProps } from '../../index';
 import { forEachTimezone, getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
@@ -187,6 +187,25 @@ const simplePointsWithoutLine = [
 ];
 
 const maxBarGap = 5;
+
+const pointsWithLeadingZeroValues: VerticalStackedChartProps[] = [
+  {
+    xAxisPoint: 'Jan',
+    chartData: [
+      { legend: 'Metals', data: 0, color: '#0078D4' },
+      { legend: 'Glass', data: 0, color: '#004E8C' },
+      { legend: 'Paper', data: 20, color: '#00245B' },
+    ],
+  },
+  {
+    xAxisPoint: 'Feb',
+    chartData: [
+      { legend: 'Metals', data: 0, color: '#0078D4' },
+      { legend: 'Glass', data: 0, color: '#004E8C' },
+      { legend: 'Paper', data: 10, color: '#00245B' },
+    ],
+  },
+];
 
 describe('Vertical stacked bar chart rendering', () => {
   beforeEach(sharedBeforeEach);
@@ -455,6 +474,25 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       expect(bars[4]).toHaveAttribute('opacity', '0.1');
       expect(bars[6]).toHaveAttribute('opacity', '0.1');
       expect(bars[7]).toHaveAttribute('opacity', '0.1');
+    },
+  );
+
+  testWithWait(
+    'Should reduce the opacity of path bars (barCornerRadius) on mouse over a legend when leading zero values are present',
+    VerticalStackedBarChart,
+    { data: pointsWithLeadingZeroValues, barCornerRadius: 5 },
+    container => {
+      // Arrange
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      const metalsLegend = legends.find(l => l.textContent === 'Metals');
+      expect(metalsLegend).toBeDefined();
+      fireEvent.mouseOver(metalsLegend!);
+
+      // Assert: Paper bars (rendered as <path> due to barCornerRadius) should be dimmed
+      const paths = container.querySelectorAll('path.fui-vsbc__opacityChangeOnHover');
+      paths.forEach(path => {
+        expect(path).toHaveAttribute('opacity', '0.1');
+      });
     },
   );
 
@@ -853,38 +891,37 @@ describe('VerticalStackedBarChart snapShot testing', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 });
-/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalStackedBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const hideTooltipDom = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerStack ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalStackedBarChart
         data={chartPointsVSBC}
         onRenderCalloutPerStack={(props: VerticalStackedChartProps) =>
@@ -902,13 +939,13 @@ describe('VerticalStackedBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalStackedBarChart
         data={chartPointsVSBC}
         onRenderCalloutPerDataPoint={(props: VSChartDataPoint) =>
@@ -925,7 +962,7 @@ describe('VerticalStackedBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -966,19 +1003,19 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
 
   test('should render empty chart div when data array is empty', () => {
-    let wrapper = render(<VerticalStackedBarChart data={[]} />);
+    const wrapper = render(<VerticalStackedBarChart data={[]} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

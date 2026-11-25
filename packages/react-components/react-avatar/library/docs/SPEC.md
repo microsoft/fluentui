@@ -95,7 +95,7 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 
 ### Props
 
-See API at [Avatar.types.ts](./src/components/Avatar/Avatar.types.ts).
+See API at [Avatar.types.ts](../src/components/Avatar/Avatar.types.ts).
 
 ## Structure
 

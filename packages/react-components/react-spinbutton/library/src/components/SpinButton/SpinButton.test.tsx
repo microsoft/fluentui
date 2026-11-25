@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
+import { renderHook } from '@testing-library/react-hooks';
 import { SpinButton } from './SpinButton';
+import { useSpinButtonBase_unstable } from './useSpinButton';
 import { isConformant } from '../../testing/isConformant';
 import { ArrowUp, ArrowDown, End, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 
@@ -57,6 +59,66 @@ describe('SpinButton', () => {
     const [incrementButton, decrementButton] = getAllByRole('button') as HTMLButtonElement[];
     expect(incrementButton.disabled).toEqual(true);
     expect(decrementButton.disabled).toEqual(true);
+  });
+
+  it('can be read-only', () => {
+    const { getAllByRole } = render(<SpinButton readOnly={true} defaultValue={1} />);
+
+    const spinButtonInput = getSpinButtonInput();
+
+    expect(spinButtonInput.readOnly).toEqual(true);
+    expect(spinButtonInput.value).toEqual('1');
+
+    const [incrementButton, decrementButton] = getAllByRole('button') as HTMLButtonElement[];
+    expect(incrementButton.disabled).toEqual(true);
+    expect(decrementButton.disabled).toEqual(true);
+
+    // Try to change the value via keyboard
+    fireEvent.keyDown(spinButtonInput, { key: ArrowUp });
+
+    // Spin button input should not change value when readOnly is true
+    expect(spinButtonInput.value).toEqual('1');
+  });
+
+  it('does not auto-repeat on a short trackpad tap', () => {
+    jest.useFakeTimers();
+
+    render(<SpinButton defaultValue={0} />);
+
+    const [incrementButton] = screen.getAllByRole('button') as HTMLButtonElement[];
+
+    act(() => {
+      fireEvent.mouseDown(incrementButton);
+      jest.advanceTimersByTime(200);
+    });
+    act(() => {
+      fireEvent.mouseUp(incrementButton);
+    });
+
+    expect(getSpinButtonInput().value).toEqual('1');
+
+    jest.useRealTimers();
+  });
+
+  it('still auto-repeats after a true hold gesture', () => {
+    jest.useFakeTimers();
+
+    render(<SpinButton defaultValue={0} />);
+
+    const [incrementButton] = screen.getAllByRole('button') as HTMLButtonElement[];
+
+    act(() => {
+      fireEvent.mouseDown(incrementButton);
+      jest.advanceTimersByTime(350);
+    });
+
+    expect(getSpinButtonInput().value).toBe('2');
+
+    act(() => {
+      fireEvent.mouseUp(incrementButton);
+    });
+
+    jest.useRealTimers();
   });
 
   describe('displayValue', () => {
@@ -885,5 +947,59 @@ describe('SpinButton', () => {
     expect(spinbutton.getAttribute('aria-describedby')).toEqual(message.id);
     expect(spinbutton.getAttribute('aria-invalid')).toEqual('true');
     expect(spinbutton.required).toBe(true);
+  });
+});
+
+describe('SpinButton DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <SpinButton
+        appearance="underline"
+        className="custom"
+        defaultValue={2}
+        displayValue="2 items"
+        max={10}
+        min={0}
+        onChange={jest.fn()}
+        precision={1}
+        size="small"
+        step={2}
+        stepPage={5}
+        style={{ color: 'red' }}
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(screen.getByRole('spinbutton').getAttributeNames().sort()).toEqual([
+      'aria-valuemax',
+      'aria-valuemin',
+      'aria-valuenow',
+      'autocomplete',
+      'class',
+      'role',
+      'step',
+      'type',
+      'value',
+    ]);
+  });
+
+  it('does not forward slot or state props from the base hook to the input slot', () => {
+    const { result } = renderHook(() =>
+      useSpinButtonBase_unstable(
+        { className: 'custom', displayValue: '2 items', max: 10, min: 0, precision: 1, stepPage: 5 },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root.className).toBe('custom');
+    expect(result.current.input).not.toHaveProperty('className');
+    expect(result.current.input).not.toHaveProperty('displayValue');
+    expect(result.current.input).not.toHaveProperty('max');
+    expect(result.current.input).not.toHaveProperty('min');
+    expect(result.current.input).not.toHaveProperty('precision');
+    expect(result.current.input).not.toHaveProperty('stepPage');
   });
 });

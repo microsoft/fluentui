@@ -1,9 +1,11 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
+
+const referenceDate = new Date(2023, 2, 15);
 
 export default {
   title: 'DatePicker Compat',
@@ -22,7 +24,7 @@ export default {
 
 export const Default = () => (
   <div style={{ padding: '10px' }}>
-    <DatePicker input={{ className: 'datepicker-input' }} />
+    <DatePicker input={{ className: 'datepicker-input' }} today={referenceDate} value={referenceDate} />
   </div>
 );
 Default.storyName = 'default';

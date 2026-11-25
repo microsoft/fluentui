@@ -5,6 +5,18 @@
   "sourceRoot": "packages/react-components/react-components/src",
   "tags": ["vNext", "platform:web"],
   "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/unstable/index.ts"]
+    },
+    "bundleSizeFixtures": {
+      "BaseHooks.fixture.js": {
+        "kind": "baseHooks",
+        "name": "react-components: all base hooks"
+      }
+    }
+  },
   "targets": {
     "build": {
       "options": {

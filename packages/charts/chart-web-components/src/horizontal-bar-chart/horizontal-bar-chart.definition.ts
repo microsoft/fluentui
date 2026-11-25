@@ -1,20 +1,19 @@
 import { FluentDesignSystem } from '@fluentui/web-components';
-import { HorizontalBarChart } from './horizontal-bar-chart.js';
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { styles } from './horizontal-bar-chart.styles.js';
 import { template } from './horizontal-bar-chart.template.js';
 
 /**
- * The Fluent Textarea Element definition.
+ * The definition for the `<fluent-horizontal-bar-chart>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-textarea>`
  */
-export const definition = HorizontalBarChart.compose({
+export const definition: PartialFASTElementDefinition = {
   name: `${FluentDesignSystem.prefix}-horizontal-bar-chart`,
-  template,
-  styles,
+  registry: FluentDesignSystem.registry,
   shadowOptions: {
     delegatesFocus: true,
   },
-});
+  styles,
+  template,
+};

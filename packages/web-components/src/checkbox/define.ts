@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './checkbox.definition.js';
+import { Checkbox } from './checkbox.js';
 
-definition.define(FluentDesignSystem.registry);
+Checkbox.define(definition);

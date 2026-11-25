@@ -1,0 +1,72 @@
+'use client';
+
+import type * as React from 'react';
+import { mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
+
+import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import { toDataAttributeValue } from '../../../utils';
+
+/**
+ * Create the state required to render NavCategoryItem.
+ *
+ * Headless version — no motion, no default expand icon.
+ *
+ * @param props - props from this instance of NavCategoryItem
+ * @param ref - reference to root HTMLButtonElement of NavCategoryItem
+ */
+export const useNavCategoryItem = (
+  props: NavCategoryItemProps,
+  ref: React.Ref<HTMLButtonElement>,
+): NavCategoryItemState => {
+  const { onClick, expandIcon, icon, ...rest } = props;
+
+  const { open, value } = useNavCategoryContext_unstable();
+
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue } = useNavContext_unstable();
+
+  const onNavCategoryItemClick = useEventCallback(
+    mergeCallbacks(onClick, event =>
+      // Category toggles emit no `value` so consumers can distinguish them from item selection.
+      onRequestNavCategoryItemToggle(event, { type: 'click', event, categoryValue: value } as OnNavItemSelectData),
+    ),
+  );
+
+  const selected = selectedCategoryValue === value && !open;
+  const validAriaCurrent: 'page' | 'false' = selected ? 'page' : 'false';
+
+  const state: NavCategoryItemState = {
+    open,
+    value,
+    selected,
+    root: slot.always(
+      {
+        ref,
+        type: 'button',
+        ...rest,
+        'aria-current': validAriaCurrent,
+        'aria-expanded': open,
+        onClick: onNavCategoryItemClick,
+      },
+      { elementType: 'button' },
+    ),
+    icon: slot.optional(icon, {
+      elementType: 'span',
+    }),
+    expandIcon: slot.optional(expandIcon, {
+      defaultProps: { 'aria-hidden': true },
+      elementType: 'span',
+    }),
+    components: {
+      root: 'button',
+      icon: 'span',
+      expandIcon: 'span',
+    },
+  };
+
+  state.root['data-disabled'] = toDataAttributeValue(state.root.disabled || state.root['aria-disabled']);
+  state.root['data-expanded'] = toDataAttributeValue(state.open);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
+
+  return state;
+};

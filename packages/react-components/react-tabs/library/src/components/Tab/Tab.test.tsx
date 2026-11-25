@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { Tab } from './Tab';
 import { isConformant } from '../../testing/isConformant';
 import { TabListContext } from '../TabList/TabListContext';
-import { TabListContextValue } from '../TabList/TabList.types';
+import type { TabListContextValue } from '../TabList/TabList.types';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 describe('Tab', () => {
@@ -129,5 +130,48 @@ describe('Tab', () => {
     );
 
     expect(ref).toHaveBeenCalledTimes(1);
+  });
+
+  it('tabster attributes can be overridden', () => {
+    const AttrProvider: React.FC<{
+      children: (attributes: ReturnType<typeof useTabsterAttributes>) => React.ReactNode;
+    }> = props => {
+      const attributes = useTabsterAttributes({
+        observed: { names: ['foo'] },
+      });
+
+      return props.children(attributes);
+    };
+
+    const { getAllByRole } = render(
+      <>
+        <AttrProvider>
+          {attributes => (
+            <Tab value="1" {...attributes}>
+              Tab 1
+            </Tab>
+          )}
+        </AttrProvider>
+        <Tab value="2">Tab 2</Tab>
+      </>,
+    );
+
+    const tabs = getAllByRole('tab');
+
+    expect(tabs).toHaveLength(2);
+
+    const tab1 = tabs[0];
+    const tab2 = tabs[1];
+
+    expect(tab1.dataset).toMatchInlineSnapshot(`
+      DOMStringMap {
+        "tabster": "{\\"observed\\":{\\"names\\":[\\"foo\\"]}}",
+      }
+    `);
+    expect(tab2.dataset).toMatchInlineSnapshot(`
+      DOMStringMap {
+        "tabster": "{\\"focusable\\":{\\"isDefault\\":false}}",
+      }
+    `);
   });
 });

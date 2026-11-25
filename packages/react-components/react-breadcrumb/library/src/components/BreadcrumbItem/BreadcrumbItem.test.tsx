@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { BreadcrumbItem } from './BreadcrumbItem';
-import { BreadcrumbItemProps } from './BreadcrumbItem.types';
+import type { BreadcrumbItemProps } from './BreadcrumbItem.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbItemClassNames } from './useBreadcrumbItemStyles.styles';
 

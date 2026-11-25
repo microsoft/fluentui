@@ -1,8 +1,81 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Wed, 10 Dec 2025 06:27:48 GMT and should not be manually modified.
+<!-- This log was last generated on Wed, 25 Nov 2026 01:39:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.107.158](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.158)
+
+Wed, 25 Nov 2026 01:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.157..@fluentui/fluent2-theme_v8.107.158)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.11 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.107.157](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.157)
+
+Thu, 29 Oct 2026 01:04:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.156..@fluentui/fluent2-theme_v8.107.157)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.107.156](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.156)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.155..@fluentui/fluent2-theme_v8.107.156)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.107.155](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.155)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.154..@fluentui/fluent2-theme_v8.107.155)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.107.154](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.154)
+
+Thu, 02 Jul 2026 09:55:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.153..@fluentui/fluent2-theme_v8.107.154)
+
+### Patches
+
+- fix: fluent2-theme PrimaryButton high contrast focus style ([PR #36354](https://github.com/microsoft/fluentui/pull/36354) by sarah.higley@microsoft.com)
+- Bump @fluentui/react to v8.125.7 ([commit](https://github.com/microsoft/fluentui/commit/e287a20abcf5146c41ae0a6243c04358fddca40c) by beachball)
+
+## [8.107.153](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.153)
+
+Mon, 11 May 2026 10:02:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.152..@fluentui/fluent2-theme_v8.107.153)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.6 ([commit](https://github.com/microsoft/fluentui/commit/04bf7a7dd2b5c8f6963d3bf63187017e96c57a10) by beachball)
+
+## [8.107.152](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.152)
+
+Thu, 26 Feb 2026 18:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.151..@fluentui/fluent2-theme_v8.107.152)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.5 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+
+## [8.107.151](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.151)
+
+Tue, 27 Jan 2026 05:18:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.150..@fluentui/fluent2-theme_v8.107.151)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.4 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
 
 ## [8.107.150](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.150)
 

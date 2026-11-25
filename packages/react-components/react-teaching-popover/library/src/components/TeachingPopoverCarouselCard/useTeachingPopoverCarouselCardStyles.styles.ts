@@ -19,10 +19,9 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselCardStyles_unstable = (
   state: TeachingPopoverCarouselCardState,
 ): TeachingPopoverCarouselCardState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverCarouselCardClassNames.root, styles.root, state.root.className);
 
   return state;

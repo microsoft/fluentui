@@ -1,14 +1,21 @@
-import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { execSync } from 'node:child_process';
-
-import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
+import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
+import {
+  CompilerState,
+  ConsoleMessageId,
+  Extractor,
+  ExtractorConfig,
+  type ExtractorMessage,
+  type IConfigFile,
+} from '@microsoft/api-extractor';
 
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
-import { isCI } from './lib/shared';
+import { isCI, verboseLog } from './lib/shared';
+import { getExportSubpathConfigs } from './lib/utils';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -26,14 +33,82 @@ export default runExecutor;
 
 // ===========
 
-interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
+export interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
+
+type ConfigSource = { configPath: string } | { configObject: IConfigFile };
 
 async function runGenerateApi(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
-  if (generateTypeDeclarations(options)) {
-    return apiExtractor(options, context);
+  if (!generateTypeDeclarations(options)) {
+    return false;
   }
 
-  return false;
+  const configSources: ConfigSource[] = [{ configPath: options.config }];
+
+  // Expand export subpaths into one api-extractor config per resolved entry
+  if (options.exportSubpaths.enabled) {
+    for (const configObject of getExportSubpathConfigs(options)) {
+      verboseLog(`Resolved api-extractor config for export subpath entry: ${configObject.mainEntryPointFilePath}`);
+      configSources.push({ configObject });
+    }
+  }
+
+  const extractorConfigs = configSources.map(configSource => prepareExtractorConfig(configSource, options));
+  const compilerState = createCompilerState(extractorConfigs);
+  const messageCallback = createConsoleMessageDeduper();
+
+  for (const [index, extractorConfig] of extractorConfigs.entries()) {
+    const invoked = invokeExtractor(
+      {
+        extractorConfig,
+        compilerState,
+        messageCallback,
+        progress: { current: index + 1, total: extractorConfigs.length },
+      },
+      options,
+      context,
+    );
+
+    if (!invoked) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * api-extractor repeats its compiler version notices on every invocation, so keep only the first of each.
+ */
+function createConsoleMessageDeduper() {
+  const dedupedMessageIds: string[] = [ConsoleMessageId.Preamble, ConsoleMessageId.CompilerVersionNotice];
+  const alreadyReported = new Set<string>();
+
+  return (message: ExtractorMessage) => {
+    if (!dedupedMessageIds.includes(message.messageId)) {
+      return;
+    }
+
+    if (alreadyReported.has(message.messageId)) {
+      message.handled = true;
+      return;
+    }
+
+    alreadyReported.add(message.messageId);
+  };
+}
+
+/**
+ * Every config compiles with the same tsconfig, so one TS program can serve all entry points
+ * instead of api-extractor creating a new one per invocation.
+ */
+function createCompilerState(extractorConfigs: ExtractorConfig[]): CompilerState {
+  const [primaryConfig, ...subpathConfigs] = extractorConfigs;
+
+  verboseLog(`Creating shared api-extractor compiler state for ${extractorConfigs.length} entry point(s)`);
+
+  return CompilerState.create(primaryConfig, {
+    additionalEntryPoints: subpathConfigs.map(config => config.mainEntryPointFilePath),
+  });
 }
 
 function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorContext) {
@@ -43,6 +118,13 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     diagnostics: false,
   };
   const resolvedSchema = { ...defaults, ...schema };
+
+  // Normalize exportSubpaths into { enabled, apiReport }
+  const rawExportSubpaths = resolvedSchema.exportSubpaths;
+  const exportSubpaths =
+    typeof rawExportSubpaths === 'object' && rawExportSubpaths !== null
+      ? { enabled: true, apiReport: rawExportSubpaths.apiReport !== false }
+      : { enabled: rawExportSubpaths === true, apiReport: true };
 
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
@@ -62,6 +144,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 
   return {
     ...resolvedSchema,
+    exportSubpaths,
     local: resolveLocalFlag,
     config: resolveConfig.result!,
     project,
@@ -92,20 +175,68 @@ function generateTypeDeclarations(options: NormalizedOptions) {
   }
 }
 
-function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
-  const extractorConfigPath = options.config;
+/**
+ * Loads, parses, customizes and prepares the api-extractor config for the API Extractor API.
+ */
+function prepareExtractorConfig(configSource: ConfigSource, options: NormalizedOptions): ExtractorConfig {
+  const { rawConfig, fullPath } = resolveConfigSource();
 
-  // Load,parse,customize and prepare the api-extractor.json file for API Extractor API
-  const rawExtractorConfig = ExtractorConfig.loadFile(extractorConfigPath);
-  customizeExtractorConfig(rawExtractorConfig);
-  const extractorConfig = ExtractorConfig.prepare({
-    configObject: rawExtractorConfig,
-    configObjectFullPath: extractorConfigPath,
+  customizeExtractorConfig(rawConfig);
+
+  return ExtractorConfig.prepare({
+    configObject: rawConfig,
+    configObjectFullPath: fullPath,
     packageJsonFullPath: options.packageJsonPath,
   });
 
-  // Invoke API Extractor
+  /**
+   * Resolves the config source into a raw IConfigFile and the full path used for token resolution.
+   * File-based sources are loaded from disk; programmatic configs reuse the primary config path.
+   */
+  function resolveConfigSource(): { rawConfig: IConfigFile; fullPath: string } {
+    if ('configPath' in configSource) {
+      return {
+        rawConfig: ExtractorConfig.loadFile(configSource.configPath),
+        fullPath: configSource.configPath,
+      };
+    }
+
+    return {
+      rawConfig: configSource.configObject,
+      // Reuse the primary config path so that token resolution matches file-based configs.
+      fullPath: options.config,
+    };
+  }
+
+  function customizeExtractorConfig(apiExtractorConfig: IConfigFile) {
+    apiExtractorConfig.compiler = getTsConfigForApiExtractor({
+      packageJson: parseJson(readFileSync(options.packageJsonPath, 'utf-8')),
+      tsConfig: parseJson(readFileSync(options.tsConfigPathForCompilation, 'utf-8')),
+      apiExtractorConfig,
+    });
+
+    return apiExtractorConfig;
+  }
+}
+
+function invokeExtractor(
+  params: {
+    extractorConfig: ExtractorConfig;
+    compilerState: CompilerState;
+    messageCallback: (message: ExtractorMessage) => void;
+    progress: { current: number; total: number };
+  },
+  options: NormalizedOptions,
+  context: ExecutorContext,
+) {
+  const { extractorConfig, compilerState, messageCallback, progress } = params;
+
+  logEntryPoint();
+
   const extractorResult = Extractor.invoke(extractorConfig, {
+    compilerState,
+    messageCallback,
+
     // Equivalent to the "--local" command-line parameter
     localBuild: options.local,
 
@@ -125,14 +256,16 @@ function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
   );
   return false;
 
-  function customizeExtractorConfig(apiExtractorConfig: IConfigFile) {
-    apiExtractorConfig.compiler = getTsConfigForApiExtractor({
-      packageJson: parseJson(readFileSync(options.packageJsonPath, 'utf-8')),
-      tsConfig: parseJson(readFileSync(options.tsConfigPathForCompilation, 'utf-8')),
-      apiExtractorConfig,
-    });
+  function logEntryPoint() {
+    const outputPath = extractorConfig.untrimmedFilePath || extractorConfig.mainEntryPointFilePath;
+    const label = relative(options.projectAbsolutePath, outputPath);
 
-    return apiExtractorConfig;
+    if (progress.total === 1) {
+      verboseLog(`Generating API for ${label}`);
+      return;
+    }
+
+    logger.info(`[${progress.current}/${progress.total}] Generating API for ${label}`);
   }
 }
 
@@ -214,7 +347,7 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
-function getApiExtractorConfigPath(schema: Required<GenerateApiExecutorSchema>, projectRoot: string) {
+function getApiExtractorConfigPath(schema: Required<Pick<GenerateApiExecutorSchema, 'config'>>, projectRoot: string) {
   const configPath = schema.config.replace('{projectRoot}', projectRoot);
 
   if (!existsSync(configPath)) {
@@ -242,10 +375,4 @@ function getTsConfigPathUsedForProduction(projectRoot: string) {
   }
 
   return { error: null, result: tsConfigFileForCompilation };
-}
-
-function verboseLog(message: string, kind: keyof typeof logger = 'info') {
-  if (process.env.NX_VERBOSE_LOGGING === 'true') {
-    logger[kind](message);
-  }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import {
@@ -10,7 +10,7 @@ import {
   getIntrinsicElementProps,
   slot,
 } from '@fluentui/react-utilities';
-import { MenuGridCellProps, MenuGridCellState } from './MenuGridCell.types';
+import type { MenuGridCellProps, MenuGridCellState } from './MenuGridCell.types';
 import { useValidateNesting } from '../../utils/useValidateNesting';
 
 /**

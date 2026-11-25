@@ -1,8 +1,244 @@
 # Change Log - @fluentui/react-teaching-popover
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.10)
+
+Tue, 24 Nov 2026 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.9..@fluentui/react-teaching-popover_v9.7.10)
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.22 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.11 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.20 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.9)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.8..@fluentui/react-teaching-popover_v9.7.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.8)
+
+Mon, 19 Oct 2026 16:49:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.7..@fluentui/react-teaching-popover_v9.7.8)
+
+### Patches
+
+- fix: Announce carousel page changes after render. ([PR #36643](https://github.com/microsoft/fluentui/pull/36643) by paulmardling@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.21 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.7)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.6..@fluentui/react-teaching-popover_v9.7.7)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.6)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.5..@fluentui/react-teaching-popover_v9.7.6)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.20 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.5)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.4..@fluentui/react-teaching-popover_v9.7.5)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- Bump @fluentui/react-popover to v9.14.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.4)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.3..@fluentui/react-teaching-popover_v9.7.4)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- fix: separate headless teaching popover title state from bundled icon defaults ([PR #36504](https://github.com/microsoft/fluentui/pull/36504) by vgenaev@gmail.com)
+- Bump @fluentui/react-aria to v9.17.14 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.3)
+
+Tue, 04 Aug 2026 10:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.2..@fluentui/react-teaching-popover_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.5 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.2)
+
+Mon, 29 Jun 2026 15:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.1..@fluentui/react-teaching-popover_v9.7.2)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.10.1 ([commit](https://github.com/microsoft/fluentui/commit/aedc345f58bc16bb8540615b5afdf3d2d3569db4) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.1)
+
+Wed, 24 Jun 2026 11:10:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.0..@fluentui/react-teaching-popover_v9.7.1)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-popover to v9.14.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-button to v9.10.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-aria to v9.17.13 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.18 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.0)
+
+Tue, 26 May 2026 09:39:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.21..@fluentui/react-teaching-popover_v9.7.0)
+
+### Minor changes
+
+- feat: export base hooks ([PR #36200](https://github.com/microsoft/fluentui/pull/36200) by viktorgenaev@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-popover to v9.14.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-button to v9.9.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-aria to v9.17.12 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.21)
+
+Thu, 23 Apr 2026 14:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.20..@fluentui/react-teaching-popover_v9.6.21)
+
+### Patches
+
+- perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-popover to v9.14.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-button to v9.9.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-aria to v9.17.11 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.20)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.19..@fluentui/react-teaching-popover_v9.6.20)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.19)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.18..@fluentui/react-teaching-popover_v9.6.19)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.9.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+
+## [9.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.18)
+
+Tue, 03 Mar 2026 09:43:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.17..@fluentui/react-teaching-popover_v9.6.18)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+
+## [9.6.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.17)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.16..@fluentui/react-teaching-popover_v9.6.17)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-popover to v9.13.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-button to v9.8.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-tabster to v9.26.13 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-aria to v9.17.10 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.15 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.16)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.15..@fluentui/react-teaching-popover_v9.6.16)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-popover to v9.13.1 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-button to v9.8.1 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-aria to v9.17.9 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [9.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.15)
+
+Thu, 22 Jan 2026 17:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.14..@fluentui/react-teaching-popover_v9.6.15)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-popover to v9.13.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-button to v9.8.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-aria to v9.17.8 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.14 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.14)
 

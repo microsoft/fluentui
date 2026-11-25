@@ -1,5 +1,6 @@
 import type { ElementStyles } from '@microsoft/fast-element';
 import { css } from '@microsoft/fast-element';
+import { nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandStroke,
@@ -174,13 +175,13 @@ export const styles: ElementStyles = css`
   :host(:focus-within) .control {
     color: ${colorNeutralForeground1};
   }
-  :host([disabled]) .root {
+  :host(${nativeDisabledState}) .root {
     background: ${colorTransparentBackground};
     border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-  :host([disabled]) .control::placeholder,
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) ::slotted([slot='end']) {
+  :host(${nativeDisabledState}) .control::placeholder,
+  :host(${nativeDisabledState}) ::slotted([slot='start']),
+  :host(${nativeDisabledState}) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
   }
   ::selection {
@@ -231,7 +232,7 @@ export const styles: ElementStyles = css`
     border: 0;
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([appearance='underline'][disabled]) .root {
+  :host([appearance='underline']${nativeDisabledState}) .root {
     border-bottom-color: ${colorNeutralStrokeDisabled};
   }
   :host([appearance='filled-lighter']) .root,

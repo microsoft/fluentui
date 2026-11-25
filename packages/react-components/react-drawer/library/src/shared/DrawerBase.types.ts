@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 

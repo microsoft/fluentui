@@ -1,4 +1,11 @@
-export type { TagContextValues, TagProps, TagSlots, TagState } from './components/Tag/index';
+export type {
+  TagBaseProps,
+  TagBaseState,
+  TagContextValues,
+  TagProps,
+  TagSlots,
+  TagState,
+} from './components/Tag/index';
 export {
   Tag,
   renderTag_unstable,
@@ -8,5 +15,6 @@ export {
   usePrimaryTextStyles,
   useSecondaryTextBaseClassName,
   useTagStyles_unstable,
+  useTagBase_unstable,
   useTag_unstable,
 } from './components/Tag/index';

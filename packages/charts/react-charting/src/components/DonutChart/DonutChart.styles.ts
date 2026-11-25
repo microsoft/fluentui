@@ -1,5 +1,5 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
-import { getAxisTitleStyle } from '../../utilities/index';
+import { getAxisTitleStyle, getChartTitleStyle, getSvgTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
   const { className, theme } = props;
@@ -26,6 +26,8 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       paddingTop: '16px',
       width: '100%',
     },
+    chartTitle: getChartTitleStyle(theme),
     axisAnnotation: getAxisTitleStyle(theme, theme.fonts.small),
+    svgTooltip: getSvgTooltipStyle(theme),
   };
 };

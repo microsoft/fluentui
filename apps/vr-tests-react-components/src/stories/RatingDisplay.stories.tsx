@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { RatingDisplay } from '@fluentui/react-rating';
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE } from '../utilities';

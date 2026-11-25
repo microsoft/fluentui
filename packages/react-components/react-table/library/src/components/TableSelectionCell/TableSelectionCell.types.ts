@@ -1,8 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import type { Radio } from '@fluentui/react-radio';
-import { TableCellSlots } from '../TableCell/TableCell.types';
-import { TableContextValue } from '../Table/Table.types';
+import type { TableCellSlots } from '../TableCell/TableCell.types';
+import type { TableContextValue } from '../Table/Table.types';
 
 export type TableSelectionCellSlots = {
   /**
@@ -48,6 +48,38 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
    */
   invisible?: boolean;
 };
+
+export type TableSelectionCellBaseSlots = {
+  /**
+   * Native checkbox selection indicator if selection type is checkbox
+   */
+  checkboxIndicator: Slot<'input'>;
+  /**
+   * Native radio selection indicator if selection type is radio
+   */
+  radioIndicator: Slot<'input'>;
+} & Pick<TableCellSlots, 'root'>;
+
+/**
+ * TableSelectionCell props accepted by `useTableSelectionCellBase_unstable`, without design props.
+ */
+export type TableSelectionCellBaseProps = ComponentProps<Partial<TableSelectionCellBaseSlots>> &
+  Pick<TableSelectionCellProps, 'type' | 'hidden' | 'invisible'> & {
+    /**
+     * @default false
+     */
+    checked?: boolean | 'mixed';
+  };
+
+/**
+ * State returned by `useTableSelectionCellBase_unstable`.
+ */
+export type TableSelectionCellBaseState = ComponentState<TableSelectionCellBaseSlots> &
+  Required<Pick<TableSelectionCellBaseProps, 'type' | 'checked'>> &
+  Pick<TableContextValue, 'noNativeElements'> & {
+    /* Visually hides the selection cell; not deprecated on state */
+    hidden: boolean;
+  };
 
 /**
  * State used in rendering TableSelectionCell

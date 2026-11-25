@@ -1,8 +1,10 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
- * @public
  * The `layout` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarLayout = {
   multiline: 'multiline',
@@ -12,8 +14,9 @@ export const MessageBarLayout = {
 export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
 
 /**
- * @public
  * The `shape` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarShape = {
   rounded: 'rounded',
@@ -23,8 +26,9 @@ export const MessageBarShape = {
 export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
 
 /**
- * @public
  * The `intent` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarIntent = {
   success: 'success',
@@ -34,3 +38,10 @@ export const MessageBarIntent = {
 } as const;
 
 export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+/**
+ * The tag name for the message bar element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-message-bar` as const;

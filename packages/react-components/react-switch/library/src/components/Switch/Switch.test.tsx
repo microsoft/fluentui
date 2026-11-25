@@ -140,6 +140,33 @@ describe('Switch', () => {
       expect(checked.checked).toBe(true);
     });
 
+    it('does not trigger a change in the checked state if it is disabledFocusable', () => {
+      const { getAllByRole } = render(
+        <>
+          <Switch defaultChecked={false} disabledFocusable />
+          <Switch defaultChecked={true} disabledFocusable />
+        </>,
+      );
+      const [unchecked, checked] = getAllByRole('switch') as HTMLInputElement[];
+
+      expect(unchecked.checked).toBe(false);
+      userEvent.click(unchecked);
+      expect(unchecked.checked).toBe(false);
+
+      expect(checked.checked).toBe(true);
+      userEvent.click(checked);
+      expect(checked.checked).toBe(true);
+    });
+
+    it('can be focused when disabledFocusable has been passed', () => {
+      const { getByRole } = render(<Switch disabledFocusable />);
+      const input = getByRole('switch');
+
+      expect(document.activeElement).not.toEqual(input);
+      userEvent.tab();
+      expect(document.activeElement).toEqual(input);
+    });
+
     it('calls onChange with the correct value', () => {
       const onChange = jest.fn<void, [React.ChangeEvent<HTMLInputElement>, SwitchOnChangeData]>();
       const { getByRole } = render(<Switch onChange={onChange} />);
@@ -173,5 +200,38 @@ describe('Switch', () => {
     expect(input.getAttribute('aria-describedby')).toEqual(message.id);
     expect(input.getAttribute('aria-invalid')).toEqual('true');
     expect(input.required).toBe(true);
+  });
+});
+
+describe('Switch DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Switch
+        checked
+        className="custom"
+        disabledFocusable
+        label="Label"
+        labelPosition="before"
+        onChange={() => undefined}
+        size="small"
+        style={{ color: 'red' }}
+        title="Title"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(root.querySelector('input')!.getAttributeNames().sort()).toEqual([
+      'aria-disabled',
+      'checked',
+      'class',
+      'id',
+      'role',
+      'title',
+      'type',
+    ]);
   });
 });

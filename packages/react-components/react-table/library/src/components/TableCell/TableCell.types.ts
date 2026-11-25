@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TableContextValue } from '../Table/Table.types';
+import type { TableContextValue } from '../Table/Table.types';
 
 export type TableCellSlots = {
   root: Slot<'td', 'div'>;
@@ -9,6 +9,11 @@ export type TableCellSlots = {
  * TableCell Props
  */
 export type TableCellProps = ComponentProps<TableCellSlots> & {};
+
+/**
+ * State returned by `useTableCellBase_unstable`.
+ */
+export type TableCellBaseState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
 
 /**
  * State used in rendering TableCell

@@ -1,6 +1,6 @@
-import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
 import type { TriggerProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 export type DialogTriggerAction = 'open' | 'close';
 

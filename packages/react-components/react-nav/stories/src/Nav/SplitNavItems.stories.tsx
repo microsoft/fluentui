@@ -1,5 +1,14 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type {
+  JSXElement,
+  NavDensity,
+  SplitNavItemProps,
+  NavItemProps,
+  NavCategoryItemProps,
+  NavCategoryProps,
+  MenuButtonProps,
+  TooltipProps,
+} from '@fluentui/react-components';
 import {
   NavCategory,
   NavCategoryItem,
@@ -7,21 +16,15 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDensity,
   AppItem,
   AppItemStatic,
   SplitNavItem,
-  SplitNavItemProps,
-  NavItemProps,
-  NavCategoryItemProps,
-  NavCategoryProps,
   NavSubItemGroup,
   NavDivider,
 } from '@fluentui/react-components';
 import {
   Label,
   Menu,
-  MenuButtonProps,
   MenuItem,
   MenuList,
   MenuPopover,
@@ -30,7 +33,6 @@ import {
   RadioGroup,
   Switch,
   Tooltip,
-  TooltipProps,
   makeStyles,
   tokens,
   useId,

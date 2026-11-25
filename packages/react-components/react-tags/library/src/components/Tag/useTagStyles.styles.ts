@@ -1,6 +1,7 @@
 'use client';
 
-import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { GriffelResetStyle } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -359,8 +360,6 @@ export const useSecondaryTextBaseClassName = makeResetStyles({
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  'use no memo';
-
   const rootRoundedBaseClassName = useRootRoundedBaseClassName();
   const rootCircularBaseClassName = useRootCircularBaseClassName();
 
@@ -377,6 +376,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
   const { disabled, shape, size, appearance, selected } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagClassNames.root,
 
@@ -393,6 +393,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   );
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       tagClassNames.media,
       mediaStyles.base,
@@ -401,9 +402,11 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(tagClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
   }
   if (state.primaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.primaryText.className = mergeClasses(
       tagClassNames.primaryText,
 
@@ -416,6 +419,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.secondaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
       secondaryTextBaseClassName,
@@ -423,6 +427,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     );
   }
   if (state.dismissIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissIcon.className = mergeClasses(
       tagClassNames.dismissIcon,
       dismissIconStyles.base,

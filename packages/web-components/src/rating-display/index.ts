@@ -4,3 +4,4 @@ export { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
 export { template as RatingDisplayTemplate } from './rating-display.template.js';
 export { styles as RatingDisplayStyles } from './rating-display.styles.js';
 export { definition as RatingDisplayDefinition } from './rating-display.definition.js';
+export { tagName as RatingDisplayTagName } from './rating-display.options.js';

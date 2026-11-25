@@ -1,6 +1,7 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { SearchBox } from './SearchBox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -129,5 +130,29 @@ describe('SearchBox', () => {
     userEvent.click(renderedComponent.getByRole('button'));
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: '' }));
+  });
+
+  it.each([
+    ['disabled', { disabled: true }],
+    ['readOnly', { readOnly: true }],
+    ['input.disabled', { input: { disabled: true } }],
+    ['input.readOnly', { input: { readOnly: true } }],
+  ])('does not clear the value when %s', (_, props) => {
+    const onChange = jest.fn();
+    const onClick = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" onChange={onChange} dismiss={{ onClick }} {...props} />);
+    const dismiss = renderedComponent.getByRole('button');
+
+    expect(dismiss.getAttribute('aria-disabled')).toBe('true');
+
+    fireEvent.click(dismiss);
+    expect(getSearchBox().value).toBe('hello');
+    expect(onChange).not.toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('does not set aria-disabled on the dismiss button when the value can be cleared', () => {
+    renderedComponent = render(<SearchBox defaultValue="hello" />);
+    expect(renderedComponent.getByRole('button').hasAttribute('aria-disabled')).toBe(false);
   });
 });

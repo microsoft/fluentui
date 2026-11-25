@@ -5,7 +5,7 @@ import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
-import { OverlayDrawerProps } from './OverlayDrawer.types';
+import type { OverlayDrawerProps } from './OverlayDrawer.types';
 import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
 

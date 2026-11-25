@@ -10,7 +10,8 @@ module.exports = createRule({
       description: 'Prevent accidental references to the global React namespace',
     },
     messages: {
-      missingImport: 'You must explicitly import React to reference it',
+      missingImport:
+        "You must explicitly import React to reference it. Add: import * as React from 'react'; See docs/architecture/component-patterns.md",
     },
     schema: [],
   },

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useDialogTrigger_unstable } from './useDialogTrigger';
 import { renderDialogTrigger_unstable } from './renderDialogTrigger';
 import type { DialogTriggerProps } from './DialogTrigger.types';

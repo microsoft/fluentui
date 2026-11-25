@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { DrawerMotionParams, InlineDrawerMotion } from './drawerMotions';
+import type { DrawerMotionParams } from './drawerMotions';
+import { InlineDrawerMotion } from './drawerMotions';
 import { mergePresenceSlots } from './drawerMotionUtils';
 
 const TestComponent = InlineDrawerMotion;

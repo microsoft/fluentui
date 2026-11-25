@@ -10,24 +10,25 @@ import type { ArrowRight } from '@fluentui/keyboard-keys';
 import type { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
-import { ButtonContextValue } from '@fluentui/react-button';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { CheckboxProps } from '@fluentui/react-checkbox';
+import type { ButtonContextValue } from '@fluentui/react-button';
+import type { Checkbox } from '@fluentui/react-checkbox';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { Radio } from '@fluentui/react-radio';
-import { RadioProps } from '@fluentui/react-radio';
+import type { Radio } from '@fluentui/react-radio';
+import type { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
@@ -106,14 +107,14 @@ export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNa
 // @public (undocumented)
 export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement;
 
-// @public (undocumented)
-export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSXElement;
+// @public
+export const renderTree_unstable: (state: TreeState | TreeBaseState, contextValues: TreeContextValues) => JSXElement;
 
 // @public
 export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSXElement;
 
 // @public
-export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSXElement;
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState | TreeItemLayoutBaseState) => JSXElement;
 
 // @public
 export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSXElement;
@@ -126,6 +127,17 @@ export type SubtreeContextValue = {
 
 // @public
 export const Tree: ForwardRefComponent<TreeProps>;
+
+// @public
+export type TreeBaseProps = Omit<TreeProps, 'appearance' | 'size' | 'collapseMotion'>;
+
+// @public
+export type TreeBaseSlots = Pick<TreeSlots, 'root'>;
+
+// @public
+export type TreeBaseState = ComponentState<TreeBaseSlots> & {
+    open: boolean;
+} & (DistributiveOmit<TreeContextValue, 'appearance' | 'size'> | SubtreeContextValue);
 
 // @public (undocumented)
 export type TreeCheckedChangeData = {
@@ -191,12 +203,39 @@ export type TreeItemContextValue = {
 };
 
 // @public (undocumented)
+export type TreeItemContextValues = {
+    treeItem: TreeItemContextValue;
+};
+
+// @public (undocumented)
 export type TreeItemCSSProperties = React_2.CSSProperties & {
     [treeItemLevelToken]?: string | number;
 };
 
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
+
+// @public (undocumented)
+export type TreeItemLayoutActionSlotProps = ExtractSlotProps<Slot<'div'> & {
+    visible?: boolean;
+    onVisibilityChange?: EventHandler<TreeItemLayoutActionVisibilityChangeData>;
+}>;
+
+// @public (undocumented)
+export type TreeItemLayoutActionVisibilityChangeData = (EventData<'mouseover' | 'mouseout', MouseEvent> | EventData<'focus' | 'blur', FocusEvent> | EventData<'blur', React_2.FocusEvent>) & {
+    visible: boolean;
+};
+
+// @public
+export type TreeItemLayoutBaseProps = ComponentProps<Partial<TreeItemLayoutBaseSlots>>;
+
+// @public
+export type TreeItemLayoutBaseSlots = Omit<TreeItemLayoutSlots, 'selector'> & {
+    selector?: Slot<'input'>;
+};
+
+// @public
+export type TreeItemLayoutBaseState = ComponentState<TreeItemLayoutBaseSlots>;
 
 // @public (undocumented)
 export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
@@ -408,7 +447,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 // @public (undocumented)
 export type TreeSlots = {
     root: Slot<'div'>;
-    collapseMotion?: Slot<PresenceMotionSlotProps>;
+    collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
 
 // @public
@@ -431,14 +470,17 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 // @public (undocumented)
 export const useSubtreeContext_unstable: () => SubtreeContextValue;
 
-// @public (undocumented)
+// @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
+
+// @public
+export const useTreeBase_unstable: (props: TreeBaseProps, ref: React_2.Ref<HTMLElement>) => TreeBaseState;
 
 // @public (undocumented)
 export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
 // @public (undocumented)
-export function useTreeContextValues_unstable(state: TreeState): TreeContextValues;
+export function useTreeContextValues_unstable(state: TreeState | TreeBaseState): TreeContextValues;
 
 // @public
 export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>): TreeItemState;
@@ -451,6 +493,9 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
 
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemLayoutBase_unstable: (props: TreeItemLayoutBaseProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutBaseState;
 
 // @public
 export const useTreeItemLayoutStyles_unstable: (state: TreeItemLayoutState) => TreeItemLayoutState;

@@ -1,4 +1,53 @@
-import * as React from 'react';
+import type * as React from 'react';
+
+/**
+ * Physical placement of a positioned element relative to its target.
+ */
+export type PositioningPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+
+export type Side = Exclude<PositioningPlacement, `${string}-${string}`>;
+export type SideObject = Record<Side, number>;
+export type Strategy = NonNullable<PositioningOptions['strategy']>;
+
+/**
+ * Detail payload of the positioning end event, providing the final computed placement
+ * after positioning adjustments.
+ */
+export type OnPositioningEndEventDetail = {
+  /**
+   * The computed placement of the positioned element. May differ from the requested
+   * placement if the element flipped to another side or alignment.
+   */
+  placement: PositioningPlacement;
+
+  /**
+   * True when the floating element has escaped its clipping boundary.
+   */
+  escaped: boolean;
+
+  /**
+   * True when the reference element is clipped or out of view.
+   */
+  referenceHidden: boolean;
+};
+
+/**
+ * Custom DOM event dispatched on the positioned container element when a
+ * positioning update completes. Carries placement information in `event.detail`.
+ */
+export type OnPositioningEndEvent = CustomEvent<OnPositioningEndEventDetail>;
 
 export type PositioningRect = {
   width: number;
@@ -58,6 +107,10 @@ export type PositioningBoundary =
   | 'clippingParents'
   | 'scrollParent'
   | 'window';
+
+/** Boundary after resolving Fluent's named boundaries relative to the positioned element. */
+export type ClippingBoundary = Exclude<PositioningBoundary, string> | 'clippingAncestors';
+
 /**
  * @deprecated use PositioningBoundary instead
  */
@@ -198,10 +251,11 @@ export interface PositioningOptions {
   /**
    * Called when a position update has finished. Multiple position updates can happen in a single render,
    * since positioning happens outside of the React lifecycle.
+   * The event's `detail.placement` indicates the final computed placement.
    *
    * It's also possible to listen to the custom DOM event `fui-positioningend`
    */
-  onPositioningEnd?: () => void;
+  onPositioningEnd?: (e: OnPositioningEndEvent) => void;
 
   /**
    * Disables the resize observer that updates position on target or dimension change

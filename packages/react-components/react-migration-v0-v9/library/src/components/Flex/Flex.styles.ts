@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles } from '@fluentui/react-components';
 
 const gapValues = {

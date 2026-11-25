@@ -4,8 +4,8 @@
 
 ```ts
 
-import { Avatar } from '@fluentui/react-avatar';
-import { Button } from '@fluentui/react-button';
+import type { Avatar } from '@fluentui/react-avatar';
+import type { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

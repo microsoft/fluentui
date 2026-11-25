@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { MotionCurves, MotionDuration } from './Cards';
 
 <Meta title="Motion/Tokens" />
@@ -22,6 +22,8 @@ const Motion = createMotionComponent({
   duration: motionTokens.curveAccelerateMid,
 });
 ```
+
+Preview playback respects your system's reduced-motion preference: when it is on, previews start paused, and turning them on plays each preview once.
 
 ## Curves
 

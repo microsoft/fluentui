@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Chart, ImageExportOptions } from '../types/index';
-import { LegendContainer } from '../Legends';
+import type { Chart, ImageExportOptions } from '../types/index';
+import type { LegendContainer } from '../Legends';
 import { exportChartsAsImage } from './image-export-utils';
 import { useRtl } from './utilities';
 

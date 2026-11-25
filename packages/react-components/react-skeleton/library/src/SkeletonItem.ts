@@ -1,6 +1,7 @@
 export type {
+  SkeletonItemBaseProps,
+  SkeletonItemBaseState,
   SkeletonItemProps,
-  SkeletonItemSize,
   SkeletonItemSlots,
   SkeletonItemState,
 } from './components/SkeletonItem/index';
@@ -10,4 +11,5 @@ export {
   skeletonItemClassNames,
   useSkeletonItemStyles_unstable,
   useSkeletonItem_unstable,
+  useSkeletonItemBase_unstable,
 } from './components/SkeletonItem/index';

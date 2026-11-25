@@ -1,0 +1,8 @@
+<f-template name="fluent-menu" shadowrootmode="open">
+  <template @keydown="{menuKeydownHandler($e)}">
+    {{styles}}
+    <slot name="primary-action" f-ref="{primaryAction}"></slot>
+    <slot name="trigger" f-slotted="{slottedTriggers filter elements()}"></slot>
+    <slot f-slotted="{slottedMenuList filter elements()}"></slot>
+  </template>
+</f-template>

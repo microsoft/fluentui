@@ -1,8 +1,187 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 17 Dec 2025 18:10:11 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.8)
+
+Tue, 24 Nov 2026 12:44:29 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+- perf: drop native props allow-list from Switch hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.5.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-label to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.20 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.7)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-label to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.6)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.5..@fluentui/react-switch_v9.7.6)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.5.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-label to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.5)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.4..@fluentui/react-switch_v9.7.5)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.5.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-label to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.4)
+
+Wed, 24 Jun 2026 11:09:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.3..@fluentui/react-switch_v9.7.4)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.5.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-label to v9.4.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.3)
+
+Tue, 26 May 2026 09:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.2..@fluentui/react-switch_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-label to v9.4.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.2)
+
+Thu, 23 Apr 2026 14:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.1..@fluentui/react-switch_v9.7.2)
+
+### Patches
+
+- fix: update Switch component to conditionally render CircleFilled in indicator ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.5.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-label to v9.4.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.1)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.7.0..@fluentui/react-switch_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+- Bump @fluentui/react-label to v9.4.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.6.1..@fluentui/react-switch_v9.7.0)
+
+### Minor changes
+
+- feat: add base hooks for Switch ([PR #35820](https://github.com/microsoft/fluentui/pull/35820) by dmytrokirpa@microsoft.com)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.6.1)
+
+Wed, 11 Mar 2026 09:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.6.0..@fluentui/react-switch_v9.6.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.16 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.6.0)
+
+Tue, 03 Mar 2026 09:43:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.5.4..@fluentui/react-switch_v9.6.0)
+
+### Minor changes
+
+- feat: add disabledFocusable prop to Switch component ([PR #35799](https://github.com/microsoft/fluentui/pull/35799) by copilot@microsoft.com)
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.4)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.5.3..@fluentui/react-switch_v9.5.4)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.15 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-label to v9.3.15 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-tabster to v9.26.13 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.3)
+
+Thu, 12 Feb 2026 10:46:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.5.2..@fluentui/react-switch_v9.5.3)
+
+### Patches
+
+- refactor: add base state hooks for Switch component ([PR #35720](https://github.com/microsoft/fluentui/pull/35720) by copilot@github.com)
+- Bump @fluentui/react-field to v9.4.14 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-label to v9.3.14 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.2)
+
+Thu, 22 Jan 2026 17:06:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.5.1..@fluentui/react-switch_v9.5.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.13 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-label to v9.3.13 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.1)
 

@@ -1,5 +1,5 @@
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
-import { SlotComponentType } from './types';
+import type { SlotComponentType } from './types';
 
 /**
  * Guard method to ensure a given element is a slot.

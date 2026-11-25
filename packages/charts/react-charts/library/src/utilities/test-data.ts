@@ -1,4 +1,4 @@
-import {
+import type {
   ChartDataPoint,
   ChartProps,
   HorizontalBarChartWithAxisDataPoint,
@@ -6,8 +6,8 @@ import {
   GanttChartDataPoint,
   VerticalStackedChartProps,
   VerticalBarChartDataPoint,
-  DataVizPalette,
 } from '../index';
+import { DataVizPalette } from '../index';
 
 export const chartPointsVBC = [
   {

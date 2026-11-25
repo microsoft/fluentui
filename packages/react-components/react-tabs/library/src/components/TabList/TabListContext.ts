@@ -2,7 +2,7 @@
 
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { Context, ContextSelector } from '@fluentui/react-context-selector';
-import { TabListContextValue } from './TabList.types';
+import type { TabListContextValue } from './TabList.types';
 
 const tabListContextDefaultValue: TabListContextValue = {
   appearance: 'transparent',

@@ -5,19 +5,13 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
+import { colorAreaCSSVars } from './ColorArea.constants';
 
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
   root: 'fui-ColorArea',
   thumb: 'fui-ColorArea__thumb',
   inputX: 'fui-ColorArea__inputX',
   inputY: 'fui-ColorArea__inputY',
-};
-
-export const colorAreaCSSVars = {
-  areaXProgressVar: `--fui-AreaX--progress`,
-  areaYProgressVar: `--fui-AreaY--progress`,
-  thumbColorVar: `--fui-Area__thumb--color`,
-  mainColorVar: `--fui-Area--main-color`,
 };
 
 // Internal CSS variables
@@ -110,13 +104,12 @@ const useShapeStyles = makeStyles({
  * Apply styling to the ColorArea slots based on the state
  */
 export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const shapeStyles = useShapeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     colorAreaClassNames.root,
     rootStyles,
@@ -124,6 +117,7 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     colorAreaClassNames.thumb,
     thumbStyles.thumb,
@@ -131,8 +125,10 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.inputX.className = mergeClasses(colorAreaClassNames.inputX, inputStyles.input, state.inputX.className);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.inputY.className = mergeClasses(colorAreaClassNames.inputY, inputStyles.input, state.inputY.className);
   return state;
 };

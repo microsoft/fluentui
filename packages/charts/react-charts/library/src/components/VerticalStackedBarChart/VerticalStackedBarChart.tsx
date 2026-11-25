@@ -3,20 +3,19 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
+import type { ScaleLinear as D3ScaleLinear, ScaleBand } from 'd3-scale';
 import {
   scaleLinear as d3ScaleLinear,
-  ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
-  ScaleBand,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import {
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import type {
   AccessibilityProps,
-  CartesianChart,
   ChildProps,
   VerticalStackedBarDataPoint,
   Margins,
@@ -26,13 +25,12 @@ import {
   LineDataInVerticalStackedBarChart,
   ModifiedCartesianChartProps,
   Legend,
-  ChartPopover,
-  Legends,
   DataPoint,
 } from '../../index';
+import { CartesianChart, ChartPopover, Legends } from '../../index';
+import type { IAxisData, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -49,7 +47,6 @@ import {
   findVSBCNumericMinMaxOfY,
   YAxisType,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
@@ -59,7 +56,7 @@ import {
   calcRequiredWidth,
   sortAxisCategories,
 } from '../../utilities/index';
-import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
 
 type NumericScale = D3ScaleLinear<number, number>;
@@ -98,6 +95,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     data: VerticalStackedChartProps[],
   ) => _getLineLegends(data);
   const _emptyChartId: string = useId('_VSBC_empty');
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical', circular: true });
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
   let _xAxisLabels: string[] = [];
@@ -237,17 +235,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       clientX = boundingRect.left + boundingRect.width / 2;
       clientY = boundingRect.top + boundingRect.height / 2;
     }
-    if (_getHighlightedLegend().length === 1) {
-      if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
-        _updatePosition(clientX, clientY);
-        setPopoverOpen(true);
-        setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
-        setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
-        setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
-        setColor(lineData.color);
-      }
-    } else {
-      _onStackHoverFocus(lineData.xItem, event);
+    if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
+      _updatePosition(clientX, clientY);
+      setPopoverOpen(true);
+      setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
+      setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
+      setCalloutLegend(lineData.legend);
+      setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
+      setColor(lineData.color);
     }
   }
 
@@ -310,7 +305,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void => {
     props.onBarClick?.(mouseEvent, data);
-    props.href ? (window.location.href = props.href) : '';
+    if (props.href && isSafeUrl(props.href)) {
+      window.location.href = props.href;
+    }
   };
 
   function _adjustProps(): void {
@@ -486,19 +483,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       : null;
   }
 
-  function _toFocusWholeStack(_isHavingLines: boolean): boolean {
+  function _toFocusWholeStack(): boolean {
     const { isCalloutForStack = false } = props;
-    let shouldFocusStackOnly: boolean = false;
-    if (_isHavingLines) {
-      if (_getHighlightedLegend().length === 1) {
-        shouldFocusStackOnly = false;
-      } else {
-        shouldFocusStackOnly = true;
-      }
-    } else {
-      shouldFocusStackOnly = isCalloutForStack;
-    }
-    return shouldFocusStackOnly;
+    return isCalloutForStack;
   }
 
   function _getDomainNRangeValues(
@@ -532,7 +519,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _getFormattedLineData(data: VerticalStackedChartProps[]): LineObject {
     const linesData: LinePoint[] = [];
-    const formattedLineData: LineObject = {};
+    const formattedLineData: LineObject = Object.create(null);
     data.forEach((item: VerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         item.lineData.forEach((line: any) => {
@@ -574,15 +561,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     yScaleSecondary?: NumericScale,
   ): JSXElement {
     const lineObject: LineObject = _getFormattedLineData(props.data);
-    const lines: React.ReactNode[] = [];
-    const borderForLines: React.ReactNode[] = [];
-    const dots: React.ReactNode[] = [];
+    const lineSeriesGroups: React.ReactNode[] = [];
     //const { theme } = props;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
       : 0;
     const xScaleBandwidthTranslate = _xAxisType !== XAxisTypes.StringAxis ? 0 : xScale.bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
+      const lines: React.ReactNode[] = [];
+      const borderForLines: React.ReactNode[] = [];
+      const dots: React.ReactNode[] = [];
       const shouldHighlight = _isLegendHighlighted(item) || _noLegendHighlighted();
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
@@ -636,18 +624,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           />,
         );
       }
-    });
-    Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        const noBarsAndLinesActive =
-          circlePoint.xItem.chartData.filter(
-            dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
-          ).length === 0;
         const yScaleBandwidthTranslate =
           !circlePoint.useSecondaryYScale && _yAxisType === YAxisType.StringAxis
             ? (yScalePrimary as StringScale).bandwidth() / 2
             : 0;
+        const shouldHighlight = _isLegendHighlighted(circlePoint.legend) || _noLegendHighlighted() ? true : false;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -671,26 +654,28 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               circleRef.refElement = e;
             }}
-            {...(noBarsAndLinesActive
-              ? {
-                  tabIndex: !props.hideTooltip ? 0 : undefined,
-                  onFocus: event => _lineFocus(event, circlePoint, circleRef),
-                  onBlur: _handleMouseOut,
-                  role: 'img',
-                  'aria-label': _getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint),
-                }
-              : {})}
+            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            onFocus={event => _lineFocus(event, circlePoint, circleRef)}
+            onBlur={_handleMouseOut}
+            role="option"
+            aria-label={_getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint, true)}
           />,
         );
       });
+
+      lineSeriesGroups.push(
+        <g
+          role="listbox"
+          aria-label={`${item}, line with ${lineObject[item].length} data points.`}
+          key={`${item}-${index}-lineSeries`}
+        >
+          {borderForLines}
+          {lines}
+          {dots}
+        </g>,
+      );
     });
-    return (
-      <>
-        {borderForLines}
-        {lines}
-        {dots}
-      </>
-    );
+    return <>{lineSeriesGroups}</>;
   }
 
   function _getCircleOpacityAndRadius(
@@ -999,10 +984,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xElement: SVGElement,
   ): JSXElement[] {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = props;
-    const _isHavingLines = props.data.some(
-      (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
-    );
-    const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
+    const shouldFocusWholeStack = _toFocusWholeStack();
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
@@ -1065,7 +1047,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
             onBlur: _handleMouseOut,
             onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-            role: 'img',
+            role: 'option',
             tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
           };
 
@@ -1116,6 +1098,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                   z
                 `}
                 fill={startColor}
+                opacity={shouldHighlight ? 1 : 0.1}
                 rx={props.roundCorners ? 3 : 0}
                 ref={e => {
                   ref.refElement = e;
@@ -1167,7 +1150,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
           onClick: (event: any) => _onClick(singleChartData, event),
-          role: 'img',
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
@@ -1205,6 +1187,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               groupRef.refElement = e;
             }}
+            role="listbox"
+            aria-label={_getAriaLabel(singleChartData)}
             {...stackFocusProps}
           >
             {singleBar}
@@ -1323,7 +1307,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _mapCategoryToValues(isYAxis = false) {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     _points.forEach(point => {
       point.chartData.forEach(bar => {
         const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
@@ -1357,22 +1341,22 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const _isHavingLines = props.data.some(
       (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
     );
-    const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
+    const shouldFocusWholeStack = _toFocusWholeStack();
     _dataset = _createDataSetLayer();
-    const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
+    const lineLegends = _createLegendsForLine(props.data);
+    const legendBars: JSXElement = _getLegendData(_points, lineLegends);
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
-      color: color,
+      color,
       legend: calloutLegend,
       XValue: xCalloutValue!,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
-      YValueHover: YValueHover,
-      hoverXValue: hoverXValue,
+      YValueHover,
+      hoverXValue,
       ...props.calloutProps,
       ...getAccessibleDataObject(callOutAccessibilityData),
-      clickPosition: clickPosition,
-      isPopoverOpen: isPopoverOpen,
-      isCalloutForStack:
-        props.isCalloutForStack || (_isHavingLines && (_noLegendHighlighted() || _getHighlightedLegend().length > 1)),
+      clickPosition,
+      isPopoverOpen,
+      isCalloutForStack: shouldFocusWholeStack,
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
@@ -1406,6 +1390,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
+        onChartBlur={_handleChartMouseLeave}
         getDomainMargins={_getDomainMargins}
         {...(_xAxisType === XAxisTypes.StringAxis && {
           xAxisInnerPadding: _xAxisInnerPadding,
@@ -1420,7 +1405,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         children={(props: ChildProps) => {
           return (
             <>
-              <g>{_bars}</g>
+              <g {..._arrowNavigationAttributes}>{_bars}</g>
               <g>
                 {_isHavingLines &&
                   _createLines(

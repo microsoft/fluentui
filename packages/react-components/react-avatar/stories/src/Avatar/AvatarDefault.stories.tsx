@@ -1,4 +1,4 @@
-import type { ArgTypes } from '@storybook/react';
+import type { ArgTypes } from '@storybook/react-webpack5';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';

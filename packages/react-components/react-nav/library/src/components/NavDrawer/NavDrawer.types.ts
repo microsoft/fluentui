@@ -1,7 +1,7 @@
-import { DrawerProps, DrawerSlots, DrawerState } from '@fluentui/react-drawer';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { NavProps } from '../Nav/Nav.types';
-import { NavContextValue } from '../NavContext.types';
+import type { DrawerProps, DrawerSlots, DrawerState } from '@fluentui/react-drawer';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { NavProps } from '../Nav/Nav.types';
+import type { NavContextValue } from '../NavContext.types';
 
 /**
  * NavDrawer slots

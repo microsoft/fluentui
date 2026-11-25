@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 export interface ActiveDescendantImperativeRef {
   first: (options?: IteratorOptions) => string | undefined;

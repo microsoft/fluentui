@@ -1,11 +1,11 @@
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,
   VerticalBarChartDataPoint,
 } from '../../index';
-import { LineChartLineOptions } from '../../types/index';
+import type { LineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties

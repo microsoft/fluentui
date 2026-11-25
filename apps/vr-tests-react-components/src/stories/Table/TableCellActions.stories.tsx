@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Table } from '@fluentui/react-table';
 import { Steps } from 'storywright';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
@@ -8,7 +8,6 @@ import { CellActionsAlwaysVisible, CellActionsDefault, CellActionsInHeaderCell }
 
 export default {
   title: 'Table layout table - cell actions',
-
   decorators: [],
   parameters: {
     storyWright: { steps: new Steps().hover('.row-1').snapshot('hover row').end() },
@@ -17,6 +16,10 @@ export default {
 
 export const Default = () => <CellActionsDefault noNativeElements={false} />;
 Default.storyName = 'default';
+
+export const Neutral = () => <CellActionsDefault selectedRowAppearance="neutral" noNativeElements={false} />;
+
+export const Brand = () => <CellActionsDefault selectedRowAppearance="brand" noNativeElements={false} />;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 

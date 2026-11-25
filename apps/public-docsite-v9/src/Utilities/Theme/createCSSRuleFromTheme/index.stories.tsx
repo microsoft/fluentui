@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 import descriptionMd from './createCSSRuleFromThemeDescription.md';
 import bestPracticesMd from './createCSSRuleFromThemeBestPractices.md';

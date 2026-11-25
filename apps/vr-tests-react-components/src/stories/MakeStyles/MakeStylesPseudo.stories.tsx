@@ -1,6 +1,6 @@
 import { shorthands, makeStyles } from '@griffel/react';
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 

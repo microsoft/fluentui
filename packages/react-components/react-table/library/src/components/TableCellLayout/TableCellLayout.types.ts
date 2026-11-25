@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AvatarSize } from '@fluentui/react-avatar';
-import { TableContextValue } from '../Table/Table.types';
+import type { TableContextValue } from '../Table/Table.types';
 
 export type TableCellLayoutContextValues = {
   avatar: {
@@ -48,6 +48,16 @@ export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSl
      */
     truncate?: boolean;
   };
+
+/**
+ * TableCellLayout props accepted by `useTableCellLayoutBase_unstable`, without design props.
+ */
+export type TableCellLayoutBaseProps = Omit<TableCellLayoutProps, 'appearance' | 'truncate'>;
+
+/**
+ * State returned by `useTableCellLayoutBase_unstable`.
+ */
+export type TableCellLayoutBaseState = ComponentState<TableCellLayoutSlots>;
 
 /**
  * State used in rendering TableCellLayout

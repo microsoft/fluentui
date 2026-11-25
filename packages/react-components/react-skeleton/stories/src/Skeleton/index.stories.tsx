@@ -2,6 +2,7 @@ import { Skeleton, SkeletonItem } from '@fluentui/react-components';
 
 import descriptionMd from './SkeletonDescription.md';
 import bestPracticesMd from './SkeletonBestPractices.md';
+import accessibilityMd from './SkeletonAccessibility.md';
 
 export { Default } from './SkeletonDefault.stories';
 export { Appearance } from './SkeletonAppearance.stories';
@@ -19,7 +20,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, accessibilityMd].join('\n'),
       },
     },
   },

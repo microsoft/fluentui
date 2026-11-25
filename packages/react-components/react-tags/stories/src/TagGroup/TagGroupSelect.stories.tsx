@@ -1,9 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, TagGroupProps } from '@fluentui/react-components';
 import {
   TagGroup,
   InteractionTag,
-  TagGroupProps,
   InteractionTagPrimary,
   InteractionTagSecondary,
   Button,

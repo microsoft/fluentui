@@ -1,4 +1,6 @@
 export type {
+  InteractionTagSecondaryBaseProps,
+  InteractionTagSecondaryBaseState,
   InteractionTagSecondaryProps,
   InteractionTagSecondarySlots,
   InteractionTagSecondaryState,
@@ -8,5 +10,6 @@ export {
   interactionTagSecondaryClassNames,
   renderInteractionTagSecondary_unstable,
   useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondaryBase_unstable,
   useInteractionTagSecondary_unstable,
 } from './components/InteractionTagSecondary/index';

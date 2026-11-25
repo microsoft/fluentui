@@ -1,0 +1,30 @@
+'use client';
+
+import type * as React from 'react';
+import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+
+import type { MessageBarActionsProps, MessageBarActionsState } from './MessageBarActions.types';
+import { toDataAttributeValue } from '../../../utils';
+
+/**
+ * Returns the state for a MessageBarActions component, given its props and ref.
+ * The returned state can be modified with hooks before being passed to `renderMessageBarActions`.
+ */
+export const useMessageBarActions = (
+  props: MessageBarActionsProps,
+  ref: React.Ref<HTMLDivElement>,
+): MessageBarActionsState => {
+  const state: MessageBarActionsState = useMessageBarActions_unstable(props, ref);
+
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-layout'] = state.layout;
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-has-actions'] = toDataAttributeValue(state.hasActions);
+
+  return state;
+};
+
+/**
+ * Returns the context values provided by MessageBarActions to its child buttons.
+ */
+export { useMessageBarActionsContextValue_unstable as useMessageBarActionsContextValues } from '@fluentui/react-message-bar';

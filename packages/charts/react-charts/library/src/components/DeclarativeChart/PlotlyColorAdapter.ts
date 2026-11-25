@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { color as d3Color } from 'd3-color';
 import type { PieColors, Color, PlotData, Layout } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray } from '@fluentui/chart-utilities';

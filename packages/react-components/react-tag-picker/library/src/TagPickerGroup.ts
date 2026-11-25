@@ -1,4 +1,9 @@
-export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './components/TagPickerGroup/index';
+export type {
+  TagPickerGroupBaseState,
+  TagPickerGroupProps,
+  TagPickerGroupSlots,
+  TagPickerGroupState,
+} from './components/TagPickerGroup/index';
 export {
   TagPickerGroup,
   renderTagPickerGroup_unstable,

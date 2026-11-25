@@ -72,6 +72,7 @@ export type MotionComponentProps = {
     onMotionFinish?: (ev: null) => void;
     onMotionCancel?: (ev: null) => void;
     onMotionStart?: (ev: null) => void;
+    replayKey?: string | number;
 };
 
 // @public (undocumented)
@@ -82,6 +83,30 @@ export type MotionImperativeRef = {
 
 // @public
 export type MotionParam = boolean | number | string;
+
+// @internal
+export const MotionRefForwarder: React_2.ForwardRefExoticComponent<{
+    children?: React_2.ReactElement;
+} & React_2.RefAttributes<HTMLElement>>;
+
+// @internal
+export const MotionRefForwarderReset: React_2.FC<{
+    children: React_2.ReactElement;
+}>;
+
+// @public (undocumented)
+export function motionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: MotionSlotProps<MotionParams> | null | undefined, options: {
+    elementType: React_2.FC<MotionComponentProps & MotionParams>;
+    defaultProps: MotionSlotRenderProps & MotionParams;
+}): SlotComponentType<MotionSlotRenderProps & MotionParams>;
+
+// @public (undocumented)
+export type MotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<MotionComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & Partial<MotionParams> & {
+    as?: JSXIntrinsicElementKeys;
+    children?: SlotRenderFunction<MotionSlotRenderProps & MotionParams & {
+        children: JSXElement;
+    }>;
+};
 
 // @public (undocumented)
 export const motionTokens: {
@@ -108,8 +133,8 @@ export const motionTokens: {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-    In: React_2.FC<MotionComponentProps & MotionParams>;
-    Out: React_2.FC<MotionComponentProps & MotionParams>;
+    In: MotionComponent<MotionParams>;
+    Out: MotionComponent<MotionParams>;
 };
 
 // @public (undocumented)
@@ -172,12 +197,15 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 }): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
 
 // @public (undocumented)
-export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
+export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & Partial<MotionParams> & {
     as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: JSXElement;
     }>;
 };
+
+// @internal
+export function useMotionForwardedRef(): React_2.Ref<HTMLElement> | undefined;
 
 // @public (undocumented)
 export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;

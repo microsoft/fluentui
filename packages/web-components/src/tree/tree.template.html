@@ -1,0 +1,11 @@
+<f-template name="fluent-tree" shadowrootmode="open">
+  <template
+    @click="{clickHandler($e)}"
+    @keydown="{keydownHandler($e)}"
+    @change="{changeHandler($e)}"
+    @toggle="{itemToggleHandler()}"
+  >
+    {{styles}}
+    <slot f-ref="{defaultSlot}" @slotchange="{handleDefaultSlotChange()}"></slot>
+  </template>
+</f-template>

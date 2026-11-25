@@ -1,5 +1,5 @@
-import { ChartProps } from './index';
-import { CartesianChartStyleProps } from '../CommonComponents/index';
+import type { ChartProps } from './index';
+import type { CartesianChartStyleProps } from '../CommonComponents/index';
 
 export interface SparklineStyleProps extends CartesianChartStyleProps {}
 

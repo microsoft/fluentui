@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Loader Migration" />
 
@@ -26,19 +26,19 @@ The `Spinner` in V9 looks slightly different than the `Loader` in V0 but it is e
 
 ## How to migrate props:
 
-| Loader props              | migrate guide                                                                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)                                                 |
-| as, className             | keep it as is                                                                                                                                            |
-| variables, styles, design | see [Migrate style overrides](#migrate-style-overrides) in this document                                                                                 |
-| delay                     | not supported                                                                                                                                            |
-| indicator                 | not supported                                                                                                                                            |
-| inline                    | use mixin `inline`                                                                                                                                       |
-| label                     | keep it as is but font styles will be different; use mixin `v0SpinnerLabelStyle` to keep the V0 label font styles. [See example](#./Keep-V0-font-styles) |
-| labelPosition             | same prop but different values, see [Migrate labelPosition prop](#./Migrate-labelPosition-props)                                                         |
-| secondary                 | change to `appearance` prop with `inverted` value instead                                                                                                |
-| size                      | keep it as is                                                                                                                                            |
-| svg                       | not supported                                                                                                                                            |
+| Loader props              | migrate guide                                                                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| accessibility             | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)                                                   |
+| as, className             | keep it as is                                                                                                                                                |
+| variables, styles, design | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                                                                   |
+| delay                     | not supported                                                                                                                                                |
+| indicator                 | not supported                                                                                                                                                |
+| inline                    | use mixin \`inline\`                                                                                                                                         |
+| label                     | keep it as is but font styles will be different; use mixin \`v0SpinnerLabelStyle\` to keep the V0 label font styles. \[See example\](#./Keep-V0-font-styles) |
+| labelPosition             | same prop but different values, see \[Migrate labelPosition prop\](#./Migrate-labelPosition-props)                                                           |
+| secondary                 | change to \`appearance\` prop with \`inverted\` value instead                                                                                                |
+| size                      | keep it as is                                                                                                                                                |
+| svg                       | not supported                                                                                                                                                |
 
 \* this may be changed
 Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/loader-migration-fluentui-forked-xfngje?file=/example.tsx)

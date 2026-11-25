@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { SortDirection, TableContextValue } from '../Table/Table.types';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { SortDirection, TableContextValue } from '../Table/Table.types';
 
 export type TableHeaderCellSlots = {
   root: Slot<'th', 'div'>;
@@ -31,6 +31,13 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
    */
   sortDirection?: SortDirection;
 };
+
+/**
+ * State returned by `useTableHeaderCellBase_unstable`.
+ */
+export type TableHeaderCellBaseState = ComponentState<TableHeaderCellSlots> &
+  Pick<TableContextValue, 'noNativeElements'> &
+  Pick<TableHeaderCellProps, 'sortable' | 'sortDirection'>;
 
 /**
  * State used in rendering TableHeaderCell

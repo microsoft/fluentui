@@ -25,10 +25,9 @@ const useStyles = makeStyles({
 export const useCheckmarkStyles_unstable = (
   state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>,
 ): void => {
-  'use no memo';
-
   const styles = useStyles();
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(
       styles.root,
       state.checked && styles.rootChecked,

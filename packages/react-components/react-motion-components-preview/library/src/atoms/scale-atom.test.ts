@@ -12,15 +12,15 @@ import {
 function expectScaleAtom(
   atom: import('@fluentui/react-motion').AtomMotion,
   direction: 'enter' | 'exit',
-  fromScale: number = 0.9,
-  toScale: number = 1,
+  outScale: number = 0.9,
+  inScale: number = 1,
 ) {
   expectValidAtomMotion(atom);
 
   if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'scale', [fromScale, toScale]);
+    expectKeyframeProperty(atom, 'scale', [outScale, inScale]);
   } else {
-    expectKeyframeProperty(atom, 'scale', [toScale, fromScale]);
+    expectKeyframeProperty(atom, 'scale', [inScale, outScale]);
   }
 }
 
@@ -40,12 +40,12 @@ describe('scaleAtom', () => {
     expect(exitAtom.keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
   });
 
-  it('applies custom fromScale and toScale values', () => {
+  it('applies custom outScale and inScale values', () => {
     const atom = scaleAtom({
       direction: 'enter',
       duration: 300,
-      fromScale: 0.5,
-      toScale: 1.2,
+      outScale: 0.5,
+      inScale: 1.2,
     });
 
     expect(atom.keyframes).toEqual([{ scale: 0.5 }, { scale: 1.2 }]);
@@ -64,8 +64,8 @@ describe('scaleAtom', () => {
     const atom = scaleAtom({
       direction: 'enter',
       duration: 300,
-      fromScale: 0,
-      toScale: 1,
+      outScale: 0,
+      inScale: 1,
     });
 
     expect(atom.keyframes).toEqual([{ scale: 0 }, { scale: 1 }]);
@@ -75,8 +75,8 @@ describe('scaleAtom', () => {
     const atom = scaleAtom({
       direction: 'enter',
       duration: 300,
-      fromScale: 1.5,
-      toScale: 2.0,
+      outScale: 1.5,
+      inScale: 2.0,
     });
 
     expect(atom.keyframes).toEqual([{ scale: 1.5 }, { scale: 2.0 }]);
@@ -103,8 +103,8 @@ describe('scaleAtom', () => {
       duration: 400,
       delay: 75,
       easing: 'ease-in-out',
-      fromScale: 0.8,
-      toScale: 1.1,
+      outScale: 0.8,
+      inScale: 1.1,
     });
 
     expect(atom).toMatchObject({
@@ -119,8 +119,8 @@ describe('scaleAtom', () => {
     const atom = scaleAtom({
       direction: 'enter',
       duration: 300,
-      fromScale: 0.95,
-      toScale: 1.05,
+      outScale: 0.95,
+      inScale: 1.05,
     });
 
     expect(atom.keyframes).toEqual([{ scale: 0.95 }, { scale: 1.05 }]);
@@ -154,14 +154,14 @@ describe('scaleAtom', () => {
     const enterAtom = scaleAtom({
       direction: 'enter',
       duration: 300,
-      fromScale: 0.5,
-      toScale: 1.2,
+      outScale: 0.5,
+      inScale: 1.2,
     });
     const exitAtom = scaleAtom({
       direction: 'exit',
       duration: 300,
-      fromScale: 0.5,
-      toScale: 1.2,
+      outScale: 0.5,
+      inScale: 1.2,
     });
 
     expectScaleAtom(enterAtom, 'enter', 0.5, 1.2);

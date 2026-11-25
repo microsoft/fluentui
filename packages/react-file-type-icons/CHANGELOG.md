@@ -1,8 +1,79 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Wed, 10 Dec 2025 06:27:57 GMT and should not be manually modified.
+<!-- This log was last generated on Wed, 25 Nov 2026 01:39:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.4)
+
+Wed, 25 Nov 2026 01:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.3..@fluentui/react-file-type-icons_v8.18.4)
+
+### Patches
+
+- Add the DocuWorks file type icon for the xbd, xct, and xdw extensions. ([PR #37099](https://github.com/microsoft/fluentui/pull/37099) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.3)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.2..@fluentui/react-file-type-icons_v8.18.3)
+
+### Patches
+
+- Add the wikiPage file type icon mapping. ([PR #36388](https://github.com/microsoft/fluentui/pull/36388) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.2)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.1..@fluentui/react-file-type-icons_v8.18.2)
+
+### Patches
+
+- Map clpx extension to the clipchamp filetype icon ([PR #36507](https://github.com/microsoft/fluentui/pull/36507) by danielhall@microsoft.com)
+- Add the Fabric Ontology file type icon. ([PR #36756](https://github.com/microsoft/fluentui/pull/36756) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.1)
+
+Thu, 02 Jul 2026 09:55:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.0..@fluentui/react-file-type-icons_v8.18.1)
+
+### Patches
+
+- Update the file type icon map for the fabric-cdn-prod_20260623.001 drop. ([PR #36336](https://github.com/microsoft/fluentui/pull/36336) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.2 ([commit](https://github.com/microsoft/fluentui/commit/e287a20abcf5146c41ae0a6243c04358fddca40c) by beachball)
+
+## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.0)
+
+Mon, 11 May 2026 10:02:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.17.0..@fluentui/react-file-type-icons_v8.18.0)
+
+### Minor changes
+
+- Support for new markdown, "special folder" filetype icon (default "shortcuts" folder) and other fixes ([PR #35945](https://github.com/microsoft/fluentui/pull/35945) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.1 ([commit](https://github.com/microsoft/fluentui/commit/04bf7a7dd2b5c8f6963d3bf63187017e96c57a10) by beachball)
+
+## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.17.0)
+
+Thu, 26 Feb 2026 18:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.16.0..@fluentui/react-file-type-icons_v8.17.0)
+
+### Minor changes
+
+- Updating .md filetype to use rich text document icon ([PR #35740](https://github.com/microsoft/fluentui/pull/35740) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.0 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.16.0)
+
+Tue, 27 Jan 2026 05:19:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.15.3..@fluentui/react-file-type-icons_v8.16.0)
+
+### Minor changes
+
+- adding filetypeicon for campaign item ([PR #35650](https://github.com/microsoft/fluentui/pull/35650) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.14.0 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
 
 ## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.15.3)
 

@@ -4,18 +4,24 @@
 
 ```ts
 
-import { Avatar } from '@fluentui/react-avatar';
+import type { Avatar } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { PresenceBadge } from '@fluentui/react-badge';
-import * as React_2 from 'react';
+import type { PresenceBadge } from '@fluentui/react-badge';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
+
+// @public (undocumented)
+export type PersonaBaseProps = ComponentProps<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaProps, 'name'>;
+
+// @public (undocumented)
+export type PersonaBaseState = ComponentState<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaState, 'numTextLines'>;
 
 // @public (undocumented)
 export const personaClassNames: SlotClassNames<PersonaSlots>;
@@ -50,6 +56,9 @@ export const renderPersona_unstable: (state: PersonaState) => JSXElement;
 
 // @public
 export const usePersona_unstable: (props: PersonaProps, ref: React_2.Ref<HTMLElement>) => PersonaState;
+
+// @public
+export const usePersonaBase_unstable: (props: PersonaBaseProps, ref?: React_2.Ref<HTMLElement>) => PersonaBaseState;
 
 // @public
 export const usePersonaStyles_unstable: (state: PersonaState) => PersonaState;

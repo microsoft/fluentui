@@ -2,7 +2,8 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { LineChartPoints, LineChart } from './index';
+import type { LineChartPoints } from './index';
+import { LineChart } from './index';
 import '@testing-library/jest-dom';
 
 import {
@@ -742,27 +743,27 @@ describe('LineChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders LineChart correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} />);
+    const wrapper = render(<LineChart data={basicChartPoints} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} hideLegend={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} hideLegend={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} enabledLegendsWrapLines={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} enabledLegendsWrapLines={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} showXAxisLablesTooltip={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} showXAxisLablesTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -778,13 +779,20 @@ describe('LineChart snapShot testing', () => {
       },
     );
 
-    let wrapper = render(<LineChart data={basicChartPoints} wrapXAxisLables={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} wrapXAxisLables={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} yAxisTickFormat={'.1f'} />);
+    const wrapper = render(<LineChart data={basicChartPoints} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('exposes optimized large-data lines as labeled options', () => {
+    render(<LineChart data={basicChartPoints} optimizeLargeData />);
+
+    expect(screen.getByRole('listbox', { name: 'metaData1 data series' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'metaData1, line 1 of 3 with 2 data points.' })).toBeInTheDocument();
   });
 
   it('Should render with default colors when line color is not provided', async () => {
@@ -800,9 +808,36 @@ describe('LineChart snapShot testing', () => {
     ];
 
     delete points[0].color;
-    let wrapper = render(<LineChart data={basicChartPoints} />);
+    const wrapper = render(<LineChart data={basicChartPoints} />);
     expect(wrapper).toMatchSnapshot();
   });
+});
+
+describe('LineChart - prototype pollution hardening', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each(['__proto__', 'constructor', 'prototype'])(
+    'renders without crashing or polluting Object.prototype when a legend is "%s"',
+    magicKey => {
+      const maliciousChartPoints = {
+        chartTitle: 'LineChart',
+        lineChartData: [
+          {
+            legend: magicKey,
+            data: [
+              { x: 1, y: 3 },
+              { x: 2, y: 4 },
+            ],
+            color: 'red',
+          },
+        ] as LineChartPoints[],
+      };
+
+      expect(() => render(<LineChart data={maliciousChartPoints} />)).not.toThrow();
+      expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'push')).toBe(false);
+    },
+  );
 });
 
 describe('LineChart - basic props', () => {
@@ -810,25 +845,25 @@ describe('LineChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<LineChart data={basicChartPoints} hideLegend={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<LineChart data={basicChartPoints} hideLegend={false} />);
+    const wrapper = render(<LineChart data={basicChartPoints} hideLegend={false} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<LineChart data={basicChartPoints} />);
+    const wrapper = render(<LineChart data={basicChartPoints} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
+    const wrapper = render(<LineChart data={basicChartPoints} hideTooltip={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
@@ -872,7 +907,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   afterEach(sharedAfterEach);
 
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<LineChart data={basicChartPoints} />);
+    const wrapper = render(<LineChart data={basicChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -882,7 +917,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
       chartTitle: 'EmptyLineChart',
       lineChartData: [],
     };
-    let wrapper = render(<LineChart data={emptyChartPoints} />);
+    const wrapper = render(<LineChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
@@ -987,5 +1022,55 @@ describe('LineChart - mouse events', () => {
     // Assert that the custom callout is rendered
     expect(container.querySelector('pre')).toBeDefined();
     expect(container).toMatchSnapshot();
+  });
+
+  it('Should dismiss the callout when focus leaves the chart', () => {
+    const { container } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} />
+      </>,
+      { container: root! },
+    );
+    const dataPoint = container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoint).not.toBeNull();
+    fireEvent.focus(dataPoint!);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(dataPoint!, { relatedTarget: screen.getByTestId('before-chart') });
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
+  it('Should keep the callout open when focus moves within the chart', () => {
+    const { container } = render(<LineChart data={basicChartPoints} />, { container: root! });
+    const dataPoints = container.querySelectorAll<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoints.length).toBeGreaterThan(1);
+    fireEvent.focus(dataPoints[0]);
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(dataPoints[0], { relatedTarget: dataPoints[1] });
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+  });
+
+  it('Should keep the callout open when focus moves into custom callout content', () => {
+    const onRenderCalloutPerDataPoint = () => <button data-testid="callout-action">Callout action</button>;
+    const { container } = render(
+      <LineChart
+        data={basicChartPoints}
+        isCalloutForStack={false}
+        onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint}
+      />,
+      { container: root! },
+    );
+    const dataPoint = container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]');
+
+    expect(dataPoint).not.toBeNull();
+    fireEvent.focus(dataPoint!);
+    const calloutAction = screen.getByTestId('callout-action');
+
+    fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
+    expect(screen.getByTestId('callout-action')).toBeInTheDocument();
   });
 });

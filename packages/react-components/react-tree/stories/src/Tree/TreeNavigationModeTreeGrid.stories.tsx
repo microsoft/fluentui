@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { Tree, TreeItem, TreeItemLayout, TreeItemProps } from '@fluentui/react-components';
+import type { JSXElement, TreeItemProps } from '@fluentui/react-components';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import {
   Button,

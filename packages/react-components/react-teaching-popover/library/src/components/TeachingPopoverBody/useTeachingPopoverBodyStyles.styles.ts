@@ -51,15 +51,15 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState): TeachingPopoverBodyState => {
-  'use no memo';
-
   const { mediaLength } = state;
   const styles = useStyles();
   const mediaStyles = useMediaStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverBodyClassNames.root, styles.root, state.root.className);
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       teachingPopoverBodyClassNames.media,
       mediaStyles.base,

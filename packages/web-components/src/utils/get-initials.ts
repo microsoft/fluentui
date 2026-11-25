@@ -21,7 +21,7 @@ const UNWANTED_CHARS_REGEX: RegExp = /[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
  * and number has been trimmed for whitespaces
  */
-const PHONENUMBER_REGEX: RegExp = /^\d+[\d\s]*(:?ext|x|)\s*\d+$/i;
+const PHONENUMBER_REGEX: RegExp = /^(?:\d[\d\s]*\d|\d[\d\s]*(?:ext|x)\s*\d+)$/i;
 
 /** Regular expression matching one or more spaces. */
 const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
@@ -34,7 +34,7 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
  * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs,
  *             CJK Unified Ideographs Extension B
  */
-// eslint-disable-next-line
+
 const UNSUPPORTED_TEXT_REGEX: RegExp =
   /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
 

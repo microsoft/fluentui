@@ -11,7 +11,7 @@ module.exports = [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'import/no-extraneous-dependencies': ['error', { packageDir: ['.', '../..'] }],
       '@typescript-eslint/no-deprecated': 'off',
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 ];

@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { Tab } from './tab.js';
 
 /**
@@ -15,3 +16,10 @@ export function isTab(element?: Node | null, tagName: string = '-tab'): element 
 
   return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
+
+/**
+ * The tag name for the tab element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-tab` as const;

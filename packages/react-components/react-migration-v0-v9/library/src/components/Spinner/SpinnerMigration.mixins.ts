@@ -1,4 +1,5 @@
-import { GriffelStyle, tokens, labelClassNames } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
+import { tokens, labelClassNames } from '@fluentui/react-components';
 
 const v0Inline = (): GriffelStyle => ({ display: 'inline-flex' });
 

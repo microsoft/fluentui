@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
-import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
+import type {
+  RatingDisplayBaseProps,
+  RatingDisplayBaseState,
+  RatingDisplayProps,
+  RatingDisplayState,
+} from './RatingDisplay.types';
 import { StarFilled } from '@fluentui/react-icons';
 import { RatingItem } from '../RatingItem/RatingItem';
 
@@ -19,12 +24,11 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const { color = 'neutral', count, compact = false, icon = StarFilled, max = 5, size = 'medium', value } = props;
+  const { color = 'neutral', size = 'medium', icon = StarFilled, ...baseProps } = props;
+  const state = useRatingDisplayBase_unstable({ icon, ...baseProps }, ref);
 
-  const valueTextId = useId('rating-value-');
-  const countTextId = useId('rating-count-');
+  const { compact, max } = state;
 
-  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
     return compact ? (
       <RatingItem value={1} key={1} aria-hidden={true} />
@@ -33,12 +37,39 @@ export const useRatingDisplay_unstable = (
     );
   }, [compact, max]);
 
-  const state: RatingDisplayState = {
+  return {
+    ...state,
+    root: {
+      children: rootChildren,
+      ...state.root,
+    },
+    icon,
     color,
+    size,
+  };
+};
+
+/**
+ * Base hook for RatingDisplay component. Manages state related to ARIA img role,
+ * aria-labelledby composition from valueText/countText IDs, slot structure, and
+ * compact/full display modes — without design props (color, size).
+ *
+ * @param props - props from this instance of RatingDisplay (without color, size)
+ * @param ref - reference to root HTMLDivElement of RatingDisplay
+ */
+export const useRatingDisplayBase_unstable = (
+  props: RatingDisplayBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): RatingDisplayBaseState => {
+  const { count, compact = false, icon, max = 5, value } = props;
+
+  const valueTextId = useId('rating-value-');
+  const countTextId = useId('rating-count-');
+
+  const state: RatingDisplayBaseState = {
     compact,
     icon,
     max,
-    size,
     value,
     components: {
       root: 'div',
@@ -48,7 +79,6 @@ export const useRatingDisplay_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        children: rootChildren,
         role: 'img',
         ...props,
       }),

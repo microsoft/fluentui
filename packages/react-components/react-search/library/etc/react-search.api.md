@@ -17,10 +17,16 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSearchBox_unstable: (state: SearchBoxState) => JSXElement;
+export const renderSearchBox_unstable: (state: SearchBoxBaseState) => JSXElement;
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
+
+// @public
+export type SearchBoxBaseProps = Omit<SearchBoxProps, 'appearance' | 'size'>;
+
+// @public
+export type SearchBoxBaseState = Omit<SearchBoxState, 'appearance' | 'size'>;
 
 // @public
 export type SearchBoxChangeEvent = React_2.ChangeEvent<HTMLInputElement> | React_2.MouseEvent<HTMLSpanElement>;
@@ -45,6 +51,9 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> & InputState & Requi
 
 // @public
 export const useSearchBox_unstable: (props: SearchBoxProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxState;
+
+// @public
+export const useSearchBoxBase_unstable: (props: SearchBoxBaseProps, ref: React_2.Ref<HTMLInputElement>) => SearchBoxBaseState;
 
 // @public
 export const useSearchBoxStyles_unstable: (state: SearchBoxState) => SearchBoxState;

@@ -1,7 +1,7 @@
 'use client';
 
 import { tokens } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
@@ -43,12 +43,12 @@ const useStyles = makeStyles({
  * Apply styling to the OptionGroup slots based on the state
  */
 export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGroupState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(optionGroupClassNames.root, styles.root, state.root.className);
 
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(optionGroupClassNames.label, styles.label, state.label.className);
   }
 

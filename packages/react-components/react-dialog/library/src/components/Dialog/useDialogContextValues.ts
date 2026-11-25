@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogContextValues, DialogState } from './Dialog.types';
 
@@ -15,22 +18,32 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     unmountOnClose,
   } = state;
 
-  /**
-   * This context is created with "@fluentui/react-context-selector",
-   * there is no sense to memoize it
-   */
-  const dialog: DialogContextValue = {
-    open,
-    modalType,
-    dialogRef,
-    dialogTitleId,
-    isNestedDialog,
-    inertTrapFocus,
-    modalAttributes,
-    triggerAttributes,
-    unmountOnClose,
-    requestOpenChange,
-  };
+  const dialog = React.useMemo<DialogContextValue>(
+    () => ({
+      open,
+      modalType,
+      dialogRef,
+      dialogTitleId,
+      isNestedDialog,
+      inertTrapFocus,
+      modalAttributes,
+      triggerAttributes,
+      unmountOnClose,
+      requestOpenChange,
+    }),
+    [
+      open,
+      modalType,
+      dialogRef,
+      dialogTitleId,
+      isNestedDialog,
+      inertTrapFocus,
+      modalAttributes,
+      triggerAttributes,
+      unmountOnClose,
+      requestOpenChange,
+    ],
+  );
 
   const dialogSurface: DialogSurfaceContextValue = false;
 

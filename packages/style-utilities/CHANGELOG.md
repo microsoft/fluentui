@@ -1,8 +1,77 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 10 Dec 2025 06:28:02 GMT and should not be manually modified.
+<!-- This log was last generated on Wed, 25 Nov 2026 01:39:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.5)
+
+Wed, 25 Nov 2026 01:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.4..@fluentui/style-utilities_v8.15.5)
+
+### Patches
+
+- Update the default Fluent CDN URL for the fabric-cdn 4.0.10 deployment. ([PR #37099](https://github.com/microsoft/fluentui/pull/37099) by caperez@microsoft.com)
+
+## [8.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.4)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.3..@fluentui/style-utilities_v8.15.4)
+
+### Patches
+
+- fix: Update the default Fluent CDN URL for the fabric-cdn 4.0.8 deployment. ([PR #36883](https://github.com/microsoft/fluentui/pull/36883) by caperez@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.3)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.2..@fluentui/style-utilities_v8.15.3)
+
+### Patches
+
+- Update the default Fluent CDN URL for the fabric-cdn 4.0.7 deployment. ([PR #36756](https://github.com/microsoft/fluentui/pull/36756) by caperez@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.2)
+
+Thu, 02 Jul 2026 09:55:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.1..@fluentui/style-utilities_v8.15.2)
+
+### Patches
+
+- Update the default Fluent CDN base URL to the fabric-cdn-prod_20260623.001 drop. ([PR #36336](https://github.com/microsoft/fluentui/pull/36336) by caperez@microsoft.com)
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.1)
+
+Mon, 11 May 2026 10:02:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.0..@fluentui/style-utilities_v8.15.1)
+
+### Patches
+
+- Updated OneCDN url to latest version (adding support for new markdown, "shortcuts folder" filetype icon and other fixes) ([PR #35945](https://github.com/microsoft/fluentui/pull/35945) by caperez@microsoft.com)
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.0)
+
+Thu, 26 Feb 2026 18:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.14.0..@fluentui/style-utilities_v8.15.0)
+
+### Minor changes
+
+- fabric-cdn url update to latest ([PR #35740](https://github.com/microsoft/fluentui/pull/35740) by caperez@microsoft.com)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.14.0)
+
+Tue, 27 Jan 2026 05:19:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.6..@fluentui/style-utilities_v8.14.0)
+
+### Minor changes
+
+- updating to latest fabric CDN url ([PR #35650](https://github.com/microsoft/fluentui/pull/35650) by caperez@microsoft.com)
 
 ## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.6)
 

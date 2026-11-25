@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select, pointer as d3Pointer } from 'd3-selection';
+import { pointer as d3Pointer } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear, scaleBand as d3ScaleBand, ScaleBand } from 'd3-scale';
 import {
   classNamesFunction,
@@ -17,7 +17,6 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
@@ -60,7 +59,7 @@ import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
 import type { JSXElement } from '@fluentui/utilities';
-import { isInvalidValue } from '@fluentui/chart-utilities';
+import { isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -117,7 +116,6 @@ export class GroupedVerticalBarChartBase
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _yMax: number;
   private _calloutId: string;
-  private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _isRtl: boolean = getRTL();
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
@@ -129,7 +127,7 @@ export class GroupedVerticalBarChartBase
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart | null>;
   private _legendsRef: React.RefObject<ILegendContainer | null>;
-  private _legendColorMap: Record<string, [string, string]> = {};
+  private _legendColorMap: Record<string, [string, string]> = Object.create(null);
   private readonly Y_ORIGIN: number = 0;
   private _rectRef: React.RefObject<SVGRectElement | null>;
   private _uniqDotId = getId('gvbc_dot_');
@@ -164,7 +162,6 @@ export class GroupedVerticalBarChartBase
       legendColor: 'Dont use this property. colour will pick from given data.',
     });
     this._calloutId = getId('callout');
-    this._tooltipId = getId('GVBCTooltipId_');
     this._emptyChartId = getId('_GVBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -423,7 +420,9 @@ export class GroupedVerticalBarChartBase
   };
 
   private _redirectToUrl = (href: string | undefined): void => {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   };
 
   private _buildGraph = (
@@ -558,20 +557,6 @@ export class GroupedVerticalBarChartBase
         }
       }
     });
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xScale0);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return (
       <g
         key={singleSet.indexNum}
@@ -587,7 +572,7 @@ export class GroupedVerticalBarChartBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, IYValueHover[]> = {};
+    const linePointsByX: Record<string, IYValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -606,8 +591,8 @@ export class GroupedVerticalBarChartBase
 
     barData.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, IGVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint: Record<string, IGVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -872,7 +857,7 @@ export class GroupedVerticalBarChartBase
       ({ barData, lineData } = this._processDataV2(this.props.dataV2));
     }
 
-    this._legendColorMap = {};
+    this._legendColorMap = Object.create(null);
     let colorIndex = 0;
 
     return {
@@ -954,7 +939,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _mapCategoryToValues = (barData: IGroupedVerticalBarChartData[], lineData: IGVBCLineSeries[]) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     barData.forEach(point => {
       if (!categoryToValues[point.name]) {
         categoryToValues[point.name] = [];
@@ -1174,7 +1159,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _processDataV2 = (dataV2: (IBarSeries<string, number> | ILineSeries<string, number>)[]) => {
-    const barPointsByX: Record<string, IGroupedVerticalBarChartData> = {};
+    const barPointsByX: Record<string, IGroupedVerticalBarChartData> = Object.create(null);
     const lineData: IGVBCLineSeries[] = [];
 
     dataV2.forEach(series => {

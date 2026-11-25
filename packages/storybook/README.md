@@ -11,7 +11,7 @@ _Learn more about storybook addons [here](https://storybook.js.org/docs/addons/i
 This adds a knob for wrapping a story in `React.StrictMode`.
 
 ```js
-import { addDecorator } from '@storybook/react';
+import { addDecorator } from '@storybook/react-webpack5';
 import { withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withStrictMode);

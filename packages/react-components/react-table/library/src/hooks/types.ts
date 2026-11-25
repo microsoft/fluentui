@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SortDirection, TableProps } from '../components/Table/Table.types';
-import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
-import { SelectionMode } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { SortDirection, TableProps } from '../components/Table/Table.types';
+import type { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
+import type { SelectionMode } from '@fluentui/react-utilities';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;

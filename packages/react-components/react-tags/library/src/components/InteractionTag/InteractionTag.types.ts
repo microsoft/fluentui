@@ -1,6 +1,13 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { TagAppearance, TagShape, TagSize, TagValue, TagDismissHandler, TagSelectHandler } from '../../utils/types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { InteractionTagContextValue } from '../../contexts/interactionTagContext';
+import type {
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissHandler,
+  TagSelectHandler,
+} from '../../utils/types';
 
 export type InteractionTagContextValues = {
   interactionTag: InteractionTagContextValue;
@@ -81,3 +88,19 @@ export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTa
      */
     interactionTagPrimaryId: string;
   };
+
+/**
+ * InteractionTag Base Props - omits design-only props
+ */
+export type InteractionTagBaseProps<Value = TagValue> = Omit<
+  InteractionTagProps<Value>,
+  'appearance' | 'size' | 'shape'
+>;
+
+/**
+ * InteractionTag Base State - omits design-only state
+ */
+export type InteractionTagBaseState<Value = TagValue> = Omit<
+  InteractionTagState<Value>,
+  'appearance' | 'size' | 'shape'
+>;

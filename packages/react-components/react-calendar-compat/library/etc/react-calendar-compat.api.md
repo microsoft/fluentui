@@ -317,6 +317,7 @@ export interface CalendarYearProps {
     navigatedYear?: number;
     navigationIcons: CalendarNavigationIcons;
     onHeaderSelect?: (focus: boolean) => void;
+    onNavigateDate?: (year: number) => void;
     onRenderTitle?: (props: CalendarYearHeaderProps) => React_2.ReactNode;
     onRenderYear?: (year: number) => React_2.ReactNode;
     onSelectYear?: (year: number) => void;

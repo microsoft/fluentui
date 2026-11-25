@@ -1,5 +1,4 @@
 /**
- * @internal
  * Combine two event callbacks into a single callback function that calls each one in order.
  *
  * Usage example:
@@ -16,6 +15,7 @@
  *
  * If you need a callback that is stable between renders, wrap the result in {@link useEventCallback}.
  *
+ * @internal
  * @param callback1 - The first callback to be called, or undefined
  * @param callback2 - The second callback to be called, or undefined
  *
@@ -26,7 +26,13 @@ export function mergeCallbacks<Args extends unknown[]>(
   callback2: ((...args: Args) => void) | undefined,
 ): (...args: Args) => void {
   return (...args: Args) => {
-    callback1?.(...args);
-    callback2?.(...args);
+    // Avoid `callback?.(...args)`: optional calls with spread arguments hit a V8 8.0–9.0 bug
+    // (https://crbug.com/v8/11558) that affects Chromium-based browsers in our support matrix (Chrome/Edge 84–90).
+    if (callback1) {
+      callback1(...args);
+    }
+    if (callback2) {
+      callback2(...args);
+    }
   };
 }

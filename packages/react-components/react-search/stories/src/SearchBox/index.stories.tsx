@@ -10,6 +10,7 @@ export { Disabled } from './SearchBoxDisabled.stories';
 export { Placeholder } from './SearchBoxPlaceholder.stories';
 export { Size } from './SearchBoxSize.stories';
 export { Controlled } from './SearchBoxControlled.stories';
+export { Typeahead } from './SearchBoxTypeahead.stories';
 
 export default {
   title: 'Components/SearchBox',

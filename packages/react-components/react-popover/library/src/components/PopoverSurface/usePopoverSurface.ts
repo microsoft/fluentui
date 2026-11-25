@@ -1,10 +1,11 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -30,6 +31,7 @@ export const usePopoverSurface_unstable = (
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
+  const motionForwardedRef = useMotionForwardedRef();
   const { modalAttributes } = useModalAttributes({
     trapFocus,
     legacyTrapFocus: !inertTrapFocus,
@@ -51,7 +53,7 @@ export const usePopoverSurface_unstable = (
         // FIXME:
         // `contentRef` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, contentRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, contentRef, motionForwardedRef) as React.Ref<HTMLDivElement>,
         role: trapFocus ? 'dialog' : 'group',
         'aria-modal': trapFocus ? true : undefined,
         ...modalAttributes,

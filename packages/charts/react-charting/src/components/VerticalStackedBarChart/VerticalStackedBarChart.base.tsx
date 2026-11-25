@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
@@ -38,14 +37,13 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -132,7 +130,6 @@ export class VerticalStackedBarChartBase
   private _isRtl: boolean = getRTL();
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
-  private _tooltipId: string;
   private _yMax: number;
   private _yMin: number;
   private _calloutAnchorPoint: CalloutAnchorPointData | null;
@@ -172,7 +169,6 @@ export class VerticalStackedBarChartBase
     });
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
-    this._tooltipId = getId('VSBCTooltipId_');
     if (!this._isChartEmpty()) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
@@ -376,7 +372,7 @@ export class VerticalStackedBarChartBase
 
   private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {
     const linesData: LinePoint[] = [];
-    const formattedLineData: LineObject = {};
+    const formattedLineData: LineObject = Object.create(null);
     data.forEach((item: IVerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         // injecting corresponding x data point in each of the line data
@@ -891,7 +887,9 @@ export class VerticalStackedBarChartBase
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     this.props.onBarClick?.(mouseEvent, data);
-    this.props.href ? (window.location.href = this.props.href) : '';
+    if (this.props.href && isSafeUrl(this.props.href)) {
+      window.location.href = this.props.href;
+    }
   }
 
   private _getBarGapAndScale(
@@ -1214,28 +1212,6 @@ export class VerticalStackedBarChartBase
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
-
     return bars.filter((bar): bar is JSXElement => !!bar);
   };
 
@@ -1538,7 +1514,7 @@ export class VerticalStackedBarChartBase
   };
 
   private _mapCategoryToValues = (isYAxis = false) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this._points.forEach(point => {
       point.chartData.forEach(bar => {
         const category = (isYAxis ? bar.data : point.xAxisPoint) as string;

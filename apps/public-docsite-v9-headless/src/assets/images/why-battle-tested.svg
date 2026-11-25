@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+  <!-- Stacked layers suggesting proven layers of abstraction -->
+  <rect x="44" y="108" width="152" height="22" rx="6" fill="#9b1f5a" opacity="0.9"/>
+  <rect x="56" y="86" width="128" height="22" rx="6" fill="#9b1f5a" opacity="0.65"/>
+  <rect x="68" y="64" width="104" height="22" rx="6" fill="#9b1f5a" opacity="0.4"/>
+  <rect x="80" y="42" width="80" height="22" rx="6" fill="#9b1f5a" opacity="0.2"/>
+  <!-- Check on bottom (most proven) layer -->
+  <path d="M102 118 L112 127 L138 112" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Label hints -->
+  <text x="120" y="122" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white" opacity="0">logic</text>
+</svg>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryParameters } from 'storywright';
 import { ILegend, Legends } from '@fluentui/react-charting';

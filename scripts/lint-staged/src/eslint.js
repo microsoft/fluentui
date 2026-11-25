@@ -37,7 +37,9 @@ function groupFilesByPackage(files) {
     }
 
     const hasEslintConfig =
-      fs.existsSync(path.join(packagePath, '.eslintrc.json')) || fs.existsSync(path.join(packagePath, '.eslintrc.js'));
+      fs.existsSync(path.join(packagePath, 'eslint.config.js')) ||
+      fs.existsSync(path.join(packagePath, 'eslint.config.cjs')) ||
+      fs.existsSync(path.join(packagePath, 'eslint.config.mjs'));
 
     if (!hasEslintConfig) {
       continue;

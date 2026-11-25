@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useMergedRefs, slot } from '@fluentui/react-utilities';
 
-import { MenuGridItemProps, MenuGridItemState } from './MenuGridItem.types';
+import type { MenuGridItemProps, MenuGridItemState } from './MenuGridItem.types';
 import { MenuGridCell } from './../MenuGridCell/MenuGridCell';
 import { MenuGridRow } from './../MenuGridRow/MenuGridRow';
 import { useValidateNesting } from '../../utils/useValidateNesting';

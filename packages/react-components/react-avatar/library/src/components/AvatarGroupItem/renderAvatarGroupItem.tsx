@@ -4,12 +4,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import type { AvatarGroupItemState, AvatarGroupItemSlots } from './AvatarGroupItem.types';
+import type { AvatarGroupItemBaseState, AvatarGroupItemSlots } from './AvatarGroupItem.types';
 
 /**
  * Render the final JSX of AvatarGroupItem
  */
-export const renderAvatarGroupItem_unstable = (state: AvatarGroupItemState): JSXElement => {
+export const renderAvatarGroupItem_unstable = (state: AvatarGroupItemBaseState): JSXElement => {
   assertSlots<AvatarGroupItemSlots>(state);
 
   return (
