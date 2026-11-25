@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Disable ComboBox options when the field becomes disabled.",
+  "packageName": "@fluentui/react",
+  "email": "42275242+Xapollon430@users.noreply.github.com"
+}
