@@ -2,6 +2,7 @@ import { compileSource } from './compiler';
 import type { FileCompilationResult } from './compiler';
 import { normalizeCompilerEvents } from './compiler-events';
 import { compareText } from './ordering';
+import { compareCompilerEvidence } from './revalidation-evidence';
 import type { CompilationMode, DirectiveAnalysis, DirectiveOccurrence, FunctionAnalysis } from './types';
 
 export interface DirectiveAnalysisOptions {
@@ -23,7 +24,7 @@ function toDirectiveAnalysis(
   result: FileCompilationResult,
   directive: DirectiveOccurrence,
   values: Pick<DirectiveAnalysis, 'status' | 'compilerEvent'> &
-    Partial<Pick<DirectiveAnalysis, 'reason' | 'fullReason'>>,
+    Partial<Pick<DirectiveAnalysis, 'reason' | 'fullReason' | 'evidence'>>,
 ): DirectiveAnalysis {
   return {
     filePath: result.filePath,
@@ -266,8 +267,10 @@ export async function revalidateJustifiedDirectives(
   const original = analysisByFunction(result);
   const output: DirectiveAnalysis[] = [];
   for (const directive of directives.filter(item => item.justified)) {
+    const initial = directive.functionId ? original.get(directive.functionId) : undefined;
     const report = (values: Parameters<typeof toDirectiveAnalysis>[2]) =>
       output.push({
+        evidence: compareCompilerEvidence(initial),
         ...toDirectiveAnalysis(result, directive, values),
         justified: true,
         revalidated: true,
@@ -288,7 +291,6 @@ export async function revalidateJustifiedDirectives(
       });
       continue;
     }
-    const initial = original.get(directive.functionId);
     if (
       result.error ||
       initial?.compilerEvent === 'PipelineError' ||
@@ -327,12 +329,12 @@ export async function revalidateJustifiedDirectives(
     }
     const accepted = analysis?.status === 'compiled';
     const active = directive.directiveType === 'use-memo' ? !accepted : accepted;
+    const evidence = compareCompilerEvidence(initial, analysis);
     report({
       status: active ? 'active' : 'redundant',
       compilerEvent: compilerEventOf(analysis),
-      reason: `${
-        active ? 'changes' : 'does not change'
-      } Babel compiler acceptance in ${compilationMode} mode; justified directive is report-only, not a native-parity or performance guarantee`,
+      evidence,
+      reason: `Babel acceptance ${evidence.acceptanceEffect}; reported statistics ${evidence.statisticsEffect} in ${compilationMode} mode; emitted optimization not measured. No observed effect is profile-specific, not universal redundancy; justified directive is report-only.`,
     });
   }
   return output;

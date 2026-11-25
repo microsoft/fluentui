@@ -14,6 +14,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps> = /*#__PURE__*/ composeComponent(
   'InteractionTagPrimary',
   useInteractionTagPrimary,
-  renderInteractionTagPrimary,
   useInteractionTagPrimaryContextValues,
+  renderInteractionTagPrimary,
 );

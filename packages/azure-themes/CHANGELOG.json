@@ -2,6 +2,48 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 01:39:29 GMT",
+      "version": "8.6.154",
+      "tag": "@fluentui/azure-themes_v8.6.154",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.125.11"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Oct 2026 01:04:37 GMT",
+      "version": "8.6.153",
+      "tag": "@fluentui/azure-themes_v8.6.153",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.125.10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.6.152",
+      "tag": "@fluentui/azure-themes_v8.6.152",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.125.9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:32 GMT",
       "version": "8.6.151",
       "tag": "@fluentui/azure-themes_v8.6.151",

@@ -10,6 +10,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Combobox: ForwardRefComponent<ComboboxProps> = /*#__PURE__*/ composeComponent(
   'Combobox',
   useCombobox,
-  renderCombobox,
   useComboboxContextValues,
+  renderCombobox,
 );

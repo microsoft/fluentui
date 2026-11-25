@@ -158,6 +158,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         writeDocument(
           toAnalysisDocument(coverageResults, {
             mode: argv.mode,
+            parserPlugins: argv['parser-plugin'],
             workspaceRoot,
             unparseable,
             annotate,
@@ -178,13 +179,15 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         f.blank();
         if (annotate.dryRun) {
           f.line('Dry run: no source files were modified.');
-          for (const target of annotate.targets ?? []) {
-            f.line(
-              `${toWorkspacePath(workspaceRoot, target.filePath)}:${target.line} ${
-                target.functionName ?? '(anonymous)'
-              }: insert '${target.directive}'`,
-            );
-          }
+        }
+        for (const target of annotate.targets ?? []) {
+          f.line(
+            `${toWorkspacePath(workspaceRoot, target.filePath)}:${target.line} ${
+              target.functionName ?? '(anonymous)'
+            }: ${annotate.dryRun ? 'insert' : 'inserted'} '${target.directive}' — ${
+              target.rationale
+            }; reported memo cache=${target.reportedMemoCache}; emitted caching=${target.emittedCaching}`,
+          );
         }
         if (touched > 0) {
           const parts: string[] = [];

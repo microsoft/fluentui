@@ -38,7 +38,7 @@ interface RiskPluginState {
   leafConfig?: LeafRiskConfig;
 }
 
-/** Find the nearest enclosing function (the one the compiler memoizes). */
+/** Find the nearest enclosing function for risk attribution. */
 function enclosingFunction(path: NodePath): NodePath<BabelFunction> | null {
   const fnPath = path.findParent(
     p => p.isFunctionDeclaration() || p.isFunctionExpression() || p.isArrowFunctionExpression(),
@@ -79,15 +79,15 @@ function memberNameOf(node: AnyMember): string | null {
 }
 
 /**
- * Babel plugin that flags calls which compile successfully under the React Compiler but
- * misbehave once the enclosing function is memoized. All rules are OFF unless explicitly
+ * Babel plugin that flags configured patterns that can interact poorly with memoization.
+ * It does not establish that those operations were cached. All rules are OFF unless explicitly
  * configured — their conventions are app-specific, not universal. Leaf detection is shared
  * with the cross-file call-graph analyzer via {@link matchRiskyCall}.
  *
  * - **`nonreactive-store-read`** — an imperative snapshot read with no tracked inputs
- *   (`store.getState()`, `getXStore().field`, `const { x } = getXStore()`). The compiler hoists
- *   it into a compute-once cache slot, so it runs on the first render and is **never re-read**,
- *   freezing the value across store transitions. Enabled by `detectGetStateReads` (for
+ *   (`store.getState()`, `getXStore().field`, `const { x } = getXStore()`). If retained in a
+ *   compute-once cache slot, it can freeze the value across store transitions.
+ *   Enabled by `detectGetStateReads` (for
  *   `.getState()`) and `storeAccessorPattern` (a regex, for `getXStore()`). Also follows one step
  *   of local dataflow — `const s = getXStore(); … s.field` — via Babel scope bindings.
  * - **`hidden-selector-hook`** — a selector accessed via property chain (`store.use.field()`)
@@ -97,10 +97,8 @@ function memberNameOf(node: AnyMember): string | null {
  *   (`areHookInputsEqual`). Enabled by listing the marker property names in `selectorHookProperties`
  *   (e.g. `["use"]`).
  *
- * Findings are recorded against the enclosing function's start location so the coverage
- * analyzer can attach them to the corresponding `CompileSuccess` row. Functions that the
- * compiler does not recognize never get a `CompileSuccess` event, so their findings are
- * naturally dropped during the merge.
+ * Findings attach to canonical source functions independently of acceptance, so rejected
+ * or skipped functions can retain their risks in the report.
  */
 export function riskPlugin(): PluginObj {
   return {

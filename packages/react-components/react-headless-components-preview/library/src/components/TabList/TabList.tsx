@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const TabList: ForwardRefComponent<TabListProps> = /*#__PURE__*/ composeComponent(
   'TabList',
   useTabList,
-  renderTabList,
   useTabListContextValues,
+  renderTabList,
 );

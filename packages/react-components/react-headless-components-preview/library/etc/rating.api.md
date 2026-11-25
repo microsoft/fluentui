@@ -4,10 +4,7 @@
 
 ```ts
 
-import { DetailedHTMLProps } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { ForwardRefExoticComponent } from 'react';
-import { HTMLAttributes } from 'react';
 import { RatingContextValues } from '@fluentui/react-rating';
 import type { RatingItemBaseState } from '@fluentui/react-rating';
 import { RatingItemBaseProps as RatingItemProps } from '@fluentui/react-rating';
@@ -16,22 +13,21 @@ import { RatingBaseProps as RatingProps } from '@fluentui/react-rating';
 import { RatingSlots } from '@fluentui/react-rating';
 import { RatingBaseState as RatingState } from '@fluentui/react-rating';
 import type * as React_2 from 'react';
-import { RefAttributes } from '@fluentui/react-utilities';
 import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
 import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
 import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
+import { useRatingItemContextValue_unstable as useRatingItemContextValue } from '@fluentui/react-rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
 
+export { RatingContextValues }
+
 // @public
-export const RatingItem: ForwardRefExoticComponent<Omit<Partial<RatingItemSlots>, "root"> & Omit<{
-as?: "span" | undefined;
-} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children"> & {
-children?: any;
-}, "ref"> & {
-value?: number;
-} & RefAttributes<HTMLSpanElement>>;
+export const RatingItem: ForwardRefComponent<RatingItemProps>;
+
+// @public
+export type RatingItemContextValue = ReturnType<typeof useRatingItemContextValue>;
 
 export { RatingItemProps }
 
@@ -61,6 +57,8 @@ export const useRatingContextValues: (state: RatingState) => RatingContextValues
 
 // @public
 export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
+
+export { useRatingItemContextValue }
 
 // (No @packageDocumentation comment for this package)
 

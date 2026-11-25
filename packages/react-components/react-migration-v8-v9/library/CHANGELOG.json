@@ -2,6 +2,80 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:28 GMT",
+      "version": "9.10.26",
+      "tag": "@fluentui/react-migration-v8-v9_v9.10.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "f9720c35ba893c9630f4c0389d07dc6d6fd6068d",
+            "comment": "fix: createV9Theme uses webDarkTheme as the base theme for inverted v8 themes"
+          },
+          {
+            "author": "171317405+jakesalvesen@users.noreply.github.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "49a668c1a20525b764e80d61e641a90fcf9276a0",
+            "comment": "fix(react-migration-v8-v9): render the matching v8 variant class names on Button shims instead of always ms-Button--primary"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.75.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2026 16:50:23 GMT",
+      "version": "9.10.25",
+      "tag": "@fluentui/react-migration-v8-v9_v9.10.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.75.2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2026 13:22:59 GMT",
+      "version": "9.10.24",
+      "tag": "@fluentui/react-migration-v8-v9_v9.10.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.75.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "9.10.23",
+      "tag": "@fluentui/react-migration-v8-v9_v9.10.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.75.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Oct 2026 11:25:58 GMT",
       "version": "9.10.22",
       "tag": "@fluentui/react-migration-v8-v9_v9.10.22",

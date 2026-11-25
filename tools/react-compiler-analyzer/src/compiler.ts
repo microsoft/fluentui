@@ -33,6 +33,7 @@ export interface CompilerEvent {
 }
 
 interface CompilerDetailLike {
+  category?: string;
   reason?: string;
   description?: string;
   loc?: {
@@ -42,6 +43,21 @@ interface CompilerDetailLike {
   primaryLocation?: () => { start?: { line?: number; column?: number } } | null;
   /** Renders a full, code-framed compiler message. Present on CompilerErrorDetail / CompilerDiagnostic. */
   printErrorMessage?: (source: string, options: { eslint: boolean }) => string;
+}
+
+export function extractDetailCategory(detail: unknown): string | undefined {
+  if (detail !== null && typeof detail === 'object' && 'category' in detail && typeof detail.category === 'string') {
+    return detail.category;
+  }
+  if (
+    detail !== null &&
+    typeof detail === 'object' &&
+    'reason' in detail &&
+    detail.reason === 'React rule suppression prevents optimization'
+  ) {
+    return 'Suppression';
+  }
+  return undefined;
 }
 
 /**

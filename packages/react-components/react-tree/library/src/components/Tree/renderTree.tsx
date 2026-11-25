@@ -2,10 +2,15 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TreeContextValues, TreeSlots, TreeState } from '../Tree/Tree.types';
+import type { TreeBaseState, TreeContextValues, TreeSlots, TreeState } from '../Tree/Tree.types';
 import { TreeProvider } from '../TreeProvider';
 
-export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues): JSXElement => {
+/**
+ * Render the final JSX of Tree.
+ *
+ * Without a collapse motion, as produced by `useTreeBase_unstable`, a closed subtree is not rendered.
+ */
+export const renderTree_unstable = (state: TreeState | TreeBaseState, contextValues: TreeContextValues): JSXElement => {
   assertSlots<TreeSlots>(state);
   return (
     <TreeProvider value={contextValues.tree}>
@@ -13,9 +18,9 @@ export const renderTree_unstable = (state: TreeState, contextValues: TreeContext
         <state.collapseMotion>
           <state.root />
         </state.collapseMotion>
-      ) : (
+      ) : state.open ? (
         <state.root />
-      )}
+      ) : null}
     </TreeProvider>
   );
 };

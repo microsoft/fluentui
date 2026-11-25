@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-<!-- This log was last generated on Tue, 20 Oct 2026 09:13:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:45:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.5.0)
+
+Tue, 24 Nov 2026 12:45:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.4.1..@fluentui/react-headless-components-preview_v0.5.0)
+
+### Minor changes
+
+- BREAKING: rewrite headless Calendar as a single component with one roving-focus grid engine; remove CalendarDay, CalendarMonth, CalendarYear and CalendarProvider, replace getCellProps/getRowProps/getWeekdayCellProps with render functions, and reduce Calendar and DatePicker bundle size ([PR #37131](https://github.com/microsoft/fluentui/pull/37131) by dmytrokirpa@microsoft.com)
+- feat: support inherited disabled state in TreeItem ([PR #37184](https://github.com/microsoft/fluentui/pull/37184) by 43711362+paolo-aliprandi@users.noreply.github.com)
+
+### Patches
+
+- feat: align headless TimePicker with the Fluent TimePicker spec ([PR #37182](https://github.com/microsoft/fluentui/pull/37182) by vgenaev@gmail.com)
+- chore: expand bundle-size fixtures to all public subpaths ([PR #37156](https://github.com/microsoft/fluentui/pull/37156) by dmytrokirpa@microsoft.com)
+- fix: expose TagPicker multiselection and option selection to assistive technology while preserving consumer checked-only selection and exposing data-selected/data-checked styling attributes ([PR #37179](https://github.com/microsoft/fluentui/pull/37179) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- fix: Switch data-checked follows uncontrolled state ([PR #37162](https://github.com/microsoft/fluentui/pull/37162) by vgenaev@gmail.com)
+- fix: expose missing disabled, invalid, readonly and required state attributes ([PR #37203](https://github.com/microsoft/fluentui/pull/37203) by vgenaev@gmail.com)
+- chore: remove unused dependency on @fluentui/react-dialog ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- Keep TagPicker native popovers open after control clicks, preserve capture-phase gesture cancellation, and ignore disabled control gestures. ([PR #37178](https://github.com/microsoft/fluentui/pull/37178) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- refactor: drop getIntrinsicElementProps and explicitly destructure custom props so they are not forwarded to native elements ([PR #37197](https://github.com/microsoft/fluentui/pull/37197) by dmytrokirpa@microsoft.com)
+- fix: keep Escape to the nested overlay, close only the Tooltip on Escape, also inside a Dialog, and keep overlays mounted while they animate out ([PR #37018](https://github.com/microsoft/fluentui/pull/37018) by vgenaev@gmail.com)
+- feat: add headless TimePicker ([PR #36814](https://github.com/microsoft/fluentui/pull/36814) by vgenaev@gmail.com)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.4.1)
+
+Tue, 10 Nov 2026 16:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.4.0..@fluentui/react-headless-components-preview_v0.4.1)
+
+### Patches
+
+- fix: annotate composed components explicitly with ForwardRefComponent and ComponentWithoutRef; components without a ref now declare a JSXElement | null return type ([PR #37065](https://github.com/microsoft/fluentui/pull/37065) by vgenaev@gmail.com)
+- refactor: move headless overlays onto the internal top-layer hooks. Popover now unmounts a microtask after a native close, and stays closed when kept `open` after a browser dismiss. ([PR #36910](https://github.com/microsoft/fluentui/pull/36910) by vgenaev@gmail.com)
+- fix: notify InfoButton onOpenChange when focus leaves the trigger and information surface ([PR #37096](https://github.com/microsoft/fluentui/pull/37096) by paulmardling@microsoft.com)
+- fix(Menu): restore focus when closing within a shadow root ([PR #37071](https://github.com/microsoft/fluentui/pull/37071) by paulmardling@microsoft.com)
+- fix: NavCategoryItem renders type="button" so it does not submit an enclosing form ([PR #37114](https://github.com/microsoft/fluentui/pull/37114) by dmytrokirpa@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.4.0)
+
+Mon, 02 Nov 2026 18:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.3.2..@fluentui/react-headless-components-preview_v0.4.0)
+
+### Minor changes
+
+- feat: add headless DatePicker; Calendar grids use a roving tab stop with built-in arrow, Home and End navigation instead of focusgroup, expose aria-current on current month/year cells, and preserve focus when bounds clamp across years ([PR #36988](https://github.com/microsoft/fluentui/pull/36988) by dmytrokirpa@microsoft.com)
+- BREAKING CHANGE: rename Popover `trapFocus` to `inertTrapFocus` ([PR #37024](https://github.com/microsoft/fluentui/pull/37024) by vgenaev@gmail.com)
+- feat: export missing context hooks, context value types, slot types and renderDialogTrigger; add public API conformance tests ([PR #37026](https://github.com/microsoft/fluentui/pull/37026) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: align headless component composition with overloaded helpers and avoid forwarding unused refs ([PR #37043](https://github.com/microsoft/fluentui/pull/37043) by dmytrokirpa@microsoft.com)
+- fix: align Popover focus handling with inertTrapFocus ([PR #37030](https://github.com/microsoft/fluentui/pull/37030) by paulmardling@microsoft.com)
+- fix: emit data-disabled state attribute on ImageSwatch ([PR #36979](https://github.com/microsoft/fluentui/pull/36979) by vgenaev@gmail.com)
+- feat: add headless Tree, TreeItem and TreeItemLayout ([PR #36936](https://github.com/microsoft/fluentui/pull/36936) by dmytrokirpa@microsoft.com)
+- feat: add headless Calendar ([PR #36752](https://github.com/microsoft/fluentui/pull/36752) by dmytrokirpa@microsoft.com)
+- feat: add RangeSlider ([PR #36894](https://github.com/microsoft/fluentui/pull/36894) by vgenaev@gmail.com)
+- fix: correct Popover trigger popup semantics, expose InfoLabel help as a note without generated ownership, and avoid forwarding conflicting defaultOpen and open props ([PR #36953](https://github.com/microsoft/fluentui/pull/36953) by paulmardling@microsoft.com)
+- fix: add aria-controls to PopoverTrigger and name the Default story surface ([PR #36975](https://github.com/microsoft/fluentui/pull/36975) by vgenaev@gmail.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.2)
 

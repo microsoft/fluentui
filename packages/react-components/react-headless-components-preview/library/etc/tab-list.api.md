@@ -10,6 +10,7 @@ import { renderTab_unstable as renderTab } from '@fluentui/react-tabs';
 import { renderTabList_unstable as renderTabList } from '@fluentui/react-tabs';
 import type { TabBaseState } from '@fluentui/react-tabs';
 import type { TabListBaseState } from '@fluentui/react-tabs';
+import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
 import { TabListBaseProps as TabListProps } from '@fluentui/react-tabs';
 import { TabListSlots } from '@fluentui/react-tabs';
@@ -28,6 +29,10 @@ export const Tab: ForwardRefComponent<TabProps>;
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
+export { TabListContextValue }
+
+export { TabListContextValues }
+
 export { TabListProps }
 
 export { TabListSlots }
@@ -35,6 +40,7 @@ export { TabListSlots }
 // @public
 export type TabListState = TabListBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
     };
 };

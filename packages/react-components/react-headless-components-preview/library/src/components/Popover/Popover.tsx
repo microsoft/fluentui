@@ -1,9 +1,10 @@
 'use client';
 
-import type { PopoverProps } from './Popover.types';
-import type { JSXElement } from '@fluentui/react-utilities';
 import { usePopover, usePopoverContextValues } from './usePopover';
 import { renderPopover } from './renderPopover';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
+import type { PopoverProps } from './Popover.types';
 
 /**
  * Headless Popover component.
@@ -14,11 +15,9 @@ import { renderPopover } from './renderPopover';
  * controlled `open` prop) flow through React; close paths defer to the
  * browser, with `toggle` events mirrored back into state.
  */
-export const Popover = (props: PopoverProps): JSXElement => {
-  const state = usePopover(props);
-  const contextValues = usePopoverContextValues(state);
-
-  return renderPopover(state, contextValues);
-};
-
-Popover.displayName = 'Popover';
+export const Popover: ComponentWithoutRef<PopoverProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Popover',
+  usePopover,
+  usePopoverContextValues,
+  renderPopover,
+);

@@ -796,22 +796,32 @@ const MatchTargetSize = () => {
 
 const PositioningEndEvent = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  const [count, setCount] = React.useState(0);
+  const clickedRef = React.useRef(false);
+  const [updated, setUpdated] = React.useState(false);
   const { targetRef, containerRef } = usePositioning({
-    onPositioningEnd: () => setCount(s => s + 1),
+    // The number of initial positioning passes depends on layout timing, so only an event after the click is shown
+    onPositioningEnd: () => clickedRef.current && setUpdated(true),
     positioningRef,
   });
 
   return (
     <>
-      <button id="target" ref={targetRef} onClick={() => positioningRef.current?.updatePosition()}>
+      <button
+        id="target"
+        ref={targetRef}
+        onClick={() => {
+          clickedRef.current = true;
+          positioningRef.current?.updatePosition();
+        }}
+      >
         Update position
       </button>
       <div
         ref={containerRef}
+        data-updated={updated}
         style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
       >
-        positioning count: {count}
+        updated after click: {updated ? 'yes' : 'no'}
       </div>
     </>
   );
@@ -1252,7 +1262,9 @@ _MatchTargetSize.storyName = 'Match target size';
 export const PositioningEnd = () => <PositioningEndEvent />;
 PositioningEnd.storyName = 'Positioning end';
 PositioningEnd.parameters = {
-  storyWright: { steps: new Steps().click('#target').snapshot('updated 2 times').end() },
+  storyWright: {
+    steps: new Steps().click('#target').wait('[data-updated="true"]').snapshot('updated after click').end(),
+  },
 } satisfies StoryParameters;
 
 export const _TargetDisplayNone = () => <TargetDisplayNone />;

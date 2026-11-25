@@ -11,6 +11,7 @@ import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { OnOverflowChangeData } from '@fluentui/react-overflow';
 import { OverflowComponentState } from '@fluentui/react-overflow';
+import { OverflowContextValue } from '@fluentui/react-overflow';
 import { OverflowContextValues } from '@fluentui/react-overflow';
 import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowDividerProps } from '@fluentui/react-overflow';
@@ -46,11 +47,16 @@ export const Overflow: ForwardRefComponent<OverflowProps>;
 
 export { OverflowComponentState }
 
+export { OverflowContextValue }
+
 export { OverflowContextValues }
 
 export { OverflowDivider }
 
 export { OverflowDividerProps }
+
+// @public
+export type OverflowGroupState = ReturnType<typeof useIsOverflowGroupVisible>;
 
 export { OverflowItem }
 

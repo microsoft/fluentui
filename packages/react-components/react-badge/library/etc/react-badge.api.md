@@ -66,7 +66,9 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 };
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>> & {
+    isEmpty: boolean;
+};
 
 // @public (undocumented)
 export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;

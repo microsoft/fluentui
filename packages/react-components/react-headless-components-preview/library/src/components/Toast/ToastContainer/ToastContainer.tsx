@@ -15,6 +15,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const ToastContainer: ForwardRefComponent<ToastContainerProps> = /*#__PURE__*/ composeComponent(
   'ToastContainer',
   useToastContainer,
-  renderToastContainer,
   useToastContainerContextValues,
+  renderToastContainer,
 );

@@ -1,5 +1,7 @@
 export { MenuGroup } from './MenuGroup';
 export { useMenuGroup } from './useMenuGroup';
 export { useMenuGroupContextValues } from './useMenuGroupContextValues';
+export { useMenuGroupContext } from './menuGroupContext';
+export type { MenuGroupContextValue } from './menuGroupContext';
 export { renderMenuGroup } from './renderMenuGroup';
 export type { MenuGroupProps, MenuGroupSlots, MenuGroupState, MenuGroupContextValues } from '@fluentui/react-menu';

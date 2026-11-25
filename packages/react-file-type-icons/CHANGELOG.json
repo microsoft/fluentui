@@ -2,6 +2,46 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 01:39:29 GMT",
+      "version": "8.18.4",
+      "tag": "@fluentui/react-file-type-icons_v8.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "9e878f7676aa93610e2e506e36842d1c559970b7",
+            "comment": "Add the DocuWorks file type icon for the xbd, xct, and xdw extensions."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.18.3",
+      "tag": "@fluentui/react-file-type-icons_v8.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "792703b218954a488bbdb071737baf6d44f0be6a",
+            "comment": "Add the wikiPage file type icon mapping."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:32 GMT",
       "version": "8.18.2",
       "tag": "@fluentui/react-file-type-icons_v8.18.2",

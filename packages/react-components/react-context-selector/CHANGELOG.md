@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-context-selector
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.22)
+
+Tue, 24 Nov 2026 12:44:29 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.2.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.21)
 

@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 import { compareText } from './ordering';
 import { fingerprintText } from './stable-json';
+import { memoCacheOutcome } from './memo-cache-outcome';
 import type { AnnotateMode, AnnotateResult, FunctionAnalysis, QuoteStyle, RiskFinding } from './types';
 
 const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
@@ -21,7 +22,7 @@ function bailoutDirective(indent: string, risks: RiskFinding[], quote: QuoteStyl
   const symbol = top.symbol.replace(/[\r\n\u2028\u2029]/g, ' ');
   return `${indent}${quoted('use no memo', quote)}; // justified: ${
     top.ruleId
-  } risk via ${symbol}${extra} - unsafe to memoize`;
+  } risk via ${symbol}${extra} - preventive opt-out`;
 }
 
 export interface AnnotateOptions {
@@ -141,6 +142,10 @@ async function planAnnotations(
         line: candidate.line,
         functionName: candidate.functionName,
         directive: isBailout ? 'use no memo' : 'use memo',
+        rationale: isBailout ? 'preventive-risk-opt-out' : 'compiler-accepted-opt-in',
+        reportedMemoCache: memoCacheOutcome(candidate),
+        emittedCaching: 'unverified',
+        riskRules: [...new Set(candidate.risks?.map(risk => risk.ruleId) ?? [])],
       });
       const directive = isBailout
         ? bailoutDirective(indent, candidate.risks!, quote)
@@ -181,5 +186,5 @@ export async function applyAnnotations(
   for (const [filePath, source] of plan.files) {
     await writeFile(filePath, source, 'utf-8');
   }
-  return plan.result;
+  return plan.targets.length > 0 ? { ...plan.result, targets: plan.targets } : plan.result;
 }

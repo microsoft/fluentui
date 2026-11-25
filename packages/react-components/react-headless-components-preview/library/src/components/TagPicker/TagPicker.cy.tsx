@@ -6,6 +6,7 @@ import { Tag } from '../Tag';
 import { TagPicker } from './TagPicker';
 import type { TagPickerProps } from './TagPicker.types';
 import { TagPickerControl } from './TagPickerControl';
+import type { TagPickerControlProps } from './TagPickerControl';
 import { TagPickerGroup } from './TagPickerGroup';
 import { TagPickerInput } from './TagPickerInput';
 import { TagPickerList } from './TagPickerList';
@@ -19,9 +20,15 @@ const listbox = '[data-testid="tag-picker-list"]';
 
 type TagPickerFixtureProps = Pick<TagPickerProps, 'defaultOpen' | 'noPopover'> & {
   defaultSelectedOptions?: string[];
+  controlProps?: TagPickerControlProps;
 };
 
-const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover }: TagPickerFixtureProps) => {
+const TagPickerFixture = ({
+  defaultOpen,
+  defaultSelectedOptions = [],
+  noPopover,
+  controlProps,
+}: TagPickerFixtureProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState(defaultSelectedOptions);
 
   return (
@@ -34,7 +41,7 @@ const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover 
         selectedOptions={selectedOptions}
         onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
       >
-        <TagPickerControl data-testid="tag-picker-control">
+        <TagPickerControl data-testid="tag-picker-control" {...controlProps}>
           <TagPickerGroup aria-label="Selected animals">
             {selectedOptions.map(option => (
               <Tag data-testid={`tag-${option}`} key={option} value={option}>
@@ -62,6 +69,45 @@ const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover 
 };
 
 describe('TagPicker', () => {
+  it('keeps the native popover open after clicking the control and closes it on the next click', () => {
+    mount(<TagPickerFixture />);
+
+    cy.get('[data-testid="tag-picker-control"]').realClick();
+    cy.get(input).should('have.attr', 'aria-expanded', 'true').and('be.focused');
+    cy.get(listbox).should('match', ':popover-open');
+    cy.get('[data-testid="tag-picker-control"]').realClick();
+    cy.get(input).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+    cy.get(listbox).should('not.be.visible');
+  });
+
+  (['onMouseDown', 'onClick'] as const).forEach(handler => {
+    it(`allows ${handler} to cancel opening from the control`, () => {
+      mount(
+        <TagPickerFixture
+          controlProps={{ [handler]: (event: React.MouseEvent<HTMLDivElement>) => event.preventDefault() }}
+        />,
+      );
+
+      cy.get('[data-testid="tag-picker-control"]').realClick();
+      cy.get(input).should('have.attr', 'aria-expanded', 'false');
+      cy.get('body').should(body => expect(body.find(`${listbox}:popover-open`)).to.have.length(0));
+    });
+
+    it(`does not undo native light dismiss when ${handler} cancels an open control gesture`, () => {
+      mount(
+        <TagPickerFixture
+          defaultOpen
+          controlProps={{ [handler]: (event: React.MouseEvent<HTMLDivElement>) => event.preventDefault() }}
+        />,
+      );
+
+      cy.get(listbox).should('match', ':popover-open');
+      cy.get('[data-testid="tag-picker-control"]').realClick();
+      cy.get(input).should('have.attr', 'aria-expanded', 'false');
+      cy.get('body').should(body => expect(body.find(`${listbox}:popover-open`)).to.have.length(0));
+    });
+  });
+
   it('opens from the input and selects an option', () => {
     mount(<TagPickerFixture />);
 

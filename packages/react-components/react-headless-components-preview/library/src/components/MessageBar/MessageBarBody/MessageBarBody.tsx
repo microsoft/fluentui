@@ -12,6 +12,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps> = /*#__PURE__*/ composeComponent(
   'MessageBarBody',
   useMessageBarBody,
-  renderMessageBarBody,
   useMessageBarBodyContextValues,
+  renderMessageBarBody,
 );

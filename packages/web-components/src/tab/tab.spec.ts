@@ -29,6 +29,7 @@ test.describe('Tab', () => {
     await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'tab');
+    await expect(element).toHaveAttribute('role', 'tab');
   });
 
   test('should have a slot attribute of `tab`', async ({ fastPage }) => {
@@ -37,6 +38,13 @@ test.describe('Tab', () => {
     await fastPage.setTemplate();
 
     await expect(element).toHaveAttribute('slot', 'tab');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { role: 'button', slot: 'custom-tab' } });
+
+    await expect(fastPage.element).toHaveAttribute('role', 'button');
+    await expect(fastPage.element).toHaveAttribute('slot', 'custom-tab');
   });
 
   test('should NOT set the `aria-disabled` attribute when `disabled` is not initially set', async ({ fastPage }) => {

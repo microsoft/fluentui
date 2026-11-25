@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-portal-compat
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.2.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.54)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.53..@fluentui/react-portal-compat_v9.2.54)
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.20 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-components to v9.75.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.2.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.53)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.52..@fluentui/react-portal-compat_v9.2.53)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.2.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.52)
+
+Mon, 02 Nov 2026 13:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.51..@fluentui/react-portal-compat_v9.2.52)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.2.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.51)
+
+Tue, 27 Oct 2026 16:42:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.50..@fluentui/react-portal-compat_v9.2.51)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.2.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.50)
 

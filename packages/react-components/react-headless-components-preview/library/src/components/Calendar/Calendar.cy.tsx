@@ -8,7 +8,56 @@ import { Calendar } from './Calendar';
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 const today = new Date(2020, 8, 18);
 const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${label}"])`;
-const month = (label: string) => `[role="gridcell"][aria-label="${label}"]`;
+const month = (label: string) => `[role="gridcell"][aria-label^="${label} "]`;
+
+const BoundsChangingCalendar = () => {
+  const [minDate, setMinDate] = React.useState(new Date(2020, 0, 1));
+  const [maxDate, setMaxDate] = React.useState<Date>();
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'b') {
+          setMinDate(new Date(2020, 6, 1));
+        } else if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2020, 6, 31));
+        }
+      }}
+    >
+      <Calendar today={today} value={today} dayPicker={null} minDate={minDate} maxDate={maxDate} />
+    </div>
+  );
+};
+
+const MaxBoundChangingCalendar = () => {
+  const [maxDate, setMaxDate] = React.useState<Date>();
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2020, 6, 31));
+        }
+      }}
+    >
+      <Calendar today={today} value={today} dayPicker={null} maxDate={maxDate} />
+    </div>
+  );
+};
+
+const CrossYearMaxBoundChangingCalendar = () => {
+  const [maxDate, setMaxDate] = React.useState<Date>();
+  const crossYearToday = new Date(2026, 8, 18);
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2025, 6, 31));
+        }
+      }}
+    >
+      <Calendar today={crossYearToday} value={crossYearToday} dayPicker={null} maxDate={maxDate} />
+    </div>
+  );
+};
 
 describe('Calendar', () => {
   it('returns to today with six weeks and three month columns without changing selection', () => {
@@ -18,7 +67,7 @@ describe('Calendar', () => {
         today={today}
         calendarMonthColumns={3}
         defaultValue={new Date(2020, 9, 4)}
-        dayPicker={{ weeksToShow: 6 }}
+        weeksToShow={6}
         onSelectDate={onSelectDate}
       />,
     );
@@ -36,8 +85,7 @@ describe('Calendar', () => {
     cy.get('@onSelectDate').should('not.have.been.called');
   });
 
-  // TODO: Enable focusgroup keyboard cases when V2 grid support from microsoft/polyfills#64 is published.
-  describe.skip('focusgroup grid navigation (requires the V2 grid polyfill)', () => {
+  describe('grid navigation', () => {
     it('navigates a day grid with week headers and unavailable dates', () => {
       mount(
         <Calendar
@@ -62,12 +110,55 @@ describe('Calendar', () => {
       cy.get(month('September')).focus().realPress('ArrowUp');
       cy.get(month('May')).should('be.focused').realPress('ArrowUp');
       cy.get(month('May')).should('be.focused');
-      cy.get(month('January')).should('be.disabled');
+      cy.get(month('January')).find('button').should('be.disabled');
+    });
+
+    it('keeps focus on a month cell when changing bounds makes it unavailable', () => {
+      mount(<BoundsChangingCalendar />);
+
+      cy.get(month('March')).focus().realPress('b');
+      cy.get(month('March'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '0');
+      cy.realPress('ArrowDown');
+      cy.get(month('July')).should('be.focused');
+    });
+
+    it('moves Home to an available month when the minimum bound changes', () => {
+      mount(<BoundsChangingCalendar />);
+
+      cy.get(month('March')).focus().realPress('b');
+      cy.realPress('Home');
+      cy.get(month('July')).should('be.focused');
+    });
+
+    it('moves End to an available month when the maximum bound changes', () => {
+      mount(<MaxBoundChangingCalendar />);
+
+      cy.get(month('September')).focus().should('be.focused').realPress('e');
+      cy.get(month('September'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '0');
+      cy.realPress('End');
+      cy.get(month('July')).should('be.focused');
+    });
+
+    it('keeps focus on an unavailable month when the maximum bound clamps the year', () => {
+      mount(<CrossYearMaxBoundChangingCalendar />);
+
+      cy.get(month('September')).focus().should('be.focused').realPress('e');
+      cy.get(month('September'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '-1');
+      cy.realPress('End');
+      cy.get(month('July')).should('be.focused');
     });
   });
 
-  // TODO: Enable the remaining focusgroup V2-dependent cases when the compatible polyfill is published.
-  it.skip('pages from the arrow-focused day and restores focus', () => {
+  it('pages from the arrow-focused day and restores focus', () => {
     mount(<Calendar today={today} defaultValue={today} />);
 
     cy.get(day('September 18, 2020')).focus().realPress('ArrowDown');
@@ -75,7 +166,7 @@ describe('Calendar', () => {
     cy.get(day('October 25, 2020')).should('be.focused');
   });
 
-  it.skip('navigates the month grid in both dimensions', () => {
+  it('navigates the month grid in both dimensions', () => {
     mount(<Calendar today={today} value={today} layout="overlay" />);
 
     cy.get('button[aria-label="September 2020, change month"]').click();
@@ -84,7 +175,7 @@ describe('Calendar', () => {
     cy.get(month('June')).should('be.focused');
   });
 
-  it.skip('opens and navigates the year grid', () => {
+  it('opens and navigates the year grid', () => {
     mount(<Calendar today={today} value={today} />);
 
     cy.get('button[aria-label="2020, change year"]').click();
@@ -93,14 +184,14 @@ describe('Calendar', () => {
     cy.contains('[role="gridcell"]', '2025').should('be.focused');
   });
 
-  it.skip('skips restricted dates in the day grid', () => {
+  it('skips restricted dates in the day grid', () => {
     mount(<Calendar today={today} value={today} restrictedDates={[new Date(2020, 8, 19)]} monthPicker={null} />);
 
     cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
     cy.get(day('September 20, 2020')).should('be.focused');
   });
 
-  it.skip('does not wrap the month grid at a horizontal row boundary', () => {
+  it('does not wrap the month grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
 
     cy.get(month('April')).focus().realPress('ArrowRight');
@@ -109,7 +200,7 @@ describe('Calendar', () => {
     cy.get(month('August')).should('be.focused');
   });
 
-  it.skip('does not wrap the year grid at a horizontal row boundary', () => {
+  it('does not wrap the year grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
     cy.get('button[aria-label="2020, change year"]').click();
 
@@ -121,7 +212,7 @@ describe('Calendar', () => {
 
   ([3, 4] as const).forEach(columns => {
     (['ltr', 'rtl'] as const).forEach(dir => {
-      it.skip(`uses ${columns} columns for month and year navigation in ${dir}`, () => {
+      it(`uses ${columns} columns for month and year navigation in ${dir}`, () => {
         mount(
           <div dir={dir}>
             <Provider dir={dir}>
@@ -164,7 +255,7 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`honors RTL arrows in the ${picker} grid`, () => {
+    it(`honors RTL arrows in the ${picker} grid`, () => {
       mount(
         <div dir="rtl">
           <Provider dir="rtl">
@@ -194,7 +285,7 @@ describe('Calendar', () => {
       }
     });
 
-    it.skip(`honors capture cancellation without an intermediate focus hop in the ${picker} grid`, () => {
+    it(`honors capture cancellation without an intermediate focus hop in the ${picker} grid`, () => {
       const onFocus = cy.spy().as('onFocus');
       const onKeyDownCapture = cy
         .spy((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault())
@@ -204,14 +295,9 @@ describe('Calendar', () => {
           today={today}
           value={today}
           onFocus={onFocus}
-          dayPicker={picker === 'day' ? { grid: { onKeyDownCapture } } : null}
-          monthPicker={
-            picker === 'day'
-              ? null
-              : picker === 'month'
-              ? { grid: { onKeyDownCapture } }
-              : { yearPicker: { grid: { onKeyDownCapture } } }
-          }
+          grid={{ onKeyDownCapture }}
+          dayPicker={picker === 'day' ? undefined : null}
+          monthPicker={picker === 'day' ? null : undefined}
         />,
       );
       if (picker === 'year') {
@@ -240,7 +326,7 @@ describe('Calendar', () => {
   });
 
   [false, true].forEach(allFocusable => {
-    it.skip(`preserves disabled month coordinates with allFocusable=${allFocusable}`, () => {
+    it(`preserves disabled month coordinates with allFocusable=${allFocusable}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
@@ -263,46 +349,49 @@ describe('Calendar', () => {
       }
     });
 
-    it.skip(`preserves disabled year coordinates with allFocusable=${allFocusable}`, () => {
+    it(`preserves disabled year coordinates with allFocusable=${allFocusable}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
           today={today}
           value={new Date(2024, 0, 1)}
           dayPicker={null}
-          monthPicker={{ yearPicker: { navigatedYear: 2020 } }}
-          minDate={new Date(2022, 0, 1)}
+          minDate={new Date(2016, 0, 1)}
           allFocusable={allFocusable}
           onSelectDate={onSelectDate}
         />,
       );
       cy.get('button[aria-label="2024, change year"]').click();
+      // The year range starts at the displayed year; page back to a range that contains minDate.
+      cy.get('button[aria-label="Previous year range 2012 - 2023"]').click();
 
-      cy.contains('[role="gridcell"]', '2024').focus().realPress('ArrowDown');
-      cy.contains('[role="gridcell"]', '2028').should('be.focused').realPress('ArrowUp');
-      cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('ArrowUp');
-      cy.contains('[role="gridcell"]', allFocusable ? '2020' : '2024').should('be.focused');
+      cy.contains('[role="gridcell"]', '2019').focus().realPress('ArrowDown');
+      cy.contains('[role="gridcell"]', '2023').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', '2019').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', allFocusable ? '2015' : '2019').should('be.focused');
       if (allFocusable) {
-        cy.contains('[role="gridcell"]', '2020').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
+        cy.contains('[role="gridcell"]', '2015').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
         cy.get('@onSelectDate').should('not.have.been.called');
-        cy.get('button[aria-label="2020 - 2031, change year"]').should('exist');
-        cy.contains('[role="gridcell"]', '2020').should('be.focused');
+        cy.get('button[aria-label="2012 - 2023, change year"]').should('exist');
+        cy.contains('[role="gridcell"]', '2015').should('be.focused');
       }
     });
   });
 
   [false, true].forEach(handlesArrow => {
-    it.skip(`leaves arrows to a nested toolbar with custom navigation=${handlesArrow}`, () => {
+    it(`leaves arrows to a nested toolbar with custom navigation=${handlesArrow}`, () => {
       mount(
         <Calendar
           today={today}
           value={today}
           monthPicker={null}
-          dayPicker={{
-            getCellProps: dayInfo =>
-              dayInfo.originalDate?.getTime() === today.getTime()
+          renderCell={(props, cell, render) =>
+            render(
+              cell.type === 'day' && cell.originalDate?.getTime() === today.getTime()
                 ? {
+                    ...props,
                     button: {
+                      ...props.button,
                       children: (
                         <span
                           role="toolbar"
@@ -322,8 +411,9 @@ describe('Calendar', () => {
                       ),
                     },
                   }
-                : {},
-          }}
+                : props,
+            )
+          }
         />,
       );
 
@@ -334,7 +424,7 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`has one Tab entry/exit and remembered reentry in the ${picker} grid`, () => {
+    it(`has one Tab entry/exit and remembered reentry in the ${picker} grid`, () => {
       mount(
         <>
           <Calendar
@@ -385,7 +475,7 @@ describe('Calendar', () => {
   });
 
   (['ltr', 'rtl'] as const).forEach(dir => {
-    it.skip(`changes the displayed month when an arrow reaches an adjacent-month date in ${dir}`, () => {
+    it(`changes the displayed month when an arrow reaches an adjacent-month date in ${dir}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <div dir={dir}>
@@ -409,7 +499,7 @@ describe('Calendar', () => {
       cy.get('@onSelectDate').should('not.have.been.called');
     });
 
-    it.skip(`pages in both directions across the visible day-grid boundary in ${dir} without selecting`, () => {
+    it(`pages in both directions across the visible day-grid boundary in ${dir} without selecting`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <div dir={dir}>
@@ -433,18 +523,16 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`uses Home/End to reach eligible boundaries in the ${picker} grid without selecting`, () => {
+    it(`uses Home/End to reach eligible boundaries in the ${picker} grid without selecting`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
           today={today}
           value={picker === 'year' ? new Date(2024, 0, 1) : today}
           dayPicker={picker === 'day' ? undefined : null}
-          monthPicker={
-            picker === 'day' ? null : picker === 'year' ? { yearPicker: { navigatedYear: 2020 } } : undefined
-          }
-          minDate={picker === 'month' ? new Date(2020, 4, 1) : picker === 'year' ? new Date(2022, 0, 1) : undefined}
-          maxDate={picker === 'month' ? new Date(2020, 9, 31) : picker === 'year' ? new Date(2028, 11, 31) : undefined}
+          monthPicker={picker === 'day' ? null : undefined}
+          minDate={picker === 'month' ? new Date(2020, 4, 1) : picker === 'year' ? new Date(2016, 0, 1) : undefined}
+          maxDate={picker === 'month' ? new Date(2020, 9, 31) : picker === 'year' ? new Date(2030, 11, 31) : undefined}
           restrictedDates={picker === 'day' ? [new Date(2020, 8, 13), new Date(2020, 8, 19)] : undefined}
           onSelectDate={onSelectDate}
         />,
@@ -459,16 +547,22 @@ describe('Calendar', () => {
         cy.get(month('October')).should('be.focused');
       } else {
         cy.get('button[aria-label="2024, change year"]').click();
-        cy.contains('[role="gridcell"]', '2024').focus().realPress('Home');
-        cy.contains('[role="gridcell"]', '2022').should('be.focused').realPress('End');
-        cy.contains('[role="gridcell"]', '2028').should('be.focused');
+        // 2024 - 2035: maxDate limits End.
+        cy.contains('[role="gridcell"]', '2027').focus().realPress('Home');
+        cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('End');
+        cy.contains('[role="gridcell"]', '2030').should('be.focused');
+        // 2012 - 2023: minDate limits Home.
+        cy.get('button[aria-label="Previous year range 2012 - 2023"]').click();
+        cy.contains('[role="gridcell"]', '2020').focus().realPress('Home');
+        cy.contains('[role="gridcell"]', '2016').should('be.focused').realPress('End');
+        cy.contains('[role="gridcell"]', '2023').should('be.focused');
       }
       cy.get('[role="grid"] [role="gridcell"][tabindex="0"]').should('have.length', 1);
       cy.get('@onSelectDate').should('not.have.been.called');
     });
   });
 
-  it.skip('skips a fully restricted month horizontally without collapsing its coordinate', () => {
+  it('skips a fully restricted month horizontally without collapsing its coordinate', () => {
     mount(
       <Calendar
         today={today}
@@ -477,13 +571,13 @@ describe('Calendar', () => {
         restrictedDates={Array.from({ length: 29 }, (_, index) => new Date(2020, 1, index + 1))}
       />,
     );
-    cy.get(month('February')).should('be.disabled');
+    cy.get(month('February')).find('button').should('be.disabled');
     cy.get(month('January')).focus().realPress('ArrowRight');
     cy.get(month('March')).should('be.focused').realPress('ArrowDown');
     cy.get(month('July')).should('be.focused');
   });
 
-  it.skip('can focus but cannot select a restricted day with allFocusable', () => {
+  it('can focus but cannot select a restricted day with allFocusable', () => {
     const onSelectDate = cy.spy().as('onSelectDate');
     mount(
       <Calendar
@@ -501,7 +595,7 @@ describe('Calendar', () => {
     cy.get('@onSelectDate').should('not.have.been.called');
   });
 
-  it.skip('can focus visible out-of-bounds days without paging beyond the bounds with allFocusable', () => {
+  it('can focus visible out-of-bounds days without paging beyond the bounds with allFocusable', () => {
     const onDisplayedDateChange = cy.spy().as('onDisplayedDateChange');
     const onSelectDate = cy.spy().as('onSelectDate');
     mount(
@@ -522,7 +616,7 @@ describe('Calendar', () => {
     cy.get('@onDisplayedDateChange').should('not.have.been.called');
   });
 
-  it.skip('omits an all-unavailable day grid from the Tab order without trapping focus', () => {
+  it('omits an all-unavailable day grid from the Tab order without trapping focus', () => {
     mount(
       <>
         <Calendar
