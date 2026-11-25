@@ -54,7 +54,7 @@ jobs:
 
       - name: Generate PR Deploy Site
         run: yarn nx run pr-deploy-site:generate:site
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pr-website-artifacts
           retention-days: 1
@@ -64,7 +64,7 @@ jobs:
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pr-number
           retention-days: 1
