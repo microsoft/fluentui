@@ -2,6 +2,84 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "9.20.0",
+      "tag": "@fluentui/react-table_v9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "145190f7bb441c1ce0ab08d6ae5e4653b9ef39c3",
+            "comment": "feat: add design-free base hooks for Table and DataGrid"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.17.17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.11.11"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.6.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.22"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.6.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.26.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 16:50:23 GMT",
       "version": "9.19.24",
       "tag": "@fluentui/react-table_v9.19.24",

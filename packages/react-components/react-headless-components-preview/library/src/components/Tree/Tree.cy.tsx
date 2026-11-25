@@ -13,6 +13,47 @@ polyfillBodyAndObserve();
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('Tree', () => {
+  it('keeps disabled items navigable while blocking native selection and disclosure', () => {
+    const onOpenChange = cy.stub().as('openChange');
+    const onCheckedChange = cy.stub().as('checkedChange');
+    mount(
+      <Tree
+        aria-label="Files"
+        selectionMode="multiselect"
+        onOpenChange={onOpenChange}
+        onCheckedChange={onCheckedChange}
+      >
+        <TreeItem itemType="leaf" value="first">
+          <TreeItemLayout>First</TreeItemLayout>
+        </TreeItem>
+        <TreeItem disabled itemType="branch" value="disabled">
+          <TreeItemLayout expandIcon="Expand" selector={{ disabled: false }}>
+            Unavailable
+          </TreeItemLayout>
+        </TreeItem>
+        <TreeItem itemType="leaf" value="last">
+          <TreeItemLayout>Last</TreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+
+    cy.contains('[role="treeitem"]', 'First').focus().realPress('ArrowDown');
+    cy.contains('[role="treeitem"]', 'Unavailable')
+      .should('be.focused')
+      .should('have.attr', 'aria-disabled', 'true')
+      .realPress('Space');
+    cy.contains('[role="treeitem"]', 'Unavailable').realPress('Enter');
+    cy.contains('[role="treeitem"]', 'Unavailable').realPress('ArrowRight');
+    cy.contains('[role="treeitem"]', 'Unavailable').should('have.attr', 'aria-expanded', 'false');
+    cy.contains('Expand').realClick();
+    cy.contains('[role="treeitem"]', 'Unavailable').find('input').should('be.disabled');
+    cy.get('@openChange').should('not.have.been.called');
+    cy.get('@checkedChange').should('not.have.been.called');
+    cy.contains('[role="treeitem"]', 'Unavailable').focus().realPress('ArrowDown');
+    cy.contains('[role="treeitem"]', 'Last').should('be.focused').realPress('Space');
+    cy.get('@checkedChange').should('have.been.calledOnce');
+  });
+
   it('continues keyboard navigation after a selector is clicked', () => {
     mount(
       <Tree aria-label="Files" selectionMode="multiselect">

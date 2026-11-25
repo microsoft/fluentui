@@ -1,8 +1,18 @@
 # Change Log - @fluentui/global-context
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.106)
+
+Tue, 24 Nov 2026 12:44:29 GMT
+
+### Changes
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.22 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.105)
 

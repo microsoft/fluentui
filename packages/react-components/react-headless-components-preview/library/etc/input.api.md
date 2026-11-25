@@ -23,6 +23,7 @@ export type InputState = InputBaseState & {
     root: {
         'data-disabled'?: string;
         'data-invalid'?: string;
+        'data-readonly'?: string;
     };
 };
 
