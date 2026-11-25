@@ -5,7 +5,7 @@ import { useMenuTriggerBase_unstable } from '@fluentui/react-menu';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { useMenuContext } from '../menuContext';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { MenuTriggerProps, MenuTriggerState } from '@fluentui/react-menu';
 
 type TriggerChildProps = {
@@ -50,7 +50,7 @@ export const useMenuTrigger = (props: MenuTriggerProps): MenuTriggerState => {
 
   const child = baseState.children as React.ReactElement<TriggerChildProps>;
   const overrideProps: TriggerChildProps = {
-    'data-open': stringifyDataAttribute(open),
+    'data-open': toDataAttributeValue(open),
   };
 
   if (openOnContext && targetDocument) {

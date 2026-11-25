@@ -128,6 +128,11 @@ export type TagPickerContextValues = {
 export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
 
 // @public
+export type TagPickerControlBaseProps = TagPickerControlProps & {
+    toggleOn?: 'mousedown' | 'click';
+};
+
+// @public
 export type TagPickerControlBaseState = DistributiveOmit<TagPickerControlState, 'size' | 'appearance'>;
 
 // @public (undocumented)
@@ -320,7 +325,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
 export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;
 
 // @public
-export const useTagPickerControlBase_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlBaseState;
+export const useTagPickerControlBase_unstable: (props: TagPickerControlBaseProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlBaseState;
 
 // @public
 export const useTagPickerControlStyles_unstable: (state: TagPickerControlState) => TagPickerControlState;

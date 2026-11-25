@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove using data-indent for styling",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

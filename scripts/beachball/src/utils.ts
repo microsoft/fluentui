@@ -14,7 +14,7 @@ export function getConfig({ version }: { version: 'headless' }): { scope: string
 export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
   groupConfig: {
-    masterPackageName: string;
+    mainPackageName: string;
     changelogPath: string;
     include: string[];
   };
@@ -26,7 +26,7 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-componen
     return {
       scope: [...vNextPaths],
       groupConfig: {
-        masterPackageName: '@fluentui/react-components',
+        mainPackageName: '@fluentui/react-components',
         changelogPath: 'packages/react-components/react-components',
         include: vNextPaths,
       },

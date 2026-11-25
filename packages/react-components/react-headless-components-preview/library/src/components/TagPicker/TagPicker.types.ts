@@ -10,6 +10,6 @@ export type {
   TagPickerOnOptionSelectData,
 } from '@fluentui/react-tag-picker';
 
-export type TagPickerProps = TagPickerBaseProps & {
+export type TagPickerProps = Omit<TagPickerBaseProps, 'positioning'> & {
   positioning?: PositioningShorthand;
 };

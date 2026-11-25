@@ -1,6 +1,8 @@
-import type { ToolbarButtonBaseProps, ToolbarButtonBaseState } from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseState } from '@fluentui/react-toolbar';
 
-export type ToolbarButtonProps = ToolbarButtonBaseProps;
+export type { ToolbarButtonBaseProps as ToolbarButtonProps } from '@fluentui/react-toolbar';
+
+export type { ButtonSlots as ToolbarButtonSlots } from '@fluentui/react-button';
 
 export type ToolbarButtonState = ToolbarButtonBaseState & {
   root: {

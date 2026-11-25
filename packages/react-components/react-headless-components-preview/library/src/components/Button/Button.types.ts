@@ -1,14 +1,6 @@
-import type { ButtonSlots as ButtonBaseSlots, ButtonBaseProps, ButtonBaseState } from '@fluentui/react-button';
+import type { ButtonBaseState } from '@fluentui/react-button';
 
-/**
- * Button component slots
- */
-export type ButtonSlots = ButtonBaseSlots;
-
-/**
- * Button component props
- */
-export type ButtonProps = ButtonBaseProps;
+export type { ButtonSlots, ButtonBaseProps as ButtonProps } from '@fluentui/react-button';
 
 /**
  * Button component state
@@ -29,5 +21,10 @@ export type ButtonState = ButtonBaseState & {
      * Data attribute set when the button renders only an icon.
      */
     'data-icon-only'?: string;
+
+    /**
+     * Data attribute reflecting the icon position when an icon slot is present.
+     */
+    'data-icon-position'?: ButtonBaseState['iconPosition'];
   };
 };

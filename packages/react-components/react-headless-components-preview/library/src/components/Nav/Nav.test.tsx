@@ -50,7 +50,9 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Item 1')).toHaveAttribute('aria-current', 'page');
+    expect(result.getByText('Item 1')).toHaveAttribute('data-selected');
     expect(result.getByText('Item 2')).not.toHaveAttribute('aria-current', 'page');
+    expect(result.getByText('Item 2')).not.toHaveAttribute('data-selected');
   });
 
   it('supports controlled selectedValue', () => {
@@ -87,6 +89,7 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
   });
 
@@ -109,12 +112,34 @@ describe('Nav', () => {
     // Click to open
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
 
     // Click to close
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'false');
     expect(result.queryByText('Sub Item 1')).not.toBeInTheDocument();
+  });
+
+  it('does not submit an enclosing form when NavCategoryItem is clicked', () => {
+    const onSubmit = jest.fn((e: React.FormEvent) => e.preventDefault());
+    const result = render(
+      <form onSubmit={onSubmit}>
+        <Nav>
+          <NavCategory value="cat1">
+            <NavCategoryItem>Category 1</NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem value="sub1">Sub Item 1</NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+        </Nav>
+      </form>,
+    );
+
+    const categoryItem = result.getByText('Category 1');
+    expect(categoryItem).toHaveAttribute('type', 'button');
+    fireEvent.click(categoryItem);
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
   it('supports multiple={false} to close other categories', () => {
@@ -197,5 +222,35 @@ describe('Nav', () => {
     const link = result.getByText('Link Item');
     expect(link.tagName).toBe('A');
     expect(link).toHaveAttribute('href', 'https://example.com');
+  });
+
+  it('hides NavCategoryItem expandIcon from assistive technology by default', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('allows a consumer to override NavCategoryItem expandIcon aria-hidden', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ 'aria-hidden': false, children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1 expand' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'false');
   });
 });

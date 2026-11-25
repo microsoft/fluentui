@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useTagPickerControlBase_unstable } from '@fluentui/react-tag-picker';
 
 import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
-import { stringifyDataAttribute } from '../../../utils/stringifyDataAttribute';
+import { toDataAttributeValue } from '../../../utils/toDataAttributeValue';
 
 /**
  * Returns the state for a headless TagPickerControl.
@@ -16,11 +16,11 @@ export const useTagPickerControl = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const state: TagPickerControlState = useTagPickerControlBase_unstable(props, ref);
+  const state: TagPickerControlState = useTagPickerControlBase_unstable({ ...props, toggleOn: 'click' }, ref);
 
   /* eslint-disable react-hooks/immutability -- decorate base state with data-* attributes */
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
-  state.root['data-invalid'] = stringifyDataAttribute(state.invalid);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
+  state.root['data-invalid'] = toDataAttributeValue(state.invalid);
   /* eslint-enable react-hooks/immutability */
 
   return state;

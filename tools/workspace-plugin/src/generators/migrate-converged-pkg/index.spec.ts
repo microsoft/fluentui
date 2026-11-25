@@ -248,7 +248,7 @@ describe('migrate-converged-pkg generator', () => {
           jsx: 'react',
           noEmit: true,
           noUnusedLocals: true,
-          target: 'ES2019',
+          target: 'ES2020',
           preserveConstEnums: true,
         },
         files: [],
@@ -271,7 +271,7 @@ describe('migrate-converged-pkg generator', () => {
           declaration: true,
           declarationDir: '../../dist/out-tsc/types',
           inlineSources: true,
-          lib: ['ES2019', 'dom'],
+          lib: ['ES2020', 'dom'],
           types: ['static-assets', 'environment'],
         },
         exclude: ['./src/testing/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -798,7 +798,7 @@ describe('migrate-converged-pkg generator', () => {
         extends: './tsconfig.json',
         compilerOptions: {
           isolatedModules: false,
-          lib: ['ES2019', 'dom'],
+          lib: ['ES2020', 'dom'],
           types: ['node', 'cypress', 'cypress-real-events'],
           typeRoots: ['../node_modules', '../node_modules/@types'],
         },
@@ -950,7 +950,10 @@ describe('migrate-converged-pkg generator', () => {
           Object {
             ".": Object {
               "import": "./lib/index.js",
-              "node": "./lib-commonjs/index.js",
+              "node": Object {
+                "default": "./lib-commonjs/index.js",
+                "module": "./lib/index.js",
+              },
               "require": "./lib-commonjs/index.js",
               "style": "./css/index.css",
               "types": "./dist/index.d.ts",
@@ -1020,7 +1023,11 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.type).toBeUndefined();
         // CommonJS entry is not rewritten to `.cjs`
         expect(pkgJson.main).not.toMatch(/\.cjs$/);
-        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBe('./lib-commonjs/index.js');
+        // bare Node stays CommonJS via `default`, bundlers tree-shake via the nested `module` condition
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toEqual({
+          module: './lib/index.js',
+          default: './lib-commonjs/index.js',
+        });
       });
     });
 
@@ -1160,6 +1167,7 @@ describe('migrate-converged-pkg generator', () => {
           '/**/*.test.tsx',
         ],
         jsc: {
+          baseUrl: '.',
           parser: {
             syntax: 'typescript',
             tsx: true,
@@ -1173,7 +1181,7 @@ describe('migrate-converged-pkg generator', () => {
               useSpread: true,
             },
           },
-          target: 'es2019',
+          target: 'es2020',
         },
         minify: false,
         sourceMaps: true,
@@ -1518,7 +1526,10 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
-            "node": "./lib-commonjs/unstable/index.js",
+            "node": Object {
+              "default": "./lib-commonjs/unstable/index.js",
+              "module": "./lib/unstable/index.js",
+            },
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }

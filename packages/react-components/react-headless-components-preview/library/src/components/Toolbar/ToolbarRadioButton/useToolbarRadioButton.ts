@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useToolbarRadioButtonBase_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './ToolbarRadioButton.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a ToolbarRadioButton component, given its props and ref.
@@ -17,13 +17,13 @@ export const useToolbarRadioButton = (
   const state: ToolbarRadioButtonState = useToolbarRadioButtonBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  state.root['data-icon-only'] = toDataAttributeValue(state.iconOnly);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-checked'] = stringifyDataAttribute(state.checked);
+  state.root['data-checked'] = toDataAttributeValue(state.checked);
 
   return state;
 };

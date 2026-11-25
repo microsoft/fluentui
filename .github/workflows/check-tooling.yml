@@ -20,19 +20,19 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: '22'
 
       - run: yarn install --immutable
 
-      - run: yarn nx run scripts-executors:test -t 'smoke test'
+      - run: yarn nx run scripts-executors:test --testNamePattern='smoke test'
 
-      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
+      - run: yarn nx run workspace-plugin:test --testNamePattern='prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 

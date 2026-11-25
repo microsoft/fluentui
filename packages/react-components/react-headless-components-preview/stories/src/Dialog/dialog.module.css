@@ -11,11 +11,60 @@
   padding: 0;
   overflow: hidden;
   box-shadow: var(--shadow-5);
+  transition: overlay var(--duration-medium) allow-discrete;
 }
 
-.surface:modal::backdrop {
+.surface::backdrop {
   background: rgba(10, 10, 10, 0.4);
   backdrop-filter: blur(2px);
+  transition: overlay var(--duration-medium) allow-discrete;
+}
+
+.surface[data-open] {
+  animation: dialogEnter var(--duration-medium) var(--ease-standard);
+}
+
+.surface:not([data-open]) {
+  animation: dialogExit var(--duration-medium) var(--ease-standard);
+}
+
+.surface[data-open]::backdrop {
+  animation: dialogEnter var(--duration-medium) var(--ease-standard);
+}
+
+.surface:not([data-open])::backdrop {
+  animation: dialogExit var(--duration-medium) var(--ease-standard);
+}
+
+@keyframes dialogEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogExit {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface[data-open],
+  .surface:not([data-open]),
+  .surface::backdrop,
+  .surface[data-open]::backdrop,
+  .surface:not([data-open])::backdrop {
+    animation: none;
+    transition: none;
+  }
 }
 
 .body {

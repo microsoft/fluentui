@@ -19,9 +19,9 @@ const baseUrl =
 
 // Color palettes
 
-const themeColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-slots.json');
-const neutralColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-neutrals.json');
-const accentColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-accents.json');
+const themeColors = require<IColorSwatch[]>('../../../data/colors-theme-slots.json');
+const neutralColors = require<IColorSwatch[]>('../../../data/colors-theme-neutrals.json');
+const accentColors = require<IColorSwatch[]>('../../../data/colors-theme-accents.json');
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;

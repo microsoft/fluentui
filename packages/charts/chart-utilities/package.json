@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/chart-utilities",
-  "version": "1.1.39",
+  "version": "1.1.41",
   "description": "React web chart utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
+      "node": {
+        "module": "./lib/index.js",
+        "default": "./lib-commonjs/index.js"
+      },
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },

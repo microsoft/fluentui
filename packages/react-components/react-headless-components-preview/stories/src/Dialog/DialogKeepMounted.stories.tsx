@@ -16,38 +16,49 @@ import textareaStyles from '../Textarea/textarea.module.css';
  * `<dialog>` element manages its own visibility via `show()`/`close()`, so any
  * state inside (e.g. form values) is preserved across open/close cycles.
  */
-export const KeepMounted = (): React.ReactNode => (
-  <Dialog unmountOnClose={false}>
-    <DialogTrigger>
-      <button type="button" className={styles.btn}>
-        Open dialog (state preserved)
-      </button>
-    </DialogTrigger>
+export const KeepMounted = (): React.ReactNode => {
+  const [hasOpened, setHasOpened] = React.useState(false);
 
-    <DialogSurface className={styles.surface}>
-      <DialogBody className={styles.body}>
-        <DialogTitle className={styles.title}>Draft message</DialogTitle>
-        <p className={`${styles.copy} ${styles.demoSpacer}`}>
-          Close and reopen — your draft is preserved (<code>unmountOnClose=false</code>).
-        </p>
-        <Textarea
-          rows={4}
-          placeholder="Type your message…"
-          className={textareaStyles.wrap}
-          textarea={{ className: textareaStyles.textarea }}
-        />
-      </DialogBody>
-
-      <DialogActions className={styles.actions}>
-        <DialogTrigger action="close">
-          <button type="button" className={styles.btn}>
-            Save draft
-          </button>
-        </DialogTrigger>
-        <button type="button" className={`${styles.btn} ${styles.primary}`}>
-          Send
+  return (
+    <Dialog
+      unmountOnClose={false}
+      onOpenChange={(_, data) => {
+        if (data.open) {
+          setHasOpened(true);
+        }
+      }}
+    >
+      <DialogTrigger>
+        <button type="button" className={styles.btn}>
+          Open dialog (state preserved)
         </button>
-      </DialogActions>
-    </DialogSurface>
-  </Dialog>
-);
+      </DialogTrigger>
+
+      <DialogSurface className={styles.surface} style={hasOpened ? undefined : { animation: 'none' }}>
+        <DialogBody className={styles.body}>
+          <DialogTitle className={styles.title}>Draft message</DialogTitle>
+          <p className={`${styles.copy} ${styles.demoSpacer}`}>
+            Close and reopen — your draft is preserved (<code>unmountOnClose=false</code>).
+          </p>
+          <Textarea
+            rows={4}
+            placeholder="Type your message…"
+            className={textareaStyles.wrap}
+            textarea={{ className: textareaStyles.textarea }}
+          />
+        </DialogBody>
+
+        <DialogActions className={styles.actions}>
+          <DialogTrigger action="close">
+            <button type="button" className={styles.btn}>
+              Save draft
+            </button>
+          </DialogTrigger>
+          <button type="button" className={`${styles.btn} ${styles.primary}`}>
+            Send
+          </button>
+        </DialogActions>
+      </DialogSurface>
+    </Dialog>
+  );
+};

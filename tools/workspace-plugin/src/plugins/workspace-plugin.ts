@@ -6,6 +6,7 @@ import {
   type CreateNodesContextV2,
   type CreateNodesResult,
   type CreateNodesV2,
+  type PostTasksExecution,
   type ProjectConfiguration,
   type TargetConfiguration,
   createNodesFromFiles,
@@ -43,6 +44,30 @@ interface TargetPluginOption {
    */
   include?: string[];
 }
+
+/**
+ * With `--nxBail`, if the task that failed is running around the same time as another task with
+ * very noisy logs, the task failure might get lost in the output. This hook will print a
+ * CI error message for each failed task, which will be visible in the CI provider's UI.
+ */
+export const postTasksExecution: PostTasksExecution<WorkspacePluginOptions> = (_options, context) => {
+  const errorPrefix =
+    process.env.GITHUB_ACTIONS === 'true'
+      ? '::error::'
+      : process.env.TF_BUILD?.toLowerCase() === 'true'
+      ? '##vso[task.logissue type=error]'
+      : undefined;
+
+  if (!errorPrefix) {
+    return;
+  }
+
+  for (const result of Object.values(context.taskResults)) {
+    if (result.status === 'failure') {
+      console.log(`${errorPrefix}Nx task failed: ${result.task.id}`);
+    }
+  }
+};
 
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
@@ -197,6 +222,11 @@ function buildWorkspaceProjectConfiguration(
     targets['bundle-size'] = bundleSizeTarget;
   }
 
+  const verifyBundleIsolationTarget = buildVerifyBundleIsolationTarget(projectRoot, options, context, config);
+  if (verifyBundleIsolationTarget) {
+    targets['verify-bundle-isolation'] = verifyBundleIsolationTarget;
+  }
+
   // react v9 lib
   if (config.projectJSON.projectType === 'library' && config.tags.includes('vNext')) {
     // *-stories projects
@@ -283,6 +313,11 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
+    const attwTarget = buildAttwTarget(projectRoot, config);
+    if (attwTarget) {
+      targets.attw = attwTarget;
+    }
+
     let metadata: WorkspaceTargets['metadata'];
 
     if (isReactProject) {
@@ -307,11 +342,22 @@ function buildReactCompilerAnalyzerTargets(
   const groupName = 'React Compiler Analyzer';
   const metadata = { targetGroups: { [groupName]: [] as string[] } };
 
-  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+  const inputs = [
+    'default',
+    '{workspaceRoot}/tools/react-compiler-analyzer/src/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs',
+    '{workspaceRoot}/tools/react-compiler-analyzer/package.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/project.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json',
+    { externalDependencies: ['babel-plugin-react-compiler'] },
+  ];
+  const dependsOn = [{ target: 'build', projects: 'react-compiler-analyzer' }];
 
   targets['react-compiler-analyzer--lint'] = {
     command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {
@@ -331,6 +377,7 @@ function buildReactCompilerAnalyzerTargets(
   targets['react-compiler-analyzer--analyze'] = {
     command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {
@@ -412,7 +459,11 @@ function buildTestTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
-  if (!existsSync(join(projectRoot, 'jest.config.js')) && !existsSync(join(projectRoot, 'jest.config.ts'))) {
+  if (
+    !existsSync(join(projectRoot, 'jest.config.js')) &&
+    !existsSync(join(projectRoot, 'jest.config.cjs')) &&
+    !existsSync(join(projectRoot, 'jest.config.ts'))
+  ) {
     return null;
   }
 
@@ -433,6 +484,33 @@ function buildTestTarget(
           },
         },
       },
+    },
+  };
+}
+
+function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
+  if (config.packageJSON.private || !config.packageJSON.exports) {
+    return null;
+  }
+
+  // CommonJS-first packages always report `CJS default export` interop findings under the node16
+  // profile - inherent to their shape rather than export map defects, so gating them stays red forever
+  if (config.packageJSON.type !== 'module') {
+    return null;
+  }
+
+  return {
+    executor: 'nx:run-commands',
+    cache: true,
+    dependsOn: ['build'],
+    options: {
+      cwd: projectRoot,
+      command: `${config.pmc.exec} attw --pack --profile node16`,
+    },
+    inputs: ['default', { externalDependencies: ['@arethetypeswrong/cli'] }],
+    metadata: {
+      description: 'Validate package types & export map with @arethetypeswrong/cli',
+      technologies: ['typescript'],
     },
   };
 }
@@ -531,6 +609,37 @@ function buildBundleSizeTarget(
         command: `${config.pmc.exec} monosize measure --help`,
         example: {},
       },
+    },
+  };
+}
+
+function buildVerifyBundleIsolationTarget(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration | null {
+  if (!existsSync(join(projectRoot, 'bundle-isolation.config.json'))) {
+    return null;
+  }
+
+  return {
+    cache: true,
+    // Must bundle built output - resolving to sources makes the verdict meaningless, and the tool errors on it.
+    dependsOn: ['build', '^build'],
+    command: `${config.pmc.exec} verify-bundle-isolation`,
+    options: { cwd: projectRoot },
+    inputs: [
+      'default',
+      '^default',
+      // Also what makes `nx affected` select consumers when the checker itself changes.
+      '{workspaceRoot}/tools/verify-bundle-isolation/**',
+      { externalDependencies: ['ajv', 'webpack'] },
+    ],
+    outputs: ['{projectRoot}/dist/bundle-isolation'],
+    metadata: {
+      technologies: ['webpack'],
+      description: 'Assert entry points do not bundle runtimes the package is meant to stay free of',
     },
   };
 }
@@ -642,7 +751,10 @@ function buildStorybookTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.storybook/main.js'))) {
+  const hasStorybookMain = ['.storybook/main.js', '.storybook/main.cjs'].some(file =>
+    existsSync(join(projectRoot, file)),
+  );
+  if (!hasStorybookMain) {
     return null;
   }
 
@@ -875,16 +987,22 @@ function buildReactIntegrationTesterProjectConfiguration(
       hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
       hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
       hasTest:
-        (existsSync(join(projectRootPath, 'jest.config.js')) || existsSync(join(projectRootPath, 'jest.config.ts'))) &&
+        (existsSync(join(projectRootPath, 'jest.config.js')) ||
+          existsSync(join(projectRootPath, 'jest.config.cjs')) ||
+          existsSync(join(projectRootPath, 'jest.config.ts'))) &&
         !storybookAdjacent,
     };
 
-    const ritConfigPathLocal = join(projectRootPath, 'rit.config.js');
+    // web packages ship as `type: module`, so their CommonJS rit config uses `.cjs`; fall back to `.js`
+    const ritConfigPathLocal = [
+      resolve(projectRootPath, 'rit.config.cjs'),
+      resolve(projectRootPath, 'rit.config.js'),
+    ].find(candidate => existsSync(candidate));
 
-    if (existsSync(ritConfigPathLocal)) {
+    if (ritConfigPathLocal) {
       try {
         type RITConfig = { react: Record<string, { runConfig?: Record<string, { configPath: string }> }> };
-        const loaded = require(resolve(projectRootPath, 'rit.config.js'));
+        const loaded = require(ritConfigPathLocal);
         const rit: RITConfig = loaded?.default ?? loaded;
 
         if (rit && typeof rit === 'object' && rit.react && rit.react[reactVersion]) {

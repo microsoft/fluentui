@@ -4,6 +4,7 @@ import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
 import type { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
 import { render } from '@testing-library/react';
+import { tokens } from '@fluentui/react-theme';
 import * as React from 'react';
 expect.extend(toHaveNoViolations);
 
@@ -465,6 +466,7 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
     const yAxisCallOutData = getByClass(container, /calloutContentY/i);
     expect(yAxisCallOutData).toBeDefined();
     expect(yAxisCallOutData[0].textContent).toEqual('1000');
+    expect((yAxisCallOutData[0] as HTMLElement).style.lineHeight).toEqual(tokens.lineHeightHero700);
   });
 
   it('Should show the callout with string yaxis tooltip data', async () => {

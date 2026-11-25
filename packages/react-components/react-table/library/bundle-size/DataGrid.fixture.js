@@ -5,10 +5,10 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-table';
 
-console.log(DataGridBody, DataGridRow, DataGrid, DataGridHeader, DataGridHeaderCell, DataGridCell, createColumn);
+console.log(DataGridBody, DataGridRow, DataGrid, DataGridHeader, DataGridHeaderCell, DataGridCell, createTableColumn);
 
 export default {
   name: 'DataGrid',

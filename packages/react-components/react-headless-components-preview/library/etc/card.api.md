@@ -6,109 +6,97 @@
 
 import type { CardBaseProps } from '@fluentui/react-card';
 import type { CardBaseState } from '@fluentui/react-card';
-import { CardContextValue as CardContextValue_2 } from '@fluentui/react-card';
-import type { CardFooterBaseProps } from '@fluentui/react-card';
-import { CardFooterBaseState } from '@fluentui/react-card';
-import type { CardFooterSlots as CardFooterSlots_2 } from '@fluentui/react-card';
-import type { CardHeaderBaseProps } from '@fluentui/react-card';
-import { CardHeaderBaseState } from '@fluentui/react-card';
-import type { CardHeaderSlots as CardHeaderSlots_2 } from '@fluentui/react-card';
-import type { CardOnSelectionChangeEvent as CardOnSelectionChangeEvent_2 } from '@fluentui/react-card';
-import type { CardPreviewBaseProps } from '@fluentui/react-card';
-import { CardPreviewBaseState } from '@fluentui/react-card';
-import type { CardPreviewSlots as CardPreviewSlots_2 } from '@fluentui/react-card';
-import type { CardSlots as CardSlots_2 } from '@fluentui/react-card';
+import { CardContextValue } from '@fluentui/react-card';
+import { CardFooterBaseProps as CardFooterProps } from '@fluentui/react-card';
+import { CardFooterSlots } from '@fluentui/react-card';
+import { CardFooterBaseState as CardFooterState } from '@fluentui/react-card';
+import { CardHeaderBaseProps as CardHeaderProps } from '@fluentui/react-card';
+import { CardHeaderSlots } from '@fluentui/react-card';
+import { CardHeaderBaseState as CardHeaderState } from '@fluentui/react-card';
+import { CardOnSelectionChangeEvent } from '@fluentui/react-card';
+import { CardPreviewBaseProps as CardPreviewProps } from '@fluentui/react-card';
+import { CardPreviewSlots } from '@fluentui/react-card';
+import { CardPreviewBaseState as CardPreviewState } from '@fluentui/react-card';
+import { CardSlots } from '@fluentui/react-card';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderCard_unstable as renderCard } from '@fluentui/react-card';
+import { renderCardFooter_unstable as renderCardFooter } from '@fluentui/react-card';
+import { renderCardHeader_unstable as renderCardHeader } from '@fluentui/react-card';
+import { renderCardPreview_unstable as renderCardPreview } from '@fluentui/react-card';
+import { useCardContext_unstable as useCardContext } from '@fluentui/react-card';
+import { useCardFooterBase_unstable as useCardFooter } from '@fluentui/react-card';
+import { useCardHeaderBase_unstable as useCardHeader } from '@fluentui/react-card';
+import { useCardPreviewBase_unstable as useCardPreview } from '@fluentui/react-card';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public
-export type CardContextValue = CardContextValue_2;
+export { CardContextValue }
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public
-export type CardFooterProps = CardFooterBaseProps;
+export { CardFooterProps }
 
-// @public
-export type CardFooterSlots = CardFooterSlots_2;
+export { CardFooterSlots }
 
-// @public
-export type CardFooterState = CardFooterBaseState;
+export { CardFooterState }
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
-// @public
-export type CardHeaderProps = CardHeaderBaseProps;
+export { CardHeaderProps }
 
-// @public
-export type CardHeaderSlots = CardHeaderSlots_2;
+export { CardHeaderSlots }
 
-// @public
-export type CardHeaderState = CardHeaderBaseState;
+export { CardHeaderState }
 
-// @public
-export type CardOnSelectionChangeEvent = CardOnSelectionChangeEvent_2;
+export { CardOnSelectionChangeEvent }
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public
-export type CardPreviewProps = CardPreviewBaseProps;
+export { CardPreviewProps }
 
-// @public
-export type CardPreviewSlots = CardPreviewSlots_2;
+export { CardPreviewSlots }
 
-// @public
-export type CardPreviewState = CardPreviewBaseState;
+export { CardPreviewState }
 
 // @public
 export type CardProps = Omit<CardBaseProps, 'focusMode'>;
 
-// @public
-export type CardSlots = CardSlots_2;
+export { CardSlots }
 
 // @public
 export type CardState = CardBaseState & {
     root: {
         'data-selected'?: string;
+        'data-disabled'?: string;
     };
 };
 
 export { renderCard }
 
-// @public
-export const renderCardFooter: (state: CardFooterBaseState) => JSXElement;
+export { renderCardFooter }
 
-// @public
-export const renderCardHeader: (state: CardHeaderBaseState) => JSXElement;
+export { renderCardHeader }
 
-// @public
-export const renderCardPreview: (state: CardPreviewBaseState) => JSXElement;
+export { renderCardPreview }
 
 // @public
 export const useCard: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;
 
-// @public
-export const useCardContext: () => CardContextValue_2;
+export { useCardContext }
 
 // @public
 export const useCardContextValue: ({ selectableA11yProps }: CardState) => CardContextValue;
 
-// @public
-export const useCardFooter: (props: CardFooterProps, ref: React_2.Ref<HTMLElement>) => CardFooterState;
+export { useCardFooter }
 
-// @public
-export const useCardHeader: (props: CardHeaderProps, ref: React_2.Ref<HTMLElement>) => CardHeaderState;
+export { useCardHeader }
 
-// @public
-export const useCardPreview: (props: CardPreviewProps, ref: React_2.Ref<HTMLElement>) => CardPreviewState;
+export { useCardPreview }
 
 // (No @packageDocumentation comment for this package)
 

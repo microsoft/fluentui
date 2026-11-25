@@ -1,8 +1,26 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Tue, 26 May 2026 12:04:31 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [1.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.41)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.40..@fluentui/chart-utilities_v1.1.41)
+
+### Patches
+
+- fix(chart-utilities): prevent unbounded allocation from Plotly shapes ([PR #36853](https://github.com/microsoft/fluentui/pull/36853) by v-baambati@microsoft.com)
+
+## [1.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.40)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.39..@fluentui/chart-utilities_v1.1.40)
+
+### Patches
+
+- Add nested `module` condition under `node` so node-targeted bundlers (SSR) resolve ESM and tree-shake; bare Node and `require` consumers keep resolving CommonJS unchanged ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
 
 ## [1.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.39)
 

@@ -5,7 +5,6 @@ tmp
 ; known directories to not incorporate into the workspace graph creation
 **/fixtures/**
 **/**fixtures**/**
-**/bundle-size/**
 **/fake_node_modules/**
 
 ; scaffolding templates

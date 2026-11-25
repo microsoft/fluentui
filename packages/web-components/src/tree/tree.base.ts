@@ -36,6 +36,14 @@ export class BaseTree extends FASTElement {
     this.elementInternals.role = 'tree';
   }
 
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.hasAttribute('focusgroup')) {
+      this.setAttribute('focusgroup', 'menu inline block nowrap nomemory');
+    }
+  }
+
   /** @internal */
   @observable
   childTreeItems!: BaseTreeItem[];

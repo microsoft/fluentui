@@ -1,13 +1,11 @@
-import type {
-  AccordionItemSlots as AccordionItemBaseSlots,
-  AccordionItemProps as AccordionItemBaseProps,
-  AccordionItemContextValues as AccordionItemBaseContextValues,
-  AccordionItemState as AccordionItemBaseState,
+import type { AccordionItemState as AccordionItemBaseState } from '@fluentui/react-accordion';
+
+export type {
+  AccordionItemProps,
+  AccordionItemSlots,
+  AccordionItemContextValue,
+  AccordionItemContextValues,
 } from '@fluentui/react-accordion';
-
-export type AccordionItemSlots = AccordionItemBaseSlots;
-
-export type AccordionItemProps = AccordionItemBaseProps;
 
 export type AccordionItemState = AccordionItemBaseState & {
   root: {
@@ -21,5 +19,3 @@ export type AccordionItemState = AccordionItemBaseState & {
     'data-open'?: string;
   };
 };
-
-export type AccordionItemContextValues = AccordionItemBaseContextValues;

@@ -22,7 +22,7 @@ describe('TabList', () => {
 
     expect(tablist).toBeInTheDocument();
     expect(tablist).toHaveAttribute('data-orientation', 'horizontal');
-    expect(tablist).toHaveAttribute('focusgroup', 'tablist inline wrap no-memory');
+    expect(tablist).toHaveAttribute('focusgroup', 'tablist inline wrap nomemory');
 
     const tabs = getAllByRole('tab');
 
@@ -41,6 +41,28 @@ describe('TabList', () => {
     const tablist = getByRole('tablist');
 
     expect(tablist).toHaveAttribute('data-orientation', 'vertical');
-    expect(tablist).toHaveAttribute('focusgroup', 'tablist block wrap no-memory');
+    expect(tablist).toHaveAttribute('focusgroup', 'tablist block wrap nomemory');
+  });
+
+  it('renders with data-disabled when disabled', () => {
+    const { getByRole } = render(
+      <TabList disabled>
+        <Tab value="1">Tab 1</Tab>
+        <Tab value="2">Tab 2</Tab>
+      </TabList>,
+    );
+
+    expect(getByRole('tablist')).toHaveAttribute('data-disabled');
+  });
+
+  it('does not render data-disabled by default', () => {
+    const { getByRole } = render(
+      <TabList>
+        <Tab value="1">Tab 1</Tab>
+        <Tab value="2">Tab 2</Tab>
+      </TabList>,
+    );
+
+    expect(getByRole('tablist')).not.toHaveAttribute('data-disabled');
   });
 });

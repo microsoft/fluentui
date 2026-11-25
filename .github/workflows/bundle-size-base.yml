@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-15-xlarge (arm) = 5-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -19,14 +19,14 @@ env:
 jobs:
   bundle-size-base:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: macos-15-xlarge
     permissions:
       contents: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           cache: 'yarn'
           node-version: '22'
@@ -48,7 +48,7 @@ jobs:
       # from the value monosize-storage-git uses to read the base report.
       - name: Resolve report artifact metadata
         id: report
-        uses: actions/github-script@v8
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const path = require('node:path');
@@ -58,7 +58,7 @@ jobs:
             run({ core });
 
       - name: Upload report artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ${{ steps.report.outputs.name }}
           if-no-files-found: error

@@ -1,0 +1,203 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Persona Migration" />
+
+# Persona Migration
+
+## Overview
+
+v9 `Persona` uses a slot-based API. Text lines are slots (`primaryText`, `secondaryText`, etc.); avatar and presence are composed via `Avatar` and `PresenceBadge` slots rather than flat image/initials props.
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react';
+<Persona
+  text="Alice Northwood"
+  secondaryText="Software Engineer"
+  imageUrl={avatarSrc}
+  size={PersonaSize.size48}
+  presence={PersonaPresence.online}
+/>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Persona } from '@fluentui/react-components';
+<Persona
+  name="Alice Northwood"
+  secondaryText="Software Engineer"
+  avatar={{ image: { src: avatarSrc }, size: 48 }}
+  size="medium"
+  presence={{ status: 'available' }}
+/>;
+```
+
+The v9 `Persona` size controls its overall text layout and supplies a default
+avatar size, but the named sizes do not preserve every v8 coin size. Set a
+numeric `size` on the `avatar` slot when avatar pixels are part of the visual
+contract.
+
+v9 also renders every text slot that is supplied. v8 hides secondary text at
+`size32` and smaller unless `showSecondaryText` is true; at `size40` and larger
+it renders whenever supplied. v8 hides tertiary text below `size72` and
+optional text below `size100`. Omit those v9 slots when v8 would have hidden
+them; do not pass all source props through unconditionally.
+
+### Avatar Only
+
+```tsx
+// v8
+<Persona text="Alice Northwood" imageUrl={avatarSrc} hidePersonaDetails />;
+
+// v9 — omit Persona text slots
+<Persona avatar={{ name: 'Alice Northwood', image: { src: avatarSrc } }} />;
+```
+
+## Prop Mapping
+
+| v8 `IPersonaProps`     | v9 `PersonaProps`                    | Notes                                                                  |
+| ---------------------- | ------------------------------------ | ---------------------------------------------------------------------- |
+| `text` / `primaryText` | `name` (or `primaryText` slot)       | `name` is the default for `primaryText`; use slots for custom content  |
+| `secondaryText`        | `secondaryText` slot                 |                                                                        |
+| `tertiaryText`         | `tertiaryText` slot                  |                                                                        |
+| `optionalText`         | `quaternaryText` slot                | Renamed                                                                |
+| `imageUrl`             | `avatar={{ image: { src: '...' } }}` | Passed as shorthand to the `avatar` slot                               |
+| `imageInitials`        | `avatar={{ initials: '...' }}`       |                                                                        |
+| `initialsColor`        | `avatar={{ color: '...' }}`          | v9 uses token-based colors or `"colorful"`                             |
+| `presence`             | `presence={{ status: '...' }}`       | `PersonaPresence` enum → string status (see table below)               |
+| `presenceTitle`        | `presence={{ title: '...' }}`        |                                                                        |
+| `size`                 | `size` + `avatar.size`               | Named sizes change layout; preserve coin pixels separately when needed |
+| `hidePersonaDetails`   | Omit Persona text slots              | Keep the accessible name on the `avatar` slot                          |
+| `showSecondaryText`    | Include `secondaryText` slot         | Required for v8 sizes 32 and smaller; v9 shows any supplied slot       |
+| `coinSize`             | `size` on the `avatar` slot          | Use a supported numeric `Avatar` size; see the size table              |
+| `styles`               | `className` + `makeStyles`           |                                                                        |
+| `theme`                | —                                    | Use `FluentProvider`                                                   |
+| `componentRef`         | `ref`                                |                                                                        |
+
+### Presence Status Mapping
+
+| v8 `PersonaPresence`      | v9 `status`          |
+| ------------------------- | -------------------- |
+| `PersonaPresence.online`  | `"available"`        |
+| `PersonaPresence.away`    | `"away"`             |
+| `PersonaPresence.busy`    | `"busy"`             |
+| `PersonaPresence.dnd`     | `"do-not-disturb"`   |
+| `PersonaPresence.blocked` | `"blocked"`          |
+| `PersonaPresence.offline` | `"offline"`          |
+| `PersonaPresence.none`    | omit `presence` prop |
+
+### Size Mapping
+
+Named v9 Persona sizes render these avatar pixels:
+
+| v9 `Persona` size | Default avatar size |
+| ----------------- | ------------------- |
+| `"extra-small"`   | 20px                |
+| `"small"`         | 28px                |
+| `"medium"`        | 32px                |
+| `"large"`         | 36px                |
+| `"extra-large"`   | 40px                |
+| `"huge"`          | 56px                |
+
+Do not map v8 numeric sizes to a named v9 size without checking the resulting
+avatar. For example, `PersonaSize.size48` with `size="medium"` silently reduces
+the coin from 48px to 32px, and `PersonaSize.size72` with
+`size="extra-large"` reduces it to 40px.
+
+Use the v9 named `Persona` size that best fits the desired text layout, then
+override the avatar slot when exact coin fidelity is required:
+
+| v8 `PersonaSize`      | Rendered v8 coin | Pixel-faithful v9 `avatar` slot                             |
+| --------------------- | ---------------- | ----------------------------------------------------------- |
+| `PersonaSize.size8`   | no coin          | `avatar={null}`                                             |
+| `PersonaSize.size16`  | 16px             | `avatar={{ size: 16 }}`                                     |
+| `PersonaSize.size24`  | 24px             | `avatar={{ size: 24 }}`                                     |
+| `PersonaSize.size28`  | 28px             | `avatar={{ size: 28 }}`                                     |
+| `PersonaSize.size32`  | 32px             | `avatar={{ size: 32 }}`                                     |
+| `PersonaSize.size40`  | 40px             | `avatar={{ size: 40 }}`                                     |
+| `PersonaSize.size48`  | 48px             | `avatar={{ size: 48 }}`                                     |
+| `PersonaSize.size56`  | 56px             | `avatar={{ size: 56 }}`                                     |
+| `PersonaSize.size72`  | 72px             | `avatar={{ size: 72 }}`                                     |
+| `PersonaSize.size100` | 100px            | `avatar={{ size: 96, style: { width: 100, height: 100 } }}` |
+| `PersonaSize.size120` | 120px            | `avatar={{ size: 120 }}`                                    |
+
+The legacy names alias numeric sizes: `tiny` → `size10`, `extraExtraSmall` →
+`size24`, `extraSmall` → `size28`, `small` → `size40`, `regular` → `size48`,
+`large` → `size72`, and `extraLarge` → `size100`. A v8 `coinSize` override takes
+precedence over the Persona enum for the coin itself. v9 `Avatar` supports
+numeric sizes 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, and 128;
+for another exact size, use the next smaller supported `size` plus explicit
+`width` and `height`.
+
+Named Persona size is only an approximate layout mapping. For common v8 sizes:
+
+| v8 size               | Suggested v9 layout | Text-slot behavior to preserve                                                        |
+| --------------------- | ------------------- | ------------------------------------------------------------------------------------- |
+| `size48`              | `size="medium"`     | Include secondary text when supplied; omit tertiary and optional text                 |
+| `size72`              | `size="huge"`       | Include secondary and tertiary text when supplied; omit optional text                 |
+| `size100` / `size120` | `size="huge"`       | Include secondary, tertiary, and optional text when supplied                          |
+| `size32` and smaller  | closest named size  | Include secondary text only when v8 `showSecondaryText` is true; omit later text rows |
+
+v8 sizes 56 and larger render 20px primary text, while v9 `extra-large` and
+`huge` use a smaller `subtitle2` primary style. If exact typography is required,
+override the text slots with `makeStyles` and tokens while keeping the Persona
+composition:
+
+```tsx
+import { Persona, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  v8LargePrimary: {
+    fontSize: tokens.fontSizeBase500,
+    lineHeight: tokens.lineHeightBase500,
+    fontWeight: tokens.fontWeightRegular,
+  },
+});
+
+function MigratedLargePersona({ person }: Props) {
+  const styles = useStyles();
+
+  return (
+    <Persona
+      name={person.name}
+      size="huge"
+      avatar={{ size: 72 }}
+      primaryText={{ className: styles.v8LargePrimary }}
+      secondaryText={person.role}
+      tertiaryText={person.email}
+    />
+  );
+}
+```
+
+### Initials colors
+
+v8 `PersonaInitialsColor` values are a fixed palette. v9 `Avatar.color` names
+use a different palette, so a similarly named color is not pixel-equivalent.
+Use `color="colorful"` when deterministic v9 color assignment is acceptable.
+When preserving the v8 visual is required, set the avatar slot's
+`backgroundColor` with `makeStyles` using the source value:
+
+| v8 color               | v8 value  | v8 color      | v8 value      |
+| ---------------------- | --------- | ------------- | ------------- |
+| `lightBlue`            | `#4F6BED` | `blue`        | `#0078D4`     |
+| `darkBlue`             | `#004E8C` | `teal`        | `#038387`     |
+| `lightGreen` / `green` | `#498205` | `darkGreen`   | `#0B6A0B`     |
+| `lightPink`            | `#C239B3` | `pink`        | `#E3008C`     |
+| `magenta`              | `#881798` | `purple`      | `#5C2E91`     |
+| `orange`               | `#CA5010` | `lightRed`    | `#D13438`     |
+| `darkRed`              | `#A4262C` | `violet`      | `#8764B8`     |
+| `gold`                 | `#986F0B` | `burgundy`    | `#750B1C`     |
+| `warmGray`             | `#7A7574` | `coolGray`    | `#69797E`     |
+| `cyan`                 | `#005B70` | `rust`        | `#8E562E`     |
+| `black`                | `#1D1D1D` | `gray`        | `#393939`     |
+| `red`                  | `#EE1111` | `transparent` | `transparent` |
+
+Preserve an accessible foreground when applying a custom background; the v8
+initials treatment uses white text for the nontransparent palette.

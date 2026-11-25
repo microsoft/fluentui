@@ -13,7 +13,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { usePopoverContext } from '../popoverContext';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
@@ -32,6 +32,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
+  const inertTrapFocus = usePopoverContext(context => context.inertTrapFocus);
 
   const { targetDocument } = useFluent();
 
@@ -76,9 +77,10 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
 
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
-    'aria-haspopup': 'true' as const,
+    'aria-haspopup': inertTrapFocus ? ('dialog' as const) : undefined,
     'aria-details': open ? surfaceId : undefined,
-    'data-open': stringifyDataAttribute(open),
+    'aria-controls': open ? surfaceId : undefined,
+    'data-open': toDataAttributeValue(open),
     ...child?.props,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),

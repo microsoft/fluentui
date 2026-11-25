@@ -35,6 +35,14 @@ describe('Tooltip', () => {
       cy.get(tooltipSelector).should('not.be.visible');
     });
 
+    it('should hide when the trigger is clicked', () => {
+      mount(<Example showDelay={0} />);
+      cy.get('button').trigger('pointerover');
+      cy.get(tooltipSelector).should('be.visible');
+      cy.get('button').click({ force: true });
+      cy.get(tooltipSelector).should('not.be.visible');
+    });
+
     it('should remain visible when pointer moves to tooltip content', () => {
       cy.clock();
       mount(<Example showDelay={0} hideDelay={300} />);
@@ -149,6 +157,24 @@ describe('Tooltip', () => {
       cy.get(tooltipSelector).should('be.visible');
       cy.get('#toggle').click({ force: true });
       cy.get(tooltipSelector).should('not.be.visible');
+    });
+
+    it('should leave Escape to the page after the browser hides it while visible stays true', () => {
+      const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
+      mount(
+        <div onKeyDown={onOuterKeyDown}>
+          <Example visible />
+          <button id="outside">Outside</button>
+        </div>,
+      );
+      cy.get(tooltipSelector).should('be.visible');
+      cy.get(tooltipSelector).then($tooltip => {
+        ($tooltip[0] as HTMLElement).hidePopover();
+      });
+      cy.get(tooltipSelector).should('not.be.visible');
+
+      cy.get('#outside').focus().type('{esc}');
+      cy.get('@onOuterKeyDown').should('have.been.calledWithMatch', { key: 'Escape' });
     });
 
     it('should call onVisibleChange with visible=true when shown', () => {

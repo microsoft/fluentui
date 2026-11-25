@@ -2,7 +2,9 @@ import * as React from 'react';
 import type { RenderResult } from '@testing-library/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Field } from '@fluentui/react-field';
+import { renderHook } from '@testing-library/react-hooks';
 import { Textarea } from './Textarea';
+import { useTextareaBase_unstable } from './useTextarea';
 import { isConformant } from '../../testing/isConformant';
 
 function getTextarea(): HTMLTextAreaElement {
@@ -110,5 +112,40 @@ describe('Textarea', () => {
     expect(textarea.getAttribute('aria-describedby')).toEqual(message.id);
     expect(textarea.getAttribute('aria-invalid')).toEqual('true');
     expect(textarea.required).toBe(true);
+  });
+});
+
+describe('Textarea DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Textarea
+        appearance="filled-darker"
+        className="custom"
+        defaultValue="value"
+        onChange={jest.fn()}
+        placeholder="placeholder"
+        resize="both"
+        size="large"
+        style={{ color: 'red' }}
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(screen.getByRole('textbox').getAttributeNames().sort()).toEqual(['class', 'placeholder']);
+  });
+
+  it('does not forward slot or state props from the base hook to the textarea slot', () => {
+    const { result } = renderHook(() =>
+      useTextareaBase_unstable({ className: 'custom', defaultValue: 'value', placeholder: 'p', resize: 'both' }),
+    );
+
+    expect(result.current.root.className).toBe('custom');
+    expect(result.current.textarea.placeholder).toBe('p');
+    expect(result.current.textarea).not.toHaveProperty('className');
+    expect(result.current.textarea).not.toHaveProperty('defaultValue');
+    expect(result.current.textarea).not.toHaveProperty('resize');
   });
 });

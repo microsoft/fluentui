@@ -121,9 +121,8 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       totalItemSize += getOffsetSize(overflowItems[id].element);
     }
 
-    const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
-      (acc, [id, state]) =>
-        acc + (state !== 'hidden' && overflowDividers[id] ? getOffsetSize(overflowDividers[id].element) : 0),
+    const totalDividerSize = Object.entries(overflowDividers).reduce(
+      (acc, [id, divider]) => acc + (groupManager.isGroupVisible(id) ? getOffsetSize(divider.element) : 0),
       0,
     );
 
@@ -335,11 +334,19 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+    if (overflowMenu === el) {
+      return;
+    }
+
     overflowMenu = el;
 
     if (observing) {
       forceDispatch = true;
-      update();
+      if (invisibleItemQueue.size() > 0) {
+        forceUpdate();
+      } else {
+        update();
+      }
     }
   };
 
@@ -353,9 +360,14 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+    if (!overflowMenu) {
+      return;
+    }
+
+    const hasInvisibleItems = invisibleItemQueue.size() > 0;
     overflowMenu = undefined;
 
-    if (observing) {
+    if (observing && hasInvisibleItems) {
       forceDispatch = true;
       update();
     }
@@ -442,6 +454,7 @@ const createGroupManager = () => {
   }
   return {
     groupVisibility: () => groupVisibility,
+    isGroupVisible,
     isSingleItemVisible(itemId: string, groupId: string) {
       return (
         isGroupVisible(groupId) &&

@@ -1,10 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  isHTMLElement,
+  slot,
+  useEventCallback,
+  useId,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete } from '@fluentui/keyboard-keys';
-import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
+import type { ToastPoliteness, ToastStatus, ToasterOptions } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
 
@@ -36,15 +43,26 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     tryRestoreFocus,
     announce,
     content: _content,
+    toastId: _toastId,
+    toasterId: _toasterId,
+    position: _position,
+    priority: _priority,
+    order: _order,
+    root: _root,
+    limit: _limit,
+    shortcuts: _shortcuts,
     ...rest
-  } = props;
+  } = props as ToastContainerProps & Pick<ToasterOptions, 'limit' | 'shortcuts'> & { root?: unknown };
 
   const titleId = useId('toast-title');
   const bodyId = useId('toast-body');
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
+  const [isFocusWithinStack, setIsFocusWithinStack] = React.useState(false);
   const imperativePauseRef = React.useRef(false);
+  const hoverPauseRef = React.useRef(false);
+  const windowBlurPauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
 
   const close = useEventCallback(() => {
@@ -59,7 +77,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   const reportStatus = useEventCallback((status: ToastStatus) => onStatusChange?.(null, { status, ...props }));
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => {
-    if (imperativePauseRef.current) {
+    if (imperativePauseRef.current || hoverPauseRef.current || windowBlurPauseRef.current) {
       return;
     }
 
@@ -69,7 +87,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     }
 
     const activeElement = targetDocument?.activeElement;
-    const containsActive = !!(activeElement && toastRef.current?.contains(activeElement));
+    const containsActive = !!(activeElement && toastRef.current?.parentElement?.contains(activeElement));
     if (!containsActive) {
       setRunning(true);
     }
@@ -89,6 +107,15 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     },
   }));
 
+  const onWindowFocus = useEventCallback(() => {
+    windowBlurPauseRef.current = false;
+    play();
+  });
+  const onWindowBlur = useEventCallback(() => {
+    windowBlurPauseRef.current = true;
+    pause();
+  });
+
   React.useEffect(() => {
     return () => reportStatus('unmounted');
   }, [reportStatus]);
@@ -98,13 +125,50 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       return;
     }
 
-    targetDocument.defaultView?.addEventListener('focus', play);
-    targetDocument.defaultView?.addEventListener('blur', pause);
+    targetDocument.defaultView?.addEventListener('focus', onWindowFocus);
+    targetDocument.defaultView?.addEventListener('blur', onWindowBlur);
     return () => {
-      targetDocument.defaultView?.removeEventListener('focus', play);
-      targetDocument.defaultView?.removeEventListener('blur', pause);
+      targetDocument.defaultView?.removeEventListener('focus', onWindowFocus);
+      targetDocument.defaultView?.removeEventListener('blur', onWindowBlur);
     };
-  }, [targetDocument, pause, play, pauseOnWindowBlur]);
+  }, [targetDocument, onWindowBlur, onWindowFocus, pauseOnWindowBlur]);
+
+  React.useEffect(() => {
+    if (isFocusWithinStack) {
+      pause();
+    } else {
+      play();
+    }
+  }, [isFocusWithinStack, pause, play]);
+
+  useIsomorphicLayoutEffect(() => {
+    const stack = toastRef.current?.parentElement;
+    if (!stack) {
+      return;
+    }
+
+    if (isHTMLElement(targetDocument?.activeElement) && stack.contains(targetDocument.activeElement)) {
+      setIsFocusWithinStack(true);
+      pause();
+    }
+
+    const onFocusIn = () => {
+      setIsFocusWithinStack(true);
+      pause();
+    };
+    const onFocusOut = (e: FocusEvent) => {
+      if (!stack.contains(isHTMLElement(e.relatedTarget) ? e.relatedTarget : null)) {
+        setIsFocusWithinStack(false);
+      }
+    };
+
+    stack.addEventListener('focusin', onFocusIn);
+    stack.addEventListener('focusout', onFocusOut);
+    return () => {
+      stack.removeEventListener('focusin', onFocusIn);
+      stack.removeEventListener('focusout', onFocusOut);
+    };
+  }, [pause, targetDocument]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -145,6 +209,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (pauseOnHover) {
+      hoverPauseRef.current = true;
       pause();
     }
     userRootSlot?.onMouseEnter?.(e);
@@ -152,6 +217,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (pauseOnHover) {
+      hoverPauseRef.current = false;
       play();
     }
     userRootSlot?.onMouseLeave?.(e);
@@ -171,7 +237,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      {
         ref: useMergedRefs(ref, toastRef),
         children,
         tabIndex: 0,
@@ -183,7 +249,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
         onMouseEnter,
         onMouseLeave,
         onKeyDown,
-      }),
+      },
       { elementType: 'div' },
     ),
     running,

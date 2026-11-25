@@ -1,30 +1,22 @@
-import type {
-  FieldSlots as FieldBaseSlots,
-  FieldBaseProps,
-  FieldBaseState,
-  FieldContextValues as FieldContextValuesBase,
+import type { FieldBaseState } from '@fluentui/react-field';
+
+export type {
+  FieldSlots,
+  FieldBaseProps as FieldProps,
+  FieldContextValue,
+  FieldContextValues,
 } from '@fluentui/react-field';
-
-/**
- * Field component slots
- */
-export type FieldSlots = FieldBaseSlots;
-
-/**
- * Field component props
- */
-export type FieldProps = FieldBaseProps;
 
 /**
  * Field component state
  */
 export type FieldState = FieldBaseState & {
   root: {
+    /**
+     * Data attribute set when the field is required.
+     */
+    'data-required'?: string;
+
     'data-validate-state'?: FieldBaseState['validationState'];
   };
 };
-
-/**
- * Field component context values
- */
-export type FieldContextValues = FieldContextValuesBase;

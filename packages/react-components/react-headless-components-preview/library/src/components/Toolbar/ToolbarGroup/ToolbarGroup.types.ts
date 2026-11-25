@@ -1,9 +1,11 @@
-import type {
-  ToolbarGroupProps as ToolbarGroupBaseProps,
-  ToolbarGroupState as ToolbarGroupBaseState,
-} from '@fluentui/react-toolbar';
+import type { Slot } from '@fluentui/react-utilities';
+import type { ToolbarGroupState as ToolbarGroupBaseState } from '@fluentui/react-toolbar';
 
-export type ToolbarGroupProps = ToolbarGroupBaseProps;
+export type { ToolbarGroupProps } from '@fluentui/react-toolbar';
+
+export type ToolbarGroupSlots = {
+  root: Slot<'div'>;
+};
 
 export type ToolbarGroupState = ToolbarGroupBaseState & {
   root: {

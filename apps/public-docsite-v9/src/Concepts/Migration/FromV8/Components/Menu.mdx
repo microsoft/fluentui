@@ -4,6 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Menu Migration
 
+## Overview
+
 **v8**
 
 - A menu can be displayed by passing menuProps to Button, or by showing/hiding a ContextualMenu.
@@ -16,71 +18,214 @@ import { Meta } from '@storybook/addon-docs/blocks';
 - There are children that act as containers and coordinate behavior including MenuTrigger, MenuPopover, MenuList, and MenuGroup.
 - There are individual components for different types of items including MenuItem, MenuDivider, MenuItemCheckbox, MenuItemRadio, MenuGroup, and MenuSplitGroup.
 
-## Types -> Component props
+## Basic Migration
 
-| v8 menu type                                  | v9 props                                |
-| --------------------------------------------- | --------------------------------------- |
-| IContextualMenuProps                          | MenuProps, MenuListProps (for submenus) |
-| IContextualMenuItemProps, IContextualMenuItem | MenuItemProps                           |
-| IContextualMenuItem itemType=Normal           | MenuItemProps                           |
-| IContextualMenuItem itemType=Divider          | MenuDividerProps                        |
-| IContextualMenuItem itemType=Header           | MenuGroupHeaderProps                    |
-| IContextualMenuItem itemType=Section          | MenuGroupProps                          |
-| IContextualMenuProps.hidden                   | MenuTrigger, MenuPopover                |
-| Button menuProps={'...'}                      | MenuButton                              |
+### v8
 
-## IContextualMenuProps -> MenuProps
+```tsx
+import { DefaultButton } from '@fluentui/react';
 
-| v8 IContextualMenuProps | v9 MenuProps (replacements) |
-| ----------------------- | --------------------------- |
-| alignTargetEdge         |                             |
-| ariaLabel               |                             |
-| beakWidth               |                             |
-| bounds                  |                             |
-| className               |                             |
-| componentRef            |                             |
-| contextualMenuItemAs    |                             |
-| coverTarget             |                             |
-| delayUpdateFocusOnHover |                             |
-| directionalHint         | positioning                 |
-| directionalHintFixed    |                             |
-| directionalHintForRTL   |                             |
-| focusZoneAs             |                             |
-| focusZoneProps          |                             |
-| gapSpace                |                             |
-| getMenuClassNames       |                             |
-| hidden                  |                             |
-| id                      |                             |
-| labelElementId          |                             |
-| isBeakVisible           |                             |
-| isSubMenu               |                             |
-| items                   |                             |
-| onDismiss               |                             |
-| onItemClick             |                             |
-| onRenderMenuList        |                             |
-| onRenderSubMenu         |                             |
-| onRestoreFocus          |                             |
-| doNotLayer              |                             |
-| onMenuOpened            |                             |
-| onMenuDismissed         |                             |
-| calloutProps            |                             |
-| shouldFocusOnMount      |                             |
-| shouldFocusOnContainer  |                             |
-| shouldUpdateWhenHidden  |                             |
-| styles                  |                             |
-| subMenuHoverDelay       |                             |
-| target                  |                             |
-| theme                   |                             |
-| title                   |                             |
-| useTargetAsMinWidth     |                             |
-| useTargetWidth          |                             |
+type FileMenuProps = {
+  fileId: string;
+  onOpen: (fileId: string) => void;
+  onSave: (fileId: string) => void;
+};
 
-## IContextualMenuItem -> MenuItemProps
+const FileMenu = ({ fileId, onOpen, onSave }: FileMenuProps) => (
+  <DefaultButton
+    text="File"
+    menuProps={{
+      items: [
+        { key: 'open', text: 'Open', onClick: () => onOpen(fileId) },
+        { key: 'save', text: 'Save', onClick: () => onSave(fileId) },
+      ],
+    }}
+  />
+);
+```
+
+### v9
+
+`MenuButton` is only a trigger visual; it does not render a menu. Replace
+`menuProps` with the full composition:
+
+```tsx
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+
+type FileMenuProps = {
+  fileId: string;
+  onOpen: (fileId: string) => void;
+  onSave: (fileId: string) => void;
+};
+
+const FileMenu = ({ fileId, onOpen, onSave }: FileMenuProps) => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <MenuButton>File</MenuButton>
+    </MenuTrigger>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem onClick={() => onOpen(fileId)}>Open</MenuItem>
+        <MenuItem onClick={() => onSave(fileId)}>Save</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+The v8 item object is not passed to a v9 `MenuItem` callback. `onClick` receives
+the React mouse event, so close over a stable item ID or model as shown above.
+At the root, `onOpenChange(event, data)` provides `data.open` and a discriminated
+`data.type` such as `"menuTriggerClick"`, `"menuItemClick"`, or
+`"clickOutside"`.
+
+### Open and checked state
+
+Use `defaultOpen` for uncontrolled initial state, or pair controlled `open`
+with `onOpenChange`:
+
+```tsx
+const [open, setOpen] = React.useState(false);
+
+<Menu open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+  <MenuTrigger disableButtonEnhancement>
+    <MenuButton>Options</MenuButton>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem>Refresh</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>;
+```
+
+Checkbox and radio state also belongs to the root. Give every selectable item
+a `name` and `value`; store the checked values by name:
+
+```tsx
+import * as React from 'react';
+import {
+  Menu,
+  MenuButton,
+  MenuItemCheckbox,
+  MenuItemRadio,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
+import type { MenuProps } from '@fluentui/react-components';
+
+const ViewMenu = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
+    display: ['grid'],
+    columns: ['owner'],
+  });
+  const onCheckedValueChange: MenuProps['onCheckedValueChange'] = (_, { name, checkedItems }) => {
+    setCheckedValues(current => ({ ...current, [name]: checkedItems }));
+  };
+
+  return (
+    <Menu checkedValues={checkedValues} onCheckedValueChange={onCheckedValueChange}>
+      <MenuTrigger disableButtonEnhancement>
+        <MenuButton>View</MenuButton>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItemRadio name="display" value="grid">
+            Grid
+          </MenuItemRadio>
+          <MenuItemRadio name="display" value="list">
+            List
+          </MenuItemRadio>
+          <MenuItemCheckbox name="columns" value="owner">
+            Owner column
+          </MenuItemCheckbox>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```
+
+`defaultCheckedValues` is the uncontrolled alternative.
+`onCheckedValueChange` receives `{ name, checkedItems }`, not the original v8
+item. Normal items close the menu by default. Use `persistOnClick` on one item,
+or `persistOnItemClick` on `Menu`, only when the interaction must keep the menu
+open (selectable checkbox/radio items already use persistent selection
+behavior).
+
+For a v8 `target` that cannot be wrapped by `MenuTrigger`, follow the
+[Callout external-target guidance](/docs/concepts-migration-from-v8-components-callout-migration--docs#external-target)
+for imperative positioning and focus restoration rather than duplicating a
+triggerless target pattern.
+
+## Prop Mapping
+
+### Types to component props
+
+| v8 menu type                                  | v9 props                                                 |
+| --------------------------------------------- | -------------------------------------------------------- |
+| IContextualMenuProps                          | MenuProps, MenuListProps (for submenus)                  |
+| IContextualMenuItemProps, IContextualMenuItem | MenuItemProps                                            |
+| IContextualMenuItem itemType=Normal           | MenuItemProps                                            |
+| IContextualMenuItem itemType=Divider          | MenuDividerProps                                         |
+| IContextualMenuItem itemType=Header           | MenuGroupHeaderProps                                     |
+| IContextualMenuItem itemType=Section          | MenuGroupProps                                           |
+| IContextualMenuProps.hidden                   | MenuTrigger, MenuPopover                                 |
+| Button menuProps={'...'}                      | Menu + MenuTrigger + MenuButton + MenuPopover + MenuList |
+
+### IContextualMenuProps -> MenuProps
+
+| v8 IContextualMenuProps | v9 MenuProps (replacements)                                           |
+| ----------------------- | --------------------------------------------------------------------- |
+| alignTargetEdge         |                                                                       |
+| ariaLabel               |                                                                       |
+| beakWidth               |                                                                       |
+| bounds                  |                                                                       |
+| className               |                                                                       |
+| componentRef            |                                                                       |
+| contextualMenuItemAs    |                                                                       |
+| coverTarget             |                                                                       |
+| delayUpdateFocusOnHover |                                                                       |
+| directionalHint         | positioning                                                           |
+| directionalHintFixed    |                                                                       |
+| directionalHintForRTL   |                                                                       |
+| focusZoneAs             |                                                                       |
+| focusZoneProps          |                                                                       |
+| gapSpace                |                                                                       |
+| getMenuClassNames       |                                                                       |
+| hidden                  | `open` / `defaultOpen`                                                |
+| id                      |                                                                       |
+| labelElementId          |                                                                       |
+| isBeakVisible           |                                                                       |
+| isSubMenu               |                                                                       |
+| items                   |                                                                       |
+| onDismiss               | `onOpenChange` when `data.open` is false                              |
+| onItemClick             | `onClick` on each `MenuItem`; close over the item model               |
+| onRenderMenuList        |                                                                       |
+| onRenderSubMenu         |                                                                       |
+| onRestoreFocus          |                                                                       |
+| doNotLayer              |                                                                       |
+| onMenuOpened            |                                                                       |
+| onMenuDismissed         |                                                                       |
+| calloutProps            |                                                                       |
+| shouldFocusOnMount      |                                                                       |
+| shouldFocusOnContainer  |                                                                       |
+| shouldUpdateWhenHidden  |                                                                       |
+| styles                  |                                                                       |
+| subMenuHoverDelay       |                                                                       |
+| target                  | `MenuTrigger`; for an external target see the Callout migration guide |
+| theme                   |                                                                       |
+| title                   |                                                                       |
+| useTargetAsMinWidth     |                                                                       |
+| useTargetWidth          |                                                                       |
+
+### IContextualMenuItem -> MenuItemProps
 
 | v8 IContextualMenuItem                  | v9 MenuItemProps+                                                  |
 | --------------------------------------- | ------------------------------------------------------------------ |
-| ariaDescribedBy                         | (removed)                                                          |
-| ariaDescription                         | (removed)                                                          |
+| ariaDescribedBy                         | HTML aria-describedby                                              |
+| ariaDescription                         | HTML aria-description                                              |
 | ariaLabel                               | HTML aria-label                                                    |
 | canCheck                                | (use MenuItemRadio, MenuItemCheckbox)                              |
 | checked                                 | (use MenuItemRadio, MenuItemCheckbox)                              |
@@ -120,7 +265,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 | title                                   | title                                                              |
 | \[propertyName: string\]                | (removed)                                                          |
 
-## IContextualMenuSection -> MenuGroupProps
+### IContextualMenuSection -> MenuGroupProps
 
 | v8 IContextualMenuSection | v9 MenuGroupProps, MenuGroupHeaderProps |
 | ------------------------- | --------------------------------------- |

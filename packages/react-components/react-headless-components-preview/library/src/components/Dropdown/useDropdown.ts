@@ -6,7 +6,7 @@ import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from './Listbox';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 import { useListboxPopupState } from './useListboxPopupState';
 
 /**
@@ -27,6 +27,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     triggerNativeProps,
     internalState,
     listbox,
+    shouldRenderListbox,
     rootSlot,
   } = useListboxPopupState<DropdownProps, HTMLButtonElement>(props, {
     primarySlotTagName: 'button',
@@ -52,16 +53,26 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
   });
 
   const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
+  const placeholderVisible = !baseState.value && !!mergedProps.placeholder;
   const state: DropdownState = {
-    components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
-    root: rootSlot,
-    button: {
-      ...trigger,
-      'data-state': open ? 'open' : 'closed',
-      'data-disabled': stringifyDataAttribute(trigger.disabled),
-      'data-placeholder': stringifyDataAttribute(!baseState.value),
+    components: {
+      root: 'div',
+      button: 'button',
+      clearButton: 'button',
+      expandIcon: 'span',
+      listbox: Listbox,
     },
-    listbox: open || hasFocus ? listbox : undefined,
+    root: {
+      ...rootSlot,
+      'data-open': toDataAttributeValue(open),
+      'data-disabled': toDataAttributeValue(trigger.disabled),
+      'data-placeholder': toDataAttributeValue(placeholderVisible),
+      'data-invalid': toDataAttributeValue(trigger['aria-invalid']),
+      'data-clearable': toDataAttributeValue(showClearButton),
+    },
+    button: trigger,
+    listbox: hasFocus || shouldRenderListbox ? listbox : undefined,
+    shouldRenderListbox,
     clearButton: slot.optional(mergedProps.clearButton, {
       defaultProps: {
         'aria-label': 'Clear selection',
@@ -77,7 +88,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
       renderByDefault: true,
       elementType: 'span',
     }),
-    placeholderVisible: !baseState.value && !!mergedProps.placeholder,
+    placeholderVisible,
     showClearButton,
     activeDescendantController,
     ...baseState,

@@ -4,10 +4,11 @@
 
 ```ts
 
-import type { FieldBaseProps } from '@fluentui/react-field';
 import type { FieldBaseState } from '@fluentui/react-field';
-import type { FieldContextValues as FieldContextValues_2 } from '@fluentui/react-field';
-import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import { FieldBaseProps as FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderField_unstable as renderField } from '@fluentui/react-field';
@@ -17,15 +18,18 @@ import { useFieldControlProps_unstable as useFieldControlProps } from '@fluentui
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
 
-// @public
-export type FieldProps = FieldBaseProps;
+export { FieldContextValue }
 
-// @public
-export type FieldSlots = FieldSlots_2;
+export { FieldContextValues }
+
+export { FieldProps }
+
+export { FieldSlots }
 
 // @public
 export type FieldState = FieldBaseState & {
     root: {
+        'data-required'?: string;
         'data-validate-state'?: FieldBaseState['validationState'];
     };
 };

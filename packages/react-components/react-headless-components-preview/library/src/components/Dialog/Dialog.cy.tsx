@@ -21,6 +21,7 @@ const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
 const dialogPrimaryButtonSelector = `#${dialogPrimaryButtonId}`;
+const tooltipSelector = `[role="tooltip"]`;
 
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
@@ -186,7 +187,10 @@ describe('Dialog', () => {
     cy.get('#open-popover-btn').should('have.focus');
 
     // Open Tooltip, wait for the tooltip to appear and then close it with Escape
-    cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
+    cy.get(dialogTriggerCloseSelector).focus();
+    cy.get(tooltipSelector).should('be.visible');
+    cy.focused().realType('{esc}');
+    cy.get(tooltipSelector).should('not.exist');
     cy.get(dialogSurfaceSelector).should('exist');
   });
 
@@ -511,6 +515,34 @@ describe('Dialog', () => {
       cy.get('[role="tooltip"]').should('be.visible');
       cy.get('[role="tooltip"]').should('contain.text', 'Open dialog to manage settings');
       cy.get('dialog').should('not.exist');
+    });
+  });
+
+  describe('native invokers', () => {
+    it('syncs a non-modal surface toggled by popovertarget into the open state', () => {
+      const types: string[] = [];
+      mount(
+        <>
+          <button id="invoker" popoverTarget="native-dialog">
+            Toggle
+          </button>
+          <Dialog
+            modalType="non-modal"
+            unmountOnClose={false}
+            onOpenChange={(_, data) => types.push(`${data.type}:${data.open}`)}
+          >
+            <DialogSurface id="native-dialog" aria-label="Native">
+              <button>Inside</button>
+            </DialogSurface>
+          </Dialog>
+        </>,
+      );
+
+      cy.get('#invoker').realClick();
+      cy.get('#native-dialog').should('match', ':popover-open').and('have.attr', 'data-open');
+      cy.get('#invoker').realClick();
+      cy.get('#native-dialog').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
+      cy.then(() => expect(types).to.deep.equal(['surfaceToggle:true', 'surfaceToggle:false']));
     });
   });
 });

@@ -1,0 +1,32 @@
+import * as React from 'react';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-headless-components-preview/menu';
+import { SplitButton } from '@fluentui/react-headless-components-preview/split-button';
+import type { MenuButtonProps } from '@fluentui/react-headless-components-preview/menu-button';
+import { ChevronDownRegular } from '@fluentui/react-icons';
+
+import styles from './split-button.module.css';
+
+const onPrimaryActionClick = () => alert('Primary action clicked.');
+
+export const Default = (): React.ReactNode => (
+  <Menu positioning="below-end">
+    <MenuTrigger disableButtonEnhancement>
+      {(triggerProps: MenuButtonProps) => (
+        <SplitButton
+          className={styles.wrapper}
+          primaryActionButton={{ className: styles.primaryButton, onClick: onPrimaryActionClick }}
+          menuButton={{ ...triggerProps, className: styles.menuButton }}
+          menuIcon={<ChevronDownRegular aria-hidden />}
+        >
+          Send
+        </SplitButton>
+      )}
+    </MenuTrigger>
+    <MenuPopover className={styles.surface}>
+      <MenuList className={styles.list}>
+        <MenuItem className={styles.item}>Send now</MenuItem>
+        <MenuItem className={styles.item}>Schedule send</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);

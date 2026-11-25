@@ -15,17 +15,23 @@ export type {
 export { MenuTrigger, useMenuTrigger, renderMenuTrigger } from './MenuTrigger';
 export type { MenuTriggerProps, MenuTriggerState, MenuTriggerChildProps } from '@fluentui/react-menu';
 
-export { MenuList, useMenuList, useMenuListContextValues, renderMenuList } from './MenuList';
-export type { MenuListProps, MenuListState, MenuListSlots } from './MenuList';
+export { MenuList, useMenuList, useMenuListContext, useMenuListContextValues, renderMenuList } from './MenuList';
+export type {
+  MenuListProps,
+  MenuListState,
+  MenuListSlots,
+  MenuListContextValue,
+  MenuListContextValues,
+} from './MenuList';
 
 export { MenuItem, useMenuItem, renderMenuItem } from './MenuItem';
 export type { MenuItemProps, MenuItemState, MenuItemSlots } from './MenuItem';
 
 export { MenuItemCheckbox, useMenuItemCheckbox, renderMenuItemCheckbox } from './MenuItemCheckbox';
-export type { MenuItemCheckboxProps, MenuItemCheckboxState } from '@fluentui/react-menu';
+export type { MenuItemCheckboxProps, MenuItemCheckboxSlots, MenuItemCheckboxState } from './MenuItemCheckbox';
 
 export { MenuItemRadio, useMenuItemRadio, renderMenuItemRadio } from './MenuItemRadio';
-export type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio';
+export type { MenuItemRadioProps, MenuItemRadioSlots, MenuItemRadioState } from './MenuItemRadio';
 
 export { MenuItemLink, useMenuItemLink, renderMenuItemLink } from './MenuItemLink';
 export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from '@fluentui/react-menu';
@@ -39,11 +45,18 @@ export type { MenuDividerProps, MenuDividerState, MenuDividerSlots } from '@flue
 export { MenuPopover, useMenuPopover, renderMenuPopover } from './MenuPopover';
 export type { MenuPopoverProps, MenuPopoverState, MenuPopoverSlots } from '@fluentui/react-menu';
 
-export { MenuGroup, useMenuGroup, useMenuGroupContextValues, renderMenuGroup } from './MenuGroup';
+export { MenuGroup, useMenuGroup, useMenuGroupContext, useMenuGroupContextValues, renderMenuGroup } from './MenuGroup';
+export type { MenuGroupContextValue } from './MenuGroup';
 export type { MenuGroupProps, MenuGroupSlots, MenuGroupState, MenuGroupContextValues } from '@fluentui/react-menu';
 
 export { MenuGroupHeader, useMenuGroupHeader, renderMenuGroupHeader } from './MenuGroupHeader';
 export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from '@fluentui/react-menu';
 
-export { MenuSplitGroup, useMenuSplitGroup, renderMenuSplitGroup } from './MenuSplitGroup';
+export {
+  MenuSplitGroup,
+  useMenuSplitGroup,
+  useMenuSplitGroupContextValues,
+  renderMenuSplitGroup,
+} from './MenuSplitGroup';
+export type { MenuSplitGroupContextValues } from './MenuSplitGroup';
 export type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from '@fluentui/react-menu';

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: Yarn 4 workspace command resolution",
-  "packageName": "@fluentui/web-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

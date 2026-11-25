@@ -1,15 +1,6 @@
-import type {
-  OptionSlots as OptionBaseSlots,
-  OptionProps as OptionBaseProps,
-  OptionState as OptionBaseState,
-} from '@fluentui/react-combobox';
+import type { OptionState as OptionBaseState } from '@fluentui/react-combobox';
 
-export type OptionSlots = OptionBaseSlots;
-
-/**
- * Option Props
- */
-export type OptionProps = OptionBaseProps;
+export type { OptionSlots, OptionProps } from '@fluentui/react-combobox';
 
 /**
  * State used in rendering Option
@@ -24,5 +15,9 @@ export type OptionState = OptionBaseState & {
      * Whether the option is currently selected.
      */
     'data-selected'?: string;
+    /**
+     * Whether the option belongs to a multiselect listbox.
+     */
+    'data-multiselect'?: string;
   };
 };

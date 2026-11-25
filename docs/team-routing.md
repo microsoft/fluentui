@@ -5,13 +5,23 @@
 The source of truth for code ownership is [`.github/CODEOWNERS`](../.github/CODEOWNERS).
 The table below is a summary — when in doubt, check CODEOWNERS.
 
-| Area           | Team                            | Packages                             |
-| -------------- | ------------------------------- | ------------------------------------ |
-| v9 Components  | @microsoft/cxe-prg              | `packages/react-components/*`        |
-| v8 Components  | @microsoft/cxe-red              | `packages/react/*`                   |
-| Web Components | @microsoft/fui-wc               | `packages/web-components/*`          |
-| Charting       | @microsoft/charting-team        | `packages/charts/*`                  |
-| Build/Tooling  | @microsoft/fluentui-react-build | `tools/*`, `.github/*`, root configs |
+| Area           | Team                                               | Packages                                               |
+| -------------- | -------------------------------------------------- | ------------------------------------------------------ |
+| v9 Components  | @microsoft/cxe-prg                                 | `packages/react-components/*`                          |
+| v8 Components  | @microsoft/cxe-prg                                 | `packages/react/*`                                     |
+| v8 Website     | @microsoft/fluentui-v8-website, @microsoft/cxe-prg | `apps/public-docsite`, `apps/public-docsite-resources` |
+| Web Components | @microsoft/fui-wc                                  | `packages/web-components/*`                            |
+| Charting       | @microsoft/charting-team                           | `packages/charts/*`                                    |
+| Build/Tooling  | @microsoft/fluentui-react-build                    | `tools/*`, `.github/*`, root configs                   |
+
+### V8 website reviews
+
+Changes to the v8 website can be reviewed by either owning team; a review specifically from
+`@microsoft/fluentui-v8-website` is not required.
+
+All v8 website accessibility fixes must include Playwright regression coverage against the built website.
+Add or extend a test that reproduces the reported issue and verifies the fix; keep relevant unit tests alongside it.
+Run `yarn nx run public-docsite:e2e` to execute the browser tests.
 
 ## Label Taxonomy
 

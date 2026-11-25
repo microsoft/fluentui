@@ -5,6 +5,9 @@ import { useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import type { PositioningProps } from './types';
 import { POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y } from './constants';
 
+const registeredProperties = new WeakMap<Document, Set<string>>();
+const slideDirectionProperties = [POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y];
+
 /**
  * Returns the slide direction unit vectors for a given Floating UI placement.
  * Values are -1, 0, or 1, representing the direction the element slides in from.
@@ -66,31 +69,28 @@ export function usePositioningSlideDirection(
     element.style.setProperty(POSITIONING_SLIDE_DIRECTION_VAR_Y, `${y}px`);
   });
 
-  // Register the CSS custom properties so they can be interpolated during animations.
-  // CSS.registerProperty is idempotent — the try/catch handles the case where
-  // properties are already registered.
   React.useEffect(() => {
-    const registerProperty =
-      targetDocument?.defaultView?.CSS?.registerProperty ??
-      (() => {
-        // No-op if registerProperty is not supported
-      });
-
-    try {
-      registerProperty({
-        name: POSITIONING_SLIDE_DIRECTION_VAR_X,
-        syntax: '<length>',
-        inherits: false,
-        initialValue: '0px',
-      });
-      registerProperty({
-        name: POSITIONING_SLIDE_DIRECTION_VAR_Y,
-        syntax: '<length>',
-        inherits: false,
-        initialValue: '0px',
-      });
-    } catch (e) {
-      // Ignore errors from registerProperty, which can occur if the properties are already registered
+    const css = targetDocument?.defaultView?.CSS;
+    if (!targetDocument || !css?.registerProperty) {
+      return;
+    }
+    let properties = registeredProperties.get(targetDocument);
+    if (!properties) {
+      properties = new Set<string>();
+      registeredProperties.set(targetDocument, properties);
+    }
+    for (const name of slideDirectionProperties) {
+      if (properties.has(name)) {
+        continue;
+      }
+      try {
+        css.registerProperty({ name, syntax: '<length>', inherits: false, initialValue: '0px' });
+        properties.add(name);
+      } catch (error) {
+        if (error && typeof error === 'object' && 'name' in error && error.name === 'InvalidModificationError') {
+          properties.add(name);
+        }
+      }
     }
   }, [targetDocument]);
 

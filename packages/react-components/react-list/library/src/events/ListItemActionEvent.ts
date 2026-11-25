@@ -1,9 +1,13 @@
 import type * as React from 'react';
+import type { ListItemActionEventData } from '../components/ListItem/ListItem.types';
 
-export const ListItemActionEventName = 'ListItemAction';
+export const ListItemActionEventName = 'ListItemAction' satisfies ListItemActionEventData['type'];
 
 export interface ListItemActionEventDetail {
-  originalEvent: React.MouseEvent | React.KeyboardEvent;
+  originalEvent: Extract<
+    ListItemActionEventData,
+    { type: typeof ListItemActionEventName }
+  >['event']['detail']['originalEvent'];
 }
 
 export type ListItemActionEvent = CustomEvent<ListItemActionEventDetail>;

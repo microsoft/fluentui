@@ -7,25 +7,24 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderSelect_unstable as renderSelect } from '@fluentui/react-select';
-import type { SelectBaseProps } from '@fluentui/react-select';
 import type { SelectBaseState } from '@fluentui/react-select';
-import type { SelectSlots as SelectSlots_2 } from '@fluentui/react-select';
+import { SelectBaseProps as SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
 
 export { renderSelect }
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
 
-// @public
-export type SelectProps = SelectBaseProps;
+export { SelectProps }
 
-// @public (undocumented)
-export type SelectSlots = SelectSlots_2;
+export { SelectSlots }
 
 // @public
 export type SelectState = SelectBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-invalid'?: string;
     };
 };
 

@@ -1,7 +1,12 @@
 export { TableHeaderCell } from './TableHeaderCell';
-export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
+export type {
+  TableHeaderCellBaseState,
+  TableHeaderCellProps,
+  TableHeaderCellSlots,
+  TableHeaderCellState,
+} from './TableHeaderCell.types';
 export { renderTableHeaderCell_unstable } from './renderTableHeaderCell';
-export { useTableHeaderCell_unstable } from './useTableHeaderCell';
+export { useTableHeaderCell_unstable, useTableHeaderCellBase_unstable } from './useTableHeaderCell';
 export {
   tableHeaderCellClassName,
   tableHeaderCellClassNames,

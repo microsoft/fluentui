@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.2",
+  "version": "3.2.4",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
   },
   "engines": {
-    "node": "^22.0.0 || ^24.0.0"
+    "node": "^22.0.0 || ^24.0.0 || ^26.0.0"
   },
   "license": "MIT",
   "repository": {
@@ -111,7 +111,7 @@
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {
-    "@fluentui/tokens": "^1.0.0-alpha.23",
+    "@fluentui/tokens": "^1.0.0-alpha.25",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,11 +1,11 @@
 /* eslint-disable dot-notation */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { execSync } from 'node:child_process';
 
 import * as ejs from 'ejs';
 
-import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
+import type { Args, ReactVersion, PackageJson as BasePackageJson, TsConfig } from './shared';
 import {
   runCmd,
   readCommandsFromPreparedProject,
@@ -15,6 +15,10 @@ import {
   serializeJson,
 } from './shared';
 import { type Logger } from './logger';
+
+type PackageJson = BasePackageJson & {
+  dependenciesMeta?: Record<string, { built?: boolean }>;
+};
 
 function findGitRoot(cwd: string) {
   const output = execSync('git rev-parse --show-toplevel', { cwd });
@@ -167,11 +171,20 @@ function upsertReactRootPackageJson(params: {
   const prevDeps = existingPkg?.dependencies ?? basePkg.dependencies ?? {};
   const mergedDeps = { ...prevDeps, ...dependencies };
   const depsChanged = JSON.stringify(prevDeps) !== JSON.stringify(mergedDeps) || !existsSync(reactRootPkgPath);
+  const dependenciesMeta = {
+    ...existingPkg?.dependenciesMeta,
+    cypress: {
+      ...existingPkg?.dependenciesMeta?.['cypress'],
+      built: true,
+    },
+  };
+  const dependenciesMetaChanged = JSON.stringify(existingPkg?.dependenciesMeta) !== JSON.stringify(dependenciesMeta);
 
-  if (depsChanged) {
+  if (depsChanged || dependenciesMetaChanged) {
     const nextPkg: PackageJson = {
       ...(existingPkg ?? basePkg),
       dependencies: mergedDeps,
+      dependenciesMeta,
     };
     writeJsonFile(reactRootPkgPath, nextPkg);
     logger?.verbose?.(
@@ -454,6 +467,7 @@ export async function setup(
       },
       cypress: {
         pathToProjectConfig: templatePrepared.configs['e2e'],
+        pathSeparator: sep,
       },
     },
   };
@@ -484,6 +498,11 @@ export async function setup(
       join(__dirname, 'files', 'jest.mock-snapshots.js.template'),
       metadata.tmpl,
       join(projectPath, 'jest.mock-snapshots.js'),
+    );
+    renderTemplateToFile(
+      join(__dirname, 'files', 'jest.snapshot-resolver.js.template'),
+      metadata.tmpl,
+      join(projectPath, 'jest.snapshot-resolver.js'),
     );
     renderTemplateToFile(join(__dirname, 'files', '.swcrc.template'), metadata.tmpl, join(projectPath, '.swcrc'));
   }

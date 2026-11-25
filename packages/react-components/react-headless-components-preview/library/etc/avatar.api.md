@@ -4,29 +4,40 @@
 
 ```ts
 
-import type { AvatarBaseProps } from '@fluentui/react-avatar';
 import type { AvatarBaseState } from '@fluentui/react-avatar';
-import type { AvatarSlots as AvatarSlots_2 } from '@fluentui/react-avatar';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { AvatarContextValue } from '@fluentui/react-avatar';
+import { AvatarBaseProps as AvatarProps } from '@fluentui/react-avatar';
+import { AvatarBaseSlots as AvatarSlots } from '@fluentui/react-avatar';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderAvatar_unstable as renderAvatar } from '@fluentui/react-avatar';
+import { useAvatarContext } from '@fluentui/react-avatar';
 
 // @public
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public
-export type AvatarProps = AvatarBaseProps;
+export { AvatarContextProvider }
 
-// @public
-export type AvatarSlots = AvatarSlots_2;
+export { AvatarContextValue }
 
-// @public
-export type AvatarState = AvatarBaseState;
+export { AvatarProps }
+
+export { AvatarSlots }
+
+// @public (undocumented)
+export type AvatarState = AvatarBaseState & {
+    root: {
+        'data-active'?: string;
+    };
+};
 
 export { renderAvatar }
 
 // @public
 export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+export { useAvatarContext }
 
 // (No @packageDocumentation comment for this package)
 

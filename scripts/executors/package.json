@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-prettier": "*",
     "@fluentui/scripts-utils": "*"
   }
 }

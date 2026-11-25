@@ -173,7 +173,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(1);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release compat package' --type patch --package @proj/react-one-compat"`,
+          `"yarn change --message \\"feat: release compat package\\" --type patch --package @proj/react-one-compat"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -273,7 +273,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(1);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release preview package' --type minor --package @proj/react-one-preview"`,
+          `"yarn change --message \\"feat: release preview package\\" --type minor --package @proj/react-one-preview"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -548,7 +548,7 @@ describe('prepare-initial-release generator', () => {
         expect(execCalls.length).toEqual(3);
 
         expect(execCalls[0].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: release stable' --type minor --package @proj/react-one"`,
+          `"yarn change --message \\"feat: release stable\\" --type minor --package @proj/react-one"`,
         );
         expect(execCalls[0].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
@@ -561,7 +561,7 @@ describe('prepare-initial-release generator', () => {
         );
 
         expect(execCalls[1].cmd).toMatchInlineSnapshot(
-          `"yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components"`,
+          `"yarn change --message \\"feat: add @proj/react-one to suite\\" --type minor --package @proj/react-components"`,
         );
         expect(execCalls[1].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },

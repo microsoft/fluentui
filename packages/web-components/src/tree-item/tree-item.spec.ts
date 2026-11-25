@@ -7,6 +7,35 @@ test.describe('Tree Item', () => {
     tagName,
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '0');
+    await expect(fastPage.element).not.toHaveAttribute('focusgroupstart');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { tabindex: '-1' } });
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '-1');
+  });
+
+  test('should update focusgroupstart when selected changes', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await element.evaluate((node: BaseTreeItem) => {
+      node.selected = true;
+    });
+    await expect(element).toHaveAttribute('focusgroupstart', '');
+
+    await element.evaluate((node: BaseTreeItem) => {
+      node.selected = false;
+    });
+    await expect(element).not.toHaveAttribute('focusgroupstart');
+  });
+
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
 
@@ -82,6 +111,7 @@ test.describe('Tree Item', () => {
     });
 
     expect(await element.getAttribute('selected')).toBeNull();
+    await expect(element).not.toHaveAttribute('focusgroupstart');
   });
 
   test('should have selected attribute', async ({ fastPage }) => {
@@ -91,6 +121,7 @@ test.describe('Tree Item', () => {
       innerHTML: `Item 1`,
     });
     expect(await element.getAttribute('selected')).not.toBeNull();
+    await expect(element).toHaveAttribute('focusgroupstart');
   });
 
   test('should expand parent items when child item is set to selected', async ({ fastPage }) => {

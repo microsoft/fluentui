@@ -12,12 +12,23 @@ const useStyles = makeStyles({
   },
   badge: {
     display: 'flex',
+    alignItems: 'center',
     gap: tokens.spacingHorizontalS,
   },
   brand: {
     display: 'flex',
+    alignItems: 'center',
+    gap: tokens.spacingHorizontalS,
     backgroundColor: tokens.colorBrandBackground,
-    padding: tokens.spacingHorizontalXXS,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  brandLabel: {
+    color: tokens.colorNeutralForegroundOnBrand,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    fontWeight: tokens.fontWeightSemibold,
   },
 });
 
@@ -36,20 +47,29 @@ const Badges = (props: BadgeProps) => {
     'warning',
   ];
 
+  const isSubtleOnBrandOnly = appearance === 'ghost' || appearance === 'outline';
+
   return (
     <div className={styles.badge}>
       {colors.map(color => {
-        const BadgeWrapper =
-          color === 'subtle' && (appearance === 'ghost' || appearance === 'outline')
-            ? ({ children }: { children: React.ReactNode }) => <div className={styles.brand}>{children}</div>
-            : React.Fragment;
+        // `ghost-subtle` and `outline-subtle` are only meant to be used on a branded background,
+        // so they are rendered within an explicit "brand surface" demo container instead of the
+        // ambient story background.
+        if (color === 'subtle' && isSubtleOnBrandOnly) {
+          return (
+            <div key={`${appearance}-${color}`} className={styles.brand}>
+              <span className={styles.brandLabel}>On brand background:</span>
+              <Badge appearance={appearance} color={color} icon={<PasteIcon />}>
+                999+
+              </Badge>
+            </div>
+          );
+        }
 
         return (
-          <BadgeWrapper key={`${appearance}-${color}`}>
-            <Badge appearance={appearance} color={color} icon={<PasteIcon />}>
-              999+
-            </Badge>
-          </BadgeWrapper>
+          <Badge key={`${appearance}-${color}`} appearance={appearance} color={color} icon={<PasteIcon />}>
+            999+
+          </Badge>
         );
       })}
     </div>
@@ -76,7 +96,9 @@ export const ColorAndAppearance = (): JSXElement => {
 ColorAndAppearance.parameters = {
   docs: {
     description: {
-      story: 'Note: `ghost-subtle` and `outline-subtle` are intended only for use on brand background.',
+      story:
+        '`ghost-subtle` and `outline-subtle` are intended only for use on a branded background — ' +
+        'the boxed "On brand background:" examples above demonstrate the intended usage context.',
     },
   },
 };

@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { DialogActionsProps, DialogActionsState } from './DialogActions.types';
 
 /**
@@ -11,6 +11,6 @@ import type { DialogActionsProps, DialogActionsState } from './DialogActions.typ
 export const useDialogActions = (props: DialogActionsProps, ref: React.Ref<HTMLDivElement>): DialogActionsState => {
   return {
     components: { root: 'div' },
-    root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
+    root: slot.always({ ref, ...props }, { elementType: 'div' }),
   };
 };

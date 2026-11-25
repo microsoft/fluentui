@@ -3,15 +3,11 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import { useDialogLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
+import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
-
-const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
-  !!el && typeof (el as HTMLDialogElement).showModal === 'function';
+// Browser closes pass their native event.
+type OpenChangeEvent = OpenPopoverEvents | Event | React.SyntheticEvent;
 
 /**
  * Returns the state for a Popover component.
@@ -22,7 +18,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnContext = false,
     mouseLeaveDelay = 500,
     withArrow = false,
-    trapFocus = false,
+    inertTrapFocus = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -33,13 +29,13 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
-  const onOpenChange = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const onOpenChange = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
   });
 
   const [setOpenTimeout, clearOpenTimeout] = useTimeout();
 
-  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const setOpen = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     clearOpenTimeout();
 
     if (shouldOpen && e.type === 'contextmenu') {
@@ -78,61 +74,24 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEvent;
-    const nextOpen = toggle.newState === 'open';
+  // Turning `inertTrapFocus` off while open applies on the next open, so the surface keeps its modal semantics until then.
+  const [modalWhileOpen, setModalWhileOpen] = React.useState(open && inertTrapFocus);
+  if (open && inertTrapFocus && !modalWhileOpen) {
+    setModalWhileOpen(true);
+  } else if (!open && modalWhileOpen) {
+    setModalWhileOpen(false);
+  }
+  const modal = inertTrapFocus || modalWhileOpen;
 
-    if (nextOpen === open) {
-      return;
-    }
+  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
 
-    setOpenState(nextOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
+  useDialogLayerOpenState(contentRef, {
+    open,
+    mode: modal ? 'modal' : 'auto',
+    onOpenChange: (nextOpen, { event }) => setOpen(event, nextOpen),
+    // Back to the trigger when focus was inside as the surface started closing.
+    returnFocus: { target: triggerRef },
   });
-
-  const onSurfaceClose = useEventCallback((event: Event) => {
-    setOpenState(false);
-    props.onOpenChange?.(event, { event, type: event.type, open: false });
-  });
-
-  React.useEffect(() => {
-    const surface = contentRef.current;
-
-    if (!surface) {
-      return;
-    }
-
-    if (!open) {
-      if (isDialogElement(surface) && surface.open) {
-        surface.close();
-      }
-      return;
-    }
-
-    if (trapFocus) {
-      if (!isDialogElement(surface)) {
-        return;
-      }
-
-      if (!surface.open) {
-        surface.showModal();
-      }
-
-      surface.addEventListener('close', onSurfaceClose);
-      return () => surface.removeEventListener('close', onSurfaceClose);
-    }
-
-    if (typeof surface.showPopover !== 'function') {
-      return;
-    }
-
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
-    surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -170,16 +129,18 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    // The effective value: stays true while a modal opening lasts.
+    inertTrapFocus: modal,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
     positioning,
     surfaceId,
+    shouldRenderSurface,
   };
 };
 
-export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+export const usePopoverContextValues = (state: PopoverState): PopoverContextValues => {
   const {
     open,
     setOpen,
@@ -190,7 +151,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    inertTrapFocus,
     positioning,
     surfaceId,
   } = state;
@@ -206,7 +167,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnHover,
       openOnContext,
       withArrow,
-      trapFocus,
+      inertTrapFocus,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
