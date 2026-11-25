@@ -347,12 +347,26 @@ describe('Carousel', () => {
       win,
       'IntersectionObserver',
       jest.fn(callback => {
-        notify = callback;
-        return { observe: jest.fn(), disconnect };
+        let observesCarousel = false;
+        return {
+          observe: jest.fn((element: Element) => {
+            if (element.getAttribute('role') === 'region' && element.getAttribute('aria-label') === 'Notes') {
+              observesCarousel = true;
+              notify = callback;
+            }
+          }),
+          disconnect: () => {
+            if (observesCarousel) {
+              disconnect();
+            }
+          },
+        };
       }),
     );
     replaceProperty(doc, 'hidden', false);
     const { unmount } = render(example({ autoplay: true, circular: true, autoplayInterval: 1000 }));
+    const unrelatedObserver = new win.IntersectionObserver(() => undefined);
+    unrelatedObserver.observe(doc.body);
     fireEvent.click(screen.getByRole('button', { name: 'Play' }));
     act(() => jest.advanceTimersByTime(3000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
