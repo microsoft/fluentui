@@ -13,19 +13,20 @@ import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
 import type { CarouselIndexChangeData } from '../CarouselContext.types';
 import type { EventHandler, JSXElement } from '@fluentui/react-utilities';
+import { carouselButtonClassNames } from '../CarouselButton/useCarouselButtonStyles.styles';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const CarouselTest: React.FC<CarouselProps> = props => {
+const CarouselTest = ({ cardCount = 3, ...props }: CarouselProps & { cardCount?: number }) => {
   return (
     <Carousel {...props}>
       <CarouselViewport>
         <CarouselSlider cardFocus>
-          <CarouselCard>Card 1</CarouselCard>
-          <CarouselCard>Card 2</CarouselCard>
-          <CarouselCard>Card 3</CarouselCard>
+          {Array.from({ length: cardCount }, (_, index) => (
+            <CarouselCard key={index}>Card {index + 1}</CarouselCard>
+          ))}
         </CarouselSlider>
       </CarouselViewport>
       <CarouselNavContainer>
@@ -37,6 +38,32 @@ const CarouselTest: React.FC<CarouselProps> = props => {
 CarouselTest.displayName = 'CarouselTest';
 
 describe('CarouselControlledIndexTest', () => {
+  it('transfers keyboard focus between newly enabled buttons in a two-card carousel', () => {
+    mount(<CarouselTest cardCount={2} groupSize={1} circular={false} />);
+
+    const buttons = () => cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`);
+    buttons().first().should('be.disabled');
+    buttons().last().focus().realPress('Enter');
+    buttons().first().should('not.be.disabled').and('be.focused');
+    buttons().last().should('be.disabled');
+
+    cy.realPress('Enter');
+    buttons().last().should('not.be.disabled').and('be.focused');
+    buttons().first().should('be.disabled');
+  });
+
+  it('preserves focus until the endpoint in a three-card carousel', () => {
+    mount(<CarouselTest groupSize={1} circular={false} />);
+
+    const buttons = () => cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`);
+    buttons().last().focus().realPress('Enter');
+    buttons().first().should('not.be.disabled');
+    buttons().last().should('be.focused').and('not.be.disabled');
+    cy.realPress('Enter');
+    buttons().first().should('be.focused');
+    buttons().last().should('be.disabled');
+  });
+
   it('Should render to initial value', () => {
     const defaultActiveIndex = 1;
     mount(<CarouselTest defaultActiveIndex={defaultActiveIndex} />);

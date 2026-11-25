@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(Carousel): preserve navigation focus when reaching a two-card endpoint",
+  "packageName": "@fluentui/react-carousel",
+  "email": "paulmardling@microsoft.com"
+}

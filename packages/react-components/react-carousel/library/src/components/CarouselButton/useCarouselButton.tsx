@@ -9,6 +9,7 @@ import {
   slot,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  useAnimationFrame,
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -36,7 +37,8 @@ export const useCarouselButton_unstable = (
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
 
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
+  const [scheduleFocus, cancelFocus] = useAnimationFrame();
   const buttonRef = React.useRef<HTMLButtonElement>(undefined);
   const circular = useCarouselContext(ctx => ctx.circular);
   const [canLoop, setCanLoop] = React.useState(circular);
@@ -58,10 +60,13 @@ export const useCarouselButton_unstable = (
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+    cancelFocus();
     if (event.isDefaultPrevented()) {
       return;
     }
 
+    const source = buttonRef.current;
+    const wasFocused = source !== undefined && targetDocument?.activeElement === source;
     const nextIndex = selectPageByDirection(event, navType);
 
     let _trailing = false;
@@ -71,15 +76,23 @@ export const useCarouselButton_unstable = (
       _trailing = nextIndex === totalSlides - 1;
     }
 
-    if (!circular && _trailing && containerRef?.current) {
-      // Focus non-disabled element
-      const buttonRefs: NodeListOf<HTMLButtonElement> = containerRef.current.querySelectorAll(
-        `.${carouselButtonClassNames.root}`,
-      );
-      buttonRefs.forEach(_buttonRef => {
-        if (_buttonRef !== buttonRef.current) {
-          _buttonRef.focus();
+    if (!circular && _trailing && source && wasFocused) {
+      // Wait for both navigation buttons' disabled states to reach the DOM.
+      scheduleFocus(() => {
+        if (
+          !source.isConnected ||
+          !containerRef?.current?.contains(source) ||
+          !source.matches(':disabled, [aria-disabled="true"]') ||
+          (targetDocument?.activeElement !== source && targetDocument?.activeElement !== targetDocument?.body)
+        ) {
+          return;
         }
+
+        const buttons = containerRef.current.querySelectorAll<HTMLElement>(`.${carouselButtonClassNames.root}`);
+        const target = Array.from(buttons).find(
+          button => button !== source && !button.matches(':disabled, [aria-disabled="true"]'),
+        );
+        target?.focus();
       });
     }
 
