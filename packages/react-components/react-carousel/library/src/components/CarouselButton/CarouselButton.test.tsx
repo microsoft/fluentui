@@ -18,6 +18,7 @@ const Navigation = ({
   previousDisabled,
   onPreviousFocus,
   extraPrevious = false,
+  onNextBlur,
   onClick,
 }: {
   initialIndex?: number;
@@ -26,6 +27,7 @@ const Navigation = ({
   previousDisabled?: boolean;
   onPreviousFocus?: React.FocusEventHandler<HTMLButtonElement>;
   extraPrevious?: boolean;
+  onNextBlur?: React.FocusEventHandler<HTMLButtonElement>;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(initialIndex);
@@ -56,7 +58,7 @@ const Navigation = ({
         >
           Previous
         </CarouselButton>
-        <CarouselButton navType="next" onClick={onClick}>
+        <CarouselButton navType="next" onClick={onClick} onBlur={onNextBlur}>
           Next
         </CarouselButton>
         {extraPrevious && <CarouselButton navType="prev">Another previous</CarouselButton>}
@@ -123,9 +125,10 @@ describe('CarouselButton', () => {
 
     it('does not steal focus moved by a consumer during activation', () => {
       const outsideRef = React.createRef<HTMLButtonElement>();
+      const onNextBlur = jest.fn();
       const { getByRole } = render(
         <>
-          <Navigation onClick={() => outsideRef.current?.focus()} />
+          <Navigation onClick={() => outsideRef.current?.focus()} onNextBlur={onNextBlur} />
           <button ref={outsideRef}>Consumer target</button>
         </>,
       );
@@ -134,6 +137,7 @@ describe('CarouselButton', () => {
       fireEvent.click(next);
       act(() => jest.runAllTimers());
       expect(outsideRef.current).toHaveFocus();
+      expect(onNextBlur).toHaveBeenCalledTimes(1);
     });
 
     it('does not override a consumer redirect when the opposite button receives focus', () => {

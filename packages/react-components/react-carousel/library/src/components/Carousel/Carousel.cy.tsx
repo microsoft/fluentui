@@ -17,6 +17,8 @@ import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
 import type { CarouselIndexChangeData } from '../CarouselContext.types';
 import type { EventHandler, JSXElement } from '@fluentui/react-utilities';
 import { carouselButtonClassNames } from '../CarouselButton/useCarouselButtonStyles.styles';
+import { carouselClassNames } from './useCarouselStyles.styles';
+import { carouselNavContainerClassNames } from '../CarouselNavContainer/useCarouselNavContainerStyles.styles';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -25,8 +27,15 @@ const mount = (element: JSXElement) => {
 const CarouselTest = ({
   cardCount = 3,
   hiddenNavigation = false,
+  nestedCarousel = false,
+  onNextClick,
   ...props
-}: CarouselProps & { cardCount?: number; hiddenNavigation?: boolean }) => {
+}: CarouselProps & {
+  cardCount?: number;
+  hiddenNavigation?: boolean;
+  nestedCarousel?: boolean;
+  onNextClick?: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement>;
+}) => {
   return (
     <Carousel {...props}>
       <CarouselViewport>
@@ -36,8 +45,9 @@ const CarouselTest = ({
           ))}
         </CarouselSlider>
       </CarouselViewport>
+      {nestedCarousel && <CarouselTest cardCount={2} groupSize={1} circular={false} />}
       {hiddenNavigation && <CarouselNavContainer hidden style={{ display: 'none' }} />}
-      <CarouselNavContainer>
+      <CarouselNavContainer next={{ onClick: onNextClick }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
     </Carousel>
@@ -45,12 +55,17 @@ const CarouselTest = ({
 };
 CarouselTest.displayName = 'CarouselTest';
 
-const ShadowCarouselTest = (props: CarouselProps & { cardCount?: number }) => {
+const ShadowCarouselTest = ({
+  focusHostOn,
+  ...props
+}: CarouselProps & { cardCount?: number; focusHostOn?: 'click' | 'indexChange' }) => {
+  const hostRef = React.useRef<HTMLDivElement | null>(null);
   const [mountTarget, setMountTarget] = React.useState<{
     node: HTMLDivElement;
     renderer: ReturnType<typeof createShadowDOMRenderer>;
   } | null>(null);
   const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
+    hostRef.current = host;
     if (host) {
       const root = host.shadowRoot ?? host.attachShadow({ mode: 'open' });
       const node = root.querySelector('div') ?? root.appendChild(host.ownerDocument.createElement('div'));
@@ -59,12 +74,18 @@ const ShadowCarouselTest = (props: CarouselProps & { cardCount?: number }) => {
   }, []);
 
   return (
-    <div data-testid="shadow-carousel" ref={attachRoot}>
+    <div data-testid="shadow-carousel" tabIndex={-1} ref={attachRoot}>
       {mountTarget &&
         createPortal(
           <RendererProvider renderer={mountTarget.renderer}>
             <FluentProvider theme={teamsLightTheme}>
-              <CarouselTest {...props} />
+              <CarouselTest
+                {...props}
+                onNextClick={focusHostOn === 'click' ? () => hostRef.current?.focus() : undefined}
+                onActiveIndexChange={
+                  focusHostOn === 'indexChange' ? () => hostRef.current?.focus() : props.onActiveIndexChange
+                }
+              />
             </FluentProvider>
           </RendererProvider>,
           mountTarget.node,
@@ -74,6 +95,40 @@ const ShadowCarouselTest = (props: CarouselProps & { cardCount?: number }) => {
 };
 
 describe('CarouselControlledIndexTest', () => {
+  it('keeps endpoint focus within the outer carousel', () => {
+    mount(<CarouselTest cardCount={3} groupSize={1} circular={false} defaultActiveIndex={1} nestedCarousel />);
+
+    const navigation = () =>
+      cy.get(`.${carouselClassNames.root}`).first().children(`.${carouselNavContainerClassNames.root}`);
+    navigation().find(`.${carouselNavButtonClassNames.root}`).should('have.length', 3);
+    cy.get(`.${carouselClassNames.root}`).eq(1).find(`.${carouselNavButtonClassNames.root}`).should('have.length', 2);
+    navigation().find<HTMLElement>(`.${carouselButtonClassNames.root}`).last().focus().realPress('Enter');
+    navigation().find<HTMLElement>(`.${carouselButtonClassNames.root}`).first().should('be.focused');
+  });
+
+  for (const focusHostOn of ['click', 'indexChange'] as const) {
+    it(`preserves focus moved to the shadow host during ${focusHostOn}`, () => {
+      mount(<ShadowCarouselTest cardCount={2} groupSize={1} circular={false} focusHostOn={focusHostOn} />);
+
+      cy.get('[data-testid="shadow-carousel"]')
+        .shadow()
+        .find(`.${carouselNavButtonClassNames.root}`)
+        .should('have.length', 2);
+      cy.get('[data-testid="shadow-carousel"]')
+        .shadow()
+        .find<HTMLElement>(`.${carouselButtonClassNames.root}`)
+        .last()
+        .focus()
+        .realPress('Enter');
+      cy.window().then(win => new Cypress.Promise<void>(resolve => win.requestAnimationFrame(() => resolve())));
+      cy.get('[data-testid="shadow-carousel"]')
+        .should('be.focused')
+        .and($host => {
+          expect($host[0].shadowRoot?.activeElement).to.equal(null);
+        });
+    });
+  }
+
   it('skips hidden enabled controls when transferring focus', () => {
     mount(<CarouselTest cardCount={2} groupSize={1} circular={false} hiddenNavigation />);
 

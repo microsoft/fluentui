@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(Carousel): preserve endpoint navigation focus, including shadow roots and hidden alternative controls",
+  "comment": "fix(Carousel): preserve endpoint focus within its carousel without overriding consumer focus changes",
   "packageName": "@fluentui/react-carousel",
   "email": "paulmardling@microsoft.com"
 }

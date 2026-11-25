@@ -16,6 +16,7 @@ import * as React from 'react';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
 import type { CarouselUpdateData } from '../Carousel/Carousel.types';
+import { carouselClassNames } from '../Carousel/useCarouselStyles.styles';
 import { carouselButtonClassNames } from './useCarouselButtonStyles.styles';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -40,6 +41,7 @@ export const useCarouselButton_unstable = (
   const { dir, targetDocument } = useFluent();
   const [scheduleFocus, cancelFocus] = useAnimationFrame();
   const buttonRef = React.useRef<HTMLButtonElement>(undefined);
+  const focusMovedRef = React.useRef(false);
   const circular = useCarouselContext(ctx => ctx.circular);
   const [canLoop, setCanLoop] = React.useState(circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
@@ -59,8 +61,18 @@ export const useCarouselButton_unstable = (
     return ctx.activeIndex === totalSlides - 1;
   });
 
+  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+    // Disabling a focused button can blur it without a new focus target.
+    if (event.relatedTarget !== null) {
+      focusMovedRef.current = true;
+      cancelFocus();
+    }
+    props.onBlur?.(event);
+  });
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     cancelFocus();
+    focusMovedRef.current = false;
     if (event.isDefaultPrevented()) {
       return;
     }
@@ -81,7 +93,7 @@ export const useCarouselButton_unstable = (
       _trailing = nextIndex === totalSlides - 1;
     }
 
-    if (!circular && _trailing && source && wasFocused) {
+    if (!circular && _trailing && source && wasFocused && !focusMovedRef.current) {
       // Wait for both navigation buttons' disabled states to reach the DOM.
       scheduleFocus(() => {
         const activeElement = getActiveElement();
@@ -96,8 +108,13 @@ export const useCarouselButton_unstable = (
         }
 
         const buttons = containerRef.current.querySelectorAll<HTMLElement>(`.${carouselButtonClassNames.root}`);
+        const carousel = source.closest(`.${carouselClassNames.root}`);
         for (const button of Array.from(buttons)) {
-          if (button !== source && !button.matches(':disabled, [aria-disabled="true"]')) {
+          if (
+            button !== source &&
+            button.closest(`.${carouselClassNames.root}`) === carousel &&
+            !button.matches(':disabled, [aria-disabled="true"]')
+          ) {
             button.focus();
             // A hidden control leaves focus unchanged; a consumer redirect must be respected.
             if (getActiveElement() !== activeElement) {
@@ -141,6 +158,7 @@ export const useCarouselButton_unstable = (
         'aria-disabled': isTrailing,
         appearance: 'subtle',
         ...buttonProps,
+        onBlur: handleBlur,
         // eslint-disable-next-line react-hooks/refs
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
