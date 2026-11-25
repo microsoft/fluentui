@@ -74,7 +74,8 @@ describe('Carousel browser behavior', () => {
     cy.get('[data-carousel-action="next"]').should('be.focused').realPress('Enter');
     cy.get('[aria-busy="false"]').should('exist');
     cy.get('[data-carousel-action="next"]').should('be.focused').realPress('Enter');
-    cy.get('[data-carousel-button="next"]').should('have.attr', 'hidden').and('have.attr', 'inert');
+    cy.get('[data-carousel-button="next"]').should('have.attr', 'hidden');
+    cy.get('[data-carousel-button="next"]').should('have.attr', 'inert');
     cy.get('[aria-label="Slide 5 of 5"]').should('be.focused').realPress('Tab');
     cy.contains('button', 'Action 5').should('be.focused').realPress('Tab');
     cy.get('[aria-selected="true"]').should('be.focused').realPress('Home');
