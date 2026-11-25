@@ -2521,15 +2521,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/devtools@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@floating-ui/devtools@npm:0.2.3"
-  peerDependencies:
-    "@floating-ui/dom": ^1.0.0
-  checksum: 10c0/f4e1c830e1806ac4d20e02d3bc06255c24858a52c1b96516fc2d145c0ab8f016910667246be2b14bc63dab8e9c12bea46bc4757bf0c24416c612541f5822f7e5
-  languageName: node
-  linkType: hard
-
 "@floating-ui/dom@npm:1.6.12, @floating-ui/dom@npm:^1.6.12":
   version: 1.6.12
   resolution: "@floating-ui/dom@npm:1.6.12"
@@ -2580,11 +2571,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/azure-themes@npm:*, @fluentui/azure-themes@npm:^8.6.153, @fluentui/azure-themes@workspace:packages/azure-themes":
+"@fluentui/azure-themes@npm:*, @fluentui/azure-themes@npm:^8.6.154, @fluentui/azure-themes@workspace:packages/azure-themes":
   version: 0.0.0-use.local
   resolution: "@fluentui/azure-themes@workspace:packages/azure-themes"
   dependencies:
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/set-version": "npm:^8.2.24"
     tslib: "npm:^2.1.0"
   languageName: unknown
@@ -2645,7 +2636,7 @@ __metadata:
   resolution: "@fluentui/chart-web-components@workspace:packages/charts/chart-web-components"
   dependencies:
     "@fluentui/tokens": "npm:^1.0.0-alpha.25"
-    "@fluentui/web-components": "npm:^3.2.3"
+    "@fluentui/web-components": "npm:^3.2.4"
     "@microsoft/fast-web-utilities": "npm:^6.0.0"
     "@storybook/html": "npm:9.1.17"
     "@storybook/html-vite": "npm:9.1.17"
@@ -2808,11 +2799,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/fluent2-theme@npm:*, @fluentui/fluent2-theme@npm:^8.107.157, @fluentui/fluent2-theme@workspace:packages/fluent2-theme":
+"@fluentui/fluent2-theme@npm:*, @fluentui/fluent2-theme@npm:^8.107.158, @fluentui/fluent2-theme@workspace:packages/fluent2-theme":
   version: 0.0.0-use.local
   resolution: "@fluentui/fluent2-theme@workspace:packages/fluent2-theme"
   dependencies:
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/set-version": "npm:^8.2.24"
     tslib: "npm:^2.1.0"
   languageName: unknown
@@ -3140,24 +3131,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/font-icons-mdl2@npm:*, @fluentui/font-icons-mdl2@npm:^8.5.76, @fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2":
+"@fluentui/font-icons-mdl2@npm:*, @fluentui/font-icons-mdl2@npm:^8.5.77, @fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2":
   version: 0.0.0-use.local
   resolution: "@fluentui/font-icons-mdl2@workspace:packages/font-icons-mdl2"
   dependencies:
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/utilities": "npm:^8.17.4"
     tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
 
-"@fluentui/foundation-legacy@npm:*, @fluentui/foundation-legacy@npm:^8.6.9, @fluentui/foundation-legacy@workspace:packages/foundation-legacy":
+"@fluentui/foundation-legacy@npm:*, @fluentui/foundation-legacy@npm:^8.6.10, @fluentui/foundation-legacy@workspace:packages/foundation-legacy":
   version: 0.0.0-use.local
   resolution: "@fluentui/foundation-legacy@workspace:packages/foundation-legacy"
   dependencies:
     "@fluentui/merge-styles": "npm:^8.6.16"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/utilities": "npm:^8.17.4"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -3687,12 +3678,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-cards@npm:*, @fluentui/react-cards@npm:^0.207.10, @fluentui/react-cards@workspace:packages/react-cards":
+"@fluentui/react-cards@npm:*, @fluentui/react-cards@npm:^0.207.11, @fluentui/react-cards@workspace:packages/react-cards":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-cards@workspace:packages/react-cards"
   dependencies:
-    "@fluentui/foundation-legacy": "npm:^8.6.9"
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/foundation-legacy": "npm:^8.6.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/set-version": "npm:^8.2.24"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
     tslib: "npm:^2.1.0"
@@ -3738,14 +3729,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-charting@npm:*, @fluentui/react-charting@npm:^5.25.14, @fluentui/react-charting@workspace:packages/charts/react-charting":
+"@fluentui/react-charting@npm:*, @fluentui/react-charting@npm:^5.25.15, @fluentui/react-charting@workspace:packages/charts/react-charting":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-charting@workspace:packages/charts/react-charting"
   dependencies:
     "@fluentui/chart-utilities": "npm:^1.1.41"
-    "@fluentui/react-focus": "npm:^8.10.9"
+    "@fluentui/react-focus": "npm:^8.10.10"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/theme-samples": "npm:^8.7.229"
+    "@fluentui/theme-samples": "npm:^8.7.230"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/d3-array": "npm:^3.0.0"
     "@types/d3-axis": "npm:^3.0.0"
@@ -3772,7 +3763,7 @@ __metadata:
     jest-canvas-mock: "npm:2.4.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
-    "@fluentui/react": ^8.125.10
+    "@fluentui/react": ^8.125.11
     "@types/react": ">=16.8.0 <20.0.0"
     "@types/react-dom": ">=16.8.0 <20.0.0"
     react: ">=16.8.0 <20.0.0"
@@ -4127,7 +4118,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-date-time@workspace:packages/react-date-time"
   dependencies:
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/set-version": "npm:^8.2.24"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -4254,15 +4245,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-docsite-components@npm:*, @fluentui/react-docsite-components@npm:^8.16.10, @fluentui/react-docsite-components@workspace:packages/react-docsite-components":
+"@fluentui/react-docsite-components@npm:*, @fluentui/react-docsite-components@npm:^8.16.11, @fluentui/react-docsite-components@workspace:packages/react-docsite-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-docsite-components@workspace:packages/react-docsite-components"
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
     "@fluentui/public-docsite-setup": "npm:^0.3.34"
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/react-hooks": "npm:^8.10.4"
-    "@fluentui/react-monaco-editor": "npm:^1.8.14"
+    "@fluentui/react-monaco-editor": "npm:^1.8.15"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/theme": "npm:^2.7.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
@@ -4316,27 +4307,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-examples@workspace:packages/react-examples"
   dependencies:
-    "@fluentui/azure-themes": "npm:^8.6.153"
+    "@fluentui/azure-themes": "npm:^8.6.154"
     "@fluentui/date-time-utilities": "npm:^8.6.11"
     "@fluentui/dom-utilities": "npm:^2.3.10"
     "@fluentui/example-data": "npm:^8.4.25"
-    "@fluentui/font-icons-mdl2": "npm:^8.5.76"
-    "@fluentui/foundation-legacy": "npm:^8.6.9"
+    "@fluentui/font-icons-mdl2": "npm:^8.5.77"
+    "@fluentui/foundation-legacy": "npm:^8.6.10"
     "@fluentui/merge-styles": "npm:^8.6.16"
-    "@fluentui/react": "npm:^8.125.10"
-    "@fluentui/react-cards": "npm:^0.207.10"
-    "@fluentui/react-charting": "npm:^5.25.14"
-    "@fluentui/react-docsite-components": "npm:^8.16.10"
-    "@fluentui/react-experiments": "npm:^8.16.10"
-    "@fluentui/react-file-type-icons": "npm:^8.18.3"
-    "@fluentui/react-focus": "npm:^8.10.9"
+    "@fluentui/react": "npm:^8.125.11"
+    "@fluentui/react-cards": "npm:^0.207.11"
+    "@fluentui/react-charting": "npm:^5.25.15"
+    "@fluentui/react-docsite-components": "npm:^8.16.11"
+    "@fluentui/react-experiments": "npm:^8.16.11"
+    "@fluentui/react-file-type-icons": "npm:^8.18.4"
+    "@fluentui/react-focus": "npm:^8.10.10"
     "@fluentui/react-hooks": "npm:^8.10.4"
-    "@fluentui/react-icons-mdl2": "npm:^1.4.9"
+    "@fluentui/react-icons-mdl2": "npm:^1.4.10"
     "@fluentui/react-window-provider": "npm:^2.3.2"
     "@fluentui/scheme-utilities": "npm:^8.3.75"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/theme": "npm:^2.7.4"
-    "@fluentui/theme-samples": "npm:^8.7.229"
+    "@fluentui/theme-samples": "npm:^8.7.230"
     "@fluentui/utilities": "npm:^8.17.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/d3-fetch": "npm:^3.0.1"
@@ -4351,18 +4342,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-experiments@npm:*, @fluentui/react-experiments@npm:^8.16.10, @fluentui/react-experiments@workspace:packages/react-experiments":
+"@fluentui/react-experiments@npm:*, @fluentui/react-experiments@npm:^8.16.11, @fluentui/react-experiments@workspace:packages/react-experiments":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-experiments@workspace:packages/react-experiments"
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
-    "@fluentui/font-icons-mdl2": "npm:^8.5.76"
-    "@fluentui/foundation-legacy": "npm:^8.6.9"
+    "@fluentui/font-icons-mdl2": "npm:^8.5.77"
+    "@fluentui/foundation-legacy": "npm:^8.6.10"
     "@fluentui/merge-styles": "npm:^8.6.16"
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/theme": "npm:^2.7.4"
     "@fluentui/utilities": "npm:^8.17.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
@@ -4407,12 +4398,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-file-type-icons@npm:*, @fluentui/react-file-type-icons@npm:^8.18.3, @fluentui/react-file-type-icons@workspace:packages/react-file-type-icons":
+"@fluentui/react-file-type-icons@npm:*, @fluentui/react-file-type-icons@npm:^8.18.4, @fluentui/react-file-type-icons@workspace:packages/react-file-type-icons":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-file-type-icons@workspace:packages/react-file-type-icons"
   dependencies:
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -4420,14 +4411,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-focus@npm:^8.10.9, @fluentui/react-focus@workspace:packages/react-focus":
+"@fluentui/react-focus@npm:^8.10.10, @fluentui/react-focus@workspace:packages/react-focus":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-focus@workspace:packages/react-focus"
   dependencies:
     "@fluentui/keyboard-key": "npm:^0.4.23"
     "@fluentui/merge-styles": "npm:^8.6.16"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/utilities": "npm:^8.17.4"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -4525,12 +4516,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-icon-provider@npm:^1.4.9, @fluentui/react-icon-provider@workspace:packages/react-icon-provider":
+"@fluentui/react-icon-provider@npm:^1.4.10, @fluentui/react-icon-provider@workspace:packages/react-icon-provider":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icon-provider@workspace:packages/react-icon-provider"
   dependencies:
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -4598,7 +4589,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons-mdl2-branded@workspace:packages/react-icons-mdl2-branded"
   dependencies:
-    "@fluentui/react-icons-mdl2": "npm:^1.4.9"
+    "@fluentui/react-icons-mdl2": "npm:^1.4.10"
     "@fluentui/set-version": "npm:^8.2.24"
     tslib: "npm:^2.1.0"
   peerDependencies:
@@ -4609,11 +4600,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-icons-mdl2@npm:*, @fluentui/react-icons-mdl2@npm:^1.4.9, @fluentui/react-icons-mdl2@workspace:packages/react-icons-mdl2":
+"@fluentui/react-icons-mdl2@npm:*, @fluentui/react-icons-mdl2@npm:^1.4.10, @fluentui/react-icons-mdl2@workspace:packages/react-icons-mdl2":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons-mdl2@workspace:packages/react-icons-mdl2"
   dependencies:
-    "@fluentui/react-icon-provider": "npm:^1.4.9"
+    "@fluentui/react-icon-provider": "npm:^1.4.10"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/utilities": "npm:^8.17.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
@@ -4997,8 +4988,8 @@ __metadata:
   resolution: "@fluentui/react-migration-v8-v9@workspace:packages/react-components/react-migration-v8-v9/library"
   dependencies:
     "@ctrl/tinycolor": "npm:^3.3.4"
-    "@fluentui/fluent2-theme": "npm:^8.107.157"
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/fluent2-theme": "npm:^8.107.158"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/react-components": "npm:^9.75.3"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@fluentui/react-icons": "npm:^2.0.245"
@@ -5013,14 +5004,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-monaco-editor@npm:*, @fluentui/react-monaco-editor@npm:^1.8.14, @fluentui/react-monaco-editor@workspace:packages/react-monaco-editor":
+"@fluentui/react-monaco-editor@npm:*, @fluentui/react-monaco-editor@npm:^1.8.15, @fluentui/react-monaco-editor@workspace:packages/react-monaco-editor":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-monaco-editor@workspace:packages/react-monaco-editor"
   dependencies:
     "@fluentui/example-data": "npm:^8.4.25"
     "@fluentui/monaco-editor": "npm:^1.3.25"
-    "@fluentui/react": "npm:^8.125.10"
-    "@fluentui/react-charting": "npm:^5.25.14"
+    "@fluentui/react": "npm:^8.125.11"
+    "@fluentui/react-charting": "npm:^5.25.15"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
     "@types/react-syntax-highlighter": "npm:^10.2.1"
@@ -5341,8 +5332,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-positioning@workspace:packages/react-components/react-positioning/library"
   dependencies:
-    "@floating-ui/devtools": "npm:^0.2.3"
-    "@floating-ui/dom": "npm:^1.6.12"
     "@fluentui/react-shared-contexts": "npm:^9.26.5"
     "@fluentui/react-theme": "npm:^9.2.3"
     "@fluentui/react-utilities": "npm:^9.27.1"
@@ -6321,20 +6310,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react@npm:*, @fluentui/react@npm:^8.125.10, @fluentui/react@workspace:packages/react":
+"@fluentui/react@npm:*, @fluentui/react@npm:^8.125.11, @fluentui/react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@fluentui/react@workspace:packages/react"
   dependencies:
     "@fluentui/date-time-utilities": "npm:^8.6.11"
-    "@fluentui/font-icons-mdl2": "npm:^8.5.76"
-    "@fluentui/foundation-legacy": "npm:^8.6.9"
+    "@fluentui/font-icons-mdl2": "npm:^8.5.77"
+    "@fluentui/foundation-legacy": "npm:^8.6.10"
     "@fluentui/merge-styles": "npm:^8.6.16"
-    "@fluentui/react-focus": "npm:^8.10.9"
+    "@fluentui/react-focus": "npm:^8.10.10"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@fluentui/react-portal-compat-context": "npm:^9.0.17"
     "@fluentui/react-window-provider": "npm:^2.3.2"
     "@fluentui/set-version": "npm:^8.2.24"
-    "@fluentui/style-utilities": "npm:^8.15.4"
+    "@fluentui/style-utilities": "npm:^8.15.5"
     "@fluentui/theme": "npm:^2.7.4"
     "@fluentui/utilities": "npm:^8.17.4"
     "@microsoft/load-themed-styles": "npm:^1.10.26"
@@ -6625,10 +6614,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/storybook@workspace:packages/storybook"
   dependencies:
-    "@fluentui/azure-themes": "npm:^8.6.153"
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/azure-themes": "npm:^8.6.154"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/theme": "npm:^2.7.4"
-    "@fluentui/theme-samples": "npm:^8.7.229"
+    "@fluentui/theme-samples": "npm:^8.7.230"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -6636,7 +6625,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/style-utilities@npm:^8.15.4, @fluentui/style-utilities@workspace:packages/style-utilities":
+"@fluentui/style-utilities@npm:^8.15.5, @fluentui/style-utilities@workspace:packages/style-utilities":
   version: 0.0.0-use.local
   resolution: "@fluentui/style-utilities@workspace:packages/style-utilities"
   dependencies:
@@ -6691,11 +6680,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/theme-samples@npm:*, @fluentui/theme-samples@npm:^8.7.229, @fluentui/theme-samples@workspace:packages/theme-samples":
+"@fluentui/theme-samples@npm:*, @fluentui/theme-samples@npm:^8.7.230, @fluentui/theme-samples@workspace:packages/theme-samples":
   version: 0.0.0-use.local
   resolution: "@fluentui/theme-samples@workspace:packages/theme-samples"
   dependencies:
-    "@fluentui/react": "npm:^8.125.10"
+    "@fluentui/react": "npm:^8.125.11"
     "@fluentui/scheme-utilities": "npm:^8.3.75"
     "@fluentui/set-version": "npm:^8.2.24"
     tslib: "npm:^2.1.0"
@@ -6930,7 +6919,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/web-components@npm:*, @fluentui/web-components@npm:^3.2.3, @fluentui/web-components@workspace:packages/web-components":
+"@fluentui/web-components@npm:*, @fluentui/web-components@npm:^3.2.4, @fluentui/web-components@workspace:packages/web-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/web-components@workspace:packages/web-components"
   dependencies:

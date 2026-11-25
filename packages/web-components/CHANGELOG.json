@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 04:08:53 GMT",
+      "version": "3.2.4",
+      "tag": "@fluentui/web-components_v3.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f67915833ad9ddcf03655133dd8d9c9f4806579",
+            "comment": "fix: remove disabled tabs from native focusgroup navigation when deselected"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2026 04:08:16 GMT",
       "version": "3.2.3",
       "tag": "@fluentui/web-components_v3.2.3",
