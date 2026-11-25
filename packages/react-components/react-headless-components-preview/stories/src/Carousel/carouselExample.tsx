@@ -22,7 +22,7 @@ export const CarouselExample = ({
   slides,
   autoplay = false,
   ...props
-}: CarouselProps & { slides: React.ReactNode[]; autoplay?: boolean }): React.ReactNode => (
+}: CarouselProps & { slides: React.ReactNode[]; autoplay?: boolean }): React.ReactElement => (
   <Carousel className={styles.carousel} transition={carouselTransition} {...props}>
     {autoplay && <CarouselAutoplayButton className={styles.button} />}
     <CarouselPrevious
