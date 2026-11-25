@@ -112,11 +112,11 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'tagPickerGroupRef'
     | 'size'
     | 'noPopover'
+    | 'selectionMode'
   > & {
     trigger: React.ReactNode;
     popover?: React.ReactNode;
     inline: boolean;
-    selectionMode?: TagPickerSelectionMode;
   };
 
 export type TagPickerContextValues = {

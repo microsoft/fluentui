@@ -35,18 +35,20 @@ describe('createReactKeyboardEvent', () => {
     const onKeyDown = jest.fn();
     const { getByRole } = render(React.createElement('button', { onKeyDown }, 'Trigger'));
     const trigger = getByRole('button');
-    const nativeEvent = new KeyboardEvent('keydown', { key: 'Tab', code: 'Tab', bubbles: true });
-    Object.defineProperties(nativeEvent, {
-      keyCode: { value: keyCode },
-      charCode: { value: 42 },
-      which: { value: 42 },
+    // These deprecated fields remain part of the existing consumer callback contract.
+    /* eslint-disable @typescript-eslint/no-deprecated */
+    const nativeEvent = new KeyboardEvent('keydown', {
+      key: 'Tab',
+      code: 'Tab',
+      bubbles: true,
+      keyCode,
+      charCode: 42,
     });
     fireEvent(trigger, nativeEvent);
 
     const reactEvent: React.KeyboardEvent<HTMLElement> = onKeyDown.mock.calls[0][0];
     const { event } = createReactKeyboardEvent(nativeEvent, trigger);
-    // These deprecated fields remain part of the existing consumer callback contract.
-    /* eslint-disable @typescript-eslint/no-deprecated */
+    expect(nativeEvent.keyCode).toBe(keyCode);
     expect(event.charCode).toBe(reactEvent.charCode);
     expect(event.keyCode).toBe(reactEvent.keyCode);
     expect(event.which).toBe(reactEvent.which);
@@ -62,7 +64,7 @@ describe('createReactKeyboardEvent', () => {
       key: 'Tab',
       shiftKey: true,
     });
-    Object.defineProperty(nativeEvent, 'target', { value: trigger });
+    trigger.dispatchEvent(nativeEvent);
 
     const { event, release } = createReactKeyboardEvent(nativeEvent, trigger);
 

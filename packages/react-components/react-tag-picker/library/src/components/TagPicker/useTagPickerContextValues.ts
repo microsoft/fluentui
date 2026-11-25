@@ -27,7 +27,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     popoverId,
     disabled,
     noPopover,
-    selectionMode = 'multiselect',
+    selectionMode,
   } = state;
   const multiselect = selectionMode === 'multiselect';
   return {

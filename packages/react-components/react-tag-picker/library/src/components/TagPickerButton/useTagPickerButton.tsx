@@ -30,7 +30,7 @@ export const useTagPickerButtonBase_unstable = (
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
-  const multiselect = useTagPickerContext_unstable(ctx => (ctx.selectionMode ?? 'multiselect') === 'multiselect');
+  const multiselect = useTagPickerContext_unstable(ctx => ctx.selectionMode === 'multiselect');
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);

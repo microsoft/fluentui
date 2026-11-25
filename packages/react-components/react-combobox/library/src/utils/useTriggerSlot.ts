@@ -51,7 +51,7 @@ export function useTriggerSlot(
     activeDescendantController,
     shouldCloseOnBlur,
   } = options;
-  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus({
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus<HTMLButtonElement | HTMLInputElement>({
     activeDescendantController,
     getOptionById,
     multiselect,
@@ -70,11 +70,7 @@ export function useTriggerSlot(
   });
 
   // handle trigger focus/blur
-  trigger.ref = useMergedRefs(
-    selectOptionOnMoveFocusRef,
-    trigger.ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
-    ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
-  );
+  trigger.ref = useMergedRefs<HTMLButtonElement | HTMLInputElement>(selectOptionOnMoveFocusRef, trigger.ref, ref);
 
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {

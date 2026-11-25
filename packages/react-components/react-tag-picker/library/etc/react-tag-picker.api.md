@@ -108,7 +108,7 @@ export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 
     // (undocumented)
     secondaryActionRef: React_2.RefObject<HTMLSpanElement | null>;
     // (undocumented)
-    selectionMode?: TagPickerSelectionMode;
+    selectionMode: TagPickerSelectionMode;
     // (undocumented)
     size: TagPickerSize;
     // (undocumented)
@@ -300,11 +300,10 @@ export type TagPickerSize = 'medium' | 'large' | 'extra-large';
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'getOptionsMatchingValue' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size' | 'noPopover'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'getOptionsMatchingValue' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size' | 'noPopover' | 'selectionMode'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
-    selectionMode?: TagPickerSelectionMode;
 };
 
 // @public
