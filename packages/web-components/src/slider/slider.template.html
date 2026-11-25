@@ -1,15 +1,26 @@
 <f-template name="fluent-slider" shadowrootmode="open">
-  <template @pointerdown="{handlePointerDown($e)}" @keydown="{handleKeydown($e)}">
+  <template @keydown="{keydownHandler($e)}">
     {{styles}}
-    <div f-ref="{track}" part="track-container" class="track" style="{{position}}"></div>
-    <div
-      f-ref="{thumb}"
-      part="thumb-container"
-      class="thumb-container"
-      style="{{position}}"
-      @pointerdown="{handleThumbPointerDown($e)}"
-    >
-      <slot name="thumb"><div class="thumb"></div></slot>
+    <input
+      f-ref="{control}"
+      class="control"
+      type="range"
+      tabindex="-1"
+      aria-hidden="true"
+      min="{{min}}"
+      max="{{controlMax}}"
+      step="{{step}}"
+      :value="{{value}}"
+      ?disabled="{{controlDisabled}}"
+      @focus="{controlFocusHandler()}"
+      @pointerdown="{controlPointerdownHandler($e)}"
+      @input="{controlInputHandler($e)}"
+      @change="{controlChangeHandler($e)}"
+    />
+    <div f-ref="{track}" part="track-container" class="track">
+      <div f-ref="{thumb}" part="thumb-container" class="thumb-container">
+        <slot name="thumb"><div class="thumb"></div></slot>
+      </div>
     </div>
   </template>
 </f-template>

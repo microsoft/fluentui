@@ -2,31 +2,27 @@
   display: none;
 }
 :host {
-  display: inline-grid;
+  display: inline-block;
 }
 
 :host {
   --thumb-size: 20px;
-  --track-margin-inline: calc(var(--thumb-size) / 2);
   --track-size: 4px;
-  --track-overhang: calc(var(--track-size) / -2);
   --rail-color: var(--colorCompoundBrandBackground);
   --track-color: var(--colorNeutralStrokeAccessible);
   --slider-direction: 90deg;
   --border-radius: var(--borderRadiusMedium);
-  --step-marker-inset: var(--track-overhang) -1px;
+  --slider-min: attr(min type(<number>), 0);
 
   position: relative;
-  align-items: center;
-  justify-content: center;
   box-sizing: border-box;
   outline: none;
   user-select: none;
-  touch-action: none;
-  min-width: 120px;
-  min-height: 32px;
-  grid-template-rows: 1fr var(--thumb-size) 1fr;
-  grid-template-columns: var(--track-margin-inline) 1fr var(--track-margin-inline);
+  inline-size: 120px;
+  min-inline-size: 120px;
+  block-size: 32px;
+  min-block-size: 32px;
+  padding-inline: calc(var(--thumb-size) / 2);
 }
 
 :host(:hover) {
@@ -42,30 +38,20 @@
   --track-color: var(--colorNeutralBackgroundDisabled);
 }
 
-:host(:not(:is([disabled], :disabled))) {
-  cursor: pointer;
-}
-
 :host(:dir(rtl)) {
   --slider-direction: -90deg;
 }
 
 :host([size='small']) {
   --thumb-size: 16px;
-  --track-overhang: -1px;
   --track-size: 2px;
   --border-radius: var(--borderRadiusSmall);
 }
 
 :host([orientation='vertical']) {
+  writing-mode: vertical-lr;
+  direction: rtl;
   --slider-direction: 0deg;
-  --step-marker-inset: -1px var(--track-overhang);
-  min-height: 120px;
-  grid-template-rows: var(--track-margin-inline) 1fr var(--track-margin-inline);
-  grid-template-columns: 1fr var(--thumb-size) 1fr;
-  width: unset;
-  min-width: 32px;
-  justify-items: center;
 }
 
 :host(:not([slot='input']):focus-visible) {
@@ -73,121 +59,122 @@
   outline: 1px solid var(--colorStrokeFocus1);
 }
 
-:host:after,
+.control {
+  display: block;
+  appearance: none;
+  inline-size: calc(100% + var(--thumb-size));
+  block-size: 100%;
+  margin: 0;
+  margin-inline: calc(var(--thumb-size) / -2);
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+  writing-mode: inherit;
+  direction: inherit;
+  touch-action: none;
+}
+
+.control:disabled {
+  cursor: default;
+}
+
+.control::-webkit-slider-thumb {
+  appearance: none;
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
+}
+
+.control::-moz-range-thumb {
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
+  border: 0;
+}
+
 .track {
-  height: var(--track-size);
-  width: 100%;
-}
-
-:host:after {
-  background-image: linear-gradient(
-    var(--slider-direction),
-    var(--rail-color) 0%,
-    var(--rail-color) 50%,
-    var(--track-color) 50.1%,
-    var(--track-color) 100%
-  );
-  border-radius: var(--border-radius);
-  content: '';
-  grid-row: 1 / -1;
-  grid-column: 1 / -1;
-}
-
-.track {
-  position: relative;
-  background-color: var(--track-color);
-  grid-row: 2 / 2;
-  grid-column: 2 / 2;
-  forced-color-adjust: none;
-  overflow: hidden;
-}
-
-:host([orientation='vertical'])::after,
-:host([orientation='vertical']) .track {
-  height: 100%;
-  width: var(--track-size);
-}
-
-.track::before {
-  content: '';
+  --slider-value: attr(data-value type(<number>), var(--slider-min));
+  --slider-range: attr(data-range type(<number>), 1);
+  --slider-step: attr(data-step type(<number>), 1);
+  --slider-progress: calc((var(--slider-value) - var(--slider-min)) / var(--slider-range) * 100%);
+  --step-rate: calc(var(--slider-step) / var(--slider-range) * 100%);
   position: absolute;
-  height: 100%;
-  border-radius: inherit;
-  inset-inline-start: 0;
-  width: var(--slider-progress);
+  inset-inline: 0;
+  inset-block-start: 50%;
+  block-size: var(--track-size);
+  translate: 0 -50%;
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  forced-color-adjust: none;
+  background: linear-gradient(
+    var(--slider-direction),
+    var(--rail-color) var(--slider-progress),
+    var(--track-color) var(--slider-progress)
+  );
 }
 
-:host(:dir(rtl)) .track::before {
-  width: calc(100% - var(--slider-progress));
-}
-
-:host([orientation='vertical']) .track::before {
-  width: 100%;
-  bottom: 0;
-  height: var(--slider-progress);
+:host([orientation='vertical']) .track {
+  translate: -50% 0;
 }
 
 :host([step]) .track::after {
   content: '';
   position: absolute;
+  inset: 0;
+  inset-inline: calc(var(--thumb-size) / 2);
   border-radius: inherit;
-  inset: var(--step-marker-inset);
-  background-image: repeating-linear-gradient(
+  clip-path: inset(0 1px);
+  background: repeating-linear-gradient(
     var(--slider-direction),
-    #0000 0%,
-    #0000 calc(var(--step-rate) - 1px),
+    transparent 0%,
+    transparent calc(var(--step-rate) - 1px),
     var(--colorNeutralBackground1) calc(var(--step-rate) - 1px),
     var(--colorNeutralBackground1) var(--step-rate)
   );
 }
 
+:host([orientation='vertical']) .track::after {
+  clip-path: inset(1px 0);
+}
+
 .thumb-container {
   position: absolute;
-  grid-row: 2 / 2;
-  grid-column: 2 / 2;
-  transform: translateX(-50%);
-  left: var(--slider-thumb);
+  inset-inline-start: var(--slider-progress);
+  inset-block-start: 50%;
+  translate: calc(0% - var(--slider-progress)) -50%;
+  z-index: 1;
+}
+
+:host(:dir(rtl)) .thumb-container {
+  translate: var(--slider-progress) -50%;
 }
 
 :host([orientation='vertical']) .thumb-container {
-  transform: translateY(50%);
-  left: unset;
-  bottom: var(--slider-thumb);
-}
-
-:host(:not(:active)) :is(.thumb-container, .track::before) {
-  transition: all 0.2s ease;
+  translate: -50% var(--slider-progress);
 }
 
 .thumb {
-  width: var(--thumb-size);
-  height: var(--thumb-size);
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
   border-radius: var(--borderRadiusCircular);
   box-shadow: 0 0 0 calc(var(--thumb-size) * 0.2) var(--colorNeutralBackground1) inset;
   border: calc(var(--thumb-size) * 0.05) solid var(--colorNeutralStroke1);
   box-sizing: border-box;
-}
-
-.thumb,
-.track::before {
-  background-color: var(--rail-color);
+  background: var(--rail-color);
+  forced-color-adjust: none;
 }
 
 @media (forced-colors: active) {
-  .track:hover,
-  .track:active,
-  .track {
-    background: WindowText;
-  }
-  .thumb:hover,
-  .thumb:active,
-  .thumb {
-    background: ButtonText;
+  :host {
+    --rail-color: Highlight;
+    --track-color: WindowText;
   }
 
-  :host(:hover) .track::before,
-  :host(:active) .track::before,
-  .track::before {
-    background: Highlight;
+  :host(:is([disabled], :disabled)) {
+    --rail-color: GrayText;
+    --track-color: GrayText;
+  }
+
+  .thumb {
+    background: ButtonText;
   }
 }

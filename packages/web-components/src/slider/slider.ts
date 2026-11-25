@@ -1,12 +1,9 @@
-import type { ElementStyles } from '@microsoft/fast-element';
-import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
-import { Direction } from '../utils/direction.js';
+import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import { numberLikeStringConverter } from '../utils/converters.js';
+import { Direction, getDirection } from '../utils/direction.js';
 import { limit } from '../utils/numbers.js';
 import { Orientation } from '../utils/orientation.js';
-import { numberLikeStringConverter } from '../utils/converters.js';
-import { getDirection } from '../utils/direction.js';
-import { maybeSetAutoFocus } from '../utils/autofocus.js';
-import { convertPixelToPercent } from './slider-utilities.js';
 import { type SliderConfiguration, SliderMode, SliderOrientation, type SliderSize } from './slider.options.js';
 
 /**
@@ -47,40 +44,31 @@ export class Slider extends FASTElement implements SliderConfiguration {
     return Object.freeze(Array.from(this.elementInternals.labels));
   }
 
+  /**
+   * @internal
+   */
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
       case 'max':
-        this.setSliderPosition();
-      case 'step':
-        this.handleStepStyles();
-        break;
-    }
-  }
-
-  private stepStyles?: ElementStyles;
-
-  /**
-   * Handles changes to step styling based on the step value
-   * NOTE: This function is not a changed callback, stepStyles is not observable
-   */
-  private handleStepStyles(): void {
-    if (this.step) {
-      const totalSteps = (100 / Math.floor((this.maxAsNumber - this.minAsNumber) / this.stepAsNumber)) as any;
-
-      if (this.stepStyles !== undefined) {
-        this.$fastController.removeStyles(this.stepStyles);
-      }
-
-      this.stepStyles = css/**css*/ `
-        :host {
-          --step-rate: ${totalSteps}%;
+      case 'step': {
+        if (!this.control || !this.track) {
+          return;
         }
-      `;
-
-      this.$fastController.addStyles(this.stepStyles);
-    } else if (this.stepStyles !== undefined) {
-      this.$fastController.removeStyles(this.stepStyles);
+        this.control.min = this.minAsNumber.toString();
+        this.control.step = this.stepAsNumber.toString();
+        // Let native snapping find the nearest step even when it is above the public maximum.
+        this.control.max = (this.maxAsNumber + this.stepAsNumber).toString();
+        this.control.value = this.maxAsNumber.toString();
+        this.controlMax = this.control.value;
+        const range = this.control.valueAsNumber - this.minAsNumber;
+        this.track.dataset.range = range > 0 ? range.toString() : '1';
+        this.track.dataset.step = this.control.step;
+        this.control.max = this.controlMax;
+        this.control.value = this.value;
+        this.updateControlValue();
+        break;
+      }
     }
   }
 
@@ -218,19 +206,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     const nextAsNumber = parseFloat(value);
-    const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
-
-    if (newValue !== value) {
-      this.value = newValue;
-      return;
-    }
-
-    this._value = value.toString();
+    this.control.value = (Number.isFinite(nextAsNumber) ? nextAsNumber : this.minAsNumber).toString();
+    this._value = limit(this.minAsNumber, this.maxAsNumber, this.control.valueAsNumber).toString();
     this.elementInternals.ariaValueNow = this._value;
     this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
-    this.setSliderPosition();
+    this.updateControlValue();
     this.$emit('change');
-    this.setFormValue(value);
+    this.setFormValue(this._value);
     Observable.notify(this, 'value');
   }
 
@@ -279,16 +261,29 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * @internal
    */
-  public stepMultiplier!: number;
+  public control!: HTMLInputElement;
+
+  /**
+   * Property is useful when the silder’s parent <fieldset> element is disabled.
+   *
+   * @internal
+   */
+  @observable
+  public controlDisabled: boolean = false;
+
+  /**
+   * Native step-aligned maximum; the public value remains clamped to max.
+   *
+   * @internal
+   */
+  @observable
+  public controlMax: string = '100';
 
   /**
    * @internal
    */
   @observable
   public direction: Direction = Direction.ltr;
-  public directionChanged(): void {
-    this.setSliderPosition();
-  }
 
   /**
    * @internal
@@ -296,41 +291,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
   @observable
   public isDragging: boolean = false;
 
-  /**
-   * @internal
-   */
-  @observable
-  public position!: string;
-
-  /**
-   * @internal
-   */
-  @observable
-  public trackWidth: number = 0;
-
-  /**
-   * @internal
-   */
-  @observable
-  public trackMinWidth: number = 0;
-
-  /**
-   * @internal
-   */
-  @observable
-  public trackHeight: number = 0;
-
-  /**
-   * @internal
-   */
-  @observable
-  public trackLeft: number = 0;
-
-  /**
-   * @internal
-   */
-  @observable
-  public trackMinHeight: number = 0;
+  private pointerController?: AbortController;
+  private pointerupHandler = (): void => {
+    this.controlPointerdownHandler(null);
+  };
+  private pointercancelHandler = (): void => {
+    this.controlPointerdownHandler(null);
+  };
 
   /**
    * The value property, typed as a number.
@@ -395,8 +362,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public min: string = '';
   protected minChanged(): void {
     this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
-    if (this.$fastController.isConnected && this.minAsNumber > this.valueAsNumber) {
-      this.value = this.min!;
+    if (this.$fastController.isConnected) {
+      this.handleChange(this, 'min');
+      if (this.minAsNumber > this.valueAsNumber) {
+        this.value = this.min!;
+      }
     }
   }
 
@@ -426,8 +396,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public max: string = '';
   protected maxChanged(): void {
     this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
-    if (this.$fastController.isConnected && this.maxAsNumber < this.valueAsNumber) {
-      this.value = this.max!;
+    if (this.$fastController.isConnected) {
+      this.handleChange(this, 'max');
+      if (this.maxAsNumber < this.valueAsNumber) {
+        this.value = this.max!;
+      }
     }
   }
 
@@ -456,9 +429,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   @attr({ converter: numberLikeStringConverter })
   public step: string = '';
   protected stepChanged(): void {
-    this.updateStepMultiplier();
     // Update value to align with the new step if needed.
     if (this.$fastController.isConnected) {
+      this.handleChange(this, 'step');
       this.value = this._value;
     }
   }
@@ -496,10 +469,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public orientation?: Orientation;
   protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
-
-    if (this.$fastController.isConnected) {
-      this.setSliderPosition();
-    }
   }
 
   /**
@@ -522,28 +491,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    requestAnimationFrame(() => {
+    Updates.enqueue(() => {
       if (!this.$fastController.isConnected) {
-        // The component may have been disconnected between the connectedCallback and this frame.
-        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
-        // Bail out to avoid performing setup work on a detached element.
         return;
       }
 
       this.direction = getDirection(this);
 
-      this.setDisabledSideEffect(this.disabled);
-      this.updateStepMultiplier();
-      this.setupTrackConstraints();
+      this.setDisabledSideEffect(this.disabled || this.matches(':disabled'));
+      this.handleChange(this, 'step');
       this.setupDefaultValue();
-      this.setSliderPosition();
-
-      this.handleStepStyles();
-
-      const notifier = Observable.getNotifier(this);
-      notifier.subscribe(this, 'max');
-      notifier.subscribe(this, 'min');
-      notifier.subscribe(this, 'step');
     });
 
     maybeSetAutoFocus(this);
@@ -555,10 +512,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    const notifier = Observable.getNotifier(this);
-    notifier.unsubscribe(this, 'max');
-    notifier.unsubscribe(this, 'min');
-    notifier.unsubscribe(this, 'step');
+    this.pointerController?.abort();
+    this.isDragging = false;
   }
 
   /**
@@ -567,14 +522,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   public increment(): void {
-    const newVal: number =
-      this.direction !== Direction.rtl
-        ? Number(this.value) + this.stepAsNumber
-        : Number(this.value) - this.stepAsNumber;
-    const incrementedVal: number = this.convertToConstrainedValue(newVal);
-    const incrementedValString: string =
-      incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
-    this.value = incrementedValString;
+    this.control.stepUp(this.direction === Direction.rtl ? -1 : 1);
+    this.value = this.control.value;
   }
 
   /**
@@ -583,17 +532,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   public decrement(): void {
-    const newVal =
-      this.direction !== Direction.rtl
-        ? Number(this.value) - Number(this.stepAsNumber)
-        : Number(this.value) + Number(this.stepAsNumber);
-    const decrementedVal: number = this.convertToConstrainedValue(newVal);
-    const decrementedValString: string =
-      decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
-    this.value = decrementedValString;
+    this.control.stepDown(this.direction === Direction.rtl ? -1 : 1);
+    this.value = this.control.value;
   }
 
-  public handleKeydown(event: KeyboardEvent): boolean {
+  /**
+   * @internal
+   */
+  public keydownHandler(event: KeyboardEvent): boolean {
     if (this.isDisabled) {
       return true;
     }
@@ -632,44 +578,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
     return true;
   }
 
-  /**
-   * Places the thumb based on the current value
-   */
-  private setSliderPosition(): void {
-    const newPct: number = convertPixelToPercent(
-      parseFloat(this.value),
-      this.minAsNumber,
-      this.maxAsNumber,
-      this.orientation === Orientation.vertical ? undefined : this.direction,
-    );
-    const percentage: number = newPct * 100;
-    this.position = `--slider-thumb: ${percentage}%; --slider-progress: ${percentage}%`;
-  }
-
-  /**
-   * Update the step multiplier used to ensure rounding errors from steps that
-   * are not whole numbers
-   */
-  private updateStepMultiplier(): void {
-    const stepString: string = this.stepAsNumber + '';
-    const decimalPlacesOfStep: number = !!(this.stepAsNumber % 1) ? stepString.length - stepString.indexOf('.') - 1 : 0;
-    this.stepMultiplier = Math.pow(10, decimalPlacesOfStep);
-  }
-
-  private setupTrackConstraints = (): void => {
-    const clientRect: DOMRect = this.track.getBoundingClientRect();
-    this.trackWidth = this.track.clientWidth;
-    this.trackMinWidth = this.track.clientLeft;
-    this.trackHeight = clientRect.top;
-    this.trackMinHeight = clientRect.bottom;
-    this.trackLeft = this.getBoundingClientRect().left;
-    if (this.trackWidth === 0) {
-      this.trackWidth = 1;
+  private updateControlValue(): void {
+    if (this.control && this.track) {
+      this.track.dataset.value = this.control.value;
     }
-  };
+  }
 
   private get midpoint(): string {
-    return `${this.convertToConstrainedValue((this.maxAsNumber + this.minAsNumber) / 2)}`;
+    return `${(this.maxAsNumber + this.minAsNumber) / 2}`;
   }
 
   private setupDefaultValue(): void {
@@ -688,127 +604,57 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   *  Handle mouse moves during a thumb drag operation
-   *  If the event handler is null it removes the events
-   */
-  public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
-    if (this.isDisabled) {
-      return true;
-    }
-    const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
-    windowFn('pointerup', this.handleWindowPointerUp);
-    windowFn('pointermove', this.handlePointerMove, { passive: true });
-    windowFn('touchmove', this.handlePointerMove, { passive: true });
-    windowFn('touchend', this.handleWindowPointerUp);
-    this.isDragging = event !== null;
-    return true;
-  };
-
-  /**
-   *  Handle mouse moves during a thumb drag operation
-   */
-  private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
-    if (this.isDisabled || event.defaultPrevented) {
-      return;
-    }
-
-    // update the value based on current position
-    const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
-
-    const thumbWidth = this.thumb.getBoundingClientRect().width;
-
-    const eventValue: number =
-      this.orientation === Orientation.vertical
-        ? sourceEvent.pageY - document.documentElement.scrollTop
-        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
-
-    this.value = `${this.calculateNewValue(eventValue)}`;
-  };
-
-  /**
-   * Calculate the new value based on the given raw pixel value.
-   *
-   * @param rawValue - the value to be converted to a constrained value
-   * @returns the constrained value
+   * Synchronizes native range interaction with the public value and change event.
    *
    * @internal
    */
-  public calculateNewValue(rawValue: number): number {
-    this.setupTrackConstraints();
-
-    // update the value based on current position
-    const newPosition = convertPixelToPercent(
-      rawValue,
-      this.orientation === Orientation.vertical ? this.trackMinHeight : this.trackMinWidth,
-      this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
-      this.orientation === Orientation.vertical ? undefined : this.direction,
-    );
-    const newValue: number = (this.maxAsNumber - this.minAsNumber) * newPosition + this.minAsNumber;
-    return this.convertToConstrainedValue(newValue);
+  public controlInputHandler(event: Event): boolean {
+    event.stopPropagation();
+    if (!this.isDisabled) {
+      this.value = this.control.value;
+    }
+    return true;
   }
 
   /**
-   * Handle a window mouse up during a drag operation
+   * @internal
    */
-  private handleWindowPointerUp = (): void => {
-    this.stopDragging();
-  };
-
-  private stopDragging = (): void => {
-    this.isDragging = false;
-    this.handlePointerDown(null);
-    this.handleThumbPointerDown(null);
-  };
+  public controlChangeHandler(event: Event): boolean {
+    event.stopPropagation();
+    this.controlPointerdownHandler(null);
+    return true;
+  }
 
   /**
-   *
-   * @param event - PointerEvent or null. If there is no event handler it will remove the events
+   * @internal
    */
-  public handlePointerDown = (event: PointerEvent | null) => {
-    if (event === null || !this.isDisabled) {
-      const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
-      const documentFn = event !== null ? document.addEventListener : document.removeEventListener;
-      windowFn('pointerup', this.handleWindowPointerUp);
-      documentFn('mouseleave', this.handleWindowPointerUp);
-      windowFn('pointermove', this.handlePointerMove);
+  public controlFocusHandler(): boolean {
+    if (!this.isDragging) {
+      this.focus();
+    }
+    return true;
+  }
 
-      const thumbWidth = this.thumb.getBoundingClientRect().width;
-
-      if (event) {
-        this.setupTrackConstraints();
-        const controlValue: number =
-          this.orientation === Orientation.vertical
-            ? event.pageY - document.documentElement.scrollTop
-            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
-
-        this.value = `${this.calculateNewValue(controlValue)}`;
-      }
+  /**
+   * @internal
+   */
+  public controlPointerdownHandler = (event: PointerEvent | null): boolean => {
+    const wasDragging = this.isDragging;
+    this.pointerController?.abort();
+    this.isDragging = event !== null && event.button === 0 && !this.isDisabled;
+    if (this.isDragging) {
+      this.pointerController = new AbortController();
+      const options = { once: true, signal: this.pointerController.signal };
+      // Native release events can target outside the input after dragging past its bounds.
+      this.ownerDocument.addEventListener('pointerup', this.pointerupHandler, options);
+      this.ownerDocument.addEventListener('pointercancel', this.pointercancelHandler, options);
+    }
+    // Moving focus out of the native input during a drag cancels it in Firefox.
+    if (wasDragging && event === null && !this.isDisabled) {
+      this.focus();
     }
     return true;
   };
-
-  private convertToConstrainedValue(value: number): number {
-    if (isNaN(value)) {
-      value = this.minAsNumber;
-    }
-
-    /**
-     * The following logic intends to overcome the issue with math in JavaScript with regards to floating point numbers.
-     * This is needed as the `step` may be an integer but could also be a float. To accomplish this the step  is assumed to be a float
-     * and is converted to an integer by determining the number of decimal places it represent, multiplying it until it is an
-     * integer and then dividing it to get back to the correct number.
-     */
-    let constrainedValue: number = value - this.minAsNumber;
-    const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepAsNumber);
-    const remainderValue: number =
-      constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepAsNumber)) / this.stepMultiplier;
-
-    constrainedValue =
-      remainderValue >= Number(this.stepAsNumber) / 2
-        ? constrainedValue - remainderValue + Number(this.stepAsNumber)
-        : constrainedValue - remainderValue;
-    return constrainedValue + this.minAsNumber;
-  }
 
   /**
    * Makes sure the side effects of set up when the disabled state changes.
@@ -816,6 +662,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   private setDisabledSideEffect(disabled: boolean = this.isDisabled): void {
     Updates.enqueue(() => {
       this.elementInternals.ariaDisabled = disabled.toString();
+      this.controlDisabled = disabled;
+      if (disabled) {
+        this.controlPointerdownHandler(null);
+      }
       this.tabIndex = disabled ? -1 : 0;
     });
   }

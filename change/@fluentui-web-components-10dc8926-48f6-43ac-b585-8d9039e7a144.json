@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "refactor: use an internal native range input to replace JS based slider thumb position calculation",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com"
+}

@@ -3591,16 +3591,26 @@ export const shadow8Brand = "var(--shadow8Brand)";
 // @public
 export class Slider extends FASTElement implements SliderConfiguration {
     constructor();
-    // @internal
-    calculateNewValue(rawValue: number): number;
     checkValidity(): boolean;
     // (undocumented)
     connectedCallback(): void;
+    // @internal (undocumented)
+    control: HTMLInputElement;
+    // @internal (undocumented)
+    controlChangeHandler(event: Event): boolean;
+    // @internal
+    controlDisabled: boolean;
+    // @internal (undocumented)
+    controlFocusHandler(): boolean;
+    // @internal
+    controlInputHandler(event: Event): boolean;
+    // @internal
+    controlMax: string;
+    // @internal (undocumented)
+    controlPointerdownHandler: (event: PointerEvent | null) => boolean;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
-    // (undocumented)
-    directionChanged(): void;
     disabled: boolean;
     // (undocumented)
     protected disabledChanged(): void;
@@ -3613,13 +3623,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     formDisabledCallback(disabled: boolean): void;
     // @internal
     formResetCallback(): void;
-    // (undocumented)
+    // @internal (undocumented)
     handleChange(_: any, propertyName: string): void;
-    // (undocumented)
-    handleKeydown(event: KeyboardEvent): boolean;
-    // (undocumented)
-    handlePointerDown: (event: PointerEvent | null) => boolean;
-    handleThumbPointerDown: (event: PointerEvent | null) => boolean;
     increment(): void;
     initialValue: string;
     // @internal
@@ -3628,6 +3633,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     protected get isDisabled(): boolean;
     // @internal (undocumented)
     isDragging: boolean;
+    // @internal (undocumented)
+    keydownHandler(event: KeyboardEvent): boolean;
     get labels(): ReadonlyArray<Node>;
     max: string;
     // (undocumented)
@@ -3639,8 +3646,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     orientation?: Orientation;
     // (undocumented)
     protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
-    // @internal (undocumented)
-    position: string;
     reportValidity(): boolean;
     setCustomValidity(message: string): void;
     // @internal
@@ -3651,21 +3656,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
-    stepMultiplier: number;
-    // @internal (undocumented)
     thumb: HTMLDivElement;
     // @internal (undocumented)
     track: HTMLDivElement;
-    // @internal (undocumented)
-    trackHeight: number;
-    // @internal (undocumented)
-    trackLeft: number;
-    // @internal (undocumented)
-    trackMinHeight: number;
-    // @internal (undocumented)
-    trackMinWidth: number;
-    // @internal (undocumented)
-    trackWidth: number;
     get validationMessage(): string;
     get validity(): ValidityState;
     get value(): string;

@@ -59,8 +59,8 @@ export const MediumSize: Story = {
 export const SliderWithValue: Story = {
   render: renderComponent(html`
     <fluent-field label-position="above">
-      <label slot="label" for="slider-in-field">Slider value</label>
-      <fluent-slider slot="input" id="slider-in-field" ${ref('slider')}></fluent-slider>
+      <label slot="label" for="slider-with-value">Slider value</label>
+      <fluent-slider slot="input" id="slider-with-value" ${ref('slider')}></fluent-slider>
       <fluent-text slot="message" size="200">
         Current value: <output :value="${x => x.slider.value}"></output>
       </fluent-text>
@@ -88,4 +88,13 @@ export const SliderDisabled = {
   args: {
     disabled: true,
   },
+};
+
+export const SliderInDisabledFieldset: Story = {
+  render: renderComponent(html`
+    <fieldset disabled>
+      <label slot="label" for="slider-in-disabled-fieldset">Slider in disabled fieldset</label>
+      <fluent-slider slot="input" id="slider-in-disabled-fieldset"></fluent-slider>
+    </fieldset>
+  `),
 };
