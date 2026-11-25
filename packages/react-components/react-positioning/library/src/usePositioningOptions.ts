@@ -17,7 +17,7 @@ import {
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
-import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
+import { toFloatingUIPlacement, normalizeAutoSize } from './utils';
 import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
@@ -126,8 +126,6 @@ export function usePositioningOptions(options: PositioningOptions): (
 
   return React.useCallback(
     (container: HTMLElement, arrow: HTMLElement | null) => {
-      const hasScrollableElement = hasScrollParent(container);
-
       const optionsAfterEnhancement = configFn(container, arrow);
       const {
         autoSize,
@@ -156,10 +154,9 @@ export function usePositioningOptions(options: PositioningOptions): (
         matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
+        !pinned && flipMiddleware({ container, flipBoundary, isRtl, fallbackPositions }),
         shiftMiddleware({
           container,
-          hasScrollableElement,
           overflowBoundary,
           disableTether: unstable_disableTether,
           overflowBoundaryPadding,
