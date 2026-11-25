@@ -16,12 +16,16 @@ const Navigation = ({
   circular = false,
   rejectNavigation = false,
   previousDisabled,
+  onPreviousFocus,
+  extraPrevious = false,
   onClick,
 }: {
   initialIndex?: number;
   circular?: boolean;
   rejectNavigation?: boolean;
   previousDisabled?: boolean;
+  onPreviousFocus?: React.FocusEventHandler<HTMLButtonElement>;
+  extraPrevious?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [activeIndex, setActiveIndex] = React.useState(initialIndex);
@@ -44,12 +48,18 @@ const Navigation = ({
           },
         }}
       >
-        <CarouselButton navType="prev" onClick={onClick} {...(previousDisabled && { disabled: true })}>
+        <CarouselButton
+          navType="prev"
+          onClick={onClick}
+          onFocus={onPreviousFocus}
+          {...(previousDisabled && { disabled: true })}
+        >
           Previous
         </CarouselButton>
         <CarouselButton navType="next" onClick={onClick}>
           Next
         </CarouselButton>
+        {extraPrevious && <CarouselButton navType="prev">Another previous</CarouselButton>}
       </CarouselProvider>
       <button>Outside</button>
     </div>
@@ -116,6 +126,21 @@ describe('CarouselButton', () => {
       const { getByRole } = render(
         <>
           <Navigation onClick={() => outsideRef.current?.focus()} />
+          <button ref={outsideRef}>Consumer target</button>
+        </>,
+      );
+      const next = getByRole('button', { name: 'Next' });
+      next.focus();
+      fireEvent.click(next);
+      act(() => jest.runAllTimers());
+      expect(outsideRef.current).toHaveFocus();
+    });
+
+    it('does not override a consumer redirect when the opposite button receives focus', () => {
+      const outsideRef = React.createRef<HTMLButtonElement>();
+      const { getByRole } = render(
+        <>
+          <Navigation extraPrevious onPreviousFocus={() => outsideRef.current?.focus()} />
           <button ref={outsideRef}>Consumer target</button>
         </>,
       );

@@ -1,5 +1,8 @@
 import 'cypress-real-events';
 import * as React from 'react';
+import { createPortal } from 'react-dom';
+import { RendererProvider } from '@griffel/react';
+import { createShadowDOMRenderer } from '@griffel/shadow-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -19,7 +22,11 @@ const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const CarouselTest = ({ cardCount = 3, ...props }: CarouselProps & { cardCount?: number }) => {
+const CarouselTest = ({
+  cardCount = 3,
+  hiddenNavigation = false,
+  ...props
+}: CarouselProps & { cardCount?: number; hiddenNavigation?: boolean }) => {
   return (
     <Carousel {...props}>
       <CarouselViewport>
@@ -29,6 +36,7 @@ const CarouselTest = ({ cardCount = 3, ...props }: CarouselProps & { cardCount?:
           ))}
         </CarouselSlider>
       </CarouselViewport>
+      {hiddenNavigation && <CarouselNavContainer hidden style={{ display: 'none' }} />}
       <CarouselNavContainer>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
@@ -37,7 +45,95 @@ const CarouselTest = ({ cardCount = 3, ...props }: CarouselProps & { cardCount?:
 };
 CarouselTest.displayName = 'CarouselTest';
 
+const ShadowCarouselTest = (props: CarouselProps & { cardCount?: number }) => {
+  const [mountTarget, setMountTarget] = React.useState<{
+    node: HTMLDivElement;
+    renderer: ReturnType<typeof createShadowDOMRenderer>;
+  } | null>(null);
+  const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
+    if (host) {
+      const root = host.shadowRoot ?? host.attachShadow({ mode: 'open' });
+      const node = root.querySelector('div') ?? root.appendChild(host.ownerDocument.createElement('div'));
+      setMountTarget({ node, renderer: createShadowDOMRenderer(root) });
+    }
+  }, []);
+
+  return (
+    <div data-testid="shadow-carousel" ref={attachRoot}>
+      {mountTarget &&
+        createPortal(
+          <RendererProvider renderer={mountTarget.renderer}>
+            <FluentProvider theme={teamsLightTheme}>
+              <CarouselTest {...props} />
+            </FluentProvider>
+          </RendererProvider>,
+          mountTarget.node,
+        )}
+    </div>
+  );
+};
+
 describe('CarouselControlledIndexTest', () => {
+  it('skips hidden enabled controls when transferring focus', () => {
+    mount(<CarouselTest cardCount={2} groupSize={1} circular={false} hiddenNavigation />);
+
+    cy.get(`.${carouselNavButtonClassNames.root}`).should('have.length', 2);
+    const buttons = () => cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`);
+    buttons().filter(':visible').last().focus().realPress('Enter');
+    buttons().first().should('not.be.disabled').and('not.be.visible');
+    buttons().filter(':visible').first().should('be.focused');
+    cy.realPress('Enter');
+    buttons().filter(':visible').last().should('be.focused');
+  });
+
+  it('transfers keyboard focus in both directions inside a shadow root', () => {
+    mount(<ShadowCarouselTest cardCount={2} groupSize={1} circular={false} />);
+
+    cy.get('[data-testid="shadow-carousel"]')
+      .shadow()
+      .find(`.${carouselNavButtonClassNames.root}`)
+      .should('have.length', 2);
+    const buttons = () =>
+      cy.get('[data-testid="shadow-carousel"]').shadow().find<HTMLElement>(`.${carouselButtonClassNames.root}`);
+    const assertFocused = ($buttons: JQuery<HTMLElement>) => {
+      const root = $buttons[0].getRootNode();
+      expect('activeElement' in root && root.activeElement).to.equal($buttons[0]);
+    };
+    buttons().last().focus().realPress('Enter');
+    buttons().first().should('not.be.disabled').and(assertFocused);
+    cy.realPress('Enter');
+    buttons().last().should('not.be.disabled').and(assertFocused);
+  });
+
+  it('respects focus moved outside the shadow root during activation', () => {
+    const outsideRef = React.createRef<HTMLButtonElement>();
+    mount(
+      <>
+        <ShadowCarouselTest
+          cardCount={2}
+          groupSize={1}
+          circular={false}
+          onActiveIndexChange={() => outsideRef.current?.focus()}
+        />
+        <button ref={outsideRef} data-testid="outside-carousel">
+          Outside
+        </button>
+      </>,
+    );
+
+    cy.get('[data-testid="shadow-carousel"]')
+      .shadow()
+      .find(`.${carouselNavButtonClassNames.root}`)
+      .should('have.length', 2);
+    cy.get('[data-testid="shadow-carousel"]')
+      .shadow()
+      .find<HTMLElement>(`.${carouselButtonClassNames.root}`)
+      .last()
+      .focus()
+      .realPress('Enter');
+    cy.get('[data-testid="outside-carousel"]').should('be.focused');
+  });
+
   it('transfers keyboard focus between newly enabled buttons in a two-card carousel', () => {
     mount(<CarouselTest cardCount={2} groupSize={1} circular={false} />);
 

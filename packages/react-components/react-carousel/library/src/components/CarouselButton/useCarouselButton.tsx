@@ -66,7 +66,12 @@ export const useCarouselButton_unstable = (
     }
 
     const source = buttonRef.current;
-    const wasFocused = source !== undefined && targetDocument?.activeElement === source;
+    const sourceDocument = source?.ownerDocument ?? targetDocument;
+    const root = source?.getRootNode();
+    const ShadowRootConstructor = sourceDocument?.defaultView?.ShadowRoot;
+    const shadowRoot = ShadowRootConstructor && root instanceof ShadowRootConstructor ? root : undefined;
+    const getActiveElement = () => shadowRoot?.activeElement ?? sourceDocument?.activeElement;
+    const wasFocused = source !== undefined && getActiveElement() === source;
     const nextIndex = selectPageByDirection(event, navType);
 
     let _trailing = false;
@@ -79,20 +84,27 @@ export const useCarouselButton_unstable = (
     if (!circular && _trailing && source && wasFocused) {
       // Wait for both navigation buttons' disabled states to reach the DOM.
       scheduleFocus(() => {
+        const activeElement = getActiveElement();
         if (
           !source.isConnected ||
+          source.getRootNode() !== root ||
           !containerRef?.current?.contains(source) ||
           !source.matches(':disabled, [aria-disabled="true"]') ||
-          (targetDocument?.activeElement !== source && targetDocument?.activeElement !== targetDocument?.body)
+          (activeElement !== source && activeElement !== sourceDocument?.body && activeElement !== shadowRoot?.host)
         ) {
           return;
         }
 
         const buttons = containerRef.current.querySelectorAll<HTMLElement>(`.${carouselButtonClassNames.root}`);
-        const target = Array.from(buttons).find(
-          button => button !== source && !button.matches(':disabled, [aria-disabled="true"]'),
-        );
-        target?.focus();
+        for (const button of Array.from(buttons)) {
+          if (button !== source && !button.matches(':disabled, [aria-disabled="true"]')) {
+            button.focus();
+            // A hidden control leaves focus unchanged; a consumer redirect must be respected.
+            if (getActiveElement() !== activeElement) {
+              break;
+            }
+          }
+        }
       });
     }
 

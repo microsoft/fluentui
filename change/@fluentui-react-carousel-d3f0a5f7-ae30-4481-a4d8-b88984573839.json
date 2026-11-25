@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(Carousel): preserve navigation focus when reaching a two-card endpoint",
+  "comment": "fix(Carousel): preserve endpoint navigation focus, including shadow roots and hidden alternative controls",
   "packageName": "@fluentui/react-carousel",
   "email": "paulmardling@microsoft.com"
 }
