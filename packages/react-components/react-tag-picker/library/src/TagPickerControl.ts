@@ -1,4 +1,5 @@
 export type {
+  TagPickerControlBaseProps,
   TagPickerControlBaseState,
   TagPickerControlCSSProperties,
   TagPickerControlInternalSlots,

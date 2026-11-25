@@ -1,10 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 import { ChevronDownRegular } from '@fluentui/react-icons';
+import { fireEvent, render } from '@testing-library/react';
 
 import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 import { useTagPickerControlBase_unstable, useTagPickerControl_unstable } from './useTagPickerControl';
+import { TagPickerControl } from './TagPickerControl';
 
 const makeContext = (overrides: Partial<TagPickerContextValue> = {}): TagPickerContextValue => ({
   triggerRef: React.createRef<HTMLInputElement>(),
@@ -60,6 +62,31 @@ describe('useTagPickerControlBase_unstable', () => {
 });
 
 describe('useTagPickerControl_unstable', () => {
+  it('keeps styled control toggling on mousedown rather than click', () => {
+    const setOpen = jest.fn();
+    const { getByTestId } = render(<TagPickerControl data-testid="control" />, {
+      wrapper: wrap({ setOpen }),
+    });
+
+    fireEvent.mouseDown(getByTestId('control'));
+    expect(setOpen).toHaveBeenCalledWith(expect.anything(), true);
+    fireEvent.click(getByTestId('control'));
+    expect(setOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls the consumer mousedown handler before the default behavior', () => {
+    const setOpen = jest.fn();
+    const onMouseDown = jest.fn((event: React.MouseEvent) => event.preventDefault());
+    const { getByTestId } = render(<TagPickerControl data-testid="control" onMouseDown={onMouseDown} />, {
+      wrapper: wrap({ setOpen }),
+    });
+
+    fireEvent.mouseDown(getByTestId('control'));
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+    expect(setOpen).not.toHaveBeenCalled();
+  });
+
   it('renders the default expandIcon and aside when a popover exists', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagPickerControl_unstable({}, ref), { wrapper: wrap() });

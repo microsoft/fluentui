@@ -11,6 +11,21 @@ describe('listScrollParents', () => {
     return el;
   };
 
+  it('falls back to the owner body for the root, the body and detached nodes', () => {
+    const doc = document.implementation.createHTMLDocument();
+    for (const node of [doc.documentElement, doc.body, doc.createElement('div')]) {
+      expect(listScrollParents(node)).toEqual([doc.body]);
+    }
+  });
+
+  it('finds scrollable ancestors through non-scrolling wrappers and a shadow root, closest first', () => {
+    const outer = document.body.appendChild(createScrollParent());
+    const host = outer.appendChild(createScrollParent());
+    const wrapper = host.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));
+    const child = wrapper.appendChild(document.createElement('span'));
+    expect(listScrollParents(child)).toEqual([host, outer, document.body]);
+  });
+
   it('should return all scroll parents include and up to body', () => {
     const start = document.createElement('div');
     const scrollParent1 = createScrollParent();

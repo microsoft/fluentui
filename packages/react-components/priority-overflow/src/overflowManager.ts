@@ -129,7 +129,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const elements = Array.from(visibleItemQueue, id => overflowItems[id].element);
 
     for (const [id, divider] of Object.entries(overflowDividers)) {
-      if (groupManager.groupVisibility()[id] !== 'hidden') {
+      if (groupManager.isGroupVisible(id)) {
         elements.push(divider.element);
       }
     }
@@ -167,9 +167,8 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       totalItemSize += getOffsetSize(overflowItems[id].element);
     }
 
-    const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
-      (acc, [id, state]) =>
-        acc + (state !== 'hidden' && overflowDividers[id] ? getOffsetSize(overflowDividers[id].element) : 0),
+    const totalDividerSize = Object.entries(overflowDividers).reduce(
+      (acc, [id, divider]) => acc + (groupManager.isGroupVisible(id) ? getOffsetSize(divider.element) : 0),
       0,
     );
 
@@ -489,6 +488,9 @@ const createGroupManager = () => {
 
   return {
     groupVisibility: () => groupVisibility,
+    isGroupVisible(groupId: string) {
+      return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
+    },
     setItemVisibility(itemId: string, groupId: string, visible?: boolean) {
       const [hiddenItems, visibleItems] = (groups[groupId] ??= [new Set<string>(), new Set<string>()]);
       // Both transitions and removal clear the previous membership; undefined means removal.
