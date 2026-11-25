@@ -11,6 +11,12 @@ export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
   icon: 'fui-PresenceBadge__icon',
 };
 
+const iconSizes = {
+  tiny: '6px',
+  large: '20px',
+  extraLarge: '28px',
+};
+
 const getIsBusy = (status: PresenceBadgeStatus): boolean => {
   if (status === 'busy' || status === 'do-not-disturb' || status === 'blocked') {
     return true;
@@ -78,27 +84,36 @@ const useStyles = makeStyles({
   //
   tiny: {
     aspectRatio: '1',
-    width: '6px',
+    width: iconSizes.tiny,
     backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
     '& svg': {
-      width: '6px !important',
-      height: '6px !important',
+      width: `${iconSizes.tiny} !important`,
+      height: `${iconSizes.tiny} !important`,
+    },
+    '& .fui-Icon-font': {
+      fontSize: `${iconSizes.tiny} !important`,
     },
   },
   large: {
     aspectRatio: '1',
-    width: '20px',
+    width: iconSizes.large,
     '& svg': {
-      width: '20px !important',
-      height: '20px !important',
+      width: `${iconSizes.large} !important`,
+      height: `${iconSizes.large} !important`,
+    },
+    '& .fui-Icon-font': {
+      fontSize: `${iconSizes.large} !important`,
     },
   },
   extraLarge: {
     aspectRatio: '1',
-    width: '28px',
+    width: iconSizes.extraLarge,
     '& svg': {
-      width: '28px !important',
-      height: '28px !important',
+      width: `${iconSizes.extraLarge} !important`,
+      height: `${iconSizes.extraLarge} !important`,
+    },
+    '& .fui-Icon-font': {
+      fontSize: `${iconSizes.extraLarge} !important`,
     },
   },
 });
@@ -107,12 +122,11 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
-  'use no memo';
-
   const rootClassName = useRootClassName();
   const iconClassName = useIconClassName();
   const styles = useStyles();
   const isBusy = getIsBusy(state.status);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     presenceBadgeClassNames.root,
     rootClassName,
@@ -136,6 +150,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(presenceBadgeClassNames.icon, iconClassName, state.icon.className);
   }
 

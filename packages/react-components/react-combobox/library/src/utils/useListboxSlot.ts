@@ -82,6 +82,7 @@ export function useListboxSlot(
   );
 
   const onClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       event.preventDefault();
       triggerRef.current?.focus();

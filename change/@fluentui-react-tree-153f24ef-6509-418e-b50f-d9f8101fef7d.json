@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add CollapseParams to the motion slot type",
-  "packageName": "@fluentui/react-tree",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

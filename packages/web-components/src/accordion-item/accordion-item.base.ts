@@ -1,6 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
-import { toggleState } from '../utils/element-internals.js';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 
 /**
  *
@@ -59,17 +57,8 @@ export class BaseAccordionItem extends FASTElement {
   public disabled: boolean = false;
 
   /**
-   * The item ID
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: id
-   */
-  @attr
-  public id: string = uniqueId('accordion-');
-
-  /**
    * @internal
    */
+  @observable
   public expandbutton!: HTMLElement;
 }

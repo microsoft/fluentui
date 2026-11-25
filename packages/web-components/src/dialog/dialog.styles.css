@@ -1,0 +1,84 @@
+@layer base {
+  :host {
+    --dialog-backdrop: var(--colorBackgroundOverlay);
+    --dialog-starting-scale: 0.85;
+  }
+
+  ::backdrop {
+    background: var(--dialog-backdrop, rgba(0, 0, 0, 0.4));
+  }
+
+  dialog {
+    background: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusXLarge);
+    border: none;
+    box-shadow: var(--shadow64);
+    color: var(--colorNeutralForeground1);
+    max-height: 100vh;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  :host([type='non-modal']) dialog {
+    inset: 0;
+    z-index: 2;
+    overflow: auto;
+  }
+
+  @supports (max-height: 1dvh) {
+    dialog {
+      max-height: 100dvh;
+    }
+  }
+}
+
+@layer animations {
+  /* Disable animations for reduced motion */
+  @media (prefers-reduced-motion: no-preference) {
+    dialog,
+    ::backdrop {
+      transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+      transition-duration: var(--durationGentle);
+      transition-timing-function: var(--curveDecelerateMid);
+      /* Set opacity to 0 when closed */
+      opacity: 0;
+    }
+    ::backdrop {
+      transition-timing-function: var(--curveLinear);
+    }
+
+    /* Set opacity to 1 when open */
+    [open],
+    [open]::backdrop {
+      opacity: 1;
+    }
+
+    /* Exit styles for dialog */
+    dialog:not([open]) {
+      /* Make small when leaving */
+      scale: var(--dialog-starting-scale);
+      /* Faster leaving the stage then entering */
+      transition-timing-function: var(--curveAccelerateMid);
+    }
+  }
+
+  @starting-style {
+    [open],
+    [open]::backdrop {
+      opacity: 0;
+    }
+
+    dialog {
+      scale: var(--dialog-starting-scale);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  @layer base {
+    dialog {
+      border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+  }
+}

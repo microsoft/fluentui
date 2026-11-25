@@ -1,7 +1,7 @@
 'use client';
 
 import type * as ReactTypes from 'react';
-import { useMessageBarBody_unstable, useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 
 import type { MessageBarBodyProps, MessageBarBodyState } from './MessageBarBody.types';
 
@@ -13,7 +13,7 @@ export const useMessageBarBody = (
   props: MessageBarBodyProps,
   ref: ReactTypes.Ref<HTMLDivElement>,
 ): MessageBarBodyState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useMessageBarBody — manual opt-out to preserve runtime behavior
 
   return useMessageBarBody_unstable(props, ref);
 };
@@ -21,4 +21,4 @@ export const useMessageBarBody = (
 /**
  * Returns the context values provided by MessageBarBody to nested links.
  */
-export const useMessageBarBodyContextValues = useMessageBarBodyContextValues_unstable;
+export { useMessageBarBodyContextValues_unstable as useMessageBarBodyContextValues } from '@fluentui/react-message-bar';

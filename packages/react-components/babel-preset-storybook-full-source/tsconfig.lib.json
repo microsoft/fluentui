@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "lib": ["ES2019"],
+    "lib": ["ES2020"],
     "declaration": true,
     "declarationDir": "../../../dist/out-tsc/types",
     "outDir": "../../../dist/out-tsc",
@@ -10,6 +10,13 @@
     "types": ["static-assets", "environment", "node"],
     "module": "CommonJS"
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "src/index.dev.d.ts"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/index.dev.d.ts",
+    "**/__fixtures__/**"
+  ],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

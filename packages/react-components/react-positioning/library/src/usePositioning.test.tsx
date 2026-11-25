@@ -4,7 +4,7 @@ import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
 
-// Mock createPositionManager to avoid @floating-ui/dom dependency in this test.
+// Isolate the hook's event subscription from layout measurements.
 // The mock dispatches the positioning end event asynchronously (via microtask),
 // matching the real implementation's debounce + computePosition promise chain.
 jest.mock('./createPositionManager', () => ({
@@ -13,7 +13,11 @@ jest.mock('./createPositionManager', () => ({
       Promise.resolve().then(() => {
         container.dispatchEvent(
           new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
-            detail: { placement: 'bottom' },
+            detail: {
+              placement: 'bottom',
+              escaped: false,
+              referenceHidden: false,
+            },
           }),
         );
       });
@@ -62,6 +66,8 @@ describe('usePositioning', () => {
       expect(event).toBeInstanceOf(CustomEvent);
       expect(event.type).toBe(POSITIONING_END_EVENT);
       expect(event.detail.placement).toBe('bottom');
+      expect(event.detail.escaped).toBe(false);
+      expect(event.detail.referenceHidden).toBe(false);
     });
 
     it('works when onPositioningEnd is not provided', async () => {

@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 import { useActiveDescendant } from '@fluentui/react-aria';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
   useEventCallback,
-  useId,
   useMergedRefs,
   slot,
   useOnClickOutside,
@@ -26,7 +25,9 @@ import type {
 } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
-import { optionClassNames } from '../Option/useOptionStyles.styles';
+import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
+import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
+import { useComboboxExpandIconSlot } from './useComboboxExpandIconSlot';
 
 /**
  * Create the base state required to render Combobox, without design-only props.
@@ -38,8 +39,6 @@ export const useComboboxBase_unstable = (
   props: BaseComboboxProps,
   ref: React.Ref<HTMLInputElement>,
 ): BaseComboboxState => {
-  'use no memo';
-
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
   const {
@@ -47,7 +46,7 @@ export const useComboboxBase_unstable = (
     activeParentRef,
     controller: activeDescendantController,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
-    matchOption: el => el.classList.contains(optionClassNames.root),
+    matchOption: isComboboxOptionElement,
   });
   const comboboxInternalState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
   const { appearance: _appearance, size: _size, ...baseState } = comboboxInternalState;
@@ -56,7 +55,7 @@ export const useComboboxBase_unstable = (
     baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disableAutoFocus = false, freeform, inlinePopup } = props;
-  const comboId = useId('combobox-');
+  const expandIconRef = React.useRef<HTMLSpanElement>(null);
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -85,6 +84,7 @@ export const useComboboxBase_unstable = (
       ...triggerNativeProps,
     },
     activeDescendantController,
+    shouldCloseOnBlur: event => !expandIconRef.current || event.relatedTarget !== expandIconRef.current,
   });
 
   const rootSlot = slot.always(props.root, {
@@ -95,6 +95,14 @@ export const useComboboxBase_unstable = (
     elementType: 'div',
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+  rootSlot.onBlur = mergeCallbacks(rootSlot.onBlur, event => {
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+      if (event.target !== event.currentTarget.querySelector('input')) {
+        comboboxInternalState.setOpen(event as unknown as ComboboxOpenEvents, false);
+      }
+      comboboxInternalState.setHasFocus(false);
+    }
+  });
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: BaseComboboxState = {
@@ -109,14 +117,13 @@ export const useComboboxBase_unstable = (
       elementType: 'span',
       renderByDefault: true,
     }),
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-disabled': disabled ? 'true' : undefined,
-        'aria-expanded': open,
-        role: 'button',
-      },
-      elementType: 'span',
+    expandIcon: useComboboxExpandIconSlot(props.expandIcon, {
+      disabled,
+      hideFromTabOrder: showClearIcon,
+      open,
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+      triggerLabelledBy: triggerSlot['aria-labelledby'],
     }),
     showClearIcon,
     activeDescendantController,
@@ -136,38 +143,55 @@ export const useComboboxBase_unstable = (
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
 
   const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      state.setOpen(event, !state.open);
+      if (!state.disabled) {
+        state.setOpen(event, !state.open);
+      }
       triggerRef.current?.focus();
     }),
   );
 
-  if (state.expandIcon) {
-    state.expandIcon.onMouseDown = onExpandIconMouseDown;
-
-    // If there is no explicit aria-label, calculate default accName attribute for expandIcon button,
-    // using the following steps:
-    // 1. If there is an aria-label, it is "Open [aria-label]"
-    // 2. If there is an aria-labelledby, it is "Open [aria-labelledby target]" (using aria-labelledby + ids)
-    // 3. If there is no aria-label/ledby attr, it falls back to "Open"
-    // We can't fall back to a label/htmlFor name because of https://github.com/w3c/accname/issues/179
-    const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
-    const defaultOpenString = 'Open'; // this is english-only since it is the fallback
-    if (!hasExpandLabel) {
-      if (props['aria-labelledby']) {
-        const chevronId = state.expandIcon.id ?? `${comboId}-chevron`;
-        const chevronLabelledBy = `${chevronId} ${state.input['aria-labelledby']}`;
-
-        state.expandIcon['aria-label'] = defaultOpenString;
-        state.expandIcon.id = chevronId;
-        state.expandIcon['aria-labelledby'] = chevronLabelledBy;
-      } else if (props['aria-label']) {
-        state.expandIcon['aria-label'] = `${defaultOpenString} ${props['aria-label']}`;
-      } else {
-        state.expandIcon['aria-label'] = defaultOpenString;
+  const onExpandIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      // Pointer clicks already toggle on mousedown; click-only activation has detail 0.
+      if (event.detail === 0) {
+        event.preventDefault();
+        if (!state.disabled) {
+          state.setOpen(event, !state.open);
+        }
+        triggerRef.current?.focus();
       }
-    }
+    }),
+  );
+
+  const onExpandIconKeyDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (state.open && event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        state.setOpen(event, false);
+        triggerRef.current?.focus();
+        return;
+      }
+
+      if (!state.disabled && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        state.setOpen(event, !state.open);
+        triggerRef.current?.focus();
+      }
+    }),
+  );
+  const expandIconSlotRef = useMergedRefs(state.expandIcon?.ref, expandIconRef);
+
+  if (state.expandIcon) {
+    state.expandIcon.ref = expandIconSlotRef;
+    state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
+    state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
 
   const onClearIconMouseDown = useEventCallback(
@@ -214,9 +238,8 @@ export const useComboboxBase_unstable = (
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  'use no memo';
-
-  const { appearance = 'outline', size = 'medium', ...baseProps } = props;
+  const fieldContext = useFieldContext_unstable();
+  const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
 
   if (baseState.clearIcon) {
@@ -231,5 +254,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
     appearance,
     size,
+    input: {
+      ...useTabsterEscapeIgnore(baseState.input, baseState.open),
+      ...baseState.input,
+    },
   };
 };

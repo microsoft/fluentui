@@ -36,8 +36,6 @@ const useNavSubItemSpecificStyles = makeStyles({
  * Apply styling to the NavSubItem slots based on the state
  */
 export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItemState => {
-  'use no memo';
-
   const rootDefaultClassName = useRootDefaultClassName();
   const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();
@@ -47,6 +45,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   const { selected, density } = state;
   const isSmallDensity = density === 'small';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navSubItemClassNames.root,
     rootDefaultClassName,

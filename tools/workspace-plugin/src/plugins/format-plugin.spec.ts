@@ -1,11 +1,11 @@
-import { CreateNodesContext } from '@nx/devkit';
+import { CreateNodesContextV2 } from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
 import { createNodesV2 } from './format-plugin';
 
 describe(`format-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
-  let context: CreateNodesContext;
+  let context: CreateNodesContextV2;
   let tempFs: TempFs;
   let cwd: string;
 
@@ -22,8 +22,6 @@ describe(`format-plugin`, () => {
         },
       },
       workspaceRoot: tempFs.tempDir,
-
-      configFiles: [],
     };
 
     await tempFs.createFiles({
@@ -70,7 +68,7 @@ describe(`format-plugin`, () => {
                     "metadata": Object {
                       "description": "Format code with prettier",
                       "help": Object {
-                        "command": "yarn prettier --help",
+                        "command": "yarn run -T prettier --help",
                         "example": Object {},
                       },
                       "technologies": Array [

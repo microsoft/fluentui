@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import {
-  getPartitionedNativeProps,
-  mergeCallbacks,
-  useControllableState,
-  useTimeout,
-  slot,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, useControllableState, useTimeout, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import type {
   SpinButtonBaseProps,
@@ -33,7 +26,10 @@ type InternalState = {
   atBound: SpinButtonBounds;
 };
 
-const DEFAULT_SPIN_DELAY_MS = 150;
+// A single tap on a trackpad can take ~200-250ms before mouseup fires. Keep the initial
+// repeat delay above that range so a tap is treated as one click while a true hold still
+// triggers repeat behavior.
+const DEFAULT_SPIN_DELAY_MS = 300;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 
@@ -52,19 +48,18 @@ export const useSpinButtonBase_unstable = (
   props: SpinButtonBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): SpinButtonBaseState => {
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'value'],
-  });
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
+  // `className` and `style` go to the root slot, all other native props go to the primary `input` slot.
   const {
+    className,
+    style,
     value,
     displayValue,
     defaultValue,
     min,
     max,
-    step = 1,
     stepPage = 1,
     precision: precisionFromProps,
     onChange,
@@ -72,7 +67,10 @@ export const useSpinButtonBase_unstable = (
     input,
     incrementButton,
     decrementButton,
+    ...inputProps
   } = props;
+  // `step` is also a native input attribute, so it keeps reaching the `input` slot.
+  const step = props.step ?? 1;
 
   const precision = React.useMemo(() => {
     return precisionFromProps ?? Math.max(calculatePrecision(step), 0);
@@ -154,7 +152,6 @@ export const useSpinButtonBase_unstable = (
     if (inputRef.current) {
       // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
       // is not in sync with the user-entered native input value, and some screen readers end up reading the wrong value.
-      // eslint-disable-next-line react-compiler/react-compiler
       inputRef.current.ariaValueNow = newValue;
     }
   };
@@ -264,11 +261,15 @@ export const useSpinButtonBase_unstable = (
     valueToDisplay = textValue;
   } else if (value === null || currentValue === null) {
     valueToDisplay = displayValue ?? '';
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = null;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = 'none';
   } else {
     const roundedValue = precisionRound(currentValue, precision);
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = roundedValue;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = getBound(roundedValue, min, max);
     if (isControlled) {
       valueToDisplay = displayValue ?? String(roundedValue);
@@ -279,6 +280,7 @@ export const useSpinButtonBase_unstable = (
 
   const state: SpinButtonBaseState = {
     spinState: keyboardSpinState,
+    // eslint-disable-next-line react-hooks/refs
     atBound: internalState.current.atBound,
 
     components: {
@@ -288,7 +290,7 @@ export const useSpinButtonBase_unstable = (
       decrementButton: 'button',
     },
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: { className, style },
       elementType: 'span',
     }),
     input: slot.always(input, {
@@ -296,7 +298,7 @@ export const useSpinButtonBase_unstable = (
         autoComplete: 'off',
         role: 'spinbutton',
         type: 'text',
-        ...nativeProps.primary,
+        ...inputProps,
       },
       elementType: 'input',
     }),
@@ -304,9 +306,11 @@ export const useSpinButtonBase_unstable = (
       defaultProps: {
         tabIndex: -1,
         disabled:
-          nativeProps.primary.readOnly ||
-          nativeProps.primary.disabled ||
+          inputProps.readOnly ||
+          inputProps.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'max' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Increment value',
         type: 'button',
@@ -317,9 +321,11 @@ export const useSpinButtonBase_unstable = (
       defaultProps: {
         tabIndex: -1,
         disabled:
-          nativeProps.primary.readOnly ||
-          nativeProps.primary.disabled ||
+          inputProps.readOnly ||
+          inputProps.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'min' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Decrement value',
         type: 'button',
@@ -328,26 +334,44 @@ export const useSpinButtonBase_unstable = (
     }),
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.input.value = valueToDisplay;
+  // eslint-disable-next-line react-hooks/refs
   state.input.ref = useMergedRefs(inputRef, ref);
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemin'] = min;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemax'] = max;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuenow'] = internalState.current.value ?? undefined;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onBlur = mergeCallbacks(state.input.onBlur, handleBlur);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyDown = mergeCallbacks(state.input.onKeyDown, handleKeyDown);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyUp = mergeCallbacks(state.input.onKeyUp, handleKeyUp);
 
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseDown = mergeCallbacks(handleIncrementMouseDown, state.incrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseUp = mergeCallbacks(state.incrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseLeave = mergeCallbacks(state.incrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseDown = mergeCallbacks(handleDecrementMouseDown, state.decrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseUp = mergeCallbacks(state.decrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseLeave = mergeCallbacks(state.decrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   return state;
 };
 
@@ -361,9 +385,6 @@ export const useSpinButtonBase_unstable = (
  * @param ref - reference to root HTMLElement of SpinButton
  */
 export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
-
   const overrides = useOverrides();
 
   const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;

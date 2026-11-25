@@ -18,9 +18,19 @@ export type ToastProps = ComponentProps<ToastSlots> & {
 };
 
 /**
+ * Toast Props without design-only props.
+ */
+export type ToastBaseProps = Omit<ToastProps, 'appearance'>;
+
+/**
  * State used in rendering Toast
  */
 export type ToastState = ComponentState<ToastSlots> & {
   backgroundAppearance: BackgroundAppearanceContextValue;
   intent?: ToastIntent | undefined;
 };
+
+/**
+ * State used in rendering Toast, without design-only state.
+ */
+export type ToastBaseState = Omit<ToastState, 'backgroundAppearance'>;

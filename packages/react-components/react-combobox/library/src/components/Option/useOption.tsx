@@ -42,8 +42,6 @@ function getTextString(text: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  'use no memo';
-
   const state = useOptionBase_unstable(props, ref);
 
   // check icon

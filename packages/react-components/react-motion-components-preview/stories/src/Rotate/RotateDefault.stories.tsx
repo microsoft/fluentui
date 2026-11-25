@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
+  Card,
+  CardHeader,
   Field,
   makeStyles,
   tokens,
@@ -11,6 +13,7 @@ import {
   Radio,
   motionTokens,
   Button,
+  Text,
 } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
@@ -21,11 +24,13 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-    overflow: 'clip',
   },
   card: {
     gridArea: 'card',
     padding: tokens.spacingHorizontalMNudge,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
   controls: {
     display: 'flex',
@@ -47,7 +52,7 @@ const useClasses = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground2,
     marginBottom: tokens.spacingVerticalXS,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     paddingBottom: tokens.spacingVerticalXS,
   },
   toggleGroup: {
@@ -199,9 +204,16 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
       </div>
 
       <Rotate visible={visible} axis={axis} outAngle={outAngle} duration={duration}>
-        <div className={classes.card}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </Rotate>
     </div>
   );

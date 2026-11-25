@@ -22,8 +22,8 @@ const useStyles = makeStyles({
   title: { margin: '0 0 12px' },
 
   card: {
-    width: '300px',
-    maxWidth: '100%',
+    maxWidth: '300px',
+    width: '100%',
     height: 'fit-content',
   },
 
@@ -112,8 +112,9 @@ export const Size = (): JSXElement => {
 Size.parameters = {
   docs: {
     description: {
-      story: `Size options are mainly to provide variety, and consistency when using cards for different usages. It
-      relates to padding and border-radius and not so much the actual dimensions of the card.`,
+      story:
+        'Size options are mainly to provide variety, and consistency when using cards for different usages.' +
+        'It relates to padding and border-radius and not so much the actual dimensions of the card.',
     },
   },
 };

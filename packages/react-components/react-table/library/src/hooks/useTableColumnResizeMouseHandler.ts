@@ -45,6 +45,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const onDragEnd = React.useCallback(
     (event: NativeTouchOrMouseEvent) => {
       if (isMouseEvent(event)) {
+        // eslint-disable-next-line react-hooks/immutability
         targetDocument?.removeEventListener('mouseup', onDragEnd);
         targetDocument?.removeEventListener('mousemove', onDrag);
       }

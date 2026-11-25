@@ -1,9 +1,9 @@
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TagPickerGroupState } from './TagPickerGroup.types';
+import type { TagPickerGroupBaseState } from './TagPickerGroup.types';
 import { renderTagGroup_unstable, type TagGroupContextValues } from '@fluentui/react-tags';
 
 export function renderTagPickerGroup_unstable(
-  state: TagPickerGroupState,
+  state: TagPickerGroupBaseState,
   contexts: TagGroupContextValues,
 ): JSXElement | null {
   if (!state.hasSelectedOptions) {

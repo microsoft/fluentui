@@ -1,26 +1,22 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useToolbarBase_unstable,
-  useToolbarContext_unstable,
-  useToolbarContextValues_unstable,
-} from '@fluentui/react-toolbar';
+import { useToolbarBase_unstable, useToolbarContextValues_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarProps, ToolbarState, ToolbarContextValues } from './Toolbar.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Toolbar component, given its props and ref.
  * The returned state can be modified with hooks before being passed to `renderToolbar`.
  */
 export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
-  'use no memo';
-
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
-  state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
 
   return state;
 };
@@ -28,7 +24,7 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
 /**
  * Returns the context of the toolbar, which is used to pass information about the toolbar to its children.
  */
-export const useToolbarContext = useToolbarContext_unstable;
+export { useToolbarContext_unstable as useToolbarContext } from '@fluentui/react-toolbar';
 
 /**
  * Maps the state of the toolbar to the values that are passed through context to its children.

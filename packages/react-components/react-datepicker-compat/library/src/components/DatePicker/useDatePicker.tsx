@@ -44,8 +44,6 @@ function useFocusLogic() {
 }
 
 function usePopupVisibility(props: DatePickerProps) {
-  'use no memo';
-
   const [open, setOpen] = useControllableState({
     initialState: false,
     defaultState: props.defaultOpen,
@@ -83,6 +81,7 @@ function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFormattedDate(value && formatDate ? formatDate(value) : '');
   }, [formatDate, value]);
 
@@ -105,8 +104,6 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param ref - reference to root Input slot
  */
 export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
-  'use no memo';
-
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -323,6 +320,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       if (!preventFocusOpeningPicker.current) {
         showDatePickerPopup();
       }
+      // eslint-disable-next-line react-hooks/immutability
       preventFocusOpeningPicker.current = false;
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
@@ -456,6 +454,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar.current.focus();
     }
   }, [disableAutoFocus, open, props.disabled]);
+  // eslint-disable-next-line react-hooks/refs
   const calendarShorthand = slot.always(props.calendar, {
     defaultProps: {
       allFocusable,

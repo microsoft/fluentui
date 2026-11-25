@@ -9,6 +9,7 @@ import { getLanguage } from '../utils/language.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -25,6 +26,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
+ * @fires { Event } change - Fires a custom 'change' event when the selected option changes
+ *
  * @public
  */
 export class BaseDropdown extends FASTElement {
@@ -35,6 +38,14 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   private static AnchorPositionFallbackObserver: IntersectionObserver;
+
+  /**
+   * The element identity. This static property should NOT be overridden by subclasses. It’s designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'dropdown';
 
   /**
    * The ID of the current active descendant.
@@ -70,7 +81,7 @@ export class BaseDropdown extends FASTElement {
       const optionIndex = this.matches(':has(:focus-visible)') ? next : -1;
 
       this.enabledOptions.forEach((option, index) => {
-        option.active = index === optionIndex;
+        option.toggleAttribute('active', index === optionIndex);
       });
 
       if (this.open) {
@@ -232,29 +243,25 @@ export class BaseDropdown extends FASTElement {
 
       notifier.notify('multiple');
 
-      waitForConnectedDescendants(
-        next,
-        () => {
-          this.options.forEach(option => {
-            option.disabled = option.disabledAttribute || this.disabled;
-            option.name = this.name;
+      Updates.enqueue(() => {
+        this.options.forEach(option => {
+          option.disabled = option.disabledAttribute || this.disabled;
+          option.name = this.name;
+        });
+
+        this.enabledOptions
+          .filter(x => x.defaultSelected)
+          .forEach((x, i) => {
+            x.selected = this.multiple || i === 0;
           });
 
-          this.enabledOptions
-            .filter(x => x.defaultSelected)
-            .forEach((x, i) => {
-              x.selected = this.multiple || i === 0;
-            });
-
-          this.setValidity();
-        },
-        { idleCallback: true },
-      );
+        this.setValidity();
+      });
 
       if (AnchorPositioningCSSSupported) {
         // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
         // It's unclear if the spec requires the `anchor-name` to be unique when styled on the `:host`.
-        const anchorName = uniqueId('--dropdown-anchor-');
+        const anchorName = this.style.getPropertyValue('anchor-name') || uniqueId('--dropdown-anchor-');
         this.style.setProperty('anchor-name', anchorName);
         this.listbox.style.setProperty('position-anchor', anchorName);
       }
@@ -380,17 +387,6 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * The initial value of the control. When the control is a combobox, this value is used to set the value of the
-   * control when the dropdown is initialized.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `value`
-   */
-  @attr({ attribute: 'value' })
-  public valueAttribute: string = '';
-
-  /**
    * The slot element for the control.
    * @internal
    */
@@ -448,7 +444,10 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.listbox?.enabledOptions ?? [];
+    return (
+      this.listbox?.enabledOptions ??
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled)
+    );
   }
 
   /**
@@ -513,7 +512,9 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get options(): DropdownOption[] {
-    return this.listbox?.options ?? [];
+    return (
+      this.listbox?.options ?? Array.from(this.querySelectorAll('*')).filter<DropdownOption>(o => isDropdownOption(o))
+    );
   }
 
   /**
@@ -836,6 +837,64 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The duration in milliseconds after the last character search keystroke before the search string is cleared.
+   */
+  protected searchTimeoutMs = 500;
+
+  /**
+   * The accumulated search string used to match option labels by prefix when printable characters are typed.
+   *
+   * @internal
+   */
+  private searchString: string = '';
+
+  /**
+   * The timeout id used to reset the search string.
+   *
+   * @internal
+   */
+  private searchTimeout?: ReturnType<typeof setTimeout>;
+
+  /**
+   * Handles printable character input by moving {@link Dropdown#activeIndex} to the next option whose label matches the
+   * accumulated search string. When the string is a single character (or the same character repeated), matching
+   * options are cycled through; otherwise the string is treated as a prefix match.
+   *
+   * @param char - the printable character that was pressed
+   * @internal
+   */
+  private handleSearchCharacter(char: string): void {
+    const isRepeating = this.searchString === char.repeat(this.searchString.length);
+    this.searchString += char;
+
+    let candidates = this.searchString.length > 1 ? this.filterOptions(this.searchString) : [];
+    let isCycling = false;
+
+    if (!candidates.length && isRepeating) {
+      candidates = this.filterOptions(char);
+      isCycling = true;
+    }
+
+    if (candidates.length) {
+      const activeOption = this.enabledOptions[this.activeIndex];
+      const currentPos = candidates.indexOf(activeOption);
+      const nextMatch = isCycling
+        ? candidates[this.getEnabledIndexInBounds(currentPos + 1, candidates.length)]
+        : currentPos >= 0
+        ? activeOption
+        : candidates[0];
+
+      this.activeIndex = this.enabledOptions.indexOf(nextMatch);
+    }
+
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.searchString = '';
+      this.searchTimeout = undefined;
+    }, this.searchTimeoutMs);
+  }
+
+  /**
    * Handles the keydown events for the dropdown.
    *
    * @param e - the keyboard event
@@ -857,16 +916,17 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
-      case ' ': {
-        if (this.isCombobox) {
-          break;
-        }
-
-        e.preventDefault();
-      }
-
+      case ' ':
       case 'Enter':
       case 'Tab': {
+        if (e.key === ' ') {
+          if (this.isCombobox) {
+            break;
+          }
+
+          e.preventDefault();
+        }
+
         if (this.open) {
           this.selectOption(this.activeIndex, true);
           if (this.multiple) {
@@ -889,6 +949,12 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (!increment) {
+      if (!this.isCombobox && e.key.length === 1 && e.key !== ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!this.open) {
+          this.listbox.showPopover();
+        }
+        this.handleSearchCharacter(e.key);
+      }
       return true;
     }
 
@@ -1039,11 +1105,19 @@ export class BaseDropdown extends FASTElement {
     Updates.enqueue(() => {
       this.insertControl();
     });
+
+    maybeSetAutoFocus(this);
   }
 
   disconnectedCallback(): void {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
     this.debounceController?.abort();
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = undefined;
+      this.searchString = '';
+    }
 
     super.disconnectedCallback();
   }

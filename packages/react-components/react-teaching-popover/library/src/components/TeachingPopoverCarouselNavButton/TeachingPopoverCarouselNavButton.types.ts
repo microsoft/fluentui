@@ -23,3 +23,7 @@ export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopov
    */
   isSelected?: boolean;
 } & Pick<PopoverContextValue, 'appearance'>;
+
+export type TeachingPopoverCarouselNavButtonBaseProps = TeachingPopoverCarouselNavButtonProps;
+
+export type TeachingPopoverCarouselNavButtonBaseState = Omit<TeachingPopoverCarouselNavButtonState, 'appearance'>;

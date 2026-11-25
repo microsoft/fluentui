@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@fluentui/font-icons-mdl2": "*",
     "@fluentui/react": "*",
     "@fluentui/react-cards": "*",
-    "@fluentui/react-hooks": "*",
     "@fluentui/react-examples": "*",
-    "@fluentui/font-icons-mdl2": "*",
+    "@fluentui/react-hooks": "*",
     "tslib": "^2.1.0"
   }
 }

@@ -12,6 +12,16 @@ export interface IMarkdownProps {
   /**
    * If true, using a code block with language name `renderhtml` will render the contents as HTML.
    * This is to work around markdown-to-jsx's limited support for nested HTML elements.
+   *
+   * @deprecated **UNSAFE.** The contents of a `renderhtml` block are injected verbatim via
+   * `dangerouslySetInnerHTML` with no sanitization, so they can execute arbitrary script in the
+   * origin of the hosting application.
+   *
+   * Only enable this for markdown that is fully authored and reviewed by the application's own
+   * developers, such as documentation files bundled at build time. **Never** enable it for markdown
+   * that any user, tenant, contributor or remote service can influence, and never for markdown
+   * loaded at runtime. If you need to render untrusted markdown, leave this off (the default) or
+   * sanitize the HTML yourself before it reaches this component.
    */
   enableRenderHtmlBlock?: boolean;
 

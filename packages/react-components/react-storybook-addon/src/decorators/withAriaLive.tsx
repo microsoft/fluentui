@@ -23,6 +23,7 @@ const AriaLiveWrapper: React.FC<{ children: React.ReactNode }> = props => {
   React.useEffect(() => {
     // The AriaLiveAnnouncer appends an element to DOM in an effect
     // Trigger an extra renderer to make sure that doc examples that need to announce on mount can do so
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { isCustomElement, type ValuesOf } from '../utils/typings.js';
 import type { BaseAccordionItem } from './accordion-item.base.js';
 
@@ -45,3 +46,10 @@ export function isAccordionItem(
 ): element is BaseAccordionItem {
   return isCustomElement(tagName)(element);
 }
+
+/**
+ * The tag name for the accordion item element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-accordion-item` as const;

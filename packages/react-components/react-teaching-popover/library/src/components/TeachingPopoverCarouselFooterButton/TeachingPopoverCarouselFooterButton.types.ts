@@ -33,3 +33,13 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState &
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
   };
+
+export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarouselFooterButtonProps;
+
+/**
+ * Base state intentionally does not extend ButtonState — `useButton_unstable` is
+ * only invoked from the styled hook, which derives the right `appearance` from
+ * the popover context before calling it.
+ */
+export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
+  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;

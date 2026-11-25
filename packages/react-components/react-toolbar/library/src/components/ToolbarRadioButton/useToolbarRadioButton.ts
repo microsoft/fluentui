@@ -65,7 +65,9 @@ export const useToolbarRadioButtonBase_unstable = (
       onClickOriginal?.(e);
     },
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.root['aria-pressed'] = undefined;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onClick = handleOnClick;
 
   return state;

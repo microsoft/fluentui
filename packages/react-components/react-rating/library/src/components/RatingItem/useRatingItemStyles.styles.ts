@@ -85,7 +85,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useIndicatorStyles = makeStyles({
   lowerHalf: {
     right: '50%',
-    '& > svg': {
+    '& > svg, & > .fui-Icon-font': {
       flex: '0 0 auto',
     },
   },
@@ -105,6 +105,11 @@ const useIndicatorStyles = makeStyles({
     '@media (forced-colors: active)': {
       color: 'Canvas',
       stroke: 'CanvasText',
+      '& > .fui-Icon-font': {
+        WebkitTextStrokeColor: 'CanvasText',
+        // Match SVG's default stroke width independently of theme border tokens.
+        WebkitTextStrokeWidth: '1px',
+      },
     },
   },
   brandFilled: {
@@ -119,8 +124,6 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  'use no memo';
-
   const { color, size, iconFillWidth, appearance } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
@@ -128,9 +131,11 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
 
   if (state.halfValueInput) {
+    // eslint-disable-next-line react-hooks/immutability
     state.halfValueInput.className = mergeClasses(
       ratingItemClassNames.halfValueInput,
       inputBaseClassName,
@@ -140,6 +145,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.fullValueInput) {
+    // eslint-disable-next-line react-hooks/immutability
     state.fullValueInput.className = mergeClasses(
       ratingItemClassNames.fullValueInput,
       inputBaseClassName,
@@ -149,6 +155,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.unselectedIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.unselectedIcon.className = mergeClasses(
       ratingItemClassNames.unselectedIcon,
       indicatorBaseClassName,
@@ -161,6 +168,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.selectedIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,

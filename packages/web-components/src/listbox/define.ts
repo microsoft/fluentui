@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './listbox.definition.js';
+import { Listbox } from './listbox.js';
 
-definition.define(FluentDesignSystem.registry);
+Listbox.define(definition);

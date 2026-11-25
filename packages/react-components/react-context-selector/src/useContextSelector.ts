@@ -22,6 +22,7 @@ export const useContextSelector = <Value, SelectedValue>(
   // Read valueRef during render and return selector(value) directly. This is analogous to `useSyncExternalStore`'s
   // `getSnapshot` and is the only way to select a slice from a shared ref-based store without re-rendering every
   // consumer on every provider update.
+  // eslint-disable-next-line react-hooks/refs
   const valueAtRender = selectorFn(valueRef.current);
   const [, forceUpdate] = React.useReducer((x: number) => x + 1, 0);
 

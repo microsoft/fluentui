@@ -1,0 +1,4 @@
+.root {
+  color: var(--text);
+  padding: var(--space-4);
+}

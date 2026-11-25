@@ -19,6 +19,8 @@ export type AppItemSlots = {
  */
 export type AppItemProps = ComponentProps<AppItemSlots> & { href?: string };
 
+export type AppItemBaseProps = AppItemProps;
+
 /**
  * State used in rendering AppItem
  */
@@ -30,3 +32,5 @@ export type AppItemState = ComponentState<AppItemSlots> & {
    */
   density: NavDensity;
 };
+
+export type AppItemBaseState = Omit<AppItemState, 'density'>;

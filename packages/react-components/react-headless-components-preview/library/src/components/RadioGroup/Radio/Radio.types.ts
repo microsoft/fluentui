@@ -1,14 +1,6 @@
-import type { RadioSlots as RadioBaseSlots, RadioBaseProps, RadioBaseState } from '@fluentui/react-radio';
+import type { RadioBaseState } from '@fluentui/react-radio';
 
-/**
- * Radio component slots
- */
-export type RadioSlots = RadioBaseSlots;
-
-/**
- * Radio component props
- */
-export type RadioProps = RadioBaseProps;
+export type { RadioSlots, RadioBaseProps as RadioProps } from '@fluentui/react-radio';
 
 /**
  * Radio component state
@@ -19,5 +11,10 @@ export type RadioState = RadioBaseState & {
      * Data attribute set when the radio is disabled.
      */
     'data-disabled'?: string;
+
+    /**
+     * Data attribute reflecting the label position.
+     */
+    'data-label-position'?: RadioBaseState['labelPosition'];
   };
 };

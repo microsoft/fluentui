@@ -14,9 +14,19 @@ export type ToastTitleSlots = {
 export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};
 
 /**
+ * ToastTitle Props without design-only props.
+ */
+export type ToastTitleBaseProps = ToastTitleProps;
+
+/**
  * State used in rendering ToastTitle
  */
 export type ToastTitleState = ComponentState<ToastTitleSlots> &
   Pick<ToastContainerContextValue, 'intent'> & {
     backgroundAppearance: BackgroundAppearanceContextValue;
   };
+
+/**
+ * State used in rendering ToastTitle, without design-only state.
+ */
+export type ToastTitleBaseState = Omit<ToastTitleState, 'backgroundAppearance'>;

@@ -10,7 +10,7 @@ You are working in the Microsoft Fluent UI monorepo, a comprehensive design syst
 
 This is a large Nx monorepo with the following key characteristics:
 
-- **Package Manager**: Yarn v1 with strict dependency management
+- **Package Manager**: Yarn 4.x (exact version pinned via `packageManager` in `package.json`; `.yarnrc.yml` configures the repository binary path)
 - **Build System**: Nx workspace with custom plugins (`tools/workspace-plugin/`)
 - **Node.js Versions**: ^22.0.0
 - **Languages**: TypeScript (strict mode), React, Web Components

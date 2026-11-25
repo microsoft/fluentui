@@ -1,0 +1,173 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/Button" />
+
+# Button Accessibility Spec
+
+`Button` triggers an action or event when activated. It is the foundational building block for more specialized button variants in this package — `CompoundButton`, `MenuButton`, `SplitButton`, and `ToggleButton` — each of which has its own accessibility considerations beyond what is covered here.
+
+By default, `Button` renders a native HTML `<button>` element and inherits all of its built-in accessibility behavior. When rendered as an anchor (`as="a"`), additional ARIA attributes and keyboard handlers are applied to make it behave like a button.
+
+## Usage
+
+### When to choose Button
+
+#### Button vs. anchor / Link
+
+Use `Button` when activation triggers an action on the page, such as submitting a form, opening a dialog, or running a command. Use a link (`<a>` or Fluent's `Link` component) when activation navigates the user to a different page or location.
+
+A good indication that something should be a link is if the URL changes when clicked, even if routing is handled via JavaScript. Using a link allows end users to perform actions like copying the URL, opening in a new window or tab, and accessibility benefits such as appearing in a screen reader's links dialog.
+
+If the visual design calls for a button-styled control that navigates somewhere, render `Button` as an anchor with `as="a"` and an `href`. This preserves link semantics (so screen readers announce it as a link, and users can open it in a new tab) while keeping the visual styling of a button.
+
+#### Button vs. ToggleButton
+
+`ToggleButton` should be used when a control represents a binary on/off state that persists after activation, such as toggling bold formatting in an editor. `Button` should be used for actions that do not have a persistent on/off state.
+
+#### Button vs. MenuButton / SplitButton
+
+Use `MenuButton` when activating the control should open a menu of options. Use `SplitButton` when there is a primary default action plus a related menu of variations on that action. Use `Button` when there is a single action with no associated menu.
+
+### Implementing Button
+
+#### Label
+
+Authors must provide an accessible label for every `Button`. The label is what assistive technologies announce when the button receives focus.
+
+For buttons with visible text content, the text content automatically serves as the accessible name:
+
+```tsx
+<Button>Save</Button>
+```
+
+For icon-only buttons (a `Button` with an `icon` slot but no children), an `aria-label` must be provided, since there is no visible text:
+
+```tsx
+<Button icon={<EditRegular />} aria-label="Edit" />
+```
+
+When pairing a `Button` with separate visible label text (for example, when a tooltip is providing the label), use `aria-labelledby` to point at the id of that text.
+
+When using the Fluent `Tooltip` control with a `Button` where the Tooltip represents the primary labelling text, use the `relationship="label"` attribute to provide the accessible name:
+
+```tsx
+<Tooltip content="Edit" relationship="label">
+  <Button icon={<EditRegular />} />
+</Tooltip>
+```
+
+#### Content
+
+Use concise, action-oriented labels. A single verb is usually best, with a noun included if there is any room for interpretation about what the verb acts on (for example, "Delete folder" rather than "Delete"). Use sentence-style capitalization.
+
+#### Content restrictions
+
+The following content types should not be used within children or slots of `Button`:
+
+- Any interactive or focusable content (links, other buttons, inputs).
+- Any structured content, such as tables, lists, or headings.
+
+Focusable content nested inside a button is not reliably reachable by assistive technologies when the root renders as `<button>` or `<div role="button">`.
+
+The following content types may be used within children and slot content of `Button`:
+
+- Images and icons (decorative; the button itself provides the accessible name)
+- Generic elements like `<span>`, without `tabindex` or `role` properties
+- Fluent's `<Text>` component
+
+#### Disabled vs. disabledFocusable
+
+`Button` exposes two ways to indicate that the control cannot be activated:
+
+- `disabled` — the button is not focusable and cannot be activated. This is the default disabled behavior of the underlying `<button>` element.
+- `disabledFocusable` — the button is still programmatically focusable, but it is not in the tab order and activation is blocked. The hook applies `aria-disabled="true"` and intercepts click and key activation.
+
+Outside of very specific edge cases, prefer using the `disabled` attribute for buttons. Assistive tech like screen readers can still read disabled controls, the `disabled` attribute should not be avoided for discoverability by screen readers.
+
+`disabledFocusable` should be used in these cases:
+
+1. The Button is inside a control with arrow key navigation. The only such control that a `Button` should appear in is `Toolbar`.
+2. The Button can become disabled when activated. In this case, use `disabledFocusable` so that the user does not lose their keyboard focus. This affects screen reader users the most since losing focus causes them to lose their cursor's place on the page.
+
+Both `disabled` and `disabledFocusable` apply the same disabled visual styling.
+
+#### Anchor (`as="a"`)
+
+When `Button` is rendered as an anchor with `as="a"`, the underlying element is `<a>` rather than `<button>`. To preserve button-like semantics and behavior, `useARIAButtonProps` adds:
+
+- `role="button"` when no `href` is present (so the element is exposed as interactive to assistive technology; an `<a>` element with no `href` is semantically equivalent to a `<span>`)
+- `tabIndex={0}` so the element is keyboard focusable when no `href` is present
+- Synthetic <kbd>Space</kbd> activation, since anchors do not natively activate on <kbd>Space</kbd>
+
+When `href` is present, the role remains the default link role, and the control is announced as a link. When the anchor is disabled, `href` is removed to prevent navigation, and `role="link"` is set explicitly so the element is still announced as a (disabled) link rather than silently changing role.
+
+#### Color contrast and appearance variants
+
+Each appearance variant has different color contrast considerations:
+
+- `primary` uses brand background colors. The text color is paired with the brand background to meet 4.5:1 contrast in the supported themes.
+- `secondary` (default) and `outline` rely on the page background. They must be placed over a background light or dark enough that the button's border meets 3:1 contrast against the page background, and the text meets 4.5:1 contrast.
+- `subtle` and `transparent` have no border and no background at rest. They must be placed over a background that provides 4.5:1 contrast against the button's text color.
+
+Authors are responsible for ensuring the button is placed on a background where these contrast requirements are met. The included themes guarantee contrast within the default page surfaces.
+
+#### Target size
+
+[WCAG 2.5.8 Target Size (Minimum)](https://w3c.github.io/wcag/understanding/target-size-minimum.html) requires interactive controls to be at least 24×24 CSS pixels. `Button`'s default styles meet this requirement at all sizes, including the smallest icon-only size (24×24). When overriding layout styles such as `padding`, `min-width`, `min-height`, or `font-size`, authors must verify the rendered button is still at least 24×24.
+
+## Semantics
+
+| Element                          | Role mapping | States and properties                                                 |
+| -------------------------------- | ------------ | --------------------------------------------------------------------- |
+| Default (`<button>`)             | button       | `type="button"`, `disabled` or `aria-disabled="true"` when disabled   |
+| Anchor with `href` (`as="a"`)    | link         | `aria-disabled="true"` and `role="link"` when disabled (no `href`)    |
+| Anchor without `href` (`as="a"`) | button       | `role="button"`, `tabIndex="0"`, `aria-disabled="true"` when disabled |
+
+## Keyboard interaction
+
+### Navigate to button
+
+`Button` is a single tab stop.
+
+| Key                               | Result                                              |
+| --------------------------------- | --------------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves focus to the button                           |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the button from a later focus target |
+
+When either `disabled` or `disabledFocusable` is set, the button is removed from in the tab order.
+
+### Activate button
+
+| Key              | Result                                                |
+| ---------------- | ----------------------------------------------------- |
+| <kbd>Enter</kbd> | Activates the button (fires `onClick`)                |
+| <kbd>Space</kbd> | Activates the button on key release (fires `onClick`) |
+
+For native `<button>` elements, this behavior comes from the browser. For anchors rendered with `as="a"`, `useARIAButtonProps` from `@fluentui/react-aria` attaches `onKeyDown` and `onKeyUp` handlers to call `click()` on <kbd>Enter</kbd> and <kbd>Space</kbd>, matching native button behavior. <kbd>Space</kbd> activates on key release (matching the platform convention) and the default scroll behavior is suppressed on key down.
+
+When the button is disabled (`disabled`, `disabledFocusable`, or `aria-disabled="true"`), <kbd>Enter</kbd> and <kbd>Space</kbd> activation is blocked and the click event is not fired.
+
+## Windows contrast themes (high contrast mode)
+
+`Button` adapts to Windows contrast themes (high contrast mode) using system colors inside `@media (forced-colors: active)`:
+
+- Default appearance uses the default system mappings for colors
+- `primary` explicitly maps to `Highlight` (background) and `HighlightText` (text and border) so the visual emphasis of the primary action is preserved in high contrast mode.
+- `:hover` and `:hover:active` states swap to the inverse pairing (`HighlightText` background with `Highlight` text and border) so interactive feedback remains visible.
+- Disabled states use `GrayText` for text, border, and icon, which allows `disabledFocusable` to match the native platform colors for `disabled`.
+
+### Potential high contrast mode pitfalls
+
+The Button control uses `forcedColorAdjust: none` in three places:
+
+- `:hover` styles on the default button
+- `:hover:active` and `:active:focus-visible` on the default button
+- All styles on the `primary` button
+
+This is important because if any custom styles targeting those selectors override `background` or `color` directly instead of updating tokens, it is likely that the correct high contrast color styles will need to be re-declared `forced-colors` media query.
+
+## Motion and animation
+
+`Button` has a short transition (`durationFaster`) on `background`, `border`, and `color` when interaction state changes. This transition is shortened to `0.01ms` when [`prefers-reduced-motion: reduce`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) is set, effectively disabling the animation while preserving the final visual state.
+
+There is no other motion or animation on `Button`.

@@ -260,7 +260,9 @@ const useInputStyles = makeStyles({
     // that vertical controls should also support `writing-mode: vertical-lr`.
     '@supports (writing-mode: sideways-lr)': {
       writingMode: 'vertical-lr',
-      direction: 'rtl',
+      // Keep values increasing upwards in RTL too; Griffel would flip this to ltr.
+      // The cast is needed because the Direction type has no room for the @noflip comment.
+      direction: 'rtl /* @noflip */' as 'rtl',
     },
     // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
     '@supports not (writing-mode: sideways-lr)': {
@@ -273,14 +275,13 @@ const useInputStyles = makeStyles({
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles_unstable = (state: SliderState): SliderState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const isVertical = state.vertical;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     sliderClassNames.root,
     rootStyles.root,
@@ -291,6 +292,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(
     sliderClassNames.rail,
     railStyles.rail,
@@ -298,6 +300,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.rail.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     sliderClassNames.thumb,
     thumbStyles.thumb,
@@ -306,6 +309,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     sliderClassNames.input,
     inputStyles.input,

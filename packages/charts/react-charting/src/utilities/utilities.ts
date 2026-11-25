@@ -1011,7 +1011,7 @@ export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & 
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
     }[];
-  } = {};
+  } = Object.create(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
@@ -1361,7 +1361,7 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
 export function groupChartDataByYValue(
   chartData: IHorizontalBarChartWithAxisDataPoint[],
 ): IHorizontalBarChartWithAxisDataPoint[][] {
-  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = Object.create(null);
   chartData.forEach(dataPoint => {
     const key = dataPoint.y;
     if (!map[key]) {
@@ -2554,11 +2554,3 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
   return text.slice(0, lo) + '...';
 };
-
-export function isSafeUrl(href: string): boolean {
-  if (/^[a-z][a-z0-9+.-]*:/i.test(href)) {
-    return /^(https?|mailto|tel|ftp):/i.test(href);
-  }
-
-  return true;
-}

@@ -228,8 +228,6 @@ export function useAnimateAtoms(): (
   value: AtomMotion | AtomMotion[],
   options: { isReducedMotion: boolean },
 ) => AnimationHandle {
-  'use no memo';
-
   if (process.env.NODE_ENV === 'test') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useAnimateAtomsInTestEnvironment();

@@ -1,0 +1,25 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: grid;
+}
+
+:host {
+  contain: layout style;
+  block-size: auto;
+  max-inline-size: 300px;
+  min-inline-size: 160px;
+  inline-size: auto;
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  grid-template-columns: 10px max-content max-content minmax(0, 1fr) max-content max-content 10px;
+  gap: 2px 0;
+  padding: 4px;
+}
+
+::slotted(*) {
+  grid-column: 1 / -1;
+}

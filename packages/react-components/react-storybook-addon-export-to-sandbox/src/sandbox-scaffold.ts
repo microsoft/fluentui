@@ -51,8 +51,17 @@ export const scaffold = {
 };
 
 function applyTransform(base: Record<string, string>, data: Data): Record<string, string> {
+  let files = base;
+
+  // Auto-inject CSS module files when detected by the babel plugin.
+  // This replaces the need for a manual `withCssModuleSource` + `transformFiles`
+  // callback in every story meta.
+  if (data.cssModuleSources?.cssModules?.length || data.cssModuleSources?.tokensSource) {
+    files = applyCssModuleTransform(files, data);
+  }
+
   if (!data.transformFiles) {
-    return base;
+    return files;
   }
   const ctx: SandboxContext = {
     provider: data.provider,
@@ -64,7 +73,44 @@ function applyTransform(base: Record<string, string>, data: Data): Record<string
     optionalDependencies: data.optionalDependencies,
     devDependencies: data.devDependencies,
   };
-  return data.transformFiles(base, ctx);
+  return data.transformFiles(files, ctx);
+}
+
+/**
+ * Generates sandbox files for auto-detected CSS modules:
+ *   1. Places each CSS module (and optional `tokens.css`) under `src/styles/`.
+ *   2. Rewrites relative `*.module.css` imports in `src/example.tsx` to `./styles/<basename>`.
+ *   3. Prepends `import './styles/tokens.css'` to `src/App.tsx` so design tokens cascade.
+ */
+function applyCssModuleTransform(files: Record<string, string>, data: Data): Record<string, string> {
+  const next = { ...files };
+  const { cssModuleSources } = data;
+
+  for (const mod of cssModuleSources?.cssModules ?? []) {
+    next[`src/styles/${mod.name}`] = mod.source;
+  }
+
+  if (cssModuleSources?.tokensSource) {
+    next['src/styles/tokens.css'] = cssModuleSources.tokensSource;
+  }
+
+  // Rewrite relative *.module.css imports to ./styles/<basename>
+  const example = next['src/example.tsx'];
+  if (typeof example === 'string') {
+    next['src/example.tsx'] = example.replace(/(['"])\.\.?\/[^'"]+\.module\.css\1/g, match => {
+      const quote = match[0];
+      const basename = match.slice(1, -1).split('/').pop();
+      return `${quote}./styles/${basename}${quote}`;
+    });
+  }
+
+  // Prepend tokens import to App.tsx
+  const app = next['src/App.tsx'];
+  if (cssModuleSources?.tokensSource && typeof app === 'string' && !app.includes('./styles/tokens.css')) {
+    next['src/App.tsx'] = `import './styles/tokens.css';\n${app}`;
+  }
+
+  return next;
 }
 
 const Vite = {

@@ -52,7 +52,10 @@ export const useTreeItemPersonaLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
-    main: slot.always(main, { defaultProps: { children }, elementType: 'div' }),
+    main: slot.always(main, {
+      defaultProps: { children, id: treeItemLayoutState.main.id },
+      elementType: 'div',
+    }),
     media: slot.always(media, { elementType: 'div' }),
     description: slot.optional(description, { elementType: 'div' }),
   };

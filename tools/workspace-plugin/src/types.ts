@@ -21,6 +21,7 @@ export interface TsConfig {
 
 export interface PackageJson {
   bin?: string | Record<string, string>;
+  type?: 'module' | 'commonjs';
   types?: string;
   typings?: string;
   private?: boolean;
@@ -28,6 +29,10 @@ export interface PackageJson {
   name: string;
   main: string;
   module?: string;
+  /**
+   * Marks the package as free of side effects so bundlers can tree-shake unused exports.
+   */
+  sideEffects?: boolean | string[];
   /**
    * Vite and Webpack(sass-loader) consume this field
    * @see https://github.com/microsoft/fluentui/pull/27274
@@ -47,7 +52,18 @@ export interface PackageJson {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
-  exports?: Record<string, string | Partial<{ types: string; node: string; import: string; require: string }>>;
+  peerDependenciesMeta?: Record<string, { optional?: boolean }>;
+  exports?: Record<
+    string,
+    | string
+    | Partial<{
+        types: string;
+        style: string;
+        node: string | { module: string; default: string };
+        import: string | { types: string; default: string };
+        require: string | { types: string; default: string };
+      }>
+  >;
 }
 
 export interface PackageJsonWithBeachball extends PackageJson {

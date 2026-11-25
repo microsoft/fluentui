@@ -8,6 +8,7 @@ This Storybook addon enables exporting stories to CodeSandbox or StackBlitz dire
 
 - Export stories to CodeSandbox/StackBlitz
 - Supports both Create React App (CRA) and Vite bundlers
+- "Open in new tab" button to view stories outside the Storybook iframe (enabled by default)
 
 ## Installation
 
@@ -38,6 +39,10 @@ The addon can be configured at two levels:
 ### Preset Configuration (`.storybook/main.js`)
 
 Preset options configure how the addon transforms story source code at build time via `@fluentui/babel-preset-storybook-full-source`.
+
+The transform also emits `parameters.fullSourceIsRunnable`. When it is `false`, the extracted source is incomplete:
+Docs can still show the source and **Open in new tab** can still open the original story, but sandbox export is hidden.
+`fullSourceUnsupportedImports` contains diagnostic specifiers, including for older transforms that omit the boolean.
 
 ```js
 // .storybook/main.ts
@@ -72,11 +77,13 @@ const config: StorybookConfig = {
 };
 ```
 
-| Option                      | Type                                            | Description                                                                         |
-| --------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `importMappings`            | `Record<string, { replace: string }>`           | Maps internal package imports to their public re-export package in generated source |
-| `webpackRule`               | `webpack.RuleSetRule`                           | Override the default webpack rule for the story babel loader                        |
-| `babelLoaderOptionsUpdater` | `(options: TransformOptions) => typeof options` | Transform babel-loader options before they are applied                              |
+| Option                      | Type                                            | Description                                                                                        |
+| --------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `importMappings`            | `Record<string, { replace: string }>`           | Maps internal package imports to their public re-export package in generated source                |
+| `storyGranularity`          | `'file' \| 'story'`                             | Extract the whole file for the last story (default), or self-contained source per story            |
+| `cssModules`                | `boolean \| { tokensFilePath?: string }`        | Preserve CSS module imports and attach their editable source; optionally include a tokens CSS file |
+| `webpackRule`               | `webpack.RuleSetRule`                           | Override the default webpack rule for the story babel loader                                       |
+| `babelLoaderOptionsUpdater` | `(options: TransformOptions) => typeof options` | Transform babel-loader options before they are applied                                             |
 
 ### Styles
 
@@ -111,18 +118,24 @@ const preview = {
         '@fluentui/react-components': '^9.0.0',
       },
     },
+    // "Open in new tab" button is enabled by default.
+    // Set to false to hide it.
+    openInNewTab: true,
   } satisfies Parameters,
 } satisfies Preview;
 
 export default preview;
 ```
 
-| Option                 | Type                                                                 | Required | Description                                                |
-| ---------------------- | -------------------------------------------------------------------- | -------- | ---------------------------------------------------------- |
-| `provider`             | `'codesandbox-cloud' \| 'codesandbox-browser' \| 'stackblitz-cloud'` | Yes      | Which sandbox provider to use for the export               |
-| `bundler`              | `'vite' \| 'cra'`                                                    | Yes      | Which bundler template to scaffold in the sandbox          |
-| `requiredDependencies` | `Record<string, string>`                                             | No       | Dependencies always included in the sandbox `package.json` |
-| `optionalDependencies` | `Record<string, string>`                                             | No       | Dependencies included only when detected in story imports  |
+| Option                 | Type                                                                 | Required | Description                                                  |
+| ---------------------- | -------------------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| `provider`             | `'codesandbox-cloud' \| 'codesandbox-browser' \| 'stackblitz-cloud'` | Yes      | Which sandbox provider to use for the export                 |
+| `bundler`              | `'vite' \| 'cra'`                                                    | Yes      | Which bundler template to scaffold in the sandbox            |
+| `requiredDependencies` | `Record<string, string>`                                             | No       | Dependencies always included in the sandbox `package.json`   |
+| `optionalDependencies` | `Record<string, string>`                                             | No       | Dependencies included only when detected in story imports    |
+| `openInNewTab`         | `boolean`                                                            | No       | Show "Open in new tab" button in Docs view (default: `true`) |
+
+> **Note on `openInNewTab` placement:** The `openInNewTab` parameter is a separate top-level key alongside `exportToSandbox`, not nested within it. This is because opening a story in a new browser tab is conceptually unrelated to exporting to an external sandbox provider. Ideally this feature would live in `@fluentui/react-storybook-addon` (the base addon), but for simplicity it is currently shipped within this package. A future refactor may move it to the appropriate addon.
 
 ### Local (Per Story) Configuration
 
@@ -140,6 +153,8 @@ MyStory.parameters = {
       '@fluentui/react-components': 'latest',
     },
   },
+  // Disable "Open in new tab" for this specific story
+  openInNewTab: false,
 };
 ```
 

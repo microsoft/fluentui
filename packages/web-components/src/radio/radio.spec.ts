@@ -1,8 +1,11 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Radio } from './radio.js';
+import { tagName } from './radio.options.js';
 
 test.describe('Radio', () => {
-  test.use({ tagName: 'fluent-radio' });
+  test.use({
+    tagName,
+  });
 
   test('should have a role of `radio`', async ({ fastPage }) => {
     const { element } = fastPage;
@@ -21,9 +24,9 @@ test.describe('Radio', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-radio');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -87,12 +90,12 @@ test.describe('Radio', () => {
   test('should initialize to the provided value attribute if set pre-connection', async ({ fastPage, page }) => {
     await fastPage.setTemplate('');
 
-    const value = await page.evaluate(() => {
-      const radio = document.createElement('fluent-radio') as Radio;
+    const value = await page.evaluate(tagName => {
+      const radio = document.createElement(tagName) as Radio;
       radio.setAttribute('value', 'foo');
 
       return radio.value;
-    });
+    }, tagName);
 
     expect(value).toBe('foo');
   });
@@ -157,7 +160,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio>Radio</fluent-radio>
+          <${tagName}>Radio</${tagName}>
         </form>
       `);
 
@@ -180,7 +183,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio checked></fluent-radio>
+          <${tagName} checked></${tagName}>
         </form>
       `);
 
@@ -212,7 +215,7 @@ test.describe('Radio', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form>
-          <fluent-radio>Radio</fluent-radio>
+          <${tagName}>Radio</${tagName}>
         </form>
       `);
 
@@ -242,7 +245,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio></fluent-radio>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -267,7 +270,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio></fluent-radio>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -295,7 +298,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio required></fluent-radio>
+        <${tagName} required></${tagName}>
       </form>
     `);
 
@@ -325,7 +328,7 @@ test.describe('Radio', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form>
-        <fluent-radio name="radio" value="foo"></fluent-radio>
+        <${tagName} name="radio" value="foo"></${tagName}>
         <button type="submit">submit</button>
       </form>
     `);

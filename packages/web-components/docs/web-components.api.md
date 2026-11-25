@@ -6,15 +6,11 @@
 
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
-import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
-import { FASTElementDefinition } from '@microsoft/fast-element';
-import type { HostBehavior } from '@microsoft/fast-element';
-import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
-import { Orientation } from '@microsoft/fast-web-utilities';
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
@@ -35,8 +31,8 @@ export class Accordion extends FASTElement {
     slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
 }
 
-// @public (undocumented)
-export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
+// @public
+export const AccordionDefinition: PartialFASTElementDefinition;
 
 // @public
 export const AccordionExpandMode: {
@@ -54,17 +50,14 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 //
 // @public
 export class AccordionItem extends BaseAccordionItem {
-    block: boolean;
-    markerPosition?: AccordionItemMarkerPosition;
-    size?: AccordionItemSize;
 }
 
 // @internal
 export interface AccordionItem extends StartEnd {
 }
 
-// @public (undocumented)
-export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
+// @public
+export const AccordionItemDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -99,34 +92,26 @@ export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionItemStyles: ElementStyles;
+export const AccordionItemStyles: ElementStyles;
 
 // @public
-export const accordionItemTemplate: ElementViewTemplate<AccordionItem>;
+export const AccordionItemTemplate: ElementViewTemplate<AccordionItem>;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionStyles: ElementStyles;
+export const AccordionStyles: ElementStyles;
 
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionTemplate: ElementViewTemplate<Accordion>;
+export const AccordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
 export class AnchorButton extends BaseAnchor {
-    appearance?: AnchorButtonAppearance | undefined;
-    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
-    iconOnly: boolean;
-    iconOnlyChanged(prev: boolean, next: boolean): void;
-    shape?: AnchorButtonShape | undefined;
-    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
-    size?: AnchorButtonSize;
-    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -144,8 +129,8 @@ export const AnchorButtonAppearance: {
 // @public
 export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
-// @public (undocumented)
-export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
+// @public
+export const AnchorButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const AnchorButtonShape: {
@@ -183,8 +168,6 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends BaseAvatar {
-    active?: AvatarActive | undefined;
-    appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
@@ -198,7 +181,6 @@ export class Avatar extends BaseAvatar {
     generateInitials(): string | void;
     // @internal
     handleChange(source: any, propertyName: string): void;
-    shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
 
@@ -271,7 +253,7 @@ export const AvatarColor: {
 export type AvatarColor = ValuesOf<typeof AvatarColor>;
 
 // @public
-export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
+export const AvatarDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "AvatarNamedColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -358,10 +340,6 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 //
 // @public
 export class Badge extends FASTElement {
-    appearance: BadgeAppearance;
-    color: BadgeColor;
-    shape?: BadgeShape;
-    size?: BadgeSize;
 }
 
 // @internal
@@ -394,8 +372,8 @@ export const BadgeColor: {
 // @public
 export type BadgeColor = ValuesOf<typeof BadgeColor>;
 
-// @public (undocumented)
-export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
+// @public
+export const BadgeDefinition: PartialFASTElementDefinition;
 
 // @public
 export const BadgeShape: {
@@ -437,7 +415,6 @@ export class BaseAccordionItem extends FASTElement {
     expandbutton: HTMLElement;
     expanded: boolean;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
 }
 
 // @public
@@ -498,7 +475,6 @@ export class BaseAvatar extends FASTElement {
 // @public
 export class BaseButton extends FASTElement {
     constructor();
-    autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
     // (undocumented)
@@ -537,7 +513,6 @@ export class BaseButton extends FASTElement {
 
 // @public
 export class BaseCheckbox extends FASTElement {
-    autofocus: boolean;
     get checked(): boolean;
     set checked(next: boolean);
     checkValidity(): boolean;
@@ -592,6 +567,17 @@ export class BaseCheckbox extends FASTElement {
 }
 
 // @public
+export class BaseCounterBadge extends FASTElement {
+    count: number;
+    get displayValue(): string | undefined;
+    dot: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    overflowCount: number;
+    showZero: boolean;
+}
+
+// @public
 export class BaseDivider extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
@@ -630,6 +616,8 @@ export class BaseDropdown extends FASTElement {
     // (undocumented)
     disconnectedCallback(): void;
     get displayValue(): string;
+    // @internal
+    static readonly elementIdentity = "dropdown";
     // @internal
     elementInternals: ElementInternals;
     get enabledOptions(): DropdownOption[];
@@ -671,6 +659,7 @@ export class BaseDropdown extends FASTElement {
     placeholder: string;
     reportValidity(): boolean;
     required: boolean;
+    protected searchTimeoutMs: number;
     // @internal
     get selectedIndex(): number;
     get selectedOptions(): DropdownOption[];
@@ -689,7 +678,6 @@ export class BaseDropdown extends FASTElement {
     get validity(): ValidityState;
     get value(): string | null;
     set value(next: string | null);
-    valueAttribute: string;
     get willValidate(): boolean;
 }
 
@@ -726,6 +714,8 @@ export class BaseField extends FASTElement {
     // (undocumented)
     setValidationStates(): void;
     // @internal
+    protected get slottedInputObserver(): MutationObserver;
+    // @internal
     slottedInputs: SlottableInput[];
     // @internal
     slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
@@ -742,11 +732,7 @@ export class BaseMenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    protected isMenuItemElement(el: Element): el is MenuItem;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
     // @internal (undocumented)
@@ -754,7 +740,9 @@ export class BaseMenuList extends FASTElement {
     // (undocumented)
     protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
     // (undocumented)
-    protected menuItems: Element[] | undefined;
+    protected menuChildren: HTMLElement[] | undefined;
+    // (undocumented)
+    protected menuItems: MenuItem[] | undefined;
     // (undocumented)
     protected setItems(): void;
 }
@@ -768,18 +756,13 @@ export class BaseProgressBar extends FASTElement {
     indicator?: HTMLElement;
     // @internal
     protected indicatorChanged(): void;
-    // @internal
     max?: number;
     // @internal
     protected maxChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
     protected setIndicatorWidth(): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
-    // @internal
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
@@ -798,11 +781,15 @@ export class BaseRadioGroup extends FASTElement {
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // @internal
     protected disabledChanged(prev?: boolean, next?: boolean): void;
     // (undocumented)
     disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    static readonly elementIdentity = "radio-group";
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -811,8 +798,6 @@ export class BaseRadioGroup extends FASTElement {
     focus(): void;
     // @internal
     focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
     static formAssociated: boolean;
     // (undocumented)
     formResetCallback(): void;
@@ -896,22 +881,28 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
-    adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // @internal
+    // @internal (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
-    orientation: TablistOrientation;
     // @internal (undocumented)
+    handleClick(event: PointerEvent): void;
+    // @internal (undocumented)
+    handleFocusIn(event: FocusEvent): void;
+    orientation: TablistOrientation;
+    // (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
-    protected setTabs(): void;
+    protected setTabs({ connectToPanel, forceDisabled }?: {
+        connectToPanel?: boolean | undefined;
+        forceDisabled?: boolean | undefined;
+    }): void;
     // @internal
     slottedTabs: Node[];
-    // @internal
-    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // @internal (undocumented)
+    protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
     tabs: Tab[];
     // @internal (undocumented)
@@ -946,7 +937,6 @@ export class BaseTextArea extends FASTElement {
     protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
     // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
@@ -980,9 +970,6 @@ export class BaseTextArea extends FASTElement {
     required: boolean;
     // (undocumented)
     protected requiredChanged(): void;
-    resize: TextAreaResize;
-    // (undocumented)
-    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
     // @internal
     rootEl: HTMLDivElement;
     select(): void;
@@ -1004,9 +991,6 @@ export class BaseTextArea extends FASTElement {
 // @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
-    autofocus: boolean;
-    // @internal
-    beforeinputHandler(e: InputEvent): boolean | void;
     // @internal
     changeHandler(e: InputEvent): boolean | void;
     checkValidity(): boolean;
@@ -1030,7 +1014,6 @@ export class BaseTextInput extends FASTElement {
     disabled?: boolean;
     // @internal
     elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;
@@ -1079,8 +1062,6 @@ export class BaseTextInput extends FASTElement {
 export class BaseTree extends FASTElement {
     constructor();
     // @internal
-    blurHandler(e: FocusEvent): void;
-    // @internal
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
@@ -1097,10 +1078,9 @@ export class BaseTree extends FASTElement {
     defaultSlot: HTMLSlotElement;
     // @internal
     defaultSlotChanged(): void;
+    protected get descendantTreeItems(): BaseTreeItem[];
     // @internal
     elementInternals: ElementInternals;
-    // @internal
-    focusHandler(e: FocusEvent): void;
     // @internal (undocumented)
     handleDefaultSlotChange(): void;
     // @internal
@@ -1145,10 +1125,6 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 //
 // @public
 export class Button extends BaseButton {
-    appearance?: ButtonAppearance;
-    iconOnly: boolean;
-    shape?: ButtonShape;
-    size?: ButtonSize;
 }
 
 // @internal (undocumented)
@@ -1167,7 +1143,7 @@ export const ButtonAppearance: {
 export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
 
 // @public
-export const ButtonDefinition: FASTElementDefinition<typeof Button>;
+export const ButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ButtonFormTarget: {
@@ -1227,13 +1203,11 @@ export class Checkbox extends BaseCheckbox {
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
-    shape?: CheckboxShape;
-    size?: CheckboxSize;
     toggleChecked(force?: boolean): void;
 }
 
 // @public
-export const CheckboxDefinition: FASTElementDefinition<typeof Checkbox>;
+export const CheckboxDefinition: PartialFASTElementDefinition;
 
 // @public
 export type CheckboxOptions = {
@@ -2378,8 +2352,8 @@ export const CompoundButtonAppearance: {
 // @public
 export type CompoundButtonAppearance = ValuesOf<typeof CompoundButtonAppearance>;
 
-// @public (undocumented)
-export const CompoundButtonDefinition: FASTElementDefinition<typeof CompoundButton>;
+// @public
+export const CompoundButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const CompoundButtonShape: {
@@ -2409,30 +2383,17 @@ export const CompoundButtonStyles: ElementStyles;
 // @public
 export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 
-// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
+// Warning: (ae-missing-release-tag) "CounterBadge" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export class CounterBadge extends FASTElement {
+export class CounterBadge extends BaseCounterBadge {
     appearance?: CounterBadgeAppearance;
     color?: CounterBadgeColor;
-    count: number;
-    // (undocumented)
-    protected countChanged(): void;
-    dot: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    overflowCount: number;
-    // (undocumented)
-    protected overflowCountChanged(): void;
-    // @internal
-    setCount(): string | void;
     shape?: CounterBadgeShape;
-    showZero: boolean;
     size?: CounterBadgeSize;
 }
 
-// @internal
+// @public (undocumented)
 export interface CounterBadge extends StartEnd {
 }
 
@@ -2460,8 +2421,8 @@ export const CounterBadgeColor: {
 // @public
 export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
 
-// @public (undocumented)
-export const CounterBadgeDefinition: FASTElementDefinition<typeof CounterBadge>;
+// @public
+export const CounterBadgeDefinition: PartialFASTElementDefinition;
 
 // @public
 export const CounterBadgeShape: {
@@ -2487,6 +2448,9 @@ export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;
 
 // @public
 export const CounterBadgeStyles: ElementStyles;
+
+// @public
+export const CounterBadgeTagName: "fluent-counter-badge";
 
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
@@ -2519,26 +2483,29 @@ export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 export const curveLinear = "var(--curveLinear)";
 
 // @public
-export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
-    dialog: HTMLDialogElement;
     // (undocumented)
-    protected dialogChanged(): void;
-    emitBeforeToggle: () => void;
+    connectedCallback(): void;
+    dialog: HTMLDialogElement;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | undefined;
+    emitBeforeToggle(): void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
-    // (undocumented)
-    protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
-    // @internal
-    protected updateDialogAttributes(): void;
 }
 
 // @public
@@ -2548,7 +2515,7 @@ export class DialogBody extends FASTElement {
 }
 
 // @public
-export const DialogBodyDefinition: FASTElementDefinition<typeof DialogBody>;
+export const DialogBodyDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DialogBodyStyles: ElementStyles;
@@ -2557,7 +2524,7 @@ export const DialogBodyStyles: ElementStyles;
 export const DialogBodyTemplate: ElementViewTemplate;
 
 // @public
-export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+export const DialogDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DialogStyles: ElementStyles;
@@ -2577,6 +2544,15 @@ export const DialogType: {
 // @public (undocumented)
 export type DialogType = ValuesOf<typeof DialogType>;
 
+// @public
+export const Direction: {
+    readonly ltr: "ltr";
+    readonly rtl: "rtl";
+};
+
+// @public
+export type Direction = (typeof Direction)[keyof typeof Direction];
+
 // Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -2584,12 +2560,6 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 
 // @public
 export class Divider extends BaseDivider {
-    // (undocumented)
-    alignContent?: DividerAlignContent;
-    // (undocumented)
-    appearance?: DividerAppearance;
-    // (undocumented)
-    inset?: boolean;
 }
 
 // @public
@@ -2613,7 +2583,7 @@ export const DividerAppearance: {
 export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
 
 // @public
-export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+export const DividerDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DividerOrientation: {
@@ -2648,27 +2618,26 @@ export class Drawer extends FASTElement {
     cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     dialog: HTMLDialogElement;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | null;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
     // (undocumented)
-    protected observeRoleAttr(): void;
-    position: DrawerPosition;
-    // (undocumented)
-    protected roleAttrObserver: MutationObserver;
+    role: string | null;
     show(): void;
-    // (undocumented)
-    size: DrawerSize;
     type: DrawerType;
-    // (undocumented)
-    protected typeChanged(): void;
-    // (undocumented)
-    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -2679,8 +2648,8 @@ export class DrawerBody extends FASTElement {
     clickHandler(event: PointerEvent): boolean | void;
 }
 
-// @public (undocumented)
-export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+// @public
+export const DrawerBodyDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DrawerBodyStyles: ElementStyles;
@@ -2690,8 +2659,8 @@ export const DrawerBodyStyles: ElementStyles;
 // @public (undocumented)
 export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
 
-// @public (undocumented)
-export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+// @public
+export const DrawerDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -2739,16 +2708,14 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
-    appearance: DropdownAppearance;
-    size?: DropdownSize;
 }
 
 // @public
 export const DropdownAppearance: {
-    filledDarker: string;
-    filledLighter: string;
-    outline: string;
-    transparent: string;
+    readonly filledDarker: "filled-darker";
+    readonly filledLighter: "filled-lighter";
+    readonly outline: "outline";
+    readonly transparent: "transparent";
 };
 
 // @public (undocumented)
@@ -2758,7 +2725,7 @@ export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
 export const dropdownButtonTemplate: ViewTemplate<BaseDropdown, any>;
 
 // @public
-export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+export const DropdownDefinition: PartialFASTElementDefinition;
 
 // @public
 export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
@@ -2768,9 +2735,6 @@ export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
 // @public
 export class DropdownOption extends FASTElement implements Start {
     constructor();
-    active: boolean;
-    // @internal
-    protected activeChanged(prev: boolean, next: boolean): void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -2821,7 +2785,7 @@ export class DropdownOption extends FASTElement implements Start {
 }
 
 // @public
-export const DropdownOptionDefinition: FASTElementDefinition<typeof DropdownOption>;
+export const DropdownOptionDefinition: PartialFASTElementDefinition;
 
 // @public
 export type DropdownOptionOptions = StartOptions<DropdownOption> & {
@@ -2899,11 +2863,10 @@ export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = a
 
 // @public
 export class Field extends BaseField {
-    labelPosition: FieldLabelPosition;
 }
 
 // @public
-export const FieldDefinition: FASTElementDefinition<typeof Field>;
+export const FieldDefinition: PartialFASTElementDefinition;
 
 // @public
 export const FieldLabelPosition: {
@@ -2982,23 +2945,15 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
-export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
 class Image_2 extends FASTElement {
-    block?: boolean;
-    bordered?: boolean;
-    fit?: ImageFit;
-    shadow?: boolean;
-    shape?: ImageShape;
 }
 export { Image_2 as Image }
 
 // @public
-export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
+export const ImageDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ImageFit: {
@@ -3049,14 +3004,11 @@ export function isTreeItem(element?: Node | null, tagName?: string): element is 
 
 // @public
 export class Label extends FASTElement {
-    disabled: boolean;
     required: boolean;
-    size?: LabelSize;
-    weight?: LabelWeight;
 }
 
 // @public
-export const LabelDefinition: FASTElementDefinition<typeof Label>;
+export const LabelDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "LabelSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3090,9 +3042,6 @@ export const LabelWeight: {
 export type LabelWeight = ValuesOf<typeof LabelWeight>;
 
 // @public
-export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const lineHeightBase100 = "var(--lineHeightBase100)";
 
 // @public
@@ -3124,8 +3073,6 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
 export class Link extends BaseAnchor {
-    appearance?: LinkAppearance | undefined;
-    inline: boolean;
 }
 
 // @public
@@ -3136,8 +3083,8 @@ export const LinkAppearance: {
 // @public
 export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 
-// @public (undocumented)
-export const LinkDefinition: FASTElementDefinition<typeof Link>;
+// @public
+export const LinkDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3191,7 +3138,7 @@ export class Listbox extends FASTElement {
 }
 
 // @public
-export const ListboxDefinition: FASTElementDefinition<typeof Listbox>;
+export const ListboxDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ListboxStyles: ElementStyles;
@@ -3203,38 +3150,27 @@ export const ListboxTemplate: ElementViewTemplate<Listbox>;
 export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
-export abstract class MatchMediaBehavior implements HostBehavior {
-    constructor(query: MediaQueryList);
-    connectedCallback(controller: HostController): void;
-    protected abstract constructListener(controller: HostController): MediaQueryListListener;
-    disconnectedCallback(controller: HostController): void;
-    readonly query: MediaQueryList;
-}
-
-// @public
-export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
-    constructor(query: MediaQueryList, styles: ElementStyles);
-    protected constructListener(controller: HostController): MediaQueryListListener;
-    readonly query: MediaQueryList;
-    // @internal
-    removedCallback(controller: HostController<any>): void;
-    readonly styles: ElementStyles;
-    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-}
-
-// @public
-export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
-
-// @public
 export class Menu extends FASTElement {
+    // @internal
+    protected addMenuListListeners(): void;
+    // @internal
+    protected addTriggerListeners(): void;
     closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
+    // @internal
+    protected documentClickHandler: (e: any) => void;
     focusMenuList(): void;
     focusTrigger(): void;
     menuKeydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    protected _menuList?: HTMLElement;
+    // @internal (undocumented)
+    protected _menuListAbortController?: AbortController;
+    // @internal
+    protected _open: boolean;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -3251,9 +3187,12 @@ export class Menu extends FASTElement {
     slottedTriggers: HTMLElement[];
     // @internal
     slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
-    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
+    // @internal
+    protected _trigger?: HTMLElement;
+    // @internal (undocumented)
+    protected _triggerAbortController?: AbortController;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
@@ -3272,8 +3211,8 @@ export const MenuButtonAppearance: {
 // @public
 export type MenuButtonAppearance = ValuesOf<typeof MenuButtonAppearance>;
 
-// @public (undocumented)
-export const MenuButtonDefinition: FASTElementDefinition<typeof MenuButton>;
+// @public
+export const MenuButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const MenuButtonShape: {
@@ -3299,7 +3238,7 @@ export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
 export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
 
 // @public
-export const MenuDefinition: FASTElementDefinition<typeof Menu>;
+export const MenuDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "MenuItem" because one of its declarations is marked as @internal
@@ -3322,6 +3261,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
+    // @internal (undocumented)
+    handleSubmenuFocusOut: (e: FocusEvent) => void;
+    // @internal
+    handleToggle: (e: Event) => void;
     hidden: boolean;
     role: MenuItemRole;
     roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
@@ -3333,8 +3276,6 @@ export class MenuItem extends FASTElement {
     protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]): void;
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
-    // @internal
-    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -3346,8 +3287,8 @@ export interface MenuItem extends StartEnd {
 // @public (undocumented)
 export type MenuItemColumnCount = 0 | 1 | 2;
 
-// @public (undocumented)
-export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+// @public
+export const MenuItemDefinition: PartialFASTElementDefinition;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
@@ -3375,10 +3316,14 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends BaseMenuList {
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    setItems(): void;
 }
 
-// @public (undocumented)
-export const MenuListDefinition: FASTElementDefinition<typeof MenuList>;
+// @public
+export const MenuListDefinition: PartialFASTElementDefinition;
 
 // @public
 export const MenuListStyles: ElementStyles;
@@ -3402,13 +3347,10 @@ export class MessageBar extends FASTElement {
     dismissMessageBar: () => void;
     // @internal
     elementInternals: ElementInternals;
-    intent?: MessageBarIntent;
-    layout?: MessageBarLayout;
-    shape?: MessageBarShape;
 }
 
 // @public
-export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+export const MessageBarDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3454,13 +3396,20 @@ export const MessageBarStyles: ElementStyles;
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
+export const Orientation: {
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public
+export type Orientation = (typeof Orientation)[keyof typeof Orientation];
+
+// @public
 export class ProgressBar extends BaseProgressBar {
-    shape?: ProgressBarShape;
-    thickness?: ProgressBarThickness;
 }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ProgressBarShape: {
@@ -3503,6 +3452,8 @@ export class Radio extends BaseCheckbox {
     constructor();
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    static readonly elementIdentity = "radio";
     // @internal @override
     protected requiredChanged(): void;
     // @internal @override
@@ -3517,14 +3468,18 @@ export class Radio extends BaseCheckbox {
 export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focus' | 'setAttribute' | 'getAttribute'>;
 
 // @public
-export const RadioDefinition: FASTElementDefinition<typeof Radio>;
+export const RadioDefinition: PartialFASTElementDefinition;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
 }
 
 // @public
-export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
+export const RadioGroupDefinition: PartialFASTElementDefinition;
 
 // @public
 export const RadioGroupOrientation: {
@@ -3556,9 +3511,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
 export class RatingDisplay extends BaseRatingDisplay {
-    color?: RatingDisplayColor;
-    compact: boolean;
-    size?: RatingDisplaySize;
 }
 
 // @public
@@ -3572,7 +3524,7 @@ export const RatingDisplayColor: {
 export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
 
 // @public
-export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+export const RatingDisplayDefinition: PartialFASTElementDefinition;
 
 // @public
 export const RatingDisplaySize: {
@@ -3599,11 +3551,6 @@ export const roleForMenuItem: {
 
 // @public
 export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
-
-// Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated (undocumented)
-export function setThemeFor(element: HTMLElement, theme: Theme | null): void;
 
 // @public
 export const shadow16 = "var(--shadow16)";
@@ -3700,7 +3647,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    size?: SliderSize;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3747,7 +3693,7 @@ export interface SliderConfiguration {
 }
 
 // @public
-export const SliderDefinition: FASTElementDefinition<typeof Slider>;
+export const SliderDefinition: PartialFASTElementDefinition;
 
 // @public (undocumented)
 export const SliderMode: {
@@ -3796,6 +3742,10 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     readOnly: boolean;
     checked?: boolean;
     value?: string;
+    control?: HTMLButtonElement | HTMLInputElement;
+    constructor: {
+        elementIdentity?: string;
+    };
 };
 
 // @public
@@ -3866,8 +3816,6 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
 export class Spinner extends BaseSpinner {
-    appearance?: SpinnerAppearance;
-    size?: SpinnerSize;
 }
 
 // @public
@@ -3879,8 +3827,8 @@ export const SpinnerAppearance: {
 // @public
 export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
-// @public (undocumented)
-export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+// @public
+export const SpinnerDefinition: PartialFASTElementDefinition;
 
 // @public
 export const SpinnerSize: {
@@ -3952,7 +3900,7 @@ export class Switch extends BaseCheckbox {
 }
 
 // @public
-export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+export const SwitchDefinition: PartialFASTElementDefinition;
 
 // @public
 export const SwitchLabelPosition: {
@@ -3990,6 +3938,8 @@ export class Tab extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
 }
@@ -3998,16 +3948,14 @@ export class Tab extends FASTElement {
 export interface Tab extends StartEnd {
 }
 
-// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabDefinition: FASTElementDefinition<typeof Tab>;
+// @public
+export const TabDefinition: PartialFASTElementDefinition;
 
 // @public
 export class Tablist extends BaseTablist {
-    activeidChanged(oldValue: string, newValue: string): void;
-    appearance?: TablistAppearance;
-    size?: TablistSize;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
@@ -4020,8 +3968,8 @@ export const TablistAppearance: {
 // @public
 export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
 
-// @public (undocumented)
-export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+// @public
+export const TablistDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TablistOrientation: {
@@ -4063,18 +4011,8 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 
 // @public
 class Text_2 extends FASTElement {
-    align?: TextAlign;
-    block: boolean;
     // @internal
     elementInternals: ElementInternals;
-    font?: TextFont;
-    italic: boolean;
-    nowrap: boolean;
-    size?: TextSize;
-    strikethrough: boolean;
-    truncate: boolean;
-    underline: boolean;
-    weight?: TextWeight;
 }
 export { Text_2 as Text }
 
@@ -4093,8 +4031,6 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 //
 // @public
 export class TextArea extends BaseTextArea {
-    appearance: TextAreaAppearance;
-    block: boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
@@ -4133,7 +4069,7 @@ export const TextAreaAutocomplete: {
 export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
 
 // @public
-export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+export const TextAreaDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4170,7 +4106,7 @@ export const TextAreaStyles: ElementStyles;
 export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
-export const TextDefinition: FASTElementDefinition<typeof Text_2>;
+export const TextDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TextFont: {
@@ -4187,8 +4123,6 @@ export type TextFont = ValuesOf<typeof TextFont>;
 //
 // @public
 export class TextInput extends BaseTextInput {
-    appearance?: TextInputAppearance;
-    controlSize?: TextInputControlSize;
 }
 
 // @internal (undocumented)
@@ -4221,7 +4155,7 @@ export const TextInputControlSize: {
 export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 // @public
-export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+export const TextInputDefinition: PartialFASTElementDefinition;
 
 // @public
 export type TextInputOptions = StartEndOptions<TextInput>;
@@ -4312,8 +4246,8 @@ export const ToggleButtonAppearance: {
 // @public
 export type ToggleButtonAppearance = ValuesOf<typeof ToggleButtonAppearance>;
 
-// @public (undocumented)
-export const ToggleButtonDefinition: FASTElementDefinition<typeof ToggleButton>;
+// @public
+export const ToggleButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ToggleButtonShape: {
@@ -4368,22 +4302,22 @@ export class Tooltip extends FASTElement {
 }
 
 // @public
-export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
+export const TooltipDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TooltipPositioningOption: {
-    readonly 'above-start': "block-start span-inline-end";
-    readonly above: "block-start";
-    readonly 'above-end': "block-start span-inline-start";
-    readonly 'below-start': "block-end span-inline-end";
-    readonly below: "block-end";
-    readonly 'below-end': "block-end span-inline-start";
-    readonly 'before-top': "inline-start span-block-end";
-    readonly before: "inline-start";
-    readonly 'before-bottom': "inline-start span-block-start";
-    readonly 'after-top': "inline-end span-block-end";
-    readonly after: "inline-end";
-    readonly 'after-bottom': "inline-end span-block-start";
+    readonly 'above-start': "above-start";
+    readonly above: "above";
+    readonly 'above-end': "above-end";
+    readonly 'below-start': "below-start";
+    readonly below: "below";
+    readonly 'below-end': "below-end";
+    readonly 'before-top': "before-top";
+    readonly before: "before";
+    readonly 'before-bottom': "before-bottom";
+    readonly 'after-top': "after-top";
+    readonly after: "after";
+    readonly 'after-bottom': "after-bottom";
 };
 
 // @public
@@ -4404,14 +4338,18 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    itemToggleHandler(): void;
     size: TreeItemSize;
     // (undocumented)
     protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 
-// @public (undocumented)
-export const TreeDefinition: FASTElementDefinition<typeof Tree>;
+// @public
+export const TreeDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -4441,8 +4379,8 @@ export const TreeItemAppearance: {
 // @public (undocumented)
 export type TreeItemAppearance = ValuesOf<typeof TreeItemAppearance>;
 
-// @public (undocumented)
-export const TreeItemDefinition: FASTElementDefinition<typeof TreeItem>;
+// @public
+export const TreeItemDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4605,7 +4543,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/esm/accordion-item/accordion-item.d.ts:15:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/esm/accordion-item/accordion-item.d.ts:10:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

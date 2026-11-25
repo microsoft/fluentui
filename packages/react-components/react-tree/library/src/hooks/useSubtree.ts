@@ -1,12 +1,10 @@
 'use client';
 
 import type * as React from 'react';
-import type { TreeProps, TreeState } from '../Tree';
+import type { TreeBaseProps, TreeBaseState } from '../components/Tree/Tree.types';
 import type { SubtreeContextValue } from '../contexts/index';
 import { useSubtreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
-import { Collapse } from '@fluentui/react-motion-components-preview';
-import { presenceMotionSlot } from '@fluentui/react-motion';
 
 /**
  * Create the state required to render a sub-level tree.
@@ -15,9 +13,9 @@ import { presenceMotionSlot } from '@fluentui/react-motion';
  * @param ref - reference to root HTMLElement of tree
  */
 export function useSubtree(
-  props: TreeProps,
+  props: TreeBaseProps,
   ref: React.Ref<HTMLElement>,
-): Omit<TreeState & SubtreeContextValue, 'treeType'> {
+): Omit<TreeBaseState & SubtreeContextValue, 'treeType'> {
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
 
   const { level: parentLevel } = useSubtreeContext_unstable();
@@ -29,7 +27,6 @@ export function useSubtree(
     open,
     components: {
       root: 'div',
-      collapseMotion: Collapse,
     },
     level: parentLevel + 1,
     root: slot.always(
@@ -43,12 +40,5 @@ export function useSubtree(
       }),
       { elementType: 'div' },
     ),
-    collapseMotion: presenceMotionSlot(props.collapseMotion, {
-      elementType: Collapse,
-      defaultProps: {
-        visible: open,
-        unmountOnExit: true,
-      },
-    }),
   };
 }

@@ -7,6 +7,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
+  agentwork: {
+    extensions: ['work'],
+  },
   aipage: {
     extensions: ['page'],
   },
@@ -49,7 +52,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['classifier'],
   },
   clipchamp: {
-    extensions: ['clipchamp'],
+    extensions: ['clipchamp', 'clpx'],
   },
   cliptemplate: {
     extensions: ['cliptemplate'],
@@ -267,12 +270,16 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  companyfolder: {},
   designer: {
     extensions: ['design'],
   },
   desktopfolder: {},
   docset: {},
   documentsfolder: {},
+  docuworks: {
+    extensions: ['xbd', 'xct', 'xdw'],
+  },
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -285,6 +292,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  fabricontology: {},
   favoritesfolder: {},
   folder: {},
   font: {
@@ -297,6 +305,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   ipynb: {
     extensions: ['nnb', 'ipynb'],
+  },
+  inkcanvas: {
+    extensions: ['canvas'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
@@ -314,6 +325,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   splist: {},
   mcworld: {
     extensions: ['mcworld'],
+  },
+  md: {
+    extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'],
   },
   mctemplate: {
     extensions: ['mctemplate'],
@@ -367,6 +381,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
+  pbidashboard: {},
+  pbipagereport: {},
+  pbiscorecard: {},
+  pbisemmodel: {},
   pdf: {
     extensions: ['pdf'],
   },
@@ -444,7 +462,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'md', 'markdn', 'markdown', 'mdown', 'mkdn', 'rtf', 'wri', 'pages'],
+    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
   playlist: {},
@@ -566,6 +584,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   whiteboard: {
     extensions: ['whiteboard', 'wbtx'],
   },
+  wikipage: {},
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
   },

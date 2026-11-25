@@ -10,7 +10,7 @@ import type { MessageBarTitleProps, MessageBarTitleState } from './MessageBarTit
  * The returned state can be modified with hooks before being passed to `renderMessageBarTitle`.
  */
 export const useMessageBarTitle = (props: MessageBarTitleProps, ref: React.Ref<HTMLElement>): MessageBarTitleState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useMessageBarTitle — manual opt-out to preserve runtime behavior
 
   return useMessageBarTitle_unstable(props, ref);
 };

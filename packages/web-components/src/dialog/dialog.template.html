@@ -1,0 +1,20 @@
+<f-template name="fluent-dialog" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <dialog
+      class="dialog"
+      part="dialog"
+      aria-modal="{{dialogModal}}"
+      aria-describedby="{{dialogDescribedby}}"
+      aria-labelledby="{{dialogLabelledby}}"
+      aria-label="{{dialogLabel}}"
+      role="{{dialogRole}}"
+      @click="{clickHandler($e)}"
+      @cancel="{hide()}"
+      f-ref="{dialog}"
+    >
+      <div tabindex="-1"></div>
+      <slot></slot>
+    </dialog>
+  </template>
+</f-template>

@@ -22,3 +22,7 @@ export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots
  */
 export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> &
   Pick<PopoverContextValue, 'appearance'>;
+
+export type TeachingPopoverTitleBaseProps = TeachingPopoverTitleProps;
+
+export type TeachingPopoverTitleBaseState = Omit<TeachingPopoverTitleState, 'appearance'>;

@@ -10,16 +10,18 @@ import { shEcho, TempPaths } from './utils';
  */
 export async function prepareCreateReactApp(tempPaths: TempPaths, templateSpec: string): Promise<void> {
   const tempUtilProjectPath = path.join(tempPaths.root, 'util');
+
+  if (fs.existsSync(tempPaths.testApp)) {
+    fs.removeSync(tempPaths.testApp);
+  }
+
   fs.mkdirSync(tempUtilProjectPath);
+  fs.writeJsonSync(path.join(tempUtilProjectPath, 'package.json'), { private: true });
 
   try {
-    // restoring bits of create-react-app inside util project
     await shEcho(`yarn add create-react-app`, tempUtilProjectPath);
-
-    // create test project with util's create-react-app
     await shEcho(`yarn create-react-app ${tempPaths.testApp} --template ${templateSpec}`, tempUtilProjectPath);
   } finally {
-    // remove temp util directory
     fs.removeSync(tempUtilProjectPath);
   }
 }

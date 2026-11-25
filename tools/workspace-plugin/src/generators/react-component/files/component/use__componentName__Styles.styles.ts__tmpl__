@@ -27,6 +27,7 @@ export const use<%= componentName %>Styles_unstable = (state: <%= componentName 
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(<%= propertyName %>ClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:

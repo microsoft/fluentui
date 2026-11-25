@@ -11,27 +11,32 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
-import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { ChevronDownRegular } from '@fluentui/react-icons';
-import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
-import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 import { useFieldContext_unstable } from '@fluentui/react-field';
+import { ChevronDownRegular } from '@fluentui/react-icons';
+
+import type {
+  TagPickerControlBaseProps,
+  TagPickerControlBaseState,
+  TagPickerControlProps,
+  TagPickerControlState,
+} from './TagPickerControl.types';
+import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
+import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useExpandLabel } from '../../utils/useExpandLabel';
+import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 
 /**
- * Create the state required to render PickerControl.
+ * Create the base state required to render TagPickerControl, without design-only state.
  *
- * The returned state can be modified with hooks such as usePickerControlStyles_unstable,
- * before being passed to renderPickerControl_unstable.
- *
- * @param props - props from this instance of PickerControl
- * @param ref - reference to root HTMLDivElement of PickerControl
+ * @param props - props from this instance of TagPickerControl
+ * @param ref - reference to root HTMLDivElement of TagPickerControl
  */
-export const useTagPickerControl_unstable = (
-  props: TagPickerControlProps,
+export const useTagPickerControlBase_unstable = (
+  props: TagPickerControlBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TagPickerControlState => {
+): TagPickerControlBaseState => {
+  const { toggleOn = 'mousedown' } = props;
+  const pendingOpen = React.useRef<boolean | undefined>(undefined);
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
@@ -39,8 +44,6 @@ export const useTagPickerControl_unstable = (
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const invalid = useFieldContext_unstable()?.validationState === 'error';
   const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
@@ -62,11 +65,9 @@ export const useTagPickerControl_unstable = (
   }
 
   const expandIcon = slot.optional(props.expandIcon, {
-    renderByDefault: !noPopover,
     defaultProps: {
       'aria-expanded': open,
       'aria-disabled': disabled ? 'true' : undefined,
-      children: <ChevronDownRegular />,
       role: 'button',
     },
     elementType: 'span',
@@ -98,8 +99,15 @@ export const useTagPickerControl_unstable = (
     aside.ref = mergedAsideRefs;
   }
 
+  const handleMouseDownCapture = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onMouseDownCapture?.(event);
+  });
+
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.isDefaultPrevented()) {
+    pendingOpen.current = undefined;
+    props.onMouseDown?.(event);
+    if (event.isDefaultPrevented() || (toggleOn === 'click' && (disabled || event.button !== 0))) {
       return;
     }
     if (
@@ -109,12 +117,43 @@ export const useTagPickerControl_unstable = (
       event.target === asideRef.current
     ) {
       event.preventDefault();
-      setOpen(event, !open);
+      if (toggleOn === 'click') {
+        // Light dismiss can close the popover before click; retain the intent from gesture start.
+        pendingOpen.current = !open;
+      } else {
+        setOpen(event, !open);
+      }
       triggerRef.current?.focus();
     }
   });
 
-  const state: TagPickerControlState = {
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    const nextOpen = pendingOpen.current;
+    pendingOpen.current = undefined;
+    props.onClick?.(event);
+    if (!disabled && nextOpen !== undefined && !event.isDefaultPrevented()) {
+      setOpen(event, nextOpen);
+    }
+  });
+
+  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    props.onBlur?.(event);
+    if (!elementContains(event.currentTarget, event.relatedTarget)) {
+      pendingOpen.current = undefined;
+    }
+  });
+
+  const handleMouseLeave = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onMouseLeave?.(event);
+  });
+
+  const handlePointerCancel = useEventCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    pendingOpen.current = undefined;
+    props.onPointerCancel?.(event);
+  });
+
+  const state: TagPickerControlBaseState = {
     components: {
       root: 'div',
       expandIcon: 'span',
@@ -127,19 +166,27 @@ export const useTagPickerControl_unstable = (
         'aria-owns': open && !noPopover ? popoverId : undefined,
         ...props,
         onMouseDown: handleMouseDown,
+        ...(toggleOn === 'click' && {
+          onMouseDownCapture: handleMouseDownCapture,
+          onClick: handleClick,
+          onBlur: handleBlur,
+          onMouseLeave: handleMouseLeave,
+          onPointerCancel: handlePointerCancel,
+        }),
       }),
       { elementType: 'div' },
     ),
     aside,
     expandIcon,
     secondaryAction,
-    size,
-    appearance,
     disabled,
     invalid,
   };
 
-  const expandIconLabelRef = useExpandLabel({ tagPickerId, state: state as Pick<TagPickerControlState, 'expandIcon'> });
+  const expandIconLabelRef = useExpandLabel({
+    tagPickerId,
+    state: state as Pick<TagPickerControlBaseState, 'expandIcon'>,
+  });
 
   const expandIconLabelMergeRef = useMergedRefs(expandIcon?.ref, expandIconLabelRef);
   if (state.expandIcon) {
@@ -147,10 +194,46 @@ export const useTagPickerControl_unstable = (
   }
 
   React.useEffect(() => {
-    if (rafIdRef.current && targetDocument?.defaultView) {
-      targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
-    }
+    const targetWindow = targetDocument?.defaultView;
+
+    return () => {
+      if (rafIdRef.current && targetWindow) {
+        targetWindow.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
   }, [targetDocument]);
 
   return state;
+};
+
+/**
+ * Create the state required to render PickerControl.
+ *
+ * The returned state can be modified with hooks such as usePickerControlStyles_unstable,
+ * before being passed to renderPickerControl_unstable.
+ *
+ * @param props - props from this instance of PickerControl
+ * @param ref - reference to root HTMLDivElement of PickerControl
+ */
+export const useTagPickerControl_unstable = (
+  props: TagPickerControlProps,
+  ref: React.Ref<HTMLDivElement>,
+): TagPickerControlState => {
+  const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
+  const baseProps =
+    !noPopover && props.expandIcon === undefined
+      ? {
+          ...props,
+          expandIcon: <ChevronDownRegular />,
+        }
+      : props;
+  const baseState = useTagPickerControlBase_unstable(baseProps, ref);
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+
+  return {
+    ...baseState,
+    size,
+    appearance,
+  };
 };

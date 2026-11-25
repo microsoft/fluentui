@@ -30,21 +30,23 @@ const useStyles = makeStyles({
  * Apply styling to the MenuItemLink slots based on the state
  */
 export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuItemLinkState => {
-  'use no memo';
-
   useMenuItemStyles_unstable(state as MenuItemState);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuItemLinkClassNames.root, styles.resetLink, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuItemLinkClassNames.icon, state.icon.className);
   }
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(menuItemLinkClassNames.content, state.content.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       menuItemLinkClassNames.secondaryContent,
       state.secondaryContent.className,
@@ -52,6 +54,7 @@ export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuIt
   }
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(menuItemLinkClassNames.checkmark, state.checkmark.className);
   }
 

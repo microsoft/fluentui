@@ -6,6 +6,24 @@ Utils for storybook.
 
 # API
 
+## `configureReactIcons`
+
+Configures atomic Fluent icon imports in a Storybook webpack configuration.
+SVG remains the default; `FLUENTUI_ICON_VARIANT=fonts` enables font icons,
+font subsetting, and the required styles. Pass `headless: true` for headless icons.
+
+```js
+const { configureReactIcons } = require('@fluentui/scripts-storybook');
+
+module.exports = {
+  webpackFinal(config) {
+    return configureReactIcons({ config });
+  },
+};
+```
+
+The helper, its CSS, and its unit tests are colocated in this project's `src` directory.
+
 ## `loadWorkspaceAddon`
 
 Function that registers custom workspace(monorepo) storybook addon written in TypeScript without need to "build first" before use.

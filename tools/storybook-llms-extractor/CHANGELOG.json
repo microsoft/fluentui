@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook-llms-extractor",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:06 GMT",
+      "tag": "@fluentui/storybook-llms-extractor_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:29 GMT",
       "tag": "@fluentui/storybook-llms-extractor_v0.0.4",
       "version": "0.0.4",

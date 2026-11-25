@@ -1,0 +1,177 @@
+:host([shape='rounded']) {
+  border-radius: var(--borderRadiusMedium);
+}
+
+:host([shape='rounded']:is([size='tiny'], [size='extra-small'], [size='small'])) {
+  border-radius: var(--borderRadiusSmall);
+}
+
+:host([size='tiny']) {
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  line-height: 4px;
+  padding-inline: 0;
+  min-width: unset;
+}
+:host([size='tiny']) ::slotted(svg) {
+  font-size: 6px;
+}
+:host([size='extra-small']) {
+  width: 10px;
+  height: 10px;
+  font-size: 6px;
+  line-height: 6px;
+  padding-inline: 0;
+  min-width: unset;
+}
+:host([size='extra-small']) ::slotted(svg) {
+  font-size: 10px;
+}
+:host([size='small']) {
+  min-width: 16px;
+  height: 16px;
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase100);
+  padding-inline: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+}
+:host([size='small']) ::slotted(svg) {
+  font-size: 12px;
+}
+:host([size='large']) {
+  min-width: 24px;
+  height: 24px;
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  padding-inline: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+}
+:host([size='large']) ::slotted(svg) {
+  font-size: 16px;
+}
+:host([size='extra-large']) {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  padding-inline: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+}
+:host([size='extra-large']) ::slotted(svg) {
+  font-size: 20px;
+}
+
+:host([color='danger']) {
+  background-color: var(--colorPaletteRedBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+:host([color='important']) {
+  background-color: var(--colorNeutralForeground1);
+  color: var(--colorNeutralBackground1);
+}
+
+:host([color='informative']) {
+  background-color: var(--colorNeutralBackground5);
+  color: var(--colorNeutralForeground3);
+}
+
+:host([color='severe']) {
+  background-color: var(--colorPaletteDarkOrangeBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+:host([color='subtle']) {
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+}
+
+:host([color='success']) {
+  background-color: var(--colorPaletteGreenBackground3);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+:host([color='warning']) {
+  background-color: var(--colorPaletteYellowBackground3);
+  color: var(--colorNeutralForeground1Static);
+}
+
+:host([appearance='ghost']) {
+  color: var(--colorBrandForeground1);
+  background-color: initial;
+}
+
+:host([appearance='ghost'][color='danger']) {
+  color: var(--colorPaletteRedForeground3);
+}
+
+:host([appearance='ghost'][color='important']) {
+  color: var(--colorNeutralForeground1);
+}
+
+:host([appearance='ghost'][color='informative']) {
+  color: var(--colorNeutralForeground3);
+}
+
+:host([appearance='ghost'][color='severe']) {
+  color: var(--colorPaletteDarkOrangeForeground3);
+}
+
+:host([appearance='ghost'][color='subtle']) {
+  color: var(--colorNeutralForegroundInverted);
+}
+
+:host([appearance='ghost'][color='success']) {
+  color: var(--colorPaletteGreenForeground3);
+}
+
+:host([appearance='ghost'][color='warning']) {
+  color: var(--colorPaletteYellowForeground2);
+}
+
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+:host {
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontFamilyBase);
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  min-width: 20px;
+  height: 20px;
+  padding-inline: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+  border-radius: var(--borderRadiusCircular);
+  border-color: var(--colorTransparentStroke);
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  contain: content;
+}
+
+::slotted(svg) {
+  font-size: 12px;
+}
+
+:host(:not([appearance='ghost']))::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-style: solid;
+  border-width: var(--strokeWidthThin);
+  border-color: inherit;
+  border-radius: inherit;
+}
+
+:host(:is([dot], [dot][appearance][size])) {
+  min-width: auto;
+  width: 6px;
+  height: 6px;
+  padding: 0;
+}

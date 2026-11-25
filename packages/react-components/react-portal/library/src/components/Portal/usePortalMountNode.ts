@@ -6,9 +6,10 @@ import {
   useFluent_unstable as useFluent,
   usePortalMountNode as usePortalMountNodeContext,
 } from '@fluentui/react-shared-contexts';
+import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 
-import { usePortalMountNodeStyles } from './usePortalMountNodeStyles';
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -37,8 +38,6 @@ type UseElementFactory = (options: UseElementFactoryOptions) => HTMLDivElement |
  * Creates a new element on a "document.body" to mount portals.
  */
 const useLegacyElementFactory: UseElementFactory = options => {
-  'use no memo';
-
   const { className, dir, focusVisibleRef, targetNode } = options;
 
   const targetElement = React.useMemo(() => {
@@ -58,15 +57,18 @@ const useLegacyElementFactory: UseElementFactory = options => {
   // We don't want to re-create the portal element when its attributes change. This also cannot not be done in an effect
   // because, changing the value of CSS variables after an initial mount will trigger interesting CSS side effects like
   // transitions.
+  // eslint-disable-next-line react-hooks/void-use-memo
   React.useMemo(() => {
     if (!targetElement) {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     targetElement.className = className;
     targetElement.setAttribute('dir', dir);
     targetElement.setAttribute('data-portal-node', 'true');
 
+    // eslint-disable-next-line react-hooks/refs
     focusVisibleRef.current = targetElement;
   }, [className, dir, targetElement, focusVisibleRef]);
 
@@ -116,7 +118,7 @@ const initializeElementFactory = () => {
  * - all other methods (and properties) will be called by React once a portal is mounted
  */
 const useModernElementFactory: UseElementFactory = options => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize dispose — manual opt-out to preserve runtime behavior
 
   const { className, dir, focusVisibleRef, targetNode } = options;
 
@@ -197,14 +199,16 @@ const useModernElementFactory: UseElementFactory = options => {
       return;
     }
 
-    elementProxy.setAttribute('class', className);
+    const classesToApply = className.split(' ').filter(Boolean);
+
+    elementProxy.classList.add(...classesToApply);
     elementProxy.setAttribute('dir', dir);
     elementProxy.setAttribute('data-portal-node', 'true');
 
     focusVisibleRef.current = elementProxy;
 
     return () => {
-      elementProxy.removeAttribute('class');
+      elementProxy.classList.remove(...classesToApply);
       elementProxy.removeAttribute('dir');
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
@@ -233,13 +237,14 @@ const useElementFactory = useInsertionEffect ? useModernElementFactory : useLega
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  ('use no memo');
+  ('use no memo'); // justified: compiler would optimize usePortalMountNode — manual opt-out to preserve runtime behavior
 
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
+  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const factoryOptions: UseElementFactoryOptions = {
@@ -247,11 +252,9 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     disabled: options.disabled,
     focusVisibleRef,
 
-    className: [themeClassName, options.className].filter(Boolean).join(' '),
+    className: mergeClasses(themeClassName, classes.root, options.className),
     targetNode: mountNode ?? targetDocument?.body,
   };
-
-  usePortalMountNodeStyles(options.disabled);
 
   return useElementFactory(factoryOptions);
 };

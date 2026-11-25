@@ -1,17 +1,11 @@
 'use client';
 
-import { useOverflowContext } from './overflowContext';
+import type { OverflowSnapshot } from '@fluentui/priority-overflow';
+import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
  * @returns Number of items that are overflowing
  */
-export const useOverflowCount = (): number =>
-  useOverflowContext(v => {
-    return Object.entries(v.itemVisibility).reduce((acc, [id, visible]) => {
-      if (!visible) {
-        acc++;
-      }
+export const useOverflowCount = (): number => useOverflowSnapshot(selectInvisibleItemCount);
 
-      return acc;
-    }, 0);
-  });
+const selectInvisibleItemCount = (snapshot: OverflowSnapshot): number => snapshot.invisibleItemCount;

@@ -1,4 +1,6 @@
 export type {
+  TeachingPopoverTitleBaseProps,
+  TeachingPopoverTitleBaseState,
   TeachingPopoverTitleProps,
   TeachingPopoverTitleSlots,
   TeachingPopoverTitleState,
@@ -9,4 +11,5 @@ export {
   teachingPopoverTitleClassNames,
   useTeachingPopoverTitleStyles_unstable,
   useTeachingPopoverTitle_unstable,
+  useTeachingPopoverTitleBase_unstable,
 } from './components/TeachingPopoverTitle/index';

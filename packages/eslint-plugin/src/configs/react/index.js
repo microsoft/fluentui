@@ -2,11 +2,22 @@
 const configHelpers = require('../../utils/configHelpers');
 const baseConfig = require('../base/index');
 const reactConfig = require('./config');
-const reactCompilerPlugin = require('eslint-plugin-react-compiler');
+const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const { __internal } = require('../../internal');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
 const { defineConfig } = require('eslint/config');
 const { testFiles } = require('../../utils/configHelpers');
+
+/**
+ * React Compiler rules extracted from eslint-plugin-react-hooks recommended-latest config.
+ * Core hooks rules (rules-of-hooks, exhaustive-deps) are excluded as they are configured separately in reactConfig.
+ */
+const reactCompilerRules = Object.fromEntries(
+  Object.entries(reactHooksPlugin.configs.flat['recommended-latest'].rules).filter(
+    ([key]) => key !== 'react-hooks/rules-of-hooks' && key !== 'react-hooks/exhaustive-deps',
+  ),
+);
+const reactCompilerRulesOff = Object.fromEntries(Object.keys(reactCompilerRules).map(key => [key, 'off']));
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -30,9 +41,6 @@ module.exports = defineConfig(
         projectService: true,
       },
     },
-    plugins: {
-      'react-compiler': reactCompilerPlugin,
-    },
     rules: {
       'jsdoc/check-tag-names': [
         'error',
@@ -55,7 +63,7 @@ module.exports = defineConfig(
         'error',
         { prefer: 'type-imports', disallowTypeAnnotations: false },
       ],
-      'react-compiler/react-compiler': ['error'],
+      ...reactCompilerRules,
       ...createReactCrossVersionRules({
         crossCompatTypePackage: '@fluentui/react-utilities',
         extraTypeRestrictions: {
@@ -83,7 +91,7 @@ module.exports = defineConfig(
           ],
         },
       ],
-      'react-compiler/react-compiler': 'off',
+      ...reactCompilerRulesOff,
       '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
@@ -92,7 +100,7 @@ module.exports = defineConfig(
     rules: {
       'import/no-extraneous-dependencies': 'off',
       'react/jsx-no-bind': 'off',
-      'react-compiler/react-compiler': 'off',
+      ...reactCompilerRulesOff,
       '@typescript-eslint/no-restricted-imports': [
         'error',
         {
@@ -112,7 +120,7 @@ module.exports = defineConfig(
   {
     files: [...testFiles],
     rules: {
-      'react-compiler/react-compiler': 'off',
+      ...reactCompilerRulesOff,
       '@fluentui/react-components/enforce-use-client': 'off',
     },
   },

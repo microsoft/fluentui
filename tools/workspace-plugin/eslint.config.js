@@ -3,6 +3,7 @@ const fluentPlugin = require('@fluentui/eslint-plugin');
 
 /** @type {import("eslint").Linter.Config[]} */
 module.exports = [
+  { ignores: ['src/**/__fixtures__/**'] },
   ...fluentPlugin.configs['flat/node'],
   {
     rules: {

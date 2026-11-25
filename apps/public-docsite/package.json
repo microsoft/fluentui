@@ -12,20 +12,25 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
-    "prebundle": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
-    "type-check": "tsc -p . --noEmit --baseUrl ."
+    "prebundle": "yarn run -T just-scripts build",
+    "bundle": "yarn run -T just-scripts bundle",
+    "lint": "yarn run -T eslint src e2e playwright.config.ts",
+    "format": "yarn run -T prettier --write . --ignore-path ../../.prettierignore",
+    "format:check": "yarn run -T prettier --check . --ignore-path ../../.prettierignore",
+    "test": "yarn run -T jest",
+    "e2e": "yarn run -T cross-env NODE_OPTIONS=--no-experimental-strip-types playwright test",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "start": "yarn run -T just-scripts dev",
+    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl . && yarn run -T tsc -p tsconfig.spec.json --noEmit --baseUrl . && yarn run -T tsc -p tsconfig.e2e.json --noEmit"
   },
   "license": "MIT",
   "devDependencies": {
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
+    "@fluentui/fluent2-theme": "*",
     "@fluentui/font-icons-mdl2": "*",
     "@fluentui/public-docsite-resources": "*",
     "@fluentui/public-docsite-setup": "*",
@@ -33,7 +38,6 @@
     "@fluentui/react-docsite-components": "*",
     "@fluentui/react-examples": "*",
     "@fluentui/react-experiments": "*",
-    "@fluentui/fluent2-theme": "*",
     "@fluentui/react-file-type-icons": "*",
     "@fluentui/react-icons-mdl2": "*",
     "@fluentui/react-icons-mdl2-branded": "*",

@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import { isCustomElement } from '../utils/typings.js';
 import type { Radio } from './radio.js';
@@ -23,8 +24,16 @@ export type { CheckboxSize as RadioSize } from '../checkbox/checkbox.options.js'
  * @param element - The element to check.
  * @param tagName - The tag name to check against, defaults to '-radio'.
  * @returns True if the element is a radio element, false otherwise.
+ * @deprecated Tag names do not reliably identify Radio subclasses. Use the component's element identity instead.
  * @public
  */
 export function isRadio(element?: Node | null, tagName: string = '-radio'): element is Radio {
   return isCustomElement(tagName)(element);
 }
+
+/**
+ * The tag name for the radio element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-radio` as const;

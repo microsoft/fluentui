@@ -1,9 +1,5 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as buttonDefinition } from '../button/button.definition.js';
-import { definition } from './message-bar.definition.js';
-
-definition.define(FluentDesignSystem.registry);
-buttonDefinition.define(FluentDesignSystem.registry);
+import '../button/define.js';
+import './define.js';
 
 const dismissed20Regular = `
   <svg

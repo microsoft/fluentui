@@ -279,6 +279,17 @@ const useIconCheckedStyles = makeStyles({
       forcedColorAdjust: 'auto',
     },
   },
+  checkedHighContrast: {
+    '@media (forced-colors: active)': {
+      color: 'inherit',
+      forcedColorAdjust: 'inherit',
+
+      // Fluent SVG icons explicitly opt back into automatic forced-color adjustment.
+      '& svg': {
+        forcedColorAdjust: 'inherit',
+      },
+    },
+  },
 });
 
 const usePrimaryHighContrastStyles = makeStyles({
@@ -306,8 +317,6 @@ const usePrimaryHighContrastStyles = makeStyles({
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  'use no memo';
-
   const rootCheckedStyles = useRootCheckedStyles();
   const accessibleCheckedStyles = useCheckedAccessibleStyles();
   const rootDisabledStyles = useRootDisabledStyles();
@@ -316,6 +325,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
 
   const { appearance, checked, disabled, disabledFocusable, isAccessible } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toggleButtonClassNames.root,
 
@@ -341,6 +351,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
       checked &&
@@ -348,6 +359,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
         (appearance === 'subtle' || appearance === 'transparent') &&
         iconCheckedStyles.subtleOrTransparent,
       iconCheckedStyles.highContrast,
+      checked && !disabled && !disabledFocusable && iconCheckedStyles.checkedHighContrast,
       state.icon.className,
     );
   }

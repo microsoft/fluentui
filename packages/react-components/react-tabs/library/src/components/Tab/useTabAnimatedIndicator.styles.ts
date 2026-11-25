@@ -123,6 +123,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   // original position and not when set at the previous tabs position.
   const animating = animationValues.offset === 0 && animationValues.scale === 1;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     state.root.className,
     selected && activeIndicatorStyles.base,
@@ -135,6 +136,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
     [tabIndicatorCssVars_unstable.scaleVar]: `${animationValues.scale}`,
   };
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.style = {
     ...rootCssVars,
     ...state.root.style,

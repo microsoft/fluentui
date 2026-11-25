@@ -1,0 +1,11 @@
+<f-template name="fluent-switch" shadowrootmode="open">
+  <template
+    @click="{clickHandler($e)}"
+    @input="{inputHandler($e)}"
+    @keydown="{keydownHandler($e)}"
+    @keyup="{keyupHandler($e)}"
+  >
+    {{styles}}
+    <slot name="switch"><span class="checked-indicator" part="checked-indicator"></span></slot>
+  </template>
+</f-template>

@@ -1,10 +1,22 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
+import { tagName } from './anchor-button.options.js';
 
 test.describe('Anchor Button', () => {
   test.use({
-    innerHTML: 'Fluent Anchor Button',
-    tagName: 'fluent-anchor-button',
+    innerHTML: 'Anchor Button',
+    tagName,
+  });
+
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '0');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { tabindex: '-1' } });
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '-1');
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -16,9 +28,9 @@ test.describe('Anchor Button', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-anchor-button');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -121,50 +133,6 @@ test.describe('Anchor Button', () => {
     });
   });
 
-  test('should set the `iconOnly` property to match the `icon-only` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { 'icon-only': true } });
-
-    await expect(element).toHaveJSProperty('iconOnly', true);
-  });
-
-  for (const appearance of Object.values(AnchorButtonAppearance)) {
-    test(`should set the \`appearance\` property to "${appearance}" when the attribute is set to "${appearance}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { appearance } });
-
-      await expect(element).toHaveJSProperty('appearance', appearance);
-    });
-  }
-
-  for (const shape of Object.values(AnchorButtonShape)) {
-    test(`should set the \`shape\` property to "${shape}" when the attribute is set to "${shape}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { shape } });
-
-      await expect(element).toHaveJSProperty('shape', shape);
-    });
-  }
-
-  for (const size of Object.values(AnchorButtonSize)) {
-    test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
-
   test('should navigate to the provided url when clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
@@ -172,14 +140,36 @@ test.describe('Anchor Button', () => {
 
     await fastPage.setTemplate({ attributes: { href: expectedUrl } });
 
+    expect(page.url()).not.toMatch(expectedUrl);
+
     await element.click();
 
-    await expect(page).toHaveURL(expectedUrl);
+    expect(page.url()).toMatch(expectedUrl);
+  });
+
+  test('should emit a single click event when clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    await element.evaluate(anchorButton => {
+      let clickCount = 0;
+      anchorButton.addEventListener('click', () => {
+        clickCount += 1;
+        anchorButton.setAttribute('data-click-count', String(clickCount));
+      });
+      anchorButton.setAttribute('data-click-count', '0');
+    });
+
+    await element.click();
+
+    await expect(element).toHaveAttribute('data-click-count', '1');
   });
 
   test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or `Meta` on Mac', async ({
-    fastPage,
     context,
+    fastPage,
+    page,
   }) => {
     const { element } = fastPage;
 
@@ -193,7 +183,11 @@ test.describe('Anchor Button', () => {
 
     const newPage = await newPagePromise;
 
-    await expect(newPage).toHaveURL(expectedUrl);
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(newPage.url()).toMatch(expectedUrl);
+
+    await newPage.close();
   });
 
   test('should navigate to the provided url when `Enter` is pressed via keyboard', async ({ fastPage, page }) => {
@@ -207,12 +201,13 @@ test.describe('Anchor Button', () => {
 
     await element.press('Enter');
 
-    await expect(page).toHaveURL(expectedUrl);
+    expect(page.url()).toMatch(expectedUrl);
   });
 
   test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
-    fastPage,
     context,
+    fastPage,
+    page,
   }) => {
     const { element } = fastPage;
 
@@ -230,6 +225,10 @@ test.describe('Anchor Button', () => {
 
     const newPage = await newPagePromise;
 
-    await expect(newPage).toHaveURL(expectedUrl);
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(newPage.url()).toMatch(expectedUrl);
+
+    await newPage.close();
   });
 });

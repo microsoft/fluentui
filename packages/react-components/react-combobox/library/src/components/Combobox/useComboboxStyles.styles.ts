@@ -222,9 +222,8 @@ const useIconStyles = makeStyles({
     // position: relative provides the containing block for the ::after clickable-area extension below.
     position: 'relative',
 
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
+    // Block display avoids inline baseline space for both icon renderers.
+    '& svg, & .fui-Icon-font': {
       display: 'block',
     },
 
@@ -285,8 +284,6 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  'use no memo';
-
   const { appearance, open, size, showClearIcon } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const disabled = state.input.disabled;
@@ -294,6 +291,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     comboboxClassNames.root,
     styles.root,
@@ -306,6 +304,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,
@@ -315,6 +314,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   );
 
   if (state.listbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
@@ -325,6 +325,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       comboboxClassNames.expandIcon,
       iconStyles.icon,
@@ -336,6 +337,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.clearIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.clearIcon.className = mergeClasses(
       comboboxClassNames.clearIcon,
       iconStyles.icon,

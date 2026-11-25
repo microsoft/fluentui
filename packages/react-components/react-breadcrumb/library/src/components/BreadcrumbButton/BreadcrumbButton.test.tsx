@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
+import { useBreadcrumbButtonBase_unstable } from './useBreadcrumbButton';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
@@ -49,7 +50,8 @@ describe('BreadcrumbButton', () => {
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="fui-Icon"
+              data-fui-icon=""
               fill="currentColor"
               height="16"
               viewBox="0 0 16 16"
@@ -57,7 +59,7 @@ describe('BreadcrumbButton', () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M2 8c0-.41.34-.75.75-.75h8.79L8.25 4.31a.75.75 0 0 1 1-1.12L14 7.44a.75.75 0 0 1 0 1.12L9.25 12.8a.75.75 0 1 1-1-1.12l3.29-2.94H2.75A.75.75 0 0 1 2 8Z"
+                d="M2 8c0-.41.34-.75.75-.75h8.79L8.25 4.31a.75.75 0 0 1 1-1.12L14 7.44a.75.75 0 0 1 0 1.12L9.25 12.8a.75.75 0 1 1-1-1.12l3.29-2.94H2.75A.75.75 0 0 1 2 8"
                 fill="currentColor"
               />
             </svg>
@@ -66,5 +68,24 @@ describe('BreadcrumbButton', () => {
         </button>
       </div>
     `);
+  });
+
+  it('accepts the anchor arm of the ARIA button union in the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'a', href: '/somewhere' }, React.createRef<HTMLAnchorElement>()),
+    );
+
+    expect(result.current).toMatchObject({
+      root: { as: 'a', href: '/somewhere' },
+    });
+  });
+
+  it('keeps an explicit as="button" on the button arm of the base hook', () => {
+    const { result } = renderHook(() =>
+      useBreadcrumbButtonBase_unstable({ as: 'button' }, React.createRef<HTMLButtonElement>()),
+    );
+
+    expect(result.current.root.as).toBe('button');
+    expect(result.current.root.role).toBeUndefined();
   });
 });

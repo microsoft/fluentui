@@ -1,7 +1,7 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { html, slotted } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { MenuItem, MenuItemOptions } from './menu-item.js';
 
 const Checkmark16Filled = html.partial(
@@ -18,7 +18,7 @@ export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = 
       @click="${(x, c) => x.handleMenuItemClick(c.event as MouseEvent)}"
       @mouseover="${(x, c) => x.handleMouseOver(c.event as MouseEvent)}"
       @mouseout="${(x, c) => x.handleMouseOut(c.event as MouseEvent)}"
-      @toggle="${(x, c) => x.toggleHandler(c.event as ToggleEvent)}"
+      @toggle="${(x, c) => x.handleToggle(c.event as ToggleEvent)}"
     >
       <slot name="indicator"> ${staticallyCompose(options.indicator)} </slot>
       ${startSlotTemplate(options)}

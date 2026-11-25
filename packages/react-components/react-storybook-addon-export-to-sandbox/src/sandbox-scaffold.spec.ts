@@ -739,4 +739,117 @@ describe(`sabdbox-scaffold`, () => {
       expect(capturedKeys).toContain('vite.config.ts');
     });
   });
+
+  describe('applyCssModuleTransform (via scaffold.vite)', () => {
+    const baseConfig = {
+      bundler: 'vite' as const,
+      provider: 'stackblitz-cloud' as const,
+      dependencies: {},
+      storyExportToken: 'Default',
+      storyFile: `
+        import * as React from 'react';
+        import styles from './button.module.css';
+
+        export const Default = () => <div className={styles.root}>hello</div>;
+      `,
+      description: 'test',
+      title: 'test',
+      requiredDependencies: {},
+      optionalDependencies: {},
+      devDependencies: {},
+    };
+
+    it('should not apply CSS module transform when cssModuleSources is absent', () => {
+      const result = scaffold.vite(baseConfig);
+
+      expect(result['src/styles/button.module.css']).toBeUndefined();
+      expect(result['src/App.tsx']).not.toContain('./styles/tokens.css');
+    });
+
+    it('should add CSS module files under src/styles/', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [{ name: 'button.module.css', source: '.root { color: red; }' }],
+        },
+      });
+
+      expect(result['src/styles/button.module.css']).toBe('.root { color: red; }');
+    });
+
+    it('should add tokens.css under src/styles/ when tokensSource is provided', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [{ name: 'button.module.css', source: '.root { color: red; }' }],
+          tokensSource: ':root { --my-token: blue; }',
+        },
+      });
+
+      expect(result['src/styles/tokens.css']).toBe(':root { --my-token: blue; }');
+    });
+
+    it('should prepend tokens.css import to App.tsx when tokensSource is provided', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [],
+          tokensSource: ':root { --my-token: blue; }',
+        },
+      });
+
+      expect(result['src/App.tsx'].startsWith("import './styles/tokens.css';")).toBe(true);
+    });
+
+    it('should not prepend tokens.css import when tokensSource is absent', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [{ name: 'button.module.css', source: '.root {}' }],
+        },
+      });
+
+      expect(result['src/App.tsx']).not.toContain('./styles/tokens.css');
+    });
+
+    it('should rewrite relative module.css imports to ./styles/<basename>', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [{ name: 'button.module.css', source: '.root {}' }],
+        },
+      });
+
+      expect(result['src/example.tsx']).toContain("from './styles/button.module.css'");
+      expect(result['src/example.tsx']).not.toContain('./button.module.css');
+    });
+
+    it('should rewrite deeply nested relative imports to ./styles/<basename>', () => {
+      const storyFile = `import styles from '../../components/button.module.css';\nexport const Default = () => <div className={styles.root} />;`;
+      const result = scaffold.vite({
+        ...baseConfig,
+        storyFile,
+        cssModuleSources: {
+          cssModules: [{ name: 'button.module.css', source: '.root {}' }],
+        },
+      });
+
+      expect(result['src/example.tsx']).toContain("'./styles/button.module.css'");
+    });
+
+    it('should include all provided CSS modules under src/styles/', () => {
+      const result = scaffold.vite({
+        ...baseConfig,
+        cssModuleSources: {
+          cssModules: [
+            { name: 'button.module.css', source: '.root { color: red; }' },
+            { name: 'card.module.css', source: '.root { color: blue; }' },
+          ],
+        },
+      });
+
+      expect(result['src/styles/button.module.css']).toBe('.root { color: red; }');
+      expect(result['src/styles/card.module.css']).toBe('.root { color: blue; }');
+    });
+  });
 });

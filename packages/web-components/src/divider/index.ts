@@ -4,3 +4,4 @@ export { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole
 export { definition as DividerDefinition } from './divider.definition.js';
 export { template as DividerTemplate } from './divider.template.js';
 export { styles as DividerStyles } from './divider.styles.js';
+export { tagName as DividerTagName } from './divider.options.js';

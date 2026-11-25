@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -22,6 +22,8 @@ export const styles = css`
   ${display('flex')}
 
   :host {
+    --_vertical-min-height: 10px;
+
     contain: content;
   }
 
@@ -60,32 +62,38 @@ export const styles = css`
     align-items: center;
     flex-direction: column;
     height: 100%;
-    min-height: 84px;
-  }
-
-  :host([orientation='vertical']):empty {
-    min-height: 20px;
   }
 
   :host([orientation='vertical'][inset])::before {
     margin-top: 12px;
   }
+
   :host([orientation='vertical'][inset])::after {
     margin-bottom: 12px;
-  }
-
-  :host([orientation='vertical']):empty::before,
-  :host([orientation='vertical']):empty::after {
-    height: 10px;
-    min-height: 10px;
-    flex-grow: 0;
   }
 
   :host([orientation='vertical'])::before,
   :host([orientation='vertical'])::after {
     width: ${strokeWidthThin};
-    min-height: 20px;
+    min-height: var(--_vertical-min-height);
     height: 100%;
+  }
+
+  /**
+   * Use @supports to avoid the scoped styles from applying in Safari. Because
+   * Safari supports @scope but ':scope:has(*)' would select a host with no
+   * children.
+   */
+  @supports not selector(:host(:has(*))) {
+    @scope {
+      :scope:has(*) {
+        --_vertical-min-height: 20px;
+      }
+    }
+  }
+
+  :host(:has(*)) {
+    --_vertical-min-height: 20px;
   }
 
   :host([orientation='vertical']) ::slotted(*) {
@@ -123,8 +131,8 @@ export const styles = css`
   :host([appearance='subtle']) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host([appearance='strong'])::before,
     :host([appearance='strong'])::after,
     :host([appearance='brand'])::before,
@@ -136,5 +144,5 @@ export const styles = css`
       background: WindowText;
       color: WindowText;
     }
-  `),
-);
+  }
+`;

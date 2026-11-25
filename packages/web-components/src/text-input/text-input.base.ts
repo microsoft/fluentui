@@ -1,12 +1,5 @@
-import {
-  attr,
-  FASTElement,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  type Subscriber,
-  Updates,
-} from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable, observable, Updates } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.options.js';
 
 /**
@@ -19,6 +12,10 @@ import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.opt
  * @csspart label - The internal `<label>` element
  * @csspart root - the root container for the internal control
  * @csspart control - The internal `<input>` control
+ *
+ * @fires { Event } change - Fires a custom 'change' event when the value changes and the input loses focus
+ * @fires { Event } select - Fires when the `select()` method is called.
+ *
  * @public
  */
 export class BaseTextInput extends FASTElement {
@@ -32,17 +29,6 @@ export class BaseTextInput extends FASTElement {
    */
   @attr
   public autocomplete?: string;
-
-  /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
 
   /**
    * The current value of the input.
@@ -284,8 +270,8 @@ export class BaseTextInput extends FASTElement {
    */
   @attr({
     converter: {
-      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : null),
-      toView: value => value.toString(),
+      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : value),
+      toView: value => (value === null || value === undefined ? null : value.toString()),
     },
   })
   public spellcheck!: boolean;
@@ -340,6 +326,20 @@ export class BaseTextInput extends FASTElement {
   private dirtyValue: boolean = false;
 
   /**
+   * The value as of the last `change` event or programmatic update.
+   *
+   * @internal
+   */
+  private committedValue: string = '';
+
+  /**
+   * Indicates that `value` is being updated from the internal control's `input` event.
+   *
+   * @internal
+   */
+  private isUserInput: boolean = false;
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -388,7 +388,12 @@ export class BaseTextInput extends FASTElement {
   public set value(value: string) {
     this.currentValue = value;
 
-    if (this.$fastController.isConnected) {
+    // Programmatic updates are not user changes, so they must not trigger `change` later.
+    if (!this.isUserInput) {
+      this.committedValue = value ?? '';
+    }
+
+    if (this.elementInternals && this.control) {
       this.control.value = value ?? '';
       this.setFormValue(value);
       this.setValidity();
@@ -419,19 +424,6 @@ export class BaseTextInput extends FASTElement {
   }
 
   /**
-   * Handles the internal control's `keypress` event.
-   *
-   * @internal
-   */
-  public beforeinputHandler(e: InputEvent): boolean | void {
-    if (e.inputType === 'insertLineBreak') {
-      this.implicitSubmit();
-    }
-
-    return true;
-  }
-
-  /**
    * Change event handler for inner control.
    *
    * @internal
@@ -440,13 +432,26 @@ export class BaseTextInput extends FASTElement {
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
   public changeHandler(e: InputEvent): boolean | void {
+    // Skip if already emitted on Enter; the browser's later native `change` has the same value.
+    if (this.control.value !== this.committedValue) {
+      this.emitChange(e);
+    }
+
+    return true;
+  }
+
+  /**
+   * Validates, records the committed value, and emits `change` on the host.
+   *
+   * @internal
+   */
+  private emitChange(detail?: Event) {
+    this.committedValue = this.control.value;
     this.setValidity();
-    this.$emit('change', e, {
+    this.$emit('change', detail, {
       bubbles: true,
       composed: true,
     });
-
-    return true;
   }
 
   /**
@@ -476,24 +481,10 @@ export class BaseTextInput extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-
     this.setFormValue(this.value);
     this.setValidity();
-  }
 
-  /**
-   * Focuses the inner control when the component is focused.
-   *
-   * @param e - the event object
-   * @public
-   */
-  public focusinHandler(e: FocusEvent): boolean | void {
-    if (e.target === this) {
-      this.control?.focus();
-    }
-
-    return true;
+    maybeSetAutoFocus(this);
   }
 
   /**
@@ -548,7 +539,12 @@ export class BaseTextInput extends FASTElement {
    */
   public inputHandler(e: InputEvent): boolean | void {
     this.dirtyValue = true;
-    this.value = this.control.value;
+    this.isUserInput = true;
+    try {
+      this.value = this.control.value;
+    } finally {
+      this.isUserInput = false;
+    }
 
     return true;
   }
@@ -560,9 +556,33 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (e.key === 'Enter') {
-      this.implicitSubmit();
+    if (e.key !== 'Enter') {
+      return true;
     }
+
+    // Enter that confirms an IME composition must not commit or submit.
+    // `keyCode` 229 means the IME handled the key; Safari fires this keydown
+    // after `compositionend`, when `isComposing` is already false.
+    // See details: https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event#keydown_events_with_ime
+    if (e.isComposing || e.keyCode === 229) {
+      return true;
+    }
+
+    // Keydown events from slotted start/end content also bubble to the host;
+    // implicit submission only applies to the control.
+    if (e.composedPath()[0] !== this.control) {
+      return true;
+    }
+
+    // On a built-in `<input>`, hitting `Enter` fires `change` before the implicit
+    // form submission. Emit it here so listeners see the committed value on
+    // `submit`, without moving focus.
+    // @see https://github.com/microsoft/fluentui/issues/36117
+    if (this.control.value !== this.committedValue) {
+      this.emitChange();
+    }
+
+    this.implicitSubmit();
 
     return true;
   }
@@ -609,7 +629,7 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
-    this.elementInternals.setFormValue(value, value ?? state);
+    this.elementInternals?.setFormValue(value, value ?? state);
   }
 
   /**
@@ -622,7 +642,7 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected && this.control) {
+    if (this.elementInternals && this.control) {
       if (this.disabled) {
         this.elementInternals.setValidity({});
         return;

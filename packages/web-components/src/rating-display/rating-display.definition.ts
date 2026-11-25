@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { RatingDisplay } from './rating-display.js';
+import { tagName } from './rating-display.options.js';
 import { styles } from './rating-display.styles.js';
 import { template } from './rating-display.template.js';
 
 /**
- * The definition for the Fluent Rating Display component.
+ * The definition for the `<fluent-rating-display>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-rating-display>`
  */
-export const definition = RatingDisplay.compose({
-  name: `${FluentDesignSystem.prefix}-rating-display`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

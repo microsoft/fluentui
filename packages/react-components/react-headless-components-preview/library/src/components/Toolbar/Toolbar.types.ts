@@ -1,13 +1,11 @@
-import type {
-  ToolbarSlots as ToolbarBaseSlots,
-  ToolbarBaseProps,
-  ToolbarContextValues as ToolbarBaseContextValues,
-  ToolbarBaseState,
+import type { ToolbarBaseState } from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarSlots,
+  ToolbarBaseProps as ToolbarProps,
+  ToolbarContextValue,
+  ToolbarContextValues,
 } from '@fluentui/react-toolbar';
-
-export type ToolbarSlots = ToolbarBaseSlots;
-
-export type ToolbarProps = ToolbarBaseProps;
 
 export type ToolbarState = ToolbarBaseState & {
   root: {
@@ -15,12 +13,5 @@ export type ToolbarState = ToolbarBaseState & {
      * Data attribute set when the toolbar is vertically oriented.
      */
     'data-vertical'?: string;
-
-    /**
-     * Data attribute to define the focus behavior of the toolbar's children
-     */
-    focusgroup?: string;
   };
 };
-
-export type ToolbarContextValues = ToolbarBaseContextValues;

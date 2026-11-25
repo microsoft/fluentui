@@ -72,6 +72,7 @@ export type MotionComponentProps = {
     onMotionFinish?: (ev: null) => void;
     onMotionCancel?: (ev: null) => void;
     onMotionStart?: (ev: null) => void;
+    replayKey?: string | number;
 };
 
 // @public (undocumented)

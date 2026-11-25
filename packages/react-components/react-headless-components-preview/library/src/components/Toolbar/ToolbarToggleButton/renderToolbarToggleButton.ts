@@ -1,6 +1,1 @@
-import { renderToggleButton_unstable } from '@fluentui/react-button';
-
-/**
- * Renders the final JSX of the ToolbarToggleButton component, given the state.
- */
-export const renderToolbarToggleButton = renderToggleButton_unstable;
+export { renderToggleButton_unstable as renderToolbarToggleButton } from '@fluentui/react-button';

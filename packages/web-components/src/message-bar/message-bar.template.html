@@ -1,0 +1,13 @@
+<f-template name="fluent-message-bar" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <slot name="icon"></slot>
+    <div class="content">
+      <slot></slot>
+    </div>
+    <div class="actions">
+      <slot name="actions"></slot>
+    </div>
+    <slot name="dismiss"></slot>
+  </template>
+</f-template>

@@ -1,5 +1,5 @@
 import { type ElementViewTemplate, html } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import type { Badge } from './badge.js';
 import type { BadgeOptions } from './badge.options.js';

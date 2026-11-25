@@ -1,13 +1,7 @@
 export { PopoverSurface } from './PopoverSurface';
-export type {
-  PopoverSurfaceBaseProps,
-  PopoverSurfaceProps,
-  PopoverSurfaceSlots,
-  PopoverSurfaceBaseState,
-  PopoverSurfaceState,
-} from './PopoverSurface.types';
+export type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 export { renderPopoverSurface_unstable } from './renderPopoverSurface';
-export { usePopoverSurface_unstable, usePopoverSurfaceBase_unstable } from './usePopoverSurface';
+export { usePopoverSurface_unstable } from './usePopoverSurface';
 export {
   arrowHeights,
   popoverSurfaceClassNames,

@@ -1,6 +1,1 @@
-import { renderTab_unstable } from '@fluentui/react-tabs';
-
-/**
- * Renders the final JSX of the Tab component, given the state.
- */
-export const renderTab = renderTab_unstable;
+export { renderTab_unstable as renderTab } from '@fluentui/react-tabs';

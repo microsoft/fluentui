@@ -137,6 +137,7 @@ export function useMeasureList<
     return () => _resizeObserver.current?.disconnect();
   }, [resizeObserver]);
 
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   return { widthArray, heightArray, createIndexedRef, refArray, sizeUpdateCount: sizeUpdateCount.current };
 }
 

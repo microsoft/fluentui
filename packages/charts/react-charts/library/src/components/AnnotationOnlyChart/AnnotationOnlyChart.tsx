@@ -52,6 +52,7 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
 
   React.useEffect(() => {
     if (typeof width === 'number' && width > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMeasuredWidth(width);
       return;
     }

@@ -187,6 +187,10 @@ export type MenuState = ComponentState<InternalMenuSlots> &
     safeZone?: React.ReactElement | null;
   };
 
+export type MenuBaseProps = Omit<MenuProps, 'surfaceMotion'>;
+
+export type MenuBaseState = Omit<MenuState, 'surfaceMotion' | 'components'>;
+
 export type MenuContextValues = {
   menu: MenuContextValue;
 };

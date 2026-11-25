@@ -5,27 +5,23 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type * as React from 'react';
 
 import type {
+  TeachingPopoverCarouselNavBaseProps,
+  TeachingPopoverCarouselNavBaseState,
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
- * Returns the props and state required to render the component
+ * Base hook that builds TeachingPopoverCarouselNav state for behavior and structure only.
+ * Does not call `useArrowNavigationGroup` from `@fluentui/react-tabster`.
  * @param props - TeachingPopoverCarouselNav properties
  * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNav
  */
-export const useTeachingPopoverCarouselNav_unstable = (
-  props: TeachingPopoverCarouselNavProps,
+export const useTeachingPopoverCarouselNavBase_unstable = (
+  props: TeachingPopoverCarouselNavBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselNavState => {
-  const focusableGroupAttr = useArrowNavigationGroup({
-    circular: false,
-    axis: 'horizontal',
-    memorizeCurrent: false,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_hasDefault: true,
-  });
+): TeachingPopoverCarouselNavBaseState => {
   const values = useCarouselValues_unstable(snapshot => snapshot);
 
   return {
@@ -40,10 +36,37 @@ export const useTeachingPopoverCarouselNav_unstable = (
         role: 'tablist',
         tabIndex: 0,
         ...props,
-        ...focusableGroupAttr,
         children: null,
       }),
       { elementType: 'div' },
     ),
+  };
+};
+
+/**
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverCarouselNav properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNav
+ */
+export const useTeachingPopoverCarouselNav_unstable = (
+  props: TeachingPopoverCarouselNavProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverCarouselNavState => {
+  const state = useTeachingPopoverCarouselNavBase_unstable(props, ref);
+
+  const focusableGroupAttr = useArrowNavigationGroup({
+    circular: false,
+    axis: 'horizontal',
+    memorizeCurrent: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault: true,
+  });
+
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      ...focusableGroupAttr,
+    },
   };
 };

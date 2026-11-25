@@ -10,6 +10,7 @@
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "baseUrl": ".",
     "experimental": {
       "plugins": [["swc-plugin-de-indent-template-literal", {}]]
     },
@@ -26,7 +27,7 @@
         "useSpread": true
       }
     },
-    "target": "es2019"
+    "target": "es2020"
   },
   "minify": false,
   "sourceMaps": true

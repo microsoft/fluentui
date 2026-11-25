@@ -77,11 +77,10 @@ const useStyles = makeStyles({
 export const useTeachingPopoverHeaderStyles_unstable = (
   state: TeachingPopoverHeaderState,
 ): TeachingPopoverHeaderState => {
-  'use no memo';
-
   const styles = useStyles();
   const { appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverHeaderClassNames.root,
     styles.root,
@@ -90,6 +89,7 @@ export const useTeachingPopoverHeaderStyles_unstable = (
   );
 
   if (state.dismissButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissButton.className = mergeClasses(
       teachingPopoverHeaderClassNames.dismissButton,
       styles.dismissButton,
@@ -99,6 +99,7 @@ export const useTeachingPopoverHeaderStyles_unstable = (
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       teachingPopoverHeaderClassNames.icon,
       styles.icon,

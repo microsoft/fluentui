@@ -123,8 +123,6 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
   props: Props[],
   options: HeadlessFlatTreeOptions = {},
 ): HeadlessFlatTreeReturn<Props> {
-  'use no memo';
-
   const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);

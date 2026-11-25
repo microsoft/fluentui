@@ -60,6 +60,7 @@ export const useMenuSplitGroup_unstable = (
     },
     setMultiline,
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         role: 'group',
         // FIXME:

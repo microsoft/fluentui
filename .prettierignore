@@ -1,6 +1,8 @@
 # generated or imported files
 package-deps.json
 CHANGELOG.*
+# generated from `web-features` via `yarn generate-browser-support`
+**/browser-support-data.generated.json
 # generated version files  (@fluentui/react v8 specific)
 packages/**/version.ts
 apps/**/version.ts

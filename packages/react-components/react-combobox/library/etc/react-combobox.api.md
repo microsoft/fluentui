@@ -151,6 +151,9 @@ export type DropdownState = ComponentState<DropdownSlots> & Omit<ComboboxBaseSta
 };
 
 // @public
+export function isComboboxOptionElement(element: HTMLElement): boolean;
+
+// @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
 // @public (undocumented)
@@ -288,6 +291,9 @@ export const useComboboxBaseState: (props: ComboboxBaseProps & {
 
 // @public (undocumented)
 export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freeform'> & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
+
+// @internal
+export function useComboboxExpandIconSlot(expandIconFromProps: Slot<'span'> | undefined | null, options: UseComboboxExpandIconSlotOptions): SlotComponentType<ExtractSlotProps<Slot<'span'>>> | undefined;
 
 // @internal (undocumented)
 export function useComboboxFilter<T extends {

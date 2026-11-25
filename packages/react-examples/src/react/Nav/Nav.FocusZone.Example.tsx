@@ -31,6 +31,7 @@ export const NavFocusZoneExample: React.FunctionComponent = () => {
     <Nav
       styles={navStyles}
       groups={navLinkGroups}
+      ariaLabel="Nav example with a custom default tabbable element"
       focusZoneProps={{
         defaultTabbableElement: "a[title='Breadcrumb']",
         allowFocusRoot: false,

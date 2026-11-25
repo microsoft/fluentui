@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:04 GMT",
+      "tag": "@fluentui/react-conformance_v0.20.1",
+      "version": "0.20.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "a7f23fff45fe9d7832098b34a2d1151c69a80894",
+            "comment": "chore: security dependency remediation for S360 CVEs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:22 GMT",
       "tag": "@fluentui/react-conformance_v0.20.1",
       "version": "0.20.1",

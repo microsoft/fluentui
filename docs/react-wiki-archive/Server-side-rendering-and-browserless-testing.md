@@ -1,5 +1,9 @@
 ## Server-side rendering
 
+> **Security note**
+>
+> Both recipes below write Fluent UI output into raw text elements using `dangerouslySetInnerHTML` - `Stylesheet.getRules()` into a `<style>` and `Stylesheet.serialize()` into a `<script>`. `merge-styles` escapes `<`/`>` in declaration values and `<` in the serialized state so neither string can terminate its element, but you are still responsible for validating any untrusted data (user- or tenant-supplied colors, accents, background image URLs) that you route into a style value, and for serving a Content Security Policy. Do not pass untrusted data to `Stylesheet.insertRule`, which is not escaped because it accepts full rules including selectors.
+
 ## Next.js setup
 
 For basic instructions on getting Next.js set up, see https://nextjs.org/

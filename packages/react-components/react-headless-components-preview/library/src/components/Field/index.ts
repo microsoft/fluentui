@@ -1,4 +1,5 @@
 export { Field } from './Field';
 export { renderField } from './renderField';
 export { useField } from './useField';
-export type { FieldSlots, FieldProps, FieldState } from './Field.types';
+export { useFieldContextValues, useFieldContext, useFieldControlProps } from './useFieldContextValues';
+export type { FieldSlots, FieldProps, FieldState, FieldContextValue, FieldContextValues } from './Field.types';

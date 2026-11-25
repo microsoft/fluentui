@@ -3,7 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const { getResolveAlias, resources } = require('@fluentui/scripts-webpack');
 const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
 const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/getLoadSiteConfig');
@@ -54,14 +53,16 @@ module.exports = [
           removeAvailableModules: false,
         },
 
-        plugins: [
-          // This plugin was added to ignore warnings wherever types are imported.
-          new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
-        ],
-
         resolve: {
           alias: {
             ...getResolveAlias(),
+            // public-docsite-resources exposes api reference JSON under dist/api that is consumed via
+            // require.context; its package exports field cannot map a directory, so alias to the real
+            // directory to resolve it.
+            '@fluentui/public-docsite-resources/dist/api': path.resolve(
+              __dirname,
+              '../public-docsite-resources/dist/api',
+            ),
             // react-monaco-editor dynamically loads @types/react via proprietary webpack require.ensure,
             // this doesn't work starting @types/react@17.0.48 as the types package introduced Export Maps
             '@types/react/index.d.ts': path.resolve(__dirname, '../../node_modules/@types/react/index.d.ts'),

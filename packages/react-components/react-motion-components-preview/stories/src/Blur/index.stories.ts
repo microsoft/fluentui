@@ -1,4 +1,4 @@
-import { Blur } from '@fluentui/react-motion-components-preview';
+import { DefaultBlur as Blur } from './Blur.stories';
 import BlurDescription from './BlurDescription.md';
 
 export { Default } from './BlurDefault.stories';

@@ -159,8 +159,6 @@ const useIconAfterStyles = makeStyles({
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  'use no memo';
-
   const { main, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
   const rootBaseStyles = useRootBaseStyles();
@@ -178,6 +176,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
+  // eslint-disable-next-line react-hooks/immutability
   root.className = mergeClasses(
     treeItemLayoutClassNames.root,
     rootBaseStyles,
@@ -187,9 +186,11 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   main.className = mergeClasses(treeItemLayoutClassNames.main, mainBaseStyles, main.className);
 
   if (expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     expandIcon.className = mergeClasses(
       treeItemLayoutClassNames.expandIcon,
       expandIconBaseStyles,
@@ -198,6 +199,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   }
 
   if (iconBefore) {
+    // eslint-disable-next-line react-hooks/immutability
     iconBefore.className = mergeClasses(
       treeItemLayoutClassNames.iconBefore,
       iconBaseStyles,
@@ -207,6 +209,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   }
 
   if (iconAfter) {
+    // eslint-disable-next-line react-hooks/immutability
     iconAfter.className = mergeClasses(
       treeItemLayoutClassNames.iconAfter,
       iconBaseStyles,
@@ -216,12 +219,15 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   }
 
   if (actions) {
+    // eslint-disable-next-line react-hooks/immutability
     actions.className = mergeClasses(treeItemLayoutClassNames.actions, actionsBaseStyles, actions.className);
   }
   if (aside) {
+    // eslint-disable-next-line react-hooks/immutability
     aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideBaseStyles, aside.className);
   }
   if (selector) {
+    // eslint-disable-next-line react-hooks/immutability
     selector.className = mergeClasses(treeItemLayoutClassNames.selector, selector.className);
   }
 

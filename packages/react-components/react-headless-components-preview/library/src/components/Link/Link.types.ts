@@ -1,14 +1,6 @@
-import type { LinkSlots as LinkBaseSlots, LinkBaseProps, LinkBaseState } from '@fluentui/react-link';
+import type { LinkBaseState } from '@fluentui/react-link';
 
-/**
- * Link component slots
- */
-export type LinkSlots = LinkBaseSlots;
-
-/**
- * Link component props
- */
-export type LinkProps = LinkBaseProps;
+export type { LinkSlots, LinkBaseProps as LinkProps } from '@fluentui/react-link';
 
 /**
  * Link component state

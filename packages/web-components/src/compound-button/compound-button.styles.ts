@@ -18,7 +18,6 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 
 // Need to support icon hover styles
 export const styles = css`
@@ -80,7 +79,16 @@ export const styles = css`
     color: ${colorNeutralForeground2BrandPressed};
   }
 
-  :host(:is(:disabled, :disabled[appearance], [disabled-focusable], [disabled-focusable][appearance]))
+  :host(
+      :is(
+          :disabled,
+          :disabled[appearance],
+          [disabled],
+          [disabled][appearance],
+          [disabled-focusable],
+          [disabled-focusable][appearance]
+        )
+    )
     ::slotted([slot='description']) {
     color: ${colorNeutralForegroundDisabled};
   }
@@ -118,11 +126,11 @@ export const styles = css`
   :host([size='large']) ::slotted([slot='description']) {
     font-size: ${fontSizeBase300};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
-    :host([appearance='primary']:not(:hover, :focus-visible, :disabled, [disabled-focusable]))
+
+  @media (forced-colors: active) {
+    :host([appearance='primary']:not(:hover, :focus-visible, :disabled, [disabled], [disabled-focusable]))
       ::slotted([slot='description']) {
       color: HighlightText;
     }
-  `),
-);
+  }
+`;

@@ -9,7 +9,6 @@ import type {
   CardPreviewState,
 } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
-import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
 
 /**
  * Create the state required to render CardPreview.
@@ -52,7 +51,7 @@ export const useCardPreviewBase_unstable = (
     }
 
     if (previewRef.current && previewRef.current.parentNode) {
-      const img = previewRef.current.parentNode.querySelector<HTMLImageElement>(`.${cardPreviewClassNames.root} > img`);
+      const img = previewRef.current.parentNode.querySelector<HTMLImageElement>(`.fui-CardPreview > img`);
 
       if (img) {
         const ariaLabel = img.getAttribute('aria-label');
@@ -76,6 +75,7 @@ export const useCardPreviewBase_unstable = (
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         ref: previewRef,
         ...props,

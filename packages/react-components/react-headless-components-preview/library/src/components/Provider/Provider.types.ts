@@ -1,9 +1,15 @@
 import type * as React from 'react';
-import type { FluentProviderContextValues, FluentProviderProps } from '@fluentui/react-provider';
+import type { FluentProviderProps } from '@fluentui/react-provider';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+export type { FluentProviderContextValues as ProviderContextValues } from '@fluentui/react-provider';
+
 export type ProviderSlots = {
-  root: Slot<React.FragmentProps>;
+  /**
+   * The root renders a `React.Fragment`. Its props are spelled out instead of using `React.FragmentProps`, which only
+   * exists in `@types/react@>=19` and breaks type-checking for consumers on older React types.
+   */
+  root: Slot<{ children?: React.ReactNode }>;
 };
 
 /**
@@ -15,5 +21,3 @@ export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderP
  * State used in rendering Provider
  */
 export type ProviderState = ComponentState<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
-
-export type ProviderContextValues = FluentProviderContextValues;

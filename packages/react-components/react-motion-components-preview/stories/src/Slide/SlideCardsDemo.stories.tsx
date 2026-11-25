@@ -108,19 +108,16 @@ export const CardsDemo = (): JSXElement => {
     });
   };
 
-  const showAll = () => {
-    setVisibleCards(new Set(cardData.map(card => card.id)));
-  };
+  const allVisible = cardData.every(card => visibleCards.has(card.id));
 
-  const hideAll = () => {
-    setVisibleCards(new Set());
+  const toggleAll = () => {
+    setVisibleCards(allVisible ? new Set() : new Set(cardData.map(card => card.id)));
   };
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button onClick={showAll}>Show All</Button>
-        <Button onClick={hideAll}>Hide All</Button>
+        <Button onClick={toggleAll}>{allVisible ? 'Hide All' : 'Show All'}</Button>
         {cardData.map(card => (
           <Button
             key={card.id}

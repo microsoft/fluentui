@@ -7,6 +7,15 @@ interface PluginState extends Babel.PluginPass {
   imports: Record<string, string[]>;
 }
 
+interface ModifyImportsPluginOptions extends BabelPluginOptions {
+  /**
+   * Reports a relative import removed from the extracted source because it cannot be included in the example.
+   * `fullSourcePlugin` uses these diagnostics to set `fullSourceIsRunnable` and `fullSourceUnsupportedImports`.
+   * This is not the playground's package allowlist or a request to load a runtime module.
+   */
+  onUnsupportedRelativeImport?: (specifier: string) => void;
+}
+
 export const PLUGIN_NAME = 'storybook-stories-modifyImports';
 
 /**
@@ -15,8 +24,13 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  *
  * See test fixtures for usage examples
  */
-export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
+export function modifyImportsPlugin(
+  babel: typeof Babel,
+  options: ModifyImportsPluginOptions,
+): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
+  const { importMappings, onUnsupportedRelativeImport } = options;
+  const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
     name: PLUGIN_NAME,
@@ -27,8 +41,8 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
       parserOptions.plugins.push('typescript');
     },
     pre() {
-      this.imports = Object.keys(options).reduce((acc, cur) => {
-        acc[options[cur].replace] = [];
+      this.imports = Object.keys(importMappings).reduce((acc, cur) => {
+        acc[importMappings[cur].replace] = [];
         return acc;
       }, {} as PluginState['imports']);
     },
@@ -53,6 +67,18 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
         const isRelativeImportToIndexBarrel = importSource.value.endsWith('./index');
 
         if (isRelativeImport && !isRelativeImportToIndexBarrel) {
+          // When cssModules is enabled, preserve *.module.css imports — rewrite path
+          // to ./styles/<basename> so the displayed source matches the Stackblitz sandbox layout.
+          if (cssModulesEnabled) {
+            const cssModuleMatch = importSource.value.match(/([^/]+\.module\.css)$/);
+            if (cssModuleMatch) {
+              path.node.source = t.stringLiteral(`./styles/${cssModuleMatch[1]}`);
+              return;
+            }
+          }
+
+          onUnsupportedRelativeImport?.(importSource.value);
+
           if (process.env.NODE_ENV !== 'production') {
             console.warn(
               [
@@ -78,14 +104,14 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
           }
         }
 
-        if (t.isLiteral(path.node.source) && options[importSource.value]) {
+        if (t.isLiteral(path.node.source) && importMappings[importSource.value]) {
           path.node.specifiers.forEach(specifier => {
             if (
               t.isImportSpecifier(specifier) &&
               t.isIdentifier(specifier.imported) &&
               t.isIdentifier(specifier.local)
             ) {
-              pluginState.imports[options[importSource.value].replace].push(specifier.imported.name);
+              pluginState.imports[importMappings[importSource.value].replace].push(specifier.imported.name);
             }
           });
 

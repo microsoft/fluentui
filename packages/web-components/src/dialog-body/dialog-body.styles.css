@@ -1,0 +1,92 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: grid;
+}
+
+:host {
+  background: var(--colorNeutralBackground1);
+  box-sizing: border-box;
+  gap: var(--spacingVerticalS);
+  padding: var(--spacingVerticalXXL) var(--spacingHorizontalXXL);
+  container: dialog-body / inline-size;
+}
+
+.title {
+  box-sizing: border-box;
+  align-items: flex-start;
+  background: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+  column-gap: 8px;
+  display: flex;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  font-weight: var(--fontWeightSemibold);
+  inset-block-start: 0;
+  justify-content: space-between;
+  line-height: var(--lineHeightBase500);
+  margin-block-end: calc(var(--spacingVerticalS) * -1);
+  margin-block-start: calc(var(--spacingVerticalXXL) * -1);
+  padding-block-end: var(--spacingVerticalS);
+  padding-block-start: var(--spacingVerticalXXL);
+}
+
+.content {
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  min-height: 32px;
+}
+
+.actions {
+  box-sizing: border-box;
+  background: var(--colorNeutralBackground1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  inset-block-end: 0;
+  margin-block-end: calc(var(--spacingVerticalXXL) * -1);
+  padding-block-end: var(--spacingVerticalXXL);
+  padding-block-start: var(--spacingVerticalL);
+}
+
+::slotted([slot='title-action']) {
+  margin-inline-start: auto;
+}
+
+::slotted([slot='title']) {
+  font: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+/* align  title content to the end when there is no title*/
+:not(:has(:is([slot='title'], [slot='title-action']))) .title {
+  justify-content: end;
+}
+
+@container (min-width: 480px) {
+  .actions {
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-block-start: calc(var(--spacingVerticalS) * -1);
+    padding-block-start: var(--spacingVerticalS);
+  }
+}
+
+/* For a11y, set sticky position for title and actions when the viewport is tall enough */
+@media (min-height: 480px) {
+  .title {
+    position: sticky;
+    z-index: 1;
+  }
+  .actions {
+    position: sticky;
+    z-index: 2;
+  }
+}
