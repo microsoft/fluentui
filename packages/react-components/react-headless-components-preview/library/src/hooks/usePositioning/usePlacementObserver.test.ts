@@ -13,8 +13,24 @@ class FakeRO {
   }
 }
 
+let ioInstances: FakeIO[] = [];
+
+class FakeIO {
+  public disconnect = jest.fn();
+  constructor(public callback: (entries: unknown[]) => void) {
+    ioInstances.push(this);
+  }
+  public observe() {
+    /* noop */
+  }
+}
+
 function notify(...targets: Element[]) {
   instances[instances.length - 1].callback(targets.map(target => ({ target })));
+}
+
+function notifyIntersection(...targets: Element[]) {
+  ioInstances[ioInstances.length - 1].callback(targets.map(target => ({ target })));
 }
 
 function makeRect(rect: Partial<DOMRect>): DOMRect {
@@ -39,6 +55,7 @@ function setRendered(el: HTMLElement, rendered: boolean) {
 
 describe('usePlacementObserver', () => {
   const originalRO = window.ResizeObserver;
+  const originalIO = window.IntersectionObserver;
   let addSpy: jest.SpyInstance;
   let removeSpy: jest.SpyInstance;
   let container: HTMLElement;
@@ -48,7 +65,9 @@ describe('usePlacementObserver', () => {
 
   beforeEach(() => {
     instances = [];
+    ioInstances = [];
     (window as unknown as { ResizeObserver: unknown }).ResizeObserver = FakeRO;
+    (window as unknown as { IntersectionObserver: unknown }).IntersectionObserver = FakeIO;
     addSpy = jest.spyOn(window, 'addEventListener');
     removeSpy = jest.spyOn(window, 'removeEventListener');
     container = document.createElement('div');
@@ -59,6 +78,7 @@ describe('usePlacementObserver', () => {
 
   afterEach(() => {
     (window as unknown as { ResizeObserver: unknown }).ResizeObserver = originalRO;
+    (window as unknown as { IntersectionObserver: unknown }).IntersectionObserver = originalIO;
     addSpy.mockRestore();
     removeSpy.mockRestore();
   });
@@ -168,6 +188,64 @@ describe('usePlacementObserver', () => {
     expect(container.getAttribute('data-placement')).toMatch(/^below/);
   });
 
+  it('attaches listeners when a 0x0 surface is shown without a resize notification', () => {
+    container.getBoundingClientRect = () => makeRect({ top: 140, left: 100 });
+    setRendered(container, false);
+    renderHook(() => usePlacementObserver(container, target, document));
+    notify(container);
+    notifyIntersection(container);
+    expect(calledWith(addSpy, 'scroll')).toBe(false);
+
+    // display: none -> rendered at 0x0: the size is unchanged, so only the IntersectionObserver reports it
+    setRendered(container, true);
+    notifyIntersection(container);
+
+    expect(calledWith(addSpy, 'scroll')).toBe(true);
+    expect(calledWith(addSpy, 'resize')).toBe(true);
+  });
+
+  it('removes listeners when a 0x0 surface is hidden without a resize notification', () => {
+    container.getBoundingClientRect = () => makeRect({ top: 140, left: 100 });
+    renderHook(() => usePlacementObserver(container, target, document));
+    notify(container);
+    expect(calledWith(addSpy, 'scroll')).toBe(true);
+
+    setRendered(container, false);
+    notifyIntersection(container);
+
+    expect(calledWith(removeSpy, 'scroll')).toBe(true);
+    expect(calledWith(removeSpy, 'resize')).toBe(true);
+  });
+
+  it('removes listeners on the next scroll when the surface was hidden without any observer notification', async () => {
+    renderHook(() => usePlacementObserver(container, target, document));
+    showBelow();
+    notify(container);
+    await Promise.resolve();
+    container.setAttribute('data-placement', 'above-start');
+
+    setRendered(container, false);
+    window.dispatchEvent(new Event('scroll'));
+    await Promise.resolve();
+
+    expect(calledWith(removeSpy, 'scroll')).toBe(true);
+    expect(calledWith(removeSpy, 'resize')).toBe(true);
+    expect(container.getAttribute('data-placement')).toBe('above-start');
+  });
+
+  it('still tracks visibility through ResizeObserver without IntersectionObserver', () => {
+    delete (window as unknown as { IntersectionObserver?: unknown }).IntersectionObserver;
+    setRendered(container, false);
+    renderHook(() => usePlacementObserver(container, target, document));
+    notify(container);
+    expect(calledWith(addSpy, 'scroll')).toBe(false);
+
+    setRendered(container, true);
+    notify(container);
+
+    expect(calledWith(addSpy, 'scroll')).toBe(true);
+  });
+
   it('does nothing without ResizeObserver', async () => {
     delete (window as unknown as { ResizeObserver?: unknown }).ResizeObserver;
     container.setAttribute('data-placement', 'below-start');
@@ -190,5 +268,6 @@ describe('usePlacementObserver', () => {
     expect(calledWith(removeSpy, 'scroll')).toBe(true);
     expect(calledWith(removeSpy, 'resize')).toBe(true);
     expect(instances[0].disconnect).toHaveBeenCalled();
+    expect(ioInstances[0].disconnect).toHaveBeenCalled();
   });
 });
