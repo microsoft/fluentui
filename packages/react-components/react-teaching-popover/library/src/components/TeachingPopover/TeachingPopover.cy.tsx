@@ -2,13 +2,14 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightTheme, webLightTheme, webDarkTheme } from '@fluentui/react-theme';
 
 import {
   TeachingPopover,
   TeachingPopoverTrigger,
   TeachingPopoverSurface,
   TeachingPopoverBody,
+  TeachingPopoverHeader,
   TeachingPopoverTitle,
 } from '@fluentui/react-teaching-popover';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover';
@@ -148,5 +149,81 @@ describe('TeachingPopover', () => {
         .should('exist')
         .contains('The second panel');
     });
+  });
+
+  describe('TeachingPopover dismiss button borders', () => {
+    const setMedia = (features: { name: string; value: string }[]) =>
+      cy.then(() =>
+        Cypress.automation('remote:debugger:protocol', {
+          command: 'Emulation.setEmulatedMedia',
+          params: { features },
+        }),
+      );
+
+    const assertBorders = ($button: JQuery<HTMLElement>) => {
+      for (const side of ['top', 'right', 'bottom', 'left']) {
+        expect($button.css(`border-${side}-style`), `${side} border style`).to.equal('solid');
+        expect($button.css(`border-${side}-width`), `${side} border width`).to.equal('1px');
+        expect($button.css(`border-${side}-color`), `${side} border color`).to.equal($button.css('border-top-color'));
+      }
+    };
+
+    afterEach(() => setMedia([]));
+
+    for (const colorScheme of ['light', 'dark'] as const) {
+      for (const forcedColors of ['active', 'none'] as const) {
+        for (const kind of ['Header', 'Title'] as const) {
+          it(`preserves ${kind} dismiss borders and focus in ${colorScheme} with forced colors ${forcedColors}`, () => {
+            setMedia([
+              { name: 'forced-colors', value: forcedColors },
+              { name: 'prefers-color-scheme', value: colorScheme },
+              { name: 'prefers-reduced-motion', value: 'reduce' },
+            ]);
+            mountBase(
+              <FluentProvider theme={colorScheme === 'light' ? webLightTheme : webDarkTheme}>
+                <TeachingPopover open inline trapFocus={false}>
+                  <TeachingPopoverTrigger disableButtonEnhancement>
+                    <button>Trigger</button>
+                  </TeachingPopoverTrigger>
+                  <TeachingPopoverSurface>
+                    {kind === 'Header' && <TeachingPopoverHeader>Tips</TeachingPopoverHeader>}
+                    <TeachingPopoverBody>
+                      <TeachingPopoverTitle dismissButton={kind === 'Title' ? {} : undefined}>
+                        Title
+                      </TeachingPopoverTitle>
+                      This is a teaching popover
+                    </TeachingPopoverBody>
+                  </TeachingPopoverSurface>
+                </TeachingPopover>
+              </FluentProvider>,
+            );
+            cy.window().then(win => {
+              expect(win.matchMedia('(forced-colors: active)').matches).to.equal(forcedColors === 'active');
+            });
+
+            const dismissSelector = `.fui-TeachingPopover${kind}__dismissButton`;
+            cy.get('body').click('bottomRight');
+            cy.get(dismissSelector).should($button => {
+              assertBorders($button);
+              if (forcedColors === 'none') {
+                expect($button.css('border-right-color')).to.equal('rgba(0, 0, 0, 0)');
+              } else {
+                expect($button.css('border-right-color')).not.to.equal($button.css('background-color'));
+              }
+            });
+            cy.get(dismissSelector).realHover().should(assertBorders);
+            cy.get(triggerSelector).focus().realPress('Tab');
+            cy.get(dismissSelector)
+              .should('have.focus')
+              .should($button => {
+                expect($button).to.have.attr('data-fui-focus-visible');
+                assertBorders($button);
+                expect($button.css('outline-style')).to.equal('solid');
+                expect($button.css('outline-width')).to.equal('2px');
+              });
+          });
+        }
+      }
+    }
   });
 });
