@@ -397,10 +397,10 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate({ attributes: { min: '0', max: '100', step: '20' } });
 
-    await element.evaluate<void, any>(node => {
-      node.min = 20;
-      node.max = 110;
-      node.step = 10;
+    await element.evaluate((node: Slider) => {
+      Reflect.set(node, 'min', 20);
+      Reflect.set(node, 'max', 110);
+      Reflect.set(node, 'step', 10);
     });
 
     await expect(element).toHaveJSProperty('min', '20');
@@ -413,9 +413,9 @@ test.describe('Slider', () => {
 
     await fastPage.setTemplate({ attributes: { min: '10', max: '200', step: '20' } });
 
-    await element.evaluate<void, any>(node => {
-      node.min = undefined;
-      node.max = null;
+    await element.evaluate((node: Slider) => {
+      Reflect.set(node, 'min', undefined);
+      Reflect.set(node, 'max', null);
       node.step = 'not a number';
     });
 
@@ -506,7 +506,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '3');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
@@ -538,7 +538,7 @@ test.describe('Slider', () => {
       await expect(element).toHaveAttribute('value', '7');
       await expect(element).toHaveJSProperty('value', '8');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
@@ -568,7 +568,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '8');
 
-      await form.evaluate<void, HTMLFormElement>(node => {
+      await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 

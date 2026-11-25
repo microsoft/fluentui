@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useFieldBase_unstable } from '@fluentui/react-field';
 
 import type { FieldProps, FieldState } from './Field.types';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Field component, given its props and ref.
@@ -14,6 +15,8 @@ export const useField = (props: FieldProps, ref: React.Ref<HTMLDivElement>): Fie
 
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-validate-state'] = state.validationState;
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-required'] = toDataAttributeValue(state.required);
 
   return state;
 };
