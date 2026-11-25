@@ -241,8 +241,8 @@ describe('Dropdown', () => {
 
         expect(queryByRole('status')).toBeNull();
 
-        fireEvent.click(dropdownRoot);
-        fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
           jest.runOnlyPendingTimers();
@@ -251,9 +251,9 @@ describe('Dropdown', () => {
         const firstAnnouncement = getByRole('status');
         expect(firstAnnouncement).toHaveTextContent('Collapsed');
 
-        fireEvent.click(dropdownRoot);
+        userEvent.click(dropdownRoot);
         expect(queryByRole('status')).toBeNull();
-        fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
           jest.runOnlyPendingTimers();
@@ -271,8 +271,9 @@ describe('Dropdown', () => {
           <Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="Lista contraida" />,
         );
 
-        fireEvent.click(getByRole('combobox'));
-        fireEvent.keyDown(getByRole('combobox'), { which: KeyCodes.escape });
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
           jest.runOnlyPendingTimers();
@@ -286,8 +287,9 @@ describe('Dropdown', () => {
 
         const { getByRole, queryByRole } = render(<Dropdown options={DEFAULT_OPTIONS} collapsedStateAnnouncement="" />);
 
-        fireEvent.click(getByRole('combobox'));
-        fireEvent.keyDown(getByRole('combobox'), { which: KeyCodes.escape });
+        const dropdownRoot = getByRole('combobox');
+        userEvent.click(dropdownRoot);
+        userEvent.type(dropdownRoot, '{esc}', { skipClick: true });
 
         act(() => {
           jest.runOnlyPendingTimers();
