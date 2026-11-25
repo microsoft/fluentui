@@ -119,6 +119,35 @@ describe('Dropdown - tab navigation', () => {
     cy.focused().should('have.id', 'after');
   });
 
+  it('does not commit a canceled Tabster move when React capture also cancels Tab', () => {
+    const onOptionSelect = cy.stub().as('onOptionSelect');
+    const onMoveFocus = cy
+      .stub()
+      .callsFake((event: Event) => event.preventDefault())
+      .as('onMoveFocus');
+    const onKeyDownCapture: React.KeyboardEventHandler = event => {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+      }
+    };
+
+    mount(
+      <>
+        <TabsterRoot>
+          <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} onKeyDownCapture={onKeyDownCapture} />
+        </TabsterRoot>
+        <button id="after">After</button>
+      </>,
+    );
+    cy.window().then(win => win.addEventListener('tabster:movefocus', onMoveFocus, { capture: true, once: true }));
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant').realPress('Tab');
+
+    cy.get('@onMoveFocus').should('have.been.calledOnce');
+    cy.get('@onOptionSelect').should('not.have.been.called');
+    cy.focused().should('have.id', 'dropdown');
+    cy.get('#dropdown').should('contain.text', 'Select an animal').and('have.attr', 'aria-expanded', 'true');
+  });
+
   it('prevents the Tabster movefocus event when onOptionSelect calls preventDefault', () => {
     const onOptionSelect = cy
       .stub()

@@ -18,7 +18,7 @@ export function createReactKeyboardEvent(
 
   const event = {
     nativeEvent,
-    target: nativeEvent.target,
+    target: nativeEvent.composedPath()[0] ?? nativeEvent.target,
     currentTarget,
     bubbles: nativeEvent.bubbles,
     cancelable: nativeEvent.cancelable,

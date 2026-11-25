@@ -3,6 +3,34 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 describe('createReactKeyboardEvent', () => {
+  it('matches React target for a composed keydown inside a shadow root', () => {
+    const host = document.createElement('div');
+    document.body.append(host);
+    const container = document.createElement('div');
+    host.attachShadow({ mode: 'open' }).append(container);
+    const onKeyDown = jest.fn();
+    const { getByRole, unmount } = render(React.createElement('button', { onKeyDown }, 'Trigger'), { container });
+    const trigger = getByRole('button');
+    let adaptedTarget: EventTarget | null = null;
+    const onNativeKeyDown = (nativeEvent: KeyboardEvent) => {
+      expect(nativeEvent.target).toBe(host);
+      adaptedTarget = createReactKeyboardEvent(nativeEvent, trigger).event.target;
+    };
+    window.addEventListener('keydown', onNativeKeyDown, { capture: true, once: true });
+
+    try {
+      fireEvent(trigger, new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, composed: true }));
+
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+      expect(onKeyDown.mock.calls[0][0].target).toBe(trigger);
+      expect(adaptedTarget).toBe(trigger);
+    } finally {
+      window.removeEventListener('keydown', onNativeKeyDown, true);
+      unmount();
+      host.remove();
+    }
+  });
+
   it.each([9, 0])('matches React keydown legacy fields when native keyCode is %s', keyCode => {
     const onKeyDown = jest.fn();
     const { getByRole } = render(React.createElement('button', { onKeyDown }, 'Trigger'));

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: select active single-select option when tabbing away",
+  "comment": "fix: select active single-select option when tabbing away, respecting canceled focus moves and shadow-root event targets",
   "packageName": "@fluentui/react-combobox",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

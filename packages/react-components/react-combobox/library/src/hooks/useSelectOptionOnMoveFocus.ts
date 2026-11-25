@@ -41,7 +41,12 @@ export function useSelectOptionOnMoveFocus<Trigger extends HTMLElement>(
   const onTabsterMoveFocus = useEventCallback((event: Event) => {
     const relatedEvent = (event as CustomEvent<TabsterMoveFocusEventDetail>).detail?.relatedEvent;
 
-    if (!relatedEvent || relatedEvent.defaultPrevented || isTabKeyEventHandled(relatedEvent)) {
+    if (
+      event.defaultPrevented ||
+      !relatedEvent ||
+      relatedEvent.defaultPrevented ||
+      isTabKeyEventHandled(relatedEvent)
+    ) {
       return;
     }
 
