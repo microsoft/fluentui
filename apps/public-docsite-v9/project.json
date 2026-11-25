@@ -15,6 +15,7 @@
       ],
       "dependsOn": [
         "^build",
+        { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" },
         {
           "projects": ["storybook-llms-extractor"],
           "target": "build"
@@ -22,13 +23,13 @@
       ]
     },
     "storybook": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
     },
     "storybook:docs": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
     },
     "start": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
     },
     "build-storybook:docsite": {
       "inputs": [

@@ -4,5 +4,16 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-provider/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
+    },
+    "start": {
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
+    },
+    "storybook": {
+      "dependsOn": ["^build", { "projects": ["react-provider"], "target": "prepare-id-namespace-demo" }]
+    }
+  }
 }

@@ -80,3 +80,63 @@ server.get('/', (req, res) => {
 
 server.listen(3000, 'localhost');
 ```
+
+### Build-time ID namespaces
+
+Configure independent React 18+ roots with matching server/client `identifierPrefix` values first.
+When all roots are correctly configured, an additional build namespace is not required for this issue.
+If root configuration cannot be guaranteed across independently built applications, configure a distinct
+[build-time ID namespace](?path=/docs/concepts-developer-advanced-configuration--docs#build-time-id-namespace)
+for each Fluent module copy. The Advanced Configuration guide contains complete Webpack, Vite,
+and esbuild recipes, including validation and dependency transformation.
+
+Use the **same** `FLUENT_USE_ID_BUILD_PREFIX` input and `__FLUENT_USE_ID_BUILD_PREFIX__` substitution
+in both server and client builds. For example, both builds of Calendar should substitute the literal
+`"calendar"`; both builds of Chat should substitute `"chat"`. Do not generate separate random values
+for the server and client or deploy HTML with assets built for another namespace.
+
+The replacement configuration is identical for the two builds:
+
+```js
+const namespace = process.env.FLUENT_USE_ID_BUILD_PREFIX ?? '';
+if (namespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(namespace)) {
+  throw new Error('Invalid FLUENT_USE_ID_BUILD_PREFIX');
+}
+
+const define = {
+  __FLUENT_USE_ID_BUILD_PREFIX__: JSON.stringify(namespace),
+};
+// Pass `define` to esbuild/Vite, or to Webpack's DefinePlugin, for BOTH builds.
+```
+
+Ensure that the server build actually transforms Fluent's JavaScript. If the server externalizes
+Fluent and imports it directly from `node_modules`, the client bundle's substitution does not
+configure that external package. Bundle/transform Fluent on both sides, or use matching outer
+`IdPrefixProvider` values without build substitution on both sides.
+
+Keep any `IdPrefixProvider` values identical on the server and client. In React 18 and later, if you
+also use React's `identifierPrefix`, pass the same root-specific value to server rendering and
+`hydrateRoot`. For example:
+
+```jsx
+// Server
+import { renderToString } from 'react-dom/server';
+
+const html = renderToString(<App />, { identifierPrefix: 'calendar-instance-a-' });
+
+// Client
+import { hydrateRoot } from 'react-dom/client';
+
+hydrateRoot(container, <App />, { identifierPrefix: 'calendar-instance-a-' });
+```
+
+The build namespace does not change `SSRProvider` requirements. In particular, React 17 still needs
+a request-local `SSRProvider` for matching counters and must render the same tree/order during
+hydration. A namespace does not repair counter-order or concurrent-rendering limitations.
+Multiple instances of one artifact or apps sharing a Fluent singleton still need per-instance
+root/provider prefixes.
+
+See the [interactive provider demonstration](?path=/story/components-fluentprovider--id-namespace)
+for the client-side collision. The corresponding Cypress scenarios also exercise real SSR output and
+completed hydration on React 17, React 18, and the workspace version; Storybook itself does not need
+a separate installation for each React version.
