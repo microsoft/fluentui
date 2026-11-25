@@ -4,7 +4,7 @@ import type { Tab, TabOptions } from './tab.js';
 
 export function tabTemplate<T extends Tab>(options: TabOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template slot="tab" role="tab">
+    <template>
       ${startSlotTemplate(options)}
       <span class="tab-content"><slot></slot></span>
       ${endSlotTemplate(options)}

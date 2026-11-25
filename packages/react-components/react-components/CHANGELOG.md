@@ -1,8 +1,255 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.3)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.2..@fluentui/react-components_v9.75.3)
+
+### Minor changes
+
+- `@fluentui/react-table`
+  - feat: add design-free base hooks for Table and DataGrid ([PR #36965](https://github.com/microsoft/fluentui/pull/36965) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - Add click-trigger timing to the TagPickerControl base hook for native popover composition. ([PR #37178](https://github.com/microsoft/fluentui/pull/37178) by 43711362+paolo-aliprandi@users.noreply.github.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - perf: store native element prop allow-lists as compact strings to reduce bundle size ([PR #37186](https://github.com/microsoft/fluentui/pull/37186) by dmytrokirpa@microsoft.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-image`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass root props through without the native props allow-list to reduce bundle size ([PR #37188](https://github.com/microsoft/fluentui/pull/37188) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: render information button for numeric zero content ([PR #37100](https://github.com/microsoft/fluentui/pull/37100) by paulmardling@microsoft.com)
+- `@fluentui/react-input`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass native props through without the native props allow-list to reduce bundle size ([PR #37192](https://github.com/microsoft/fluentui/pull/37192) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: bind React JSX runtime functions directly to reduce bundle size ([PR #37157](https://github.com/microsoft/fluentui/pull/37157) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass root props through without the native props allow-list to reduce bundle size ([PR #37188](https://github.com/microsoft/fluentui/pull/37188) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-list`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: apply user slot className after conditional styles ([PR #37163](https://github.com/microsoft/fluentui/pull/37163) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: MessageBar respects an explicit politeness prop instead of always announcing politely ([PR #37113](https://github.com/microsoft/fluentui/pull/37113) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: createV9Theme uses webDarkTheme as the base theme for inverted v8 themes ([PR #37127](https://github.com/microsoft/fluentui/pull/37127) by vgenaev@gmail.com)
+  - fix(react-migration-v8-v9): render the matching v8 variant class names on Button shims instead of always ms-Button--primary ([PR #36984](https://github.com/microsoft/fluentui/pull/36984) by 171317405+jakesalvesen@users.noreply.github.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - chore: remove unused dependency on @fluentui/react-context-selector ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - chore: remove unused dependency on @fluentui/react-theme ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- `@fluentui/react-persona`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: drop native props allow-list from Radio and RadioGroup hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-range-slider-preview`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: drop native props allow-list from RangeSlider hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-search`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass native props through without the native props allow-list to reduce bundle size ([PR #37192](https://github.com/microsoft/fluentui/pull/37192) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: remove unused dependency on @fluentui/react-field ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass root props through without the native props allow-list to reduce bundle size ([PR #37188](https://github.com/microsoft/fluentui/pull/37188) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: preserve upward vertical values in RTL layouts ([PR #37102](https://github.com/microsoft/fluentui/pull/37102) by paulmardling@microsoft.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - perf: drop native props allow-list from Slider hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass native props through without the native props allow-list to reduce bundle size ([PR #37192](https://github.com/microsoft/fluentui/pull/37192) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - perf: drop native props allow-list from Switch hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: inherit TagPicker disabled state in the shared button trigger ([PR #37179](https://github.com/microsoft/fluentui/pull/37179) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- `@fluentui/react-tags`
+  - chore: remove unused dependency on @fluentui/react-aria ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass native props through without the native props allow-list to reduce bundle size ([PR #37192](https://github.com/microsoft/fluentui/pull/37192) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-theme`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - chore: remove unused dependency on @fluentui/react-radio ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- `@fluentui/react-tooltip`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - chore: remove unused dependency on @fluentui/react-aria ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- `@fluentui/keyboard-keys`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: mark the live announcer region as never hidden without depending on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: preserve explicit numeric zero content in CounterBadge ([PR #37100](https://github.com/microsoft/fluentui/pull/37100) by paulmardling@microsoft.com)
+  - perf: pass root props through without the native props allow-list to reduce bundle size ([PR #37188](https://github.com/microsoft/fluentui/pull/37188) by dmytrokirpa@microsoft.com)
+  - fix: include out of office state in PresenceBadge aria-label ([PR #37191](https://github.com/microsoft/fluentui/pull/37191) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: remove unused dependency on @fluentui/react-link ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - chore: remove unused dependency on @fluentui/keyboard-keys ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-calendar-preview`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: Preserve prototype-related numeric property names when normalizing chart data and align adapter dictionaries with react-charting hardening. ([PR #37167](https://github.com/microsoft/fluentui/pull/37167) by v-baambati@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+  - perf: drop native props allow-list from Checkbox hooks ([PR #37194](https://github.com/microsoft/fluentui/pull/37194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: end ColorArea drag on pointercancel, released buttons and unmount ([PR #37161](https://github.com/microsoft/fluentui/pull/37161) by vgenaev@gmail.com)
+  - fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster ([PR #36994](https://github.com/microsoft/fluentui/pull/36994) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: remove unused dependency on @fluentui/react-popover ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: apply popupSurface className after inline styles ([PR #37163](https://github.com/microsoft/fluentui/pull/37163) by vgenaev@gmail.com)
+- `@fluentui/react-dialog`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - fix: compare DrawerBody scroll positions with a tolerance so the footer divider is hidden when scrolled to the bottom at fractional browser zoom ([PR #36677](https://github.com/microsoft/fluentui/pull/36677) by fnambeh@gsumail.gram.edu)
+- `@fluentui/react-field`
+  - chore: remove unused dependency on @fluentui/react-context-selector ([PR #37164](https://github.com/microsoft/fluentui/pull/37164) by vgenaev@gmail.com)
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+  - perf: pass native props through without the native props allow-list to reduce bundle size ([PR #37192](https://github.com/microsoft/fluentui/pull/37192) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- `@fluentui/global-context`
+  - chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+
+## [9.75.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.2)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.75.1..@fluentui/react-components_v9.75.2)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(react-menu): prevent root ArrowDown opening from scrolling the focused menu item ([PR #37076](https://github.com/microsoft/fluentui/pull/37076) by paulmardling@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: NavCategoryItem renders type="button" so it does not submit an enclosing form ([PR #37114](https://github.com/microsoft/fluentui/pull/37114) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+  - fix: SearchBox dismiss button does not clear the value when the input is disabled or read-only ([PR #37107](https://github.com/microsoft/fluentui/pull/37107) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: apply icon sizing and layout styles to font glyphs as well as SVG icons ([PR #36958](https://github.com/microsoft/fluentui/pull/36958) by martinhochel@microsoft.com)
 
 ## [9.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.1)
 

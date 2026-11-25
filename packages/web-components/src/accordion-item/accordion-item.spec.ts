@@ -68,7 +68,7 @@ test.describe('Accordion item', () => {
 
     await expect(button).toHaveAttribute('aria-expanded', 'true');
 
-    await element.evaluate<void, AccordionItem>(node => {
+    await element.evaluate((node: AccordionItem) => {
       node.expanded = false;
     });
 
@@ -85,7 +85,7 @@ test.describe('Accordion item', () => {
 
     await expect(button).toHaveAttribute('disabled');
 
-    await element.evaluate<void, AccordionItem>(node => {
+    await element.evaluate((node: AccordionItem) => {
       node.disabled = false;
     });
 

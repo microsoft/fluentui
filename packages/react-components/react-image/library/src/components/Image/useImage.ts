@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { ImageBaseProps, ImageBaseState, ImageProps, ImageState } from './Image.types';
 
 /**
@@ -34,10 +34,10 @@ export const useImageBase_unstable = (props: ImageBaseProps, ref: React.Ref<HTML
       root: 'img',
     },
     root: slot.always(
-      getIntrinsicElementProps('img', {
+      {
         ref,
         ...props,
-      }),
+      },
       { elementType: 'img' },
     ),
   };

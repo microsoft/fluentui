@@ -188,7 +188,7 @@ const templates = {
         const tsConfig = {
           extends: offsetFromRoot(options.projectConfig.root) + 'tsconfig.base.json',
           compilerOptions: {
-            target: 'ES2019',
+            target: 'ES2020',
             // by default we gonna use tsc for type checking only
             noEmit: true,
             isolatedModules: true,
@@ -222,7 +222,7 @@ const templates = {
           extends: './tsconfig.json',
           compilerOptions: {
             noEmit: false,
-            lib: ['ES2019'],
+            lib: ['ES2020'],
             declaration: true,
             declarationDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc/types',
             outDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc',
@@ -363,7 +363,7 @@ const templates = {
       compilerOptions: {
         isolatedModules: false,
         types: ['node', 'cypress', 'cypress-real-events'],
-        lib: ['ES2019', 'dom'],
+        lib: ['ES2020', 'dom'],
       },
       include: ['**/*.cy.ts', '**/*.cy.tsx'],
     },
@@ -396,7 +396,7 @@ const templates = {
             useSpread: true,
           },
         },
-        target: 'es2019',
+        target: 'es2020',
       },
       minify: false,
       sourceMaps: true,

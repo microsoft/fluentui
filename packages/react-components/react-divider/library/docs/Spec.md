@@ -59,7 +59,7 @@ The `Divider` component has four appearance variants:
 
 ## API
 
-See API at [Divider.types.tsx](./src/components/Divider/Divider.types.ts).
+See API at [Divider.types.tsx](../src/components/Divider/Divider.types.ts).
 
 ## HTML Structure
 

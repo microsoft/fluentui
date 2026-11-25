@@ -50,6 +50,10 @@ export class BaseMenuList extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    if (!this.hasAttribute('focusgroup')) {
+      this.setAttribute('focusgroup', 'menu');
+    }
+
     if (!this.slot && this.isNestedMenu()) {
       this.slot = 'submenu';
     }

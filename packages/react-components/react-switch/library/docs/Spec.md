@@ -109,7 +109,7 @@ https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/co
 
 ### Switch Props
 
-See API at [Switch.types.ts](./src/components/Switch/Switch.types.ts).
+See API at [Switch.types.ts](../src/components/Switch/Switch.types.ts).
 
 ## Structure
 

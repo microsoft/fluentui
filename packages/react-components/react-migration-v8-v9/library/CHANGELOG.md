@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-<!-- This log was last generated on Mon, 02 Nov 2026 13:22:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.26)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.25..@fluentui/react-migration-v8-v9_v9.10.26)
+
+### Patches
+
+- fix: createV9Theme uses webDarkTheme as the base theme for inverted v8 themes ([PR #37127](https://github.com/microsoft/fluentui/pull/37127) by vgenaev@gmail.com)
+- fix(react-migration-v8-v9): render the matching v8 variant class names on Button shims instead of always ms-Button--primary ([PR #36984](https://github.com/microsoft/fluentui/pull/36984) by 171317405+jakesalvesen@users.noreply.github.com)
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-components to v9.75.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.25)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.24..@fluentui/react-migration-v8-v9_v9.10.25)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.24)
 

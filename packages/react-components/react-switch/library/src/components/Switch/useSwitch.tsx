@@ -5,7 +5,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState, SwitchBaseProps, SwitchBaseState } from './Switch.types';
 
 /**
@@ -21,6 +21,11 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
   const { size = 'medium', ...baseProps } = props;
 
   const baseState = useSwitchBase_unstable(baseProps, ref);
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  baseState.root.ref = useMergedRefs(baseState.root.ref, useFocusWithin<HTMLDivElement>());
 
   baseState.indicator.children ??= <CircleFilled />;
 
@@ -52,30 +57,32 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   const {
     checked,
     defaultChecked,
-    disabled,
     disabledFocusable = false,
     labelPosition = 'after',
     onChange,
-    required,
+    // Slots
+    root: rootSlot,
+    indicator: indicatorSlot,
+    input: inputSlot,
+    label: labelSlot,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
   } = props;
+  const { disabled, required } = props;
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange', 'disabledFocusable'],
-  });
+  const id = useId('switch-', inputProps.id);
 
-  const id = useId('switch-', nativeProps.primary.id);
-
-  const root = slot.always(props.root, {
-    defaultProps: { ref: useFocusWithin<HTMLDivElement>(), ...nativeProps.root },
+  const root = slot.always(rootSlot, {
+    defaultProps: { className, style },
     elementType: 'div',
   });
-  const indicator = slot.always(props.indicator, {
+  const indicator = slot.always(indicatorSlot, {
     defaultProps: { 'aria-hidden': true },
     elementType: 'div',
   });
-  const input = slot.always(props.input, {
+  const input = slot.always(inputSlot, {
     defaultProps: {
       checked,
       defaultChecked,
@@ -83,7 +90,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
       ref,
       role: 'switch',
       type: 'checkbox',
-      ...nativeProps.primary,
+      ...inputProps,
       disabled: disabled && !disabledFocusable,
       ...(disabledFocusable && { 'aria-disabled': true }),
     },
@@ -100,7 +107,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
       ev.preventDefault();
     }
   });
-  const label = slot.optional(props.label, {
+  const label = slot.optional(labelSlot, {
     defaultProps: { disabled: disabled || disabledFocusable, htmlFor: id, required },
     elementType: 'label',
   });

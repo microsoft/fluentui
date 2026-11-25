@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { act, fireEvent, render, waitFor, within } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
+import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field';
 import { DatePicker } from './DatePicker';
@@ -22,6 +23,85 @@ const renderDatePicker = (props: Partial<DatePickerProps> = {}) => {
 };
 
 describe('DatePicker', () => {
+  it('tabs from the editable field to its icon without committing pending text', () => {
+    const onDateChange = jest.fn();
+    const { getByRole } = renderDatePicker({ allowTextInput: true, onDateChange });
+    const input = getByRole('combobox');
+    userEvent.type(input, '2026-08-24');
+    userEvent.tab();
+    expect(getByRole('button', { name: 'Open calendar' })).toHaveFocus();
+    expect(onDateChange).not.toHaveBeenCalled();
+    userEvent.keyboard('{enter}');
+    expect(getByRole('dialog')).toBeInTheDocument();
+    expect(onDateChange).not.toHaveBeenCalled();
+  });
+
+  it('shares the locale between typed dates, field display and Calendar labels', () => {
+    const { getByRole } = renderDatePicker({ allowTextInput: true, locale: 'de-DE' });
+    const input = getByRole('combobox');
+    fireEvent.change(input, { target: { value: '24.8.2026' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(input).toHaveValue('24. August 2026');
+    fireEvent.keyDown(input, { key: 'ArrowDown', altKey: true });
+    expect(getByRole('dialog')).toHaveAttribute('aria-label', 'August 2026');
+    expect(getByRole('button', { name: '24. August 2026' })).toBeInTheDocument();
+  });
+
+  it.each(['overlay', 'sideBySide'] as const)('backs out of the %s internal picker before dismissing', async layout => {
+    const { getByRole, getDialog, queryByRole } = renderDatePicker({ defaultOpen: true, calendar: { layout } });
+    fireEvent.click(getByRole('button', { name: 'August 2026, change year' }));
+    fireEvent.keyDown(getByRole('gridcell', { name: '2026' }), { key: 'Escape' });
+    expect(getDialog()).toBeInTheDocument();
+    // Escape steps back one level: from the year grid to the month choices first.
+    const monthHeading = getByRole('button', { name: '2026, change year' });
+    await waitFor(() => expect(monthHeading).toHaveFocus());
+    let heading = monthHeading;
+    if (layout === 'overlay') {
+      fireEvent.keyDown(monthHeading, { key: 'Escape' });
+      expect(getDialog()).toBeInTheDocument();
+      heading = getByRole('button', { name: 'August 2026, change year' });
+      await waitFor(() => expect(heading).toHaveFocus());
+    }
+    fireEvent.keyDown(heading, { key: 'Escape' });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+    expect(getByRole('combobox')).toHaveFocus();
+  });
+
+  it('shows the month of a controlled value that changes while the calendar is open', () => {
+    const { getDialog, rerender } = renderDatePicker({ defaultOpen: true, value: today });
+    rerender(<DatePicker aria-label="Due date" today={today} defaultOpen value={new Date(2026, 10, 24)} />);
+    expect(getDialog()).toHaveAttribute('aria-label', 'November 2026');
+    expect(getDayCell(getDialog(), 'November 24, 2026')).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('keeps the day grid unchanged while choosing a picker year, until a month is chosen', () => {
+    const onDateChange = jest.fn();
+    const { getByRole, getDialog } = renderDatePicker({ defaultOpen: true, onDateChange });
+    fireEvent.click(getByRole('button', { name: 'August 2026, change year' }));
+    fireEvent.click(getByRole('gridcell', { name: '2027' }));
+    expect(getDialog()).toHaveAttribute('aria-label', 'August 2026');
+    expect(getByRole('gridcell', { name: 'January 2027' })).toBeInTheDocument();
+    fireEvent.click(getByRole('gridcell', { name: 'January 2027' }));
+    expect(getDialog()).toHaveAttribute('aria-label', 'January 2027');
+    expect(onDateChange).not.toHaveBeenCalled();
+  });
+
+  it('keeps unavailable dates keyboard-inspectable without allowing selection', async () => {
+    const onDateChange = jest.fn();
+    const { getDialog } = renderDatePicker({
+      defaultOpen: true,
+      onDateChange,
+      calendar: { restrictedDates: [new Date(2026, 7, 13)] },
+    });
+    const todayCell = getDayCell(getDialog(), 'August 12, 2026');
+    await waitFor(() => expect(todayCell).toHaveFocus());
+    fireEvent.keyDown(todayCell, { key: 'ArrowRight' });
+    const unavailable = getDayCell(getDialog(), 'August 13, 2026');
+    expect(unavailable).toHaveFocus();
+    fireEvent.keyDown(unavailable, { key: 'Enter' });
+    expect(onDateChange).not.toHaveBeenCalled();
+  });
+
   isConformant({
     Component: DatePicker,
     displayName: 'DatePicker',
@@ -33,13 +113,13 @@ describe('DatePicker', () => {
   describe('non-editable field', () => {
     it('renders a button trigger that names the field and shows the placeholder', () => {
       const { container, getByRole } = renderDatePicker();
-      const trigger = getByRole('button', { name: 'Due date Select a date' });
+      const trigger = getByRole('combobox', { name: 'Due date Select a date' });
       const root = container.firstElementChild!;
 
       expect(trigger).toHaveAttribute('aria-haspopup', 'dialog');
       expect(trigger).toHaveAttribute('aria-expanded', 'false');
       expect(trigger).not.toHaveAttribute('aria-controls');
-      expect(trigger).not.toHaveAttribute('role', 'combobox');
+      expect(trigger).toHaveAttribute('role', 'combobox');
       expect(root).toHaveAttribute('data-placeholder', '');
       expect(root).not.toHaveAttribute('data-open');
       expect(root).not.toHaveAttribute('data-editable');
@@ -48,12 +128,12 @@ describe('DatePicker', () => {
     it('includes the formatted value in the trigger name', () => {
       const { getByRole } = renderDatePicker({ defaultValue: new Date(2026, 7, 24) });
 
-      expect(getByRole('button', { name: 'Due date August 24, 2026' })).toBeInTheDocument();
+      expect(getByRole('combobox', { name: 'Due date August 24, 2026' })).toBeInTheDocument();
     });
 
     it('opens on click, names the dialog with the visible month and focuses today', async () => {
       const { container, getByRole, getDialog } = renderDatePicker();
-      const trigger = getByRole('button', { name: 'Due date Select a date' });
+      const trigger = getByRole('combobox', { name: 'Due date Select a date' });
 
       fireEvent.click(trigger);
 
@@ -70,7 +150,7 @@ describe('DatePicker', () => {
     it('focuses the selected day when opened', async () => {
       const { getByRole, getDialog } = renderDatePicker({ defaultValue: new Date(2025, 2, 3) });
 
-      fireEvent.click(getByRole('button', { name: 'Due date March 3, 2025' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date March 3, 2025' }));
 
       const selected = getDayCell(getDialog(), 'March 3, 2025');
       expect(getDialog()).toHaveAttribute('aria-label', 'March 2025');
@@ -78,26 +158,43 @@ describe('DatePicker', () => {
       await waitFor(() => expect(selected).toHaveFocus());
     });
 
-    it('focuses the first available day of the month when today is unavailable', async () => {
+    it('focuses the nearest rendered day when a renderer omits the selected day', async () => {
+      const saturday = new Date(2026, 7, 15);
+      const { getByRole, getDialog } = renderDatePicker({
+        defaultValue: saturday,
+        calendar: {
+          renderCell: (props, cell, defaultRender) =>
+            cell.type === 'day' && [0, 6].includes(cell.originalDate?.getDay() ?? -1) ? null : defaultRender(props),
+        },
+      });
+
+      fireEvent.click(getByRole('combobox', { name: 'Due date August 15, 2026' }));
+
+      await waitFor(() => expect(getDayCell(getDialog(), 'August 14, 2026')).toHaveFocus());
+    });
+
+    it('focuses today for inspection even when it is unavailable', async () => {
       const { getByRole, getDialog } = renderDatePicker({
         calendar: { restrictedDates: [new Date(2026, 7, 1), new Date(2026, 7, 2), today] },
       });
 
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
-      await waitFor(() => expect(getDayCell(getDialog(), 'August 3, 2026')).toHaveFocus());
+      const currentDay = getDayCell(getDialog(), 'August 12, 2026');
+      await waitFor(() => expect(currentDay).toHaveFocus());
+      expect(currentDay).toHaveAttribute('aria-disabled', 'true');
     });
 
     it('selects a day, closes and returns focus to the field', async () => {
       const onDateChange = jest.fn();
       const onOpenChange = jest.fn();
       const { getByRole, queryByRole, getDialog } = renderDatePicker({ onDateChange, onOpenChange });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       fireEvent.click(within(getDialog()).getByRole('button', { name: 'August 24, 2026' }));
 
       expect(queryByRole('dialog')).not.toBeInTheDocument();
-      const trigger = getByRole('button', { name: 'Due date August 24, 2026' });
+      const trigger = getByRole('combobox', { name: 'Due date August 24, 2026' });
       expect(trigger).toHaveFocus();
       expect(trigger).toHaveAttribute('aria-expanded', 'false');
       expect(onDateChange).toHaveBeenCalledTimes(1);
@@ -144,20 +241,20 @@ describe('DatePicker', () => {
     it('selects with Enter on the focused day', async () => {
       const onDateChange = jest.fn();
       const { getByRole, getDialog } = renderDatePicker({ onDateChange });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
       const cell = getDayCell(getDialog(), 'August 12, 2026');
       await waitFor(() => expect(cell).toHaveFocus());
 
       fireEvent.keyDown(cell, { key: 'Enter' });
 
       expect(sameDay(onDateChange.mock.calls[0][1].value, today)).toBe(true);
-      expect(getByRole('button', { name: 'Due date August 12, 2026' })).toHaveFocus();
+      expect(getByRole('combobox', { name: 'Due date August 12, 2026' })).toHaveFocus();
     });
 
     it('closes with Escape without changing the value and returns focus to the field', async () => {
       const onDateChange = jest.fn();
       const { getByRole, queryByRole, getDialog } = renderDatePicker({ onDateChange });
-      const trigger = getByRole('button', { name: 'Due date Select a date' });
+      const trigger = getByRole('combobox', { name: 'Due date Select a date' });
       fireEvent.click(trigger);
       const cell = getDayCell(getDialog(), 'August 12, 2026');
       await waitFor(() => expect(cell).toHaveFocus());
@@ -171,7 +268,7 @@ describe('DatePicker', () => {
 
     it('opens with Alt + Arrow Down and closes with Escape on the field', () => {
       const { getByRole, queryByRole } = renderDatePicker();
-      const trigger = getByRole('button', { name: 'Due date Select a date' });
+      const trigger = getByRole('combobox', { name: 'Due date Select a date' });
 
       fireEvent.keyDown(trigger, { key: 'ArrowDown', altKey: true });
       expect(queryByRole('dialog')).toBeInTheDocument();
@@ -189,7 +286,7 @@ describe('DatePicker', () => {
           <button>Next</button>
         </>,
       );
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
       const cell = getDayCell(getByRole('dialog'), 'August 12, 2026');
       await waitFor(() => expect(cell).toHaveFocus());
       const next = getByRole('button', { name: 'Next' });
@@ -204,7 +301,7 @@ describe('DatePicker', () => {
     it('light dismisses on a pointer press outside', () => {
       const onOpenChange = jest.fn();
       const { getByRole, queryByRole } = renderDatePicker({ onOpenChange });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       fireEvent.pointerDown(document.body);
 
@@ -214,7 +311,7 @@ describe('DatePicker', () => {
 
     it('cannot open while disabled', () => {
       const { container, getByRole, queryByRole } = renderDatePicker({ disabled: true });
-      const trigger = getByRole('button', { name: 'Due date Select a date' });
+      const trigger = getByRole('combobox', { name: 'Due date Select a date' });
 
       fireEvent.click(trigger);
       fireEvent.keyDown(trigger, { key: 'ArrowDown', altKey: true });
@@ -224,11 +321,12 @@ describe('DatePicker', () => {
       expect(container.firstElementChild).toHaveAttribute('data-disabled', '');
     });
 
-    it('marks the calendar icon as decorative', () => {
-      const { getByTestId } = renderDatePicker({ icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'> });
+    it('keeps the calendar icon as a sibling button outside the tab order in non-editable mode', () => {
+      const { getByTestId } = renderDatePicker({ icon: { 'data-testid': 'icon' } as React.ComponentProps<'button'> });
 
-      expect(getByTestId('icon')).toHaveAttribute('aria-hidden', 'true');
-      expect(getByTestId('icon').closest('button')).not.toBeNull();
+      expect(getByTestId('icon')).toHaveAttribute('tabindex', '-1');
+      expect(getByTestId('icon').tagName).toBe('BUTTON');
+      expect(getByTestId('icon').parentElement?.tagName).toBe('DIV');
     });
 
     it('does not let consumer props misrepresent reserved state', () => {
@@ -244,32 +342,33 @@ describe('DatePicker', () => {
   describe('calendar composition', () => {
     it('hides Go to today by default and shows it on request', () => {
       const { getByRole, getDialog, unmount } = renderDatePicker();
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
       expect(within(getDialog()).queryByRole('button', { name: 'Go to today' })).not.toBeInTheDocument();
       unmount();
 
       const second = renderDatePicker({ showGoToToday: true });
-      fireEvent.click(second.getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(second.getByRole('combobox', { name: 'Due date Select a date' }));
       expect(within(second.getDialog()).getByRole('button', { name: 'Go to today' })).toBeInTheDocument();
     });
 
-    it('names month cells with their year and marks the shown and current month', () => {
+    it('names month cells with their year and marks only the displayed month as current', () => {
       const { getByRole, getDialog } = renderDatePicker({ defaultValue: new Date(2026, 2, 3) });
-      fireEvent.click(getByRole('button', { name: 'Due date March 3, 2026' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date March 3, 2026' }));
       const grids = within(getDialog()).getAllByRole('grid');
 
       expect(grids).toHaveLength(2);
       const monthGrid = grids[1];
       expect(within(monthGrid).getAllByRole('gridcell')).toHaveLength(12);
       expect(within(monthGrid).getByRole('gridcell', { name: 'March 2026' })).toHaveAttribute('aria-selected', 'true');
-      expect(within(monthGrid).getByRole('gridcell', { name: 'August 2026' })).toHaveAttribute('aria-current', 'date');
+      expect(within(monthGrid).getByRole('gridcell', { name: 'March 2026' })).toHaveAttribute('aria-current', 'true');
+      expect(within(monthGrid).getByRole('gridcell', { name: 'August 2026' })).not.toHaveAttribute('aria-current');
       expect(within(monthGrid).getAllByRole('row')[0].querySelectorAll('[role="gridcell"]')).toHaveLength(3);
     });
 
     it('browses months without committing or closing', () => {
       const onDateChange = jest.fn();
       const { getByRole, getDialog } = renderDatePicker({ onDateChange });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       fireEvent.click(within(getDialog()).getByRole('button', { name: 'Oct' }));
 
@@ -279,19 +378,43 @@ describe('DatePicker', () => {
 
     it('opens the year-range grid from the day calendar heading', async () => {
       const { getByRole, getDialog } = renderDatePicker();
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       fireEvent.click(within(getDialog()).getByRole('button', { name: 'August 2026, change year' }));
 
       const yearGrid = within(getDialog()).getAllByRole('grid')[1];
       await waitFor(() => expect(within(yearGrid).getAllByRole('gridcell')).toHaveLength(12));
-      expect(within(yearGrid).getByRole('gridcell', { name: /2026/ })).toHaveAttribute('aria-current', 'date');
+      expect(within(yearGrid).getByRole('gridcell', { name: /2026/ })).toHaveAttribute('aria-current', 'true');
       expect(getDialog()).toBeInTheDocument();
+    });
+
+    it('names the day heading after the view it opens', () => {
+      const { getByRole, getDialog } = renderDatePicker({ calendar: { dayHeadingView: 'month' } });
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
+
+      expect(within(getDialog()).getByRole('button', { name: 'August 2026, change month' })).toBeInTheDocument();
+    });
+
+    it('keeps the day heading static when the year grid is hidden', () => {
+      const { getByRole, getDialog } = renderDatePicker({ calendar: { yearPickerHidden: true } });
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
+
+      expect(within(getDialog()).getByText('August 2026').closest('button')).toBeNull();
+      expect(within(getDialog()).queryByRole('button', { name: /^August 2026, change/ })).toBeNull();
+    });
+
+    it('keeps a consumer day heading formatter', () => {
+      const { getByRole, getDialog } = renderDatePicker({
+        calendar: { formatters: { dayPickerHeaderLabel: data => `${data.formattedDate}, pick` } },
+      });
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
+
+      expect(within(getDialog()).getByRole('button', { name: 'August 2026, pick' })).toBeInTheDocument();
     });
 
     it('moves focus to the year-range grid each time the day calendar heading is activated', async () => {
       const { getByRole, getDialog } = renderDatePicker();
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
       const heading = within(getDialog()).getByRole('button', { name: 'August 2026, change year' });
 
       fireEvent.click(heading);
@@ -305,7 +428,7 @@ describe('DatePicker', () => {
 
     it('opens the year-range grid from the day calendar heading in the overlay layout', async () => {
       const { getByRole, getDialog } = renderDatePicker({ calendar: { layout: 'overlay' } });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
       expect(within(getDialog()).getAllByRole('grid')).toHaveLength(1);
 
       fireEvent.click(within(getDialog()).getByRole('button', { name: 'August 2026, change year' }));
@@ -318,7 +441,7 @@ describe('DatePicker', () => {
 
     it('names month cells with years below 100', () => {
       const { getByRole, getDialog } = renderDatePicker({ defaultValue: createLocalDate(42, 2, 3) });
-      fireEvent.click(getByRole('button', { name: /^Due date March 3, 42/ }));
+      fireEvent.click(getByRole('combobox', { name: /^Due date March 3, 42/ }));
       const monthGrid = within(getDialog()).getAllByRole('grid')[1];
 
       expect(within(monthGrid).getByRole('gridcell', { name: 'March 42' })).toHaveAttribute('aria-selected', 'true');
@@ -327,7 +450,7 @@ describe('DatePicker', () => {
 
     it('keeps the calendar open while navigating months with the header buttons', () => {
       const { getByRole, getDialog } = renderDatePicker();
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       fireEvent.click(within(getDialog()).getByRole('button', { name: /^Next month/ }));
 
@@ -339,7 +462,7 @@ describe('DatePicker', () => {
         minDate: new Date(2026, 7, 10),
         calendar: { value: new Date(2026, 7, 2) } as DatePickerProps['calendar'],
       });
-      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      fireEvent.click(getByRole('combobox', { name: 'Due date Select a date' }));
 
       expect(getDayCell(getDialog(), 'August 9, 2026')).toHaveAttribute('aria-disabled', 'true');
       expect(getDayCell(getDialog(), 'August 2, 2026')).not.toHaveAttribute('aria-selected', 'true');
@@ -349,7 +472,7 @@ describe('DatePicker', () => {
   describe('editable field', () => {
     const renderEditable = (props: Partial<DatePickerInputProps> = {}) => {
       const result = renderDatePicker({ allowTextInput: true, ...props });
-      return { ...result, input: result.getByRole('textbox', { name: 'Due date' }) as HTMLInputElement };
+      return { ...result, input: result.getByRole('combobox', { name: 'Due date' }) as HTMLInputElement };
     };
 
     it('renders a text input with popup semantics and the placeholder', () => {
@@ -358,23 +481,23 @@ describe('DatePicker', () => {
       expect(input).toHaveAttribute('type', 'text');
       expect(input).toHaveAttribute('placeholder', 'Select a date');
       expect(input).toHaveAttribute('aria-haspopup', 'dialog');
-      expect(input).not.toHaveAttribute('aria-expanded');
+      expect(input).toHaveAttribute('aria-expanded', 'false');
+      expect(input).toHaveAttribute('aria-autocomplete', 'none');
       expect(input).toHaveAttribute('aria-required', 'true');
       expect(container.firstElementChild).toHaveAttribute('data-editable', '');
     });
 
     it('keeps focus in the input on click and opens from the icon', () => {
       const { input, getByTestId, queryByRole } = renderEditable({
-        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'button'>,
       });
 
       fireEvent.click(input);
       expect(queryByRole('dialog')).not.toBeInTheDocument();
 
       const icon = getByTestId('icon');
-      expect(icon).toHaveAttribute('role', 'button');
-      // Focusable for assistive technology, but not a tab stop.
-      expect(icon).toHaveAttribute('tabindex', '-1');
+      expect(icon.tagName).toBe('BUTTON');
+      expect(icon).toHaveAttribute('tabindex', '0');
       fireEvent.click(icon);
       expect(queryByRole('dialog')).toBeInTheDocument();
       expect(icon).toHaveAttribute('aria-expanded', 'true');
@@ -383,14 +506,14 @@ describe('DatePicker', () => {
     it.each(['Enter', ' '])('toggles the calendar from the focused icon with "%s"', key => {
       const onOpenChange = jest.fn();
       const { getByTestId, queryByRole } = renderEditable({
-        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'button'>,
         onOpenChange,
       });
       const icon = getByTestId('icon');
 
-      icon.focus();
+      act(() => icon.focus());
       expect(icon).toHaveFocus();
-      expect(fireEvent.keyDown(icon, { key })).toBe(false);
+      userEvent.keyboard(key === 'Enter' ? '{enter}' : ' ');
       expect(queryByRole('dialog')).toBeInTheDocument();
       expect(onOpenChange).toHaveBeenLastCalledWith(
         expect.anything(),
@@ -398,10 +521,22 @@ describe('DatePicker', () => {
       );
     });
 
+    it('preserves a consumer-disabled icon while leaving the editable field enabled', () => {
+      const { input, getByRole, queryByRole } = renderEditable({ icon: { disabled: true } });
+      const icon = getByRole('button', { name: 'Open calendar' });
+
+      expect(input).not.toBeDisabled();
+      expect(icon).toBeDisabled();
+      expect(icon).toHaveAttribute('tabindex', '-1');
+      expect(icon).toHaveAttribute('aria-disabled', 'true');
+      fireEvent.click(icon);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
     it('does not open from the icon keyboard while disabled', () => {
       const { getByTestId, queryByRole } = renderEditable({
         disabled: true,
-        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'button'>,
       });
 
       fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
@@ -411,7 +546,7 @@ describe('DatePicker', () => {
     it('validates pending text when focus leaves the date picker from the icon', () => {
       const onValidationResult = jest.fn();
       const { input, getByTestId } = renderEditable({
-        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'button'>,
         onValidationResult,
       });
 
@@ -672,11 +807,11 @@ describe('DatePicker', () => {
     expect(onOpenChange.mock.calls[0][1]).toMatchObject({ open: false, reason: 'selection' });
     // Controlled props win until the consumer updates them.
     expect(getByRole('dialog')).toBeInTheDocument();
-    expect(getByRole('button', { name: 'Due date January 5, 2026' })).toBeInTheDocument();
+    expect(getByRole('combobox', { name: 'Due date January 5, 2026' })).toBeInTheDocument();
 
     rerender(<DatePicker aria-label="Due date" today={today} value={new Date(2026, 0, 6)} open={false} />);
     expect(queryByRole('dialog')).not.toBeInTheDocument();
-    expect(getByRole('button', { name: 'Due date January 6, 2026' })).toBeInTheDocument();
+    expect(getByRole('combobox', { name: 'Due date January 6, 2026' })).toBeInTheDocument();
   });
 
   it('does not steal focus from another control mounted during a controlled close', async () => {
@@ -707,7 +842,7 @@ describe('DatePicker', () => {
     const { getByRole } = renderDatePicker({
       open: true,
       calendar: {
-        dayPicker: { closeButton: { children: 'Close calendar' } },
+        closeButton: { children: 'Close calendar' },
         onDismiss: event => event.preventDefault(),
       },
     });
@@ -722,7 +857,7 @@ describe('DatePicker', () => {
     const { getByRole } = render(
       <DatePicker aria-label="Due date" today={today} calendar={{ dayPicker: null }} defaultOpen />,
     );
-    const trigger = getByRole('button', { name: 'Due date Select a date' });
+    const trigger = getByRole('combobox', { name: 'Due date Select a date' });
     act(() => trigger.focus());
 
     fireEvent.keyDown(trigger, { key: 'ArrowDown', altKey: true });
@@ -765,8 +900,8 @@ describe('DatePicker', () => {
         </>,
       );
 
-      expect(buttonRef.current).toBe(getByRole('button', { name: 'Start date Select a date' }));
-      expect(inputRef.current).toBe(getByRole('textbox', { name: 'Due date' }));
+      expect(buttonRef.current).toBe(getByRole('combobox', { name: 'Start date Select a date' }));
+      expect(inputRef.current).toBe(getByRole('combobox', { name: 'Due date' }));
     });
 
     it('types the ref and native events by allowTextInput', () => {
@@ -795,8 +930,8 @@ describe('DatePicker', () => {
         </>,
       );
 
-      expect(getByRole('button', { name: 'Start date Select a date' })).toBeInTheDocument();
-      expect(getByRole('textbox', { name: 'Due date' })).toBeInTheDocument();
+      expect(getByRole('combobox', { name: 'Start date Select a date' })).toBeInTheDocument();
+      expect(getByRole('combobox', { name: 'Due date' })).toBeInTheDocument();
     });
   });
 
@@ -808,7 +943,7 @@ describe('DatePicker', () => {
       </>,
     );
 
-    expect(getByRole('button', { name: 'Start date August 12, 2026' })).toBeInTheDocument();
+    expect(getByRole('combobox', { name: 'Start date August 12, 2026' })).toBeInTheDocument();
   });
 
   it('keeps the displayed date in the trigger name inside a Field', () => {
@@ -818,7 +953,7 @@ describe('DatePicker', () => {
       </Field>,
     );
 
-    expect(getByRole('button', { name: 'Due date August 12, 2026' })).toBeInTheDocument();
+    expect(getByRole('combobox', { name: 'Due date August 12, 2026' })).toBeInTheDocument();
   });
 
   it.each([false, true])('does not duplicate a Field hint description (allowTextInput=%s)', allowTextInput => {
@@ -828,8 +963,8 @@ describe('DatePicker', () => {
       </Field>,
     );
     const control = allowTextInput
-      ? getByRole('textbox', { name: 'Due date' })
-      : getByRole('button', { name: 'Due date Select a date' });
+      ? getByRole('combobox', { name: 'Due date' })
+      : getByRole('combobox', { name: 'Due date Select a date' });
     const hint = getByText('Pick a delivery date');
     const describedBy = control.getAttribute('aria-describedby')?.split(/\s+/) ?? [];
 
@@ -844,7 +979,7 @@ describe('DatePicker', () => {
         trigger={{ 'aria-describedby': 'trigger-help', 'aria-invalid': true }}
       />,
     );
-    const trigger = getByRole('button', { name: 'Due date Select a date' });
+    const trigger = getByRole('combobox', { name: 'Due date Select a date' });
 
     expect(trigger).toHaveAttribute('aria-describedby', 'field-help trigger-help');
     expect(trigger).toHaveAttribute('aria-invalid', 'true');
@@ -869,7 +1004,7 @@ describe('DatePicker', () => {
         <DatePicker aria-label="Due date" today={today} />
       </div>,
     );
-    const trigger = getByRole('button', { name: 'Due date Select a date' });
+    const trigger = getByRole('combobox', { name: 'Due date Select a date' });
     fireEvent.click(trigger);
 
     fireEvent.keyDown(getDayCell(getByRole('dialog'), 'August 12, 2026'), { key: 'Escape' });
