@@ -1,13 +1,19 @@
 import { computePosition } from './utils/computePosition';
-import { createPositionManager } from './createPositionManager';
+import { createPositionManager as createPositionManagerImpl } from './createPositionManager';
 import { DATA_POSITIONING_PLACEMENT, POSITIONING_END_EVENT } from './constants';
-import type { OnPositioningEndEvent, PositioningPlacement } from './types';
+import type { OnPositioningEndEvent, PositioningPlacement, PositionManager } from './types';
 
 jest.mock('./utils/computePosition', () => ({
   computePosition: jest.fn(),
 }));
 
 const computePositionMock = computePosition as jest.MockedFunction<typeof computePosition>;
+const managers: PositionManager[] = [];
+const createPositionManager: typeof createPositionManagerImpl = options => {
+  const manager = createPositionManagerImpl(options);
+  managers.push(manager);
+  return manager;
+};
 
 /**
  * Flush the microtask queue.
@@ -39,6 +45,7 @@ describe('createPositionManager', () => {
   });
 
   afterEach(() => {
+    managers.splice(0).forEach(manager => manager.dispose());
     jest.restoreAllMocks();
     document.body.innerHTML = '';
   });
@@ -51,8 +58,8 @@ describe('createPositionManager', () => {
     const scroller = document.body.appendChild(document.createElement('div'));
     scroller.style.overflowY = 'auto';
     scroller.appendChild(target);
-    const add = jest.spyOn(scroller, 'addEventListener');
-    const remove = jest.spyOn(scroller, 'removeEventListener');
+    const add = jest.spyOn(document, 'addEventListener');
+    const remove = jest.spyOn(document, 'removeEventListener');
     const manager = createPositionManager({
       container,
       target,
@@ -67,15 +74,165 @@ describe('createPositionManager', () => {
     document.body.dispatchEvent(new Event('scroll'));
     await flushMicrotasks();
     expect(positioned).toHaveBeenCalledTimes(3);
-    expect(add).toHaveBeenCalledTimes(1);
-    expect(add).toHaveBeenCalledWith('scroll', manager.updatePosition, { passive: true });
+    expect(add.mock.calls.filter(([type]) => type === 'scroll')).toHaveLength(1);
+    const scrollListener = add.mock.calls.find(([type]) => type === 'scroll')?.[1];
+    expect(add).toHaveBeenCalledWith('scroll', scrollListener, { capture: true, passive: true });
 
     manager.dispose();
-    expect(remove).toHaveBeenCalledWith('scroll', manager.updatePosition);
+    expect(remove).toHaveBeenCalledWith('scroll', scrollListener, true);
     scroller.dispatchEvent(new Event('scroll'));
     document.body.dispatchEvent(new Event('scroll'));
     await flushMicrotasks();
     expect(positioned).toHaveBeenCalledTimes(3);
+  });
+
+  describe('scroll ancestry changes', () => {
+    const startManager = async (target?: Parameters<typeof createPositionManager>[0]['target']) => {
+      computePositionMock.mockResolvedValue({ x: 0, y: 0, placement: 'bottom', ...mockVisibility });
+      const elements = createTestElements();
+      const manager = createPositionManager({
+        ...elements,
+        target: target ?? elements.target,
+        arrow: null,
+        strategy: 'fixed',
+        options: { disableUpdateOnResize: true },
+      });
+      await flushMicrotasks();
+      computePositionMock.mockClear();
+      return { ...elements, manager };
+    };
+    const createScroller = (parent: Node = document.body) => {
+      const scroller = document.createElement('div');
+      scroller.style.overflow = 'auto';
+      parent.appendChild(scroller);
+      return scroller;
+    };
+    const scroll = async (element: Element) => {
+      element.dispatchEvent(new Event('scroll'));
+      await flushMicrotasks();
+    };
+
+    it('follows an ancestor that becomes scrollable without rebuilding subscriptions', async () => {
+      const { target, manager } = await startManager();
+      const scroller = createScroller();
+      scroller.style.overflow = 'visible';
+      scroller.appendChild(target);
+      manager.updatePosition();
+      await flushMicrotasks();
+      computePositionMock.mockClear();
+      const add = jest.spyOn(document, 'addEventListener');
+      const getComputedStyle = jest.spyOn(window, 'getComputedStyle');
+
+      scroller.style.overflow = 'auto';
+      manager.updatePosition();
+      await flushMicrotasks();
+      await scroll(scroller);
+
+      expect(computePositionMock).toHaveBeenCalledTimes(2);
+      expect(add).not.toHaveBeenCalled();
+      expect(getComputedStyle).not.toHaveBeenCalled();
+    });
+
+    it('follows a new light-DOM ancestor and ignores the old ancestor and unrelated scrollers', async () => {
+      const { target } = await startManager();
+      const first = createScroller();
+      const second = createScroller();
+      first.appendChild(target);
+      await scroll(first);
+      second.appendChild(target);
+      await scroll(first);
+      await scroll(createScroller());
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+      await scroll(second);
+      expect(computePositionMock).toHaveBeenCalledTimes(2);
+    });
+
+    it('follows nested shadow-root and slotted ancestors', async () => {
+      const { target, manager } = await startManager();
+      const outerHost = createScroller();
+      const outerRoot = outerHost.attachShadow({ mode: 'closed' });
+      const outerScroller = createScroller(outerRoot);
+      const innerHost = createScroller(outerScroller);
+      const innerRoot = innerHost.attachShadow({ mode: 'open' });
+      const innerScroller = createScroller(innerRoot);
+      innerScroller.appendChild(document.createElement('slot'));
+      innerHost.appendChild(target);
+      manager.updatePosition();
+      await flushMicrotasks();
+      computePositionMock.mockClear();
+
+      await scroll(innerScroller);
+      await scroll(outerScroller);
+      await scroll(outerHost);
+      expect(computePositionMock).toHaveBeenCalledTimes(3);
+    });
+
+    it('refreshes shadow roots on an update and removes retired subscriptions and all subscriptions on dispose', async () => {
+      const { target, manager } = await startManager();
+      const firstRoot = createScroller().attachShadow({ mode: 'open' });
+      const secondRoot = createScroller().attachShadow({ mode: 'closed' });
+      const firstScroller = createScroller(firstRoot);
+      const secondScroller = createScroller(secondRoot);
+      const removeFirst = jest.spyOn(firstRoot, 'removeEventListener');
+      const removeSecond = jest.spyOn(secondRoot, 'removeEventListener');
+      firstScroller.appendChild(target);
+      manager.updatePosition();
+      await flushMicrotasks();
+      secondScroller.appendChild(target);
+      manager.updatePosition();
+      await flushMicrotasks();
+      computePositionMock.mockClear();
+
+      expect(removeFirst).toHaveBeenCalledWith('scroll', expect.any(Function), true);
+      await scroll(firstScroller);
+      expect(computePositionMock).not.toHaveBeenCalled();
+      await scroll(secondScroller);
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+      manager.dispose();
+      manager.updatePosition();
+      expect(removeSecond).toHaveBeenCalledWith('scroll', expect.any(Function), true);
+      await scroll(secondScroller);
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('uses a virtual target context element to follow its scroll ancestors', async () => {
+      const scroller = createScroller();
+      const contextElement = scroller.appendChild(document.createElement('span'));
+      const { manager } = await startManager({
+        contextElement,
+        getBoundingClientRect: () => contextElement.getBoundingClientRect(),
+      });
+      await scroll(scroller);
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+      manager.dispose();
+      await startManager({ getBoundingClientRect: () => contextElement.getBoundingClientRect() });
+      await scroll(scroller);
+      expect(computePositionMock).not.toHaveBeenCalled();
+    });
+
+    it('follows the target in a different document and coalesces viewport notifications', async () => {
+      const iframe = document.body.appendChild(document.createElement('iframe'));
+      const targetDocument = iframe.contentDocument!;
+      const target = targetDocument.body.appendChild(targetDocument.createElement('button'));
+      const scroller = targetDocument.body.appendChild(targetDocument.createElement('div'));
+      scroller.appendChild(target);
+      const remove = jest.spyOn(targetDocument, 'removeEventListener');
+      const { manager } = await startManager(target);
+      await scroll(scroller);
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+      computePositionMock.mockClear();
+      document.dispatchEvent(new Event('scroll'));
+      window.dispatchEvent(new Event('scroll'));
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+      manager.dispose();
+      expect(remove).toHaveBeenCalledWith('scroll', expect.any(Function), true);
+    });
   });
 
   it('does not try to observe elements in documents without a window', async () => {

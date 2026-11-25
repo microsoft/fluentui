@@ -289,6 +289,8 @@ function usePopoverRefs(
     positioningOptions.positioningRef = arrowPositioningRef;
   }
 
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);
+
   // Attaches the user positioningRef of a popover with an arrow the same way usePositioning() attaches it without an
   // arrow, so that React still calls the cleanup returned by a callback ref. The handle forwards to the handle that
   // usePositioning() attaches to arrowPositioningRef.
@@ -300,8 +302,6 @@ function usePopoverRefs(
     }),
     [],
   );
-
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);
 
   // A new merged offset on every render used to recreate, and therefore reposition, the position manager of an open
   // popover with an arrow. Keep repositioning after every render, without the recreation, so the popover still

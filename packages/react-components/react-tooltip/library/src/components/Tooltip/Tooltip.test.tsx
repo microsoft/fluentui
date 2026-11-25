@@ -335,6 +335,27 @@ describe('Tooltip', () => {
       expect(countCreatedPositionManagers(addEventListener)).toBe(0);
     });
 
+    it('keeps following scroll after a render makes the trigger ancestor scrollable', async () => {
+      const onPositioningEnd = jest.fn();
+      const renderScrollableTooltip = (overflow: 'visible' | 'auto') => (
+        <div data-testid="scroller" style={{ overflow }}>
+          {renderTooltip({ positioning: { onPositioningEnd } })}
+        </div>
+      );
+      const { getByTestId, rerender } = render(renderScrollableTooltip('visible'));
+      await waitFor(() => expect(onPositioningEnd).toHaveBeenCalled());
+      await act(settle);
+      const addEventListener = jest.spyOn(window, 'addEventListener');
+
+      rerender(renderScrollableTooltip('auto'));
+      await act(settle);
+      onPositioningEnd.mockClear();
+      getByTestId('scroller').dispatchEvent(new Event('scroll'));
+      await waitFor(() => expect(onPositioningEnd).toHaveBeenCalledTimes(1));
+
+      expect(countCreatedPositionManagers(addEventListener)).toBe(0);
+    });
+
     it('recreates the position manager when the offset or arrow changes', () => {
       const { rerender } = render(renderTooltip({ positioning: { offset: 4 } }));
       const addEventListener = jest.spyOn(window, 'addEventListener');
@@ -434,6 +455,22 @@ describe('Tooltip', () => {
       target.remove();
     });
 
+    it('forwards imperative calls made synchronously when a callback positioningRef attaches', async () => {
+      const target = document.body.appendChild(document.createElement('div'));
+      const getTargetRect = jest.spyOn(target, 'getBoundingClientRect');
+      const onPositioningEnd = jest.fn();
+      const positioningRef = (handle: PositioningImperativeRef | null) => {
+        handle?.setTarget(target);
+        handle?.updatePosition();
+      };
+      const { unmount } = render(renderTooltip({ positioning: { positioningRef, onPositioningEnd } }));
+      await waitFor(() => expect(onPositioningEnd).toHaveBeenCalled());
+
+      expect(getTargetRect).toHaveBeenCalled();
+      unmount();
+      target.remove();
+    });
+
     it('detaches a user positioningRef callback that returns a cleanup the way React detaches callback refs', () => {
       const events: string[] = [];
       const positioningRef = recordPositioningRef(events, 'ref');
@@ -508,18 +545,17 @@ describe('Tooltip', () => {
   // Moving the trigger while a position computation is in flight relies on React 19's act() committing
   // useSyncExternalStore updates in a microtask. React 17 has no useSyncExternalStore.
   if (parseInt(React.version, 10) >= 19) {
-    describe('overlapping position updates', () => {
+    describe('target movement during position updates', () => {
       type Position = { left: number; top: number };
       type PositionStore = ReturnType<typeof createPositionStore>;
 
       // "above" fits in the viewport
       const initialPosition: Position = { left: 200, top: 300 };
-      // "above" overflows the top of the viewport: Floating UI flips the tooltip below the trigger and runs its middleware
-      // again, so computing this position takes longer than computing a position that fits
+      // "above" overflows the top of the viewport, so the tooltip flips below the trigger.
       const flippingPosition: Position = { left: 200, top: 10 };
       const fittingPosition: Position = { left: 200, top: 200 };
       const latestPosition: Position = { left: 200, top: 500 };
-      // Called with the trigger's top whenever Floating UI measures the trigger
+      // Called with the trigger's top whenever positioning measures the trigger
       let onMeasureTrigger: ((top: number) => void) | undefined;
 
       // React commits the updates of an external store in a microtask, as it does for the stores of many state libraries
@@ -598,8 +634,8 @@ describe('Tooltip', () => {
         return { store, onPositioningEnd, tooltip: queryByRoleTooltip(result)! };
       };
 
-      // Moves the trigger to `firstPosition`, then to `latestPosition` as soon as Floating UI measured the trigger at
-      // `firstPosition`, i.e. while the computation of the first position is still in flight
+      // Queue another move while measuring the first position. The synchronous geometry pipeline may finish
+      // before React commits the move, so both positions may be applied.
       const moveTriggerDuringComputation = async (store: PositionStore, firstPosition: Position) => {
         onMeasureTrigger = top => {
           if (top === firstPosition.top) {
@@ -648,18 +684,18 @@ describe('Tooltip', () => {
         jest.restoreAllMocks();
       });
 
-      it('applies the latest position when an earlier computation of a tooltip with an arrow resolves later', async () => {
+      it('follows a trigger moved while measuring a tooltip with an arrow', async () => {
         const { store, onPositioningEnd, tooltip } = await renderPositionedTooltip();
 
         await moveTriggerDuringComputation(store, flippingPosition);
 
         // Centered above the latest trigger position, separated from it by the 4px offset and the 6px arrow
-        expect(getEndPlacements(onPositioningEnd)).toEqual(['top']);
+        expect(getEndPlacements(onPositioningEnd).pop()).toBe('top');
         expect(tooltip.getAttribute('data-popper-placement')).toBe('top');
         expect(getTranslation(tooltip)).toEqual([200, 500 - 40 - 10]);
       });
 
-      it('applies the latest position when an earlier computation of a tooltip without an arrow resolves later', async () => {
+      it('follows a trigger moved while measuring a tooltip without an arrow', async () => {
         const { store, onPositioningEnd, tooltip } = await renderPositionedTooltip({
           withArrow: false,
           repositionAfterRender: true,
@@ -667,7 +703,7 @@ describe('Tooltip', () => {
 
         await moveTriggerDuringComputation(store, flippingPosition);
 
-        expect(getEndPlacements(onPositioningEnd)).toEqual(['top']);
+        expect(getEndPlacements(onPositioningEnd).pop()).toBe('top');
         expect(tooltip.getAttribute('data-popper-placement')).toBe('top');
         expect(getTranslation(tooltip)).toEqual([200, 500 - 40 - 4]);
       });

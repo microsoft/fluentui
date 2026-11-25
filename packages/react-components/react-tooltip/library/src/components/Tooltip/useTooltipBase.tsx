@@ -110,18 +110,6 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     positioningOptions.positioningRef = arrowPositioningRef;
   }
 
-  // Attaches the user positioningRef of a tooltip with an arrow the same way usePositioning() attaches it without an
-  // arrow, so that React still calls the cleanup returned by a callback ref. The handle forwards to the handle that
-  // usePositioning() attaches to arrowPositioningRef.
-  React.useImperativeHandle(
-    arrowOffset === undefined ? undefined : userPositioningRef,
-    (): PositioningImperativeRef => ({
-      updatePosition: () => arrowPositioningRef.current?.updatePosition(),
-      setTarget: target => arrowPositioningRef.current?.setTarget(target),
-    }),
-    [],
-  );
-
   const {
     targetRef,
     containerRef,
@@ -134,6 +122,16 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePositioning(positioningOptions);
+
+  // Attach after usePositioning so callbacks can synchronously use the forwarding handle.
+  React.useImperativeHandle(
+    arrowOffset === undefined ? undefined : userPositioningRef,
+    (): PositioningImperativeRef => ({
+      updatePosition: () => arrowPositioningRef.current?.updatePosition(),
+      setTarget: target => arrowPositioningRef.current?.setTarget(target),
+    }),
+    [],
+  );
 
   // A new merged offset on every render used to recreate, and therefore reposition, the position manager of a visible
   // tooltip with an arrow. Keep repositioning after every render, without the recreation, so the tooltip still
