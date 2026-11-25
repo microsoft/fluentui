@@ -1,6 +1,7 @@
 import * as React from 'react';
+import type { Placement } from '@floating-ui/dom';
 import type { OnPositioningEndEvent } from './types';
-import type { PositioningProps } from './types';
+import type { PositioningProps } from './index';
 
 describe('PositioningProps', () => {
   it('should not break API', () => {
@@ -41,7 +42,7 @@ describe('PositioningProps', () => {
   it('accepts (e: OnPositioningEndEvent) => void for onPositioningEnd', () => {
     const callback = (e: OnPositioningEndEvent) => {
       // Access detail fields to verify the type shape
-      const _placement: string = e.detail.placement;
+      const _placement: Placement = e.detail.placement;
       const _escaped: boolean = e.detail.escaped;
       const _referenceHidden: boolean = e.detail.referenceHidden;
       _placement;

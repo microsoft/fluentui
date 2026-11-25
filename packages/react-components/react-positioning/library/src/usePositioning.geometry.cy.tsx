@@ -473,23 +473,31 @@ describe('usePositioning browser geometry contracts', () => {
     });
   }
 
-  it('flips before the boundary only when flip padding is supplied, including updates', () => {
-    const controls = mountScenario({
-      name: 'flip-boundary-padding',
-      boundary: 'rect',
-      boundaryMode: 'flip',
-      target: { x: 300, y: 165 },
-      options: { position: 'above', overflowBoundaryPadding: 10 },
+  for (const scaled of [false, true]) {
+    it(`flips at the padded boundary and handles updates/removal (scaled=${scaled})`, () => {
+      const controls = mountScenario({
+        name: 'flip-boundary-padding',
+        boundary: scaled ? 'element' : 'rect',
+        boundaryMode: 'flip',
+        host: scaled ? 'scale' : undefined,
+        target: { x: 300, y: scaled ? 120 : 165 },
+        options: { position: 'above', overflowBoundaryPadding: 10 },
+      });
+      const expectPosition = (y: number, placement: string) => {
+        expectRect(scaled ? 390 : 280, y, scaled ? 150 : 120, scaled ? 75 : 60);
+        cy.get('[data-floating]').should('have.attr', 'data-popper-placement', placement);
+      };
+      expectPosition(105, 'top');
+      cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 10 }));
+      expectPosition(scaled ? 230 : 205, 'bottom');
+      cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 0 }));
+      expectPosition(105, 'top');
+      cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 10 }));
+      expectPosition(scaled ? 230 : 205, 'bottom');
+      cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10 }));
+      expectPosition(105, 'top');
     });
-    expectRect(280, 105);
-    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'top');
-    cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 10 }));
-    expectRect(280, 205);
-    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'bottom');
-    cy.then(() => controls.setOptions({ position: 'above', overflowBoundaryPadding: 10, flipBoundaryPadding: 0 }));
-    expectRect(280, 105);
-    cy.get('[data-floating]').should('have.attr', 'data-popper-placement', 'top');
-  });
+  }
 
   it('an inline end callback that updates state settles instead of recreating the manager', () => {
     const controls = mountScenario({ name: 'stateful-end', updateStateOnEnd: true });

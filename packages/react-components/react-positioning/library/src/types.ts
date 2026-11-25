@@ -1,9 +1,7 @@
 import type * as React from 'react';
 
 /**
- * Physical placement of a positioned element relative to its target, as computed by Floating UI.
- * This is a Fluent-owned equivalent of Floating UI's `Placement` type, avoiding a transitive
- * dependency on `@floating-ui/dom` in the public API surface.
+ * Physical placement of a positioned element relative to its target.
  */
 export type PositioningPlacement =
   | 'top'
@@ -19,26 +17,28 @@ export type PositioningPlacement =
   | 'left-start'
   | 'left-end';
 
+export type Side = Exclude<PositioningPlacement, `${string}-${string}`>;
+export type SideObject = Record<Side, number>;
+export type Strategy = NonNullable<PositioningOptions['strategy']>;
+
 /**
  * Detail payload of the positioning end event, providing the final computed placement
- * after all middleware (flip, shift, etc.) have run.
+ * after positioning adjustments.
  */
 export type OnPositioningEndEventDetail = {
   /**
    * The computed placement of the positioned element. May differ from the requested
-   * placement if flip or other middleware adjusted it.
+   * placement if the element flipped to another side or alignment.
    */
   placement: PositioningPlacement;
 
   /**
-   * True when the floating element has escaped its clipping boundary,
-   * as reported by Floating UI's hide middleware.
+   * True when the floating element has escaped its clipping boundary.
    */
   escaped: boolean;
 
   /**
-   * True when the reference element is clipped or out of view,
-   * as reported by Floating UI's hide middleware.
+   * True when the reference element is clipped or out of view.
    */
   referenceHidden: boolean;
 };
@@ -107,6 +107,10 @@ export type PositioningBoundary =
   | 'clippingParents'
   | 'scrollParent'
   | 'window';
+
+/** Boundary after resolving Fluent's named boundaries relative to the positioned element. */
+export type ClippingBoundary = Exclude<PositioningBoundary, string> | 'clippingAncestors';
+
 /**
  * @deprecated use PositioningBoundary instead
  */
@@ -155,6 +159,8 @@ export interface PositioningOptions {
   /**
    * Applies padding to the flip boundary, so that the positioned surface flips before reaching the boundary.
    * A number applies to all sides. Use `start` and `end` for direction-aware horizontal padding.
+   * Independent of `overflowBoundaryPadding`; omitted sides default to zero.
+   * @default 0
    */
   flipBoundaryPadding?: number | Partial<{ top: number; end: number; bottom: number; start: number }>;
 
@@ -253,7 +259,7 @@ export interface PositioningOptions {
   /**
    * Called when a position update has finished. Multiple position updates can happen in a single render,
    * since positioning happens outside of the React lifecycle.
-   * The event's `detail.placement` indicates the final computed placement after middleware adjustments.
+   * The event's `detail.placement` indicates the final computed placement.
    *
    * It's also possible to listen to the custom DOM event `fui-positioningend`
    */
