@@ -476,7 +476,6 @@ export interface ChartPopoverProps {
     isPopoverOpen?: boolean;
     // (undocumented)
     legend?: string | number | Date;
-    // (undocumented)
     positioning?: PositioningShorthand;
     // (undocumented)
     ratio?: [number, number];

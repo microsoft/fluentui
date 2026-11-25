@@ -21,6 +21,7 @@ import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { resolvePositioningShorthand, type PositioningVirtualElement } from '@fluentui/react-positioning';
 import { useImageExport } from '../../utilities/hooks';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
@@ -56,7 +57,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
-    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
+    const [refSelected, setRefSelected] = React.useState<PositioningVirtualElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const prevPropsRef = React.useRef<DonutChartProps | null>(null);
 
@@ -156,7 +157,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       data: ChartDataPoint,
       id: string,
       e: React.FocusEvent<SVGPathElement>,
-      targetElement?: HTMLElement | null,
+      targetElement?: PositioningVirtualElement | null,
     ): void {
       setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
@@ -172,7 +173,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     function _hoverCallback(
       data: ChartDataPoint,
       e: React.MouseEvent<SVGPathElement>,
-      targetElement?: HTMLElement | null,
+      targetElement?: PositioningVirtualElement | null,
     ): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
@@ -337,6 +338,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
+    const positioning = resolvePositioningShorthand(props.calloutProps?.positioning);
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
@@ -389,11 +391,13 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           </svg>
         </div>
         <ChartPopover
+          {...props.calloutProps}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture}
           positioning={{
-            target: refSelected,
+            ...positioning,
+            target: positioning.target ?? refSelected,
           }}
           isPopoverOpen={
             !props.hideTooltip && isPopoverOpen && (_noLegendsHighlighted() || _isLegendHighlighted(legend))
