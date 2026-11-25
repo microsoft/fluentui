@@ -6,6 +6,7 @@ export { useNav } from './useNav';
 export type { NavContextValue, NavContextValues, NavItemRegisterData, RegisterNavItemEventHandler } from './navContext';
 export { NavProvider, useNavContext } from './navContext';
 export { useNavContextValues } from './useNavContextValues';
+export type { NavContextValuesState } from './useNavContextValues';
 
 export type { NavCategoryContextValue, NavCategoryContextValues } from './navCategoryContext';
 export { NavCategoryProvider, useNavCategoryContext } from './navCategoryContext';
@@ -47,7 +48,7 @@ export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderStat
 export { renderNavSectionHeader, useNavSectionHeader } from './NavSectionHeader';
 
 export { NavDrawer } from './NavDrawer';
-export type { NavDrawerProps, NavDrawerState } from './NavDrawer';
+export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './NavDrawer';
 export { renderNavDrawer, useNavDrawer } from './NavDrawer';
 
 export { NavDrawerBody } from './NavDrawerBody';

@@ -38,6 +38,7 @@ export interface ParametersExtension {
 
 export interface PresetConfig {
   importMappings: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions['importMappings'];
+  storyGranularity?: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions['storyGranularity'];
   webpackRule?: import('webpack').RuleSetRule;
   babelLoaderOptionsUpdater?: (value: import('@babel/core').TransformOptions) => typeof value;
   /**

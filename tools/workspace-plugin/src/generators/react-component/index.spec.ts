@@ -1,5 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree, addProjectConfiguration, writeJson, joinPathFragments, offsetFromRoot } from '@nx/devkit';
+import childProcess from 'child_process';
 
 import generator from './index';
 
@@ -8,6 +9,36 @@ describe('react-component generator', () => {
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
+  });
+
+  it.each([false, true])('runs only the generated component tests (update snapshots: %s)', async updateSnapshots => {
+    const originalForceSnapshotUpdate = process.env.__FORCE_SNAPSHOT_UPDATE__;
+    const execSync = jest.spyOn(childProcess, 'execSync').mockReturnValue(Buffer.alloc(0));
+
+    try {
+      if (updateSnapshots) {
+        process.env.__FORCE_SNAPSHOT_UPDATE__ = 'true';
+      } else {
+        delete process.env.__FORCE_SNAPSHOT_UPDATE__;
+      }
+      createLibrary(tree, 'react-one');
+
+      const runTasks = await generator(tree, { project: 'react-one', name: 'MyOne' });
+      runTasks();
+
+      expect(execSync.mock.calls.map(([command]) => command)).toEqual([
+        'yarn nx run react-one:generate-api',
+        `yarn nx run react-one:test --testNamePattern=MyOne${updateSnapshots ? ' -u' : ''}`,
+        'yarn nx run react-one:lint --fix',
+      ]);
+    } finally {
+      execSync.mockRestore();
+      if (originalForceSnapshotUpdate === undefined) {
+        delete process.env.__FORCE_SNAPSHOT_UPDATE__;
+      } else {
+        process.env.__FORCE_SNAPSHOT_UPDATE__ = originalForceSnapshotUpdate;
+      }
+    }
   });
 
   describe(`assertions`, () => {

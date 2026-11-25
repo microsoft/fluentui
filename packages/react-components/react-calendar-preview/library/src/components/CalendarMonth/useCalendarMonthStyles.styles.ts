@@ -1,0 +1,104 @@
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { useCalendarItemStyles } from '../../hooks/useCalendarItemStyles.styles';
+import { useCalendarPickerStyles } from '../../hooks/useCalendarPickerStyles.styles';
+import { useCalendarContext_unstable } from '../../contexts/calendarContext';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { CalendarMonthSlots, CalendarMonthState } from './CalendarMonth.types';
+
+/**
+ * The `yearPicker` slot uses CalendarYear's class names and removes its duplicate embedded chrome.
+ */
+export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'yearPicker'>> = {
+  root: 'fui-CalendarMonth',
+  header: 'fui-CalendarMonth__header',
+  heading: 'fui-CalendarMonth__heading',
+  navigation: 'fui-CalendarMonth__navigation',
+  previousYearButton: 'fui-CalendarMonth__previousYearButton',
+  nextYearButton: 'fui-CalendarMonth__nextYearButton',
+  grid: 'fui-CalendarMonth__grid',
+};
+
+/**
+ * Class names of the rows and cells rendered inside the month grid.
+ */
+export const calendarMonthGridClassNames = {
+  row: 'fui-CalendarMonthGridRow',
+  cell: 'fui-CalendarMonthGridCell',
+} as const;
+
+const useStyles = makeStyles({
+  embeddedYearPicker: {
+    overflow: 'visible',
+    padding: '0',
+    width: 'auto',
+  },
+});
+
+/**
+ * Apply styling to the CalendarMonth slots based on the state.
+ */
+export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): CalendarMonthState => {
+  const pickerStyles = useCalendarPickerStyles();
+  const itemStyles = useCalendarItemStyles();
+  const styles = useStyles();
+  const highlightCurrent = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
+  const highlightSelected = useCalendarContext_unstable(ctx => ctx.highlightSelected);
+
+  /* eslint-disable react-hooks/immutability */
+  state.root.className = mergeClasses(
+    calendarMonthClassNames.root,
+    pickerStyles.normalize,
+    pickerStyles.root,
+    state.root.className,
+  );
+
+  state.yearPicker.className = mergeClasses(styles.embeddedYearPicker, state.yearPicker.className);
+
+  state.header.className = mergeClasses(calendarMonthClassNames.header, pickerStyles.header, state.header.className);
+
+  state.heading.className = mergeClasses(
+    calendarMonthClassNames.heading,
+    pickerStyles.heading,
+    state.headerIsClickable && pickerStyles.hasHeaderClickCallback,
+    state.heading.className,
+  );
+
+  state.navigation.className = mergeClasses(
+    calendarMonthClassNames.navigation,
+    pickerStyles.navigation,
+    state.navigation.className,
+  );
+
+  state.grid.className = mergeClasses(calendarMonthClassNames.grid, pickerStyles.grid, state.grid.className);
+
+  state.previousYearButton.className = mergeClasses(
+    calendarMonthClassNames.previousYearButton,
+    pickerStyles.navigationButton,
+    !state.isPrevYearInBounds && itemStyles.disabled,
+    state.previousYearButton.className,
+  );
+
+  state.nextYearButton.className = mergeClasses(
+    calendarMonthClassNames.nextYearButton,
+    pickerStyles.navigationButton,
+    !state.isNextYearInBounds && itemStyles.disabled,
+    state.nextYearButton.className,
+  );
+
+  for (const row of state.monthRows) {
+    row.props.className = mergeClasses(calendarMonthGridClassNames.row, itemStyles.buttonRow);
+    for (const cell of row.cells) {
+      cell.props.className = mergeClasses(
+        calendarMonthGridClassNames.cell,
+        itemStyles.itemButton,
+        cell.isCurrent && highlightCurrent && itemStyles.highlightCurrent,
+        cell.isSelected && highlightSelected && itemStyles.highlightSelected,
+        !cell.isInBounds && itemStyles.disabled,
+      );
+    }
+  }
+  /* eslint-enable react-hooks/immutability */
+  return state;
+};

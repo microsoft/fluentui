@@ -23,4 +23,28 @@ describe('ImageSwatch', () => {
 
     expect(getByRole('radio')).toHaveAttribute('data-selected');
   });
+
+  it('emits the disabled state attribute only while disabled', () => {
+    const { getByLabelText } = render(
+      <SwatchPicker aria-label="Images">
+        <ImageSwatch src="image.png" value="image" aria-label="Image" disabled />
+        <ImageSwatch src="other.png" value="other" aria-label="Other" />
+      </SwatchPicker>,
+    );
+
+    expect(getByLabelText('Image')).toHaveAttribute('data-disabled');
+    expect(getByLabelText('Other')).not.toHaveAttribute('data-disabled');
+  });
+
+  it('marks only the selected swatch as the focusgroup entry point', () => {
+    const { getByLabelText } = render(
+      <SwatchPicker aria-label="Images" selectedValue="image">
+        <ImageSwatch src="image.png" value="image" aria-label="Image" />
+        <ImageSwatch src="other.png" value="other" aria-label="Other" />
+      </SwatchPicker>,
+    );
+
+    expect(getByLabelText('Image')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Other')).not.toHaveAttribute('focusgroupstart');
+  });
 });

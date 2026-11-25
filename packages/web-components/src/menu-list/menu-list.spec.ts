@@ -16,6 +16,22 @@ test.describe('MenuList', () => {
     `,
   });
 
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('focusgroup', 'menu');
+  });
+
+  for (const focusgroup of ['none', '']) {
+    test(`should preserve authored host attributes when connected with focusgroup="${focusgroup}"`, async ({
+      fastPage,
+    }) => {
+      await fastPage.setTemplate({ attributes: { focusgroup } });
+
+      await expect(fastPage.element).toHaveAttribute('focusgroup', focusgroup);
+    });
+  }
+
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
 
@@ -38,6 +54,72 @@ test.describe('MenuList', () => {
     await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
+  });
+
+  test('should show slotted menu item icons', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${MenuItemTagName} role="menuitemcheckbox">
+          <span slot="indicator">Check</span>
+          <span slot="start">Start</span>
+          Item
+          <span slot="end">End</span>
+          <span slot="submenu-glyph">More</span>
+          <${tagName} slot="submenu"><${MenuItemTagName}>Child</${MenuItemTagName}></${tagName}>
+        </${MenuItemTagName}>
+        <${MenuItemTagName}>Plain item</${MenuItemTagName}>
+      `,
+    });
+
+    const item = element.first().locator(MenuItemTagName).first();
+    await expect(item.locator('[slot="indicator"]')).toBeHidden();
+    await item.evaluate(node => ((node as MenuItem).checked = true));
+    for (const slot of ['indicator', 'start', 'end', 'submenu-glyph']) {
+      await expect(item.locator(`[slot="${slot}"]`)).toBeVisible();
+    }
+  });
+
+  test('should update icon visibility when menu item slots and roles change', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const item = element.locator(MenuItemTagName);
+    await fastPage.setTemplate({ innerHTML: `<${MenuItemTagName}>Item</${MenuItemTagName}>` });
+    await expect(item.locator('.indicator')).toBeHidden();
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
+
+    await item.evaluate(node => {
+      node.setAttribute('role', 'menuitemradio');
+      (node as MenuItem).checked = true;
+      const icon = document.createElement('span');
+      icon.slot = 'start';
+      icon.textContent = 'Start';
+      node.append(icon);
+    });
+    await expect(item.locator('.indicator')).toBeVisible();
+    await expect(item.locator('[slot="start"]')).toBeVisible();
+
+    await item.locator('[slot="start"]').evaluate(node => node.setAttribute('slot', 'end'));
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
+    await expect(item.locator('[slot="end"]')).toBeVisible();
+
+    await item.evaluate(node => node.removeAttribute('role'));
+    await expect(item.locator('.indicator')).toBeHidden();
+
+    await element.evaluate(node => {
+      const parent = node.parentNode!;
+      node.remove();
+      parent.appendChild(node);
+    });
+    await item.evaluate(node => {
+      const icon = document.createElement('span');
+      icon.slot = 'start';
+      icon.textContent = 'Start';
+      node.append(icon);
+    });
+    await expect(item.locator('[slot="start"]')).toBeVisible();
+    await item.locator('[slot="start"]').evaluate(node => node.remove());
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
   });
 
   test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {
@@ -153,10 +235,20 @@ test.describe('MenuList', () => {
   for (const role of Object.values(MenuItemRole)) {
     test(`should accept elements as focusable child with "${role}" role`, async ({ fastPage, page }) => {
       await fastPage.setTemplate({
-        innerHTML: /* html */ ` <div role="${role}">Menu item</div> `,
+        innerHTML: /* html */ `
+          <div role="${role}" tabindex="0">First item</div>
+          <div role="${role}" tabindex="0">Second item</div>
+        `,
       });
 
-      await expect(page.getByRole(role)).toHaveAttribute('tabindex', '0');
+      const items = page.getByRole(role);
+      await expect(items.first()).toHaveAttribute('tabindex', '0');
+      await fastPage.element.evaluate(node => node.focus());
+      await expect(items.first()).toBeFocused();
+      await page.keyboard.press('ArrowDown');
+      await expect(items.nth(1)).toBeFocused();
+      await page.keyboard.press('ArrowUp');
+      await expect(items.first()).toBeFocused();
     });
   }
 
@@ -176,23 +268,23 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(2)).not.toBeFocused();
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
 
@@ -200,17 +292,14 @@ test.describe('MenuList', () => {
       node.removeAttribute('hidden');
     });
 
-    await element.evaluate(node => {
-      node.focus();
-    });
-
+    await expect(menuItems.nth(2)).toBeVisible();
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
   });
@@ -347,15 +436,15 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.first()).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
   });
@@ -383,11 +472,12 @@ test.describe('MenuList', () => {
       node.focus();
     });
 
-    await element.first().press('ArrowRight');
+    await expect(menuItems.first()).toBeFocused();
+    await fastPage.page.keyboard.press('ArrowRight');
 
     await expect(menuItems.nth(1)).toBeFocused();
 
-    await element.first().press('Escape');
+    await fastPage.page.keyboard.press('Escape');
 
     await expect(menuItems.first()).toBeFocused();
   });
@@ -411,19 +501,19 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.press('ArrowUp');
+    await fastPage.page.keyboard.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
   });
@@ -447,7 +537,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
@@ -461,7 +551,7 @@ test.describe('MenuList', () => {
 
     await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.press('ArrowDown');
+    await fastPage.page.keyboard.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
   });

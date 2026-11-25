@@ -10,8 +10,8 @@ $icon-size: 16px;
   padding: 0;
   grid-gap: 12px 12px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  -ms-grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  -ms-grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
 }
 
 .platformItem {

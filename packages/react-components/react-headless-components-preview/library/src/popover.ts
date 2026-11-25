@@ -15,6 +15,7 @@ export type {
   PopoverProps,
   PopoverState,
   PopoverContextValue,
+  PopoverContextValues,
   OpenPopoverEvents,
   OnOpenChangeData,
   PopoverTriggerProps,

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getPartitionedNativeProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { useEventCallback, slot } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectBaseProps, SelectBaseState, SelectProps, SelectState } from './Select.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
@@ -45,13 +45,8 @@ export const useSelectBase_unstable = (props: SelectBaseProps, ref: React.Ref<HT
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
-  const { defaultValue, value, select, icon, root, onChange } = props;
-
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'select',
-    excludedPropNames: ['defaultValue', 'onChange', 'value'],
-  });
+  // `className` and `style` go to the root slot, all other native props go to the primary `select` slot.
+  const { className, style, defaultValue, value, select, icon, root, onChange, ...selectProps } = props;
 
   const state: SelectBaseState = {
     components: {
@@ -64,7 +59,7 @@ export const useSelectBase_unstable = (props: SelectBaseProps, ref: React.Ref<HT
         defaultValue,
         value,
         ref,
-        ...nativeProps.primary,
+        ...selectProps,
       },
       elementType: 'select',
     }),
@@ -73,7 +68,7 @@ export const useSelectBase_unstable = (props: SelectBaseProps, ref: React.Ref<HT
       elementType: 'span',
     }),
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: { className, style },
       elementType: 'span',
     }),
   };

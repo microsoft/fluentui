@@ -5147,7 +5147,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: blue; font-size: var(--fontSizeHero700);"
+                style="color: blue; font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
               >
                 50,000
               </div>

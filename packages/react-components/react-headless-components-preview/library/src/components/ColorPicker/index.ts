@@ -10,6 +10,7 @@ export { useColorPicker } from './useColorPicker';
 export { useColorPickerContextValues, useColorPickerContextValue } from './useColorPickerContextValues';
 export type {
   ColorPickerContextValue,
+  ColorPickerContextValues,
   ColorPickerProps,
   ColorPickerSlots,
   ColorPickerState,

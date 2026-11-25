@@ -17,13 +17,29 @@ import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
+ * `clientHeight` and `scrollHeight` are rounded to integers while `scrollTop` is fractional, so
+ * scroll positions have to be compared with a tolerance instead of for exact equality. Without it
+ * a fully scrolled body reports `middle` whenever the browser zoom is not a whole number.
+ *
+ * A non-scrollable element can report up to 1px of overflow that it cannot actually scroll, and
+ * both values are integers, so a single pixel is enough here.
+ */
+const OVERFLOW_TOLERANCE = 1;
+
+/**
+ * A fully scrolled element can sit short of its own maximum scroll offset because `scrollTop` is
+ * fractional while the values it is compared against are rounded.
+ */
+const SCROLL_BOTTOM_TOLERANCE = 2;
+
+/**
  * Get the current scroll state of the DrawerBody.
  *
  * @internal
  * @param element - HTMLElement to check scroll state of
  */
 const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
-  if (scrollHeight <= clientHeight) {
+  if (scrollHeight - clientHeight <= OVERFLOW_TOLERANCE) {
     return 'none';
   }
 
@@ -31,7 +47,7 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
     return 'top';
   }
 
-  if (scrollTop + clientHeight === scrollHeight) {
+  if (scrollHeight - clientHeight - scrollTop <= SCROLL_BOTTOM_TOLERANCE) {
     return 'bottom';
   }
 

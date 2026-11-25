@@ -2,6 +2,127 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "9.6.9",
+      "tag": "@fluentui/react-slider_v9.6.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "4a79a3001e6e5d40ff9d12aec5c275c58689df02",
+            "comment": "fix: preserve upward vertical values in RTL layouts"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "b4f5c3cca4e95ab5d271657cbf440cc8bf7427f6",
+            "comment": "fix: apply useFocusWithin in the styled hook instead of the base hook, so the base hook no longer depends on react-tabster"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "d2bf1cfb72767fe6d69c5b4d392562e700f1ae02",
+            "comment": "perf: drop native props allow-list from Slider hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.5.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.26.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.6.8",
+      "tag": "@fluentui/react-slider_v9.6.8",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5e3222d8b9a0f7ab029e30ef1d320efbbed28edb",
+            "comment": "fix: use getPercentInRange from react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "9.6.7",
+      "tag": "@fluentui/react-slider_v9.6.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "paoloalipro@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "1d092cdb3ba63d563c4937e4f5a02a8ea50eb46b",
+            "comment": "fix: default Slider aria-orientation from vertical while preserving explicit input attributes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.5.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.6.6",
       "comments": {

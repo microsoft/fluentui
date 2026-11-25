@@ -14,5 +14,5 @@
     "preserveConstEnums": true,
     "types": ["node", "jest"]
   },
-  "include": ["./src", "./.storybook/*"]
+  "include": ["./src", "./.storybook/*", "./e2e/**/*", "./playwright.config.ts"]
 }

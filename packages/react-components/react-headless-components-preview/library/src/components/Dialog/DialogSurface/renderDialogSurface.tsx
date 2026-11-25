@@ -8,7 +8,7 @@ import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.typ
 
 /**
  * Render the final JSX of DialogSurface.
- * Returns null when the dialog is closed and unmountOnClose is true.
+ * Returns null after native close and any exit animations when unmountOnClose is true.
  * Provides DialogSurfaceContext=true so DialogTrigger inside defaults to action="close".
  *
  * DialogSurface is always rendered inline. For `modal`/`alert`, `<dialog showModal()>`

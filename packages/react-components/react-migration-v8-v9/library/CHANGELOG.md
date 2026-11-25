@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.26)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.25..@fluentui/react-migration-v8-v9_v9.10.26)
+
+### Patches
+
+- fix: createV9Theme uses webDarkTheme as the base theme for inverted v8 themes ([PR #37127](https://github.com/microsoft/fluentui/pull/37127) by vgenaev@gmail.com)
+- fix(react-migration-v8-v9): render the matching v8 variant class names on Button shims instead of always ms-Button--primary ([PR #36984](https://github.com/microsoft/fluentui/pull/36984) by 171317405+jakesalvesen@users.noreply.github.com)
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-components to v9.75.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.25)
+
+Tue, 10 Nov 2026 16:50:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.24..@fluentui/react-migration-v8-v9_v9.10.25)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.24)
+
+Mon, 02 Nov 2026 13:22:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.23..@fluentui/react-migration-v8-v9_v9.10.24)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.23)
+
+Tue, 27 Oct 2026 16:42:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.22..@fluentui/react-migration-v8-v9_v9.10.23)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.75.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.22)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.21..@fluentui/react-migration-v8-v9_v9.10.22)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.74.11 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.21)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.20..@fluentui/react-migration-v8-v9_v9.10.21)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.74.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.20)
 

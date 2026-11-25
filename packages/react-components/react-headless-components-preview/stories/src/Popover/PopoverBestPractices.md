@@ -3,7 +3,7 @@
 ### Do
 
 - Create nested `Popover`s as separate components.
-- If there are no interactive items in the `Popover` content, set `tabIndex={-1}` on the `PopoverSurface`.
+- If there are no interactive items in the `Popover` content, the browser focuses the `PopoverSurface` itself on open. Give it an accessible name (`aria-label` or `aria-labelledby`) and point `aria-describedby` at the content, so screen readers announce the popover and its text.
 - Use `Popover` to reduce screen clutter and host non-essential information.
 
 ### Don't

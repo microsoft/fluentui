@@ -14,12 +14,19 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightSemibold,
   },
+  calloutTitle: {
+    fontSize: tokens.fontSizeBase500,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  calloutDescription: {
+    color: tokens.colorNeutralForeground2,
+  },
 });
 
 export const GaugeChartBasic = (): JSXElement => {
   const styles = useStyles();
-  const [width, setWidth] = React.useState<number>(252);
-  const [height, setHeight] = React.useState<number>(128);
+  const [width, setWidth] = React.useState<number>(400);
+  const [height, setHeight] = React.useState<number>(240);
   const [chartValue, setChartValue] = React.useState<number>(50);
   const [hideMinMax, setHideMinMax] = React.useState<boolean>(false);
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
@@ -52,7 +59,7 @@ export const GaugeChartBasic = (): JSXElement => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchCustomCallout = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+  const _onSwitchCallout = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setUseCustomCallout(ev.currentTarget.checked);
   }, []);
 
@@ -60,14 +67,19 @@ export const GaugeChartBasic = (): JSXElement => {
     if (!data) {
       return null;
     }
+    const segments = data.segments ?? [];
 
     return (
       <div className={styles.callout}>
-        <span>{data.legend}</span>
-        <span className={styles.calloutValue}>Risk score: {data.chartValue}</span>
-        <span>
-          Range: {data.minValue} to {data.maxValue}
-        </span>
+        <span className={styles.calloutTitle}>{data.chartTitle}</span>
+        <span className={styles.calloutDescription}>Average time required to process one server tick.</span>
+        <span className={styles.calloutValue}>Current value: {data.chartValueLabel}</span>
+        {segments.map((segment, index) => (
+          <span key={segment.legend}>
+            {segment.legend}: {segment.start}
+            {index === segments.length - 1 ? '+' : `-${segment.end}`} ms
+          </span>
+        ))}
       </div>
     );
   };
@@ -109,11 +121,11 @@ export const GaugeChartBasic = (): JSXElement => {
             type="range"
             value={chartValue}
             min={0}
-            max={100}
+            max={200}
             id="value-slider"
             onChange={_onValueChange}
             aria-label="Change Current Value"
-            aria-valuetext={`current value ${chartValue}', Minimum 0 and Maximum 100`}
+            aria-valuetext={`current value ${chartValue}, Minimum 0 and Maximum 200`}
           />
           <span>{chartValue}</span>
         </div>
@@ -141,9 +153,9 @@ export const GaugeChartBasic = (): JSXElement => {
         />
         &nbsp;&nbsp;
         <Switch
-          label={useCustomCallout ? 'Custom callout ON' : 'Custom callout OFF'}
+          label={useCustomCallout ? 'Callout: custom (milliseconds)' : 'Callout: default (percentage)'}
           checked={useCustomCallout}
-          onChange={_onSwitchCustomCallout}
+          onChange={_onSwitchCallout}
         />
       </div>
 
@@ -152,22 +164,24 @@ export const GaugeChartBasic = (): JSXElement => {
         height={height}
         segments={[
           {
-            size: 33,
+            size: 50,
             color: getColorFromToken(DataVizPalette.success),
-            legend: 'Low Risk',
+            legend: 'Healthy',
           },
           {
-            size: 34,
+            size: 100,
             color: getColorFromToken(DataVizPalette.warning),
-            legend: 'Medium Risk',
+            legend: 'Elevated',
           },
           {
-            size: 33,
+            size: 50,
             color: getColorFromToken(DataVizPalette.error),
-            legend: 'High Risk',
+            legend: 'Critical',
           },
         ]}
+        chartTitle="Server tick time"
         chartValue={chartValue}
+        chartValueFormat={useCustomCallout ? ([value]) => (value === 0 ? 'offline' : `${value}ms`) : 'percentage'}
         hideMinMax={hideMinMax}
         variant={'multiple-segments'}
         enableGradient={enableGradient}

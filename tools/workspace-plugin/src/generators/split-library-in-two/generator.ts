@@ -349,7 +349,7 @@ module.exports = [
       lib: {
         extends: './tsconfig.json',
         compilerOptions: {
-          lib: ['ES2019', 'dom'],
+          lib: ['ES2020', 'dom'],
           outDir: joinPathFragments(options.projectOffsetFromRoot.updated, 'dist/out-tsc'),
           inlineSources: true,
           types: ['static-assets', 'environment'],
@@ -368,16 +368,18 @@ module.exports = [
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
   writeJson(tree, joinPathFragments(newProjectRoot, 'package.json'), templates.packageJson);
   updateJson(tree, joinPathFragments(newProjectRoot, '.storybook/tsconfig.json'), (json: TsConfig) => {
-    json.include = ['*.js'];
+    json.include = ['*.js', '*.cjs'];
     return json;
   });
-  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/main.js'), content => {
-    content = content
-      .replace(/\.\.\/stories\//g, '../src/')
-      .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
+  for (const storybookMain of ['.storybook/main.js', '.storybook/main.cjs']) {
+    updateFileContent(tree, joinPathFragments(newProjectRoot, storybookMain), content => {
+      content = content
+        .replace(/\.\.\/stories\//g, '../src/')
+        .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
 
-    return content;
-  });
+      return content;
+    });
+  }
   updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/preview.js'), content => {
     content = content.replace(
       new RegExp(options.projectOffsetFromRoot.old, 'g'),

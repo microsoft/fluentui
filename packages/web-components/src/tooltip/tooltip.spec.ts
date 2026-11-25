@@ -1,12 +1,25 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Tooltip } from './tooltip.js';
-import type { TooltipPositioningOption } from './tooltip.options.js';
 import { tagName } from './tooltip.options.js';
 
 test.describe('Tooltip', () => {
   test.use({
     tagName,
     innerHTML: 'This is a tooltip',
+  });
+
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('popover', 'auto');
+    await expect(fastPage.element).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { popover: 'manual', 'aria-hidden': 'false' } });
+
+    await expect(fastPage.element).toHaveAttribute('popover', 'manual');
+    await expect(fastPage.element).toHaveAttribute('aria-hidden', 'false');
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -192,7 +205,7 @@ test.describe('Tooltip', () => {
     `);
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'above' as TooltipPositioningOption;
+      node.positioning = 'above';
     });
 
     await expect(element).toHaveAttribute('positioning', 'above');

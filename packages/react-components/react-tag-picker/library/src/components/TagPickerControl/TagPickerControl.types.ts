@@ -32,6 +32,17 @@ export type TagPickerControlCSSProperties = React.CSSProperties & {
 export type TagPickerControlProps = ComponentProps<Partial<TagPickerControlSlots>>;
 
 /**
+ * Base control props, including trigger timing for native popover composition.
+ */
+export type TagPickerControlBaseProps = TagPickerControlProps & {
+  /**
+   * Event that toggles the list. Native auto popovers must open on click, after pointer light dismiss.
+   * @default 'mousedown'
+   */
+  toggleOn?: 'mousedown' | 'click';
+};
+
+/**
  * State used in rendering PickerControl
  */
 export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> &

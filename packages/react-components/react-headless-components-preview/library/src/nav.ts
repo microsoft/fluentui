@@ -7,6 +7,7 @@ export type {
   OnNavItemSelectData,
   NavContextValue,
   NavContextValues,
+  NavContextValuesState,
   NavItemRegisterData,
   RegisterNavItemEventHandler,
 } from './components/Nav/index';
@@ -48,7 +49,7 @@ export { NavSectionHeader, renderNavSectionHeader, useNavSectionHeader } from '.
 export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderState } from './components/Nav/index';
 
 export { NavDrawer, renderNavDrawer, useNavDrawer } from './components/Nav/index';
-export type { NavDrawerProps, NavDrawerState } from './components/Nav/index';
+export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './components/Nav/index';
 
 export { NavDrawerBody, renderNavDrawerBody, useNavDrawerBody } from './components/Nav/index';
 export type { NavDrawerBodyProps, NavDrawerBodySlots, NavDrawerBodyState } from './components/Nav/index';

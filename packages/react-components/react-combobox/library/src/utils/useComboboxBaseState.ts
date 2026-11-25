@@ -144,7 +144,7 @@ export const useComboboxBaseState = (
 
   const setOpen = React.useCallback(
     (event: ComboboxBaseOpenEvents, newState: boolean) => {
-      if (disabled) {
+      if (disabled || newState === open) {
         return;
       }
       onOpenChange?.(event, { open: newState });
@@ -155,7 +155,7 @@ export const useComboboxBaseState = (
         setOpenState(newState);
       });
     },
-    [onOpenChange, setOpenState, setValue, freeform, disabled],
+    [disabled, freeform, onOpenChange, open, setOpenState, setValue],
   );
 
   // update active option based on change in open state

@@ -31,7 +31,7 @@ describe('PopoverTrigger', () => {
     expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('applies aria-haspopup="true" by default', () => {
+  it('omits aria-haspopup for a non-modal surface', () => {
     const { getByText } = render(
       <Popover>
         <PopoverTrigger>
@@ -41,7 +41,46 @@ describe('PopoverTrigger', () => {
       </Popover>,
     );
 
-    expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'true');
+    expect(getByText('Trigger')).not.toHaveAttribute('aria-haspopup');
+  });
+
+  it('applies aria-haspopup="dialog" when inert focus trapping is enabled', () => {
+    const { getByText } = render(
+      <Popover inertTrapFocus>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'dialog');
+  });
+
+  it.each([false, true])('preserves a consumer popup role when inertTrapFocus is %s', inertTrapFocus => {
+    const { getByText } = render(
+      <Popover inertTrapFocus={inertTrapFocus}>
+        <PopoverTrigger>
+          <button aria-haspopup="menu">Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'menu');
+  });
+
+  it('preserves an explicit false aria-haspopup on a modal trigger', () => {
+    const { getByText } = render(
+      <Popover inertTrapFocus>
+        <PopoverTrigger>
+          <button aria-haspopup={false}>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'false');
   });
 
   it('applies data-open when popover is open', () => {

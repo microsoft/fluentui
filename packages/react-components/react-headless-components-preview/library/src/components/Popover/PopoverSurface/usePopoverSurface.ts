@@ -21,13 +21,13 @@ export const usePopoverSurface = (
   const open = usePopoverContext(context => context.open);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
+  const inertTrapFocus = usePopoverContext(context => context.inertTrapFocus);
 
-  if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
+  if (process.env.NODE_ENV !== 'production' && inertTrapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
     console.warn(
       '@fluentui/react-headless-components-preview [PopoverSurface]: ' +
-        '`as="div"` is incompatible with `Popover trapFocus`. ' +
+        '`as="div"` is incompatible with `Popover inertTrapFocus`. ' +
         'Use the default `dialog` element when focus trapping is enabled.',
     );
   }
@@ -39,7 +39,7 @@ export const usePopoverSurface = (
     root: slot.always(
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
-        role: trapFocus ? 'dialog' : 'group',
+        role: inertTrapFocus ? 'dialog' : 'group',
         ...props,
         id: surfaceId,
         'data-popover-surface': '',
@@ -47,7 +47,7 @@ export const usePopoverSurface = (
       },
       {
         defaultProps: {
-          popover: trapFocus ? undefined : 'auto',
+          popover: inertTrapFocus ? undefined : 'auto',
         },
         elementType: 'dialog',
       },

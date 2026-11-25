@@ -76,7 +76,7 @@ The Spinner is represented as a circle with an arc of a darker shade rotating th
 
 ### Props
 
-See API at [Spinner.types.tsx](./src/components/Spinner/Spinner.types.ts).
+See API at [Spinner.types.tsx](../src/components/Spinner/Spinner.types.ts).
 
 ## Structure
 

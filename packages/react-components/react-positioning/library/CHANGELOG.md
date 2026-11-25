@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.23.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.5)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.23.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.4)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.3..@fluentui/react-positioning_v9.23.4)
+
+### Patches
+
+- fix: register positioning slide-direction CSS properties once per document ([PR #36833](https://github.com/microsoft/fluentui/pull/36833) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.3)
 

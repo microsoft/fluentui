@@ -342,11 +342,22 @@ function buildReactCompilerAnalyzerTargets(
   const groupName = 'React Compiler Analyzer';
   const metadata = { targetGroups: { [groupName]: [] as string[] } };
 
-  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+  const inputs = [
+    'default',
+    '{workspaceRoot}/tools/react-compiler-analyzer/src/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs',
+    '{workspaceRoot}/tools/react-compiler-analyzer/package.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/project.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json',
+    { externalDependencies: ['babel-plugin-react-compiler'] },
+  ];
+  const dependsOn = [{ target: 'build', projects: 'react-compiler-analyzer' }];
 
   targets['react-compiler-analyzer--lint'] = {
     command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {
@@ -366,6 +377,7 @@ function buildReactCompilerAnalyzerTargets(
   targets['react-compiler-analyzer--analyze'] = {
     command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {
@@ -477,8 +489,13 @@ function buildTestTarget(
 }
 
 function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
-  // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
   if (config.packageJSON.private || !config.packageJSON.exports) {
+    return null;
+  }
+
+  // CommonJS-first packages always report `CJS default export` interop findings under the node16
+  // profile - inherent to their shape rather than export map defects, so gating them stays red forever
+  if (config.packageJSON.type !== 'module') {
     return null;
   }
 
@@ -492,7 +509,7 @@ function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): Target
     },
     inputs: ['default', { externalDependencies: ['@arethetypeswrong/cli'] }],
     metadata: {
-      description: 'Validate package types & export map with @arethetypeswrong/cli (optional)',
+      description: 'Validate package types & export map with @arethetypeswrong/cli',
       technologies: ['typescript'],
     },
   };
@@ -734,7 +751,10 @@ function buildStorybookTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.storybook/main.js'))) {
+  const hasStorybookMain = ['.storybook/main.js', '.storybook/main.cjs'].some(file =>
+    existsSync(join(projectRoot, file)),
+  );
+  if (!hasStorybookMain) {
     return null;
   }
 

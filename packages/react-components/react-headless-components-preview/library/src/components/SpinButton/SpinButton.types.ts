@@ -13,6 +13,11 @@ export type SpinButtonState = SpinButtonBaseState & {
     'data-disabled'?: string;
 
     /**
+     * Data attribute set when the spin button is read-only.
+     */
+    'data-readonly'?: string;
+
+    /**
      * Data attribute set when the spin button is actively spinning. Value is 'up' or 'down'.
      */
     'data-spin-state'?: string;

@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { Link } from './link.js';
-import { LinkAppearance, tagName } from './link.options.js';
+import type { Link } from './link.js';
+import { tagName } from './link.options.js';
 
 const attributes = {
   download: 'download',
@@ -16,6 +16,18 @@ const attributes = {
 test.describe('Link', () => {
   test.use({
     tagName,
+  });
+
+  test('should set default host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate();
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '0');
+  });
+
+  test('should preserve authored host attributes when connected', async ({ fastPage }) => {
+    await fastPage.setTemplate({ attributes: { tabindex: '-1' } });
+
+    await expect(fastPage.element).toHaveAttribute('tabindex', '-1');
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -53,40 +65,6 @@ test.describe('Link', () => {
         await expect(anchor).toHaveAttribute(attribute, value);
       });
     }
-  });
-
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const appearance of Object.values(LinkAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.updateTemplate(element, { attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
-      });
-    }
-  });
-
-  test('should add an "inline" attribute when the `inline` property is true', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    await element.evaluate((node: Link) => {
-      node.inline = true;
-    });
-
-    await expect(element).toHaveAttribute('inline');
-
-    await element.evaluate((node: Link) => {
-      node.inline = false;
-    });
-
-    await expect(element).not.toHaveAttribute('inline');
   });
 
   test('should emit a single click event when clicked', async ({ fastPage, page }) => {

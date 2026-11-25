@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [1.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.25)
+
+Tue, 24 Nov 2026 12:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.24..@fluentui/tokens_v1.0.0-alpha.25)
+
+### Changes
+
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
 
 ## [1.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.24)
 

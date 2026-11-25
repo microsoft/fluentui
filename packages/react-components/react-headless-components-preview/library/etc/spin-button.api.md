@@ -24,6 +24,7 @@ export { SpinButtonSlots }
 export type SpinButtonState = SpinButtonBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-readonly'?: string;
         'data-spin-state'?: string;
         'data-at-bound'?: string;
         'data-invalid'?: string;
