@@ -14,6 +14,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Tag: ForwardRefComponent<TagProps> = /*#__PURE__*/ composeComponent(
   'Tag',
   useTag,
-  renderTag,
   useTagContextValues,
+  renderTag,
 );

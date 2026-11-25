@@ -61,7 +61,7 @@ describe('analyze JSON schema', () => {
 
     expect(validate(document)).toBe(true);
     expect(validate.errors).toBeNull();
-    expect(document.summary.memoCacheEmitted).toBe(0);
+    expect(document.summary.reportedMemoCachePositive).toBe(0);
   });
 
   it('rejects fields outside the compact contract', () => {
@@ -76,11 +76,11 @@ describe('analyze JSON schema', () => {
     );
   });
 
-  it('requires the emitted memo-cache summary counter', () => {
+  it('requires the reported memo-statistics summary counter', () => {
     const document = JSON.parse(
       JSON.stringify(toAnalysisDocument([], { mode: 'infer', workspaceRoot: '/workspace' })),
     ) as { summary: Record<string, unknown> };
-    delete document.summary['memoCacheEmitted'];
+    delete document.summary['reportedMemoCachePositive'];
 
     expect(validate(document)).toBe(false);
     expect(validate.errors).toEqual(expect.arrayContaining([expect.objectContaining({ keyword: 'required' })]));

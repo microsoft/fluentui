@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compiler-analyzer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CLI for assessing React Compiler coverage, directives, and migration risks in TypeScript source files.",
   "type": "commonjs",
   "main": "./dist/index.js",
@@ -19,6 +19,7 @@
     "docs",
     "*.md",
     "rca.analyze.schema.json",
+    "rca.lint.schema.json",
     "rca.config.schema.json",
     "skills",
     "dist"

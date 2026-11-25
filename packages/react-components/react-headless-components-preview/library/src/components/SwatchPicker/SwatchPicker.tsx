@@ -14,6 +14,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps> = /*#__PURE__*/ composeComponent(
   'SwatchPicker',
   useSwatchPicker,
-  renderSwatchPicker,
   useSwatchPickerContextValues,
+  renderSwatchPicker,
 );

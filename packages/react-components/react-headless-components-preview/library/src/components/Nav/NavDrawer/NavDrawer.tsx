@@ -14,6 +14,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = /*#__PURE__*/ composeComponent(
   'NavDrawer',
   useNavDrawer,
-  renderNavDrawer,
   useNavContextValues,
+  renderNavDrawer,
 );

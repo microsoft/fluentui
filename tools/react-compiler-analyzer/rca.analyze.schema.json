@@ -2,13 +2,24 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/microsoft/fluentui/master/tools/react-compiler-analyzer/rca.analyze.schema.json",
   "title": "React Compiler Analyzer analyze output",
-  "description": "Compact schemaVersion 2 document emitted by analyze --format json.",
+  "description": "SchemaVersion 3 analysis evidence emitted by analyze --format json. Statistics are not emitted-code evidence.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "tool", "command", "mode", "summary", "functions", "findings", "unparseable"],
+  "required": [
+    "schemaVersion",
+    "tool",
+    "command",
+    "mode",
+    "profile",
+    "emittedCaching",
+    "summary",
+    "functions",
+    "findings",
+    "unparseable"
+  ],
   "properties": {
     "schemaVersion": {
-      "const": 2
+      "const": 3
     },
     "tool": {
       "const": "react-compiler-analyzer"
@@ -19,6 +30,8 @@
     "mode": {
       "enum": ["infer", "annotation", "all"]
     },
+    "profile": { "$ref": "#/definitions/profile" },
+    "emittedCaching": { "const": "unverified" },
     "summary": {
       "$ref": "#/definitions/summary"
     },
@@ -45,6 +58,32 @@
     }
   },
   "definitions": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "backend",
+        "babelVersion",
+        "compilerVersion",
+        "mode",
+        "parserPlugins",
+        "noEmit",
+        "panicThreshold",
+        "target",
+        "suppressionRules"
+      ],
+      "properties": {
+        "backend": { "const": "babel" },
+        "babelVersion": { "type": "string", "minLength": 1 },
+        "compilerVersion": { "type": "string", "minLength": 1 },
+        "mode": { "enum": ["infer", "annotation", "all"] },
+        "parserPlugins": { "type": "array", "items": { "type": "string" } },
+        "noEmit": { "const": true },
+        "panicThreshold": { "const": "none" },
+        "target": { "const": "compiler-default" },
+        "suppressionRules": { "const": "compiler-default" }
+      }
+    },
     "nonNegativeInteger": {
       "type": "integer",
       "minimum": 0
@@ -58,7 +97,11 @@
       "required": [
         "functions",
         "compiled",
-        "memoCacheEmitted",
+        "reportedMemoCachePositive",
+        "reportedMemoCacheZero",
+        "reportedMemoCacheUnavailable",
+        "suppressionRejected",
+        "suppressionRejectedWithRisks",
         "skipped",
         "errors",
         "findings",
@@ -73,9 +116,13 @@
         "compiled": {
           "$ref": "#/definitions/nonNegativeInteger"
         },
-        "memoCacheEmitted": {
+        "reportedMemoCachePositive": {
           "$ref": "#/definitions/nonNegativeInteger"
         },
+        "reportedMemoCacheZero": { "$ref": "#/definitions/nonNegativeInteger" },
+        "reportedMemoCacheUnavailable": { "$ref": "#/definitions/nonNegativeInteger" },
+        "suppressionRejected": { "$ref": "#/definitions/nonNegativeInteger" },
+        "suppressionRejectedWithRisks": { "$ref": "#/definitions/nonNegativeInteger" },
         "skipped": {
           "$ref": "#/definitions/nonNegativeInteger"
         },
@@ -172,6 +219,20 @@
         },
         "reason": {
           "type": "string"
+        },
+        "rejectionKind": { "const": "suppression-related" },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "reason"],
+            "properties": {
+              "kind": { "enum": ["CompileError", "PipelineError"] },
+              "reason": { "type": "string" },
+              "category": { "type": "string" }
+            }
+          }
         },
         "errorLine": {
           "type": "integer",
@@ -281,6 +342,37 @@
       },
       "properties": {
         "dryRun": { "const": true },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "file",
+              "line",
+              "functionName",
+              "directive",
+              "rationale",
+              "reportedMemoCache",
+              "emittedCaching",
+              "riskRules"
+            ],
+            "properties": {
+              "file": { "type": "string", "minLength": 1 },
+              "line": { "type": "integer", "minimum": 1 },
+              "functionName": { "$ref": "#/definitions/nullableString" },
+              "directive": { "enum": ["use memo", "use no memo"] },
+              "rationale": { "enum": ["preventive-risk-opt-out", "compiler-accepted-opt-in"] },
+              "reportedMemoCache": { "enum": ["positive", "zero", "unavailable"] },
+              "emittedCaching": { "const": "unverified" },
+              "riskRules": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "enum": ["nonreactive-store-read", "hidden-selector-hook"] }
+              }
+            }
+          }
+        },
         "planned": {
           "type": "object",
           "additionalProperties": false,

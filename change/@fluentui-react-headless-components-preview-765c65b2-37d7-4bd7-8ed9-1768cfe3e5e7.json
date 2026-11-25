@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: type Provider root slot without React.FragmentProps so consumers on @types/react 17 and 18 can type-check",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

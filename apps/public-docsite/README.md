@@ -20,3 +20,16 @@ yarn nx run public-docsite:start
 `yarn nx run public-docsite:start` will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 Run `yarn nx run public-docsite:e2e` to build the docsite and test responsive navigation with Playwright.
+
+## Code quality
+
+Run these commands from the repository root:
+
+```sh
+yarn nx run public-docsite:lint
+yarn nx run public-docsite:format
+yarn nx run public-docsite:format:check
+```
+
+Lint builds the docsite through `prebundle` first so import checks do not depend on task scheduling.
+Formatting commands are package scripts; CI also checks formatting with the workspace-wide `nx format:check`.

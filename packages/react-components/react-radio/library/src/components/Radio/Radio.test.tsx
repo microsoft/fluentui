@@ -105,3 +105,26 @@ describe('Radio', () => {
     expect(onChange.mock.calls[2][1]).toEqual({ value: 'test-value-3' });
   });
 });
+
+describe('Radio DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Radio
+        className="custom"
+        label="Label"
+        labelPosition="below"
+        onChange={() => undefined}
+        style={{ color: 'red' }}
+        title="Title"
+        value="a"
+      />,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.getAttributeNames().sort()).toEqual(['class', 'style']);
+    expect(root.querySelector('input')!.getAttributeNames().sort()).toEqual(['class', 'id', 'title', 'type', 'value']);
+  });
+});

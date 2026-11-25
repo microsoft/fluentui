@@ -6,18 +6,15 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FluentProviderProps } from '@fluentui/react-provider';
-import { ForwardRefExoticComponent } from 'react';
-import { FragmentProps } from 'react';
+import type { FluentProviderProps } from '@fluentui/react-provider';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { FluentProviderContextValues as ProviderContextValues } from '@fluentui/react-provider';
-import * as React_2 from 'react';
-import { RefAttributes } from '@fluentui/react-utilities';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
 // @public
-export const Provider: ForwardRefExoticComponent<Omit<ProviderSlots, "root"> & FragmentProps & Pick<FluentProviderProps, "dir" | "targetDocument"> & RefAttributes<HTMLDivElement>>;
+export const Provider: ComponentWithoutRef<ProviderProps>;
 
 export { ProviderContextValues }
 
@@ -26,7 +23,9 @@ export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderP
 
 // @public (undocumented)
 export type ProviderSlots = {
-    root: Slot<React_2.FragmentProps>;
+    root: Slot<{
+        children?: React_2.ReactNode;
+    }>;
 };
 
 // @public
@@ -36,7 +35,7 @@ export type ProviderState = ComponentState<ProviderSlots> & Pick<FluentProviderP
 export const renderProvider: (state: ProviderState, contextValues: ProviderContextValues) => JSXElement;
 
 // @public (undocumented)
-export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement>) => ProviderState;
+export const useProvider: (props: ProviderProps) => ProviderState;
 
 export { useProviderContext }
 

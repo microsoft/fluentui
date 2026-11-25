@@ -12,6 +12,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = /*#__PURE__*/ composeComponent(
   'AccordionItem',
   useAccordionItem,
-  renderAccordionItem,
   useAccordionItemContextValues,
+  renderAccordionItem,
 );

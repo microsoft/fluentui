@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
 import type { SliderBaseProps, SliderBaseState, SliderProps, SliderState } from './Slider.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
@@ -11,6 +11,11 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
   const { size = 'medium', ...baseProps } = props;
 
   const baseState = useSliderBase_unstable(baseProps, ref);
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  baseState.root.ref = useMergedRefs(baseState.root.ref, useFocusWithin<HTMLDivElement>());
 
   return {
     ...baseState,
@@ -29,21 +34,23 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
-  });
-
   const {
-    disabled,
     vertical,
+    // `value`, `defaultValue` and `onChange` are handled by useSliderState_unstable
+    value,
+    defaultValue,
+    onChange,
     // Slots
     root,
     input,
     rail,
     thumb,
+    // `className` and `style` go to the root slot, the rest of the native props go to the primary `input` slot.
+    className,
+    style,
+    ...inputProps
   } = props;
+  const { disabled } = props;
 
   const state: SliderBaseState = {
     disabled,
@@ -55,14 +62,14 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
       thumb: 'div',
     },
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: { className, style },
       elementType: 'div',
     }),
     input: slot.always(input, {
       defaultProps: {
         id: useId('slider-', props.id),
         ref,
-        ...nativeProps.primary,
+        ...inputProps,
         type: 'range',
         orient: vertical ? 'vertical' : undefined,
       },
@@ -76,8 +83,6 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
   if (state.input['aria-orientation'] === undefined) {
     state.input['aria-orientation'] = state.vertical ? 'vertical' : 'horizontal';
   }
-
-  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useSliderState_unstable(state, props);
 

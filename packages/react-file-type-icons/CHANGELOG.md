@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 25 Nov 2026 01:39:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.4)
+
+Wed, 25 Nov 2026 01:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.3..@fluentui/react-file-type-icons_v8.18.4)
+
+### Patches
+
+- Add the DocuWorks file type icon for the xbd, xct, and xdw extensions. ([PR #37099](https://github.com/microsoft/fluentui/pull/37099) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [8.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.3)
 

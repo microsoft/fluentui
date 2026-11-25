@@ -45,3 +45,26 @@ describe('useFieldBase_unstable', () => {
     });
   });
 });
+
+describe('useFieldBase_unstable root props', () => {
+  it('does not forward component props to the root slot', () => {
+    const { result } = renderHook(() =>
+      useFieldBase_unstable(
+        {
+          children: 'child',
+          hint: 'Hint',
+          id: 'field',
+          label: 'Label',
+          required: true,
+          validationMessage: 'Message',
+          validationMessageIcon: 'icon',
+          validationState: 'warning',
+        },
+        React.createRef(),
+      ),
+    );
+
+    expect(result.current.root.id).toBe('field');
+    expect(Object.keys(result.current.root).sort()).toEqual(['id', 'ref']);
+  });
+});

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: rename Popover `trapFocus` to `inertTrapFocus`",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -517,4 +517,32 @@ describe('Dialog', () => {
       cy.get('dialog').should('not.exist');
     });
   });
+
+  describe('native invokers', () => {
+    it('syncs a non-modal surface toggled by popovertarget into the open state', () => {
+      const types: string[] = [];
+      mount(
+        <>
+          <button id="invoker" popoverTarget="native-dialog">
+            Toggle
+          </button>
+          <Dialog
+            modalType="non-modal"
+            unmountOnClose={false}
+            onOpenChange={(_, data) => types.push(`${data.type}:${data.open}`)}
+          >
+            <DialogSurface id="native-dialog" aria-label="Native">
+              <button>Inside</button>
+            </DialogSurface>
+          </Dialog>
+        </>,
+      );
+
+      cy.get('#invoker').realClick();
+      cy.get('#native-dialog').should('match', ':popover-open').and('have.attr', 'data-open');
+      cy.get('#invoker').realClick();
+      cy.get('#native-dialog').should('not.match', ':popover-open').and('not.have.attr', 'data-open');
+      cy.then(() => expect(types).to.deep.equal(['surfaceToggle:true', 'surfaceToggle:false']));
+    });
+  });
 });

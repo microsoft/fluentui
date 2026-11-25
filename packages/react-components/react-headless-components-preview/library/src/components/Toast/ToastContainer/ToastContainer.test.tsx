@@ -81,12 +81,29 @@ describe('ToastContainer', () => {
 
   it('respects user root props from data.root', () => {
     const className = 'custom-toast-root';
-    const { container } = render(
-      <ToastContainer {...defaultToastContainerProps} data={{ root: { className } }}>
-        ToastContainer
-      </ToastContainer>,
-    );
+    const toastPropsWithUnexpectedRoot = {
+      ...defaultToastContainerProps,
+      root: { id: 'unexpected-root-prop' },
+    };
+    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    try {
+      const { getByRole, container } = render(
+        <ToastContainer {...toastPropsWithUnexpectedRoot} data={{ root: { className } }}>
+          ToastContainer
+        </ToastContainer>,
+      );
 
-    expect(container.querySelector(`.${className}`)).not.toBeNull();
+      const toast = getByRole('listitem');
+      expect(container.querySelector(`.${className}`)).not.toBeNull();
+      expect(toast).not.toHaveAttribute('root');
+      expect(toast).not.toHaveAttribute('toastId');
+      expect(toast).not.toHaveAttribute('toasterId');
+      expect(toast).not.toHaveAttribute('position');
+      expect(toast).not.toHaveAttribute('priority');
+      expect(toast).not.toHaveAttribute('order');
+      expect(error).not.toHaveBeenCalled();
+    } finally {
+      error.mockRestore();
+    }
   });
 });

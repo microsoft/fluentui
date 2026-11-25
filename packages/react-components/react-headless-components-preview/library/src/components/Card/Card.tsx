@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Card: ForwardRefComponent<CardProps> = /*#__PURE__*/ composeComponent(
   'Card',
   useCard,
-  renderCard,
   useCardContextValue,
+  renderCard,
 );

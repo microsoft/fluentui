@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Overflow: ForwardRefComponent<OverflowProps> = /*#__PURE__*/ composeComponent(
   'Overflow',
   useOverflow,
-  renderOverflow,
   useOverflowContextValues,
+  renderOverflow,
 );

@@ -286,3 +286,27 @@ describe('Field', () => {
     });
   });
 });
+
+describe('Field DOM attributes', () => {
+  it('does not render component props as DOM attributes', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { container } = render(
+      <Field
+        hint="Hint"
+        label="Label"
+        orientation="horizontal"
+        required
+        size="large"
+        validationMessage="Message"
+        validationMessageIcon={null}
+        validationState="warning"
+      >
+        <input />
+      </Field>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    consoleError.mockRestore();
+    expect((container.firstElementChild as HTMLElement).getAttributeNames().sort()).toEqual(['class']);
+  });
+});

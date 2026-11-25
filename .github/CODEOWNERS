@@ -164,9 +164,9 @@ packages/react-hooks @microsoft/cxe-prg
 packages/react-icons-mdl2 @microsoft/cxe-prg
 packages/react-icons-mdl2-branded @microsoft/cxe-prg
 packages/react-monaco-editor @microsoft/fluentui-v8-website @microsoft/cxe-prg
-packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-components/react-positioning/library @microsoft/teams-prg
-packages/react-components/react-positioning/stories @microsoft/teams-prg
+packages/react-components/react-positioning @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-components/react-overflow/library @microsoft/teams-prg
 packages/react-components/react-overflow/stories @microsoft/teams-prg
@@ -262,14 +262,14 @@ packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-prg
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
-packages/react-components/react-table/library @microsoft/teams-prg
-packages/react-components/react-table/stories @microsoft/teams-prg
+packages/react-components/react-table/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-table/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-progress/library @microsoft/cxe-prg
 packages/react-components/react-progress/stories @microsoft/cxe-prg
 packages/react-components/react-persona/library @microsoft/cxe-prg
 packages/react-components/react-persona/stories @microsoft/cxe-prg
-packages/react-components/react-tree/library @microsoft/teams-prg
-packages/react-components/react-tree/stories @microsoft/teams-prg
+packages/react-components/react-tree/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-tree/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-virtualizer/library @microsoft/xc-uxe @microsoft/cxe-prg
 packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @microsoft/cxe-prg
 packages/react-components/react-skeleton/library @microsoft/cxe-prg

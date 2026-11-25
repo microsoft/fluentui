@@ -12,6 +12,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps> = /*#__PURE__*/ composeComponent(
   'MessageBarActions',
   useMessageBarActions,
-  renderMessageBarActions,
   useMessageBarActionsContextValues,
+  renderMessageBarActions,
 );
