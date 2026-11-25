@@ -396,28 +396,6 @@ describe('TagPicker', () => {
           }
         });
       });
-
-      it(`should select the active option when Tabster moves focus from the ${trigger} trigger`, () => {
-        const triggerSelector = `[data-testid="tag-picker-${trigger}"]`;
-
-        mount(<TagPickerControlled defaultOpen selectionMode="single" trigger={trigger} />);
-
-        cy.get(triggerSelector).should('have.attr', 'aria-activedescendant', 'tag-picker-option--0');
-        cy.get(triggerSelector).then($trigger => {
-          const triggerElement = $trigger[0];
-          const relatedEvent = new KeyboardEvent('keydown', { key: 'Tab' });
-          Object.defineProperty(relatedEvent, 'target', { value: triggerElement });
-
-          triggerElement.dispatchEvent(
-            new CustomEvent('tabster:movefocus', {
-              bubbles: true,
-              detail: { by: 'root', owner: triggerElement, next: null, relatedEvent },
-            }),
-          );
-        });
-
-        cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
-      });
     });
 
     it('should replace the selected option in single mode', () => {

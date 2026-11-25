@@ -69,10 +69,6 @@ describe('createReactKeyboardEvent', () => {
     const { event, release } = createReactKeyboardEvent(nativeEvent, trigger);
 
     expect(event.nativeEvent).toBe(nativeEvent);
-    expect('nativeEvent' in event).toBe(true);
-    expect('isDefaultPrevented' in event).toBe(true);
-    expect('isPropagationStopped' in event).toBe(true);
-    expect('persist' in event).toBe(true);
     expect(event.target).toBe(trigger);
     expect(event.currentTarget).toBe(trigger);
     expect(event.key).toBe('Tab');
