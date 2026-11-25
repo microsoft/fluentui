@@ -177,34 +177,55 @@ Tabster, positioning, portals, native popovers, or nested trigger composition.
 ### Component
 
 - Add `'use client';` to component and hook modules that use React client APIs.
-- Use `ForwardRefComponent<Props>` with `React.forwardRef` for ref-capable
-  primitives. Never use `React.FC`.
-- For provider-only components with no meaningful DOM ref, use a normally typed
-  function returning `JSXElement`; do not invent a fake ref and do not use
-  `React.FC`.
+- Use `ForwardRefComponent<Props>` for ref-capable primitives, built with the
+  shared `composeComponent` helper (`src/utils/composeComponent.ts`) rather than
+  a hand-written `React.forwardRef`. Never use `React.FC`.
+- For components with no meaningful DOM ref (roots that only provide context,
+  triggers that clone their child), use `composeComponentWithoutRef` from the
+  same module. Do not invent a fake ref and do not annotate the export as
+  `React.FC`; annotate it with `ComponentWithoutRef<Props>` from the same module.
 - Keep the component thin: state hook, optional context-values hook, renderer.
-- Set `displayName` on every exported React component.
+- Pass the `displayName` as the first argument of `composeComponent`; it is set on
+  every exported React component, in production as well.
 - Add concise JSDoc describing purpose and any required accessibility contract.
 - Do not import icons or add default icons in base hooks or headless renderers.
-  If an icon is needed in a styled wrapper or story, import it there and define
-  `bundleIcon` at module scope, never inside a hook or render function.
+- Annotate the export with `ForwardRefComponent<Props>` (or
+  `ComponentWithoutRef<Props>`) so the public type does not depend on
+  inference, and keep the `/*#__PURE__*/` annotation so the call is
+  tree-shakeable. Keep the arguments positional: an options object repeats
+  its property names in every component and minifiers do not mangle them.
 
 ```tsx
 'use client';
 
-import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { composeComponent } from '../../utils/composeComponent';
 
-export const ComponentName: ForwardRefComponent<ComponentNameProps> = React.forwardRef((props, ref) => {
-  const state = useComponentName(props, ref);
-  return renderComponentName(state);
-});
-
-ComponentName.displayName = 'ComponentName';
+export const ComponentName: ForwardRefComponent<ComponentNameProps> = /*#__PURE__*/ composeComponent(
+  'ComponentName',
+  useComponentName,
+  renderComponentName,
+);
 ```
 
-For compound roots, derive and pass context values between the state hook and
-renderer.
+The import path is relative to the component folder, so a nested part such as
+`components/Badge/PresenceBadge/` imports `'../../../utils/composeComponent'`.
+
+For compound roots, pass the context-values hook as the third argument; the
+renderer always comes last:
+`composeComponent('ComponentName', useComponentName, useComponentNameContextValues, renderComponentName)`.
+
+Components without a ref use the same argument order:
+
+```tsx
+import type { ComponentWithoutRef } from '../../utils/composeComponent';
+
+export const ComponentNameTrigger: ComponentWithoutRef<ComponentNameTriggerProps> =
+  /*#__PURE__*/ composeComponentWithoutRef('ComponentNameTrigger', useComponentNameTrigger, renderComponentNameTrigger);
+```
+
+The optional context-values hook is resolved once when the component is composed,
+never while rendering.
 
 ### Hook
 
@@ -241,14 +262,14 @@ State attributes are the supported CSS targeting contract.
   attribute.
 - Removal or rename is breaking. Additions require tests and documentation.
 
-Use `stringifyDataAttribute` from `library/src/utils` for presence and string
+Use `toDataAttributeValue` from `library/src/utils` for presence and string
 attributes:
 
 ```tsx
 const state: ComponentNameState = useComponentNameBase_unstable(props, ref);
 
 // Applied after consumer props so base state cannot be misrepresented.
-state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+state.root['data-disabled'] = toDataAttributeValue(state.disabled);
 
 return state;
 ```

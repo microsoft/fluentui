@@ -12,6 +12,7 @@ import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
 import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
 import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
+import { AvatarGroupProvider } from '@fluentui/react-avatar';
 import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -29,6 +30,9 @@ import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react
 import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
+import type { TooltipTriggerProps as TooltipTriggerProps_2 } from '@fluentui/react-tooltip';
+import type { TriggerProps } from '@fluentui/react-utilities';
+import { useAvatarGroupContext_unstable as useAvatarGroupContext } from '@fluentui/react-avatar';
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -48,13 +52,10 @@ export { AvatarGroupItemSlots }
 export { AvatarGroupItemState }
 
 // @public
-export const AvatarGroupPopover: {
-    (props: AvatarGroupPopoverProps): JSXElement;
-    displayName: string;
-};
+export const AvatarGroupPopover: ComponentWithoutRef<AvatarGroupPopoverProps>;
 
 // @public
-export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'trapFocus'>;
+export type AvatarGroupPopoverPopoverProps = Pick<PopoverProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'openOnHover' | 'openOnContext' | 'mouseLeaveDelay' | 'positioning' | 'withArrow' | 'inertTrapFocus'>;
 
 // @public
 export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & AvatarGroupPopoverPopoverProps & {
@@ -80,6 +81,8 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & 
 
 export { AvatarGroupProps }
 
+export { AvatarGroupProvider }
+
 export { AvatarGroupSlots }
 
 // @public (undocumented)
@@ -104,6 +107,8 @@ export const renderAvatarGroupPopover: (state: AvatarGroupPopoverState, contextV
 
 // @public
 export const useAvatarGroup: (props: AvatarGroupProps, ref: React_2.Ref<HTMLDivElement>) => AvatarGroupState;
+
+export { useAvatarGroupContext }
 
 // @public
 export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;

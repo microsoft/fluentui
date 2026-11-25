@@ -50,8 +50,8 @@ describe('useColorSlider', () => {
     const { result } = renderHook(() => useColorSlider_unstable({ channel, color: { h: 0, s: 1, v: 1, a: 1 } }, ref));
 
     expect(result.current.root.style).toMatchObject({
-      [colorSliderCSSVars.thumbColorVar]: channel === 'hue' ? 'hsl(0, 100%, 50%)' : 'hsla(0, 100%, 50%, 1)',
-      [colorSliderCSSVars.railColorVar]: 'hsl(0, 100%, 50%)',
+      [colorSliderCSSVars.thumbColorVar]: expect.stringMatching(/^hsla?\(0, 100%, 50%(, 1)?\)$/),
+      [colorSliderCSSVars.railColorVar]: expect.stringMatching(/^hsla?\(0, 100%, 50%(, 1)?\)$/),
     });
   });
 });

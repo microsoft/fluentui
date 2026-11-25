@@ -1,0 +1,141 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Nav Migration" />
+
+# Nav Migration
+
+## Overview
+
+v8 `Nav` used a `groups` array of `INavLinkGroup` with nested `INavLink` items. v9 `Nav` uses declarative JSX children (`NavItem`, `NavCategory`, `NavCategoryItem`) and integrates with `NavDrawer` for side-drawer navigation.
+
+Import from `@fluentui/react-components` — no separate package required.
+
+| v8                         | v9                                                   |
+| -------------------------- | ---------------------------------------------------- |
+| `groups` array prop        | `<NavCategory>` / `<NavItem>` children               |
+| `INavLink.name`            | `<NavItem>` children (text)                          |
+| `INavLink.url`             | `href` on `<NavItem>`                                |
+| `INavLink.onClick`         | `onClick` on `<NavItem>`                             |
+| `INavLink.links` (nesting) | `<NavCategory>` + `<NavCategoryItem>`                |
+| `onLinkClick`              | `onNavItemSelect` on `<Nav>`                         |
+| `onLinkExpandClick`        | `onNavCategoryItemToggle`; read `data.categoryValue` |
+| `selectedKey`              | `selectedValue` on `<Nav>`                           |
+| `INavLink.isExpanded`      | Membership in controlled `openCategories`            |
+
+```tsx
+import {
+  Nav,
+  NavCategory,
+  NavCategoryItem,
+  NavDivider,
+  NavDrawer,
+  NavDrawerBody,
+  NavDrawerHeader,
+  NavItem,
+  NavSectionHeader,
+  NavSubItem,
+  NavSubItemGroup,
+} from '@fluentui/react-components';
+import type { NavItemValue } from '@fluentui/react-components';
+```
+
+| v9 Component       | Purpose                                          |
+| ------------------ | ------------------------------------------------ |
+| `NavDrawer`        | Side-drawer container (replaces `Panel` + `Nav`) |
+| `NavDrawerHeader`  | Header with hamburger button                     |
+| `NavDrawerBody`    | Scrollable body area                             |
+| `Nav`              | The nav list (standalone or inside `NavDrawer`)  |
+| `NavItem`          | Leaf navigation item                             |
+| `NavCategory`      | Expandable group (like v8 `INavLinkGroup`)       |
+| `NavCategoryItem`  | The clickable header of a `NavCategory`          |
+| `NavSubItemGroup`  | Sub-items under a `NavCategoryItem`              |
+| `NavSubItem`       | A child item in a sub-group                      |
+| `NavDivider`       | Horizontal divider between items                 |
+| `NavSectionHeader` | Non-interactive section label                    |
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Nav } from '@fluentui/react';
+
+<Nav
+  selectedKey="home"
+  onLinkClick={(_, item) => navigate(item?.url)}
+  groups={[
+    {
+      links: [
+        { name: 'Home', url: '/', key: 'home', iconProps: { iconName: 'Home' } },
+        {
+          name: 'Settings',
+          url: '',
+          key: 'settings',
+          links: [{ name: 'Profile', url: '/profile', key: 'profile' }],
+        },
+      ],
+    },
+  ]}
+/>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import * as React from 'react';
+import { Nav, NavItem, NavCategory, NavCategoryItem, NavSubItemGroup, NavSubItem } from '@fluentui/react-components';
+import type { NavItemValue } from '@fluentui/react-components';
+import { HomeRegular, SettingsRegular } from '@fluentui/react-icons';
+
+const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['settings']);
+
+<nav aria-label="Primary">
+  <Nav
+    selectedValue="home"
+    openCategories={openCategories}
+    onNavItemSelect={(_, data) => navigate(data.value as string)}
+    onNavCategoryItemToggle={(_, data) =>
+      setOpenCategories(current =>
+        current.includes(data.categoryValue)
+          ? current.filter(value => value !== data.categoryValue)
+          : [...current, data.categoryValue],
+      )
+    }
+  >
+    <NavItem icon={<HomeRegular />} value="home" href="/">
+      Home
+    </NavItem>
+    <NavCategory value="settings">
+      <NavCategoryItem icon={<SettingsRegular />}>Settings</NavCategoryItem>
+      <NavSubItemGroup>
+        <NavSubItem value="profile" href="/profile">
+          Profile
+        </NavSubItem>
+      </NavSubItemGroup>
+    </NavCategory>
+  </Nav>
+</nav>;
+```
+
+## Prop Mapping
+
+| v8 `INavProps`        | v9 `NavProps`               | Notes                                                         |
+| --------------------- | --------------------------- | ------------------------------------------------------------- |
+| `groups`              | JSX children                |                                                               |
+| `selectedKey`         | `selectedValue`             |                                                               |
+| `initialSelectedKey`  | `defaultSelectedValue`      |                                                               |
+| `onLinkClick`         | `onNavItemSelect`           | `(_, data) => data.value`                                     |
+| `onLinkExpandClick`   | `onNavCategoryItemToggle`   | Read `data.categoryValue`, not selected-item `data.value`     |
+| `INavLink.isExpanded` | `openCategories` membership | Initialize and update controlled category keys                |
+| `ariaLabel`           | Owning `<nav aria-label>`   | Standalone `Nav` does not itself create a navigation landmark |
+| `isOnTop`             | Use `NavDrawer`             |                                                               |
+| `styles`              | `className` + `makeStyles`  |                                                               |
+| `theme`               | —                           | Use `FluentProvider`                                          |
+
+## Accessibility
+
+- Add `href` to all `NavItem`s that change the URL — even when using JS routing
+- Ensure hamburger icon buttons have an accessible name
+- Don't combine expand/collapse with link navigation on the same item

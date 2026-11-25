@@ -125,7 +125,7 @@ describe('react-library generator', () => {
           "declarationDir": "../../../../dist/out-tsc/types",
           "inlineSources": true,
           "lib": Array [
-            "ES2019",
+            "ES2020",
             "dom",
           ],
           "noEmit": false,
@@ -208,6 +208,12 @@ describe('react-library generator', () => {
       "export {};
       "
     `);
+
+    const storybookMain = tree.read(`${stories.root}/.storybook/main.cjs`, 'utf-8');
+    expect(storybookMain).toContain(`require('../../../../../.storybook/main')`);
+    expect(storybookMain).toContain(`'../src/**/index.stories.@(ts|tsx)'`);
+    expect(storybookMain).not.toContain('../stories/');
+    expect(readJson(tree, `${stories.root}/.storybook/tsconfig.json`).include).toEqual(['*.js', '*.cjs']);
 
     const eslintConfig = tree.read(`${stories.root}/eslint.config.js`, 'utf-8');
     expect(eslintConfig).toMatchInlineSnapshot(`

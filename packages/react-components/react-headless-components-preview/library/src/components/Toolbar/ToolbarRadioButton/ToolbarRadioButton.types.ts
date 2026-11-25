@@ -2,6 +2,8 @@ import type { ToolbarRadioButtonBaseState } from '@fluentui/react-toolbar';
 
 export type { ToolbarRadioButtonBaseProps as ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
 
+export type { ButtonSlots as ToolbarRadioButtonSlots } from '@fluentui/react-button';
+
 export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
   root: {
     /**

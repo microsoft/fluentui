@@ -1,9 +1,10 @@
 'use client';
 
-import type * as React from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useMenuTrigger } from './useMenuTrigger';
 import { renderMenuTrigger } from './renderMenuTrigger';
+import { composeComponentWithoutRef } from '../../../utils/composeComponent';
+import type { ComponentWithoutRef } from '../../../utils/composeComponent';
 import type { MenuTriggerProps } from '@fluentui/react-menu';
 
 /**
@@ -12,12 +13,11 @@ import type { MenuTriggerProps } from '@fluentui/react-menu';
  * Clones its single child and applies the menu trigger props (ARIA, event
  * handlers, ref merging) needed to drive the parent Menu's open state.
  */
-export const MenuTrigger: React.FC<MenuTriggerProps> = props => {
-  const state = useMenuTrigger(props);
-  return renderMenuTrigger(state);
-};
-
-MenuTrigger.displayName = 'MenuTrigger';
+export const MenuTrigger: ComponentWithoutRef<MenuTriggerProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'MenuTrigger',
+  useMenuTrigger,
+  renderMenuTrigger,
+);
 
 /**
  * Marks the MenuTrigger component as a FluentTriggerComponent by setting the isFluentTriggerComponent flag.

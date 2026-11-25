@@ -26,9 +26,9 @@ describe('Toaster', () => {
     // (not inside the Toaster's React tree) so a single shared region serves
     // the whole app. The DOM fallback path only renders an assertive region;
     // polite messages on browsers without `ariaNotify` are announced assertively.
-    render(<Toaster />);
+    const { baseElement } = render(<Toaster />);
 
-    expect(document.body.querySelector('[aria-live="assertive"]')).not.toBeNull();
+    expect(baseElement.querySelector('[aria-live="assertive"]')).not.toBeNull();
   });
 
   it('does not render position containers when there are no toasts', () => {
@@ -76,6 +76,30 @@ describe('Toaster', () => {
 
     expect(queryByText('first toast')).not.toBeNull();
     expect(queryByText('second toast')).toBeNull();
+  });
+
+  it('does not forward toaster options to toast container elements', () => {
+    let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
+    const toasterId = 'options-toaster';
+    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    try {
+      const Test = () => {
+        dispatchToast = useToastController(toasterId).dispatchToast;
+        return <Toaster toasterId={toasterId} limit={1} shortcuts={{ focus: () => false }} />;
+      };
+      const { getByRole } = render(<Test />);
+
+      act(() => {
+        dispatchToast('toast', { toastId: 'options-toast', timeout: -1 });
+      });
+
+      const toast = getByRole('listitem');
+      expect(toast).not.toHaveAttribute('limit');
+      expect(toast).not.toHaveAttribute('shortcuts');
+      expect(error).not.toHaveBeenCalled();
+    } finally {
+      error.mockRestore();
+    }
   });
 
   it('forwards default toast options to toast state', () => {

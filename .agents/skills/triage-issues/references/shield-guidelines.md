@@ -48,7 +48,7 @@ issue labeled "Needs: Triage :mag:"
 | Date/Time pickers           | `ermercer`            |
 | Accessibility (any product) | `smhigley`            |
 
-For v8 and v9 React components, use `.github/CODEOWNERS` to find the package owner. CODEOWNERS often lists a team (`@microsoft/cxe-prg`, `@microsoft/cxe-red`); teams can't be assigned to issues, so leave the assignee blank and surface the team for the user to route.
+For v8 and v9 React components, use `.github/CODEOWNERS` to find the package owner. CODEOWNERS often lists a team (`@microsoft/cxe-prg`); teams can't be assigned to issues, so leave the assignee blank and surface the team for the user to route.
 
 ## Version-support matrix
 

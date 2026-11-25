@@ -10,7 +10,6 @@ import {
   useControllableState,
   useEventCallback,
   useId,
-  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
   useTimeout,
@@ -22,6 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
+import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -90,45 +90,30 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  const onToggle = useEventCallback((event: Event) => {
-    if ((event as ToggleEvent).newState === 'closed') {
-      setVisible(undefined, { visible: false });
-    }
+  // Rendered while hidden, so `aria-labelledby` / `aria-describedby` resolve.
+  const alwaysRendered =
+    relationship === 'description' || (relationship === 'label' && typeof state.content.children !== 'string');
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible, unmountOnClose: !alwaysRendered });
+  state.shouldRenderTooltip = shouldRender;
+
+  // Without `hint` support it acts as `manual`, so it never closes an open `auto` popover.
+  useLayerOpenState(contentRef, {
+    open: visible,
+    mode: 'hint',
+    onOpenChange: nextOpen => {
+      if (!nextOpen) {
+        setVisible(undefined, { visible: false });
+      }
+    },
   });
 
-  // Keep the tooltip in sync with the state when it is changed programmatically.
-  // Also sync React state when the browser auto-dismisses the hint popover (click outside, Escape).
-  useIsomorphicLayoutEffect(() => {
-    const el = contentRef.current;
-    if (!el) {
-      return;
-    }
-
-    el.addEventListener('toggle', onToggle);
-
-    try {
-      if (visible) {
-        el.showPopover();
-      } else if (el.matches(':popover-open')) {
-        el.hidePopover();
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          [
-            'Popover API is not supported in this browser, and the tooltip will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
-          ].join(' '),
-          { error },
-        );
-      }
-    }
-
-    return () => {
-      el.removeEventListener('toggle', onToggle);
-    };
-  }, [contentRef, visible, setVisible, onToggle]);
+  // The content never takes focus: listen on the document, ahead of an enclosing DialogSurface.
+  useLayerEscape(contentRef, {
+    open: visible,
+    listen: 'document',
+    when: 'always',
+    onEscape: () => setVisible(undefined, { visible: false }),
+  });
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
@@ -204,6 +189,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
   );
 
+  const onPointerUpTrigger = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement>) => {
+      setVisible(ev, { visible: false });
+    },
+    [setVisible],
+  );
+
   // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
   // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
   // eslint-disable-next-line react-hooks/immutability
@@ -214,6 +206,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
+  // eslint-disable-next-line react-hooks/immutability
+  state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
   const child = getTriggerChild(children);
 
@@ -228,15 +222,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       triggerAriaProps['aria-label'] = state.content.children;
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-      // eslint-disable-next-line react-hooks/immutability
-      state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     triggerAriaProps['aria-describedby'] = state.content.id;
-    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-    // eslint-disable-next-line react-hooks/immutability
-    state.shouldRenderTooltip = true;
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
@@ -265,6 +253,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
     // eslint-disable-next-line react-hooks/refs
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
+    onPointerUp: useEventCallback(mergeCallbacks(child?.props?.onPointerUp, onPointerUpTrigger)),
   });
 
   return state;

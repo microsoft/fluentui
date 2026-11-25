@@ -8,6 +8,7 @@ describe('CompoundButton', () => {
   isConformant({
     Component: CompoundButton,
     displayName: 'CompoundButton',
+    requiredProps: { children: 'Action' },
   });
 
   it('renders a button with primary and secondary text in its accessible name', () => {
@@ -71,6 +72,23 @@ describe('CompoundButton', () => {
 
     expect(button.firstElementChild).toBe(container.querySelector(`.${first}`));
     expect(button.lastElementChild).toBe(container.querySelector(`.${last}`));
+    expect(button).toHaveAttribute('data-icon-position', iconPosition);
+  });
+
+  it('defaults the icon position attribute to before', () => {
+    const { getByRole } = render(<CompoundButton icon="Icon">Primary</CompoundButton>);
+
+    expect(getByRole('button')).toHaveAttribute('data-icon-position', 'before');
+  });
+
+  it.each([undefined, null])('omits the icon position attribute when the icon is %s', icon => {
+    const { getByRole } = render(
+      <CompoundButton icon={icon} iconPosition="after">
+        Primary
+      </CompoundButton>,
+    );
+
+    expect(getByRole('button')).not.toHaveAttribute('data-icon-position');
   });
 
   it('renders secondary content without primary content', () => {
@@ -195,6 +213,7 @@ describe('CompoundButton', () => {
           data-disabled="consumer"
           data-disabled-focusable="consumer"
           data-icon-only="consumer"
+          data-icon-position="consumer"
         />
         <CompoundButton secondaryContent="Secondary" data-has-secondary-content="consumer">
           Primary
@@ -207,6 +226,7 @@ describe('CompoundButton', () => {
     expect(button).toHaveAttribute('data-disabled', '');
     expect(button).toHaveAttribute('data-disabled-focusable', '');
     expect(button).toHaveAttribute('data-icon-only', '');
+    expect(button).toHaveAttribute('data-icon-position', 'before');
     expect(buttonWithSecondaryContent).toHaveAttribute('data-has-secondary-content', '');
   });
 
@@ -216,6 +236,7 @@ describe('CompoundButton', () => {
         data-disabled="consumer"
         data-disabled-focusable="consumer"
         data-icon-only="consumer"
+        data-icon-position="consumer"
         data-has-secondary-content="consumer"
       >
         Primary
@@ -226,6 +247,7 @@ describe('CompoundButton', () => {
     expect(button).not.toHaveAttribute('data-disabled');
     expect(button).not.toHaveAttribute('data-disabled-focusable');
     expect(button).not.toHaveAttribute('data-icon-only');
+    expect(button).not.toHaveAttribute('data-icon-position');
     expect(button).not.toHaveAttribute('data-has-secondary-content');
   });
 });

@@ -2,6 +2,8 @@ export { InteractionTag } from './InteractionTag';
 export { renderInteractionTag } from './renderInteractionTag';
 export { useInteractionTag } from './useInteractionTag';
 export { useInteractionTagContextValues } from './useInteractionTagContextValues';
+export { useInteractionTagContext } from './interactionTagContext';
+export type { InteractionTagContextValue } from './interactionTagContext';
 export type {
   InteractionTagSlots,
   InteractionTagProps,

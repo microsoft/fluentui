@@ -171,11 +171,11 @@ const useStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid transparent`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid transparent`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -215,9 +215,8 @@ const useIconStyles = makeStyles({
     gridColumnStart: 'icon',
     gridColumnEnd: 'end',
 
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
+    // Block display avoids inline baseline space for both icon renderers.
+    '& svg, & .fui-Icon-font': {
       display: 'block',
     },
   },

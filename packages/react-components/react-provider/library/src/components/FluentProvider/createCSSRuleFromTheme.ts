@@ -1,19 +1,41 @@
 import type { PartialTheme } from '@fluentui/react-theme';
 
-const CSS_ESCAPE_MAP = {
+const CSS_ESCAPE_MAP: Record<string, string> = {
+  '\\': '\\5C ',
   '<': '\\3C ',
   '>': '\\3E ',
+  '{': '\\7B ',
+  '}': '\\7D ',
+  ';': '\\3B ',
 };
+const CSS_ESCAPE_PATTERN = /[\\<>{};]/g;
+
+function escapeCharacter(character: string): string {
+  return `\\${character.charCodeAt(0).toString(16).toUpperCase()} `;
+}
+
+function escapeSelector(value: string): string {
+  // Consume whole backslash runs so escaping preserves their parity and does not retry overlapping suffixes.
+  return value.replace(/\\+[<{}]?|[<{}]/g, match => {
+    const character = match[match.length - 1];
+    if (!'<{}'.includes(character)) {
+      return match;
+    }
+
+    const backslashes = match.length - 1;
+    return match.slice(0, backslashes - (backslashes % 2)) + escapeCharacter(character);
+  });
+}
+
 /**
- * Escapes characters that could break out of a <style> tag during SSR.
+ * Escapes characters that could end the declaration, the rule or the surrounding <style> tag.
  *
- * IMPORTANT: Do not strip quotes. Theme values legitimately include quoted font families and other CSS.
- * We only need to ensure the generated text cannot terminate the style tag and inject HTML.
+ * Backslashes are escaped too, so a value cannot escape the declaration separator that follows it.
+ * Other characters, including quotes and parentheses, are kept as-is: theme values legitimately contain quoted
+ * font families and nested CSS functions such as `oklch(from var(--token) l c h / 0.5)`.
  */
-function escapeForStyleTag(value: string): string {
-  // Escape as CSS code points so the resulting CSS still represents the same characters.
-  // Using CSS escapes prevents the HTML parser from seeing a literal '<' / '>' and closing <style>.
-  return value.replace(/[<>]/g, match => CSS_ESCAPE_MAP[match as keyof typeof CSS_ESCAPE_MAP]);
+function escapeThemeText(value: string): string {
+  return value.replace(CSS_ESCAPE_PATTERN, match => CSS_ESCAPE_MAP[match]);
 }
 
 /**
@@ -22,14 +44,20 @@ function escapeForStyleTag(value: string): string {
  * Useful for scenarios when you want to apply theming statically to a top level elements like `body`.
  */
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
-  const escapedSelector = escapeForStyleTag(selector);
+  const escapedSelector = escapeSelector(selector);
 
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      return `${cssVarRule}--${cssVar}: ${theme[cssVar]}; `;
+      const tokenValue: unknown = theme[cssVar];
+      // Skip unset values (e.g. `undefined` from a nested provider) so they don't shadow inherited tokens.
+      if (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) {
+        return cssVarRule;
+      }
+
+      return `${cssVarRule}--${escapeThemeText(cssVar)}: ${escapeThemeText(String(tokenValue))}; `;
     }, '');
 
-    return `${escapedSelector} { ${escapeForStyleTag(cssVarsAsString)} }`;
+    return `${escapedSelector} { ${cssVarsAsString} }`;
   }
 
   return `${escapedSelector} {}`;

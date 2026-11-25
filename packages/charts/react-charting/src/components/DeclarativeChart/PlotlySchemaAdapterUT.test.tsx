@@ -19,10 +19,12 @@ import {
   getAllupLegendsProps,
   isNonPlotType,
   getGridProperties,
+  getAxisObjects,
   _getGaugeAxisColor,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
+  normalizeObjectArrayForGVBC,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
 } from './PlotlySchemaAdapter';
@@ -214,6 +216,33 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test('transformPlotlyJsonToDonutProps - treats prototype field names as ordinary legends', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'pie',
+          labels: ['__proto__', 'constructor', 'prototype'],
+          values: [30, 20, 10],
+        },
+      ],
+      layout: {},
+    };
+
+    const objectConstructor = Object as unknown as Record<string, unknown>;
+    expect(objectConstructor.data).toBeUndefined();
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+    expect(result.data?.chartData).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ legend: '__proto__', data: 30 }),
+        expect.objectContaining({ legend: 'constructor', data: 20 }),
+        expect.objectContaining({ legend: 'prototype', data: 10 }),
+      ]),
+    );
+    expect(objectConstructor.data).toBeUndefined();
+  });
+
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
     expect(
@@ -237,6 +266,37 @@ describe('transform Plotly Json To chart Props', () => {
     expect(
       transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test('normalizeObjectArrayForGVBC - treats prototype field names as ordinary properties', () => {
+    const data = JSON.parse('{"__proto__":7,"constructor":8,"prototype":9,"nested":{"__proto__":10}}') as Record<
+      string,
+      unknown
+    >;
+
+    const result = normalizeObjectArrayForGVBC([data]);
+
+    expect(result.traces).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: '__proto__', y: [7] }),
+        expect.objectContaining({ name: 'constructor', y: [8] }),
+        expect.objectContaining({ name: 'prototype', y: [9] }),
+        expect.objectContaining({ name: 'nested.__proto__', y: [10] }),
+      ]),
+    );
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
+  });
+
+  test('normalizeObjectArrayForGVBC - creates null-prototype intermediate dictionaries', () => {
+    const createSpy = jest.spyOn(Object, 'create');
+
+    try {
+      normalizeObjectArrayForGVBC([{ value: 1 }]);
+
+      expect(createSpy).toHaveBeenCalledWith(null);
+    } finally {
+      createSpy.mockRestore();
+    }
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
@@ -1616,6 +1676,18 @@ describe('getAllupLegendsProps', () => {
 });
 
 describe('getGridProperties', () => {
+  test('Should create a null-prototype annotations dictionary', () => {
+    const createSpy = jest.spyOn(Object, 'create');
+
+    try {
+      getGridProperties(undefined, false, []);
+
+      expect(createSpy).toHaveBeenCalledWith(null);
+    } finally {
+      createSpy.mockRestore();
+    }
+  });
+
   test('Should return default grid properties for single plot', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const schema: any = {
@@ -1765,6 +1837,29 @@ describe('getGridProperties', () => {
     const traceInfo: any = [{ type: 'line', index: 0 }];
 
     expect(() => getGridProperties(invalidAxisSchema, true, traceInfo)).not.toThrow();
+  });
+});
+
+describe('getAxisObjects', () => {
+  test('Should return selected axes in a null-prototype dictionary', () => {
+    const data = [
+      { type: 'scatter', xaxis: 'x2', yaxis: 'y3', x: [1], y: [2] },
+      { type: 'scatter', xaxis: 'x2', yaxis: 'y2', x: [1], y: [3] },
+    ] as PlotlySchema['data'];
+    const layout = {
+      xaxis2: { type: 'log' as const },
+      yaxis2: { type: 'linear' as const },
+      yaxis3: { type: 'log' as const },
+    };
+
+    const result = getAxisObjects(data, layout);
+
+    expect(Object.getPrototypeOf(result)).toBeNull();
+    expect(result).toEqual({
+      x: { type: 'log', _id: 'x2' },
+      y: { type: 'linear', _id: 'y2' },
+      y2: { type: 'log', _id: 'y3' },
+    });
   });
 });
 

@@ -8,6 +8,7 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
+    requiredProps: { 'aria-label': 'Text' },
   });
 
   it('renders a default state', () => {
@@ -28,5 +29,17 @@ describe('Textarea', () => {
 
     expect(root).toHaveAttribute('data-invalid', '');
     expect(textarea).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('renders with data-readonly when read-only', () => {
+    const { container } = render(<Textarea readOnly />);
+
+    expect(container.firstElementChild!).toHaveAttribute('data-readonly');
+  });
+
+  it('does not render data-readonly by default', () => {
+    const { container } = render(<Textarea />);
+
+    expect(container.firstElementChild!).not.toHaveAttribute('data-readonly');
   });
 });

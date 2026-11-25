@@ -7,6 +7,10 @@ describe('ColorArea', () => {
   isConformant({
     Component: ColorArea,
     displayName: 'ColorArea',
+    requiredProps: {
+      inputX: { 'aria-label': 'Saturation' },
+      inputY: { 'aria-label': 'Value' },
+    },
     disabledTests: ['has-top-level-file-extra'],
   });
 
@@ -21,5 +25,6 @@ describe('ColorArea', () => {
 
     expect(screen.getByRole('slider', { name: 'Saturation' })).toHaveValue('40');
     expect(screen.getByRole('slider', { name: 'Value' })).toHaveValue('80');
+    expect(screen.getByRole('slider', { name: 'Value' })).toHaveAttribute('aria-orientation', 'vertical');
   });
 });

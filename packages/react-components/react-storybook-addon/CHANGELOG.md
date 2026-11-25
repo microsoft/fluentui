@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 30 Jun 2026 10:28:26 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 21 Sep 2026 15:07:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.2)
+
+Mon, 21 Sep 2026 15:07:55 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.7.1..@fluentui/react-storybook-addon_v0.7.2)
+
+### Patches
+
+- fix: render the primary story only once on docs pages ([PR #36658](https://github.com/microsoft/fluentui/pull/36658) by dmytrokirpa@microsoft.com)
+- Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.1)
 

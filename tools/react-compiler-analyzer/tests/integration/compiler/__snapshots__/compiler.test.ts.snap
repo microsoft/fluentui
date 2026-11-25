@@ -1,0 +1,1560 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-control: computed-member-control 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: computed-member-mutation-control 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          4,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          4,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-key: computed-template-key 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: computed-template-mutation 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          4,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          4,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) declare-field: declare-field 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          3,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          3,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) export-assignment: export-assignment 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) exported-overload: exported-overload 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [
+    Object {
+      "backend": "babel",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "babel",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "swc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "swc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+  ],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: exported-overload-gated 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "useSample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample_optimized",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "useSample_unoptimized",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [
+    Object {
+      "backend": "babel",
+      "cacheCalls": Array [],
+      "callable": false,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample_unoptimized",
+      ],
+      "gateCalls": Array [
+        false,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample_unoptimized",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [],
+    },
+    Object {
+      "backend": "babel",
+      "cacheCalls": Array [],
+      "callable": false,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample_unoptimized",
+      ],
+      "gateCalls": Array [
+        true,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample_unoptimized",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [],
+    },
+    Object {
+      "backend": "swc",
+      "cacheCalls": Array [],
+      "callable": true,
+      "enabled": false,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [
+        false,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+    Object {
+      "backend": "swc",
+      "cacheCalls": Array [
+        2,
+        2,
+      ],
+      "callable": true,
+      "enabled": true,
+      "error": null,
+      "exportNames": Array [
+        "useSample",
+      ],
+      "gateCalls": Array [
+        true,
+      ],
+      "implementations": Array [
+        Object {
+          "name": "useSample",
+          "results": Array [
+            Object {
+              "value": 5,
+            },
+            Object {
+              "value": 11,
+            },
+          ],
+        },
+      ],
+      "results": Array [
+        Object {
+          "value": 5,
+        },
+        Object {
+          "value": 11,
+        },
+      ],
+    },
+  ],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": "useSample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "unknown",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) hidden-selector: hidden-selector 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [
+      "hidden-selector-hook",
+    ],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          1,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [
+          Object {
+            "cacheGuarded": true,
+            "name": "store.use.selected",
+          },
+        ],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          1,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [
+          Object {
+            "cacheGuarded": true,
+            "name": "store.use.selected",
+          },
+        ],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) import-assignment: import-assignment 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) invalid-hooks: invalid-hooks 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "invalid",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) malformed-suppression: malformed-suppression 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "malformed",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: misplaced-suppression 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "misplaced",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) module-opt-out: module-opt-out 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) namespace: namespace 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) positive: positive 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "not-applicable",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: recognized-selector-control 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [
+          Object {
+            "cacheGuarded": false,
+            "name": "useSelected",
+          },
+        ],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          2,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [
+          Object {
+            "cacheGuarded": false,
+            "name": "useSelected",
+          },
+        ],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: suppressed-invalid-hooks 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "invalid",
+  "runtime": Array [],
+  "suppression": "valid-invalid-hook",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: unknown-rule-suppression 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "unknown-rule",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: unnecessary-suppression 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileError",
+        "name": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "zero",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "valid-unnecessary",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;
+
+exports[`compiler integration (bounded behavior, not parity) valid-hooks: valid-hooks 1`] = `
+Object {
+  "analyzer": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "risks": Array [],
+  },
+  "babel": Object {
+    "diagnostics": Array [],
+    "error": null,
+    "events": Array [
+      Object {
+        "kind": "CompileSuccess",
+        "name": "Sample",
+        "reason": null,
+      },
+    ],
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+  "hookValidity": "valid",
+  "runtime": Array [],
+  "suppression": "absent",
+  "swc": Object {
+    "acceptance": "unavailable",
+    "diagnostics": Array [],
+    "error": null,
+    "outputFunctions": Array [
+      Object {
+        "cacheSlots": Array [
+          5,
+        ],
+        "name": "Sample",
+        "selectorCalls": Array [],
+      },
+      Object {
+        "cacheSlots": Array [],
+        "name": null,
+        "selectorCalls": Array [],
+      },
+    ],
+    "targetCacheEvidence": "positive",
+  },
+}
+`;

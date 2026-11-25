@@ -7,6 +7,7 @@ describe('Button', () => {
   isConformant({
     Component: Button,
     displayName: 'Button',
+    requiredProps: { children: 'Button' },
   });
 
   it('renders a default state', () => {

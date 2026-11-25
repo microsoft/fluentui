@@ -1,5 +1,7 @@
 import { renderStatic } from './server';
 import { mergeCssSets } from './mergeStyleSets';
+import { keyframes } from './keyframes';
+import { Stylesheet } from './Stylesheet';
 
 describe('staticRender', () => {
   it('can render content', () => {
@@ -51,5 +53,87 @@ describe('staticRender', () => {
 
     expect(css).not.toContain('</style');
     expect(css).not.toContain('<script');
+  });
+
+  it('contains style element terminators in structural CSS positions', () => {
+    const { css } = renderStatic(() => {
+      mergeCssSets([
+        {
+          root: {
+            selectors: {
+              '&</STYLE>.selector-sentinel': { color: 'red' },
+            },
+            'color</style>-property-sentinel': 'red',
+            '--custom</StYlE>-property-sentinel': 'value',
+          },
+        },
+      ]);
+      keyframes({
+        '50%</sTyLe>.keyframe-sentinel': { opacity: 0.5 },
+      });
+
+      return '';
+    });
+
+    expect(css).not.toMatch(/<\/style/i);
+    expect(css).toMatchInlineSnapshot(
+      `"@keyframes css-1{50%\\\\3C /sTyLe>.keyframe-sentinel{opacity:0.5;}}.root-0{color\\\\3C /style>-property-sentinel:red;--custom\\\\3C /StYlE>-property-sentinel:value;}.root-0\\\\3C /STYLE>.selector-sentinel{color:red;}@keyframes css-1{50%\\\\3C /sTyLe>.keyframe-sentinel{opacity:0.5;}}"`,
+    );
+  });
+
+  it('preserves valid structural CSS syntax', () => {
+    const { css } = renderStatic(() => {
+      mergeCssSets([
+        {
+          root: {
+            '--custom-property': 'value',
+            selectors: {
+              '& > .child': { color: 'red' },
+              '@media (width < 1000px)': { color: 'blue' },
+            },
+          },
+        },
+      ]);
+      keyframes({
+        from: { opacity: 0 },
+        '50%': { opacity: 0.5 },
+        to: { opacity: 1 },
+      });
+
+      return '';
+    });
+
+    expect(css).toContain(' > .child');
+    expect(css).toContain('@media (width < 1000px)');
+    expect(css).toContain('--custom-property:value;');
+    expect(css).toContain('from{opacity:0;}50%{opacity:0.5;}to{opacity:1;}');
+  });
+
+  it('preserves odd and even backslash escape parity in raw server-rendered rules', () => {
+    const stylesheet = Stylesheet.getInstance();
+    const backslash = '\\';
+
+    stylesheet.insertRule(`.odd{content:"${backslash}</StYlE>"}`);
+    stylesheet.insertRule(`.even{content:"${backslash}${backslash}</style>"}`);
+
+    const css = stylesheet.getRules();
+
+    expect(css).not.toMatch(/<\/style/i);
+    expect(css).toContain(`.odd{content:"${backslash}3C /StYlE>"}`);
+    expect(css).toContain(`.even{content:"${backslash}${backslash}${backslash}3C /style>"}`);
+  });
+
+  it('contains a terminator after a long backslash run in raw server-rendered rules', () => {
+    const stylesheet = Stylesheet.getInstance();
+    const backslashes = new Array(20001).join('\\');
+
+    stylesheet.insertRule(`.nonmatching{content:"${backslashes}x"}`);
+    stylesheet.insertRule(`.matching{content:"${backslashes}</style>"}`);
+
+    const css = stylesheet.getRules();
+
+    expect(css).toContain(`.nonmatching{content:"${backslashes}x"}`);
+    expect(css).toContain(`.matching{content:"${backslashes}\\3C /style>"}`);
+    expect(css).not.toMatch(/<\/style/i);
   });
 });

@@ -7,7 +7,7 @@ export { Action } from './Action.stories';
 export { Actionable } from './Actionable.stories';
 export { Header } from './Header.stories';
 export { Description } from './Description.stories';
-export { Icon } from './Icon.stories';
+export { Icon, FixedSizeIcon, TypographyOverrides } from './Icon.stories';
 export { Progress } from './Progress.stories';
 
 export default {

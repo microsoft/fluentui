@@ -4,7 +4,12 @@ import { isConformant } from '../../../testing/isConformant';
 import { EmptySwatch } from './EmptySwatch';
 
 describe('EmptySwatch', () => {
-  isConformant({ Component: EmptySwatch, displayName: 'EmptySwatch', disabledTests: ['has-top-level-file-extra'] });
+  isConformant({
+    Component: EmptySwatch,
+    displayName: 'EmptySwatch',
+    requiredProps: { 'aria-label': 'Empty' },
+    disabledTests: ['has-top-level-file-extra'],
+  });
 
   it('renders a native radio swatch with state attributes', () => {
     const swatch = render(<EmptySwatch aria-label="Empty" disabled />).getByRole('radio');

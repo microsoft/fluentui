@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { Tooltip } from './Tooltip';
+import { useTooltip } from './useTooltip';
+import { renderTooltip } from './renderTooltip';
+import type { TooltipProps } from './Tooltip.types';
 
 export const getTooltipElement: IsConformantOptions['getTargetElement'] = () => {
   return screen.queryByRole('tooltip') as HTMLElement;
@@ -111,6 +114,26 @@ describe('Tooltip', () => {
     expect(screen.getByRole('tooltip').querySelector('[data-arrow]')).not.toBeNull();
   });
 
+  // Regression test for https://github.com/microsoft/fluentui/issues/36650 — renderTooltip dropped
+  // state.arrowClassName, so a styled layer setting it between useTooltip and renderTooltip never
+  // reached the arrow element.
+  it('applies state.arrowClassName to the arrow element', () => {
+    const StyledTooltip = (props: TooltipProps) => {
+      const state = useTooltip(props);
+      state.arrowClassName = 'custom-arrow-class';
+      return renderTooltip(state);
+    };
+
+    render(
+      <StyledTooltip content="Styled arrow tooltip" relationship="label" visible withArrow>
+        <button>Trigger</button>
+      </StyledTooltip>,
+    );
+
+    const arrow = screen.getByRole('tooltip').querySelector('[data-arrow]');
+    expect(arrow).toHaveClass('custom-arrow-class');
+  });
+
   it('does not render arrow element when withArrow is false', () => {
     render(
       <Tooltip content="No arrow tooltip" relationship="label" visible>
@@ -168,5 +191,28 @@ describe('Tooltip', () => {
     const target = screen.getByRole('button');
     expect(target).not.toHaveAttribute('aria-description');
     expect(target).toHaveAttribute('aria-describedby', 'test-describedby');
+  });
+
+  it.each([
+    ['hint', 'supported'],
+    ['manual', 'unsupported'],
+  ])('takes Escape before an enclosing layer when popover reads back as %s (hint %s)', popover => {
+    const onVisibleChange = jest.fn();
+    const onOuterKeyDown = jest.fn((event: React.KeyboardEvent) => event.isDefaultPrevented());
+    render(
+      <div onKeyDown={onOuterKeyDown}>
+        <Tooltip content="Description tooltip" relationship="description" visible onVisibleChange={onVisibleChange}>
+          <button>Trigger</button>
+        </Tooltip>
+      </div>,
+    );
+    Object.defineProperty(screen.getByRole('tooltip'), 'popover', { value: popover });
+
+    const notCancelled = fireEvent.keyDown(screen.getByRole('button'), { key: 'Escape' });
+
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, { visible: false });
+    expect(notCancelled).toBe(false);
+    // Prevented, not stopped: the page still sees it, and enclosing layers skip it.
+    expect(onOuterKeyDown).toHaveReturnedWith(true);
   });
 });

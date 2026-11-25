@@ -5,7 +5,7 @@
   "description": "Overlay declaring which members of the live GitHub team roster are eligible for automatic review assignment, and which areas each one owns. See README.md.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "team", "settings", "areas", "reviewers"],
+  "required": ["version", "repo", "queues", "team", "settings", "areas", "reviewers"],
   "properties": {
     "$schema": {
       "type": "string",
@@ -15,6 +15,18 @@
       "type": "integer",
       "minimum": 1,
       "description": "Config format version."
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+      "description": "Repository that owns the PR queue, independent of the roster team."
+    },
+    "queues": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+      "description": "Teams currently requested to review a PR. Only open, non-draft PRs with a still-pending team review request are included; previously requested teams whose request was completed or removed are not."
     },
     "team": {
       "type": "object",

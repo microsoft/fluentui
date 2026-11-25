@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-utilities
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 24 Nov 2026 12:44:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.27.1)
+
+Tue, 24 Nov 2026 12:44:28 GMT
+
+### Patches
+
+- perf: store native element prop allow-lists as compact strings to reduce bundle size ([PR #37186](https://github.com/microsoft/fluentui/pull/37186) by dmytrokirpa@microsoft.com)
+- chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix ([PR #37159](https://github.com/microsoft/fluentui/pull/37159) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.10 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.27.0)
+
+Mon, 19 Oct 2026 16:49:00 GMT
+
+### Minor changes
+
+- feat: add getPercentInRange helper ([PR #36889](https://github.com/microsoft/fluentui/pull/36889) by vgenaev@gmail.com)
+
+### Patches
+
+- fix: handle special property names when filtering native props ([PR #36806](https://github.com/microsoft/fluentui/pull/36806) by paliprandi@microsoft.com)
+
+## [9.26.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.7)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.6..@fluentui/react-utilities_v9.26.7)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- fix: Add loading to img element property whitelist ([PR #36639](https://github.com/microsoft/fluentui/pull/36639) by 84954628+lukiod@users.noreply.github.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.26.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.6)
 

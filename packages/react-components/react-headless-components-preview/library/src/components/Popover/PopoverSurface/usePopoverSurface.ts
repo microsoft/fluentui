@@ -11,7 +11,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
  */
 export const usePopoverSurface = (
   props: PopoverSurfaceProps,
-  ref: React.Ref<HTMLDialogElement>,
+  ref: React.Ref<HTMLDialogElement | HTMLDivElement>,
 ): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
@@ -21,7 +21,16 @@ export const usePopoverSurface = (
   const open = usePopoverContext(context => context.open);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
+  const inertTrapFocus = usePopoverContext(context => context.inertTrapFocus);
+
+  if (process.env.NODE_ENV !== 'production' && inertTrapFocus && props.as === 'div') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      '@fluentui/react-headless-components-preview [PopoverSurface]: ' +
+        '`as="div"` is incompatible with `Popover inertTrapFocus`. ' +
+        'Use the default `dialog` element when focus trapping is enabled.',
+    );
+  }
 
   const state: PopoverSurfaceState = {
     withArrow,
@@ -29,29 +38,32 @@ export const usePopoverSurface = (
     components: { root: 'dialog' },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDialogElement>,
-        role: trapFocus ? 'dialog' : 'group',
+        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
+        role: inertTrapFocus ? 'dialog' : 'group',
         ...props,
         id: surfaceId,
-        popover: trapFocus ? undefined : 'auto',
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),
       },
-      { elementType: 'dialog' },
-    ),
-    'data-open': open ? 'true' : 'false',
+      {
+        defaultProps: {
+          popover: inertTrapFocus ? undefined : 'auto',
+        },
+        elementType: 'dialog',
+      },
+    ) as PopoverSurfaceState['root'],
   };
 
   const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
 
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
+  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
     onMouseEnterOriginal?.(e);
   });
 
-  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
+  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }

@@ -2,7 +2,6 @@ import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { AccordionItem as FluentAccordionItem } from './accordion-item.js';
-import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 type Story = StoryObj<FluentAccordionItem>;
 const { argTypes } = getStorybookHelpers<FluentAccordionItem>('fluent-accordion-item');
@@ -10,7 +9,7 @@ const { argTypes } = getStorybookHelpers<FluentAccordionItem>('fluent-accordion-
 const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
   <fluent-accordion-item
     heading-level="${story => story.headinglevel}"
-    marker-position="${story => story.markerPosition}"
+    marker-position="${story => story['marker-position']}"
     size="${story => story.size}"
     ?disabled="${story => story.disabled}"
     ?expanded="${story => story.expanded}"

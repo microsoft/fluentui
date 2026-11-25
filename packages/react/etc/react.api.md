@@ -6553,6 +6553,13 @@ export type IItemGroupedItem = {
     itemIndex: number;
 };
 
+// @public
+export interface IKeytipActivationBehavior {
+    consecutiveActivationBehavior?: 'toggle' | 'exitAndPassThrough';
+    consumeActivationEvent?: boolean;
+    unmatchedInputBehavior?: 'ignore' | 'exitAndPassThrough';
+}
+
 // @public (undocumented)
 export interface IKeytipConfig {
     // (undocumented)
@@ -6589,6 +6596,8 @@ export interface IKeytipLayer {
 export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer> {
     componentRef?: IRefObject<IKeytipLayer>;
     content: string;
+    enabled?: boolean;
+    keytipActivationBehavior?: IKeytipActivationBehavior;
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
@@ -9824,6 +9833,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(prevProps: IKeytipLayerProps): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     context: any;
@@ -9837,7 +9848,7 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     //
     // (undocumented)
     getKeytipTree(): KeytipTree;
-    processInput(key: string, ev?: React_2.KeyboardEvent<HTMLElement>): void;
+    processInput(key: string, ev?: React_2.KeyboardEvent<HTMLElement>): 'handled' | 'partial' | 'unmatched' | void;
     processTransitionInput(transitionKey: IKeytipTransitionKey, ev?: React_2.KeyboardEvent<HTMLElement>): void;
     // (undocumented)
     render(): JSXElement;

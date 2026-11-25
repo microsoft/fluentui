@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix",
+  "packageName": "@fluentui/react-conformance",
+  "email": "dmytrokirpa@microsoft.com"
+}

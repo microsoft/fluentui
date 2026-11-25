@@ -8,6 +8,7 @@ describe('SplitButton', () => {
   isConformant({
     Component: SplitButton,
     displayName: 'SplitButton',
+    requiredProps: { children: 'Action' },
   });
 
   it('renders both the primary action button and the menu button', () => {
