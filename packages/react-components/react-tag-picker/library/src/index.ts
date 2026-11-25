@@ -63,6 +63,7 @@ export {
   useTagPickerControlBase_unstable,
 } from './TagPickerControl';
 export type {
+  TagPickerControlBaseProps,
   TagPickerControlBaseState,
   TagPickerControlInternalSlots,
   TagPickerControlProps,

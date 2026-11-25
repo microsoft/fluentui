@@ -185,7 +185,11 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 };
 
 // @public
-export type TagPickerOptionState = OptionState & ComponentState<TagPickerOptionSlots>;
+export type TagPickerOptionState = OptionState & ComponentState<TagPickerOptionSlots> & {
+    root: {
+        'data-checked'?: string;
+    };
+};
 
 // @public (undocumented)
 export type TagPickerProps = Omit<TagPickerBaseProps, 'positioning'> & {

@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 04:08:53 GMT",
+      "version": "3.2.4",
+      "tag": "@fluentui/web-components_v3.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f67915833ad9ddcf03655133dd8d9c9f4806579",
+            "comment": "fix: remove disabled tabs from native focusgroup navigation when deselected"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2026 04:08:16 GMT",
+      "version": "3.2.3",
+      "tag": "@fluentui/web-components_v3.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c357c580035683d79ca2abb76ddd7d434d176dac",
+            "comment": "Recognize radio subclasses by element identity regardless of tag name and deprecate the tag-name-based isRadio helper."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Nov 2026 04:10:36 GMT",
+      "version": "3.2.2",
+      "tag": "@fluentui/web-components_v3.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f47ce10d3350bbe7c70c323b0009c3f53bbfcc64",
+            "comment": "refactor: move default attributes from template into connectedCallback while preserving consumer overrides"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 04:11:16 GMT",
       "version": "3.2.1",
       "tag": "@fluentui/web-components_v3.2.1",

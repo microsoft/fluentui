@@ -10,7 +10,7 @@ const { join, relative, sep } = require('node:path');
  * are mocked, Jest would otherwise treat every origin snapshot as obsolete and unlink it, racing between processes.
  */
 
-const originRoot = join(__dirname, '<%= relativePathToProjectRoot %>');
+const originRoot = join(__dirname, <%- JSON.stringify(relativePathToProjectRoot) %>);
 const snapshotsRoot = join(__dirname, 'snapshots');
 // Reversible segment encoding: `..` becomes `parentSegment`, and literal segments starting with `escapePrefix`
 // get one extra prefix, so a real `__rit_parent__` directory never decodes as a parent path.

@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
 import type {
   TeachingPopoverCarouselFooterProps,
@@ -9,20 +9,24 @@ import type {
 export const useTeachingPopoverCarouselFooter = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselFooterState => ({
-  components: {
-    root: 'div',
-    previous: TeachingPopoverCarouselFooterButton,
-    next: TeachingPopoverCarouselFooterButton,
-  },
-  root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
-  previous: slot.optional(props.previous, {
-    defaultProps: { navType: 'prev' },
-    renderByDefault: false,
-    elementType: TeachingPopoverCarouselFooterButton,
-  }),
-  next: slot.always(props.next, {
-    defaultProps: { navType: 'next' },
-    elementType: TeachingPopoverCarouselFooterButton,
-  }),
-});
+): TeachingPopoverCarouselFooterState => {
+  const { previous, next, ...rest } = props;
+
+  return {
+    components: {
+      root: 'div',
+      previous: TeachingPopoverCarouselFooterButton,
+      next: TeachingPopoverCarouselFooterButton,
+    },
+    root: slot.always({ ref, ...rest }, { elementType: 'div' }),
+    previous: slot.optional(previous, {
+      defaultProps: { navType: 'prev' },
+      renderByDefault: false,
+      elementType: TeachingPopoverCarouselFooterButton,
+    }),
+    next: slot.always(next, {
+      defaultProps: { navType: 'next' },
+      elementType: TeachingPopoverCarouselFooterButton,
+    }),
+  };
+};

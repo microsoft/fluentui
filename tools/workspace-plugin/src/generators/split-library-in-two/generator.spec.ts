@@ -222,7 +222,7 @@ describe('split-library-in-two generator', () => {
           "noEmit": true,
           "noUnusedLocals": true,
           "preserveConstEnums": true,
-          "target": "ES2019",
+          "target": "ES2020",
         },
         "extends": "../../../../tsconfig.base.json",
         "files": Array [],
@@ -243,7 +243,7 @@ describe('split-library-in-two generator', () => {
         "compilerOptions": Object {
           "inlineSources": true,
           "lib": Array [
-            "ES2019",
+            "ES2020",
             "dom",
           ],
           "outDir": "../../../../dist/out-tsc",
@@ -405,7 +405,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     tsConfig: {
       extends: '../../../tsconfig.base.json',
       compilerOptions: {
-        target: 'ES2019',
+        target: 'ES2020',
         noEmit: true,
         isolatedModules: true,
         importHelpers: true,

@@ -1,6 +1,5 @@
 import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import type { Radio } from '../radio/radio.js';
-import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
@@ -12,6 +11,14 @@ import { RadioGroupOrientation } from './radio-group.options.js';
  * @public
  */
 export class BaseRadioGroup extends FASTElement {
+  /**
+   * The element identity. This static property should NOT be overridden by subclasses. It is designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'radio-group';
+
   private isNavigating = false;
 
   /**
@@ -132,6 +139,14 @@ export class BaseRadioGroup extends FASTElement {
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }
 
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.hasAttribute('focusgroup')) {
+      this.setAttribute('focusgroup', 'radiogroup wrap');
+    }
+  }
+
   /**
    * The collection of all child radios.
    *
@@ -228,7 +243,9 @@ export class BaseRadioGroup extends FASTElement {
    */
   slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
     Updates.enqueue(() => {
-      this.radios = [...this.querySelectorAll('*')].filter((x): x is Radio => isRadio(x));
+      this.radios = [...this.querySelectorAll('*')].filter(
+        (x): x is Radio => 'elementIdentity' in x.constructor && x.constructor.elementIdentity === 'radio',
+      );
     });
   }
 

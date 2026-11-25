@@ -349,7 +349,7 @@ module.exports = [
       lib: {
         extends: './tsconfig.json',
         compilerOptions: {
-          lib: ['ES2019', 'dom'],
+          lib: ['ES2020', 'dom'],
           outDir: joinPathFragments(options.projectOffsetFromRoot.updated, 'dist/out-tsc'),
           inlineSources: true,
           types: ['static-assets', 'environment'],
