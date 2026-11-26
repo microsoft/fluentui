@@ -1,14 +1,8 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
-import {
-  Toolbar,
-  ToolbarProps,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  ToolbarGroup,
-} from '@fluentui/react-toolbar';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton, ToolbarGroup } from '@fluentui/react-toolbar';
 import {
   TextBold24Regular,
   TextItalic24Regular,
@@ -96,6 +90,23 @@ export const Vertical = (props: Partial<ToolbarProps>) => (
     />
   </Toolbar>
 );
+
+// The border shows the padding that each size adds around the controls of a vertical Toolbar.
+export const VerticalSizes = () => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+    {(['small', 'medium', 'large'] as const).map(size => (
+      <Toolbar key={size} vertical size={size} aria-label={`Vertical ${size}`} style={{ border: '2px solid black' }}>
+        <ToolbarButton aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />
+        <ToolbarButton aria-label="Text option - Italic" icon={<TextItalic24Regular />} />
+        <ToolbarButton aria-label="Text option - Underline" icon={<TextUnderline24Regular />} />
+      </Toolbar>
+    ))}
+  </div>
+);
+
+VerticalSizes.parameters = {
+  storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+} satisfies StoryParameters;
 
 export const Small = (props: Partial<ToolbarProps>) => (
   <Toolbar size="small">
