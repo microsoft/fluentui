@@ -27,6 +27,9 @@ for shared icon configuration.
 
 ## Writing Unit Tests
 
+The workspace Jest preset resolves TypeScript aliases from the repository root,
+independently of the working directory and each project's Jest `rootDir`.
+
 Tests live adjacent to the component they test:
 
 ```
