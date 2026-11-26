@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 
 function getFieldsets(node: HTMLElement): HTMLFieldSetElement[] {
   const fieldsets: HTMLFieldSetElement[] = [];
@@ -19,14 +19,11 @@ function getFieldsets(node: HTMLElement): HTMLFieldSetElement[] {
 export function useFieldsetRegistration<T extends HTMLElement>(
   register: (enabled: boolean, node: T) => (() => void) | undefined,
 ): React.RefCallback<T> {
-  const location = React.useRef<T | null>(null);
-  const [revision, refresh] = React.useReducer((value: number) => value + 1, 0);
-  const ref = React.useCallback((node: T | null) => {
-    if (location.current !== node) {
-      location.current = node;
-      refresh();
-    }
-  }, []);
+  // A new consumer ref can detach and reattach the same node in one commit. Key the subscription
+  // on the final node, not on how many times the merged ref was called.
+  const [committedNode, setNode] = React.useState<T | null>(null);
+  const location = useMergedRefs<T>(setNode);
+  const [fieldsetRevision, refresh] = React.useReducer((value: number) => value + 1, 0);
   useIsomorphicLayoutEffect(() => {
     // Read the committed ref even on the first pass, before the parent nav resolves autofocus.
     const node = location.current;
@@ -56,6 +53,6 @@ export function useFieldsetRegistration<T extends HTMLElement>(
       observer?.disconnect();
       unregister?.();
     };
-  }, [register, revision]);
-  return ref;
+  }, [location, committedNode, register, fieldsetRevision]);
+  return location;
 }

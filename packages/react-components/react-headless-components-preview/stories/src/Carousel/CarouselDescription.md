@@ -61,6 +61,11 @@ is hidden and inert in static mode and at a settled boundary. At that boundary a
 keeps the root's layout class and style. Use that descendant selector for positioning; a mounted ref alone
 does not mean the arrow is visible.
 
+`display: contents` removes a layout box, not the DOM parent. The owner of a disabled `fieldset` must render
+its first `legend` as a direct child to exempt controls inside it. Put the entire `CarouselPrevious` or
+`CarouselNext` inside that legend. A legend returned as a sibling of the forwarded root is not a direct child
+of the enclosing fieldset. A fieldset rendered inside the slot can have its own direct first legend.
+
 ## Selection and keyboard
 
 `groupSize` defaults to 1. `activeIndex` and `defaultActiveIndex` are zero-based **group** indices;

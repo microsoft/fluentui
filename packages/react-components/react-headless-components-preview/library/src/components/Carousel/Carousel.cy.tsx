@@ -363,6 +363,7 @@ describe('Carousel browser behavior', () => {
   });
 
   it('detects an inner fieldset inserted around the arrow root slot children', () => {
+    const showHelp = cy.stub();
     const renderRoot: SlotRenderFunction<React.ComponentPropsWithRef<'div'>> = (Component, props) => (
       <Component {...props}>
         <fieldset id="root-fieldset" disabled>
@@ -374,7 +375,14 @@ describe('Carousel browser behavior', () => {
       <Carousel aria-label="Lessons">
         <CarouselPrevious />
         <CarouselViewport>{['First', 'Second']}</CarouselViewport>
-        <CarouselNext>{renderRoot}</CarouselNext>
+        <fieldset disabled>
+          <legend>
+            Lessons
+            <button onClick={showHelp}>Navigation help</button>
+            <CarouselNext>{renderRoot}</CarouselNext>
+          </legend>
+          <button>Outside the first legend</button>
+        </fieldset>
       </Carousel>,
     );
     cy.get('#root-fieldset button').should('be.enabled').focus().realPress('Enter');
@@ -384,11 +392,46 @@ describe('Carousel browser behavior', () => {
     cy.get('#root-fieldset').then(([fieldset]) => fieldset.prepend(fieldset.ownerDocument.createElement('legend')));
     cy.contains('[data-carousel-page]', 'First').should('be.visible');
     cy.contains('[data-carousel-page]', 'Second').should('be.visible');
+    cy.contains('button', 'Navigation help').should('be.visible').and('be.enabled').focus().realPress('Enter');
+    cy.wrap(showHelp).should('have.been.calledOnce');
+    cy.contains('button', 'Outside the first legend').should('be.disabled');
     cy.get('#root-fieldset > legend')
       .first()
       .then(([legend]) => legend.remove());
     cy.get('[data-carousel-action="previous"]').focus().realPress('Enter');
     cy.contains('[data-carousel-page]', 'Second').should('not.be.visible');
+  });
+
+  it('navigates with inline callback refs that capture each tab in a nav-only template', () => {
+    const captured: (HTMLButtonElement | null)[] = [];
+    const Example = () => {
+      const tabs = React.useRef(captured);
+      return (
+        <Carousel aria-label="Lessons">
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNav>
+            {i => (
+              <CarouselNavButton
+                ref={node => {
+                  tabs.current[i] = node;
+                }}
+              />
+            )}
+          </CarouselNav>
+        </Carousel>
+      );
+    };
+    mount(<Example />);
+    cy.get('[role="tab"]')
+      .should('have.length', 2)
+      .then(elements => {
+        const nodes = Array.from(elements);
+        expect(captured).to.deep.equal(nodes);
+        cy.wrap(nodes[0]).focus().realPress('ArrowRight');
+        cy.contains('[role="tabpanel"]', 'Second').should('be.visible');
+        cy.wrap(nodes[1]).should('be.focused').and('have.attr', 'aria-selected', 'true');
+        cy.then(() => expect(captured).to.deep.equal(nodes));
+      });
   });
 
   it('keeps one custom trigger inert while static and honors autofocus only on its first reveal', () => {
