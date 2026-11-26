@@ -1,5 +1,6 @@
 import { createContext } from './createContext';
 import { useContextSelector } from './useContextSelector';
+import type { ContextValue } from './types';
 import { render, act } from '@testing-library/react';
 
 import * as React from 'react';
@@ -192,5 +193,83 @@ describe('useContextSelector', () => {
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(onUpdate).toHaveBeenCalledTimes(2);
+  });
+
+  describe('unsubscribe', () => {
+    const ListenersProbe = ({ onRender }: { onRender: (listeners: unknown[]) => void }) => {
+      const { listeners } = React.useContext(TestContext as unknown as React.Context<ContextValue<{ index: number }>>);
+      onRender(listeners);
+
+      return null;
+    };
+
+    const Consumers = (props: { indexes: number[]; onListeners: (listeners: unknown[]) => void }) => (
+      <TestProvider>
+        <ListenersProbe onRender={props.onListeners} />
+        {props.indexes.map(index => (
+          <div key={index} data-index={index}>
+            <TestComponent index={index} />
+          </div>
+        ))}
+      </TestProvider>
+    );
+
+    const getActiveIndexes = () =>
+      Array.from(document.querySelectorAll<HTMLElement>('[data-index]'))
+        .filter(element => element.querySelector<HTMLElement>('.test-component')?.dataset.active === 'true')
+        .map(element => Number(element.dataset.index));
+
+    it('removes listeners of unmounted consumers without shifting the remaining listeners', () => {
+      let listeners: unknown[] = [];
+      const allIndexes = Array.from({ length: 20 }, (_, index) => index + 1);
+      const { rerender } = render(<Consumers indexes={allIndexes} onListeners={value => (listeners = value)} />, {
+        container: container as HTMLElement,
+      });
+
+      expect(listeners).toHaveLength(20);
+
+      const spliceSpy = jest.spyOn(listeners, 'splice');
+      const indexOfSpy = jest.spyOn(listeners, 'indexOf');
+
+      rerender(<Consumers indexes={[2, 9, 20]} onListeners={value => (listeners = value)} />);
+
+      expect(spliceSpy).not.toHaveBeenCalled();
+      // Searches for removed listeners do not rescan the slots of previously removed listeners
+      const visited = indexOfSpy.mock.calls.reduce((total, [, fromIndex = 0], call) => {
+        const index = indexOfSpy.mock.results[call].value as number;
+        return total + (index === -1 ? 20 : index + 1) - fromIndex;
+      }, 0);
+      expect(visited).toBeLessThanOrEqual(2 * 20);
+
+      rerender(<Consumers indexes={[]} onListeners={value => (listeners = value)} />);
+
+      expect(listeners).toHaveLength(0);
+    });
+
+    it('keeps notifying remaining consumers after other consumers unmount', () => {
+      const allIndexes = Array.from({ length: 20 }, (_, index) => index + 1);
+      const { rerender } = render(<Consumers indexes={allIndexes} onListeners={() => undefined} />, {
+        container: container as HTMLElement,
+      });
+
+      rerender(<Consumers indexes={[2, 9, 20]} onListeners={() => undefined} />);
+      expect(getActiveIndexes()).toEqual([]);
+
+      for (let click = 1; click <= 20; click++) {
+        act(() => {
+          document.querySelector<HTMLElement>('.test-provider')?.click();
+        });
+
+        expect(getActiveIndexes()).toEqual([2, 9, 20].includes(click) ? [click] : []);
+      }
+
+      // Consumers mounted after removals are notified as well
+      rerender(<Consumers indexes={[2, 9, 20, 21]} onListeners={() => undefined} />);
+      act(() => {
+        document.querySelector<HTMLElement>('.test-provider')?.click();
+      });
+
+      expect(getActiveIndexes()).toEqual([21]);
+    });
   });
 });
