@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: enable interaction with line points without corresponding bars in VerticalBarChart",
+  "packageName": "@fluentui/react-charting",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

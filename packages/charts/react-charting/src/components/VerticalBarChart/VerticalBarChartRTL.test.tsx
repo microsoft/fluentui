@@ -893,6 +893,85 @@ describe('Vertical bar chart - Keyboard focus', () => {
   });
 });
 
+describe('Vertical bar chart - Line point of a bar that is not drawn', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The bar of Tue has no height, so it is not drawn.
+  const pointsWithEmptyBar: IVerticalBarChartDataPoint[] = [
+    { x: 'Mon', y: 20, legend: 'Rooms Mon', lineData: { y: 10 } },
+    { x: 'Tue', y: 0, legend: 'Rooms Tue', lineData: { y: 15 } },
+    { x: 'Wed', y: 30, legend: 'Rooms Wed', lineData: { y: 12 } },
+  ];
+  const calloutText = () => document.querySelector('.ms-Callout')?.textContent;
+
+  test('Should make the line point focusable when no legend is highlighted', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const [mon, tue, wed] = getById(container, /_VBC_point/i);
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('true');
+    expect(tue.getAttribute('role')).toBe('img');
+    expect(tue.getAttribute('aria-label')).toBe('Tue. Rooms Tue, 0. Target, 15.');
+    // An element with visibility: hidden cannot take focus.
+    expect(tue.getAttribute('visibility')).toBeNull();
+    expect(tue.getAttribute('opacity')).toBe('0');
+
+    // The line points of the bars that are drawn stay as they are.
+    [mon, wed].forEach(point => {
+      expect(point.getAttribute('data-is-focusable')).toBe('false');
+      expect(point.getAttribute('role')).toBeNull();
+      expect(point.getAttribute('visibility')).toBe('hidden');
+    });
+  });
+
+  test('Should show the callout of the x-axis point when the line point gets focus', async () => {
+    const { container } = render(
+      <VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" calloutProps={{ doNotLayer: true }} />,
+    );
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+
+    fireEvent.focus(getById(container, /_VBC_point/i)[1]);
+    await waitFor(() => expect(calloutText()).toContain('Rooms Tue'));
+    expect(calloutText()).toContain('Target');
+    // The line point is shown while it has focus.
+    expect(getById(container, /_VBC_point/i)[1].getAttribute('opacity')).toBe('1');
+  });
+
+  test('Should make the line point focusable when a negative bar is not drawn', async () => {
+    // Without supportNegativeData the bar of Tue is not drawn.
+    const points = pointsWithEmptyBar.map(point => (point.x === 'Tue' ? { ...point, y: -5 } : point));
+    const { container } = render(<VerticalBarChart data={points} lineLegendText="Target" />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('true');
+    expect(tue.getAttribute('aria-label')).toBe('Tue. Rooms Tue, -5. Target, 15.');
+  });
+
+  test('Should not make the line point focusable when a negative bar is drawn', async () => {
+    // With supportNegativeData the bar of Tue is drawn, so its callout shows the line value.
+    const points = pointsWithEmptyBar.map(point => (point.x === 'Tue' ? { ...point, y: -5 } : point));
+    const { container } = render(<VerticalBarChart data={points} lineLegendText="Target" supportNegativeData />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('false');
+    expect(tue.getAttribute('role')).toBeNull();
+    expect(tue.getAttribute('visibility')).toBe('hidden');
+  });
+
+  test('Should not make the line point focusable when the tooltip is hidden', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithEmptyBar} lineLegendText="Target" hideTooltip />);
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const tue = getById(container, /_VBC_point/i)[1];
+
+    expect(tue.getAttribute('data-is-focusable')).toBe('false');
+    expect(tue.getAttribute('role')).toBeNull();
+    expect(tue.getAttribute('visibility')).toBe('hidden');
+  });
+});
+
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

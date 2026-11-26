@@ -159,6 +159,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     yScaleSecondary?: any,
   ): React.ReactNode {
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
+    const { yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -226,6 +227,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       ) => {
         // Create an object to store line point ref so that the object can be passed by reference to the focus handler
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+        // When no legend is highlighted, the line value is shown in the callout of the bar at the same x-axis point.
+        // A bar that is not drawn has no such callout, so its line point is focusable in its place.
+        const standsInForBar = _noLegendHighlighted() && !props.hideTooltip && !_isBarDrawn(item.point, yBarScale);
+        const { radius, visibility } = _getCircleVisibilityAndRadius(item.x, lineLegendText!);
         return (
           <circle
             key={index}
@@ -238,22 +243,31 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
                 : _onBarHover(item.point, colorScale(item.y), event)
             }
             onMouseOut={_onBarLeave}
-            r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
+            r={radius}
             stroke={lineLegendColor}
             fill={tokens.colorNeutralBackground1}
             strokeWidth={3}
-            visibility={_getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
+            // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide a line point
+            // that stands in for a bar. For more information,
+            // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+            {...(standsInForBar ? { opacity: visibility === CircleVisbility.hide ? 0 : 1 } : { visibility })}
             onClick={item.point.lineData?.onClick}
             // When no legend is highlighted: Line points are automatically displayed along with the bars
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
-            data-is-focusable={_legendHighlighted(lineLegendText!)}
+            // The exception is a line point whose bar is not drawn.
+            data-is-focusable={_legendHighlighted(lineLegendText!) || standsInForBar}
+            {...(standsInForBar && { role: 'img', 'aria-label': _getAriaLabel(item.point) })}
             ref={e => {
               circleRef.refElement = e;
             }}
-            onFocus={event => _lineFocus(event, item.point, circleRef)}
+            onFocus={event =>
+              standsInForBar
+                ? _onBarFocus(event, item.point, colorScale(item.y))
+                : _lineFocus(event, item.point, circleRef)
+            }
             onBlur={_handleChartMouseLeave}
-            tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
+            tabIndex={_legendHighlighted(lineLegendText!) || standsInForBar ? 0 : undefined}
           />
         );
       },
@@ -500,14 +514,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _onBarFocus(
-    event: React.FocusEvent<SVGRectElement, Element>,
+    event: React.FocusEvent<SVGElement, Element>,
     point: VerticalBarChartDataPoint,
     color: string,
   ): void {
     let x = 0;
     let y = 0;
 
-    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    const targetRect = (event.target as SVGElement).getBoundingClientRect();
     x = targetRect.left + targetRect.width / 2;
     y = targetRect.top + targetRect.height / 2;
     updatePosition(x, y);
@@ -620,6 +634,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
 
+  /** A bar without height is not drawn. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function _isBarDrawn(point: VerticalBarChartDataPoint, yBarScale: any): boolean {
+    return yBarScale(point.y) - yBarScale(_yMax < 0 ? _yMax : 0) !== 0;
+  }
+
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
@@ -635,7 +655,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0) {
+      if (!_isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -689,7 +709,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0) {
+      if (!_isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -751,7 +771,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0) {
+      if (!_isBarDrawn(point, yBarScale)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
