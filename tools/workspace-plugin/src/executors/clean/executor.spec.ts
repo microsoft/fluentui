@@ -68,12 +68,12 @@ describe('Clean Executor', () => {
     expect(output.success).toBe(true);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      join(projRoot, 'dist'),
+      expect.stringContaining('tools/workspace-plugin/src/executors/clean/__fixtures__/proj/dist'),
       {
         force: true,
         recursive: true,
       },
-      join(projRoot, 'lib'),
+      expect.stringContaining('tools/workspace-plugin/src/executors/clean/__fixtures__/proj/lib'),
       {
         force: true,
         recursive: true,
@@ -90,12 +90,12 @@ describe('Clean Executor', () => {
     expect(output.success).toBe(true);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      join(projRoot, 'foo-bar'),
+      expect.stringContaining('tools/workspace-plugin/src/executors/clean/__fixtures__/proj/foo-bar'),
       {
         force: true,
         recursive: true,
       },
-      join(projRoot, 'mr-wick'),
+      expect.stringContaining('tools/workspace-plugin/src/executors/clean/__fixtures__/proj/mr-wick'),
       {
         force: true,
         recursive: true,

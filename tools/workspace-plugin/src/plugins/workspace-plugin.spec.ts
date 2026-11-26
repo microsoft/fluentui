@@ -64,9 +64,9 @@ describe(`workspace-plugin`, () => {
   afterEach(() => {
     process.env = originalEnv;
     jest.restoreAllMocks();
-    process.chdir(cwd);
-    tempFs.cleanup();
     jest.resetModules();
+    tempFs.cleanup();
+    process.chdir(cwd);
   });
 
   it('should report failed tasks as GitHub Actions errors', async () => {

@@ -8,7 +8,6 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
-  readdirSync,
   realpathSync,
   renameSync,
   rmSync,
@@ -91,17 +90,12 @@ export class TempFs {
   }
 
   cleanup() {
-    try {
-      rmSync(this.tempDir, { recursive: true, force: true });
-    } finally {
-      setWorkspaceRoot(this.previousWorkspaceRoot);
-    }
+    rmSync(this.tempDir, { recursive: true, force: true });
+    setWorkspaceRoot(this.previousWorkspaceRoot);
   }
 
   reset() {
-    // Keep the directory itself: callers may be using it as their working directory.
-    for (const entry of readdirSync(this.tempDir)) {
-      rmSync(join(this.tempDir, entry), { recursive: true, force: true });
-    }
+    rmSync(this.tempDir, { recursive: true, force: true });
+    mkdirSync(this.tempDir, { recursive: true });
   }
 }
