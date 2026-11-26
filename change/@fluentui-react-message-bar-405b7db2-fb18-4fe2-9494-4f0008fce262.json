@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: MessageBar announces its title, body and actions as separate words",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

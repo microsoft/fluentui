@@ -10,6 +10,44 @@ import { useMessageBarTransitionContext } from '../../contexts/messageBarTransit
 import { useMotionForwardedRef } from '@fluentui/react-motion';
 
 /**
+ * Returns the text of the body with a space after MessageBarTitle. The styled MessageBarTitle renders that space
+ * with generated content (`::after`), which `textContent` does not include.
+ */
+const getBodyMessage = (body: HTMLElement | null, titleId: string): string => {
+  const message = body?.textContent ?? '';
+  // The ids are compared directly, because an id is not always valid inside a selector
+  const title = Array.from(body?.querySelectorAll('[id]') ?? []).find(element => element.id === titleId);
+
+  if (!body || !title) {
+    return message;
+  }
+
+  const range = body.ownerDocument.createRange();
+  range.selectNodeContents(body);
+  range.setEndAfter(title);
+
+  const messageUpToTitle = range.toString();
+  const messageAfterTitle = message.slice(messageUpToTitle.length);
+
+  if (!messageUpToTitle || !messageAfterTitle || /\s$/.test(messageUpToTitle) || /^\s/.test(messageAfterTitle)) {
+    return message;
+  }
+
+  return `${messageUpToTitle} ${messageAfterTitle}`;
+};
+
+/**
+ * Returns the text of the actions. Each child is read on its own, so that the labels of two actions are not joined
+ * into one word.
+ */
+const getActionsMessage = (actions: HTMLElement | null): string =>
+  Array.from(actions?.childNodes ?? [])
+    .filter(node => node.nodeType !== node.COMMENT_NODE)
+    .map(node => node.textContent?.trim())
+    .filter(Boolean)
+    .join(',');
+
+/**
  * Create the base state required to render MessageBar without design-specific props.
  *
  * @param props - props from this instance of MessageBar (without shape)
@@ -34,12 +72,12 @@ export const useMessageBarBase_unstable = (
   const titleId = useId();
 
   React.useEffect(() => {
-    const bodyMessage = bodyRef.current?.textContent;
-    const actionsMessage = actionsRef.current?.textContent;
+    const bodyMessage = getBodyMessage(bodyRef.current, titleId);
+    const actionsMessage = getActionsMessage(actionsRef.current);
 
     const message = [bodyMessage, actionsMessage].filter(Boolean).join(',');
     announce(message, { polite: computedPoliteness === 'polite', alert: computedPoliteness === 'assertive' });
-  }, [bodyRef, actionsRef, announce, computedPoliteness]);
+  }, [bodyRef, actionsRef, announce, computedPoliteness, titleId]);
 
   return {
     components: {
