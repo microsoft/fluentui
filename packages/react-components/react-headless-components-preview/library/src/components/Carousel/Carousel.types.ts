@@ -13,7 +13,12 @@ export type CarouselIndexChangeData = EventData<'select', React.SyntheticEvent |
   reason: 'previous' | 'next' | 'nav' | 'autoplay';
 };
 
-/** The carousel awaits finite, running animations and cancels all returned handles on settlement or interruption. */
+/**
+ * The carousel waits for finite, running animations with a nonzero playback rate. It checks each handle when
+ * returned and rechecks eligible pending handles when ready. Then let accepted animations advance, or call
+ * `finish()` or `cancel()`; pausing them indefinitely prevents settlement.
+ * The carousel cancels all returned handles on settlement, interruption or unmount.
+ */
 export type CarouselTransition = (data: {
   incoming: HTMLElement;
   outgoing: HTMLElement;

@@ -89,8 +89,10 @@ Clearing the preference does not restart playback.
 
 The optional `transition` adapter on `Carousel` returns native `Animation` objects for the incoming and
 outgoing groups. Only running animations with a finite end time and nonzero playback rate delay focus recovery,
-live announcements (`aria-busy`), or the next autoplay interval. The component cancels all returned handles
-when the finite work ends, navigation is interrupted, or the carousel unmounts.
+live announcements (`aria-busy`), or the next autoplay interval. Carousel checks these conditions when the adapter
+returns and rechecks eligible pending animations when their `ready` promise resolves. After that check, let the
+animations advance or call `finish()` or `cancel()`; pausing an accepted animation indefinitely keeps the carousel
+busy. Carousel cancels every returned handle on settlement, interruption, or unmount.
 The example adapter uses transform and opacity with consumer-owned CSS variables; the headless library has no
 bundled motion values or styling. Without an adapter, changes are immediate.
 

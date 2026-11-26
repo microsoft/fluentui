@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createPortal } from 'react-dom';
+import { createPortal, flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import { Carousel } from './Carousel';
 import type { CarouselProps, CarouselTransition } from './Carousel.types';
@@ -17,6 +17,12 @@ const transition: CarouselTransition = ({ incoming, outgoing }) => [
   incoming.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200 }),
   outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100 }),
 ];
+
+const freezeWhenReady = (target: HTMLElement): Animation => {
+  const animation = target.animate([], 60000);
+  animation.updatePlaybackRate(0);
+  return animation;
+};
 
 const setReducedMotionPreference = (value?: 'no-preference' | 'reduce') =>
   cy.then(() =>
@@ -612,7 +618,12 @@ describe('Carousel browser behavior', () => {
         finite = incoming.animate([], 60000);
         const paused = incoming.animate([], 60000);
         paused.pause();
-        handles = [finite, incoming.animate([], { duration: 100, iterations: Infinity }), paused];
+        handles = [
+          finite,
+          incoming.animate([], { duration: 100, iterations: Infinity }),
+          paused,
+          freezeWhenReady(incoming),
+        ];
         return handles;
       },
     });
@@ -636,11 +647,37 @@ describe('Carousel browser behavior', () => {
         idle.cancel();
         const stopped = incoming.animate([], 60000);
         stopped.playbackRate = 0;
-        return [paused, idle, stopped];
+        return [paused, idle, stopped, freezeWhenReady(incoming)];
       },
     });
     cy.contains('button', 'Play').focus().realPress('Enter');
     cy.get('[role="tab"]').last().should('have.attr', 'aria-selected', 'true');
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
+  });
+
+  it('does not let canceled readiness settle the replacement transition', () => {
+    const handles: Animation[] = [];
+    renderCarousel({
+      transition: ({ incoming }) => {
+        const animation = incoming.animate([], 60000);
+        handles.push(animation);
+        return [animation];
+      },
+    });
+    cy.get('[data-carousel-action="next"]')
+      .focus()
+      .then(([next]) => {
+        // Commit both navigations before the browser can service the first pending play task.
+        flushSync(() => next.click());
+        expect(handles[0].pending).to.equal(true);
+        flushSync(() => next.click());
+        expect(handles[0].playState).to.equal('idle');
+        return handles[1].ready;
+      });
+    cy.get('.viewport').should('have.attr', 'aria-busy', 'true');
+    cy.get('[data-carousel-action="next"]').should('be.focused');
+    cy.then(() => handles[1].finish());
+    cy.get('[aria-label="Slide 5 of 5"]').should('be.focused');
     cy.get('.viewport').should('have.attr', 'aria-busy', 'false');
   });
 

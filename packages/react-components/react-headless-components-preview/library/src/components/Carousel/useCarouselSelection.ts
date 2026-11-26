@@ -6,6 +6,11 @@ import { getActiveElement } from '../../hooks/top-layer/utils';
 import { focusCarouselPage } from './focusCarouselPage';
 import type { CarouselProps, CarouselIndexChangeData } from './Carousel.types';
 
+const isFiniteAndRunning = (animation: Animation): boolean =>
+  animation.playState === 'running' &&
+  animation.playbackRate !== 0 &&
+  Number.isFinite(animation.effect?.getComputedTiming().endTime);
+
 type SelectionOptions = Pick<
   CarouselProps,
   'activeIndex' | 'defaultActiveIndex' | 'onActiveIndexChange' | 'transition'
@@ -165,16 +170,18 @@ export function useCarouselSelection(options: SelectionOptions): {
     try {
       const handles = adapter({ incoming, outgoing, direction: view.direction, dir: getDir() });
       animations.current = handles;
-      const finite = handles.filter(
-        animation =>
-          animation.playState === 'running' &&
-          animation.playbackRate !== 0 &&
-          Number.isFinite(animation.effect?.getComputedTiming().endTime),
-      );
+      const finite = handles.filter(isFiniteAndRunning);
       if (!finite.length) {
         settle();
       } else {
-        Promise.all(finite.map(animation => animation.finished.catch(() => undefined))).then(() => {
+        const completions = finite.map(animation => {
+          // updatePlaybackRate() can leave the old rate visible until a pending play task becomes ready.
+          const completion = animation.pending
+            ? animation.ready.then(() => (!disposed && isFiniteAndRunning(animation) ? animation.finished : undefined))
+            : animation.finished;
+          return completion.catch(() => undefined);
+        });
+        Promise.all(completions).then(() => {
           if (!disposed) {
             settle();
           }

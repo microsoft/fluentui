@@ -1,6 +1,6 @@
 import type { CarouselTransition } from '@fluentui/react-headless-components-preview/carousel';
 
-/** Consumer-owned design values; reduced motion and cancellation are handled by Carousel. */
+/** Carousel checks motion at handoff and readiness. Leave it running afterward, or finish/cancel it to stop early. */
 export const carouselTransition: CarouselTransition = ({ incoming, outgoing, direction, dir }) => {
   if (!incoming.animate) {
     return [];
