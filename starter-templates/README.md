@@ -23,37 +23,25 @@ starter-templates/
 
 ### Integration coverage
 
-Run the Vite starter against this checkout's built package outputs:
+Run the Vite starter's TypeScript and production build against this checkout's
+built Fluent UI packages in an isolated temporary app:
 
 ```bash
 yarn nx run stater-templates:test-integration
 ```
 
-The Nx project is currently named `stater-templates`. Its explicit dependencies
-build `react-components` and its dependency graph before testing. The existing
-affected CI `test-integration` invocation selects this check when the starter,
-the shared project-test helpers, or those Fluent packages change.
+Nx builds the required packages first; affected CI also runs this check.
+It does not cover Vitest/jsdom or browser behavior.
 
-The runner in `scripts/projects-test/src/vite.ts` copies the actual starter to an
-OS temporary directory. Shared repository helpers discover the `react-components`
-runtime dependencies and resolve them to local tarballs without adding starter
-dependencies; icons and other external packages remain registry dependencies.
-It checks declared imports, installed package outputs and tarball isolation, then
-runs the unchanged `build` script (`tsc -b && vite build`) and verifies production assets.
-The repository-pinned Yarn uses an isolated cache and node_modules. Temporary files
-are removed on success and failure. Results are uncached because external dependency
-ranges are resolved on each run.
-
-Runner regression tests, type checking and lint use the existing shared tooling:
+Validate the runner:
 
 ```bash
 yarn nx run-many -p scripts-projects-test -t test type-check lint
 ```
 
-This is a TypeScript and production-bundler check, not Vitest/jsdom or browser
-coverage. When adding another in-repository starter dependency, keep the Nx
-`implicitDependencies` and the runner's package selection in sync so its outputs
-are built and installed locally rather than fetched from the registry.
+When adding an in-repository starter dependency, update both the
+`implicitDependencies` in `project.json` and the package selection in
+`scripts/projects-test/src/vite.ts`.
 
 We welcome contributions! You can help by:
 
