@@ -1,0 +1,186 @@
+import * as React from 'react';
+
+import {
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
+} from '@fluentui/react-icons';
+import {
+  Avatar,
+  DataGridBody,
+  DataGridRow,
+  DataGrid,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridCell,
+  TableCellLayout,
+  createTableColumn,
+} from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
+
+type FileCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSXElement;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    author: { label: 'Max Mustermann', status: 'available' },
+    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdate: {
+      label: 'You edited this',
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
+    author: { label: 'Erika Mustermann', status: 'busy' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Training recording', icon: <VideoRegular /> },
+    author: { label: 'John Doe', status: 'away' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
+    author: { label: 'Jane Doe', status: 'offline' },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdate: {
+      label: 'You shared this in a Teams chat',
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return 'File';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return 'Author';
+    },
+    renderCell: item => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return 'Last updated';
+    },
+
+    renderCell: item => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return 'Last update';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
+    },
+  }),
+];
+
+export const SizeSmall = (): JSXElement => {
+  return (
+    <DataGrid
+      size="small"
+      aria-label="DataGrid with small size"
+      items={items}
+      columns={columns}
+      sortable
+      getRowId={item => item.file.label}
+      focusMode="composite"
+      style={{ minWidth: '550px' }}
+    >
+      <DataGridHeader>
+        <DataGridRow>
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
+  );
+};
+
+SizeSmall.parameters = {
+  docs: {
+    description: {
+      story:
+        '`DataGrid` supports the same sizes as `Table`. The default is `medium`. Set `size="small"` for a more compact grid.',
+    },
+  },
+};

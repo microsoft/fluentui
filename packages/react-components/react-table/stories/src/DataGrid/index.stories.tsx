@@ -11,6 +11,8 @@ import descriptionMd from './DataGridDescription.md';
 import bestPracticesMd from './DataGridBestPractices.md';
 
 export { Default } from './Default.stories';
+export { SizeSmall } from './SizeSmall.stories';
+export { SizeExtraSmall } from './SizeExtraSmall.stories';
 export { CompositeNavigation } from './CompositeNavigation.stories';
 export { FocusableElementsInCells } from './FocusableElementsInCells.stories';
 export { Sort } from './Sort.stories';
