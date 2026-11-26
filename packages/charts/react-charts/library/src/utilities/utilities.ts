@@ -244,6 +244,25 @@ export function defaultYAxisTickFormatter(value: number): string {
 }
 
 /**
+ * Returns the custom tick values that an axis of the given scale type can place, and the tick text that belongs
+ * to them. A log axis has no position for a value at or below zero, so such a value is left out with its text.
+ */
+function getPlaceableTicks(
+  tickValues: number[] | undefined,
+  tickText: string[] | undefined,
+  scaleType?: AxisScaleType,
+): { tickValues: number[] | undefined; tickText: string[] | undefined } {
+  if (!tickValues || scaleType !== 'log') {
+    return { tickValues, tickText };
+  }
+  const placeable = tickValues.map(value => isValidDomainValue(value, scaleType));
+  return {
+    tickValues: tickValues.filter((_value, index) => placeable[index]),
+    tickText: tickText?.filter((_text, index) => placeable[index]),
+  };
+}
+
+/**
  * Create Numeric X axis
  * @export
  * @param {IXAxisParams} xAxisParams
@@ -283,9 +302,10 @@ export function createNumericXAxis(
   showRoundOffXTickValues && xAxisScale.nice();
 
   let tickCount = xAxisCount ?? 6;
+  const customTicks = getPlaceableTicks(tickParams.tickValues as number[] | undefined, tickText, scaleType);
   const tickFormat = (domainValue: NumberValue, _index: number, defaultFormat?: (val: NumberValue) => string) => {
-    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
-      return tickText[_index];
+    if (customTicks.tickValues && customTicks.tickText && typeof customTicks.tickText[_index] !== 'undefined') {
+      return customTicks.tickText[_index];
     }
     if (tickParams.tickFormat) {
       return typeof tickParams.tickFormat === 'function'
@@ -311,8 +331,8 @@ export function createNumericXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   let customTickValues: number[] | undefined;
-  if (tickParams.tickValues) {
-    customTickValues = tickParams.tickValues as number[];
+  if (customTicks.tickValues) {
+    customTickValues = customTicks.tickValues;
   } else if (tickStep) {
     customTickValues = generateNumericTicks(scaleType, tickStep, tick0, xAxisScale.domain());
   }
@@ -854,9 +874,10 @@ export function createNumericYAxis(
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  const customTicks = getPlaceableTicks(tickValues as number[] | undefined, tickText, scaleType);
   let customTickValues: number[] | undefined;
-  if (tickValues) {
-    customTickValues = tickValues as number[];
+  if (customTicks.tickValues) {
+    customTickValues = customTicks.tickValues;
   } else if (tickStep) {
     customTickValues = generateNumericTicks(scaleType, tickStep, tick0, yAxisScale.domain());
   }
@@ -868,8 +889,8 @@ export function createNumericYAxis(
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
-    if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
-      return tickText[index];
+    if (customTicks.tickValues && customTicks.tickText && typeof customTicks.tickText[index] !== 'undefined') {
+      return customTicks.tickText[index];
     }
     if (typeof yAxisTickFormat === 'function') {
       return yAxisTickFormat(domainValue, index);

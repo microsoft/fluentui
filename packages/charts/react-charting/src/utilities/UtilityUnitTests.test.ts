@@ -1544,3 +1544,72 @@ describe('generateMonthlyTicks', () => {
     expect(ticks.map(d => formatLocalDate(d))).toEqual(['2020-01-01', '2020-03-01', '2020-05-01', '2020-07-01']);
   });
 });
+
+describe('custom tick values on a log axis', () => {
+  // A log axis has no position for a value at or below zero. d3 gives such a tick a NaN position.
+  const tickTransforms = (axisElement: SVGElement | null | undefined) =>
+    Array.from(axisElement!.querySelectorAll('.tick')).map(tick => tick.getAttribute('transform') ?? '');
+  const logRange = { dStartValue: 1, dEndValue: 1000, rStartValue: 0, rEndValue: 300 };
+
+  it('should leave out the x-axis tick values that a log axis cannot place', () => {
+    const xAxisParams = createXAxisParams({ domainNRangeValues: logRange });
+    const result = utils.createNumericXAxis(
+      xAxisParams,
+      { tickValues: [-5, 0, 1, 10, 100, 1000] },
+      utils.ChartTypes.LineChart,
+      undefined,
+      'log',
+    );
+    expect(result.tickValues).toEqual([1, 10, 100, 1000]);
+    const transforms = tickTransforms(xAxisParams.xAxisElement);
+    expect(transforms).toHaveLength(4);
+    transforms.forEach(transform => expect(transform).not.toMatch(/NaN|Infinity/));
+  });
+
+  it('should keep the x-axis tick text with its tick value on a log axis', () => {
+    const xAxisParams = createXAxisParams({
+      domainNRangeValues: logRange,
+      tickText: ['none', 'one', 'ten', 'hundred', 'thousand'],
+    });
+    const result = utils.createNumericXAxis(
+      xAxisParams,
+      { tickValues: [0, 1, 10, 100, 1000] },
+      utils.ChartTypes.LineChart,
+      undefined,
+      'log',
+    );
+    expect(result.tickLabels).toEqual(['one', 'ten', 'hundred', 'thousand']);
+  });
+
+  it('should keep every x-axis tick value on a linear axis', () => {
+    const xAxisParams = createXAxisParams({ domainNRangeValues: { ...logRange, dStartValue: 0 } });
+    const result = utils.createNumericXAxis(
+      xAxisParams,
+      { tickValues: [0, 1, 10, 100, 1000] },
+      utils.ChartTypes.LineChart,
+    );
+    expect(result.tickValues).toEqual([0, 1, 10, 100, 1000]);
+    expect(tickTransforms(xAxisParams.xAxisElement)).toHaveLength(5);
+  });
+
+  it('should leave out the y-axis tick values that a log axis cannot place, with their tick text', () => {
+    const yAxisParams = createYAxisParams({
+      yMinMaxValues: { startValue: 1, endValue: 100 },
+      tickValues: [0, 1, 10, 100],
+      tickText: ['none', 'one', 'ten', 'hundred'],
+    });
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, false, false, false, 'log');
+    expect(axisData.yAxisTickText).toEqual(['one', 'ten', 'hundred']);
+    const transforms = tickTransforms(yAxisParams.yAxisElement);
+    expect(transforms).toHaveLength(3);
+    transforms.forEach(transform => expect(transform).not.toMatch(/NaN|Infinity/));
+  });
+
+  it('should keep every y-axis tick value on a linear axis', () => {
+    const yAxisParams = createYAxisParams({ tickValues: [0, 1, 10, 100] });
+    const axisData: utils.IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
+    expect(tickTransforms(yAxisParams.yAxisElement)).toHaveLength(4);
+  });
+});
