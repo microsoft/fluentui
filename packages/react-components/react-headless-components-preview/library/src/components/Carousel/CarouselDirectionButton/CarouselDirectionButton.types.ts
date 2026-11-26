@@ -30,6 +30,12 @@ export type CarouselDirectionButtonState = ComponentState<CarouselDirectionButto
   probeRef?: React.RefObject<HTMLTemplateElement | null>;
   /** Keep a custom slot's actual button mounted for fieldset observation, including while hidden and inert. */
   keepButtonMounted?: boolean;
+  /** Container for a staged custom slot; tracks focus anywhere in the callback result so retiring can recover it. */
+  stage?: {
+    ref: React.RefObject<HTMLDivElement | null>;
+    onFocus: () => void;
+    onBlur: () => void;
+  };
   /** Hidden at a settled boundary or while staging a custom slot. */
   hidden: boolean;
   /** Boundary reached; while a transition runs the button remains an `aria-disabled` focus anchor. */

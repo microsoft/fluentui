@@ -20,7 +20,10 @@ export type CarouselNavProps = Omit<ComponentProps<CarouselNavSlots>, 'children'
 
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   pageCount: number;
-  /** False with fewer than two groups. */
+  /**
+   * False with fewer than two groups or when hidden or disabled. A nav that owns focus as it becomes unavailable stays
+   * mounted as a hidden container until that focus moves into the selected group.
+   */
   rendered: boolean;
   /** Tracks the group's operable tab and its optional mount autofocus request, including custom templates. */
   registerTab: (index: number, autoFocusTarget?: HTMLButtonElement) => () => void;

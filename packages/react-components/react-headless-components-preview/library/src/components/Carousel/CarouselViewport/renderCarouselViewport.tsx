@@ -27,6 +27,7 @@ export const renderCarouselViewport = (state: CarouselViewportState): JSXElement
               role={nav ? 'tabpanel' : 'group'}
               aria-label={nav ? undefined : getPageLabel(i + 1, pages.length)}
               aria-labelledby={nav ? `${idPrefix}-tab-${i + 1}` : undefined}
+              tabIndex={state.focusablePages[i] ? 0 : undefined}
               aria-hidden={inactive || undefined}
               hidden={inactive}
               ref={node => {

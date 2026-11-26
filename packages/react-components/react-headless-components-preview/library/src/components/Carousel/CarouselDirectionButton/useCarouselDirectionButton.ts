@@ -17,7 +17,7 @@ import {
   useCarouselContext,
   useCarouselPartRegistration,
 } from '../carouselContext';
-import { focusCarouselPage } from '../focusCarouselPage';
+import { focusSelectedPage } from '../focusCarouselPage';
 import { useFieldsetRegistration } from '../useFieldsetRegistration';
 import type { CarouselDirectionButtonProps, CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
@@ -48,6 +48,7 @@ export const useCarouselDirectionButton = (
   const staging = keepButtonMounted && !showWrapper;
   const hidden = staging || (boundaryHidden && !retiring);
   const wrapper = React.useRef<HTMLDivElement>(null);
+  const stageRef = React.useRef<HTMLDivElement>(null);
   const register = useCarouselPartRegistration(kind, present, enabled);
   const track = useFieldsetRegistration(register);
   const probe = useMergedRefs<HTMLTemplateElement>(track);
@@ -63,13 +64,12 @@ export const useCarouselDirectionButton = (
   });
   useIsomorphicLayoutEffect(() => {
     if (retiring) {
-      // Keep a retiring arrow mounted until this commit can check actual focus ownership.
-      if (wrapper.current?.contains(getActiveElement(wrapper.current))) {
-        const viewport = context.viewportRef.current;
-        const page = viewport?.children[Math.min(context.activeIndex, viewport.children.length - 1)];
-        if (page) {
-          focusCarouselPage(page as HTMLElement);
-        }
+      // Keep a retiring arrow mounted until this commit can check actual focus ownership. Staging also hides content
+      // a root callback renders beside the forwarded root, and focus dropped since it was tracked was dropped from here.
+      const owner = stageRef.current ?? wrapper.current;
+      const active = owner && getActiveElement(owner);
+      if (owner && (owner.contains(active) || !active || active === owner.ownerDocument.body)) {
+        focusSelectedPage(context.viewportRef.current, context.activeIndex);
       }
       setFocused(false);
     }
@@ -126,6 +126,9 @@ export const useCarouselDirectionButton = (
     rendered: showWrapper,
     probeRef,
     keepButtonMounted,
+    stage: keepButtonMounted
+      ? { ref: stageRef, onFocus: () => setFocused(true), onBlur: () => setFocused(false) }
+      : undefined,
     hidden,
     unavailable,
   };

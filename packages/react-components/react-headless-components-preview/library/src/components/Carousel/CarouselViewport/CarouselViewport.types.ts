@@ -24,5 +24,7 @@ export type CarouselViewportState = ComponentState<CarouselViewportSlots> & {
   outgoingIndex: number | undefined;
   paged: boolean;
   nav: boolean;
+  /** Per group: a tab panel whose slides provide no focus stop, so the panel itself takes `tabIndex={0}`. */
+  focusablePages: boolean[];
   getPageLabel: (position: number, total: number) => string;
 };

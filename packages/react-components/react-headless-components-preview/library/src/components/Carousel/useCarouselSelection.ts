@@ -82,10 +82,15 @@ export function useCarouselSelection(options: SelectionOptions): {
     const anchor = recovery.current;
     recovery.current = null;
     const viewport = viewportRef.current;
-    // Root-aware: inside a shadow root the document's active element is only the host.
-    if (restoreFocus && anchor && viewport && anchor === getActiveElement(viewport)) {
+    if (restoreFocus && anchor && viewport) {
+      // Root-aware: inside a shadow root the document's active element is only the host.
+      const active = getActiveElement(viewport);
+      // Hiding the outgoing group can make the browser drop focus before settlement; nothing else took it.
+      const dropped =
+        (!active || active === viewport.ownerDocument.body) &&
+        (!anchor.isConnected || !!anchor.closest('[hidden], [inert]'));
       const page = viewport.children[view.index] as HTMLElement | undefined;
-      if (page) {
+      if (page && (anchor === active || dropped)) {
         focusCarouselPage(page);
       }
     }

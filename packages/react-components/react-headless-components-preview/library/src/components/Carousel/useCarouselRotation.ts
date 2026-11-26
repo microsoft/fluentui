@@ -129,9 +129,13 @@ export function useCarouselRotation(
         setPlaying(true);
       }
     }),
+    // Pointing at the playback control neither starts nor ends a suspension: rotation started there runs,
+    // but moving from a slide onto Pause keeps it suspended until the pointer leaves the carousel.
     onPointerOver: useEventCallback((event: React.PointerEvent<HTMLDivElement>) => {
       const target = event.target as HTMLElement;
-      setHovered(!target.closest('[data-carousel-action="autoplay"]'));
+      if (!target.closest('[data-carousel-action="autoplay"]')) {
+        setHovered(true);
+      }
     }),
     onPointerLeave: useEventCallback(() => setHovered(false)),
     interrupt: useEventCallback((event: React.SyntheticEvent<HTMLDivElement>) => {

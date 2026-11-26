@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { Carousel } from './Carousel';
 import type { CarouselProps } from './Carousel.types';
@@ -326,11 +327,17 @@ describe('Carousel', () => {
     render(example({ autoplay: true, circular: true, autoplayInterval: 1000 }));
     act(() => jest.advanceTimersByTime(5000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 1 of 3');
+    // Entering on Play doesn't suspend the rotation it starts.
+    fireEvent.pointerOver(screen.getByRole('button', { name: 'Play' }));
     fireEvent.click(screen.getByRole('button', { name: 'Play' }));
     expect(screen.getByRole('tabpanel').parentElement).toHaveAttribute('aria-live', 'off');
     act(() => jest.advanceTimersByTime(1000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
     fireEvent.pointerOver(screen.getByRole('tabpanel'));
+    act(() => jest.advanceTimersByTime(3000));
+    expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
+    // Moving from a slide onto Pause, without leaving the carousel, keeps the suspension.
+    fireEvent.pointerOver(screen.getByRole('button', { name: 'Pause' }));
     act(() => jest.advanceTimersByTime(3000));
     expect(selected()).toHaveAttribute('aria-label', 'Page 2 of 3');
     fireEvent.pointerLeave(screen.getByRole('region'));
@@ -822,6 +829,182 @@ describe('Carousel', () => {
     expect(onActiveIndexChange).toHaveBeenCalledTimes(2);
     act(() => jest.advanceTimersByTime(1));
     expect(onActiveIndexChange.mock.calls.map(([, data]) => data.index)).toEqual([0, 0, 1]);
+  });
+
+  it('makes only a tab panel without its own focus stop a tab stop, tracking slide content', async () => {
+    const Toggle = () => {
+      const [action, setAction] = React.useState(false);
+      return action ? <button>Act</button> : <span onClick={() => setAction(true)}>Plain</span>;
+    };
+    const markup = renderToString(
+      <Carousel aria-label="Notes">
+        <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+        <CarouselNav />
+      </Carousel>,
+    );
+    expect(markup).not.toContain('tabindex="0"');
+    const { rerender } = render(
+      <Carousel aria-label="Notes">
+        <CarouselViewport>
+          <Toggle />
+          {'Second'}
+        </CarouselViewport>
+        <CarouselNav />
+      </Carousel>,
+    );
+    const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0']);
+    await act(async () => fireEvent.click(screen.getByText('Plain')));
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual([null, '0']);
+    rerender(example());
+    expect(panels().every(panel => !panel.hasAttribute('tabindex'))).toBe(true);
+    rerender(example({ nav: false, slides: ['A', 'B'] }));
+    expect(panels().every(panel => !panel.hasAttribute('tabindex'))).toBe(true);
+  });
+
+  it('moves focus to the selected tab when the focused tab is removed from a nav that stays complete', () => {
+    const Collection = ({ count }: { count: number }) => (
+      <Carousel aria-label="Notes" defaultActiveIndex={2}>
+        <CarouselViewport>
+          {['First', 'Second', 'Third'].slice(0, count).map(text => (
+            <CarouselCard key={text}>{text}</CarouselCard>
+          ))}
+        </CarouselViewport>
+        <CarouselNav />
+      </Carousel>
+    );
+    const { rerender } = render(<Collection count={3} />);
+    act(() => screen.getAllByRole('tab')[2].focus());
+    rerender(<Collection count={2} />);
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs).toHaveLength(2);
+    expect(tabs[1]).toHaveAttribute('aria-selected', 'true');
+    expect(tabs[1]).toHaveFocus();
+  });
+
+  it('leaves outside focus alone when a tab is removed from a nav that stays complete', () => {
+    const Collection = ({ count }: { count: number }) => (
+      <>
+        <button>Outside</button>
+        <Carousel aria-label="Notes" defaultActiveIndex={2}>
+          <CarouselViewport>
+            {['First', 'Second', 'Third'].slice(0, count).map(text => (
+              <CarouselCard key={text}>{text}</CarouselCard>
+            ))}
+          </CarouselViewport>
+          <CarouselNav />
+        </Carousel>
+      </>
+    );
+    const { rerender } = render(<Collection count={3} />);
+    act(() => screen.getAllByRole('tab')[2].focus());
+    act(() => screen.getByText('Outside').focus());
+    rerender(<Collection count={2} />);
+    expect(screen.getByText('Outside')).toHaveFocus();
+  });
+
+  it('remeasures panel focus stops when an ancestor class or a fieldset legend changes', async () => {
+    const { container } = render(
+      <div id="host">
+        <style>{'.compact #action { display: none; }'}</style>
+        <Carousel aria-label="Notes">
+          <fieldset disabled>
+            <legend>
+              <CarouselViewport>
+                <button id="action">Act</button>
+                <button>Other</button>
+              </CarouselViewport>
+            </legend>
+          </fieldset>
+          <CarouselNav />
+        </Carousel>
+      </div>,
+    );
+    const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
+    await act(async () => undefined);
+    expect(panels()[0]).not.toHaveAttribute('tabindex');
+    await act(async () => container.querySelector('#host')!.classList.add('compact'));
+    expect(panels()[0]).toHaveAttribute('tabindex', '0');
+    await act(async () => container.querySelector('#host')!.classList.remove('compact'));
+    expect(panels()[0]).not.toHaveAttribute('tabindex');
+    // A new first legend leaves the carousel's legend disabled by the fieldset.
+    await act(async () => {
+      const fieldset = container.querySelector('fieldset')!;
+      fieldset.insertBefore(document.createElement('legend'), fieldset.firstChild);
+    });
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0']);
+  });
+
+  it('ignores concealed slide controls and remeasures when their concealment or a surrounding fieldset changes', async () => {
+    const { container } = render(
+      <Carousel aria-label="Notes">
+        <fieldset>
+          <CarouselViewport>
+            <div>
+              <button style={{ display: 'none' }}>Collapsed</button>
+            </div>
+            <details>
+              <summary tabIndex={-1}>Summary</summary>
+              <button>Closed body</button>
+            </details>
+            <span style={{ visibility: 'hidden' }}>
+              <button>Invisible</button>
+            </span>
+            <button>Visible</button>
+          </CarouselViewport>
+        </fieldset>
+        <CarouselNav />
+      </Carousel>,
+    );
+    const panels = () => Array.from(document.querySelectorAll('[data-carousel-page]'));
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0', '0', null]);
+    await act(async () => {
+      screen.getByText('Collapsed', { selector: 'button' }).style.display = '';
+      screen.getByText('Summary').parentElement!.setAttribute('open', '');
+    });
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual([null, null, '0', null]);
+    await act(async () => container.querySelector('fieldset')!.setAttribute('disabled', ''));
+    expect(panels().map(panel => panel.getAttribute('tabindex'))).toEqual(['0', '0', '0', '0']);
+  });
+
+  it('recovers focus that the browser drops from a hidden outgoing group after a controlled change', () => {
+    // Stands in for a browser that drops focus from newly hidden content before the carousel settles.
+    const FocusFixup = () => {
+      useIsomorphicLayoutEffect(() => {
+        const active = document.activeElement as HTMLElement | null;
+        if (active?.closest('[hidden]')) {
+          active.blur();
+        }
+      });
+      return null;
+    };
+    const controlled = (activeIndex: number) => (
+      <>
+        <button>Outside</button>
+        <Carousel aria-label="Notes" activeIndex={activeIndex}>
+          <CarouselViewport>
+            <CarouselCard>
+              <input aria-label="First" />
+            </CarouselCard>
+            <CarouselCard>
+              <input aria-label="Second" />
+            </CarouselCard>
+            <CarouselCard>
+              <input aria-label="Third" />
+            </CarouselCard>
+          </CarouselViewport>
+          <CarouselNav />
+          <FocusFixup />
+        </Carousel>
+      </>
+    );
+    const { rerender } = render(controlled(0));
+    act(() => screen.getByRole('textbox', { name: 'First' }).focus());
+    rerender(controlled(1));
+    expect(screen.getByRole('group', { name: 'Slide 2 of 3' })).toHaveFocus();
+    act(() => screen.getByRole('button', { name: 'Outside' }).focus());
+    rerender(controlled(2));
+    expect(screen.getByRole('button', { name: 'Outside' })).toHaveFocus();
   });
 
   it.each([0, 999, 1000.5, NaN, Infinity, 2147483648])('rejects invalid autoplay interval %s', autoplayInterval => {

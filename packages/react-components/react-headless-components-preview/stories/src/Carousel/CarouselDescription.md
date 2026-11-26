@@ -37,7 +37,12 @@ Compose one viewport and at most one of each control. Parts register with `Carou
   `disabled` retains native button disabling; `disabledFocusable` keeps an unavailable control focusable.
 
 Each direct child of `CarouselViewport` is one slide; wrap content in `CarouselCard`, which is a focus stop
-labeled "Slide 1 of 5". Embedded actions stay directly tabbable.
+labeled "Slide 1 of 5". Embedded actions stay directly tabbable. With a nav, a tab panel whose slides offer no
+focus stop of their own (plain content without `CarouselCard` or tabbable elements) becomes a focus stop itself,
+so keyboard users can reach it; the server render adds this after hydration. Controls that are disabled (including
+by a surrounding `fieldset`), `display: none`, `visibility: hidden` or inside a closed `<details>` don't count.
+This is rechecked when slide content, an ancestor's `class`/`style`, a surrounding `fieldset` or the window size
+changes; other stylesheet changes are not observed.
 
 Slides are grouped by position. Changing `groupSize`, or adding, removing or reordering slides, can move a
 slide into a different group, which remounts it, so keep slide state (form values, playback position) outside
@@ -48,7 +53,10 @@ function must supply exactly one wired, visible, enabled `CarouselNavButton` (or
 per group. If any tab is missing, hidden, inert or disabled, the _whole_ tablist is unavailable: there are no partial
 roving tablists or panels labeled by unavailable tabs. Operable arrows can still enable paging.
 If a tab requests `autoFocus`, a complete nav honors it on mount. Restoring an incomplete or hidden nav
-does not move focus back to that tab.
+does not move focus back to that tab. If the nav owns focus when it becomes incomplete or unavailable (hidden, inert,
+disabled or a single group), including a focused tab that becomes disabled or hidden, focus moves into the selected
+group. If the focused tab is removed while the nav stays complete, focus moves to the selected tab. Focus elsewhere
+is left alone. The nav's own `onFocus`/`onBlur` run only while the tablist is available.
 
 `CarouselPrevious` and `CarouselNext` have `root` (layout wrapper), `button` (headless Button) and `tooltip`
 (headless Tooltip content) slots. The tooltip text names the button through `aria-labelledby`; localize it
@@ -59,7 +67,8 @@ Carousel checks the fieldsets that contain the current native button, even when 
 When it needs to keep checking, the entire custom arrow stays mounted in a layout-free wrapper. The wrapper
 is hidden and inert in static mode and at a settled boundary. At that boundary an empty `[data-carousel-button]`
 keeps the root's layout class and style. Use that descendant selector for positioning; a mounted ref alone
-does not mean the arrow is visible.
+does not mean the arrow is visible. If anything in the staged callback result, such as a sibling help button,
+owns focus when it is hidden, focus moves into the selected group.
 
 `display: contents` removes a layout box, not the DOM parent. The owner of a disabled `fieldset` must render
 its first `legend` as a direct child to exempt controls inside it. Put the entire `CarouselPrevious` or
@@ -82,14 +91,17 @@ it on an ancestor element for RTL. Embedded controls keep their native keyboard 
 hide only after the transition settles, then move focus to the first visible slide (or the group's first
 tabbable element, or the group itself, for slides without `CarouselCard`); otherwise focus stays on the activating
 control. When controls make a static collection paged, focus moves into the selected group only if the
-previously focused content would be hidden. This layout change does not animate. `circular` defaults to
+previously focused content would be hidden. When the selection changes while focus is in the outgoing group,
+including focus the browser already dropped from it, focus moves to the incoming group. This layout change does not
+animate. `circular` defaults to
 false and enables directional wrapping with both arrows always available.
 
 ## Autoplay and motion
 
 `CarouselAutoplayButton` never starts rotation by itself. `autoplayInterval` on `Carousel` defaults to 4000ms;
 non-integers or values outside 1000–2147483647 throw. Pause, manual navigation, or interaction outside
-playback stops rotation. Hover temporarily suspends it; document visibility and viewport intersection
+playback stops rotation. Hover temporarily suspends it, including while the pointer is over Pause, until the
+pointer leaves the carousel; document visibility and viewport intersection
 suspend its timer. Resuming a suspended session always waits a fresh interval. Non-circular playback stops
 once the selection reaches the final group; Play there requests the first group immediately. In controlled
 mode it retries that restart once per eligible interval until accepted or stopped. Localize `playLabel`, `pauseLabel` and
@@ -120,7 +132,10 @@ bundled motion values or styling. Without an adapter, changes are immediate.
 The example CSS reserves both Previous/Next slots and layers groups in one grid cell, so the tallest group sets
 the viewport height. Inactive groups have `hidden`, `inert` and `aria-hidden`; the CSS keeps their layout
 contribution with `visibility: hidden`. At container widths of 320px or less the cards stack within the
-current group. Host layouts must reserve outer clearance for the Previous/Next tooltips.
+current group. Previous/Next tooltips prefer the outer side of their arrow; near a viewport edge they use the
+other side, or go below (else above) the arrow when neither side fits, re-placing when the arrow moves. The
+tooltip's `data-placement` (`before`, `after`, `below` or `above`) reports the side in use. Reserve outer clearance
+to keep the preferred side.
 
 This fixed-group preview is maintained separately from the styled Embla Carousel; it does not share the
 styled component's automatic grouping, dragging or event contract. Alternative pagination formats are outside this preview.

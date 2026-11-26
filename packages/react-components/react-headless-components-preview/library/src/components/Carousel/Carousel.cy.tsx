@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createPortal, flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { Carousel } from './Carousel';
 import type { CarouselProps, CarouselTransition } from './Carousel.types';
@@ -190,6 +191,181 @@ describe('Carousel browser behavior', () => {
     });
   });
 
+  for (const native of [true, false]) {
+    it(`keeps ${native ? 'anchored' : 'fallback'} arrow tooltips within the viewport edges`, () => {
+      if (!native) {
+        cy.window().then(win => {
+          const supports = win.CSS.supports.bind(win.CSS);
+          cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
+            args[0] === 'position-area: self-inline-start' ? false : supports(...args),
+          );
+        });
+      }
+      mount(
+        <div style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex', justifyContent: 'space-between' }}>
+          <style>{styles}</style>
+          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
+            <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip', children: 'Previous lesson' }} />
+            <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+            <CarouselNext button={{ icon: '>' }} tooltip={{ className: 'tooltip', children: 'Next lesson' }} />
+          </Carousel>
+        </div>,
+      );
+      for (const kind of ['previous', 'next']) {
+        cy.get(`[data-carousel-action="${kind}"]`)
+          .focus()
+          .then(button => {
+            cy.contains('[role="tooltip"]', `${kind === 'next' ? 'Next' : 'Previous'} lesson`).should(tip => {
+              const { clientWidth } = tip[0].ownerDocument.documentElement;
+              const arrow = button[0].getBoundingClientRect();
+              const box = tip[0].getBoundingClientRect();
+              expect(box.width).to.be.greaterThan(kind === 'previous' ? arrow.left : clientWidth - arrow.right);
+              expect(box.left).to.be.at.least(0);
+              expect(box.right).to.be.at.most(clientWidth);
+              // Flipped to the side with room rather than covering its arrow.
+              if (kind === 'previous') {
+                expect(box.left).to.be.closeTo(arrow.right, 1);
+              } else {
+                expect(box.right).to.be.closeTo(arrow.left, 1);
+              }
+            });
+          });
+      }
+    });
+  }
+
+  const useFallbackPositioning = () =>
+    cy.window().then(win => {
+      const supports = win.CSS.supports.bind(win.CSS);
+      cy.stub(win.CSS, 'supports').callsFake((...args: [string]) =>
+        args[0] === 'position-area: self-inline-start' ? false : supports(...args),
+      );
+    });
+  // The tooltip box must stay in the viewport, leave its arrow uncovered and sit against it on the reported side.
+  const expectTooltipBeside = (button: HTMLElement, label: string, placement: string) =>
+    cy.contains('[role="tooltip"]', label).should(tip => {
+      const doc = tip[0].ownerDocument;
+      const { clientWidth, clientHeight } = doc.documentElement;
+      const arrow = button.getBoundingClientRect();
+      const box = tip[0].getBoundingClientRect();
+      expect(tip[0]).to.have.attr('data-placement', placement);
+      expect(box.left).to.be.at.least(-0.5);
+      expect(box.top).to.be.at.least(-0.5);
+      expect(box.right).to.be.at.most(clientWidth + 0.5);
+      expect(box.bottom).to.be.at.most(clientHeight + 0.5);
+      expect(
+        button.contains(doc.elementFromPoint(arrow.left + arrow.width / 2, arrow.top + arrow.height / 2)),
+      ).to.equal(true);
+      const rtl = getComputedStyle(button).direction === 'rtl';
+      const edges = {
+        before: () => expect(rtl ? box.left : box.right).to.be.closeTo(rtl ? arrow.right : arrow.left, 1),
+        after: () => expect(rtl ? box.right : box.left).to.be.closeTo(rtl ? arrow.left : arrow.right, 1),
+        below: () => expect(box.top).to.be.closeTo(arrow.bottom, 1),
+        above: () => expect(box.bottom).to.be.closeTo(arrow.top, 1),
+      };
+      edges[placement as keyof typeof edges]();
+    });
+
+  for (const native of [true, false]) {
+    const kind = native ? 'anchored' : 'fallback';
+    it(`re-places the ${kind} tooltip when a sibling reflow moves its arrow to the edge`, () => {
+      if (!native) {
+        useFallbackPositioning();
+      }
+      mount(
+        <div style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex' }}>
+          <style>{styles}</style>
+          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
+            <div id="spacer" style={{ flex: '0 0 0px' }} />
+            <CarouselNext button={{ icon: '>' }} tooltip={{ className: 'tooltip', children: 'Next lesson' }} />
+            <CarouselViewport style={{ flex: 1 }}>{['First', 'Second']}</CarouselViewport>
+          </Carousel>
+        </div>,
+      );
+      cy.get('[data-carousel-action="next"]')
+        .focus()
+        .then(button => {
+          expectTooltipBeside(button[0], 'Next lesson', 'after');
+          cy.get('#spacer').then(spacer => {
+            spacer[0].style.flexBasis = `calc(100% - ${button[0].getBoundingClientRect().width}px)`;
+          });
+          expectTooltipBeside(button[0], 'Next lesson', 'before');
+        });
+    });
+
+    it(`re-places the ${kind} tooltip when only the direction changes`, () => {
+      if (!native) {
+        useFallbackPositioning();
+      }
+      mount(
+        <div id="host" style={{ position: 'fixed', insetInline: 0, top: 100, display: 'flex' }}>
+          <style>{styles}</style>
+          <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
+            <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip', children: 'Previous lesson' }} />
+            <CarouselViewport style={{ flex: 1 }}>{['First', 'Second']}</CarouselViewport>
+          </Carousel>
+        </div>,
+      );
+      cy.get('[data-carousel-action="previous"]')
+        .focus()
+        .then(button => {
+          expectTooltipBeside(button[0], 'Previous lesson', 'after');
+          // The arrow stays at the left edge, where the inline start side now has room.
+          cy.get('#host').then(host => {
+            host[0].dir = 'rtl';
+            host[0].style.justifyContent = 'flex-end';
+            host[0].style.flexDirection = 'row-reverse';
+          });
+          cy.wrap(button).should(el => expect(el[0].getBoundingClientRect().left).to.be.closeTo(0, 1));
+          expectTooltipBeside(button[0], 'Previous lesson', 'before');
+        });
+    });
+
+    for (const dir of ['ltr', 'rtl'] as const) {
+      it(`moves a ${kind} ${dir} tooltip below or above its arrow when neither side has room`, () => {
+        if (!native) {
+          useFallbackPositioning();
+        }
+        const label = 'Previous lesson, too long for a side';
+        let atBottom: () => void;
+        const Layout = () => {
+          const [bottom, setBottom] = React.useState(false);
+          atBottom = () => setBottom(true);
+          return (
+            <div
+              dir={dir}
+              style={{
+                position: 'fixed',
+                insetInline: 0,
+                ...(bottom ? { bottom: 0 } : { top: 100 }),
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <style>{`${styles}\n.wide { white-space: nowrap; max-width: none; }`}</style>
+              <Carousel aria-label="Lessons" circular style={{ display: 'contents' }}>
+                <CarouselPrevious button={{ icon: '<' }} tooltip={{ className: 'tooltip wide', children: label }} />
+                <CarouselViewport style={{ display: 'none' }}>{['First', 'Second']}</CarouselViewport>
+              </Carousel>
+            </div>
+          );
+        };
+        cy.viewport(320, 400);
+        mount(<Layout />);
+        cy.get('[data-carousel-action="previous"]')
+          .focus()
+          .then(button => {
+            cy.contains('[role="tooltip"]', label).should(tip => {
+              expect(tip[0].getBoundingClientRect().width).to.be.greaterThan(160);
+            });
+            expectTooltipBeside(button[0], label, 'below');
+            cy.then(() => atBottom());
+            expectTooltipBeside(button[0], label, 'above');
+          });
+      });
+    }
+  }
+
   it('opens the tooltip and calls onFocus once when the Next button mounts with autoFocus', () => {
     const onFocus = cy.stub();
     mount(
@@ -245,6 +421,57 @@ describe('Carousel browser behavior', () => {
     cy.wrap(onFocus).should('have.been.calledOnce');
   });
 
+  it('calls the nav root focus callbacks for tab autofocus on mount', () => {
+    const onFocus = cy.stub();
+    const onBlur = cy.stub();
+    mount(
+      <>
+        <Carousel aria-label="Lessons">
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNav onFocus={onFocus} onBlur={onBlur}>
+            {i => <CarouselNavButton autoFocus={i === 0} />}
+          </CarouselNav>
+        </Carousel>
+        <button>After</button>
+      </>,
+    );
+    cy.get('[role="tab"]').first().should('be.focused');
+    cy.wrap(onFocus).should('have.been.calledOnce');
+    cy.contains('button', 'After').focus();
+    cy.wrap(onBlur).should('have.been.calledOnce');
+  });
+
+  for (const unavailable of ['hidden', 'inert', 'aria-disabled', 'single page'] as const) {
+    it(`moves focus from a nav removed as ${unavailable} into the selected group`, () => {
+      let retire: () => void;
+      const Collection = () => {
+        const [retired, setRetired] = React.useState(false);
+        retire = () => setRetired(true);
+        const flag = retired && unavailable !== 'single page' ? { [unavailable]: true } : {};
+        return (
+          <>
+            <button>Outside</button>
+            <Carousel aria-label="Lessons" circular>
+              <CarouselPrevious />
+              <CarouselViewport>
+                <CarouselCard>First</CarouselCard>
+                {!(retired && unavailable === 'single page') && <CarouselCard>Second</CarouselCard>}
+              </CarouselViewport>
+              <CarouselNext />
+              <CarouselNav {...flag} />
+            </Carousel>
+          </>
+        );
+      };
+      mount(<Collection />);
+      cy.get('[role="tab"]').first().focus().should('be.focused');
+      cy.then(() => retire());
+      cy.get('[role="tablist"]').should('not.exist');
+      cy.get('[aria-label^="Slide 1 of"]').should('be.focused');
+      cy.get('[role="tab"]').should('not.exist');
+    });
+  }
+
   it('keeps an incomplete flex tablist hidden and out of focus order until its tabs are operable', () => {
     const onFocus = cy.stub();
     let enableTabs: () => void;
@@ -286,6 +513,76 @@ describe('Carousel browser behavior', () => {
     cy.wrap(onFocus).should('not.have.been.called');
     cy.get('[role="tab"]').last().click().should('have.attr', 'aria-selected', 'true');
     cy.contains('[role="tabpanel"]', 'Second').should('be.visible');
+  });
+
+  it('moves focus from a nav that becomes incomplete into the selected group, leaving outside focus alone', () => {
+    let disable: (index: number | undefined) => void;
+    const Collection = () => {
+      const [disabled, setDisabled] = React.useState<number>();
+      disable = setDisabled;
+      return (
+        <>
+          <button>Outside</button>
+          <Carousel aria-label="Lessons" defaultActiveIndex={1}>
+            <CarouselPrevious />
+            <CarouselViewport>
+              <CarouselCard>First</CarouselCard>
+              <CarouselCard>Second</CarouselCard>
+              <CarouselCard>Third</CarouselCard>
+            </CarouselViewport>
+            <CarouselNext />
+            <CarouselNav>{i => <CarouselNavButton disabled={i === disabled} />}</CarouselNav>
+          </Carousel>
+        </>
+      );
+    };
+    mount(<Collection />);
+    cy.get('[role="tab"]').first().focus().should('be.focused');
+    cy.then(() => disable(2));
+    cy.get('[role="tablist"]').should('not.exist');
+    cy.get('[aria-label="Slide 2 of 3"]').should('be.focused');
+    cy.then(() => disable(undefined));
+    cy.get('[role="tablist"]').should('be.visible');
+    cy.get('[role="tab"]').eq(1).should('have.attr', 'aria-selected', 'true').focus().should('be.focused');
+    // The focused tab itself becoming unavailable.
+    cy.then(() => disable(1));
+    cy.get('[aria-label="Slide 2 of 3"]').should('be.focused');
+    cy.then(() => disable(undefined));
+    cy.get('[role="tablist"]').should('be.visible');
+    cy.contains('button', 'Outside').focus();
+    cy.then(() => disable(0));
+    cy.get('[role="tablist"]').should('not.exist');
+    cy.contains('button', 'Outside').should('be.focused');
+  });
+
+  it('makes a tab panel of plain slides a keyboard stop, but not a panel of cards', () => {
+    mount(
+      <>
+        <button>Before</button>
+        <Carousel aria-label="Plain">
+          <CarouselViewport>{['First', 'Second']}</CarouselViewport>
+          <CarouselNav />
+        </Carousel>
+        <Carousel aria-label="Cards">
+          <CarouselViewport>
+            <CarouselCard>Third</CarouselCard>
+            <CarouselCard>Fourth</CarouselCard>
+          </CarouselViewport>
+          <CarouselNav />
+        </Carousel>
+      </>,
+    );
+    cy.contains('button', 'Before').focus().realPress('Tab');
+    cy.focused().should('have.attr', 'role', 'tabpanel').and('have.text', 'First');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'role', 'tab').realPress('ArrowRight');
+    cy.focused().should('have.attr', 'aria-selected', 'true').realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'role', 'tabpanel').and('have.text', 'Second');
+    cy.realPress('Tab');
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'aria-label', 'Slide 1 of 2').and('have.text', 'Third');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'role', 'tab');
   });
 
   it('allows autofocus in a static slide on the first commit', () => {
@@ -682,6 +979,43 @@ describe('Carousel browser behavior', () => {
     cy.wrap(rootRef).should('have.been.calledOnce');
   });
 
+  it('recovers focus from a staged root callback sibling only when that subtree owns focus', () => {
+    let update: (circular: boolean) => void;
+    const renderRoot: SlotRenderFunction<React.ComponentPropsWithRef<'div'>> = (Component, props) => (
+      <>
+        <button>Navigation help</button>
+        <Component {...props} />
+      </>
+    );
+    const Example = () => {
+      const [circular, setCircular] = React.useState(true);
+      update = setCircular;
+      return (
+        <>
+          <button>Outside</button>
+          <Carousel aria-label="Lessons" circular={circular}>
+            <CarouselViewport>
+              <CarouselCard>First</CarouselCard>
+              <CarouselCard>Second</CarouselCard>
+            </CarouselViewport>
+            <CarouselNext>{renderRoot}</CarouselNext>
+          </Carousel>
+        </>
+      );
+    };
+    mount(<Example />);
+    cy.contains('button', 'Navigation help').should('be.visible').focus();
+    cy.then(() => update(false));
+    cy.contains('button', 'Navigation help').should('not.be.visible');
+    cy.get('[aria-label="Slide 1 of 2"]').should('be.focused');
+    cy.then(() => update(true));
+    cy.contains('button', 'Navigation help').should('be.visible');
+    cy.contains('button', 'Outside').focus();
+    cy.then(() => update(false));
+    cy.contains('button', 'Navigation help').should('not.be.visible');
+    cy.contains('button', 'Outside').should('be.focused');
+  });
+
   it('retains the boundary layout slot without revealing a custom arrow through display:flex', () => {
     const renderButton: SlotRenderFunction<React.ComponentPropsWithRef<'button'>> = (Component, props) => (
       <Component {...props}>Next glyph</Component>
@@ -1022,5 +1356,42 @@ describe('Carousel browser behavior', () => {
     cy.then(() => change(1));
     cy.get('[aria-label="Slide 2 of 2"]').should('be.focused');
     cy.get('[aria-busy="false"]').should('exist');
+  });
+
+  it('recovers focus when the browser drops it from the outgoing group before settlement', () => {
+    let change: (index: number) => void;
+    // A layout read after the commit lets the browser apply its focus fixup to the newly hidden group.
+    const LayoutReader = () => {
+      useIsomorphicLayoutEffect(() => {
+        document.body.getBoundingClientRect();
+        const active = document.activeElement as HTMLElement | null;
+        if (active?.closest('[hidden]')) {
+          active.blur();
+        }
+      });
+      return null;
+    };
+    const Controlled = () => {
+      const [index, setIndex] = React.useState(0);
+      change = setIndex;
+      return (
+        <Carousel aria-label="Controlled" activeIndex={index}>
+          <CarouselViewport>
+            <CarouselCard>
+              <input aria-label="First" />
+            </CarouselCard>
+            <CarouselCard>
+              <input aria-label="Second" />
+            </CarouselCard>
+          </CarouselViewport>
+          <CarouselNav />
+          <LayoutReader />
+        </Carousel>
+      );
+    };
+    mount(<Controlled />);
+    cy.get('input[aria-label="First"]').focus();
+    cy.then(() => change(1));
+    cy.get('[aria-label="Slide 2 of 2"]').should('be.focused');
   });
 });

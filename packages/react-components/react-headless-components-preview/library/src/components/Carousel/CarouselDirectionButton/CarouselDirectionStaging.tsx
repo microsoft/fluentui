@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselDirectionButtonState } from './CarouselDirectionButton.types';
 
 const blockStagedClick = (event: React.MouseEvent) => {
@@ -16,21 +17,24 @@ export const CarouselDirectionStaging = ({
   state: CarouselDirectionButtonState;
   children: React.ReactElement;
 }): React.ReactElement => {
-  const { hidden } = state;
+  const { hidden, stage } = state;
   const inertRef = React.useCallback(
     (node: HTMLDivElement | null) => {
       node?.toggleAttribute('inert', hidden);
     },
     [hidden],
   );
+  const containerRef = useMergedRefs(inertRef, stage?.ref);
   return (
     <>
       <div
         style={{ display: hidden ? 'none' : 'contents' }}
         hidden={hidden}
         aria-hidden={hidden || undefined}
-        ref={inertRef}
+        ref={containerRef}
         onClickCapture={hidden ? blockStagedClick : undefined}
+        onFocus={stage?.onFocus}
+        onBlur={stage?.onBlur}
       >
         {children}
       </div>

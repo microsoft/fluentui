@@ -116,6 +116,11 @@ type CarouselDirectionButtonState = ComponentState<CarouselDirectionButtonSlots>
     rendered: boolean;
     probeRef?: React_2.RefObject<HTMLTemplateElement | null>;
     keepButtonMounted?: boolean;
+    stage?: {
+        ref: React_2.RefObject<HTMLDivElement | null>;
+        onFocus: () => void;
+        onBlur: () => void;
+    };
     hidden: boolean;
     unavailable: boolean;
 };
@@ -240,6 +245,7 @@ export type CarouselViewportState = ComponentState<CarouselViewportSlots> & {
     outgoingIndex: number | undefined;
     paged: boolean;
     nav: boolean;
+    focusablePages: boolean[];
     getPageLabel: (position: number, total: number) => string;
 };
 
