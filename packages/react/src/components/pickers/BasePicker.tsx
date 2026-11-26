@@ -896,7 +896,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   };
 
   protected addItem = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
+    const processedItem: T | PromiseLike<T | null> | null = this.props.onItemSelected
       ? (this.props.onItemSelected as any)(item)
       : item;
 
@@ -905,10 +905,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
 
     const processedItemObject: T = processedItem as T;
-    const processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
+    const processedItemPromiseLike: PromiseLike<T | null> = processedItem as PromiseLike<T | null>;
 
     if (processedItemPromiseLike && processedItemPromiseLike.then) {
-      processedItemPromiseLike.then((resolvedProcessedItem: T) => {
+      processedItemPromiseLike.then((resolvedProcessedItem: T | null) => {
+        if (resolvedProcessedItem === null) {
+          return;
+        }
         const newItems: T[] = this.state.items.concat([resolvedProcessedItem]);
         this._updateSelectedItems(newItems);
       });

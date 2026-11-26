@@ -230,7 +230,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * A callback to process a selection after the user selects something from the picker. If the callback returns null,
    * the item will not be added to the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T | null> | null;
 
   /**
    * The items that the base picker should currently display as selected.
