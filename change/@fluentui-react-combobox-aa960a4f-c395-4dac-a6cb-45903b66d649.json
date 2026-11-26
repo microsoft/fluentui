@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add header font family",
+  "packageName": "@fluentui/react-combobox",
+  "email": "mingyuanyu@microsoft.com",
+  "dependentChangeType": "patch"
+}
