@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: leave out custom tick values that a log axis cannot place",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
