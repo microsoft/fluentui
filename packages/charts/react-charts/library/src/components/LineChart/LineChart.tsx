@@ -215,9 +215,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
         calloutPointsRef.current = calloutData(pointsRef.current);
       }
-      // A callout that was open when the data went away has nothing left to point at.
+      // A callout or a hover guide line that was showing when the data went away has nothing left to point at.
       if (_isChartEmpty()) {
         setPopoverOpen(false);
+        _handleMouseOut();
       }
     }, [props.height, props.width, props.data]);
 
@@ -541,7 +542,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
       const lines: JSXElement[] = [];
-      if (isSelectedLegend) {
+      // A selection holds the series that were selected. Once the data is gone, they are no longer in the chart.
+      if (isSelectedLegend && !_isChartEmpty()) {
         _points = selectedLegendPoints;
       } else {
         _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
@@ -1395,13 +1397,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _createColorFillBars(containerHeight: number) {
       const colorFillBars: JSXElement[] = [];
-      if (isSelectedLegend) {
+      // Without data points, a selection that holds only lines has nothing left to show, so it hides no bars.
+      if (isSelectedLegend && (selectedColorBarLegend.length > 0 || !_isChartEmpty())) {
         _colorFillBars.current = selectedColorBarLegend;
       } else {
         _colorFillBars.current = props.colorFillBars!;
       }
 
-      const yMinMaxValues = findNumericMinMaxOfY(_points);
+      // The bars reach up to the highest y value. Without data points, that is the top of the y range from the props.
+      const yRange = _isChartEmpty() ? _getYAxisRangeFromProps() : undefined;
+      const yMinMaxValues = yRange ? { startValue: yRange[0], endValue: yRange[1] } : findNumericMinMaxOfY(_points);
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
@@ -1926,7 +1931,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     _isXAxisDateType = _isChartEmpty() ? _getXAxisRangeFromProps()?.[0] instanceof Date : getXAxisType(_points);
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
-      points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
+      points = selectedLegendPoints.length >= 1 && !_isChartEmpty() ? selectedLegendPoints : _points;
       calloutPointsRef.current = calloutData(points);
     }
 

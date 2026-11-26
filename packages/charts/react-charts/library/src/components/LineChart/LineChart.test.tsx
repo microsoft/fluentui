@@ -1188,6 +1188,79 @@ describe('Axes of a chart without data', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
 
+  it('Should not draw a series that was selected before the data went away', () => {
+    const chartProps = {
+      xMinValue: 0,
+      xMaxValue: 100,
+      yMaxValue: 100,
+      legendProps: { canSelectMultipleLegends: true },
+    };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...chartProps} />);
+    const legend = container.querySelector<HTMLElement>('button[role="option"]')!;
+    fireEvent.click(legend);
+    expect(legend).toHaveAttribute('aria-selected', 'true');
+    expect(container.querySelectorAll('[id^="lineID"]').length).toBeGreaterThan(0);
+
+    rerender(<LineChart data={emptyChartPoints} {...chartProps} />);
+    expect(container.querySelectorAll('[id^="lineID"]')).toHaveLength(0);
+    expect(container.querySelectorAll('[id^="circle"]')).toHaveLength(0);
+    expect(getTicks(container, 'y').length).toBeGreaterThan(1);
+  });
+
+  it('Should hide the hover guide line when the data goes away', () => {
+    const rangeProps = { xMinValue: 0, xMaxValue: 100, yMaxValue: 100 };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...rangeProps} />);
+    const getGuideLine = () => container.querySelector('line[id^="verticalLine"]')!;
+    fireEvent.focus(container.querySelector<SVGElement>('[id^="circle"][tabindex="0"]')!);
+    expect(getGuideLine()).not.toHaveAttribute('visibility', 'hidden');
+
+    rerender(<LineChart data={emptyChartPoints} {...rangeProps} />);
+    expect(getGuideLine()).toHaveAttribute('visibility', 'hidden');
+  });
+
+  it('Should draw color fill bars over the y range when there is no data', () => {
+    const { container } = render(
+      <LineChart
+        data={emptyChartPoints}
+        xMinValue={0}
+        xMaxValue={100}
+        yMaxValue={40}
+        colorFillBars={[{ legend: 'Range 1', color: 'blue', data: [{ startX: 10, endX: 30 }] }]}
+      />,
+    );
+    const bars = container.querySelectorAll('rect[fill-opacity]');
+    const tickPositions = getTicks(container, 'y').map(tick =>
+      Number(/translate\(0,([^)]+)\)/.exec(tick.getAttribute('transform')!)![1]),
+    );
+    const top = Math.min(...tickPositions);
+    const bottom = Math.max(...tickPositions);
+
+    expect(bars).toHaveLength(1);
+    const y = Number(bars[0].getAttribute('y'));
+    const height = Number(bars[0].getAttribute('height'));
+    expect(Number(bars[0].getAttribute('width'))).toBeGreaterThan(0);
+    // The bar reaches from 0 up to yMaxValue: it starts 3px above the highest tick and ends at the lowest one.
+    expect(height).toBeCloseTo(bottom - top + 3, 5);
+    expect(Math.abs(y + height - bottom)).toBeLessThan(1);
+  });
+
+  it('Should keep the color fill bars when a selected series goes away with the data', () => {
+    const chartProps = {
+      xMinValue: 0,
+      xMaxValue: 100,
+      yMaxValue: 100,
+      legendProps: { canSelectMultipleLegends: true },
+      colorFillBars: [{ legend: 'Range 1', color: 'blue', data: [{ startX: 10, endX: 30 }] }],
+    };
+    const { container, rerender } = render(<LineChart data={basicChartPoints} {...chartProps} />);
+    // With data, a selected series hides the bars that are not selected.
+    fireEvent.click(container.querySelector<HTMLElement>('button[role="option"]')!);
+    expect(container.querySelectorAll('rect[fill-opacity]')).toHaveLength(0);
+
+    rerender(<LineChart data={emptyChartPoints} {...chartProps} />);
+    expect(container.querySelectorAll('rect[fill-opacity]')).toHaveLength(1);
+  });
+
   it('Should mirror the x-axis in RTL', () => {
     const chart = <LineChart data={emptyChartPoints} tickValues={[0, 25, 50, 75, 100]} yMaxValue={40} />;
     const ltrTicks = getTicks(render(chart).container, 'x');
