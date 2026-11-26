@@ -562,6 +562,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
+    // Show the popover at the pointer, or at the middle of the focused line point.
+    if ('clientX' in _refSelected) {
+      updatePosition(_refSelected.clientX, _refSelected.clientY);
+    } else {
+      const targetRect = _refSelected.getBoundingClientRect();
+      updatePosition(targetRect.left + targetRect.width / 2, targetRect.top + targetRect.height / 2);
+    }
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(lineLegendText));
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: place the VerticalBarChart popover at the hovered or focused line point",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
