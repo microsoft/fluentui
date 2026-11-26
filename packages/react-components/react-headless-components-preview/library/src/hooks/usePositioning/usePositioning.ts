@@ -109,17 +109,27 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     };
   }, [effectiveTarget, anchorName]);
 
+  // The trigger is tracked in a ref and only promoted to state once a container exists (the surface is rendered):
+  // a closed overlay then neither re-renders after mount nor writes `anchor-name` onto its trigger.
+  const triggerNodeRef = React.useRef<HTMLElement | null>(null);
+  const containerNodeRef = React.useRef<HTMLElement | null>(null);
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
+    triggerNodeRef.current = node;
+    // A removed trigger is always released, so a closed overlay never keeps (or anchors) a detached element.
+    if (containerNodeRef.current || node === null) {
+      setTriggerEl(node);
+    }
   }, []);
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
+      containerNodeRef.current = node;
       setContainerEl(node);
 
       if (!node) {
         return;
       }
+      setTriggerEl(triggerNodeRef.current);
 
       node.style.setProperty('position', strategy);
       node.style.setProperty('inset', 'auto');
