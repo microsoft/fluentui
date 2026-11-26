@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: let remeasure() refresh stale ResizeGroup and CommandBar measurements",
+  "packageName": "@fluentui/react",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

@@ -366,6 +366,10 @@ function useResizeState(
   const stateRef = React.useRef<IResizeGroupState>(initialStateData);
   stateRef.current = { ...resizeData };
 
+  // The data of the latest render, for remeasure, which runs outside of a render.
+  const dataRef = React.useRef(props.data);
+  dataRef.current = props.data;
+
   const updateResizeState = React.useCallback((nextState?: IResizeGroupState) => {
     if (nextState) {
       dispatchResizeDataAction({
@@ -375,7 +379,7 @@ function useResizeState(
     }
   }, []);
 
-  const remeasure: () => void = React.useCallback(() => {
+  const remeasureContainer: () => void = React.useCallback(() => {
     if (rootRef.current) {
       dispatchResizeDataAction({
         type: 'measureContainer',
@@ -384,11 +388,28 @@ function useResizeState(
     }
   }, [rootRef]);
 
-  return [stateRef, updateResizeState, remeasure] as const;
+  // Starts over from the full data, the same way as when new data is provided.
+  const remeasureData: () => void = React.useCallback(() => {
+    dispatchResizeDataAction({
+      type: 'dataToMeasure',
+      value: dataRef.current,
+    });
+  }, []);
+
+  return [stateRef, dataRef, updateResizeState, remeasureContainer, remeasureData] as const;
 }
 
 function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
-  const nextResizeGroupStateProvider = useConst(getNextResizeGroupStateProvider);
+  // The cache is held in an object so that remeasure can replace it with an empty one.
+  const measurementCache = useConst(() => ({ current: getMeasurementCache() }));
+  const nextResizeGroupStateProvider = useConst(() =>
+    getNextResizeGroupStateProvider({
+      getCachedMeasurement: data => measurementCache.current.getCachedMeasurement(data),
+      addMeasurementToCache: (data, measurement) => measurementCache.current.addMeasurementToCache(data, measurement),
+    }),
+  );
+  // True from a remeasure call until the cached measurement of the full data has been checked against a new one.
+  const checkMeasurementCache = React.useRef(false);
 
   // A div that can be used for the initial measurement so that we can avoid mounting a second instance
   // of the component being measured for the initial render.
@@ -400,10 +421,22 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
   // for the initial render.
   const hasRenderedContent = React.useRef(false);
+  // Whether the latest render used the initial div to measure dataToMeasure.
+  const isInitialMeasureRef = React.useRef(false);
 
   const async: Async = useAsync();
 
-  const [stateRef, updateResizeState, remeasure] = useResizeState(props, nextResizeGroupStateProvider, rootRef);
+  const [stateRef, dataRef, updateResizeState, remeasureContainer, remeasureData] = useResizeState(
+    props,
+    nextResizeGroupStateProvider,
+    rootRef,
+  );
+
+  // Whether a remeasure call still waits for its check, and the data to measure is the full data it asked for.
+  const isCheckingMeasurementCache = (): boolean =>
+    checkMeasurementCache.current &&
+    !!stateRef.current.dataToMeasure &&
+    stateRef.current.dataToMeasure === dataRef.current;
 
   React.useEffect(() => {
     if (stateRef.current.renderedData) {
@@ -420,19 +453,35 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         containerDimension =
           props.direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
+      const refToMeasure = isInitialMeasureRef.current ? initialHiddenDiv : updateHiddenDiv;
+      const getElementToMeasureDimension = (): number => {
+        if (!refToMeasure.current) {
+          return 0;
+        }
+        const measuredBoundingRect = refToMeasure.current.getBoundingClientRect();
+        return props.direction === ResizeGroupDirection.vertical
+          ? measuredBoundingRect.height
+          : measuredBoundingRect.width;
+      };
+
+      // After a remeasure call, compare the cached measurement of the full data with the size it has now. If
+      // they differ, something other than the data has changed the size of the content, for example a style
+      // sheet or a font, and none of the cached measurements can be trusted.
+      if (isCheckingMeasurementCache() && refToMeasure.current) {
+        checkMeasurementCache.current = false;
+        const cachedDimension = measurementCache.current.getCachedMeasurement(dataRef.current);
+        const measuredDimension = getElementToMeasureDimension();
+        // Content that measures 0 is not laid out, for example inside display: none. That says nothing about
+        // the cached measurements.
+        if (measuredDimension !== 0 && cachedDimension !== measuredDimension) {
+          measurementCache.current = getMeasurementCache();
+        }
+      }
+
       const nextState = nextResizeGroupStateProvider.getNextState(
         props,
         stateRef.current,
-        () => {
-          const refToMeasure = !hasRenderedContent.current ? initialHiddenDiv : updateHiddenDiv;
-          if (!refToMeasure.current) {
-            return 0;
-          }
-          const measuredBoundingRect = refToMeasure.current.getBoundingClientRect();
-          return props.direction === ResizeGroupDirection.vertical
-            ? measuredBoundingRect.height
-            : measuredBoundingRect.width;
-        },
+        getElementToMeasureDimension,
         containerDimension,
       );
 
@@ -441,13 +490,29 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   });
 
   const win = useWindow();
-  useOnEvent(win, 'resize', async.debounce(remeasure, RESIZE_DELAY, { leading: true }));
+  // A window resize changes the available space only, so it keeps using the cached measurements.
+  useOnEvent(win, 'resize', async.debounce(remeasureContainer, RESIZE_DELAY, { leading: true }));
 
-  const dataNeedsMeasuring = nextResizeGroupStateProvider.shouldRenderDataForMeasurement(
-    stateRef.current.dataToMeasure,
-  );
+  const remeasure: () => void = React.useCallback(() => {
+    if (!rootRef.current) {
+      return;
+    }
+    if (dataRef.current?.cacheKey) {
+      checkMeasurementCache.current = true;
+      remeasureData();
+    } else {
+      // Measurements of data without a cacheKey are never cached, so there is nothing to check.
+      remeasureContainer();
+    }
+  }, [rootRef, dataRef, remeasureContainer, remeasureData]);
+
+  // While a remeasure call waits for its check, the full data is rendered for measurement even when it is cached.
+  const dataNeedsMeasuring =
+    nextResizeGroupStateProvider.shouldRenderDataForMeasurement(stateRef.current.dataToMeasure) ||
+    isCheckingMeasurementCache();
 
   const isInitialMeasure = !hasRenderedContent.current && dataNeedsMeasuring;
+  isInitialMeasureRef.current = isInitialMeasure;
 
   return [
     stateRef.current.dataToMeasure,

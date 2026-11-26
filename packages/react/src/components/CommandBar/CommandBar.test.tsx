@@ -5,6 +5,7 @@ import { CommandBar } from './CommandBar';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
 import type { IContextualMenuItem } from '../../ContextualMenu';
+import type { ICommandBar } from './CommandBar.types';
 
 describe('CommandBar', () => {
   beforeEach(() => {
@@ -297,5 +298,62 @@ describe('CommandBar', () => {
 
     // Make sure the menu is still open after the re-render
     expect(getByRole('menu').querySelector('.SubMenuClassUpdate')).toBeTruthy();
+  });
+
+  it('keeps focus() working after remeasure()', () => {
+    jest.useFakeTimers();
+    // jsdom has no layout, so focus() takes every element for hidden unless it has an offsetParent.
+    const offsetParent = jest
+      .spyOn(HTMLElement.prototype, 'offsetParent', 'get')
+      .mockImplementation(function (this: HTMLElement) {
+        return this.parentElement;
+      });
+    // A measurement pass ends in a render that schedules the next pass, and focus() moves the focus in the
+    // next frame, so run the timers until none are left.
+    const runAllTimers = () => {
+      for (let pass = 0; pass < 20 && jest.getTimerCount() > 0; pass++) {
+        act(() => {
+          jest.runAllTimers();
+        });
+      }
+    };
+
+    try {
+      const commandBar = React.createRef<ICommandBar>();
+      const { getAllByRole } = render(
+        <CommandBar
+          componentRef={commandBar}
+          items={[
+            { key: '1', text: 'First' },
+            { key: '2', text: 'Second' },
+          ]}
+        />,
+      );
+      runAllTimers();
+
+      act(() => {
+        commandBar.current!.focus();
+      });
+      runAllTimers();
+      expect(document.activeElement).toBe(getAllByRole('menuitem')[0]);
+      act(() => {
+        (document.activeElement as HTMLElement).blur();
+      });
+      expect(document.activeElement).toBe(document.body);
+
+      // remeasure() renders a hidden copy of the items to measure them, and removes it again.
+      act(() => {
+        commandBar.current!.remeasure();
+      });
+      runAllTimers();
+
+      act(() => {
+        commandBar.current!.focus();
+      });
+      runAllTimers();
+      expect(document.activeElement).toBe(getAllByRole('menuitem')[0]);
+    } finally {
+      offsetParent.mockRestore();
+    }
   });
 });

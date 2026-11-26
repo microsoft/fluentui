@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
 import { getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { getBySelector } from '../../common/testUtilities';
 import type { IResizeGroupState } from './ResizeGroup.base';
+import type { IResizeGroup, IResizeGroupProps } from './ResizeGroup.types';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -603,5 +604,229 @@ describe('ResizeGroup', () => {
     const nextState = stateProvider.getNextState(props, initialState, getElementToMeasureWidth, containerWidth);
 
     expect(nextState!.dataToMeasure.scalingIndex).toEqual(7);
+  });
+});
+
+describe('ResizeGroup remeasure', () => {
+  interface IItemsData {
+    count: number;
+    cacheKey?: string;
+  }
+
+  const fullData: IItemsData = { count: 5, cacheKey: 'items5' };
+  const onReduceItems = (data: IItemsData): IItemsData | undefined =>
+    data.count > 1 ? { count: data.count - 1, cacheKey: data.cacheKey && `items${data.count - 1}` } : undefined;
+  const onGrowItems = (data: IItemsData): IItemsData | undefined =>
+    data.count < 5 ? { count: data.count + 1, cacheKey: `items${data.count + 1}` } : undefined;
+  const onRenderItems = (data: IItemsData) => <div data-item-count={data.count} />;
+  const growCases: Array<[string, IResizeGroupProps['onGrowData']]> = [
+    ['without onGrowData', undefined],
+    ['with onGrowData', onGrowItems],
+  ];
+
+  // jsdom has no layout, so each test sets the width of one item and of the container.
+  let itemWidth: number;
+  let containerWidth: number;
+  // How many times the data was measured.
+  let measurements: number;
+  const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    itemWidth = 100;
+    containerWidth = 500;
+    measurements = 0;
+    Element.prototype.getBoundingClientRect = function (this: HTMLElement): DOMRect {
+      let width = 0;
+      if (this.classList.contains('resizeGroupRoot')) {
+        width = containerWidth;
+      } else if (this.style.visibility === 'hidden') {
+        // The div that the ResizeGroup renders data into to measure it.
+        width = Number(this.querySelector('[data-item-count]')!.getAttribute('data-item-count')) * itemWidth;
+        measurements++;
+      }
+      return { width, height: 0, top: 0, right: width, bottom: 0, left: 0, x: 0, y: 0 } as DOMRect;
+    };
+  });
+
+  afterEach(() => {
+    Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+    jest.useRealTimers();
+  });
+
+  // A measurement pass ends in a render that schedules the next pass, so run the timers until none are left.
+  const runAllTimers = () => {
+    for (let pass = 0; pass < 20 && jest.getTimerCount() > 0; pass++) {
+      act(() => {
+        jest.runAllTimers();
+      });
+    }
+    expect(jest.getTimerCount()).toBe(0);
+  };
+
+  const renderResizeGroup = (props: Partial<IResizeGroupProps> = {}, settle: boolean = true) => {
+    const componentRef = React.createRef<IResizeGroup>();
+    const group = (data: IItemsData = fullData) => (
+      <ResizeGroup
+        className="resizeGroupRoot"
+        componentRef={componentRef}
+        data={data}
+        onReduceData={onReduceItems}
+        onRenderData={onRenderItems}
+        {...props}
+      />
+    );
+    const { container, rerender } = render(group());
+    if (settle) {
+      runAllTimers();
+    }
+
+    const getRenderedCount = () =>
+      Number(
+        getBySelector(container, '[data-automation-id="visibleContent"] [data-item-count]')!.getAttribute(
+          'data-item-count',
+        ),
+      );
+    const remeasure = () => {
+      act(() => {
+        componentRef.current!.remeasure();
+      });
+      runAllTimers();
+    };
+
+    return { componentRef, getRenderedCount, remeasure, rerenderWithData: (data: IItemsData) => rerender(group(data)) };
+  };
+
+  it.each(growCases)('fits the data again when remeasure finds that it has become larger (%s)', (_name, onGrowData) => {
+    const { getRenderedCount, remeasure } = renderResizeGroup({ onGrowData });
+    expect(getRenderedCount()).toBe(5);
+
+    // Something other than the data makes every item wider, for example a style sheet.
+    itemWidth = 150;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it.each(growCases)(
+    'fits the data again when remeasure finds that it has become smaller (%s)',
+    (_name, onGrowData) => {
+      containerWidth = 300;
+      const { getRenderedCount, remeasure } = renderResizeGroup({ onGrowData });
+      expect(getRenderedCount()).toBe(3);
+
+      itemWidth = 50;
+      remeasure();
+
+      expect(getRenderedCount()).toBe(5);
+    },
+  );
+
+  it('fits the data when remeasure is called after a first layout that had no size', () => {
+    // The same as a ResizeGroup inside an element with display: none.
+    itemWidth = 0;
+    containerWidth = 0;
+    const { getRenderedCount, remeasure } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(5);
+
+    itemWidth = 100;
+    containerWidth = 300;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('keeps the cached measurements when remeasure is called while the group has no size', () => {
+    containerWidth = 300;
+    const { getRenderedCount, remeasure } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+
+    // The same as an ancestor that got display: none after the first layout.
+    itemWidth = 0;
+    containerWidth = 0;
+    remeasure();
+    expect(getRenderedCount()).toBe(3);
+
+    // Shown again. The cached measurements are still the real ones, so one measurement is enough.
+    itemWidth = 100;
+    containerWidth = 300;
+    measurements = 0;
+    remeasure();
+    expect(getRenderedCount()).toBe(3);
+    expect(measurements).toBe(1);
+  });
+
+  it('measures the data once and keeps the cache when remeasure finds the size unchanged', () => {
+    containerWidth = 300;
+    const { getRenderedCount, remeasure } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+    expect(measurements).toBe(3);
+
+    measurements = 0;
+    containerWidth = 400;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(1);
+  });
+
+  it('fits the data when remeasure is called in the frame that first shows the content', () => {
+    const { componentRef, getRenderedCount } = renderResizeGroup({}, false);
+
+    act(() => {
+      // The first measurement finds that all items fit. The items get wider before that result is rendered,
+      // and remeasure lands in the same render.
+      jest.runOnlyPendingTimers();
+      itemWidth = 150;
+      componentRef.current!.remeasure();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('fits the data again when remeasure is called together with a new data object', () => {
+    const { componentRef, getRenderedCount, rerenderWithData } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(5);
+
+    // A parent such as CommandBar passes a new data object with the same cacheKey on every render.
+    itemWidth = 150;
+    act(() => {
+      componentRef.current!.remeasure();
+      rerenderWithData({ ...fullData });
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(3);
+  });
+
+  it('measures only what is rendered when the data has no cacheKey', () => {
+    containerWidth = 300;
+    const { getRenderedCount, remeasure } = renderResizeGroup({ data: { count: 5 } });
+    expect(getRenderedCount()).toBe(3);
+
+    // Nothing is cached for this data, so remeasure shrinks from what is rendered, as it did before.
+    measurements = 0;
+    itemWidth = 150;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(2);
+    expect(measurements).toBe(2);
+  });
+
+  it('does not measure cached data again when the window is resized', () => {
+    containerWidth = 300;
+    const { getRenderedCount } = renderResizeGroup();
+    expect(getRenderedCount()).toBe(3);
+
+    measurements = 0;
+    containerWidth = 400;
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(4);
+    expect(measurements).toBe(0);
   });
 });

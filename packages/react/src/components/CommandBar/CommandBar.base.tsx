@@ -9,7 +9,7 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { OverflowSet } from '../../OverflowSet';
-import { ResizeGroup } from '../../ResizeGroup';
+import { MeasuredContext, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandBarButton } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
@@ -135,16 +135,22 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         aria-label={ariaLabel}
       >
         {/*Primary Items*/}
-        <OverflowSet
-          role={hasSecondSet ? 'group' : 'none'}
-          aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
-          componentRef={this._overflowSet}
-          className={css(this._classNames.primarySet)}
-          items={data.primaryItems}
-          overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
-          onRenderItem={this._onRenderItem}
-          onRenderOverflowButton={this._onRenderOverflowButton}
-        />
+        <MeasuredContext.Consumer>
+          {({ isMeasured }) => (
+            <OverflowSet
+              role={hasSecondSet ? 'group' : 'none'}
+              aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
+              // ResizeGroup also renders the data in a hidden copy to measure it. That copy must not take the
+              // ref, because it would clear the ref when it is removed, and focus() would stop working.
+              componentRef={isMeasured ? undefined : this._overflowSet}
+              className={css(this._classNames.primarySet)}
+              items={data.primaryItems}
+              overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
+              onRenderItem={this._onRenderItem}
+              onRenderOverflowButton={this._onRenderOverflowButton}
+            />
+          )}
+        </MeasuredContext.Consumer>
 
         {/*Secondary Items*/}
         {hasSecondSet && (
