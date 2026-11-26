@@ -328,6 +328,26 @@ describe('Dropdown', () => {
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
   });
 
+  it('does not select an option when the open dropdown becomes disabled', () => {
+    const onOptionSelect = jest.fn();
+    const renderDropdown = (disabled = false) => (
+      <Dropdown open disabled={disabled} defaultSelectedOptions={['Apple']} onOptionSelect={onOptionSelect}>
+        <Option>Apple</Option>
+        <Option>Orange</Option>
+      </Dropdown>
+    );
+    const { rerender, getByRole } = render(renderDropdown());
+    rerender(renderDropdown(true));
+    const orange = getByRole('option', { name: 'Orange' });
+    expect(orange.getAttribute('aria-disabled')).toEqual('true');
+    fireEvent.click(orange);
+    fireEvent.keyDown(getByRole('listbox'), { key: 'Enter' });
+    expect(onOptionSelect).not.toHaveBeenCalled();
+    rerender(renderDropdown());
+    fireEvent.click(orange);
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+  });
+
   it('selects an option on click', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown defaultOpen>
