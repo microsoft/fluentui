@@ -1051,6 +1051,83 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 });
 
+describe('Vertical bar chart - Default color of the line', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // Without `lineLegendColor`, the line, its points and the popover show the line in the color of its legend.
+  // An open popover holds the legend text as well, so the legend is the one inside a button.
+  const legendButton = () =>
+    screen
+      .getAllByText('Target')
+      .map(element => element.closest('button'))
+      .find(button => button !== null)!;
+  const legendColor = () => legendButton().style.getPropertyValue('--rect-backgroundColor');
+  // The parts of the open popover that an inline style draws in a color of the yellow palette.
+  const yellowPartsOfPopover = () =>
+    Array.from(document.querySelectorAll<HTMLElement>('.fui-PopoverSurface *')).filter(element =>
+      (element.getAttribute('style') ?? '').includes('colorPaletteYellow'),
+    );
+
+  testWithoutWait(
+    'Should draw the line and its points in the default color of the line legend',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'Target' },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(legendColor()).toEqual('var(--colorPaletteYellowForeground1)');
+      expect(line).toHaveLength(1);
+      expect(line[0].getAttribute('stroke')).toEqual(legendColor());
+      expect(points).toHaveLength(7);
+      points.forEach((point: HTMLElement) => expect(point.getAttribute('stroke')).toEqual(legendColor()));
+    },
+  );
+
+  test('Should mark the line in the popover of a bar with the default color of the line legend', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText="Target" />);
+    const color = legendColor();
+    fireEvent.mouseOver(getById(container, /_VBC_bar/i)[0]);
+    await waitFor(() => expect(document.querySelector('.fui-PopoverSurface')?.textContent).toContain('Target'));
+    // Assert
+    expect(yellowPartsOfPopover().length).toBeGreaterThan(0);
+    yellowPartsOfPopover().forEach(part => {
+      expect(part.getAttribute('style')).toContain(color);
+      expect(part.getAttribute('style')).not.toContain('colorPaletteYellowBackground1');
+    });
+  });
+
+  test('Should write the value in the popover of a line point in the default color of the line legend', async () => {
+    const { container } = render(<VerticalBarChart data={pointsWithLine} lineLegendText="Target" />);
+    const color = legendColor();
+    // With the legend of the line selected, a point of the line opens a popover of its own.
+    fireEvent.click(legendButton());
+    fireEvent.mouseOver(getById(container, /_VBC_point/i)[0]);
+    await waitFor(() => expect(document.querySelector('.fui-PopoverSurface')?.textContent).toContain('Target'));
+    // Assert
+    expect(yellowPartsOfPopover().length).toBeGreaterThan(0);
+    yellowPartsOfPopover().forEach(part => {
+      expect(part.getAttribute('style')).toContain(color);
+      expect(part.getAttribute('style')).not.toContain('colorPaletteYellowBackground1');
+    });
+  });
+
+  testWithoutWait(
+    'Should keep a given lineLegendColor for the line, its points and its legend',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'Target', lineLegendColor: 'brown' },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(legendColor()).toEqual('brown');
+      expect(line[0].getAttribute('stroke')).toEqual('brown');
+      points.forEach((point: HTMLElement) => expect(point.getAttribute('stroke')).toEqual('brown'));
+    },
+  );
+});
+
 describe('Render empty chart calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

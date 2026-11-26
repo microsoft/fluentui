@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: draw the VerticalBarChart line in the default color of its legend",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}
