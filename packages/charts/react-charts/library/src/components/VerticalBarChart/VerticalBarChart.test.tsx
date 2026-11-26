@@ -1035,6 +1035,82 @@ describe('Render calling with respective to props', () => {
   });
 });
 
+describe('Vertical bar chart - Line point popover', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  const data: VerticalBarChartDataPoint[] = [
+    { x: 'Mon', y: 20, legend: 'Rooms Mon', lineData: { y: 10 } },
+    { x: 'Tue', y: 25, legend: 'Rooms Tue', lineData: { y: 15 } },
+    { x: 'Wed', y: 30, legend: 'Rooms Wed', lineData: { y: 12 } },
+  ];
+  // The line points have their own popover when the legend of the line is selected.
+  const renderWithLineLegendSelected = async () => {
+    const { container } = render(
+      <VerticalBarChart data={data} lineLegendText="Target" legendProps={{ selectedLegends: ['Target'] }} />,
+    );
+    await waitFor(() => expect(getById(container, /_VBC_point/i)).toHaveLength(3));
+    const points: HTMLElement[] = getById(container, /_VBC_point/i);
+    // jsdom has no layout, so give each line point a place: 100 pixels apart horizontally and 30 vertically.
+    points.forEach((point, index) => {
+      jest.spyOn(point, 'getBoundingClientRect').mockReturnValue({
+        left: 100 + 100 * index,
+        top: 40 + 30 * index,
+        right: 116 + 100 * index,
+        bottom: 56 + 30 * index,
+        width: 16,
+        height: 16,
+        x: 100 + 100 * index,
+        y: 40 + 30 * index,
+      } as DOMRect);
+    });
+    return points;
+  };
+  const popoverText = () => document.querySelector('.fui-PopoverSurface')?.textContent ?? '';
+  // The popover of a line point shows the x value, the legend of the line and the value of the line.
+  const expectLinePopover = (x: string) =>
+    waitFor(() => {
+      expect(popoverText()).toContain(x);
+      expect(popoverText()).toContain('Target');
+    });
+  // The vertical place of the popover. The horizontal one says nothing here, because the page has no width in jsdom.
+  const popoverTop = () => {
+    const transform = document.querySelector<HTMLElement>('.fui-PopoverSurface')?.style.transform ?? '';
+    const match = /translate(?:3d)?\((-?[\d.]+)px, (-?[\d.]+)px/.exec(transform);
+    return match ? Number(match[2]) : undefined;
+  };
+
+  test('Should move the popover to the focused line point', async () => {
+    const points = await renderWithLineLegendSelected();
+
+    fireEvent.focus(points[0]);
+    await expectLinePopover('Mon');
+    await waitFor(() => expect(popoverTop()).toBeDefined());
+    const top = popoverTop()!;
+
+    fireEvent.focus(points[1]);
+    await expectLinePopover('Tue');
+    await waitFor(() => expect(popoverTop()).toBe(top + 30));
+
+    fireEvent.focus(points[2]);
+    await expectLinePopover('Wed');
+    await waitFor(() => expect(popoverTop()).toBe(top + 60));
+  });
+
+  test('Should show the popover at the pointer over a line point', async () => {
+    const points = await renderWithLineLegendSelected();
+
+    fireEvent.mouseOver(points[0], { clientX: 300, clientY: 100 });
+    await expectLinePopover('Mon');
+    await waitFor(() => expect(popoverTop()).toBeDefined());
+    const top = popoverTop()!;
+
+    fireEvent.mouseOver(points[1], { clientX: 400, clientY: 150 });
+    await expectLinePopover('Tue');
+    await waitFor(() => expect(popoverTop()).toBe(top + 50));
+  });
+});
+
 describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
