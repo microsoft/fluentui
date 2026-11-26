@@ -35,6 +35,10 @@ Each line in the chart can contain a 2 px border for better highlighting of the 
 
 We use a path-based rendering technique to show datasets with large number of points (greater than 1k). Using this technique datasets with over 10k points can be rendered with high performance. Enable this rendering method by setting the `optimizeLargeData` prop to true. Refer to the [performance section](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md#performance) to know more about our performance benchmarks.
 
+#### Chart without data
+
+A line chart without data points shows nothing. To show the empty axes instead, give both axes a range through props. For the y-axis, set `yMaxValue`, and also `yMinValue` if the range does not start at 0. On a log y-axis, `yMinValue` must be greater than 0. On a log x-axis, `xMinValue` must be greater than 0 when it is set. For the x-axis, set `tickValues` to at least two different dates or numbers. A numeric x-axis can also take its range from `xMinValue` and `xMaxValue`. Numeric tick values define the range only while the chart has no data. With data, the range comes from the data, `xMinValue` and `xMaxValue`.
+
 #### Custom accessibility
 
 Line chart provides a bunch of props to enable custom accessibility messages. Use `xAxisCalloutAccessibilityData` and `callOutAccessibilityData` to configure x axis and y axis accessibility messages, respectively.

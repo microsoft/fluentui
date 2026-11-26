@@ -2,7 +2,8 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { LineChartPoints, LineChart, ChartProps, DataVizPalette, CustomizedCalloutData } from '@fluentui/react-charts';
+import type { LineChartPoints, ChartProps, CustomizedCalloutData } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/LineChart',
@@ -826,3 +827,33 @@ export const Gaps = () => {
 export const GapsRTL = getStoryVariant(Gaps, RTL);
 
 export const GapsDarkMode = getStoryVariant(Gaps, DARK_MODE);
+
+// A chart without data draws its axes when the props give both of them a range.
+export const EmptyWithAxes = () => {
+  const data: ChartProps = { chartTitle: 'Line Chart', lineChartData: [] };
+  const tickValues = [
+    new Date('2020-03-03T00:00:00.000Z'),
+    new Date('2020-03-05T00:00:00.000Z'),
+    new Date('2020-03-07T00:00:00.000Z'),
+    new Date('2020-03-09T00:00:00.000Z'),
+  ];
+  const rootStyle = { width: `700px`, height: `300px` };
+  // Wide enough for the first and the last date label, which are centered on the ends of the axis.
+  const margins = { left: 50, top: 20, bottom: 35, right: 50 };
+
+  return (
+    <div style={rootStyle}>
+      <LineChart
+        culture="en-US"
+        data={data}
+        tickValues={tickValues}
+        yMaxValue={300000}
+        height={300}
+        width={700}
+        margins={margins}
+      />
+    </div>
+  );
+};
+
+export const EmptyWithAxesRTL = getStoryVariant(EmptyWithAxes, RTL);
