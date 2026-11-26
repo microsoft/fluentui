@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: let the bars of a VerticalBarChart take the pointer in the area under its line",
+  "packageName": "@fluentui/react-charting",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

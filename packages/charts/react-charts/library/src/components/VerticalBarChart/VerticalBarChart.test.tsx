@@ -946,6 +946,50 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 });
 
+describe('Vertical bar chart - Pointer events of the line', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // The line is drawn above the bars, and its fill covers the area between the line and a straight line from its
+  // first to its last point. A browser gives the pointer to that area unless the line is taken out of hit testing.
+  // jsdom does no hit testing, so these tests check the attribute that takes the line out of it.
+  testWithoutWait(
+    'Should not let the line take the pointer from the bars',
+    VerticalBarChart,
+    { data: pointsWithLine },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      // Assert
+      expect(line).toHaveLength(1);
+      expect(line[0].getAttribute('pointer-events')).toEqual('none');
+    },
+  );
+
+  testWithoutWait(
+    'Should not let the border of the line take the pointer from the bars',
+    VerticalBarChart,
+    { data: pointsWithLine, lineOptions: { lineBorderWidth: 2 } },
+    container => {
+      const lines = getById(container, /_VBC_line/i);
+      // Assert
+      expect(lines).toHaveLength(2);
+      lines.forEach((line: HTMLElement) => expect(line.getAttribute('pointer-events')).toEqual('none'));
+    },
+  );
+
+  testWithoutWait(
+    'Should leave the points of the line open to the pointer',
+    VerticalBarChart,
+    { data: pointsWithLine },
+    container => {
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(points).toHaveLength(7);
+      points.forEach((point: HTMLElement) => expect(point.getAttribute('pointer-events')).toBeNull());
+    },
+  );
+});
+
 describe('VerticalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
