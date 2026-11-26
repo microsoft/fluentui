@@ -324,10 +324,15 @@ const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'h
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 const COMPONENT_NAME = 'ResizeGroup';
 
-type ResizeDataAction = {
-  type: 'resizeData' | keyof IResizeGroupState;
-  value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
-};
+type ResizeDataAction =
+  | {
+      type: 'resizeData' | keyof IResizeGroupState;
+      value: IResizeGroupState[keyof IResizeGroupState] | IResizeGroupState;
+    }
+  | {
+      type: 'fitAgain';
+      value: { fullData: any; canGrow: boolean };
+    };
 
 /**
  * Use useReducer instead of userState because React is not batching the state updates
@@ -340,6 +345,14 @@ function resizeDataReducer(state: IResizeGroupState, action: ResizeDataAction): 
       return { ...action.value };
     case 'dataToMeasure':
       return { ...state, dataToMeasure: action.value, resizeDirection: 'grow', measureContainer: true };
+    case 'fitAgain': {
+      // With onGrowData, go on from the data that is being measured or that is rendered, and grow it first, so
+      // that every step goes through onGrowData or onReduceData. Without onGrowData the data can only get
+      // larger again by starting from the full data.
+      const { fullData, canGrow } = action.value;
+      const dataToMeasure = canGrow ? state.dataToMeasure ?? state.renderedData ?? fullData : fullData;
+      return { ...state, dataToMeasure, resizeDirection: 'grow', measureContainer: true };
+    }
     default:
       return { ...state, [action.type]: action.value };
   }
@@ -388,15 +401,15 @@ function useResizeState(
     }
   }, [rootRef]);
 
-  // Starts over from the full data, the same way as when new data is provided.
-  const remeasureData: () => void = React.useCallback(() => {
+  // Fits the data again after its cached measurements have been dropped.
+  const fitDataAgain: (canGrow: boolean) => void = React.useCallback((canGrow: boolean) => {
     dispatchResizeDataAction({
-      type: 'dataToMeasure',
-      value: dataRef.current,
+      type: 'fitAgain',
+      value: { fullData: dataRef.current, canGrow },
     });
   }, []);
 
-  return [stateRef, dataRef, updateResizeState, remeasureContainer, remeasureData] as const;
+  return [stateRef, dataRef, updateResizeState, remeasureContainer, fitDataAgain] as const;
 }
 
 function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<HTMLDivElement | null>) {
@@ -410,6 +423,8 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   );
   // True from a remeasure call until the cached measurement of the full data has been checked against a new one.
   const checkMeasurementCache = React.useRef(false);
+  // Whether the latest render rendered the full data for that check, in place of the data of the resize state.
+  const isCheckRenderRef = React.useRef(false);
 
   // A div that can be used for the initial measurement so that we can avoid mounting a second instance
   // of the component being measured for the initial render.
@@ -426,17 +441,11 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
 
   const async: Async = useAsync();
 
-  const [stateRef, dataRef, updateResizeState, remeasureContainer, remeasureData] = useResizeState(
+  const [stateRef, dataRef, updateResizeState, remeasureContainer, fitDataAgain] = useResizeState(
     props,
     nextResizeGroupStateProvider,
     rootRef,
   );
-
-  // Whether a remeasure call still waits for its check, and the data to measure is the full data it asked for.
-  const isCheckingMeasurementCache = (): boolean =>
-    checkMeasurementCache.current &&
-    !!stateRef.current.dataToMeasure &&
-    stateRef.current.dataToMeasure === dataRef.current;
 
   React.useEffect(() => {
     if (stateRef.current.renderedData) {
@@ -448,7 +457,9 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   React.useEffect((): void => {
     async.requestAnimationFrame(() => {
       let containerDimension = undefined;
-      if (stateRef.current.measureContainer && rootRef.current) {
+      // A remeasure call asks for the size of the container. Read it while its check is pending too, because a
+      // state update from an earlier frame can clear measureContainer before the check runs.
+      if ((stateRef.current.measureContainer || isCheckRenderRef.current) && rootRef.current) {
         const boundingRect = rootRef.current.getBoundingClientRect();
         containerDimension =
           props.direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
@@ -467,7 +478,11 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
       // After a remeasure call, compare the cached measurement of the full data with the size it has now. If
       // they differ, something other than the data has changed the size of the content, for example a style
       // sheet or a font, and none of the cached measurements can be trusted.
-      if (isCheckingMeasurementCache() && refToMeasure.current) {
+      if (isCheckRenderRef.current) {
+        // The latest render put the full data in the measuring div, not the data of the resize state.
+        if (!checkMeasurementCache.current || !refToMeasure.current) {
+          return;
+        }
         checkMeasurementCache.current = false;
         const cachedDimension = measurementCache.current.getCachedMeasurement(dataRef.current);
         const measuredDimension = getElementToMeasureDimension();
@@ -475,7 +490,18 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
         // the cached measurements.
         if (measuredDimension !== 0 && cachedDimension !== measuredDimension) {
           measurementCache.current = getMeasurementCache();
+          measurementCache.current.addMeasurementToCache(dataRef.current, measuredDimension);
+          fitDataAgain(!!props.onGrowData);
+          return;
         }
+        if (stateRef.current.dataToMeasure) {
+          // A pass is under way, but the latest render put the full data in the measuring div in place of its
+          // data. Render once more so that the pass can measure its own data.
+          remeasureContainer();
+          return;
+        }
+        // The cached measurements still hold and no data waits to be measured, so the next state only needs the
+        // size of the container.
       }
 
       const nextState = nextResizeGroupStateProvider.getNextState(
@@ -497,25 +523,26 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
     if (!rootRef.current) {
       return;
     }
+    // Measurements of data without a cacheKey are never cached, so there is nothing to check.
     if (dataRef.current?.cacheKey) {
       checkMeasurementCache.current = true;
-      remeasureData();
-    } else {
-      // Measurements of data without a cacheKey are never cached, so there is nothing to check.
-      remeasureContainer();
     }
-  }, [rootRef, dataRef, remeasureContainer, remeasureData]);
+    remeasureContainer();
+  }, [rootRef, dataRef, remeasureContainer]);
 
-  // While a remeasure call waits for its check, the full data is rendered for measurement even when it is cached.
+  // While a remeasure call waits for its check, the full data is rendered for measurement even when it is cached,
+  // in place of the data that the resize state wants to measure.
+  const isCheckRender = checkMeasurementCache.current;
+  isCheckRenderRef.current = isCheckRender;
+  const dataToMeasure = isCheckRender ? dataRef.current : stateRef.current.dataToMeasure;
   const dataNeedsMeasuring =
-    nextResizeGroupStateProvider.shouldRenderDataForMeasurement(stateRef.current.dataToMeasure) ||
-    isCheckingMeasurementCache();
+    isCheckRender || nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
 
   const isInitialMeasure = !hasRenderedContent.current && dataNeedsMeasuring;
   isInitialMeasureRef.current = isInitialMeasure;
 
   return [
-    stateRef.current.dataToMeasure,
+    dataToMeasure,
     stateRef.current.renderedData,
     remeasure,
     initialHiddenDiv,

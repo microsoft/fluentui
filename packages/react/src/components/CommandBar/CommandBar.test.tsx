@@ -5,7 +5,7 @@ import { CommandBar } from './CommandBar';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
 import type { IContextualMenuItem } from '../../ContextualMenu';
-import type { ICommandBar } from './CommandBar.types';
+import type { ICommandBar, ICommandBarItemProps } from './CommandBar.types';
 
 describe('CommandBar', () => {
   beforeEach(() => {
@@ -355,5 +355,78 @@ describe('CommandBar', () => {
     } finally {
       offsetParent.mockRestore();
     }
+  });
+
+  describe('remeasure() and items that come back from the overflow menu', () => {
+    // jsdom has no layout, so the tests set the width of one button and of the bar.
+    let buttonWidth: number;
+    let barWidth: number;
+    const commandBar = React.createRef<ICommandBar>();
+    let items: ICommandBarItemProps[];
+    let onDataGrown: jest.Mock;
+    const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+
+    const runAllTimers = () => {
+      for (let pass = 0; pass < 20 && jest.getTimerCount() > 0; pass++) {
+        act(() => {
+          jest.runAllTimers();
+        });
+      }
+      expect(jest.getTimerCount()).toBe(0);
+    };
+    const remeasure = () => {
+      act(() => {
+        commandBar.current!.remeasure();
+      });
+      runAllTimers();
+    };
+
+    beforeEach(() => {
+      jest.useFakeTimers();
+      buttonWidth = 100;
+      barWidth = 250;
+      Element.prototype.getBoundingClientRect = function (this: HTMLElement): DOMRect {
+        let width = 0;
+        if (this.style.position === 'fixed' && this.style.visibility === 'hidden') {
+          // The div that the ResizeGroup renders the items into to measure them.
+          width = this.querySelectorAll('button').length * buttonWidth;
+        } else if (this.firstElementChild?.lastElementChild?.getAttribute('data-automation-id') === 'visibleContent') {
+          // The root of the ResizeGroup.
+          width = barWidth;
+        }
+        return { width, height: 0, top: 0, right: width, bottom: 0, left: 0, x: 0, y: 0 } as DOMRect;
+      };
+
+      items = [
+        { key: '1', text: 'First' },
+        { key: '2', text: 'Second' },
+        { key: '3', text: 'Third' },
+      ];
+      onDataGrown = jest.fn();
+      render(<CommandBar componentRef={commandBar} items={items} onDataGrown={onDataGrown} />);
+      runAllTimers();
+      // Three buttons do not fit in 250px, and neither do two buttons and the overflow button.
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, true, true]);
+    });
+
+    afterEach(() => {
+      Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+    });
+
+    it('updates the items when the bar has more room', () => {
+      barWidth = 400;
+      remeasure();
+
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, false, false]);
+      expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['2', '3']);
+    });
+
+    it('updates the items when the items have become smaller', () => {
+      buttonWidth = 50;
+      remeasure();
+
+      expect(items.map(item => item.renderedInOverflow)).toEqual([undefined, false, false]);
+      expect(onDataGrown.mock.calls.map(([item]) => item.key)).toEqual(['2', '3']);
+    });
   });
 });

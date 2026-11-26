@@ -654,6 +654,12 @@ describe('ResizeGroup remeasure', () => {
     jest.useRealTimers();
   });
 
+  // The number of items in the div that the ResizeGroup measures data in, or null when it measures nothing.
+  const getMeasuredCount = () => {
+    const item = document.querySelector('[style*="visibility: hidden"] [data-item-count]');
+    return item && Number(item.getAttribute('data-item-count'));
+  };
+
   // A measurement pass ends in a render that schedules the next pass, so run the timers until none are left.
   const runAllTimers = () => {
     for (let pass = 0; pass < 20 && jest.getTimerCount() > 0; pass++) {
@@ -662,6 +668,8 @@ describe('ResizeGroup remeasure', () => {
       });
     }
     expect(jest.getTimerCount()).toBe(0);
+    // No copy is left in a measuring div, and the content is not hidden.
+    expect(getMeasuredCount()).toBeNull();
   };
 
   const renderResizeGroup = (props: Partial<IResizeGroupProps> = {}, settle: boolean = true) => {
@@ -695,6 +703,26 @@ describe('ResizeGroup remeasure', () => {
     };
 
     return { componentRef, getRenderedCount, remeasure, rerenderWithData: (data: IItemsData) => rerender(group(data)) };
+  };
+
+  // Leaves the group in the middle of a measurement: three items are rendered, and two items are in the measuring
+  // div, because the container has become narrower than it has been before.
+  const renderWithMeasurementUnderWay = (props: Partial<IResizeGroupProps> = {}) => {
+    containerWidth = 300;
+    const result = renderResizeGroup(props);
+    expect(result.getRenderedCount()).toBe(3);
+
+    containerWidth = 200;
+    act(() => {
+      result.componentRef.current!.remeasure();
+    });
+    for (let frame = 0; frame < 2; frame++) {
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
+    }
+    expect(getMeasuredCount()).toBe(2);
+    return result;
   };
 
   it.each(growCases)('fits the data again when remeasure finds that it has become larger (%s)', (_name, onGrowData) => {
@@ -828,5 +856,92 @@ describe('ResizeGroup remeasure', () => {
 
     expect(getRenderedCount()).toBe(4);
     expect(measurements).toBe(0);
+  });
+
+  it('goes on from the rendered data when remeasure finds the size unchanged', () => {
+    containerWidth = 300;
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { getRenderedCount, remeasure } = renderResizeGroup({ onGrowData, onReduceData });
+    expect(getRenderedCount()).toBe(3);
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    containerWidth = 400;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(4);
+    // One onGrowData step from the three rendered items, and no new pass from the full data.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([3]);
+    expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  it('goes through onGrowData from the rendered data when remeasure finds that it has become smaller', () => {
+    containerWidth = 300;
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { getRenderedCount, remeasure } = renderResizeGroup({ onGrowData, onReduceData });
+    expect(getRenderedCount()).toBe(3);
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    itemWidth = 50;
+    remeasure();
+
+    expect(getRenderedCount()).toBe(5);
+    // Every item that comes back is one onGrowData step, so that a caller such as CommandBar can update it.
+    // The call with five items returns undefined.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([3, 4, 5]);
+    expect(onReduceData).not.toHaveBeenCalled();
+  });
+
+  it('shows the content when remeasure is called before the frame that ends the first measurement', () => {
+    const { componentRef, getRenderedCount } = renderResizeGroup({}, false);
+
+    act(() => {
+      // The call lands first. The frame that is already pending then ends the first measurement from the state
+      // before the call, in the same batch.
+      componentRef.current!.remeasure();
+      jest.runOnlyPendingTimers();
+    });
+    // This also checks that the content is not left hidden.
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(5);
+  });
+
+  it('goes on with a measurement that is under way when remeasure finds the size unchanged', () => {
+    const { componentRef, getRenderedCount } = renderWithMeasurementUnderWay();
+
+    measurements = 0;
+    act(() => {
+      componentRef.current!.remeasure();
+    });
+    // The full data takes the place of the two items in the measuring div for one render.
+    expect(getMeasuredCount()).toBe(5);
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(2);
+    // The full data for the check, then the two items.
+    expect(measurements).toBe(2);
+  });
+
+  it('fits the data again from a measurement that is under way when remeasure finds that it has become smaller', () => {
+    const onGrowData = jest.fn(onGrowItems);
+    const onReduceData = jest.fn(onReduceItems);
+    const { componentRef, getRenderedCount } = renderWithMeasurementUnderWay({ onGrowData, onReduceData });
+
+    onGrowData.mockClear();
+    onReduceData.mockClear();
+    itemWidth = 50;
+    act(() => {
+      componentRef.current!.remeasure();
+    });
+    runAllTimers();
+
+    expect(getRenderedCount()).toBe(4);
+    // The new fit starts from the two items that were being measured.
+    expect(onGrowData.mock.calls.map(([data]) => data.count)).toEqual([2, 3]);
+    expect(onReduceData).not.toHaveBeenCalled();
   });
 });
