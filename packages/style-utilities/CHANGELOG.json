@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 25 Nov 2026 01:39:29 GMT",
+      "version": "8.15.5",
+      "tag": "@fluentui/style-utilities_v8.15.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "9e878f7676aa93610e2e506e36842d1c559970b7",
+            "comment": "Update the default Fluent CDN URL for the fabric-cdn 4.0.10 deployment."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Oct 2026 03:43:30 GMT",
       "version": "8.15.4",
       "tag": "@fluentui/style-utilities_v8.15.4",
