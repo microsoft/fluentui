@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Toaster no longer writes position styles into the style object passed as a prop",
-  "packageName": "@fluentui/react-toast",
-  "email": "shobhit26-09@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
