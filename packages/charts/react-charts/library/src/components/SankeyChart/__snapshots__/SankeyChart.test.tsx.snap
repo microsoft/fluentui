@@ -12,7 +12,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 7 nodes and 8 links"
@@ -742,7 +742,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 7 nodes and 8 links"
@@ -1512,7 +1512,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 5 nodes and 6 links"
@@ -2114,7 +2114,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 5 nodes and 6 links"
@@ -2756,7 +2756,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 12 nodes and 12 links"
@@ -3906,7 +3906,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 12 nodes and 12 links"
@@ -5096,7 +5096,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 12 nodes and 12 links"
@@ -6243,7 +6243,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 12 nodes and 12 links"
@@ -7430,7 +7430,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 2 nodes and 1 links"
@@ -7655,7 +7655,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 2 nodes and 1 links"
@@ -7915,7 +7915,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Sankey chart with 4 nodes and 2 links"
@@ -8285,7 +8285,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 4 nodes and 2 links"
@@ -8664,7 +8664,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Sankey chart with 4 nodes and 2 links"
@@ -9035,7 +9035,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 8 nodes and 6 links"
@@ -9639,7 +9639,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 8 nodes and 6 links"
@@ -10283,7 +10283,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 4 nodes and 4 links"
@@ -10676,7 +10676,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 4 nodes and 4 links"
@@ -11104,7 +11104,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Sankey chart with 12 nodes and 12 links"
@@ -12286,7 +12286,7 @@ Object {
       >
         <div
           class="fui-sc__chartWrapper"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sankey chart with 12 nodes and 12 links"
@@ -13436,7 +13436,7 @@ Object {
     >
       <div
         class="fui-sc__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Sankey chart with 12 nodes and 12 links"
@@ -14621,7 +14621,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
   >
     <div
       class="fui-sc__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Sankey chart with 12 nodes and 12 links"

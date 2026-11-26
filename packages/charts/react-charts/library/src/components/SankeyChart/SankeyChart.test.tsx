@@ -8,6 +8,7 @@ import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilit
 import { groupNodesByColumn, SankeyChart } from './SankeyChart';
 import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
 
 expect.extend(toHaveNoViolations);
@@ -680,5 +681,26 @@ describe('SankeyChart - node ID prototype pollution hardening', () => {
     }
 
     expect(Object.prototype.hasOwnProperty.call(Object.prototype, pollutionKey)).toBe(false);
+  });
+});
+
+describe('SankeyChart - keyboard navigation', () => {
+  beforeEach(sharedBeforeEach);
+
+  it('puts every node and link in a vertical arrow navigation group', () => {
+    // Grid navigation skips nodes and links here. See the comment above the chart wrapper in SankeyChart.tsx.
+    const VerticalGroup = () => <div data-testid="vertical-group" {...useArrowNavigationGroup({ axis: 'vertical' })} />;
+    const { nodes, links } = data().SankeyChartData!;
+    const { container } = render(
+      <>
+        <SankeyChart data={data()} />
+        <VerticalGroup />
+      </>,
+    );
+    const chartWrapper = getByClass(container, /fui-sc__chartWrapper/)[0];
+    expect(chartWrapper.querySelectorAll('[tabindex="0"]')).toHaveLength(nodes.length + links.length);
+    expect(chartWrapper.getAttribute('data-tabster')).toBe(
+      screen.getByTestId('vertical-group').getAttribute('data-tabster'),
+    );
   });
 });
