@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore sequential arrow key navigation in SankeyChart",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

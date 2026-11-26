@@ -565,7 +565,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _numColumns = React.useRef<number>(0);
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
-  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
   const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
@@ -1146,6 +1146,9 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         causing the left/right arrow keys to move focus up or down to the previous or next sibling element.
         - Bidirectional navigation has been disabled because it causes the up/down arrow keys to move the focus
         in a non-sequential and erratic manner within a 2D grid.
+        - Grid navigation is not used because it expects the elements row by row. The nodes and links are
+        rendered column by column, so with grid navigation the arrow keys skip nodes and links and can leave
+        some of them out of reach.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg
