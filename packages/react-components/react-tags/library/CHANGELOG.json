@@ -2,6 +2,62 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Tue, 24 Nov 2026 12:44:29 GMT",
+      "version": "9.9.10",
+      "tag": "@fluentui/react-tags_v9.9.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "394c56181799d3ac9ecd747bc137c87603d0fe2f",
+            "comment": "chore: remove unused dependency on @fluentui/react-aria"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "bdcf886547c910b749eab2aa9c22c91152dfe6ab",
+            "comment": "chore: compile to ES2020 (native optional chaining and nullish coalescing) per the v9 browser support matrix"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.11.11"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-theme to v9.2.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.27.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Nov 2026 16:50:23 GMT",
       "version": "9.9.9",
       "tag": "@fluentui/react-tags_v9.9.9",

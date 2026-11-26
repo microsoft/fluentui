@@ -23,7 +23,9 @@ export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderP
 
 // @public (undocumented)
 export type ProviderSlots = {
-    root: Slot<React_2.FragmentProps>;
+    root: Slot<{
+        children?: React_2.ReactNode;
+    }>;
 };
 
 // @public
