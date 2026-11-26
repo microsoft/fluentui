@@ -154,6 +154,20 @@ describe('AreaChart - basic props', () => {
     expect(legend.length).toBe(0);
   });
 
+  it('does not render negative hover rectangle dimensions before the initial measurement', () => {
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: jest.fn(),
+    });
+
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const hoverRect = container.querySelector('rect[id^="rectangle"]');
+
+    expect(hoverRect).not.toBeNull();
+    expect(Number(hoverRect!.getAttribute('width'))).toBeGreaterThanOrEqual(0);
+    expect(Number(hoverRect!.getAttribute('height'))).toBeGreaterThanOrEqual(0);
+  });
+
   it('Should mount legend when hideLegend false', async () => {
     await act(async () => {
       render(<AreaChart data={chartPoints} />);
